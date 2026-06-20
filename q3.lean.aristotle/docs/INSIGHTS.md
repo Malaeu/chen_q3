@@ -34768,6 +34768,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14ShiftedFirstOmittedNormInProgress
+
+- Target blocker:
+  `STEP33_M6_B14_SHIFTED_FIRST_OMITTED_NORM_GAP`.
+- Target receiver remains
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`; it needs the
+  B12/power-13 `Ioi` norm bound in the exact `(7/6) * order15-kernel` budget.
+- Local `q3_docs` search points back to `Q3.DigammaRemainder`, especially the
+  existing `MeasureTheory.norm_integral_le_of_norm_le` patterns and the
+  already checked `Q3.stieltjes_B12Diff_to_B14Diff_Ioi_cancelled`.
+- External Mathlib search only confirms the relevant interval/Bochner integral
+  API surface; it is not proof evidence.
+- Smallest useful Lean object: prove the shifted pointwise bound for
+  `(bernoulli14Diff x - 7/6)`, then combine integral linearity with
+  `norm_integral_le_of_norm_le` to derive the B12 source bound.
+- Boundary: this planned patch targets the M6 source theorem only; it does not
+  close Step33A.1-A, Step33B/C, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14CellDerivToB14DiffRouteInProgress
 
 - Target blocker:
