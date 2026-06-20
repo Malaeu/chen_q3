@@ -26,6 +26,13 @@ def bernoulli2 (t : ℝ) : ℝ := t ^ 2 - t + (6 : ℝ)⁻¹
 /-- Bernoulli gap term: 1/6 - B2(fract x). -/
 def bernoulli2Diff (x : ℝ) : ℝ := (6 : ℝ)⁻¹ - bernoulli2 (Int.fract x)
 
+/-- Bernoulli polynomial B4(t) = t^4 - 2t^3 + t^2 - 1/30. -/
+def bernoulli4 (t : ℝ) : ℝ := t ^ 4 - 2 * t ^ 3 + t ^ 2 - (30 : ℝ)⁻¹
+
+/-- B4 applied to the fractional part.  This is the next periodic Bernoulli
+kernel needed after the existing N=1 Stieltjes/Euler-Maclaurin layer. -/
+def bernoulli4Fract (x : ℝ) : ℝ := bernoulli4 (Int.fract x)
+
 /-- Bernoulli polynomial B1(t) = t - 1/2. -/
 def bernoulli1 (t : ℝ) : ℝ := t - (1 / 2 : ℝ)
 
@@ -48,10 +55,31 @@ lemma measurable_bernoulli2Diff : Measurable bernoulli2Diff := by
   have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
   simpa [bernoulli2Diff] using (measurable_const.sub (measurable_bernoulli2.comp hfract))
 
+@[measurability]
+lemma measurable_bernoulli4 : Measurable bernoulli4 := by
+  have h4 : Measurable fun t : ℝ => t ^ 4 := by
+    simpa using (measurable_id.pow_const 4)
+  have h3 : Measurable fun t : ℝ => t ^ 3 := by
+    simpa using (measurable_id.pow_const 3)
+  have h2 : Measurable fun t : ℝ => t ^ 2 := by
+    simpa using (measurable_id.pow_const 2)
+  have hconst : Measurable fun _ : ℝ => (30 : ℝ)⁻¹ := measurable_const
+  simpa [bernoulli4] using ((h4.sub (measurable_const.mul h3)).add h2).sub hconst
+
+@[measurability]
+lemma measurable_bernoulli4Fract : Measurable bernoulli4Fract := by
+  have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
+  simpa [bernoulli4Fract] using measurable_bernoulli4.comp hfract
+
 lemma bernoulli2Diff_eq_mul (x : ℝ) :
     bernoulli2Diff x = Int.fract x * (1 - Int.fract x) := by
   simp [bernoulli2Diff, bernoulli2]
   ring_nf
+
+lemma bernoulli4_eq_sq_sub_inv (t : ℝ) :
+    bernoulli4 t = (t * (1 - t)) ^ 2 - (30 : ℝ)⁻¹ := by
+  simp [bernoulli4]
+  ring
 
 lemma bernoulli2Diff_bounds (x : ℝ) :
     0 ≤ bernoulli2Diff x ∧ bernoulli2Diff x ≤ (1 / 4 : ℝ) := by
@@ -78,6 +106,38 @@ lemma bernoulli2Diff_norm_le (x : ℝ) :
   have hnorm : ‖(bernoulli2Diff x : ℂ)‖ = |bernoulli2Diff x| := by
     simp
   simpa [hnorm, habs] using hb1
+
+lemma bernoulli4Fract_bounds (x : ℝ) :
+    -(1 / 30 : ℝ) ≤ bernoulli4Fract x ∧
+      bernoulli4Fract x ≤ (7 / 240 : ℝ) := by
+  let p : ℝ := Int.fract x * (1 - Int.fract x)
+  have hp0 : 0 ≤ p := by
+    have hb0 := (bernoulli2Diff_bounds x).1
+    have hmul := bernoulli2Diff_eq_mul x
+    simpa [p, hmul] using hb0
+  have hp1 : p ≤ (1 / 4 : ℝ) := by
+    have hb1 := (bernoulli2Diff_bounds x).2
+    have hmul := bernoulli2Diff_eq_mul x
+    simpa [p, hmul] using hb1
+  have hpSq0 : 0 ≤ p ^ 2 := by nlinarith
+  have hpSq1 : p ^ 2 ≤ (1 / 16 : ℝ) := by nlinarith
+  have hrepr : bernoulli4Fract x = p ^ 2 - (1 / 30 : ℝ) := by
+    simp [bernoulli4Fract, bernoulli4_eq_sq_sub_inv, p]
+  constructor
+  · nlinarith
+  · nlinarith
+
+lemma bernoulli4Fract_abs_le (x : ℝ) :
+    |bernoulli4Fract x| ≤ (1 / 30 : ℝ) := by
+  have hb := bernoulli4Fract_bounds x
+  exact abs_le.2 ⟨by nlinarith [hb.1], by nlinarith [hb.2]⟩
+
+lemma bernoulli4Fract_norm_le (x : ℝ) :
+    ‖(bernoulli4Fract x : ℂ)‖ ≤ (1 / 30 : ℝ) := by
+  have hb := bernoulli4Fract_abs_le x
+  have hnorm : ‖(bernoulli4Fract x : ℂ)‖ = |bernoulli4Fract x| := by
+    simp
+  simpa [hnorm] using hb
 
 lemma bernoulli2Diff_int (n : ℤ) : bernoulli2Diff (n : ℝ) = 0 := by
   simp [bernoulli2Diff, bernoulli2]

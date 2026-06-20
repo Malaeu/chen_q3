@@ -33865,3 +33865,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is route-state, not a source proof.  The Fin16 interval table
   and packaging receiver remain checked support, but the active source gap is
   again the direct M6 Euler-Maclaurin/Stieltjes theorem at z0.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4PeriodicKernelBoundChecked
+
+- Added Lean-checked higher Bernoulli support in `Q3.DigammaRemainder`:
+  `bernoulli4`, `bernoulli4Fract`, measurability lemmas,
+  `bernoulli4_eq_sq_sub_inv`, `bernoulli4Fract_bounds`,
+  `bernoulli4Fract_abs_le`, and `bernoulli4Fract_norm_le`.
+- The checked bound is
+  `-(1 / 30 : Real) <= bernoulli4Fract x`,
+  `bernoulli4Fract x <= 7 / 240`, and
+  `‖(bernoulli4Fract x : Complex)‖ <= 1 / 30`.
+- Local `q3_docs` and repo search still found no hole-free M6 source theorem.
+  The nearest proof object remains the N=1 Stieltjes/Euler-Maclaurin layer
+  with `bernoulli2Diff` and kernel power `3`; the old Aristotle M6 output has
+  a `sorry` in the main theorem and remains diagnostic only.
+- Computer Use / Proshka advisory selected the next proof-producing target as a
+  one-step B2-to-B4 Stieltjes lift, informally
+  `digamma_stieltjes_remainder_power3_to_power5`.  This is route guidance only,
+  not proof evidence.
+- First concrete blocker for that next patch:
+  `STEP33_M6_B4_POWER5_LIFT_GAP`: define the repository-normalized
+  `bernoulli4Diff`/periodic primitive interface and prove the intervalwise
+  integration-by-parts plus telescoping boundary ledger from the existing
+  power-3 identity toward a power-5 kernel.
+- Validation passed with direct Lean, targeted `q3_check`, forbidden-marker
+  scan, and `git diff --check`.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound` at z0.
+  It closes only the first higher Bernoulli periodic-kernel bound needed for an
+  eventual M6/order-15 EM/Stieltjes source theorem.

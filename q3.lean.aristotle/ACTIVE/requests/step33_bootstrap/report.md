@@ -53648,3 +53648,95 @@ They do not close Step33Shift16M6FiniteTelescopeTermPayload without a different
 ledger.  The active source gap returns to the direct M6
 Euler-Maclaurin/Stieltjes theorem at z0.
 ```
+
+## 2026-06-20 Execution update -- B4 periodic kernel bound checked
+
+Local search refresh:
+
+```text
+q3_docs search targets:
+  digammaM6IntegralRemainderBound Euler Maclaurin Stieltjes kernel power 15
+  step33_shift16_digamma_m6_integral_remainder_bound M6 source theorem
+  digamma_stieltjes_identity bernoulli2Diff power 3 M6 remainder
+  Bernoulli B14 digamma asymptotic remainder coefficient 7/6
+```
+
+Result: no hole-free local theorem proving
+`Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint` was found.  The
+nearest local proof object remains `Q3.DigammaRemainder`, which has the N=1
+Stieltjes/Euler-Maclaurin identity with `bernoulli2Diff` and kernel power `3`,
+plus the order-15 kernel majorant/integrability receivers.  The old Aristotle
+`step33_shift16_digamma_m6_ball_request` output is `COMPLETE_WITH_ERRORS` and
+contains a `sorry` at the main theorem, so it is diagnostic only.
+
+External primary-source sanity check: DLMF §5.11 records the standard
+psi/digamma asymptotic expansion and error-bound family, and DLMF §24.2 records
+the Bernoulli-polynomial family.  This is route orientation only, not proof
+evidence.
+
+Lean progress:
+
+```lean
+Q3.bernoulli4
+Q3.bernoulli4Fract
+Q3.measurable_bernoulli4
+Q3.measurable_bernoulli4Fract
+Q3.bernoulli4_eq_sq_sub_inv
+Q3.bernoulli4Fract_bounds
+Q3.bernoulli4Fract_abs_le
+Q3.bernoulli4Fract_norm_le
+```
+
+These are the next periodic Bernoulli-kernel facts after the existing N=1
+`bernoulli2Diff` layer.  The checked bound is:
+
+```lean
+-(1 / 30 : Real) <= bernoulli4Fract x
+bernoulli4Fract x <= 7 / 240
+‖(bernoulli4Fract x : Complex)‖ <= 1 / 30
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+```
+
+Boundary:
+
+```text
+This does not prove the M6 source theorem.  It closes the first higher
+Bernoulli periodic-kernel bound needed for an eventual EM/Stieltjes lift from
+the existing power-3 identity toward the M6/order-15 remainder.
+```
+
+Computer Use / Proshka advisory:
+
+```text
+Selected next local proof-producing target: one-step B2-to-B4 Stieltjes lift,
+informally digamma_stieltjes_remainder_power3_to_power5.
+
+Status: advisory only, not proof evidence.
+
+First blocker:
+STEP33_M6_B4_POWER5_LIFT_GAP
+```
+
+Meaning: before attacking the full M6 theorem, the next smallest local Lean
+object should reconcile the newly checked `bernoulli4Fract` support with the
+repository's existing `bernoulli2Diff` Stieltjes layer by defining the
+repo-normalized `bernoulli4Diff`/periodic primitive interface and proving the
+intervalwise integration-by-parts plus telescoping boundary ledger that moves
+from kernel power `3` toward kernel power `5`.

@@ -26442,3 +26442,47 @@ git diff --check on the two touched Lean files: pass
 Boundary unchanged: source theorem open; generated high-order payload theorem
 open; Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, and Step33
 remain open.
+
+## 2026-06-20 Step33A.1-A B4 periodic kernel bound checked
+
+Added the first higher periodic Bernoulli-kernel support after the existing
+N=1 `bernoulli2Diff` layer:
+
+```lean
+Q3.bernoulli4
+Q3.bernoulli4Fract
+Q3.measurable_bernoulli4
+Q3.measurable_bernoulli4Fract
+Q3.bernoulli4_eq_sq_sub_inv
+Q3.bernoulli4Fract_bounds
+Q3.bernoulli4Fract_abs_le
+Q3.bernoulli4Fract_norm_le
+```
+
+Checked bound:
+
+```lean
+-(1 / 30 : Real) <= bernoulli4Fract x
+bernoulli4Fract x <= 7 / 240
+‖(bernoulli4Fract x : Complex)‖ <= 1 / 30
+```
+
+Computer Use / Proshka advisory selected the next local proof-producing target
+as the one-step B2-to-B4 Stieltjes lift, informally
+`digamma_stieltjes_remainder_power3_to_power5`.  Treat this as route guidance
+only.  The first concrete blocker is now:
+
+```text
+STEP33_M6_B4_POWER5_LIFT_GAP
+```
+
+Meaning: define the repository-normalized `bernoulli4Diff`/periodic primitive
+interface and prove the intervalwise integration-by-parts plus telescoping
+boundary ledger from the existing power-3 identity toward a power-5 kernel.
+
+Validation passed for `Q3/DigammaRemainder.lean` with direct Lean, targeted
+`q3_check`, forbidden-marker scan, and `git diff --check`.
+
+Boundary unchanged: the M6 source theorem is still open, Step33A.1-A remains
+open, A hbox is not closed, `ActiveCenteredCoeffEntryHboxCert` is not closed,
+and Step33 is not closed.
