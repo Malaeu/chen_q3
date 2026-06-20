@@ -378,3 +378,26 @@ STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
 
 No Lean payload should be emitted from this route until the component
 remainder proof objects are proof-grade.
+
+## Generated OmegaPrime payload
+
+The first narrow payload surface now exists:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+Current status:
+
+```text
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The payload confirms that the existing Lean source gives differentiability and
+endpoint/remainder support, but not the order-16 bound required for a
+proof-grade Taylor remainder certificate.

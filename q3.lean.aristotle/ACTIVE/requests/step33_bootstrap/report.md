@@ -59150,3 +59150,56 @@ uniform order-16 bound for `step22OmegaArchWeightDerivClosedForm` on
 `[0, 1/10]`, then spend the coefficient error and Lagrange remainder into one
 `remainderAbs`.  This is still advisory until a local Lean or exact-rational
 certificate exists.
+
+## Execution Update (2026-06-20) -- OmegaPrime Taylor payload
+
+Added:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+Generated:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+The generated schema is:
+
+```text
+q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1
+```
+
+and it records:
+
+```text
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+functionId = step22OmegaArchWeightDerivClosedForm
+center = 1/20
+radius = 1/20
+degree = 15
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Local `q3_docs` search found no ready proof-producing order-16/polygamma
+bound.  The closest local analytic source remains `Q3/DigammaRemainder.lean`
+and the already checked shift-16 M6 remainder support in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+External Mathlib Taylor documentation was used only as route context; it is not
+proof evidence until imported and checked locally.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+Boundary: no Lean files were touched, no OmegaPrime Taylor certificate was
+proved, no generated Lean payload exists, no first-subchunk
+residual-derivative norm certificate exists, no A hbox exists, and Step33A.1-A
+remains open.

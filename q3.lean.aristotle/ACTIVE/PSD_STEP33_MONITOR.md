@@ -30573,3 +30573,48 @@ STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
 This is advisory only.  The broader live blocker remains
 `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP` until a local
 proof-grade component Taylor remainder certificate exists.
+
+## 2026-06-20 Current EOF Addendum -- OmegaPrime Taylor payload
+
+Added fail-closed generator:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+Generated artifacts:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+Current schema:
+
+```text
+q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1
+```
+
+Current status:
+
+```text
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+functionId = step22OmegaArchWeightDerivClosedForm
+center = 1/20
+radius = 1/20
+degree = 15
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The generator scans local Lean support for `rawOmegaATaylorPolynomial`,
+`step22OmegaArchWeightDerivClosedForm`,
+`step22OmegaArchWeightDerivClosedForm_differentiableAt`,
+`step22OmegaArchWeight_deriv_eq_closedForm`,
+`Step22OmegaClosedFormEndpointBoundsCert`, and the existing shift-16 M6
+remainder support.  It does not find a local
+`Step33Sub0OmegaPrimeTaylorRemainderCert` or a proof-grade order-16 bound.
+
+Boundary: no Lean file was touched, no OmegaPrime Taylor certificate exists,
+and Step33A.1-A remains open.

@@ -36519,3 +36519,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   fail code `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.  This
   remains advisory-only until the repo has a local proof-grade order-16 bound
   for `step22OmegaArchWeightDerivClosedForm`.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaPrimeTaylorPayload
+
+- Added
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`
+  and `.md` with schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1`.
+- Current status is
+  `fail_closed_missing_order16_polygamma_bound`, first failure
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+- The payload scans and records existing local support:
+  `rawOmegaATaylorPolynomial`, `step22OmegaArchWeightDerivClosedForm`,
+  `step22OmegaArchWeightDerivClosedForm_differentiableAt`,
+  `step22OmegaArchWeight_deriv_eq_closedForm`,
+  `Step22OmegaClosedFormEndpointBoundsCert`, and shift-16 M6 digamma remainder
+  support.
+- Local `q3_docs` search found no ready proof-producing
+  OmegaPrime order-16/polygamma bound.  External Mathlib Taylor docs are route
+  context only, not proof evidence.
+- Validation passed for generator run and `py_compile`; no Lean files were
+  touched in this step.
+- Boundary: no OmegaPrime Taylor certificate, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

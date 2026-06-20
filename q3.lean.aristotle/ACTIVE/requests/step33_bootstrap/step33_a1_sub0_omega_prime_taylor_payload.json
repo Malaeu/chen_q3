@@ -1,0 +1,404 @@
+{
+  "advisorySource": {
+    "browserProshka": "advisory_only_not_proof_evidence",
+    "chosen": "A",
+    "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
+    "recommendedGenerator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
+    "whyNotEndpointFiniteCover": "Endpoint finite-cover subdivision still needs the same trigamma/polygamma source bounds, repeated over segments."
+  },
+  "cell": {
+    "cellL": "0",
+    "cellU": "1/10",
+    "center": "1/20",
+    "degree": 15,
+    "orderForLagrangeRemainder": 16,
+    "radius": "1/20"
+  },
+  "externalSearch": {
+    "mathlibTaylorDocs": "Mathlib.Analysis.Calculus.Taylor exposes Taylor theorem surfaces such as taylor_mean_remainder_lagrange; this is route context only until imported and checked locally."
+  },
+  "failureCodes": [
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_TAYLOR_LEAN_PAYLOAD_MISSING"
+  ],
+  "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
+  "functionId": "step22OmegaArchWeightDerivClosedForm",
+  "generator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
+  "generatorFields": {
+    "center": "1/20",
+    "centerJetSource": [
+      {
+        "index": 0,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 1,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 2,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 3,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 4,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 5,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 6,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 7,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 8,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 9,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 10,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 11,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 12,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 13,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 14,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      },
+      {
+        "index": 15,
+        "status": "missing_proof_grade_center_jet_source",
+        "value": null
+      }
+    ],
+    "coeff": [
+      {
+        "index": 0,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 1,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 2,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 3,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 4,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 5,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 6,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 7,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 8,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 9,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 10,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 11,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 12,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 13,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 14,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      },
+      {
+        "index": 15,
+        "status": "missing_proof_grade_coefficient_enclosure",
+        "value": null
+      }
+    ],
+    "coeffErrorAbs": [
+      {
+        "index": 0,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 1,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 2,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 3,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 4,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 5,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 6,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 7,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 8,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 9,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 10,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 11,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 12,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 13,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 14,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      },
+      {
+        "index": 15,
+        "status": "missing_proof_grade_coefficient_error_bound",
+        "value": null
+      }
+    ],
+    "coefficientErrorBudget": null,
+    "degree": 15,
+    "exactRationalChecksPassed": false,
+    "functionId": "step22OmegaArchWeightDerivClosedForm",
+    "lagrangeRemainderBudget": null,
+    "order16Abs": null,
+    "order16BoundSource": null,
+    "outLeanWritten": false,
+    "proofSafeClosedFields": 0,
+    "radius": "1/20",
+    "remainderAbs": null,
+    "schemaVersion": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1"
+  },
+  "localSourceScan": {
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": [
+      {
+        "line": 30,
+        "status": "found",
+        "symbol": "rawOmegaATaylorPolynomial"
+      },
+      {
+        "line": 6446,
+        "status": "found",
+        "symbol": "digamma_analyticAt_of_re_pos"
+      },
+      {
+        "line": 6470,
+        "status": "found",
+        "symbol": "trigamma_differentiableAt_of_re_pos"
+      },
+      {
+        "line": 6440,
+        "status": "found",
+        "symbol": "step22OmegaArchWeightDerivClosedForm"
+      },
+      {
+        "line": 6485,
+        "status": "found",
+        "symbol": "step22OmegaArchWeightDerivClosedForm_differentiableAt"
+      },
+      {
+        "line": 8438,
+        "status": "found",
+        "symbol": "step22OmegaArchWeight_deriv_eq_closedForm"
+      },
+      {
+        "line": 8568,
+        "status": "found",
+        "symbol": "Step22OmegaClosedFormEndpointBoundsCert"
+      },
+      {
+        "line": 12197,
+        "status": "found",
+        "symbol": "ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound"
+      }
+    ],
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": [
+      {
+        "line": 837,
+        "status": "found",
+        "symbol": "step33_shift16_digamma_m6_integral_remainder_bound"
+      },
+      {
+        "line": 838,
+        "status": "found",
+        "symbol": "Q3.digammaM6IntegralRemainderBound"
+      }
+    ]
+  },
+  "proofStatus": {
+    "componentTaylorBoundsProved": false,
+    "exactRationalChecksPassed": false,
+    "omegaPrimeCenterJetBoundsProved": false,
+    "omegaPrimeOrder16BoundProved": false,
+    "omegaPrimeRemainderBudgetPassed": false,
+    "outLeanWritten": false,
+    "proofSafeClosedFields": 0
+  },
+  "requiredProofs": [
+    "for each j < 16, prove |iteratedDeriv j step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]",
+    "prove forall eta in [0, 1/10], |iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta| <= order16Abs",
+    "prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs"
+  ],
+  "routeId": "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD",
+  "schema": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1",
+  "sourceDefinitionHashes": {
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "7f64b5533a21ca57",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md": "319d19f8e4ce698f",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "3de3009753a52710",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "44035a027bb89ced"
+  },
+  "sourceStatus": {
+    "componentPayloadFirstFailure": "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
+    "componentPayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json",
+    "componentPayloadSchema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1",
+    "componentPayloadStatus": "fail_closed_missing_omega_omegaprime_taylor_remainder",
+    "gapMapExists": true,
+    "gapMapPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md"
+  },
+  "status": "fail_closed_missing_order16_polygamma_bound",
+  "targetLeanSurface": {
+    "boundTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound",
+    "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
+    "localNormalization": "rawOmegaATaylorPolynomial expects a Rat center and a Fin (degree + 1) -> Rat coefficient function.",
+    "statementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs",
+    "status": "planned_not_in_lean",
+    "structure": "Step33Sub0OmegaPrimeTaylorRemainderCert",
+    "validPredicate": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid"
+  },
+  "targetSymbolScan": {
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP": {
+      "line": null,
+      "status": "gap"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert": {
+      "line": null,
+      "status": "gap"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid": {
+      "line": null,
+      "status": "gap"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound": {
+      "line": null,
+      "status": "gap"
+    }
+  }
+}
