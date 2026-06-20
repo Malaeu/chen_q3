@@ -48,7 +48,7 @@ DIRECT_OVERLAY_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v30"
 )
 WORKLIST_SCHEMA = (
-    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21"
+    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22"
 )
 
 REQUIRED_FIELDS = [
@@ -153,6 +153,10 @@ FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER = (
     "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope"
 )
 
+FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_KILL_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible"
+)
+
 CELL_SLOPE_REFINED_PAYLOAD_FIN = (
     "RawOmegaAChunkTaylorPayload.CellSlopeDirectEnvelopeRefinedPayloadFin"
 )
@@ -206,28 +210,38 @@ def first_subchunk_anchor_envelope_work(
     ):
         return None
     return {
-        "status": "available_first_subchunk_only_receiver_not_payload",
-        "targetGap": "STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP",
+        "status": "available_first_subchunk_asymmetric_anchor_curvature_receiver_not_payload",
+        "targetGap": "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP",
+        "routeDeathCondition": "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL",
         "intervalReceiver": FIRST_SUBCHUNK_ANCHOR_ENVELOPE_INTERVAL_RECEIVER,
         "proofDataReceiver": FIRST_SUBCHUNK_ANCHOR_ENVELOPE_PROOF_DATA_RECEIVER,
         "cell": "Set.Icc (0 : Real) ((1 : Real) / 10)",
         "anchor": "0",
         "mesh": "1/10",
         "requiredInputs": [
-            "0 <= secondDerivSlope",
-            "|deriv cert.residual 0| <= derivSampleRadius",
+            "derivAnchorLower <= deriv cert.residual 0",
+            "deriv cert.residual 0 <= derivAnchorUpper",
+            "0 <= derivSlope",
             "DifferentiableAt Real (fun t => deriv cert.residual t) on [0, 1/10]",
-            "proof-grade second-derivative envelope on [0, 1/10]",
-            "lower budget: sampled lower <= -derivSampleRadius - secondDerivSlope * (1/10)",
-            "upper budget: derivSampleRadius + secondDerivSlope * (1/10) <= sampled upper",
+            "proof-grade curvature envelope ||deriv (deriv cert.residual) eta|| <= derivSlope on [0, 1/10]",
+            "lower budget: sampled lower <= derivAnchorLower - derivSlope * (1/10)",
+            "upper budget: derivAnchorUpper + derivSlope * (1/10) <= sampled upper",
         ],
         "absoluteAnchorProofDataReceiver": (
             FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER
+        ),
+        "inactiveSymmetricAnchorAbsSecondDerivProofDataReceiver": (
+            FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER
+        ),
+        "symmetricAnchorAbsSecondDerivKillTheorem": (
+            FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_KILL_THEOREM
         ),
         "guard": [
             "first-subchunk concrete adapter only",
             "not reusable for other subchunks",
             "sampled derivative audit remains diagnostic-only",
+            "symmetric anchor-abs/second-deriv source is killed and inactive",
+            "asymmetric anchor/curvature route dies only on its explicit constant-fail condition",
             "do not emit this route unless all requiredInputs are Lean-checked",
         ],
     }
@@ -379,8 +393,8 @@ def build_subchunk_work(
                 "prove ResidualDerivativeDirectNormCert.Valid",
                 "available Lean adapter: prove sharp residual-derivative lower/upper bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interval_bounds",
                 "available Lean adapter: prove exact model derivative norm + interpolation/error bound on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
-                "first-subchunk-only fallback: for primary_finite row 0 parent 0 subchunk 0, prove the anchor-envelope inputs and use primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope",
-                "first-subchunk preferred anchor fallback: prove |deriv cert.residual 0| <= derivSampleRadius plus a second-derivative envelope, then use primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope",
+                "first-subchunk live anchor fallback: for primary_finite row 0 parent 0 subchunk 0, prove asymmetric anchor interval, differentiability, direct residual curvature envelope, and the two asymmetric budgets, then use primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope",
+                "first-subchunk inactive symmetric anchor-abs fallback: recorded only as killed by primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible",
                 "prove cancellation-preserving norm bound "
                 "||deriv cert.residual eta|| <= derivSlope on the one derivative cell",
                 "preferred: feed hRawCenterCoeffAbs + DirectNormCert.Valid + full-cell endpoint equalities to of_raw_center_coeff_abs_direct_norm_cert_full_cell",
@@ -623,6 +637,12 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
         "firstSubchunkAnchorAbsSecondDerivProofDataReceiver": (
             FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER
         ),
+        "firstSubchunkAnchorAbsSecondDerivKillTheorem": (
+            FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_KILL_THEOREM
+        ),
+        "firstSubchunkAsymmetricAnchorCurvatureRouteDeathCondition": (
+            "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL"
+        ),
         "requiredFields": REQUIRED_FIELDS,
         "legacyIntervalRequiredFields": LEGACY_INTERVAL_REQUIRED_FIELDS,
         "totals": totals,
@@ -633,7 +653,8 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
             "generate cancellation-preserving residual-derivative lower/upper interval bounds",
             "preferred compact route: generate one ResidualDerivativeDirectNormCert.Valid proof per direct subchunk",
             "interpolation route: prove exact model-derivative norm and interpolation/error bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
-            "first-subchunk preferred anchor fallback: for primary_finite row 0 parent 0 subchunk 0, prove the absolute anchor derivative radius, differentiability, second-derivative envelope, and two budget inequalities, then use the concrete anchor-abs/second-deriv adapter",
+            "first-subchunk live anchor fallback: for primary_finite row 0 parent 0 subchunk 0, prove asymmetric anchor lower/upper bounds at 0, differentiability, direct residual curvature, and two asymmetric budget inequalities, then use the concrete anchor-envelope adapter",
+            "first-subchunk inactive symmetric anchor-abs fallback: keep the receiver only as a killed pattern via primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible",
             "feed hRawCenterCoeffAbs + DirectNormCert.Valid + cellL=L/cellU=U equalities into the raw-center full-cell direct-norm exact-integral constructor",
             "shortcut compact route: feed hRawCenterCoeffAbs + residual-derivative lower/upper bounds + abs-slope comparisons into the raw-center interval-bounds full-cell direct-norm constructor",
             "fallback: extract hResidualDerivBoundOnCell with residualDerivBoundOnCell_of_directNormCert",
@@ -650,6 +671,8 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
             "preferred cell-slope route may replace the two interval fields by one hResidualDerivBoundOnCell proof per direct subchunk",
             "interpolation diagnostics are non-proof until model and error bounds are emitted as Lean-checked exact hypotheses",
             "first-subchunk anchor-envelope adapters are concrete to subchunk 0 and must not be generalized across the worklist",
+            "current symmetric anchor-abs/second-deriv source remains dead and must not be emitted as payload",
+            "do not declare STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL unless proof-grade asymmetric constants make the route impossible",
             "do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3",
         ],
     }
@@ -685,6 +708,8 @@ def render_md(worklist: dict[str, Any]) -> str:
         f"- first-subchunk anchor-envelope interval receiver: `{worklist.get('firstSubchunkAnchorEnvelopeIntervalReceiver')}`",
         f"- first-subchunk anchor-envelope proof-data receiver: `{worklist.get('firstSubchunkAnchorEnvelopeProofDataReceiver')}`",
         f"- first-subchunk anchor-abs/second-deriv proof-data receiver: `{worklist.get('firstSubchunkAnchorAbsSecondDerivProofDataReceiver')}`",
+        f"- first-subchunk anchor-abs/second-deriv kill theorem: `{worklist.get('firstSubchunkAnchorAbsSecondDerivKillTheorem')}`",
+        f"- first-subchunk asymmetric route-death condition: `{worklist.get('firstSubchunkAsymmetricAnchorCurvatureRouteDeathCondition')}`",
         f"- overlays: `{totals['overlays']}`",
         f"- subchunks: `{totals['subchunks']}`",
         f"- hRawCenterCoeffAbs fields: `{totals['hRawCenterCoeffAbsFields']}`",
@@ -751,7 +776,10 @@ def render_md(worklist: dict[str, Any]) -> str:
         "- interpolation route for `ResidualDerivativeDirectNormCert.Valid`: prove an exact model-derivative norm bound and exact interpolation/error bound on the same cell, prove their sum is at most `derivSlope`, then use `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`"
     )
     lines.append(
-        "- first-subchunk preferred anchor fallback: for `primary_finite` row `0`, parent `0`, subchunk `0`, prove `|deriv cert.residual 0| <= derivSampleRadius`, differentiability, a second-derivative envelope, and rational budget inequalities, then use `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope`"
+        "- first-subchunk live anchor fallback: for `primary_finite` row `0`, parent `0`, subchunk `0`, prove `derivAnchorLower <= deriv cert.residual 0`, `deriv cert.residual 0 <= derivAnchorUpper`, differentiability, a direct residual curvature envelope, and rational asymmetric budget inequalities, then use `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope`"
+    )
+    lines.append(
+        "- first-subchunk inactive symmetric fallback: the anchor-abs/second-deriv receiver is kept only as a killed pattern via `primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible`"
     )
     lines.append(
         "- shortcut compact derivative route: prove `hRawCenterCoeffAbs`, residual-derivative lower/upper bounds on `[L, U]`, and the two abs-slope comparisons, then feed them directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_interval_bounds_full_cell`"

@@ -1,5 +1,6 @@
 {
-  "anchorWorkStatus": "available_first_subchunk_only_receiver_not_payload",
+  "anchorWorkStatus": "available_first_subchunk_asymmetric_anchor_curvature_receiver_not_payload",
+  "anchorWorkTargetGap": "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP",
   "cell": "Set.Icc (0 : Real) ((1 : Real) / 10)",
   "decision": "The current derivative_bound_audit.v7 source is not spendable for the v21 anchor-abs/second-deriv payload.  Its second-derivative slope makes both rational budget comparisons fail by many orders of magnitude.",
   "firstBlocker": "STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL",
@@ -10,6 +11,7 @@
     "does not claim |deriv residual 0| bound is proved",
     "does not claim second-derivative envelope is proved",
     "does not kill the checked anchor-envelope receiver",
+    "does not kill the asymmetric anchor/curvature route",
     "does not kill direct residual or future cancellation-aware routes"
   ],
   "leanKillTheorem": "primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible",
@@ -21,13 +23,15 @@
   "proofSafeClosedFields": 0,
   "receiver": "RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope",
   "requiredInputs": [
-    "0 <= secondDerivSlope",
-    "|deriv cert.residual 0| <= derivSampleRadius",
+    "derivAnchorLower <= deriv cert.residual 0",
+    "deriv cert.residual 0 <= derivAnchorUpper",
+    "0 <= derivSlope",
     "DifferentiableAt Real (fun t => deriv cert.residual t) on [0, 1/10]",
-    "proof-grade second-derivative envelope on [0, 1/10]",
-    "lower budget: sampled lower <= -derivSampleRadius - secondDerivSlope * (1/10)",
-    "upper budget: derivSampleRadius + secondDerivSlope * (1/10) <= sampled upper"
+    "proof-grade curvature envelope ||deriv (deriv cert.residual) eta|| <= derivSlope on [0, 1/10]",
+    "lower budget: sampled lower <= derivAnchorLower - derivSlope * (1/10)",
+    "upper budget: derivAnchorUpper + derivSlope * (1/10) <= sampled upper"
   ],
+  "routeDeathCondition": "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL",
   "schema": "q3_psdpd_step33_a1_sub0_anchor_abs_second_deriv_payload.v1",
   "sourceBudgets": [
     {
@@ -266,6 +270,6 @@
     "derivUpper": "1866608532757/500000000000000000000000000000",
     "derivUpperDecimal": "0.000000000000000003733217"
   },
-  "worklistSchema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21",
+  "worklistSchema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22",
   "worklistSource": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json"
 }

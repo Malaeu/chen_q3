@@ -87,6 +87,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - does not claim |deriv residual 0| bound is proved
 - does not claim second-derivative envelope is proved
 - does not kill the checked anchor-envelope receiver
+- does not kill the asymmetric anchor/curvature route
 - does not kill direct residual or future cancellation-aware routes
 
 ## Lean Kill Theorem

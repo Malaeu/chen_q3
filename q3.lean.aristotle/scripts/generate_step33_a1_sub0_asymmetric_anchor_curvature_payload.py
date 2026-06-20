@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""Fail-closed Step33A.1-A sub0 anchor/second-derivative payload audit.
+"""Fail-closed Step33A.1-A sub0 asymmetric anchor/curvature audit.
 
 This is a control-plane artifact, not Lean proof data.  It checks whether the
-current derivative-bound audit v7 can supply the first-subchunk inactive
-anchor-abs/second-derivative receiver recorded in worklist v22.
+current derivative-bound audit v7 files can supply the live first-subchunk
+asymmetric anchor-envelope receiver recorded in worklist v22.
 
-The answer is expected to be fail-closed for the current v7 audit source: the
-diagnostic second-derivative slope is far too large for the tiny sampled
-derivative interval budget.  This kills only the current diagnostic source, not
-the checked anchor-envelope receiver or the broader direct residual route.
+The expected result for the current v7 sources is source-budget failure:
+their diagnostic curvature is far above the tiny same-cell budget.  This does
+not kill the route, because the zero-curvature asymmetric anchor interval still
+has positive rational slack in the current candidate data, and the candidate
+data are not proof-grade.
 """
 
 from __future__ import annotations
@@ -28,10 +29,10 @@ DEFAULT_WORKLIST = (
     / "a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json"
 )
 DEFAULT_OUT_JSON = (
-    REQUEST_DIR / "step33_a1_sub0_anchor_abs_second_deriv_payload.json"
+    REQUEST_DIR / "step33_a1_sub0_asymmetric_anchor_curvature_payload.json"
 )
 DEFAULT_OUT_MD = (
-    REQUEST_DIR / "step33_a1_sub0_anchor_abs_second_deriv_payload.md"
+    REQUEST_DIR / "step33_a1_sub0_asymmetric_anchor_curvature_payload.md"
 )
 
 WORKLIST_SCHEMA = (
@@ -40,7 +41,15 @@ WORKLIST_SCHEMA = (
 DERIVATIVE_AUDIT_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_derivative_bound_audit.v7"
 )
-OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_anchor_abs_second_deriv_payload.v1"
+OUTPUT_SCHEMA = (
+    "q3_psdpd_step33_a1_sub0_asymmetric_anchor_curvature_payload.v1"
+)
+
+PAYLOAD_GAP = "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP"
+SOURCE_BUDGET_FAIL = (
+    "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_BUDGET_FAIL"
+)
+CONSTANT_FAIL = "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL"
 
 AUDIT_SOURCES = [
     (
@@ -66,10 +75,6 @@ TARGET = {
     "parentChunk": 0,
     "subchunk": 0,
 }
-
-LEAN_KILL_THEOREM = (
-    "primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible"
-)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -97,7 +102,7 @@ def parse_fraction(raw: str | int | None) -> Fraction | None:
     if "/" in text:
         num, den = text.split("/", 1)
         return Fraction(int(num), int(den))
-    if "E" in text or "e" in text or "." in text:
+    if "." in text or "e" in text or "E" in text:
         return Fraction(text)
     return Fraction(int(text), 1)
 
@@ -149,41 +154,49 @@ def find_subchunk_item(items: list[Any], subchunk: int) -> dict[str, Any] | None
     return hits[0] if hits else None
 
 
-def first_or_value(value: Any) -> Any:
-    if isinstance(value, list):
-        if len(value) != 1:
-            raise ValueError(f"expected one value, found {value!r}")
-        return value[0]
-    return value
-
-
-def exact_budget(
+def exact_asymmetric_budget(
     *,
     sampled_lower: Fraction,
     sampled_upper: Fraction,
-    deriv_sample_radius: Fraction,
-    second_deriv_slope: Fraction,
+    anchor_lower: Fraction,
+    anchor_upper: Fraction,
+    curvature: Fraction,
     mesh: Fraction,
 ) -> dict[str, Any]:
-    lower_required = -deriv_sample_radius - second_deriv_slope * mesh
-    upper_required = deriv_sample_radius + second_deriv_slope * mesh
+    lower_required = anchor_lower - curvature * mesh
+    upper_required = anchor_upper + curvature * mesh
     lower_margin = lower_required - sampled_lower
     upper_margin = sampled_upper - upper_required
     lower_passes = lower_margin >= 0
     upper_passes = upper_margin >= 0
+
+    lower_zero_slack = anchor_lower - sampled_lower
+    upper_zero_slack = sampled_upper - anchor_upper
+    max_curvature_from_lower = lower_zero_slack / mesh
+    max_curvature_from_upper = upper_zero_slack / mesh
+    max_allowed_curvature = min(max_curvature_from_lower, max_curvature_from_upper)
+    route_death_by_candidate_constants = max_allowed_curvature < 0
+    curvature_to_allowed_ratio = (
+        None
+        if max_allowed_curvature <= 0
+        else curvature / max_allowed_curvature
+    )
+
     return {
         "relations": {
-            "lower": "sampledLower <= -derivSampleRadius - secondDerivSlope * mesh",
-            "upper": "derivSampleRadius + secondDerivSlope * mesh <= sampledUpper",
+            "lower": "sampledLower <= derivAnchorLower - derivSlope * mesh",
+            "upper": "derivAnchorUpper + derivSlope * mesh <= sampledUpper",
         },
         "sampledLower": format_fraction(sampled_lower),
         "sampledLowerDecimal": decimal_string(sampled_lower),
         "sampledUpper": format_fraction(sampled_upper),
         "sampledUpperDecimal": decimal_string(sampled_upper),
-        "derivSampleRadius": format_fraction(deriv_sample_radius),
-        "derivSampleRadiusDecimal": decimal_string(deriv_sample_radius),
-        "secondDerivSlope": format_fraction(second_deriv_slope),
-        "secondDerivSlopeDecimal": decimal_string(second_deriv_slope),
+        "derivAnchorLower": format_fraction(anchor_lower),
+        "derivAnchorLowerDecimal": decimal_string(anchor_lower),
+        "derivAnchorUpper": format_fraction(anchor_upper),
+        "derivAnchorUpperDecimal": decimal_string(anchor_upper),
+        "curvature": format_fraction(curvature),
+        "curvatureDecimal": decimal_string(curvature),
         "mesh": format_fraction(mesh),
         "lowerRequired": format_fraction(lower_required),
         "lowerRequiredDecimal": decimal_string(lower_required),
@@ -196,23 +209,33 @@ def exact_budget(
         "lowerPasses": lower_passes,
         "upperPasses": upper_passes,
         "passes": lower_passes and upper_passes,
+        "zeroCurvatureSlack": {
+            "lower": format_fraction(lower_zero_slack),
+            "lowerDecimal": decimal_string(lower_zero_slack),
+            "upper": format_fraction(upper_zero_slack),
+            "upperDecimal": decimal_string(upper_zero_slack),
+        },
+        "maxAllowedCurvature": {
+            "fromLower": format_fraction(max_curvature_from_lower),
+            "fromLowerDecimal": decimal_string(max_curvature_from_lower),
+            "fromUpper": format_fraction(max_curvature_from_upper),
+            "fromUpperDecimal": decimal_string(max_curvature_from_upper),
+            "minimum": format_fraction(max_allowed_curvature),
+            "minimumDecimal": decimal_string(max_allowed_curvature),
+        },
+        "curvatureToAllowedRatio": decimal_string(curvature_to_allowed_ratio),
+        "routeDeathByCandidateConstants": route_death_by_candidate_constants,
     }
 
 
-def audit_budget(
-    label: str,
-    path: Path,
-    *,
-    mesh: Fraction,
-    worklist_sampled_lower: Fraction,
-    worklist_sampled_upper: Fraction,
-) -> dict[str, Any]:
+def audit_source(label: str, path: Path, *, mesh: Fraction) -> dict[str, Any]:
     summary: dict[str, Any] = {
         "label": label,
         "path": str(path),
         "exists": path.exists(),
         "proofUseStatus": "diagnostic_only_not_allowed_as_Lean_payload",
-        "usableAsAnchorAbsSecondDerivPayload": False,
+        "rationalAnchorFieldsStatus": "candidate_interval_fields_not_proof_evidence",
+        "usableAsAsymmetricAnchorCurvaturePayload": False,
     }
     if not path.exists():
         summary["firstFailure"] = "SOURCE_FILE_MISSING"
@@ -234,34 +257,51 @@ def audit_budget(
         summary["firstFailure"] = "TARGET_SUBCHUNK_MISSING"
         return summary
 
-    deriv_sample_radius = parse_fraction(item.get("derivSampleRadius"))
-    second_deriv_slope = parse_fraction(item.get("secondDerivativeSlope"))
     sampled_lower = parse_fraction(item.get("sampledDerivLower"))
     sampled_upper = parse_fraction(item.get("sampledDerivUpper"))
+    anchor_lower = parse_fraction(item.get("derivAnchorLower"))
+    anchor_upper = parse_fraction(item.get("derivAnchorUpper"))
+    curvature = parse_fraction(item.get("secondDerivativeSlope"))
     legacy_deriv_slope = parse_fraction(item.get("derivSlope"))
+
     if (
-        deriv_sample_radius is None
-        or second_deriv_slope is None
-        or sampled_lower is None
+        sampled_lower is None
         or sampled_upper is None
+        or anchor_lower is None
+        or anchor_upper is None
+        or curvature is None
     ):
         summary["firstFailure"] = "SOURCE_FIELDS_MISSING"
         return summary
 
-    budget = exact_budget(
+    budget = exact_asymmetric_budget(
         sampled_lower=sampled_lower,
         sampled_upper=sampled_upper,
-        deriv_sample_radius=deriv_sample_radius,
-        second_deriv_slope=second_deriv_slope,
+        anchor_lower=anchor_lower,
+        anchor_upper=anchor_upper,
+        curvature=curvature,
         mesh=mesh,
     )
     summary.update(
         {
             "sourceFieldMapping": {
-                "derivSampleRadius": "subchunks[0].derivSampleRadius",
-                "secondDerivSlope": "subchunks[0].secondDerivativeSlope",
                 "sampledLower": "subchunks[0].sampledDerivLower",
                 "sampledUpper": "subchunks[0].sampledDerivUpper",
+                "derivAnchorLower": "subchunks[0].derivAnchorLower",
+                "derivAnchorUpper": "subchunks[0].derivAnchorUpper",
+                "curvature": "subchunks[0].secondDerivativeSlope",
+            },
+            "decimalOnlyAnchorDiagnostics": {
+                "anchorDerivativeResidualLower": item.get(
+                    "anchorDerivativeResidualLower"
+                ),
+                "anchorDerivativeResidualUpper": item.get(
+                    "anchorDerivativeResidualUpper"
+                ),
+                "anchorDerivativeResidualAbsUpper": item.get(
+                    "anchorDerivativeResidualAbsUpper"
+                ),
+                "proofUseStatus": "diagnostic_decimal_only_not_Lean_payload",
             },
             "auditFlags": {
                 "secondDerivativeEnvelopePasses": item.get(
@@ -273,16 +313,8 @@ def audit_budget(
             },
             "legacyDiagnosticDerivSlope": format_fraction(legacy_deriv_slope),
             "legacyDiagnosticDerivSlopeDecimal": decimal_string(legacy_deriv_slope),
-            "sampledMatchesWorklist": {
-                "lower": sampled_lower == worklist_sampled_lower,
-                "upper": sampled_upper == worklist_sampled_upper,
-            },
             "exactBudget": budget,
-            "firstFailure": (
-                None
-                if budget["passes"]
-                else "STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL"
-            ),
+            "firstFailure": None if budget["passes"] else SOURCE_BUDGET_FAIL,
         }
     )
     return summary
@@ -294,107 +326,92 @@ def build_report(worklist_path: Path) -> dict[str, Any]:
     target = find_target_subchunk(worklist)
     norm_work = target.get("hResidualDerivNormWork") or {}
     anchor_work = norm_work.get("firstSubchunkAnchorEnvelopeWork") or {}
-    seeded = target.get("seededScalars") or {}
 
-    receiver = anchor_work.get("absoluteAnchorProofDataReceiver")
-    if not receiver:
-        raise ValueError("target subchunk missing absolute anchor receiver")
-
-    mesh = parse_fraction(anchor_work.get("mesh"))
-    sampled_lower = parse_fraction(seeded.get("derivLower"))
-    sampled_upper = parse_fraction(seeded.get("derivUpper"))
-    if mesh is None or sampled_lower is None or sampled_upper is None:
-        raise ValueError("target subchunk missing anchor mesh or derivative interval")
-
-    sources = [
-        audit_budget(
-            label,
-            path,
-            mesh=mesh,
-            worklist_sampled_lower=sampled_lower,
-            worklist_sampled_upper=sampled_upper,
+    if anchor_work.get("targetGap") != PAYLOAD_GAP:
+        raise ValueError(
+            f"expected targetGap {PAYLOAD_GAP!r}, found {anchor_work.get('targetGap')!r}"
         )
-        for label, path in AUDIT_SOURCES
-    ]
-    budget_passes = [
-        (((source.get("exactBudget") or {}).get("passes")) is True)
-        for source in sources
-    ]
-    any_budget_passes = any(budget_passes)
+    mesh = parse_fraction(anchor_work.get("mesh"))
+    if mesh is None:
+        raise ValueError("target subchunk missing anchor mesh")
+
+    sources = [audit_source(label, path, mesh=mesh) for label, path in AUDIT_SOURCES]
     all_present = all(source.get("exists") and source.get("subchunkFound") for source in sources)
+    any_budget_passes = any(((source.get("exactBudget") or {}).get("passes")) is True for source in sources)
+    any_candidate_constant_live = any(
+        ((source.get("exactBudget") or {}).get("routeDeathByCandidateConstants")) is False
+        for source in sources
+    )
 
     if any_budget_passes:
-        status = "unexpected_anchor_abs_second_deriv_budget_pass_review_required"
+        status = "unexpected_asymmetric_anchor_curvature_source_budget_pass_review_required"
         first_blocker = None
+    elif all_present and any_candidate_constant_live:
+        status = "asymmetric_anchor_curvature_current_v7_source_budget_fail_not_route_dead"
+        first_blocker = SOURCE_BUDGET_FAIL
     elif all_present:
-        status = "anchor_abs_second_deriv_budget_fail_from_current_derivative_audit_not_spendable"
-        first_blocker = "STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL"
+        status = "asymmetric_anchor_curvature_candidate_constants_fail_diagnostic_only"
+        first_blocker = SOURCE_BUDGET_FAIL
     else:
-        status = "anchor_abs_second_deriv_source_missing"
-        first_blocker = "STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_SOURCE_GAP"
+        status = "asymmetric_anchor_curvature_source_missing"
+        first_blocker = "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_GAP"
 
     return {
         "schema": OUTPUT_SCHEMA,
         "status": status,
         "meaning": (
-            "Fail-closed audit for the first-subchunk anchor-abs/second-deriv "
-            "receiver.  This checks exact rational budget arithmetic for the "
-            "current derivative_bound_audit.v7 source only."
+            "Fail-closed audit for the live first-subchunk asymmetric "
+            "anchor/curvature receiver.  This checks current derivative_bound_audit.v7 "
+            "candidate fields only and does not emit Lean proof data."
         ),
         "target": TARGET,
         "worklistSource": str(worklist_path),
         "worklistSchema": worklist.get("schema"),
-        "receiver": receiver,
-        "anchorWorkStatus": anchor_work.get("status"),
-        "anchorWorkTargetGap": anchor_work.get("targetGap"),
-        "routeDeathCondition": anchor_work.get("routeDeathCondition"),
+        "targetGap": PAYLOAD_GAP,
+        "firstBlocker": first_blocker,
+        "routeDeathCondition": CONSTANT_FAIL,
+        "routeDeathReached": False,
+        "routeDeathReachedReason": (
+            "not reached: current candidate zero-curvature asymmetric slack is "
+            "positive in the denom1e30 source, and these v7 fields are diagnostic "
+            "rather than proof-grade constants"
+        ),
+        "intervalReceiver": anchor_work.get("intervalReceiver"),
+        "proofDataReceiver": anchor_work.get("proofDataReceiver"),
         "cell": anchor_work.get("cell"),
         "mesh": format_fraction(mesh),
-        "worklistSampledDerivativeInterval": {
-            "derivLower": format_fraction(sampled_lower),
-            "derivLowerDecimal": decimal_string(sampled_lower),
-            "derivUpper": format_fraction(sampled_upper),
-            "derivUpperDecimal": decimal_string(sampled_upper),
-        },
         "requiredInputs": anchor_work.get("requiredInputs") or [],
         "sourceBudgets": sources,
-        "firstBlocker": first_blocker,
-        "leanKillTheorem": LEAN_KILL_THEOREM,
-        "leanKillTheoremMeaning": (
-            "The symmetric anchor-abs budget is impossible for the current "
-            "derivSampleRadius even with secondDerivSlope = 0.  This is a "
-            "kill theorem for the current symmetric source shape, not a "
-            "payload theorem and not a route kill for asymmetric anchors."
-        ),
         "proofSafeClosedFields": 0,
         "outLeanWritten": False,
         "guard": [
             "not Lean proof data",
             "does not emit a Lean payload theorem",
             "uses derivative_bound_audit.v7 only as diagnostic source inventory",
-            "does not claim |deriv residual 0| bound is proved",
-            "does not claim second-derivative envelope is proved",
-            "does not kill the checked anchor-envelope receiver",
-            "does not kill the asymmetric anchor/curvature route",
-            "does not kill direct residual or future cancellation-aware routes",
+            "rational derivAnchorLower/derivAnchorUpper fields are candidate intervals, not proof evidence",
+            "decimal-only anchorDerivativeResidual fields are diagnostics only",
+            "current secondDerivativeSlope field is too large for the asymmetric budget",
+            "does not kill the checked asymmetric anchor-envelope receiver",
+            "does not declare route death; route death requires proof-grade constants",
         ],
         "decision": (
-            "The current derivative_bound_audit.v7 source is not spendable for "
-            "the v21 anchor-abs/second-deriv payload.  Its second-derivative "
-            "slope makes both rational budget comparisons fail by many orders "
-            "of magnitude."
+            "The current v7 diagnostic source is not spendable for the live "
+            "asymmetric anchor/curvature payload.  The exact zero-curvature "
+            "slack is positive for the main source, so the route remains open; "
+            "the next proof object must provide proof-grade asymmetric anchor "
+            "bounds and a much sharper direct residual curvature bound."
         ),
         "nextRecommendedPatch": (
-            "Build a sharper proof-grade same-cell second-derivative envelope, "
-            "or replace this source with a cancellation-aware direct residual "
-            "payload; do not spend the current v7 diagnostic audit."
+            "Build a proof-grade generator for asymmetric anchor interval at 0 "
+            "and direct residual curvature on [0,1/10], targeting "
+            "STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP."
         ),
     }
 
 
 def markdown(report: dict[str, Any]) -> str:
     lines: list[str] = []
-    lines.append("# Step33A.1-A Sub0 Anchor-Abs Second-Deriv Payload Audit")
+    lines.append("# Step33A.1-A Sub0 Asymmetric Anchor-Curvature Audit")
     lines.append("")
     lines.append("Fail-closed skeleton.  This is not Lean proof data.")
     lines.append("")
@@ -402,45 +419,50 @@ def markdown(report: dict[str, Any]) -> str:
     lines.append("")
     lines.append(f"- schema: `{report['schema']}`")
     lines.append(f"- status: `{report['status']}`")
-    lines.append(f"- receiver: `{report['receiver']}`")
+    lines.append(f"- target gap: `{report['targetGap']}`")
+    lines.append(f"- first blocker: `{report['firstBlocker']}`")
+    lines.append(f"- route-death condition: `{report['routeDeathCondition']}`")
+    lines.append(f"- route death reached: `{report['routeDeathReached']}`")
+    lines.append(f"- receiver: `{report['proofDataReceiver']}`")
+    lines.append(f"- interval receiver: `{report['intervalReceiver']}`")
     lines.append(f"- cell: `{report['cell']}`")
     lines.append(f"- mesh: `{report['mesh']}`")
-    lines.append(f"- first blocker: `{report['firstBlocker']}`")
-    lines.append(f"- Lean kill theorem: `{report['leanKillTheorem']}`")
     lines.append(f"- proof-safe closed fields: `{report['proofSafeClosedFields']}`")
     lines.append(f"- Lean emitted: `{report['outLeanWritten']}`")
     lines.append("")
-    lines.append("## Worklist Derivative Interval")
+    lines.append(report["routeDeathReachedReason"])
     lines.append("")
-    interval = report["worklistSampledDerivativeInterval"]
-    lines.append(f"- sampled lower: `{interval['derivLower']}`")
-    lines.append(f"- sampled lower decimal: `{interval['derivLowerDecimal']}`")
-    lines.append(f"- sampled upper: `{interval['derivUpper']}`")
-    lines.append(f"- sampled upper decimal: `{interval['derivUpperDecimal']}`")
+    lines.append("## Required Inputs")
+    lines.append("")
+    for item in report["requiredInputs"]:
+        lines.append(f"- {item}")
     lines.append("")
     lines.append("## Exact Source Budgets")
     lines.append("")
     lines.append(
-        "| source | status | secondDerivSlope | upperRequired | sampledUpper | upperPasses | lowerRequired | sampledLower | lowerPasses | firstFailure |"
+        "| source | status | curvature | max allowed curvature | ratio | lower slack at 0 | upper slack at 0 | lowerPasses | upperPasses | route-death by candidate constants | firstFailure |"
     )
     lines.append(
-        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+        "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"
     )
     for source in report["sourceBudgets"]:
         budget = source.get("exactBudget") or {}
+        zero = budget.get("zeroCurvatureSlack") or {}
+        max_allowed = budget.get("maxAllowedCurvature") or {}
         lines.append(
             "| "
             + " | ".join(
                 [
                     f"`{source['label']}`",
                     f"`{source.get('status')}`",
-                    f"`{budget.get('secondDerivSlope')}`",
-                    f"`{budget.get('upperRequired')}`",
-                    f"`{budget.get('sampledUpper')}`",
-                    f"`{budget.get('upperPasses')}`",
-                    f"`{budget.get('lowerRequired')}`",
-                    f"`{budget.get('sampledLower')}`",
+                    f"`{budget.get('curvature')}`",
+                    f"`{max_allowed.get('minimum')}`",
+                    f"`{budget.get('curvatureToAllowedRatio')}`",
+                    f"`{zero.get('lower')}`",
+                    f"`{zero.get('upper')}`",
                     f"`{budget.get('lowerPasses')}`",
+                    f"`{budget.get('upperPasses')}`",
+                    f"`{budget.get('routeDeathByCandidateConstants')}`",
                     f"`{source.get('firstFailure')}`",
                 ]
             )
@@ -458,9 +480,22 @@ def markdown(report: dict[str, Any]) -> str:
         lines.append(f"- status: `{source.get('status')}`")
         lines.append(f"- proof use: `{source['proofUseStatus']}`")
         lines.append(
-            "- usable as anchor-abs/second-deriv payload: "
-            f"`{source['usableAsAnchorAbsSecondDerivPayload']}`"
+            f"- rational anchor fields: `{source['rationalAnchorFieldsStatus']}`"
         )
+        diagnostics = source.get("decimalOnlyAnchorDiagnostics") or {}
+        if diagnostics:
+            lines.append(
+                "- decimal anchor residual diagnostics: "
+                f"`{diagnostics.get('proofUseStatus')}`"
+            )
+            lines.append(
+                "- anchorDerivativeResidualLower: "
+                f"`{diagnostics.get('anchorDerivativeResidualLower')}`"
+            )
+            lines.append(
+                "- anchorDerivativeResidualUpper: "
+                f"`{diagnostics.get('anchorDerivativeResidualUpper')}`"
+            )
         flags = source.get("auditFlags") or {}
         if flags:
             lines.append(f"- sampled envelope passes: `{flags.get('sampledEnvelopePasses')}`")
@@ -475,21 +510,11 @@ def markdown(report: dict[str, Any]) -> str:
                 "- legacy diagnostic derivSlope: "
                 f"`{source.get('legacyDiagnosticDerivSlope')}`"
             )
-        matches = source.get("sampledMatchesWorklist") or {}
-        if matches:
-            lines.append(f"- sampled lower matches worklist: `{matches.get('lower')}`")
-            lines.append(f"- sampled upper matches worklist: `{matches.get('upper')}`")
         lines.append("")
     lines.append("## Guard")
     lines.append("")
     for item in report["guard"]:
         lines.append(f"- {item}")
-    lines.append("")
-    lines.append("## Lean Kill Theorem")
-    lines.append("")
-    lines.append(f"`{report['leanKillTheorem']}`")
-    lines.append("")
-    lines.append(report["leanKillTheoremMeaning"])
     lines.append("")
     lines.append("## Decision")
     lines.append("")
@@ -512,6 +537,15 @@ def main() -> None:
     report = build_report(args.worklist)
     args.out_json.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n")
     args.out_md.write_text(markdown(report), encoding="utf-8")
+
+    print(
+        "status={status} firstBlocker={blocker} routeDeathReached={route_death} out_json={out_json}".format(
+            status=report["status"],
+            blocker=report["firstBlocker"],
+            route_death=report["routeDeathReached"],
+            out_json=args.out_json,
+        )
+    )
 
 
 if __name__ == "__main__":

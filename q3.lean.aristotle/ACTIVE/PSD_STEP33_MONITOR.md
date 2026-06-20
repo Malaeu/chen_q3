@@ -29714,3 +29714,67 @@ make the constants impossible:
 ```text
 STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL
 ```
+
+## 2026-06-20 Current EOF Status -- asymmetric anchor-curvature source audit
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-envelope lane.
+
+Browser/Pro was used through the in-app browser as advisory route review only;
+it is not proof evidence.  The local worklist was advanced from v21 to v22 so
+the live first-subchunk adapter is now explicitly the asymmetric
+anchor/curvature receiver:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```
+
+New/generated artifacts:
+
+```text
+scripts/generate_step33_a1_sub0_asymmetric_anchor_curvature_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_asymmetric_anchor_curvature_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_asymmetric_anchor_curvature_payload.md
+```
+
+The generated schema is:
+
+```text
+q3_psdpd_step33_a1_sub0_asymmetric_anchor_curvature_payload.v1
+```
+
+The generated status is:
+
+```text
+asymmetric_anchor_curvature_current_v7_source_budget_fail_not_route_dead
+```
+
+Exact result for all three current v7 diagnostic sources:
+
+```text
+firstBlocker = STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_BUDGET_FAIL
+routeDeathReached = false
+```
+
+For the main `denom1e30` source, the current candidate max allowed curvature is
+
+```text
+279846042433/50000000000000000000000000000
+```
+
+while current `secondDerivativeSlope` is
+
+```text
+685968816833992725150437603/1000000000000000000000000000000
+```
+
+so the source curvature is about `1.2256e14` times too large.  The
+zero-curvature asymmetric slack is still positive, so this is not a route-death
+certificate.  Route death remains reserved for:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL
+```
+
+Next proof-producing patch: build proof-grade asymmetric anchor interval at
+`0` and direct residual curvature on `[0,1/10]`; do not spend the current v7
+diagnostic fields as Lean payload.

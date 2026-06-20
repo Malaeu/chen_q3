@@ -16781,3 +16781,47 @@ Route-death condition for that next target, not yet reached:
 ```text
 STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL
 ```
+
+## 2026-06-20 Current EOF Addendum -- asymmetric anchor-curvature v22 worklist
+
+The direct proof-input worklist is now schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22
+```
+
+The first-subchunk live target is:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```
+
+The old symmetric anchor-abs/second-deriv adapter is retained only as an
+inactive killed pattern via:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible
+```
+
+New fail-closed source audit:
+
+```text
+scripts/generate_step33_a1_sub0_asymmetric_anchor_curvature_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_asymmetric_anchor_curvature_payload.{json,md}
+```
+
+It records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_asymmetric_anchor_curvature_payload.v1
+status = asymmetric_anchor_curvature_current_v7_source_budget_fail_not_route_dead
+firstBlocker = STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_BUDGET_FAIL
+routeDeathReached = false
+```
+
+The exact main-source obstruction is that current `secondDerivativeSlope` is
+about `1.2256e14` times larger than the allowed asymmetric curvature budget.
+The zero-curvature asymmetric slack is positive, so the route is still live.
+
+Required next proof object: proof-grade asymmetric `derivAnchorLower` /
+`derivAnchorUpper` at `0` plus direct residual curvature on `[0,1/10]`.

@@ -57989,3 +57989,73 @@ Next live payload gap:
 ```text
 STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
 ```
+
+Validation addendum:
+
+```text
+python3 JSON assertion: worklist schema v22, old symmetric kill audit still fail-closed, asymmetric schema v1, firstBlocker STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_BUDGET_FAIL, routeDeathReached = false, proofSafeClosedFields = 0, outLeanWritten = false
+marker scan on touched scripts/generated artifacts: no sorry/admit/exact?
+git diff --check: clean
+Lean not rerun in this update because no Lean files were touched
+```
+
+## Execution Update (2026-06-20) -- asymmetric anchor-curvature source audit
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-envelope lane.
+
+Browser/Pro was used through the in-app browser as advisory only.  The proof
+evidence for this update is local generated exact rational arithmetic plus the
+existing Lean-checked receiver/kill theorem.
+
+Files touched:
+
+```text
+scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+scripts/generate_step33_a1_sub0_asymmetric_anchor_curvature_payload.py
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.{json,md}
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.{json,md}
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_asymmetric_anchor_curvature_payload.{json,md}
+ACTIVE/PSD_STEP33_MONITOR.md
+ACTIVE/requests/step33_bootstrap/node.md
+ACTIVE/requests/step33_bootstrap/report.md
+docs/INSIGHTS.md
+```
+
+Result:
+
+```text
+worklist schema = q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22
+asymmetric schema = q3_psdpd_step33_a1_sub0_asymmetric_anchor_curvature_payload.v1
+status = asymmetric_anchor_curvature_current_v7_source_budget_fail_not_route_dead
+firstBlocker = STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_BUDGET_FAIL
+routeDeathReached = false
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The current v7 diagnostic curvature is not spendable.  For the main
+`denom1e30` source, the exact max allowed curvature is
+`279846042433/50000000000000000000000000000`, while the current
+`secondDerivativeSlope` is
+`685968816833992725150437603/1000000000000000000000000000000`.
+
+Boundary: the checked asymmetric anchor-envelope receiver remains live.  This
+does not prove Step33A.1-A and does not emit Lean payload data.
+
+Commands run:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_asymmetric_anchor_curvature_payload.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_asymmetric_anchor_curvature_payload.py
+```
+
+Next live payload target:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```

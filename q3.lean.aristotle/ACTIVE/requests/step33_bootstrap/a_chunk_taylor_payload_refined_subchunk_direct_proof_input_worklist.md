@@ -4,7 +4,7 @@ Address-only worklist.  This is not Lean proof data.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21`
+- schema: `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22`
 - status: `direct_proof_input_worklist_address_only`
 - Lean landing surface: `RawOmegaAChunkTaylorPayload.CellSlopeDirectEnvelopeRefinedPayloadFin`
 - downstream Lean landing surface: `RawOmegaAChunkTaylorPayload.RefinedPayloadFin`
@@ -25,6 +25,8 @@ Address-only worklist.  This is not Lean proof data.
 - first-subchunk anchor-envelope interval receiver: `RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope`
 - first-subchunk anchor-envelope proof-data receiver: `RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope`
 - first-subchunk anchor-abs/second-deriv proof-data receiver: `RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope`
+- first-subchunk anchor-abs/second-deriv kill theorem: `primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible`
+- first-subchunk asymmetric route-death condition: `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL`
 - overlays: `2`
 - subchunks: `110`
 - hRawCenterCoeffAbs fields: `110`
@@ -61,7 +63,8 @@ Address-only worklist.  This is not Lean proof data.
 - `hResidualDerivLowerOnCell` / `hResidualDerivUpperOnCell`: cancellation-preserving direct residual-derivative interval bounds
 - preferred compact route: prove `hRawCenterCoeffAbs`, prove `ResidualDerivativeDirectNormCert.Valid`, prove `cellL = L` and `cellU = U`, then feed those directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_cert_full_cell`
 - interpolation route for `ResidualDerivativeDirectNormCert.Valid`: prove an exact model-derivative norm bound and exact interpolation/error bound on the same cell, prove their sum is at most `derivSlope`, then use `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
-- first-subchunk preferred anchor fallback: for `primary_finite` row `0`, parent `0`, subchunk `0`, prove `|deriv cert.residual 0| <= derivSampleRadius`, differentiability, a second-derivative envelope, and rational budget inequalities, then use `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope`
+- first-subchunk live anchor fallback: for `primary_finite` row `0`, parent `0`, subchunk `0`, prove `derivAnchorLower <= deriv cert.residual 0`, `deriv cert.residual 0 <= derivAnchorUpper`, differentiability, a direct residual curvature envelope, and rational asymmetric budget inequalities, then use `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope`
+- first-subchunk inactive symmetric fallback: the anchor-abs/second-deriv receiver is kept only as a killed pattern via `primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible`
 - shortcut compact derivative route: prove `hRawCenterCoeffAbs`, residual-derivative lower/upper bounds on `[L, U]`, and the two abs-slope comparisons, then feed them directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_interval_bounds_full_cell`
 - endpoint fallback compact route: use the endpoint full-cell direct-norm constructor when the payload already has direct endpoint component cert fields
 - lower-level fallback route: use the generic direct-norm constructor with an explicit cell-cover proof, or extract `hResidualDerivBoundOnCell` with `residualDerivBoundOnCell_of_directNormCert` and feed `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance`
@@ -74,7 +77,8 @@ Address-only worklist.  This is not Lean proof data.
 - generate cancellation-preserving residual-derivative lower/upper interval bounds
 - preferred compact route: generate one ResidualDerivativeDirectNormCert.Valid proof per direct subchunk
 - interpolation route: prove exact model-derivative norm and interpolation/error bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
-- first-subchunk preferred anchor fallback: for primary_finite row 0 parent 0 subchunk 0, prove the absolute anchor derivative radius, differentiability, second-derivative envelope, and two budget inequalities, then use the concrete anchor-abs/second-deriv adapter
+- first-subchunk live anchor fallback: for primary_finite row 0 parent 0 subchunk 0, prove asymmetric anchor lower/upper bounds at 0, differentiability, direct residual curvature, and two asymmetric budget inequalities, then use the concrete anchor-envelope adapter
+- first-subchunk inactive symmetric anchor-abs fallback: keep the receiver only as a killed pattern via primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible
 - feed hRawCenterCoeffAbs + DirectNormCert.Valid + cellL=L/cellU=U equalities into the raw-center full-cell direct-norm exact-integral constructor
 - shortcut compact route: feed hRawCenterCoeffAbs + residual-derivative lower/upper bounds + abs-slope comparisons into the raw-center interval-bounds full-cell direct-norm constructor
 - fallback: extract hResidualDerivBoundOnCell with residualDerivBoundOnCell_of_directNormCert
@@ -92,4 +96,6 @@ Address-only worklist.  This is not Lean proof data.
 - preferred cell-slope route may replace the two interval fields by one hResidualDerivBoundOnCell proof per direct subchunk
 - interpolation diagnostics are non-proof until model and error bounds are emitted as Lean-checked exact hypotheses
 - first-subchunk anchor-envelope adapters are concrete to subchunk 0 and must not be generalized across the worklist
+- current symmetric anchor-abs/second-deriv source remains dead and must not be emitted as payload
+- do not declare STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL unless proof-grade asymmetric constants make the route impossible
 - do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3

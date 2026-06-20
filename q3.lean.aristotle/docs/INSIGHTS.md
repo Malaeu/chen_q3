@@ -35983,3 +35983,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP`.
 - Route-death condition for that next gap, not yet reached:
   `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL`.
+
+## Insight (2026-06-20, Step33A.1-A) -- AsymmetricAnchorCurvatureSourceAudit
+
+- Used the in-app browser/Pro chat as advisory route review only; local
+  artifacts remain the source of proof status.
+- Advanced the direct proof-input worklist to
+  `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v22`.
+- The first-subchunk live target is now explicitly
+  `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP`.
+- The symmetric anchor-abs/second-deriv adapter is kept only as an inactive
+  killed pattern via
+  `primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible`.
+- Added
+  `scripts/generate_step33_a1_sub0_asymmetric_anchor_curvature_payload.py` and
+  generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_asymmetric_anchor_curvature_payload.{json,md}`.
+- The generated schema is
+  `q3_psdpd_step33_a1_sub0_asymmetric_anchor_curvature_payload.v1`; its status
+  is `asymmetric_anchor_curvature_current_v7_source_budget_fail_not_route_dead`.
+- First blocker for the current v7 sources:
+  `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_SOURCE_BUDGET_FAIL`.
+- For the main `denom1e30` source, max allowed curvature is exactly
+  `279846042433/50000000000000000000000000000`, while current
+  `secondDerivativeSlope` is exactly
+  `685968816833992725150437603/1000000000000000000000000000000`.
+- This is about `1.2256e14` too large, so current v7 curvature is not
+  spendable as payload.  The zero-curvature asymmetric slack is positive, so
+  `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL` is not reached.
+- Next proof object: proof-grade asymmetric anchor interval at `0` and direct
+  residual curvature on `[0,1/10]`; do not spend diagnostic v7 fields as Lean
+  payload.
+- Validation passed: py_compile for touched scripts, generator reruns, JSON
+  assertions for v22/v1 schemas and `routeDeathReached = false`, marker scan
+  on touched scripts/generated artifacts, and `git diff --check`.  Lean was
+  not rerun because no Lean file changed in this update.
