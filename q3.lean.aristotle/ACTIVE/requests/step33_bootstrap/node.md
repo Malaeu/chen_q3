@@ -15447,3 +15447,68 @@ whitespace check were clean.
 Boundary remains unchanged: this does not prove the weighted nonnegativity
 assumption, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Addendum -- shifted B14 half-cell algebra support
+
+Checked new support facts:
+
+```lean
+Q3.bernoulli14_one_sub
+Q3.bernoulli14Primitive
+Q3.bernoulli14Primitive_zero
+Q3.bernoulli14Primitive_half
+Q3.bernoulli14Primitive_one
+```
+
+These give the exact B14 symmetry and primitive endpoint zeros needed for the
+next half-cell/weighted-cancellation attempt.  They do not yet prove weighted
+nonnegativity.  No primitive derivative theorem was inserted; the direct
+`fun_prop` attempt failed on the `HasDerivAt` surface, so the patch kept only
+checked facts.
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Current next theorem shape:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : ℕ) :
+    0 ≤ ∫ x in (n : ℝ)..((n + 1 : ℕ) : ℝ),
+      Q3.bernoulli14Diff x /
+        ‖(x : ℂ) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+Possible preparatory lemma:
+
+```lean
+lemma bernoulli14Primitive_nonneg_on_Icc_zero_half
+    {t : ℝ} (ht0 : 0 ≤ t) (ht1 : t ≤ 1 / 2) :
+    0 ≤ bernoulli14Primitive t
+```
+
+but this is not sufficient alone; the actual missing bridge is the half-cell
+rearrangement/weighted kernel comparison for the z0 kernel.
+
+Computer Use / Browser status: used.  The accessible in-app browser was at
+ChatGPT login, and Chrome DevTools had no attachable Chrome session, so no
+fresh Pro/Louise answer was available during this patch.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary remains unchanged: this does not prove the weighted nonnegativity
+assumption, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

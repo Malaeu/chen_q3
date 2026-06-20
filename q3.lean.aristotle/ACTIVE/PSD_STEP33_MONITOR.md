@@ -27890,6 +27890,71 @@ whitespace check were clean.
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## 2026-06-20 Step33A.1-A shifted B14 half-cell algebra support
+
+Latest checked algebraic support in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli14_one_sub
+Q3.bernoulli14Primitive
+Q3.bernoulli14Primitive_zero
+Q3.bernoulli14Primitive_half
+Q3.bernoulli14Primitive_one
+```
+
+This records the exact B14 symmetry and the zero endpoints of the
+repository-normalized B14 primitive at `0`, `1 / 2`, and `1`.  The attempted
+primitive derivative lemma was not inserted: `fun_prop` does not solve this
+`HasDerivAt` surface directly, and the current patch keeps only checked facts.
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Patch-sized next Lean theorem:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : ℕ) :
+    0 ≤ ∫ x in (n : ℝ)..((n + 1 : ℕ) : ℝ),
+      Q3.bernoulli14Diff x /
+        ‖(x : ℂ) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+Smaller preparatory option:
+
+```lean
+lemma bernoulli14Primitive_nonneg_on_Icc_zero_half
+    {t : ℝ} (ht0 : 0 ≤ t) (ht1 : t ≤ 1 / 2) :
+    0 ≤ bernoulli14Primitive t
+```
+
+but this alone is not enough; the missing proof is the half-cell
+rearrangement/weighted cancellation that converts B14 symmetry plus the kernel
+shape into the required cellwise nonnegativity.
+
+Browser/Pro note: Computer Use was used again.  The accessible in-app browser
+session was at ChatGPT login, and Chrome DevTools had no attachable Chrome
+session, so no fresh Pro/Louise response was available for this patch.
+
+Validation:
+
+```bash
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove the weighted nonnegativity assumption,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Step33A.1-A shifted B14 weighted bridge checked
 
 Computer Use / Browser was used at the real route fork and the Pro/Louise

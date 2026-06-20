@@ -634,6 +634,33 @@ lemma bernoulli14_eq_seven_six_sub_factor (x : ℝ) :
   dsimp [bernoulli14]
   ring
 
+lemma bernoulli14_one_sub (x : ℝ) :
+    bernoulli14 (1 - x) = bernoulli14 x := by
+  dsimp [bernoulli14]
+  ring
+
+/-- Antiderivative of the repository-normalized `B14` polynomial, normalized
+to vanish at `0`.  This is the algebraic surface needed by the remaining
+half-cell/weighted-cancellation route. -/
+def bernoulli14Primitive (x : ℝ) : ℝ :=
+  (7 / 6 : ℝ) * x - (691 / 90 : ℝ) * x ^ 3 +
+    (91 / 6 : ℝ) * x ^ 5 - (143 / 10 : ℝ) * x ^ 7 +
+    (143 / 18 : ℝ) * x ^ 9 - (91 / 30 : ℝ) * x ^ 11 +
+    (7 / 6 : ℝ) * x ^ 13 - (1 / 2 : ℝ) * x ^ 14 +
+    (1 / 15 : ℝ) * x ^ 15
+
+lemma bernoulli14Primitive_zero :
+    bernoulli14Primitive 0 = 0 := by
+  norm_num [bernoulli14Primitive]
+
+lemma bernoulli14Primitive_half :
+    bernoulli14Primitive (1 / 2 : ℝ) = 0 := by
+  norm_num [bernoulli14Primitive]
+
+lemma bernoulli14Primitive_one :
+    bernoulli14Primitive 1 = 0 := by
+  norm_num [bernoulli14Primitive]
+
 lemma bernoulli14Diff_le_seven_six (x : ℝ) :
     bernoulli14Diff x ≤ (7 / 6 : ℝ) := by
   set y : ℝ := Int.fract x

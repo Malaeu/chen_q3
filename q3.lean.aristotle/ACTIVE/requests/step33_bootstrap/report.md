@@ -55882,3 +55882,86 @@ whitespace check were clean.
 Boundary: this does not prove `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Execution Update (2026-06-20) — shifted B14 half-cell algebra support
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/DigammaRemainder.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.bernoulli14_one_sub
+Q3.bernoulli14Primitive
+Q3.bernoulli14Primitive_zero
+Q3.bernoulli14Primitive_half
+Q3.bernoulli14Primitive_one
+```
+
+Meaning:
+
+```text
+The repository-normalized B14 polynomial is symmetric under x ↦ 1 - x,
+and the explicit primitive vanishes at 0, 1/2, and 1.
+```
+
+The derivative theorem for `bernoulli14Primitive` was not added in this patch:
+the direct `fun_prop` surface did not close, and no unproved derivative lemma
+was left in the tree.
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem shape:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : ℕ) :
+    0 ≤ ∫ x in (n : ℝ)..((n + 1 : ℕ) : ℝ),
+      Q3.bernoulli14Diff x /
+        ‖(x : ℂ) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+This should then be summed over cells to close the scalar weighted
+nonnegativity premise required by:
+
+```lean
+Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg
+Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
+```
+
+Computer Use / Browser status:
+
+```text
+Used.  The accessible in-app Playwright browser was at ChatGPT login, and
+Chrome DevTools had no attachable Chrome session, so no fresh Pro/Louise answer
+was available for this patch.  Earlier Pro/Louise text remains advisory only.
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

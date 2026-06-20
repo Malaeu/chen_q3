@@ -34995,3 +34995,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove the weighted nonnegativity assumption,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14HalfCellAlgebraSupport
+
+- Computer Use / Browser was used again at the M6 weighted-nonnegativity fork.
+  The accessible in-app Playwright browser was at ChatGPT login, and Chrome
+  DevTools had no attachable Chrome session, so no fresh Pro/Louise answer was
+  available.  Earlier Pro/Louise text remains advisory only.
+- Added checked Lean facts in `Q3/DigammaRemainder.lean`:
+  `Q3.bernoulli14_one_sub`, `Q3.bernoulli14Primitive`,
+  `Q3.bernoulli14Primitive_zero`, `Q3.bernoulli14Primitive_half`, and
+  `Q3.bernoulli14Primitive_one`.
+- Meaning: the repository-normalized B14 polynomial is symmetric under
+  `x ↦ 1 - x`, and the explicit primitive vanishes at `0`, `1 / 2`, and `1`.
+- The primitive derivative theorem was intentionally not inserted.  The direct
+  `fun_prop` surface did not close for `HasDerivAt bernoulli14Primitive
+  (bernoulli14 x) x`, and leaving it unproved would be a fake bridge.
+- Active exact blocker:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- Next patch-sized theorem shape:
+  `step33_shift16_b14diff_weighted_kernel_cell_nonneg (n : Nat) :
+  0 ≤ ∫ x in (n : Real)..((n + 1 : Nat) : Real),
+    Q3.bernoulli14Diff x /
+      ‖(x : Complex) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15`.
+- Smaller preparatory theorem:
+  `bernoulli14Primitive_nonneg_on_Icc_zero_half`, but this is not enough alone;
+  the missing bridge is the half-cell rearrangement/weighted kernel comparison
+  that converts symmetry plus z0 kernel shape into cellwise nonnegativity.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Boundary: this does not prove `hweighted`,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
