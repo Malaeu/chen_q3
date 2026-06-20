@@ -53155,3 +53155,80 @@ Next proof object:
   n=4,...,15 or build the finite table theorem consumed by the existing
   Fin 16 payload receiver.
 ```
+
+## 2026-06-20 Execution update -- n=4 M6 step-defect interval closed
+
+Extended the finite-telescope defect route by one more term while also reducing
+future duplication.  The support file now has general checked point-shift
+helpers:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_normSq_eq
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_norm_eq_sqrt
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_nat_arg_eq_arctan
+```
+
+The fifth checked component interval is:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n4_component_interval
+```
+
+It proves:
+
+```lean
+(((-39 : Real) / ((10 : Real) ^ 25) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (4 : Complex))).re ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (4 : Complex))).re <=
+    (-38 : Real) / ((10 : Real) ^ 25)) ∧
+ ((39 : Real) / ((10 : Real) ^ 27) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (4 : Complex))).im ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (4 : Complex))).im <=
+    (40 : Real) / ((10 : Real) ^ 27)))
+```
+
+The real log-step bound uses `Real.abs_log_sub_add_sum_range_le` on
+`log(1 + 117600/2102501)`.  The imaginary log-step bound uses the generic
+arctan error helper for ratios `1/1490` and `1/1450`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes n=0, n=1, n=2, n=3, and n=4 only.
+It still does not produce:
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+
+Current exact source gap:
+  STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP
+
+Remaining local inputs:
+  checked defect intervals for n=5,...,15, preferably generated through the
+  accepted add_nat norm/arg helpers, plus the separate shift/source input
+  required by the existing N16 payload receiver.
+```

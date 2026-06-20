@@ -33724,3 +33724,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now reduced
   to checked intervals for `n=4,...,15` or a finite table theorem feeding the
   existing `Fin 16` receiver.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN4IntervalClosed
+
+- Added checked reusable shift helpers
+  `step33Shift16DigammaPoint_add_nat_normSq_eq`,
+  `step33Shift16DigammaPoint_add_nat_norm_eq_sqrt`, and
+  `step33Shift16DigammaPoint_add_nat_arg_eq_arctan`.  These give the exact
+  norm and principal-branch arctan shape for
+  `step33Shift16DigammaPoint + (n : Complex)`.
+- Added Lean-checked no-premise theorem
+  `step33_shift16_m6_step_defect_n4_component_interval`.
+  It proves `[-39,-38]/10^25` for the real part and `[39,40]/10^27` for the
+  imaginary part of
+  `Q3.digammaM6StepDefect (step33Shift16DigammaPoint + (4 : Complex))`.
+- The real step uses `Real.abs_log_sub_add_sum_range_le` on
+  `log(1 + 117600/2102501)`, and the imaginary step uses the generic arctan
+  helper for ratios `1/1490` and `1/1450`.
+- Boundary: this closes only `n=0,1,2,3,4`.  The payload remains open; the
+  exact source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now
+  reduced to checked intervals for `n=5,...,15` plus the separate shift/source
+  input required by the existing N16 payload receiver.
