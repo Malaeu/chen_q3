@@ -33592,3 +33592,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove the no-premise series/source theorem.  It
   removes the naming/normalization gap so a future proof-grade component source
   can feed endpoint/hRaw directly.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6PayloadToPublicComponentSourceChecked
+
+- Added Lean-checked adapters from the existing finite-telescope payload
+  structures to the public component source shape:
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_scalar_payload`
+  and
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_term_payload`.
+- These theorems prove the two `1e-22` component bounds for
+  `Q3.digamma step33Shift16DigammaPoint -
+  Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint` from a checked
+  `Step33Shift16M6FiniteTelescopeScalarPayload` or
+  `Step33Shift16M6FiniteTelescopeTermPayload`.
+- Validation passed with `lake env lean` and `bash scripts/q3_check.sh` on
+  `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`; a forbidden-marker
+  scan and `git diff --check` were clean.
+- Boundary: the payload itself is still missing.  The current exact source gap
+  is now a no-premise, hole-free theorem producing
+  `Step33Shift16M6FiniteTelescopeTermPayload`, preferably through the checked
+  high-order/shift48 or shifted-remainder component receivers.

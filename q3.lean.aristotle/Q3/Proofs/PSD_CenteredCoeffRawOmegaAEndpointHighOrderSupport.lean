@@ -2851,6 +2851,39 @@ theorem step33_shift16_digamma_m6_main_component_abs_of_norm
       (Q3.digamma step33Shift16DigammaPoint -
         step33Shift16DigammaM6Main)).trans hMain
 
+theorem step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_scalar_payload
+    (payload : Step33Shift16M6FiniteTelescopeScalarPayload) :
+    |(Q3.digamma step33Shift16DigammaPoint -
+        Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint).re| <=
+        step33Shift16DigammaM6MainComponentRadius ∧
+      |(Q3.digamma step33Shift16DigammaPoint -
+        Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint).im| <=
+        step33Shift16DigammaM6MainComponentRadius := by
+  have hMain :
+      ‖Q3.digamma step33Shift16DigammaPoint -
+          step33Shift16DigammaM6Main‖ <=
+        step33Shift16DigammaM6MainComponentRadius :=
+    step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
+      (step33_shift16_digamma_m6_re_first_omitted_term_bound_of_finite_telescope_scalar_payload
+        payload)
+  have hComp := step33_shift16_digamma_m6_main_component_abs_of_norm hMain
+  constructor
+  · simpa [step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain] using
+      hComp.1
+  · simpa [step33Shift16DigammaM6Main_eq_digammaM6AsymptoticMain] using
+      hComp.2
+
+theorem step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_term_payload
+    (payload : Step33Shift16M6FiniteTelescopeTermPayload) :
+    |(Q3.digamma step33Shift16DigammaPoint -
+        Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint).re| <=
+        step33Shift16DigammaM6MainComponentRadius ∧
+      |(Q3.digamma step33Shift16DigammaPoint -
+        Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint).im| <=
+        step33Shift16DigammaM6MainComponentRadius :=
+  step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_scalar_payload
+    payload.toScalarPayload
+
 theorem step33_shift16_digamma_fixed_complex_ball_of_m6_component_abs
     (mainReErr mainImErr centerReErr centerImErr : Real)
     (hMainRe :

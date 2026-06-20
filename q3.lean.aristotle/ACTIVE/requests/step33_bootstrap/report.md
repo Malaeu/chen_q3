@@ -52712,3 +52712,64 @@ It closes only the naming/normalization bridge from
   Q3.digammaM6AsymptoticMain
 to the existing Step33 endpoint/hRaw component receivers.
 ```
+
+## 2026-06-20 Execution update -- finite-telescope payload feeds public component source
+
+Added checked support adapters:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_scalar_payload
+
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_asymptotic_main_component_abs_of_finite_telescope_term_payload
+```
+
+They prove the public component source shape:
+
+```lean
+|(Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+    Q3.digammaM6AsymptoticMain
+      Q3.PSDpd.Step33.step33Shift16DigammaPoint).re| <=
+  Q3.PSDpd.Step33.step33Shift16DigammaM6MainComponentRadius
+∧
+|(Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+    Q3.digammaM6AsymptoticMain
+      Q3.PSDpd.Step33.step33Shift16DigammaPoint).im| <=
+  Q3.PSDpd.Step33.step33Shift16DigammaM6MainComponentRadius
+```
+
+from either:
+
+```lean
+Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeScalarPayload
+Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+```
+
+Boundary:
+
+```text
+This still does not produce the payload.
+The current exact source gap is now:
+  prove a no-premise, hole-free theorem producing
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload,
+then the public component source and endpoint/hRaw receivers are checked.
+```
