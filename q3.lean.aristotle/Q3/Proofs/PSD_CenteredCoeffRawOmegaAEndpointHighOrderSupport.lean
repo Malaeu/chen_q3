@@ -384,6 +384,62 @@ theorem step33Shift16Z0KernelPow15Deriv_monotoneOn_Ici_zero :
     rw [interior_Ici] at hx
     exact step33Shift16Z0KernelPow15Deriv_deriv_nonneg_of_nonneg (le_of_lt hx)
 
+def step33Shift16Z0KernelPow15Pair (n : Nat) (t : Real) : Real :=
+  step33Shift16Z0KernelPow15 ((n : Real) + t) +
+    step33Shift16Z0KernelPow15 ((n : Real) + 1 - t)
+
+theorem step33Shift16Z0KernelPow15Pair_hasDerivAt
+    (n : Nat) (t : Real) :
+    HasDerivAt (step33Shift16Z0KernelPow15Pair n)
+      (step33Shift16Z0KernelPow15Deriv ((n : Real) + t) -
+        step33Shift16Z0KernelPow15Deriv ((n : Real) + 1 - t)) t := by
+  have hleft_inner : HasDerivAt (fun u : Real => (n : Real) + u) 1 t := by
+    simpa [add_comm] using (hasDerivAt_id t).const_add (n : Real)
+  have hleft :=
+    (step33Shift16Z0KernelPow15_hasDerivAt ((n : Real) + t)).comp t hleft_inner
+  have hright_inner :
+      HasDerivAt (fun u : Real => (n : Real) + 1 - u) (-1) t := by
+    simpa using (hasDerivAt_id t).const_sub ((n : Real) + 1)
+  have hright :=
+    (step33Shift16Z0KernelPow15_hasDerivAt ((n : Real) + 1 - t)).comp t
+      hright_inner
+  have h := hleft.add hright
+  simpa [step33Shift16Z0KernelPow15Pair, step33Shift16Z0KernelPow15Deriv,
+    sub_eq_add_neg, mul_assoc] using h
+
+theorem step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half
+    (n : Nat) {t : Real} (ht0 : 0 <= t) (hth : t <= 1 / 2) :
+    deriv (step33Shift16Z0KernelPow15Pair n) t <= 0 := by
+  rw [(step33Shift16Z0KernelPow15Pair_hasDerivAt n t).deriv]
+  have hn0 : (0 : Real) <= (n : Real) := Nat.cast_nonneg n
+  have hleft_mem : (n : Real) + t ∈ Set.Ici (0 : Real) := by
+    exact add_nonneg hn0 ht0
+  have hone_sub : 0 <= (1 : Real) - t := by
+    nlinarith [hth]
+  have hright_mem : (n : Real) + 1 - t ∈ Set.Ici (0 : Real) := by
+    have hbase : 0 <= (n : Real) + ((1 : Real) - t) :=
+      add_nonneg hn0 hone_sub
+    simpa [sub_eq_add_neg, add_assoc, add_left_comm, add_comm] using hbase
+  have hle : (n : Real) + t <= (n : Real) + 1 - t := by
+    nlinarith [hth]
+  have hmono :=
+    step33Shift16Z0KernelPow15Deriv_monotoneOn_Ici_zero hleft_mem hright_mem hle
+  exact sub_nonpos.mpr hmono
+
+theorem step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half
+    (n : Nat) :
+    AntitoneOn (step33Shift16Z0KernelPow15Pair n)
+      (Set.Icc (0 : Real) (1 / 2)) := by
+  refine antitoneOn_of_deriv_nonpos (convex_Icc (0 : Real) (1 / 2)) ?hcont ?hdiff ?hderiv
+  · intro x _hx
+    exact ((step33Shift16Z0KernelPow15Pair_hasDerivAt n x).differentiableAt.continuousAt).continuousWithinAt
+  · intro x _hx
+    exact ((step33Shift16Z0KernelPow15Pair_hasDerivAt n x).differentiableAt).differentiableWithinAt
+  · intro x hx
+    rw [interior_Icc] at hx
+    exact step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half n
+      (le_of_lt hx.1) (le_of_lt hx.2)
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by

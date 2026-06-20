@@ -28511,3 +28511,53 @@ Boundary: this does not prove paired-kernel antitonicity, the half-cell
 rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- shifted B14 z0 paired-kernel antitonicity
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_PAIR_ANTITONE_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Meaning: Lean now proves that the z0 paired scalar kernel
+`t |-> K(n + t) + K(n + 1 - t)` is antitone on `Set.Icc 0 (1 / 2)`.
+This is the calculus half-cell kernel input needed for the B14 primitive
+integration-by-parts route.
+
+Local search status: `q3_docs` did not expose a ready theorem for the weighted
+half-cell bridge.  The current local proof chain is assembled from the checked
+B14 primitive sign, z0 norm/kernal algebra, derivative monotonicity, and this
+paired-kernel antitonicity.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove the half-cell rearrangement/integration-by-parts
+comparison, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

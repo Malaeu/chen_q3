@@ -35094,6 +35094,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0PairedKernelAntitonicity
+
+- Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by adding the
+  checked half-cell antitonicity theorem for the z0 paired scalar kernel.
+- Local `q3_docs` searches did not expose a ready weighted half-cell theorem.
+  The proof was built directly from checked z0 derivative monotonicity and the
+  monotonicity API (`antitoneOn_of_deriv_nonpos` / derivative sign).
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair`,
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_hasDerivAt`,
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half`,
+  and
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half`.
+- Meaning: Lean now proves
+  `t |-> K(n + t) + K(n + 1 - t)` is antitone on `Set.Icc 0 (1 / 2)`.
+- Closed preparatory gap:
+  `STEP33_M6_B14_Z0_KERNEL_PAIR_ANTITONE_GAP`.
+- Active exact gap remains:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- Next patch-sized theorem: combine
+  `Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half` with
+  `step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half` in the cellwise
+  integration-by-parts / rearrangement bridge that yields the same-target
+  weighted nonnegativity assumption `hweighted`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  the touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove weighted cell nonnegativity, `hweighted`,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0KernelDerivativeMonotonicity
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by turning the

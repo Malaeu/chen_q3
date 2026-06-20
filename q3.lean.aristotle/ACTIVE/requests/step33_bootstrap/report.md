@@ -55961,6 +55961,63 @@ rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Execution Update (2026-06-20) -- z0 paired-kernel antitonicity
+
+Route: PSD-pd/Q3 Step33A.1-A M6 shifted B14 half-cell support route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_PAIR_ANTITONE_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Local search status: no ready weighted half-cell theorem was found in
+`q3_docs`; the proof proceeded by direct Lean calculus from the previously
+checked z0 kernel derivative monotonicity.  External mathlib documentation was
+used only to confirm API shape for derivative-to-monotonicity lemmas.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove the half-cell rearrangement/integration-by-parts
+comparison, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Execution Update (2026-06-20) -- z0 kernel derivative monotonicity
 
 Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
