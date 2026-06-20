@@ -36766,3 +36766,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact blockers:
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP` and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16SeriesMajorantReceiver
+
+- Added and Lean-checked
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_of_term_majorant`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_majorant_checked_smooth`
+  in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- The new receiver turns a generated summable term majorant
+  `|omegaPrimeOrder16SeriesTerm eta n| <= g eta n` with
+  `Summable (g eta)` and `(∑' n, g eta n) <= B` into the existing
+  `|omegaPrimeOrder16Series eta| <= B` order-16 interface.
+- This is a strict reduction inside the direct analytic route selected by the
+  Browser/Proshka review.  It is not a proof of the termwise
+  `iteratedDeriv16`/`tsum` interchange and not the concrete majorant payload.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  and hole scan.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_SERIES_MAJORANT_PAYLOAD_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.

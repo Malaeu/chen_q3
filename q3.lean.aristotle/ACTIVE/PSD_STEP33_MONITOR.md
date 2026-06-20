@@ -30998,3 +30998,62 @@ Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
 proof-grade `tsum` bound, no center-jet payload, no exact rational remainder
 budget, no generated Lean payload, no first-subchunk residual-derivative norm
 certificate, no A hbox, and no Step33A.1-A closure exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 series majorant receiver
+
+The direct analytic route remains active.  Browser/Proshka advice was used only
+as route review; proof status below is local Lean status.
+
+Extended the OmegaPrime order-16 receiver in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_of_term_majorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_majorant_checked_smooth
+```
+
+Result:
+
+```text
+for each eta in [0, 1/10],
+  Summable (g eta)
+  and |omegaPrimeOrder16SeriesTerm eta n| <= g eta n
+  and tsum (g eta) <= B
+  -> |omegaPrimeOrder16Series eta| <= B
+
+then the existing factor-budget and hDerivEq receiver gives data.Valid once
+centerJet and remainderBudget are also supplied.
+```
+
+This closes the Lean plumbing from a generated summable term majorant to the
+previous `hSeriesAbs` interface.  It does not prove the termwise
+`iteratedDeriv16`/`tsum` identity and does not provide the concrete majorant
+payload.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_SERIES_MAJORANT_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
+concrete summable majorant payload, no center-jet payload, no exact rational
+remainder budget, no generated Lean payload, no first-subchunk
+residual-derivative norm certificate, no A hbox, and no Step33A.1-A closure
+exists yet.

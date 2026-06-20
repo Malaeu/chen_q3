@@ -59637,3 +59637,60 @@ git diff --check
 
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 series majorant receiver
+
+Extended the order-16 OmegaPrime receiver with a generated-facing term
+majorant surface in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_of_term_majorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_majorant_checked_smooth
+```
+
+The new surface proves:
+
+```text
+Summable (g eta)
++ |omegaPrimeOrder16SeriesTerm eta n| <= g eta n
++ tsum (g eta) <= B
+  -> |omegaPrimeOrder16Series eta| <= B
+
+and therefore, with the existing factor-budget receiver:
+
+term majorant payload
++ hDerivEq
++ centerJet
++ remainderBudget
+  -> data.Valid.
+```
+
+This is checked Lean plumbing only.  It does not prove the derivative/series
+identity, does not construct the actual `g`, and does not close the
+OmegaPrime order-16 payload.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_SERIES_MAJORANT_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
+Step33/Step34/RH claim.
