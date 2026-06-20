@@ -1234,6 +1234,28 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRaw
       (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_zero
         ((1 : Real) / 10) 0)
 
+/-- First-subchunk interval fallback after the checked raw-center source has
+been closed.
+
+The remaining payload is exactly the two-sided residual-derivative interval
+on the full cell.  This is the legacy fallback companion to the preferred
+direct-norm receiver below. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interval_bounds
+    (hDerivLower :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+          deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta)
+    (hDerivUpper :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta <=
+          ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :=
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_interval_bounds
+    primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+    hDerivLower
+    hDerivUpper
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 

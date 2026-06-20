@@ -174,6 +174,13 @@ is recorded both at the top-level worklist summary and inside each
 `status = direct_proof_input_worklist_address_only`,
 `preferred_open = 220`, and `proofSafeClosedFields = 0`.
 
+Current first-subchunk fallback narrowing on 2026-06-20:
+`PSD_CenteredCoeffRawOmegaAHRawLanding.lean` now has
+`primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interval_bounds`.
+This is a checked receiver only: it removes the already closed raw-center
+input from the first-subchunk interval fallback, but the actual derivative
+lower/upper payload remains open.
+
 `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean` now proves reusable
 continuity/integrability lemmas and closed-form Taylor model integral
 evaluators.  The current generator constructors are:

@@ -56966,6 +56966,64 @@ git diff --check
 Boundary: worklist synchronization only.  No generated Lean payload, no
 derivative analytic closure, no Step33 closure, and no RH claim.
 
+## Execution Update (2026-06-20) -- first-subchunk checked raw-center interval fallback
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk receiver narrowing.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean receiver added:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interval_bounds
+```
+
+Meaning: the legacy interval fallback for the first subchunk no longer exposes
+`hRawCenterCoeffAbs` as a payload input.  It uses the checked raw-center source
+internally, so the remaining fallback payload is exactly:
+
+```lean
+hDerivLower :
+  ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+    ((-94119513411 : Real) / 500000000000000000000000000000) <=
+      deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta
+
+hDerivUpper :
+  ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+    deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta <=
+      ((1866608532757 : Real) / 500000000000000000000000000000)
+```
+
+This complements the preferred direct-norm receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+```
+
+Search synthesis: local `q3_docs` search returned interpolation/probe material
+and historical hat-interpolation files, but no checked first-subchunk
+residual-derivative payload.  Mathlib has mean-value/Taylor infrastructure,
+but that is only route infrastructure, not Q3 proof evidence.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+```
+
+Boundary: receiver narrowing only.  No derivative lower/upper payload, no
+direct-norm payload, no generated refined row, no A hbox, no Step33 closure,
+and no RH claim.
+
 ## Execution Update (2026-06-20) -- direct proof-input worklist v19
 
 Route: PSD-pd/Q3 Step33A.1-A fail-closed proof-input control plane.

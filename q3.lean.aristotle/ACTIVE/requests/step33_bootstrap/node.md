@@ -16311,3 +16311,30 @@ proofSafeClosedFields = 0
 This is the current proof-producing address for the first derivative payload:
 emit a Lean-checked model derivative norm bound and interpolation/error bound
 on the same cell, then feed them through the local receiver above.
+
+## 2026-06-20 Current EOF Addendum -- first-subchunk checked interval fallback
+
+Checked first-subchunk interval fallback receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interval_bounds
+```
+
+It is the legacy derivative-interval companion to the preferred direct-norm
+receiver.  It uses the already checked raw-center theorem internally and leaves
+only the two derivative interval payload fields:
+
+```text
+hDerivLower on [0, 1/10]
+hDerivUpper on [0, 1/10]
+```
+
+Active proof-producing choice is now exact:
+
+```text
+preferred: prove hResidualDerivBoundOnCell directly, or via
+  ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound;
+fallback: prove hDerivLower/hDerivUpper and use the checked interval receiver.
+```
+
+No sampled JSON/audit candidate is promoted to proof.

@@ -35581,3 +35581,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: address synchronization only.  It does not emit Lean payload, does
   not close any derivative analytic field, and does not prove Step33A.1-A,
   Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- FirstSubchunkCheckedIntervalFallback
+
+- Added checked Lean receiver in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interval_bounds`.
+- The theorem is first-subchunk-only and intentionally not added as a generic
+  110-subchunk worklist constructor.  It packages the already checked
+  `hRawCenterCoeffAbs` source into the legacy interval fallback.
+- The remaining fallback payload is exactly the two derivative interval fields
+  on `[0, 1/10]`: `hDerivLower` and `hDerivUpper`.  The preferred payload
+  remains the direct norm route, optionally via
+  `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`.
+- Local `q3_docs` search found interpolation/probe guidance and old
+  hat-interpolation material, but no checked residual-derivative payload.
+  External mathlib docs confirm only general mean-value/Taylor infrastructure,
+  not Q3 proof evidence.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean` and
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`.
+- Boundary: receiver narrowing only.  It does not prove derivative
+  lower/upper bounds, direct norm bound, a generated refined row,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
