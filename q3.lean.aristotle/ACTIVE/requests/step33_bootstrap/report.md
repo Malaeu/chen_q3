@@ -53985,6 +53985,46 @@ git diff --check
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B6 digamma prefix checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digamma_stieltjes_B6Diff_Ioi_raw
+Q3.digamma_stieltjes_B6Diff_Ioi_mainPrefix
+```
+
+Checked normalized prefix:
+
+```lean
+Q3.digamma z -
+  (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+    (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+    (1 / 120 : ℂ) * (z ^ 4)⁻¹ -
+    (1 / 252 : ℂ) * (z ^ 6)⁻¹)
+=
+  ∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_DIGAMMA_PREFIX_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_CELL_LAYER_GAP
+```
+
+Meaning: add the B8 polynomial/periodic kernel/cell layer needed for the next
+one-order Euler-Maclaurin lift from B6/power-7 to B8/power-9.
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B4 digamma remainder prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

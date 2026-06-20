@@ -26790,6 +26790,33 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B6 digamma prefix checked
+
+Added the checked B6/power-7 digamma prefix in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digamma_stieltjes_B6Diff_Ioi_raw
+Q3.digamma_stieltjes_B6Diff_Ioi_mainPrefix
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_DIGAMMA_PREFIX_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_CELL_LAYER_GAP
+```
+
+Meaning: create the next periodic Bernoulli kernel/cell layer for the
+one-order lift from the checked B6/power-7 digamma prefix toward B8/power-9.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B4-to-B6 Ioi tail bridge checked
 
 Added the checked global tail bridge in `Q3.DigammaRemainder`:

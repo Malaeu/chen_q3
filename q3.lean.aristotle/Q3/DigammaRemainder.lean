@@ -4590,6 +4590,56 @@ lemma digamma_stieltjes_B4Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
         (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
   simpa [inv_pow] using digamma_stieltjes_B4Diff_Ioi_raw z hz
 
+lemma digamma_stieltjes_B6Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+          (1 / 252 : ℂ) * (z⁻¹) ^ 6) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7 := by
+  let I4 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+  let I6 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+  let A : ℂ :=
+    Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+      (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+      (1 / 120 : ℂ) * (z⁻¹) ^ 4
+  have hB4 : Q3.digamma z - A = I4 := by
+    simpa [A, I4] using digamma_stieltjes_B4Diff_Ioi_raw z hz
+  have hbridge : I4 = -(1 / 252 : ℂ) * (z⁻¹) ^ 6 + I6 := by
+    have h := stieltjes_B4Diff_to_B6Diff_Ioi_raw z hz
+    rw [show I4 =
+        (252 : ℂ)⁻¹ * ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6) + I6 by
+      simpa [I4, I6] using h]
+    ring
+  calc
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+          (1 / 252 : ℂ) * (z⁻¹) ^ 6)
+        = (Q3.digamma z - A) + (1 / 252 : ℂ) * (z⁻¹) ^ 6 := by
+            ring
+    _ = I4 + (1 / 252 : ℂ) * (z⁻¹) ^ 6 := by
+            rw [hB4]
+    _ = I6 := by
+            rw [hbridge]
+            ring
+
+lemma digamma_stieltjes_B6Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+          (1 / 120 : ℂ) * (z ^ 4)⁻¹ -
+          (1 / 252 : ℂ) * (z ^ 6)⁻¹) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7 := by
+  simpa [inv_pow] using digamma_stieltjes_B6Diff_Ioi_raw z hz
+
 /-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
 remainder.  The real-part theorem below is a projection of this bound, while
 future high-order endpoint receivers can target the same main/error shape. -/
