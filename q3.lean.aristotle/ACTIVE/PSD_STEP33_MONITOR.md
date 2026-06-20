@@ -26528,3 +26528,45 @@ validation sweep is recorded in the active report.
 Boundary unchanged: this does not prove the one-step power-5 identity or the
 M6 source theorem.  It closes the normalization/sign layer needed before
 proving the intervalwise integration-by-parts and telescoping boundary ledger.
+
+## 2026-06-20 Step33A.1-A cellwise B2-to-B4 IBP layer checked
+
+Computer Use / Proshka route check agreed with the local route: do the B4
+lift cellwise, because the periodic `bernoulli4Fract` kernel is not globally
+smooth at integer boundaries.  This was treated as advisory only; the accepted
+artifact is the Lean-checked local lemma.
+
+Added:
+
+```lean
+Q3.stieltjes_interval_B2_poly_to_B4CellDeriv
+Q3.stieltjes_interval_B2Fract_to_B4CellDeriv
+```
+
+Checked cellwise identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3
+  =
+    (1 / 4 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4
+```
+
+for `(z : ℂ) (hz : 0 < z.re) (n : ℕ)`.
+
+This closes the first intervalwise integration-by-parts brick inside
+`STEP33_M6_B4_POWER5_IBP_TELESCOPE_GAP`.  The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_CELL_DERIV_TELESCOPE_GAP
+```
+
+Meaning: prove the second cellwise/telescoping bridge that converts the
+`bernoulli4DiffCellDeriv/(x+z)^4` integral into the repository-normalized
+global signed B4/power-5 identity, including integer boundary terms and the
+limit/tail ledger needed by the M6 source theorem.
+
+Boundary unchanged: this does not prove the one-step power-5 identity, the M6
+source theorem, Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, or
+Step33.  It is a checked local IBP brick.

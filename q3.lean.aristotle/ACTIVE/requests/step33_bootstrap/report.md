@@ -53811,3 +53811,57 @@ git diff --check
 Boundary: this is a checked normalization/sign bridge only.  It does not prove
 the one-step power-5 identity, the M6 source theorem, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, or Step33.
+
+## 2026-06-20 Execution update -- cellwise B2-to-B4 IBP layer checked
+
+Computer Use / Proshka route check selected the same local proof-producing
+shape: do the B4 Stieltjes lift cellwise, not by pretending
+`bernoulli4Fract` is globally smooth.  This is route guidance only; the proof
+object below is Lean-checked locally.
+
+Lean progress:
+
+```lean
+Q3.stieltjes_interval_B2_poly_to_B4CellDeriv
+Q3.stieltjes_interval_B2Fract_to_B4CellDeriv
+```
+
+Checked identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3
+  =
+    (1 / 4 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4
+```
+
+under `(z : ℂ) (hz : 0 < z.re) (n : ℕ)`.
+
+This closes the first cellwise IBP brick inside:
+
+```text
+STEP33_M6_B4_POWER5_IBP_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_CELL_DERIV_TELESCOPE_GAP
+```
+
+Meaning: convert the checked
+`bernoulli4DiffCellDeriv/(x+z)^4` cell integral into the signed periodic
+`bernoulli4Diff = bernoulli4Fract` power-5 identity, with boundary terms,
+cell telescoping, and the finite-to-tail ledger required for the direct M6
+source theorem.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Boundary: this is not a proof of the full one-step power-5 identity and not a
+proof of `Q3.digammaM6IntegralRemainderBound`.  Step33A.1-A remains open.

@@ -33919,3 +33919,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove the one-step power-5 identity or
   `Q3.digammaM6IntegralRemainderBound`; it only removes the normalization/sign
   ambiguity before the next IBP/telescoping theorem.
+
+## Insight (2026-06-20, Step33A.1-A) -- CellwiseB2ToB4IBPChecked
+
+- Used Computer Use / Proshka for route confirmation.  The advisory answer
+  matched the local plan: the B4 lift must be cellwise because
+  `bernoulli4Fract` is periodic and not globally smooth at integer
+  boundaries.  This was not used as proof evidence.
+- Added Lean-checked intervalwise IBP support in `Q3.DigammaRemainder`:
+  `stieltjes_interval_B2_poly_to_B4CellDeriv` and
+  `stieltjes_interval_B2Fract_to_B4CellDeriv`.
+- The checked identity is:
+  `∫_[n,n+1] (bernoulli2Fract x : Complex) / (x+z)^3 =
+   (1/4) * ∫_[n,n+1] (bernoulli4DiffCellDeriv n x : Complex) / (x+z)^4`
+  for `(z : Complex)`, `0 < z.re`, and `n : Nat`.
+- Closed subgap: the first cellwise IBP brick inside
+  `STEP33_M6_B4_POWER5_IBP_TELESCOPE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_CELL_DERIV_TELESCOPE_GAP`.
+- Meaning of the remaining gap: prove the second bridge from
+  `bernoulli4DiffCellDeriv/(x+z)^4` to the signed periodic B4/power-5
+  identity, including integer boundary terms, cell telescoping, and the
+  limit/tail ledger needed by the direct M6 source theorem.
+- Boundary: this does not prove the global one-step power-5 identity or
+  `Q3.digammaM6IntegralRemainderBound`; Step33A.1-A remains open.
