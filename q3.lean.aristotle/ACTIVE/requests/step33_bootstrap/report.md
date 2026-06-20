@@ -54221,6 +54221,47 @@ global B6-to-B8 tail bridge to expose the B8/power-9 digamma prefix surface.
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B8 digamma prefix checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digamma_stieltjes_B8Diff_Ioi_raw
+Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix
+```
+
+Checked prefix identity:
+
+```lean
+Q3.digamma z -
+  (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+    (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+    (1 / 120 : ℂ) * (z ^ 4)⁻¹ -
+    (1 / 252 : ℂ) * (z ^ 6)⁻¹ +
+    (1 / 240 : ℂ) * (z ^ 8)⁻¹)
+=
+  ∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_DIGAMMA_PREFIX_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_CELL_LAYER_GAP
+```
+
+Meaning: add the B10 polynomial/periodic kernel/cell layer needed for the next
+one-order Euler-Maclaurin lift from the checked B8/power-9 digamma prefix.
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

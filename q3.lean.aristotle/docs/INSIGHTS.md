@@ -34325,3 +34325,20 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   prefix surface.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B8DigammaPrefixChecked
+
+- Added checked B8 digamma prefix identities:
+  `Q3.digamma_stieltjes_B8Diff_Ioi_raw` and
+  `Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix`.
+- The `mainPrefix` theorem extends the checked inverse-power surface through
+  the `+(1/240) * (z^8)^-1` term and leaves the B8/power-9 `Ioi` remainder.
+- Closed:
+  `STEP33_M6_B6_TO_B8_DIGAMMA_PREFIX_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B8_TO_B10_CELL_LAYER_GAP`.
+- Smallest useful next Lean object: add B10 polynomial/periodic kernel/cell
+  definitions and endpoint derivative infrastructure, mirroring the checked
+  B8 layer before proving the next interval bridge.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

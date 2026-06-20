@@ -26880,6 +26880,33 @@ digamma prefix before continuing the one-order Euler-Maclaurin lift.
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B8 digamma prefix checked
+
+Added checked B8 digamma prefix identities:
+
+```lean
+Q3.digamma_stieltjes_B8Diff_Ioi_raw
+Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_DIGAMMA_PREFIX_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_CELL_LAYER_GAP
+```
+
+Meaning: add the B10 polynomial/periodic kernel/cell layer needed for the next
+one-order Euler-Maclaurin lift from the checked B8/power-9 digamma prefix.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B8 boundary bridge checked
 
 Added checked boundary bridge:

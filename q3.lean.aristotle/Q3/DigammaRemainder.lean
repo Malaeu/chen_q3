@@ -5675,6 +5675,60 @@ lemma digamma_stieltjes_B6Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
         (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7 := by
   simpa [inv_pow] using digamma_stieltjes_B6Diff_Ioi_raw z hz
 
+lemma digamma_stieltjes_B8Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+          (1 / 252 : ℂ) * (z⁻¹) ^ 6 +
+          (1 / 240 : ℂ) * (z⁻¹) ^ 8) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9 := by
+  let I6 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+  let I8 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+  let A : ℂ :=
+    Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+      (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+      (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+      (1 / 252 : ℂ) * (z⁻¹) ^ 6
+  have hB6 : Q3.digamma z - A = I6 := by
+    simpa [A, I6] using digamma_stieltjes_B6Diff_Ioi_raw z hz
+  have hbridge : I6 = (1 / 240 : ℂ) * (z⁻¹) ^ 8 + I8 := by
+    have h := stieltjes_B6Diff_to_B8Diff_Ioi_raw z hz
+    rw [show I6 =
+        (-(240 : ℂ)⁻¹) * ((0 : ℂ) ^ 8 - (z⁻¹) ^ 8) + I8 by
+      simpa [I6, I8] using h]
+    ring
+  calc
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+          (1 / 252 : ℂ) * (z⁻¹) ^ 6 +
+          (1 / 240 : ℂ) * (z⁻¹) ^ 8)
+        = (Q3.digamma z - A) - (1 / 240 : ℂ) * (z⁻¹) ^ 8 := by
+            ring
+    _ = I6 - (1 / 240 : ℂ) * (z⁻¹) ^ 8 := by
+            rw [hB6]
+    _ = I8 := by
+            rw [hbridge]
+            ring
+
+lemma digamma_stieltjes_B8Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+          (1 / 120 : ℂ) * (z ^ 4)⁻¹ -
+          (1 / 252 : ℂ) * (z ^ 6)⁻¹ +
+          (1 / 240 : ℂ) * (z ^ 8)⁻¹) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9 := by
+  simpa [inv_pow] using digamma_stieltjes_B8Diff_Ioi_raw z hz
+
 /-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
 remainder.  The real-part theorem below is a projection of this bound, while
 future high-order endpoint receivers can target the same main/error shape. -/
