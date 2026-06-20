@@ -36628,3 +36628,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   source bound, no center-jet payload, no generated Lean payload, no
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaPrimeRightTaylorBridge
+
+- Added and Lean-checked the right-half Lagrange bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.exactTaylorPoly_center` and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound`.
+- `centerTaylorBridge_right_of_order16_bound` proves the sharp `16!`
+  Taylor/Lagrange error bound on `eta in [1/20, 1/10]` from a uniform order-16
+  premise on `[0, 1/10]`, using the local `taylorWithinEval` to
+  `exactTaylorPoly` bridge.
+- Updated and reran
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`; payload
+  schema is now `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v5`,
+  status `fail_closed_missing_left_reflected_lagrange_bridge`, first failure
+  `STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP`.
+- Payload proof status now records
+  `centeredTaylorRightBridgeProved = true`,
+  `centeredTaylorLeftReflectedBridgeProved = false`, and
+  `centeredTaylorBridgeProved = false`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, generator run, `py_compile`, and JSON parse.
+- Boundary: no full `centerTaylorBridge_of_order16_bound`, no
+  `Valid.of_order16_bound`, no order-16/polygamma source bound, no center-jet
+  payload, no generated Lean payload, no first-subchunk residual-derivative
+  norm certificate, no A hbox, no `ActiveCenteredCoeffEntryHboxCert`, no
+  Step33/Step34/RH claim.

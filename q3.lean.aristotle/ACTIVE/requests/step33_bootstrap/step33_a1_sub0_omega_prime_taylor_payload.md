@@ -5,10 +5,10 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v4`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v5`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_missing_centered_taylor_lagrange_split_bridge`
-- first failure: `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP`
+- status: `fail_closed_missing_left_reflected_lagrange_bridge`
+- first failure: `STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
 - radius: `1/20`
@@ -23,10 +23,11 @@ not close Step33A.1-A.
 - valid predicate: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
 - bound theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound`
 - centered bridge theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound`
+- right bridge theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound`
 - valid constructor: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound`
 - reflected derivative theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv`
 - Taylor exact-poly theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly`
-- status: `receiver_present_missing_lagrange_split_bridge`
+- status: `receiver_present_right_half_bridge_present_missing_left_reflected_bridge`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -60,7 +61,8 @@ Normalization note:
 
 ## Required Proofs
 
-- prove the centered Taylor bridge from a uniform order-16 bound: use taylor_mean_remainder_lagrange_iteratedDeriv for the sharp 16! remainder on the right half, use the reflected function on the left half, then combine both halves
+- prove the left reflected half of the centered Taylor bridge from the same uniform order-16 bound, using the reflected function y |-> omegaPrimeClosedForm (1/10 - y) and then transporting the reflected Taylor polynomial back to exactTaylorPoly
+- already proved locally: the right-half Lagrange bridge centerTaylorBridge_right_of_order16_bound with the sharp 16! denominator on eta in [1/20, 1/10]
 - already proved locally: taylorWithinEval agrees with exactTaylorPoly under UniqueDiffOn and global ContDiff 16
 - already proved locally: reflected iterated derivative identity iteratedDeriv n (fun x => f (1/10 - x)) x = (-1)^n * iteratedDeriv n f (1/10 - x)
 - for each j < 16, prove |iteratedDeriv j step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]
@@ -95,21 +97,26 @@ Normalization note:
 | symbol | line | status |
 | --- | --- | --- |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9633` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `9709` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `9804` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `9827` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `9922` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `None` | `gap` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9726` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `None` | `gap` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9646` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9675` | `found` |
+| `STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP` | `None` | `gap` |
 
 ## Proof Status
 
 - componentTaylorBoundsProved: `False`
 - centeredTaylorBridgeProved: `False`
+- centeredTaylorRightBridgeProved: `True`
+- centeredTaylorLeftReflectedBridgeProved: `False`
 - taylorWithinEvalExactPolyBridgeProved: `True`
 - reflectedIteratedDerivBridgeProved: `True`
 - omegaPrimeCenterJetBoundsProved: `False`
@@ -121,9 +128,11 @@ Normalization note:
 
 ## Failure Codes
 
+- `STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP`
 - `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP`
 - `STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP`
 - `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP`
+- `STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP`
@@ -133,14 +142,15 @@ Normalization note:
 
 The next proof-producing step is not endpoint subdivision and not
 a full residual interval payload.  It is the centered Taylor
-bridge from the uniform order-16 bound.  The reflected
-iterated-derivative identity and the `taylorWithinEval` to
-`exactTaylorPoly` normalization are now proved locally; the next
-gap is the right/left Lagrange split theorem
-`centerTaylorBridge_of_order16_bound` itself.
+bridge from the uniform order-16 bound.  The right-half
+Lagrange bridge, the reflected iterated-derivative identity,
+and the `taylorWithinEval` to `exactTaylorPoly` normalization
+are now proved locally; the next gap is the left reflected
+Lagrange bridge and then the combined theorem
+`centerTaylorBridge_of_order16_bound`.
 
 Until that exists locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP
+STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP
 ```

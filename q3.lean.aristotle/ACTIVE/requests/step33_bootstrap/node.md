@@ -17244,6 +17244,37 @@ Current exact blocker:
 STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
 
+## 2026-06-20 Current EOF Addendum -- OmegaPrime right-half Taylor bridge
+
+Local Lean now checks the right half of the OmegaPrime centered Taylor bridge:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.exactTaylorPoly_center
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound
+```
+
+The checked theorem proves the sharp `16!` Lagrange bound on
+`eta in [1/20, 1/10]` from the uniform order-16 premise on `[0, 1/10]`.
+
+The fail-closed payload is now:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v5
+status = fail_closed_missing_left_reflected_lagrange_bridge
+firstFailure = STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP
+```
+
+Next exact local target:
+
+```text
+prove the left reflected Lagrange bridge, then combine into
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+```
+
+Boundary: full centered bridge not closed; no `Valid.of_order16_bound`, no
+order-16/polygamma source bound, no center-jet payload, no generated Lean
+payload, no A hbox, and no Step33A.1-A closure.
+
 ## 2026-06-20 Current EOF Addendum -- active OmegaPrime Taylor bridge subgate
 
 The active subgate after the OmegaPrime receiver is now narrower than the old
