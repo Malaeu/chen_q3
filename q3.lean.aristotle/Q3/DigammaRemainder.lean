@@ -56,6 +56,19 @@ def bernoulli6Fract (x : ℝ) : ℝ := bernoulli6 (Int.fract x)
 /-- Repository-normalized B6 periodic kernel for the B4-to-B6 Stieltjes lift. -/
 def bernoulli6Diff (x : ℝ) : ℝ := bernoulli6Fract x
 
+/-- Bernoulli polynomial B8(t) =
+`t^8 - 4t^7 + (14/3)t^6 - (7/3)t^4 + (2/3)t^2 - 1/30`. -/
+def bernoulli8 (t : ℝ) : ℝ :=
+  t ^ 8 - 4 * t ^ 7 + (14 / 3 : ℝ) * t ^ 6 -
+    (7 / 3 : ℝ) * t ^ 4 + (2 / 3 : ℝ) * t ^ 2 - (30 : ℝ)⁻¹
+
+/-- B8 applied to the fractional part, prepared for the next one-order
+Euler-Maclaurin lift from the B6/power-7 surface. -/
+def bernoulli8Fract (x : ℝ) : ℝ := bernoulli8 (Int.fract x)
+
+/-- Repository-normalized B8 periodic kernel for the B6-to-B8 Stieltjes lift. -/
+def bernoulli8Diff (x : ℝ) : ℝ := bernoulli8Fract x
+
 /-- Bernoulli polynomial B1(t) = t - 1/2. -/
 def bernoulli1 (t : ℝ) : ℝ := t - (1 / 2 : ℝ)
 
@@ -126,6 +139,33 @@ lemma measurable_bernoulli6Fract : Measurable bernoulli6Fract := by
 @[measurability]
 lemma measurable_bernoulli6Diff : Measurable bernoulli6Diff := by
   simpa [bernoulli6Diff] using measurable_bernoulli6Fract
+
+@[measurability]
+lemma measurable_bernoulli8 : Measurable bernoulli8 := by
+  have h8 : Measurable fun t : ℝ => t ^ 8 := by
+    simpa using (measurable_id.pow_const 8)
+  have h7 : Measurable fun t : ℝ => t ^ 7 := by
+    simpa using (measurable_id.pow_const 7)
+  have h6 : Measurable fun t : ℝ => t ^ 6 := by
+    simpa using (measurable_id.pow_const 6)
+  have h4 : Measurable fun t : ℝ => t ^ 4 := by
+    simpa using (measurable_id.pow_const 4)
+  have h2 : Measurable fun t : ℝ => t ^ 2 := by
+    simpa using (measurable_id.pow_const 2)
+  have hconst : Measurable fun _ : ℝ => (30 : ℝ)⁻¹ := measurable_const
+  simpa [bernoulli8] using
+    (((((h8.sub (measurable_const.mul h7)).add
+      (measurable_const.mul h6)).sub
+      (measurable_const.mul h4)).add (measurable_const.mul h2)).sub hconst)
+
+@[measurability]
+lemma measurable_bernoulli8Fract : Measurable bernoulli8Fract := by
+  have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
+  simpa [bernoulli8Fract] using measurable_bernoulli8.comp hfract
+
+@[measurability]
+lemma measurable_bernoulli8Diff : Measurable bernoulli8Diff := by
+  simpa [bernoulli8Diff] using measurable_bernoulli8Fract
 
 lemma bernoulli2Fract_eq_const_sub_diff (x : ℝ) :
     bernoulli2Fract x = (6 : ℝ)⁻¹ - bernoulli2Diff x := by
@@ -443,8 +483,92 @@ lemma bernoulli6DiffCellDeriv_hasDerivAt
     ring
   have hcoef :
       30 * bernoulli4Diff x =
-        30 * (x - n) ^ 4 - 60 * (x - n) ^ 3 + 30 * (x - n) ^ 2 - 1 := by
+      30 * (x - n) ^ 4 - 60 * (x - n) ^ 3 + 30 * (x - n) ^ 2 - 1 := by
     have hcell := bernoulli4Diff_eq_on_Ioo n hx
+    nlinarith [hcell]
+  simpa [hcoef] using hderiv
+
+lemma bernoulli8Diff_eq_on_Ioo (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli8Diff x =
+      (x - n) ^ 8 - 4 * (x - n) ^ 7 +
+        (14 / 3 : ℝ) * (x - n) ^ 6 -
+        (7 / 3 : ℝ) * (x - n) ^ 4 +
+        (2 / 3 : ℝ) * (x - n) ^ 2 - (30 : ℝ)⁻¹ := by
+  have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
+  simp [bernoulli8Diff, bernoulli8Fract, bernoulli8, hfract, sub_eq_add_neg,
+    add_assoc]
+
+lemma bernoulli8Diff_eq_cell_on_Icc (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli8Diff x =
+      (x - n) ^ 8 - 4 * (x - n) ^ 7 +
+        (14 / 3 : ℝ) * (x - n) ^ 6 -
+        (7 / 3 : ℝ) * (x - n) ^ 4 +
+        (2 / 3 : ℝ) * (x - n) ^ 2 - (30 : ℝ)⁻¹ := by
+  by_cases hx0 : x = n
+  · subst hx0
+    simp [bernoulli8Diff, bernoulli8Fract, bernoulli8]
+  by_cases hx1 : x = n + 1
+  · subst hx1
+    norm_num [bernoulli8Diff, bernoulli8Fract, bernoulli8, Nat.cast_add, Nat.cast_one]
+  have hx' : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ) := by
+    refine ⟨?_, ?_⟩
+    · exact lt_of_le_of_ne hx.1 (Ne.symm hx0)
+    · exact lt_of_le_of_ne hx.2 hx1
+  exact bernoulli8Diff_eq_on_Ioo n hx'
+
+/-- Cell derivative of the B8 polynomial.  This is the local polynomial
+surface for the B6/power-7 to B8/power-9 Euler-Maclaurin lift. -/
+def bernoulli8DiffCellDeriv (n : ℕ) (x : ℝ) : ℝ :=
+  8 * (x - n) ^ 7 - 28 * (x - n) ^ 6 + 28 * (x - n) ^ 5 -
+    (28 / 3 : ℝ) * (x - n) ^ 3 + (4 / 3 : ℝ) * (x - n)
+
+lemma bernoulli8DiffCellDeriv_left (n : ℕ) :
+    bernoulli8DiffCellDeriv n (n : ℝ) = 0 := by
+  simp [bernoulli8DiffCellDeriv]
+
+lemma bernoulli8DiffCellDeriv_right (n : ℕ) :
+    bernoulli8DiffCellDeriv n (n + 1 : ℝ) = 0 := by
+  norm_num [bernoulli8DiffCellDeriv, Nat.cast_add, Nat.cast_one]
+
+lemma bernoulli8DiffCellDeriv_hasDerivAt
+    (n : ℕ) {x : ℝ} (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    HasDerivAt (fun y : ℝ => bernoulli8DiffCellDeriv n y)
+      (56 * bernoulli6Diff x) x := by
+  have hderiv :
+      HasDerivAt (fun y : ℝ => bernoulli8DiffCellDeriv n y)
+        (56 * (x - n) ^ 6 - 168 * (x - n) ^ 5 +
+          140 * (x - n) ^ 4 - 28 * (x - n) ^ 2 + (4 / 3 : ℝ)) x := by
+    have hbase : HasDerivAt (fun y : ℝ => y - (n : ℝ)) 1 x := by
+      simpa using (hasDerivAt_id x).sub_const (n : ℝ)
+    have hseven :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 7)
+          (7 * (x - (n : ℝ)) ^ 6) x := by
+      simpa using hbase.pow 7
+    have hsix :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 6)
+          (6 * (x - (n : ℝ)) ^ 5) x := by
+      simpa using hbase.pow 6
+    have hfive :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 5)
+          (5 * (x - (n : ℝ)) ^ 4) x := by
+      simpa using hbase.pow 5
+    have hthree :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 3)
+          (3 * (x - (n : ℝ)) ^ 2) x := by
+      simpa using hbase.pow 3
+    have hpoly :=
+      ((((hseven.const_mul (8 : ℝ)).sub (hsix.const_mul (28 : ℝ))).add
+        (hfive.const_mul (28 : ℝ))).sub
+        (hthree.const_mul (28 / 3 : ℝ))).add (hbase.const_mul (4 / 3 : ℝ))
+    convert hpoly using 1
+    ring
+  have hcoef :
+      56 * bernoulli6Diff x =
+        56 * (x - n) ^ 6 - 168 * (x - n) ^ 5 +
+          140 * (x - n) ^ 4 - 28 * (x - n) ^ 2 + (4 / 3 : ℝ) := by
+    have hcell := bernoulli6Diff_eq_on_Ioo n hx
     nlinarith [hcell]
   simpa [hcoef] using hderiv
 

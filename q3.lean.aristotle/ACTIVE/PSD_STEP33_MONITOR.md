@@ -26790,6 +26790,43 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B8 cell layer checked
+
+Added the checked B8 local layer in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli8
+Q3.bernoulli8Fract
+Q3.bernoulli8Diff
+Q3.measurable_bernoulli8
+Q3.measurable_bernoulli8Fract
+Q3.measurable_bernoulli8Diff
+Q3.bernoulli8Diff_eq_on_Ioo
+Q3.bernoulli8Diff_eq_cell_on_Icc
+Q3.bernoulli8DiffCellDeriv
+Q3.bernoulli8DiffCellDeriv_left
+Q3.bernoulli8DiffCellDeriv_right
+Q3.bernoulli8DiffCellDeriv_hasDerivAt
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_CELL_LAYER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Meaning: prove the interval integration-by-parts bridge from the checked
+B6/power-7 surface to the B8 cell-derivative/power-8 surface.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B6 digamma prefix checked
 
 Added the checked B6/power-7 digamma prefix in `Q3.DigammaRemainder`:

@@ -53985,6 +53985,44 @@ git diff --check
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B8 cell layer checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli8
+Q3.bernoulli8Fract
+Q3.bernoulli8Diff
+Q3.measurable_bernoulli8
+Q3.measurable_bernoulli8Fract
+Q3.measurable_bernoulli8Diff
+Q3.bernoulli8Diff_eq_on_Ioo
+Q3.bernoulli8Diff_eq_cell_on_Icc
+Q3.bernoulli8DiffCellDeriv
+Q3.bernoulli8DiffCellDeriv_left
+Q3.bernoulli8DiffCellDeriv_right
+Q3.bernoulli8DiffCellDeriv_hasDerivAt
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_CELL_LAYER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Meaning: use the checked B8 cell layer to prove the interval
+integration-by-parts bridge from B6/power-7 to B8 cell-derivative/power-8,
+with endpoint-zero bookkeeping local to each cell.
+
+Boundary: this is not a proof of the B6-to-B8 Stieltjes bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

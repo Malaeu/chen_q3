@@ -34215,3 +34215,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   B6 layer before proving the next interval bridge.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B8CellLayerChecked
+
+- Added checked B8 polynomial and periodic kernel surfaces:
+  `Q3.bernoulli8`, `Q3.bernoulli8Fract`, and `Q3.bernoulli8Diff`.
+- Added checked measurability lemmas:
+  `Q3.measurable_bernoulli8`, `Q3.measurable_bernoulli8Fract`, and
+  `Q3.measurable_bernoulli8Diff`.
+- Added checked cell identities and endpoint derivative infrastructure:
+  `Q3.bernoulli8Diff_eq_on_Ioo`, `Q3.bernoulli8Diff_eq_cell_on_Icc`,
+  `Q3.bernoulli8DiffCellDeriv`, `Q3.bernoulli8DiffCellDeriv_left`,
+  `Q3.bernoulli8DiffCellDeriv_right`, and
+  `Q3.bernoulli8DiffCellDeriv_hasDerivAt`.
+- Closed:
+  `STEP33_M6_B6_TO_B8_CELL_LAYER_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B6_TO_B8_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Smallest useful next Lean object: prove the interval integration-by-parts
+  bridge from B6/power-7 to B8 cell-derivative/power-8 before adding the
+  B8 boundary bridge.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
