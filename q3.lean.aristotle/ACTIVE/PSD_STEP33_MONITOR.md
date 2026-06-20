@@ -29266,3 +29266,38 @@ git diff --check
 
 Boundary: receiver adapter only.  No sampled JSON/audit candidate is promoted
 to proof, and no derivative payload, A hbox, Step33, Step34, or RH is proved.
+
+## 2026-06-20 Current EOF Status -- direct proof-input worklist v20
+
+Updated the fail-closed worklist to expose the new first-subchunk-only
+anchor-envelope adapter exactly where it is valid:
+
+```text
+schema = q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20
+firstSubchunkAnchorEnvelopeAdapters = 1
+```
+
+Concrete JSON hit:
+
+```text
+primary_finite / row 0 / parent 0 / subchunk 0
+targetGap = STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Guard: this adapter is concrete to the first subchunk and is not advertised as
+a generic 110-subchunk receiver.  It still requires Lean-checked anchor,
+differentiability, second-derivative envelope, and budget premises before any
+payload can be emitted.
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 JSON assertion: schema v20 and exactly one non-null firstSubchunkAnchorEnvelopeWork
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.md
+git diff --check
+```
+
+Boundary: address synchronization only.  `proofSafeClosedFields = 0`; no Lean
+payload, derivative payload, A hbox, Step33, Step34, or RH is proved.

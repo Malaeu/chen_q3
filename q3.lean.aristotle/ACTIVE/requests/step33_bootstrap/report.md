@@ -57026,6 +57026,71 @@ Boundary: receiver adapter only.  No derivative anchor/envelope payload, no
 direct norm payload, no generated refined row, no A hbox, no Step33 closure,
 and no RH claim.
 
+## Execution Update (2026-06-20) -- direct proof-input worklist v20
+
+Route: PSD-pd/Q3 Step33A.1-A fail-closed proof-input control plane.
+
+Updated/generated:
+
+```text
+scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.md
+```
+
+Schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20
+```
+
+New worklist address:
+
+```text
+hResidualDerivNormWork.firstSubchunkAnchorEnvelopeWork
+```
+
+It is non-null only for:
+
+```text
+primary_finite / row 0 / parent 0 / subchunk 0
+targetGap = STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Required inputs recorded there:
+
+```text
+0 <= derivSlope
+derivAnchorLower <= deriv cert.residual 0
+deriv cert.residual 0 <= derivAnchorUpper
+DifferentiableAt Real (fun t => deriv cert.residual t) on [0, 1/10]
+proof-grade second-derivative envelope on [0, 1/10]
+lower/upper rational budget comparisons
+```
+
+Command output:
+
+```text
+status=direct_proof_input_worklist_address_only
+subchunks=110
+legacy_arithmetic=330
+preferred_open=220
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 JSON assertion: schema v20 and exactly one non-null firstSubchunkAnchorEnvelopeWork
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.md
+git diff --check
+```
+
+Boundary: worklist synchronization only.  `proofSafeClosedFields` remains zero.
+No generated Lean payload, no derivative analytic closure, no Step33 closure,
+and no RH claim.
+
 ## Execution Update (2026-06-20) -- first-subchunk checked raw-center interval fallback
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk receiver narrowing.

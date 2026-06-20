@@ -16368,3 +16368,23 @@ Next proof-producing target: prove the anchor derivative interval at `0`,
 prove the residual second-derivative envelope on `[0, 1/10]`, and discharge the
 two rational budget inequalities.  This is still a receiver path, not a closed
 derivative payload.
+
+## 2026-06-20 Current EOF Addendum -- direct proof-input worklist v20
+
+The direct proof-input worklist now exposes the first-subchunk anchor-envelope
+receiver without generalizing it:
+
+```text
+schema = q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20
+firstSubchunkAnchorEnvelopeAdapters = 1
+```
+
+The only non-null `firstSubchunkAnchorEnvelopeWork` entry is:
+
+```text
+primary_finite / row 0 / parent 0 / subchunk 0
+targetGap = STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+This is an address/control-plane update only.  The sampled derivative audit is
+still diagnostic and no payload field is proof-safe closed.

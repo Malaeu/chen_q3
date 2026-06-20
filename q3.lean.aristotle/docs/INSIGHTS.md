@@ -35628,3 +35628,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: adapter only.  It does not promote sampled JSON/audit derivative
   candidates to proof and does not close the derivative payload, A hbox,
   Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- DirectProofInputWorklistV20
+
+- Updated
+  `scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`
+  to schema `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20`
+  and regenerated the worklist JSON/MD artifacts.
+- The worklist now exposes the checked first-subchunk anchor-envelope adapter
+  under `hResidualDerivNormWork.firstSubchunkAnchorEnvelopeWork`.
+- The exposure is fail-closed: exactly one non-null entry exists, for
+  `primary_finite / row 0 / parent 0 / subchunk 0`.  It is not advertised as a
+  generic 110-subchunk route.
+- The recorded target gap is
+  `STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP`; the required
+  inputs are the anchor derivative interval at `0`, differentiability and a
+  second-derivative envelope on `[0, 1/10]`, and the two rational budget
+  comparisons.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`,
+  `python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`,
+  and a JSON assertion that schema is v20 with exactly one non-null
+  `firstSubchunkAnchorEnvelopeWork`; forbidden-token scan and
+  `git diff --check` also passed.
+- Boundary: address synchronization only.  `proofSafeClosedFields = 0`; no
+  Lean payload, derivative payload, A hbox, Step33, Step34, or RH is proved.
