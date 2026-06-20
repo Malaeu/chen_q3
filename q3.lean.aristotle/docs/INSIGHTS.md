@@ -34254,3 +34254,20 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   to expose the next global boundary contribution.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B8BoundaryBridgeChecked
+
+- Added checked boundary bridge:
+  `Q3.stieltjes_interval_B8CellDeriv_to_B8Diff`.
+- The theorem exposes the expected B8 endpoint value `-(30 : ℂ)^-1`, the
+  power-8 boundary difference, and the B8/power-9 cell remainder.
+- Closed:
+  `STEP33_M6_B8_CELLDERIV_TO_B8DIFF_BOUNDARY_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B6_TO_B8_COMBINED_CELL_GAP`.
+- Smallest useful next Lean object: combine
+  `Q3.stieltjes_interval_B6Diff_to_B8CellDeriv` and
+  `Q3.stieltjes_interval_B8CellDeriv_to_B8Diff` into the checked B6-to-B8
+  cell identity, then telescope over `Finset.range N`.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
