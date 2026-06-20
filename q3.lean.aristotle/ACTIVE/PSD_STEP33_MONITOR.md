@@ -26718,3 +26718,37 @@ ledger until the B2Diff finite identity is checked.
 
 Boundary unchanged: this does not prove the B2Diff power-5 finite identity,
 the limit/tail ledger, the M6 source theorem, Step33A.1-A, or Step33.
+
+## 2026-06-20 Step33A.1-A B4 power-5 Ioi bridge checked
+
+Added the finite-to-`Ioi` tail bridge layer in `Q3.DigammaRemainder`:
+
+```lean
+Q3.kernel_norm_pow5_le_re
+Q3.integrable_kernel_norm_pow5
+Q3.integrable_bernoulli4Diff_div_pow5
+Q3.tendsto_intervalIntegral_b2diff_div_Ioi
+Q3.tendsto_intervalIntegral_b4diff_div_pow5_Ioi
+Q3.tendsto_nat_add_complex_inv
+Q3.stieltjes_B2Diff_to_B4Diff_Ioi_raw
+```
+
+This closes the checked finite-to-`Ioi` part of:
+
+```text
+STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP
+```
+
+Meaning: combine the checked raw B4/power-5 `Ioi` Stieltjes bridge with
+`Q3.digamma_stieltjes_identity`, normalize it as a B4 digamma remainder
+identity, and only then attempt the higher Euler-Maclaurin/order-15 bridge to
+`Q3.digammaM6IntegralRemainderBound z`.
+
+Boundary unchanged: this does not prove the M6 source theorem, Step33A.1-A, or
+Step33.

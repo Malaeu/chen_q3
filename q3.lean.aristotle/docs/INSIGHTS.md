@@ -34051,3 +34051,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   remainder surface, before attempting any global `N -> infinity` limit.
 - Boundary: this is a search/route checkpoint only; Step33A.1-A and the M6
   source theorem remain open.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4Power5IoiTailBridgeChecked
+
+- Added checked order-5 tail infrastructure:
+  `Q3.kernel_norm_pow5_le_re`, `Q3.integrable_kernel_norm_pow5`, and
+  `Q3.integrable_bernoulli4Diff_div_pow5`.
+- Added checked interval-to-`Ioi` limit bridges for the finite Stieltjes
+  surfaces:
+  `Q3.tendsto_intervalIntegral_b2diff_div_Ioi` and
+  `Q3.tendsto_intervalIntegral_b4diff_div_pow5_Ioi`.
+- Added checked endpoint limit helper:
+  `Q3.tendsto_nat_add_complex_inv`.
+- Added checked raw global bridge:
+  `Q3.stieltjes_B2Diff_to_B4Diff_Ioi_raw`.
+- This closes the finite-to-`Ioi` part of:
+  `STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP`.
+- Meaning: the repo can now move from the finite B2Diff/B4 power-5 identity to
+  a raw `Ioi` Stieltjes bridge, but it still lacks the checked normalized
+  theorem from that B4/power-5 surface to the M6/order-15 source theorem
+  `Q3.digammaM6IntegralRemainderBound z`.
+- Smallest useful next Lean object: combine `Q3.digamma_stieltjes_identity`
+  with `Q3.stieltjes_B2Diff_to_B4Diff_Ioi_raw` into a normalized B4 digamma
+  remainder identity.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

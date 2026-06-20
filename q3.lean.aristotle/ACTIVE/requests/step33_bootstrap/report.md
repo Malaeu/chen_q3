@@ -53924,6 +53924,67 @@ git diff --check
 Boundary: this is not a proof of the finite power-5 identity, the M6 source
 theorem, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B4 power-5 Ioi tail bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.kernel_norm_pow5_le_re
+Q3.integrable_kernel_norm_pow5
+Q3.integrable_bernoulli4Diff_div_pow5
+Q3.tendsto_intervalIntegral_b2diff_div_Ioi
+Q3.tendsto_intervalIntegral_b4diff_div_pow5_Ioi
+Q3.tendsto_nat_add_complex_inv
+Q3.stieltjes_B2Diff_to_B4Diff_Ioi_raw
+```
+
+The new checked raw Ioi bridge is:
+
+```lean
+∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3 =
+  (1 / 6 : ℂ) * ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - 0)) -
+    ((1 / 4 : ℂ) *
+      ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) +
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+```
+
+This closes the finite-to-`Ioi` part of the previous tail ledger gap:
+
+```text
+STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP
+```
+
+Meaning: the repository now has a checked raw B4/power-5 `Ioi` Stieltjes
+bridge and the existing order-15 kernel bound/receiver surface, but it still
+does not have a checked theorem converting this B4/power-5 remainder surface
+through the remaining Euler-Maclaurin cancellations into
+`Q3.digammaM6IntegralRemainderBound z`.
+
+Smallest next Lean object: prove the normalized B4 digamma remainder identity
+obtained by combining `Q3.digamma_stieltjes_identity` with
+`Q3.stieltjes_B2Diff_to_B4Diff_Ioi_raw`, before attempting the full M6/order-15
+source theorem.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- finite B2Diff-to-B4 identity checked
 
 Lean progress:

@@ -3068,6 +3068,326 @@ lemma integrable_bernoulli2Diff_div (z : ℂ) (hz : 0 < z.re) :
             field_simp
   exact Integrable.mono' hkernel' hmeas hbound
 
+/-- Pointwise right-half-plane domination for the order-5 kernel used by the
+B4/power-5 Stieltjes tail ledger. -/
+lemma kernel_norm_pow5_le_re (z : ℂ) (hz : 0 < z.re)
+    {x : ℝ} (hx : x ∈ Set.Ioi (0 : ℝ)) :
+    1 / ‖(x : ℂ) + z‖ ^ 5 ≤ 1 / (x + z.re) ^ 5 := by
+  have hxpos : 0 < x := hx
+  have hxre_pos : 0 < x + z.re := by
+    linarith [hxpos, hz]
+  have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+  have hnorm_ge : x + z.re ≤ ‖(x : ℂ) + z‖ := by
+    have h := Complex.abs_re_le_norm ((x : ℂ) + z)
+    have hre : (((x : ℂ) + z).re) = x + z.re := by
+      simp
+    have habs : |(((x : ℂ) + z).re)| = x + z.re := by
+      rw [hre, abs_of_nonneg hxre_nonneg]
+    rwa [habs] at h
+  have hpow :
+      (x + z.re) ^ 5 ≤ ‖(x : ℂ) + z‖ ^ 5 :=
+    pow_le_pow_left₀ hxre_nonneg hnorm_ge 5
+  exact one_div_le_one_div_of_le (pow_pos hxre_pos 5) hpow
+
+/-- Integrability of the order-5 kernel used by the B4/power-5 Stieltjes tail
+ledger. -/
+lemma integrable_kernel_norm_pow5 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 5))
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hdomOn :
+      IntegrableOn (fun x : ℝ => (x + z.re) ^ (-5 : ℝ))
+        (Set.Ioi (0 : ℝ)) := by
+    have hlt : (-5 : ℝ) < -1 := by norm_num
+    have hc : -z.re < (0 : ℝ) := by linarith [hz]
+    simpa using
+      (integrableOn_add_rpow_Ioi_of_lt (a := (-5 : ℝ))
+        (c := (0 : ℝ)) (m := z.re) hlt hc)
+  have hdomOn' :
+      IntegrableOn (fun x : ℝ => 1 / (x + z.re) ^ 5)
+        (Set.Ioi (0 : ℝ)) := by
+    refine hdomOn.congr_fun ?_ measurableSet_Ioi
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxre_pos : 0 < x + z.re := by
+      linarith [hxpos, hz]
+    have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+    calc
+      (x + z.re) ^ (-5 : ℝ)
+          = ((x + z.re) ^ (5 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + z.re) (5 : ℝ))
+      _ = ((x + z.re) ^ 5)⁻¹ := by
+              simp [Real.rpow_natCast, hxre_nonneg]
+      _ = 1 / (x + z.re) ^ 5 := by
+              simp [one_div]
+  have hdom :
+      Integrable (fun x : ℝ => 1 / (x + z.re) ^ 5)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [IntegrableOn] using hdomOn'
+  have hmeas :
+      AEStronglyMeasurable (fun x : ℝ => 1 / ‖(x : ℂ) + z‖ ^ 5)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hcoe : Measurable (fun x : ℝ => (x : ℂ)) :=
+      Complex.measurable_ofReal
+    have hadd : Measurable (fun x : ℝ => (x : ℂ) + z) :=
+      hcoe.add measurable_const
+    have hnorm : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖) :=
+      hadd.norm
+    have hpow : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖ ^ 5) :=
+      hnorm.pow_const 5
+    have hinv : Measurable (fun x : ℝ => (‖(x : ℂ) + z‖ ^ 5)⁻¹) :=
+      hpow.inv
+    simpa [one_div] using hinv.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x : ℝ ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 5 : ℝ)‖ ≤
+          1 / (x + z.re) ^ 5 := by
+    refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+    intro x hx
+    have hnonneg : 0 ≤ (1 / ‖(x : ℂ) + z‖ ^ 5 : ℝ) := by
+      exact one_div_nonneg.mpr (pow_nonneg (norm_nonneg _) 5)
+    have hnorm_abs :
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 5 : ℝ)‖ =
+          1 / ‖(x : ℂ) + z‖ ^ 5 := by
+      simpa [Real.norm_eq_abs, abs_of_nonneg hnonneg]
+    simpa [hnorm_abs] using kernel_norm_pow5_le_re z hz hx
+  exact Integrable.mono' hdom hmeas hbound
+
+lemma integrable_bernoulli4Diff_div_pow5 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 5))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow5 z hz
+  have hkernel' :
+      Integrable (fun x : ℝ => (1 / 30 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 5))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    hkernel.const_mul (1 / 30 : ℝ)
+  have hmeas :
+      AEStronglyMeasurable
+        (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable
+        (fun x => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_pow : Measurable (fun x : ℝ => ((x : ℂ) + z) ^ 5) := h_add.pow_const 5
+      have h_num : Measurable (fun x : ℝ => (bernoulli4Diff x : ℂ)) :=
+        (Complex.measurable_ofReal.comp measurable_bernoulli4Diff)
+      exact h_num.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5‖ ≤
+          (1 / 30 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 5) := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hnorm_pow : ‖(x + z : ℂ) ^ 5‖ = ‖(x + z : ℂ)‖ ^ 5 := by
+      simp [norm_pow]
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 5 := by positivity
+    calc
+      ‖(bernoulli4Diff x : ℂ) / (x + z) ^ 5‖
+          = ‖(bernoulli4Diff x : ℂ)‖ / ‖(x + z : ℂ) ^ 5‖ := by
+            simp
+      _ = ‖(bernoulli4Diff x : ℂ)‖ / ‖(x : ℂ) + z‖ ^ 5 := by
+            simp [hnorm_pow]
+      _ ≤ (1 / 30 : ℝ) / ‖(x : ℂ) + z‖ ^ 5 := by
+            exact (div_le_div_of_nonneg_right (bernoulli4Diff_norm_le x) hpos)
+      _ = (1 / 30 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 5) := by
+            field_simp
+  exact Integrable.mono' hkernel' hmeas hbound
+
+lemma tendsto_intervalIntegral_b2diff_div_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_bernoulli2Diff_div z hz
+  simpa using
+    (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+      (f := fun x : ℝ => (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3)
+      (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+      h_int (tendsto_natCast_atTop_atTop))
+
+lemma tendsto_intervalIntegral_b4diff_div_pow5_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_bernoulli4Diff_div_pow5 z hz
+  simpa using
+    (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+      (f := fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+      (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+      h_int (tendsto_natCast_atTop_atTop))
+
+lemma tendsto_nat_add_complex_inv (z : ℂ) :
+    Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) := by
+  have h_inv_nat : Tendsto (fun N : ℕ => (N : ℂ)⁻¹) atTop (𝓝 (0 : ℂ)) := by
+    have hreal : Tendsto (fun N : ℕ => (N : ℝ)⁻¹) atTop (𝓝 (0 : ℝ)) :=
+      tendsto_inv_atTop_zero.comp
+        (tendsto_natCast_atTop_atTop : Tendsto (fun N : ℕ => (N : ℝ)) atTop atTop)
+    have hreal' : Tendsto (fun N : ℕ => (Complex.ofReal ((N : ℝ)⁻¹))) atTop (𝓝 (0 : ℂ)) :=
+      (Complex.continuous_ofReal.tendsto _).comp hreal
+    simpa using hreal'
+  have h_div : Tendsto (fun N : ℕ => z / (N : ℂ)) atTop (𝓝 (0 : ℂ)) := by
+    simpa [div_eq_mul_inv] using (tendsto_const_nhds.mul h_inv_nat)
+  have h_one_add : Tendsto (fun N : ℕ => (1 : ℂ) + z / (N : ℂ)) atTop (𝓝 (1 : ℂ)) := by
+    simpa using (tendsto_const_nhds.add h_div)
+  have h_inv_one_add :
+      Tendsto (fun N : ℕ => ((1 : ℂ) + z / (N : ℂ))⁻¹) atTop (𝓝 (1 : ℂ)⁻¹) := by
+    exact (tendsto_inv₀ (by norm_num : (1 : ℂ) ≠ 0)).comp h_one_add
+  have hmul_inv :
+      Tendsto (fun N : ℕ => (N : ℂ)⁻¹ * ((1 : ℂ) + z / (N : ℂ))⁻¹)
+        atTop (𝓝 (0 : ℂ)) := by
+    simpa using (h_inv_nat.mul h_inv_one_add)
+  have h_event_inv :
+      ∀ᶠ N : ℕ in atTop,
+        ((N : ℂ) + z)⁻¹ = (N : ℂ)⁻¹ * ((1 : ℂ) + z / (N : ℂ))⁻¹ := by
+    refine Filter.eventually_atTop.2 ?_
+    refine ⟨1, ?_⟩
+    intro N hN
+    have hNne : (N : ℂ) ≠ 0 := by
+      exact_mod_cast (Nat.ne_of_gt (Nat.succ_le_iff.mp hN))
+    have hmul : ((N : ℂ) + z) = (N : ℂ) * (1 + z / (N : ℂ)) := by
+      symm
+      calc
+        (N : ℂ) * (1 + z / (N : ℂ))
+            = (N : ℂ) * 1 + (N : ℂ) * (z / (N : ℂ)) := by
+                simp [mul_add]
+        _ = (N : ℂ) + (N : ℂ) * (z / (N : ℂ)) := by simp
+        _ = (N : ℂ) + z := by
+            simp [div_eq_mul_inv, hNne, mul_assoc, mul_left_comm, mul_comm]
+    calc
+      ((N : ℂ) + z)⁻¹
+          = ((N : ℂ) * (1 + z / (N : ℂ)))⁻¹ := by simpa [hmul]
+      _ = (1 + z / (N : ℂ))⁻¹ * (N : ℂ)⁻¹ := by
+            simpa using (mul_inv_rev (N : ℂ) (1 + z / (N : ℂ)))
+      _ = (N : ℂ)⁻¹ * (1 + z / (N : ℂ))⁻¹ := by
+            ring
+  exact (tendsto_congr' h_event_inv).2 hmul_inv
+
+lemma stieltjes_B2Diff_to_B4Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3 =
+      (1 / 6 : ℂ) *
+          ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - 0)) -
+        ((1 / 4 : ℂ) *
+          ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5) := by
+  let L : ℕ → ℂ := fun N =>
+    ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3
+  let R : ℕ → ℂ := fun N =>
+    (1 / 6 : ℂ) *
+        ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2))) -
+      ((1 / 4 : ℂ) *
+        ((-(30 : ℂ)⁻¹) *
+          (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4)) +
+        ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+  have hLR : ∀ N, L N = R N := by
+    intro N
+    simpa [L, R] using finite_stieltjes_B2Diff_to_B4Diff z hz N
+  have hL :
+      Tendsto L atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3)) := by
+    simpa [L] using tendsto_intervalIntegral_b2diff_div_Ioi z hz
+  have h_inv : Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) :=
+    tendsto_nat_add_complex_inv z
+  have h_inv2 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 2)) atTop (𝓝 ((0 : ℂ) ^ 2)) := by
+    simpa using h_inv.pow 2
+  have h_inv4 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 4)) atTop (𝓝 ((0 : ℂ) ^ 4)) := by
+    simpa using h_inv.pow 4
+  have hB4 :
+      Tendsto
+        (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+        atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)) :=
+    tendsto_intervalIntegral_b4diff_div_pow5_Ioi z hz
+  have hA :
+      Tendsto
+        (fun N : ℕ =>
+          (1 / 6 : ℂ) *
+            ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2))))
+        atTop
+        (𝓝 ((1 / 6 : ℂ) * ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - 0)))) := by
+    have hsub :
+        Tendsto (fun N : ℕ => (z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2))
+          atTop (𝓝 ((z⁻¹) ^ 2 - (0 : ℂ) ^ 2)) := by
+      exact tendsto_const_nhds.sub h_inv2
+    have hmul :
+        Tendsto
+          (fun N : ℕ =>
+            (1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2)))
+          atTop
+          (𝓝 ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - (0 : ℂ) ^ 2))) := by
+      simpa using hsub.const_mul (1 / 2 : ℂ)
+    simpa using hmul.const_mul (1 / 6 : ℂ)
+  have hEndpoint :
+      Tendsto
+        (fun N : ℕ =>
+          (-(30 : ℂ)⁻¹) * (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4))
+        atTop
+        (𝓝 ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4))) := by
+    have hsub :
+        Tendsto
+          (fun N : ℕ => (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4))
+          atTop (𝓝 ((0 : ℂ) ^ 4 - (z⁻¹) ^ 4)) := by
+      exact h_inv4.sub tendsto_const_nhds
+    simpa using hsub.const_mul (-(30 : ℂ)⁻¹)
+  have hB :
+      Tendsto
+        (fun N : ℕ =>
+          (1 / 4 : ℂ) *
+            ((-(30 : ℂ)⁻¹) *
+              (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4)) +
+            ∫ x in (0 : ℝ)..(N : ℝ),
+              (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+        atTop
+        (𝓝 ((1 / 4 : ℂ) *
+          ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)) := by
+    simpa using hEndpoint.const_mul (1 / 4 : ℂ) |>.add hB4
+  have hR :
+      Tendsto R atTop
+        (𝓝 ((1 / 6 : ℂ) *
+          ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - 0)) -
+        ((1 / 4 : ℂ) *
+          ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5))) := by
+    simpa [R] using hA.sub hB
+  have hL_to_rhs :
+      Tendsto L atTop
+        (𝓝 ((1 / 6 : ℂ) *
+          ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - 0)) -
+        ((1 / 4 : ℂ) *
+          ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5))) := by
+    exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
+  exact tendsto_nhds_unique hL hL_to_rhs
+
 /-!
 Final real-part bound for the Stieltjes remainder.
 The proof uses the N=1 Stieltjes identity + `integral_kernel_bound`.
