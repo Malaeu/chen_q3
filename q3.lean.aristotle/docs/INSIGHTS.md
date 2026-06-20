@@ -34381,3 +34381,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   sum it to expose the next global boundary contribution.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B10BoundaryBridgeChecked
+
+- Added checked interval boundary identity:
+  `Q3.stieltjes_interval_B10CellDeriv_to_B10Diff`.
+- The theorem rewrites
+  `bernoulli10DiffCellDeriv/(x+z)^10` as the explicit endpoint term
+  `(5 / 66) * (((n+1+z)^-1)^10 - ((n+z)^-1)^10)` plus
+  `10 * bernoulli10Diff/(x+z)^11` on each unit cell.
+- Closed:
+  `STEP33_M6_B10_CELLDERIV_TO_B10DIFF_BOUNDARY_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B8_TO_B10_COMBINED_CELL_GAP`.
+- Smallest useful next Lean object: combine
+  `Q3.stieltjes_interval_B8Diff_to_B10CellDeriv` and
+  `Q3.stieltjes_interval_B10CellDeriv_to_B10Diff` to get the one-cell
+  B8-to-B10 identity with boundary coefficient `(1 / 132)`.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

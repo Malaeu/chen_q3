@@ -53985,6 +53985,45 @@ git diff --check
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B10 boundary bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B10CellDeriv_to_B10Diff
+```
+
+Checked interval identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli10DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 10
+=
+  (5 / 66 : ℂ) *
+      ((((n + 1 : ℂ) + z)⁻¹) ^ 10 - (((n : ℂ) + z)⁻¹) ^ 10) +
+    (10 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
+STEP33_M6_B10_CELLDERIV_TO_B10DIFF_BOUNDARY_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_COMBINED_CELL_GAP
+```
+
+Meaning: combine the checked B8-to-B10 interval bridge with this checked B10
+boundary bridge to expose the one-cell B8-to-B10 identity and its
+`(1 / 132)` boundary term.
+
+Boundary: this is not a proof of the combined B8-to-B10 cell identity,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B8 cell layer checked
 
 Lean progress in `Q3.DigammaRemainder`:
