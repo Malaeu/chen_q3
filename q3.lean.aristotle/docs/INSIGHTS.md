@@ -35094,6 +35094,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14PrimitiveDerivative
+
+- Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by closing the
+  missing antiderivative bridge for the B14 primitive before attempting the
+  interval integration-by-parts theorem.
+- Local `q3_docs` searches again found no ready weighted half-cell theorem.
+  The official mathlib interval-integral docs were used only as API guidance
+  for integration by parts and FTC-style derivative surfaces, not as proof
+  evidence.
+- Added checked Lean fact:
+  `Q3.bernoulli14Primitive_hasDerivAt`.
+- Exact statement:
+  `HasDerivAt bernoulli14Primitive (bernoulli14 x) x`.
+- Closed preparatory gap:
+  `STEP33_M6_B14_PRIMITIVE_DERIVATIVE_GAP`.
+- Active exact gap remains:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- Next patch-sized theorem: combine
+  `Q3.bernoulli14Primitive_hasDerivAt`,
+  `Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half`, and
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half`
+  into the cellwise integration-by-parts/rearrangement bridge that yields the
+  same-target weighted nonnegativity premise `hweighted`.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`,
+  the touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove weighted cell nonnegativity, `hweighted`,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0PairedKernelAntitonicity
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by adding the

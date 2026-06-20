@@ -55961,6 +55961,69 @@ rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Execution Update (2026-06-20) -- B14 primitive derivative support
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/DigammaRemainder.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean fact added:
+
+```lean
+Q3.bernoulli14Primitive_hasDerivAt
+```
+
+Exact statement:
+
+```lean
+lemma bernoulli14Primitive_hasDerivAt (x : ℝ) :
+    HasDerivAt bernoulli14Primitive (bernoulli14 x) x
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_PRIMITIVE_DERIVATIVE_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem: combine
+`Q3.bernoulli14Primitive_hasDerivAt`,
+`Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half`, and
+`Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half`
+into the cellwise integration-by-parts/rearrangement bridge toward the
+same-target weighted nonnegativity premise `hweighted`.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; the touched Lean-file
+hole/axiom/unsafe scan and whitespace check were clean.
+
+Boundary: this does not prove the half-cell rearrangement, weighted cell
+nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+RH.
+
 ## Execution Update (2026-06-20) -- z0 paired-kernel antitonicity
 
 Route: PSD-pd/Q3 Step33A.1-A M6 shifted B14 half-cell support route.

@@ -661,6 +661,43 @@ lemma bernoulli14Primitive_one :
     bernoulli14Primitive 1 = 0 := by
   norm_num [bernoulli14Primitive]
 
+lemma bernoulli14Primitive_hasDerivAt (x : ℝ) :
+    HasDerivAt bernoulli14Primitive (bernoulli14 x) x := by
+  have h1 : HasDerivAt (fun y : ℝ => (7 / 6 : ℝ) * y) ((7 / 6 : ℝ) * 1) x := by
+    simpa using (hasDerivAt_id x).const_mul (7 / 6 : ℝ)
+  have h3 : HasDerivAt (fun y : ℝ => (-(691 / 90 : ℝ)) * y ^ 3)
+      ((-(691 / 90 : ℝ)) * ((3 : ℝ) * x ^ (3 - 1))) x := by
+    simpa using (hasDerivAt_pow 3 x).const_mul (-(691 / 90 : ℝ))
+  have h5 : HasDerivAt (fun y : ℝ => (91 / 6 : ℝ) * y ^ 5)
+      ((91 / 6 : ℝ) * ((5 : ℝ) * x ^ (5 - 1))) x := by
+    simpa using (hasDerivAt_pow 5 x).const_mul (91 / 6 : ℝ)
+  have h7 : HasDerivAt (fun y : ℝ => (-(143 / 10 : ℝ)) * y ^ 7)
+      ((-(143 / 10 : ℝ)) * ((7 : ℝ) * x ^ (7 - 1))) x := by
+    simpa using (hasDerivAt_pow 7 x).const_mul (-(143 / 10 : ℝ))
+  have h9 : HasDerivAt (fun y : ℝ => (143 / 18 : ℝ) * y ^ 9)
+      ((143 / 18 : ℝ) * ((9 : ℝ) * x ^ (9 - 1))) x := by
+    simpa using (hasDerivAt_pow 9 x).const_mul (143 / 18 : ℝ)
+  have h11 : HasDerivAt (fun y : ℝ => (-(91 / 30 : ℝ)) * y ^ 11)
+      ((-(91 / 30 : ℝ)) * ((11 : ℝ) * x ^ (11 - 1))) x := by
+    simpa using (hasDerivAt_pow 11 x).const_mul (-(91 / 30 : ℝ))
+  have h13 : HasDerivAt (fun y : ℝ => (7 / 6 : ℝ) * y ^ 13)
+      ((7 / 6 : ℝ) * ((13 : ℝ) * x ^ (13 - 1))) x := by
+    simpa using (hasDerivAt_pow 13 x).const_mul (7 / 6 : ℝ)
+  have h14 : HasDerivAt (fun y : ℝ => (-(1 / 2 : ℝ)) * y ^ 14)
+      ((-(1 / 2 : ℝ)) * ((14 : ℝ) * x ^ (14 - 1))) x := by
+    simpa using (hasDerivAt_pow 14 x).const_mul (-(1 / 2 : ℝ))
+  have h15 : HasDerivAt (fun y : ℝ => (1 / 15 : ℝ) * y ^ 15)
+      ((1 / 15 : ℝ) * ((15 : ℝ) * x ^ (15 - 1))) x := by
+    simpa using (hasDerivAt_pow 15 x).const_mul (1 / 15 : ℝ)
+  have h :=
+    ((((((((h1.add h3).add h5).add h7).add h9).add h11).add h13).add h14).add h15)
+  convert h using 1
+  · funext y
+    simp [bernoulli14Primitive]
+    ring_nf
+  · simp [bernoulli14]
+    ring_nf
+
 lemma bernoulli14Primitive_eq_half_cell_factor (x : ℝ) :
     let t : ℝ := x * (1 - x)
     bernoulli14Primitive x =

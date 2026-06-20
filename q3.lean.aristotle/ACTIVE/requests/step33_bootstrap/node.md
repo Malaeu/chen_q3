@@ -15675,6 +15675,49 @@ the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- B14 primitive derivative checked
+
+Checked new support fact:
+
+```lean
+Q3.bernoulli14Primitive_hasDerivAt
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_PRIMITIVE_DERIVATIVE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+This patch proves the exact derivative statement
+`HasDerivAt bernoulli14Primitive (bernoulli14 x) x`.  It prepares the
+cellwise integration-by-parts bridge from the B14 primitive sign and the z0
+paired-kernel antitonicity, but does not prove the weighted half-cell
+nonnegativity assumption.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; the touched Lean-file
+forbidden-token scan and whitespace check were clean.
+
+Boundary remains unchanged: this does not prove the half-cell rearrangement,
+weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Addendum -- z0 paired-kernel antitonicity checked
 
 Checked new support facts:

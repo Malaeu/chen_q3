@@ -28561,3 +28561,59 @@ Boundary: this does not prove the half-cell rearrangement/integration-by-parts
 comparison, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- B14 primitive derivative checked
+
+New checked support fact:
+
+```lean
+Q3.bernoulli14Primitive_hasDerivAt
+```
+
+Statement:
+
+```lean
+lemma bernoulli14Primitive_hasDerivAt (x : ℝ) :
+    HasDerivAt bernoulli14Primitive (bernoulli14 x) x
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_PRIMITIVE_DERIVATIVE_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Meaning: Lean now has the exact derivative bridge needed to treat
+`bernoulli14Primitive` as an antiderivative of `bernoulli14` in the upcoming
+cellwise interval integration-by-parts step.  Together with
+`Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half` and the checked z0 paired
+kernel antitonicity, this removes the fake-proof risk around the primitive
+layer.
+
+Local search status: `q3_docs` did not expose a ready theorem for the weighted
+half-cell bridge.  Official mathlib interval-integral documentation was used
+only to confirm API shape for integration by parts and FTC-style derivatives;
+it is not proof evidence.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; the touched Lean-file
+forbidden-token scan and whitespace check were clean.
+
+Boundary: this does not prove the half-cell rearrangement/integration-by-parts
+comparison, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
