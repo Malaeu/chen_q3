@@ -33986,3 +33986,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `sum_interval_integral_b4diff` into the finite B2-to-B4 power-5 identity.
 - Boundary: this does not prove the finite power-5 identity, the M6 source
   theorem, Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- FiniteB2FractToB4IdentityChecked
+
+- Added the checked left-side finite split for `bernoulli2Fract`:
+  `bernoulli2Fract_eq_cell_on_Icc`, `intervalIntegrable_b2fract_div_nat`, and
+  `sum_interval_integral_b2fract`.
+- Added the finite B2Fract-to-B4 identity:
+  `finite_sum_B2Fract_to_B4Diff` and `finite_stieltjes_B2Fract_to_B4Diff`.
+- The checked identity is:
+  `integral_[0,N] bernoulli2Fract/(x+z)^3 =
+   (1/4)*(-(1/30))*(((N+z)^(-1))^4 - (z^(-1))^4)
+   + integral_[0,N] bernoulli4Diff/(x+z)^5`.
+- Closed:
+  `STEP33_M6_B4_POWER5_FINITE_IDENTITY_ASSEMBLY_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_B2DIFF_POWER5_FINITE_IDENTITY_GAP`.
+- Meaning: use the repository sign convention
+  `bernoulli2Diff = 1/6 - bernoulli2Fract` plus the elementary finite integral
+  for `((x : Complex) + z)^(-3)` to convert the existing B2Diff finite
+  Stieltjes integral to B4/power-5 form.
+- Boundary: this does not prove the B2Diff power-5 finite identity, the M6
+  source theorem, Step33A.1-A, or Step33.

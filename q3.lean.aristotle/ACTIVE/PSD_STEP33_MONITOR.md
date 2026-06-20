@@ -26669,3 +26669,52 @@ identity is checked.
 
 Boundary unchanged: this does not prove the finite power-5 identity, the
 limit/tail ledger, the M6 source theorem, Step33A.1-A, or Step33.
+
+## 2026-06-20 Step33A.1-A finite B2Fract-to-B4 identity checked
+
+Added the finite identity assembly layer promised by the previous gap:
+
+```lean
+Q3.bernoulli2Fract_eq_cell_on_Icc
+Q3.intervalIntegrable_b2fract_div_nat
+Q3.sum_interval_integral_b2fract
+Q3.finite_sum_B2Fract_to_B4Diff
+Q3.finite_stieltjes_B2Fract_to_B4Diff
+```
+
+The checked finite Stieltjes bridge is:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3
+=
+  (1 / 4 : ℂ) *
+    ((-(30 : ℂ)⁻¹) *
+      (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4))
+  + ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+for `(z : ℂ) (hz : 0 < z.re) (N : ℕ)`.
+
+This closes:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_IDENTITY_ASSEMBLY_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_B2DIFF_POWER5_FINITE_IDENTITY_GAP
+```
+
+Meaning: convert the existing `bernoulli2Diff/(x+z)^3` finite Stieltjes
+integral into the B4/power-5 form using
+`bernoulli2Diff = 1/6 - bernoulli2Fract`, the checked
+`finite_stieltjes_B2Fract_to_B4Diff`, and the elementary finite integral of
+`((x : ℂ) + z)^(-3)`.  This is still finite; do not move to `N → ∞`/tail
+ledger until the B2Diff finite identity is checked.
+
+Boundary unchanged: this does not prove the B2Diff power-5 finite identity,
+the limit/tail ledger, the M6 source theorem, Step33A.1-A, or Step33.

@@ -53924,6 +53924,57 @@ git diff --check
 Boundary: this is not a proof of the finite power-5 identity, the M6 source
 theorem, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- finite B2Fract-to-B4 identity checked
+
+Lean progress:
+
+```lean
+Q3.bernoulli2Fract_eq_cell_on_Icc
+Q3.intervalIntegrable_b2fract_div_nat
+Q3.sum_interval_integral_b2fract
+Q3.finite_sum_B2Fract_to_B4Diff
+Q3.finite_stieltjes_B2Fract_to_B4Diff
+```
+
+Checked finite identity:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3
+=
+  (1 / 4 : ℂ) *
+    ((-(30 : ℂ)⁻¹) *
+      (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4))
+  + ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_IDENTITY_ASSEMBLY_GAP
+```
+
+The remaining exact gap is:
+
+```text
+STEP33_M6_B4_B2DIFF_POWER5_FINITE_IDENTITY_GAP
+```
+
+Meaning: use `bernoulli2Diff = 1/6 - bernoulli2Fract` and an elementary
+finite integral for `((x : ℂ) + z)^(-3)` to move the existing B2Diff finite
+Stieltjes integral to the B4/power-5 form.  This remains a finite identity
+step, not a tail or M6 source theorem step.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+```
+
+Boundary: this is not a proof of the B2Diff power-5 finite identity, the M6
+source theorem, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B4 power-5 finite interval bridge checked
 
 Computer Use / Proshka was used after the previous checked bridge to select the
