@@ -36872,6 +36872,13 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Added
   `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_condensed_majorant_bound_checked_smooth`,
   which consumes the explicit condensed-bound factor-budget shape directly.
+- Added
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16_condensed_factor_budget_le`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_smooth`.
+- The integer-budget receiver reduces the order-16 numeric payload to
+  `17! * (2^19 + 1) <= data.order16Abs`.
 - The checked bound is
   `∑' n, omegaPrimeOrder16RealMajorant n <= omegaPrimeOrder16RealMajorant 0 + (1 - 1 / 2^17)^-1`.
 - The order-16 budget is now reduced to a rational factor comparison against
@@ -36883,5 +36890,5 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   hole scan, and `git diff --check`.
 - Next exact blockers:
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
-  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_CONDENSED_FACTOR_BUDGET_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.

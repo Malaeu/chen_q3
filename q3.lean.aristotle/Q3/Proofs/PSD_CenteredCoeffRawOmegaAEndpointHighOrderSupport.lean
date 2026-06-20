@@ -10405,6 +10405,39 @@ theorem omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound :
       add_le_add_left omegaPrimeOrder16CondensedMajorant_tsum_le
         (omegaPrimeOrder16RealMajorant 0))
 
+def omegaPrimeOrder16CondensedFactorBudgetBound : Real :=
+  (Nat.factorial 17 : Real) * ((2 : Real) ^ 19 + 1)
+
+theorem omegaPrimeOrder16_condensed_factor_budget_le :
+    omegaPrimeOrder16SeriesFactor *
+        (omegaPrimeOrder16RealMajorant 0 +
+          (1 - (1 / (2 ^ 17 : Real)))⁻¹) <=
+      omegaPrimeOrder16CondensedFactorBudgetBound := by
+  have hgeom :
+      (1 - (1 / (2 ^ 17 : Real)))⁻¹ <= (2 : Real) := by
+    norm_num
+  have hgeomNonneg : 0 <= (1 - (1 / (2 ^ 17 : Real)))⁻¹ := by
+    norm_num
+  have hFactorNonneg : 0 <= omegaPrimeOrder16SeriesFactor := by
+    unfold omegaPrimeOrder16SeriesFactor
+    positivity
+  have hsum :
+      omegaPrimeOrder16RealMajorant 0 +
+          (1 - (1 / (2 ^ 17 : Real)))⁻¹ <=
+        (2 : Real) ^ 36 + 2 := by
+    have h0 : omegaPrimeOrder16RealMajorant 0 = (2 : Real) ^ 36 := by
+      norm_num [omegaPrimeOrder16RealMajorant]
+    nlinarith
+  calc
+    omegaPrimeOrder16SeriesFactor *
+        (omegaPrimeOrder16RealMajorant 0 +
+          (1 - (1 / (2 ^ 17 : Real)))⁻¹)
+        <= omegaPrimeOrder16SeriesFactor * ((2 : Real) ^ 36 + 2) := by
+          exact mul_le_mul_of_nonneg_left hsum hFactorNonneg
+    _ <= omegaPrimeOrder16CondensedFactorBudgetBound := by
+          norm_num [omegaPrimeOrder16CondensedFactorBudgetBound,
+            omegaPrimeOrder16SeriesFactor]
+
 /-- Convert a summable pointwise majorant for the order-16 series terms into
 the absolute `tsum` bound consumed by the OmegaPrime order-16 receiver. -/
 theorem omegaPrimeOrder16Series_abs_le_of_term_majorant
@@ -10683,6 +10716,39 @@ theorem Valid.of_order16_condensed_majorant_bound_checked_smooth
     omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound ?_ hDerivEq
     hRemainderBudget
   exact hFactorBudget
+
+/-- Checked-smooth `Valid` constructor whose order-16 numeric payload is a
+single integer lower bound for `data.order16Abs`. -/
+theorem Valid.of_order16_integer_budget_checked_smooth
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hIntegerBudget :
+      omegaPrimeOrder16CondensedFactorBudgetBound <=
+        (data.order16Abs : Real))
+    (hDerivEq :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        iteratedDeriv 16 omegaPrimeClosedForm eta =
+          -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta)
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid :=
+  Valid.of_order16_condensed_majorant_bound_checked_smooth data
+    hCoeffErrorNonneg hCenterJet
+    (omegaPrimeOrder16_condensed_factor_budget_le.trans hIntegerBudget)
+    hDerivEq hRemainderBudget
 
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}

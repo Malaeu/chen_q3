@@ -31184,6 +31184,9 @@ Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_summa
 Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_tsum_le
 Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound
 Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_condensed_majorant_bound_checked_smooth
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16_condensed_factor_budget_le
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_smooth
 ```
 
 Result:
@@ -31197,11 +31200,27 @@ The remaining factor-budget check can now target this explicit rational
 expression instead of the abstract `tsum`, through a checked `data.Valid`
 constructor.
 
+Follow-up integer-budget receiver:
+
+```text
+omegaPrimeOrder16CondensedFactorBudgetBound = 17! * (2^19 + 1)
+
+omegaPrimeOrder16SeriesFactor *
+  (omegaPrimeOrder16RealMajorant 0 + (1 - 1 / 2^17)^-1)
+  <= omegaPrimeOrder16CondensedFactorBudgetBound
+```
+
+So the order-16 numeric payload can now provide the single bound:
+
+```text
+omegaPrimeOrder16CondensedFactorBudgetBound <= data.order16Abs
+```
+
 Current exact blockers:
 
 ```text
 STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
-STEP33_A1_SUB0_OMEGAPRIME_ORDER16_CONDENSED_FACTOR_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
 STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
 ```
 
@@ -31215,7 +31234,7 @@ git diff --check
 ```
 
 Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
-numeric data.order16Abs factor-budget payload against the condensed rational
-bound, no center-jet payload, no exact rational remainder budget, no generated
-Lean payload, no first-subchunk residual-derivative norm certificate, no A
-hbox, and no Step33A.1-A closure exists yet.
+numeric data.order16Abs lower-bound payload against the integer budget, no
+center-jet payload, no exact rational remainder budget, no generated Lean
+payload, no first-subchunk residual-derivative norm certificate, no A hbox,
+and no Step33A.1-A closure exists yet.

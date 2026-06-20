@@ -59659,6 +59659,9 @@ Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_summa
 Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_tsum_le
 Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound
 Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_condensed_majorant_bound_checked_smooth
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16_condensed_factor_budget_le
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_smooth
 ```
 
 The checked bound is:
@@ -59680,11 +59683,18 @@ omegaPrimeOrder16SeriesFactor *
 plus the still-open `hDerivEq`, center-jet, and remainder-budget obligations.
 The final constructor consumes exactly this factor-budget shape.
 
+The integer-budget constructor now reduces that factor-budget payload further:
+
+```text
+omegaPrimeOrder16CondensedFactorBudgetBound = 17! * (2^19 + 1)
+omegaPrimeOrder16CondensedFactorBudgetBound <= data.order16Abs
+```
+
 Current exact blockers:
 
 ```text
 STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
-STEP33_A1_SUB0_OMEGAPRIME_ORDER16_CONDENSED_FACTOR_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
 STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
 ```
 
