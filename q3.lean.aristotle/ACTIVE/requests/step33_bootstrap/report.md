@@ -59036,3 +59036,67 @@ python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_cancella
 Boundary: no proof-grade interval certificate, no generated Lean payload, no
 first-subchunk residual-derivative norm certificate, no A hbox, no
 `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Execution Update (2026-06-20) -- route-B component Taylor residual payload
+
+Browser/Proshka route review chose B for the current fork: component
+Taylor/remainder certificate first, not endpoint finite-cover and not a
+monolithic direct Lean proof.
+
+Added:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+Generated:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md
+```
+
+The new payload schema is:
+
+```text
+q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1
+```
+
+and it records:
+
+```text
+status = fail_closed_missing_omega_omegaprime_taylor_remainder
+chosenRoute = B
+firstFailure = STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+componentDegree = 15
+assembledDegree = 45
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The generator extracted the existing 16 model-derivative coefficients from
+`primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff` and padded them
+to the assembled degree-45 coordinate system.  It does not claim component
+Taylor data is present.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+Next patch: build proof-grade Taylor/remainder data for `omega` and
+`omegaDeriv`; only after that should the generator try shape/shapeDeriv,
+raw-derivative assembly, residual polynomial range, and Lean emission.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+Boundary: no component Taylor bound certificate, no assembled raw derivative
+coefficient vector, no residual polynomial range proof, no generated Lean
+payload, no first-subchunk residual-derivative norm certificate, no A hbox, no
+`ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

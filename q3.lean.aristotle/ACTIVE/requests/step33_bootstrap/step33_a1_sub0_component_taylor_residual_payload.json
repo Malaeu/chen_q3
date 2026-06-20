@@ -1,0 +1,777 @@
+{
+  "advisorySource": "browser_proshka_route_advice_not_proof_evidence",
+  "cell": {
+    "cellL": "0",
+    "cellU": "1/10",
+    "center": "1/20",
+    "radius": "1/20",
+    "targetLower": "-94119513411/500000000000000000000000000000",
+    "targetUpper": "1866608532757/500000000000000000000000000000",
+    "targetWidth": "245091005771/62500000000000000000000000000"
+  },
+  "chosenRoute": "B",
+  "degrees": {
+    "assembledDegree": 45,
+    "componentDegree": 15,
+    "modelDegree": 15
+  },
+  "downstreamIntervalTheorem": {
+    "consumes": [
+      "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",
+      "residualPolynomialLower",
+      "residualPolynomialUpper",
+      "finalResidualLower",
+      "finalResidualUpper",
+      "budgetPassed"
+    ],
+    "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
+    "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval"
+  },
+  "existingLeanInputs": {
+    "fullTaylorDirectValidityBridge": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds",
+    "fullTaylorPolynomialDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel",
+    "fullTaylorResidualDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm",
+    "modelDerivCoeffCount": 16,
+    "modelDerivCoeffSource": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff"
+  },
+  "failureCodes": [
+    "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
+    "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
+    "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
+  ],
+  "firstFailure": "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
+  "generatorFields": {
+    "assembledRawDerivCoeff": null,
+    "componentPropagationRemainderAbs": null,
+    "finalResidualLower": null,
+    "finalResidualUpper": null,
+    "modelDerivCoeff": [
+      {
+        "index": 0,
+        "leanMatchIndex": "0",
+        "sourceLine": 49,
+        "value": "2814585322345983/31250000000000000"
+      },
+      {
+        "index": 1,
+        "leanMatchIndex": "1",
+        "sourceLine": 50,
+        "value": "432682670395380743/250000000000000000"
+      },
+      {
+        "index": 2,
+        "leanMatchIndex": "2",
+        "sourceLine": 51,
+        "value": "-2076189217694411487/1000000000000000000"
+      },
+      {
+        "index": 3,
+        "leanMatchIndex": "3",
+        "sourceLine": 52,
+        "value": "-155822302127901237/12500000000000000"
+      },
+      {
+        "index": 4,
+        "leanMatchIndex": "4",
+        "sourceLine": 53,
+        "value": "248352666423100477/12500000000000000"
+      },
+      {
+        "index": 5,
+        "leanMatchIndex": "5",
+        "sourceLine": 54,
+        "value": "32291651785944130749/500000000000000000"
+      },
+      {
+        "index": 6,
+        "leanMatchIndex": "6",
+        "sourceLine": 55,
+        "value": "-69999411432932463909/500000000000000000"
+      },
+      {
+        "index": 7,
+        "leanMatchIndex": "7",
+        "sourceLine": 56,
+        "value": "-34707798540256129409/125000000000000000"
+      },
+      {
+        "index": 8,
+        "leanMatchIndex": "8",
+        "sourceLine": 57,
+        "value": "836575734719049511113/1000000000000000000"
+      },
+      {
+        "index": 9,
+        "leanMatchIndex": "9",
+        "sourceLine": 58,
+        "value": "100643501888413806697/100000000000000000"
+      },
+      {
+        "index": 10,
+        "leanMatchIndex": "10",
+        "sourceLine": 59,
+        "value": "-897573400754971084771/200000000000000000"
+      },
+      {
+        "index": 11,
+        "leanMatchIndex": "11",
+        "sourceLine": 60,
+        "value": "-142205390337268351947/50000000000000000"
+      },
+      {
+        "index": 12,
+        "leanMatchIndex": "12",
+        "sourceLine": 61,
+        "value": "5554290524724778241613/250000000000000000"
+      },
+      {
+        "index": 13,
+        "leanMatchIndex": "13",
+        "sourceLine": 62,
+        "value": "916884525703826724093/250000000000000000"
+      },
+      {
+        "index": 14,
+        "leanMatchIndex": "14",
+        "sourceLine": 63,
+        "value": "-19999872807938988432933/200000000000000000"
+      },
+      {
+        "index": 15,
+        "leanMatchIndex": "_",
+        "sourceLine": 64,
+        "value": "62148786708414316877/2500000000000000"
+      }
+    ],
+    "modelDerivCoeffPaddedToAssembledDegree": [
+      {
+        "index": 0,
+        "value": "2814585322345983/31250000000000000"
+      },
+      {
+        "index": 1,
+        "value": "432682670395380743/250000000000000000"
+      },
+      {
+        "index": 2,
+        "value": "-2076189217694411487/1000000000000000000"
+      },
+      {
+        "index": 3,
+        "value": "-155822302127901237/12500000000000000"
+      },
+      {
+        "index": 4,
+        "value": "248352666423100477/12500000000000000"
+      },
+      {
+        "index": 5,
+        "value": "32291651785944130749/500000000000000000"
+      },
+      {
+        "index": 6,
+        "value": "-69999411432932463909/500000000000000000"
+      },
+      {
+        "index": 7,
+        "value": "-34707798540256129409/125000000000000000"
+      },
+      {
+        "index": 8,
+        "value": "836575734719049511113/1000000000000000000"
+      },
+      {
+        "index": 9,
+        "value": "100643501888413806697/100000000000000000"
+      },
+      {
+        "index": 10,
+        "value": "-897573400754971084771/200000000000000000"
+      },
+      {
+        "index": 11,
+        "value": "-142205390337268351947/50000000000000000"
+      },
+      {
+        "index": 12,
+        "value": "5554290524724778241613/250000000000000000"
+      },
+      {
+        "index": 13,
+        "value": "916884525703826724093/250000000000000000"
+      },
+      {
+        "index": 14,
+        "value": "-19999872807938988432933/200000000000000000"
+      },
+      {
+        "index": 15,
+        "value": "62148786708414316877/2500000000000000"
+      },
+      {
+        "index": 16,
+        "value": "0"
+      },
+      {
+        "index": 17,
+        "value": "0"
+      },
+      {
+        "index": 18,
+        "value": "0"
+      },
+      {
+        "index": 19,
+        "value": "0"
+      },
+      {
+        "index": 20,
+        "value": "0"
+      },
+      {
+        "index": 21,
+        "value": "0"
+      },
+      {
+        "index": 22,
+        "value": "0"
+      },
+      {
+        "index": 23,
+        "value": "0"
+      },
+      {
+        "index": 24,
+        "value": "0"
+      },
+      {
+        "index": 25,
+        "value": "0"
+      },
+      {
+        "index": 26,
+        "value": "0"
+      },
+      {
+        "index": 27,
+        "value": "0"
+      },
+      {
+        "index": 28,
+        "value": "0"
+      },
+      {
+        "index": 29,
+        "value": "0"
+      },
+      {
+        "index": 30,
+        "value": "0"
+      },
+      {
+        "index": 31,
+        "value": "0"
+      },
+      {
+        "index": 32,
+        "value": "0"
+      },
+      {
+        "index": 33,
+        "value": "0"
+      },
+      {
+        "index": 34,
+        "value": "0"
+      },
+      {
+        "index": 35,
+        "value": "0"
+      },
+      {
+        "index": 36,
+        "value": "0"
+      },
+      {
+        "index": 37,
+        "value": "0"
+      },
+      {
+        "index": 38,
+        "value": "0"
+      },
+      {
+        "index": 39,
+        "value": "0"
+      },
+      {
+        "index": 40,
+        "value": "0"
+      },
+      {
+        "index": 41,
+        "value": "0"
+      },
+      {
+        "index": 42,
+        "value": "0"
+      },
+      {
+        "index": 43,
+        "value": "0"
+      },
+      {
+        "index": 44,
+        "value": "0"
+      },
+      {
+        "index": 45,
+        "value": "0"
+      }
+    ],
+    "omegaCoeff": [
+      {
+        "component": "omega",
+        "index": 0,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 1,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 2,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 3,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 4,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 5,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 6,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 7,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 8,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 9,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 10,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 11,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 12,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 13,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 14,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omega",
+        "index": 15,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      }
+    ],
+    "omegaDerivCoeff": [
+      {
+        "component": "omegaDeriv",
+        "index": 0,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 1,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 2,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 3,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 4,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 5,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 6,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 7,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 8,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 9,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 10,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 11,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 12,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 13,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 14,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "omegaDeriv",
+        "index": 15,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      }
+    ],
+    "omegaDerivRemainderAbs": null,
+    "omegaRemainderAbs": null,
+    "productTruncationRemainderAbs": null,
+    "residualPolynomialLower": null,
+    "residualPolynomialUpper": null,
+    "residualTaylorCoeff": null,
+    "residualTaylorRemainderAbs": null,
+    "shapeCoeff": [
+      {
+        "component": "shape",
+        "index": 0,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 1,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 2,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 3,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 4,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 5,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 6,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 7,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 8,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 9,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 10,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 11,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 12,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 13,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 14,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shape",
+        "index": 15,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      }
+    ],
+    "shapeDerivCoeff": [
+      {
+        "component": "shapeDeriv",
+        "index": 0,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 1,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 2,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 3,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 4,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 5,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 6,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 7,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 8,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 9,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 10,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 11,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 12,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 13,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 14,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      },
+      {
+        "component": "shapeDeriv",
+        "index": 15,
+        "status": "missing_proof_grade_component_taylor_coeff",
+        "value": null
+      }
+    ],
+    "shapeDerivRemainderAbs": null,
+    "shapeRemainderAbs": null
+  },
+  "proofStatus": {
+    "componentTaylorProofsPresent": false,
+    "exactCoefficientAssemblyPassed": false,
+    "finalBudgetPassed": false,
+    "outLeanWritten": false,
+    "proofSafeClosedFields": 0,
+    "residualPolynomialRangePassed": false
+  },
+  "proshkaDecision": {
+    "chosen": "B",
+    "whyNotA": "Endpoint finite-cover machinery still lacks proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
+    "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
+  },
+  "routeId": "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL",
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1",
+  "sourceDefinitionHashes": {
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json": "cc2d04f85189576e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
+  },
+  "sourceDefinitionLines": {
+    "primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert": 2726,
+    "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff": 132,
+    "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert": 190,
+    "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff": 46,
+    "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff_end": 65,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_bounds": 2868,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds": 2815,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel": 201,
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm": 1912
+  },
+  "sourceStatus": {
+    "componentLedgerPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json",
+    "componentLedgerSchema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1",
+    "componentLedgerStatus": "fail_closed_missing_component_taylor_remainder_bounds"
+  },
+  "status": "fail_closed_missing_omega_omegaprime_taylor_remainder",
+  "targetTheorem": {
+    "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
+    "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",
+    "statementAscii": "theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure {eta : Real} (heta : eta in Set.Icc 0 (1/10)) : norm ((RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta) - rawOmegaATaylorPolynomial 45 (1/20) ResidualTaylorCoeff eta) <= ResidualTaylorRemainderAbs"
+  }
+}

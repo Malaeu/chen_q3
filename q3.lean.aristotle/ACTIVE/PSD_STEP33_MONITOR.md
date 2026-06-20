@@ -30466,3 +30466,61 @@ Boundary: coefficient extraction is bookkeeping only.  No component Taylor
 remainder certificate, no assembled residual range proof, no Lean payload, no
 first-subchunk residual-derivative norm certificate, and Step33A.1-A remains
 open.
+
+## 2026-06-20 Current EOF Addendum -- route-B component Taylor payload
+
+Browser/Proshka was used for the route fork after the local search found that
+endpoint finite-cover machinery is not yet a proof-grade residual derivative
+backend.  The selected route is B: build component Taylor/remainder data,
+assemble the raw derivative polynomial, subtract the checked model derivative
+coefficients, then bound the assembled residual polynomial plus one combined
+remainder.
+
+Added generator:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+Generated artifacts:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md
+```
+
+Current schema:
+
+```text
+q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1
+```
+
+Current status:
+
+```text
+status = fail_closed_missing_omega_omegaprime_taylor_remainder
+chosenRoute = B
+firstFailure = STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+componentDegree = 15
+assembledDegree = 45
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The target enclosure theorem surface is:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure
+```
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: the payload extracts and pads the checked model derivative
+coefficients, but component Taylor coefficients/remainders are still missing.
+No assembled raw derivative coefficient vector, no residual polynomial range
+proof, no Lean payload, no first-subchunk residual-derivative norm
+certificate, and Step33A.1-A remains open.

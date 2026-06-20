@@ -36459,3 +36459,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   component Taylor bound certificate, no assembled residual range proof, no
   Lean payload, no first-subchunk residual-derivative norm certificate, no A
   hbox, no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- ComponentTaylorResidualPayload
+
+- Used Browser/Proshka for the route fork after local inspection showed that
+  endpoint finite-cover machinery is not yet a proof-grade backend for the
+  same-expression residual derivative interval.
+- Selected route B: prove component Taylor/remainder data for `omega`,
+  `omegaDeriv`, `shape`, and `shapeDeriv`, assemble the raw derivative
+  polynomial exactly, subtract the checked model derivative coefficients, and
+  only then spend the combined residual remainder.
+- Added
+  `scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py`.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json`
+  and `.md` with schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1`.
+- Current status is
+  `fail_closed_missing_omega_omegaprime_taylor_remainder` with first failure
+  `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP`.
+- The payload extracts the 16 checked model derivative coefficients from
+  `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff` and pads them
+  to assembled degree 45, but it leaves all component Taylor coefficients and
+  remainders open.
+- Validation passed for generator run and `py_compile`; no Lean files were
+  touched in this step.
+- Boundary: no component Taylor bound certificate, no assembled raw derivative
+  coefficient vector, no residual polynomial range proof, no generated Lean
+  payload, no first-subchunk residual-derivative norm certificate, no A hbox,
+  no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
