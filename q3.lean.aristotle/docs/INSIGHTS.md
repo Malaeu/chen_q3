@@ -36691,3 +36691,41 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   rational remainder-budget payload, no generated Lean payload, no
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeAnalyticSmoothnessClosed
+
+- Added and Lean-checked
+  `RawOmegaATaylorModelCertificate.trigamma_analyticAt_of_re_pos` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+- Added and Lean-checked
+  `RawOmegaATaylorModelCertificate.step22OmegaArchWeightDerivClosedForm_contDiff16`,
+  deriving `ContDiff Real 16` for the OmegaPrime closed form from trigamma
+  analyticity and the linear `eta -> 1/4 + i eta/2` substitution.
+- Added endpoint bridge symbols
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16`
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth`
+  in `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Updated and reran
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`; payload
+  status remains `fail_closed_missing_order16_polygamma_bound`, but target
+  status is now
+  `receiver_centered_taylor_bridge_and_smooth_present_missing_payload`.
+- Payload proof status now records
+  `omegaPrimeAnalyticSmoothnessProved = true` and
+  `validCheckedSmoothConstructorProved = true`, while
+  `omegaPrimeCenterJetBoundsProved = false`,
+  `omegaPrimeOrder16BoundProved = false`, and
+  `omegaPrimeRemainderBudgetPassed = false`.
+- Proshka/Browser advisory selected the direct analytic-crosswalk route; this
+  note records only the subsequent Lean-checked local facts as proof evidence.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`,
+  `lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker`,
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, generator run, `py_compile`, and JSON parse.
+- Boundary: no center-jet payload, no uniform order-16/polygamma bound, no
+  exact rational remainder budget, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

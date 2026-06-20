@@ -9641,6 +9641,13 @@ namespace Step33Sub0OmegaPrimeTaylorRemainderCert
 private abbrev omegaPrimeClosedForm : Real -> Real :=
   _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.step22OmegaArchWeightDerivClosedForm
 
+/-- The OmegaPrime closed form is `C^16`; payloads do not need to supply this
+analytic smoothness proof. -/
+theorem omegaPrimeClosedForm_contDiff16 :
+    ContDiff Real 16 omegaPrimeClosedForm := by
+  simpa [omegaPrimeClosedForm] using
+    _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.step22OmegaArchWeightDerivClosedForm_contDiff16
+
 /-- Reflected-function derivative identity needed for the left half of the
 centered OmegaPrime Taylor bridge. -/
 theorem omegaPrimeClosedForm_reflected_iteratedDeriv
@@ -10120,6 +10127,32 @@ theorem Valid.of_order16_bound
         Set.Icc (0 : Real) ((1 : Real) / 10) := by
     norm_num [step33Sub0OmegaPrimeTaylorCenter]
   exact (norm_nonneg _).trans (hOrder16 _ hc)
+
+theorem Valid.of_order16_bound_checked_smooth
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hOrder16 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 omegaPrimeClosedForm eta‖ <=
+          (data.order16Abs : Real))
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid :=
+  Valid.of_order16_bound data omegaPrimeClosedForm_contDiff16
+    hCoeffErrorNonneg hCenterJet hOrder16 hRemainderBudget
 
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}

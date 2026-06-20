@@ -30878,3 +30878,61 @@ Boundary: no order-16/polygamma source bound, no center-jet payload, no exact
 rational remainder-budget payload, no generated Lean payload, no
 first-subchunk residual-derivative norm certificate, no A hbox, and no
 Step33A.1-A closure exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime analytic smoothness closed
+
+The active OmegaPrime sub0 Taylor receiver now has checked analytic smoothness
+for the closed form.
+
+New checked symbols:
+
+```lean
+RawOmegaATaylorModelCertificate.trigamma_analyticAt_of_re_pos
+RawOmegaATaylorModelCertificate.step22OmegaArchWeightDerivClosedForm_contDiff16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth
+```
+
+The fail-closed payload generator now reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v6
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+targetLeanSurface.status =
+  receiver_centered_taylor_bridge_and_smooth_present_missing_payload
+omegaPrimeAnalyticSmoothnessProved = true
+validCheckedSmoothConstructorProved = true
+omegaPrimeCenterJetBoundsProved = false
+omegaPrimeOrder16BoundProved = false
+omegaPrimeRemainderBudgetPassed = false
+```
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Meaning after this checkpoint: `hSmooth` is no longer missing.  The remaining
+payload work is center-jet coefficient enclosures, the uniform order-16
+trigamma/polygamma bound on `[0, 1/10]`, and the rational remainder-budget
+inequality.
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: no center-jet payload, no uniform order-16/polygamma bound, no exact
+rational remainder budget, no generated Lean payload, no first-subchunk
+residual-derivative norm certificate, no A hbox, and no Step33A.1-A closure
+exists yet.

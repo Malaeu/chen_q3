@@ -12,7 +12,7 @@
     "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
     "nextFailureAfterBridge": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
     "recommendedGenerator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
-    "recommendedLeanBridge": "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound",
+    "recommendedLeanBridge": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth",
     "whyNotEndpointFiniteCover": "Endpoint finite-cover subdivision still needs the same trigamma/polygamma source bounds, repeated over segments."
   },
   "cell": {
@@ -320,27 +320,37 @@
         "symbol": "trigamma_differentiableAt_of_re_pos"
       },
       {
+        "line": 6484,
+        "status": "found",
+        "symbol": "trigamma_analyticAt_of_re_pos"
+      },
+      {
         "line": 6440,
         "status": "found",
         "symbol": "step22OmegaArchWeightDerivClosedForm"
       },
       {
-        "line": 6485,
+        "line": 6499,
         "status": "found",
         "symbol": "step22OmegaArchWeightDerivClosedForm_differentiableAt"
       },
       {
-        "line": 8438,
+        "line": 6532,
+        "status": "found",
+        "symbol": "step22OmegaArchWeightDerivClosedForm_contDiff16"
+      },
+      {
+        "line": 8493,
         "status": "found",
         "symbol": "step22OmegaArchWeight_deriv_eq_closedForm"
       },
       {
-        "line": 8568,
+        "line": 8623,
         "status": "found",
         "symbol": "Step22OmegaClosedFormEndpointBoundsCert"
       },
       {
-        "line": 12197,
+        "line": 12252,
         "status": "found",
         "symbol": "ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound"
       }
@@ -364,6 +374,7 @@
     "centeredTaylorRightBridgeProved": true,
     "componentTaylorBoundsProved": false,
     "exactRationalChecksPassed": false,
+    "omegaPrimeAnalyticSmoothnessProved": true,
     "omegaPrimeCenterJetBoundsProved": false,
     "omegaPrimeOrder16BoundProved": false,
     "omegaPrimeRemainderBudgetPassed": false,
@@ -372,6 +383,7 @@
     "reflectedIteratedDerivBridgeProved": true,
     "reflectedTaylorWithinEvalExactPolyBridgeProved": true,
     "taylorWithinEvalExactPolyBridgeProved": true,
+    "validCheckedSmoothConstructorProved": true,
     "validOfOrder16ConstructorProved": true
   },
   "requiredProofs": [
@@ -380,6 +392,8 @@
     "already proved locally: the right-half Lagrange bridge centerTaylorBridge_right_of_order16_bound with the sharp 16! denominator on eta in [1/20, 1/10]",
     "already proved locally: taylorWithinEval agrees with exactTaylorPoly under UniqueDiffOn and global ContDiff 16",
     "already proved locally: reflected iterated derivative identity iteratedDeriv n (fun x => f (1/10 - x)) x = (-1)^n * iteratedDeriv n f (1/10 - x)",
+    "already proved locally: trigamma is analytic in the right half-plane and step22OmegaArchWeightDerivClosedForm is ContDiff Real 16",
+    "already proved locally: Valid.of_order16_bound_checked_smooth uses omegaPrimeClosedForm_contDiff16, so generated payloads no longer need to supply hSmooth",
     "for each j < 16, prove |iteratedDeriv j step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]",
     "prove forall eta in [0, 1/10], |iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta| <= order16Abs",
     "prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs"
@@ -389,8 +403,8 @@
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "7f64b5533a21ca57",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md": "319d19f8e4ce698f",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "3de3009753a52710",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "f73c7e314c43e44b"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "b061afb17a6a7160",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "7fc3bc9bbfc37df7"
   },
   "sourceStatus": {
     "componentPayloadFirstFailure": "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
@@ -407,14 +421,16 @@
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "leftLagrangeBridgeTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound",
     "localNormalization": "rawOmegaATaylorPolynomial expects a Rat center and a Fin (degree + 1) -> Rat coefficient function.",
-    "nextBridgeStatementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (hSmooth : ContDiff Real 16 step22OmegaArchWeightDerivClosedForm) (hCenterJet : center coefficient enclosures) (hOrder16 : forall eta in [0,1/10], norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) <= data.order16Abs) (hBudget : coefficient plus Lagrange budget <= data.remainderAbs) : data.Valid",
+    "nextBridgeStatementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (hCenterJet : center coefficient enclosures) (hOrder16 : forall eta in [0,1/10], norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) <= data.order16Abs) (hBudget : coefficient plus Lagrange budget <= data.remainderAbs) : data.Valid",
+    "omegaPrimeContDiff16Theorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16",
     "reflectedIteratedDerivTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv",
     "reflectedTaylorWithinEvalExactPolyTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly",
     "rightLagrangeBridgeTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound",
     "statementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs",
-    "status": "receiver_and_centered_taylor_bridge_present_missing_payload",
+    "status": "receiver_centered_taylor_bridge_and_smooth_present_missing_payload",
     "structure": "Step33Sub0OmegaPrimeTaylorRemainderCert",
     "taylorWithinEvalExactPolyTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly",
+    "validCheckedSmoothTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth",
     "validOfOrder16Theorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound",
     "validPredicate": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid"
   },
@@ -448,39 +464,47 @@
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid": {
-      "line": 10061,
+      "line": 10068,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound": {
-      "line": 10190,
+      "line": 10223,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound": {
-      "line": 10090,
+      "line": 10097,
+      "status": "found"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth": {
+      "line": 10131,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound": {
-      "line": 9903,
+      "line": 9910,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound": {
-      "line": 10043,
+      "line": 10050,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound": {
-      "line": 9802,
+      "line": 9809,
       "status": "found"
     },
-    "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv": {
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16": {
       "line": 9646,
       "status": "found"
     },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv": {
+      "line": 9653,
+      "status": "found"
+    },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly": {
-      "line": 9751,
+      "line": 9758,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly": {
-      "line": 9675,
+      "line": 9682,
       "status": "found"
     }
   }

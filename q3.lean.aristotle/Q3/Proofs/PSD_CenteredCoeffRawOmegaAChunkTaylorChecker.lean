@@ -6480,6 +6480,20 @@ theorem trigamma_differentiableAt_of_re_pos {z : Complex} (hz : 0 < z.re) :
     simpa [Q3.digamma, digamma] using (deriv_digamma_eq_trigamma hw).symm
   exact hDigammaDeriv.congr_of_eventuallyEq hEq
 
+/-- The trigamma series is analytic in the right half-plane. -/
+theorem trigamma_analyticAt_of_re_pos {z : Complex} (hz : 0 < z.re) :
+    AnalyticAt Complex trigamma z := by
+  have hDigammaDeriv :
+      AnalyticAt Complex (fun w : Complex => deriv Q3.digamma w) z :=
+    (digamma_analyticAt_of_re_pos hz).deriv
+  have hEq :
+      (fun w : Complex => deriv Q3.digamma w) =ᶠ[𝓝 z] trigamma := by
+    have hHalfPlane : {w : Complex | 0 < w.re} ∈ 𝓝 z :=
+      IsOpen.mem_nhds (isOpen_lt continuous_const Complex.continuous_re) hz
+    filter_upwards [hHalfPlane] with w hw
+    simpa [Q3.digamma, digamma] using deriv_digamma_eq_trigamma hw
+  exact hDigammaDeriv.congr hEq
+
 /-- The checked Omega-derivative closed form is differentiable everywhere. -/
 @[fun_prop]
 theorem step22OmegaArchWeightDerivClosedForm_differentiableAt (eta : Real) :
@@ -6513,6 +6527,47 @@ theorem step22OmegaArchWeightDerivClosedForm_differentiableAt (eta : Real) :
           ((1 / 4 : Complex) + Complex.I * (((t / 2 : Real) : Complex)))).im *
           (1 / 2 : Real))) eta
   simpa [z] using (hIm.mul (differentiableAt_const (1 / 2 : Real))).neg
+
+/-- The checked Omega-derivative closed form is `C^16` on the real line. -/
+theorem step22OmegaArchWeightDerivClosedForm_contDiff16 :
+    ContDiff Real 16 step22OmegaArchWeightDerivClosedForm := by
+  let z : Real -> Complex :=
+    fun t : Real =>
+      (1 / 4 : Complex) + Complex.I * (((t / 2 : Real) : Complex))
+  have hzCont : ContDiff Real 16 z := by
+    have hdiv : ContDiff Real 16 (fun t : Real => t / 2) := by
+      fun_prop
+    have hcast :
+        ContDiff Real 16
+          (fun t : Real => (((t / 2 : Real) : Real) : Complex)) :=
+      Complex.ofRealCLM.contDiff.comp hdiv
+    have hmul :
+        ContDiff Real 16
+          (fun t : Real =>
+            Complex.I * (((t / 2 : Real) : Real) : Complex)) :=
+      (contDiff_const : ContDiff Real 16 (fun _ : Real => Complex.I)).mul hcast
+    simpa [z] using
+      (contDiff_const : ContDiff Real 16 (fun _ : Real => (1 / 4 : Complex))).add
+        hmul
+  have hTrigamma :
+      ContDiff Real 16 (fun t : Real => trigamma (z t)) := by
+    rw [contDiff_iff_contDiffAt]
+    intro eta
+    have hzPos : 0 < (z eta).re := by
+      dsimp [z]
+      norm_num [Complex.add_re, Complex.mul_re]
+    exact
+      ((trigamma_analyticAt_of_re_pos hzPos).contDiffAt.restrict_scalars Real).comp
+        eta hzCont.contDiffAt
+  have hIm : ContDiff Real 16 (fun t : Real => (trigamma (z t)).im) :=
+    Complex.imCLM.contDiff.comp hTrigamma
+  change
+    ContDiff Real 16
+      (fun t : Real =>
+        -((trigamma
+          ((1 / 4 : Complex) + Complex.I * (((t / 2 : Real) : Complex)))).im *
+          (1 / 2 : Real)))
+  simpa [z] using (hIm.mul (contDiff_const : ContDiff Real 16 (fun _ : Real => (1 / 2 : Real)))).neg
 
 /-- Convert a two-sided enclosure for the imaginary part of the trigamma
 series into a two-sided enclosure for the raw Step22 Omega derivative

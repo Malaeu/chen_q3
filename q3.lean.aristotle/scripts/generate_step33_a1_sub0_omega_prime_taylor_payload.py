@@ -65,6 +65,12 @@ TARGET_RIGHT_BRIDGE = (
     "centerTaylorBridge_right_of_order16_bound"
 )
 TARGET_VALID_OF_ORDER16 = "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound"
+TARGET_OMEGAPRIME_CONTDIFF16 = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16"
+)
+TARGET_VALID_CHECKED_SMOOTH = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth"
+)
 TARGET_REFLECTED_DERIV = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert."
     "omegaPrimeClosedForm_reflected_iteratedDeriv"
@@ -93,8 +99,10 @@ SOURCE_SYMBOLS = {
         "rawOmegaATaylorPolynomial",
         "digamma_analyticAt_of_re_pos",
         "trigamma_differentiableAt_of_re_pos",
+        "trigamma_analyticAt_of_re_pos",
         "step22OmegaArchWeightDerivClosedForm",
         "step22OmegaArchWeightDerivClosedForm_differentiableAt",
+        "step22OmegaArchWeightDerivClosedForm_contDiff16",
         "step22OmegaArchWeight_deriv_eq_closedForm",
         "Step22OmegaClosedFormEndpointBoundsCert",
         "ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
@@ -111,11 +119,15 @@ SOURCE_PATTERNS = {
     "trigamma_differentiableAt_of_re_pos": (
         "theorem trigamma_differentiableAt_of_re_pos"
     ),
+    "trigamma_analyticAt_of_re_pos": "theorem trigamma_analyticAt_of_re_pos",
     "step22OmegaArchWeightDerivClosedForm": (
         "def step22OmegaArchWeightDerivClosedForm"
     ),
     "step22OmegaArchWeightDerivClosedForm_differentiableAt": (
         "theorem step22OmegaArchWeightDerivClosedForm_differentiableAt"
+    ),
+    "step22OmegaArchWeightDerivClosedForm_contDiff16": (
+        "theorem step22OmegaArchWeightDerivClosedForm_contDiff16"
     ),
     "step22OmegaArchWeight_deriv_eq_closedForm": (
         "theorem step22OmegaArchWeight_deriv_eq_closedForm"
@@ -139,6 +151,8 @@ TARGET_SYMBOLS = [
     TARGET_LEFT_BRIDGE,
     TARGET_RIGHT_BRIDGE,
     TARGET_VALID_OF_ORDER16,
+    TARGET_OMEGAPRIME_CONTDIFF16,
+    TARGET_VALID_CHECKED_SMOOTH,
     TARGET_REFLECTED_DERIV,
     TARGET_TAYLOR_EXACT_POLY,
     TARGET_REFLECTED_TAYLOR_EXACT_POLY,
@@ -159,6 +173,8 @@ TARGET_PATTERNS = {
     TARGET_LEFT_BRIDGE: "theorem centerTaylorBridge_left_of_order16_bound",
     TARGET_RIGHT_BRIDGE: "theorem centerTaylorBridge_right_of_order16_bound",
     TARGET_VALID_OF_ORDER16: "theorem Valid.of_order16_bound",
+    TARGET_OMEGAPRIME_CONTDIFF16: "theorem omegaPrimeClosedForm_contDiff16",
+    TARGET_VALID_CHECKED_SMOOTH: "theorem Valid.of_order16_bound_checked_smooth",
     TARGET_REFLECTED_DERIV: "theorem omegaPrimeClosedForm_reflected_iteratedDeriv",
     TARGET_TAYLOR_EXACT_POLY: "theorem taylorWithinEval_eq_exactTaylorPoly",
     TARGET_REFLECTED_TAYLOR_EXACT_POLY: (
@@ -267,6 +283,12 @@ def build_report(
     )
     left_bridge_present = target_scan[TARGET_LEFT_BRIDGE]["status"] == "found"
     right_bridge_present = target_scan[TARGET_RIGHT_BRIDGE]["status"] == "found"
+    omega_prime_contdiff16_present = (
+        target_scan[TARGET_OMEGAPRIME_CONTDIFF16]["status"] == "found"
+    )
+    valid_checked_smooth_present = (
+        target_scan[TARGET_VALID_CHECKED_SMOOTH]["status"] == "found"
+    )
 
     return {
         "schema": SCHEMA,
@@ -303,13 +325,22 @@ def build_report(
             "leftLagrangeBridgeTheorem": TARGET_LEFT_BRIDGE,
             "rightLagrangeBridgeTheorem": TARGET_RIGHT_BRIDGE,
             "validOfOrder16Theorem": TARGET_VALID_OF_ORDER16,
+            "omegaPrimeContDiff16Theorem": TARGET_OMEGAPRIME_CONTDIFF16,
+            "validCheckedSmoothTheorem": TARGET_VALID_CHECKED_SMOOTH,
             "reflectedIteratedDerivTheorem": TARGET_REFLECTED_DERIV,
             "taylorWithinEvalExactPolyTheorem": TARGET_TAYLOR_EXACT_POLY,
             "reflectedTaylorWithinEvalExactPolyTheorem": (
                 TARGET_REFLECTED_TAYLOR_EXACT_POLY
             ),
             "status": (
-                "receiver_and_centered_taylor_bridge_present_missing_payload"
+                "receiver_centered_taylor_bridge_and_smooth_present_missing_payload"
+                if (
+                    receiver_present
+                    and centered_bridge_present
+                    and omega_prime_contdiff16_present
+                    and valid_checked_smooth_present
+                )
+                else "receiver_and_centered_taylor_bridge_present_missing_payload"
                 if receiver_present and centered_bridge_present
                 else "receiver_present_right_half_bridge_present_missing_left_reflected_bridge"
                 if (
@@ -337,9 +368,8 @@ def build_report(
             ),
             "nextBridgeStatementAscii": (
                 "theorem Step33Sub0OmegaPrimeTaylorRemainderCert."
-                "Valid.of_order16_bound "
+                "Valid.of_order16_bound_checked_smooth "
                 "(data : Step33Sub0OmegaPrimeTaylorRemainderCert) "
-                "(hSmooth : ContDiff Real 16 step22OmegaArchWeightDerivClosedForm) "
                 "(hCenterJet : center coefficient enclosures) "
                 "(hOrder16 : forall eta in [0,1/10], "
                 "norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) "
@@ -392,6 +422,16 @@ def build_report(
                 "(-1)^n * iteratedDeriv n f (1/10 - x)"
             ),
             (
+                "already proved locally: trigamma is analytic in the right "
+                "half-plane and step22OmegaArchWeightDerivClosedForm is "
+                "ContDiff Real 16"
+            ),
+            (
+                "already proved locally: Valid.of_order16_bound_checked_smooth "
+                "uses omegaPrimeClosedForm_contDiff16, so generated payloads "
+                "no longer need to supply hSmooth"
+            ),
+            (
                 "for each j < 16, prove |iteratedDeriv j "
                 "step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| "
                 "<= coeffErrorAbs[j]"
@@ -416,6 +456,8 @@ def build_report(
                 reflected_taylor_exact_poly_present
             ),
             "reflectedIteratedDerivBridgeProved": reflected_deriv_present,
+            "omegaPrimeAnalyticSmoothnessProved": omega_prime_contdiff16_present,
+            "validCheckedSmoothConstructorProved": valid_checked_smooth_present,
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
             "omegaPrimeRemainderBudgetPassed": False,
@@ -458,7 +500,7 @@ def build_report(
         "advisorySource": {
             "browserProshka": "advisory_only_not_proof_evidence",
             "chosen": "A",
-            "recommendedLeanBridge": TARGET_CENTER_BRIDGE,
+            "recommendedLeanBridge": TARGET_VALID_CHECKED_SMOOTH,
             "recommendedGenerator": GENERATOR_NAME,
             "firstFailure": FIRST_FAILURE,
             "closedSubfailures": [
@@ -487,7 +529,7 @@ def build_report(
                 "Local Mathlib has iteratedDeriv_comp_neg, "
                 "iteratedDeriv_comp_const_add, and "
                 "iteratedDeriv_comp_add_const in IteratedDeriv/Lemmas.lean; "
-            "the OmegaPrime reflected iterated-derivative bridge is now "
+                "the OmegaPrime reflected iterated-derivative bridge is now "
                 "proved locally as omegaPrimeClosedForm_reflected_iteratedDeriv, "
                 "and the reflected Taylor polynomial normalization is proved "
                 "locally as reflectedTaylorWithinEval_eq_exactTaylorPoly."
@@ -526,6 +568,8 @@ def render_md(report: dict[str, Any]) -> str:
         f"- left bridge theorem: `{report['targetLeanSurface']['leftLagrangeBridgeTheorem']}`",
         f"- right bridge theorem: `{report['targetLeanSurface']['rightLagrangeBridgeTheorem']}`",
         f"- valid constructor: `{report['targetLeanSurface']['validOfOrder16Theorem']}`",
+        f"- OmegaPrime smoothness theorem: `{report['targetLeanSurface']['omegaPrimeContDiff16Theorem']}`",
+        f"- checked-smooth valid constructor: `{report['targetLeanSurface']['validCheckedSmoothTheorem']}`",
         f"- reflected derivative theorem: `{report['targetLeanSurface']['reflectedIteratedDerivTheorem']}`",
         f"- Taylor exact-poly theorem: `{report['targetLeanSurface']['taylorWithinEvalExactPolyTheorem']}`",
         f"- reflected Taylor exact-poly theorem: `{report['targetLeanSurface']['reflectedTaylorWithinEvalExactPolyTheorem']}`",
