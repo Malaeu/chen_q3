@@ -35157,6 +35157,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `hweighted`, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14NormKernelParamCellBridge
+
+- Target: reduce `STEP33_M6_B14_KERNEL_CELL_TO_NORM_IOI_GAP` by replacing the
+  scalar z0 kernel normalization with the actual norm-weighted kernel used in
+  `Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.
+- q3_docs search pointed to existing `Q3.DigammaRemainder` patterns for
+  `Complex.normSq`, `Complex.sq_norm`, and `Real.rpow_mul`.  The new proof
+  follows that local pattern.
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelSq_eq_normSq`,
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_eq_inv_norm_pow15`, and
+  `Q3.PSDpd.Step33.step33Shift16B14NormKernelParamCellIntegral_nonneg`.
+- Meaning: Lean now proves the parameterized cell integral is nonnegative in
+  true norm-weighted units:
+  `0 <= ∫ t in 0..1, bernoulli14Diff (n+t) / ‖(n+t : Complex)+z0‖^15`.
+- Closed preparatory gaps:
+  `STEP33_M6_B14_Z0_KERNEL_NORM_CROSSWALK_GAP` and
+  `STEP33_M6_B14_NORM_PARAM_CELL_NONNEG_GAP`.
+- Active exact gap:
+  `STEP33_M6_B14_PARAM_CELL_TO_WEIGHTED_IOI_GAP`.
+- Next patch-sized theorem:
+  `step33Shift16B14NormKernelCellIntegral_nonneg`, transporting the parameter
+  integral to `x in n..n+1`; after that, sum nonnegative cells to obtain
+  `hweighted`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove cell-to-`Ioi` summation, `hweighted`,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14PrimitiveDerivative
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by closing the

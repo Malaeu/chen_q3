@@ -28710,6 +28710,74 @@ Boundary: this does not prove norm-weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Status -- B14 norm-kernel param-cell bridge checked
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_eq_normSq
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_eq_inv_norm_pow15
+Q3.PSDpd.Step33.step33Shift16B14NormKernelParamCellIntegral_nonneg
+```
+
+Statements:
+
+```lean
+theorem step33Shift16Z0KernelPow15_eq_inv_norm_pow15 (x : Real) :
+    step33Shift16Z0KernelPow15 x =
+      1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+
+theorem step33Shift16B14NormKernelParamCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) /
+        ‖((((n : Real) + t : Real) : Complex) + step33Shift16DigammaPoint)‖ ^ 15
+```
+
+Closed preparatory gaps:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_NORM_CROSSWALK_GAP
+STEP33_M6_B14_NORM_PARAM_CELL_NONNEG_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_PARAM_CELL_TO_WEIGHTED_IOI_GAP
+```
+
+Meaning: Lean now proves each parameterized integer-cell contribution is
+nonnegative in the actual norm-weighted kernel normalization used by
+`Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.  The remaining bridge is
+not a sign argument; it is the measure/coordinate bridge from
+`t in 0..1` to `x in (n : Real)..(n + 1 : Real)`, plus summation over
+integer cells to obtain the `Set.Ioi 0` weighted nonnegativity premise.
+
+Next patch-sized theorem:
+
+```lean
+theorem step33Shift16B14NormKernelCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ x in (n : Real)..(n + 1 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove cell-to-`Ioi` summation, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Status -- B14 half-cell pair integral checked
 
 New checked support fact:

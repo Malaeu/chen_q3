@@ -285,6 +285,62 @@ theorem step33Shift16Z0KernelSq_pos (x : Real) :
   unfold step33Shift16Z0KernelSq
   nlinarith [sq_nonneg (x + (129 : Real) / 4), sq_nonneg ((1 : Real) / 40)]
 
+theorem step33Shift16Z0KernelSq_eq_normSq (x : Real) :
+    step33Shift16Z0KernelSq x =
+      Complex.normSq ((x : Complex) + step33Shift16DigammaPoint) := by
+  rw [step33Shift16DigammaPoint]
+  simp [step33Shift16Z0KernelSq, Complex.normSq_apply, Complex.add_re,
+    Complex.add_im]
+  ring
+
+theorem step33Shift16Z0KernelPow15_eq_inv_norm_pow15 (x : Real) :
+    step33Shift16Z0KernelPow15 x =
+      1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+  have hnorm_sq :
+      ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2 =
+        step33Shift16Z0KernelSq x := by
+    calc
+      ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2
+          = Complex.normSq ((x : Complex) + step33Shift16DigammaPoint) := by
+            simpa using (Complex.sq_norm ((x : Complex) + step33Shift16DigammaPoint))
+      _ = step33Shift16Z0KernelSq x := by
+            rw [← step33Shift16Z0KernelSq_eq_normSq x]
+  have hpow :
+      (‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2) ^ ((15 : Real) / 2) =
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+    have hbase :
+        0 <= ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2 := by
+      positivity
+    calc
+      (‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2) ^ ((15 : Real) / 2)
+          = (‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2) ^
+              ((1 / 2 : Real) * (15 : Real)) := by ring_nf
+      _ = ((‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2) ^ (1 / 2 : Real)) ^
+            (15 : Real) := by
+            simpa using
+              (Real.rpow_mul
+                (x := ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2)
+                hbase (1 / 2 : Real) (15 : Real))
+      _ = (Real.sqrt (‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2)) ^
+            (15 : Real) := by
+            simp [Real.sqrt_eq_rpow]
+      _ = ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ (15 : Real) := by
+            simp
+      _ = ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+            simp
+  calc
+    step33Shift16Z0KernelPow15 x
+        = step33Shift16Z0KernelSq x ^ (-(15 : Real) / 2) := rfl
+    _ = step33Shift16Z0KernelSq x ^ (-((15 : Real) / 2)) := by ring_nf
+    _ = 1 / step33Shift16Z0KernelSq x ^ ((15 : Real) / 2) := by
+          simpa [one_div] using
+            (Real.rpow_neg (le_of_lt (step33Shift16Z0KernelSq_pos x))
+              ((15 : Real) / 2))
+    _ = 1 / (‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 2) ^ ((15 : Real) / 2) := by
+          rw [hnorm_sq]
+    _ = 1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+          rw [hpow]
+
 theorem step33Shift16Z0KernelSq_hasDerivAt (x : Real) :
     HasDerivAt step33Shift16Z0KernelSq (2 * (x + (129 : Real) / 4)) x := by
   unfold step33Shift16Z0KernelSq
@@ -661,6 +717,18 @@ theorem step33Shift16B14KernelCellIntegral_nonneg (n : Nat) :
         step33Shift16Z0KernelPow15 ((n : Real) + t) := by
   rw [step33Shift16B14KernelCellIntegral_eq_halfCellPair n]
   exact step33Shift16B14HalfCellPairIntegral_nonneg n
+
+theorem step33Shift16B14NormKernelParamCellIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..1,
+      Q3.bernoulli14Diff ((n : Real) + t) /
+        ‖((((n : Real) + t : Real) : Complex) + step33Shift16DigammaPoint)‖ ^ 15 := by
+  have h := step33Shift16B14KernelCellIntegral_nonneg n
+  convert h using 1
+  refine intervalIntegral.integral_congr ?_
+  intro t _ht
+  dsimp
+  rw [step33Shift16Z0KernelPow15_eq_inv_norm_pow15 ((n : Real) + t)]
+  ring_nf
 
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
