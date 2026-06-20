@@ -34686,3 +34686,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   browser output is used as proof evidence.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12ToB14IntervalBridgeInProgress
+
+- Target blocker:
+  `STEP33_M6_B12_TO_B14_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Exact next Lean object:
+  `Q3.stieltjes_interval_B12Diff_to_B14CellDeriv` in
+  `Q3/DigammaRemainder.lean`.
+- Local `q3_docs` search points back to `Q3.DigammaRemainder` and the checked
+  B8-to-B10 / B10-to-B12 interval Stieltjes bridge pattern; no separate
+  stronger source theorem was found.
+- External Mathlib API search only confirms the same local API surface
+  (`intervalIntegral.integral_mul_deriv_eq_deriv_mul`,
+  `intervalIntegral.integral_const_mul`, `HasDerivAt.pow`); it is not used as
+  proof evidence.
+- Implementation plan: mirror
+  `Q3.stieltjes_interval_B10Diff_to_B12CellDeriv`, using the checked B14 cell
+  derivative, zero endpoints, kernel power `13`, target power `14`, and
+  coefficient `(1 / 14 : C)`.
+- Boundary: this in-progress note does not prove the bridge, the B12 `Ioi`
+  norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.
