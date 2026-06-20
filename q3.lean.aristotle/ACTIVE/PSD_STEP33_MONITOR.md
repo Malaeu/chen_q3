@@ -30719,3 +30719,51 @@ still checked, but `centerTaylorBridge_of_order16_bound` and
 `Valid.of_order16_bound` are absent.  No order-16/polygamma bound, no center-jet
 certificate, no generated Lean payload, no first-subchunk residual-derivative
 norm certificate, no A hbox, and no Step33A.1-A closure exists yet.
+
+## 2026-06-20 Current EOF Addendum -- OmegaPrime Taylor bridge helpers landed
+
+Added and Lean-checked two local helper theorems in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly
+```
+
+The first helper proves the reflected derivative identity for
+`x |-> omegaPrimeClosedForm (1/10 - x)`.  The second proves that Mathlib's
+`taylorWithinEval` at degree 15 agrees with the repository's `exactTaylorPoly`
+under `UniqueDiffOn` and global `ContDiff 16`.
+
+The fail-closed OmegaPrime payload generator was updated and rerun:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v4
+status = fail_closed_missing_centered_taylor_lagrange_split_bridge
+firstFailure = STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP
+targetLeanSurface.status = receiver_present_missing_lagrange_split_bridge
+reflectedIteratedDerivBridgeProved = true
+taylorWithinEvalExactPolyBridgeProved = true
+nextFailureAfterBridge = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: this closes two helper bridges only.  The theorem
+`centerTaylorBridge_of_order16_bound` is still absent, so no order-16/polygamma
+bound is spendable as a centered Taylor bridge yet.  No center-jet payload, no
+generated Lean payload, no first-subchunk residual-derivative norm certificate,
+no A hbox, and no Step33A.1-A closure exists yet.

@@ -59321,3 +59321,67 @@ Boundary: no Lean file was touched in this update, no bridge theorem was
 claimed, no order-16/polygamma source bound exists, no center-jet payload
 exists, no generated Lean payload exists, no A hbox exists, and Step33A.1-A
 remains open.
+
+## Execution Update (2026-06-20) -- OmegaPrime Taylor helper bridges
+
+Added two checked helper theorems in:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly
+```
+
+The reflected derivative helper proves:
+
+```text
+iteratedDeriv n (fun x => omegaPrimeClosedForm (1/10 - x)) x
+  =
+(-1)^n * iteratedDeriv n omegaPrimeClosedForm (1/10 - x)
+```
+
+The Taylor-normalization helper proves that Mathlib's
+`taylorWithinEval omegaPrimeClosedForm 15 s center eta` equals the local
+`exactTaylorPoly eta`, assuming `UniqueDiffOn Real s`, global `ContDiff Real 16`
+for `omegaPrimeClosedForm`, and `center ∈ s`.
+
+The OmegaPrime fail-closed payload was updated and rerun:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v4
+status = fail_closed_missing_centered_taylor_lagrange_split_bridge
+firstFailure = STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP
+targetLeanSurface.status = receiver_present_missing_lagrange_split_bridge
+reflectedIteratedDerivBridgeProved = true
+taylorWithinEvalExactPolyBridgeProved = true
+```
+
+The next exact theorem remains:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+```
+
+It should use `taylor_mean_remainder_lagrange_iteratedDeriv` for the sharp
+`16!` denominator and split the interval into the right half plus the reflected
+left half.
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: no `centerTaylorBridge_of_order16_bound` theorem exists yet, no
+order-16/polygamma source bound is spendable, no center-jet payload exists, no
+generated Lean payload exists, no A hbox exists, and Step33A.1-A remains open.

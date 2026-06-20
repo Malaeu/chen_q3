@@ -17244,6 +17244,40 @@ Current exact blocker:
 STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
 
+## 2026-06-20 Current EOF Addendum -- active OmegaPrime Taylor bridge subgate
+
+The active subgate after the OmegaPrime receiver is now narrower than the old
+direct residual interval statement.  Two helper bridges are Lean-checked:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly
+```
+
+The current first subgate is:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP
+```
+
+Next theorem surface:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound
+```
+
+After that bridge exists, the next payload blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Boundary: the direct residual receiver and old interval statement are still
+downstream consumers, but the immediate proof-producing gate is the centered
+Taylor Lagrange split.  Do not spend `order16_bound` until
+`centerTaylorBridge_of_order16_bound` is locally proved.
+
 ## 2026-06-20 Current EOF Addendum -- live subgate after OmegaPrime receiver
 
 The checked OmegaPrime receiver exists, but its `centerTaylorBridge` is still a

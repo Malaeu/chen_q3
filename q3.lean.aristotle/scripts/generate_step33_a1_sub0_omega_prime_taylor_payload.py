@@ -36,10 +36,14 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v4"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
-STATUS = "fail_closed_missing_centered_taylor_reflection_bridge"
-FIRST_FAILURE = "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP"
+STATUS = "fail_closed_missing_centered_taylor_lagrange_split_bridge"
+FIRST_FAILURE = "STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP"
+EXACT_POLY_FAILURE = "STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP"
+REFLECTED_DERIV_FAILURE = (
+    "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP"
+)
 ORDER16_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP"
 
 FUNCTION_ID = "step22OmegaArchWeightDerivClosedForm"
@@ -50,6 +54,14 @@ TARGET_CENTER_BRIDGE = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound"
 )
 TARGET_VALID_OF_ORDER16 = "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound"
+TARGET_REFLECTED_DERIV = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeClosedForm_reflected_iteratedDeriv"
+)
+TARGET_TAYLOR_EXACT_POLY = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "taylorWithinEval_eq_exactTaylorPoly"
+)
 GENERATOR_NAME = "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py"
 LEAN_TARGET_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
 
@@ -110,7 +122,11 @@ TARGET_SYMBOLS = [
     TARGET_BOUND,
     TARGET_CENTER_BRIDGE,
     TARGET_VALID_OF_ORDER16,
+    TARGET_REFLECTED_DERIV,
+    TARGET_TAYLOR_EXACT_POLY,
     FIRST_FAILURE,
+    EXACT_POLY_FAILURE,
+    REFLECTED_DERIV_FAILURE,
     ORDER16_FAILURE,
 ]
 
@@ -120,7 +136,11 @@ TARGET_PATTERNS = {
     TARGET_BOUND: "theorem Valid.bound",
     TARGET_CENTER_BRIDGE: "theorem centerTaylorBridge_of_order16_bound",
     TARGET_VALID_OF_ORDER16: "theorem Valid.of_order16_bound",
+    TARGET_REFLECTED_DERIV: "theorem omegaPrimeClosedForm_reflected_iteratedDeriv",
+    TARGET_TAYLOR_EXACT_POLY: "theorem taylorWithinEval_eq_exactTaylorPoly",
     FIRST_FAILURE: FIRST_FAILURE,
+    EXACT_POLY_FAILURE: EXACT_POLY_FAILURE,
+    REFLECTED_DERIV_FAILURE: REFLECTED_DERIV_FAILURE,
     ORDER16_FAILURE: ORDER16_FAILURE,
 }
 
@@ -209,6 +229,10 @@ def build_report(
         target_scan[symbol]["status"] == "found"
         for symbol in [TARGET_CENTER_BRIDGE, TARGET_VALID_OF_ORDER16]
     )
+    reflected_deriv_present = target_scan[TARGET_REFLECTED_DERIV]["status"] == "found"
+    taylor_exact_poly_present = (
+        target_scan[TARGET_TAYLOR_EXACT_POLY]["status"] == "found"
+    )
 
     return {
         "schema": SCHEMA,
@@ -217,6 +241,8 @@ def build_report(
         "firstFailure": FIRST_FAILURE,
         "failureCodes": [
             FIRST_FAILURE,
+            EXACT_POLY_FAILURE,
+            REFLECTED_DERIV_FAILURE,
             ORDER16_FAILURE,
             "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP",
             "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP",
@@ -239,9 +265,13 @@ def build_report(
             "boundTheorem": TARGET_BOUND,
             "centerTaylorBridgeTheorem": TARGET_CENTER_BRIDGE,
             "validOfOrder16Theorem": TARGET_VALID_OF_ORDER16,
+            "reflectedIteratedDerivTheorem": TARGET_REFLECTED_DERIV,
+            "taylorWithinEvalExactPolyTheorem": TARGET_TAYLOR_EXACT_POLY,
             "status": (
                 "receiver_and_centered_taylor_bridge_present_missing_payload"
                 if receiver_present and centered_bridge_present
+                else "receiver_present_missing_lagrange_split_bridge"
+                if receiver_present and reflected_deriv_present and taylor_exact_poly_present
                 else "receiver_present_missing_centered_taylor_bridge"
                 if receiver_present
                 else "planned_not_in_lean"
@@ -293,11 +323,16 @@ def build_report(
         "requiredProofs": [
             (
                 "prove the centered Taylor bridge from a uniform order-16 "
-                "bound: right half by taylor_mean_remainder_bound, left half "
-                "by reflecting x |-> 1/10 - x"
+                "bound: use taylor_mean_remainder_lagrange_iteratedDeriv "
+                "for the sharp 16! remainder on the right half, use the "
+                "reflected function on the left half, then combine both halves"
             ),
             (
-                "prove the reflected iterated derivative identity "
+                "already proved locally: taylorWithinEval agrees with "
+                "exactTaylorPoly under UniqueDiffOn and global ContDiff 16"
+            ),
+            (
+                "already proved locally: reflected iterated derivative identity "
                 "iteratedDeriv n (fun x => f (1/10 - x)) x = "
                 "(-1)^n * iteratedDeriv n f (1/10 - x)"
             ),
@@ -318,7 +353,8 @@ def build_report(
         "proofStatus": {
             "componentTaylorBoundsProved": False,
             "centeredTaylorBridgeProved": False,
-            "reflectedIteratedDerivBridgeProved": False,
+            "taylorWithinEvalExactPolyBridgeProved": taylor_exact_poly_present,
+            "reflectedIteratedDerivBridgeProved": reflected_deriv_present,
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
             "omegaPrimeRemainderBudgetPassed": False,
@@ -364,6 +400,7 @@ def build_report(
             "recommendedLeanBridge": TARGET_CENTER_BRIDGE,
             "recommendedGenerator": GENERATOR_NAME,
             "firstFailure": FIRST_FAILURE,
+            "closedSubfailures": [REFLECTED_DERIV_FAILURE, EXACT_POLY_FAILURE],
             "nextFailureAfterBridge": ORDER16_FAILURE,
             "whyNotEndpointFiniteCover": (
                 "Endpoint finite-cover subdivision still needs the same "
@@ -373,14 +410,18 @@ def build_report(
         "externalSearch": {
             "mathlibTaylorDocs": (
                 "Mathlib.Analysis.Calculus.Taylor exposes Taylor theorem "
-                "surfaces such as taylor_mean_remainder_lagrange; this is "
-                "route context only until imported and checked locally."
+                "surfaces such as taylor_mean_remainder_lagrange; local "
+                "inspection shows the sharp 16! denominator is available via "
+                "taylor_mean_remainder_lagrange_iteratedDeriv, not via the "
+                "coarser taylor_mean_remainder_bound helper.  The repository "
+                "now has a checked local polynomial-normalization bridge."
             ),
             "localMathlibReflectionHints": (
                 "Local Mathlib has iteratedDeriv_comp_neg, "
                 "iteratedDeriv_comp_const_add, and "
                 "iteratedDeriv_comp_add_const in IteratedDeriv/Lemmas.lean; "
-                "the exact reflected bridge is not yet proved in this repo."
+                "the OmegaPrime reflected iterated-derivative bridge is now "
+                "proved locally as omegaPrimeClosedForm_reflected_iteratedDeriv."
             ),
         },
     }
@@ -414,6 +455,8 @@ def render_md(report: dict[str, Any]) -> str:
         f"- bound theorem: `{report['targetLeanSurface']['boundTheorem']}`",
         f"- centered bridge theorem: `{report['targetLeanSurface']['centerTaylorBridgeTheorem']}`",
         f"- valid constructor: `{report['targetLeanSurface']['validOfOrder16Theorem']}`",
+        f"- reflected derivative theorem: `{report['targetLeanSurface']['reflectedIteratedDerivTheorem']}`",
+        f"- Taylor exact-poly theorem: `{report['targetLeanSurface']['taylorWithinEvalExactPolyTheorem']}`",
         f"- status: `{report['targetLeanSurface']['status']}`",
         "",
         "```text",
@@ -507,10 +550,11 @@ def render_md(report: dict[str, Any]) -> str:
             "",
             "The next proof-producing step is not endpoint subdivision and not",
             "a full residual interval payload.  It is the centered Taylor",
-            "bridge from the uniform order-16 bound.  The right half can use",
-            "`taylor_mean_remainder_bound`; the left half needs a reflected",
-            "iterated-derivative bridge for `x |-> 1/10 - x` before the",
-            "order-16/polygamma payload can be spent.",
+            "bridge from the uniform order-16 bound.  The reflected",
+            "iterated-derivative identity and the `taylorWithinEval` to",
+            "`exactTaylorPoly` normalization are now proved locally; the next",
+            "gap is the right/left Lagrange split theorem",
+            "`centerTaylorBridge_of_order16_bound` itself.",
             "",
             "Until that exists locally, the correct fail code is:",
             "",

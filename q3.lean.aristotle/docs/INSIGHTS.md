@@ -36598,3 +36598,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   center-jet payload, no generated Lean payload, no first-subchunk
   residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaPrimeTaylorBridgeHelpers
+
+- Added and Lean-checked two helper theorems in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv`
+  proves the reflected derivative identity for
+  `x |-> omegaPrimeClosedForm (1/10 - x)` using local Mathlib
+  `iteratedDeriv_comp_neg` and `iteratedDeriv_comp_const_add`.
+- `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly`
+  proves the polynomial-normalization bridge from Mathlib
+  `taylorWithinEval` to the repo's `exactTaylorPoly` under `UniqueDiffOn` and
+  global `ContDiff 16`.
+- Updated and reran
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`; payload
+  schema is now `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v4`,
+  status `fail_closed_missing_centered_taylor_lagrange_split_bridge`, first
+  failure `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP`.
+- The next Lean theorem is
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound`;
+  it should use `taylor_mean_remainder_lagrange_iteratedDeriv` for the sharp
+  `16!` denominator and split right/left via reflection.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, generator run, `py_compile`, and JSON parse.
+- Boundary: no `centerTaylorBridge_of_order16_bound`, no order-16/polygamma
+  source bound, no center-jet payload, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

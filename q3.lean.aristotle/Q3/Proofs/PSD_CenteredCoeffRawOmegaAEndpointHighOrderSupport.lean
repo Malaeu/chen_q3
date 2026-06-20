@@ -1,4 +1,5 @@
 import Mathlib.Analysis.Calculus.Taylor
+import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
 import Q3.DigammaSeries
 import Q3.DigammaRemainder
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
@@ -9640,6 +9641,25 @@ namespace Step33Sub0OmegaPrimeTaylorRemainderCert
 private abbrev omegaPrimeClosedForm : Real -> Real :=
   _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.step22OmegaArchWeightDerivClosedForm
 
+/-- Reflected-function derivative identity needed for the left half of the
+centered OmegaPrime Taylor bridge. -/
+theorem omegaPrimeClosedForm_reflected_iteratedDeriv
+    (n : Nat) (x : Real) :
+    iteratedDeriv n
+        (fun y : Real =>
+          omegaPrimeClosedForm (((1 : Real) / 10) - y)) x =
+      (-1 : Real) ^ n *
+        iteratedDeriv n omegaPrimeClosedForm (((1 : Real) / 10) - x) := by
+  have hNeg :=
+    iteratedDeriv_comp_neg (𝕜 := Real) (F := Real) n
+      (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) + y)) x
+  have hShift :=
+    congrFun
+      (iteratedDeriv_comp_const_add (𝕜 := Real) (F := Real) n
+        omegaPrimeClosedForm ((1 : Real) / 10)) (-x)
+  rw [hShift] at hNeg
+  simpa [sub_eq_add_neg, smul_eq_mul] using hNeg
+
 def poly (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
     (eta : Real) : Real :=
   _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
@@ -9651,6 +9671,40 @@ def exactTaylorPoly (eta : Real) : Real :=
         ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
       (Nat.factorial j.1 : Real)) *
       (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1
+
+theorem taylorWithinEval_eq_exactTaylorPoly
+    {s : Set Real}
+    (hs : UniqueDiffOn Real s)
+    (hSmooth : ContDiff Real 16 omegaPrimeClosedForm)
+    (hCenter : ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) ∈ s)
+    (eta : Real) :
+    taylorWithinEval omegaPrimeClosedForm 15 s
+        ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) eta =
+      exactTaylorPoly eta := by
+  rw [taylor_within_apply]
+  norm_num only [Nat.reduceAdd]
+  rw [← Fin.sum_univ_eq_sum_range
+    (f := fun k : Nat =>
+      ((Nat.factorial k : Real)⁻¹ *
+          (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ k) •
+        iteratedDerivWithin k omegaPrimeClosedForm s
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real))
+    (n := 16)]
+  unfold exactTaylorPoly
+  refine Finset.sum_congr rfl ?_
+  intro j _hj
+  have hjle : (j.1 : WithTop ENat) <= (16 : Nat) := by
+    exact_mod_cast Nat.le_of_lt j.2
+  have hWithin :
+      iteratedDerivWithin j.1 omegaPrimeClosedForm s
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) =
+        iteratedDeriv j.1 omegaPrimeClosedForm
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) := by
+    exact iteratedDerivWithin_eq_iteratedDeriv hs
+      ((hSmooth.contDiffAt).of_le hjle) hCenter
+  rw [hWithin]
+  rw [smul_eq_mul]
+  ring_nf
 
 structure Valid (data : Step33Sub0OmegaPrimeTaylorRemainderCert) : Prop where
   coeffError_nonneg :
