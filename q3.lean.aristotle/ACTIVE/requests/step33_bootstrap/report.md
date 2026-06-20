@@ -53924,6 +53924,60 @@ git diff --check
 Boundary: this is not a proof of the finite power-5 identity, the M6 source
 theorem, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- finite B2Diff-to-B4 identity checked
+
+Lean progress:
+
+```lean
+Q3.intervalIntegrable_inv_add_pow_three_zero_nat
+Q3.intervalIntegral_inv_add_pow_three_zero_nat
+Q3.finite_stieltjes_B2Diff_to_B4Diff
+```
+
+Checked finite identity:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3
+=
+  (1 / 6 : ℂ) *
+      ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2))) -
+    ((1 / 4 : ℂ) *
+      ((-(30 : ℂ)⁻¹) *
+        (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4)) +
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_B2DIFF_POWER5_FINITE_IDENTITY_GAP
+```
+
+The remaining exact gap is:
+
+```text
+STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP
+```
+
+Meaning: take the checked finite B2Diff-to-B4 identity through the
+`N → ∞`/tail ledger and connect it to the direct M6 source theorem needed for
+`Q3.digammaM6IntegralRemainderBound`.  This is no longer a finite
+cell/telescope identity step.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check -- q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Boundary: this is not a proof of the limit/tail ledger, the M6 source theorem,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- finite B2Fract-to-B4 identity checked
 
 Lean progress:

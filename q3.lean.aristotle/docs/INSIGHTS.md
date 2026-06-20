@@ -34008,3 +34008,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Stieltjes integral to B4/power-5 form.
 - Boundary: this does not prove the B2Diff power-5 finite identity, the M6
   source theorem, Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- FiniteB2DiffToB4IdentityChecked
+
+- Added the elementary checked finite integral of the pure kernel:
+  `intervalIntegrable_inv_add_pow_three_zero_nat` and
+  `intervalIntegral_inv_add_pow_three_zero_nat`.
+- Added the checked finite B2Diff-to-B4 bridge:
+  `finite_stieltjes_B2Diff_to_B4Diff`.
+- The proof uses the already checked repository sign convention
+  `bernoulli2Diff = 1/6 - bernoulli2Fract`, then rewrites through
+  `finite_stieltjes_B2Fract_to_B4Diff`.
+- Closed:
+  `STEP33_M6_B4_B2DIFF_POWER5_FINITE_IDENTITY_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP`.
+- Meaning: the next proof object must move this finite identity through the
+  `N -> infinity` tail/limit ledger and connect it to the direct M6 source
+  theorem.  Do not treat the finite identity as the M6 theorem itself.
+- Boundary: this does not prove the limit/tail ledger, the M6 source theorem,
+  Step33A.1-A, or Step33.

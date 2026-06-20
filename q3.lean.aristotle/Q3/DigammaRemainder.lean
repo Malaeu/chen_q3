@@ -1626,6 +1626,109 @@ lemma finite_stieltjes_B2Fract_to_B4Diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
   rw [← hleft]
   exact finite_sum_B2Fract_to_B4Diff z hz N
 
+lemma intervalIntegrable_inv_add_pow_three_zero_nat
+    (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    IntervalIntegrable (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 3)
+      volume (0 : ℝ) (N : ℝ) := by
+  have hcont : ContinuousOn (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 3)
+      (Set.uIcc (0 : ℝ) (N : ℝ)) := by
+    intro x hx
+    have hle : (0 : ℝ) ≤ (N : ℝ) := by exact_mod_cast (Nat.cast_nonneg N)
+    have hx' : x ∈ Set.Icc (0 : ℝ) (N : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have hcont_add :
+        ContinuousAt (fun x : ℝ => (x : ℂ) + z) x := by
+      simpa using (Complex.continuous_ofReal.continuousAt.add continuous_const.continuousAt)
+    have hcont_pow :
+        ContinuousAt (fun x : ℝ => ((x : ℂ) + z) ^ 3) x := hcont_add.pow 3
+    have hne : ((x : ℂ) + z) ^ 3 ≠ 0 := pow_ne_zero 3 hneq
+    have hcont_inv :
+        ContinuousAt (fun x : ℝ => (((x : ℂ) + z) ^ 3)⁻¹) x :=
+      (ContinuousAt.inv₀ hcont_pow hne)
+    simpa [one_div, div_eq_mul_inv] using hcont_inv.continuousWithinAt
+  exact hcont.intervalIntegrable
+
+lemma intervalIntegral_inv_add_pow_three_zero_nat
+    (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    ∫ x in (0 : ℝ)..(N : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 3 =
+      (1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2)) := by
+  let f : ℝ → ℂ := fun x => (-(1 / 2 : ℂ)) * (((x : ℂ) + z)⁻¹) ^ 2
+  let f' : ℝ → ℂ := fun x => (1 : ℂ) / ((x : ℂ) + z) ^ 3
+  have hderiv : ∀ x ∈ Set.uIcc (0 : ℝ) (N : ℝ), HasDerivAt f (f' x) x := by
+    intro x hx
+    have hle : (0 : ℝ) ≤ (N : ℝ) := by exact_mod_cast (Nat.cast_nonneg N)
+    have hx' : x ∈ Set.Icc (0 : ℝ) (N : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have h_inv := hasDerivAt_inv_add z hneq
+    have h_sq := h_inv.pow 2
+    have h_scaled := h_sq.const_mul (-(1 / 2 : ℂ))
+    convert h_scaled using 1
+    simp [f', one_div, div_eq_mul_inv]
+    field_simp [hneq]
+  have hInt : IntervalIntegrable f' volume (0 : ℝ) (N : ℝ) := by
+    simpa [f'] using intervalIntegrable_inv_add_pow_three_zero_nat z hz N
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt
+    (a := (0 : ℝ)) (b := (N : ℝ)) (f := f) (f' := f') hderiv hInt
+  calc
+    ∫ x in (0 : ℝ)..(N : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 3
+        = f (N : ℝ) - f (0 : ℝ) := by
+          simpa [f'] using hftc
+    _ = (1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2)) := by
+          simp [f, sub_eq_add_neg, mul_add, mul_comm, mul_left_comm, mul_assoc,
+            add_comm, add_left_comm, add_assoc]
+
+lemma finite_stieltjes_B2Diff_to_B4Diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3 =
+      (1 / 6 : ℂ) *
+          ((1 / 2 : ℂ) * ((z⁻¹) ^ 2 - ((((N : ℂ) + z)⁻¹) ^ 2))) -
+        ((1 / 4 : ℂ) *
+          ((-(30 : ℂ)⁻¹) *
+            (((((N : ℂ) + z)⁻¹) ^ 4) - (z⁻¹) ^ 4)) +
+          ∫ x in (0 : ℝ)..(N : ℝ),
+            (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5) := by
+  have hpoint :
+      ∀ x ∈ Set.Icc (0 : ℝ) (N : ℝ),
+        (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3 =
+          (1 / 6 : ℂ) * ((1 : ℂ) / ((x : ℂ) + z) ^ 3) -
+            (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3 := by
+    intro x hx
+    have hrel := bernoulli2Diff_eq_const_sub_fract x
+    simp [hrel, sub_eq_add_neg, div_eq_mul_inv, mul_add, mul_comm, mul_left_comm,
+      mul_assoc, add_comm, add_left_comm, add_assoc]
+  have hcongr :
+      ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3 =
+        ∫ x in (0 : ℝ)..(N : ℝ),
+          (1 / 6 : ℂ) * ((1 : ℂ) / ((x : ℂ) + z) ^ 3) -
+            (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3 := by
+    refine intervalIntegral.integral_congr ?_
+    intro x hx
+    have hle : (0 : ℝ) ≤ (N : ℝ) := by exact_mod_cast (Nat.cast_nonneg N)
+    have hx' : x ∈ Set.Icc (0 : ℝ) (N : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    exact hpoint x hx'
+  have hIntInv := intervalIntegrable_inv_add_pow_three_zero_nat z hz N
+  have hIntB2Fract : IntervalIntegrable
+      (fun x : ℝ => (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3)
+      volume (0 : ℝ) (N : ℝ) := by
+    simpa using IntervalIntegrable.trans_iterate_Ico (a := fun k : ℕ => (k : ℝ))
+      (m := 0) (n := N) (μ := volume) (f := fun x : ℝ =>
+        (bernoulli2Fract x : ℂ) / ((x : ℂ) + z) ^ 3) (zero_le N) (by
+        intro k hk
+        simpa [Nat.cast_add, Nat.cast_one] using intervalIntegrable_b2fract_div_nat z hz k)
+  rw [hcongr]
+  rw [intervalIntegral.integral_sub (hIntInv.const_mul (1 / 6 : ℂ)) hIntB2Fract]
+  rw [intervalIntegral.integral_const_mul (r := (1 / 6 : ℂ))
+    (f := fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 3)
+    (a := (0 : ℝ)) (b := (N : ℝ)) (μ := volume)]
+  rw [intervalIntegral_inv_add_pow_three_zero_nat z hz N]
+  rw [finite_stieltjes_B2Fract_to_B4Diff z hz N]
+
 lemma sum_inv_eq_log_plus_integral (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
     Finset.sum (Finset.range N) (fun n => (z + (n : ℂ))⁻¹) =
       Complex.log (z + (N : ℂ)) - Complex.log z
