@@ -34028,3 +34028,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   theorem.  Do not treat the finite identity as the M6 theorem itself.
 - Boundary: this does not prove the limit/tail ledger, the M6 source theorem,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6LimitTailLedgerSearchInProgress
+
+- Target blocker:
+  `STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP`.
+- Local q3_docs search for `finite_stieltjes_B2Diff_to_B4Diff`, M6
+  finite-telescope, Euler-Maclaurin, and B4 tail ledger returns
+  `Q3.DigammaRemainder` as the active proof file plus
+  `appendix/digamma-computation.tex` as orientation; no independent checked
+  theorem closing `Q3.digammaM6IntegralRemainderBound` was found.
+- External orientation: DLMF §5.11 records the standard digamma asymptotic
+  expansion and error-bound setting; this is not accepted as repo proof
+  evidence.
+- Existing checked receiver:
+  `Q3.digammaM6IntegralRemainderBound_of_finite_telescope` already reduces the
+  source theorem to `hShift`, `hDefects`, and `hTotal`.
+- Fresh checked finite bridge:
+  `Q3.finite_stieltjes_B2Diff_to_B4Diff`.
+- Smallest useful next Lean object: prove the explicit algebraic relation
+  between `Q3.digammaM6StepDefect z` and the finite B4/power-5 Stieltjes
+  remainder surface, before attempting any global `N -> infinity` limit.
+- Boundary: this is a search/route checkpoint only; Step33A.1-A and the M6
+  source theorem remain open.
