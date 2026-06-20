@@ -33838,3 +33838,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_M6_SHIFT_SOURCE_AND_TOTAL_GAP`: prove/provide the N16 shifted
   remainder bound and the total inequality against the first-omitted-term
   budget for the exact finite defect radius.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6Fin16NormSumLedgerKilled
+
+- The checked-component N16 packaging receiver is valid infrastructure, but
+  the current norm-sum telescope ledger is not a live closure route.
+- Exact arithmetic gives first-omitted z0 budget
+  `67108864 / 1060174121192810385649577514243 ~= 6.329985108907891e-23`,
+  while the checked Fin16 L1 defect radius is
+  `64088 / 10^27 = 8011 / 125000000000000000000000000 ~= 6.4088e-23`.
+- The exact margin is negative:
+  `-104446884875603999438765466600673 /
+   132521765149101298206197189280375000000000000000000000000`
+  (`~= -7.881489109210851e-25`).  Thus even `shiftRad = 0` cannot satisfy the
+  total premise of
+  `step33_shift16_m6_finite_telescope_term_payload_N16_of_checked_component_intervals`.
+- Diagnostic checks for shifted first-omitted budgets `N = 0,...,16` also show
+  no positive margin against the accumulated L1 defect sums, and the per-term
+  L2 diagnostic still misses the z0 budget by about `1.04e-25`.
+- Failure code:
+  `STEP33_M6_FIN16_NORM_SUM_LEDGER_CONSTANT_FAIL`.
+- Computer Use / Proshka follow-up selected the next proof-producing target as
+  the direct z0 source theorem
+  `step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint`.
+- Boundary: this is route-state, not a source proof.  The Fin16 interval table
+  and packaging receiver remain checked support, but the active source gap is
+  again the direct M6 Euler-Maclaurin/Stieltjes theorem at z0.

@@ -15159,3 +15159,40 @@ Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
 Boundary remains unchanged: these are conditional bridges only.  The M6 source
 theorem is still open, Step33A.1-A remains open, A hbox is not closed,
 `ActiveCenteredCoeffEntryHboxCert` is not closed, and Step33 is not closed.
+
+## 2026-06-20 Current EOF Addendum -- Fin16 norm-sum ledger killed
+
+Route correction:
+
+```text
+The checked Fin16 component interval table and packaging constructor remain
+valid support, but the current norm-sum finite-telescope total premise is not a
+live closure route.
+```
+
+Exact local arithmetic:
+
+```text
+(1 / 12) * (129 / 4)^(-14) ~= 6.329985108907891e-23
+checked Fin16 L1 defect radius = 64088 / 10^27 ~= 6.4088e-23
+budget - defectRad ~= -7.881489109210851e-25
+```
+
+Failure code:
+
+```text
+STEP33_M6_FIN16_NORM_SUM_LEDGER_CONSTANT_FAIL
+```
+
+Current next theorem remains the direct z0 source theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+Boundary remains unchanged: this addendum kills only the norm-sum telescope
+ledger.  It does not prove the M6 source theorem, Step33A.1-A remains open, A
+hbox is not closed, `ActiveCenteredCoeffEntryHboxCert` is not closed, and
+Step33 is not closed.
