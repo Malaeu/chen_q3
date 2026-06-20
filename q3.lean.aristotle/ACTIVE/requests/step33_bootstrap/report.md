@@ -56024,6 +56024,68 @@ nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
 RH.
 
+## Execution Update (2026-06-20) -- B14 half-cell pair integral support
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean fact added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14HalfCellPairIntegral_nonneg
+```
+
+Exact statement:
+
+```lean
+theorem step33Shift16B14HalfCellPairIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_HALF_CELL_PAIR_INTEGRAL_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP
+```
+
+Next patch-sized theorem: prove the cell-coordinate bridge from
+`∫ t in 0..1/2, B14(t) * pairedKernel(n,t)` to
+`∫ x in n..n+1, bernoulli14Diff x / ‖(x : Complex) + step33Shift16DigammaPoint‖^15`,
+then sum cellwise nonnegativity into the Ioi weighted premise required by
+`Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; the touched Lean-file
+hole/axiom/unsafe scan and whitespace check were clean.
+
+Boundary: this does not prove `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Execution Update (2026-06-20) -- z0 paired-kernel antitonicity
 
 Route: PSD-pd/Q3 Step33A.1-A M6 shifted B14 half-cell support route.

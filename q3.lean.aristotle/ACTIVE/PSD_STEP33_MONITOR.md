@@ -28562,6 +28562,61 @@ comparison, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Status -- B14 half-cell pair integral checked
+
+New checked support fact:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14HalfCellPairIntegral_nonneg
+```
+
+Statement:
+
+```lean
+theorem step33Shift16B14HalfCellPairIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_PAIR_INTEGRAL_GAP
+```
+
+Active exact gap is now the remaining coordinate/summation bridge:
+
+```text
+STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP
+```
+
+Meaning: Lean now proves the core half-cell integration-by-parts inequality
+from the checked B14 primitive derivative, the primitive sign on
+`0 <= t <= 1 / 2`, and the z0 paired-kernel derivative sign.  This is the
+mathematical heart of the half-cell rearrangement, but it is still not the
+same statement as the `hweighted` premise over `Set.Ioi (0 : Real)`.
+
+Next patch-sized theorem: identify each integer cell integral at
+`Q3.PSDpd.Step33.step33Shift16DigammaPoint` with the half-cell paired integral
+and then sum the nonnegative cell contributions into the Ioi weighted
+nonnegativity premise.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; the touched Lean-file
+forbidden-token scan and whitespace check were clean.
+
+Boundary: this does not prove the cell-to-Ioi weighted nonnegativity,
+`hweighted`, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Status -- B14 primitive derivative checked
 
 New checked support fact:

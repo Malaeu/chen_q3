@@ -15499,6 +15499,55 @@ weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- B14 half-cell pair integral checked
+
+Checked new support fact:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14HalfCellPairIntegral_nonneg
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_PAIR_INTEGRAL_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP
+```
+
+This patch proves the core half-cell paired-kernel integral inequality:
+
+```lean
+0 <= ∫ t in (0 : Real)..(1 / 2 : Real),
+  Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t
+```
+
+It uses integration by parts, `Q3.bernoulli14Primitive_hasDerivAt`,
+`Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half`, and the z0 paired-kernel
+derivative nonpositivity.  It prepares, but does not prove, the actual
+`hweighted` premise over `Set.Ioi (0 : Real)`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; the touched Lean-file
+forbidden-token scan and whitespace check were clean.
+
+Boundary remains unchanged: this does not prove the cell-to-Ioi weighted
+nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+RH.
+
 ## 2026-06-20 Current EOF Addendum -- shifted B14 primitive half-cell sign checked
 
 Checked new support facts:

@@ -18,6 +18,8 @@ namespace Q3
 namespace PSDpd
 namespace Step33
 
+open MeasureTheory
+
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +
     Complex.I * (((1 : Real) / (40 : Real) : Complex))
@@ -439,6 +441,115 @@ theorem step33Shift16Z0KernelPow15Pair_antitoneOn_Icc_zero_half
     rw [interior_Icc] at hx
     exact step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half n
       (le_of_lt hx.1) (le_of_lt hx.2)
+
+theorem step33Shift16B14HalfCellPairIntegral_nonneg (n : Nat) :
+    0 <= ∫ t in (0 : Real)..(1 / 2 : Real),
+      Q3.bernoulli14 t * step33Shift16Z0KernelPow15Pair n t := by
+  let u : Real → Real := Q3.bernoulli14Primitive
+  let u' : Real → Real := Q3.bernoulli14
+  let v : Real → Real := step33Shift16Z0KernelPow15Pair n
+  let v' : Real → Real := fun t =>
+    step33Shift16Z0KernelPow15Deriv ((n : Real) + t) -
+      step33Shift16Z0KernelPow15Deriv ((n : Real) + 1 - t)
+  have hu : ∀ x ∈ Set.uIcc (0 : Real) (1 / 2 : Real), HasDerivAt u (u' x) x := by
+    intro x _hx
+    simpa [u, u'] using Q3.bernoulli14Primitive_hasDerivAt x
+  have hv : ∀ x ∈ Set.uIcc (0 : Real) (1 / 2 : Real), HasDerivAt v (v' x) x := by
+    intro x _hx
+    simpa [v, v'] using step33Shift16Z0KernelPow15Pair_hasDerivAt n x
+  have hcont_u : Continuous u := by
+    refine continuous_iff_continuousAt.mpr ?_
+    intro x
+    exact (Q3.bernoulli14Primitive_hasDerivAt x).continuousAt
+  have hcont_u' : Continuous u' := by
+    dsimp [u']
+    unfold Q3.bernoulli14
+    fun_prop
+  have hcont_deriv : Continuous step33Shift16Z0KernelPow15Deriv := by
+    refine continuous_iff_continuousAt.mpr ?_
+    intro x
+    exact (step33Shift16Z0KernelPow15Deriv_hasDerivAt x).continuousAt
+  have hcont_v' : Continuous v' := by
+    have hleft : Continuous fun x : Real =>
+        step33Shift16Z0KernelPow15Deriv ((n : Real) + x) := by
+      exact hcont_deriv.comp (by fun_prop)
+    have hright : Continuous fun x : Real =>
+        step33Shift16Z0KernelPow15Deriv ((n : Real) + 1 - x) := by
+      exact hcont_deriv.comp (by fun_prop)
+    simpa [v'] using hleft.sub hright
+  have hu'_int : IntervalIntegrable u' volume (0 : Real) (1 / 2 : Real) := by
+    exact hcont_u'.intervalIntegrable _ _
+  have hv'_int : IntervalIntegrable v' volume (0 : Real) (1 / 2 : Real) := by
+    exact hcont_v'.intervalIntegrable _ _
+  have hparts :=
+    intervalIntegral.integral_mul_deriv_eq_deriv_mul
+      (a := (0 : Real)) (b := (1 / 2 : Real))
+      (u := u) (u' := u') (v := v) (v' := v') hu hv hu'_int hv'_int
+  have hsum_parts :
+      (∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x) +
+        ∫ x in (0 : Real)..(1 / 2 : Real), u' x * v x =
+          u (1 / 2 : Real) * v (1 / 2 : Real) - u (0 : Real) * v (0 : Real) := by
+    have hparts' := (eq_sub_iff_add_eq).1 hparts
+    simpa [add_comm, add_left_comm, add_assoc] using hparts'
+  have hparts_rev :
+      ∫ x in (0 : Real)..(1 / 2 : Real), u' x * v x =
+        u (1 / 2 : Real) * v (1 / 2 : Real) - u (0 : Real) * v (0 : Real) -
+          ∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x := by
+    refine (eq_sub_iff_add_eq).2 ?_
+    simpa [add_comm, add_left_comm, add_assoc] using hsum_parts
+  have hboundary :
+      u (1 / 2 : Real) * v (1 / 2 : Real) - u (0 : Real) * v (0 : Real) = 0 := by
+    have hu_half : u (1 / 2 : Real) = 0 := by
+      simpa [u] using Q3.bernoulli14Primitive_half
+    have hu_zero : u (0 : Real) = 0 := by
+      simpa [u] using Q3.bernoulli14Primitive_zero
+    rw [hu_half, hu_zero]
+    ring
+  have hmain_eq :
+      ∫ x in (0 : Real)..(1 / 2 : Real), u' x * v x =
+        -∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x := by
+    calc
+      ∫ x in (0 : Real)..(1 / 2 : Real), u' x * v x =
+          u (1 / 2 : Real) * v (1 / 2 : Real) - u (0 : Real) * v (0 : Real) -
+            ∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x := hparts_rev
+      _ = -∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x := by
+          rw [hboundary]
+          ring
+  have huv'_int : IntervalIntegrable (fun x : Real => u x * v' x) volume
+      (0 : Real) (1 / 2 : Real) := by
+    exact (hcont_u.mul hcont_v').intervalIntegrable _ _
+  have hzero_int : IntervalIntegrable (fun _ : Real => (0 : Real)) volume
+      (0 : Real) (1 / 2 : Real) := by
+    simpa using
+      (intervalIntegrable_const (μ := volume) (a := (0 : Real)) (b := (1 / 2 : Real))
+        (c := (0 : Real)))
+  have hpoint_nonpos :
+      ∀ x ∈ Set.Icc (0 : Real) (1 / 2 : Real), u x * v' x <= 0 := by
+    intro x hx
+    have hu_nonneg : 0 <= u x := by
+      simpa [u] using Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half hx.1 hx.2
+    have hv_nonpos : v' x <= 0 := by
+      have hderiv := step33Shift16Z0KernelPow15Pair_deriv_nonpos_on_Icc_zero_half n
+        hx.1 hx.2
+      rw [(step33Shift16Z0KernelPow15Pair_hasDerivAt n x).deriv] at hderiv
+      simpa [v'] using hderiv
+    exact mul_nonpos_of_nonneg_of_nonpos hu_nonneg hv_nonpos
+  have h_uv'_le_zero_int :
+      (∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x) <=
+        ∫ x in (0 : Real)..(1 / 2 : Real), (0 : Real) := by
+    exact intervalIntegral.integral_mono_on
+      (a := (0 : Real)) (b := (1 / 2 : Real)) (μ := volume)
+      (f := fun x : Real => u x * v' x) (g := fun _ : Real => (0 : Real))
+      (hab := by norm_num) (hf := huv'_int) (hg := hzero_int) hpoint_nonpos
+  have h_uv'_nonpos :
+      (∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x) <= 0 := by
+    simpa using h_uv'_le_zero_int
+  have h_nonneg_neg :
+      0 <= -∫ x in (0 : Real)..(1 / 2 : Real), u x * v' x := by
+    linarith
+  change 0 <= ∫ t in (0 : Real)..(1 / 2 : Real), u' t * v t
+  rw [hmain_eq]
+  exact h_nonneg_neg
 
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =

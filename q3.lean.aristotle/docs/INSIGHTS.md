@@ -35125,6 +35125,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14HalfCellPairIntegral
+
+- Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by proving the
+  actual half-cell paired-kernel integration-by-parts inequality, not only the
+  primitive sign or kernel antitonicity inputs.
+- Local `q3_docs` search found no ready weighted half-cell theorem.  The
+  proof uses the repo-local interval integration-by-parts pattern already
+  present in `Q3.DigammaRemainder` and the checked Step33 z0 kernel facts.
+- External mathlib documentation for
+  `intervalIntegral.integral_mul_deriv_eq_deriv_mul` was used only to confirm
+  the API surface; proof evidence is the Lean check in this repo.
+- Added checked Lean fact:
+  `Q3.PSDpd.Step33.step33Shift16B14HalfCellPairIntegral_nonneg`.
+- Exact statement:
+  `0 <= ∫ t in (0 : Real)..(1 / 2 : Real), Q3.bernoulli14 t *
+  step33Shift16Z0KernelPow15Pair n t`.
+- Closed preparatory gap:
+  `STEP33_M6_B14_HALF_CELL_PAIR_INTEGRAL_GAP`.
+- Active exact gap is now:
+  `STEP33_M6_B14_CELL_PAIR_TO_WEIGHTED_IOI_GAP`.
+- Next patch-sized theorem: identify the full integer cell integral with the
+  half-cell paired integral and then sum these cellwise nonnegative
+  contributions to produce the `hweighted` premise.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  the touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove `hweighted`,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0PairedKernelAntitonicity
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by adding the
