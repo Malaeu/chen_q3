@@ -27790,3 +27790,55 @@ receiver above.
 
 Boundary: this still does not prove the source norm inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Step33A.1-A B14 cell layer checked
+
+Latest checked local layer:
+
+```lean
+Q3.bernoulli14
+Q3.bernoulli14Fract
+Q3.bernoulli14Diff
+Q3.measurable_bernoulli14
+Q3.measurable_bernoulli14Fract
+Q3.measurable_bernoulli14Diff
+Q3.bernoulli14Diff_abs_le
+Q3.bernoulli14Diff_norm_le
+Q3.bernoulli14Diff_eq_on_Ioo
+Q3.bernoulli14Diff_eq_cell_on_Icc
+Q3.bernoulli14DiffCellDeriv
+Q3.bernoulli14DiffCellDeriv_left
+Q3.bernoulli14DiffCellDeriv_right
+Q3.bernoulli14DiffCellDeriv_hasDerivAt
+```
+
+The checked derivative surface is:
+
+```lean
+HasDerivAt (fun y : R => bernoulli14DiffCellDeriv n y)
+  (182 * bernoulli12Diff x) x
+```
+
+for `x in Set.Ioo (n : R) (n + 1 : R)`.  This is only the periodic/cell
+infrastructure for the first-omitted B12/power-13 to B14/power-15 route.
+
+Closed local infrastructure gap:
+
+```text
+STEP33_M6_B14_CELL_LAYER_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B12_TO_B14_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Next smallest Lean object:
+
+```lean
+stieltjes_interval_B12Diff_to_B14CellDeriv
+```
+
+Boundary: this does not prove the B12-to-order15 source norm inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

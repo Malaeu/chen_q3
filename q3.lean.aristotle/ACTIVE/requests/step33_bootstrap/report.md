@@ -55438,3 +55438,80 @@ evidence or route truth.
 
 Boundary: this is not a proof of the source norm inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Execution update -- B14 cell layer checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli14
+Q3.bernoulli14Fract
+Q3.bernoulli14Diff
+Q3.measurable_bernoulli14
+Q3.measurable_bernoulli14Fract
+Q3.measurable_bernoulli14Diff
+Q3.bernoulli14Diff_abs_le
+Q3.bernoulli14Diff_norm_le
+Q3.bernoulli14Diff_eq_on_Ioo
+Q3.bernoulli14Diff_eq_cell_on_Icc
+Q3.bernoulli14DiffCellDeriv
+Q3.bernoulli14DiffCellDeriv_left
+Q3.bernoulli14DiffCellDeriv_right
+Q3.bernoulli14DiffCellDeriv_hasDerivAt
+```
+
+The checked derivative bridge is the local cell statement:
+
+```lean
+HasDerivAt (fun y : R => bernoulli14DiffCellDeriv n y)
+  (182 * bernoulli12Diff x) x
+```
+
+for `x in Set.Ioo (n : R) (n + 1 : R)`.  Endpoint lemmas
+`Q3.bernoulli14DiffCellDeriv_left` and
+`Q3.bernoulli14DiffCellDeriv_right` give the zero boundary data needed by the
+next interval integration-by-parts step.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with existing warnings only; forbidden-hole
+scan and whitespace check were clean.
+
+This closes:
+
+```text
+STEP33_M6_B14_CELL_LAYER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B12_TO_B14_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Smallest useful next Lean object:
+
+```lean
+stieltjes_interval_B12Diff_to_B14CellDeriv
+```
+
+Expected shape, not yet added:
+
+```lean
+stieltjes_interval_B12Diff_to_B14CellDeriv
+    (z : C) (hz : 0 < z.re) (n : N) :
+    int x in (n : R)..(n + 1 : R),
+        (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+      (1 / 14 : C) * int x in (n : R)..(n + 1 : R),
+        (bernoulli14DiffCellDeriv n x : C) / ((x : C) + z) ^ 14
+```
+
+Boundary: this is not a proof of the B12-to-order15 source norm inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

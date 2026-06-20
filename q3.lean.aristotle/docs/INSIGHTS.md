@@ -34647,3 +34647,42 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   first, without claiming `Q3.digammaM6IntegralRemainderBound`.
 - Expected first blocker after this infrastructure patch:
   `STEP33_M6_B14_FIRST_OMITTED_CELL_IDENTITY_GAP`.
+
+## Insight (2026-06-20, Step33A.1-A) -- B14CellLayerChecked
+
+- Added checked B14 periodic and cell infrastructure:
+  `Q3.bernoulli14`, `Q3.bernoulli14Fract`, `Q3.bernoulli14Diff`,
+  `Q3.measurable_bernoulli14`, `Q3.measurable_bernoulli14Fract`,
+  `Q3.measurable_bernoulli14Diff`, `Q3.bernoulli14Diff_abs_le`,
+  `Q3.bernoulli14Diff_norm_le`, `Q3.bernoulli14Diff_eq_on_Ioo`,
+  `Q3.bernoulli14Diff_eq_cell_on_Icc`,
+  `Q3.bernoulli14DiffCellDeriv`,
+  `Q3.bernoulli14DiffCellDeriv_left`,
+  `Q3.bernoulli14DiffCellDeriv_right`, and
+  `Q3.bernoulli14DiffCellDeriv_hasDerivAt`.
+- The new derivative statement is the local cell surface
+  `HasDerivAt (fun y : R => bernoulli14DiffCellDeriv n y)
+   (182 * bernoulli12Diff x) x`, for
+  `x in Set.Ioo (n : R) (n + 1 : R)`.
+- This gives the exact B14 cell input and zero endpoint data for the
+  first-omitted route, but it does not yet prove the B12 `Ioi`
+  norm-to-order15 inequality.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean`,
+  the forbidden-hole scan for `sorry|admit|exact?|axiom|unsafe`, and
+  `git diff --check`; Lean emitted existing warnings only.
+- Closed local infrastructure gap:
+  `STEP33_M6_B14_CELL_LAYER_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B12_TO_B14_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Smallest useful next Lean object:
+  `stieltjes_interval_B12Diff_to_B14CellDeriv`, the interval
+  integration-by-parts bridge rewriting the B12/power-13 cell integral as
+  `(1 / 14) *` the B14-cell-derivative/power-14 integral.
+- Browser/Pro note: the visible Pro answer selected the B14/first-omitted
+  route as the right next route. A later follow-up was not available through
+  the browser endpoint during this local verification, so no unfinished
+  browser output is used as proof evidence.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.
