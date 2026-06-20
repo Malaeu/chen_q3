@@ -17275,6 +17275,38 @@ Boundary: full centered bridge not closed; no `Valid.of_order16_bound`, no
 order-16/polygamma source bound, no center-jet payload, no generated Lean
 payload, no A hbox, and no Step33A.1-A closure.
 
+## 2026-06-20 Current EOF Addendum -- OmegaPrime centered Taylor bridge closed
+
+Local Lean now checks the full OmegaPrime centered Taylor bridge from a
+uniform order-16 premise:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound
+```
+
+The fail-closed payload is now:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v6
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Next exact local target:
+
+```text
+provide a proof-grade Step33Sub0OmegaPrimeTaylorRemainderCert.Valid payload:
+center-jet coefficient enclosures, uniform order-16/polygamma bound on
+[0, 1/10], and exact rational remainder budget
+```
+
+Boundary: no order-16/polygamma source bound, no center-jet payload, no exact
+rational remainder-budget payload, no generated Lean payload, no A hbox, and no
+Step33A.1-A closure.
+
 ## 2026-06-20 Current EOF Addendum -- active OmegaPrime Taylor bridge subgate
 
 The active subgate after the OmegaPrime receiver is now narrower than the old

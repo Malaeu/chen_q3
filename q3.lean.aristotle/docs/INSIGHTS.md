@@ -36658,3 +36658,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   payload, no generated Lean payload, no first-subchunk residual-derivative
   norm certificate, no A hbox, no `ActiveCenteredCoeffEntryHboxCert`, no
   Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaPrimeCenteredTaylorBridgeClosed
+
+- Added and Lean-checked the remaining OmegaPrime centered Taylor bridge
+  surfaces in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound`,
+  and `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound`.
+- The bridge now derives the centered Taylor error bound on `[0, 1/10]` from
+  `ContDiff Real 16` and a uniform order-16 derivative bound, by splitting at
+  center `1/20`, using the previous right-half theorem on `[1/20, 1/10]`, and
+  using a reflected-function Taylor theorem on `[0, 1/20]`.
+- Updated and reran
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`; payload
+  schema is now `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v6`,
+  status `fail_closed_missing_order16_polygamma_bound`, first failure
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+- Payload proof status records `centeredTaylorBridgeProved = true` and
+  `validOfOrder16ConstructorProved = true`, while
+  `omegaPrimeCenterJetBoundsProved = false`,
+  `omegaPrimeOrder16BoundProved = false`, and
+  `omegaPrimeRemainderBudgetPassed = false`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, generator run, `py_compile`, and JSON parse.
+- Boundary: no order-16/polygamma source bound, no center-jet payload, no exact
+  rational remainder-budget payload, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

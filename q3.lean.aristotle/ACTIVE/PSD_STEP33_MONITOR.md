@@ -30820,3 +30820,61 @@ Boundary: no full `centerTaylorBridge_of_order16_bound`, no
 `Valid.of_order16_bound`, no order-16/polygamma source bound, no center-jet
 payload, no generated Lean payload, no first-subchunk residual-derivative norm
 certificate, no A hbox, and no Step33A.1-A closure exists yet.
+
+## 2026-06-20 Current EOF Addendum -- OmegaPrime centered Taylor bridge closed
+
+The local OmegaPrime centered Taylor bridge from a uniform order-16 premise is
+now Lean-checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound
+```
+
+This closes the right/left Lagrange split and the bridge constructor only.  It
+does not prove the analytic order-16 bound or the center-jet coefficient
+payload.
+
+The fail-closed OmegaPrime payload generator now reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v6
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+targetLeanSurface.status = receiver_and_centered_taylor_bridge_present_missing_payload
+centeredTaylorBridgeProved = true
+validOfOrder16ConstructorProved = true
+omegaPrimeCenterJetBoundsProved = false
+omegaPrimeOrder16BoundProved = false
+omegaPrimeRemainderBudgetPassed = false
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Boundary: no order-16/polygamma source bound, no center-jet payload, no exact
+rational remainder-budget payload, no generated Lean payload, no
+first-subchunk residual-derivative norm certificate, no A hbox, and no
+Step33A.1-A closure exists yet.

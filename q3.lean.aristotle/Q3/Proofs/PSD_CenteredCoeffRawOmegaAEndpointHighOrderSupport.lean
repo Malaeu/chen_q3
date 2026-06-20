@@ -9723,6 +9723,82 @@ theorem exactTaylorPoly_center :
   exact taylorWithinEval_self omegaPrimeClosedForm 15 Set.univ
     ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)
 
+private theorem reflectedTaylorTerm_eq_exactTaylorTerm
+    (j : Fin 16) (eta : Real) :
+    ((Nat.factorial j.1 : Real)⁻¹ *
+        ((((1 : Real) / 10) - eta) -
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1) *
+      (((-1 : Real) ^ j.1) *
+        iteratedDeriv j.1 omegaPrimeClosedForm
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) =
+    (iteratedDeriv j.1 omegaPrimeClosedForm
+        ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+      (Nat.factorial j.1 : Real)) *
+      (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1 := by
+  have hSub :
+      (((1 : Real) / 10) - eta) -
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) =
+        -(eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) := by
+    norm_num [step33Sub0OmegaPrimeTaylorCenter]
+    ring
+  rw [hSub, neg_pow]
+  have hsq : (-1 : Real) ^ (j.1 * 2) = 1 := by
+    exact Even.neg_one_pow ⟨j.1, by ring⟩
+  ring_nf
+  rw [hsq]
+  ring
+
+theorem reflectedTaylorWithinEval_eq_exactTaylorPoly
+    {s : Set Real}
+    (hs : UniqueDiffOn Real s)
+    (hSmooth : ContDiff Real 16 omegaPrimeClosedForm)
+    (hCenter : ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) ∈ s)
+    (eta : Real) :
+    taylorWithinEval
+        (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) - y))
+        15 s ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)
+        (((1 : Real) / 10) - eta) =
+      exactTaylorPoly eta := by
+  rw [taylor_within_apply]
+  norm_num only [Nat.reduceAdd]
+  rw [← Fin.sum_univ_eq_sum_range
+    (f := fun k : Nat =>
+      ((Nat.factorial k : Real)⁻¹ *
+          ((((1 : Real) / 10) - eta) -
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ k) •
+        iteratedDerivWithin k
+          (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) - y))
+          s ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real))
+    (n := 16)]
+  unfold exactTaylorPoly
+  refine Finset.sum_congr rfl ?_
+  intro j _hj
+  have hjle : (j.1 : WithTop ENat) <= (16 : Nat) := by
+    exact_mod_cast Nat.le_of_lt j.2
+  have hReflectSmooth :
+      ContDiff Real 16
+        (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) - y)) := by
+    exact hSmooth.comp (by fun_prop)
+  have hWithin :
+      iteratedDerivWithin j.1
+          (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) - y))
+          s ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) =
+        iteratedDeriv j.1
+          (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) - y))
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) := by
+    exact iteratedDerivWithin_eq_iteratedDeriv hs
+      ((hReflectSmooth.contDiffAt).of_le hjle) hCenter
+  rw [hWithin]
+  rw [omegaPrimeClosedForm_reflected_iteratedDeriv]
+  have hReflectCenter :
+      ((1 : Real) / 10) -
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) =
+        ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) := by
+    norm_num [step33Sub0OmegaPrimeTaylorCenter]
+  rw [hReflectCenter]
+  rw [smul_eq_mul]
+  exact reflectedTaylorTerm_eq_exactTaylorTerm j eta
+
 theorem centerTaylorBridge_right_of_order16_bound
     (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
     (hSmooth : ContDiff Real 16 omegaPrimeClosedForm)
@@ -9824,6 +9900,164 @@ theorem centerTaylorBridge_right_of_order16_bound
       positivity
     simpa [exactTaylorPoly_center hSmooth] using hRhsNonneg
 
+theorem centerTaylorBridge_left_of_order16_bound
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hSmooth : ContDiff Real 16 omegaPrimeClosedForm)
+    (hOrder16 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 omegaPrimeClosedForm eta‖ <=
+          (data.order16Abs : Real))
+    {eta : Real}
+    (heta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10))
+    (hEtaLe :
+      eta <= ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) :
+    ‖omegaPrimeClosedForm eta - exactTaylorPoly eta‖ <=
+      (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+        (Nat.factorial 16 : Real) := by
+  let etaR : Real := ((1 : Real) / 10) - eta
+  by_cases hlt :
+      ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) < etaR
+  · have hReflectSmooth :
+        ContDiff Real 16
+          (fun y : Real => omegaPrimeClosedForm (((1 : Real) / 10) - y)) := by
+      exact hSmooth.comp (by fun_prop)
+    obtain ⟨xi, hxi, hrem⟩ :=
+      taylor_mean_remainder_lagrange_iteratedDeriv
+        (f := fun y : Real =>
+          omegaPrimeClosedForm (((1 : Real) / 10) - y))
+        (x := etaR)
+        (x₀ := ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real))
+        (n := 15)
+        hlt
+        (hReflectSmooth.contDiffOn)
+    have hTaylorPoly :
+        taylorWithinEval
+            (fun y : Real =>
+              omegaPrimeClosedForm (((1 : Real) / 10) - y))
+            15 (Set.Icc
+              ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) etaR)
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) etaR =
+          exactTaylorPoly eta := by
+      simpa [etaR] using
+        reflectedTaylorWithinEval_eq_exactTaylorPoly
+          (s := Set.Icc
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) etaR)
+          (uniqueDiffOn_Icc hlt)
+          hSmooth
+          ⟨le_rfl, le_of_lt hlt⟩
+          eta
+    rw [hTaylorPoly] at hrem
+    have hxiCell :
+        (((1 : Real) / 10) - xi) ∈ Set.Icc (0 : Real) ((1 : Real) / 10) := by
+      rw [Set.mem_Ioo] at hxi
+      rw [Set.mem_Icc] at heta ⊢
+      constructor
+      · norm_num [etaR, step33Sub0OmegaPrimeTaylorCenter] at hxi heta ⊢
+        linarith
+      · norm_num [step33Sub0OmegaPrimeTaylorCenter] at hxi ⊢
+        linarith
+    have hDerBase := hOrder16 (((1 : Real) / 10) - xi) hxiCell
+    have hDer :
+        ‖iteratedDeriv 16
+            (fun y : Real =>
+              omegaPrimeClosedForm (((1 : Real) / 10) - y)) xi‖ <=
+          (data.order16Abs : Real) := by
+      rw [omegaPrimeClosedForm_reflected_iteratedDeriv]
+      norm_num
+      simpa using hDerBase
+    have hRadius :
+        |etaR - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)| <=
+          step33Sub0OmegaPrimeTaylorRadius := by
+      rw [Set.mem_Icc] at heta
+      rw [abs_le]
+      constructor <;>
+        norm_num [etaR, step33Sub0OmegaPrimeTaylorCenter,
+          step33Sub0OmegaPrimeTaylorRadius] at heta ⊢ <;>
+        linarith
+    have hOrderNonneg : 0 <= (data.order16Abs : Real) := by
+      have hc :
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) ∈
+            Set.Icc (0 : Real) ((1 : Real) / 10) := by
+        norm_num [step33Sub0OmegaPrimeTaylorCenter]
+      exact (norm_nonneg _).trans (hOrder16 _ hc)
+    have hPow :
+        ‖(etaR - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ 16‖ <=
+          step33Sub0OmegaPrimeTaylorRadius ^ 16 := by
+      rw [norm_pow, Real.norm_eq_abs]
+      exact pow_le_pow_left₀ (abs_nonneg _) hRadius 16
+    have hrem' :
+        omegaPrimeClosedForm eta - exactTaylorPoly eta =
+          iteratedDeriv 16
+              (fun y : Real =>
+                omegaPrimeClosedForm (((1 : Real) / 10) - y)) xi *
+            (etaR - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ 16 /
+              (Nat.factorial 16 : Real) := by
+      simpa [etaR] using hrem
+    calc
+      ‖omegaPrimeClosedForm eta - exactTaylorPoly eta‖
+          =
+          ‖iteratedDeriv 16
+              (fun y : Real =>
+                omegaPrimeClosedForm (((1 : Real) / 10) - y)) xi *
+            (etaR - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ 16 /
+              (Nat.factorial 16 : Real)‖ := by
+            rw [hrem']
+      _ =
+          ‖iteratedDeriv 16
+              (fun y : Real =>
+                omegaPrimeClosedForm (((1 : Real) / 10) - y)) xi‖ *
+              ‖(etaR - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ 16‖ /
+              (Nat.factorial 16 : Real) := by
+            rw [norm_div, norm_mul]
+            norm_num
+      _ <=
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real) := by
+            refine div_le_div_of_nonneg_right ?_ (by norm_num)
+            exact mul_le_mul hDer hPow (norm_nonneg _) hOrderNonneg
+  · have heta_eq :
+        eta = ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) := by
+      have hCenterLe :
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) <= eta := by
+        exact le_of_not_gt (by
+          intro hEtaLt
+          apply hlt
+          norm_num [etaR, step33Sub0OmegaPrimeTaylorCenter] at hEtaLt ⊢
+          linarith)
+      exact le_antisymm hEtaLe hCenterLe
+    subst eta
+    have hOrderNonneg : 0 <= (data.order16Abs : Real) := by
+      have hc :
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) ∈
+            Set.Icc (0 : Real) ((1 : Real) / 10) := by
+        norm_num [step33Sub0OmegaPrimeTaylorCenter]
+      exact (norm_nonneg _).trans (hOrder16 _ hc)
+    have hRhsNonneg :
+        0 <=
+          (data.order16Abs : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real) := by
+      positivity
+    simpa [exactTaylorPoly_center hSmooth] using hRhsNonneg
+
+theorem centerTaylorBridge_of_order16_bound
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hSmooth : ContDiff Real 16 omegaPrimeClosedForm)
+    (hOrder16 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 omegaPrimeClosedForm eta‖ <=
+          (data.order16Abs : Real)) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖omegaPrimeClosedForm eta - exactTaylorPoly eta‖ <=
+        (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+          (Nat.factorial 16 : Real) := by
+  intro eta heta
+  by_cases hEtaLe :
+      eta <= ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)
+  · exact centerTaylorBridge_left_of_order16_bound data hSmooth hOrder16 heta hEtaLe
+  · exact centerTaylorBridge_right_of_order16_bound data hSmooth hOrder16 heta
+      (le_of_lt (lt_of_not_ge hEtaLe))
+
 structure Valid (data : Step33Sub0OmegaPrimeTaylorRemainderCert) : Prop where
   coeffError_nonneg :
     ∀ j, 0 <= (data.coeffErrorAbs j : Real)
@@ -9852,6 +10086,40 @@ structure Valid (data : Step33Sub0OmegaPrimeTaylorRemainderCert) : Prop where
         (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
           (Nat.factorial 16 : Real)
       <= (data.remainderAbs : Real)
+
+theorem Valid.of_order16_bound
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hSmooth : ContDiff Real 16 omegaPrimeClosedForm)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hOrder16 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 omegaPrimeClosedForm eta‖ <=
+          (data.order16Abs : Real))
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid := by
+  refine
+    ⟨hCoeffErrorNonneg, ?_, hCenterJet, hOrder16,
+      centerTaylorBridge_of_order16_bound data hSmooth hOrder16,
+      hRemainderBudget⟩
+  have hc :
+      ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) ∈
+        Set.Icc (0 : Real) ((1 : Real) / 10) := by
+    norm_num [step33Sub0OmegaPrimeTaylorCenter]
+  exact (norm_nonneg _).trans (hOrder16 _ hc)
 
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}
