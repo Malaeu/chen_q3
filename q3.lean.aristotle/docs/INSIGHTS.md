@@ -34624,3 +34624,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   really yields that inequality in the current complex right-half-plane norm.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B14FirstOmittedRouteInProgress
+
+- Target blocker:
+  `STEP33_M6_B12_IOI_NORM_TO_ORDER15_BOUND_GAP`.
+- Local `q3_docs` search points back to `Q3.DigammaRemainder` and the existing
+  order-15 kernel layer, but no checked B14/first-omitted source bridge was
+  found.
+- Existing checked support:
+  `Q3.digammaM6_remainder_eq_B12Diff_Ioi`,
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`,
+  `Q3.kernel_norm_pow15_le_re`, `Q3.integrable_kernel_norm_pow15`, and
+  `Q3.integral_kernel_norm_pow15_le_re`.
+- Direct use of `Q3.bernoulli12Diff_norm_le` is too weak for the target:
+  it gives a power-13 style domination, not the required order-15 kernel
+  budget.
+- Browser/Pro route review selected the B14/first-omitted route over the
+  finite-telescope fallback and warned that the receiver-only C option merely
+  renames the same missing B12-to-order15 source inequality.
+- Current smallest safe patch: add the B14 periodic Bernoulli infrastructure
+  first, without claiming `Q3.digammaM6IntegralRemainderBound`.
+- Expected first blocker after this infrastructure patch:
+  `STEP33_M6_B14_FIRST_OMITTED_CELL_IDENTITY_GAP`.
