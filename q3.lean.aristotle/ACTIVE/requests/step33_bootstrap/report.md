@@ -58113,6 +58113,33 @@ rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_Center
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- raw derivative differentiability probe
+
+Probe target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero
+```
+
+Status: not landed.  Direct `fun_prop` proof failed after unfolding
+`step22PositiveAxisOmegaAIntegrand`.
+
+Lean obstruction:
+
+```text
+No theorems found for `deriv` in order to prove
+DifferentiableAt Real (fun t => deriv raw_integrand t) 0
+```
+
+Current blocker:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+Candidate repair: introduce a checked first-derivative closed form for the raw
+integrand at `x = 0`, then prove that closed form differentiable at `0`.
+
 ## Execution Update (2026-06-20) -- residual second-deriv crosswalk reduction
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.

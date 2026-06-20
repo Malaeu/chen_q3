@@ -29871,3 +29871,27 @@ The route-kill gate still also needs:
 ```text
 STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
 ```
+
+## 2026-06-20 Current EOF Addendum -- raw deriv differentiability probe
+
+Local Lean probe tried the direct theorem:
+
+```text
+DifferentiableAt Real
+  (fun t => deriv raw_integrand t) 0
+```
+
+with `raw_integrand eta =
+step22PositiveAxisOmegaAIntegrand 11 (3/10) 0 eta`.  After unfolding the raw
+integrand, `fun_prop` failed because it has no theorem for proving
+differentiability of a function whose body is `deriv ... t`.
+
+Exact current blocker:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+Required repair: a dedicated second-differentiability theorem for the raw
+integrand at `0`, likely via a closed-form first derivative before asking Lean
+to differentiate again.

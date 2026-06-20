@@ -16913,3 +16913,26 @@ The conditional kill theorem still additionally needs:
 ```text
 STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
 ```
+
+## 2026-06-20 Current EOF Addendum -- raw derivative differentiability blocker
+
+Attempted direct Lean target:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero
+```
+
+Result: not landed.  `fun_prop` failed after unfolding
+`step22PositiveAxisOmegaAIntegrand`; it does not have a theorem that turns
+differentiability of the raw integrand into differentiability of
+`fun t => deriv raw_integrand t`.
+
+Live blocker remains:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+Next viable patch shape: add a named first-derivative closed form for the raw
+integrand at `x = 0` and prove that closed form differentiable at `0`, or
+prove a direct `HasDerivAt` theorem for `fun t => deriv raw_integrand t`.

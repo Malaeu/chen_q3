@@ -36051,6 +36051,19 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
   `git diff --check`.
 
+## Insight (2026-06-20, Step33A.1-A) -- RawDerivativeDifferentiabilityGap
+
+- Tried direct Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero`.
+- It was not landed.  After unfolding
+  `step22PositiveAxisOmegaAIntegrand`, `fun_prop` failed because there is no
+  theorem for proving differentiability of `fun t => deriv raw_integrand t`.
+- Exact blocker:
+  `STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP`.
+- Candidate repair: introduce a checked first-derivative closed form for the
+  raw integrand at `x = 0`, then prove that closed form differentiable at `0`;
+  this should avoid asking `fun_prop` to reason through an opaque `deriv`.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ResidualSecondDerivCrosswalkReduction
 
 - Added Lean theorem:
