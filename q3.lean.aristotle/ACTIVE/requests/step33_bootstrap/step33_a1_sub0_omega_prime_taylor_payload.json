@@ -2,8 +2,10 @@
   "advisorySource": {
     "browserProshka": "advisory_only_not_proof_evidence",
     "chosen": "A",
-    "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
+    "firstFailure": "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP",
+    "nextFailureAfterBridge": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
     "recommendedGenerator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
+    "recommendedLeanBridge": "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound",
     "whyNotEndpointFiniteCover": "Endpoint finite-cover subdivision still needs the same trigamma/polygamma source bounds, repeated over segments."
   },
   "cell": {
@@ -15,15 +17,17 @@
     "radius": "1/20"
   },
   "externalSearch": {
+    "localMathlibReflectionHints": "Local Mathlib has iteratedDeriv_comp_neg, iteratedDeriv_comp_const_add, and iteratedDeriv_comp_add_const in IteratedDeriv/Lemmas.lean; the exact reflected bridge is not yet proved in this repo.",
     "mathlibTaylorDocs": "Mathlib.Analysis.Calculus.Taylor exposes Taylor theorem surfaces such as taylor_mean_remainder_lagrange; this is route context only until imported and checked locally."
   },
   "failureCodes": [
+    "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_TAYLOR_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP",
+  "firstFailure": "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP",
   "functionId": "step22OmegaArchWeightDerivClosedForm",
   "generator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
   "generatorFields": {
@@ -285,7 +289,7 @@
     "proofSafeClosedFields": 0,
     "radius": "1/20",
     "remainderAbs": null,
-    "schemaVersion": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1"
+    "schemaVersion": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2"
   },
   "localSourceScan": {
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": [
@@ -344,21 +348,25 @@
     ]
   },
   "proofStatus": {
+    "centeredTaylorBridgeProved": false,
     "componentTaylorBoundsProved": false,
     "exactRationalChecksPassed": false,
     "omegaPrimeCenterJetBoundsProved": false,
     "omegaPrimeOrder16BoundProved": false,
     "omegaPrimeRemainderBudgetPassed": false,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 0
+    "proofSafeClosedFields": 0,
+    "reflectedIteratedDerivBridgeProved": false
   },
   "requiredProofs": [
+    "prove the centered Taylor bridge from a uniform order-16 bound: right half by taylor_mean_remainder_bound, left half by reflecting x |-> 1/10 - x",
+    "prove the reflected iterated derivative identity iteratedDeriv n (fun x => f (1/10 - x)) x = (-1)^n * iteratedDeriv n f (1/10 - x)",
     "for each j < 16, prove |iteratedDeriv j step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]",
     "prove forall eta in [0, 1/10], |iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta| <= order16Abs",
     "prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs"
   ],
   "routeId": "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD",
-  "schema": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1",
+  "schema": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2",
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "7f64b5533a21ca57",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md": "319d19f8e4ce698f",
@@ -373,17 +381,24 @@
     "gapMapExists": true,
     "gapMapPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md"
   },
-  "status": "fail_closed_missing_order16_polygamma_bound",
+  "status": "fail_closed_missing_centered_taylor_reflection_bridge",
   "targetLeanSurface": {
     "boundTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound",
+    "centerTaylorBridgeTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound",
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "localNormalization": "rawOmegaATaylorPolynomial expects a Rat center and a Fin (degree + 1) -> Rat coefficient function.",
+    "nextBridgeStatementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (hSmooth : ContDiff Real 16 step22OmegaArchWeightDerivClosedForm) (hCenterJet : center coefficient enclosures) (hOrder16 : forall eta in [0,1/10], norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) <= data.order16Abs) (hBudget : coefficient plus Lagrange budget <= data.remainderAbs) : forall eta in [0,1/10], norm (step22OmegaArchWeightDerivClosedForm eta - exactTaylorPoly eta) <= data.order16Abs * radius^16 / 16!",
     "statementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs",
-    "status": "receiver_present_missing_payload",
+    "status": "receiver_present_missing_centered_taylor_bridge",
     "structure": "Step33Sub0OmegaPrimeTaylorRemainderCert",
+    "validOfOrder16Theorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound",
     "validPredicate": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid"
   },
   "targetSymbolScan": {
+    "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP": {
+      "line": null,
+      "status": "gap"
+    },
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP": {
       "line": null,
       "status": "gap"
@@ -399,6 +414,14 @@
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound": {
       "line": 9750,
       "status": "found"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound": {
+      "line": null,
+      "status": "gap"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound": {
+      "line": null,
+      "status": "gap"
     }
   }
 }

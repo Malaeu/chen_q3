@@ -36571,3 +36571,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no center-jet certificate, no order-16/polygamma proof, no Lean
   payload emitted, no first-subchunk residual-derivative norm certificate, no A
   hbox, no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaPrimeCenteredTaylorBridgeGate
+
+- Used the in-app Browser/Proshka as advisory route review after the checked
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` receiver landed.
+- Proshka chose route A: derive `centerTaylorBridge` from a uniform order-16
+  premise instead of building an endpoint finite-cover detour.
+- The exact next Lean surfaces are
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound`
+  and `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound`.
+- The right half should use `taylor_mean_remainder_bound`; the left half needs
+  a reflected-function bridge for `x |-> 1/10 - x`.
+- Local Mathlib has candidate helpers `iteratedDeriv_comp_neg`,
+  `iteratedDeriv_comp_const_add`, and `iteratedDeriv_comp_add_const`, but the
+  exact reflected centered-Taylor bridge is not proved locally.
+- Updated and reran
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`; the payload
+  is now schema `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2`,
+  status `fail_closed_missing_centered_taylor_reflection_bridge`, first failure
+  `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP`.
+- The old `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP` remains the
+  next failure after the centered Taylor bridge exists; it has not been solved
+  or spent.
+- Boundary: no new Lean theorem, no order-16/polygamma source bound, no
+  center-jet payload, no generated Lean payload, no first-subchunk
+  residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

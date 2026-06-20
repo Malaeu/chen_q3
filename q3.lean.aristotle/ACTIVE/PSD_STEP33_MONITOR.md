@@ -30676,3 +30676,46 @@ Boundary: the receiver theorem is real Lean proof, but no order-16/polygamma
 bound, no center-jet certificate, no generated Lean payload, no
 first-subchunk residual-derivative norm certificate, no A hbox, and no
 Step33A.1-A closure exists yet.
+
+## 2026-06-20 Current EOF Addendum -- OmegaPrime centered Taylor bridge gate
+
+Browser/Proshka was used as advisory route review for the next subgate after
+the checked OmegaPrime receiver.  The recommendation was route A: prove a local
+bridge theorem from the uniform order-16 bound into the centered Taylor bridge,
+not an endpoint finite-cover detour.
+
+Next planned Lean surface:
+
+```text
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound
+```
+
+The expected mechanism is:
+
+```text
+eta >= 1/20: use taylor_mean_remainder_bound on the right half
+eta <= 1/20: reflect by x |-> 1/10 - x and identify the reflected Taylor data
+```
+
+The first local gap is now named:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP
+```
+
+The fail-closed OmegaPrime payload generator was updated and rerun:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2
+status = fail_closed_missing_centered_taylor_reflection_bridge
+firstFailure = STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP
+targetLeanSurface.status = receiver_present_missing_centered_taylor_bridge
+nextFailureAfterBridge = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Boundary: no new Lean theorem was added in this step.  The existing receiver is
+still checked, but `centerTaylorBridge_of_order16_bound` and
+`Valid.of_order16_bound` are absent.  No order-16/polygamma bound, no center-jet
+certificate, no generated Lean payload, no first-subchunk residual-derivative
+norm certificate, no A hbox, and no Step33A.1-A closure exists yet.

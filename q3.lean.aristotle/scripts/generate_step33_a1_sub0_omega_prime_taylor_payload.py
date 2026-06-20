@@ -36,15 +36,20 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
-STATUS = "fail_closed_missing_order16_polygamma_bound"
-FIRST_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP"
+STATUS = "fail_closed_missing_centered_taylor_reflection_bridge"
+FIRST_FAILURE = "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP"
+ORDER16_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP"
 
 FUNCTION_ID = "step22OmegaArchWeightDerivClosedForm"
 TARGET_CERT = "Step33Sub0OmegaPrimeTaylorRemainderCert"
 TARGET_VALID = "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid"
 TARGET_BOUND = "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound"
+TARGET_CENTER_BRIDGE = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound"
+)
+TARGET_VALID_OF_ORDER16 = "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound"
 GENERATOR_NAME = "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py"
 LEAN_TARGET_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
 
@@ -103,14 +108,20 @@ TARGET_SYMBOLS = [
     TARGET_CERT,
     TARGET_VALID,
     TARGET_BOUND,
+    TARGET_CENTER_BRIDGE,
+    TARGET_VALID_OF_ORDER16,
     FIRST_FAILURE,
+    ORDER16_FAILURE,
 ]
 
 TARGET_PATTERNS = {
     TARGET_CERT: "structure Step33Sub0OmegaPrimeTaylorRemainderCert",
     TARGET_VALID: "structure Valid (data : Step33Sub0OmegaPrimeTaylorRemainderCert)",
     TARGET_BOUND: "theorem Valid.bound",
+    TARGET_CENTER_BRIDGE: "theorem centerTaylorBridge_of_order16_bound",
+    TARGET_VALID_OF_ORDER16: "theorem Valid.of_order16_bound",
     FIRST_FAILURE: FIRST_FAILURE,
+    ORDER16_FAILURE: ORDER16_FAILURE,
 }
 
 
@@ -194,6 +205,10 @@ def build_report(
         target_scan[symbol]["status"] == "found"
         for symbol in [TARGET_CERT, TARGET_VALID, TARGET_BOUND]
     )
+    centered_bridge_present = all(
+        target_scan[symbol]["status"] == "found"
+        for symbol in [TARGET_CENTER_BRIDGE, TARGET_VALID_OF_ORDER16]
+    )
 
     return {
         "schema": SCHEMA,
@@ -202,6 +217,7 @@ def build_report(
         "firstFailure": FIRST_FAILURE,
         "failureCodes": [
             FIRST_FAILURE,
+            ORDER16_FAILURE,
             "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP",
             "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP",
             "STEP33_A1_SUB0_OMEGAPRIME_TAYLOR_LEAN_PAYLOAD_MISSING",
@@ -221,8 +237,12 @@ def build_report(
             "structure": TARGET_CERT,
             "validPredicate": TARGET_VALID,
             "boundTheorem": TARGET_BOUND,
+            "centerTaylorBridgeTheorem": TARGET_CENTER_BRIDGE,
+            "validOfOrder16Theorem": TARGET_VALID_OF_ORDER16,
             "status": (
-                "receiver_present_missing_payload"
+                "receiver_and_centered_taylor_bridge_present_missing_payload"
+                if receiver_present and centered_bridge_present
+                else "receiver_present_missing_centered_taylor_bridge"
                 if receiver_present
                 else "planned_not_in_lean"
             ),
@@ -236,6 +256,20 @@ def build_report(
             "localNormalization": (
                 "rawOmegaATaylorPolynomial expects a Rat center and a "
                 "Fin (degree + 1) -> Rat coefficient function."
+            ),
+            "nextBridgeStatementAscii": (
+                "theorem Step33Sub0OmegaPrimeTaylorRemainderCert."
+                "centerTaylorBridge_of_order16_bound "
+                "(data : Step33Sub0OmegaPrimeTaylorRemainderCert) "
+                "(hSmooth : ContDiff Real 16 step22OmegaArchWeightDerivClosedForm) "
+                "(hCenterJet : center coefficient enclosures) "
+                "(hOrder16 : forall eta in [0,1/10], "
+                "norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) "
+                "<= data.order16Abs) "
+                "(hBudget : coefficient plus Lagrange budget <= data.remainderAbs) : "
+                "forall eta in [0,1/10], "
+                "norm (step22OmegaArchWeightDerivClosedForm eta - exactTaylorPoly eta) "
+                "<= data.order16Abs * radius^16 / 16!"
             ),
         },
         "generatorFields": {
@@ -258,6 +292,16 @@ def build_report(
         },
         "requiredProofs": [
             (
+                "prove the centered Taylor bridge from a uniform order-16 "
+                "bound: right half by taylor_mean_remainder_bound, left half "
+                "by reflecting x |-> 1/10 - x"
+            ),
+            (
+                "prove the reflected iterated derivative identity "
+                "iteratedDeriv n (fun x => f (1/10 - x)) x = "
+                "(-1)^n * iteratedDeriv n f (1/10 - x)"
+            ),
+            (
                 "for each j < 16, prove |iteratedDeriv j "
                 "step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| "
                 "<= coeffErrorAbs[j]"
@@ -273,6 +317,8 @@ def build_report(
         ],
         "proofStatus": {
             "componentTaylorBoundsProved": False,
+            "centeredTaylorBridgeProved": False,
+            "reflectedIteratedDerivBridgeProved": False,
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
             "omegaPrimeRemainderBudgetPassed": False,
@@ -315,8 +361,10 @@ def build_report(
         "advisorySource": {
             "browserProshka": "advisory_only_not_proof_evidence",
             "chosen": "A",
+            "recommendedLeanBridge": TARGET_CENTER_BRIDGE,
             "recommendedGenerator": GENERATOR_NAME,
             "firstFailure": FIRST_FAILURE,
+            "nextFailureAfterBridge": ORDER16_FAILURE,
             "whyNotEndpointFiniteCover": (
                 "Endpoint finite-cover subdivision still needs the same "
                 "trigamma/polygamma source bounds, repeated over segments."
@@ -327,7 +375,13 @@ def build_report(
                 "Mathlib.Analysis.Calculus.Taylor exposes Taylor theorem "
                 "surfaces such as taylor_mean_remainder_lagrange; this is "
                 "route context only until imported and checked locally."
-            )
+            ),
+            "localMathlibReflectionHints": (
+                "Local Mathlib has iteratedDeriv_comp_neg, "
+                "iteratedDeriv_comp_const_add, and "
+                "iteratedDeriv_comp_add_const in IteratedDeriv/Lemmas.lean; "
+                "the exact reflected bridge is not yet proved in this repo."
+            ),
         },
     }
 
@@ -358,10 +412,18 @@ def render_md(report: dict[str, Any]) -> str:
         f"- structure: `{report['targetLeanSurface']['structure']}`",
         f"- valid predicate: `{report['targetLeanSurface']['validPredicate']}`",
         f"- bound theorem: `{report['targetLeanSurface']['boundTheorem']}`",
+        f"- centered bridge theorem: `{report['targetLeanSurface']['centerTaylorBridgeTheorem']}`",
+        f"- valid constructor: `{report['targetLeanSurface']['validOfOrder16Theorem']}`",
         f"- status: `{report['targetLeanSurface']['status']}`",
         "",
         "```text",
         report["targetLeanSurface"]["statementAscii"],
+        "```",
+        "",
+        "Next bridge surface:",
+        "",
+        "```text",
+        report["targetLeanSurface"]["nextBridgeStatementAscii"],
         "```",
         "",
         "Normalization note:",
@@ -444,9 +506,11 @@ def render_md(report: dict[str, Any]) -> str:
             "## Decision",
             "",
             "The next proof-producing step is not endpoint subdivision and not",
-            "a full residual interval payload.  It is a proof-grade order-16",
-            "bound plus center-jet coefficient enclosures for",
-            "`step22OmegaArchWeightDerivClosedForm` on `[0, 1/10]`.",
+            "a full residual interval payload.  It is the centered Taylor",
+            "bridge from the uniform order-16 bound.  The right half can use",
+            "`taylor_mean_remainder_bound`; the left half needs a reflected",
+            "iterated-derivative bridge for `x |-> 1/10 - x` before the",
+            "order-16/polygamma payload can be spent.",
             "",
             "Until that exists locally, the correct fail code is:",
             "",

@@ -59260,3 +59260,64 @@ Boundary: no order-16/polygamma bound has been proved, no center-jet
 coefficient enclosure payload exists, no generated Lean payload exists, no
 first-subchunk residual-derivative norm certificate exists, no A hbox exists,
 and Step33A.1-A remains open.
+
+## Execution Update (2026-06-20) -- OmegaPrime centered Taylor bridge gate
+
+Follow-up Browser/Proshka review chose route A for the next subgate after the
+checked receiver.  The next local theorem should remove the independent
+`centerTaylorBridge` field by deriving it from the uniform order-16 Taylor
+premise:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound
+```
+
+The intended proof split is:
+
+```text
+right half: eta >= 1/20, use Mathlib Taylor remainder on [1/20, eta]
+left half: eta <= 1/20, reflect by x |-> 1/10 - x
+```
+
+Current first local blocker:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP
+```
+
+The reflected side needs a local Lean bridge of the shape:
+
+```text
+iteratedDeriv n (fun x => f (1/10 - x)) x
+  =
+(-1)^n * iteratedDeriv n f (1/10 - x)
+```
+
+Local Mathlib search found candidate helper lemmas
+`iteratedDeriv_comp_neg`, `iteratedDeriv_comp_const_add`, and
+`iteratedDeriv_comp_add_const`, but the exact reflected centered-Taylor bridge
+has not been proved in this repo.
+
+The fail-closed generator was updated and rerun:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v2
+status = fail_closed_missing_centered_taylor_reflection_bridge
+firstFailure = STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP
+targetLeanSurface.status = receiver_present_missing_centered_taylor_bridge
+nextFailureAfterBridge = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Boundary: no Lean file was touched in this update, no bridge theorem was
+claimed, no order-16/polygamma source bound exists, no center-jet payload
+exists, no generated Lean payload exists, no A hbox exists, and Step33A.1-A
+remains open.
