@@ -7496,6 +7496,298 @@ def step33_shift16_m6_finite_telescope_term_payload_N16_of_shifted_remainder_bou
         step33Shift16_sum_range_fin16PayloadNat termRad
     exact hsum.trans_le hDefectSum
 
+private def step33Shift16M6Fin16TermReLower (n : Fin 16) : Real :=
+  match (n : Nat) with
+  | 0 => (-219 : Real) / ((10 : Real) ^ 25)
+  | 1 => (-140 : Real) / ((10 : Real) ^ 25)
+  | 2 => (-90 : Real) / ((10 : Real) ^ 25)
+  | 3 => (-59 : Real) / ((10 : Real) ^ 25)
+  | 4 => (-39 : Real) / ((10 : Real) ^ 25)
+  | 5 => (-26 : Real) / ((10 : Real) ^ 25)
+  | 6 => (-18 : Real) / ((10 : Real) ^ 25)
+  | 7 => (-12 : Real) / ((10 : Real) ^ 25)
+  | 8 => (-9 : Real) / ((10 : Real) ^ 25)
+  | 9 => (-6 : Real) / ((10 : Real) ^ 25)
+  | 10 => (-5 : Real) / ((10 : Real) ^ 25)
+  | 11 => (-3 : Real) / ((10 : Real) ^ 25)
+  | 12 => (-3 : Real) / ((10 : Real) ^ 25)
+  | 13 => (-2 : Real) / ((10 : Real) ^ 25)
+  | 14 => (-2 : Real) / ((10 : Real) ^ 25)
+  | 15 => (-1 : Real) / ((10 : Real) ^ 25)
+  | _ => 0
+
+private def step33Shift16M6Fin16TermReUpper (n : Fin 16) : Real :=
+  match (n : Nat) with
+  | 0 => (-218 : Real) / ((10 : Real) ^ 25)
+  | 1 => (-139 : Real) / ((10 : Real) ^ 25)
+  | 2 => (-89 : Real) / ((10 : Real) ^ 25)
+  | 3 => (-58 : Real) / ((10 : Real) ^ 25)
+  | 4 => (-38 : Real) / ((10 : Real) ^ 25)
+  | 5 => (-25 : Real) / ((10 : Real) ^ 25)
+  | 6 => (-17 : Real) / ((10 : Real) ^ 25)
+  | 7 => (-11 : Real) / ((10 : Real) ^ 25)
+  | 8 => (-8 : Real) / ((10 : Real) ^ 25)
+  | 9 => (-5 : Real) / ((10 : Real) ^ 25)
+  | 10 => (-4 : Real) / ((10 : Real) ^ 25)
+  | 11 => (-2 : Real) / ((10 : Real) ^ 25)
+  | 12 => (-2 : Real) / ((10 : Real) ^ 25)
+  | 13 => (-1 : Real) / ((10 : Real) ^ 25)
+  | 14 => (-1 : Real) / ((10 : Real) ^ 25)
+  | 15 => (0 : Real) / ((10 : Real) ^ 25)
+  | _ => 0
+
+private def step33Shift16M6Fin16TermImLower (n : Fin 16) : Real :=
+  match (n : Nat) with
+  | 0 => (250 : Real) / ((10 : Real) ^ 27)
+  | 1 => (154 : Real) / ((10 : Real) ^ 27)
+  | 2 => (97 : Real) / ((10 : Real) ^ 27)
+  | 3 => (61 : Real) / ((10 : Real) ^ 27)
+  | 4 => (39 : Real) / ((10 : Real) ^ 27)
+  | 5 => (25 : Real) / ((10 : Real) ^ 27)
+  | 6 => (16 : Real) / ((10 : Real) ^ 27)
+  | 7 => (11 : Real) / ((10 : Real) ^ 27)
+  | 8 => (7 : Real) / ((10 : Real) ^ 27)
+  | 9 => (5 : Real) / ((10 : Real) ^ 27)
+  | 10 => (3 : Real) / ((10 : Real) ^ 27)
+  | 11 => (2 : Real) / ((10 : Real) ^ 27)
+  | 12 => (1 : Real) / ((10 : Real) ^ 27)
+  | 13 => (1 : Real) / ((10 : Real) ^ 27)
+  | 14 => (0 : Real) / ((10 : Real) ^ 27)
+  | 15 => (0 : Real) / ((10 : Real) ^ 27)
+  | _ => 0
+
+private def step33Shift16M6Fin16TermImUpper (n : Fin 16) : Real :=
+  match (n : Nat) with
+  | 0 => (251 : Real) / ((10 : Real) ^ 27)
+  | 1 => (155 : Real) / ((10 : Real) ^ 27)
+  | 2 => (98 : Real) / ((10 : Real) ^ 27)
+  | 3 => (62 : Real) / ((10 : Real) ^ 27)
+  | 4 => (40 : Real) / ((10 : Real) ^ 27)
+  | 5 => (26 : Real) / ((10 : Real) ^ 27)
+  | 6 => (17 : Real) / ((10 : Real) ^ 27)
+  | 7 => (12 : Real) / ((10 : Real) ^ 27)
+  | 8 => (8 : Real) / ((10 : Real) ^ 27)
+  | 9 => (6 : Real) / ((10 : Real) ^ 27)
+  | 10 => (4 : Real) / ((10 : Real) ^ 27)
+  | 11 => (3 : Real) / ((10 : Real) ^ 27)
+  | 12 => (2 : Real) / ((10 : Real) ^ 27)
+  | 13 => (2 : Real) / ((10 : Real) ^ 27)
+  | 14 => (1 : Real) / ((10 : Real) ^ 27)
+  | 15 => (1 : Real) / ((10 : Real) ^ 27)
+  | _ => 0
+
+private def step33Shift16M6Fin16TermReRad (n : Fin 16) : Real :=
+  match (n : Nat) with
+  | 0 => (219 : Real) / ((10 : Real) ^ 25)
+  | 1 => (140 : Real) / ((10 : Real) ^ 25)
+  | 2 => (90 : Real) / ((10 : Real) ^ 25)
+  | 3 => (59 : Real) / ((10 : Real) ^ 25)
+  | 4 => (39 : Real) / ((10 : Real) ^ 25)
+  | 5 => (26 : Real) / ((10 : Real) ^ 25)
+  | 6 => (18 : Real) / ((10 : Real) ^ 25)
+  | 7 => (12 : Real) / ((10 : Real) ^ 25)
+  | 8 => (9 : Real) / ((10 : Real) ^ 25)
+  | 9 => (6 : Real) / ((10 : Real) ^ 25)
+  | 10 => (5 : Real) / ((10 : Real) ^ 25)
+  | 11 => (3 : Real) / ((10 : Real) ^ 25)
+  | 12 => (3 : Real) / ((10 : Real) ^ 25)
+  | 13 => (2 : Real) / ((10 : Real) ^ 25)
+  | 14 => (2 : Real) / ((10 : Real) ^ 25)
+  | 15 => (1 : Real) / ((10 : Real) ^ 25)
+  | _ => 0
+
+private def step33Shift16M6Fin16TermImRad (n : Fin 16) : Real :=
+  match (n : Nat) with
+  | 0 => (251 : Real) / ((10 : Real) ^ 27)
+  | 1 => (155 : Real) / ((10 : Real) ^ 27)
+  | 2 => (98 : Real) / ((10 : Real) ^ 27)
+  | 3 => (62 : Real) / ((10 : Real) ^ 27)
+  | 4 => (40 : Real) / ((10 : Real) ^ 27)
+  | 5 => (26 : Real) / ((10 : Real) ^ 27)
+  | 6 => (17 : Real) / ((10 : Real) ^ 27)
+  | 7 => (12 : Real) / ((10 : Real) ^ 27)
+  | 8 => (8 : Real) / ((10 : Real) ^ 27)
+  | 9 => (6 : Real) / ((10 : Real) ^ 27)
+  | 10 => (4 : Real) / ((10 : Real) ^ 27)
+  | 11 => (3 : Real) / ((10 : Real) ^ 27)
+  | 12 => (2 : Real) / ((10 : Real) ^ 27)
+  | 13 => (2 : Real) / ((10 : Real) ^ 27)
+  | 14 => (1 : Real) / ((10 : Real) ^ 27)
+  | 15 => (1 : Real) / ((10 : Real) ^ 27)
+  | _ => 0
+
+private def step33Shift16M6Fin16TermRad (n : Fin 16) : Real :=
+  step33Shift16M6Fin16TermReRad n + step33Shift16M6Fin16TermImRad n
+
+private def step33Shift16M6Fin16DefectRad : Real :=
+  Finset.univ.sum (fun n : Fin 16 => step33Shift16M6Fin16TermRad n)
+
+private theorem step33Shift16M6Fin16DefectReLower :
+    ∀ n : Fin 16, step33Shift16M6Fin16TermReLower n <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + ((n : Nat) : Complex))).re := by
+  intro n
+  fin_cases n
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n0_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n1_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n2_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n3_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n4_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n5_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n6_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n7_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n8_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n9_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n10_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n11_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n12_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n13_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n14_component_interval.1.1
+  · simpa [step33Shift16M6Fin16TermReLower] using step33_shift16_m6_step_defect_n15_component_interval.1.1
+
+private theorem step33Shift16M6Fin16DefectReUpper :
+    ∀ n : Fin 16, (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + ((n : Nat) : Complex))).re <=
+        step33Shift16M6Fin16TermReUpper n := by
+  intro n
+  fin_cases n
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n0_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n1_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n2_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n3_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n4_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n5_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n6_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n7_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n8_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n9_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n10_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n11_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n12_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n13_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n14_component_interval.1.2
+  · simpa [step33Shift16M6Fin16TermReUpper] using step33_shift16_m6_step_defect_n15_component_interval.1.2
+
+private theorem step33Shift16M6Fin16DefectImLower :
+    ∀ n : Fin 16, step33Shift16M6Fin16TermImLower n <=
+        (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + ((n : Nat) : Complex))).im := by
+  intro n
+  fin_cases n
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n0_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n1_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n2_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n3_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n4_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n5_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n6_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n7_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n8_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n9_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n10_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n11_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n12_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n13_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n14_component_interval.2.1
+  · simpa [step33Shift16M6Fin16TermImLower] using step33_shift16_m6_step_defect_n15_component_interval.2.1
+
+private theorem step33Shift16M6Fin16DefectImUpper :
+    ∀ n : Fin 16, (Q3.digammaM6StepDefect
+          (step33Shift16DigammaPoint + ((n : Nat) : Complex))).im <=
+        step33Shift16M6Fin16TermImUpper n := by
+  intro n
+  fin_cases n
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n0_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n1_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n2_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n3_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n4_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n5_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n6_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n7_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n8_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n9_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n10_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n11_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n12_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n13_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n14_component_interval.2.2
+  · simpa [step33Shift16M6Fin16TermImUpper] using step33_shift16_m6_step_defect_n15_component_interval.2.2
+
+private theorem step33Shift16M6Fin16ReLowerContain :
+    ∀ n : Fin 16,
+      -step33Shift16M6Fin16TermReRad n <=
+        step33Shift16M6Fin16TermReLower n := by
+  intro n
+  fin_cases n <;> norm_num [step33Shift16M6Fin16TermReRad,
+    step33Shift16M6Fin16TermReLower]
+
+private theorem step33Shift16M6Fin16ReUpperContain :
+    ∀ n : Fin 16,
+      step33Shift16M6Fin16TermReUpper n <=
+        step33Shift16M6Fin16TermReRad n := by
+  intro n
+  fin_cases n <;> norm_num [step33Shift16M6Fin16TermReRad,
+    step33Shift16M6Fin16TermReUpper]
+
+private theorem step33Shift16M6Fin16ImLowerContain :
+    ∀ n : Fin 16,
+      -step33Shift16M6Fin16TermImRad n <=
+        step33Shift16M6Fin16TermImLower n := by
+  intro n
+  fin_cases n <;> norm_num [step33Shift16M6Fin16TermImRad,
+    step33Shift16M6Fin16TermImLower]
+
+private theorem step33Shift16M6Fin16ImUpperContain :
+    ∀ n : Fin 16,
+      step33Shift16M6Fin16TermImUpper n <=
+        step33Shift16M6Fin16TermImRad n := by
+  intro n
+  fin_cases n <;> norm_num [step33Shift16M6Fin16TermImRad,
+    step33Shift16M6Fin16TermImUpper]
+
+private theorem step33Shift16M6Fin16TermRadContain :
+    ∀ n : Fin 16,
+      step33Shift16M6Fin16TermReRad n +
+          step33Shift16M6Fin16TermImRad n <=
+        step33Shift16M6Fin16TermRad n := by
+  intro n
+  simp [step33Shift16M6Fin16TermRad]
+
+private theorem step33Shift16M6Fin16DefectSum_le :
+    (Finset.univ.sum
+        (fun n : Fin 16 => step33Shift16M6Fin16TermRad n)) <=
+      step33Shift16M6Fin16DefectRad := by
+  rfl
+
+def step33_shift16_m6_finite_telescope_term_payload_N16_of_checked_component_intervals
+    (shiftRad : Real)
+    (hShift :
+      ‖Q3.digamma (step33Shift16DigammaPoint + (16 : Complex)) -
+          Q3.digammaM6AsymptoticMain
+            (step33Shift16DigammaPoint + (16 : Complex))‖ <= shiftRad)
+    (hTotal :
+      shiftRad + step33Shift16M6Fin16DefectRad <=
+        ((1 : Real) / (12 : Real)) *
+          (step33Shift16DigammaPoint.re⁻¹) ^ 14) :
+    Step33Shift16M6FiniteTelescopeTermPayload :=
+  step33_shift16_m6_finite_telescope_term_payload_N16_of_shifted_remainder_bound_component_interval_defects
+    shiftRad step33Shift16M6Fin16DefectRad
+    step33Shift16M6Fin16TermReLower step33Shift16M6Fin16TermReUpper
+    step33Shift16M6Fin16TermImLower step33Shift16M6Fin16TermImUpper
+    step33Shift16M6Fin16TermReRad step33Shift16M6Fin16TermImRad
+    step33Shift16M6Fin16TermRad hShift
+    step33Shift16M6Fin16DefectReLower
+    step33Shift16M6Fin16DefectReUpper
+    step33Shift16M6Fin16DefectImLower
+    step33Shift16M6Fin16DefectImUpper
+    step33Shift16M6Fin16ReLowerContain
+    step33Shift16M6Fin16ReUpperContain
+    step33Shift16M6Fin16ImLowerContain
+    step33Shift16M6Fin16ImUpperContain
+    step33Shift16M6Fin16TermRadContain
+    step33Shift16M6Fin16DefectSum_le hTotal
+
 def step33_shift16_m6_finite_telescope_term_payload_N16_of_shifted_component_rectangles_and_component_interval_defects
     (shiftRad defectRad shiftReRad shiftImRad : Real)
     (digammaReLower digammaReUpper digammaImLower digammaImUpper

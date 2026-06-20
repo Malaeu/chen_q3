@@ -53511,3 +53511,78 @@ Remaining local inputs:
   constants, and provide the separate shift/source input required by the
   existing N16 payload receiver.
 ```
+
+## 2026-06-20 Execution update -- Fin16 checked-component packaging receiver closed
+
+Packaged the checked `n=0,...,15` component interval table into the existing
+N16 component-defect receiver.  The new constructor is:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_m6_finite_telescope_term_payload_N16_of_checked_component_intervals
+```
+
+It constructs:
+
+```lean
+Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+```
+
+from:
+
+```lean
+shiftRad : Real
+hShift :
+  ‖Q3.digamma (step33Shift16DigammaPoint + (16 : Complex)) -
+      Q3.digammaM6AsymptoticMain
+        (step33Shift16DigammaPoint + (16 : Complex))‖ <= shiftRad
+hTotal :
+  shiftRad + step33Shift16M6Fin16DefectRad <=
+    ((1 : Real) / (12 : Real)) *
+      (step33Shift16DigammaPoint.re⁻¹) ^ 14
+```
+
+Implementation note: `step33Shift16M6Fin16DefectRad` is the exact finite sum of
+the checked `Fin 16` term radii.  This avoids a heavy proof-time normalization
+of the decimal sum while preserving the same receiver interface:
+
+```lean
+private def step33Shift16M6Fin16DefectRad : Real :=
+  Finset.univ.sum (fun n : Fin 16 => step33Shift16M6Fin16TermRad n)
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes the Fin16 checked-component packaging receiver only.
+It still does not produce a no-premise payload.
+
+Current exact source gap:
+  STEP33_M6_SHIFT_SOURCE_AND_TOTAL_GAP
+
+Remaining local inputs:
+  prove/provide the N16 shifted-remainder source bound `hShift`, and prove the
+  same-unit total inequality against the first-omitted-term budget for the exact
+  checked finite defect radius.
+```
