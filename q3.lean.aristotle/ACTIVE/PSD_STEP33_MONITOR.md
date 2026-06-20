@@ -26847,6 +26847,39 @@ global `Ioi` B6-to-B8 identity.
 Boundary unchanged: this does not prove the `Ioi` B6-to-B8 identity,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B6-to-B8 Ioi tail bridge checked
+
+Added checked B8/power-9 tail infrastructure and global bridge:
+
+```lean
+Q3.bernoulli8Diff_abs_le
+Q3.bernoulli8Diff_norm_le
+Q3.kernel_norm_pow9_le_re
+Q3.integrable_kernel_norm_pow9
+Q3.integrable_bernoulli8Diff_div_pow9
+Q3.tendsto_intervalIntegral_b8diff_div_pow9_Ioi
+Q3.stieltjes_B6Diff_to_B8Diff_Ioi_raw
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_IOI_LIMIT_TAIL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_DIGAMMA_PREFIX_GAP
+```
+
+Meaning: combine `Q3.digamma_stieltjes_B6Diff_Ioi_mainPrefix` with
+`Q3.stieltjes_B6Diff_to_B8Diff_Ioi_raw` to expose the checked B8/power-9
+digamma prefix before continuing the one-order Euler-Maclaurin lift.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B8 boundary bridge checked
 
 Added checked boundary bridge:

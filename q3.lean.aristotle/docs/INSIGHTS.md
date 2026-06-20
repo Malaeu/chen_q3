@@ -34305,3 +34305,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `((N+z)^-1)^8` endpoint, to obtain the global `Ioi` B6-to-B8 identity.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B6ToB8IoiTailBridgeChecked
+
+- Added checked B8/power-9 tail infrastructure:
+  `Q3.bernoulli8Diff_abs_le`, `Q3.bernoulli8Diff_norm_le`,
+  `Q3.kernel_norm_pow9_le_re`, `Q3.integrable_kernel_norm_pow9`,
+  `Q3.integrable_bernoulli8Diff_div_pow9`, and
+  `Q3.tendsto_intervalIntegral_b8diff_div_pow9_Ioi`.
+- Added checked global B6-to-B8 `Ioi` identity:
+  `Q3.stieltjes_B6Diff_to_B8Diff_Ioi_raw`.
+- Closed:
+  `STEP33_M6_B6_TO_B8_IOI_LIMIT_TAIL_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B6_TO_B8_DIGAMMA_PREFIX_GAP`.
+- Smallest useful next Lean object: combine
+  `Q3.digamma_stieltjes_B6Diff_Ioi_mainPrefix` with
+  `Q3.stieltjes_B6Diff_to_B8Diff_Ioi_raw` to expose the B8/power-9 digamma
+  prefix surface.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
