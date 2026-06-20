@@ -216,6 +216,43 @@ lemma bernoulli4Diff_norm_le (x : ℝ) :
     ‖(bernoulli4Diff x : ℂ)‖ ≤ (1 / 30 : ℝ) := by
   simpa [bernoulli4Diff] using bernoulli4Fract_norm_le x
 
+lemma bernoulli6Diff_abs_le (x : ℝ) :
+    |bernoulli6Diff x| ≤ (8 : ℝ) := by
+  set t : ℝ := Int.fract x
+  have ht0 : 0 ≤ t := by
+    simpa [t] using Int.fract_nonneg x
+  have ht1 : t ≤ 1 := by
+    simpa [t] using le_of_lt (Int.fract_lt_one x)
+  have ht2_nonneg : 0 ≤ t ^ 2 := pow_nonneg ht0 2
+  have ht4_nonneg : 0 ≤ t ^ 4 := pow_nonneg ht0 4
+  have ht5_nonneg : 0 ≤ t ^ 5 := pow_nonneg ht0 5
+  have ht6_nonneg : 0 ≤ t ^ 6 := pow_nonneg ht0 6
+  have ht2_le : t ^ 2 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht4_le : t ^ 4 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht5_le : t ^ 5 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht6_le : t ^ 6 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have hbounds :
+      -(8 : ℝ) ≤
+          t ^ 6 - 3 * t ^ 5 + (5 / 2 : ℝ) * t ^ 4 -
+            (1 / 2 : ℝ) * t ^ 2 + (42 : ℝ)⁻¹ ∧
+        t ^ 6 - 3 * t ^ 5 + (5 / 2 : ℝ) * t ^ 4 -
+            (1 / 2 : ℝ) * t ^ 2 + (42 : ℝ)⁻¹ ≤ (8 : ℝ) := by
+    constructor
+    · nlinarith [ht6_nonneg, ht5_le, ht4_nonneg, ht2_le]
+    · nlinarith [ht6_le, ht5_nonneg, ht4_le, ht2_nonneg]
+  simpa [bernoulli6Diff, bernoulli6Fract, bernoulli6, t] using abs_le.2 hbounds
+
+lemma bernoulli6Diff_norm_le (x : ℝ) :
+    ‖(bernoulli6Diff x : ℂ)‖ ≤ (8 : ℝ) := by
+  have hb := bernoulli6Diff_abs_le x
+  have hnorm : ‖(bernoulli6Diff x : ℂ)‖ = |bernoulli6Diff x| := by
+    simp
+  simpa [hnorm] using hb
+
 lemma bernoulli2Fract_int (n : ℤ) : bernoulli2Fract (n : ℝ) = (6 : ℝ)⁻¹ := by
   simp [bernoulli2Fract, bernoulli2]
 
@@ -3922,6 +3959,135 @@ lemma integrable_bernoulli4Diff_div_pow5 (z : ℂ) (hz : 0 < z.re) :
             field_simp
   exact Integrable.mono' hkernel' hmeas hbound
 
+/-- Pointwise right-half-plane domination for the order-7 kernel used by the
+B6/power-7 Stieltjes tail ledger. -/
+lemma kernel_norm_pow7_le_re (z : ℂ) (hz : 0 < z.re)
+    {x : ℝ} (hx : x ∈ Set.Ioi (0 : ℝ)) :
+    1 / ‖(x : ℂ) + z‖ ^ 7 ≤ 1 / (x + z.re) ^ 7 := by
+  have hxpos : 0 < x := hx
+  have hxre_pos : 0 < x + z.re := by
+    linarith [hxpos, hz]
+  have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+  have hnorm_ge : x + z.re ≤ ‖(x : ℂ) + z‖ := by
+    have h := Complex.abs_re_le_norm ((x : ℂ) + z)
+    have hre : (((x : ℂ) + z).re) = x + z.re := by
+      simp
+    have habs : |(((x : ℂ) + z).re)| = x + z.re := by
+      rw [hre, abs_of_nonneg hxre_nonneg]
+    rwa [habs] at h
+  have hpow :
+      (x + z.re) ^ 7 ≤ ‖(x : ℂ) + z‖ ^ 7 :=
+    pow_le_pow_left₀ hxre_nonneg hnorm_ge 7
+  exact one_div_le_one_div_of_le (pow_pos hxre_pos 7) hpow
+
+/-- Integrability of the order-7 kernel used by the B6/power-7 Stieltjes tail
+ledger. -/
+lemma integrable_kernel_norm_pow7 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 7))
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hdomOn :
+      IntegrableOn (fun x : ℝ => (x + z.re) ^ (-7 : ℝ))
+        (Set.Ioi (0 : ℝ)) := by
+    have hlt : (-7 : ℝ) < -1 := by norm_num
+    have hc : -z.re < (0 : ℝ) := by linarith [hz]
+    simpa using
+      (integrableOn_add_rpow_Ioi_of_lt (a := (-7 : ℝ))
+        (c := (0 : ℝ)) (m := z.re) hlt hc)
+  have hdomOn' :
+      IntegrableOn (fun x : ℝ => 1 / (x + z.re) ^ 7)
+        (Set.Ioi (0 : ℝ)) := by
+    refine hdomOn.congr_fun ?_ measurableSet_Ioi
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxre_pos : 0 < x + z.re := by
+      linarith [hxpos, hz]
+    have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+    calc
+      (x + z.re) ^ (-7 : ℝ)
+          = ((x + z.re) ^ (7 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + z.re) (7 : ℝ))
+      _ = ((x + z.re) ^ 7)⁻¹ := by
+              simp [Real.rpow_natCast, hxre_nonneg]
+      _ = 1 / (x + z.re) ^ 7 := by
+              simp [one_div]
+  have hdom :
+      Integrable (fun x : ℝ => 1 / (x + z.re) ^ 7)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [IntegrableOn] using hdomOn'
+  have hmeas :
+      AEStronglyMeasurable (fun x : ℝ => 1 / ‖(x : ℂ) + z‖ ^ 7)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hcoe : Measurable (fun x : ℝ => (x : ℂ)) :=
+      Complex.measurable_ofReal
+    have hadd : Measurable (fun x : ℝ => (x : ℂ) + z) :=
+      hcoe.add measurable_const
+    have hnorm : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖) :=
+      hadd.norm
+    have hpow : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖ ^ 7) :=
+      hnorm.pow_const 7
+    have hinv : Measurable (fun x : ℝ => (‖(x : ℂ) + z‖ ^ 7)⁻¹) :=
+      hpow.inv
+    simpa [one_div] using hinv.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x : ℝ ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 7 : ℝ)‖ ≤
+          1 / (x + z.re) ^ 7 := by
+    refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+    intro x hx
+    have hnonneg : 0 ≤ (1 / ‖(x : ℂ) + z‖ ^ 7 : ℝ) := by
+      exact one_div_nonneg.mpr (pow_nonneg (norm_nonneg _) 7)
+    have hnorm_abs :
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 7 : ℝ)‖ =
+          1 / ‖(x : ℂ) + z‖ ^ 7 := by
+      simpa [Real.norm_eq_abs, abs_of_nonneg hnonneg]
+    simpa [hnorm_abs] using kernel_norm_pow7_le_re z hz hx
+  exact Integrable.mono' hdom hmeas hbound
+
+lemma integrable_bernoulli6Diff_div_pow7 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 7))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow7 z hz
+  have hkernel' :
+      Integrable (fun x : ℝ => (8 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 7))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    hkernel.const_mul (8 : ℝ)
+  have hmeas :
+      AEStronglyMeasurable
+        (fun x : ℝ => (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable
+        (fun x => (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_pow : Measurable (fun x : ℝ => ((x : ℂ) + z) ^ 7) := h_add.pow_const 7
+      have h_num : Measurable (fun x : ℝ => (bernoulli6Diff x : ℂ)) :=
+        (Complex.measurable_ofReal.comp measurable_bernoulli6Diff)
+      exact h_num.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7‖ ≤
+          (8 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 7) := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hnorm_pow : ‖(x + z : ℂ) ^ 7‖ = ‖(x + z : ℂ)‖ ^ 7 := by
+      simp [norm_pow]
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 7 := by positivity
+    calc
+      ‖(bernoulli6Diff x : ℂ) / (x + z) ^ 7‖
+          = ‖(bernoulli6Diff x : ℂ)‖ / ‖(x + z : ℂ) ^ 7‖ := by
+            simp
+      _ = ‖(bernoulli6Diff x : ℂ)‖ / ‖(x : ℂ) + z‖ ^ 7 := by
+            simp [hnorm_pow]
+      _ ≤ (8 : ℝ) / ‖(x : ℂ) + z‖ ^ 7 := by
+            exact (div_le_div_of_nonneg_right (bernoulli6Diff_norm_le x) hpos)
+      _ = (8 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 7) := by
+            field_simp
+  exact Integrable.mono' hkernel' hmeas hbound
+
 lemma tendsto_intervalIntegral_b2diff_div_Ioi (z : ℂ) (hz : 0 < z.re) :
     Tendsto
       (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
@@ -3955,6 +4121,24 @@ lemma tendsto_intervalIntegral_b4diff_div_pow5_Ioi (z : ℂ) (hz : 0 < z.re) :
   simpa using
     (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
       (f := fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+      (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+      h_int (tendsto_natCast_atTop_atTop))
+
+lemma tendsto_intervalIntegral_b6diff_div_pow7_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_bernoulli6Diff_div_pow7 z hz
+  simpa using
+    (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+      (f := fun x : ℝ => (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)
       (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
       h_int (tendsto_natCast_atTop_atTop))
 
@@ -4110,6 +4294,66 @@ lemma stieltjes_B2Diff_to_B4Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
           ((-(30 : ℂ)⁻¹) * (0 - (z⁻¹) ^ 4)) +
           ∫ x in Set.Ioi (0 : ℝ),
             (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5))) := by
+    exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
+  exact tendsto_nhds_unique hL hL_to_rhs
+
+lemma stieltjes_B4Diff_to_B6Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 =
+      (252 : ℂ)⁻¹ * ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6) +
+        ∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7 := by
+  let L : ℕ → ℂ := fun N =>
+    ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+  let R : ℕ → ℂ := fun N =>
+    (252 : ℂ)⁻¹ * (((((N : ℂ) + z)⁻¹) ^ 6) - (z⁻¹) ^ 6) +
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+  have hLR : ∀ N, L N = R N := by
+    intro N
+    simpa [L, R] using finite_stieltjes_B4Diff_to_B6Diff z hz N
+  have hL :
+      Tendsto L atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)) := by
+    simpa [L] using tendsto_intervalIntegral_b4diff_div_pow5_Ioi z hz
+  have h_inv : Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) :=
+    tendsto_nat_add_complex_inv z
+  have h_inv6 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 6)) atTop (𝓝 ((0 : ℂ) ^ 6)) := by
+    simpa using h_inv.pow 6
+  have hB6 :
+      Tendsto
+        (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)
+        atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)) :=
+    tendsto_intervalIntegral_b6diff_div_pow7_Ioi z hz
+  have hEndpoint :
+      Tendsto
+        (fun N : ℕ =>
+          (252 : ℂ)⁻¹ * (((((N : ℂ) + z)⁻¹) ^ 6) - (z⁻¹) ^ 6))
+        atTop
+        (𝓝 ((252 : ℂ)⁻¹ * ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6))) := by
+    have hsub :
+        Tendsto
+          (fun N : ℕ => (((((N : ℂ) + z)⁻¹) ^ 6) - (z⁻¹) ^ 6))
+          atTop (𝓝 ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6)) := by
+      exact h_inv6.sub tendsto_const_nhds
+    simpa using hsub.const_mul (252 : ℂ)⁻¹
+  have hR :
+      Tendsto R atTop
+        (𝓝 ((252 : ℂ)⁻¹ * ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)) := by
+    simpa [R] using hEndpoint.add hB6
+  have hL_to_rhs :
+      Tendsto L atTop
+        (𝓝 ((252 : ℂ)⁻¹ * ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7)) := by
     exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
   exact tendsto_nhds_unique hL hL_to_rhs
 

@@ -34178,3 +34178,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   to expose the expected global boundary contribution.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4ToB6IoiTailBridgeChecked
+
+- Added checked B6/power-7 tail infrastructure:
+  `Q3.bernoulli6Diff_abs_le`, `Q3.bernoulli6Diff_norm_le`,
+  `Q3.kernel_norm_pow7_le_re`, `Q3.integrable_kernel_norm_pow7`,
+  `Q3.integrable_bernoulli6Diff_div_pow7`, and
+  `Q3.tendsto_intervalIntegral_b6diff_div_pow7_Ioi`.
+- Added checked global B4-to-B6 `Ioi` identity:
+  `Q3.stieltjes_B4Diff_to_B6Diff_Ioi_raw`.
+- Closed:
+  `STEP33_M6_B4_TO_B6_IOI_LIMIT_TAIL_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_TO_B6_DIGAMMA_PREFIX_GAP`.
+- Smallest useful next Lean object: combine
+  `Q3.digamma_stieltjes_B4Diff_Ioi_mainPrefix` with
+  `Q3.stieltjes_B4Diff_to_B6Diff_Ioi_raw` to expose the B6/power-7 digamma
+  prefix surface, then continue the one-order lift.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

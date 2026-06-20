@@ -54414,3 +54414,46 @@ global `Ioi` B4-to-B6 identity.
 
 Boundary: this is not a proof of the `Ioi` B4-to-B6 identity,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B4-to-B6 Ioi tail bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli6Diff_abs_le
+Q3.bernoulli6Diff_norm_le
+Q3.kernel_norm_pow7_le_re
+Q3.integrable_kernel_norm_pow7
+Q3.integrable_bernoulli6Diff_div_pow7
+Q3.tendsto_intervalIntegral_b6diff_div_pow7_Ioi
+Q3.stieltjes_B4Diff_to_B6Diff_Ioi_raw
+```
+
+Checked global identity:
+
+```lean
+∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+=
+  (252 : ℂ)⁻¹ * ((0 : ℂ) ^ 6 - (z⁻¹) ^ 6) +
+  ∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_IOI_LIMIT_TAIL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_DIGAMMA_PREFIX_GAP
+```
+
+Meaning: combine the checked B4 digamma main-prefix theorem with this checked
+global B4-to-B6 tail bridge to expose the B6/power-7 digamma prefix surface.
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
