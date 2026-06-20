@@ -34512,3 +34512,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `(1/12) * bernoulli12DiffCellDeriv/(x+z)^12` unit-cell remainder.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B10ToB12IntervalBridgeChecked
+
+- Added checked interval Stieltjes bridge:
+  `Q3.stieltjes_interval_B10Diff_to_B12CellDeriv`.
+- The theorem rewrites the unit-cell B10/power-11 remainder as
+  `(1 / 12) * bernoulli12DiffCellDeriv/(x+z)^12`.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean`, and
+  the forbidden-hole scan for `sorry|admit|exact?|axiom|unsafe`.
+- Closed:
+  `STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP`.
+- Smallest useful next Lean object: mirror the checked B10 boundary bridge for
+  B12, proving the interval identity from
+  `bernoulli12DiffCellDeriv/(x+z)^12` to the explicit endpoint term with B12
+  endpoint value `-691/2730` and the B12/power-13 cell remainder.  The
+  `691/32760 * z^-12` main-prefix term belongs to the later combined/telescope
+  layer, not to this interval bridge alone.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.

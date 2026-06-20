@@ -55156,3 +55156,72 @@ STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local theorem:
+
+```lean
+Q3.stieltjes_interval_B10Diff_to_B12CellDeriv
+```
+
+Closed gap:
+
+```text
+STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
+```
+
+Next smallest Lean object: prove the interval boundary bridge from
+`bernoulli12DiffCellDeriv/(x+z)^12` to `bernoulli12Diff/(x+z)^13`.
+The checked B12 endpoint value is `-691/2730`; the later finite-telescope
+main-prefix contribution `691/32760 * z^-12` is not available until this
+boundary bridge, the combined one-cell identity, the finite telescope, and the
+`Ioi` limit are all checked.
+
+## 2026-06-20 Execution update -- B10-to-B12 interval bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B10Diff_to_B12CellDeriv
+```
+
+The checked theorem surface is:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11 =
+  (1 / 12 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli12DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 12
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Result: Lean and `q3_check` passed; forbidden-hole scan clean.
+
+This closes:
+
+```text
+STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.
