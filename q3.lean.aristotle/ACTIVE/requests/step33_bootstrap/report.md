@@ -52472,3 +52472,177 @@ Boundary remains unchanged: this does not prove
 `step33_shift16_digamma_m6_integral_remainder_bound`; it names the exact
 local bridges by which the source can enter.  Step33A.1-A open; A hbox open;
 `ActiveCenteredCoeffEntryHboxCert` open; Step33 open.
+
+## 2026-06-20 Execution update -- M6 source sublemma search recorded
+
+Local follow-up search after the checked bridge interfaces:
+
+```text
+./scripts/research_oracle.py query \
+  "Step33 M6 digamma integral remainder coefficient 7/6 kernel power 15" \
+  -c q3_docs
+./scripts/research_oracle.py query \
+  "digammaM6IntegralRemainderBound Euler Maclaurin Stieltjes identity" \
+  -c q3_docs
+./scripts/research_oracle.py query \
+  "digammaM6StepDefect finite telescope shifted source exact integral budget" \
+  -c q3_docs
+```
+
+Result:
+
+```text
+No hole-free local theorem proving
+  Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint
+was found.
+```
+
+Closest checked local artifacts:
+
+```lean
+Q3.digamma_stieltjes_identity
+Q3.digamma_stieltjes_complex_remainder_bound
+Q3.digammaM6AsymptoticMain
+Q3.digammaM6IntegralRemainderBound
+Q3.digammaM6IntegralRemainderBound_of_finite_telescope
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_of_re_pos_source
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound_of_shifted_integral_remainder
+```
+
+Non-proof artifact:
+
+```text
+q3.lean.aristotle/aristotle_output/5b903a21-fba1-4f42-949f-470b62c020b1/
+  step33_shift16_digamma_m6_ball_request_aristotle/RequestProject/Step33Norm.lean
+```
+
+This old generated file gives a useful Gauss-limit / step-defect diagnostic
+route, but its final theorem contains `sorry`; it is not accepted evidence.
+
+Current exact blocker:
+
+```text
+STEP33_M6_SOURCE_ROUTE_FORK
+```
+
+Fork:
+
+```text
+A. prove the generic half-plane theorem
+   ∀ z, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z
+
+B. prove a z0/shifted finite-telescope source through
+   Q3.digammaM6StepDefect and exact integral-budget comparison
+```
+
+Both routes must match the repository predicate exactly:
+
+```lean
+Q3.digammaM6IntegralRemainderBound
+```
+
+including coefficient `7/6` and kernel power `15`.
+
+## 2026-06-20 Proshka/Louise route advice -- choose specialized z0 source
+
+Prompted Proshka/Louise on the exact `STEP33_M6_SOURCE_ROUTE_FORK`:
+
+```text
+Choose exactly one:
+A. generic theorem ∀ z, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z
+B. specialized theorem at z0
+C. shifted z0+16 high-order rectangle theorem
+D. weaker finite-telescope/component-defect lemma
+```
+
+Answer:
+
+```text
+CHOICE: B
+```
+
+Exact theorem shape:
+
+```lean
+theorem step33_shift16_digamma_m6_integral_remainder_bound :
+    Q3.digammaM6IntegralRemainderBound
+      Q3.PSDpd.Step33.step33Shift16DigammaPoint := by
+  ...
+```
+
+Reason:
+
+```text
+B is the smallest theorem that feeds the already checked receivers directly.
+A overgeneralizes to all z with positive real part.  C adds shift/telescope
+and rectangle infrastructure.  D does not close the source premise.
+```
+
+First expected Lean obstruction:
+
+```text
+Existing N=1 DigammaRemainder/Stieltjes lemmas do not yet match the M6
+bound.  The missing local proof must derive the six-step Euler-Maclaurin /
+Stieltjes remainder and align coefficient 7/6, kernel power 15, and complex
+norm.
+```
+
+## 2026-06-20 Proshka/Louise follow-up -- choose endpoint/hRaw bypass first
+
+Follow-up prompt after local inspection:
+
+```text
+Mathlib/local repo have no ready high-order digamma Euler-Maclaurin theorem.
+Checked N=1 DigammaRemainder/Stieltjes lemmas exist.
+The z0 series-prefix/tail receiver and endpoint/hRaw wrappers exist.
+The fixed M6 component radius 1e-22 is coarser than the direct B RHS scale
+about 6.33e-23.
+Choose the smallest next proof object: A/B/C/D.
+```
+
+Answer:
+
+```text
+CHOICE: C
+```
+
+Exact theorem shape proposed by Proshka/Louise:
+
+```lean
+theorem step33_shift16_digamma_m6_component_defect_bounds_of_series :
+    |(Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+      Q3.digammaM6AsymptoticMain
+        Q3.PSDpd.Step33.step33Shift16DigammaPoint).re|
+      <= (1 : Real) / (10 : Real) ^ 22
+    ∧
+    |(Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+      Q3.digammaM6AsymptoticMain
+        Q3.PSDpd.Step33.step33Shift16DigammaPoint).im|
+      <= (1 : Real) / (10 : Real) ^ 22 := by
+  ...
+```
+
+Local checked receivers relevant to this choice:
+
+```lean
+step33Shift16Digamma_fixed_rect_interval_of_shift32_series_prefix_tail_abs
+primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_fixed_rect_shift32_series_prefix_tail_abs
+primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_fixed_rect_shift32_series_prefix_tail_abs
+```
+
+Boundary:
+
+```text
+This is not a proof of
+  Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint.
+It is a smaller endpoint/hRaw route through the existing z0 series-prefix/tail
+receiver.  The analytic M6 source theorem remains open.
+```
+
+First expected Lean obstruction:
+
+```text
+Convert the existing complex rectangle certificate into exact `.re` and `.im`
+component bounds after unfolding `digammaM6AsymptoticMain`, including rational
+interval endpoint normalization and coercions Q -> R -> C.
+```

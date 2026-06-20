@@ -33502,3 +33502,72 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
 - This is still not the M6 source proof; it removes ambiguity about which
   conditional inputs are acceptable without weakening the target.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6SourceSublemmaSearch
+
+- Local `q3_docs` searches for the M6 source returned `Q3.DigammaRemainder`,
+  `Q3.Proofs.Digamma_Aristotle`, the old generated `Step33Norm.lean` draft,
+  and the existing Step33 Aristotle input requests; no hole-free theorem
+  proving `Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint` was
+  found.
+- `Q3.DigammaRemainder` already contains the checked N=1 Stieltjes identity
+  `Q3.digamma_stieltjes_identity`, the complex-norm N=1 bound
+  `Q3.digamma_stieltjes_complex_remainder_bound`, the M6 main definition
+  `Q3.digammaM6AsymptoticMain`, the target predicate
+  `Q3.digammaM6IntegralRemainderBound`, and the finite-telescope receiver
+  `Q3.digammaM6IntegralRemainderBound_of_finite_telescope`.
+- The old generated `Step33Norm.lean` draft is diagnostic only: it identifies a
+  plausible Gauss-limit / step-defect route and rational Bernoulli
+  cancellations, but its final theorem still contains `sorry`, so it is not
+  proof-grade.
+- The live route fork is now exact: either prove a generic half-plane theorem
+  `∀ z, 0 < z.re -> Q3.digammaM6IntegralRemainderBound z`, or prove a smaller
+  z0/shifted source via the finite-telescope step-defect receiver.  Neither
+  source theorem is currently present locally.
+- Current blocker name: `STEP33_M6_SOURCE_ROUTE_FORK`, with the first missing
+  proof object being the six-step M6 Euler-Maclaurin/Stieltjes source matching
+  coefficient `7/6`, kernel power `15`, and the repository predicate
+  `Q3.digammaM6IntegralRemainderBound`.
+
+## Insight (2026-06-20, Step33A.1-A) -- ProshkaM6SourceRouteChoice
+
+- Proshka/Louise route advice for the exact M6 source fork selects option B:
+  prove the specialized theorem
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+  Q3.PSDpd.Step33.step33Shift16DigammaPoint`.
+- Reason: this theorem feeds the already checked Step33A.1-A receivers
+  directly; option A overgeneralizes to the full half-plane, option C adds
+  shift/telescope/rectangle infrastructure, and option D does not close the
+  source premise.
+- First expected Lean obstruction remains the same local analytic source:
+  derive the six-step Euler-Maclaurin/Stieltjes M6 remainder so the statement
+  matches coefficient `7/6`, kernel power `15`, and the complex norm used by
+  `Q3.digammaM6IntegralRemainderBound`.
+
+## Insight (2026-06-20, Step33A.1-A) -- ProshkaM6EndpointBypassChoice
+
+- After local follow-up showed no ready high-order Euler-Maclaurin theorem and
+  that the existing fixed M6 component radius `1e-22` is coarser than the
+  direct integral-remainder scale about `6.33e-23`, Proshka/Louise changed the
+  smallest next proof object to option C.
+- The proposed next theorem shape is a component-defect endpoint/hRaw feeder,
+  not a proof of `Q3.digammaM6IntegralRemainderBound
+  step33Shift16DigammaPoint`:
+  `step33_shift16_digamma_m6_component_defect_bounds_of_series`, proving
+  separate real and imaginary `1/(10^22)` bounds for
+  `Q3.digamma step33Shift16DigammaPoint -
+  Q3.digammaM6AsymptoticMain step33Shift16DigammaPoint`.
+- Local support exists for this route through
+  `step33Shift16Digamma_fixed_rect_interval_of_shift32_series_prefix_tail_abs`,
+  `primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_fixed_rect_shift32_series_prefix_tail_abs`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_fixed_rect_shift32_series_prefix_tail_abs`.
+- This is deliberately weaker than the M6 source theorem.  It can move the
+  active endpoint/hRaw surface using the checked series-prefix/tail receiver,
+  while leaving the analytic source theorem
+  `Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint` open.
+- First expected Lean obstruction: convert the existing complex rectangle
+  certificate into exact `.re` and `.im` component bounds after unfolding
+  `digammaM6AsymptoticMain`, with rational endpoint normalization and coercions
+  `Q -> R -> C`.
