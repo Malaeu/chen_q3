@@ -53069,3 +53069,89 @@ Next proof object:
   produce checked component intervals for n=3,...,15, preferably by a finite
   table/generator that reuses the now-tested log/arctan/algebraic split shape.
 ```
+
+## 2026-06-20 Execution update -- n=3 M6 step-defect interval closed
+
+After the `n=0`, `n=1`, and `n=2` closures, the in-app Proshka browser review
+selected `CHOICE: C`: first extract the repeating log/arctan helper shape, then
+make `n=3` the first consumer.  The local patch added a small generic arctan
+alternating-series error helper:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Arctan_error_bound_of_nonneg_le_one
+```
+
+and then closed the fourth finite-telescope defect term with a no-premise Lean
+theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n3_component_interval
+```
+
+It proves:
+
+```lean
+(((-59 : Real) / ((10 : Real) ^ 25) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (3 : Complex))).re ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (3 : Complex))).re <=
+    (-58 : Real) / ((10 : Real) ^ 25)) ∧
+ ((61 : Real) / ((10 : Real) ^ 27) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (3 : Complex))).im ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (3 : Complex))).im <=
+    (62 : Real) / ((10 : Real) ^ 27)))
+```
+
+New checked support names:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3LogStep
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3AlgebraicPart
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3LogStep_re_bounds
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3LogStep_im_bounds
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3_eq_logStep_add_algebraicPart
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3AlgebraicPart_re_eq
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN3AlgebraicPart_im_eq
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n3_component_interval_of_log_step_bounds
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes n=0, n=1, n=2, and n=3 only.
+It still does not produce:
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+
+Current exact source gap:
+  STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP
+
+Next proof object:
+  use the accepted arctan helper and either generate checked intervals for
+  n=4,...,15 or build the finite table theorem consumed by the existing
+  Fin 16 payload receiver.
+```

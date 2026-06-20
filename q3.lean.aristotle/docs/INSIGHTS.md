@@ -33703,3 +33703,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now reduced
   to checked intervals for `n=3,...,15` or a finite table/generator feeding the
   existing `Fin 16` receiver.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN3IntervalClosed
+
+- Used the in-app Proshka browser session after the `n=2` closure.  Proshka
+  selected `CHOICE: C`: extract the repeated log/arctan helper shape first,
+  then make `n=3` the first consumer.
+- Added generic checked helper
+  `step33Shift16Arctan_error_bound_of_nonneg_le_one` for arctan alternating
+  series tails under `0 <= x`, `x <= 1`, `x^2 < 1`, and `‖x‖ < 1`.
+- Added Lean-checked no-premise theorem
+  `step33_shift16_m6_step_defect_n3_component_interval`.
+  It proves `[-59,-58]/10^25` for the real part and `[61,62]/10^27` for the
+  imaginary part of
+  `Q3.digammaM6StepDefect (step33Shift16DigammaPoint + (3 : Complex))`.
+- The real step uses `Real.abs_log_sub_add_sum_range_le` on
+  `log(1 + 114400/1988101)`, and the imaginary step uses the generic arctan
+  helper for ratios `1/1450` and `1/1410`.
+- Boundary: this closes only `n=0,1,2,3`.  The payload remains open; the exact
+  source gap is still `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, now reduced
+  to checked intervals for `n=4,...,15` or a finite table theorem feeding the
+  existing `Fin 16` receiver.
