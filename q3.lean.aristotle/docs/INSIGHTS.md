@@ -35434,3 +35434,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Expected closure: first-subchunk `hRawCenterCoeffAbs` source closes.
   Step33A.1-A, the full 110-field payload, A hbox,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, and RH remain open.
+
+## Insight (2026-06-20, Step33A.1-A) -- FirstRawCenterHRawSourceChecked
+
+- Target:
+  `STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP` for the current first-subchunk
+  `hRawCenterCoeffAbs` surface.
+- Added checked Lean facts in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_component_abs_closedLogPi`.
+- The patch feeds the checked
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm` into the existing
+  closed-`log pi` raw-center receivers.  No new analytic estimate, generated
+  payload trust, or theorem weakening was introduced.
+- `lake env lean` initially saw a stale dependency `.olean`; rebuilding
+  `Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport` made the new
+  support theorem visible to `HRawLanding`.
+- Closed for this first-subchunk surface:
+  `STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP`.
+- Active exact next gap:
+  `STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP`.
+- Concrete next theorem surface:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound`.
+- Validation passed:
+  `lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport`,
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  the touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: first-subchunk derivative direct-norm proof-data, the full
+  110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33,
+  Step34, and RH remain open.

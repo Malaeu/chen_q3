@@ -56749,3 +56749,59 @@ scan and whitespace check were clean.
 
 Boundary: this does not prove Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Execution Update (2026-06-20) -- first raw-center hRaw source
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk raw-center payload.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_component_abs_closedLogPi
+```
+
+Closed blocker for the current first-subchunk surface:
+
+```text
+STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Next patch-sized theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound
+```
+
+Validation:
+
+```text
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: dependency rebuild, Lean, `q3_check`, forbidden-token scan, and
+whitespace check passed.
+
+Boundary: this closes the first-subchunk raw-center source only.  It does not
+prove derivative direct-norm proof-data, the full 110-field payload, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

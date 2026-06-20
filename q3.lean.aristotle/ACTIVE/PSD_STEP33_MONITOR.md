@@ -29015,3 +29015,54 @@ and whitespace check were clean.
 
 Boundary: this does not prove Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- first raw-center hRaw source checked
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_component_abs_closedLogPi
+```
+
+Closed exact gap for the current first-subchunk surface:
+
+```text
+STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP
+```
+
+Meaning: the previously checked
+`Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm` is now wired into the
+first-subchunk closed-`log pi` `hRawCenterCoeffAbs` receivers.  The
+first-subchunk raw-center coefficient source no longer depends on an external
+M6 hypothesis.
+
+Active exact gap:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Concrete next theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound
+```
+
+Validation:
+
+```text
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: dependency rebuild, Lean, and `q3_check` passed; forbidden-token and
+whitespace checks were clean.
+
+Boundary: this closes only the first-subchunk raw-center source.  It does not
+prove the first-subchunk residual-derivative direct norm certificate, the full
+110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34,
+or RH.

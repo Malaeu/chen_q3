@@ -116,6 +116,14 @@ theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_ma
       primaryFiniteRow0Parent0Split100Sub0LogPiLower_le
       primaryFiniteRow0Parent0Split100Sub0LogPi_le_upper
 
+theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi :
+    |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+        11 ((3 : Real) / 10) 0 ((1 : Real) / 20) -
+      ((primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0 : Rat) : Real)| <=
+        ((64509243331 : Real) / 500000000000000000000000000000) :=
+  primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_norm_closedLogPi
+    Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm
+
 theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_expanded_asymptotic_bound_closedLogPi
     (hExpanded :
       ‖Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
@@ -693,6 +701,18 @@ theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_ma
       hMainRe hMainIm
       primaryFiniteRow0Parent0Split100Sub0LogPiLower_le
       primaryFiniteRow0Parent0Split100Sub0LogPi_le_upper
+
+theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_component_abs_closedLogPi :
+    |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+        11 ((3 : Real) / 10) 0 ((1 : Real) / 20) -
+      ((primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0 : Rat) : Real)| <=
+        ((64509243331 : Real) / 500000000000000000000000000000) := by
+  have hComp :=
+    Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_component_abs_of_norm
+      Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_component_abs_closedLogPi
+      hComp.1 hComp.2
 
 theorem primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_digamma_m6_asymptotic_main_component_abs_closedLogPi
     (hMainRe :
