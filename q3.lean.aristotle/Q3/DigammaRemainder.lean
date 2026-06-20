@@ -632,6 +632,19 @@ lemma bernoulli14Diff_norm_le (x : ℝ) :
     simp
   simpa [hnorm] using hb
 
+lemma bernoulli14Diff_sub_seven_six_abs_half :
+    |bernoulli14Diff (1 / 2 : ℝ) - (7 / 6 : ℝ)| =
+      (38227 / 16384 : ℝ) := by
+  norm_num [bernoulli14Diff, bernoulli14Fract, bernoulli14, Int.fract]
+
+lemma not_forall_bernoulli14Diff_sub_seven_six_abs_le :
+    ¬ ∀ x : ℝ,
+      |bernoulli14Diff x - (7 / 6 : ℝ)| ≤ (7 / 6 : ℝ) := by
+  intro h
+  have hhalf := h (1 / 2 : ℝ)
+  rw [bernoulli14Diff_sub_seven_six_abs_half] at hhalf
+  norm_num at hhalf
+
 lemma bernoulli2Fract_int (n : ℤ) : bernoulli2Fract (n : ℝ) = (6 : ℝ)⁻¹ := by
   simp [bernoulli2Fract, bernoulli2]
 

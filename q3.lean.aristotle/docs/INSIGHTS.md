@@ -34903,3 +34903,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   mirrored the existing checked lower-order pattern and had no route fork.
 - Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14PointwiseRouteKilled
+
+- Added checked Lean counterexample lemmas in `Q3/DigammaRemainder.lean`:
+  `Q3.bernoulli14Diff_sub_seven_six_abs_half` and
+  `Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le`.
+- Exact value:
+  `|bernoulli14Diff (1 / 2) - 7 / 6| = 38227 / 16384`, hence it is strictly
+  larger than `7 / 6`.
+- Killed route:
+  `STEP33_M6_SHIFTED_B14_POINTWISE_BOUND_FALSE`.
+- This rules out the direct shifted-integrand proof of the current M6 source
+  theorem via `MeasureTheory.norm_integral_le_of_norm_le`, because the
+  required pointwise hypothesis is false.
+- Remaining exact gap:
+  `STEP33_M6_B14_FIRST_OMITTED_CANCELLATION_OR_Z0_WEIGHTED_SUM_GAP`.
+- Next acceptable theorem must either keep first-omitted cancellation before
+  taking the norm, or prove a `z0`-special weighted estimate in the same
+  order-15 kernel budget.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Browser/Pro note: Computer Use was attempted after this route fork, but the
+  accessible Playwright session opened ChatGPT login rather than the already
+  open user Pro tab.  Earlier visible Pro/Louise text is advisory only and did
+  not give a stable theorem statement.
+- Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

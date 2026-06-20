@@ -28070,3 +28070,51 @@ the existing checked lower-order pattern.
 
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Step33A.1-A shifted B14 pointwise route killed
+
+Latest checked negative lemmas in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli14Diff_sub_seven_six_abs_half
+Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le
+```
+
+These prove that the tempting shifted-integrand estimate
+
+```lean
+∀ x : ℝ, |bernoulli14Diff x - (7 / 6 : ℝ)| ≤ (7 / 6 : ℝ)
+```
+
+is false.  At `x = 1 / 2`, Lean checks the exact value:
+
+```text
+|bernoulli14Diff (1 / 2) - 7 / 6| = 38227 / 16384 > 7 / 6
+```
+
+Killed route:
+
+```text
+STEP33_M6_SHIFTED_B14_POINTWISE_BOUND_FALSE
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_FIRST_OMITTED_CANCELLATION_OR_Z0_WEIGHTED_SUM_GAP
+```
+
+Next smallest admissible route is not a direct
+`MeasureTheory.norm_integral_le_of_norm_le` application to the shifted B14
+integrand.  It must be a theorem where the first-omitted cancellation is
+present in the source identity, or a `z0`-special weighted estimate with the
+same final order-15 kernel budget.
+
+Browser/Pro note: after this real route fork, Computer Use was tried against
+the Pro/Louise chat URL, but the accessible Playwright browser session opened
+ChatGPT login rather than the already-open user tab.  Earlier visible
+Pro/Louise text is advisory route guidance only and not proof evidence; it did
+not provide a stable Lean theorem statement.
+
+Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

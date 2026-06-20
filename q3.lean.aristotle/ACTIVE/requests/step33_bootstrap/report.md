@@ -55632,3 +55632,85 @@ used as proof evidence.
 Boundary: this is not a proof of the B14 `Ioi` lift, the B12 `Ioi`
 norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Execution update -- shifted B14 pointwise route killed
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli14Diff_sub_seven_six_abs_half
+Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le
+```
+
+Checked exact counterexample:
+
+```text
+|bernoulli14Diff (1 / 2) - 7 / 6| = 38227 / 16384
+38227 / 16384 > 7 / 6
+```
+
+This kills the tempting direct shifted-integrand route:
+
+```lean
+∀ x : ℝ, |bernoulli14Diff x - (7 / 6 : ℝ)| ≤ (7 / 6 : ℝ)
+```
+
+Closed negative route:
+
+```text
+STEP33_M6_SHIFTED_B14_POINTWISE_BOUND_FALSE
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B14_FIRST_OMITTED_CANCELLATION_OR_Z0_WEIGHTED_SUM_GAP
+```
+
+Next admissible theorem shape: a source theorem that keeps the first-omitted
+cancellation before taking the norm, or a `z0`-special weighted-sum estimate
+that proves the same final order-15 kernel budget.  A bare
+`MeasureTheory.norm_integral_le_of_norm_le` proof on the shifted B14 integrand
+is not available because its required pointwise hypothesis is false.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Browser/Pro note: this was a real route fork, so Computer Use was attempted
+against the Pro/Louise chat URL.  The accessible Playwright browser session
+landed on ChatGPT login instead of the already-open user tab.  Earlier visible
+Pro/Louise text remains advisory only and did not provide a stable theorem
+statement usable as proof evidence.
+
+## PRO_REVIEW_REQUEST
+
+Route: PSD Step33 / M6 source theorem.
+Current step: after checked raw/cancelled B12-to-B14 `Ioi` bridges.
+Current theorem: `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+File: `q3.lean.aristotle/Q3/DigammaRemainder.lean`.
+Lean error / blocker: checked counterexample
+`Q3.not_forall_bernoulli14Diff_sub_seven_six_abs_le`; the direct shifted B14
+pointwise bound needed by `norm_integral_le_of_norm_le` is false at `x = 1/2`.
+Options:
+A. Prove a first-omitted source theorem where cancellation is preserved before
+   the norm.
+B. Prove a `z0`-special weighted-sum estimate in the same order-15 kernel
+   budget.
+C. Find a different same-budget boundary/integral accounting theorem.
+Codex recommendation: choose A or B only after the exact theorem statement is
+fixed; do not spend the killed shifted pointwise route.
+Question for Louise: what is the exact Lean theorem statement, with constants
+and kernel normalization, that should replace the false shifted pointwise
+bound?
+
+Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
