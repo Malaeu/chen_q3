@@ -760,6 +760,87 @@ theorem step33Shift16B14NormKernelCellIntegral_nonneg (n : Nat) :
   rw [← hcell]
   exact h
 
+theorem step33Shift16B14NormKernelFinitePrefix_nonneg (N : Nat) :
+    0 <= ∫ x in (0 : Real)..(N : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+  let F : Real → Real := fun x =>
+    Q3.bernoulli14Diff x /
+      ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+  have hIoiInt : IntegrableOn F (Set.Ioi (0 : Real)) volume := by
+    simpa [F, IntegrableOn] using
+      Q3.integrable_bernoulli14Diff_kernel_norm_pow15 step33Shift16DigammaPoint
+        step33Shift16DigammaPoint_re_pos
+  have hsum :=
+    intervalIntegral.sum_integral_adjacent_intervals
+      (f := F) (μ := volume) (a := fun k : Nat => (k : Real)) (n := N)
+      (by
+        intro k _hk
+        have hle : (k : Real) <= ((k + 1 : Nat) : Real) := by
+          exact_mod_cast Nat.le_succ k
+        rw [intervalIntegrable_iff_integrableOn_Ioc_of_le hle]
+        exact hIoiInt.mono_set (by
+          intro x hx
+          exact lt_of_le_of_lt (Nat.cast_nonneg k) hx.1))
+  have hsum' :
+      (∑ k ∈ Finset.range N,
+        ∫ x in (k : Real)..((k + 1 : Nat) : Real), F x) =
+        ∫ x in (0 : Real)..(N : Real), F x := by
+    simpa using hsum
+  change 0 <= ∫ x in (0 : Real)..(N : Real), F x
+  rw [← hsum']
+  refine Finset.sum_nonneg ?_
+  intro k _hk
+  simpa [F, Nat.cast_add, Nat.cast_one] using
+    step33Shift16B14NormKernelCellIntegral_nonneg k
+
+theorem step33Shift16B14NormKernelWeightedIoi_nonneg :
+    0 <= ∫ x in Set.Ioi (0 : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+  let F : Real → Real := fun x =>
+    Q3.bernoulli14Diff x /
+      ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15
+  have hIoiInt : IntegrableOn F (Set.Ioi (0 : Real)) volume := by
+    simpa [F, IntegrableOn] using
+      Q3.integrable_bernoulli14Diff_kernel_norm_pow15 step33Shift16DigammaPoint
+        step33Shift16DigammaPoint_re_pos
+  have hlim :
+      Filter.Tendsto
+        (fun N : Nat => ∫ x in (0 : Real)..(N : Real), F x)
+        Filter.atTop
+        (nhds (∫ x in Set.Ioi (0 : Real), F x)) := by
+    simpa using
+      (intervalIntegral_tendsto_integral_Ioi (a := (0 : Real))
+        (f := F) (μ := volume) (b := fun N : Nat => (N : Real)) (l := Filter.atTop)
+        hIoiInt tendsto_natCast_atTop_atTop)
+  have hnonneg :
+      ∀ N : Nat, 0 <= ∫ x in (0 : Real)..(N : Real), F x := by
+    intro N
+    simpa [F] using step33Shift16B14NormKernelFinitePrefix_nonneg N
+  have hmain : 0 <= ∫ x in Set.Ioi (0 : Real), F x :=
+    ge_of_tendsto' hlim hnonneg
+  simpa [F] using hmain
+
+theorem step33Shift16B14ShiftedIoiNorm_le :
+    ‖∫ x in Set.Ioi (0 : Real),
+        ((Q3.bernoulli14Diff x : Complex) - (7 / 6 : Complex)) /
+          ((x : Complex) + step33Shift16DigammaPoint) ^ 15‖ <=
+      ((7 : Real) / (6 : Real)) *
+        ∫ x in Set.Ioi (0 : Real),
+          1 / ‖(x : Complex) + step33Shift16DigammaPoint‖ ^ 15 := by
+  exact
+    Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg
+      step33Shift16DigammaPoint step33Shift16DigammaPoint_re_pos
+      step33Shift16B14NormKernelWeightedIoi_nonneg
+
+theorem step33_shift16_digamma_m6_integral_remainder_bound :
+    Q3.digammaM6IntegralRemainderBound step33Shift16DigammaPoint := by
+  exact
+    Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
+      step33Shift16DigammaPoint step33Shift16DigammaPoint_re_pos
+      step33Shift16B14ShiftedIoiNorm_le
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by
@@ -9200,6 +9281,13 @@ theorem step33_shift16_digamma_m6_main_norm_of_integral_remainder_bound
   step33_shift16_digamma_m6_main_norm_of_re_first_omitted_term_bound
     (step33_shift16_digamma_m6_re_first_omitted_term_bound_of_generic_integral_remainder
       hIntegral)
+
+theorem step33_shift16_digamma_m6_main_norm :
+    ‖Q3.digamma step33Shift16DigammaPoint -
+        step33Shift16DigammaM6Main‖ <=
+      step33Shift16DigammaM6MainComponentRadius :=
+  step33_shift16_digamma_m6_main_norm_of_integral_remainder_bound
+    step33_shift16_digamma_m6_integral_remainder_bound
 
 theorem step33_shift16_digamma_m6_center_component_abs_of_log_component_abs
     (logReCenter logImCenter logReErr logImErr centerReErr centerImErr : Real)

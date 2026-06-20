@@ -56686,3 +56686,66 @@ Boundary: this does not prove paired-kernel antitonicity, the half-cell
 rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Execution Update (2026-06-20) -- B14 weighted Ioi M6 source
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14NormKernelFinitePrefix_nonneg
+Q3.PSDpd.Step33.step33Shift16B14NormKernelWeightedIoi_nonneg
+Q3.PSDpd.Step33.step33Shift16B14ShiftedIoiNorm_le
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm
+```
+
+Closed blockers:
+
+```text
+STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP
+STEP33_M6_B14_SHIFTED_B14_TO_M6_REMAINDER_GAP
+STEP33_M6_MAIN_NORM_SOURCE_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP
+```
+
+Next patch-sized theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_component_abs
+```
+
+Computer Use / Browser status: available for Pro/Louise escalation on a real
+fork.  No message was sent because the local Lean path closed the current
+source gap.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file hole/axiom/unsafe
+scan and whitespace check were clean.
+
+Boundary: this does not prove Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

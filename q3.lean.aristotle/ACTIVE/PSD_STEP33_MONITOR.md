@@ -28956,3 +28956,62 @@ Boundary: this does not prove the half-cell rearrangement/integration-by-parts
 comparison, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- B14 weighted Ioi M6 source checked
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14NormKernelFinitePrefix_nonneg
+Q3.PSDpd.Step33.step33Shift16B14NormKernelWeightedIoi_nonneg
+Q3.PSDpd.Step33.step33Shift16B14ShiftedIoiNorm_le
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm
+```
+
+Closed exact gaps:
+
+```text
+STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP
+STEP33_M6_B14_SHIFTED_B14_TO_M6_REMAINDER_GAP
+STEP33_M6_MAIN_NORM_SOURCE_GAP
+```
+
+Meaning: the checked cellwise nonnegativity theorem now sums over finite
+integer prefixes and passes to `Set.Ioi 0` via
+`intervalIntegral_tendsto_integral_Ioi`.  This supplies the weighted
+nonnegativity premise for
+`Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`, then the integral
+remainder bound, then the named M6 main-norm bound at
+`step33Shift16DigammaPoint`.
+
+Active exact gap:
+
+```text
+STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP
+```
+
+Concrete next theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_component_abs
+```
+
+Browser/Pro status: Computer Use remains the escalation channel.  No
+Pro/Louise message was sent in this patch because the route did not fork; the
+local Lean route closed the M6 source gap.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

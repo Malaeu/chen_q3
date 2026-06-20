@@ -16088,3 +16088,54 @@ Boundary remains unchanged: this does not prove paired-kernel antitonicity,
 the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Addendum -- B14 weighted Ioi and M6 main source checked
+
+Checked new support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16B14NormKernelFinitePrefix_nonneg
+Q3.PSDpd.Step33.step33Shift16B14NormKernelWeightedIoi_nonneg
+Q3.PSDpd.Step33.step33Shift16B14ShiftedIoiNorm_le
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm
+```
+
+Closed gaps:
+
+```text
+STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP
+STEP33_M6_B14_SHIFTED_B14_TO_M6_REMAINDER_GAP
+STEP33_M6_MAIN_NORM_SOURCE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP
+```
+
+Meaning: the B14 cell nonnegativity route has now reached the exact M6
+main-norm theorem needed as a source for the row-0 parent-0 split-100
+raw-center component payload.  The next patch should wire the checked M6
+main-norm fact into the local
+`primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs...` theorem surface,
+then continue toward the A-hbox endpoint packaging.
+
+Browser/Pro status: Computer Use remains available for a real route blocker.
+No external message was sent because this patch had a direct local Lean path.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; forbidden-token and whitespace checks were
+clean.
+
+Boundary: this does not prove Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

@@ -35377,3 +35377,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B14WeightedIoiM6Source
+
+- Target: close the M6 source side-route after the checked B14 cell
+  nonnegativity theorem by summing cells into the weighted `Set.Ioi 0`
+  premise and feeding the existing digamma M6 receiver.
+- Local `q3_docs` searches pointed to
+  `intervalIntegral.sum_integral_adjacent_intervals`,
+  `intervalIntegral_tendsto_integral_Ioi`,
+  `Q3.integrable_bernoulli14Diff_kernel_norm_pow15`, and the existing receiver
+  `Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16B14NormKernelFinitePrefix_nonneg`,
+  `Q3.PSDpd.Step33.step33Shift16B14NormKernelWeightedIoi_nonneg`,
+  `Q3.PSDpd.Step33.step33Shift16B14ShiftedIoiNorm_le`,
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound`, and
+  `Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm`.
+- Closed exact gaps:
+  `STEP33_M6_B14_CELL_SUM_TO_WEIGHTED_IOI_GAP`,
+  `STEP33_M6_B14_SHIFTED_B14_TO_M6_REMAINDER_GAP`, and
+  `STEP33_M6_MAIN_NORM_SOURCE_GAP`.
+- Active exact gap is now:
+  `STEP33_M6_RAW_CENTER_COMPONENT_PAYLOAD_GAP`.
+- Concrete next theorem surface:
+  `primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_shift16_m6_main_component_abs`.
+- Browser / Computer Use status: kept as the Pro/Louise escalation channel;
+  no message was sent because there was no live route fork in this patch.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  the touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this does not prove Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
