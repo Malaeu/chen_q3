@@ -59638,6 +59638,60 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 self-tsum budget receiver
+
+Added checked summability and a self-budget receiver for the concrete order-16
+real majorant in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_real_majorant_self_tsum
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_real_majorant_self_tsum_checked_smooth
+```
+
+The order-16 path can now use:
+
+```text
+B = ∑' n, omegaPrimeOrder16RealMajorant n
+```
+
+without generated proofs of summability or `tsum <= B`.  The remaining numeric
+payload is the same-unit factor-budget comparison:
+
+```text
+omegaPrimeOrder16SeriesFactor *
+  (∑' n, omegaPrimeOrder16RealMajorant n)
+  <= data.order16Abs
+```
+
+plus the still-open `hDerivEq`, center-jet, and remainder-budget obligations.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_FACTOR_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
+Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 concrete majorant
 
 Closed the pointwise majorant part of the OmegaPrime order-16 series path in:

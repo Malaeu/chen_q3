@@ -10164,6 +10164,9 @@ def omegaPrimeOrder16SeriesBase (eta : Real) (n : Nat) : Complex :=
 def omegaPrimeOrder16SeriesTerm (eta : Real) (n : Nat) : Real :=
   (((omegaPrimeOrder16SeriesBase eta n) ^ 18)⁻¹).im
 
+def omegaPrimeOrder16RealMajorant (n : Nat) : Real :=
+  (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹
+
 def omegaPrimeOrder16Series (eta : Real) : Real :=
   ∑' n : Nat, omegaPrimeOrder16SeriesTerm eta n
 
@@ -10192,7 +10195,7 @@ and a rational upper bound for this real majorant. -/
 theorem omegaPrimeOrder16SeriesTerm_abs_le_real_majorant
     (eta : Real) (n : Nat) :
     |omegaPrimeOrder16SeriesTerm eta n| <=
-      (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹ := by
+      omegaPrimeOrder16RealMajorant n := by
   have hTerm := omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow eta n
   have hReNonneg : 0 <= (n : Real) + (1 / 4 : Real) := by
     have hn : 0 <= (n : Real) := Nat.cast_nonneg n
@@ -10216,7 +10219,22 @@ theorem omegaPrimeOrder16SeriesTerm_abs_le_real_majorant
       (‖omegaPrimeOrder16SeriesBase eta n‖ ^ 18)⁻¹ <=
         (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹ :=
     inv_anti₀ (pow_pos hRePos 18) hPowLe
-  exact hTerm.trans hInv
+  simpa [omegaPrimeOrder16RealMajorant] using hTerm.trans hInv
+
+theorem omegaPrimeOrder16RealMajorant_summable :
+    Summable omegaPrimeOrder16RealMajorant := by
+  have h :
+      Summable (fun n : Nat =>
+        1 / |(n : Real) + (1 / 4 : Real)| ^ (18 : Real)) :=
+    (Real.summable_one_div_nat_add_rpow (a := (1 / 4 : Real))
+      (s := (18 : Real))).2 (by norm_num)
+  refine h.congr ?_
+  intro n
+  have hNonneg : 0 <= (n : Real) + (1 / 4 : Real) := by
+    have hn : 0 <= (n : Real) := Nat.cast_nonneg n
+    linarith
+  rw [abs_of_nonneg hNonneg]
+  simp [omegaPrimeOrder16RealMajorant, one_div]
 
 /-- Convert a summable pointwise majorant for the order-16 series terms into
 the absolute `tsum` bound consumed by the OmegaPrime order-16 receiver. -/
@@ -10252,16 +10270,22 @@ theorem omegaPrimeOrder16Series_abs_le_of_term_majorant
 `((n + 1/4)^18)⁻¹`. -/
 theorem omegaPrimeOrder16Series_abs_le_real_majorant_tsum
     (eta B : Real)
-    (hMajorantSummable :
-      Summable (fun n : Nat => (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹))
-    (hMajorantSum :
-      (∑' n : Nat, (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹) <= B) :
+    (hMajorantSum : (∑' n : Nat, omegaPrimeOrder16RealMajorant n) <= B) :
     |omegaPrimeOrder16Series eta| <= B :=
   omegaPrimeOrder16Series_abs_le_of_term_majorant eta B
-    (fun n : Nat => (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹)
-    hMajorantSummable
+    omegaPrimeOrder16RealMajorant
+    omegaPrimeOrder16RealMajorant_summable
     (omegaPrimeOrder16SeriesTerm_abs_le_real_majorant eta)
     hMajorantSum
+
+/-- Same-normalization order-16 series bound using the concrete real majorant's
+actual `tsum` as the budget. -/
+theorem omegaPrimeOrder16Series_abs_le_real_majorant_self_tsum
+    (eta : Real) :
+    |omegaPrimeOrder16Series eta| <=
+      ∑' n : Nat, omegaPrimeOrder16RealMajorant n :=
+  omegaPrimeOrder16Series_abs_le_real_majorant_tsum eta
+    (∑' n : Nat, omegaPrimeOrder16RealMajorant n) le_rfl
 
 /-- Algebraic receiver for the active OmegaPrime order-16 bound.
 
@@ -10394,10 +10418,8 @@ theorem Valid.of_order16_real_majorant_tsum_checked_smooth
           (data.coeff j : Real)‖ <=
           (data.coeffErrorAbs j : Real))
     (B : Real)
-    (hMajorantSummable :
-      Summable (fun n : Nat => (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹))
     (hMajorantSum :
-      (∑' n : Nat, (((n : Real) + (1 / 4 : Real)) ^ 18)⁻¹) <= B)
+      (∑' n : Nat, omegaPrimeOrder16RealMajorant n) <= B)
     (hFactorBudget :
       omegaPrimeOrder16SeriesFactor * B <= (data.order16Abs : Real))
     (hDerivEq :
@@ -10416,7 +10438,41 @@ theorem Valid.of_order16_real_majorant_tsum_checked_smooth
     hCenterJet B
     (fun eta _ =>
       omegaPrimeOrder16Series_abs_le_real_majorant_tsum eta B
-        hMajorantSummable hMajorantSum)
+        hMajorantSum)
+    hFactorBudget hDerivEq hRemainderBudget
+
+/-- Checked-smooth `Valid` constructor using the concrete real majorant's
+actual `tsum` as the order-16 budget.  The remaining numeric obligation is the
+same-unit factor-budget comparison for this `tsum`. -/
+theorem Valid.of_order16_real_majorant_self_tsum_checked_smooth
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hFactorBudget :
+      omegaPrimeOrder16SeriesFactor *
+          (∑' n : Nat, omegaPrimeOrder16RealMajorant n) <=
+        (data.order16Abs : Real))
+    (hDerivEq :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        iteratedDeriv 16 omegaPrimeClosedForm eta =
+          -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta)
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid :=
+  Valid.of_order16_real_majorant_tsum_checked_smooth data hCoeffErrorNonneg
+    hCenterJet (∑' n : Nat, omegaPrimeOrder16RealMajorant n) le_rfl
     hFactorBudget hDerivEq hRemainderBudget
 
 private theorem eta_sub_center_abs_le_radius

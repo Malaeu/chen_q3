@@ -36828,3 +36828,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_TSUM_BUDGET_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16SelfTsumReceiver
+
+- Added and Lean-checked
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_summable`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_real_majorant_self_tsum`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_real_majorant_self_tsum_checked_smooth`
+  in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Summability of
+  `omegaPrimeOrder16RealMajorant n = (((n : Real) + 1/4)^18)^-1` is now
+  checked using Mathlib's shifted p-series theorem
+  `Real.summable_one_div_nat_add_rpow`.
+- The receiver now spends the exact `tsum` of this concrete majorant as the
+  order-16 budget, removing generated summability and `tsum <= B` premises.
+- Remaining obligations are sharper:
+  `hDerivEq`, center-jet bounds, exact remainder-budget arithmetic, and the
+  same-unit factor-budget comparison for the actual concrete-majorant `tsum`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_FACTOR_BUDGET_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
