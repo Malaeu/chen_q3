@@ -26817,6 +26817,36 @@ identity before passing to any `Ioi` limit.
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A finite B6-to-B8 telescope checked
+
+Added checked finite telescope layer:
+
+```lean
+Q3.sum_b8_boundary_telescope
+Q3.intervalIntegrable_b8diff_div_nat
+Q3.sum_interval_integral_b8diff
+Q3.finite_stieltjes_B6Diff_to_B8Diff
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_IOI_LIMIT_TAIL_GAP
+```
+
+Meaning: pass the checked finite B6-to-B8 identity through the `N -> infinity`
+tail ledger, including the vanishing `((N+z)^-1)^8` endpoint, to obtain the
+global `Ioi` B6-to-B8 identity.
+
+Boundary unchanged: this does not prove the `Ioi` B6-to-B8 identity,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B8 boundary bridge checked
 
 Added checked boundary bridge:

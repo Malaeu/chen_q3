@@ -54137,6 +54137,47 @@ identity before passing to any `Ioi` limit.
 Boundary: this is not a proof of the finite summed B6-to-B8 identity,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- finite B6-to-B8 telescope checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.sum_b8_boundary_telescope
+Q3.intervalIntegrable_b8diff_div_nat
+Q3.sum_interval_integral_b8diff
+Q3.finite_stieltjes_B6Diff_to_B8Diff
+```
+
+Checked finite identity:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+=
+  (-(240 : ℂ)⁻¹) * ((((N : ℂ) + z)⁻¹) ^ 8 - (z⁻¹) ^ 8) +
+  ∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_IOI_LIMIT_TAIL_GAP
+```
+
+Meaning: pass the checked finite B6-to-B8 identity through the `N -> infinity`
+tail ledger, including the vanishing `((N+z)^-1)^8` endpoint, to obtain the
+global `Ioi` B6-to-B8 identity.
+
+Boundary: this is not a proof of the `Ioi` B6-to-B8 identity,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:

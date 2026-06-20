@@ -34286,3 +34286,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   finite B6-to-B8 summed identity, mirroring the checked B4-to-B6 finite layer.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B6ToB8FiniteTelescopeChecked
+
+- Added checked finite telescope layer:
+  `Q3.sum_b8_boundary_telescope`,
+  `Q3.intervalIntegrable_b8diff_div_nat`,
+  `Q3.sum_interval_integral_b8diff`, and
+  `Q3.finite_stieltjes_B6Diff_to_B8Diff`.
+- The finite theorem packages the power-8 boundary contribution with
+  coefficient `-(240 : ℂ)^-1` and leaves the B8/power-9 finite remainder.
+- Closed:
+  `STEP33_M6_B6_TO_B8_FINITE_SUM_TELESCOPE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B6_TO_B8_IOI_LIMIT_TAIL_GAP`.
+- Smallest useful next Lean object: add B8/power-9 tail integrability and the
+  `N -> infinity` limit ledger, including vanishing of the
+  `((N+z)^-1)^8` endpoint, to obtain the global `Ioi` B6-to-B8 identity.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
