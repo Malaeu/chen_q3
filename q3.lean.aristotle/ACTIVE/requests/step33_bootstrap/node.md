@@ -17202,3 +17202,46 @@ Current exact blocker:
 STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL
 STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING
 ```
+
+## 2026-06-20 Current EOF Addendum -- one-segment candidate isolated
+
+The segmented direct residual-derivative lane has been narrowed from missing
+segment data to missing proof of the residual interval itself.
+
+New checked helper:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.single
+ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds
+```
+
+Current generator result:
+
+```text
+status = fail_closed_missing_residual_interval_proof
+segmentCount = 1
+segment = [0, 1/10]
+residual interval candidate =
+  [-94119513411/500000000000000000000000000000,
+    1866608532757/500000000000000000000000000000]
+coveragePassed = true
+adjacencyPassed = true
+allSegmentsBudgetPassed = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Next proof-producing patch:
+
+```text
+prove the same-expression residual derivative interval on Set.Icc 0 (1/10)
+and feed it through ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
+```
+
+The direct-overlay candidate remains non-spendable until this proof is present.

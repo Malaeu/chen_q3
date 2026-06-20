@@ -14,6 +14,8 @@ spendable field is a direct residual derivative interval per segment.
 from __future__ import annotations
 
 import argparse
+from decimal import Decimal
+from fractions import Fraction
 import hashlib
 import json
 from pathlib import Path
@@ -40,6 +42,8 @@ SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v1"
 ROUTE_ID = "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV"
 FAILURE_CODE = "STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL"
 TARGET_SLOPE = "1866608532757/500000000000000000000000000000"
+CELL_L = "0"
+CELL_U = "1/10"
 
 CHECKER_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean"
 LANDING_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
@@ -62,20 +66,105 @@ def file_hash(path: Path) -> str | None:
     return digest[:16]
 
 
-def first_subchunk_candidate(overlay: dict[str, Any] | None) -> dict[str, Any] | None:
+def parse_rat(value: str | int | float) -> Fraction:
+    if isinstance(value, int):
+        return Fraction(value, 1)
+    if isinstance(value, float):
+        raise TypeError("float input is not accepted for exact rational parsing")
+    text = str(value)
+    if "/" in text:
+        num, den = text.split("/", 1)
+        return Fraction(int(num), int(den))
+    return Fraction(Decimal(text))
+
+
+def rat_text(value: Fraction) -> str:
+    if value.denominator == 1:
+        return str(value.numerator)
+    return f"{value.numerator}/{value.denominator}"
+
+
+def first_subchunk_item(overlay: dict[str, Any] | None) -> dict[str, Any] | None:
     if not overlay:
         return None
     for item in overlay.get("subchunks") or []:
         if isinstance(item, dict) and item.get("subchunk") == 0:
-            return {
-                "proofStatus": item.get("proofStatus"),
-                "remainingAnalyticFields": item.get("remainingAnalyticFields"),
-                "residualDerivativeIntervalCandidates": item.get(
-                    "residualDerivativeIntervalCandidates"
-                ),
-                "seededScalars": item.get("seededScalars"),
-            }
+            return item
     return None
+
+
+def first_subchunk_candidate(overlay: dict[str, Any] | None) -> dict[str, Any] | None:
+    item = first_subchunk_item(overlay)
+    if not item:
+        return None
+    return {
+        "proofStatus": item.get("proofStatus"),
+        "remainingAnalyticFields": item.get("remainingAnalyticFields"),
+        "residualDerivativeIntervalCandidates": item.get(
+            "residualDerivativeIntervalCandidates"
+        ),
+        "seededScalars": item.get("seededScalars"),
+    }
+
+
+def candidate_segments(overlay: dict[str, Any] | None) -> list[dict[str, Any]]:
+    item = first_subchunk_item(overlay)
+    if not item:
+        return []
+    segments: list[dict[str, Any]] = []
+    for candidate in item.get("residualDerivativeIntervalCandidates") or []:
+        if not isinstance(candidate, dict):
+            continue
+        left = parse_rat(candidate["left"])
+        right = parse_rat(candidate["right"])
+        lower = parse_rat(candidate["derivLower"])
+        upper = parse_rat(candidate["derivUpper"])
+        target = parse_rat(TARGET_SLOPE)
+        budget_passes = -target <= lower and upper <= target
+        segments.append(
+            {
+                "cell": candidate.get("cell"),
+                "segmentL": rat_text(left),
+                "segmentU": rat_text(right),
+                "rawLower": None,
+                "rawUpper": None,
+                "polyLower": None,
+                "polyUpper": None,
+                "residualLower": rat_text(lower),
+                "residualUpper": rat_text(upper),
+                "sourceProofStatus": candidate.get("proofStatus"),
+                "budgetPassesExactRational": budget_passes,
+                "analyticResidualBoundsProof": "missing",
+            }
+        )
+    return sorted(segments, key=lambda item: item.get("cell") or 0)
+
+
+def coverage_report(segments: list[dict[str, Any]]) -> dict[str, Any]:
+    if not segments:
+        return {
+            "coveragePassedExactRational": False,
+            "adjacencyPassedExactRational": False,
+            "firstFailure": "STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING",
+        }
+    cell_l = parse_rat(CELL_L)
+    cell_u = parse_rat(CELL_U)
+    lefts = [parse_rat(item["segmentL"]) for item in segments]
+    rights = [parse_rat(item["segmentU"]) for item in segments]
+    nonempty = all(left <= right for left, right in zip(lefts, rights))
+    endpoint = lefts[0] == cell_l and rights[-1] == cell_u
+    adjacency = all(rights[i] == lefts[i + 1] for i in range(len(segments) - 1))
+    coverage = nonempty and endpoint and adjacency
+    return {
+        "coveragePassedExactRational": coverage,
+        "adjacencyPassedExactRational": adjacency,
+        "segmentNonemptyPassedExactRational": nonempty,
+        "leftEndpoint": rat_text(lefts[0]),
+        "rightEndpoint": rat_text(rights[-1]),
+        "expectedLeftEndpoint": CELL_L,
+        "expectedRightEndpoint": CELL_U,
+        "firstFailure": None if coverage else "STEP33_A1_SUB0_SEGMENT_COVERAGE_FAIL",
+    }
 
 
 def build_report(
@@ -88,14 +177,25 @@ def build_report(
     prior_first_danger = (
         interpolation_payload.get("firstDangerPoint") if interpolation_payload else None
     )
+    segments = candidate_segments(direct_overlay)
+    coverage = coverage_report(segments)
+    budget_passed = bool(segments) and all(
+        segment["budgetPassesExactRational"] for segment in segments
+    )
+    candidate_ready = coverage["coveragePassedExactRational"] and budget_passed
+    status = (
+        "fail_closed_missing_residual_interval_proof"
+        if candidate_ready
+        else "fail_closed_missing_segment_cert"
+    )
 
     return {
         "schema": SCHEMA,
         "routeId": ROUTE_ID,
-        "status": "fail_closed_missing_segment_cert",
+        "status": status,
         "failureCodes": [
             FAILURE_CODE,
-            "STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING",
+            "STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING",
         ],
         "proofMode": "exact_rational_same_expression_interval",
         "target": {
@@ -105,21 +205,32 @@ def build_report(
             "subchunk": 0,
         },
         "cell": {
-            "cellL": "0",
-            "cellU": "1/10",
+            "cellL": CELL_L,
+            "cellU": CELL_U,
             "targetSlope": TARGET_SLOPE,
         },
-        "segmentCount": 0,
-        "segments": [],
-        "coveragePassed": False,
-        "adjacencyPassed": False,
-        "allSegmentsBudgetPassed": False,
+        "segmentCount": len(segments),
+        "segments": segments,
+        "coveragePassed": coverage["coveragePassedExactRational"],
+        "adjacencyPassed": coverage["adjacencyPassedExactRational"],
+        "segmentNonemptyPassed": coverage.get("segmentNonemptyPassedExactRational"),
+        "allSegmentsBudgetPassed": budget_passed,
+        "candidateArithmeticStatus": {
+            "coverage": coverage,
+            "budgetPassedExactRational": budget_passed,
+            "candidateReadyForLeanShape": candidate_ready,
+            "proofGradeResidualBoundsPresent": False,
+        },
         "proofSafeClosedFields": 0,
         "outLeanWritten": False,
         "leanInterfaces": {
             "checkerFile": CHECKER_FILE,
             "checkerStructure": "ResidualDerivativeSegmentIntervalCert",
+            "checkerSingleConstructor": "ResidualDerivativeSegmentIntervalCert.single",
             "checkerValidity": "ResidualDerivativeSegmentIntervalCert.Valid",
+            "checkerSingleValidityConstructor": (
+                "ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds"
+            ),
             "checkerTheorem": (
                 "ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le"
             ),
@@ -146,14 +257,14 @@ def build_report(
             "residualUpper",
         ],
         "rationalProofObligations": [
-            "exact segment coverage of Set.Icc 0 (1/10)",
-            "exact segment adjacency/no-gap proof",
+            "exact segment coverage of Set.Icc 0 (1/10) (candidate passes)",
+            "exact segment adjacency/no-gap proof (candidate passes)",
             "residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell",
             "proof-grade raw derivative enclosure per segment",
             "proof-grade polynomial derivative enclosure per segment",
-            "same-expression direct residual derivative enclosure per segment",
-            f"for every segment: -{TARGET_SLOPE} <= residualLower",
-            f"for every segment: residualUpper <= {TARGET_SLOPE}",
+            "same-expression direct residual derivative enclosure per segment (missing)",
+            f"for every segment: -{TARGET_SLOPE} <= residualLower (candidate passes)",
+            f"for every segment: residualUpper <= {TARGET_SLOPE} (candidate passes)",
         ],
         "guard": [
             "not Lean proof data",
@@ -193,6 +304,9 @@ def render_md(report: dict[str, Any]) -> str:
         f"- proof mode: `{report['proofMode']}`",
         f"- target slope: `{report['cell']['targetSlope']}`",
         f"- segment count: `{report['segmentCount']}`",
+        f"- coverage passed: `{report['coveragePassed']}`",
+        f"- adjacency passed: `{report['adjacencyPassed']}`",
+        f"- budget passed: `{report['allSegmentsBudgetPassed']}`",
         f"- proof-safe closed fields: `{report['proofSafeClosedFields']}`",
         f"- Lean emitted: `{report['outLeanWritten']}`",
         "",
@@ -204,6 +318,33 @@ def render_md(report: dict[str, Any]) -> str:
     lines.extend(["", "## Certificate Fields", ""])
     for field in report["certFields"]:
         lines.append(f"- `{field}`")
+    lines.extend(["", "## Candidate Segments", ""])
+    if report["segments"]:
+        for segment in report["segments"]:
+            lines.extend(
+                [
+                    f"- cell `{segment['cell']}`:",
+                    f"  segment = `[{segment['segmentL']}, {segment['segmentU']}]`",
+                    f"  residual = `[{segment['residualLower']}, {segment['residualUpper']}]`",
+                    f"  budgetPassesExactRational = `{segment['budgetPassesExactRational']}`",
+                    f"  sourceProofStatus = `{segment['sourceProofStatus']}`",
+                    f"  analyticResidualBoundsProof = `{segment['analyticResidualBoundsProof']}`",
+                ]
+            )
+    else:
+        lines.append("- no candidate segments extracted")
+    lines.extend(["", "## Candidate Arithmetic", ""])
+    arithmetic = report["candidateArithmeticStatus"]
+    lines.extend(
+        [
+            f"- coveragePassedExactRational: `{arithmetic['coverage']['coveragePassedExactRational']}`",
+            f"- adjacencyPassedExactRational: `{arithmetic['coverage']['adjacencyPassedExactRational']}`",
+            f"- segmentNonemptyPassedExactRational: `{arithmetic['coverage']['segmentNonemptyPassedExactRational']}`",
+            f"- budgetPassedExactRational: `{arithmetic['budgetPassedExactRational']}`",
+            f"- candidateReadyForLeanShape: `{arithmetic['candidateReadyForLeanShape']}`",
+            f"- proofGradeResidualBoundsPresent: `{arithmetic['proofGradeResidualBoundsPresent']}`",
+        ]
+    )
     lines.extend(["", "## Rational Proof Obligations", ""])
     for item in report["rationalProofObligations"]:
         lines.append(f"- {item}")
@@ -222,9 +363,12 @@ def render_md(report: dict[str, Any]) -> str:
             f"- interpolation first danger point: `{report['sourceStatus']['interpolationFirstDangerPoint']}`",
             f"- direct overlay status: `{report['sourceStatus']['directOverlayStatus']}`",
             "",
-            "The diagnostic direct-overlay candidate remains non-spendable unless",
-            "a proof-grade same-expression segment certificate supplies the",
-            "`ResidualDerivativeSegmentIntervalCert.Valid` witness.",
+            "The diagnostic direct-overlay candidate now supplies a one-segment",
+            "candidate whose exact rational coverage and budget arithmetic pass.",
+            "It remains non-spendable because the same-expression residual",
+            "derivative interval proof is still missing; only a proof-grade",
+            "`ResidualDerivativeSegmentIntervalCert.Valid` witness can close",
+            "the receiver.",
             "",
         ]
     )

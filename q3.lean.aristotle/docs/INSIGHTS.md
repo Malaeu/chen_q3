@@ -36288,3 +36288,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `git diff --check`.
 - Boundary: no Step33A.1-A closure, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OneSegmentResidualIntervalCandidateIsolated
+
+- Ran the required local search pass on the new blocker.  `q3_docs` did not
+  expose an existing proof-producing same-unit segment generator; nearest
+  reusable patterns are finite-cover receivers plus the current
+  `hResidualDerivBoundOnCell` direct-norm surface.  External web search found
+  only generic Mathlib Taylor/Set.Icc material and was not used as proof
+  evidence.
+- Added Lean helper constructor/theorem:
+  `ResidualDerivativeSegmentIntervalCert.single` and
+  `ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds`.
+- Updated
+  `scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py`
+  to extract the direct-overlay pilot candidate as one rational segment.
+- Current candidate:
+  segment `[0, 1/10]`, residual interval
+  `[-94119513411/500000000000000000000000000000,
+    1866608532757/500000000000000000000000000000]`.
+- Exact candidate arithmetic passes for coverage, adjacency, nonempty segment,
+  and residual budget; nevertheless `proofSafeClosedFields = 0` and
+  `outLeanWritten = false`.
+- Current first live blocker is now
+  `STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING`: prove the
+  same-expression residual derivative interval on `Set.Icc 0 (1/10)` and feed
+  it through `ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds`.
+- Validation passed: generator run, `py_compile`, both touched `lake env lean`
+  checks, `q3_check`, hole scan for `sorry|admit|exact?`, and
+  `git diff --check`.
+- Boundary: no Step33A.1-A closure, no generated Lean payload, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

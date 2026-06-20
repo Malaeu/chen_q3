@@ -12242,6 +12242,24 @@ structure ResidualDerivativeSegmentIntervalCert where
 
 namespace ResidualDerivativeSegmentIntervalCert
 
+/-- One-segment certificate data.  This is the current first-subchunk shape:
+the whole cell is one rational segment, while the analytic interval proof is
+still supplied separately through `Valid`. -/
+def single
+    (segL segU rawLower rawUpper polyLower polyUpper residualLower residualUpper :
+      Rat) :
+    ResidualDerivativeSegmentIntervalCert where
+  segmentCount := 1
+  segmentCount_pos := by norm_num
+  segmentL := fun _ => segL
+  segmentU := fun _ => segU
+  rawLower := fun _ => rawLower
+  rawUpper := fun _ => rawUpper
+  polyLower := fun _ => polyLower
+  polyUpper := fun _ => polyUpper
+  residualLower := fun _ => residualLower
+  residualUpper := fun _ => residualUpper
+
 /-- Validity predicate for a segmented residual-derivative certificate.
 
 `residual_bounds` is the same-unit field consumed by the checker below.  The
@@ -12283,6 +12301,64 @@ structure Valid
         (data.residualUpper i : Real) <= derivSlope
 
 namespace Valid
+
+/-- Construct `Valid` for the single-segment case once the generator supplies
+the real analytic raw/poly/residual interval proofs.  Coverage and the
+residual budget then reduce to exact rational endpoint arithmetic. -/
+theorem of_single_bounds
+    {rawDeriv polyDeriv residualDeriv : Real -> Real}
+    {cellL cellU derivSlope : Real}
+    {segL segU rawLower rawUpper polyLower polyUpper residualLower residualUpper :
+      Rat}
+    (hSlope : 0 <= derivSlope)
+    (hCellL : (segL : Real) = cellL)
+    (hCellU : (segU : Real) = cellU)
+    (hSeg : (segL : Real) <= (segU : Real))
+    (hResidualCrosswalk :
+      ∀ eta ∈ Set.Icc cellL cellU,
+        residualDeriv eta = rawDeriv eta - polyDeriv eta)
+    (hRawBounds :
+      ∀ eta ∈ Set.Icc (segL : Real) (segU : Real),
+        (rawLower : Real) <= rawDeriv eta ∧
+          rawDeriv eta <= (rawUpper : Real))
+    (hPolyBounds :
+      ∀ eta ∈ Set.Icc (segL : Real) (segU : Real),
+        (polyLower : Real) <= polyDeriv eta ∧
+          polyDeriv eta <= (polyUpper : Real))
+    (hResidualBounds :
+      ∀ eta ∈ Set.Icc (segL : Real) (segU : Real),
+        (residualLower : Real) <= residualDeriv eta ∧
+          residualDeriv eta <= (residualUpper : Real))
+    (hBudget :
+      -derivSlope <= (residualLower : Real) ∧
+        (residualUpper : Real) <= derivSlope) :
+    (single segL segU rawLower rawUpper polyLower polyUpper
+      residualLower residualUpper).Valid
+        rawDeriv polyDeriv residualDeriv cellL cellU derivSlope := by
+  refine
+    { slope_nonneg := hSlope
+      segment_nonempty := ?_
+      cover := ?_
+      residual_crosswalk := hResidualCrosswalk
+      raw_bounds := ?_
+      poly_bounds := ?_
+      residual_bounds := ?_
+      residual_budget := ?_ }
+  · intro i
+    simpa [single] using hSeg
+  · intro eta heta
+    refine ⟨⟨0, by simp [single]⟩, ?_⟩
+    constructor
+    · simpa [single, hCellL] using heta.1
+    · simpa [single, hCellU] using heta.2
+  · intro i eta heta
+    simpa [single] using hRawBounds eta heta
+  · intro i eta heta
+    simpa [single] using hPolyBounds eta heta
+  · intro i eta heta
+    simpa [single] using hResidualBounds eta heta
+  · intro i
+    simpa [single] using hBudget
 
 /-- Extract the direct residual-derivative norm bound from a segmented
 same-unit interval certificate. -/

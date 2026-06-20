@@ -159,6 +159,76 @@ scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- one-segment residual interval candidate isolated
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk direct residual-derivative norm
+lane.
+
+Search pass:
+
+```text
+q3_docs search found no existing proof-producing same-unit segment generator.
+Nearest local patterns were finite-cover/hat-interpolation receivers and the
+already checked residual-derivative direct-norm surfaces.
+External web search only confirmed generic Mathlib Taylor/Set.Icc
+infrastructure; it was not used as proof evidence.
+```
+
+Lean helper added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.single
+ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+```
+
+now extracts the direct-overlay candidate into the segmented certificate shape:
+
+```text
+status = fail_closed_missing_residual_interval_proof
+segmentCount = 1
+segment = [0, 1/10]
+residualLower = -94119513411/500000000000000000000000000000
+residualUpper = 1866608532757/500000000000000000000000000000
+coveragePassed = true
+adjacencyPassed = true
+allSegmentsBudgetPassed = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Result: segment coverage/no-gap and residual budget arithmetic are no longer
+the first obstruction for the pilot cell.  The live missing object is the
+proof-grade same-expression residual derivative interval bound on
+`Set.Icc 0 (1/10)`.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
+```
+
+Boundary: this does not close Step33A.1-A, does not emit a generated Lean
+payload, and does not make the sampled direct overlay spendable.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
 ## Execution Update (2026-06-20) -- raw second-derivative product split
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk raw-integrand sign lane.

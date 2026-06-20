@@ -1,6 +1,21 @@
 {
-  "adjacencyPassed": false,
-  "allSegmentsBudgetPassed": false,
+  "adjacencyPassed": true,
+  "allSegmentsBudgetPassed": true,
+  "candidateArithmeticStatus": {
+    "budgetPassedExactRational": true,
+    "candidateReadyForLeanShape": true,
+    "coverage": {
+      "adjacencyPassedExactRational": true,
+      "coveragePassedExactRational": true,
+      "expectedLeftEndpoint": "0",
+      "expectedRightEndpoint": "1/10",
+      "firstFailure": null,
+      "leftEndpoint": "0",
+      "rightEndpoint": "1/10",
+      "segmentNonemptyPassedExactRational": true
+    },
+    "proofGradeResidualBoundsPresent": false
+  },
   "cell": {
     "cellL": "0",
     "cellU": "1/10",
@@ -17,10 +32,10 @@
     "residualLower",
     "residualUpper"
   ],
-  "coveragePassed": false,
+  "coveragePassed": true,
   "failureCodes": [
     "STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL",
-    "STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING"
+    "STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING"
   ],
   "guard": [
     "not Lean proof data",
@@ -31,6 +46,8 @@
   ],
   "leanInterfaces": {
     "checkerFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean",
+    "checkerSingleConstructor": "ResidualDerivativeSegmentIntervalCert.single",
+    "checkerSingleValidityConstructor": "ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds",
     "checkerStructure": "ResidualDerivativeSegmentIntervalCert",
     "checkerTheorem": "ResidualDerivativeSegmentIntervalCert.Valid.residual_norm_le",
     "checkerValidity": "ResidualDerivativeSegmentIntervalCert.Valid",
@@ -42,21 +59,37 @@
   "proofMode": "exact_rational_same_expression_interval",
   "proofSafeClosedFields": 0,
   "rationalProofObligations": [
-    "exact segment coverage of Set.Icc 0 (1/10)",
-    "exact segment adjacency/no-gap proof",
+    "exact segment coverage of Set.Icc 0 (1/10) (candidate passes)",
+    "exact segment adjacency/no-gap proof (candidate passes)",
     "residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell",
     "proof-grade raw derivative enclosure per segment",
     "proof-grade polynomial derivative enclosure per segment",
-    "same-expression direct residual derivative enclosure per segment",
-    "for every segment: -1866608532757/500000000000000000000000000000 <= residualLower",
-    "for every segment: residualUpper <= 1866608532757/500000000000000000000000000000"
+    "same-expression direct residual derivative enclosure per segment (missing)",
+    "for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)",
+    "for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)"
   ],
   "routeId": "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV",
   "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v1",
-  "segmentCount": 0,
-  "segments": [],
+  "segmentCount": 1,
+  "segmentNonemptyPassed": true,
+  "segments": [
+    {
+      "analyticResidualBoundsProof": "missing",
+      "budgetPassesExactRational": true,
+      "cell": 0,
+      "polyLower": null,
+      "polyUpper": null,
+      "rawLower": null,
+      "rawUpper": null,
+      "residualLower": "-94119513411/500000000000000000000000000000",
+      "residualUpper": "1866608532757/500000000000000000000000000000",
+      "segmentL": "0",
+      "segmentU": "1/10",
+      "sourceProofStatus": "sampled_candidate_not_lean_proof"
+    }
+  ],
   "sourceDefinitionHashes": {
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "e98f8a9e2a5b6610",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "43b6990163f0a9fc",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "8be60207e71e9a0b"
   },
   "sourceStatus": {
@@ -88,7 +121,7 @@
     "interpolationPayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json",
     "interpolationPayloadStatus": "blocked_missing_exact_interpolation_inputs"
   },
-  "status": "fail_closed_missing_segment_cert",
+  "status": "fail_closed_missing_residual_interval_proof",
   "target": {
     "family": "primary_finite",
     "parentChunk": 0,

@@ -30197,3 +30197,42 @@ STEP33_A1_SUB0_SEGMENT_PROOF_INPUTS_MISSING
 
 Boundary: no first-subchunk residual-derivative norm certificate, no A hbox,
 no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH closure.
+
+## 2026-06-20 Current EOF Addendum -- one-segment candidate isolated
+
+Lean now has the one-cell helper shape for the segmented certificate:
+
+```lean
+ResidualDerivativeSegmentIntervalCert.single
+ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds
+```
+
+The segmented payload generator now extracts the current direct-overlay
+candidate as one rational segment:
+
+```text
+segment = [0, 1/10]
+residual = [-94119513411/500000000000000000000000000000,
+             1866608532757/500000000000000000000000000000]
+coveragePassed = true
+adjacencyPassed = true
+allSegmentsBudgetPassed = true
+status = fail_closed_missing_residual_interval_proof
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+This narrows the current blocker.  Segment geometry and budget arithmetic are
+no longer the first obstruction for the pilot cell; the missing object is the
+same-expression proof that the residual derivative really lies in that interval
+on `Set.Icc 0 (1/10)`.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
+```
+
+Boundary: the sampled overlay is still not proof data, no generated Lean
+payload was emitted, no first-subchunk residual-derivative norm certificate is
+closed, and Step33A.1-A remains open.
