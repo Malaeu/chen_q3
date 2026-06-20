@@ -35787,3 +35787,41 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: source inventory/guard only.  No Lean payload is emitted,
   `proofSafeClosedFields = 0`, and no Step33A.1-A / Step33 / Step34 / RH
   closure is proved.
+
+## Insight (2026-06-20, Step33A.1-A) -- Sub0DerivfitCandidatePath
+
+- Created the active `primary_finite / row 0 / parent 0 / subchunk 0`
+  diagnostic derivfit chain using the existing `0_1` production pattern:
+  residualfit candidate, residualfit sampled residual audit, residualfit
+  derivative audit, derivfit candidate, derivfit sampled residual audit,
+  derivfit derivative audit, and derivfit direct derivative overlay.
+- The residualfit and derivfit refreshes required no extra remainder
+  (`adjusted=0`), and both sampled residual audits pass `100/100`.
+- The derivative audits keep the same honest verdict: sampled derivative
+  envelope passes `100/100`, but interval and residual-jet envelopes fail
+  `0/100`; these are diagnostics, not Lean proof data.
+- Updated
+  `scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5`.
+- The source inventory now reports
+  `derivative_model_source_candidate_present_crosswalk_unproved`.
+- The first blocker has sharpened from a missing candidate file to
+  `STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP`.
+- Local `q3_docs` search did not find a checked source theorem for active
+  sub0; local grep found only the diagnostic `0_1` derivfit path and the
+  direct derivative overlay producer.  Official mathlib Taylor/polynomial
+  docs provide general Taylor and formal polynomial derivative infrastructure,
+  not the Q3-specific crosswalk:
+  https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/Taylor.html
+  and
+  https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Polynomial/Derivative.html.
+- Validation passed: py_compile for the touched/generator scripts, v5 generator
+  rerun, JSON v5 assertion, exact-budget smoke test that remains blocked only
+  on `STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP`, forbidden-token
+  scan on the generator/payload artifacts, and `git diff --check`.
+- Boundary: this creates a candidate/source path only.  The derivfit
+  polynomial cannot be used as `modelDeriv` until an exact crosswalk to
+  `deriv cert.residual` and a uniform remainder bound on `[0, 1/10]` are
+  proved/generated in a checkable way.  No Lean payload, Step33A.1-A, Step33,
+  Step34, or RH closure is proved.

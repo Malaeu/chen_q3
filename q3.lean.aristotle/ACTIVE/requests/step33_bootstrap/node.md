@@ -16554,3 +16554,43 @@ STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 Boundary: source inventory and route guard only.  The raw-integrand candidate
 polynomial is not used as a derivative model, sampled derivative intervals are
 not promoted to proof data, and no Lean payload is emitted.
+
+## 2026-06-20 Current EOF Addendum -- sub0 derivfit candidate path
+
+Created the active `0_0` diagnostic derivfit chain:
+
+```text
+candidate 0_0 denom1e30
+  -> residualfit
+  -> residualfit residual audit
+  -> residualfit derivative audit
+  -> derivfit
+  -> derivfit residual audit
+  -> derivfit derivative audit
+  -> derivfit direct derivative overlay
+```
+
+Updated the fail-closed interpolation skeleton to:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5
+```
+
+The source-gate verdict is now:
+
+```text
+derivative_model_source_candidate_present_crosswalk_unproved
+```
+
+Current ordered proof-grade payload inputs:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+The `derivfit` candidate is useful only as a seed for the next generator.  It
+does not prove that the polynomial models `deriv cert.residual`, and the direct
+derivative overlay remains blocked on `hRawCenterCoeffAbs` and
+`hResidualDerivBoundOnCell`.

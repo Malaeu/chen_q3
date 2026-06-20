@@ -29416,3 +29416,52 @@ Boundary: fail-closed source inventory only.  Raw Taylor coefficients are not
 used as `modelDeriv`; sampled derivative intervals are not proof data; no Lean
 payload is emitted; `proofSafeClosedFields = 0`; no Step33A.1-A / Step33 /
 Step34 / RH closure is claimed.
+
+## 2026-06-20 Current EOF Status -- sub0 derivfit candidate path v5
+
+The active `primary_finite / row 0 / parent 0 / subchunk 0` derivative-model
+candidate path now exists in the same diagnostic style as the older `0_1`
+derivfit path:
+
+```text
+a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_residualfit.{json,md}
+a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_0_denom1e30_residualfit.{json,md}
+a_chunk_taylor_payload_refined_subchunk_derivative_bound_audit_primary_finite_0_0_denom1e30_residualfit.{json,md}
+a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.{json,md}
+a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_0_denom1e30_derivfit.{json,md}
+a_chunk_taylor_payload_refined_subchunk_derivative_bound_audit_primary_finite_0_0_denom1e30_derivfit.{json,md}
+a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30_derivfit.{json,md}
+```
+
+The interpolation skeleton is now schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5
+```
+
+Current source status:
+
+```text
+derivative_model_source_candidate_present_crosswalk_unproved
+```
+
+Current first blocker:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP
+```
+
+Diagnostic results:
+
+```text
+residualfit sampled residual audit: 100/100 pass
+residualfit derivative audit: sampled 100/100 pass, interval/jet envelopes 0/100
+derivfit sampled residual audit: 100/100 pass
+derivfit derivative audit: sampled 100/100 pass, interval/jet envelopes 0/100
+derivfit direct derivative overlay: seeded, blocked on hRawCenterCoeffAbs and hResidualDerivBoundOnCell
+```
+
+Boundary: candidate/source path only.  The derivfit files are not proof-grade
+without an exact crosswalk to `deriv cert.residual` and a uniform remainder
+bound on `[0, 1/10]`; no Lean proof files are modified; no Step33 closure is
+claimed.

@@ -57554,3 +57554,124 @@ derivative-residual model source for active sub0 `primary_finite / row 0 /
 parent 0 / subchunk 0`, or prove the direct interpolation error from a checked
 closed-form/envelope route.  It must not reuse the raw Taylor candidate overlay
 or sampled derivative overlay as proof data.
+
+## Execution Update (2026-06-20) -- sub0 derivfit candidate path
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk derivative-model source candidate.
+
+Files generated:
+
+```text
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_residualfit.{json,md}
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_0_denom1e30_residualfit.{json,md}
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_derivative_bound_audit_primary_finite_0_0_denom1e30_residualfit.{json,md}
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.{json,md}
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_rational_residual_audit_primary_finite_0_0_denom1e30_derivfit.{json,md}
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_derivative_bound_audit_primary_finite_0_0_denom1e30_derivfit.{json,md}
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30_derivfit.{json,md}
+```
+
+Files updated:
+
+```text
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+```
+
+Generator commands:
+
+```text
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_remainder_refresh.py --candidate ...primary_finite_0_0_denom1e30.json --residual-audit ...primary_finite_0_0_denom1e30.json --out-json ...primary_finite_0_0_denom1e30_residualfit.json --out-md ...primary_finite_0_0_denom1e30_residualfit.md
+.venv/bin/python q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_rational_residual_audit.py --overlay ...primary_finite_0_0_denom1e30_residualfit.json --denominator 1000000000000000000000000000000 --out-json ...primary_finite_0_0_denom1e30_residualfit.json --out-md ...primary_finite_0_0_denom1e30_residualfit.md
+.venv/bin/python q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_derivative_bound_audit.py --overlay ...primary_finite_0_0_denom1e30_residualfit.json --residual-audit ...primary_finite_0_0_denom1e30_residualfit.json --denominator 1000000000000000000000000000000 --out-json ...primary_finite_0_0_denom1e30_residualfit.json --out-md ...primary_finite_0_0_denom1e30_residualfit.md
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_derivative_remainder_refresh.py --candidate ...primary_finite_0_0_denom1e30_residualfit.json --derivative-audit ...primary_finite_0_0_denom1e30_residualfit.json --out-json ...primary_finite_0_0_denom1e30_derivfit.json --out-md ...primary_finite_0_0_denom1e30_derivfit.md
+.venv/bin/python q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_rational_residual_audit.py --overlay ...primary_finite_0_0_denom1e30_derivfit.json --denominator 1000000000000000000000000000000 --out-json ...primary_finite_0_0_denom1e30_derivfit.json --out-md ...primary_finite_0_0_denom1e30_derivfit.md
+.venv/bin/python q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_derivative_bound_audit.py --overlay ...primary_finite_0_0_denom1e30_derivfit.json --residual-audit ...primary_finite_0_0_denom1e30_derivfit.json --denominator 1000000000000000000000000000000 --out-json ...primary_finite_0_0_denom1e30_derivfit.json --out-md ...primary_finite_0_0_denom1e30_derivfit.md
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.py --candidate-overlay ...primary_finite_0_0_denom1e30_derivfit.json --derivative-audit ...primary_finite_0_0_denom1e30_derivfit.json --out-json ...direct_derivative_overlay_primary_finite_0_0_denom1e30_derivfit.json --out-md ...direct_derivative_overlay_primary_finite_0_0_denom1e30_derivfit.md
+```
+
+Observed results:
+
+```text
+residualfit refresh: adjusted=0
+residualfit sampled residual audit: 100/100 pass
+residualfit derivative audit: sampled 100/100 pass, interval 0/100, jet 0/100
+derivfit refresh: adjusted=0, sampled envelope after refresh 100/100
+derivfit sampled residual audit: 100/100 pass
+derivfit derivative audit: sampled 100/100 pass, interval 0/100, jet 0/100
+derivfit direct derivative overlay: status=direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs
+```
+
+The fail-closed interpolation skeleton now emits schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5
+```
+
+Current first blocker:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP
+```
+
+Semantic-search synthesis:
+
+```text
+q3_docs search did not find a checked derivative-model source theorem for
+active sub0.  Local rg found the existing 0_1 derivfit production path and the
+direct derivative overlay producer.  Official mathlib Taylor/polynomial docs
+confirm general Taylor and polynomial derivative infrastructure, not a Q3
+crosswalk theorem.  Therefore the safe patch is to create the active 0_0
+diagnostic derivfit path and keep the first proof blocker at exact crosswalk
+plus uniform remainder, not to emit Lean payload.
+```
+
+Primary-source web check:
+
+```text
+https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/Taylor.html
+https://leanprover-community.github.io/mathlib4_docs/Mathlib/Algebra/Polynomial/Derivative.html
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_remainder_refresh.py q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_rational_residual_audit.py q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_derivative_bound_audit.py q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_derivative_remainder_refresh.py q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 JSON assertion: schema v5, firstDangerPoint STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP, derivfit candidate present, proofSafeClosedFields = 0, outLeanWritten = false
+python3 exact-budget smoke test with modelBound=0 and interpolationError=0 remains blocked only on STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP
+rg -n "sorry|admit|exact\\?|axiom|unsafe" on the touched generator and generated payload markdown/json artifacts
+git diff --check
+```
+
+Boundary: candidate/source path only.  No Lean proof files were modified, no
+sampled audit is trusted as proof, no Lean payload is emitted, and no
+Step33A.1-A / Step33 / Step34 / RH closure is claimed.
+
+## Current EOF Status (2026-06-20) -- sub0 derivfit path v5 is latest
+
+Latest fail-closed sub0 interpolation skeleton schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5
+```
+
+Latest source status:
+
+```text
+derivative_model_source_candidate_present_crosswalk_unproved
+```
+
+Latest ordered gaps:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Next implementable patch: prove or generate a checkable exact crosswalk from
+the `0_0_derivfit` polynomial candidate to `deriv cert.residual` on
+`[0, 1/10]`, including the uniform remainder bound.  Without that, the
+candidate remains diagnostic-only.
