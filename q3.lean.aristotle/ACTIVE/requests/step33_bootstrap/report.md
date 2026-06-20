@@ -54333,3 +54333,43 @@ the endpoint boundary term, before summing or passing to `Ioi`.
 
 Boundary: this is not a proof of the B6 boundary bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B6 boundary bridge and cell assembly checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B6CellDeriv_to_B6Diff
+Q3.stieltjes_interval_B4Diff_to_B6Diff
+```
+
+The combined cell theorem proves:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+=
+  (252 : ℂ)⁻¹ *
+    ((((n + 1 : ℂ) + z)⁻¹) ^ 6 - (((n : ℂ) + z)⁻¹) ^ 6) +
+  ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_CELLDERIV_TO_B6DIFF_BOUNDARY_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_FINITE_SUM_TELESCOPE_GAP
+```
+
+Meaning: sum the checked cell identity over `Finset.range N`, telescope the
+power-6 boundary contribution, and package the finite B4-to-B6 identity before
+passing to any `Ioi` limit.
+
+Boundary: this is not a proof of the finite summed B4-to-B6 identity,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.

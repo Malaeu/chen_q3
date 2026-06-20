@@ -34079,6 +34079,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
 
+## Insight (2026-06-20, Step33A.1-A) -- B6BoundaryBridgeChecked
+
+- Added checked boundary bridge:
+  `Q3.stieltjes_interval_B6CellDeriv_to_B6Diff`.
+- Added checked combined cell identity:
+  `Q3.stieltjes_interval_B4Diff_to_B6Diff`.
+- The combined theorem exposes the expected coefficient `(252 : ℂ)⁻¹` in
+  front of the power-6 boundary difference and leaves the B6/power-7
+  remainder integral on the unit cell.
+- Closed:
+  `STEP33_M6_B6_CELLDERIV_TO_B6DIFF_BOUNDARY_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_TO_B6_FINITE_SUM_TELESCOPE_GAP`.
+- Smallest useful next Lean object: sum `Q3.stieltjes_interval_B4Diff_to_B6Diff`
+  over `Finset.range N`, add a power-6 telescope lemma, and package the finite
+  B4-to-B6 identity.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B4DigammaRemainderPrefixChecked
 
 - Added checked normalized B4 digamma remainder identities:

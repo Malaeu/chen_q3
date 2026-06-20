@@ -26790,6 +26790,32 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B6 boundary bridge checked
+
+Added checked bridges:
+
+```lean
+Q3.stieltjes_interval_B6CellDeriv_to_B6Diff
+Q3.stieltjes_interval_B4Diff_to_B6Diff
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_CELLDERIV_TO_B6DIFF_BOUNDARY_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_FINITE_SUM_TELESCOPE_GAP
+```
+
+Meaning: sum the checked cell identity and telescope the power-6 boundary.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B6 cell layer checked
 
 Added the checked B6 local layer in `Q3.DigammaRemainder`:
