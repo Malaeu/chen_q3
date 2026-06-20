@@ -33612,3 +33612,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   is now a no-premise, hole-free theorem producing
   `Step33Shift16M6FiniteTelescopeTermPayload`, preferably through the checked
   high-order/shift48 or shifted-remainder component receivers.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN0LogStepBridgeChecked
+
+- Audited Proshka/Louise `CHOICE: D` for the first finite-telescope defect
+  term.  High-precision local diagnostics give
+  `re * 1e25 ~= -218.9447611532917` and
+  `im * 1e27 ~= 250.8332418181575` for
+  `Q3.digammaM6StepDefect step33Shift16DigammaPoint`; this is only diagnostic,
+  not proof evidence.
+- Added Lean-checked exact algebraic split:
+  `step33Shift16M6StepDefectN0_eq_logStep_add_algebraicPart`, with exact
+  rational component identities
+  `step33Shift16M6StepDefectN0AlgebraicPart_re_eq` and
+  `step33Shift16M6StepDefectN0AlgebraicPart_im_eq`.
+- Added checked conditional endpoint:
+  `step33_shift16_m6_step_defect_n0_component_interval_of_log_step_bounds`.
+  It proves the Proshka interval
+  `[-219,-218]/10^25` for the real part and `[250,251]/10^27` for the
+  imaginary part, conditional only on four bounds for
+  `Complex.log (step33Shift16DigammaPoint + 1) -
+  Complex.log step33Shift16DigammaPoint`.
+- Validation passed with `lake env lean` and `bash scripts/q3_check.sh` on
+  `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`; forbidden-marker
+  scan and `git diff --check` were clean.
+- New exact blocker:
+  `STEP33_M6_DEFECT_N0_LOG_STEP_RECTANGLE_GAP`.  The next proof-producing
+  patch should prove the four log-step bounds by a real log1p/rational-series
+  certificate plus arctan-series bounds for the argument difference.

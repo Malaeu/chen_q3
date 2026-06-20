@@ -52773,3 +52773,89 @@ The current exact source gap is now:
   Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload,
 then the public component source and endpoint/hRaw receivers are checked.
 ```
+
+## 2026-06-20 Execution update -- n=0 M6 step-defect bridge reduced to log-step rectangle
+
+Audited the Proshka/Louise `CHOICE: D` suggestion for the first finite
+telescope defect term.  Local high-precision diagnostic arithmetic confirms
+the proposed component interval is numerically plausible:
+
+```text
+for z0 = 129/4 + I/40,
+delta = Q3.digammaM6StepDefect z0
+delta.re * 1e25 ~= -218.9447611532917
+delta.im * 1e27 ~= 250.8332418181575
+```
+
+This diagnostic is not proof evidence.  The proof-side result added today is a
+Lean-checked reduction from a concrete log-step rectangle to that component
+interval.
+
+New checked support names:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0LogStep
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0AlgebraicPart
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0_eq_logStep_add_algebraicPart
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0AlgebraicPart_re_eq
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0AlgebraicPart_im_eq
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n0_component_interval_of_log_step_bounds
+```
+
+The final theorem proves:
+
+```lean
+(((-219 : Real) / ((10 : Real) ^ 25) <=
+    (Q3.digammaM6StepDefect step33Shift16DigammaPoint).re ∧
+  (Q3.digammaM6StepDefect step33Shift16DigammaPoint).re <=
+    (-218 : Real) / ((10 : Real) ^ 25)) ∧
+ ((250 : Real) / ((10 : Real) ^ 27) <=
+    (Q3.digammaM6StepDefect step33Shift16DigammaPoint).im ∧
+  (Q3.digammaM6StepDefect step33Shift16DigammaPoint).im <=
+    (251 : Real) / ((10 : Real) ^ 27)))
+```
+
+conditional on the four proof-grade bounds for:
+
+```lean
+step33Shift16M6StepDefectN0LogStep =
+  Complex.log (step33Shift16DigammaPoint + 1) -
+    Complex.log step33Shift16DigammaPoint
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+```
+
+Boundary:
+
+```text
+This is not a no-premise proof of the n=0 defect interval and not a full
+Step33Shift16M6FiniteTelescopeTermPayload.
+
+Current exact blocker:
+  STEP33_M6_DEFECT_N0_LOG_STEP_RECTANGLE_GAP
+
+Next proof object:
+  prove the four log-step bounds for
+  Complex.log (step33Shift16DigammaPoint + 1) -
+  Complex.log step33Shift16DigammaPoint,
+  preferably by splitting real part into a log1p/rational-series certificate
+  and imaginary part into two arctan-series certificates.
+```
