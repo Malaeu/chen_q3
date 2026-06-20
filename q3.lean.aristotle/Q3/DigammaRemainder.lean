@@ -8060,6 +8060,23 @@ lemma digammaM6_remainder_eq_B12Diff_Ioi (z : ℂ) (hz : 0 < z.re) :
         (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 := by
   simpa [digammaM6AsymptoticMain] using digamma_stieltjes_B12Diff_Ioi_mainPrefix z hz
 
+/-- Receiver from the checked B12/power-13 `Ioi` remainder identity to the
+standard `m = 6` order-15 bound interface.
+
+This does not prove the order-15 source estimate; it exposes the exact
+remaining source obligation as a norm bound for the checked B12 `Ioi`
+remainder. -/
+lemma digammaM6IntegralRemainderBound_of_B12Diff_norm_bound
+    (z : ℂ) (hz : 0 < z.re)
+    (hB12 :
+      ‖∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13‖ ≤
+        ((7 : ℝ) / (6 : ℝ)) *
+          ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15) :
+    digammaM6IntegralRemainderBound z := by
+  simpa [digammaM6IntegralRemainderBound,
+    digammaM6_remainder_eq_B12Diff_Ioi z hz] using hB12
+
 /-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
 remainder.  The real-part theorem below is a projection of this bound, while
 future high-order endpoint receivers can target the same main/error shape. -/

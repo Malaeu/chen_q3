@@ -55387,3 +55387,54 @@ STEP33_M6_B12_REMAINDER_TO_ORDER15_BOUND_GAP
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Execution update -- B12 norm-bound receiver checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound
+```
+
+The checked receiver uses the existing equality
+`Q3.digammaM6_remainder_eq_B12Diff_Ioi` and unfolds
+`Q3.digammaM6IntegralRemainderBound`.  It reduces the downstream Prop to the
+exact B12 `Ioi` norm-bound source obligation:
+
+```lean
+norm (int x in Set.Ioi (0 : R),
+  (bernoulli12Diff x : C) / ((x : C) + z)^13)
+<= (7 / 6 : R) *
+  int x in Set.Ioi (0 : R), 1 / norm ((x : C) + z)^15
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Result: Lean and `q3_check` passed with existing warnings only; forbidden-hole
+scan was clean.
+
+This closes the local receiver bridge:
+
+```text
+STEP33_M6_B12_REMAINDER_PROP_RECEIVER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B12_IOI_NORM_TO_ORDER15_BOUND_GAP
+```
+
+Browser/Pro note: a route-review request was sent for the B14-vs-finite-
+telescope fork. The visible response drifted into stale B4 context, so it is
+recorded only as an attempted advisory escalation and is not accepted as proof
+evidence or route truth.
+
+Boundary: this is not a proof of the source norm inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

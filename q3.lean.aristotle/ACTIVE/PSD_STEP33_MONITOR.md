@@ -27747,3 +27747,46 @@ STEP33_M6_B12_REMAINDER_TO_ORDER15_BOUND_GAP
 
 Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Step33A.1-A B12 norm-bound receiver checked
+
+Latest checked local layer:
+
+```lean
+Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound
+```
+
+The receiver proves:
+
+```lean
+Q3.digammaM6IntegralRemainderBound z
+```
+
+from the explicit source obligation:
+
+```lean
+norm (int x in Set.Ioi (0 : R),
+  (bernoulli12Diff x : C) / ((x : C) + z)^13)
+<= (7 / 6 : R) *
+  int x in Set.Ioi (0 : R), 1 / norm ((x : C) + z)^15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B12_REMAINDER_PROP_RECEIVER_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B12_IOI_NORM_TO_ORDER15_BOUND_GAP
+```
+
+Route note: Pro/Louise browser review was requested for the B14-vs-finite-
+telescope fork, but the visible answer drifted into stale B4 context. It is
+not used as proof evidence. The accepted local step is only the checked Lean
+receiver above.
+
+Boundary: this still does not prove the source norm inequality,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

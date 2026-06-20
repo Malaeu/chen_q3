@@ -34594,3 +34594,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   proof-grade bridge to that order-15 bound.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12NormBoundReceiverChecked
+
+- Added checked receiver:
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+- The theorem uses the checked B12 `Ioi` identity
+  `Q3.digammaM6_remainder_eq_B12Diff_Ioi` and reduces
+  `Q3.digammaM6IntegralRemainderBound z` to one explicit source obligation:
+  the norm of the B12/power-13 `Ioi` remainder must be bounded by the
+  `(7/6)` order-15 kernel integral.
+- This is intentionally not a proof of the order-15 source estimate.  It only
+  removes the interface ambiguity between the checked B12 identity and the
+  downstream Step33 Prop.
+- Browser/Pro was asked about the B14-vs-finite-telescope fork, but the visible
+  response mixed in stale B4 context; it is not used as proof evidence or route
+  truth.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean`, and
+  the forbidden-hole scan for `sorry|admit|exact?|axiom|unsafe`; Lean emitted
+  existing warnings only.
+- Closed local bridge:
+  `STEP33_M6_B12_REMAINDER_PROP_RECEIVER_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B12_IOI_NORM_TO_ORDER15_BOUND_GAP`.
+- Smallest useful next Lean object: either prove the B12 `Ioi` norm-to-order15
+  source inequality directly, or add the B14/first-omitted layer only if it
+  really yields that inequality in the current complex right-half-plane norm.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.
