@@ -54062,6 +54062,47 @@ telescope the endpoint powers.
 Boundary: this is not a proof of the finite B8-to-B10 telescope,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B8-to-B10 finite telescope checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.sum_b10_boundary_telescope
+Q3.intervalIntegrable_b10diff_div_nat
+Q3.sum_interval_integral_b10diff
+Q3.finite_stieltjes_B8Diff_to_B10Diff
+```
+
+Checked finite identity:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+=
+  (132 : ℂ)⁻¹ * ((((N : ℂ) + z)⁻¹) ^ 10 - (z⁻¹) ^ 10) +
+  ∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP
+```
+
+Meaning: prove the limit/tail bridge that sends the finite endpoint
+`(((N+z)^-1)^10)` to zero and converts the finite B10 remainder to its
+`Ioi` integral.
+
+Boundary: this is not a proof of the `Ioi` B8-to-B10 bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B8 cell layer checked
 
 Lean progress in `Q3.DigammaRemainder`:

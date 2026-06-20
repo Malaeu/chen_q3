@@ -34416,3 +34416,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   telescope lemmas for the B8-to-B10 identity.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B8ToB10FiniteTelescopeChecked
+
+- Added checked finite-telescope layer:
+  `Q3.sum_b10_boundary_telescope`,
+  `Q3.intervalIntegrable_b10diff_div_nat`,
+  `Q3.sum_interval_integral_b10diff`, and
+  `Q3.finite_stieltjes_B8Diff_to_B10Diff`.
+- The finite identity carries B8/power-9 on `[0,N]` to the explicit
+  `(132 : ℂ)⁻¹ * ((((N : ℂ) + z)⁻¹)^10 - (z⁻¹)^10)` endpoint plus the
+  B10/power-11 finite remainder.
+- Closed:
+  `STEP33_M6_B8_TO_B10_FINITE_SUM_TELESCOPE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP`.
+- Smallest useful next Lean object: mirror the checked B6-to-B8 `Ioi` tail
+  bridge for B10/power-11, including the vanishing endpoint.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

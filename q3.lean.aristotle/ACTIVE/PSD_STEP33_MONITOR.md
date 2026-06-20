@@ -26867,6 +26867,47 @@ terms to obtain the finite `[0,N]` B8-to-B10 identity.
 Boundary unchanged: this does not prove the finite B8-to-B10 telescope,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B8-to-B10 finite telescope checked
+
+Added checked finite-sum layer:
+
+```lean
+Q3.sum_b10_boundary_telescope
+Q3.intervalIntegrable_b10diff_div_nat
+Q3.sum_interval_integral_b10diff
+Q3.finite_stieltjes_B8Diff_to_B10Diff
+```
+
+Checked finite identity:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+=
+  (132 : ℂ)⁻¹ * ((((N : ℂ) + z)⁻¹) ^ 10 - (z⁻¹) ^ 10) +
+  ∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP
+```
+
+Meaning: pass the checked finite B8-to-B10 identity through the `N -> infinity`
+tail ledger, including the vanishing `((N+z)^-1)^10` endpoint, to obtain the
+global `Ioi` B8-to-B10 identity.
+
+Boundary unchanged: this does not prove the `Ioi` B8-to-B10 bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B6-to-B8 combined cell checked
 
 Added checked combined cell identity:
