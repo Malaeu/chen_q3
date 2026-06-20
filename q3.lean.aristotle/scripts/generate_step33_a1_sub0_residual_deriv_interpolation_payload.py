@@ -38,7 +38,7 @@ DEFAULT_OUT_MD = (
 WORKLIST_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
 )
-OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6"
+OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7"
 RAW_POLY_CANDIDATE_OVERLAY = (
     REQUEST_DIR
     / "a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json"
@@ -387,10 +387,16 @@ def derivmodel_candidate_summary(path: Path) -> dict[str, Any]:
                 "modelCoeffCount": derivation.get("modelCoeffCount"),
                 "modelBound": derivation.get("modelBound"),
                 "modelBoundDecimal": derivation.get("modelBoundDecimal"),
+                "directTriangleBudget": data.get("directTriangleBudget"),
                 "rawCoeffEquality": data.get("rawCoeffEquality"),
                 "missingInputs": data.get("missingInputs"),
             }
         )
+        budget = data.get("directTriangleBudget") or {}
+        if budget.get("passes") is False:
+            summary["proofUseStatus"] = (
+                "dead_for_current_triangle_receiver_because_modelBound_exceeds_derivSlope"
+            )
     return summary
 
 
@@ -478,8 +484,15 @@ def derivative_model_candidate_inventory() -> dict[str, Any]:
     has_derivmodel_candidate = bool(derivmodel_candidate["exists"])
     has_derivfit_raw_candidate = bool(expected_derivfit["exists"])
     if has_derivmodel_candidate:
-        status = "derivmodel_coefficients_generated_crosswalk_gap"
-        active_first_blocker = "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP"
+        budget = derivmodel_candidate.get("directTriangleBudget") or {}
+        if budget.get("passes") is False:
+            status = "derivmodel_candidate_budget_fail_triangle_receiver_dead"
+            active_first_blocker = "STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL"
+        else:
+            status = "derivmodel_coefficients_generated_crosswalk_gap"
+            active_first_blocker = (
+                "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP"
+            )
     elif has_derivfit_raw_candidate:
         status = "blocked_derivfit_is_raw_polynomial_not_derivmodel"
         active_first_blocker = "STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP"
@@ -506,10 +519,11 @@ def derivative_model_candidate_inventory() -> dict[str, Any]:
         "derivfitDirectDerivativeOverlay": derivfit_direct_overlay,
         "activeFirstBlocker": active_first_blocker,
         "decision": (
-            "The existing derivfit file is a raw-polynomial refresh, not a "
-            "spendable derivative-model source.  The separate derivmodel "
-            "candidate records exact derivative coefficients, but the uniform "
-            "remainder/crosswalk to deriv cert.residual remains open."
+            "The existing derivfit file is a raw-polynomial refresh.  The "
+            "separate derivmodel candidate records exact derivative "
+            "coefficients, but its modelBound exceeds the entire direct "
+            "residual-derivative slope budget, so the triangle receiver route "
+            "is killed before any crosswalk theorem would be spendable."
         ),
     }
 
@@ -549,9 +563,14 @@ def build_report(
     missing_inputs: list[str] = []
     if not source_inventory["hasProofGradeDerivativeModelSource"]:
         missing_inputs.append(source_inventory["activeFirstBlocker"])
-    if model_bound is None:
+    if source_inventory["activeFirstBlocker"] == "STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL":
+        pass
+    elif model_bound is None:
         missing_inputs.append("STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP")
-    if interpolation_error is None:
+    if (
+        source_inventory["activeFirstBlocker"] != "STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL"
+        and interpolation_error is None
+    ):
         missing_inputs.append("STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP")
     if budget_passes is False:
         missing_inputs.append("STEP33_A1_SUB0_INTERPOLATION_BUDGET_FAIL")
@@ -658,6 +677,7 @@ def build_report(
             "sampled derivative intervals are not modelDeriv proof data",
             "derivfit coefficients match raw-polynomial coefficients unless the equality check says otherwise",
             "derivmodel candidates are not proof-grade without uniform remainder and Lean arithmetic emission",
+            "the active derivmodel triangle route is killed if modelBound exceeds derivSlope",
             "modelBound must be derived by exact rational interval operations",
             "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
             "a positive exact budget margin is required before Lean emission is enabled",
@@ -764,6 +784,10 @@ def render_md(report: dict[str, Any]) -> str:
             f"- modelBound: `{inventory['derivmodelCandidate'].get('modelBound')}`",
             f"- first danger point: `{inventory['derivmodelCandidate'].get('firstDangerPoint')}`",
             f"- proof use: `{inventory['derivmodelCandidate'].get('proofUseStatus')}`",
+            f"- direct triangle budget: `{(inventory['derivmodelCandidate'].get('directTriangleBudget') or {}).get('verdict')}`",
+            f"- budget passes: `{(inventory['derivmodelCandidate'].get('directTriangleBudget') or {}).get('passes')}`",
+            f"- budget margin: `{(inventory['derivmodelCandidate'].get('directTriangleBudget') or {}).get('margin')}`",
+            f"- Lean kill theorem: `{(inventory['derivmodelCandidate'].get('directTriangleBudget') or {}).get('leanKillTheorem')}`",
             "",
             "### Derivfit Direct Derivative Overlay",
             "",

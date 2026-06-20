@@ -5,8 +5,8 @@ Fail-closed candidate.  This is not Lean proof data.
 ## Summary
 
 - schema: `q3_psdpd_step33_a1_sub0_derivmodel_candidate.v1`
-- status: `derivmodel_candidate_generated_crosswalk_unproved_not_proof_data`
-- first danger point: `STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP`
+- status: `derivmodel_candidate_budget_fail_not_spendable`
+- first danger point: `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL`
 - proof-safe closed fields: `0`
 - Lean emitted: `False`
 
@@ -29,10 +29,19 @@ Fail-closed candidate.  This is not Lean proof data.
 - modelBound: `60128873212381686241540561835466089/327680000000000000000000000000000000`
 - modelBound decimal: `0.183498758582707782719545`
 
+## Direct Triangle Budget
+
+- relation: `modelBound <= derivSlope even before interpolationError`
+- modelBound: `60128873212381686241540561835466089/327680000000000000000000000000000000`
+- derivSlope: `1866608532757/500000000000000000000000000000`
+- margin: `-60128873212381685018239993807838569/327680000000000000000000000000000000`
+- passes: `False`
+- verdict: `DERIVMODEL_BUDGET_FAIL_modelBound_exceeds_derivSlope`
+- Lean kill theorem: `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible`
+
 ## Missing Inputs
 
-- `STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP`
-- `STEP33_A1_SUB0_DERIVMODEL_LEAN_ARITHMETIC_EMISSION_GAP`
+- `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL`
 
 ## Guard
 
@@ -41,3 +50,4 @@ Fail-closed candidate.  This is not Lean proof data.
 - does not prove deriv cert.residual is modeled by this polynomial
 - does not provide interpolationError
 - existing derivfit raw coefficients remain diagnostic-only
+- direct triangle receiver is killed when modelBound exceeds derivSlope

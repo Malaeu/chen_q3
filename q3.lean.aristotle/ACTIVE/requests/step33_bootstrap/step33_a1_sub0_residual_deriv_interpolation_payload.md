@@ -4,7 +4,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6`
+- schema: `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7`
 - status: `blocked_missing_exact_interpolation_inputs`
 - cert: `primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert`
 - receiver: `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
@@ -12,7 +12,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - sub0 polynomial-model landing receiver: `RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound`
 - cell: `Set.Icc (0 : Real) ((1 : Real) / 10)`
 - derivSlope: `1866608532757/500000000000000000000000000000`
-- candidate source status: `derivmodel_coefficients_generated_crosswalk_gap`
+- candidate source status: `derivmodel_candidate_budget_fail_triangle_receiver_dead`
 - proof-safe closed fields: `0`
 - Lean emitted: `False`
 
@@ -26,17 +26,15 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 ## Missing Inputs
 
-- `STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP`
-- `STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP`
-- `STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP`
+- `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL`
 
 ## Candidate Source Inventory
 
-- status: `derivmodel_coefficients_generated_crosswalk_gap`
+- status: `derivmodel_candidate_budget_fail_triangle_receiver_dead`
 - proof-grade derivative model source: `False`
 - derivative-model candidate file present: `True`
 - derivfit raw candidate file present: `True`
-- decision: `The existing derivfit file is a raw-polynomial refresh, not a spendable derivative-model source.  The separate derivmodel candidate records exact derivative coefficients, but the uniform remainder/crosswalk to deriv cert.residual remains open.`
+- decision: `The existing derivfit file is a raw-polynomial refresh.  The separate derivmodel candidate records exact derivative coefficients, but its modelBound exceeds the entire direct residual-derivative slope budget, so the triangle receiver route is killed before any crosswalk theorem would be spendable.`
 
 ### Raw Polynomial Candidate
 
@@ -84,12 +82,16 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 - path: `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.json`
 - exists: `True`
-- status: `derivmodel_candidate_generated_crosswalk_unproved_not_proof_data`
+- status: `derivmodel_candidate_budget_fail_not_spendable`
 - model degree: `15`
 - model coeff count: `16`
 - modelBound: `60128873212381686241540561835466089/327680000000000000000000000000000000`
-- first danger point: `STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP`
-- proof use: `not_allowed_as_Lean_payload_until_uniform_remainder_and_arithmetic_are_checked`
+- first danger point: `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL`
+- proof use: `dead_for_current_triangle_receiver_because_modelBound_exceeds_derivSlope`
+- direct triangle budget: `DERIVMODEL_BUDGET_FAIL_modelBound_exceeds_derivSlope`
+- budget passes: `False`
+- budget margin: `-60128873212381685018239993807838569/327680000000000000000000000000000000`
+- Lean kill theorem: `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible`
 
 ### Derivfit Direct Derivative Overlay
 
@@ -124,6 +126,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - sampled derivative intervals are not modelDeriv proof data
 - derivfit coefficients match raw-polynomial coefficients unless the equality check says otherwise
 - derivmodel candidates are not proof-grade without uniform remainder and Lean arithmetic emission
+- the active derivmodel triangle route is killed if modelBound exceeds derivSlope
 - modelBound must be derived by exact rational interval operations
 - interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]
 - a positive exact budget margin is required before Lean emission is enabled

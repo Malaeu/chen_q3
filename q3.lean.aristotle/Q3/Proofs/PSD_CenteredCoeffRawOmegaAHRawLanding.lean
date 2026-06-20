@@ -38,6 +38,79 @@ def primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :
   coeff := fun _ => primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0
   remainder := ((1 : Rat) / 1000000000000000000)
 
+/-- Exact rational derivative-model coefficients for the active first
+subchunk.  These are the formal derivative coefficients
+`modelCoeff[i] = (i + 1) * rawCoeff[i + 1]` generated from the active raw
+Taylor candidate.  They are not, by themselves, a proof of the residual
+derivative crosswalk. -/
+def primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+    (i : Fin 16) : Rat :=
+  match i.1 with
+  | 0 => (2814585322345983 : Rat) / 31250000000000000
+  | 1 => (432682670395380743 : Rat) / 250000000000000000
+  | 2 => (-2076189217694411487 : Rat) / 1000000000000000000
+  | 3 => (-155822302127901237 : Rat) / 12500000000000000
+  | 4 => (248352666423100477 : Rat) / 12500000000000000
+  | 5 => (32291651785944130749 : Rat) / 500000000000000000
+  | 6 => (-69999411432932463909 : Rat) / 500000000000000000
+  | 7 => (-34707798540256129409 : Rat) / 125000000000000000
+  | 8 => (836575734719049511113 : Rat) / 1000000000000000000
+  | 9 => (100643501888413806697 : Rat) / 100000000000000000
+  | 10 => (-897573400754971084771 : Rat) / 200000000000000000
+  | 11 => (-142205390337268351947 : Rat) / 50000000000000000
+  | 12 => (5554290524724778241613 : Rat) / 250000000000000000
+  | 13 => (916884525703826724093 : Rat) / 250000000000000000
+  | 14 => (-19999872807938988432933 : Rat) / 200000000000000000
+  | _ => (62148786708414316877 : Rat) / 2500000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound : Rat :=
+  (60128873212381686241540561835466089 : Rat) /
+    327680000000000000000000000000000000
+
+theorem primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_radius_bound
+    (eta : Real)
+    (heta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :
+    |eta - ((1 / 20 : Rat) : Real)| <= ((1 : Real) / 20) := by
+  rw [Set.mem_Icc] at heta
+  exact abs_le.mpr ⟨by nlinarith [heta.1], by nlinarith [heta.2]⟩
+
+theorem primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_rat_le :
+    (∑ i : Fin (15 + 1),
+        |primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff i| *
+          ((1 : Rat) / 20) ^ i.1) <=
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound := by
+  native_decide
+
+theorem primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_le :
+    (∑ i : Fin (15 + 1),
+        |(primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff i : Real)| *
+          ((1 : Real) / 20) ^ i.1) <=
+      (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound : Real) := by
+  have hReal :
+      (∑ i : Fin (15 + 1),
+          ((|primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff i| : Rat) : Real) *
+            (((1 : Rat) / 20 : Rat) : Real) ^ i.1) <=
+        (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound : Real) := by
+    exact_mod_cast
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_rat_le
+  simpa [Rat.cast_abs] using hReal
+
+theorem primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope :
+    ((1866608532757 : Real) / 500000000000000000000000000000) <
+      (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound : Real) := by
+  norm_num [primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound]
+
+theorem primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible
+    {interpolationError : Real}
+    (hInterpolationErrorNonneg : 0 <= interpolationError) :
+    ¬ interpolationError +
+        (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound : Real) <=
+      ((1866608532757 : Real) / 500000000000000000000000000000) := by
+  intro hBudget
+  have hBound :=
+    primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope
+  nlinarith
+
 /-- First-subchunk `hRawCenterCoeffAbs` bridge.
 
 Once the current `DIGAMMA_SHIFT16_M6_MAIN_NORM_BLOCKER` is closed, this theorem
@@ -1526,6 +1599,45 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
               modelDegree modelCenter modelCoeff (hModelRadius eta heta))
             hModelSum
         simpa [Real.norm_eq_abs] using hPoly)
+      hError
+      hBudget
+
+/-- First-subchunk landing wrapper specialized to the exact derivative-model
+coefficients generated for the active `0_0` cell.
+
+This closes only the radius and polynomial model-norm arithmetic side of the
+derivative-model route.  The caller must still provide the proof-grade
+crosswalk/error bound between `deriv cert.residual` and this polynomial model
+on `[0, 1/10]`.  The companion theorem
+`primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible`
+shows that this wrapper's budget premise cannot be supplied for any
+nonnegative interpolation error; this is a pinned kill surface for this
+model/receiver pairing, not a live payload target. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_derivmodel_error_bound
+    {interpolationError : Real}
+    (hError :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta -
+          rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+            primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta‖ <=
+            interpolationError)
+    (hBudget :
+      interpolationError +
+          (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound : Real) <=
+        ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_polynomial_model_error_bound
+      15
+      ((1 : Rat) / 20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+      (by
+        intro eta heta
+        exact
+          primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_radius_bound
+            eta heta)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_le
       hError
       hBudget
 

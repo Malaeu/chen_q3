@@ -46,6 +46,10 @@ TARGET = {
     "parentChunk": 0,
     "subchunk": 0,
 }
+DERIV_SLOPE = Fraction(
+    1866608532757,
+    500000000000000000000000000000,
+)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -152,14 +156,26 @@ def build_report() -> dict[str, Any]:
     }
 
     model_coeff: list[Fraction] = model["modelCoeff"]
-    first_danger = "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP"
+    budget_margin = DERIV_SLOPE - model["modelBound"]
+    budget_passes = budget_margin >= 0
+    first_danger = (
+        "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP"
+        if budget_passes
+        else "STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL"
+    )
     return {
         "schema": OUTPUT_SCHEMA,
-        "status": "derivmodel_candidate_generated_crosswalk_unproved_not_proof_data",
+        "status": (
+            "derivmodel_candidate_generated_crosswalk_unproved_not_proof_data"
+            if budget_passes
+            else "derivmodel_candidate_budget_fail_not_spendable"
+        ),
         "meaning": (
             "Exact rational derivative coefficients of the active raw "
             "polynomial candidate.  This is a model candidate only; it does "
-            "not prove the uniform residual-derivative remainder."
+            "not prove the uniform residual-derivative remainder.  The direct "
+            "triangle receiver is spendable only if modelBound fits inside the "
+            "derivSlope budget."
         ),
         "target": TARGET,
         "sources": {
@@ -200,9 +216,33 @@ def build_report() -> dict[str, Any]:
                 "plus exact rational radius/sum arithmetic"
             ),
         },
+        "directTriangleBudget": {
+            "relation": "modelBound <= derivSlope even before interpolationError",
+            "modelBound": format_fraction(model["modelBound"]),
+            "modelBoundDecimal": decimal_string(model["modelBound"]),
+            "derivSlope": format_fraction(DERIV_SLOPE),
+            "derivSlopeDecimal": decimal_string(DERIV_SLOPE),
+            "margin": format_fraction(budget_margin),
+            "marginDecimal": decimal_string(budget_margin),
+            "passes": budget_passes,
+            "verdict": (
+                "budget_passes_before_interpolation_error"
+                if budget_passes
+                else "DERIVMODEL_BUDGET_FAIL_modelBound_exceeds_derivSlope"
+            ),
+            "leanKillTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible"
+            ),
+        },
         "missingInputs": [
             first_danger,
-            "STEP33_A1_SUB0_DERIVMODEL_LEAN_ARITHMETIC_EMISSION_GAP",
+            *(
+                [
+                    "STEP33_A1_SUB0_DERIVMODEL_LEAN_ARITHMETIC_EMISSION_GAP",
+                ]
+                if budget_passes
+                else []
+            ),
         ],
         "firstDangerPoint": first_danger,
         "proofSafeClosedFields": 0,
@@ -213,6 +253,7 @@ def build_report() -> dict[str, Any]:
             "does not prove deriv cert.residual is modeled by this polynomial",
             "does not provide interpolationError",
             "existing derivfit raw coefficients remain diagnostic-only",
+            "direct triangle receiver is killed when modelBound exceeds derivSlope",
         ],
     }
 
@@ -220,6 +261,7 @@ def build_report() -> dict[str, Any]:
 def render_md(report: dict[str, Any]) -> str:
     derivation = report["derivation"]
     equality = report["rawCoeffEquality"]
+    budget = report["directTriangleBudget"]
     lines = [
         "# Step33A.1-A Sub0 Derivative-Model Candidate",
         "",
@@ -251,6 +293,16 @@ def render_md(report: dict[str, Any]) -> str:
         f"- modelBound formula: `{derivation['modelBoundFormula']}`",
         f"- modelBound: `{derivation['modelBound']}`",
         f"- modelBound decimal: `{derivation['modelBoundDecimal']}`",
+        "",
+        "## Direct Triangle Budget",
+        "",
+        f"- relation: `{budget['relation']}`",
+        f"- modelBound: `{budget['modelBound']}`",
+        f"- derivSlope: `{budget['derivSlope']}`",
+        f"- margin: `{budget['margin']}`",
+        f"- passes: `{budget['passes']}`",
+        f"- verdict: `{budget['verdict']}`",
+        f"- Lean kill theorem: `{budget['leanKillTheorem']}`",
         "",
         "## Missing Inputs",
         "",

@@ -16641,3 +16641,45 @@ The generated candidate has `modelDegree = 15`, `modelCoeffCount = 16`, and
 exact rational
 `modelBound = 60128873212381686241540561835466089/327680000000000000000000000000000000`.
 No Lean payload is emitted and `proofSafeClosedFields = 0`.
+
+## 2026-06-20 Current EOF Addendum -- residual derivmodel budget kill
+
+The exact derivative-model candidate is now classified as budget-dead for the
+current triangle receiver.
+
+Lean checked:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible
+```
+
+The second theorem states that for nonnegative `interpolationError`, the
+budget inequality
+
+```text
+interpolationError + modelBound <= derivSlope
+```
+
+is impossible for this model.
+
+The fail-closed interpolation skeleton is now:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7
+```
+
+Current source-gate verdict:
+
+```text
+derivmodel_candidate_budget_fail_triangle_receiver_dead
+```
+
+Current first blocker:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+```
+
+Proshka route-review agreed: commit the Lean/JSON kill certificate and do not
+mark the direct residual or anchor-envelope routes dead.

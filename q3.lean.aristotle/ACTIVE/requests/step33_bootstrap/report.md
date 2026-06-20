@@ -57758,3 +57758,78 @@ python3 exact-budget smoke test with modelBound=0 and interpolationError=0 remai
 Boundary: no Lean proof files were modified, sampled audits are not proof
 data, the derivmodel artifact is not proof-grade, no Lean payload is emitted,
 and no Step33A.1-A / Step33 / Step34 / RH closure is claimed.
+
+## Execution Update (2026-06-20) -- residual derivmodel budget kill v7
+
+New exact local result:
+
+```text
+modelBound =
+60128873212381686241540561835466089/327680000000000000000000000000000000
+
+derivSlope =
+1866608532757/500000000000000000000000000000
+
+modelBound > derivSlope
+```
+
+Added checked Lean names in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_radius_bound
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_rat_le
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_le
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_residual_derivmodel_error_bound
+```
+
+The key kill theorem is:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible
+```
+
+It proves that if `0 <= interpolationError`, then the triangle-receiver budget
+for this raw-polynomial derivative model cannot hold.
+
+Payload updates:
+
+```text
+step33_a1_sub0_derivmodel_candidate.json:
+  status = derivmodel_candidate_budget_fail_not_spendable
+  firstDangerPoint = STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+
+step33_a1_sub0_residual_deriv_interpolation_payload.json:
+  schema = q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7
+  candidate source status = derivmodel_candidate_budget_fail_triangle_receiver_dead
+  missingInputs = [STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL]
+```
+
+Proshka advisory answer:
+
+```text
+CHOSEN: A
+FIRST BLOCKER: STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+NEXT CODEX PATCH: add exact Lean kill theorem data.derivSlope < modelBound
+DANGER: do not mark direct residual or anchor-envelope routes dead
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 JSON assertion: derivmodel budget fail, payload schema v7, firstDangerPoint STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL, proofSafeClosedFields = 0, outLeanWritten = false
+```
+
+Boundary: this kills only the pairing
+`raw-polynomial derivative model + direct triangle receiver`.  It does not kill
+the direct residual route, anchor-envelope route, or a future
+cancellation-aware residual-model receiver.

@@ -29528,3 +29528,64 @@ Boundary: the new derivmodel artifact proves no Lean theorem and emits no Lean
 payload.  It only records exact derivative coefficients and model-bound
 metadata.  The missing proof is still a checkable uniform crosswalk/remainder
 bound from this polynomial to `deriv cert.residual` on `[0, 1/10]`.
+
+## 2026-06-20 Current EOF Status -- residual derivmodel budget kill v7
+
+The raw-polynomial derivative-model branch has an exact budget kill for the
+current triangle receiver.
+
+Lean additions in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelBound
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_rat_le
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_sum_abs_coeff_le
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible
+```
+
+Exact comparison:
+
+```text
+modelBound =
+60128873212381686241540561835466089/327680000000000000000000000000000000
+
+derivSlope =
+1866608532757/500000000000000000000000000000
+
+modelBound > derivSlope
+```
+
+So for any nonnegative `interpolationError`,
+
+```text
+¬ interpolationError + modelBound <= derivSlope
+```
+
+The fail-closed payload is now schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7
+```
+
+Current first blocker:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+```
+
+Proshka advisory agreed with the local verdict:
+
+```text
+CHOSEN: A
+FIRST BLOCKER: STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
+NEXT CODEX PATCH: add exact Lean kill theorem data.derivSlope < modelBound
+```
+
+Boundary: only the pairing
+`raw-polynomial derivative model + direct triangle receiver` is dead.  This
+does not kill the direct residual route, the anchor-envelope route, or a future
+cancellation-aware residual model.  No Step33A.1-A / Step33 / Step34 / RH
+closure is claimed.

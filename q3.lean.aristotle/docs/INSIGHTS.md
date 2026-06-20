@@ -35861,3 +35861,40 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this patch creates exact rational metadata only.  It emits no Lean,
   has `proofSafeClosedFields = 0`, and proves no Step33A.1-A / Step33 /
   Step34 / RH closure.
+
+## Insight (2026-06-20, Step33A.1-A) -- ResidualDerivmodelBudgetKill
+
+- The exact residual `derivmodel` candidate has
+  `modelBound = 60128873212381686241540561835466089/327680000000000000000000000000000000`,
+  while the direct residual derivative budget is only
+  `derivSlope = 1866608532757/500000000000000000000000000000`.
+- Added Lean-checked exact data and kill theorem in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible`.
+- The kill theorem proves that for any nonnegative `interpolationError`, the
+  triangle budget `interpolationError + modelBound <= derivSlope` is impossible
+  for this raw-polynomial derivative model.
+- Updated
+  `scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py` and
+  `scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`;
+  payload schema is now
+  `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v7`.
+- Current first blocker is exactly
+  `STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL`.
+- Proshka advisory agreed with `CHOSEN: A`: commit the Lean/JSON kill
+  certificate and do not mark the direct residual or anchor-envelope routes
+  dead.
+- Local q3_docs search found no existing Q3-specific crosswalk theorem.  The
+  Lean reference check used local theorem search plus official Lean/mathlib
+  docs for rational casts and `native_decide` behavior:
+  https://leanprover-community.github.io/mathlib_docs/data/rat/cast.html
+  and
+  https://lean-lang.org/doc/reference/latest/Tactic-Proofs/Tactic-Reference/.
+- Validation passed: `lake env lean` on the touched Lean file, `q3_check`,
+  py_compile, generator reruns, and JSON assertions.
+- Boundary: killed only
+  `raw-polynomial derivative model + direct triangle receiver`.  Direct
+  residual, anchor-envelope, and future cancellation-aware receiver routes
+  remain live.  No Step33A.1-A / Step33 / Step34 / RH closure is proved.
