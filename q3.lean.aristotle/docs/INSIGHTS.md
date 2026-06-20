@@ -36051,6 +36051,43 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
   `git diff --check`.
 
+## Insight (2026-06-20, Step33A.1-A) -- RawDerivativeCrosswalkBridgeClosed
+
+- Local `q3_docs` search for the raw-derivative blocker pointed to existing
+  digamma/trigamma and closed-form derivative infrastructure, not to a checked
+  raw second-derivative theorem.
+- The primary Mathlib check gave the right theorem shape:
+  `AnalyticAt.deriv` turns analytic closed forms into differentiability of
+  their derivative functions.
+- Added Lean support for the removable sinc singularity:
+  `realSinc_analyticAt_zero`,
+  `deriv_realSinc_differentiableAt_zero`, and
+  `centeredBSplineImagTransformRealClosedFormDerivClosedForm_differentiableAt_zero`.
+- Added Lean support for the Omega closed form:
+  `digamma_analyticAt_of_re_pos`,
+  `trigamma_differentiableAt_of_re_pos`, and
+  `step22OmegaArchWeightDerivClosedForm_differentiableAt`.
+- Added the active raw bridge:
+  `primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero`.
+- Added the unconditional same-point crosswalk:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero`.
+- Added the simplified budget-fail receiver:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg`.
+- Closed gaps:
+  `STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP`,
+  `STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP`, and
+  `STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP`.
+- Current first live gap:
+  `STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP`.
+- Boundary: no Step33A.1-A closure yet.  The current one-cell budget-fail route
+  is now reduced to proving proof-grade raw-integrand second-derivative
+  nonnegativity at `0`.
+- Validation passed:
+  `lake env lean` and `q3_check` on both touched Lean files, plus scoped
+  hole scan for `sorry|admit|exact?|axiom|unsafe`.
+
 ## Insight (2026-06-20, Step33A.1-A) -- RawDerivativeDifferentiabilityGap
 
 - Tried direct Lean theorem

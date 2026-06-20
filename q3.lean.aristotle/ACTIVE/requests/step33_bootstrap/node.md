@@ -16968,3 +16968,44 @@ STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
 
 Validation: the touched Lean file passes `q3_check`; the hole scan is clean;
 whitespace check passes.
+
+## 2026-06-20 Current EOF Addendum -- raw derivative/crosswalk bridge closed
+
+Lean now discharges the raw first-derivative differentiability bridge and the
+same-point residual/raw-polynomial second-derivative crosswalk.
+
+New support theorems:
+
+```text
+realSinc_analyticAt_zero
+deriv_realSinc_differentiableAt_zero
+centeredBSplineImagTransformRealClosedFormDerivClosedForm_differentiableAt_zero
+digamma_analyticAt_of_re_pos
+trigamma_differentiableAt_of_re_pos
+step22OmegaArchWeightDerivClosedForm_differentiableAt
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg
+```
+
+Closed blockers:
+
+```text
+STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP
+```
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Meaning: the crosswalk is no longer an assumption.  The remaining sufficient
+input for the current same-point budget-fail route is a proof-grade Lean
+nonnegativity theorem for the active raw-integrand second derivative at `0`.
+
+Validation: `lake env lean` and `q3_check` pass on both touched Lean files;
+the scoped hole scan is clean.

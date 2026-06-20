@@ -29930,3 +29930,53 @@ differentiability theorem.
 Validation: `q3_check` on
 `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean` passes; hole scan is
 clean; `git diff --check` passes.
+
+## 2026-06-20 Current EOF Addendum -- raw derivative/crosswalk bridge closed
+
+Local semantic search and the Mathlib analytic-derivative check pointed to the
+same repair shape: do not try to make `fun_prop` see through opaque
+`deriv` terms; first expose analytic differentiability for the removable
+sinc/Omega closed forms.
+
+Lean now proves the required closed-form differentiability bridges:
+
+```text
+realSinc_analyticAt_zero
+deriv_realSinc_differentiableAt_zero
+centeredBSplineImagTransformRealClosedFormDerivClosedForm_differentiableAt_zero
+digamma_analyticAt_of_re_pos
+trigamma_differentiableAt_of_re_pos
+step22OmegaArchWeightDerivClosedForm_differentiableAt
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero
+```
+
+The previous gaps are closed:
+
+```text
+STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP
+```
+
+The conditional budget-fail gate has also been specialized to the discharged
+crosswalk:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg
+```
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Boundary: this does not close Step33A.1-A and does not kill the one-cell
+curvature route yet.  It proves only that a Lean proof of
+`raw_integrand''(0) >= 0` is now sufficient to trigger the existing
+same-point budget-fail theorem.
+
+Validation: `lake env lean` and `q3_check` pass on both touched Lean files;
+the scoped hole scan is clean.

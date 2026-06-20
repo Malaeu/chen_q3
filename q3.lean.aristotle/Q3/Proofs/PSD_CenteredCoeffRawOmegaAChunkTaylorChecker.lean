@@ -24,7 +24,7 @@ namespace RawOmegaAChunkIntegral
 
 open MeasureTheory
 open CenteredCoeffPayloadImport
-open scoped BigOperators
+open scoped BigOperators Topology
 
 /-- Evaluate a rational Taylor polynomial around a rational center. -/
 def rawOmegaATaylorPolynomial
@@ -3113,6 +3113,79 @@ theorem centeredBSplineImagTransformRealClosedFormDerivClosedForm_eq_sin_cos_of_
               (ell / (2 * bsplineScale k)))) := by
   unfold centeredBSplineImagTransformRealClosedFormDerivClosedForm
   rw [Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.deriv_realSinc_of_ne_zero harg]
+
+/-- The local sinc model is analytic at the removable singularity. -/
+theorem realSinc_analyticAt_zero :
+    AnalyticAt Real realSinc (0 : Real) := by
+  rw [realSinc_eq_sinc, Real.sinc_eq_dslope]
+  rcases (Real.analyticAt_sin (x := 0)) with ⟨p, hp⟩
+  exact ⟨p.fslope, HasFPowerSeriesAt.has_fpower_series_dslope_fslope hp⟩
+
+/-- The derivative of the local sinc model is differentiable at the removable
+singularity. -/
+theorem deriv_realSinc_differentiableAt_zero :
+    DifferentiableAt Real (fun x : Real => deriv realSinc x) (0 : Real) :=
+  (realSinc_analyticAt_zero.deriv).differentiableAt
+
+/-- The checked B-spline derivative closed form is differentiable at the
+removable sinc singularity. -/
+@[fun_prop]
+theorem centeredBSplineImagTransformRealClosedFormDerivClosedForm_differentiableAt_zero
+    (k : Nat) (ell : Real) :
+    DifferentiableAt Real
+      (fun t : Real =>
+        centeredBSplineImagTransformRealClosedFormDerivClosedForm k ell t)
+      (0 : Real) := by
+  let arg : Real -> Real := fun t : Real => ell * t / (2 * bsplineScale k)
+  have harg : DifferentiableAt Real arg (0 : Real) := by
+    dsimp [arg]
+    fun_prop
+  have harg_zero : arg (0 : Real) = 0 := by
+    dsimp [arg]
+    ring
+  have hsinc :
+      DifferentiableAt Real (fun t : Real => realSinc (arg t)) (0 : Real) :=
+    (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.realSinc_differentiableAt
+      (arg (0 : Real))).comp (0 : Real) harg
+  have hderivSinc :
+      DifferentiableAt Real (fun t : Real => deriv realSinc (arg t)) (0 : Real) := by
+    have hbase :
+        DifferentiableAt Real (fun x : Real => deriv realSinc x) (arg (0 : Real)) := by
+      simpa [harg_zero] using deriv_realSinc_differentiableAt_zero
+    exact hbase.comp (0 : Real) harg
+  have hpow :
+      DifferentiableAt Real (fun t : Real => (realSinc (arg t)) ^ k)
+        (0 : Real) :=
+    hsinc.pow k
+  have hleft :
+      DifferentiableAt Real
+        (fun t : Real =>
+          (k + 1 : Real) * (realSinc (arg t)) ^ k)
+        (0 : Real) :=
+    (differentiableAt_const (k + 1 : Real)).mul hpow
+  have hright :
+      DifferentiableAt Real
+        (fun t : Real =>
+          deriv realSinc (arg t) * (ell / (2 * bsplineScale k)))
+        (0 : Real) :=
+    hderivSinc.mul (differentiableAt_const (ell / (2 * bsplineScale k)))
+  have hinner :
+      DifferentiableAt Real
+        (fun t : Real =>
+          (k + 1 : Real) * (realSinc (arg t)) ^ k *
+            (deriv realSinc (arg t) * (ell / (2 * bsplineScale k))))
+        (0 : Real) :=
+    hleft.mul hright
+  have hfull :
+      DifferentiableAt Real
+        (fun t : Real =>
+          (Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹ *
+            ((k + 1 : Real) * (realSinc (arg t)) ^ k *
+              (deriv realSinc (arg t) * (ell / (2 * bsplineScale k)))))
+        (0 : Real) :=
+    (differentiableAt_const
+      ((Real.sqrt (bsplineScale k * bsplineAutocorrNorm k))⁻¹)).mul hinner
+  simpa [centeredBSplineImagTransformRealClosedFormDerivClosedForm, arg] using hfull
 
 /-- The first active primary endpoint has a strictly positive sinc argument.
 
@@ -6323,6 +6396,78 @@ def step22OmegaArchWeightDerivClosedForm (eta : Real) : Real :=
   -((trigamma
       ((1 / 4 : Complex) + Complex.I * (((eta / 2 : Real) : Complex)))).im *
     (1 / 2 : Real))
+
+/-- The local Q3 digamma function is analytic in the right half-plane. -/
+theorem digamma_analyticAt_of_re_pos {z : Complex} (hz : 0 < z.re) :
+    AnalyticAt Complex Q3.digamma z := by
+  unfold Q3.digamma
+  have hGammaAnalytic : AnalyticAt Complex Complex.Gamma z := by
+    have hGammaDiffOn :
+        DifferentiableOn Complex Complex.Gamma {w : Complex | 0 < w.re} := by
+      intro w hw
+      exact
+        (Complex.differentiableAt_Gamma w (by
+          intro m h
+          have hwpos : 0 < w.re := hw
+          have hm0 : (0 : Real) <= (m : Real) := by
+            exact_mod_cast Nat.zero_le m
+          have hwre : w.re = -(m : Real) := by
+            simpa using congrArg Complex.re h
+          nlinarith)).differentiableWithinAt
+    exact hGammaDiffOn.analyticAt
+      (IsOpen.mem_nhds (isOpen_lt continuous_const Complex.continuous_re) hz)
+  have hGammaDerivAnalytic : AnalyticAt Complex (deriv Complex.Gamma) z :=
+    hGammaAnalytic.deriv
+  exact hGammaDerivAnalytic.div hGammaAnalytic
+    (Complex.Gamma_ne_zero_of_re_pos hz)
+
+/-- The trigamma series is differentiable in the right half-plane. -/
+theorem trigamma_differentiableAt_of_re_pos {z : Complex} (hz : 0 < z.re) :
+    DifferentiableAt Complex trigamma z := by
+  have hDigammaDeriv :
+      DifferentiableAt Complex (fun w : Complex => deriv Q3.digamma w) z :=
+    (digamma_analyticAt_of_re_pos hz).deriv.differentiableAt
+  have hEq :
+      trigamma =ᶠ[𝓝 z] fun w : Complex => deriv Q3.digamma w := by
+    have hHalfPlane : {w : Complex | 0 < w.re} ∈ 𝓝 z :=
+      IsOpen.mem_nhds (isOpen_lt continuous_const Complex.continuous_re) hz
+    filter_upwards [hHalfPlane] with w hw
+    simpa [Q3.digamma, digamma] using (deriv_digamma_eq_trigamma hw).symm
+  exact hDigammaDeriv.congr_of_eventuallyEq hEq
+
+/-- The checked Omega-derivative closed form is differentiable everywhere. -/
+@[fun_prop]
+theorem step22OmegaArchWeightDerivClosedForm_differentiableAt (eta : Real) :
+    DifferentiableAt Real step22OmegaArchWeightDerivClosedForm eta := by
+  let z : Real -> Complex :=
+    fun t : Real =>
+      (1 / 4 : Complex) + Complex.I * (((t / 2 : Real) : Complex))
+  have hzDiff : DifferentiableAt Real z eta := by
+    have hdiv : DifferentiableAt Real (fun t : Real => t / 2) eta := by
+      fun_prop
+    have hcast :
+        DifferentiableAt Real (fun t : Real => (((t / 2 : Real) : Real) : Complex))
+          eta :=
+      Complex.ofRealCLM.differentiableAt.comp eta hdiv
+    dsimp [z]
+    fun_prop
+  have hzPos : 0 < (z eta).re := by
+    dsimp [z]
+    norm_num [Complex.add_re, Complex.mul_re]
+  have hTrigamma :
+      DifferentiableAt Real (fun t : Real => trigamma (z t)) eta :=
+    (trigamma_differentiableAt_of_re_pos hzPos).restrictScalars Real |>.comp
+      eta hzDiff
+  have hIm :
+      DifferentiableAt Real (fun t : Real => (trigamma (z t)).im) eta :=
+    Complex.imCLM.differentiableAt.comp eta hTrigamma
+  change
+    DifferentiableAt Real
+      (fun t : Real =>
+        -((trigamma
+          ((1 / 4 : Complex) + Complex.I * (((t / 2 : Real) : Complex)))).im *
+          (1 / 2 : Real))) eta
+  simpa [z] using (hIm.mul (differentiableAt_const (1 / 2 : Real))).neg
 
 /-- Convert a two-sided enclosure for the imaginary part of the trigamma
 series into a two-sided enclosure for the raw Step22 Omega derivative

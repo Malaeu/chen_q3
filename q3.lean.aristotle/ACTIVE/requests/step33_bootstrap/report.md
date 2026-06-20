@@ -58113,6 +58113,67 @@ rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_Center
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- raw derivative/crosswalk bridge closed
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.
+
+Local semantic search and the primary Mathlib analytic-derivative check
+supported the same repair: prove differentiability for the named closed forms
+instead of asking `fun_prop` to see through an opaque `deriv`.
+
+Lean artifacts added:
+
+```lean
+realSinc_analyticAt_zero
+deriv_realSinc_differentiableAt_zero
+centeredBSplineImagTransformRealClosedFormDerivClosedForm_differentiableAt_zero
+digamma_analyticAt_of_re_pos
+trigamma_differentiableAt_of_re_pos
+step22OmegaArchWeightDerivClosedForm_differentiableAt
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg
+```
+
+Proof-grade result: the same-point crosswalk
+
+```text
+residual''(0) = raw_integrand''(0) - polynomial''(0)
+```
+
+is now unconditional in Lean for the active first subchunk.  The previous
+conditional budget-fail theorem has been specialized so that only
+`raw_integrand''(0) >= 0` remains as input.
+
+Closed gaps:
+
+```text
+STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
+STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP
+```
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Boundary: this is still not a Step33A.1-A closure and not a route-death
+certificate.  It reduces the route-death check to a single proof-grade raw
+second-derivative nonnegativity statement at the anchor.
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+```
+
 ## Execution Update (2026-06-20) -- raw derivative differentiability probe
 
 Probe target:

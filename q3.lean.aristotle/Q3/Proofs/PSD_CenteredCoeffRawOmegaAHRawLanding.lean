@@ -1728,6 +1728,15 @@ def primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
             centeredBSplineImagTransformRealClosedFormDerivClosedForm
               11 ((3 : Real) / 10) eta))
 
+/-- The active raw-integrand first-derivative closed form is differentiable at
+the first-subchunk anchor. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero :
+    DifferentiableAt Real
+      primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+      (0 : Real) := by
+  unfold primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+  fun_prop
+
 /-- First-derivative closed form for the active raw integrand at `x = 0`. -/
 theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm
     (eta : Real) :
@@ -1800,6 +1809,66 @@ theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableA
     funext t
     exact primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm t
   simpa [hDerivFun] using hClosedFormDifferentiableAt
+
+/-- Differentiability at the first-subchunk anchor of the active raw-integrand
+derivative. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero :
+    DifferentiableAt Real
+      (fun t : Real =>
+        deriv
+          (fun eta : Real =>
+            Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+              11 ((3 : Real) / 10) 0 eta)
+          t)
+      (0 : Real) :=
+  primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
+    primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero
+
+/-- Same-point residual/raw-polynomial second-derivative crosswalk at the
+first-subchunk anchor, with the raw differentiability bridge discharged. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero :
+    deriv
+        (fun t : Real =>
+          deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+        (0 : Real) =
+      deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                  11 ((3 : Real) / 10) 0 eta)
+              t)
+          (0 : Real) -
+        deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial t)
+          (0 : Real) :=
+  primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero_of_raw_deriv_differentiableAt
+    primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero
+
+/-- Same-point curvature kill with the residual/raw-polynomial crosswalk
+already discharged.  The only remaining local analytic hypothesis is raw
+second-derivative nonnegativity at the first-subchunk anchor. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg
+    (hRawSecondNonneg :
+      0 <=
+        deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                  11 ((3 : Real) / 10) 0 eta)
+              t)
+          (0 : Real)) :
+    ((279846042433 : Real) /
+        50000000000000000000000000000) <
+      ‖deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          (0 : Real)‖ :=
+  primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge
+    hRawSecondNonneg
+    primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero
 
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
