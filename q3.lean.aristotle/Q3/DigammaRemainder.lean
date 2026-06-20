@@ -23,6 +23,9 @@ open scoped BigOperators
 /-- Bernoulli polynomial B2(t) = t^2 - t + 1/6. -/
 def bernoulli2 (t : ℝ) : ℝ := t ^ 2 - t + (6 : ℝ)⁻¹
 
+/-- B2 applied to the fractional part. -/
+def bernoulli2Fract (x : ℝ) : ℝ := bernoulli2 (Int.fract x)
+
 /-- Bernoulli gap term: 1/6 - B2(fract x). -/
 def bernoulli2Diff (x : ℝ) : ℝ := (6 : ℝ)⁻¹ - bernoulli2 (Int.fract x)
 
@@ -32,6 +35,14 @@ def bernoulli4 (t : ℝ) : ℝ := t ^ 4 - 2 * t ^ 3 + t ^ 2 - (30 : ℝ)⁻¹
 /-- B4 applied to the fractional part.  This is the next periodic Bernoulli
 kernel needed after the existing N=1 Stieltjes/Euler-Maclaurin layer. -/
 def bernoulli4Fract (x : ℝ) : ℝ := bernoulli4 (Int.fract x)
+
+/-- Repository-normalized B4 periodic kernel for the next Stieltjes lift.
+
+Unlike `bernoulli2Diff`, this is the signed periodic Bernoulli polynomial
+itself, because the power-3 to power-5 step first splits
+`bernoulli2Diff = 1/6 - B2(fract)` and then integrates the `B2(fract)` term
+twice. -/
+def bernoulli4Diff (x : ℝ) : ℝ := bernoulli4Fract x
 
 /-- Bernoulli polynomial B1(t) = t - 1/2. -/
 def bernoulli1 (t : ℝ) : ℝ := t - (1 / 2 : ℝ)
@@ -56,6 +67,11 @@ lemma measurable_bernoulli2Diff : Measurable bernoulli2Diff := by
   simpa [bernoulli2Diff] using (measurable_const.sub (measurable_bernoulli2.comp hfract))
 
 @[measurability]
+lemma measurable_bernoulli2Fract : Measurable bernoulli2Fract := by
+  have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
+  simpa [bernoulli2Fract] using measurable_bernoulli2.comp hfract
+
+@[measurability]
 lemma measurable_bernoulli4 : Measurable bernoulli4 := by
   have h4 : Measurable fun t : ℝ => t ^ 4 := by
     simpa using (measurable_id.pow_const 4)
@@ -70,6 +86,18 @@ lemma measurable_bernoulli4 : Measurable bernoulli4 := by
 lemma measurable_bernoulli4Fract : Measurable bernoulli4Fract := by
   have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
   simpa [bernoulli4Fract] using measurable_bernoulli4.comp hfract
+
+@[measurability]
+lemma measurable_bernoulli4Diff : Measurable bernoulli4Diff := by
+  simpa [bernoulli4Diff] using measurable_bernoulli4Fract
+
+lemma bernoulli2Fract_eq_const_sub_diff (x : ℝ) :
+    bernoulli2Fract x = (6 : ℝ)⁻¹ - bernoulli2Diff x := by
+  simp [bernoulli2Fract, bernoulli2Diff]
+
+lemma bernoulli2Diff_eq_const_sub_fract (x : ℝ) :
+    bernoulli2Diff x = (6 : ℝ)⁻¹ - bernoulli2Fract x := by
+  simp [bernoulli2Fract, bernoulli2Diff]
 
 lemma bernoulli2Diff_eq_mul (x : ℝ) :
     bernoulli2Diff x = Int.fract x * (1 - Int.fract x) := by
@@ -139,8 +167,27 @@ lemma bernoulli4Fract_norm_le (x : ℝ) :
     simp
   simpa [hnorm] using hb
 
+lemma bernoulli4Diff_bounds (x : ℝ) :
+    -(1 / 30 : ℝ) ≤ bernoulli4Diff x ∧
+      bernoulli4Diff x ≤ (7 / 240 : ℝ) := by
+  simpa [bernoulli4Diff] using bernoulli4Fract_bounds x
+
+lemma bernoulli4Diff_abs_le (x : ℝ) :
+    |bernoulli4Diff x| ≤ (1 / 30 : ℝ) := by
+  simpa [bernoulli4Diff] using bernoulli4Fract_abs_le x
+
+lemma bernoulli4Diff_norm_le (x : ℝ) :
+    ‖(bernoulli4Diff x : ℂ)‖ ≤ (1 / 30 : ℝ) := by
+  simpa [bernoulli4Diff] using bernoulli4Fract_norm_le x
+
+lemma bernoulli2Fract_int (n : ℤ) : bernoulli2Fract (n : ℝ) = (6 : ℝ)⁻¹ := by
+  simp [bernoulli2Fract, bernoulli2]
+
 lemma bernoulli2Diff_int (n : ℤ) : bernoulli2Diff (n : ℝ) = 0 := by
   simp [bernoulli2Diff, bernoulli2]
+
+lemma bernoulli4Diff_int (n : ℤ) : bernoulli4Diff (n : ℝ) = -(30 : ℝ)⁻¹ := by
+  simp [bernoulli4Diff, bernoulli4Fract, bernoulli4]
 
 lemma fract_eq_sub_nat_on_Ioo (n : ℕ) {x : ℝ}
     (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
@@ -166,6 +213,62 @@ lemma bernoulli2Diff_eq_on_Ioo (n : ℕ) {x : ℝ}
     bernoulli2Diff x = (x - n) - (x - n) ^ 2 := by
   have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
   simp [bernoulli2Diff, bernoulli2, hfract, pow_two, sub_eq_add_neg, add_assoc]
+
+lemma bernoulli2Fract_eq_on_Ioo (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli2Fract x = (x - n) ^ 2 - (x - n) + (6 : ℝ)⁻¹ := by
+  have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
+  simp [bernoulli2Fract, bernoulli2, hfract, sub_eq_add_neg, add_assoc]
+
+lemma bernoulli4Diff_eq_on_Ioo (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli4Diff x =
+      (x - n) ^ 4 - 2 * (x - n) ^ 3 + (x - n) ^ 2 - (30 : ℝ)⁻¹ := by
+  have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
+  simp [bernoulli4Diff, bernoulli4Fract, bernoulli4, hfract, sub_eq_add_neg, add_assoc]
+
+/-- Cell derivative of the B4 polynomial.  This helper is the local polynomial
+surface needed before the intervalwise integration-by-parts lift to kernel
+power 5. -/
+def bernoulli4DiffCellDeriv (n : ℕ) (x : ℝ) : ℝ :=
+  4 * (x - n) ^ 3 - 6 * (x - n) ^ 2 + 2 * (x - n)
+
+lemma bernoulli4DiffCellDeriv_left (n : ℕ) :
+    bernoulli4DiffCellDeriv n (n : ℝ) = 0 := by
+  simp [bernoulli4DiffCellDeriv]
+
+lemma bernoulli4DiffCellDeriv_right (n : ℕ) :
+    bernoulli4DiffCellDeriv n (n + 1 : ℝ) = 0 := by
+  norm_num [bernoulli4DiffCellDeriv, Nat.cast_add, Nat.cast_one]
+
+lemma bernoulli4DiffCellDeriv_hasDerivAt
+    (n : ℕ) {x : ℝ} (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    HasDerivAt (fun y : ℝ => bernoulli4DiffCellDeriv n y)
+      (12 * bernoulli2Fract x) x := by
+  have hderiv :
+      HasDerivAt (fun y : ℝ => bernoulli4DiffCellDeriv n y)
+        (12 * (x - n) ^ 2 - 12 * (x - n) + 2) x := by
+    have hbase : HasDerivAt (fun y : ℝ => y - (n : ℝ)) 1 x := by
+      simpa using (hasDerivAt_id x).sub_const (n : ℝ)
+    have hcube :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 3)
+          (3 * (x - (n : ℝ)) ^ 2) x := by
+      simpa using hbase.pow 3
+    have hsquare :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 2)
+          (2 * (x - (n : ℝ))) x := by
+      simpa using hbase.pow 2
+    have hpoly :=
+      ((hcube.const_mul (4 : ℝ)).sub (hsquare.const_mul (6 : ℝ))).add
+        (hbase.const_mul (2 : ℝ))
+    convert hpoly using 1
+    ring
+  have hcoef :
+      12 * bernoulli2Fract x =
+        12 * (x - n) ^ 2 - 12 * (x - n) + 2 := by
+    have hcell := bernoulli2Fract_eq_on_Ioo n hx
+    nlinarith [hcell]
+  simpa [hcoef] using hderiv
 
 lemma add_ne_zero_of_re_pos {z : ℂ} (hz : 0 < z.re) {x : ℝ} (hx : 0 ≤ x) :
     (x : ℂ) + z ≠ 0 := by

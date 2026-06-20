@@ -33894,3 +33894,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound` at z0.
   It closes only the first higher Bernoulli periodic-kernel bound needed for an
   eventual M6/order-15 EM/Stieltjes source theorem.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4LiftNormalizationLayerChecked
+
+- Added Lean-checked normalization support for the next one-step Stieltjes lift:
+  `bernoulli2Fract`, `bernoulli4Diff`, measurability, integer endpoint values,
+  cell polynomial forms, `bernoulli4DiffCellDeriv`, endpoint-zero lemmas for
+  that cell derivative, and `bernoulli4DiffCellDeriv_hasDerivAt`.
+- The important sign convention is now explicit:
+  `bernoulli2Diff = 1/6 - bernoulli2Fract`, while
+  `bernoulli4Diff = bernoulli4Fract`.  So B4 is the signed periodic Bernoulli
+  kernel, not another positive gap term.
+- The checked derivative bridge is:
+  `d/dx bernoulli4DiffCellDeriv n x = 12 * bernoulli2Fract x` for
+  `x in (n,n+1)`.  This is exactly the cell-local primitive relation needed
+  before the intervalwise power-3 to power-5 integration-by-parts step.
+- Local `q3_docs` search still found no existing hole-free
+  `digamma_stieltjes_remainder_power3_to_power5` theorem.  DLMF §24.4 and
+  §5.11 were used only as orientation, not as proof artifacts.
+- Closed subgap:
+  `STEP33_M6_B4_DIFF_NORMALIZATION_LAYER`.
+- Remaining exact gap:
+  `STEP33_M6_B4_POWER5_IBP_TELESCOPE_GAP`.
+- Boundary: this does not prove the one-step power-5 identity or
+  `Q3.digammaM6IntegralRemainderBound`; it only removes the normalization/sign
+  ambiguity before the next IBP/telescoping theorem.

@@ -26486,3 +26486,45 @@ Validation passed for `Q3/DigammaRemainder.lean` with direct Lean, targeted
 Boundary unchanged: the M6 source theorem is still open, Step33A.1-A remains
 open, A hbox is not closed, `ActiveCenteredCoeffEntryHboxCert` is not closed,
 and Step33 is not closed.
+
+## 2026-06-20 Step33A.1-A B4 lift normalization layer checked
+
+Added the repo-normalized local surface for the next one-step Stieltjes lift:
+
+```lean
+Q3.bernoulli2Fract
+Q3.bernoulli4Diff
+Q3.measurable_bernoulli2Fract
+Q3.measurable_bernoulli4Diff
+Q3.bernoulli2Fract_eq_const_sub_diff
+Q3.bernoulli2Diff_eq_const_sub_fract
+Q3.bernoulli4Diff_bounds
+Q3.bernoulli4Diff_abs_le
+Q3.bernoulli4Diff_norm_le
+Q3.bernoulli2Fract_int
+Q3.bernoulli4Diff_int
+Q3.bernoulli2Fract_eq_on_Ioo
+Q3.bernoulli4Diff_eq_on_Ioo
+Q3.bernoulli4DiffCellDeriv
+Q3.bernoulli4DiffCellDeriv_left
+Q3.bernoulli4DiffCellDeriv_right
+Q3.bernoulli4DiffCellDeriv_hasDerivAt
+```
+
+Meaning:
+
+```text
+The power-3 to power-5 lift must first split
+bernoulli2Diff = 1/6 - bernoulli2Fract.  The signed periodic B4 kernel is
+therefore `bernoulli4Diff = bernoulli4Fract`, not a positive gap term.
+The checked cell derivative satisfies
+  d/dx bernoulli4DiffCellDeriv n x = 12 * bernoulli2Fract x
+inside each cell (n,n+1).
+```
+
+Validation passed for `Q3/DigammaRemainder.lean` with direct Lean.  The full
+validation sweep is recorded in the active report.
+
+Boundary unchanged: this does not prove the one-step power-5 identity or the
+M6 source theorem.  It closes the normalization/sign layer needed before
+proving the intervalwise integration-by-parts and telescoping boundary ledger.

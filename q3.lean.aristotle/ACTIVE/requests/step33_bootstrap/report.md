@@ -53740,3 +53740,74 @@ repository's existing `bernoulli2Diff` Stieltjes layer by defining the
 repo-normalized `bernoulli4Diff`/periodic primitive interface and proving the
 intervalwise integration-by-parts plus telescoping boundary ledger that moves
 from kernel power `3` toward kernel power `5`.
+
+## 2026-06-20 Execution update -- B4 lift normalization layer checked
+
+Search refresh:
+
+```text
+q3_docs search targets:
+  bernoulli4Diff B4 Stieltjes lift power 5 digamma
+  bernoulli2Fract bernoulli2Diff split digamma Stieltjes
+  power3 to power5 Euler Maclaurin Bernoulli4 periodic kernel Lean
+  digamma_stieltjes_remainder_power3_to_power5 bernoulli4Diff
+```
+
+Result: the closest local artifact is still `Q3.DigammaRemainder`; no existing
+hole-free `power3_to_power5` theorem was found.  DLMF §24.4 was used only as
+external orientation for the Bernoulli-polynomial derivative rule, and DLMF
+§5.11 only as orientation for the standard digamma asymptotic family.
+
+Lean progress:
+
+```lean
+Q3.bernoulli2Fract
+Q3.bernoulli4Diff
+Q3.measurable_bernoulli2Fract
+Q3.measurable_bernoulli4Diff
+Q3.bernoulli2Fract_eq_const_sub_diff
+Q3.bernoulli2Diff_eq_const_sub_fract
+Q3.bernoulli4Diff_bounds
+Q3.bernoulli4Diff_abs_le
+Q3.bernoulli4Diff_norm_le
+Q3.bernoulli2Fract_int
+Q3.bernoulli4Diff_int
+Q3.bernoulli2Fract_eq_on_Ioo
+Q3.bernoulli4Diff_eq_on_Ioo
+Q3.bernoulli4DiffCellDeriv
+Q3.bernoulli4DiffCellDeriv_left
+Q3.bernoulli4DiffCellDeriv_right
+Q3.bernoulli4DiffCellDeriv_hasDerivAt
+```
+
+The checked normalization is:
+
+```text
+bernoulli2Diff = 1/6 - bernoulli2Fract
+bernoulli4Diff = bernoulli4Fract
+d/dx bernoulli4DiffCellDeriv n x = 12 * bernoulli2Fract x
+  for x in (n,n+1)
+```
+
+This closes `STEP33_M6_B4_DIFF_NORMALIZATION_LAYER`.  The remaining gap is now:
+
+```text
+STEP33_M6_B4_POWER5_IBP_TELESCOPE_GAP
+```
+
+Meaning: prove the intervalwise integration-by-parts and telescoping boundary
+ledger that turns the N=1 power-3 Stieltjes identity into the first B4
+power-5 identity.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Boundary: this is a checked normalization/sign bridge only.  It does not prove
+the one-step power-5 identity, the M6 source theorem, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, or Step33.
