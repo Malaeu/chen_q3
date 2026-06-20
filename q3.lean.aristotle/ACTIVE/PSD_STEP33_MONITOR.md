@@ -29465,3 +29465,66 @@ Boundary: candidate/source path only.  The derivfit files are not proof-grade
 without an exact crosswalk to `deriv cert.residual` and a uniform remainder
 bound on `[0, 1/10]`; no Lean proof files are modified; no Step33 closure is
 claimed.
+
+## 2026-06-20 Current EOF Status -- sub0 residual derivmodel candidate v6
+
+Browser/Pro was used as route-review only.  The advisory answer selected the
+same local patch:
+
+```text
+CHOSEN: A
+NEXT CODEX PATCH: create a separate fail-closed derivmodel artifact
+```
+
+New local fact:
+
+```text
+raw coeffs == residualfit coeffs == derivfit coeffs
+```
+
+So the existing `0_0_derivfit` file is a raw-integrand Taylor polynomial with
+derivative/remainder refresh metadata.  It is not itself the derivative-model
+polynomial consumed by `modelDeriv`.
+
+Created:
+
+```text
+scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.{json,md}
+```
+
+The generated derivative-model candidate uses exact rational arithmetic:
+
+```text
+modelCoeff[i] = (i + 1) * rawCoeff[i + 1]
+raw degree = 16
+model degree = 15
+model coeff count = 16
+modelBound =
+60128873212381686241540561835466089/327680000000000000000000000000000000
+```
+
+The interpolation skeleton is now schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6
+```
+
+Current source status:
+
+```text
+derivmodel_coefficients_generated_crosswalk_gap
+```
+
+Current ordered proof-grade payload inputs:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Boundary: the new derivmodel artifact proves no Lean theorem and emits no Lean
+payload.  It only records exact derivative coefficients and model-bound
+metadata.  The missing proof is still a checkable uniform crosswalk/remainder
+bound from this polynomial to `deriv cert.residual` on `[0, 1/10]`.

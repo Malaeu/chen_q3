@@ -38,7 +38,7 @@ DEFAULT_OUT_MD = (
 WORKLIST_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
 )
-OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5"
+OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6"
 RAW_POLY_CANDIDATE_OVERLAY = (
     REQUEST_DIR
     / "a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json"
@@ -79,6 +79,7 @@ DERIVFIT_DIRECT_DERIVATIVE_OVERLAY = (
     REQUEST_DIR
     / "a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30_derivfit.json"
 )
+DERIVMODEL_CANDIDATE = REQUEST_DIR / "step33_a1_sub0_derivmodel_candidate.json"
 
 TARGET = {
     "family": "primary_finite",
@@ -307,6 +308,92 @@ def direct_derivative_overlay_summary(path: Path, *, function_kind: str, proof_u
     return summary
 
 
+def candidate_coeff_equality_summary() -> dict[str, Any]:
+    paths = {
+        "raw": RAW_POLY_CANDIDATE_OVERLAY,
+        "residualfit": RESIDUALFIT_CANDIDATE,
+        "derivfit": EXPECTED_DERIVATIVE_MODEL_CANDIDATE,
+    }
+    summary: dict[str, Any] = {
+        "paths": {key: str(path) for key, path in paths.items()},
+        "allFilesExist": all(path.exists() for path in paths.values()),
+        "subchunk": 0,
+        "meaning": (
+            "Checks whether derivfit changed the polynomial coefficients or only "
+            "refreshed diagnostic derivative/remainder metadata."
+        ),
+    }
+    if not summary["allFilesExist"]:
+        return summary
+
+    items: dict[str, dict[str, Any]] = {}
+    for key, path in paths.items():
+        data = load_json(path)
+        item = find_subchunk_item(data.get("candidates") or [], 0)
+        if item is None:
+            summary["subchunkFoundInAll"] = False
+            return summary
+        items[key] = item
+
+    raw_coeff = items["raw"].get("coeff") or []
+    residualfit_coeff = items["residualfit"].get("coeff") or []
+    derivfit_coeff = items["derivfit"].get("coeff") or []
+    summary.update(
+        {
+            "subchunkFoundInAll": True,
+            "rawCoeffCount": len(raw_coeff),
+            "residualfitCoeffCount": len(residualfit_coeff),
+            "derivfitCoeffCount": len(derivfit_coeff),
+            "rawEqualsResidualfit": raw_coeff == residualfit_coeff,
+            "rawEqualsDerivfit": raw_coeff == derivfit_coeff,
+            "residualfitEqualsDerivfit": residualfit_coeff == derivfit_coeff,
+            "centerRaw": items["raw"].get("center"),
+            "centerDerivfit": items["derivfit"].get("center"),
+            "radiusRaw": items["raw"].get("radius"),
+            "radiusDerivfit": items["derivfit"].get("radius"),
+            "verdict": (
+                "derivfit_coefficients_are_raw_polynomial_coefficients"
+                if raw_coeff == derivfit_coeff
+                else "derivfit_coefficients_differ_from_raw_polynomial"
+            ),
+        }
+    )
+    return summary
+
+
+def derivmodel_candidate_summary(path: Path) -> dict[str, Any]:
+    summary: dict[str, Any] = {
+        "path": str(path),
+        "exists": path.exists(),
+        "usableAsDerivativeModelSource": False,
+        "functionKind": (
+            "formal_derivative_coefficients_of_raw_polynomial_candidate_crosswalk_unproved"
+        ),
+        "proofUseStatus": (
+            "not_allowed_as_Lean_payload_until_uniform_remainder_and_arithmetic_are_checked"
+        ),
+    }
+    if path.exists():
+        data = load_json(path)
+        derivation = data.get("derivation") or {}
+        summary.update(
+            {
+                "schema": data.get("schema"),
+                "status": data.get("status"),
+                "firstDangerPoint": data.get("firstDangerPoint"),
+                "proofSafeClosedFields": data.get("proofSafeClosedFields"),
+                "outLeanWritten": data.get("outLeanWritten"),
+                "modelDegree": derivation.get("modelDegree"),
+                "modelCoeffCount": derivation.get("modelCoeffCount"),
+                "modelBound": derivation.get("modelBound"),
+                "modelBoundDecimal": derivation.get("modelBoundDecimal"),
+                "rawCoeffEquality": data.get("rawCoeffEquality"),
+                "missingInputs": data.get("missingInputs"),
+            }
+        )
+    return summary
+
+
 def derivative_model_candidate_inventory() -> dict[str, Any]:
     raw_candidate = candidate_overlay_summary(
         RAW_POLY_CANDIDATE_OVERLAY,
@@ -348,18 +435,22 @@ def derivative_model_candidate_inventory() -> dict[str, Any]:
         "path": str(EXPECTED_DERIVATIVE_MODEL_CANDIDATE),
         "exists": EXPECTED_DERIVATIVE_MODEL_CANDIDATE.exists(),
         "usableAsDerivativeModelSource": False,
-        "expectedFunctionKind": "derivative_residual_polynomial_model_candidate",
+        "expectedFunctionKind": (
+            "raw_integrand_candidate_with_derivative_remainder_refresh_not_derivative_model"
+        ),
         "proofUseStatus": (
-            "candidate_present_but_not_spendable_without_exact_derivative_model_crosswalk"
+            "candidate_present_but_coefficients_may_still_be_raw_polynomial_coefficients"
         ),
     }
     if EXPECTED_DERIVATIVE_MODEL_CANDIDATE.exists():
         expected_derivfit.update(
             candidate_overlay_summary(
                 EXPECTED_DERIVATIVE_MODEL_CANDIDATE,
-                function_kind="derivative_residual_polynomial_model_candidate_crosswalk_unproved",
+                function_kind=(
+                    "raw_integrand_candidate_with_derivative_remainder_refresh_crosswalk_unproved"
+                ),
                 proof_use=(
-                    "not_allowed_as_modelDeriv_source_until_deriv_cert_residual_crosswalk_and_remainder_bound_are_checked"
+                    "not_allowed_as_modelDeriv_source_when_coefficients_match_raw_polynomial"
                 ),
             )
         )
@@ -382,15 +473,25 @@ def derivative_model_candidate_inventory() -> dict[str, Any]:
         proof_use="not_allowed_as_modelDeriv_source_without_hResidualDerivBoundOnCell",
     )
 
-    has_candidate = bool(expected_derivfit["exists"])
+    derivfit_coeff_equality = candidate_coeff_equality_summary()
+    derivmodel_candidate = derivmodel_candidate_summary(DERIVMODEL_CANDIDATE)
+    has_derivmodel_candidate = bool(derivmodel_candidate["exists"])
+    has_derivfit_raw_candidate = bool(expected_derivfit["exists"])
+    if has_derivmodel_candidate:
+        status = "derivmodel_coefficients_generated_crosswalk_gap"
+        active_first_blocker = "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP"
+    elif has_derivfit_raw_candidate:
+        status = "blocked_derivfit_is_raw_polynomial_not_derivmodel"
+        active_first_blocker = "STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP"
+    else:
+        status = "blocked_no_proof_grade_derivative_model_source_for_sub0"
+        active_first_blocker = "STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP"
+
     return {
-        "status": (
-            "derivative_model_source_candidate_present_crosswalk_unproved"
-            if has_candidate
-            else "blocked_no_proof_grade_derivative_model_source_for_sub0"
-        ),
+        "status": status,
         "hasProofGradeDerivativeModelSource": False,
-        "hasDerivativeModelCandidateFile": has_candidate,
+        "hasDerivativeModelCandidateFile": has_derivmodel_candidate,
+        "hasDerivfitRawCandidateFile": has_derivfit_raw_candidate,
         "rawPolynomialCandidate": raw_candidate,
         "directDerivativeOverlay": direct_overlay,
         "derivativeBoundAudit": audit,
@@ -398,18 +499,17 @@ def derivative_model_candidate_inventory() -> dict[str, Any]:
         "residualfitResidualAudit": residualfit_residual_audit,
         "residualfitDerivativeAudit": residualfit_derivative_audit,
         "expectedDerivativeModelCandidate": expected_derivfit,
+        "derivfitRawCoeffEquality": derivfit_coeff_equality,
+        "derivmodelCandidate": derivmodel_candidate,
         "derivfitResidualAudit": derivfit_residual_audit,
         "derivfitDerivativeAudit": derivfit_derivative_audit,
         "derivfitDirectDerivativeOverlay": derivfit_direct_overlay,
-        "activeFirstBlocker": (
-            "STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP"
-            if has_candidate
-            else "STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP"
-        ),
+        "activeFirstBlocker": active_first_blocker,
         "decision": (
-            "A derivfit candidate may seed the next generator, but it is not "
-            "proof-grade until the exact crosswalk to deriv cert.residual and "
-            "the uniform remainder bound are checked."
+            "The existing derivfit file is a raw-polynomial refresh, not a "
+            "spendable derivative-model source.  The separate derivmodel "
+            "candidate records exact derivative coefficients, but the uniform "
+            "remainder/crosswalk to deriv cert.residual remains open."
         ),
     }
 
@@ -556,7 +656,8 @@ def build_report(
             "polynomial-model landing receiver is checked separately in Lean",
             "raw Taylor polynomial candidates are not derivative-model sources",
             "sampled derivative intervals are not modelDeriv proof data",
-            "derivfit candidates are not proof-grade without exact derivative-model crosswalk",
+            "derivfit coefficients match raw-polynomial coefficients unless the equality check says otherwise",
+            "derivmodel candidates are not proof-grade without uniform remainder and Lean arithmetic emission",
             "modelBound must be derived by exact rational interval operations",
             "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
             "a positive exact budget margin is required before Lean emission is enabled",
@@ -608,6 +709,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- status: `{inventory['status']}`",
             f"- proof-grade derivative model source: `{inventory['hasProofGradeDerivativeModelSource']}`",
             f"- derivative-model candidate file present: `{inventory['hasDerivativeModelCandidateFile']}`",
+            f"- derivfit raw candidate file present: `{inventory['hasDerivfitRawCandidateFile']}`",
             f"- decision: `{inventory['decision']}`",
             "",
             "### Raw Polynomial Candidate",
@@ -643,6 +745,25 @@ def render_md(report: dict[str, Any]) -> str:
             f"- status: `{inventory['expectedDerivativeModelCandidate'].get('status')}`",
             f"- candidates: `{inventory['expectedDerivativeModelCandidate'].get('candidateCount')}`",
             f"- proof use: `{inventory['expectedDerivativeModelCandidate'].get('proofUseStatus')}`",
+            "",
+            "### Derivfit Raw-Coefficient Equality",
+            "",
+            f"- all files exist: `{inventory['derivfitRawCoeffEquality']['allFilesExist']}`",
+            f"- raw equals residualfit: `{inventory['derivfitRawCoeffEquality'].get('rawEqualsResidualfit')}`",
+            f"- raw equals derivfit: `{inventory['derivfitRawCoeffEquality'].get('rawEqualsDerivfit')}`",
+            f"- residualfit equals derivfit: `{inventory['derivfitRawCoeffEquality'].get('residualfitEqualsDerivfit')}`",
+            f"- verdict: `{inventory['derivfitRawCoeffEquality'].get('verdict')}`",
+            "",
+            "### Derivmodel Candidate",
+            "",
+            f"- path: `{inventory['derivmodelCandidate']['path']}`",
+            f"- exists: `{inventory['derivmodelCandidate']['exists']}`",
+            f"- status: `{inventory['derivmodelCandidate'].get('status')}`",
+            f"- model degree: `{inventory['derivmodelCandidate'].get('modelDegree')}`",
+            f"- model coeff count: `{inventory['derivmodelCandidate'].get('modelCoeffCount')}`",
+            f"- modelBound: `{inventory['derivmodelCandidate'].get('modelBound')}`",
+            f"- first danger point: `{inventory['derivmodelCandidate'].get('firstDangerPoint')}`",
+            f"- proof use: `{inventory['derivmodelCandidate'].get('proofUseStatus')}`",
             "",
             "### Derivfit Direct Derivative Overlay",
             "",

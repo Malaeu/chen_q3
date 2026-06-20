@@ -35825,3 +35825,39 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `deriv cert.residual` and a uniform remainder bound on `[0, 1/10]` are
   proved/generated in a checkable way.  No Lean payload, Step33A.1-A, Step33,
   Step34, or RH closure is proved.
+
+## Insight (2026-06-20, Step33A.1-A) -- ResidualDerivmodelCandidate
+
+- Browser/Pro route-review was used as advisory only; it selected `A`: create a
+  separate fail-closed residual `derivmodel` artifact and keep Lean closed.
+- Local coefficient check found
+  `raw coeffs == residualfit coeffs == derivfit coeffs`.  Therefore the active
+  `0_0_derivfit` file is still a raw-integrand Taylor polynomial with refreshed
+  diagnostic metadata, not the derivative-model polynomial consumed by
+  `modelDeriv`.
+- Added
+  `scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py` and
+  generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.{json,md}`.
+- The generated candidate uses exact rational arithmetic
+  `modelCoeff[i] = (i + 1) * rawCoeff[i + 1]`, with `rawDegree = 16`,
+  `modelDegree = 15`, `modelCoeffCount = 16`, and exact
+  `modelBound = 60128873212381686241540561835466089/327680000000000000000000000000000000`.
+- Updated
+  `scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6`.
+- The current source status is
+  `derivmodel_coefficients_generated_crosswalk_gap`.
+- The first blocker is now named exactly:
+  `STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP`.
+- Remaining ordered gaps are the derivmodel-to-`deriv cert.residual` crosswalk,
+  Lean/checkable polynomial model arithmetic emission, and the interpolation
+  error/remainder bound.
+- Validation passed: py_compile for the touched scripts, derivmodel generator
+  rerun, interpolation payload v6 rerun, JSON assertions, and zero-budget smoke
+  test that remains blocked on
+  `STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP`.
+- Boundary: this patch creates exact rational metadata only.  It emits no Lean,
+  has `proofSafeClosedFields = 0`, and proves no Step33A.1-A / Step33 /
+  Step34 / RH closure.

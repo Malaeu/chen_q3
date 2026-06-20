@@ -1,7 +1,7 @@
 {
   "candidateSourceInventory": {
-    "activeFirstBlocker": "STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP",
-    "decision": "A derivfit candidate may seed the next generator, but it is not proof-grade until the exact crosswalk to deriv cert.residual and the uniform remainder bound are checked.",
+    "activeFirstBlocker": "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
+    "decision": "The existing derivfit file is a raw-polynomial refresh, not a spendable derivative-model source.  The separate derivmodel candidate records exact derivative coefficients, but the uniform remainder/crosswalk to deriv cert.residual remains open.",
     "derivativeBoundAudit": {
       "counts": {
         "candidateFieldsForDerivativeIntervalFiniteCover": 1400,
@@ -113,6 +113,28 @@
       "subchunkFound": true,
       "usableAsDerivativeModelSource": false
     },
+    "derivfitRawCoeffEquality": {
+      "allFilesExist": true,
+      "centerDerivfit": "5.000000000000000000E-2",
+      "centerRaw": "5.000000000000000000E-2",
+      "derivfitCoeffCount": 17,
+      "meaning": "Checks whether derivfit changed the polynomial coefficients or only refreshed diagnostic derivative/remainder metadata.",
+      "paths": {
+        "derivfit": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.json",
+        "raw": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json",
+        "residualfit": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_residualfit.json"
+      },
+      "radiusDerivfit": "5.000000000000000000E-2",
+      "radiusRaw": "5.000000000000000000E-2",
+      "rawCoeffCount": 17,
+      "rawEqualsDerivfit": true,
+      "rawEqualsResidualfit": true,
+      "residualfitCoeffCount": 17,
+      "residualfitEqualsDerivfit": true,
+      "subchunk": 0,
+      "subchunkFoundInAll": true,
+      "verdict": "derivfit_coefficients_are_raw_polynomial_coefficients"
+    },
     "derivfitResidualAudit": {
       "counts": {
         "candidateSubchunks": 100,
@@ -136,6 +158,32 @@
       "sourceResidualAudit": null,
       "status": "sampled_rational_residual_audit_passed_not_proof",
       "subchunkFound": true,
+      "usableAsDerivativeModelSource": false
+    },
+    "derivmodelCandidate": {
+      "exists": true,
+      "firstDangerPoint": "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
+      "functionKind": "formal_derivative_coefficients_of_raw_polynomial_candidate_crosswalk_unproved",
+      "missingInputs": [
+        "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
+        "STEP33_A1_SUB0_DERIVMODEL_LEAN_ARITHMETIC_EMISSION_GAP"
+      ],
+      "modelBound": "60128873212381686241540561835466089/327680000000000000000000000000000000",
+      "modelBoundDecimal": "0.183498758582707782719545",
+      "modelCoeffCount": 16,
+      "modelDegree": 15,
+      "outLeanWritten": false,
+      "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.json",
+      "proofSafeClosedFields": 0,
+      "proofUseStatus": "not_allowed_as_Lean_payload_until_uniform_remainder_and_arithmetic_are_checked",
+      "rawCoeffEquality": {
+        "meaning": "The existing derivfit candidate is still the raw-integrand Taylor polynomial coefficients, not the derivative-model coefficients consumed by modelDeriv.",
+        "rawEqualsDerivfit": true,
+        "rawEqualsResidualfit": true,
+        "residualfitEqualsDerivfit": true
+      },
+      "schema": "q3_psdpd_step33_a1_sub0_derivmodel_candidate.v1",
+      "status": "derivmodel_candidate_generated_crosswalk_unproved_not_proof_data",
       "usableAsDerivativeModelSource": false
     },
     "directDerivativeOverlay": {
@@ -189,11 +237,11 @@
       "coeffCount": 17,
       "degree": 16,
       "exists": true,
-      "expectedFunctionKind": "derivative_residual_polynomial_model_candidate",
-      "functionKind": "derivative_residual_polynomial_model_candidate_crosswalk_unproved",
+      "expectedFunctionKind": "raw_integrand_candidate_with_derivative_remainder_refresh_not_derivative_model",
+      "functionKind": "raw_integrand_candidate_with_derivative_remainder_refresh_crosswalk_unproved",
       "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.json",
       "polyAbs": "967204477767574710519825179/3125000000000000000000000000",
-      "proofUseStatus": "not_allowed_as_modelDeriv_source_until_deriv_cert_residual_crosswalk_and_remainder_bound_are_checked",
+      "proofUseStatus": "not_allowed_as_modelDeriv_source_when_coefficients_match_raw_polynomial",
       "radius": "5.000000000000000000E-2",
       "remainder": "1/1000000000000000000",
       "schema": "q3_psdpd_step33_a_refined_subchunk_candidate_overlay.v1",
@@ -205,6 +253,7 @@
       "usableAsDerivativeModelSource": false
     },
     "hasDerivativeModelCandidateFile": true,
+    "hasDerivfitRawCandidateFile": true,
     "hasProofGradeDerivativeModelSource": false,
     "rawPolynomialCandidate": {
       "candidateCount": 100,
@@ -319,7 +368,7 @@
       "subchunkFound": true,
       "usableAsDerivativeModelSource": false
     },
-    "status": "derivative_model_source_candidate_present_crosswalk_unproved"
+    "status": "derivmodel_coefficients_generated_crosswalk_gap"
   },
   "cell": {
     "cellL": "0.000000000000000000E+0",
@@ -339,7 +388,7 @@
     "rhs": "1866608532757/500000000000000000000000000000",
     "rhsDecimal": "0.000000000000000003733217"
   },
-  "firstDangerPoint": "STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP",
+  "firstDangerPoint": "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
   "inputs": {
     "inputStatus": "not_provided_exact_rational_bounds",
     "interpolationError": null,
@@ -349,7 +398,7 @@
   },
   "meaning": "Fail-closed direct interpolation payload skeleton for the first Step33A.1-A residual-derivative cell.  This is not Lean proof data and does not emit a theorem.",
   "missingInputs": [
-    "STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP",
+    "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP",
     "STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP"
   ],
@@ -372,12 +421,13 @@
     "polynomial-model landing receiver is checked separately in Lean",
     "raw Taylor polynomial candidates are not derivative-model sources",
     "sampled derivative intervals are not modelDeriv proof data",
-    "derivfit candidates are not proof-grade without exact derivative-model crosswalk",
+    "derivfit coefficients match raw-polynomial coefficients unless the equality check says otherwise",
+    "derivmodel candidates are not proof-grade without uniform remainder and Lean arithmetic emission",
     "modelBound must be derived by exact rational interval operations",
     "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
     "a positive exact budget margin is required before Lean emission is enabled"
   ],
-  "schema": "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v5",
+  "schema": "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6",
   "status": "blocked_missing_exact_interpolation_inputs",
   "target": {
     "family": "primary_finite",

@@ -1,0 +1,97 @@
+{
+  "derivation": {
+    "center": "5.000000000000000000E-2",
+    "formula": "modelCoeff[i] = (i + 1) * rawCoeff[i + 1]",
+    "modelBound": "60128873212381686241540561835466089/327680000000000000000000000000000000",
+    "modelBoundDecimal": "0.183498758582707782719545",
+    "modelBoundFormula": "sum_i abs(modelCoeff[i]) * radius^i",
+    "modelCoeff": [
+      "2814585322345983/31250000000000000",
+      "432682670395380743/250000000000000000",
+      "-2076189217694411487/1000000000000000000",
+      "-155822302127901237/12500000000000000",
+      "248352666423100477/12500000000000000",
+      "32291651785944130749/500000000000000000",
+      "-69999411432932463909/500000000000000000",
+      "-34707798540256129409/125000000000000000",
+      "836575734719049511113/1000000000000000000",
+      "100643501888413806697/100000000000000000",
+      "-897573400754971084771/200000000000000000",
+      "-142205390337268351947/50000000000000000",
+      "5554290524724778241613/250000000000000000",
+      "916884525703826724093/250000000000000000",
+      "-19999872807938988432933/200000000000000000",
+      "62148786708414316877/2500000000000000"
+    ],
+    "modelCoeffCount": 16,
+    "modelCoeffDecimal": [
+      "0.090066730315071456000000",
+      "1.730730681581522972000000",
+      "-2.076189217694411487000000",
+      "-12.465784170232098960000000",
+      "19.868213313848038160000000",
+      "64.583303571888261498000000",
+      "-139.998822865864927818000000",
+      "-277.662388322049035272000000",
+      "836.575734719049511113000000",
+      "1006.435018884138066970000000",
+      "-4487.867003774855423855000000",
+      "-2844.107806745367038940000000",
+      "22217.162098899112966452000000",
+      "3667.538102815306896372000000",
+      "-99999.364039694942164665000000",
+      "24859.514683365726750800000000"
+    ],
+    "modelDegree": 15,
+    "radius": "5.000000000000000000E-2",
+    "rawCoeffCount": 17,
+    "rawDegree": 16
+  },
+  "firstDangerPoint": "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
+  "leanInterface": {
+    "expectedModelDeriv": "rawOmegaATaylorPolynomial modelDegree modelCenter modelCoeff",
+    "modelBoundReduction": "abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius plus exact rational radius/sum arithmetic",
+    "modelCenter": "5.000000000000000000E-2",
+    "modelDegree": 15,
+    "modelRadius": "5.000000000000000000E-2"
+  },
+  "meaning": "Exact rational derivative coefficients of the active raw polynomial candidate.  This is a model candidate only; it does not prove the uniform residual-derivative remainder.",
+  "missingInputs": [
+    "STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP",
+    "STEP33_A1_SUB0_DERIVMODEL_LEAN_ARITHMETIC_EMISSION_GAP"
+  ],
+  "outLeanWritten": false,
+  "proofSafeClosedFields": 0,
+  "rawCoeffEquality": {
+    "meaning": "The existing derivfit candidate is still the raw-integrand Taylor polynomial coefficients, not the derivative-model coefficients consumed by modelDeriv.",
+    "rawEqualsDerivfit": true,
+    "rawEqualsResidualfit": true,
+    "residualfitEqualsDerivfit": true
+  },
+  "routeGuard": [
+    "not Lean proof data",
+    "does not use sampled derivative intervals as proof",
+    "does not prove deriv cert.residual is modeled by this polynomial",
+    "does not provide interpolationError",
+    "existing derivfit raw coefficients remain diagnostic-only"
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_derivmodel_candidate.v1",
+  "sources": {
+    "derivfitCandidate": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.json",
+    "derivfitSchema": "q3_psdpd_step33_a_refined_subchunk_candidate_overlay.v1",
+    "derivfitStatus": "candidate_overlay_derivative_remainder_refreshed_not_proof_data",
+    "rawPolynomialCandidate": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json",
+    "rawPolynomialSchema": "q3_psdpd_step33_a_refined_subchunk_candidate_overlay.v1",
+    "rawPolynomialStatus": "candidate_overlay_not_proof_data",
+    "residualfitCandidate": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_residualfit.json",
+    "residualfitSchema": "q3_psdpd_step33_a_refined_subchunk_candidate_overlay.v1",
+    "residualfitStatus": "candidate_overlay_remainder_refreshed_not_proof_data"
+  },
+  "status": "derivmodel_candidate_generated_crosswalk_unproved_not_proof_data",
+  "target": {
+    "family": "primary_finite",
+    "parentChunk": 0,
+    "row": 0,
+    "subchunk": 0
+  }
+}

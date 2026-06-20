@@ -57675,3 +57675,86 @@ Next implementable patch: prove or generate a checkable exact crosswalk from
 the `0_0_derivfit` polynomial candidate to `deriv cert.residual` on
 `[0, 1/10]`, including the uniform remainder bound.  Without that, the
 candidate remains diagnostic-only.
+
+## Execution Update (2026-06-20) -- residual derivmodel candidate v6
+
+Browser/Pro route-review was used as advisory only and selected the same
+local direction:
+
+```text
+CHOSEN: A
+TARGET FILES:
+scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+FIRST BLOCKER:
+STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP
+```
+
+Created:
+
+```text
+scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.{json,md}
+```
+
+Updated:
+
+```text
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.{json,md}
+```
+
+New local evidence:
+
+```text
+raw coeffs == residualfit coeffs == derivfit coeffs
+```
+
+So `0_0_derivfit` is not accepted as `modelDeriv`.  The new derivmodel
+candidate derives exact coefficients by:
+
+```text
+modelCoeff[i] = (i + 1) * rawCoeff[i + 1]
+```
+
+Observed derivmodel metadata:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_derivmodel_candidate.v1
+status = derivmodel_candidate_generated_crosswalk_unproved_not_proof_data
+rawDegree = 16
+modelDegree = 15
+modelCoeffCount = 16
+modelBound =
+60128873212381686241540561835466089/327680000000000000000000000000000000
+firstDangerPoint =
+STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP
+```
+
+The fail-closed interpolation payload now emits schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6
+```
+
+Current ordered gaps:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 JSON assertion: derivmodel schema v1, payload schema v6, rawEqualsDerivfit = true, firstDangerPoint = STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP, proofSafeClosedFields = 0, outLeanWritten = false
+python3 exact-budget smoke test with modelBound=0 and interpolationError=0 remains blocked only on STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP
+```
+
+Boundary: no Lean proof files were modified, sampled audits are not proof
+data, the derivmodel artifact is not proof-grade, no Lean payload is emitted,
+and no Step33A.1-A / Step33 / Step34 / RH closure is claimed.

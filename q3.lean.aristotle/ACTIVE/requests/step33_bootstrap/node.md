@@ -16594,3 +16594,50 @@ The `derivfit` candidate is useful only as a seed for the next generator.  It
 does not prove that the polynomial models `deriv cert.residual`, and the direct
 derivative overlay remains blocked on `hRawCenterCoeffAbs` and
 `hResidualDerivBoundOnCell`.
+
+## 2026-06-20 Current EOF Addendum -- residual derivmodel candidate
+
+Browser/Pro route-review answered `CHOSEN: A`, matching the local next patch:
+create a separate fail-closed `derivmodel` artifact, not a Lean theorem.
+
+Local equality check:
+
+```text
+raw coeffs == residualfit coeffs == derivfit coeffs
+```
+
+Therefore `0_0_derivfit` is not the derivative-model polynomial source.  It is
+the raw-integrand Taylor polynomial with refreshed diagnostic metadata.
+
+Created:
+
+```text
+scripts/generate_step33_a1_sub0_residual_derivmodel_candidate.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_derivmodel_candidate.md
+```
+
+Updated the fail-closed interpolation skeleton to:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v6
+```
+
+The source-gate verdict is now:
+
+```text
+derivmodel_coefficients_generated_crosswalk_gap
+```
+
+Current ordered proof-grade payload inputs:
+
+```text
+STEP33_A1_SUB0_DERIVMODEL_TO_RESIDUAL_DERIV_CROSSWALK_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+The generated candidate has `modelDegree = 15`, `modelCoeffCount = 16`, and
+exact rational
+`modelBound = 60128873212381686241540561835466089/327680000000000000000000000000000000`.
+No Lean payload is emitted and `proofSafeClosedFields = 0`.
