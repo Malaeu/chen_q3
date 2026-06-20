@@ -29778,3 +29778,35 @@ STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL
 Next proof-producing patch: build proof-grade asymmetric anchor interval at
 `0` and direct residual curvature on `[0,1/10]`; do not spend the current v7
 diagnostic fields as Lean payload.
+
+## 2026-06-20 Current EOF Addendum -- residual second-derivative at-zero gate
+
+Browser/Pro route review was used through the in-app browser as advisory only.
+The selected next gate is the exact same-point residual second derivative at
+`0`, before declaring the one-cell asymmetric curvature route dead.
+
+Lean now proves the polynomial-side contribution exactly:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero
+```
+
+and proves that this polynomial curvature alone is far above the current
+asymmetric curvature budget:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_budget_pressure
+```
+
+This is not yet a residual kill certificate, because raw-integrand curvature
+could in principle cancel the polynomial curvature.  The live named gap is:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_AT_ZERO_BRIDGE_GAP
+```
+
+If the same-point residual curvature is proved over budget, use:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
+```

@@ -58059,3 +58059,56 @@ Next live payload target:
 ```text
 STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
 ```
+
+## Execution Update (2026-06-20) -- residual second-derivative at-zero polynomial gate
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.
+
+Browser/Pro was used through the in-app browser as advisory route review only.
+The recommendation was to test the exact same-point residual curvature gate
+before declaring route death or moving to segment/live-hbox machinery.
+
+Lean theorems added:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_budget_pressure
+```
+
+Proof-grade result:
+
+```text
+polynomial second derivative at 0 =
+-10711476366121977454255583443181529/20480000000000000000000000000000000
+```
+
+Its norm is already about `9.34e16` times larger than the current asymmetric
+curvature budget:
+
+```text
+279846042433/50000000000000000000000000000
+```
+
+Boundary: this is not a residual kill certificate.  The missing proof object is
+the same-point raw-integrand second-derivative bridge/cancellation statement.
+
+Current named gap:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_AT_ZERO_BRIDGE_GAP
+```
+
+If that bridge proves exact residual curvature at `0` over budget, record:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```

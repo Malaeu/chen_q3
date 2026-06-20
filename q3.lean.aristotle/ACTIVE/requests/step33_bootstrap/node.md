@@ -16825,3 +16825,30 @@ The zero-curvature asymmetric slack is positive, so the route is still live.
 
 Required next proof object: proof-grade asymmetric `derivAnchorLower` /
 `derivAnchorUpper` at `0` plus direct residual curvature on `[0,1/10]`.
+
+## 2026-06-20 Current EOF Addendum -- residual second-derivative at-zero gate
+
+Browser/Pro route review selected the smallest decisive subgate for the live
+asymmetric anchor-curvature lane:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_AT_ZERO_BRIDGE_GAP
+```
+
+New Lean proof-grade polynomial facts:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_budget_pressure
+```
+
+Boundary: these facts do not kill the residual route by themselves.  They prove
+the adapter polynomial curvature pressure; the missing object is the same-point
+raw-integrand second-derivative bridge/cancellation statement at `0`.
+
+If the exact residual second derivative at `0` is proved above the available
+budget, record:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
+```

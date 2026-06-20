@@ -36018,3 +36018,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   assertions for v22/v1 schemas and `routeDeathReached = false`, marker scan
   on touched scripts/generated artifacts, and `git diff --check`.  Lean was
   not rerun because no Lean file changed in this update.
+
+## Insight (2026-06-20, Step33A.1-A) -- ResidualSecondDerivAtZeroPolynomialGate
+
+- Used the in-app browser/Pro chat as advisory route review for the next
+  asymmetric anchor-curvature step.  The recommendation was option `A`: first
+  test the exact `residual_second_deriv_at_zero` gate before moving to the
+  larger segment/live-hbox route.
+- Pro review named the route-death failure code, if the exact same-point
+  residual curvature is proved over budget:
+  `STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL`.
+- Added Lean-checked polynomial-side exact curvature theorem in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero`.
+- Added Lean-checked pressure theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_budget_pressure`.
+- Exact polynomial-side value at `0` is
+  `-10711476366121977454255583443181529/20480000000000000000000000000000000`,
+  so its norm is about `9.34e16` times larger than the asymmetric curvature
+  budget
+  `279846042433/50000000000000000000000000000`.
+- Boundary: this does not prove residual route death.  Since
+  `residual = raw_integrand - polynomial`, a same-point raw-integrand
+  second-derivative bridge is still needed before claiming cancellation
+  impossible or sufficient.
+- Exact next named gap:
+  `STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_AT_ZERO_BRIDGE_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
+  `bash scripts/q3_check.sh
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
+  scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
+  `git diff --check`.

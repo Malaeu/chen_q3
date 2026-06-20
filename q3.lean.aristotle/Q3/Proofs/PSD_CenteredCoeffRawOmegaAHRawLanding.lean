@@ -1516,6 +1516,64 @@ theorem primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossi
     nlinarith
   norm_num at hLowerTight
 
+/-- Exact second derivative at the anchor of the concrete adapter polynomial.
+
+This is only the polynomial-side contribution to the Proshka-recommended
+`residual_second_deriv_at_zero` gate.  It is proof-grade Lean arithmetic, but
+it is not by itself a statement about `cert.residual`; the missing bridge is
+the raw-integrand second-derivative identity/bound at the same point. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero :
+    deriv
+        (fun t : Real =>
+          deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial t)
+        (0 : Real) =
+      -((10711476366121977454255583443181529 : Real) /
+        20480000000000000000000000000000000) := by
+  let cert := primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert
+  change
+    deriv (fun t : Real => deriv cert.polynomial t) (0 : Real) =
+      -((10711476366121977454255583443181529 : Real) /
+        20480000000000000000000000000000000)
+  have hderivFun :
+      (fun t : Real => deriv cert.polynomial t) =
+        (fun t : Real =>
+          ∑ i : Fin (cert.degree + 1),
+            (cert.coeff i : Real) *
+              ((i.1 : Real) * (t - (cert.center : Real)) ^ (i.1 - 1))) := by
+    funext t
+    rw [cert.polynomial_deriv_eq_term_deriv_sum t]
+    refine Finset.sum_congr rfl ?_
+    intro i _hi
+    rw [cert.polynomial_term_deriv_eq i t]
+  rw [hderivFun]
+  rw [deriv_fun_sum]
+  · subst cert
+    simp [Fin.sum_univ_succ,
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert,
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0]
+    norm_num
+  · intro i _hi
+    fun_prop
+
+/-- The concrete adapter polynomial curvature already dwarfs the asymmetric
+curvature budget.
+
+This does not kill the residual route without a same-point raw-integrand
+second-derivative bridge, because `residual = raw - polynomial` could in
+principle cancel.  It records the exact proof-grade pressure that any such
+bridge must overcome. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_budget_pressure :
+    ((279846042433 : Real) /
+        50000000000000000000000000000) <
+      ‖deriv
+          (fun t : Real =>
+            deriv
+              primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial
+              t)
+          (0 : Real)‖ := by
+  rw [primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero]
+  norm_num
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 
