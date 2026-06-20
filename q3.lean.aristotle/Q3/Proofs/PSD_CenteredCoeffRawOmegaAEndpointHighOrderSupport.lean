@@ -10236,6 +10236,175 @@ theorem omegaPrimeOrder16RealMajorant_summable :
   rw [abs_of_nonneg hNonneg]
   simp [omegaPrimeOrder16RealMajorant, one_div]
 
+theorem omegaPrimeOrder16RealMajorant_nonneg (n : Nat) :
+    0 <= omegaPrimeOrder16RealMajorant n := by
+  unfold omegaPrimeOrder16RealMajorant
+  positivity
+
+theorem omegaPrimeOrder16RealMajorant_antitone
+    {m n : Nat} (_hm : 0 < m) (hmn : m <= n) :
+    omegaPrimeOrder16RealMajorant n <=
+      omegaPrimeOrder16RealMajorant m := by
+  have hmn' : (m : Real) + (1 / 4 : Real) <= (n : Real) + (1 / 4 : Real) := by
+    have hmnR : (m : Real) <= (n : Real) := by
+      exact_mod_cast hmn
+    linarith
+  have hpos : 0 < (m : Real) + (1 / 4 : Real) := by
+    have hm0 : 0 <= (m : Real) := Nat.cast_nonneg m
+    linarith
+  have hpow :
+      ((m : Real) + (1 / 4 : Real)) ^ 18 <=
+        ((n : Real) + (1 / 4 : Real)) ^ 18 := by
+    exact pow_le_pow_left₀ (le_of_lt hpos) hmn' _
+  exact inv_anti₀ (pow_pos hpos 18) hpow
+
+def omegaPrimeOrder16CondensedMajorant (k : Nat) : Real :=
+  (2 ^ k : Real) * omegaPrimeOrder16RealMajorant (2 ^ k)
+
+theorem omegaPrimeOrder16CondensedMajorant_nonneg (k : Nat) :
+    0 <= omegaPrimeOrder16CondensedMajorant k := by
+  unfold omegaPrimeOrder16CondensedMajorant
+  exact mul_nonneg (by positivity)
+    (omegaPrimeOrder16RealMajorant_nonneg _)
+
+theorem omegaPrimeOrder16CondensedMajorant_le_geom (k : Nat) :
+    omegaPrimeOrder16CondensedMajorant k <=
+      (1 / (2 ^ 17 : Real)) ^ k := by
+  have hpowBase : 0 < (2 ^ k : Real) := by
+    positivity
+  have hbaseLe :
+      (2 ^ k : Real) <= (2 ^ k : Real) + (1 / 4 : Real) := by
+    norm_num
+  have hpow :
+      (2 ^ k : Real) ^ 18 <=
+        ((2 ^ k : Real) + (1 / 4 : Real)) ^ 18 := by
+    exact pow_le_pow_left₀ (le_of_lt hpowBase) hbaseLe _
+  have hinv :
+      omegaPrimeOrder16RealMajorant (2 ^ k) <=
+        1 / (2 ^ k : Real) ^ 18 := by
+    have h := inv_anti₀ (pow_pos hpowBase 18) hpow
+    simpa [omegaPrimeOrder16RealMajorant, one_div] using h
+  calc
+    omegaPrimeOrder16CondensedMajorant k
+        <= (2 ^ k : Real) * (1 / (2 ^ k : Real) ^ 18) := by
+          exact mul_le_mul_of_nonneg_left hinv (by positivity)
+    _ = 1 / (2 ^ k : Real) ^ 17 := by
+          field_simp [pow_succ, hpowBase.ne']
+    _ = 1 / (2 ^ 17 : Real) ^ k := by
+          have hpowEq : (2 ^ k : Real) ^ 17 = (2 ^ 17 : Real) ^ k := by
+            calc
+              (2 ^ k : Real) ^ 17 = (2 : Real) ^ (k * 17) := by
+                simp [pow_mul]
+              _ = (2 : Real) ^ (17 * k) := by
+                simp [mul_comm]
+              _ = (2 ^ 17 : Real) ^ k := by
+                simp [pow_mul]
+          simp [hpowEq]
+    _ = (1 / (2 ^ 17 : Real)) ^ k := by
+          simp
+
+theorem omegaPrimeOrder16CondensedMajorant_summable :
+    Summable omegaPrimeOrder16CondensedMajorant := by
+  have hgeom :
+      Summable (fun k : Nat => (1 / (2 ^ 17 : Real)) ^ k) := by
+    exact summable_geometric_of_lt_one (by positivity) (by norm_num)
+  refine Summable.of_nonneg_of_le ?_ ?_ hgeom
+  · intro k
+    exact omegaPrimeOrder16CondensedMajorant_nonneg k
+  · intro k
+    exact omegaPrimeOrder16CondensedMajorant_le_geom k
+
+theorem omegaPrimeOrder16CondensedMajorant_tsum_le :
+    (∑' k : Nat, omegaPrimeOrder16CondensedMajorant k) <=
+      (1 - (1 / (2 ^ 17 : Real)))⁻¹ := by
+  have hgeom :
+      Summable (fun k : Nat => (1 / (2 ^ 17 : Real)) ^ k) := by
+    exact summable_geometric_of_lt_one (by positivity) (by norm_num)
+  have hle :
+      (∑' k : Nat, omegaPrimeOrder16CondensedMajorant k) <=
+        ∑' k : Nat, (1 / (2 ^ 17 : Real)) ^ k := by
+    exact Summable.tsum_le_tsum
+      (fun k => omegaPrimeOrder16CondensedMajorant_le_geom k)
+      omegaPrimeOrder16CondensedMajorant_summable hgeom
+  have hsum :
+      (∑' k : Nat, (1 / (2 ^ 17 : Real)) ^ k) =
+        (1 - (1 / (2 ^ 17 : Real)))⁻¹ :=
+    tsum_geometric_of_lt_one (by positivity) (by norm_num)
+  exact hle.trans_eq hsum
+
+/-- Cauchy-condensation upper bound for the concrete order-16 real majorant. -/
+theorem omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound :
+    (∑' n : Nat, omegaPrimeOrder16RealMajorant n) <=
+      omegaPrimeOrder16RealMajorant 0 +
+        (1 - (1 / (2 ^ 17 : Real)))⁻¹ := by
+  have hbound :
+      ∀ s : Finset Nat,
+        ∑ n ∈ s, omegaPrimeOrder16RealMajorant n <=
+          omegaPrimeOrder16RealMajorant 0 +
+            ∑' k : Nat, omegaPrimeOrder16CondensedMajorant k := by
+    intro s
+    classical
+    by_cases hs : s.Nonempty
+    · let N := s.max' hs
+      have hsubset : s ⊆ Finset.range (2 ^ (N + 1)) := by
+        intro n hn
+        have hle : n <= N := by
+          simpa [N] using Finset.le_max' s n hn
+        have hlt : n < N + 1 := Nat.lt_succ_of_le hle
+        have hpow : N + 1 <= 2 ^ (N + 1) :=
+          Nat.le_of_lt (Nat.lt_two_pow_self (n := N + 1))
+        exact Finset.mem_range.mpr (lt_of_lt_of_le hlt hpow)
+      have hsum_le :
+          (∑ n ∈ s, omegaPrimeOrder16RealMajorant n) <=
+            ∑ n ∈ Finset.range (2 ^ (N + 1)),
+              omegaPrimeOrder16RealMajorant n := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg hsubset ?_
+        intro n hn hnot
+        exact omegaPrimeOrder16RealMajorant_nonneg n
+      have hcond :
+          (∑ n ∈ Finset.range (2 ^ (N + 1)),
+              omegaPrimeOrder16RealMajorant n) <=
+            omegaPrimeOrder16RealMajorant 0 +
+              ∑ k ∈ Finset.range (N + 1),
+                (2 ^ k : Real) • omegaPrimeOrder16RealMajorant (2 ^ k) := by
+        simpa using (Finset.le_sum_condensed
+          (f := omegaPrimeOrder16RealMajorant)
+          (hf := by
+            intro m n hm hmn
+            exact omegaPrimeOrder16RealMajorant_antitone (m := m) (n := n)
+              hm hmn)
+          (n := N + 1))
+      have hsum_condensed :
+          (∑ k ∈ Finset.range (N + 1),
+              (2 ^ k : Real) • omegaPrimeOrder16RealMajorant (2 ^ k)) <=
+            ∑' k : Nat, omegaPrimeOrder16CondensedMajorant k := by
+        have hsum := (Summable.sum_le_tsum
+          (s := Finset.range (N + 1))
+          (f := omegaPrimeOrder16CondensedMajorant)
+          (hs := by
+            intro k hk
+            exact omegaPrimeOrder16CondensedMajorant_nonneg k)
+          (hf := omegaPrimeOrder16CondensedMajorant_summable))
+        simpa [omegaPrimeOrder16CondensedMajorant] using hsum
+      exact le_trans hsum_le (le_trans hcond (by
+        simpa [omegaPrimeOrder16CondensedMajorant] using
+          add_le_add_left hsum_condensed (omegaPrimeOrder16RealMajorant 0)))
+    · have hnonneg :
+          0 <= omegaPrimeOrder16RealMajorant 0 +
+            ∑' k : Nat, omegaPrimeOrder16CondensedMajorant k := by
+        exact add_nonneg (omegaPrimeOrder16RealMajorant_nonneg 0)
+          (tsum_nonneg (fun k => omegaPrimeOrder16CondensedMajorant_nonneg k))
+      simp [Finset.not_nonempty_iff_eq_empty.mp hs, hnonneg]
+  have htsum :
+      (∑' n : Nat, omegaPrimeOrder16RealMajorant n) <=
+        omegaPrimeOrder16RealMajorant 0 +
+          ∑' k : Nat, omegaPrimeOrder16CondensedMajorant k :=
+    omegaPrimeOrder16RealMajorant_summable.tsum_le_of_sum_le hbound
+  exact htsum.trans (by
+    simpa [add_comm, add_left_comm, add_assoc] using
+      add_le_add_left omegaPrimeOrder16CondensedMajorant_tsum_le
+        (omegaPrimeOrder16RealMajorant 0))
+
 /-- Convert a summable pointwise majorant for the order-16 series terms into
 the absolute `tsum` bound consumed by the OmegaPrime order-16 receiver. -/
 theorem omegaPrimeOrder16Series_abs_le_of_term_majorant
@@ -10474,6 +10643,46 @@ theorem Valid.of_order16_real_majorant_self_tsum_checked_smooth
   Valid.of_order16_real_majorant_tsum_checked_smooth data hCoeffErrorNonneg
     hCenterJet (∑' n : Nat, omegaPrimeOrder16RealMajorant n) le_rfl
     hFactorBudget hDerivEq hRemainderBudget
+
+/-- Checked-smooth `Valid` constructor using the explicit
+Cauchy-condensation/geometric upper bound for the concrete order-16 majorant.
+The remaining numeric obligation is the rational factor-budget comparison
+against this closed expression. -/
+theorem Valid.of_order16_condensed_majorant_bound_checked_smooth
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hFactorBudget :
+      omegaPrimeOrder16SeriesFactor *
+          (omegaPrimeOrder16RealMajorant 0 +
+            (1 - (1 / (2 ^ 17 : Real)))⁻¹) <=
+        (data.order16Abs : Real))
+    (hDerivEq :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        iteratedDeriv 16 omegaPrimeClosedForm eta =
+          -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta)
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid := by
+  refine Valid.of_order16_real_majorant_tsum_checked_smooth data
+    hCoeffErrorNonneg hCenterJet
+    (omegaPrimeOrder16RealMajorant 0 +
+      (1 - (1 / (2 ^ 17 : Real)))⁻¹)
+    omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound ?_ hDerivEq
+    hRemainderBudget
+  exact hFactorBudget
 
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}

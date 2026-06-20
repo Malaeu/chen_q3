@@ -31166,3 +31166,56 @@ rational/factor-budget bound for the concrete majorant `tsum`, no center-jet
 payload, no exact rational remainder budget, no generated Lean payload, no
 first-subchunk residual-derivative norm certificate, no A hbox, and no
 Step33A.1-A closure exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 condensed majorant bound
+
+Closed a rational upper-bound surface for the concrete order-16 majorant by
+Cauchy condensation and a geometric series comparison.
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_nonneg
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_antitone
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_nonneg
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_le_geom
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_tsum_le
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_condensed_majorant_bound_checked_smooth
+```
+
+Result:
+
+```text
+∑' n, omegaPrimeOrder16RealMajorant n
+  <= omegaPrimeOrder16RealMajorant 0 + (1 - 1 / 2^17)^-1
+```
+
+The remaining factor-budget check can now target this explicit rational
+expression instead of the abstract `tsum`, through a checked `data.Valid`
+constructor.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_CONDENSED_FACTOR_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
+numeric data.order16Abs factor-budget payload against the condensed rational
+bound, no center-jet payload, no exact rational remainder budget, no generated
+Lean payload, no first-subchunk residual-derivative norm certificate, no A
+hbox, and no Step33A.1-A closure exists yet.

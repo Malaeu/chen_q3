@@ -59638,6 +59638,68 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 condensed majorant bound
+
+Added a checked Cauchy-condensation/geometric upper-bound surface for the
+concrete order-16 real majorant in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_nonneg
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_antitone
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_nonneg
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_le_geom
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedMajorant_tsum_le
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_condensed_majorant_bound_checked_smooth
+```
+
+The checked bound is:
+
+```text
+∑' n, omegaPrimeOrder16RealMajorant n
+  <= omegaPrimeOrder16RealMajorant 0 + (1 - 1 / 2^17)^-1
+```
+
+This means the remaining order-16 numeric payload can use the explicit
+same-unit factor-budget inequality:
+
+```text
+omegaPrimeOrder16SeriesFactor *
+  (omegaPrimeOrder16RealMajorant 0 + (1 - 1 / 2^17)^-1)
+  <= data.order16Abs
+```
+
+plus the still-open `hDerivEq`, center-jet, and remainder-budget obligations.
+The final constructor consumes exactly this factor-budget shape.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_CONDENSED_FACTOR_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
+Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 self-tsum budget receiver
 
 Added checked summability and a self-budget receiver for the concrete order-16

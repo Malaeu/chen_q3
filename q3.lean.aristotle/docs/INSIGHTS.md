@@ -36855,3 +36855,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_FACTOR_BUDGET_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16CondensedMajorantBound
+
+- Added and Lean-checked a Cauchy-condensation/geometric upper bound for
+  `omegaPrimeOrder16RealMajorant`.
+- New checked symbols:
+  `omegaPrimeOrder16RealMajorant_nonneg`,
+  `omegaPrimeOrder16RealMajorant_antitone`,
+  `omegaPrimeOrder16CondensedMajorant`,
+  `omegaPrimeOrder16CondensedMajorant_nonneg`,
+  `omegaPrimeOrder16CondensedMajorant_le_geom`,
+  `omegaPrimeOrder16CondensedMajorant_summable`,
+  `omegaPrimeOrder16CondensedMajorant_tsum_le`, and
+  `omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound`.
+- Added
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_condensed_majorant_bound_checked_smooth`,
+  which consumes the explicit condensed-bound factor-budget shape directly.
+- The checked bound is
+  `∑' n, omegaPrimeOrder16RealMajorant n <= omegaPrimeOrder16RealMajorant 0 + (1 - 1 / 2^17)^-1`.
+- The order-16 budget is now reduced to a rational factor comparison against
+  this explicit expression, plus the independent `hDerivEq`, center-jet, and
+  remainder-budget obligations.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_CONDENSED_FACTOR_BUDGET_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
