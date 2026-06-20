@@ -1982,6 +1982,61 @@ theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp :
     ring
   · exact (hDerivΩDiff.mul hSDiff0).add (hΩDiff0.mul hDerivSDiff)
 
+/-- The removable sinc factor has zero first derivative at the origin. -/
+theorem deriv_realSinc_zero :
+    deriv realSinc (0 : Real) = 0 := by
+  have hmax : IsLocalMax realSinc (0 : Real) := by
+    refine Filter.univ_mem' ?_
+    intro x
+    calc
+      realSinc x <= |realSinc x| := le_abs_self _
+      _ <= 1 := realSinc_abs_le_one x
+      _ = realSinc 0 := by simp
+  exact hmax.deriv_eq_zero
+
+/-- The active primary shape factor has zero first derivative at the
+first-subchunk anchor. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero :
+    deriv
+        (fun t : Real =>
+          centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) t)
+        (0 : Real) =
+      0 := by
+  rw [centeredBSplineImagTransformRealClosedForm_deriv_eq_closedForm]
+  unfold centeredBSplineImagTransformRealClosedFormDerivClosedForm
+  have harg : (3 / 10 : Real) * 0 / (2 * bsplineScale 11) = 0 := by
+    ring
+  rw [harg]
+  rw [deriv_realSinc_zero]
+  ring
+
+/-- The squared active primary shape factor has zero first derivative at the
+first-subchunk anchor.  This removes the mixed term in the raw
+second-derivative product split. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero :
+    deriv
+        (fun eta : Real =>
+          (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta) ^ 2)
+        (0 : Real) =
+      0 := by
+  rw [deriv_centeredBSplineImagTransformRealClosedForm_sq]
+  rw [primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero]
+  ring
+
+/-- The active Omega weight is nonpositive at the first-subchunk anchor. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos :
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+        (0 : Real) <=
+      0 := by
+  rw [Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_eq_neg_inv_twoPi_aStar]
+  have ha :
+      0 <
+        Q3.a_star ((0 : Real) / (2 * Real.pi)) := by
+    simpa using Q3.a_star_pos
+  have hcoeff_pos : 0 < (2 * Real.pi)⁻¹ := by
+    exact inv_pos.mpr (mul_pos (by norm_num) Real.pi_pos)
+  nlinarith
+
 /-- Same-point residual/raw-polynomial second-derivative crosswalk at the
 first-subchunk anchor, with the raw differentiability bridge discharged. -/
 theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero :

@@ -194,6 +194,39 @@ Boundary: this does not prove `raw_integrand''(0) >= 0`.  It only exposes the
 remaining exact sign lemmas that would imply the raw nonnegativity input for
 the existing budget-fail receiver.
 
+## Execution Update (2026-06-20) -- first raw sign factors closed
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk raw-integrand sign lane.
+
+Lean theorem support added:
+
+```lean
+deriv_realSinc_zero
+primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos
+```
+
+Proof-grade result: Lean proves `deriv S 0 = 0` for the active shape-square
+factor and proves `step22OmegaArchWeight 0 <= 0`.
+
+Closed local targets:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_AT_ZERO_ZERO
+STEP33_A1_SUB0_OMEGA_AT_ZERO_NONPOS
+```
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_REMAINING_FACTOR_SIGNS_GAP
+```
+
+Boundary: this is still not a proof of `raw_integrand''(0) >= 0`.  The
+remaining factor signs are the Omega second-derivative nonnegativity and the
+shape-square second-derivative nonpositivity at `0`.
+
 Compile result: pass.
 
 Next missing payload:

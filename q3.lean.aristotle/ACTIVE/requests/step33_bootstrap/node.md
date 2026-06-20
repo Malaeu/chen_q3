@@ -17046,3 +17046,39 @@ step22OmegaArchWeight 0 <= 0
 ```
 
 Boundary: this is not a raw-nonnegativity proof and not a Step33A.1-A closure.
+
+## 2026-06-20 Current EOF Addendum -- first raw sign factors closed
+
+Lean now proves:
+
+```text
+deriv_realSinc_zero
+primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos
+```
+
+Closed local targets:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_AT_ZERO_ZERO
+STEP33_A1_SUB0_OMEGA_AT_ZERO_NONPOS
+```
+
+Meaning: the raw second-derivative split now has a zero mixed term, and the
+anchor Omega factor has the required nonpositive sign.
+
+New first live blocker:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_REMAINING_FACTOR_SIGNS_GAP
+```
+
+Remaining exact targets:
+
+```text
+0 <= deriv (fun t => deriv step22OmegaArchWeight t) 0
+deriv (fun t => deriv S t) 0 <= 0
+```
+
+Boundary: no raw nonnegativity theorem yet.

@@ -36186,3 +36186,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `deriv (fun t => deriv S t) 0 <= 0`, and
   `step22OmegaArchWeight 0 <= 0`.
 - Boundary: no raw nonnegativity theorem yet, no Step33A.1-A closure yet.
+
+## Insight (2026-06-20, Step33A.1-A) -- FirstRawSignFactorsClosed
+
+- Added Lean theorem `deriv_realSinc_zero`, using `realSinc_abs_le_one` and
+  the local maximum at zero.
+- Added Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero`.
+- Added Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero`.
+- Added Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos`,
+  using `step22OmegaArchWeight_eq_neg_inv_twoPi_aStar` and `Q3.a_star_pos`.
+- Closed local targets:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_AT_ZERO_ZERO` and
+  `STEP33_A1_SUB0_OMEGA_AT_ZERO_NONPOS`.
+- Current first live gap:
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_REMAINING_FACTOR_SIGNS_GAP`.
+- Remaining exact factor signs:
+  `0 <= deriv (fun t => deriv step22OmegaArchWeight t) 0` and
+  `deriv (fun t => deriv S t) 0 <= 0`.
+- Boundary: this removes the mixed term and fixes the Omega anchor sign, but
+  does not prove raw second-derivative nonnegativity.

@@ -30023,3 +30023,44 @@ step22OmegaArchWeight 0 <= 0
 
 Boundary: no Step33A.1-A closure yet.  The split is only the bridge that makes
 the remaining sign lemmas local and nameable.
+
+## 2026-06-20 Current EOF Addendum -- first raw sign factors closed
+
+Lean now proves the two cheapest local sign/zero facts exposed by the raw
+second-derivative split.
+
+New Lean theorems:
+
+```text
+deriv_realSinc_zero
+primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos
+```
+
+Closed local targets:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_AT_ZERO_ZERO
+STEP33_A1_SUB0_OMEGA_AT_ZERO_NONPOS
+```
+
+Effect on the product split: the mixed term
+`2 * deriv Omega 0 * deriv S 0` is now zero, and the Omega factor at the anchor
+has the sign needed for the future `Omega 0 * S''(0)` term.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_REMAINING_FACTOR_SIGNS_GAP
+```
+
+Remaining proof-grade sign targets:
+
+```text
+0 <= deriv (fun t => deriv step22OmegaArchWeight t) 0
+deriv (fun t => deriv S t) 0 <= 0
+```
+
+Boundary: this still does not prove `raw_integrand''(0) >= 0`; it only removes
+the mixed term and fixes the anchor Omega sign.
