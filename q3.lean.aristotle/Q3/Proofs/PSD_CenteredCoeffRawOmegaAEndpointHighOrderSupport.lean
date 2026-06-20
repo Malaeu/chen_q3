@@ -164,6 +164,16 @@ theorem step33Shift16DigammaPoint_norm_eq_sqrt :
       Real.sqrt ((1664101 : Real) / (1600 : Real)) := by
   rw [Complex.norm_def, step33Shift16DigammaPoint_normSq_eq]
 
+theorem step33Shift16DigammaPoint_add_one_normSq_eq :
+    Complex.normSq (step33Shift16DigammaPoint + 1) =
+      (1768901 : Real) / (1600 : Real) := by
+  norm_num [step33Shift16DigammaPoint, Complex.normSq_apply]
+
+theorem step33Shift16DigammaPoint_add_one_norm_eq_sqrt :
+    ‖step33Shift16DigammaPoint + 1‖ =
+      Real.sqrt ((1768901 : Real) / (1600 : Real)) := by
+  rw [Complex.norm_def, step33Shift16DigammaPoint_add_one_normSq_eq]
+
 theorem step33Shift16DigammaPoint_norm_ge_32 :
     (32 : Real) <= ‖step33Shift16DigammaPoint‖ := by
   rw [step33Shift16DigammaPoint_norm_eq_sqrt]
@@ -327,6 +337,9 @@ theorem step33Shift16DigammaLogRe_abs :
 private def step33Shift16DigammaArgRatio : Real :=
   (1 : Real) / (1290 : Real)
 
+private def step33Shift16DigammaPointAddOneArgRatio : Real :=
+  (1 : Real) / (1330 : Real)
+
 private theorem step33Shift16DigammaArg_eq_arctan :
     Complex.arg step33Shift16DigammaPoint =
       Real.arctan step33Shift16DigammaArgRatio := by
@@ -347,6 +360,31 @@ private theorem step33Shift16DigammaArg_eq_arctan :
     Real.arctan_eq_of_tan_eq
       (x := Complex.arg step33Shift16DigammaPoint)
       (y := step33Shift16DigammaArgRatio)
+      (by rw [htan, hratio]) hmem
+  exact h.symm
+
+private theorem step33Shift16DigammaPoint_add_one_arg_eq_arctan :
+    Complex.arg (step33Shift16DigammaPoint + 1) =
+      Real.arctan step33Shift16DigammaPointAddOneArgRatio := by
+  have hre : 0 < (step33Shift16DigammaPoint + 1).re := by
+    norm_num [step33Shift16DigammaPoint]
+  have hmem :
+      Complex.arg (step33Shift16DigammaPoint + 1) ∈
+        Set.Ioo (-(Real.pi / 2)) (Real.pi / 2) := by
+    constructor
+    · exact (Complex.neg_pi_div_two_lt_arg_iff).2 (Or.inl hre)
+    · exact (Complex.arg_lt_pi_div_two_iff).2 (Or.inl hre)
+  have htan := Complex.tan_arg (step33Shift16DigammaPoint + 1)
+  have hratio :
+      (step33Shift16DigammaPoint + 1).im /
+          (step33Shift16DigammaPoint + 1).re =
+        step33Shift16DigammaPointAddOneArgRatio := by
+    norm_num [step33Shift16DigammaPoint,
+      step33Shift16DigammaPointAddOneArgRatio]
+  have h :=
+    Real.arctan_eq_of_tan_eq
+      (x := Complex.arg (step33Shift16DigammaPoint + 1))
+      (y := step33Shift16DigammaPointAddOneArgRatio)
       (by rw [htan, hratio]) hmem
   exact h.symm
 
@@ -444,6 +482,103 @@ private theorem step33Shift16DigammaArctan_error_bound :
         (((2 * n + 1 : Nat) : Real)))
     step33Shift16DigammaArctanTerm_antitone
     step33Shift16DigammaArctanTerm_summable 9
+  rw [hsum] at herr
+  simpa using herr
+
+private theorem step33Shift16DigammaAddOneArctanTerm_antitone :
+    Antitone (fun n : Nat =>
+      step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) /
+        (((2 * n + 1 : Nat) : Real))) := by
+  intro m n hmn
+  have hx0 : 0 <= step33Shift16DigammaPointAddOneArgRatio := by
+    norm_num [step33Shift16DigammaPointAddOneArgRatio]
+  have hx1 : step33Shift16DigammaPointAddOneArgRatio <= 1 := by
+    norm_num [step33Shift16DigammaPointAddOneArgRatio]
+  have hpow :
+      step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) <=
+        step33Shift16DigammaPointAddOneArgRatio ^ (2 * m + 1) := by
+    exact pow_le_pow_of_le_one hx0 hx1
+      (by omega : 2 * m + 1 <= 2 * n + 1)
+  have hden0n : 0 < (((2 * n + 1 : Nat) : Real)) := by
+    positivity
+  have hden0m : 0 < (((2 * m + 1 : Nat) : Real)) := by
+    positivity
+  have hden :
+      (((2 * m + 1 : Nat) : Real)) <=
+        (((2 * n + 1 : Nat) : Real)) := by
+    exact_mod_cast (by omega : 2 * m + 1 <= 2 * n + 1)
+  calc
+    step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) /
+        (((2 * n + 1 : Nat) : Real))
+        <= step33Shift16DigammaPointAddOneArgRatio ^ (2 * m + 1) /
+          (((2 * n + 1 : Nat) : Real)) := by
+      exact div_le_div_of_nonneg_right hpow hden0n.le
+    _ <= step33Shift16DigammaPointAddOneArgRatio ^ (2 * m + 1) /
+        (((2 * m + 1 : Nat) : Real)) := by
+      exact div_le_div_of_nonneg_left (pow_nonneg hx0 _) hden0m hden
+
+private theorem step33Shift16DigammaAddOneArctanTerm_summable :
+    Summable (fun n : Nat =>
+      step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) /
+        (((2 * n + 1 : Nat) : Real))) := by
+  have hgeom :
+      Summable (fun n : Nat =>
+        step33Shift16DigammaPointAddOneArgRatio *
+          (step33Shift16DigammaPointAddOneArgRatio ^ 2) ^ n) := by
+    exact Summable.mul_left step33Shift16DigammaPointAddOneArgRatio
+      (summable_geometric_of_lt_one
+        (by positivity)
+        (by norm_num [step33Shift16DigammaPointAddOneArgRatio]))
+  refine hgeom.of_nonneg_of_le (fun n => ?_) (fun n => ?_)
+  · have hx0 : 0 <= step33Shift16DigammaPointAddOneArgRatio := by
+      norm_num [step33Shift16DigammaPointAddOneArgRatio]
+    exact div_nonneg (pow_nonneg hx0 _) (by positivity)
+  · have hx0 : 0 <= step33Shift16DigammaPointAddOneArgRatio := by
+      norm_num [step33Shift16DigammaPointAddOneArgRatio]
+    have hden1 : (1 : Real) <= (((2 * n + 1 : Nat) : Real)) := by
+      exact_mod_cast (by omega : 1 <= 2 * n + 1)
+    have hpow_nonneg :
+        0 <= step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) :=
+      pow_nonneg hx0 _
+    have hdiv :
+        step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) /
+            (((2 * n + 1 : Nat) : Real)) <=
+          step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) / 1 := by
+      exact div_le_div_of_nonneg_left hpow_nonneg (by norm_num) hden1
+    have hpoweq :
+        step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) / 1 =
+          step33Shift16DigammaPointAddOneArgRatio *
+            (step33Shift16DigammaPointAddOneArgRatio ^ 2) ^ n := by
+      field_simp
+      ring_nf
+    exact hdiv.trans_eq hpoweq
+
+private theorem step33Shift16DigammaAddOneArctan_error_bound :
+    |Real.arctan step33Shift16DigammaPointAddOneArgRatio -
+        (∑ i ∈ Finset.range 9,
+          (-1 : Real) ^ i *
+            (step33Shift16DigammaPointAddOneArgRatio ^ (2 * i + 1) /
+              (((2 * i + 1 : Nat) : Real))))| <=
+      step33Shift16DigammaPointAddOneArgRatio ^ (2 * 9 + 1) /
+        (((2 * 9 + 1 : Nat) : Real)) := by
+  have hsum0 :=
+    (Real.hasSum_arctan
+      (x := step33Shift16DigammaPointAddOneArgRatio)
+      (by norm_num [step33Shift16DigammaPointAddOneArgRatio])).tsum_eq
+  have hsum :
+      (∑' i : Nat,
+          (-1 : Real) ^ i *
+            (step33Shift16DigammaPointAddOneArgRatio ^ (2 * i + 1) /
+              (((2 * i + 1 : Nat) : Real)))) =
+        Real.arctan step33Shift16DigammaPointAddOneArgRatio := by
+    convert hsum0 using 1
+    ring_nf
+  have herr := alternating_series_error_bound
+    (fun n : Nat =>
+      step33Shift16DigammaPointAddOneArgRatio ^ (2 * n + 1) /
+        (((2 * n + 1 : Nat) : Real)))
+    step33Shift16DigammaAddOneArctanTerm_antitone
+    step33Shift16DigammaAddOneArctanTerm_summable 9
   rw [hsum] at herr
   simpa using herr
 
@@ -667,6 +802,159 @@ private def step33Shift16M6StepDefectN0LogImUpper : Real :=
   (-233140856085953858876761496504 : Real) /
     (10000000000000000000000000000000000 : Real)
 
+theorem step33Shift16M6StepDefectN0LogStep_re_eq_half_log_ratio :
+    step33Shift16M6StepDefectN0LogStep.re =
+      (1 / (2 : Real)) *
+        Real.log ((1768901 : Real) / (1664101 : Real)) := by
+  rw [step33Shift16M6StepDefectN0LogStep]
+  simp [Complex.log_re, step33Shift16DigammaPoint_add_one_norm_eq_sqrt,
+    step33Shift16DigammaPoint_norm_eq_sqrt]
+  have h176 : (0 : Real) <= 1768901 := by
+    norm_num
+  have h166 : (0 : Real) <= 1664101 := by
+    norm_num
+  have hs1600_ne : Real.sqrt (1600 : Real) ≠ 0 := by
+    positivity
+  have hs176_ne : Real.sqrt (1768901 : Real) ≠ 0 := by
+    positivity
+  have hs166_ne : Real.sqrt (1664101 : Real) ≠ 0 := by
+    positivity
+  rw [Real.log_div hs176_ne hs1600_ne,
+    Real.log_div hs166_ne hs1600_ne]
+  rw [Real.log_sqrt h176, Real.log_sqrt h166]
+  have hratio :
+      Real.log ((1768901 : Real) / (1664101 : Real)) =
+        Real.log (1768901 : Real) - Real.log (1664101 : Real) := by
+    exact Real.log_div (by norm_num) (by norm_num)
+  rw [hratio]
+  ring
+
+theorem step33Shift16M6StepDefectN0LogStep_re_bounds :
+    step33Shift16M6StepDefectN0LogReLower <=
+        step33Shift16M6StepDefectN0LogStep.re ∧
+      step33Shift16M6StepDefectN0LogStep.re <=
+        step33Shift16M6StepDefectN0LogReUpper := by
+  let a : Real := (104800 : Real) / (1664101 : Real)
+  let S : Real :=
+    ∑ i ∈ Finset.range 26, (-a) ^ (i + 1) /
+      (((i + 1 : Nat) : Real))
+  let E : Real := |(-a)| ^ (26 + 1) / (1 - |(-a)|)
+  have ha_abs : |(-a)| < 1 := by
+    norm_num [a]
+  have hlogBound := Real.abs_log_sub_add_sum_range_le (x := -a) ha_abs 26
+  have hlogBound' : |S + Real.log (1 + a)| <= E := by
+    simpa [S, E, sub_eq_add_neg] using hlogBound
+  have hlog_ge : -S - E <= Real.log (1 + a) := by
+    have h := (abs_le.mp hlogBound').1
+    linarith
+  have hlog_le : Real.log (1 + a) <= -S + E := by
+    have h := (abs_le.mp hlogBound').2
+    linarith
+  have hratio : ((1768901 : Real) / (1664101 : Real)) = 1 + a := by
+    norm_num [a]
+  have hRe := step33Shift16M6StepDefectN0LogStep_re_eq_half_log_ratio
+  rw [hratio] at hRe
+  constructor
+  · rw [hRe]
+    have hApprox :
+        2 * step33Shift16M6StepDefectN0LogReLower <= -S - E := by
+      norm_num [step33Shift16M6StepDefectN0LogReLower, S, E, a]
+    have h2 : 2 * step33Shift16M6StepDefectN0LogReLower <=
+        Real.log (1 + a) := hApprox.trans hlog_ge
+    calc
+      step33Shift16M6StepDefectN0LogReLower =
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN0LogReLower) := by
+        ring
+      _ <= (1 / (2 : Real)) * Real.log (1 + a) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+  · rw [hRe]
+    have hApprox : -S + E <=
+        2 * step33Shift16M6StepDefectN0LogReUpper := by
+      norm_num [step33Shift16M6StepDefectN0LogReUpper, S, E, a]
+    have h2 : Real.log (1 + a) <=
+        2 * step33Shift16M6StepDefectN0LogReUpper := hlog_le.trans hApprox
+    calc
+      (1 / (2 : Real)) * Real.log (1 + a) <=
+          (1 / (2 : Real)) *
+            (2 * step33Shift16M6StepDefectN0LogReUpper) := by
+        exact mul_le_mul_of_nonneg_left h2 (by norm_num)
+      _ = step33Shift16M6StepDefectN0LogReUpper := by
+        ring
+
+theorem step33Shift16M6StepDefectN0LogStep_im_eq_arg_sub :
+    step33Shift16M6StepDefectN0LogStep.im =
+      Complex.arg (step33Shift16DigammaPoint + 1) -
+        Complex.arg step33Shift16DigammaPoint := by
+  rw [step33Shift16M6StepDefectN0LogStep]
+  simp [Complex.log_im]
+
+theorem step33Shift16M6StepDefectN0LogStep_im_bounds :
+    step33Shift16M6StepDefectN0LogImLower <=
+        step33Shift16M6StepDefectN0LogStep.im ∧
+      step33Shift16M6StepDefectN0LogStep.im <=
+        step33Shift16M6StepDefectN0LogImUpper := by
+  let S0 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (step33Shift16DigammaArgRatio ^ (2 * i + 1) /
+          (((2 * i + 1 : Nat) : Real)))
+  let E0 : Real :=
+    step33Shift16DigammaArgRatio ^ (2 * 9 + 1) /
+      (((2 * 9 + 1 : Nat) : Real))
+  let S1 : Real :=
+    ∑ i ∈ Finset.range 9,
+      (-1 : Real) ^ i *
+        (step33Shift16DigammaPointAddOneArgRatio ^ (2 * i + 1) /
+          (((2 * i + 1 : Nat) : Real)))
+  let E1 : Real :=
+    step33Shift16DigammaPointAddOneArgRatio ^ (2 * 9 + 1) /
+      (((2 * 9 + 1 : Nat) : Real))
+  have h0 := step33Shift16DigammaArctan_error_bound
+  have h1 := step33Shift16DigammaAddOneArctan_error_bound
+  have h0Lower : S0 - E0 <= Real.arctan step33Shift16DigammaArgRatio := by
+    have h := (abs_le.mp h0).1
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h0Upper : Real.arctan step33Shift16DigammaArgRatio <= S0 + E0 := by
+    have h := (abs_le.mp h0).2
+    dsimp [S0, E0] at h ⊢
+    linarith
+  have h1Lower :
+      S1 - E1 <= Real.arctan step33Shift16DigammaPointAddOneArgRatio := by
+    have h := (abs_le.mp h1).1
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have h1Upper :
+      Real.arctan step33Shift16DigammaPointAddOneArgRatio <= S1 + E1 := by
+    have h := (abs_le.mp h1).2
+    dsimp [S1, E1] at h ⊢
+    linarith
+  have hIm :
+      step33Shift16M6StepDefectN0LogStep.im =
+        Real.arctan step33Shift16DigammaPointAddOneArgRatio -
+          Real.arctan step33Shift16DigammaArgRatio := by
+    rw [step33Shift16M6StepDefectN0LogStep_im_eq_arg_sub,
+      step33Shift16DigammaPoint_add_one_arg_eq_arctan,
+      step33Shift16DigammaArg_eq_arctan]
+  constructor
+  · rw [hIm]
+    have hApprox :
+        step33Shift16M6StepDefectN0LogImLower <=
+          (S1 - E1) - (S0 + E0) := by
+      norm_num [step33Shift16M6StepDefectN0LogImLower, S0, E0, S1, E1,
+        step33Shift16DigammaArgRatio,
+        step33Shift16DigammaPointAddOneArgRatio]
+    linarith
+  · rw [hIm]
+    have hApprox :
+        (S1 + E1) - (S0 - E0) <=
+          step33Shift16M6StepDefectN0LogImUpper := by
+      norm_num [step33Shift16M6StepDefectN0LogImUpper, S0, E0, S1, E1,
+        step33Shift16DigammaArgRatio,
+        step33Shift16DigammaPointAddOneArgRatio]
+    linarith
+
 theorem step33Shift16M6StepDefectN0_eq_logStep_add_algebraicPart :
     Q3.digammaM6StepDefect step33Shift16DigammaPoint =
       step33Shift16M6StepDefectN0LogStep +
@@ -760,6 +1048,21 @@ theorem step33_shift16_m6_step_defect_n0_component_interval_of_log_step_bounds
     · rw [hImEq, step33Shift16M6StepDefectN0AlgebraicPart_im_eq]
       norm_num [step33Shift16M6StepDefectN0LogImUpper] at hLogImUpper ⊢
       linarith [hLogImUpper]
+
+theorem step33_shift16_m6_step_defect_n0_component_interval :
+    (((-219 : Real) / ((10 : Real) ^ 25) <=
+        (Q3.digammaM6StepDefect step33Shift16DigammaPoint).re ∧
+      (Q3.digammaM6StepDefect step33Shift16DigammaPoint).re <=
+        (-218 : Real) / ((10 : Real) ^ 25)) ∧
+     ((250 : Real) / ((10 : Real) ^ 27) <=
+        (Q3.digammaM6StepDefect step33Shift16DigammaPoint).im ∧
+      (Q3.digammaM6StepDefect step33Shift16DigammaPoint).im <=
+        (251 : Real) / ((10 : Real) ^ 27))) := by
+  exact step33_shift16_m6_step_defect_n0_component_interval_of_log_step_bounds
+    step33Shift16M6StepDefectN0LogStep_re_bounds.1
+    step33Shift16M6StepDefectN0LogStep_re_bounds.2
+    step33Shift16M6StepDefectN0LogStep_im_bounds.1
+    step33Shift16M6StepDefectN0LogStep_im_bounds.2
 
 theorem step33_shift16_digamma_m6_main_norm_of_log_add_algebraicPart_bound
     (h :

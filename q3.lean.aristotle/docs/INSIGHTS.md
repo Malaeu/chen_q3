@@ -33640,3 +33640,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_M6_DEFECT_N0_LOG_STEP_RECTANGLE_GAP`.  The next proof-producing
   patch should prove the four log-step bounds by a real log1p/rational-series
   certificate plus arctan-series bounds for the argument difference.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN0IntervalClosed
+
+- Closed the previous `STEP33_M6_DEFECT_N0_LOG_STEP_RECTANGLE_GAP` in Lean.
+  The four log-step assumptions are now proved locally: the real part uses
+  `Real.abs_log_sub_add_sum_range_le` on
+  `log(1 + 104800/1664101)`, and the imaginary part uses two arctan
+  alternating-series certificates for ratios `1/1330` and `1/1290`.
+- Added checked names
+  `step33Shift16M6StepDefectN0LogStep_re_bounds`,
+  `step33Shift16M6StepDefectN0LogStep_im_bounds`, and the no-premise theorem
+  `step33_shift16_m6_step_defect_n0_component_interval`.
+- The no-premise theorem proves the Proshka interval
+  `[-219,-218]/10^25` for the real part and `[250,251]/10^27` for the
+  imaginary part of
+  `Q3.digammaM6StepDefect step33Shift16DigammaPoint`.
+- Validation passed with `lake env lean`, `bash scripts/q3_check.sh`,
+  forbidden-marker scan, `git diff --check`, and
+  `lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport`.
+- Boundary: this closes only the first finite-telescope defect term at `n=0`.
+  The missing proof object remains a no-premise
+  `Step33Shift16M6FiniteTelescopeTermPayload`, now under blocker
+  `STEP33_M6_FINITE_TELESCOPE_TERM_PAYLOAD_GAP`.

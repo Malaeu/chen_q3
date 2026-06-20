@@ -52859,3 +52859,73 @@ Next proof object:
   preferably by splitting real part into a log1p/rational-series certificate
   and imaginary part into two arctan-series certificates.
 ```
+
+## 2026-06-20 Execution update -- n=0 M6 step-defect interval closed
+
+Closed the previous `STEP33_M6_DEFECT_N0_LOG_STEP_RECTANGLE_GAP` locally in
+Lean.  The log-step rectangle is no longer an assumption: the real part is
+proved by a `log1p` rational-series certificate, and the imaginary part is
+proved by arctan-series certificates for the two half-plane arguments.
+
+New checked support names:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_one_normSq_eq
+Q3.PSDpd.Step33.step33Shift16DigammaPoint_add_one_norm_eq_sqrt
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0LogStep_re_eq_half_log_ratio
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0LogStep_re_bounds
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0LogStep_im_eq_arg_sub
+Q3.PSDpd.Step33.step33Shift16M6StepDefectN0LogStep_im_bounds
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n0_component_interval
+```
+
+The final theorem is now no-premise and proves:
+
+```lean
+(((-219 : Real) / ((10 : Real) ^ 25) <=
+    (Q3.digammaM6StepDefect step33Shift16DigammaPoint).re ∧
+  (Q3.digammaM6StepDefect step33Shift16DigammaPoint).re <=
+    (-218 : Real) / ((10 : Real) ^ 25)) ∧
+ ((250 : Real) / ((10 : Real) ^ 27) <=
+    (Q3.digammaM6StepDefect step33Shift16DigammaPoint).im ∧
+  (Q3.digammaM6StepDefect step33Shift16DigammaPoint).im <=
+    (251 : Real) / ((10 : Real) ^ 27)))
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes only the first finite-telescope defect term at n=0.
+It still does not produce:
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+
+Current exact source gap:
+  STEP33_M6_FINITE_TELESCOPE_TERM_PAYLOAD_GAP
+
+Next proof object:
+  extend the same proof-grade component-interval method from the closed n=0
+  defect term to the remaining finite-telescope terms, or introduce a checked
+  uniform term lemma that produces the missing payload directly.
+```
