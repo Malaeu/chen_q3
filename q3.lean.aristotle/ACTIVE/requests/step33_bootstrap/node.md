@@ -15259,3 +15259,77 @@ Boundary remains unchanged: this proves only the raw B12-to-B14 `Ioi` bridge.
 It does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Addendum -- B14 boundary cancellation checked
+
+Browser/Computer Use was used to ask the open Pro/Louise tab for the raw
+B12-to-B14 boundary-saturation fork.  Louise selected the exact cancellation
+route.  Local check corrected the theorem shape because this repo defines:
+
+```lean
+def bernoulli14Diff (x : R) : R := bernoulli14Fract x
+```
+
+The checked local theorem is therefore:
+
+```lean
+Q3.stieltjes_B12Diff_to_B14Diff_Ioi_cancelled
+```
+
+with shape:
+
+```lean
+int x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  (int x in Set.Ioi (0 : R),
+      (bernoulli14Diff x : C) / ((x : C) + z) ^ 15) -
+    (7 / 6 : C) *
+      int x in Set.Ioi (0 : R), (1 : C) / ((x : C) + z) ^ 15
+```
+
+It uses the newly checked constant-kernel integral:
+
+```lean
+Q3.integral_Ioi_inv_add_pow15_complex
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_BOUNDARY_CANCELLATION_BRIDGE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_SHIFTED_FIRST_OMITTED_NORM_GAP
+```
+
+Current next theorem remains the direct z0 source theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+The local subgoal has narrowed again: convert the cancelled expression into the
+single shifted B14/power-15 integral and prove its order-15 norm majorant in the
+receiver's exact budget.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary remains unchanged: this proves only the B14 boundary-cancellation
+bridge for the B12 `Ioi` source.  It does not prove the shifted B14 norm
+majorant, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

@@ -8169,6 +8169,146 @@ lemma tendsto_nat_add_complex_inv (z : ℂ) :
             ring
   exact (tendsto_congr' h_event_inv).2 hmul_inv
 
+lemma intervalIntegrable_inv_add_pow15_zero_nat
+    (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    IntervalIntegrable (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+      volume (0 : ℝ) (N : ℝ) := by
+  have hcont : ContinuousOn (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+      (Set.uIcc (0 : ℝ) (N : ℝ)) := by
+    intro x hx
+    have hle : (0 : ℝ) ≤ (N : ℝ) := by exact_mod_cast (Nat.cast_nonneg N)
+    have hx' : x ∈ Set.Icc (0 : ℝ) (N : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have hcont_add :
+        ContinuousAt (fun x : ℝ => (x : ℂ) + z) x := by
+      simpa using (Complex.continuous_ofReal.continuousAt.add continuous_const.continuousAt)
+    have hcont_pow :
+        ContinuousAt (fun x : ℝ => ((x : ℂ) + z) ^ 15) x := hcont_add.pow 15
+    have hne : ((x : ℂ) + z) ^ 15 ≠ 0 := pow_ne_zero 15 hneq
+    have hcont_inv :
+        ContinuousAt (fun x : ℝ => (((x : ℂ) + z) ^ 15)⁻¹) x :=
+      (ContinuousAt.inv₀ hcont_pow hne)
+    simpa [one_div, div_eq_mul_inv] using hcont_inv.continuousWithinAt
+  exact hcont.intervalIntegrable
+
+lemma intervalIntegral_inv_add_pow15_zero_nat
+    (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    ∫ x in (0 : ℝ)..(N : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15 =
+      (1 / 14 : ℂ) * ((z⁻¹) ^ 14 - ((((N : ℂ) + z)⁻¹) ^ 14)) := by
+  let f : ℝ → ℂ := fun x => (-(1 / 14 : ℂ)) * (((x : ℂ) + z)⁻¹) ^ 14
+  let f' : ℝ → ℂ := fun x => (1 : ℂ) / ((x : ℂ) + z) ^ 15
+  have hderiv : ∀ x ∈ Set.uIcc (0 : ℝ) (N : ℝ), HasDerivAt f (f' x) x := by
+    intro x hx
+    have hle : (0 : ℝ) ≤ (N : ℝ) := by exact_mod_cast (Nat.cast_nonneg N)
+    have hx' : x ∈ Set.Icc (0 : ℝ) (N : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have h_inv := hasDerivAt_inv_add z hneq
+    have h_pow := h_inv.pow 14
+    have h_scaled := h_pow.const_mul (-(1 / 14 : ℂ))
+    convert h_scaled using 1
+    simp [f', one_div, div_eq_mul_inv]
+    field_simp [hneq]
+  have hInt : IntervalIntegrable f' volume (0 : ℝ) (N : ℝ) := by
+    simpa [f'] using intervalIntegrable_inv_add_pow15_zero_nat z hz N
+  have hftc := intervalIntegral.integral_eq_sub_of_hasDerivAt
+    (a := (0 : ℝ)) (b := (N : ℝ)) (f := f) (f' := f') hderiv hInt
+  calc
+    ∫ x in (0 : ℝ)..(N : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15
+        = f (N : ℝ) - f (0 : ℝ) := by
+          simpa [f'] using hftc
+    _ = (1 / 14 : ℂ) * ((z⁻¹) ^ 14 - ((((N : ℂ) + z)⁻¹) ^ 14)) := by
+          simp [f, sub_eq_add_neg, mul_add, mul_comm, mul_left_comm, mul_assoc,
+            add_comm, add_left_comm, add_assoc]
+
+lemma integrable_inv_add_pow15 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 15))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow15 z hz
+  have hmeas :
+      AEStronglyMeasurable (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_pow : Measurable (fun x : ℝ => ((x : ℂ) + z) ^ 15) := h_add.pow_const 15
+      exact measurable_const.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x : ℝ ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(1 : ℂ) / ((x : ℂ) + z) ^ 15‖ ≤
+          1 / ‖(x : ℂ) + z‖ ^ 15 := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    calc
+      ‖(1 : ℂ) / ((x : ℂ) + z) ^ 15‖
+          = ‖(1 : ℂ)‖ / ‖((x : ℂ) + z) ^ 15‖ := by
+            simp
+      _ = 1 / ‖(x : ℂ) + z‖ ^ 15 := by
+            simp [norm_pow]
+      _ ≤ 1 / ‖(x : ℂ) + z‖ ^ 15 := le_rfl
+  exact Integrable.mono' hkernel hmeas hbound
+
+lemma tendsto_intervalIntegral_inv_add_pow15_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (1 : ℂ) / ((x : ℂ) + z) ^ 15)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_inv_add_pow15 z hz
+  simpa using
+    (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+      (f := fun x : ℝ => (1 : ℂ) / ((x : ℂ) + z) ^ 15)
+      (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+      h_int (tendsto_natCast_atTop_atTop))
+
+lemma integral_Ioi_inv_add_pow15_complex (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15 =
+      (1 / 14 : ℂ) * (z⁻¹) ^ 14 := by
+  let L : ℕ → ℂ := fun N =>
+    ∫ x in (0 : ℝ)..(N : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15
+  let R : ℕ → ℂ := fun N =>
+    (1 / 14 : ℂ) * ((z⁻¹) ^ 14 - ((((N : ℂ) + z)⁻¹) ^ 14))
+  have hLR : ∀ N, L N = R N := by
+    intro N
+    simpa [L, R] using intervalIntegral_inv_add_pow15_zero_nat z hz N
+  have hL :
+      Tendsto L atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15)) := by
+    simpa [L] using tendsto_intervalIntegral_inv_add_pow15_Ioi z hz
+  have h_inv : Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) :=
+    tendsto_nat_add_complex_inv z
+  have h_inv14 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 14)) atTop
+        (𝓝 ((0 : ℂ) ^ 14)) := by
+    simpa using h_inv.pow 14
+  have hR :
+      Tendsto R atTop
+        (𝓝 ((1 / 14 : ℂ) * ((z⁻¹) ^ 14 - (0 : ℂ) ^ 14))) := by
+    have hsub :
+        Tendsto
+          (fun N : ℕ => (z⁻¹) ^ 14 - ((((N : ℂ) + z)⁻¹) ^ 14))
+          atTop (𝓝 ((z⁻¹) ^ 14 - (0 : ℂ) ^ 14)) := by
+      exact tendsto_const_nhds.sub h_inv14
+    simpa [R] using hsub.const_mul (1 / 14 : ℂ)
+  have hL_to_rhs :
+      Tendsto L atTop
+        (𝓝 ((1 / 14 : ℂ) * ((z⁻¹) ^ 14 - (0 : ℂ) ^ 14))) := by
+    exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
+  have h_eq := tendsto_nhds_unique hL hL_to_rhs
+  simpa using h_eq
+
 lemma stieltjes_B2Diff_to_B4Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
     ∫ x in Set.Ioi (0 : ℝ),
         (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3 =
@@ -8582,6 +8722,41 @@ lemma stieltjes_B12Diff_to_B14Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
             (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15)) := by
     exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
   exact tendsto_nhds_unique hL hL_to_rhs
+
+lemma stieltjes_B12Diff_to_B14Diff_Ioi_cancelled (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 =
+      (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15) -
+        (7 / 6 : ℂ) *
+          ∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15 := by
+  have hraw := stieltjes_B12Diff_to_B14Diff_Ioi_raw z hz
+  have hconst := integral_Ioi_inv_add_pow15_complex z hz
+  set I14 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15
+  set Iconst : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15
+  have hraw' :
+      ∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 =
+        (1 / 12 : ℂ) * ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14) + I14 := by
+    simpa [I14] using hraw
+  have hconst' : Iconst = (1 / 14 : ℂ) * (z⁻¹) ^ 14 := by
+    simpa [Iconst] using hconst
+  calc
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 =
+      (1 / 12 : ℂ) * ((0 : ℂ) ^ 14 - (z⁻¹) ^ 14) + I14 := hraw'
+    _ = I14 - (7 / 6 : ℂ) * Iconst := by
+        rw [hconst']
+        ring_nf
+    _ =
+      (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli14Diff x : ℂ) / ((x : ℂ) + z) ^ 15) -
+        (7 / 6 : ℂ) *
+          ∫ x in Set.Ioi (0 : ℝ), (1 : ℂ) / ((x : ℂ) + z) ^ 15 := by
+        simp [I14, Iconst, one_div]
 
 /-!
 Final real-part bound for the Stieltjes remainder.

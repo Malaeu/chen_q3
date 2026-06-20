@@ -34735,6 +34735,39 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- B14BoundaryCancellationBridgeChecked
+
+- Used the in-app browser/Computer Use to ask Pro/Louise about the raw
+  B12-to-B14 boundary saturation fork; accepted only the route shape after
+  checking it against local Lean.
+- Local normalization correction: this repo has
+  `def bernoulli14Diff (x : R) : R := bernoulli14Fract x`, so Louise's literal
+  negative-fract theorem was not imported.  The checked theorem is the local
+  cancellation identity:
+  `Q3.stieltjes_B12Diff_to_B14Diff_Ioi_cancelled`.
+- Added the exact constant-kernel integral:
+  `Q3.integral_Ioi_inv_add_pow15_complex`, proving
+  `int_0^infty 1 / (x+z)^15 = (1/14) * z^-14` for `0 < z.re`.
+- The checked cancellation bridge rewrites the B12/power-13 `Ioi` source as
+  the B14/power-15 `Ioi` integral minus `(7/6)` times the constant
+  power-15 `Ioi` integral.
+- Closed local bridge:
+  `STEP33_M6_B14_BOUNDARY_CANCELLATION_BRIDGE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B14_SHIFTED_FIRST_OMITTED_NORM_GAP`.
+- Smallest useful next Lean object: prove integral linearity/integrability for
+  the shifted integrand
+  `((bernoulli14Diff x : C) - (7 / 6 : C)) / ((x : C) + z)^15`, then prove the
+  same-budget norm majorant needed by
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B14CellDerivToB14DiffRouteInProgress
 
 - Target blocker:

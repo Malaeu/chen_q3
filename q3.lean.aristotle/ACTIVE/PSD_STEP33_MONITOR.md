@@ -27890,6 +27890,76 @@ whitespace check were clean.
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## 2026-06-20 Step33A.1-A B14 boundary-cancellation bridge checked
+
+Browser/Pro/Louise was used as advisory route review for the raw B12-to-B14
+boundary saturation.  Louise selected the cancellation route, but the literal
+suggested theorem did not match the local normalization:
+
+```lean
+def bernoulli14Diff (x : R) : R := bernoulli14Fract x
+```
+
+So the checked local theorem is not a negative-fract rewrite.  The checked
+bridge is:
+
+```lean
+Q3.integral_Ioi_inv_add_pow15_complex
+Q3.stieltjes_B12Diff_to_B14Diff_Ioi_cancelled
+```
+
+with local shape:
+
+```lean
+int x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13 =
+  (int x in Set.Ioi (0 : R),
+      (bernoulli14Diff x : C) / ((x : C) + z) ^ 15) -
+    (7 / 6 : C) *
+      int x in Set.Ioi (0 : R), (1 : C) / ((x : C) + z) ^ 15
+```
+
+Closed local bridge:
+
+```text
+STEP33_M6_B14_BOUNDARY_CANCELLATION_BRIDGE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_SHIFTED_FIRST_OMITTED_NORM_GAP
+```
+
+Next smallest Lean object: rewrite the cancelled right hand side as one
+shifted B14/power-15 integral, then prove the order-15 norm majorant in the
+receiver's exact budget:
+
+```lean
+|| int x in Set.Ioi (0 : R),
+    ((bernoulli14Diff x : C) - (7 / 6 : C)) / ((x : C) + z) ^ 15 ||
+  <= (7 / 6 : R) *
+       int x in Set.Ioi (0 : R), 1 / ||(x : C) + z|| ^ 15
+```
+
+This requires both the integral-linearity/integrability bridge and the local
+pointwise shifted-B14 bound in the same norm budget.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.
+
 ## 2026-06-20 Step33A.1-A B14-cell derivative to B14-diff bridge checked
 
 Latest checked local bridge:
