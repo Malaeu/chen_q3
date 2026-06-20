@@ -4,9 +4,9 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5`
+- schema: `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6`
 - route: `STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV`
-- status: `fail_closed_missing_full_taylor_residual_interval_proof`
+- status: `fail_closed_missing_cancellation_preserving_taylor_remainder_proof`
 - proof mode: `exact_rational_same_expression_interval`
 - target slope: `1866608532757/500000000000000000000000000000`
 - segment count: `1`
@@ -50,12 +50,55 @@ Fail-closed skeleton.  This is not Lean proof data.
 - `segmentCount`
 - `segmentL`
 - `segmentU`
-- `rawLower`
-- `rawUpper`
-- `polyLower`
-- `polyUpper`
 - `residualLower`
 - `residualUpper`
+
+## Cancellation-Preserving Generator Fields
+
+- `cellL`
+- `cellU`
+- `center`
+- `radius`
+- `omegaCoeff[]`
+- `omegaRemainderAbs`
+- `omegaDerivCoeff[]`
+- `omegaDerivRemainderAbs`
+- `shapeCoeff[]`
+- `shapeRemainderAbs`
+- `shapeDerivCoeff[]`
+- `shapeDerivRemainderAbs`
+- `fullTaylorPolynomialDerivCoeff[]`
+- `assembledResidualCoeff[]`
+- `assembledResidualRemainderAbs`
+- `residualPolynomialLower`
+- `residualPolynomialUpper`
+- `finalResidualLower`
+- `finalResidualUpper`
+- `targetLower`
+- `targetUpper`
+- `componentTaylorBoundsProved`
+- `exactCoefficientAssemblyProved`
+- `residualRangeProved`
+- `budgetPassed`
+- `proofSafeClosedFields`
+- `outLeanWritten`
+- `sourceDefinitionHashes`
+- `failureCodes[]`
+
+## Next Required Proof
+
+- chosen route: `A`
+- advisory source: `browser_proshka_route_advice_not_proof_evidence`
+- target file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`
+- target theorem: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval`
+- first expected blocker: `STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP`
+- import DAG note: The theorem mentions names defined in the HRaw landing file; EndpointHighOrderSupport cannot be the direct target without an import cycle.  A downstream generated file importing the landing file is also acceptable.
+
+```lean
+theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval {eta : Real} (heta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) : ((-94119513411 : Real) / 500000000000000000000000000000) <= primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta ∧ primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta <= ((1866608532757 : Real) / 500000000000000000000000000000)
+```
+
+Segment geometry and exact rational budget already pass; the missing spendable object is a cancellation-preserving interval proof for the full Taylor residual expression itself.
 
 ## Candidate Segments
 
@@ -76,6 +119,8 @@ Fail-closed skeleton.  This is not Lean proof data.
 - proofGradeResidualBoundsPresent: `False`
 - proofGradeClosedFormResidualBoundsPresent: `False`
 - proofGradeFullTaylorResidualBoundsPresent: `False`
+- cancellationPreservingAssemblyPresent: `False`
+- sameExpressionResidualIntervalProofPresent: `False`
 - fullTaylorPolynomialDerivativeCrosswalkPresent: `True`
 - fullTaylorResidualDerivativeCrosswalkPresent: `True`
 - fullTaylorDirectReceiverPresent: `True`
@@ -85,6 +130,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - exact segment coverage of Set.Icc 0 (1/10) (candidate passes)
 - exact segment adjacency/no-gap proof (candidate passes)
 - proof-grade bounds for primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 (1/20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta on Set.Icc 0 (1/10) (missing)
+- build component Taylor bounds, assemble the residual coefficients exactly, and introduce remainder intervals only after the symbolic cancellation has happened
 - do not replace deriv current-adapter polynomial by the generated degree-15 derivmodel polynomial: Lean checks a coefficient mismatch; use the full Taylor cert crosswalk instead
 - for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)
 - for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)
@@ -96,6 +142,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 
 ## Failure Codes
 
+- `STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP`
 - `STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL`
 - `STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING`
 - `STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING`
@@ -110,6 +157,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - do not spend independent raw/poly boxes unless the residual interval itself fits
 - do not emit generated Lean payload until all segment obligations close
 - the spendable field is the direct same-unit residual derivative interval
+- do not subtract independent raw/poly interval boxes as the proof object
 
 ## Source Status
 
@@ -118,6 +166,7 @@ Fail-closed skeleton.  This is not Lean proof data.
 - direct overlay status: `direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs`
 - full Taylor residual crosswalk: `checked_in_lean`
 - full Taylor direct receiver: `checked_in_lean`
+- route A advisory: `browser_proshka_advice_recorded_not_proof`
 
 The diagnostic direct-overlay candidate now supplies a one-segment
 candidate whose exact rational coverage and budget arithmetic pass.
@@ -129,3 +178,6 @@ a proof-grade `ResidualDerivativeSegmentIntervalCert.DirectValid`
 witness for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`
 can close the preferred receiver.  The richer `Valid` witness remains
 available only when a separate raw/poly ledger is also proved.
+The next patch must assemble the residual expression first and then
+bound the assembled expression; independent raw/poly interval boxes
+are still diagnostic only.

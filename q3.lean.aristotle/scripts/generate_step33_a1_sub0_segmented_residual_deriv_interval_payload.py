@@ -38,7 +38,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_segmented_residual_deriv_interval_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5"
+SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6"
 ROUTE_ID = "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV"
 FAILURE_CODE = "STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL"
 CLOSED_FORM_FAILURE_CODE = "STEP33_A1_SUB0_CLOSED_FORM_RESIDUAL_INTERVAL_BOUNDS_MISSING"
@@ -48,12 +48,21 @@ FULL_TAYLOR_FAILURE_CODE = (
 DERIVMODEL_ADAPTER_MISMATCH_CODE = (
     "STEP33_A1_SUB0_DERIVMODEL_ADAPTER_POLYNOMIAL_MISMATCH"
 )
+CANCELLATION_REMAINDER_FAILURE_CODE = (
+    "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP"
+)
 TARGET_SLOPE = "1866608532757/500000000000000000000000000000"
+TARGET_LOWER = "-94119513411/500000000000000000000000000000"
 CELL_L = "0"
 CELL_U = "1/10"
 
 CHECKER_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean"
 LANDING_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
+NEXT_THEOREM_NAME = (
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_"
+    "residual_deriv_closedForm_interval"
+)
+NEXT_THEOREM_FILE = LANDING_FILE
 
 
 def load_json(path: Path) -> dict[str, Any] | None:
@@ -191,7 +200,7 @@ def build_report(
     )
     candidate_ready = coverage["coveragePassedExactRational"] and budget_passed
     status = (
-        "fail_closed_missing_full_taylor_residual_interval_proof"
+        "fail_closed_missing_cancellation_preserving_taylor_remainder_proof"
         if candidate_ready
         else "fail_closed_missing_segment_cert"
     )
@@ -201,6 +210,7 @@ def build_report(
         "routeId": ROUTE_ID,
         "status": status,
         "failureCodes": [
+            CANCELLATION_REMAINDER_FAILURE_CODE,
             FAILURE_CODE,
             "STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING",
             FULL_TAYLOR_FAILURE_CODE,
@@ -231,6 +241,8 @@ def build_report(
             "proofGradeResidualBoundsPresent": False,
             "proofGradeClosedFormResidualBoundsPresent": False,
             "proofGradeFullTaylorResidualBoundsPresent": False,
+            "cancellationPreservingAssemblyPresent": False,
+            "sameExpressionResidualIntervalProofPresent": False,
             "fullTaylorPolynomialDerivativeCrosswalkPresent": True,
             "fullTaylorResidualDerivativeCrosswalkPresent": True,
             "fullTaylorDirectReceiverPresent": True,
@@ -332,13 +344,75 @@ def build_report(
             "segmentCount",
             "segmentL",
             "segmentU",
-            "rawLower",
-            "rawUpper",
-            "polyLower",
-            "polyUpper",
             "residualLower",
             "residualUpper",
         ],
+        "cancellationPreservingGeneratorFields": [
+            "cellL",
+            "cellU",
+            "center",
+            "radius",
+            "omegaCoeff[]",
+            "omegaRemainderAbs",
+            "omegaDerivCoeff[]",
+            "omegaDerivRemainderAbs",
+            "shapeCoeff[]",
+            "shapeRemainderAbs",
+            "shapeDerivCoeff[]",
+            "shapeDerivRemainderAbs",
+            "fullTaylorPolynomialDerivCoeff[]",
+            "assembledResidualCoeff[]",
+            "assembledResidualRemainderAbs",
+            "residualPolynomialLower",
+            "residualPolynomialUpper",
+            "finalResidualLower",
+            "finalResidualUpper",
+            "targetLower",
+            "targetUpper",
+            "componentTaylorBoundsProved",
+            "exactCoefficientAssemblyProved",
+            "residualRangeProved",
+            "budgetPassed",
+            "proofSafeClosedFields",
+            "outLeanWritten",
+            "sourceDefinitionHashes",
+            "failureCodes[]",
+        ],
+        "nextRequiredProof": {
+            "chosenRoute": "A",
+            "advisorySource": "browser_proshka_route_advice_not_proof_evidence",
+            "whyRouteA": (
+                "Segment geometry and exact rational budget already pass; the "
+                "missing spendable object is a cancellation-preserving interval "
+                "proof for the full Taylor residual expression itself."
+            ),
+            "targetFile": NEXT_THEOREM_FILE,
+            "targetTheorem": NEXT_THEOREM_NAME,
+            "targetStatement": (
+                "theorem "
+                + NEXT_THEOREM_NAME
+                + " {eta : Real} "
+                "(heta : eta \u2208 Set.Icc (0 : Real) ((1 : Real) / 10)) : "
+                "((-94119513411 : Real) / "
+                "500000000000000000000000000000) <= "
+                "primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - "
+                "rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20) "
+                "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta "
+                "\u2227 "
+                "primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - "
+                "rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20) "
+                "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta <= "
+                "((1866608532757 : Real) / "
+                "500000000000000000000000000000)"
+            ),
+            "importDagNote": (
+                "The theorem mentions names defined in the HRaw landing file; "
+                "EndpointHighOrderSupport cannot be the direct target without "
+                "an import cycle.  A downstream generated file importing the "
+                "landing file is also acceptable."
+            ),
+            "firstExpectedBlocker": CANCELLATION_REMAINDER_FAILURE_CODE,
+        },
         "rationalProofObligations": [
             "exact segment coverage of Set.Icc 0 (1/10) (candidate passes)",
             "exact segment adjacency/no-gap proof (candidate passes)",
@@ -348,6 +422,11 @@ def build_report(
                 "- rawOmegaATaylorPolynomial 15 (1/20) "
                 "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta "
                 "on Set.Icc 0 (1/10) (missing)"
+            ),
+            (
+                "build component Taylor bounds, assemble the residual "
+                "coefficients exactly, and introduce remainder intervals only "
+                "after the symbolic cancellation has happened"
             ),
             (
                 "do not replace deriv current-adapter polynomial by the generated "
@@ -380,6 +459,7 @@ def build_report(
             "do not spend independent raw/poly boxes unless the residual interval itself fits",
             "do not emit generated Lean payload until all segment obligations close",
             "the spendable field is the direct same-unit residual derivative interval",
+            "do not subtract independent raw/poly interval boxes as the proof object",
         ],
         "sourceStatus": {
             "interpolationPayloadPath": str(interpolation_payload_path),
@@ -395,6 +475,7 @@ def build_report(
             ),
             "fullTaylorResidualCrosswalkStatus": "checked_in_lean",
             "fullTaylorDirectReceiverStatus": "checked_in_lean",
+            "routeAAdvisoryStatus": "browser_proshka_advice_recorded_not_proof",
         },
         "sourceDefinitionHashes": {
             CHECKER_FILE: file_hash(ROOT / CHECKER_FILE),
@@ -431,6 +512,29 @@ def render_md(report: dict[str, Any]) -> str:
     lines.extend(["", "## Certificate Fields", ""])
     for field in report["certFields"]:
         lines.append(f"- `{field}`")
+    lines.extend(["", "## Cancellation-Preserving Generator Fields", ""])
+    for field in report["cancellationPreservingGeneratorFields"]:
+        lines.append(f"- `{field}`")
+    next_proof = report["nextRequiredProof"]
+    lines.extend(
+        [
+            "",
+            "## Next Required Proof",
+            "",
+            f"- chosen route: `{next_proof['chosenRoute']}`",
+            f"- advisory source: `{next_proof['advisorySource']}`",
+            f"- target file: `{next_proof['targetFile']}`",
+            f"- target theorem: `{next_proof['targetTheorem']}`",
+            f"- first expected blocker: `{next_proof['firstExpectedBlocker']}`",
+            f"- import DAG note: {next_proof['importDagNote']}",
+            "",
+            "```lean",
+            next_proof["targetStatement"],
+            "```",
+            "",
+            next_proof["whyRouteA"],
+        ]
+    )
     lines.extend(["", "## Candidate Segments", ""])
     if report["segments"]:
         for segment in report["segments"]:
@@ -458,6 +562,8 @@ def render_md(report: dict[str, Any]) -> str:
             f"- proofGradeResidualBoundsPresent: `{arithmetic['proofGradeResidualBoundsPresent']}`",
             f"- proofGradeClosedFormResidualBoundsPresent: `{arithmetic['proofGradeClosedFormResidualBoundsPresent']}`",
             f"- proofGradeFullTaylorResidualBoundsPresent: `{arithmetic['proofGradeFullTaylorResidualBoundsPresent']}`",
+            f"- cancellationPreservingAssemblyPresent: `{arithmetic['cancellationPreservingAssemblyPresent']}`",
+            f"- sameExpressionResidualIntervalProofPresent: `{arithmetic['sameExpressionResidualIntervalProofPresent']}`",
             f"- fullTaylorPolynomialDerivativeCrosswalkPresent: `{arithmetic['fullTaylorPolynomialDerivativeCrosswalkPresent']}`",
             f"- fullTaylorResidualDerivativeCrosswalkPresent: `{arithmetic['fullTaylorResidualDerivativeCrosswalkPresent']}`",
             f"- fullTaylorDirectReceiverPresent: `{arithmetic['fullTaylorDirectReceiverPresent']}`",
@@ -482,6 +588,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- direct overlay status: `{report['sourceStatus']['directOverlayStatus']}`",
             f"- full Taylor residual crosswalk: `{report['sourceStatus']['fullTaylorResidualCrosswalkStatus']}`",
             f"- full Taylor direct receiver: `{report['sourceStatus']['fullTaylorDirectReceiverStatus']}`",
+            f"- route A advisory: `{report['sourceStatus']['routeAAdvisoryStatus']}`",
             "",
             "The diagnostic direct-overlay candidate now supplies a one-segment",
             "candidate whose exact rational coverage and budget arithmetic pass.",
@@ -493,6 +600,9 @@ def render_md(report: dict[str, Any]) -> str:
             "witness for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`",
             "can close the preferred receiver.  The richer `Valid` witness remains",
             "available only when a separate raw/poly ledger is also proved.",
+            "The next patch must assemble the residual expression first and then",
+            "bound the assembled expression; independent raw/poly interval boxes",
+            "are still diagnostic only.",
             "",
         ]
     )

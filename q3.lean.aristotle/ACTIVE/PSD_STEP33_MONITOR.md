@@ -30352,3 +30352,58 @@ STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
 
 Boundary: receiver plumbing is checked, but no interval certificate has been
 proved and Step33A.1-A remains open.
+
+## 2026-06-20 Current EOF Addendum -- cancellation-preserving interval route
+
+Browser/Proshka was used as route advice for the current blocker, not as proof
+evidence.  The advice matches the local receiver state: do not try to spend
+independent raw/poly interval boxes; first assemble the same residual
+expression with exact coefficients, then bound that assembled expression.
+
+The segmented residual payload is now schema:
+
+```text
+q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6
+```
+
+Current status:
+
+```text
+status = fail_closed_missing_cancellation_preserving_taylor_remainder_proof
+proofSafeClosedFields = 0
+outLeanWritten = false
+cancellationPreservingAssemblyPresent = false
+sameExpressionResidualIntervalProofPresent = false
+```
+
+The next theorem target is:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval
+```
+
+It must prove the interval for:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+on `Set.Icc 0 (1/10)` inside:
+
+```text
+[-94119513411/500000000000000000000000000000,
+  1866608532757/500000000000000000000000000000]
+```
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: this patch only sharpens the proof contract and generated payload.
+No interval certificate was proved, no Lean payload was emitted, no
+first-subchunk residual-derivative norm certificate is closed, and Step33A.1-A
+remains open.

@@ -56985,6 +56985,80 @@ rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_Center
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- cancellation-preserving residual interval contract
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk route-A residual-derivative norm
+lane.
+
+Browser/Proshka advisory was used because the local blocker had become a route
+choice inside the residual interval proof.  The accepted repo object remains
+local only: a fail-closed generator contract.  No web/browser output is proof
+evidence.
+
+Updated
+`scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py`
+to schema:
+
+```text
+q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6
+```
+
+The generated payload now records the next proof-producing target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval
+```
+
+Target expression:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+Target interval on `Set.Icc 0 (1/10)`:
+
+```text
+[-94119513411/500000000000000000000000000000,
+  1866608532757/500000000000000000000000000000]
+```
+
+The required generator fields are now explicit: component Taylor coefficients
+and remainders for omega/omega-derivative/shape/shape-derivative, exact
+assembled residual coefficients, assembled residual remainder, final residual
+lower/upper bounds, budget checks, source definition hashes, and failure codes.
+The key guard is that remainders may be introduced only after symbolic
+cancellation and exact coefficient assembly; independent raw/poly boxes remain
+diagnostic and non-spendable.
+
+Current generator result:
+
+```text
+status = fail_closed_missing_cancellation_preserving_taylor_remainder_proof
+proofSafeClosedFields = 0
+outLeanWritten = false
+cancellationPreservingAssemblyPresent = false
+sameExpressionResidualIntervalProofPresent = false
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: this does not prove the residual interval, does not emit generated
+Lean, does not close Step33A.1-A, the A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+```
+
 ## Execution Update (2026-06-20) -- full Taylor direct receiver
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk route-A residual-derivative norm
@@ -58865,3 +58939,39 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAH
 rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 git diff --check
 ```
+
+## Execution Update (2026-06-20) -- current EOF route-A interval blocker
+
+Current generated payload schema:
+
+```text
+q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6
+```
+
+Current generated payload status:
+
+```text
+status = fail_closed_missing_cancellation_preserving_taylor_remainder_proof
+proofSafeClosedFields = 0
+outLeanWritten = false
+cancellationPreservingAssemblyPresent = false
+sameExpressionResidualIntervalProofPresent = false
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP
+```
+
+Next proof-producing patch: build the cancellation-preserving interval proof
+for
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+on `Set.Icc 0 (1/10)`, using exact coefficient assembly before any remainder
+spending.  Independent raw/poly boxes remain diagnostic only.

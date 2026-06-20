@@ -36373,6 +36373,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
 
+## Insight (2026-06-20, Step33A.1-A) -- CancellationPreservingResidualIntervalContract
+
+- Used Browser/Proshka as route advice for the full Taylor residual interval
+  blocker; the browser output is not proof evidence.
+- The chosen next route is cancellation-preserving interval proof first:
+  assemble the residual expression with exact coefficients, introduce
+  component remainders only after symbolic cancellation, then prove the final
+  same-expression interval.
+- Updated
+  `scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6`.
+- The generated payload now names the target theorem
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval`
+  for the expression
+  `primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+  rawOmegaATaylorPolynomial 15 (1/20)
+  primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta`.
+- Current first live blocker is sharpened to
+  `STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP`.
+- Independent raw/poly derivative boxes remain diagnostic and non-spendable.
+  The spendable object must be the direct same-expression residual derivative
+  interval consumed by the full Taylor receiver.
+- Validation passed for the generator run and `py_compile`; no Lean files were
+  touched in this step.
+- Boundary: no proof-grade interval certificate, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
 ## Insight (2026-06-20, Step33A.1-A) -- FullTaylorDirectReceiver
 
 - Ran the current blocker search pass for

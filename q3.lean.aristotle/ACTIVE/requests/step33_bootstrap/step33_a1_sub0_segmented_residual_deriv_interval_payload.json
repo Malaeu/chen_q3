@@ -1,8 +1,40 @@
 {
   "adjacencyPassed": true,
   "allSegmentsBudgetPassed": true,
+  "cancellationPreservingGeneratorFields": [
+    "cellL",
+    "cellU",
+    "center",
+    "radius",
+    "omegaCoeff[]",
+    "omegaRemainderAbs",
+    "omegaDerivCoeff[]",
+    "omegaDerivRemainderAbs",
+    "shapeCoeff[]",
+    "shapeRemainderAbs",
+    "shapeDerivCoeff[]",
+    "shapeDerivRemainderAbs",
+    "fullTaylorPolynomialDerivCoeff[]",
+    "assembledResidualCoeff[]",
+    "assembledResidualRemainderAbs",
+    "residualPolynomialLower",
+    "residualPolynomialUpper",
+    "finalResidualLower",
+    "finalResidualUpper",
+    "targetLower",
+    "targetUpper",
+    "componentTaylorBoundsProved",
+    "exactCoefficientAssemblyProved",
+    "residualRangeProved",
+    "budgetPassed",
+    "proofSafeClosedFields",
+    "outLeanWritten",
+    "sourceDefinitionHashes",
+    "failureCodes[]"
+  ],
   "candidateArithmeticStatus": {
     "budgetPassedExactRational": true,
+    "cancellationPreservingAssemblyPresent": false,
     "candidateReadyForLeanShape": true,
     "coverage": {
       "adjacencyPassedExactRational": true,
@@ -19,7 +51,8 @@
     "fullTaylorResidualDerivativeCrosswalkPresent": true,
     "proofGradeClosedFormResidualBoundsPresent": false,
     "proofGradeFullTaylorResidualBoundsPresent": false,
-    "proofGradeResidualBoundsPresent": false
+    "proofGradeResidualBoundsPresent": false,
+    "sameExpressionResidualIntervalProofPresent": false
   },
   "cell": {
     "cellL": "0",
@@ -30,15 +63,12 @@
     "segmentCount",
     "segmentL",
     "segmentU",
-    "rawLower",
-    "rawUpper",
-    "polyLower",
-    "polyUpper",
     "residualLower",
     "residualUpper"
   ],
   "coveragePassed": true,
   "failureCodes": [
+    "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL",
     "STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING",
     "STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING",
@@ -51,7 +81,8 @@
     "the live proof-data wrapper is the full Taylor wrapper, not the center-only wrapper",
     "do not spend independent raw/poly boxes unless the residual interval itself fits",
     "do not emit generated Lean payload until all segment obligations close",
-    "the spendable field is the direct same-unit residual derivative interval"
+    "the spendable field is the direct same-unit residual derivative interval",
+    "do not subtract independent raw/poly interval boxes as the proof object"
   ],
   "leanInterfaces": {
     "checkerFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean",
@@ -81,6 +112,16 @@
     "sub0PreferredNormWrapper": "primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert",
     "sub0PreferredProofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert"
   },
+  "nextRequiredProof": {
+    "advisorySource": "browser_proshka_route_advice_not_proof_evidence",
+    "chosenRoute": "A",
+    "firstExpectedBlocker": "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP",
+    "importDagNote": "The theorem mentions names defined in the HRaw landing file; EndpointHighOrderSupport cannot be the direct target without an import cycle.  A downstream generated file importing the landing file is also acceptable.",
+    "targetFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
+    "targetStatement": "theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval {eta : Real} (heta : eta \u2208 Set.Icc (0 : Real) ((1 : Real) / 10)) : ((-94119513411 : Real) / 500000000000000000000000000000) <= primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta \u2227 primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta <= ((1866608532757 : Real) / 500000000000000000000000000000)",
+    "targetTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval",
+    "whyRouteA": "Segment geometry and exact rational budget already pass; the missing spendable object is a cancellation-preserving interval proof for the full Taylor residual expression itself."
+  },
   "outLeanWritten": false,
   "proofMode": "exact_rational_same_expression_interval",
   "proofSafeClosedFields": 0,
@@ -88,6 +129,7 @@
     "exact segment coverage of Set.Icc 0 (1/10) (candidate passes)",
     "exact segment adjacency/no-gap proof (candidate passes)",
     "proof-grade bounds for primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 (1/20) primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta on Set.Icc 0 (1/10) (missing)",
+    "build component Taylor bounds, assemble the residual coefficients exactly, and introduce remainder intervals only after the symbolic cancellation has happened",
     "do not replace deriv current-adapter polynomial by the generated degree-15 derivmodel polynomial: Lean checks a coefficient mismatch; use the full Taylor cert crosswalk instead",
     "for every segment: -1866608532757/500000000000000000000000000000 <= residualLower (candidate passes)",
     "for every segment: residualUpper <= 1866608532757/500000000000000000000000000000 (candidate passes)",
@@ -98,7 +140,7 @@
     "optional ledger: proof-grade polynomial derivative enclosure per segment"
   ],
   "routeId": "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV",
-  "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v5",
+  "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6",
   "segmentCount": 1,
   "segmentNonemptyPassed": true,
   "segments": [
@@ -151,9 +193,10 @@
     "interpolationFirstDangerPoint": "STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL",
     "interpolationPayloadExists": true,
     "interpolationPayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json",
-    "interpolationPayloadStatus": "blocked_missing_exact_interpolation_inputs"
+    "interpolationPayloadStatus": "blocked_missing_exact_interpolation_inputs",
+    "routeAAdvisoryStatus": "browser_proshka_advice_recorded_not_proof"
   },
-  "status": "fail_closed_missing_full_taylor_residual_interval_proof",
+  "status": "fail_closed_missing_cancellation_preserving_taylor_remainder_proof",
   "target": {
     "family": "primary_finite",
     "parentChunk": 0,
