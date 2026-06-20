@@ -16260,3 +16260,32 @@ and `git diff --check` were clean.
 
 Boundary: checked receiver only.  No first derivative payload, no refined
 payload row, no A hbox, no Step33 closure, and no RH claim.
+
+## 2026-06-20 Current EOF Addendum -- direct proof-input worklist v18
+
+Synced the address-only worklist to expose the checked interpolation receiver:
+
+```text
+directNormCertValidInterpolationReceiver =
+RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Updated/generated:
+
+```text
+scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.md
+```
+
+Schema: `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18`.
+
+Guard remains fail-closed:
+
+```text
+status = direct_proof_input_worklist_address_only
+preferred_open = 220
+proofSafeClosedFields = 0
+```
+
+Boundary: no payload Lean emitted; derivative payload still open.

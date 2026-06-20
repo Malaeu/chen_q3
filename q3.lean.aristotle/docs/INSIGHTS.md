@@ -35534,3 +35534,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   residual-derivative interpolation payload, generated refined subchunk row,
   full 110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33,
   Step34, or RH is proved.
+
+## Insight (2026-06-20, Step33A.1-A) -- DirectProofInputWorklistV18
+
+- Synced the fail-closed direct proof-input worklist to the checked
+  interpolation receiver:
+  `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`.
+- Updated
+  `scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`
+  to schema `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18`
+  and regenerated
+  `ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.{json,md}`.
+- Guard state remains fail-closed: `status =
+  direct_proof_input_worklist_address_only`, `subchunks = 110`,
+  `preferredNormRouteOpenAnalyticObligations = 220`,
+  `openArithmeticObligations = 330`, and `proofSafeClosedFields = 0`.
+- The new worklist route says exactly what a future proof-grade generator must
+  emit: a model-derivative norm bound, an interpolation/error bound on the same
+  cell, and an exact budget comparison into `derivSlope`.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`,
+  `python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`,
+  and `git diff --check`.
+- Boundary: this is control-plane synchronization only.  It does not emit Lean
+  payload, does not close any derivative analytic field, and does not prove
+  Step33A.1-A, Step33, Step34, or RH.

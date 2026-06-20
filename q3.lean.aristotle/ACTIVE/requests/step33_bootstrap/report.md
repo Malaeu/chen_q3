@@ -56916,3 +56916,52 @@ simpa/simp linter suggestions.
 Boundary: receiver theorem-shape only.  No concrete interpolation/model
 payload, no generated first refined row, no full 110-field payload, no A hbox,
 no Step33 closure, and no RH claim.
+
+## Execution Update (2026-06-20) -- direct proof-input worklist v18
+
+Route: PSD-pd/Q3 Step33A.1-A fail-closed proof-input control plane.
+
+Files touched:
+
+```text
+scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.md
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Generated worklist schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18
+```
+
+New worklist field:
+
+```text
+directNormCertValidInterpolationReceiver =
+RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Command output:
+
+```text
+status=direct_proof_input_worklist_address_only
+subchunks=110
+legacy_arithmetic=330
+preferred_open=220
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+git diff --check
+```
+
+Boundary: worklist synchronization only.  No generated Lean payload, no
+derivative analytic closure, no Step33 closure, and no RH claim.

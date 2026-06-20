@@ -48,7 +48,7 @@ DIRECT_OVERLAY_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v30"
 )
 WORKLIST_SCHEMA = (
-    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v17"
+    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18"
 )
 
 REQUIRED_FIELDS = [
@@ -131,6 +131,11 @@ DIRECT_NORM_CERT_RECEIVER = (
 DIRECT_NORM_CERT_VALID_INTERVAL_RECEIVER = (
     "RawOmegaATaylorModelCertificate."
     "ResidualDerivativeDirectNormCert.Valid.of_interval_bounds"
+)
+
+DIRECT_NORM_CERT_VALID_INTERPOLATION_RECEIVER = (
+    "RawOmegaATaylorModelCertificate."
+    "ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound"
 )
 
 CELL_SLOPE_REFINED_PAYLOAD_FIN = (
@@ -525,6 +530,9 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
         "directNormCertValidIntervalReceiver": (
             DIRECT_NORM_CERT_VALID_INTERVAL_RECEIVER
         ),
+        "directNormCertValidInterpolationReceiver": (
+            DIRECT_NORM_CERT_VALID_INTERPOLATION_RECEIVER
+        ),
         "requiredFields": REQUIRED_FIELDS,
         "legacyIntervalRequiredFields": LEGACY_INTERVAL_REQUIRED_FIELDS,
         "totals": totals,
@@ -534,6 +542,7 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
             "materialize scalar hEnvelope exact rational arithmetic as Lean proof data only during payload emission",
             "generate cancellation-preserving residual-derivative lower/upper interval bounds",
             "preferred compact route: generate one ResidualDerivativeDirectNormCert.Valid proof per direct subchunk",
+            "interpolation route: prove exact model-derivative norm and interpolation/error bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
             "feed hRawCenterCoeffAbs + DirectNormCert.Valid + cellL=L/cellU=U equalities into the raw-center full-cell direct-norm exact-integral constructor",
             "shortcut compact route: feed hRawCenterCoeffAbs + residual-derivative lower/upper bounds + abs-slope comparisons into the raw-center interval-bounds full-cell direct-norm constructor",
             "fallback: extract hResidualDerivBoundOnCell with residualDerivBoundOnCell_of_directNormCert",
@@ -548,6 +557,7 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
             "sampledEnvelopePasses is diagnostic only; hEnvelopeArithmetic recomputes the rational inequality exactly",
             "do not emit CellSlopeDirectEnvelopeRefinedPayloadFin while hRawCenterCoeffAbs or the preferred direct residual-derivative norm bound is missing",
             "preferred cell-slope route may replace the two interval fields by one hResidualDerivBoundOnCell proof per direct subchunk",
+            "interpolation diagnostics are non-proof until model and error bounds are emitted as Lean-checked exact hypotheses",
             "do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3",
         ],
     }
@@ -579,6 +589,7 @@ def render_md(worklist: dict[str, Any]) -> str:
         f"- direct norm cert validity: `{worklist.get('directNormCertValid')}`",
         f"- direct norm receiver: `{worklist.get('directNormCertReceiver')}`",
         f"- direct norm interval-valid receiver: `{worklist.get('directNormCertValidIntervalReceiver')}`",
+        f"- direct norm interpolation-valid receiver: `{worklist.get('directNormCertValidInterpolationReceiver')}`",
         f"- overlays: `{totals['overlays']}`",
         f"- subchunks: `{totals['subchunks']}`",
         f"- hRawCenterCoeffAbs fields: `{totals['hRawCenterCoeffAbsFields']}`",
@@ -639,6 +650,9 @@ def render_md(worklist: dict[str, Any]) -> str:
     )
     lines.append(
         "- preferred compact route: prove `hRawCenterCoeffAbs`, prove `ResidualDerivativeDirectNormCert.Valid`, prove `cellL = L` and `cellU = U`, then feed those directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_cert_full_cell`"
+    )
+    lines.append(
+        "- interpolation route for `ResidualDerivativeDirectNormCert.Valid`: prove an exact model-derivative norm bound and exact interpolation/error bound on the same cell, prove their sum is at most `derivSlope`, then use `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`"
     )
     lines.append(
         "- shortcut compact derivative route: prove `hRawCenterCoeffAbs`, residual-derivative lower/upper bounds on `[L, U]`, and the two abs-slope comparisons, then feed them directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_interval_bounds_full_cell`"

@@ -29158,3 +29158,46 @@ nonfatal simpa/simp linter suggestions.
 Boundary: receiver theorem-shape only.  The first-subchunk concrete
 interpolation/model payload, full 110-field payload, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, and RH remain open.
+
+## 2026-06-20 Current EOF Status -- direct proof-input worklist v18 synced
+
+Updated fail-closed worklist:
+
+```text
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.md
+```
+
+Schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18
+```
+
+New receiver field:
+
+```text
+directNormCertValidInterpolationReceiver =
+RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Guard state:
+
+```text
+status = direct_proof_input_worklist_address_only
+subchunks = 110
+preferredNormRouteOpenAnalyticObligations = 220
+openArithmeticObligations = 330
+proofSafeClosedFields = 0
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+git diff --check
+```
+
+Boundary: worklist synchronization only.  No Lean payload was emitted and no
+analytic derivative field was closed.

@@ -4,6 +4,7 @@
   "directNormCertGenericConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_direct_norm_cert_at_zero_distance",
   "directNormCertReceiver": "RawOmegaATaylorModelCertificate.residualDerivBoundOnCell_of_directNormCert",
   "directNormCertValid": "RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid",
+  "directNormCertValidInterpolationReceiver": "RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
   "directNormCertValidIntervalReceiver": "RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interval_bounds",
   "directNormIntervalBoundsFullCellConstructor": "RawOmegaATaylorModelCertificate.ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_interval_bounds_full_cell",
   "downstreamLeanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
@@ -24,6 +25,7 @@
     "materialize scalar hEnvelope exact rational arithmetic as Lean proof data only during payload emission",
     "generate cancellation-preserving residual-derivative lower/upper interval bounds",
     "preferred compact route: generate one ResidualDerivativeDirectNormCert.Valid proof per direct subchunk",
+    "interpolation route: prove exact model-derivative norm and interpolation/error bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
     "feed hRawCenterCoeffAbs + DirectNormCert.Valid + cellL=L/cellU=U equalities into the raw-center full-cell direct-norm exact-integral constructor",
     "shortcut compact route: feed hRawCenterCoeffAbs + residual-derivative lower/upper bounds + abs-slope comparisons into the raw-center interval-bounds full-cell direct-norm constructor",
     "fallback: extract hResidualDerivBoundOnCell with residualDerivBoundOnCell_of_directNormCert",
@@ -26181,9 +26183,10 @@
     "sampledEnvelopePasses is diagnostic only; hEnvelopeArithmetic recomputes the rational inequality exactly",
     "do not emit CellSlopeDirectEnvelopeRefinedPayloadFin while hRawCenterCoeffAbs or the preferred direct residual-derivative norm bound is missing",
     "preferred cell-slope route may replace the two interval fields by one hResidualDerivBoundOnCell proof per direct subchunk",
+    "interpolation diagnostics are non-proof until model and error bounds are emitted as Lean-checked exact hypotheses",
     "do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3"
   ],
-  "schema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v17",
+  "schema": "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18",
   "sourceLeanLandingSurface": "RawOmegaAChunkTaylorPayload.RefinedPayloadFin",
   "status": "direct_proof_input_worklist_address_only",
   "totals": {

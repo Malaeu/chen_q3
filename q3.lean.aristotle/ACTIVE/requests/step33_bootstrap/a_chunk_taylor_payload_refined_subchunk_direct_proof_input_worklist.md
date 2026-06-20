@@ -4,7 +4,7 @@ Address-only worklist.  This is not Lean proof data.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v17`
+- schema: `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18`
 - status: `direct_proof_input_worklist_address_only`
 - Lean landing surface: `RawOmegaAChunkTaylorPayload.CellSlopeDirectEnvelopeRefinedPayloadFin`
 - downstream Lean landing surface: `RawOmegaAChunkTaylorPayload.RefinedPayloadFin`
@@ -21,6 +21,7 @@ Address-only worklist.  This is not Lean proof data.
 - direct norm cert validity: `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid`
 - direct norm receiver: `RawOmegaATaylorModelCertificate.residualDerivBoundOnCell_of_directNormCert`
 - direct norm interval-valid receiver: `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interval_bounds`
+- direct norm interpolation-valid receiver: `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
 - overlays: `2`
 - subchunks: `110`
 - hRawCenterCoeffAbs fields: `110`
@@ -55,6 +56,7 @@ Address-only worklist.  This is not Lean proof data.
 - scalar `hEnvelope`: exact rational comparison `sampleRadius + max 0 derivSlope * mesh <= remainder`; recorded as passing metadata, not Lean payload
 - `hResidualDerivLowerOnCell` / `hResidualDerivUpperOnCell`: cancellation-preserving direct residual-derivative interval bounds
 - preferred compact route: prove `hRawCenterCoeffAbs`, prove `ResidualDerivativeDirectNormCert.Valid`, prove `cellL = L` and `cellU = U`, then feed those directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_cert_full_cell`
+- interpolation route for `ResidualDerivativeDirectNormCert.Valid`: prove an exact model-derivative norm bound and exact interpolation/error bound on the same cell, prove their sum is at most `derivSlope`, then use `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
 - shortcut compact derivative route: prove `hRawCenterCoeffAbs`, residual-derivative lower/upper bounds on `[L, U]`, and the two abs-slope comparisons, then feed them directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_interval_bounds_full_cell`
 - endpoint fallback compact route: use the endpoint full-cell direct-norm constructor when the payload already has direct endpoint component cert fields
 - lower-level fallback route: use the generic direct-norm constructor with an explicit cell-cover proof, or extract `hResidualDerivBoundOnCell` with `residualDerivBoundOnCell_of_directNormCert` and feed `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_local_direct_endpoint_cert_scale_cell_deriv_bound_at_zero_distance`
@@ -66,6 +68,7 @@ Address-only worklist.  This is not Lean proof data.
 - materialize scalar hEnvelope exact rational arithmetic as Lean proof data only during payload emission
 - generate cancellation-preserving residual-derivative lower/upper interval bounds
 - preferred compact route: generate one ResidualDerivativeDirectNormCert.Valid proof per direct subchunk
+- interpolation route: prove exact model-derivative norm and interpolation/error bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
 - feed hRawCenterCoeffAbs + DirectNormCert.Valid + cellL=L/cellU=U equalities into the raw-center full-cell direct-norm exact-integral constructor
 - shortcut compact route: feed hRawCenterCoeffAbs + residual-derivative lower/upper bounds + abs-slope comparisons into the raw-center interval-bounds full-cell direct-norm constructor
 - fallback: extract hResidualDerivBoundOnCell with residualDerivBoundOnCell_of_directNormCert
@@ -81,4 +84,5 @@ Address-only worklist.  This is not Lean proof data.
 - sampledEnvelopePasses is diagnostic only; hEnvelopeArithmetic recomputes the rational inequality exactly
 - do not emit CellSlopeDirectEnvelopeRefinedPayloadFin while hRawCenterCoeffAbs or the preferred direct residual-derivative norm bound is missing
 - preferred cell-slope route may replace the two interval fields by one hResidualDerivBoundOnCell proof per direct subchunk
+- interpolation diagnostics are non-proof until model and error bounds are emitted as Lean-checked exact hypotheses
 - do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3
