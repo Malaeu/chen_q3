@@ -33943,3 +33943,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   limit/tail ledger needed by the direct M6 source theorem.
 - Boundary: this does not prove the global one-step power-5 identity or
   `Q3.digammaM6IntegralRemainderBound`; Step33A.1-A remains open.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4CellDerivBridgeChecked
+
+- Added Lean-checked support:
+  `bernoulli4Diff_eq_cell_on_Icc`,
+  `stieltjes_interval_B4CellDeriv_to_B4Diff`, and
+  `sum_b4_boundary_telescope`.
+- The second cellwise IBP bridge now converts
+  `bernoulli4DiffCellDeriv/(x+z)^4` into the signed periodic
+  `bernoulli4Diff/(x+z)^5` integral plus the explicit endpoint term
+  `-(1/30) * (v_{n+1} - v_n)`.
+- The endpoint term has a checked finite telescope over `Finset.range N`:
+  `sum_b4_boundary_telescope`.
+- Closed local gap:
+  `STEP33_M6_B4_CELL_DERIV_TELESCOPE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_POWER5_FINITE_SUM_GAP`.
+- Meaning: prove the `bernoulli4Diff/(x+z)^5` adjacent-interval summation and
+  assemble the finite power-5 Stieltjes identity before attempting the
+  `N -> infinity`/tail ledger for `Q3.digammaM6IntegralRemainderBound`.
+- Boundary: this does not prove the finite power-5 identity, the M6 source
+  theorem, Step33A.1-A, or Step33.

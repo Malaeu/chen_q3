@@ -26570,3 +26570,51 @@ limit/tail ledger needed by the M6 source theorem.
 Boundary unchanged: this does not prove the one-step power-5 identity, the M6
 source theorem, Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, or
 Step33.  It is a checked local IBP brick.
+
+## 2026-06-20 Step33A.1-A B4 cell-derivative bridge checked
+
+Added the next checked local layer after
+`stieltjes_interval_B2Fract_to_B4CellDeriv`:
+
+```lean
+Q3.bernoulli4Diff_eq_cell_on_Icc
+Q3.stieltjes_interval_B4CellDeriv_to_B4Diff
+Q3.sum_b4_boundary_telescope
+```
+
+The checked second cellwise IBP bridge is:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4
+  =
+    (-(30 : ℂ)⁻¹) *
+      ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4)
+    + 4 * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+for `(z : ℂ) (hz : 0 < z.re) (n : ℕ)`.
+
+The checked boundary telescope is:
+
+```lean
+∑ n in range N,
+  ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4)
+= (((N : ℂ) + z)⁻¹) ^ 4 - (z⁻¹) ^ 4
+```
+
+This closes `STEP33_M6_B4_CELL_DERIV_TELESCOPE_GAP` as a local/cellwise
+bridge.  The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_SUM_GAP
+```
+
+Meaning: assemble the checked cell identities over `range N`, prove the
+`bernoulli4Diff/(x+z)^5` adjacent-interval summation/integrability bridge, and
+then package the finite power-5 Stieltjes identity before any `N → ∞`/M6
+source-theorem step.
+
+Boundary unchanged: this does not prove the full finite power-5 identity, the
+limit/tail ledger, the M6 source theorem, Step33A.1-A, or Step33.

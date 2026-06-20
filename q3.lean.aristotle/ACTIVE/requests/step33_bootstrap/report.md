@@ -53865,3 +53865,61 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
 
 Boundary: this is not a proof of the full one-step power-5 identity and not a
 proof of `Q3.digammaM6IntegralRemainderBound`.  Step33A.1-A remains open.
+
+## 2026-06-20 Execution update -- B4 cell-derivative bridge checked
+
+Lean progress:
+
+```lean
+Q3.bernoulli4Diff_eq_cell_on_Icc
+Q3.stieltjes_interval_B4CellDeriv_to_B4Diff
+Q3.sum_b4_boundary_telescope
+```
+
+Checked second cellwise bridge:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4
+  =
+    (-(30 : ℂ)⁻¹) *
+      ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4)
+    + 4 * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+      (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+The boundary part now has a checked finite telescope:
+
+```lean
+Q3.sum_b4_boundary_telescope
+```
+
+This closes the local/cellwise gap:
+
+```text
+STEP33_M6_B4_CELL_DERIV_TELESCOPE_GAP
+```
+
+The remaining exact gap is:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_SUM_GAP
+```
+
+Meaning: prove the adjacent-interval summation/integrability bridge for
+`bernoulli4Diff/(x+z)^5`, then combine the checked cell identities and boundary
+telescope into the finite power-5 Stieltjes identity.  Only after that should
+the route move to the `N → ∞`/tail ledger needed by the direct M6 source
+theorem.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Boundary: this is not a proof of the finite power-5 identity, the M6 source
+theorem, Step33A.1-A, or Step33.

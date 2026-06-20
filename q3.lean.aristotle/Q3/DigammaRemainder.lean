@@ -227,6 +227,22 @@ lemma bernoulli4Diff_eq_on_Ioo (n : ℕ) {x : ℝ}
   have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
   simp [bernoulli4Diff, bernoulli4Fract, bernoulli4, hfract, sub_eq_add_neg, add_assoc]
 
+lemma bernoulli4Diff_eq_cell_on_Icc (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli4Diff x =
+      (x - n) ^ 4 - 2 * (x - n) ^ 3 + (x - n) ^ 2 - (30 : ℝ)⁻¹ := by
+  by_cases hx0 : x = n
+  · subst hx0
+    simp [bernoulli4Diff, bernoulli4Fract, bernoulli4]
+  by_cases hx1 : x = n + 1
+  · subst hx1
+    norm_num [bernoulli4Diff, bernoulli4Fract, bernoulli4, Nat.cast_add, Nat.cast_one]
+  have hx' : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ) := by
+    refine ⟨?_, ?_⟩
+    · exact lt_of_le_of_ne hx.1 (Ne.symm hx0)
+    · exact lt_of_le_of_ne hx.2 hx1
+  exact bernoulli4Diff_eq_on_Ioo n hx'
+
 /-- Cell derivative of the B4 polynomial.  This helper is the local polynomial
 surface needed before the intervalwise integration-by-parts lift to kernel
 power 5. -/
@@ -832,6 +848,207 @@ lemma stieltjes_interval_B2Fract_to_B4CellDeriv (z : ℂ) (hz : 0 < z.re) (n : �
     _ = (1 / 4 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
         (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4 :=
       stieltjes_interval_B2_poly_to_B4CellDeriv z hz n
+
+lemma stieltjes_interval_B4CellDeriv_to_B4Diff (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+        (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4 =
+      (-(30 : ℂ)⁻¹) *
+          ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4) +
+        (4 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+  classical
+  let u : ℝ → ℂ := fun x =>
+    ((x : ℂ) - (n : ℂ)) ^ 4 -
+      (2 : ℂ) * ((x : ℂ) - (n : ℂ)) ^ 3 +
+      ((x : ℂ) - (n : ℂ)) ^ 2 - (30 : ℂ)⁻¹
+  let u' : ℝ → ℂ := fun x => (bernoulli4DiffCellDeriv n x : ℂ)
+  let v : ℝ → ℂ := (fun x : ℝ => ((x : ℂ) + z)⁻¹) ^ 4
+  let v' : ℝ → ℂ := fun x =>
+    (4 : ℂ) * ((x : ℂ) + z)⁻¹ ^ (4 - 1) *
+      (-(1 : ℂ) / ((x : ℂ) + z) ^ 2)
+  have hu : ∀ x ∈ Set.uIcc (n : ℝ) (n + 1 : ℝ), HasDerivAt u (u' x) x := by
+    intro x hx
+    have h_id : HasDerivAt (fun x : ℝ => (x : ℂ)) (1 : ℂ) x := by
+      simpa using (hasDerivAt_id (x : ℂ)).comp_ofReal
+    have h_sub : HasDerivAt (fun x : ℝ => (x : ℂ) - (n : ℂ)) (1 : ℂ) x := by
+      simpa using h_id.sub_const (n : ℂ)
+    have h_four :
+        HasDerivAt (fun x : ℝ => ((x : ℂ) - (n : ℂ)) ^ 4)
+          ((4 : ℂ) * ((x : ℂ) - (n : ℂ)) ^ 3) x := by
+      simpa using h_sub.pow 4
+    have h_cube :
+        HasDerivAt (fun x : ℝ => ((x : ℂ) - (n : ℂ)) ^ 3)
+          ((3 : ℂ) * ((x : ℂ) - (n : ℂ)) ^ 2) x := by
+      simpa using h_sub.pow 3
+    have h_square :
+        HasDerivAt (fun x : ℝ => ((x : ℂ) - (n : ℂ)) ^ 2)
+          ((2 : ℂ) * ((x : ℂ) - (n : ℂ))) x := by
+      simpa using h_sub.pow 2
+    have h_poly :=
+      ((h_four.sub (h_cube.const_mul (2 : ℂ))).add h_square).sub_const (30 : ℂ)⁻¹
+    convert h_poly using 1 <;>
+      simp [u, u', bernoulli4DiffCellDeriv, sub_eq_add_neg, add_assoc, add_left_comm,
+        add_comm] <;> ring
+  have hv : ∀ x ∈ Set.uIcc (n : ℝ) (n + 1 : ℝ), HasDerivAt v (v' x) x := by
+    intro x hx
+    have hx' : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) := by
+      have hle : (n : ℝ) ≤ n + 1 := by nlinarith
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := by
+      have hn0 : (0 : ℝ) ≤ n := by exact_mod_cast (Nat.cast_nonneg n)
+      exact le_trans hn0 hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have h_inv : HasDerivAt (fun x : ℝ => ((x : ℂ) + z)⁻¹)
+        (-(1 : ℂ) / ((x : ℂ) + z) ^ 2) x :=
+      hasDerivAt_inv_add z hneq
+    simpa [v, v'] using h_inv.pow 4
+  have hu' : IntervalIntegrable u' volume (n : ℝ) (n + 1 : ℝ) := by
+    have hcont : Continuous u' := by
+      have hcont_sub : Continuous fun x : ℝ => (x : ℂ) - (n : ℂ) :=
+        Complex.continuous_ofReal.sub continuous_const
+      have hcont_cube : Continuous fun x : ℝ => ((x : ℂ) - (n : ℂ)) ^ 3 :=
+        hcont_sub.pow 3
+      have hcont_square : Continuous fun x : ℝ => ((x : ℂ) - (n : ℂ)) ^ 2 :=
+        hcont_sub.pow 2
+      have hcont_poly :
+          Continuous fun x : ℝ =>
+            (4 : ℂ) * ((x : ℂ) - (n : ℂ)) ^ 3 -
+              (6 : ℂ) * ((x : ℂ) - (n : ℂ)) ^ 2 +
+              (2 : ℂ) * ((x : ℂ) - (n : ℂ)) := by
+        exact ((continuous_const.mul hcont_cube).sub
+          (continuous_const.mul hcont_square)).add (continuous_const.mul hcont_sub)
+      simpa [u', bernoulli4DiffCellDeriv, sub_eq_add_neg, add_assoc, add_left_comm,
+        add_comm] using hcont_poly
+    simpa [u'] using
+      (hcont.intervalIntegrable (a := (n : ℝ)) (b := (n + 1 : ℝ)) (μ := volume))
+  have hv' : IntervalIntegrable v' volume (n : ℝ) (n + 1 : ℝ) := by
+    have hcont : ContinuousOn v' (Set.uIcc (n : ℝ) (n + 1 : ℝ)) := by
+      intro x hx
+      have hx' : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) := by
+        have hle : (n : ℝ) ≤ n + 1 := by nlinarith
+        simpa [Set.uIcc_of_le hle] using hx
+      have hx0 : 0 ≤ x := by
+        have hn0 : (0 : ℝ) ≤ n := by exact_mod_cast (Nat.cast_nonneg n)
+        exact le_trans hn0 hx'.1
+      have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+      have hcont_add :
+          ContinuousAt (fun x : ℝ => (x : ℂ) + z) x := by
+        simpa using (Complex.continuous_ofReal.continuousAt.add continuous_const.continuousAt)
+      have hcont_inv :
+          ContinuousAt (fun x : ℝ => ((x : ℂ) + z)⁻¹) x :=
+        (ContinuousAt.inv₀ hcont_add hneq)
+      have hcont_inv_pow :
+          ContinuousAt (fun x : ℝ => ((x : ℂ) + z)⁻¹ ^ (4 - 1)) x :=
+        hcont_inv.pow (4 - 1)
+      have hcont_pow2 :
+          ContinuousAt (fun x : ℝ => ((x : ℂ) + z) ^ 2) x := hcont_add.pow 2
+      have hne2 : ((x : ℂ) + z) ^ 2 ≠ 0 := pow_ne_zero 2 hneq
+      have hcont_pow2_inv :
+          ContinuousAt (fun x : ℝ => (((x : ℂ) + z) ^ 2)⁻¹) x :=
+        (ContinuousAt.inv₀ hcont_pow2 hne2)
+      have hcont_neg_div :
+          ContinuousAt (fun x : ℝ => -(1 : ℂ) / ((x : ℂ) + z) ^ 2) x := by
+        simpa [div_eq_mul_inv] using hcont_pow2_inv.const_mul (-(1 : ℂ))
+      have hcont_left :
+          ContinuousAt (fun x : ℝ => (4 : ℂ) * ((x : ℂ) + z)⁻¹ ^ (4 - 1)) x :=
+        continuous_const.continuousAt.mul hcont_inv_pow
+      have hcont_mul := hcont_left.mul hcont_neg_div
+      simpa [v', mul_assoc] using hcont_mul.continuousWithinAt
+    exact hcont.intervalIntegrable
+  have hparts :=
+    intervalIntegral.integral_mul_deriv_eq_deriv_mul (a := (n : ℝ)) (b := (n + 1 : ℝ))
+      (u := u) (u' := u') (v := v) (v' := v') hu hv hu' hv'
+  have h_left :
+      ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4 =
+        ∫ x in (n : ℝ)..(n + 1 : ℝ), u' x * v x := by
+    refine intervalIntegral.integral_congr ?_
+    intro x hx
+    simp [u', v, div_eq_mul_inv]
+  have h_uv' :
+      ∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x =
+        (-(4 : ℂ)) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+    have h_int :
+        ∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x =
+          ∫ x in (n : ℝ)..(n + 1 : ℝ),
+            (-(4 : ℂ)) * ((bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5) := by
+      refine intervalIntegral.integral_congr ?_
+      intro x hx
+      have hx' : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) := by
+        simpa using hx
+      have hx0 : 0 ≤ x := by
+        have hn0 : (0 : ℝ) ≤ n := by exact_mod_cast (Nat.cast_nonneg n)
+        exact le_trans hn0 hx'.1
+      have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+      have hcell := bernoulli4Diff_eq_cell_on_Icc n hx'
+      simp [u, v', hcell, div_eq_mul_inv, one_div]
+      field_simp [hneq]
+    calc
+      ∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x
+          = ∫ x in (n : ℝ)..(n + 1 : ℝ),
+              (-(4 : ℂ)) * ((bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5) := h_int
+      _ = (-(4 : ℂ)) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+        simpa using
+          (intervalIntegral.integral_const_mul (c := (-(4 : ℂ)))
+            (f := fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+            (a := (n : ℝ)) (b := (n + 1 : ℝ)) (μ := volume))
+  have hu_left : u (n : ℝ) = (-(30 : ℂ)⁻¹) := by
+    simp [u]
+  have hu_right : u (n + 1 : ℝ) = (-(30 : ℂ)⁻¹) := by
+    norm_num [u, Nat.cast_add, Nat.cast_one]
+  have hsum_parts :
+      (∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x) +
+        ∫ x in (n : ℝ)..(n + 1 : ℝ), u' x * v x =
+          u (n + 1 : ℝ) * v (n + 1 : ℝ) - u (n : ℝ) * v (n : ℝ) := by
+    have hparts' := (eq_sub_iff_add_eq).1 hparts
+    simpa [add_comm, add_left_comm, add_assoc] using hparts'
+  have hparts_rev :
+      ∫ x in (n : ℝ)..(n + 1 : ℝ), u' x * v x =
+        u (n + 1 : ℝ) * v (n + 1 : ℝ) - u (n : ℝ) * v (n : ℝ) -
+          ∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x := by
+    refine (eq_sub_iff_add_eq).2 ?_
+    simpa [add_comm, add_left_comm, add_assoc] using hsum_parts
+  have hboundary :
+      u (n + 1 : ℝ) * v (n + 1 : ℝ) - u (n : ℝ) * v (n : ℝ) =
+        (-(30 : ℂ)⁻¹) *
+          ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4) := by
+    rw [hu_right, hu_left]
+    simp [v, sub_eq_add_neg, mul_sub, mul_add, mul_comm, mul_left_comm, mul_assoc,
+      add_comm, add_left_comm, add_assoc]
+  calc
+    ∫ x in (n : ℝ)..(n + 1 : ℝ),
+        (bernoulli4DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 4
+        = ∫ x in (n : ℝ)..(n + 1 : ℝ), u' x * v x := h_left
+    _ = u (n + 1 : ℝ) * v (n + 1 : ℝ) - u (n : ℝ) * v (n : ℝ) -
+          ∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x := hparts_rev
+    _ = (-(30 : ℂ)⁻¹) *
+          ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4) -
+          ∫ x in (n : ℝ)..(n + 1 : ℝ), u x * v' x := by
+          rw [hboundary]
+    _ = (-(30 : ℂ)⁻¹) *
+          ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4) +
+        (4 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+          (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+          rw [h_uv']
+          ring
+
+lemma sum_b4_boundary_telescope (z : ℂ) (N : ℕ) :
+    Finset.sum (Finset.range N)
+        (fun n => ((((n + 1 : ℂ) + z)⁻¹) ^ 4 - (((n : ℂ) + z)⁻¹) ^ 4)) =
+      (((N : ℂ) + z)⁻¹) ^ 4 - (z⁻¹) ^ 4 := by
+  classical
+  let a : ℕ → ℂ := fun n => (((n : ℂ) + z)⁻¹) ^ 4
+  have htel :
+      Finset.sum (Finset.range N) (fun n => a (n + 1) - a n) = a N - a 0 := by
+    induction N with
+    | zero =>
+        simp [a]
+    | succ N ih =>
+        rw [Finset.sum_range_succ, ih]
+        ring
+  simpa [a, add_comm, add_left_comm, add_assoc] using htel
 
 lemma intervalIntegral_inv_eq_log (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
     ∫ x in (0 : ℝ)..(N : ℝ), ((x : ℂ) + z)⁻¹ =
