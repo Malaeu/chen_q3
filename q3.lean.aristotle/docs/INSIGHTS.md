@@ -33663,3 +33663,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   The missing proof object remains a no-premise
   `Step33Shift16M6FiniteTelescopeTermPayload`, now under blocker
   `STEP33_M6_FINITE_TELESCOPE_TERM_PAYLOAD_GAP`.
+
+## Insight (2026-06-20, Step33A.1-A) -- M6StepDefectN1IntervalClosed
+
+- Used the in-app Proshka browser session after the `n=0` closure.  Proshka
+  selected `CHOICE: B`: prove the `n=1` component interval next, same style as
+  `n=0`, before abstracting to `Fin 16`.
+- Added Lean-checked no-premise theorem
+  `step33_shift16_m6_step_defect_n1_component_interval`.
+  It proves `[-140,-139]/10^25` for the real part and `[154,155]/10^27` for
+  the imaginary part of
+  `Q3.digammaM6StepDefect (step33Shift16DigammaPoint + (1 : Complex))`.
+- The proof repeats the proof-grade split used for `n=0`: exact algebraic
+  rational component identities plus a certified log-step rectangle.  The real
+  step uses `Real.abs_log_sub_add_sum_range_le` on
+  `log(1 + 108000/1768901)`, and the imaginary step uses arctan
+  alternating-series certificates for ratios `1/1370` and `1/1330`.
+- Validation target remains the same support file.  Boundary: the payload is
+  still open; the exact next source gap is now
+  `STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP`, i.e. produce the remaining
+  checked component intervals for `n=2,...,15` or a finite table theorem feeding
+  the existing `Fin 16` receiver.
