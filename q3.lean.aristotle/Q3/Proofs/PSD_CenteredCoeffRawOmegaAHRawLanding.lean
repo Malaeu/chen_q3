@@ -1714,6 +1714,93 @@ theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_
   rw [hResidualDerivFun]
   exact deriv_sub hRawDerivDifferentiableAt hPolyDerivDifferentiableAt
 
+/-- Closed-form target for the first derivative of the active raw integrand at
+`x = 0`.  This removes the constant cosine factor before the second-derivative
+work starts. -/
+def primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+    (eta : Real) : Real :=
+  (((3 : Real) / 10) / Real.pi) *
+    (step22OmegaArchWeightDerivClosedForm eta *
+        (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta) ^ 2 +
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight eta *
+        (2 *
+          centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta *
+            centeredBSplineImagTransformRealClosedFormDerivClosedForm
+              11 ((3 : Real) / 10) eta))
+
+/-- First-derivative closed form for the active raw integrand at `x = 0`. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm
+    (eta : Real) :
+    deriv
+        (fun t : Real =>
+          Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+            11 ((3 : Real) / 10) 0 t)
+        eta =
+      primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta := by
+  let omega : Real -> Real :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+  let shapeSq : Real -> Real :=
+    fun t : Real =>
+      (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) t) ^ 2
+  have hRawFun :
+      (fun t : Real =>
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+          11 ((3 : Real) / 10) 0 t) =
+        fun t : Real => (((3 : Real) / 10) / Real.pi) * (omega t * shapeSq t) := by
+    funext t
+    simp [omega, shapeSq,
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand,
+      mul_assoc]
+  have hOmegaDiff : DifferentiableAt Real omega eta := by
+    simpa [omega] using
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt
+        eta
+  have hShapeSqDiff : DifferentiableAt Real shapeSq eta := by
+    dsimp [shapeSq]
+    exact
+      (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.centeredBSplineImagTransformRealClosedForm_differentiableAt
+        11 ((3 : Real) / 10) eta).pow 2
+  rw [hRawFun]
+  rw [deriv_const_mul]
+  · have hProdDeriv :
+        deriv (fun t : Real => omega t * shapeSq t) eta =
+          deriv omega eta * shapeSq eta + omega eta * deriv shapeSq eta := by
+      simpa using deriv_mul hOmegaDiff hShapeSqDiff
+    rw [hProdDeriv]
+    rw [step22OmegaArchWeight_deriv_eq_closedForm]
+    rw [deriv_centeredBSplineImagTransformRealClosedForm_sq]
+    rw [centeredBSplineImagTransformRealClosedForm_deriv_eq_closedForm]
+    simp [primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm,
+      omega, shapeSq, mul_assoc, add_comm]
+  · exact hOmegaDiff.mul hShapeSqDiff
+
+/-- Reduce differentiability of the opaque raw-integrand derivative to
+differentiability of its checked closed form. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
+    (hClosedFormDifferentiableAt :
+      DifferentiableAt Real
+        primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+        (0 : Real)) :
+    DifferentiableAt Real
+      (fun t : Real =>
+        deriv
+          (fun eta : Real =>
+            Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+              11 ((3 : Real) / 10) 0 eta)
+          t)
+      (0 : Real) := by
+  have hDerivFun :
+      (fun t : Real =>
+        deriv
+          (fun eta : Real =>
+            Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+              11 ((3 : Real) / 10) 0 eta)
+          t) =
+        primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm := by
+    funext t
+    exact primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm t
+  simpa [hDerivFun] using hClosedFormDifferentiableAt
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 

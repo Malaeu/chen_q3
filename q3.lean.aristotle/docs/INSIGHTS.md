@@ -36064,6 +36064,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   raw integrand at `x = 0`, then prove that closed form differentiable at `0`;
   this should avoid asking `fun_prop` to reason through an opaque `deriv`.
 
+## Insight (2026-06-20, Step33A.1-A) -- RawFirstDerivativeClosedFormBridge
+
+- Added
+  `primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm`.
+- Added Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm`,
+  proving the first derivative of the active raw integrand at `x = 0` equals
+  the closed form.
+- Added Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm`,
+  reducing the opaque raw derivative differentiability target to
+  differentiability of the named closed form at `0`.
+- A direct `fun_prop` probe on that closed form fails first because there is no
+  theorem for differentiability of `step22OmegaArchWeightDerivClosedForm`.
+- New first blocker:
+  `STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP`.
+- Validation: `q3_check` passes on the touched Lean file; hole scan is clean;
+  `git diff --check` passes.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ResidualSecondDerivCrosswalkReduction
 
 - Added Lean theorem:

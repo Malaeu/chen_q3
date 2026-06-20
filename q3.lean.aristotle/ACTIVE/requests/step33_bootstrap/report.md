@@ -58140,6 +58140,50 @@ STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
 Candidate repair: introduce a checked first-derivative closed form for the raw
 integrand at `x = 0`, then prove that closed form differentiable at `0`.
 
+## Execution Update (2026-06-20) -- raw first-derivative closed form
+
+Lean artifacts added:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
+```
+
+Proof-grade result: the first derivative of the active raw integrand at
+`x = 0` is rewritten to a named closed form using:
+
+```text
+step22OmegaArchWeight_deriv_eq_closedForm
+deriv_centeredBSplineImagTransformRealClosedForm_sq
+centeredBSplineImagTransformRealClosedForm_deriv_eq_closedForm
+```
+
+This converts the raw second-differentiability hypothesis into
+differentiability of the named closed form at `0`.
+
+Probe result: direct `fun_prop` on the closed form failed first at:
+
+```text
+No theorems found for `step22OmegaArchWeightDerivClosedForm`
+```
+
+Current first blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+Validation:
+
+```text
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+All three checks pass; the hole scan has no matches.
+
 ## Execution Update (2026-06-20) -- residual second-deriv crosswalk reduction
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.

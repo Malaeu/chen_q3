@@ -29895,3 +29895,38 @@ STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
 Required repair: a dedicated second-differentiability theorem for the raw
 integrand at `0`, likely via a closed-form first derivative before asking Lean
 to differentiate again.
+
+## 2026-06-20 Current EOF Addendum -- raw first-derivative closed form landed
+
+Lean now proves a first-derivative closed form for the active raw integrand at
+`x = 0`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
+```
+
+This repairs the opaque `fun t => deriv raw_integrand t` problem: raw
+second-differentiability now reduces to differentiability of the named closed
+form at `0`.
+
+Direct `fun_prop` on the closed form failed at the first component:
+
+```text
+step22OmegaArchWeightDerivClosedForm
+```
+
+Exact current first blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+This is the local trigamma/polygamma bridge: prove differentiability at `0` of
+the checked Omega-derivative closed form, then return to the raw closed-form
+differentiability theorem.
+
+Validation: `q3_check` on
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean` passes; hole scan is
+clean; `git diff --check` passes.

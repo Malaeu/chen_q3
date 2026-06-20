@@ -16936,3 +16936,35 @@ STEP33_A1_SUB0_RAW_INTEGRAND_DERIV_DIFFERENTIABLE_AT_ZERO_GAP
 Next viable patch shape: add a named first-derivative closed form for the raw
 integrand at `x = 0` and prove that closed form differentiable at `0`, or
 prove a direct `HasDerivAt` theorem for `fun t => deriv raw_integrand t`.
+
+## 2026-06-20 Current EOF Addendum -- raw first-derivative closed form
+
+The proposed repair has landed in Lean:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm
+primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
+```
+
+The raw derivative opacity gap is now reduced to:
+
+```text
+DifferentiableAt Real
+  primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm 0
+```
+
+Direct `fun_prop` on that closed form fails first on:
+
+```text
+DifferentiableAt Real (fun eta => step22OmegaArchWeightDerivClosedForm eta) 0
+```
+
+New first blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_DERIV_CLOSED_FORM_DIFFERENTIABLE_AT_ZERO_GAP
+```
+
+Validation: the touched Lean file passes `q3_check`; the hole scan is clean;
+whitespace check passes.
