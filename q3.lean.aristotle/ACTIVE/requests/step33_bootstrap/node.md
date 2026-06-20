@@ -15625,3 +15625,52 @@ whitespace check were clean.
 Boundary remains unchanged: this does not prove the weighted nonnegativity
 assumption, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Addendum -- z0 kernel derivative support checked
+
+Checked new support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_pos
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow17_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_deriv_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelConvexNumerator_nonneg
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_CONVEX_DERIVATIVE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next theorem should convert the checked second-derivative expression into
+paired-kernel antitonicity on `Set.Icc 0 (1 / 2)` for
+`t |-> K(n + t) + K(n + 1 - t)`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file hole/axiom/unsafe
+scan and whitespace check were clean.
+
+Boundary remains unchanged: this does not prove paired-kernel antitonicity,
+the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

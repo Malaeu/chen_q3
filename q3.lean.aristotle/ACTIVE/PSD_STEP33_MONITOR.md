@@ -28415,3 +28415,51 @@ not provide a stable Lean theorem statement.
 
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- shifted B14 z0 kernel derivative support
+
+Current checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_pos
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow17_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_deriv_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelConvexNumerator_nonneg
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_CONVEX_DERIVATIVE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem: paired z0 kernel antitonicity on `0 <= t <= 1/2`
+for `t |-> K(n + t) + K(n + 1 - t)`, then the B14 primitive
+integration-by-parts bridge.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file
+hole/axiom/unsafe scan and whitespace check were clean.
+
+Boundary: this does not prove paired-kernel antitonicity, the half-cell
+rearrangement, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.

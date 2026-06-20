@@ -35093,3 +35093,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0KernelDerivativeSupport
+
+- Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by adding the
+  checked calculus layer behind the paired-kernel route.
+- Local `q3_docs` searches again found no ready weighted half-cell theorem.
+  The live path remains: B14 primitive sign + z0 kernel shape + half-cell
+  rearrangement.
+- Added checked scalar kernel definitions:
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelSq` and
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15`, representing
+  `S(x) = (x + 129/4)^2 + (1/40)^2` and `K(x)=S(x)^(-15/2)`.
+- Added checked calculus facts:
+  `step33Shift16Z0KernelSq_hasDerivAt`,
+  `step33Shift16Z0KernelPow15_hasDerivAt`,
+  `step33Shift16Z0KernelPow17_hasDerivAt`, and
+  `step33Shift16Z0KernelPow15_deriv_hasDerivAt`.
+- Added checked positivity facts:
+  `step33Shift16Z0KernelSq_pos`,
+  `step33Shift16Z0KernelConvexNumerator_nonneg`, and
+  `step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg`.
+- Closed preparatory gap:
+  `STEP33_M6_B14_Z0_KERNEL_CONVEX_DERIVATIVE_GAP`.
+- Active exact gap remains:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- Next patch-sized theorem: use `antitoneOn_of_deriv_nonpos` or an equivalent
+  derivative comparison to prove the paired kernel
+  `t |-> K(n + t) + K(n + 1 - t)` is antitone on `0 <= t <= 1/2`, then feed
+  that into the B14 primitive integration-by-parts bridge.
+- Boundary: this does not prove paired-kernel antitonicity, weighted cell
+  nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+  RH.

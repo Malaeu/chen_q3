@@ -56119,3 +56119,64 @@ whitespace check were clean.
 Boundary: this does not prove `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Execution Update (2026-06-20) -- z0 kernel derivative support
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_pos
+Q3.PSDpd.Step33.step33Shift16Z0KernelSq_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow17_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_deriv_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelConvexNumerator_nonneg
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_CONVEX_DERIVATIVE_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem: paired-kernel antitonicity on `0 <= t <= 1/2` for
+`t |-> K(n + t) + K(n + 1 - t)`, followed by the B14 primitive
+integration-by-parts bridge.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file hole/axiom/unsafe
+scan and whitespace check were clean.
+
+Boundary: this does not prove paired-kernel antitonicity, the half-cell
+rearrangement, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

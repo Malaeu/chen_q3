@@ -250,6 +250,107 @@ theorem step33Shift16DigammaPoint_half_cell_normSq_le_reflect
   have ht0' : 0 <= t := ht0
   nlinarith [ht0', hth, hn0]
 
+def step33Shift16Z0KernelSq (x : Real) : Real :=
+  (x + (129 : Real) / 4) ^ 2 + ((1 : Real) / 40) ^ 2
+
+def step33Shift16Z0KernelPow15 (x : Real) : Real :=
+  step33Shift16Z0KernelSq x ^ (-(15 : Real) / 2)
+
+theorem step33Shift16Z0KernelSq_pos (x : Real) :
+    0 < step33Shift16Z0KernelSq x := by
+  unfold step33Shift16Z0KernelSq
+  nlinarith [sq_nonneg (x + (129 : Real) / 4), sq_nonneg ((1 : Real) / 40)]
+
+theorem step33Shift16Z0KernelSq_hasDerivAt (x : Real) :
+    HasDerivAt step33Shift16Z0KernelSq (2 * (x + (129 : Real) / 4)) x := by
+  unfold step33Shift16Z0KernelSq
+  have hlin : HasDerivAt (fun y : Real => y + (129 : Real) / 4) 1 x := by
+    simpa [id_eq] using (hasDerivAt_id x).add_const ((129 : Real) / 4)
+  have hsq := hlin.pow 2
+  have hc : HasDerivAt (fun _ : Real => ((1 : Real) / 40) ^ 2) 0 x :=
+    hasDerivAt_const x (((1 : Real) / 40) ^ 2)
+  have h := hsq.add hc
+  convert h using 1
+  ring
+
+theorem step33Shift16Z0KernelPow15_hasDerivAt (x : Real) :
+    HasDerivAt step33Shift16Z0KernelPow15
+      (-15 * (x + (129 : Real) / 4) *
+        step33Shift16Z0KernelSq x ^ (-(17 : Real) / 2)) x := by
+  unfold step33Shift16Z0KernelPow15
+  have hs_deriv := step33Shift16Z0KernelSq_hasDerivAt x
+  have hs_ne : step33Shift16Z0KernelSq x ≠ 0 :=
+    ne_of_gt (step33Shift16Z0KernelSq_pos x)
+  have hrpow :=
+    (Real.hasDerivAt_rpow_const
+      (x := step33Shift16Z0KernelSq x) (p := (-(15 : Real) / 2))
+      (Or.inl hs_ne)).comp x hs_deriv
+  convert hrpow using 1
+  ring_nf
+
+theorem step33Shift16Z0KernelPow17_hasDerivAt (x : Real) :
+    HasDerivAt (fun y : Real => step33Shift16Z0KernelSq y ^ (-(17 : Real) / 2))
+      (-17 * (x + (129 : Real) / 4) *
+        step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2)) x := by
+  have hs_deriv := step33Shift16Z0KernelSq_hasDerivAt x
+  have hs_ne : step33Shift16Z0KernelSq x ≠ 0 :=
+    ne_of_gt (step33Shift16Z0KernelSq_pos x)
+  have hrpow :=
+    (Real.hasDerivAt_rpow_const
+      (x := step33Shift16Z0KernelSq x) (p := (-(17 : Real) / 2))
+      (Or.inl hs_ne)).comp x hs_deriv
+  convert hrpow using 1
+  ring_nf
+
+theorem step33Shift16Z0KernelPow15_deriv_hasDerivAt (x : Real) :
+    HasDerivAt
+      (fun y : Real =>
+        -15 * (y + (129 : Real) / 4) *
+          step33Shift16Z0KernelSq y ^ (-(17 : Real) / 2))
+      (15 *
+        (16 * (x + (129 : Real) / 4) ^ 2 - ((1 : Real) / 40) ^ 2) *
+          step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2)) x := by
+  have hlin :
+      HasDerivAt (fun y : Real => -15 * (y + (129 : Real) / 4)) (-15) x := by
+    have h0 : HasDerivAt (fun y : Real => y + (129 : Real) / 4) 1 x := by
+      simpa [id_eq] using (hasDerivAt_id x).add_const ((129 : Real) / 4)
+    simpa using h0.const_mul (-15 : Real)
+  have hp := step33Shift16Z0KernelPow17_hasDerivAt x
+  have h := hlin.mul hp
+  convert h using 1
+  have hpow :
+      step33Shift16Z0KernelSq x ^ (-(17 : Real) / 2) =
+        step33Shift16Z0KernelSq x *
+          step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2) := by
+    calc
+      step33Shift16Z0KernelSq x ^ (-(17 : Real) / 2)
+          = step33Shift16Z0KernelSq x ^ (1 + (-(19 : Real) / 2)) := by
+            ring_nf
+      _ = step33Shift16Z0KernelSq x ^ (1 : Real) *
+            step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2) := by
+            rw [Real.rpow_add (step33Shift16Z0KernelSq_pos x)]
+      _ = step33Shift16Z0KernelSq x *
+            step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2) := by
+            simp
+  rw [hpow]
+  unfold step33Shift16Z0KernelSq
+  ring_nf
+
+theorem step33Shift16Z0KernelConvexNumerator_nonneg
+    {x : Real} (hx : 0 <= x) :
+    0 <= 16 * (x + (129 : Real) / 4) ^ 2 - ((1 : Real) / 40) ^ 2 := by
+  nlinarith [sq_nonneg (x + (129 : Real) / 4), hx]
+
+theorem step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg
+    {x : Real} (hx : 0 <= x) :
+    0 <=
+      15 * (16 * (x + (129 : Real) / 4) ^ 2 - ((1 : Real) / 40) ^ 2) *
+        step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2) := by
+  have hnum := step33Shift16Z0KernelConvexNumerator_nonneg hx
+  have hrpow : 0 <= step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2) :=
+    Real.rpow_nonneg (le_of_lt (step33Shift16Z0KernelSq_pos x)) _
+  exact mul_nonneg (mul_nonneg (by norm_num) hnum) hrpow
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by
