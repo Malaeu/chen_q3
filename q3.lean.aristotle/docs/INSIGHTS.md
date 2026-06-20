@@ -34734,3 +34734,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   not used as proof evidence.
 - Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B14CellDerivToB14DiffRouteInProgress
+
+- Target blocker:
+  `STEP33_M6_B14_CELLDERIV_IOI_NORM_TO_ORDER15_BOUND_GAP`.
+- Exact downstream receiver remains
+  `Q3.digammaM6IntegralRemainderBound_of_B12Diff_norm_bound`; it needs a
+  proof-grade norm bound for the checked B12/power-13 `Ioi` remainder.
+- Local `q3_docs` search points back to `Q3.DigammaRemainder`; no pre-existing
+  B14-cell derivative `Ioi` bridge or norm-to-order15 theorem was found.
+- Existing checked support:
+  `Q3.stieltjes_interval_B12Diff_to_B14CellDeriv`,
+  `Q3.bernoulli14DiffCellDeriv_hasDerivAt`,
+  `Q3.bernoulli14Diff_eq_cell_on_Icc`,
+  `Q3.bernoulli14Diff_norm_le`, and the existing B4/B6/B8/B10/B12
+  interval-to-`Ioi` Stieltjes patterns.
+- External Mathlib API search only confirmed local API surfaces already used
+  in this file: interval integrals, adjacent-interval sums,
+  `norm_integral_le_integral_norm`, and `integral_mono_ae`; it is not proof
+  evidence.
+- Smallest useful next Lean object:
+  `Q3.stieltjes_interval_B14CellDeriv_to_B14Diff`, the unit-cell
+  integration-by-parts bridge from
+  `bernoulli14DiffCellDeriv / ((x : C) + z)^14` to the B14/power-15
+  integrand plus the explicit boundary term.
+- Boundary: this planned patch will not prove the B14 `Ioi` lift, the
+  B12 `Ioi` norm-to-order15 inequality,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
