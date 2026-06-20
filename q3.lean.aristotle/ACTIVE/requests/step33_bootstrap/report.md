@@ -59100,3 +59100,53 @@ Boundary: no component Taylor bound certificate, no assembled raw derivative
 coefficient vector, no residual polynomial range proof, no generated Lean
 payload, no first-subchunk residual-derivative norm certificate, no A hbox, no
 `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Execution Update (2026-06-20) -- omega/OmegaPrime Taylor remainder gap map
+
+Added:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md
+```
+
+The new report is documentation only.  It records the exact live consumer,
+the exact interval statement needed by
+`primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`,
+and the local source artifacts currently available for `omega`,
+`omegaPrime`, endpoint interval support, and direct residual derivative norm
+receivers.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+Next patch: build a proof-grade `step33_a1_sub0_omega_taylor_remainder`
+receiver/generator surface for center `1/20`, radius `1/20`, on `[0, 1/10]`.
+It must either produce exact component Taylor coefficients and remainder bounds
+for `step22OmegaArchWeight` and `step22OmegaArchWeightDerivClosedForm`, or fail
+closed with the same blocker code.
+
+Boundary: Browser/Proshka output is advisory only.  No Lean files were touched,
+no Taylor remainder proof exists yet, no generated Lean payload exists, no A
+hbox exists, and Step33A.1-A remains open.
+
+Follow-up Browser/Proshka advice narrowed the next patch to an OmegaPrime-only
+Taylor remainder payload:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+Expected fail-closed first sub-blocker if the route cannot close:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+The suggested payload must prove center-jet coefficient enclosures and a
+uniform order-16 bound for `step22OmegaArchWeightDerivClosedForm` on
+`[0, 1/10]`, then spend the coefficient error and Lagrange remainder into one
+`remainderAbs`.  This is still advisory until a local Lean or exact-rational
+certificate exists.

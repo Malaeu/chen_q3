@@ -36488,3 +36488,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   coefficient vector, no residual polynomial range proof, no generated Lean
   payload, no first-subchunk residual-derivative norm certificate, no A hbox,
   no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaOmegaPrimeTaylorRemainderGap
+
+- Added
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md`
+  as a fail-closed map for the current first live blocker.
+- The exact consumer is
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`.
+  It needs a proof-grade interval for
+  `primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+  rawOmegaATaylorPolynomial 15 (1/20)
+  primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta` on
+  `[0, 1/10]`.
+- Local Lean support exists for `step22OmegaArchWeight`,
+  `step22OmegaArchWeightDerivClosedForm`,
+  `step22OmegaArchWeight_deriv_eq_closedForm`, endpoint interval certificates,
+  and direct residual derivative norm receivers.
+- No local proof-producing Taylor remainder bridge for `omega` and
+  `omegaPrime` was found by the `q3_docs` searches.  Browser/Proshka route
+  advice is recorded as advisory only.
+- Current exact blocker remains
+  `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP`.
+- Next proof-producing patch: build a proof-grade
+  `step33_a1_sub0_omega_taylor_remainder` receiver/generator surface for center
+  `1/20`, radius `1/20`, interval `[0, 1/10]`, fail-closed until the component
+  coefficients and remainder bounds are proof-grade.
+- Follow-up Browser/Proshka advice narrowed the first implementable subpatch to
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`, with first
+  fail code `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.  This
+  remains advisory-only until the repo has a local proof-grade order-16 bound
+  for `step22OmegaArchWeightDerivClosedForm`.

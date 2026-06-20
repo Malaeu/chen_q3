@@ -30524,3 +30524,52 @@ coefficients, but component Taylor coefficients/remainders are still missing.
 No assembled raw derivative coefficient vector, no residual polynomial range
 proof, no Lean payload, no first-subchunk residual-derivative norm
 certificate, and Step33A.1-A remains open.
+
+## 2026-06-20 Current EOF Addendum -- omega/OmegaPrime Taylor remainder gap map
+
+Added fail-closed source map:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md
+```
+
+Current first live blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+The map pins the exact consumer:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds
+```
+
+and the exact same-expression interval required on `Set.Icc 0 (1/10)`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+  rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+    primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+Browser/Proshka was used only as route advice.  The local repository remains
+the proof source.  No Lean files were touched and no proof-grade
+omega/OmegaPrime Taylor remainder certificate exists yet.
+
+Follow-up Proshka route advice narrowed the next implementable patch to an
+OmegaPrime Taylor payload:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+with first sub-blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+This is advisory only.  The broader live blocker remains
+`STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP` until a local
+proof-grade component Taylor remainder certificate exists.
