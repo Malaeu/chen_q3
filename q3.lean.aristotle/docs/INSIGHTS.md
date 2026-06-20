@@ -34123,3 +34123,20 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   normalization.
 - Boundary: this does not prove the B4-to-B6 Stieltjes bridge,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4ToB6IntervalBridgeChecked
+
+- Added checked interval identity:
+  `Q3.stieltjes_interval_B4Diff_to_B6CellDeriv`.
+- The theorem proves the local zero-boundary integration-by-parts bridge
+  from `bernoulli4Diff/(x+z)^5` to
+  `(1/6) * bernoulli6DiffCellDeriv/(x+z)^6` on each unit cell.
+- Closed:
+  `STEP33_M6_B4_TO_B6_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B6_CELLDERIV_TO_B6DIFF_BOUNDARY_GAP`.
+- Smallest useful next Lean object: prove the interval boundary bridge from
+  `bernoulli6DiffCellDeriv/(x+z)^6` to `bernoulli6Diff/(x+z)^7`, then sum it
+  to expose the expected global boundary contribution.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

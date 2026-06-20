@@ -26821,3 +26821,30 @@ B6/power-7, with the boundary term accounted for.
 
 Boundary unchanged: this does not prove the B4-to-B6 Stieltjes bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
+## 2026-06-20 Step33A.1-A B4-to-B6 interval bridge checked
+
+Added checked interval bridge:
+
+```lean
+Q3.stieltjes_interval_B4Diff_to_B6CellDeriv
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_CELLDERIV_TO_B6DIFF_BOUNDARY_GAP
+```
+
+Meaning: use the existing B6 cell polynomial layer to prove the boundary-term
+bridge from `bernoulli6DiffCellDeriv/(x+z)^6` to
+`bernoulli6Diff/(x+z)^7`.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.

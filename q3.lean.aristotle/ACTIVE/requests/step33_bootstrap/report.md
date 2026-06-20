@@ -54296,3 +54296,40 @@ including the boundary term, before trying to reach the order-15 M6 source.
 
 Boundary: this is not a proof of the B4-to-B6 Stieltjes bridge,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B4-to-B6 interval bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B4Diff_to_B6CellDeriv
+```
+
+Checked interval identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+=
+  (1 / 6 : ℂ) * ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli6DiffCellDeriv n x : ℂ) / ((x : ℂ) + z) ^ 6
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_CELLDERIV_TO_B6DIFF_BOUNDARY_GAP
+```
+
+Meaning: prove the next interval integration-by-parts bridge that rewrites
+the B6 cell-derivative surface through `bernoulli6Diff/(x+z)^7`, including
+the endpoint boundary term, before summing or passing to `Ioi`.
+
+Boundary: this is not a proof of the B6 boundary bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
