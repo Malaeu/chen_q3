@@ -34961,3 +34961,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   not give a stable theorem statement.
 - Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14WeightedBridgeChecked
+
+- Computer Use / Browser was used at the shifted B14 phase-mismatch fork.
+  Pro/Louise output was treated as advisory; only locally checked Lean was
+  accepted into the route.
+- Added checked Lean lemmas in `Q3/DigammaRemainder.lean`:
+  `Q3.bernoulli14_eq_seven_six_sub_factor`,
+  `Q3.bernoulli14Diff_le_seven_six`,
+  `Q3.integrable_bernoulli14Diff_kernel_norm_pow15`, and
+  `Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg`.
+- The new bridge proves the complex-kernel shifted B14 norm estimate from the
+  scalar same-target weighted nonnegativity assumption
+  `0 <= ∫ x in Set.Ioi (0 : ℝ), bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15`.
+- Closed local blocker:
+  `STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP`.
+- Active exact blocker:
+  `STEP33_M6_B14_NORM_WEIGHTED_NONNEG_GAP`.
+- Next smallest useful Lean object: prove the weighted nonnegativity at
+  `Q3.PSDpd.Step33.step33Shift16DigammaPoint`, or a general theorem that
+  instantiates there, then feed it into
+  `Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg` and
+  `Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound`.
+- Lean parser note: when subtracting two set integrals, write parentheses
+  explicitly, e.g. `c * (∫ x in S, f x) - (∫ x in S, g x)`.  Without the
+  parentheses, Lean can parse the subtraction inside the first integral body.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Boundary: this does not prove the weighted nonnegativity assumption,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+  `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

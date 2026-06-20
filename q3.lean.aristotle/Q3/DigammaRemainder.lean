@@ -625,6 +625,43 @@ lemma bernoulli14Diff_abs_le (x : ℝ) :
         ht6_nonneg, ht4_le, ht2_nonneg]
   simpa [bernoulli14Diff, bernoulli14Fract, bernoulli14, t] using abs_le.2 hbounds
 
+lemma bernoulli14_eq_seven_six_sub_factor (x : ℝ) :
+    let t : ℝ := x * (1 - x)
+    bernoulli14 x =
+      (7 / 6 : ℝ) - (691 / 30 : ℝ) * t ^ 2 - (691 / 15 : ℝ) * t ^ 3 -
+        (118 / 3 : ℝ) * t ^ 4 - (287 / 15 : ℝ) * t ^ 5 -
+        (35 / 6 : ℝ) * t ^ 6 - t ^ 7 := by
+  dsimp [bernoulli14]
+  ring
+
+lemma bernoulli14Diff_le_seven_six (x : ℝ) :
+    bernoulli14Diff x ≤ (7 / 6 : ℝ) := by
+  set y : ℝ := Int.fract x
+  set t : ℝ := y * (1 - y)
+  have hy0 : 0 ≤ y := by
+    simp [y]
+  have hy1 : y ≤ 1 := by
+    simp [y, le_of_lt (Int.fract_lt_one x)]
+  have ht0 : 0 ≤ t := by
+    nlinarith [hy0, hy1]
+  have ht2 : 0 ≤ t ^ 2 := pow_nonneg ht0 2
+  have ht3 : 0 ≤ t ^ 3 := pow_nonneg ht0 3
+  have ht4 : 0 ≤ t ^ 4 := pow_nonneg ht0 4
+  have ht5 : 0 ≤ t ^ 5 := pow_nonneg ht0 5
+  have ht6 : 0 ≤ t ^ 6 := pow_nonneg ht0 6
+  have ht7 : 0 ≤ t ^ 7 := pow_nonneg ht0 7
+  have hfactor := bernoulli14_eq_seven_six_sub_factor y
+  have hpoly :
+      bernoulli14 y =
+        (7 / 6 : ℝ) - (691 / 30 : ℝ) * t ^ 2 - (691 / 15 : ℝ) * t ^ 3 -
+          (118 / 3 : ℝ) * t ^ 4 - (287 / 15 : ℝ) * t ^ 5 -
+          (35 / 6 : ℝ) * t ^ 6 - t ^ 7 := by
+    simpa [t] using hfactor
+  have hle : bernoulli14 y ≤ (7 / 6 : ℝ) := by
+    rw [hpoly]
+    nlinarith [ht2, ht3, ht4, ht5, ht6, ht7]
+  simpa [bernoulli14Diff, bernoulli14Fract, y] using hle
+
 lemma bernoulli14Diff_norm_le (x : ℝ) :
     ‖(bernoulli14Diff x : ℂ)‖ ≤ (512 : ℝ) := by
   have hb := bernoulli14Diff_abs_le x
@@ -8010,6 +8047,46 @@ lemma integrable_bernoulli14Diff_div_pow15 (z : ℂ) (hz : 0 < z.re) :
             field_simp
   exact Integrable.mono' hkernel' hmeas hbound
 
+lemma integrable_bernoulli14Diff_kernel_norm_pow15 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 15))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow15 z hz
+  have hkernel' :
+      Integrable (fun x : ℝ => (512 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 15))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    hkernel.const_mul (512 : ℝ)
+  have hmeas :
+      AEStronglyMeasurable
+        (fun x : ℝ => bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable
+        (fun x : ℝ => bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_norm : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖) := h_add.norm
+      have h_pow : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖ ^ 15) := h_norm.pow_const 15
+      exact measurable_bernoulli14Diff.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15 : ℝ)‖ ≤
+          (512 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 15) := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 15 := by positivity
+    calc
+      ‖(bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15 : ℝ)‖
+          = |bernoulli14Diff x| / ‖(x : ℂ) + z‖ ^ 15 := by
+            simp [Real.norm_eq_abs, abs_div, abs_of_nonneg hpos]
+      _ ≤ (512 : ℝ) / ‖(x : ℂ) + z‖ ^ 15 := by
+            exact div_le_div_of_nonneg_right (bernoulli14Diff_abs_le x) hpos
+      _ = (512 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 15) := by
+            field_simp
+  exact Integrable.mono' hkernel' hmeas hbound
+
 lemma tendsto_intervalIntegral_b2diff_div_Ioi (z : ℂ) (hz : 0 < z.re) :
     Tendsto
       (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
@@ -8794,6 +8871,100 @@ lemma stieltjes_B12Diff_to_shiftedB14Diff_Ioi (z : ℂ) (hz : 0 < z.re) :
   congr 1
   ext x
   ring_nf
+
+lemma shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg
+    (z : ℂ) (hz : 0 < z.re)
+    (hweighted :
+      0 ≤ ∫ x in Set.Ioi (0 : ℝ),
+        bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15) :
+    ‖∫ x in Set.Ioi (0 : ℝ),
+        ((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ)) /
+          ((x : ℂ) + z) ^ 15‖ ≤
+      ((7 : ℝ) / (6 : ℝ)) *
+        ∫ x in Set.Ioi (0 : ℝ), 1 / ‖(x : ℂ) + z‖ ^ 15 := by
+  let c : ℝ := (7 : ℝ) / (6 : ℝ)
+  let K : ℝ → ℝ := fun x => 1 / ‖(x : ℂ) + z‖ ^ 15
+  let BK : ℝ → ℝ := fun x => bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15
+  let G : ℝ → ℝ := fun x => c * K x - BK x
+  have hK : Integrable K (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [K] using integrable_kernel_norm_pow15 z hz
+  have hBK : Integrable BK (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [BK] using integrable_bernoulli14Diff_kernel_norm_pow15 z hz
+  have hG : Integrable G (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [G] using (hK.const_mul c).sub hBK
+  have hpoint :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ)) /
+            ((x : ℂ) + z) ^ 15‖ ≤ G x := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hleB : bernoulli14Diff x ≤ (7 / 6 : ℝ) :=
+      bernoulli14Diff_le_seven_six x
+    have habs :
+        |bernoulli14Diff x - (7 / 6 : ℝ)| =
+          (7 / 6 : ℝ) - bernoulli14Diff x := by
+      have h := abs_of_nonpos (sub_nonpos.mpr hleB)
+      rw [h]
+      ring
+    have hnum :
+        ‖((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ))‖ =
+          |bernoulli14Diff x - (7 / 6 : ℝ)| := by
+      have hsq :
+          ‖((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ))‖ ^ 2 =
+            |bernoulli14Diff x - (7 / 6 : ℝ)| ^ 2 := by
+        rw [← Complex.normSq_eq_norm_sq]
+        simp [Complex.normSq_apply, pow_two]
+      exact sq_eq_sq_iff_eq_or_eq_neg.mp hsq |>.elim (fun h => h) (fun h => by
+        have hleft : 0 ≤ ‖((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ))‖ := norm_nonneg _
+        have hright : 0 ≤ |bernoulli14Diff x - (7 / 6 : ℝ)| := abs_nonneg _
+        nlinarith)
+    calc
+      ‖((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ)) /
+          ((x : ℂ) + z) ^ 15‖
+          = ‖((bernoulli14Diff x : ℂ) - (7 / 6 : ℂ))‖ /
+              ‖((x : ℂ) + z) ^ 15‖ := by
+            simp
+      _ = |bernoulli14Diff x - (7 / 6 : ℝ)| /
+              ‖(x : ℂ) + z‖ ^ 15 := by
+            simp [hnum, norm_pow]
+      _ ≤ G x := by
+            rw [habs]
+            simp [G, BK, K, c]
+            ring_nf
+            exact le_rfl
+  have hnorm :=
+    (MeasureTheory.norm_integral_le_of_norm_le
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) hG hpoint)
+  have hG_integral :
+      ∫ x in Set.Ioi (0 : ℝ), G x =
+        c * (∫ x in Set.Ioi (0 : ℝ), K x) -
+          (∫ x in Set.Ioi (0 : ℝ), BK x) := by
+    have hconst :
+        ∫ x in Set.Ioi (0 : ℝ), c * K x =
+          c * ∫ x in Set.Ioi (0 : ℝ), K x := by
+      rw [MeasureTheory.integral_const_mul]
+    calc
+      ∫ x in Set.Ioi (0 : ℝ), G x =
+          ∫ x in Set.Ioi (0 : ℝ), c * K x - BK x := by
+            rfl
+      _ = (∫ x in Set.Ioi (0 : ℝ), c * K x) -
+            ∫ x in Set.Ioi (0 : ℝ), BK x := by
+            exact integral_sub (hK.const_mul c) hBK
+      _ = c * (∫ x in Set.Ioi (0 : ℝ), K x) -
+            (∫ x in Set.Ioi (0 : ℝ), BK x) := by
+            rw [hconst]
+  have hweighted' : 0 ≤ ∫ x in Set.Ioi (0 : ℝ), BK x := by
+    simpa [BK] using hweighted
+  have hG_le :
+      ∫ x in Set.Ioi (0 : ℝ), G x ≤
+        c * (∫ x in Set.Ioi (0 : ℝ), K x) := by
+    calc
+      ∫ x in Set.Ioi (0 : ℝ), G x =
+          c * (∫ x in Set.Ioi (0 : ℝ), K x) -
+            (∫ x in Set.Ioi (0 : ℝ), BK x) := hG_integral
+      _ ≤ c * (∫ x in Set.Ioi (0 : ℝ), K x) := by
+            exact sub_le_self (c * (∫ x in Set.Ioi (0 : ℝ), K x)) hweighted'
+  exact hnorm.trans (by simpa [K, c] using hG_le)
 
 /-!
 Final real-part bound for the Stieltjes remainder.

@@ -55817,3 +55817,68 @@ phase-mismatch code?
 
 Status: sent to the open in-app Pro/Louise browser tab; response pending at the
 time of this local patch.
+
+## 2026-06-20 Execution update -- shifted B14 weighted bridge checked
+
+Computer Use / Browser was used for the route fork.  The Pro/Louise response
+was advisory only; the repository state below is based on local Lean checking.
+
+Added checked Lean lemmas in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli14_eq_seven_six_sub_factor
+Q3.bernoulli14Diff_le_seven_six
+Q3.integrable_bernoulli14Diff_kernel_norm_pow15
+Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg
+```
+
+The main bridge proves that the required complex-kernel shifted B14 norm bound
+follows from a same-target scalar weighted nonnegativity assumption:
+
+```lean
+0 <= ∫ x in Set.Ioi (0 : ℝ),
+  bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15
+```
+
+This closes the previous exact blocker:
+
+```text
+STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP
+```
+
+The active exact blocker is now:
+
+```text
+STEP33_M6_B14_NORM_WEIGHTED_NONNEG_GAP
+```
+
+The next proof obligation is to prove the weighted nonnegativity at
+`Q3.PSDpd.Step33.step33Shift16DigammaPoint`, or prove a general theorem that
+instantiates there.  Once available, it should feed into:
+
+```lean
+Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg
+Q3.digammaM6IntegralRemainderBound_of_shiftedB14Diff_norm_bound
+```
+
+and then into the M6 source theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

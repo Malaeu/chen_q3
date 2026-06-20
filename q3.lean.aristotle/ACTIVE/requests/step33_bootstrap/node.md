@@ -15380,3 +15380,70 @@ Boundary remains unchanged: this proves only the B14 boundary-cancellation
 bridge for the B12 `Ioi` source.  It does not prove the shifted B14 norm
 majorant, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Addendum -- shifted B14 weighted bridge checked
+
+Computer Use / Browser was used for the shifted B14 phase-mismatch fork.  The
+browser result was advisory only; the committed route is the local Lean object.
+
+Checked new bridge:
+
+```lean
+Q3.shiftedB14Diff_Ioi_norm_le_of_weighted_nonneg
+```
+
+It reduces the complex-kernel shifted B14 norm bound to one scalar same-target
+weighted nonnegativity hypothesis:
+
+```lean
+0 <= ∫ x in Set.Ioi (0 : ℝ),
+  bernoulli14Diff x / ‖(x : ℂ) + z‖ ^ 15
+```
+
+Supporting checked lemmas:
+
+```lean
+Q3.bernoulli14_eq_seven_six_sub_factor
+Q3.bernoulli14Diff_le_seven_six
+Q3.integrable_bernoulli14Diff_kernel_norm_pow15
+```
+
+Closed local blocker:
+
+```text
+STEP33_M6_COMPLEX_KERNEL_PHASE_MISMATCH_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_NORM_WEIGHTED_NONNEG_GAP
+```
+
+Current next theorem remains the direct z0 source theorem:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_digamma_m6_integral_remainder_bound :
+  Q3.digammaM6IntegralRemainderBound
+    Q3.PSDpd.Step33.step33Shift16DigammaPoint
+```
+
+Local subgoal is now exact: prove the weighted nonnegativity at
+`Q3.PSDpd.Step33.step33Shift16DigammaPoint`, then combine it with the shifted
+B14 bridge and the existing receiver.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary remains unchanged: this does not prove the weighted nonnegativity
+assumption, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
