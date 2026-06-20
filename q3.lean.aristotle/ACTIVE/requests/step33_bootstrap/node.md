@@ -15674,3 +15674,49 @@ Boundary remains unchanged: this does not prove paired-kernel antitonicity,
 the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Addendum -- z0 kernel derivative monotonicity checked
+
+Checked new support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_deriv_nonneg_of_nonneg
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_monotoneOn_Ici_zero
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_DERIVATIVE_MONOTONE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+This patch names the z0 scalar kernel derivative and proves derivative
+monotonicity on `Set.Ici 0`.  It prepares, but does not prove, the paired
+half-cell kernel antitonicity theorem.
+
+Browser/Pro status: Computer Use was connected to the selected in-app
+Pro/Louise ChatGPT tab.  No message was sent because there was no live route
+fork in this patch.  Browser output is advisory only, not proof evidence.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary remains unchanged: this does not prove paired-kernel antitonicity,
+the half-cell rearrangement, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

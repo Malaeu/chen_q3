@@ -351,6 +351,39 @@ theorem step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg
     Real.rpow_nonneg (le_of_lt (step33Shift16Z0KernelSq_pos x)) _
   exact mul_nonneg (mul_nonneg (by norm_num) hnum) hrpow
 
+def step33Shift16Z0KernelPow15Deriv (x : Real) : Real :=
+  -(15 * ((x + (129 : Real) / 4) *
+    step33Shift16Z0KernelSq x ^ (-(17 : Real) / 2)))
+
+theorem step33Shift16Z0KernelPow15Deriv_hasDerivAt (x : Real) :
+    HasDerivAt step33Shift16Z0KernelPow15Deriv
+      (15 * ((16 * (x + (129 : Real) / 4) ^ 2 - ((1 : Real) / 40) ^ 2) *
+        step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2))) x := by
+  change HasDerivAt
+    (fun y : Real => -(15 * ((y + (129 : Real) / 4) *
+      step33Shift16Z0KernelSq y ^ (-(17 : Real) / 2))))
+    (15 * ((16 * (x + (129 : Real) / 4) ^ 2 - ((1 : Real) / 40) ^ 2) *
+      step33Shift16Z0KernelSq x ^ (-(19 : Real) / 2))) x
+  simpa [mul_assoc] using step33Shift16Z0KernelPow15_deriv_hasDerivAt x
+
+theorem step33Shift16Z0KernelPow15Deriv_deriv_nonneg_of_nonneg
+    {x : Real} (hx : 0 <= x) :
+    0 <= deriv step33Shift16Z0KernelPow15Deriv x := by
+  rw [(step33Shift16Z0KernelPow15Deriv_hasDerivAt x).deriv]
+  simpa [mul_assoc] using
+    step33Shift16Z0KernelPow15_second_deriv_nonneg_of_nonneg hx
+
+theorem step33Shift16Z0KernelPow15Deriv_monotoneOn_Ici_zero :
+    MonotoneOn step33Shift16Z0KernelPow15Deriv (Set.Ici (0 : Real)) := by
+  refine monotoneOn_of_deriv_nonneg (convex_Ici (0 : Real)) ?hcont ?hdiff ?hderiv
+  · intro x _hx
+    exact ((step33Shift16Z0KernelPow15Deriv_hasDerivAt x).differentiableAt.continuousAt).continuousWithinAt
+  · intro x _hx
+    exact ((step33Shift16Z0KernelPow15Deriv_hasDerivAt x).differentiableAt).differentiableWithinAt
+  · intro x hx
+    rw [interior_Ici] at hx
+    exact step33Shift16Z0KernelPow15Deriv_deriv_nonneg_of_nonneg (le_of_lt hx)
+
 theorem step33Shift16DigammaPoint_add_nat_norm_eq_sqrt (n : Nat) :
     ‖step33Shift16DigammaPoint + (n : Complex)‖ =
       Real.sqrt ((((1290 : Real) + 40 * (n : Real)) ^ 2 + 1) / 1600) := by

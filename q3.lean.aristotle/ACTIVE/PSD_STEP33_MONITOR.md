@@ -28463,3 +28463,51 @@ hole/axiom/unsafe scan and whitespace check were clean.
 Boundary: this does not prove paired-kernel antitonicity, the half-cell
 rearrangement, weighted cell nonnegativity, `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- shifted B14 z0 kernel derivative monotonicity
+
+New checked support facts:
+
+```lean
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_hasDerivAt
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_deriv_nonneg_of_nonneg
+Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_monotoneOn_Ici_zero
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_Z0_KERNEL_DERIVATIVE_MONOTONE_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Meaning: Lean now has a named derivative function for the scalar z0 kernel
+`K(x)=S(x)^(-15/2)` and proves this derivative is monotone on `Set.Ici 0`.
+This is only the one-sided scalar calculus layer.  It does not yet prove the
+paired half-cell theorem for `t |-> K(n + t) + K(n + 1 - t)`.
+
+Browser/Pro status: Computer Use was connected to the selected in-app
+Pro/Louise ChatGPT tab.  No message was sent because this patch had no route
+fork.  Browser text and external mathlib documentation were used only as API
+and route guidance, not as proof evidence.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Result: Lean and `q3_check` passed; the touched Lean-file forbidden-token scan
+and whitespace check were clean.
+
+Boundary: this does not prove paired-kernel antitonicity, the half-cell
+rearrangement, weighted cell nonnegativity, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.

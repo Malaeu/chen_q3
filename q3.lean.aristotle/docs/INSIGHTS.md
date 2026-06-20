@@ -35094,6 +35094,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
   RH.
 
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0KernelDerivativeMonotonicity
+
+- Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by turning the
+  checked z0 kernel second-derivative expression into a reusable monotonicity
+  surface.
+- Added checked Lean facts:
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv`,
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_hasDerivAt`,
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_deriv_nonneg_of_nonneg`,
+  and
+  `Q3.PSDpd.Step33.step33Shift16Z0KernelPow15Deriv_monotoneOn_Ici_zero`.
+- This proves the scalar z0 kernel derivative is monotone on `Set.Ici 0`.
+  It is not yet the paired half-cell antitonicity theorem.
+- Browser / Computer Use status: connected to the selected in-app
+  Pro/Louise ChatGPT tab.  No message was sent because this was a straight
+  local Lean reduction, not a route fork.  External mathlib documentation was
+  used only to confirm API shape for `monotoneOn_of_deriv_nonneg`, not as
+  proof evidence.
+- Closed preparatory gap:
+  `STEP33_M6_B14_Z0_KERNEL_DERIVATIVE_MONOTONE_GAP`.
+- Active exact gap remains:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- Next patch-sized theorem: prove the paired kernel
+  `t |-> K(n + t) + K(n + 1 - t)` has the needed half-cell antitonicity or
+  integration-by-parts comparison, using the scalar derivative monotonicity
+  plus the existing B14 primitive sign.
+- Boundary: this does not prove paired-kernel antitonicity, weighted cell
+  nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+  RH.
+
 ## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14Z0KernelDerivativeSupport
 
 - Target: reduce `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP` by adding the
