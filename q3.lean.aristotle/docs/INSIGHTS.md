@@ -34079,6 +34079,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
 
+## Insight (2026-06-20, Step33A.1-A) -- B8ToB10IoiTailBridgeChecked
+
+- Used the in-app Proshka/Louise browser route-review as advisory only; accepted
+  only the local Lean-checked route.
+- Added checked B10/power-11 tail infrastructure:
+  `Q3.bernoulli10Diff_abs_le`, `Q3.bernoulli10Diff_norm_le`,
+  `Q3.kernel_norm_pow11_le_re`, `Q3.integrable_kernel_norm_pow11`,
+  `Q3.integrable_bernoulli10Diff_div_pow11`, and
+  `Q3.tendsto_intervalIntegral_b10diff_div_pow11_Ioi`.
+- Added checked global raw bridge:
+  `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw`.
+- The raw bridge moves the B8/power-9 `Ioi` remainder to the explicit
+  `(132 : ℂ)⁻¹ * ((0 : ℂ)^10 - (z⁻¹)^10)` endpoint plus the
+  B10/power-11 `Ioi` remainder.
+- Closed:
+  `STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP`.
+- Smallest useful next Lean object: combine
+  `Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix` with
+  `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw` to expose the B10/power-11 digamma
+  prefix surface.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
+
 ## Insight (2026-06-20, Step33A.1-A) -- FiniteB4ToB6TelescopeChecked
 
 - Added checked power-6 telescope:
@@ -34433,5 +34458,16 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP`.
 - Smallest useful next Lean object: mirror the checked B6-to-B8 `Ioi` tail
   bridge for B10/power-11, including the vanishing endpoint.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- CurrentPointerB10PrefixGap
+
+- Latest checked local theorem: `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw`.
+- Closed exact gap: `STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP`.
+- Active exact gap: `STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP`.
+- Next smallest Lean object: combine `Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix`
+  with `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw` to expose the B10/power-11
+  digamma prefix surface.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.

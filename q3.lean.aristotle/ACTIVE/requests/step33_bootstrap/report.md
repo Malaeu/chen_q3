@@ -53985,6 +53985,53 @@ git diff --check
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B8-to-B10 Ioi tail bridge checked
+
+Used the in-app Proshka/Louise browser route-review as advisory only. The
+selected local route was the manual pow11 kernel/tail infrastructure first,
+then the global finite-to-`Ioi` bridge.
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli10Diff_abs_le
+Q3.bernoulli10Diff_norm_le
+Q3.kernel_norm_pow11_le_re
+Q3.integrable_kernel_norm_pow11
+Q3.integrable_bernoulli10Diff_div_pow11
+Q3.tendsto_intervalIntegral_b10diff_div_pow11_Ioi
+Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw
+```
+
+Checked global identity:
+
+```lean
+∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+=
+  (132 : ℂ)⁻¹ * ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10) +
+  ∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
+STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP
+```
+
+Meaning: combine the checked B8 digamma main-prefix theorem with this checked
+global B8-to-B10 tail bridge to expose the B10/power-11 digamma prefix surface.
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B10 boundary bridge checked
 
 Lean progress in `Q3.DigammaRemainder`:
@@ -54967,3 +55014,27 @@ global B4-to-B6 tail bridge to expose the B6/power-7 digamma prefix surface.
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local theorem:
+
+```lean
+Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw
+```
+
+Closed gap:
+
+```text
+STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP
+```
+
+Next smallest Lean object: combine `Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix`
+with `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw` to expose the B10/power-11
+digamma prefix surface.

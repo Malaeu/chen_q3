@@ -377,6 +377,50 @@ lemma bernoulli8Diff_norm_le (x : ℝ) :
     simp
   simpa [hnorm] using hb
 
+lemma bernoulli10Diff_abs_le (x : ℝ) :
+    |bernoulli10Diff x| ≤ (32 : ℝ) := by
+  set t : ℝ := Int.fract x
+  have ht0 : 0 ≤ t := by
+    simpa [t] using Int.fract_nonneg x
+  have ht1 : t ≤ 1 := by
+    simpa [t] using le_of_lt (Int.fract_lt_one x)
+  have ht2_nonneg : 0 ≤ t ^ 2 := pow_nonneg ht0 2
+  have ht4_nonneg : 0 ≤ t ^ 4 := pow_nonneg ht0 4
+  have ht6_nonneg : 0 ≤ t ^ 6 := pow_nonneg ht0 6
+  have ht8_nonneg : 0 ≤ t ^ 8 := pow_nonneg ht0 8
+  have ht9_nonneg : 0 ≤ t ^ 9 := pow_nonneg ht0 9
+  have ht10_nonneg : 0 ≤ t ^ 10 := pow_nonneg ht0 10
+  have ht2_le : t ^ 2 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht4_le : t ^ 4 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht6_le : t ^ 6 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht8_le : t ^ 8 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht9_le : t ^ 9 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have ht10_le : t ^ 10 ≤ 1 := by
+    exact pow_le_one₀ ht0 ht1
+  have hbounds :
+      -(32 : ℝ) ≤
+          t ^ 10 - 5 * t ^ 9 + (15 / 2 : ℝ) * t ^ 8 -
+            7 * t ^ 6 + 5 * t ^ 4 - (3 / 2 : ℝ) * t ^ 2 + (5 / 66 : ℝ) ∧
+        t ^ 10 - 5 * t ^ 9 + (15 / 2 : ℝ) * t ^ 8 -
+            7 * t ^ 6 + 5 * t ^ 4 - (3 / 2 : ℝ) * t ^ 2 + (5 / 66 : ℝ) ≤
+          (32 : ℝ) := by
+    constructor
+    · nlinarith [ht10_nonneg, ht9_le, ht8_nonneg, ht6_le, ht4_nonneg, ht2_le]
+    · nlinarith [ht10_le, ht9_nonneg, ht8_le, ht6_nonneg, ht4_le, ht2_nonneg]
+  simpa [bernoulli10Diff, bernoulli10Fract, bernoulli10, t] using abs_le.2 hbounds
+
+lemma bernoulli10Diff_norm_le (x : ℝ) :
+    ‖(bernoulli10Diff x : ℂ)‖ ≤ (32 : ℝ) := by
+  have hb := bernoulli10Diff_abs_le x
+  have hnorm : ‖(bernoulli10Diff x : ℂ)‖ = |bernoulli10Diff x| := by
+    simp
+  simpa [hnorm] using hb
+
 lemma bernoulli2Fract_int (n : ℤ) : bernoulli2Fract (n : ℝ) = (6 : ℝ)⁻¹ := by
   simp [bernoulli2Fract, bernoulli2]
 
@@ -5870,6 +5914,135 @@ lemma integrable_bernoulli8Diff_div_pow9 (z : ℂ) (hz : 0 < z.re) :
             field_simp
   exact Integrable.mono' hkernel' hmeas hbound
 
+/-- Pointwise right-half-plane domination for the order-11 kernel used by the
+B10/power-11 Stieltjes tail ledger. -/
+lemma kernel_norm_pow11_le_re (z : ℂ) (hz : 0 < z.re)
+    {x : ℝ} (hx : x ∈ Set.Ioi (0 : ℝ)) :
+    1 / ‖(x : ℂ) + z‖ ^ 11 ≤ 1 / (x + z.re) ^ 11 := by
+  have hxpos : 0 < x := hx
+  have hxre_pos : 0 < x + z.re := by
+    linarith [hxpos, hz]
+  have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+  have hnorm_ge : x + z.re ≤ ‖(x : ℂ) + z‖ := by
+    have h := Complex.abs_re_le_norm ((x : ℂ) + z)
+    have hre : (((x : ℂ) + z).re) = x + z.re := by
+      simp
+    have habs : |(((x : ℂ) + z).re)| = x + z.re := by
+      rw [hre, abs_of_nonneg hxre_nonneg]
+    rwa [habs] at h
+  have hpow :
+      (x + z.re) ^ 11 ≤ ‖(x : ℂ) + z‖ ^ 11 :=
+    pow_le_pow_left₀ hxre_nonneg hnorm_ge 11
+  exact one_div_le_one_div_of_le (pow_pos hxre_pos 11) hpow
+
+/-- Integrability of the order-11 kernel used by the B10/power-11 Stieltjes
+tail ledger. -/
+lemma integrable_kernel_norm_pow11 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 11))
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hdomOn :
+      IntegrableOn (fun x : ℝ => (x + z.re) ^ (-11 : ℝ))
+        (Set.Ioi (0 : ℝ)) := by
+    have hlt : (-11 : ℝ) < -1 := by norm_num
+    have hc : -z.re < (0 : ℝ) := by linarith [hz]
+    simpa using
+      (integrableOn_add_rpow_Ioi_of_lt (a := (-11 : ℝ))
+        (c := (0 : ℝ)) (m := z.re) hlt hc)
+  have hdomOn' :
+      IntegrableOn (fun x : ℝ => 1 / (x + z.re) ^ 11)
+        (Set.Ioi (0 : ℝ)) := by
+    refine hdomOn.congr_fun ?_ measurableSet_Ioi
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxre_pos : 0 < x + z.re := by
+      linarith [hxpos, hz]
+    have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+    calc
+      (x + z.re) ^ (-11 : ℝ)
+          = ((x + z.re) ^ (11 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + z.re) (11 : ℝ))
+      _ = ((x + z.re) ^ 11)⁻¹ := by
+              simp [Real.rpow_natCast, hxre_nonneg]
+      _ = 1 / (x + z.re) ^ 11 := by
+              simp [one_div]
+  have hdom :
+      Integrable (fun x : ℝ => 1 / (x + z.re) ^ 11)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [IntegrableOn] using hdomOn'
+  have hmeas :
+      AEStronglyMeasurable (fun x : ℝ => 1 / ‖(x : ℂ) + z‖ ^ 11)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hcoe : Measurable (fun x : ℝ => (x : ℂ)) :=
+      Complex.measurable_ofReal
+    have hadd : Measurable (fun x : ℝ => (x : ℂ) + z) :=
+      hcoe.add measurable_const
+    have hnorm : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖) :=
+      hadd.norm
+    have hpow : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖ ^ 11) :=
+      hnorm.pow_const 11
+    have hinv : Measurable (fun x : ℝ => (‖(x : ℂ) + z‖ ^ 11)⁻¹) :=
+      hpow.inv
+    simpa [one_div] using hinv.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x : ℝ ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 11 : ℝ)‖ ≤
+          1 / (x + z.re) ^ 11 := by
+    refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+    intro x hx
+    have hnonneg : 0 ≤ (1 / ‖(x : ℂ) + z‖ ^ 11 : ℝ) := by
+      exact one_div_nonneg.mpr (pow_nonneg (norm_nonneg _) 11)
+    have hnorm_abs :
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 11 : ℝ)‖ =
+          1 / ‖(x : ℂ) + z‖ ^ 11 := by
+      simpa [Real.norm_eq_abs, abs_of_nonneg hnonneg]
+    simpa [hnorm_abs] using kernel_norm_pow11_le_re z hz hx
+  exact Integrable.mono' hdom hmeas hbound
+
+lemma integrable_bernoulli10Diff_div_pow11 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 11))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow11 z hz
+  have hkernel' :
+      Integrable (fun x : ℝ => (32 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 11))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    hkernel.const_mul (32 : ℝ)
+  have hmeas :
+      AEStronglyMeasurable
+        (fun x : ℝ => (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable
+        (fun x => (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_pow : Measurable (fun x : ℝ => ((x : ℂ) + z) ^ 11) := h_add.pow_const 11
+      have h_num : Measurable (fun x : ℝ => (bernoulli10Diff x : ℂ)) :=
+        (Complex.measurable_ofReal.comp measurable_bernoulli10Diff)
+      exact h_num.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11‖ ≤
+          (32 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 11) := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hnorm_pow : ‖(x + z : ℂ) ^ 11‖ = ‖(x + z : ℂ)‖ ^ 11 := by
+      simp [norm_pow]
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 11 := by positivity
+    calc
+      ‖(bernoulli10Diff x : ℂ) / (x + z) ^ 11‖
+          = ‖(bernoulli10Diff x : ℂ)‖ / ‖(x + z : ℂ) ^ 11‖ := by
+            simp
+      _ = ‖(bernoulli10Diff x : ℂ)‖ / ‖(x : ℂ) + z‖ ^ 11 := by
+            simp [hnorm_pow]
+      _ ≤ (32 : ℝ) / ‖(x : ℂ) + z‖ ^ 11 := by
+            exact (div_le_div_of_nonneg_right (bernoulli10Diff_norm_le x) hpos)
+      _ = (32 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 11) := by
+            field_simp
+  exact Integrable.mono' hkernel' hmeas hbound
+
 lemma tendsto_intervalIntegral_b2diff_div_Ioi (z : ℂ) (hz : 0 < z.re) :
     Tendsto
       (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
@@ -5939,6 +6112,24 @@ lemma tendsto_intervalIntegral_b8diff_div_pow9_Ioi (z : ℂ) (hz : 0 < z.re) :
   simpa using
     (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
       (f := fun x : ℝ => (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9)
+      (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+      h_int (tendsto_natCast_atTop_atTop))
+
+lemma tendsto_intervalIntegral_b10diff_div_pow11_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_bernoulli10Diff_div_pow11 z hz
+  simpa using
+    (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+      (f := fun x : ℝ => (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
       (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
       h_int (tendsto_natCast_atTop_atTop))
 
@@ -6214,6 +6405,67 @@ lemma stieltjes_B6Diff_to_B8Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
         (𝓝 ((-(240 : ℂ)⁻¹) * ((0 : ℂ) ^ 8 - (z⁻¹) ^ 8) +
           ∫ x in Set.Ioi (0 : ℝ),
             (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9)) := by
+    exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
+  exact tendsto_nhds_unique hL hL_to_rhs
+
+lemma stieltjes_B8Diff_to_B10Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9 =
+      (132 : ℂ)⁻¹ * ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10) +
+        ∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11 := by
+  let L : ℕ → ℂ := fun N =>
+    ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+  let R : ℕ → ℂ := fun N =>
+    (132 : ℂ)⁻¹ * (((((N : ℂ) + z)⁻¹) ^ 10) - (z⁻¹) ^ 10) +
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+  have hLR : ∀ N, L N = R N := by
+    intro N
+    simpa [L, R] using finite_stieltjes_B8Diff_to_B10Diff z hz N
+  have hL :
+      Tendsto L atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9)) := by
+    simpa [L] using tendsto_intervalIntegral_b8diff_div_pow9_Ioi z hz
+  have h_inv : Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) :=
+    tendsto_nat_add_complex_inv z
+  have h_inv10 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 10)) atTop
+        (𝓝 ((0 : ℂ) ^ 10)) := by
+    simpa using h_inv.pow 10
+  have hB10 :
+      Tendsto
+        (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
+        atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)) :=
+    tendsto_intervalIntegral_b10diff_div_pow11_Ioi z hz
+  have hEndpoint :
+      Tendsto
+        (fun N : ℕ =>
+          (132 : ℂ)⁻¹ * (((((N : ℂ) + z)⁻¹) ^ 10) - (z⁻¹) ^ 10))
+        atTop
+        (𝓝 ((132 : ℂ)⁻¹ * ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10))) := by
+    have hsub :
+        Tendsto
+          (fun N : ℕ => (((((N : ℂ) + z)⁻¹) ^ 10) - (z⁻¹) ^ 10))
+          atTop (𝓝 ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10)) := by
+      exact h_inv10.sub tendsto_const_nhds
+    simpa using hsub.const_mul (132 : ℂ)⁻¹
+  have hR :
+      Tendsto R atTop
+        (𝓝 ((132 : ℂ)⁻¹ * ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)) := by
+    simpa [R] using hEndpoint.add hB10
+  have hL_to_rhs :
+      Tendsto L atTop
+        (𝓝 ((132 : ℂ)⁻¹ * ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)) := by
     exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
   exact tendsto_nhds_unique hL hL_to_rhs
 
