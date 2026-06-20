@@ -34794,3 +34794,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove the B14 `Ioi` lift, the B12 `Ioi`
   norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12ToB14IoiBoundaryRouteInProgress
+
+- Target blocker:
+  `STEP33_M6_B14_DIFF_IOI_AND_BOUNDARY_NORM_TO_ORDER15_GAP`.
+- Exact next Lean objects are the missing B14 analogues of the existing
+  B4/B6/B8/B10/B12 ladder:
+  `Q3.sum_b14_boundary_telescope`,
+  `Q3.intervalIntegrable_b14diff_div_nat`,
+  `Q3.sum_interval_integral_b14diff`,
+  `Q3.integrable_bernoulli14Diff_div_pow15`,
+  `Q3.tendsto_intervalIntegral_b14diff_div_pow15_Ioi`, and
+  `Q3.stieltjes_B12Diff_to_B14Diff_Ioi_raw`.
+- Local evidence: `Q3.stieltjes_interval_B12Diff_to_B14CellDeriv` and the
+  checked `Q3.stieltjes_interval_B14CellDeriv_to_B14Diff` already give the
+  cellwise B12/power-13 to B14/power-15 identity with boundary coefficient
+  `1 / 12`.
+- The existing lower-order `Ioi` raw theorem pattern is
+  `Q3.stieltjes_B10Diff_to_B12Diff_Ioi_raw`; the B14 layer should mirror that
+  pattern rather than route through the killed finite norm-sum ledger.
+- Browser/Pro note: the browser channel is connected and available for a real
+  route fork, but this local lift has a direct checked pattern, so no advisory
+  question is being sent yet.
+- Boundary: this planned patch will not prove the B12 `Ioi`
+  norm-to-order15 inequality, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.
