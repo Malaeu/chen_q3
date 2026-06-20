@@ -3127,6 +3127,51 @@ theorem deriv_realSinc_differentiableAt_zero :
     DifferentiableAt Real (fun x : Real => deriv realSinc x) (0 : Real) :=
   (realSinc_analyticAt_zero.deriv).differentiableAt
 
+/-- The third coefficient of any local power series for `sin` at zero. -/
+theorem real_sin_power_series_coeff_three
+    {p : FormalMultilinearSeries Real Real Real}
+    (hp : HasFPowerSeriesAt Real.sin p (0 : Real)) :
+    p.coeff 3 = -(1 / 6 : Real) := by
+  rcases hp with ⟨r, hball⟩
+  have hfact := hball.factorial_smul (1 : Real) 3
+  have hiter :
+      (iteratedFDeriv Real 3 Real.sin (0 : Real)) (fun _ : Fin 3 => (1 : Real)) =
+        -1 := by
+    have h := congrFun (Real.iteratedDeriv_odd_sin 1) (0 : Real)
+    norm_num at h
+    simpa [← iteratedDeriv_eq_iteratedFDeriv] using h
+  rw [hiter] at hfact
+  change (p 3 (fun _ : Fin 3 => (1 : Real))) = -(1 / 6 : Real)
+  norm_num at hfact ⊢
+  linarith
+
+/-- The removable sinc factor has second derivative `-1/3` at the origin. -/
+theorem deriv_realSinc_deriv_at_zero :
+    deriv (fun x : Real => deriv realSinc x) (0 : Real) = -(1 / 3 : Real) := by
+  rcases (Real.analyticAt_sin (x := (0 : Real))) with ⟨p, hp⟩
+  have hp3 : p.coeff 3 = -(1 / 6 : Real) :=
+    real_sin_power_series_coeff_three hp
+  have hsinc :
+      HasFPowerSeriesAt realSinc p.fslope (0 : Real) := by
+    rw [realSinc_eq_sinc, Real.sinc_eq_dslope]
+    exact HasFPowerSeriesAt.has_fpower_series_dslope_fslope hp
+  rcases hsinc with ⟨r, hball⟩
+  have hfact := hball.factorial_smul (1 : Real) 2
+  have hiter :
+      iteratedDeriv 2 realSinc (0 : Real) = -(1 / 3 : Real) := by
+    rw [iteratedDeriv_eq_iteratedFDeriv]
+    rw [← hfact]
+    rw [show (p.fslope 2 (fun _ : Fin 2 => (1 : Real))) = p.fslope.coeff 2 by rfl]
+    rw [FormalMultilinearSeries.coeff_fslope, hp3]
+    norm_num
+  have hfun :
+      (fun x : Real => deriv realSinc x) = iteratedDeriv 1 realSinc := by
+    ext x
+    simp [iteratedDeriv]
+  rw [hfun]
+  rw [← iteratedDeriv_succ]
+  simpa using hiter
+
 /-- The checked B-spline derivative closed form is differentiable at the
 removable sinc singularity. -/
 @[fun_prop]

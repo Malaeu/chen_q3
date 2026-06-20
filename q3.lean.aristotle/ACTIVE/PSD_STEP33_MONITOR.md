@@ -30064,3 +30064,43 @@ deriv (fun t => deriv S t) 0 <= 0
 
 Boundary: this still does not prove `raw_integrand''(0) >= 0`; it only removes
 the mixed term and fixes the anchor Omega sign.
+
+## 2026-06-20 Current EOF Addendum -- shape-square curvature sign closed
+
+Lean now proves the removable-sinc curvature at zero and the nonpositive
+curvature of the active squared shape factor.
+
+New Lean theorems:
+
+```text
+real_sin_power_series_coeff_three
+deriv_realSinc_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_nonpos
+```
+
+Closed local targets:
+
+```text
+STEP33_A1_REAL_SINC_SECOND_DERIV_REMOVABLE_SINGULARITY_AT_ZERO_GAP
+STEP33_A1_SUB0_SHAPESQ_SECOND_DERIV_AT_ZERO_NONPOS
+```
+
+Effect on the product split: since `step22OmegaArchWeight 0 <= 0` was already
+checked, the shape curvature contribution `Omega 0 * S''(0)` has the required
+nonnegative sign.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Next assembly gap after that:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
+```
+
+Boundary: this still does not prove `raw_integrand''(0) >= 0` or close
+Step33A.1-A; the Omega second-derivative sign and final product-split assembly
+remain open.

@@ -36208,3 +36208,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `deriv (fun t => deriv S t) 0 <= 0`.
 - Boundary: this removes the mixed term and fixes the Omega anchor sign, but
   does not prove raw second-derivative nonnegativity.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShapeSquareCurvatureSignClosed
+
+- Added Lean theorem `real_sin_power_series_coeff_three`, extracting the
+  `sin` cubic coefficient from `HasFPowerSeriesAt`.
+- Added Lean theorem `deriv_realSinc_deriv_at_zero`, proving the removable
+  sinc second derivative at zero is `-1 / 3`.
+- Added Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_nonpos`.
+- Closed local targets:
+  `STEP33_A1_REAL_SINC_SECOND_DERIV_REMOVABLE_SINGULARITY_AT_ZERO_GAP` and
+  `STEP33_A1_SUB0_SHAPESQ_SECOND_DERIV_AT_ZERO_NONPOS`.
+- Current first live gap:
+  `STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP`.
+- Next assembly gap:
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP`.
+- Boundary: this proves the shape-side curvature sign only; raw
+  second-derivative nonnegativity and Step33A.1-A closure remain open.

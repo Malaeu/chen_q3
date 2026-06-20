@@ -229,6 +229,54 @@ shape-square second-derivative nonpositivity at `0`.
 
 Compile result: pass.
 
+## Execution Update (2026-06-20) -- shape-square curvature sign closed
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk raw-integrand sign lane.
+
+Lean theorem support added:
+
+```lean
+real_sin_power_series_coeff_three
+deriv_realSinc_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_nonpos
+```
+
+Proof-grade result: Lean proves the removable-sinc second derivative at zero
+and uses it to prove `S''(0) <= 0` for the active squared shape factor.
+
+Closed local targets:
+
+```text
+STEP33_A1_REAL_SINC_SECOND_DERIV_REMOVABLE_SINGULARITY_AT_ZERO_GAP
+STEP33_A1_SUB0_SHAPESQ_SECOND_DERIV_AT_ZERO_NONPOS
+```
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Next assembly blocker after that:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
+```
+
+Boundary: this is still not a proof of `raw_integrand''(0) >= 0`; it closes the
+shape-side curvature sign only.
+
+Validation:
+
+```bash
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
 Next missing payload:
 
 ```text

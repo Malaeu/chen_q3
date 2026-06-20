@@ -17082,3 +17082,38 @@ deriv (fun t => deriv S t) 0 <= 0
 ```
 
 Boundary: no raw nonnegativity theorem yet.
+
+## 2026-06-20 Current EOF Addendum -- shape-square curvature sign closed
+
+Lean now proves:
+
+```text
+real_sin_power_series_coeff_three
+deriv_realSinc_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_nonpos
+```
+
+Closed local targets:
+
+```text
+STEP33_A1_REAL_SINC_SECOND_DERIV_REMOVABLE_SINGULARITY_AT_ZERO_GAP
+STEP33_A1_SUB0_SHAPESQ_SECOND_DERIV_AT_ZERO_NONPOS
+```
+
+Meaning: the shape-side second-derivative contribution in the raw product
+split now has proof-grade sign, because `Omega 0 <= 0` and `S''(0) <= 0` are
+both Lean-checked.
+
+New first live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Then the remaining bridge is:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_NONNEG_ASSEMBLY_GAP
+```
+
+Boundary: no raw nonnegativity theorem yet and no Step33A.1-A closure yet.

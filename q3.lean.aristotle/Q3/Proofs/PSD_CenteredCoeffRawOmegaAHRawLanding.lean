@@ -2023,6 +2023,146 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero :
   rw [primaryFiniteRow0Parent0Split100Sub0_shape_deriv_at_zero]
   ring
 
+/-- The squared active primary shape factor has nonpositive curvature at the
+first-subchunk anchor.  This closes the shape-side sign factor in the
+raw-integrand second-derivative product split. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_nonpos :
+    let S : Real -> Real :=
+      fun eta : Real =>
+        (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta) ^ 2
+    deriv (fun t : Real => deriv S t) (0 : Real) <= 0 := by
+  dsimp only
+  let D : Real := (Real.sqrt (bsplineScale 11 * bsplineAutocorrNorm 11))⁻¹
+  let U : Real -> Real := fun eta : Real => realSinc (eta / 40)
+  let F : Real -> Real := fun eta : Real => D ^ 2 * (U eta) ^ 24
+  have hSqFun :
+      (fun eta : Real =>
+        (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta) ^ 2) =
+        F := by
+    funext eta
+    rw [primaryK11ShapeClosedForm_eq_sinc_eta_div_40]
+    simp [F, U, D]
+    ring
+  rw [hSqFun]
+  have hU0 : U (0 : Real) = 1 := by
+    simp [U]
+  have hUderiv0 : deriv U (0 : Real) = 0 := by
+    have hcomp :
+        deriv (fun eta : Real => realSinc (eta / 40)) (0 : Real) =
+          deriv realSinc (0 / 40) * deriv (fun eta : Real => eta / 40) (0 : Real) := by
+      have hsincDiff :
+          DifferentiableAt Real realSinc ((fun eta : Real => eta / 40) (0 : Real)) :=
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.realSinc_differentiableAt _
+      have hargDiff : DifferentiableAt Real (fun eta : Real => eta / 40) (0 : Real) := by
+        fun_prop
+      simpa using deriv_comp (0 : Real) hsincDiff hargDiff
+    rw [hcomp]
+    rw [show (0 : Real) / 40 = 0 by norm_num]
+    rw [show deriv (fun eta : Real => eta / 40) (0 : Real) = (1 / 40 : Real) by
+      norm_num]
+    rw [deriv_realSinc_zero]
+    norm_num
+  have hUderivDeriv0 :
+      deriv (fun t : Real => deriv U t) (0 : Real) = -(1 / 4800 : Real) := by
+    have hDerivUFun :
+        (fun t : Real => deriv U t) =
+          fun t : Real => deriv realSinc (t / 40) * (1 / 40 : Real) := by
+      funext t
+      have hsincDiff :
+          DifferentiableAt Real realSinc ((fun eta : Real => eta / 40) t) :=
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.realSinc_differentiableAt _
+      have hargDiff : DifferentiableAt Real (fun eta : Real => eta / 40) t := by
+        fun_prop
+      have hcomp := deriv_comp t hsincDiff hargDiff
+      simpa [U] using hcomp
+    rw [hDerivUFun]
+    rw [deriv_mul_const]
+    · rw [show deriv (fun t : Real => deriv realSinc (t / 40)) (0 : Real) =
+          deriv (fun x : Real => deriv realSinc x) (0 / 40) *
+            deriv (fun t : Real => t / 40) (0 : Real) by
+        have hbase :
+            DifferentiableAt Real (fun x : Real => deriv realSinc x) ((fun t : Real => t / 40) 0) := by
+          simpa using deriv_realSinc_differentiableAt_zero
+        have harg : DifferentiableAt Real (fun t : Real => t / 40) (0 : Real) := by
+          fun_prop
+        simpa using deriv_comp (0 : Real) hbase harg]
+      rw [show (0 : Real) / 40 = 0 by norm_num]
+      rw [show deriv (fun t : Real => t / 40) (0 : Real) = (1 / 40 : Real) by
+        norm_num]
+      rw [deriv_realSinc_deriv_at_zero]
+      norm_num
+    · have hbase :
+          DifferentiableAt Real (fun x : Real => deriv realSinc x) ((fun t : Real => t / 40) 0) := by
+        simpa using deriv_realSinc_differentiableAt_zero
+      have harg : DifferentiableAt Real (fun t : Real => t / 40) (0 : Real) := by
+        fun_prop
+      exact hbase.comp (0 : Real) harg
+  have hFderivFun :
+      (fun t : Real => deriv F t) =
+        fun t : Real => D ^ 2 * (24 * (U t) ^ 23 * deriv U t) := by
+    funext t
+    have hUDiff : DifferentiableAt Real U t := by
+      dsimp [U]
+      fun_prop
+    unfold F
+    rw [deriv_const_mul]
+    · rw [deriv_fun_pow hUDiff 24]
+      ring
+    · exact hUDiff.pow 24
+  rw [hFderivFun]
+  have hInnerDiff1 : DifferentiableAt Real (fun t : Real => (U t) ^ 23) (0 : Real) := by
+    have hUDiff : DifferentiableAt Real U (0 : Real) := by
+      dsimp [U]
+      fun_prop
+    exact hUDiff.pow 23
+  have hInnerDiff2 : DifferentiableAt Real (fun t : Real => deriv U t) (0 : Real) := by
+    have hDerivUFun :
+        (fun t : Real => deriv U t) =
+          fun t : Real => deriv realSinc (t / 40) * (1 / 40 : Real) := by
+      funext t
+      have hsincDiff :
+          DifferentiableAt Real realSinc ((fun eta : Real => eta / 40) t) :=
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.realSinc_differentiableAt _
+      have hargDiff : DifferentiableAt Real (fun eta : Real => eta / 40) t := by
+        fun_prop
+      have hcomp := deriv_comp t hsincDiff hargDiff
+      simpa [U] using hcomp
+    rw [hDerivUFun]
+    have hbase :
+        DifferentiableAt Real (fun x : Real => deriv realSinc x) ((fun t : Real => t / 40) 0) := by
+      simpa using deriv_realSinc_differentiableAt_zero
+    have harg : DifferentiableAt Real (fun t : Real => t / 40) (0 : Real) := by
+      fun_prop
+    exact (hbase.comp (0 : Real) harg).mul (differentiableAt_const (1 / 40 : Real))
+  rw [deriv_const_mul]
+  · have hprod :
+        deriv (fun t : Real => 24 * (U t) ^ 23 * deriv U t) (0 : Real) =
+          24 *
+            (deriv (fun t : Real => (U t) ^ 23) (0 : Real) * deriv U (0 : Real) +
+              (U (0 : Real)) ^ 23 * deriv (fun t : Real => deriv U t) (0 : Real)) := by
+      have hconst :
+          DifferentiableAt Real (fun t : Real => (24 : Real) * (U t) ^ 23) (0 : Real) := by
+        exact (differentiableAt_const (24 : Real)).mul hInnerDiff1
+      change
+        deriv ((fun t : Real => (24 : Real) * (U t) ^ 23) *
+            fun t : Real => deriv U t) (0 : Real) =
+          24 *
+            (deriv (fun t : Real => (U t) ^ 23) (0 : Real) * deriv U (0 : Real) +
+              (U (0 : Real)) ^ 23 * deriv (fun t : Real => deriv U t) (0 : Real))
+      rw [deriv_mul hconst hInnerDiff2]
+      rw [deriv_const_mul]
+      · ring
+      · exact hInnerDiff1
+    rw [hprod]
+    rw [hU0, hUderiv0, hUderivDeriv0]
+    have hDsq_nonneg : 0 <= D ^ 2 := sq_nonneg D
+    nlinarith
+  · have hinner :
+        DifferentiableAt Real (fun t : Real => 24 * (U t) ^ 23 * deriv U t)
+          (0 : Real) := by
+      exact ((differentiableAt_const (24 : Real)).mul hInnerDiff1).mul hInnerDiff2
+    exact hinner
+
 /-- The active Omega weight is nonpositive at the first-subchunk anchor. -/
 theorem primaryFiniteRow0Parent0Split100Sub0_step22OmegaArchWeight_zero_nonpos :
     Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
