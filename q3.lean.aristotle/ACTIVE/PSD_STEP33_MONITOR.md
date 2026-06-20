@@ -27579,3 +27579,89 @@ Meaning: use the checked endpoint lemmas for `bernoulli12Diff` and the checked
 B12 cell derivative layer to expose the explicit endpoint term and the
 B12/power-13 remainder.  This still does not prove
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local layer:
+
+```lean
+Q3.stieltjes_interval_B12CellDeriv_to_B12Diff
+Q3.stieltjes_interval_B10Diff_to_B12Diff
+Q3.sum_b12_boundary_telescope
+Q3.intervalIntegrable_b12diff_div_nat
+Q3.sum_interval_integral_b12diff
+Q3.finite_stieltjes_B10Diff_to_B12Diff
+```
+
+Closed gaps:
+
+```text
+STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
+STEP33_M6_B10_TO_B12_COMBINED_CELL_GAP
+STEP33_M6_B10_TO_B12_FINITE_SUM_TELESCOPE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
+```
+
+Next smallest Lean object: mirror the checked B8-to-B10 `Ioi` limit tail bridge
+for the B12/power-13 remainder, including the vanishing endpoint term. The
+finite theorem has boundary term
+`-(691 / 32760 : C) * ((((N : C) + z)^-1)^12 - (z^-1)^12)`, so the later
+`Ioi` limit should contribute `+(691 / 32760 : C) * (z^-1)^12` to the global
+main prefix. That global prefix is not checked until the `Ioi` limit and
+digamma-prefix theorem are added.
+
+## 2026-06-20 Step33A.1-A B10-to-B12 finite telescope checked
+
+Added the checked B12 boundary, combined one-cell, and finite-telescope layer
+in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B12CellDeriv_to_B12Diff
+Q3.stieltjes_interval_B10Diff_to_B12Diff
+Q3.sum_b12_boundary_telescope
+Q3.intervalIntegrable_b12diff_div_nat
+Q3.sum_interval_integral_b12diff
+Q3.finite_stieltjes_B10Diff_to_B12Diff
+```
+
+The finite theorem proves:
+
+```lean
+int x in (0 : R)..(N : R),
+    (bernoulli10Diff x : C) / ((x : C) + z) ^ 11 =
+  (-(691 / 32760 : C)) * ((((N : C) + z)^-1) ^ 12 - (z^-1) ^ 12) +
+    int x in (0 : R)..(N : R),
+      (bernoulli12Diff x : C) / ((x : C) + z) ^ 13
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Result: Lean and `q3_check` passed; forbidden-hole scan was clean.
+
+This closes:
+
+```text
+STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
+STEP33_M6_B10_TO_B12_COMBINED_CELL_GAP
+STEP33_M6_B10_TO_B12_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
+```
+
+Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.

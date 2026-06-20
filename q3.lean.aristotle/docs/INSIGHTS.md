@@ -34535,3 +34535,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   layer, not to this interval bridge alone.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B10ToB12FiniteTelescopeChecked
+
+- Added checked B12 boundary and combined unit-cell identities:
+  `Q3.stieltjes_interval_B12CellDeriv_to_B12Diff` and
+  `Q3.stieltjes_interval_B10Diff_to_B12Diff`.
+- Added checked finite-telescope support:
+  `Q3.sum_b12_boundary_telescope`, `Q3.intervalIntegrable_b12diff_div_nat`,
+  `Q3.sum_interval_integral_b12diff`, and
+  `Q3.finite_stieltjes_B10Diff_to_B12Diff`.
+- The finite theorem exposes the boundary term
+  `-(691 / 32760 : C) * ((((N : C) + z)^-1)^12 - (z^-1)^12)` plus the
+  B12/power-13 remainder.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean`, and
+  the forbidden-hole scan for `sorry|admit|exact?|axiom|unsafe`.
+- Closed:
+  `STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP`,
+  `STEP33_M6_B10_TO_B12_COMBINED_CELL_GAP`, and
+  `STEP33_M6_B10_TO_B12_FINITE_SUM_TELESCOPE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP`.
+- Smallest useful next Lean object: mirror the checked B8-to-B10 `Ioi` limit
+  tail bridge for B12/power-13, including the vanishing endpoint. Only after
+  that limit and the digamma-prefix theorem are checked can the global
+  `+(691 / 32760 : C) * (z^-1)^12` prefix be claimed.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.

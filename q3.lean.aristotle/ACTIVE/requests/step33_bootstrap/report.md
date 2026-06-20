@@ -55225,3 +55225,85 @@ STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local layer:
+
+```lean
+Q3.stieltjes_interval_B12CellDeriv_to_B12Diff
+Q3.stieltjes_interval_B10Diff_to_B12Diff
+Q3.sum_b12_boundary_telescope
+Q3.intervalIntegrable_b12diff_div_nat
+Q3.sum_interval_integral_b12diff
+Q3.finite_stieltjes_B10Diff_to_B12Diff
+```
+
+Closed gaps:
+
+```text
+STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
+STEP33_M6_B10_TO_B12_COMBINED_CELL_GAP
+STEP33_M6_B10_TO_B12_FINITE_SUM_TELESCOPE_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
+```
+
+Next smallest Lean object: mirror the checked B8-to-B10 `Ioi` limit tail bridge
+for the B12/power-13 remainder, including the vanishing endpoint term. The
+finite theorem contributes the later global prefix
+`+(691 / 32760 : C) * (z^-1)^12` only after the `Ioi` limit step is checked.
+
+## 2026-06-20 Execution update -- B10-to-B12 finite telescope checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B12CellDeriv_to_B12Diff
+Q3.stieltjes_interval_B10Diff_to_B12Diff
+Q3.sum_b12_boundary_telescope
+Q3.intervalIntegrable_b12diff_div_nat
+Q3.sum_interval_integral_b12diff
+Q3.finite_stieltjes_B10Diff_to_B12Diff
+```
+
+The checked finite theorem surface is:
+
+```lean
+int x in (0 : R)..(N : R),
+    (bernoulli10Diff x : C) / ((x : C) + z) ^ 11 =
+  (-(691 / 32760 : C)) * ((((N : C) + z)^-1) ^ 12 - (z^-1) ^ 12) +
+    int x in (0 : R)..(N : R),
+      (bernoulli12Diff x : C) / ((x : C) + z) ^ 13
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Result: Lean and `q3_check` passed; forbidden-hole scan clean.
+
+This closes:
+
+```text
+STEP33_M6_B12_CELLDERIV_TO_B12DIFF_BOUNDARY_GAP
+STEP33_M6_B10_TO_B12_COMBINED_CELL_GAP
+STEP33_M6_B10_TO_B12_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.
