@@ -16714,3 +16714,70 @@ STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
 
 This addendum closes no payload field by itself.  It only narrows the next
 generator target to the checked absolute-anchor/second-derivative receiver.
+
+## 2026-06-20 Current EOF Addendum -- anchor-abs second-deriv budget kill
+
+Browser/Pro route-review was used as advisory only.  It agreed with the local
+fail-closed patch and sharpened the verdict:
+
+```text
+CHOSEN: A
+FIRST BLOCKER: STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL
+```
+
+Added exact Lean constant kill theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible
+```
+
+Meaning: the symmetric anchor-abs radius
+
+```text
+90799636411/200000000000000000000000000000
+```
+
+is already too large for the lower derivative-interval side, even with
+`secondDerivSlope = 0`.  The currently available derivative interval is:
+
+```text
+sampled lower = -94119513411/500000000000000000000000000000
+sampled upper =  1866608532757/500000000000000000000000000000
+```
+
+Created fail-closed audit artifacts:
+
+```text
+scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.{json,md}
+```
+
+The generated audit records that all three current derivative-bound audit v7
+sources fail the exact rational v21 budgets:
+
+```text
+denom1e30
+denom1e30_residualfit
+denom1e30_derivfit
+```
+
+For the semantically matching `secondDerivativeSlope` field, the upper-side
+requirement is about `6.8596881683399726513e-5`, while the sampled upper
+budget is about `3.733217065514e-18`.
+
+Boundary: this kills only the current symmetric anchor-abs source shape and the
+current diagnostic v7 audit source.  It does not kill the checked asymmetric
+anchor-envelope receiver, the direct residual route, or future
+cancellation-aware payloads.
+
+Next live payload target:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```
+
+Route-death condition for that next target, not yet reached:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL
+```

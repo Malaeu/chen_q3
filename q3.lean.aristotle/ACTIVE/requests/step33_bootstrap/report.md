@@ -57918,3 +57918,74 @@ git diff --check
 Boundary: receiver/worklist synchronization only.  No sampled derivative audit
 is trusted as proof, no full refined payload is emitted, and no Step33A.1-A /
 Step33 / Step34 / RH closure is claimed.
+
+## Execution Update (2026-06-20) -- anchor-abs second-deriv budget kill
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk anchor-envelope lane.
+
+Browser/Pro route-review was used as advisory only.  It selected the same
+fail-closed patch and named:
+
+```text
+STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL
+```
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.md
+ACTIVE/PSD_STEP33_MONITOR.md
+ACTIVE/requests/step33_bootstrap/node.md
+ACTIVE/requests/step33_bootstrap/report.md
+docs/INSIGHTS.md
+```
+
+Lean theorem added:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible
+```
+
+Result:
+
+```text
+The current symmetric anchor-abs radius is too large for the lower derivative
+interval budget even when secondDerivSlope = 0.
+```
+
+The new fail-closed audit generator checks all three current v7 derivative
+audit sources:
+
+```text
+denom1e30
+denom1e30_residualfit
+denom1e30_derivfit
+```
+
+All fail the exact rational v21 anchor-abs/second-deriv budgets.  For the
+semantically matching `secondDerivativeSlope` field, the upper requirement is
+about `6.8596881683399726513e-5`, while the sampled upper is about
+`3.733217065514e-18`; the lower side also fails.
+
+Commands run:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+```
+
+Boundary: this is a kill certificate for the current symmetric anchor-abs
+source shape and current diagnostic v7 source only.  It does not kill the
+checked asymmetric anchor-envelope receiver or a future cancellation-aware
+residual curvature payload.
+
+Next live payload gap:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```

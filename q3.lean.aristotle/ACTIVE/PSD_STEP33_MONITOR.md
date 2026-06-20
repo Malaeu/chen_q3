@@ -29631,3 +29631,86 @@ STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
 Boundary: this is a checked receiver and worklist synchronization only.  It
 does not prove the anchor derivative radius, the second-derivative envelope,
 the refined payload, Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- anchor-abs second-deriv budget kill v1
+
+The symmetric anchor-abs/second-deriv source path for active first subchunk is
+now killed by exact constant arithmetic.
+
+Browser/Pro advisory agreed with the fail-closed patch:
+
+```text
+CHOSEN: A
+FIRST BLOCKER: STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL
+```
+
+Lean-checked kill theorem added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible
+```
+
+This theorem proves that there is no nonnegative `secondDerivSlope` satisfying
+both symmetric anchor-abs budget inequalities for the current
+`derivSampleRadius`:
+
+```text
+derivSampleRadius =
+90799636411/200000000000000000000000000000
+
+sampled lower =
+-94119513411/500000000000000000000000000000
+
+sampled upper =
+1866608532757/500000000000000000000000000000
+```
+
+In particular, the lower budget is already impossible even at
+`secondDerivSlope = 0`.
+
+Created fail-closed generator and artifacts:
+
+```text
+scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.md
+```
+
+The JSON schema is:
+
+```text
+q3_psdpd_step33_a1_sub0_anchor_abs_second_deriv_payload.v1
+```
+
+The output status is:
+
+```text
+anchor_abs_second_deriv_budget_fail_from_current_derivative_audit_not_spendable
+```
+
+The diagnostic v7 source budgets all fail exactly:
+
+```text
+denom1e30: upperRequired ~ 6.8596881683399726513e-5, sampledUpper ~ 3.733217065514e-18
+denom1e30_residualfit: same
+denom1e30_derivfit: same
+```
+
+Boundary: this kills only the current symmetric anchor-abs source shape and the
+current `derivative_bound_audit.v7` diagnostic source for that shape.  The
+checked asymmetric anchor-envelope receiver remains live.
+
+Next live source gap:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP
+```
+
+Route death for the asymmetric anchor/curvature route may be declared only if
+proof-grade asymmetric `anchorLo`/`anchorHi` and direct residual curvature still
+make the constants impossible:
+
+```text
+STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL
+```

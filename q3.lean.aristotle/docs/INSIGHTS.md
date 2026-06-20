@@ -35939,3 +35939,47 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: receiver/worklist synchronization only.  This does not prove the
   anchor derivative radius, second-derivative envelope, refined payload,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- AnchorAbsSecondDerivBudgetKill
+
+- Browser/Pro route-review was used as advisory only; it agreed with the local
+  fail-closed route and named
+  `STEP33_A1_SUB0_ANCHOR_ABS_SECOND_DERIV_BUDGET_FAIL`.
+- Added Lean-checked exact constant kill theorem in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible`.
+- The theorem proves that no nonnegative `secondDerivSlope` can make the
+  current symmetric anchor-abs budget work with
+  `derivSampleRadius =
+  90799636411/200000000000000000000000000000`.
+- The lower side is already impossible at `secondDerivSlope = 0` because the
+  available sampled lower is only
+  `-94119513411/500000000000000000000000000000`.
+- Added
+  `scripts/generate_step33_a1_sub0_anchor_abs_second_deriv_payload.py` and
+  generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_anchor_abs_second_deriv_payload.{json,md}`.
+- The generated schema is
+  `q3_psdpd_step33_a1_sub0_anchor_abs_second_deriv_payload.v1`; its status is
+  `anchor_abs_second_deriv_budget_fail_from_current_derivative_audit_not_spendable`.
+- The generator checks all three current `derivative_bound_audit.v7` sources
+  (`denom1e30`, `denom1e30_residualfit`, `denom1e30_derivfit`) and records
+  exact rational failure for both lower and upper v21 budget inequalities.
+- For the semantically matching `secondDerivativeSlope` field, the upper
+  requirement is about `6.8596881683399726513e-5`, while sampled upper is about
+  `3.733217065514e-18`.  The older diagnostic `derivSlope` field is recorded
+  separately and is not the spendable second-derivative payload.
+- Local `q3_docs` search found no checked Q3 payload source for this exact
+  anchor/curvature budget.  The primary-source mathlib check remains the
+  generic MVT/derivative-bound shape only:
+  https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/MeanValue.html.
+- Validation passed: `lake env lean` on the touched Lean file, `q3_check`,
+  py_compile, generator rerun, and JSON assertions.
+- Boundary: this kills only the current symmetric anchor-abs source shape and
+  current diagnostic v7 source.  The checked asymmetric anchor-envelope
+  receiver and future cancellation-aware residual curvature payloads remain
+  live.
+- Next live gap:
+  `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_PAYLOAD_GAP`.
+- Route-death condition for that next gap, not yet reached:
+  `STEP33_A1_SUB0_ASYMMETRIC_ANCHOR_CURVATURE_CONSTANT_FAIL`.

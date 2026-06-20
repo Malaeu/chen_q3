@@ -1490,6 +1490,32 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
     hDerivLowerFromAnchorAbs
     hDerivUpperFromAnchorAbs
 
+/-- Exact constant kill for the symmetric anchor-absolute derivative payload
+seeded by the current derivative audit.
+
+Even with zero second-derivative slope, the symmetric radius
+`90799636411 / 200000000000000000000000000000` is too large for the lower side
+of the available derivative interval.  This kills only that symmetric
+anchor-abs source shape; the asymmetric anchor-envelope receiver above remains
+live. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_anchorAbsSecondDeriv_budget_impossible :
+    ¬ ∃ secondDerivSlope : Real,
+        0 <= secondDerivSlope ∧
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+          -((90799636411 : Real) / 200000000000000000000000000000) -
+            secondDerivSlope * ((1 : Real) / 10) ∧
+        ((90799636411 : Real) / 200000000000000000000000000000) +
+            secondDerivSlope * ((1 : Real) / 10) <=
+          ((1866608532757 : Real) / 500000000000000000000000000000) := by
+  rintro ⟨secondDerivSlope, hSecondDerivSlopeNonneg, hLowerBudget, _hUpperBudget⟩
+  have hSlopeTermNonneg :
+      0 <= secondDerivSlope * ((1 : Real) / 10) := by positivity
+  have hLowerTight :
+      ((-94119513411 : Real) / 500000000000000000000000000000) <=
+        -((90799636411 : Real) / 200000000000000000000000000000) := by
+    nlinarith
+  norm_num at hLowerTight
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 
