@@ -55883,6 +55883,82 @@ Boundary: this does not prove `hweighted`,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## Execution Update (2026-06-20) — shifted B14 primitive half-cell sign
+
+Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.
+
+Files touched:
+
+```text
+Q3/DigammaRemainder.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean facts added:
+
+```lean
+Q3.bernoulli14Primitive_eq_half_cell_factor
+Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half
+```
+
+Meaning:
+
+```text
+The explicit B14 primitive factors as
+  x * (1 - x) * (1 - 2 * x) * S(x * (1 - x)),
+where S has positive rational coefficients, so Lean proves the primitive is
+nonnegative on 0 <= x <= 1/2.
+```
+
+Closed preparatory blocker:
+
+```text
+STEP33_M6_B14_PRIMITIVE_HALF_SIGN_GAP
+```
+
+Active exact blocker remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Next patch-sized theorem remains:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : Nat) :
+    0 <= ∫ x in (n : Real)..((n + 1 : Nat) : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+Computer Use / Browser status:
+
+```text
+Used.  The selected in-app Browser tab is the open Pro/Louise ChatGPT
+conversation.  No advisory message was sent, because this patch had a local
+proof target and no theorem-shape fork.
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary: this does not prove the half-cell rearrangement, the weighted cell
+nonnegativity theorem, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## Execution Update (2026-06-20) — shifted B14 half-cell algebra support
 
 Route: PSD-pd/Q3 Step33A.1-A M6 support side-route.

@@ -15448,6 +15448,68 @@ Boundary remains unchanged: this does not prove the weighted nonnegativity
 assumption, `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
 
+## 2026-06-20 Current EOF Addendum -- shifted B14 primitive half-cell sign checked
+
+Checked new support facts:
+
+```lean
+Q3.bernoulli14Primitive_eq_half_cell_factor
+Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half
+```
+
+The new factorization rewrites the primitive as
+`x * (1 - x) * (1 - 2 * x) * S(x * (1 - x))`, with all rational coefficients
+of `S` positive.  Lean therefore proves the previously listed preparatory
+lemma:
+
+```lean
+lemma bernoulli14Primitive_nonneg_on_Icc_zero_half
+    {x : ℝ} (hx0 : 0 ≤ x) (hxhalf : x ≤ 1 / 2) :
+    0 ≤ bernoulli14Primitive x
+```
+
+Closed preparatory gap:
+
+```text
+STEP33_M6_B14_PRIMITIVE_HALF_SIGN_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+Current next theorem shape remains:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : ℕ) :
+    0 ≤ ∫ x in (n : ℝ)..((n + 1 : ℕ) : ℝ),
+      Q3.bernoulli14Diff x /
+        ‖(x : ℂ) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+Computer Use / Browser status: used.  The selected in-app Browser tab is the
+open Pro/Louise ChatGPT conversation.  No message was sent for this patch,
+because there was no route fork after the local half-cell factorization closed.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Boundary remains unchanged: this does not prove the half-cell rearrangement,
+weighted cell nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Current EOF Addendum -- shifted B14 half-cell algebra support
 
 Checked new support facts:

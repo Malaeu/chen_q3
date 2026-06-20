@@ -661,6 +661,42 @@ lemma bernoulli14Primitive_one :
     bernoulli14Primitive 1 = 0 := by
   norm_num [bernoulli14Primitive]
 
+lemma bernoulli14Primitive_eq_half_cell_factor (x : ℝ) :
+    let t : ℝ := x * (1 - x)
+    bernoulli14Primitive x =
+      x * (1 - x) * (1 - 2 * x) *
+        ((7 / 6 : ℝ) + (7 / 2 : ℝ) * t + (359 / 90 : ℝ) * t ^ 2 +
+          (22 / 9 : ℝ) * t ^ 3 + (14 / 15 : ℝ) * t ^ 4 +
+          (7 / 30 : ℝ) * t ^ 5 + (1 / 30 : ℝ) * t ^ 6) := by
+  dsimp [bernoulli14Primitive]
+  ring
+
+lemma bernoulli14Primitive_nonneg_on_Icc_zero_half
+    {x : ℝ} (hx0 : 0 ≤ x) (hxhalf : x ≤ 1 / 2) :
+    0 ≤ bernoulli14Primitive x := by
+  let t : ℝ := x * (1 - x)
+  have hx1 : x ≤ 1 := by nlinarith
+  have h1mx : 0 ≤ 1 - x := by nlinarith
+  have h12x : 0 ≤ 1 - 2 * x := by nlinarith
+  have ht0 : 0 ≤ t := by
+    exact mul_nonneg hx0 h1mx
+  have ht2 : 0 ≤ t ^ 2 := pow_nonneg ht0 2
+  have ht3 : 0 ≤ t ^ 3 := pow_nonneg ht0 3
+  have ht4 : 0 ≤ t ^ 4 := pow_nonneg ht0 4
+  have ht5 : 0 ≤ t ^ 5 := pow_nonneg ht0 5
+  have ht6 : 0 ≤ t ^ 6 := pow_nonneg ht0 6
+  have hfactor := bernoulli14Primitive_eq_half_cell_factor x
+  have hbase : 0 ≤ x * (1 - x) * (1 - 2 * x) := by
+    exact mul_nonneg (mul_nonneg hx0 h1mx) h12x
+  have hseries :
+      0 ≤
+        (7 / 6 : ℝ) + (7 / 2 : ℝ) * t + (359 / 90 : ℝ) * t ^ 2 +
+          (22 / 9 : ℝ) * t ^ 3 + (14 / 15 : ℝ) * t ^ 4 +
+          (7 / 30 : ℝ) * t ^ 5 + (1 / 30 : ℝ) * t ^ 6 := by
+    nlinarith [ht0, ht2, ht3, ht4, ht5, ht6]
+  rw [hfactor]
+  exact mul_nonneg hbase hseries
+
 lemma bernoulli14Diff_le_seven_six (x : ℝ) :
     bernoulli14Diff x ≤ (7 / 6 : ℝ) := by
   set y : ℝ := Int.fract x

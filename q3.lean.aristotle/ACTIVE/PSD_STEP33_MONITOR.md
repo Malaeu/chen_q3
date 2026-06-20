@@ -27890,6 +27890,71 @@ whitespace check were clean.
 Boundary: this does not prove the B12 `Ioi` norm-to-order15 inequality,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, Step33, Step34, or RH.
 
+## 2026-06-20 Step33A.1-A shifted B14 primitive half-cell sign checked
+
+Latest checked Lean facts in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli14Primitive_eq_half_cell_factor
+Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half
+```
+
+The factorization is:
+
+```text
+bernoulli14Primitive x =
+  x * (1 - x) * (1 - 2 * x) * S (x * (1 - x))
+```
+
+where `S(t)` has the positive rational coefficients
+`7/6, 7/2, 359/90, 22/9, 14/15, 7/30, 1/30`.
+Therefore Lean now proves `0 <= bernoulli14Primitive x` on
+`0 <= x <= 1 / 2`.
+
+Closed local preparatory gap:
+
+```text
+STEP33_M6_B14_PRIMITIVE_HALF_SIGN_GAP
+```
+
+Active exact gap remains:
+
+```text
+STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP
+```
+
+This is still the missing bridge from primitive sign plus B14 symmetry to the
+weighted cell estimate at the Step33 shift:
+
+```lean
+theorem step33_shift16_b14diff_weighted_kernel_cell_nonneg
+    (n : Nat) :
+    0 <= ∫ x in (n : Real)..((n + 1 : Nat) : Real),
+      Q3.bernoulli14Diff x /
+        ‖(x : Complex) + Q3.PSDpd.Step33.step33Shift16DigammaPoint‖ ^ 15
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+git diff --check
+```
+
+Result: Lean and `q3_check` passed with warnings only; forbidden-hole scan and
+whitespace check were clean.
+
+Browser/Pro note: the in-app Browser/Computer Use tab is connected to the open
+Pro/Louise ChatGPT conversation.  No message was sent for this patch because
+the local next sublemma was already clear; browser output is not proof
+evidence.
+
+Boundary: this does not prove the weighted cell theorem, `hweighted`,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
 ## 2026-06-20 Step33A.1-A shifted B14 half-cell algebra support
 
 Latest checked algebraic support in `Q3.DigammaRemainder`:

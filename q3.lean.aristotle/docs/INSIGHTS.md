@@ -35030,3 +35030,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove `hweighted`,
   `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, A hbox,
   `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- ShiftedB14PrimitiveHalfSignChecked
+
+- Added checked Lean facts in `Q3/DigammaRemainder.lean`:
+  `Q3.bernoulli14Primitive_eq_half_cell_factor` and
+  `Q3.bernoulli14Primitive_nonneg_on_Icc_zero_half`.
+- The factorization is
+  `bernoulli14Primitive x = x * (1 - x) * (1 - 2 * x) * S(x * (1 - x))`,
+  where `S` has positive rational coefficients
+  `7/6, 7/2, 359/90, 22/9, 14/15, 7/30, 1/30`.
+- Lean now proves the B14 primitive is nonnegative on `0 <= x <= 1/2`.
+- Closed preparatory blocker:
+  `STEP33_M6_B14_PRIMITIVE_HALF_SIGN_GAP`.
+- Active exact blocker remains:
+  `STEP33_M6_B14_HALF_CELL_REARRANGEMENT_GAP`.
+- The next patch-sized theorem is still the cellwise weighted nonnegativity at
+  `Q3.PSDpd.Step33.step33Shift16DigammaPoint`; primitive sign alone does not
+  prove the z0 weighted-kernel rearrangement.
+- Computer Use / Browser was used to verify that the selected in-app tab is the
+  open Pro/Louise ChatGPT conversation.  No message was sent because this patch
+  had no route fork; browser text is advisory only, not proof evidence.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash ../scripts/q3_check.sh Q3/DigammaRemainder.lean`, the forbidden-hole
+  scan for `sorry|admit|exact?|axiom|unsafe`, and `git diff --check`; Lean
+  emitted warnings only.
+- Boundary: this does not prove the half-cell rearrangement, weighted cell
+  nonnegativity, `hweighted`, `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or
+  RH.
