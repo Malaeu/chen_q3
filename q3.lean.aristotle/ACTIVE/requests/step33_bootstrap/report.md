@@ -55080,3 +55080,79 @@ toward the M6/order-15 source theorem.
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local layer:
+
+```lean
+Q3.bernoulli12DiffCellDeriv_hasDerivAt
+```
+
+Closed gap:
+
+```text
+STEP33_M6_B10_TO_B12_CELL_LAYER_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Next smallest Lean object: prove the interval integration-by-parts bridge from
+`bernoulli10Diff/(x+z)^11` to
+`(1/12) * bernoulli12DiffCellDeriv/(x+z)^12` on each unit cell.
+
+## 2026-06-20 Execution update -- B12 cell layer checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli12
+Q3.bernoulli12Fract
+Q3.bernoulli12Diff
+Q3.measurable_bernoulli12
+Q3.measurable_bernoulli12Fract
+Q3.measurable_bernoulli12Diff
+Q3.bernoulli12Diff_abs_le
+Q3.bernoulli12Diff_norm_le
+Q3.bernoulli12Diff_eq_on_Ioo
+Q3.bernoulli12Diff_eq_cell_on_Icc
+Q3.bernoulli12DiffCellDeriv
+Q3.bernoulli12DiffCellDeriv_left
+Q3.bernoulli12DiffCellDeriv_right
+Q3.bernoulli12DiffCellDeriv_hasDerivAt
+```
+
+The checked derivative surface is:
+
+```lean
+HasDerivAt (fun y : ℝ => bernoulli12DiffCellDeriv n y)
+  (132 * bernoulli10Diff x) x
+```
+
+Validation:
+
+```text
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Result: `q3_check ok`; forbidden-hole scan clean.
+
+This closes:
+
+```text
+STEP33_M6_B10_TO_B12_CELL_LAYER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.

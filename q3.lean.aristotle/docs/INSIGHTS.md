@@ -34488,3 +34488,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   B10 layer before proving the next interval bridge.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12CellLayerChecked
+
+- Added checked B12 polynomial and periodic kernel surfaces:
+  `Q3.bernoulli12`, `Q3.bernoulli12Fract`, and `Q3.bernoulli12Diff`.
+- Added checked measurability and tail-bound support:
+  `Q3.measurable_bernoulli12`, `Q3.measurable_bernoulli12Fract`,
+  `Q3.measurable_bernoulli12Diff`, `Q3.bernoulli12Diff_abs_le`, and
+  `Q3.bernoulli12Diff_norm_le`.
+- Added checked cell identities and endpoint derivative infrastructure:
+  `Q3.bernoulli12Diff_eq_on_Ioo`, `Q3.bernoulli12Diff_eq_cell_on_Icc`,
+  `Q3.bernoulli12DiffCellDeriv`, `Q3.bernoulli12DiffCellDeriv_left`,
+  `Q3.bernoulli12DiffCellDeriv_right`, and
+  `Q3.bernoulli12DiffCellDeriv_hasDerivAt`.
+- Closed:
+  `STEP33_M6_B10_TO_B12_CELL_LAYER_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Smallest useful next Lean object: mirror the checked B8-to-B10 interval
+  bridge and prove
+  `stieltjes_interval_B10Diff_to_B12CellDeriv`, exposing the
+  `(1/12) * bernoulli12DiffCellDeriv/(x+z)^12` unit-cell remainder.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.

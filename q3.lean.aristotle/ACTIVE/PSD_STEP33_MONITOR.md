@@ -27442,3 +27442,69 @@ toward the M6/order-15 source theorem.
 
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local layer:
+
+```lean
+Q3.bernoulli12DiffCellDeriv_hasDerivAt
+```
+
+Closed gap:
+
+```text
+STEP33_M6_B10_TO_B12_CELL_LAYER_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Next smallest Lean object: prove the interval integration-by-parts bridge from
+`bernoulli10Diff/(x+z)^11` to
+`(1/12) * bernoulli12DiffCellDeriv/(x+z)^12` on each unit cell.
+
+## 2026-06-20 Step33A.1-A B12 cell layer checked
+
+Added the checked B12 local layer in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli12
+Q3.bernoulli12Fract
+Q3.bernoulli12Diff
+Q3.measurable_bernoulli12
+Q3.measurable_bernoulli12Fract
+Q3.measurable_bernoulli12Diff
+Q3.bernoulli12Diff_abs_le
+Q3.bernoulli12Diff_norm_le
+Q3.bernoulli12Diff_eq_on_Ioo
+Q3.bernoulli12Diff_eq_cell_on_Icc
+Q3.bernoulli12DiffCellDeriv
+Q3.bernoulli12DiffCellDeriv_left
+Q3.bernoulli12DiffCellDeriv_right
+Q3.bernoulli12DiffCellDeriv_hasDerivAt
+```
+
+This closes:
+
+```text
+STEP33_M6_B10_TO_B12_CELL_LAYER_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_TO_B12_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Meaning: use the checked B12 cell derivative layer to prove the interval
+Stieltjes/integration-by-parts bridge from B10/power-11 to
+B12-cell-derivative/power-12 before proving the B12 boundary bridge.  The
+`691/32760 * z^-12` main term is not available until the later
+B12 boundary, finite telescope, and `Ioi` limit steps.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.
