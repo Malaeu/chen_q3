@@ -35898,3 +35898,44 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `raw-polynomial derivative model + direct triangle receiver`.  Direct
   residual, anchor-envelope, and future cancellation-aware receiver routes
   remain live.  No Step33A.1-A / Step33 / Step34 / RH closure is proved.
+
+## Insight (2026-06-20, Step33A.1-A) -- AnchorAbsSecondDerivReceiverV21
+
+- Target blocker:
+  `STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP`, the live
+  first-subchunk anchor-envelope route left open after the derivmodel budget
+  kill.
+- Local `q3_docs` searches for the anchor-envelope payload, residual
+  derivative anchor, and second-derivative envelope found current Step33
+  request/insight context, but no checked Q3 payload source for the actual
+  anchor derivative radius or second-derivative bound.
+- External primary-source check:
+  `Mathlib.Analysis.Calculus.MeanValue` documents the derivative-bound
+  mean-value infrastructure, including `Convex.norm_image_sub_le_of_norm_deriv_le`;
+  this confirms the local generic receiver shape, not any Q3-specific payload:
+  https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/MeanValue.html.
+- Added checked Lean receiver in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope`.
+- The new receiver turns the generator-facing payload into one absolute anchor
+  derivative radius at `eta = 0`, a second-derivative envelope on `[0,1/10]`,
+  differentiability of `deriv residual`, and two rational budget comparisons.
+  It then reuses the existing checked raw-center source and anchor-envelope
+  adapter.
+- Updated
+  `scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`
+  to schema `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21`
+  and regenerated the worklist JSON/MD artifacts.
+- JSON validation confirms exactly one non-null
+  `firstSubchunkAnchorEnvelopeWork` entry, for
+  `primary_finite / row 0 / parent 0 / subchunk 0`, with
+  `absoluteAnchorProofDataReceiver` pointing at the new receiver and
+  `proofSafeClosedFields = 0`.
+- Validation passed: `lake env lean` on
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`, targeted
+  `scripts/q3_check.sh`, script `py_compile`, generator rerun, JSON v21
+  assertion, scoped marker scan over touched Lean/script/generated worklist
+  artifacts, and `git diff --check`.
+- Boundary: receiver/worklist synchronization only.  This does not prove the
+  anchor derivative radius, second-derivative envelope, refined payload,
+  Step33A.1-A, Step33, Step34, or RH.

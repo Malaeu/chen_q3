@@ -29589,3 +29589,45 @@ Boundary: only the pairing
 does not kill the direct residual route, the anchor-envelope route, or a future
 cancellation-aware residual model.  No Step33A.1-A / Step33 / Step34 / RH
 closure is claimed.
+
+## 2026-06-20 Current EOF Status -- anchor-abs second-deriv receiver v21
+
+The live route after the derivmodel budget kill is the first-subchunk
+anchor-envelope route.  A new checked local receiver was added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope
+```
+
+It specializes the previous anchor-envelope adapter to a generator-friendly
+payload shape:
+
+```text
+|deriv cert.residual 0| <= derivSampleRadius
+0 <= secondDerivSlope
+∀ eta ∈ [0,1/10], differentiability of deriv residual
+∀ eta ∈ [0,1/10], ||deriv (deriv residual) eta|| <= secondDerivSlope
+sampled lower <= -derivSampleRadius - secondDerivSlope * (1/10)
+derivSampleRadius + secondDerivSlope * (1/10) <= sampled upper
+```
+
+The direct proof-input worklist is now schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21
+```
+
+It records exactly one concrete first-subchunk anchor-abs/second-deriv
+adapter, for `primary_finite / row 0 / parent 0 / subchunk 0`, and keeps
+`proofSafeClosedFields = 0`.
+
+Current first live proof-grade payload gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Boundary: this is a checked receiver and worklist synchronization only.  It
+does not prove the anchor derivative radius, the second-derivative envelope,
+the refined payload, Step33A.1-A, Step33, Step34, or RH.

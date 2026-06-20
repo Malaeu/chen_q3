@@ -57833,3 +57833,88 @@ Boundary: this kills only the pairing
 `raw-polynomial derivative model + direct triangle receiver`.  It does not kill
 the direct residual route, anchor-envelope route, or a future
 cancellation-aware residual-model receiver.
+
+## Execution Update (2026-06-20) -- anchor-abs second-deriv receiver v21
+
+Target route after the derivmodel budget kill:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+Added checked Lean receiver in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope
+```
+
+This specializes the existing first-subchunk anchor-envelope receiver to the
+absolute-anchor payload shape.  Generated proof data now targets:
+
+```text
+0 <= secondDerivSlope
+|deriv cert.residual 0| <= derivSampleRadius
+DifferentiableAt Real (fun t => deriv cert.residual t) on [0,1/10]
+||deriv (fun t => deriv cert.residual t) eta|| <= secondDerivSlope on [0,1/10]
+sampled lower <= -derivSampleRadius - secondDerivSlope * (1/10)
+derivSampleRadius + secondDerivSlope * (1/10) <= sampled upper
+```
+
+Updated:
+
+```text
+scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.{json,md}
+```
+
+The worklist is now schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21
+```
+
+It records exactly one non-null first-subchunk anchor-abs/second-deriv
+adapter, and keeps:
+
+```text
+status = direct_proof_input_worklist_address_only
+proofSafeClosedFields = 0
+```
+
+Semantic-search synthesis:
+
+```text
+Local q3_docs search did not find a checked Q3 payload source for the anchor
+derivative radius or second-derivative envelope.  It did find only current
+Step33 insight/request context.  The checked Lean route is therefore to keep
+the receiver local and fail-closed, while the next proof-producing generator
+must emit the absolute anchor derivative radius plus a second-derivative
+envelope and rational budget comparisons.
+```
+
+Primary-source web check:
+
+```text
+https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/MeanValue.html
+```
+
+The relevant mathlib infrastructure is the mean-value derivative-bound shape
+(`Convex.norm_image_sub_le_of_norm_deriv_le`), already used by the local
+generic receiver.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 JSON assertion: schema v21, exactly one first-subchunk anchor-abs/second-deriv adapter, proofSafeClosedFields = 0
+rg -n "sorry|admit|exact\\?|axiom|unsafe" on the touched Lean/script/generated worklist artifacts: no matches
+git diff --check
+```
+
+Boundary: receiver/worklist synchronization only.  No sampled derivative audit
+is trusted as proof, no full refined payload is emitted, and no Step33A.1-A /
+Step33 / Step34 / RH closure is claimed.

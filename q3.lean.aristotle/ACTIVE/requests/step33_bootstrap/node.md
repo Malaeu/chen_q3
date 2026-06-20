@@ -16683,3 +16683,34 @@ STEP33_A1_SUB0_DERIVMODEL_BUDGET_FAIL
 
 Proshka route-review agreed: commit the Lean/JSON kill certificate and do not
 mark the direct residual or anchor-envelope routes dead.
+
+## 2026-06-20 Current EOF Addendum -- anchor-abs second-deriv receiver
+
+The next live first-subchunk route is the anchor-envelope route, not the killed
+raw-polynomial derivmodel triangle receiver.
+
+Checked Lean receiver:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope
+```
+
+It consumes an absolute derivative-anchor radius at `eta = 0`, a
+second-derivative envelope on `[0,1/10]`, and two rational budget comparisons,
+then feeds the existing checked raw-center source into the exact-integral
+proof-data receiver.
+
+The direct proof-input worklist is now:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21
+```
+
+Current first live proof-grade payload gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_ANCHOR_ENVELOPE_PAYLOAD_GAP
+```
+
+This addendum closes no payload field by itself.  It only narrows the next
+generator target to the checked absolute-anchor/second-derivative receiver.

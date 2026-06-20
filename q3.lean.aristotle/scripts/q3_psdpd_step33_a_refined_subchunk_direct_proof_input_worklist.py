@@ -48,7 +48,7 @@ DIRECT_OVERLAY_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v30"
 )
 WORKLIST_SCHEMA = (
-    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
+    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v21"
 )
 
 REQUIRED_FIELDS = [
@@ -148,6 +148,11 @@ FIRST_SUBCHUNK_ANCHOR_ENVELOPE_PROOF_DATA_RECEIVER = (
     "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope"
 )
 
+FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER = (
+    "RawOmegaATaylorModelCertificate."
+    "primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope"
+)
+
 CELL_SLOPE_REFINED_PAYLOAD_FIN = (
     "RawOmegaAChunkTaylorPayload.CellSlopeDirectEnvelopeRefinedPayloadFin"
 )
@@ -209,14 +214,16 @@ def first_subchunk_anchor_envelope_work(
         "anchor": "0",
         "mesh": "1/10",
         "requiredInputs": [
-            "0 <= derivSlope",
-            "derivAnchorLower <= deriv cert.residual 0",
-            "deriv cert.residual 0 <= derivAnchorUpper",
+            "0 <= secondDerivSlope",
+            "|deriv cert.residual 0| <= derivSampleRadius",
             "DifferentiableAt Real (fun t => deriv cert.residual t) on [0, 1/10]",
             "proof-grade second-derivative envelope on [0, 1/10]",
-            "lower budget: sampled lower <= derivAnchorLower - derivSlope * (1/10)",
-            "upper budget: derivAnchorUpper + derivSlope * (1/10) <= sampled upper",
+            "lower budget: sampled lower <= -derivSampleRadius - secondDerivSlope * (1/10)",
+            "upper budget: derivSampleRadius + secondDerivSlope * (1/10) <= sampled upper",
         ],
+        "absoluteAnchorProofDataReceiver": (
+            FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER
+        ),
         "guard": [
             "first-subchunk concrete adapter only",
             "not reusable for other subchunks",
@@ -373,6 +380,7 @@ def build_subchunk_work(
                 "available Lean adapter: prove sharp residual-derivative lower/upper bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interval_bounds",
                 "available Lean adapter: prove exact model derivative norm + interpolation/error bound on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
                 "first-subchunk-only fallback: for primary_finite row 0 parent 0 subchunk 0, prove the anchor-envelope inputs and use primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope",
+                "first-subchunk preferred anchor fallback: prove |deriv cert.residual 0| <= derivSampleRadius plus a second-derivative envelope, then use primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope",
                 "prove cancellation-preserving norm bound "
                 "||deriv cert.residual eta|| <= derivSlope on the one derivative cell",
                 "preferred: feed hRawCenterCoeffAbs + DirectNormCert.Valid + full-cell endpoint equalities to of_raw_center_coeff_abs_direct_norm_cert_full_cell",
@@ -612,6 +620,9 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
         "firstSubchunkAnchorEnvelopeProofDataReceiver": (
             FIRST_SUBCHUNK_ANCHOR_ENVELOPE_PROOF_DATA_RECEIVER
         ),
+        "firstSubchunkAnchorAbsSecondDerivProofDataReceiver": (
+            FIRST_SUBCHUNK_ANCHOR_ABS_SECOND_DERIV_PROOF_DATA_RECEIVER
+        ),
         "requiredFields": REQUIRED_FIELDS,
         "legacyIntervalRequiredFields": LEGACY_INTERVAL_REQUIRED_FIELDS,
         "totals": totals,
@@ -622,7 +633,7 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
             "generate cancellation-preserving residual-derivative lower/upper interval bounds",
             "preferred compact route: generate one ResidualDerivativeDirectNormCert.Valid proof per direct subchunk",
             "interpolation route: prove exact model-derivative norm and interpolation/error bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
-            "first-subchunk-only fallback: for primary_finite row 0 parent 0 subchunk 0, prove the exact anchor interval, differentiability, second-derivative envelope, and two budget inequalities, then use the concrete anchor-envelope adapter",
+            "first-subchunk preferred anchor fallback: for primary_finite row 0 parent 0 subchunk 0, prove the absolute anchor derivative radius, differentiability, second-derivative envelope, and two budget inequalities, then use the concrete anchor-abs/second-deriv adapter",
             "feed hRawCenterCoeffAbs + DirectNormCert.Valid + cellL=L/cellU=U equalities into the raw-center full-cell direct-norm exact-integral constructor",
             "shortcut compact route: feed hRawCenterCoeffAbs + residual-derivative lower/upper bounds + abs-slope comparisons into the raw-center interval-bounds full-cell direct-norm constructor",
             "fallback: extract hResidualDerivBoundOnCell with residualDerivBoundOnCell_of_directNormCert",
@@ -638,7 +649,7 @@ def build_worklist(emitter_path: Path) -> dict[str, Any]:
             "do not emit CellSlopeDirectEnvelopeRefinedPayloadFin while hRawCenterCoeffAbs or the preferred direct residual-derivative norm bound is missing",
             "preferred cell-slope route may replace the two interval fields by one hResidualDerivBoundOnCell proof per direct subchunk",
             "interpolation diagnostics are non-proof until model and error bounds are emitted as Lean-checked exact hypotheses",
-            "first-subchunk anchor-envelope adapter is concrete to subchunk 0 and must not be generalized across the worklist",
+            "first-subchunk anchor-envelope adapters are concrete to subchunk 0 and must not be generalized across the worklist",
             "do not mutate CSV, ARadius, radius-floor, LDL, Q3.Main, H1, or PO3",
         ],
     }
@@ -673,6 +684,7 @@ def render_md(worklist: dict[str, Any]) -> str:
         f"- direct norm interpolation-valid receiver: `{worklist.get('directNormCertValidInterpolationReceiver')}`",
         f"- first-subchunk anchor-envelope interval receiver: `{worklist.get('firstSubchunkAnchorEnvelopeIntervalReceiver')}`",
         f"- first-subchunk anchor-envelope proof-data receiver: `{worklist.get('firstSubchunkAnchorEnvelopeProofDataReceiver')}`",
+        f"- first-subchunk anchor-abs/second-deriv proof-data receiver: `{worklist.get('firstSubchunkAnchorAbsSecondDerivProofDataReceiver')}`",
         f"- overlays: `{totals['overlays']}`",
         f"- subchunks: `{totals['subchunks']}`",
         f"- hRawCenterCoeffAbs fields: `{totals['hRawCenterCoeffAbsFields']}`",
@@ -739,7 +751,7 @@ def render_md(worklist: dict[str, Any]) -> str:
         "- interpolation route for `ResidualDerivativeDirectNormCert.Valid`: prove an exact model-derivative norm bound and exact interpolation/error bound on the same cell, prove their sum is at most `derivSlope`, then use `ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`"
     )
     lines.append(
-        "- first-subchunk-only anchor-envelope fallback: for `primary_finite` row `0`, parent `0`, subchunk `0`, prove the exact anchor interval, differentiability, second-derivative envelope, and rational budget inequalities, then use `primaryFiniteRow0Parent0Split100Sub0_residual_deriv_interval_bounds_of_anchor_envelope`"
+        "- first-subchunk preferred anchor fallback: for `primary_finite` row `0`, parent `0`, subchunk `0`, prove `|deriv cert.residual 0| <= derivSampleRadius`, differentiability, a second-derivative envelope, and rational budget inequalities, then use `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope`"
     )
     lines.append(
         "- shortcut compact derivative route: prove `hRawCenterCoeffAbs`, residual-derivative lower/upper bounds on `[L, U]`, and the two abs-slope comparisons, then feed them directly into `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData.of_raw_center_coeff_abs_direct_norm_interval_bounds_full_cell`"

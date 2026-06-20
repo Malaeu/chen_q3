@@ -1441,6 +1441,55 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
     hBounds.1
     hBounds.2
 
+/-- First-subchunk anchor-envelope adapter specialized to the proof-producing
+absolute-anchor payload shape.
+
+Generated code may prove a single bound
+`|deriv cert.residual 0| <= derivSampleRadius` and a second-derivative envelope
+on `[0, 1/10]`.  This wrapper converts those facts into the two anchor interval
+facts consumed by
+`primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope`.
+
+It is still only a receiver: the absolute anchor bound and the second-derivative
+envelope remain proof-grade payload obligations. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_abs_second_deriv_envelope
+    {derivSampleRadius secondDerivSlope : Real}
+    (hSecondDerivSlopeNonneg : 0 <= secondDerivSlope)
+    (hAnchorDerivResidual :
+      |deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual
+          (0 : Real)| <= derivSampleRadius)
+    (hResidualDerivDifferentiable :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        DifferentiableAt Real
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          eta)
+    (hResidualSecondDerivBound :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          eta‖ <= secondDerivSlope)
+    (hDerivLowerFromAnchorAbs :
+      ((-94119513411 : Real) / 500000000000000000000000000000) <=
+        -derivSampleRadius - secondDerivSlope * ((1 : Real) / 10))
+    (hDerivUpperFromAnchorAbs :
+      derivSampleRadius + secondDerivSlope * ((1 : Real) / 10) <=
+        ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :=
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_anchor_envelope
+    (derivAnchorLower := -derivSampleRadius)
+    (derivAnchorUpper := derivSampleRadius)
+    (derivSlope := secondDerivSlope)
+    hSecondDerivSlopeNonneg
+    (abs_le.mp hAnchorDerivResidual).1
+    (abs_le.mp hAnchorDerivResidual).2
+    hResidualDerivDifferentiable
+    hResidualSecondDerivBound
+    hDerivLowerFromAnchorAbs
+    hDerivUpperFromAnchorAbs
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 
