@@ -34100,3 +34100,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   is one-order-at-a-time because B6/B8/... infrastructure is not present yet.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B6CellLayerChecked
+
+- Added checked B6 polynomial and periodic kernel surfaces:
+  `Q3.bernoulli6`, `Q3.bernoulli6Fract`, and `Q3.bernoulli6Diff`.
+- Added checked measurability lemmas:
+  `Q3.measurable_bernoulli6`, `Q3.measurable_bernoulli6Fract`, and
+  `Q3.measurable_bernoulli6Diff`.
+- Added checked cell identities and endpoint derivative infrastructure:
+  `Q3.bernoulli6Diff_eq_on_Ioo`, `Q3.bernoulli6Diff_eq_cell_on_Icc`,
+  `Q3.bernoulli6DiffCellDeriv`, `Q3.bernoulli6DiffCellDeriv_left`,
+  `Q3.bernoulli6DiffCellDeriv_right`, and
+  `Q3.bernoulli6DiffCellDeriv_hasDerivAt`.
+- This does not close `Q3.digammaM6IntegralRemainderBound`; it only creates
+  the next local kernel layer needed for one-order Euler-Maclaurin lifting.
+- Remaining exact gap:
+  `STEP33_M6_B4_TO_B6_INTERVAL_STIELTJES_BRIDGE_GAP`.
+- Smallest useful next Lean object: prove the interval integration-by-parts
+  bridge from the checked B4/power-5 surface to the B6/power-7 surface,
+  including the `-1/252 * z^-6` boundary contribution in the global `Ioi`
+  normalization.
+- Boundary: this does not prove the B4-to-B6 Stieltjes bridge,
+  `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.

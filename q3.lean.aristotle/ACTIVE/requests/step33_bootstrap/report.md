@@ -54261,3 +54261,38 @@ infrastructure currently exists in `Q3.DigammaRemainder`.
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B6 cell layer checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli6
+Q3.bernoulli6Fract
+Q3.bernoulli6Diff
+Q3.measurable_bernoulli6
+Q3.measurable_bernoulli6Fract
+Q3.measurable_bernoulli6Diff
+Q3.bernoulli6Diff_eq_on_Ioo
+Q3.bernoulli6Diff_eq_cell_on_Icc
+Q3.bernoulli6DiffCellDeriv
+Q3.bernoulli6DiffCellDeriv_left
+Q3.bernoulli6DiffCellDeriv_right
+Q3.bernoulli6DiffCellDeriv_hasDerivAt
+```
+
+This creates the checked local polynomial layer needed for the next
+one-order Euler-Maclaurin lift from the B4/power-5 surface.
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Meaning: prove the interval integration-by-parts bridge that rewrites the
+checked B4/power-5 digamma remainder surface through the B6/power-7 surface,
+including the boundary term, before trying to reach the order-15 M6 source.
+
+Boundary: this is not a proof of the B4-to-B6 Stieltjes bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.

@@ -44,6 +44,18 @@ itself, because the power-3 to power-5 step first splits
 twice. -/
 def bernoulli4Diff (x : ℝ) : ℝ := bernoulli4Fract x
 
+/-- Bernoulli polynomial B6(t) = t^6 - 3t^5 + (5/2)t^4 - (1/2)t^2 + 1/42. -/
+def bernoulli6 (t : ℝ) : ℝ :=
+  t ^ 6 - 3 * t ^ 5 + (5 / 2 : ℝ) * t ^ 4 - (1 / 2 : ℝ) * t ^ 2 +
+    (42 : ℝ)⁻¹
+
+/-- B6 applied to the fractional part, prepared for the next one-order
+Euler-Maclaurin lift from the B4/power-5 surface. -/
+def bernoulli6Fract (x : ℝ) : ℝ := bernoulli6 (Int.fract x)
+
+/-- Repository-normalized B6 periodic kernel for the B4-to-B6 Stieltjes lift. -/
+def bernoulli6Diff (x : ℝ) : ℝ := bernoulli6Fract x
+
 /-- Bernoulli polynomial B1(t) = t - 1/2. -/
 def bernoulli1 (t : ℝ) : ℝ := t - (1 / 2 : ℝ)
 
@@ -90,6 +102,30 @@ lemma measurable_bernoulli4Fract : Measurable bernoulli4Fract := by
 @[measurability]
 lemma measurable_bernoulli4Diff : Measurable bernoulli4Diff := by
   simpa [bernoulli4Diff] using measurable_bernoulli4Fract
+
+@[measurability]
+lemma measurable_bernoulli6 : Measurable bernoulli6 := by
+  have h6 : Measurable fun t : ℝ => t ^ 6 := by
+    simpa using (measurable_id.pow_const 6)
+  have h5 : Measurable fun t : ℝ => t ^ 5 := by
+    simpa using (measurable_id.pow_const 5)
+  have h4 : Measurable fun t : ℝ => t ^ 4 := by
+    simpa using (measurable_id.pow_const 4)
+  have h2 : Measurable fun t : ℝ => t ^ 2 := by
+    simpa using (measurable_id.pow_const 2)
+  have hconst : Measurable fun _ : ℝ => (42 : ℝ)⁻¹ := measurable_const
+  simpa [bernoulli6] using
+    ((((h6.sub (measurable_const.mul h5)).add
+      (measurable_const.mul h4)).sub (measurable_const.mul h2)).add hconst)
+
+@[measurability]
+lemma measurable_bernoulli6Fract : Measurable bernoulli6Fract := by
+  have hfract : Measurable (Int.fract : ℝ → ℝ) := measurable_fract
+  simpa [bernoulli6Fract] using measurable_bernoulli6.comp hfract
+
+@[measurability]
+lemma measurable_bernoulli6Diff : Measurable bernoulli6Diff := by
+  simpa [bernoulli6Diff] using measurable_bernoulli6Fract
 
 lemma bernoulli2Fract_eq_const_sub_diff (x : ℝ) :
     bernoulli2Fract x = (6 : ℝ)⁻¹ - bernoulli2Diff x := by
@@ -298,6 +334,80 @@ lemma bernoulli4DiffCellDeriv_hasDerivAt
       12 * bernoulli2Fract x =
         12 * (x - n) ^ 2 - 12 * (x - n) + 2 := by
     have hcell := bernoulli2Fract_eq_on_Ioo n hx
+    nlinarith [hcell]
+  simpa [hcoef] using hderiv
+
+lemma bernoulli6Diff_eq_on_Ioo (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli6Diff x =
+      (x - n) ^ 6 - 3 * (x - n) ^ 5 +
+        (5 / 2 : ℝ) * (x - n) ^ 4 -
+        (1 / 2 : ℝ) * (x - n) ^ 2 + (42 : ℝ)⁻¹ := by
+  have hfract : Int.fract x = x - n := fract_eq_sub_nat_on_Ioo n hx
+  simp [bernoulli6Diff, bernoulli6Fract, bernoulli6, hfract, sub_eq_add_neg,
+    add_assoc]
+
+lemma bernoulli6Diff_eq_cell_on_Icc (n : ℕ) {x : ℝ}
+    (hx : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ)) :
+    bernoulli6Diff x =
+      (x - n) ^ 6 - 3 * (x - n) ^ 5 +
+        (5 / 2 : ℝ) * (x - n) ^ 4 -
+        (1 / 2 : ℝ) * (x - n) ^ 2 + (42 : ℝ)⁻¹ := by
+  by_cases hx0 : x = n
+  · subst hx0
+    simp [bernoulli6Diff, bernoulli6Fract, bernoulli6]
+  by_cases hx1 : x = n + 1
+  · subst hx1
+    norm_num [bernoulli6Diff, bernoulli6Fract, bernoulli6, Nat.cast_add, Nat.cast_one]
+  have hx' : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ) := by
+    refine ⟨?_, ?_⟩
+    · exact lt_of_le_of_ne hx.1 (Ne.symm hx0)
+    · exact lt_of_le_of_ne hx.2 hx1
+  exact bernoulli6Diff_eq_on_Ioo n hx'
+
+/-- Cell derivative of the B6 polynomial.  This is the next local polynomial
+surface for the B4/power-5 to B6/power-7 Euler-Maclaurin lift. -/
+def bernoulli6DiffCellDeriv (n : ℕ) (x : ℝ) : ℝ :=
+  6 * (x - n) ^ 5 - 15 * (x - n) ^ 4 + 10 * (x - n) ^ 3 - (x - n)
+
+lemma bernoulli6DiffCellDeriv_left (n : ℕ) :
+    bernoulli6DiffCellDeriv n (n : ℝ) = 0 := by
+  simp [bernoulli6DiffCellDeriv]
+
+lemma bernoulli6DiffCellDeriv_right (n : ℕ) :
+    bernoulli6DiffCellDeriv n (n + 1 : ℝ) = 0 := by
+  norm_num [bernoulli6DiffCellDeriv, Nat.cast_add, Nat.cast_one]
+
+lemma bernoulli6DiffCellDeriv_hasDerivAt
+    (n : ℕ) {x : ℝ} (hx : x ∈ Set.Ioo (n : ℝ) (n + 1 : ℝ)) :
+    HasDerivAt (fun y : ℝ => bernoulli6DiffCellDeriv n y)
+      (30 * bernoulli4Diff x) x := by
+  have hderiv :
+      HasDerivAt (fun y : ℝ => bernoulli6DiffCellDeriv n y)
+        (30 * (x - n) ^ 4 - 60 * (x - n) ^ 3 + 30 * (x - n) ^ 2 - 1) x := by
+    have hbase : HasDerivAt (fun y : ℝ => y - (n : ℝ)) 1 x := by
+      simpa using (hasDerivAt_id x).sub_const (n : ℝ)
+    have hfive :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 5)
+          (5 * (x - (n : ℝ)) ^ 4) x := by
+      simpa using hbase.pow 5
+    have hfour :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 4)
+          (4 * (x - (n : ℝ)) ^ 3) x := by
+      simpa using hbase.pow 4
+    have hcube :
+        HasDerivAt (fun y : ℝ => (y - (n : ℝ)) ^ 3)
+          (3 * (x - (n : ℝ)) ^ 2) x := by
+      simpa using hbase.pow 3
+    have hpoly :=
+      (((hfive.const_mul (6 : ℝ)).sub (hfour.const_mul (15 : ℝ))).add
+        (hcube.const_mul (10 : ℝ))).sub hbase
+    convert hpoly using 1
+    ring
+  have hcoef :
+      30 * bernoulli4Diff x =
+        30 * (x - n) ^ 4 - 60 * (x - n) ^ 3 + 30 * (x - n) ^ 2 - 1 := by
+    have hcell := bernoulli4Diff_eq_on_Ioo n hx
     nlinarith [hcell]
   simpa [hcoef] using hderiv
 

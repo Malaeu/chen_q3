@@ -26789,3 +26789,35 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
+
+## 2026-06-20 Step33A.1-A B6 cell layer checked
+
+Added the checked B6 local layer in `Q3.DigammaRemainder`:
+
+```lean
+Q3.bernoulli6
+Q3.bernoulli6Fract
+Q3.bernoulli6Diff
+Q3.measurable_bernoulli6
+Q3.measurable_bernoulli6Fract
+Q3.measurable_bernoulli6Diff
+Q3.bernoulli6Diff_eq_on_Ioo
+Q3.bernoulli6Diff_eq_cell_on_Icc
+Q3.bernoulli6DiffCellDeriv
+Q3.bernoulli6DiffCellDeriv_left
+Q3.bernoulli6DiffCellDeriv_right
+Q3.bernoulli6DiffCellDeriv_hasDerivAt
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_INTERVAL_STIELTJES_BRIDGE_GAP
+```
+
+Meaning: the next proof object must use this B6 cell layer to prove the
+interval Stieltjes/integration-by-parts bridge from B4/power-5 to
+B6/power-7, with the boundary term accounted for.
+
+Boundary unchanged: this does not prove the B4-to-B6 Stieltjes bridge,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
