@@ -53300,3 +53300,72 @@ Remaining local inputs:
   accepted add_nat norm/arg helpers, plus the separate shift/source input
   required by the existing N16 payload receiver.
 ```
+
+## 2026-06-20 Execution update -- n=6 M6 step-defect interval closed
+
+Extended the checked finite-telescope defect route to the seventh term.  The
+new no-premise theorem is:
+
+```lean
+Q3.PSDpd.Step33.step33_shift16_m6_step_defect_n6_component_interval
+```
+
+It proves:
+
+```lean
+(((-18 : Real) / ((10 : Real) ^ 25) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (6 : Complex))).re ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (6 : Complex))).re <=
+    (-17 : Real) / ((10 : Real) ^ 25)) ∧
+ ((16 : Real) / ((10 : Real) ^ 27) <=
+    (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (6 : Complex))).im ∧
+  (Q3.digammaM6StepDefect
+      (step33Shift16DigammaPoint + (6 : Complex))).im <=
+    (17 : Real) / ((10 : Real) ^ 27)))
+```
+
+The real log-step bound uses `Real.abs_log_sub_add_sum_range_le` on
+`log(1 + 124000/2340901)`.  The imaginary log-step bound uses the generic
+arctan error helper plus the `add_nat` arg lemma for ratios `1/1570` and
+`1/1530`.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+```
+
+Result:
+
+```text
+Lean ok
+q3_check ok
+no forbidden markers in touched Lean file
+git diff --check clean
+module build ok
+```
+
+Boundary:
+
+```text
+This closes n=0, n=1, n=2, n=3, n=4, n=5, and n=6 only.
+It still does not produce:
+  Q3.PSDpd.Step33.Step33Shift16M6FiniteTelescopeTermPayload
+
+Current exact source gap:
+  STEP33_M6_DEFECT_FIN16_INTERVAL_TABLE_GAP
+
+Remaining local inputs:
+  checked defect intervals for n=7,...,15, preferably generated through the
+  accepted add_nat norm/arg helpers, plus the separate shift/source input
+  required by the existing N16 payload receiver.
+```
