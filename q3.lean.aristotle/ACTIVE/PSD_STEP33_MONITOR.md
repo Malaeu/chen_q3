@@ -26790,6 +26790,33 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A B6-to-B8 combined cell checked
+
+Added checked combined cell identity:
+
+```lean
+Q3.stieltjes_interval_B6Diff_to_B8Diff
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_COMBINED_CELL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_FINITE_SUM_TELESCOPE_GAP
+```
+
+Meaning: sum the checked B6-to-B8 cell identity over `Finset.range N`,
+telescope the power-8 boundary contribution, and package the finite B6-to-B8
+identity before passing to any `Ioi` limit.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B8 boundary bridge checked
 
 Added checked boundary bridge:

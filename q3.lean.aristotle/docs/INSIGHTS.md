@@ -34271,3 +34271,18 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   cell identity, then telescope over `Finset.range N`.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B6ToB8CombinedCellChecked
+
+- Added checked combined cell identity:
+  `Q3.stieltjes_interval_B6Diff_to_B8Diff`.
+- The theorem packages the power-8 boundary difference with coefficient
+  `-(240 : ℂ)^-1` and leaves the B8/power-9 cell remainder.
+- Closed:
+  `STEP33_M6_B6_TO_B8_COMBINED_CELL_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B6_TO_B8_FINITE_SUM_TELESCOPE_GAP`.
+- Smallest useful next Lean object: add the power-8 boundary telescope and
+  finite B6-to-B8 summed identity, mirroring the checked B4-to-B6 finite layer.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.

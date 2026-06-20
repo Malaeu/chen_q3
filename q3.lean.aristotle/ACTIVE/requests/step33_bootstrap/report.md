@@ -54098,6 +54098,45 @@ B8 boundary bridge to expose the next local Stieltjes cell identity.
 Boundary: this is not a proof of the combined B6-to-B8 cell identity,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
 
+## 2026-06-20 Execution update -- B6-to-B8 combined cell checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.stieltjes_interval_B6Diff_to_B8Diff
+```
+
+Checked combined cell identity:
+
+```lean
+∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+=
+  (-(240 : ℂ)⁻¹) *
+    ((((n + 1 : ℂ) + z)⁻¹) ^ 8 - (((n : ℂ) + z)⁻¹) ^ 8) +
+  ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli8Diff x : ℂ) / ((x : ℂ) + z) ^ 9
+```
+
+This closes:
+
+```text
+STEP33_M6_B6_TO_B8_COMBINED_CELL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B6_TO_B8_FINITE_SUM_TELESCOPE_GAP
+```
+
+Meaning: sum the checked B6-to-B8 cell identity over `Finset.range N`,
+telescope the power-8 boundary contribution, and package the finite B6-to-B8
+identity before passing to any `Ioi` limit.
+
+Boundary: this is not a proof of the finite summed B6-to-B8 identity,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
 ## 2026-06-20 Execution update -- B6 digamma prefix checked
 
 Lean progress in `Q3.DigammaRemainder`:
