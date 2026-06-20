@@ -36342,3 +36342,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `sorry|admit|exact?`, and `git diff --check`.
 - Boundary: no Step33A.1-A closure, no generated Lean payload, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- FullTaylorResidualCrosswalk
+
+- Browser/Proshka advisory selected route A after local Lean exposed that
+  `RawCenterCoeffOnlyCert` carries only the center coefficient and is not the
+  generated degree-16 Taylor candidate.  The accepted proof objects are local
+  Lean only.
+- Added the checked mismatch fence
+  `primaryFiniteRow0Parent0Split100Sub0_derivmodel_coeff_zero_mismatch_current_adapter_coeff`.
+- Added route-A full Taylor support:
+  `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff`,
+  `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm`.
+- This closes the full Taylor derivative/residual crosswalk gap.  The live
+  residual expression is now
+  `primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+  rawOmegaATaylorPolynomial 15 (1/20)
+  primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta`.
+- Updated the segmented generator to schema
+  `q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4`;
+  it reports
+  `status = fail_closed_missing_full_taylor_residual_interval_proof`,
+  `proofSafeClosedFields = 0`, and `outLeanWritten = false`.
+- Current first live blocker:
+  `STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING`.
+- Boundary: no proof-grade interval certificate, no generated Lean payload, no
+  first-subchunk residual-derivative norm certificate, no A hbox, no
+  `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

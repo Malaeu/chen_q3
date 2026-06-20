@@ -38,9 +38,16 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_segmented_residual_deriv_interval_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4"
 ROUTE_ID = "STEP33_A1_SUB0_SEGMENTED_RESIDUAL_DERIV"
 FAILURE_CODE = "STEP33_A1_SUB0_RESIDUAL_DERIV_SAME_UNIT_SEGMENT_CERT_FAIL"
+CLOSED_FORM_FAILURE_CODE = "STEP33_A1_SUB0_CLOSED_FORM_RESIDUAL_INTERVAL_BOUNDS_MISSING"
+FULL_TAYLOR_FAILURE_CODE = (
+    "STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING"
+)
+DERIVMODEL_ADAPTER_MISMATCH_CODE = (
+    "STEP33_A1_SUB0_DERIVMODEL_ADAPTER_POLYNOMIAL_MISMATCH"
+)
 TARGET_SLOPE = "1866608532757/500000000000000000000000000000"
 CELL_L = "0"
 CELL_U = "1/10"
@@ -184,7 +191,7 @@ def build_report(
     )
     candidate_ready = coverage["coveragePassedExactRational"] and budget_passed
     status = (
-        "fail_closed_missing_residual_interval_proof"
+        "fail_closed_missing_full_taylor_residual_interval_proof"
         if candidate_ready
         else "fail_closed_missing_segment_cert"
     )
@@ -196,6 +203,8 @@ def build_report(
         "failureCodes": [
             FAILURE_CODE,
             "STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING",
+            FULL_TAYLOR_FAILURE_CODE,
+            DERIVMODEL_ADAPTER_MISMATCH_CODE,
         ],
         "proofMode": "exact_rational_same_expression_interval",
         "target": {
@@ -220,6 +229,10 @@ def build_report(
             "budgetPassedExactRational": budget_passed,
             "candidateReadyForLeanShape": candidate_ready,
             "proofGradeResidualBoundsPresent": False,
+            "proofGradeClosedFormResidualBoundsPresent": False,
+            "proofGradeFullTaylorResidualBoundsPresent": False,
+            "fullTaylorPolynomialDerivativeCrosswalkPresent": True,
+            "fullTaylorResidualDerivativeCrosswalkPresent": True,
         },
         "proofSafeClosedFields": 0,
         "outLeanWritten": False,
@@ -241,6 +254,40 @@ def build_report(
                 "ResidualDerivativeSegmentIntervalCert.Valid.of_single_bounds"
             ),
             "landingFile": LANDING_FILE,
+            "sub0ClosedFormResidualDerivativeBridge": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "residual_deriv_eq_closedForm_sub_polynomial_deriv"
+            ),
+            "sub0DerivmodelAdapterMismatchFence": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "derivmodel_coeff_zero_mismatch_current_adapter_coeff"
+            ),
+            "sub0FullTaylorCoeff": (
+                "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff"
+            ),
+            "sub0FullTaylorCert": (
+                "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert"
+            ),
+            "sub0FullTaylorPolynomialDerivativeCrosswalk": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_polynomial_deriv_eq_derivmodel"
+            ),
+            "sub0FullTaylorResidualDerivativeCrosswalk": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "fullTaylor_residual_deriv_eq_closedForm"
+            ),
+            "sub0ConcreteSegmentData": (
+                "primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert"
+            ),
+            "sub0ClosedFormValidityBridge": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "direct_segment_cert_valid_of_closedForm_residual_bounds"
+            ),
+            "sub0ClosedFormProofDataWrapper": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_"
+                "and_closedForm_residual_bounds"
+            ),
             "sub0PreferredNormWrapper": (
                 "primaryFiniteRow0Parent0Split100Sub0_"
                 "residual_deriv_norm_bound_of_direct_segment_cert"
@@ -270,16 +317,35 @@ def build_report(
         "rationalProofObligations": [
             "exact segment coverage of Set.Icc 0 (1/10) (candidate passes)",
             "exact segment adjacency/no-gap proof (candidate passes)",
-            "same-expression direct residual derivative enclosure per segment (missing)",
+            (
+                "proof-grade bounds for "
+                "primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta "
+                "- rawOmegaATaylorPolynomial 15 (1/20) "
+                "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta "
+                "on Set.Icc 0 (1/10) (missing)"
+            ),
+            (
+                "do not replace deriv current-adapter polynomial by the generated "
+                "degree-15 derivmodel polynomial: Lean checks a coefficient mismatch; "
+                "use the full Taylor cert crosswalk instead"
+            ),
             f"for every segment: -{TARGET_SLOPE} <= residualLower (candidate passes)",
             f"for every segment: residualUpper <= {TARGET_SLOPE} (candidate passes)",
-            "optional ledger: residualDeriv eta = rawDeriv eta - polyDeriv eta on the cell",
+            (
+                "checked full Taylor bridge: deriv residual equals the closed-form "
+                "raw derivative minus the generated degree-15 derivative model"
+            ),
+            (
+                "current-adapter closed-form bridge is checked but is not the sampled "
+                "full Taylor residual source"
+            ),
             "optional ledger: proof-grade raw derivative enclosure per segment",
             "optional ledger: proof-grade polynomial derivative enclosure per segment",
         ],
         "guard": [
             "not Lean proof data",
             "do not trust sampled direct-derivative overlay as proof",
+            "do not spend bounds for RawCenterCoeffOnlyCert as bounds for the full Taylor candidate",
             "do not spend independent raw/poly boxes unless the residual interval itself fits",
             "do not emit generated Lean payload until all segment obligations close",
             "the spendable field is the direct same-unit residual derivative interval",
@@ -293,6 +359,10 @@ def build_report(
             "directOverlayExists": direct_overlay is not None,
             "directOverlayStatus": direct_overlay.get("status") if direct_overlay else None,
             "diagnosticSub0Candidate": first_subchunk_candidate(direct_overlay),
+            "derivmodelAdapterPolynomialCrosswalkStatus": (
+                "blocked_for_current_adapter_closed_by_full_taylor_cert"
+            ),
+            "fullTaylorResidualCrosswalkStatus": "checked_in_lean",
         },
         "sourceDefinitionHashes": {
             CHECKER_FILE: file_hash(ROOT / CHECKER_FILE),
@@ -354,6 +424,10 @@ def render_md(report: dict[str, Any]) -> str:
             f"- budgetPassedExactRational: `{arithmetic['budgetPassedExactRational']}`",
             f"- candidateReadyForLeanShape: `{arithmetic['candidateReadyForLeanShape']}`",
             f"- proofGradeResidualBoundsPresent: `{arithmetic['proofGradeResidualBoundsPresent']}`",
+            f"- proofGradeClosedFormResidualBoundsPresent: `{arithmetic['proofGradeClosedFormResidualBoundsPresent']}`",
+            f"- proofGradeFullTaylorResidualBoundsPresent: `{arithmetic['proofGradeFullTaylorResidualBoundsPresent']}`",
+            f"- fullTaylorPolynomialDerivativeCrosswalkPresent: `{arithmetic['fullTaylorPolynomialDerivativeCrosswalkPresent']}`",
+            f"- fullTaylorResidualDerivativeCrosswalkPresent: `{arithmetic['fullTaylorResidualDerivativeCrosswalkPresent']}`",
         ]
     )
     lines.extend(["", "## Rational Proof Obligations", ""])
@@ -373,14 +447,16 @@ def render_md(report: dict[str, Any]) -> str:
             f"- interpolation payload status: `{report['sourceStatus']['interpolationPayloadStatus']}`",
             f"- interpolation first danger point: `{report['sourceStatus']['interpolationFirstDangerPoint']}`",
             f"- direct overlay status: `{report['sourceStatus']['directOverlayStatus']}`",
+            f"- full Taylor residual crosswalk: `{report['sourceStatus']['fullTaylorResidualCrosswalkStatus']}`",
             "",
             "The diagnostic direct-overlay candidate now supplies a one-segment",
             "candidate whose exact rational coverage and budget arithmetic pass.",
-            "It remains non-spendable because the same-expression residual",
-            "derivative interval proof is still missing; only a proof-grade",
-            "`ResidualDerivativeSegmentIntervalCert.DirectValid` witness can",
-            "close the preferred receiver.  The richer `Valid` witness remains",
-            "available only when a separate raw/poly ledger is also proved.",
+            "The full Taylor residual derivative crosswalk is now checked in Lean.",
+            "The candidate remains non-spendable because the proof-grade interval",
+            "bound for that full Taylor residual expression is still missing; only",
+            "a proof-grade `ResidualDerivativeSegmentIntervalCert.DirectValid`",
+            "witness can close the preferred receiver.  The richer `Valid` witness",
+            "remains available only when a separate raw/poly ledger is also proved.",
             "",
         ]
     )

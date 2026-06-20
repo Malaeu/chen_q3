@@ -17244,6 +17244,54 @@ Current exact blocker:
 STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
 
+## 2026-06-20 Current EOF Addendum -- route-A full Taylor residual crosswalk
+
+Browser/Proshka advisory selected route A after the current adapter mismatch
+was found: build/use a full degree-16 Taylor coefficient certificate so the
+residual polynomial is the sampled Taylor candidate.  Local Lean now checks
+the first route-A crosswalks in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff
+primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm
+```
+
+The current adapter fence remains checked:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_derivmodel_coeff_zero_mismatch_current_adapter_coeff
+```
+
+Meaning: do not spend bounds for
+`RawCenterCoeffOnlyCert.polynomial` as bounds for the sampled full Taylor
+candidate.  The live interval target is now the full Taylor expression:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+on `Set.Icc 0 (1/10)`, with the same sampled candidate interval:
+
+```text
+[-94119513411/500000000000000000000000000000,
+  1866608532757/500000000000000000000000000000]
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
+```
+
+Boundary: this closes only the full Taylor derivative/residual crosswalk.  It
+does not provide proof-grade interval bounds, emit a Lean payload, close
+Step33A.1-A, or close Step33/Step34/RH.
+
 The direct-overlay candidate remains non-spendable until this proof is present.
 
 ## 2026-06-20 Current EOF Addendum -- direct residual segment receiver

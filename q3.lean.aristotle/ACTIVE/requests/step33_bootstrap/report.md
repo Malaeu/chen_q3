@@ -58748,3 +58748,65 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAC
 rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 git diff --check
 ```
+
+## Execution Update (2026-06-20) -- full Taylor residual crosswalk
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk route-A residual-derivative norm
+lane.
+
+Browser/Proshka advisory was used after local Lean found the source mismatch:
+the minimal `RawCenterCoeffOnlyCert` polynomial is not the generated degree-16
+Taylor candidate.  The accepted proof objects below are local Lean only.
+
+Checked Lean support added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_derivmodel_coeff_zero_mismatch_current_adapter_coeff
+primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff
+primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm
+```
+
+Result: the route-A crosswalk is no longer the blocker.  Lean now identifies
+the full Taylor residual derivative with:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+The segmented generator now emits schema
+`q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4` with:
+
+```text
+status = fail_closed_missing_full_taylor_residual_interval_proof
+proofSafeClosedFields = 0
+outLeanWritten = false
+fullTaylorResidualDerivativeCrosswalkPresent = true
+proofGradeFullTaylorResidualBoundsPresent = false
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
+```
+
+Boundary: this does not prove the interval, does not make the sampled direct
+overlay proof-grade, does not emit a generated Lean payload, and does not close
+Step33A.1-A, the A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34,
+or RH.
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_segmented_residual_deriv_interval_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```

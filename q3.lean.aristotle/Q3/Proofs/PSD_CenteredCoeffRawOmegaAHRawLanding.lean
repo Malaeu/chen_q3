@@ -111,6 +111,106 @@ theorem primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_budget_impossible
     primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_bound_exceeds_derivSlope
   nlinarith
 
+/-- The generated derivative-model constant term is not the coefficient that
+the current minimal `RawCenterCoeffOnlyCert` adapter uses in degree `1`.
+
+This records the source mismatch that blocks direct use of the
+`d_i = (i + 1) * c_{i+1}` polynomial-derivative crosswalk on this adapter:
+`RawCenterCoeffOnlyCert` deliberately only carries the center coefficient. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_derivmodel_coeff_zero_mismatch_current_adapter_coeff :
+    primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨0, by decide⟩ ≠
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0 := by
+  norm_num [primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff,
+    primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0]
+
+/-- Full degree-16 Taylor coefficients for the active first subchunk.
+
+Unlike the minimal `RawCenterCoeffOnlyCert`, this certificate uses the
+generated Taylor candidate whose formal derivative has the checked
+`ResidualDerivmodelCoeff` coefficients. -/
+def primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff
+    (i : Fin 17) : Rat :=
+  match i.1 with
+  | 0 => primaryFiniteRow0Parent0Split100Sub0RawCenterCoeff0
+  | 1 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨0, by decide⟩ / 1
+  | 2 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨1, by decide⟩ / 2
+  | 3 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨2, by decide⟩ / 3
+  | 4 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨3, by decide⟩ / 4
+  | 5 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨4, by decide⟩ / 5
+  | 6 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨5, by decide⟩ / 6
+  | 7 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨6, by decide⟩ / 7
+  | 8 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨7, by decide⟩ / 8
+  | 9 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨8, by decide⟩ / 9
+  | 10 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨9, by decide⟩ / 10
+  | 11 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨10, by decide⟩ / 11
+  | 12 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨11, by decide⟩ / 12
+  | 13 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨12, by decide⟩ / 13
+  | 14 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨13, by decide⟩ / 14
+  | 15 =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨14, by decide⟩ / 15
+  | _ =>
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
+        ⟨15, by decide⟩ / 16
+
+/-- Full Taylor-model certificate for the active first subchunk.
+
+This is the route-A certificate surface: it aligns the residual polynomial
+with the generated degree-16 Taylor candidate instead of the minimal
+raw-center-only adapter. -/
+def primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert :
+    RawOmegaATaylorModelCertificate 11 ((3 : Real) / 10)
+      0 0 ((1 : Real) / 10) 0 0 where
+  center := ((1 : Rat) / 20)
+  radius := ((1 : Rat) / 20)
+  degree := 16
+  coeff := primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff
+  remainder := ((1 : Rat) / 1000000000000000000)
+
+/-- The full degree-16 Taylor certificate has the generated degree-15
+derivative model as its formal polynomial derivative. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel
+    (eta : Real) :
+    deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.polynomial eta =
+      rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta := by
+  unfold RawOmegaATaylorModelCertificate.polynomial
+    rawOmegaATaylorPolynomial
+    primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert
+    primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff
+  simp only [Fin.sum_univ_succ]
+  norm_num [primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff]
+  ring_nf
+
 /-- First-subchunk `hRawCenterCoeffAbs` bridge.
 
 Once the current `DIGAMMA_SHIFT16_M6_MAIN_NORM_BLOCKER` is closed, this theorem
@@ -1783,6 +1883,42 @@ theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm
       omega, shapeSq, mul_assoc, add_comm]
   · exact hOmegaDiff.mul hShapeSqDiff
 
+/-- Residual derivative as the checked raw-derivative closed form minus the
+adapter polynomial derivative.
+
+This is the same-expression bridge for the minimal raw-center-only adapter.
+It is checked support, but it is not the sampled full Taylor residual source;
+the live route-A bridge below uses `RawTaylorCoeffCert` instead. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_deriv_eq_closedForm_sub_polynomial_deriv
+    (eta : Real) :
+    deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta =
+      primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+        deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial eta := by
+  let cert := primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert
+  change
+    deriv cert.residual eta =
+      primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+        deriv cert.polynomial eta
+  rw [cert.residual_deriv_eq eta]
+  rw [primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm eta]
+
+/-- Route-A residual derivative crosswalk for the full degree-16 Taylor
+certificate.
+
+This is the expression that matches the generated sampled derivative model.
+The remaining open proof is an exact interval bound for this same expression
+on `[0, 1/10]`; the minimal raw-center-only adapter above is a different
+residual source and must not be used for that sampled candidate. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm
+    (eta : Real) :
+    deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual eta =
+      primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta := by
+  rw [primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual_deriv_eq eta]
+  rw [primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_eq_closedForm eta]
+  rw [primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel eta]
+
 /-- Reduce differentiability of the opaque raw-integrand derivative to
 differentiability of its checked closed form. -/
 theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
@@ -2457,6 +2593,95 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
   primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
     (primaryFiniteRow0Parent0Split100Sub0_residual_deriv_norm_bound_of_direct_segment_cert
       data hValid)
+
+/-- Concrete one-segment certificate data for the active first subchunk.
+
+The rational interval endpoints are the current sampled candidate.  This datum
+is not proof by itself; it becomes spendable only when paired with a
+`DirectValid` proof below. -/
+def primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert :
+    ResidualDerivativeSegmentIntervalCert :=
+  ResidualDerivativeSegmentIntervalCert.single
+    (0 : Rat)
+    ((1 : Rat) / 10)
+    (0 : Rat)
+    (0 : Rat)
+    (0 : Rat)
+    (0 : Rat)
+    ((-94119513411 : Rat) / 500000000000000000000000000000)
+    ((1866608532757 : Rat) / 500000000000000000000000000000)
+
+/-- Direct-validity bridge for the concrete one-segment certificate from the
+checked closed-form residual derivative expression.
+
+The remaining payload is exactly `hBounds`: a proof-grade same-expression
+interval bound on `[0, 1/10]`.  The sampled JSON candidate is not used here. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_direct_segment_cert_valid_of_closedForm_residual_bounds
+    (hBounds :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+            primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial eta ∧
+          primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial eta <=
+            ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert.DirectValid
+      (fun eta : Real =>
+        deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta)
+      (0 : Real) ((1 : Real) / 10)
+      ((1866608532757 : Real) /
+        500000000000000000000000000000) := by
+  change
+    (ResidualDerivativeSegmentIntervalCert.single
+      (0 : Rat)
+      ((1 : Rat) / 10)
+      (0 : Rat)
+      (0 : Rat)
+      (0 : Rat)
+      (0 : Rat)
+      ((-94119513411 : Rat) / 500000000000000000000000000000)
+      ((1866608532757 : Rat) / 500000000000000000000000000000)).DirectValid
+        (fun eta : Real =>
+          deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta)
+        (0 : Real) ((1 : Real) / 10)
+        ((1866608532757 : Real) /
+          500000000000000000000000000000)
+  apply ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds
+  · norm_num
+  · norm_num
+  · norm_num
+  · norm_num
+  · intro eta heta
+    have heta' : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10) := by
+      simpa using heta
+    have hEq :=
+      primaryFiniteRow0Parent0Split100Sub0_residual_deriv_eq_closedForm_sub_polynomial_deriv
+        eta
+    have h := hBounds eta heta'
+    constructor
+    · rw [hEq]
+      simpa using h.1
+    · rw [hEq]
+      simpa using h.2
+  · norm_num
+
+/-- First-subchunk exact-integral proof data from a proof-grade closed-form
+residual derivative interval bound on the concrete one-segment cell. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_closedForm_residual_bounds
+    (hBounds :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ((-94119513411 : Real) / 500000000000000000000000000000) <=
+            primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial eta ∧
+          primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta -
+              deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial eta <=
+            ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :=
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_direct_segment_interval_cert
+    primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert
+    (primaryFiniteRow0Parent0Split100Sub0_direct_segment_cert_valid_of_closedForm_residual_bounds
+      hBounds)
 
 /-- First-subchunk interpolation landing wrapper after the checked raw-center
 source has been closed.

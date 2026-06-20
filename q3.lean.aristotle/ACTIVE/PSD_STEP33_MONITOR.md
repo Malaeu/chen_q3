@@ -30263,3 +30263,55 @@ STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 
 Boundary: no proof-grade residual interval is present yet, no generated Lean
 payload was emitted, and Step33A.1-A remains open.
+
+## 2026-06-20 Current EOF Addendum -- full Taylor residual crosswalk
+
+The direct residual interval target has been refined to route A after local
+Lean found the adapter/source mismatch.  The minimal
+`RawCenterCoeffOnlyCert` is still useful for the raw-center receiver, but its
+polynomial is not the generated degree-16 Taylor candidate.
+
+Checked route-A support now in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff
+primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm
+```
+
+The current generator status is:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v4
+status = fail_closed_missing_full_taylor_residual_interval_proof
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The live proof-producing obligation is now the proof-grade interval bound for:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 15 (1/20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta
+```
+
+on `Set.Icc 0 (1/10)`, inside:
+
+```text
+[-94119513411/500000000000000000000000000000,
+  1866608532757/500000000000000000000000000000]
+```
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_FULL_TAYLOR_RESIDUAL_INTERVAL_BOUNDS_MISSING
+```
+
+Boundary: the full Taylor residual crosswalk is checked, but there is still no
+proof-grade interval certificate, no generated Lean payload, no
+first-subchunk residual-derivative norm certificate, and Step33A.1-A remains
+open.
