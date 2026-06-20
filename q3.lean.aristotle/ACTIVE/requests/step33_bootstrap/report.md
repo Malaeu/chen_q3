@@ -54373,3 +54373,44 @@ passing to any `Ioi` limit.
 
 Boundary: this is not a proof of the finite summed B4-to-B6 identity,
 `Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- finite B4-to-B6 telescope checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.sum_b6_boundary_telescope
+Q3.intervalIntegrable_b6diff_div_nat
+Q3.sum_interval_integral_b6diff
+Q3.finite_stieltjes_B4Diff_to_B6Diff
+```
+
+Checked finite identity:
+
+```lean
+∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+=
+  (252 : ℂ)⁻¹ * ((((N : ℂ) + z)⁻¹) ^ 6 - (z⁻¹) ^ 6) +
+  ∫ x in (0 : ℝ)..(N : ℝ),
+    (bernoulli6Diff x : ℂ) / ((x : ℂ) + z) ^ 7
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_IOI_LIMIT_TAIL_GAP
+```
+
+Meaning: pass the checked finite B4-to-B6 identity through the `N -> infinity`
+tail ledger, including the vanishing `((N+z)^-1)^6` endpoint, to obtain the
+global `Ioi` B4-to-B6 identity.
+
+Boundary: this is not a proof of the `Ioi` B4-to-B6 identity,
+`Q3.digammaM6IntegralRemainderBound`, Step33A.1-A, or Step33.

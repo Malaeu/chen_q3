@@ -26790,6 +26790,35 @@ STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
 Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, or Step33.
 
+## 2026-06-20 Step33A.1-A finite B4-to-B6 telescope checked
+
+Added checked finite telescope layer:
+
+```lean
+Q3.sum_b6_boundary_telescope
+Q3.intervalIntegrable_b6diff_div_nat
+Q3.sum_interval_integral_b6diff
+Q3.finite_stieltjes_B4Diff_to_B6Diff
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_TO_B6_FINITE_SUM_TELESCOPE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_TO_B6_IOI_LIMIT_TAIL_GAP
+```
+
+Meaning: move the checked finite B4-to-B6 identity to `Ioi` by the tail/limit
+ledger.
+
+Boundary unchanged: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
 ## 2026-06-20 Step33A.1-A B6 boundary bridge checked
 
 Added checked bridges:

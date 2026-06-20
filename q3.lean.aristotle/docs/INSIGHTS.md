@@ -34079,6 +34079,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
 
+## Insight (2026-06-20, Step33A.1-A) -- FiniteB4ToB6TelescopeChecked
+
+- Added checked power-6 telescope:
+  `Q3.sum_b6_boundary_telescope`.
+- Added checked B6/power-7 finite summation infrastructure:
+  `Q3.intervalIntegrable_b6diff_div_nat` and
+  `Q3.sum_interval_integral_b6diff`.
+- Added checked finite identity:
+  `Q3.finite_stieltjes_B4Diff_to_B6Diff`.
+- Closed:
+  `STEP33_M6_B4_TO_B6_FINITE_SUM_TELESCOPE_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_TO_B6_IOI_LIMIT_TAIL_GAP`.
+- Smallest useful next Lean object: prove the `N -> infinity` limit/tail
+  bridge from `Q3.finite_stieltjes_B4Diff_to_B6Diff` to a global `Ioi`
+  B4-to-B6 identity.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
+
 ## Insight (2026-06-20, Step33A.1-A) -- B6BoundaryBridgeChecked
 
 - Added checked boundary bridge:
