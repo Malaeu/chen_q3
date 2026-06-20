@@ -36050,3 +36050,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
   scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
   `git diff --check`.
+
+## Insight (2026-06-20, Step33A.1-A) -- ConditionalResidualCurvatureKillGate
+
+- Used the in-app browser/Pro chat as advisory route review for the
+  raw-integrand second-derivative bridge.  The selected smallest next patch was
+  option `B`: add a conditional kill theorem before attempting the full
+  analytic bridge.
+- Added Lean theorem in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge`.
+- The theorem is proof-grade arithmetic only.  It proves that if
+  `raw_integrand''(0) >= 0` and
+  `residual''(0) = raw_integrand''(0) - polynomial''(0)`, then the residual
+  second derivative at `0` exceeds the current asymmetric curvature budget.
+- This does not prove Step33A.1-A and does not kill the route by itself.
+- Exact current first gap:
+  `STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP`.
+- Sibling analytic gap after the crosswalk:
+  `STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
+  `bash scripts/q3_check.sh
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
+  scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
+  `git diff --check`.

@@ -1574,6 +1574,84 @@ theorem primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_budget_pres
   rw [primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero]
   norm_num
 
+/-- Conditional same-point curvature kill for the first subchunk.
+
+This is the narrow bridge contract left by the Proshka review.  It does not
+prove the raw-integrand second derivative or the residual/raw-polynomial
+second-derivative identity.  Instead it records the exact Lean-checked
+arithmetic consequence: once those two same-point facts are supplied, the
+current asymmetric curvature budget is impossible for this one-cell route. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge
+    (hRawSecondNonneg :
+      0 <=
+        deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                  11 ((3 : Real) / 10) 0 eta)
+              t)
+          (0 : Real))
+    (hResidualSecondEq :
+      deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          (0 : Real) =
+        deriv
+            (fun t : Real =>
+              deriv
+                (fun eta : Real =>
+                  Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                    11 ((3 : Real) / 10) 0 eta)
+                t)
+            (0 : Real) -
+          deriv
+            (fun t : Real =>
+              deriv
+                primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.polynomial
+                t)
+            (0 : Real)) :
+    ((279846042433 : Real) /
+        50000000000000000000000000000) <
+      ‖deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          (0 : Real)‖ := by
+  set rawSecond : Real :=
+    deriv
+      (fun t : Real =>
+        deriv
+          (fun eta : Real =>
+            Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+              11 ((3 : Real) / 10) 0 eta)
+          t)
+      (0 : Real)
+  set polyMagnitude : Real :=
+    (10711476366121977454255583443181529 : Real) /
+      20480000000000000000000000000000000
+  have hBudgetLtPoly :
+      ((279846042433 : Real) /
+          50000000000000000000000000000) < polyMagnitude := by
+    norm_num [polyMagnitude]
+  have hPolyPositive : 0 < polyMagnitude := by
+    norm_num [polyMagnitude]
+  have hRawNonneg' : 0 <= rawSecond := by
+    simpa [rawSecond] using hRawSecondNonneg
+  have hResidualRewrite :
+      deriv
+          (fun t : Real =>
+            deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual t)
+          (0 : Real) =
+        rawSecond + polyMagnitude := by
+    rw [hResidualSecondEq,
+      primaryFiniteRow0Parent0Split100Sub0_polynomial_second_deriv_at_zero]
+    simp [rawSecond, polyMagnitude]
+  rw [hResidualRewrite]
+  have hNonneg : 0 <= rawSecond + polyMagnitude := by
+    nlinarith [hRawNonneg', hPolyPositive]
+  rw [Real.norm_eq_abs, abs_of_nonneg hNonneg]
+  nlinarith [hBudgetLtPoly, hRawNonneg']
+
 /-- Preferred direct-norm version of the first-subchunk exact-integral
 proof-data receiver.
 

@@ -58112,3 +58112,50 @@ bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAH
 rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
 git diff --check
 ```
+
+## Execution Update (2026-06-20) -- conditional residual curvature kill gate
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk asymmetric anchor-curvature lane.
+
+Browser/Pro was used through the in-app browser as advisory only.  The new
+route decision selected a conditional kill theorem before a larger analytic
+second-derivative attack.
+
+Lean theorem added:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge
+```
+
+Proof-grade result: Lean proves that the current asymmetric curvature budget is
+impossible for the residual second derivative at `0` once these two same-point
+facts are supplied:
+
+```text
+raw_integrand''(0) >= 0
+residual''(0) = raw_integrand''(0) - polynomial''(0)
+```
+
+Boundary: this is not a residual kill certificate.  It closes only the scalar
+arithmetic consequence of the bridge assumptions.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP
+```
+
+Sibling analytic gap:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```

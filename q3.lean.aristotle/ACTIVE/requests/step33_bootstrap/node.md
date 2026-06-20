@@ -16852,3 +16852,34 @@ budget, record:
 ```text
 STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
 ```
+
+## 2026-06-20 Current EOF Addendum -- conditional residual second-deriv gate
+
+Browser/Pro route review was rerun through the in-app browser.  Advisory
+verdict:
+
+```text
+CHOSEN: B
+```
+
+The smallest proof-grade patch is now present in Lean:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge
+```
+
+It proves: assuming `raw_integrand''(0) >= 0` and the exact same-point
+crosswalk `residual''(0) = raw_integrand''(0) - polynomial''(0)`, the residual
+curvature at `0` exceeds the current asymmetric curvature budget.
+
+This closes no analytic bridge.  It narrows the live proof work to:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP
+```
+
+Then, if needed:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```

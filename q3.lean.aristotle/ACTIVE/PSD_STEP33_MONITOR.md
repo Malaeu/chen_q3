@@ -29810,3 +29810,39 @@ If the same-point residual curvature is proved over budget, use:
 ```text
 STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_AT_ZERO_BUDGET_FAIL
 ```
+
+## 2026-06-20 Current EOF Addendum -- conditional residual curvature kill gate
+
+Browser/Pro was used through the in-app browser as advisory route review only.
+The new answer selected option `B`: add a conditional Lean kill gate first,
+then attack the exact crosswalk.  This keeps the route proof-safe and avoids
+claiming raw-integrand differentiability facts that Lean has not proved.
+
+New Lean theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_budget_fail_of_raw_nonneg_bridge
+```
+
+Meaning: if both same-point assumptions hold
+
+```text
+raw_integrand''(0) >= 0
+residual''(0) = raw_integrand''(0) - polynomial''(0)
+```
+
+then Lean proves the residual second derivative at `0` is already larger than
+the current asymmetric curvature budget.  This is a conditional kill gate, not
+a route-death certificate.
+
+Current first proof gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_SECOND_DERIV_CROSSWALK_AT_ZERO_GAP
+```
+
+Sibling analytic gap after the crosswalk:
+
+```text
+STEP33_A1_SUB0_RAW_INTEGRAND_SECOND_DERIV_NONNEG_AT_ZERO_GAP
+```
