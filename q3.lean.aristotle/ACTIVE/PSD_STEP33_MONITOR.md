@@ -29980,3 +29980,46 @@ same-point budget-fail theorem.
 
 Validation: `lake env lean` and `q3_check` pass on both touched Lean files;
 the scoped hole scan is clean.
+
+## 2026-06-20 Current EOF Addendum -- raw second-derivative product split
+
+Browser/Proshka was used through the in-app browser as advisory route review.
+The selected next exact patch was not an interval certificate: first expose the
+product-rule decomposition of the active raw-integrand second derivative at
+`eta = 0`.
+
+Lean theorem added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp
+```
+
+This closes:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_PRODUCT_DECOMP_GAP
+```
+
+It rewrites the active raw second derivative as the exact product-rule sum for
+the Omega factor and the squared centered B-spline transform factor.  It does
+not prove nonnegativity of the raw second derivative.
+
+Current first live gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_SIGN_LEMMAS_GAP
+```
+
+Immediate exact sign targets exposed by the split:
+
+```text
+deriv step22OmegaArchWeight 0 = 0
+deriv S 0 = 0
+0 <= deriv (fun t => deriv step22OmegaArchWeight t) 0
+deriv (fun t => deriv S t) 0 <= 0
+step22OmegaArchWeight 0 <= 0
+```
+
+Boundary: no Step33A.1-A closure yet.  The split is only the bridge that makes
+the remaining sign lemmas local and nameable.

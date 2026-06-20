@@ -159,6 +159,41 @@ scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
 git diff --check
 ```
 
+## Execution Update (2026-06-20) -- raw second-derivative product split
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk raw-integrand sign lane.
+
+Browser/Proshka was used through the in-app browser as advisory only.  The
+route recommendation was to avoid interval certificates for the moment and
+first prove a product-rule decomposition for the active raw-integrand second
+derivative at `eta = 0`.
+
+Lean theorem added:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp
+```
+
+Proof-grade result: Lean now rewrites the active raw second derivative as the
+sum of the Omega second-derivative term, the mixed first-derivative term, and
+the shape-square second-derivative term.
+
+Closed blocker:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_PRODUCT_DECOMP_GAP
+```
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_SIGN_LEMMAS_GAP
+```
+
+Boundary: this does not prove `raw_integrand''(0) >= 0`.  It only exposes the
+remaining exact sign lemmas that would imply the raw nonnegativity input for
+the existing budget-fail receiver.
+
 Compile result: pass.
 
 Next missing payload:

@@ -17009,3 +17009,40 @@ nonnegativity theorem for the active raw-integrand second derivative at `0`.
 
 Validation: `lake env lean` and `q3_check` pass on both touched Lean files;
 the scoped hole scan is clean.
+
+## 2026-06-20 Current EOF Addendum -- raw second-derivative product split
+
+Advisory Browser/Proshka route review selected the smallest exact local step:
+prove the product-rule decomposition of the active raw-integrand second
+derivative at `eta = 0` before trying sign or interval certificates.
+
+Lean theorem added:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp
+```
+
+Closed blocker:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_PRODUCT_DECOMP_GAP
+```
+
+New first live blocker:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_SIGN_LEMMAS_GAP
+```
+
+Required next proof-grade lemmas are the local factor signs/zeros exposed by
+the split:
+
+```text
+deriv step22OmegaArchWeight 0 = 0
+deriv S 0 = 0
+0 <= deriv (fun t => deriv step22OmegaArchWeight t) 0
+deriv (fun t => deriv S t) 0 <= 0
+step22OmegaArchWeight 0 <= 0
+```
+
+Boundary: this is not a raw-nonnegativity proof and not a Step33A.1-A closure.

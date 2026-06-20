@@ -1824,6 +1824,164 @@ theorem primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableA
   primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_differentiableAt_zero_of_closedForm
     primaryFiniteRow0Parent0Split100Sub0_raw_integrand_deriv_closedForm_differentiableAt_zero
 
+/-- Product-rule decomposition of the active raw-integrand second derivative at
+`eta = 0`.
+
+This records the exact bridge requested by the Step33A.1-A raw nonnegativity
+gate: the remaining sign work can now target the Omega and shape-square factors
+separately. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp :
+    let E : Real -> Real :=
+      fun eta : Real =>
+        centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta
+    let S : Real -> Real := fun eta : Real => (E eta) ^ 2
+    let Ω : Real -> Real :=
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+    deriv
+        (fun t : Real =>
+          deriv
+            (fun eta : Real =>
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                11 ((3 : Real) / 10) 0 eta)
+            t)
+        (0 : Real)
+      =
+      (((3 : Real) / 10) / Real.pi) *
+        (deriv (fun t : Real => deriv Ω t) (0 : Real) * S (0 : Real) +
+          2 * deriv Ω (0 : Real) * deriv S (0 : Real) +
+          Ω (0 : Real) * deriv (fun t : Real => deriv S t) (0 : Real)) := by
+  dsimp only
+  let E : Real -> Real :=
+    fun eta : Real =>
+      centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta
+  let S : Real -> Real := fun eta : Real => (E eta) ^ 2
+  let Ω : Real -> Real :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+  let c : Real := (((3 : Real) / 10) / Real.pi)
+  have hRawDeriv :
+      ∀ t : Real,
+        deriv
+            (fun eta : Real =>
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                11 ((3 : Real) / 10) 0 eta)
+            t =
+          c * (deriv Ω t * S t + Ω t * deriv S t) := by
+    intro t
+    have hRawFun :
+        (fun eta : Real =>
+          Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+            11 ((3 : Real) / 10) 0 eta) =
+          fun eta : Real => c * (Ω eta * S eta) := by
+      funext eta
+      simp [c, Ω, S, E,
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand,
+        mul_assoc]
+    have hΩDiff : DifferentiableAt Real Ω t := by
+      simpa [Ω] using
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt t
+    have hSDiff : DifferentiableAt Real S t := by
+      dsimp [S, E]
+      exact
+        (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.centeredBSplineImagTransformRealClosedForm_differentiableAt
+          11 ((3 : Real) / 10) t).pow 2
+    rw [hRawFun]
+    rw [deriv_const_mul]
+    · have hProdDeriv :
+          deriv (fun eta : Real => Ω eta * S eta) t =
+            deriv Ω t * S t + Ω t * deriv S t := by
+        simpa using deriv_mul hΩDiff hSDiff
+      rw [hProdDeriv]
+    · exact hΩDiff.mul hSDiff
+  have hRawDerivFun :
+      (fun t : Real =>
+        deriv
+          (fun eta : Real =>
+            Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+              11 ((3 : Real) / 10) 0 eta)
+          t) =
+        fun t : Real => c * (deriv Ω t * S t + Ω t * deriv S t) := by
+    funext t
+    exact hRawDeriv t
+  have hDerivΩDiff :
+      DifferentiableAt Real (fun t : Real => deriv Ω t) (0 : Real) := by
+    have hEq :
+        (fun t : Real => deriv Ω t) = step22OmegaArchWeightDerivClosedForm := by
+      funext t
+      simpa [Ω] using step22OmegaArchWeight_deriv_eq_closedForm t
+    rw [hEq]
+    exact step22OmegaArchWeightDerivClosedForm_differentiableAt 0
+  have hSDiff0 : DifferentiableAt Real S (0 : Real) := by
+    dsimp [S, E]
+    exact
+      (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.centeredBSplineImagTransformRealClosedForm_differentiableAt
+        11 ((3 : Real) / 10) (0 : Real)).pow 2
+  have hΩDiff0 : DifferentiableAt Real Ω (0 : Real) := by
+    simpa [Ω] using
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt
+        (0 : Real)
+  have hDerivSFun :
+      (fun t : Real => deriv S t) =
+        fun t : Real =>
+          2 * E t *
+            deriv
+              (fun u : Real => E u)
+              t := by
+    funext t
+    dsimp [S, E]
+    exact deriv_centeredBSplineImagTransformRealClosedForm_sq
+      11 ((3 : Real) / 10) t
+  have hDerivEDiff :
+      DifferentiableAt Real
+        (fun t : Real =>
+          deriv
+            (fun u : Real => E u)
+            t)
+        (0 : Real) := by
+    have hEq :
+        (fun t : Real =>
+          deriv
+            (fun u : Real => E u)
+            t) =
+          fun t : Real =>
+            centeredBSplineImagTransformRealClosedFormDerivClosedForm
+              11 ((3 : Real) / 10) t := by
+      funext t
+      dsimp [E]
+      exact centeredBSplineImagTransformRealClosedForm_deriv_eq_closedForm
+        11 ((3 : Real) / 10) t
+    rw [hEq]
+    exact
+      centeredBSplineImagTransformRealClosedFormDerivClosedForm_differentiableAt_zero
+        11 ((3 : Real) / 10)
+  have hDerivSDiff :
+      DifferentiableAt Real (fun t : Real => deriv S t) (0 : Real) := by
+    rw [hDerivSFun]
+    fun_prop
+  rw [hRawDerivFun]
+  rw [deriv_const_mul]
+  · have hSumDeriv :
+        deriv
+            (fun t : Real => deriv Ω t * S t + Ω t * deriv S t)
+            (0 : Real) =
+          deriv (fun t : Real => deriv Ω t * S t) (0 : Real) +
+            deriv (fun t : Real => Ω t * deriv S t) (0 : Real) := by
+      simpa using
+        deriv_add (hDerivΩDiff.mul hSDiff0) (hΩDiff0.mul hDerivSDiff)
+    have hLeft :
+        deriv (fun t : Real => deriv Ω t * S t) (0 : Real) =
+          deriv (fun t : Real => deriv Ω t) (0 : Real) * S (0 : Real) +
+            deriv Ω (0 : Real) * deriv S (0 : Real) := by
+      simpa using deriv_mul hDerivΩDiff hSDiff0
+    have hRight :
+        deriv (fun t : Real => Ω t * deriv S t) (0 : Real) =
+          deriv Ω (0 : Real) * deriv S (0 : Real) +
+            Ω (0 : Real) * deriv (fun t : Real => deriv S t) (0 : Real) := by
+      simpa using deriv_mul hΩDiff0 hDerivSDiff
+    rw [hSumDeriv, hLeft, hRight]
+    simp [c, Ω, S, E]
+    ring
+  · exact (hDerivΩDiff.mul hSDiff0).add (hΩDiff0.mul hDerivSDiff)
+
 /-- Same-point residual/raw-polynomial second-derivative crosswalk at the
 first-subchunk anchor, with the raw differentiability bridge discharged. -/
 theorem primaryFiniteRow0Parent0Split100Sub0_residual_second_deriv_crosswalk_at_zero :

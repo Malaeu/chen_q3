@@ -36166,3 +36166,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`;
   scoped Lean hole scan for `sorry|admit|exact?|axiom|unsafe`; and
   `git diff --check`.
+
+## Insight (2026-06-20, Step33A.1-A) -- RawSecondDerivativeProductSplit
+
+- Browser/Proshka advisory review selected the exact product-rule split before
+  any interval-certificate route.
+- Added Lean theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp`.
+- The theorem rewrites the active raw-integrand second derivative at `eta = 0`
+  into Omega-factor and shape-square-factor terms.
+- Closed gap:
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_PRODUCT_DECOMP_GAP`.
+- Current first live gap:
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_SIGN_LEMMAS_GAP`.
+- Exposed next exact targets:
+  `deriv step22OmegaArchWeight 0 = 0`,
+  `deriv S 0 = 0`,
+  `0 <= deriv (fun t => deriv step22OmegaArchWeight t) 0`,
+  `deriv (fun t => deriv S t) 0 <= 0`, and
+  `step22OmegaArchWeight 0 <= 0`.
+- Boundary: no raw nonnegativity theorem yet, no Step33A.1-A closure yet.
