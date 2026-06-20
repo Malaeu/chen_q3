@@ -34564,3 +34564,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `+(691 / 32760 : C) * (z^-1)^12` prefix be claimed.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- B12IoiTailM6PrefixChecked
+
+- Added checked B12/power-13 `Ioi` support:
+  `Q3.kernel_norm_pow13_le_re`, `Q3.integrable_kernel_norm_pow13`,
+  `Q3.integrable_bernoulli12Diff_div_pow13`, and
+  `Q3.tendsto_intervalIntegral_b12diff_div_pow13_Ioi`.
+- Added checked B10-to-B12 `Ioi` bridge and M6-prefix identities:
+  `Q3.stieltjes_B10Diff_to_B12Diff_Ioi_raw`,
+  `Q3.digamma_stieltjes_B12Diff_Ioi_raw`,
+  `Q3.digamma_stieltjes_B12Diff_Ioi_mainPrefix`, and
+  `Q3.digammaM6_remainder_eq_B12Diff_Ioi`.
+- The new source-facing equality is:
+  `Q3.digamma z - Q3.digammaM6AsymptoticMain z =
+   int x in Set.Ioi (0 : R), (bernoulli12Diff x : C) / ((x : C) + z)^13`.
+- Validation passed:
+  `lake env lean Q3/DigammaRemainder.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean`, and
+  the forbidden-hole scan for `sorry|admit|exact?|axiom|unsafe`.
+- Closed:
+  `STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B12_REMAINDER_TO_ORDER15_BOUND_GAP`.
+- Smallest useful next Lean object: prove the higher
+  Euler-Maclaurin/order-15 bridge from the checked B12/power-13 remainder to
+  `Q3.digammaM6IntegralRemainderBound z`.  The existing order-15 kernel
+  majorant is already checked, but the B12 remainder still needs a
+  proof-grade bridge to that order-15 bound.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, Step33, Step34, or RH.

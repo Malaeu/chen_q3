@@ -55307,3 +55307,83 @@ STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
 
 Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
 Step33A.1-A, Step33, Step34, or RH.
+
+## 2026-06-20 Current Step33A.1-A pointer
+
+Latest checked local layer:
+
+```lean
+Q3.kernel_norm_pow13_le_re
+Q3.integrable_kernel_norm_pow13
+Q3.integrable_bernoulli12Diff_div_pow13
+Q3.tendsto_intervalIntegral_b12diff_div_pow13_Ioi
+Q3.stieltjes_B10Diff_to_B12Diff_Ioi_raw
+Q3.digamma_stieltjes_B12Diff_Ioi_raw
+Q3.digamma_stieltjes_B12Diff_Ioi_mainPrefix
+Q3.digammaM6_remainder_eq_B12Diff_Ioi
+```
+
+Closed gap:
+
+```text
+STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
+```
+
+Active exact gap:
+
+```text
+STEP33_M6_B12_REMAINDER_TO_ORDER15_BOUND_GAP
+```
+
+Next smallest Lean object: prove the higher Euler-Maclaurin/order-15 bridge
+from the checked B12/power-13 `Ioi` remainder to
+`Q3.digammaM6IntegralRemainderBound z`.  Existing order-15 kernel majorants are
+not enough by themselves; the missing bridge is the source theorem interface.
+
+## 2026-06-20 Execution update -- B12 Ioi tail and M6 prefix checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.kernel_norm_pow13_le_re
+Q3.integrable_kernel_norm_pow13
+Q3.integrable_bernoulli12Diff_div_pow13
+Q3.tendsto_intervalIntegral_b12diff_div_pow13_Ioi
+Q3.stieltjes_B10Diff_to_B12Diff_Ioi_raw
+Q3.digamma_stieltjes_B12Diff_Ioi_raw
+Q3.digamma_stieltjes_B12Diff_Ioi_mainPrefix
+Q3.digammaM6_remainder_eq_B12Diff_Ioi
+```
+
+The checked theorem surface is:
+
+```lean
+Q3.digamma z - Q3.digammaM6AsymptoticMain z =
+  int x in Set.Ioi (0 : R),
+    (bernoulli12Diff x : C) / ((x : C) + z) ^ 13
+```
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/DigammaRemainder.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/DigammaRemainder.lean
+```
+
+Result: Lean and `q3_check` passed; forbidden-hole scan clean.
+
+This closes:
+
+```text
+STEP33_M6_B10_TO_B12_IOI_LIMIT_TAIL_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B12_REMAINDER_TO_ORDER15_BOUND_GAP
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, Step33, Step34, or RH.

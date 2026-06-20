@@ -6962,6 +6962,135 @@ lemma integrable_bernoulli10Diff_div_pow11 (z : ℂ) (hz : 0 < z.re) :
             field_simp
   exact Integrable.mono' hkernel' hmeas hbound
 
+/-- Pointwise right-half-plane domination for the order-13 kernel used by the
+B12/power-13 Stieltjes tail ledger. -/
+lemma kernel_norm_pow13_le_re (z : ℂ) (hz : 0 < z.re)
+    {x : ℝ} (hx : x ∈ Set.Ioi (0 : ℝ)) :
+    1 / ‖(x : ℂ) + z‖ ^ 13 ≤ 1 / (x + z.re) ^ 13 := by
+  have hxpos : 0 < x := hx
+  have hxre_pos : 0 < x + z.re := by
+    linarith [hxpos, hz]
+  have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+  have hnorm_ge : x + z.re ≤ ‖(x : ℂ) + z‖ := by
+    have h := Complex.abs_re_le_norm ((x : ℂ) + z)
+    have hre : (((x : ℂ) + z).re) = x + z.re := by
+      simp
+    have habs : |(((x : ℂ) + z).re)| = x + z.re := by
+      rw [hre, abs_of_nonneg hxre_nonneg]
+    rwa [habs] at h
+  have hpow :
+      (x + z.re) ^ 13 ≤ ‖(x : ℂ) + z‖ ^ 13 :=
+    pow_le_pow_left₀ hxre_nonneg hnorm_ge 13
+  exact one_div_le_one_div_of_le (pow_pos hxre_pos 13) hpow
+
+/-- Integrability of the order-13 kernel used by the B12/power-13 Stieltjes
+tail ledger. -/
+lemma integrable_kernel_norm_pow13 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 13))
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hdomOn :
+      IntegrableOn (fun x : ℝ => (x + z.re) ^ (-13 : ℝ))
+        (Set.Ioi (0 : ℝ)) := by
+    have hlt : (-13 : ℝ) < -1 := by norm_num
+    have hc : -z.re < (0 : ℝ) := by linarith [hz]
+    simpa using
+      (integrableOn_add_rpow_Ioi_of_lt (a := (-13 : ℝ))
+        (c := (0 : ℝ)) (m := z.re) hlt hc)
+  have hdomOn' :
+      IntegrableOn (fun x : ℝ => 1 / (x + z.re) ^ 13)
+        (Set.Ioi (0 : ℝ)) := by
+    refine hdomOn.congr_fun ?_ measurableSet_Ioi
+    intro x hx
+    have hxpos : 0 < x := hx
+    have hxre_pos : 0 < x + z.re := by
+      linarith [hxpos, hz]
+    have hxre_nonneg : 0 ≤ x + z.re := le_of_lt hxre_pos
+    calc
+      (x + z.re) ^ (-13 : ℝ)
+          = ((x + z.re) ^ (13 : ℝ))⁻¹ := by
+              simpa using (rpow_neg_eq_inv_rpow (x + z.re) (13 : ℝ))
+      _ = ((x + z.re) ^ 13)⁻¹ := by
+              simp [Real.rpow_natCast, hxre_nonneg]
+      _ = 1 / (x + z.re) ^ 13 := by
+              simp [one_div]
+  have hdom :
+      Integrable (fun x : ℝ => 1 / (x + z.re) ^ 13)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    simpa [IntegrableOn] using hdomOn'
+  have hmeas :
+      AEStronglyMeasurable (fun x : ℝ => 1 / ‖(x : ℂ) + z‖ ^ 13)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hcoe : Measurable (fun x : ℝ => (x : ℂ)) :=
+      Complex.measurable_ofReal
+    have hadd : Measurable (fun x : ℝ => (x : ℂ) + z) :=
+      hcoe.add measurable_const
+    have hnorm : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖) :=
+      hadd.norm
+    have hpow : Measurable (fun x : ℝ => ‖(x : ℂ) + z‖ ^ 13) :=
+      hnorm.pow_const 13
+    have hinv : Measurable (fun x : ℝ => (‖(x : ℂ) + z‖ ^ 13)⁻¹) :=
+      hpow.inv
+    simpa [one_div] using hinv.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x : ℝ ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 13 : ℝ)‖ ≤
+          1 / (x + z.re) ^ 13 := by
+    refine (ae_restrict_mem measurableSet_Ioi).mono ?_
+    intro x hx
+    have hnonneg : 0 ≤ (1 / ‖(x : ℂ) + z‖ ^ 13 : ℝ) := by
+      exact one_div_nonneg.mpr (pow_nonneg (norm_nonneg _) 13)
+    have hnorm_abs :
+        ‖(1 / ‖(x : ℂ) + z‖ ^ 13 : ℝ)‖ =
+          1 / ‖(x : ℂ) + z‖ ^ 13 := by
+      simpa [Real.norm_eq_abs, abs_of_nonneg hnonneg]
+    simpa [hnorm_abs] using kernel_norm_pow13_le_re z hz hx
+  exact Integrable.mono' hdom hmeas hbound
+
+lemma integrable_bernoulli12Diff_div_pow13 (z : ℂ) (hz : 0 < z.re) :
+    Integrable (fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+      (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+  have hkernel :
+      Integrable (fun x : ℝ => (1 / ‖(x : ℂ) + z‖ ^ 13))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    integrable_kernel_norm_pow13 z hz
+  have hkernel' :
+      Integrable (fun x : ℝ => (128 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 13))
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) :=
+    hkernel.const_mul (128 : ℝ)
+  have hmeas :
+      AEStronglyMeasurable
+        (fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+        (μ := Measure.restrict volume (Set.Ioi (0 : ℝ))) := by
+    have hmeas : Measurable
+        (fun x => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13) := by
+      have hcoe : Measurable (fun x : ℝ => (x : ℂ)) := Complex.measurable_ofReal
+      have h_add : Measurable (fun x : ℝ => (x : ℂ) + z) := hcoe.add measurable_const
+      have h_pow : Measurable (fun x : ℝ => ((x : ℂ) + z) ^ 13) := h_add.pow_const 13
+      have h_num : Measurable (fun x : ℝ => (bernoulli12Diff x : ℂ)) :=
+        (Complex.measurable_ofReal.comp measurable_bernoulli12Diff)
+      exact h_num.div h_pow
+    simpa using hmeas.aestronglyMeasurable
+  have hbound :
+      ∀ᵐ x ∂(Measure.restrict volume (Set.Ioi (0 : ℝ))),
+        ‖(bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13‖ ≤
+          (128 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 13) := by
+    refine Filter.Eventually.of_forall ?_
+    intro x
+    have hnorm_pow : ‖(x + z : ℂ) ^ 13‖ = ‖(x + z : ℂ)‖ ^ 13 := by
+      simp [norm_pow]
+    have hpos : 0 ≤ ‖(x : ℂ) + z‖ ^ 13 := by positivity
+    calc
+      ‖(bernoulli12Diff x : ℂ) / (x + z) ^ 13‖
+          = ‖(bernoulli12Diff x : ℂ)‖ / ‖(x + z : ℂ) ^ 13‖ := by
+            simp
+      _ = ‖(bernoulli12Diff x : ℂ)‖ / ‖(x : ℂ) + z‖ ^ 13 := by
+            simp [hnorm_pow]
+      _ ≤ (128 : ℝ) / ‖(x : ℂ) + z‖ ^ 13 := by
+            exact (div_le_div_of_nonneg_right (bernoulli12Diff_norm_le x) hpos)
+      _ = (128 : ℝ) * (1 / ‖(x : ℂ) + z‖ ^ 13) := by
+            field_simp
+  exact Integrable.mono' hkernel' hmeas hbound
+
 lemma tendsto_intervalIntegral_b2diff_div_Ioi (z : ℂ) (hz : 0 < z.re) :
     Tendsto
       (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
@@ -7049,6 +7178,24 @@ lemma tendsto_intervalIntegral_b10diff_div_pow11_Ioi (z : ℂ) (hz : 0 < z.re) :
   simpa using
     (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
       (f := fun x : ℝ => (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)
+      (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
+      h_int (tendsto_natCast_atTop_atTop))
+
+lemma tendsto_intervalIntegral_b12diff_div_pow13_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Tendsto
+      (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+      atTop
+      (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)) := by
+  have h_int :
+      IntegrableOn
+        (fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+        (Set.Ioi (0 : ℝ)) volume := by
+    simpa [IntegrableOn] using integrable_bernoulli12Diff_div_pow13 z hz
+  simpa using
+    (intervalIntegral_tendsto_integral_Ioi (a := (0 : ℝ))
+      (f := fun x : ℝ => (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
       (μ := volume) (b := fun N : ℕ => (N : ℝ)) (l := atTop)
       h_int (tendsto_natCast_atTop_atTop))
 
@@ -7385,6 +7532,68 @@ lemma stieltjes_B8Diff_to_B10Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
         (𝓝 ((132 : ℂ)⁻¹ * ((0 : ℂ) ^ 10 - (z⁻¹) ^ 10) +
           ∫ x in Set.Ioi (0 : ℝ),
             (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)) := by
+    exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
+  exact tendsto_nhds_unique hL hL_to_rhs
+
+lemma stieltjes_B10Diff_to_B12Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11 =
+      (-(691 / 32760 : ℂ)) * ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12) +
+        ∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 := by
+  let L : ℕ → ℂ := fun N =>
+    ∫ x in (0 : ℝ)..(N : ℝ),
+      (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+  let R : ℕ → ℂ := fun N =>
+    (-(691 / 32760 : ℂ)) * (((((N : ℂ) + z)⁻¹) ^ 12) - (z⁻¹) ^ 12) +
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13
+  have hLR : ∀ N, L N = R N := by
+    intro N
+    simpa [L, R] using finite_stieltjes_B10Diff_to_B12Diff z hz N
+  have hL :
+      Tendsto L atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11)) := by
+    simpa [L] using tendsto_intervalIntegral_b10diff_div_pow11_Ioi z hz
+  have h_inv : Tendsto (fun N : ℕ => (((N : ℂ) + z)⁻¹)) atTop (𝓝 (0 : ℂ)) :=
+    tendsto_nat_add_complex_inv z
+  have h_inv12 :
+      Tendsto (fun N : ℕ => ((((N : ℂ) + z)⁻¹) ^ 12)) atTop
+        (𝓝 ((0 : ℂ) ^ 12)) := by
+    simpa using h_inv.pow 12
+  have hB12 :
+      Tendsto
+        (fun N : ℕ => ∫ x in (0 : ℝ)..(N : ℝ),
+          (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)
+        atTop
+        (𝓝 (∫ x in Set.Ioi (0 : ℝ),
+          (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)) :=
+    tendsto_intervalIntegral_b12diff_div_pow13_Ioi z hz
+  have hEndpoint :
+      Tendsto
+        (fun N : ℕ =>
+          (-(691 / 32760 : ℂ)) *
+            (((((N : ℂ) + z)⁻¹) ^ 12) - (z⁻¹) ^ 12))
+        atTop
+        (𝓝 ((-(691 / 32760 : ℂ)) * ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12))) := by
+    have hsub :
+        Tendsto
+          (fun N : ℕ => (((((N : ℂ) + z)⁻¹) ^ 12) - (z⁻¹) ^ 12))
+          atTop (𝓝 ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12)) := by
+      exact h_inv12.sub tendsto_const_nhds
+    simpa using hsub.const_mul (-(691 / 32760 : ℂ))
+  have hR :
+      Tendsto R atTop
+        (𝓝 ((-(691 / 32760 : ℂ)) * ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)) := by
+    simpa [R] using hEndpoint.add hB12
+  have hL_to_rhs :
+      Tendsto L atTop
+        (𝓝 ((-(691 / 32760 : ℂ)) * ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12) +
+          ∫ x in Set.Ioi (0 : ℝ),
+            (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13)) := by
     exact (tendsto_congr' (Filter.Eventually.of_forall hLR)).2 hR
   exact tendsto_nhds_unique hL hL_to_rhs
 
@@ -7782,6 +7991,74 @@ lemma digamma_stieltjes_B10Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
       ∫ x in Set.Ioi (0 : ℝ),
         (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11 := by
   simpa [inv_pow] using digamma_stieltjes_B10Diff_Ioi_raw z hz
+
+lemma digamma_stieltjes_B12Diff_Ioi_raw (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+          (1 / 252 : ℂ) * (z⁻¹) ^ 6 +
+          (1 / 240 : ℂ) * (z⁻¹) ^ 8 -
+          (1 / 132 : ℂ) * (z⁻¹) ^ 10 +
+          (691 / 32760 : ℂ) * (z⁻¹) ^ 12) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 := by
+  let I10 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+  let I12 : ℂ :=
+    ∫ x in Set.Ioi (0 : ℝ),
+      (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13
+  let A : ℂ :=
+    Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+      (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+      (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+      (1 / 252 : ℂ) * (z⁻¹) ^ 6 +
+      (1 / 240 : ℂ) * (z⁻¹) ^ 8 -
+      (1 / 132 : ℂ) * (z⁻¹) ^ 10
+  have hB10 : Q3.digamma z - A = I10 := by
+    simpa [A, I10] using digamma_stieltjes_B10Diff_Ioi_raw z hz
+  have hbridge : I10 = (691 / 32760 : ℂ) * (z⁻¹) ^ 12 + I12 := by
+    have h := stieltjes_B10Diff_to_B12Diff_Ioi_raw z hz
+    rw [show I10 =
+        (-(691 / 32760 : ℂ)) * ((0 : ℂ) ^ 12 - (z⁻¹) ^ 12) + I12 by
+      simpa [I10, I12] using h]
+    ring
+  calc
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z⁻¹) ^ 2 +
+          (1 / 120 : ℂ) * (z⁻¹) ^ 4 -
+          (1 / 252 : ℂ) * (z⁻¹) ^ 6 +
+          (1 / 240 : ℂ) * (z⁻¹) ^ 8 -
+          (1 / 132 : ℂ) * (z⁻¹) ^ 10 +
+          (691 / 32760 : ℂ) * (z⁻¹) ^ 12)
+        = (Q3.digamma z - A) - (691 / 32760 : ℂ) * (z⁻¹) ^ 12 := by
+            ring
+    _ = I10 - (691 / 32760 : ℂ) * (z⁻¹) ^ 12 := by
+            rw [hB10]
+    _ = I12 := by
+            rw [hbridge]
+            ring
+
+lemma digamma_stieltjes_B12Diff_Ioi_mainPrefix (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z -
+        (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+          (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+          (1 / 120 : ℂ) * (z ^ 4)⁻¹ -
+          (1 / 252 : ℂ) * (z ^ 6)⁻¹ +
+          (1 / 240 : ℂ) * (z ^ 8)⁻¹ -
+          (1 / 132 : ℂ) * (z ^ 10)⁻¹ +
+          (691 / 32760 : ℂ) * (z ^ 12)⁻¹) =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 := by
+  simpa [inv_pow] using digamma_stieltjes_B12Diff_Ioi_raw z hz
+
+lemma digammaM6_remainder_eq_B12Diff_Ioi (z : ℂ) (hz : 0 < z.re) :
+    Q3.digamma z - digammaM6AsymptoticMain z =
+      ∫ x in Set.Ioi (0 : ℝ),
+        (bernoulli12Diff x : ℂ) / ((x : ℂ) + z) ^ 13 := by
+  simpa [digammaM6AsymptoticMain] using digamma_stieltjes_B12Diff_Ioi_mainPrefix z hz
 
 /-- Complex-norm form of the first Stieltjes/Euler-Maclaurin digamma
 remainder.  The real-part theorem below is a projection of this bound, while
