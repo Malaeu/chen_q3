@@ -26618,3 +26618,54 @@ source-theorem step.
 
 Boundary unchanged: this does not prove the full finite power-5 identity, the
 limit/tail ledger, the M6 source theorem, Step33A.1-A, or Step33.
+
+## 2026-06-20 Step33A.1-A B4 power-5 finite interval bridge checked
+
+Used Computer Use / Proshka for the next route choice after the checked
+cell-derivative bridge.  The advisory choice was to prove the finite
+`bernoulli4Diff/(x+z)^5` integrability/summation layer before assembling the
+finite identity.  This was route advice only; the proof object is the checked
+Lean code below.
+
+Added Lean-checked support:
+
+```lean
+Q3.intervalIntegrable_b4diff_div_nat
+Q3.sum_interval_integral_b4diff
+```
+
+The checked cell integrability theorem is:
+
+```lean
+IntervalIntegrable
+  (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+  volume (n : ℝ) (n + 1 : ℝ)
+```
+
+for `(z : ℂ) (hz : 0 < z.re) (n : ℕ)`.  The checked finite adjacent-interval
+summation is:
+
+```lean
+∑ n in range N,
+  ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+=
+∫ x in (0 : ℝ)..(N : ℝ),
+  (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+This closes the integrability/summation part of
+`STEP33_M6_B4_POWER5_FINITE_SUM_GAP`.  The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_IDENTITY_ASSEMBLY_GAP
+```
+
+Meaning: combine `stieltjes_interval_B2Fract_to_B4CellDeriv`,
+`stieltjes_interval_B4CellDeriv_to_B4Diff`, `sum_b4_boundary_telescope`, and
+`sum_interval_integral_b4diff` into the finite B2-to-B4 power-5 Stieltjes
+identity.  Do not move to `N → ∞` or the M6 source theorem before that finite
+identity is checked.
+
+Boundary unchanged: this does not prove the finite power-5 identity, the
+limit/tail ledger, the M6 source theorem, Step33A.1-A, or Step33.

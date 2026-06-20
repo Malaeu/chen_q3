@@ -53923,3 +53923,54 @@ git diff --check
 
 Boundary: this is not a proof of the finite power-5 identity, the M6 source
 theorem, Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B4 power-5 finite interval bridge checked
+
+Computer Use / Proshka was used after the previous checked bridge to select the
+next local object.  The advisory answer selected the finite B4 power-5
+integrability/summation layer first.  This advice is not proof evidence; the
+proof evidence is the checked Lean patch.
+
+Lean progress:
+
+```lean
+Q3.intervalIntegrable_b4diff_div_nat
+Q3.sum_interval_integral_b4diff
+```
+
+Checked bridge:
+
+```lean
+∑ n in range N,
+  ∫ x in (n : ℝ)..(n + 1 : ℝ),
+    (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+=
+∫ x in (0 : ℝ)..(N : ℝ),
+  (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+This closes the integrability/summation portion of:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_SUM_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_POWER5_FINITE_IDENTITY_ASSEMBLY_GAP
+```
+
+Meaning: assemble the finite B2-to-B4 power-5 Stieltjes identity from the
+checked cell identities and finite summation/telescope lemmas.  The route must
+not move to the `N → ∞`/tail ledger or M6 source theorem before this finite
+identity is Lean-checked.
+
+Validation:
+
+```text
+lake env lean Q3/DigammaRemainder.lean
+```
+
+Boundary: this is not a proof of the finite power-5 identity, the M6 source
+theorem, Step33A.1-A, or Step33.

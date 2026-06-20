@@ -1225,6 +1225,101 @@ lemma intervalIntegrable_b2diff_div_nat (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
       (((x - (n : ℝ)) - (x - (n : ℝ)) ^ 2 : ℝ) : ℂ) / ((x : ℂ) + z) ^ 3) h_eq_uIoc)
   exact hiff.mpr h_int_poly
 
+lemma intervalIntegrable_b4diff_div_nat (z : ℂ) (hz : 0 < z.re) (n : ℕ) :
+    IntervalIntegrable (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+      volume (n : ℝ) (n + 1 : ℝ) := by
+  have h_eq :
+      EqOn
+        (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+        (fun x : ℝ =>
+          (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+              (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ) /
+            ((x : ℂ) + z) ^ 5)
+        (Set.uIoc (n : ℝ) (n + 1 : ℝ)) := by
+    intro x hx
+    have hle : (n : ℝ) ≤ (n + 1 : ℝ) := by nlinarith
+    have hxIoc : x ∈ Set.Ioc (n : ℝ) (n + 1 : ℝ) := by
+      simpa [Set.uIoc_of_le hle] using hx
+    have hxIcc : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) :=
+      ⟨le_of_lt hxIoc.1, hxIoc.2⟩
+    have hreal := bernoulli4Diff_eq_cell_on_Icc n hxIcc
+    simp [hreal]
+  have hcont_poly :
+      ContinuousOn
+        (fun x : ℝ =>
+          (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+              (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ) /
+            ((x : ℂ) + z) ^ 5)
+        (Set.uIcc (n : ℝ) (n + 1 : ℝ)) := by
+    intro x hx
+    have hle : (n : ℝ) ≤ (n + 1 : ℝ) := by nlinarith
+    have hx' : x ∈ Set.Icc (n : ℝ) (n + 1 : ℝ) := by
+      simpa [Set.uIcc_of_le hle] using hx
+    have hx0 : 0 ≤ x := by
+      have hn0 : (0 : ℝ) ≤ (n : ℝ) := by exact_mod_cast (Nat.cast_nonneg n)
+      exact le_trans hn0 hx'.1
+    have hneq : (x : ℂ) + z ≠ 0 := add_ne_zero_of_re_pos hz hx0
+    have hcont_num :
+        ContinuousAt
+          (fun x : ℝ =>
+            (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+                (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ)) x := by
+      have hcont_real :
+          ContinuousAt
+            (fun x : ℝ =>
+              (x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+                (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹) x := by
+        have hshift : ContinuousAt (fun y : ℝ => y - (n : ℝ)) x := by
+          simpa using (continuousAt_id.sub continuous_const.continuousAt)
+        have h4 : ContinuousAt (fun y : ℝ => (y - (n : ℝ)) ^ 4) x := hshift.pow 4
+        have h3 : ContinuousAt (fun y : ℝ => (y - (n : ℝ)) ^ 3) x := hshift.pow 3
+        have h2 : ContinuousAt (fun y : ℝ => (y - (n : ℝ)) ^ 2) x := hshift.pow 2
+        have h2mul : ContinuousAt (fun y : ℝ => (2 : ℝ) * (y - (n : ℝ)) ^ 3) x :=
+          continuous_const.continuousAt.mul h3
+        simpa [sub_eq_add_neg, add_assoc] using ((h4.sub h2mul).add h2).sub
+          continuous_const.continuousAt
+      simpa [Function.comp_def] using (Complex.continuous_ofReal.continuousAt.comp hcont_real)
+    have hcont_add :
+        ContinuousAt (fun x : ℝ => (x : ℂ) + z) x := by
+      simpa using (Complex.continuous_ofReal.continuousAt.add continuous_const.continuousAt)
+    have hcont_pow :
+        ContinuousAt (fun x : ℝ => ((x : ℂ) + z) ^ 5) x := hcont_add.pow 5
+    have hne : ((x : ℂ) + z) ^ 5 ≠ 0 := pow_ne_zero 5 hneq
+    have hcont_inv :
+        ContinuousAt (fun x : ℝ => (((x : ℂ) + z) ^ 5)⁻¹) x :=
+      (ContinuousAt.inv₀ hcont_pow hne)
+    have hcont_mul :
+        ContinuousAt
+          (fun x : ℝ =>
+            (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+                (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ) *
+              (((x : ℂ) + z) ^ 5)⁻¹) x :=
+      hcont_num.mul hcont_inv
+    simpa [div_eq_mul_inv] using hcont_mul.continuousWithinAt
+  have h_int_poly :
+      IntervalIntegrable
+        (fun x : ℝ =>
+          (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+              (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ) /
+            ((x : ℂ) + z) ^ 5)
+        volume (n : ℝ) (n + 1 : ℝ) :=
+    hcont_poly.intervalIntegrable
+  have h_eq_uIoc :
+      EqOn
+        (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+        (fun x : ℝ =>
+          (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+              (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ) /
+            ((x : ℂ) + z) ^ 5)
+        (Set.uIoc (n : ℝ) (n + 1 : ℝ)) := h_eq
+  have hiff := (intervalIntegrable_congr (μ := volume) (a := (n : ℝ)) (b := (n + 1 : ℝ))
+    (f := fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+    (g := fun x : ℝ =>
+      (((x - (n : ℝ)) ^ 4 - 2 * (x - (n : ℝ)) ^ 3 +
+          (x - (n : ℝ)) ^ 2 - (30 : ℝ)⁻¹ : ℝ) : ℂ) /
+        ((x : ℂ) + z) ^ 5) h_eq_uIoc)
+  exact hiff.mpr h_int_poly
+
 lemma sum_trapezoid_eq_sum (z : ℂ) (N : ℕ) :
     Finset.sum (Finset.range N)
         (fun n =>
@@ -1315,6 +1410,25 @@ lemma sum_interval_integral_b2diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
   simpa [Nat.cast_add, Nat.cast_one] using
     (intervalIntegral.sum_integral_adjacent_intervals
       (f := fun x : ℝ => (bernoulli2Diff x : ℂ) / ((x : ℂ) + z) ^ 3)
+      (a := fun k : ℕ => (k : ℝ)) (n := N) (μ := volume) hint)
+
+lemma sum_interval_integral_b4diff (z : ℂ) (hz : 0 < z.re) (N : ℕ) :
+    Finset.sum (Finset.range N)
+        (fun n =>
+          ∫ x in (n : ℝ)..(n + 1 : ℝ),
+            (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5) =
+      ∫ x in (0 : ℝ)..(N : ℝ),
+        (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5 := by
+  classical
+  have hint :
+      ∀ k < N,
+        IntervalIntegrable (fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
+          volume (k : ℝ) ((k + 1 : ℕ) : ℝ) := by
+    intro k hk
+    simpa [Nat.cast_add, Nat.cast_one] using intervalIntegrable_b4diff_div_nat z hz k
+  simpa [Nat.cast_add, Nat.cast_one] using
+    (intervalIntegral.sum_integral_adjacent_intervals
+      (f := fun x : ℝ => (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5)
       (a := fun k : ℕ => (k : ℝ)) (n := N) (μ := volume) hint)
 
 lemma sum_inv_eq_log_plus_integral (z : ℂ) (hz : 0 < z.re) (N : ℕ) :

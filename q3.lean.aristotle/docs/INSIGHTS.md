@@ -33965,3 +33965,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `N -> infinity`/tail ledger for `Q3.digammaM6IntegralRemainderBound`.
 - Boundary: this does not prove the finite power-5 identity, the M6 source
   theorem, Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B4Power5FiniteIntervalBridgeChecked
+
+- Used Computer Use / Proshka on the next precise gap after the checked B4
+  cell-derivative bridge.  The advisory answer selected the finite
+  `bernoulli4Diff/(x+z)^5` integrability/summation layer before assembling the
+  identity; this is route advice only, not proof evidence.
+- Added Lean-checked support:
+  `intervalIntegrable_b4diff_div_nat` and `sum_interval_integral_b4diff`.
+- The new summation bridge is:
+  `sum_{n<N} integral_[n,n+1] bernoulli4Diff/(x+z)^5 =
+   integral_[0,N] bernoulli4Diff/(x+z)^5`.
+- Closed the integrability/summation part of:
+  `STEP33_M6_B4_POWER5_FINITE_SUM_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B4_POWER5_FINITE_IDENTITY_ASSEMBLY_GAP`.
+- Meaning: combine `stieltjes_interval_B2Fract_to_B4CellDeriv`,
+  `stieltjes_interval_B4CellDeriv_to_B4Diff`, `sum_b4_boundary_telescope`, and
+  `sum_interval_integral_b4diff` into the finite B2-to-B4 power-5 identity.
+- Boundary: this does not prove the finite power-5 identity, the M6 source
+  theorem, Step33A.1-A, or Step33.
