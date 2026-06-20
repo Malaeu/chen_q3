@@ -54189,3 +54189,75 @@ lake env lean Q3/DigammaRemainder.lean
 
 Boundary: this is not a proof of the finite power-5 identity, the M6 source
 theorem, Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B4 power-5 Ioi tail bridge checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.kernel_norm_pow5_le_re
+Q3.integrable_kernel_norm_pow5
+Q3.integrable_bernoulli4Diff_div_pow5
+Q3.tendsto_intervalIntegral_b2diff_div_Ioi
+Q3.tendsto_intervalIntegral_b4diff_div_pow5_Ioi
+Q3.tendsto_nat_add_complex_inv
+Q3.stieltjes_B2Diff_to_B4Diff_Ioi_raw
+```
+
+This closes the finite-to-`Ioi` part of:
+
+```text
+STEP33_M6_B4_LIMIT_TAIL_LEDGER_GAP
+```
+
+The remaining exact gap became:
+
+```text
+STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP
+```
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
+
+## 2026-06-20 Execution update -- B4 digamma remainder prefix checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digamma_stieltjes_B4Diff_Ioi_raw
+Q3.digamma_stieltjes_B4Diff_Ioi_mainPrefix
+```
+
+The main-prefix theorem is now in the same inverse-power convention as
+`Q3.digammaM6AsymptoticMain`:
+
+```lean
+Q3.digamma z -
+  (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+    (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+    (1 / 120 : ℂ) * (z ^ 4)⁻¹)
+=
+∫ x in Set.Ioi (0 : ℝ),
+  (bernoulli4Diff x : ℂ) / ((x : ℂ) + z) ^ 5
+```
+
+This closes:
+
+```text
+STEP33_M6_B4_IOI_TO_ORDER15_REMAINDER_SOURCE_GAP
+```
+
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B4_PREFIX_TO_ORDER15_SOURCE_GAP
+```
+
+Computer Use / Proshka note: the current route fork was asked in the open
+browser tab after this checked node.  The response did not return a usable
+structured answer before stalling, so it was stopped.  This is advisory only;
+the local repository evidence favors a one-order bridge because no B6/B8/...
+infrastructure currently exists in `Q3.DigammaRemainder`.
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.
