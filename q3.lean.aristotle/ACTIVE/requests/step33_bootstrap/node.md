@@ -16513,3 +16513,44 @@ STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 Boundary: checked receiver/metadata closure only.  No candidate polynomial JSON
 is proof data, no interpolation-error theorem is proved, and no Lean payload is
 emitted.
+
+## 2026-06-20 Current EOF Addendum -- sub0 derivative-model source inventory
+
+Updated the fail-closed skeleton to:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v4
+```
+
+New source-gate verdict:
+
+```text
+blocked_no_proof_grade_derivative_model_source_for_sub0
+```
+
+The inventory records:
+
+```text
+raw Taylor candidate overlay:
+  candidate_overlay_not_proof_data
+  raw_integrand_taylor_polynomial_candidate_not_derivative_model
+
+direct derivative overlay:
+  direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs
+  sampled_residual_derivative_interval_candidate_not_polynomial_model
+
+expected derivative model candidate:
+  missing
+```
+
+Current proof-grade payload inputs, in order:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Boundary: source inventory and route guard only.  The raw-integrand candidate
+polynomial is not used as a derivative model, sampled derivative intervals are
+not promoted to proof data, and no Lean payload is emitted.

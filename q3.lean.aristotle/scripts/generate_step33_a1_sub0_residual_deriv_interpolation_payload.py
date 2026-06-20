@@ -38,7 +38,23 @@ DEFAULT_OUT_MD = (
 WORKLIST_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
 )
-OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v3"
+OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v4"
+RAW_POLY_CANDIDATE_OVERLAY = (
+    REQUEST_DIR
+    / "a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30.json"
+)
+DIRECT_DERIVATIVE_OVERLAY = (
+    REQUEST_DIR
+    / "a_chunk_taylor_payload_refined_subchunk_direct_derivative_overlay_primary_finite_0_0_denom1e30.json"
+)
+DERIVATIVE_BOUND_AUDIT = (
+    REQUEST_DIR
+    / "a_chunk_taylor_payload_refined_subchunk_derivative_bound_audit_primary_finite_0_0_denom1e30.json"
+)
+EXPECTED_DERIVATIVE_MODEL_CANDIDATE = (
+    REQUEST_DIR
+    / "a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.json"
+)
 
 TARGET = {
     "family": "primary_finite",
@@ -135,12 +151,154 @@ def find_target_subchunk(worklist: dict[str, Any]) -> dict[str, Any]:
     return hits[0]
 
 
+def find_subchunk_item(items: list[Any], subchunk: int) -> dict[str, Any] | None:
+    hits = [
+        item for item in items
+        if isinstance(item, dict) and item.get("subchunk") == subchunk
+    ]
+    if len(hits) > 1:
+        raise ValueError(f"expected at most one subchunk {subchunk}, found {len(hits)}")
+    return hits[0] if hits else None
+
+
 def first_or_value(value: Any) -> Any:
     if isinstance(value, list):
         if len(value) != 1:
             raise ValueError(f"expected one value, found {value!r}")
         return value[0]
     return value
+
+
+def derivative_model_candidate_inventory() -> dict[str, Any]:
+    raw_candidate: dict[str, Any] = {
+        "path": str(RAW_POLY_CANDIDATE_OVERLAY),
+        "exists": RAW_POLY_CANDIDATE_OVERLAY.exists(),
+        "usableAsDerivativeModelSource": False,
+    }
+    if RAW_POLY_CANDIDATE_OVERLAY.exists():
+        raw_data = load_json(RAW_POLY_CANDIDATE_OVERLAY)
+        item = find_subchunk_item(raw_data.get("candidates") or [], 0)
+        raw_candidate.update(
+            {
+                "schema": raw_data.get("schema"),
+                "status": raw_data.get("status"),
+                "subchunkFound": item is not None,
+                "functionKind": (
+                    "raw_integrand_taylor_polynomial_candidate_not_derivative_model"
+                ),
+                "proofUseStatus": (
+                    "not_allowed_as_modelDeriv_source_for_deriv_residual"
+                ),
+            }
+        )
+        if item is not None:
+            raw_candidate.update(
+                {
+                    "degree": item.get("degree"),
+                    "center": item.get("center"),
+                    "radius": item.get("radius"),
+                    "coeffCount": len(item.get("coeff") or []),
+                    "polyAbs": item.get("polyAbs"),
+                    "candidateGuard": item.get("candidateGuard"),
+                }
+            )
+
+    direct_overlay: dict[str, Any] = {
+        "path": str(DIRECT_DERIVATIVE_OVERLAY),
+        "exists": DIRECT_DERIVATIVE_OVERLAY.exists(),
+        "usableAsDerivativeModelSource": False,
+    }
+    if DIRECT_DERIVATIVE_OVERLAY.exists():
+        overlay_data = load_json(DIRECT_DERIVATIVE_OVERLAY)
+        item = find_subchunk_item(overlay_data.get("subchunks") or [], 0)
+        seeded = (item or {}).get("seededFields") or {}
+        direct_overlay.update(
+            {
+                "schema": overlay_data.get("schema"),
+                "status": overlay_data.get("status"),
+                "subchunkFound": item is not None,
+                "functionKind": (
+                    "sampled_residual_derivative_interval_candidate_not_polynomial_model"
+                ),
+                "proofUseStatus": (
+                    "not_allowed_as_modelDeriv_source_without_universal_Lean_proof"
+                ),
+                "sourceDerivativeAuditStatus": overlay_data.get(
+                    "sourceDerivativeAuditStatus"
+                ),
+            }
+        )
+        if item is not None:
+            direct_overlay.update(
+                {
+                    "blockedOn": item.get("blockedOn"),
+                    "remainingAnalyticFields": item.get("remainingAnalyticFields"),
+                    "seededDerivLower": seeded.get("derivLower"),
+                    "seededDerivUpper": seeded.get("derivUpper"),
+                    "seededDerivSlope": seeded.get("derivSlope"),
+                    "residualDerivativeIntervalCandidates": item.get(
+                        "residualDerivativeIntervalCandidates"
+                    ),
+                }
+            )
+
+    audit: dict[str, Any] = {
+        "path": str(DERIVATIVE_BOUND_AUDIT),
+        "exists": DERIVATIVE_BOUND_AUDIT.exists(),
+        "usableAsDerivativeModelSource": False,
+    }
+    if DERIVATIVE_BOUND_AUDIT.exists():
+        audit_data = load_json(DERIVATIVE_BOUND_AUDIT)
+        item = find_subchunk_item(audit_data.get("subchunks") or [], 0)
+        audit.update(
+            {
+                "schema": audit_data.get("schema"),
+                "status": audit_data.get("status"),
+                "subchunkFound": item is not None,
+                "functionKind": "diagnostic_sampled_derivative_audit_not_proof_data",
+                "proofUseStatus": "not_allowed_as_Lean_payload",
+            }
+        )
+        if item is not None:
+            audit.update(
+                {
+                    "sampledSlope": item.get("sampledSlope"),
+                    "derivSlope": item.get("derivSlope"),
+                    "rawPolyEnvelopePasses": item.get("rawPolyEnvelopePasses"),
+                    "intervalEnvelopePasses": item.get("intervalEnvelopePasses"),
+                    "jetEnvelopePasses": item.get("jetEnvelopePasses"),
+                    "secondDerivativeEnvelopePasses": item.get(
+                        "secondDerivativeEnvelopePasses"
+                    ),
+                }
+            )
+
+    expected_derivfit = {
+        "path": str(EXPECTED_DERIVATIVE_MODEL_CANDIDATE),
+        "exists": EXPECTED_DERIVATIVE_MODEL_CANDIDATE.exists(),
+        "usableAsDerivativeModelSource": EXPECTED_DERIVATIVE_MODEL_CANDIDATE.exists(),
+        "expectedFunctionKind": "derivative_residual_polynomial_model_candidate",
+    }
+
+    has_source = bool(expected_derivfit["usableAsDerivativeModelSource"])
+    return {
+        "status": (
+            "blocked_no_proof_grade_derivative_model_source_for_sub0"
+            if not has_source
+            else "derivative_model_source_candidate_present_not_lean_checked"
+        ),
+        "hasProofGradeDerivativeModelSource": False,
+        "hasDerivativeModelCandidateFile": has_source,
+        "rawPolynomialCandidate": raw_candidate,
+        "directDerivativeOverlay": direct_overlay,
+        "derivativeBoundAudit": audit,
+        "expectedDerivativeModelCandidate": expected_derivfit,
+        "decision": (
+            "Do not use raw Taylor coefficients or sampled derivative intervals "
+            "as modelDeriv.  Generate a derivative-residual polynomial source "
+            "or prove the interpolation error directly."
+        ),
+    }
 
 
 def build_report(
@@ -165,6 +323,8 @@ def build_report(
     if deriv_slope is None:
         raise ValueError("target subchunk missing derivSlope")
 
+    source_inventory = derivative_model_candidate_inventory()
+
     exact_lhs = (
         None
         if model_bound is None or interpolation_error is None
@@ -174,6 +334,8 @@ def build_report(
     budget_passes = None if budget_margin is None else budget_margin >= 0
 
     missing_inputs: list[str] = []
+    if not source_inventory["hasProofGradeDerivativeModelSource"]:
+        missing_inputs.append("STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP")
     if model_bound is None:
         missing_inputs.append("STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP")
     if interpolation_error is None:
@@ -181,15 +343,12 @@ def build_report(
     if budget_passes is False:
         missing_inputs.append("STEP33_A1_SUB0_INTERPOLATION_BUDGET_FAIL")
 
-    status = (
-        "blocked_missing_exact_interpolation_inputs"
-        if model_bound is None or interpolation_error is None
-        else (
-            "exact_budget_arithmetic_pass_no_lean_emitted"
-            if budget_passes
-            else "exact_budget_arithmetic_fail_no_lean_emitted"
-        )
-    )
+    if missing_inputs:
+        status = "blocked_missing_exact_interpolation_inputs"
+    elif budget_passes:
+        status = "exact_budget_arithmetic_pass_no_lean_emitted"
+    else:
+        status = "exact_budget_arithmetic_fail_no_lean_emitted"
 
     proof_safe_closed_fields = 0
     return {
@@ -261,6 +420,7 @@ def build_report(
                 else "provided_exact_rational_candidates_not_lean_proof"
             ),
         },
+        "candidateSourceInventory": source_inventory,
         "exactBudget": {
             "relation": "interpolationError + modelBound <= derivSlope",
             "lhs": format_fraction(exact_lhs),
@@ -281,6 +441,8 @@ def build_report(
             "does not emit a Lean payload theorem",
             "sub0 landing receiver is checked separately in Lean",
             "polynomial-model landing receiver is checked separately in Lean",
+            "raw Taylor polynomial candidates are not derivative-model sources",
+            "sampled derivative intervals are not modelDeriv proof data",
             "modelBound must be derived by exact rational interval operations",
             "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
             "a positive exact budget margin is required before Lean emission is enabled",
@@ -304,6 +466,7 @@ def render_md(report: dict[str, Any]) -> str:
         f"- sub0 polynomial-model landing receiver: `{report['receiver']['sub0PolynomialModelLandingReceiver']}`",
         f"- cell: `{report['cell']['set']}`",
         f"- derivSlope: `{report['cell']['derivSlope']}`",
+        f"- candidate source status: `{report['candidateSourceInventory']['status']}`",
         f"- proof-safe closed fields: `{report['proofSafeClosedFields']}`",
         f"- Lean emitted: `{report['outLeanWritten']}`",
         "",
@@ -322,8 +485,39 @@ def render_md(report: dict[str, Any]) -> str:
         lines.append(f"- `{item}`")
     if not report["missingInputs"]:
         lines.append("- none at exact arithmetic layer; Lean emission is still disabled")
+    inventory = report["candidateSourceInventory"]
     lines.extend(
         [
+            "",
+            "## Candidate Source Inventory",
+            "",
+            f"- status: `{inventory['status']}`",
+            f"- proof-grade derivative model source: `{inventory['hasProofGradeDerivativeModelSource']}`",
+            f"- derivative-model candidate file present: `{inventory['hasDerivativeModelCandidateFile']}`",
+            f"- decision: `{inventory['decision']}`",
+            "",
+            "### Raw Polynomial Candidate",
+            "",
+            f"- path: `{inventory['rawPolynomialCandidate']['path']}`",
+            f"- exists: `{inventory['rawPolynomialCandidate']['exists']}`",
+            f"- status: `{inventory['rawPolynomialCandidate'].get('status')}`",
+            f"- function kind: `{inventory['rawPolynomialCandidate'].get('functionKind')}`",
+            f"- proof use: `{inventory['rawPolynomialCandidate'].get('proofUseStatus')}`",
+            "",
+            "### Direct Derivative Overlay",
+            "",
+            f"- path: `{inventory['directDerivativeOverlay']['path']}`",
+            f"- exists: `{inventory['directDerivativeOverlay']['exists']}`",
+            f"- status: `{inventory['directDerivativeOverlay'].get('status')}`",
+            f"- source audit status: `{inventory['directDerivativeOverlay'].get('sourceDerivativeAuditStatus')}`",
+            f"- function kind: `{inventory['directDerivativeOverlay'].get('functionKind')}`",
+            f"- proof use: `{inventory['directDerivativeOverlay'].get('proofUseStatus')}`",
+            "",
+            "### Expected Derivative Model Candidate",
+            "",
+            f"- path: `{inventory['expectedDerivativeModelCandidate']['path']}`",
+            f"- exists: `{inventory['expectedDerivativeModelCandidate']['exists']}`",
+            f"- expected kind: `{inventory['expectedDerivativeModelCandidate']['expectedFunctionKind']}`",
             "",
             "## Receiver Shape",
             "",

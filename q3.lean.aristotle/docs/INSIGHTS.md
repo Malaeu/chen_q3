@@ -35741,3 +35741,49 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   coefficients remain non-proof until emitted as Lean-checked arithmetic; the
   uniform interpolation/error bound is still the analytic blocker.  No Lean
   payload, Step33A.1-A, Step33, Step34, or RH closure is proved.
+
+## Insight (2026-06-20, Step33A.1-A) -- Sub0DerivativeModelSourceInventory
+
+- Updated
+  `scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v4`.
+- The skeleton now inventories candidate derivative-model sources before
+  treating model arithmetic as actionable.
+- Local source verdict:
+  `blocked_no_proof_grade_derivative_model_source_for_sub0`.
+- The raw polynomial candidate overlay for `primary_finite / row 0 / parent 0`
+  exists, but is explicitly classified as
+  `raw_integrand_taylor_polynomial_candidate_not_derivative_model`; it is not a
+  valid `modelDeriv` source for the residual derivative.
+- The direct derivative overlay exists, but is classified as
+  `sampled_residual_derivative_interval_candidate_not_polynomial_model` with
+  status `direct_derivative_overlay_seeded_missing_cell_slope_norm_proofs`; it
+  remains diagnostic/non-proof data.
+- The expected active derivative-model candidate
+  `a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.json`
+  is absent.  A derivfit for parent `0_1` does not discharge active sub0
+  parent `0_0`.
+- The ordered current gaps are
+  `STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP`,
+  `STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP`, and
+  `STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP`.
+- Browser/Pro was used as route-review only.  The advisory answer is not proof
+  evidence; local validation still controls what can enter Lean or payload
+  artifacts.
+- The advisory next patch choice was `A`: clone the existing `0_1` derivfit
+  production path for active `0_0`, with output
+  `primary_finite_0_0_denom1e30_derivfit.json`; fail closed unless the
+  generator certifies both the derivative-model identity/crosswalk and a
+  uniform remainder bound on `[0, 1/10]`.
+- The advisory first blocker name is
+  `STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP`: differentiating a raw
+  integrand Taylor candidate may produce coefficients, but it does not prove
+  that the polynomial models `deriv cert.residual` or bounds the derivative
+  remainder.
+- Validation passed: py_compile, generator rerun, JSON v4 assertion, exact
+  budget smoke test that remains source-gated, forbidden-token scan on the
+  generator artifacts, and `git diff --check`.
+- Boundary: source inventory/guard only.  No Lean payload is emitted,
+  `proofSafeClosedFields = 0`, and no Step33A.1-A / Step33 / Step34 / RH
+  closure is proved.

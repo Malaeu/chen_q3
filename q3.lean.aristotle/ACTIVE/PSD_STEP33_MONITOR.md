@@ -29376,3 +29376,43 @@ Boundary: checked wrappers plus generator skeleton metadata only.  It does not
 prove the polynomial model arithmetic, does not prove `interpolationError`,
 does not read sampled JSON as proof, does not emit Lean payload, and keeps
 `proofSafeClosedFields = 0`.
+
+## 2026-06-20 Current EOF Status -- sub0 derivative-model source inventory v4
+
+The fail-closed sub0 interpolation skeleton is now schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v4
+```
+
+The skeleton now inventories candidate sources before spending any exact
+budget arithmetic.  Current source status:
+
+```text
+blocked_no_proof_grade_derivative_model_source_for_sub0
+```
+
+Local evidence:
+
+```text
+raw polynomial candidate overlay: exists, but it is a raw-integrand Taylor
+  candidate, not a derivative-residual modelDeriv source
+direct derivative overlay: exists, but it is sampled/seeded diagnostic data
+  with missing cell-slope norm proofs
+expected derivative model candidate:
+  a_chunk_taylor_payload_refined_subchunk_candidate_overlay_primary_finite_0_0_denom1e30_derivfit.json
+  does not exist
+```
+
+The current ordered missing inputs are:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Boundary: fail-closed source inventory only.  Raw Taylor coefficients are not
+used as `modelDeriv`; sampled derivative intervals are not proof data; no Lean
+payload is emitted; `proofSafeClosedFields = 0`; no Step33A.1-A / Step33 /
+Step34 / RH closure is claimed.

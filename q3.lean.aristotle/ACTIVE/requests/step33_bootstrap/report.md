@@ -57445,3 +57445,112 @@ STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 Boundary: receiver/metadata closure only.  No polynomial model arithmetic
 payload, no interpolation-error theorem, no emitted Lean payload, no Step33A.1-A
 closure, no Step33/Step34/RH claim.
+
+## Execution Update (2026-06-20) -- sub0 derivative-model source inventory
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk direct interpolation payload.
+
+Files touched:
+
+```text
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+```
+
+The fail-closed generator skeleton now emits schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v4
+```
+
+It inventories candidate derivative-model sources before allowing exact budget
+arithmetic to become actionable.  Current inventory status:
+
+```text
+blocked_no_proof_grade_derivative_model_source_for_sub0
+```
+
+Local source verdict:
+
+```text
+raw polynomial candidate overlay:
+  exists, but is raw_integrand_taylor_polynomial_candidate_not_derivative_model
+direct derivative overlay:
+  exists, but is sampled_residual_derivative_interval_candidate_not_polynomial_model
+expected derivative model candidate:
+  missing
+```
+
+Current ordered gaps:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP
+STEP33_A1_SUB0_POLYNOMIAL_MODEL_EXACT_ARITHMETIC_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Browser/Pro follow-up was requested as advisory only after the local source
+inventory exposed the earlier gate.  It is not proof evidence and does not
+override local validation.  The advisory route choice was:
+
+```text
+CHOSEN: A
+TARGET FILES:
+  scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+  existing producer of primary_finite_0_1_denom1e30_derivfit.json as template
+  output primary_finite_0_0_denom1e30_derivfit.json
+FIRST BLOCKER:
+  STEP33_A1_SUB0_DERIVATIVE_MODEL_EXACT_CROSSWALK_GAP
+NEXT CODEX PATCH:
+  clone the 0_1 derivfit production path for active 0_0, but fail closed unless
+  the generator certifies both the model identity/crosswalk and a uniform
+  remainder bound on [0, 1/10]
+DANGER:
+  differentiating the raw-integrand Taylor candidate gives coefficients, but
+  does not prove that the polynomial models deriv cert.residual or bounds its
+  derivative remainder
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 JSON assertion: schema v4, default blocked status, three ordered gaps,
+  source inventory status, proofSafeClosedFields = 0, outLeanWritten = false
+python3 exact-budget smoke test with rational candidate inputs remains blocked
+  on STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+git diff --check
+```
+
+Boundary: generator/source inventory only.  No Lean proof files were modified
+in this patch, no sampled JSON is trusted, no Lean payload is emitted, and no
+Step33A.1-A / Step33 / Step34 / RH closure is claimed.
+
+## Current EOF Status (2026-06-20) -- sub0 source inventory v4 is latest
+
+Latest fail-closed sub0 interpolation skeleton schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v4
+```
+
+Latest status:
+
+```text
+blocked_missing_exact_interpolation_inputs
+```
+
+Latest first blocker:
+
+```text
+STEP33_A1_SUB0_DERIVATIVE_MODEL_SOURCE_GAP
+```
+
+The next implementable patch must either generate a proof-grade
+derivative-residual model source for active sub0 `primary_finite / row 0 /
+parent 0 / subchunk 0`, or prove the direct interpolation error from a checked
+closed-form/envelope route.  It must not reuse the raw Taylor candidate overlay
+or sampled derivative overlay as proof data.
