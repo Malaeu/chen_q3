@@ -36791,3 +36791,40 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_SERIES_MAJORANT_PAYLOAD_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16ConcreteMajorantClosed
+
+- Target blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_SERIES_MAJORANT_PAYLOAD_GAP`, wired into
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_tsum_majorant_checked_smooth`.
+- Local q3_docs search found no ready order-16 payload.  Closest checked files
+  are `Q3/DigammaSeries.lean`, `Q3/DigammaRemainder.lean`,
+  `Q3/Proofs/A3_Floor_Monotonicity.lean`, and the current endpoint support
+  file.
+- External primary-source check points only to the standard Mathlib complex
+  arithmetic/norm layer; no project-specific theorem is available there.
+- Plan: add a local pointwise majorant for
+  `omegaPrimeOrder16SeriesTerm eta n` using
+  `abs(im z⁻¹) <= ‖z⁻¹‖`, `‖z^18‖ = ‖z‖^18`, and
+  `n + 1/4 <= ‖n + 1/4 + i eta/2‖`.
+- Added and Lean-checked
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_re`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_abs_le_real_majorant`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_real_majorant_tsum`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_real_majorant_tsum_checked_smooth`.
+- The concrete majorant is
+  `g n = (((n : Real) + 1/4)^18)^-1`, independent of `eta`.
+- This closes the pointwise-majorant part of the payload.  It does not close
+  `hDerivEq`, the summability/tsum rational budget for `g`, center jets, or the
+  final remainder budget.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_TSUM_BUDGET_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.

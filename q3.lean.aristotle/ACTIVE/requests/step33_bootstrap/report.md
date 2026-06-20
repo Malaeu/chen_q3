@@ -59638,6 +59638,63 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 concrete majorant
+
+Closed the pointwise majorant part of the OmegaPrime order-16 series path in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_re
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_abs_le_real_majorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_real_majorant_tsum
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_real_majorant_tsum_checked_smooth
+```
+
+The checked theorem now specializes the generated-facing order-16 receiver to
+the concrete real majorant:
+
+```text
+g n = (((n : Real) + 1/4)^18)^-1
+```
+
+The remaining series payload is reduced to:
+
+```text
+Summable g
+(∑' n, g n) <= B
+omegaPrimeOrder16SeriesFactor * B <= data.order16Abs
+```
+
+plus the already explicit `hDerivEq`, center-jet, and remainder-budget
+obligations.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_TSUM_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
+Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 series majorant receiver
 
 Extended the order-16 OmegaPrime receiver with a generated-facing term

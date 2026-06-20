@@ -31057,3 +31057,59 @@ concrete summable majorant payload, no center-jet payload, no exact rational
 remainder budget, no generated Lean payload, no first-subchunk
 residual-derivative norm certificate, no A hbox, and no Step33A.1-A closure
 exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 concrete majorant
+
+Closed the pointwise part of the order-16 series-majorant payload in Lean.
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_re
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_abs_le_real_majorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16Series_abs_le_real_majorant_tsum
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_real_majorant_tsum_checked_smooth
+```
+
+Result:
+
+```text
+|omegaPrimeOrder16SeriesTerm eta n|
+  <= (((n : Real) + 1/4)^18)^-1
+
+Summable majorant + tsum majorant <= B
+  -> |omegaPrimeOrder16Series eta| <= B
+
+plus hDerivEq, factorBudget, centerJet, and remainderBudget
+  -> data.Valid
+```
+
+This eliminates the abstract pointwise-majorant premise from the generated
+order-16 path.  It still does not prove the `tsum` budget for
+`((n + 1/4)^18)^-1` and does not prove the termwise
+`iteratedDeriv16`/`tsum` identity.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_REAL_MAJORANT_TSUM_BUDGET_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
+summability/tsum rational budget for the concrete majorant, no center-jet
+payload, no exact rational remainder budget, no generated Lean payload, no
+first-subchunk residual-derivative norm certificate, no A hbox, and no
+Step33A.1-A closure exists yet.
