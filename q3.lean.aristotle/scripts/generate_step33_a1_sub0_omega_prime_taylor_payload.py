@@ -106,6 +106,13 @@ TARGET_SYMBOLS = [
     FIRST_FAILURE,
 ]
 
+TARGET_PATTERNS = {
+    TARGET_CERT: "structure Step33Sub0OmegaPrimeTaylorRemainderCert",
+    TARGET_VALID: "structure Valid (data : Step33Sub0OmegaPrimeTaylorRemainderCert)",
+    TARGET_BOUND: "theorem Valid.bound",
+    FIRST_FAILURE: FIRST_FAILURE,
+}
+
 
 def file_hash(path: Path) -> str | None:
     if not path.exists():
@@ -149,13 +156,14 @@ def symbol_scan(path_by_label: dict[str, Path]) -> dict[str, list[dict[str, Any]
 
 
 def target_symbol_scan(path: Path) -> dict[str, dict[str, Any]]:
-    return {
-        symbol: {
-            "line": line_of_symbol(path, symbol),
-            "status": "found" if line_of_symbol(path, symbol) is not None else "gap",
+    out: dict[str, dict[str, Any]] = {}
+    for symbol in TARGET_SYMBOLS:
+        line = line_of_symbol(path, TARGET_PATTERNS.get(symbol, symbol))
+        out[symbol] = {
+            "line": line,
+            "status": "found" if line is not None else "gap",
         }
-        for symbol in TARGET_SYMBOLS
-    }
+    return out
 
 
 def missing_coeff_slots(name: str) -> list[dict[str, Any]]:
@@ -181,6 +189,11 @@ def build_report(
         "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": endpoint_file,
     }
     component_payload = load_json(component_payload_path)
+    target_scan = target_symbol_scan(endpoint_file)
+    receiver_present = all(
+        target_scan[symbol]["status"] == "found"
+        for symbol in [TARGET_CERT, TARGET_VALID, TARGET_BOUND]
+    )
 
     return {
         "schema": SCHEMA,
@@ -208,7 +221,11 @@ def build_report(
             "structure": TARGET_CERT,
             "validPredicate": TARGET_VALID,
             "boundTheorem": TARGET_BOUND,
-            "status": "planned_not_in_lean",
+            "status": (
+                "receiver_present_missing_payload"
+                if receiver_present
+                else "planned_not_in_lean"
+            ),
             "statementAscii": (
                 "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound "
                 "{data : Step33Sub0OmegaPrimeTaylorRemainderCert} "
@@ -264,7 +281,7 @@ def build_report(
             "outLeanWritten": False,
         },
         "localSourceScan": symbol_scan(path_by_label),
-        "targetSymbolScan": target_symbol_scan(endpoint_file),
+        "targetSymbolScan": target_scan,
         "sourceStatus": {
             "componentPayloadPath": str(component_payload_path),
             "componentPayloadSchema": (

@@ -30618,3 +30618,61 @@ remainder support.  It does not find a local
 
 Boundary: no Lean file was touched, no OmegaPrime Taylor certificate exists,
 and Step33A.1-A remains open.
+
+## 2026-06-20 Current EOF Addendum -- OmegaPrime Taylor Lean receiver
+
+Added and Lean-checked the receiver surface in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New local symbols:
+
+```lean
+step33Sub0OmegaPrimeTaylorCenter
+step33Sub0OmegaPrimeTaylorRadius
+Step33Sub0OmegaPrimeTaylorRemainderCert
+Step33Sub0OmegaPrimeTaylorRemainderCert.poly
+Step33Sub0OmegaPrimeTaylorRemainderCert.exactTaylorPoly
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound
+```
+
+The checked theorem proves the receiver implication:
+
+```text
+Valid(data) =>
+  forall eta in [0, 1/10],
+    ||omegaPrimeClosedForm eta - data.poly eta|| <= data.remainderAbs
+```
+
+where `Valid` requires center-jet coefficient enclosures, the fixed radius
+budget, and a proof-bearing `centerTaylorBridge`.  The field `order16_bound`
+records the intended analytic source, but it is not yet a spendable numerical
+payload by itself.
+
+The OmegaPrime payload generator was rerun and now reports:
+
+```text
+targetLeanSurface.status = receiver_present_missing_payload
+Step33Sub0OmegaPrimeTaylorRemainderCert = found
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid = found
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound = found
+status = fail_closed_missing_order16_polygamma_bound
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: the receiver theorem is real Lean proof, but no order-16/polygamma
+bound, no center-jet certificate, no generated Lean payload, no
+first-subchunk residual-derivative norm certificate, no A hbox, and no
+Step33A.1-A closure exists yet.

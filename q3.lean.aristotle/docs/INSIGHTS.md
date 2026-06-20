@@ -36545,3 +36545,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no OmegaPrime Taylor certificate, no generated Lean payload, no
   first-subchunk residual-derivative norm certificate, no A hbox, no
   `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.
+
+## Insight (2026-06-20, Step33A.1-A) -- OmegaPrimeTaylorLeanReceiver
+
+- Used Browser/Proshka as advisory route review only; local Lean remains the
+  proof source.
+- Added a checked receiver in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`, and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound`.
+- `Valid.bound` is proof-bearing: it derives the OmegaPrime model error bound
+  on `[0, 1/10]` from center-jet coefficient errors, a same-interval
+  `centerTaylorBridge`, and the rational remainder budget.  It does not claim
+  the order-16/polygamma source bound exists.
+- Updated and reran
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`; the payload
+  now reports `targetLeanSurface.status = receiver_present_missing_payload`
+  and finds the receiver symbols.
+- Current first live blocker is still
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  generator run, `py_compile`, and JSON parse.
+- Boundary: no center-jet certificate, no order-16/polygamma proof, no Lean
+  payload emitted, no first-subchunk residual-derivative norm certificate, no A
+  hbox, no `ActiveCenteredCoeffEntryHboxCert`, no Step33/Step34/RH claim.

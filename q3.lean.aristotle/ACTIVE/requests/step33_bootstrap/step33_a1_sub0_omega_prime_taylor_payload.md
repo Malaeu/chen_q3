@@ -22,7 +22,7 @@ not close Step33A.1-A.
 - structure: `Step33Sub0OmegaPrimeTaylorRemainderCert`
 - valid predicate: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
 - bound theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound`
-- status: `planned_not_in_lean`
+- status: `receiver_present_missing_payload`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -74,16 +74,16 @@ Normalization note:
 
 | symbol | line | status |
 | --- | --- | --- |
-| `step33_shift16_digamma_m6_integral_remainder_bound` | `837` | `found` |
-| `Q3.digammaM6IntegralRemainderBound` | `838` | `found` |
+| `step33_shift16_digamma_m6_integral_remainder_bound` | `840` | `found` |
+| `Q3.digammaM6IntegralRemainderBound` | `841` | `found` |
 
 ## Target Symbol Scan
 
 | symbol | line | status |
 | --- | --- | --- |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert` | `None` | `gap` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `None` | `gap` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `None` | `gap` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9632` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `9655` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `9750` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP` | `None` | `gap` |
 
 ## Proof Status

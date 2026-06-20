@@ -17244,6 +17244,35 @@ Current exact blocker:
 STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
 
+## 2026-06-20 Current EOF Addendum -- OmegaPrime Taylor receiver landed
+
+The local OmegaPrime Taylor receiver requested by the current component
+Taylor route is now present and Lean-checked:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound
+```
+
+File:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+The receiver closes only the implication from a proof-bearing Taylor
+certificate to the OmegaPrime model error bound.  The payload generator now
+detects this receiver as present but still fails closed at:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Next proof-producing patch: prove or generate the proof-grade order-16
+polygamma/center-jet certificate that fills `Valid`; then emit the concrete
+OmegaPrime Taylor payload.
+
 ## 2026-06-20 Current EOF Addendum -- route-A full Taylor residual crosswalk
 
 Browser/Proshka advisory selected route A after the current adapter mismatch

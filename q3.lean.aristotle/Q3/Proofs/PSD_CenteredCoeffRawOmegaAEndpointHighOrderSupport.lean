@@ -1,5 +1,7 @@
+import Mathlib.Analysis.Calculus.Taylor
 import Q3.DigammaSeries
 import Q3.DigammaRemainder
+import Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
 import Q3.Proofs.PSD_CenteredCoeffAnalyticABoundsBackend
 
 set_option linter.mathlibStandardSet false
@@ -19,6 +21,7 @@ namespace PSDpd
 namespace Step33
 
 open MeasureTheory
+open scoped BigOperators
 
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +
@@ -9615,6 +9618,178 @@ theorem step33_shift16_digamma_fixed_complex_ball_of_m6_log_re_arg_fixed_compone
           step33Shift16DigammaM6CenterReRadius,
           step33Shift16DigammaM6CenterImRadius,
           step33Shift16DigammaTargetRadius])
+
+def step33Sub0OmegaPrimeTaylorCenter : Rat :=
+  (1 : Rat) / 20
+
+def step33Sub0OmegaPrimeTaylorRadius : Real :=
+  (1 : Real) / 20
+
+/-- Proof-bearing receiver for the active Step33A.1-A Omega-prime Taylor
+model.  Numeric generators may fill the rational fields only when the `Valid`
+proof fields below provide the analytic bridge; this structure by itself is
+not a numerical certificate. -/
+structure Step33Sub0OmegaPrimeTaylorRemainderCert where
+  coeff : Fin 16 -> Rat
+  coeffErrorAbs : Fin 16 -> Rat
+  order16Abs : Rat
+  remainderAbs : Rat
+
+namespace Step33Sub0OmegaPrimeTaylorRemainderCert
+
+private abbrev omegaPrimeClosedForm : Real -> Real :=
+  _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.step22OmegaArchWeightDerivClosedForm
+
+def poly (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (eta : Real) : Real :=
+  _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
+    15 step33Sub0OmegaPrimeTaylorCenter data.coeff eta
+
+def exactTaylorPoly (eta : Real) : Real :=
+  ∑ j : Fin 16,
+    (iteratedDeriv j.1 omegaPrimeClosedForm
+        ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+      (Nat.factorial j.1 : Real)) *
+      (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1
+
+structure Valid (data : Step33Sub0OmegaPrimeTaylorRemainderCert) : Prop where
+  coeffError_nonneg :
+    ∀ j, 0 <= (data.coeffErrorAbs j : Real)
+  order16_nonneg :
+    0 <= (data.order16Abs : Real)
+  centerJet :
+    ∀ j : Fin 16,
+      ‖iteratedDeriv j.1 omegaPrimeClosedForm
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+          (Nat.factorial j.1 : Real) -
+        (data.coeff j : Real)‖ <=
+        (data.coeffErrorAbs j : Real)
+  order16_bound :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖iteratedDeriv 16 omegaPrimeClosedForm eta‖ <=
+        (data.order16Abs : Real)
+  centerTaylorBridge :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖omegaPrimeClosedForm eta - exactTaylorPoly eta‖ <=
+        (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+          (Nat.factorial 16 : Real)
+  remainder_budget :
+    (∑ j : Fin 16,
+        (data.coeffErrorAbs j : Real) *
+          step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+        (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+          (Nat.factorial 16 : Real)
+      <= (data.remainderAbs : Real)
+
+private theorem eta_sub_center_abs_le_radius
+    {eta : Real}
+    (heta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :
+    |eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)| <=
+      step33Sub0OmegaPrimeTaylorRadius := by
+  rw [Set.mem_Icc] at heta
+  rw [abs_le]
+  constructor <;>
+    norm_num [step33Sub0OmegaPrimeTaylorCenter,
+      step33Sub0OmegaPrimeTaylorRadius] at heta ⊢ <;>
+    linarith
+
+private theorem exactTaylorPoly_sub_poly_bound
+    {data : Step33Sub0OmegaPrimeTaylorRemainderCert}
+    (h : data.Valid)
+    {eta : Real}
+    (heta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :
+    ‖exactTaylorPoly eta - data.poly eta‖ <=
+      ∑ j : Fin 16,
+        (data.coeffErrorAbs j : Real) *
+          step33Sub0OmegaPrimeTaylorRadius ^ j.1 := by
+  have hRadius := eta_sub_center_abs_le_radius (eta := eta) heta
+  have hdiff :
+      exactTaylorPoly eta - data.poly eta =
+        ∑ j : Fin 16,
+          ((iteratedDeriv j.1 omegaPrimeClosedForm
+              ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+              (Nat.factorial j.1 : Real) -
+            (data.coeff j : Real)) *
+            (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1) := by
+    unfold exactTaylorPoly poly
+    unfold _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
+    simp only [Nat.reduceAdd]
+    rw [← Finset.sum_sub_distrib]
+    refine Finset.sum_congr rfl ?_
+    intro j hj
+    ring
+  rw [hdiff]
+  refine (norm_sum_le _ _).trans ?_
+  refine Finset.sum_le_sum ?_
+  intro j hj
+  have hPow :
+      ‖(eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1‖ <=
+        step33Sub0OmegaPrimeTaylorRadius ^ j.1 := by
+    rw [norm_pow, Real.norm_eq_abs]
+    exact pow_le_pow_left₀ (abs_nonneg _) hRadius j.1
+  have hCoeffNonneg : 0 <= (data.coeffErrorAbs j : Real) :=
+    h.coeffError_nonneg j
+  calc
+    ‖(iteratedDeriv j.1 omegaPrimeClosedForm
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+          (Nat.factorial j.1 : Real) -
+        (data.coeff j : Real)) *
+        (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1‖
+        =
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ *
+          ‖(eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1‖ := by
+          rw [norm_mul]
+    _ <=
+        (data.coeffErrorAbs j : Real) *
+          step33Sub0OmegaPrimeTaylorRadius ^ j.1 := by
+          exact mul_le_mul (h.centerJet j) hPow (norm_nonneg _) hCoeffNonneg
+
+theorem Valid.bound
+    {data : Step33Sub0OmegaPrimeTaylorRemainderCert}
+    (h : data.Valid) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖omegaPrimeClosedForm eta - data.poly eta‖ <=
+        (data.remainderAbs : Real) := by
+  intro eta heta
+  have hsplit :
+      ‖omegaPrimeClosedForm eta - data.poly eta‖ <=
+        ‖omegaPrimeClosedForm eta - exactTaylorPoly eta‖ +
+          ‖exactTaylorPoly eta - data.poly eta‖ := by
+    have hdecomp :
+        omegaPrimeClosedForm eta - data.poly eta =
+          (omegaPrimeClosedForm eta - exactTaylorPoly eta) +
+            (exactTaylorPoly eta - data.poly eta) := by
+      ring
+    rw [hdecomp]
+    exact norm_add_le _ _
+  have hCoeff := exactTaylorPoly_sub_poly_bound h heta
+  have hTaylor := h.centerTaylorBridge eta heta
+  have hBudget := h.remainder_budget
+  calc
+    ‖omegaPrimeClosedForm eta - data.poly eta‖
+        <=
+        ‖omegaPrimeClosedForm eta - exactTaylorPoly eta‖ +
+          ‖exactTaylorPoly eta - data.poly eta‖ := hsplit
+    _ <=
+        (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+          (Nat.factorial 16 : Real) +
+        ∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1 := by
+          exact add_le_add hTaylor hCoeff
+    _ =
+        (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+        (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+          (Nat.factorial 16 : Real) := by
+          ring
+    _ <= (data.remainderAbs : Real) := hBudget
+
+end Step33Sub0OmegaPrimeTaylorRemainderCert
 
 end Step33
 end PSDpd

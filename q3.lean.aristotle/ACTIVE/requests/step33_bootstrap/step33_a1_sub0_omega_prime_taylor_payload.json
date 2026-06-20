@@ -332,12 +332,12 @@
     ],
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": [
       {
-        "line": 837,
+        "line": 840,
         "status": "found",
         "symbol": "step33_shift16_digamma_m6_integral_remainder_bound"
       },
       {
-        "line": 838,
+        "line": 841,
         "status": "found",
         "symbol": "Q3.digammaM6IntegralRemainderBound"
       }
@@ -363,7 +363,7 @@
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "7f64b5533a21ca57",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md": "319d19f8e4ce698f",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "3de3009753a52710",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "44035a027bb89ced"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "abbe66484e0e90b4"
   },
   "sourceStatus": {
     "componentPayloadFirstFailure": "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
@@ -379,7 +379,7 @@
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "localNormalization": "rawOmegaATaylorPolynomial expects a Rat center and a Fin (degree + 1) -> Rat coefficient function.",
     "statementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs",
-    "status": "planned_not_in_lean",
+    "status": "receiver_present_missing_payload",
     "structure": "Step33Sub0OmegaPrimeTaylorRemainderCert",
     "validPredicate": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid"
   },
@@ -389,16 +389,16 @@
       "status": "gap"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert": {
-      "line": null,
-      "status": "gap"
+      "line": 9632,
+      "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid": {
-      "line": null,
-      "status": "gap"
+      "line": 9655,
+      "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound": {
-      "line": null,
-      "status": "gap"
+      "line": 9750,
+      "status": "found"
     }
   }
 }

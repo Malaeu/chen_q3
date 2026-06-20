@@ -59203,3 +59203,60 @@ Boundary: no Lean files were touched, no OmegaPrime Taylor certificate was
 proved, no generated Lean payload exists, no first-subchunk
 residual-derivative norm certificate exists, no A hbox exists, and Step33A.1-A
 remains open.
+
+## Execution Update (2026-06-20) -- OmegaPrime Taylor Lean receiver
+
+Added a checked Lean receiver in:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound
+```
+
+The theorem `Valid.bound` proves a local receiver statement for
+`step22OmegaArchWeightDerivClosedForm`: if a certificate supplies
+center-jet errors, the fixed Taylor bridge/remainder budget, and the
+same-interval bridge from the exact Taylor polynomial, then the rational
+degree-15 model bounds OmegaPrime on `[0, 1/10]` by `remainderAbs`.
+
+The generator
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+was updated and rerun.  Its target scan now reports the receiver as present:
+
+```text
+targetLeanSurface.status = receiver_present_missing_payload
+Step33Sub0OmegaPrimeTaylorRemainderCert = found
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid = found
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound = found
+```
+
+The first live failure is unchanged:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: no order-16/polygamma bound has been proved, no center-jet
+coefficient enclosure payload exists, no generated Lean payload exists, no
+first-subchunk residual-derivative norm certificate exists, no A hbox exists,
+and Step33A.1-A remains open.
