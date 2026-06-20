@@ -55020,21 +55020,63 @@ Step33A.1-A, or Step33.
 Latest checked local theorem:
 
 ```lean
-Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw
+Q3.digamma_stieltjes_B10Diff_Ioi_mainPrefix
 ```
 
 Closed gap:
 
 ```text
-STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP
+STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP
 ```
 
 Active exact gap:
 
 ```text
+STEP33_M6_B10_TO_B12_CELL_LAYER_GAP
+```
+
+Next smallest Lean object: add the B12 polynomial/periodic kernel/cell layer
+needed for the next Stieltjes bridge from B10/power-11 to B12/power-13.
+
+## 2026-06-20 Execution update -- B10 digamma prefix checked
+
+Lean progress in `Q3.DigammaRemainder`:
+
+```lean
+Q3.digamma_stieltjes_B10Diff_Ioi_raw
+Q3.digamma_stieltjes_B10Diff_Ioi_mainPrefix
+```
+
+The checked `mainPrefix` surface is:
+
+```lean
+Q3.digamma z -
+  (Complex.log z - (1 / 2 : ℂ) * z⁻¹ -
+    (1 / 12 : ℂ) * (z ^ 2)⁻¹ +
+    (1 / 120 : ℂ) * (z ^ 4)⁻¹ -
+    (1 / 252 : ℂ) * (z ^ 6)⁻¹ +
+    (1 / 240 : ℂ) * (z ^ 8)⁻¹ -
+    (1 / 132 : ℂ) * (z ^ 10)⁻¹)
+=
+  ∫ x in Set.Ioi (0 : ℝ),
+    (bernoulli10Diff x : ℂ) / ((x : ℂ) + z) ^ 11
+```
+
+This closes:
+
+```text
 STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP
 ```
 
-Next smallest Lean object: combine `Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix`
-with `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw` to expose the B10/power-11
-digamma prefix surface.
+The remaining exact gap is now:
+
+```text
+STEP33_M6_B10_TO_B12_CELL_LAYER_GAP
+```
+
+Meaning: add the B12 polynomial/periodic kernel/cell layer needed for the next
+Euler-Maclaurin/Stieltjes lift from B10/power-11 to B12/power-13 on the route
+toward the M6/order-15 source theorem.
+
+Boundary: this is not a proof of `Q3.digammaM6IntegralRemainderBound`,
+Step33A.1-A, or Step33.

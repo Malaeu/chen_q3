@@ -34463,11 +34463,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 
 ## Insight (2026-06-20, Step33A.1-A) -- CurrentPointerB10PrefixGap
 
-- Latest checked local theorem: `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw`.
-- Closed exact gap: `STEP33_M6_B8_TO_B10_IOI_LIMIT_TAIL_GAP`.
-- Active exact gap: `STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP`.
-- Next smallest Lean object: combine `Q3.digamma_stieltjes_B8Diff_Ioi_mainPrefix`
-  with `Q3.stieltjes_B8Diff_to_B10Diff_Ioi_raw` to expose the B10/power-11
-  digamma prefix surface.
+- Latest checked local theorem: `Q3.digamma_stieltjes_B10Diff_Ioi_mainPrefix`.
+- Closed exact gap: `STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP`.
+- Active exact gap: `STEP33_M6_B10_TO_B12_CELL_LAYER_GAP`.
+- Next smallest Lean object: add the B12 polynomial/periodic kernel/cell layer
+  needed for the next Stieltjes bridge from B10/power-11 to B12/power-13.
+- Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
+  Step33A.1-A, or Step33.
+
+## Insight (2026-06-20, Step33A.1-A) -- B10DigammaPrefixChecked
+
+- Added checked B10 digamma prefix identities:
+  `Q3.digamma_stieltjes_B10Diff_Ioi_raw` and
+  `Q3.digamma_stieltjes_B10Diff_Ioi_mainPrefix`.
+- The `mainPrefix` theorem extends the checked inverse-power surface through
+  the `-(1/132) * (z^10)^-1` term and leaves the B10/power-11 `Ioi`
+  remainder.
+- Closed:
+  `STEP33_M6_B8_TO_B10_DIGAMMA_PREFIX_GAP`.
+- Remaining exact gap:
+  `STEP33_M6_B10_TO_B12_CELL_LAYER_GAP`.
+- Smallest useful next Lean object: add the B12 polynomial/periodic kernel/cell
+  definitions and endpoint derivative infrastructure, mirroring the checked
+  B10 layer before proving the next interval bridge.
 - Boundary: this does not prove `Q3.digammaM6IntegralRemainderBound`,
   Step33A.1-A, or Step33.
