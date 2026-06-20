@@ -48,7 +48,7 @@ DIRECT_OVERLAY_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_derivative_overlay.v30"
 )
 WORKLIST_SCHEMA = (
-    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v18"
+    "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v19"
 )
 
 REQUIRED_FIELDS = [
@@ -301,6 +301,9 @@ def build_subchunk_work(
             "directNormCertValidIntervalReceiver": (
                 DIRECT_NORM_CERT_VALID_INTERVAL_RECEIVER
             ),
+            "directNormCertValidInterpolationReceiver": (
+                DIRECT_NORM_CERT_VALID_INTERPOLATION_RECEIVER
+            ),
             "singleCellNormReceiver": subchunk.get(
                 "hResidualDerivSingleCellIntervalNormReceiver"
             ),
@@ -310,6 +313,7 @@ def build_subchunk_work(
                 "prove full-cell equalities cellL = L and cellU = U",
                 "prove ResidualDerivativeDirectNormCert.Valid",
                 "available Lean adapter: prove sharp residual-derivative lower/upper bounds on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interval_bounds",
+                "available Lean adapter: prove exact model derivative norm + interpolation/error bound on the same cell, then use ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound",
                 "prove cancellation-preserving norm bound "
                 "||deriv cert.residual eta|| <= derivSlope on the one derivative cell",
                 "preferred: feed hRawCenterCoeffAbs + DirectNormCert.Valid + full-cell endpoint equalities to of_raw_center_coeff_abs_direct_norm_cert_full_cell",

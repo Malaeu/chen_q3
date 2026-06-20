@@ -56965,3 +56965,45 @@ git diff --check
 
 Boundary: worklist synchronization only.  No generated Lean payload, no
 derivative analytic closure, no Step33 closure, and no RH claim.
+
+## Execution Update (2026-06-20) -- direct proof-input worklist v19
+
+Route: PSD-pd/Q3 Step33A.1-A fail-closed proof-input control plane.
+
+The previous worklist exposed the checked interpolation-valid receiver at the
+top level only.  Schema v19 also exposes it inside each local
+`hResidualDerivNormWork` block, where the proof-producing generator reads the
+cell-level derivative norm obligations.
+
+Generated worklist schema:
+
+```text
+q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v19
+```
+
+Local cell receiver now present:
+
+```text
+hResidualDerivNormWork.directNormCertValidInterpolationReceiver =
+RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Command output:
+
+```text
+status=direct_proof_input_worklist_address_only
+subchunks=110
+legacy_arithmetic=330
+preferred_open=220
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py
+jq '.schema, .parents[0].subchunks[0].hResidualDerivNormWork.directNormCertValidInterpolationReceiver' q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_refined_subchunk_direct_proof_input_worklist.json
+```
+
+Boundary: worklist synchronization only.  No generated Lean payload, no
+derivative analytic closure, no Step33 closure, and no RH claim.

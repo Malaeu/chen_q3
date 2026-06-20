@@ -35559,3 +35559,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is control-plane synchronization only.  It does not emit Lean
   payload, does not close any derivative analytic field, and does not prove
   Step33A.1-A, Step33, Step34, or RH.
+
+## Insight (2026-06-20, Step33A.1-A) -- DirectProofInputWorklistV19
+
+- Tightened the worklist address layer for the checked interpolation receiver:
+  schema `q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v19`
+  now places
+  `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
+  inside each `hResidualDerivNormWork` object, not only in the top-level
+  summary.
+- The first concrete JSON check confirms the local cell field:
+  `parents[0].subchunks[0].hResidualDerivNormWork.directNormCertValidInterpolationReceiver`.
+- The active proof-producing target is unchanged but sharper: emit a
+  Lean-checked model derivative norm bound and interpolation/error bound on the
+  same cell, prove their sum is at most `derivSlope`, and feed that into the
+  local receiver.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`,
+  `python3 q3.lean.aristotle/scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`,
+  and the JSON receiver query.
+- Boundary: address synchronization only.  It does not emit Lean payload, does
+  not close any derivative analytic field, and does not prove Step33A.1-A,
+  Step33, Step34, or RH.

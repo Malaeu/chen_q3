@@ -16289,3 +16289,25 @@ proofSafeClosedFields = 0
 ```
 
 Boundary: no payload Lean emitted; derivative payload still open.
+
+## 2026-06-20 Current EOF Addendum -- direct proof-input worklist v19
+
+Schema v19 moves the checked interpolation receiver into the local cell work
+item as well as the top-level summary:
+
+```text
+hResidualDerivNormWork.directNormCertValidInterpolationReceiver =
+RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Guard remains fail-closed:
+
+```text
+status = direct_proof_input_worklist_address_only
+preferred_open = 220
+proofSafeClosedFields = 0
+```
+
+This is the current proof-producing address for the first derivative payload:
+emit a Lean-checked model derivative norm bound and interpolation/error bound
+on the same cell, then feed them through the local receiver above.

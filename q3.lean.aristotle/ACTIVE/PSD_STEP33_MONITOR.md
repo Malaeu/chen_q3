@@ -162,6 +162,18 @@ structure, or a genuinely sharper symbolic local raw-integrand enclosure.
 This audit closes `0` proof-safe fields and emits no Lean.
 
 Checked generator-compression refinement on 2026-06-05:
+
+Current local worklist synchronization on 2026-06-20:
+`scripts/q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.py`
+now emits schema
+`q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v19`.
+The checked interpolation-valid receiver
+`RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
+is recorded both at the top-level worklist summary and inside each
+`hResidualDerivNormWork` cell item.  The worklist remains address-only:
+`status = direct_proof_input_worklist_address_only`,
+`preferred_open = 220`, and `proofSafeClosedFields = 0`.
+
 `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean` now proves reusable
 continuity/integrability lemmas and closed-form Taylor model integral
 evaluators.  The current generator constructors are:
