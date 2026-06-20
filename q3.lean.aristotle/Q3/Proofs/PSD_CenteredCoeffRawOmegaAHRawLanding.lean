@@ -1291,6 +1291,22 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRaw
       (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.primaryK11RawOmegaAIntegrand_integrableOn_Ioc_zero
         ((1 : Real) / 10) 0)
 
+/-- First-subchunk exact-integral proof data after the checked raw-center
+source has been closed.
+
+The remaining analytic payload is exactly the residual-derivative norm bound
+on the full cell. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+    (hResidualDerivBoundOnCell :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta‖ <=
+          ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert :=
+  primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound
+    primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
+    hResidualDerivBoundOnCell
+
 end RawOmegaATaylorModelCertificate
 end RawOmegaAChunkIntegral
 end CenteredCoeffPrimeDeltaLiveRationalPayloadImport

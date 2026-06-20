@@ -16185,3 +16185,78 @@ Result: all checks passed.
 
 Boundary: first-subchunk derivative norm proof-data, the 110-field payload, A
 hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, and RH remain open.
+
+## 2026-06-20 Current EOF Addendum -- first exact-integral receiver narrowed
+
+Checked new support fact:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+```
+
+Active exact blocker remains:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Meaning: the current first-subchunk proof-data constructor no longer exposes
+`hRawCenterCoeffAbs` as an input.  It consumes only the missing full-cell
+residual-derivative norm proof on `[0, 1/10]`; checked raw-center data is wired
+internally.
+
+Next proof-grade source must establish:
+
+```lean
+∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+  ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta‖ <=
+    ((1866608532757 : Real) / 500000000000000000000000000000)
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: all checks passed.
+
+Boundary: JSON/audit/probe data remains non-proof.  The first derivative
+payload, the 110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`,
+Step33, Step34, and RH remain open.
+
+## 2026-06-20 Current EOF Addendum -- interpolation receiver for direct norm checked
+
+Checked new receiver:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Route choice: Browser/Pro advisory chose route A.  The Lean implementation
+uses the actual local `ResidualDerivativeDirectNormCert cert` API and keeps the
+model bound and interpolation error as explicit hypotheses; it does not add
+trusted generated data.
+
+Active exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_INTERPOLATION_PAYLOAD_GAP
+```
+
+Next proof-grade target:
+
+```text
+For primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert on [0, 1/10],
+prove a concrete model-derivative norm bound and interpolation/error bound
+whose sum is <= 1866608532757 / 500000000000000000000000000000.
+```
+
+Validation: Lean and `q3_check` passed on both touched Lean files; marker scan
+and `git diff --check` were clean.
+
+Boundary: checked receiver only.  No first derivative payload, no refined
+payload row, no A hbox, no Step33 closure, and no RH claim.

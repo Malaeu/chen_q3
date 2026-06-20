@@ -35466,3 +35466,71 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: first-subchunk derivative direct-norm proof-data, the full
   110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33,
   Step34, and RH remain open.
+
+## Insight (2026-06-20, Step33A.1-A) -- FirstSubchunkDerivativeOnlyReceiverChecked
+
+- Target:
+  `STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP`.
+- Local inventory confirmed that
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_hRawCenterCoeffAbs_and_deriv_norm_bound`
+  is already the checked receiver surface, and that no local Lean theorem was
+  found proving the required full-cell residual-derivative norm bound.
+- Local `q3_docs` search pointed back to the checked direct-norm receiver
+  family and the interpolation replacement probe.  That probe is theorem-shape
+  guidance only; it is not proof evidence or generated Lean payload.
+- External primary-source check was limited to mathlib's
+  `Convex.norm_image_sub_le_of_norm_deriv_le` / derivative infrastructure.  It
+  supports the local variation receiver shape but does not prove the missing
+  residual-derivative payload.
+- Browser/Computer Use escalation was used for a Pro/Louise advisory review on
+  the next proof-grade derivative route; only local Lean-checked artifacts are
+  accepted as proof.
+- Added checked Lean fact in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound`.
+- Meaning: the first-subchunk exact-integral proof data now depends only on
+  the residual-derivative direct-norm payload; the previously open
+  `hRawCenterCoeffAbs` input is wired to the checked no-hypothesis source.
+- Active exact gap remains:
+  `STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  the touched Lean-file forbidden-token scan, and `git diff --check`.
+- Boundary: this is receiver narrowing, not derivative payload closure.  The
+  first-subchunk residual-derivative direct-norm proof, full 110-field payload,
+  A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, and RH remain
+  open.
+
+## Insight (2026-06-20, Step33A.1-A) -- DirectNormInterpolationReceiverChecked
+
+- Pro/Louise advisory via Browser chose route A: add the checked
+  interpolation-error receiver before trying to promote JSON/probe data into a
+  first concrete derivative payload.
+- Added checked Lean theorem in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+  `RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`.
+- The theorem uses the actual repository API, not the advisory pseudo-fields:
+  `data : ResidualDerivativeDirectNormCert cert`, `data.cellL`,
+  `data.cellU`, `data.derivSlope`, an external `modelDeriv : Real -> Real`,
+  and exact hypotheses for `modelBound`, `interpolationError`, and
+  `interpolationError + modelBound <= data.derivSlope`.
+- Proof ingredients are only `sub_add_cancel`, `norm_add_le`, `add_le_add`,
+  and the budget inequality.  It does not use the legacy interval route or the
+  mean-value theorem.
+- Active exact next gap:
+  `STEP33_A1_SUB0_RESIDUAL_DERIV_INTERPOLATION_PAYLOAD_GAP`.
+- Required next proof-grade payload: for
+  `primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert`, provide a
+  concrete model derivative plus Lean-checked model norm and interpolation
+  error bounds on `Set.Icc 0 (1/10)` whose sum is at most the current
+  derivative slope.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`,
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  forbidden-token scan, and `git diff --check`.
+- Boundary: this closes the receiver theorem shape only.  No
+  residual-derivative interpolation payload, generated refined subchunk row,
+  full 110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33,
+  Step34, or RH is proved.

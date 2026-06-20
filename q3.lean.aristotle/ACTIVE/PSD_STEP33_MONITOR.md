@@ -29066,3 +29066,95 @@ Boundary: this closes only the first-subchunk raw-center source.  It does not
 prove the first-subchunk residual-derivative direct norm certificate, the full
 110-field payload, A hbox, `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34,
 or RH.
+
+## 2026-06-20 Current EOF Status -- first subchunk narrowed to derivative norm payload
+
+New checked support fact:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+```
+
+Meaning: the current first-subchunk exact-integral proof-data receiver now
+uses the checked no-hypothesis `hRawCenterCoeffAbs` source internally.  The
+remaining analytic input is exactly:
+
+```lean
+∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+  ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta‖ <=
+    ((1866608532757 : Real) / 500000000000000000000000000000)
+```
+
+Active exact gap:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Repository evidence: existing JSON/audit/probe files are not accepted as proof.
+The checked direct-norm and interval fallback receivers exist, but the
+proof-grade residual-derivative payload theorem is still missing.
+
+Browser/Pro status: Computer Use escalation was used for an advisory route
+review on whether the next proof-grade patch should be an interpolation
+receiver or a concrete first-subchunk derivative certificate.  It is advisory
+only; the route remains local-Lean checked.
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: all checks passed.
+
+Boundary: this narrows the receiver only.  It does not prove the
+residual-derivative direct norm payload, the full 110-field payload, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## 2026-06-20 Current EOF Status -- direct-norm interpolation receiver checked
+
+New checked receiver:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Purpose: generated proof data may now prove the active
+`ResidualDerivativeDirectNormCert.Valid` field from:
+
+```text
+model norm bound on the same cell
+interpolation/error bound on the same cell
+interpolationError + modelBound <= derivSlope
+```
+
+This follows the Browser/Pro route-A advisory, but the accepted artifact is the
+local Lean theorem above.  The advisory pseudo-signature was corrected to the
+actual repository API: `data.cellL`, `data.cellU`, and `data.derivSlope`.
+
+Active exact gap:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_INTERPOLATION_PAYLOAD_GAP
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: all checks passed; `ChunkTaylorChecker` emitted only pre-existing
+nonfatal simpa/simp linter suggestions.
+
+Boundary: receiver theorem-shape only.  The first-subchunk concrete
+interpolation/model payload, full 110-field payload, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, and RH remain open.

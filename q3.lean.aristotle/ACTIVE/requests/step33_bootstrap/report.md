@@ -56805,3 +56805,114 @@ whitespace check passed.
 Boundary: this closes the first-subchunk raw-center source only.  It does not
 prove derivative direct-norm proof-data, the full 110-field payload, A hbox,
 `ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Execution Update (2026-06-20) -- first subchunk derivative-only receiver
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk exact-integral payload.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean fact added:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+```
+
+Result:
+
+```text
+checked hRawCenterCoeffAbs source
++ future hResidualDerivBoundOnCell
+-> first-subchunk exact-integral proof data
+```
+
+Active exact blocker:
+
+```text
+STEP33_FIRST_SUBCHUNK_RESIDUAL_DERIVATIVE_DIRECT_NORM_PAYLOAD_GAP
+```
+
+Local search / review:
+
+```text
+q3_docs search found the existing direct-norm receiver family and the
+interpolation replacement probe, but no checked residual-derivative payload.
+External primary-source check was limited to mathlib mean-value/derivative
+infrastructure and is not proof evidence.
+Computer Use sent a Pro/Louise advisory request for the next derivative route.
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: Lean, `q3_check`, forbidden-token scan, and whitespace check passed.
+
+Boundary: this is receiver narrowing only.  It does not prove the derivative
+direct-norm payload, full 110-field payload, A hbox,
+`ActiveCenteredCoeffEntryHboxCert`, Step33, Step34, or RH.
+
+## Execution Update (2026-06-20) -- direct-norm interpolation receiver
+
+Route: PSD-pd/Q3 Step33A.1-A derivative payload receiver.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+Checked Lean receiver added:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+```
+
+Route-review:
+
+```text
+Computer Use / Browser asked Pro/Louise after the local search found no
+checked derivative payload.  Advisory chose route A: add the interpolation
+receiver before trying to promote JSON/probe diagnostics into payload proof.
+```
+
+Active exact blocker:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_DERIV_INTERPOLATION_PAYLOAD_GAP
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+git diff --check
+```
+
+Result: checks passed.  `ChunkTaylorChecker` reported only existing nonfatal
+simpa/simp linter suggestions.
+
+Boundary: receiver theorem-shape only.  No concrete interpolation/model
+payload, no generated first refined row, no full 110-field payload, no A hbox,
+no Step33 closure, and no RH claim.

@@ -11842,6 +11842,36 @@ theorem ResidualDerivativeDirectNormCert.Valid.of_interval_bounds
   simpa [ResidualDerivativeDirectNormCert.Valid, Real.norm_eq_abs] using
     (abs_le.mpr ⟨hLower, hUpper⟩)
 
+/-- Build a direct residual-derivative norm certificate from an approximation
+model and a uniform interpolation/error envelope on the same cell.
+
+This receiver is proof-shape only: generated code still has to prove the model
+bound and interpolation error in exact arithmetic for the concrete payload. -/
+theorem ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound
+    {k : Nat} {ell x L U lower upper : Real}
+    {cert : RawOmegaATaylorModelCertificate k ell x L U lower upper}
+    (data : ResidualDerivativeDirectNormCert cert)
+    (modelDeriv : Real -> Real)
+    {modelBound interpolationError : Real}
+    (hModel :
+      ∀ eta ∈ Set.Icc data.cellL data.cellU,
+        ‖modelDeriv eta‖ <= modelBound)
+    (hError :
+      ∀ eta ∈ Set.Icc data.cellL data.cellU,
+        ‖deriv cert.residual eta - modelDeriv eta‖ <= interpolationError)
+    (hBudget : interpolationError + modelBound <= data.derivSlope) :
+    data.Valid := by
+  intro eta heta
+  calc
+    ‖deriv cert.residual eta‖ =
+        ‖(deriv cert.residual eta - modelDeriv eta) + modelDeriv eta‖ := by
+          rw [sub_add_cancel]
+    _ <= ‖deriv cert.residual eta - modelDeriv eta‖ +
+        ‖modelDeriv eta‖ := norm_add_le _ _
+    _ <= interpolationError + modelBound :=
+      add_le_add (hError eta heta) (hModel eta heta)
+    _ <= data.derivSlope := hBudget
+
 /-- Derivative finite-cover data where each derivative-cell interval is proved
 from a local derivative anchor and a second-derivative/Lipschitz envelope.
 
