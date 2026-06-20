@@ -35678,3 +35678,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   with rational candidate inputs, forbidden-token scan, and `git diff --check`.
 - Boundary: no sampled JSON is trusted, no Lean payload is emitted,
   `proofSafeClosedFields = 0`, and Step33/Step34/RH remain open.
+
+## Insight (2026-06-20, Step33A.1-A) -- Sub0InterpolationLandingWrapper
+
+- Added checked Lean landing wrapper in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound`.
+- The wrapper takes a concrete `modelDeriv`, an exact model norm bound, an
+  exact interpolation/error bound on `Set.Icc 0 (1/10)`, and the rational
+  budget
+  `interpolationError + modelBound <= 1866608532757/500000000000000000000000000000`.
+- It then produces the first-subchunk
+  `ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData`
+  using only the checked raw-center source and triangle inequality.  It does
+  not require the generated payload to construct an intermediate direct-norm
+  certificate by hand.
+- Updated the fail-closed skeleton to schema
+  `q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2`, recording
+  this sub0 landing receiver while preserving `proofSafeClosedFields = 0` and
+  `outLeanWritten = false`.
+- Still-open exact payload gaps:
+  `STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP` and
+  `STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`,
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py`,
+  generator rerun, JSON v2 assertion, exact-budget smoke test, forbidden-token
+  scan, and `git diff --check`.
+- Boundary: receiver/metadata closure only.  No exact model/error certificate,
+  no emitted Lean payload, no Step33A.1-A, Step33, Step34, or RH closure.

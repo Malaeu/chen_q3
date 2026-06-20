@@ -16425,3 +16425,43 @@ STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
 
 No Lean theorem is emitted, no sampled derivative JSON is trusted, and
 `proofSafeClosedFields` remains zero.
+
+## 2026-06-20 Current EOF Addendum -- sub0 interpolation landing wrapper
+
+Added checked first-subchunk landing wrapper:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+```
+
+It accepts exactly:
+
+```text
+modelDeriv : Real -> Real
+hModel : forall eta in Set.Icc 0 (1/10), ||modelDeriv eta|| <= modelBound
+hError : forall eta in Set.Icc 0 (1/10),
+  ||deriv cert.residual eta - modelDeriv eta|| <= interpolationError
+hBudget : interpolationError + modelBound <=
+  1866608532757/500000000000000000000000000000
+```
+
+and returns:
+
+```lean
+ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+  primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert
+```
+
+The fail-closed skeleton schema is now:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2
+```
+
+Boundary: receiver/metadata closure only.  The two proof-grade payload inputs
+remain exactly:
+
+```text
+STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```

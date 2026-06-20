@@ -1441,6 +1441,50 @@ def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_chec
     primaryFiniteRow0Parent0Split100Sub0_hRawCenterCoeffAbs_of_checked_shift16_m6_main_norm_closedLogPi
     hResidualDerivBoundOnCell
 
+/-- First-subchunk interpolation landing wrapper after the checked raw-center
+source has been closed.
+
+This keeps the concrete payload surface aligned with the checked generic
+`ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound`
+receiver: generated code may provide an exact model-derivative norm bound, an
+exact interpolation/error envelope on `[0, 1/10]`, and the rational budget
+comparison.  Lean then turns those three facts into the residual-derivative
+norm bound consumed by the first-subchunk exact-integral proof-data receiver. -/
+def primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+    (modelDeriv : Real → Real)
+    {modelBound interpolationError : Real}
+    (hModel :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖modelDeriv eta‖ <= modelBound)
+    (hError :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta -
+          modelDeriv eta‖ <= interpolationError)
+    (hBudget :
+      interpolationError + modelBound <=
+        ((1866608532757 : Real) / 500000000000000000000000000000)) :
+    ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData
+      primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound
+      (by
+        intro eta heta
+        calc
+          ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta‖ =
+              ‖(deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta -
+                  modelDeriv eta) + modelDeriv eta‖ := by
+                rw [sub_add_cancel]
+          _ <=
+              ‖deriv primaryFiniteRow0Parent0Split100Sub0RawCenterCoeffOnlyCert.residual eta -
+                  modelDeriv eta‖ + ‖modelDeriv eta‖ :=
+                norm_add_le _ _
+          _ <= interpolationError + modelBound :=
+            add_le_add (hError eta heta) (hModel eta heta)
+          _ <=
+              ((1866608532757 : Real) /
+                500000000000000000000000000000) :=
+            hBudget)
+
 end RawOmegaATaylorModelCertificate
 end RawOmegaAChunkIntegral
 end CenteredCoeffPrimeDeltaLiveRationalPayloadImport

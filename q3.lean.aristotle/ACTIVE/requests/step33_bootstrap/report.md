@@ -57149,6 +57149,77 @@ Boundary: fail-closed generator skeleton only.  It does not consume sampled
 JSON as proof, does not emit Lean, does not close the derivative payload, and
 does not prove Step33, Step34, or RH.
 
+## Execution Update (2026-06-20) -- sub0 interpolation landing wrapper
+
+Route: PSD-pd/Q3 Step33A.1-A first-subchunk interpolation landing receiver.
+
+Files touched:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
+```
+
+Checked Lean receiver added:
+
+```lean
+Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+```
+
+It packages the already checked raw-center source with an exact interpolation
+payload interface:
+
+```text
+modelDeriv : Real -> Real
+hModel : forall eta in Set.Icc 0 (1/10), ||modelDeriv eta|| <= modelBound
+hError : forall eta in Set.Icc 0 (1/10),
+  ||deriv cert.residual eta - modelDeriv eta|| <= interpolationError
+hBudget : interpolationError + modelBound <=
+  1866608532757/500000000000000000000000000000
+```
+
+and returns the first-subchunk
+`ResidualAnchorDerivativeCellSlopeDirectEnvelopeExactIntegralChunkProofData`.
+
+The fail-closed generator skeleton now emits schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2
+```
+
+and records the concrete sub0 landing receiver while keeping:
+
+```text
+status = blocked_missing_exact_interpolation_inputs
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Still-open proof-grade inputs:
+
+```text
+STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
+python3 JSON assertion: schema v2, default blocked status, two named gaps, proofSafeClosedFields = 0, outLeanWritten = false
+python3 exact-budget smoke test with rational candidate inputs; status = exact_budget_arithmetic_pass_no_lean_emitted
+rg -n "sorry|admit|exact\\?|axiom|unsafe" touched Lean/script/artifacts
+```
+
+Boundary: checked receiver and control-plane metadata only.  No exact
+`modelBound`, no exact `interpolationError`, no generated Lean payload, no
+Step33A.1-A closure, no Step33/Step34/RH claim.
+
 ## Execution Update (2026-06-20) -- first-subchunk checked raw-center interval fallback
 
 Route: PSD-pd/Q3 Step33A.1-A first-subchunk receiver narrowing.
@@ -57248,3 +57319,27 @@ jq '.schema, .parents[0].subchunks[0].hResidualDerivNormWork.directNormCertValid
 
 Boundary: worklist synchronization only.  No generated Lean payload, no
 derivative analytic closure, no Step33 closure, and no RH claim.
+
+## Current EOF Status (2026-06-20) -- sub0 interpolation landing wrapper is latest
+
+Latest checked Step33A.1-A local receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+```
+
+Latest fail-closed sub0 interpolation skeleton schema:
+
+```text
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2
+```
+
+Still-open exact payload gaps:
+
+```text
+STEP33_A1_SUB0_MODEL_DERIV_EXACT_NORM_GAP
+STEP33_A1_SUB0_INTERPOLATION_ERROR_EXACT_REMAINDER_GAP
+```
+
+Boundary: receiver/metadata closure only.  No exact model/error certificate,
+no emitted Lean payload, no Step33A.1-A closure, no Step33/Step34/RH claim.

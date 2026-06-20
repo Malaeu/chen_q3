@@ -38,7 +38,7 @@ DEFAULT_OUT_MD = (
 WORKLIST_SCHEMA = (
     "q3_psdpd_step33_a_refined_subchunk_direct_proof_input_worklist.v20"
 )
-OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v1"
+OUTPUT_SCHEMA = "q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2"
 
 TARGET = {
     "family": "primary_finite",
@@ -50,6 +50,12 @@ TARGET = {
 DIRECT_NORM_INTERPOLATION_RECEIVER = (
     "RawOmegaATaylorModelCertificate."
     "ResidualDerivativeDirectNormCert.Valid.of_interpolation_error_bound"
+)
+SUB0_INTERPOLATION_LANDING_RECEIVER = (
+    "RawOmegaATaylorModelCertificate."
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_"
+    "and_deriv_interpolation_error_bound"
 )
 
 CERT_NAME = (
@@ -201,12 +207,22 @@ def build_report(
         },
         "receiver": {
             "validReceiver": receiver,
+            "sub0LandingReceiver": SUB0_INTERPOLATION_LANDING_RECEIVER,
             "leanShape": (
                 "modelDeriv : Real -> Real, "
                 "hModel : forall eta in cell, ||modelDeriv eta|| <= modelBound, "
                 "hError : forall eta in cell, "
                 "||deriv cert.residual eta - modelDeriv eta|| <= interpolationError, "
                 "hBudget : interpolationError + modelBound <= data.derivSlope"
+            ),
+            "landingShape": (
+                "modelDeriv : Real -> Real, "
+                "hModel : forall eta in Set.Icc 0 (1/10), "
+                "||modelDeriv eta|| <= modelBound, "
+                "hError : forall eta in Set.Icc 0 (1/10), "
+                "||deriv cert.residual eta - modelDeriv eta|| <= interpolationError, "
+                "hBudget : interpolationError + modelBound <= "
+                "1866608532757/500000000000000000000000000000"
             ),
         },
         "inputs": {
@@ -238,6 +254,7 @@ def build_report(
             "not Lean proof data",
             "does not import or trust sampled derivative JSON",
             "does not emit a Lean payload theorem",
+            "sub0 landing receiver is checked separately in Lean",
             "modelBound must be derived by exact rational interval operations",
             "interpolationError must bound ||deriv residual - modelDeriv|| uniformly on [0, 1/10]",
             "a positive exact budget margin is required before Lean emission is enabled",
@@ -257,6 +274,7 @@ def render_md(report: dict[str, Any]) -> str:
         f"- status: `{report['status']}`",
         f"- cert: `{report['cert']}`",
         f"- receiver: `{report['receiver']['validReceiver']}`",
+        f"- sub0 landing receiver: `{report['receiver']['sub0LandingReceiver']}`",
         f"- cell: `{report['cell']['set']}`",
         f"- derivSlope: `{report['cell']['derivSlope']}`",
         f"- proof-safe closed fields: `{report['proofSafeClosedFields']}`",
@@ -283,6 +301,10 @@ def render_md(report: dict[str, Any]) -> str:
             "## Receiver Shape",
             "",
             f"`{report['receiver']['leanShape']}`",
+            "",
+            "## Sub0 Landing Shape",
+            "",
+            f"`{report['receiver']['landingShape']}`",
             "",
             "## Guard",
             "",

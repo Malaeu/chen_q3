@@ -29302,7 +29302,7 @@ git diff --check
 Boundary: address synchronization only.  `proofSafeClosedFields = 0`; no Lean
 payload, derivative payload, A hbox, Step33, Step34, or RH is proved.
 
-## 2026-06-20 Current EOF Status -- sub0 interpolation payload skeleton
+## 2026-06-20 Current EOF Status -- sub0 interpolation payload skeleton v2
 
 Added fail-closed generator skeleton:
 
@@ -29320,7 +29320,7 @@ ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_pay
 Schema:
 
 ```text
-q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v1
+q3_psdpd_step33_a1_sub0_residual_deriv_interpolation_payload.v2
 ```
 
 Default status:
@@ -29329,8 +29329,14 @@ Default status:
 blocked_missing_exact_interpolation_inputs
 ```
 
-The skeleton reads worklist v20, checks the first-subchunk target, records the
-exact direct interpolation budget
+Lean now has the concrete first-subchunk landing wrapper:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+```
+
+The skeleton reads worklist v20, checks the first-subchunk target, records that
+sub0 landing receiver, and records the exact direct interpolation budget
 
 ```text
 interpolationError + modelBound <= 1866608532757/500000000000000000000000000000
@@ -29348,11 +29354,15 @@ Validation:
 ```text
 python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
 python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py
-python3 JSON assertion: schema v1, default blocked status, two named gaps, proofSafeClosedFields = 0, outLeanWritten = false
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+python3 JSON assertion: schema v2, default blocked status, two named gaps, proofSafeClosedFields = 0, outLeanWritten = false
 python3 exact-budget smoke test with rational candidate inputs
 rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/scripts/generate_step33_a1_sub0_residual_deriv_interpolation_payload.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_residual_deriv_interpolation_payload.md
 git diff --check
 ```
 
-Boundary: generator skeleton only.  It does not read sampled JSON as proof, does
-not emit Lean, and keeps `proofSafeClosedFields = 0`.
+Boundary: checked wrapper plus generator skeleton metadata only.  It does not
+prove `modelBound`, does not prove `interpolationError`, does not read sampled
+JSON as proof, does not emit Lean payload, and keeps `proofSafeClosedFields =
+0`.
