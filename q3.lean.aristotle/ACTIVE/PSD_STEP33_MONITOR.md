@@ -31325,6 +31325,62 @@ budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime closed-form series wrapper
+
+Added a checked bridge reducing the closed-form part of the `hDerivEq`
+obligation to the single trigamma-series interchange theorem.
+
+New checked symbols in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_eq_trigamma_series
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
+```
+
+Checked reduction:
+
+```text
+omegaPrimeClosedForm eta
+  = -1/2 * omegaPrimeTrigammaSeries eta
+
+ContDiffAt Real 16 omegaPrimeTrigammaSeries eta
++ iteratedDeriv 16 omegaPrimeTrigammaSeries eta
+    = sum_n omegaPrimeOrder16TrigammaSeriesDerivTerm eta n
+  -> iteratedDeriv 16 omegaPrimeClosedForm eta
+       = -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta
+```
+
+This removes the closed-form/trigamma-series normalization layer from the live
+gap.  It does not prove the locally-uniform convergence/interchange theorem.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_CONTDIFF_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of `ContDiffAt` for `omegaPrimeTrigammaSeries`, no proof of
+termwise `iteratedDeriv16`/`tsum` interchange, no full `hDerivEq`, no center-jet
+payload, no exact rational remainder budget, no generated Lean payload, no A
+hbox, and no Step33A.1-A closure exists yet.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma term tsum bridge
 
 Local `q3_docs` semantic search for `OmegaPrime iteratedDeriv16 trigamma tsum

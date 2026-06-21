@@ -10170,6 +10170,31 @@ def omegaPrimeOrder16RealMajorant (n : Nat) : Real :=
 def omegaPrimeOrder16Series (eta : Real) : Real :=
   ∑' n : Nat, omegaPrimeOrder16SeriesTerm eta n
 
+def omegaPrimeTrigammaSeriesTerm (eta : Real) (n : Nat) : Real :=
+  (1 /
+    (((1 / 4 : Complex) +
+          Complex.I * (((eta / 2 : Real) : Complex))) + n) ^ 2).im
+
+def omegaPrimeTrigammaSeries (eta : Real) : Real :=
+  ∑' n : Nat, omegaPrimeTrigammaSeriesTerm eta n
+
+theorem omegaPrimeClosedForm_eq_trigamma_series (eta : Real) :
+    omegaPrimeClosedForm eta =
+      -((1 / 2 : Real) * omegaPrimeTrigammaSeries eta) := by
+  let z : Complex :=
+    (1 / 4 : Complex) + Complex.I * (((eta / 2 : Real) : Complex))
+  have hz : 0 < z.re := by
+    norm_num [z]
+  have hseries :
+      (trigamma z).im = omegaPrimeTrigammaSeries eta := by
+    have h := _root_.im_trigamma_eq_tsum_im hz
+    simpa [omegaPrimeTrigammaSeries, omegaPrimeTrigammaSeriesTerm, z,
+      add_comm, add_left_comm, add_assoc] using h
+  change -((trigamma z).im * (1 / 2 : Real)) =
+    -((1 / 2 : Real) * omegaPrimeTrigammaSeries eta)
+  rw [hseries]
+  ring
+
 theorem omegaPrimeOrder16SeriesBase_re (eta : Real) (n : Nat) :
     (omegaPrimeOrder16SeriesBase eta n).re = (n : Real) + (1 / 4 : Real) := by
   simp [omegaPrimeOrder16SeriesBase]
@@ -10447,6 +10472,26 @@ theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum
     _ = ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
         omegaPrimeOrder16Series eta := by
           rw [omegaPrimeOrder16Series, tsum_mul_left]
+
+theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
+    (eta : Real)
+    (hSmoothSeries : ContDiffAt Real 16 omegaPrimeTrigammaSeries eta)
+    (hInterchange :
+      iteratedDeriv 16 omegaPrimeTrigammaSeries eta =
+        ∑' n : Nat, omegaPrimeOrder16TrigammaSeriesDerivTerm eta n) :
+    iteratedDeriv 16 omegaPrimeClosedForm eta =
+      -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta := by
+  have hfun :
+      omegaPrimeClosedForm =
+        fun t : Real => (-1 / 2 : Real) * omegaPrimeTrigammaSeries t := by
+    funext t
+    rw [omegaPrimeClosedForm_eq_trigamma_series t]
+    ring
+  rw [hfun]
+  rw [iteratedDeriv_const_mul hSmoothSeries (-1 / 2 : Real)]
+  rw [hInterchange, omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum]
+  unfold omegaPrimeOrder16SeriesFactor
+  ring
 
 /-- Pointwise norm majorant for one order-16 OmegaPrime series term. -/
 theorem omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow

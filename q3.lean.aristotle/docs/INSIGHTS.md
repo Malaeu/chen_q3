@@ -36763,6 +36763,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
   `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
   hole scan, and `git diff --check`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeClosedFormSeriesWrapper
+
+- Added and Lean-checked the local closed-form/series wrapper in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_eq_trigamma_series`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange`.
+- The checked reduction is:
+  `omegaPrimeClosedForm eta = -1/2 * omegaPrimeTrigammaSeries eta`, and
+  `ContDiffAt Real 16 omegaPrimeTrigammaSeries eta` plus the exact
+  `iteratedDeriv16`/`tsum` interchange imply
+  `iteratedDeriv 16 omegaPrimeClosedForm eta =
+  -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta`.
+- This does not prove `hDerivEq`; it removes the closed-form normalization
+  layer from the live gap.  The next proof target is the specialized
+  trigamma-series smoothness/interchange theorem, probably through
+  `TsumUniformlyOn.iteratedDerivWithin_tsum` or
+  `SmoothSeries.iteratedFDeriv_tsum_apply`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_CONTDIFF_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`.
 - Next exact blockers:
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP` and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
