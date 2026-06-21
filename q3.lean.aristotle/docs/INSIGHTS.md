@@ -38433,3 +38433,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: the product-Leibniz formula, Cauchy/derivative bounds, rows
   `2..15`, the full-cell order-16 bound, raw-derivative assembly, and
   Step33A.1-A remain open.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivProductBoundsReceiverChecked
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqProductBounds.lean` so the heavy
+  endpoint support module stays unchanged.
+- Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs`.
+  The theorem uses Mathlib's `norm_iteratedFDeriv_mul_le` plus the local
+  smoothness theorem for `centeredBSplineImagTransformRealClosedForm`.
+- The theorem proves the receiver:
+  proof-grade bounds `M(k)` for `iteratedDeriv k shape eta` imply
+  `||iteratedDeriv n (shape^2) eta|| <= sum_{i<=n} choose(n,i) M(i) M(n-i)`.
+- Regenerated the component Taylor residual payload to schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v15`; it records
+  `shapeSqDerivProductBoundsReceiverPresent = true`,
+  `shapeSqDerivShapeSqDerivativeReceiverPresent = true`, and
+  `proofSafeClosedFields = 14`.
+- Current live blocker is now exactly
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP`.
+- Boundary: this does not provide the proof-grade shape derivative bounds, does
+  not close rows `2..15`, does not prove the full-cell order-17 shape-square
+  bound, does not assemble the raw derivative, and does not close Step33A.1-A.

@@ -62724,3 +62724,47 @@ Current first live blocker:
 ```text
 STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP
 ```
+
+## 2026-06-22 Addendum -- ShapeSqDeriv product-bound receiver checked
+
+Added an isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqProductBounds.lean
+```
+
+New checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs
+```
+
+The theorem uses Mathlib's `norm_iteratedFDeriv_mul_le` to turn proof-grade
+derivative bounds for the active `k=11`, `ell=3/10` shape function into a
+binomial product-bound for the corresponding derivative of `shape^2`.  It
+does not provide those shape derivative bounds.
+
+Payload v15 now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v15
+status = fail_closed_missing_shapesq_deriv_shape_derivative_bounds_payload
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP
+proofSafeClosedFields = 14
+shapeSqDerivProductBoundsReceiverPresent = true
+shapeSqDerivShapeSqDerivativeReceiverPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`.  Rows
+`2..15`, the proof-grade shape derivative bounds payload, the full-cell
+order-17 shape-square bound, raw-derivative assembly, residual polynomial
+bounds, and the final Step33A.1-A interval theorem remain open.
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP
+```

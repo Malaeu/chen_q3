@@ -33401,3 +33401,51 @@ for the shape function, does not prove rows `2..15`, does not prove the
 full-cell order-16 uniform bound, does not assemble the raw derivative, and
 does not close Step33A.1-A.  The live blocker is now exactly
 `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`.
+
+## 2026-06-22 Current EOF State -- ShapeSqDeriv product-bound receiver checked
+
+Added an isolated Lean bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqProductBounds.lean
+```
+
+Checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs
+```
+
+Meaning:
+
+```text
+proof-grade bounds M(k) for iteratedDeriv k shape at eta imply a binomial
+Mathlib product-bound for iteratedDeriv n (shape^2) at eta:
+  ||D^n(shape^2)(eta)|| <= sum_{i<=n} choose(n,i) M(i) M(n-i).
+```
+
+This uses Mathlib's `norm_iteratedFDeriv_mul_le` and the local smoothness
+lemma for `centeredBSplineImagTransformRealClosedForm`.  The theorem is a
+receiver only: it does not provide the derivative bounds `M`.
+
+Regenerated payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v15
+status = fail_closed_missing_shapesq_deriv_shape_derivative_bounds_payload
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP
+proofSafeClosedFields = 14
+shapeSqDerivProductBoundsReceiverPresent = true
+shapeSqDerivShapeSqDerivativeReceiverPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`.  It does
+not prove proof-grade shape derivative bounds, does not prove rows `2..15`,
+does not prove the full-cell order-17 shape-square bound, does not assemble the
+raw derivative, and does not close Step33A.1-A.  The live blocker is now
+exactly
+`STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP`.
