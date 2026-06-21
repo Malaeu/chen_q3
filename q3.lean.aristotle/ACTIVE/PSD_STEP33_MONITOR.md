@@ -33083,3 +33083,55 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
 Boundary: no center-jet row payload was generated, no power-series coefficient
 was treated as a rational value, no Python/Arb output was promoted to proof,
 and Step33A.1-A is still open.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv coeff interval receiver
+
+Browser/Proshka route review chose the smallest Lean adapter after the v9
+worklist sync: add the interval coefficient receiver, not fake rows and not a
+new analytic layer.
+
+New Lean theorem in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval
+```
+
+It converts future proof-grade rational rows of the form
+
+```text
+coeffLower j <= PowerSeriesAtCenter.coeff j <= coeffUpper j
+coeff j - coeffErrorAbs j <= coeffLower j
+coeffUpper j <= coeff j + coeffErrorAbs j
+```
+
+into the existing compact absolute-error
+`ShapeSqDerivTaylorIntervalCert.singleAbs ... .Valid` wrapper.  This is only
+absolute-value/interval bookkeeping over the already checked center-coeff
+bridge.
+
+Regenerated artifact:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v10
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_power_series_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+proofSafeClosedFields = 9
+shapeSqDerivCenterCoeffIntervalReceiverPresent = true
+assemblyLeanWritten = false
+```
+
+Validation status:
+
+```text
+prefix Lean check through the new theorem: PASS
+python3 -m py_compile generator: PASS
+generator regeneration: PASS
+full lake env validation: BLOCKED by lake env hang before command launch
+```
+
+Boundary: no explicit rational coefficient row was proved, no order-16 bound
+was proved, no proof-safe generated rows were emitted, and Step33A.1-A remains
+open.  The live blocker remains exactly
+`STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.

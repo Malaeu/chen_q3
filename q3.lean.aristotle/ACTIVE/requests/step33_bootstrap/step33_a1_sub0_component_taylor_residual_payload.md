@@ -5,14 +5,14 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v9`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v10`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
 - status: `fail_closed_missing_shapesq_deriv_explicit_cauchy_power_series_order16_cert`
 - first failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
-- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP`
+- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `8`
+- proof-safe closed fields: `9`
 - Lean emitted: `False`
 
 ## Target
@@ -111,6 +111,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSq deriv Taylor source available: `True`
 - shapeSq deriv interval cert receiver available: `True`
 - shapeSq deriv center-coeff bridge available: `True`
+- shapeSq deriv center-coeff interval receiver available: `True`
 - shapeSq value Taylor source available: `True`
 - shape Taylor receiver gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
 - shapeDeriv Taylor receiver gap: `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
@@ -196,9 +197,13 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - center jet theorem found: `True`
 - valid wrapper theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs`
 - valid wrapper theorem found: `True`
+- interval wrapper theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval`
+- interval wrapper theorem found: `True`
+- proof-grade interval receiver: `True`
 - failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP`
+- interval receiver failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP`
 - next missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
-- boundary: This is only the Lean-checked bridge from the ShapeSqDeriv center jet to power-series coefficients and the compact absolute-error certificate wrapper.  It does not provide exact rational coefficient rows or the order-16 uniform bound needed by ShapeSqDerivTaylorIntervalCert.Valid.
+- boundary: This is only the Lean-checked bridge from the ShapeSqDeriv center jet to power-series coefficients and the compact absolute-error/interval certificate wrappers.  It does not provide exact rational coefficient rows or the order-16 uniform bound needed by ShapeSqDerivTaylorIntervalCert.Valid.
 
 ## ShapeSq Value Taylor Source
 
@@ -228,13 +233,14 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqDerivTaylorSourcePresent: `True`
 - shapeSqDerivIntervalCertReceiverPresent: `True`
 - shapeSqDerivCenterCoeffBridgePresent: `True`
+- shapeSqDerivCenterCoeffIntervalReceiverPresent: `True`
 - shapeSqTaylorSourcePresent: `True`
 - shapeTaylorReceiverPresent: `True`
 - shapeDerivTaylorReceiverPresent: `False`
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `8`
+- proofSafeClosedFields: `9`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -262,6 +268,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqDerivCenterHasFPowerSeries: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center`
 - shapeSqDerivCenterJetCoeff: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff`
 - shapeSqDerivCenterCoeffValid: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs`
+- shapeSqDerivCenterCoeffIntervalValid: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval`
 - shapeSqTaylorSource: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated`
 - shapeSqTaylorCoeff: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated`
 - shapeValueBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated`
@@ -271,12 +278,12 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Proshka Decision
 
 - chosen: `B_component_taylor_route`
-- follow-up chosen: `A_shapesq_deriv_center_coeff_bridge_worklist_sync`
-- follow-up failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP`
+- follow-up chosen: `A_shapesq_deriv_power_series_coeff_interval_receiver`
+- follow-up failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP`
 - follow-up first missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
 - why not A: Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.
 - why not C: A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem.
-- follow-up why A: After the center-coefficient bridge became Lean-checked, the smallest safe patch is to synchronize the fail-closed worklist so the next live gate is the explicit Cauchy/power-series coefficient source and order-16 bound.
+- follow-up why A: After the center-coefficient bridge became Lean-checked and the worklist was synchronized, the smallest proof-moving patch is the interval coefficient receiver: future generated lower/upper coefficient rows can feed the existing compact absolute-error certificate without a new analytic layer.
 
 ## Failure Codes
 
@@ -287,6 +294,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`
 - `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
@@ -303,9 +311,9 @@ coarse constant shape-square Taylor source, ShapeSqDeriv
 interval-certificate receiver, and the ShapeSqDeriv
 center-coefficient bridge are now Lean-checked.
 The compact center bridge connects center jets to power-series
-coefficients and the absolute-error certificate wrapper, but it
-adds no exact rational rows.  The first live gate is now the
-explicit Cauchy/power-series coefficient source and order-16
+coefficients and the absolute-error/interval certificate wrappers,
+but it adds no exact rational rows.  The first live gate is now
+the explicit Cauchy/power-series coefficient source and order-16
 uniform bound needed by `ShapeSqDerivTaylorIntervalCert.Valid`.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.

@@ -38252,3 +38252,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is only worklist synchronization.  It does not mark center
   rows present, does not prove rational coefficient values, does not prove the
   order-16 bound, emits no Lean, and does not close Step33A.1-A.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCoeffIntervalReceiverChecked
+
+- Used the in-app browser/Computer Use for route review.  Proshka chose the
+  interval coefficient receiver as the smallest proof-moving patch after the
+  center-coeff bridge and v9 worklist sync.
+- Added
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval`
+  in `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- The theorem converts future proof-grade lower/upper rows for
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j`
+  plus a rational error budget into the already checked
+  `ShapeSqDerivTaylorIntervalCert.singleAbs ... .Valid` interface.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json`
+  and `.md`; schema is now
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v10`.
+- Machine status now records
+  `shapeSqDerivCenterCoeffIntervalReceiverPresent = true`,
+  `proofSafeClosedFields = 9`, and keeps
+  `firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.
+- Validation: direct Lean with manually assembled `LEAN_PATH` passed on the file
+  prefix through the new theorem; Python py_compile and generator regeneration
+  passed.  Full `lake env` validation is currently blocked because `lake env`
+  hangs before command launch in this workspace session.
+- Boundary: no coefficient row values, no order-16 bound, no proof-safe payload
+  rows, and no Step33A.1-A closure are claimed.  The closed local adapter gap is
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP`.

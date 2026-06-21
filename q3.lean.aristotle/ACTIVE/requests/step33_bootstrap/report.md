@@ -62407,3 +62407,54 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
 
 Boundary: this synchronizes the worklist only.  It emits no Lean, proves no
 new coefficient row, proves no order-16 bound, and does not close Step33A.1-A.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv coeff interval receiver
+
+After a new in-app browser/Proshka route review, the selected smallest
+proof-moving patch was the interval coefficient receiver, not generated
+coefficient rows and not a new analytic bridge.
+
+New local theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval
+```
+
+Purpose: future proof-grade lower/upper rational enclosures for
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j`
+can now feed the existing compact absolute-error certificate wrapper:
+
+```lean
+(ShapeSqDerivTaylorIntervalCert.singleAbs coeff coeffErrorAbs order16Abs).Valid
+```
+
+The theorem still requires the uniform order-16 bound, and it does not provide
+any coefficient rows by itself.
+
+Regenerated component Taylor residual payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v10
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_power_series_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+proofSafeClosedFields = 9
+shapeSqDerivCenterCoeffIntervalReceiverPresent = true
+```
+
+Validation:
+
+```bash
+LEAN_PATH=... lean <prefix through theorem>
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+`lake env` currently hangs before launching the command even for `echo OK`, so
+full-file `lake env lean` / `q3_check` validation was not completed in this
+patch.  Direct Lean with manually assembled `LEAN_PATH` reaches and accepts the
+new theorem in the file prefix.
+
+Boundary: this closes
+`STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP` only.  The live
+proof-data blocker remains
+`STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.

@@ -297,6 +297,71 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCo
   rw [primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff j]
   exact hCenterCoeffAbs j
 
+/-- Build the compact active ShapeSqDeriv interval certificate from
+two-sided rational enclosures for the chosen local power-series coefficients.
+
+This is the generator-facing interval form of
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs`:
+future exact rows may prove lower/upper coefficient bounds and a rational error
+budget, while this bridge performs only the absolute-value bookkeeping. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval
+    {coeff coeffErrorAbs coeffLower coeffUpper : Fin 16 -> Rat}
+    {order16Abs : Rat}
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (coeffErrorAbs j : Real))
+    (hCenterCoeffInterval :
+      ∀ j : Fin 16,
+        (coeffLower j : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+              j.1 ∧
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+              j.1 <=
+            (coeffUpper j : Real))
+    (hCoeffErrorBudget :
+      ∀ j : Fin 16,
+        (coeff j : Real) - (coeffErrorAbs j : Real) <=
+            (coeffLower j : Real) ∧
+          (coeffUpper j : Real) <=
+            (coeff j : Real) + (coeffErrorAbs j : Real))
+    (hOrder16Abs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta‖ <=
+          (order16Abs : Real)) :
+    (ShapeSqDerivTaylorIntervalCert.singleAbs coeff coeffErrorAbs
+      order16Abs).Valid := by
+  refine
+    primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+      hCoeffErrorNonneg ?_ hOrder16Abs
+  intro j
+  rw [Real.norm_eq_abs]
+  refine abs_le.mpr ?_
+  constructor
+  · have hLower :=
+      (hCenterCoeffInterval j).1
+    have hBudgetLower :=
+      (hCoeffErrorBudget j).1
+    have hBound :
+        (coeff j : Real) - (coeffErrorAbs j : Real) <=
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+            j.1 :=
+      le_trans hBudgetLower hLower
+    have hShift :=
+      sub_le_sub_right hBound (coeff j : Real)
+    linarith [hShift]
+  · have hUpper :=
+      (hCenterCoeffInterval j).2
+    have hBudgetUpper :=
+      (hCoeffErrorBudget j).2
+    have hBound :
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+            j.1 <=
+          (coeff j : Real) + (coeffErrorAbs j : Real) :=
+      le_trans hUpper hBudgetUpper
+    have hShift :=
+      sub_le_sub_right hBound (coeff j : Real)
+    linarith [hShift]
+
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +
     Complex.I * (((1 : Real) / (40 : Real) : Complex))

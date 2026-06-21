@@ -49,7 +49,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v9"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v10"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
 STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
 STATUS_AFTER_OMEGA_PRIME = (
@@ -245,6 +245,12 @@ SHAPESQ_DERIV_CENTER_JET_COEFF_THEOREM = (
 )
 SHAPESQ_DERIV_CENTER_COEFF_VALID_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs"
+)
+SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_VALID_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval"
+)
+SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_RECEIVER_CLOSED = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP"
 )
 SHAPESQ_TAYLOR_SOURCE_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated"
@@ -642,12 +648,16 @@ def shape_sq_deriv_center_coeff_bridge_status(
     )
     center_jet_found = SHAPESQ_DERIV_CENTER_JET_COEFF_THEOREM in endpoint_text
     valid_wrapper_found = SHAPESQ_DERIV_CENTER_COEFF_VALID_THEOREM in endpoint_text
+    interval_wrapper_found = (
+        SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_VALID_THEOREM in endpoint_text
+    )
     proof_grade = (
         power_series_found
         and has_fpower_series_found
         and center_jet_found
         and valid_wrapper_found
     )
+    proof_grade_interval_receiver = proof_grade and interval_wrapper_found
     return {
         "leanFile": str(endpoint_support_path),
         "powerSeriesDef": SHAPESQ_DERIV_CENTER_POWER_SERIES_DEF,
@@ -658,10 +668,20 @@ def shape_sq_deriv_center_coeff_bridge_status(
         "centerJetCoeffTheoremFound": center_jet_found,
         "validWrapperTheorem": SHAPESQ_DERIV_CENTER_COEFF_VALID_THEOREM,
         "validWrapperTheoremFound": valid_wrapper_found,
+        "intervalWrapperTheorem": (
+            SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_VALID_THEOREM
+        ),
+        "intervalWrapperTheoremFound": interval_wrapper_found,
         "proofGradeBridge": proof_grade,
+        "proofGradeIntervalReceiver": proof_grade_interval_receiver,
         "failureClosed": (
             SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_CLOSED
             if proof_grade
+            else None
+        ),
+        "intervalReceiverFailureClosed": (
+            SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_RECEIVER_CLOSED
+            if proof_grade_interval_receiver
             else None
         ),
         "nextMissing": (
@@ -672,9 +692,9 @@ def shape_sq_deriv_center_coeff_bridge_status(
         "boundary": (
             "This is only the Lean-checked bridge from the ShapeSqDeriv "
             "center jet to power-series coefficients and the compact "
-            "absolute-error certificate wrapper.  It does not provide exact "
-            "rational coefficient rows or the order-16 uniform bound needed "
-            "by ShapeSqDerivTaylorIntervalCert.Valid."
+            "absolute-error/interval certificate wrappers.  It does not "
+            "provide exact rational coefficient rows or the order-16 uniform "
+            "bound needed by ShapeSqDerivTaylorIntervalCert.Valid."
         ),
     }
 
@@ -928,6 +948,10 @@ def build_report(
         shape_sq_deriv_interval_cert_receiver_closed
         and bool(shape_sq_deriv_center_coeff_bridge["proofGradeBridge"])
     )
+    shape_sq_deriv_center_coeff_interval_receiver_closed = (
+        shape_sq_deriv_center_coeff_bridge_closed
+        and bool(shape_sq_deriv_center_coeff_bridge["proofGradeIntervalReceiver"])
+    )
     shape_sq_taylor_source = shape_sq_taylor_source_status(
         endpoint_rational_import_path=endpoint_rational_import_path,
         chunk_taylor_checker_path=chunk_taylor_checker_path,
@@ -978,6 +1002,10 @@ def build_report(
         )
     if shape_sq_deriv_center_coeff_bridge_closed:
         closed_historical_failures.append(SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_CLOSED)
+    if shape_sq_deriv_center_coeff_interval_receiver_closed:
+        closed_historical_failures.append(
+            SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_RECEIVER_CLOSED
+        )
     omega_deriv_coeff = (
         linked_component_slots(
             "omegaDeriv",
@@ -1017,6 +1045,7 @@ def build_report(
                 FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE,
                 SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED,
                 SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_CLOSED,
+                SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_RECEIVER_CLOSED,
                 FIRST_FAILURE_AFTER_SHAPESQ_CENTER_COEFF_BRIDGE,
                 FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER,
                 SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
@@ -1146,6 +1175,9 @@ def build_report(
                 "shapeSqDerivCenterCoeffBridgePresent": (
                     shape_sq_deriv_center_coeff_bridge_closed
                 ),
+                "shapeSqDerivCenterCoeffIntervalReceiverPresent": (
+                    shape_sq_deriv_center_coeff_interval_receiver_closed
+                ),
                 "shapeSqTaylorSourcePresent": shape_sq_taylor_source_closed,
                 "shapeTaylorReceiverPresent": shape_sq_taylor_source_closed,
                 "shapeDerivTaylorReceiverPresent": False,
@@ -1160,6 +1192,11 @@ def build_report(
                     + (1 if shape_sq_deriv_source_closed else 0)
                     + (1 if shape_sq_deriv_interval_cert_receiver_closed else 0)
                     + (1 if shape_sq_deriv_center_coeff_bridge_closed else 0)
+                    + (
+                        1
+                        if shape_sq_deriv_center_coeff_interval_receiver_closed
+                        else 0
+                    )
                     + (1 if shape_sq_taylor_source_closed else 0)
                 ),
                 "outLeanWritten": False,
@@ -1277,6 +1314,9 @@ def build_report(
                 "shapeSqDerivCenterCoeffValid": (
                     SHAPESQ_DERIV_CENTER_COEFF_VALID_THEOREM
                 ),
+                "shapeSqDerivCenterCoeffIntervalValid": (
+                    SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_VALID_THEOREM
+                ),
                 "shapeSqTaylorSource": SHAPESQ_TAYLOR_SOURCE_THEOREM,
                 "shapeSqTaylorCoeff": SHAPESQ_TAYLOR_COEFF_DEF,
                 "shapeValueBounds": SHAPE_VALUE_BOUNDS_THEOREM,
@@ -1285,8 +1325,13 @@ def build_report(
         },
         "proshkaDecision": {
             "chosen": "B_component_taylor_route",
-            "followupChosen": "A_shapesq_deriv_center_coeff_bridge_worklist_sync",
+            "followupChosen": (
+                "A_shapesq_deriv_power_series_coeff_interval_receiver"
+            ),
             "followupFailureClosed": (
+                SHAPESQ_DERIV_CENTER_COEFF_INTERVAL_RECEIVER_CLOSED
+                if shape_sq_deriv_center_coeff_interval_receiver_closed
+                else
                 SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_CLOSED
                 if shape_sq_deriv_center_coeff_bridge_closed
                 else SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED
@@ -1305,10 +1350,11 @@ def build_report(
                 "hard-to-audit theorem."
             ),
             "followupWhyA": (
-                "After the center-coefficient bridge became Lean-checked, the "
-                "smallest safe patch is to synchronize the fail-closed worklist "
-                "so the next live gate is the explicit Cauchy/power-series "
-                "coefficient source and order-16 bound."
+                "After the center-coefficient bridge became Lean-checked and "
+                "the worklist was synchronized, the smallest proof-moving "
+                "patch is the interval coefficient receiver: future generated "
+                "lower/upper coefficient rows can feed the existing compact "
+                "absolute-error certificate without a new analytic layer."
             ),
         },
         "sourceStatus": {
@@ -1334,8 +1380,11 @@ def build_report(
             "shapeSqDerivIntervalCertReceiverProofGrade": (
                 shape_sq_deriv_interval_cert_receiver_closed
             ),
-            "shapeSqDerivCenterCoeffBridgeProofGrade": (
-                shape_sq_deriv_center_coeff_bridge_closed
+                "shapeSqDerivCenterCoeffBridgeProofGrade": (
+                    shape_sq_deriv_center_coeff_bridge_closed
+                ),
+            "shapeSqDerivCenterCoeffIntervalReceiverProofGrade": (
+                shape_sq_deriv_center_coeff_interval_receiver_closed
             ),
             "shapeSqTaylorSourceProofGrade": shape_sq_taylor_source_closed,
         },
@@ -1369,9 +1418,9 @@ def render_md(report: dict[str, Any]) -> str:
             "interval-certificate receiver, and the ShapeSqDeriv",
             "center-coefficient bridge are now Lean-checked.",
             "The compact center bridge connects center jets to power-series",
-            "coefficients and the absolute-error certificate wrapper, but it",
-            "adds no exact rational rows.  The first live gate is now the",
-            "explicit Cauchy/power-series coefficient source and order-16",
+            "coefficients and the absolute-error/interval certificate wrappers,",
+            "but it adds no exact rational rows.  The first live gate is now",
+            "the explicit Cauchy/power-series coefficient source and order-16",
             "uniform bound needed by `ShapeSqDerivTaylorIntervalCert.Valid`.",
             "Raw-derivative assembly, residual polynomial bounds, and the",
             "final interval theorem remain open.",
@@ -1553,6 +1602,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- shapeSq deriv Taylor source available: `{report['shapeSqDerivTaylorSource']['proofGrade']}`",
             f"- shapeSq deriv interval cert receiver available: `{report['shapeSqDerivIntervalCertReceiverSource']['proofGradeReceiver']}`",
             f"- shapeSq deriv center-coeff bridge available: `{report['shapeSqDerivCenterCoeffBridgeSource']['proofGradeBridge']}`",
+            f"- shapeSq deriv center-coeff interval receiver available: `{report['shapeSqDerivCenterCoeffBridgeSource']['proofGradeIntervalReceiver']}`",
             f"- shapeSq value Taylor source available: `{report['shapeSqTaylorSource']['proofGrade']}`",
             f"- shape Taylor receiver gap: `{report['componentTaylorStatus']['shapeTaylor']['firstReceiverGap']}`",
             f"- shapeDeriv Taylor receiver gap: `{report['shapeEndpointSource']['firstShapeDerivReceiverGap']}`",
@@ -1638,7 +1688,11 @@ def render_md(report: dict[str, Any]) -> str:
             f"- center jet theorem found: `{report['shapeSqDerivCenterCoeffBridgeSource']['centerJetCoeffTheoremFound']}`",
             f"- valid wrapper theorem: `{report['shapeSqDerivCenterCoeffBridgeSource']['validWrapperTheorem']}`",
             f"- valid wrapper theorem found: `{report['shapeSqDerivCenterCoeffBridgeSource']['validWrapperTheoremFound']}`",
+            f"- interval wrapper theorem: `{report['shapeSqDerivCenterCoeffBridgeSource']['intervalWrapperTheorem']}`",
+            f"- interval wrapper theorem found: `{report['shapeSqDerivCenterCoeffBridgeSource']['intervalWrapperTheoremFound']}`",
+            f"- proof-grade interval receiver: `{report['shapeSqDerivCenterCoeffBridgeSource']['proofGradeIntervalReceiver']}`",
             f"- failure closed: `{report['shapeSqDerivCenterCoeffBridgeSource']['failureClosed']}`",
+            f"- interval receiver failure closed: `{report['shapeSqDerivCenterCoeffBridgeSource']['intervalReceiverFailureClosed']}`",
             f"- next missing: `{report['shapeSqDerivCenterCoeffBridgeSource']['nextMissing']}`",
             f"- boundary: {report['shapeSqDerivCenterCoeffBridgeSource']['boundary']}",
             "",
