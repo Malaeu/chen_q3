@@ -37763,3 +37763,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is not an Omega value Taylor/remainder certificate yet.
   Step33A.1-A remains open; shape/shapeDeriv Taylor sources and raw derivative
   assembly are still missing.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaTaylorCenterAnchorChecked
+
+- Browser/Proshka route advice chose the endpoint Omega anchor bridge as the
+  next narrow patch after the integrated-polynomial crosswalk.  This was route
+  advice only, not proof evidence.
+- Lean now checks
+  `primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor`, proving a
+  rational center enclosure for `step22OmegaArchWeight (1/20)`.
+- The proof uses the existing `shift16_m6_main_norm_closedLogPi` endpoint
+  machinery but exposes a direct
+  `primaryFiniteRow0Parent0Split100Sub0OmegaAnchorPair_of_shift16_m6_main_norm_closedLogPi`
+  pair so the theorem statement is about the literal Omega anchor bounds, not
+  opaque structure fields.
+- The component payload schema is now
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4`; it reports
+  `omegaTaylorCenterAnchorPayloadPresent = true` and
+  `proofSafeClosedFields = 3`.
+- Validation passed: targeted Lean check on
+  `PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean`, component payload
+  generator compile/regeneration, JSON parse, `q3_check` on the touched Lean
+  file, code-only marker scan over touched Lean/generator, and
+  `git diff --check`.
+- Closed subgap:
+  `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`.
+- Current live blocker:
+  `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`.
+- Boundary: this is still fail-closed.  The full component Taylor proof,
+  shape/shapeDeriv Taylor sources, raw derivative assembly, residual range
+  certificate, Step33A.1-A, Step33, Step34, and RH remain open.

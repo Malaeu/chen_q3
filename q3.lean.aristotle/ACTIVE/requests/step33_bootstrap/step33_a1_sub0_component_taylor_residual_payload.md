@@ -5,14 +5,14 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v3`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
-- status: `fail_closed_missing_omega_anchor_shape_shapederiv_taylor_remainders`
-- first failure: `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`
-- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`
+- status: `fail_closed_missing_shape_shapederiv_taylor_remainders`
+- first failure: `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
+- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `2`
+- proof-safe closed fields: `3`
 - Lean emitted: `False`
 
 ## Target
@@ -70,7 +70,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 ## Component Closure Ledger
 
-- omega: `formal_derivative_crosswalk_missing_center_anchor_payload`
+- omega: `formal_center_anchor_available_missing_component_assembly`
 - omegaDeriv: `formal_available_not_assembled`
 - shape: `missing_proof_grade_component_taylor_remainder`
 - shapeDeriv: `missing_proof_grade_component_taylor_remainder`
@@ -89,13 +89,21 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - proof-grade: `True`
 - theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly`
 - theorem found: `True`
-- first missing: `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`
+- first missing: `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
+
+## OmegaTaylor Center Anchor Source
+
+- proof-grade: `True`
+- theorem: `primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor`
+- theorem found: `True`
+- anchor coeff: `-106643293527304552591821287391961407544994279623740339344557023924606219973211357105502357/20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`
+- anchor error abs: `44158940358707181789873075635276724557718455490191678953816505502357/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000`
 
 ## Component Taylor Status
 
 - omegaDerivTaylor: `FORMAL`
 - omegaDerivTaylor Lean theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
-- omegaTaylor: `CROSSWALK_FORMAL_MISSING_CENTER_ANCHOR_PAYLOAD`
+- omegaTaylor: `CROSSWALK_AND_CENTER_ANCHOR_FORMAL_MISSING_COMPONENT_ASSEMBLY`
 - shapeTaylor: `MISSING_PROOF_GRADE_REMAINDER`
 - shapeDerivTaylor: `MISSING_PROOF_GRADE_REMAINDER`
 - assembly Lean written: `False`
@@ -106,12 +114,12 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - exactCoefficientAssemblyPassed: `False`
 - componentTaylorProofsPresent: `False`
 - omegaTaylorIntegratedPolyDerivCrosswalkProofPresent: `True`
-- omegaTaylorCenterAnchorPayloadPresent: `False`
+- omegaTaylorCenterAnchorPayloadPresent: `True`
 - omegaDerivTaylorProofPresent: `True`
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `2`
+- proofSafeClosedFields: `3`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -123,20 +131,20 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - fullTaylorDirectValidityBridge: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`
 - omegaDerivTaylorValidCert: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 - omegaTaylorIntegratedPolyDerivCrosswalk: `Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly`
+- omegaTaylorCenterAnchor: `primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor`
 
 ## Proshka Decision
 
 - chosen: `B_component_taylor_route`
 - follow-up chosen: `A_omega_prime_to_omega_integrated_lift`
-- follow-up failure closed: `STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`
-- follow-up first missing: `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`
+- follow-up failure closed: `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`
+- follow-up first missing: `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
 - why not A: Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.
 - why not C: A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem.
-- follow-up why A: After OmegaPrime became proof-grade, the smallest proof-producing patch is the integrated-polynomial derivative crosswalk for Omega.
+- follow-up why A: After OmegaPrime became proof-grade, the smallest proof-producing patch was the integrated-polynomial derivative crosswalk plus the center-anchor payload for Omega.
 
 ## Failure Codes
 
-- `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
 - `STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP`
 - `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
@@ -145,12 +153,9 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 ## Decision
 
-The next immediate proof-producing gate is the Omega center-anchor
-payload needed by the checked integrated-polynomial derivative
-crosswalk.  After that, `shape` and `shapeDeriv` still need
-proof-grade Taylor/remainder data, plus a raw-derivative assembly
-bridge that consumes the checked `omega`/`omegaDeriv` sources.
-Only after those component proofs exist may the generator assemble
-the raw derivative, subtract the model derivative coefficients,
-bound the residual polynomial, and emit Lean for the interval
+The Omega integrated-polynomial derivative crosswalk and center
+anchor payload are now Lean-checked.  The next immediate
+proof-producing gate is the `shape` / `shapeDeriv` Taylor
+remainder data, followed by raw-derivative assembly, model
+subtraction, residual polynomial bounds, and the final interval
 theorem.

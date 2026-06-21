@@ -32521,3 +32521,52 @@ STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
 Boundary: Step33A.1-A remains open.  The next proof-producing patch is the
 Omega center-anchor payload needed to turn the integrated derivative crosswalk
 into an Omega value Taylor/remainder certificate.
+
+## 2026-06-21 Current EOF State -- OmegaTaylor center anchor checked
+
+Lean now checks the local Omega center-anchor theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor
+```
+
+The direct literal-bound bridge is:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0OmegaAnchorPair_of_shift16_m6_main_norm_closedLogPi
+```
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4
+status = fail_closed_missing_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+omegaTaylorIntegratedPolyDerivCrosswalkProofPresent = true
+omegaTaylorCenterAnchorPayloadPresent = true
+omegaDerivTaylorProofPresent = true
+componentTaylorProofsPresent = false
+proofSafeClosedFields = 3
+overallProofSafe = false
+```
+
+Validation passed: targeted Lean check on
+`PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean`, component payload
+generator compile/regeneration, JSON parse, targeted `q3_check`, code-only
+marker scan over touched Lean/generator, and `git diff --check`.
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: Step33A.1-A remains open.  No Lean assembly theorem has been emitted;
+shape/shapeDeriv Taylor sources, raw-derivative assembly, and residual range
+certification are still missing.

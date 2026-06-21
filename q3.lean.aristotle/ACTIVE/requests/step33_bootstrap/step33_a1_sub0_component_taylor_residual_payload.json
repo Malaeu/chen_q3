@@ -15,10 +15,11 @@
     "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP",
-    "STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP"
+    "STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
+    "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP"
   ],
   "componentClosureLedger": {
-    "omega": "formal_derivative_crosswalk_missing_center_anchor_payload",
+    "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
     "shape": "missing_proof_grade_component_taylor_remainder",
     "shapeDeriv": "missing_proof_grade_component_taylor_remainder"
@@ -34,7 +35,13 @@
       "status": "FORMAL"
     },
     "omegaTaylor": {
-      "firstMissing": "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
+      "centerAnchor": {
+        "leanChecked": true,
+        "leanTheorem": "primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor",
+        "missing": false,
+        "status": "FORMAL"
+      },
+      "firstMissing": "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
       "integratedPolyDerivCrosswalk": {
         "leanChecked": true,
         "leanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly",
@@ -42,7 +49,7 @@
         "status": "FORMAL"
       },
       "missing": true,
-      "status": "CROSSWALK_FORMAL_MISSING_CENTER_ANCHOR_PAYLOAD"
+      "status": "CROSSWALK_AND_CENTER_ANCHOR_FORMAL_MISSING_COMPONENT_ASSEMBLY"
     },
     "overallProofSafe": false,
     "shapeDerivTaylor": {
@@ -78,17 +85,17 @@
     "modelDerivCoeffCount": 16,
     "modelDerivCoeffSource": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff",
     "omegaDerivTaylorValidCert": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+    "omegaTaylorCenterAnchor": "primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor",
     "omegaTaylorIntegratedPolyDerivCrosswalk": "Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
+  "firstFailure": "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "componentPropagationRemainderAbs": null,
@@ -613,11 +620,14 @@
       "valueSource": "omegaPrimePayload.generatorFields.remainder.remainderAbs"
     },
     "omegaIntegratedDerivCrosswalk": {
-      "anchorCoeff": null,
-      "anchorCoeffStatus": "missing_center_anchor_payload",
+      "anchorCoeff": "-106643293527304552591821287391961407544994279623740339344557023924606219973211357105502357/20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "anchorCoeffStatus": "formal_center_anchor_payload",
+      "anchorErrorAbs": "44158940358707181789873075635276724557718455490191678953816505502357/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "anchorLeanTheorem": "primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor",
+      "anchorLeanTheoremFound": true,
       "omegaPrimeCoeffSource": "omegaPrimePayload.generatorFields.coeff",
       "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly",
-      "status": "formal_available_missing_center_anchor"
+      "status": "formal_available_with_center_anchor"
     },
     "omegaRemainderAbs": null,
     "productTruncationRemainderAbs": null,
@@ -837,6 +847,17 @@
     "validTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
     "validTheoremFound": true
   },
+  "omegaTaylorCenterAnchorSource": {
+    "anchorCoeff": "-106643293527304552591821287391961407544994279623740339344557023924606219973211357105502357/20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "anchorErrorAbs": "44158940358707181789873075635276724557718455490191678953816505502357/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "anchorLower": "-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357/16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "anchorUpper": "-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071/80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "failureClosed": "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
+    "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean",
+    "leanTheorem": "primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor",
+    "leanTheoremFound": true,
+    "proofGrade": true
+  },
   "omegaTaylorCrosswalkSource": {
     "failureClosed": "STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
@@ -850,26 +871,27 @@
     "finalBudgetPassed": false,
     "omegaDerivTaylorProofAssembledIntoRawDerivative": false,
     "omegaDerivTaylorProofPresent": true,
-    "omegaTaylorCenterAnchorPayloadPresent": false,
+    "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 2,
+    "proofSafeClosedFields": 3,
     "residualPolynomialRangePassed": false
   },
   "proshkaDecision": {
     "chosen": "B_component_taylor_route",
     "followupChosen": "A_omega_prime_to_omega_integrated_lift",
-    "followupFailureClosed": "STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
-    "followupWhyA": "After OmegaPrime became proof-grade, the smallest proof-producing patch is the integrated-polynomial derivative crosswalk for Omega.",
+    "followupFailureClosed": "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
+    "followupWhyA": "After OmegaPrime became proof-grade, the smallest proof-producing patch was the integrated-polynomial derivative crosswalk plus the center-anchor payload for Omega.",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
   },
   "routeId": "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL",
-  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v3",
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4",
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json": "cc2d04f85189576e",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json": "d76ad77551996b39",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean": "7fe0ad22d0e36ffb",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "039222aed569abb7",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
   },
@@ -891,9 +913,10 @@
     "omegaPrimePayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json",
     "omegaPrimePayloadStatus": "omega_prime_generated_valid_cert_checked_component_gap_open",
     "omegaPrimeProofGrade": true,
+    "omegaTaylorCenterAnchorProofGrade": true,
     "omegaTaylorCrosswalkProofGrade": true
   },
-  "status": "fail_closed_missing_omega_anchor_shape_shapederiv_taylor_remainders",
+  "status": "fail_closed_missing_shape_shapederiv_taylor_remainders",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",

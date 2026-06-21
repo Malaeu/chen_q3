@@ -913,6 +913,153 @@ def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_main_
       primaryFiniteRow0Parent0Split100Sub0LogPiLower_le
       primaryFiniteRow0Parent0Split100Sub0LogPi_le_upper
 
+theorem primaryFiniteRow0Parent0Split100Sub0OmegaAnchorPair_of_shift16_m6_main_norm_closedLogPi :
+    ((-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Real) /
+        (16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : Real)) <=
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+          ((1 : Real) / (20 : Real)) ∧
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+          ((1 : Real) / (20 : Real)) <=
+        ((-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071 : Real) /
+          (80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : Real)) := by
+  have hComp :=
+    Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_component_abs_of_norm
+      Q3.PSDpd.Step33.step33_shift16_digamma_m6_main_norm
+  have hBall :
+      ‖Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -
+          Q3.PSDpd.Step33.step33Shift16DigammaFixedCenter‖ <=
+        Q3.PSDpd.Step33.step33Shift16DigammaTargetRadius :=
+    Q3.PSDpd.Step33.step33_shift16_digamma_fixed_complex_ball_of_m6_log_re_arg_fixed_components
+      hComp.1 hComp.2
+      Q3.PSDpd.Step33.step33Shift16DigammaLogRe_abs
+      Q3.PSDpd.Step33.step33Shift16DigammaArg_abs
+  have hGenerated :
+      ‖Q3.digamma
+          (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightShiftedDigammaArg
+            ((1 : Real) / (20 : Real)) 16 + (16 : Complex)) -
+        (((((3457934361506642309616650171583002119 : Real) /
+          (1000000000000000000000000000000000000 : Real)) : Real) : Complex) +
+          Complex.I * (((((393668171371225061774807882120813 : Real) /
+            (500000000000000000000000000000000000 : Real)) : Real) : Complex)))‖ <=
+          ((1 : Real) / (2000000000000000000000 : Real)) := by
+    simpa [Q3.PSDpd.Step33.step33Shift16DigammaPoint_eq_generated,
+      Q3.PSDpd.Step33.step33Shift16DigammaFixedCenter,
+      Q3.PSDpd.Step33.step33Shift16DigammaFixedRe,
+      Q3.PSDpd.Step33.step33Shift16DigammaFixedIm,
+      Q3.PSDpd.Step33.step33Shift16DigammaTargetRadius] using hBall
+  have hInvAbs :
+      |((Finset.range 16).sum (fun m : Nat =>
+          (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightShiftedDigammaArg
+            ((1 : Real) / (20 : Real)) 16 + (m : Complex))⁻¹)).re -
+          ((1401849775127188496093756428729 : Real) /
+            (2000000000000000000000000000000 : Real))| <=
+        ((1 : Real) / (2000000000000000000000000000000 : Real)) := by
+    have hLo := primaryFiniteRow0Parent0Split100Sub0Shift16N16InvSumBounds_generated.1
+    have hHi := primaryFiniteRow0Parent0Split100Sub0Shift16N16InvSumBounds_generated.2.1
+    rw [abs_sub_le_iff]
+    constructor <;> linarith
+  have hAbs :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_abs_sub_shifted_digamma_add_sixteen_invsum_recentered_complex_main
+      ((1 : Real) / (20 : Real)) 16
+      (((((3457934361506642309616650171583002119 : Real) /
+        (1000000000000000000000000000000000000 : Real)) : Real) : Complex) +
+        Complex.I * (((((393668171371225061774807882120813 : Real) /
+          (500000000000000000000000000000000000 : Real)) : Real) : Complex)))
+      ((1 : Real) / (2000000000000000000000 : Real))
+      ((1401849775127188496093756428729 : Real) /
+        (2000000000000000000000000000000 : Real))
+      ((1 : Real) / (2000000000000000000000000000000 : Real))
+      hGenerated hInvAbs
+  have hMainBounds :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightShiftedDigammaMain_bounds_of_log_pi_interval
+      ((1 : Real) / (20 : Real)) 16
+      ((((((3457934361506642309616650171583002119 : Real) /
+          (1000000000000000000000000000000000000 : Real)) : Real) : Complex) +
+        Complex.I * (((((393668171371225061774807882120813 : Real) /
+          (500000000000000000000000000000000000 : Real)) : Real) : Complex))).re -
+        ((1401849775127188496093756428729 : Real) /
+          (2000000000000000000000000000000 : Real)))
+      (((1 : Real) / (2000000000000000000000 : Real)) +
+        ((1 : Real) / (2000000000000000000000000000000 : Real)))
+      ((-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Real) /
+        (16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : Real))
+      ((-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071 : Real) /
+        (80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : Real))
+      primaryFiniteRow0Parent0Split100Sub0LogPiLower
+      primaryFiniteRow0Parent0Split100Sub0LogPiUpper
+      primaryFiniteRow0Parent0Split100Sub0LogPiLower_le
+      primaryFiniteRow0Parent0Split100Sub0LogPi_le_upper
+      (by
+        norm_num [Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightShiftCorrection,
+          Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightDigammaArg,
+          Complex.inv_re, Complex.inv_im, Complex.normSq_apply,
+          primaryFiniteRow0Parent0Split100Sub0LogPiUpper])
+      (by
+        norm_num [Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightShiftCorrection,
+          Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightDigammaArg,
+          Complex.inv_re, Complex.inv_im, Complex.normSq_apply,
+          primaryFiniteRow0Parent0Split100Sub0LogPiLower])
+  exact
+    primaryFiniteRow0Parent0Split100Sub0OmegaAnchorPair_of_main_error_generated
+      (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeightShiftedDigammaMain
+        ((1 : Real) / (20 : Real)) 16
+        ((((((3457934361506642309616650171583002119 : Real) /
+            (1000000000000000000000000000000000000 : Real)) : Real) : Complex) +
+          Complex.I * (((((393668171371225061774807882120813 : Real) /
+            (500000000000000000000000000000000000 : Real)) : Real) : Complex))).re -
+          ((1401849775127188496093756428729 : Real) /
+            (2000000000000000000000000000000 : Real))))
+      (((1 : Real) / (2000000000000000000000 : Real)) +
+        ((1 : Real) / (2000000000000000000000000000000 : Real)))
+      hAbs hMainBounds.1 hMainBounds.2
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower : Rat :=
+  (-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Rat) /
+    16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper : Rat :=
+  (-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071 : Rat) /
+    80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff : Rat :=
+  (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower +
+    primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper) / 2
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs : Rat :=
+  (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper -
+    primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower) / 2
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor :
+    ‖Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+        ((1 : Real) / (20 : Real)) -
+      (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff : Real)‖ <=
+        (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs : Real) := by
+  let omega :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+      ((1 : Real) / (20 : Real))
+  have hPair :=
+    primaryFiniteRow0Parent0Split100Sub0OmegaAnchorPair_of_shift16_m6_main_norm_closedLogPi
+  have hLower :
+      (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower : Real) <=
+        omega := by
+    simpa [omega, primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower] using hPair.1
+  have hUpper :
+      omega <=
+        (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper : Real) := by
+    simpa [omega, primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper] using hPair.2
+  rw [Real.norm_eq_abs, abs_le]
+  constructor
+  · norm_num [omega, primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff,
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs,
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower,
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper] at hLower hUpper ⊢
+    linarith
+  · norm_num [omega, primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff,
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs,
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower,
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper] at hLower hUpper ⊢
+    linarith
+
 def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_shift16_m6_expanded_asymptotic_bound_closedLogPi
     (hExpanded :
       ‖Q3.digamma Q3.PSDpd.Step33.step33Shift16DigammaPoint -

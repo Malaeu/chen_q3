@@ -61386,3 +61386,80 @@ STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
 Boundary: this does not close the Omega Taylor value/remainder package,
 shape/shapeDeriv Taylor packages, raw-derivative assembly, Step33A.1-A,
 Step33, Step34, or RH.
+
+## 2026-06-21 -- OmegaTaylor center anchor checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+Browser/Proshka route advice selected the endpoint Omega anchor bridge as the
+next narrow proof-producing patch.  This advice is route selection only, not
+proof evidence.
+
+New Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0OmegaAnchorPair_of_shift16_m6_main_norm_closedLogPi
+primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower
+primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper
+primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff
+primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs
+primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor
+```
+
+The checked theorem proves the center anchor payload for
+`step22OmegaArchWeight (1/20)`:
+
+```lean
+‖step22OmegaArchWeight (1 / 20) -
+  (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff : Real)‖ ≤
+  (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs : Real)
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4
+```
+
+Regenerated component payload:
+
+```text
+status = fail_closed_missing_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+omegaTaylorIntegratedPolyDerivCrosswalkProofPresent = true
+omegaTaylorCenterAnchorPayloadPresent = true
+omegaDerivTaylorProofPresent = true
+componentTaylorProofsPresent = false
+proofSafeClosedFields = 3
+overallProofSafe = false
+```
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json >/dev/null
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean
+code-only marker scan over touched Lean/generator
+git diff --check
+```
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: this does not close the full Omega Taylor component package,
+shape/shapeDeriv Taylor packages, raw-derivative assembly, Step33A.1-A,
+Step33, Step34, or RH.
