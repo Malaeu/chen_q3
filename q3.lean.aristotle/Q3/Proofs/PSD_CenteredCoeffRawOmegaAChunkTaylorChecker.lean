@@ -10536,6 +10536,19 @@ def single
   order16Lower := fun _ => order16Lower
   order16Upper := fun _ => order16Upper
 
+/-- One-segment active zero-cell data in the compact absolute-error form.
+
+Future generated proof rows may provide center-jet absolute errors and a
+uniform order-16 absolute bound directly; this constructor expands those into
+the lower/upper interval fields consumed by `Valid`. -/
+def singleAbs
+    (coeff coeffErrorAbs : Fin 16 -> Rat) (order16Abs : Rat) :
+    ShapeSqDerivTaylorIntervalCert :=
+  single coeff coeffErrorAbs
+    (fun j => coeff j - coeffErrorAbs j)
+    (fun j => coeff j + coeffErrorAbs j)
+    order16Abs (-order16Abs) order16Abs
+
 /-- Proof-bearing validity predicate for
 `ShapeSqDerivTaylorIntervalCert`.
 
@@ -10640,6 +10653,60 @@ theorem of_single_segment
     exact hOrder16Rows eta (by simpa [single] using heta)
   · intro i
     simpa [single] using hOrder16Budget
+
+/-- Build validity for the compact one-segment active zero-cell certificate.
+
+This leaves exactly the proof-bearing analytic rows to the generator:
+center-jet absolute-error rows and a uniform order-16 absolute bound. -/
+theorem of_single_abs
+    {coeff coeffErrorAbs : Fin 16 -> Rat}
+    {order16Abs : Rat}
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (coeffErrorAbs j : Real))
+    (hCenterJetAbs :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            ((1 : Real) / 20) / (Nat.factorial j.1 : Real) -
+          (coeff j : Real)‖ <=
+          (coeffErrorAbs j : Real))
+    (hOrder16Abs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta‖ <=
+          (order16Abs : Real)) :
+    (singleAbs coeff coeffErrorAbs order16Abs).Valid := by
+  refine
+    of_single_segment
+      (coeff := coeff) (coeffErrorAbs := coeffErrorAbs)
+      (jetLower := fun j => coeff j - coeffErrorAbs j)
+      (jetUpper := fun j => coeff j + coeffErrorAbs j)
+      (order16Abs := order16Abs)
+      (order16Lower := -order16Abs) (order16Upper := order16Abs)
+      hCoeffErrorNonneg ?_ ?_ ?_ ?_
+  · intro j
+    have hAbs := hCenterJetAbs j
+    rw [Real.norm_eq_abs] at hAbs
+    have hBounds := abs_le.mp hAbs
+    constructor
+    · have hLower :
+        (coeff j : Real) - (coeffErrorAbs j : Real) <=
+        iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          ((1 : Real) / 20) / (Nat.factorial j.1 : Real) := by
+        linarith [hBounds.1]
+      simpa using hLower
+    · have hUpper :
+        iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          ((1 : Real) / 20) / (Nat.factorial j.1 : Real) <=
+        (coeff j : Real) + (coeffErrorAbs j : Real) := by
+        linarith [hBounds.2]
+      simpa using hUpper
+  · intro j
+    constructor <;> simp
+  · intro eta heta
+    have hAbs := hOrder16Abs eta heta
+    rw [Real.norm_eq_abs] at hAbs
+    simpa using (abs_le.mp hAbs)
+  · constructor <;> simp
 
 /-- Extract the two Taylor-source inputs required by the existing
 shape-square derivative receiver from a proof-bearing interval certificate. -/

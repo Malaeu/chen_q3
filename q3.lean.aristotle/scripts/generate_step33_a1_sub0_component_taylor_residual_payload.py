@@ -49,7 +49,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v8"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
 STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
 STATUS_AFTER_OMEGA_PRIME = (
@@ -215,6 +215,12 @@ SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_DEF = (
 )
 SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM = (
     "ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_DEF = (
+    "ShapeSqDerivTaylorIntervalCert.singleAbs"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_VALID_THEOREM = (
+    "ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs"
 )
 SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP"
@@ -532,6 +538,14 @@ def shape_sq_deriv_interval_cert_receiver_status(
         SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM in checker_text
         or "theorem of_single_segment" in checker_text
     )
+    single_abs_def_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_DEF in checker_text
+        or "def singleAbs" in checker_text
+    )
+    single_abs_valid_theorem_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_VALID_THEOREM in checker_text
+        or "theorem of_single_abs" in checker_text
+    )
     proof_grade = (
         source_found
         and structure_found
@@ -559,8 +573,17 @@ def shape_sq_deriv_interval_cert_receiver_status(
             SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM
         ),
         "singleValidityConstructorFound": single_valid_theorem_found,
+        "singleAbsConstructor": SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_DEF,
+        "singleAbsConstructorFound": single_abs_def_found,
+        "singleAbsValidityConstructor": (
+            SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_VALID_THEOREM
+        ),
+        "singleAbsValidityConstructorFound": single_abs_valid_theorem_found,
         "oneSegmentBookkeepingClosed": (
             single_def_found and single_valid_theorem_found
+        ),
+        "compactAbsBookkeepingClosed": (
+            single_abs_def_found and single_abs_valid_theorem_found
         ),
         "proofGradeReceiver": proof_grade,
         "failureClosed": (
@@ -576,9 +599,9 @@ def shape_sq_deriv_interval_cert_receiver_status(
         "boundary": (
             "This is only the Lean-checked interval-certificate receiver for "
             "future rational center-jet and order-16 rows.  The one-segment "
-            "constructor closes zero-cell bookkeeping only; it is not the "
-            "generated ShapeSqDeriv payload and it does not close the coarse "
-            "constant-source budget failure."
+            "and compact absolute-error constructors close zero-cell "
+            "bookkeeping only; they are not the generated ShapeSqDeriv payload "
+            "and they do not close the coarse constant-source budget failure."
         ),
     }
 
@@ -1117,6 +1140,18 @@ def build_report(
                 "shapeSqDerivIntervalCertReceiver": (
                     SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM
                 ),
+                "shapeSqDerivIntervalCertSingle": (
+                    SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_DEF
+                ),
+                "shapeSqDerivIntervalCertSingleValid": (
+                    SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM
+                ),
+                "shapeSqDerivIntervalCertSingleAbs": (
+                    SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_DEF
+                ),
+                "shapeSqDerivIntervalCertSingleAbsValid": (
+                    SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_ABS_VALID_THEOREM
+                ),
                 "shapeSqTaylorSource": SHAPESQ_TAYLOR_SOURCE_THEOREM,
                 "shapeSqTaylorCoeff": SHAPESQ_TAYLOR_COEFF_DEF,
                 "shapeValueBounds": SHAPE_VALUE_BOUNDS_THEOREM,
@@ -1203,9 +1238,11 @@ def render_md(report: dict[str, Any]) -> str:
             "anchor payload, shape-square integrated Taylor receiver,",
             "coarse constant shape-square Taylor source, and the new",
             "ShapeSqDeriv interval-certificate receiver are now Lean-checked.",
-            "The coarse source remains fail-closed for the current budget; the",
-            "productive next gate is the concrete zero-cell rational interval",
-            "certificate rows for `ShapeSqDerivTaylorIntervalCert.Valid`.",
+            "The compact absolute-error constructor closes more zero-cell",
+            "bookkeeping but adds no analytic rows.  The coarse source remains",
+            "fail-closed for the current budget; the productive next gate is",
+            "the concrete zero-cell rational interval certificate rows for",
+            "`ShapeSqDerivTaylorIntervalCert.Valid`.",
             "Raw-derivative assembly, residual polynomial bounds, and the",
             "final interval theorem remain open.",
         ]
@@ -1436,6 +1473,11 @@ def render_md(report: dict[str, Any]) -> str:
             f"- one-segment validity constructor: `{report['shapeSqDerivIntervalCertReceiverSource']['singleValidityConstructor']}`",
             f"- one-segment validity constructor found: `{report['shapeSqDerivIntervalCertReceiverSource']['singleValidityConstructorFound']}`",
             f"- one-segment bookkeeping closed: `{report['shapeSqDerivIntervalCertReceiverSource']['oneSegmentBookkeepingClosed']}`",
+            f"- compact abs constructor: `{report['shapeSqDerivIntervalCertReceiverSource']['singleAbsConstructor']}`",
+            f"- compact abs constructor found: `{report['shapeSqDerivIntervalCertReceiverSource']['singleAbsConstructorFound']}`",
+            f"- compact abs validity constructor: `{report['shapeSqDerivIntervalCertReceiverSource']['singleAbsValidityConstructor']}`",
+            f"- compact abs validity constructor found: `{report['shapeSqDerivIntervalCertReceiverSource']['singleAbsValidityConstructorFound']}`",
+            f"- compact abs bookkeeping closed: `{report['shapeSqDerivIntervalCertReceiverSource']['compactAbsBookkeepingClosed']}`",
             f"- failure closed: `{report['shapeSqDerivIntervalCertReceiverSource']['failureClosed']}`",
             f"- next missing: `{report['shapeSqDerivIntervalCertReceiverSource']['nextMissing']}`",
             f"- boundary: {report['shapeSqDerivIntervalCertReceiverSource']['boundary']}",

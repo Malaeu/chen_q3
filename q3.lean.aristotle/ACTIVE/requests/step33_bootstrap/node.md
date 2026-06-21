@@ -18035,3 +18035,46 @@ STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
 
 Boundary: this is a ledger/report sync only.  No Lean proof file was modified,
 and Step33A.1-A remains open.
+
+## 2026-06-21 EOF Addendum -- ShapeSqDeriv compact abs helper
+
+The active ShapeSqDeriv interval-certificate lane now also has a checked compact
+absolute-error helper:
+
+```lean
+ShapeSqDerivTaylorIntervalCert.singleAbs
+ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs
+```
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v8
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+oneSegmentBookkeepingClosed = true
+compactAbsBookkeepingClosed = true
+proofSafeClosedFields = 7
+outLeanWritten = false
+```
+
+Current exact blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next browser/Proshka-guided proof direction:
+
+```text
+STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP
+```
+
+First local Lean target:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+```
+
+Boundary: no center-jet rows, no order-16 row, no generated Lean payload, and
+no Step33A.1-A closure.

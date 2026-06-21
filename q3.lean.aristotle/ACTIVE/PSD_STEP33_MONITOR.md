@@ -32777,3 +32777,50 @@ bound for `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` on `[0,1/10]`.
 
 Boundary: this is zero-cell bookkeeping only.  No analytic interval rows were
 proved, no generated Lean payload was emitted, and Step33A.1-A remains open.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv compact abs helper checked
+
+Lean now checks the compact absolute-error one-segment constructor for the
+active zero-cell ShapeSqDeriv interval certificate:
+
+```lean
+ShapeSqDerivTaylorIntervalCert.singleAbs
+ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs
+```
+
+The regenerated component Taylor residual payload now reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v8
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+oneSegmentBookkeepingClosed = true
+compactAbsBookkeepingClosed = true
+proofSafeClosedFields = 7
+outLeanWritten = false
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next Lean crosswalk suggested by browser/Proshka route advice:
+
+```text
+STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP
+```
+
+Preferred next theorem shape:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+```
+
+with the explicit `realSinc_hasSum_even_powerSeries` statement as the stronger
+follow-up if the local power-series API fits cleanly.
+
+Boundary: this is still zero-cell bookkeeping only.  It does not prove the
+center-jet rows, does not prove the order-16 row, does not emit a Lean payload,
+and does not close Step33A.1-A.

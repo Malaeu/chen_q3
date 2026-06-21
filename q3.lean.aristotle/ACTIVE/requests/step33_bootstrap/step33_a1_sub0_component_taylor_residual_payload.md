@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v8`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
 - status: `fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert`
@@ -175,9 +175,14 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - one-segment validity constructor: `ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment`
 - one-segment validity constructor found: `True`
 - one-segment bookkeeping closed: `True`
+- compact abs constructor: `ShapeSqDerivTaylorIntervalCert.singleAbs`
+- compact abs constructor found: `True`
+- compact abs validity constructor: `ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs`
+- compact abs validity constructor found: `True`
+- compact abs bookkeeping closed: `True`
 - failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP`
 - next missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`
-- boundary: This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  The one-segment constructor closes zero-cell bookkeeping only; it is not the generated ShapeSqDeriv payload and it does not close the coarse constant-source budget failure.
+- boundary: This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  The one-segment and compact absolute-error constructors close zero-cell bookkeeping only; they are not the generated ShapeSqDeriv payload and they do not close the coarse constant-source budget failure.
 
 ## ShapeSq Value Taylor Source
 
@@ -232,6 +237,10 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqDerivTaylorBridge: `shapeSqDerivTaylor_bound_of_endpoint_bounds`
 - shapeSqDerivTaylorSource: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated`
 - shapeSqDerivIntervalCertReceiver: `ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource`
+- shapeSqDerivIntervalCertSingle: `ShapeSqDerivTaylorIntervalCert.single`
+- shapeSqDerivIntervalCertSingleValid: `ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment`
+- shapeSqDerivIntervalCertSingleAbs: `ShapeSqDerivTaylorIntervalCert.singleAbs`
+- shapeSqDerivIntervalCertSingleAbsValid: `ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs`
 - shapeSqTaylorSource: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated`
 - shapeSqTaylorCoeff: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated`
 - shapeValueBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated`
@@ -269,8 +278,10 @@ The Omega integrated-polynomial derivative crosswalk, center
 anchor payload, shape-square integrated Taylor receiver,
 coarse constant shape-square Taylor source, and the new
 ShapeSqDeriv interval-certificate receiver are now Lean-checked.
-The coarse source remains fail-closed for the current budget; the
-productive next gate is the concrete zero-cell rational interval
-certificate rows for `ShapeSqDerivTaylorIntervalCert.Valid`.
+The compact absolute-error constructor closes more zero-cell
+bookkeeping but adds no analytic rows.  The coarse source remains
+fail-closed for the current budget; the productive next gate is
+the concrete zero-cell rational interval certificate rows for
+`ShapeSqDerivTaylorIntervalCert.Valid`.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.

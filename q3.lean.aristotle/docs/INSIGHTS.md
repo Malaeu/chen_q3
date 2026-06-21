@@ -38068,3 +38068,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   closure.  The next patch must prove the actual center-jet interval rows and
   the uniform order-16 bound for
   `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` on `[0,1/10]`.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCompactAbsBookkeepingChecked
+
+- Added and checked the compact absolute-error constructor:
+  `ShapeSqDerivTaylorIntervalCert.singleAbs` and
+  `ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs`.
+- The helper converts future compact rows
+  `coeff[j]`, `coeffErrorAbs[j]`, and `order16Abs` into the lower/upper
+  fields required by `ShapeSqDerivTaylorIntervalCert.Valid`.
+- Regenerated `step33_a1_sub0_component_taylor_residual_payload.json/.md` at
+  schema v8.  It reports `compactAbsBookkeepingClosed = true` while preserving
+  `status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert`,
+  `firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`,
+  `proofSafeClosedFields = 7`, and `outLeanWritten = false`.
+- Browser/Proshka route advice selected the power-series/removable-singularity
+  bridge as the next proof-producing direction, not candidate jet rows and not
+  a whole-theorem Aristotle request.
+- Next named crosswalk gap:
+  `STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP`.
+- Preferred immediate theorem shape:
+  `realSinc_hasFPowerSeriesAt_zero_of_sin`; stronger follow-up:
+  `realSinc_hasSum_even_powerSeries`.
+- Boundary: this is not center-jet row proof, not uniform order-16 proof, not a
+  generated Lean payload, and not Step33A.1-A closure.
