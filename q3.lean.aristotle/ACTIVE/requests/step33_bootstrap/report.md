@@ -62816,3 +62816,55 @@ Current first live blocker:
 ```text
 STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP
 ```
+
+## 2026-06-22 Addendum -- ShapeDerivative pow-12 scaled-sinc receiver checked
+
+Used the in-app browser/Computer Use for a fresh Proshka route check after the
+checked v16 ShapeSqDeriv majorant receiver.  Proshka selected a reusable
+pow-12 scaled-sinc receiver before any numeric generator; this is route advice
+only, not proof evidence.
+
+Added isolated Lean receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
+```
+
+New checked theorems/interfaces:
+
+```lean
+powDerivMajorant
+powDerivMajorant_nonneg
+pow_succ_derivative_abs_of_base_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0ShapeScaledSinc
+primaryFiniteRow0Parent0Split100Sub0ShapeNormalizer
+primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs
+```
+
+Meaning:
+
+```text
+proof-grade bounds for iteratedDeriv k of the active scaled realSinc factor,
+k <= 17, plus exact pow-12 normalizer budgets, now imply proof-grade bounds
+for iteratedDeriv k of the active shape function, k <= 17.
+```
+
+Regenerated component payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v17
+status = fail_closed_missing_scaled_realsinc_derivative_bounds_0_to_17_payload
+firstFailure = STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+proofSafeClosedFields = 16
+shapeDerivativePow12MajorantReceiverPresent = true
+shapeSqDerivMajorantReceiverPresent = true
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP`.  It does not provide
+proof-grade scaled-realSinc derivative bounds through order `17`, does not
+close rows `2..15`, does not prove the full-cell order-17 shape-square bound,
+does not assemble the raw derivative, and does not close Step33A.1-A.  The live
+blocker is now exactly
+`STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.

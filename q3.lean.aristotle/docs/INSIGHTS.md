@@ -38496,3 +38496,46 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: rows `2..15`, the proof-grade shape derivative bounds payload, the
   full-cell order-17 shape-square bound, raw-derivative assembly, residual
   polynomial bounds, and Step33A.1-A remain open.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ShapeDerivativePow12MajorantReceiverPlan
+
+- Used the in-app browser/Computer Use for a fresh Proshka route check after
+  the checked v16 ShapeSqDeriv majorant receiver.
+- Current live blocker remains exactly
+  `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`.
+- Proshka recommendation: do not build a floating/numeric generator before a
+  Lean checker surface; add a reusable receiver for the active shape as a
+  constant times a power of a scaled `realSinc`, then let a later payload supply
+  proof-grade base derivative majorants.
+- Local normalization guard: the receiver must not hard-code the scale or
+  constant until they are read from the repository definition of
+  `centeredBSplineImagTransformRealClosedForm`; preliminary search shows the
+  local shape unfolds through
+  `realSinc (ell * t / (2 * bsplineScale k))`.
+- Target patch: an isolated
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean`
+  with a recursive Leibniz-style majorant interface.  This should move the live
+  blocker to a smaller scaled-`realSinc` derivative-bounds payload gap, without
+  emitting or claiming proof-grade numerical bounds.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeDerivativePow12MajorantReceiverChecked
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean`.
+- Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs`.
+  The theorem uses the repository normalization
+  `realSinc (((3 / 10) * eta) / (2 * bsplineScale 11))` and the active
+  normalizer `(sqrt (bsplineScale 11 * bsplineAutocorrNorm 11))^-1`.
+- The file also checks the reusable recursive power receiver
+  `pow_succ_derivative_abs_of_base_derivative_abs`, with
+  `powDerivMajorant 11` corresponding to the active twelfth power.
+- Regenerated the component Taylor residual payload to schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v17`; it records
+  `shapeDerivativePow12MajorantReceiverPresent = true` and
+  `proofSafeClosedFields = 16`.
+- Current live blocker is now exactly
+  `STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+- Boundary: this does not provide proof-grade scaled-realSinc derivative
+  bounds, does not close rows `2..15`, does not emit a generated Lean payload,
+  does not close A hbox, and does not close Step33A.1-A.

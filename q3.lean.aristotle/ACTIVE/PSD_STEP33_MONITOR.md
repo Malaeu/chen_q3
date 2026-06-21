@@ -33497,3 +33497,42 @@ the proof-grade shape derivative bounds through order `17`, does not prove rows
 assemble the raw derivative, and does not close Step33A.1-A.  The live blocker
 is now exactly
 `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`.
+
+## 2026-06-22 Current EOF State -- ShapeDerivative pow-12 scaled-sinc receiver checked
+
+Added isolated Lean receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
+```
+
+Checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs
+```
+
+Meaning:
+
+```text
+proof-grade majorants for iteratedDeriv k of the active scaled realSinc factor,
+k <= 17, plus exact pow-12 normalizer budgets, now imply proof-grade majorants
+for iteratedDeriv k of the active shape function, k <= 17.
+```
+
+Regenerated component Taylor residual payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v17
+status = fail_closed_missing_scaled_realsinc_derivative_bounds_0_to_17_payload
+firstFailure = STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+proofSafeClosedFields = 16
+shapeDerivativePow12MajorantReceiverPresent = true
+shapeSqDerivMajorantReceiverPresent = true
+```
+
+Boundary: this closes only the pow-12 scaled-sinc receiver surface.  It does
+not provide proof-grade scaled-realSinc derivative bounds through order `17`,
+does not emit a generated Lean payload, does not close A hbox, and does not
+close Step33A.1-A.  The live blocker is now exactly
+`STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.

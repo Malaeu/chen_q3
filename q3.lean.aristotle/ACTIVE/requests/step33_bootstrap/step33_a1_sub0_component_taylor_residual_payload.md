@@ -5,14 +5,14 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v16`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v17`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
-- status: `fail_closed_missing_shape_derivative_bounds_0_to_17_payload`
-- first failure: `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`
-- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP`
+- status: `fail_closed_missing_scaled_realsinc_derivative_bounds_0_to_17_payload`
+- first failure: `STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
+- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `15`
+- proof-safe closed fields: `16`
 - Lean emitted: `False`
 
 ## Target
@@ -72,7 +72,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 - omega: `formal_center_anchor_available_missing_component_assembly`
 - omegaDeriv: `formal_available_not_assembled`
-- shape: `majorant_receiver_formal_missing_shape_derivative_bounds_0_to_17_payload`
+- shape: `pow12_scaled_sinc_receiver_formal_missing_scaled_realsinc_bounds_0_to_17_payload`
 - shapeDeriv: `endpoint_deriv_bounds_formal_missing_component_taylor_receiver`
 
 ## OmegaDeriv Taylor Source
@@ -312,6 +312,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqDerivShapeSqDerivativeReceiverPresent: `True`
 - shapeSqDerivProductBoundsReceiverPresent: `True`
 - shapeSqDerivMajorantReceiverPresent: `True`
+- shapeDerivativePow12MajorantReceiverPresent: `True`
 - shapeSqDerivCenterCoeffRowsClosedCount: `2`
 - shapeSqDerivCenterCoeffRowsRequiredCount: `16`
 - shapeSqDerivOrder16UniformBoundPresent: `False`
@@ -321,7 +322,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `15`
+- proofSafeClosedFields: `16`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -372,16 +373,16 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Proshka Decision
 
 - chosen: `B_component_taylor_route`
-- follow-up chosen: `B_shapesq_deriv_majorant_receiver_after_product_bounds`
-- follow-up failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP`
-- follow-up first missing: `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`
+- follow-up chosen: `B_shape_derivative_pow12_scaled_sinc_receiver_after_majorant`
+- follow-up failure closed: `STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP`
+- follow-up first missing: `STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
 - why not A: Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.
 - why not C: A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem.
-- follow-up why A: After the product-bound receiver was Lean-checked, the browser route check selected receiver first, generator second.  The smallest local checked patch was an isolated majorant receiver from proof-grade shape derivative bounds 0..17, plus explicit coefficient budgets, into ShapeSqDerivTaylorIntervalCert.Valid.  It leaves the actual shape derivative bounds payload as the first live gap.
+- follow-up why A: After the ShapeSqDeriv majorant receiver was Lean-checked, the browser route check selected a reusable pow-12 scaled-sinc receiver before any numeric generator.  The smallest local checked patch now turns proof-grade derivative bounds for the active scaled realSinc factor into proof-grade derivative bounds for the active shape function. It leaves the scaled-realSinc derivative-bounds payload as the first live gap.
 
 ## Failure Codes
 
-- `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP`
@@ -395,11 +396,13 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP`
+- `STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`
 - `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
@@ -417,13 +420,13 @@ interval-certificate receiver, the ShapeSqDeriv center-coeff
 bridge, coefficient rows `j = 0,1`, the structural
 ShapeSqDeriv order-shift receiver, the direct shape-square
 derivative receiver into `ShapeSqDerivTaylorIntervalCert.Valid`,
-the isolated product-bound receiver, and the new majorant
-receiver from active shape derivative bounds to
-`ShapeSqDerivTaylorIntervalCert.Valid` are now Lean-checked.
-This does not provide proof-grade shape derivative bounds
-through order `17`, rational rows `2..15`, or the full-cell
-order-17 shape-square bound.  The first live proof gap is now
-the shape-derivative bounds payload consumed by the majorant
-receiver.
+the isolated product-bound receiver, the ShapeSqDeriv majorant
+receiver, and the active shape pow-12 scaled-sinc majorant
+receiver are now Lean-checked.
+This does not provide proof-grade derivative bounds for the
+scaled `realSinc` factor through order `17`, rational rows
+`2..15`, or the full-cell order-17 shape-square bound.  The
+first live proof gap is now the scaled-realSinc derivative
+bounds payload consumed by the pow-12 receiver.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.
