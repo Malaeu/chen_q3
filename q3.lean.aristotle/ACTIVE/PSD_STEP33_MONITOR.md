@@ -31324,3 +31324,82 @@ Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
 budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma term tsum bridge
+
+Local `q3_docs` semantic search for `OmegaPrime iteratedDeriv16 trigamma tsum
+hDerivEq`, `iteratedDeriv tsum SmoothSeries deriv_tsum_apply Q3 Lean`, and
+`trigamma series termwise differentiation order16 OmegaPrime` found the old
+checked trigamma surface:
+
+```lean
+im_trigamma_eq_tsum_im
+summable_trigamma_series
+trigamma_im_series_term_eq_closed_form
+```
+
+External Mathlib docs/search point to the next available route shapes:
+`Mathlib.Analysis.Calculus.SmoothSeries.iteratedFDeriv_tsum` and
+`Mathlib.Topology.Algebra.InfiniteSum.TsumUniformlyOn.iteratedDerivWithin_tsum`.
+
+Added and Lean-checked the following symbols in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesTerm_iteratedDeriv16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_eq
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum
+```
+
+Checked result:
+
+```text
+iteratedDeriv 16 (fun eta =>
+  (1 / (((1/4 : C) + I*(eta/2 : C)) + n)^2).im)
+  = (17! / 2^16) * omegaPrimeOrder16SeriesTerm eta n
+
+and therefore
+
+sum_n derivative16(trigamma-series-term n)
+  = (17! / 2^16) * omegaPrimeOrder16Series eta.
+```
+
+This connects the old trigamma series convention to the current
+`omegaPrimeOrder16Series` normalization.  The remaining `hDerivEq` proof now
+needs only the genuine interchange/closed-form step:
+
+```text
+iteratedDeriv 16 (fun eta =>
+  sum_n trigamma-series-term(eta,n))
+  =
+sum_n iteratedDeriv 16 trigamma-series-term(eta,n)
+```
+
+followed by the existing `-1/2` OmegaPrime factor.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
+`hDerivEq`, no numeric data.order16Abs lower-bound payload against the integer
+budget, no center-jet payload, no exact rational remainder budget, no generated
+Lean payload, no first-subchunk residual-derivative norm certificate, no A
+hbox, and no Step33A.1-A closure exists yet.

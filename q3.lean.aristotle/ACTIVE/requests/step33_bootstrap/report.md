@@ -59762,6 +59762,75 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma term tsum bridge
+
+Local `q3_docs` search confirmed the relevant old trigamma bridge:
+
+```lean
+im_trigamma_eq_tsum_im
+summable_trigamma_series
+trigamma_im_series_term_eq_closed_form
+```
+
+The next Mathlib route candidates are
+`SmoothSeries.iteratedFDeriv_tsum` and
+`TsumUniformlyOn.iteratedDerivWithin_tsum`; these are route pointers only, not
+proof closure.
+
+File:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesTerm_iteratedDeriv16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_eq
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum
+```
+
+Checked result:
+
+```text
+sum_n iteratedDeriv16((1 / (z(eta)+n)^2).im)
+  = (17! / 2^16) * omegaPrimeOrder16Series eta
+```
+
+where `z(eta) = 1/4 + I*(eta/2)`.
+
+Remaining exact bridge:
+
+```text
+iteratedDeriv16 (sum_n (1 / (z(eta)+n)^2).im)
+  = sum_n iteratedDeriv16((1 / (z(eta)+n)^2).im)
+```
+
+then multiply by the existing `-1/2` factor in
+`step22OmegaArchWeightDerivClosedForm`.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no `hDerivEq`, no `data.Valid` closure, no generated payload, no A
+hbox, no Step33A.1-A closure, and no Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 self-tsum budget receiver
 
 Added checked summability and a self-budget receiver for the concrete order-16

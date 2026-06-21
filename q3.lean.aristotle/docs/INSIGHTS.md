@@ -36941,3 +36941,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeTrigammaTermTsumBridge
+
+- Ran local `q3_docs` search for the current `hDerivEq` blocker.  The useful
+  existing repo surfaces are `im_trigamma_eq_tsum_im`,
+  `summable_trigamma_series`, and `trigamma_im_series_term_eq_closed_form`.
+- External Mathlib search pointed to the intended next proof shape:
+  `SmoothSeries.iteratedFDeriv_tsum` or
+  `TsumUniformlyOn.iteratedDerivWithin_tsum`, with a uniform summable bound for
+  derivatives up to order 16.
+- Added and Lean-checked the trigamma-term bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesTerm_iteratedDeriv16`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_eq`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum`.
+- The checked `tsum`-surface is
+  `sum_n iteratedDeriv16((1 / (z(eta)+n)^2).im) =
+  (17! / 2^16) * omegaPrimeOrder16Series eta`, where
+  `z(eta) = 1/4 + I*(eta/2)`.
+- This does not prove `hDerivEq`; it fixes the RHS normalization after the
+  future termwise differentiation theorem.  The live gap remains
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.

@@ -10384,6 +10384,70 @@ theorem omegaPrimeOrder16SeriesTerm_iteratedDeriv16
     norm_num
   simp [omegaPrimeOrder16SeriesTerm, hcoeffRe, hcoeffIm]
 
+theorem omegaPrimeOrder16TrigammaSeriesTerm_iteratedDeriv16
+    (eta : Real) (n : Nat) :
+    iteratedDeriv 16
+        (fun t : Real =>
+          (1 /
+            (((1 / 4 : Complex) +
+                  Complex.I * (((t / 2 : Real) : Complex))) + n) ^ 2).im)
+        eta =
+      ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
+        omegaPrimeOrder16SeriesTerm eta n := by
+  have hfun :
+      (fun t : Real =>
+          (1 /
+            (((1 / 4 : Complex) +
+                  Complex.I * (((t / 2 : Real) : Complex))) + n) ^ 2).im) =
+        fun t : Real =>
+          ((omegaPrimeOrder16SeriesBase t n) ^ (-2 : Int)).im := by
+    funext t
+    have hbase :
+        (((1 / 4 : Complex) +
+              Complex.I * (((t / 2 : Real) : Complex))) + n) =
+          omegaPrimeOrder16SeriesBase t n := by
+      unfold omegaPrimeOrder16SeriesBase
+      ring_nf
+    rw [hbase]
+    rw [one_div]
+    rw [show (-2 : Int) = -(2 : Int) by norm_num]
+    rw [zpow_neg]
+    rfl
+  rw [hfun]
+  exact omegaPrimeOrder16SeriesTerm_iteratedDeriv16 eta n
+
+def omegaPrimeOrder16TrigammaSeriesDerivTerm (eta : Real) (n : Nat) : Real :=
+  iteratedDeriv 16
+    (fun t : Real =>
+      (1 /
+        (((1 / 4 : Complex) +
+              Complex.I * (((t / 2 : Real) : Complex))) + n) ^ 2).im)
+    eta
+
+theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_eq
+    (eta : Real) (n : Nat) :
+    omegaPrimeOrder16TrigammaSeriesDerivTerm eta n =
+      ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
+        omegaPrimeOrder16SeriesTerm eta n := by
+  unfold omegaPrimeOrder16TrigammaSeriesDerivTerm
+  exact omegaPrimeOrder16TrigammaSeriesTerm_iteratedDeriv16 eta n
+
+theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum
+    (eta : Real) :
+    (∑' n : Nat, omegaPrimeOrder16TrigammaSeriesDerivTerm eta n) =
+      ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
+        omegaPrimeOrder16Series eta := by
+  calc
+    (∑' n : Nat, omegaPrimeOrder16TrigammaSeriesDerivTerm eta n)
+        = ∑' n : Nat,
+            ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
+              omegaPrimeOrder16SeriesTerm eta n := by
+          exact tsum_congr
+            (omegaPrimeOrder16TrigammaSeriesDerivTerm_eq eta)
+    _ = ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
+        omegaPrimeOrder16Series eta := by
+          rw [omegaPrimeOrder16Series, tsum_mul_left]
+
 /-- Pointwise norm majorant for one order-16 OmegaPrime series term. -/
 theorem omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow
     (eta : Real) (n : Nat) :
