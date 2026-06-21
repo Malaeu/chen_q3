@@ -17676,3 +17676,36 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP
 
 Boundary: generated `m = 1..15` prefix rows still have no rational evaluator /
 cast bridge and all generated rows remain `prefixLeanChecked = false`.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime m1 Rat sum-cast bridge checked
+
+Lean now also checks the fixed `m = 1` rational sum-cast bridge for every
+finite prefix length:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_cast
+```
+
+The new exact rational smoke value is:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_one
+```
+
+with value `31040000 / 1030301`.
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next implementable subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M2_TO_M15_GAP
+```
+
+Boundary: generated `m = 2..15` prefix rows still have no rational evaluator /
+cast bridge and all generated rows remain `prefixLeanChecked = false`.

@@ -32151,3 +32151,40 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP
 Boundary: this closes the sum-cast bridge only for `m = 0`; generated v10
 rows still have `prefixLeanChecked = false`, `proofGrade = false`; no full
 center-jet proof or Step33A.1-A closure.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime m1 Rat sum-cast bridge checked
+
+The fixed-jet rational-prefix bridge now also covers all finite prefix lengths
+for `m = 1`.
+
+New checked rational evaluator/facts and bridges:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_one
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m1_N1_ratCast_smoke
+```
+
+The prefix theorem proves, for every `N : Nat`, the `m = 1` finite-sum bridge
+from the local `Real`/`Complex` finite prefix expression to the exact rational
+prefix evaluator.
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Narrowed next subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M2_TO_M15_GAP
+```
+
+Boundary: this closes the sum-cast bridge only for `m = 0,1`; generated v10
+rows still have `prefixLeanChecked = false`, `proofGrade = false`; no full
+center-jet proof or Step33A.1-A closure.

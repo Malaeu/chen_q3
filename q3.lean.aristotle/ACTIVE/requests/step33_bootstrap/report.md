@@ -60773,3 +60773,63 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP
 Boundary: this is `m = 0` only.  Generated v10 rows remain
 `prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
 no full center-jet proof, no Step33A.1-A closure.
+
+## 2026-06-21 -- OmegaPrime m1 Rat sum-cast bridge checked
+
+New checked rational evaluator symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat
+```
+
+New checked exact rational facts:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_one
+```
+
+New checked cast bridges:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m1_N1_ratCast_smoke
+```
+
+The rational evaluator uses:
+
+```text
+a_n = n + 1/4
+b = 1/40
+term_1(n) = -(a_n^3 - 3*a_n*b^2) / (a_n^2 + b^2)^3
+prefix_1(N) = (-1/2) * sum_{n < N} term_1(n)
+```
+
+The term bridge had to expose the exact local `Real`/`Complex` normal form:
+after `omegaPrimeTrigammaSeriesTerm_iteratedDeriv`, Lean normalizes the
+negative zpow to `Re((a+i b)^3)` divided by the cubed norm square.  The proof
+uses an explicit numerator calculation for `Re((n+1/4+i/40)^3)` and then
+`ring_nf`.
+
+Browser/Pro advisory recommended a generic `RatComplex` bridge.  Local
+execution deliberately took the smaller fixed-jet proof first; this produced a
+compiled `m = 1` bridge and exposed the exact coercion/normal-form risks that a
+generic proof must handle.
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M2_TO_M15_GAP
+```
+
+Boundary: this covers only `m = 0,1`.  Generated v10 rows remain
+`prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
+no full center-jet proof, no Step33A.1-A closure.

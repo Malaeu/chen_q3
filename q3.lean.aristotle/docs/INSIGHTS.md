@@ -37449,3 +37449,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: generated v10 rows still require `m = 1..15` rational evaluators
   and exact generated `prefixN = 128` equality checks before
   `prefixLeanChecked` can become true.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeM1RatSumCastBridgeChecked
+
+- Status: `m = 1` rational sum-cast bridge checked, not full generated-prefix
+  closure.
+- Added checked rational evaluator symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat` and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat`.
+- Added checked exact rational facts:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_zero`
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_one`.
+- Added checked bridges:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1TermRat_cast`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_cast`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m1_N1_ratCast_smoke`.
+- Browser/Pro advisory recommended a generic `RatComplex` theorem.  The local
+  patch chose the smaller fixed-jet theorem first because it compiles now and
+  exposes the exact normal-form burden for a later generic bridge:
+  `Re((n+1/4+i/40)^3)`, rational norm-square cubing, and `Rat.cast_sum`.
+- The next exact subgap is now
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M2_TO_M15_GAP`.
+- Boundary: generated v10 rows still have `prefixLeanChecked = false`,
+  `proofGrade = false`; no generated certificate, no full center-jet proof, no
+  Step33A.1-A closure.
