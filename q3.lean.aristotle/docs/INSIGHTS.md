@@ -37494,3 +37494,19 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: generated v10 rows still have `prefixLeanChecked = false`,
   `proofGrade = false`; no generated certificate, no full center-jet proof, no
   Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeM5ToM8RatSumCastBridgeChecked
+
+- Status: `m = 5,6,7,8` rational sum-cast bridges checked, not full
+  generated-prefix closure.
+- Added checked term/prefix cast bridges through
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM8PrefixRat_cast`.
+- The checked prefix bridge range is now `m = 0..8`.
+- The fixed-jet route remains proof-producing, but this is still not the
+  generated prefix certificate: no `prefixN = 128` generated-row equality has
+  been promoted to proof-grade here.
+- The next exact subgap is now
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M9_TO_M15_GAP`.
+- Boundary: generated v10 rows still have `prefixLeanChecked = false`,
+  `proofGrade = false`; no generated certificate, no full center-jet proof, no
+  Step33A.1-A closure.

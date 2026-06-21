@@ -10578,6 +10578,50 @@ def omegaPrimeCenterJetM4PrefixRat (N : Nat) : Rat :=
   (-1 / 48 : Rat) *
     (Finset.range N).sum (fun n : Nat => omegaPrimeCenterJetM4TermRat n)
 
+def omegaPrimeCenterJetM5TermRat (n : Nat) : Rat :=
+  let a : Rat := omegaPrimeCenterBaseReRat n
+  let b : Rat := omegaPrimeCenterBaseImRat
+  ((-45 / 2 : Rat) * a ^ 7 + (945 / 2 : Rat) * a ^ 5 * b ^ 2 -
+    (1575 / 2 : Rat) * a ^ 3 * b ^ 4 + (315 / 2 : Rat) * a * b ^ 6) /
+      ((a * a + b * b) ^ 7)
+
+def omegaPrimeCenterJetM5PrefixRat (N : Nat) : Rat :=
+  (-1 / 240 : Rat) *
+    (Finset.range N).sum (fun n : Nat => omegaPrimeCenterJetM5TermRat n)
+
+def omegaPrimeCenterJetM6TermRat (n : Nat) : Rat :=
+  let a : Rat := omegaPrimeCenterBaseReRat n
+  let b : Rat := omegaPrimeCenterBaseImRat
+  ((630 : Rat) * a ^ 7 * b - (4410 : Rat) * a ^ 5 * b ^ 3 +
+    (4410 : Rat) * a ^ 3 * b ^ 5 - (630 : Rat) * a * b ^ 7) /
+      ((a * a + b * b) ^ 8)
+
+def omegaPrimeCenterJetM6PrefixRat (N : Nat) : Rat :=
+  (-1 / 1440 : Rat) *
+    (Finset.range N).sum (fun n : Nat => omegaPrimeCenterJetM6TermRat n)
+
+def omegaPrimeCenterJetM7TermRat (n : Nat) : Rat :=
+  let a : Rat := omegaPrimeCenterBaseReRat n
+  let b : Rat := omegaPrimeCenterBaseImRat
+  ((315 : Rat) * a ^ 9 - (11340 : Rat) * a ^ 7 * b ^ 2 +
+    (39690 : Rat) * a ^ 5 * b ^ 4 - (26460 : Rat) * a ^ 3 * b ^ 6 +
+      (2835 : Rat) * a * b ^ 8) / ((a * a + b * b) ^ 9)
+
+def omegaPrimeCenterJetM7PrefixRat (N : Nat) : Rat :=
+  (-1 / 10080 : Rat) *
+    (Finset.range N).sum (fun n : Nat => omegaPrimeCenterJetM7TermRat n)
+
+def omegaPrimeCenterJetM8TermRat (n : Nat) : Rat :=
+  let a : Rat := omegaPrimeCenterBaseReRat n
+  let b : Rat := omegaPrimeCenterBaseImRat
+  (-(14175 : Rat) * a ^ 9 * b + (170100 : Rat) * a ^ 7 * b ^ 3 -
+    (357210 : Rat) * a ^ 5 * b ^ 5 + (170100 : Rat) * a ^ 3 * b ^ 7 -
+      (14175 : Rat) * a * b ^ 9) / ((a * a + b * b) ^ 10)
+
+def omegaPrimeCenterJetM8PrefixRat (N : Nat) : Rat :=
+  (-1 / 80640 : Rat) *
+    (Finset.range N).sum (fun n : Nat => omegaPrimeCenterJetM8TermRat n)
+
 theorem omegaPrimeCenterJetM0TermRat_zero :
     omegaPrimeCenterJetM0TermRat 0 = (-32000 / 10201 : Rat) := by
   native_decide
@@ -10618,6 +10662,46 @@ theorem omegaPrimeCenterJetM4TermRat_zero :
 theorem omegaPrimeCenterJetM4PrefixRat_one :
     omegaPrimeCenterJetM4PrefixRat 1 =
       (371238400000000 / 1061520150601 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM5TermRat_zero :
+    omegaPrimeCenterJetM5TermRat 0 =
+      (-29251325952000000000 / 107213535210701 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM5PrefixRat_one :
+    omegaPrimeCenterJetM5PrefixRat 1 =
+      (121880524800000000 / 107213535210701 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM6TermRat_zero :
+    omegaPrimeCenterJetM6TermRat 0 =
+      (38426402488320000000000 / 10828567056280801 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM6PrefixRat_one :
+    omegaPrimeCenterJetM6PrefixRat 1 =
+      (-26685001728000000000 / 10828567056280801 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM7TermRat_zero :
+    omegaPrimeCenterJetM7TermRat 0 =
+      (53881751037542400000000000 / 1093685272684360901 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM7PrefixRat_one :
+    omegaPrimeCenterJetM7PrefixRat 1 =
+      (-5345411809280000000000 / 1093685272684360901 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM8TermRat_zero :
+    omegaPrimeCenterJetM8TermRat 0 =
+      (-131172149931540480000000000000 / 110462212541120451001 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM8PrefixRat_one :
+    omegaPrimeCenterJetM8PrefixRat 1 =
+      (1626638764032000000000000 / 110462212541120451001 : Rat) := by
   native_decide
 
 theorem omegaPrimeCenterJetM0TermRat_cast (n : Nat) :
@@ -10785,6 +10869,198 @@ theorem omegaPrimeCenterJetM4TermRat_cast (n : Nat) :
     _ = _ := by
       ring_nf
 
+theorem omegaPrimeCenterJetM5TermRat_cast (n : Nat) :
+    iteratedDeriv 5
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+        (1 / 20 : Real) =
+      (omegaPrimeCenterJetM5TermRat n : Real) := by
+  simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+    omegaPrimeOrder16SeriesBase, omegaPrimeCenterJetM5TermRat,
+    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat, Complex.normSq]
+  norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+    Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+  ring_nf
+  have hnum :
+      (((1 / 4 : Complex) + (n : Complex) +
+            Complex.I * (1 / 40 : Complex)) ^ 7).re =
+        (n : Real) ^ 7 + (n : Real) ^ 6 * (7 / 4) +
+          (n : Real) ^ 5 * (2079 / 1600) +
+            (n : Real) ^ 4 * (679 / 1280) +
+              (n : Real) ^ 3 * (65807 / 512000) +
+                (n : Real) ^ 2 * (37821 / 2048000) +
+                  (n : Real) * (5960493 / 4096000000) +
+                    793493 / 16384000000 := by
+    norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+      Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+    ring_nf
+  calc
+    (((1 / 4 : Complex) + (n : Complex) +
+          Complex.I * (1 / 40 : Complex)) ^ 7).re *
+        ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 7)⁻¹ *
+          (-45 / 2) =
+        ((n : Real) ^ 7 + (n : Real) ^ 6 * (7 / 4) +
+            (n : Real) ^ 5 * (2079 / 1600) +
+              (n : Real) ^ 4 * (679 / 1280) +
+                (n : Real) ^ 3 * (65807 / 512000) +
+                  (n : Real) ^ 2 * (37821 / 2048000) +
+                    (n : Real) * (5960493 / 4096000000) +
+                      793493 / 16384000000) *
+          ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 7)⁻¹ *
+            (-45 / 2) := by
+      exact congrArg
+        (fun y : Real =>
+          y * ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 7)⁻¹ *
+            (-45 / 2))
+        hnum
+    _ = _ := by
+      ring_nf
+
+theorem omegaPrimeCenterJetM6TermRat_cast (n : Nat) :
+    iteratedDeriv 6
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+        (1 / 20 : Real) =
+      (omegaPrimeCenterJetM6TermRat n : Real) := by
+  simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+    omegaPrimeOrder16SeriesBase, omegaPrimeCenterJetM6TermRat,
+    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat, Complex.normSq]
+  norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+    Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+  ring_nf
+  have hnum :
+      (((1 / 4 : Complex) + (n : Complex) +
+            Complex.I * (1 / 40 : Complex)) ^ 8).im =
+        (n : Real) ^ 7 * (1 / 5) + (n : Real) ^ 6 * (7 / 20) +
+          (n : Real) ^ 5 * (2093 / 8000) +
+            (n : Real) ^ 4 * (693 / 6400) +
+              (n : Real) ^ 3 * (343007 / 12800000) +
+                (n : Real) ^ 2 * (203021 / 51200000) +
+                  (n : Real) * (6652099 / 20480000000) +
+                    930699 / 81920000000 := by
+    norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+      Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+    ring_nf
+  calc
+    (((1 / 4 : Complex) + (n : Complex) +
+          Complex.I * (1 / 40 : Complex)) ^ 8).im *
+        ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 8)⁻¹ *
+          (315 / 4) =
+        ((n : Real) ^ 7 * (1 / 5) + (n : Real) ^ 6 * (7 / 20) +
+            (n : Real) ^ 5 * (2093 / 8000) +
+              (n : Real) ^ 4 * (693 / 6400) +
+                (n : Real) ^ 3 * (343007 / 12800000) +
+                  (n : Real) ^ 2 * (203021 / 51200000) +
+                    (n : Real) * (6652099 / 20480000000) +
+                      930699 / 81920000000) *
+          ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 8)⁻¹ *
+            (315 / 4) := by
+      exact congrArg
+        (fun y : Real =>
+          y * ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 8)⁻¹ *
+            (315 / 4))
+        hnum
+    _ = _ := by
+      ring_nf
+
+theorem omegaPrimeCenterJetM7TermRat_cast (n : Nat) :
+    iteratedDeriv 7
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+        (1 / 20 : Real) =
+      (omegaPrimeCenterJetM7TermRat n : Real) := by
+  simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+    omegaPrimeOrder16SeriesBase, omegaPrimeCenterJetM7TermRat,
+    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat, Complex.normSq]
+  norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+    Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+  ring_nf
+  have hnum :
+      (((1 / 4 : Complex) + (n : Complex) +
+            Complex.I * (1 / 40 : Complex)) ^ 9).re =
+        (n : Real) ^ 9 + (n : Real) ^ 8 * (9 / 4) +
+          (n : Real) ^ 7 * (891 / 400) +
+            (n : Real) ^ 6 * (2037 / 1600) +
+              (n : Real) ^ 5 * (592263 / 1280000) +
+                (n : Real) ^ 4 * (113463 / 1024000) +
+                  (n : Real) ^ 3 * (17881479 / 1024000000) +
+                    (n : Real) ^ 2 * (7141437 / 4096000000) +
+                      (n : Real) * (654274809 / 6553600000000) +
+                        65251609 / 26214400000000 := by
+    norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+      Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+    ring_nf
+  calc
+    (((1 / 4 : Complex) + (n : Complex) +
+          Complex.I * (1 / 40 : Complex)) ^ 9).re *
+        ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 9)⁻¹ *
+          315 =
+        ((n : Real) ^ 9 + (n : Real) ^ 8 * (9 / 4) +
+            (n : Real) ^ 7 * (891 / 400) +
+              (n : Real) ^ 6 * (2037 / 1600) +
+                (n : Real) ^ 5 * (592263 / 1280000) +
+                  (n : Real) ^ 4 * (113463 / 1024000) +
+                    (n : Real) ^ 3 * (17881479 / 1024000000) +
+                      (n : Real) ^ 2 * (7141437 / 4096000000) +
+                        (n : Real) * (654274809 / 6553600000000) +
+                          65251609 / 26214400000000) *
+          ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 9)⁻¹ *
+            315 := by
+      exact congrArg
+        (fun y : Real =>
+          y * ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 9)⁻¹ *
+            315)
+        hnum
+    _ = _ := by
+      ring_nf
+
+theorem omegaPrimeCenterJetM8TermRat_cast (n : Nat) :
+    iteratedDeriv 8
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+        (1 / 20 : Real) =
+      (omegaPrimeCenterJetM8TermRat n : Real) := by
+  simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+    omegaPrimeOrder16SeriesBase, omegaPrimeCenterJetM8TermRat,
+    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat, Complex.normSq]
+  norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+    Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+  ring_nf
+  have hnum :
+      (((1 / 4 : Complex) + (n : Complex) +
+            Complex.I * (1 / 40 : Complex)) ^ 10).im =
+        (n : Real) ^ 9 * (1 / 4) + (n : Real) ^ 8 * (9 / 16) +
+          (n : Real) ^ 7 * (897 / 1600) +
+            (n : Real) ^ 6 * (2079 / 6400) +
+              (n : Real) ^ 5 * (3087063 / 25600000) +
+                (n : Real) ^ 4 * (609063 / 20480000) +
+                  (n : Real) ^ 3 * (19956297 / 4096000000) +
+                    (n : Real) ^ 2 * (8376291 / 16384000000) +
+                      (n : Real) * (817256401 / 26214400000000) +
+                        88250801 / 104857600000000 := by
+    norm_num [pow_succ, pow_three, sq, Complex.add_re, Complex.add_im,
+      Complex.I_re, Complex.I_im, Complex.mul_re, Complex.mul_im]
+    ring_nf
+  calc
+    (((1 / 4 : Complex) + (n : Complex) +
+          Complex.I * (1 / 40 : Complex)) ^ 10).im *
+        ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 10)⁻¹ *
+          (-2835 / 2) =
+        ((n : Real) ^ 9 * (1 / 4) + (n : Real) ^ 8 * (9 / 16) +
+            (n : Real) ^ 7 * (897 / 1600) +
+              (n : Real) ^ 6 * (2079 / 6400) +
+                (n : Real) ^ 5 * (3087063 / 25600000) +
+                  (n : Real) ^ 4 * (609063 / 20480000) +
+                    (n : Real) ^ 3 * (19956297 / 4096000000) +
+                      (n : Real) ^ 2 * (8376291 / 16384000000) +
+                        (n : Real) * (817256401 / 26214400000000) +
+                          88250801 / 104857600000000) *
+          ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 10)⁻¹ *
+            (-2835 / 2) := by
+      exact congrArg
+        (fun y : Real =>
+          y * ((101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 10)⁻¹ *
+            (-2835 / 2))
+        hnum
+    _ = _ := by
+      ring_nf
+
 theorem omegaPrimeCenterJetM0PrefixRat_cast (N : Nat) :
     ((Nat.factorial 0 : Real)⁻¹ * (-1 / 2 : Real)) *
         ((Finset.range N).sum (fun n : Nat =>
@@ -10891,6 +11167,94 @@ theorem omegaPrimeCenterJetM4PrefixRat_cast (N : Nat) :
       (-1 / 48 : Real) by norm_num]
   simp [omegaPrimeCenterJetM4PrefixRat, Rat.cast_sum]
 
+theorem omegaPrimeCenterJetM5PrefixRat_cast (N : Nat) :
+    ((Nat.factorial 5 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 5
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM5PrefixRat N : Real) := by
+  have hsum :
+      (Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 5
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real)) =
+        (Finset.range N).sum (fun n : Nat =>
+          (omegaPrimeCenterJetM5TermRat n : Real)) := by
+    refine Finset.sum_congr rfl ?_
+    intro n _
+    exact omegaPrimeCenterJetM5TermRat_cast n
+  rw [hsum]
+  rw [show ((Nat.factorial 5 : Real)⁻¹ * (-1 / 2 : Real)) =
+      (-1 / 240 : Real) by norm_num]
+  simp [omegaPrimeCenterJetM5PrefixRat, Rat.cast_sum]
+
+theorem omegaPrimeCenterJetM6PrefixRat_cast (N : Nat) :
+    ((Nat.factorial 6 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 6
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM6PrefixRat N : Real) := by
+  have hsum :
+      (Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 6
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real)) =
+        (Finset.range N).sum (fun n : Nat =>
+          (omegaPrimeCenterJetM6TermRat n : Real)) := by
+    refine Finset.sum_congr rfl ?_
+    intro n _
+    exact omegaPrimeCenterJetM6TermRat_cast n
+  rw [hsum]
+  rw [show ((Nat.factorial 6 : Real)⁻¹ * (-1 / 2 : Real)) =
+      (-1 / 1440 : Real) by norm_num]
+  simp [omegaPrimeCenterJetM6PrefixRat, Rat.cast_sum]
+
+theorem omegaPrimeCenterJetM7PrefixRat_cast (N : Nat) :
+    ((Nat.factorial 7 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 7
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM7PrefixRat N : Real) := by
+  have hsum :
+      (Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 7
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real)) =
+        (Finset.range N).sum (fun n : Nat =>
+          (omegaPrimeCenterJetM7TermRat n : Real)) := by
+    refine Finset.sum_congr rfl ?_
+    intro n _
+    exact omegaPrimeCenterJetM7TermRat_cast n
+  rw [hsum]
+  rw [show ((Nat.factorial 7 : Real)⁻¹ * (-1 / 2 : Real)) =
+      (-1 / 10080 : Real) by norm_num]
+  simp [omegaPrimeCenterJetM7PrefixRat, Rat.cast_sum]
+
+theorem omegaPrimeCenterJetM8PrefixRat_cast (N : Nat) :
+    ((Nat.factorial 8 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 8
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM8PrefixRat N : Real) := by
+  have hsum :
+      (Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 8
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real)) =
+        (Finset.range N).sum (fun n : Nat =>
+          (omegaPrimeCenterJetM8TermRat n : Real)) := by
+    refine Finset.sum_congr rfl ?_
+    intro n _
+    exact omegaPrimeCenterJetM8TermRat_cast n
+  rw [hsum]
+  rw [show ((Nat.factorial 8 : Real)⁻¹ * (-1 / 2 : Real)) =
+      (-1 / 80640 : Real) by norm_num]
+  simp [omegaPrimeCenterJetM8PrefixRat, Rat.cast_sum]
+
 theorem omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke :
     ((Nat.factorial 0 : Real)⁻¹ * (-1 / 2 : Real)) *
         ((Finset.range 1).sum (fun n : Nat =>
@@ -10935,6 +11299,42 @@ theorem omegaPrimeCenterJetPrefix_m4_N1_ratCast_smoke :
             (1 / 20 : Real))) =
       (omegaPrimeCenterJetM4PrefixRat 1 : Real) := by
   exact omegaPrimeCenterJetM4PrefixRat_cast 1
+
+theorem omegaPrimeCenterJetPrefix_m5_N1_ratCast_smoke :
+    ((Nat.factorial 5 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 1).sum (fun n : Nat =>
+          iteratedDeriv 5
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM5PrefixRat 1 : Real) := by
+  exact omegaPrimeCenterJetM5PrefixRat_cast 1
+
+theorem omegaPrimeCenterJetPrefix_m6_N1_ratCast_smoke :
+    ((Nat.factorial 6 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 1).sum (fun n : Nat =>
+          iteratedDeriv 6
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM6PrefixRat 1 : Real) := by
+  exact omegaPrimeCenterJetM6PrefixRat_cast 1
+
+theorem omegaPrimeCenterJetPrefix_m7_N1_ratCast_smoke :
+    ((Nat.factorial 7 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 1).sum (fun n : Nat =>
+          iteratedDeriv 7
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM7PrefixRat 1 : Real) := by
+  exact omegaPrimeCenterJetM7PrefixRat_cast 1
+
+theorem omegaPrimeCenterJetPrefix_m8_N1_ratCast_smoke :
+    ((Nat.factorial 8 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 1).sum (fun n : Nat =>
+          iteratedDeriv 8
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM8PrefixRat 1 : Real) := by
+  exact omegaPrimeCenterJetM8PrefixRat_cast 1
 
 theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
     (k : Nat) (n : Nat) (r : Real) :

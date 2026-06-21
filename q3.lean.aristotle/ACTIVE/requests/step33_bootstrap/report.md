@@ -60896,3 +60896,53 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M5_TO_M15_GAP
 Boundary: this covers only `m = 0..4`.  Generated v10 rows remain
 `prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
 no full center-jet proof, no Step33A.1-A closure.
+
+## 2026-06-21 -- OmegaPrime m5-m8 Rat sum-cast bridges checked
+
+New checked rational evaluator symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM5TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM5PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM6TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM6PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM7TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM7PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM8TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM8PrefixRat
+```
+
+New checked cast bridges:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM5TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM5PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m5_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM6TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM6PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m6_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM7TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM7PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m7_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM8TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM8PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m8_N1_ratCast_smoke
+```
+
+This narrows the fixed-jet rational prefix gap from `m = 5..15` to `m = 9..15`.
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M9_TO_M15_GAP
+```
+
+Boundary: this covers only `m = 0..8`.  Generated v10 rows remain
+`prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
+no full center-jet proof, no Step33A.1-A closure.
