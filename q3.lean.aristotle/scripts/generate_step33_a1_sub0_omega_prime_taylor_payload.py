@@ -37,20 +37,23 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
 STATUS = "fail_closed_missing_checked_deriv_payload"
 STALE_RECEIVER_SCHEMA_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL"
 )
 CENTER_JET_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP"
+CENTER_JET_SHIFTED_TAIL_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP"
+)
 ORDER16_INTEGER_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP"
 )
 REMAINDER_BUDGET_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP"
 )
-FIRST_FAILURE = CENTER_JET_FAILURE
+FIRST_FAILURE = CENTER_JET_SHIFTED_TAIL_FAILURE
 LAGRANGE_SPLIT_FAILURE = "STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP"
 LEFT_LAGRANGE_FAILURE = "STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP"
 EXACT_POLY_FAILURE = "STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP"
@@ -99,6 +102,18 @@ TARGET_TAYLOR_EXACT_POLY = (
 TARGET_REFLECTED_TAYLOR_EXACT_POLY = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert."
     "reflectedTaylorWithinEval_eq_exactTaylorPoly"
+)
+TARGET_OMEGAPRIME_TRIGAMMA_SERIES_PREFIX_TAIL = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
+)
+TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16"
+)
+TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
 )
 GENERATOR_NAME = "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py"
 LEAN_TARGET_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
@@ -174,8 +189,12 @@ TARGET_SYMBOLS = [
     TARGET_REFLECTED_DERIV,
     TARGET_TAYLOR_EXACT_POLY,
     TARGET_REFLECTED_TAYLOR_EXACT_POLY,
+    TARGET_OMEGAPRIME_TRIGAMMA_SERIES_PREFIX_TAIL,
+    TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL,
+    TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE,
     STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE,
+    CENTER_JET_SHIFTED_TAIL_FAILURE,
     ORDER16_INTEGER_FAILURE,
     REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE,
@@ -204,8 +223,18 @@ TARGET_PATTERNS = {
     TARGET_REFLECTED_TAYLOR_EXACT_POLY: (
         "theorem reflectedTaylorWithinEval_eq_exactTaylorPoly"
     ),
+    TARGET_OMEGAPRIME_TRIGAMMA_SERIES_PREFIX_TAIL: (
+        "theorem omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
+    ),
+    TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL: (
+        "theorem omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16"
+    ),
+    TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE: (
+        "theorem omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
+    ),
     STALE_RECEIVER_SCHEMA_FAILURE: STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE: FIRST_FAILURE,
+    CENTER_JET_SHIFTED_TAIL_FAILURE: CENTER_JET_SHIFTED_TAIL_FAILURE,
     ORDER16_INTEGER_FAILURE: ORDER16_INTEGER_FAILURE,
     REMAINDER_BUDGET_FAILURE: REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE: LAGRANGE_SPLIT_FAILURE,
@@ -288,11 +317,38 @@ def missing_center_jet_slots() -> list[dict[str, Any]]:
             "coeffErrorAbs": None,
             "lower": None,
             "upper": None,
+            "prefixN": None,
+            "prefixExactRational": None,
+            "shiftedTailUpperRational": None,
+            "prefixLeanChecked": False,
+            "tailBoundLeanChecked": False,
+            "centerJetMargin": None,
+            "bridgeLeanTheorem": TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE,
+            "bridgeLeanChecked": False,
             "sourceLeanTheorem": None,
             "sourceLeanChecked": False,
             "lowerCheckPassed": False,
             "upperCheckPassed": False,
             "enclosurePassed": False,
+        }
+        for index in range(DEGREE + 1)
+    ]
+
+
+def missing_center_jet_prefix_tail_rows() -> list[dict[str, Any]]:
+    return [
+        {
+            "jetIndex": index,
+            "prefixN": None,
+            "prefixExactRational": None,
+            "shiftedTailUpperRational": None,
+            "coeff": None,
+            "coeffErrorAbs": None,
+            "prefixLeanChecked": False,
+            "tailBoundLeanChecked": False,
+            "centerJetMargin": None,
+            "sourceLeanTheorem": TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE,
+            "proofGrade": False,
         }
         for index in range(DEGREE + 1)
     ]
@@ -326,6 +382,24 @@ def build_report(
     reflected_taylor_exact_poly_present = (
         target_scan[TARGET_REFLECTED_TAYLOR_EXACT_POLY]["status"] == "found"
     )
+    trigamma_series_prefix_tail_present = (
+        target_scan[TARGET_OMEGAPRIME_TRIGAMMA_SERIES_PREFIX_TAIL]["status"]
+        == "found"
+    )
+    closed_form_prefix_tail_present = (
+        target_scan[TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL]["status"]
+        == "found"
+    )
+    center_jet_prefix_tail_bridge_present = (
+        target_scan[TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE]["status"] == "found"
+    )
+    center_jet_shifted_tail_bridge_present = all(
+        [
+            trigamma_series_prefix_tail_present,
+            closed_form_prefix_tail_present,
+            center_jet_prefix_tail_bridge_present,
+        ]
+    )
     left_bridge_present = target_scan[TARGET_LEFT_BRIDGE]["status"] == "found"
     right_bridge_present = target_scan[TARGET_RIGHT_BRIDGE]["status"] == "found"
     omega_prime_contdiff16_present = (
@@ -339,15 +413,44 @@ def build_report(
         == "found"
     )
     receiver_schema_current = receiver_present and valid_integer_budget_checked_deriv_present
-    first_failure = (
-        CENTER_JET_FAILURE
+    if not receiver_schema_current:
+        first_failure = STALE_RECEIVER_SCHEMA_FAILURE
+        status = "fail_closed_stale_receiver_schema"
+    elif not center_jet_shifted_tail_bridge_present:
+        first_failure = CENTER_JET_FAILURE
+        status = "fail_closed_missing_center_jet_prefix_tail_bridge"
+    else:
+        first_failure = CENTER_JET_SHIFTED_TAIL_FAILURE
+        status = "fail_closed_missing_shifted_tail_rational_payload"
+
+    target_surface_status = (
+        "receiver_checked_deriv_and_prefix_tail_bridge_present_missing_rational_payload"
+        if receiver_schema_current and center_jet_shifted_tail_bridge_present
+        else
+        "receiver_checked_deriv_present_missing_prefix_tail_bridge"
         if receiver_schema_current
-        else STALE_RECEIVER_SCHEMA_FAILURE
-    )
-    status = (
-        "fail_closed_missing_center_jet_payload"
-        if receiver_schema_current
-        else "fail_closed_stale_receiver_schema"
+        else
+        "receiver_centered_taylor_bridge_and_smooth_present_missing_payload"
+        if (
+            receiver_present
+            and centered_bridge_present
+            and omega_prime_contdiff16_present
+            and valid_checked_smooth_present
+        )
+        else "receiver_and_centered_taylor_bridge_present_missing_payload"
+        if receiver_present and centered_bridge_present
+        else "receiver_present_right_half_bridge_present_missing_left_reflected_bridge"
+        if (
+            receiver_present
+            and reflected_deriv_present
+            and taylor_exact_poly_present
+            and right_bridge_present
+        )
+        else "receiver_present_missing_lagrange_split_bridge"
+        if receiver_present and reflected_deriv_present and taylor_exact_poly_present
+        else "receiver_present_missing_centered_taylor_bridge"
+        if receiver_present
+        else "planned_not_in_lean"
     )
 
     return {
@@ -358,9 +461,12 @@ def build_report(
         "receiverSchemaCurrent": receiver_schema_current,
         "failureCodes": [
             STALE_RECEIVER_SCHEMA_FAILURE,
-            CENTER_JET_FAILURE,
+            CENTER_JET_SHIFTED_TAIL_FAILURE,
             ORDER16_INTEGER_FAILURE,
             REMAINDER_BUDGET_FAILURE,
+        ],
+        "parentFailureCodes": [
+            CENTER_JET_FAILURE,
         ],
         "closedHistoricalFailures": [
             HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
@@ -399,32 +505,19 @@ def build_report(
             "reflectedTaylorWithinEvalExactPolyTheorem": (
                 TARGET_REFLECTED_TAYLOR_EXACT_POLY
             ),
-            "status": (
-                "receiver_checked_deriv_present_missing_concrete_payload"
-                if receiver_schema_current
-                else
-                "receiver_centered_taylor_bridge_and_smooth_present_missing_payload"
-                if (
-                    receiver_present
-                    and centered_bridge_present
-                    and omega_prime_contdiff16_present
-                    and valid_checked_smooth_present
-                )
-                else "receiver_and_centered_taylor_bridge_present_missing_payload"
-                if receiver_present and centered_bridge_present
-                else "receiver_present_right_half_bridge_present_missing_left_reflected_bridge"
-                if (
-                    receiver_present
-                    and reflected_deriv_present
-                    and taylor_exact_poly_present
-                    and right_bridge_present
-                )
-                else "receiver_present_missing_lagrange_split_bridge"
-                if receiver_present and reflected_deriv_present and taylor_exact_poly_present
-                else "receiver_present_missing_centered_taylor_bridge"
-                if receiver_present
-                else "planned_not_in_lean"
+            "trigammaSeriesPrefixTailTheorem": (
+                TARGET_OMEGAPRIME_TRIGAMMA_SERIES_PREFIX_TAIL
             ),
+            "omegaPrimeClosedFormPrefixTailTheorem": (
+                TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL
+            ),
+            "centerJetPrefixTailBridgeTheorem": (
+                TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE
+            ),
+            "centerJetPrefixTailBridgeChecked": (
+                center_jet_shifted_tail_bridge_present
+            ),
+            "status": target_surface_status,
             "statementAscii": (
                 "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound "
                 "{data : Step33Sub0OmegaPrimeTaylorRemainderCert} "
@@ -458,6 +551,7 @@ def build_report(
             "coeff": missing_coeff_slots("coefficient_enclosure"),
             "coeffErrorAbs": missing_coeff_slots("coefficient_error_bound"),
             "centerJet": missing_center_jet_slots(),
+            "centerJetPrefixTailRows": missing_center_jet_prefix_tail_rows(),
             "order16Abs": None,
             "order16": {
                 "condensedFactorBudgetBoundExact": None,
@@ -527,12 +621,18 @@ def build_report(
                 "payloads no longer need to supply hSmooth or hDerivEq"
             ),
             (
-                "for each j < 16, prove 0 <= coeffErrorAbs[j]"
+                "already proved locally: the OmegaPrime center-jet prefix-tail "
+                "bridge reduces each j < 16 center-jet enclosure to an exact "
+                "finite prefix plus a shifted-tail rational upper bound"
             ),
             (
-                "for each j < 16, prove |iteratedDeriv j "
-                "omegaPrimeClosedForm (1/20) / j! - coeff[j]| "
-                "<= coeffErrorAbs[j]"
+                "for each j < 16, choose prefixN and prove the exact finite "
+                "prefix rational plus shiftedTailUpperRational bounds "
+                "|iteratedDeriv j omegaPrimeClosedForm (1/20) / j! - coeff[j]|"
+            ),
+            (
+                "for each j < 16, prove 0 <= coeffErrorAbs[j] and close "
+                "centerJetMargin with the prefix-tail bound"
             ),
             (
                 "prove omegaPrimeOrder16CondensedFactorBudgetBound "
@@ -562,6 +662,9 @@ def build_report(
             ),
             "omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget": (
                 valid_integer_budget_checked_deriv_present
+            ),
+            "omegaPrimeCenterJetPrefixTailBridgeProved": (
+                center_jet_shifted_tail_bridge_present
             ),
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
@@ -608,7 +711,7 @@ def build_report(
         },
         "advisorySource": {
             "browserProshka": "advisory_only_not_proof_evidence",
-            "chosen": "A",
+            "chosen": "finite_prefix_shifted_tail_after_checked_bridge",
             "recommendedLeanBridge": TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV,
             "recommendedGenerator": GENERATOR_NAME,
             "firstFailure": first_failure,
@@ -620,7 +723,7 @@ def build_report(
                 LEFT_LAGRANGE_FAILURE,
                 LAGRANGE_SPLIT_FAILURE,
             ],
-            "nextFailureAfterBridge": CENTER_JET_FAILURE,
+            "nextFailureAfterBridge": CENTER_JET_SHIFTED_TAIL_FAILURE,
             "whyNotEndpointFiniteCover": (
                 "Endpoint finite-cover subdivision still needs the same "
                 "trigamma/polygamma source bounds, repeated over segments."
@@ -687,6 +790,10 @@ def render_md(report: dict[str, Any]) -> str:
         f"- reflected derivative theorem: `{report['targetLeanSurface']['reflectedIteratedDerivTheorem']}`",
         f"- Taylor exact-poly theorem: `{report['targetLeanSurface']['taylorWithinEvalExactPolyTheorem']}`",
         f"- reflected Taylor exact-poly theorem: `{report['targetLeanSurface']['reflectedTaylorWithinEvalExactPolyTheorem']}`",
+        f"- trigamma-series prefix-tail theorem: `{report['targetLeanSurface']['trigammaSeriesPrefixTailTheorem']}`",
+        f"- OmegaPrime closed-form prefix-tail theorem: `{report['targetLeanSurface']['omegaPrimeClosedFormPrefixTailTheorem']}`",
+        f"- center-jet prefix-tail theorem: `{report['targetLeanSurface']['centerJetPrefixTailBridgeTheorem']}`",
+        f"- center-jet prefix-tail checked: `{report['targetLeanSurface']['centerJetPrefixTailBridgeChecked']}`",
         f"- status: `{report['targetLeanSurface']['status']}`",
         "",
         "```text",
@@ -707,7 +814,8 @@ def render_md(report: dict[str, Any]) -> str:
         "",
         "- `coeff[0..15]`",
         "- `coeffErrorAbs[0..15]`",
-        "- `centerJet[0..15].{coeff,coeffErrorAbs,lower,upper,sourceLeanTheorem,sourceLeanChecked,lowerCheckPassed,upperCheckPassed,enclosurePassed}`",
+        "- `centerJet[0..15].{coeff,coeffErrorAbs,lower,upper,prefixN,prefixExactRational,shiftedTailUpperRational,prefixLeanChecked,tailBoundLeanChecked,centerJetMargin,sourceLeanTheorem,sourceLeanChecked,lowerCheckPassed,upperCheckPassed,enclosurePassed}`",
+        "- `centerJetPrefixTailRows[0..15].{jetIndex,prefixN,prefixExactRational,shiftedTailUpperRational,coeff,coeffErrorAbs,prefixLeanChecked,tailBoundLeanChecked,centerJetMargin,sourceLeanTheorem,proofGrade}`",
         "- `order16Abs`",
         "- `order16.{condensedFactorBudgetBoundExact,order16Abs,marginExact,integerBudgetPassed,sourceLeanTheorems,sourceLeanChecked}`",
         "- `remainder.{coeffErrorContributionExact,lagrangeContributionExact,requiredTotalExact,remainderAbs,marginExact,budgetPassed}`",
@@ -781,6 +889,16 @@ def render_md(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
+            "## Parent Failure Codes",
+            "",
+        ]
+    )
+    for code in report["parentFailureCodes"]:
+        lines.append(f"- `{code}`")
+
+    lines.extend(
+        [
+            "",
             "## Closed Historical Failures",
             "",
         ]
@@ -793,13 +911,17 @@ def render_md(report: dict[str, Any]) -> str:
             "",
             "## Decision",
             "",
-            "The checked-deriv receiver is now the active Lean surface:",
+            "The checked-deriv receiver and the center-jet prefix-tail bridge",
+            "are now the active Lean surface:",
             f"`{report['targetLeanSurface']['receiver']}`.",
-            "The old order-16 polygamma failure is historical, not the active",
-            "payload blocker. The next proof-producing step is a concrete",
-            "`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with center-jet",
-            "coefficient enclosures, the integer order-16 budget, and the exact",
-            "rational Taylor remainder budget.",
+            f"`{report['targetLeanSurface']['centerJetPrefixTailBridgeTheorem']}`.",
+            "The old order-16 polygamma failure is historical, and the broad",
+            "`CENTER_JET_PAYLOAD_GAP` is now only the parent blocker. The next",
+            "proof-producing step is a concrete",
+            "`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with per-jet",
+            "`prefixN`, exact finite-prefix rationals, shifted-tail rational",
+            "upper bounds, center-jet margins, the integer order-16 budget,",
+            "and the exact rational Taylor remainder budget.",
             "",
             "Until those payload fields exist locally, the correct fail code is:",
             "",

@@ -31827,3 +31827,59 @@ rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOme
 Boundary: no concrete rational shifted-tail payload, no generated
 `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, no A hbox,
 and no Step33/Step34/RH claim.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime payload schema v8 synced
+
+The OmegaPrime Taylor payload generator has been synced with the checked
+center-jet prefix-tail bridge.  The generated artifacts are now:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+Current schema and status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8
+status = fail_closed_missing_shifted_tail_rational_payload
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP
+omegaPrimeCenterJetPrefixTailBridgeProved = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The broad parent blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+```
+
+but it is no longer the active first failure when the receiver and prefix-tail
+bridge are present.  The active exact blocker is the missing proof-grade payload
+rows:
+
+```text
+jetIndex
+prefixN
+prefixExactRational
+shiftedTailUpperRational
+coeff
+coeffErrorAbs
+prefixLeanChecked
+tailBoundLeanChecked
+centerJetMargin
+```
+
+Validation for this schema-only sync:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: no Lean proof file was edited in this sync, no concrete rational
+prefix/tail payload exists yet, no generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, no A hbox,
+and no Step33/Step34/RH claim.

@@ -5,10 +5,10 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_missing_center_jet_payload`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
+- status: `fail_closed_missing_shifted_tail_rational_payload`
+- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
 - receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
@@ -35,7 +35,11 @@ not close Step33A.1-A.
 - reflected derivative theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv`
 - Taylor exact-poly theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly`
 - reflected Taylor exact-poly theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly`
-- status: `receiver_checked_deriv_present_missing_concrete_payload`
+- trigamma-series prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`
+- OmegaPrime closed-form prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16`
+- center-jet prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`
+- center-jet prefix-tail checked: `True`
+- status: `receiver_checked_deriv_and_prefix_tail_bridge_present_missing_rational_payload`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -55,7 +59,8 @@ Normalization note:
 
 - `coeff[0..15]`
 - `coeffErrorAbs[0..15]`
-- `centerJet[0..15].{coeff,coeffErrorAbs,lower,upper,sourceLeanTheorem,sourceLeanChecked,lowerCheckPassed,upperCheckPassed,enclosurePassed}`
+- `centerJet[0..15].{coeff,coeffErrorAbs,lower,upper,prefixN,prefixExactRational,shiftedTailUpperRational,prefixLeanChecked,tailBoundLeanChecked,centerJetMargin,sourceLeanTheorem,sourceLeanChecked,lowerCheckPassed,upperCheckPassed,enclosurePassed}`
+- `centerJetPrefixTailRows[0..15].{jetIndex,prefixN,prefixExactRational,shiftedTailUpperRational,coeff,coeffErrorAbs,prefixLeanChecked,tailBoundLeanChecked,centerJetMargin,sourceLeanTheorem,proofGrade}`
 - `order16Abs`
 - `order16.{condensedFactorBudgetBoundExact,order16Abs,marginExact,integerBudgetPassed,sourceLeanTheorems,sourceLeanChecked}`
 - `remainder.{coeffErrorContributionExact,lagrangeContributionExact,requiredTotalExact,remainderAbs,marginExact,budgetPassed}`
@@ -81,8 +86,9 @@ Normalization note:
 - already proved locally: reflected iterated derivative identity iteratedDeriv n (fun x => f (1/10 - x)) x = (-1)^n * iteratedDeriv n f (1/10 - x)
 - already proved locally: trigamma is analytic in the right half-plane and step22OmegaArchWeightDerivClosedForm is ContDiff Real 16
 - already proved locally: Valid.of_order16_integer_budget_checked_deriv uses omegaPrimeClosedForm_iteratedDeriv16_eq, so generated payloads no longer need to supply hSmooth or hDerivEq
-- for each j < 16, prove 0 <= coeffErrorAbs[j]
-- for each j < 16, prove |iteratedDeriv j omegaPrimeClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]
+- already proved locally: the OmegaPrime center-jet prefix-tail bridge reduces each j < 16 center-jet enclosure to an exact finite prefix plus a shifted-tail rational upper bound
+- for each j < 16, choose prefixN and prove the exact finite prefix rational plus shiftedTailUpperRational bounds |iteratedDeriv j omegaPrimeClosedForm (1/20) / j! - coeff[j]|
+- for each j < 16, prove 0 <= coeffErrorAbs[j] and close centerJetMargin with the prefix-tail bound
 - prove omegaPrimeOrder16CondensedFactorBudgetBound <= order16Abs
 - prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 
@@ -117,19 +123,22 @@ Normalization note:
 | --- | --- | --- |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9634` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10069` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `11463` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `11690` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10051` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9911` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9810` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10098` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9647` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10132` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `11370` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `11597` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9654` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9683` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9759` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10859` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16` | `10914` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10949` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
-| `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP` | `None` | `gap` |
@@ -154,6 +163,7 @@ Normalization note:
 - omegaPrimeHDerivEqProved: `True`
 - validIntegerBudgetCheckedDerivConstructorProved: `True`
 - omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget: `True`
+- omegaPrimeCenterJetPrefixTailBridgeProved: `True`
 - omegaPrimeCenterJetBoundsProved: `False`
 - omegaPrimeOrder16BoundProved: `False`
 - omegaPrimeOrder16IntegerBudgetProved: `False`
@@ -168,9 +178,13 @@ Normalization note:
 ## Failure Codes
 
 - `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL`
-- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
+
+## Parent Failure Codes
+
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
 
 ## Closed Historical Failures
 
@@ -183,16 +197,20 @@ Normalization note:
 
 ## Decision
 
-The checked-deriv receiver is now the active Lean surface:
+The checked-deriv receiver and the center-jet prefix-tail bridge
+are now the active Lean surface:
 `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
-The old order-16 polygamma failure is historical, not the active
-payload blocker. The next proof-producing step is a concrete
-`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with center-jet
-coefficient enclosures, the integer order-16 budget, and the exact
-rational Taylor remainder budget.
+`Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`.
+The old order-16 polygamma failure is historical, and the broad
+`CENTER_JET_PAYLOAD_GAP` is now only the parent blocker. The next
+proof-producing step is a concrete
+`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with per-jet
+`prefixN`, exact finite-prefix rationals, shifted-tail rational
+upper bounds, center-jet margins, the integer order-16 budget,
+and the exact rational Taylor remainder budget.
 
 Until those payload fields exist locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP
 ```

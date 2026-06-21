@@ -60451,3 +60451,63 @@ rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOme
 Boundary: bridge checked, but no generated rational prefix/tail payload, no
 concrete `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, and
 no Step33/Step34/RH claim.
+
+## 2026-06-21 Addendum -- OmegaPrime Taylor payload schema v8 synced
+
+Regenerated the OmegaPrime Taylor payload inventory from:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+The generator now detects the checked prefix-tail bridge:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+```
+
+and reports the exact remaining payload blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP
+```
+
+Generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8
+status = fail_closed_missing_shifted_tail_rational_payload
+receiverSchemaCurrent = true
+centerJetPrefixTailBridgeChecked = true
+omegaPrimeCenterJetPrefixTailBridgeProved = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+The generator now exposes `centerJetPrefixTailRows[0..15]` with:
+
+```text
+jetIndex
+prefixN
+prefixExactRational
+shiftedTailUpperRational
+coeff
+coeffErrorAbs
+prefixLeanChecked
+tailBoundLeanChecked
+centerJetMargin
+sourceLeanTheorem
+proofGrade
+```
+
+Validation for this schema sync:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: this is a fail-closed payload surface update only.  It does not
+provide rational prefix/tail values, does not emit Lean certificate data, does
+not close Step33A.1-A, and makes no Step33/Step34/RH claim.

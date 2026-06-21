@@ -37203,3 +37203,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no generated rational prefix/tail rows, no concrete
   `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, and no
   Step33/Step34/RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeTaylorPayloadSchemaV8
+
+- Status: schema/report sync only, not payload closure.
+- Updated
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py` from schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7` to `v8`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`
+  and
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md`.
+- The generator now detects the checked center-jet prefix-tail bridge
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`.
+- Current generated status is
+  `fail_closed_missing_shifted_tail_rational_payload`.
+- Current first failure is exactly
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`.
+- The older
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP` remains only as a parent
+  blocker; it must not hide the more precise shifted-tail rational payload gap.
+- New required row surface:
+  `centerJetPrefixTailRows[0..15].{jetIndex,prefixN,prefixExactRational,shiftedTailUpperRational,coeff,coeffErrorAbs,prefixLeanChecked,tailBoundLeanChecked,centerJetMargin,sourceLeanTheorem,proofGrade}`.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  `python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  and
+  `python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`.
+- Boundary: no Lean proof file was edited, no proof-grade rational prefix/tail
+  rows exist yet, no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no
+  Step33A.1-A closure, and no Step33/Step34/RH claim.
