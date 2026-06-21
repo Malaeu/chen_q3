@@ -33354,3 +33354,50 @@ rows `2..15`, does not prove the full-cell order-16 uniform bound, does not
 assemble the raw derivative, and does not close Step33A.1-A.  The live blocker
 is now exactly
 `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv shape-square derivative receiver checked
+
+Used the in-app browser/Computer Use to read the visible Proshka route answer.
+Proshka chose route B: build the reusable ShapeSqDeriv / iterated-Leibniz
+bridge, not manual rows `2..15`.  This is advisory only; the proof evidence is
+the local Lean check below.
+
+New checked theorem in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs
+```
+
+Meaning:
+
+```text
+future proof-grade bounds on iteratedDeriv (j+1) (shape^2) at the center
+and iteratedDeriv 17 (shape^2) on the cell now feed directly into
+ShapeSqDerivTaylorIntervalCert.Valid.
+```
+
+Regenerated payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v14
+status = fail_closed_missing_shapesq_deriv_product_leibniz_bounds_payload
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP
+proofSafeClosedFields = 13
+shapeSqDerivOrderShiftReceiverPresent = true
+shapeSqDerivShapeSqDerivativeReceiverPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only the normalization receiver
+`STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`.  It does not
+prove the product-Leibniz formula, does not provide Cauchy/derivative bounds
+for the shape function, does not prove rows `2..15`, does not prove the
+full-cell order-16 uniform bound, does not assemble the raw derivative, and
+does not close Step33A.1-A.  The live blocker is now exactly
+`STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`.

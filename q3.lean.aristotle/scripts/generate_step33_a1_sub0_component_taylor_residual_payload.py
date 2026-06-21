@@ -49,7 +49,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v13"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v14"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
 STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
 STATUS_AFTER_OMEGA_PRIME = (
@@ -84,6 +84,9 @@ STATUS_AFTER_SHAPESQ_COEFF1_ROW = (
 )
 STATUS_AFTER_SHAPESQ_ORDER_SHIFT_RECEIVER = (
     "fail_closed_missing_shapesq_deriv_iterated_leibniz_crosswalk_bounds_payload"
+)
+STATUS_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER = (
+    "fail_closed_missing_shapesq_deriv_product_leibniz_bounds_payload"
 )
 FIRST_FAILURE_MISSING_OMEGA_PRIME = (
     "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
@@ -130,6 +133,12 @@ SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_CLOSED = (
 )
 FIRST_FAILURE_AFTER_SHAPESQ_ORDER_SHIFT_RECEIVER = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP"
+)
+SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_CLOSED = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP"
+)
+FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP"
 )
 SHAPE_TAYLOR_RECEIVER_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP"
@@ -299,6 +308,10 @@ SHAPESQ_DERIV_COEFF_ABS_FROM_SHAPESQ_SUCC_THEOREM = (
 SHAPESQ_DERIV_ORDER16_FROM_SHAPESQ_ORDER17_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "shapeSqDeriv_order16_abs_of_shapeSq_order17_abs"
+)
+SHAPESQ_DERIV_VALID_FROM_SHAPESQ_DERIVATIVE_ABS_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "shapeSqDeriv_valid_of_shapeSq_derivative_abs"
 )
 SHAPESQ_DERIV_CENTER_COEFF0_LOWER_DEF = (
     "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated"
@@ -818,6 +831,46 @@ def shape_sq_deriv_order_shift_receiver_status(
     }
 
 
+def shape_sq_deriv_shape_sq_derivative_receiver_status(
+    *,
+    endpoint_support_path: Path,
+) -> dict[str, Any]:
+    endpoint_text = (
+        endpoint_support_path.read_text(encoding="utf-8")
+        if endpoint_support_path.exists()
+        else ""
+    )
+    receiver_found = (
+        SHAPESQ_DERIV_VALID_FROM_SHAPESQ_DERIVATIVE_ABS_THEOREM
+        in endpoint_text
+    )
+    return {
+        "leanFile": str(endpoint_support_path),
+        "validFromShapeSqDerivativeAbsTheorem": (
+            SHAPESQ_DERIV_VALID_FROM_SHAPESQ_DERIVATIVE_ABS_THEOREM
+        ),
+        "validFromShapeSqDerivativeAbsTheoremFound": receiver_found,
+        "proofGradeReceiver": receiver_found,
+        "failureClosed": (
+            SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_CLOSED
+            if receiver_found
+            else None
+        ),
+        "nextMissing": (
+            FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER
+            if receiver_found
+            else FIRST_FAILURE_AFTER_SHAPESQ_ORDER_SHIFT_RECEIVER
+        ),
+        "boundary": (
+            "This is only the Lean-checked normalization receiver from "
+            "bounds on iterated derivatives of the shape-square function "
+            "into ShapeSqDerivTaylorIntervalCert.Valid.  It does not prove "
+            "the product-Leibniz formula or any Cauchy/derivative bounds for "
+            "the shape function itself."
+        ),
+    }
+
+
 def shape_sq_deriv_center_coeff_rows_status(
     *,
     coeff_rows_path: Path,
@@ -966,6 +1019,7 @@ def component_taylor_status(
     shape_sq_deriv_center_coeff0_row_closed: bool,
     shape_sq_deriv_center_coeff1_row_closed: bool,
     shape_sq_deriv_order_shift_receiver_closed: bool,
+    shape_sq_deriv_shape_sq_derivative_receiver_closed: bool,
     shape_sq_deriv_source_closed: bool,
     shape_sq_taylor_source_closed: bool,
 ) -> dict[str, Any]:
@@ -1035,6 +1089,9 @@ def component_taylor_status(
         ),
         "shapeTaylor": {
             "status": (
+                "SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_FORMAL_MISSING_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD"
+                if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                else
                 "SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_FORMAL_MISSING_ITERATED_LEIBNIZ_CROSSWALK_BOUNDS"
                 if shape_sq_deriv_order_shift_receiver_closed
                 else
@@ -1077,9 +1134,15 @@ def component_taylor_status(
             "shapeSqDerivOrderShiftReceiverAvailable": (
                 shape_sq_deriv_order_shift_receiver_closed
             ),
+            "shapeSqDerivShapeSqDerivativeReceiverAvailable": (
+                shape_sq_deriv_shape_sq_derivative_receiver_closed
+            ),
             "shapeSqDerivTaylorSourceAvailable": shape_sq_deriv_source_closed,
             "shapeSqTaylorSourceAvailable": shape_sq_taylor_source_closed,
             "firstReceiverGap": (
+                FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER
+                if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                else
                 FIRST_FAILURE_AFTER_SHAPESQ_ORDER_SHIFT_RECEIVER
                 if shape_sq_deriv_order_shift_receiver_closed
                 else
@@ -1198,6 +1261,17 @@ def build_report(
         shape_sq_deriv_center_coeff_interval_receiver_closed
         and bool(shape_sq_deriv_order_shift_receiver["proofGradeReceiver"])
     )
+    shape_sq_deriv_shape_sq_derivative_receiver = (
+        shape_sq_deriv_shape_sq_derivative_receiver_status(
+            endpoint_support_path=endpoint_support_path
+        )
+    )
+    shape_sq_deriv_shape_sq_derivative_receiver_closed = (
+        shape_sq_deriv_order_shift_receiver_closed
+        and bool(
+            shape_sq_deriv_shape_sq_derivative_receiver["proofGradeReceiver"]
+        )
+    )
     shape_sq_taylor_source = shape_sq_taylor_source_status(
         endpoint_rational_import_path=endpoint_rational_import_path,
         chunk_taylor_checker_path=chunk_taylor_checker_path,
@@ -1205,6 +1279,15 @@ def build_report(
     )
     shape_sq_taylor_source_closed = bool(shape_sq_taylor_source["proofGrade"])
     if (
+        omega_anchor_closed
+        and shape_sq_deriv_center_coeff1_row_closed
+        and shape_sq_deriv_shape_sq_derivative_receiver_closed
+    ):
+        status = STATUS_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER
+        first_failure = (
+            FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER
+        )
+    elif (
         omega_anchor_closed
         and shape_sq_deriv_center_coeff1_row_closed
         and shape_sq_deriv_order_shift_receiver_closed
@@ -1271,6 +1354,10 @@ def build_report(
         closed_historical_failures.append(SHAPESQ_DERIV_CENTER_COEFF1_ROW_CLOSED)
     if shape_sq_deriv_order_shift_receiver_closed:
         closed_historical_failures.append(SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_CLOSED)
+    if shape_sq_deriv_shape_sq_derivative_receiver_closed:
+        closed_historical_failures.append(
+            SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_CLOSED
+        )
     omega_deriv_coeff = (
         linked_component_slots(
             "omegaDeriv",
@@ -1314,10 +1401,12 @@ def build_report(
                 SHAPESQ_DERIV_CENTER_COEFF0_ROW_CLOSED,
                 SHAPESQ_DERIV_CENTER_COEFF1_ROW_CLOSED,
                 SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_CLOSED,
+                SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_CLOSED,
                 FIRST_FAILURE_AFTER_SHAPESQ_CENTER_COEFF_BRIDGE,
                 FIRST_FAILURE_AFTER_SHAPESQ_COEFF0_ROW,
                 FIRST_FAILURE_AFTER_SHAPESQ_COEFF1_ROW,
                 FIRST_FAILURE_AFTER_SHAPESQ_ORDER_SHIFT_RECEIVER,
+                FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER,
                 FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER,
                 SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
                 "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
@@ -1409,6 +1498,9 @@ def build_report(
                 "shapeSqDerivOrderShiftReceiverSource": (
                     shape_sq_deriv_order_shift_receiver
                 ),
+                "shapeSqDerivShapeSqDerivativeReceiverSource": (
+                    shape_sq_deriv_shape_sq_derivative_receiver
+                ),
                 "shapeSqDerivCenterCoeffRowsSource": (
                     shape_sq_deriv_center_coeff_rows
                 ),
@@ -1464,6 +1556,9 @@ def build_report(
                 "shapeSqDerivOrderShiftReceiverPresent": (
                     shape_sq_deriv_order_shift_receiver_closed
                 ),
+                "shapeSqDerivShapeSqDerivativeReceiverPresent": (
+                    shape_sq_deriv_shape_sq_derivative_receiver_closed
+                ),
                 "shapeSqDerivCenterCoeffRowsClosedCount": (
                     shape_sq_deriv_center_coeff_rows["rowsClosedCount"]
                     if shape_sq_deriv_center_coeff0_row_closed
@@ -1503,6 +1598,11 @@ def build_report(
                         if shape_sq_deriv_order_shift_receiver_closed
                         else 0
                     )
+                    + (
+                        1
+                        if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                        else 0
+                    )
                     + (1 if shape_sq_taylor_source_closed else 0)
                 ),
                 "outLeanWritten": False,
@@ -1521,6 +1621,9 @@ def build_report(
                 else "missing_proof_grade_component_taylor_remainder"
             ),
             "shape": (
+                "shape_square_derivative_receiver_formal_missing_product_leibniz_bounds_payload"
+                if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                else
                 "order_shift_receiver_formal_missing_iterated_leibniz_crosswalk_bounds"
                 if shape_sq_deriv_order_shift_receiver_closed
                 else
@@ -1563,6 +1666,7 @@ def build_report(
                 shape_sq_deriv_center_coeff0_row_closed,
                 shape_sq_deriv_center_coeff1_row_closed,
                 shape_sq_deriv_order_shift_receiver_closed,
+                shape_sq_deriv_shape_sq_derivative_receiver_closed,
                 shape_sq_deriv_source_closed,
                 shape_sq_taylor_source_closed,
             ),
@@ -1580,6 +1684,9 @@ def build_report(
             ),
             "shapeSqDerivOrderShiftReceiverSource": (
                 shape_sq_deriv_order_shift_receiver
+            ),
+            "shapeSqDerivShapeSqDerivativeReceiverSource": (
+                shape_sq_deriv_shape_sq_derivative_receiver
             ),
             "shapeSqDerivCenterCoeffRowsSource": (
                 shape_sq_deriv_center_coeff_rows
@@ -1653,6 +1760,9 @@ def build_report(
                 "shapeSqDerivOrder16FromShapeSqOrder17": (
                     SHAPESQ_DERIV_ORDER16_FROM_SHAPESQ_ORDER17_THEOREM
                 ),
+                "shapeSqDerivValidFromShapeSqDerivativeAbs": (
+                    SHAPESQ_DERIV_VALID_FROM_SHAPESQ_DERIVATIVE_ABS_THEOREM
+                ),
                 "shapeSqDerivCenterCoeff0Lower": (
                     SHAPESQ_DERIV_CENTER_COEFF0_LOWER_DEF
                 ),
@@ -1680,6 +1790,9 @@ def build_report(
         "proshkaDecision": {
             "chosen": "B_component_taylor_route",
             "followupChosen": (
+                "B_shapesq_deriv_shape_square_derivative_receiver_after_proshka_browser"
+                if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                else
                 "B_shapesq_deriv_order_shift_receiver_after_proshka"
                 if shape_sq_deriv_order_shift_receiver_closed
                 else
@@ -1688,6 +1801,9 @@ def build_report(
                 else "A_shapesq_deriv_power_series_coeff0_row_leaf"
             ),
             "followupFailureClosed": (
+                SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_CLOSED
+                if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                else
                 SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_CLOSED
                 if shape_sq_deriv_order_shift_receiver_closed
                 else
@@ -1717,6 +1833,15 @@ def build_report(
                 "hard-to-audit theorem."
             ),
             "followupWhyA": (
+                "Proshka's browser-visible route advice selected the reusable "
+                "ShapeSqDeriv/iterated-Leibniz path, not manual row replay.  "
+                "The smallest local checked patch was a normalization receiver "
+                "from shape-square derivative bounds into "
+                "ShapeSqDerivTaylorIntervalCert.Valid.  It closes only that "
+                "receiver and leaves the product-Leibniz/Cauchy derivative "
+                "bounds payload as the first live gap."
+                if shape_sq_deriv_shape_sq_derivative_receiver_closed
+                else
                 "After Proshka selected route B, the smallest proof-moving "
                 "patch was an isolated structural order-shift receiver: "
                 "iterated derivatives of ShapeSqDeriv reduce to one higher "
@@ -1775,6 +1900,9 @@ def build_report(
             "shapeSqDerivOrderShiftReceiverProofGrade": (
                 shape_sq_deriv_order_shift_receiver_closed
             ),
+            "shapeSqDerivShapeSqDerivativeReceiverProofGrade": (
+                shape_sq_deriv_shape_sq_derivative_receiver_closed
+            ),
             "shapeSqDerivCenterCoeffRowsClosedCount": (
                 shape_sq_deriv_center_coeff_rows["rowsClosedCount"]
                 if shape_sq_deriv_center_coeff0_row_closed
@@ -1810,7 +1938,24 @@ def build_report(
 
 
 def render_md(report: dict[str, Any]) -> str:
-    if report["proofStatus"]["shapeSqDerivOrderShiftReceiverPresent"]:
+    if report["proofStatus"]["shapeSqDerivShapeSqDerivativeReceiverPresent"]:
+        decision_text = [
+            "The Omega integrated-polynomial derivative crosswalk, center",
+            "anchor payload, shape-square integrated Taylor receiver,",
+            "coarse constant shape-square Taylor source, ShapeSqDeriv",
+            "interval-certificate receiver, the ShapeSqDeriv center-coeff",
+            "bridge, coefficient rows `j = 0,1`, the structural",
+            "ShapeSqDeriv order-shift receiver, and the direct",
+            "shape-square derivative receiver into",
+            "`ShapeSqDerivTaylorIntervalCert.Valid` are now Lean-checked.",
+            "This does not prove the product-Leibniz formula, Cauchy bounds,",
+            "rows `2..15`, or the full-cell order-16 uniform bound.  The",
+            "first live proof gap is now the product-Leibniz/Cauchy",
+            "derivative-bound payload for the shape-square function.",
+            "Raw-derivative assembly, residual polynomial bounds, and the",
+            "final interval theorem remain open.",
+        ]
+    elif report["proofStatus"]["shapeSqDerivOrderShiftReceiverPresent"]:
         decision_text = [
             "The Omega integrated-polynomial derivative crosswalk, center",
             "anchor payload, shape-square integrated Taylor receiver,",
@@ -2049,6 +2194,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- shapeSq deriv coeff0 row available: `{report['shapeSqDerivCenterCoeffRowsSource']['proofGradeRow0']}`",
             f"- shapeSq deriv coeff1 row available: `{report['shapeSqDerivCenterCoeffRowsSource']['proofGradeRow1']}`",
             f"- shapeSq deriv order-shift receiver available: `{report['shapeSqDerivOrderShiftReceiverSource']['proofGradeReceiver']}`",
+            f"- shapeSq deriv shape-square derivative receiver available: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['proofGradeReceiver']}`",
             f"- shapeSq deriv coeff rows closed: `{report['shapeSqDerivCenterCoeffRowsSource']['rowsClosedCount']} / {report['shapeSqDerivCenterCoeffRowsSource']['rowsRequiredCount']}`",
             f"- shapeSq deriv order16 uniform bound available: `{report['shapeSqDerivCenterCoeffRowsSource']['order16UniformBoundPresent']}`",
             f"- shapeSq value Taylor source available: `{report['shapeSqTaylorSource']['proofGrade']}`",
@@ -2156,6 +2302,15 @@ def render_md(report: dict[str, Any]) -> str:
             f"- failure closed: `{report['shapeSqDerivOrderShiftReceiverSource']['failureClosed']}`",
             f"- next missing: `{report['shapeSqDerivOrderShiftReceiverSource']['nextMissing']}`",
             f"- boundary: {report['shapeSqDerivOrderShiftReceiverSource']['boundary']}",
+            "",
+            "## ShapeSq Deriv Shape-Square Derivative Receiver",
+            "",
+            f"- proof-grade receiver: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['proofGradeReceiver']}`",
+            f"- theorem: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['validFromShapeSqDerivativeAbsTheorem']}`",
+            f"- theorem found: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['validFromShapeSqDerivativeAbsTheoremFound']}`",
+            f"- failure closed: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['failureClosed']}`",
+            f"- next missing: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['nextMissing']}`",
+            f"- boundary: {report['shapeSqDerivShapeSqDerivativeReceiverSource']['boundary']}",
             "",
             "## ShapeSq Deriv Center-Coeff Rows",
             "",

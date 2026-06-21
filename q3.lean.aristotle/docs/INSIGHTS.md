@@ -38409,3 +38409,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   The missing object is a proof-grade product-Leibniz/Cauchy derivative-bound
   payload for the shape-square function.  Rows `2..15`, the full-cell order-16
   bound, raw-derivative assembly, and Step33A.1-A remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivShapeSquareDerivativeReceiverChecked
+
+- Used the in-app browser/Computer Use to read the visible Proshka route
+  answer.  Proshka chose the reusable ShapeSqDeriv / iterated-Leibniz route,
+  not manual rows `2..15`.  This is advisory only; local Lean checking is the
+  proof evidence.
+- Added and Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs`
+  in `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- The theorem converts future proof-grade bounds on
+  `iteratedDeriv (j+1) (shape^2)` at the center and `iteratedDeriv 17
+  (shape^2)` on the active cell into
+  `ShapeSqDerivTaylorIntervalCert.singleAbs ... .Valid`.
+- Regenerated the component Taylor residual payload to schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v14`; it records
+  `shapeSqDerivShapeSqDerivativeReceiverPresent = true`,
+  `shapeSqDerivOrderShiftReceiverPresent = true`, and
+  `proofSafeClosedFields = 13`.
+- Current live blocker is now
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`.
+- Boundary: the product-Leibniz formula, Cauchy/derivative bounds, rows
+  `2..15`, the full-cell order-16 bound, raw-derivative assembly, and
+  Step33A.1-A remain open.

@@ -5,14 +5,14 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v13`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v14`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
-- status: `fail_closed_missing_shapesq_deriv_iterated_leibniz_crosswalk_bounds_payload`
-- first failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
-- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP`
+- status: `fail_closed_missing_shapesq_deriv_product_leibniz_bounds_payload`
+- first failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`
+- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `12`
+- proof-safe closed fields: `13`
 - Lean emitted: `False`
 
 ## Target
@@ -72,7 +72,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 - omega: `formal_center_anchor_available_missing_component_assembly`
 - omegaDeriv: `formal_available_not_assembled`
-- shape: `order_shift_receiver_formal_missing_iterated_leibniz_crosswalk_bounds`
+- shape: `shape_square_derivative_receiver_formal_missing_product_leibniz_bounds_payload`
 - shapeDeriv: `endpoint_deriv_bounds_formal_missing_component_taylor_receiver`
 
 ## OmegaDeriv Taylor Source
@@ -104,7 +104,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylor: `FORMAL`
 - omegaDerivTaylor Lean theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 - omegaTaylor: `CROSSWALK_AND_CENTER_ANCHOR_FORMAL_MISSING_COMPONENT_ASSEMBLY`
-- shapeTaylor: `SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_FORMAL_MISSING_ITERATED_LEIBNIZ_CROSSWALK_BOUNDS`
+- shapeTaylor: `SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_FORMAL_MISSING_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD`
 - shapeDerivTaylor: `ENDPOINT_DERIV_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER`
 - shape endpoint bounds available: `True`
 - shapeSq integrated receiver available: `True`
@@ -115,10 +115,11 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSq deriv coeff0 row available: `True`
 - shapeSq deriv coeff1 row available: `True`
 - shapeSq deriv order-shift receiver available: `True`
+- shapeSq deriv shape-square derivative receiver available: `True`
 - shapeSq deriv coeff rows closed: `2 / 16`
 - shapeSq deriv order16 uniform bound available: `False`
 - shapeSq value Taylor source available: `True`
-- shape Taylor receiver gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
+- shape Taylor receiver gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`
 - shapeDeriv Taylor receiver gap: `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - assembly Lean written: `False`
 - overall proof safe: `False`
@@ -223,6 +224,15 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - next missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
 - boundary: This is only the Lean-checked structural receiver iteratedDeriv^j(ShapeSqDeriv) = iteratedDeriv^(j+1)(shape^2), plus coefficient-row and order-16 receiver interfaces.  It does not provide the product-Leibniz/Cauchy bounds for derivatives of the shape function, and it does not close rows 2..15 or the order-16 uniform bound.
 
+## ShapeSq Deriv Shape-Square Derivative Receiver
+
+- proof-grade receiver: `True`
+- theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs`
+- theorem found: `True`
+- failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`
+- next missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`
+- boundary: This is only the Lean-checked normalization receiver from bounds on iterated derivatives of the shape-square function into ShapeSqDerivTaylorIntervalCert.Valid.  It does not prove the product-Leibniz formula or any Cauchy/derivative bounds for the shape function itself.
+
 ## ShapeSq Deriv Center-Coeff Rows
 
 - proof-grade row0: `True`
@@ -279,6 +289,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqDerivCenterCoeff0RowPresent: `True`
 - shapeSqDerivCenterCoeff1RowPresent: `True`
 - shapeSqDerivOrderShiftReceiverPresent: `True`
+- shapeSqDerivShapeSqDerivativeReceiverPresent: `True`
 - shapeSqDerivCenterCoeffRowsClosedCount: `2`
 - shapeSqDerivCenterCoeffRowsRequiredCount: `16`
 - shapeSqDerivOrder16UniformBoundPresent: `False`
@@ -288,7 +299,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `12`
+- proofSafeClosedFields: `13`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -321,6 +332,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqDerivOrderShift: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ`
 - shapeSqDerivCoeffAbsFromShapeSqSucc: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs`
 - shapeSqDerivOrder16FromShapeSqOrder17: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs`
+- shapeSqDerivValidFromShapeSqDerivativeAbs: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs`
 - shapeSqDerivCenterCoeff0Lower: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated`
 - shapeSqDerivCenterCoeff0Upper: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Upper_generated`
 - shapeSqDerivCenterCoeff0Interval: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated`
@@ -336,16 +348,16 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Proshka Decision
 
 - chosen: `B_component_taylor_route`
-- follow-up chosen: `B_shapesq_deriv_order_shift_receiver_after_proshka`
-- follow-up failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP`
-- follow-up first missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
+- follow-up chosen: `B_shapesq_deriv_shape_square_derivative_receiver_after_proshka_browser`
+- follow-up failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`
+- follow-up first missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`
 - why not A: Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.
 - why not C: A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem.
-- follow-up why A: After Proshka selected route B, the smallest proof-moving patch was an isolated structural order-shift receiver: iterated derivatives of ShapeSqDeriv reduce to one higher derivative of shape-square.  This advances the interface without claiming rows 2..15 or the order-16 uniform bound.
+- follow-up why A: Proshka's browser-visible route advice selected the reusable ShapeSqDeriv/iterated-Leibniz path, not manual row replay.  The smallest local checked patch was a normalization receiver from shape-square derivative bounds into ShapeSqDerivTaylorIntervalCert.Valid.  It closes only that receiver and leaves the product-Leibniz/Cauchy derivative bounds payload as the first live gap.
 
 ## Failure Codes
 
-- `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP`
@@ -356,9 +368,11 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`
 - `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
@@ -373,11 +387,13 @@ The Omega integrated-polynomial derivative crosswalk, center
 anchor payload, shape-square integrated Taylor receiver,
 coarse constant shape-square Taylor source, ShapeSqDeriv
 interval-certificate receiver, the ShapeSqDeriv center-coeff
-bridge, coefficient rows `j = 0,1`, and the structural
-ShapeSqDeriv order-shift receiver are now Lean-checked.
-This does not close rows `2..15` or the full-cell order-16
-uniform bound.  The first live proof gap is now the
-product-Leibniz/Cauchy crosswalk and derivative-bound payload
-for the shape-square function itself.
+bridge, coefficient rows `j = 0,1`, the structural
+ShapeSqDeriv order-shift receiver, and the direct
+shape-square derivative receiver into
+`ShapeSqDerivTaylorIntervalCert.Valid` are now Lean-checked.
+This does not prove the product-Leibniz formula, Cauchy bounds,
+rows `2..15`, or the full-cell order-16 uniform bound.  The
+first live proof gap is now the product-Leibniz/Cauchy
+derivative-bound payload for the shape-square function.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.

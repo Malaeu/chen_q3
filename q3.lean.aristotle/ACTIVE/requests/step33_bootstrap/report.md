@@ -62675,3 +62675,52 @@ Boundary: this closes only
 `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP`.  Rows `2..15`, the
 full-cell order-16 bound, raw-derivative assembly, residual polynomial bounds,
 and the final Step33A.1-A interval theorem remain open.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv shape-square derivative receiver checked
+
+Used the in-app browser/Computer Use to read the visible Proshka route answer.
+Proshka selected the reusable ShapeSqDeriv / iterated-Leibniz route, not
+manual row replay.  The advice is route guidance only; local Lean validation is
+the proof evidence.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs
+```
+
+This theorem packages future proof-grade bounds on
+`iteratedDeriv (j+1) (shape^2)` at the center and `iteratedDeriv 17
+(shape^2)` on the active cell into
+`ShapeSqDerivTaylorIntervalCert.singleAbs ... .Valid`.
+
+Payload v14 now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v14
+status = fail_closed_missing_shapesq_deriv_product_leibniz_bounds_payload
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP
+proofSafeClosedFields = 13
+shapeSqDerivOrderShiftReceiverPresent = true
+shapeSqDerivShapeSqDerivativeReceiverPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP`.  It does not
+prove the product-Leibniz formula, does not provide Cauchy/derivative bounds,
+does not close rows `2..15`, does not prove the full-cell order-16 bound, does
+not assemble the raw derivative, and does not close Step33A.1-A.
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP
+```

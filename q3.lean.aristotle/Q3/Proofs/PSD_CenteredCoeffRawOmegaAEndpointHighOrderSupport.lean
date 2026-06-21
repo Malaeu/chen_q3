@@ -390,6 +390,65 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCo
   rw [primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff j]
   exact hCenterCoeffAbs j
 
+/-- Build the compact active ShapeSqDeriv interval certificate directly from
+shape-square derivative bounds after the order-shift bridge.
+
+This is the generator-facing receiver for the next payload layer: future
+product-Leibniz/Cauchy data may bound the `(j+1)`-st derivative of the
+shape-square function at the center and its order-17 derivative on the active
+cell.  This theorem performs only the checked normalization transfer into
+`ShapeSqDerivTaylorIntervalCert.Valid`; it does not supply those bounds. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs
+    {coeff coeffErrorAbs : Fin 16 -> Rat}
+    {order16Abs : Rat}
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (coeffErrorAbs j : Real))
+    (hShapeSqCenterDerivAbs :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv (j.1 + 1)
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm
+                11 ((3 : Real) / 10) t) ^ 2)
+            ((1 : Real) / 20) /
+            (Nat.factorial j.1 : Real) -
+          (coeff j : Real)‖ <=
+          (coeffErrorAbs j : Real))
+    (hShapeSqOrder17Abs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 17
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm
+                11 ((3 : Real) / 10) t) ^ 2)
+            eta‖ <=
+          (order16Abs : Real)) :
+    (ShapeSqDerivTaylorIntervalCert.singleAbs coeff coeffErrorAbs
+      order16Abs).Valid := by
+  refine
+    primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+      hCoeffErrorNonneg ?_ ?_
+  · intro j
+    have hCoeff :=
+      primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+        j
+    have hShift :=
+      primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+        j.1 ((1 : Real) / 20)
+    have hCoeffEq :
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+            j.1 =
+          iteratedDeriv (j.1 + 1)
+              (fun t : Real =>
+                (centeredBSplineImagTransformRealClosedForm
+                  11 ((3 : Real) / 10) t) ^ 2)
+              ((1 : Real) / 20) /
+            (Nat.factorial j.1 : Real) := by
+      rw [← hCoeff, hShift]
+    rw [hCoeffEq]
+    exact hShapeSqCenterDerivAbs j
+  · exact
+      primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs
+        hShapeSqOrder17Abs
+
 /-- Build the compact active ShapeSqDeriv interval certificate from
 two-sided rational enclosures for the chosen local power-series coefficients.
 
