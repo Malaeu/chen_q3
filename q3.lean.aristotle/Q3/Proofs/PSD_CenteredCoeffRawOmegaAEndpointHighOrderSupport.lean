@@ -10853,6 +10853,139 @@ theorem omegaPrimeClosedForm_iteratedDeriv_norm_le_half_tsum_majorant_of_le16
   rw [hhalf]
   exact mul_le_mul_of_nonneg_left hMajorant (by norm_num)
 
+/-- Finite-prefix plus shifted-tail version of the lower-order trigamma
+majorant.  Generated center-jet rows can use the finite prefix as the rational
+coefficient candidate and reserve the right-hand side for the tail error. -/
+theorem omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+    (m N : Nat) (hm : m <= 16) (eta : Real) :
+    ‖iteratedDeriv m omegaPrimeTrigammaSeries eta -
+        (Finset.range N).sum
+          (fun n : Nat =>
+            iteratedDeriv m
+              (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta)‖ <=
+      ∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N) := by
+  let f : Nat -> Real :=
+    fun n : Nat =>
+      iteratedDeriv m
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta
+  have hEq :
+      iteratedDeriv m omegaPrimeTrigammaSeries eta =
+        ∑' n : Nat, f n := by
+    simpa [f] using
+      omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16 m hm eta
+  have hBound :
+      ∀ n : Nat, ‖f n‖ <= omegaPrimeTrigammaDerivMajorant m n := by
+    intro n
+    simpa [f, iteratedDerivWithin_univ] using
+      omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant
+        m n eta
+  have hSummDeriv : Summable f :=
+    (omegaPrimeTrigammaDerivMajorant_summable m).of_norm_bounded hBound
+  have hTailSummDeriv : Summable (fun k : Nat => f (k + N)) := by
+    simpa using (summable_nat_add_iff N).2 hSummDeriv
+  have hTailMajorant :
+      Summable (fun k : Nat => omegaPrimeTrigammaDerivMajorant m (k + N)) := by
+    simpa using
+      (summable_nat_add_iff N).2 (omegaPrimeTrigammaDerivMajorant_summable m)
+  have hsplit :
+      (Finset.range N).sum f + (∑' k : Nat, f (k + N)) =
+        ∑' n : Nat, f n := by
+    simpa using (hSummDeriv.sum_add_tsum_nat_add N)
+  have hTailEq :
+      iteratedDeriv m omegaPrimeTrigammaSeries eta - (Finset.range N).sum f =
+        ∑' k : Nat, f (k + N) := by
+    rw [hEq, ← hsplit]
+    ring
+  have hNorm :
+      ‖∑' k : Nat, f (k + N)‖ <=
+        ∑' k : Nat, ‖f (k + N)‖ :=
+    norm_tsum_le_tsum_norm hTailSummDeriv.norm
+  have hAbsSum :
+      (∑' k : Nat, ‖f (k + N)‖) <=
+        ∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N) := by
+    exact Summable.tsum_le_tsum
+      (fun k => hBound (k + N)) hTailSummDeriv.norm hTailMajorant
+  rw [hTailEq]
+  exact hNorm.trans hAbsSum
+
+/-- Closed-form OmegaPrime finite-prefix plus shifted-tail bridge.  This is the
+Lean-side bridge requested by the center-jet payload route before inserting
+concrete rational prefix and shifted-tail bounds. -/
+theorem omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16
+    (m N : Nat) (hm : m <= 16) (eta : Real) :
+    ‖iteratedDeriv m omegaPrimeClosedForm eta -
+        (-1 / 2 : Real) *
+          (Finset.range N).sum
+            (fun n : Nat =>
+              iteratedDeriv m
+                (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta)‖ <=
+      (1 / 2 : Real) *
+        (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N)) := by
+  have hfun :
+      omegaPrimeClosedForm =
+        fun t : Real => (-1 / 2 : Real) * omegaPrimeTrigammaSeries t := by
+    funext t
+    rw [omegaPrimeClosedForm_eq_trigamma_series t]
+    ring
+  have hmWithTop : (m : WithTop ENat) <= (16 : Nat) := by
+    exact_mod_cast hm
+  have hSmooth :
+      ContDiffAt Real m omegaPrimeTrigammaSeries eta :=
+    (omegaPrimeTrigammaSeries_contDiffAt16 eta).of_le hmWithTop
+  have hTail :=
+    omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+      m N hm eta
+  rw [hfun]
+  rw [iteratedDeriv_const_mul hSmooth (-1 / 2 : Real)]
+  rw [← mul_sub, norm_mul, Real.norm_eq_abs]
+  have hhalf : |(-1 / 2 : Real)| = (1 / 2 : Real) := by
+    norm_num
+  rw [hhalf]
+  exact mul_le_mul_of_nonneg_left hTail (by norm_num)
+
+/-- Factorial-normalized center-jet version of the finite-prefix plus
+shifted-tail bridge.  The coefficient candidate is the exact finite prefix
+multiplied by `m!⁻¹ * (-1/2)`, matching the Taylor `centerJet` normalization. -/
+theorem omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+    (m N : Nat) (hm : m <= 16) (eta : Real) :
+    ‖((Nat.factorial m : Real)⁻¹ *
+          iteratedDeriv m omegaPrimeClosedForm eta) -
+        (((Nat.factorial m : Real)⁻¹ * (-1 / 2 : Real)) *
+          (Finset.range N).sum
+            (fun n : Nat =>
+              iteratedDeriv m
+                (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta))‖ <=
+      (Nat.factorial m : Real)⁻¹ *
+        ((1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N))) := by
+  let a : Real := (Nat.factorial m : Real)⁻¹
+  let pref : Real :=
+    (Finset.range N).sum
+      (fun n : Nat =>
+        iteratedDeriv m
+          (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta)
+  have hTail :=
+    omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16
+      m N hm eta
+  have haNonneg : 0 <= a := by
+    dsimp [a]
+    positivity
+  have hExpr :
+      a * iteratedDeriv m omegaPrimeClosedForm eta -
+          (a * (-1 / 2 : Real)) * pref =
+        a * (iteratedDeriv m omegaPrimeClosedForm eta -
+          (-1 / 2 : Real) * pref) := by
+    ring
+  have hScaled :
+      ‖a * (iteratedDeriv m omegaPrimeClosedForm eta -
+          (-1 / 2 : Real) * pref)‖ <=
+        a * ((1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N))) := by
+    rw [norm_mul, Real.norm_eq_abs, abs_of_nonneg haNonneg]
+    exact mul_le_mul_of_nonneg_left hTail haNonneg
+  rw [← hExpr] at hScaled
+  simpa [a, pref] using hScaled
+
 theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
     (eta : Real)
     (hSmoothSeries : ContDiffAt Real 16 omegaPrimeTrigammaSeries eta)

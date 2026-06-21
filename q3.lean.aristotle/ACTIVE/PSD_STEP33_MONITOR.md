@@ -31769,3 +31769,61 @@ rational finite prefix and bound only the shifted tail by
 that bridge to instantiate the generated
 `Step33Sub0OmegaPrimeTaylorRemainderCert` `centerJet`/`coeffErrorAbs` fields.
 No Step33A.1-A closure exists yet.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime center-jet prefix-tail bridge checked
+
+The finite-prefix plus shifted-tail Lean bridge requested above is now checked
+in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+```
+
+What this closes:
+
+```text
+centerJet(m) - exact_finite_prefix(m,N)
+  is bounded by
+  (m!)^-1 * (1/2) * sum_k omegaPrimeTrigammaDerivMajorant m (k + N).
+```
+
+The bridge is formal.  The remaining payload work is now arithmetic/certificate
+generation:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP
+```
+
+Required next payload fields:
+
+```text
+jetIndex
+prefixN
+prefixExactRational
+shiftedTailUpperRational
+coeff
+coeffErrorAbs
+prefixLeanChecked
+tailBoundLeanChecked
+centerJetMargin
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Boundary: no concrete rational shifted-tail payload, no generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, no A hbox,
+and no Step33/Step34/RH claim.

@@ -37176,3 +37176,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   upper-bound certificate for the shifted tail, no generated
   `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, and no
   Step33/Step34/RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeCenterJetPrefixTailBridgeChecked
+
+- Status: checked Lean bridge, not payload closure.
+- Added and Lean-checked:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`.
+- The final theorem proves the Taylor-center normalized bridge:
+  exact finite prefix times `m!^-1 * (-1/2)` plus a shifted-tail error bounded
+  by `m!^-1 * (1/2) * sum_k omegaPrimeTrigammaDerivMajorant m (k + N)`.
+- Local search found the relevant in-repo precedent in `Q3/DigammaSeries.lean`
+  (`real_tsum_bounds_of_sum_range_tail_interval` and
+  `real_tsum_bounds_of_sum_range_tail_abs`), both using
+  `hf.sum_add_tsum_nat_add N`.
+- External primary-source check found the same Mathlib route in
+  `Mathlib.Topology.Algebra.InfiniteSum.NatInt`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  and a hole scan for `sorry|admit|exact?`.
+- Current exact blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`.
+- Boundary: no generated rational prefix/tail rows, no concrete
+  `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, and no
+  Step33/Step34/RH claim.

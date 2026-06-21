@@ -60398,3 +60398,56 @@ route advice only; the proof object still has to be produced locally.
 Boundary: no finite-prefix plus shifted-tail Lean bridge, no shifted-tail
 rational upper-bound payload, no generated Lean certificate, no A hbox, no
 Step33A.1-A closure, and no Step33/Step34/RH claim.
+
+## 2026-06-21 Addendum -- OmegaPrime center-jet prefix-tail bridge checked
+
+Implemented and Lean-checked the finite-prefix plus shifted-tail bridge for the
+OmegaPrime lower-order center jets:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+```
+
+The final theorem gives the Taylor-center normalization directly: after
+subtracting the exact finite prefix multiplied by `m!^-1 * (-1/2)`, the error is
+bounded by `m!^-1 * (1/2)` times the shifted majorant tail.
+
+Local search notes:
+
+```text
+q3_docs: OmegaPrime centerJet finite prefix shifted tail tsum majorant
+q3_docs: Summable sum_add_tsum_nat_add center jet coeffErrorAbs omegaPrime
+q3_docs: Step33Sub0OmegaPrimeTaylorRemainderCert centerJet prefix tail bound
+q3_docs: omegaPrimeTrigammaDerivMajorant shifted tail Nat.add tsum prefix Lean
+```
+
+Useful local precedent:
+
+```lean
+Q3.DigammaSeries.real_tsum_bounds_of_sum_range_tail_interval
+Q3.DigammaSeries.real_tsum_bounds_of_sum_range_tail_abs
+```
+
+External primary-source check: Mathlib
+`Mathlib.Topology.Algebra.InfiniteSum.NatInt` documents the needed
+`sum_add_tsum_nat_add` split.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Boundary: bridge checked, but no generated rational prefix/tail payload, no
+concrete `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, and
+no Step33/Step34/RH claim.
