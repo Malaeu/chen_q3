@@ -37383,3 +37383,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this checks only `m = 0`, `N = 1`; generated v10 rows still have
   `prefixLeanChecked = false`, `proofGrade = false`, and there is no generated
   `Step33Sub0OmegaPrimeTaylorRemainderCert` / Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimePrefixRatComplexBridgeAttempt
+
+- Status: in-progress bridge attempt, not prefix closure.
+- Target blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_COMPLEX_CAST_BRIDGE_GAP`.
+- Target file:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Local q3_docs search found no ready-made OmegaPrime RatComplex bridge; the
+  closest reusable evidence is the generated rational-row discipline from
+  PrimeCert notes plus the existing `DigammaSeries` / local OmegaPrime term
+  formulas.
+- External primary-source Mathlib docs confirmed the key API:
+  `Rat.cast_sum` in `Mathlib.Data.Rat.BigOperators` casts finite rational
+  `Finset` sums into any characteristic-zero division ring.
+- Local `#check`/smoke evidence confirmed the needed complex-power normal form:
+  after the local term formula, the exponent `2` is a `zpow`, so the robust
+  arithmetic bridge uses `zpow_two` before `Complex.mul_re`/`Complex.mul_im`.
+- First implementation target: add a minimal rational-complex evaluator for
+  the `m = 0` center term, prove its cast to the existing `Real` prefix term in
+  the already checked `N = 1` smoke case, and keep generated `prefixN = 128`
+  rows fail-closed until a reusable sum-level bridge exists.
+- Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no change
+  to `prefixLeanChecked`, and no Step33A.1-A / Step33 / Step34 / RH claim.
