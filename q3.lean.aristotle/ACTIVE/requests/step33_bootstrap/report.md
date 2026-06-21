@@ -61984,3 +61984,55 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
 Boundary: the old constant ShapeSqDeriv source remains proof-grade but
 budget-dead for this route.  This sync emits no Lean payload and does not close
 Step33A.1-A.
+
+## 2026-06-21 -- ShapeSqDeriv one-segment zero-cell bookkeeping checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 ShapeSqDeriv interval-certificate lane.
+
+Browser/Proshka was used through the in-app browser as route advice only.  The
+accepted artifact is the local Lean check below.
+
+Lean helper added in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+ShapeSqDerivTaylorIntervalCert.single
+ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment
+```
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+proofSafeClosedFields = 7
+oneSegmentBookkeepingClosed = true
+outLeanWritten = false
+```
+
+Result: zero-cell segment count, segment cover, nonempty interval, and
+order-16 budget plumbing are no longer free-form generator bookkeeping for the
+active `[0,1/10]` ShapeSqDeriv interval cert.  The generator still must supply
+the proof-grade center-jet rows and the uniform order-16 row.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Validation:
+
+```bash
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+git diff --check
+```
+
+Boundary: this does not prove the ShapeSqDeriv interval rows, does not emit a
+Lean payload, and does not close Step33A.1-A.  It only narrows the next patch to
+the analytic zero-cell row proof.

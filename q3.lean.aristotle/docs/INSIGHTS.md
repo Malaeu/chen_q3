@@ -38042,3 +38042,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no Lean payload was emitted.  The next proof-producing object is
   still the concrete rational interval rows proving
   `ShapeSqDerivTaylorIntervalCert.Valid`.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivOneSegmentBookkeepingChecked
+
+- Browser/Proshka was used through the in-app browser as advisory route review;
+  the useful recommendation was to keep the intermediate Lean receiver path and
+  not treat a Python report as proof evidence.  The accepted artifact is the
+  local Lean check.
+- Added and checked:
+  `ShapeSqDerivTaylorIntervalCert.single` and
+  `ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment`.
+- The helper turns proof-grade rows for the active zero cell `[0,1/10]` into a
+  `ShapeSqDerivTaylorIntervalCert.Valid` object without requiring the generator
+  to replay segment-count, cover, nonempty, and order-16 absolute-budget
+  plumbing by hand.
+- Regenerated `step33_a1_sub0_component_taylor_residual_payload.json/.md` at
+  schema v7.  It reports `oneSegmentBookkeepingClosed = true` while preserving
+  `status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert`,
+  `firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`,
+  and `proofSafeClosedFields = 7`.
+- Validation passed: targeted `lake env lean`, targeted `q3_check`,
+  generator regeneration, Python compile, scoped marker scan over touched Lean
+  and Python files, and `git diff --check`.
+- Boundary: this is not the analytic zero-cell proof and not Step33A.1-A
+  closure.  The next patch must prove the actual center-jet interval rows and
+  the uniform order-16 bound for
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` on `[0,1/10]`.

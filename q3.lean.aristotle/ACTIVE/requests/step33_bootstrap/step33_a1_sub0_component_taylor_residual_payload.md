@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
 - status: `fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert`
@@ -170,9 +170,14 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - Taylor input theorem found: `True`
 - source theorem: `ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource`
 - source theorem found: `True`
+- one-segment constructor: `ShapeSqDerivTaylorIntervalCert.single`
+- one-segment constructor found: `True`
+- one-segment validity constructor: `ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment`
+- one-segment validity constructor found: `True`
+- one-segment bookkeeping closed: `True`
 - failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP`
 - next missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`
-- boundary: This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  It is not the generated ShapeSqDeriv payload and it does not close the coarse constant-source budget failure.
+- boundary: This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  The one-segment constructor closes zero-cell bookkeeping only; it is not the generated ShapeSqDeriv payload and it does not close the coarse constant-source budget failure.
 
 ## ShapeSq Value Taylor Source
 

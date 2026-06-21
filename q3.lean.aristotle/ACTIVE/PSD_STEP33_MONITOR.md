@@ -32744,3 +32744,36 @@ Taylor budget for the active zero cell.
 
 Boundary: Step33A.1-A remains open.  This is only ledger synchronization after
 the checked receiver; no generated Lean payload was emitted.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv one-segment zero-cell helper checked
+
+Lean now checks the one-segment constructor for the active zero-cell
+ShapeSqDeriv interval certificate:
+
+```lean
+ShapeSqDerivTaylorIntervalCert.single
+ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment
+```
+
+The regenerated component Taylor residual payload now reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+oneSegmentBookkeepingClosed = true
+proofSafeClosedFields = 7
+outLeanWritten = false
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next proof object: proof-grade rational center-jet rows and a uniform order-16
+bound for `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` on `[0,1/10]`.
+
+Boundary: this is zero-cell bookkeeping only.  No analytic interval rows were
+proved, no generated Lean payload was emitted, and Step33A.1-A remains open.

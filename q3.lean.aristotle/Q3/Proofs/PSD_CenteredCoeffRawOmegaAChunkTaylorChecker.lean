@@ -10516,6 +10516,26 @@ structure ShapeSqDerivTaylorIntervalCert where
 
 namespace ShapeSqDerivTaylorIntervalCert
 
+/-- One-segment data for the active zero cell `[0, 1/10]`.
+
+The analytic interval rows are still supplied separately through `Valid`; this
+constructor only fixes the bookkeeping for the current first subchunk. -/
+def single
+    (coeff coeffErrorAbs jetLower jetUpper : Fin 16 -> Rat)
+    (order16Abs order16Lower order16Upper : Rat) :
+    ShapeSqDerivTaylorIntervalCert where
+  coeff := coeff
+  coeffErrorAbs := coeffErrorAbs
+  jetLower := jetLower
+  jetUpper := jetUpper
+  order16Abs := order16Abs
+  segmentCount := 1
+  segmentCount_pos := by norm_num
+  segmentL := fun _ => 0
+  segmentU := fun _ => (1 / 10 : Rat)
+  order16Lower := fun _ => order16Lower
+  order16Upper := fun _ => order16Upper
+
 /-- Proof-bearing validity predicate for
 `ShapeSqDerivTaylorIntervalCert`.
 
@@ -10562,6 +10582,64 @@ structure Valid (data : ShapeSqDerivTaylorIntervalCert) : Prop where
         (data.order16Upper i : Real) <= (data.order16Abs : Real)
 
 namespace Valid
+
+/-- Build validity for the one-segment active zero-cell certificate once the
+generator supplies proof-grade center-jet and order-16 interval rows. -/
+theorem of_single_segment
+    {coeff coeffErrorAbs jetLower jetUpper : Fin 16 -> Rat}
+    {order16Abs order16Lower order16Upper : Rat}
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (coeffErrorAbs j : Real))
+    (hCenterJetRows :
+      ∀ j : Fin 16,
+        (jetLower j : Real) <=
+          iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            ((1 : Real) / 20) / (Nat.factorial j.1 : Real) ∧
+        iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            ((1 : Real) / 20) / (Nat.factorial j.1 : Real) <=
+          (jetUpper j : Real))
+    (hCenterJetBudget :
+      ∀ j : Fin 16,
+        (coeff j : Real) - (coeffErrorAbs j : Real) <=
+          (jetLower j : Real) ∧
+        (jetUpper j : Real) <=
+          (coeff j : Real) + (coeffErrorAbs j : Real))
+    (hOrder16Rows :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        (order16Lower : Real) <=
+          iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta ∧
+        iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta <=
+          (order16Upper : Real))
+    (hOrder16Budget :
+      -(order16Abs : Real) <= (order16Lower : Real) ∧
+        (order16Upper : Real) <= (order16Abs : Real)) :
+    (single coeff coeffErrorAbs jetLower jetUpper order16Abs order16Lower
+      order16Upper).Valid := by
+  refine
+    { coeffErrorNonneg := ?_
+      segment_nonempty := ?_
+      centerJetRows := ?_
+      centerJetBudget := ?_
+      cover := ?_
+      order16Rows := ?_
+      order16Budget := ?_ }
+  · intro j
+    simpa [single] using hCoeffErrorNonneg j
+  · intro i
+    simp [single]
+  · intro j
+    simpa [single] using hCenterJetRows j
+  · intro j
+    simpa [single] using hCenterJetBudget j
+  · intro eta heta
+    refine ⟨⟨0, by norm_num [single]⟩, ?_⟩
+    simpa [single] using heta
+  · intro i eta heta
+    exact hOrder16Rows eta (by simpa [single] using heta)
+  · intro i
+    simpa [single] using hOrder16Budget
 
 /-- Extract the two Taylor-source inputs required by the existing
 shape-square derivative receiver from a proof-bearing interval certificate. -/

@@ -49,7 +49,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
 STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
 STATUS_AFTER_OMEGA_PRIME = (
@@ -209,6 +209,12 @@ SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_INPUTS = (
 )
 SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM = (
     "ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_DEF = (
+    "ShapeSqDerivTaylorIntervalCert.single"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM = (
+    "ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment"
 )
 SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP"
@@ -517,6 +523,15 @@ def shape_sq_deriv_interval_cert_receiver_status(
         SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM in checker_text
         or "theorem toShapeSqDerivTaylorSource" in checker_text
     )
+    single_def_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_DEF in checker_text
+        or "def single\n    (coeff coeffErrorAbs jetLower jetUpper : Fin 16 -> Rat)"
+        in checker_text
+    )
+    single_valid_theorem_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM in checker_text
+        or "theorem of_single_segment" in checker_text
+    )
     proof_grade = (
         source_found
         and structure_found
@@ -538,6 +553,15 @@ def shape_sq_deriv_interval_cert_receiver_status(
             SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM
         ),
         "toShapeSqDerivTaylorSourceFound": source_theorem_found,
+        "singleConstructor": SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_DEF,
+        "singleConstructorFound": single_def_found,
+        "singleValidityConstructor": (
+            SHAPESQ_DERIV_INTERVAL_CERT_SINGLE_VALID_THEOREM
+        ),
+        "singleValidityConstructorFound": single_valid_theorem_found,
+        "oneSegmentBookkeepingClosed": (
+            single_def_found and single_valid_theorem_found
+        ),
         "proofGradeReceiver": proof_grade,
         "failureClosed": (
             SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED
@@ -551,7 +575,8 @@ def shape_sq_deriv_interval_cert_receiver_status(
         ),
         "boundary": (
             "This is only the Lean-checked interval-certificate receiver for "
-            "future rational center-jet and order-16 rows.  It is not the "
+            "future rational center-jet and order-16 rows.  The one-segment "
+            "constructor closes zero-cell bookkeeping only; it is not the "
             "generated ShapeSqDeriv payload and it does not close the coarse "
             "constant-source budget failure."
         ),
@@ -1406,6 +1431,11 @@ def render_md(report: dict[str, Any]) -> str:
             f"- Taylor input theorem found: `{report['shapeSqDerivIntervalCertReceiverSource']['toTaylorInputsFound']}`",
             f"- source theorem: `{report['shapeSqDerivIntervalCertReceiverSource']['toShapeSqDerivTaylorSource']}`",
             f"- source theorem found: `{report['shapeSqDerivIntervalCertReceiverSource']['toShapeSqDerivTaylorSourceFound']}`",
+            f"- one-segment constructor: `{report['shapeSqDerivIntervalCertReceiverSource']['singleConstructor']}`",
+            f"- one-segment constructor found: `{report['shapeSqDerivIntervalCertReceiverSource']['singleConstructorFound']}`",
+            f"- one-segment validity constructor: `{report['shapeSqDerivIntervalCertReceiverSource']['singleValidityConstructor']}`",
+            f"- one-segment validity constructor found: `{report['shapeSqDerivIntervalCertReceiverSource']['singleValidityConstructorFound']}`",
+            f"- one-segment bookkeeping closed: `{report['shapeSqDerivIntervalCertReceiverSource']['oneSegmentBookkeepingClosed']}`",
             f"- failure closed: `{report['shapeSqDerivIntervalCertReceiverSource']['failureClosed']}`",
             f"- next missing: `{report['shapeSqDerivIntervalCertReceiverSource']['nextMissing']}`",
             f"- boundary: {report['shapeSqDerivIntervalCertReceiverSource']['boundary']}",

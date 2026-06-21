@@ -17969,6 +17969,35 @@ Boundary: no Lean assembly theorem was emitted.  The missing proof-grade inputs
 are `omega`, `shape`, and `shapeDeriv` Taylor/remainder sources, plus the
 raw-derivative assembly and residual range certificate.
 
+## 2026-06-21 Addendum -- ShapeSqDeriv one-segment zero-cell helper
+
+The active ShapeSqDeriv interval-certificate lane now has a checked one-segment
+bookkeeping helper for `[0,1/10]`:
+
+```lean
+ShapeSqDerivTaylorIntervalCert.single
+ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment
+```
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v7
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+oneSegmentBookkeepingClosed = true
+proofSafeClosedFields = 7
+```
+
+Next live gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Boundary: this closes only zero-cell segment bookkeeping.  The proof-grade
+center-jet rows and uniform order-16 bound are still missing.
+
 ## 2026-06-21 EOF Addendum -- shape endpoint-to-Taylor receiver gap named
 
 The component Taylor residual payload now inventories the existing formal
