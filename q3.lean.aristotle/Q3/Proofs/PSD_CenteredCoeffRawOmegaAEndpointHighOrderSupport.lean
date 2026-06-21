@@ -25,6 +25,37 @@ namespace Step33
 open MeasureTheory
 open scoped BigOperators
 
+/-- Local removable-singularity bridge from the sine power series to the
+project sinc convention used by the Step33 shape terms. -/
+theorem realSinc_hasFPowerSeriesAt_zero_of_sin
+    {p : FormalMultilinearSeries Real Real Real}
+    (hp : HasFPowerSeriesAt Real.sin p (0 : Real)) :
+    HasFPowerSeriesAt realSinc p.fslope (0 : Real) := by
+  rw [realSinc_eq_sinc, Real.sinc_eq_dslope]
+  exact HasFPowerSeriesAt.has_fpower_series_dslope_fslope hp
+
+/-- Explicit even power-series sum for the project sinc convention. -/
+theorem realSinc_hasSum_even_powerSeries (x : Real) :
+    HasSum
+      (fun n : Nat =>
+        ((-1 : Real) ^ n * x ^ (2 * n)) /
+          (Nat.factorial (2 * n + 1) : Real))
+      (realSinc x) := by
+  by_cases hx : x = 0
+  · subst x
+    simpa [realSinc_zero] using
+      (hasSum_single (α := Real)
+        (f := fun n : Nat =>
+          ((-1 : Real) ^ n * (0 : Real) ^ (2 * n)) /
+            (Nat.factorial (2 * n + 1) : Real))
+        0
+        (fun n hn => by simp [hn]))
+  · rw [realSinc_of_ne_zero hx]
+    refine HasSum.congr_fun ((Real.hasSum_sin x).div_const x) ?_
+    intro n
+    field_simp [hx]
+    rw [show x ^ (2 * n + 1) = x ^ (2 * n) * x by rw [pow_succ]]
+
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +
     Complex.I * (((1 : Real) / (40 : Real) : Complex))

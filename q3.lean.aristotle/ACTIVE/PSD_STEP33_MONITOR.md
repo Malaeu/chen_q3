@@ -32824,3 +32824,41 @@ follow-up if the local power-series API fits cleanly.
 Boundary: this is still zero-cell bookkeeping only.  It does not prove the
 center-jet rows, does not prove the order-16 row, does not emit a Lean payload,
 and does not close Step33A.1-A.
+
+## 2026-06-21 Current EOF State -- realSinc power-series bridge checked
+
+Lean now checks the removable-singularity/power-series bridge requested by the
+browser/Proshka route review:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+realSinc_hasSum_even_powerSeries
+```
+
+Closed local crosswalk gap:
+
+```text
+STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP
+```
+
+The stronger checked theorem states the explicit even series:
+
+```lean
+HasSum
+  (fun n : Nat =>
+    ((-1 : Real) ^ n * x ^ (2 * n)) /
+      (Nat.factorial (2 * n + 1) : Real))
+  (realSinc x)
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next proof object: use the checked `realSinc` series bridge as the analytic
+input for the ShapeSqDeriv center-jet/order-16 row proof on `[0,1/10]`.
+
+Boundary: no center-jet rows, no order-16 row, no generated Lean payload, and
+no Step33A.1-A closure.

@@ -18078,3 +18078,31 @@ realSinc_hasFPowerSeriesAt_zero_of_sin
 
 Boundary: no center-jet rows, no order-16 row, no generated Lean payload, and
 no Step33A.1-A closure.
+
+## 2026-06-21 EOF Addendum -- realSinc power-series bridge checked
+
+The browser/Proshka-guided power-series bridge now has checked local Lean
+support:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+realSinc_hasSum_even_powerSeries
+```
+
+Closed local crosswalk gap:
+
+```text
+STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP
+```
+
+Current exact blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next proof object: derive/prove the concrete ShapeSqDeriv center-jet and
+order-16 rows from the checked `realSinc` series bridge and the existing
+ShapeSqDeriv interval-certificate receiver.
+
+Boundary: no generated rows, no generated payload, and no Step33A.1-A closure.

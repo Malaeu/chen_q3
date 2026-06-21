@@ -38092,3 +38092,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `realSinc_hasSum_even_powerSeries`.
 - Boundary: this is not center-jet row proof, not uniform order-16 proof, not a
   generated Lean payload, and not Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- RealSincPowerSeriesBridgeChecked
+
+- Added and checked in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+  `realSinc_hasFPowerSeriesAt_zero_of_sin` and
+  `realSinc_hasSum_even_powerSeries`.
+- The first theorem uses the Mathlib `dslope` bridge to transfer a local
+  `HasFPowerSeriesAt` proof for `Real.sin` at zero to `realSinc`.
+- The second theorem proves the explicit even series for all real `x`:
+  terms `((-1)^n * x^(2*n)) / (Nat.factorial (2*n+1))`.
+- Closed local crosswalk gap:
+  `STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP`.
+- Validation passed: targeted `lake env lean`, targeted `q3_check`, scoped
+  marker scan over the touched Lean file, and `git diff --check`.
+- Current live blocker remains
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`.
+- Boundary: no concrete ShapeSqDeriv center-jet rows, no uniform order-16 row,
+  no generated payload, and no Step33A.1-A closure.

@@ -62093,3 +62093,56 @@ realSinc_hasSum_even_powerSeries
 Boundary: this does not prove center-jet rows, does not prove the uniform
 order-16 row, does not emit generated Lean payload, and does not close
 Step33A.1-A.
+
+## 2026-06-21 Addendum -- realSinc power-series bridge checked
+
+Implemented and Lean-checked the browser/Proshka-guided
+power-series/removable-singularity bridge in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+realSinc_hasSum_even_powerSeries
+```
+
+The first theorem packages the Mathlib `dslope` bridge:
+
+```lean
+HasFPowerSeriesAt Real.sin p 0 ->
+HasFPowerSeriesAt realSinc p.fslope 0
+```
+
+The second theorem proves the explicit all-real `HasSum` form:
+
+```lean
+HasSum
+  (fun n : Nat =>
+    ((-1 : Real) ^ n * x ^ (2 * n)) /
+      (Nat.factorial (2 * n + 1) : Real))
+  (realSinc x)
+```
+
+Closed local crosswalk gap:
+
+```text
+STEP33_A1_SUB0_REAL_SINC_POWERSERIES_AT_ZERO_CROSSWALK_GAP
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: this is analytic bridge support only.  It does not prove the concrete
+ShapeSqDeriv center-jet rows, does not prove the order-16 row, does not emit a
+generated Lean payload, and does not close Step33A.1-A.
