@@ -10230,6 +10230,160 @@ theorem omegaPrimeOrder16SeriesBase_zpow_neg_two_hasDerivAt
       (omegaPrimeOrder16SeriesBase_hasDerivAt eta n)
   simpa [Function.comp_def] using h
 
+theorem omegaPrimeOrder16SeriesBase_zpow_iteratedDeriv
+    (k : Nat) (m : Int) (eta : Real) (n : Nat) :
+    iteratedDeriv k
+        (fun t : Real => (omegaPrimeOrder16SeriesBase t n) ^ m) eta =
+      ((Finset.range k).prod
+          (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+        (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k *
+        (omegaPrimeOrder16SeriesBase eta n) ^ (m - (k : Int)) := by
+  induction k generalizing m eta with
+  | zero =>
+      simp
+  | succ k ih =>
+      rw [iteratedDeriv_succ]
+      have hfun :
+          iteratedDeriv k
+              (fun t : Real => (omegaPrimeOrder16SeriesBase t n) ^ m) =
+            fun eta : Real =>
+              ((Finset.range k).prod
+                  (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+                (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k *
+                (omegaPrimeOrder16SeriesBase eta n) ^ (m - (k : Int)) := by
+        funext x
+        exact ih m x
+      rw [hfun]
+      have hstep :
+          deriv
+            (fun t : Real =>
+              (((Finset.range k).prod
+                  (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+                (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k *
+                (omegaPrimeOrder16SeriesBase t n) ^ (m - (k : Int))))
+              eta =
+            (((Finset.range k).prod
+                (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+              (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k) *
+              ((((m - (k : Int)) : Complex) *
+                (omegaPrimeOrder16SeriesBase eta n) ^
+                  ((m - (k : Int)) - 1)) *
+                (Complex.I * (((1 / 2 : Real) : Real) : Complex))) := by
+        have hz :=
+          (hasDerivAt_zpow (m - (k : Int))
+            (omegaPrimeOrder16SeriesBase eta n)
+            (Or.inl (omegaPrimeOrder16SeriesBase_ne_zero eta n))).comp eta
+            (omegaPrimeOrder16SeriesBase_hasDerivAt eta n)
+        have hC := hz.const_mul
+          (((Finset.range k).prod
+              (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+            (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k)
+        simpa [Function.comp_def, mul_assoc] using hC.deriv
+      rw [hstep]
+      simp [Finset.prod_range_succ]
+      ring_nf
+
+theorem omegaPrimeOrder16SeriesBase_zpow_neg_two_iteratedDeriv16
+    (eta : Real) (n : Nat) :
+    iteratedDeriv 16
+        (fun t : Real => (omegaPrimeOrder16SeriesBase t n) ^ (-2 : Int))
+        eta =
+      ((Nat.factorial 17 : Complex) / (2 : Complex) ^ 16) *
+        (omegaPrimeOrder16SeriesBase eta n) ^ (-18 : Int) := by
+  rw [omegaPrimeOrder16SeriesBase_zpow_iteratedDeriv]
+  have hbase18 : omegaPrimeOrder16SeriesBase eta n ^ 18 ≠ 0 := by
+    exact pow_ne_zero 18 (omegaPrimeOrder16SeriesBase_ne_zero eta n)
+  have hIhalf16 :
+      (Complex.I * (1 / 2 : Complex)) ^ 16 =
+        (1 / (2 : Complex) ^ 16) := by
+    have hI16 : Complex.I ^ 16 = (1 : Complex) := by
+      rw [show (16 : Nat) = 2 * 8 by norm_num]
+      rw [pow_mul]
+      rw [Complex.I_sq]
+      norm_num
+    rw [mul_pow, hI16]
+    ring_nf
+  norm_num [hbase18]
+  left
+  rw [hIhalf16]
+  norm_num
+
+theorem omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv
+    (k : Nat) (m : Int) (eta : Real) (n : Nat) :
+    iteratedDeriv k
+        (fun t : Real => ((omegaPrimeOrder16SeriesBase t n) ^ m).im) eta =
+      (((Finset.range k).prod
+          (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+        (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k *
+        (omegaPrimeOrder16SeriesBase eta n) ^ (m - (k : Int))).im := by
+  induction k generalizing m eta with
+  | zero =>
+      simp
+  | succ k ih =>
+      rw [iteratedDeriv_succ]
+      let C : Complex :=
+        ((Finset.range k).prod
+            (fun i : Nat => ((m : Complex) - (i : Complex)))) *
+          (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k
+      have hfun :
+          iteratedDeriv k
+              (fun t : Real => ((omegaPrimeOrder16SeriesBase t n) ^ m).im) =
+            fun eta : Real =>
+              (C * (omegaPrimeOrder16SeriesBase eta n) ^
+                (m - (k : Int))).im := by
+        funext x
+        simpa [C] using ih m x
+      rw [hfun]
+      have hstep :
+          deriv
+            (fun t : Real =>
+              (C * (omegaPrimeOrder16SeriesBase t n) ^
+                (m - (k : Int))).im) eta =
+            (C * ((((m - (k : Int)) : Complex) *
+              (omegaPrimeOrder16SeriesBase eta n) ^
+                ((m - (k : Int)) - 1)) *
+              (Complex.I * (((1 / 2 : Real) : Real) : Complex)))).im := by
+        have hz :=
+          (hasDerivAt_zpow (m - (k : Int))
+            (omegaPrimeOrder16SeriesBase eta n)
+            (Or.inl (omegaPrimeOrder16SeriesBase_ne_zero eta n))).comp eta
+            (omegaPrimeOrder16SeriesBase_hasDerivAt eta n)
+        have hC := hz.const_mul C
+        have himF := Complex.imCLM.hasFDerivAt.comp eta hC.hasFDerivAt
+        have him := himF.hasDerivAt
+        simpa [Function.comp_def] using him.deriv
+      rw [hstep]
+      apply congrArg Complex.im
+      simp [C, Finset.prod_range_succ]
+      ring_nf
+
+theorem omegaPrimeOrder16SeriesTerm_iteratedDeriv16
+    (eta : Real) (n : Nat) :
+    iteratedDeriv 16
+        (fun t : Real => ((omegaPrimeOrder16SeriesBase t n) ^ (-2 : Int)).im)
+        eta =
+      ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
+        omegaPrimeOrder16SeriesTerm eta n := by
+  rw [omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv]
+  have hcoeff := omegaPrimeOrder16SeriesBase_zpow_neg_two_iteratedDeriv16 eta n
+  rw [omegaPrimeOrder16SeriesBase_zpow_iteratedDeriv] at hcoeff
+  rw [hcoeff]
+  have hzpow :
+      (omegaPrimeOrder16SeriesBase eta n) ^ (-18 : Int) =
+        ((omegaPrimeOrder16SeriesBase eta n) ^ 18)⁻¹ := by
+    rw [show (-18 : Int) = -(18 : Int) by norm_num]
+    rw [zpow_neg]
+    rfl
+  rw [hzpow]
+  have hcoeffRe :
+      (((Nat.factorial 17 : Complex) / (2 : Complex) ^ 16).re) =
+        ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) := by
+    norm_num
+  have hcoeffIm :
+      (((Nat.factorial 17 : Complex) / (2 : Complex) ^ 16).im) = 0 := by
+    norm_num
+  simp [omegaPrimeOrder16SeriesTerm, hcoeffRe, hcoeffIm]
+
 /-- Pointwise norm majorant for one order-16 OmegaPrime series term. -/
 theorem omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow
     (eta : Real) (n : Nat) :

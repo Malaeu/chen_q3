@@ -31260,3 +31260,67 @@ numeric data.order16Abs lower-bound payload against the integer budget, no
 center-jet payload, no exact rational remainder budget, no generated Lean
 payload, no first-subchunk residual-derivative norm certificate, no A hbox,
 and no Step33A.1-A closure exists yet.
+
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 affine term bridge
+
+Used the in-app browser/Proshka checkpoint.  The route decision remains A:
+continue the analytic trigamma/OmegaPrime crosswalk.  Local search still found
+no ready `trigamma -> order16 tsum` theorem, so the next safe patch was the
+single-term affine-zpow derivative bridge.
+
+Added and Lean-checked the following symbols in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_neg_two_iteratedDeriv16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_iteratedDeriv16
+```
+
+What this closes:
+
+```text
+For base(eta,n) = n + 1/4 + I*(eta/2),
+iteratedDeriv k (base(eta,n)^m)
+  = falling_product(m,k) * (I/2)^k * base(eta,n)^(m-k).
+
+Specially,
+iteratedDeriv 16 (base(eta,n)^(-2))
+  = 17!/2^16 * base(eta,n)^(-18).
+
+Taking imaginary parts gives
+iteratedDeriv 16 (fun eta => (base(eta,n)^(-2)).im)
+  = 17!/2^16 * omegaPrimeOrder16SeriesTerm eta n.
+```
+
+This removes the local one-term derivative algebra from the live gap.  The
+remaining bridge is not algebraic simplification anymore: it is the termwise
+sixteen-fold differentiation and `tsum` interchange connecting the trigamma
+closed form to `omegaPrimeOrder16Series`.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
+`hDerivEq`, no numeric data.order16Abs lower-bound payload against the integer
+budget, no center-jet payload, no exact rational remainder budget, no generated
+Lean payload, no first-subchunk residual-derivative norm certificate, no A
+hbox, and no Step33A.1-A closure exists yet.

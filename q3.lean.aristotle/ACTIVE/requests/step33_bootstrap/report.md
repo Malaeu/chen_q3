@@ -59638,6 +59638,58 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 affine term bridge
+
+In-app browser/Proshka checkpoint kept the route on the analytic
+trigamma/OmegaPrime crosswalk.  Local Lean work then closed the single-term
+order-16 derivative bridge.
+
+File:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_neg_two_iteratedDeriv16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_iteratedDeriv16
+```
+
+Checked result:
+
+```text
+iteratedDeriv 16
+  (fun eta => (omegaPrimeOrder16SeriesBase eta n ^ (-2 : Int)).im)
+= (17! / 2^16) * omegaPrimeOrder16SeriesTerm eta n
+```
+
+This is still not `hDerivEq`; it is the per-term derivative identity needed
+before proving the `tsum` interchange for the OmegaPrime/trigamma series.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no `hDerivEq`, no `data.Valid` closure, no generated payload, no A
+hbox, no Step33A.1-A closure, and no Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 condensed majorant bound
 
 Added a checked Cauchy-condensation/geometric upper-bound surface for the

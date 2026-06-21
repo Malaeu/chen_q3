@@ -36912,3 +36912,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`.
 - Next exact blocker:
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16AffineTermBridge
+
+- Used the in-app browser/Proshka checkpoint; the route remains the direct
+  analytic trigamma/OmegaPrime crosswalk, not a new interval checker.
+- Added and Lean-checked the order-16 affine-zpow derivative bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_iteratedDeriv`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_neg_two_iteratedDeriv16`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16SeriesTerm_iteratedDeriv16`.
+- The checked single-term result is
+  `iteratedDeriv 16 (fun eta => (base eta n ^ (-2 : Int)).im) =
+  (17! / 2^16) * omegaPrimeOrder16SeriesTerm eta n`.
+- This closes the local algebraic derivative layer for one summand.  It does
+  not prove `hDerivEq`, because the missing bridge is still termwise
+  sixteen-fold differentiation under `tsum` and the connection from
+  `step22OmegaArchWeightDerivClosedForm`/trigamma to
+  `omegaPrimeOrder16Series`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
