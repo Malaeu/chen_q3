@@ -38232,3 +38232,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Current live blocker remains
   `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`: exact
   rational coefficient values and the uniform order-16 bound are still open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCenterCoeffWorklistSynced
+
+- Used the in-app browser/Computer Use for a follow-up route review after the
+  center-coeff bridge was checked.  Proshka chose the control-plane patch:
+  synchronize the fail-closed generator/worklist first, not a new Lean theorem.
+- Updated
+  `scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py` to
+  detect the four checked center bridge names and emit
+  `shapeSqDerivCenterCoeffBridgeSource`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json`
+  and `.md`; schema is now
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v9`.
+- Machine status now records
+  `firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
+  and `proofSafeClosedFields = 8`.
+- Boundary: this is only worklist synchronization.  It does not mark center
+  rows present, does not prove rational coefficient values, does not prove the
+  order-16 bound, emits no Lean, and does not close Step33A.1-A.

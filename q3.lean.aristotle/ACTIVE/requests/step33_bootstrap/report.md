@@ -62360,3 +62360,50 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
 Boundary: no explicit rational coefficient values are proved, no order-16
 bound is proved, no generated proof-safe rows are emitted, and Step33A.1-A is
 still open.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv center-coeff worklist sync
+
+Updated and regenerated the fail-closed Sub0 component Taylor residual payload
+so it records the already checked ShapeSqDeriv center-coeff bridge as a
+separate source layer.
+
+Generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v9
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_power_series_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+proofSafeClosedFields = 8
+assemblyLeanWritten = false
+```
+
+New checked source block in the payload:
+
+```text
+shapeSqDerivCenterCoeffBridgeSource.proofGradeBridge = true
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+```
+
+Browser/Proshka follow-up chose this same control-plane patch as the smallest
+safe next step.  It explicitly warned not to set center rows present, not to
+treat selected power-series coefficients as rational values, not to generate
+fake rows, and not to treat Python/Arb output as proof.
+
+Validation:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Boundary: this synchronizes the worklist only.  It emits no Lean, proves no
+new coefficient row, proves no order-16 bound, and does not close Step33A.1-A.

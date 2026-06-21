@@ -33043,3 +33043,43 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
 Boundary: this is still not a concrete coefficient calculation.  It does not
 prove rational coefficient rows, does not prove the uniform order-16 bound,
 does not emit proof-safe generated rows, and does not close Step33A.1-A.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv center-coeff worklist sync
+
+The fail-closed Sub0 component Taylor payload generator now records the
+checked ShapeSqDeriv center-coeff bridge as its own proof-grade source layer.
+Regenerated artifact:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v9
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_power_series_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+proofSafeClosedFields = 8
+assemblyLeanWritten = false
+```
+
+New worklist source block:
+
+```text
+shapeSqDerivCenterCoeffBridgeSource.proofGradeBridge = true
+powerSeriesDef = primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter
+hasFPowerSeriesTheorem = primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center
+centerJetCoeffTheorem = primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+validWrapperTheorem = primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+```
+
+Browser/Proshka advisory follow-up selected exactly this control-plane patch:
+mark the checked center bridge as formal in the worklist, keep explicit
+rational rows/order-16 bound as missing, and do not start another closed-form
+bridge.  This advice is routing only, not proof evidence.
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Boundary: no center-jet row payload was generated, no power-series coefficient
+was treated as a rational value, no Python/Arb output was promoted to proof,
+and Step33A.1-A is still open.
