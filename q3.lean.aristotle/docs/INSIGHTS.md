@@ -37233,3 +37233,61 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no Lean proof file was edited, no proof-grade rational prefix/tail
   rows exist yet, no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no
   Step33A.1-A closure, and no Step33/Step34/RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeShiftedTailIntegralRoute
+
+- Status: in-progress route synthesis, not payload closure.
+- Local semantic search found no ready-made OmegaPrime Taylor payload generator
+  for the checked prefix-tail bridge.  The closest reusable artifacts remain
+  `Q3/DigammaSeries.lean` tail-splitting lemmas and local p-series/integral
+  tail precedents in PrimeCert / centered-coeff support files.
+- External primary-source Mathlib check confirms the needed API shape:
+  `AntitoneOn.sum_le_integral` compares an antitone integer tail with an
+  integral, and `integral_Ioi_rpow_of_lt` evaluates
+  `∫ x in Set.Ioi c, x ^ a` for `a < -1`, `0 < c`.
+- For the active center `eta = 1/20`, each finite prefix term in
+  `omegaPrimeTrigammaSeriesTerm` is rational after projecting the imaginary
+  part, so the generator can emit exact rational finite-prefix rows.
+- The intended shifted-tail row bound is:
+  `m!^-1 * (1/2) * tsum_k omegaPrimeTrigammaDerivMajorant m (k + N)`
+  bounded by a rational integral-test expression for `m = 0..15`.
+- Current next patch should generate exact `centerJetPrefixTailRows` with
+  `prefixExactRational`, `shiftedTailUpperRational`, `coeff`,
+  `coeffErrorAbs`, and a fail-closed Lean-proof status.  This is payload
+  progress only unless/until the tail-bound row theorem is Lean-checked.
+- Current exact blocker remains
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`.
+- Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no
+  `centerJet` proof, no order-16 integer payload, no remainder budget closure,
+  and no Step33A.1-A / Step33 / Step34 / RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeRationalRowsV9
+
+- Status: exact rational payload-row generation, not Lean closure.
+- Updated
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py` from schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8` to `v9`.
+- The generator now emits 16 exact rational `centerJetPrefixTailRows` for
+  `m = 0..15` with `prefixN = 128`, center `1/20`, exact finite-prefix
+  coefficients, and integral-test shifted-tail rational bounds.
+- Generated row convention:
+  `coeff[m] = m!^-1 * (-1/2) * sum_{n < 128} iteratedDeriv m omegaPrimeTrigammaSeriesTerm (1/20) n`.
+- Generated row tail:
+  `coeffErrorAbs[m] = 1 / (2^(m+1) * (128 - 3/4)^(m+1))`.
+- The payload is fail-closed: `prefixLeanChecked = false`,
+  `tailBoundLeanChecked = false`, `proofGrade = false`,
+  `proofSafeClosedFields = 0`, `outLeanWritten = false`.
+- New active exact blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`.
+- The old
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
+  is now a parent/data-history failure, not the first failure.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  `python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  and
+  `python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`.
+- Boundary: no Lean proof file was edited, no generated
+  `Step33Sub0OmegaPrimeTaylorRemainderCert`, no center-jet proof, no order-16
+  integer payload, no remainder budget closure, and no Step33A.1-A / Step33 /
+  Step34 / RH claim.

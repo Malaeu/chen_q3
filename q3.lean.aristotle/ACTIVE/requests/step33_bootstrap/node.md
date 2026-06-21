@@ -17244,6 +17244,35 @@ Current exact blocker:
 STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
 
+## 2026-06-21 EOF Addendum -- OmegaPrime rational row surface
+
+Active OmegaPrime center-jet route has advanced from missing rational rows to
+missing Lean proof for generated rows.
+
+Generated artifacts:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+Current OmegaPrime payload status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v9
+status = fail_closed_shifted_tail_rational_rows_need_lean_proof
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
+prefixN = 128
+rationalPrefixTailRowsGenerated = 16
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Boundary: exact rational prefix/tail rows exist, but `prefixLeanChecked`,
+`tailBoundLeanChecked`, and `proofGrade` remain false.  No Lean proof file was
+edited, no `Step33Sub0OmegaPrimeTaylorRemainderCert` was emitted, and
+Step33A.1-A remains open.
+
 ## 2026-06-20 Current EOF Addendum -- OmegaPrime right-half Taylor bridge
 
 Local Lean now checks the right half of the OmegaPrime centered Taylor bridge:

@@ -60511,3 +60511,67 @@ python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a
 Boundary: this is a fail-closed payload surface update only.  It does not
 provide rational prefix/tail values, does not emit Lean certificate data, does
 not close Step33A.1-A, and makes no Step33/Step34/RH claim.
+
+## 2026-06-21 Addendum -- OmegaPrime rational prefix/tail rows generated
+
+Regenerated the OmegaPrime Taylor payload inventory from:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+```
+
+The generator now emits exact rational `centerJetPrefixTailRows[0..15]` with:
+
+```text
+prefixN = 128
+center = 1/20
+coeff[m] = m!^-1 * (-1/2) *
+  sum_{n < 128} iteratedDeriv m omegaPrimeTrigammaSeriesTerm (1/20) n
+coeffErrorAbs[m] = 1 / (2^(m+1) * (128 - 3/4)^(m+1))
+```
+
+Generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v9
+status = fail_closed_shifted_tail_rational_rows_need_lean_proof
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
+rationalPrefixTailRowsGenerated = 16
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Proof boundary:
+
+```text
+prefixLeanChecked = false
+tailBoundLeanChecked = false
+proofGrade = false
+```
+
+The generated rows are exact rational data, not a Lean proof.  The next
+proof-producing patch must prove that the exact finite prefixes and the
+integral-test shifted-tail bounds instantiate:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
+```
+
+Validation:
+
+```bash
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: no Lean proof file was edited in this sync, no generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert`, no center-jet proof, no order-16
+integer payload, no remainder budget closure, no Step33A.1-A closure, and no
+Step33/Step34/RH claim.

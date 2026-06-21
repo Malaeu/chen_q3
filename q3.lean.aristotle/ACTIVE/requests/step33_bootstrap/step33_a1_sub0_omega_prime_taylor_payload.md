@@ -5,16 +5,18 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v9`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_missing_shifted_tail_rational_payload`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
+- status: `fail_closed_shifted_tail_rational_rows_need_lean_proof`
+- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
 - receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
 - radius: `1/20`
 - degree: `15`
+- center-jet prefixN: `128`
 - proof-safe closed fields: `0`
+- rational prefix/tail rows generated: `16`
 - Lean emitted: `False`
 
 ## Target Lean Surface
@@ -39,7 +41,7 @@ not close Step33A.1-A.
 - OmegaPrime closed-form prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16`
 - center-jet prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`
 - center-jet prefix-tail checked: `True`
-- status: `receiver_checked_deriv_and_prefix_tail_bridge_present_missing_rational_payload`
+- status: `receiver_checked_deriv_and_prefix_tail_rows_present_missing_lean_row_proof`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -76,6 +78,37 @@ Normalization note:
 - `proofSafeClosedFields`
 - `outLeanWritten`
 - `failureCodes[]`
+
+## Generated Center-Jet Prefix/Tail Rows
+
+Full exact rationals are in the JSON artifact.  This table keeps the
+Markdown readable while preserving proof status.
+
+| j | prefixN | coeff digits | coeffErrorAbs | margin | proofGrade |
+| --- | --- | --- | --- | --- | --- |
+| `0` | `128` | `2866` | `2/509` | `0` | `False` |
+| `1` | `128` | `4306` | `4/259081` | `0` | `False` |
+| `2` | `128` | `5732` | `8/131872229` | `0` | `False` |
+| `3` | `128` | `7176` | `16/67122964561` | `0` | `False` |
+| `4` | `128` | `8600` | `32/34165588961549` | `0` | `False` |
+| `5` | `128` | `10045` | `64/17390284781428441` | `0` | `False` |
+| `6` | `128` | `11474` | `128/8851654953747076469` | `0` | `False` |
+| `7` | `128` | `12915` | `256/4505492371457261922721` | `0` | `False` |
+| `8` | `128` | `14346` | `512/2293295617071746318664989` | `0` | `False` |
+| `9` | `128` | `15783` | `1024/1167287469089518876200479401` | `0` | `False` |
+| `10` | `128` | `17212` | `2048/594149321766565107986044015109` | `0` | `False` |
+| `11` | `128` | `18650` | `4096/302422004779181639964896403690481` | `0` | `False` |
+| `12` | `128` | `20082` | `8192/153932800432603454742132269478454829` | `0` | `False` |
+| `13` | `128` | `21521` | `16384/78351795420195158463745325164533507961` | `0` | `False` |
+| `14` | `128` | `22949` | `32768/39881063868879335658046370508747555552149` | `0` | `False` |
+| `15` | `128` | `24391` | `65536/20299461509259581849945602588952505776043841` | `0` | `False` |
+
+Row proof boundary:
+
+- `prefixExactRational` and `shiftedTailUpperRational` are exact
+  rational generator output.
+- `prefixLeanChecked = False` and `tailBoundLeanChecked = False`,
+  so these rows are not proof-grade yet.
 
 ## Required Proofs
 
@@ -139,6 +172,7 @@ Normalization note:
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10949` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP` | `None` | `gap` |
@@ -168,23 +202,25 @@ Normalization note:
 - omegaPrimeOrder16BoundProved: `False`
 - omegaPrimeOrder16IntegerBudgetProved: `False`
 - omegaPrimeRemainderBudgetPassed: `False`
-- exactRationalChecksPassed: `False`
+- exactRationalChecksPassed: `True`
 - allCenterJetsProved: `False`
 - allPayloadObligationsPassed: `False`
 - leanValidationStatus: `not_run`
 - proofSafeClosedFields: `0`
+- rationalPrefixTailRowsGenerated: `16`
 - outLeanWritten: `False`
 
 ## Failure Codes
 
 - `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL`
-- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
 
 ## Parent Failure Codes
 
 - `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
 
 ## Closed Historical Failures
 
@@ -212,5 +248,5 @@ and the exact rational Taylor remainder budget.
 Until those payload fields exist locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
 ```

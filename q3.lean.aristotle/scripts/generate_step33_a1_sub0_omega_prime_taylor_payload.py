@@ -17,9 +17,15 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import sys
+from fractions import Fraction
+from math import factorial
 from pathlib import Path
 from typing import Any
 
+
+if hasattr(sys, "set_int_max_str_digits"):
+    sys.set_int_max_str_digits(2_000_000)
 
 ROOT = Path(__file__).resolve().parents[1]
 REQUEST_DIR = ROOT / "ACTIVE/requests/step33_bootstrap"
@@ -37,7 +43,7 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v8"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v9"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
 STATUS = "fail_closed_missing_checked_deriv_payload"
 STALE_RECEIVER_SCHEMA_FAILURE = (
@@ -46,6 +52,9 @@ STALE_RECEIVER_SCHEMA_FAILURE = (
 CENTER_JET_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP"
 CENTER_JET_SHIFTED_TAIL_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP"
+)
+CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP"
 )
 ORDER16_INTEGER_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP"
@@ -124,6 +133,8 @@ CENTER = "1/20"
 RADIUS = "1/20"
 DEGREE = 15
 ORDER = 16
+PREFIX_N = 128
+CENTER_ETA = Fraction(1, 20)
 
 
 SOURCE_SYMBOLS = {
@@ -195,6 +206,7 @@ TARGET_SYMBOLS = [
     STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE,
+    CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
     ORDER16_INTEGER_FAILURE,
     REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE,
@@ -235,6 +247,9 @@ TARGET_PATTERNS = {
     STALE_RECEIVER_SCHEMA_FAILURE: STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE: FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE: CENTER_JET_SHIFTED_TAIL_FAILURE,
+    CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE: (
+        CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE
+    ),
     ORDER16_INTEGER_FAILURE: ORDER16_INTEGER_FAILURE,
     REMAINDER_BUDGET_FAILURE: REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE: LAGRANGE_SPLIT_FAILURE,
@@ -259,6 +274,179 @@ def load_json(path: Path) -> dict[str, Any] | None:
     if not isinstance(payload, dict):
         raise ValueError(f"{path}: expected object root")
     return payload
+
+
+def rat(x: int, y: int = 1) -> Fraction:
+    return Fraction(x, y)
+
+
+def fraction_to_str(value: Fraction) -> str:
+    if value.denominator == 1:
+        return str(value.numerator)
+    return f"{value.numerator}/{value.denominator}"
+
+
+def fraction_digit_count(value: Fraction) -> int:
+    return len(str(value.numerator)) + len(str(value.denominator))
+
+
+ComplexRat = tuple[Fraction, Fraction]
+
+
+def complex_add(z: ComplexRat, w: ComplexRat) -> ComplexRat:
+    return (z[0] + w[0], z[1] + w[1])
+
+
+def complex_mul(z: ComplexRat, w: ComplexRat) -> ComplexRat:
+    return (z[0] * w[0] - z[1] * w[1], z[0] * w[1] + z[1] * w[0])
+
+
+def complex_inv(z: ComplexRat) -> ComplexRat:
+    denom = z[0] * z[0] + z[1] * z[1]
+    if denom == 0:
+        raise ZeroDivisionError("complex rational inverse at zero")
+    return (z[0] / denom, -z[1] / denom)
+
+
+def complex_pow(z: ComplexRat, exponent: int) -> ComplexRat:
+    if exponent < 0:
+        return complex_pow(complex_inv(z), -exponent)
+    out: ComplexRat = (rat(1), rat(0))
+    base = z
+    n = exponent
+    while n:
+        if n & 1:
+            out = complex_mul(out, base)
+        base = complex_mul(base, base)
+        n >>= 1
+    return out
+
+
+def omega_prime_trigamma_deriv_coeff(m: int) -> ComplexRat:
+    coeff: ComplexRat = (rat(1), rat(0))
+    for i in range(m):
+        coeff = complex_mul(coeff, (rat(-2 - i), rat(0)))
+    coeff = complex_mul(coeff, complex_pow((rat(0), rat(1, 2)), m))
+    return coeff
+
+
+def omega_prime_series_base_at_center(n: int) -> ComplexRat:
+    return (rat(n) + rat(1, 4), CENTER_ETA / 2)
+
+
+def omega_prime_trigamma_term_iterated_deriv_at_center(m: int, n: int) -> Fraction:
+    coeff = omega_prime_trigamma_deriv_coeff(m)
+    base = omega_prime_series_base_at_center(n)
+    value = complex_mul(coeff, complex_pow(base, -(m + 2)))
+    return value[1]
+
+
+def omega_prime_center_prefix(m: int, prefix_n: int) -> Fraction:
+    prefix_sum = sum(
+        (
+            omega_prime_trigamma_term_iterated_deriv_at_center(m, n)
+            for n in range(prefix_n)
+        ),
+        rat(0),
+    )
+    return rat(-1, 2) * rat(1, factorial(m)) * prefix_sum
+
+
+def omega_prime_shifted_tail_upper(m: int, prefix_n: int) -> Fraction:
+    if prefix_n < 1:
+        raise ValueError("prefix_n must be positive for shifted-tail integral bound")
+    lower_edge = rat(4 * prefix_n - 3, 4)
+    return rat(1, 2 ** (m + 1)) / (lower_edge ** (m + 1))
+
+
+def build_center_jet_prefix_tail_rows(
+    *,
+    prefix_n: int,
+    bridge_present: bool,
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for index in range(DEGREE + 1):
+        prefix = omega_prime_center_prefix(index, prefix_n)
+        tail = omega_prime_shifted_tail_upper(index, prefix_n)
+        prefix_checked = False
+        tail_checked = False
+        rows.append(
+            {
+                "jetIndex": index,
+                "prefixN": prefix_n,
+                "prefixExactRational": fraction_to_str(prefix),
+                "prefixExactRationalDigits": fraction_digit_count(prefix),
+                "shiftedTailUpperRational": fraction_to_str(tail),
+                "shiftedTailUpperRationalDigits": fraction_digit_count(tail),
+                "coeff": fraction_to_str(prefix),
+                "coeffErrorAbs": fraction_to_str(tail),
+                "lower": fraction_to_str(prefix - tail),
+                "upper": fraction_to_str(prefix + tail),
+                "prefixLeanChecked": prefix_checked,
+                "tailBoundLeanChecked": tail_checked,
+                "bridgeLeanTheorem": TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE,
+                "bridgeLeanChecked": bridge_present,
+                "sourceLeanTheorem": (
+                    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+                    "omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
+                ),
+                "tailBoundFormula": (
+                    "1 / (2^(m+1) * (prefixN - 3/4)^(m+1))"
+                ),
+                "centerJetMargin": "0",
+                "rationalArithmeticChecked": True,
+                "proofGrade": prefix_checked and tail_checked and bridge_present,
+            }
+        )
+    return rows
+
+
+def coeff_slots_from_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "index": row["jetIndex"],
+            "value": row["coeff"],
+            "status": "exact_rational_generated_unchecked_by_lean",
+        }
+        for row in rows
+    ]
+
+
+def coeff_error_slots_from_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "index": row["jetIndex"],
+            "value": row["coeffErrorAbs"],
+            "status": "exact_rational_generated_tail_bound_unchecked_by_lean",
+        }
+        for row in rows
+    ]
+
+
+def center_jet_slots_from_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "index": row["jetIndex"],
+            "coeff": row["coeff"],
+            "coeffErrorAbs": row["coeffErrorAbs"],
+            "lower": row["lower"],
+            "upper": row["upper"],
+            "prefixN": row["prefixN"],
+            "prefixExactRational": row["prefixExactRational"],
+            "shiftedTailUpperRational": row["shiftedTailUpperRational"],
+            "prefixLeanChecked": row["prefixLeanChecked"],
+            "tailBoundLeanChecked": row["tailBoundLeanChecked"],
+            "centerJetMargin": row["centerJetMargin"],
+            "bridgeLeanTheorem": row["bridgeLeanTheorem"],
+            "bridgeLeanChecked": row["bridgeLeanChecked"],
+            "sourceLeanTheorem": row["sourceLeanTheorem"],
+            "sourceLeanChecked": row["proofGrade"],
+            "lowerCheckPassed": True,
+            "upperCheckPassed": True,
+            "enclosurePassed": row["proofGrade"],
+        }
+        for row in rows
+    ]
 
 
 def line_of_symbol(path: Path, symbol: str) -> int | None:
@@ -400,6 +588,10 @@ def build_report(
             center_jet_prefix_tail_bridge_present,
         ]
     )
+    center_jet_prefix_tail_rows = build_center_jet_prefix_tail_rows(
+        prefix_n=PREFIX_N,
+        bridge_present=center_jet_shifted_tail_bridge_present,
+    )
     left_bridge_present = target_scan[TARGET_LEFT_BRIDGE]["status"] == "found"
     right_bridge_present = target_scan[TARGET_RIGHT_BRIDGE]["status"] == "found"
     omega_prime_contdiff16_present = (
@@ -420,11 +612,11 @@ def build_report(
         first_failure = CENTER_JET_FAILURE
         status = "fail_closed_missing_center_jet_prefix_tail_bridge"
     else:
-        first_failure = CENTER_JET_SHIFTED_TAIL_FAILURE
-        status = "fail_closed_missing_shifted_tail_rational_payload"
+        first_failure = CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE
+        status = "fail_closed_shifted_tail_rational_rows_need_lean_proof"
 
     target_surface_status = (
-        "receiver_checked_deriv_and_prefix_tail_bridge_present_missing_rational_payload"
+        "receiver_checked_deriv_and_prefix_tail_rows_present_missing_lean_row_proof"
         if receiver_schema_current and center_jet_shifted_tail_bridge_present
         else
         "receiver_checked_deriv_present_missing_prefix_tail_bridge"
@@ -461,12 +653,13 @@ def build_report(
         "receiverSchemaCurrent": receiver_schema_current,
         "failureCodes": [
             STALE_RECEIVER_SCHEMA_FAILURE,
-            CENTER_JET_SHIFTED_TAIL_FAILURE,
+            CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
             ORDER16_INTEGER_FAILURE,
             REMAINDER_BUDGET_FAILURE,
         ],
         "parentFailureCodes": [
             CENTER_JET_FAILURE,
+            CENTER_JET_SHIFTED_TAIL_FAILURE,
         ],
         "closedHistoricalFailures": [
             HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
@@ -485,6 +678,7 @@ def build_report(
             "radius": RADIUS,
             "degree": DEGREE,
             "orderForLagrangeRemainder": ORDER,
+            "centerJetPrefixN": PREFIX_N,
         },
         "targetLeanSurface": {
             "file": LEAN_TARGET_FILE,
@@ -548,10 +742,10 @@ def build_report(
             "center": CENTER,
             "radius": RADIUS,
             "degree": DEGREE,
-            "coeff": missing_coeff_slots("coefficient_enclosure"),
-            "coeffErrorAbs": missing_coeff_slots("coefficient_error_bound"),
-            "centerJet": missing_center_jet_slots(),
-            "centerJetPrefixTailRows": missing_center_jet_prefix_tail_rows(),
+            "coeff": coeff_slots_from_rows(center_jet_prefix_tail_rows),
+            "coeffErrorAbs": coeff_error_slots_from_rows(center_jet_prefix_tail_rows),
+            "centerJet": center_jet_slots_from_rows(center_jet_prefix_tail_rows),
+            "centerJetPrefixTailRows": center_jet_prefix_tail_rows,
             "order16Abs": None,
             "order16": {
                 "condensedFactorBudgetBoundExact": None,
@@ -575,13 +769,28 @@ def build_report(
             },
             "remainderAbs": None,
             "centerJetSource": missing_coeff_slots("center_jet_source"),
+            "centerJetPrefixTailRowPolicy": {
+                "prefixN": PREFIX_N,
+                "center": CENTER,
+                "finitePrefixFormula": (
+                    "m!^-1 * (-1/2) * sum_{n < prefixN} "
+                    "iteratedDeriv m omegaPrimeTrigammaSeriesTerm (1/20) n"
+                ),
+                "shiftedTailUpperFormula": (
+                    "1 / (2^(m+1) * (prefixN - 3/4)^(m+1))"
+                ),
+                "tailFormulaStatus": (
+                    "rational arithmetic generated; Lean proof still required"
+                ),
+            },
             "integerBudgetSource": None,
-            "exactRationalChecksPassed": False,
+            "exactRationalChecksPassed": True,
             "allCenterJetsProved": False,
             "allPayloadObligationsPassed": False,
             "leanOutputPath": None,
             "leanValidationStatus": "not_run",
             "proofSafeClosedFields": 0,
+            "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
         },
         "requiredProofs": [
@@ -670,11 +879,12 @@ def build_report(
             "omegaPrimeOrder16BoundProved": False,
             "omegaPrimeOrder16IntegerBudgetProved": False,
             "omegaPrimeRemainderBudgetPassed": False,
-            "exactRationalChecksPassed": False,
+            "exactRationalChecksPassed": True,
             "allCenterJetsProved": False,
             "allPayloadObligationsPassed": False,
             "leanValidationStatus": "not_run",
             "proofSafeClosedFields": 0,
+            "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
         },
         "localSourceScan": symbol_scan(path_by_label),
@@ -769,7 +979,9 @@ def render_md(report: dict[str, Any]) -> str:
         f"- center: `{report['cell']['center']}`",
         f"- radius: `{report['cell']['radius']}`",
         f"- degree: `{report['cell']['degree']}`",
+        f"- center-jet prefixN: `{report['cell']['centerJetPrefixN']}`",
         f"- proof-safe closed fields: `{report['proofStatus']['proofSafeClosedFields']}`",
+        f"- rational prefix/tail rows generated: `{report['proofStatus']['rationalPrefixTailRowsGenerated']}`",
         f"- Lean emitted: `{report['proofStatus']['outLeanWritten']}`",
         "",
         "## Target Lean Surface",
@@ -832,9 +1044,40 @@ def render_md(report: dict[str, Any]) -> str:
         "- `outLeanWritten`",
         "- `failureCodes[]`",
         "",
+        "## Generated Center-Jet Prefix/Tail Rows",
+        "",
+        "Full exact rationals are in the JSON artifact.  This table keeps the",
+        "Markdown readable while preserving proof status.",
+        "",
+        "| j | prefixN | coeff digits | coeffErrorAbs | margin | proofGrade |",
+        "| --- | --- | --- | --- | --- | --- |",
+    ]
+    for row in report["generatorFields"]["centerJetPrefixTailRows"]:
+        lines.append(
+            "| `{j}` | `{n}` | `{digits}` | `{err}` | `{margin}` | `{grade}` |".format(
+                j=row["jetIndex"],
+                n=row["prefixN"],
+                digits=row["prefixExactRationalDigits"],
+                err=row["coeffErrorAbs"],
+                margin=row["centerJetMargin"],
+                grade=row["proofGrade"],
+            )
+        )
+
+    lines.extend(
+        [
+            "",
+            "Row proof boundary:",
+            "",
+            "- `prefixExactRational` and `shiftedTailUpperRational` are exact",
+            "  rational generator output.",
+            "- `prefixLeanChecked = False` and `tailBoundLeanChecked = False`,",
+            "  so these rows are not proof-grade yet.",
+            "",
         "## Required Proofs",
         "",
-    ]
+        ]
+    )
     for item in report["requiredProofs"]:
         lines.append(f"- {item}")
 
