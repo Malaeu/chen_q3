@@ -32188,3 +32188,43 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M2_TO_M15_GAP
 Boundary: this closes the sum-cast bridge only for `m = 0,1`; generated v10
 rows still have `prefixLeanChecked = false`, `proofGrade = false`; no full
 center-jet proof or Step33A.1-A closure.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime m2-m4 Rat sum-cast bridges checked
+
+The fixed-jet rational-prefix bridge now covers all finite prefix lengths for
+`m = 0,1,2,3,4`.
+
+New checked bridges:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4PrefixRat_cast
+```
+
+These additions also check the first nontrivial factorial normalizations:
+
+```text
+m = 2: (-1/2) / 2! = -1/4
+m = 3: (-1/2) / 3! = -1/12
+m = 4: (-1/2) / 4! = -1/48
+```
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Narrowed next subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M5_TO_M15_GAP
+```
+
+Boundary: this closes the sum-cast bridge only for `m = 0..4`; generated v10
+rows still have `prefixLeanChecked = false`, `proofGrade = false`; no full
+center-jet proof or Step33A.1-A closure.

@@ -37475,3 +37475,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: generated v10 rows still have `prefixLeanChecked = false`,
   `proofGrade = false`; no generated certificate, no full center-jet proof, no
   Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeM2ToM4RatSumCastBridgeChecked
+
+- Status: `m = 2,3,4` rational sum-cast bridges checked, not full
+  generated-prefix closure.
+- Added checked term/prefix cast bridges through
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4PrefixRat_cast`.
+- The checked prefix bridge range is now `m = 0..4`.
+- The new rows verify the first nontrivial factorial normalizations in the
+  generated convention:
+  `m = 2` uses `-1/4`, `m = 3` uses `-1/12`, and `m = 4` uses `-1/48`.
+- Local q3_docs search found no ready generic `RatComplex` all-jets bridge; the
+  fixed-jet bridge remains proof-producing and exposes the normal forms needed
+  for any later generated/generic theorem.
+- The next exact subgap is now
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M5_TO_M15_GAP`.
+- Boundary: generated v10 rows still have `prefixLeanChecked = false`,
+  `proofGrade = false`; no generated certificate, no full center-jet proof, no
+  Step33A.1-A closure.

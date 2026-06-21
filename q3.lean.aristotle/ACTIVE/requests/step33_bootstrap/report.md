@@ -60833,3 +60833,66 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M2_TO_M15_GAP
 Boundary: this covers only `m = 0,1`.  Generated v10 rows remain
 `prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
 no full center-jet proof, no Step33A.1-A closure.
+
+## 2026-06-21 -- OmegaPrime m2-m4 Rat sum-cast bridges checked
+
+New checked rational evaluator symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4PrefixRat
+```
+
+New checked exact rational facts:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2PrefixRat_one
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3PrefixRat_one
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4PrefixRat_one
+```
+
+New checked cast bridges:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m2_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m3_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m4_N1_ratCast_smoke
+```
+
+The `m = 2,3,4` prefix bridges are the first checked rows where the generated
+normalization uses nontrivial factorial factors:
+
+```text
+((Nat.factorial m : Real)^-1 * (-1/2))
+```
+
+This narrows the fixed-jet rational prefix gap from `m = 2..15` to `m = 5..15`.
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M5_TO_M15_GAP
+```
+
+Boundary: this covers only `m = 0..4`.  Generated v10 rows remain
+`prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
+no full center-jet proof, no Step33A.1-A closure.
