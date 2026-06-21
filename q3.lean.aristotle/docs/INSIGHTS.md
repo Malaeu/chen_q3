@@ -38374,3 +38374,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`.
   Rows `2..15` and the full-cell order-16 bound remain missing; no
   Step33A.1-A closure is claimed.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivOrderShiftReceiversChecked
+
+- Used the in-app browser/Computer Use for route review after the checked
+  `j = 0,1` ShapeSqDeriv coefficient rows.  Proshka chose the structural route
+  B: prove an order-shift receiver for `ShapeSqDeriv` before generating more
+  scalar rows.
+- Local Mathlib probing found no packaged `iteratedDeriv_mul` theorem for this
+  exact use.  The checked local patch therefore avoids the full product
+  formula and proves only the order shift from the definition of
+  `ShapeSqDeriv` as the derivative of shape-square.
+- Added and Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ`
+  in `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+  This proves
+  `iteratedDeriv j ShapeSqDeriv eta = iteratedDeriv (j + 1) shapeSq eta`.
+- Added and Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs`.
+  This is the coefficient-row receiver: a bound on the `(j+1)`-st derivative
+  of shape-square at the center gives a bound on the `j`-th ShapeSqDeriv
+  power-series coefficient after division by `j!`.
+- Added and Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs`.
+  This is the order-16 receiver: a cellwise order-17 shape-square derivative
+  bound gives the needed ShapeSqDeriv order-16 bound on the same cell.
+- Regenerated the component Taylor residual payload to schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v13`; it records
+  `shapeSqDerivOrderShiftReceiverPresent = true`,
+  `shapeSqDerivCenterCoeffRowsClosedCount = 2`, and
+  `proofSafeClosedFields = 12`.
+- New exact live blocker:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`.
+  The missing object is a proof-grade product-Leibniz/Cauchy derivative-bound
+  payload for the shape-square function.  Rows `2..15`, the full-cell order-16
+  bound, raw-derivative assembly, and Step33A.1-A remain open.

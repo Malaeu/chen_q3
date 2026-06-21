@@ -33306,3 +33306,51 @@ shapeSqDerivOrder16UniformBoundPresent = false
 Boundary: only rows `0` and `1` are closed.  Rows `2..15`, the full-cell
 order-16 bound, raw-derivative assembly, residual polynomial bounds, and the
 final Step33A.1-A interval theorem remain open.  No `Q3.Main` edit was made.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv order-shift receiver checked
+
+Used the in-app browser/Computer Use for the next route review after the
+checked coeff0/coeff1 rows.  Proshka selected the structural route B: first
+prove the `ShapeSqDeriv` order-shift receiver, not manual rows `2..15` and not
+an order-16 monolith.
+
+New checked theorems in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs
+```
+
+Meaning:
+
+```text
+iteratedDeriv^j(ShapeSqDeriv) = iteratedDeriv^(j+1)(shape^2)
+```
+
+and the coefficient rows / order-16 remainder can now be fed by bounds for one
+higher derivative of the shape-square function.
+
+Regenerated payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v13
+status = fail_closed_missing_shapesq_deriv_iterated_leibniz_crosswalk_bounds_payload
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP
+proofSafeClosedFields = 12
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrderShiftReceiverPresent = true
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only the structural receiver
+`STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP`.  It does not prove
+rows `2..15`, does not prove the full-cell order-16 uniform bound, does not
+assemble the raw derivative, and does not close Step33A.1-A.  The live blocker
+is now exactly
+`STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`.

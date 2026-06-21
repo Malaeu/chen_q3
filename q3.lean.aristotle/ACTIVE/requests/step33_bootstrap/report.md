@@ -62634,3 +62634,44 @@ Boundary: this closes only
 `STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP`.  Rows `2..15`,
 the full-cell order-16 bound, raw-derivative assembly, residual polynomial
 bounds, and the final Step33A.1-A interval theorem remain open.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv order-shift receiver checked
+
+The next route review was done through the in-app browser/Computer Use.
+Proshka's advice was used only as route guidance: prove a structural
+order-shift receiver first, then use it to avoid manual row-by-row expansion.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs
+```
+
+These theorems reduce ShapeSqDeriv center rows and the order-16 remainder to
+one-higher derivative bounds for the shape-square function.  They do not
+provide those derivative bounds.
+
+Payload v13 now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v13
+status = fail_closed_missing_shapesq_deriv_iterated_leibniz_crosswalk_bounds_payload
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP
+proofSafeClosedFields = 12
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrderShiftReceiverPresent = true
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP`.  Rows `2..15`, the
+full-cell order-16 bound, raw-derivative assembly, residual polynomial bounds,
+and the final Step33A.1-A interval theorem remain open.

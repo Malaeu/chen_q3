@@ -266,6 +266,99 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeri
     primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center
     j.1
 
+/-- Structural order-shift bridge for the active ShapeSqDeriv source.
+
+`ShapeSqDeriv` is the first derivative of the shape-square term.  Therefore
+its `j`-th iterated derivative is the `(j+1)`-st iterated derivative of the
+underlying shape-square function.  This is the non-numeric bridge needed before
+the remaining rows can be reduced to a reusable product-Leibniz/bounds payload
+for the shape function itself.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+    (j : Nat) (eta : Real) :
+    iteratedDeriv j primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv eta =
+      iteratedDeriv (j + 1)
+        (fun t : Real =>
+          (centeredBSplineImagTransformRealClosedForm
+            11 ((3 : Real) / 10) t) ^ 2)
+        eta := by
+  induction j generalizing eta with
+  | zero =>
+      simp [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv]
+  | succ j ih =>
+      rw [iteratedDeriv_succ, iteratedDeriv_succ]
+      have hfun :
+          iteratedDeriv j primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv =
+            iteratedDeriv (j + 1)
+              (fun t : Real =>
+                (centeredBSplineImagTransformRealClosedForm
+                  11 ((3 : Real) / 10) t) ^ 2) := by
+        funext x
+        exact ih x
+      rw [hfun]
+
+/-- Coefficient-row receiver after the order-shift bridge.
+
+Rows `2..15` may now be generated from proof-grade bounds on the corresponding
+`(j+1)`-st derivative of the shape-square function at the certificate center.
+The remaining nontrivial payload is to prove those derivative bounds, ideally
+through one product-Leibniz/Cauchy layer for the shape function.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs
+    (j : Fin 16) {M : Real}
+    (hAbs :
+      ‖iteratedDeriv (j.1 + 1)
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm
+              11 ((3 : Real) / 10) t) ^ 2)
+          ((1 : Real) / 20)‖ <= M) :
+    ‖primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+        j.1‖ <=
+      M / (Nat.factorial j.1 : Real) := by
+  have hCoeff :=
+    primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+      j
+  have hShift :=
+    primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+      j.1 ((1 : Real) / 20)
+  have hCoeffEq :
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+          j.1 =
+        iteratedDeriv (j.1 + 1)
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm
+                11 ((3 : Real) / 10) t) ^ 2)
+            ((1 : Real) / 20) /
+          (Nat.factorial j.1 : Real) := by
+    rw [← hCoeff, hShift]
+  rw [hCoeffEq]
+  have hFactPos : 0 < (Nat.factorial j.1 : Real) := by positivity
+  have hDiv :=
+    div_le_div_of_nonneg_right hAbs (le_of_lt hFactPos)
+  simpa [norm_div, Real.norm_eq_abs, abs_of_pos hFactPos] using hDiv
+
+/-- Order-16 receiver after the order-shift bridge.
+
+The ShapeSqDeriv order-16 remainder bound is exactly an order-17
+shape-square derivative bound on the same cell.  This theorem does not provide
+that bound; it fixes the interface for the next product-Leibniz/Cauchy payload.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs
+    {M : Real}
+    (hAbs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 17
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm
+                11 ((3 : Real) / 10) t) ^ 2)
+            eta‖ <= M) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          eta‖ <= M := by
+  intro eta heta
+  rw [primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ]
+  exact hAbs eta heta
+
 /-- Build the compact active ShapeSqDeriv interval certificate from
 power-series coefficient enclosures at the actual certificate center.
 
