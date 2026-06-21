@@ -37871,3 +37871,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is not Step33A.1-A closure.  The coarse source must still
   pass integrated shape-square budget/assembly, and shape-derivative Taylor
   data plus raw derivative assembly remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqValueTaylorSourceChecked
+
+- Browser/Proshka was used through the in-app browser as route advice; it is
+  not proof evidence.  The accepted artifact is local Lean.
+- Lean now checks the concrete value Taylor source
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated` in
+  `PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean`.
+- The source uses the checked receiver
+  `shapeSqTaylor_bound_of_shapeSqDerivTaylor_source`, the checked derivative
+  source `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated`,
+  midpoint anchor coefficient
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated`,
+  anchor error `1/1000000000000000000000`, and value remainder `1/250`.
+- The component payload now reports
+  `status = fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders`,
+  `shapeSqTaylorSourcePresent = true`, and `proofSafeClosedFields = 6`.
+- The first failure intentionally remains
+  `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`: the theorem
+  provides a proof-grade `E(eta)^2` value enclosure, not raw-derivative
+  assembly or final residual budget closure.
+- Boundary: Step33A.1-A, Step33, Step34, and RH remain open.  If the exact
+  assembly budget kills the coarse `1/250` source, the next route is a sharper
+  nonconstant `ShapeSqDeriv` Taylor source, not endpoint-only `E`/`E'` boxes.

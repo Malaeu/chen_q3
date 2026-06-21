@@ -1478,6 +1478,82 @@ theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated :
         norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated,
           primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated])
 
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated : Rat :=
+  37158858560446920756861350578635783668117859273616803460403855154979728937804568688431171 /
+    62500000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated : Rat :=
+  (1 : Rat) / 1000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated : Rat :=
+  (1 : Rat) / 250
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated :
+    Fin 17 -> Rat :=
+  integratedTaylorCoeff 15
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated
+
+theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated :
+    ∀ eta ∈ Set.Icc ((499999999999999999999 : Real) / (10000000000000000000000 : Real)) ((1 : Real) / (20 : Real)),
+      ‖(centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / (10 : Real)) eta) ^ 2 -
+        rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated
+          eta‖ <=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated :
+          Real) := by
+  exact
+    shapeSqTaylor_bound_of_shapeSqDerivTaylor_source
+      (k := 11) (ell := ((3 : Real) / (10 : Real)))
+      (a := ((499999999999999999999 : Real) / (10000000000000000000000 : Real)))
+      (b := ((1 : Real) / (20 : Real))) (radius := ((1 : Real) / (20 : Real)))
+      (center := ((1 : Rat) / 20))
+      (derivRemainderAbs :=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated :
+          Real))
+      (anchorErrorAbs :=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated :
+          Real))
+      (remainderAbs :=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated :
+          Real))
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated
+      (by norm_num)
+      (by
+        intro eta heta
+        fun_prop)
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated
+      (by
+        intro eta heta
+        rw [Real.norm_eq_abs]
+        apply abs_le.mpr
+        constructor
+        · have hLeft := heta.1
+          norm_num at hLeft ⊢
+          linarith
+        · have hRight := heta.2
+          norm_num at hRight ⊢
+          linarith)
+      (by
+        have hLower :=
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated.hAnchorLower
+        have hUpper :=
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated.hAnchorUpper
+        rw [Real.norm_eq_abs]
+        apply abs_le.mpr
+        constructor
+        · norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated,
+            primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated] at hLower hUpper ⊢
+          linarith
+        · norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated,
+            primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated] at hLower hUpper ⊢
+          linarith)
+      (by
+        norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated,
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated,
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated])
+
 def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_endpoint_bounds_generated
     (hOmega :
       Step22OmegaClosedFormEndpointBoundsCert

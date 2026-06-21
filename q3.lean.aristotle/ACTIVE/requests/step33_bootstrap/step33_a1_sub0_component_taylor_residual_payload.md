@@ -8,11 +8,11 @@ not close Step33A.1-A.
 - schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
-- status: `fail_closed_shapesq_constant_deriv_source_budget_gap_shapederiv_taylor_remainders`
+- status: `fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders`
 - first failure: `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
 - closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `5`
+- proof-safe closed fields: `6`
 - Lean emitted: `False`
 
 ## Target
@@ -72,7 +72,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 - omega: `formal_center_anchor_available_missing_component_assembly`
 - omegaDeriv: `formal_available_not_assembled`
-- shape: `constant_shapesq_deriv_source_formal_budget_not_assembled`
+- shape: `constant_shapesq_value_source_formal_budget_not_assembled`
 - shapeDeriv: `endpoint_deriv_bounds_formal_missing_component_taylor_receiver`
 
 ## OmegaDeriv Taylor Source
@@ -104,11 +104,12 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylor: `FORMAL`
 - omegaDerivTaylor Lean theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 - omegaTaylor: `CROSSWALK_AND_CENTER_ANCHOR_FORMAL_MISSING_COMPONENT_ASSEMBLY`
-- shapeTaylor: `CONSTANT_DERIV_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED`
+- shapeTaylor: `SHAPESQ_VALUE_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED`
 - shapeDerivTaylor: `ENDPOINT_DERIV_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER`
 - shape endpoint bounds available: `True`
 - shapeSq integrated receiver available: `True`
 - shapeSq deriv Taylor source available: `True`
+- shapeSq value Taylor source available: `True`
 - shape Taylor receiver gap: `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
 - shapeDeriv Taylor receiver gap: `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - assembly Lean written: `False`
@@ -155,6 +156,22 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - next missing: `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
 - boundary: This is a proof-grade constant Taylor source for deriv(E^2), not a final component Taylor closure.  The coarse remainder 3/40 must still pass the shape-square integrated budget and then the raw-derivative assembly budget.
 
+## ShapeSq Value Taylor Source
+
+- proof-grade: `True`
+- receiver theorem: `shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound`
+- receiver theorem found: `True`
+- source theorem: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated`
+- source theorem found: `True`
+- coeff def: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated`
+- anchor coeff def: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated`
+- anchor error def: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated`
+- remainder def: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated`
+- constant remainder abs: `1/250`
+- failure closed: `None`
+- next missing: `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
+- boundary: This is a proof-grade value Taylor enclosure for shape-square built from the checked constant derivative source and the center anchor budget.  It is not raw-derivative assembly and the coarse 1/250 remainder is expected to be too wide for the final residual budget unless a later exact assembly test proves otherwise.
+
 ## Proof Status
 
 - exactCoefficientAssemblyPassed: `False`
@@ -165,12 +182,13 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeEndpointBoundsProofPresent: `True`
 - shapeSqIntegratedTaylorReceiverPresent: `True`
 - shapeSqDerivTaylorSourcePresent: `True`
-- shapeTaylorReceiverPresent: `False`
+- shapeSqTaylorSourcePresent: `True`
+- shapeTaylorReceiverPresent: `True`
 - shapeDerivTaylorReceiverPresent: `False`
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `5`
+- proofSafeClosedFields: `6`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -189,6 +207,8 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSqIntegratedTaylorCrosswalk: `integratedTaylorPolynomial_deriv_eq_base`
 - shapeSqDerivTaylorBridge: `shapeSqDerivTaylor_bound_of_endpoint_bounds`
 - shapeSqDerivTaylorSource: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated`
+- shapeSqTaylorSource: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated`
+- shapeSqTaylorCoeff: `primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated`
 - shapeValueBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated`
 - shapeDerivAnchorBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated`
 - shapeDerivIntervalBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated`
@@ -219,10 +239,10 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Decision
 
 The Omega integrated-polynomial derivative crosswalk, center
-anchor payload, shape-square integrated Taylor receiver, and a
-proof-grade constant Taylor source for the derivative of
-shape-square are now Lean-checked.  The next immediate
-proof-producing gate is the exact budget/assembly test for this
-coarse shape-square source, followed by shape-derivative Taylor
-data, raw-derivative assembly, residual polynomial bounds, and
-the final interval theorem.
+anchor payload, shape-square integrated Taylor receiver,
+constant derivative Taylor source, and the induced value Taylor
+source for shape-square are now Lean-checked.  The node remains
+fail-closed at the exact budget/assembly test for this coarse
+source, followed by shape-derivative Taylor data, raw-derivative
+assembly, residual polynomial bounds, and the final interval
+theorem.

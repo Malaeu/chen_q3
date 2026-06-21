@@ -61648,3 +61648,61 @@ STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP
 Boundary: this is not Step33A.1-A closure.  The constant source still must pass
 the integrated shape-square budget and raw-derivative assembly, and the separate
 shape-derivative Taylor route remains open.
+
+## 2026-06-21 -- ShapeSq value Taylor source checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+Browser/Proshka was used through the in-app browser for route advice.  The
+advisory answer confirmed the next patch as a proof-grade coarse `E^2` value
+Taylor source and warned that the coarse `1/250` remainder is likely too wide
+for the final residual budget.  The accepted proof artifact is local Lean only.
+
+New checked Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorErrorAbs_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated
+```
+
+The theorem uses the existing checked receiver
+`shapeSqTaylor_bound_of_shapeSqDerivTaylor_source`, the checked derivative
+source `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated`,
+and the endpoint anchor bounds from
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`.
+
+Regenerated component payload:
+
+```text
+status = fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP
+shapeSqDerivTaylorSourcePresent = true
+shapeSqTaylorSourcePresent = true
+shapeTaylorReceiverPresent = true
+shapeDerivTaylorReceiverPresent = false
+proofSafeClosedFields = 6
+finalBudgetPassed = false
+```
+
+New local proof object:
+
+```text
+ShapeSq value Taylor source generated from the checked constant derivative source.
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP
+```
+
+Boundary: this is not Step33A.1-A closure.  The closed item is only the
+integrated value Taylor source for `E(eta)^2`; the exact raw-derivative
+assembly/budget test, shape-derivative Taylor data, residual polynomial bounds,
+and final interval theorem remain open.  If the `1/250` source fails the exact
+assembly budget, the next route is a sharper nonconstant `ShapeSqDeriv` Taylor
+source, not a return to separate endpoint-only `E`/`E'` boxes.
