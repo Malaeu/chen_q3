@@ -37107,3 +37107,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimePayloadGeneratorSchemaV7
+
+- Used the in-app browser/Proshka as advisory route review for the
+  post-`hDerivEq` payload fork.  The advice confirmed route A: first sync the
+  fail-closed generator/report schema to the checked-deriv receiver, then
+  generate proof-grade rational payload data.
+- Updated and regenerated
+  `scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`,
+  and
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md`.
+- New generated schema:
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7`.
+- Active receiver:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
+- Current generated status:
+  `fail_closed_missing_center_jet_payload`.
+- Current first failure:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`.
+- Active generator failure codes are now exactly:
+  `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL`,
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`.
+- The old
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP` is historical for
+  this generator path.  It must not be used as the active next blocker after
+  the checked-deriv receiver.
+- Boundary: no Lean payload emitted, no Step33A.1-A closure, no A hbox, and no
+  Step33/Step34/RH claim.  The next proof-producing patch is the concrete
+  rational `Step33Sub0OmegaPrimeTaylorRemainderCert` payload.

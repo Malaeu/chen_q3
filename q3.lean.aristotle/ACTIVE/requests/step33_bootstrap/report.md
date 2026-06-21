@@ -59638,6 +59638,55 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Report Addendum -- OmegaPrime payload generator schema v7
+
+Browser/Proshka advisory review confirmed route A for the current
+post-`hDerivEq` fork: synchronize the fail-closed payload generator with the
+checked-deriv receiver before producing rational payload data.
+
+Patched and regenerated:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+Current generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7
+status = fail_closed_missing_center_jet_payload
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+receiver = Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv
+receiverChecked = true
+outLeanWritten = false
+leanValidationStatus = not_run
+```
+
+Active generator failure codes:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+```
+
+Closed historical failures moved out of the active generator path:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP
+STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP
+STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP
+STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP
+STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP
+```
+
+This addendum is not a proof of Step33A.1-A.  It only removes a stale routing
+hazard and pins the next proof-producing payload obligations.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime hDerivEq closed
 
 Closed the analytic `hDerivEq` bridge for the active OmegaPrime order-16

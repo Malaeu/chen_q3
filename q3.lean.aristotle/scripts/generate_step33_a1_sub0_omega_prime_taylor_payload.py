@@ -7,8 +7,9 @@ component Taylor blocker:
     step22OmegaArchWeightDerivClosedForm
 
 around center 1/20 on radius 1/20, degree 15.  It deliberately does not emit
-Lean until the order-16/polygamma bound and center-jet coefficient enclosures
-are proof-grade.
+Lean until the checked-deriv receiver payload fields are proof-grade: center
+jet coefficient enclosures, the integer order-16 budget, and the exact
+remainder budget.
 """
 
 from __future__ import annotations
@@ -36,10 +37,20 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v6"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
-STATUS = "fail_closed_missing_order16_polygamma_bound"
-FIRST_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP"
+STATUS = "fail_closed_missing_checked_deriv_payload"
+STALE_RECEIVER_SCHEMA_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL"
+)
+CENTER_JET_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP"
+ORDER16_INTEGER_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP"
+)
+REMAINDER_BUDGET_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP"
+)
+FIRST_FAILURE = CENTER_JET_FAILURE
 LAGRANGE_SPLIT_FAILURE = "STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP"
 LEFT_LAGRANGE_FAILURE = "STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP"
 EXACT_POLY_FAILURE = "STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP"
@@ -47,7 +58,9 @@ REFLECTED_DERIV_FAILURE = (
     "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP"
 )
 RIGHT_LAGRANGE_FAILURE = "STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP"
-ORDER16_FAILURE = "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP"
+HISTORICAL_ORDER16_POLYGAMMA_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP"
+)
 
 FUNCTION_ID = "step22OmegaArchWeightDerivClosedForm"
 TARGET_CERT = "Step33Sub0OmegaPrimeTaylorRemainderCert"
@@ -70,6 +83,10 @@ TARGET_OMEGAPRIME_CONTDIFF16 = (
 )
 TARGET_VALID_CHECKED_SMOOTH = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth"
+)
+TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "Valid.of_order16_integer_budget_checked_deriv"
 )
 TARGET_REFLECTED_DERIV = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert."
@@ -153,16 +170,20 @@ TARGET_SYMBOLS = [
     TARGET_VALID_OF_ORDER16,
     TARGET_OMEGAPRIME_CONTDIFF16,
     TARGET_VALID_CHECKED_SMOOTH,
+    TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV,
     TARGET_REFLECTED_DERIV,
     TARGET_TAYLOR_EXACT_POLY,
     TARGET_REFLECTED_TAYLOR_EXACT_POLY,
+    STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE,
+    ORDER16_INTEGER_FAILURE,
+    REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE,
     LEFT_LAGRANGE_FAILURE,
     EXACT_POLY_FAILURE,
     REFLECTED_DERIV_FAILURE,
     RIGHT_LAGRANGE_FAILURE,
-    ORDER16_FAILURE,
+    HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
 ]
 
 TARGET_PATTERNS = {
@@ -175,18 +196,24 @@ TARGET_PATTERNS = {
     TARGET_VALID_OF_ORDER16: "theorem Valid.of_order16_bound",
     TARGET_OMEGAPRIME_CONTDIFF16: "theorem omegaPrimeClosedForm_contDiff16",
     TARGET_VALID_CHECKED_SMOOTH: "theorem Valid.of_order16_bound_checked_smooth",
+    TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV: (
+        "theorem Valid.of_order16_integer_budget_checked_deriv"
+    ),
     TARGET_REFLECTED_DERIV: "theorem omegaPrimeClosedForm_reflected_iteratedDeriv",
     TARGET_TAYLOR_EXACT_POLY: "theorem taylorWithinEval_eq_exactTaylorPoly",
     TARGET_REFLECTED_TAYLOR_EXACT_POLY: (
         "theorem reflectedTaylorWithinEval_eq_exactTaylorPoly"
     ),
+    STALE_RECEIVER_SCHEMA_FAILURE: STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE: FIRST_FAILURE,
+    ORDER16_INTEGER_FAILURE: ORDER16_INTEGER_FAILURE,
+    REMAINDER_BUDGET_FAILURE: REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE: LAGRANGE_SPLIT_FAILURE,
     LEFT_LAGRANGE_FAILURE: LEFT_LAGRANGE_FAILURE,
     EXACT_POLY_FAILURE: EXACT_POLY_FAILURE,
     REFLECTED_DERIV_FAILURE: REFLECTED_DERIV_FAILURE,
     RIGHT_LAGRANGE_FAILURE: RIGHT_LAGRANGE_FAILURE,
-    ORDER16_FAILURE: ORDER16_FAILURE,
+    HISTORICAL_ORDER16_POLYGAMMA_FAILURE: HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
 }
 
 
@@ -253,6 +280,24 @@ def missing_coeff_slots(name: str) -> list[dict[str, Any]]:
     ]
 
 
+def missing_center_jet_slots() -> list[dict[str, Any]]:
+    return [
+        {
+            "index": index,
+            "coeff": None,
+            "coeffErrorAbs": None,
+            "lower": None,
+            "upper": None,
+            "sourceLeanTheorem": None,
+            "sourceLeanChecked": False,
+            "lowerCheckPassed": False,
+            "upperCheckPassed": False,
+            "enclosurePassed": False,
+        }
+        for index in range(DEGREE + 1)
+    ]
+
+
 def build_report(
     *,
     chunk_file: Path,
@@ -289,22 +334,41 @@ def build_report(
     valid_checked_smooth_present = (
         target_scan[TARGET_VALID_CHECKED_SMOOTH]["status"] == "found"
     )
+    valid_integer_budget_checked_deriv_present = (
+        target_scan[TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV]["status"]
+        == "found"
+    )
+    receiver_schema_current = receiver_present and valid_integer_budget_checked_deriv_present
+    first_failure = (
+        CENTER_JET_FAILURE
+        if receiver_schema_current
+        else STALE_RECEIVER_SCHEMA_FAILURE
+    )
+    status = (
+        "fail_closed_missing_center_jet_payload"
+        if receiver_schema_current
+        else "fail_closed_stale_receiver_schema"
+    )
 
     return {
         "schema": SCHEMA,
         "routeId": ROUTE_ID,
-        "status": STATUS,
-        "firstFailure": FIRST_FAILURE,
+        "status": status,
+        "firstFailure": first_failure,
+        "receiverSchemaCurrent": receiver_schema_current,
         "failureCodes": [
-            FIRST_FAILURE,
+            STALE_RECEIVER_SCHEMA_FAILURE,
+            CENTER_JET_FAILURE,
+            ORDER16_INTEGER_FAILURE,
+            REMAINDER_BUDGET_FAILURE,
+        ],
+        "closedHistoricalFailures": [
+            HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
             LAGRANGE_SPLIT_FAILURE,
             LEFT_LAGRANGE_FAILURE,
             EXACT_POLY_FAILURE,
             REFLECTED_DERIV_FAILURE,
             RIGHT_LAGRANGE_FAILURE,
-            "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP",
-            "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP",
-            "STEP33_A1_SUB0_OMEGAPRIME_TAYLOR_LEAN_PAYLOAD_MISSING",
         ],
         "generator": GENERATOR_NAME,
         "functionId": FUNCTION_ID,
@@ -327,12 +391,18 @@ def build_report(
             "validOfOrder16Theorem": TARGET_VALID_OF_ORDER16,
             "omegaPrimeContDiff16Theorem": TARGET_OMEGAPRIME_CONTDIFF16,
             "validCheckedSmoothTheorem": TARGET_VALID_CHECKED_SMOOTH,
+            "receiver": TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV,
+            "receiverChecked": valid_integer_budget_checked_deriv_present,
+            "oldReceiverRejected": TARGET_VALID_CHECKED_SMOOTH,
             "reflectedIteratedDerivTheorem": TARGET_REFLECTED_DERIV,
             "taylorWithinEvalExactPolyTheorem": TARGET_TAYLOR_EXACT_POLY,
             "reflectedTaylorWithinEvalExactPolyTheorem": (
                 TARGET_REFLECTED_TAYLOR_EXACT_POLY
             ),
             "status": (
+                "receiver_checked_deriv_present_missing_concrete_payload"
+                if receiver_schema_current
+                else
                 "receiver_centered_taylor_bridge_and_smooth_present_missing_payload"
                 if (
                     receiver_present
@@ -368,13 +438,14 @@ def build_report(
             ),
             "nextBridgeStatementAscii": (
                 "theorem Step33Sub0OmegaPrimeTaylorRemainderCert."
-                "Valid.of_order16_bound_checked_smooth "
+                "Valid.of_order16_integer_budget_checked_deriv "
                 "(data : Step33Sub0OmegaPrimeTaylorRemainderCert) "
+                "(hCoeffErrorNonneg : forall j, 0 <= data.coeffErrorAbs j) "
                 "(hCenterJet : center coefficient enclosures) "
-                "(hOrder16 : forall eta in [0,1/10], "
-                "norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) "
+                "(hIntegerBudget : omegaPrimeOrder16CondensedFactorBudgetBound "
                 "<= data.order16Abs) "
-                "(hBudget : coefficient plus Lagrange budget <= data.remainderAbs) : "
+                "(hRemainderBudget : coefficient plus Lagrange budget "
+                "<= data.remainderAbs) : "
                 "data.Valid"
             ),
         },
@@ -386,13 +457,36 @@ def build_report(
             "degree": DEGREE,
             "coeff": missing_coeff_slots("coefficient_enclosure"),
             "coeffErrorAbs": missing_coeff_slots("coefficient_error_bound"),
+            "centerJet": missing_center_jet_slots(),
             "order16Abs": None,
-            "coefficientErrorBudget": None,
-            "lagrangeRemainderBudget": None,
+            "order16": {
+                "condensedFactorBudgetBoundExact": None,
+                "order16Abs": None,
+                "marginExact": None,
+                "integerBudgetPassed": False,
+                "sourceLeanTheorems": [
+                    "omegaPrimeOrder16CondensedFactorBudgetBound",
+                    "omegaPrimeClosedForm_iteratedDeriv16_eq",
+                    "Valid.of_order16_integer_budget_checked_deriv",
+                ],
+                "sourceLeanChecked": valid_integer_budget_checked_deriv_present,
+            },
+            "remainder": {
+                "coeffErrorContributionExact": None,
+                "lagrangeContributionExact": None,
+                "requiredTotalExact": None,
+                "remainderAbs": None,
+                "marginExact": None,
+                "budgetPassed": False,
+            },
             "remainderAbs": None,
             "centerJetSource": missing_coeff_slots("center_jet_source"),
-            "order16BoundSource": None,
+            "integerBudgetSource": None,
             "exactRationalChecksPassed": False,
+            "allCenterJetsProved": False,
+            "allPayloadObligationsPassed": False,
+            "leanOutputPath": None,
+            "leanValidationStatus": "not_run",
             "proofSafeClosedFields": 0,
             "outLeanWritten": False,
         },
@@ -427,18 +521,22 @@ def build_report(
                 "ContDiff Real 16"
             ),
             (
-                "already proved locally: Valid.of_order16_bound_checked_smooth "
-                "uses omegaPrimeClosedForm_contDiff16, so generated payloads "
-                "no longer need to supply hSmooth"
+                "already proved locally: "
+                "Valid.of_order16_integer_budget_checked_deriv uses "
+                "omegaPrimeClosedForm_iteratedDeriv16_eq, so generated "
+                "payloads no longer need to supply hSmooth or hDerivEq"
+            ),
+            (
+                "for each j < 16, prove 0 <= coeffErrorAbs[j]"
             ),
             (
                 "for each j < 16, prove |iteratedDeriv j "
-                "step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| "
+                "omegaPrimeClosedForm (1/20) / j! - coeff[j]| "
                 "<= coeffErrorAbs[j]"
             ),
             (
-                "prove forall eta in [0, 1/10], |iteratedDeriv 16 "
-                "step22OmegaArchWeightDerivClosedForm eta| <= order16Abs"
+                "prove omegaPrimeOrder16CondensedFactorBudgetBound "
+                "<= order16Abs"
             ),
             (
                 "prove sum_j coeffErrorAbs[j] * radius^j + "
@@ -458,10 +556,21 @@ def build_report(
             "reflectedIteratedDerivBridgeProved": reflected_deriv_present,
             "omegaPrimeAnalyticSmoothnessProved": omega_prime_contdiff16_present,
             "validCheckedSmoothConstructorProved": valid_checked_smooth_present,
+            "omegaPrimeHDerivEqProved": valid_integer_budget_checked_deriv_present,
+            "validIntegerBudgetCheckedDerivConstructorProved": (
+                valid_integer_budget_checked_deriv_present
+            ),
+            "omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget": (
+                valid_integer_budget_checked_deriv_present
+            ),
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
+            "omegaPrimeOrder16IntegerBudgetProved": False,
             "omegaPrimeRemainderBudgetPassed": False,
             "exactRationalChecksPassed": False,
+            "allCenterJetsProved": False,
+            "allPayloadObligationsPassed": False,
+            "leanValidationStatus": "not_run",
             "proofSafeClosedFields": 0,
             "outLeanWritten": False,
         },
@@ -500,17 +609,18 @@ def build_report(
         "advisorySource": {
             "browserProshka": "advisory_only_not_proof_evidence",
             "chosen": "A",
-            "recommendedLeanBridge": TARGET_VALID_CHECKED_SMOOTH,
+            "recommendedLeanBridge": TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV,
             "recommendedGenerator": GENERATOR_NAME,
-            "firstFailure": FIRST_FAILURE,
+            "firstFailure": first_failure,
             "closedSubfailures": [
+                HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
                 REFLECTED_DERIV_FAILURE,
                 EXACT_POLY_FAILURE,
                 RIGHT_LAGRANGE_FAILURE,
                 LEFT_LAGRANGE_FAILURE,
                 LAGRANGE_SPLIT_FAILURE,
             ],
-            "nextFailureAfterBridge": ORDER16_FAILURE,
+            "nextFailureAfterBridge": CENTER_JET_FAILURE,
             "whyNotEndpointFiniteCover": (
                 "Endpoint finite-cover subdivision still needs the same "
                 "trigamma/polygamma source bounds, repeated over segments."
@@ -551,6 +661,7 @@ def render_md(report: dict[str, Any]) -> str:
         f"- route: `{report['routeId']}`",
         f"- status: `{report['status']}`",
         f"- first failure: `{report['firstFailure']}`",
+        f"- receiver schema current: `{report['receiverSchemaCurrent']}`",
         f"- function: `{report['functionId']}`",
         f"- center: `{report['cell']['center']}`",
         f"- radius: `{report['cell']['radius']}`",
@@ -570,6 +681,9 @@ def render_md(report: dict[str, Any]) -> str:
         f"- valid constructor: `{report['targetLeanSurface']['validOfOrder16Theorem']}`",
         f"- OmegaPrime smoothness theorem: `{report['targetLeanSurface']['omegaPrimeContDiff16Theorem']}`",
         f"- checked-smooth valid constructor: `{report['targetLeanSurface']['validCheckedSmoothTheorem']}`",
+        f"- active payload receiver: `{report['targetLeanSurface']['receiver']}`",
+        f"- receiver checked: `{report['targetLeanSurface']['receiverChecked']}`",
+        f"- old receiver rejected for new payloads: `{report['targetLeanSurface']['oldReceiverRejected']}`",
         f"- reflected derivative theorem: `{report['targetLeanSurface']['reflectedIteratedDerivTheorem']}`",
         f"- Taylor exact-poly theorem: `{report['targetLeanSurface']['taylorWithinEvalExactPolyTheorem']}`",
         f"- reflected Taylor exact-poly theorem: `{report['targetLeanSurface']['reflectedTaylorWithinEvalExactPolyTheorem']}`",
@@ -593,14 +707,19 @@ def render_md(report: dict[str, Any]) -> str:
         "",
         "- `coeff[0..15]`",
         "- `coeffErrorAbs[0..15]`",
+        "- `centerJet[0..15].{coeff,coeffErrorAbs,lower,upper,sourceLeanTheorem,sourceLeanChecked,lowerCheckPassed,upperCheckPassed,enclosurePassed}`",
         "- `order16Abs`",
-        "- `coefficientErrorBudget`",
-        "- `lagrangeRemainderBudget`",
+        "- `order16.{condensedFactorBudgetBoundExact,order16Abs,marginExact,integerBudgetPassed,sourceLeanTheorems,sourceLeanChecked}`",
+        "- `remainder.{coeffErrorContributionExact,lagrangeContributionExact,requiredTotalExact,remainderAbs,marginExact,budgetPassed}`",
         "- `remainderAbs`",
         "- `centerJetSource[0..15]`",
-        "- `order16BoundSource`",
+        "- `integerBudgetSource`",
         "- `exactRationalChecksPassed`",
         "- `sourceDefinitionHashes`",
+        "- `allCenterJetsProved`",
+        "- `allPayloadObligationsPassed`",
+        "- `leanOutputPath`",
+        "- `leanValidationStatus`",
         "- `proofSafeClosedFields`",
         "- `outLeanWritten`",
         "- `failureCodes[]`",
@@ -662,14 +781,25 @@ def render_md(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
+            "## Closed Historical Failures",
+            "",
+        ]
+    )
+    for code in report["closedHistoricalFailures"]:
+        lines.append(f"- `{code}`")
+
+    lines.extend(
+        [
+            "",
             "## Decision",
             "",
-            "The centered Taylor bridge from a uniform order-16 bound is now",
-            "proved locally, including right-half and reflected left-half",
-            "Lagrange bridges plus the `Valid.of_order16_bound` constructor.",
-            "The next proof-producing step is the proof-grade order-16",
-            "polygamma bound together with center-jet coefficient enclosures",
-            "and the exact rational remainder budget.",
+            "The checked-deriv receiver is now the active Lean surface:",
+            f"`{report['targetLeanSurface']['receiver']}`.",
+            "The old order-16 polygamma failure is historical, not the active",
+            "payload blocker. The next proof-producing step is a concrete",
+            "`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with center-jet",
+            "coefficient enclosures, the integer order-16 budget, and the exact",
+            "rational Taylor remainder budget.",
             "",
             "Until those payload fields exist locally, the correct fail code is:",
             "",

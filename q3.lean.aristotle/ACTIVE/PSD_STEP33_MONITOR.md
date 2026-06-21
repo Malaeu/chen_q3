@@ -31325,6 +31325,56 @@ budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime payload generator schema v7
+
+Used the in-app browser/Proshka as advisory route review for the post-`hDerivEq`
+payload fork.  Proshka selected route A: first synchronize the fail-closed
+generator/report schema to the checked-deriv receiver, then generate proof-grade
+rational payload data.
+
+Updated:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md
+```
+
+The generated schema is now:
+
+```text
+q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7
+status = fail_closed_missing_center_jet_payload
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+receiver = Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv
+receiverSchemaCurrent = true
+```
+
+Active failure codes:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+```
+
+Historical, not active:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP
+STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP
+STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP
+STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP
+STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP
+```
+
+Boundary: this is a generator/report synchronization only.  It emits no Lean
+payload and proves no Step33A.1-A closure.  The next proof-producing patch is
+the concrete rational `Step33Sub0OmegaPrimeTaylorRemainderCert` payload for
+center jets, integer order-16 budget, and exact remainder budget.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime local-uniform majorant and hDerivEq closure
 
 Closed the local-uniform derivative-majorant side of the trigamma

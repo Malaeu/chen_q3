@@ -5,10 +5,11 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v6`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v7`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_missing_order16_polygamma_bound`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`
+- status: `fail_closed_missing_center_jet_payload`
+- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
+- receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
 - radius: `1/20`
@@ -28,10 +29,13 @@ not close Step33A.1-A.
 - valid constructor: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound`
 - OmegaPrime smoothness theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16`
 - checked-smooth valid constructor: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth`
+- active payload receiver: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`
+- receiver checked: `True`
+- old receiver rejected for new payloads: `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth`
 - reflected derivative theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv`
 - Taylor exact-poly theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly`
 - reflected Taylor exact-poly theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly`
-- status: `receiver_centered_taylor_bridge_and_smooth_present_missing_payload`
+- status: `receiver_checked_deriv_present_missing_concrete_payload`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -40,7 +44,7 @@ theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0Om
 Next constructor surface:
 
 ```text
-theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (hCenterJet : center coefficient enclosures) (hOrder16 : forall eta in [0,1/10], norm (iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta) <= data.order16Abs) (hBudget : coefficient plus Lagrange budget <= data.remainderAbs) : data.Valid
+theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (hCoeffErrorNonneg : forall j, 0 <= data.coeffErrorAbs j) (hCenterJet : center coefficient enclosures) (hIntegerBudget : omegaPrimeOrder16CondensedFactorBudgetBound <= data.order16Abs) (hRemainderBudget : coefficient plus Lagrange budget <= data.remainderAbs) : data.Valid
 ```
 
 Normalization note:
@@ -51,14 +55,19 @@ Normalization note:
 
 - `coeff[0..15]`
 - `coeffErrorAbs[0..15]`
+- `centerJet[0..15].{coeff,coeffErrorAbs,lower,upper,sourceLeanTheorem,sourceLeanChecked,lowerCheckPassed,upperCheckPassed,enclosurePassed}`
 - `order16Abs`
-- `coefficientErrorBudget`
-- `lagrangeRemainderBudget`
+- `order16.{condensedFactorBudgetBoundExact,order16Abs,marginExact,integerBudgetPassed,sourceLeanTheorems,sourceLeanChecked}`
+- `remainder.{coeffErrorContributionExact,lagrangeContributionExact,requiredTotalExact,remainderAbs,marginExact,budgetPassed}`
 - `remainderAbs`
 - `centerJetSource[0..15]`
-- `order16BoundSource`
+- `integerBudgetSource`
 - `exactRationalChecksPassed`
 - `sourceDefinitionHashes`
+- `allCenterJetsProved`
+- `allPayloadObligationsPassed`
+- `leanOutputPath`
+- `leanValidationStatus`
 - `proofSafeClosedFields`
 - `outLeanWritten`
 - `failureCodes[]`
@@ -71,9 +80,10 @@ Normalization note:
 - already proved locally: taylorWithinEval agrees with exactTaylorPoly under UniqueDiffOn and global ContDiff 16
 - already proved locally: reflected iterated derivative identity iteratedDeriv n (fun x => f (1/10 - x)) x = (-1)^n * iteratedDeriv n f (1/10 - x)
 - already proved locally: trigamma is analytic in the right half-plane and step22OmegaArchWeightDerivClosedForm is ContDiff Real 16
-- already proved locally: Valid.of_order16_bound_checked_smooth uses omegaPrimeClosedForm_contDiff16, so generated payloads no longer need to supply hSmooth
-- for each j < 16, prove |iteratedDeriv j step22OmegaArchWeightDerivClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]
-- prove forall eta in [0, 1/10], |iteratedDeriv 16 step22OmegaArchWeightDerivClosedForm eta| <= order16Abs
+- already proved locally: Valid.of_order16_integer_budget_checked_deriv uses omegaPrimeClosedForm_iteratedDeriv16_eq, so generated payloads no longer need to supply hSmooth or hDerivEq
+- for each j < 16, prove 0 <= coeffErrorAbs[j]
+- for each j < 16, prove |iteratedDeriv j omegaPrimeClosedForm (1/20) / j! - coeff[j]| <= coeffErrorAbs[j]
+- prove omegaPrimeOrder16CondensedFactorBudgetBound <= order16Abs
 - prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 
 ## Local Source Scan
@@ -98,31 +108,36 @@ Normalization note:
 
 | symbol | line | status |
 | --- | --- | --- |
-| `step33_shift16_digamma_m6_integral_remainder_bound` | `841` | `found` |
-| `Q3.digammaM6IntegralRemainderBound` | `842` | `found` |
+| `step33_shift16_digamma_m6_integral_remainder_bound` | `842` | `found` |
+| `Q3.digammaM6IntegralRemainderBound` | `843` | `found` |
 
 ## Target Symbol Scan
 
 | symbol | line | status |
 | --- | --- | --- |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9633` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10068` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `10223` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10050` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9910` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9809` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10097` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9646` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10131` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9653` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9682` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9758` | `found` |
-| `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP` | `None` | `gap` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9634` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10069` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `11463` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10051` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9911` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9810` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10098` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9647` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10132` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `11370` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9654` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9683` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9759` | `found` |
+| `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP` | `None` | `gap` |
 
 ## Proof Status
 
@@ -136,14 +151,28 @@ Normalization note:
 - reflectedIteratedDerivBridgeProved: `True`
 - omegaPrimeAnalyticSmoothnessProved: `True`
 - validCheckedSmoothConstructorProved: `True`
+- omegaPrimeHDerivEqProved: `True`
+- validIntegerBudgetCheckedDerivConstructorProved: `True`
+- omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget: `True`
 - omegaPrimeCenterJetBoundsProved: `False`
 - omegaPrimeOrder16BoundProved: `False`
+- omegaPrimeOrder16IntegerBudgetProved: `False`
 - omegaPrimeRemainderBudgetPassed: `False`
 - exactRationalChecksPassed: `False`
+- allCenterJetsProved: `False`
+- allPayloadObligationsPassed: `False`
+- leanValidationStatus: `not_run`
 - proofSafeClosedFields: `0`
 - outLeanWritten: `False`
 
 ## Failure Codes
+
+- `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
+
+## Closed Historical Failures
 
 - `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`
 - `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP`
@@ -151,21 +180,19 @@ Normalization note:
 - `STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP`
 - `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP`
 - `STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP`
-- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SOURCE_GAP`
-- `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_GAP`
-- `STEP33_A1_SUB0_OMEGAPRIME_TAYLOR_LEAN_PAYLOAD_MISSING`
 
 ## Decision
 
-The centered Taylor bridge from a uniform order-16 bound is now
-proved locally, including right-half and reflected left-half
-Lagrange bridges plus the `Valid.of_order16_bound` constructor.
-The next proof-producing step is the proof-grade order-16
-polygamma bound together with center-jet coefficient enclosures
-and the exact rational remainder budget.
+The checked-deriv receiver is now the active Lean surface:
+`Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
+The old order-16 polygamma failure is historical, not the active
+payload blocker. The next proof-producing step is a concrete
+`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with center-jet
+coefficient enclosures, the integer order-16 budget, and the exact
+rational Taylor remainder budget.
 
 Until those payload fields exist locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
 ```
