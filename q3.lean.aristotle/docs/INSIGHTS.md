@@ -37895,3 +37895,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: Step33A.1-A, Step33, Step34, and RH remain open.  If the exact
   assembly budget kills the coarse `1/250` source, the next route is a sharper
   nonconstant `ShapeSqDeriv` Taylor source, not endpoint-only `E`/`E'` boxes.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqCoarseBudgetAudit
+
+- Browser/Proshka was used through the in-app browser as route advice.  The
+  advisory route choice was A: record the coarse budget audit fail-closed, then
+  build a sharper nonconstant `ShapeSqDeriv` Taylor source.  This advice is not
+  proof evidence.
+- The cancellation residual interval certificate generator now reads the
+  component payload and emits schema
+  `q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2`.
+- The exact audit failure is
+  `STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL`.
+- Exact scale-free comparison:
+  `targetWidth = 245091005771/62500000000000000000000000000`,
+  `shapeSq value remainder = 1/250`, and
+  `shapeSq deriv remainder = 3/40`.
+- The exact ratios are
+  `250000000000000000000000000/245091005771` and
+  `4687500000000000000000000000/245091005771`, so the coarse source is
+  rejected for the current interval-product assembly budget.
+- Boundary: this is a diagnostic/accounting failure, not a Lean impossibility
+  theorem and not a Step33A.1-A route kill.
+- Next live proof object:
+  `shapeSqDerivTaylor_bound_of_centerJet_and_order16` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`, followed by a
+  concrete Sub0 order-16 derivative source.  Do not return to separate
+  endpoint-only `E`/`E'` boxes because that loses the cancellation structure.

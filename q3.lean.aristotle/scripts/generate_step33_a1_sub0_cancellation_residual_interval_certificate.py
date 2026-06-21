@@ -33,6 +33,9 @@ LANDING_FILE = ROOT / "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
 SEGMENTED_PAYLOAD = (
     REQUEST_DIR / "step33_a1_sub0_segmented_residual_deriv_interval_payload.json"
 )
+COMPONENT_PAYLOAD = (
+    REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.json"
+)
 DEFAULT_OUT_JSON = (
     REQUEST_DIR / "step33_a1_sub0_cancellation_residual_interval_certificate.json"
 )
@@ -40,12 +43,15 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_cancellation_residual_interval_certificate.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2"
 ROUTE_ID = "STEP33_A1_SUB0_CANCELLATION_RESIDUAL_INTERVAL"
 STATUS = "fail_closed_missing_component_taylor_remainder_bounds"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING"
 SECOND_FAILURE = "STEP33_A1_SUB0_ASSEMBLED_RESIDUAL_RANGE_PROOF_MISSING"
 NO_LEAN_PAYLOAD_FAILURE = "STEP33_A1_SUB0_CANCELLATION_INTERVAL_LEAN_PAYLOAD_MISSING"
+COARSE_SHAPESQ_BUDGET_FAILURE = (
+    "STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL"
+)
 
 COEFF_DEF = "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff"
 RAW_TAYLOR_COEFF_DEF = "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff"
@@ -221,12 +227,91 @@ def segmented_summary(segmented: dict[str, Any] | None) -> dict[str, Any]:
     }
 
 
-def build_report(landing_path: Path, segmented_path: Path) -> dict[str, Any]:
+def component_payload_audit(component: dict[str, Any] | None) -> dict[str, Any]:
+    if not component:
+        return {
+            "exists": False,
+            "schema": None,
+            "status": None,
+            "firstFailure": None,
+            "proofSafeClosedFields": None,
+            "shapeSqDerivTaylorSourcePresent": None,
+            "shapeSqTaylorSourcePresent": None,
+            "shapeSqValueRemainderAbs": None,
+            "shapeSqDerivRemainderAbs": None,
+            "targetWidth": None,
+            "targetUpperAbs": None,
+            "shapeSqValueRemainderToTargetWidthRatio": None,
+            "shapeSqDerivRemainderToTargetWidthRatio": None,
+            "scaleFreeShapeSqValueRemainderWithinTargetWidth": False,
+            "scaleFreeShapeSqDerivRemainderWithinTargetWidth": False,
+            "auditFailure": "STEP33_A1_SUB0_COMPONENT_PAYLOAD_MISSING",
+            "interpretation": (
+                "No component payload is available, so the cancellation "
+                "certificate cannot audit the current component Taylor source."
+            ),
+        }
+
+    proof_status = component.get("proofStatus", {})
+    cell = component.get("cell", {})
+    shape_sq = component.get("shapeSqTaylorSource", {})
+    shape_sq_deriv = component.get("shapeSqDerivTaylorSource", {})
+
+    target_width = parse_rat(str(cell["targetWidth"]))
+    target_upper_abs = abs(parse_rat(str(cell["targetUpper"])))
+    shape_sq_value_remainder = parse_rat(
+        str(shape_sq["constantTaylorRemainderAbs"])
+    )
+    shape_sq_deriv_remainder = parse_rat(
+        str(shape_sq_deriv["constantTaylorRemainderAbs"])
+    )
+
+    value_within_width = shape_sq_value_remainder <= target_width
+    deriv_within_width = shape_sq_deriv_remainder <= target_width
+
+    return {
+        "exists": True,
+        "schema": component.get("schema"),
+        "status": component.get("status"),
+        "firstFailure": component.get("firstFailure"),
+        "proofSafeClosedFields": proof_status.get("proofSafeClosedFields"),
+        "shapeSqDerivTaylorSourcePresent": proof_status.get(
+            "shapeSqDerivTaylorSourcePresent"
+        ),
+        "shapeSqTaylorSourcePresent": proof_status.get("shapeSqTaylorSourcePresent"),
+        "shapeSqValueRemainderAbs": rat_text(shape_sq_value_remainder),
+        "shapeSqDerivRemainderAbs": rat_text(shape_sq_deriv_remainder),
+        "targetWidth": rat_text(target_width),
+        "targetUpperAbs": rat_text(target_upper_abs),
+        "shapeSqValueRemainderToTargetWidthRatio": rat_text(
+            shape_sq_value_remainder / target_width
+        ),
+        "shapeSqDerivRemainderToTargetWidthRatio": rat_text(
+            shape_sq_deriv_remainder / target_width
+        ),
+        "scaleFreeShapeSqValueRemainderWithinTargetWidth": value_within_width,
+        "scaleFreeShapeSqDerivRemainderWithinTargetWidth": deriv_within_width,
+        "auditFailure": None if value_within_width else COARSE_SHAPESQ_BUDGET_FAILURE,
+        "interpretation": (
+            "Scale-free sanity audit only: the coarse shape-square value "
+            "remainder is compared to the final target interval width before "
+            "Omega/product propagation.  Failure rejects the current coarse "
+            "interval-product assembly source, but it is not a Lean "
+            "impossibility theorem and does not kill Step33A.1-A."
+        ),
+    }
+
+
+def build_report(
+    landing_path: Path, segmented_path: Path, component_path: Path
+) -> dict[str, Any]:
     coeffs, symbol_lines = extract_coefficients(landing_path)
     segmented = load_json(segmented_path)
+    component = load_json(component_path)
     target_lower = parse_rat(TARGET_LOWER)
     target_upper = parse_rat(TARGET_UPPER)
     target_width = target_upper - target_lower
+    component_audit = component_payload_audit(component)
 
     return {
         "schema": SCHEMA,
@@ -235,6 +320,11 @@ def build_report(landing_path: Path, segmented_path: Path) -> dict[str, Any]:
         "firstFailure": FIRST_FAILURE,
         "failureCodes": [
             FIRST_FAILURE,
+            *(
+                [COARSE_SHAPESQ_BUDGET_FAILURE]
+                if component_audit["auditFailure"] == COARSE_SHAPESQ_BUDGET_FAILURE
+                else []
+            ),
             SECOND_FAILURE,
             NO_LEAN_PAYLOAD_FAILURE,
             "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP",
@@ -312,9 +402,18 @@ def build_report(landing_path: Path, segmented_path: Path) -> dict[str, Any]:
                 "sampled direct-derivative overlay as proof",
                 "independent raw/poly interval boxes as the proof object",
                 "RawCenterCoeffOnlyCert residual bounds for the full Taylor route",
+                "the coarse 1/250 shape-square value source as final budget "
+                "closure unless an exact same-expression assembly proves it",
             ],
+            "currentSmallestUsefulPatch": (
+                "Either replace the coarse shape-square derivative/value "
+                "source with a sharper nonconstant Taylor source, or prove a "
+                "direct same-expression residual interval bound in the local "
+                "normalization."
+            ),
         },
         "segmentedPayload": segmented_summary(segmented),
+        "componentPayloadAudit": component_audit,
         "sourceDefinitionLines": symbol_lines,
         "sourceDefinitionHashes": {
             "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": file_hash(
@@ -323,6 +422,10 @@ def build_report(landing_path: Path, segmented_path: Path) -> dict[str, Any]:
             "ACTIVE/requests/step33_bootstrap/"
             "step33_a1_sub0_segmented_residual_deriv_interval_payload.json": file_hash(
                 segmented_path
+            ),
+            "ACTIVE/requests/step33_bootstrap/"
+            "step33_a1_sub0_component_taylor_residual_payload.json": file_hash(
+                component_path
             ),
         },
     }
@@ -414,6 +517,15 @@ def render_md(report: dict[str, Any]) -> str:
     for item in report["requiredProofGradeCertificate"]["mustNotUse"]:
         lines.append(f"- {item}")
 
+    lines.extend(
+        [
+            "",
+            "Current smallest useful patch:",
+            "",
+            report["requiredProofGradeCertificate"]["currentSmallestUsefulPatch"],
+        ]
+    )
+
     segmented = report["segmentedPayload"]
     lines.extend(
         [
@@ -428,6 +540,37 @@ def render_md(report: dict[str, Any]) -> str:
             f"- segment count: `{segmented['segmentCount']}`",
             f"- coverage passed: `{segmented['coveragePassed']}`",
             f"- all segments budget passed: `{segmented['allSegmentsBudgetPassed']}`",
+            "",
+            "## Component Payload Coarse Budget Sanity",
+            "",
+        ]
+    )
+
+    component = report["componentPayloadAudit"]
+    lines.extend(
+        [
+            f"- exists: `{component['exists']}`",
+            f"- schema: `{component['schema']}`",
+            f"- status: `{component['status']}`",
+            f"- first failure: `{component['firstFailure']}`",
+            f"- proof-safe closed fields: `{component['proofSafeClosedFields']}`",
+            f"- shapeSq deriv Taylor source present: `{component['shapeSqDerivTaylorSourcePresent']}`",
+            f"- shapeSq value Taylor source present: `{component['shapeSqTaylorSourcePresent']}`",
+            f"- target width: `{component['targetWidth']}`",
+            f"- target upper abs: `{component['targetUpperAbs']}`",
+            f"- shapeSq value remainder abs: `{component['shapeSqValueRemainderAbs']}`",
+            f"- shapeSq deriv remainder abs: `{component['shapeSqDerivRemainderAbs']}`",
+            f"- value remainder / target width: `{component['shapeSqValueRemainderToTargetWidthRatio']}`",
+            f"- deriv remainder / target width: `{component['shapeSqDerivRemainderToTargetWidthRatio']}`",
+            f"- value remainder within target width: `{component['scaleFreeShapeSqValueRemainderWithinTargetWidth']}`",
+            f"- deriv remainder within target width: `{component['scaleFreeShapeSqDerivRemainderWithinTargetWidth']}`",
+            f"- audit failure: `{component['auditFailure']}`",
+            "",
+            component["interpretation"],
+            "",
+            "This section is fail-closed diagnostic evidence only. It does not",
+            "prove a mathematical obstruction to Step33A.1-A and must not be",
+            "used as a Lean theorem.",
             "",
             "## Source Definition Lines",
             "",
@@ -467,11 +610,12 @@ def run() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--landing", type=Path, default=LANDING_FILE)
     parser.add_argument("--segmented-payload", type=Path, default=SEGMENTED_PAYLOAD)
+    parser.add_argument("--component-payload", type=Path, default=COMPONENT_PAYLOAD)
     parser.add_argument("--out-json", type=Path, default=DEFAULT_OUT_JSON)
     parser.add_argument("--out-md", type=Path, default=DEFAULT_OUT_MD)
     args = parser.parse_args()
 
-    report = build_report(args.landing, args.segmented_payload)
+    report = build_report(args.landing, args.segmented_payload, args.component_payload)
     args.out_json.parent.mkdir(parents=True, exist_ok=True)
     args.out_json.write_text(
         json.dumps(report, indent=2, sort_keys=True) + "\n",

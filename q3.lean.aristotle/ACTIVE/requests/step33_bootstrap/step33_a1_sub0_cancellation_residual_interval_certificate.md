@@ -5,7 +5,7 @@ Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1`
+- schema: `q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2`
 - route: `STEP33_A1_SUB0_CANCELLATION_RESIDUAL_INTERVAL`
 - status: `fail_closed_missing_component_taylor_remainder_bounds`
 - first failure: `STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING`
@@ -86,6 +86,11 @@ Must not use:
 - sampled direct-derivative overlay as proof
 - independent raw/poly interval boxes as the proof object
 - RawCenterCoeffOnlyCert residual bounds for the full Taylor route
+- the coarse 1/250 shape-square value source as final budget closure unless an exact same-expression assembly proves it
+
+Current smallest useful patch:
+
+Either replace the coarse shape-square derivative/value source with a sharper nonconstant Taylor source, or prove a direct same-expression residual interval bound in the local normalization.
 
 ## Segmented Payload Cross-Check
 
@@ -97,6 +102,31 @@ Must not use:
 - segment count: `1`
 - coverage passed: `True`
 - all segments budget passed: `True`
+
+## Component Payload Coarse Budget Sanity
+
+- exists: `True`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6`
+- status: `fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders`
+- first failure: `STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
+- proof-safe closed fields: `6`
+- shapeSq deriv Taylor source present: `True`
+- shapeSq value Taylor source present: `True`
+- target width: `245091005771/62500000000000000000000000000`
+- target upper abs: `1866608532757/500000000000000000000000000000`
+- shapeSq value remainder abs: `1/250`
+- shapeSq deriv remainder abs: `3/40`
+- value remainder / target width: `250000000000000000000000000/245091005771`
+- deriv remainder / target width: `4687500000000000000000000000/245091005771`
+- value remainder within target width: `False`
+- deriv remainder within target width: `False`
+- audit failure: `STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL`
+
+Scale-free sanity audit only: the coarse shape-square value remainder is compared to the final target interval width before Omega/product propagation.  Failure rejects the current coarse interval-product assembly source, but it is not a Lean impossibility theorem and does not kill Step33A.1-A.
+
+This section is fail-closed diagnostic evidence only. It does not
+prove a mathematical obstruction to Step33A.1-A and must not be
+used as a Lean theorem.
 
 ## Source Definition Lines
 
@@ -113,6 +143,7 @@ Must not use:
 ## Failure Codes
 
 - `STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING`
+- `STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL`
 - `STEP33_A1_SUB0_ASSEMBLED_RESIDUAL_RANGE_PROOF_MISSING`
 - `STEP33_A1_SUB0_CANCELLATION_INTERVAL_LEAN_PAYLOAD_MISSING`
 - `STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP`

@@ -61706,3 +61706,64 @@ assembly/budget test, shape-derivative Taylor data, residual polynomial bounds,
 and final interval theorem remain open.  If the `1/250` source fails the exact
 assembly budget, the next route is a sharper nonconstant `ShapeSqDeriv` Taylor
 source, not a return to separate endpoint-only `E`/`E'` boxes.
+
+## 2026-06-21 -- ShapeSq coarse budget audit recorded
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 cancellation residual interval certificate.
+
+Browser/Proshka was used through the in-app browser for route advice.  The
+advisory answer chose route A: record the fail-closed coarse budget audit, then
+build a sharper nonconstant `ShapeSqDeriv` Taylor source.  This advice is not
+proof evidence; accepted proof/accounting artifacts remain local only.
+
+Updated generated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.md
+schema = q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2
+status = fail_closed_missing_component_taylor_remainder_bounds
+firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING
+```
+
+New exact audit field:
+
+```text
+auditFailure =
+  STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL
+targetWidth =
+  245091005771/62500000000000000000000000000
+shapeSq value remainder abs =
+  1/250
+shapeSq deriv remainder abs =
+  3/40
+value remainder / target width =
+  250000000000000000000000000/245091005771
+deriv remainder / target width =
+  4687500000000000000000000000/245091005771
+```
+
+Boundary: this is a scale-free/component sanity audit only.  It rejects the
+current coarse interval-product assembly source, but it is not a Lean
+impossibility theorem and does not kill Step33A.1-A.
+
+Next live proof object:
+
+```text
+shapeSqDerivTaylor_bound_of_centerJet_and_order16
+```
+
+Target file for the generic receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+```
+
+Next live gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_SOURCE_GAP
+```
+
+Do not route back to separate endpoint-only `E`/`E'` interval boxes; that loses
+the cancellation structure needed by the full Taylor residual certificate.

@@ -10,6 +10,25 @@
     "targetUpper": "1866608532757/500000000000000000000000000000",
     "targetWidth": "245091005771/62500000000000000000000000000"
   },
+  "componentPayloadAudit": {
+    "auditFailure": "STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL",
+    "exists": true,
+    "firstFailure": "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP",
+    "interpretation": "Scale-free sanity audit only: the coarse shape-square value remainder is compared to the final target interval width before Omega/product propagation.  Failure rejects the current coarse interval-product assembly source, but it is not a Lean impossibility theorem and does not kill Step33A.1-A.",
+    "proofSafeClosedFields": 6,
+    "scaleFreeShapeSqDerivRemainderWithinTargetWidth": false,
+    "scaleFreeShapeSqValueRemainderWithinTargetWidth": false,
+    "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6",
+    "shapeSqDerivRemainderAbs": "3/40",
+    "shapeSqDerivRemainderToTargetWidthRatio": "4687500000000000000000000000/245091005771",
+    "shapeSqDerivTaylorSourcePresent": true,
+    "shapeSqTaylorSourcePresent": true,
+    "shapeSqValueRemainderAbs": "1/250",
+    "shapeSqValueRemainderToTargetWidthRatio": "250000000000000000000000000/245091005771",
+    "status": "fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders",
+    "targetUpperAbs": "1866608532757/500000000000000000000000000000",
+    "targetWidth": "245091005771/62500000000000000000000000000"
+  },
   "componentTaylorInputsRequired": [
     "omegaCoeff[]",
     "omegaRemainderAbs",
@@ -121,6 +140,7 @@
   ],
   "failureCodes": [
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_BOUNDS_MISSING",
+    "STEP33_A1_SUB0_SHAPESQ_COARSE_VALUE_REMAINDER_SCALE_FREE_BUDGET_FAIL",
     "STEP33_A1_SUB0_ASSEMBLED_RESIDUAL_RANGE_PROOF_MISSING",
     "STEP33_A1_SUB0_CANCELLATION_INTERVAL_LEAN_PAYLOAD_MISSING",
     "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP"
@@ -233,17 +253,19 @@
     }
   ],
   "requiredProofGradeCertificate": {
+    "currentSmallestUsefulPatch": "Either replace the coarse shape-square derivative/value source with a sharper nonconstant Taylor source, or prove a direct same-expression residual interval bound in the local normalization.",
     "kind": "interval_or_rational_same_expression_residual_bound",
     "mayFeed": "ResidualDerivativeSegmentIntervalCert.DirectValid.of_single_residual_bounds",
     "mustNotUse": [
       "sampled direct-derivative overlay as proof",
       "independent raw/poly interval boxes as the proof object",
-      "RawCenterCoeffOnlyCert residual bounds for the full Taylor route"
+      "RawCenterCoeffOnlyCert residual bounds for the full Taylor route",
+      "the coarse 1/250 shape-square value source as final budget closure unless an exact same-expression assembly proves it"
     ],
     "mustProve": "for all eta in Set.Icc 0 (1/10), targetLower <= RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta <= targetUpper"
   },
   "routeId": "STEP33_A1_SUB0_CANCELLATION_RESIDUAL_INTERVAL",
-  "schema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1",
+  "schema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2",
   "segmentedPayload": {
     "allSegmentsBudgetPassed": true,
     "coveragePassed": true,
@@ -271,6 +293,7 @@
     "status": "fail_closed_missing_cancellation_preserving_taylor_remainder_proof"
   },
   "sourceDefinitionHashes": {
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "c4a2f9a228188a93",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json": "df8cb8dff74f605e",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
   },
