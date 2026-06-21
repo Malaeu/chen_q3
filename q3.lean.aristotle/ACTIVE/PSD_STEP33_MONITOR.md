@@ -32679,3 +32679,41 @@ and rational Taylor budget for shapeSqDerivTaylor_bound_of_centerJet_and_order16
 Boundary: Step33A.1-A remains open.  This update supplies only the `hSmooth`
 input for the receiver; it is not the center-jet/order-16 numeric certificate,
 not residual assembly, and not the final interval theorem.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv interval cert receiver checked
+
+Lean now checks the proof-bearing interval certificate receiver for the active
+first-row shape-square derivative source:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+ShapeSqDerivTaylorIntervalCert
+ShapeSqDerivTaylorIntervalCert.Valid
+ShapeSqDerivTaylorIntervalCert.Valid.toTaylorInputs
+ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource
+```
+
+Closed local receiver gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next proof object:
+
+```text
+Generate/prove the concrete rational interval rows for
+ShapeSqDerivTaylorIntervalCert.Valid on the active Sub0 cell:
+center-jet coefficient enclosures, finite segment coverage of [0, 1/10],
+order-16 lower/upper rows per segment, and the final Taylor budget.
+```
+
+Boundary: Step33A.1-A remains open.  This is only the checked certificate
+surface for future rational rows; it is not the generated rows, not residual
+assembly, and not the final interval theorem.

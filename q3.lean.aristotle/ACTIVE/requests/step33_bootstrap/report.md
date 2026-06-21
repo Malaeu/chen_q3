@@ -61882,3 +61882,65 @@ single rational Taylor budget in rawOmegaATaylorPolynomial normalization
 Boundary: this is not Step33A.1-A closure.  It removes the smoothness bridge
 obstruction only; the concrete Sub0 payload, exact residual assembly, residual
 range certificate, and final interval theorem remain open.
+
+## 2026-06-21 -- ShapeSqDeriv interval certificate receiver checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 nonconstant shape-square derivative Taylor
+source.
+
+Browser/Proshka was used through the in-app browser for route advice.  The
+advisory answer chose the intermediate Lean receiver/certificate surface before
+writing generated rows.  This advice is not proof evidence; accepted proof
+artifacts remain local Lean checks only.
+
+New checked Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+ShapeSqDerivTaylorIntervalCert
+ShapeSqDerivTaylorIntervalCert.Valid
+ShapeSqDerivTaylorIntervalCert.Valid.toTaylorInputs
+ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource
+```
+
+The receiver consumes proof-bearing rational interval data:
+
+```text
+center-jet lower/upper rows
+center-jet coefficient error budgets
+finite coverage of [0, 1/10]
+order-16 lower/upper rows on each segment
+uniform order-16 absolute budget
+```
+
+It produces the exact center-jet and order-16 inputs required by:
+
+```lean
+shapeSqDerivTaylor_bound_of_centerJet_and_order16
+```
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+git diff --check
+```
+
+Closed local receiver gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Boundary: this is not a generated payload and not Step33A.1-A closure.  The
+concrete zero-cell/segment interval rows, exact residual assembly, residual
+range certificate, and final interval theorem remain open.

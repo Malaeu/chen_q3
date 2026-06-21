@@ -37994,3 +37994,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is not Step33A.1-A closure and not a numeric certificate.  It
   only supplies the `hSmooth` input expected by
   `shapeSqDerivTaylor_bound_of_centerJet_and_order16`.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivIntervalCertReceiverChecked
+
+- Browser/Proshka was used through the in-app browser as route advice; it chose
+  the intermediate interval-certificate receiver route.  This advice is not
+  proof evidence.  The accepted artifact is the local Lean check.
+- Lean now checks the active first-row order-16 interval-certificate receiver
+  in `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv`,
+  `ShapeSqDerivTaylorIntervalCert`,
+  `ShapeSqDerivTaylorIntervalCert.Valid`,
+  `ShapeSqDerivTaylorIntervalCert.Valid.toTaylorInputs`, and
+  `ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource`.
+- The checked receiver converts future rational interval rows for the center
+  jet and a segmented order-16 bound on `[0, 1/10]` into the exact inputs of
+  `shapeSqDerivTaylor_bound_of_centerJet_and_order16`.
+- Closed local receiver gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP`.
+- Current live blocker:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`.
+- Validation passed: targeted
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`,
+  targeted `q3_check`, scoped marker scan over the touched Lean file, and
+  `git diff --check`.
+- Boundary: this is not a generated payload, not a numeric certificate, and not
+  Step33A.1-A closure.  The concrete zero-cell/segment interval rows, exact
+  residual assembly, residual range certificate, and final interval theorem
+  remain open.

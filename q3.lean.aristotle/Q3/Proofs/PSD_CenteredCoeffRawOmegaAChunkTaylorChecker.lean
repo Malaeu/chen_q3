@@ -10487,6 +10487,190 @@ theorem shapeSqDerivTaylor_bound_of_centerJet_and_order16
     shapeSqDerivCoeff shapeSqDerivCoeffErrorAbs hCenterMem hSmooth
     hCoeffErrorNonneg hCenterJet hOrder16 hRadius hBudget
 
+/-- Active first-row shape-square derivative source for generated order-16
+Taylor interval certificates. -/
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv (eta : Real) : Real :=
+  deriv
+    (fun t : Real =>
+      (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) t) ^ 2)
+    eta
+
+/-- Generator-facing rational interval data for the active first-row
+shape-square derivative Taylor source.
+
+The fields are only data.  The `Valid` predicate below is the proof-bearing
+surface: it must justify the center jet and the full-cell order-16 bound in
+the exact normalization consumed by `shapeSqDerivTaylor_bound_of_centerJet_and_order16`. -/
+structure ShapeSqDerivTaylorIntervalCert where
+  coeff : Fin 16 -> Rat
+  coeffErrorAbs : Fin 16 -> Rat
+  jetLower : Fin 16 -> Rat
+  jetUpper : Fin 16 -> Rat
+  order16Abs : Rat
+  segmentCount : Nat
+  segmentCount_pos : 0 < segmentCount
+  segmentL : Fin segmentCount -> Rat
+  segmentU : Fin segmentCount -> Rat
+  order16Lower : Fin segmentCount -> Rat
+  order16Upper : Fin segmentCount -> Rat
+
+namespace ShapeSqDerivTaylorIntervalCert
+
+/-- Proof-bearing validity predicate for
+`ShapeSqDerivTaylorIntervalCert`.
+
+`centerJetRows` proves interval enclosures for the normalized center jet.
+`centerJetBudget` connects those rows to the emitted rational coefficients.
+`order16Rows` and `order16Budget` prove a uniform order-16 derivative bound on
+the whole active cell. -/
+structure Valid (data : ShapeSqDerivTaylorIntervalCert) : Prop where
+  coeffErrorNonneg :
+    ∀ j : Fin 16, 0 <= (data.coeffErrorAbs j : Real)
+  segment_nonempty :
+    ∀ i : Fin data.segmentCount,
+      (data.segmentL i : Real) <= (data.segmentU i : Real)
+  centerJetRows :
+    ∀ j : Fin 16,
+      (data.jetLower j : Real) <=
+        iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          ((1 : Real) / 20) / (Nat.factorial j.1 : Real) ∧
+      iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          ((1 : Real) / 20) / (Nat.factorial j.1 : Real) <=
+        (data.jetUpper j : Real)
+  centerJetBudget :
+    ∀ j : Fin 16,
+      (data.coeff j : Real) - (data.coeffErrorAbs j : Real) <=
+        (data.jetLower j : Real) ∧
+      (data.jetUpper j : Real) <=
+        (data.coeff j : Real) + (data.coeffErrorAbs j : Real)
+  cover :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ∃ i : Fin data.segmentCount,
+        eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real)
+  order16Rows :
+    ∀ i : Fin data.segmentCount, ∀ eta : Real,
+      eta ∈ Set.Icc (data.segmentL i : Real) (data.segmentU i : Real) →
+        (data.order16Lower i : Real) <=
+          iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta ∧
+        iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta <=
+          (data.order16Upper i : Real)
+  order16Budget :
+    ∀ i : Fin data.segmentCount,
+      -(data.order16Abs : Real) <= (data.order16Lower i : Real) ∧
+        (data.order16Upper i : Real) <= (data.order16Abs : Real)
+
+namespace Valid
+
+/-- Extract the two Taylor-source inputs required by the existing
+shape-square derivative receiver from a proof-bearing interval certificate. -/
+theorem toTaylorInputs
+    {data : ShapeSqDerivTaylorIntervalCert} (h : data.Valid) :
+    (∀ j : Fin 16,
+      ‖iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          ((1 : Real) / 20) / (Nat.factorial j.1 : Real) -
+        (data.coeff j : Real)‖ <=
+        (data.coeffErrorAbs j : Real)) ∧
+    (∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+          eta‖ <=
+        (data.order16Abs : Real)) := by
+  constructor
+  · intro j
+    have hrow := h.centerJetRows j
+    have hbud := h.centerJetBudget j
+    rw [Real.norm_eq_abs]
+    exact abs_le.mpr ⟨by linarith, by linarith⟩
+  · intro eta heta
+    rcases h.cover eta heta with ⟨i, hi⟩
+    have hrow := h.order16Rows i eta hi
+    have hbud := h.order16Budget i
+    rw [Real.norm_eq_abs]
+    exact abs_le.mpr
+      ⟨le_trans hbud.1 hrow.1, le_trans hrow.2 hbud.2⟩
+
+/-- Feed a valid active first-row order-16 interval certificate directly into
+the existing shape-square derivative Taylor receiver. -/
+theorem toShapeSqDerivTaylorSource
+    {data : ShapeSqDerivTaylorIntervalCert}
+    {remainderAbs : Real}
+    (h : data.Valid)
+    (hBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) * ((1 : Real) / 20) ^ j.1) +
+        (data.order16Abs : Real) * ((1 : Real) / 20) ^ 16 /
+          (Nat.factorial 16 : Real) <= remainderAbs) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv eta -
+        rawOmegaATaylorPolynomial 15 (1 / 20 : Rat) data.coeff
+          eta‖ <=
+        remainderAbs := by
+  have hInputs := h.toTaylorInputs
+  have hCenterRatCast :
+      ((1 / 20 : Rat) : Real) = (1 : Real) / 20 := by
+    norm_num
+  have hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1
+            (fun eta : Real =>
+              deriv
+                (fun t : Real =>
+                  (centeredBSplineImagTransformRealClosedForm 11
+                    ((3 : Real) / 10) t) ^ 2)
+                eta)
+            ((1 / 20 : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real) := by
+    intro j
+    simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv,
+      hCenterRatCast] using
+      hInputs.1 j
+  have hOrder16 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16
+            (fun u : Real =>
+              deriv
+                (fun t : Real =>
+                  (centeredBSplineImagTransformRealClosedForm 11
+                    ((3 : Real) / 10) t) ^ 2)
+                u)
+            eta‖ <=
+          (data.order16Abs : Real) := by
+    intro eta heta
+    simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using
+      hInputs.2 eta heta
+  simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using
+    (shapeSqDerivTaylor_bound_of_centerJet_and_order16
+      (k := 11) (ell := ((3 : Real) / 10))
+      (a := (0 : Real)) (b := ((1 : Real) / 10))
+      (radius := ((1 : Real) / 20))
+      (order16Abs := (data.order16Abs : Real))
+      (remainderAbs := remainderAbs)
+      (center := (1 / 20 : Rat))
+      data.coeff data.coeffErrorAbs
+      (by norm_num)
+      (shapeSqDeriv_contDiff16 11 ((3 : Real) / 10))
+      h.coeffErrorNonneg
+      hCenterJet
+      hOrder16
+      (by
+        intro eta heta
+        rw [Real.norm_eq_abs]
+        apply abs_le.mpr
+        constructor
+        · have hleft := heta.1
+          norm_num at hleft ⊢
+          linarith
+        · have hright := heta.2
+          norm_num at hright ⊢
+          linarith)
+      hBudget)
+
+end Valid
+end ShapeSqDerivTaylorIntervalCert
+
 /-- Shape-square Taylor receiver with the derivative source stated in the
 natural generated form, namely as a model for `deriv (E^2)` rather than for
 the derivative of the already-subtracted residual. -/
