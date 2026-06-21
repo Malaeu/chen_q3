@@ -37139,3 +37139,40 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no Lean payload emitted, no Step33A.1-A closure, no A hbox, and no
   Step33/Step34/RH claim.  The next proof-producing patch is the concrete
   rational `Step33Sub0OmegaPrimeTaylorRemainderCert` payload.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeLowerOrderCenterJetMajorantBridge
+
+- Status: checked Lean bridge, not payload closure.
+- Added and Lean-checked:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_norm_le_tsum_majorant_of_le16`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_norm_le_half_tsum_majorant_of_le16`.
+- The new surface proves, for every `m <= 16`, that the lower-order trigamma
+  derivative may be passed through the series, and that
+  `norm(iteratedDeriv m omegaPrimeClosedForm eta)` is bounded by
+  `(1/2) * sum_n omegaPrimeTrigammaDerivMajorant m n`.
+- This removes the analytic interchange question from the lower-order
+  center-jet path.  It does not supply rational `centerJet` data or a generated
+  certificate.
+- Used the in-app browser/Proshka for route review after the local bridge was
+  checked.  Treat the response as advisory only; the accepted evidence is the
+  Lean-checked file plus local validation.  The useful recommendation was to
+  avoid `coeff = 0` and a crude full-`tsum` estimate, and instead prove a
+  finite-prefix plus shifted-tail center-jet bridge.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  and a hole scan for `sorry|admit|exact?`.
+- Next exact blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TSUM_RATIONAL_BOUND_GAP`,
+  a sub-gap of
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`.
+- Next theorem shape: prove that the center-jet error after subtracting an
+  exact rational finite prefix is bounded by
+  `(1 / (2 * m!)) * sum_k omegaPrimeTrigammaDerivMajorant m (N + k)` for
+  `m = 0..15`.
+- Boundary: no finite-prefix plus shifted-tail Lean bridge, no rational/interval
+  upper-bound certificate for the shifted tail, no generated
+  `Step33Sub0OmegaPrimeTaylorRemainderCert`, no Step33A.1-A closure, and no
+  Step33/Step34/RH claim.

@@ -31325,6 +31325,69 @@ budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime lower-order center-jet majorant bridges
+
+Added and Lean-checked the lower-order center-jet analytic receiver surface in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_norm_le_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_norm_le_half_tsum_majorant_of_le16
+```
+
+What this closes:
+
+```text
+for every m <= 16 and eta,
+  iteratedDeriv m omegaPrimeTrigammaSeries eta
+    = sum_n derivative_m(trigamma-series-term n),
+
+and
+
+  norm(iteratedDeriv m omegaPrimeClosedForm eta)
+    <= (1/2) * sum_n omegaPrimeTrigammaDerivMajorant m n.
+```
+
+This is a checked Lean bridge for lower-order center-jet bounds.  It does not
+construct the actual `centerJet` payload and does not yet split the center jet
+into an exact finite prefix plus a proof-grade shifted-tail rational bound.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TSUM_RATIONAL_BOUND_GAP
+```
+
+This is a sub-gap of the active generator failure:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Used the in-app browser/Proshka for advisory route review after the local
+bridges were checked.  The useful route advice was to avoid the crude
+`coeff = 0` / full-`tsum` bound path and instead prove a finite-prefix plus
+shifted-tail center-jet bridge.  Proshka output is route advice only, not proof
+evidence.
+
+Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no
+proof-grade center-jet coefficient enclosure, no generated Lean payload, no A
+hbox, no Step33A.1-A closure, and no Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime payload generator schema v7
 
 Used the in-app browser/Proshka as advisory route review for the post-`hDerivEq`
@@ -31674,3 +31737,35 @@ Boundary: no proof of termwise `iteratedDeriv16`/`tsum` interchange, no
 budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
+
+## 2026-06-21 Actual EOF State -- lower-order center-jet majorant bridge is checked
+
+The stale tail above is superseded for the active Step33A.1-A route.  The
+order-16 derivative/`tsum` bridge and checked-deriv receiver are already closed
+in Lean.  The newest checked lower-order additions are:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_norm_le_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_norm_le_half_tsum_majorant_of_le16
+```
+
+Active exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TSUM_RATIONAL_BOUND_GAP
+```
+
+Parent generator blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+```
+
+Next patch: prove the finite-prefix plus shifted-tail center-jet bridge.  The
+intended shape is to approximate each `m = 0..15` center derivative by an exact
+rational finite prefix and bound only the shifted tail by
+`(1 / (2 * m!)) * sum_k omegaPrimeTrigammaDerivMajorant m (N + k)`.  Then use
+that bridge to instantiate the generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert` `centerJet`/`coeffErrorAbs` fields.
+No Step33A.1-A closure exists yet.

@@ -10759,6 +10759,100 @@ theorem omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum
     omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload
     omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload
 
+/-- Lower-order version of the trigamma-series termwise differentiation
+bridge.  This is the reusable receiver for OmegaPrime center-jet payloads:
+generated Taylor coefficients for orders `< 16` can now target the same
+termwise series convention as the order-16 budget. -/
+theorem omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16
+    (m : Nat) (hm : m <= 16) (eta : Real) :
+    iteratedDeriv m omegaPrimeTrigammaSeries eta =
+      ∑' n : Nat,
+        iteratedDeriv m
+          (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta := by
+  have h :=
+    iteratedDerivWithin_tsum (ι := Nat) (𝕜 := Real) (F := Real)
+      (m := m) (s := Set.univ) isOpen_univ (Set.mem_univ eta)
+      (fun t _ => omegaPrimeTrigammaSeriesTerm_summable t)
+      (fun k hk1 hkm =>
+        omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload
+          k hk1 (le_trans hkm hm))
+      (fun n k r hkm _ =>
+        omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload
+          n k r (le_trans hkm hm) (Set.mem_univ r))
+  simpa [omegaPrimeTrigammaSeries, iteratedDerivWithin_univ] using h
+
+/-- Norm-majorant consequence of the lower-order termwise differentiation
+bridge.  This is the analytic surface needed by generated center-jet
+payloads before replacing the right-hand side by a rational bound. -/
+theorem omegaPrimeTrigammaSeries_iteratedDeriv_norm_le_tsum_majorant_of_le16
+    (m : Nat) (hm : m <= 16) (eta : Real) :
+    ‖iteratedDeriv m omegaPrimeTrigammaSeries eta‖ <=
+      ∑' n : Nat, omegaPrimeTrigammaDerivMajorant m n := by
+  have hEq :=
+    omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16 m hm eta
+  rw [hEq]
+  have hBound :
+      ∀ n : Nat,
+        ‖iteratedDeriv m
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta‖ <=
+          omegaPrimeTrigammaDerivMajorant m n := by
+    intro n
+    simpa [iteratedDerivWithin_univ] using
+      omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant
+        m n eta
+  have hSummDeriv :
+      Summable
+        (fun n : Nat =>
+          iteratedDeriv m
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta) :=
+    (omegaPrimeTrigammaDerivMajorant_summable m).of_norm_bounded hBound
+  have hNorm :
+      ‖∑' n : Nat,
+          iteratedDeriv m
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta‖ <=
+        ∑' n : Nat,
+          ‖iteratedDeriv m
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta‖ :=
+    norm_tsum_le_tsum_norm hSummDeriv.norm
+  have hAbsSum :
+      (∑' n : Nat,
+        ‖iteratedDeriv m
+          (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta‖) <=
+        ∑' n : Nat, omegaPrimeTrigammaDerivMajorant m n := by
+    exact Summable.tsum_le_tsum hBound hSummDeriv.norm
+      (omegaPrimeTrigammaDerivMajorant_summable m)
+  exact hNorm.trans hAbsSum
+
+/-- Closed-form OmegaPrime version of the lower-order derivative majorant.
+The factor `1 / 2` is exactly the normalization from
+`omegaPrimeClosedForm_eq_trigamma_series`. -/
+theorem omegaPrimeClosedForm_iteratedDeriv_norm_le_half_tsum_majorant_of_le16
+    (m : Nat) (hm : m <= 16) (eta : Real) :
+    ‖iteratedDeriv m omegaPrimeClosedForm eta‖ <=
+      (1 / 2 : Real) *
+        (∑' n : Nat, omegaPrimeTrigammaDerivMajorant m n) := by
+  have hfun :
+      omegaPrimeClosedForm =
+        fun t : Real => (-1 / 2 : Real) * omegaPrimeTrigammaSeries t := by
+    funext t
+    rw [omegaPrimeClosedForm_eq_trigamma_series t]
+    ring
+  have hmWithTop : (m : WithTop ENat) <= (16 : Nat) := by
+    exact_mod_cast hm
+  have hSmooth :
+      ContDiffAt Real m omegaPrimeTrigammaSeries eta :=
+    (omegaPrimeTrigammaSeries_contDiffAt16 eta).of_le hmWithTop
+  have hMajorant :=
+    omegaPrimeTrigammaSeries_iteratedDeriv_norm_le_tsum_majorant_of_le16
+      m hm eta
+  rw [hfun]
+  rw [iteratedDeriv_const_mul hSmooth (-1 / 2 : Real)]
+  rw [norm_mul, Real.norm_eq_abs]
+  have hhalf : |(-1 / 2 : Real)| = (1 / 2 : Real) := by
+    norm_num
+  rw [hhalf]
+  exact mul_le_mul_of_nonneg_left hMajorant (by norm_num)
+
 theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
     (eta : Real)
     (hSmoothSeries : ContDiffAt Real 16 omegaPrimeTrigammaSeries eta)

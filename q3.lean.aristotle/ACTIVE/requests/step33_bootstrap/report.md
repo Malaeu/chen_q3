@@ -60347,3 +60347,54 @@ STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP
 
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
+
+## 2026-06-21 Addendum -- OmegaPrime lower-order center-jet majorant bridges
+
+Local Lean progress after the checked-deriv receiver:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_eq_tsum_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_norm_le_tsum_majorant_of_le16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_norm_le_half_tsum_majorant_of_le16
+```
+
+The checked interface now proves, for every `m <= 16`, a termwise trigamma
+series derivative identity and the closed-form OmegaPrime norm bound:
+
+```text
+norm(iteratedDeriv m omegaPrimeClosedForm eta)
+  <= (1/2) * sum_n omegaPrimeTrigammaDerivMajorant m n.
+```
+
+This turns the lower-order part of `centerJet` into a concrete certificate
+obligation.  The next proof-producing shape should use an exact finite prefix
+for the center-jet value and a proof-grade rational or interval upper bound
+only for the shifted tail.
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TSUM_RATIONAL_BOUND_GAP
+```
+
+Parent active generator blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Browser/Proshka advisory after this local bridge selected the finite-prefix plus
+shifted-tail route over a crude full-`tsum`/`coeff = 0` enclosure.  This is
+route advice only; the proof object still has to be produced locally.
+
+Boundary: no finite-prefix plus shifted-tail Lean bridge, no shifted-tail
+rational upper-bound payload, no generated Lean certificate, no A hbox, no
+Step33A.1-A closure, and no Step33/Step34/RH claim.
