@@ -32904,3 +32904,40 @@ absolute bound on `[0,1/10]`.
 
 Boundary: no concrete row values, no order-16 bound, no generated Lean payload,
 and no Step33A.1-A closure.
+
+## 2026-06-21 Current EOF State -- browser/Proshka next goal after center-jet bridge
+
+After the Lean-checked `realSinc` power-series bridge and the checked
+center-jet normalization bridge, the in-app browser/Proshka route review
+selected the next smallest proof-moving target:
+
+```text
+CHOSEN: specialized exact ShapeSqDeriv power-series crosswalk
+```
+
+Do not start a generic Cauchy-product framework, do not emit jet rows before
+the exact Lean series crosswalk exists, do not ask Aristotle for the whole
+order-16 theorem, and do not interval-evaluate `sin(x)/x` across the
+zero-containing cell.
+
+Current self-goal:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasSum_powerSeries
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_tsum
+```
+
+The exact first failure code for this next patch is:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Local audit note: `EndpointRationalImport` already contains a coarse generated
+Sub0 ShapeSqDeriv Taylor source via endpoint bounds, but that source is not the
+exact power-series/Cauchy crosswalk needed for proof-grade zero-cell center
+jets and the order-16 row.
+
+Boundary: no exact ShapeSqDeriv series coefficient definition, no exact
+center-jet `tsum` theorem, no order-16 bound, no generated proof-safe rows, and
+no Step33A.1-A closure.

@@ -18133,3 +18133,36 @@ center-jet rows through the checked coefficient bridge, then prove the uniform
 order-16 absolute bound on `[0,1/10]`.
 
 Boundary: no concrete rows, no generated payload, and no Step33A.1-A closure.
+
+## 2026-06-21 EOF Addendum -- browser/Proshka exact-series next goal
+
+After the checked `realSinc` series bridge and checked center-jet coefficient
+normalization bridge, browser/Proshka route review selects a specialized
+exact-series crosswalk as the next Codex target, not a generic framework and
+not generated rows yet.
+
+Next local target names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasSum_powerSeries
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_tsum
+```
+
+New exact live gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Do not:
+
+```text
+generic Cauchy-product framework
+jet rows before exact Lean series crosswalk
+whole order16 Aristotle request
+interval-evaluate sin(x)/x through zero cell
+```
+
+Boundary: the existing generated Sub0 ShapeSqDeriv Taylor source in
+`EndpointRationalImport` is coarse endpoint-bound packaging, not the exact
+series crosswalk needed to derive proof-grade center jets/order-16 rows.

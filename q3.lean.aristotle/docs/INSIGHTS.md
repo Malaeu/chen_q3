@@ -38133,3 +38133,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`.
 - Boundary: no concrete ShapeSqDeriv coefficients, no uniform order-16 bound,
   no generated payload, and no Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- BrowserProshkaExactShapeSqDerivSeriesGoal
+
+- Used the in-app browser/Computer Use to ask Proshka after the two local Lean
+  bridges were checked and pushed.
+- Advisory answer selected the specialized exact ShapeSqDeriv power-series
+  crosswalk as the next smallest proof-moving patch.
+- Self-goal theorem names:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasSum_powerSeries` and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_tsum`.
+- The exact next failure code is
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.
+- The existing generated Sub0 ShapeSqDeriv Taylor source in
+  `PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean` is coarse
+  endpoint-bound packaging, not the exact Cauchy/power-series center-jet
+  source.
+- Do not build a generic Cauchy-product framework first, do not emit generated
+  jet rows before the Lean series crosswalk, do not ask Aristotle for the
+  whole order-16 theorem, and do not interval-evaluate `sin(x)/x` through the
+  zero cell.
+- Boundary: no exact coefficient definition, no center-jet `tsum` theorem, no
+  order-16 proof, no proof-safe generated rows, and no Step33A.1-A closure.

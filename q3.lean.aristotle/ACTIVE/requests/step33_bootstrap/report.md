@@ -62195,3 +62195,43 @@ git diff --check
 Boundary: this does not provide concrete ShapeSqDeriv coefficients, does not
 prove the uniform order-16 bound, does not emit a generated Lean payload, and
 does not close Step33A.1-A.
+
+## 2026-06-21 Addendum -- browser/Proshka exact-series next goal
+
+Used the in-app browser to ask Proshka after the local Lean bridges were
+checked and pushed.  The advisory answer selected the specialized exact
+ShapeSqDeriv power-series crosswalk as the smallest next patch:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasSum_powerSeries
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_tsum
+```
+
+The requested coefficient source is a concrete rational coefficient stream for
+the derivative of the square of the scaled `realSinc` power series.  The
+consumer theorem should connect the checked series to the normalized center
+jets through:
+
+```lean
+iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
+```
+
+New named obstruction:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Do not build a generic Cauchy-product framework first, do not generate jet
+rows before the exact Lean series crosswalk, do not ask Aristotle for the whole
+order-16 theorem, and do not interval-evaluate `sin(x)/x` through the zero
+cell.
+
+Local audit: `PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean` already
+contains a coarse generated Sub0 ShapeSqDeriv Taylor source from endpoint
+bounds.  It remains useful as packaging but is not the exact center-jet
+series source targeted here.
+
+Boundary: no exact coefficient definition, no center-jet `tsum` theorem, no
+uniform order-16 proof, no proof-safe generated row payload, and no
+Step33A.1-A closure.
