@@ -61148,3 +61148,63 @@ Next exact subgap:
 ```text
 STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
 ```
+
+## 2026-06-21 -- OmegaPrime remainder budget checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 OmegaPrime Taylor payload.
+
+Lean additions in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeffErrorAbs
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedOrder16Abs
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderAbs
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs
+```
+
+This proves the active receiver's final scalar remainder-budget input in the
+generated normalization:
+
+```text
+sum_j coeffErrorAbs[j] * (1/20)^j + order16Abs * (1/20)^16 / 16! <= remainderAbs
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v13
+```
+
+Regenerated artifact summary:
+
+```text
+status = fail_closed_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+proofSafeClosedFields = 18
+omegaPrimeOrder16IntegerBudgetProved = true
+omegaPrimeRemainderBudgetPassed = true
+remainderAbs = 52283179778952236279870528444304500844084393561089509958806353/13303455094708359561180350112695914185388091637760000000000000000
+```
+
+Validation passed:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json >/dev/null
+```
+
+Boundary: this closes only the scalar Taylor remainder budget after the
+previously checked 16 center-jet prefix/tail rows and order-16 integer budget.
+It does not construct a generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof and does not close
+Step33A.1-A / Step33 / Step34 / RH.
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+```

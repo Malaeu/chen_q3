@@ -32369,3 +32369,36 @@ STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
 Boundary: there is still no generated
 `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof, no final Taylor
 remainder budget, no Step33A.1-A closure, and no Step33/Step34/RH closure.
+
+## 2026-06-21 Current EOF State -- OmegaPrime remainder budget checked
+
+The generated OmegaPrime Taylor remainder scalar budget is now Lean-checked in
+the same normalization consumed by
+`Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
+
+New checked theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs
+```
+
+The regenerated OmegaPrime payload reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v13
+status = fail_closed_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+proofSafeClosedFields = 18
+omegaPrimeOrder16IntegerBudgetProved = true
+omegaPrimeRemainderBudgetPassed = true
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+```
+
+Boundary: the scalar remainder budget is proof-grade, but there is still no
+generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof object, no
+Step33A.1-A closure, and no Step33/Step34/RH closure.

@@ -37638,3 +37638,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   still not constructed as a single `data.Valid` value.
 - Boundary: closing this scalar remainder budget must not be reported as
   Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeRemainderBudgetChecked
+
+- Status: the generated OmegaPrime Taylor remainder scalar budget is
+  Lean-checked, but the generated `Valid` certificate is still open.
+- Added checked Lean theorem:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs`.
+- Added generated constants:
+  `omegaPrimeGeneratedCoeffErrorAbs`,
+  `omegaPrimeGeneratedOrder16Abs`, and
+  `omegaPrimeGeneratedRemainderAbs`.
+- Exact checked payload value:
+  `remainderAbs = 52283179778952236279870528444304500844084393561089509958806353/13303455094708359561180350112695914185388091637760000000000000000`.
+- The OmegaPrime payload generator now emits schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v13`, fills the exact
+  coefficient-error contribution, Lagrange contribution, required total, and
+  `remainderAbs`, and scans the new theorem before marking
+  `omegaPrimeRemainderBudgetPassed = true`.
+- Regenerated artifact status:
+  `fail_closed_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert`,
+  `firstFailure = STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP`, and
+  `proofSafeClosedFields = 18`.
+- Boundary: the center-jet rows, order-16 integer budget, and scalar remainder
+  budget are proof-grade, but there is still no generated
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof, no Step33A.1-A /
+  Step33 / Step34 / RH closure.

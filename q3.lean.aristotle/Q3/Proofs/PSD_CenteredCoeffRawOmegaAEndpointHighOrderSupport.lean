@@ -13325,6 +13325,45 @@ theorem omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs :
       ((186483005989023744000 : Rat) : Real) := by
   norm_num [omegaPrimeOrder16CondensedFactorBudgetBound]
 
+def omegaPrimeGeneratedCoeffErrorAbs (j : Fin 16) : Rat :=
+  match j.1 with
+  | 0 => (2 / 509 : Rat)
+  | 1 => (4 / 259081 : Rat)
+  | 2 => (8 / 131872229 : Rat)
+  | 3 => (16 / 67122964561 : Rat)
+  | 4 => (32 / 34165588961549 : Rat)
+  | 5 => (64 / 17390284781428441 : Rat)
+  | 6 => (128 / 8851654953747076469 : Rat)
+  | 7 => (256 / 4505492371457261922721 : Rat)
+  | 8 => (512 / 2293295617071746318664989 : Rat)
+  | 9 => (1024 / 1167287469089518876200479401 : Rat)
+  | 10 => (2048 / 594149321766565107986044015109 : Rat)
+  | 11 => (4096 / 302422004779181639964896403690481 : Rat)
+  | 12 => (8192 / 153932800432603454742132269478454829 : Rat)
+  | 13 => (16384 / 78351795420195158463745325164533507961 : Rat)
+  | 14 => (32768 / 39881063868879335658046370508747555552149 : Rat)
+  | 15 => (65536 / 20299461509259581849945602588952505776043841 : Rat)
+  | _ => 0
+
+def omegaPrimeGeneratedOrder16Abs : Rat :=
+  186483005989023744000
+
+def omegaPrimeGeneratedRemainderAbs : Rat :=
+  52283179778952236279870528444304500844084393561089509958806353 /
+    13303455094708359561180350112695914185388091637760000000000000000
+
+theorem omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs :
+    (∑ j : Fin 16,
+        (omegaPrimeGeneratedCoeffErrorAbs j : Real) *
+          step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+        (omegaPrimeGeneratedOrder16Abs : Real) *
+          step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+          (Nat.factorial 16 : Real)
+      <= (omegaPrimeGeneratedRemainderAbs : Real) := by
+  norm_num [omegaPrimeGeneratedCoeffErrorAbs, omegaPrimeGeneratedOrder16Abs,
+    omegaPrimeGeneratedRemainderAbs, step33Sub0OmegaPrimeTaylorRadius,
+    Fin.sum_univ_succ]
+
 theorem omegaPrimeOrder16_condensed_factor_budget_le :
     omegaPrimeOrder16SeriesFactor *
         (omegaPrimeOrder16RealMajorant 0 +

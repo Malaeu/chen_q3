@@ -17858,3 +17858,31 @@ STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
 Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
 instance exists yet.  The order-16 integer budget and final Taylor remainder
 budget are still missing, so Step33A.1-A remains open.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime remainder budget checked
+
+Lean now checks the generated Taylor remainder scalar budget:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs
+```
+
+The OmegaPrime generator now emits schema
+`q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v13` with:
+
+```text
+proofSafeClosedFields = 18
+omegaPrimeOrder16IntegerBudgetProved = true
+omegaPrimeRemainderBudgetPassed = true
+```
+
+Next implementable subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+```
+
+Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
+instance exists yet.  The center-jet rows, order-16 integer budget, and scalar
+remainder budget are proof-grade, but they have not yet been packaged into the
+receiver's `data.Valid` proof.
