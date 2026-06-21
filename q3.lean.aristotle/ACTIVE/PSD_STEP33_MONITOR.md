@@ -32437,3 +32437,40 @@ STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
 Boundary: this is local OmegaPrime payload closure only.  Step33A.1-A remains
 open until the combined Omega/OmegaPrime component residual theorem is proved
 and fed to the active receiver.
+
+## 2026-06-21 Current EOF State -- component Taylor ledger narrowed after OmegaPrime
+
+The component Taylor residual payload now consumes the checked OmegaPrime local
+Taylor certificate as the `omegaDeriv` component source:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid
+```
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v2
+status = fail_closed_missing_omega_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
+omegaDerivTaylorProofPresent = true
+omegaDerivTaylorProofAssembledIntoRawDerivative = false
+componentTaylorProofsPresent = false
+overallProofSafe = false
+```
+
+Closed historical component subgap:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: no Lean assembly theorem was emitted.  Step33A.1-A remains open until
+proof-grade `omega`, `shape`, and `shapeDeriv` Taylor/remainder sources exist
+and the raw-derivative assembly/residual range certificate is checked.

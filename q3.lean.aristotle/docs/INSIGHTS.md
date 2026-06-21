@@ -37718,3 +37718,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this closes only the local OmegaPrime Taylor cert.  It does not
   close the Omega/OmegaPrime component residual theorem, Step33A.1-A, Step33,
   Step34, or RH.
+
+## Insight (2026-06-21, Step33A.1-A) -- ComponentTaylorLedgerNarrowedAfterOmegaPrime
+
+- Status: the component Taylor residual payload now treats `omegaDerivTaylor`
+  as FORMAL via
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`.
+- The component generator emits schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v2` with
+  `firstFailure = STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP`.
+- The previous component-level blocker
+  `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP` is recorded as a
+  closed historical failure because the `omegaDeriv`/OmegaPrime local Taylor
+  source is now proof-grade.
+- Browser/Proshka was used as route advice and recommended exactly this
+  fail-closed ledger patch, not a Lean assembly theorem.  That advice is not
+  proof evidence.
+- Boundary: `omegaDerivTaylorProofAssembledIntoRawDerivative = false`,
+  `componentTaylorProofsPresent = false`, and `overallProofSafe = false`.
+  Step33A.1-A remains open until proof-grade `omega`, `shape`, and
+  `shapeDeriv` Taylor/remainder sources plus the raw-derivative assembly and
+  residual range certificate are checked.

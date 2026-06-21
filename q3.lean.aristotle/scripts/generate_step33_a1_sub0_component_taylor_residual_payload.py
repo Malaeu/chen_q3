@@ -37,6 +37,9 @@ from generate_step33_a1_sub0_cancellation_residual_interval_certificate import (
 DEFAULT_COMPONENT_LEDGER = (
     REQUEST_DIR / "step33_a1_sub0_cancellation_residual_interval_certificate.json"
 )
+DEFAULT_OMEGA_PRIME_PAYLOAD = (
+    REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
+)
 DEFAULT_OUT_JSON = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.json"
 )
@@ -44,10 +47,24 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v2"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
-STATUS = "fail_closed_missing_omega_omegaprime_taylor_remainder"
-FIRST_FAILURE = "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
+STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
+STATUS_AFTER_OMEGA_PRIME = (
+    "fail_closed_missing_omega_shape_shapederiv_taylor_remainders"
+)
+FIRST_FAILURE_MISSING_OMEGA_PRIME = (
+    "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
+)
+FIRST_FAILURE_AFTER_OMEGA_PRIME = (
+    "STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP"
+)
+OMEGA_PRIME_CLOSED_FAILURES = [
+    FIRST_FAILURE_MISSING_OMEGA_PRIME,
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP",
+]
 
 TARGET_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
@@ -59,6 +76,17 @@ TARGET_INTERVAL_THEOREM = (
     "fullTaylor_residual_deriv_closedForm_interval"
 )
 TARGET_INTERVAL_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
+OMEGA_PRIME_VALID_THEOREM = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeGeneratedRemainderCert_valid"
+)
+OMEGA_PRIME_VALID_THEOREM_LOCAL = (
+    "theorem omegaPrimeGeneratedRemainderCert_valid"
+)
+OMEGA_PRIME_CERT_DEF = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeGeneratedRemainderCert"
+)
 
 CELL_L = "0"
 CELL_U = "1/10"
@@ -106,25 +134,162 @@ def component_slots(name: str) -> list[dict[str, Any]]:
     ]
 
 
+def linked_component_slots(
+    name: str,
+    *,
+    value_source: str,
+    theorem: str,
+    proof_status: str,
+) -> list[dict[str, Any]]:
+    return [
+        {
+            "index": index,
+            "value": None,
+            "valueSource": f"{value_source}[{index}]",
+            "status": proof_status,
+            "component": name,
+            "sourceLeanTheorem": theorem,
+        }
+        for index in range(COMPONENT_DEGREE + 1)
+    ]
+
+
+def omega_prime_status(
+    *,
+    payload_path: Path,
+    lean_path: Path,
+) -> dict[str, Any]:
+    payload = load_json(payload_path)
+    lean_text = lean_path.read_text(encoding="utf-8") if lean_path.exists() else ""
+    theorem_found = (
+        OMEGA_PRIME_VALID_THEOREM in lean_text
+        or OMEGA_PRIME_VALID_THEOREM_LOCAL in lean_text
+    )
+    payload_proof_status = payload.get("proofStatus", {}) if payload else {}
+    payload_closed = bool(
+        payload_proof_status.get("omegaPrimeGeneratedValidCertProved")
+    )
+    proof_grade = theorem_found and payload_closed
+    return {
+        "payloadPath": str(payload_path),
+        "payloadSchema": payload.get("schema") if payload else None,
+        "payloadStatus": payload.get("status") if payload else None,
+        "leanFile": str(lean_path),
+        "validTheorem": OMEGA_PRIME_VALID_THEOREM,
+        "validTheoremFound": theorem_found,
+        "payloadGeneratedValidCertProved": payload_closed,
+        "proofGrade": proof_grade,
+        "coeffSource": (
+            "omegaPrimePayload.generatorFields.coeff"
+            if payload is not None
+            else None
+        ),
+        "remainderSource": (
+            "omegaPrimePayload.generatorFields.remainder.remainderAbs"
+            if payload is not None
+            else None
+        ),
+        "certDef": OMEGA_PRIME_CERT_DEF,
+    }
+
+
+def component_taylor_status(omega_prime_closed: bool) -> dict[str, Any]:
+    return {
+        "omegaDerivTaylor": (
+            {
+                "status": "FORMAL",
+                "leanTheorem": OMEGA_PRIME_VALID_THEOREM,
+                "leanChecked": True,
+                "receiver": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid",
+                "missing": False,
+                "assembledIntoRawDerivative": False,
+            }
+            if omega_prime_closed
+            else {
+                "status": "MISSING_PROOF_GRADE_REMAINDER",
+                "leanTheorem": OMEGA_PRIME_VALID_THEOREM,
+                "leanChecked": False,
+                "receiver": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid",
+                "missing": True,
+                "assembledIntoRawDerivative": False,
+            }
+        ),
+        "omegaTaylor": {
+            "status": "MISSING_PROOF_GRADE_REMAINDER",
+            "missing": True,
+        },
+        "shapeTaylor": {
+            "status": "MISSING_PROOF_GRADE_REMAINDER",
+            "missing": True,
+        },
+        "shapeDerivTaylor": {
+            "status": "MISSING_PROOF_GRADE_REMAINDER",
+            "missing": True,
+        },
+        "assemblyLeanWritten": False,
+        "overallProofSafe": False,
+    }
+
+
 def build_report(
     *,
     landing_path: Path,
     component_ledger_path: Path,
+    omega_prime_payload_path: Path,
+    endpoint_support_path: Path,
 ) -> dict[str, Any]:
     model_coeffs, source_lines = extract_coefficients(landing_path)
     component_ledger = load_json(component_ledger_path)
+    omega_prime = omega_prime_status(
+        payload_path=omega_prime_payload_path,
+        lean_path=endpoint_support_path,
+    )
+    omega_prime_closed = bool(omega_prime["proofGrade"])
+    status = (
+        STATUS_AFTER_OMEGA_PRIME
+        if omega_prime_closed
+        else STATUS_MISSING_OMEGA_PRIME
+    )
+    first_failure = (
+        FIRST_FAILURE_AFTER_OMEGA_PRIME
+        if omega_prime_closed
+        else FIRST_FAILURE_MISSING_OMEGA_PRIME
+    )
+    omega_deriv_coeff = (
+        linked_component_slots(
+            "omegaDeriv",
+            value_source="omegaPrimePayload.generatorFields.coeff",
+            theorem=OMEGA_PRIME_VALID_THEOREM,
+            proof_status="formal_available_via_omega_prime_valid_cert_not_assembled",
+        )
+        if omega_prime_closed
+        else component_slots("omegaDeriv")
+    )
+    omega_deriv_remainder = (
+        {
+            "value": None,
+            "valueSource": "omegaPrimePayload.generatorFields.remainder.remainderAbs",
+            "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+            "sourceLeanTheorem": OMEGA_PRIME_VALID_THEOREM,
+        }
+        if omega_prime_closed
+        else None
+    )
     target_lower = parse_rat(TARGET_LOWER)
     target_upper = parse_rat(TARGET_UPPER)
 
     return {
         "schema": SCHEMA,
         "routeId": ROUTE_ID,
-        "status": STATUS,
+        "status": status,
         "chosenRoute": "B",
         "advisorySource": "browser_proshka_route_advice_not_proof_evidence",
-        "firstFailure": FIRST_FAILURE,
+        "firstFailure": first_failure,
+        "closedHistoricalFailures": (
+            OMEGA_PRIME_CLOSED_FAILURES if omega_prime_closed else []
+        ),
         "failureCodes": [
-            FIRST_FAILURE,
+            first_failure,
             "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
             "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
             "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
@@ -170,11 +335,11 @@ def build_report(
         },
         "generatorFields": {
             "omegaCoeff": component_slots("omega"),
-            "omegaDerivCoeff": component_slots("omegaDeriv"),
+            "omegaDerivCoeff": omega_deriv_coeff,
             "shapeCoeff": component_slots("shape"),
             "shapeDerivCoeff": component_slots("shapeDeriv"),
             "omegaRemainderAbs": None,
-            "omegaDerivRemainderAbs": None,
+            "omegaDerivRemainderAbs": omega_deriv_remainder,
             "shapeRemainderAbs": None,
             "shapeDerivRemainderAbs": None,
             "assembledRawDerivCoeff": None,
@@ -194,11 +359,25 @@ def build_report(
         "proofStatus": {
             "exactCoefficientAssemblyPassed": False,
             "componentTaylorProofsPresent": False,
+            "omegaDerivTaylorProofPresent": omega_prime_closed,
+            "omegaDerivTaylorProofAssembledIntoRawDerivative": False,
             "residualPolynomialRangePassed": False,
             "finalBudgetPassed": False,
-            "proofSafeClosedFields": 0,
+            "proofSafeClosedFields": 1 if omega_prime_closed else 0,
             "outLeanWritten": False,
         },
+        "componentClosureLedger": {
+            "omega": "missing_proof_grade_component_taylor_remainder",
+            "omegaDeriv": (
+                "formal_available_not_assembled"
+                if omega_prime_closed
+                else "missing_proof_grade_component_taylor_remainder"
+            ),
+            "shape": "missing_proof_grade_component_taylor_remainder",
+            "shapeDeriv": "missing_proof_grade_component_taylor_remainder",
+        },
+        "componentTaylorStatus": component_taylor_status(omega_prime_closed),
+        "omegaPrimeTaylorSource": omega_prime,
         "existingLeanInputs": {
             "modelDerivCoeffSource": COEFF_DEF,
             "modelDerivCoeffCount": len(model_coeffs),
@@ -214,6 +393,7 @@ def build_report(
                 "primaryFiniteRow0Parent0Split100Sub0_"
                 "fullTaylor_direct_segment_cert_valid_of_residual_bounds"
             ),
+            "omegaDerivTaylorValidCert": OMEGA_PRIME_VALID_THEOREM,
         },
         "proshkaDecision": {
             "chosen": "B",
@@ -236,6 +416,9 @@ def build_report(
             "componentLedgerStatus": (
                 component_ledger.get("status") if component_ledger else None
             ),
+            "omegaPrimePayloadPath": str(omega_prime_payload_path),
+            "omegaPrimePayloadStatus": omega_prime.get("payloadStatus"),
+            "omegaPrimeProofGrade": omega_prime_closed,
         },
         "sourceDefinitionLines": source_lines,
         "sourceDefinitionHashes": {
@@ -246,6 +429,11 @@ def build_report(
             "step33_a1_sub0_cancellation_residual_interval_certificate.json": (
                 file_hash(component_ledger_path)
             ),
+            "ACTIVE/requests/step33_bootstrap/"
+            "step33_a1_sub0_omega_prime_taylor_payload.json": (
+                file_hash(omega_prime_payload_path)
+            ),
+            TARGET_FILE: file_hash(endpoint_support_path),
         },
     }
 
@@ -264,6 +452,8 @@ def render_md(report: dict[str, Any]) -> str:
         f"- chosen route: `{report['chosenRoute']}`",
         f"- status: `{report['status']}`",
         f"- first failure: `{report['firstFailure']}`",
+        "- closed historical failures: "
+        f"`{', '.join(report['closedHistoricalFailures']) if report['closedHistoricalFailures'] else 'none'}`",
         f"- advisory source: `{report['advisorySource']}`",
         f"- proof-safe closed fields: `{report['proofStatus']['proofSafeClosedFields']}`",
         f"- Lean emitted: `{report['proofStatus']['outLeanWritten']}`",
@@ -313,6 +503,34 @@ def render_md(report: dict[str, Any]) -> str:
             "- `residualPolynomialLower` / `residualPolynomialUpper`",
             "- `finalResidualLower` / `finalResidualUpper`",
             "",
+            "## Component Closure Ledger",
+            "",
+        ]
+    )
+    for key, value in report["componentClosureLedger"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.extend(
+        [
+            "",
+            "## OmegaDeriv Taylor Source",
+            "",
+            f"- proof-grade: `{report['omegaPrimeTaylorSource']['proofGrade']}`",
+            f"- valid theorem: `{report['omegaPrimeTaylorSource']['validTheorem']}`",
+            f"- theorem found: `{report['omegaPrimeTaylorSource']['validTheoremFound']}`",
+            f"- payload generated valid cert proved: `{report['omegaPrimeTaylorSource']['payloadGeneratedValidCertProved']}`",
+            f"- coeff source: `{report['omegaPrimeTaylorSource']['coeffSource']}`",
+            f"- remainder source: `{report['omegaPrimeTaylorSource']['remainderSource']}`",
+            "",
+            "## Component Taylor Status",
+            "",
+            f"- omegaDerivTaylor: `{report['componentTaylorStatus']['omegaDerivTaylor']['status']}`",
+            f"- omegaDerivTaylor Lean theorem: `{report['componentTaylorStatus']['omegaDerivTaylor']['leanTheorem']}`",
+            f"- omegaTaylor: `{report['componentTaylorStatus']['omegaTaylor']['status']}`",
+            f"- shapeTaylor: `{report['componentTaylorStatus']['shapeTaylor']['status']}`",
+            f"- shapeDerivTaylor: `{report['componentTaylorStatus']['shapeDerivTaylor']['status']}`",
+            f"- assembly Lean written: `{report['componentTaylorStatus']['assemblyLeanWritten']}`",
+            f"- overall proof safe: `{report['componentTaylorStatus']['overallProofSafe']}`",
+            "",
             "## Proof Status",
             "",
         ]
@@ -351,10 +569,11 @@ def render_md(report: dict[str, Any]) -> str:
             "## Decision",
             "",
             "The next proof-producing gate is component Taylor/remainder data for",
-            "`omega`, `omegaDeriv`, `shape`, and `shapeDeriv`.  Only after those",
-            "component proofs exist may the generator assemble the raw derivative,",
-            "subtract the model derivative coefficients, bound the residual",
-            "polynomial, and emit Lean for the interval theorem.",
+            "`omega`, `shape`, and `shapeDeriv`, plus a raw-derivative assembly",
+            "bridge that consumes the already checked `omegaDeriv` Taylor source.",
+            "Only after those component proofs exist may the generator assemble the",
+            "raw derivative, subtract the model derivative coefficients, bound the",
+            "residual polynomial, and emit Lean for the interval theorem.",
             "",
         ]
     )
@@ -367,6 +586,10 @@ def run() -> None:
     parser.add_argument(
         "--component-ledger", type=Path, default=DEFAULT_COMPONENT_LEDGER
     )
+    parser.add_argument(
+        "--omega-prime-payload", type=Path, default=DEFAULT_OMEGA_PRIME_PAYLOAD
+    )
+    parser.add_argument("--endpoint-support", type=Path, default=Path(TARGET_FILE))
     parser.add_argument("--out-json", type=Path, default=DEFAULT_OUT_JSON)
     parser.add_argument("--out-md", type=Path, default=DEFAULT_OUT_MD)
     args = parser.parse_args()
@@ -374,6 +597,8 @@ def run() -> None:
     report = build_report(
         landing_path=args.landing,
         component_ledger_path=args.component_ledger,
+        omega_prime_payload_path=args.omega_prime_payload,
+        endpoint_support_path=args.endpoint_support,
     )
     args.out_json.parent.mkdir(parents=True, exist_ok=True)
     args.out_json.write_text(

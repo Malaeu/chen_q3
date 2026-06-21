@@ -10,6 +10,42 @@
     "targetWidth": "245091005771/62500000000000000000000000000"
   },
   "chosenRoute": "B",
+  "closedHistoricalFailures": [
+    "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP"
+  ],
+  "componentClosureLedger": {
+    "omega": "missing_proof_grade_component_taylor_remainder",
+    "omegaDeriv": "formal_available_not_assembled",
+    "shape": "missing_proof_grade_component_taylor_remainder",
+    "shapeDeriv": "missing_proof_grade_component_taylor_remainder"
+  },
+  "componentTaylorStatus": {
+    "assemblyLeanWritten": false,
+    "omegaDerivTaylor": {
+      "assembledIntoRawDerivative": false,
+      "leanChecked": true,
+      "leanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+      "missing": false,
+      "receiver": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid",
+      "status": "FORMAL"
+    },
+    "omegaTaylor": {
+      "missing": true,
+      "status": "MISSING_PROOF_GRADE_REMAINDER"
+    },
+    "overallProofSafe": false,
+    "shapeDerivTaylor": {
+      "missing": true,
+      "status": "MISSING_PROOF_GRADE_REMAINDER"
+    },
+    "shapeTaylor": {
+      "missing": true,
+      "status": "MISSING_PROOF_GRADE_REMAINDER"
+    }
+  },
   "degrees": {
     "assembledDegree": 45,
     "componentDegree": 15,
@@ -32,16 +68,17 @@
     "fullTaylorPolynomialDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel",
     "fullTaylorResidualDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm",
     "modelDerivCoeffCount": 16,
-    "modelDerivCoeffSource": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff"
+    "modelDerivCoeffSource": "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff",
+    "omegaDerivTaylorValidCert": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
+    "STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
+  "firstFailure": "STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "componentPropagationRemainderAbs": null,
@@ -433,101 +470,138 @@
       {
         "component": "omegaDeriv",
         "index": 0,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[0]"
       },
       {
         "component": "omegaDeriv",
         "index": 1,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[1]"
       },
       {
         "component": "omegaDeriv",
         "index": 2,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[2]"
       },
       {
         "component": "omegaDeriv",
         "index": 3,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[3]"
       },
       {
         "component": "omegaDeriv",
         "index": 4,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[4]"
       },
       {
         "component": "omegaDeriv",
         "index": 5,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[5]"
       },
       {
         "component": "omegaDeriv",
         "index": 6,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[6]"
       },
       {
         "component": "omegaDeriv",
         "index": 7,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[7]"
       },
       {
         "component": "omegaDeriv",
         "index": 8,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[8]"
       },
       {
         "component": "omegaDeriv",
         "index": 9,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[9]"
       },
       {
         "component": "omegaDeriv",
         "index": 10,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[10]"
       },
       {
         "component": "omegaDeriv",
         "index": 11,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[11]"
       },
       {
         "component": "omegaDeriv",
         "index": 12,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[12]"
       },
       {
         "component": "omegaDeriv",
         "index": 13,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[13]"
       },
       {
         "component": "omegaDeriv",
         "index": 14,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[14]"
       },
       {
         "component": "omegaDeriv",
         "index": 15,
-        "status": "missing_proof_grade_component_taylor_coeff",
-        "value": null
+        "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+        "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+        "value": null,
+        "valueSource": "omegaPrimePayload.generatorFields.coeff[15]"
       }
     ],
-    "omegaDerivRemainderAbs": null,
+    "omegaDerivRemainderAbs": {
+      "sourceLeanTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+      "status": "formal_available_via_omega_prime_valid_cert_not_assembled",
+      "value": null,
+      "valueSource": "omegaPrimePayload.generatorFields.remainder.remainderAbs"
+    },
     "omegaRemainderAbs": null,
     "productTruncationRemainderAbs": null,
     "residualPolynomialLower": null,
@@ -733,12 +807,27 @@
     "shapeDerivRemainderAbs": null,
     "shapeRemainderAbs": null
   },
+  "omegaPrimeTaylorSource": {
+    "certDef": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert",
+    "coeffSource": "omegaPrimePayload.generatorFields.coeff",
+    "leanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
+    "payloadGeneratedValidCertProved": true,
+    "payloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json",
+    "payloadSchema": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14",
+    "payloadStatus": "omega_prime_generated_valid_cert_checked_component_gap_open",
+    "proofGrade": true,
+    "remainderSource": "omegaPrimePayload.generatorFields.remainder.remainderAbs",
+    "validTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
+    "validTheoremFound": true
+  },
   "proofStatus": {
     "componentTaylorProofsPresent": false,
     "exactCoefficientAssemblyPassed": false,
     "finalBudgetPassed": false,
+    "omegaDerivTaylorProofAssembledIntoRawDerivative": false,
+    "omegaDerivTaylorProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 0,
+    "proofSafeClosedFields": 1,
     "residualPolynomialRangePassed": false
   },
   "proshkaDecision": {
@@ -747,9 +836,11 @@
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
   },
   "routeId": "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL",
-  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1",
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v2",
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json": "cc2d04f85189576e",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json": "d76ad77551996b39",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "3b37ce67e994a876",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
   },
   "sourceDefinitionLines": {
@@ -766,9 +857,12 @@
   "sourceStatus": {
     "componentLedgerPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json",
     "componentLedgerSchema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1",
-    "componentLedgerStatus": "fail_closed_missing_component_taylor_remainder_bounds"
+    "componentLedgerStatus": "fail_closed_missing_component_taylor_remainder_bounds",
+    "omegaPrimePayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json",
+    "omegaPrimePayloadStatus": "omega_prime_generated_valid_cert_checked_component_gap_open",
+    "omegaPrimeProofGrade": true
   },
-  "status": "fail_closed_missing_omega_omegaprime_taylor_remainder",
+  "status": "fail_closed_missing_omega_shape_shapederiv_taylor_remainders",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",

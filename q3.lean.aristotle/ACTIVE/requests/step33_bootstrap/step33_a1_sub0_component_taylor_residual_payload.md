@@ -5,13 +5,14 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v1`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v2`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
-- status: `fail_closed_missing_omega_omegaprime_taylor_remainder`
-- first failure: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP`
+- status: `fail_closed_missing_omega_shape_shapederiv_taylor_remainders`
+- first failure: `STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP`
+- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `0`
+- proof-safe closed fields: `1`
 - Lean emitted: `False`
 
 ## Target
@@ -67,13 +68,41 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - `residualPolynomialLower` / `residualPolynomialUpper`
 - `finalResidualLower` / `finalResidualUpper`
 
+## Component Closure Ledger
+
+- omega: `missing_proof_grade_component_taylor_remainder`
+- omegaDeriv: `formal_available_not_assembled`
+- shape: `missing_proof_grade_component_taylor_remainder`
+- shapeDeriv: `missing_proof_grade_component_taylor_remainder`
+
+## OmegaDeriv Taylor Source
+
+- proof-grade: `True`
+- valid theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
+- theorem found: `True`
+- payload generated valid cert proved: `True`
+- coeff source: `omegaPrimePayload.generatorFields.coeff`
+- remainder source: `omegaPrimePayload.generatorFields.remainder.remainderAbs`
+
+## Component Taylor Status
+
+- omegaDerivTaylor: `FORMAL`
+- omegaDerivTaylor Lean theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
+- omegaTaylor: `MISSING_PROOF_GRADE_REMAINDER`
+- shapeTaylor: `MISSING_PROOF_GRADE_REMAINDER`
+- shapeDerivTaylor: `MISSING_PROOF_GRADE_REMAINDER`
+- assembly Lean written: `False`
+- overall proof safe: `False`
+
 ## Proof Status
 
 - exactCoefficientAssemblyPassed: `False`
 - componentTaylorProofsPresent: `False`
+- omegaDerivTaylorProofPresent: `True`
+- omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `0`
+- proofSafeClosedFields: `1`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -83,6 +112,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - fullTaylorPolynomialDerivativeCrosswalk: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel`
 - fullTaylorResidualDerivativeCrosswalk: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm`
 - fullTaylorDirectValidityBridge: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds`
+- omegaDerivTaylorValidCert: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 
 ## Proshka Decision
 
@@ -92,7 +122,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 ## Failure Codes
 
-- `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP`
+- `STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP`
 - `STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP`
 - `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
 - `STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP`
@@ -101,7 +131,8 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Decision
 
 The next proof-producing gate is component Taylor/remainder data for
-`omega`, `omegaDeriv`, `shape`, and `shapeDeriv`.  Only after those
-component proofs exist may the generator assemble the raw derivative,
-subtract the model derivative coefficients, bound the residual
-polynomial, and emit Lean for the interval theorem.
+`omega`, `shape`, and `shapeDeriv`, plus a raw-derivative assembly
+bridge that consumes the already checked `omegaDeriv` Taylor source.
+Only after those component proofs exist may the generator assemble the
+raw derivative, subtract the model derivative coefficients, bound the
+residual polynomial, and emit Lean for the interval theorem.

@@ -61264,3 +61264,51 @@ Next exact live gap:
 ```text
 STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
 ```
+
+## 2026-06-21 -- Component Taylor ledger narrowed after OmegaPrime
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+The component generator now recognizes the checked OmegaPrime generated
+`Valid` proof as the `omegaDeriv` Taylor source:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v2
+```
+
+Regenerated artifact summary:
+
+```text
+status = fail_closed_missing_omega_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
+closedHistoricalFailures includes STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+omegaDerivTaylorProofPresent = true
+omegaDerivTaylorProofAssembledIntoRawDerivative = false
+componentTaylorProofsPresent = false
+overallProofSafe = false
+```
+
+Advisory browser/Proshka check agreed with this fail-closed patch shape:
+update the component ledger, do not emit Lean assembly yet.  This is route
+advice only, not proof evidence.
+
+Validation passed:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json >/dev/null
+```
+
+Boundary: this does not close Step33A.1-A.  The live blocker is now exactly:
+
+```text
+STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
+```
