@@ -62296,3 +62296,67 @@ one by `Classical.choose`.  It does not provide exact rational coefficients,
 does not prove center-jet row values, does not prove the uniform order-16
 bound, does not emit proof-safe generated rows, and does not close
 Step33A.1-A.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv center-coeff row bridge checked
+
+Implemented and Lean-checked the actual certificate-center bridge in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+
+New theorem/data names:
+
+```lean
+realSinc_analyticAt_of_ne_zero
+primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_center
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_center
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+```
+
+The new center-jet bridge proves the exact normalization consumed by
+`ShapeSqDerivTaylorIntervalCert.Valid` at `(1 : Real) / 20`:
+
+```lean
+iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+    ((1 : Real) / 20) / (Nat.factorial j.1 : Real)
+= primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j.1
+```
+
+The new validity wrapper allows the generated center rows to target the
+selected local series coefficients:
+
+```lean
+‖primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j.1
+  - (coeff j : Real)‖ <= (coeffErrorAbs j : Real)
+```
+
+and then folds those rows through
+`ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs`.
+
+Search/API preflight:
+
+- local `q3_docs` searches for exact ShapeSqDeriv/Cauchy coefficient rows found
+  no ready theorem;
+- Mathlib API layer used locally: `AnalyticAt.congr`, `AnalyticAt.fun_div`,
+  `AnalyticAt.comp_of_eq'`, `AnalyticAt.deriv`, and the already checked
+  `iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt` bridge.
+
+Validation:
+
+```bash
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Boundary: no explicit rational coefficient values are proved, no order-16
+bound is proved, no generated proof-safe rows are emitted, and Step33A.1-A is
+still open.

@@ -32989,3 +32989,57 @@ Boundary: the checked series is chosen existentially from local analyticity. It
 does not define exact rational coefficients, does not prove the center-jet row
 values, does not prove the uniform order-16 bound, does not emit a generated
 payload, and does not close Step33A.1-A.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv center-coeff row bridge checked
+
+Lean now checks the bridge at the actual
+`ShapeSqDerivTaylorIntervalCert.Valid` center `1/20`, not only at the origin:
+
+```lean
+realSinc_analyticAt_of_ne_zero
+primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_center
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_center
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+```
+
+Proof-producing consequence: the generator-facing center-jet rows can now be
+stated as rational enclosures for
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j`
+instead of directly for an `iteratedDeriv` expression.  Lean supplies the
+normalization equality:
+
+```lean
+iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+    ((1 : Real) / 20) / (Nat.factorial j.1 : Real)
+= primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j.1
+```
+
+Preflight evidence:
+
+- local `q3_docs` search found no ready explicit ShapeSqDeriv Cauchy/coefficient
+  theorem;
+- Mathlib API used: `AnalyticAt.congr`, `AnalyticAt.fun_div`,
+  `AnalyticAt.comp_of_eq'`, `AnalyticAt.deriv`, and the existing
+  `HasFPowerSeriesOnBall.factorial_smul` normalization bridge.
+
+Validation:
+
+```bash
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Current live blocker remains the explicit proof-data layer:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Boundary: this is still not a concrete coefficient calculation.  It does not
+prove rational coefficient rows, does not prove the uniform order-16 bound,
+does not emit proof-safe generated rows, and does not close Step33A.1-A.

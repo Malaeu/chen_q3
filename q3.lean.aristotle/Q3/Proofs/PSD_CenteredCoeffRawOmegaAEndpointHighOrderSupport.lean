@@ -58,6 +58,19 @@ theorem realSinc_hasSum_even_powerSeries (x : Real) :
     field_simp [hx]
     rw [show x ^ (2 * n + 1) = x ^ (2 * n) * x by rw [pow_succ]]
 
+/-- Away from the removable singularity, the project sinc convention is
+analytic through its local `sin x / x` representation. -/
+theorem realSinc_analyticAt_of_ne_zero {x : Real} (hx : x ≠ 0) :
+    AnalyticAt Real realSinc x := by
+  have hlocal : realSinc =ᶠ[nhds x] fun t : Real => Real.sin t / t := by
+    filter_upwards [isOpen_ne.mem_nhds hx] with t ht
+    exact realSinc_of_ne_zero ht
+  have hdiv : AnalyticAt Real (fun t : Real => Real.sin t / t) x := by
+    have hs : AnalyticAt Real Real.sin x := Real.analyticAt_sin
+    have hid : AnalyticAt Real (fun t : Real => t) x := analyticAt_id
+    exact hs.fun_div hid hx
+  exact hdiv.congr hlocal.symm
+
 /-- Scalar center-jet coefficient bridge for local power-series proofs.
 
 This is the normalization consumed by the Step33 ShapeSqDeriv interval
@@ -157,6 +170,132 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_zero
       primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries
       (0 : Real) :=
   Classical.choose_spec primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero
+
+/-- Local analytic bridge for the active `k=11`, `ell=3/10` B-spline closed
+form at the actual zero-cell certificate center `1/20`. -/
+theorem primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_center :
+    AnalyticAt Real
+      (fun t : Real =>
+        centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) t)
+      ((1 : Real) / 20) := by
+  unfold centeredBSplineImagTransformRealClosedForm
+  have harg :
+      AnalyticAt Real
+        (fun t : Real =>
+          ((3 : Real) / 10) * t / (2 * bsplineScale 11))
+        ((1 : Real) / 20) := by
+    have hnum :
+        AnalyticAt Real (fun t : Real => ((3 : Real) / 10) * t)
+          ((1 : Real) / 20) := by
+      fun_prop
+    have hden :
+        AnalyticAt Real (fun _ : Real => 2 * bsplineScale 11)
+          ((1 : Real) / 20) :=
+      analyticAt_const
+    have hden_ne : (2 : Real) * bsplineScale 11 ≠ 0 := by
+      exact mul_ne_zero (by norm_num) (bsplineScale_ne_zero 11)
+    exact hnum.fun_div hden hden_ne
+  have harg_center :
+      (fun t : Real =>
+        ((3 : Real) / 10) * t / (2 * bsplineScale 11))
+          ((1 : Real) / 20) =
+        (1 : Real) / 800 := by
+    norm_num [bsplineScale]
+  have hsinc_center :
+      AnalyticAt Real realSinc ((1 : Real) / 800) :=
+    realSinc_analyticAt_of_ne_zero (by norm_num)
+  have hsinc :
+      AnalyticAt Real
+        (fun t : Real =>
+          realSinc (((3 : Real) / 10) * t / (2 * bsplineScale 11)))
+        ((1 : Real) / 20) := by
+    exact hsinc_center.comp_of_eq' harg harg_center
+  have hpow :
+      AnalyticAt Real
+        (fun t : Real =>
+          (realSinc (((3 : Real) / 10) * t / (2 * bsplineScale 11))) ^
+            (11 + 1))
+        ((1 : Real) / 20) :=
+    hsinc.fun_pow (11 + 1)
+  have hscale :
+      AnalyticAt Real
+        (fun _ : Real =>
+          (Real.sqrt (bsplineScale 11 * bsplineAutocorrNorm 11))⁻¹)
+        ((1 : Real) / 20) :=
+    analyticAt_const
+  simpa [Pi.mul_apply] using hscale.fun_mul hpow
+
+/-- The active first-row ShapeSqDeriv source is locally analytic at the actual
+zero-cell certificate center `1/20`. -/
+theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_center :
+    AnalyticAt Real primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+      ((1 : Real) / 20) := by
+  have hshape :
+      AnalyticAt Real
+        (fun t : Real =>
+          (centeredBSplineImagTransformRealClosedForm 11
+            ((3 : Real) / 10) t) ^ 2)
+        ((1 : Real) / 20) :=
+    primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_center.fun_pow 2
+  simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using hshape.deriv
+
+/-- Chosen local formal series for the active ShapeSqDeriv crosswalk at the
+actual zero-cell certificate center `1/20`. -/
+noncomputable def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter :
+    FormalMultilinearSeries Real Real Real :=
+  Classical.choose primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_center
+
+/-- Local `HasFPowerSeriesAt` crosswalk at the actual ShapeSqDeriv certificate
+center.  This is the proof-side source for center-jet row normalization. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center :
+    HasFPowerSeriesAt primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter
+      ((1 : Real) / 20) :=
+  Classical.choose_spec primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_center
+
+/-- The normalized center jet used by `ShapeSqDerivTaylorIntervalCert.Valid`
+is the coefficient of the local ShapeSqDeriv power series at the certificate
+center. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff
+    (j : Fin 16) :
+    iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+        ((1 : Real) / 20) / (Nat.factorial j.1 : Real) =
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+        j.1 :=
+  iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
+    primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center
+    j.1
+
+/-- Build the compact active ShapeSqDeriv interval certificate from
+power-series coefficient enclosures at the actual certificate center.
+
+This removes `iteratedDeriv` from the generator-facing center-jet rows: the
+generator may now prove rational enclosures for the coefficients of the chosen
+local power series, while the Lean bridge supplies the center-jet equality. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs
+    {coeff coeffErrorAbs : Fin 16 -> Rat}
+    {order16Abs : Rat}
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (coeffErrorAbs j : Real))
+    (hCenterCoeffAbs :
+      ∀ j : Fin 16,
+        ‖primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff
+            j.1 -
+          (coeff j : Real)‖ <=
+          (coeffErrorAbs j : Real))
+    (hOrder16Abs :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+            eta‖ <=
+          (order16Abs : Real)) :
+    (ShapeSqDerivTaylorIntervalCert.singleAbs coeff coeffErrorAbs
+      order16Abs).Valid := by
+  refine
+    ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs
+      hCoeffErrorNonneg ?_ hOrder16Abs
+  intro j
+  rw [primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff j]
+  exact hCenterCoeffAbs j
 
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +

@@ -38201,3 +38201,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: the selected power series is existential via local analyticity; no
   exact rational coefficients, center-jet rows, order-16 bound, generated
   payload, or Step33A.1-A closure is claimed.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCenterCoeffBridgeChecked
+
+- Added the actual certificate-center bridge for the active ShapeSqDeriv
+  source in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked names:
+  `realSinc_analyticAt_of_ne_zero`,
+  `primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_center`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_center`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs`.
+- The center used by `ShapeSqDerivTaylorIntervalCert.Valid` is `(1 : Real) / 20`;
+  the sinc argument there is nonzero (`1/800`), so the bridge uses
+  `realSinc = sin x / x` locally rather than the removable-zero series.
+- Local `q3_docs` searches did not find a ready explicit ShapeSqDeriv Cauchy
+  coefficient theorem.  Mathlib API support used: `AnalyticAt.congr`,
+  `AnalyticAt.fun_div`, `AnalyticAt.comp_of_eq'`, `AnalyticAt.deriv`, and the
+  checked `HasFPowerSeriesOnBall.factorial_smul` normalization route.
+- Generator-facing consequence: center rows may now be stated as rational
+  enclosures of
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff j`
+  and then folded into `ShapeSqDerivTaylorIntervalCert.Valid`.
+- Validation passed: direct Lean, `q3_check`, and scoped marker scan on the
+  Endpoint support file.
+- Current live blocker remains
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`: exact
+  rational coefficient values and the uniform order-16 bound are still open.
