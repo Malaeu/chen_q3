@@ -37922,3 +37922,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`, followed by a
   concrete Sub0 order-16 derivative source.  Do not return to separate
   endpoint-only `E`/`E'` boxes because that loses the cancellation structure.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivOrder16ReceiverSearchInProgress
+
+- Target lemma:
+  `shapeSqDerivTaylor_bound_of_centerJet_and_order16` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+- Local q3_docs search for `shapeSqDerivTaylor centerJet order16` and
+  `taylor_mean_remainder_lagrange_iteratedDeriv rawOmegaATaylorPolynomial`
+  found no already packaged ShapeSq derivative order-16 receiver.
+- Existing local template: the OmegaPrime support layer proves a center-jet plus
+  order-16 Taylor certificate using
+  `taylor_mean_remainder_lagrange_iteratedDeriv` and then spends coefficient
+  errors against a rational radius budget.
+- External primary source check: Mathlib's `Analysis.Calculus.Taylor` exposes
+  `taylor_mean_remainder_lagrange_iteratedDeriv` and `taylorWithinEval`, matching
+  the local OmegaPrime theorem shape.
+  Source: https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Calculus/Taylor.html
+- Planned minimal patch: add a generic ShapeSq derivative receiver with
+  assumptions `ContDiff Real 16`, center-jet coefficient errors, uniform
+  order-16 bound on `[0,1/10]`, and a single rational budget proving the
+  degree-15 Taylor enclosure for `deriv (E^2)`.
+- Boundary: this is only the receiver; the concrete Sub0 order-16 derivative
+  payload and Step33A.1-A closure remain open.
