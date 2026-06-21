@@ -38456,3 +38456,43 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not provide the proof-grade shape derivative bounds, does
   not close rows `2..15`, does not prove the full-cell order-17 shape-square
   bound, does not assemble the raw derivative, and does not close Step33A.1-A.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ShapeSqDerivMajorantReceiverPlan
+
+- Used the in-app browser/Computer Use for a fresh Proshka route check after
+  the checked product-bound receiver.  Proshka chose receiver first, generator
+  second.
+- Local evidence: v15 first failure is
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP`.
+  Existing endpoint facts still do not provide proof-grade shape derivative
+  majorants through order `17`.
+- Next local patch target:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs`
+  in a new isolated receiver file.
+- Intended boundary: the theorem should compose the existing shape-square
+  product-bound receiver with the existing `ShapeSqDerivTaylorIntervalCert.Valid`
+  receiver.  It must not emit numerical/rational shape derivative bounds, must
+  not mark rows `2..15` closed, and must keep Step33A.1-A open.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivMajorantReceiverChecked
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean`.
+- Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs`.
+  The theorem composes the checked product-bound receiver with
+  `ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs`, using explicit center
+  coefficient budgets and an order-17 budget.
+- The theorem is a receiver only: it does not provide proof-grade shape
+  derivative majorants through order `17`, rational rows `2..15`, or the
+  full-cell order-17 shape-square bound.
+- Regenerated the component Taylor residual payload to schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v16`; it records
+  `shapeSqDerivMajorantReceiverPresent = true`,
+  `shapeSqDerivProductBoundsReceiverPresent = true`, and
+  `proofSafeClosedFields = 15`.
+- Current live blocker is now exactly
+  `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`.
+- Boundary: rows `2..15`, the proof-grade shape derivative bounds payload, the
+  full-cell order-17 shape-square bound, raw-derivative assembly, residual
+  polynomial bounds, and Step33A.1-A remain open.

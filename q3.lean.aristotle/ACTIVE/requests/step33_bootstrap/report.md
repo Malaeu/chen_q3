@@ -62768,3 +62768,51 @@ Current first live blocker:
 ```text
 STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP
 ```
+
+## 2026-06-22 Addendum -- ShapeSqDeriv majorant receiver checked
+
+Used the in-app browser/Computer Use for a fresh Proshka route check after the
+checked product-bound receiver.  Proshka selected receiver first, generator
+second.  The advice is route guidance only; local Lean validation is the proof
+evidence.
+
+Added an isolated Lean receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean
+```
+
+New checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs
+```
+
+This theorem packages future proof-grade shape derivative majorants through
+order `17`, plus explicit coefficient and order-17 budgets, into
+`ShapeSqDerivTaylorIntervalCert.singleAbs ... .Valid`.
+
+Payload v16 now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v16
+status = fail_closed_missing_shape_derivative_bounds_0_to_17_payload
+firstFailure = STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP
+proofSafeClosedFields = 15
+shapeSqDerivMajorantReceiverPresent = true
+shapeSqDerivProductBoundsReceiverPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP`.  It does not provide the
+proof-grade shape derivative bounds, does not close rows `2..15`, does not
+prove the full-cell order-17 shape-square bound, does not assemble the raw
+derivative, and does not close Step33A.1-A.
+
+Current first live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP
+```

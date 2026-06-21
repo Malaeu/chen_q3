@@ -26,12 +26,13 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP",
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP"
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP"
   ],
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
-    "shape": "product_bounds_receiver_formal_missing_shape_derivative_bounds_payload",
+    "shape": "majorant_receiver_formal_missing_shape_derivative_bounds_0_to_17_payload",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
   "componentTaylorStatus": {
@@ -70,19 +71,20 @@
     },
     "shapeTaylor": {
       "endpointBoundsAvailable": true,
-      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
+      "firstReceiverGap": "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
       "integratedReceiverAvailable": true,
       "missing": true,
       "shapeSqDerivCenterCoeff0RowAvailable": true,
       "shapeSqDerivCenterCoeff1RowAvailable": true,
       "shapeSqDerivCenterCoeffBridgeAvailable": true,
       "shapeSqDerivIntervalCertReceiverAvailable": true,
+      "shapeSqDerivMajorantReceiverAvailable": true,
       "shapeSqDerivOrderShiftReceiverAvailable": true,
       "shapeSqDerivProductBoundsReceiverAvailable": true,
       "shapeSqDerivShapeSqDerivativeReceiverAvailable": true,
       "shapeSqDerivTaylorSourceAvailable": true,
       "shapeSqTaylorSourceAvailable": true,
-      "status": "SHAPESQ_DERIV_PRODUCT_BOUNDS_RECEIVER_FORMAL_MISSING_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD"
+      "status": "SHAPESQ_DERIV_MAJORANT_RECEIVER_FORMAL_MISSING_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD"
     }
   },
   "degrees": {
@@ -131,6 +133,7 @@
     "shapeSqDerivIntervalCertSingleAbs": "ShapeSqDerivTaylorIntervalCert.singleAbs",
     "shapeSqDerivIntervalCertSingleAbsValid": "ShapeSqDerivTaylorIntervalCert.Valid.of_single_abs",
     "shapeSqDerivIntervalCertSingleValid": "ShapeSqDerivTaylorIntervalCert.Valid.of_single_segment",
+    "shapeSqDerivMajorantReceiver": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs",
     "shapeSqDerivOrder16FromShapeSqOrder17": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs",
     "shapeSqDerivOrderShift": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ",
     "shapeSqDerivProductBounds": "primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs",
@@ -146,7 +149,7 @@
     "shapeValueBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
@@ -159,10 +162,12 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
     "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
@@ -171,7 +176,7 @@
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
+  "firstFailure": "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "componentPropagationRemainderAbs": null,
@@ -1026,6 +1031,15 @@
       "validPredicate": "ShapeSqDerivTaylorIntervalCert.Valid",
       "validPredicateFound": true
     },
+    "shapeSqDerivMajorantReceiverSource": {
+      "boundary": "This is only the Lean-checked receiver from proof-grade derivative majorants for the active shape function into ShapeSqDerivTaylorIntervalCert.Valid.  It does not provide the shape derivative majorants through order 17, rational rows 2..15, the order-17 full-cell bound, or raw-derivative assembly.",
+      "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
+      "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean",
+      "majorantReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs",
+      "majorantReceiverTheoremFound": true,
+      "nextMissing": "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
+      "proofGradeReceiver": true
+    },
     "shapeSqDerivOrderShiftReceiverSource": {
       "boundary": "This is only the Lean-checked structural receiver iteratedDeriv^j(ShapeSqDeriv) = iteratedDeriv^(j+1)(shape^2), plus coefficient-row and order-16 receiver interfaces.  It does not provide the product-Leibniz/Cauchy bounds for derivatives of the shape function, and it does not close rows 2..15 or the order-16 uniform bound.",
       "coefficientReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs",
@@ -1137,7 +1151,7 @@
     "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 14,
+    "proofSafeClosedFields": 15,
     "residualPolynomialRangePassed": false,
     "shapeDerivTaylorReceiverPresent": false,
     "shapeEndpointBoundsProofPresent": true,
@@ -1148,6 +1162,7 @@
     "shapeSqDerivCenterCoeffRowsClosedCount": 2,
     "shapeSqDerivCenterCoeffRowsRequiredCount": 16,
     "shapeSqDerivIntervalCertReceiverPresent": true,
+    "shapeSqDerivMajorantReceiverPresent": true,
     "shapeSqDerivOrder16UniformBoundPresent": false,
     "shapeSqDerivOrderShiftReceiverPresent": true,
     "shapeSqDerivProductBoundsReceiverPresent": true,
@@ -1159,15 +1174,15 @@
   },
   "proshkaDecision": {
     "chosen": "B_component_taylor_route",
-    "followupChosen": "B_shapesq_deriv_product_bounds_receiver_after_mathlib_bridge",
-    "followupFailureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
-    "followupWhyA": "After the ShapeSqDeriv receiver reduced the problem to bounds on derivatives of shape-square, the smallest proof-moving patch was an isolated Mathlib product-bound receiver.  It proves that proof-grade derivative bounds for the active shape function imply the needed shape-square derivative bounds, but it leaves those shape derivative bounds as the first live payload gap.",
+    "followupChosen": "B_shapesq_deriv_majorant_receiver_after_product_bounds",
+    "followupFailureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
+    "followupWhyA": "After the product-bound receiver was Lean-checked, the browser route check selected receiver first, generator second.  The smallest local checked patch was an isolated majorant receiver from proof-grade shape derivative bounds 0..17, plus explicit coefficient budgets, into ShapeSqDerivTaylorIntervalCert.Valid.  It leaves the actual shape derivative bounds payload as the first live gap.",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
   },
   "routeId": "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL",
-  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v15",
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v16",
   "shapeEndpointSource": {
     "firstShapeDerivReceiverGap": "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "firstShapeReceiverGap": "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
@@ -1285,6 +1300,15 @@
     "validPredicate": "ShapeSqDerivTaylorIntervalCert.Valid",
     "validPredicateFound": true
   },
+  "shapeSqDerivMajorantReceiverSource": {
+    "boundary": "This is only the Lean-checked receiver from proof-grade derivative majorants for the active shape function into ShapeSqDerivTaylorIntervalCert.Valid.  It does not provide the shape derivative majorants through order 17, rational rows 2..15, the order-17 full-cell bound, or raw-derivative assembly.",
+    "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
+    "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean",
+    "majorantReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs",
+    "majorantReceiverTheoremFound": true,
+    "nextMissing": "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
+    "proofGradeReceiver": true
+  },
   "shapeSqDerivOrderShiftReceiverSource": {
     "boundary": "This is only the Lean-checked structural receiver iteratedDeriv^j(ShapeSqDeriv) = iteratedDeriv^(j+1)(shape^2), plus coefficient-row and order-16 receiver interfaces.  It does not provide the product-Leibniz/Cauchy bounds for derivatives of the shape function, and it does not close rows 2..15 or the order-16 uniform bound.",
     "coefficientReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff_abs_of_shapeSq_succ_abs",
@@ -1364,6 +1388,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean": "ab027a098dbfab54",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean": "9018aa2dd36d0423",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean": "483a7bcec03c8110",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqProductBounds.lean": "c3b3c9c8353043c0"
   },
   "sourceDefinitionLines": {
@@ -1394,6 +1419,7 @@
     "shapeSqDerivCenterCoeffRowsClosedCount": 2,
     "shapeSqDerivCenterCoeffRowsRequiredCount": 16,
     "shapeSqDerivIntervalCertReceiverProofGrade": true,
+    "shapeSqDerivMajorantReceiverProofGrade": true,
     "shapeSqDerivOrderShiftReceiverProofGrade": true,
     "shapeSqDerivProductBoundsReceiverProofGrade": true,
     "shapeSqDerivShapeSqDerivativeReceiverProofGrade": true,
@@ -1401,7 +1427,7 @@
     "shapeSqIntegratedTaylorReceiverProofGrade": true,
     "shapeSqTaylorSourceProofGrade": true
   },
-  "status": "fail_closed_missing_shapesq_deriv_shape_derivative_bounds_payload",
+  "status": "fail_closed_missing_shape_derivative_bounds_0_to_17_payload",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",
