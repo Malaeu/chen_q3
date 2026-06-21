@@ -61208,3 +61208,59 @@ Next exact subgap:
 ```text
 STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
 ```
+
+## 2026-06-21 -- OmegaPrime generated Valid cert checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 OmegaPrime Taylor payload.
+
+Lean additions in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeff
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeffErrorAbs_nonneg
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeff_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeffErrorAbs_tail_bound
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCenterJet
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14
+```
+
+Regenerated artifact summary:
+
+```text
+status = omega_prime_generated_valid_cert_checked_component_gap_open
+firstFailure = STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+proofSafeClosedFields = 19
+omegaPrimeGeneratedValidCertProved = true
+allPayloadObligationsPassed = true
+```
+
+Validation passed:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json >/dev/null
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+scoped hole scan over touched Lean/generator/artifacts
+git diff --check
+```
+
+Boundary: this closes only the local OmegaPrime Taylor payload.  It does not
+close the combined Omega/OmegaPrime component residual theorem, Step33A.1-A,
+Step33, Step34, or RH.
+
+Next exact live gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```

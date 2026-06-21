@@ -17886,3 +17886,49 @@ Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
 instance exists yet.  The center-jet rows, order-16 integer budget, and scalar
 remainder budget are proof-grade, but they have not yet been packaged into the
 receiver's `data.Valid` proof.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime generated Valid cert checked
+
+Lean now checks the generated OmegaPrime Taylor remainder cert as a local
+`Valid` proof object:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid
+```
+
+The helper ledger is:
+
+```lean
+omegaPrimeGeneratedCoeff
+omegaPrimeGeneratedRemainderCert
+omegaPrimeGeneratedCoeffErrorAbs_nonneg
+omegaPrimeGeneratedCoeff_cast
+omegaPrimeGeneratedCoeffErrorAbs_tail_bound
+omegaPrimeGeneratedCenterJet
+```
+
+The OmegaPrime generator now emits schema
+`q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14` with:
+
+```text
+status = omega_prime_generated_valid_cert_checked_component_gap_open
+firstFailure = STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+proofSafeClosedFields = 19
+omegaPrimeGeneratedValidCertProved = true
+allPayloadObligationsPassed = true
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+```
+
+Next live gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: this closes only the local OmegaPrime Taylor payload.  The combined
+Omega/OmegaPrime component residual theorem and Step33A.1-A remain open.

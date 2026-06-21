@@ -32402,3 +32402,38 @@ STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
 Boundary: the scalar remainder budget is proof-grade, but there is still no
 generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof object, no
 Step33A.1-A closure, and no Step33/Step34/RH closure.
+
+## 2026-06-21 Current EOF State -- OmegaPrime generated Valid cert checked
+
+Lean now checks the local generated OmegaPrime Taylor remainder certificate:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid
+```
+
+The regenerated OmegaPrime payload reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14
+status = omega_prime_generated_valid_cert_checked_component_gap_open
+firstFailure = STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+proofSafeClosedFields = 19
+omegaPrimeGeneratedValidCertProved = true
+allPayloadObligationsPassed = true
+```
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
+```
+
+Boundary: this is local OmegaPrime payload closure only.  Step33A.1-A remains
+open until the combined Omega/OmegaPrime component residual theorem is proved
+and fed to the active receiver.

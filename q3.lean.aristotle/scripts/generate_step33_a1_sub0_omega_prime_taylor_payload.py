@@ -43,7 +43,7 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v13"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
 STATUS = "fail_closed_missing_checked_deriv_payload"
 STALE_RECEIVER_SCHEMA_FAILURE = (
@@ -67,6 +67,9 @@ REMAINDER_BUDGET_FAILURE = (
 )
 GENERATED_VALID_CERT_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP"
+)
+OMEGA_OMEGAPRIME_REMAINDER_FAILURE = (
+    "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
 )
 FIRST_FAILURE = CENTER_JET_SHIFTED_TAIL_FAILURE
 LAGRANGE_SPLIT_FAILURE = "STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP"
@@ -141,6 +144,10 @@ TARGET_ORDER16_INTEGER_BUDGET = (
 TARGET_REMAINDER_BUDGET = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert."
     "omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs"
+)
+TARGET_GENERATED_VALID_CERT = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeGeneratedRemainderCert_valid"
 )
 GENERATOR_NAME = "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py"
 LEAN_TARGET_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
@@ -225,6 +232,7 @@ TARGET_SYMBOLS = [
     TARGET_SHIFTED_TAIL_GENERATED_BOUND,
     TARGET_ORDER16_INTEGER_BUDGET,
     TARGET_REMAINDER_BUDGET,
+    TARGET_GENERATED_VALID_CERT,
     STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE,
@@ -277,6 +285,7 @@ TARGET_PATTERNS = {
     TARGET_REMAINDER_BUDGET: (
         "theorem omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs"
     ),
+    TARGET_GENERATED_VALID_CERT: "theorem omegaPrimeGeneratedRemainderCert_valid",
     STALE_RECEIVER_SCHEMA_FAILURE: STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE: FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE: CENTER_JET_SHIFTED_TAIL_FAILURE,
@@ -743,6 +752,12 @@ def build_report(
     remainder_budget_present = (
         target_scan[TARGET_REMAINDER_BUDGET]["status"] == "found"
     )
+    generated_valid_cert_present = (
+        target_scan[TARGET_GENERATED_VALID_CERT]["status"] == "found"
+    )
+    component_first_failure = (
+        component_payload.get("firstFailure") if component_payload else None
+    )
     order16_budget_exact = fraction_to_str(ORDER16_CONDENSED_FACTOR_BUDGET)
     remainder_budget = remainder_budget_from_rows(
         center_jet_prefix_tail_rows,
@@ -752,6 +767,8 @@ def build_report(
         1 if order16_integer_budget_present else 0
     ) + (
         1 if remainder_budget_present else 0
+    ) + (
+        1 if generated_valid_cert_present else 0
     )
     receiver_schema_current = receiver_present and valid_integer_budget_checked_deriv_present
     if not receiver_schema_current:
@@ -772,11 +789,25 @@ def build_report(
     elif not remainder_budget_present:
         first_failure = REMAINDER_BUDGET_FAILURE
         status = "fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget"
-    else:
+    elif not generated_valid_cert_present:
         first_failure = GENERATED_VALID_CERT_FAILURE
         status = "fail_closed_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert"
+    else:
+        first_failure = component_first_failure or OMEGA_OMEGAPRIME_REMAINDER_FAILURE
+        status = "omega_prime_generated_valid_cert_checked_component_gap_open"
 
     target_surface_status = (
+        "omega_prime_generated_valid_cert_checked_component_gap_open"
+        if (
+            receiver_schema_current
+            and center_jet_shifted_tail_bridge_present
+            and shifted_tail_generated_bound_present
+            and all_prefix_exact_present
+            and order16_integer_budget_present
+            and remainder_budget_present
+            and generated_valid_cert_present
+        )
+        else
         "receiver_checked_deriv_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert"
         if (
             receiver_schema_current
@@ -867,6 +898,7 @@ def build_report(
             CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
             *([ORDER16_INTEGER_FAILURE] if order16_integer_budget_present else []),
             *([REMAINDER_BUDGET_FAILURE] if remainder_budget_present else []),
+            *([GENERATED_VALID_CERT_FAILURE] if generated_valid_cert_present else []),
         ],
         "generator": GENERATOR_NAME,
         "functionId": FUNCTION_ID,
@@ -916,6 +948,8 @@ def build_report(
             "order16IntegerBudgetChecked": order16_integer_budget_present,
             "remainderBudgetTheorem": TARGET_REMAINDER_BUDGET,
             "remainderBudgetChecked": remainder_budget_present,
+            "generatedValidCertTheorem": TARGET_GENERATED_VALID_CERT,
+            "generatedValidCertChecked": generated_valid_cert_present,
             "centerJetPrefixExactRowsChecked": all_prefix_exact_present,
             "centerJetPrefixExactRowsCheckedCount": prefix_lean_checked_count,
             "centerJetPrefixTailRowsProofGrade": all_prefix_tail_rows_proof_grade,
@@ -1027,10 +1061,14 @@ def build_report(
                 ),
             },
             "exactRationalChecksPassed": True,
-            "allCenterJetsProved": False,
-            "allPayloadObligationsPassed": False,
+            "allCenterJetsProved": generated_valid_cert_present,
+            "allPayloadObligationsPassed": generated_valid_cert_present,
             "leanOutputPath": None,
-            "leanValidationStatus": "not_run",
+            "leanValidationStatus": (
+                "target_valid_theorem_found"
+                if generated_valid_cert_present
+                else "not_run"
+            ),
             "proofSafeClosedFields": proof_safe_closed_fields,
             "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
@@ -1082,10 +1120,18 @@ def build_report(
                 "coeffErrorAbs formula"
             ),
             (
+                "already proved locally: for each j < 16, the exact finite "
+                "prefix rational equality feeds omegaPrimeGeneratedCoeff_cast"
+                if generated_valid_cert_present
+                else
                 "for each j < 16, prove the exact finite prefix rational "
                 "equality for the generated prefixExactRational / coeff[j]"
             ),
             (
+                "already proved locally: omegaPrimeGeneratedCenterJet closes "
+                "all center-jet coefficient enclosures"
+                if generated_valid_cert_present
+                else
                 "for each j < 16, prove 0 <= coeffErrorAbs[j] and close "
                 "centerJetMargin with the prefix-tail bridge plus checked "
                 "tail bound"
@@ -1145,14 +1191,19 @@ def build_report(
             "omegaPrimeCenterJetPrefixTailRowsProofGradeCount": (
                 proof_grade_prefix_tail_row_count
             ),
-            "omegaPrimeCenterJetBoundsProved": False,
-            "omegaPrimeOrder16BoundProved": False,
+            "omegaPrimeCenterJetBoundsProved": generated_valid_cert_present,
+            "omegaPrimeOrder16BoundProved": generated_valid_cert_present,
             "omegaPrimeOrder16IntegerBudgetProved": order16_integer_budget_present,
             "omegaPrimeRemainderBudgetPassed": remainder_budget_present,
+            "omegaPrimeGeneratedValidCertProved": generated_valid_cert_present,
             "exactRationalChecksPassed": True,
-            "allCenterJetsProved": False,
-            "allPayloadObligationsPassed": False,
-            "leanValidationStatus": "not_run",
+            "allCenterJetsProved": generated_valid_cert_present,
+            "allPayloadObligationsPassed": generated_valid_cert_present,
+            "leanValidationStatus": (
+                "target_valid_theorem_found"
+                if generated_valid_cert_present
+                else "not_run"
+            ),
             "proofSafeClosedFields": proof_safe_closed_fields,
             "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
@@ -1205,6 +1256,7 @@ def build_report(
                 CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
                 *([ORDER16_INTEGER_FAILURE] if order16_integer_budget_present else []),
                 *([REMAINDER_BUDGET_FAILURE] if remainder_budget_present else []),
+                *([GENERATED_VALID_CERT_FAILURE] if generated_valid_cert_present else []),
             ],
             "nextFailureAfterBridge": first_failure,
             "whyNotEndpointFiniteCover": (
@@ -1285,6 +1337,8 @@ def render_md(report: dict[str, Any]) -> str:
         f"- order-16 integer budget checked: `{report['targetLeanSurface']['order16IntegerBudgetChecked']}`",
         f"- remainder budget theorem: `{report['targetLeanSurface']['remainderBudgetTheorem']}`",
         f"- remainder budget checked: `{report['targetLeanSurface']['remainderBudgetChecked']}`",
+        f"- generated valid cert theorem: `{report['targetLeanSurface']['generatedValidCertTheorem']}`",
+        f"- generated valid cert checked: `{report['targetLeanSurface']['generatedValidCertChecked']}`",
         f"- center-jet prefix exact rows checked: `{report['targetLeanSurface']['centerJetPrefixExactRowsChecked']}`",
         f"- center-jet prefix exact rows checked count: `{report['targetLeanSurface']['centerJetPrefixExactRowsCheckedCount']}`",
         f"- center-jet prefix/tail rows proof-grade: `{report['targetLeanSurface']['centerJetPrefixTailRowsProofGrade']}`",
@@ -1448,15 +1502,17 @@ def render_md(report: dict[str, Any]) -> str:
             "are now the active Lean surface:",
             f"`{report['targetLeanSurface']['receiver']}`.",
             f"`{report['targetLeanSurface']['centerJetPrefixTailBridgeTheorem']}`.",
-            "The old order-16 polygamma failure is historical, and the broad",
-            "`CENTER_JET_PAYLOAD_GAP` is now only the parent blocker. The next",
-            "proof-producing step is a concrete",
-            "`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with per-jet",
-            "`prefixN`, exact finite-prefix rationals, shifted-tail rational",
-            "upper bounds, center-jet margins, the integer order-16 budget,",
-            "and the exact rational Taylor remainder budget.",
+            "The old order-16 polygamma failure is historical, the broad",
+            "`CENTER_JET_PAYLOAD_GAP` is now only the parent blocker, and the",
+            "generated OmegaPrime valid certificate is checked when the target",
+            "theorem appears in the Lean scan.",
             "",
-            "Until those payload fields exist locally, the correct fail code is:",
+            "This closes only the local OmegaPrime Taylor payload. It does not",
+            "close the component residual route or Step33A.1-A. The next",
+            "proof-producing step is the component Omega/OmegaPrime Taylor",
+            "remainder bridge recorded by the component payload.",
+            "",
+            "The current live fail code is:",
             "",
             "```text",
             report["firstFailure"],

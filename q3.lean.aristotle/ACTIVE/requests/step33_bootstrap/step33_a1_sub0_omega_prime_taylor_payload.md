@@ -5,17 +5,17 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v13`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP`
+- status: `omega_prime_generated_valid_cert_checked_component_gap_open`
+- first failure: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP`
 - receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
 - radius: `1/20`
 - degree: `15`
 - center-jet prefixN: `128`
-- proof-safe closed fields: `18`
+- proof-safe closed fields: `19`
 - rational prefix/tail rows generated: `16`
 - Lean emitted: `False`
 
@@ -47,11 +47,13 @@ not close Step33A.1-A.
 - order-16 integer budget checked: `True`
 - remainder budget theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs`
 - remainder budget checked: `True`
+- generated valid cert theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
+- generated valid cert checked: `True`
 - center-jet prefix exact rows checked: `True`
 - center-jet prefix exact rows checked count: `16`
 - center-jet prefix/tail rows proof-grade: `True`
 - center-jet prefix/tail rows proof-grade count: `16`
-- status: `receiver_checked_deriv_center_jet_rows_order16_remainder_checked_missing_generated_valid_cert`
+- status: `omega_prime_generated_valid_cert_checked_component_gap_open`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -136,8 +138,8 @@ Row proof boundary:
 - already proved locally: Valid.of_order16_integer_budget_checked_deriv uses omegaPrimeClosedForm_iteratedDeriv16_eq, so generated payloads no longer need to supply hSmooth or hDerivEq
 - already proved locally: the OmegaPrime center-jet prefix-tail bridge reduces each j < 16 center-jet enclosure to an exact finite prefix plus a shifted-tail rational upper bound
 - already proved locally: for m < 16, the shifted-tail majorant budget is bounded by the generated denominator-form coeffErrorAbs formula
-- for each j < 16, prove the exact finite prefix rational equality for the generated prefixExactRational / coeff[j]
-- for each j < 16, prove 0 <= coeffErrorAbs[j] and close centerJetMargin with the prefix-tail bridge plus checked tail bound
+- already proved locally: for each j < 16, the exact finite prefix rational equality feeds omegaPrimeGeneratedCoeff_cast
+- already proved locally: omegaPrimeGeneratedCenterJet closes all center-jet coefficient enclosures
 - already proved locally: omegaPrimeOrder16CondensedFactorBudgetBound <= generated order16Abs
 - already proved locally: sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 
@@ -172,14 +174,14 @@ Row proof boundary:
 | --- | --- | --- |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9634` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10069` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `13806` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `13928` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10051` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9911` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9810` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10098` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9647` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10132` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `13713` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `13822` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9654` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9683` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9759` | `found` |
@@ -188,7 +190,8 @@ Row proof boundary:
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `12679` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15` | `13018` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs` | `13323` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs` | `13355` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs` | `13464` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid` | `13849` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP` | `None` | `gap` |
@@ -224,15 +227,16 @@ Row proof boundary:
 - omegaPrimeCenterJetPrefixExactRowsProvedCount: `16`
 - omegaPrimeCenterJetPrefixTailRowsProofGrade: `True`
 - omegaPrimeCenterJetPrefixTailRowsProofGradeCount: `16`
-- omegaPrimeCenterJetBoundsProved: `False`
-- omegaPrimeOrder16BoundProved: `False`
+- omegaPrimeCenterJetBoundsProved: `True`
+- omegaPrimeOrder16BoundProved: `True`
 - omegaPrimeOrder16IntegerBudgetProved: `True`
 - omegaPrimeRemainderBudgetPassed: `True`
+- omegaPrimeGeneratedValidCertProved: `True`
 - exactRationalChecksPassed: `True`
-- allCenterJetsProved: `False`
-- allPayloadObligationsPassed: `False`
-- leanValidationStatus: `not_run`
-- proofSafeClosedFields: `18`
+- allCenterJetsProved: `True`
+- allPayloadObligationsPassed: `True`
+- leanValidationStatus: `target_valid_theorem_found`
+- proofSafeClosedFields: `19`
 - rationalPrefixTailRowsGenerated: `16`
 - outLeanWritten: `False`
 
@@ -261,6 +265,7 @@ Row proof boundary:
 - `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP`
 
 ## Decision
 
@@ -268,16 +273,18 @@ The checked-deriv receiver and the center-jet prefix-tail bridge
 are now the active Lean surface:
 `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
 `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`.
-The old order-16 polygamma failure is historical, and the broad
-`CENTER_JET_PAYLOAD_GAP` is now only the parent blocker. The next
-proof-producing step is a concrete
-`Step33Sub0OmegaPrimeTaylorRemainderCert` payload with per-jet
-`prefixN`, exact finite-prefix rationals, shifted-tail rational
-upper bounds, center-jet margins, the integer order-16 budget,
-and the exact rational Taylor remainder budget.
+The old order-16 polygamma failure is historical, the broad
+`CENTER_JET_PAYLOAD_GAP` is now only the parent blocker, and the
+generated OmegaPrime valid certificate is checked when the target
+theorem appears in the Lean scan.
 
-Until those payload fields exist locally, the correct fail code is:
+This closes only the local OmegaPrime Taylor payload. It does not
+close the component residual route or Step33A.1-A. The next
+proof-producing step is the component Omega/OmegaPrime Taylor
+remainder bridge recorded by the component payload.
+
+The current live fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP
+STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP
 ```

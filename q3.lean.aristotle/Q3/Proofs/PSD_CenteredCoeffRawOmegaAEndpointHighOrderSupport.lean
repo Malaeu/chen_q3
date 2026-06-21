@@ -13325,6 +13325,26 @@ theorem omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs :
       ((186483005989023744000 : Rat) : Real) := by
   norm_num [omegaPrimeOrder16CondensedFactorBudgetBound]
 
+def omegaPrimeGeneratedCoeff (j : Fin 16) : Rat :=
+  match j.1 with
+  | 0 => omegaPrimeCenterJetM0PrefixRat 128
+  | 1 => omegaPrimeCenterJetM1PrefixRat 128
+  | 2 => omegaPrimeCenterJetM2PrefixRat 128
+  | 3 => omegaPrimeCenterJetM3PrefixRat 128
+  | 4 => omegaPrimeCenterJetM4PrefixRat 128
+  | 5 => omegaPrimeCenterJetM5PrefixRat 128
+  | 6 => omegaPrimeCenterJetM6PrefixRat 128
+  | 7 => omegaPrimeCenterJetM7PrefixRat 128
+  | 8 => omegaPrimeCenterJetM8PrefixRat 128
+  | 9 => omegaPrimeCenterJetM9PrefixRat 128
+  | 10 => omegaPrimeCenterJetM10PrefixRat 128
+  | 11 => omegaPrimeCenterJetM11PrefixRat 128
+  | 12 => omegaPrimeCenterJetM12PrefixRat 128
+  | 13 => omegaPrimeCenterJetM13PrefixRat 128
+  | 14 => omegaPrimeCenterJetM14PrefixRat 128
+  | 15 => omegaPrimeCenterJetM15PrefixRat 128
+  | _ => 0
+
 def omegaPrimeGeneratedCoeffErrorAbs (j : Fin 16) : Rat :=
   match j.1 with
   | 0 => (2 / 509 : Rat)
@@ -13351,6 +13371,95 @@ def omegaPrimeGeneratedOrder16Abs : Rat :=
 def omegaPrimeGeneratedRemainderAbs : Rat :=
   52283179778952236279870528444304500844084393561089509958806353 /
     13303455094708359561180350112695914185388091637760000000000000000
+
+def omegaPrimeGeneratedRemainderCert :
+    Step33Sub0OmegaPrimeTaylorRemainderCert where
+  coeff := omegaPrimeGeneratedCoeff
+  coeffErrorAbs := omegaPrimeGeneratedCoeffErrorAbs
+  order16Abs := omegaPrimeGeneratedOrder16Abs
+  remainderAbs := omegaPrimeGeneratedRemainderAbs
+
+theorem omegaPrimeGeneratedCoeffErrorAbs_nonneg :
+    ∀ j : Fin 16, 0 <= (omegaPrimeGeneratedCoeffErrorAbs j : Real) := by
+  intro j
+  fin_cases j <;> norm_num [omegaPrimeGeneratedCoeffErrorAbs]
+
+theorem omegaPrimeGeneratedCoeff_cast (j : Fin 16) :
+    (((Nat.factorial j.1 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 128).sum (fun n : Nat =>
+          iteratedDeriv j.1
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)))) =
+      (omegaPrimeGeneratedCoeff j : Real) := by
+  fin_cases j
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM0PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM1PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM2PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM3PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM4PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM5PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM6PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM7PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM8PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM9PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM10PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM11PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM12PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM13PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM14PrefixRat_cast 128)
+  · simpa [omegaPrimeGeneratedCoeff, step33Sub0OmegaPrimeTaylorCenter] using
+      (omegaPrimeCenterJetM15PrefixRat_cast 128)
+
+theorem omegaPrimeGeneratedCoeffErrorAbs_tail_bound (j : Fin 16) :
+    1 /
+        ((2 : Real) ^ (j.1 + 1) *
+          (((128 : Real) - (3 / 4 : Real)) ^ (j.1 + 1))) <=
+      (omegaPrimeGeneratedCoeffErrorAbs j : Real) := by
+  fin_cases j <;> norm_num [omegaPrimeGeneratedCoeffErrorAbs]
+
+theorem omegaPrimeGeneratedCenterJet :
+    ∀ j : Fin 16,
+      ‖iteratedDeriv j.1 omegaPrimeClosedForm
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+          (Nat.factorial j.1 : Real) -
+        (omegaPrimeGeneratedCoeff j : Real)‖ <=
+        (omegaPrimeGeneratedCoeffErrorAbs j : Real) := by
+  intro j
+  have hBridge :=
+    omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16
+      j.1 128 (by omega)
+      ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)
+  have hTail :=
+    omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15
+      j.1 128 (by omega) (by norm_num)
+  have hBridge' :
+      ‖iteratedDeriv j.1 omegaPrimeClosedForm
+          ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+          (Nat.factorial j.1 : Real) -
+        (omegaPrimeGeneratedCoeff j : Real)‖ <=
+        (Nat.factorial j.1 : Real)⁻¹ *
+          ((1 / 2 : Real) *
+            (∑' k : Nat, omegaPrimeTrigammaDerivMajorant j.1 (k + 128))) := by
+    rw [div_eq_mul_inv]
+    convert hBridge using 1
+    rw [← omegaPrimeGeneratedCoeff_cast j]
+    ring_nf
+  exact hBridge'.trans (hTail.trans (omegaPrimeGeneratedCoeffErrorAbs_tail_bound j))
 
 theorem omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs :
     (∑ j : Fin 16,
@@ -13736,6 +13845,19 @@ theorem Valid.of_order16_integer_budget_checked_deriv
     hCoeffErrorNonneg hCenterJet hIntegerBudget
     (fun eta _ => omegaPrimeClosedForm_iteratedDeriv16_eq eta)
     hRemainderBudget
+
+theorem omegaPrimeGeneratedRemainderCert_valid :
+    omegaPrimeGeneratedRemainderCert.Valid := by
+  refine Valid.of_order16_integer_budget_checked_deriv
+    omegaPrimeGeneratedRemainderCert ?_ ?_ ?_ ?_
+  · simpa [omegaPrimeGeneratedRemainderCert] using
+      omegaPrimeGeneratedCoeffErrorAbs_nonneg
+  · simpa [omegaPrimeGeneratedRemainderCert] using
+      omegaPrimeGeneratedCenterJet
+  · simpa [omegaPrimeGeneratedRemainderCert, omegaPrimeGeneratedOrder16Abs] using
+      omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs
+  · simpa [omegaPrimeGeneratedRemainderCert] using
+      omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs
 
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}

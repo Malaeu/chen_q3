@@ -37689,3 +37689,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   proof-grade, while the combined Omega/OmegaPrime component export remains the
   next named Step33A.1-A gate.
 - Boundary: do not report Step33A.1-A closure from this patch alone.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeGeneratedValidCertChecked
+
+- Status: the local OmegaPrime generated Taylor payload is Lean-checked as a
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` object.
+- New checked Lean objects:
+  `omegaPrimeGeneratedCoeff`,
+  `omegaPrimeGeneratedRemainderCert`,
+  `omegaPrimeGeneratedCoeffErrorAbs_nonneg`,
+  `omegaPrimeGeneratedCoeff_cast`,
+  `omegaPrimeGeneratedCoeffErrorAbs_tail_bound`,
+  `omegaPrimeGeneratedCenterJet`, and
+  `omegaPrimeGeneratedRemainderCert_valid`.
+- The OmegaPrime payload generator now emits schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v14` with
+  `omegaPrimeGeneratedValidCertProved = true`,
+  `allPayloadObligationsPassed = true`, and `proofSafeClosedFields = 19`.
+- The live blocker is no longer
+  `STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP`.  The current first
+  failure is the component route:
+  `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `python3 -m py_compile scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  generator rerun, JSON parse, scoped hole scan, `git diff --check`, and
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Boundary: this closes only the local OmegaPrime Taylor cert.  It does not
+  close the Omega/OmegaPrime component residual theorem, Step33A.1-A, Step33,
+  Step34, or RH.
