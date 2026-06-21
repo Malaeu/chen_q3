@@ -37355,3 +37355,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Step33Sub0OmegaPrimeTaylorRemainderCert`, no center-jet proof, no order-16
   integer payload, no remainder budget closure, and no Step33A.1-A / Step33 /
   Step34 / RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimePrefixExactSmokeChecked
+
+- Status: prefix exact route narrowed by a Lean-checked smoke theorem, not
+  full prefix closure.
+- Active blocker remains
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP`.
+- Added and Lean-checked:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_smoke_direct`.
+- The theorem proves the `m = 0`, `prefixN = 1` finite-prefix identity:
+  `(-1/2) * sum_{n < 1} iteratedDeriv 0 term_n (1/20) = 16000/10201`.
+- Browser/Pro advisory recommended the rational-side route: compute prefix
+  rows over `Rat`/rational complex data, then prove one cast-crosswalk into
+  the existing `Real`/`Complex` finite sum.  Local testing supports the warning:
+  do not expand `Finset.range 128` directly through `norm_num` in `Real/Complex`.
+- External Mathlib docs check confirmed the relevant tactic surface:
+  `norm_num [h1, ...]` adds supplied rewrite/simp facts while evaluating
+  numeric expressions.  Local `#check` confirmed `zpow_two`.
+- Actual working proof shape for the smoke theorem:
+  first rewrite by `omegaPrimeTrigammaSeriesTerm_iteratedDeriv` and
+  `omegaPrimeOrder16SeriesBase`, simplify `Complex.normSq`, then use
+  `rw [zpow_two]`, `simp [Complex.add_re, Complex.add_im, Complex.I_re,
+  Complex.I_im, Complex.mul_re, Complex.mul_im]`, and `norm_num`.
+- Narrowed next subgap:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_COMPLEX_CAST_BRIDGE_GAP`.
+- Boundary: this checks only `m = 0`, `N = 1`; generated v10 rows still have
+  `prefixLeanChecked = false`, `proofGrade = false`, and there is no generated
+  `Step33Sub0OmegaPrimeTaylorRemainderCert` / Step33A.1-A closure.

@@ -10511,6 +10511,20 @@ theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv
   rw [hfun]
   exact omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv k (-2 : Int) eta n
 
+theorem omegaPrimeCenterJetPrefix_m0_N1_smoke_direct :
+    ((Nat.factorial 0 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 1).sum (fun n : Nat =>
+          iteratedDeriv 0
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (16000 / 10201 : Real) := by
+  simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+    omegaPrimeOrder16SeriesBase, Complex.normSq]
+  rw [zpow_two]
+  simp [Complex.add_re, Complex.add_im, Complex.I_re, Complex.I_im,
+    Complex.mul_re, Complex.mul_im]
+  norm_num
+
 theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
     (k : Nat) (n : Nat) (r : Real) :
     DifferentiableAt Real

@@ -60640,3 +60640,52 @@ python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a
 Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full
 center-jet proof, no order-16 integer payload, no remainder budget closure, no
 Step33A.1-A closure, and no Step33/Step34/RH claim.
+
+## 2026-06-21 -- OmegaPrime prefix exact smoke checked
+
+Checked theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_smoke_direct
+```
+
+Statement summary:
+
+```text
+((Nat.factorial 0 : Real)^-1 * (-1/2))
+  * (Finset.range 1).sum (fun n =>
+      iteratedDeriv 0 (fun t => omegaPrimeTrigammaSeriesTerm t n) (1/20))
+= 16000/10201
+```
+
+Proof-shape found:
+
+```text
+simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+      omegaPrimeOrder16SeriesBase, Complex.normSq]
+rw [zpow_two]
+simp [Complex.add_re, Complex.add_im, Complex.I_re, Complex.I_im,
+      Complex.mul_re, Complex.mul_im]
+norm_num
+```
+
+Browser/Pro advisory suggested the same scalable direction: compute exact
+prefix rows on a rational/rational-complex side and cast once, instead of
+expanding `Finset.range 128` through `norm_num` over `Real`/`Complex`.
+
+Active blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Narrowed subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_COMPLEX_CAST_BRIDGE_GAP
+```
+
+Boundary: smoke only (`m = 0`, `N = 1`).  Generated rows remain
+`prefixLeanChecked = false`, `proofGrade = false`; no generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert`, no full center-jet proof, no
+Step33A.1-A closure.

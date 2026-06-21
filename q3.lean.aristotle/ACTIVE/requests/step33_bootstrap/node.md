@@ -17580,3 +17580,40 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
 Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full
 center-jet proof, no order-16 integer payload, no remainder budget closure, and
 Step33A.1-A remains open.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime prefix exact smoke checked
+
+Lean now checks the first finite-prefix exact arithmetic smoke theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_smoke_direct
+```
+
+Scope:
+
+```text
+m = 0
+prefixN = 1
+value = 16000/10201
+```
+
+The active full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+The next implementable subgap is now:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_COMPLEX_CAST_BRIDGE_GAP
+```
+
+Implementation note: small direct `Real`/`Complex` prefix arithmetic requires
+an explicit `zpow_two` step after the local term formula.  Do not attempt to
+close all `Finset.range 128` rows by a single giant `norm_num` expansion.
+Generate rational/rational-complex prefix data and prove a reusable cast bridge
+to the existing finite prefix expression.
+
+Boundary: `prefixLeanChecked = false` for generated v10 rows; no full
+center-jet proof, no generated certificate, no Step33A.1-A closure.

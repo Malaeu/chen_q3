@@ -32016,3 +32016,59 @@ python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a
 Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full
 center-jet proof, no order-16 integer payload, no remainder budget closure, no
 Step33A.1-A closure, and no Step33/Step34/RH claim.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime prefix exact smoke checked
+
+The active OmegaPrime prefix blocker is not closed, but the first local
+arithmetic smoke theorem is Lean-checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_smoke_direct
+```
+
+It proves:
+
+```text
+(-1/2) * sum_{n < 1} iteratedDeriv 0 omegaPrimeTrigammaSeriesTerm_n (1/20)
+  = 16000/10201
+```
+
+The working proof shape is:
+
+```text
+simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+      omegaPrimeOrder16SeriesBase, Complex.normSq]
+rw [zpow_two]
+simp [Complex.add_re, Complex.add_im, Complex.I_re, Complex.I_im,
+      Complex.mul_re, Complex.mul_im]
+norm_num
+```
+
+Current blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Narrowed next subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_COMPLEX_CAST_BRIDGE_GAP
+```
+
+Meaning: direct small-case `Real`/`Complex` arithmetic works only after the
+`zpow_two` bridge is made explicit.  The scalable route should compute the
+large `prefixN = 128` rows on the rational/rational-complex side and then cast
+once into the existing finite prefix expression.
+
+Boundary: this is only an `m = 0`, `N = 1` smoke theorem.  Generated v10 rows
+still have `prefixLeanChecked = false`, `proofGrade = false`; no generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert`, no full center-jet proof, no
+order-16 integer payload, no remainder budget closure, no Step33A.1-A closure,
+and no Step33/Step34/RH claim.
