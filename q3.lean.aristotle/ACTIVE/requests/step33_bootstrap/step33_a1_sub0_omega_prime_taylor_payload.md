@@ -5,17 +5,17 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_center_jet_rows_checked_missing_order16_integer_budget`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
+- status: `fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget`
+- first failure: `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
 - receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
 - radius: `1/20`
 - degree: `15`
 - center-jet prefixN: `128`
-- proof-safe closed fields: `16`
+- proof-safe closed fields: `17`
 - rational prefix/tail rows generated: `16`
 - Lean emitted: `False`
 
@@ -43,11 +43,13 @@ not close Step33A.1-A.
 - center-jet prefix-tail checked: `True`
 - shifted-tail generated-bound theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15`
 - shifted-tail generated-bound checked: `True`
+- order-16 integer budget theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs`
+- order-16 integer budget checked: `True`
 - center-jet prefix exact rows checked: `True`
 - center-jet prefix exact rows checked count: `16`
 - center-jet prefix/tail rows proof-grade: `True`
 - center-jet prefix/tail rows proof-grade count: `16`
-- status: `receiver_checked_deriv_center_jet_rows_checked_missing_order16_integer_budget`
+- status: `receiver_checked_deriv_center_jet_rows_order16_checked_missing_remainder_budget`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -134,7 +136,7 @@ Row proof boundary:
 - already proved locally: for m < 16, the shifted-tail majorant budget is bounded by the generated denominator-form coeffErrorAbs formula
 - for each j < 16, prove the exact finite prefix rational equality for the generated prefixExactRational / coeff[j]
 - for each j < 16, prove 0 <= coeffErrorAbs[j] and close centerJetMargin with the prefix-tail bridge plus checked tail bound
-- prove omegaPrimeOrder16CondensedFactorBudgetBound <= order16Abs
+- already proved locally: omegaPrimeOrder16CondensedFactorBudgetBound <= generated order16Abs
 - prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 
 ## Local Source Scan
@@ -168,14 +170,14 @@ Row proof boundary:
 | --- | --- | --- |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9634` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10069` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `13762` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `13767` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10051` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9911` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9810` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10098` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9647` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10132` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `13669` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `13674` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9654` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9683` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9759` | `found` |
@@ -183,6 +185,7 @@ Row proof boundary:
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16` | `12644` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `12679` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15` | `13018` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs` | `13323` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP` | `None` | `gap` |
@@ -219,13 +222,13 @@ Row proof boundary:
 - omegaPrimeCenterJetPrefixTailRowsProofGradeCount: `16`
 - omegaPrimeCenterJetBoundsProved: `False`
 - omegaPrimeOrder16BoundProved: `False`
-- omegaPrimeOrder16IntegerBudgetProved: `False`
+- omegaPrimeOrder16IntegerBudgetProved: `True`
 - omegaPrimeRemainderBudgetPassed: `False`
 - exactRationalChecksPassed: `True`
 - allCenterJetsProved: `False`
 - allPayloadObligationsPassed: `False`
 - leanValidationStatus: `not_run`
-- proofSafeClosedFields: `16`
+- proofSafeClosedFields: `17`
 - rationalPrefixTailRowsGenerated: `16`
 - outLeanWritten: `False`
 
@@ -251,6 +254,7 @@ Row proof boundary:
 - `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP`
 - `STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
 
 ## Decision
 
@@ -269,5 +273,5 @@ and the exact rational Taylor remainder budget.
 Until those payload fields exist locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
 ```

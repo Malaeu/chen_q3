@@ -61088,3 +61088,63 @@ Next exact subgap:
 ```text
 STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
 ```
+
+## 2026-06-21 -- OmegaPrime order16 integer budget checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 OmegaPrime Taylor payload.
+
+Lean addition in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs
+```
+
+This proves the active receiver's integer-budget input in the generated
+normalization:
+
+```text
+omegaPrimeOrder16CondensedFactorBudgetBound <= ((186483005989023744000 : Rat) : Real)
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12
+order16Abs = 186483005989023744000
+```
+
+Regenerated artifact summary:
+
+```text
+status = fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+proofSafeClosedFields = 17
+integerBudgetPassed = true
+omegaPrimeOrder16IntegerBudgetProved = true
+omegaPrimeRemainderBudgetPassed = false
+```
+
+Validation passed:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json >/dev/null
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+git diff --check
+```
+
+Boundary: this closes only the order-16 integer budget field after the
+previously checked 16 center-jet prefix/tail rows.  It does not construct a
+`Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof and does not close the
+final Taylor remainder budget.
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+```

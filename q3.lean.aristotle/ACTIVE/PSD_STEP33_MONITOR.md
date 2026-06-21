@@ -32335,3 +32335,37 @@ Boundary: this is row-level center-jet prefix/tail closure only.  There is no
 generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof yet, no
 order-16 integer budget, no final remainder budget, no Step33A.1-A closure,
 and no Step33/Step34/RH closure.
+
+## 2026-06-21 Current EOF State -- OmegaPrime order16 integer budget checked
+
+The generated OmegaPrime order-16 integer budget field is now Lean-checked in
+the active payload normalization.
+
+New checked theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs
+```
+
+The regenerated OmegaPrime payload reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12
+status = fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+proofSafeClosedFields = 17
+order16Abs = 186483005989023744000
+integerBudgetPassed = true
+omegaPrimeOrder16IntegerBudgetProved = true
+omegaPrimeRemainderBudgetPassed = false
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+```
+
+Boundary: there is still no generated
+`Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof, no final Taylor
+remainder budget, no Step33A.1-A closure, and no Step33/Step34/RH closure.

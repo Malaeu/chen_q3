@@ -37586,3 +37586,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   to `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`.
 - Boundary: this should not produce `data.Valid`; the final Taylor remainder
   budget remains open after the order-16 integer budget is checked.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeOrder16IntegerBudgetChecked
+
+- Status: the OmegaPrime generated order-16 integer budget is Lean-checked,
+  but the Taylor remainder budget is still open.
+- Added checked Lean theorem:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs`.
+- Exact checked payload value:
+  `order16Abs = 186483005989023744000`, matching
+  `17! * (2^19 + 1)`.
+- The OmegaPrime payload generator now emits schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12`, fills
+  `order16Abs`, and scans the new theorem before marking
+  `integerBudgetPassed = true`.
+- Regenerated artifact status:
+  `fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget`,
+  `firstFailure = STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`,
+  `proofSafeClosedFields = 17`, and
+  `omegaPrimeOrder16IntegerBudgetProved = true`.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  generator rerun, JSON parse, and
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`;
+  code/generated-artifact hole scan and `git diff --check` were clean.
+- Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
+  proof, no final remainder budget, no Step33A.1-A / Step33 / Step34 / RH
+  closure.

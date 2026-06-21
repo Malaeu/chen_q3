@@ -9,10 +9,11 @@
       "STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP",
       "STEP33_A1_SUB0_LEFT_REFLECTED_LAGRANGE_BRIDGE_GAP",
       "STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP",
-      "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP"
+      "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP",
+      "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP"
     ],
-    "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
-    "nextFailureAfterBridge": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
+    "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP",
+    "nextFailureAfterBridge": "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP",
     "recommendedGenerator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
     "recommendedLeanBridge": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv",
     "whyNotEndpointFiniteCover": "Endpoint finite-cover subdivision still needs the same trigamma/polygamma source bounds, repeated over segments."
@@ -33,7 +34,8 @@
     "STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP",
     "STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP",
     "STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP",
-    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP"
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP",
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP"
   ],
   "externalSearch": {
     "localMathlibReflectionHints": "Local Mathlib has iteratedDeriv_comp_neg, iteratedDeriv_comp_const_add, and iteratedDeriv_comp_add_const in IteratedDeriv/Lemmas.lean; the OmegaPrime reflected iterated-derivative bridge is now proved locally as omegaPrimeClosedForm_reflected_iteratedDeriv, and the reflected Taylor polynomial normalization is proved locally as reflectedTaylorWithinEval_eq_exactTaylorPoly.",
@@ -45,7 +47,7 @@
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
     "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP"
   ],
-  "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP",
+  "firstFailure": "STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP",
   "functionId": "step22OmegaArchWeightDerivClosedForm",
   "generator": "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py",
   "generatorFields": {
@@ -1258,24 +1260,30 @@
     "degree": 15,
     "exactRationalChecksPassed": true,
     "functionId": "step22OmegaArchWeightDerivClosedForm",
-    "integerBudgetSource": null,
+    "integerBudgetSource": {
+      "checked": true,
+      "normalization": "omegaPrimeOrder16CondensedFactorBudgetBound <= ((order16Abs : Rat) : Real)",
+      "theorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs",
+      "valueExact": "186483005989023744000"
+    },
     "leanOutputPath": null,
     "leanValidationStatus": "not_run",
     "order16": {
-      "condensedFactorBudgetBoundExact": null,
-      "integerBudgetPassed": false,
-      "marginExact": null,
-      "order16Abs": null,
+      "condensedFactorBudgetBoundExact": "186483005989023744000",
+      "integerBudgetPassed": true,
+      "marginExact": "0",
+      "order16Abs": "186483005989023744000",
       "sourceLeanChecked": true,
       "sourceLeanTheorems": [
         "omegaPrimeOrder16CondensedFactorBudgetBound",
+        "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs",
         "omegaPrimeClosedForm_iteratedDeriv16_eq",
         "Valid.of_order16_integer_budget_checked_deriv"
       ]
     },
-    "order16Abs": null,
+    "order16Abs": "186483005989023744000",
     "outLeanWritten": false,
-    "proofSafeClosedFields": 16,
+    "proofSafeClosedFields": 17,
     "radius": "1/20",
     "rationalPrefixTailRowsGenerated": 16,
     "remainder": {
@@ -1287,7 +1295,7 @@
       "requiredTotalExact": null
     },
     "remainderAbs": null,
-    "schemaVersion": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11"
+    "schemaVersion": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12"
   },
   "localSourceScan": {
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": [
@@ -1380,10 +1388,10 @@
     "omegaPrimeHDerivEqProved": true,
     "omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget": true,
     "omegaPrimeOrder16BoundProved": false,
-    "omegaPrimeOrder16IntegerBudgetProved": false,
+    "omegaPrimeOrder16IntegerBudgetProved": true,
     "omegaPrimeRemainderBudgetPassed": false,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 16,
+    "proofSafeClosedFields": 17,
     "rationalPrefixTailRowsGenerated": 16,
     "reflectedIteratedDerivBridgeProved": true,
     "reflectedTaylorWithinEvalExactPolyBridgeProved": true,
@@ -1405,16 +1413,16 @@
     "already proved locally: for m < 16, the shifted-tail majorant budget is bounded by the generated denominator-form coeffErrorAbs formula",
     "for each j < 16, prove the exact finite prefix rational equality for the generated prefixExactRational / coeff[j]",
     "for each j < 16, prove 0 <= coeffErrorAbs[j] and close centerJetMargin with the prefix-tail bridge plus checked tail bound",
-    "prove omegaPrimeOrder16CondensedFactorBudgetBound <= order16Abs",
+    "already proved locally: omegaPrimeOrder16CondensedFactorBudgetBound <= generated order16Abs",
     "prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs"
   ],
   "routeId": "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD",
-  "schema": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11",
+  "schema": "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12",
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "7f64b5533a21ca57",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md": "319d19f8e4ce698f",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "b061afb17a6a7160",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "3a94a69d1eb73d08"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "906b84d3c16f0233"
   },
   "sourceStatus": {
     "componentPayloadFirstFailure": "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP",
@@ -1424,7 +1432,7 @@
     "gapMapExists": true,
     "gapMapPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_omegaprime_taylor_remainder_gap.md"
   },
-  "status": "fail_closed_center_jet_rows_checked_missing_order16_integer_budget",
+  "status": "fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget",
   "targetLeanSurface": {
     "boundTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound",
     "centerJetPrefixExactRowsChecked": true,
@@ -1441,6 +1449,8 @@
     "oldReceiverRejected": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth",
     "omegaPrimeClosedFormPrefixTailTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16",
     "omegaPrimeContDiff16Theorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16",
+    "order16IntegerBudgetChecked": true,
+    "order16IntegerBudgetTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs",
     "receiver": "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv",
     "receiverChecked": true,
     "reflectedIteratedDerivTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv",
@@ -1449,7 +1459,7 @@
     "shiftedTailGeneratedBoundChecked": true,
     "shiftedTailGeneratedBoundTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15",
     "statementAscii": "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs",
-    "status": "receiver_checked_deriv_center_jet_rows_checked_missing_order16_integer_budget",
+    "status": "receiver_checked_deriv_center_jet_rows_order16_checked_missing_remainder_budget",
     "structure": "Step33Sub0OmegaPrimeTaylorRemainderCert",
     "taylorWithinEvalExactPolyTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly",
     "trigammaSeriesPrefixTailTheorem": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16",
@@ -1515,7 +1525,7 @@
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound": {
-      "line": 13762,
+      "line": 13767,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound": {
@@ -1527,7 +1537,7 @@
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv": {
-      "line": 13669,
+      "line": 13674,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound": {
@@ -1560,6 +1570,10 @@
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv": {
       "line": 9654,
+      "status": "found"
+    },
+    "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs": {
+      "line": 13323,
       "status": "found"
     },
     "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16": {

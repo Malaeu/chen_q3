@@ -43,7 +43,7 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v12"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
 STATUS = "fail_closed_missing_checked_deriv_payload"
 STALE_RECEIVER_SCHEMA_FAILURE = (
@@ -131,6 +131,10 @@ TARGET_SHIFTED_TAIL_GENERATED_BOUND = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert."
     "omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15"
 )
+TARGET_ORDER16_INTEGER_BUDGET = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs"
+)
 GENERATOR_NAME = "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py"
 LEAN_TARGET_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
 
@@ -142,6 +146,7 @@ DEGREE = 15
 ORDER = 16
 PREFIX_N = 128
 CENTER_ETA = Fraction(1, 20)
+ORDER16_CONDENSED_FACTOR_BUDGET = Fraction(factorial(17) * (2**19 + 1), 1)
 
 
 SOURCE_SYMBOLS = {
@@ -211,6 +216,7 @@ TARGET_SYMBOLS = [
     TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL,
     TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE,
     TARGET_SHIFTED_TAIL_GENERATED_BOUND,
+    TARGET_ORDER16_INTEGER_BUDGET,
     STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE,
@@ -255,6 +261,9 @@ TARGET_PATTERNS = {
     ),
     TARGET_SHIFTED_TAIL_GENERATED_BOUND: (
         "theorem omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15"
+    ),
+    TARGET_ORDER16_INTEGER_BUDGET: (
+        "theorem omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs"
     ),
     STALE_RECEIVER_SCHEMA_FAILURE: STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE: FIRST_FAILURE,
@@ -692,6 +701,13 @@ def build_report(
         target_scan[TARGET_VALID_INTEGER_BUDGET_CHECKED_DERIV]["status"]
         == "found"
     )
+    order16_integer_budget_present = (
+        target_scan[TARGET_ORDER16_INTEGER_BUDGET]["status"] == "found"
+    )
+    order16_budget_exact = fraction_to_str(ORDER16_CONDENSED_FACTOR_BUDGET)
+    proof_safe_closed_fields = proof_grade_prefix_tail_row_count + (
+        1 if order16_integer_budget_present else 0
+    )
     receiver_schema_current = receiver_present and valid_integer_budget_checked_deriv_present
     if not receiver_schema_current:
         first_failure = STALE_RECEIVER_SCHEMA_FAILURE
@@ -705,11 +721,23 @@ def build_report(
     elif not all_prefix_exact_present:
         first_failure = CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE
         status = "fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof"
-    else:
+    elif not order16_integer_budget_present:
         first_failure = ORDER16_INTEGER_FAILURE
         status = "fail_closed_center_jet_rows_checked_missing_order16_integer_budget"
+    else:
+        first_failure = REMAINDER_BUDGET_FAILURE
+        status = "fail_closed_center_jet_rows_and_order16_checked_missing_remainder_budget"
 
     target_surface_status = (
+        "receiver_checked_deriv_center_jet_rows_order16_checked_missing_remainder_budget"
+        if (
+            receiver_schema_current
+            and center_jet_shifted_tail_bridge_present
+            and shifted_tail_generated_bound_present
+            and all_prefix_exact_present
+            and order16_integer_budget_present
+        )
+        else
         "receiver_checked_deriv_center_jet_rows_checked_missing_order16_integer_budget"
         if (
             receiver_schema_current
@@ -778,6 +806,7 @@ def build_report(
             REFLECTED_DERIV_FAILURE,
             RIGHT_LAGRANGE_FAILURE,
             CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
+            *([ORDER16_INTEGER_FAILURE] if order16_integer_budget_present else []),
         ],
         "generator": GENERATOR_NAME,
         "functionId": FUNCTION_ID,
@@ -823,6 +852,8 @@ def build_report(
             ),
             "shiftedTailGeneratedBoundTheorem": TARGET_SHIFTED_TAIL_GENERATED_BOUND,
             "shiftedTailGeneratedBoundChecked": shifted_tail_generated_bound_present,
+            "order16IntegerBudgetTheorem": TARGET_ORDER16_INTEGER_BUDGET,
+            "order16IntegerBudgetChecked": order16_integer_budget_present,
             "centerJetPrefixExactRowsChecked": all_prefix_exact_present,
             "centerJetPrefixExactRowsCheckedCount": prefix_lean_checked_count,
             "centerJetPrefixTailRowsProofGrade": all_prefix_tail_rows_proof_grade,
@@ -865,18 +896,22 @@ def build_report(
             "centerJetPrefixLeanScan": [
                 prefix_lean_scan[index] for index in range(DEGREE + 1)
             ],
-            "order16Abs": None,
+            "order16Abs": order16_budget_exact,
             "order16": {
-                "condensedFactorBudgetBoundExact": None,
-                "order16Abs": None,
-                "marginExact": None,
-                "integerBudgetPassed": False,
+                "condensedFactorBudgetBoundExact": order16_budget_exact,
+                "order16Abs": order16_budget_exact,
+                "marginExact": "0",
+                "integerBudgetPassed": order16_integer_budget_present,
                 "sourceLeanTheorems": [
                     "omegaPrimeOrder16CondensedFactorBudgetBound",
+                    TARGET_ORDER16_INTEGER_BUDGET,
                     "omegaPrimeClosedForm_iteratedDeriv16_eq",
                     "Valid.of_order16_integer_budget_checked_deriv",
                 ],
-                "sourceLeanChecked": valid_integer_budget_checked_deriv_present,
+                "sourceLeanChecked": (
+                    valid_integer_budget_checked_deriv_present
+                    and order16_integer_budget_present
+                ),
             },
             "remainder": {
                 "coeffErrorContributionExact": None,
@@ -904,13 +939,21 @@ def build_report(
                     else "rational arithmetic generated; shifted-tail Lean proof still required"
                 ),
             },
-            "integerBudgetSource": None,
+            "integerBudgetSource": {
+                "valueExact": order16_budget_exact,
+                "theorem": TARGET_ORDER16_INTEGER_BUDGET,
+                "checked": order16_integer_budget_present,
+                "normalization": (
+                    "omegaPrimeOrder16CondensedFactorBudgetBound <= "
+                    "((order16Abs : Rat) : Real)"
+                ),
+            },
             "exactRationalChecksPassed": True,
             "allCenterJetsProved": False,
             "allPayloadObligationsPassed": False,
             "leanOutputPath": None,
             "leanValidationStatus": "not_run",
-            "proofSafeClosedFields": proof_grade_prefix_tail_row_count,
+            "proofSafeClosedFields": proof_safe_closed_fields,
             "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
         },
@@ -970,6 +1013,11 @@ def build_report(
                 "tail bound"
             ),
             (
+                "already proved locally: "
+                "omegaPrimeOrder16CondensedFactorBudgetBound <= generated "
+                "order16Abs"
+                if order16_integer_budget_present
+                else
                 "prove omegaPrimeOrder16CondensedFactorBudgetBound "
                 "<= order16Abs"
             ),
@@ -1016,13 +1064,13 @@ def build_report(
             ),
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
-            "omegaPrimeOrder16IntegerBudgetProved": False,
+            "omegaPrimeOrder16IntegerBudgetProved": order16_integer_budget_present,
             "omegaPrimeRemainderBudgetPassed": False,
             "exactRationalChecksPassed": True,
             "allCenterJetsProved": False,
             "allPayloadObligationsPassed": False,
             "leanValidationStatus": "not_run",
-            "proofSafeClosedFields": proof_grade_prefix_tail_row_count,
+            "proofSafeClosedFields": proof_safe_closed_fields,
             "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
         },
@@ -1072,6 +1120,7 @@ def build_report(
                 LEFT_LAGRANGE_FAILURE,
                 LAGRANGE_SPLIT_FAILURE,
                 CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
+                *([ORDER16_INTEGER_FAILURE] if order16_integer_budget_present else []),
             ],
             "nextFailureAfterBridge": first_failure,
             "whyNotEndpointFiniteCover": (
@@ -1148,6 +1197,8 @@ def render_md(report: dict[str, Any]) -> str:
         f"- center-jet prefix-tail checked: `{report['targetLeanSurface']['centerJetPrefixTailBridgeChecked']}`",
         f"- shifted-tail generated-bound theorem: `{report['targetLeanSurface']['shiftedTailGeneratedBoundTheorem']}`",
         f"- shifted-tail generated-bound checked: `{report['targetLeanSurface']['shiftedTailGeneratedBoundChecked']}`",
+        f"- order-16 integer budget theorem: `{report['targetLeanSurface']['order16IntegerBudgetTheorem']}`",
+        f"- order-16 integer budget checked: `{report['targetLeanSurface']['order16IntegerBudgetChecked']}`",
         f"- center-jet prefix exact rows checked: `{report['targetLeanSurface']['centerJetPrefixExactRowsChecked']}`",
         f"- center-jet prefix exact rows checked count: `{report['targetLeanSurface']['centerJetPrefixExactRowsCheckedCount']}`",
         f"- center-jet prefix/tail rows proof-grade: `{report['targetLeanSurface']['centerJetPrefixTailRowsProofGrade']}`",

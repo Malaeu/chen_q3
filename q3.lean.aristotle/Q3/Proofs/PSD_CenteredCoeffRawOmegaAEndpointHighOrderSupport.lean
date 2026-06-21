@@ -13320,6 +13320,11 @@ theorem omegaPrimeOrder16RealMajorant_tsum_le_condensed_bound :
 def omegaPrimeOrder16CondensedFactorBudgetBound : Real :=
   (Nat.factorial 17 : Real) * ((2 : Real) ^ 19 + 1)
 
+theorem omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs :
+    omegaPrimeOrder16CondensedFactorBudgetBound <=
+      ((186483005989023744000 : Rat) : Real) := by
+  norm_num [omegaPrimeOrder16CondensedFactorBudgetBound]
+
 theorem omegaPrimeOrder16_condensed_factor_budget_le :
     omegaPrimeOrder16SeriesFactor *
         (omegaPrimeOrder16RealMajorant 0 +
