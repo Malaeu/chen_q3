@@ -1,5 +1,6 @@
 import Mathlib.Analysis.Calculus.Taylor
 import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+import Mathlib.Analysis.Analytic.Composition
 import Mathlib.Topology.Algebra.InfiniteSum.TsumUniformlyOn
 import Q3.DigammaSeries
 import Q3.DigammaRemainder
@@ -23,6 +24,7 @@ namespace PSDpd
 namespace Step33
 
 open MeasureTheory
+open CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate
 open scoped BigOperators
 
 /-- Local removable-singularity bridge from the sine power series to the
@@ -74,6 +76,87 @@ theorem iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
       (Nat.factorial n : Real) = p.coeff n
   rw [nsmul_eq_mul]
   field_simp [hne]
+
+/-- Local analytic bridge for the active `k=11`, `ell=3/10` B-spline closed
+form at the removable singularity.  This is the analytic source used by the
+active ShapeSqDeriv power-series crosswalk; it does not emit any center-jet
+rows. -/
+theorem primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_zero :
+    AnalyticAt Real
+      (fun t : Real =>
+        centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) t)
+      (0 : Real) := by
+  unfold centeredBSplineImagTransformRealClosedForm
+  have harg :
+      AnalyticAt Real
+        (fun t : Real =>
+          ((3 : Real) / 10) * t / (2 * bsplineScale 11)) (0 : Real) := by
+    have hnum :
+        AnalyticAt Real (fun t : Real => ((3 : Real) / 10) * t) (0 : Real) := by
+      fun_prop
+    have hden :
+        AnalyticAt Real (fun _ : Real => 2 * bsplineScale 11) (0 : Real) :=
+      analyticAt_const
+    have hden_ne : (2 : Real) * bsplineScale 11 ≠ 0 := by
+      exact mul_ne_zero (by norm_num) (bsplineScale_ne_zero 11)
+    exact hnum.fun_div hden hden_ne
+  have harg_zero :
+      (fun t : Real =>
+        ((3 : Real) / 10) * t / (2 * bsplineScale 11)) (0 : Real) =
+          (0 : Real) := by
+    simp
+  have hsinc :
+      AnalyticAt Real
+        (fun t : Real =>
+          realSinc (((3 : Real) / 10) * t / (2 * bsplineScale 11)))
+        (0 : Real) := by
+    exact realSinc_analyticAt_zero.comp_of_eq' harg harg_zero
+  have hpow :
+      AnalyticAt Real
+        (fun t : Real =>
+          (realSinc (((3 : Real) / 10) * t / (2 * bsplineScale 11))) ^
+            (11 + 1))
+        (0 : Real) :=
+    hsinc.fun_pow (11 + 1)
+  have hscale :
+      AnalyticAt Real
+        (fun _ : Real =>
+          (Real.sqrt (bsplineScale 11 * bsplineAutocorrNorm 11))⁻¹)
+        (0 : Real) :=
+    analyticAt_const
+  simpa [Pi.mul_apply] using hscale.fun_mul hpow
+
+/-- The active first-row ShapeSqDeriv source is locally analytic at the
+zero-cell center origin.  The associated formal series is selected below; exact
+rational row enclosures remain a separate payload obligation. -/
+theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero :
+    AnalyticAt Real primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+      (0 : Real) := by
+  have hshape :
+      AnalyticAt Real
+        (fun t : Real =>
+          (centeredBSplineImagTransformRealClosedForm 11
+            ((3 : Real) / 10) t) ^ 2)
+        (0 : Real) :=
+    primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_zero.fun_pow 2
+  simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using hshape.deriv
+
+/-- Chosen local formal series for the active ShapeSqDeriv crosswalk.
+
+This is proof-bearing but not yet a rational coefficient payload: its
+coefficients are those supplied by the local analyticity theorem. -/
+noncomputable def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries :
+    FormalMultilinearSeries Real Real Real :=
+  Classical.choose primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero
+
+/-- Local `HasFPowerSeriesAt` crosswalk selected by the active Step33A.1-A
+route review.  This closes only the existence/normalization bridge for a local
+series at zero; the exact rational center-jet and order-16 rows are still open. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_zero :
+    HasFPowerSeriesAt primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries
+      (0 : Real) :=
+  Classical.choose_spec primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero
 
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +

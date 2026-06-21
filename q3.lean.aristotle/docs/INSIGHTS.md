@@ -38155,3 +38155,49 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   zero cell.
 - Boundary: no exact coefficient definition, no center-jet `tsum` theorem, no
   order-16 proof, no proof-safe generated rows, and no Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- BrowserProshkaShapeSqDerivFPowerSeriesRoute
+
+- Used the in-app browser/Computer Use for a follow-up route review after
+  `realSinc_hasFPowerSeriesAt_zero_of_sin`,
+  `realSinc_hasSum_even_powerSeries`, and
+  `iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt` were already
+  Lean-checked locally.
+- Advisory answer changed the first target from global `HasSum` for all `eta`
+  to a local `HasFPowerSeriesAt` crosswalk at zero:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_zero`.
+- Local `q3_docs` preflight did not find an existing ShapeSqDeriv power-series
+  theorem.  It returned unrelated RKHS/digamma/PO snippets and no ready
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` center-jet source.
+- Official Mathlib docs confirm the right API layer: `HasFPowerSeriesAt` is a
+  local ball expansion, `AnalyticAt` is existential over such a series, and
+  derivative series are represented by `FormalMultilinearSeries.derivSeries`.
+- New exact failure code if this route stalls:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_FPOWER_SERIES_CROSSWALK_GAP`.
+- Boundary: this is still a route/preflight note.  It does not provide exact
+  rational center-jet rows, does not prove an order-16 bound, and does not
+  close Step33A.1-A.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivFPowerSeriesCrosswalkChecked
+
+- Added and checked the local ShapeSqDeriv analytic/power-series bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New Lean names:
+  `primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_zero`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_zero`.
+- Closed local crosswalk gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_FPOWER_SERIES_CROSSWALK_GAP`.
+- Namespace correction: the active
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` source is in
+  `CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate`.
+- Direct `lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker`
+  tried to rebuild external packages and hit Batteries timeouts.  Direct Lean
+  `-o/-i` on the dependency succeeded, then direct Lean and `q3_check` passed
+  on the Endpoint support file.
+- Current live blocker is now the explicit coefficient/proof-data layer:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.
+- Boundary: the selected power series is existential via local analyticity; no
+  exact rational coefficients, center-jet rows, order-16 bound, generated
+  payload, or Step33A.1-A closure is claimed.

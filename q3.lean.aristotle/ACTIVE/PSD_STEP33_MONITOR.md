@@ -32941,3 +32941,51 @@ jets and the order-16 row.
 Boundary: no exact ShapeSqDeriv series coefficient definition, no exact
 center-jet `tsum` theorem, no order-16 bound, no generated proof-safe rows, and
 no Step33A.1-A closure.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv local FPowerSeriesAt crosswalk checked
+
+The in-app browser/Proshka route-B target is now Lean-checked as a local
+existence/normalization bridge in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_zero
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_zero
+```
+
+Closed local crosswalk gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_FPOWER_SERIES_CROSSWALK_GAP
+```
+
+Important namespace fact: the active source
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` lives under
+`CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate`,
+not under `Step33`.
+
+Validation:
+
+```bash
+LEAN_PATH=... lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.olean \
+  -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.ilean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+```
+
+Current live blocker remains proof data, not analyticity:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Boundary: the checked series is chosen existentially from local analyticity. It
+does not define exact rational coefficients, does not prove the center-jet row
+values, does not prove the uniform order-16 bound, does not emit a generated
+payload, and does not close Step33A.1-A.

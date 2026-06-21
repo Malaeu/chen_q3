@@ -62235,3 +62235,64 @@ series source targeted here.
 Boundary: no exact coefficient definition, no center-jet `tsum` theorem, no
 uniform order-16 proof, no proof-safe generated row payload, and no
 Step33A.1-A closure.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv local FPowerSeriesAt bridge checked
+
+Implemented and Lean-checked the browser/Proshka route-B local power-series
+crosswalk in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+primaryK11CenteredBSplineImagTransformRealClosedForm_analyticAt_zero
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv_analyticAt_zero
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_zero
+```
+
+The theorem proves:
+
+```lean
+HasFPowerSeriesAt primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeries
+  (0 : Real)
+```
+
+Closed local crosswalk gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_FPOWER_SERIES_CROSSWALK_GAP
+```
+
+Implementation notes:
+
+- the active ShapeSqDeriv source is exported from
+  `RawOmegaATaylorModelCertificate`, not from `Step33`;
+- direct `lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker`
+  attempted to rebuild external packages and hit Batteries timeout errors, so
+  the dependency was refreshed with direct Lean `-o/-i`;
+- after that refresh, both direct Lean and the project `q3_check` passed.
+
+Validation:
+
+```bash
+LEAN_PATH=... lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.olean \
+  -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.ilean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+Boundary: this proves local analytic existence of a power series and selects
+one by `Classical.choose`.  It does not provide exact rational coefficients,
+does not prove center-jet row values, does not prove the uniform order-16
+bound, does not emit proof-safe generated rows, and does not close
+Step33A.1-A.
