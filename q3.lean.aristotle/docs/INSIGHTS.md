@@ -37945,3 +37945,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   degree-15 Taylor enclosure for `deriv (E^2)`.
 - Boundary: this is only the receiver; the concrete Sub0 order-16 derivative
   payload and Step33A.1-A closure remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivOrder16ReceiverChecked
+
+- Lean now checks the generic order-16 center-jet receiver
+  `shapeSqDerivTaylor_bound_of_centerJet_and_order16` in
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+- Supporting checked objects:
+  `centerJetTaylorPolynomial`,
+  `taylorWithinEval_eq_centerJetTaylorPolynomial`,
+  `iteratedDeriv_reflect_const_sub`,
+  `centerJetTaylorPolynomial_reflect_eq`, and
+  `centerJetTaylor_error_bound_of_order16`.
+- Mathematical shape: a proof-grade payload may provide center-jet coefficient
+  enclosures for `deriv (E(eta)^2)`, a uniform order-16 derivative bound on the
+  cell, a radius bound, and a rational Taylor budget; Lean then proves the
+  degree-15 derivative Taylor enclosure in `rawOmegaATaylorPolynomial`
+  normalization.
+- Validation passed: targeted `lake env lean`, targeted `q3_check`, scoped
+  marker scan over the touched Lean file, and `git diff --check`.
+- Closed local receiver gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_RECEIVER_GAP`.
+- Current live blocker:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP`.
+- Boundary: this is not Step33A.1-A closure.  The concrete Sub0 center-jet and
+  order-16 payload, raw residual assembly, residual range certificate, and
+  final interval theorem remain open.

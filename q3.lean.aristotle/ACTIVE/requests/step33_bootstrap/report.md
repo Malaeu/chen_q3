@@ -61767,3 +61767,58 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_SOURCE_GAP
 
 Do not route back to separate endpoint-only `E`/`E'` interval boxes; that loses
 the cancellation structure needed by the full Taylor residual certificate.
+
+## 2026-06-21 -- ShapeSqDeriv order16 receiver checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 nonconstant shape-square derivative Taylor
+source.
+
+New checked Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+centerJetTaylorPolynomial
+centerJetTaylorPolynomial_center
+taylorWithinEval_eq_centerJetTaylorPolynomial
+iteratedDeriv_reflect_const_sub
+centerJetTaylorPolynomial_reflect_eq
+centerJetTaylor_error_bound_of_order16
+shapeSqDerivTaylor_bound_of_centerJet_and_order16
+```
+
+The receiver proves the degree-15 Taylor enclosure for
+`deriv (fun t => centeredBSplineImagTransformRealClosedForm k ell t ^ 2)` from:
+
+```text
+ContDiff Real 16
+center-jet coefficient error bounds
+uniform order-16 derivative bound on the cell
+cell radius bound
+single rational Taylor budget
+```
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+git diff --check
+```
+
+Closed local receiver gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_RECEIVER_GAP
+```
+
+Current live gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP
+```
+
+Boundary: this is not Step33A.1-A closure.  It gives Lean the generic receiver
+for a nonconstant shape-square derivative source; the concrete Sub0
+center-jet/order-16 payload, exact residual assembly, residual range
+certificate, and final interval theorem remain open.

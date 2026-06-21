@@ -32606,3 +32606,41 @@ STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
 Boundary: endpoint bounds are formal, but they are not a component Taylor
 coeff/remainder certificate.  Step33A.1-A remains open; no Lean proof file was
 touched in this sync.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv order16 receiver checked
+
+Lean now checks the generic nonconstant shape-square derivative Taylor receiver:
+
+```lean
+shapeSqDerivTaylor_bound_of_centerJet_and_order16
+```
+
+Supporting local bridge objects:
+
+```lean
+centerJetTaylorPolynomial
+taylorWithinEval_eq_centerJetTaylorPolynomial
+iteratedDeriv_reflect_const_sub
+centerJetTaylorPolynomial_reflect_eq
+centerJetTaylor_error_bound_of_order16
+```
+
+Validation passed: targeted Lean check and `q3_check` on
+`PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`, scoped marker scan over the
+touched Lean file, and `git diff --check`.
+
+Closed local receiver gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_RECEIVER_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP
+```
+
+Boundary: Step33A.1-A remains open.  This receiver does not provide the concrete
+Sub0 center-jet/order-16 payload, raw residual assembly, residual range
+certificate, or final interval theorem.

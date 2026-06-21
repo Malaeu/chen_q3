@@ -10052,6 +10052,396 @@ theorem shapeSqDerivTaylor_bound_of_endpoint_bounds
     abs_le.mpr ⟨hLower, hUpper⟩
   simpa [hPoly eta, Real.norm_eq_abs] using hAbs
 
+/-- Exact degree-15 Taylor polynomial built from the real center jet.  This is
+used as the intermediate object between Mathlib's Taylor theorem and the
+generated rational `rawOmegaATaylorPolynomial` payload. -/
+def centerJetTaylorPolynomial
+    (f : Real -> Real) (center : Real) (eta : Real) : Real :=
+  ∑ j : Fin 16,
+    (iteratedDeriv j.1 f center / (Nat.factorial j.1 : Real)) *
+      (eta - center) ^ j.1
+
+theorem centerJetTaylorPolynomial_center
+    (f : Real -> Real) (center : Real) :
+    centerJetTaylorPolynomial f center center = f center := by
+  unfold centerJetTaylorPolynomial
+  rw [Fin.sum_univ_succ]
+  simp
+
+theorem taylorWithinEval_eq_centerJetTaylorPolynomial
+    {f : Real -> Real} {s : Set Real} {center eta : Real}
+    (hs : UniqueDiffOn Real s)
+    (hSmooth : ContDiff Real 16 f)
+    (hCenter : center ∈ s) :
+    taylorWithinEval f 15 s center eta =
+      centerJetTaylorPolynomial f center eta := by
+  rw [taylor_within_apply]
+  norm_num only [Nat.reduceAdd]
+  rw [← Fin.sum_univ_eq_sum_range
+    (f := fun k : Nat =>
+      ((Nat.factorial k : Real)⁻¹ * (eta - center) ^ k) •
+        iteratedDerivWithin k f s center)
+    (n := 16)]
+  unfold centerJetTaylorPolynomial
+  refine Finset.sum_congr rfl ?_
+  intro j _hj
+  have hjle : (j.1 : WithTop ENat) <= (16 : Nat) := by
+    exact_mod_cast Nat.le_of_lt j.2
+  have hWithin :
+      iteratedDerivWithin j.1 f s center =
+        iteratedDeriv j.1 f center := by
+    exact iteratedDerivWithin_eq_iteratedDeriv hs
+      ((hSmooth.contDiffAt).of_le hjle) hCenter
+  rw [hWithin]
+  rw [smul_eq_mul]
+  ring
+
+theorem iteratedDeriv_reflect_const_sub
+    (n : Nat) (f : Real -> Real) (c x : Real) :
+    iteratedDeriv n (fun y : Real => f (c - y)) x =
+      (-1 : Real) ^ n * iteratedDeriv n f (c - x) := by
+  have hNeg :=
+    iteratedDeriv_comp_neg (𝕜 := Real) (F := Real) n
+      (fun y : Real => f (c + y)) x
+  have hShift :=
+    congrFun
+      (iteratedDeriv_comp_const_add (𝕜 := Real) (F := Real) n f c) (-x)
+  rw [hShift] at hNeg
+  simpa [sub_eq_add_neg, smul_eq_mul] using hNeg
+
+theorem centerJetTaylorPolynomial_reflect_eq
+    (f : Real -> Real) (center eta : Real) :
+    centerJetTaylorPolynomial
+        (fun y : Real => f (2 * center - y)) center (2 * center - eta) =
+      centerJetTaylorPolynomial f center eta := by
+  unfold centerJetTaylorPolynomial
+  refine Finset.sum_congr rfl ?_
+  intro j _hj
+  rw [iteratedDeriv_reflect_const_sub]
+  have hCenter : 2 * center - center = center := by ring
+  have hEta : 2 * center - eta - center = -(eta - center) := by ring
+  rw [hCenter, hEta]
+  let C : Real := iteratedDeriv j.1 f center
+  let F : Real := (Nat.factorial j.1 : Real)
+  let X : Real := (eta - center) ^ j.1
+  change ((-1 : Real) ^ j.1 * C / F) *
+      (-(eta - center)) ^ j.1 = C / F * X
+  have hNegPow :
+      (-(eta - center)) ^ j.1 = (-1 : Real) ^ j.1 * X := by
+    dsimp [X]
+    rw [neg_pow]
+  have hsq : (-1 : Real) ^ j.1 * (-1 : Real) ^ j.1 = 1 := by
+    rw [← pow_add]
+    have hadd : j.1 + j.1 = j.1 * 2 := by ring
+    rw [hadd]
+    exact Even.neg_one_pow ⟨j.1, by ring⟩
+  calc
+    ((-1 : Real) ^ j.1 * C / F) * (-(eta - center)) ^ j.1
+        = ((-1 : Real) ^ j.1 * C / F) *
+            ((-1 : Real) ^ j.1 * X) := by
+          rw [hNegPow]
+    _ = ((-1 : Real) ^ j.1 * (-1 : Real) ^ j.1) *
+          (C / F * X) := by
+          ring
+    _ = C / F * X := by
+          rw [hsq]
+          ring
+
+theorem centerJetTaylor_error_bound_of_order16
+    {f : Real -> Real} {a b radius order16Abs remainderAbs : Real}
+    {center : Rat} (coeff coeffErrorAbs : Fin 16 -> Rat)
+    (hCenterMem : (center : Real) ∈ Set.Icc a b)
+    (hSmooth : ContDiff Real 16 f)
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 f (center : Real) /
+            (Nat.factorial j.1 : Real) -
+          (coeff j : Real)‖ <=
+          (coeffErrorAbs j : Real))
+    (hOrder16 :
+      ∀ eta ∈ Set.Icc a b,
+        ‖iteratedDeriv 16 f eta‖ <= order16Abs)
+    (hRadius :
+      ∀ eta ∈ Set.Icc a b, ‖eta - (center : Real)‖ <= radius)
+    (hBudget :
+      (∑ j : Fin 16, (coeffErrorAbs j : Real) * radius ^ j.1) +
+          order16Abs * radius ^ 16 / (Nat.factorial 16 : Real) <=
+        remainderAbs) :
+    ∀ eta ∈ Set.Icc a b,
+      ‖f eta - rawOmegaATaylorPolynomial 15 center coeff eta‖ <=
+        remainderAbs := by
+  have hRadiusNonneg : 0 <= radius := by
+    simpa using (norm_nonneg (0 : Real)).trans
+      (by simpa using hRadius (center : Real) hCenterMem)
+  have hOrderNonneg : 0 <= order16Abs := by
+    exact (norm_nonneg _).trans (hOrder16 (center : Real) hCenterMem)
+  intro eta heta
+  have hExactTaylor :
+      ‖f eta - centerJetTaylorPolynomial f (center : Real) eta‖ <=
+        order16Abs * radius ^ 16 / (Nat.factorial 16 : Real) := by
+    by_cases hne : (center : Real) = eta
+    · subst eta
+      have hRhsNonneg :
+          0 <= order16Abs * radius ^ 16 / (Nat.factorial 16 : Real) := by
+        positivity
+      simpa [centerJetTaylorPolynomial_center] using hRhsNonneg
+    · by_cases hRight : (center : Real) < eta
+      · obtain ⟨xi, hxi, hrem⟩ :=
+          taylor_mean_remainder_lagrange_iteratedDeriv
+            (f := f)
+            (x := eta)
+            (x₀ := (center : Real))
+            (n := 15)
+            hRight
+            (hSmooth.contDiffOn)
+        have hTaylorPoly :
+            taylorWithinEval f 15 (Set.Icc (center : Real) eta)
+                (center : Real) eta =
+              centerJetTaylorPolynomial f (center : Real) eta :=
+          taylorWithinEval_eq_centerJetTaylorPolynomial
+            (uniqueDiffOn_Icc hRight) hSmooth ⟨le_rfl, le_of_lt hRight⟩
+        rw [hTaylorPoly] at hrem
+        have hxiCell : xi ∈ Set.Icc a b := by
+          rw [Set.mem_Ioo] at hxi
+          rw [Set.mem_Icc] at hCenterMem heta ⊢
+          constructor <;> linarith
+        have hDer := hOrder16 xi hxiCell
+        have hPow :
+            ‖(eta - (center : Real)) ^ 16‖ <= radius ^ 16 := by
+          rw [norm_pow]
+          exact pow_le_pow_left₀ (norm_nonneg _) (hRadius eta heta) 16
+        calc
+          ‖f eta - centerJetTaylorPolynomial f (center : Real) eta‖
+              =
+              ‖iteratedDeriv 16 f xi *
+                  (eta - (center : Real)) ^ 16 /
+                  (Nat.factorial 16 : Real)‖ := by
+                rw [hrem]
+          _ =
+              ‖iteratedDeriv 16 f xi‖ *
+                  ‖(eta - (center : Real)) ^ 16‖ /
+                  (Nat.factorial 16 : Real) := by
+                rw [norm_div, norm_mul]
+                norm_num
+          _ <=
+              order16Abs * radius ^ 16 /
+                (Nat.factorial 16 : Real) := by
+                refine div_le_div_of_nonneg_right ?_ (by norm_num)
+                exact mul_le_mul hDer hPow (norm_nonneg _) hOrderNonneg
+      · have hLeft : eta < (center : Real) := by
+          exact lt_of_le_of_ne (le_of_not_gt hRight) (Ne.symm hne)
+        let etaR : Real := 2 * (center : Real) - eta
+        have hCenterLtEtaR : (center : Real) < etaR := by
+          dsimp [etaR]
+          linarith
+        have hReflectSmooth :
+            ContDiff Real 16
+              (fun y : Real => f (2 * (center : Real) - y)) := by
+          exact hSmooth.comp (by fun_prop)
+        obtain ⟨xi, hxi, hrem⟩ :=
+          taylor_mean_remainder_lagrange_iteratedDeriv
+            (f := fun y : Real => f (2 * (center : Real) - y))
+            (x := etaR)
+            (x₀ := (center : Real))
+            (n := 15)
+            hCenterLtEtaR
+            (hReflectSmooth.contDiffOn)
+        have hTaylorPoly :
+            taylorWithinEval
+                (fun y : Real => f (2 * (center : Real) - y)) 15
+                (Set.Icc (center : Real) etaR) (center : Real) etaR =
+              centerJetTaylorPolynomial f (center : Real) eta := by
+          rw [taylorWithinEval_eq_centerJetTaylorPolynomial
+            (uniqueDiffOn_Icc hCenterLtEtaR) hReflectSmooth
+            ⟨le_rfl, le_of_lt hCenterLtEtaR⟩]
+          exact centerJetTaylorPolynomial_reflect_eq f (center : Real) eta
+        rw [hTaylorPoly] at hrem
+        have hrem' :
+            f eta - centerJetTaylorPolynomial f (center : Real) eta =
+              iteratedDeriv 16
+                  (fun y : Real => f (2 * (center : Real) - y)) xi *
+                (etaR - (center : Real)) ^ 16 /
+                (Nat.factorial 16 : Real) := by
+          simpa [etaR] using hrem
+        have hxiCell :
+            2 * (center : Real) - xi ∈ Set.Icc a b := by
+          rw [Set.mem_Ioo] at hxi
+          rw [Set.mem_Icc] at hCenterMem heta ⊢
+          constructor <;> linarith
+        have hDerBase := hOrder16 (2 * (center : Real) - xi) hxiCell
+        have hDer :
+            ‖iteratedDeriv 16
+                (fun y : Real => f (2 * (center : Real) - y)) xi‖ <=
+              order16Abs := by
+          rw [iteratedDeriv_reflect_const_sub]
+          norm_num
+          simpa using hDerBase
+        have hEtaRRadius : ‖etaR - (center : Real)‖ <= radius := by
+          have hEq : etaR - (center : Real) = -(eta - (center : Real)) := by
+            dsimp [etaR]
+            ring
+          calc
+            ‖etaR - (center : Real)‖ = ‖eta - (center : Real)‖ := by
+              rw [hEq, norm_neg]
+            _ <= radius := hRadius eta heta
+        have hPow :
+            ‖(etaR - (center : Real)) ^ 16‖ <= radius ^ 16 := by
+          rw [norm_pow]
+          exact pow_le_pow_left₀ (norm_nonneg _) hEtaRRadius 16
+        calc
+          ‖f eta - centerJetTaylorPolynomial f (center : Real) eta‖
+              =
+              ‖iteratedDeriv 16
+                  (fun y : Real => f (2 * (center : Real) - y)) xi *
+                (etaR - (center : Real)) ^ 16 /
+                (Nat.factorial 16 : Real)‖ := by
+                rw [hrem']
+          _ =
+              ‖iteratedDeriv 16
+                  (fun y : Real => f (2 * (center : Real) - y)) xi‖ *
+                  ‖(etaR - (center : Real)) ^ 16‖ /
+                  (Nat.factorial 16 : Real) := by
+                rw [norm_div, norm_mul]
+                norm_num
+          _ <=
+              order16Abs * radius ^ 16 /
+                (Nat.factorial 16 : Real) := by
+                refine div_le_div_of_nonneg_right ?_ (by norm_num)
+                exact mul_le_mul hDer hPow (norm_nonneg _) hOrderNonneg
+  have hExactSubPoly :
+      ‖centerJetTaylorPolynomial f (center : Real) eta -
+          rawOmegaATaylorPolynomial 15 center coeff eta‖ <=
+        ∑ j : Fin 16, (coeffErrorAbs j : Real) * radius ^ j.1 := by
+    have hdiff :
+        centerJetTaylorPolynomial f (center : Real) eta -
+            rawOmegaATaylorPolynomial 15 center coeff eta =
+          ∑ j : Fin 16,
+            ((iteratedDeriv j.1 f (center : Real) /
+                (Nat.factorial j.1 : Real) -
+              (coeff j : Real)) *
+              (eta - (center : Real)) ^ j.1) := by
+      unfold centerJetTaylorPolynomial rawOmegaATaylorPolynomial
+      simp only [Nat.reduceAdd]
+      rw [← Finset.sum_sub_distrib]
+      refine Finset.sum_congr rfl ?_
+      intro j _hj
+      ring
+    rw [hdiff]
+    refine (norm_sum_le _ _).trans ?_
+    refine Finset.sum_le_sum ?_
+    intro j _hj
+    have hPow :
+        ‖(eta - (center : Real)) ^ j.1‖ <= radius ^ j.1 := by
+      rw [norm_pow]
+      exact pow_le_pow_left₀ (norm_nonneg _) (hRadius eta heta) j.1
+    calc
+      ‖(iteratedDeriv j.1 f (center : Real) /
+            (Nat.factorial j.1 : Real) -
+          (coeff j : Real)) *
+          (eta - (center : Real)) ^ j.1‖
+          =
+          ‖iteratedDeriv j.1 f (center : Real) /
+              (Nat.factorial j.1 : Real) -
+            (coeff j : Real)‖ *
+            ‖(eta - (center : Real)) ^ j.1‖ := by
+            rw [norm_mul]
+      _ <= (coeffErrorAbs j : Real) * radius ^ j.1 := by
+            exact mul_le_mul (hCenterJet j) hPow (norm_nonneg _)
+              (hCoeffErrorNonneg j)
+  have hSplit :
+      ‖f eta - rawOmegaATaylorPolynomial 15 center coeff eta‖ <=
+        ‖f eta - centerJetTaylorPolynomial f (center : Real) eta‖ +
+          ‖centerJetTaylorPolynomial f (center : Real) eta -
+              rawOmegaATaylorPolynomial 15 center coeff eta‖ := by
+    have hdecomp :
+        f eta - rawOmegaATaylorPolynomial 15 center coeff eta =
+          (f eta - centerJetTaylorPolynomial f (center : Real) eta) +
+            (centerJetTaylorPolynomial f (center : Real) eta -
+              rawOmegaATaylorPolynomial 15 center coeff eta) := by
+      ring
+    rw [hdecomp]
+    exact norm_add_le _ _
+  calc
+    ‖f eta - rawOmegaATaylorPolynomial 15 center coeff eta‖
+        <=
+        ‖f eta - centerJetTaylorPolynomial f (center : Real) eta‖ +
+          ‖centerJetTaylorPolynomial f (center : Real) eta -
+              rawOmegaATaylorPolynomial 15 center coeff eta‖ := hSplit
+    _ <=
+        order16Abs * radius ^ 16 / (Nat.factorial 16 : Real) +
+          ∑ j : Fin 16, (coeffErrorAbs j : Real) * radius ^ j.1 := by
+          exact add_le_add hExactTaylor hExactSubPoly
+    _ =
+        (∑ j : Fin 16, (coeffErrorAbs j : Real) * radius ^ j.1) +
+          order16Abs * radius ^ 16 / (Nat.factorial 16 : Real) := by
+          ring
+    _ <= remainderAbs := hBudget
+
+/-- Nonconstant shape-square derivative Taylor receiver.  A generator can
+provide center-jet coefficient enclosures and a uniform order-16 bound for
+`deriv (E(eta)^2)`; Lean then proves the degree-15 derivative Taylor enclosure
+in the exact `rawOmegaATaylorPolynomial` normalization. -/
+theorem shapeSqDerivTaylor_bound_of_centerJet_and_order16
+    {k : Nat} {ell a b radius order16Abs remainderAbs : Real}
+    {center : Rat} (shapeSqDerivCoeff shapeSqDerivCoeffErrorAbs : Fin 16 -> Rat)
+    (hCenterMem : (center : Real) ∈ Set.Icc a b)
+    (hSmooth :
+      ContDiff Real 16
+        (fun eta : Real =>
+          deriv
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+            eta))
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (shapeSqDerivCoeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1
+            (fun eta : Real =>
+              deriv
+                (fun t : Real =>
+                  (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+                eta)
+            (center : Real) /
+            (Nat.factorial j.1 : Real) -
+          (shapeSqDerivCoeff j : Real)‖ <=
+          (shapeSqDerivCoeffErrorAbs j : Real))
+    (hOrder16 :
+      ∀ eta ∈ Set.Icc a b,
+        ‖iteratedDeriv 16
+            (fun u : Real =>
+              deriv
+                (fun t : Real =>
+                  (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+                u)
+            eta‖ <= order16Abs)
+    (hRadius :
+      ∀ eta ∈ Set.Icc a b, ‖eta - (center : Real)‖ <= radius)
+    (hBudget :
+      (∑ j : Fin 16,
+          (shapeSqDerivCoeffErrorAbs j : Real) * radius ^ j.1) +
+          order16Abs * radius ^ 16 / (Nat.factorial 16 : Real) <=
+        remainderAbs) :
+    ∀ eta ∈ Set.Icc a b,
+      ‖deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta -
+        rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta‖ <=
+          remainderAbs :=
+  centerJetTaylor_error_bound_of_order16
+    (f := fun eta : Real =>
+      deriv
+        (fun t : Real =>
+          (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+        eta)
+    (a := a) (b := b) (radius := radius) (order16Abs := order16Abs)
+    (remainderAbs := remainderAbs) (center := center)
+    shapeSqDerivCoeff shapeSqDerivCoeffErrorAbs hCenterMem hSmooth
+    hCoeffErrorNonneg hCenterJet hOrder16 hRadius hBudget
+
 /-- Shape-square Taylor receiver with the derivative source stated in the
 natural generated form, namely as a model for `deriv (E^2)` rather than for
 the derivative of the already-subtracted residual. -/
