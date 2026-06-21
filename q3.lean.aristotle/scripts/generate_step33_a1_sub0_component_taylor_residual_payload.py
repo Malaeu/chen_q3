@@ -70,6 +70,9 @@ STATUS_AFTER_SHAPESQ_DERIV_SOURCE = (
 STATUS_AFTER_SHAPESQ_TAYLOR_SOURCE = (
     "fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders"
 )
+STATUS_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER = (
+    "fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert"
+)
 FIRST_FAILURE_MISSING_OMEGA_PRIME = (
     "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
 )
@@ -88,6 +91,9 @@ FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER = (
 )
 FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE = (
     "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP"
+)
+FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP"
 )
 SHAPE_TAYLOR_RECEIVER_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP"
@@ -189,6 +195,24 @@ SHAPESQ_DERIV_TAYLOR_REMAINDER_DEF = (
 )
 SHAPESQ_DERIV_TAYLOR_COARSE_CENTER = "-3/40"
 SHAPESQ_DERIV_TAYLOR_COARSE_REMAINDER = "3/40"
+SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_STRUCTURE = (
+    "ShapeSqDerivTaylorIntervalCert"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_VALID = (
+    "ShapeSqDerivTaylorIntervalCert.Valid"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_INPUTS = (
+    "ShapeSqDerivTaylorIntervalCert.Valid.toTaylorInputs"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM = (
+    "ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource"
+)
+SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP"
+)
 SHAPESQ_TAYLOR_SOURCE_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated"
 )
@@ -470,6 +494,70 @@ def shape_sq_deriv_taylor_source_status(
     }
 
 
+def shape_sq_deriv_interval_cert_receiver_status(
+    *,
+    chunk_taylor_checker_path: Path,
+) -> dict[str, Any]:
+    checker_text = (
+        chunk_taylor_checker_path.read_text(encoding="utf-8")
+        if chunk_taylor_checker_path.exists()
+        else ""
+    )
+    source_found = SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE in checker_text
+    structure_found = SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_STRUCTURE in checker_text
+    valid_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_VALID in checker_text
+        or "structure Valid (data : ShapeSqDerivTaylorIntervalCert)" in checker_text
+    )
+    inputs_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_INPUTS in checker_text
+        or "theorem toTaylorInputs" in checker_text
+    )
+    source_theorem_found = (
+        SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM in checker_text
+        or "theorem toShapeSqDerivTaylorSource" in checker_text
+    )
+    proof_grade = (
+        source_found
+        and structure_found
+        and valid_found
+        and inputs_found
+        and source_theorem_found
+    )
+    return {
+        "checkerFile": str(chunk_taylor_checker_path),
+        "sourceDef": SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE,
+        "sourceDefFound": source_found,
+        "certStructure": SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_STRUCTURE,
+        "certStructureFound": structure_found,
+        "validPredicate": SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_VALID,
+        "validPredicateFound": valid_found,
+        "toTaylorInputs": SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_INPUTS,
+        "toTaylorInputsFound": inputs_found,
+        "toShapeSqDerivTaylorSource": (
+            SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM
+        ),
+        "toShapeSqDerivTaylorSourceFound": source_theorem_found,
+        "proofGradeReceiver": proof_grade,
+        "failureClosed": (
+            SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED
+            if proof_grade
+            else None
+        ),
+        "nextMissing": (
+            FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER
+            if proof_grade
+            else FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
+        ),
+        "boundary": (
+            "This is only the Lean-checked interval-certificate receiver for "
+            "future rational center-jet and order-16 rows.  It is not the "
+            "generated ShapeSqDeriv payload and it does not close the coarse "
+            "constant-source budget failure."
+        ),
+    }
+
+
 def shape_sq_taylor_source_status(
     *,
     endpoint_rational_import_path: Path,
@@ -537,6 +625,7 @@ def component_taylor_status(
     omega_anchor_closed: bool,
     shape_endpoint_available: bool,
     shape_integrated_receiver_closed: bool,
+    shape_sq_deriv_interval_cert_receiver_closed: bool,
     shape_sq_deriv_source_closed: bool,
     shape_sq_taylor_source_closed: bool,
 ) -> dict[str, Any]:
@@ -606,7 +695,9 @@ def component_taylor_status(
         ),
         "shapeTaylor": {
             "status": (
-                "SHAPESQ_VALUE_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED"
+                "SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_FORMAL_MISSING_ZERO_CELL_ROWS"
+                if shape_sq_deriv_interval_cert_receiver_closed
+                else "SHAPESQ_VALUE_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED"
                 if shape_sq_taylor_source_closed
                 else "CONSTANT_DERIV_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED"
                 if shape_sq_deriv_source_closed
@@ -619,10 +710,15 @@ def component_taylor_status(
             "missing": True,
             "endpointBoundsAvailable": shape_endpoint_available,
             "integratedReceiverAvailable": shape_integrated_receiver_closed,
+            "shapeSqDerivIntervalCertReceiverAvailable": (
+                shape_sq_deriv_interval_cert_receiver_closed
+            ),
             "shapeSqDerivTaylorSourceAvailable": shape_sq_deriv_source_closed,
             "shapeSqTaylorSourceAvailable": shape_sq_taylor_source_closed,
             "firstReceiverGap": (
-                FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
+                FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER
+                if shape_sq_deriv_interval_cert_receiver_closed
+                else FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
                 if shape_sq_taylor_source_closed
                 else FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
                 if shape_sq_deriv_source_closed
@@ -684,13 +780,24 @@ def build_report(
         and shape_endpoint_available
         and bool(shape_sq_deriv_source["proofGrade"])
     )
+    shape_sq_deriv_interval_cert_receiver = (
+        shape_sq_deriv_interval_cert_receiver_status(
+            chunk_taylor_checker_path=chunk_taylor_checker_path
+        )
+    )
+    shape_sq_deriv_interval_cert_receiver_closed = bool(
+        shape_sq_deriv_interval_cert_receiver["proofGradeReceiver"]
+    )
     shape_sq_taylor_source = shape_sq_taylor_source_status(
         endpoint_rational_import_path=endpoint_rational_import_path,
         chunk_taylor_checker_path=chunk_taylor_checker_path,
         shape_sq_deriv_source_closed=shape_sq_deriv_source_closed,
     )
     shape_sq_taylor_source_closed = bool(shape_sq_taylor_source["proofGrade"])
-    if omega_anchor_closed and shape_sq_taylor_source_closed:
+    if omega_anchor_closed and shape_sq_deriv_interval_cert_receiver_closed:
+        status = STATUS_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER
+        first_failure = FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER
+    elif omega_anchor_closed and shape_sq_taylor_source_closed:
         status = STATUS_AFTER_SHAPESQ_TAYLOR_SOURCE
         first_failure = FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
     elif omega_anchor_closed and shape_sq_deriv_source_closed:
@@ -722,6 +829,10 @@ def build_report(
         closed_historical_failures.append(SHAPESQ_INTEGRATED_RECEIVER_CLOSED)
     if shape_sq_deriv_source_closed:
         closed_historical_failures.append(FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER)
+    if shape_sq_deriv_interval_cert_receiver_closed:
+        closed_historical_failures.append(
+            SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED
+        )
     omega_deriv_coeff = (
         linked_component_slots(
             "omegaDeriv",
@@ -759,6 +870,8 @@ def build_report(
                 SHAPESQ_INTEGRATED_RECEIVER_CLOSED,
                 FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER,
                 FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE,
+                SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_CLOSED,
+                FIRST_FAILURE_AFTER_SHAPESQ_INTERVAL_CERT_RECEIVER,
                 SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
                 "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
                 "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
@@ -840,6 +953,9 @@ def build_report(
                 "shapeEndpointSource": shape_endpoint,
                 "shapeIntegratedReceiverSource": shape_integrated_receiver,
                 "shapeSqDerivTaylorSource": shape_sq_deriv_source,
+                "shapeSqDerivIntervalCertReceiverSource": (
+                    shape_sq_deriv_interval_cert_receiver
+                ),
                 "shapeSqTaylorSource": shape_sq_taylor_source,
             "omegaRemainderAbs": None,
             "omegaDerivRemainderAbs": omega_deriv_remainder,
@@ -874,6 +990,9 @@ def build_report(
                 "shapeSqDerivTaylorSourcePresent": (
                     shape_sq_deriv_source_closed
                 ),
+                "shapeSqDerivIntervalCertReceiverPresent": (
+                    shape_sq_deriv_interval_cert_receiver_closed
+                ),
                 "shapeSqTaylorSourcePresent": shape_sq_taylor_source_closed,
                 "shapeTaylorReceiverPresent": shape_sq_taylor_source_closed,
                 "shapeDerivTaylorReceiverPresent": False,
@@ -886,6 +1005,7 @@ def build_report(
                     + (1 if omega_anchor_closed else 0)
                     + (1 if shape_integrated_receiver_closed else 0)
                     + (1 if shape_sq_deriv_source_closed else 0)
+                    + (1 if shape_sq_deriv_interval_cert_receiver_closed else 0)
                     + (1 if shape_sq_taylor_source_closed else 0)
                 ),
                 "outLeanWritten": False,
@@ -904,6 +1024,9 @@ def build_report(
                 else "missing_proof_grade_component_taylor_remainder"
             ),
             "shape": (
+                "interval_cert_receiver_formal_missing_zero_cell_rows"
+                if shape_sq_deriv_interval_cert_receiver_closed
+                else
                 "constant_shapesq_value_source_formal_budget_not_assembled"
                 if shape_sq_taylor_source_closed
                 else "constant_shapesq_deriv_source_formal_budget_not_assembled"
@@ -926,6 +1049,7 @@ def build_report(
                 omega_anchor_closed,
                 shape_endpoint_available,
                 shape_integrated_receiver_closed,
+                shape_sq_deriv_interval_cert_receiver_closed,
                 shape_sq_deriv_source_closed,
                 shape_sq_taylor_source_closed,
             ),
@@ -935,6 +1059,9 @@ def build_report(
             "shapeEndpointSource": shape_endpoint,
             "shapeIntegratedReceiverSource": shape_integrated_receiver,
             "shapeSqDerivTaylorSource": shape_sq_deriv_source,
+            "shapeSqDerivIntervalCertReceiverSource": (
+                shape_sq_deriv_interval_cert_receiver
+            ),
             "shapeSqTaylorSource": shape_sq_taylor_source,
             "existingLeanInputs": {
             "modelDerivCoeffSource": COEFF_DEF,
@@ -962,6 +1089,9 @@ def build_report(
                 "shapeSqIntegratedTaylorCrosswalk": SHAPESQ_INTEGRATED_CROSSWALK_THEOREM,
                 "shapeSqDerivTaylorBridge": SHAPESQ_DERIV_TAYLOR_BRIDGE_THEOREM,
                 "shapeSqDerivTaylorSource": SHAPESQ_DERIV_TAYLOR_SOURCE_THEOREM,
+                "shapeSqDerivIntervalCertReceiver": (
+                    SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_SOURCE_THEOREM
+                ),
                 "shapeSqTaylorSource": SHAPESQ_TAYLOR_SOURCE_THEOREM,
                 "shapeSqTaylorCoeff": SHAPESQ_TAYLOR_COEFF_DEF,
                 "shapeValueBounds": SHAPE_VALUE_BOUNDS_THEOREM,
@@ -1015,6 +1145,9 @@ def build_report(
             "shapeSqDerivTaylorSourceProofGrade": (
                 shape_sq_deriv_source_closed
             ),
+            "shapeSqDerivIntervalCertReceiverProofGrade": (
+                shape_sq_deriv_interval_cert_receiver_closed
+            ),
             "shapeSqTaylorSourceProofGrade": shape_sq_taylor_source_closed,
         },
         "sourceDefinitionLines": source_lines,
@@ -1039,7 +1172,19 @@ def build_report(
 
 
 def render_md(report: dict[str, Any]) -> str:
-    if report["proofStatus"]["shapeSqTaylorSourcePresent"]:
+    if report["proofStatus"]["shapeSqDerivIntervalCertReceiverPresent"]:
+        decision_text = [
+            "The Omega integrated-polynomial derivative crosswalk, center",
+            "anchor payload, shape-square integrated Taylor receiver,",
+            "coarse constant shape-square Taylor source, and the new",
+            "ShapeSqDeriv interval-certificate receiver are now Lean-checked.",
+            "The coarse source remains fail-closed for the current budget; the",
+            "productive next gate is the concrete zero-cell rational interval",
+            "certificate rows for `ShapeSqDerivTaylorIntervalCert.Valid`.",
+            "Raw-derivative assembly, residual polynomial bounds, and the",
+            "final interval theorem remain open.",
+        ]
+    elif report["proofStatus"]["shapeSqTaylorSourcePresent"]:
         decision_text = [
             "The Omega integrated-polynomial derivative crosswalk, center",
             "anchor payload, shape-square integrated Taylor receiver,",
@@ -1200,6 +1345,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- shape endpoint bounds available: `{report['shapeEndpointSource']['proofGradeEndpointBounds']}`",
             f"- shapeSq integrated receiver available: `{report['shapeIntegratedReceiverSource']['proofGrade']}`",
             f"- shapeSq deriv Taylor source available: `{report['shapeSqDerivTaylorSource']['proofGrade']}`",
+            f"- shapeSq deriv interval cert receiver available: `{report['shapeSqDerivIntervalCertReceiverSource']['proofGradeReceiver']}`",
             f"- shapeSq value Taylor source available: `{report['shapeSqTaylorSource']['proofGrade']}`",
             f"- shape Taylor receiver gap: `{report['componentTaylorStatus']['shapeTaylor']['firstReceiverGap']}`",
             f"- shapeDeriv Taylor receiver gap: `{report['shapeEndpointSource']['firstShapeDerivReceiverGap']}`",
@@ -1246,6 +1392,23 @@ def render_md(report: dict[str, Any]) -> str:
             f"- failure closed: `{report['shapeSqDerivTaylorSource']['failureClosed']}`",
             f"- next missing: `{report['shapeSqDerivTaylorSource']['nextMissing']}`",
             f"- boundary: {report['shapeSqDerivTaylorSource']['boundary']}",
+            "",
+            "## ShapeSq Deriv Interval Cert Receiver",
+            "",
+            f"- proof-grade receiver: `{report['shapeSqDerivIntervalCertReceiverSource']['proofGradeReceiver']}`",
+            f"- source def: `{report['shapeSqDerivIntervalCertReceiverSource']['sourceDef']}`",
+            f"- source def found: `{report['shapeSqDerivIntervalCertReceiverSource']['sourceDefFound']}`",
+            f"- cert structure: `{report['shapeSqDerivIntervalCertReceiverSource']['certStructure']}`",
+            f"- cert structure found: `{report['shapeSqDerivIntervalCertReceiverSource']['certStructureFound']}`",
+            f"- valid predicate: `{report['shapeSqDerivIntervalCertReceiverSource']['validPredicate']}`",
+            f"- valid predicate found: `{report['shapeSqDerivIntervalCertReceiverSource']['validPredicateFound']}`",
+            f"- Taylor input theorem: `{report['shapeSqDerivIntervalCertReceiverSource']['toTaylorInputs']}`",
+            f"- Taylor input theorem found: `{report['shapeSqDerivIntervalCertReceiverSource']['toTaylorInputsFound']}`",
+            f"- source theorem: `{report['shapeSqDerivIntervalCertReceiverSource']['toShapeSqDerivTaylorSource']}`",
+            f"- source theorem found: `{report['shapeSqDerivIntervalCertReceiverSource']['toShapeSqDerivTaylorSourceFound']}`",
+            f"- failure closed: `{report['shapeSqDerivIntervalCertReceiverSource']['failureClosed']}`",
+            f"- next missing: `{report['shapeSqDerivIntervalCertReceiverSource']['nextMissing']}`",
+            f"- boundary: {report['shapeSqDerivIntervalCertReceiverSource']['boundary']}",
             "",
             "## ShapeSq Value Taylor Source",
             "",

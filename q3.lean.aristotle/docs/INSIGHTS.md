@@ -38022,3 +38022,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A closure.  The concrete zero-cell/segment interval rows, exact
   residual assembly, residual range certificate, and final interval theorem
   remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivIntervalCertLedgerSynced
+
+- The component Taylor residual generator now recognizes the checked
+  `ShapeSqDerivTaylorIntervalCert` receiver and records it as a closed
+  receiver field, not as a generated payload.
+- Regenerated
+  `step33_a1_sub0_component_taylor_residual_payload.json/.md` now reports
+  `status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert`,
+  `firstFailure =
+  STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`,
+  and `proofSafeClosedFields = 7`.
+- The old constant-source route remains in the ledger as proof-grade but
+  budget-dead: `3/40` derivative remainder and `1/250` value remainder are not
+  promoted to the productive path.
+- Validation passed: Python compile for the generator, payload regeneration,
+  and `git diff --check`.
+- Boundary: no Lean payload was emitted.  The next proof-producing object is
+  still the concrete rational interval rows proving
+  `ShapeSqDerivTaylorIntervalCert.Valid`.

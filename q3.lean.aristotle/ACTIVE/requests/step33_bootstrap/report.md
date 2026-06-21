@@ -61944,3 +61944,43 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
 Boundary: this is not a generated payload and not Step33A.1-A closure.  The
 concrete zero-cell/segment interval rows, exact residual assembly, residual
 range certificate, and final interval theorem remain open.
+
+## 2026-06-21 -- ShapeSqDeriv interval certificate ledger synced
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload ledger.
+
+Updated generator:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+Regenerated fail-closed outputs:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md
+```
+
+New ledger status:
+
+```text
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+proofSafeClosedFields = 7
+outLeanWritten = false
+```
+
+The ledger now distinguishes:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP
+  closed: Lean receiver exists
+
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+  open: concrete rational center-jet/order-16 interval rows are missing
+```
+
+Boundary: the old constant ShapeSqDeriv source remains proof-grade but
+budget-dead for this route.  This sync emits no Lean payload and does not close
+Step33A.1-A.

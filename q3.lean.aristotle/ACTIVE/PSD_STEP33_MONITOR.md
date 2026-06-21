@@ -32717,3 +32717,30 @@ order-16 lower/upper rows per segment, and the final Taylor budget.
 Boundary: Step33A.1-A remains open.  This is only the checked certificate
 surface for future rational rows; it is not the generated rows, not residual
 assembly, and not the final interval theorem.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv interval cert ledger synced
+
+The component Taylor residual generator now scans the checked
+`ShapeSqDerivTaylorIntervalCert` receiver and the regenerated active payload
+ledger reports:
+
+```text
+status = fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+proofSafeClosedFields = 7
+outLeanWritten = false
+```
+
+The old constant ShapeSqDeriv Taylor source is still present and proof-grade,
+but it is no longer the productive next route because its coarse budget failed.
+The active next proof object is:
+
+```text
+ShapeSqDerivTaylorIntervalCert.Valid
+```
+
+with concrete rational center-jet rows, segment coverage, order-16 rows, and a
+Taylor budget for the active zero cell.
+
+Boundary: Step33A.1-A remains open.  This is only ledger synchronization after
+the checked receiver; no generated Lean payload was emitted.

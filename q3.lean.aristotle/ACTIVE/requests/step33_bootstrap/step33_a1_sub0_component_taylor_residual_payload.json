@@ -18,12 +18,13 @@
     "STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP"
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP"
   ],
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
-    "shape": "constant_shapesq_value_source_formal_budget_not_assembled",
+    "shape": "interval_cert_receiver_formal_missing_zero_cell_rows",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
   "componentTaylorStatus": {
@@ -62,12 +63,13 @@
     },
     "shapeTaylor": {
       "endpointBoundsAvailable": true,
-      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP",
+      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
       "integratedReceiverAvailable": true,
       "missing": true,
+      "shapeSqDerivIntervalCertReceiverAvailable": true,
       "shapeSqDerivTaylorSourceAvailable": true,
       "shapeSqTaylorSourceAvailable": true,
-      "status": "SHAPESQ_VALUE_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED"
+      "status": "SHAPESQ_DERIV_INTERVAL_CERT_RECEIVER_FORMAL_MISSING_ZERO_CELL_ROWS"
     }
   },
   "degrees": {
@@ -98,6 +100,7 @@
     "omegaTaylorIntegratedPolyDerivCrosswalk": "Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly",
     "shapeDerivAnchorBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated",
     "shapeDerivIntervalBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated",
+    "shapeSqDerivIntervalCertReceiver": "ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource",
     "shapeSqDerivTaylorBridge": "shapeSqDerivTaylor_bound_of_endpoint_bounds",
     "shapeSqDerivTaylorSource": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated",
     "shapeSqEndpointBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated",
@@ -109,10 +112,12 @@
     "shapeValueBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
@@ -120,7 +125,7 @@
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP",
+  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "componentPropagationRemainderAbs": null,
@@ -888,6 +893,23 @@
       "receiverTheoremFound": true
     },
     "shapeRemainderAbs": null,
+    "shapeSqDerivIntervalCertReceiverSource": {
+      "boundary": "This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  It is not the generated ShapeSqDeriv payload and it does not close the coarse constant-source budget failure.",
+      "certStructure": "ShapeSqDerivTaylorIntervalCert",
+      "certStructureFound": true,
+      "checkerFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean",
+      "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP",
+      "nextMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
+      "proofGradeReceiver": true,
+      "sourceDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv",
+      "sourceDefFound": true,
+      "toShapeSqDerivTaylorSource": "ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource",
+      "toShapeSqDerivTaylorSourceFound": true,
+      "toTaylorInputs": "ShapeSqDerivTaylorIntervalCert.Valid.toTaylorInputs",
+      "toTaylorInputsFound": true,
+      "validPredicate": "ShapeSqDerivTaylorIntervalCert.Valid",
+      "validPredicateFound": true
+    },
     "shapeSqDerivTaylorSource": {
       "boundary": "This is a proof-grade constant Taylor source for deriv(E^2), not a final component Taylor closure.  The coarse remainder 3/40 must still pass the shape-square integrated budget and then the raw-derivative assembly budget.",
       "bridgeTheorem": "shapeSqDerivTaylor_bound_of_endpoint_bounds",
@@ -968,10 +990,11 @@
     "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 6,
+    "proofSafeClosedFields": 7,
     "residualPolynomialRangePassed": false,
     "shapeDerivTaylorReceiverPresent": false,
     "shapeEndpointBoundsProofPresent": true,
+    "shapeSqDerivIntervalCertReceiverPresent": true,
     "shapeSqDerivTaylorSourcePresent": true,
     "shapeSqIntegratedTaylorReceiverPresent": true,
     "shapeSqTaylorSourcePresent": true,
@@ -981,7 +1004,7 @@
     "chosen": "B_component_taylor_route",
     "followupChosen": "A_omega_prime_to_omega_integrated_lift",
     "followupFailureClosed": "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
     "followupWhyA": "After OmegaPrime became proof-grade, the smallest proof-producing patch was the integrated-polynomial derivative crosswalk plus the center-anchor payload for Omega.",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
@@ -1017,6 +1040,23 @@
     "proofGrade": true,
     "receiverTheorem": "shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound",
     "receiverTheoremFound": true
+  },
+  "shapeSqDerivIntervalCertReceiverSource": {
+    "boundary": "This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  It is not the generated ShapeSqDeriv payload and it does not close the coarse constant-source budget failure.",
+    "certStructure": "ShapeSqDerivTaylorIntervalCert",
+    "certStructureFound": true,
+    "checkerFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean",
+    "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP",
+    "nextMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
+    "proofGradeReceiver": true,
+    "sourceDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv",
+    "sourceDefFound": true,
+    "toShapeSqDerivTaylorSource": "ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource",
+    "toShapeSqDerivTaylorSourceFound": true,
+    "toTaylorInputs": "ShapeSqDerivTaylorIntervalCert.Valid.toTaylorInputs",
+    "toTaylorInputsFound": true,
+    "validPredicate": "ShapeSqDerivTaylorIntervalCert.Valid",
+    "validPredicateFound": true
   },
   "shapeSqDerivTaylorSource": {
     "boundary": "This is a proof-grade constant Taylor source for deriv(E^2), not a final component Taylor closure.  The coarse remainder 3/40 must still pass the shape-square integrated budget and then the raw-derivative assembly budget.",
@@ -1058,9 +1098,9 @@
     "sourceTheoremFound": true
   },
   "sourceDefinitionHashes": {
-    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json": "cc2d04f85189576e",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json": "df579b0faa9427ad",
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json": "d76ad77551996b39",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "9b1de9d3456dcf16",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "9f2598874bb9229a",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean": "7fe0ad22d0e36ffb",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "039222aed569abb7",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean": "ab027a098dbfab54",
@@ -1079,7 +1119,7 @@
   },
   "sourceStatus": {
     "componentLedgerPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json",
-    "componentLedgerSchema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v1",
+    "componentLedgerSchema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2",
     "componentLedgerStatus": "fail_closed_missing_component_taylor_remainder_bounds",
     "omegaPrimePayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json",
     "omegaPrimePayloadStatus": "omega_prime_generated_valid_cert_checked_component_gap_open",
@@ -1087,11 +1127,12 @@
     "omegaTaylorCenterAnchorProofGrade": true,
     "omegaTaylorCrosswalkProofGrade": true,
     "shapeEndpointBoundsProofGrade": true,
+    "shapeSqDerivIntervalCertReceiverProofGrade": true,
     "shapeSqDerivTaylorSourceProofGrade": true,
     "shapeSqIntegratedTaylorReceiverProofGrade": true,
     "shapeSqTaylorSourceProofGrade": true
   },
-  "status": "fail_closed_shapesq_value_taylor_source_budget_gap_shapederiv_taylor_remainders",
+  "status": "fail_closed_missing_shapesq_deriv_order16_zero_cell_interval_cert",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",
