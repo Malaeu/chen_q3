@@ -10986,6 +10986,348 @@ theorem omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_t
   rw [← hExpr] at hScaled
   simpa [a, pref] using hScaled
 
+/-- Rewrite the lower-order derivative majorant into a shifted real-power
+p-series form.  This is the first Lean bridge needed by the generated
+`centerJetPrefixTailRows`: it exposes the tail as a standard positive
+shifted `x ^ (-(m+2))` series. -/
+theorem omegaPrimeTrigammaDerivMajorant_eq_coeff_norm_mul_shifted_rpow
+    (m n : Nat) :
+    omegaPrimeTrigammaDerivMajorant m n =
+      ‖omegaPrimeTrigammaDerivCoeff m‖ *
+        (((n : Real) + (1 / 4 : Real)) ^ (-((m : Real) + 2))) := by
+  have hnonneg : 0 <= (n : Real) + (1 / 4 : Real) := by
+    have hn : 0 <= (n : Real) := Nat.cast_nonneg n
+    linarith
+  unfold omegaPrimeTrigammaDerivMajorant
+  rw [abs_of_nonneg hnonneg]
+  rw [Real.rpow_neg hnonneg]
+
+theorem omegaPrimeTrigammaDerivMajorant_nonneg (m n : Nat) :
+    0 <= omegaPrimeTrigammaDerivMajorant m n := by
+  unfold omegaPrimeTrigammaDerivMajorant
+  positivity
+
+/-- Exact coefficient norm for the generated center-jet rows `m = 0..15`.
+The statement is finite on purpose: these are precisely the rows emitted by the
+v9 payload generator, and it avoids making the current Step33 gate depend on a
+more general product-norm API. -/
+theorem omegaPrimeTrigammaDerivCoeff_norm_eq_factorial_div_pow_of_le15
+    (m : Nat) (hm : m <= 15) :
+    ‖omegaPrimeTrigammaDerivCoeff m‖ =
+      (Nat.factorial (m + 1) : Real) / (2 : Real) ^ m := by
+  interval_cases m <;>
+    norm_num [omegaPrimeTrigammaDerivCoeff, Finset.prod_range_succ]
+
+/-- Finite shifted-tail partial sums are bounded by the matching integral.
+This is the sum/integral half of the generated `prefixN = 128` row proof; the
+remaining steps are the improper-integral evaluation and the coefficient-norm
+normalization. -/
+theorem omegaPrimeTrigammaDerivMajorant_shifted_sum_le_integral
+    (m N a : Nat) (hN : 1 <= N) :
+    (Finset.range a).sum
+        (fun k => omegaPrimeTrigammaDerivMajorant m (k + N)) <=
+      ∫ x in ((N : Real) - (3 / 4 : Real))..
+        (((N : Real) - (3 / 4 : Real)) + (a : Real)),
+        ‖omegaPrimeTrigammaDerivCoeff m‖ *
+          x ^ (-((m : Real) + 2)) := by
+  let c : Real := (N : Real) - (3 / 4 : Real)
+  let f : Real -> Real :=
+    fun x => ‖omegaPrimeTrigammaDerivCoeff m‖ *
+      x ^ (-((m : Real) + 2))
+  have hc_pos : 0 < c := by
+    have hNreal : (1 : Real) <= (N : Real) := by
+      exact_mod_cast hN
+    dsimp [c]
+    linarith
+  have hantiIoi :
+      AntitoneOn (fun x : Real => x ^ (-((m : Real) + 2))) (Set.Ioi 0) := by
+    apply Real.antitoneOn_rpow_Ioi_of_exponent_nonpos
+    have hm_nonneg : 0 <= (m : Real) := Nat.cast_nonneg m
+    linarith
+  have hanti :
+      AntitoneOn f (Set.Icc c (c + (a : Real))) := by
+    intro x hx y hy hxy
+    dsimp [f]
+    exact mul_le_mul_of_nonneg_left
+      (hantiIoi (lt_of_lt_of_le hc_pos hx.1) (lt_of_lt_of_le hc_pos hy.1) hxy)
+      (by positivity)
+  have hsum :=
+    (AntitoneOn.sum_le_integral (x₀ := c) (a := a) (f := f) hanti)
+  have hterms :
+      (Finset.range a).sum
+          (fun k => omegaPrimeTrigammaDerivMajorant m (k + N)) =
+        (Finset.range a).sum (fun k => f (c + ((k + 1 : Nat) : Real))) := by
+    refine Finset.sum_congr rfl ?_
+    intro k _hk
+    rw [omegaPrimeTrigammaDerivMajorant_eq_coeff_norm_mul_shifted_rpow]
+    have hbase :
+        (((k + N : Nat) : Real) + (1 / 4 : Real)) =
+          c + ((k + 1 : Nat) : Real) := by
+      dsimp [c]
+      norm_num [Nat.cast_add, Nat.cast_one]
+      ring
+    dsimp [f]
+    rw [hbase]
+  rw [hterms]
+  simpa [c, f] using hsum
+
+/-- Closed finite-partial version of the shifted-tail integral bound.  This
+keeps the coefficient norm explicit; the remaining generated-row bridge is the
+finite `m = 0..15` normalization of that coefficient norm. -/
+theorem omegaPrimeTrigammaDerivMajorant_shifted_sum_le_coeff_norm_rpow_bound
+    (m N a : Nat) (hN : 1 <= N) :
+    (Finset.range a).sum
+        (fun k => omegaPrimeTrigammaDerivMajorant m (k + N)) <=
+      ‖omegaPrimeTrigammaDerivCoeff m‖ *
+        ((((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1))) /
+          ((m : Real) + 1)) := by
+  let c : Real := (N : Real) - (3 / 4 : Real)
+  let r : Real := -((m : Real) + 2)
+  have hc_pos : 0 < c := by
+    have hNreal : (1 : Real) <= (N : Real) := by
+      exact_mod_cast hN
+    dsimp [c]
+    linarith
+  have hsum_int :=
+    omegaPrimeTrigammaDerivMajorant_shifted_sum_le_integral m N a hN
+  have hle_c : c <= c + (a : Real) := by
+    have ha : 0 <= (a : Real) := Nat.cast_nonneg a
+    linarith
+  have h_integral :
+      (∫ x in c..(c + (a : Real)),
+        x ^ r) =
+        (((c + (a : Real)) ^ (r + 1) - c ^ (r + 1)) / (r + 1)) := by
+    have hne : r ≠ -1 := by
+      dsimp [r]
+      have hm_nonneg : 0 <= (m : Real) := Nat.cast_nonneg m
+      linarith
+    have h0 : (0 : Real) ∉ Set.uIcc c (c + (a : Real)) := by
+      intro hmem
+      have hmem' : (0 : Real) ∈ Set.Icc c (c + (a : Real)) := by
+        simpa [Set.uIcc_of_le hle_c] using hmem
+      exact (not_le_of_gt hc_pos) hmem'.1
+    have hcond : (-1 : Real) < r ∨
+        r ≠ -1 ∧ (0 : Real) ∉ Set.uIcc c (c + (a : Real)) := by
+      right
+      exact ⟨hne, h0⟩
+    simpa [r, sub_eq_add_neg, add_comm, add_left_comm, add_assoc] using
+      (integral_rpow (a := c) (b := c + (a : Real)) (r := r) hcond)
+  have hden_neg : r + 1 < 0 := by
+    dsimp [r]
+    have hm_nonneg : 0 <= (m : Real) := Nat.cast_nonneg m
+    linarith
+  have hb_nonneg : 0 <= (c + (a : Real)) ^ (r + 1) := by
+    have hb : 0 <= c + (a : Real) := by
+      have ha : 0 <= (a : Real) := Nat.cast_nonneg a
+      linarith
+    exact Real.rpow_nonneg hb _
+  have hdiff :
+      -c ^ (r + 1) <=
+        (c + (a : Real)) ^ (r + 1) - c ^ (r + 1) := by
+    nlinarith [hb_nonneg]
+  have h_int_bound :
+      (∫ x in c..(c + (a : Real)), x ^ r) <=
+        c ^ (-((m : Real) + 1)) / ((m : Real) + 1) := by
+    calc
+      (∫ x in c..(c + (a : Real)), x ^ r)
+          = (((c + (a : Real)) ^ (r + 1) - c ^ (r + 1)) / (r + 1)) := h_integral
+      _ <= (-c ^ (r + 1)) / (r + 1) := by
+          exact div_le_div_of_nonpos_of_le (le_of_lt hden_neg) hdiff
+      _ = c ^ (-((m : Real) + 1)) / ((m : Real) + 1) := by
+          have hden : (1 + (m : Real)) ≠ 0 := by positivity
+          have hden2 : (-1 - (m : Real)) ≠ 0 := by
+            have hm_nonneg : 0 <= (m : Real) := Nat.cast_nonneg m
+            linarith
+          have hA :
+              -(c ^ (-1 - (m : Real)) * (-1 - (m : Real))⁻¹) =
+                c ^ (-1 - (m : Real)) * (1 + (m : Real))⁻¹ := by
+            field_simp [hden, hden2]
+            ring_nf
+          dsimp [r]
+          have hexp1 :
+              (-((m : Real) + 2) + 1) = -1 - (m : Real) := by
+            ring
+          have hexp2 :
+              (-((m : Real) + 1)) = -1 - (m : Real) := by
+            ring
+          rw [hexp1, hexp2]
+          simpa [div_eq_mul_inv, add_comm, add_left_comm, add_assoc] using hA
+  have hmul :
+      (∫ x in c..(c + (a : Real)),
+        ‖omegaPrimeTrigammaDerivCoeff m‖ * x ^ r) <=
+        ‖omegaPrimeTrigammaDerivCoeff m‖ *
+          (c ^ (-((m : Real) + 1)) / ((m : Real) + 1)) := by
+    rw [intervalIntegral.integral_const_mul]
+    exact mul_le_mul_of_nonneg_left h_int_bound (by positivity)
+  exact hsum_int.trans (by
+    simpa [c, r, mul_assoc] using hmul)
+
+/-- Shifted-tail `tsum` bound with the coefficient norm still explicit.  This
+is the full infinite-tail integral bridge for generated center-jet rows.  The
+last missing arithmetic step is the finite `m = 0..15` coefficient-norm
+normalization used by the v9 row constants. -/
+theorem omegaPrimeTrigammaDerivMajorant_shifted_tsum_le_coeff_norm_rpow_bound
+    (m N : Nat) (hN : 1 <= N) :
+    (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N)) <=
+      ‖omegaPrimeTrigammaDerivCoeff m‖ *
+        ((((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1))) /
+          ((m : Real) + 1)) := by
+  let f : Nat -> Real := fun k => omegaPrimeTrigammaDerivMajorant m (k + N)
+  let B : Real :=
+    ‖omegaPrimeTrigammaDerivCoeff m‖ *
+      ((((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1))) /
+        ((m : Real) + 1))
+  have hc_pos : 0 < (N : Real) - (3 / 4 : Real) := by
+    have hNreal : (1 : Real) <= (N : Real) := by
+      exact_mod_cast hN
+    linarith
+  have hB_nonneg : 0 <= B := by
+    have hden_pos : 0 < (m : Real) + 1 := by
+      have hm_nonneg : 0 <= (m : Real) := Nat.cast_nonneg m
+      linarith
+    have hpow_nonneg :
+        0 <= ((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1)) :=
+      Real.rpow_nonneg (le_of_lt hc_pos) _
+    dsimp [B]
+    exact mul_nonneg (by positivity)
+      (div_nonneg hpow_nonneg (le_of_lt hden_pos))
+  have hsumm : Summable f := by
+    dsimp [f]
+    simpa using
+      (summable_nat_add_iff N).2 (omegaPrimeTrigammaDerivMajorant_summable m)
+  have hbound :
+      ∀ s : Finset Nat, s.sum f <= B := by
+    intro s
+    classical
+    by_cases hs : s.Nonempty
+    · let A := s.max' hs + 1
+      have hsubset : s ⊆ Finset.range A := by
+        intro k hk
+        have hle : k <= s.max' hs := Finset.le_max' s k hk
+        exact Finset.mem_range.mpr (Nat.lt_succ_of_le hle)
+      have hsum_le_range :
+          s.sum f <= (Finset.range A).sum f := by
+        refine Finset.sum_le_sum_of_subset_of_nonneg hsubset ?_
+        intro k _hk_range _hk_not
+        dsimp [f]
+        exact omegaPrimeTrigammaDerivMajorant_nonneg m (k + N)
+      have hrange :
+          (Finset.range A).sum f <= B := by
+        dsimp [f, B]
+        exact omegaPrimeTrigammaDerivMajorant_shifted_sum_le_coeff_norm_rpow_bound
+          m N A hN
+      exact hsum_le_range.trans hrange
+    · have hs_empty : s = ∅ := Finset.not_nonempty_iff_eq_empty.mp hs
+      simp [hs_empty, hB_nonneg]
+  simpa [f, B] using hsumm.tsum_le_of_sum_le hbound
+
+/-- Generated-row shifted-tail budget in the Taylor-center normalization.
+For `m = 0..15`, this is exactly the analytic inequality behind the v9
+`coeffErrorAbs` formula, written in real-power form. -/
+theorem omegaPrimeCenterJet_shifted_tsum_budget_le_generated_rpow_bound_of_le15
+    (m N : Nat) (hm : m <= 15) (hN : 1 <= N) :
+    (Nat.factorial m : Real)⁻¹ *
+        ((1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N))) <=
+      (1 / (2 : Real) ^ (m + 1)) *
+        (((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1))) := by
+  let c : Real := (N : Real) - (3 / 4 : Real)
+  have htail :=
+    omegaPrimeTrigammaDerivMajorant_shifted_tsum_le_coeff_norm_rpow_bound
+      m N hN
+  have hscale_nonneg :
+      0 <= (Nat.factorial m : Real)⁻¹ * (1 / 2 : Real) := by
+    positivity
+  have hscaled :
+      (Nat.factorial m : Real)⁻¹ * (1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N)) <=
+        (Nat.factorial m : Real)⁻¹ * (1 / 2 : Real) *
+          (‖omegaPrimeTrigammaDerivCoeff m‖ *
+            (c ^ (-((m : Real) + 1)) / ((m : Real) + 1))) := by
+    exact mul_le_mul_of_nonneg_left (by simpa [c] using htail) hscale_nonneg
+  have hcoeff :=
+    omegaPrimeTrigammaDerivCoeff_norm_eq_factorial_div_pow_of_le15 m hm
+  rw [hcoeff] at hscaled
+  have hfact :
+      (Nat.factorial (m + 1) : Real) =
+        ((m : Real) + 1) * (Nat.factorial m : Real) := by
+    rw [Nat.factorial_succ]
+    norm_num [Nat.cast_mul, Nat.cast_add, Nat.cast_one]
+  have halg :
+      (Nat.factorial m : Real)⁻¹ * (1 / 2 : Real) *
+          (((Nat.factorial (m + 1) : Real) / (2 : Real) ^ m) *
+            (c ^ (-((m : Real) + 1)) / ((m : Real) + 1))) =
+        (1 / (2 : Real) ^ (m + 1)) *
+          c ^ (-((m : Real) + 1)) := by
+    have hfac_ne : (Nat.factorial m : Real) ≠ 0 := by positivity
+    have hden : ((m : Real) + 1) ≠ 0 := by
+      have hm_nonneg : 0 <= (m : Real) := Nat.cast_nonneg m
+      linarith
+    have hpow_ne : ((2 : Real) ^ m) ≠ 0 := by positivity
+    rw [hfact]
+    field_simp [hfac_ne, hden, hpow_ne, pow_succ]
+    ring
+  calc
+    (Nat.factorial m : Real)⁻¹ *
+        ((1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N)))
+        = (Nat.factorial m : Real)⁻¹ * (1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N)) := by
+            ring
+    _ <= (Nat.factorial m : Real)⁻¹ * (1 / 2 : Real) *
+          (((Nat.factorial (m + 1) : Real) / (2 : Real) ^ m) *
+            (c ^ (-((m : Real) + 1)) / ((m : Real) + 1))) := hscaled
+    _ = (1 / (2 : Real) ^ (m + 1)) *
+          c ^ (-((m : Real) + 1)) := halg
+    _ = (1 / (2 : Real) ^ (m + 1)) *
+          (((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1))) := by
+            simp [c]
+
+/-- Same generated-row shifted-tail budget in the exact denominator form used
+by the v9 JSON payload. -/
+theorem omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15
+    (m N : Nat) (hm : m <= 15) (hN : 1 <= N) :
+    (Nat.factorial m : Real)⁻¹ *
+        ((1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant m (k + N))) <=
+      1 /
+        ((2 : Real) ^ (m + 1) *
+          (((N : Real) - (3 / 4 : Real)) ^ (m + 1))) := by
+  let c : Real := (N : Real) - (3 / 4 : Real)
+  have hc_pos : 0 < c := by
+    have hNreal : (1 : Real) <= (N : Real) := by
+      exact_mod_cast hN
+    dsimp [c]
+    linarith
+  have hbase :=
+    omegaPrimeCenterJet_shifted_tsum_budget_le_generated_rpow_bound_of_le15
+      m N hm hN
+  have hrpow :
+      c ^ (-((m : Real) + 1)) = (c ^ (m + 1))⁻¹ := by
+    calc
+      c ^ (-((m : Real) + 1))
+          = c ^ (-(((m + 1 : Nat) : Real))) := by
+              norm_num [Nat.cast_add, Nat.cast_one]
+      _ = (c ^ ((m + 1 : Nat) : Real))⁻¹ := by
+              rw [Real.rpow_neg (le_of_lt hc_pos)]
+      _ = (c ^ (m + 1))⁻¹ := by
+              rw [Real.rpow_natCast]
+  have hrewrite :
+      (1 / (2 : Real) ^ (m + 1)) *
+          (((N : Real) - (3 / 4 : Real)) ^ (-((m : Real) + 1))) =
+        1 /
+          ((2 : Real) ^ (m + 1) *
+            (((N : Real) - (3 / 4 : Real)) ^ (m + 1))) := by
+    have h2 : ((2 : Real) ^ (m + 1)) ≠ 0 := by positivity
+    have hc_ne : (c ^ (m + 1)) ≠ 0 := by
+      exact pow_ne_zero _ (ne_of_gt hc_pos)
+    change (1 / (2 : Real) ^ (m + 1)) *
+        (c ^ (-((m : Real) + 1))) =
+      1 / ((2 : Real) ^ (m + 1) * c ^ (m + 1))
+    rw [hrpow]
+    field_simp [h2, hc_ne]
+  exact hbase.trans_eq hrewrite
+
 theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
     (eta : Real)
     (hSmoothSeries : ContDiffAt Real 16 omegaPrimeTrigammaSeries eta)

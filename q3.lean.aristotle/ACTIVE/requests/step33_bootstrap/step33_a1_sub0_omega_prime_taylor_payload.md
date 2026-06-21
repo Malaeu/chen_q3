@@ -5,10 +5,10 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v9`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_shifted_tail_rational_rows_need_lean_proof`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
+- status: `fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof`
+- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP`
 - receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
@@ -41,7 +41,9 @@ not close Step33A.1-A.
 - OmegaPrime closed-form prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16`
 - center-jet prefix-tail theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`
 - center-jet prefix-tail checked: `True`
-- status: `receiver_checked_deriv_and_prefix_tail_rows_present_missing_lean_row_proof`
+- shifted-tail generated-bound theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15`
+- shifted-tail generated-bound checked: `True`
+- status: `receiver_checked_deriv_tail_bound_checked_missing_prefix_exact_lean_proof`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -84,31 +86,33 @@ Normalization note:
 Full exact rationals are in the JSON artifact.  This table keeps the
 Markdown readable while preserving proof status.
 
-| j | prefixN | coeff digits | coeffErrorAbs | margin | proofGrade |
-| --- | --- | --- | --- | --- | --- |
-| `0` | `128` | `2866` | `2/509` | `0` | `False` |
-| `1` | `128` | `4306` | `4/259081` | `0` | `False` |
-| `2` | `128` | `5732` | `8/131872229` | `0` | `False` |
-| `3` | `128` | `7176` | `16/67122964561` | `0` | `False` |
-| `4` | `128` | `8600` | `32/34165588961549` | `0` | `False` |
-| `5` | `128` | `10045` | `64/17390284781428441` | `0` | `False` |
-| `6` | `128` | `11474` | `128/8851654953747076469` | `0` | `False` |
-| `7` | `128` | `12915` | `256/4505492371457261922721` | `0` | `False` |
-| `8` | `128` | `14346` | `512/2293295617071746318664989` | `0` | `False` |
-| `9` | `128` | `15783` | `1024/1167287469089518876200479401` | `0` | `False` |
-| `10` | `128` | `17212` | `2048/594149321766565107986044015109` | `0` | `False` |
-| `11` | `128` | `18650` | `4096/302422004779181639964896403690481` | `0` | `False` |
-| `12` | `128` | `20082` | `8192/153932800432603454742132269478454829` | `0` | `False` |
-| `13` | `128` | `21521` | `16384/78351795420195158463745325164533507961` | `0` | `False` |
-| `14` | `128` | `22949` | `32768/39881063868879335658046370508747555552149` | `0` | `False` |
-| `15` | `128` | `24391` | `65536/20299461509259581849945602588952505776043841` | `0` | `False` |
+| j | prefixN | coeff digits | coeffErrorAbs | tail checked | margin | proofGrade |
+| --- | --- | --- | --- | --- | --- | --- |
+| `0` | `128` | `2866` | `2/509` | `True` | `0` | `False` |
+| `1` | `128` | `4306` | `4/259081` | `True` | `0` | `False` |
+| `2` | `128` | `5732` | `8/131872229` | `True` | `0` | `False` |
+| `3` | `128` | `7176` | `16/67122964561` | `True` | `0` | `False` |
+| `4` | `128` | `8600` | `32/34165588961549` | `True` | `0` | `False` |
+| `5` | `128` | `10045` | `64/17390284781428441` | `True` | `0` | `False` |
+| `6` | `128` | `11474` | `128/8851654953747076469` | `True` | `0` | `False` |
+| `7` | `128` | `12915` | `256/4505492371457261922721` | `True` | `0` | `False` |
+| `8` | `128` | `14346` | `512/2293295617071746318664989` | `True` | `0` | `False` |
+| `9` | `128` | `15783` | `1024/1167287469089518876200479401` | `True` | `0` | `False` |
+| `10` | `128` | `17212` | `2048/594149321766565107986044015109` | `True` | `0` | `False` |
+| `11` | `128` | `18650` | `4096/302422004779181639964896403690481` | `True` | `0` | `False` |
+| `12` | `128` | `20082` | `8192/153932800432603454742132269478454829` | `True` | `0` | `False` |
+| `13` | `128` | `21521` | `16384/78351795420195158463745325164533507961` | `True` | `0` | `False` |
+| `14` | `128` | `22949` | `32768/39881063868879335658046370508747555552149` | `True` | `0` | `False` |
+| `15` | `128` | `24391` | `65536/20299461509259581849945602588952505776043841` | `True` | `0` | `False` |
 
 Row proof boundary:
 
 - `prefixExactRational` and `shiftedTailUpperRational` are exact
   rational generator output.
-- `prefixLeanChecked = False` and `tailBoundLeanChecked = False`,
-  so these rows are not proof-grade yet.
+- `tailBoundLeanChecked = True` means the shifted-tail formula is
+  now backed by a checked Lean theorem.
+- `prefixLeanChecked = False`, so these rows are not proof-grade
+  center-jet enclosures yet.
 
 ## Required Proofs
 
@@ -120,8 +124,9 @@ Row proof boundary:
 - already proved locally: trigamma is analytic in the right half-plane and step22OmegaArchWeightDerivClosedForm is ContDiff Real 16
 - already proved locally: Valid.of_order16_integer_budget_checked_deriv uses omegaPrimeClosedForm_iteratedDeriv16_eq, so generated payloads no longer need to supply hSmooth or hDerivEq
 - already proved locally: the OmegaPrime center-jet prefix-tail bridge reduces each j < 16 center-jet enclosure to an exact finite prefix plus a shifted-tail rational upper bound
-- for each j < 16, choose prefixN and prove the exact finite prefix rational plus shiftedTailUpperRational bounds |iteratedDeriv j omegaPrimeClosedForm (1/20) / j! - coeff[j]|
-- for each j < 16, prove 0 <= coeffErrorAbs[j] and close centerJetMargin with the prefix-tail bound
+- already proved locally: for m < 16, the shifted-tail majorant budget is bounded by the generated denominator-form coeffErrorAbs formula
+- for each j < 16, prove the exact finite prefix rational equality for the generated prefixExactRational / coeff[j]
+- for each j < 16, prove 0 <= coeffErrorAbs[j] and close centerJetMargin with the prefix-tail bridge plus checked tail bound
 - prove omegaPrimeOrder16CondensedFactorBudgetBound <= order16Abs
 - prove sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 
@@ -156,23 +161,25 @@ Row proof boundary:
 | --- | --- | --- |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9634` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10069` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `11690` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `12032` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10051` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9911` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9810` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10098` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9647` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10132` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `11597` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `11939` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9654` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9683` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9759` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10859` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16` | `10914` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10949` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15` | `11288` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP` | `None` | `gap` |
+| `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_CENTERED_TAYLOR_LAGRANGE_SPLIT_GAP` | `None` | `gap` |
@@ -198,6 +205,7 @@ Row proof boundary:
 - validIntegerBudgetCheckedDerivConstructorProved: `True`
 - omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget: `True`
 - omegaPrimeCenterJetPrefixTailBridgeProved: `True`
+- omegaPrimeCenterJetShiftedTailGeneratedBoundProved: `True`
 - omegaPrimeCenterJetBoundsProved: `False`
 - omegaPrimeOrder16BoundProved: `False`
 - omegaPrimeOrder16IntegerBudgetProved: `False`
@@ -213,7 +221,7 @@ Row proof boundary:
 ## Failure Codes
 
 - `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL`
-- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`
 
@@ -221,6 +229,7 @@ Row proof boundary:
 
 - `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
 
 ## Closed Historical Failures
 
@@ -230,6 +239,7 @@ Row proof boundary:
 - `STEP33_A1_SUB0_TAYLOR_WITHINEVAL_EXACT_POLY_GAP`
 - `STEP33_A1_SUB0_CENTERED_TAYLOR_REFLECTED_ITERATED_DERIV_GAP`
 - `STEP33_A1_SUB0_RIGHT_LAGRANGE_BRIDGE_GAP`
+- `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
 
 ## Decision
 
@@ -248,5 +258,5 @@ and the exact rational Taylor remainder budget.
 Until those payload fields exist locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
 ```

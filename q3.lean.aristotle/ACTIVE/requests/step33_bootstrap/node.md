@@ -17541,3 +17541,42 @@ Current exact blocker:
 ```text
 STEP33_A1_SUB0_RESIDUAL_INTERVAL_PROOF_MISSING
 ```
+
+## 2026-06-21 EOF Addendum -- OmegaPrime shifted-tail Lean proof checked
+
+OmegaPrime center-jet row route advanced again.  The generated shifted-tail
+bound is now Lean-checked in denominator form.
+
+Checked theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15
+```
+
+Current OmegaPrime payload status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10
+status = fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+tailBoundLeanChecked = true
+prefixLeanChecked = false
+proofGrade = false
+outLeanWritten = false
+```
+
+Closed blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full
+center-jet proof, no order-16 integer payload, no remainder budget closure, and
+Step33A.1-A remains open.

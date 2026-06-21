@@ -43,7 +43,7 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v9"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
 STATUS = "fail_closed_missing_checked_deriv_payload"
 STALE_RECEIVER_SCHEMA_FAILURE = (
@@ -55,6 +55,9 @@ CENTER_JET_SHIFTED_TAIL_FAILURE = (
 )
 CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP"
+)
+CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE = (
+    "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP"
 )
 ORDER16_INTEGER_FAILURE = (
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP"
@@ -123,6 +126,10 @@ TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL = (
 TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE = (
     "Step33Sub0OmegaPrimeTaylorRemainderCert."
     "omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
+)
+TARGET_SHIFTED_TAIL_GENERATED_BOUND = (
+    "Step33Sub0OmegaPrimeTaylorRemainderCert."
+    "omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15"
 )
 GENERATOR_NAME = "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py"
 LEAN_TARGET_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
@@ -203,10 +210,12 @@ TARGET_SYMBOLS = [
     TARGET_OMEGAPRIME_TRIGAMMA_SERIES_PREFIX_TAIL,
     TARGET_OMEGAPRIME_CLOSED_FORM_PREFIX_TAIL,
     TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE,
+    TARGET_SHIFTED_TAIL_GENERATED_BOUND,
     STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE,
     CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
+    CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE,
     ORDER16_INTEGER_FAILURE,
     REMAINDER_BUDGET_FAILURE,
     LAGRANGE_SPLIT_FAILURE,
@@ -244,11 +253,17 @@ TARGET_PATTERNS = {
     TARGET_CENTER_JET_PREFIX_TAIL_BRIDGE: (
         "theorem omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16"
     ),
+    TARGET_SHIFTED_TAIL_GENERATED_BOUND: (
+        "theorem omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15"
+    ),
     STALE_RECEIVER_SCHEMA_FAILURE: STALE_RECEIVER_SCHEMA_FAILURE,
     FIRST_FAILURE: FIRST_FAILURE,
     CENTER_JET_SHIFTED_TAIL_FAILURE: CENTER_JET_SHIFTED_TAIL_FAILURE,
     CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE: (
         CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE
+    ),
+    CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE: (
+        CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE
     ),
     ORDER16_INTEGER_FAILURE: ORDER16_INTEGER_FAILURE,
     REMAINDER_BUDGET_FAILURE: REMAINDER_BUDGET_FAILURE,
@@ -363,13 +378,14 @@ def build_center_jet_prefix_tail_rows(
     *,
     prefix_n: int,
     bridge_present: bool,
+    tail_bound_present: bool,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for index in range(DEGREE + 1):
         prefix = omega_prime_center_prefix(index, prefix_n)
         tail = omega_prime_shifted_tail_upper(index, prefix_n)
         prefix_checked = False
-        tail_checked = False
+        tail_checked = tail_bound_present
         rows.append(
             {
                 "jetIndex": index,
@@ -393,6 +409,7 @@ def build_center_jet_prefix_tail_rows(
                 "tailBoundFormula": (
                     "1 / (2^(m+1) * (prefixN - 3/4)^(m+1))"
                 ),
+                "tailBoundLeanTheorem": TARGET_SHIFTED_TAIL_GENERATED_BOUND,
                 "centerJetMargin": "0",
                 "rationalArithmeticChecked": True,
                 "proofGrade": prefix_checked and tail_checked and bridge_present,
@@ -588,9 +605,13 @@ def build_report(
             center_jet_prefix_tail_bridge_present,
         ]
     )
+    shifted_tail_generated_bound_present = (
+        target_scan[TARGET_SHIFTED_TAIL_GENERATED_BOUND]["status"] == "found"
+    )
     center_jet_prefix_tail_rows = build_center_jet_prefix_tail_rows(
         prefix_n=PREFIX_N,
         bridge_present=center_jet_shifted_tail_bridge_present,
+        tail_bound_present=shifted_tail_generated_bound_present,
     )
     left_bridge_present = target_scan[TARGET_LEFT_BRIDGE]["status"] == "found"
     right_bridge_present = target_scan[TARGET_RIGHT_BRIDGE]["status"] == "found"
@@ -611,12 +632,21 @@ def build_report(
     elif not center_jet_shifted_tail_bridge_present:
         first_failure = CENTER_JET_FAILURE
         status = "fail_closed_missing_center_jet_prefix_tail_bridge"
-    else:
+    elif not shifted_tail_generated_bound_present:
         first_failure = CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE
         status = "fail_closed_shifted_tail_rational_rows_need_lean_proof"
+    else:
+        first_failure = CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE
+        status = "fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof"
 
     target_surface_status = (
-        "receiver_checked_deriv_and_prefix_tail_rows_present_missing_lean_row_proof"
+        "receiver_checked_deriv_tail_bound_checked_missing_prefix_exact_lean_proof"
+        if (
+            receiver_schema_current
+            and center_jet_shifted_tail_bridge_present
+            and shifted_tail_generated_bound_present
+        )
+        else "receiver_checked_deriv_and_prefix_tail_rows_present_missing_shifted_tail_bound_proof"
         if receiver_schema_current and center_jet_shifted_tail_bridge_present
         else
         "receiver_checked_deriv_present_missing_prefix_tail_bridge"
@@ -653,13 +683,14 @@ def build_report(
         "receiverSchemaCurrent": receiver_schema_current,
         "failureCodes": [
             STALE_RECEIVER_SCHEMA_FAILURE,
-            CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
+            CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE,
             ORDER16_INTEGER_FAILURE,
             REMAINDER_BUDGET_FAILURE,
         ],
         "parentFailureCodes": [
             CENTER_JET_FAILURE,
             CENTER_JET_SHIFTED_TAIL_FAILURE,
+            CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
         ],
         "closedHistoricalFailures": [
             HISTORICAL_ORDER16_POLYGAMMA_FAILURE,
@@ -668,6 +699,7 @@ def build_report(
             EXACT_POLY_FAILURE,
             REFLECTED_DERIV_FAILURE,
             RIGHT_LAGRANGE_FAILURE,
+            CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
         ],
         "generator": GENERATOR_NAME,
         "functionId": FUNCTION_ID,
@@ -711,6 +743,8 @@ def build_report(
             "centerJetPrefixTailBridgeChecked": (
                 center_jet_shifted_tail_bridge_present
             ),
+            "shiftedTailGeneratedBoundTheorem": TARGET_SHIFTED_TAIL_GENERATED_BOUND,
+            "shiftedTailGeneratedBoundChecked": shifted_tail_generated_bound_present,
             "status": target_surface_status,
             "statementAscii": (
                 "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound "
@@ -780,7 +814,9 @@ def build_report(
                     "1 / (2^(m+1) * (prefixN - 3/4)^(m+1))"
                 ),
                 "tailFormulaStatus": (
-                    "rational arithmetic generated; Lean proof still required"
+                    "rational arithmetic generated; shifted-tail Lean bound checked"
+                    if shifted_tail_generated_bound_present
+                    else "rational arithmetic generated; shifted-tail Lean proof still required"
                 ),
             },
             "integerBudgetSource": None,
@@ -835,13 +871,18 @@ def build_report(
                 "finite prefix plus a shifted-tail rational upper bound"
             ),
             (
-                "for each j < 16, choose prefixN and prove the exact finite "
-                "prefix rational plus shiftedTailUpperRational bounds "
-                "|iteratedDeriv j omegaPrimeClosedForm (1/20) / j! - coeff[j]|"
+                "already proved locally: for m < 16, the shifted-tail majorant "
+                "budget is bounded by the generated denominator-form "
+                "coeffErrorAbs formula"
+            ),
+            (
+                "for each j < 16, prove the exact finite prefix rational "
+                "equality for the generated prefixExactRational / coeff[j]"
             ),
             (
                 "for each j < 16, prove 0 <= coeffErrorAbs[j] and close "
-                "centerJetMargin with the prefix-tail bound"
+                "centerJetMargin with the prefix-tail bridge plus checked "
+                "tail bound"
             ),
             (
                 "prove omegaPrimeOrder16CondensedFactorBudgetBound "
@@ -874,6 +915,9 @@ def build_report(
             ),
             "omegaPrimeCenterJetPrefixTailBridgeProved": (
                 center_jet_shifted_tail_bridge_present
+            ),
+            "omegaPrimeCenterJetShiftedTailGeneratedBoundProved": (
+                shifted_tail_generated_bound_present
             ),
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
@@ -932,8 +976,9 @@ def build_report(
                 RIGHT_LAGRANGE_FAILURE,
                 LEFT_LAGRANGE_FAILURE,
                 LAGRANGE_SPLIT_FAILURE,
+                CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE,
             ],
-            "nextFailureAfterBridge": CENTER_JET_SHIFTED_TAIL_FAILURE,
+            "nextFailureAfterBridge": first_failure,
             "whyNotEndpointFiniteCover": (
                 "Endpoint finite-cover subdivision still needs the same "
                 "trigamma/polygamma source bounds, repeated over segments."
@@ -1006,6 +1051,8 @@ def render_md(report: dict[str, Any]) -> str:
         f"- OmegaPrime closed-form prefix-tail theorem: `{report['targetLeanSurface']['omegaPrimeClosedFormPrefixTailTheorem']}`",
         f"- center-jet prefix-tail theorem: `{report['targetLeanSurface']['centerJetPrefixTailBridgeTheorem']}`",
         f"- center-jet prefix-tail checked: `{report['targetLeanSurface']['centerJetPrefixTailBridgeChecked']}`",
+        f"- shifted-tail generated-bound theorem: `{report['targetLeanSurface']['shiftedTailGeneratedBoundTheorem']}`",
+        f"- shifted-tail generated-bound checked: `{report['targetLeanSurface']['shiftedTailGeneratedBoundChecked']}`",
         f"- status: `{report['targetLeanSurface']['status']}`",
         "",
         "```text",
@@ -1049,16 +1096,17 @@ def render_md(report: dict[str, Any]) -> str:
         "Full exact rationals are in the JSON artifact.  This table keeps the",
         "Markdown readable while preserving proof status.",
         "",
-        "| j | prefixN | coeff digits | coeffErrorAbs | margin | proofGrade |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| j | prefixN | coeff digits | coeffErrorAbs | tail checked | margin | proofGrade |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in report["generatorFields"]["centerJetPrefixTailRows"]:
         lines.append(
-            "| `{j}` | `{n}` | `{digits}` | `{err}` | `{margin}` | `{grade}` |".format(
+            "| `{j}` | `{n}` | `{digits}` | `{err}` | `{tail}` | `{margin}` | `{grade}` |".format(
                 j=row["jetIndex"],
                 n=row["prefixN"],
                 digits=row["prefixExactRationalDigits"],
                 err=row["coeffErrorAbs"],
+                tail=row["tailBoundLeanChecked"],
                 margin=row["centerJetMargin"],
                 grade=row["proofGrade"],
             )
@@ -1071,8 +1119,10 @@ def render_md(report: dict[str, Any]) -> str:
             "",
             "- `prefixExactRational` and `shiftedTailUpperRational` are exact",
             "  rational generator output.",
-            "- `prefixLeanChecked = False` and `tailBoundLeanChecked = False`,",
-            "  so these rows are not proof-grade yet.",
+            "- `tailBoundLeanChecked = True` means the shifted-tail formula is",
+            "  now backed by a checked Lean theorem.",
+            "- `prefixLeanChecked = False`, so these rows are not proof-grade",
+            "  center-jet enclosures yet.",
             "",
         "## Required Proofs",
         "",

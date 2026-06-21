@@ -37315,3 +37315,43 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   coefficient-norm identity or the missing shifted p-series integral bridge.
 - Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no
   Step33A.1-A closure, and no Step33/Step34/RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeShiftedTailLeanProofClosed
+
+- Status: shifted-tail Lean proof closed, not Step33A.1-A closure.
+- Added and Lean-checked reusable theorems in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_eq_coeff_norm_mul_shifted_rpow`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_nonneg`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivCoeff_norm_eq_factorial_div_pow_of_le15`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_shifted_sum_le_integral`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_shifted_sum_le_coeff_norm_rpow_bound`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_shifted_tsum_le_coeff_norm_rpow_bound`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_rpow_bound_of_le15`, and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15`.
+- The final theorem proves the v9/v10 denominator-form tail budget:
+  `m!^-1 * (1/2) * tsum_k omegaPrimeTrigammaDerivMajorant m (k + N)
+   <= 1 / (2^(m+1) * (N - 3/4)^(m+1))`
+  for `m <= 15`, `1 <= N`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`
+  and `.md` as schema `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10`.
+- Generated status is now
+  `fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof`.
+- New active first failure:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP`.
+- The previous
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`
+  is closed and recorded only as a parent/history failure.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan for `sorry|admit|exact?`,
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  generator run, and JSON validation.
+- Boundary: `tailBoundLeanChecked = true` for all 16 rows, but
+  `prefixLeanChecked = false` and `proofGrade = false`; no generated
+  `Step33Sub0OmegaPrimeTaylorRemainderCert`, no center-jet proof, no order-16
+  integer payload, no remainder budget closure, and no Step33A.1-A / Step33 /
+  Step34 / RH claim.

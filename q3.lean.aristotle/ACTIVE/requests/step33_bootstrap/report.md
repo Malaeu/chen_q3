@@ -60575,3 +60575,68 @@ Boundary: no Lean proof file was edited in this sync, no generated
 `Step33Sub0OmegaPrimeTaylorRemainderCert`, no center-jet proof, no order-16
 integer payload, no remainder budget closure, no Step33A.1-A closure, and no
 Step33/Step34/RH claim.
+
+## 2026-06-21 Addendum -- OmegaPrime shifted-tail bound Lean-checked
+
+Added the proof-grade shifted-tail majorant bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New terminal theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15
+```
+
+It proves the generated denominator-form tail budget for all generated rows:
+
+```text
+m <= 15, 1 <= N
+m!^-1 * (1/2) * tsum_k omegaPrimeTrigammaDerivMajorant m (k + N)
+  <= 1 / (2^(m+1) * (N - 3/4)^(m+1)).
+```
+
+Regenerated OmegaPrime payload status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10
+status = fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+tailBoundLeanChecked = true
+proofSafeClosedFields = 0
+outLeanWritten = false
+```
+
+Closed blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP
+```
+
+Active exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Interpretation: the analytic tail is now proof-grade in the same normalization
+as the generated JSON rows.  The remaining center-jet gap is the Lean arithmetic
+connection between each huge generated `prefixExactRational` and the exact
+finite prefix sum.
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full
+center-jet proof, no order-16 integer payload, no remainder budget closure, no
+Step33A.1-A closure, and no Step33/Step34/RH claim.
