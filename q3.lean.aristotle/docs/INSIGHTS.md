@@ -37563,3 +37563,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
   proof, no order-16 integer budget, no final Taylor remainder budget, no
   Step33A.1-A / Step33 / Step34 / RH closure.
+
+## Insight (2026-06-21, Step33A.1-A, in progress) -- OmegaPrimeOrder16IntegerBudgetPlan
+
+- Target:
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`.
+- Local receiver:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`
+  consumes exactly
+  `omegaPrimeOrder16CondensedFactorBudgetBound <= data.order16Abs`.
+- Local definition:
+  `omegaPrimeOrder16CondensedFactorBudgetBound = 17! * (2^19 + 1)`.
+- q3_docs search found no stronger already-closed artifact for this payload
+  field.  Web search is not proof evidence here; it only sanity-checks that the
+  local `norm_num` tactic is the right exact-arithmetic tool.
+- Smallest proof-producing patch: add a checked Lean inequality against the
+  generated rational integer
+  `186483005989023744000`, then have the generator emit the same value as
+  `order16Abs`.
+- Expected next state: move `firstFailure` from
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
+  to `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`.
+- Boundary: this should not produce `data.Valid`; the final Taylor remainder
+  budget remains open after the order-16 integer budget is checked.
