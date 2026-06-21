@@ -37429,3 +37429,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP`.
 - Boundary: this still covers only `m = 0`, `N = 1`; generated `prefixN = 128`
   rows remain `prefixLeanChecked = false` and `proofGrade = false`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeM0RatSumCastBridgeChecked
+
+- Status: `m = 0` rational sum-cast bridge checked, not full generated-prefix
+  closure.
+- Added checked term-level bridge:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_cast`.
+- Added checked prefix-level bridge for arbitrary `N`:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_cast`.
+- The proof uses the local formula
+  `omegaPrimeTrigammaSeriesTerm_iteratedDeriv`, explicit `zpow_two`,
+  `Complex.re/im` projection lemmas, one denominator expansion, and then
+  `Finset.sum_congr` plus `Rat.cast_sum`.
+- This closes the rational finite-sum cast pattern for `m = 0`; the older
+  `m = 0`, `N = 1` smoke theorem now follows from the general prefix theorem.
+- Next exact subgap:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP`.
+- Boundary: generated v10 rows still require `m = 1..15` rational evaluators
+  and exact generated `prefixN = 128` equality checks before
+  `prefixLeanChecked` can become true.

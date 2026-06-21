@@ -60738,3 +60738,38 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP
 Boundary: smoke only (`m = 0`, `N = 1`).  Generated v10 rows remain
 `prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
 no full center-jet proof, no Step33A.1-A closure.
+
+## 2026-06-21 -- OmegaPrime m0 Rat sum-cast bridge checked
+
+New checked theorems:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_cast
+```
+
+The term theorem proves the cast of the rational `m = 0` term evaluator equals
+the local Lean term:
+
+```text
+iteratedDeriv 0 (fun t => omegaPrimeTrigammaSeriesTerm t n) (1/20)
+```
+
+The prefix theorem proves the finite-sum bridge for all `N : Nat`, using
+`Finset.sum_congr` and `Rat.cast_sum`.
+
+Active full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP
+```
+
+Boundary: this is `m = 0` only.  Generated v10 rows remain
+`prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
+no full center-jet proof, no Step33A.1-A closure.

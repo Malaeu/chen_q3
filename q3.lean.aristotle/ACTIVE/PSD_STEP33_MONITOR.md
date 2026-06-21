@@ -32113,3 +32113,41 @@ Boundary: this is still smoke-level (`m = 0`, `N = 1`).  Generated v10
 `prefixN = 128` rows still have `prefixLeanChecked = false`, `proofGrade =
 false`; no generated certificate, no full center-jet proof, no Step33A.1-A
 closure.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime m0 Rat sum-cast bridge checked
+
+The rational-prefix bridge is now generalized from the `N = 1` smoke to all
+finite prefix lengths for `m = 0`.
+
+New checked theorems:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_cast
+```
+
+The second theorem proves, for every `N : Nat`, that:
+
+```text
+(-1/2) * sum_{n < N} iteratedDeriv 0 omegaPrimeTrigammaSeriesTerm_n (1/20)
+  = (omegaPrimeCenterJetM0PrefixRat N : Real)
+```
+
+The proof uses a term-level cast bridge, then `Finset.sum_congr` and
+`Rat.cast_sum`.
+
+Current full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Narrowed next subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP
+```
+
+Boundary: this closes the sum-cast bridge only for `m = 0`; generated v10
+rows still have `prefixLeanChecked = false`, `proofGrade = false`; no full
+center-jet proof or Step33A.1-A closure.

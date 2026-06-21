@@ -10548,6 +10548,47 @@ theorem omegaPrimeCenterJetM0PrefixRat_one :
     omegaPrimeCenterJetM0PrefixRat 1 = (16000 / 10201 : Rat) := by
   native_decide
 
+theorem omegaPrimeCenterJetM0TermRat_cast (n : Nat) :
+    iteratedDeriv 0
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+        (1 / 20 : Real) =
+      (omegaPrimeCenterJetM0TermRat n : Real) := by
+  simp [omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+    omegaPrimeOrder16SeriesBase, omegaPrimeCenterJetM0TermRat,
+    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat, Complex.normSq]
+  rw [zpow_two]
+  simp [Complex.add_re, Complex.add_im, Complex.I_re, Complex.I_im,
+    Complex.mul_re, Complex.mul_im]
+  ring_nf
+  have hden :
+      (101 / 1600 + (n : Real) * (1 / 2) + (n : Real) ^ 2) ^ 2 =
+        10201 / 2560000 + (n : Real) * (101 / 1600) +
+          (n : Real) ^ 2 * (301 / 800) + (n : Real) ^ 3 +
+            (n : Real) ^ 4 := by
+    ring_nf
+  rw [← hden]
+  rfl
+
+theorem omegaPrimeCenterJetM0PrefixRat_cast (N : Nat) :
+    ((Nat.factorial 0 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 0
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM0PrefixRat N : Real) := by
+  have hsum :
+      (Finset.range N).sum (fun n : Nat =>
+          iteratedDeriv 0
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real)) =
+        (Finset.range N).sum (fun n : Nat =>
+          (omegaPrimeCenterJetM0TermRat n : Real)) := by
+    refine Finset.sum_congr rfl ?_
+    intro n _
+    exact omegaPrimeCenterJetM0TermRat_cast n
+  rw [hsum]
+  simp [omegaPrimeCenterJetM0PrefixRat, Rat.cast_sum]
+
 theorem omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke :
     ((Nat.factorial 0 : Real)⁻¹ * (-1 / 2 : Real)) *
         ((Finset.range 1).sum (fun n : Nat =>
@@ -10555,9 +10596,7 @@ theorem omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke :
             (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
             (1 / 20 : Real))) =
       (omegaPrimeCenterJetM0PrefixRat 1 : Real) := by
-  rw [omegaPrimeCenterJetPrefix_m0_N1_smoke_direct]
-  norm_num [omegaPrimeCenterJetM0PrefixRat, omegaPrimeCenterJetM0TermRat,
-    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat]
+  exact omegaPrimeCenterJetM0PrefixRat_cast 1
 
 theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
     (k : Nat) (n : Nat) (r : Real) :

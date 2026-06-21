@@ -17648,3 +17648,31 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP
 Boundary: generated `prefixN = 128` rows remain fail-closed with
 `prefixLeanChecked = false`; no full center-jet proof and no Step33A.1-A
 closure.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime m0 Rat sum-cast bridge checked
+
+Lean now checks the `m = 0` rational sum-cast bridge for every finite prefix
+length:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_cast
+```
+
+The prefix theorem proves the rational-prefix equality for arbitrary `N`, not
+only the `N = 1` smoke.
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next implementable subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_ALL_JETS_GAP
+```
+
+Boundary: generated `m = 1..15` prefix rows still have no rational evaluator /
+cast bridge and all generated rows remain `prefixLeanChecked = false`.
