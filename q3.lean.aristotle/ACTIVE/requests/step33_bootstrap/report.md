@@ -61822,3 +61822,63 @@ Boundary: this is not Step33A.1-A closure.  It gives Lean the generic receiver
 for a nonconstant shape-square derivative source; the concrete Sub0
 center-jet/order-16 payload, exact residual assembly, residual range
 certificate, and final interval theorem remain open.
+
+## 2026-06-21 -- ShapeSqDeriv order16 smooth bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 nonconstant shape-square derivative Taylor
+source.
+
+New checked Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+realSinc_contDiff
+centeredBSplineImagTransformRealClosedForm_contDiff
+shapeSqDeriv_contDiff16
+```
+
+The smoothness bridge proves the `hSmooth` input required by:
+
+```lean
+shapeSqDerivTaylor_bound_of_centerJet_and_order16
+```
+
+Proof route:
+
+```text
+realSinc at zero: realSinc_analyticAt_zero
+realSinc away from zero: local equality with Real.sin x / x
+sin smoothness: Real.contDiff_sin
+shape component smoothness: fun_prop after realSinc_contDiff
+ShapeSqDeriv C^16: ContDiff.deriv' from C^17 of E^2
+```
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+```
+
+Closed local smoothness gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_SMOOTH_BRIDGE_GAP
+```
+
+Current live gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP
+```
+
+Sharpened payload requirement:
+
+```text
+center-jet coefficient enclosures for deriv(E(eta)^2)
+uniform order-16 derivative bound on the active Sub0 cell
+single rational Taylor budget in rawOmegaATaylorPolynomial normalization
+```
+
+Boundary: this is not Step33A.1-A closure.  It removes the smoothness bridge
+obstruction only; the concrete Sub0 payload, exact residual assembly, residual
+range certificate, and final interval theorem remain open.

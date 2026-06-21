@@ -37971,3 +37971,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is not Step33A.1-A closure.  The concrete Sub0 center-jet and
   order-16 payload, raw residual assembly, residual range certificate, and
   final interval theorem remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivSmoothBridgeChecked
+
+- Lean now checks the smoothness bridge needed to instantiate the order-16
+  ShapeSq derivative receiver:
+  `realSinc_contDiff`,
+  `centeredBSplineImagTransformRealClosedForm_contDiff`, and
+  `shapeSqDeriv_contDiff16`.
+- The local proof route is proof-grade and does not rely on a missing
+  `Real.contDiff_sinc` theorem: at zero it uses
+  `realSinc_analyticAt_zero`; away from zero it locally rewrites `realSinc` to
+  `Real.sin x / x` and uses `Real.contDiff_sin`.
+- Closed local smoothness gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_SMOOTH_BRIDGE_GAP`.
+- Current live blocker remains the concrete payload:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP`, now sharpened to
+  center-jet coefficient enclosures plus a uniform order-16 derivative bound
+  for `deriv (E(eta)^2)` in the active Sub0 cell.
+- Validation passed: targeted
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+- Boundary: this is not Step33A.1-A closure and not a numeric certificate.  It
+  only supplies the `hSmooth` input expected by
+  `shapeSqDerivTaylor_bound_of_centerJet_and_order16`.

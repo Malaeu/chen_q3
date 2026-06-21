@@ -32644,3 +32644,38 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP
 Boundary: Step33A.1-A remains open.  This receiver does not provide the concrete
 Sub0 center-jet/order-16 payload, raw residual assembly, residual range
 certificate, or final interval theorem.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv smooth bridge checked
+
+Lean now checks the smoothness bridge required by the order-16 nonconstant
+shape-square derivative receiver:
+
+```lean
+realSinc_contDiff
+centeredBSplineImagTransformRealClosedForm_contDiff
+shapeSqDeriv_contDiff16
+```
+
+Closed local smoothness gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_SMOOTH_BRIDGE_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_PAYLOAD_GAP
+```
+
+Sharpened next proof object:
+
+```text
+Concrete Sub0 order-16 ShapeSqDeriv payload:
+center-jet coefficient enclosures, uniform order-16 derivative bound,
+and rational Taylor budget for shapeSqDerivTaylor_bound_of_centerJet_and_order16.
+```
+
+Boundary: Step33A.1-A remains open.  This update supplies only the `hSmooth`
+input for the receiver; it is not the center-jet/order-16 numeric certificate,
+not residual assembly, and not the final interval theorem.

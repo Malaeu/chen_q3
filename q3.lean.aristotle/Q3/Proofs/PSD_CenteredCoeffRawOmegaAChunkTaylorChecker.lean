@@ -3335,6 +3335,51 @@ theorem realSinc_analyticAt_zero :
   rcases (Real.analyticAt_sin (x := 0)) with ⟨p, hp⟩
   exact ⟨p.fslope, HasFPowerSeriesAt.has_fpower_series_dslope_fslope hp⟩
 
+/-- The local sinc model is smooth on the real line.
+
+The removable point uses the existing analytic-at-zero proof; away from zero
+the function is locally `sin x / x`. -/
+@[fun_prop]
+theorem realSinc_contDiff (n : WithTop ENat) :
+    ContDiff Real n (realSinc : Real -> Real) := by
+  rw [contDiff_iff_contDiffAt]
+  intro x
+  by_cases hx : x = 0
+  · subst x
+    exact realSinc_analyticAt_zero.contDiffAt
+  · have hlocal :
+        (realSinc : Real -> Real) =ᶠ[nhds x] fun t : Real => Real.sin t / t := by
+      filter_upwards [isOpen_ne.mem_nhds hx] with t ht
+      exact Q3.PSDpd.realSinc_of_ne_zero ht
+    have hdiv : ContDiffAt Real n (fun t : Real => Real.sin t / t) x := by
+      exact Real.contDiff_sin.contDiffAt.div contDiffAt_id hx
+    exact hdiv.congr_of_eventuallyEq hlocal
+
+/-- The closed-form B-spline shape component is smooth on the real line. -/
+@[fun_prop]
+theorem centeredBSplineImagTransformRealClosedForm_contDiff
+    (k : Nat) (ell : Real) (n : WithTop ENat) :
+    ContDiff Real n
+      (fun t : Real => centeredBSplineImagTransformRealClosedForm k ell t) := by
+  unfold centeredBSplineImagTransformRealClosedForm
+  fun_prop
+
+/-- Smoothness bridge required by the nonconstant shape-square derivative
+order-16 Taylor receiver. -/
+theorem shapeSqDeriv_contDiff16 (k : Nat) (ell : Real) :
+    ContDiff Real 16
+      (fun eta : Real =>
+        deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta) := by
+  have hbase :
+      ContDiff Real (17 : Nat)
+        (fun t : Real =>
+          (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2) := by
+    fun_prop
+  simpa using (ContDiff.deriv' (n := (16 : Nat)) hbase)
+
 /-- The derivative of the local sinc model is differentiable at the removable
 singularity. -/
 theorem deriv_realSinc_differentiableAt_zero :
