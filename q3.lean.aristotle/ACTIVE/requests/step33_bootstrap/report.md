@@ -61023,3 +61023,68 @@ Boundary: generated v10 rows still have `prefixLeanChecked = false`,
 `proofGrade = false`; no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`,
 no center-jet proof, no remainder budget closure, no Step33A.1-A / Step33 /
 Step34 / RH claim.
+
+## 2026-06-21 -- OmegaPrime prefixN=128 generated rows checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 OmegaPrime Taylor payload.
+
+Browser/Proshka was used as advisory route review only.  It recommended
+`COMMIT_PREFIX_ROWS`: since the fixed-jet cast bridges for `m = 0..15` are
+already Lean-checked, committing the generated `prefixN = 128` exact rational
+rows is the smallest proof-producing node.  The generic `RatComplex` evaluator
+remains a possible refactor, not a prerequisite for this node.
+
+Lean additions in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_128
+...
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_128
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11
+```
+
+The generator now scans both the generated exact-prefix theorems and the
+existing cast bridges.  Regenerated artifact summary:
+
+```text
+status = fail_closed_center_jet_rows_checked_missing_order16_integer_budget
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+proofSafeClosedFields = 16
+rationalPrefixTailRowsGenerated = 16
+omegaPrimeCenterJetPrefixExactRowsProvedCount = 16
+omegaPrimeCenterJetPrefixTailRowsProofGradeCount = 16
+```
+
+Validation passed:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py
+jq '{schema,status,firstFailure,proofSafeClosedFields:.proofStatus.proofSafeClosedFields,prefixRows:.proofStatus.rationalPrefixTailRowsGenerated,prefixExactRows:.proofStatus.omegaPrimeCenterJetPrefixExactRowsProvedCount,prefixProofGrade:.proofStatus.omegaPrimeCenterJetPrefixTailRowsProofGradeCount,targetStatus:.targetLeanSurface.status}' q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json >/dev/null
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.md q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json
+```
+
+Compile-time note: the direct Lean and `q3_check` runs are slower than ordinary
+local lemmas because the patch contains 16 large `native_decide` rational
+equalities.  They completed successfully in this run.
+
+Boundary: this closes only the generated center-jet prefix/tail rows at
+row-level proof-grade.  It does not construct a
+`Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof and does not close the
+order-16 integer budget or final remainder budget.
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```

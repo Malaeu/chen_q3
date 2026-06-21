@@ -43,7 +43,7 @@ GAP_MAP = (
 DEFAULT_OUT_JSON = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.json"
 DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_omega_prime_taylor_payload.md"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10"
+SCHEMA = "q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11"
 ROUTE_ID = "STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD"
 STATUS = "fail_closed_missing_checked_deriv_payload"
 STALE_RECEIVER_SCHEMA_FAILURE = (
@@ -379,12 +379,14 @@ def build_center_jet_prefix_tail_rows(
     prefix_n: int,
     bridge_present: bool,
     tail_bound_present: bool,
+    prefix_lean_scan: dict[int, dict[str, Any]],
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for index in range(DEGREE + 1):
         prefix = omega_prime_center_prefix(index, prefix_n)
         tail = omega_prime_shifted_tail_upper(index, prefix_n)
-        prefix_checked = False
+        prefix_scan = prefix_lean_scan[index]
+        prefix_checked = prefix_scan["status"] == "found"
         tail_checked = tail_bound_present
         rows.append(
             {
@@ -392,6 +394,12 @@ def build_center_jet_prefix_tail_rows(
                 "prefixN": prefix_n,
                 "prefixExactRational": fraction_to_str(prefix),
                 "prefixExactRationalDigits": fraction_digit_count(prefix),
+                "prefixExactLeanTheorem": prefix_scan["exactTheorem"],
+                "prefixExactLeanLine": prefix_scan["exactLine"],
+                "prefixExactLeanStatus": prefix_scan["exactStatus"],
+                "prefixCastLeanTheorem": prefix_scan["castTheorem"],
+                "prefixCastLeanLine": prefix_scan["castLine"],
+                "prefixCastLeanStatus": prefix_scan["castStatus"],
                 "shiftedTailUpperRational": fraction_to_str(tail),
                 "shiftedTailUpperRationalDigits": fraction_digit_count(tail),
                 "coeff": fraction_to_str(prefix),
@@ -473,6 +481,51 @@ def line_of_symbol(path: Path, symbol: str) -> int | None:
         if symbol in line:
             return line_no
     return None
+
+
+def center_jet_prefix_exact_theorem(index: int, prefix_n: int) -> str:
+    return (
+        "Step33Sub0OmegaPrimeTaylorRemainderCert."
+        f"omegaPrimeCenterJetM{index}PrefixRat_{prefix_n}"
+    )
+
+
+def center_jet_prefix_exact_pattern(index: int, prefix_n: int) -> str:
+    return f"theorem omegaPrimeCenterJetM{index}PrefixRat_{prefix_n}"
+
+
+def center_jet_prefix_cast_theorem(index: int) -> str:
+    return (
+        "Step33Sub0OmegaPrimeTaylorRemainderCert."
+        f"omegaPrimeCenterJetM{index}PrefixRat_cast"
+    )
+
+
+def center_jet_prefix_cast_pattern(index: int) -> str:
+    return f"theorem omegaPrimeCenterJetM{index}PrefixRat_cast"
+
+
+def center_jet_prefix_lean_scan(path: Path, prefix_n: int) -> dict[int, dict[str, Any]]:
+    out: dict[int, dict[str, Any]] = {}
+    for index in range(DEGREE + 1):
+        exact_line = line_of_symbol(path, center_jet_prefix_exact_pattern(index, prefix_n))
+        cast_line = line_of_symbol(path, center_jet_prefix_cast_pattern(index))
+        out[index] = {
+            "index": index,
+            "prefixN": prefix_n,
+            "exactTheorem": center_jet_prefix_exact_theorem(index, prefix_n),
+            "exactLine": exact_line,
+            "exactStatus": "found" if exact_line is not None else "gap",
+            "castTheorem": center_jet_prefix_cast_theorem(index),
+            "castLine": cast_line,
+            "castStatus": "found" if cast_line is not None else "gap",
+            "status": (
+                "found"
+                if exact_line is not None and cast_line is not None
+                else "gap"
+            ),
+        }
+    return out
 
 
 def symbol_scan(path_by_label: dict[str, Path]) -> dict[str, list[dict[str, Any]]]:
@@ -608,10 +661,24 @@ def build_report(
     shifted_tail_generated_bound_present = (
         target_scan[TARGET_SHIFTED_TAIL_GENERATED_BOUND]["status"] == "found"
     )
+    prefix_lean_scan = center_jet_prefix_lean_scan(endpoint_file, PREFIX_N)
     center_jet_prefix_tail_rows = build_center_jet_prefix_tail_rows(
         prefix_n=PREFIX_N,
         bridge_present=center_jet_shifted_tail_bridge_present,
         tail_bound_present=shifted_tail_generated_bound_present,
+        prefix_lean_scan=prefix_lean_scan,
+    )
+    all_prefix_exact_present = all(
+        row["prefixLeanChecked"] for row in center_jet_prefix_tail_rows
+    )
+    prefix_lean_checked_count = sum(
+        1 for row in center_jet_prefix_tail_rows if row["prefixLeanChecked"]
+    )
+    proof_grade_prefix_tail_row_count = sum(
+        1 for row in center_jet_prefix_tail_rows if row["proofGrade"]
+    )
+    all_prefix_tail_rows_proof_grade = (
+        proof_grade_prefix_tail_row_count == len(center_jet_prefix_tail_rows)
     )
     left_bridge_present = target_scan[TARGET_LEFT_BRIDGE]["status"] == "found"
     right_bridge_present = target_scan[TARGET_RIGHT_BRIDGE]["status"] == "found"
@@ -635,11 +702,22 @@ def build_report(
     elif not shifted_tail_generated_bound_present:
         first_failure = CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_FAILURE
         status = "fail_closed_shifted_tail_rational_rows_need_lean_proof"
-    else:
+    elif not all_prefix_exact_present:
         first_failure = CENTER_JET_PREFIX_EXACT_LEAN_PROOF_FAILURE
         status = "fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof"
+    else:
+        first_failure = ORDER16_INTEGER_FAILURE
+        status = "fail_closed_center_jet_rows_checked_missing_order16_integer_budget"
 
     target_surface_status = (
+        "receiver_checked_deriv_center_jet_rows_checked_missing_order16_integer_budget"
+        if (
+            receiver_schema_current
+            and center_jet_shifted_tail_bridge_present
+            and shifted_tail_generated_bound_present
+            and all_prefix_exact_present
+        )
+        else
         "receiver_checked_deriv_tail_bound_checked_missing_prefix_exact_lean_proof"
         if (
             receiver_schema_current
@@ -745,6 +823,10 @@ def build_report(
             ),
             "shiftedTailGeneratedBoundTheorem": TARGET_SHIFTED_TAIL_GENERATED_BOUND,
             "shiftedTailGeneratedBoundChecked": shifted_tail_generated_bound_present,
+            "centerJetPrefixExactRowsChecked": all_prefix_exact_present,
+            "centerJetPrefixExactRowsCheckedCount": prefix_lean_checked_count,
+            "centerJetPrefixTailRowsProofGrade": all_prefix_tail_rows_proof_grade,
+            "centerJetPrefixTailRowsProofGradeCount": proof_grade_prefix_tail_row_count,
             "status": target_surface_status,
             "statementAscii": (
                 "theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound "
@@ -780,6 +862,9 @@ def build_report(
             "coeffErrorAbs": coeff_error_slots_from_rows(center_jet_prefix_tail_rows),
             "centerJet": center_jet_slots_from_rows(center_jet_prefix_tail_rows),
             "centerJetPrefixTailRows": center_jet_prefix_tail_rows,
+            "centerJetPrefixLeanScan": [
+                prefix_lean_scan[index] for index in range(DEGREE + 1)
+            ],
             "order16Abs": None,
             "order16": {
                 "condensedFactorBudgetBoundExact": None,
@@ -825,7 +910,7 @@ def build_report(
             "allPayloadObligationsPassed": False,
             "leanOutputPath": None,
             "leanValidationStatus": "not_run",
-            "proofSafeClosedFields": 0,
+            "proofSafeClosedFields": proof_grade_prefix_tail_row_count,
             "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
         },
@@ -919,6 +1004,16 @@ def build_report(
             "omegaPrimeCenterJetShiftedTailGeneratedBoundProved": (
                 shifted_tail_generated_bound_present
             ),
+            "omegaPrimeCenterJetPrefixExactRowsProved": all_prefix_exact_present,
+            "omegaPrimeCenterJetPrefixExactRowsProvedCount": (
+                prefix_lean_checked_count
+            ),
+            "omegaPrimeCenterJetPrefixTailRowsProofGrade": (
+                all_prefix_tail_rows_proof_grade
+            ),
+            "omegaPrimeCenterJetPrefixTailRowsProofGradeCount": (
+                proof_grade_prefix_tail_row_count
+            ),
             "omegaPrimeCenterJetBoundsProved": False,
             "omegaPrimeOrder16BoundProved": False,
             "omegaPrimeOrder16IntegerBudgetProved": False,
@@ -927,7 +1022,7 @@ def build_report(
             "allCenterJetsProved": False,
             "allPayloadObligationsPassed": False,
             "leanValidationStatus": "not_run",
-            "proofSafeClosedFields": 0,
+            "proofSafeClosedFields": proof_grade_prefix_tail_row_count,
             "rationalPrefixTailRowsGenerated": len(center_jet_prefix_tail_rows),
             "outLeanWritten": False,
         },
@@ -1053,6 +1148,10 @@ def render_md(report: dict[str, Any]) -> str:
         f"- center-jet prefix-tail checked: `{report['targetLeanSurface']['centerJetPrefixTailBridgeChecked']}`",
         f"- shifted-tail generated-bound theorem: `{report['targetLeanSurface']['shiftedTailGeneratedBoundTheorem']}`",
         f"- shifted-tail generated-bound checked: `{report['targetLeanSurface']['shiftedTailGeneratedBoundChecked']}`",
+        f"- center-jet prefix exact rows checked: `{report['targetLeanSurface']['centerJetPrefixExactRowsChecked']}`",
+        f"- center-jet prefix exact rows checked count: `{report['targetLeanSurface']['centerJetPrefixExactRowsCheckedCount']}`",
+        f"- center-jet prefix/tail rows proof-grade: `{report['targetLeanSurface']['centerJetPrefixTailRowsProofGrade']}`",
+        f"- center-jet prefix/tail rows proof-grade count: `{report['targetLeanSurface']['centerJetPrefixTailRowsProofGradeCount']}`",
         f"- status: `{report['targetLeanSurface']['status']}`",
         "",
         "```text",
@@ -1096,16 +1195,17 @@ def render_md(report: dict[str, Any]) -> str:
         "Full exact rationals are in the JSON artifact.  This table keeps the",
         "Markdown readable while preserving proof status.",
         "",
-        "| j | prefixN | coeff digits | coeffErrorAbs | tail checked | margin | proofGrade |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "| j | prefixN | coeff digits | prefix checked | exact line | tail checked | margin | proofGrade |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for row in report["generatorFields"]["centerJetPrefixTailRows"]:
         lines.append(
-            "| `{j}` | `{n}` | `{digits}` | `{err}` | `{tail}` | `{margin}` | `{grade}` |".format(
+            "| `{j}` | `{n}` | `{digits}` | `{prefix}` | `{line}` | `{tail}` | `{margin}` | `{grade}` |".format(
                 j=row["jetIndex"],
                 n=row["prefixN"],
                 digits=row["prefixExactRationalDigits"],
-                err=row["coeffErrorAbs"],
+                prefix=row["prefixLeanChecked"],
+                line=row["prefixExactLeanLine"],
                 tail=row["tailBoundLeanChecked"],
                 margin=row["centerJetMargin"],
                 grade=row["proofGrade"],
@@ -1121,8 +1221,11 @@ def render_md(report: dict[str, Any]) -> str:
             "  rational generator output.",
             "- `tailBoundLeanChecked = True` means the shifted-tail formula is",
             "  now backed by a checked Lean theorem.",
-            "- `prefixLeanChecked = False`, so these rows are not proof-grade",
-            "  center-jet enclosures yet.",
+            "- `prefixLeanChecked = True` means the generated finite-prefix",
+            "  rational equality theorem and the corresponding cast theorem",
+            "  are both present in the target Lean file.",
+            "- `proofGrade = True` is row-level only: it does not assert that",
+            "  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` is closed.",
             "",
         "## Required Proofs",
         "",

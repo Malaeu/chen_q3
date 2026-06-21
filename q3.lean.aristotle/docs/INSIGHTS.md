@@ -37532,3 +37532,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: generated v10 rows still have `prefixLeanChecked = false`,
   `proofGrade = false`; no generated certificate, no full center-jet proof, no
   Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimePrefixN128RowsChecked
+
+- Status: generated `prefixN = 128` exact rational rows are Lean-checked for
+  all `m = 0..15`, but this is still not a `Valid` Taylor certificate.
+- Added checked exact-row facts:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_128`
+  through
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_128`.
+- The OmegaPrime payload generator now emits schema
+  `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11` and scans the
+  generated exact-prefix theorem plus the corresponding
+  `omegaPrimeCenterJetM{m}PrefixRat_cast` bridge for every row.
+- Regenerated artifact status:
+  `fail_closed_center_jet_rows_checked_missing_order16_integer_budget`,
+  `proofSafeClosedFields = 16`,
+  `omegaPrimeCenterJetPrefixExactRowsProvedCount = 16`, and
+  `omegaPrimeCenterJetPrefixTailRowsProofGradeCount = 16`.
+- Browser/Pro advisory chose `COMMIT_PREFIX_ROWS`: this is the smallest
+  proof-producing node after the fixed-jet cast bridges; generic `RatComplex`
+  is a possible refactor only if the compile-time cost becomes unacceptable.
+- Validation passed:
+  `python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py`,
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  generator rerun, JSON parse, `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  and hole scan for `sorry|admit|exact?`.
+- The next exact subgap is now
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`.
+- Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
+  proof, no order-16 integer budget, no final Taylor remainder budget, no
+  Step33A.1-A / Step33 / Step34 / RH closure.

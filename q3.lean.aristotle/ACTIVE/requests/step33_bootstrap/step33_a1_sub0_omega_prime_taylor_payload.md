@@ -5,17 +5,17 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v10`
+- schema: `q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11`
 - route: `STEP33_A1_SUB0_OMEGA_PRIME_TAYLOR_PAYLOAD`
-- status: `fail_closed_tail_bound_checked_missing_prefix_exact_lean_proof`
-- first failure: `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP`
+- status: `fail_closed_center_jet_rows_checked_missing_order16_integer_budget`
+- first failure: `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`
 - receiver schema current: `True`
 - function: `step22OmegaArchWeightDerivClosedForm`
 - center: `1/20`
 - radius: `1/20`
 - degree: `15`
 - center-jet prefixN: `128`
-- proof-safe closed fields: `0`
+- proof-safe closed fields: `16`
 - rational prefix/tail rows generated: `16`
 - Lean emitted: `False`
 
@@ -43,7 +43,11 @@ not close Step33A.1-A.
 - center-jet prefix-tail checked: `True`
 - shifted-tail generated-bound theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15`
 - shifted-tail generated-bound checked: `True`
-- status: `receiver_checked_deriv_tail_bound_checked_missing_prefix_exact_lean_proof`
+- center-jet prefix exact rows checked: `True`
+- center-jet prefix exact rows checked count: `16`
+- center-jet prefix/tail rows proof-grade: `True`
+- center-jet prefix/tail rows proof-grade count: `16`
+- status: `receiver_checked_deriv_center_jet_rows_checked_missing_order16_integer_budget`
 
 ```text
 theorem Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound {data : Step33Sub0OmegaPrimeTaylorRemainderCert} (h : data.Valid) : forall eta in Set.Icc 0 (1/10), norm (step22OmegaArchWeightDerivClosedForm eta - data.poly eta) <= data.remainderAbs
@@ -86,24 +90,24 @@ Normalization note:
 Full exact rationals are in the JSON artifact.  This table keeps the
 Markdown readable while preserving proof status.
 
-| j | prefixN | coeff digits | coeffErrorAbs | tail checked | margin | proofGrade |
-| --- | --- | --- | --- | --- | --- | --- |
-| `0` | `128` | `2866` | `2/509` | `True` | `0` | `False` |
-| `1` | `128` | `4306` | `4/259081` | `True` | `0` | `False` |
-| `2` | `128` | `5732` | `8/131872229` | `True` | `0` | `False` |
-| `3` | `128` | `7176` | `16/67122964561` | `True` | `0` | `False` |
-| `4` | `128` | `8600` | `32/34165588961549` | `True` | `0` | `False` |
-| `5` | `128` | `10045` | `64/17390284781428441` | `True` | `0` | `False` |
-| `6` | `128` | `11474` | `128/8851654953747076469` | `True` | `0` | `False` |
-| `7` | `128` | `12915` | `256/4505492371457261922721` | `True` | `0` | `False` |
-| `8` | `128` | `14346` | `512/2293295617071746318664989` | `True` | `0` | `False` |
-| `9` | `128` | `15783` | `1024/1167287469089518876200479401` | `True` | `0` | `False` |
-| `10` | `128` | `17212` | `2048/594149321766565107986044015109` | `True` | `0` | `False` |
-| `11` | `128` | `18650` | `4096/302422004779181639964896403690481` | `True` | `0` | `False` |
-| `12` | `128` | `20082` | `8192/153932800432603454742132269478454829` | `True` | `0` | `False` |
-| `13` | `128` | `21521` | `16384/78351795420195158463745325164533507961` | `True` | `0` | `False` |
-| `14` | `128` | `22949` | `32768/39881063868879335658046370508747555552149` | `True` | `0` | `False` |
-| `15` | `128` | `24391` | `65536/20299461509259581849945602588952505776043841` | `True` | `0` | `False` |
+| j | prefixN | coeff digits | prefix checked | exact line | tail checked | margin | proofGrade |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `0` | `128` | `2866` | `True` | `10870` | `True` | `0` | `True` |
+| `1` | `128` | `4306` | `True` | `10876` | `True` | `0` | `True` |
+| `2` | `128` | `5732` | `True` | `10882` | `True` | `0` | `True` |
+| `3` | `128` | `7176` | `True` | `10888` | `True` | `0` | `True` |
+| `4` | `128` | `8600` | `True` | `10894` | `True` | `0` | `True` |
+| `5` | `128` | `10045` | `True` | `10900` | `True` | `0` | `True` |
+| `6` | `128` | `11474` | `True` | `10906` | `True` | `0` | `True` |
+| `7` | `128` | `12915` | `True` | `10912` | `True` | `0` | `True` |
+| `8` | `128` | `14346` | `True` | `10918` | `True` | `0` | `True` |
+| `9` | `128` | `15783` | `True` | `10924` | `True` | `0` | `True` |
+| `10` | `128` | `17212` | `True` | `10930` | `True` | `0` | `True` |
+| `11` | `128` | `18650` | `True` | `10936` | `True` | `0` | `True` |
+| `12` | `128` | `20082` | `True` | `10942` | `True` | `0` | `True` |
+| `13` | `128` | `21521` | `True` | `10948` | `True` | `0` | `True` |
+| `14` | `128` | `22949` | `True` | `10954` | `True` | `0` | `True` |
+| `15` | `128` | `24391` | `True` | `10960` | `True` | `0` | `True` |
 
 Row proof boundary:
 
@@ -111,8 +115,11 @@ Row proof boundary:
   rational generator output.
 - `tailBoundLeanChecked = True` means the shifted-tail formula is
   now backed by a checked Lean theorem.
-- `prefixLeanChecked = False`, so these rows are not proof-grade
-  center-jet enclosures yet.
+- `prefixLeanChecked = True` means the generated finite-prefix
+  rational equality theorem and the corresponding cast theorem
+  are both present in the target Lean file.
+- `proofGrade = True` is row-level only: it does not assert that
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` is closed.
 
 ## Required Proofs
 
@@ -161,21 +168,21 @@ Row proof boundary:
 | --- | --- | --- |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert` | `9634` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` | `10069` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `12032` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.bound` | `13762` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_of_order16_bound` | `10051` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_left_of_order16_bound` | `9911` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.centerTaylorBridge_right_of_order16_bound` | `9810` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound` | `10098` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_contDiff16` | `9647` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_bound_checked_smooth` | `10132` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `11939` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv` | `13669` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_reflected_iteratedDeriv` | `9654` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.taylorWithinEval_eq_exactTaylorPoly` | `9683` | `found` |
 | `Step33Sub0OmegaPrimeTaylorRemainderCert.reflectedTaylorWithinEval_eq_exactTaylorPoly` | `9759` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10859` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16` | `10914` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `10949` | `found` |
-| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15` | `11288` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `12589` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16` | `12644` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16` | `12679` | `found` |
+| `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15` | `13018` | `found` |
 | `STEP33_A1_SUB0_OMEGAPRIME_STALE_RECEIVER_SCHEMA_FAIL` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_RATIONAL_PAYLOAD_GAP` | `None` | `gap` |
 | `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP` | `None` | `gap` |
@@ -206,6 +213,10 @@ Row proof boundary:
 - omegaPrimeOrder16AnalyticBoundReducedToIntegerBudget: `True`
 - omegaPrimeCenterJetPrefixTailBridgeProved: `True`
 - omegaPrimeCenterJetShiftedTailGeneratedBoundProved: `True`
+- omegaPrimeCenterJetPrefixExactRowsProved: `True`
+- omegaPrimeCenterJetPrefixExactRowsProvedCount: `16`
+- omegaPrimeCenterJetPrefixTailRowsProofGrade: `True`
+- omegaPrimeCenterJetPrefixTailRowsProofGradeCount: `16`
 - omegaPrimeCenterJetBoundsProved: `False`
 - omegaPrimeOrder16BoundProved: `False`
 - omegaPrimeOrder16IntegerBudgetProved: `False`
@@ -214,7 +225,7 @@ Row proof boundary:
 - allCenterJetsProved: `False`
 - allPayloadObligationsPassed: `False`
 - leanValidationStatus: `not_run`
-- proofSafeClosedFields: `0`
+- proofSafeClosedFields: `16`
 - rationalPrefixTailRowsGenerated: `16`
 - outLeanWritten: `False`
 
@@ -258,5 +269,5 @@ and the exact rational Taylor remainder budget.
 Until those payload fields exist locally, the correct fail code is:
 
 ```text
-STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
 ```

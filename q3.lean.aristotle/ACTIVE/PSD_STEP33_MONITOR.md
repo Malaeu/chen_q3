@@ -32303,3 +32303,35 @@ Boundary: fixed-jet cast is checked for `m = 0..15`, but generated
 `prefixN = 128` equality rows remain unwired and the generated v10 rows still
 have `prefixLeanChecked = false`, `proofGrade = false`; no full center-jet
 proof or Step33A.1-A closure.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime prefixN=128 rows checked
+
+The generated exact `prefixN = 128` rational rows are now Lean-checked for
+all center-jet indices `m = 0..15`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_128
+...
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_128
+```
+
+Together with the already checked
+`omegaPrimeCenterJetM{m}PrefixRat_cast` bridges and the shifted-tail bound,
+the regenerated OmegaPrime payload reports:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11
+proofSafeClosedFields = 16
+centerJetPrefixExactRowsProvedCount = 16
+centerJetPrefixTailRowsProofGradeCount = 16
+firstFailure = STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Browser/Proshka advisory confirmed this as the smallest proof-producing node:
+commit the generated prefix rows now, leave the generic `RatComplex` evaluator
+as a later refactor unless compile time becomes unacceptable.
+
+Boundary: this is row-level center-jet prefix/tail closure only.  There is no
+generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof yet, no
+order-16 integer budget, no final remainder budget, no Step33A.1-A closure,
+and no Step33/Step34/RH closure.

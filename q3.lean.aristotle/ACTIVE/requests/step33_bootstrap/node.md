@@ -17812,3 +17812,49 @@ Boundary: the local fixed-jet sum-cast bridge is checked, but generated
 `prefixN = 128` rational equality rows still have not been proved or wired
 back into `prefixLeanChecked`; all generated rows remain
 `prefixLeanChecked = false`, `proofGrade = false`.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime prefixN=128 rows checked
+
+Lean now checks the generated exact finite-prefix rational equalities for
+all `m = 0..15` at `prefixN = 128`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM1PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM2PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM3PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM4PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM5PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM6PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM7PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM8PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM9PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM10PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM11PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM12PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM13PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM14PrefixRat_128
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_128
+```
+
+The OmegaPrime generator now emits schema
+`q3_psdpd_step33_a1_sub0_omega_prime_taylor_payload.v11` and scans both the
+generated exact-prefix theorems and the existing cast bridges.  The generated
+rows are now row-level proof-grade:
+
+```text
+prefix rows = 16
+prefixExactRowsProvedCount = 16
+prefixTailRowsProofGradeCount = 16
+proofSafeClosedFields = 16
+```
+
+Next implementable subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
+instance exists yet.  The order-16 integer budget and final Taylor remainder
+budget are still missing, so Step33A.1-A remains open.
