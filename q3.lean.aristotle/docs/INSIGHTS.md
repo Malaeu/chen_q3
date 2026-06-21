@@ -37291,3 +37291,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Step33Sub0OmegaPrimeTaylorRemainderCert`, no center-jet proof, no order-16
   integer payload, no remainder budget closure, and no Step33A.1-A / Step33 /
   Step34 / RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeShiftedTailLeanProofAttempt
+
+- Status: in-progress Lean proof attempt, not closure.
+- Target blocker:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_SHIFTED_TAIL_LEAN_PROOF_GAP`.
+- Target file:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Target theorem shape: prove a shifted-tail upper bound for
+  `tsum_k omegaPrimeTrigammaDerivMajorant m (k + N)` and connect it to the
+  generated `prefixN = 128` row formula.
+- Local q3_docs search found no ready-made OmegaPrime theorem, but did find
+  useful precedents in `Q3/DigammaSeries.lean`,
+  `Q3/Proofs/RKHS_cap_rayleigh.lean`, and local PrimeCert p-series/integral
+  tail code.
+- External primary-source Mathlib check confirmed the intended API:
+  `AntitoneOn.sum_le_integral` for sum/integral comparison and
+  `integral_Ioi_rpow_of_lt` for evaluating the power tail integral.
+- First implementation attempt should avoid emitted Lean payloads and only add
+  reusable local theorem(s) for the shifted-tail majorant.  If the general
+  theorem stalls, the exact blocker should be narrowed to the missing
+  coefficient-norm identity or the missing shifted p-series integral bridge.
+- Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no
+  Step33A.1-A closure, and no Step33/Step34/RH claim.
