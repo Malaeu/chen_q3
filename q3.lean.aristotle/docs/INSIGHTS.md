@@ -37739,3 +37739,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A remains open until proof-grade `omega`, `shape`, and
   `shapeDeriv` Taylor/remainder sources plus the raw-derivative assembly and
   residual range certificate are checked.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaTaylorIntegratedCrosswalkChecked
+
+- Browser/Proshka follow-up route advice chose the OmegaPrime-to-Omega
+  integrated lift as the smallest proof-producing patch after OmegaPrime became
+  proof-grade.  This was route advice only, not proof evidence.
+- Lean now checks
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly`,
+  proving that the degree-16 integrated Omega polynomial differentiates to
+  `data.poly`, the checked OmegaPrime Taylor polynomial.
+- Supporting local objects:
+  `integratedCoeff`, `integratedPoly`, `integratedCoeff_zero`, and
+  `integratedCoeff_succ`.
+- The component payload schema is now
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v3`; it reports
+  `omegaTaylorIntegratedPolyDerivCrosswalkProofPresent = true` and
+  `proofSafeClosedFields = 2`.
+- Closed subgap:
+  `STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`.
+- Current live blocker:
+  `STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP`.
+- Boundary: this is not an Omega value Taylor/remainder certificate yet.
+  Step33A.1-A remains open; shape/shapeDeriv Taylor sources and raw derivative
+  assembly are still missing.

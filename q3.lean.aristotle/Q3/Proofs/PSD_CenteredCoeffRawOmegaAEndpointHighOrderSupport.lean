@@ -9673,6 +9673,96 @@ def poly (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
   _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
     15 step33Sub0OmegaPrimeTaylorCenter data.coeff eta
 
+def integratedCoeff (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (anchorCoeff : Rat) : Fin 17 -> Rat :=
+  fun j =>
+    match j.1 with
+    | 0 => anchorCoeff
+    | k + 1 =>
+        if hk : k < 16 then data.coeff ⟨k, hk⟩ / ((k + 1 : Nat) : Rat) else 0
+
+def integratedPoly (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (anchorCoeff : Rat) (eta : Real) : Real :=
+  _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
+    16 step33Sub0OmegaPrimeTaylorCenter (integratedCoeff data anchorCoeff) eta
+
+theorem integratedCoeff_zero
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (anchorCoeff : Rat) :
+    integratedCoeff data anchorCoeff 0 = anchorCoeff := by
+  rfl
+
+theorem integratedCoeff_succ
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert) (anchorCoeff : Rat)
+    (j : Fin 16) :
+    integratedCoeff data anchorCoeff ⟨j.1 + 1, Nat.succ_lt_succ j.2⟩ =
+      data.coeff j / ((j.1 + 1 : Nat) : Rat) := by
+  change (if hk : j.1 < 16 then data.coeff ⟨j.1, hk⟩ /
+      ((j.1 + 1 : Nat) : Rat) else 0) =
+    data.coeff j / ((j.1 + 1 : Nat) : Rat)
+  rw [dif_pos j.2]
+
+private theorem integratedTerm_deriv_eq
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (anchorCoeff : Rat) (i : Fin 17) (eta : Real) :
+    deriv (fun t : Real =>
+      (integratedCoeff data anchorCoeff i : Real) *
+        (t - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ i.1) eta =
+      (integratedCoeff data anchorCoeff i : Real) *
+        ((i.1 : Real) *
+          (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ (i.1 - 1)) := by
+  calc
+    deriv (fun t : Real =>
+      (integratedCoeff data anchorCoeff i : Real) *
+        (t - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ i.1) eta =
+        (integratedCoeff data anchorCoeff i : Real) *
+          deriv (fun t : Real =>
+            (t - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ i.1) eta := by
+          rw [deriv_const_mul]
+          fun_prop
+    _ = (integratedCoeff data anchorCoeff i : Real) *
+          ((i.1 : Real) *
+            (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ (i.1 - 1) *
+            deriv (fun t : Real =>
+              t - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) eta) := by
+          rw [deriv_fun_pow]
+          fun_prop
+    _ = (integratedCoeff data anchorCoeff i : Real) *
+          ((i.1 : Real) *
+          (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ (i.1 - 1)) := by
+          have hid : deriv (fun t : Real => t) eta = 1 := by
+            simp
+          rw [deriv_sub_const, hid]
+          ring
+
+theorem integratedPoly_deriv_eq_poly
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (anchorCoeff : Rat) (eta : Real) :
+    deriv (integratedPoly data anchorCoeff) eta = data.poly eta := by
+  unfold integratedPoly poly
+  unfold _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
+  rw [deriv_fun_sum]
+  · simp only [integratedTerm_deriv_eq]
+    rw [Fin.sum_univ_succ]
+    simp only [Fin.val_zero, Nat.cast_zero, zero_mul, zero_add, mul_zero,
+      Fin.val_succ, Nat.cast_add, Nat.cast_one]
+    apply Finset.sum_congr rfl
+    intro j _hj
+    change (↑(integratedCoeff data anchorCoeff
+        ⟨j.1 + 1, Nat.succ_lt_succ j.2⟩) *
+        (((j.1 : Real) + 1) *
+          (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^
+            (j.1 + 1 - 1)) =
+      ↑(data.coeff j) *
+        (eta - ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real)) ^ j.1)
+    rw [integratedCoeff_succ]
+    rw [Nat.add_sub_cancel_right]
+    norm_num
+    have hden : ((j.1 : Real) + 1) ≠ 0 := by
+      positivity
+    field_simp [hden]
+  · intro i _hi
+    fun_prop
+
 def exactTaylorPoly (eta : Real) : Real :=
   ∑ j : Fin 16,
     (iteratedDeriv j.1 omegaPrimeClosedForm

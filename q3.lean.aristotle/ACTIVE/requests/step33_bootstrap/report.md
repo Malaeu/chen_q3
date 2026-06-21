@@ -61312,3 +61312,77 @@ Boundary: this does not close Step33A.1-A.  The live blocker is now exactly:
 ```text
 STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
 ```
+
+## 2026-06-21 -- OmegaTaylor integrated-polynomial crosswalk checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+Browser/Proshka follow-up route advice was requested for the live fork:
+clone OmegaPrime into Omega, attack shape/shapeDeriv first, or return to a
+direct residual route.  The advisory answer chose the OmegaPrime-to-Omega
+integrated lift as the smallest proof-producing patch.  This advice is route
+selection only, not proof evidence.
+
+New Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff_succ
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly
+```
+
+The checked theorem proves that the degree-16 Omega integrated polynomial has
+derivative equal to the already checked OmegaPrime Taylor polynomial:
+
+```lean
+deriv (integratedPoly data anchorCoeff) eta = data.poly eta
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v3
+```
+
+Regenerated component payload:
+
+```text
+status = fail_closed_missing_omega_anchor_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
+omegaTaylorIntegratedPolyDerivCrosswalkProofPresent = true
+omegaTaylorCenterAnchorPayloadPresent = false
+omegaDerivTaylorProofPresent = true
+componentTaylorProofsPresent = false
+proofSafeClosedFields = 2
+overallProofSafe = false
+```
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json >/dev/null
+scoped hole scan over touched Lean/generator/artifacts
+```
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
+```
+
+Boundary: this does not close the Omega Taylor value/remainder package,
+shape/shapeDeriv Taylor packages, raw-derivative assembly, Step33A.1-A,
+Step33, Step34, or RH.

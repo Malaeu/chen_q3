@@ -32474,3 +32474,50 @@ STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
 Boundary: no Lean assembly theorem was emitted.  Step33A.1-A remains open until
 proof-grade `omega`, `shape`, and `shapeDeriv` Taylor/remainder sources exist
 and the raw-derivative assembly/residual range certificate is checked.
+
+## 2026-06-21 Current EOF State -- OmegaTaylor integrated crosswalk checked
+
+Lean now checks the local algebraic bridge that lifts the checked OmegaPrime
+Taylor polynomial to the derivative of an integrated Omega polynomial:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly
+```
+
+The new local objects are:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff_succ
+```
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v3
+status = fail_closed_missing_omega_anchor_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
+omegaTaylorIntegratedPolyDerivCrosswalkProofPresent = true
+omegaTaylorCenterAnchorPayloadPresent = false
+omegaDerivTaylorProofPresent = true
+componentTaylorProofsPresent = false
+proofSafeClosedFields = 2
+```
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP
+```
+
+Boundary: Step33A.1-A remains open.  The next proof-producing patch is the
+Omega center-anchor payload needed to turn the integrated derivative crosswalk
+into an Omega value Taylor/remainder certificate.
