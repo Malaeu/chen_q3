@@ -37048,3 +37048,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Remaining exact blockers:
   `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP`
   and `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeTrigammaLocalUniformMajorantPlan
+
+- Status: in progress.  Target lemma:
+  `omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload`,
+  feeding the `hDerivLoc` argument of
+  `omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform`.
+- Local `q3_docs` search found no ready Q3 theorem for this exact
+  `SummableLocallyUniformlyOn` payload.  Closest reusable local facts are the
+  checked affine `zpow` derivative formula and the concrete shifted p-series
+  majorant infrastructure already in
+  `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Mathlib provides the right receiver:
+  `SummableLocallyUniformlyOn_of_locally_bounded`, a Weierstrass M-test on
+  compact subsets of an open set.  It is enough to give, for each
+  `1 <= k <= 16`, a summable sequence `u_k n` with
+  `‖iteratedDerivWithin k term_n Set.univ t‖ <= u_k n`.
+- The intended majorant is the explicit affine-zpow bound from
+  `omegaPrimeTrigammaSeriesTerm_iteratedDeriv`: a fixed coefficient depending
+  only on `k` times `((n : Real) + 1/4)^(-(k+2))`.  Since `k >= 1`, this is a
+  shifted p-series with exponent at least `3`, so it is summable.
+- If the direct Lean proof fails, the exact blocker to escalate is whether to
+  prove the zpow norm comparison as a standalone lemma or to route through an
+  existing Mathlib complex-series local-uniform theorem.
