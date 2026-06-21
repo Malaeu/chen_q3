@@ -37819,3 +37819,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   they do not replace this repo-specific receiver/certificate.
 - Boundary: no Lean theorem was added, no component Taylor closure is claimed,
   and `overallProofSafe` remains `false`.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqIntegratedTaylorReceiverChecked
+
+- Browser/Proshka was used through the in-app browser as route advice.  The
+  accepted proof artifact is local Lean only: Proshka output is not proof
+  evidence.
+- Lean now checks a reusable shape-square integrated Taylor bridge in
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+  `integratedTaylorCoeff`,
+  `integratedTaylorPolynomial_deriv_eq_base`,
+  `centered_residual_bound_of_anchor_and_deriv_bound`, and
+  `shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound`.
+- Mathematical shape: if a payload supplies a proof-grade Taylor/remainder
+  source for the derivative of `E(eta)^2`, plus a center anchor bound and
+  radius budget, Lean integrates the rational derivative coefficients and
+  proves the value Taylor enclosure for `E(eta)^2`.
+- The component payload schema is now
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6`; it reports
+  `shapeSqIntegratedTaylorReceiverPresent = true` and
+  `proofSafeClosedFields = 4`.
+- Closed local subgap:
+  `STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`.
+- Current live blocker:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP`.
+- Validation passed: targeted Lean check and `q3_check` on
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`, generator
+  `py_compile`, generator rerun, JSON parse/assertions, scoped marker scan.
+- Boundary: this is not a full shape Taylor certificate, not a shape-deriv
+  certificate, and not Step33A.1-A closure.  Shape-derivative Taylor data,
+  raw-derivative assembly, residual polynomial bounds, and the final interval
+  theorem remain open.

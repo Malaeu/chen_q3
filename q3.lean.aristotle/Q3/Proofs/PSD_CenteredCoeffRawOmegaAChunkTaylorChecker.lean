@@ -1,6 +1,7 @@
 import Q3.Proofs.A3_Floor_Monotonicity
 import Q3.Proofs.PSD_P0Piecewise
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkIntegralBoundsImport
+import Mathlib.Analysis.Calculus.MeanValue
 
 set_option linter.mathlibStandardSet false
 set_option autoImplicit false
@@ -32,6 +33,219 @@ def rawOmegaATaylorPolynomial
     (eta : Real) : Real :=
   ∑ i : Fin (degree + 1),
     (coeff i : Real) * (eta - (center : Real)) ^ i.1
+
+theorem rawOmegaATaylorPolynomial_center
+    (degree : Nat) (center : Rat) (coeff : Fin (degree + 1) -> Rat) :
+    rawOmegaATaylorPolynomial degree center coeff (center : Real) =
+      (coeff 0 : Real) := by
+  unfold rawOmegaATaylorPolynomial
+  rw [Fin.sum_univ_succ]
+  simp
+
+/-- Coefficients obtained by integrating a Taylor model for a derivative.
+
+If `derivCoeff` models the derivative with degree `degree`, the returned
+coefficient vector models the primitive with degree `degree + 1` and prescribed
+anchor coefficient. -/
+def integratedTaylorCoeff
+    (degree : Nat) (derivCoeff : Fin (degree + 1) -> Rat)
+    (anchorCoeff : Rat) : Fin (degree + 2) -> Rat :=
+  fun j =>
+    match j.1 with
+    | 0 => anchorCoeff
+    | k + 1 =>
+        if hk : k < degree + 1 then
+          derivCoeff ⟨k, hk⟩ / ((k + 1 : Nat) : Rat)
+        else
+          0
+
+theorem integratedTaylorCoeff_zero
+    (degree : Nat) (derivCoeff : Fin (degree + 1) -> Rat)
+    (anchorCoeff : Rat) :
+    integratedTaylorCoeff degree derivCoeff anchorCoeff 0 = anchorCoeff := by
+  rfl
+
+theorem integratedTaylorCoeff_succ
+    (degree : Nat) (derivCoeff : Fin (degree + 1) -> Rat)
+    (anchorCoeff : Rat) (j : Fin (degree + 1)) :
+    integratedTaylorCoeff degree derivCoeff anchorCoeff
+        ⟨j.1 + 1, by omega⟩ =
+      derivCoeff j / ((j.1 + 1 : Nat) : Rat) := by
+  change
+    (if hk : j.1 < degree + 1 then
+        derivCoeff ⟨j.1, hk⟩ / ((j.1 + 1 : Nat) : Rat)
+      else
+        0) =
+      derivCoeff j / ((j.1 + 1 : Nat) : Rat)
+  rw [dif_pos j.2]
+
+private theorem integratedTaylorTerm_deriv_eq
+    (degree : Nat) (center : Rat) (derivCoeff : Fin (degree + 1) -> Rat)
+    (anchorCoeff : Rat) (i : Fin (degree + 2)) (eta : Real) :
+    deriv (fun t : Real =>
+      (integratedTaylorCoeff degree derivCoeff anchorCoeff i : Real) *
+        (t - (center : Real)) ^ i.1) eta =
+      (integratedTaylorCoeff degree derivCoeff anchorCoeff i : Real) *
+        ((i.1 : Real) * (eta - (center : Real)) ^ (i.1 - 1)) := by
+  calc
+    deriv (fun t : Real =>
+      (integratedTaylorCoeff degree derivCoeff anchorCoeff i : Real) *
+        (t - (center : Real)) ^ i.1) eta =
+        (integratedTaylorCoeff degree derivCoeff anchorCoeff i : Real) *
+          deriv (fun t : Real => (t - (center : Real)) ^ i.1) eta := by
+          rw [deriv_const_mul]
+          fun_prop
+    _ = (integratedTaylorCoeff degree derivCoeff anchorCoeff i : Real) *
+          ((i.1 : Real) * (eta - (center : Real)) ^ (i.1 - 1) *
+            deriv (fun t : Real => t - (center : Real)) eta) := by
+          rw [deriv_fun_pow]
+          fun_prop
+    _ = (integratedTaylorCoeff degree derivCoeff anchorCoeff i : Real) *
+          ((i.1 : Real) * (eta - (center : Real)) ^ (i.1 - 1)) := by
+          have hid : deriv (fun t : Real => t) eta = 1 := by
+            simp
+          rw [deriv_sub_const, hid]
+          ring
+
+/-- Differentiating the integrated rational Taylor polynomial recovers the
+original derivative polynomial. -/
+theorem integratedTaylorPolynomial_deriv_eq_base
+    (degree : Nat) (center : Rat) (derivCoeff : Fin (degree + 1) -> Rat)
+    (anchorCoeff : Rat) (eta : Real) :
+    deriv
+        (rawOmegaATaylorPolynomial (degree + 1) center
+          (integratedTaylorCoeff degree derivCoeff anchorCoeff))
+        eta =
+      rawOmegaATaylorPolynomial degree center derivCoeff eta := by
+  unfold rawOmegaATaylorPolynomial
+  rw [deriv_fun_sum]
+  · simp only [integratedTaylorTerm_deriv_eq]
+    rw [Fin.sum_univ_succ]
+    simp only [Fin.val_zero, Nat.cast_zero, zero_mul, zero_add, mul_zero,
+      Fin.val_succ, Nat.cast_add, Nat.cast_one]
+    apply Finset.sum_congr rfl
+    intro j _hj
+    change
+      ((integratedTaylorCoeff degree derivCoeff anchorCoeff
+          ⟨j.1 + 1, by omega⟩ : Rat) : Real) *
+          (((j.1 : Real) + 1) *
+            (eta - (center : Real)) ^ (j.1 + 1 - 1)) =
+        (derivCoeff j : Real) * (eta - (center : Real)) ^ j.1
+    rw [integratedTaylorCoeff_succ]
+    rw [Nat.add_sub_cancel_right]
+    norm_num
+    have hden : ((j.1 : Real) + 1) ≠ 0 := by
+      positivity
+    field_simp [hden]
+  · intro i _hi
+    fun_prop
+
+/-- A centered value enclosure follows from an anchor enclosure and a uniform
+bound on the derivative of the residual. -/
+theorem centered_residual_bound_of_anchor_and_deriv_bound
+    {f p : Real -> Real}
+    {a b anchor radius derivBound anchorError remainder : Real}
+    (hAnchorMem : anchor ∈ Set.Icc a b)
+    (hDiff :
+      ∀ eta ∈ Set.Icc a b,
+        DifferentiableAt Real (fun t : Real => f t - p t) eta)
+    (hDeriv :
+      ∀ eta ∈ Set.Icc a b,
+        ‖deriv (fun t : Real => f t - p t) eta‖ <= derivBound)
+    (hRadius :
+      ∀ eta ∈ Set.Icc a b, ‖eta - anchor‖ <= radius)
+    (hAnchor : ‖f anchor - p anchor‖ <= anchorError)
+    (hBudget : anchorError + derivBound * radius <= remainder) :
+    ∀ eta ∈ Set.Icc a b, ‖f eta - p eta‖ <= remainder := by
+  intro eta heta
+  have hLip :
+      ‖(f eta - p eta) - (f anchor - p anchor)‖ <=
+        derivBound * ‖eta - anchor‖ := by
+    simpa using
+      (Convex.norm_image_sub_le_of_norm_deriv_le
+        (𝕜 := Real)
+        (f := fun t : Real => f t - p t)
+        (s := Set.Icc a b)
+        (C := derivBound)
+        hDiff hDeriv (convex_Icc a b) hAnchorMem heta)
+  have hDerivNonneg : 0 <= derivBound :=
+    (norm_nonneg _).trans (hDeriv anchor hAnchorMem)
+  calc
+    ‖f eta - p eta‖ =
+        ‖((f eta - p eta) - (f anchor - p anchor)) +
+          (f anchor - p anchor)‖ := by
+          congr 1
+          ring
+    _ <= ‖(f eta - p eta) - (f anchor - p anchor)‖ +
+        ‖f anchor - p anchor‖ := norm_add_le _ _
+    _ <= derivBound * ‖eta - anchor‖ + anchorError :=
+      add_le_add hLip hAnchor
+    _ <= derivBound * radius + anchorError := by
+      have hmul :
+          derivBound * ‖eta - anchor‖ <= derivBound * radius :=
+        mul_le_mul_of_nonneg_left (hRadius eta heta) hDerivNonneg
+      nlinarith
+    _ = anchorError + derivBound * radius := by ring
+    _ <= remainder := hBudget
+
+/-- Shape-square Taylor receiver: once a payload supplies a Taylor model for
+the derivative of `E(eta)^2`, Lean integrates its coefficients and converts a
+center anchor bound plus derivative residual bound into a value bound. -/
+theorem shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound
+    {k : Nat} {ell a b radius : Real} {center : Rat}
+    (shapeSqDerivCoeff : Fin 16 -> Rat) (shapeSqAnchorCoeff : Rat)
+    {derivRemainderAbs anchorErrorAbs remainderAbs : Real}
+    (hCenterMem : (center : Real) ∈ Set.Icc a b)
+    (hDiff :
+      ∀ eta ∈ Set.Icc a b,
+        DifferentiableAt Real
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2 -
+              rawOmegaATaylorPolynomial 16 center
+                (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+                t)
+          eta)
+    (hDeriv :
+      ∀ eta ∈ Set.Icc a b,
+        ‖deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2 -
+              rawOmegaATaylorPolynomial 16 center
+                (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+                t)
+          eta‖ <= derivRemainderAbs)
+    (hRadius :
+      ∀ eta ∈ Set.Icc a b, ‖eta - (center : Real)‖ <= radius)
+    (hAnchor :
+      ‖(centeredBSplineImagTransformRealClosedForm k ell (center : Real)) ^ 2 -
+          (shapeSqAnchorCoeff : Real)‖ <= anchorErrorAbs)
+    (hBudget : anchorErrorAbs + derivRemainderAbs * radius <= remainderAbs) :
+    ∀ eta ∈ Set.Icc a b,
+      ‖(centeredBSplineImagTransformRealClosedForm k ell eta) ^ 2 -
+          rawOmegaATaylorPolynomial 16 center
+            (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+            eta‖ <= remainderAbs := by
+  have hPolyCenter :
+      rawOmegaATaylorPolynomial 16 center
+          (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+          (center : Real) =
+        (shapeSqAnchorCoeff : Real) := by
+    simpa [integratedTaylorCoeff_zero] using
+      rawOmegaATaylorPolynomial_center 16 center
+        (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+  have hAnchor' :
+      ‖(centeredBSplineImagTransformRealClosedForm k ell (center : Real)) ^ 2 -
+          rawOmegaATaylorPolynomial 16 center
+            (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+            (center : Real)‖ <= anchorErrorAbs := by
+    simpa [hPolyCenter] using hAnchor
+  exact
+    centered_residual_bound_of_anchor_and_deriv_bound
+      (f := fun eta : Real =>
+        (centeredBSplineImagTransformRealClosedForm k ell eta) ^ 2)
+      (p := rawOmegaATaylorPolynomial 16 center
+        (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff))
+      hCenterMem hDiff hDeriv hRadius hAnchor' hBudget
 
 /-- Closed-form integral contribution of `(eta - center)^n` on `[L,U]`. -/
 def rawOmegaTaylorPowerIntegral

@@ -61518,3 +61518,83 @@ python3 JSON parse/assertion of schema v5 and shape receiver flags
 
 Boundary: no Lean proof file was modified.  Endpoint bounds are proof-grade
 inputs, but not proof-grade component Taylor coeff/remainder payloads.
+
+## 2026-06-21 -- ShapeSq integrated Taylor receiver checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+Browser/Proshka was used through the in-app browser as route advice.  The
+advisory answer selected a narrow bridge: do not claim endpoint bounds produce
+Taylor data; first add a checked receiver saying that a proof-grade Taylor
+model for the derivative of `E(eta)^2`, plus a center anchor budget, produces
+a value Taylor enclosure for `E(eta)^2`.  This advice is not proof evidence;
+the accepted artifact is the Lean check below.
+
+New checked Lean objects in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+
+```lean
+rawOmegaATaylorPolynomial_center
+integratedTaylorCoeff
+integratedTaylorCoeff_zero
+integratedTaylorCoeff_succ
+integratedTaylorPolynomial_deriv_eq_base
+centered_residual_bound_of_anchor_and_deriv_bound
+shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound
+```
+
+The receiver proves the reusable bridge:
+
+```text
+shape-square derivative Taylor source + center anchor bound + radius budget
+  -> shape-square value Taylor enclosure
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v6
+```
+
+Regenerated component payload:
+
+```text
+status = fail_closed_missing_shapesq_deriv_source_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP
+shapeEndpointBoundsProofPresent = true
+shapeSqIntegratedTaylorReceiverPresent = true
+shapeTaylorReceiverPresent = false
+shapeDerivTaylorReceiverPresent = false
+proofSafeClosedFields = 4
+overallProofSafe = false
+```
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP
+```
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json >/dev/null
+scoped marker scan over touched Lean/generator
+```
+
+Boundary: this is not a shape Taylor certificate by itself and does not close
+Step33A.1-A.  The missing proof object is now exactly a proof-grade
+Taylor/remainder source for the derivative of the shape-square term, followed
+by shape-derivative Taylor data, raw-derivative assembly, residual polynomial
+bounds, and the final interval theorem.
