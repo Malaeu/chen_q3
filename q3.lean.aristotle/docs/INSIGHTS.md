@@ -37614,3 +37614,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid`
   proof, no final remainder budget, no Step33A.1-A / Step33 / Step34 / RH
   closure.
+
+## Insight (2026-06-21, Step33A.1-A, in progress) -- OmegaPrimeRemainderBudgetPlan
+
+- Target:
+  `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`.
+- Local receiver:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`
+  now needs only center-jet enclosures, the checked integer order-16 budget,
+  and the same-normalization Taylor remainder budget.
+- Local remainder formula:
+  `sum_j coeffErrorAbs[j] * (1/20)^j + order16Abs * (1/20)^16 / 16! <= remainderAbs`.
+- q3_docs search found no pre-existing generated remainder budget theorem.
+  The finite-sum/rational-arithmetic shape is local; web documentation is
+  advisory only and is not proof evidence.
+- Smallest proof-producing patch: add generated constants for
+  `coeffErrorAbs`, `order16Abs`, `remainderAbs`, then prove the exact
+  finite-sum inequality by Lean exact arithmetic in the repository's current
+  normalization.
+- Expected next state: move `firstFailure` from
+  `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP` to a named
+  generated-`Valid` certificate gap, because the center-jet proof packaging is
+  still not constructed as a single `data.Valid` value.
+- Boundary: closing this scalar remainder budget must not be reported as
+  Step33A.1-A closure.
