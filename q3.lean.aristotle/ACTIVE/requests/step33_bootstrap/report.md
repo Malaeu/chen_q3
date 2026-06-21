@@ -60946,3 +60946,80 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M9_TO_M15_GAP
 Boundary: this covers only `m = 0..8`.  Generated v10 rows remain
 `prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
 no full center-jet proof, no Step33A.1-A closure.
+
+## 2026-06-21 -- OmegaPrime m9-m15 Rat sum-cast bridges checked
+
+New checked rational evaluator symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM9TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM9PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM10TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM10PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM11TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM11PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM12TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM12PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM13TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM13PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM14TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM14PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat
+```
+
+New checked cast bridges:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM9TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM9PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m9_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM10TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM10PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m10_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM11TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM11PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m11_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM12TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM12PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m12_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM13TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM13PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m13_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM14TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM14PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m14_N1_ratCast_smoke
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15TermRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m15_N1_ratCast_smoke
+```
+
+The fixed-jet rational-prefix bridge now covers every finite prefix length for
+`m = 0..15`.  This closes the local sum-cast bridge layer, but it does not
+promote the generated v10 payload rows to proof-grade.
+
+Validation passed:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_N128_GENERATED_RATIONAL_EQUALITY_GAP
+```
+
+Boundary: generated v10 rows still have `prefixLeanChecked = false`,
+`proofGrade = false`; no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`,
+no center-jet proof, no remainder budget closure, no Step33A.1-A / Step33 /
+Step34 / RH claim.

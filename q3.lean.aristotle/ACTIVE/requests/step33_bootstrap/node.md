@@ -17774,3 +17774,41 @@ STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_M9_TO_M15_GAP
 
 Boundary: generated `m = 9..15` prefix rows still have no rational evaluator /
 cast bridge and all generated rows remain `prefixLeanChecked = false`.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime m9-m15 Rat sum-cast bridges checked
+
+Lean now checks the fixed `m = 9,10,11,12,13,14,15` rational sum-cast bridges
+for every finite prefix length:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM9PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM10PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM11PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM12PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM13PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM14PrefixRat_cast
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_cast
+```
+
+Together with the earlier work, the checked prefix bridge range is now:
+
+```text
+m = 0..15
+```
+
+Full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next implementable subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_N128_GENERATED_RATIONAL_EQUALITY_GAP
+```
+
+Boundary: the local fixed-jet sum-cast bridge is checked, but generated
+`prefixN = 128` rational equality rows still have not been proved or wired
+back into `prefixLeanChecked`; all generated rows remain
+`prefixLeanChecked = false`, `proofGrade = false`.

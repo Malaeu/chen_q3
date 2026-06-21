@@ -37510,3 +37510,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: generated v10 rows still have `prefixLeanChecked = false`,
   `proofGrade = false`; no generated certificate, no full center-jet proof, no
   Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeM9ToM15RatSumCastBridgeChecked
+
+- Status: `m = 9,10,11,12,13,14,15` rational sum-cast bridges checked, not
+  full generated-prefix closure.
+- Added checked term/prefix cast bridges through
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM15PrefixRat_cast`.
+- The checked prefix bridge range is now `m = 0..15`.
+- The fixed-jet route now covers every finite prefix length in the order-16
+  center-jet list, so the local sum-cast bridge layer is closed.
+- This is still not the generated prefix certificate: no `prefixN = 128`
+  generated-row equality has been promoted to proof-grade, and the generated
+  v10 rows remain fail-closed.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan for `sorry|admit|exact?`, and `git diff --check`.
+- The next exact subgap is now
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_N128_GENERATED_RATIONAL_EQUALITY_GAP`.
+- Boundary: generated v10 rows still have `prefixLeanChecked = false`,
+  `proofGrade = false`; no generated certificate, no full center-jet proof, no
+  Step33A.1-A closure.
