@@ -59638,6 +59638,79 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime hDerivEq closed
+
+Closed the analytic `hDerivEq` bridge for the active OmegaPrime order-16
+receiver in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivCoeff
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_eq_neg_two_closedForm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_contDiff16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_contDiffAt16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv16_eq
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv
+```
+
+The checked local-uniform M-test uses the explicit majorant:
+
+```text
+u_k(n) =
+  norm(omegaPrimeTrigammaDerivCoeff k) *
+  abs((n : Real) + 1/4)^(-(k+2))
+```
+
+Mathlib's shifted p-series summability closes `u_k` for all `1 <= k <= 16`;
+the affine `zpow` derivative formula and the real-part lower bound
+`n + 1/4 <= norm(base eta n)` give the uniform norm comparison on `Set.univ`.
+
+Generated payloads no longer need to provide `hDerivEq`.  The current
+constructor surface is:
+
+```lean
+Valid.of_order16_integer_budget_checked_deriv
+```
+
+Remaining payload obligations:
+
+```text
+coeff-error nonnegativity
+center-jet bounds at step33Sub0OmegaPrimeTaylorCenter
+omegaPrimeOrder16CondensedFactorBudgetBound <= data.order16Abs
+Taylor remainder-budget inequality
+```
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no concrete generated `Step33Sub0OmegaPrimeTaylorRemainderCert`
+payload has been imported, no A hbox is closed, no Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime derivative-layer differentiability payload
 
 Added checked derivative-layer support for the trigamma `tsum` receiver in:

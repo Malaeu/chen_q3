@@ -37072,3 +37072,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - If the direct Lean proof fails, the exact blocker to escalate is whether to
   prove the zpow norm comparison as a standalone lemma or to route through an
   existing Mathlib complex-series local-uniform theorem.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeTrigammaHDerivEqClosed
+
+- Status: closed for the analytic derivative identity.  The in-progress
+  local-uniform majorant plan succeeded without Pro/Louise escalation.
+- Added and Lean-checked a Weierstrass M-test payload for every derivative
+  layer `1 <= k <= 16` using Mathlib
+  `SummableLocallyUniformlyOn_of_locally_bounded`.
+- New reusable symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivCoeff`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_summable`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_eq_neg_two_closedForm`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_contDiff16`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_contDiffAt16`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv16_eq`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
+- The checked theorem now proves, for all `eta`,
+  `iteratedDeriv 16 omegaPrimeClosedForm eta =
+  -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta`.
+- The active generated payload surface no longer needs an `hDerivEq` premise.
+  It still needs center-jet bounds, coeff-error nonnegativity, the integer
+  order-16 budget, and the Taylor remainder-budget inequality.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
+- Next exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP`,
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`, and
+  `STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP`.

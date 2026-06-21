@@ -10196,6 +10196,27 @@ theorem omegaPrimeClosedForm_eq_trigamma_series (eta : Real) :
   rw [hseries]
   ring
 
+theorem omegaPrimeTrigammaSeries_eq_neg_two_closedForm :
+    omegaPrimeTrigammaSeries =
+      fun eta : Real => (-2 : Real) * omegaPrimeClosedForm eta := by
+  funext eta
+  calc
+    omegaPrimeTrigammaSeries eta =
+        (-2 : Real) * (-((1 / 2 : Real) * omegaPrimeTrigammaSeries eta)) := by
+          ring
+    _ = (-2 : Real) * omegaPrimeClosedForm eta := by
+          rw [← omegaPrimeClosedForm_eq_trigamma_series eta]
+
+theorem omegaPrimeTrigammaSeries_contDiff16 :
+    ContDiff Real 16 omegaPrimeTrigammaSeries := by
+  rw [omegaPrimeTrigammaSeries_eq_neg_two_closedForm]
+  simpa [smul_eq_mul] using
+    ContDiff.const_smul (-2 : Real) omegaPrimeClosedForm_contDiff16
+
+theorem omegaPrimeTrigammaSeries_contDiffAt16 (eta : Real) :
+    ContDiffAt Real 16 omegaPrimeTrigammaSeries eta :=
+  omegaPrimeTrigammaSeries_contDiff16.contDiffAt
+
 theorem omegaPrimeOrder16SeriesBase_re (eta : Real) (n : Nat) :
     (omegaPrimeOrder16SeriesBase eta n).re = (n : Real) + (1 / 4 : Real) := by
   simp [omegaPrimeOrder16SeriesBase]
@@ -10541,6 +10562,120 @@ theorem omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload :
   intro n k r _ _
   exact omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_differentiableAt n k r
 
+def omegaPrimeTrigammaDerivCoeff (k : Nat) : Complex :=
+  ((Finset.range k).prod
+      (fun i : Nat => (((-2 : Int) : Complex) - (i : Complex)))) *
+    (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k
+
+def omegaPrimeTrigammaDerivMajorant (k : Nat) (n : Nat) : Real :=
+  ‖omegaPrimeTrigammaDerivCoeff k‖ *
+    (|(n : Real) + (1 / 4 : Real)| ^ ((k : Real) + 2))⁻¹
+
+theorem omegaPrimeTrigammaDerivMajorant_summable (k : Nat) :
+    Summable (omegaPrimeTrigammaDerivMajorant k) := by
+  have hk : (1 : Real) < (k : Real) + 2 := by
+    have hkNat : 1 < k + 2 := by omega
+    exact_mod_cast hkNat
+  have hbase :
+      Summable (fun n : Nat =>
+        1 / |(n : Real) + (1 / 4 : Real)| ^ ((k : Real) + 2)) :=
+    (Real.summable_one_div_nat_add_rpow (a := (1 / 4 : Real))
+      (s := ((k : Real) + 2))).2 hk
+  have hbaseInv :
+      Summable (fun n : Nat =>
+        (|(n : Real) + (1 / 4 : Real)| ^ ((k : Real) + 2))⁻¹) := by
+    simpa [one_div] using hbase
+  change Summable (fun n : Nat =>
+    ‖omegaPrimeTrigammaDerivCoeff k‖ *
+      (|(n : Real) + (1 / 4 : Real)| ^ ((k : Real) + 2))⁻¹)
+  exact Summable.mul_left ‖omegaPrimeTrigammaDerivCoeff k‖ hbaseInv
+
+theorem omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant
+    (k n : Nat) (t : Real) :
+    ‖iteratedDerivWithin k
+        (fun x : Real => omegaPrimeTrigammaSeriesTerm x n) Set.univ t‖ <=
+      omegaPrimeTrigammaDerivMajorant k n := by
+  rw [iteratedDerivWithin_univ]
+  rw [omegaPrimeTrigammaSeriesTerm_iteratedDeriv]
+  let C : Complex := omegaPrimeTrigammaDerivCoeff k
+  let m : Int := (-2 : Int) - (k : Int)
+  have hcoeff :
+      ((Finset.range k).prod
+          (fun i : Nat => (((-2 : Int) : Complex) - (i : Complex)))) *
+        (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k = C := by
+    rfl
+  rw [hcoeff]
+  have him :
+      ‖(C * (omegaPrimeOrder16SeriesBase t n) ^ m).im‖ <=
+        ‖C * (omegaPrimeOrder16SeriesBase t n) ^ m‖ := by
+    simpa [Real.norm_eq_abs] using
+      Complex.abs_im_le_norm (C * (omegaPrimeOrder16SeriesBase t n) ^ m)
+  have hm : m = -(((k + 2 : Nat) : Int)) := by
+    simp [m]
+    omega
+  have hzpowNorm :
+      ‖(omegaPrimeOrder16SeriesBase t n) ^ m‖ =
+        (‖omegaPrimeOrder16SeriesBase t n‖ ^ (k + 2))⁻¹ := by
+    rw [hm, norm_zpow, zpow_neg, zpow_natCast]
+  have hReNonneg : 0 <= (n : Real) + (1 / 4 : Real) := by
+    have hn : 0 <= (n : Real) := Nat.cast_nonneg n
+    linarith
+  have hRePos : 0 < (n : Real) + (1 / 4 : Real) := by
+    have hn : 0 <= (n : Real) := Nat.cast_nonneg n
+    linarith
+  have hReLeNorm :
+      (n : Real) + (1 / 4 : Real) <=
+        ‖omegaPrimeOrder16SeriesBase t n‖ := by
+    have hAbsRe :
+        |(omegaPrimeOrder16SeriesBase t n).re| <=
+          ‖omegaPrimeOrder16SeriesBase t n‖ :=
+      Complex.abs_re_le_norm _
+    rwa [omegaPrimeOrder16SeriesBase_re, abs_of_nonneg hReNonneg] at hAbsRe
+  have hPowLe :
+      ((n : Real) + (1 / 4 : Real)) ^ (k + 2) <=
+        ‖omegaPrimeOrder16SeriesBase t n‖ ^ (k + 2) :=
+    pow_le_pow_left₀ hReNonneg hReLeNorm _
+  have hInv :
+      (‖omegaPrimeOrder16SeriesBase t n‖ ^ (k + 2))⁻¹ <=
+        (((n : Real) + (1 / 4 : Real)) ^ (k + 2))⁻¹ :=
+    inv_anti₀ (pow_pos hRePos _) hPowLe
+  have hPowEq :
+      ((n : Real) + (1 / 4 : Real)) ^ (k + 2) =
+        |(n : Real) + (1 / 4 : Real)| ^ ((k : Real) + 2) := by
+    rw [abs_of_nonneg hReNonneg]
+    have hkCast : (((k + 2 : Nat) : Real)) = (k : Real) + 2 := by
+      norm_num
+    rw [← hkCast, Real.rpow_natCast]
+  calc
+    ‖(C * (omegaPrimeOrder16SeriesBase t n) ^ m).im‖
+        <= ‖C * (omegaPrimeOrder16SeriesBase t n) ^ m‖ := him
+    _ = ‖C‖ * ‖(omegaPrimeOrder16SeriesBase t n) ^ m‖ := by
+          rw [norm_mul]
+    _ = ‖C‖ * (‖omegaPrimeOrder16SeriesBase t n‖ ^ (k + 2))⁻¹ := by
+          rw [hzpowNorm]
+    _ <= ‖C‖ * (((n : Real) + (1 / 4 : Real)) ^ (k + 2))⁻¹ := by
+          exact mul_le_mul_of_nonneg_left hInv (norm_nonneg C)
+    _ = ‖C‖ *
+        (|(n : Real) + (1 / 4 : Real)| ^ ((k : Real) + 2))⁻¹ := by
+          rw [hPowEq]
+    _ = omegaPrimeTrigammaDerivMajorant k n := by
+          simp [omegaPrimeTrigammaDerivMajorant, C]
+
+theorem omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload :
+    ∀ k : Nat, 1 <= k -> k <= 16 ->
+      SummableLocallyUniformlyOn
+        (fun n : Nat =>
+          iteratedDerivWithin k
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) Set.univ)
+        Set.univ := by
+  intro k _ _
+  apply SummableLocallyUniformlyOn_of_locally_bounded isOpen_univ
+  intro K _ _
+  exact ⟨omegaPrimeTrigammaDerivMajorant k,
+    omegaPrimeTrigammaDerivMajorant_summable k,
+    fun n t _ =>
+      omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant k n t⟩
+
 theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_eq
     (eta : Real) (n : Nat) :
     omegaPrimeOrder16TrigammaSeriesDerivTerm eta n =
@@ -10616,6 +10751,14 @@ theorem omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform
               (omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term
                 eta n).symm)
 
+theorem omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum
+    (eta : Real) :
+    iteratedDeriv 16 omegaPrimeTrigammaSeries eta =
+      ∑' n : Nat, omegaPrimeOrder16TrigammaSeriesDerivTerm eta n :=
+  omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform eta
+    omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload
+    omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload
+
 theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
     (eta : Real)
     (hSmoothSeries : ContDiffAt Real 16 omegaPrimeTrigammaSeries eta)
@@ -10635,6 +10778,14 @@ theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
   rw [hInterchange, omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum]
   unfold omegaPrimeOrder16SeriesFactor
   ring
+
+theorem omegaPrimeClosedForm_iteratedDeriv16_eq
+    (eta : Real) :
+    iteratedDeriv 16 omegaPrimeClosedForm eta =
+      -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta :=
+  omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange eta
+    (omegaPrimeTrigammaSeries_contDiffAt16 eta)
+    (omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum eta)
 
 /-- Pointwise norm majorant for one order-16 OmegaPrime series term. -/
 theorem omegaPrimeOrder16SeriesTerm_abs_le_norm_inv_pow
@@ -11211,6 +11362,37 @@ theorem Valid.of_order16_integer_budget_checked_smooth
     hCoeffErrorNonneg hCenterJet
     (omegaPrimeOrder16_condensed_factor_budget_le.trans hIntegerBudget)
     hDerivEq hRemainderBudget
+
+/-- Checked-smooth `Valid` constructor after the OmegaPrime order-16
+closed-form derivative identity has been proved locally.  Generated payloads
+no longer need to supply `hDerivEq`; they only supply the center jet, integer
+order-16 budget, and Taylor remainder budget. -/
+theorem Valid.of_order16_integer_budget_checked_deriv
+    (data : Step33Sub0OmegaPrimeTaylorRemainderCert)
+    (hCoeffErrorNonneg :
+      ∀ j, 0 <= (data.coeffErrorAbs j : Real))
+    (hCenterJet :
+      ∀ j : Fin 16,
+        ‖iteratedDeriv j.1 omegaPrimeClosedForm
+            ((step33Sub0OmegaPrimeTaylorCenter : Rat) : Real) /
+            (Nat.factorial j.1 : Real) -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hIntegerBudget :
+      omegaPrimeOrder16CondensedFactorBudgetBound <=
+        (data.order16Abs : Real))
+    (hRemainderBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) *
+            step33Sub0OmegaPrimeTaylorRadius ^ j.1) +
+          (data.order16Abs : Real) * step33Sub0OmegaPrimeTaylorRadius ^ 16 /
+            (Nat.factorial 16 : Real)
+        <= (data.remainderAbs : Real)) :
+    data.Valid :=
+  Valid.of_order16_integer_budget_checked_smooth data
+    hCoeffErrorNonneg hCenterJet hIntegerBudget
+    (fun eta _ => omegaPrimeClosedForm_iteratedDeriv16_eq eta)
+    hRemainderBudget
 
 private theorem eta_sub_center_abs_le_radius
     {eta : Real}

@@ -31325,6 +31325,67 @@ budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime local-uniform majorant and hDerivEq closure
+
+Closed the local-uniform derivative-majorant side of the trigamma
+termwise-differentiation bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivCoeff
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaDerivMajorant_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_norm_le_majorant
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_deriv_layers_summableLocallyUniformlyOn_payload
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_eq_neg_two_closedForm
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_contDiff16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_contDiffAt16
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeClosedForm_iteratedDeriv16_eq
+Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv
+```
+
+Checked result:
+
+```text
+For every eta,
+  iteratedDeriv 16 omegaPrimeClosedForm eta
+    = -omegaPrimeOrder16SeriesFactor * omegaPrimeOrder16Series eta.
+
+The generated-facing Valid receiver no longer takes hDerivEq as a payload
+premise; it now requires only:
+  coeff-error nonnegativity,
+  center-jet bounds,
+  integer order-16 budget,
+  Taylor remainder budget.
+```
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no concrete `Step33Sub0OmegaPrimeTaylorRemainderCert` generated
+payload has been imported, no A hbox is closed, and no Step33A.1-A,
+Step33/Step34/RH claim exists yet.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma derivative-layer differentiability
 
 Added and Lean-checked the derivative-layer payload needed by the
