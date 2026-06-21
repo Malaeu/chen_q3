@@ -62146,3 +62146,52 @@ git diff --check
 Boundary: this is analytic bridge support only.  It does not prove the concrete
 ShapeSqDeriv center-jet rows, does not prove the order-16 row, does not emit a
 generated Lean payload, and does not close Step33A.1-A.
+
+## 2026-06-21 Addendum -- center-jet power-series normalization checked
+
+Implemented and Lean-checked the scalar center-jet normalization bridge in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+
+```lean
+iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
+```
+
+It packages the exact normalization required by the active
+`ShapeSqDerivTaylorIntervalCert.Valid` center-jet rows:
+
+```lean
+HasFPowerSeriesAt f p x ->
+iteratedDeriv n f x / (Nat.factorial n : Real) = p.coeff n
+```
+
+Preflight:
+
+- local `q3_docs` searches for ShapeSqDeriv center-jet/order-16 rows found no
+  ready row theorem beyond the checked receiver/ledger entries;
+- Mathlib's analytic API exposes `HasFPowerSeriesOnBall.factorial_smul`, which
+  is the proof object used by the bridge.
+
+Closed local normalization gap:
+
+```text
+STEP33_A1_SUB0_CENTER_JET_POWER_SERIES_NORMALIZATION_GAP
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: this does not provide concrete ShapeSqDeriv coefficients, does not
+prove the uniform order-16 bound, does not emit a generated Lean payload, and
+does not close Step33A.1-A.

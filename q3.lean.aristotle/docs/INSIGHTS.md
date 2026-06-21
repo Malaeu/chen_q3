@@ -38111,3 +38111,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`.
 - Boundary: no concrete ShapeSqDeriv center-jet rows, no uniform order-16 row,
   no generated payload, and no Step33A.1-A closure.
+
+## Insight (2026-06-21, Step33A.1-A) -- CenterJetPowerSeriesNormalizationChecked
+
+- Local `q3_docs` preflight found no ready proof of the concrete ShapeSqDeriv
+  zero-cell center-jet/order-16 rows beyond the checked receiver and ledger.
+- Mathlib's analytic API exposes `HasFPowerSeriesOnBall.factorial_smul`, which
+  identifies the diagonal iterated derivative of a local power series with
+  `n!` times its `n`-th coefficient.
+- Added and checked in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+  `iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt`.
+- The theorem proves the exact row normalization used by
+  `ShapeSqDerivTaylorIntervalCert.Valid`:
+  `iteratedDeriv n f x / (Nat.factorial n : Real) = p.coeff n`.
+- Closed local normalization gap:
+  `STEP33_A1_SUB0_CENTER_JET_POWER_SERIES_NORMALIZATION_GAP`.
+- Validation passed: targeted `lake env lean`, targeted `q3_check`, scoped
+  marker scan over the touched Lean file, and `git diff --check`.
+- Current live blocker remains
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP`.
+- Boundary: no concrete ShapeSqDeriv coefficients, no uniform order-16 bound,
+  no generated payload, and no Step33A.1-A closure.

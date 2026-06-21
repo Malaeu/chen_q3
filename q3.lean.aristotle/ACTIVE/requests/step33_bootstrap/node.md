@@ -18106,3 +18106,30 @@ order-16 rows from the checked `realSinc` series bridge and the existing
 ShapeSqDeriv interval-certificate receiver.
 
 Boundary: no generated rows, no generated payload, and no Step33A.1-A closure.
+
+## 2026-06-21 EOF Addendum -- center-jet power-series normalization checked
+
+The next center-jet normalization bridge is now Lean-checked:
+
+```lean
+iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
+```
+
+Closed local normalization gap:
+
+```text
+STEP33_A1_SUB0_CENTER_JET_POWER_SERIES_NORMALIZATION_GAP
+```
+
+Current exact blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next proof object: construct a concrete power-series/product expansion for
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv`, instantiate the 16
+center-jet rows through the checked coefficient bridge, then prove the uniform
+order-16 absolute bound on `[0,1/10]`.
+
+Boundary: no concrete rows, no generated payload, and no Step33A.1-A closure.

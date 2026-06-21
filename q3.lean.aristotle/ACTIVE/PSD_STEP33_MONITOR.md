@@ -32862,3 +32862,45 @@ input for the ShapeSqDeriv center-jet/order-16 row proof on `[0,1/10]`.
 
 Boundary: no center-jet rows, no order-16 row, no generated Lean payload, and
 no Step33A.1-A closure.
+
+## 2026-06-21 Current EOF State -- center-jet power-series normalization checked
+
+Lean now checks the scalar normalization bridge from any local power series to
+the exact center-jet convention consumed by the ShapeSqDeriv interval
+certificate:
+
+```lean
+iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
+```
+
+Closed local normalization gap:
+
+```text
+STEP33_A1_SUB0_CENTER_JET_POWER_SERIES_NORMALIZATION_GAP
+```
+
+Statement shape:
+
+```lean
+HasFPowerSeriesAt f p x ->
+iteratedDeriv n f x / (Nat.factorial n : Real) = p.coeff n
+```
+
+Preflight evidence: local `q3_docs` search found no ready
+ShapeSqDeriv zero-cell row theorem beyond the checked receiver/ledger entries;
+Mathlib exposes `HasFPowerSeriesOnBall.factorial_smul`, which is the API used
+by this bridge.
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP
+```
+
+Next proof object: instantiate the center-jet rows for
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv` from a concrete
+ShapeSqDeriv power-series/product expansion, then prove the uniform order-16
+absolute bound on `[0,1/10]`.
+
+Boundary: no concrete row values, no order-16 bound, no generated Lean payload,
+and no Step33A.1-A closure.

@@ -56,6 +56,25 @@ theorem realSinc_hasSum_even_powerSeries (x : Real) :
     field_simp [hx]
     rw [show x ^ (2 * n + 1) = x ^ (2 * n) * x by rw [pow_succ]]
 
+/-- Scalar center-jet coefficient bridge for local power-series proofs.
+
+This is the normalization consumed by the Step33 ShapeSqDeriv interval
+certificate rows: the `n`-th normalized center jet is the `n`-th coefficient of
+any local `HasFPowerSeriesAt` expansion. -/
+theorem iteratedDeriv_div_factorial_eq_coeff_of_hasFPowerSeriesAt
+    {f : Real -> Real} {p : FormalMultilinearSeries Real Real Real}
+    {x : Real} (hp : HasFPowerSeriesAt f p x) (n : Nat) :
+    iteratedDeriv n f x / (Nat.factorial n : Real) = p.coeff n := by
+  rcases hp with ⟨r, hball⟩
+  have hfact := hball.factorial_smul (1 : Real) n
+  have hne : (Nat.factorial n : Real) ≠ 0 := by positivity
+  rw [iteratedDeriv_eq_iteratedFDeriv]
+  rw [← hfact]
+  change ((Nat.factorial n) • p.coeff n) /
+      (Nat.factorial n : Real) = p.coeff n
+  rw [nsmul_eq_mul]
+  field_simp [hne]
+
 def step33Shift16DigammaPoint : Complex :=
   ((129 : Real) / (4 : Real) : Complex) +
     Complex.I * (((1 : Real) / (40 : Real) : Complex))
