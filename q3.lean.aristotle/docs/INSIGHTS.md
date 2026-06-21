@@ -38280,3 +38280,65 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: no coefficient row values, no order-16 bound, no proof-safe payload
   rows, and no Step33A.1-A closure are claimed.  The closed local adapter gap is
   `STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCoeff0RowDraft
+
+- Used the in-app browser/Computer Use for the next route review.  Proshka
+  chose the isolated `j=0` center-jet row as the smallest next proof-moving
+  patch after the checked interval receiver.
+- Added draft leaf file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean`.
+- Draft theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated`.
+- The draft uses the existing proof-bearing
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`
+  derivative bounds at anchor `1/20`, then transfers them to
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter.coeff 0`
+  through
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff`.
+- Validation is not complete: `git diff --check` passed for the new file, but
+  `lake env lean`, `lake --reconfigure env lean`, `lake lean`,
+  `lake --no-build lean`, and direct Lean with assembled `LEAN_PATH` are blocked
+  by Lake/cache dependency timeouts or zero-CPU hangs in this workspace session.
+- Boundary: do not count this as a checked row until Lean validates the file.
+  Rows `1..15`, the full-cell order-16 bound, and Step33A.1-A remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCoeff0RowChecked
+
+- The isolated `j = 0` ShapeSqDeriv center-coefficient row is now
+  Lean-checked in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean`.
+- Checked theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated`.
+- The proof reuses the generated endpoint derivative bounds at the exact anchor
+  `1/20` and transfers them through
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff`.
+  This avoided a separate product proof for the anchor row.
+- Local validation passed: direct Lean with assembled `LEAN_PATH`,
+  `lake --reconfigure env lean` on the leaf file, `bash scripts/q3_check.sh`
+  on the leaf file, marker scan, Python `py_compile`, and payload
+  regeneration.
+- Regenerated payload schema is
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v11`; it records
+  `shapeSqDerivCenterCoeff0RowPresent = true`,
+  `shapeSqDerivCenterCoeffRowsClosedCount = 1`, and
+  `proofSafeClosedFields = 10`.
+- Current live blocker is now the sharper
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP`.
+  Rows `1..15` and the full-cell order-16 bound are still missing; no
+  Step33A.1-A closure is claimed.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCoeff1RouteAdvisory
+
+- Used the in-app browser/Computer Use after the checked row0 leaf to ask for
+  the next route split: rows `1..15`, order-16, or combined generator.
+- Proshka route advice chose a single `j = 1` smoke-test next, not all rows at
+  once and not order-16 first.
+- Advisory theorem names:
+  `primaryFiniteRow0Parent0Split100Sub0_shape_second_deriv_anchor_bounds_generated`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff1_interval_generated`.
+- Expected first obstruction:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_CENTERJET_ROW1_SECOND_DERIV_ANCHOR_GAP`.
+- Boundary: this is route advice only.  It is not proof evidence and must not
+  be counted in payload status until a local Lean theorem checks.

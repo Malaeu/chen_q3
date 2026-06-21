@@ -62458,3 +62458,122 @@ Boundary: this closes
 `STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP` only.  The live
 proof-data blocker remains
 `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.
+
+## 2026-06-21 Addendum -- ShapeSqDeriv coeff0 row draft
+
+Used the in-app browser/Computer Use for the next route review after the
+checked interval receiver.  Proshka selected an isolated center-jet row file
+as the next smallest proof-moving patch.  Order-16 was left for later because
+it is the larger analytic wall.
+
+Created local leaf file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean
+```
+
+Draft theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated
+```
+
+Local simplification versus the advisory route: instead of reproving the
+anchor product from `E(center)` and `E'(center)`, the draft uses the existing
+proof-bearing endpoint certificate:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated.hDerivLower
+primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated.hDerivUpper
+```
+
+and transfers those bounds through
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet_eq_powerSeriesCoeff`
+at `j = 0`.
+
+Validation status:
+
+```text
+git diff --check on new file: PASS
+lake env lean: BLOCKED by Lake dependency/cache refresh timeout and hangs
+lake --reconfigure env lean: BLOCKED by Lake hang
+lake lean / lake --no-build lean: BLOCKED by Lake hang
+direct lean with assembled LEAN_PATH: BLOCKED by zero-CPU hang after import load
+```
+
+Boundary: the coeff0 row is a written draft, not a checked theorem yet.  It is
+not counted as a proof-safe closed field.  Rows `1..15`, the full-cell
+order-16 bound, and Step33A.1-A remain open.  Current first failure remains:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP
+```
+
+## 2026-06-21 Addendum -- ShapeSqDeriv coeff0 row checked
+
+The isolated center-coefficient row has now been validated by Lean.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean
+```
+
+Checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated
+```
+
+Validation:
+
+```text
+direct Lean with assembled LEAN_PATH: PASS
+lake --reconfigure env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean: PASS
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean: PASS
+hole scan on the new file: PASS
+python3 -m py_compile generator: PASS
+generator regeneration: PASS
+```
+
+Regenerated component Taylor residual payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v11
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_rows_1_to_15_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP
+proofSafeClosedFields = 10
+shapeSqDerivCenterCoeff0RowPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 1
+shapeSqDerivCenterCoeffRowsRequiredCount = 16
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: this closes only
+`STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP`.  Rows `1..15`,
+the full-cell order-16 bound, raw-derivative assembly, residual polynomial
+bounds, and the final Step33A.1-A interval theorem remain open.
+
+## 2026-06-21 Addendum -- next route advisory after coeff0
+
+In-app browser/Computer Use route review after the checked row0 leaf
+recommended a single `j = 1` smoke-test as the next smallest proof-moving
+patch.  It explicitly did not recommend proving all rows `1..15` at once,
+attacking order-16 first, or building a combined generator before the next
+local theorem exists.
+
+Advisory next theorem names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shape_second_deriv_anchor_bounds_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff1_interval_generated
+```
+
+Expected first obstruction:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_CENTERJET_ROW1_SECOND_DERIV_ANCHOR_GAP
+```
+
+Boundary: this route advice is not proof evidence and is not counted as a
+closed field in the v11 payload.

@@ -21,12 +21,13 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP",
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP"
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP"
   ],
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
-    "shape": "center_coeff_bridge_formal_missing_explicit_cauchy_rows_order16_bound",
+    "shape": "center_coeff0_row_formal_missing_rows_1_to_15_order16_bound",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
   "componentTaylorStatus": {
@@ -65,14 +66,15 @@
     },
     "shapeTaylor": {
       "endpointBoundsAvailable": true,
-      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
+      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
       "integratedReceiverAvailable": true,
       "missing": true,
+      "shapeSqDerivCenterCoeff0RowAvailable": true,
       "shapeSqDerivCenterCoeffBridgeAvailable": true,
       "shapeSqDerivIntervalCertReceiverAvailable": true,
       "shapeSqDerivTaylorSourceAvailable": true,
       "shapeSqTaylorSourceAvailable": true,
-      "status": "SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_FORMAL_MISSING_EXPLICIT_ROWS"
+      "status": "SHAPESQ_DERIV_COEFF0_ROW_FORMAL_MISSING_ROWS_1_TO_15_ORDER16"
     }
   },
   "degrees": {
@@ -103,6 +105,9 @@
     "omegaTaylorIntegratedPolyDerivCrosswalk": "Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly",
     "shapeDerivAnchorBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated",
     "shapeDerivIntervalBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated",
+    "shapeSqDerivCenterCoeff0Interval": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated",
+    "shapeSqDerivCenterCoeff0Lower": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated",
+    "shapeSqDerivCenterCoeff0Upper": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Upper_generated",
     "shapeSqDerivCenterCoeffIntervalValid": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval",
     "shapeSqDerivCenterCoeffValid": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs",
     "shapeSqDerivCenterHasFPowerSeries": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_hasFPowerSeriesAt_center",
@@ -124,7 +129,7 @@
     "shapeValueBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
@@ -132,6 +137,8 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
     "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
@@ -140,7 +147,7 @@
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
+  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "componentPropagationRemainderAbs": null,
@@ -927,6 +934,40 @@
       "validWrapperTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs",
       "validWrapperTheoremFound": true
     },
+    "shapeSqDerivCenterCoeffRowsSource": {
+      "boundary": "This source closes only the j=0 rational interval row for the ShapeSqDeriv center power series.  Rows 1..15 and the full-cell order-16 uniform bound are still missing, so it is not yet a ShapeSqDerivTaylorIntervalCert.Valid payload.",
+      "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP",
+      "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean",
+      "missingRows": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "nextMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
+      "order16UniformBoundPresent": false,
+      "proofGradeRow0": true,
+      "proofGradeRows": true,
+      "row0IntervalTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated",
+      "row0IntervalTheoremFound": true,
+      "row0LowerDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated",
+      "row0LowerDefFound": true,
+      "row0UpperDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Upper_generated",
+      "row0UpperDefFound": true,
+      "rowsClosedCount": 1,
+      "rowsRequiredCount": 16
+    },
     "shapeSqDerivIntervalCertReceiverSource": {
       "boundary": "This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  The one-segment and compact absolute-error constructors close zero-cell bookkeeping only; they are not the generated ShapeSqDeriv payload and they do not close the coarse constant-source budget failure.",
       "certStructure": "ShapeSqDerivTaylorIntervalCert",
@@ -1034,13 +1075,17 @@
     "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 9,
+    "proofSafeClosedFields": 10,
     "residualPolynomialRangePassed": false,
     "shapeDerivTaylorReceiverPresent": false,
     "shapeEndpointBoundsProofPresent": true,
+    "shapeSqDerivCenterCoeff0RowPresent": true,
     "shapeSqDerivCenterCoeffBridgePresent": true,
     "shapeSqDerivCenterCoeffIntervalReceiverPresent": true,
+    "shapeSqDerivCenterCoeffRowsClosedCount": 1,
+    "shapeSqDerivCenterCoeffRowsRequiredCount": 16,
     "shapeSqDerivIntervalCertReceiverPresent": true,
+    "shapeSqDerivOrder16UniformBoundPresent": false,
     "shapeSqDerivTaylorSourcePresent": true,
     "shapeSqIntegratedTaylorReceiverPresent": true,
     "shapeSqTaylorSourcePresent": true,
@@ -1048,15 +1093,15 @@
   },
   "proshkaDecision": {
     "chosen": "B_component_taylor_route",
-    "followupChosen": "A_shapesq_deriv_power_series_coeff_interval_receiver",
-    "followupFailureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
-    "followupWhyA": "After the center-coefficient bridge became Lean-checked and the worklist was synchronized, the smallest proof-moving patch is the interval coefficient receiver: future generated lower/upper coefficient rows can feed the existing compact absolute-error certificate without a new analytic layer.",
+    "followupChosen": "A_shapesq_deriv_power_series_coeff0_row_leaf",
+    "followupFailureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
+    "followupWhyA": "After the interval coefficient receiver became Lean-checked, the smallest proof-moving patch was an isolated j=0 coefficient row.  It advances the real proof-data layer without claiming rows 1..15 or the order-16 uniform bound.",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
   },
   "routeId": "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL",
-  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v10",
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v11",
   "shapeEndpointSource": {
     "firstShapeDerivReceiverGap": "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "firstShapeReceiverGap": "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
@@ -1105,6 +1150,40 @@
     "proofGradeIntervalReceiver": true,
     "validWrapperTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_abs",
     "validWrapperTheoremFound": true
+  },
+  "shapeSqDerivCenterCoeffRowsSource": {
+    "boundary": "This source closes only the j=0 rational interval row for the ShapeSqDeriv center power series.  Rows 1..15 and the full-cell order-16 uniform bound are still missing, so it is not yet a ShapeSqDerivTaylorIntervalCert.Valid payload.",
+    "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP",
+    "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean",
+    "missingRows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "nextMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
+    "order16UniformBoundPresent": false,
+    "proofGradeRow0": true,
+    "proofGradeRows": true,
+    "row0IntervalTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated",
+    "row0IntervalTheoremFound": true,
+    "row0LowerDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated",
+    "row0LowerDefFound": true,
+    "row0UpperDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Upper_generated",
+    "row0UpperDefFound": true,
+    "rowsClosedCount": 1,
+    "rowsRequiredCount": 16
   },
   "shapeSqDerivIntervalCertReceiverSource": {
     "boundary": "This is only the Lean-checked interval-certificate receiver for future rational center-jet and order-16 rows.  The one-segment and compact absolute-error constructors close zero-cell bookkeeping only; they are not the generated ShapeSqDeriv payload and they do not close the coarse constant-source budget failure.",
@@ -1179,7 +1258,8 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean": "7fe0ad22d0e36ffb",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "a645e1f1117eb25a",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean": "ab027a098dbfab54",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean": "f8cc3c81f60910f2"
   },
   "sourceDefinitionLines": {
     "primaryFiniteRow0Parent0Split100Sub0DirectResidualSegmentCert": 2726,
@@ -1202,14 +1282,17 @@
     "omegaTaylorCenterAnchorProofGrade": true,
     "omegaTaylorCrosswalkProofGrade": true,
     "shapeEndpointBoundsProofGrade": true,
+    "shapeSqDerivCenterCoeff0RowProofGrade": true,
     "shapeSqDerivCenterCoeffBridgeProofGrade": true,
     "shapeSqDerivCenterCoeffIntervalReceiverProofGrade": true,
+    "shapeSqDerivCenterCoeffRowsClosedCount": 1,
+    "shapeSqDerivCenterCoeffRowsRequiredCount": 16,
     "shapeSqDerivIntervalCertReceiverProofGrade": true,
     "shapeSqDerivTaylorSourceProofGrade": true,
     "shapeSqIntegratedTaylorReceiverProofGrade": true,
     "shapeSqTaylorSourceProofGrade": true
   },
-  "status": "fail_closed_missing_shapesq_deriv_explicit_cauchy_power_series_order16_cert",
+  "status": "fail_closed_missing_shapesq_deriv_explicit_cauchy_rows_1_to_15_order16_cert",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",

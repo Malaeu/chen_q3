@@ -33135,3 +33135,117 @@ Boundary: no explicit rational coefficient row was proved, no order-16 bound
 was proved, no proof-safe generated rows were emitted, and Step33A.1-A remains
 open.  The live blocker remains exactly
 `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv coeff0 row draft
+
+The in-app browser/Computer Use Proshka follow-up selected the next smallest
+proof-moving route after the checked interval receiver: an isolated leaf file
+for the first center-jet row, not a generator-only patch and not the order-16
+wall first.
+
+New local file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean
+```
+
+Draft theorem target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated
+```
+
+The intended bridge is:
+
+```text
+PowerSeriesAtCenter.coeff 0
+  = ShapeSqDeriv(1/20)
+  = deriv (fun t => E(t)^2) (1/20)
+```
+
+The row bounds are taken from the already generated proof-bearing
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`
+certificate at the anchor `1/20`.
+
+Validation status:
+
+```text
+git diff --check on new file: PASS
+lake env lean: BLOCKED by Lake dependency/cache refresh timeout and hangs
+lake --reconfigure env lean: BLOCKED by Lake hang
+lake lean / lake --no-build lean: BLOCKED by Lake hang
+direct lean with assembled LEAN_PATH: BLOCKED by zero-CPU hang after import load
+```
+
+Boundary: this row is not marked checked yet, no rows `1..15` are closed, no
+order-16 bound is closed, and no Step33A.1-A closure is claimed.  The live
+first failure remains
+`STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP` until the new
+leaf file is Lean-validated.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv coeff0 row checked
+
+The isolated `j = 0` center-jet row is now Lean-validated.
+
+Checked leaf file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean
+```
+
+Checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated
+```
+
+Validation:
+
+```text
+direct Lean with assembled LEAN_PATH: PASS
+lake --reconfigure env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean: PASS
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean: PASS
+hole scan on the new file: PASS
+python3 -m py_compile generator: PASS
+generator regeneration: PASS
+```
+
+Regenerated artifact:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v11
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_rows_1_to_15_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP
+proofSafeClosedFields = 10
+shapeSqDerivCenterCoeff0RowPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 1
+shapeSqDerivCenterCoeffRowsRequiredCount = 16
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: only row `0` is closed.  Rows `1..15`, the full-cell order-16 bound,
+raw-derivative assembly, residual polynomial bounds, and the final
+Step33A.1-A interval theorem remain open.  No `Q3.Main` edit was made.
+
+## 2026-06-21 Proshka advisory -- next row after coeff0
+
+After the checked row0 payload, in-app browser/Computer Use route review
+recommended the next proof-moving patch as a single `j = 1` smoke-test, not
+all rows `1..15` at once and not the order-16 wall first.
+
+Advisory theorem shape:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shape_second_deriv_anchor_bounds_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff1_interval_generated
+```
+
+Expected first obstruction:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_CENTERJET_ROW1_SECOND_DERIV_ANCHOR_GAP
+```
+
+Boundary: this is route advice only.  It is not proof evidence and is not
+counted in the payload until Lean checks a local theorem.
