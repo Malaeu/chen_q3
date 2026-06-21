@@ -60689,3 +60689,52 @@ Boundary: smoke only (`m = 0`, `N = 1`).  Generated rows remain
 `prefixLeanChecked = false`, `proofGrade = false`; no generated
 `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full center-jet proof, no
 Step33A.1-A closure.
+
+## 2026-06-21 -- OmegaPrime Rat prefix cast smoke checked
+
+New checked theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke
+```
+
+New checked rational exact facts:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_one
+```
+
+The rational evaluator uses:
+
+```text
+a_n = n + 1/4
+b = 1/40
+term_0(n) = (-2*a_n*b) / (a_n^2 + b^2)^2
+prefix_0(N) = (-1/2) * sum_{n < N} term_0(n)
+```
+
+For `N = 1`, Lean checks:
+
+```text
+prefix_0(1) = 16000/10201
+```
+
+and the cast of this rational prefix equals the existing `Real` finite-prefix
+expression.
+
+Active full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next exact subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP
+```
+
+Boundary: smoke only (`m = 0`, `N = 1`).  Generated v10 rows remain
+`prefixLeanChecked = false`, `proofGrade = false`; no generated certificate,
+no full center-jet proof, no Step33A.1-A closure.

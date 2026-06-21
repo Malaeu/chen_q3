@@ -17617,3 +17617,34 @@ to the existing finite prefix expression.
 
 Boundary: `prefixLeanChecked = false` for generated v10 rows; no full
 center-jet proof, no generated certificate, no Step33A.1-A closure.
+
+## 2026-06-21 EOF Addendum -- OmegaPrime Rat prefix cast smoke checked
+
+Lean now checks the first rational-prefix cast smoke:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke
+```
+
+It connects the existing direct `m = 0`, `prefixN = 1` finite-prefix theorem
+to a rational prefix evaluator:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat
+```
+
+The full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Next implementable subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP
+```
+
+Boundary: generated `prefixN = 128` rows remain fail-closed with
+`prefixLeanChecked = false`; no full center-jet proof and no Step33A.1-A
+closure.

@@ -10525,6 +10525,40 @@ theorem omegaPrimeCenterJetPrefix_m0_N1_smoke_direct :
     Complex.mul_re, Complex.mul_im]
   norm_num
 
+def omegaPrimeCenterBaseReRat (n : Nat) : Rat :=
+  (n : Rat) + (1 / 4 : Rat)
+
+def omegaPrimeCenterBaseImRat : Rat :=
+  (1 / 40 : Rat)
+
+def omegaPrimeCenterJetM0TermRat (n : Nat) : Rat :=
+  let a : Rat := omegaPrimeCenterBaseReRat n
+  let b : Rat := omegaPrimeCenterBaseImRat
+  (-2 * a * b) / ((a * a + b * b) ^ 2)
+
+def omegaPrimeCenterJetM0PrefixRat (N : Nat) : Rat :=
+  (-1 / 2 : Rat) *
+    (Finset.range N).sum (fun n : Nat => omegaPrimeCenterJetM0TermRat n)
+
+theorem omegaPrimeCenterJetM0TermRat_zero :
+    omegaPrimeCenterJetM0TermRat 0 = (-32000 / 10201 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetM0PrefixRat_one :
+    omegaPrimeCenterJetM0PrefixRat 1 = (16000 / 10201 : Rat) := by
+  native_decide
+
+theorem omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke :
+    ((Nat.factorial 0 : Real)⁻¹ * (-1 / 2 : Real)) *
+        ((Finset.range 1).sum (fun n : Nat =>
+          iteratedDeriv 0
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)
+            (1 / 20 : Real))) =
+      (omegaPrimeCenterJetM0PrefixRat 1 : Real) := by
+  rw [omegaPrimeCenterJetPrefix_m0_N1_smoke_direct]
+  norm_num [omegaPrimeCenterJetM0PrefixRat, omegaPrimeCenterJetM0TermRat,
+    omegaPrimeCenterBaseReRat, omegaPrimeCenterBaseImRat]
+
 theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
     (k : Nat) (n : Nat) (r : Real) :
     DifferentiableAt Real

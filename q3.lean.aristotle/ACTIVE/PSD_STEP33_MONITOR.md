@@ -32072,3 +32072,44 @@ still have `prefixLeanChecked = false`, `proofGrade = false`; no generated
 `Step33Sub0OmegaPrimeTaylorRemainderCert`, no full center-jet proof, no
 order-16 integer payload, no remainder budget closure, no Step33A.1-A closure,
 and no Step33/Step34/RH claim.
+
+## 2026-06-21 Actual EOF State -- OmegaPrime Rat prefix cast smoke checked
+
+The first rational-prefix cast bridge smoke is now Lean-checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked rational evaluator/facts:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterBaseReRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterBaseImRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_zero
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_one
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke
+```
+
+Meaning: the `m = 0`, `N = 1` prefix value is now proved both by direct
+`Real`/`Complex` arithmetic and as the cast of an exact rational prefix
+evaluator.
+
+Current full blocker remains:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_EXACT_LEAN_PROOF_GAP
+```
+
+Narrowed next subgap:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP
+```
+
+Boundary: this is still smoke-level (`m = 0`, `N = 1`).  Generated v10
+`prefixN = 128` rows still have `prefixLeanChecked = false`, `proofGrade =
+false`; no generated certificate, no full center-jet proof, no Step33A.1-A
+closure.

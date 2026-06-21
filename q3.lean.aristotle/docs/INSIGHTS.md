@@ -37407,3 +37407,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   rows fail-closed until a reusable sum-level bridge exists.
 - Boundary: no generated `Step33Sub0OmegaPrimeTaylorRemainderCert`, no change
   to `prefixLeanChecked`, and no Step33A.1-A / Step33 / Step34 / RH claim.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimePrefixRatComplexSmokeChecked
+
+- Status: first Rat/Real cast smoke checked, not generated prefix closure.
+- Added and Lean-checked local rational evaluator symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterBaseReRat`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterBaseImRat`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat`, and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat`.
+- Added checked exact rational facts:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0TermRat_zero`
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetM0PrefixRat_one`.
+- Added checked cast bridge smoke:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeCenterJetPrefix_m0_N1_ratCast_smoke`.
+- This proves the already checked `m = 0`, `N = 1` finite prefix as the cast
+  of a rational prefix evaluator, rather than as a direct-only `Real`/`Complex`
+  arithmetic fact.
+- Next exact subgap:
+  `STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PREFIX_RAT_SUM_CAST_BRIDGE_GAP`.
+- Boundary: this still covers only `m = 0`, `N = 1`; generated `prefixN = 128`
+  rows remain `prefixLeanChecked = false` and `proofGrade = false`.
