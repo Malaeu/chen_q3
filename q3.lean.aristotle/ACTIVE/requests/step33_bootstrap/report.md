@@ -59638,6 +59638,57 @@ git diff --check
 Boundary: no Step33A.1-A closure, no generated payload, no A hbox, no
 Step33/Step34/RH claim.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime derivative-layer differentiability payload
+
+Added checked derivative-layer support for the trigamma `tsum` receiver in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_eq_base_zpow_neg_two
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_differentiableAt
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload
+```
+
+The new payload proves the `hDiff` side condition shape required by
+`omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform`:
+
+```text
+forall n k r, k <= 16 -> r in Set.univ ->
+  DifferentiableAt Real
+    (iteratedDerivWithin k
+      (fun t => omegaPrimeTrigammaSeriesTerm t n) Set.univ) r.
+```
+
+This is not Step33A.1-A closure.  The local-uniform derivative-majorant
+hypotheses for `1 <= k <= 16` remain open, and therefore `hDerivEq` is still
+not proved.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Boundary: no local-uniform derivative-majorant proof, no `hDerivEq`, no
+integer budget payload, no center-jet payload, no exact rational remainder
+budget, no generated Lean payload, no A hbox, no Step33/Step34/RH claim.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime closed-form series wrapper
 
 The previous Proshka/browser route advice selected the analytic trigamma route;

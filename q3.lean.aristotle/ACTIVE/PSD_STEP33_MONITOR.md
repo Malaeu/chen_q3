@@ -31325,6 +31325,55 @@ budget, no center-jet payload, no exact rational remainder budget, no generated
 Lean payload, no first-subchunk residual-derivative norm certificate, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma derivative-layer differentiability
+
+Added and Lean-checked the derivative-layer payload needed by the
+`TsumUniformlyOn.iteratedDerivWithin_tsum` receiver in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_eq_base_zpow_neg_two
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDeriv
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_differentiableAt
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload
+```
+
+Checked result:
+
+```text
+For every n, k, r, the k-th within-derivative layer on Set.univ of
+omegaPrimeTrigammaSeriesTerm is DifferentiableAt Real at r.
+```
+
+This removes the derivative-layer differentiability side condition from the
+termwise-differentiation receiver.  It does not prove the local-uniform
+summability/majorant hypotheses, so it still does not prove `hDerivEq`.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Boundary: no local-uniform derivative majorant for all `1 <= k <= 16`, no full
+`hDerivEq`, no center-jet payload, no exact rational remainder budget, no
+generated Lean payload, no A hbox, and no Step33A.1-A closure exists yet.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime closed-form series wrapper
 
 Added a checked bridge reducing the closed-form part of the `hDerivEq`

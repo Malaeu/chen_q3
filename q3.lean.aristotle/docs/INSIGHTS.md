@@ -37024,3 +37024,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
   `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
   hole scan, and `git diff --check`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeTrigammaDerivLayerDiff
+
+- Added and Lean-checked the derivative-layer differentiability side condition
+  for the trigamma `TsumUniformlyOn.iteratedDerivWithin_tsum` receiver.
+- New reusable symbols in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_eq_base_zpow_neg_two`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDeriv`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_differentiableAt`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload`.
+- The checked payload gives `hDiff` for every `n k r` after rewriting
+  `omegaPrimeTrigammaSeriesTerm` as the imaginary part of
+  `omegaPrimeOrder16SeriesBase ^ (-2 : Int)` and using the existing affine
+  `zpow` derivative formula.
+- This removes the differentiability-layer blocker, but it does not prove the
+  local-uniform derivative-majorant hypotheses.  The termwise differentiation
+  bridge still waits on
+  `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP`.
+- Remaining exact blockers:
+  `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP`
+  and `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`.

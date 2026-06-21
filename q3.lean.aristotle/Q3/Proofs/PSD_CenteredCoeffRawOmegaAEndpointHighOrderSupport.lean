@@ -10457,6 +10457,90 @@ theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term
         (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta := by
   rfl
 
+theorem omegaPrimeTrigammaSeriesTerm_eq_base_zpow_neg_two
+    (eta : Real) (n : Nat) :
+    omegaPrimeTrigammaSeriesTerm eta n =
+      ((omegaPrimeOrder16SeriesBase eta n) ^ (-2 : Int)).im := by
+  have hbase :
+      (((1 / 4 : Complex) +
+            Complex.I * (((eta / 2 : Real) : Complex))) + n) =
+        omegaPrimeOrder16SeriesBase eta n := by
+    unfold omegaPrimeOrder16SeriesBase
+    ring_nf
+  rw [omegaPrimeTrigammaSeriesTerm, hbase]
+  rw [one_div]
+  rw [show (-2 : Int) = -(2 : Int) by norm_num]
+  rw [zpow_neg]
+  rfl
+
+theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv
+    (k : Nat) (eta : Real) (n : Nat) :
+    iteratedDeriv k
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta =
+      (((Finset.range k).prod
+          (fun i : Nat => (((-2 : Int) : Complex) - (i : Complex)))) *
+        (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k *
+        (omegaPrimeOrder16SeriesBase eta n) ^ ((-2 : Int) - (k : Int))).im := by
+  have hfun :
+      (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) =
+        fun t : Real =>
+          ((omegaPrimeOrder16SeriesBase t n) ^ (-2 : Int)).im := by
+    funext t
+    exact omegaPrimeTrigammaSeriesTerm_eq_base_zpow_neg_two t n
+  rw [hfun]
+  exact omegaPrimeOrder16SeriesBase_zpow_im_iteratedDeriv k (-2 : Int) eta n
+
+theorem omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt
+    (k : Nat) (n : Nat) (r : Real) :
+    DifferentiableAt Real
+      (iteratedDeriv k (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)) r := by
+  let C : Complex :=
+    ((Finset.range k).prod
+        (fun i : Nat => (((-2 : Int) : Complex) - (i : Complex)))) *
+      (Complex.I * (((1 / 2 : Real) : Real) : Complex)) ^ k
+  let m : Int := (-2 : Int) - (k : Int)
+  have hfun :
+      (iteratedDeriv k (fun t : Real => omegaPrimeTrigammaSeriesTerm t n)) =
+        fun t : Real => (C * (omegaPrimeOrder16SeriesBase t n) ^ m).im := by
+    funext t
+    simpa [C, m] using omegaPrimeTrigammaSeriesTerm_iteratedDeriv k t n
+  rw [hfun]
+  have hzpow :
+      DifferentiableAt Real
+        (fun t : Real => (omegaPrimeOrder16SeriesBase t n) ^ m) r := by
+    have hz :
+        HasDerivAt
+          (fun t : Real => (omegaPrimeOrder16SeriesBase t n) ^ m)
+          ((((m : Complex) * (omegaPrimeOrder16SeriesBase r n) ^ (m - 1)) *
+            (Complex.I * (((1 / 2 : Real) : Real) : Complex)))) r := by
+      have h :=
+        (hasDerivAt_zpow m (omegaPrimeOrder16SeriesBase r n)
+          (Or.inl (omegaPrimeOrder16SeriesBase_ne_zero r n))).comp r
+          (omegaPrimeOrder16SeriesBase_hasDerivAt r n)
+      simpa [Function.comp_def] using h
+    exact hz.differentiableAt
+  have hmul :
+      DifferentiableAt Real
+        (fun t : Real => C * (omegaPrimeOrder16SeriesBase t n) ^ m) r := by
+    exact (differentiableAt_const C).mul hzpow
+  exact Complex.imCLM.differentiableAt.comp r hmul
+
+theorem omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_differentiableAt
+    (n k : Nat) (r : Real) :
+    DifferentiableAt Real
+      (iteratedDerivWithin k
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) Set.univ) r := by
+  simpa [iteratedDerivWithin_univ] using
+    omegaPrimeTrigammaSeriesTerm_iteratedDeriv_differentiableAt k n r
+
+theorem omegaPrimeTrigammaSeries_deriv_layer_differentiableAt_payload :
+    ∀ n k r, k <= 16 -> r ∈ Set.univ ->
+      DifferentiableAt Real
+        (iteratedDerivWithin k
+          (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) Set.univ) r := by
+  intro n k r _ _
+  exact omegaPrimeTrigammaSeriesTerm_iteratedDerivWithin_differentiableAt n k r
+
 theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_eq
     (eta : Real) (n : Nat) :
     omegaPrimeOrder16TrigammaSeriesDerivTerm eta n =
