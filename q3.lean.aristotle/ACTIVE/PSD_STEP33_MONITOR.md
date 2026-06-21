@@ -31381,6 +31381,61 @@ termwise `iteratedDeriv16`/`tsum` interchange, no full `hDerivEq`, no center-jet
 payload, no exact rational remainder budget, no generated Lean payload, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma TsumUniformlyOn receiver
+
+Specialized Mathlib's `TsumUniformlyOn.iteratedDerivWithin_tsum` theorem to
+the local `omegaPrimeTrigammaSeriesTerm` interface.
+
+New checked symbols in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform
+```
+
+Checked receiver:
+
+```text
+for eta : Real,
+if every derivative layer 1 <= k <= 16 of the term family is
+SummableLocallyUniformlyOn on Set.univ, and every lower within-derivative
+layer is DifferentiableAt, then
+
+iteratedDeriv 16 omegaPrimeTrigammaSeries eta
+  = sum_n omegaPrimeOrder16TrigammaSeriesDerivTerm eta n.
+```
+
+This does not prove the local-uniform majorant hypotheses.  It pins the exact
+Mathlib receiver and converts the remaining interchange proof into named
+local assumptions.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_DERIV_LAYER_DIFFERENTIABILITY_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Validation passed:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of local-uniform derivative majorants for all
+`1 <= k <= 16`, no proof of the corresponding differentiability layers, no
+full `hDerivEq`, no center-jet payload, no exact rational remainder budget, no
+generated Lean payload, no A hbox, and no Step33A.1-A closure exists yet.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma term tsum bridge
 
 Local `q3_docs` semantic search for `OmegaPrime iteratedDeriv16 trigamma tsum

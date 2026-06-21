@@ -1,5 +1,6 @@
 import Mathlib.Analysis.Calculus.Taylor
 import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+import Mathlib.Topology.Algebra.InfiniteSum.TsumUniformlyOn
 import Q3.DigammaSeries
 import Q3.DigammaRemainder
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAChunkTaylorChecker
@@ -10449,6 +10450,13 @@ def omegaPrimeOrder16TrigammaSeriesDerivTerm (eta : Real) (n : Nat) : Real :=
               Complex.I * (((t / 2 : Real) : Complex))) + n) ^ 2).im)
     eta
 
+theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term
+    (eta : Real) (n : Nat) :
+    omegaPrimeOrder16TrigammaSeriesDerivTerm eta n =
+      iteratedDeriv 16
+        (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta := by
+  rfl
+
 theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_eq
     (eta : Real) (n : Nat) :
     omegaPrimeOrder16TrigammaSeriesDerivTerm eta n =
@@ -10472,6 +10480,57 @@ theorem omegaPrimeOrder16TrigammaSeriesDerivTerm_tsum
     _ = ((Nat.factorial 17 : Real) / (2 : Real) ^ 16) *
         omegaPrimeOrder16Series eta := by
           rw [omegaPrimeOrder16Series, tsum_mul_left]
+
+theorem omegaPrimeTrigammaSeriesTerm_summable (eta : Real) :
+    Summable (fun n : Nat => omegaPrimeTrigammaSeriesTerm eta n) := by
+  let z : Complex :=
+    (1 / 4 : Complex) + Complex.I * (((eta / 2 : Real) : Complex))
+  have hz : 0 < z.re := by
+    norm_num [z]
+  have hcomplex : Summable (fun n : Nat => 1 / (z + n) ^ 2) :=
+    _root_.summable_trigamma_series hz
+  have him : Summable (fun n : Nat => (1 / (z + n) ^ 2).im) :=
+    Complex.imCLM.summable hcomplex
+  simpa [omegaPrimeTrigammaSeriesTerm, z, add_comm, add_left_comm, add_assoc]
+    using him
+
+theorem omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform
+    (eta : Real)
+    (hDerivLoc :
+      ∀ k : Nat, 1 <= k -> k <= 16 ->
+        SummableLocallyUniformlyOn
+          (fun n : Nat =>
+            iteratedDerivWithin k
+              (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) Set.univ)
+          Set.univ)
+    (hDiff :
+      ∀ n k r, k <= 16 -> r ∈ Set.univ ->
+        DifferentiableAt Real
+          (iteratedDerivWithin k
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) Set.univ) r) :
+    iteratedDeriv 16 omegaPrimeTrigammaSeries eta =
+      ∑' n : Nat, omegaPrimeOrder16TrigammaSeriesDerivTerm eta n := by
+  have h :=
+    iteratedDerivWithin_tsum (ι := Nat) (𝕜 := Real) (F := Real)
+      (m := 16) (s := Set.univ) isOpen_univ (Set.mem_univ eta)
+      (fun t _ => omegaPrimeTrigammaSeriesTerm_summable t)
+      hDerivLoc hDiff
+  have h' :
+      iteratedDeriv 16 omegaPrimeTrigammaSeries eta =
+        ∑' n : Nat,
+          iteratedDeriv 16
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta := by
+    simpa [omegaPrimeTrigammaSeries, iteratedDerivWithin_univ] using h
+  calc
+    iteratedDeriv 16 omegaPrimeTrigammaSeries eta =
+        ∑' n : Nat,
+          iteratedDeriv 16
+            (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) eta := h'
+    _ = ∑' n : Nat, omegaPrimeOrder16TrigammaSeriesDerivTerm eta n := by
+          exact tsum_congr
+            (fun n =>
+              (omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term
+                eta n).symm)
 
 theorem omegaPrimeClosedForm_iteratedDeriv16_eq_of_trigamma_series_interchange
     (eta : Real)

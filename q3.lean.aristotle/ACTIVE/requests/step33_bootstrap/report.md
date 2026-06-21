@@ -59705,6 +59705,65 @@ termwise `iteratedDeriv16`/`tsum` interchange, no full `hDerivEq`, no center-jet
 payload, no exact rational remainder budget, no generated Lean payload, no A
 hbox, and no Step33A.1-A closure exists yet.
 
+## 2026-06-21 Current EOF Addendum -- OmegaPrime trigamma TsumUniformlyOn receiver
+
+Added a local receiver around Mathlib's
+`TsumUniformlyOn.iteratedDerivWithin_tsum`, specialized to the current
+trigamma-series terms.
+
+File:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+New checked symbols:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_summable
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform
+```
+
+The receiver proves:
+
+```text
+SummableLocallyUniformlyOn derivative layers 1..16
++ DifferentiableAt lower within-derivative layers
+  -> iteratedDeriv 16 omegaPrimeTrigammaSeries eta
+       = sum_n omegaPrimeOrder16TrigammaSeriesDerivTerm eta n.
+```
+
+The ordinary summability of each trigamma term series is now checked locally by
+`omegaPrimeTrigammaSeriesTerm_summable`, using the old
+`summable_trigamma_series` bridge.
+
+This is still not `hDerivEq`: the local-uniform derivative majorants and the
+differentiability layers remain open, but the exact Mathlib receiver and local
+target statement are now checked.
+
+Current exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP
+STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_DERIV_LAYER_DIFFERENTIABILITY_GAP
+STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP
+```
+
+Validation:
+
+```bash
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+rg -n "sorry|admit|exact\\?" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+git diff --check
+```
+
+Boundary: no proof of local-uniform derivative majorants for all
+`1 <= k <= 16`, no proof of the corresponding differentiability layers, no
+full `hDerivEq`, no center-jet payload, no exact rational remainder budget, no
+generated Lean payload, no A hbox, and no Step33A.1-A closure exists yet.
+
 ## 2026-06-21 Current EOF Addendum -- OmegaPrime order-16 affine term bridge
 
 In-app browser/Proshka checkpoint kept the route on the analytic

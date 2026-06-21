@@ -36793,6 +36793,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_CONTDIFF_GAP`,
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP`, and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP`.
+
+## Insight (2026-06-21, Step33A.1-A) -- OmegaPrimeTrigammaTsumUniformlyOnReceiver
+
+- Added and Lean-checked a local receiver around
+  `TsumUniformlyOn.iteratedDerivWithin_tsum`, specialized to
+  `omegaPrimeTrigammaSeriesTerm`.
+- New checked symbols:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeOrder16TrigammaSeriesDerivTerm_eq_iteratedDeriv_term`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeriesTerm_summable`,
+  and
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeTrigammaSeries_iteratedDeriv16_eq_tsum_of_locally_uniform`.
+- The checked receiver says that local-uniform summability of derivative layers
+  `1..16`, plus differentiability of lower within-derivative layers, implies
+  `iteratedDeriv 16 omegaPrimeTrigammaSeries eta =
+  sum_n omegaPrimeOrder16TrigammaSeriesDerivTerm eta n`.
+- This is not `hDerivEq` yet.  It names the remaining proof obligations in the
+  local Q3 interface:
+  `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_LOCAL_UNIFORM_DERIV_MAJORANT_GAP`
+  and
+  `STEP33_A1_SUB0_OMEGAPRIME_TRIGAMMA_SERIES_DERIV_LAYER_DIFFERENTIABILITY_GAP`.
+- Validation passed:
+  `lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  `bash scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`,
+  hole scan, and `git diff --check`.
 - Next exact blockers:
   `STEP33_A1_SUB0_OMEGAPRIME_ITERATEDDERIV16_TSUM_INTERCHANGE_GAP` and
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER16_POLYGAMMA_BOUND_GAP`.
