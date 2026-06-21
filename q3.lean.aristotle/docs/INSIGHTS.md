@@ -37664,3 +37664,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   budget are proof-grade, but there is still no generated
   `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid` proof, no Step33A.1-A /
   Step33 / Step34 / RH closure.
+
+## Insight (2026-06-21, Step33A.1-A, in progress) -- OmegaPrimeGeneratedValidCertPlan
+
+- Target:
+  `STEP33_A1_SUB0_OMEGAPRIME_GENERATED_VALID_CERT_GAP`.
+- Local receiver:
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.Valid.of_order16_integer_budget_checked_deriv`.
+- q3_docs search found no pre-existing generated `Valid` object; web tactic
+  documentation was used only as advisory syntax sanity, not proof evidence.
+- Available Lean-checked inputs:
+  generated center-jet row bounds via
+  `omegaPrimeClosedForm_centerJet_invFactorial_sub_prefix_norm_le_shifted_tsum_majorant_of_le16`
+  and
+  `omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15`,
+  integer budget
+  `omegaPrimeOrder16CondensedFactorBudgetBound_le_generated_order16Abs`, and
+  scalar remainder budget
+  `omegaPrimeGeneratedRemainderBudget_le_generated_remainderAbs`.
+- Smallest proof-producing patch: define the generated coefficient vector and
+  `omegaPrimeGeneratedRemainderCert`, prove nonnegativity and the 16 center-jet
+  rows by finite cases, then apply the receiver to get `data.Valid`.
+- Expected next state: OmegaPrime's local generated Taylor payload becomes
+  proof-grade, while the combined Omega/OmegaPrime component export remains the
+  next named Step33A.1-A gate.
+- Boundary: do not report Step33A.1-A closure from this patch alone.
