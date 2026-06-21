@@ -33249,3 +33249,60 @@ STEP33_A1_SUB0_SHAPESQ_DERIV_CENTERJET_ROW1_SECOND_DERIV_ANCHOR_GAP
 
 Boundary: this is route advice only.  It is not proof evidence and is not
 counted in the payload until Lean checks a local theorem.
+
+## 2026-06-21 Current EOF State -- ShapeSqDeriv coeff1 row checked
+
+The isolated `j = 1` center-jet row is now Lean-validated in the same leaf
+file as the `j = 0` row.
+
+Checked leaf file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean
+```
+
+New checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_center_deriv_formula
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff1_interval_generated
+```
+
+The `j = 1` row is deliberately coarse but proof-grade.  It proves
+`-1/25 <= coeff 1 <= 1/25` by combining:
+
+```text
+0 <= E(1/20) <= 1
+-1/10 <= E'(1/20) <= 0
+|E''(1/20)| <= 1/100
+(E^2)'' = 2*(E')^2 + 2*E*E''
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean: PASS
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean: PASS
+hole scan on the leaf file: PASS
+jq payload JSON validation: PASS
+git diff --check on touched files: PASS
+```
+
+Updated payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v12
+status = fail_closed_missing_shapesq_deriv_explicit_cauchy_rows_2_to_15_order16_cert
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP
+proofSafeClosedFields = 11
+shapeSqDerivCenterCoeff0RowPresent = true
+shapeSqDerivCenterCoeff1RowPresent = true
+shapeSqDerivCenterCoeffRowsClosedCount = 2
+shapeSqDerivCenterCoeffRowsRequiredCount = 16
+shapeSqDerivOrder16UniformBoundPresent = false
+```
+
+Boundary: only rows `0` and `1` are closed.  Rows `2..15`, the full-cell
+order-16 bound, raw-derivative assembly, residual polynomial bounds, and the
+final Step33A.1-A interval theorem remain open.  No `Q3.Main` edit was made.

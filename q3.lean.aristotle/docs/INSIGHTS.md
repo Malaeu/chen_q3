@@ -38342,3 +38342,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_SHAPESQ_DERIV_CENTERJET_ROW1_SECOND_DERIV_ANCHOR_GAP`.
 - Boundary: this is route advice only.  It is not proof evidence and must not
   be counted in payload status until a local Lean theorem checks.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqDerivCoeff1RowChecked
+
+- q3_docs search did not expose an existing proof-grade `j = 1` coefficient
+  row or pointwise `E''(1/20)` anchor theorem.  The closest local artifacts
+  were the center-jet/power-series bridge, the `E` and `E'` anchor intervals,
+  and the existing uniform `E''` norm bound.
+- Web lookup was used only as method orientation for Mathlib
+  `iteratedDeriv`/factorial normalization; no web result is proof evidence.
+- In-app browser/Computer Use route review then chose the coarse row route:
+  use existing `E`, `E'`, and uniform `E''` bounds rather than first generating
+  a pointwise `E''` interval theorem.
+- Added and Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_center_deriv_formula`
+  in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean`.
+  This is the local product-rule crosswalk for
+  `(E^2)'' = 2*(E')^2 + 2*E*E''` at the center.
+- Added and Lean-checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff1_interval_generated`.
+  The theorem proves the broad proof-grade interval
+  `-1/25 <= coeff 1 <= 1/25`.
+- Validation passed: `lake env lean` on the leaf file, `q3_check`, hole scan,
+  JSON validation for the component payload, and `git diff --check`.
+- Payload v12 now records
+  `shapeSqDerivCenterCoeffRowsClosedCount = 2`,
+  `shapeSqDerivCenterCoeff1RowPresent = true`, and
+  `proofSafeClosedFields = 11`.
+- Current live blocker is
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`.
+  Rows `2..15` and the full-cell order-16 bound remain missing; no
+  Step33A.1-A closure is claimed.
