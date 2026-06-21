@@ -37850,3 +37850,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   certificate, and not Step33A.1-A closure.  Shape-derivative Taylor data,
   raw-derivative assembly, residual polynomial bounds, and the final interval
   theorem remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeSqConstantDerivTaylorSourceChecked
+
+- Browser/Proshka was used through the in-app browser as route advice.  The
+  useful advice was to treat a constant derivative Taylor source as a
+  proof-grade budget test only, not as final closure.
+- Lean now checks the generic bridge
+  `shapeSqDerivTaylor_bound_of_endpoint_bounds` in
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+- Lean also checks the concrete Sub0 source
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated` in
+  `PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean`, with constant
+  center `-3/40` and remainder `3/40`.
+- The component payload remains fail-closed but advances to
+  `firstFailure = STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP`
+  and `proofSafeClosedFields = 5`.
+- Closed local subgap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP`.
+- Boundary: this is not Step33A.1-A closure.  The coarse source must still
+  pass integrated shape-square budget/assembly, and shape-derivative Taylor
+  data plus raw derivative assembly remain open.

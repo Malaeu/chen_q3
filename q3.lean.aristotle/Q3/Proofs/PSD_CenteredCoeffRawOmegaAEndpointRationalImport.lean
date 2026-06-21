@@ -1422,6 +1422,62 @@ theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated :
       primaryFiniteRow0Parent0Split100Sub0ShapeDerivInner_deriv_interval_bounds_cubic.2
       (by norm_num [intervalAutoAbsBound])
 
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated : Rat :=
+  (-3 : Rat) / 40
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated : Rat :=
+  (3 : Rat) / 40
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated :
+    Fin 16 -> Rat :=
+  fun j =>
+    if j = 0 then
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated
+    else
+      0
+
+theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_poly_eq_generated
+    (eta : Real) :
+    rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+        eta =
+      (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated :
+        Real) := by
+  unfold rawOmegaATaylorPolynomial
+  rw [Fin.sum_univ_succ]
+  simp [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated]
+
+theorem primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated :
+    ∀ eta ∈ Set.Icc ((499999999999999999999 : Real) / (10000000000000000000000 : Real)) ((1 : Real) / (20 : Real)),
+      ‖deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / (10 : Real)) t) ^ 2)
+          eta -
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+          eta‖ <=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated :
+          Real) := by
+  exact
+    shapeSqDerivTaylor_bound_of_endpoint_bounds
+      (cert := primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated)
+      (center := ((1 : Rat) / 20))
+      (shapeSqDerivCoeff :=
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated)
+      (shapeSqDerivCenter :=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated :
+          Real))
+      (shapeSqDerivRemainderAbs :=
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated :
+          Real))
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_poly_eq_generated
+      (by
+        norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated,
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated])
+      (by
+        norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCenter_generated,
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated])
+
 def primaryFiniteRow0Parent0Split100Sub0EndpointIntervalCert_of_endpoint_bounds_generated
     (hOmega :
       Step22OmegaClosedFormEndpointBoundsCert

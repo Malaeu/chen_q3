@@ -64,6 +64,9 @@ STATUS_AFTER_OMEGA_ANCHOR = (
 STATUS_AFTER_SHAPESQ_RECEIVER = (
     "fail_closed_missing_shapesq_deriv_source_shapederiv_taylor_remainders"
 )
+STATUS_AFTER_SHAPESQ_DERIV_SOURCE = (
+    "fail_closed_shapesq_constant_deriv_source_budget_gap_shapederiv_taylor_remainders"
+)
 FIRST_FAILURE_MISSING_OMEGA_PRIME = (
     "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
 )
@@ -79,6 +82,9 @@ FIRST_FAILURE_AFTER_OMEGA_CROSSWALK = (
 FIRST_FAILURE_AFTER_OMEGA_ANCHOR = "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP"
 FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP"
+)
+FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE = (
+    "STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP"
 )
 SHAPE_TAYLOR_RECEIVER_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP"
@@ -166,6 +172,20 @@ SHAPESQ_INTEGRATED_RECEIVER_THEOREM = (
 SHAPESQ_INTEGRATED_CROSSWALK_THEOREM = (
     "integratedTaylorPolynomial_deriv_eq_base"
 )
+SHAPESQ_DERIV_TAYLOR_BRIDGE_THEOREM = (
+    "shapeSqDerivTaylor_bound_of_endpoint_bounds"
+)
+SHAPESQ_DERIV_TAYLOR_SOURCE_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated"
+)
+SHAPESQ_DERIV_TAYLOR_COEFF_DEF = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated"
+)
+SHAPESQ_DERIV_TAYLOR_REMAINDER_DEF = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated"
+)
+SHAPESQ_DERIV_TAYLOR_COARSE_CENTER = "-3/40"
+SHAPESQ_DERIV_TAYLOR_COARSE_REMAINDER = "3/40"
 
 CELL_L = "0"
 CELL_U = "1/10"
@@ -380,12 +400,64 @@ def shape_integrated_receiver_status(*, lean_path: Path) -> dict[str, Any]:
     }
 
 
+def shape_sq_deriv_taylor_source_status(
+    *,
+    endpoint_rational_import_path: Path,
+    chunk_taylor_checker_path: Path,
+) -> dict[str, Any]:
+    endpoint_text = (
+        endpoint_rational_import_path.read_text(encoding="utf-8")
+        if endpoint_rational_import_path.exists()
+        else ""
+    )
+    checker_text = (
+        chunk_taylor_checker_path.read_text(encoding="utf-8")
+        if chunk_taylor_checker_path.exists()
+        else ""
+    )
+    source_found = SHAPESQ_DERIV_TAYLOR_SOURCE_THEOREM in endpoint_text
+    coeff_found = SHAPESQ_DERIV_TAYLOR_COEFF_DEF in endpoint_text
+    remainder_found = SHAPESQ_DERIV_TAYLOR_REMAINDER_DEF in endpoint_text
+    bridge_found = SHAPESQ_DERIV_TAYLOR_BRIDGE_THEOREM in checker_text
+    proof_grade = source_found and coeff_found and remainder_found and bridge_found
+    return {
+        "leanFile": str(endpoint_rational_import_path),
+        "checkerFile": str(chunk_taylor_checker_path),
+        "bridgeTheorem": SHAPESQ_DERIV_TAYLOR_BRIDGE_THEOREM,
+        "bridgeTheoremFound": bridge_found,
+        "sourceTheorem": SHAPESQ_DERIV_TAYLOR_SOURCE_THEOREM,
+        "sourceTheoremFound": source_found,
+        "coeffDef": SHAPESQ_DERIV_TAYLOR_COEFF_DEF,
+        "coeffDefFound": coeff_found,
+        "remainderDef": SHAPESQ_DERIV_TAYLOR_REMAINDER_DEF,
+        "remainderDefFound": remainder_found,
+        "constantTaylorCenter": SHAPESQ_DERIV_TAYLOR_COARSE_CENTER,
+        "constantTaylorRemainderAbs": SHAPESQ_DERIV_TAYLOR_COARSE_REMAINDER,
+        "proofGrade": proof_grade,
+        "failureClosed": (
+            FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER if proof_grade else None
+        ),
+        "nextMissing": (
+            FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
+            if proof_grade
+            else FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER
+        ),
+        "boundary": (
+            "This is a proof-grade constant Taylor source for deriv(E^2), "
+            "not a final component Taylor closure.  The coarse remainder "
+            "3/40 must still pass the shape-square integrated budget and "
+            "then the raw-derivative assembly budget."
+        ),
+    }
+
+
 def component_taylor_status(
     omega_prime_closed: bool,
     omega_crosswalk_closed: bool,
     omega_anchor_closed: bool,
     shape_endpoint_available: bool,
     shape_integrated_receiver_closed: bool,
+    shape_sq_deriv_source_closed: bool,
 ) -> dict[str, Any]:
     return {
         "omegaDerivTaylor": (
@@ -453,7 +525,9 @@ def component_taylor_status(
         ),
         "shapeTaylor": {
             "status": (
-                "INTEGRATED_RECEIVER_FORMAL_MISSING_SHAPESQ_DERIV_TAYLOR_SOURCE"
+                "CONSTANT_DERIV_TAYLOR_SOURCE_FORMAL_BUDGET_NOT_ASSEMBLED"
+                if shape_sq_deriv_source_closed
+                else "INTEGRATED_RECEIVER_FORMAL_MISSING_SHAPESQ_DERIV_TAYLOR_SOURCE"
                 if shape_integrated_receiver_closed
                 else "ENDPOINT_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER"
                 if shape_endpoint_available
@@ -462,8 +536,11 @@ def component_taylor_status(
             "missing": True,
             "endpointBoundsAvailable": shape_endpoint_available,
             "integratedReceiverAvailable": shape_integrated_receiver_closed,
+            "shapeSqDerivTaylorSourceAvailable": shape_sq_deriv_source_closed,
             "firstReceiverGap": (
-                FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER
+                FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
+                if shape_sq_deriv_source_closed
+                else FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER
                 if shape_integrated_receiver_closed
                 else SHAPE_TAYLOR_RECEIVER_GAP
             ),
@@ -512,7 +589,19 @@ def build_report(
         lean_path=chunk_taylor_checker_path
     )
     shape_integrated_receiver_closed = bool(shape_integrated_receiver["proofGrade"])
-    if omega_anchor_closed and shape_integrated_receiver_closed:
+    shape_sq_deriv_source = shape_sq_deriv_taylor_source_status(
+        endpoint_rational_import_path=endpoint_rational_import_path,
+        chunk_taylor_checker_path=chunk_taylor_checker_path,
+    )
+    shape_sq_deriv_source_closed = (
+        shape_integrated_receiver_closed
+        and shape_endpoint_available
+        and bool(shape_sq_deriv_source["proofGrade"])
+    )
+    if omega_anchor_closed and shape_sq_deriv_source_closed:
+        status = STATUS_AFTER_SHAPESQ_DERIV_SOURCE
+        first_failure = FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE
+    elif omega_anchor_closed and shape_integrated_receiver_closed:
         status = STATUS_AFTER_SHAPESQ_RECEIVER
         first_failure = FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER
     elif omega_anchor_closed:
@@ -536,6 +625,8 @@ def build_report(
         closed_historical_failures.append(FIRST_FAILURE_AFTER_OMEGA_CROSSWALK)
     if shape_integrated_receiver_closed:
         closed_historical_failures.append(SHAPESQ_INTEGRATED_RECEIVER_CLOSED)
+    if shape_sq_deriv_source_closed:
+        closed_historical_failures.append(FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER)
     omega_deriv_coeff = (
         linked_component_slots(
             "omegaDeriv",
@@ -572,6 +663,7 @@ def build_report(
                 SHAPE_TAYLOR_RECEIVER_GAP,
                 SHAPESQ_INTEGRATED_RECEIVER_CLOSED,
                 FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER,
+                FIRST_FAILURE_AFTER_SHAPESQ_DERIV_SOURCE,
                 SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
                 "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
                 "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
@@ -652,6 +744,7 @@ def build_report(
                 "shapeDerivCoeff": component_slots("shapeDeriv"),
                 "shapeEndpointSource": shape_endpoint,
                 "shapeIntegratedReceiverSource": shape_integrated_receiver,
+                "shapeSqDerivTaylorSource": shape_sq_deriv_source,
             "omegaRemainderAbs": None,
             "omegaDerivRemainderAbs": omega_deriv_remainder,
             "shapeRemainderAbs": None,
@@ -682,6 +775,9 @@ def build_report(
                 "shapeSqIntegratedTaylorReceiverPresent": (
                     shape_integrated_receiver_closed
                 ),
+                "shapeSqDerivTaylorSourcePresent": (
+                    shape_sq_deriv_source_closed
+                ),
                 "shapeTaylorReceiverPresent": False,
                 "shapeDerivTaylorReceiverPresent": False,
                 "omegaDerivTaylorProofAssembledIntoRawDerivative": False,
@@ -692,6 +788,7 @@ def build_report(
                     + (1 if omega_crosswalk_closed else 0)
                     + (1 if omega_anchor_closed else 0)
                     + (1 if shape_integrated_receiver_closed else 0)
+                    + (1 if shape_sq_deriv_source_closed else 0)
                 ),
                 "outLeanWritten": False,
             },
@@ -709,7 +806,9 @@ def build_report(
                 else "missing_proof_grade_component_taylor_remainder"
             ),
             "shape": (
-                "integrated_receiver_formal_missing_shapesq_deriv_taylor_source"
+                "constant_shapesq_deriv_source_formal_budget_not_assembled"
+                if shape_sq_deriv_source_closed
+                else "integrated_receiver_formal_missing_shapesq_deriv_taylor_source"
                 if shape_integrated_receiver_closed
                 else "endpoint_bounds_formal_missing_component_taylor_receiver"
                 if shape_endpoint_available
@@ -727,12 +826,14 @@ def build_report(
                 omega_anchor_closed,
                 shape_endpoint_available,
                 shape_integrated_receiver_closed,
+                shape_sq_deriv_source_closed,
             ),
             "omegaPrimeTaylorSource": omega_prime,
             "omegaTaylorCrosswalkSource": omega_crosswalk,
             "omegaTaylorCenterAnchorSource": omega_anchor,
             "shapeEndpointSource": shape_endpoint,
             "shapeIntegratedReceiverSource": shape_integrated_receiver,
+            "shapeSqDerivTaylorSource": shape_sq_deriv_source,
             "existingLeanInputs": {
             "modelDerivCoeffSource": COEFF_DEF,
             "modelDerivCoeffCount": len(model_coeffs),
@@ -757,6 +858,8 @@ def build_report(
                 "shapeSqEndpointReceiver": SHAPESQ_ENDPOINT_RECEIVER_THEOREM,
                 "shapeSqIntegratedTaylorReceiver": SHAPESQ_INTEGRATED_RECEIVER_THEOREM,
                 "shapeSqIntegratedTaylorCrosswalk": SHAPESQ_INTEGRATED_CROSSWALK_THEOREM,
+                "shapeSqDerivTaylorBridge": SHAPESQ_DERIV_TAYLOR_BRIDGE_THEOREM,
+                "shapeSqDerivTaylorSource": SHAPESQ_DERIV_TAYLOR_SOURCE_THEOREM,
                 "shapeValueBounds": SHAPE_VALUE_BOUNDS_THEOREM,
                 "shapeDerivAnchorBounds": SHAPE_DERIV_ANCHOR_BOUNDS_THEOREM,
                 "shapeDerivIntervalBounds": SHAPE_DERIV_INTERVAL_BOUNDS_THEOREM,
@@ -805,6 +908,9 @@ def build_report(
             "shapeSqIntegratedTaylorReceiverProofGrade": (
                 shape_integrated_receiver_closed
             ),
+            "shapeSqDerivTaylorSourceProofGrade": (
+                shape_sq_deriv_source_closed
+            ),
         },
         "sourceDefinitionLines": source_lines,
         "sourceDefinitionHashes": {
@@ -828,7 +934,18 @@ def build_report(
 
 
 def render_md(report: dict[str, Any]) -> str:
-    if report["proofStatus"]["shapeSqIntegratedTaylorReceiverPresent"]:
+    if report["proofStatus"]["shapeSqDerivTaylorSourcePresent"]:
+        decision_text = [
+            "The Omega integrated-polynomial derivative crosswalk, center",
+            "anchor payload, shape-square integrated Taylor receiver, and a",
+            "proof-grade constant Taylor source for the derivative of",
+            "shape-square are now Lean-checked.  The next immediate",
+            "proof-producing gate is the exact budget/assembly test for this",
+            "coarse shape-square source, followed by shape-derivative Taylor",
+            "data, raw-derivative assembly, residual polynomial bounds, and",
+            "the final interval theorem.",
+        ]
+    elif report["proofStatus"]["shapeSqIntegratedTaylorReceiverPresent"]:
         decision_text = [
             "The Omega integrated-polynomial derivative crosswalk, center",
             "anchor payload, and shape-square integrated Taylor receiver are",
@@ -966,7 +1083,8 @@ def render_md(report: dict[str, Any]) -> str:
             f"- shapeDerivTaylor: `{report['componentTaylorStatus']['shapeDerivTaylor']['status']}`",
             f"- shape endpoint bounds available: `{report['shapeEndpointSource']['proofGradeEndpointBounds']}`",
             f"- shapeSq integrated receiver available: `{report['shapeIntegratedReceiverSource']['proofGrade']}`",
-            f"- shape Taylor receiver gap: `{report['shapeEndpointSource']['firstShapeReceiverGap']}`",
+            f"- shapeSq deriv Taylor source available: `{report['shapeSqDerivTaylorSource']['proofGrade']}`",
+            f"- shape Taylor receiver gap: `{report['componentTaylorStatus']['shapeTaylor']['firstReceiverGap']}`",
             f"- shapeDeriv Taylor receiver gap: `{report['shapeEndpointSource']['firstShapeDerivReceiverGap']}`",
             f"- assembly Lean written: `{report['componentTaylorStatus']['assemblyLeanWritten']}`",
             f"- overall proof safe: `{report['componentTaylorStatus']['overallProofSafe']}`",
@@ -996,6 +1114,21 @@ def render_md(report: dict[str, Any]) -> str:
             f"- failure closed: `{report['shapeIntegratedReceiverSource']['failureClosed']}`",
             f"- next missing: `{report['shapeIntegratedReceiverSource']['nextMissing']}`",
             f"- boundary: {report['shapeIntegratedReceiverSource']['boundary']}",
+            "",
+            "## ShapeSq Deriv Taylor Source",
+            "",
+            f"- proof-grade: `{report['shapeSqDerivTaylorSource']['proofGrade']}`",
+            f"- bridge theorem: `{report['shapeSqDerivTaylorSource']['bridgeTheorem']}`",
+            f"- bridge theorem found: `{report['shapeSqDerivTaylorSource']['bridgeTheoremFound']}`",
+            f"- source theorem: `{report['shapeSqDerivTaylorSource']['sourceTheorem']}`",
+            f"- source theorem found: `{report['shapeSqDerivTaylorSource']['sourceTheoremFound']}`",
+            f"- coeff def: `{report['shapeSqDerivTaylorSource']['coeffDef']}`",
+            f"- remainder def: `{report['shapeSqDerivTaylorSource']['remainderDef']}`",
+            f"- constant center: `{report['shapeSqDerivTaylorSource']['constantTaylorCenter']}`",
+            f"- constant remainder abs: `{report['shapeSqDerivTaylorSource']['constantTaylorRemainderAbs']}`",
+            f"- failure closed: `{report['shapeSqDerivTaylorSource']['failureClosed']}`",
+            f"- next missing: `{report['shapeSqDerivTaylorSource']['nextMissing']}`",
+            f"- boundary: {report['shapeSqDerivTaylorSource']['boundary']}",
             "",
             "## Proof Status",
             "",

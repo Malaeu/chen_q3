@@ -61598,3 +61598,53 @@ Step33A.1-A.  The missing proof object is now exactly a proof-grade
 Taylor/remainder source for the derivative of the shape-square term, followed
 by shape-derivative Taylor data, raw-derivative assembly, residual polynomial
 bounds, and the final interval theorem.
+
+## 2026-06-21 -- ShapeSq constant derivative Taylor source checked
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+Browser/Proshka was used through the in-app browser for route advice.  The
+advisory answer said to proceed with the constant derivative Taylor source only
+as a proof-grade budget test, not as final closure.  The accepted proof
+artifact is local Lean only.
+
+New checked Lean objects:
+
+```lean
+shapeSqDerivTaylor_bound_of_endpoint_bounds
+shapeSqTaylor_bound_of_shapeSqDerivTaylor_source
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated
+```
+
+The concrete source uses a constant derivative Taylor model for
+`deriv (E(eta)^2)` with center `-3/40` and remainder `3/40`, backed by
+`primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`.
+
+Regenerated component payload:
+
+```text
+status = fail_closed_shapesq_constant_deriv_source_budget_gap_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP
+shapeSqDerivTaylorSourcePresent = true
+shapeTaylorReceiverPresent = false
+shapeDerivTaylorReceiverPresent = false
+proofSafeClosedFields = 5
+overallProofSafe = false
+```
+
+Closed local subgap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_CONSTANT_DERIV_TAYLOR_BUDGET_GAP
+```
+
+Boundary: this is not Step33A.1-A closure.  The constant source still must pass
+the integrated shape-square budget and raw-derivative assembly, and the separate
+shape-derivative Taylor route remains open.

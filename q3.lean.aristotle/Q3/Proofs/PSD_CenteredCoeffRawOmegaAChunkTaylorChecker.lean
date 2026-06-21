@@ -9996,6 +9996,148 @@ structure ShapeSqEndpointBoundsCert
     (centeredBSplineImagTransformRealClosedForm k ell anchor) ^ 2 <=
       shapeSqAnchorUpper
 
+/-- Convert endpoint derivative bounds for `E(eta)^2` into a Taylor source for
+the derivative, provided the emitted degree-15 Taylor polynomial is constant.
+
+This is intentionally only a proof-bearing bridge.  It does not claim that the
+constant model is sharp enough for the final Step33 budget; the generated row
+must still supply the concrete rational comparisons. -/
+theorem shapeSqDerivTaylor_bound_of_endpoint_bounds
+    {k : Nat} {ell a b anchor shapeSqDerivLower shapeSqDerivUpper
+      shapeSqAnchorLower shapeSqAnchorUpper : Real}
+    {center : Rat} {shapeSqDerivCoeff : Fin 16 -> Rat}
+    {shapeSqDerivCenter shapeSqDerivRemainderAbs : Real}
+    (cert :
+      ShapeSqEndpointBoundsCert k ell a b anchor shapeSqDerivLower
+        shapeSqDerivUpper shapeSqAnchorLower shapeSqAnchorUpper)
+    (hPoly :
+      ∀ eta : Real,
+        rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta =
+          shapeSqDerivCenter)
+    (hLowerAbs :
+      -shapeSqDerivRemainderAbs <= shapeSqDerivLower - shapeSqDerivCenter)
+    (hUpperAbs :
+      shapeSqDerivUpper - shapeSqDerivCenter <= shapeSqDerivRemainderAbs) :
+    ∀ eta ∈ Set.Icc a b,
+      ‖deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta -
+        rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta‖ <=
+          shapeSqDerivRemainderAbs := by
+  intro eta heta
+  have hLower :
+      -shapeSqDerivRemainderAbs <=
+        deriv
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+            eta -
+          shapeSqDerivCenter := by
+    have h := cert.hDerivLower eta heta
+    linarith
+  have hUpper :
+      deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta -
+        shapeSqDerivCenter <= shapeSqDerivRemainderAbs := by
+    have h := cert.hDerivUpper eta heta
+    linarith
+  have hAbs :
+      |deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta -
+        shapeSqDerivCenter| <= shapeSqDerivRemainderAbs :=
+    abs_le.mpr ⟨hLower, hUpper⟩
+  simpa [hPoly eta, Real.norm_eq_abs] using hAbs
+
+/-- Shape-square Taylor receiver with the derivative source stated in the
+natural generated form, namely as a model for `deriv (E^2)` rather than for
+the derivative of the already-subtracted residual. -/
+theorem shapeSqTaylor_bound_of_shapeSqDerivTaylor_source
+    {k : Nat} {ell a b radius : Real} {center : Rat}
+    (shapeSqDerivCoeff : Fin 16 -> Rat) (shapeSqAnchorCoeff : Rat)
+    {derivRemainderAbs anchorErrorAbs remainderAbs : Real}
+    (hCenterMem : (center : Real) ∈ Set.Icc a b)
+    (hShapeDiff :
+      ∀ eta ∈ Set.Icc a b,
+        DifferentiableAt Real
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta)
+    (hDerivSource :
+      ∀ eta ∈ Set.Icc a b,
+        ‖deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+          eta -
+            rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta‖ <=
+          derivRemainderAbs)
+    (hRadius :
+      ∀ eta ∈ Set.Icc a b, ‖eta - (center : Real)‖ <= radius)
+    (hAnchor :
+      ‖(centeredBSplineImagTransformRealClosedForm k ell (center : Real)) ^ 2 -
+          (shapeSqAnchorCoeff : Real)‖ <= anchorErrorAbs)
+    (hBudget : anchorErrorAbs + derivRemainderAbs * radius <= remainderAbs) :
+    ∀ eta ∈ Set.Icc a b,
+      ‖(centeredBSplineImagTransformRealClosedForm k ell eta) ^ 2 -
+          rawOmegaATaylorPolynomial 16 center
+            (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+            eta‖ <= remainderAbs := by
+  refine
+    shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound
+      (k := k) (ell := ell) (a := a) (b := b) (radius := radius)
+      (center := center) shapeSqDerivCoeff shapeSqAnchorCoeff
+      hCenterMem ?_ ?_ hRadius hAnchor hBudget
+  · intro eta heta
+    exact
+      (hShapeDiff eta heta).sub
+        (rawOmegaATaylorPolynomial_differentiableAt 16 center
+          (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+          eta)
+  · intro eta heta
+    have hDerivPoly :
+        deriv
+            (rawOmegaATaylorPolynomial 16 center
+              (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff))
+            eta =
+          rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta := by
+      simpa using
+        integratedTaylorPolynomial_deriv_eq_base
+          15 center shapeSqDerivCoeff shapeSqAnchorCoeff eta
+    have hDerivResidual :
+        deriv
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2 -
+                rawOmegaATaylorPolynomial 16 center
+                  (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+                  t)
+            eta =
+          deriv
+              (fun t : Real =>
+                (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+              eta -
+            rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta := by
+      change
+        deriv
+            ((fun t : Real =>
+                (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2) -
+              rawOmegaATaylorPolynomial 16 center
+                (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff))
+            eta =
+          deriv
+              (fun t : Real =>
+                (centeredBSplineImagTransformRealClosedForm k ell t) ^ 2)
+              eta -
+            rawOmegaATaylorPolynomial 15 center shapeSqDerivCoeff eta
+      rw [deriv_sub (hShapeDiff eta heta)
+        (rawOmegaATaylorPolynomial_differentiableAt 16 center
+          (integratedTaylorCoeff 15 shapeSqDerivCoeff shapeSqAnchorCoeff)
+          eta)]
+      rw [hDerivPoly]
+    simpa [hDerivResidual] using hDerivSource eta heta
+
 /-- Build the shape-square endpoint package from closed-form `E` and `E'`
 intervals plus the product-corner comparisons for `2 * E * E'`.
 
