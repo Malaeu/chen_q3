@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v5`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
 - status: `fail_closed_missing_shape_shapederiv_taylor_remainders`
@@ -72,8 +72,8 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 - omega: `formal_center_anchor_available_missing_component_assembly`
 - omegaDeriv: `formal_available_not_assembled`
-- shape: `missing_proof_grade_component_taylor_remainder`
-- shapeDeriv: `missing_proof_grade_component_taylor_remainder`
+- shape: `endpoint_bounds_formal_missing_component_taylor_receiver`
+- shapeDeriv: `endpoint_deriv_bounds_formal_missing_component_taylor_receiver`
 
 ## OmegaDeriv Taylor Source
 
@@ -104,10 +104,28 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylor: `FORMAL`
 - omegaDerivTaylor Lean theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 - omegaTaylor: `CROSSWALK_AND_CENTER_ANCHOR_FORMAL_MISSING_COMPONENT_ASSEMBLY`
-- shapeTaylor: `MISSING_PROOF_GRADE_REMAINDER`
-- shapeDerivTaylor: `MISSING_PROOF_GRADE_REMAINDER`
+- shapeTaylor: `ENDPOINT_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER`
+- shapeDerivTaylor: `ENDPOINT_DERIV_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER`
+- shape endpoint bounds available: `True`
+- shape Taylor receiver gap: `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
+- shapeDeriv Taylor receiver gap: `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - assembly Lean written: `False`
 - overall proof safe: `False`
+
+## Shape Endpoint Source
+
+- endpoint proof-grade: `True`
+- Taylor payload proof-grade: `False`
+- shapeSq endpoint theorem: `primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`
+- shapeSq endpoint theorem found: `True`
+- shape value bounds theorem: `primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated`
+- shape value bounds theorem found: `True`
+- shape deriv anchor bounds theorem: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated`
+- shape deriv anchor bounds theorem found: `True`
+- shape deriv interval theorem: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated`
+- shape deriv interval theorem found: `True`
+- receiver needed: A Lean-checked receiver from the generated endpoint/value/deriv bounds to the component Taylor coeff/remainder fields, or a separate proof-grade generator emitting those fields directly.
+- why not Taylor payload: The existing shape endpoint facts bound the shape-square value and first derivative on the subchunk.  They do not provide shapeCoeff[0..15], shapeDerivCoeff[0..15], shapeRemainderAbs, or shapeDerivRemainderAbs in the component Taylor payload convention.
 
 ## Proof Status
 
@@ -116,6 +134,9 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaTaylorIntegratedPolyDerivCrosswalkProofPresent: `True`
 - omegaTaylorCenterAnchorPayloadPresent: `True`
 - omegaDerivTaylorProofPresent: `True`
+- shapeEndpointBoundsProofPresent: `True`
+- shapeTaylorReceiverPresent: `False`
+- shapeDerivTaylorReceiverPresent: `False`
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
@@ -132,6 +153,11 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylorValidCert: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 - omegaTaylorIntegratedPolyDerivCrosswalk: `Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly`
 - omegaTaylorCenterAnchor: `primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor`
+- shapeSqEndpointBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`
+- shapeSqEndpointReceiver: `ShapeSqEndpointBoundsCert`
+- shapeValueBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated`
+- shapeDerivAnchorBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated`
+- shapeDerivIntervalBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated`
 
 ## Proshka Decision
 
@@ -146,6 +172,8 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Failure Codes
 
 - `STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
+- `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP`
 - `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
 - `STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP`

@@ -32570,3 +32570,39 @@ STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
 Boundary: Step33A.1-A remains open.  No Lean assembly theorem has been emitted;
 shape/shapeDeriv Taylor sources, raw-derivative assembly, and residual range
 certification are still missing.
+
+## 2026-06-21 Current EOF State -- Shape endpoint facts inventoried, Taylor receiver gap named
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v5
+status = fail_closed_missing_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+shapeEndpointBoundsProofPresent = true
+shapeTaylorReceiverPresent = false
+shapeDerivTaylorReceiverPresent = false
+proofSafeClosedFields = 3
+overallProofSafe = false
+```
+
+Local endpoint-side shape facts found:
+
+```lean
+ShapeSqEndpointBoundsCert
+primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated
+```
+
+Sharpened subgaps:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
+STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
+```
+
+Boundary: endpoint bounds are formal, but they are not a component Taylor
+coeff/remainder certificate.  Step33A.1-A remains open; no Lean proof file was
+touched in this sync.

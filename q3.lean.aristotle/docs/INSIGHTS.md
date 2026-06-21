@@ -37793,3 +37793,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is still fail-closed.  The full component Taylor proof,
   shape/shapeDeriv Taylor sources, raw derivative assembly, residual range
   certificate, Step33A.1-A, Step33, Step34, and RH remain open.
+
+## Insight (2026-06-21, Step33A.1-A) -- ShapeEndpointToTaylorReceiverGap
+
+- Current payload schema is
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v5`; it keeps
+  `firstFailure = STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP`.
+- Local search found proof-grade endpoint-side shape artifacts:
+  `ShapeSqEndpointBoundsCert`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated`, and
+  `primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated`.
+- These endpoint artifacts bound shape-square value and first derivative on
+  the subchunk, but they do not supply component Taylor payload fields
+  `shapeCoeff[0..15]`, `shapeDerivCoeff[0..15]`, `shapeRemainderAbs`, or
+  `shapeDerivRemainderAbs`.
+- The sharpened subgaps are now recorded in the generated payload:
+  `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
+  and
+  `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`.
+- Browser/Proshka was used for the current question, but the visible response
+  hung after a partial token; it was not used as proof evidence for this patch.
+- External mathlib docs confirm only generic Taylor/polynomial infrastructure;
+  they do not replace this repo-specific receiver/certificate.
+- Boundary: no Lean theorem was added, no component Taylor closure is claimed,
+  and `overallProofSafe` remains `false`.

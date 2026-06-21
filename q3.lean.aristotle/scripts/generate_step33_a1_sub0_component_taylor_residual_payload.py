@@ -49,7 +49,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v4"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v5"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
 STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
 STATUS_AFTER_OMEGA_PRIME = (
@@ -74,6 +74,12 @@ FIRST_FAILURE_AFTER_OMEGA_CROSSWALK = (
     "STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP"
 )
 FIRST_FAILURE_AFTER_OMEGA_ANCHOR = "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP"
+SHAPE_TAYLOR_RECEIVER_GAP = (
+    "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP"
+)
+SHAPE_DERIV_TAYLOR_RECEIVER_GAP = (
+    "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP"
+)
 OMEGA_PRIME_CLOSED_FAILURES = [
     FIRST_FAILURE_MISSING_OMEGA_PRIME,
     "STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP",
@@ -92,6 +98,10 @@ OMEGA_TAYLOR_CENTER_ANCHOR_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean"
 )
 DEFAULT_ENDPOINT_LANDING = Q3_ROOT / OMEGA_TAYLOR_CENTER_ANCHOR_FILE
+ENDPOINT_RATIONAL_IMPORT_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean"
+)
+DEFAULT_ENDPOINT_RATIONAL_IMPORT = Q3_ROOT / ENDPOINT_RATIONAL_IMPORT_FILE
 TARGET_INTERVAL_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "fullTaylor_residual_deriv_closedForm_interval"
@@ -123,6 +133,19 @@ OMEGA_TAYLOR_ANCHOR_LOWER = (
 OMEGA_TAYLOR_ANCHOR_UPPER = (
     "-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071/"
     "80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+)
+SHAPESQ_ENDPOINT_BOUNDS_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated"
+)
+SHAPESQ_ENDPOINT_RECEIVER_THEOREM = "ShapeSqEndpointBoundsCert"
+SHAPE_VALUE_BOUNDS_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
+)
+SHAPE_DERIV_ANCHOR_BOUNDS_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated"
+)
+SHAPE_DERIV_INTERVAL_BOUNDS_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated"
 )
 
 CELL_L = "0"
@@ -267,10 +290,55 @@ def omega_taylor_center_anchor_status(*, lean_path: Path) -> dict[str, Any]:
     }
 
 
+def shape_endpoint_source_status(*, lean_path: Path) -> dict[str, Any]:
+    lean_text = lean_path.read_text(encoding="utf-8") if lean_path.exists() else ""
+    shape_sq_endpoint_found = SHAPESQ_ENDPOINT_BOUNDS_THEOREM in lean_text
+    shape_sq_receiver_found = SHAPESQ_ENDPOINT_RECEIVER_THEOREM in lean_text
+    shape_value_found = SHAPE_VALUE_BOUNDS_THEOREM in lean_text
+    shape_deriv_anchor_found = SHAPE_DERIV_ANCHOR_BOUNDS_THEOREM in lean_text
+    shape_deriv_interval_found = SHAPE_DERIV_INTERVAL_BOUNDS_THEOREM in lean_text
+    endpoint_proof_grade = (
+        shape_sq_endpoint_found
+        and shape_sq_receiver_found
+        and shape_value_found
+        and shape_deriv_anchor_found
+        and shape_deriv_interval_found
+    )
+    return {
+        "leanFile": str(lean_path),
+        "shapeSqEndpointBoundsTheorem": SHAPESQ_ENDPOINT_BOUNDS_THEOREM,
+        "shapeSqEndpointBoundsTheoremFound": shape_sq_endpoint_found,
+        "shapeSqEndpointReceiver": SHAPESQ_ENDPOINT_RECEIVER_THEOREM,
+        "shapeSqEndpointReceiverFound": shape_sq_receiver_found,
+        "shapeValueBoundsTheorem": SHAPE_VALUE_BOUNDS_THEOREM,
+        "shapeValueBoundsTheoremFound": shape_value_found,
+        "shapeDerivAnchorBoundsTheorem": SHAPE_DERIV_ANCHOR_BOUNDS_THEOREM,
+        "shapeDerivAnchorBoundsTheoremFound": shape_deriv_anchor_found,
+        "shapeDerivIntervalBoundsTheorem": SHAPE_DERIV_INTERVAL_BOUNDS_THEOREM,
+        "shapeDerivIntervalBoundsTheoremFound": shape_deriv_interval_found,
+        "proofGradeEndpointBounds": endpoint_proof_grade,
+        "proofGradeTaylorPayload": False,
+        "firstShapeReceiverGap": SHAPE_TAYLOR_RECEIVER_GAP,
+        "firstShapeDerivReceiverGap": SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
+        "whyNotTaylorPayload": (
+            "The existing shape endpoint facts bound the shape-square value and "
+            "first derivative on the subchunk.  They do not provide "
+            "shapeCoeff[0..15], shapeDerivCoeff[0..15], shapeRemainderAbs, or "
+            "shapeDerivRemainderAbs in the component Taylor payload convention."
+        ),
+        "nextReceiverNeeded": (
+            "A Lean-checked receiver from the generated endpoint/value/deriv "
+            "bounds to the component Taylor coeff/remainder fields, or a "
+            "separate proof-grade generator emitting those fields directly."
+        ),
+    }
+
+
 def component_taylor_status(
     omega_prime_closed: bool,
     omega_crosswalk_closed: bool,
     omega_anchor_closed: bool,
+    shape_endpoint_available: bool,
 ) -> dict[str, Any]:
     return {
         "omegaDerivTaylor": (
@@ -337,12 +405,24 @@ def component_taylor_status(
             }
         ),
         "shapeTaylor": {
-            "status": "MISSING_PROOF_GRADE_REMAINDER",
+            "status": (
+                "ENDPOINT_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER"
+                if shape_endpoint_available
+                else "MISSING_PROOF_GRADE_REMAINDER"
+            ),
             "missing": True,
+            "endpointBoundsAvailable": shape_endpoint_available,
+            "firstReceiverGap": SHAPE_TAYLOR_RECEIVER_GAP,
         },
         "shapeDerivTaylor": {
-            "status": "MISSING_PROOF_GRADE_REMAINDER",
+            "status": (
+                "ENDPOINT_DERIV_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER"
+                if shape_endpoint_available
+                else "MISSING_PROOF_GRADE_REMAINDER"
+            ),
             "missing": True,
+            "endpointBoundsAvailable": shape_endpoint_available,
+            "firstReceiverGap": SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
         },
         "assemblyLeanWritten": False,
         "overallProofSafe": False,
@@ -356,6 +436,7 @@ def build_report(
     omega_prime_payload_path: Path,
     endpoint_support_path: Path,
     endpoint_landing_path: Path,
+    endpoint_rational_import_path: Path,
 ) -> dict[str, Any]:
     model_coeffs, source_lines = extract_coefficients(landing_path)
     component_ledger = load_json(component_ledger_path)
@@ -368,6 +449,10 @@ def build_report(
     omega_crosswalk_closed = omega_prime_closed and bool(omega_crosswalk["proofGrade"])
     omega_anchor = omega_taylor_center_anchor_status(lean_path=endpoint_landing_path)
     omega_anchor_closed = omega_crosswalk_closed and bool(omega_anchor["proofGrade"])
+    shape_endpoint = shape_endpoint_source_status(
+        lean_path=endpoint_rational_import_path
+    )
+    shape_endpoint_available = bool(shape_endpoint["proofGradeEndpointBounds"])
     if omega_anchor_closed:
         status = STATUS_AFTER_OMEGA_ANCHOR
         first_failure = FIRST_FAILURE_AFTER_OMEGA_ANCHOR
@@ -420,6 +505,8 @@ def build_report(
             "closedHistoricalFailures": closed_historical_failures,
             "failureCodes": list(dict.fromkeys([
                 first_failure,
+                SHAPE_TAYLOR_RECEIVER_GAP,
+                SHAPE_DERIV_TAYLOR_RECEIVER_GAP,
                 "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
                 "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
                 "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
@@ -497,6 +584,7 @@ def build_report(
                 "omegaDerivCoeff": omega_deriv_coeff,
                 "shapeCoeff": component_slots("shape"),
                 "shapeDerivCoeff": component_slots("shapeDeriv"),
+                "shapeEndpointSource": shape_endpoint,
             "omegaRemainderAbs": None,
             "omegaDerivRemainderAbs": omega_deriv_remainder,
             "shapeRemainderAbs": None,
@@ -523,6 +611,9 @@ def build_report(
                 ),
                 "omegaTaylorCenterAnchorPayloadPresent": omega_anchor_closed,
                 "omegaDerivTaylorProofPresent": omega_prime_closed,
+                "shapeEndpointBoundsProofPresent": shape_endpoint_available,
+                "shapeTaylorReceiverPresent": False,
+                "shapeDerivTaylorReceiverPresent": False,
                 "omegaDerivTaylorProofAssembledIntoRawDerivative": False,
                 "residualPolynomialRangePassed": False,
                 "finalBudgetPassed": False,
@@ -546,15 +637,27 @@ def build_report(
                     if omega_prime_closed
                 else "missing_proof_grade_component_taylor_remainder"
             ),
-            "shape": "missing_proof_grade_component_taylor_remainder",
-            "shapeDeriv": "missing_proof_grade_component_taylor_remainder",
+            "shape": (
+                "endpoint_bounds_formal_missing_component_taylor_receiver"
+                if shape_endpoint_available
+                else "missing_proof_grade_component_taylor_remainder"
+            ),
+            "shapeDeriv": (
+                "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
+                if shape_endpoint_available
+                else "missing_proof_grade_component_taylor_remainder"
+            ),
             },
             "componentTaylorStatus": component_taylor_status(
-                omega_prime_closed, omega_crosswalk_closed, omega_anchor_closed
+                omega_prime_closed,
+                omega_crosswalk_closed,
+                omega_anchor_closed,
+                shape_endpoint_available,
             ),
             "omegaPrimeTaylorSource": omega_prime,
             "omegaTaylorCrosswalkSource": omega_crosswalk,
             "omegaTaylorCenterAnchorSource": omega_anchor,
+            "shapeEndpointSource": shape_endpoint,
             "existingLeanInputs": {
             "modelDerivCoeffSource": COEFF_DEF,
             "modelDerivCoeffCount": len(model_coeffs),
@@ -575,6 +678,11 @@ def build_report(
                     OMEGA_TAYLOR_CROSSWALK_THEOREM
                 ),
                 "omegaTaylorCenterAnchor": OMEGA_TAYLOR_CENTER_ANCHOR_THEOREM,
+                "shapeSqEndpointBounds": SHAPESQ_ENDPOINT_BOUNDS_THEOREM,
+                "shapeSqEndpointReceiver": SHAPESQ_ENDPOINT_RECEIVER_THEOREM,
+                "shapeValueBounds": SHAPE_VALUE_BOUNDS_THEOREM,
+                "shapeDerivAnchorBounds": SHAPE_DERIV_ANCHOR_BOUNDS_THEOREM,
+                "shapeDerivIntervalBounds": SHAPE_DERIV_INTERVAL_BOUNDS_THEOREM,
         },
         "proshkaDecision": {
             "chosen": "B_component_taylor_route",
@@ -616,6 +724,7 @@ def build_report(
             "omegaPrimeProofGrade": omega_prime_closed,
             "omegaTaylorCrosswalkProofGrade": omega_crosswalk_closed,
             "omegaTaylorCenterAnchorProofGrade": omega_anchor_closed,
+            "shapeEndpointBoundsProofGrade": shape_endpoint_available,
         },
         "sourceDefinitionLines": source_lines,
         "sourceDefinitionHashes": {
@@ -632,6 +741,7 @@ def build_report(
             ),
             TARGET_FILE: file_hash(endpoint_support_path),
             OMEGA_TAYLOR_CENTER_ANCHOR_FILE: file_hash(endpoint_landing_path),
+            ENDPOINT_RATIONAL_IMPORT_FILE: file_hash(endpoint_rational_import_path),
         },
     }
 
@@ -763,8 +873,26 @@ def render_md(report: dict[str, Any]) -> str:
             f"- omegaTaylor: `{report['componentTaylorStatus']['omegaTaylor']['status']}`",
             f"- shapeTaylor: `{report['componentTaylorStatus']['shapeTaylor']['status']}`",
             f"- shapeDerivTaylor: `{report['componentTaylorStatus']['shapeDerivTaylor']['status']}`",
+            f"- shape endpoint bounds available: `{report['shapeEndpointSource']['proofGradeEndpointBounds']}`",
+            f"- shape Taylor receiver gap: `{report['shapeEndpointSource']['firstShapeReceiverGap']}`",
+            f"- shapeDeriv Taylor receiver gap: `{report['shapeEndpointSource']['firstShapeDerivReceiverGap']}`",
             f"- assembly Lean written: `{report['componentTaylorStatus']['assemblyLeanWritten']}`",
             f"- overall proof safe: `{report['componentTaylorStatus']['overallProofSafe']}`",
+            "",
+            "## Shape Endpoint Source",
+            "",
+            f"- endpoint proof-grade: `{report['shapeEndpointSource']['proofGradeEndpointBounds']}`",
+            f"- Taylor payload proof-grade: `{report['shapeEndpointSource']['proofGradeTaylorPayload']}`",
+            f"- shapeSq endpoint theorem: `{report['shapeEndpointSource']['shapeSqEndpointBoundsTheorem']}`",
+            f"- shapeSq endpoint theorem found: `{report['shapeEndpointSource']['shapeSqEndpointBoundsTheoremFound']}`",
+            f"- shape value bounds theorem: `{report['shapeEndpointSource']['shapeValueBoundsTheorem']}`",
+            f"- shape value bounds theorem found: `{report['shapeEndpointSource']['shapeValueBoundsTheoremFound']}`",
+            f"- shape deriv anchor bounds theorem: `{report['shapeEndpointSource']['shapeDerivAnchorBoundsTheorem']}`",
+            f"- shape deriv anchor bounds theorem found: `{report['shapeEndpointSource']['shapeDerivAnchorBoundsTheoremFound']}`",
+            f"- shape deriv interval theorem: `{report['shapeEndpointSource']['shapeDerivIntervalBoundsTheorem']}`",
+            f"- shape deriv interval theorem found: `{report['shapeEndpointSource']['shapeDerivIntervalBoundsTheoremFound']}`",
+            f"- receiver needed: {report['shapeEndpointSource']['nextReceiverNeeded']}",
+            f"- why not Taylor payload: {report['shapeEndpointSource']['whyNotTaylorPayload']}",
             "",
             "## Proof Status",
             "",
@@ -825,6 +953,11 @@ def run() -> None:
     )
     parser.add_argument("--endpoint-support", type=Path, default=DEFAULT_ENDPOINT_SUPPORT)
     parser.add_argument("--endpoint-landing", type=Path, default=DEFAULT_ENDPOINT_LANDING)
+    parser.add_argument(
+        "--endpoint-rational-import",
+        type=Path,
+        default=DEFAULT_ENDPOINT_RATIONAL_IMPORT,
+    )
     parser.add_argument("--out-json", type=Path, default=DEFAULT_OUT_JSON)
     parser.add_argument("--out-md", type=Path, default=DEFAULT_OUT_MD)
     args = parser.parse_args()
@@ -835,6 +968,7 @@ def run() -> None:
         omega_prime_payload_path=args.omega_prime_payload,
         endpoint_support_path=args.endpoint_support,
         endpoint_landing_path=args.endpoint_landing,
+        endpoint_rational_import_path=args.endpoint_rational_import,
     )
     args.out_json.parent.mkdir(parents=True, exist_ok=True)
     args.out_json.write_text(

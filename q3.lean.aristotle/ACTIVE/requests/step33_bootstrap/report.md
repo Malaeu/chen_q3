@@ -61463,3 +61463,58 @@ STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
 Boundary: this does not close the full Omega Taylor component package,
 shape/shapeDeriv Taylor packages, raw-derivative assembly, Step33A.1-A,
 Step33, Step34, or RH.
+
+## 2026-06-21 -- Shape endpoint facts inventoried, Taylor receiver gap named
+
+Route: PSD-pd/Q3 Step33A.1-A, Sub0 component Taylor residual payload.
+
+Browser/Proshka was used for the current route question, but the visible answer
+hung after a partial token.  The local patch below relies on repository
+evidence, not browser proof evidence.
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v5
+```
+
+Regenerated component payload:
+
+```text
+status = fail_closed_missing_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+shapeEndpointBoundsProofPresent = true
+shapeTaylorReceiverPresent = false
+shapeDerivTaylorReceiverPresent = false
+proofSafeClosedFields = 3
+overallProofSafe = false
+```
+
+Endpoint facts recorded as formal source artifacts:
+
+```lean
+ShapeSqEndpointBoundsCert
+primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated
+```
+
+New exact receiver gaps:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
+STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 JSON parse/assertion of schema v5 and shape receiver flags
+```
+
+Boundary: no Lean proof file was modified.  Endpoint bounds are proof-grade
+inputs, but not proof-grade component Taylor coeff/remainder payloads.

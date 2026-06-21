@@ -17968,3 +17968,41 @@ STEP33_A1_SUB0_OMEGA_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP
 Boundary: no Lean assembly theorem was emitted.  The missing proof-grade inputs
 are `omega`, `shape`, and `shapeDeriv` Taylor/remainder sources, plus the
 raw-derivative assembly and residual range certificate.
+
+## 2026-06-21 EOF Addendum -- shape endpoint-to-Taylor receiver gap named
+
+The component Taylor residual payload now inventories the existing formal
+shape endpoint facts but keeps the Taylor payload fail-closed.
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v5
+status = fail_closed_missing_shape_shapederiv_taylor_remainders
+firstFailure = STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP
+shapeEndpointBoundsProofPresent = true
+shapeTaylorReceiverPresent = false
+shapeDerivTaylorReceiverPresent = false
+proofSafeClosedFields = 3
+overallProofSafe = false
+```
+
+Endpoint facts recorded:
+
+```lean
+ShapeSqEndpointBoundsCert
+primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated
+primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated
+```
+
+Current sharpened subgaps:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
+STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP
+```
+
+Boundary: this is a ledger/report sync only.  No Lean proof file was modified,
+and Step33A.1-A remains open.
