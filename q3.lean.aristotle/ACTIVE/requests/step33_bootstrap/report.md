@@ -67416,3 +67416,70 @@ Likely repairs:
      multiplied by the full ShapeSqDeriv nominal abs budget;
   3. retry the final product budget comparison only after one of those changes.
 ```
+
+## Execution Update (2026-06-22) -- component product cancellation identity checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBridge.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentProductError_eq_cancellationResidual
+primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_eq_scale_componentProductActual
+primaryFiniteRow0Parent0Split100Sub0_nominalProduct_eq_componentProductNominal
+```
+
+Meaning:
+
+```text
+The bad independent product-error budget is still killed.  This patch does not
+claim a smaller bound or finalBudgetPassed.  It creates the proof-grade rewrite
+surface that expresses the unscaled component-product error as the local
+ComponentProductCancellationResidual.
+```
+
+The checked identity rewrites:
+
+```text
+Omega' * S + Omega * S' - (POmega' * PS + POmega * PS')
+```
+
+as:
+
+```text
+(Omega' - POmega') * S
++ POmega' * (S - PS)
++ (Omega - POmega) * S'
++ POmega * (S' - PS')
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not reuse the killed Rows01234567891011ProductAssemblyErrorBudget.
+This does not prove a cancellation-preserving norm bound.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBridge.lean
+```
+
+Direct Lean passed on the new cancellation bridge file.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_DERIV_NORM_SOURCE_GAP
+
+Build or kill a proof-grade derivative/norm source for:
+  primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+```

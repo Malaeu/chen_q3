@@ -40578,3 +40578,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   during environment setup and was interrupted after 60 seconds.  `q3_check.sh`
   printed its internal Lean command, then hung and was interrupted after 60
   seconds.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentProductCancellationBridgeChecked
+
+- Used the in-app Browser/Computer Use channel again after the checked
+  rows0..11 product-budget constant fail.  Proshka chose the cancellation route:
+  do not try to improve `OmegaTaylorRemainderAbs` by an enormous factor, and do
+  not continue rows12..15, because the checked witness is independent of those
+  remaining ShapeSqDeriv rows.
+- Local source of truth remains the Lean kill in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean`.
+  Browser output is route advice only.
+- Next minimal Lean surface:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBridge.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductError_eq_cancellationResidual`,
+  `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_eq_scale_componentProductActual`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_nominalProduct_eq_componentProductNominal`.
+- The first theorem is a local algebraic cancellation identity in the actual
+  repository naming, rewriting
+  `Omega' * S + Omega * S' - (POmega' * PS + POmega * PS')`
+  as
+  `(Omega' - POmega') * S + POmega' * (S - PS) + (Omega - POmega) * S' + POmega * (S' - PS')`.
+- Boundary: this is not a final budget pass and does not prove
+  `finalBudgetPassed`.  It only creates the proof-grade rewrite surface needed
+  for a later cancellation-preserving derivative/norm source.
+- Expected next gap after this surface:
+  `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_DERIV_NORM_SOURCE_GAP`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new file.  No final budget pass or `finalBudgetPassed` claim is made.

@@ -4,9 +4,9 @@ date: "2026-06-22"
 main_address: "Step33A.1-A.rows01234567891011.product_budget_final_comparison"
 related_addresses: ["Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge"]
 ancestor_addresses: ["Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge"]
-child_or_next_addresses: ["Step33A.1-A.product_source_sharpening_after_rows01234567891011_constant_fail"]
+child_or_next_addresses: ["Step33A.1-A.component_product_cancellation_deriv_norm_source", "Step33A.1-A.product_source_sharpening_after_rows01234567891011_constant_fail"]
 raw_address_notation: "Step33A.1-A / rows 0..11 product budget final comparison"
-normalized_addresses: ["Step33A.1-A / rows 0..11 product budget final comparison", "Step33A.1-A.rows01234567891011.product_budget_final_comparison", "Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge"]
+normalized_addresses: ["Step33A.1-A / rows 0..11 product budget final comparison", "Step33A.1-A.rows01234567891011.product_budget_final_comparison", "Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge", "Step33A.1-A.component_product_cancellation_deriv_norm_source", "Step33A.1-A.product_source_sharpening_after_rows01234567891011_constant_fail"]
 address_status: "resolved_constant_fail"
 blocker: "Resolved: Lean proves the current row11 product assembly budget is too wide"
 collections: ["q3_docs"]
