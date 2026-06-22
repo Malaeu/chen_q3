@@ -39694,3 +39694,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: prove the same-normalization product abs/error budget
   comparisons using the checked nominal budgets, then prove the final
   scale/product budget comparison before reconsidering exact-assembly fields.
+
+## Insight (2026-06-22, Step33A.1-A) -- ProductBudgetComparisonsChecked
+
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+  with named factor/product abs and error budget objects for the two product
+  summands `omegaPrime*shapeSq` and `omega*shapeSqDeriv`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_abs_budget_compare`,
+  `primaryFiniteRow0Parent0Split100Sub0_omega_abs_budget_compare`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_abs_budget_compare`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_abs_budget_compare`,
+  `primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_abs_budget_compare`,
+  `primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_abs_budget_compare`,
+  `primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_error_budget_compare`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_error_budget_compare`.
+- Regenerated component ledger status:
+  `fail_closed_product_budget_comparisons_checked_final_scale_product_budget_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FINAL_SCALE_PRODUCT_BUDGET_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  The final scale/product budget comparison remains missing; generator
+  exact-assembly fields remain false.
+- Local `q3_docs` search found no ready-made product-budget theorem package for
+  this active layer.  External Lean/mathlib search was API sanity only; proof
+  evidence is the local Lean check.
+- Validation: direct Lean passed with the complete local `.lake` dependency
+  path, generator byte-compile/regeneration and JSON parse passed; touched
+  Lean/script marker scan and `git diff --check` were clean.  `q3_check.sh`
+  again hung after printing its internal Lean command, so it was interrupted
+  without a successful `q3_check` result.
+- Next exact patch: prove the final scale/product budget comparison from the
+  checked product abs/error budgets, nominal-scale absolute bound, and
+  nominal-scale/source error budget before reconsidering exact-assembly fields.

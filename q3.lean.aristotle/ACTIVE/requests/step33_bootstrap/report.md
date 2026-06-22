@@ -65579,3 +65579,88 @@ checked nominal polynomial absolute budgets for omegaPrime, shapeSq, omega,
 and shapeSqDeriv, then prove the final scale/product budget comparison.
 Only after that may generator exact-assembly fields be reconsidered.
 ```
+
+## Execution Update (2026-06-22) -- product budget comparisons checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked factor/product budget objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget
+primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget
+primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget
+primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget
+primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget
+primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget
+primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget
+```
+
+New Lean-checked budget comparison wrappers:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaPrime_abs_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_omega_abs_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_abs_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_abs_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_abs_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_abs_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_error_budget_compare
+primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_error_budget_compare
+```
+
+Meaning: the concrete same-normalization inputs consumed by
+`primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge`
+now have named Lean-checked comparison facts.  These are definitional budget
+comparisons over the already checked nominal polynomial abs budgets and factor
+remainder errors.
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not prove the final scale/product budget comparison.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_product_budget_comparisons_checked_final_scale_product_budget_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FINAL_SCALE_PRODUCT_BUDGET_GAP
+checkedProductBudgetComparisonsPresent = true
+guardPasses = false
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:...:.lake/packages/plausible/.lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+Local `q3_docs` search found no ready-made product-budget theorem package for
+this active Step33A.1-A layer.  External Lean/mathlib search was API sanity
+only; proof evidence remains the local Lean check.  `q3_check.sh` again hung
+after printing its internal Lean command, so it was interrupted without a
+successful `q3_check` result.
+
+Next exact patch:
+
+```text
+Prove the final scale/product budget comparison from the checked product
+abs/error budgets, nominal-scale absolute bound, and nominal-scale/source
+error budget.  Only after that may generator exact-assembly fields be
+reconsidered.
+```

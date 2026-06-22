@@ -870,6 +870,111 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget
       dsimp [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget]
       exact le_rfl)
 
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget : Real :=
+  primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget +
+    (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs : Real)
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget : Real :=
+  primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget +
+    (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs : Real)
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget : Real :=
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget +
+    (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs : Real)
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget : Real :=
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget +
+    (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs :
+      Real)
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget : Real :=
+  primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget *
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget : Real :=
+  primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget *
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget : Real :=
+  (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs : Real) *
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget +
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget *
+      (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs : Real)
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget : Real :=
+  (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs : Real) *
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget +
+    primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget *
+      (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs :
+        Real)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaPrime_abs_budget_compare :
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget +
+        (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs :
+          Real) <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_abs_budget_compare :
+    primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget +
+        (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs :
+          Real) <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_abs_budget_compare :
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget +
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs :
+          Real) <=
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_abs_budget_compare :
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget +
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs :
+          Real) <=
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_abs_budget_compare :
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget *
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_abs_budget_compare :
+    primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget *
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_error_budget_compare :
+    (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs :
+        Real) *
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget +
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget *
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs :
+          Real) <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget]
+  exact le_rfl
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_error_budget_compare :
+    (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs : Real) *
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget +
+      primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget *
+        (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs :
+          Real) <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget]
+  exact le_rfl
+
 theorem primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs
     {actual nominal err nominalAbs actualAbs : Real}
     (hErr : |actual - nominal| <= err)

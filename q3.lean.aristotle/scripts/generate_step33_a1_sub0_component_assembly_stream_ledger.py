@@ -72,6 +72,10 @@ STATUS_AFTER_NOMINAL_FACTOR_ABS_BUDGETS = (
     "fail_closed_nominal_factor_abs_budgets_checked_"
     "product_budget_comparison_gap"
 )
+STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS = (
+    "fail_closed_product_budget_comparisons_checked_"
+    "final_scale_product_budget_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -97,6 +101,9 @@ NOMINAL_FACTOR_ABS_BUDGET_GAP = (
 )
 PRODUCT_BUDGET_COMPARISON_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_BUDGET_COMPARISON_GAP"
+)
+FINAL_SCALE_PRODUCT_BUDGET_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FINAL_SCALE_PRODUCT_BUDGET_GAP"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -231,6 +238,52 @@ SHAPESQ_NOMINAL_ABS_BUDGET_THEOREM = (
 )
 SHAPESQ_DERIV_NOMINAL_ABS_BUDGET_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget"
+)
+OMEGA_PRIME_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaPrimeAbsBudget"
+)
+OMEGA_ABS_BUDGET = "primaryFiniteRow0Parent0Split100Sub0OmegaAbsBudget"
+SHAPESQ_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqAbsBudget"
+)
+SHAPESQ_DERIV_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivAbsBudget"
+)
+OMEGA_PRIME_SHAPESQ_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget"
+)
+OMEGA_SHAPESQ_DERIV_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget"
+)
+OMEGA_PRIME_SHAPESQ_ERR_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget"
+)
+OMEGA_SHAPESQ_DERIV_ERR_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget"
+)
+OMEGA_PRIME_ABS_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_abs_budget_compare"
+)
+OMEGA_ABS_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_omega_abs_budget_compare"
+)
+SHAPESQ_ABS_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSq_abs_budget_compare"
+)
+SHAPESQ_DERIV_ABS_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_abs_budget_compare"
+)
+OMEGA_PRIME_SHAPESQ_ABS_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_abs_budget_compare"
+)
+OMEGA_SHAPESQ_DERIV_ABS_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_abs_budget_compare"
+)
+OMEGA_PRIME_SHAPESQ_ERR_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrimeShape_error_budget_compare"
+)
+OMEGA_SHAPESQ_DERIV_ERR_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_error_budget_compare"
 )
 OMEGA_PRIME_PUBLIC_BOUND = (
     "omegaPrimeGeneratedRemainderCert_bound_public"
@@ -426,6 +479,31 @@ def has_checked_nominal_factor_abs_budgets(assembly_text: str) -> bool:
     )
 
 
+def has_checked_product_budget_comparisons(assembly_text: str) -> bool:
+    required = [
+        OMEGA_PRIME_ABS_BUDGET,
+        OMEGA_ABS_BUDGET,
+        SHAPESQ_ABS_BUDGET,
+        SHAPESQ_DERIV_ABS_BUDGET,
+        OMEGA_PRIME_SHAPESQ_ABS_BUDGET,
+        OMEGA_SHAPESQ_DERIV_ABS_BUDGET,
+        OMEGA_PRIME_SHAPESQ_ERR_BUDGET,
+        OMEGA_SHAPESQ_DERIV_ERR_BUDGET,
+        OMEGA_PRIME_ABS_BUDGET_COMPARE,
+        OMEGA_ABS_BUDGET_COMPARE,
+        SHAPESQ_ABS_BUDGET_COMPARE,
+        SHAPESQ_DERIV_ABS_BUDGET_COMPARE,
+        OMEGA_PRIME_SHAPESQ_ABS_BUDGET_COMPARE,
+        OMEGA_SHAPESQ_DERIV_ABS_BUDGET_COMPARE,
+        OMEGA_PRIME_SHAPESQ_ERR_BUDGET_COMPARE,
+        OMEGA_SHAPESQ_DERIV_ERR_BUDGET_COMPARE,
+    ]
+    return all(
+        symbol_pattern(symbol).search(assembly_text) is not None
+        for symbol in required
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -523,6 +601,10 @@ def build_report() -> dict[str, Any]:
         factor_error_witnesses_present
         and has_checked_nominal_factor_abs_budgets(assembly_text)
     )
+    product_budget_comparisons_present = bool(
+        nominal_factor_abs_budgets_present
+        and has_checked_product_budget_comparisons(assembly_text)
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -558,6 +640,9 @@ def build_report() -> dict[str, Any]:
             "nominalFactorAbsBudgetsPresent": (
                 nominal_factor_abs_budgets_present
             ),
+            "productBudgetComparisonsPresent": (
+                product_budget_comparisons_present
+            ),
         }
     )
     guard_passes = bool(
@@ -572,6 +657,8 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS
+            if product_budget_comparisons_present
             else STATUS_AFTER_NOMINAL_FACTOR_ABS_BUDGETS
             if nominal_factor_abs_budgets_present
             else STATUS_AFTER_FACTOR_ERROR_WITNESSES
@@ -595,6 +682,8 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else FINAL_SCALE_PRODUCT_BUDGET_GAP
+            if product_budget_comparisons_present
             else PRODUCT_BUDGET_COMPARISON_GAP
             if nominal_factor_abs_budgets_present
             else NOMINAL_FACTOR_ABS_BUDGET_GAP
@@ -616,6 +705,8 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else FINAL_SCALE_PRODUCT_BUDGET_GAP
+            if product_budget_comparisons_present
             else PRODUCT_BUDGET_COMPARISON_GAP
             if nominal_factor_abs_budgets_present
             else NOMINAL_FACTOR_ABS_BUDGET_GAP
@@ -656,8 +747,9 @@ def build_report() -> dict[str, Any]:
             "absolute-value interface is checked if recorded in the guard "
             "below.  Concrete factor-error witnesses are checked if recorded "
             "in the guard below.  Nominal factor absolute budgets are checked "
-            "if recorded in the guard below; product budget comparisons and "
-            "final arithmetic comparisons remain separate. "
+            "if recorded in the guard below.  Product budget comparisons are "
+            "checked if recorded in the guard below; final scale/product "
+            "arithmetic remains separate. "
             "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
@@ -704,6 +796,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_BUDGET_COMPARISONS_CHECKED_FINAL_SCALE_PRODUCT_OPEN"
+                if product_budget_comparisons_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_NOMINAL_ABS_BUDGETS_CHECKED_PRODUCT_BUDGET_OPEN"
                 if nominal_factor_abs_budgets_present
                 else
@@ -841,6 +936,22 @@ def build_report() -> dict[str, Any]:
                     OMEGA_NOMINAL_ABS_BUDGET_THEOREM,
                     SHAPESQ_NOMINAL_ABS_BUDGET_THEOREM,
                     SHAPESQ_DERIV_NOMINAL_ABS_BUDGET_THEOREM,
+                    OMEGA_PRIME_ABS_BUDGET,
+                    OMEGA_ABS_BUDGET,
+                    SHAPESQ_ABS_BUDGET,
+                    SHAPESQ_DERIV_ABS_BUDGET,
+                    OMEGA_PRIME_SHAPESQ_ABS_BUDGET,
+                    OMEGA_SHAPESQ_DERIV_ABS_BUDGET,
+                    OMEGA_PRIME_SHAPESQ_ERR_BUDGET,
+                    OMEGA_SHAPESQ_DERIV_ERR_BUDGET,
+                    OMEGA_PRIME_ABS_BUDGET_COMPARE,
+                    OMEGA_ABS_BUDGET_COMPARE,
+                    SHAPESQ_ABS_BUDGET_COMPARE,
+                    SHAPESQ_DERIV_ABS_BUDGET_COMPARE,
+                    OMEGA_PRIME_SHAPESQ_ABS_BUDGET_COMPARE,
+                    OMEGA_SHAPESQ_DERIV_ABS_BUDGET_COMPARE,
+                    OMEGA_PRIME_SHAPESQ_ERR_BUDGET_COMPARE,
+                    OMEGA_SHAPESQ_DERIV_ERR_BUDGET_COMPARE,
                 ],
             ),
             "endpointHighOrderSupport": source_symbols(
@@ -908,6 +1019,9 @@ def build_report() -> dict[str, Any]:
             "checkedNominalFactorAbsBudgetsPresent": (
                 nominal_factor_abs_budgets_present
             ),
+            "checkedProductBudgetComparisonsPresent": (
+                product_budget_comparisons_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -936,6 +1050,12 @@ def build_report() -> dict[str, Any]:
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
+                "Prove the final scale/product budget comparison from the "
+                "checked product abs/error budgets, nominal-scale absolute "
+                "bound, and nominal-scale/source error budget.  Only after "
+                "that may generator exact-assembly fields be reconsidered."
+                if product_budget_comparisons_present
+                else
                 "Prove the same-normalization product abs/error budget "
                 "comparisons using the checked nominal polynomial absolute "
                 "budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv, "
