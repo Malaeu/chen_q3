@@ -64892,6 +64892,78 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_str
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
 
+## Execution Update (2026-06-22) -- product factor witness interface checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked factor-witness interface:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget
+primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs
+primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge
+```
+
+Meaning: the already checked product-component bridge no longer needs actual
+factor absolute bounds as independent generated facts.  Lean can derive them
+from:
+
+```text
+factor error bound
+nominal factor polynomial absolute bound
+actualAbs arithmetic budget
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not provide concrete factor error witnesses.
+It does not provide nominal polynomial absolute budgets.
+It does not provide product abs/error budget comparisons or the final
+scale/product comparison.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_product_factor_interface_checked_nominal_error_witness_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FACTOR_ERROR_AND_NOMINAL_ABS_WITNESS_GAP
+checkedProductFactorWitnessInterfacePresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Generate/import concrete same-normalization factor error bounds and nominal
+polynomial absolute budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv,
+then prove the product abs/error budget comparisons and the final scale/product
+budget comparison.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```
+
+`bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was retried and again hung after printing its internal Lean command.  It was
+interrupted without leaving a successful `q3_check` result.  The direct Lean
+check above passed.
+
 ## 2026-06-22 Execution Update -- parameterized active-model crosswalk checked
 
 Extended the isolated Lean support file:

@@ -39577,3 +39577,46 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   exact-assembly fields remain false.
 - Next exact patch: generate/import those concrete factor witnesses before
   reconsidering `exactCoefficientAssemblyPassed`.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ProductFactorWitnessInterfacePlan
+
+- Target blocker:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_FACTOR_WITNESS_GAP`.
+- Local `q3_docs` search found no ready-made factor-witness theorem for the
+  active product-component bridge.
+- External Lean/mathlib search was used only as API sanity for absolute-value
+  and finite-sum bound tactics; proof evidence must remain local Lean.
+- Exact next Lean target: add a structural interface that derives actual
+  factor absolute bounds from factor error bounds plus nominal factor absolute
+  bounds, and keep concrete arithmetic witnesses as the next generated gate.
+- Boundary: this must not set `assembledRawDerivCoeffPresent`,
+  `residualTaylorCoeffPresent`, `componentTaylorProofsPresent`, or
+  `exactCoefficientAssemblyPassed=true`.
+
+## Insight (2026-06-22, Step33A.1-A) -- ProductFactorWitnessInterfaceChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge`.
+- Meaning: actual factor absolute bounds are now derived from factor error
+  bounds plus nominal factor absolute bounds before feeding
+  `primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge`.
+- Regenerated component ledger status:
+  `fail_closed_product_factor_interface_checked_nominal_error_witness_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FACTOR_ERROR_AND_NOMINAL_ABS_WITNESS_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  Concrete factor error witnesses, nominal polynomial absolute budgets, product
+  abs/error budget comparisons, and final scale/product comparison are still
+  missing; generator exact-assembly fields remain false.
+- Validation: direct Lean, generator regeneration, Python byte-compile, JSON
+  parse, hole scan, and diff whitespace check passed.  `q3_check.sh` was
+  retried but hung again after printing its internal Lean command, so it has no
+  successful result for this patch.
+- Next exact patch: generate/import those concrete factor error and nominal
+  polynomial abs witnesses before reconsidering `exactCoefficientAssemblyPassed`.
