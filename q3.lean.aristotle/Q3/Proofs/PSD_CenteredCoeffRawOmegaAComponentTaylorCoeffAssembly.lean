@@ -975,6 +975,25 @@ theorem primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_error_budget_compar
   dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget]
   exact le_rfl
 
+def primaryFiniteRow0Parent0Split100Sub0ProductAssemblyErrorBudget : Real :=
+  (primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs : Real) *
+      (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget +
+        primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget) +
+    (primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real) *
+      (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget +
+        primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_final_scale_product_budget_compare :
+    (primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs : Real) *
+        (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeAbsBudget +
+          primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivAbsBudget) +
+      (primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real) *
+        (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeErrBudget +
+          primaryFiniteRow0Parent0Split100Sub0OmegaShapeDerivErrBudget) <=
+      primaryFiniteRow0Parent0Split100Sub0ProductAssemblyErrorBudget := by
+  dsimp [primaryFiniteRow0Parent0Split100Sub0ProductAssemblyErrorBudget]
+  exact le_rfl
+
 theorem primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs
     {actual nominal err nominalAbs actualAbs : Real}
     (hErr : |actual - nominal| <= err)

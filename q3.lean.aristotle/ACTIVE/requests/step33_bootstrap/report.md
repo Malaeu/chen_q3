@@ -65664,3 +65664,64 @@ abs/error budgets, nominal-scale absolute bound, and nominal-scale/source
 error budget.  Only after that may generator exact-assembly fields be
 reconsidered.
 ```
+
+## Execution Update (2026-06-22) -- final scale/product budget checked
+
+Route: PSD-pd/Q3 Step33A.1-A component assembly budget ledger.
+
+Lean budget witness added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+
+primaryFiniteRow0Parent0Split100Sub0ProductAssemblyErrorBudget
+primaryFiniteRow0Parent0Split100Sub0_final_scale_product_budget_compare
+```
+
+Meaning: the final scale/product error budget now has a named Lean-checked
+definitional comparison from the checked product abs/error budgets, the
+nominal-scale absolute bound, and the nominal-scale source-error budget.
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_final_scale_product_budget_checked_generator_exact_assembly_fields_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP
+checkedFinalScaleProductBudgetPresent = true
+guardPasses = false
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:...:.lake/packages/plausible/.lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+rg -n "sorry|exact\\?|admit|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+git diff --check -- touched Step33A.1-A files
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+The direct Lean check, generator byte-compile/regeneration, JSON parse, marker
+scan, and `git diff --check` passed.  `q3_check.sh` again hung after printing
+its internal Lean command, so it was interrupted without a successful
+`q3_check` result.
+
+Next exact patch:
+
+```text
+Fill or import proof-grade generator exact-assembly fields only after proving
+that assembledRawDerivCoeff, residualTaylorCoeff, and
+residualTaylorRemainderAbs match the checked component assembly and final
+product error budget; do not set exactCoefficientAssemblyPassed by
+documentation alone.
+```

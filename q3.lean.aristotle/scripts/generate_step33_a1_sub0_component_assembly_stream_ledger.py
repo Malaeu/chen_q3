@@ -76,6 +76,10 @@ STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS = (
     "fail_closed_product_budget_comparisons_checked_"
     "final_scale_product_budget_gap"
 )
+STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET = (
+    "fail_closed_final_scale_product_budget_checked_"
+    "generator_exact_assembly_fields_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -104,6 +108,9 @@ PRODUCT_BUDGET_COMPARISON_GAP = (
 )
 FINAL_SCALE_PRODUCT_BUDGET_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FINAL_SCALE_PRODUCT_BUDGET_GAP"
+)
+GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -284,6 +291,12 @@ OMEGA_PRIME_SHAPESQ_ERR_BUDGET_COMPARE = (
 )
 OMEGA_SHAPESQ_DERIV_ERR_BUDGET_COMPARE = (
     "primaryFiniteRow0Parent0Split100Sub0_omegaShapeDeriv_error_budget_compare"
+)
+PRODUCT_ASSEMBLY_ERROR_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0ProductAssemblyErrorBudget"
+)
+FINAL_SCALE_PRODUCT_BUDGET_COMPARE = (
+    "primaryFiniteRow0Parent0Split100Sub0_final_scale_product_budget_compare"
 )
 OMEGA_PRIME_PUBLIC_BOUND = (
     "omegaPrimeGeneratedRemainderCert_bound_public"
@@ -504,6 +517,17 @@ def has_checked_product_budget_comparisons(assembly_text: str) -> bool:
     )
 
 
+def has_checked_final_scale_product_budget(assembly_text: str) -> bool:
+    required = [
+        PRODUCT_ASSEMBLY_ERROR_BUDGET,
+        FINAL_SCALE_PRODUCT_BUDGET_COMPARE,
+    ]
+    return all(
+        symbol_pattern(symbol).search(assembly_text) is not None
+        for symbol in required
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -605,6 +629,10 @@ def build_report() -> dict[str, Any]:
         nominal_factor_abs_budgets_present
         and has_checked_product_budget_comparisons(assembly_text)
     )
+    final_scale_product_budget_present = bool(
+        product_budget_comparisons_present
+        and has_checked_final_scale_product_budget(assembly_text)
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -643,6 +671,7 @@ def build_report() -> dict[str, Any]:
             "productBudgetComparisonsPresent": (
                 product_budget_comparisons_present
             ),
+            "finalScaleProductBudgetPresent": final_scale_product_budget_present,
         }
     )
     guard_passes = bool(
@@ -657,6 +686,8 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET
+            if final_scale_product_budget_present
             else STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS
             if product_budget_comparisons_present
             else STATUS_AFTER_NOMINAL_FACTOR_ABS_BUDGETS
@@ -682,6 +713,8 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
+            if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
             if product_budget_comparisons_present
             else PRODUCT_BUDGET_COMPARISON_GAP
@@ -705,6 +738,8 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
+            if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
             if product_budget_comparisons_present
             else PRODUCT_BUDGET_COMPARISON_GAP
@@ -749,7 +784,8 @@ def build_report() -> dict[str, Any]:
             "in the guard below.  Nominal factor absolute budgets are checked "
             "if recorded in the guard below.  Product budget comparisons are "
             "checked if recorded in the guard below; final scale/product "
-            "arithmetic remains separate. "
+            "arithmetic is checked if recorded in the guard below; generator "
+            "exact-assembly coefficient/remainder fields remain separate. "
             "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
@@ -796,6 +832,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_FINAL_SCALE_PRODUCT_BUDGET_CHECKED_GENERATOR_FIELDS_OPEN"
+                if final_scale_product_budget_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_BUDGET_COMPARISONS_CHECKED_FINAL_SCALE_PRODUCT_OPEN"
                 if product_budget_comparisons_present
                 else
@@ -952,6 +991,8 @@ def build_report() -> dict[str, Any]:
                     OMEGA_SHAPESQ_DERIV_ABS_BUDGET_COMPARE,
                     OMEGA_PRIME_SHAPESQ_ERR_BUDGET_COMPARE,
                     OMEGA_SHAPESQ_DERIV_ERR_BUDGET_COMPARE,
+                    PRODUCT_ASSEMBLY_ERROR_BUDGET,
+                    FINAL_SCALE_PRODUCT_BUDGET_COMPARE,
                 ],
             ),
             "endpointHighOrderSupport": source_symbols(
@@ -1022,6 +1063,9 @@ def build_report() -> dict[str, Any]:
             "checkedProductBudgetComparisonsPresent": (
                 product_budget_comparisons_present
             ),
+            "checkedFinalScaleProductBudgetPresent": (
+                final_scale_product_budget_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -1050,6 +1094,14 @@ def build_report() -> dict[str, Any]:
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
+                "Fill or import proof-grade generator exact-assembly fields "
+                "only after proving that assembledRawDerivCoeff, "
+                "residualTaylorCoeff, and residualTaylorRemainderAbs match "
+                "the checked component assembly and final product error "
+                "budget; do not set exactCoefficientAssemblyPassed by "
+                "documentation alone."
+                if final_scale_product_budget_present
+                else
                 "Prove the final scale/product budget comparison from the "
                 "checked product abs/error budgets, nominal-scale absolute "
                 "bound, and nominal-scale/source error budget.  Only after "

@@ -39729,3 +39729,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: prove the final scale/product budget comparison from the
   checked product abs/error budgets, nominal-scale absolute bound, and
   nominal-scale/source error budget before reconsidering exact-assembly fields.
+
+## Insight (2026-06-22, Step33A.1-A) -- FinalScaleProductBudgetChecked
+
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+  with the named final product-assembly error budget
+  `primaryFiniteRow0Parent0Split100Sub0ProductAssemblyErrorBudget`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_final_scale_product_budget_compare`,
+  a definitional comparison consumed by the generic scale/product-sum error
+  budget bridge.
+- Regenerated component ledger status:
+  `fail_closed_final_scale_product_budget_checked_generator_exact_assembly_fields_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  The final scale/product budget gap is closed, but generator-side
+  `assembledRawDerivCoeff`, `residualTaylorCoeff`, and
+  `exactCoefficientAssemblyPassed` remain false.
+- Browser status: the in-app browser/Computer Use channel is connected to the
+  Pro/RH session, but no message was sent because this patch had no route fork.
+- Validation: direct Lean passed with the complete local `.lake` dependency
+  path, generator byte-compile/regeneration and JSON parse passed; touched
+  Lean/script marker scan and `git diff --check` were clean.  `q3_check.sh`
+  again hung after printing its internal Lean command, so it was interrupted
+  without a successful `q3_check` result.
+- Next exact patch: fill or import proof-grade generator exact-assembly fields
+  only after proving that `assembledRawDerivCoeff`, `residualTaylorCoeff`, and
+  `residualTaylorRemainderAbs` match the checked component assembly and final
+  product error budget; do not set `exactCoefficientAssemblyPassed` by
+  documentation alone.
