@@ -35968,6 +35968,44 @@ Current exact gap:
 STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
 ```
 
+## 2026-06-22 Current EOF State -- raw-second Omega-shape bridge checked
+
+The raw-second product decomposition has now been rewritten with the exact
+shape-side constants inserted.
+
+Checked name:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_shape_constants
+```
+
+Meaning:
+
+```text
+rawSecond(0) is now reduced in Lean to:
+
+  (3/10)/pi *
+    (Omega''(0) * ShapeSq(0) + Omega(0) * ShapeSq''(0)),
+
+with ShapeSq(0) and ShapeSq''(0) replaced by the checked rational constants
+recorded above.  The mixed term is removed by the existing ShapeSq'(0)=0
+lemma.
+```
+
+Boundary:
+
+```text
+Step33A.1-A is still not closed.
+No proof-grade Omega''(0)/Omega(0) rational enclosure is proved here.
+This is an algebraic reduction, not a rawSecond interval certificate.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_ZERO_AND_OMEGA_SECOND_RATIONAL_INTERVAL_GAP
+```
+
 Validation:
 
 ```text

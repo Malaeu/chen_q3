@@ -249,6 +249,52 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_eq :
       exact ((differentiableAt_const (24 : Real)).mul hInnerDiff1).mul hInnerDiff2
     exact hinner
 
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_shape_constants :
+    let Ω : Real -> Real :=
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+    deriv
+        (fun t : Real =>
+          deriv
+            (fun eta : Real =>
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                11 ((3 : Real) / 10) 0 eta)
+            t)
+        (0 : Real)
+      =
+      (((3 : Real) / 10) / Real.pi) *
+        (deriv (fun t : Real => deriv Ω t) (0 : Real) *
+            ((269291841030051840000 : Real) /
+              (452937348578601132294 : Real)) +
+          Ω (0 : Real) *
+            (-((269291841030051840000 : Real) /
+              (90587469715720226458800 : Real)))) := by
+  rw [primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_decomp]
+  dsimp only
+  have hS0 :
+      centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) (0 : Real) ^ 2 =
+        ((269291841030051840000 : Real) /
+          (452937348578601132294 : Real)) := by
+    simpa using primaryFiniteRow0Parent0Split100Sub0_shapeSq_at_zero_eq
+  have hS1 :
+      deriv
+          (fun eta : Real =>
+            centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta ^ 2)
+          (0 : Real) = 0 := by
+    simpa using primaryFiniteRow0Parent0Split100Sub0_shapeSq_deriv_at_zero
+  have hS2 :
+      deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                centeredBSplineImagTransformRealClosedForm 11 ((3 : Real) / 10) eta ^ 2)
+              t)
+          (0 : Real) =
+        -((269291841030051840000 : Real) /
+          (90587469715720226458800 : Real)) := by
+    simpa using primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_eq
+  rw [hS0, hS1, hS2]
+  ring
+
 theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_eq_raw_second_minus_modelSecond :
     deriv primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
         (0 : Real) =

@@ -40997,3 +40997,16 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   the shape-side exact constants from the remaining problem.
 - Current exact gap:
   `STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RawSecondOmegaShapeBridgeChecked
+
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_shape_constants`.
+- This rewrites `rawSecond(0)` as `(3/10)/pi` times
+  `Omega''(0) * ShapeSq(0) + Omega(0) * ShapeSq''(0)` with the checked rational
+  shape constants inserted; the mixed term is eliminated by the existing
+  `ShapeSq'(0)=0` lemma.
+- Boundary: this is still not a rawSecond interval certificate; it is the exact
+  algebraic reduction needed before inserting proof-grade Omega enclosures.
+- Current exact gap:
+  `STEP33_A1_SUB0_OMEGA_ZERO_AND_OMEGA_SECOND_RATIONAL_INTERVAL_GAP`.
