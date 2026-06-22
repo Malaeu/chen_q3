@@ -35336,3 +35336,84 @@ Direct Lean with the local .lake library path passed on the new bridge file.
 .olean generation passed.
 Hole/axiom scan found no matches.
 ```
+
+## 2026-06-22 Current EOF State -- scaled cancellation RHS receiver checked
+
+The checked P45 expression bridge is now wired into the full-Taylor
+direct-norm receiver through a local adapter.  This closes the receiver-shape
+part of the scaled RHS gap, not the numeric/payload bound.
+
+Additional Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+```
+
+Checked theorem/receiver names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff
+primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs
+primaryFiniteRow0Parent0Split100Sub0_scaledCancellationRhs_norm_bound_of_component_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_bound_of_scaledCancellationRhs_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_polynomial_model_bound
+```
+
+Meaning:
+
+```text
+The actual full-Taylor residual derivative is now handled as:
+
+  deriv residual
+    = residualTaylorCoeff polynomial
+      + ScaledCancellationRhs
+
+where ScaledCancellationRhs is
+
+  activeScale * ComponentProductCancellationResidual
+  + (activeScale - nominalScale) * ComponentProductNominal.
+
+The adapter also includes a triangle-product receiver for the scaled RHS from
+separate component bounds.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not prove finalBudgetPassed.
+This does not prove the proof-grade component bounds or the residualTaylor
+polynomial bound.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_BOUNDS_GAP
+```
+
+Required next proof inputs:
+
+```text
+1. A proof-grade bound for ComponentProductCancellationResidual on [0,1/10].
+2. A proof-grade bound for ComponentProductNominal on [0,1/10].
+3. Scale abs / scale-mismatch abs bounds in the exact active normalization.
+4. A proof-grade bound for the residualTaylorCoeff P45 polynomial.
+5. The final budget comparison:
+   scaledRhsInterpolationError + residualTaylorModelBound <=
+   1866608532757 / 500000000000000000000000000000.
+```
+
+Validation:
+
+```text
+Direct Lean with the local .lake library path passed on the new receiver file.
+.olean generation passed.
+Hole/axiom scan found no matches.
+lake env lean hung silently and was interrupted after 60 seconds.
+q3_check.sh printed its internal Lean command, then hung and was interrupted
+after 60 seconds.
+```

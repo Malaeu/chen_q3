@@ -40678,3 +40678,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this still does not prove the numeric norm source.  It narrows the
   live gap to producing a same-unit bound for the full scaled RHS, not only for
   `ComponentProductCancellationResidual`.
+
+## Insight (2026-06-22, Step33A.1-A) -- ScaledCancellationRhsNormReceiverChecked
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`.
+- Lean checked the exact adapter
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs`,
+  which states that
+  `deriv RawTaylorCoeffCert.residual - residualTaylorCoeff polynomial`
+  equals the scaled cancellation RHS.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_scaledCancellationRhs_norm_bound_of_component_bounds`,
+  a triangle/product receiver for bounding the scaled RHS from separate bounds
+  on `ComponentProductCancellationResidual`, `ComponentProductNominal`, and
+  scale factors.
+- Lean checked the full-Taylor receiver adapters ending in
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_polynomial_model_bound`.
+- Important correction to the in-progress note: the scaled RHS is the
+  interpolation/error term after subtracting the P45 residualTaylor polynomial,
+  not the whole residual derivative by itself.  The actual receiver equation is
+  `deriv residual = residualTaylorCoeff polynomial + ScaledCancellationRhs`.
+- Boundary: this is not Step33A.1-A closure and does not prove
+  `finalBudgetPassed`.  The next live payload is exactly the same-unit bound
+  package for the scaled RHS plus the residualTaylor polynomial model and their
+  final budget comparison.
+- New exact live gap:
+  `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_BOUNDS_GAP`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new receiver file and `.olean` generation passed.  The hole/axiom scan found
+  no matches.  `lake env lean` and `q3_check.sh` both hung for 60 seconds and
+  were interrupted, matching the recent local infrastructure behavior.

@@ -67546,3 +67546,89 @@ Build or kill a proof-grade norm source for the full scaled RHS:
   activeScale * ComponentProductCancellationResidual
   + (activeScale - nominalScale) * ComponentProductNominal
 ```
+
+## Execution Update (2026-06-22) -- scaled cancellation RHS receiver checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+The previous P45 expression bridge is now wired into the existing full-Taylor
+direct-norm receiver.  This is an adapter/receiver closure, not a numeric
+payload closure.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff
+primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs
+primaryFiniteRow0Parent0Split100Sub0_scaledCancellationRhs_norm_bound_of_component_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_bound_of_scaledCancellationRhs_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_interpolation_error_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_polynomial_model_bound
+```
+
+Meaning:
+
+```text
+The actual direct-norm receiver input is not just the scaled RHS.  The checked
+adapter uses the exact decomposition:
+
+  deriv RawTaylorCoeffCert.residual
+    = residualTaylorCoeff polynomial
+      + ScaledCancellationRhs
+
+and
+
+  ScaledCancellationRhs
+    = activeScale * ComponentProductCancellationResidual
+      + (activeScale - nominalScale) * ComponentProductNominal.
+
+Therefore the next payload must control both the scaled RHS and the P45
+residualTaylor polynomial model.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not prove finalBudgetPassed.
+No numeric bound is claimed for the scaled RHS.
+No residualTaylor polynomial model bound is claimed.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean
+```
+
+Direct Lean and `.olean` generation passed on the new receiver file.  The
+hole/axiom scan found no matches.  `lake env lean` hung silently and was
+interrupted after 60 seconds.  `q3_check.sh` printed its internal Lean command,
+then hung and was interrupted after 60 seconds.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_BOUNDS_GAP
+
+Build or kill the proof-grade bound inputs consumed by the checked adapter:
+  1. ComponentProductCancellationResidual bound.
+  2. ComponentProductNominal bound.
+  3. activeScale and scale-mismatch abs bounds.
+  4. residualTaylorCoeff P45 polynomial model bound.
+  5. final comparison:
+     scaledRhsInterpolationError + residualTaylorModelBound <=
+     1866608532757 / 500000000000000000000000000000.
+```
