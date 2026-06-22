@@ -69014,3 +69014,72 @@ Prove the exact component center-jet Cauchy identity and order-16 Leibniz
 identity for `CombinedCancellationIntervalExpr`, preserving cancellation before
 norms and before generated payload rows.
 ```
+
+## Execution Update (2026-06-23) -- combined cancellation center-jet row0
+
+Browser/Computer Use was used for the next Proshka route escalation on the
+all-row product-Leibniz bridge.  The local deliverable in this update is the
+checked first row only; Proshka output remains advisory and is not a proof
+object.
+
+Extended:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+New checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCenter
+primaryFiniteRow0Parent0Split100Sub0NormalizedCenterJet
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly
+primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+primaryFiniteRow0Parent0Split100Sub0ComponentProductNominalCauchyCenterJet
+primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidualCauchyCenterJet
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_centerJet0_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_centerJet0_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_componentProductCancellationResidual_centerJet0_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet0_eq_componentSource
+```
+
+Meaning:
+
+```text
+The row j = 0 component-source identity now compiles in the same normalized
+center-jet convention expected by the combined-cancellation source model.
+```
+
+Boundary:
+
+```text
+No all-row Cauchy identity is proved.
+No order-16 product-Leibniz identity is proved.
+No rational center-jet rows or Horner rows are emitted.
+No Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload is
+instantiated.
+Step33A.1-A remains open.
+```
+
+Validation:
+
+```text
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP
+```
+
+Next exact patch:
+
+```text
+Prove the all-row component-source center-jet Cauchy bridge for j : Fin 16,
+then the order-16 product-Leibniz bridge.  Continue preserving cancellation
+before norms and before generated payload rows.
+```

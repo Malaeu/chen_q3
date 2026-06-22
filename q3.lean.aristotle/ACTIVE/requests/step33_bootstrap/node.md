@@ -18286,3 +18286,42 @@ Prove the exact component center-jet Cauchy identity and order-16 Leibniz
 identity for CombinedCancellationIntervalExpr.  Do not run a generator or mark
 Valid until that bridge exists.
 ```
+
+## 2026-06-23 Active Node Addendum -- combined cancellation row0 source bridge
+
+Closed this addendum:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCenter
+primaryFiniteRow0Parent0Split100Sub0NormalizedCenterJet
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly
+primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+primaryFiniteRow0Parent0Split100Sub0ComponentProductNominalCauchyCenterJet
+primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidualCauchyCenterJet
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_centerJet0_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_centerJet0_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_componentProductCancellationResidual_centerJet0_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet0_eq_componentSource
+```
+
+Meaning:
+
+```text
+The generator-facing center-jet convention for the combined-cancellation
+source is now explicit, and Lean proves the j = 0 component-source row.
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP
+```
+
+Next exact move:
+
+```text
+Generalize row0 to all j : Fin 16 and prove the order-16 product-Leibniz
+identity for CombinedCancellationIntervalExpr before any generated
+HighOrderTaylorCert.Valid payload.
+```

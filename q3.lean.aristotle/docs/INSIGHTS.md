@@ -41225,6 +41225,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   checking on this machine.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- CombinedComponentJetCrosswalkSearchInProgress
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP`.
+- Local `q3_docs` search did not recover a ready all-order
+  `iteratedDeriv` product-Leibniz theorem for the whole combined expression.
+- Current local proof surfaces are instead the exact cancellation definitions:
+  `ComponentProductActual`, `ComponentProductNominal`,
+  `ComponentProductCancellationResidual`, the P45 cancellation bridge, and the
+  high-order receiver expecting normalized center jets.
+- Mathlib orientation: product derivative support is available at first
+  derivative/FDeriv level, but no obvious off-the-shelf scalar
+  `iteratedDeriv n (f * g)` Cauchy formula surfaced in local search.
+- Next implementable patch: add generator-facing normalized center-jet source
+  definitions and close the first exact row, `j = 0`, for the combined
+  cancellation expression from the component Cauchy source.  This is not the
+  full Leibniz bridge, but it fixes the exact convention and names that the
+  later all-row/product-Leibniz patch must generalize.
 - Subgap exposed:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP`.
 
@@ -41253,3 +41272,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP`.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- CombinedCancellationRow0SourceBridgeChecked
+
+- Browser/Computer Use was used again to ask Proshka about the all-row
+  product-Leibniz route.  The local accepted evidence remains only the
+  Lean-checked row0 patch below.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`.
+- Lean checked normalized source definitions:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCenter`,
+  `primaryFiniteRow0Parent0Split100Sub0NormalizedCenterJet`,
+  `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly`, and the three
+  component Cauchy center-jet sources for actual, nominal, and cancellation
+  residual products.
+- Lean checked first-row identities:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_centerJet0_eq_cauchy`,
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_centerJet0_eq_cauchy`,
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductCancellationResidual_centerJet0_eq_cauchy`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet0_eq_componentSource`.
+- Meaning: the `j = 0` component-source row is now proof-grade and fixes the
+  center-jet normalization consumed by the future source-model generator.
+- Boundary: rows `j = 1..15`, the order-16 product-Leibniz identity, rational
+  center-jet rows, Horner rows, and
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` remain open.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP`.
