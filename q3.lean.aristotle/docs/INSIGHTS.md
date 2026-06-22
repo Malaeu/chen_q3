@@ -39880,3 +39880,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: build the proof-producing tight ShapeSqDeriv rows `2..15`
   and order16 source; do not claim exact assembly closure until the remainder
   and proof-safe component payload fields are present.
+
+## Insight (2026-06-22, Step33A.1-A) -- SameCoeffShapeSqDerivPayloadChecked
+
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource`.
+- The payload ties the active same coefficient stream to
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated` and
+  provides a `ShapeSqDerivTaylorIntervalCert.Valid` object.  It is deliberately
+  coarse/nonfinal; it is not a final small residual budget.
+- Regenerated component/tight/assembly reports now agree on:
+  `firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`.
+- Updated ledger status:
+  `fail_closed_algebraic_assembly_and_shapesq_same_coeff_payload_checked_component_remainder_source_gap`.
+- Boundary: Step33A.1-A remains open.  `residualTaylorRemainderAbs` is still
+  null, `componentTaylorProofsPresent=false`, and
+  `exactCoefficientAssemblyPassed=false`.
+- Validation: direct Lean with the local `.lake` library path passed on the new
+  file; generator byte-compile/regeneration, JSON parse, touched-file marker
+  scan, and diff whitespace check passed.  `q3_check.sh` again hung after
+  printing its internal Lean command and was stopped after a 60 second timeout.
+- Next exact patch: build the proof-grade component Taylor remainder source
+  consumed by the exact raw-derivative assembly route.

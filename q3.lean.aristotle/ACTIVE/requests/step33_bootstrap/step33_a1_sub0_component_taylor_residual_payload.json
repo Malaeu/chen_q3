@@ -30,7 +30,9 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
     "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
-    "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP"
+    "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP"
   ],
   "coarseShapeSqPayloadSource": {
     "boundary": "The coarseTwo chain is a Lean-checked proof-grade ShapeSqDerivTaylorIntervalCert.Valid source.  It retires the old unscaled-realSinc detector gap for the coarse path, but it uses zero coefficients with a huge uniform budget.  It is not the tight same-coefficient payload consumed by the active component Taylor residual route.",
@@ -60,7 +62,7 @@
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
-    "shape": "coarse_shapesq_payload_formal_but_not_same_coefficient_tight_source_missing_rows_2_to_15_order16",
+    "shape": "same_coefficient_shapesq_deriv_payload_formal_missing_component_taylor_remainder_source",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
   "componentTaylorStatus": {
@@ -100,7 +102,7 @@
     "shapeTaylor": {
       "coarseShapeSqDerivValidAvailable": true,
       "endpointBoundsAvailable": true,
-      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "firstReceiverGap": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
       "integratedReceiverAvailable": true,
       "missing": true,
       "shapeSqDerivCenterCoeff0RowAvailable": true,
@@ -112,8 +114,9 @@
       "shapeSqDerivProductBoundsReceiverAvailable": true,
       "shapeSqDerivShapeSqDerivativeReceiverAvailable": true,
       "shapeSqDerivTaylorSourceAvailable": true,
+      "shapeSqDerivTightSameCoeffPayloadAvailable": true,
       "shapeSqTaylorSourceAvailable": true,
-      "status": "COARSE_SHAPESQ_PAYLOAD_FORMAL_NOT_TIGHT_MISSING_ROWS_2_TO_15_ORDER16"
+      "status": "SHAPESQ_DERIV_SAME_COEFF_PAYLOAD_FORMAL_MISSING_COMPONENT_REMAINDER_SOURCE"
     }
   },
   "degrees": {
@@ -174,6 +177,10 @@
     "shapeSqDerivProductBounds": "primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs",
     "shapeSqDerivTaylorBridge": "shapeSqDerivTaylor_bound_of_endpoint_bounds",
     "shapeSqDerivTaylorSource": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated",
+    "shapeSqDerivTightCoeff": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff",
+    "shapeSqDerivTightCoeffEqGenerated": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated",
+    "shapeSqDerivTightTaylorSource": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource",
+    "shapeSqDerivTightValid": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
     "shapeSqDerivValidFromShapeSqDerivativeAbs": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs",
     "shapeSqEndpointBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeSqEndpointBounds_generated",
     "shapeSqEndpointReceiver": "ShapeSqEndpointBoundsCert",
@@ -184,7 +191,7 @@
     "shapeValueBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
@@ -203,6 +210,7 @@
     "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
@@ -216,7 +224,7 @@
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+  "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "coarseShapeSqPayloadSource": {
@@ -1164,6 +1172,32 @@
       "sourceTheorem": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated",
       "sourceTheoremFound": true
     },
+    "shapeSqDerivTightSameCoeffPayloadSource": {
+      "boundary": "This is a Lean-checked same-coefficient ShapeSqDeriv Taylor source: its coefficient stream is the active generated stream used by component assembly.  Its row/order budgets are still coarse, so it does not prove the final component Taylor remainder budget or the residual interval theorem.",
+      "budgetKind": "coarse_same_coefficient_nonfinal",
+      "coefficientSource": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated",
+      "exists": true,
+      "failureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "generatedCoeffDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated",
+      "generatedCoeffDefFound": true,
+      "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean",
+      "nextMissing": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+      "proofGradeSameCoeffPayload": true,
+      "sameCoeffTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated",
+      "sameCoeffTheoremFound": true,
+      "taylorSourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource",
+      "taylorSourceTheoremFound": true,
+      "tightCoeffDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff",
+      "tightCoeffDefFound": true,
+      "tightCoeffErrorAbsDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeffErrorAbs",
+      "tightCoeffErrorAbsDefFound": true,
+      "tightOrder16AbsDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightOrder16Abs",
+      "tightOrder16AbsDefFound": true,
+      "tightTaylorRemainderAbsDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightTaylorRemainderAbs",
+      "tightTaylorRemainderAbsDefFound": true,
+      "validTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
+      "validTheoremFound": true
+    },
     "shapeSqTaylorSource": {
       "anchorCoeffDef": "primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorAnchorCoeff_generated",
       "anchorCoeffDefFound": true,
@@ -1230,7 +1264,7 @@
     "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 18,
+    "proofSafeClosedFields": 19,
     "residualPolynomialRangePassed": false,
     "scaledRealSincNormalizationReceiverPresent": true,
     "shapeDerivTaylorReceiverPresent": false,
@@ -1244,25 +1278,26 @@
     "shapeSqDerivCenterCoeffRowsRequiredCount": 16,
     "shapeSqDerivIntervalCertReceiverPresent": true,
     "shapeSqDerivMajorantReceiverPresent": true,
-    "shapeSqDerivOrder16UniformBoundPresent": false,
+    "shapeSqDerivOrder16UniformBoundPresent": true,
     "shapeSqDerivOrderShiftReceiverPresent": true,
     "shapeSqDerivProductBoundsReceiverPresent": true,
     "shapeSqDerivShapeSqDerivativeReceiverPresent": true,
     "shapeSqDerivTaylorSourcePresent": true,
+    "shapeSqDerivTightSameCoeffPayloadPresent": true,
     "shapeSqIntegratedTaylorReceiverPresent": true,
     "shapeSqTaylorSourcePresent": true,
     "shapeTaylorReceiverPresent": true
   },
   "proshkaDecision": {
     "chosen": "B_component_taylor_route",
-    "followupChosen": "B_tight_shapesq_deriv_same_coeff_payload_after_coarse_route_kill",
-    "followupFailureClosed": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
-    "followupWhyA": "The coarse `coarseTwo` realSinc-to-ShapeSqDeriv payload is Lean-checked and retires the old unscaled-realSinc detector gap for that coarse path.  The active full-Taylor route is still open because the coarse payload uses zero coefficients and a huge budget, not the same coefficient stream consumed by `RawTaylorCoeffCert`.  The smallest next patch is the tight same-coefficient ShapeSqDeriv payload: rows 2..15 plus the order-16 bound.",
+    "followupChosen": "B_component_taylor_remainder_source_after_same_coeff_shapesq_payload",
+    "followupFailureClosed": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+    "followupWhyA": "The same-coefficient ShapeSqDeriv Taylor payload is now Lean-checked and tied by theorem to the active generated coefficient stream.  It is still a coarse/nonfinal budget, so the smallest next proof-moving patch is the component Taylor remainder source that assembles this payload into the raw-derivative residual route.",
     "latestDoNot": "Do not set coeff = 0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the Lean-checked tight source and coefficient-assembly crosswalk exist.",
     "latestReview": "2026_06_22_same_expression_interval_fork",
     "latestWhy": "Build the tight same-coefficient ShapeSqDeriv Taylor payload before attempting the final residual interval theorem.  A direct same-expression interval proof is a monolith until the tight component source exists, and another receiver would add no proof data.",
-    "localFirstSubgap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+    "localFirstSubgap": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
     "routeLevelFailureCode": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
     "routeLevelFirstPatch": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
@@ -1489,7 +1524,7 @@
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json": "d76ad77551996b39",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean": "8833dbfe5b42bd94",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean": "7fe0ad22d0e36ffb",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "b3cb520ff69bec38",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "aa685b56fe63926f",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean": "ab027a098dbfab54",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean": "ca8df5b06f9173b0",
@@ -1498,6 +1533,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean": "b6f7c834175c15aa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean": "9018aa2dd36d0423",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean": "483a7bcec03c8110",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean": "e048818c95b89112",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqProductBounds.lean": "c3b3c9c8353043c0"
   },
   "sourceDefinitionLines": {
@@ -1534,10 +1570,12 @@
     "shapeSqDerivProductBoundsReceiverProofGrade": true,
     "shapeSqDerivShapeSqDerivativeReceiverProofGrade": true,
     "shapeSqDerivTaylorSourceProofGrade": true,
+    "shapeSqDerivTightSameCoeffPayloadPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean",
+    "shapeSqDerivTightSameCoeffPayloadProofGrade": true,
     "shapeSqIntegratedTaylorReceiverProofGrade": true,
     "shapeSqTaylorSourceProofGrade": true
   },
-  "status": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source",
+  "status": "fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",

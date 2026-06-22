@@ -65963,3 +65963,82 @@ Build the proof-producing tight ShapeSqDeriv rows 2..15 and order16 source.
 Do not set exactCoefficientAssemblyPassed=true until residualTaylorRemainderAbs
 and componentTaylorProofsPresent are proof-grade.
 ```
+
+## Execution Update (2026-06-22) -- same-coeff ShapeSqDeriv payload checked
+
+Route: PSD-pd/Q3 Step33A.1-A same-coefficient ShapeSqDeriv source.
+
+New isolated Lean payload:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean
+```
+
+Lean checked:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource
+```
+
+Meaning: the ShapeSqDeriv coefficient stream now equals the active generated
+stream `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated`,
+and Lean can see a `ShapeSqDerivTaylorIntervalCert.Valid` proof object for
+that same stream.  This closes the old first blocker only as a proof-object
+guard; the row/order budgets are coarse/nonfinal and are not a small final
+residual budget.
+
+Regenerated statuses:
+
+```text
+step33_a1_sub0_component_taylor_residual_payload:
+  status = fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap
+  firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+
+step33_a1_sub0_shapesq_deriv_tight_payload:
+  status = same_coefficient_tight_payload_checked_budget_nonfinal
+  firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+
+step33_a1_sub0_component_assembly_stream_ledger:
+  status = fail_closed_algebraic_assembly_and_shapesq_same_coeff_payload_checked_component_remainder_source_gap
+  firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not set residualTaylorRemainderAbs.
+It does not set componentTaylorProofsPresent=true.
+It does not set exactCoefficientAssemblyPassed=true.
+The same-coeff ShapeSqDeriv source is proof-grade, but the component Taylor
+remainder source is still missing.
+```
+
+Validation:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py
+python3 scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean
+```
+
+The direct Lean check passed.  `q3_check.sh` again hung after printing its
+internal Lean command and was stopped after a 60 second timeout; no successful
+`q3_check` result is claimed.
+
+Next exact patch:
+
+```text
+Build the proof-grade component Taylor remainder source consumed by the exact
+raw-derivative assembly route.  Do not claim final residual interval closure
+until `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and
+`exactCoefficientAssemblyPassed` are all proof-grade.
+```

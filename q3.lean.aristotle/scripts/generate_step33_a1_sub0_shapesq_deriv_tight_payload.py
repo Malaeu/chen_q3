@@ -22,6 +22,10 @@ REQUESTS = ROOT / "ACTIVE" / "requests" / "step33_bootstrap"
 SUPPORT_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
 COEFF_ROWS_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean"
 LANDING_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
+ENDPOINT_RATIONAL_IMPORT_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean"
+)
+TIGHT_PAYLOAD_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean"
 CONTRACT_FILE = REQUESTS / "step33_a1_sub0_shapesq_deriv_tight_payload_contract.md"
 COMPONENT_PAYLOAD_JSON = (
     REQUESTS / "step33_a1_sub0_component_taylor_residual_payload.json"
@@ -31,6 +35,7 @@ OUTPUT_MD = REQUESTS / "step33_a1_sub0_shapesq_deriv_tight_payload.md"
 
 SCHEMA = "q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1"
 STATUS_FAIL_CLOSED = "fail_closed_tight_coeff_stream_not_identified"
+STATUS_CHECKED = "same_coefficient_tight_payload_checked_budget_nonfinal"
 
 FAIL_TIGHT_COEFF_STREAM = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP"
@@ -52,6 +57,19 @@ TIGHT_COEFF_ERROR = (
 TIGHT_ORDER16 = (
     "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightOrder16Abs"
 )
+TIGHT_REMAINDER = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightTaylorRemainderAbs"
+)
+TIGHT_COEFF_EQ_GENERATED = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated"
+)
+TIGHT_TAYLOR_SOURCE = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource"
+)
+GENERATED_SHAPESQ_DERIV_COEFF = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated"
+)
+DOWNSTREAM_REMAINDER_GAP = "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP"
 
 RAW_TAYLOR_COEFF = "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff"
 RAW_TAYLOR_CERT = "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert"
@@ -117,27 +135,13 @@ def load_component_payload() -> dict[str, Any] | None:
     return json.loads(COMPONENT_PAYLOAD_JSON.read_text(encoding="utf-8"))
 
 
-def has_same_coeff_stream_crosswalk(lean_text: str) -> bool:
-    """Conservative search for a theorem tying tight coeffs to active residual."""
-
-    tight_present = TIGHT_COEFF in lean_text or "ShapeSqDerivTight" in lean_text
-    active_present = (
-        RAW_TAYLOR_CERT in lean_text
-        or RAW_TAYLOR_COEFF in lean_text
-        or RESIDUAL_DERIV_MODEL in lean_text
-    )
-    if not (tight_present and active_present):
-        return False
-    bridge_words = ("same", "matches", "crosswalk", "residual", "convention")
-    return any(word in lean_text for word in bridge_words)
-
-
 def build_report() -> dict[str, Any]:
     support = read_text(SUPPORT_FILE)
     coeff_rows = read_text(COEFF_ROWS_FILE)
     landing = read_text(LANDING_FILE)
+    endpoint_rational_import = read_text(ENDPOINT_RATIONAL_IMPORT_FILE)
+    tight_payload = read_text(TIGHT_PAYLOAD_FILE)
     contract = read_text(CONTRACT_FILE)
-    lean_text = "\n".join([support, coeff_rows, landing])
     component_payload = load_component_payload()
 
     receiver_ok = all(
@@ -163,10 +167,21 @@ def build_report() -> dict[str, Any]:
     )
 
     tight_objects_present_in_lean = all(
-        name in lean_text for name in [TIGHT_COEFF, TIGHT_COEFF_ERROR, TIGHT_ORDER16]
+        name in tight_payload
+        for name in [TIGHT_COEFF, TIGHT_COEFF_ERROR, TIGHT_ORDER16, TIGHT_REMAINDER]
     )
-    tight_valid_theorem_present_in_lean = TARGET_THEOREM in lean_text
-    same_coeff_crosswalk_present = has_same_coeff_stream_crosswalk(lean_text)
+    tight_valid_theorem_present_in_lean = TARGET_THEOREM in tight_payload
+    tight_source_theorem_present_in_lean = TIGHT_TAYLOR_SOURCE in tight_payload
+    same_coeff_crosswalk_present = (
+        TIGHT_COEFF_EQ_GENERATED in tight_payload
+        and GENERATED_SHAPESQ_DERIV_COEFF in endpoint_rational_import
+    )
+    tight_payload_checked = (
+        same_coeff_crosswalk_present
+        and tight_objects_present_in_lean
+        and tight_valid_theorem_present_in_lean
+        and tight_source_theorem_present_in_lean
+    )
 
     if not same_coeff_crosswalk_present:
         first_failure = FAIL_TIGHT_COEFF_STREAM
@@ -175,8 +190,8 @@ def build_report() -> dict[str, Any]:
         first_failure = FAIL_ROWS_ORDER16
         status = "fail_closed_tight_rows_order16_payload_missing"
     else:
-        first_failure = None
-        status = "candidate_ready_for_lean_validation"
+        first_failure = DOWNSTREAM_REMAINDER_GAP
+        status = STATUS_CHECKED
 
     required_rows = list(range(2, 16))
     report: dict[str, Any] = {
@@ -217,6 +232,24 @@ def build_report() -> dict[str, Any]:
                     FULL_TAYLOR_RESIDUAL_CROSSWALK,
                 ],
             ),
+            "endpointRationalImport": source_entry(
+                ENDPOINT_RATIONAL_IMPORT_FILE,
+                endpoint_rational_import,
+                [GENERATED_SHAPESQ_DERIV_COEFF],
+            ),
+            "tightPayload": source_entry(
+                TIGHT_PAYLOAD_FILE,
+                tight_payload,
+                [
+                    TIGHT_COEFF,
+                    TIGHT_COEFF_ERROR,
+                    TIGHT_ORDER16,
+                    TIGHT_REMAINDER,
+                    TIGHT_COEFF_EQ_GENERATED,
+                    TARGET_THEOREM,
+                    TIGHT_TAYLOR_SOURCE,
+                ],
+            ),
             "contract": source_entry(
                 CONTRACT_FILE,
                 contract,
@@ -239,41 +272,60 @@ def build_report() -> dict[str, Any]:
             "required": True,
             "tightCoeffObjectsPresentInLean": tight_objects_present_in_lean,
             "tightValidTheoremPresentInLean": tight_valid_theorem_present_in_lean,
+            "tightTaylorSourceTheoremPresentInLean": (
+                tight_source_theorem_present_in_lean
+            ),
             "sameCoeffCrosswalkPresent": same_coeff_crosswalk_present,
-            "guardPasses": same_coeff_crosswalk_present,
+            "guardPasses": tight_payload_checked,
             "stopCodeIfMissing": FAIL_TIGHT_COEFF_STREAM,
             "searchedFor": [
                 TIGHT_COEFF,
                 TIGHT_COEFF_ERROR,
                 TIGHT_ORDER16,
+                TIGHT_REMAINDER,
+                TIGHT_COEFF_EQ_GENERATED,
+                TARGET_THEOREM,
+                TIGHT_TAYLOR_SOURCE,
+                GENERATED_SHAPESQ_DERIV_COEFF,
                 RAW_TAYLOR_CERT,
                 RAW_TAYLOR_COEFF,
                 RESIDUAL_DERIV_MODEL,
             ],
         },
         "remainingObligations": {
-            "rowsRemaining": required_rows,
-            "order16BoundRemaining": True,
+            "rowsRemaining": [] if tight_payload_checked else required_rows,
+            "explicitRowLedgerStillOnlyHas": [0, 1],
+            "closureMode": (
+                "compact_singleAbs_majorant_payload"
+                if tight_payload_checked
+                else "explicit_rows_missing"
+            ),
+            "order16BoundRemaining": not tight_objects_present_in_lean,
             "sameCoefficientCrosswalkRemaining": not same_coeff_crosswalk_present,
             "leanCanSeeFinalTheorem": tight_valid_theorem_present_in_lean,
+            "nextDownstreamGap": DOWNSTREAM_REMAINDER_GAP,
         },
         "decision": {
             "canEmitLeanTheorem": (
-                same_coeff_crosswalk_present
-                and tight_objects_present_in_lean
-                and tight_valid_theorem_present_in_lean
+                tight_payload_checked
             ),
             "nextPatch": (
+                "Use the checked same-coefficient ShapeSqDeriv source as a "
+                "proof object for the component route, but do not spend it as "
+                "the final residual interval.  The next proof-producing patch "
+                f"is {DOWNSTREAM_REMAINDER_GAP}: build the component Taylor "
+                "remainder source consumed by exact raw-derivative assembly."
+                if tight_payload_checked
+                else
                 "Identify or generate the tight coefficient stream in the same "
-                "RawTaylorCoeffCert residual convention. If no such source "
-                "exists, keep the blocker at "
-                f"{FAIL_TIGHT_COEFF_STREAM}."
+                "generated ShapeSqDeriv convention. If no such source exists, "
+                f"keep the blocker at {FAIL_TIGHT_COEFF_STREAM}."
             ),
             "doNot": [
-                "do not emit primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid yet",
+                "do not treat the checked tight payload as the final residual theorem",
                 "do not spend the coarse zero-coefficient payload",
                 "do not add another receiver before a concrete missing receiver is identified",
-                "do not attack the final residual interval before same-coefficient source exists",
+                "do not attack the final residual interval before the component Taylor remainder source exists",
             ],
         },
     }
@@ -308,6 +360,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     for key in [
         "tightCoeffObjectsPresentInLean",
         "tightValidTheoremPresentInLean",
+        "tightTaylorSourceTheoremPresentInLean",
         "sameCoeffCrosswalkPresent",
         "guardPasses",
     ]:
@@ -329,6 +382,11 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines.extend(["## Remaining Obligations", ""])
     obligations = report["remainingObligations"]
     lines.append(f"- rows remaining: `{obligations['rowsRemaining']}`")
+    lines.append(
+        "- explicit row ledger still only has: "
+        f"`{obligations['explicitRowLedgerStillOnlyHas']}`"
+    )
+    lines.append(f"- closure mode: `{obligations['closureMode']}`")
     lines.append(f"- order16 bound remaining: `{obligations['order16BoundRemaining']}`")
     lines.append(
         "- same-coefficient crosswalk remaining: "
@@ -337,6 +395,7 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines.append(
         f"- Lean can see final theorem: `{obligations['leanCanSeeFinalTheorem']}`"
     )
+    lines.append(f"- next downstream gap: `{obligations['nextDownstreamGap']}`")
 
     lines.extend(["", "## Decision", ""])
     decision = report["decision"]

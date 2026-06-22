@@ -1,61 +1,58 @@
 {
   "decision": {
-    "canEmitLeanTheorem": false,
+    "canEmitLeanTheorem": true,
     "doNot": [
-      "do not emit primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid yet",
+      "do not treat the checked tight payload as the final residual theorem",
       "do not spend the coarse zero-coefficient payload",
       "do not add another receiver before a concrete missing receiver is identified",
-      "do not attack the final residual interval before same-coefficient source exists"
+      "do not attack the final residual interval before the component Taylor remainder source exists"
     ],
-    "nextPatch": "Identify or generate the tight coefficient stream in the same RawTaylorCoeffCert residual convention. If no such source exists, keep the blocker at STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP."
+    "nextPatch": "Use the checked same-coefficient ShapeSqDeriv source as a proof object for the component route, but do not spend it as the final residual interval.  The next proof-producing patch is STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP: build the component Taylor remainder source consumed by exact raw-derivative assembly."
   },
   "existingLeanInputs": {
     "activeRawTaylorResidualSurfacePresent": true,
-    "componentPayloadFirstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
-    "componentPayloadStatus": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source",
+    "componentPayloadFirstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+    "componentPayloadStatus": "fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap",
     "row0IntervalProofGrade": true,
     "row1IntervalProofGrade": true,
     "shapeSqDerivReceiversProofGrade": true
   },
-  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP",
+  "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
   "proofBoundary": "This payload is an audit/checkpoint only. It emits no Lean and does not prove Step33A.1-A.",
   "remainingObligations": {
-    "leanCanSeeFinalTheorem": false,
-    "order16BoundRemaining": true,
-    "rowsRemaining": [
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15
+    "closureMode": "compact_singleAbs_majorant_payload",
+    "explicitRowLedgerStillOnlyHas": [
+      0,
+      1
     ],
-    "sameCoefficientCrosswalkRemaining": true
+    "leanCanSeeFinalTheorem": true,
+    "nextDownstreamGap": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+    "order16BoundRemaining": false,
+    "rowsRemaining": [],
+    "sameCoefficientCrosswalkRemaining": false
   },
   "routeLevelFailureCode": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
   "sameCoefficientGuard": {
-    "guardPasses": false,
+    "guardPasses": true,
     "required": true,
-    "sameCoeffCrosswalkPresent": false,
+    "sameCoeffCrosswalkPresent": true,
     "searchedFor": [
       "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff",
       "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeffErrorAbs",
       "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightOrder16Abs",
+      "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightTaylorRemainderAbs",
+      "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated",
+      "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
+      "primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource",
+      "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated",
       "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert",
       "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff",
       "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff"
     ],
     "stopCodeIfMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP",
-    "tightCoeffObjectsPresentInLean": false,
-    "tightValidTheoremPresentInLean": false
+    "tightCoeffObjectsPresentInLean": true,
+    "tightTaylorSourceTheoremPresentInLean": true,
+    "tightValidTheoremPresentInLean": true
   },
   "schema": "q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1",
   "sourceFiles": {
@@ -88,6 +85,16 @@
         "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid": {
           "found": true,
           "line": 33
+        }
+      }
+    },
+    "endpointRationalImport": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated": {
+          "found": true,
+          "line": 1431
         }
       }
     },
@@ -142,8 +149,42 @@
           "line": 401
         }
       }
+    },
+    "tightPayload": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff": {
+          "found": true,
+          "line": 29
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeffErrorAbs": {
+          "found": true,
+          "line": 34
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightOrder16Abs": {
+          "found": true,
+          "line": 39
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightTaylorRemainderAbs": {
+          "found": true,
+          "line": 42
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource": {
+          "found": true,
+          "line": 165
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated": {
+          "found": true,
+          "line": 51
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid": {
+          "found": true,
+          "line": 63
+        }
+      }
     }
   },
-  "status": "fail_closed_tight_coeff_stream_not_identified",
+  "status": "same_coefficient_tight_payload_checked_budget_nonfinal",
   "targetTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid"
 }

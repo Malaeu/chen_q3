@@ -92,6 +92,10 @@ STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET = (
 STATUS_AFTER_EXACT_ASSEMBLY_PAYLOAD = (
     "fail_closed_algebraic_assembly_payload_checked_remainder_source_gap"
 )
+STATUS_AFTER_SHAPESQ_TIGHT_SAME_COEFF_PAYLOAD = (
+    "fail_closed_algebraic_assembly_and_shapesq_same_coeff_payload_checked_"
+    "component_remainder_source_gap"
+)
 STATUS_AFTER_EXISTING_PI_SCALE_BUDGET_FAIL = (
     "fail_closed_existing_pi_scale_budget_widening_fail"
 )
@@ -129,6 +133,9 @@ GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP = (
 )
 SHAPESQ_ROWS_2_TO_15_ORDER16_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP"
+)
+COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP"
 )
 EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL = (
     "STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL"
@@ -733,6 +740,15 @@ def build_report() -> dict[str, Any]:
             exact_assembly_cert, exact_assembly_payload_text
         )
     )
+    tight_same_coeff_payload_present = bool(
+        tight
+        and (
+            tight.get("status")
+            == "same_coefficient_tight_payload_checked_budget_nonfinal"
+            or nested_get(tight, ["sameCoefficientGuard", "guardPasses"], False)
+        )
+        and tight.get("firstFailure") == COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+    )
     existing_pi_scale_budget_fail_present = bool(
         existing_pi_scale_budget_cert
         and existing_pi_scale_budget_cert.get("failureCode")
@@ -793,6 +809,9 @@ def build_report() -> dict[str, Any]:
             "algebraicAssemblyPayloadCertificatePresent": (
                 exact_assembly_payload_present
             ),
+            "shapeSqDerivTightSameCoeffPayloadPresent": (
+                tight_same_coeff_payload_present
+            ),
             "existingPiScaleBudgetFailPresent": (
                 existing_pi_scale_budget_fail_present
             ),
@@ -816,6 +835,9 @@ def build_report() -> dict[str, Any]:
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
             and not active_scale_tight_interval_present
+            else STATUS_AFTER_SHAPESQ_TIGHT_SAME_COEFF_PAYLOAD
+            if exact_assembly_payload_present
+            and tight_same_coeff_payload_present
             else STATUS_AFTER_EXACT_ASSEMBLY_PAYLOAD
             if exact_assembly_payload_present
             else STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET
@@ -849,6 +871,9 @@ def build_report() -> dict[str, Any]:
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
             and not active_scale_tight_interval_present
+            else COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+            if exact_assembly_payload_present
+            and tight_same_coeff_payload_present
             else SHAPESQ_ROWS_2_TO_15_ORDER16_GAP
             if exact_assembly_payload_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
@@ -880,6 +905,9 @@ def build_report() -> dict[str, Any]:
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
             and not active_scale_tight_interval_present
+            else COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+            if exact_assembly_payload_present
+            and tight_same_coeff_payload_present
             else SHAPESQ_ROWS_2_TO_15_ORDER16_GAP
             if exact_assembly_payload_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
@@ -904,7 +932,11 @@ def build_report() -> dict[str, Any]:
             if nominal_object_bridge_present
             else RAW_ASSEMBLY_GAP
         ),
-        "routeLevelGap": TIGHT_ROUTE_GAP,
+        "routeLevelGap": (
+            COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+            if tight_same_coeff_payload_present
+            else TIGHT_ROUTE_GAP
+        ),
         "zeroExtensionBridgeGap": None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP,
         "proofBoundary": (
             "A Lean-checked parameterized active-model crosswalk exists, "
@@ -1042,6 +1074,10 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "ALGEBRAIC_ASSEMBLY_AND_SHAPESQ_SAME_COEFF_PAYLOAD_LEAN_CHECKED_COMPONENT_REMAINDER_SOURCE_OPEN"
+                if exact_assembly_payload_present
+                and tight_same_coeff_payload_present
+                else
                 "ALGEBRAIC_ASSEMBLY_PAYLOAD_LEAN_CHECKED_REMAINDER_SOURCE_OPEN"
                 if exact_assembly_payload_present
                 else
@@ -1272,6 +1308,15 @@ def build_report() -> dict[str, Any]:
                 "schema": tight.get("schema") if tight else None,
                 "status": tight.get("status") if tight else None,
                 "firstFailure": tight.get("firstFailure") if tight else None,
+                "guardPasses": nested_get(
+                    tight, ["sameCoefficientGuard", "guardPasses"], None
+                ),
+                "closureMode": nested_get(
+                    tight, ["remainingObligations", "closureMode"], None
+                ),
+                "nextDownstreamGap": nested_get(
+                    tight, ["remainingObligations", "nextDownstreamGap"], None
+                ),
             },
         },
         "currentComponentFieldState": fields,
@@ -1318,6 +1363,9 @@ def build_report() -> dict[str, Any]:
             ),
             "checkedAlgebraicAssemblyPayloadCertificatePresent": (
                 exact_assembly_payload_present
+            ),
+            "checkedShapeSqDerivTightSameCoeffPayloadPresent": (
+                tight_same_coeff_payload_present
             ),
             "existingPiScaleBudgetFailPresent": (
                 existing_pi_scale_budget_fail_present
@@ -1366,6 +1414,14 @@ def build_report() -> dict[str, Any]:
                 if final_scale_product_budget_present
                 and existing_pi_scale_budget_fail_present
                 and not active_scale_tight_interval_present
+                else
+                "Build the proof-grade component Taylor remainder source "
+                "from the checked algebraic assembly arrays and the checked "
+                "same-coefficient ShapeSqDeriv payload.  residualTaylorRemainderAbs, "
+                "componentTaylorProofsPresent, and exactCoefficientAssemblyPassed "
+                "remain false/null until this source is Lean-checked."
+                if exact_assembly_payload_present
+                and tight_same_coeff_payload_present
                 else
                 "Continue to the proof-producing tight ShapeSqDeriv rows "
                 "2..15 and order16 source.  The algebraic coefficient arrays "
@@ -1457,12 +1513,21 @@ def build_report() -> dict[str, Any]:
                     "objects from the component product stream."
                 )
             ),
-            "downstreamAfterThisCloses": [
-                "generate proof-grade ShapeSqDeriv rows 2..15 and order16",
-                "prove primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
-                "assemble raw derivative residual interval payload",
-                "prove the final direct residual interval theorem",
-            ],
+            "downstreamAfterThisCloses": (
+                [
+                    "build proof-grade component Taylor remainder source",
+                    "set residualTaylorRemainderAbs only after Lean check",
+                    "assemble raw derivative residual interval payload",
+                    "prove the final direct residual interval theorem",
+                ]
+                if tight_same_coeff_payload_present
+                else [
+                    "generate proof-grade ShapeSqDeriv rows 2..15 and order16",
+                    "prove primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
+                    "assemble raw derivative residual interval payload",
+                    "prove the final direct residual interval theorem",
+                ]
+            ),
         },
     }
 

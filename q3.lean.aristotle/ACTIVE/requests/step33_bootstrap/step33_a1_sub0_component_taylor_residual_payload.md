@@ -8,11 +8,11 @@ not close Step33A.1-A.
 - schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
-- status: `fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source`
-- first failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
-- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP, STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP, STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
+- status: `fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap`
+- first failure: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
+- closed historical failures: `STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP, STEP33_A1_SUB0_OMEGAPRIME_CENTER_JET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_ORDER16_INTEGER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGAPRIME_REMAINDER_BUDGET_PAYLOAD_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_OMEGA_TAYLOR_CENTER_ANCHOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_INTERVAL_CERT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_CENTER_COEFF_BRIDGE_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_COEFF_INTERVAL_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF0_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_POWER_SERIES_COEFF1_ROW_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER_SHIFT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP, STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP, STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP, STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP, STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
-- proof-safe closed fields: `18`
+- proof-safe closed fields: `19`
 - Lean emitted: `False`
 
 ## Target
@@ -72,7 +72,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 
 - omega: `formal_center_anchor_available_missing_component_assembly`
 - omegaDeriv: `formal_available_not_assembled`
-- shape: `coarse_shapesq_payload_formal_but_not_same_coefficient_tight_source_missing_rows_2_to_15_order16`
+- shape: `same_coefficient_shapesq_deriv_payload_formal_missing_component_taylor_remainder_source`
 - shapeDeriv: `endpoint_deriv_bounds_formal_missing_component_taylor_receiver`
 
 ## OmegaDeriv Taylor Source
@@ -104,7 +104,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - omegaDerivTaylor: `FORMAL`
 - omegaDerivTaylor Lean theorem: `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid`
 - omegaTaylor: `CROSSWALK_AND_CENTER_ANCHOR_FORMAL_MISSING_COMPONENT_ASSEMBLY`
-- shapeTaylor: `COARSE_SHAPESQ_PAYLOAD_FORMAL_NOT_TIGHT_MISSING_ROWS_2_TO_15_ORDER16`
+- shapeTaylor: `SHAPESQ_DERIV_SAME_COEFF_PAYLOAD_FORMAL_MISSING_COMPONENT_REMAINDER_SOURCE`
 - shapeDerivTaylor: `ENDPOINT_DERIV_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER`
 - shape endpoint bounds available: `True`
 - shapeSq integrated receiver available: `True`
@@ -117,10 +117,11 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeSq deriv order-shift receiver available: `True`
 - shapeSq deriv shape-square derivative receiver available: `True`
 - coarse ShapeSqDeriv valid payload available: `True`
+- same-coeff ShapeSqDeriv tight payload available: `True`
 - shapeSq deriv coeff rows closed: `2 / 16`
-- shapeSq deriv order16 uniform bound available: `False`
+- shapeSq deriv order16 uniform bound available: `True`
 - shapeSq value Taylor source available: `True`
-- shape Taylor receiver gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- shape Taylor receiver gap: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 - shapeDeriv Taylor receiver gap: `STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - assembly Lean written: `False`
 - overall proof safe: `False`
@@ -290,6 +291,25 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - route-level failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 - boundary: The coarseTwo chain is a Lean-checked proof-grade ShapeSqDerivTaylorIntervalCert.Valid source.  It retires the old unscaled-realSinc detector gap for the coarse path, but it uses zero coefficients with a huge uniform budget.  It is not the tight same-coefficient payload consumed by the active component Taylor residual route.
 
+## ShapeSq Deriv Same-Coeff Tight Payload
+
+- proof-grade same-coeff payload: `True`
+- Lean file: `/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean`
+- tight coeff def: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff`
+- tight coeff def found: `True`
+- same-coeff theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated`
+- same-coeff theorem found: `True`
+- valid theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`
+- valid theorem found: `True`
+- Taylor source theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource`
+- Taylor source theorem found: `True`
+- generated coeff def: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated`
+- generated coeff def found: `True`
+- budget kind: `coarse_same_coefficient_nonfinal`
+- failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- next missing: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
+- boundary: This is a Lean-checked same-coefficient ShapeSqDeriv Taylor source: its coefficient stream is the active generated stream used by component assembly.  Its row/order budgets are still coarse, so it does not prove the final component Taylor remainder budget or the residual interval theorem.
+
 ## ShapeSq Deriv Center-Coeff Rows
 
 - proof-grade row0: `True`
@@ -355,16 +375,17 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - coarseScaledRealSincBoundsPresent: `True`
 - coarseShapeDerivativeBoundsPresent: `True`
 - coarseShapeSqDerivValidPresent: `True`
+- shapeSqDerivTightSameCoeffPayloadPresent: `True`
 - shapeSqDerivCenterCoeffRowsClosedCount: `2`
 - shapeSqDerivCenterCoeffRowsRequiredCount: `16`
-- shapeSqDerivOrder16UniformBoundPresent: `False`
+- shapeSqDerivOrder16UniformBoundPresent: `True`
 - shapeSqTaylorSourcePresent: `True`
 - shapeTaylorReceiverPresent: `True`
 - shapeDerivTaylorReceiverPresent: `False`
 - omegaDerivTaylorProofAssembledIntoRawDerivative: `False`
 - residualPolynomialRangePassed: `False`
 - finalBudgetPassed: `False`
-- proofSafeClosedFields: `18`
+- proofSafeClosedFields: `19`
 - outLeanWritten: `False`
 
 ## Existing Lean Inputs
@@ -406,6 +427,10 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - coarseScaledRealSincBounds: `primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo`
 - coarseShapeDerivativeBounds: `primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational`
 - coarseShapeSqDerivValid: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo`
+- shapeSqDerivTightCoeff: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff`
+- shapeSqDerivTightCoeffEqGenerated: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated`
+- shapeSqDerivTightValid: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`
+- shapeSqDerivTightTaylorSource: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource`
 - shapeSqDerivCenterCoeff0Lower: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated`
 - shapeSqDerivCenterCoeff0Upper: `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Upper_generated`
 - shapeSqDerivCenterCoeff0Interval: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated`
@@ -433,19 +458,19 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - latest review: `2026_06_22_same_expression_interval_fork`
 - route-level first patch: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`
 - route-level failure code: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
-- local first subgap: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- local first subgap: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 - latest why: Build the tight same-coefficient ShapeSqDeriv Taylor payload before attempting the final residual interval theorem.  A direct same-expression interval proof is a monolith until the tight component source exists, and another receiver would add no proof data.
 - latest do not: Do not set coeff = 0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the Lean-checked tight source and coefficient-assembly crosswalk exist.
-- follow-up chosen: `B_tight_shapesq_deriv_same_coeff_payload_after_coarse_route_kill`
-- follow-up failure closed: `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
-- follow-up first missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- follow-up chosen: `B_component_taylor_remainder_source_after_same_coeff_shapesq_payload`
+- follow-up failure closed: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
+- follow-up first missing: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 - why not A: Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.
 - why not C: A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem.
-- follow-up why A: The coarse `coarseTwo` realSinc-to-ShapeSqDeriv payload is Lean-checked and retires the old unscaled-realSinc detector gap for that coarse path.  The active full-Taylor route is still open because the coarse payload uses zero coefficients and a huge budget, not the same coefficient stream consumed by `RawTaylorCoeffCert`.  The smallest next patch is the tight same-coefficient ShapeSqDeriv payload: rows 2..15 plus the order-16 bound.
+- follow-up why A: The same-coefficient ShapeSqDeriv Taylor payload is now Lean-checked and tied by theorem to the active generated coefficient stream.  It is still a coarse/nonfinal budget, so the smallest next proof-moving patch is the component Taylor remainder source that assembles this payload into the raw-derivative residual route.
 
 ## Failure Codes
 
-- `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`
@@ -464,6 +489,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - `STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP`
@@ -488,14 +514,14 @@ ShapeSqDeriv order-shift receiver, the direct shape-square
 derivative receiver, the isolated product-bound receiver,
 the ShapeSqDeriv majorant receiver, the active shape pow-12
 scaled-sinc majorant receiver, the affine scale-normalization
-receiver, and the coarse `coarseTwo` realSinc-to-ShapeSqDeriv
-payload are Lean-checked.
-This retires the old unscaled-realSinc detector gap for the
-coarse path.  It does not close the active route, because the
-coarse payload uses zero coefficients and a huge budget, not
-the tight same-coefficient source consumed by the component
-Taylor residual route.  The first live proof gap is now the
-tight ShapeSqDeriv rows `2..15` plus the order-16 bound in the
-same coefficient convention.
+receiver, the coarse `coarseTwo` realSinc-to-ShapeSqDeriv
+payload, and the same-coefficient ShapeSqDeriv Taylor payload
+are Lean-checked.
+The new payload consumes the active generated coefficient stream
+rather than the dead zero-coefficient coarse stream.  It closes
+the old first guard at rows `2..15` plus order `16` in proof-object
+form, but its budget is still coarse/nonfinal.  The first live
+proof gap is now the component Taylor remainder source that can
+be assembled into the raw derivative residual route.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.

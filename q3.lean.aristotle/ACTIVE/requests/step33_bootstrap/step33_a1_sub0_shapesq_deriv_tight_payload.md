@@ -2,13 +2,13 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1`
 
-Status: `fail_closed_tight_coeff_stream_not_identified`
+Status: `same_coefficient_tight_payload_checked_budget_nonfinal`
 
 Target theorem: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
-First failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP`
+First failure: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 
 Boundary: this file is generated audit data only.  It is not Lean proof
 data and does not close Step33A.1-A.
@@ -19,15 +19,16 @@ data and does not close Step33A.1-A.
 - `row0IntervalProofGrade`: `True`
 - `row1IntervalProofGrade`: `True`
 - `activeRawTaylorResidualSurfacePresent`: `True`
-- `componentPayloadStatus`: `fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source`
-- `componentPayloadFirstFailure`: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+- `componentPayloadStatus`: `fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap`
+- `componentPayloadFirstFailure`: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 
 ## Same-Coefficient Guard
 
-- `tightCoeffObjectsPresentInLean`: `False`
-- `tightValidTheoremPresentInLean`: `False`
-- `sameCoeffCrosswalkPresent`: `False`
-- `guardPasses`: `False`
+- `tightCoeffObjectsPresentInLean`: `True`
+- `tightValidTheoremPresentInLean`: `True`
+- `tightTaylorSourceTheoremPresentInLean`: `True`
+- `sameCoeffCrosswalkPresent`: `True`
+- `guardPasses`: `True`
 - stop code if missing: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP`
 
 ## Source Inventory
@@ -59,6 +60,24 @@ data and does not close Step33A.1-A.
 - `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel`: found=`True`, line=`201`
 - `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm`: found=`True`, line=`1912`
 
+### endpointRationalImport
+
+- path: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean`
+- exists: `True`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated`: found=`True`, line=`1431`
+
+### tightPayload
+
+- path: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean`
+- exists: `True`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff`: found=`True`, line=`29`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeffErrorAbs`: found=`True`, line=`34`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightOrder16Abs`: found=`True`, line=`39`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightTaylorRemainderAbs`: found=`True`, line=`42`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated`: found=`True`, line=`51`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`: found=`True`, line=`63`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource`: found=`True`, line=`165`
+
 ### contract
 
 - path: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md`
@@ -69,18 +88,21 @@ data and does not close Step33A.1-A.
 
 ## Remaining Obligations
 
-- rows remaining: `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]`
-- order16 bound remaining: `True`
-- same-coefficient crosswalk remaining: `True`
-- Lean can see final theorem: `False`
+- rows remaining: `[]`
+- explicit row ledger still only has: `[0, 1]`
+- closure mode: `compact_singleAbs_majorant_payload`
+- order16 bound remaining: `False`
+- same-coefficient crosswalk remaining: `False`
+- Lean can see final theorem: `True`
+- next downstream gap: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 
 ## Decision
 
-- can emit Lean theorem: `False`
-- next patch: Identify or generate the tight coefficient stream in the same RawTaylorCoeffCert residual convention. If no such source exists, keep the blocker at STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP.
+- can emit Lean theorem: `True`
+- next patch: Use the checked same-coefficient ShapeSqDeriv source as a proof object for the component route, but do not spend it as the final residual interval.  The next proof-producing patch is STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP: build the component Taylor remainder source consumed by exact raw-derivative assembly.
 
 Do not:
-- do not emit primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid yet
+- do not treat the checked tight payload as the final residual theorem
 - do not spend the coarse zero-coefficient payload
 - do not add another receiver before a concrete missing receiver is identified
-- do not attack the final residual interval before same-coefficient source exists
+- do not attack the final residual interval before the component Taylor remainder source exists
