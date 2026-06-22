@@ -34180,3 +34180,51 @@ Remaining broad gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Current EOF State -- coarse ShapeSqDeriv Taylor-source feed checked
+
+Latest checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTaylorSource_of_coarseTwo
+```
+
+New checked layer:
+
+```text
+ShapeSqDerivTaylorIntervalCert.singleAbs.Valid
+  -> degree-15 derivative Taylor source
+```
+
+New file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean
+```
+
+Meaning: the proof-grade coarse ShapeSqDeriv interval certificate now feeds the
+existing checker theorem
+`ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource`.  The
+resulting source is exact Lean data for the derivative Taylor model on
+`Set.Icc 0 (1/10)`.
+
+Boundary: this is not the final Step33A.1-A chunk certificate.  The remainder is
+the exact coarse expression induced by coeff-error/order-16 budgets
+`(2 : Rat)^24 * (24 : Rat)^17`, and no claim is made that it is sharp enough
+for the final residual/component payload.
+
+Validation: direct Lean passed on
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean`; direct `.olean`
+rebuild passed; touched-file hole scan and `git diff --check` are clean.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_SOURCE_ANCHOR_BUDGET_GAP
+```
+
+Possible downstream failure code:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_BUDGET_FAIL
+```

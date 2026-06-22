@@ -39062,3 +39062,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   final useful payload closure.
 - Next exact sub-gap:
   `STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_TO_TAYLOR_PAYLOAD_FEED_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincCoarseShapeSqTaylorFeedChecked
+
+- Used the in-app browser / Computer Use for a focused Proshka route check on
+  the current coarse ShapeSqDeriv-to-Taylor feed gap.  The browser exchange is
+  advisory only; the accepted artifact is the local Lean-checked bridge below.
+- Added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean`.
+- New checked declarations:
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqDerivTaylorData`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqDerivTaylorRemainderAbs`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTaylorSource_of_coarseTwo`.
+- Meaning: the checked coarse
+  `ShapeSqDerivTaylorIntervalCert.singleAbs.Valid` certificate now feeds the
+  existing
+  `ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource` receiver.
+  This closes the local `Valid -> derivative Taylor source` interface.
+- Boundary: this is not a final useful Step33A.1-A chunk certificate.  The
+  remainder is the exact coarse expression forced by coeff-error/order-16
+  budgets `(2 : Rat)^24 * (24 : Rat)^17`, so the next layer may still fail on
+  anchor/remainder budget sharpness.
+- Direct Lean validation and `.olean` rebuild passed for the new file.  The
+  touched-file hole scan and `git diff --check` are clean.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_SOURCE_ANCHOR_BUDGET_GAP`.
+- Possible downstream failure code:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_BUDGET_FAIL`.

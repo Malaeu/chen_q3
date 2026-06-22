@@ -64248,3 +64248,64 @@ Remaining broad gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Execution Update -- coarse ShapeSqDeriv Taylor-source feed checked
+
+Latest checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTaylorSource_of_coarseTwo
+```
+
+New file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean
+```
+
+New checked layer:
+
+```text
+ShapeSqDerivTaylorIntervalCert.singleAbs.Valid
+  -> ShapeSqDerivTaylorIntervalCert.Valid.toShapeSqDerivTaylorSource
+  -> degree-15 derivative Taylor source on Set.Icc 0 (1/10)
+```
+
+Proof route: reuse the checked theorem
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo`, package
+the exact `singleAbs` data, define the exact receiver remainder expression, and
+close the receiver budget by definitional equality.
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean
+  passed
+direct olean rebuild:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.olean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?|axiom|unsafe"
+  clean
+git diff --check:
+  clean
+```
+
+Boundary: this does not close the final Step33A.1-A chunk certificate.  The
+coarse derivative Taylor remainder is proof-grade but very large, coming from
+the exact coeff-error/order-16 budgets `(2 : Rat)^24 * (24 : Rat)^17`.  The
+next receiver must either prove the shape-square Taylor anchor/remainder budget
+or fail with a named budget/sharpness obstruction.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_SOURCE_ANCHOR_BUDGET_GAP
+```
+
+Possible downstream failure code:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_BUDGET_FAIL
+```
