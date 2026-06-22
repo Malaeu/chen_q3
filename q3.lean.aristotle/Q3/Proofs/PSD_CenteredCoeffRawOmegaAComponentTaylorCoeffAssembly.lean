@@ -290,6 +290,9 @@ def primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Rat :=
   (95492965855137201461330258024 : Rat) /
     1000000000000000000000000000000
 
+def primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Rat :=
+  primaryFiniteRow0Parent0Split100Sub0TightScaleUpper
+
 def primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Rat :=
   (190985931710274402922660516047 : Rat) /
     2000000000000000000000000000000
@@ -307,6 +310,15 @@ theorem primaryFiniteRow0Parent0Split100Sub0_nominalScale_mem_tightInterval :
     norm_num [primaryFiniteRow0Parent0Split100Sub0TightScaleLower,
       primaryFiniteRow0Parent0Split100Sub0TightScaleUpper,
       primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff]
+
+theorem primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_bound :
+    |(primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)| <=
+      (primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real) := by
+  rw [abs_of_nonneg]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff,
+      primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound,
+      primaryFiniteRow0Parent0Split100Sub0TightScaleUpper]
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff]
 
 theorem primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval
     {scale : Real}

@@ -64717,7 +64717,15 @@ Validation:
 python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
 python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+rg -n "sorry|exact\\?|admit|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.md q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md q3.lean.aristotle/docs/INSIGHTS.md
 ```
+
+`bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was attempted and again hung after printing its internal Lean command; it was
+interrupted without leaving a running process.  The direct `LEAN_PATH` Lean
+check above passed.
 
 `bash scripts/q3_check.sh
 q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
@@ -65126,6 +65134,70 @@ q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemb
 was retried and again hung after printing its internal Lean command; it was
 interrupted without leaving a running process.  The direct `LEAN_PATH` Lean
 check above passed.
+
+## Execution Update (2026-06-22) -- nominal-scale abs witness checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked product-error input:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound
+primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_bound
+```
+
+Meaning: the generic product-error bridge now has a named concrete bound for
+the nominal scale input:
+
+```text
+|NominalScaleCoeff| <= NominalScaleAbsBound
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not prove NominalScaleCoeff = ((3 : Real) / 10) / Real.pi.
+It does not provide product-summand coefficient/remainder error witnesses for
+omegaPrime*shapeSq or omega*shapeSqDeriv.
+It does not provide product absolute bounds or the final concrete budget
+comparison.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent, or
+exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_product_error_bridge_and_nominal_scale_abs_checked_product_component_witness_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_COMPONENT_WITNESS_GAP
+checkedNominalScaleAbsBoundPresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Generate/import concrete same-normalization product-summand witnesses consumed
+by primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge:
+coefficient/remainder errors for omegaPrime*shapeSq and omega*shapeSqDeriv,
+product absolute bounds, and the final concrete budget comparison.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```
 
 ## Execution Update (2026-06-22) -- nominal source interval bridge checked
 

@@ -39489,3 +39489,42 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: generate/import the concrete arithmetic witnesses consumed
   by the product-error bridge before generating ShapeSqDeriv rows `2..15` or
   claiming Step33A.1-A closure.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ProductComponentWitnessPlan
+
+- Target blocker:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_CONCRETE_PRODUCT_ERROR_BUDGET_GAP`.
+- Local `q3_docs` search found no ready-made concrete arithmetic witnesses for
+  `primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge`.
+- The smallest reusable input still missing from the generic bridge was the
+  concrete bound `|NominalScaleCoeff| <= nominalScaleAbs`; the remaining work
+  is product-summand coefficient/remainder error and absolute-bound witnesses.
+- External Lean/mathlib search was used only as API sanity for `norm_num` and
+  linear arithmetic over concrete rationals; proof evidence must remain local
+  Lean.
+- Exact next Lean target: add a named nominal-scale absolute-bound witness, then
+  keep the next gap focused on product-component witnesses rather than the
+  already checked generic product-error bridge.
+- Boundary: this must not set `assembledRawDerivCoeffPresent`,
+  `residualTaylorCoeffPresent`, or `exactCoefficientAssemblyPassed=true`, and
+  must not generate ShapeSqDeriv rows `2..15`.
+
+## Insight (2026-06-22, Step33A.1-A) -- NominalScaleAbsWitnessChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked `primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_bound`, proving the
+  concrete input `|NominalScaleCoeff| <= NominalScaleAbsBound` for the generic
+  product-error bridge.
+- Regenerated component ledger status:
+  `fail_closed_product_error_bridge_and_nominal_scale_abs_checked_product_component_witness_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_COMPONENT_WITNESS_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  Product-summand coefficient/remainder errors for `omegaPrime*shapeSq` and
+  `omega*shapeSqDeriv`, product absolute bounds, and the final concrete budget
+  comparison are still missing; generator exact-assembly fields remain false.
+- Next exact patch: generate/import those product-component witnesses before
+  reconsidering `exactCoefficientAssemblyPassed`.
