@@ -29,8 +29,26 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
-    "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP"
+    "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
+    "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP"
   ],
+  "coarseShapeSqPayloadSource": {
+    "boundary": "The coarseTwo chain is a Lean-checked proof-grade ShapeSqDerivTaylorIntervalCert.Valid source.  It retires the old unscaled-realSinc detector gap for the coarse path, but it uses zero coefficients with a huge uniform budget.  It is not the tight same-coefficient payload consumed by the active component Taylor residual route.",
+    "nextMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+    "proofGradeShapeSqDerivValid": true,
+    "realSincDerivativePayloadFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean",
+    "realSincMajorantTheorem": "coarseTwoBaseAbs_providesAnalyticMajorant",
+    "realSincMajorantTheoremFound": true,
+    "routeLevelFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+    "scaledRealSincPayloadFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean",
+    "scaledRealSincTheorem": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo",
+    "scaledRealSincTheoremFound": true,
+    "shapeDerivativeTheorem": "primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational",
+    "shapeDerivativeTheoremFound": true,
+    "shapeSqPayloadFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean",
+    "shapeSqValidTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo",
+    "shapeSqValidTheoremFound": true
+  },
   "coarseShapeSqTaylorRouteKill": {
     "activeCertObject": "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert",
     "checkedSource": "primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo",
@@ -42,7 +60,7 @@
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
-    "shape": "scaled_sinc_normalization_receiver_formal_missing_realsinc_derivative_bounds_0_to_17_payload",
+    "shape": "coarse_shapesq_payload_formal_but_not_same_coefficient_tight_source_missing_rows_2_to_15_order16",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
   "componentTaylorStatus": {
@@ -80,8 +98,9 @@
       "status": "ENDPOINT_DERIV_BOUNDS_FORMAL_MISSING_TAYLOR_COEFF_REMAINDER_RECEIVER"
     },
     "shapeTaylor": {
+      "coarseShapeSqDerivValidAvailable": true,
       "endpointBoundsAvailable": true,
-      "firstReceiverGap": "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
+      "firstReceiverGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
       "integratedReceiverAvailable": true,
       "missing": true,
       "shapeSqDerivCenterCoeff0RowAvailable": true,
@@ -94,7 +113,7 @@
       "shapeSqDerivShapeSqDerivativeReceiverAvailable": true,
       "shapeSqDerivTaylorSourceAvailable": true,
       "shapeSqTaylorSourceAvailable": true,
-      "status": "SHAPESQ_DERIV_MAJORANT_RECEIVER_FORMAL_MISSING_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD"
+      "status": "COARSE_SHAPESQ_PAYLOAD_FORMAL_NOT_TIGHT_MISSING_ROWS_2_TO_15_ORDER16"
     }
   },
   "degrees": {
@@ -115,6 +134,10 @@
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval"
   },
   "existingLeanInputs": {
+    "coarseRealSincMajorant": "coarseTwoBaseAbs_providesAnalyticMajorant",
+    "coarseScaledRealSincBounds": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo",
+    "coarseShapeDerivativeBounds": "primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational",
+    "coarseShapeSqDerivValid": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo",
     "fullTaylorDirectValidityBridge": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_direct_segment_cert_valid_of_residual_bounds",
     "fullTaylorPolynomialDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel",
     "fullTaylorResidualDerivativeCrosswalk": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm",
@@ -161,7 +184,7 @@
     "shapeValueBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
@@ -180,11 +203,11 @@
     "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
-    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
     "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
@@ -193,9 +216,26 @@
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
+    "coarseShapeSqPayloadSource": {
+      "boundary": "The coarseTwo chain is a Lean-checked proof-grade ShapeSqDerivTaylorIntervalCert.Valid source.  It retires the old unscaled-realSinc detector gap for the coarse path, but it uses zero coefficients with a huge uniform budget.  It is not the tight same-coefficient payload consumed by the active component Taylor residual route.",
+      "nextMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "proofGradeShapeSqDerivValid": true,
+      "realSincDerivativePayloadFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean",
+      "realSincMajorantTheorem": "coarseTwoBaseAbs_providesAnalyticMajorant",
+      "realSincMajorantTheoremFound": true,
+      "routeLevelFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+      "scaledRealSincPayloadFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean",
+      "scaledRealSincTheorem": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo",
+      "scaledRealSincTheoremFound": true,
+      "shapeDerivativeTheorem": "primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational",
+      "shapeDerivativeTheoremFound": true,
+      "shapeSqPayloadFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean",
+      "shapeSqValidTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo",
+      "shapeSqValidTheoremFound": true
+    },
     "componentPropagationRemainderAbs": null,
     "finalResidualLower": null,
     "finalResidualUpper": null,
@@ -1178,6 +1218,10 @@
     "proofGrade": true
   },
   "proofStatus": {
+    "coarseRealSincDerivativeMajorantPresent": true,
+    "coarseScaledRealSincBoundsPresent": true,
+    "coarseShapeDerivativeBoundsPresent": true,
+    "coarseShapeSqDerivValidPresent": true,
     "componentTaylorProofsPresent": false,
     "exactCoefficientAssemblyPassed": false,
     "finalBudgetPassed": false,
@@ -1186,7 +1230,7 @@
     "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 17,
+    "proofSafeClosedFields": 18,
     "residualPolynomialRangePassed": false,
     "scaledRealSincNormalizationReceiverPresent": true,
     "shapeDerivTaylorReceiverPresent": false,
@@ -1211,14 +1255,14 @@
   },
   "proshkaDecision": {
     "chosen": "B_component_taylor_route",
-    "followupChosen": "B_scaled_realsinc_normalization_receiver_after_pow12_receiver",
-    "followupFailureClosed": "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
-    "followupWhyA": "After the pow-12 scaled-sinc receiver was Lean-checked, the smallest local proof-moving patch was the affine-scale normalization receiver.  It turns proof-grade derivative bounds for realSinc itself on Set.Icc 0 (1/400) into proof-grade derivative bounds for the active scaled factor eta |-> realSinc (eta / 40).  It leaves the unscaled realSinc derivative-bounds payload as the first live gap.",
+    "followupChosen": "B_tight_shapesq_deriv_same_coeff_payload_after_coarse_route_kill",
+    "followupFailureClosed": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+    "followupWhyA": "The coarse `coarseTwo` realSinc-to-ShapeSqDeriv payload is Lean-checked and retires the old unscaled-realSinc detector gap for that coarse path.  The active full-Taylor route is still open because the coarse payload uses zero coefficients and a huge budget, not the same coefficient stream consumed by `RawTaylorCoeffCert`.  The smallest next patch is the tight same-coefficient ShapeSqDeriv payload: rows 2..15 plus the order-16 bound.",
     "latestDoNot": "Do not set coeff = 0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the Lean-checked tight source and coefficient-assembly crosswalk exist.",
     "latestReview": "2026_06_22_same_expression_interval_fork",
     "latestWhy": "Build the tight same-coefficient ShapeSqDeriv Taylor payload before attempting the final residual interval theorem.  A direct same-expression interval proof is a monolith until the tight component source exists, and another receiver would add no proof data.",
-    "localFirstSubgap": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "localFirstSubgap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
     "routeLevelFailureCode": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
     "routeLevelFirstPatch": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
@@ -1448,6 +1492,9 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "b3cb520ff69bec38",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean": "ab027a098dbfab54",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean": "ca8df5b06f9173b0",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean": "a0b26836d54a501c",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean": "debc5f610864ee40",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean": "b6f7c834175c15aa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean": "9018aa2dd36d0423",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean": "483a7bcec03c8110",
@@ -1465,6 +1512,7 @@
     "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm": 1912
   },
   "sourceStatus": {
+    "coarseShapeSqPayloadProofGrade": true,
     "componentLedgerPath": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_cancellation_residual_interval_certificate.json",
     "componentLedgerSchema": "q3_psdpd_step33_a1_sub0_cancellation_residual_interval_certificate.v2",
     "componentLedgerStatus": "fail_closed_missing_component_taylor_remainder_bounds",
@@ -1489,7 +1537,7 @@
     "shapeSqIntegratedTaylorReceiverProofGrade": true,
     "shapeSqTaylorSourceProofGrade": true
   },
-  "status": "fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload",
+  "status": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",

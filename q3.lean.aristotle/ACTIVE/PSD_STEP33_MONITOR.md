@@ -21,10 +21,10 @@ latest_local_step_2026_06_22: Browser/Proshka route review pinned the next proof
 latest_local_file_2026_06_22: q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}
 latest_local_theorem_2026_06_22: target only -- primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
-latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
+latest_payload_status_2026_06_22: fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source
 latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
-latest_boundary_2026_06_22: Coarse ShapeSq Taylor source is killed as spendable payload for RawTaylorCoeffCert.  Route-level next patch is a tight same-coefficient ShapeSqDeriv Taylor payload, target `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`; local first subgap is proof-grade unscaled realSinc derivative bounds 0..17 consumed by the checked scaled-sinc normalization receiver.  The final residual interval theorem remains open.
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP
+latest_boundary_2026_06_22: Coarse ShapeSq Taylor source is killed as spendable payload for RawTaylorCoeffCert.  The coarse `coarseTwo` realSinc-to-ShapeSqDeriv chain is Lean-checked and retires the old unscaled-realSinc detector gap only for the coarse path.  Route-level next patch remains a tight same-coefficient ShapeSqDeriv Taylor payload, target `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`; local first subgap is rows 2..15 plus the order-16 bound in the same coefficient convention.  The final residual interval theorem remains open.
 latest_route_review_2026_06_22: Browser/Proshka channel selected route B: build tight same-coefficient ShapeSqDeriv Taylor payload first; do not set coeff=0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the tight source and coefficient-assembly crosswalk exist
 
 next_theorem_targets:

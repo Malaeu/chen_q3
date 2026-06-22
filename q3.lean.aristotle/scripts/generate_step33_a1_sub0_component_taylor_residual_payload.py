@@ -100,6 +100,9 @@ STATUS_AFTER_SHAPE_DERIVATIVE_POW12_MAJORANT_RECEIVER = (
 STATUS_AFTER_SCALED_REALSINC_NORMALIZATION_RECEIVER = (
     "fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload"
 )
+STATUS_AFTER_COARSE_SHAPESQ_PAYLOAD = (
+    "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source"
+)
 FIRST_FAILURE_MISSING_OMEGA_PRIME = (
     "STEP33_A1_SUB0_OMEGA_OMEGAPRIME_TAYLOR_REMAINDER_GAP"
 )
@@ -240,6 +243,18 @@ SHAPE_DERIVATIVE_MAJORANT_RECEIVER_FILE = (
 DEFAULT_SHAPE_DERIVATIVE_MAJORANT_RECEIVER = (
     Q3_ROOT / SHAPE_DERIVATIVE_MAJORANT_RECEIVER_FILE
 )
+REALSINC_DERIVATIVE_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean"
+)
+DEFAULT_REALSINC_DERIVATIVE_PAYLOAD = Q3_ROOT / REALSINC_DERIVATIVE_PAYLOAD_FILE
+REALSINC_SCALED_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean"
+)
+DEFAULT_REALSINC_SCALED_PAYLOAD = Q3_ROOT / REALSINC_SCALED_PAYLOAD_FILE
+REALSINC_SHAPESQ_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean"
+)
+DEFAULT_REALSINC_SHAPESQ_PAYLOAD = Q3_ROOT / REALSINC_SHAPESQ_PAYLOAD_FILE
 CHUNK_TAYLOR_CHECKER_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean"
 )
@@ -391,6 +406,16 @@ SHAPE_DERIVATIVE_POW12_MAJORANT_RECEIVER_THEOREM = (
 SCALED_REALSINC_NORMALIZATION_RECEIVER_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "scaledSinc_derivative_abs_of_realSinc_abs"
+)
+COARSE_REALSINC_MAJORANT_THEOREM = "coarseTwoBaseAbs_providesAnalyticMajorant"
+COARSE_SCALED_REALSINC_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo"
+)
+COARSE_SHAPE_DERIVATIVE_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational"
+)
+COARSE_SHAPESQ_VALID_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo"
 )
 SHAPESQ_DERIV_CENTER_COEFF0_LOWER_DEF = (
     "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated"
@@ -1102,6 +1127,64 @@ def scaled_realsinc_normalization_receiver_status(
     }
 
 
+def coarse_shape_sq_payload_status(
+    *,
+    derivative_payload_path: Path,
+    scaled_payload_path: Path,
+    shape_sq_payload_path: Path,
+) -> dict[str, Any]:
+    derivative_text = (
+        derivative_payload_path.read_text(encoding="utf-8")
+        if derivative_payload_path.exists()
+        else ""
+    )
+    scaled_text = (
+        scaled_payload_path.read_text(encoding="utf-8")
+        if scaled_payload_path.exists()
+        else ""
+    )
+    shape_sq_text = (
+        shape_sq_payload_path.read_text(encoding="utf-8")
+        if shape_sq_payload_path.exists()
+        else ""
+    )
+    real_sinc_found = COARSE_REALSINC_MAJORANT_THEOREM in derivative_text
+    scaled_found = COARSE_SCALED_REALSINC_THEOREM in scaled_text
+    shape_found = COARSE_SHAPE_DERIVATIVE_THEOREM in scaled_text
+    shape_sq_valid_found = COARSE_SHAPESQ_VALID_THEOREM in shape_sq_text
+    proof_grade = (
+        real_sinc_found and scaled_found and shape_found and shape_sq_valid_found
+    )
+    return {
+        "realSincDerivativePayloadFile": str(derivative_payload_path),
+        "scaledRealSincPayloadFile": str(scaled_payload_path),
+        "shapeSqPayloadFile": str(shape_sq_payload_path),
+        "realSincMajorantTheorem": COARSE_REALSINC_MAJORANT_THEOREM,
+        "realSincMajorantTheoremFound": real_sinc_found,
+        "scaledRealSincTheorem": COARSE_SCALED_REALSINC_THEOREM,
+        "scaledRealSincTheoremFound": scaled_found,
+        "shapeDerivativeTheorem": COARSE_SHAPE_DERIVATIVE_THEOREM,
+        "shapeDerivativeTheoremFound": shape_found,
+        "shapeSqValidTheorem": COARSE_SHAPESQ_VALID_THEOREM,
+        "shapeSqValidTheoremFound": shape_sq_valid_found,
+        "proofGradeShapeSqDerivValid": proof_grade,
+        "nextMissing": (
+            FIRST_FAILURE_AFTER_SHAPESQ_COEFF1_ROW
+            if proof_grade
+            else FIRST_FAILURE_AFTER_SCALED_REALSINC_NORMALIZATION_RECEIVER
+        ),
+        "routeLevelFailure": SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP,
+        "boundary": (
+            "The coarseTwo chain is a Lean-checked proof-grade "
+            "ShapeSqDerivTaylorIntervalCert.Valid source.  It retires the "
+            "old unscaled-realSinc detector gap for the coarse path, but it "
+            "uses zero coefficients with a huge uniform budget.  It is not "
+            "the tight same-coefficient payload consumed by the active "
+            "component Taylor residual route."
+        ),
+    }
+
+
 def shape_sq_deriv_center_coeff_rows_status(
     *,
     coeff_rows_path: Path,
@@ -1253,6 +1336,7 @@ def component_taylor_status(
     shape_sq_deriv_shape_sq_derivative_receiver_closed: bool,
     shape_sq_deriv_product_bounds_receiver_closed: bool,
     shape_sq_deriv_majorant_receiver_closed: bool,
+    coarse_shape_sq_payload_closed: bool,
     shape_sq_deriv_source_closed: bool,
     shape_sq_taylor_source_closed: bool,
 ) -> dict[str, Any]:
@@ -1322,6 +1406,9 @@ def component_taylor_status(
         ),
         "shapeTaylor": {
             "status": (
+                "COARSE_SHAPESQ_PAYLOAD_FORMAL_NOT_TIGHT_MISSING_ROWS_2_TO_15_ORDER16"
+                if coarse_shape_sq_payload_closed
+                else
                 "SHAPESQ_DERIV_MAJORANT_RECEIVER_FORMAL_MISSING_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD"
                 if shape_sq_deriv_majorant_receiver_closed
                 else
@@ -1382,9 +1469,13 @@ def component_taylor_status(
             "shapeSqDerivMajorantReceiverAvailable": (
                 shape_sq_deriv_majorant_receiver_closed
             ),
+            "coarseShapeSqDerivValidAvailable": coarse_shape_sq_payload_closed,
             "shapeSqDerivTaylorSourceAvailable": shape_sq_deriv_source_closed,
             "shapeSqTaylorSourceAvailable": shape_sq_taylor_source_closed,
             "firstReceiverGap": (
+                FIRST_FAILURE_AFTER_SHAPESQ_COEFF1_ROW
+                if coarse_shape_sq_payload_closed
+                else
                 FIRST_FAILURE_AFTER_SHAPESQ_DERIV_MAJORANT_RECEIVER
                 if shape_sq_deriv_majorant_receiver_closed
                 else
@@ -1444,6 +1535,9 @@ def build_report(
     shape_sq_deriv_product_bounds_path: Path,
     shape_sq_deriv_majorant_receiver_path: Path,
     shape_derivative_majorant_receiver_path: Path,
+    real_sinc_derivative_payload_path: Path,
+    real_sinc_scaled_payload_path: Path,
+    real_sinc_shape_sq_payload_path: Path,
     chunk_taylor_checker_path: Path,
 ) -> dict[str, Any]:
     model_coeffs, source_lines = extract_coefficients(landing_path)
@@ -1562,6 +1656,14 @@ def build_report(
         shape_derivative_pow12_majorant_receiver_closed
         and bool(scaled_realsinc_normalization_receiver["proofGradeReceiver"])
     )
+    coarse_shape_sq_payload = coarse_shape_sq_payload_status(
+        derivative_payload_path=real_sinc_derivative_payload_path,
+        scaled_payload_path=real_sinc_scaled_payload_path,
+        shape_sq_payload_path=real_sinc_shape_sq_payload_path,
+    )
+    coarse_shape_sq_payload_closed = omega_anchor_closed and bool(
+        coarse_shape_sq_payload["proofGradeShapeSqDerivValid"]
+    )
     shape_sq_taylor_source = shape_sq_taylor_source_status(
         endpoint_rational_import_path=endpoint_rational_import_path,
         chunk_taylor_checker_path=chunk_taylor_checker_path,
@@ -1569,6 +1671,13 @@ def build_report(
     )
     shape_sq_taylor_source_closed = bool(shape_sq_taylor_source["proofGrade"])
     if (
+        omega_anchor_closed
+        and shape_sq_deriv_center_coeff1_row_closed
+        and coarse_shape_sq_payload_closed
+    ):
+        status = STATUS_AFTER_COARSE_SHAPESQ_PAYLOAD
+        first_failure = FIRST_FAILURE_AFTER_SHAPESQ_COEFF1_ROW
+    elif (
         omega_anchor_closed
         and shape_sq_deriv_center_coeff1_row_closed
         and scaled_realsinc_normalization_receiver_closed
@@ -1691,6 +1800,10 @@ def build_report(
     if scaled_realsinc_normalization_receiver_closed:
         closed_historical_failures.append(
             SCALED_REALSINC_NORMALIZATION_RECEIVER_CLOSED
+        )
+    if coarse_shape_sq_payload_closed:
+        closed_historical_failures.append(
+            FIRST_FAILURE_AFTER_SCALED_REALSINC_NORMALIZATION_RECEIVER
         )
     omega_deriv_coeff = (
         linked_component_slots(
@@ -1856,6 +1969,7 @@ def build_report(
                 "scaledRealSincNormalizationReceiverSource": (
                     scaled_realsinc_normalization_receiver
                 ),
+                "coarseShapeSqPayloadSource": coarse_shape_sq_payload,
                 "shapeSqDerivCenterCoeffRowsSource": (
                     shape_sq_deriv_center_coeff_rows
                 ),
@@ -1926,6 +2040,16 @@ def build_report(
                 "scaledRealSincNormalizationReceiverPresent": (
                     scaled_realsinc_normalization_receiver_closed
                 ),
+                "coarseRealSincDerivativeMajorantPresent": (
+                    coarse_shape_sq_payload["realSincMajorantTheoremFound"]
+                ),
+                "coarseScaledRealSincBoundsPresent": (
+                    coarse_shape_sq_payload["scaledRealSincTheoremFound"]
+                ),
+                "coarseShapeDerivativeBoundsPresent": (
+                    coarse_shape_sq_payload["shapeDerivativeTheoremFound"]
+                ),
+                "coarseShapeSqDerivValidPresent": coarse_shape_sq_payload_closed,
                 "shapeSqDerivCenterCoeffRowsClosedCount": (
                     shape_sq_deriv_center_coeff_rows["rowsClosedCount"]
                     if shape_sq_deriv_center_coeff0_row_closed
@@ -1990,6 +2114,7 @@ def build_report(
                         if scaled_realsinc_normalization_receiver_closed
                         else 0
                     )
+                    + (1 if coarse_shape_sq_payload_closed else 0)
                     + (1 if shape_sq_taylor_source_closed else 0)
                 ),
                 "outLeanWritten": False,
@@ -2008,6 +2133,9 @@ def build_report(
                 else "missing_proof_grade_component_taylor_remainder"
             ),
             "shape": (
+                "coarse_shapesq_payload_formal_but_not_same_coefficient_tight_source_missing_rows_2_to_15_order16"
+                if coarse_shape_sq_payload_closed
+                else
                 "scaled_sinc_normalization_receiver_formal_missing_realsinc_derivative_bounds_0_to_17_payload"
                 if scaled_realsinc_normalization_receiver_closed
                 else
@@ -2068,6 +2196,7 @@ def build_report(
                 shape_sq_deriv_shape_sq_derivative_receiver_closed,
                 shape_sq_deriv_product_bounds_receiver_closed,
                 shape_sq_deriv_majorant_receiver_closed,
+                coarse_shape_sq_payload_closed,
                 shape_sq_deriv_source_closed,
                 shape_sq_taylor_source_closed,
             ),
@@ -2101,6 +2230,7 @@ def build_report(
             "scaledRealSincNormalizationReceiverSource": (
                 scaled_realsinc_normalization_receiver
             ),
+            "coarseShapeSqPayloadSource": coarse_shape_sq_payload,
             "shapeSqDerivCenterCoeffRowsSource": (
                 shape_sq_deriv_center_coeff_rows
             ),
@@ -2186,6 +2316,10 @@ def build_report(
                 "scaledRealSincNormalizationReceiver": (
                     SCALED_REALSINC_NORMALIZATION_RECEIVER_THEOREM
                 ),
+                "coarseRealSincMajorant": COARSE_REALSINC_MAJORANT_THEOREM,
+                "coarseScaledRealSincBounds": COARSE_SCALED_REALSINC_THEOREM,
+                "coarseShapeDerivativeBounds": COARSE_SHAPE_DERIVATIVE_THEOREM,
+                "coarseShapeSqDerivValid": COARSE_SHAPESQ_VALID_THEOREM,
                 "shapeSqDerivCenterCoeff0Lower": (
                     SHAPESQ_DERIV_CENTER_COEFF0_LOWER_DEF
                 ),
@@ -2232,6 +2366,9 @@ def build_report(
                 "and coefficient-assembly crosswalk exist."
             ),
             "followupChosen": (
+                "B_tight_shapesq_deriv_same_coeff_payload_after_coarse_route_kill"
+                if coarse_shape_sq_payload_closed
+                else
                 "B_scaled_realsinc_normalization_receiver_after_pow12_receiver"
                 if scaled_realsinc_normalization_receiver_closed
                 else
@@ -2255,6 +2392,9 @@ def build_report(
                 else "A_shapesq_deriv_power_series_coeff0_row_leaf"
             ),
             "followupFailureClosed": (
+                FIRST_FAILURE_AFTER_SCALED_REALSINC_NORMALIZATION_RECEIVER
+                if coarse_shape_sq_payload_closed
+                else
                 SCALED_REALSINC_NORMALIZATION_RECEIVER_CLOSED
                 if scaled_realsinc_normalization_receiver_closed
                 else
@@ -2299,6 +2439,16 @@ def build_report(
                 "hard-to-audit theorem."
             ),
             "followupWhyA": (
+                "The coarse `coarseTwo` realSinc-to-ShapeSqDeriv payload is "
+                "Lean-checked and retires the old unscaled-realSinc detector "
+                "gap for that coarse path.  The active full-Taylor route is "
+                "still open because the coarse payload uses zero coefficients "
+                "and a huge budget, not the same coefficient stream consumed "
+                "by `RawTaylorCoeffCert`.  The smallest next patch is the "
+                "tight same-coefficient ShapeSqDeriv payload: rows 2..15 "
+                "plus the order-16 bound."
+                if coarse_shape_sq_payload_closed
+                else
                 "After the pow-12 scaled-sinc receiver was Lean-checked, "
                 "the smallest local proof-moving patch was the affine-scale "
                 "normalization receiver.  It turns proof-grade derivative "
@@ -2434,6 +2584,7 @@ def build_report(
             "shapeSqDerivMajorantReceiverProofGrade": (
                 shape_sq_deriv_majorant_receiver_closed
             ),
+            "coarseShapeSqPayloadProofGrade": coarse_shape_sq_payload_closed,
             "shapeSqDerivCenterCoeffRowsClosedCount": (
                 shape_sq_deriv_center_coeff_rows["rowsClosedCount"]
                 if shape_sq_deriv_center_coeff0_row_closed
@@ -2472,13 +2623,41 @@ def build_report(
             SHAPE_DERIVATIVE_MAJORANT_RECEIVER_FILE: file_hash(
                 shape_derivative_majorant_receiver_path
             ),
+            REALSINC_DERIVATIVE_PAYLOAD_FILE: file_hash(
+                real_sinc_derivative_payload_path
+            ),
+            REALSINC_SCALED_PAYLOAD_FILE: file_hash(real_sinc_scaled_payload_path),
+            REALSINC_SHAPESQ_PAYLOAD_FILE: file_hash(real_sinc_shape_sq_payload_path),
             CHUNK_TAYLOR_CHECKER_FILE: file_hash(chunk_taylor_checker_path),
         },
     }
 
 
 def render_md(report: dict[str, Any]) -> str:
-    if report["proofStatus"]["scaledRealSincNormalizationReceiverPresent"]:
+    if report["proofStatus"]["coarseShapeSqDerivValidPresent"]:
+        decision_text = [
+            "The Omega integrated-polynomial derivative crosswalk, center",
+            "anchor payload, shape-square integrated Taylor receiver,",
+            "coarse constant shape-square Taylor source, ShapeSqDeriv",
+            "interval-certificate receiver, the ShapeSqDeriv center-coeff",
+            "bridge, coefficient rows `j = 0,1`, the structural",
+            "ShapeSqDeriv order-shift receiver, the direct shape-square",
+            "derivative receiver, the isolated product-bound receiver,",
+            "the ShapeSqDeriv majorant receiver, the active shape pow-12",
+            "scaled-sinc majorant receiver, the affine scale-normalization",
+            "receiver, and the coarse `coarseTwo` realSinc-to-ShapeSqDeriv",
+            "payload are Lean-checked.",
+            "This retires the old unscaled-realSinc detector gap for the",
+            "coarse path.  It does not close the active route, because the",
+            "coarse payload uses zero coefficients and a huge budget, not",
+            "the tight same-coefficient source consumed by the component",
+            "Taylor residual route.  The first live proof gap is now the",
+            "tight ShapeSqDeriv rows `2..15` plus the order-16 bound in the",
+            "same coefficient convention.",
+            "Raw-derivative assembly, residual polynomial bounds, and the",
+            "final interval theorem remain open.",
+        ]
+    elif report["proofStatus"]["scaledRealSincNormalizationReceiverPresent"]:
         decision_text = [
             "The Omega integrated-polynomial derivative crosswalk, center",
             "anchor payload, shape-square integrated Taylor receiver,",
@@ -2815,6 +2994,7 @@ def render_md(report: dict[str, Any]) -> str:
             f"- shapeSq deriv coeff1 row available: `{report['shapeSqDerivCenterCoeffRowsSource']['proofGradeRow1']}`",
             f"- shapeSq deriv order-shift receiver available: `{report['shapeSqDerivOrderShiftReceiverSource']['proofGradeReceiver']}`",
             f"- shapeSq deriv shape-square derivative receiver available: `{report['shapeSqDerivShapeSqDerivativeReceiverSource']['proofGradeReceiver']}`",
+            f"- coarse ShapeSqDeriv valid payload available: `{report['coarseShapeSqPayloadSource']['proofGradeShapeSqDerivValid']}`",
             f"- shapeSq deriv coeff rows closed: `{report['shapeSqDerivCenterCoeffRowsSource']['rowsClosedCount']} / {report['shapeSqDerivCenterCoeffRowsSource']['rowsRequiredCount']}`",
             f"- shapeSq deriv order16 uniform bound available: `{report['shapeSqDerivCenterCoeffRowsSource']['order16UniformBoundPresent']}`",
             f"- shapeSq value Taylor source available: `{report['shapeSqTaylorSource']['proofGrade']}`",
@@ -2972,6 +3152,22 @@ def render_md(report: dict[str, Any]) -> str:
             f"- next missing: `{report['scaledRealSincNormalizationReceiverSource']['nextMissing']}`",
             f"- boundary: {report['scaledRealSincNormalizationReceiverSource']['boundary']}",
             "",
+            "## Coarse RealSinc-to-ShapeSq Payload",
+            "",
+            f"- proof-grade coarse ShapeSqDeriv Valid: `{report['coarseShapeSqPayloadSource']['proofGradeShapeSqDerivValid']}`",
+            f"- realSinc payload file: `{report['coarseShapeSqPayloadSource']['realSincDerivativePayloadFile']}`",
+            f"- realSinc majorant theorem: `{report['coarseShapeSqPayloadSource']['realSincMajorantTheorem']}`",
+            f"- realSinc majorant theorem found: `{report['coarseShapeSqPayloadSource']['realSincMajorantTheoremFound']}`",
+            f"- scaled realSinc theorem: `{report['coarseShapeSqPayloadSource']['scaledRealSincTheorem']}`",
+            f"- scaled realSinc theorem found: `{report['coarseShapeSqPayloadSource']['scaledRealSincTheoremFound']}`",
+            f"- shape derivative theorem: `{report['coarseShapeSqPayloadSource']['shapeDerivativeTheorem']}`",
+            f"- shape derivative theorem found: `{report['coarseShapeSqPayloadSource']['shapeDerivativeTheoremFound']}`",
+            f"- ShapeSqDeriv Valid theorem: `{report['coarseShapeSqPayloadSource']['shapeSqValidTheorem']}`",
+            f"- ShapeSqDeriv Valid theorem found: `{report['coarseShapeSqPayloadSource']['shapeSqValidTheoremFound']}`",
+            f"- next missing: `{report['coarseShapeSqPayloadSource']['nextMissing']}`",
+            f"- route-level failure: `{report['coarseShapeSqPayloadSource']['routeLevelFailure']}`",
+            f"- boundary: {report['coarseShapeSqPayloadSource']['boundary']}",
+            "",
             "## ShapeSq Deriv Center-Coeff Rows",
             "",
             f"- proof-grade row0: `{report['shapeSqDerivCenterCoeffRowsSource']['proofGradeRow0']}`",
@@ -3112,6 +3308,21 @@ def run() -> None:
         default=DEFAULT_SHAPE_DERIVATIVE_MAJORANT_RECEIVER,
     )
     parser.add_argument(
+        "--real-sinc-derivative-payload",
+        type=Path,
+        default=DEFAULT_REALSINC_DERIVATIVE_PAYLOAD,
+    )
+    parser.add_argument(
+        "--real-sinc-scaled-payload",
+        type=Path,
+        default=DEFAULT_REALSINC_SCALED_PAYLOAD,
+    )
+    parser.add_argument(
+        "--real-sinc-shape-sq-payload",
+        type=Path,
+        default=DEFAULT_REALSINC_SHAPESQ_PAYLOAD,
+    )
+    parser.add_argument(
         "--chunk-taylor-checker",
         type=Path,
         default=DEFAULT_CHUNK_TAYLOR_CHECKER,
@@ -3137,6 +3348,9 @@ def run() -> None:
         shape_derivative_majorant_receiver_path=(
             args.shape_derivative_majorant_receiver
         ),
+        real_sinc_derivative_payload_path=args.real_sinc_derivative_payload,
+        real_sinc_scaled_payload_path=args.real_sinc_scaled_payload,
+        real_sinc_shape_sq_payload_path=args.real_sinc_shape_sq_payload,
         chunk_taylor_checker_path=args.chunk_taylor_checker,
     )
     args.out_json.parent.mkdir(parents=True, exist_ok=True)

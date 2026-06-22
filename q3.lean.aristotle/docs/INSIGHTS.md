@@ -39165,3 +39165,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   add another receiver, and do not attack
   `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval`
   before the tight source and coefficient-assembly crosswalk exist.
+
+## Insight (2026-06-22, Step33A.1-A) -- StaleRealSincDetectorRetired
+
+- Updated
+  `q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py`.
+- Regenerated
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}`.
+- The generator now detects the existing proof-grade coarse chain:
+  `coarseTwoBaseAbs_providesAnalyticMajorant`,
+  `primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo`,
+  `primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational`,
+  and `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo`.
+- The old local first subgap
+  `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP` is retired as a
+  stale detector for the coarse path.
+- New generated state:
+  `status = fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source`,
+  `firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`,
+  and `proofSafeClosedFields = 18`.
+- Boundary: this does not close Step33A.1-A.  The coarse payload uses zero
+  coefficients and a huge budget, so it is still non-spendable for the active
+  `RawTaylorCoeffCert` residual route.
+- Next exact patch:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, with tight
+  same-coefficient rows `2..15` plus the order-16 bound.

@@ -45,9 +45,10 @@ Step33A.1 remains open:
 primary/control analytic A/P/P0 entry_hbox lemmas
 ```
 
-The current practical front is Step33A.1-A raw-Omega route A: the
-refined-parent receiver is checked, and the first proof-producing blocker is
-the shift16 M6 digamma analytic remainder for the first refined subchunk.
+The current practical front is Step33A.1-A raw-Omega component Taylor route B:
+the coarse `coarseTwo` realSinc-to-ShapeSqDeriv chain is checked only as an
+interface test, and the active proof-producing blocker is the tight
+same-coefficient ShapeSqDeriv Taylor payload.
 
 ## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
 
@@ -64468,3 +64469,57 @@ needed to close the tight same-coefficient ShapeSqDeriv Taylor payload.
 Do not set `coeff = 0`, do not subtract independent raw/poly boxes, do not add
 another receiver, and do not attack the final same-expression residual interval
 before the tight source and coefficient-assembly crosswalk exist.
+
+## 2026-06-22 Execution Update -- stale realSinc detector retired
+
+Local inspection found that the previous component-payload first subgap
+
+```text
+STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+```
+
+was stale for the coarse path.  The current Lean files already contain the
+proof-grade coarse chain:
+
+```lean
+Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs_providesAnalyticMajorant
+primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo
+primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo
+```
+
+Updated:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md
+```
+
+The regenerated payload now reports:
+
+```text
+status = fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP
+routeLevelFailureCode = STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+proofSafeClosedFields = 18
+```
+
+Boundary: this does not prove Step33A.1-A.  The coarse `coarseTwo` payload uses
+zero coefficients and a huge budget, so it remains non-spendable for the active
+`RawTaylorCoeffCert` residual.  It only retires the stale detector for the
+coarse route and moves the local first live subgap to tight same-coefficient
+ShapeSqDeriv rows `2..15` plus the order-16 bound.
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py
+```
+
+Note: a fresh `lake env lean` run on
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean` was
+stopped after more than 11 minutes with no output.  No Lean proof file was
+modified in this update; the generated report records existing local theorem
+names and hashes only.
