@@ -67982,6 +67982,68 @@ LEAN_PATH="..." lean \
   q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
 ```
 
+## Execution Update (2026-06-22) -- Horner range bridge to combined Valid
+
+Route: PSD-pd/Q3 Step33A.1-A sub0 combined cancellation interval.
+
+Updated checked Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```
+
+New checked bridge theorems:
+
+```text
+Step33Sub0CombinedCancellationIntervalCert.Valid.of_horner_range
+Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined_of_horner_range
+```
+
+Meaning:
+
+```text
+The future payload no longer has to assemble
+`Step33Sub0CombinedCancellationIntervalCert.Valid data` by hand.  It should
+prove a Horner range certificate, the whole-expression Taylor/source remainder
+bound, endpoint equalities, and target budget comparisons; `of_horner_range`
+then produces the combined interval certificate, and `to_hCombined_of_horner_range`
+feeds the already checked hCombined receiver.
+```
+
+Boundary:
+
+```text
+No concrete combined-cancellation payload exists yet.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+The analytic proof-grade remainder/source field remains open.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+LEAN_PATH="..." lean -o \
+  q3.lean.aristotle/.lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.olean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+rg -n "sorry|exact\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+git diff --check -- \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```
+
+`lake env lean` and `q3_check.sh` were attempted with 60s guards and timed out;
+this matches the local infrastructure behavior already recorded for this
+Step33A.1-A combined-cancellation surface.  Direct Lean and `.olean`
+generation passed.
+
 ## PRO_REVIEW_RESPONSE (2026-06-22, combined certificate checker)
 
 Proshka/Louise follow-up answer:

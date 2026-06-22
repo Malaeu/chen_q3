@@ -35791,3 +35791,55 @@ Validation:
 ```text
 LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
 ```
+
+## 2026-06-22 Current EOF State -- Horner range to combined Valid bridge checked
+
+The Horner polynomial range checker now has the constructor that the future
+combined-cancellation payload should call:
+
+```lean
+Step33Sub0CombinedCancellationIntervalCert.Valid.of_horner_range
+Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined_of_horner_range
+```
+
+Meaning:
+
+```text
+Once a payload supplies:
+  - cell endpoint equalities `[0,1/10]`;
+  - a proof-grade whole-expression remainder bound for
+    primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+    against `data.poly`;
+  - a Lean-checked `Step33Sub0CombinedCancellationHornerRangeCert.Valid`;
+  - exact rational target budget comparisons,
+Lean now assembles `Step33Sub0CombinedCancellationIntervalCert.Valid data`
+and then feeds `Valid.to_hCombined`.
+```
+
+Boundary:
+
+```text
+No concrete combined-cancellation payload was emitted.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+The analytic whole-expression Taylor remainder/source proof is still missing.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+rg -n "sorry|exact\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+git diff --check -- Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```
+
+`lake env lean` and `q3_check.sh` were also attempted with a 60s guard and
+timed out in the same local infrastructure mode already recorded for this
+route; direct Lean and `.olean` generation passed.

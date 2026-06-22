@@ -146,6 +146,83 @@ theorem poly_range_unit_cell
 end Valid
 end Step33Sub0CombinedCancellationHornerRangeCert
 
+namespace Step33Sub0CombinedCancellationIntervalCert
+namespace Valid
+
+/--
+Assemble the full combined-cancellation interval certificate from a
+Lean-checked Horner range certificate plus the still-open proof-grade analytic
+remainder bound.
+
+This is the intended constructor for the future generated payload: exact
+rational Horner rows close `poly_range`, exact rational budget rows close the
+target comparisons, and only the whole-expression Taylor/source estimate remains
+as an analytic input.
+-/
+theorem of_horner_range
+    {data : Step33Sub0CombinedCancellationIntervalCert}
+    {range : Step33Sub0CombinedCancellationHornerRangeCert data}
+    (hCellL : data.cellL = 0)
+    (hCellU : data.cellU = (1 : Rat) / 10)
+    (hRemainderNonneg : 0 <= (data.remainderAbs : Real))
+    (hRemainder :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+            eta -
+          Step33Sub0CombinedCancellationIntervalCert.poly data eta‖ <=
+          (data.remainderAbs : Real))
+    (hRange : range.Valid)
+    (hBudgetLower :
+      (step33Sub0CombinedCancellationTargetLower : Real) <=
+        (data.polyLower : Real) - (data.remainderAbs : Real))
+    (hBudgetUpper :
+      (data.polyUpper : Real) + (data.remainderAbs : Real) <=
+        (step33Sub0CombinedCancellationTargetUpper : Real)) :
+    data.Valid := by
+  refine
+    { cellL_eq := hCellL
+      cellU_eq := hCellU
+      remainder_nonneg := hRemainderNonneg
+      remainder_bound := hRemainder
+      poly_range := ?_
+      budget_lower := hBudgetLower
+      budget_upper := hBudgetUpper }
+  exact
+    Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range_unit_cell
+      hRange hCellL hCellU
+
+theorem to_hCombined_of_horner_range
+    {data : Step33Sub0CombinedCancellationIntervalCert}
+    {range : Step33Sub0CombinedCancellationHornerRangeCert data}
+    (hCellL : data.cellL = 0)
+    (hCellU : data.cellU = (1 : Rat) / 10)
+    (hRemainderNonneg : 0 <= (data.remainderAbs : Real))
+    (hRemainder :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+            eta -
+          Step33Sub0CombinedCancellationIntervalCert.poly data eta‖ <=
+          (data.remainderAbs : Real))
+    (hRange : range.Valid)
+    (hBudgetLower :
+      (step33Sub0CombinedCancellationTargetLower : Real) <=
+        (data.polyLower : Real) - (data.remainderAbs : Real))
+    (hBudgetUpper :
+      (data.polyUpper : Real) + (data.remainderAbs : Real) <=
+        (step33Sub0CombinedCancellationTargetUpper : Real)) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      (step33Sub0CombinedCancellationTargetLower : Real) <=
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+            eta ∧
+        primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+            eta <= (step33Sub0CombinedCancellationTargetUpper : Real) := by
+  exact
+    (of_horner_range hCellL hCellU hRemainderNonneg hRemainder hRange
+      hBudgetLower hBudgetUpper).to_hCombined
+
+end Valid
+end Step33Sub0CombinedCancellationIntervalCert
+
 namespace Step33Sub0CombinedCancellationHornerRangeSmoke
 
 def coeff (_i : Fin 3) : Rat :=

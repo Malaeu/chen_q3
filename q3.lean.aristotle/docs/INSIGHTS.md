@@ -40885,3 +40885,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_CHECKER_GAP`.
 - Validation: direct Lean with the full local `.lake` library path passed; no
   warnings or errors.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationHornerRangeBridgeChecked
+
+- Updated isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean`.
+- Lean checked the bridge constructors
+  `Step33Sub0CombinedCancellationIntervalCert.Valid.of_horner_range` and
+  `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined_of_horner_range`.
+- Meaning: once a future payload supplies endpoint equalities, a proof-grade
+  whole-expression remainder bound, a checked Horner range cert, and exact
+  target budget comparisons, Lean can assemble
+  `Step33Sub0CombinedCancellationIntervalCert.Valid data` and feed the
+  existing `hCombined` receiver.
+- Boundary: no concrete combined-cancellation payload exists, no sampled JSON
+  is proof, no final budget claim is made, and the analytic Taylor
+  model/source theorem is still missing.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP`.
+- Validation: direct Lean and `.olean` generation passed; marker scan on the
+  touched Lean file found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`.
+  `lake env lean` and `q3_check.sh` were attempted with 60s guards and timed
+  out in the same local infrastructure mode already recorded for this route.
