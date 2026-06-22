@@ -63346,3 +63346,55 @@ Remaining exact first sub-gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Execution Update -- realSinc all-index coefficient scaffold checked
+
+Used the in-app browser / Computer Use for a narrow Proshka route check.  The
+advisory direction matches the local implementation path: keep route B, namely
+an analytic power-series / `HasFPowerSeriesAt` bridge plus exact rational
+prefix/tail arithmetic.  This was not used as proof evidence.
+
+Implemented the next proof-moving scaffold in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked Lean objects:
+
+```lean
+step33RealSincCoeff
+step33RealSincFormalSeries
+step33RealSincFormalSeries_coeff
+step33RealSincCoeff_two_mul
+step33RealSincCoeff_two_mul_add_one
+step33RealSincFormalSeries_apply_two_mul
+step33RealSincFormalSeries_apply_two_mul_add_one
+```
+
+Proof shape:
+
+```text
+all-index coefficient series
+-> even coefficient = (-1)^m/(2m+1)!
+-> odd coefficient = 0
+-> diagonal even/odd formal-series terms match the existing sinc series shape
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+```
+
+Boundary: this does not claim the `realSinc` derivative rows are bounded.  It
+only prepares the named formal-series surface needed for the remaining analytic
+crosswalk.
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```

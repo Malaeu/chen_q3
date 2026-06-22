@@ -38694,3 +38694,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   feed the scaled-sinc receiver.  Rows `1..17` remain open.
 - Remaining exact first sub-gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincAllIndexCoeffScaffoldChecked
+
+- Used the in-app browser / Computer Use for a narrow Proshka route check on
+  the active `realSinc` rows `1..17` blocker.  The advisory answer agrees with
+  route B: keep the analytic power-series / `HasFPowerSeriesAt` bridge and
+  exact rational prefix/tail checker; do not switch routes or add a redundant
+  receiver.
+- Added a named all-index scalar coefficient scaffold in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked Lean objects:
+  `step33RealSincCoeff`, `step33RealSincFormalSeries`,
+  `step33RealSincFormalSeries_coeff`, `step33RealSincCoeff_two_mul`,
+  `step33RealSincCoeff_two_mul_add_one`,
+  `step33RealSincFormalSeries_apply_two_mul`, and
+  `step33RealSincFormalSeries_apply_two_mul_add_one`.
+- Meaning: the formal series has the usual sinc even diagonal terms
+  `(-1)^m * x^(2m)/(2m+1)!` and zero odd diagonal terms.
+- Direct Lean validation passed for
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- Boundary: this is a reusable coefficient/diagonal-term bridge only.  It does
+  not yet prove `HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0`, does
+  not prove rows `1..17`, and does not feed the scaled-sinc receiver.
+- Remaining exact first sub-gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.

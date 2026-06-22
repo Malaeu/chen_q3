@@ -25,6 +25,64 @@ namespace Step33
 open CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate
 open scoped BigOperators
 
+/-- All-index scalar coefficient for the project `realSinc` power series.
+Odd coefficients are zero; the even coefficient `2*m` is
+`(-1)^m / (2*m+1)!`. -/
+def step33RealSincCoeff (n : Nat) : Real :=
+  if n % 2 = 0 then
+    ((-1 : Real) ^ (n / 2)) / (Nat.factorial (n + 1) : Real)
+  else
+    0
+
+/-- The `FormalMultilinearSeries` surface for the all-index `realSinc`
+coefficients.  This is a scaffold for the remaining rows `1, ..., 17`
+crosswalk; it does not by itself prove the derivative majorant. -/
+noncomputable def step33RealSincFormalSeries :
+    FormalMultilinearSeries Real Real Real :=
+  FormalMultilinearSeries.ofScalars Real step33RealSincCoeff
+
+/-- Coefficients of the scaffolded formal series are the all-index sinc
+coefficients. -/
+theorem step33RealSincFormalSeries_coeff (n : Nat) :
+    step33RealSincFormalSeries.coeff n = step33RealSincCoeff n := by
+  simp [step33RealSincFormalSeries, FormalMultilinearSeries.coeff_ofScalars]
+
+/-- Even coefficients of the all-index `realSinc` series. -/
+theorem step33RealSincCoeff_two_mul (m : Nat) :
+    step33RealSincCoeff (2 * m) =
+      ((-1 : Real) ^ m) / (Nat.factorial (2 * m + 1) : Real) := by
+  unfold step33RealSincCoeff
+  rw [if_pos (Nat.mul_mod_right 2 m)]
+  simp [Nat.mul_div_right m (by norm_num : 0 < 2)]
+
+/-- Odd coefficients of the all-index `realSinc` series vanish. -/
+theorem step33RealSincCoeff_two_mul_add_one (m : Nat) :
+    step33RealSincCoeff (2 * m + 1) = 0 := by
+  unfold step33RealSincCoeff
+  rw [if_neg]
+  rw [show (2 * m + 1) % 2 = 1 by
+    rw [show 2 * m + 1 = 1 + 2 * m by omega]
+    rw [Nat.add_mul_mod_self_left]]
+  norm_num
+
+/-- Diagonal even terms of the scaffolded formal series match the usual
+even sinc power-series terms. -/
+theorem step33RealSincFormalSeries_apply_two_mul (m : Nat) (x : Real) :
+    step33RealSincFormalSeries (2 * m) (fun _ : Fin (2 * m) => x) =
+      (((-1 : Real) ^ m) / (Nat.factorial (2 * m + 1) : Real)) *
+        x ^ (2 * m) := by
+  rw [step33RealSincFormalSeries, FormalMultilinearSeries.ofScalars_apply_eq]
+  rw [step33RealSincCoeff_two_mul]
+  simp [smul_eq_mul]
+
+/-- Diagonal odd terms of the scaffolded formal series vanish. -/
+theorem step33RealSincFormalSeries_apply_two_mul_add_one (m : Nat) (x : Real) :
+    step33RealSincFormalSeries (2 * m + 1)
+        (fun _ : Fin (2 * m + 1) => x) = 0 := by
+  rw [step33RealSincFormalSeries, FormalMultilinearSeries.ofScalars_apply_eq]
+  rw [step33RealSincCoeff_two_mul_add_one]
+  simp
+
 /-- Starting series index for the absolute majorant of the `k`-th derivative
 of `realSinc`.  This is `ceil(k / 2)`, written in integer form. -/
 def step33Sub0RealSincDerivMajorantStart (k : Nat) : Nat :=

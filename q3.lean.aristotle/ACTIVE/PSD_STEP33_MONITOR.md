@@ -33710,3 +33710,56 @@ feed the scaled-sinc receiver.  The exact first remaining analytic gap is:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Current EOF State -- realSinc all-index coefficient scaffold checked
+
+Used the in-app browser / Computer Use for a narrow Proshka route check on the
+live `realSinc` rows `1..17` blocker.  Advisory result agrees with the local
+route: continue through the analytic power-series / `HasFPowerSeriesAt`
+crosswalk, not through manual row replay or a new receiver layer.
+
+Added a small checked scaffold in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked objects:
+
+```lean
+step33RealSincCoeff
+step33RealSincFormalSeries
+step33RealSincFormalSeries_coeff
+step33RealSincCoeff_two_mul
+step33RealSincCoeff_two_mul_add_one
+step33RealSincFormalSeries_apply_two_mul
+step33RealSincFormalSeries_apply_two_mul_add_one
+```
+
+Meaning:
+
+```text
+step33RealSincFormalSeries is the all-index scalar formal series whose
+even diagonal terms are the usual sinc coefficients
+  (-1)^m * x^(2m) / (2m+1)!
+and whose odd diagonal terms vanish.
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+```
+
+Boundary: this is only the coefficient/diagonal-term bridge.  It does not yet
+prove the `HasFPowerSeriesAt` crosswalk for this named scaffold, does not prove
+rows `1..17`, does not assemble `Cert.Valid.bound`, and does not feed the
+scaled-sinc receiver.
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
