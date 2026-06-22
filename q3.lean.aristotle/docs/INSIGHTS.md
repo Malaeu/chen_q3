@@ -39528,3 +39528,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   comparison are still missing; generator exact-assembly fields remain false.
 - Next exact patch: generate/import those product-component witnesses before
   reconsidering `exactCoefficientAssemblyPassed`.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ProductComponentBridgePlan
+
+- Target blocker:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_COMPONENT_WITNESS_GAP`.
+- Current payload evidence: factor-level fields are not yet fully concrete:
+  `omegaRemainderAbs`, `shapeRemainderAbs`, `shapeDerivRemainderAbs`,
+  `productTruncationRemainderAbs`, and `componentPropagationRemainderAbs` are
+  still missing, while the generic scale/product-sum budget bridge and
+  nominal-scale abs witness are Lean-checked.
+- Local `q3_docs` search found no ready-made product-component theorem for
+  pushing factor errors through
+  `omegaPrime*shapeSq` and `omega*shapeSqDeriv`.
+- External Lean/mathlib search was used only as API sanity for `abs_mul`,
+  `abs_add_le`, `mul_le_mul`, `linarith`, and `nlinarith`; proof evidence must
+  remain local Lean.
+- Exact next Lean target: add a structural product-component witness bridge
+  that consumes factor-level error/absolute bounds plus concrete arithmetic
+  budget comparisons and feeds
+  `primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge`.
+- Boundary: this must not set `assembledRawDerivCoeffPresent`,
+  `residualTaylorCoeffPresent`, or `exactCoefficientAssemblyPassed=true`.
+  Concrete factor witnesses and final arithmetic remain the next generated
+  gate after the bridge compiles.
