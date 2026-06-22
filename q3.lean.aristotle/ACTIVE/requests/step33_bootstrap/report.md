@@ -66309,3 +66309,88 @@ Generate/prove proof-grade center-jet bounds for ShapeSqDeriv rows 2..15 and
 a same-normalization order-16 bound.  Do not revisit rows 0 and 1 unless the
 coefficient-stream normalization changes.
 ```
+
+## Execution Update (2026-06-22) -- partial-sharp ShapeSqDeriv row 2 checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Search discipline:
+
+```text
+oracle question address:
+Step33A.1-A.ShapeSqDeriv.rows2to15
+
+q3_docs queries:
+1. Step33A.1-A ShapeSqDeriv rows 2..15 order16 singleAbs centerJet
+2. primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv powerSeriesCoeff2 interval generated
+3. ShapeSqDeriv majorant receiver product Leibniz derivative bounds payload order16 row2
+4. shapeSqDeriv_centerJet_eq_powerSeriesCoeff coeff2 derivative formula iteratedDeriv 2
+```
+
+The semantic search was noisy and found no ready-made row-2 theorem.  The
+local `rg` pass found the usable proof surfaces:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+```
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012Coeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet2_coarseSmall_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012TaylorSource
+primaryFiniteRow0Parent0Split100Sub0_rows012ShapeSqDerivRows3To15_width_fail
+```
+
+Meaning:
+
+```text
+Row 2 is now proof-grade in the active generated coefficient stream.  It uses
+the existing coarse shape derivative majorant, but evaluates the exact product
+sum at n=3 and divides by 2!, instead of spending the global n=17 constant.
+Rows 0,1,2 are now spendable in the active singleAbs normalization.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+Rows 3..15 plus order 16 remain coarse.
+Lean proves the rows-0/1/2 partial-sharp source is still too wide for the
+active target residual interval.
+The generated JSON fields residualTaylorRemainderAbs,
+componentTaylorProofsPresent, exactCoefficientAssemblyPassed, and
+finalBudgetPassed remain false/null.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean
+```
+
+Direct Lean passed; `.olean` generation also passed.  `lake env lean` was run
+and again hung silently during environment setup; it was interrupted after 60
+seconds.  `q3_check.sh` was run through `bash`, again hung after printing its
+internal Lean command, and was interrupted after 60 seconds.  No successful
+`lake env lean` or `q3_check` result is claimed.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_3_TO_15_ORDER16_SHARP_SOURCE_GAP
+
+Repeat the local product-order sharpening for row 3 using exact n=4, unless a
+shared generated payload for rows 3..15/order16 appears first.
+```

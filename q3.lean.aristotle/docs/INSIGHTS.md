@@ -40052,3 +40052,49 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `.olean` generation for the new partial-sharp file also passed.  `q3_check.sh`
   was run through `bash`, hung after printing its internal Lean command, and
   was interrupted after 60 seconds; no successful `q3_check` result is claimed.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivRows012CheckedRows3To15Gap
+
+- Opened oracle question card
+  `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_rows2to15_order16.md`
+  for address `Step33A.1-A.ShapeSqDeriv.rows2to15`.
+- q3_docs searches run:
+  `Step33A.1-A ShapeSqDeriv rows 2..15 order16 singleAbs centerJet`,
+  `primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv powerSeriesCoeff2 interval generated`,
+  `ShapeSqDeriv majorant receiver product Leibniz derivative bounds payload order16 row2`,
+  and
+  `shapeSqDeriv_centerJet_eq_powerSeriesCoeff coeff2 derivative formula iteratedDeriv 2`.
+- Search result: q3_docs was noisy and did not surface a ready-made row-2
+  theorem.  Local `rg` found the useful proof surfaces:
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ`.
+- External web search checked Mathlib orientation only: official Mathlib docs
+  for Taylor/`iteratedDeriv` and `ContDiff`; this is not proof evidence and
+  does not replace local Lean validation.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012Coeff_eq_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet2_coarseSmall_abs`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012_valid`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012TaylorSource`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_rows012ShapeSqDerivRows3To15_width_fail`.
+- Meaning: row `2` is now proof-grade in the active generated coefficient
+  stream.  It uses the existing coarse shape-derivative majorant at exact
+  product order `n = 3` and divides by `2!`, instead of spending the global
+  order-17 constant.
+- Boundary: Step33A.1-A remains open.  Rows `0,1,2` are spendable, but rows
+  `3..15` plus order `16` remain coarse, and Lean proves the rows-0/1/2
+  partial-sharp source is still too wide for the active target residual
+  interval.
+- New exact live gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_3_TO_15_ORDER16_SHARP_SOURCE_GAP`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new file; `.olean` generation for the new file also passed.  `lake env lean`
+  hung silently and was interrupted after 60 seconds.  `q3_check.sh` was run
+  through `bash`, hung after printing its internal Lean command, and was
+  interrupted after 60 seconds; no successful `lake env lean` or `q3_check`
+  result is claimed.
