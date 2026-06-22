@@ -67918,6 +67918,70 @@ Next exact gap:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
 ```
 
+## Execution Update (2026-06-22) -- combined cancellation Horner range checker
+
+Route: PSD-pd/Q3 Step33A.1-A sub0 combined cancellation interval.
+
+Browser/Computer Use follow-up asked Proshka/Louise for the smallest
+proof-producing patch after
+`Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined` was checked.
+The selected patch was the generic exact rational Horner range checker, not a
+concrete sampled payload.
+
+Added checked Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```
+
+Checked interface:
+
+```text
+Step33Sub0CombinedCancellationIntervalCert.hornerTail
+Step33Sub0CombinedCancellationIntervalCert.hornerTail_zero_eq_poly
+Step33Sub0CombinedCancellationHornerRangeCert
+Step33Sub0CombinedCancellationHornerRangeCert.Valid
+Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range
+Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range_unit_cell
+```
+
+Meaning:
+
+```text
+The future combined-cancellation payload can now separate exact rational
+polynomial range rows from the still-missing analytic Taylor remainder source.
+If Lean checks the Horner tail rows, `Valid.poly_range` supplies the polynomial
+range component required by `Step33Sub0CombinedCancellationIntervalCert.Valid`.
+```
+
+Boundary:
+
+```text
+No concrete certificate payload exists yet.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+The analytic proof-grade remainder/source field remains open.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Failure code if this new range-checker layer regresses:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_CHECKER_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```
+
 ## PRO_REVIEW_RESPONSE (2026-06-22, combined certificate checker)
 
 Proshka/Louise follow-up answer:

@@ -35736,3 +35736,58 @@ LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationInt
 LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean
 rg -n "sorry|exact\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean
 ```
+
+## 2026-06-22 Current EOF State -- Horner polynomial range checker checked
+
+Browser/Computer Use follow-up asked Proshka/Louise for the smallest next
+proof-producing patch after the combined interval checker.  The chosen patch
+was a generic exact rational Horner range checker, before emitting any concrete
+combined-cancellation payload.
+
+Checked file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```
+
+Checked names:
+
+```lean
+Step33Sub0CombinedCancellationIntervalCert.hornerTail
+Step33Sub0CombinedCancellationIntervalCert.hornerTail_zero_eq_poly
+Step33Sub0CombinedCancellationHornerRangeCert
+Step33Sub0CombinedCancellationHornerRangeCert.Valid
+Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range
+Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range_unit_cell
+Step33Sub0CombinedCancellationHornerRangeSmoke.degree_two_smoke_poly_range
+```
+
+Meaning:
+
+```text
+A future generated payload may now prove exact rational bounds for the Horner
+tails of `Step33Sub0CombinedCancellationIntervalCert.poly data`; the checked
+`Valid.poly_range` theorem converts those rows into the `poly_range` field
+required by `Step33Sub0CombinedCancellationIntervalCert.Valid`.
+```
+
+Boundary:
+
+```text
+No concrete combined-cancellation payload was emitted.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+The whole-expression analytic Taylor remainder/source proof is still missing.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean
+```

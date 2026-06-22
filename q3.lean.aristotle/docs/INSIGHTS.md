@@ -40859,3 +40859,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`.
 - Validation: direct Lean and `.olean` generation passed; hole/axiom scan found
   no matches.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationHornerRangeCheckerChecked
+
+- Browser/Computer Use follow-up asked Proshka/Louise for the smallest next
+  patch after `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`.
+  Proshka chose the generic exact rational Horner polynomial range checker
+  before any concrete sampled payload.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean`.
+- Lean checked
+  `Step33Sub0CombinedCancellationIntervalCert.hornerTail`,
+  `Step33Sub0CombinedCancellationIntervalCert.hornerTail_zero_eq_poly`,
+  `Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range`, and
+  `Step33Sub0CombinedCancellationHornerRangeCert.Valid.poly_range_unit_cell`.
+- Meaning: the future payload can now close the `poly_range` part of
+  `Step33Sub0CombinedCancellationIntervalCert.Valid` by Lean-checked Horner
+  tail rows, rather than by sampled/probe interval data.
+- Boundary: no concrete combined-cancellation payload exists, no sampled JSON
+  is proof, no final budget claim is made, and the analytic whole-expression
+  Taylor remainder/source proof is still missing.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP`.
+- Regression code for the new layer:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_CHECKER_GAP`.
+- Validation: direct Lean with the full local `.lake` library path passed; no
+  warnings or errors.
