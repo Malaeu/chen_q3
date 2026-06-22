@@ -64718,3 +64718,65 @@ python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_componen
 python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
+
+## 2026-06-22 Execution Update -- component assembly same-degree bridge checked
+
+Added isolated Lean support file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+Lean-checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled
+```
+
+The theorem proves only the same-degree algebraic subtraction bridge:
+
+```text
+rawOmegaATaylorPolynomial 45 (1/20) assembled eta
+  - rawOmegaATaylorPolynomial 45 (1/20) ResidualDerivmodelCoeffPadded eta
+= rawOmegaATaylorPolynomial 45 (1/20) (ResidualTaylorCoeffOf assembled) eta
+```
+
+It does not prove the full target theorem with the degree-15 active model:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+```
+
+Regenerated component assembly ledger status:
+
+```text
+status = fail_closed_raw_product_coeff_source_gap_after_same_degree_bridge
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP
+checkedFullCrosswalkTheoremPresent = false
+checkedSameDegreeCrosswalkTheoremPresent = true
+paddedDegree45EqualsActiveDegree15BridgePresent = false
+zeroExtensionBridgeGap = STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP
+assembledRawDerivCoeffPresent = false
+residualTaylorCoeffPresent = false
+exactCoefficientAssemblyPassed = false
+guardPasses = false
+```
+
+Meaning: the polynomial subtraction algebra is now Lean-checked in the
+degree-45 padded normalization.  The next proof-moving patch is still not
+ShapeSqDeriv rows `2..15`; it is to build proof-grade exact rational
+`assembledRawDerivCoeff` and `ResidualTaylorCoeff` objects and then prove the
+zero-extension bridge from the active degree-15 residual model to the
+degree-45 padded model.  The browser/Proshka follow-up also selected this
+same-degree route (`CHOSEN: A`) and named the next polynomial-padding
+obstruction as
+`STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`.
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```

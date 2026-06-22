@@ -39270,3 +39270,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `scale * (omegaPrimeCoeff * shapeSqCoeff + omegaCoeff * shapeSqDerivCoeff)`
   and subtract the zero-extended `ResidualDerivmodelCoeff` in the active
   `rawOmegaATaylorPolynomial` normalization.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentAssemblySameDegreeBridgeChecked
+
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`.
+- This theorem proves only the same-degree coefficient-subtraction bridge:
+  `P45(assembled) - P45(ResidualDerivmodelCoeffPadded) =
+  P45(ResidualTaylorCoeffOf assembled)`.
+- It does not prove the full target
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`,
+  because the bridge from the active degree-15 residual model to the degree-45
+  padded model is still missing.
+- Regenerated component ledger status:
+  `fail_closed_raw_product_coeff_source_gap_after_same_degree_bridge`.
+- First failure is now
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`.
+- Browser/Proshka follow-up selected the same-degree route (`CHOSEN: A`) and
+  named the next padding obstruction:
+  `STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`.
+- Guard evidence: full crosswalk is absent, same-degree crosswalk is present,
+  no `assembledRawDerivCoeff`, no `ResidualTaylorCoeff`, no exact coefficient
+  assembly pass, and no padded-degree bridge.
+- Next patch: build proof-grade exact rational `assembledRawDerivCoeff` and
+  `ResidualTaylorCoeff` objects, then prove
+  `P45(ResidualDerivmodelCoeffPadded) = P15(ResidualDerivmodelCoeff)`.

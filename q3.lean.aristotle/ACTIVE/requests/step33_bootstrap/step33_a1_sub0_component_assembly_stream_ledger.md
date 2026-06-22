@@ -2,15 +2,17 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1`
 
-Status: `fail_closed_active_model_coeff_crosswalk_not_checked`
+Status: `fail_closed_raw_product_coeff_source_gap_after_same_degree_bridge`
 
-First failure: `STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH`
+First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
 
 Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
-Boundary: Generated audit only. No Lean theorem is emitted and Step33A.1-A is not closed.
+Zero-extension bridge gap: `STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`
+
+Boundary: A Lean-checked same-degree coefficient-subtraction bridge exists, but the full degree-15 active-model crosswalk and proof-grade raw product coefficient source are still open. Step33A.1-A is not closed.
 
 ## Browser/Proshka Decision
 
@@ -20,6 +22,7 @@ Boundary: Generated audit only. No Lean theorem is emitted and Step33A.1-A is no
 - why smallest: Rows 2..15 can prove bounds for the correct function but still feed the wrong polynomial payload unless the component coefficient stream is first fixed in the active RawTaylorCoeffCert residual convention.
 
 Do not:
+- do not unfold all Fin 46 coefficients with norm_num/ring_nf
 - do not generate ShapeSqDeriv rows 2..15 before the crosswalk
 - do not declare arbitrary ShapeSqDerivTightCoeff objects
 - do not move to the direct residual interval theorem
@@ -30,10 +33,19 @@ Do not:
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
-- status: `NOT_WRITTEN`
+- status: `FULL_NOT_WRITTEN_PARTIAL_SAME_DEGREE_LEAN_CHECKED`
 
 ```text
 rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta
+```
+
+Partial Lean-checked same-degree theorem:
+
+- name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`
+- failure code if not enough: `STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`
+
+```text
+rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) assembled eta - rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualDerivmodelCoeffPadded eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) (ResidualTaylorCoeffOf assembled) eta
 ```
 
 Required coefficient definitions:
@@ -63,6 +75,19 @@ Required coefficient definitions:
 - `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff`: found=`True`, line=`46`
 - `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel`: found=`True`, line=`201`
 - `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm`: found=`True`, line=`1912`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`False`, line=`None`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`False`, line=`None`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`False`, line=`None`
+
+### componentAssembly
+
+- path: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+- exists: `True`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree`: found=`True`, line=`24`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded`: found=`True`, line=`27`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf`: found=`True`, line=`37`
+- `rawOmegaATaylorPolynomial_sub_coeff`: found=`True`, line=`46`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`70`
 - `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`False`, line=`None`
 - `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`False`, line=`None`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`False`, line=`None`
@@ -114,7 +139,10 @@ Required coefficient definitions:
 
 ## Guard
 
-- `checkedCrosswalkTheoremPresent`: `False`
+- `checkedFullCrosswalkTheoremPresent`: `False`
+- `checkedSameDegreeCrosswalkTheoremPresent`: `True`
+- `paddedDegree45EqualsActiveDegree15BridgePresent`: `False`
+- `paddedDegree45EqualsActiveDegree15BridgeGap`: `STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`
 - `assembledRawDerivCoeffPresent`: `False`
 - `residualTaylorCoeffPresent`: `False`
 - `exactCoefficientAssemblyPassed`: `False`
@@ -123,8 +151,8 @@ Required coefficient definitions:
 ## Decision
 
 - can generate rows 2..15 now: `False`
-- can emit Lean crosswalk now: `False`
-- next patch: Build the exact rational coefficient definitions and the Lean crosswalk for component assembly in the active residual model convention, then return to tight ShapeSqDeriv rows.
+- can emit Lean crosswalk now: `True`
+- next patch: Build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff objects, then prove the zero-extension bridge from the active degree-15 residual model to the degree-45 padded model. Only after that promote the full componentTaylor_residualCoeff_crosswalk.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16

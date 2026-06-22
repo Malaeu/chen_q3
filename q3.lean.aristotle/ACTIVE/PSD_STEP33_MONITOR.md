@@ -34452,3 +34452,53 @@ active `RawTaylorCoeffCert.residual`; otherwise keep the blocker at
 `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP`.
 
 Status boundary: Step33A.1-A remains OPEN; no Lean proof file was modified.
+
+## 2026-06-22 Current EOF State -- component same-degree bridge checked
+
+Lean-checked isolated file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New checked bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled
+```
+
+This closes only the same-degree algebra:
+
+```text
+P45(assembled) - P45(ResidualDerivmodelCoeffPadded)
+  = P45(ResidualTaylorCoeffOf assembled)
+```
+
+Current generated ledger status:
+
+```text
+status = fail_closed_raw_product_coeff_source_gap_after_same_degree_bridge
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP
+zeroExtensionBridgeGap = STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP
+```
+
+Still open:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+assembledRawDerivCoeff object
+ResidualTaylorCoeff object
+P45(ResidualDerivmodelCoeffPadded) = P15(ResidualDerivmodelCoeff)
+exact rational raw product coefficient source
+```
+
+Next exact patch: define/check proof-grade exact rational
+`assembledRawDerivCoeff` and `ResidualTaylorCoeff`, then prove the
+zero-extension bridge from the active degree-15 residual model into the
+degree-45 padded normalization.  Do not generate ShapeSqDeriv rows `2..15`
+until this component coefficient stream is fixed.
+
+Browser/Proshka follow-up selected the same route (`CHOSEN: A`) and warned not
+to unfold all `Fin 46` coefficients with `norm_num`/`ring_nf`; the next named
+padding obstruction is
+`STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`.

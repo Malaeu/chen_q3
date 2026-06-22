@@ -19,6 +19,7 @@ stream to the active RawTaylorCoeffCert residual convention.
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -28,6 +29,9 @@ PROOFS = ROOT / "Q3" / "Proofs"
 REQUESTS = ROOT / "ACTIVE" / "requests" / "step33_bootstrap"
 
 LANDING_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
+COMPONENT_ASSEMBLY_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean"
+)
 CHUNK_CHECKER_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean"
 COMPONENT_PAYLOAD_JSON = (
     REQUESTS / "step33_a1_sub0_component_taylor_residual_payload.json"
@@ -37,9 +41,12 @@ OUTPUT_JSON = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.json"
 OUTPUT_MD = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.md"
 
 SCHEMA = "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1"
-STATUS = "fail_closed_active_model_coeff_crosswalk_not_checked"
+STATUS = "fail_closed_raw_product_coeff_source_gap_after_same_degree_bridge"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
+ZERO_EXTENSION_GAP = (
+    "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
+)
 TIGHT_ROUTE_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP"
 )
@@ -62,8 +69,17 @@ TARGET_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "componentTaylor_residualCoeff_crosswalk"
 )
+SAME_DEGREE_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled"
+)
+SUB_COEFF_LEMMA = "rawOmegaATaylorPolynomial_sub_coeff"
 ASSEMBLED_COEFF = "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff"
 RESIDUAL_COEFF = "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff"
+RESIDUAL_COEFF_OF = "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf"
+PADDED_RESIDUAL_MODEL = (
+    "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded"
+)
 ASSEMBLED_DEGREE = "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree"
 
 
@@ -80,9 +96,14 @@ def load_json(path: Path) -> dict[str, Any] | None:
     return data
 
 
+def symbol_pattern(symbol: str) -> re.Pattern[str]:
+    return re.compile(rf"(?<![A-Za-z0-9_]){re.escape(symbol)}(?![A-Za-z0-9_])")
+
+
 def line_of(text: str, needle: str) -> int | None:
+    pattern = symbol_pattern(needle)
     for idx, line in enumerate(text.splitlines(), start=1):
-        if needle in line:
+        if pattern.search(line):
             return idx
     return None
 
@@ -93,7 +114,7 @@ def source_symbols(path: Path, text: str, symbols: list[str]) -> dict[str, Any]:
         "exists": path.exists(),
         "symbols": {
             symbol: {
-                "found": symbol in text,
+                "found": symbol_pattern(symbol).search(text) is not None,
                 "line": line_of(text, symbol),
             }
             for symbol in symbols
@@ -114,8 +135,12 @@ def proof_status(component: dict[str, Any] | None, key: str) -> Any:
     return nested_get(component, ["proofStatus", key])
 
 
-def has_checked_crosswalk(landing_text: str) -> bool:
-    return TARGET_THEOREM in landing_text
+def has_checked_full_crosswalk(assembly_text: str) -> bool:
+    return TARGET_THEOREM in assembly_text
+
+
+def has_checked_same_degree_crosswalk(assembly_text: str) -> bool:
+    return SAME_DEGREE_THEOREM in assembly_text and SUB_COEFF_LEMMA in assembly_text
 
 
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
@@ -164,14 +189,16 @@ def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
 
 def build_report() -> dict[str, Any]:
     landing_text = read_text(LANDING_FILE)
+    assembly_text = read_text(COMPONENT_ASSEMBLY_FILE)
     checker_text = read_text(CHUNK_CHECKER_FILE)
     component = load_json(COMPONENT_PAYLOAD_JSON)
     tight = load_json(TIGHT_PAYLOAD_JSON)
 
-    checked_crosswalk = has_checked_crosswalk(landing_text)
+    checked_full_crosswalk = has_checked_full_crosswalk(assembly_text)
+    checked_same_degree_crosswalk = has_checked_same_degree_crosswalk(assembly_text)
     fields = component_field_state(component)
     guard_passes = bool(
-        checked_crosswalk
+        checked_full_crosswalk
         and fields["assembledRawDerivCoeffPresent"]
         and fields["residualTaylorCoeffPresent"]
         and fields["exactCoefficientAssemblyPassed"]
@@ -180,12 +207,15 @@ def build_report() -> dict[str, Any]:
     return {
         "schema": SCHEMA,
         "status": "candidate_ready_for_lean_validation" if guard_passes else STATUS,
-        "firstFailure": None if guard_passes else FIRST_FAILURE,
+        "firstFailure": None if guard_passes else RAW_ASSEMBLY_GAP,
         "localAssemblyGap": None if guard_passes else RAW_ASSEMBLY_GAP,
         "routeLevelGap": TIGHT_ROUTE_GAP,
+        "zeroExtensionBridgeGap": ZERO_EXTENSION_GAP,
         "proofBoundary": (
-            "Generated audit only. No Lean theorem is emitted and Step33A.1-A "
-            "is not closed."
+            "A Lean-checked same-degree coefficient-subtraction bridge exists, "
+            "but the full degree-15 active-model crosswalk and proof-grade "
+            "raw product coefficient source are still open. Step33A.1-A is "
+            "not closed."
         ),
         "browserProshkaDecision": {
             "chosen": "A_component_assembly_coefficient_stream_ledger_first",
@@ -198,6 +228,7 @@ def build_report() -> dict[str, Any]:
                 "RawTaylorCoeffCert residual convention."
             ),
             "doNot": [
+                "do not unfold all Fin 46 coefficients with norm_num/ring_nf",
                 "do not generate ShapeSqDeriv rows 2..15 before the crosswalk",
                 "do not declare arbitrary ShapeSqDerivTightCoeff objects",
                 "do not move to the direct residual interval theorem",
@@ -208,13 +239,26 @@ def build_report() -> dict[str, Any]:
         "targetTheoremContract": {
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
-            "status": "NOT_WRITTEN",
+            "status": (
+                "FULL_NOT_WRITTEN_PARTIAL_SAME_DEGREE_LEAN_CHECKED"
+                if checked_same_degree_crosswalk
+                else "NOT_WRITTEN"
+            ),
             "statementAscii": (
                 "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) "
                 "AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 "
                 "(1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial "
                 "AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta"
             ),
+            "partialSameDegreeTheorem": SAME_DEGREE_THEOREM,
+            "partialSameDegreeStatementAscii": (
+                "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) "
+                "assembled eta - rawOmegaATaylorPolynomial AssembledRawDerivDegree "
+                "(1/20) ResidualDerivmodelCoeffPadded eta = "
+                "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) "
+                "(ResidualTaylorCoeffOf assembled) eta"
+            ),
+            "partialSameDegreeFailureCodeIfNotEnough": ZERO_EXTENSION_GAP,
             "coeffDefinitionsRequired": [
                 ASSEMBLED_DEGREE,
                 ASSEMBLED_COEFF,
@@ -258,6 +302,20 @@ def build_report() -> dict[str, Any]:
                     RESIDUAL_COEFF,
                 ],
             ),
+            "componentAssembly": source_symbols(
+                COMPONENT_ASSEMBLY_FILE,
+                assembly_text,
+                [
+                    ASSEMBLED_DEGREE,
+                    PADDED_RESIDUAL_MODEL,
+                    RESIDUAL_COEFF_OF,
+                    SUB_COEFF_LEMMA,
+                    SAME_DEGREE_THEOREM,
+                    TARGET_THEOREM,
+                    ASSEMBLED_COEFF,
+                    RESIDUAL_COEFF,
+                ],
+            ),
             "chunkTaylorChecker": source_symbols(
                 CHUNK_CHECKER_FILE,
                 checker_text,
@@ -285,7 +343,10 @@ def build_report() -> dict[str, Any]:
         },
         "currentComponentFieldState": fields,
         "guard": {
-            "checkedCrosswalkTheoremPresent": checked_crosswalk,
+            "checkedFullCrosswalkTheoremPresent": checked_full_crosswalk,
+            "checkedSameDegreeCrosswalkTheoremPresent": checked_same_degree_crosswalk,
+            "paddedDegree45EqualsActiveDegree15BridgePresent": False,
+            "paddedDegree45EqualsActiveDegree15BridgeGap": ZERO_EXTENSION_GAP,
             "assembledRawDerivCoeffPresent": fields["assembledRawDerivCoeffPresent"],
             "residualTaylorCoeffPresent": fields["residualTaylorCoeffPresent"],
             "exactCoefficientAssemblyPassed": fields[
@@ -295,11 +356,13 @@ def build_report() -> dict[str, Any]:
         },
         "decision": {
             "canGenerateRows2To15Now": False,
-            "canEmitLeanCrosswalkNow": False,
+            "canEmitLeanCrosswalkNow": checked_same_degree_crosswalk,
             "nextPatch": (
-                "Build the exact rational coefficient definitions and the Lean "
-                "crosswalk for component assembly in the active residual model "
-                "convention, then return to tight ShapeSqDeriv rows."
+                "Build proof-grade exact rational assembledRawDerivCoeff and "
+                "ResidualTaylorCoeff objects, then prove the zero-extension "
+                "bridge from the active degree-15 residual model to the "
+                "degree-45 padded model. Only after that promote the full "
+                "componentTaylor_residualCoeff_crosswalk."
             ),
             "downstreamAfterThisCloses": [
                 "generate proof-grade ShapeSqDeriv rows 2..15 and order16",
@@ -324,6 +387,8 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"Local assembly gap: `{report['localAssemblyGap']}`",
         "",
         f"Route-level gap: `{report['routeLevelGap']}`",
+        "",
+        f"Zero-extension bridge gap: `{report['zeroExtensionBridgeGap']}`",
         "",
         f"Boundary: {report['proofBoundary']}",
         "",
@@ -352,6 +417,15 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "```text",
             target["statementAscii"],
+            "```",
+            "",
+            "Partial Lean-checked same-degree theorem:",
+            "",
+            f"- name: `{target['partialSameDegreeTheorem']}`",
+            f"- failure code if not enough: `{target['partialSameDegreeFailureCodeIfNotEnough']}`",
+            "",
+            "```text",
+            target["partialSameDegreeStatementAscii"],
             "```",
             "",
             "Required coefficient definitions:",
