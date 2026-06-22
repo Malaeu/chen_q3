@@ -66173,3 +66173,72 @@ against the final allowed residual budget in the active payload normalization.
 If the coarse source is too large, sharpen the ShapeSq/ShapeSqDeriv product
 budget rather than marking componentTaylorProofsPresent=true.
 ```
+
+## Execution Update (2026-06-22) -- tight product budget width fail checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Browser/Proshka route advice was used as advisory only.  It selected the
+minimal proof-moving cut: first Lean-prove that the current coarse product
+source is too wide for the active final interval, then move to a sharper
+ShapeSq/ShapeSqDeriv source.  The accepted evidence is the local Lean check.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean
+```
+
+Checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail
+```
+
+Meaning:
+
+```text
+The active target residual interval has width
+245091005771 / 62500000000000000000000000000.
+
+The checked theorem proves this width is strictly smaller than
+2 * primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget.
+So the current symmetric coarse enclosure cannot be spent through the final
+target interval receiver.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the component Taylor route.
+It only proves the current proof-grade coarse source is too coarse.
+The generated JSON fields residualTaylorRemainderAbs,
+componentTaylorProofsPresent, and exactCoefficientAssemblyPassed remain
+false/null.
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean
+```
+
+`lake env lean` again hung silently during environment setup and was
+interrupted.  The direct Lean checks passed, including `.olean` generation for
+the new file.  `q3_check.sh` was run on the touched Lean file and again hung
+after printing its internal Lean command; it was interrupted after 60 seconds,
+so no successful `q3_check` result is claimed.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP
+
+Build a sharper ShapeSq/ShapeSqDeriv remainder source.  Do not set
+componentTaylorProofsPresent=true or finalBudgetPassed=true from the current
+coarse enclosure.
+```

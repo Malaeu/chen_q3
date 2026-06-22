@@ -568,3 +568,27 @@ proof gap is now the component Taylor remainder source that can
 be assembled into the raw derivative residual route.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.
+
+## Local Lean Supplement 3 (2026-06-22)
+
+A later local Lean supplement added:
+
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean`
+
+Checked supplement theorem:
+
+- `primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail`
+
+Meaning: Lean now proves the active target residual interval width is
+strictly smaller than
+`2 * primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`.
+Therefore the current proof-grade coarse enclosure cannot close the final
+target interval receiver.
+
+Boundary: this is not Step33A.1-A closure and does not kill the route.  It
+only marks the current coarse source as proof-grade-but-too-wide.
+`residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and
+`exactCoefficientAssemblyPassed` remain false/null in the generated payload.
+
+Current local first gap after supplement 3:
+`STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP`.

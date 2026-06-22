@@ -39963,3 +39963,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_TIGHT_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
 - Validation: direct Lean with the local `.lake` library path passed on both
   new files after compiling the fresh local `.olean` dependencies.
+
+## Insight (2026-06-22, Step33A.1-A) -- TightProductBudgetWidthFailChecked
+
+- Used the in-app browser/Computer Use channel for route review. Proshka chose
+  route `A`: first build a Lean constant-fail certificate for the current
+  coarse budget, then sharpen the ShapeSq/ShapeSqDeriv source. The browser
+  answer is advisory only; the accepted evidence is the local Lean check.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail`.
+- The theorem proves the active target residual interval width is strictly
+  smaller than
+  `2 * primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`.
+- Meaning: the current coarse fullTaylor residual enclosure is proof-grade but
+  too wide for the final Step33A.1-A target interval receiver.
+- Boundary: this is not Step33A.1-A closure and does not kill the component
+  Taylor route.  `residualTaylorRemainderAbs`,
+  `componentTaylorProofsPresent`, and `exactCoefficientAssemblyPassed` remain
+  false/null.
+- New exact live gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP`.
+- Validation: `lake env lean` again hung silently during environment setup and
+  was interrupted.  Direct Lean with the local `.lake` library path passed on
+  the new file, and `.olean` generation also passed.  `q3_check.sh` was run
+  on the touched Lean file and again hung after printing its internal Lean
+  command; it was interrupted after 60 seconds.
