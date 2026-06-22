@@ -65886,3 +65886,80 @@ local `.lake` library path.  `bash scripts/q3_check.sh
 q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
 was also retried; it again hung after printing its internal Lean command and
 was interrupted without a successful `q3_check` result.
+
+## Execution Update (2026-06-22) -- exact assembly coefficient payload checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor exact algebraic assembly.
+
+Browser/Proshka review was used for the generator exact-assembly-field fork.
+Proshka selected route `B`: materialize the coefficient arrays in an isolated
+certificate and check them against Lean definitions, but keep the full
+component Taylor proof flags false until the remainder/source rows exist.
+
+New generated Lean payload:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean
+```
+
+Lean checked:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_payload_eq
+primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq
+```
+
+New certificate:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.md
+```
+
+Meaning: the 46 `AssembledRawDerivCoeff` entries and the 46
+`ResidualTaylorCoeff` entries are now materialized and Lean-checked against
+the local definitions.  This is only an algebraic coefficient payload check.
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_algebraic_assembly_payload_checked_remainder_source_gap
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP
+checkedAlgebraicAssemblyPayloadCertificatePresent = true
+guardPasses = false
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not set exactCoefficientAssemblyPassed=true.
+It does not set componentTaylorProofsPresent=true.
+It does not invent residualTaylorRemainderAbs from the final product budget.
+The main component payload still has assembledRawDerivCoeff/residualTaylorCoeff
+as null fields; the isolated certificate records the checked algebraic arrays.
+```
+
+Validation:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_component_taylor_exact_assembly_certificate.py scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 scripts/generate_step33_a1_sub0_component_taylor_exact_assembly_certificate.py --lean-validation-status direct_lean_checked --q3-check-status hung_after_internal_lean_command_interrupted
+python3 scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean
+```
+
+The direct Lean check passed.  `q3_check.sh` again hung after printing its
+internal Lean command and was interrupted; the certificate records this as
+`hung_after_internal_lean_command_interrupted`.
+
+Next exact patch:
+
+```text
+Build the proof-producing tight ShapeSqDeriv rows 2..15 and order16 source.
+Do not set exactCoefficientAssemblyPassed=true until residualTaylorRemainderAbs
+and componentTaylorProofsPresent are proof-grade.
+```

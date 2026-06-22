@@ -48,6 +48,7 @@
   },
   "currentComponentFieldState": {
     "activeScaleTightIntervalPresent": true,
+    "algebraicAssemblyPayloadCertificatePresent": true,
     "assembledRawDerivCoeffLeanPresent": true,
     "assembledRawDerivCoeffPresent": false,
     "componentTaylorAssemblyLeanWritten": false,
@@ -85,6 +86,7 @@
   "decision": {
     "canEmitObjectLevelCrosswalkNow": true,
     "canGenerateRows2To15Now": false,
+    "canUseExactAssemblyPayloadNow": true,
     "canUseParameterizedLeanCrosswalkNow": true,
     "downstreamAfterThisCloses": [
       "generate proof-grade ShapeSqDeriv rows 2..15 and order16",
@@ -93,7 +95,7 @@
       "prove the final direct residual interval theorem"
     ],
     "nextFailureIfCauchyBridgeMissing": null,
-    "nextPatch": "Fill or import proof-grade generator exact-assembly fields only after proving that assembledRawDerivCoeff, residualTaylorCoeff, and residualTaylorRemainderAbs match the checked component assembly and final product error budget; do not set exactCoefficientAssemblyPassed by documentation alone."
+    "nextPatch": "Continue to the proof-producing tight ShapeSqDeriv rows 2..15 and order16 source.  The algebraic coefficient arrays are now materialized and Lean-checked against the local definitions, but residualTaylorRemainderAbs, componentTaylorProofsPresent, and exactCoefficientAssemblyPassed remain deliberately false/null."
   },
   "existingPiScaleBudgetCert": {
     "certifiedRequiredScaleError": "930637/1000000000000000000000000000000",
@@ -112,11 +114,12 @@
     "status": "fail_closed_existing_pi_scale_budget_widening_fail",
     "supersededAsCurrentBlockerByActiveScaleBridge": true
   },
-  "firstFailure": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP",
+  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
   "guard": {
     "assembledRawDerivCoeffGeneratorFieldPresent": false,
     "assembledRawDerivCoeffLeanPresent": true,
     "checkedActiveScaleTightIntervalPresent": true,
+    "checkedAlgebraicAssemblyPayloadCertificatePresent": true,
     "checkedCauchyProductBridgePresent": true,
     "checkedFactorErrorWitnessesPresent": true,
     "checkedFinalScaleProductBudgetPresent": true,
@@ -131,16 +134,18 @@
     "checkedProductErrorBudgetBridgePresent": true,
     "checkedProductFactorWitnessInterfacePresent": true,
     "checkedSameDegreeCrosswalkTheoremPresent": true,
+    "componentTaylorProofsPresent": false,
     "exactCoefficientAssemblyPassed": false,
     "existingPiScaleBudgetFailPresent": true,
     "guardPasses": false,
     "paddedDegree45EqualsActiveDegree15BridgeGap": null,
     "paddedDegree45EqualsActiveDegree15BridgePresent": true,
     "residualTaylorCoeffGeneratorFieldPresent": false,
-    "residualTaylorCoeffLeanPresent": true
+    "residualTaylorCoeffLeanPresent": true,
+    "residualTaylorRemainderAbsGeneratorFieldPresent": false
   },
-  "localAssemblyGap": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP",
-  "proofBoundary": "A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below.  Nominal factor absolute budgets are checked if recorded in the guard below.  Product budget comparisons are checked if recorded in the guard below; final scale/product arithmetic is checked if recorded in the guard below; generator exact-assembly coefficient/remainder fields remain separate. The actual scale tight-interval bridge is checked if recorded in the guard below; if present, it supersedes the fail-closed existing-pi widening audit as the current scale source. The existing endpoint-pi route is separately audited by the existing-pi scale budget certificate if recorded in the guard; do not treat it as the current tight nominal scale-error slot unless a same-unit widening cap is proved. Step33A.1-A is not closed.",
+  "localAssemblyGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+  "proofBoundary": "A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below.  Nominal factor absolute budgets are checked if recorded in the guard below.  Product budget comparisons are checked if recorded in the guard below; final scale/product arithmetic is checked if recorded in the guard below; generator exact-assembly coefficient/remainder fields remain separate. The actual scale tight-interval bridge is checked if recorded in the guard below; if present, it supersedes the fail-closed existing-pi widening audit as the current scale source. The exact assembly coefficient payload certificate is checked if recorded in the guard below; it materializes only the algebraic assembled/residual arrays and still leaves the component Taylor remainder and proof-safe flags open. The existing endpoint-pi route is separately audited by the existing-pi scale budget certificate if recorded in the guard; do not treat it as the current tight nominal scale-error slot unless a same-unit widening cap is proved. Step33A.1-A is not closed.",
   "routeLevelGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
   "schema": "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1",
   "sourceFiles": {
@@ -453,6 +458,35 @@
         }
       }
     },
+    "exactAssemblyCertificate": {
+      "exists": true,
+      "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json",
+      "schema": "q3_psdpd_step33_a1_sub0_component_taylor_exact_assembly_certificate.v1",
+      "status": "algebraic_assembly_payload_checked_remainder_source_open"
+    },
+    "exactAssemblyPayload": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeffPayload": {
+          "found": true,
+          "line": 25
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffPayload": {
+          "found": true,
+          "line": 74
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_payload_eq": {
+          "found": true,
+          "line": 123
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq": {
+          "found": true,
+          "line": 128
+        }
+      }
+    },
     "landing": {
       "exists": true,
       "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
@@ -499,7 +533,7 @@
       "status": "fail_closed_tight_coeff_stream_not_identified"
     }
   },
-  "status": "fail_closed_final_scale_product_budget_checked_generator_exact_assembly_fields_gap",
+  "status": "fail_closed_algebraic_assembly_payload_checked_remainder_source_gap",
   "targetTheoremContract": {
     "coeffDefinitionsRequired": [
       "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree",
@@ -513,7 +547,7 @@
     "partialSameDegreeStatementAscii": "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) assembled eta - rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualDerivmodelCoeffPadded eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) (ResidualTaylorCoeffOf assembled) eta",
     "partialSameDegreeTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled",
     "statementAscii": "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta",
-    "status": "OBJECT_THEOREM_LEAN_CHECKED_ACTIVE_SCALE_TIGHT_INTERVAL_CHECKED_GENERATOR_FIELDS_OPEN",
+    "status": "ALGEBRAIC_ASSEMBLY_PAYLOAD_LEAN_CHECKED_REMAINDER_SOURCE_OPEN",
     "zeroExtensionTheorem": "primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq"
   },
   "zeroExtensionBridgeGap": null

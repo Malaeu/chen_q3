@@ -39,6 +39,12 @@ ENDPOINT_SUPPORT_FILE = (
 COMPONENT_PAYLOAD_JSON = (
     REQUESTS / "step33_a1_sub0_component_taylor_residual_payload.json"
 )
+EXACT_ASSEMBLY_CERT_JSON = (
+    REQUESTS / "step33_a1_sub0_component_taylor_exact_assembly_certificate.json"
+)
+EXACT_ASSEMBLY_PAYLOAD_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean"
+)
 TIGHT_PAYLOAD_JSON = REQUESTS / "step33_a1_sub0_shapesq_deriv_tight_payload.json"
 EXISTING_PI_SCALE_BUDGET_CERT_JSON = (
     REQUESTS / "step33_a1_sub0_existing_pi_scale_budget_cert.json"
@@ -83,6 +89,9 @@ STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET = (
     "fail_closed_final_scale_product_budget_checked_"
     "generator_exact_assembly_fields_gap"
 )
+STATUS_AFTER_EXACT_ASSEMBLY_PAYLOAD = (
+    "fail_closed_algebraic_assembly_payload_checked_remainder_source_gap"
+)
 STATUS_AFTER_EXISTING_PI_SCALE_BUDGET_FAIL = (
     "fail_closed_existing_pi_scale_budget_widening_fail"
 )
@@ -117,6 +126,9 @@ FINAL_SCALE_PRODUCT_BUDGET_GAP = (
 )
 GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP"
+)
+SHAPESQ_ROWS_2_TO_15_ORDER16_GAP = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP"
 )
 EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL = (
     "STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL"
@@ -323,6 +335,24 @@ PADDED_RESIDUAL_MODEL = (
     "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded"
 )
 ASSEMBLED_DEGREE = "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree"
+EXACT_ASSEMBLY_CERT_SCHEMA = (
+    "q3_psdpd_step33_a1_sub0_component_taylor_exact_assembly_certificate.v1"
+)
+EXACT_ASSEMBLY_CERT_STATUS = (
+    "algebraic_assembly_payload_checked_remainder_source_open"
+)
+ASSEMBLED_PAYLOAD_DEF = (
+    "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeffPayload"
+)
+RESIDUAL_PAYLOAD_DEF = (
+    "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffPayload"
+)
+ASSEMBLED_PAYLOAD_EQ_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_payload_eq"
+)
+RESIDUAL_PAYLOAD_EQ_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq"
+)
 
 
 def read_text(path: Path) -> str:
@@ -547,6 +577,44 @@ def has_checked_final_scale_product_budget(assembly_text: str) -> bool:
     )
 
 
+def has_checked_exact_assembly_payload(
+    cert: dict[str, Any] | None, payload_text: str
+) -> bool:
+    if not cert:
+        return False
+    required_symbols = [
+        ASSEMBLED_PAYLOAD_DEF,
+        RESIDUAL_PAYLOAD_DEF,
+        ASSEMBLED_PAYLOAD_EQ_THEOREM,
+        RESIDUAL_PAYLOAD_EQ_THEOREM,
+    ]
+    return bool(
+        cert.get("schema") == EXACT_ASSEMBLY_CERT_SCHEMA
+        and cert.get("status") == EXACT_ASSEMBLY_CERT_STATUS
+        and cert.get("firstFailure") == SHAPESQ_ROWS_2_TO_15_ORDER16_GAP
+        and nested_get(
+            cert, ["checks", "algebraicAssemblyCrosswalkPassed"], False
+        )
+        and not nested_get(
+            cert, ["checks", "exactCoefficientAssemblyPassed"], True
+        )
+        and not nested_get(cert, ["checks", "componentTaylorProofsPresent"], True)
+        and not nested_get(
+            cert, ["checks", "residualTaylorRemainderAbsPresent"], True
+        )
+        and nested_get(
+            cert, ["generatorFields", "assembledRawDerivCoeff"]
+        )
+        and nested_get(cert, ["generatorFields", "residualTaylorCoeff"])
+        and nested_get(cert, ["generatorFields", "residualTaylorRemainderAbs"])
+        is None
+        and all(
+            symbol_pattern(symbol).search(payload_text) is not None
+            for symbol in required_symbols
+        )
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -594,9 +662,11 @@ def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
 def build_report() -> dict[str, Any]:
     landing_text = read_text(LANDING_FILE)
     assembly_text = read_text(COMPONENT_ASSEMBLY_FILE)
+    exact_assembly_payload_text = read_text(EXACT_ASSEMBLY_PAYLOAD_FILE)
     checker_text = read_text(CHUNK_CHECKER_FILE)
     endpoint_support_text = read_text(ENDPOINT_SUPPORT_FILE)
     component = load_json(COMPONENT_PAYLOAD_JSON)
+    exact_assembly_cert = load_json(EXACT_ASSEMBLY_CERT_JSON)
     tight = load_json(TIGHT_PAYLOAD_JSON)
     existing_pi_scale_budget_cert = load_json(EXISTING_PI_SCALE_BUDGET_CERT_JSON)
 
@@ -657,6 +727,12 @@ def build_report() -> dict[str, Any]:
         product_budget_comparisons_present
         and has_checked_final_scale_product_budget(assembly_text)
     )
+    exact_assembly_payload_present = bool(
+        final_scale_product_budget_present
+        and has_checked_exact_assembly_payload(
+            exact_assembly_cert, exact_assembly_payload_text
+        )
+    )
     existing_pi_scale_budget_fail_present = bool(
         existing_pi_scale_budget_cert
         and existing_pi_scale_budget_cert.get("failureCode")
@@ -714,6 +790,9 @@ def build_report() -> dict[str, Any]:
                 product_budget_comparisons_present
             ),
             "finalScaleProductBudgetPresent": final_scale_product_budget_present,
+            "algebraicAssemblyPayloadCertificatePresent": (
+                exact_assembly_payload_present
+            ),
             "existingPiScaleBudgetFailPresent": (
                 existing_pi_scale_budget_fail_present
             ),
@@ -723,6 +802,8 @@ def build_report() -> dict[str, Any]:
         checked_full_crosswalk
         and fields["assembledRawDerivCoeffPresent"]
         and fields["residualTaylorCoeffPresent"]
+        and fields["residualTaylorRemainderAbsPresent"]
+        and fields["componentTaylorProofsPresent"]
         and fields["exactCoefficientAssemblyPassed"]
     )
 
@@ -735,6 +816,8 @@ def build_report() -> dict[str, Any]:
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
             and not active_scale_tight_interval_present
+            else STATUS_AFTER_EXACT_ASSEMBLY_PAYLOAD
+            if exact_assembly_payload_present
             else STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET
             if final_scale_product_budget_present
             else STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS
@@ -766,6 +849,8 @@ def build_report() -> dict[str, Any]:
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
             and not active_scale_tight_interval_present
+            else SHAPESQ_ROWS_2_TO_15_ORDER16_GAP
+            if exact_assembly_payload_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
             if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
@@ -795,6 +880,8 @@ def build_report() -> dict[str, Any]:
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
             and not active_scale_tight_interval_present
+            else SHAPESQ_ROWS_2_TO_15_ORDER16_GAP
+            if exact_assembly_payload_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
             if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
@@ -846,6 +933,10 @@ def build_report() -> dict[str, Any]:
             "The actual scale tight-interval bridge is checked if recorded "
             "in the guard below; if present, it supersedes the fail-closed "
             "existing-pi widening audit as the current scale source. "
+            "The exact assembly coefficient payload certificate is checked if "
+            "recorded in the guard below; it materializes only the algebraic "
+            "assembled/residual arrays and still leaves the component Taylor "
+            "remainder and proof-safe flags open. "
             "The existing endpoint-pi route is separately audited by the "
             "existing-pi scale budget certificate if recorded in the guard; "
             "do not treat it as the current tight nominal scale-error slot "
@@ -951,6 +1042,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "ALGEBRAIC_ASSEMBLY_PAYLOAD_LEAN_CHECKED_REMAINDER_SOURCE_OPEN"
+                if exact_assembly_payload_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_ACTIVE_SCALE_TIGHT_INTERVAL_CHECKED_GENERATOR_FIELDS_OPEN"
                 if final_scale_product_budget_present
                 and active_scale_tight_interval_present
@@ -1143,6 +1237,35 @@ def build_report() -> dict[str, Any]:
                 "status": component.get("status") if component else None,
                 "firstFailure": component.get("firstFailure") if component else None,
             },
+            "exactAssemblyPayload": source_symbols(
+                EXACT_ASSEMBLY_PAYLOAD_FILE,
+                exact_assembly_payload_text,
+                [
+                    ASSEMBLED_PAYLOAD_DEF,
+                    RESIDUAL_PAYLOAD_DEF,
+                    ASSEMBLED_PAYLOAD_EQ_THEOREM,
+                    RESIDUAL_PAYLOAD_EQ_THEOREM,
+                ],
+            ),
+            "exactAssemblyCertificate": {
+                "path": str(EXACT_ASSEMBLY_CERT_JSON.relative_to(ROOT)),
+                "exists": EXACT_ASSEMBLY_CERT_JSON.exists(),
+                "schema": (
+                    exact_assembly_cert.get("schema")
+                    if exact_assembly_cert
+                    else None
+                ),
+                "status": (
+                    exact_assembly_cert.get("status")
+                    if exact_assembly_cert
+                    else None
+                ),
+                "firstFailure": (
+                    exact_assembly_cert.get("firstFailure")
+                    if exact_assembly_cert
+                    else None
+                ),
+            },
             "tightPayload": {
                 "path": str(TIGHT_PAYLOAD_JSON.relative_to(ROOT)),
                 "exists": TIGHT_PAYLOAD_JSON.exists(),
@@ -1193,6 +1316,9 @@ def build_report() -> dict[str, Any]:
             "checkedFinalScaleProductBudgetPresent": (
                 final_scale_product_budget_present
             ),
+            "checkedAlgebraicAssemblyPayloadCertificatePresent": (
+                exact_assembly_payload_present
+            ),
             "existingPiScaleBudgetFailPresent": (
                 existing_pi_scale_budget_fail_present
             ),
@@ -1205,11 +1331,17 @@ def build_report() -> dict[str, Any]:
             "residualTaylorCoeffGeneratorFieldPresent": fields[
                 "residualTaylorCoeffPresent"
             ],
+            "residualTaylorRemainderAbsGeneratorFieldPresent": fields[
+                "residualTaylorRemainderAbsPresent"
+            ],
             "assembledRawDerivCoeffLeanPresent": fields[
                 "assembledRawDerivCoeffLeanPresent"
             ],
             "residualTaylorCoeffLeanPresent": fields[
                 "residualTaylorCoeffLeanPresent"
+            ],
+            "componentTaylorProofsPresent": fields[
+                "componentTaylorProofsPresent"
             ],
             "exactCoefficientAssemblyPassed": fields[
                 "exactCoefficientAssemblyPassed"
@@ -1220,6 +1352,7 @@ def build_report() -> dict[str, Any]:
             "canGenerateRows2To15Now": False,
             "canUseParameterizedLeanCrosswalkNow": checked_parameterized_full_crosswalk,
             "canEmitObjectLevelCrosswalkNow": nominal_object_bridge_present,
+            "canUseExactAssemblyPayloadNow": exact_assembly_payload_present,
             "nextFailureIfCauchyBridgeMissing": (
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
@@ -1233,6 +1366,14 @@ def build_report() -> dict[str, Any]:
                 if final_scale_product_budget_present
                 and existing_pi_scale_budget_fail_present
                 and not active_scale_tight_interval_present
+                else
+                "Continue to the proof-producing tight ShapeSqDeriv rows "
+                "2..15 and order16 source.  The algebraic coefficient arrays "
+                "are now materialized and Lean-checked against the local "
+                "definitions, but residualTaylorRemainderAbs, "
+                "componentTaylorProofsPresent, and exactCoefficientAssemblyPassed "
+                "remain deliberately false/null."
+                if exact_assembly_payload_present
                 else
                 "Fill or import proof-grade generator exact-assembly fields "
                 "only after proving that assembledRawDerivCoeff, "
@@ -1495,6 +1636,10 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines.append(
         "- can emit object-level crosswalk now: "
         f"`{final_decision['canEmitObjectLevelCrosswalkNow']}`"
+    )
+    lines.append(
+        "- can use exact assembly payload now: "
+        f"`{final_decision['canUseExactAssemblyPayloadNow']}`"
     )
     lines.append(
         "- next failure if Cauchy bridge missing: "

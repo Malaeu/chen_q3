@@ -39849,3 +39849,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   only after proving that `assembledRawDerivCoeff`,
   `residualTaylorCoeff`, and `residualTaylorRemainderAbs` match the checked
   component assembly and final product error budget.
+
+## Insight (2026-06-22, Step33A.1-A) -- ExactAssemblyCoefficientPayloadChecked
+
+- Used the in-app browser/Computer Use channel for the generator
+  exact-assembly-field fork.  Proshka chose route `B`: write an isolated
+  coefficient-array certificate with Lean list-equality witnesses, keep
+  `exactCoefficientAssemblyPassed=false`, and continue to the true
+  ShapeSqDeriv source gap.
+- Added generated Lean payload
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_payload_eq`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq`.
+- Added exact assembly certificate
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.{json,md}`
+  with 46 assembled coefficients and 46 residual coefficients.
+- Regenerated component ledger status:
+  `fail_closed_algebraic_assembly_payload_checked_remainder_source_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`.
+- Boundary: this is not Step33A.1-A closure.  It does not set
+  `exactCoefficientAssemblyPassed`, `componentTaylorProofsPresent`, or
+  `residualTaylorRemainderAbs`; the ledger guard remains false.
+- Validation: direct Lean with the local `.lake` library path passed on the new
+  payload file; generator byte-compile/regeneration and JSON parse passed.
+  `q3_check.sh` again hung after printing its internal Lean command and was
+  interrupted.
+- Next exact patch: build the proof-producing tight ShapeSqDeriv rows `2..15`
+  and order16 source; do not claim exact assembly closure until the remainder
+  and proof-safe component payload fields are present.

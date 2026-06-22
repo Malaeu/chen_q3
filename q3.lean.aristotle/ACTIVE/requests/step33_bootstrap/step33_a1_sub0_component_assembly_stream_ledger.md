@@ -2,17 +2,17 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1`
 
-Status: `fail_closed_final_scale_product_budget_checked_generator_exact_assembly_fields_gap`
+Status: `fail_closed_algebraic_assembly_payload_checked_remainder_source_gap`
 
-First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP`
+First failure: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
 
-Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP`
+Local assembly gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
 Zero-extension bridge gap: `None`
 
-Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below.  Nominal factor absolute budgets are checked if recorded in the guard below.  Product budget comparisons are checked if recorded in the guard below; final scale/product arithmetic is checked if recorded in the guard below; generator exact-assembly coefficient/remainder fields remain separate. The actual scale tight-interval bridge is checked if recorded in the guard below; if present, it supersedes the fail-closed existing-pi widening audit as the current scale source. The existing endpoint-pi route is separately audited by the existing-pi scale budget certificate if recorded in the guard; do not treat it as the current tight nominal scale-error slot unless a same-unit widening cap is proved. Step33A.1-A is not closed.
+Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below.  Nominal factor absolute budgets are checked if recorded in the guard below.  Product budget comparisons are checked if recorded in the guard below; final scale/product arithmetic is checked if recorded in the guard below; generator exact-assembly coefficient/remainder fields remain separate. The actual scale tight-interval bridge is checked if recorded in the guard below; if present, it supersedes the fail-closed existing-pi widening audit as the current scale source. The exact assembly coefficient payload certificate is checked if recorded in the guard below; it materializes only the algebraic assembled/residual arrays and still leaves the component Taylor remainder and proof-safe flags open. The existing endpoint-pi route is separately audited by the existing-pi scale budget certificate if recorded in the guard; do not treat it as the current tight nominal scale-error slot unless a same-unit widening cap is proved. Step33A.1-A is not closed.
 
 ## Browser/Proshka Decision
 
@@ -50,7 +50,7 @@ Do not:
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
-- status: `OBJECT_THEOREM_LEAN_CHECKED_ACTIVE_SCALE_TIGHT_INTERVAL_CHECKED_GENERATOR_FIELDS_OPEN`
+- status: `ALGEBRAIC_ASSEMBLY_PAYLOAD_LEAN_CHECKED_REMAINDER_SOURCE_OPEN`
 
 ```text
 rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta
@@ -212,6 +212,23 @@ Required coefficient definitions:
 - status: `fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source`
 - firstFailure: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
 
+### exactAssemblyPayload
+
+- path: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean`
+- exists: `True`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeffPayload`: found=`True`, line=`25`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffPayload`: found=`True`, line=`74`
+- `primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_payload_eq`: found=`True`, line=`123`
+- `primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq`: found=`True`, line=`128`
+
+### exactAssemblyCertificate
+
+- path: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json`
+- exists: `True`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_exact_assembly_certificate.v1`
+- status: `algebraic_assembly_payload_checked_remainder_source_open`
+- firstFailure: `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`
+
 ### tightPayload
 
 - path: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.json`
@@ -255,6 +272,7 @@ Required coefficient definitions:
 - `nominalFactorAbsBudgetsPresent`: `True`
 - `productBudgetComparisonsPresent`: `True`
 - `finalScaleProductBudgetPresent`: `True`
+- `algebraicAssemblyPayloadCertificatePresent`: `True`
 - `existingPiScaleBudgetFailPresent`: `True`
 
 ## Guard
@@ -275,12 +293,15 @@ Required coefficient definitions:
 - `checkedNominalFactorAbsBudgetsPresent`: `True`
 - `checkedProductBudgetComparisonsPresent`: `True`
 - `checkedFinalScaleProductBudgetPresent`: `True`
+- `checkedAlgebraicAssemblyPayloadCertificatePresent`: `True`
 - `existingPiScaleBudgetFailPresent`: `True`
 - `paddedDegree45EqualsActiveDegree15BridgeGap`: `None`
 - `assembledRawDerivCoeffGeneratorFieldPresent`: `False`
 - `residualTaylorCoeffGeneratorFieldPresent`: `False`
+- `residualTaylorRemainderAbsGeneratorFieldPresent`: `False`
 - `assembledRawDerivCoeffLeanPresent`: `True`
 - `residualTaylorCoeffLeanPresent`: `True`
+- `componentTaylorProofsPresent`: `False`
 - `exactCoefficientAssemblyPassed`: `False`
 - `guardPasses`: `False`
 
@@ -289,8 +310,9 @@ Required coefficient definitions:
 - can generate rows 2..15 now: `False`
 - can use parameterized Lean crosswalk now: `True`
 - can emit object-level crosswalk now: `True`
+- can use exact assembly payload now: `True`
 - next failure if Cauchy bridge missing: `None`
-- next patch: Fill or import proof-grade generator exact-assembly fields only after proving that assembledRawDerivCoeff, residualTaylorCoeff, and residualTaylorRemainderAbs match the checked component assembly and final product error budget; do not set exactCoefficientAssemblyPassed by documentation alone.
+- next patch: Continue to the proof-producing tight ShapeSqDeriv rows 2..15 and order16 source.  The algebraic coefficient arrays are now materialized and Lean-checked against the local definitions, but residualTaylorRemainderAbs, componentTaylorProofsPresent, and exactCoefficientAssemblyPassed remain deliberately false/null.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16
