@@ -67918,6 +67918,99 @@ Next exact gap:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
 ```
 
+## PRO_REVIEW_RESPONSE (2026-06-22, combined certificate checker)
+
+Proshka/Louise follow-up answer:
+
+```text
+CHOSEN: A
+
+FIRST THEOREM / FILE:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean
+
+Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined
+
+PROOF-GRADE:
+- exact expression crosswalk;
+- segment coverage;
+- whole-expression Taylor/remainder theorem;
+- exact rational polynomial range;
+- compiled Valid theorem and to_hCombined.
+
+DIAGNOSTIC ONLY:
+- sampled interval;
+- Python/Arb estimates;
+- subdivision and degree selection;
+- predicted margins.
+
+FAILURE CODE:
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Codex acceptance:
+
+```text
+Accepted as route advice only.  Implemented the checker surface locally and
+validated it with Lean.  No concrete certificate payload is claimed.
+```
+
+## Execution Update (2026-06-22) -- combined certificate checker checked
+
+Lean checker added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean
+```
+
+Checked names:
+
+```lean
+Step33Sub0CombinedCancellationIntervalCert
+Step33Sub0CombinedCancellationIntervalCert.Valid
+Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined
+Step33Sub0CombinedCancellationIntervalCert.Valid.to_fullTaylor_residual_deriv_interval
+```
+
+Meaning:
+
+```text
+The next generated payload should prove:
+
+  Step33Sub0CombinedCancellationIntervalCert.Valid data
+
+where `data` is a cancellation-preserving Taylor/range certificate for the
+whole combined expression.  The checked theorem `Valid.to_hCombined` then feeds
+the existing combined interval receiver.
+```
+
+Updated ledger target:
+
+```text
+leanPayloadTarget = Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+checkerTheorem = Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined
+```
+
+Boundary:
+
+```text
+No certificate payload exists yet.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+rg -n "sorry|exact\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean \
+  q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py \
+  q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```
+
 Validation:
 
 ```text

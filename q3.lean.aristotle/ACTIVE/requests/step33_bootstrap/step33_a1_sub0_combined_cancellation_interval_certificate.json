@@ -47,9 +47,10 @@
   ],
   "firstFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
   "nextImplementablePatch": {
+    "checkerTheorem": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
     "firstFailureIfMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
-    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedPayload.lean",
-    "recommendation": "build a proof-grade combined interval backend that emits a Lean theorem providing hCombined for the consumer theorem"
+    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean",
+    "recommendation": "build a proof-grade combined interval backend that emits a Lean certificate proving Step33Sub0CombinedCancellationIntervalCert.Valid"
   },
   "proofStatus": {
     "allSegmentsBudgetPassedExactRational": true,
@@ -101,6 +102,7 @@
   ],
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json": "df8cb8dff74f605e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean": "172524e28455ca5b",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean": "d3ce443f3d86cc33",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean": "8554b282c60d9c25",
@@ -110,6 +112,10 @@
   "status": "fail_closed_missing_proof_grade_combined_interval_certificate",
   "targetLeanSurface": {
     "boundInputsFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean",
+    "certCheckerFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean",
+    "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
+    "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
+    "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
     "closedFormTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds",
     "consumerTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds",
     "expression": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr",

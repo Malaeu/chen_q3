@@ -40838,3 +40838,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   sampled/probe data accepted as proof.
 - Next implementable patch: build a proof-grade interval/rational backend that
   emits a Lean theorem providing `hCombined` for the checked consumer.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationIntervalCertCheckerChecked
+
+- Added isolated Lean checker
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`.
+- Checked
+  `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined` and
+  `Step33Sub0CombinedCancellationIntervalCert.Valid.to_fullTaylor_residual_deriv_interval`.
+- The checker defines a single-cell certificate shape with:
+  `cellL`, `cellU`, `center`, `degree`, rational `coeff`,
+  `remainderAbs`, `polyLower`, and `polyUpper`.
+- `Valid` requires a whole-expression remainder bound for
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr`, a
+  polynomial range proof, and the exact rational target-budget comparisons.
+- The generated combined ledger now points the next payload at
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`.
+- Boundary: no concrete certificate data exists, no sampled JSON is proof, and
+  Step33A.1-A remains open at
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`.
+- Validation: direct Lean and `.olean` generation passed; hole/axiom scan found
+  no matches.

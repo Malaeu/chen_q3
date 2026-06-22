@@ -38,6 +38,9 @@ DEFAULT_OUT_MD = (
 COMBINED_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean"
 )
+CERT_CHECKER_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -209,6 +212,10 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "targetLeanSurface": {
             "file": COMBINED_FILE,
+            "certCheckerFile": CERT_CHECKER_FILE,
+            "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
+            "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
+            "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
             "expression": TARGET_EXPR,
             "consumerTheorem": TARGET_THEOREM,
             "closedFormTheorem": TARGET_CLOSED_FORM_THEOREM,
@@ -281,16 +288,20 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "nextImplementablePatch": {
             "recommendation": (
-                "build a proof-grade combined interval backend that emits a Lean theorem "
-                "providing hCombined for the consumer theorem"
+                "build a proof-grade combined interval backend that emits a Lean "
+                "certificate proving Step33Sub0CombinedCancellationIntervalCert.Valid"
             ),
             "firstFailureIfMissing": FIRST_FAILURE,
             "leanPayloadTarget": (
-                "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedPayload.lean"
+                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean"
+            ),
+            "checkerTheorem": (
+                "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined"
             ),
         },
         "sourceDefinitionHashes": {
             COMBINED_FILE: file_hash(ROOT / COMBINED_FILE),
+            CERT_CHECKER_FILE: file_hash(ROOT / CERT_CHECKER_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),
