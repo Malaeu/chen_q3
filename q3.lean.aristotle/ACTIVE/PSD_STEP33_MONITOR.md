@@ -36052,3 +36052,38 @@ Current exact gap:
 ```text
 STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
 ```
+
+## 2026-06-22 Current EOF State -- Omega-second at zero interval checked
+
+The isolated raw-second certificate file now proves a proof-grade rational
+interval for the Omega-second factor at the origin:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaSecondClosedForm_at_zero_interval
+primaryFiniteRow0Parent0Split100Sub0_omega_second_deriv_at_zero_interval
+```
+
+Meaning:
+
+```text
+32 <= Omega''(0) <= 33
+```
+
+in the repository's `step22OmegaArchWeight` normalization.  The proof uses the
+checked `m = 1` trigamma prefix-tail bridge, with two-term prefix
+`4032 / 125` and tail error `4 / 25`; it is not sampled evidence.
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+Omega(0) still needs a proof-grade rational interval.
+The raw second-derivative interval still needs final assembly through the
+checked product decomposition and pi/shape/model constants.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_AND_RAW_SECOND_ASSEMBLY_GAP
+```

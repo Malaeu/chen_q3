@@ -68472,3 +68472,39 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
 ```
+
+## Execution Update (2026-06-22) -- Omega-second at zero interval checked
+
+Lean now proves the Omega-second side of the raw-second product decomposition:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaSecondClosedForm_at_zero_interval
+primaryFiniteRow0Parent0Split100Sub0_omega_second_deriv_at_zero_interval
+```
+
+Checked interval:
+
+```text
+32 <= Omega''(0) <= 33
+```
+
+Proof source:
+
+```text
+two-term m=1 trigamma prefix = 4032 / 125
+shifted-tail error <= 4 / 25
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+No Omega(0) interval is proved here.
+No final rawSecond interval is claimed yet.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_AND_RAW_SECOND_ASSEMBLY_GAP
+```

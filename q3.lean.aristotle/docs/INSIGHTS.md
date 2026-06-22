@@ -41010,3 +41010,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   algebraic reduction needed before inserting proof-grade Omega enclosures.
 - Current exact gap:
   `STEP33_A1_SUB0_OMEGA_ZERO_AND_OMEGA_SECOND_RATIONAL_INTERVAL_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- OmegaSecondAtZeroIntervalChecked
+
+- Browser/Computer Use escalation to Proshka/Louise confirmed the narrow route:
+  use the sign-preserving `m = 1` trigamma-series bridge for `Omega''(0)`,
+  not the full endpoint Taylor machinery.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_omegaSecondClosedForm_at_zero_interval`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_omega_second_deriv_at_zero_interval`.
+- Proof object: a two-term prefix at `eta = 0` gives `4032 / 125`, and the
+  shifted-tail bridge gives error `4 / 25`; therefore
+  `32 <= Omega''(0) <= 33` in the exact `step22OmegaArchWeight`
+  normalization.
+- Boundary: this closes only the Omega-second side of the raw-second product
+  decomposition.  It does not prove an `Omega(0)` interval and does not yet
+  prove the raw second-derivative interval.
+- Current exact gap:
+  `STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_AND_RAW_SECOND_ASSEMBLY_GAP`.
+- Validation: direct Lean and `.olean` generation for
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean` passed;
+  marker scan found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`, and
+  `git diff --check` passed.

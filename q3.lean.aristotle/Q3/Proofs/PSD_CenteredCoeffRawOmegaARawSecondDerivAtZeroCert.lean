@@ -1,4 +1,5 @@
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval
+import Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
 
 set_option linter.mathlibStandardSet false
 set_option autoImplicit false
@@ -21,6 +22,7 @@ namespace Step33
 
 open CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral
 open CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate
+open Step33Sub0OmegaPrimeTaylorRemainderCert
 open scoped BigOperators
 
 def primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondCoeff
@@ -248,6 +250,60 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_eq :
           (0 : Real) := by
       exact ((differentiableAt_const (24 : Real)).mul hInnerDiff1).mul hInnerDiff2
     exact hinner
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaSecondClosedForm_at_zero_interval :
+    (32 : Real) <= deriv step22OmegaArchWeightDerivClosedForm (0 : Real) ∧
+      deriv step22OmegaArchWeightDerivClosedForm (0 : Real) <= (33 : Real) := by
+  have hApprox :
+      ‖deriv step22OmegaArchWeightDerivClosedForm (0 : Real) -
+          (-1 / 2 : Real) *
+            (Finset.range 2).sum
+              (fun n : Nat =>
+                iteratedDeriv 1
+                  (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) (0 : Real))‖ <=
+        (1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant 1 (k + 2)) := by
+    simpa [iteratedDeriv_one] using
+      (omegaPrimeClosedForm_iteratedDeriv_sub_prefix_norm_le_half_shifted_tsum_majorant_of_le16
+        1 2 (by norm_num) (0 : Real))
+  have hPrefix :
+      (-1 / 2 : Real) *
+          (Finset.range 2).sum
+            (fun n : Nat =>
+              iteratedDeriv 1
+                (fun t : Real => omegaPrimeTrigammaSeriesTerm t n) (0 : Real)) =
+        (4032 / 125 : Real) := by
+    norm_num [Finset.sum_range_succ, omegaPrimeTrigammaSeriesTerm_iteratedDeriv,
+      omegaPrimeOrder16SeriesBase, Complex.normSq,
+      Complex.add_re, Complex.add_im, Complex.mul_re, Complex.mul_im]
+  have hTail :
+      (1 / 2 : Real) *
+          (∑' k : Nat, omegaPrimeTrigammaDerivMajorant 1 (k + 2)) <=
+        (4 / 25 : Real) := by
+    have h := omegaPrimeCenterJet_shifted_tsum_budget_le_generated_bound_of_le15
+      1 2 (by norm_num) (by norm_num)
+    norm_num at h ⊢
+    exact h
+  have hNorm :
+      ‖deriv step22OmegaArchWeightDerivClosedForm (0 : Real) -
+          (4032 / 125 : Real)‖ <= (4 / 25 : Real) := by
+    rw [← hPrefix]
+    exact hApprox.trans hTail
+  have hAbs :
+      |deriv step22OmegaArchWeightDerivClosedForm (0 : Real) -
+          (4032 / 125 : Real)| <= (4 / 25 : Real) := by
+    simpa [Real.norm_eq_abs] using hNorm
+  have hBounds := abs_le.mp hAbs
+  constructor <;> linarith
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_second_deriv_at_zero_interval :
+    let Ω : Real -> Real :=
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+    (32 : Real) <= deriv (fun t : Real => deriv Ω t) (0 : Real) ∧
+      deriv (fun t : Real => deriv Ω t) (0 : Real) <= (33 : Real) := by
+  dsimp only
+  rw [step22OmegaArchWeight_second_deriv_at_zero_eq_closedForm]
+  exact primaryFiniteRow0Parent0Split100Sub0_omegaSecondClosedForm_at_zero_interval
 
 theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_shape_constants :
     let Ω : Real -> Real :=
