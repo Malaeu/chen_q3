@@ -2,17 +2,17 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1`
 
-Status: `fail_closed_raw_product_coeff_source_gap_after_cauchy_bridge`
+Status: `fail_closed_nominal_object_coeffs_present_scale_source_bridge_gap`
 
-First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
+First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP`
 
-Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
+Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
 Zero-extension bridge gap: `None`
 
-Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. The proof-grade raw product coefficient source and named coefficient objects are still open. Step33A.1-A is not closed.
+Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  They do not prove the active raw closed form until the scale/source bridge is checked in the same normalization. Step33A.1-A is not closed.
 
 ## Browser/Proshka Decision
 
@@ -41,6 +41,7 @@ Do not:
 Do not:
 - do not set exactCoefficientAssemblyPassed=true
 - do not treat rational scaleCenter as exact ((3/10)/Real.pi)
+- do not treat NominalScaleCoeff as the active closed-form scale
 - do not hardcode assembledDegree=45 as the real product degree; 15-by-16 products give degree 31 before zero-padding
 - do not generate tight rows before exact coefficient-ledger comparison
 - do not unfold 46-term sums with ring_nf/norm_num
@@ -49,7 +50,7 @@ Do not:
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
-- status: `OBJECT_THEOREM_NOT_WRITTEN_PARAMETERIZED_FULL_LEAN_CHECKED`
+- status: `OBJECT_THEOREM_LEAN_CHECKED_NOMINAL_NOT_PROOF_GRADE`
 
 ```text
 rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta
@@ -103,16 +104,20 @@ Required coefficient definitions:
 - exists: `True`
 - `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree`: found=`True`, line=`24`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded`: found=`True`, line=`27`
-- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`217`
+- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`310`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf`: found=`True`, line=`37`
 - `rawOmegaATaylorPolynomial_sub_coeff`: found=`True`, line=`46`
 - `rawOmegaTaylorCauchyCoeff`: found=`True`, line=`66`
 - `rawOmegaATaylorPolynomial_mul_coeff`: found=`True`, line=`75`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`289`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`318`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`False`, line=`None`
-- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`False`, line=`None`
-- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`False`, line=`None`
+- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`284`
+- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`297`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`382`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`411`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`431`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`269`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`278`
+- `primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff`: found=`True`, line=`247`
+- `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff`: found=`True`, line=`229`
 
 ### chunkTaylorChecker
 
@@ -158,17 +163,26 @@ Required coefficient definitions:
 - `assembledRawDerivCoeffPresent`: `False`
 - `residualTaylorCoeffPresent`: `False`
 - `residualTaylorRemainderAbsPresent`: `False`
+- `assembledRawDerivCoeffLeanPresent`: `True`
+- `residualTaylorCoeffLeanPresent`: `True`
+- `nominalScaleCoeffLeanPresent`: `True`
+- `nominalOmegaAnchorCoeffLeanPresent`: `True`
+- `targetObjectCrosswalkLeanPresent`: `True`
+- `nominalObjectBridgePresent`: `True`
 
 ## Guard
 
-- `checkedFullCrosswalkTheoremPresent`: `False`
+- `checkedFullCrosswalkTheoremPresent`: `True`
 - `checkedSameDegreeCrosswalkTheoremPresent`: `True`
 - `checkedParameterizedActiveModelCrosswalkTheoremPresent`: `True`
 - `paddedDegree45EqualsActiveDegree15BridgePresent`: `True`
 - `checkedCauchyProductBridgePresent`: `True`
+- `checkedNominalObjectBridgePresent`: `True`
 - `paddedDegree45EqualsActiveDegree15BridgeGap`: `None`
-- `assembledRawDerivCoeffPresent`: `False`
-- `residualTaylorCoeffPresent`: `False`
+- `assembledRawDerivCoeffGeneratorFieldPresent`: `False`
+- `residualTaylorCoeffGeneratorFieldPresent`: `False`
+- `assembledRawDerivCoeffLeanPresent`: `True`
+- `residualTaylorCoeffLeanPresent`: `True`
 - `exactCoefficientAssemblyPassed`: `False`
 - `guardPasses`: `False`
 
@@ -176,9 +190,9 @@ Required coefficient definitions:
 
 - can generate rows 2..15 now: `False`
 - can use parameterized Lean crosswalk now: `True`
-- can emit object-level crosswalk now: `False`
+- can emit object-level crosswalk now: `True`
 - next failure if Cauchy bridge missing: `None`
-- next patch: Build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff objects from the component product stream, using rawOmegaTaylorCauchyCoeff for omegaPrime*shapeSq and omega*shapeSqDeriv.  Do not spend this bridge as an active raw closed-form proof until the scale and component coefficient sources are checked in the same normalization.
+- next patch: Prove the same-normalization scale/source bridge: replace the nominal scale and nominal omega anchor by proof-grade interval or exact sources that connect the component product stream to the active raw closed-form derivative coefficient budget.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16

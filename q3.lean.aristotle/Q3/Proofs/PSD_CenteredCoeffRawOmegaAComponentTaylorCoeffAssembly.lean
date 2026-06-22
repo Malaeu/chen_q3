@@ -214,6 +214,99 @@ theorem rawOmegaATaylorPolynomial_mul_coeff
         · simp [h]
         · simp [h]
 
+/-!
+Object-level component coefficient stream.
+
+The scale below is the rational midpoint of the local interval used in the
+active landing file.  It is intentionally named `NominalScaleCoeff`: these
+definitions give a checked rational object bridge, not a proof that this
+rational is equal to `((3 : Real) / 10) / Real.pi`.
+-/
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff : Fin 16 -> Rat :=
+  Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeff
+
+def primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff : Rat :=
+  ((-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Rat) /
+      16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 +
+    (-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071 : Rat) /
+      80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000) /
+    2
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff : Fin 17 -> Rat :=
+  Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff
+    Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert
+    primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff : Fin 17 -> Rat :=
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff : Fin 16 -> Rat :=
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+
+def primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Rat :=
+  (190985931710274402922660516047 : Rat) /
+    2000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff :
+    Fin 32 -> Rat :=
+  rawOmegaTaylorCauchyCoeff 15 16
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaShapeSqDerivProductCoeff :
+    Fin 32 -> Rat :=
+  rawOmegaTaylorCauchyCoeff 16 15
+    primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff
+
+def primaryFiniteRow0Parent0Split100Sub0ProductCoeffPadded
+    (coeff : Fin 32 -> Rat)
+    (i : Fin (primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree + 1)) :
+    Rat :=
+  if h : i.1 < 32 then coeff ⟨i.1, h⟩ else 0
+
+def primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff
+    (i : Fin (primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree + 1)) :
+    Rat :=
+  primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff *
+    (primaryFiniteRow0Parent0Split100Sub0ProductCoeffPadded
+        primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff i +
+      primaryFiniteRow0Parent0Split100Sub0ProductCoeffPadded
+        primaryFiniteRow0Parent0Split100Sub0OmegaShapeSqDerivProductCoeff i)
+
+def primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff
+    (i : Fin (primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree + 1)) :
+    Rat :=
+  primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf
+    primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff i
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk
+    (eta : Real) :
+    rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff eta *
+        rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff eta =
+      rawOmegaATaylorPolynomial 31 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff eta := by
+  simpa [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff] using
+    rawOmegaATaylorPolynomial_mul_coeff 15 16 ((1 : Rat) / 20)
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff eta
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk
+    (eta : Real) :
+    rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff eta *
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff eta =
+      rawOmegaATaylorPolynomial 31 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaShapeSqDerivProductCoeff eta := by
+  simpa [primaryFiniteRow0Parent0Split100Sub0OmegaShapeSqDerivProductCoeff] using
+    rawOmegaATaylorPolynomial_mul_coeff 16 15 ((1 : Rat) / 20)
+      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff eta
+
 theorem primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq
     (eta : Real) :
     rawOmegaATaylorPolynomial
@@ -334,6 +427,22 @@ theorem primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_cross
   exact
     primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled
       assembledRawDerivCoeff eta
+
+theorem primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+    (eta : Real) :
+    rawOmegaATaylorPolynomial
+          primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+          ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff eta -
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta =
+      rawOmegaATaylorPolynomial
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff eta := by
+  simpa [primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff] using
+    primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled
+      primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff eta
 
 end RawOmegaATaylorModelCertificate
 end RawOmegaAChunkIntegral

@@ -43,8 +43,14 @@ OUTPUT_MD = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.md"
 SCHEMA = "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1"
 STATUS = "fail_closed_raw_product_coeff_source_gap_after_parameterized_crosswalk"
 STATUS_AFTER_CAUCHY = "fail_closed_raw_product_coeff_source_gap_after_cauchy_bridge"
+STATUS_AFTER_NOMINAL_OBJECTS = (
+    "fail_closed_nominal_object_coeffs_present_scale_source_bridge_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
+SCALE_SOURCE_BRIDGE_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP"
+)
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
 )
@@ -88,6 +94,16 @@ CAUCHY_COEFF_DEF = "rawOmegaTaylorCauchyCoeff"
 ASSEMBLED_COEFF = "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff"
 RESIDUAL_COEFF = "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff"
 RESIDUAL_COEFF_OF = "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf"
+NOMINAL_SCALE_COEFF = "primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff"
+NOMINAL_OMEGA_ANCHOR_COEFF = (
+    "primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff"
+)
+OMEGA_PRIME_SHAPESQ_PRODUCT_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk"
+)
+OMEGA_SHAPESQ_DERIV_PRODUCT_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk"
+)
 PADDED_RESIDUAL_MODEL = (
     "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded"
 )
@@ -235,6 +251,35 @@ def build_report() -> dict[str, Any]:
     checked_zero_extension_bridge = has_checked_zero_extension_bridge(assembly_text)
     checked_cauchy_product_bridge = has_checked_cauchy_product_bridge(assembly_text)
     fields = component_field_state(component)
+    nominal_object_bridge_present = bool(
+        checked_full_crosswalk
+        and symbol_pattern(ASSEMBLED_COEFF).search(assembly_text)
+        and symbol_pattern(RESIDUAL_COEFF).search(assembly_text)
+        and symbol_pattern(NOMINAL_SCALE_COEFF).search(assembly_text)
+        and symbol_pattern(NOMINAL_OMEGA_ANCHOR_COEFF).search(assembly_text)
+    )
+    fields.update(
+        {
+            "assembledRawDerivCoeffLeanPresent": symbol_pattern(
+                ASSEMBLED_COEFF
+            ).search(assembly_text)
+            is not None,
+            "residualTaylorCoeffLeanPresent": symbol_pattern(
+                RESIDUAL_COEFF
+            ).search(assembly_text)
+            is not None,
+            "nominalScaleCoeffLeanPresent": symbol_pattern(
+                NOMINAL_SCALE_COEFF
+            ).search(assembly_text)
+            is not None,
+            "nominalOmegaAnchorCoeffLeanPresent": symbol_pattern(
+                NOMINAL_OMEGA_ANCHOR_COEFF
+            ).search(assembly_text)
+            is not None,
+            "targetObjectCrosswalkLeanPresent": checked_full_crosswalk,
+            "nominalObjectBridgePresent": nominal_object_bridge_present,
+        }
+    )
     guard_passes = bool(
         checked_full_crosswalk
         and fields["assembledRawDerivCoeffPresent"]
@@ -247,12 +292,26 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_NOMINAL_OBJECTS
+            if nominal_object_bridge_present
             else STATUS_AFTER_CAUCHY
             if checked_cauchy_product_bridge
             else STATUS
         ),
-        "firstFailure": None if guard_passes else RAW_ASSEMBLY_GAP,
-        "localAssemblyGap": None if guard_passes else RAW_ASSEMBLY_GAP,
+        "firstFailure": (
+            None
+            if guard_passes
+            else SCALE_SOURCE_BRIDGE_GAP
+            if nominal_object_bridge_present
+            else RAW_ASSEMBLY_GAP
+        ),
+        "localAssemblyGap": (
+            None
+            if guard_passes
+            else SCALE_SOURCE_BRIDGE_GAP
+            if nominal_object_bridge_present
+            else RAW_ASSEMBLY_GAP
+        ),
         "routeLevelGap": TIGHT_ROUTE_GAP,
         "zeroExtensionBridgeGap": None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP,
         "proofBoundary": (
@@ -260,8 +319,10 @@ def build_report() -> dict[str, Any]:
             "including the same-degree subtraction bridge and degree-45/"
             "degree-15 zero-extension bridge.  The generic Cauchy product "
             "coefficient bridge is checked if recorded in the guard below. "
-            "The proof-grade raw product coefficient source and named "
-            "coefficient objects are still open. Step33A.1-A is not closed."
+            "Named nominal coefficient objects are checked if recorded in the "
+            "guard below.  They do not prove the active raw closed form until "
+            "the scale/source bridge is checked in the same normalization. "
+            "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
             "chosen": "A_component_assembly_coefficient_stream_ledger_first",
@@ -296,6 +357,7 @@ def build_report() -> dict[str, Any]:
             "doNot": [
                 "do not set exactCoefficientAssemblyPassed=true",
                 "do not treat rational scaleCenter as exact ((3/10)/Real.pi)",
+                "do not treat NominalScaleCoeff as the active closed-form scale",
                 "do not hardcode assembledDegree=45 as the real product degree; "
                 "15-by-16 products give degree 31 before zero-padding",
                 "do not generate tight rows before exact coefficient-ledger comparison",
@@ -306,7 +368,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
-                "OBJECT_THEOREM_NOT_WRITTEN_PARAMETERIZED_FULL_LEAN_CHECKED"
+                "OBJECT_THEOREM_LEAN_CHECKED_NOMINAL_NOT_PROOF_GRADE"
+                if nominal_object_bridge_present
+                else "OBJECT_THEOREM_NOT_WRITTEN_PARAMETERIZED_FULL_LEAN_CHECKED"
                 if checked_parameterized_full_crosswalk
                 else "FULL_NOT_WRITTEN_PARTIAL_SAME_DEGREE_LEAN_CHECKED"
                 if checked_same_degree_crosswalk
@@ -383,11 +447,15 @@ def build_report() -> dict[str, Any]:
                     SUB_COEFF_LEMMA,
                     CAUCHY_COEFF_DEF,
                     CAUCHY_PRODUCT_THEOREM,
+                    OMEGA_PRIME_SHAPESQ_PRODUCT_THEOREM,
+                    OMEGA_SHAPESQ_DERIV_PRODUCT_THEOREM,
                     SAME_DEGREE_THEOREM,
                     PARAMETERIZED_FULL_THEOREM,
                     TARGET_THEOREM,
                     ASSEMBLED_COEFF,
                     RESIDUAL_COEFF,
+                    NOMINAL_SCALE_COEFF,
+                    NOMINAL_OMEGA_ANCHOR_COEFF,
                 ],
             ),
             "chunkTaylorChecker": source_symbols(
@@ -426,11 +494,22 @@ def build_report() -> dict[str, Any]:
                 checked_zero_extension_bridge
             ),
             "checkedCauchyProductBridgePresent": checked_cauchy_product_bridge,
+            "checkedNominalObjectBridgePresent": nominal_object_bridge_present,
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
-            "assembledRawDerivCoeffPresent": fields["assembledRawDerivCoeffPresent"],
-            "residualTaylorCoeffPresent": fields["residualTaylorCoeffPresent"],
+            "assembledRawDerivCoeffGeneratorFieldPresent": fields[
+                "assembledRawDerivCoeffPresent"
+            ],
+            "residualTaylorCoeffGeneratorFieldPresent": fields[
+                "residualTaylorCoeffPresent"
+            ],
+            "assembledRawDerivCoeffLeanPresent": fields[
+                "assembledRawDerivCoeffLeanPresent"
+            ],
+            "residualTaylorCoeffLeanPresent": fields[
+                "residualTaylorCoeffLeanPresent"
+            ],
             "exactCoefficientAssemblyPassed": fields[
                 "exactCoefficientAssemblyPassed"
             ],
@@ -439,17 +518,24 @@ def build_report() -> dict[str, Any]:
         "decision": {
             "canGenerateRows2To15Now": False,
             "canUseParameterizedLeanCrosswalkNow": checked_parameterized_full_crosswalk,
-            "canEmitObjectLevelCrosswalkNow": False,
+            "canEmitObjectLevelCrosswalkNow": nominal_object_bridge_present,
             "nextFailureIfCauchyBridgeMissing": (
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
-                "Build proof-grade exact rational assembledRawDerivCoeff and "
-                "ResidualTaylorCoeff objects from the component product stream, "
-                "using rawOmegaTaylorCauchyCoeff for omegaPrime*shapeSq and "
-                "omega*shapeSqDeriv.  Do not spend this bridge as an active "
-                "raw closed-form proof until the scale and component coefficient "
-                "sources are checked in the same normalization."
+                "Prove the same-normalization scale/source bridge: replace the "
+                "nominal scale and nominal omega anchor by proof-grade interval "
+                "or exact sources that connect the component product stream to "
+                "the active raw closed-form derivative coefficient budget."
+                if nominal_object_bridge_present
+                else (
+                    "Build proof-grade exact rational assembledRawDerivCoeff and "
+                    "ResidualTaylorCoeff objects from the component product stream, "
+                    "using rawOmegaTaylorCauchyCoeff for omegaPrime*shapeSq and "
+                    "omega*shapeSqDeriv.  Do not spend this bridge as an active "
+                    "raw closed-form proof until the scale and component coefficient "
+                    "sources are checked in the same normalization."
+                )
                 if checked_cauchy_product_bridge
                 else (
                     "Prove the generic Cauchy product bridge "

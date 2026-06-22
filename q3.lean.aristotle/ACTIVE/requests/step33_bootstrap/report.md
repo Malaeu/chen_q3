@@ -64966,3 +64966,75 @@ q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemb
 was attempted, but the script hung at its internal `lake env lean` invocation
 after the direct `LEAN_PATH` Lean check had passed; it was interrupted without
 leaving a running process.
+
+## Execution Update (2026-06-22) -- nominal component object bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked coefficient objects and product sanity bridges:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff
+primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff
+primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff
+primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk
+primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+```
+
+Meaning: the object-level algebraic crosswalk now exists for a named rational
+component coefficient stream in the active `rawOmegaATaylorPolynomial`
+normalization.  The two 15-by-16 Cauchy products are explicitly degree-31
+before zero-padding into the degree-45 residual convention.
+
+Boundary:
+
+```text
+This is not proof-grade closure of Step33A.1-A.
+NominalScaleCoeff is the rational midpoint of the local scale interval, not a
+proof that it equals ((3 : Real) / 10) / Real.pi.
+NominalOmegaTaylorAnchorCoeff is a local rational object, not a consumed
+generator-side proof-grade source field.
+The component payload still has assembledRawDerivCoeffPresent = false,
+residualTaylorCoeffPresent = false, and exactCoefficientAssemblyPassed = false.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_nominal_object_coeffs_present_scale_source_bridge_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP
+checkedFullCrosswalkTheoremPresent = true
+checkedNominalObjectBridgePresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Prove the same-normalization scale/source bridge: replace the nominal scale and
+nominal omega anchor by proof-grade interval or exact sources that connect the
+component product stream to the active raw closed-form derivative coefficient
+budget.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+```
+
+`bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was retried and again hung after printing its internal Lean command; it was
+interrupted without leaving a running process.  The direct `LEAN_PATH` Lean
+check above passed.

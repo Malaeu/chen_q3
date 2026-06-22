@@ -39374,3 +39374,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - External search was used only as a non-proof API sanity check for the
   standard polynomial/Cauchy coefficient shape; the theorem accepted here is
   the local Lean-checked direct finite-sum bridge.
+
+## Insight (2026-06-22, Step33A.1-A) -- NominalComponentObjectBridgeChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked named nominal component objects:
+  `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff`,
+  `primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff`,
+  `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`, and
+  `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`.
+- Lean checked the two component product sanity bridges:
+  `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`.
+- Lean checked the named object-level theorem
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
+  in the active `rawOmegaATaylorPolynomial` convention.
+- Regenerated component ledger status:
+  `fail_closed_nominal_object_coeffs_present_scale_source_bridge_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP`.
+- Boundary: `NominalScaleCoeff` is not a proof that the rational equals
+  `((3 : Real) / 10) / Real.pi`, and the nominal omega anchor is not yet a
+  consumed proof-grade generator source.  The generator-side fields
+  `assembledRawDerivCoeffPresent`, `residualTaylorCoeffPresent`, and
+  `exactCoefficientAssemblyPassed` remain false.
+- Next exact patch: prove the same-normalization scale/source bridge from the
+  active interval/exact sources into the component product stream before
+  generating ShapeSqDeriv rows `2..15` or claiming Step33A.1-A closure.
