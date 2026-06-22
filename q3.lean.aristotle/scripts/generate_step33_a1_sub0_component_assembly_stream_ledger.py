@@ -49,6 +49,9 @@ STATUS_AFTER_NOMINAL_OBJECTS = (
 STATUS_AFTER_SOURCE_INTERVALS = (
     "fail_closed_nominal_source_intervals_checked_product_error_budget_gap"
 )
+STATUS_AFTER_PRODUCT_ERROR_BRIDGE = (
+    "fail_closed_product_error_bridge_checked_concrete_budget_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -56,6 +59,9 @@ SCALE_SOURCE_BRIDGE_GAP = (
 )
 PRODUCT_ERROR_BUDGET_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP"
+)
+CONCRETE_PRODUCT_ERROR_BUDGET_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_CONCRETE_PRODUCT_ERROR_BUDGET_GAP"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -129,6 +135,9 @@ NOMINAL_OMEGA_ANCHOR_ERROR_THEOREM = (
 )
 NOMINAL_SOURCE_INTERVAL_BRIDGE = (
     "primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge"
+)
+PRODUCT_ERROR_BUDGET_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge"
 )
 OMEGA_PRIME_SHAPESQ_PRODUCT_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk"
@@ -243,6 +252,13 @@ def has_checked_nominal_source_interval_bridge(assembly_text: str) -> bool:
     )
 
 
+def has_checked_product_error_budget_bridge(assembly_text: str) -> bool:
+    return (
+        symbol_pattern(PRODUCT_ERROR_BUDGET_THEOREM).search(assembly_text)
+        is not None
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -313,6 +329,10 @@ def build_report() -> dict[str, Any]:
         nominal_object_bridge_present
         and has_checked_nominal_source_interval_bridge(assembly_text)
     )
+    product_error_budget_bridge_present = bool(
+        nominal_source_interval_bridge_present
+        and has_checked_product_error_budget_bridge(assembly_text)
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -336,6 +356,7 @@ def build_report() -> dict[str, Any]:
             "nominalSourceIntervalBridgePresent": (
                 nominal_source_interval_bridge_present
             ),
+            "productErrorBudgetBridgePresent": product_error_budget_bridge_present,
         }
     )
     guard_passes = bool(
@@ -350,6 +371,8 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_PRODUCT_ERROR_BRIDGE
+            if product_error_budget_bridge_present
             else STATUS_AFTER_SOURCE_INTERVALS
             if nominal_source_interval_bridge_present
             else STATUS_AFTER_NOMINAL_OBJECTS
@@ -361,6 +384,8 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else CONCRETE_PRODUCT_ERROR_BUDGET_GAP
+            if product_error_budget_bridge_present
             else PRODUCT_ERROR_BUDGET_GAP
             if nominal_source_interval_bridge_present
             else SCALE_SOURCE_BRIDGE_GAP
@@ -370,6 +395,8 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else CONCRETE_PRODUCT_ERROR_BUDGET_GAP
+            if product_error_budget_bridge_present
             else PRODUCT_ERROR_BUDGET_GAP
             if nominal_source_interval_bridge_present
             else SCALE_SOURCE_BRIDGE_GAP
@@ -388,6 +415,9 @@ def build_report() -> dict[str, Any]:
             "and nominal omega anchor are checked if recorded in the guard "
             "below.  They still do not prove the active raw closed form until "
             "their losses are propagated through the product assembly budget. "
+            "The generic product-error budget bridge is checked if recorded "
+            "in the guard below, but concrete generated coefficient/remainder "
+            "arithmetic remains separate. "
             "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
@@ -434,6 +464,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_ERROR_BRIDGE_CHECKED_CONCRETE_BUDGET_OPEN"
+                if product_error_budget_bridge_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_SOURCE_INTERVALS_CHECKED_PRODUCT_ERROR_OPEN"
                 if nominal_source_interval_bridge_present
                 else
@@ -535,6 +568,7 @@ def build_report() -> dict[str, Any]:
                     NOMINAL_OMEGA_ANCHOR_ERROR_ABS,
                     NOMINAL_OMEGA_ANCHOR_ERROR_THEOREM,
                     NOMINAL_SOURCE_INTERVAL_BRIDGE,
+                    PRODUCT_ERROR_BUDGET_THEOREM,
                 ],
             ),
             "chunkTaylorChecker": source_symbols(
@@ -577,6 +611,9 @@ def build_report() -> dict[str, Any]:
             "checkedNominalSourceIntervalBridgePresent": (
                 nominal_source_interval_bridge_present
             ),
+            "checkedProductErrorBudgetBridgePresent": (
+                product_error_budget_bridge_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -605,7 +642,14 @@ def build_report() -> dict[str, Any]:
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
-                "Propagate the checked scale and omega-anchor interval losses "
+                "Generate or import the concrete same-normalization arithmetic "
+                "budget for the product-error bridge: coefficient/remainder "
+                "errors for omegaPrime*shapeSq and omega*shapeSqDeriv, product "
+                "absolute bounds, nominal-scale absolute bound, and the final "
+                "budget comparison.  Only after that may generator exact-assembly "
+                "fields be reconsidered."
+                if product_error_budget_bridge_present
+                else "Propagate the checked scale and omega-anchor interval losses "
                 "through omegaPrime*shapeSq + omega*shapeSqDeriv and prove the "
                 "same-normalization product-error budget before setting any "
                 "generator exact-assembly fields."

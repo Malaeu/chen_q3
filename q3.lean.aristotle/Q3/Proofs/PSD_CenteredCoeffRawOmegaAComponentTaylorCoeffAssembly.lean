@@ -356,6 +356,87 @@ theorem primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge
     primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval
       hOmegaLower hOmegaUpper⟩
 
+theorem primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge
+    {scale nominalScale omegaPrimeShape omegaPrimeShapeNominal
+      omegaShapeDeriv omegaShapeDerivNominal scaleErr omegaPrimeShapeErr
+      omegaShapeDerivErr omegaPrimeShapeAbs omegaShapeDerivAbs nominalScaleAbs
+      budget : Real}
+    (hScale : |scale - nominalScale| <= scaleErr)
+    (hOmegaPrimeShape :
+      |omegaPrimeShape - omegaPrimeShapeNominal| <= omegaPrimeShapeErr)
+    (hOmegaShapeDeriv :
+      |omegaShapeDeriv - omegaShapeDerivNominal| <= omegaShapeDerivErr)
+    (hOmegaPrimeShapeAbs : |omegaPrimeShape| <= omegaPrimeShapeAbs)
+    (hOmegaShapeDerivAbs : |omegaShapeDeriv| <= omegaShapeDerivAbs)
+    (hNominalScaleAbs : |nominalScale| <= nominalScaleAbs)
+    (hScaleErrNonneg : 0 <= scaleErr)
+    (hBudget :
+      scaleErr * (omegaPrimeShapeAbs + omegaShapeDerivAbs) +
+          nominalScaleAbs * (omegaPrimeShapeErr + omegaShapeDerivErr) <=
+        budget) :
+    |scale * (omegaPrimeShape + omegaShapeDeriv) -
+        nominalScale * (omegaPrimeShapeNominal + omegaShapeDerivNominal)| <=
+      budget := by
+  have hProductAbs :
+      |omegaPrimeShape + omegaShapeDeriv| <=
+        omegaPrimeShapeAbs + omegaShapeDerivAbs :=
+    (abs_add_le omegaPrimeShape omegaShapeDeriv).trans
+      (add_le_add hOmegaPrimeShapeAbs hOmegaShapeDerivAbs)
+  have hProductErr :
+      |(omegaPrimeShape - omegaPrimeShapeNominal) +
+          (omegaShapeDeriv - omegaShapeDerivNominal)| <=
+        omegaPrimeShapeErr + omegaShapeDerivErr :=
+    (abs_add_le (omegaPrimeShape - omegaPrimeShapeNominal)
+      (omegaShapeDeriv - omegaShapeDerivNominal)).trans
+      (add_le_add hOmegaPrimeShape hOmegaShapeDeriv)
+  have hTermScale :
+      |scale - nominalScale| * |omegaPrimeShape + omegaShapeDeriv| <=
+        scaleErr * (omegaPrimeShapeAbs + omegaShapeDerivAbs) :=
+    mul_le_mul hScale hProductAbs (abs_nonneg _) hScaleErrNonneg
+  have hNominalScaleAbsNonneg : 0 <= nominalScaleAbs :=
+    (abs_nonneg nominalScale).trans hNominalScaleAbs
+  have hTermProduct :
+      |nominalScale| *
+          |(omegaPrimeShape - omegaPrimeShapeNominal) +
+            (omegaShapeDeriv - omegaShapeDerivNominal)| <=
+        nominalScaleAbs * (omegaPrimeShapeErr + omegaShapeDerivErr) :=
+    mul_le_mul hNominalScaleAbs hProductErr (abs_nonneg _)
+      hNominalScaleAbsNonneg
+  have hDecomp :
+      scale * (omegaPrimeShape + omegaShapeDeriv) -
+          nominalScale * (omegaPrimeShapeNominal + omegaShapeDerivNominal) =
+        (scale - nominalScale) * (omegaPrimeShape + omegaShapeDeriv) +
+          nominalScale *
+            ((omegaPrimeShape - omegaPrimeShapeNominal) +
+              (omegaShapeDeriv - omegaShapeDerivNominal)) := by
+    ring
+  calc
+    |scale * (omegaPrimeShape + omegaShapeDeriv) -
+        nominalScale * (omegaPrimeShapeNominal + omegaShapeDerivNominal)|
+        =
+      |(scale - nominalScale) * (omegaPrimeShape + omegaShapeDeriv) +
+        nominalScale *
+          ((omegaPrimeShape - omegaPrimeShapeNominal) +
+            (omegaShapeDeriv - omegaShapeDerivNominal))| := by
+        rw [hDecomp]
+    _ <=
+      |(scale - nominalScale) * (omegaPrimeShape + omegaShapeDeriv)| +
+        |nominalScale *
+          ((omegaPrimeShape - omegaPrimeShapeNominal) +
+            (omegaShapeDeriv - omegaShapeDerivNominal))| :=
+        abs_add_le _ _
+    _ =
+      |scale - nominalScale| * |omegaPrimeShape + omegaShapeDeriv| +
+        |nominalScale| *
+          |(omegaPrimeShape - omegaPrimeShapeNominal) +
+            (omegaShapeDeriv - omegaShapeDerivNominal)| := by
+        rw [abs_mul, abs_mul]
+    _ <=
+      scaleErr * (omegaPrimeShapeAbs + omegaShapeDerivAbs) +
+        nominalScaleAbs * (omegaPrimeShapeErr + omegaShapeDerivErr) :=
+        add_le_add hTermScale hTermProduct
+    _ <= budget := hBudget
+
 def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff :
     Fin 32 -> Rat :=
   rawOmegaTaylorCauchyCoeff 15 16

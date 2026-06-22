@@ -64725,6 +64725,88 @@ was retried and again hung after printing its internal Lean command; it was
 interrupted without leaving a successful `q3_check` result.  The direct
 `LEAN_PATH` Lean check above passed.
 
+`bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was retried and again hung after printing its internal Lean command; it was
+interrupted without leaving a successful `q3_check` result.  The direct
+`LEAN_PATH` Lean check above passed.
+
+## Execution Update (2026-06-22) -- product-error budget bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge
+```
+
+Meaning: Lean now checks the generic same-normalization algebraic budget
+bridge:
+
+```text
+|scale*(omegaPrimeShape + omegaShapeDeriv)
+  - nominalScale*(omegaPrimeShapeNominal + omegaShapeDerivNominal)|
+<= budget
+```
+
+from these explicit inputs:
+
+```text
+|scale - nominalScale| <= scaleErr
+|omegaPrimeShape - omegaPrimeShapeNominal| <= omegaPrimeShapeErr
+|omegaShapeDeriv - omegaShapeDerivNominal| <= omegaShapeDerivErr
+|omegaPrimeShape| <= omegaPrimeShapeAbs
+|omegaShapeDeriv| <= omegaShapeDerivAbs
+|nominalScale| <= nominalScaleAbs
+scaleErr*(omegaPrimeShapeAbs + omegaShapeDerivAbs)
+  + nominalScaleAbs*(omegaPrimeShapeErr + omegaShapeDerivErr) <= budget
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not provide the concrete generated coefficient/remainder arithmetic
+for omegaPrime*shapeSq and omega*shapeSqDeriv.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent, or
+exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_product_error_bridge_checked_concrete_budget_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_CONCRETE_PRODUCT_ERROR_BUDGET_GAP
+checkedProductErrorBudgetBridgePresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Generate or import the concrete same-normalization arithmetic budget for the
+product-error bridge: coefficient/remainder errors for omegaPrime*shapeSq and
+omega*shapeSqDeriv, product absolute bounds, nominal-scale absolute bound, and
+the final budget comparison.  Only after that may generator exact-assembly
+fields be reconsidered.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```
+
 ## 2026-06-22 Execution Update -- parameterized active-model crosswalk checked
 
 Extended the isolated Lean support file:

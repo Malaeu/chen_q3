@@ -39468,3 +39468,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `residualTaylorCoeffPresent`, or `exactCoefficientAssemblyPassed=true`.
   The concrete component coefficient/remainder budget remains a separate
   generated arithmetic gate after the algebraic bridge compiles.
+
+## Insight (2026-06-22, Step33A.1-A) -- ProductErrorBudgetBridgeChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge`.
+- The theorem propagates one scale error and two product-summand errors through
+  the active scaled sum
+  `scale*(omegaPrimeShape + omegaShapeDeriv)`, using explicit absolute-value
+  bounds and a final budget comparison.
+- Regenerated component ledger status:
+  `fail_closed_product_error_bridge_checked_concrete_budget_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_CONCRETE_PRODUCT_ERROR_BUDGET_GAP`.
+- Boundary: this is only generic algebra.  It does not provide the concrete
+  generated coefficient/remainder errors or product absolute bounds, and it
+  does not set `exactCoefficientAssemblyPassed=true`.
+- Next exact patch: generate/import the concrete arithmetic witnesses consumed
+  by the product-error bridge before generating ShapeSqDeriv rows `2..15` or
+  claiming Step33A.1-A closure.
