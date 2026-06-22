@@ -39422,3 +39422,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   ShapeSqDeriv rows `2..15`.
 - Expected next gap after this patch:
   `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- NominalSourceIntervalBridgeChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked interval source objects for the nominal scale and nominal omega
+  anchor, including
+  `primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval`.
+- Lean checked the combined bridge
+  `primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge`.
+- Regenerated component ledger status:
+  `fail_closed_nominal_source_intervals_checked_product_error_budget_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP`.
+- Boundary: the bridge only bounds replacement errors for the nominal source
+  values.  It does not prove exact equality with `((3 : Real) / 10) / Real.pi`,
+  does not propagate losses through
+  `omegaPrime*shapeSq + omega*shapeSqDeriv`, and does not set
+  `exactCoefficientAssemblyPassed=true`.
+- Next exact patch: prove the same-normalization product-error budget for the
+  source interval losses before generating ShapeSqDeriv rows `2..15` or
+  claiming Step33A.1-A closure.

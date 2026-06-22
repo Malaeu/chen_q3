@@ -226,12 +226,50 @@ rational is equal to `((3 : Real) / 10) / Real.pi`.
 def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff : Fin 16 -> Rat :=
   Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeff
 
+def primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower : Rat :=
+  (-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Rat) /
+    16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper : Rat :=
+  (-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071 : Rat) /
+    80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
 def primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff : Rat :=
-  ((-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Rat) /
-      16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 +
-    (-426573174109218210367240990627486922998187245419326080653670377242934688213891611916507071 : Rat) /
-      80000000000000000000000000000000000000000000000000000000000000000000000000000000000000000) /
+  (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower +
+    primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper) /
     2
+
+def primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs : Rat :=
+  (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper -
+    primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower) /
+    2
+
+theorem primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval
+    {omegaCenter : Real}
+    (hLower :
+      (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower :
+        Real) <= omegaCenter)
+    (hUpper :
+      omegaCenter <=
+        (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper :
+          Real)) :
+    |omegaCenter -
+        (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff :
+          Real)| <=
+      (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs :
+        Real) := by
+  rw [abs_le]
+  constructor
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff,
+      primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs,
+      primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower,
+      primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper] at hLower hUpper ⊢
+    linarith
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff,
+      primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs,
+      primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower,
+      primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper] at hLower hUpper ⊢
+    linarith
 
 def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff : Fin 17 -> Rat :=
   Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff
@@ -244,9 +282,79 @@ def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff : Fin 17 -> Rat :=
 def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff : Fin 16 -> Rat :=
   primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
 
+def primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Rat :=
+  (95492965855137201461330258023 : Rat) /
+    1000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Rat :=
+  (95492965855137201461330258024 : Rat) /
+    1000000000000000000000000000000
+
 def primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Rat :=
   (190985931710274402922660516047 : Rat) /
     2000000000000000000000000000000
+
+def primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs : Rat :=
+  (1 : Rat) /
+    2000000000000000000000000000000
+
+theorem primaryFiniteRow0Parent0Split100Sub0_nominalScale_mem_tightInterval :
+    (primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Real) <=
+        (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real) ∧
+      (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real) <=
+        (primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Real) := by
+  constructor <;>
+    norm_num [primaryFiniteRow0Parent0Split100Sub0TightScaleLower,
+      primaryFiniteRow0Parent0Split100Sub0TightScaleUpper,
+      primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff]
+
+theorem primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval
+    {scale : Real}
+    (hLower :
+      (primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Real) <= scale)
+    (hUpper :
+      scale <=
+        (primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Real)) :
+    |scale - (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)| <=
+      (primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs : Real) := by
+  rw [abs_le]
+  constructor
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0TightScaleLower,
+      primaryFiniteRow0Parent0Split100Sub0TightScaleUpper,
+      primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff,
+      primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs] at hLower hUpper ⊢
+    linarith
+  · norm_num [primaryFiniteRow0Parent0Split100Sub0TightScaleLower,
+      primaryFiniteRow0Parent0Split100Sub0TightScaleUpper,
+      primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff,
+      primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs] at hLower hUpper ⊢
+    linarith
+
+theorem primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge
+    {scale omegaCenter : Real}
+    (hScaleLower :
+      (primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Real) <= scale)
+    (hScaleUpper :
+      scale <=
+        (primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Real))
+    (hOmegaLower :
+      (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower :
+        Real) <= omegaCenter)
+    (hOmegaUpper :
+      omegaCenter <=
+        (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper :
+          Real)) :
+    |scale - (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)| <=
+        (primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs : Real) ∧
+      |omegaCenter -
+          (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff :
+            Real)| <=
+        (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs :
+          Real) :=
+  ⟨primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval
+      hScaleLower hScaleUpper,
+    primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval
+      hOmegaLower hOmegaUpper⟩
 
 def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff :
     Fin 32 -> Rat :=

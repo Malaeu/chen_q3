@@ -2,17 +2,17 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1`
 
-Status: `fail_closed_nominal_object_coeffs_present_scale_source_bridge_gap`
+Status: `fail_closed_nominal_source_intervals_checked_product_error_budget_gap`
 
-First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP`
+First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP`
 
-Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP`
+Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
 Zero-extension bridge gap: `None`
 
-Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  They do not prove the active raw closed form until the scale/source bridge is checked in the same normalization. Step33A.1-A is not closed.
+Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. Step33A.1-A is not closed.
 
 ## Browser/Proshka Decision
 
@@ -50,7 +50,7 @@ Do not:
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
-- status: `OBJECT_THEOREM_LEAN_CHECKED_NOMINAL_NOT_PROOF_GRADE`
+- status: `OBJECT_THEOREM_LEAN_CHECKED_SOURCE_INTERVALS_CHECKED_PRODUCT_ERROR_OPEN`
 
 ```text
 rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta
@@ -104,20 +104,30 @@ Required coefficient definitions:
 - exists: `True`
 - `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree`: found=`True`, line=`24`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded`: found=`True`, line=`27`
-- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`310`
+- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`418`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf`: found=`True`, line=`37`
 - `rawOmegaATaylorPolynomial_sub_coeff`: found=`True`, line=`46`
 - `rawOmegaTaylorCauchyCoeff`: found=`True`, line=`66`
 - `rawOmegaATaylorPolynomial_mul_coeff`: found=`True`, line=`75`
-- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`284`
-- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`297`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`382`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`411`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`431`
-- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`269`
-- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`278`
-- `primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff`: found=`True`, line=`247`
-- `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff`: found=`True`, line=`229`
+- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`392`
+- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`405`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`490`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`519`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`539`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`377`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`386`
+- `primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff`: found=`True`, line=`293`
+- `primaryFiniteRow0Parent0Split100Sub0TightScaleLower`: found=`True`, line=`285`
+- `primaryFiniteRow0Parent0Split100Sub0TightScaleUpper`: found=`True`, line=`289`
+- `primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs`: found=`True`, line=`297`
+- `primaryFiniteRow0Parent0Split100Sub0_nominalScale_mem_tightInterval`: found=`True`, line=`301`
+- `primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval`: found=`True`, line=`311`
+- `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff`: found=`True`, line=`237`
+- `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower`: found=`True`, line=`229`
+- `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper`: found=`True`, line=`233`
+- `primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs`: found=`True`, line=`242`
+- `primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval`: found=`True`, line=`247`
+- `primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge`: found=`True`, line=`333`
 
 ### chunkTaylorChecker
 
@@ -169,6 +179,7 @@ Required coefficient definitions:
 - `nominalOmegaAnchorCoeffLeanPresent`: `True`
 - `targetObjectCrosswalkLeanPresent`: `True`
 - `nominalObjectBridgePresent`: `True`
+- `nominalSourceIntervalBridgePresent`: `True`
 
 ## Guard
 
@@ -178,6 +189,7 @@ Required coefficient definitions:
 - `paddedDegree45EqualsActiveDegree15BridgePresent`: `True`
 - `checkedCauchyProductBridgePresent`: `True`
 - `checkedNominalObjectBridgePresent`: `True`
+- `checkedNominalSourceIntervalBridgePresent`: `True`
 - `paddedDegree45EqualsActiveDegree15BridgeGap`: `None`
 - `assembledRawDerivCoeffGeneratorFieldPresent`: `False`
 - `residualTaylorCoeffGeneratorFieldPresent`: `False`
@@ -192,7 +204,7 @@ Required coefficient definitions:
 - can use parameterized Lean crosswalk now: `True`
 - can emit object-level crosswalk now: `True`
 - next failure if Cauchy bridge missing: `None`
-- next patch: Prove the same-normalization scale/source bridge: replace the nominal scale and nominal omega anchor by proof-grade interval or exact sources that connect the component product stream to the active raw closed-form derivative coefficient budget.
+- next patch: Propagate the checked scale and omega-anchor interval losses through omegaPrime*shapeSq + omega*shapeSqDeriv and prove the same-normalization product-error budget before setting any generator exact-assembly fields.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16

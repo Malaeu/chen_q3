@@ -64719,6 +64719,12 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_str
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
 
+`bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was retried and again hung after printing its internal Lean command; it was
+interrupted without leaving a successful `q3_check` result.  The direct
+`LEAN_PATH` Lean check above passed.
+
 ## 2026-06-22 Execution Update -- parameterized active-model crosswalk checked
 
 Extended the isolated Lean support file:
@@ -65038,3 +65044,73 @@ q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemb
 was retried and again hung after printing its internal Lean command; it was
 interrupted without leaving a running process.  The direct `LEAN_PATH` Lean
 check above passed.
+
+## Execution Update (2026-06-22) -- nominal source interval bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked source interval objects and bridges:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower
+primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper
+primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs
+primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval
+primaryFiniteRow0Parent0Split100Sub0TightScaleLower
+primaryFiniteRow0Parent0Split100Sub0TightScaleUpper
+primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs
+primaryFiniteRow0Parent0Split100Sub0_nominalScale_mem_tightInterval
+primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval
+primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge
+```
+
+Meaning: Lean now checks the conditional same-normalization interval
+replacement costs for the nominal scale and nominal omega anchor:
+
+```text
+|scale - NominalScaleCoeff| <= NominalScaleErrorAbs
+|omegaCenter - NominalOmegaTaylorAnchorCoeff| <= NominalOmegaTaylorAnchorErrorAbs
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not prove NominalScaleCoeff = ((3 : Real) / 10) / Real.pi.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent, or
+exactCoefficientAssemblyPassed.
+It does not yet propagate the source interval losses through
+omegaPrime*shapeSq + omega*shapeSqDeriv.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_nominal_source_intervals_checked_product_error_budget_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP
+checkedNominalSourceIntervalBridgePresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Propagate the checked scale and omega-anchor interval losses through
+omegaPrime*shapeSq + omega*shapeSqDeriv and prove the same-normalization
+product-error budget before setting any generator exact-assembly fields.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```
