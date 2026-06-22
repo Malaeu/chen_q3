@@ -642,6 +642,42 @@ theorem step33Sub0RealSincDerivMajorantIndex_add_exponent (k m : Nat) :
   unfold step33Sub0RealSincDerivMajorantExponent
   exact Nat.add_sub_of_le (step33Sub0RealSincDerivMajorantIndex_spec k m)
 
+/-- The live exponent plus the derivative order recovers the even total
+degree.  This is the commuted form of the live-index arithmetic used by later
+reindexing lemmas. -/
+theorem step33Sub0RealSincDerivMajorantExponent_add_k (k m : Nat) :
+    step33Sub0RealSincDerivMajorantExponent k m + k =
+      2 * step33Sub0RealSincDerivMajorantIndex k m := by
+  rw [Nat.add_comm]
+  exact step33Sub0RealSincDerivMajorantIndex_add_exponent k m
+
+/-- If an even total degree `2*n` survives the `k`-th derivative, then `n` is
+past the live majorant start index. -/
+theorem step33Sub0RealSincDerivMajorantStart_le_of_k_le_two_mul
+    {k n : Nat} (hkn : k <= 2 * n) :
+    step33Sub0RealSincDerivMajorantStart k <= n := by
+  unfold step33Sub0RealSincDerivMajorantStart
+  omega
+
+/-- Reindex an arbitrary surviving even total degree back to the live majorant
+index. -/
+theorem step33Sub0RealSincDerivMajorantIndex_sub_start
+    {k n : Nat} (hkn : k <= 2 * n) :
+    step33Sub0RealSincDerivMajorantIndex k
+        (n - step33Sub0RealSincDerivMajorantStart k) = n := by
+  unfold step33Sub0RealSincDerivMajorantIndex
+  exact Nat.add_sub_of_le
+    (step33Sub0RealSincDerivMajorantStart_le_of_k_le_two_mul hkn)
+
+/-- Reindex an arbitrary surviving even exponent into the live majorant
+exponent convention. -/
+theorem step33Sub0RealSincDerivMajorantExponent_sub_start
+    {k n : Nat} (hkn : k <= 2 * n) :
+    step33Sub0RealSincDerivMajorantExponent k
+        (n - step33Sub0RealSincDerivMajorantStart k) = 2 * n - k := by
+  unfold step33Sub0RealSincDerivMajorantExponent
+  rw [step33Sub0RealSincDerivMajorantIndex_sub_start hkn]
+
 /-- The `realSinc` scalar `changeOriginSeries` bridge specialized to the live
 indices used by the rational majorant checker. -/
 theorem step33RealSincFormalSeries_changeOriginSeries_apply_ones_live_index
@@ -707,6 +743,17 @@ theorem step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_l
           rw [show step33Sub0RealSincDerivMajorantExponent k m =
               2 * step33Sub0RealSincDerivMajorantIndex k m - k by rfl]
           rw [hnorm]
+
+/-- Odd total degrees vanish even after multiplying by the derivative
+normalization. -/
+theorem step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_odd_index
+    {k n : Nat} (hk : k <= 2 * n + 1) (u : Real) :
+    (Nat.factorial k : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries k (2 * n + 1 - k))
+          (fun _ : Fin (2 * n + 1 - k) => u))
+          (fun _ : Fin k => (1 : Real))) = 0 := by
+  rw [step33RealSincFormalSeries_changeOriginSeries_apply_ones_odd_index hk u]
+  ring
 
 /-- Each live signed `changeOriginSeries` term is covered by the rational
 absolute majorant term on the tiny sub0 interval.  This is the termwise

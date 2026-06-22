@@ -63492,6 +63492,67 @@ Remaining broad gap:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+## 2026-06-22 Execution Update -- realSinc parity reindex arithmetic checked
+
+Latest checked theorem:
+
+```lean
+step33Sub0RealSincDerivMajorantExponent_sub_start
+```
+
+New checked layer:
+
+```text
+For every surviving even total degree `2*n` in the `k`-th derivative tail,
+`step33Sub0RealSincDerivMajorantStart k <= n`, so the term reindexes to the
+live majorant index `m = n - start(k)` and exponent `2*n - k`.
+Odd total degrees vanish after multiplying by the `k!` derivative
+normalization.
+```
+
+New checked objects:
+
+```lean
+step33Sub0RealSincDerivMajorantExponent_add_k
+step33Sub0RealSincDerivMajorantStart_le_of_k_le_two_mul
+step33Sub0RealSincDerivMajorantIndex_sub_start
+step33Sub0RealSincDerivMajorantExponent_sub_start
+step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_odd_index
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+git diff --check:
+  clean for the touched Lean file using local LFS filters disabled; full git
+  diff/status commands still showed the local filter-process hang
+q3_check.sh:
+  attempted via bash, interrupted after bounded wait at Lean invocation
+```
+
+Boundary: this is not yet the rows `1..17` derivative majorant proof.  The
+remaining bridge is now narrower: prove the norm/tsum step from
+`k! * (changeOriginSeries k).sum u` to the live `m`-indexed absolute majorant
+tsum, using the checked odd-zero and even reindex arithmetic.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_NORM_TSUM_REINDEX_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
 ## 2026-06-22 Execution Update -- realSinc formal-series radius checked
 
 Latest checked theorem:

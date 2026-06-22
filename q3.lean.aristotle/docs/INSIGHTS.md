@@ -38902,3 +38902,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincParityReindexArithmeticChecked
+
+- Used the in-app browser / Computer Use for a focused Proshka route check
+  when the `changeOriginSeries` route fork became nontrivial.  The usable
+  advisory remains only route guidance: keep `changeOrigin + iteratedFDeriv`
+  and close parity/reindex locally; it is not proof evidence.
+- Lean now checks the parity/reindex arithmetic support in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorems:
+  `step33Sub0RealSincDerivMajorantExponent_add_k`,
+  `step33Sub0RealSincDerivMajorantStart_le_of_k_le_two_mul`,
+  `step33Sub0RealSincDerivMajorantIndex_sub_start`,
+  `step33Sub0RealSincDerivMajorantExponent_sub_start`, and
+  `step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_odd_index`.
+- Meaning: any even total degree `2*n` that survives the `k`-th derivative is
+  now Lean-reindexed to the live majorant row with `m = n - start(k)`, and
+  odd total degrees are checked zero after the `k!` normalization.
+- Direct Lean validation passed for the touched file; the touched-file hole
+  scan is clean.  `git diff --check` is clean for the touched Lean file with
+  local LFS filters disabled; full Git status/diff and `q3_check.sh` still hit
+  the local filter/check wrapper hang and were interrupted after bounded waits.
+- Boundary: this still does not prove the full rows `1..17` derivative
+  majorant.  The remaining bridge is the norm/tsum step from
+  `k! * (changeOriginSeries k).sum u` to the live `m`-indexed rational
+  majorant tsum, using the checked odd-zero and even reindex arithmetic.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_NORM_TSUM_REINDEX_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
