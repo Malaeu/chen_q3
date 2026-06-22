@@ -58,13 +58,31 @@ P45_BRIDGE_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean"
 )
 LANDING_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
+COMPONENT_ASSEMBLY_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean"
+)
+COMPONENT_ASSEMBLY_LEDGER = (
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json"
+)
+OMEGA_PRIME_PAYLOAD = (
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
+)
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
 NEXT_PAYLOAD_FAILURE = (
     "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP"
+)
+SOURCE_MODEL_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP"
+)
+CENTER_JET_SOURCE_MODEL_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_SOURCE_MODEL_GAP"
+)
+ORDER16_SOURCE_MODEL_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_MODEL_GAP"
 )
 SAMPLED_STATUS = "sampled_candidate_not_lean_proof"
 TARGET_LOWER = "-94119513411/500000000000000000000000000000"
@@ -183,6 +201,35 @@ def coverage_report(segments: list[dict[str, Any]]) -> dict[str, Any]:
     }
 
 
+def line_of_symbol(path: Path, symbol: str) -> int | None:
+    if not path.exists():
+        return None
+    for index, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        if symbol.startswith(("def ", "theorem ", "structure ")):
+            stripped = line.strip()
+            if (
+                stripped == symbol
+                or stripped.startswith(symbol + " ")
+                or stripped.startswith(symbol + " :")
+                or stripped.startswith(symbol + " (")
+            ):
+                return index
+            continue
+        if symbol in line:
+            return index
+    return None
+
+
+def symbol_ref(file_name: str, symbol: str) -> dict[str, Any]:
+    path = ROOT / file_name
+    return {
+        "file": file_name,
+        "symbol": symbol,
+        "line": line_of_symbol(path, symbol),
+        "exists": path.exists(),
+    }
+
+
 def build_report(segmented_path: Path) -> dict[str, Any]:
     segmented = load_json(segmented_path)
     segments = normalize_segments(segmented)
@@ -204,6 +251,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             FIRST_FAILURE,
             "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP",
             NEXT_PAYLOAD_FAILURE,
+            SOURCE_MODEL_FAILURE,
+            CENTER_JET_SOURCE_MODEL_FAILURE,
+            ORDER16_SOURCE_MODEL_FAILURE,
             "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_ROWS_MISSING",
             "STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_ROWS_MISSING",
             "STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_ROWS_MISSING",
@@ -223,6 +273,14 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "highOrderOrder16RowsPresent": False,
             "highOrderHornerRangeRowsPresent": False,
             "highOrderTargetBudgetRowsPresent": False,
+            "wholeExpressionSourceModelPresent": False,
+            "centerJetSourceModelPresent": False,
+            "order16SourceModelPresent": False,
+            "omegaPrimePayloadReusableForWholeExpression": False,
+            "residualTaylorCoeffPayloadPresent": (
+                ROOT / COMPONENT_ASSEMBLY_PAYLOAD_FILE
+            ).exists(),
+            "componentAssemblyLedgerPresent": (ROOT / COMPONENT_ASSEMBLY_LEDGER).exists(),
             "proofSafeClosedFields": 0,
             "combinedReceiverCheckedInLean": True,
             "combinedExpressionDefinedInLean": True,
@@ -331,6 +389,120 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 HIGH_ORDER_TO_RESIDUAL,
             ],
         },
+        "sourceModelInventory": {
+            "status": "fail_closed_source_model_gap",
+            "firstSourceFailure": SOURCE_MODEL_FAILURE,
+            "centerJetFailure": CENTER_JET_SOURCE_MODEL_FAILURE,
+            "order16Failure": ORDER16_SOURCE_MODEL_FAILURE,
+            "targetFunction": {
+                "meaning": (
+                    "whole expression, not a component: residualTaylor degree-45 "
+                    "polynomial plus ScaledCancellationRhs"
+                ),
+                "definition": symbol_ref(COMBINED_FILE, TARGET_EXPR),
+                "formula": (
+                    "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) "
+                    "ResidualTaylorCoeff eta + ScaledCancellationRhs eta"
+                ),
+            },
+            "rationalPolynomialPart": {
+                "status": "present_but_not_sufficient",
+                "degree": 45,
+                "definition": symbol_ref(
+                    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
+                    "def primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff",
+                ),
+                "payload": symbol_ref(
+                    COMPONENT_ASSEMBLY_PAYLOAD_FILE,
+                    "def primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffPayload",
+                ),
+                "payloadEquality": symbol_ref(
+                    COMPONENT_ASSEMBLY_PAYLOAD_FILE,
+                    "theorem primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq",
+                ),
+                "whyNotEnough": (
+                    "This materializes the algebraic residual polynomial, but "
+                    "the high-order Valid object needs center jets and a uniform "
+                    "16th-derivative bound for the whole combined expression."
+                ),
+            },
+            "scaledCancellationRhs": {
+                "status": "source_model_missing",
+                "definition": symbol_ref(
+                    NORM_RECEIVER_FILE,
+                    "def primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs",
+                ),
+                "activeScale": symbol_ref(
+                    NORM_RECEIVER_FILE,
+                    "def primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff",
+                ),
+                "formula": (
+                    "ActiveScaleCoeff * ComponentProductCancellationResidual "
+                    "+ (ActiveScaleCoeff - NominalScaleCoeff) * ComponentProductNominal"
+                ),
+                "normalizationHazard": (
+                    "ActiveScaleCoeff is ((3/10)/Real.pi), while the residual "
+                    "polynomial payload is rational and nominal-scale based."
+                ),
+                "missing": [
+                    "proof-grade center jets j=0..15 for ScaledCancellationRhs in the combined expression",
+                    "proof-grade uniform order16 bound for ScaledCancellationRhs in the combined expression",
+                    "same-surface addition with the residualTaylor polynomial in the high-order receiver normalization",
+                ],
+            },
+            "reusableButNotSufficient": {
+                "omegaPrimePayload": {
+                    "path": OMEGA_PRIME_PAYLOAD,
+                    "exists": (ROOT / OMEGA_PRIME_PAYLOAD).exists(),
+                    "status": "proof_grade_for_omega_prime_only",
+                    "whyNotEnough": (
+                        "It certifies step22OmegaArchWeightDerivClosedForm, "
+                        "not the whole CombinedCancellationIntervalExpr."
+                    ),
+                },
+                "hornerRangeChecker": {
+                    "definition": symbol_ref(
+                        "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean",
+                        "structure Step33Sub0CombinedCancellationHornerRangeCert",
+                    ),
+                    "status": "ready_after_coefficients",
+                    "whyNotEnough": (
+                        "It consumes a degree-15 polynomial range; it does not "
+                        "produce center jets or order16 source bounds."
+                    ),
+                },
+                "componentAssemblyLedger": {
+                    "path": COMPONENT_ASSEMBLY_LEDGER,
+                    "exists": (ROOT / COMPONENT_ASSEMBLY_LEDGER).exists(),
+                    "status": "algebraic_coefficients_checked_remainder_source_open",
+                    "whyNotEnough": (
+                        "It records exact assembly/payload facts but still marks "
+                        "component remainder/source-model closure open."
+                    ),
+                },
+            },
+            "requiredBridgeShape": [
+                (
+                    "forall j : Fin 16, norm(iteratedDeriv j "
+                    "CombinedCancellationIntervalExpr center / j! - coeff[j]) "
+                    "<= coeffErrorAbs[j]"
+                ),
+                (
+                    "forall eta in Icc 0 (1/10), norm(iteratedDeriv 16 "
+                    "CombinedCancellationIntervalExpr eta) <= order16Abs"
+                ),
+                (
+                    "sum_j coeffErrorAbs[j] * radius^j + "
+                    "order16Abs * radius^16 / 16! <= remainderAbs"
+                ),
+                "Horner range for rawOmegaATaylorPolynomial 15 center coeff",
+                "target lower/upper budget after subtracting/adding remainderAbs",
+            ],
+            "nextPatchRecommendation": (
+                "Build a whole-expression source-model bridge before emitting "
+                "the concrete HighOrderTaylorCert payload rows."
+            ),
+        },
         "candidateSegmentSource": {
             "path": str(segmented_path),
             "exists": segmented is not None,
@@ -372,12 +544,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "nextImplementablePatch": {
             "recommendation": (
+                "build the whole-expression source-model bridge, then "
                 "generate/prove the concrete "
-                "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload: "
-                "center jets j=0..15, uniform order16Abs, degree-15 Horner range, "
-                "and exact target-budget inequalities"
+                "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload"
             ),
-            "firstFailureIfMissing": NEXT_PAYLOAD_FAILURE,
+            "firstFailureIfMissing": SOURCE_MODEL_FAILURE,
             "leanPayloadTarget": (
                 "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean"
             ),
@@ -389,6 +560,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "do not build C1 point-separation first",
                 "do not use sampled/probe rows",
                 "do not revive component triangle/product split",
+                "do not reuse OmegaPrime payload as a certificate for the whole expression",
                 "do not mark Valid/finalBudgetPassed before Lean-checked rows",
             ],
         },
@@ -401,6 +573,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),
             LANDING_FILE: file_hash(ROOT / LANDING_FILE),
+            COMPONENT_ASSEMBLY_PAYLOAD_FILE: file_hash(ROOT / COMPONENT_ASSEMBLY_PAYLOAD_FILE),
+            COMPONENT_ASSEMBLY_LEDGER: file_hash(ROOT / COMPONENT_ASSEMBLY_LEDGER),
+            OMEGA_PRIME_PAYLOAD: file_hash(ROOT / OMEGA_PRIME_PAYLOAD),
             str(segmented_path.relative_to(ROOT)): file_hash(segmented_path),
         },
     }
@@ -462,6 +637,42 @@ def render_md(report: dict[str, Any]) -> str:
     )
     for key, value in report["proofStatus"].items():
         lines.append(f"- {key}: `{value}`")
+    lines.extend(["", "## Source Model Inventory", ""])
+    source_model = report["sourceModelInventory"]
+    lines.extend(
+        [
+            f"- status: `{source_model['status']}`",
+            f"- firstSourceFailure: `{source_model['firstSourceFailure']}`",
+            f"- centerJetFailure: `{source_model['centerJetFailure']}`",
+            f"- order16Failure: `{source_model['order16Failure']}`",
+            "",
+            "Target function:",
+            f"- meaning: `{source_model['targetFunction']['meaning']}`",
+            f"- formula: `{source_model['targetFunction']['formula']}`",
+            f"- definition: `{source_model['targetFunction']['definition']}`",
+            "",
+            "Rational polynomial part:",
+        ]
+    )
+    for key, value in source_model["rationalPolynomialPart"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.extend(["", "ScaledCancellationRhs:", ""])
+    for key, value in source_model["scaledCancellationRhs"].items():
+        if isinstance(value, list):
+            lines.append(f"- {key}:")
+            for item in value:
+                lines.append(f"  - {item}")
+        else:
+            lines.append(f"- {key}: `{value}`")
+    lines.extend(["", "Reusable but not sufficient:", ""])
+    for key, value in source_model["reusableButNotSufficient"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.extend(["", "Required bridge shape:", ""])
+    for item in source_model["requiredBridgeShape"]:
+        lines.append(f"- {item}")
+    lines.append(
+        f"- nextPatchRecommendation: `{source_model['nextPatchRecommendation']}`"
+    )
     lines.extend(["", "## Candidate Segments", ""])
     if report["segments"]:
         for segment in report["segments"]:

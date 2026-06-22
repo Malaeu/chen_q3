@@ -37,9 +37,9 @@ latest_local_theorem_2026_06_22_combined_certificate_checker: Step33Sub0Combined
 latest_local_file_2026_06_22_combined_certificate_ledger: q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
 latest_local_file_2026_06_22_combined_c1_source: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1Source.lean
 latest_local_theorem_2026_06_22_combined_c1_source: Step33Sub0CombinedCancellationC1SourceCert; Step33Sub0CombinedCancellationC1SourceCert.Valid; Step33Sub0CombinedCancellationC1SourceCert.concrete_poly_const; Step33Sub0CombinedCancellationC1SourceCert.Valid.remainder_bound; primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_c1_source; primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_c1_source; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_c1_source
-latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2
+latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3
 latest_payload_status_2026_06_22: fail_closed_missing_high_order_valid_payload
-latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP
 latest_first_failure_2026_06_22: STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
 latest_closed_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_3_4_5_6_7_8_9_10_REMAINDER_WIDTH_FAIL
 latest_closed_success_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_3_4_5_6_7_8_9_10_11_LOCAL_WIDTH_PASS
@@ -68,6 +68,10 @@ latest_route_level_gap_2026_06_22_after_high_order_payload_adapter: STEP33_A1_SU
 latest_payload_ledger_2026_06_22_high_order_v2: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
 latest_payload_ledger_status_2026_06_22_high_order_v2: fail_closed_missing_high_order_valid_payload
 latest_next_patch_2026_06_22_high_order_v2: generate/prove concrete `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` rows: center jets 0..15, uniform order16Abs, degree-15 Horner range, and exact target-budget inequalities
+latest_payload_ledger_2026_06_22_high_order_v3: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+latest_payload_ledger_status_2026_06_22_high_order_v3: fail_closed_missing_high_order_valid_payload
+latest_source_model_gap_2026_06_22_high_order_v3: STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP
+latest_next_patch_2026_06_22_high_order_v3: build whole-expression source-model bridge for combined center jets/order16 before emitting concrete `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` rows
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -36334,4 +36338,59 @@ Current exact gap:
 
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+## 2026-06-22 Current EOF State -- high-order ledger v3 source-model gap
+
+Regenerated the combined-cancellation fail-closed ledger as schema v3:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3
+status = fail_closed_missing_high_order_valid_payload
+firstFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+sourceModelFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP
+proofSafeClosedFields = 0
+omegaPrimePayloadReusableForWholeExpression = false
+```
+
+The new source-model inventory records the exact local obstruction:
+
+```text
+CombinedCancellationIntervalExpr =
+  residualTaylor degree-45 rational polynomial
+  + ScaledCancellationRhs
+
+ScaledCancellationRhs =
+  ActiveScaleCoeff * ComponentProductCancellationResidual
+  + (ActiveScaleCoeff - NominalScaleCoeff) * ComponentProductNominal
+
+ActiveScaleCoeff = ((3/10) / Real.pi)
+```
+
+The proof-grade OmegaPrime Taylor payload is alive only for
+`step22OmegaArchWeightDerivClosedForm`.  It cannot be reused as a certificate
+for the whole `CombinedCancellationIntervalExpr` without a new same-surface
+source-model bridge.
+
+Validation this update:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+JSON invariant check for schema/sourceModelFailure/proofSafeClosedFields/symbol lines
+git diff --check on touched ledger files
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP
+```
+
+Next exact patch:
+
+```text
+Build a whole-expression source-model bridge proving center-jet rows 0..15
+and a uniform order-16 bound for `CombinedCancellationIntervalExpr` in the
+normalization consumed by `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
 ```

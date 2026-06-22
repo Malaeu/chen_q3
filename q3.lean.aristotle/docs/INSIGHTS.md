@@ -41169,3 +41169,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   closure and not Step33A.1-A closure.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- HighOrderCombinedLedgerV3SourceModelGap
+
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json`
+  and `.md` with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3`.
+- The ledger now records source-model inventory for the whole target:
+  `CombinedCancellationIntervalExpr = residualTaylor P45 polynomial +
+  ScaledCancellationRhs`.
+- Exact local definitions found:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr` in
+  `PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean`,
+  `primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs` and
+  `primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff` in
+  `PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`,
+  and `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff` in
+  `PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Boundary: the proof-grade OmegaPrime payload is reusable as a component fact
+  only.  It certifies `step22OmegaArchWeightDerivClosedForm`, not the whole
+  combined expression, because `ScaledCancellationRhs` includes the active
+  `((3/10)/Real.pi)` scale and component residual terms.
+- Validation for this update: Python syntax check, ledger regeneration, JSON
+  invariant check for schema/sourceModelFailure/proofSafeClosedFields/symbol
+  lines, and `git diff --check` on touched ledger files.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`.
+- Next exact patch:
+  build the whole-expression source-model bridge for center jets `0..15` and
+  a uniform order-16 bound in the normalization consumed by
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.

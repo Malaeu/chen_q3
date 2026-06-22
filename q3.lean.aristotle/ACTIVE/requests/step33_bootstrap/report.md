@@ -68800,3 +68800,70 @@ Current exact gap:
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
+
+## Execution Update (2026-06-22) -- high-order ledger v3 source-model gap
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```
+
+Current ledger status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3
+routeId = STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR
+status = fail_closed_missing_high_order_valid_payload
+firstFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+sourceModelFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP
+proofSafeClosedFields = 0
+wholeExpressionSourceModelPresent = false
+omegaPrimePayloadReusableForWholeExpression = false
+```
+
+The v3 inventory distinguishes the available pieces from the missing bridge:
+
+```text
+present:
+  residualTaylor degree-45 rational coefficient payload
+  high-order receiver/adapter
+  Horner range checker
+  proof-grade OmegaPrime Taylor payload for OmegaPrime only
+
+missing:
+  same-surface source model for CombinedCancellationIntervalExpr
+  center jets 0..15 for the whole expression
+  uniform order-16 bound for the whole expression
+```
+
+Boundary:
+
+```text
+This update is still ledger-only.  It does not instantiate
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid and does not close
+Step33A.1-A.
+```
+
+Validation:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+JSON invariant check for schema/sourceModelFailure/proofSafeClosedFields/symbol lines
+git diff --check on touched ledger files
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP
+```
+
+Next exact patch:
+
+```text
+Build a whole-expression source-model bridge for the combined expression before
+emitting concrete HighOrderTaylorCert rows.
+```

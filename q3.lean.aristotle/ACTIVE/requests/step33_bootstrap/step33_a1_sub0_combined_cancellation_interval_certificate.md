@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2`
+- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3`
 - route: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR`
 - status: `fail_closed_missing_high_order_valid_payload`
 - first failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
@@ -89,6 +89,12 @@ Combined expression:
 - highOrderOrder16RowsPresent: `False`
 - highOrderHornerRangeRowsPresent: `False`
 - highOrderTargetBudgetRowsPresent: `False`
+- wholeExpressionSourceModelPresent: `False`
+- centerJetSourceModelPresent: `False`
+- order16SourceModelPresent: `False`
+- omegaPrimePayloadReusableForWholeExpression: `False`
+- residualTaylorCoeffPayloadPresent: `True`
+- componentAssemblyLedgerPresent: `True`
 - proofSafeClosedFields: `0`
 - combinedReceiverCheckedInLean: `True`
 - combinedExpressionDefinedInLean: `True`
@@ -98,6 +104,53 @@ Combined expression:
 - segmentCoveragePassedExactRational: `True`
 - allSegmentsBudgetPassedExactRational: `True`
 - allSegmentsProofGrade: `False`
+
+## Source Model Inventory
+
+- status: `fail_closed_source_model_gap`
+- firstSourceFailure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`
+- centerJetFailure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_SOURCE_MODEL_GAP`
+- order16Failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_MODEL_GAP`
+
+Target function:
+- meaning: `whole expression, not a component: residualTaylor degree-45 polynomial plus ScaledCancellationRhs`
+- formula: `rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta + ScaledCancellationRhs eta`
+- definition: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr', 'line': 29, 'exists': True}`
+
+Rational polynomial part:
+- status: `present_but_not_sufficient`
+- degree: `45`
+- definition: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean', 'symbol': 'def primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff', 'line': 1142, 'exists': True}`
+- payload: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean', 'symbol': 'def primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffPayload', 'line': 74, 'exists': True}`
+- payloadEquality: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean', 'symbol': 'theorem primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq', 'line': 128, 'exists': True}`
+- whyNotEnough: `This materializes the algebraic residual polynomial, but the high-order Valid object needs center jets and a uniform 16th-derivative bound for the whole combined expression.`
+
+ScaledCancellationRhs:
+
+- status: `source_model_missing`
+- definition: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean', 'symbol': 'def primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs', 'line': 34, 'exists': True}`
+- activeScale: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean', 'symbol': 'def primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff', 'line': 31, 'exists': True}`
+- formula: `ActiveScaleCoeff * ComponentProductCancellationResidual + (ActiveScaleCoeff - NominalScaleCoeff) * ComponentProductNominal`
+- normalizationHazard: `ActiveScaleCoeff is ((3/10)/Real.pi), while the residual polynomial payload is rational and nominal-scale based.`
+- missing:
+  - proof-grade center jets j=0..15 for ScaledCancellationRhs in the combined expression
+  - proof-grade uniform order16 bound for ScaledCancellationRhs in the combined expression
+  - same-surface addition with the residualTaylor polynomial in the high-order receiver normalization
+
+Reusable but not sufficient:
+
+- omegaPrimePayload: `{'path': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json', 'exists': True, 'status': 'proof_grade_for_omega_prime_only', 'whyNotEnough': 'It certifies step22OmegaArchWeightDerivClosedForm, not the whole CombinedCancellationIntervalExpr.'}`
+- hornerRangeChecker: `{'definition': {'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean', 'symbol': 'structure Step33Sub0CombinedCancellationHornerRangeCert', 'line': 63, 'exists': True}, 'status': 'ready_after_coefficients', 'whyNotEnough': 'It consumes a degree-15 polynomial range; it does not produce center jets or order16 source bounds.'}`
+- componentAssemblyLedger: `{'path': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json', 'exists': True, 'status': 'algebraic_coefficients_checked_remainder_source_open', 'whyNotEnough': 'It records exact assembly/payload facts but still marks component remainder/source-model closure open.'}`
+
+Required bridge shape:
+
+- forall j : Fin 16, norm(iteratedDeriv j CombinedCancellationIntervalExpr center / j! - coeff[j]) <= coeffErrorAbs[j]
+- forall eta in Icc 0 (1/10), norm(iteratedDeriv 16 CombinedCancellationIntervalExpr eta) <= order16Abs
+- sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
+- Horner range for rawOmegaATaylorPolynomial 15 center coeff
+- target lower/upper budget after subtracting/adding remainderAbs
+- nextPatchRecommendation: `Build a whole-expression source-model bridge before emitting the concrete HighOrderTaylorCert payload rows.`
 
 ## Candidate Segments
 
@@ -167,8 +220,8 @@ Must not use:
 
 ## Next Implementable Patch
 
-- recommendation: `generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload: center jets j=0..15, uniform order16Abs, degree-15 Horner range, and exact target-budget inequalities`
-- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- recommendation: `build the whole-expression source-model bridge, then generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload`
+- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`
 - leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
 - checkerTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
 - remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
@@ -176,6 +229,7 @@ Must not use:
   - do not build C1 point-separation first
   - do not use sampled/probe rows
   - do not revive component triangle/product split
+  - do not reuse OmegaPrime payload as a certificate for the whole expression
   - do not mark Valid/finalBudgetPassed before Lean-checked rows
 
 ## Failure Codes
@@ -183,6 +237,9 @@ Must not use:
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_SOURCE_MODEL_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_MODEL_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_ROWS_MISSING`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_ROWS_MISSING`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_ROWS_MISSING`
@@ -201,4 +258,7 @@ Must not use:
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`: `8554b282c60d9c25`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`: `aabf02168d6d50fd`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`: `3074c575ace73694`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean`: `b143a7bacb1c90fd`
+- `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json`: `83da8ec8067da8a7`
+- `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json`: `d76ad77551996b39`
 - `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json`: `df8cb8dff74f605e`
