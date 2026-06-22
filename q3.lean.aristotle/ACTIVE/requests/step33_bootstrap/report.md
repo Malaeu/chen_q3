@@ -65499,3 +65499,83 @@ python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_componen
 python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
+## Execution Update (2026-06-22) -- nominal factor abs budgets checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked nominal polynomial absolute budget objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget
+primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget
+primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget
+```
+
+New Lean-checked budget wrappers:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaPrime_nominal_abs_budget
+primaryFiniteRow0Parent0Split100Sub0_omega_nominal_abs_budget
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_nominal_abs_budget
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget
+```
+
+Meaning: for `|eta - 1/20| <= 1/20`, each nominal factor polynomial is
+bounded by its same-normalization `sum |coeff_i| (1/20)^i` budget in the
+active `rawOmegaATaylorPolynomial` convention.
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not prove the product abs/error budget comparisons.
+It does not prove the final scale/product budget comparison.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_nominal_factor_abs_budgets_checked_product_budget_comparison_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_BUDGET_COMPARISON_GAP
+checkedNominalFactorAbsBudgetsPresent = true
+guardPasses = false
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+LEAN_PATH=".lake/build/lib/lean:...:.lake/packages/plausible/.lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+rg -n "sorry|exact\\?|admit|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+git diff --check -- <touched files>
+bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+`lake env lean` was attempted first, but Lake environment setup hung without
+diagnostic output; the direct Lean invocation with the complete local
+`.lake` dependency path passed.  `q3_check.sh` is not executable directly in
+this checkout, and the explicit `bash` invocation again hung after printing its
+internal Lean command, so it was interrupted without a successful `q3_check`
+result.  The in-app browser channel was also inspected and is on the Pro/RH
+session; no Proshka/Louise message was sent because this patch had no route
+fork.
+
+Next exact patch:
+
+```text
+Prove the same-normalization product abs/error budget comparisons using the
+checked nominal polynomial absolute budgets for omegaPrime, shapeSq, omega,
+and shapeSqDeriv, then prove the final scale/product budget comparison.
+Only after that may generator exact-assembly fields be reconsidered.
+```

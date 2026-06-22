@@ -2,17 +2,17 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1`
 
-Status: `fail_closed_factor_error_witnesses_checked_nominal_abs_budget_gap`
+Status: `fail_closed_nominal_factor_abs_budgets_checked_product_budget_comparison_gap`
 
-First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP`
+First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_BUDGET_COMPARISON_GAP`
 
-Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP`
+Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_BUDGET_COMPARISON_GAP`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
 Zero-extension bridge gap: `None`
 
-Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below; nominal factor absolute budgets and final arithmetic comparisons remain separate. Step33A.1-A is not closed.
+Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below.  Nominal factor absolute budgets are checked if recorded in the guard below; product budget comparisons and final arithmetic comparisons remain separate. Step33A.1-A is not closed.
 
 ## Browser/Proshka Decision
 
@@ -50,7 +50,7 @@ Do not:
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
-- status: `OBJECT_THEOREM_LEAN_CHECKED_FACTOR_ERROR_WITNESSES_CHECKED_NOMINAL_ABS_BUDGET_OPEN`
+- status: `OBJECT_THEOREM_LEAN_CHECKED_NOMINAL_ABS_BUDGETS_CHECKED_PRODUCT_BUDGET_OPEN`
 
 ```text
 rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta
@@ -104,18 +104,18 @@ Required coefficient definitions:
 - exists: `True`
 - `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree`: found=`True`, line=`25`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded`: found=`True`, line=`28`
-- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`961`
+- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`1029`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf`: found=`True`, line=`38`
 - `rawOmegaATaylorPolynomial_sub_coeff`: found=`True`, line=`47`
 - `rawOmegaTaylorCauchyCoeff`: found=`True`, line=`67`
 - `rawOmegaATaylorPolynomial_mul_coeff`: found=`True`, line=`76`
-- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`935`
-- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`948`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`1033`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`1062`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`1082`
-- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`920`
-- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`929`
+- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`1003`
+- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`1016`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`1101`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`1130`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`1150`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`988`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`997`
 - `primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff`: found=`True`, line=`493`
 - `primaryFiniteRow0Parent0Split100Sub0TightScaleLower`: found=`True`, line=`482`
 - `primaryFiniteRow0Parent0Split100Sub0TightScaleUpper`: found=`True`, line=`486`
@@ -135,12 +135,20 @@ Required coefficient definitions:
 - `primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge`: found=`True`, line=`665`
 - `primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge`: found=`True`, line=`709`
 - `primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget`: found=`True`, line=`794`
-- `primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs`: found=`True`, line=`805`
-- `primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge`: found=`True`, line=`820`
+- `primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs`: found=`True`, line=`873`
+- `primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge`: found=`True`, line=`888`
 - `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_factor_error`: found=`True`, line=`288`
 - `primaryFiniteRow0Parent0Split100Sub0_omega_factor_error`: found=`True`, line=`305`
 - `primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error`: found=`True`, line=`432`
 - `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_factor_error`: found=`True`, line=`458`
+- `primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget`: found=`True`, line=`805`
+- `primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget`: found=`True`, line=`810`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget`: found=`True`, line=`815`
+- `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget`: found=`True`, line=`820`
+- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_nominal_abs_budget`: found=`True`, line=`825`
+- `primaryFiniteRow0Parent0Split100Sub0_omega_nominal_abs_budget`: found=`True`, line=`837`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSq_nominal_abs_budget`: found=`True`, line=`849`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget`: found=`True`, line=`861`
 
 ### endpointHighOrderSupport
 
@@ -204,6 +212,7 @@ Required coefficient definitions:
 - `productComponentWitnessBridgePresent`: `True`
 - `productFactorWitnessInterfacePresent`: `True`
 - `factorErrorWitnessesPresent`: `True`
+- `nominalFactorAbsBudgetsPresent`: `True`
 
 ## Guard
 
@@ -219,6 +228,7 @@ Required coefficient definitions:
 - `checkedProductComponentWitnessBridgePresent`: `True`
 - `checkedProductFactorWitnessInterfacePresent`: `True`
 - `checkedFactorErrorWitnessesPresent`: `True`
+- `checkedNominalFactorAbsBudgetsPresent`: `True`
 - `paddedDegree45EqualsActiveDegree15BridgeGap`: `None`
 - `assembledRawDerivCoeffGeneratorFieldPresent`: `False`
 - `residualTaylorCoeffGeneratorFieldPresent`: `False`
@@ -233,7 +243,7 @@ Required coefficient definitions:
 - can use parameterized Lean crosswalk now: `True`
 - can emit object-level crosswalk now: `True`
 - next failure if Cauchy bridge missing: `None`
-- next patch: Generate or import concrete same-normalization nominal polynomial absolute budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv, then prove the product abs/error budget comparisons and the final scale/product budget comparison.  Only after that may generator exact-assembly fields be reconsidered.
+- next patch: Prove the same-normalization product abs/error budget comparisons using the checked nominal polynomial absolute budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv, then prove the final scale/product budget comparison.  Only after that may generator exact-assembly fields be reconsidered.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16

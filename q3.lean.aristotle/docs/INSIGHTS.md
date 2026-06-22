@@ -39658,3 +39658,39 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: generate/import concrete nominal polynomial absolute
   budgets for `omegaPrime`, `shapeSq`, `omega`, and `shapeSqDeriv`, then prove
   the product abs/error and final scale/product budget comparisons.
+
+## Insight (2026-06-22, Step33A.1-A) -- NominalFactorAbsBudgetsChecked
+
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+  with same-normalization nominal polynomial absolute budget definitions for
+  `omegaPrime`, `omega`, `shapeSq`, and `shapeSqDeriv`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_nominal_abs_budget`,
+  `primaryFiniteRow0Parent0Split100Sub0_omega_nominal_abs_budget`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_nominal_abs_budget`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget`.
+- These wrappers spend only the local
+  `abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius` receiver and
+  prove bounds of the form `|P_factor(eta)| <= sum |coeff_i| (1/20)^i` under
+  `|eta - 1/20| <= 1/20`.
+- Regenerated component ledger status:
+  `fail_closed_nominal_factor_abs_budgets_checked_product_budget_comparison_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_BUDGET_COMPARISON_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  Product abs/error budget comparisons and the final scale/product comparison
+  remain missing; generator exact-assembly fields remain false.
+- Validation: direct Lean passed with the complete local `.lake` dependency
+  path, generator byte-compile/regeneration and JSON parse passed, touched
+  Lean/script marker scan was clean, and `git diff --check` passed.  `lake env
+  lean` was attempted first but hung during environment setup, so it was
+  interrupted without a successful result.  `q3_check.sh` is not executable
+  directly in this checkout, and the explicit `bash` invocation again hung
+  after printing its internal Lean command, so it was interrupted without a
+  successful `q3_check` result.
+- Browser status: the in-app browser is connected to the Pro/RH session, but no
+  message was sent because this patch had no route fork.
+- Next exact patch: prove the same-normalization product abs/error budget
+  comparisons using the checked nominal budgets, then prove the final
+  scale/product budget comparison before reconsidering exact-assembly fields.

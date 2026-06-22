@@ -68,6 +68,10 @@ STATUS_AFTER_PRODUCT_FACTOR_INTERFACE = (
 STATUS_AFTER_FACTOR_ERROR_WITNESSES = (
     "fail_closed_factor_error_witnesses_checked_nominal_abs_budget_gap"
 )
+STATUS_AFTER_NOMINAL_FACTOR_ABS_BUDGETS = (
+    "fail_closed_nominal_factor_abs_budgets_checked_"
+    "product_budget_comparison_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -90,6 +94,9 @@ PRODUCT_FACTOR_ERROR_NOMINAL_ABS_WITNESS_GAP = (
 )
 NOMINAL_FACTOR_ABS_BUDGET_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP"
+)
+PRODUCT_BUDGET_COMPARISON_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_BUDGET_COMPARISON_GAP"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -200,6 +207,30 @@ SHAPESQ_FACTOR_ERROR = (
 )
 SHAPESQ_DERIV_FACTOR_ERROR = (
     "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_factor_error"
+)
+OMEGA_PRIME_NOMINAL_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget"
+)
+OMEGA_NOMINAL_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget"
+)
+SHAPESQ_NOMINAL_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget"
+)
+SHAPESQ_DERIV_NOMINAL_ABS_BUDGET = (
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget"
+)
+OMEGA_PRIME_NOMINAL_ABS_BUDGET_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_nominal_abs_budget"
+)
+OMEGA_NOMINAL_ABS_BUDGET_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_omega_nominal_abs_budget"
+)
+SHAPESQ_NOMINAL_ABS_BUDGET_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSq_nominal_abs_budget"
+)
+SHAPESQ_DERIV_NOMINAL_ABS_BUDGET_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget"
 )
 OMEGA_PRIME_PUBLIC_BOUND = (
     "omegaPrimeGeneratedRemainderCert_bound_public"
@@ -378,6 +409,23 @@ def has_checked_factor_error_witnesses(
     )
 
 
+def has_checked_nominal_factor_abs_budgets(assembly_text: str) -> bool:
+    required = [
+        OMEGA_PRIME_NOMINAL_ABS_BUDGET,
+        OMEGA_NOMINAL_ABS_BUDGET,
+        SHAPESQ_NOMINAL_ABS_BUDGET,
+        SHAPESQ_DERIV_NOMINAL_ABS_BUDGET,
+        OMEGA_PRIME_NOMINAL_ABS_BUDGET_THEOREM,
+        OMEGA_NOMINAL_ABS_BUDGET_THEOREM,
+        SHAPESQ_NOMINAL_ABS_BUDGET_THEOREM,
+        SHAPESQ_DERIV_NOMINAL_ABS_BUDGET_THEOREM,
+    ]
+    return all(
+        symbol_pattern(symbol).search(assembly_text) is not None
+        for symbol in required
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -471,6 +519,10 @@ def build_report() -> dict[str, Any]:
             assembly_text, endpoint_support_text
         )
     )
+    nominal_factor_abs_budgets_present = bool(
+        factor_error_witnesses_present
+        and has_checked_nominal_factor_abs_budgets(assembly_text)
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -503,6 +555,9 @@ def build_report() -> dict[str, Any]:
                 product_factor_witness_interface_present
             ),
             "factorErrorWitnessesPresent": factor_error_witnesses_present,
+            "nominalFactorAbsBudgetsPresent": (
+                nominal_factor_abs_budgets_present
+            ),
         }
     )
     guard_passes = bool(
@@ -517,6 +572,8 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_NOMINAL_FACTOR_ABS_BUDGETS
+            if nominal_factor_abs_budgets_present
             else STATUS_AFTER_FACTOR_ERROR_WITNESSES
             if factor_error_witnesses_present
             else STATUS_AFTER_PRODUCT_FACTOR_INTERFACE
@@ -538,6 +595,8 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else PRODUCT_BUDGET_COMPARISON_GAP
+            if nominal_factor_abs_budgets_present
             else NOMINAL_FACTOR_ABS_BUDGET_GAP
             if factor_error_witnesses_present
             else PRODUCT_FACTOR_ERROR_NOMINAL_ABS_WITNESS_GAP
@@ -557,6 +616,8 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else PRODUCT_BUDGET_COMPARISON_GAP
+            if nominal_factor_abs_budgets_present
             else NOMINAL_FACTOR_ABS_BUDGET_GAP
             if factor_error_witnesses_present
             else PRODUCT_FACTOR_ERROR_NOMINAL_ABS_WITNESS_GAP
@@ -594,8 +655,9 @@ def build_report() -> dict[str, Any]:
             "below; concrete factor witnesses remain separate.  The factor "
             "absolute-value interface is checked if recorded in the guard "
             "below.  Concrete factor-error witnesses are checked if recorded "
-            "in the guard below; nominal factor absolute budgets and final "
-            "arithmetic comparisons remain separate. "
+            "in the guard below.  Nominal factor absolute budgets are checked "
+            "if recorded in the guard below; product budget comparisons and "
+            "final arithmetic comparisons remain separate. "
             "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
@@ -642,6 +704,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_NOMINAL_ABS_BUDGETS_CHECKED_PRODUCT_BUDGET_OPEN"
+                if nominal_factor_abs_budgets_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_FACTOR_ERROR_WITNESSES_CHECKED_NOMINAL_ABS_BUDGET_OPEN"
                 if factor_error_witnesses_present
                 else
@@ -768,6 +833,14 @@ def build_report() -> dict[str, Any]:
                     OMEGA_FACTOR_ERROR,
                     SHAPESQ_FACTOR_ERROR,
                     SHAPESQ_DERIV_FACTOR_ERROR,
+                    OMEGA_PRIME_NOMINAL_ABS_BUDGET,
+                    OMEGA_NOMINAL_ABS_BUDGET,
+                    SHAPESQ_NOMINAL_ABS_BUDGET,
+                    SHAPESQ_DERIV_NOMINAL_ABS_BUDGET,
+                    OMEGA_PRIME_NOMINAL_ABS_BUDGET_THEOREM,
+                    OMEGA_NOMINAL_ABS_BUDGET_THEOREM,
+                    SHAPESQ_NOMINAL_ABS_BUDGET_THEOREM,
+                    SHAPESQ_DERIV_NOMINAL_ABS_BUDGET_THEOREM,
                 ],
             ),
             "endpointHighOrderSupport": source_symbols(
@@ -832,6 +905,9 @@ def build_report() -> dict[str, Any]:
             "checkedFactorErrorWitnessesPresent": (
                 factor_error_witnesses_present
             ),
+            "checkedNominalFactorAbsBudgetsPresent": (
+                nominal_factor_abs_budgets_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -860,6 +936,14 @@ def build_report() -> dict[str, Any]:
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
+                "Prove the same-normalization product abs/error budget "
+                "comparisons using the checked nominal polynomial absolute "
+                "budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv, "
+                "then prove the final scale/product budget comparison.  "
+                "Only after that may generator exact-assembly fields be "
+                "reconsidered."
+                if nominal_factor_abs_budgets_present
+                else
                 "Generate or import concrete same-normalization nominal "
                 "polynomial absolute budgets for omegaPrime, shapeSq, omega, "
                 "and shapeSqDeriv, then prove the product abs/error budget "

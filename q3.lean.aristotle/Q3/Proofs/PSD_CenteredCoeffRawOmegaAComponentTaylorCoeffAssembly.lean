@@ -802,6 +802,74 @@ theorem primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_
   (abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius
     degree ((1 : Rat) / 20) coeff hEta).trans hBudget
 
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget : Real :=
+  ∑ i : Fin 16,
+    |(primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff i : Real)| *
+      ((1 : Real) / 20) ^ i.1
+
+def primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget : Real :=
+  ∑ i : Fin 17,
+    |(primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff i : Real)| *
+      ((1 : Real) / 20) ^ i.1
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget : Real :=
+  ∑ i : Fin 17,
+    |(primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff i : Real)| *
+      ((1 : Real) / 20) ^ i.1
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget : Real :=
+  ∑ i : Fin 16,
+    |(primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff i : Real)| *
+      ((1 : Real) / 20) ^ i.1
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaPrime_nominal_abs_budget
+    {eta : Real}
+    (hEta : |eta - (((1 : Rat) / 20 : Rat) : Real)| <= (1 : Real) / 20) :
+    |rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff eta| <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget :=
+  primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget
+    15 primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff hEta
+    (by
+      dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeNominalAbsBudget]
+      exact le_rfl)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_nominal_abs_budget
+    {eta : Real}
+    (hEta : |eta - (((1 : Rat) / 20 : Rat) : Real)| <= (1 : Real) / 20) :
+    |rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff eta| <=
+      primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget :=
+  primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget
+    16 primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff hEta
+    (by
+      dsimp [primaryFiniteRow0Parent0Split100Sub0OmegaNominalAbsBudget]
+      exact le_rfl)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_nominal_abs_budget
+    {eta : Real}
+    (hEta : |eta - (((1 : Rat) / 20 : Rat) : Real)| <= (1 : Real) / 20) :
+    |rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff eta| <=
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget :=
+  primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget
+    16 primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff hEta
+    (by
+      dsimp [primaryFiniteRow0Parent0Split100Sub0ShapeSqNominalAbsBudget]
+      exact le_rfl)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_nominal_abs_budget
+    {eta : Real}
+    (hEta : |eta - (((1 : Rat) / 20 : Rat) : Real)| <= (1 : Real) / 20) :
+    |rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff eta| <=
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget :=
+  primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget
+    15 primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff hEta
+    (by
+      dsimp [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivNominalAbsBudget]
+      exact le_rfl)
+
 theorem primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs
     {actual nominal err nominalAbs actualAbs : Real}
     (hErr : |actual - nominal| <= err)
