@@ -416,6 +416,82 @@ theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_s
   rw [hS0, hS1, hS2]
   ring
 
+theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_interval :
+    (9 : Real) / 5 <=
+        deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                  11 ((3 : Real) / 10) 0 eta)
+              t)
+          (0 : Real) ∧
+      deriv
+          (fun t : Real =>
+            deriv
+              (fun eta : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22PositiveAxisOmegaAIntegrand
+                  11 ((3 : Real) / 10) 0 eta)
+              t)
+          (0 : Real) <= (47 : Real) / 25 := by
+  let Ω : Real -> Real :=
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+  have hOmega2 :=
+    primaryFiniteRow0Parent0Split100Sub0_omega_second_deriv_at_zero_interval
+  have hOmega0 := primaryFiniteRow0Parent0Split100Sub0_omega_zero_interval
+  dsimp only at hOmega2 hOmega0
+  rw [primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_shape_constants]
+  let innerActual : Real :=
+    deriv (fun t : Real => deriv Ω t) (0 : Real) *
+        ((269291841030051840000 : Real) /
+          (452937348578601132294 : Real)) +
+      Ω (0 : Real) *
+        (-((269291841030051840000 : Real) /
+          (90587469715720226458800 : Real)))
+  have hinnerLower :
+      (1437345201497901696000 : Real) /
+          (75489558096433522049 : Real) <=
+        innerActual := by
+    dsimp [innerActual, Ω]
+    nlinarith [hOmega2.1, hOmega0.2]
+  have hinnerUpper :
+      innerActual <=
+        (1482451584870435379200 : Real) /
+          (75489558096433522049 : Real) := by
+    dsimp [innerActual, Ω]
+    nlinarith [hOmega2.2, hOmega0.1]
+  have hscaleLower := rawOmegaEll_div_pi_tightScaleLower
+  have hscaleUpper := rawOmegaEll_div_pi_tightScaleUpper
+  have hscaleNonneg : 0 <= (3 : Real) / 10 / Real.pi := by
+    positivity
+  constructor
+  · have hmul :
+        ((3 : Real) / 10 / Real.pi) *
+            ((1437345201497901696000 : Real) /
+              (75489558096433522049 : Real)) <=
+          ((3 : Real) / 10 / Real.pi) * innerActual := by
+      exact mul_le_mul_of_nonneg_left hinnerLower hscaleNonneg
+    have htarget :
+        (9 : Real) / 5 <=
+          ((3 : Real) / 10 / Real.pi) *
+            ((1437345201497901696000 : Real) /
+              (75489558096433522049 : Real)) := by
+      nlinarith [hscaleLower]
+    exact htarget.trans hmul
+  · have hmul :
+        ((3 : Real) / 10 / Real.pi) * innerActual <=
+          ((3 : Real) / 10 / Real.pi) *
+            ((1482451584870435379200 : Real) /
+              (75489558096433522049 : Real)) := by
+      exact mul_le_mul_of_nonneg_left hinnerUpper hscaleNonneg
+    have htarget :
+        ((3 : Real) / 10 / Real.pi) *
+            ((1482451584870435379200 : Real) /
+              (75489558096433522049 : Real)) <=
+          (47 : Real) / 25 := by
+      nlinarith [hscaleUpper]
+    exact hmul.trans htarget
+
 theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_eq_raw_second_minus_modelSecond :
     deriv primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
         (0 : Real) =
@@ -475,6 +551,26 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_de
       rawOmegaATaylorPolynomial_differentiableAt 15 ((1 : Rat) / 20)
         primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff
         (0 : Real)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_interval :
+    -(1 : Real) / 25 <=
+        deriv primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+          (0 : Real) ∧
+      deriv primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+          (0 : Real) <= (11 : Real) / 250 := by
+  rw [
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_eq_raw_second_minus_modelSecond]
+  have hraw :=
+    primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_interval
+  have hmodel :
+      (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondAtZeroRat :
+          Real) =
+        (15050077640090993308726559634073553 : Real) /
+          (8192000000000000000000000000000000 : Real) := by
+    norm_num [
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondAtZeroRat_eq]
+  rw [hmodel]
+  constructor <;> nlinarith [hraw.1, hraw.2]
 
 end Step33
 end PSDpd

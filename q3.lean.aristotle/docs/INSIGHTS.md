@@ -41057,3 +41057,19 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   and does not close Step33A.1-A.
 - Current exact gap:
   `STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RawSecondAndCombinedDerivZeroIntervalsChecked
+
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean` with
+  assembled point intervals after the Omega/shape/pi pieces were available.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_interval`,
+  proving `9/5 <= rawSecond(0) <= 47/25`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_interval`,
+  proving `-1/25 <= (CombinedCancellationIntervalExpr)'(0) <= 11/250`.
+- Boundary: these are proof-grade point intervals, not a whole-cell combined
+  interval certificate and not Step33A.1-A closure.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP`.

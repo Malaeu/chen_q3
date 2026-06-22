@@ -56,6 +56,9 @@ latest_route_review_2026_06_22_triangle_split: Browser/Computer Use PRO_REVIEW_R
 latest_browser_note_2026_06_22: Browser/Computer Use was used as the escalation/review channel; it confirmed the route shape but is not proof evidence.
 latest_closed_success_2026_06_22_omega_zero_interval: STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_CLOSED_COARSE
 latest_route_level_gap_2026_06_22_raw_second_after_omega_zero: STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP
+latest_closed_success_2026_06_22_raw_second_interval: STEP33_A1_SUB0_RAW_SECOND_AT_ZERO_COARSE_INTERVAL_CLOSED
+latest_closed_success_2026_06_22_combined_deriv_zero_interval: STEP33_A1_SUB0_COMBINED_CANCELLATION_DERIV_AT_ZERO_COARSE_INTERVAL_CLOSED
+latest_route_level_gap_2026_06_22_after_combined_deriv_zero: STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -36124,4 +36127,37 @@ Next exact gap:
 
 ```text
 STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP
+```
+
+## 2026-06-22 Current EOF State -- raw-second and combined-deriv zero intervals checked
+
+The isolated raw-second certificate file now proves coarse proof-grade point
+intervals for the assembled raw second derivative and the induced
+combined-cancellation derivative at the origin:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_interval
+```
+
+Meaning:
+
+```text
+9/5 <= rawSecond(0) <= 47/25
+-1/25 <= (CombinedCancellationIntervalExpr)'(0) <= 11/250
+```
+
+Boundary:
+
+```text
+These are Lean-checked point intervals, not a cell certificate.
+The combined-cancellation interval payload still needs a proof-grade source
+over the active cell, or a sharper route that feeds the existing C1 receiver.
+Step33A.1-A is not closed.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP
 ```

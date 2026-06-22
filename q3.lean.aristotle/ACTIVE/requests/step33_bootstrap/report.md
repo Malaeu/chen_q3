@@ -68553,3 +68553,45 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP
 ```
+
+## Execution Update (2026-06-22) -- raw-second and combined-deriv zero intervals checked
+
+Lean now proves the assembled point interval for the true raw second derivative
+at the origin:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_interval
+```
+
+Checked interval:
+
+```text
+9/5 <= rawSecond(0) <= 47/25
+```
+
+Lean also transports this through the checked model bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_interval
+```
+
+Checked interval:
+
+```text
+-1/25 <= (CombinedCancellationIntervalExpr)'(0) <= 11/250
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+These are point intervals at eta = 0, not a valid whole-cell combined interval
+certificate.  The interval is also coarse; it is proof-grade, but not a final
+small-error kill.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP
+```
