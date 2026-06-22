@@ -68677,3 +68677,54 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
+
+## Execution Update (2026-06-22) -- high-order payload adapter checked
+
+Lean now checks the generator-facing adapter on top of the high-order receiver:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean
+
+Step33Sub0CombinedCancellationHighOrderTaylorCert
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval
+```
+
+The adapter proves:
+
+```text
+Valid high-order Taylor certificate
++ checked degree-15 Horner range
++ exact rational target-budget comparisons
+=> combined expression bounds
+=> full Taylor residual derivative interval
+```
+
+Boundary:
+
+```text
+This is not a concrete payload and not Step33A.1-A closure.  It does not
+provide the center-jet rows, the order-16 rows, the Horner range rows, or final
+rational comparisons.  It only fixes the exact Lean interface that such a
+payload must satisfy.
+```
+
+Validation:
+
+```text
+direct Lean with explicit local LEAN_PATH: passed
+.olean generation: passed
+hole/axiom/unsafe scan: clean
+git diff --check: clean
+bash scripts/q3_check.sh: attempted; interrupted after the wrapper stayed in
+lake env lean slow mode, while the direct Lean check above had already passed.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```

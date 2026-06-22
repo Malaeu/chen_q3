@@ -41116,3 +41116,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   final budget payload.  Step33A.1-A remains open.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- HighOrderCombinedPayloadAdapterChecked
+
+- Target was the next exact blocker after the high-order receiver:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
+- Local semantic search did not recover a better same-surface payload template;
+  `rg` found the usable analogues in `ShapeSqDerivTaylorIntervalCert`,
+  `Step33Sub0OmegaPrimeTaylorRemainderCert`, and the existing combined interval
+  Horner receiver.
+- External primary-source check was limited to Lean/mathlib Taylor theorem
+  documentation; it was used only as orientation.  The proof evidence here is
+  the local Lean check.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
+  with `Step33Sub0CombinedCancellationHighOrderTaylorCert` and its
+  proof-bearing `Valid` adapter.
+- Lean checked direct transport:
+  `Valid.remainder_bound`, `Valid.to_interval_valid`, `Valid.to_hCombined`, and
+  `Valid.to_fullTaylor_residual_deriv_interval`.
+- Meaning: a future generated proof object now has an exact Lean target:
+  center-jet rows 0..15, a uniform order-16 bound, a Taylor remainder budget,
+  and a degree-15 Horner range/target-budget payload imply the combined
+  expression bounds and downstream residual derivative interval.
+- Boundary: this is adapter closure only.  It provides no concrete numeric
+  rows and does not close Step33A.1-A.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.

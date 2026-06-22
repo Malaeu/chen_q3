@@ -63,6 +63,8 @@ latest_closed_success_2026_06_22_c1_point_decision_bridge: STEP33_A1_SUB0_COMBIN
 latest_route_level_gap_2026_06_22_after_c1_point_decision_bridge: STEP33_A1_SUB0_COMBINED_CANCELLATION_C1_POINT_SEPARATION_GAP
 latest_closed_success_2026_06_22_high_order_taylor_receiver: STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_CLOSED
 latest_route_level_gap_2026_06_22_after_high_order_taylor_receiver: STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+latest_closed_success_2026_06_22_high_order_payload_adapter: STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_PAYLOAD_ADAPTER_CLOSED
+latest_route_level_gap_2026_06_22_after_high_order_payload_adapter: STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -36238,4 +36240,41 @@ Next exact gap:
 
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+## 2026-06-22 Current EOF State -- high-order payload adapter checked
+
+The high-order Taylor source file now also exposes the generator-facing
+proof-bearing certificate adapter:
+
+```lean
+Step33Sub0CombinedCancellationHighOrderTaylorCert
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval
+```
+
+Meaning:
+
+```text
+A generated proof object that supplies the whole-expression center-jet rows
+0..15, a uniform order-16 bound, a Taylor remainder budget, and a Horner range
+/ target-budget payload now feeds the existing combined interval and residual
+derivative receivers directly.
+```
+
+Boundary:
+
+```text
+This still provides no numeric/proof-grade rows.  The adapter is checked, but
+`Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` has no concrete
+instance for the active cell.  Step33A.1-A remains open.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
 ```
