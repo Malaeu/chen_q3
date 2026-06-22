@@ -9,11 +9,11 @@ Proof contract for the Step33A.1-A sub0 `realSinc` derivative majorant.
 
 This file is intentionally payload-small.  It records the exact rational
 majorant shape selected for the next certificate generator, and it does not
-claim the missing analytic bridge from the even power series to
-`iteratedDeriv k realSinc u` on `0 <= u <= 1 / 400`.
+claim the remaining summation/reindex bridge from `changeOriginSeries.sum` to
+the live absolute majorant row.
 
 Current first missing bridge:
-`STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.
+`STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP`.
 -/
 
 noncomputable section
@@ -264,6 +264,37 @@ theorem step33RealSincFormalSeries_hasFPowerSeriesOnBall_one :
   · norm_num
   · intro y _hy
     simpa using step33RealSincFormalSeries_hasSum_apply y
+
+/-- Points in the tiny sub0 interval lie inside the unit convergence ball used
+by the checked `realSinc` formal-series source. -/
+theorem step33Sub0RealSinc_mem_unit_ball_of_mem_Icc
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400)) :
+    (‖u‖₊ : ENNReal) < (1 : ENNReal) := by
+  have hnorm_le : ‖u‖₊ <= ((1 : Real) / 400).toNNReal := by
+    rw [Real.nnnorm_of_nonneg hu.1]
+    rw [Real.toNNReal_of_nonneg (by norm_num : 0 <= (1 : Real) / 400)]
+    exact_mod_cast hu.2
+  exact lt_of_le_of_lt (ENNReal.coe_le_coe.mpr hnorm_le) (by norm_num)
+
+/-- `changeOrigin`/`factorial_smul` bridge from the checked all-index
+`realSinc` power series to the ordinary one-dimensional iterated derivative.
+This is the analytic equality needed before turning the live signed
+`changeOriginSeries` terms into absolute row majorants. -/
+theorem step33RealSinc_iteratedDeriv_eq_factorial_changeOriginSeries_sum
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400)) (k : Nat) :
+    iteratedDeriv k realSinc u =
+      (Nat.factorial k : Real) *
+        (((step33RealSincFormalSeries.changeOriginSeries k).sum u)
+          (fun _ : Fin k => (1 : Real))) := by
+  have hunit := step33Sub0RealSinc_mem_unit_ball_of_mem_Icc hu
+  have hshift :=
+    step33RealSincFormalSeries_hasFPowerSeriesOnBall_one.changeOrigin
+      (y := u) hunit
+  have hfact := hshift.factorial_smul (1 : Real) k
+  rw [zero_add] at hfact
+  rw [iteratedDeriv_eq_iteratedFDeriv]
+  rw [← hfact]
+  simp [FormalMultilinearSeries.changeOrigin, nsmul_eq_mul]
 
 /-- The `fslope` of the all-index sine series is the all-index project
 `realSinc` series. -/
@@ -676,6 +707,53 @@ theorem step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_l
           rw [show step33Sub0RealSincDerivMajorantExponent k m =
               2 * step33Sub0RealSincDerivMajorantIndex k m - k by rfl]
           rw [hnorm]
+
+/-- Each live signed `changeOriginSeries` term is covered by the rational
+absolute majorant term on the tiny sub0 interval.  This is the termwise
+estimate needed after the analytic `iteratedDeriv = k! * changeOriginSeries`
+bridge. -/
+theorem step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    (k m : Nat) :
+    ‖(Nat.factorial k : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries k
+          (step33Sub0RealSincDerivMajorantExponent k m))
+          (fun _ : Fin (step33Sub0RealSincDerivMajorantExponent k m) => u))
+          (fun _ : Fin k => (1 : Real)))‖ <=
+      (step33Sub0RealSincDerivMajorantTerm k m : Real) := by
+  rw [step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_live_index]
+  rw [step33Sub0RealSincDerivMajorantTerm_real_eq]
+  unfold step33Sub0RealSincDerivMajorantTermReal
+    step33Sub0RealSincDerivMajorantDenominator
+  let n := step33Sub0RealSincDerivMajorantIndex k m
+  let e := step33Sub0RealSincDerivMajorantExponent k m
+  have hu_abs : |u| <= (1 : Real) / 400 := by
+    rw [abs_of_nonneg hu.1]
+    exact hu.2
+  have hpow : |u| ^ e <= ((1 : Real) / 400) ^ e :=
+    pow_le_pow_left₀ (abs_nonneg u) hu_abs e
+  have hden_pos :
+      0 < (((2 * n + 1 : Nat) : Real) * (Nat.factorial e : Real)) := by
+    positivity
+  have hden_nonneg :
+      0 <= ((((2 * n + 1 : Nat) : Real) *
+        (Nat.factorial e : Real)))⁻¹ := by
+    positivity
+  calc
+    ‖(((-1 : Real) ^ n) /
+          (((2 * n + 1 : Nat) : Real) * (Nat.factorial e : Real))) *
+        u ^ e‖
+        = |u| ^ e /
+            (((2 * n + 1 : Nat) : Real) * (Nat.factorial e : Real)) := by
+          rw [Real.norm_eq_abs, abs_mul, abs_div, abs_pow, abs_pow,
+            abs_neg, abs_one, one_pow, abs_of_pos hden_pos]
+          simp [div_eq_mul_inv, mul_comm]
+    _ <= ((1 : Real) / 400) ^ e /
+          (((2 * n + 1 : Nat) : Real) * (Nat.factorial e : Real)) := by
+          exact mul_le_mul_of_nonneg_right hpow hden_nonneg
+    _ = ((1 : Real) / 400) ^ e /
+          (((2 * n + 1) * e.factorial : Nat) : Real) := by
+          norm_num [Nat.cast_mul]
 
 /-- Consecutive live terms increase the derivative exponent by exactly two. -/
 theorem step33Sub0RealSincDerivMajorantExponent_succ (k m : Nat) :

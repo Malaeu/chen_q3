@@ -17,14 +17,14 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: realSinc all-index on-ball bridge checked
+latest_local_step_2026_06_22: realSinc changeOrigin derivative term bridge checked
 latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
-latest_local_theorem_2026_06_22: step33RealSincFormalSeries_hasFPowerSeriesOnBall_one
+latest_local_theorem_2026_06_22: step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
 latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP
-latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0, step33RealSincFormalSeries.radius = top, all-index/even-odd HasSum, and HasFPowerSeriesOnBall 0 1 are checked; no changeOrigin-to-iteratedDeriv majorant rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
-latest_route_review_2026_06_22: Browser/Proshka channel is available for the next route fork; local Lean proof truth is the checked on-ball theorem, not advisory text
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP
+latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0, radius top, all-index/even-odd HasSum, HasFPowerSeriesOnBall 0 1, iteratedDeriv = factorial * changeOriginSeries.sum on [0,1/400], and live-term norm <= rational majorant are checked; no tsum reindex / odd-term elimination / full rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
+latest_route_review_2026_06_22: Browser/Proshka channel is available for the next route fork; local Lean proof truth is the checked changeOrigin derivative term bridge, not advisory text
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -34119,6 +34119,60 @@ Next exact sub-gap:
 
 ```text
 STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Current EOF State -- realSinc changeOrigin derivative term bridge checked
+
+Latest checked theorem:
+
+```lean
+step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
+```
+
+New checked layer:
+
+```text
+iteratedDeriv k realSinc u
+  = k! * ((step33RealSincFormalSeries.changeOriginSeries k).sum u) 1
+
+and each live signed k! * changeOriginSeries(k, e_live) term is bounded by
+step33Sub0RealSincDerivMajorantTerm k m on 0 <= u <= 1/400.
+```
+
+Supporting checked objects:
+
+```lean
+step33Sub0RealSinc_mem_unit_ball_of_mem_Icc
+step33RealSinc_iteratedDeriv_eq_factorial_changeOriginSeries_sum
+step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
+```
+
+Meaning: the analytic `changeOrigin`/`factorial_smul` bridge from the checked
+unit-ball power series to ordinary one-dimensional `iteratedDeriv` is now
+Lean-checked.  The existing live signed coefficient formula now has a checked
+termwise absolute majorant in the rational row-term normalization.
+
+Boundary: this does not yet prove the full derivative row bound.  The missing
+bridge is to convert the `changeOriginSeries.sum` over all exponents into the
+live `m`-indexed absolute majorant tsum, eliminating the odd zero terms and
+justifying the reindex/norm-tsum step.
+
+Validation: direct Lean passed on
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`; touched-file
+hole scan and `git diff --check` are clean.  `q3_check.sh` was attempted via
+`bash` and interrupted after a bounded wait at its Lean invocation, consistent
+with the current local infrastructure behavior.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP
 ```
 
 Remaining broad gap:

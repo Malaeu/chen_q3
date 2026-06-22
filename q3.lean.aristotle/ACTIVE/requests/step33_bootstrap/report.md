@@ -63819,3 +63819,68 @@ Remaining broad gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Execution Update -- realSinc changeOrigin derivative term bridge checked
+
+Latest checked theorem:
+
+```lean
+step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
+```
+
+New checked layer:
+
+```text
+iteratedDeriv k realSinc u
+  = k! * ((step33RealSincFormalSeries.changeOriginSeries k).sum u) 1
+
+and each live signed k! * changeOriginSeries(k, e_live) term is bounded by
+step33Sub0RealSincDerivMajorantTerm k m on 0 <= u <= 1/400.
+```
+
+New checked objects:
+
+```lean
+step33Sub0RealSinc_mem_unit_ball_of_mem_Icc
+step33RealSinc_iteratedDeriv_eq_factorial_changeOriginSeries_sum
+step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
+```
+
+Proof route: apply `HasFPowerSeriesOnBall.changeOrigin` to move the checked
+unit-ball `realSinc` series from center `0` to center `u`, use
+`HasFPowerSeriesOnBall.factorial_smul` at direction `1`, rewrite through
+`iteratedDeriv_eq_iteratedFDeriv`, then combine the existing live-index signed
+coefficient formula with the interval bound `|u| <= 1/400`.
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+git diff --check:
+  clean
+q3_check.sh:
+  attempted via bash, interrupted after bounded wait at Lean invocation
+```
+
+Boundary: this is not yet the rows `1..17` derivative majorant proof.  The
+remaining bridge is the `changeOriginSeries.sum` tsum/norm/reindex step:
+convert the sum over all exponents to the live `m`-indexed absolute majorant
+tsum, with odd zero terms eliminated, then feed the rational prefix/tail
+certificate surface.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```

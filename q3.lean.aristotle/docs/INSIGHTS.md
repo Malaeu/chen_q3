@@ -38878,3 +38878,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincChangeOriginDerivativeTermBridgeChecked
+
+- Lean now checks the analytic bridge from the unit-ball `realSinc` power
+  series to ordinary derivatives in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorems:
+  `step33Sub0RealSinc_mem_unit_ball_of_mem_Icc`,
+  `step33RealSinc_iteratedDeriv_eq_factorial_changeOriginSeries_sum`, and
+  `step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant`.
+- Meaning: on `0 <= u <= 1/400`,
+  `iteratedDeriv k realSinc u` is now tied to
+  `k! * (changeOriginSeries k).sum u`, and every live signed coefficient term
+  has a checked absolute bound by `step33Sub0RealSincDerivMajorantTerm k m`.
+- Direct Lean validation passed for the touched file; the touched-file hole
+  scan and `git diff --check` are clean.  `q3_check.sh` was attempted via
+  `bash` and interrupted after a bounded wait at its Lean invocation.
+- Boundary: this is not yet the full rows `1..17` proof.  The remaining
+  bridge is to prove the `changeOriginSeries.sum` norm/tsum reindex into the
+  live `m`-indexed rational majorant row, eliminating the odd zero terms.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
