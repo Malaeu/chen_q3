@@ -34228,3 +34228,50 @@ Possible downstream failure code:
 ```text
 STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_BUDGET_FAIL
 ```
+
+## 2026-06-22 Current EOF State -- coarse ShapeSq Taylor source checked
+
+Latest checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo
+```
+
+New checked layer:
+
+```text
+degree-15 derivative Taylor source
+  -> integrated degree-16 ShapeSq Taylor source
+```
+
+Updated file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean
+```
+
+Meaning: the checked coarse ShapeSqDeriv Taylor source now feeds
+`shapeSqTaylor_bound_of_shapeSqDerivTaylor_source`.  The integrated model uses
+anchor coefficient `0`, anchor error `1`, the existing generated anchor value
+bound `0 <= E(1/20) <= 1`, and the exact coarse derivative remainder.
+
+Boundary: this is still not the final Step33A.1-A chunk certificate.  The
+ShapeSq Taylor source is proof-grade but intentionally very coarse; no claim is
+made that the resulting remainder is acceptable for the component/residual
+payload.
+
+Validation: direct Lean passed on
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean`; direct `.olean`
+rebuild passed; touched-file hole scan and `git diff --check` are clean.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_TO_COMPONENT_PAYLOAD_GAP
+```
+
+Possible downstream failure code:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_COMPONENT_BUDGET_FAIL
+```

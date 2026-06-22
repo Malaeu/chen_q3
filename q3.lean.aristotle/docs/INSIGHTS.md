@@ -39090,3 +39090,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_SOURCE_ANCHOR_BUDGET_GAP`.
 - Possible downstream failure code:
   `STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_BUDGET_FAIL`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincCoarseShapeSqTaylorSourceChecked
+
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincTaylorFeed.lean`.
+- New checked declarations:
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorAnchorCoeff`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorAnchorErrorAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorRemainderAbs`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo`.
+- Meaning: the checked coarse derivative Taylor source now feeds
+  `shapeSqTaylor_bound_of_shapeSqDerivTaylor_source`, producing an integrated
+  degree-16 ShapeSq Taylor source on `Set.Icc 0 (1/10)`.
+- The anchor step uses the existing generated bound
+  `primaryFiniteRow0Parent0Split100Sub0ShapeAnchorValueBounds_generated` to
+  prove `|E(1/20)^2 - 0| <= 1`; no sampled or numeric-only evidence is used.
+- Boundary: this is still an intentionally coarse bridge test, not a final
+  Step33A.1-A certificate.  The next question is whether the component/residual
+  payload can consume this coarse ShapeSq source or must fail on budget.
+- Direct Lean validation and `.olean` rebuild passed for the updated file.  The
+  touched-file hole scan and `git diff --check` are clean.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPESQ_TAYLOR_TO_COMPONENT_PAYLOAD_GAP`.
+- Possible downstream failure code:
+  `STEP33_A1_SUB0_COARSE_TWO_COMPONENT_BUDGET_FAIL`.
