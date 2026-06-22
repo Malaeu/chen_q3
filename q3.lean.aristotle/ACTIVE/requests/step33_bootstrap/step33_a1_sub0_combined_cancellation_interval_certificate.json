@@ -1,0 +1,123 @@
+{
+  "candidateArithmeticStatus": {
+    "budgetPassedExactRational": true,
+    "candidateReadyForLeanShape": true,
+    "coverage": {
+      "adjacencyPassedExactRational": true,
+      "coveragePassedExactRational": true,
+      "expectedLeftEndpoint": "0",
+      "expectedRightEndpoint": "1/10",
+      "firstFailure": null,
+      "leftEndpoint": "0",
+      "rightEndpoint": "1/10",
+      "segmentNonemptyPassedExactRational": true
+    },
+    "proofGradeCombinedBoundsPresent": false
+  },
+  "candidateSegmentSource": {
+    "exists": true,
+    "interpretation": "The candidate records exact rational coverage and budget checks, but its sourceProofStatus remains sampled_candidate_not_lean_proof.",
+    "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json",
+    "proofMode": "exact_rational_same_expression_interval",
+    "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6",
+    "sourceIsProofGrade": false,
+    "status": "fail_closed_missing_cancellation_preserving_taylor_remainder_proof"
+  },
+  "cell": {
+    "cellL": "0",
+    "cellU": "1/10",
+    "targetLower": "-94119513411/500000000000000000000000000000",
+    "targetUpper": "1866608532757/500000000000000000000000000000",
+    "targetWidth": "245091005771/62500000000000000000000000000"
+  },
+  "closedLocalFacts": [
+    "OmegaPrime generated Taylor remainder cert is Valid and has a public bound.",
+    "Omega Taylor bound is obtained by integrating OmegaPrime plus anchor interval.",
+    "rawDeriv - assembledPoly equals the scaled cancellation RHS.",
+    "deriv residual equals residualTaylor P45 polynomial plus ScaledCancellationRhs.",
+    "triangle split is killed by checked residualTaylor final-slope failures.",
+    "rows0..11 independent product budget is width-killed."
+  ],
+  "combinedExpressionMeaning": "rawOmegaATaylorPolynomial assembledDegree 1/20 ResidualTaylorCoeff eta + ScaledCancellationRhs eta",
+  "failureCodes": [
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
+    "STEP33_A1_SUB0_COMBINED_INTERVAL_PROOF_GRADE_SOURCE_MISSING",
+    "STEP33_A1_SUB0_COMBINED_INTERVAL_LEAN_PAYLOAD_MISSING",
+    "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP"
+  ],
+  "firstFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
+  "nextImplementablePatch": {
+    "firstFailureIfMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
+    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedPayload.lean",
+    "recommendation": "build a proof-grade combined interval backend that emits a Lean theorem providing hCombined for the consumer theorem"
+  },
+  "proofStatus": {
+    "allSegmentsBudgetPassedExactRational": true,
+    "allSegmentsProofGrade": false,
+    "combinedExpressionDefinedInLean": true,
+    "combinedIntervalTheoremCheckedInLean": true,
+    "combinedReceiverCheckedInLean": true,
+    "isLeanProofData": false,
+    "outLeanWritten": false,
+    "proofGradeCombinedBoundsPresent": false,
+    "proofSafeClosedFields": 0,
+    "sampledCandidateIsProof": false,
+    "segmentCoveragePassedExactRational": true
+  },
+  "rejectedRoutes": {
+    "independentTriangleSplit": "killed: residualTaylor polynomial alone exceeds final slope at the center",
+    "rowsProductBudgetRefinement": "not a closure path while it preserves the independent product-budget style",
+    "sampledSegmentPayload": "diagnostic only, not proof evidence"
+  },
+  "requiredCertificate": {
+    "kind": "proof_grade_interval_or_rational_certificate",
+    "mayUse": [
+      "rational interval arithmetic",
+      "Lean-verifiable matrix/free polynomial interval certificate",
+      "independently checkable generated rational output"
+    ],
+    "mustNotUse": [
+      "sampled JSON as proof",
+      "separate norm bounds for residualTaylor polynomial and ScaledCancellationRhs",
+      "independent raw/poly interval subtraction",
+      "product-budget rows route after width-fail"
+    ],
+    "mustProve": "same-expression lower/upper bound for the whole combined expression"
+  },
+  "routeId": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1",
+  "segments": [
+    {
+      "budgetPassesExactRational": true,
+      "cell": 0,
+      "combinedLower": "-94119513411/500000000000000000000000000000",
+      "combinedUpper": "1866608532757/500000000000000000000000000000",
+      "isProofGrade": false,
+      "proofGradeCombinedBounds": "missing",
+      "segmentL": "0",
+      "segmentU": "1/10",
+      "sourceProofStatus": "sampled_candidate_not_lean_proof"
+    }
+  ],
+  "sourceDefinitionHashes": {
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json": "df8cb8dff74f605e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean": "d3ce443f3d86cc33",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean": "8554b282c60d9c25",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean": "aabf02168d6d50fd",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
+  },
+  "status": "fail_closed_missing_proof_grade_combined_interval_certificate",
+  "targetLeanSurface": {
+    "boundInputsFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean",
+    "closedFormTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds",
+    "consumerTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds",
+    "expression": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr",
+    "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean",
+    "landingFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
+    "normReceiverFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean",
+    "p45BridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean",
+    "proofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds"
+  },
+  "targetStatement": "forall eta in Set.Icc (0 : Real) ((1 : Real) / 10), (-94119513411/500000000000000000000000000000) <= primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr eta and primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr eta <= (1866608532757/500000000000000000000000000000)"
+}

@@ -17,7 +17,7 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: Lean checked a rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source, a same-source row11 component product/P45 enclosure bridge, an exact arithmetic kill for the full rows0..11 product assembly budget, and a component-product cancellation identity. Row `11` is now proved with exact product order `n = 12` divided by `11!`, and the row11 Taylor source feeds the assembled P45 receiver, but the resulting product budget is still too wide for the final residual interval. The next proof surface is a cancellation-preserving derivative/norm source for the checked cancellation residual.
+latest_local_step_2026_06_22: Lean checked a rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source, a same-source row11 component product/P45 enclosure bridge, an exact arithmetic kill for the full rows0..11 product assembly budget, a component-product cancellation identity, same-normalization bound inputs, and a combined cancellation interval receiver. A fail-closed combined interval certificate ledger now records the exact remaining `hCombined` object. The sampled one-segment candidate passes rational coverage/budget checks but is explicitly not proof-grade. The next proof surface is a proof-grade interval/rational certificate for the combined expression before any triangle split.
 latest_local_file_2026_06_22: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123456Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345678Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123456789Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row3_rows4to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row4_rows5to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row5_rows6to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row6_rows7to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row7_rows8to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row8_rows9to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row9_rows10to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row10_rows11to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/VOCAB_MAP.md, q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md, and q3.lean.aristotle/docs/INSIGHTS.md
 latest_local_file_2026_06_22_row10: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345678910Payload.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row10_rows11to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row11_rows12to15_order16.md
 latest_local_file_2026_06_22_row11: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row11_rows12to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_rows01234567891011_product_bridge.md
@@ -32,8 +32,9 @@ latest_local_theorem_2026_06_22_row11_budget: primaryFiniteRow0Parent0Split100Su
 latest_local_theorem_2026_06_22_cancellation_bridge: primaryFiniteRow0Parent0Split100Sub0_componentProductError_eq_cancellationResidual; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_eq_scale_componentProductActual; primaryFiniteRow0Parent0Split100Sub0_nominalProduct_eq_componentProductNominal
 latest_local_file_2026_06_22_combined_interval: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
 latest_local_theorem_2026_06_22_combined_interval: primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_combinedCancellationIntervalExpr; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds
-latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1
-latest_payload_status_2026_06_22: combined_cancellation_interval_receiver_checked_p45_center_constant_fail_triangle_split_dead
+latest_local_file_2026_06_22_combined_certificate_ledger: q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1
+latest_payload_status_2026_06_22: fail_closed_missing_proof_grade_combined_interval_certificate
 latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
 latest_first_failure_2026_06_22: STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL
 latest_closed_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_3_4_5_6_7_8_9_10_REMAINDER_WIDTH_FAIL
@@ -43,7 +44,7 @@ latest_closed_failure_2026_06_22_row11_budget: STEP33_A1_SUB0_ROWS01234567891011
 latest_closed_success_2026_06_22_cancellation_bridge: STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_IDENTITY_CLOSED
 latest_closed_failure_2026_06_22_p45_sum_abs: STEP33_A1_SUB0_RESIDUAL_TAYLOR_MODEL_BOUND_CONSTANT_FAIL
 latest_closed_failure_2026_06_22_p45_center: STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL
-latest_boundary_2026_06_22: A Lean-checked rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source, a same-source product/P45 enclosure bridge, a scaled-cancellation RHS receiver, same-normalization bound inputs, and a combined interval receiver now exist. The row11 product assembly budget is Lean-killed, the coefficient-sum P45 residualTaylor model bound is Lean-killed, and the actual P45 residualTaylor polynomial at center eta = 1/20 is itself Lean-killed against finalSlope. This is not Step33A.1-A closure. It kills the separate triangle split `residualTaylor polynomial + ScaledCancellationRhs` as a closure route; the next missing object is a proof-grade interval certificate for the combined expression before any triangle inequality.
+latest_boundary_2026_06_22: A Lean-checked rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source, a same-source product/P45 enclosure bridge, a scaled-cancellation RHS receiver, same-normalization bound inputs, and a combined interval receiver now exist. The row11 product assembly budget is Lean-killed, the coefficient-sum P45 residualTaylor model bound is Lean-killed, and the actual P45 residualTaylor polynomial at center eta = 1/20 is itself Lean-killed against finalSlope. The new combined certificate ledger is fail-closed: coverage and rational budget pass for the sampled one-segment candidate, but `proofGradeCombinedBoundsPresent = false` and `sampledCandidateIsProof = false`. This is not Step33A.1-A closure. The next missing object is a proof-grade interval certificate for the combined expression before any triangle inequality.
 latest_route_review_2026_06_22: Proshka route review via in-app browser chose the cancellation route after the rows0..11 constant fail: do not try blind 1e12 Omega sharpening, do not continue rows12..15 as the immediate repair, and first build a cancellation-residual bridge. Codex accepted only the Lean-checked local theorem.
 latest_route_review_2026_06_22_triangle_split: Browser/Computer Use PRO_REVIEW_REQUEST sent after the P45 center constant fail. Proshka chose route B: build an interval/rational certificate for the combined expression `residualTaylor polynomial + ScaledCancellationRhs`, not separate bounds and not model replacement first. Codex accepted this only as route advice and added the checked local receiver.
 latest_browser_note_2026_06_22: Browser/Computer Use was used as the escalation/review channel; it confirmed the route shape but is not proof evidence.
@@ -35641,4 +35642,47 @@ interval file.
 .olean generation passed for the updated bound-input file and the new combined
 interval file.
 Hole/axiom scan found no matches in those two files.
+```
+
+## 2026-06-22 Current EOF State -- combined certificate ledger fail-closed
+
+The active combined interval receiver now has a fail-closed certificate ledger:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```
+
+Ledger status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1
+status = fail_closed_missing_proof_grade_combined_interval_certificate
+firstFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
+
+The sampled one-segment candidate is copied only as diagnostic context:
+
+```text
+segment = [0, 1/10]
+combined interval =
+  [-94119513411 / 500000000000000000000000000000,
+    1866608532757 / 500000000000000000000000000000]
+segmentCoveragePassedExactRational = true
+allSegmentsBudgetPassedExactRational = true
+sourceProofStatus = sampled_candidate_not_lean_proof
+proofGradeCombinedBoundsPresent = false
+sampledCandidateIsProof = false
+```
+
+Boundary:
+
+```text
+No Lean payload theorem was emitted.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+The next proof-producing object must be a proof-grade interval/rational
+certificate for primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+on [0,1/10].
 ```

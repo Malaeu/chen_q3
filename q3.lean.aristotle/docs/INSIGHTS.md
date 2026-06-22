@@ -40815,3 +40815,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   proof, and Step33A.1-A is not closed.
 - Next exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationCertificateLedgerFailClosed
+
+- Added fail-closed generator
+  `scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py`.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json`
+  and `.md`.
+- The ledger targets the checked consumer
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds`
+  and the expression
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr`.
+- It records the exact required interval:
+  `[-94119513411/5e29, 1866608532757/5e29]` on `[0,1/10]`.
+- The sampled one-segment candidate has exact rational coverage and budget
+  pass, but remains explicitly non-proof:
+  `sourceProofStatus = sampled_candidate_not_lean_proof`,
+  `proofGradeCombinedBoundsPresent = false`,
+  `sampledCandidateIsProof = false`.
+- Boundary: no Lean payload theorem emitted, no final budget claim, and no
+  sampled/probe data accepted as proof.
+- Next implementable patch: build a proof-grade interval/rational backend that
+  emits a Lean theorem providing `hCombined` for the checked consumer.

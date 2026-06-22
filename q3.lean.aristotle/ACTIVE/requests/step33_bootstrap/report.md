@@ -47,10 +47,13 @@ primary/control analytic A/P/P0 entry_hbox lemmas
 
 The current practical front is Step33A.1-A raw-Omega component Taylor route B:
 the same-coefficient ShapeSqDeriv payload, the full-cell same-coefficient
-ShapeSq bridge, the tight component product source, and the coarse fullTaylor
-residual derivative enclosure are Lean-checked.  The active proof-producing
-blocker is now the final rational budget comparison/sharpness; the generated
-residual payload still remains fail-closed.
+ShapeSq bridge, the component product source, the scaled-cancellation bridge,
+same-normalization bound inputs, and the combined cancellation interval
+receiver are Lean-checked.  The active proof-producing blocker is now a
+proof-grade interval/rational certificate for the combined expression
+`residualTaylor polynomial + ScaledCancellationRhs` on `[0,1/10]`.  The sampled
+one-segment candidate passes exact rational coverage/budget checks but remains
+non-proof.
 
 ## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
 
@@ -67929,3 +67932,75 @@ rg -n "sorry|exact\\?|admit|axiom|unsafe" \
 
 Direct Lean passed, `.olean` generation passed, and the hole/axiom scan found
 no matches.
+
+## Execution Update (2026-06-22) -- combined cancellation certificate ledger
+
+Route: PSD-pd/Q3 Step33A.1-A sub0 combined cancellation interval.
+
+Fail-closed generator added:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+```
+
+Generated ledger artifacts:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```
+
+Ledger status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1
+status = fail_closed_missing_proof_grade_combined_interval_certificate
+firstFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+proofGradeCombinedBoundsPresent = false
+sampledCandidateIsProof = false
+segmentCoveragePassedExactRational = true
+allSegmentsBudgetPassedExactRational = true
+allSegmentsProofGrade = false
+```
+
+Meaning:
+
+```text
+The exact Lean consumer is already checked:
+
+  primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds
+
+The ledger records the required hCombined object:
+
+  forall eta in [0,1/10],
+    -94119513411/5e29 <=
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr eta
+    and
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr eta
+        <= 1866608532757/5e29.
+
+The current one-segment candidate has the right rational endpoints and covers
+the cell, but it remains sampled_candidate_not_lean_proof.
+```
+
+Boundary:
+
+```text
+No Lean payload theorem was emitted.
+No sampled JSON is used as proof.
+No finalBudgetPassed claim is made.
+The rows/product-budget and triangle-split routes remain killed for closure.
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
