@@ -68302,3 +68302,58 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
 ```
+
+## Execution Update (2026-06-22) -- combined-cancellation C1 source bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A combined cancellation interval source.
+
+Lean bridge added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1Source.lean
+
+Step33Sub0CombinedCancellationC1SourceCert
+Step33Sub0CombinedCancellationC1SourceCert.Valid
+Step33Sub0CombinedCancellationC1SourceCert.concrete_poly_const
+Step33Sub0CombinedCancellationC1SourceCert.Valid.remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_c1_source
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_c1_source
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_c1_source
+```
+
+Meaning: the concrete one-cell constant model now has a checked C1 bridge.
+If a proof-grade anchor enclosure at `eta = 1/20` and a proof-grade uniform
+derivative bound for
+`primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr` on
+`[0,1/10]` are supplied with the exact rational budget, Lean proves the
+previously open
+`primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`
+and feeds the conditional interval payload.
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+No anchor interval source is proved here.
+No derivative interval source is proved here.
+No sampled/probe data is promoted to proof.
+```
+
+Validation:
+
+```bash
+lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1Source.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1Source.lean
+```
+
+Note: `lake env lean` was attempted for this same file but was interrupted
+after a silent long startup; direct Lean with the local `.lake` library path
+completed cleanly.  This matches the local wrapper-slow mode already recorded
+for this route and is not a Lean error.
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DERIVATIVE_INTERVAL_SOURCE_GAP
+```

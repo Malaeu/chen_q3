@@ -40933,3 +40933,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP`.
 - Validation: direct Lean, `.olean` generation, generator `py_compile`,
   generator execution, marker scan, and `git diff --check` passed.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationC1SourceBridgeChecked
+
+- Browser/Computer Use follow-up asked Proshka/Louise for the smallest next
+  patch after the conditional combined-cancellation payload.  Proshka chose a
+  specialized degree-0 C1 Taylor source bridge for the whole expression, not a
+  component triangle split and not a sampled source theorem.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1Source.lean`.
+- Lean checked
+  `Step33Sub0CombinedCancellationC1SourceCert.Valid.remainder_bound`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_c1_source`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_c1_source`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_c1_source`.
+- Meaning: the prior open
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`
+  is now reduced to a proof-grade anchor enclosure at `eta = 1/20`, a
+  proof-grade uniform derivative bound for the whole combined expression on
+  `[0,1/10]`, and the exact rational C1 budget.
+- Boundary: no concrete anchor/derivative source is proved here, no sampled
+  candidate is promoted, and Step33A.1-A remains open.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_DERIVATIVE_INTERVAL_SOURCE_GAP`.
+- Validation: direct Lean with the full local `.lake` library path passed;
+  marker scan found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`.
+  `lake env lean` was attempted but interrupted after silent long startup, the
+  same wrapper-slow mode already recorded for this route.
