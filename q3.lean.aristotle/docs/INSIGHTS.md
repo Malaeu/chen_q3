@@ -39297,3 +39297,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next patch: build proof-grade exact rational `assembledRawDerivCoeff` and
   `ResidualTaylorCoeff` objects, then prove
   `P45(ResidualDerivmodelCoeffPadded) = P15(ResidualDerivmodelCoeff)`.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentAssemblyParameterizedCrosswalkChecked
+
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`,
+  closing `P45(ResidualDerivmodelCoeffPadded) = P15(ResidualDerivmodelCoeff)`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`,
+  closing the active-model algebra for any rational degree-45 assembled
+  coefficient stream.
+- Ledger status advanced to
+  `fail_closed_raw_product_coeff_source_gap_after_parameterized_crosswalk`.
+- Remaining blocker:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`.
+- Guard evidence: the object-level theorem
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
+  is still absent because there is no named proof-grade
+  `assembledRawDerivCoeff`, no named `ResidualTaylorCoeff`, and no exact
+  coefficient assembly pass.
+- Next patch: build those exact rational coefficient objects from the component
+  product stream and then promote the parameterized theorem to the named
+  object-level crosswalk.

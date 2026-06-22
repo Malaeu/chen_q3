@@ -57,6 +57,68 @@ theorem rawOmegaATaylorPolynomial_sub_coeff
   norm_num
   ring
 
+theorem primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq
+    (eta : Real) :
+    rawOmegaATaylorPolynomial
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded eta =
+      rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta := by
+  let term : Nat -> Real := fun k =>
+    ((if h : k < 16 then
+        primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff ⟨k, h⟩
+      else
+        0 : Rat) : Real) *
+      (eta - (((1 : Rat) / 20 : Rat) : Real)) ^ k
+  have h45 :
+      rawOmegaATaylorPolynomial
+          primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+          ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded eta =
+        ∑ k ∈ Finset.range 46, term k := by
+    unfold rawOmegaATaylorPolynomial
+      primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+      primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded
+    change (∑ i : Fin 46, term i.1) = ∑ k ∈ Finset.range 46, term k
+    exact Fin.sum_univ_eq_sum_range term 46
+  have h15 :
+      rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta =
+        ∑ k ∈ Finset.range 16, term k := by
+    unfold rawOmegaATaylorPolynomial
+    change
+      (∑ i : Fin 16,
+        ((primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff i : Rat) :
+            Real) *
+          (eta - (((1 : Rat) / 20 : Rat) : Real)) ^ i.1) =
+        ∑ k ∈ Finset.range 16, term k
+    rw [← Fin.sum_univ_eq_sum_range term 16]
+    refine Finset.sum_congr rfl ?_
+    intro i _hi
+    unfold term
+    simp [i.2]
+  have hsubset : Finset.range 16 ⊆ Finset.range 46 := by
+    intro k hk
+    simp only [Finset.mem_range] at hk ⊢
+    omega
+  have htail :
+      ∀ k ∈ Finset.range 46, k ∉ Finset.range 16 -> term k = 0 := by
+    intro k _hk46 hknot16
+    have hkge : ¬ k < 16 := by
+      simpa only [Finset.mem_range] using hknot16
+    unfold term
+    simp [hkge]
+  calc
+    rawOmegaATaylorPolynomial
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded eta
+        = ∑ k ∈ Finset.range 46, term k := h45
+    _ = ∑ k ∈ Finset.range 16, term k := (Finset.sum_subset hsubset htail).symm
+    _ = rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta := h15.symm
+
 /-- Algebraic coefficient-subtraction crosswalk for the active degree-45
 component residual model.
 
@@ -89,6 +151,32 @@ theorem primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameD
     ((1 : Rat) / 20) assembledRawDerivCoeff
     primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded eta]
   rfl
+
+/-- Algebraic active-model crosswalk after the degree-15 residual model is
+zero-extended into the degree-45 component convention.
+
+This is still conditional on a proof-grade rational `assembledRawDerivCoeff`.
+It does not assert that the raw closed form with the `1 / Real.pi` scale has
+already been assembled into rational coefficients. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled
+    (assembledRawDerivCoeff :
+      Fin (primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree + 1) ->
+        Rat)
+    (eta : Real) :
+    rawOmegaATaylorPolynomial
+          primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+          ((1 : Rat) / 20) assembledRawDerivCoeff eta -
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff eta =
+      rawOmegaATaylorPolynomial
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        (primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf
+          assembledRawDerivCoeff) eta := by
+  rw [← primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq eta]
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled
+      assembledRawDerivCoeff eta
 
 end RawOmegaATaylorModelCertificate
 end RawOmegaAChunkIntegral

@@ -41,7 +41,7 @@ OUTPUT_JSON = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.json"
 OUTPUT_MD = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.md"
 
 SCHEMA = "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1"
-STATUS = "fail_closed_raw_product_coeff_source_gap_after_same_degree_bridge"
+STATUS = "fail_closed_raw_product_coeff_source_gap_after_parameterized_crosswalk"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 ZERO_EXTENSION_GAP = (
@@ -72,6 +72,13 @@ TARGET_THEOREM = (
 SAME_DEGREE_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled"
+)
+PARAMETERIZED_FULL_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "componentTaylor_residualCoeff_crosswalk_of_assembled"
+)
+ZERO_EXTENSION_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq"
 )
 SUB_COEFF_LEMMA = "rawOmegaATaylorPolynomial_sub_coeff"
 ASSEMBLED_COEFF = "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff"
@@ -136,11 +143,26 @@ def proof_status(component: dict[str, Any] | None, key: str) -> Any:
 
 
 def has_checked_full_crosswalk(assembly_text: str) -> bool:
-    return TARGET_THEOREM in assembly_text
+    return symbol_pattern(TARGET_THEOREM).search(assembly_text) is not None
 
 
 def has_checked_same_degree_crosswalk(assembly_text: str) -> bool:
-    return SAME_DEGREE_THEOREM in assembly_text and SUB_COEFF_LEMMA in assembly_text
+    return (
+        symbol_pattern(SAME_DEGREE_THEOREM).search(assembly_text) is not None
+        and symbol_pattern(SUB_COEFF_LEMMA).search(assembly_text) is not None
+    )
+
+
+def has_checked_parameterized_full_crosswalk(assembly_text: str) -> bool:
+    return (
+        symbol_pattern(PARAMETERIZED_FULL_THEOREM).search(assembly_text) is not None
+        and symbol_pattern(SAME_DEGREE_THEOREM).search(assembly_text) is not None
+        and symbol_pattern(ZERO_EXTENSION_THEOREM).search(assembly_text) is not None
+    )
+
+
+def has_checked_zero_extension_bridge(assembly_text: str) -> bool:
+    return symbol_pattern(ZERO_EXTENSION_THEOREM).search(assembly_text) is not None
 
 
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
@@ -196,6 +218,10 @@ def build_report() -> dict[str, Any]:
 
     checked_full_crosswalk = has_checked_full_crosswalk(assembly_text)
     checked_same_degree_crosswalk = has_checked_same_degree_crosswalk(assembly_text)
+    checked_parameterized_full_crosswalk = has_checked_parameterized_full_crosswalk(
+        assembly_text
+    )
+    checked_zero_extension_bridge = has_checked_zero_extension_bridge(assembly_text)
     fields = component_field_state(component)
     guard_passes = bool(
         checked_full_crosswalk
@@ -210,12 +236,13 @@ def build_report() -> dict[str, Any]:
         "firstFailure": None if guard_passes else RAW_ASSEMBLY_GAP,
         "localAssemblyGap": None if guard_passes else RAW_ASSEMBLY_GAP,
         "routeLevelGap": TIGHT_ROUTE_GAP,
-        "zeroExtensionBridgeGap": ZERO_EXTENSION_GAP,
+        "zeroExtensionBridgeGap": None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP,
         "proofBoundary": (
-            "A Lean-checked same-degree coefficient-subtraction bridge exists, "
-            "but the full degree-15 active-model crosswalk and proof-grade "
-            "raw product coefficient source are still open. Step33A.1-A is "
-            "not closed."
+            "A Lean-checked parameterized active-model crosswalk exists, "
+            "including the same-degree subtraction bridge and degree-45/"
+            "degree-15 zero-extension bridge.  The proof-grade raw product "
+            "coefficient source and named coefficient objects are still open. "
+            "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
             "chosen": "A_component_assembly_coefficient_stream_ledger_first",
@@ -240,7 +267,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
-                "FULL_NOT_WRITTEN_PARTIAL_SAME_DEGREE_LEAN_CHECKED"
+                "OBJECT_THEOREM_NOT_WRITTEN_PARAMETERIZED_FULL_LEAN_CHECKED"
+                if checked_parameterized_full_crosswalk
+                else "FULL_NOT_WRITTEN_PARTIAL_SAME_DEGREE_LEAN_CHECKED"
                 if checked_same_degree_crosswalk
                 else "NOT_WRITTEN"
             ),
@@ -251,6 +280,8 @@ def build_report() -> dict[str, Any]:
                 "AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta"
             ),
             "partialSameDegreeTheorem": SAME_DEGREE_THEOREM,
+            "zeroExtensionTheorem": ZERO_EXTENSION_THEOREM,
+            "parameterizedFullTheorem": PARAMETERIZED_FULL_THEOREM,
             "partialSameDegreeStatementAscii": (
                 "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) "
                 "assembled eta - rawOmegaATaylorPolynomial AssembledRawDerivDegree "
@@ -308,9 +339,11 @@ def build_report() -> dict[str, Any]:
                 [
                     ASSEMBLED_DEGREE,
                     PADDED_RESIDUAL_MODEL,
+                    ZERO_EXTENSION_THEOREM,
                     RESIDUAL_COEFF_OF,
                     SUB_COEFF_LEMMA,
                     SAME_DEGREE_THEOREM,
+                    PARAMETERIZED_FULL_THEOREM,
                     TARGET_THEOREM,
                     ASSEMBLED_COEFF,
                     RESIDUAL_COEFF,
@@ -345,8 +378,15 @@ def build_report() -> dict[str, Any]:
         "guard": {
             "checkedFullCrosswalkTheoremPresent": checked_full_crosswalk,
             "checkedSameDegreeCrosswalkTheoremPresent": checked_same_degree_crosswalk,
-            "paddedDegree45EqualsActiveDegree15BridgePresent": False,
-            "paddedDegree45EqualsActiveDegree15BridgeGap": ZERO_EXTENSION_GAP,
+            "checkedParameterizedActiveModelCrosswalkTheoremPresent": (
+                checked_parameterized_full_crosswalk
+            ),
+            "paddedDegree45EqualsActiveDegree15BridgePresent": (
+                checked_zero_extension_bridge
+            ),
+            "paddedDegree45EqualsActiveDegree15BridgeGap": (
+                None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
+            ),
             "assembledRawDerivCoeffPresent": fields["assembledRawDerivCoeffPresent"],
             "residualTaylorCoeffPresent": fields["residualTaylorCoeffPresent"],
             "exactCoefficientAssemblyPassed": fields[
@@ -356,12 +396,12 @@ def build_report() -> dict[str, Any]:
         },
         "decision": {
             "canGenerateRows2To15Now": False,
-            "canEmitLeanCrosswalkNow": checked_same_degree_crosswalk,
+            "canUseParameterizedLeanCrosswalkNow": checked_parameterized_full_crosswalk,
+            "canEmitObjectLevelCrosswalkNow": False,
             "nextPatch": (
                 "Build proof-grade exact rational assembledRawDerivCoeff and "
-                "ResidualTaylorCoeff objects, then prove the zero-extension "
-                "bridge from the active degree-15 residual model to the "
-                "degree-45 padded model. Only after that promote the full "
+                "ResidualTaylorCoeff objects from the component product stream. "
+                "Then promote the parameterized theorem to the named object-level "
                 "componentTaylor_residualCoeff_crosswalk."
             ),
             "downstreamAfterThisCloses": [
@@ -423,6 +463,8 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             f"- name: `{target['partialSameDegreeTheorem']}`",
             f"- failure code if not enough: `{target['partialSameDegreeFailureCodeIfNotEnough']}`",
+            f"- zero-extension theorem: `{target['zeroExtensionTheorem']}`",
+            f"- parameterized full theorem: `{target['parameterizedFullTheorem']}`",
             "",
             "```text",
             target["partialSameDegreeStatementAscii"],
@@ -482,7 +524,12 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"- can generate rows 2..15 now: `{final_decision['canGenerateRows2To15Now']}`"
     )
     lines.append(
-        f"- can emit Lean crosswalk now: `{final_decision['canEmitLeanCrosswalkNow']}`"
+        "- can use parameterized Lean crosswalk now: "
+        f"`{final_decision['canUseParameterizedLeanCrosswalkNow']}`"
+    )
+    lines.append(
+        "- can emit object-level crosswalk now: "
+        f"`{final_decision['canEmitObjectLevelCrosswalkNow']}`"
     )
     lines.append(f"- next patch: {final_decision['nextPatch']}")
     lines.append("")

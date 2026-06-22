@@ -64719,6 +64719,61 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_str
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
 
+## 2026-06-22 Execution Update -- parameterized active-model crosswalk checked
+
+Extended the isolated Lean support file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq
+```
+
+It proves the padding bridge:
+
+```text
+P45(ResidualDerivmodelCoeffPadded) = P15(ResidualDerivmodelCoeff)
+```
+
+New Lean-checked parameterized active-model theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled
+```
+
+It proves:
+
+```text
+P45(assembled) - P15(ResidualDerivmodelCoeff)
+  = P45(ResidualTaylorCoeffOf assembled)
+```
+
+Boundary: this is still not the object-level theorem
+`primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`,
+because no proof-grade named `assembledRawDerivCoeff` or `ResidualTaylorCoeff`
+object is present, and exact raw-product coefficient assembly remains open.
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_raw_product_coeff_source_gap_after_parameterized_crosswalk
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP
+checkedParameterizedActiveModelCrosswalkTheoremPresent = true
+paddedDegree45EqualsActiveDegree15BridgePresent = true
+assembledRawDerivCoeffPresent = false
+residualTaylorCoeffPresent = false
+exactCoefficientAssemblyPassed = false
+guardPasses = false
+```
+
+Next exact patch: build proof-grade exact rational `assembledRawDerivCoeff`
+and `ResidualTaylorCoeff` objects from the component product stream, then
+promote the parameterized theorem to the named object-level crosswalk.
+
 ## 2026-06-22 Execution Update -- component assembly same-degree bridge checked
 
 Added isolated Lean support file:

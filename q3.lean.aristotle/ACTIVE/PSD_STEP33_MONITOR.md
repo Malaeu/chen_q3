@@ -34502,3 +34502,47 @@ Browser/Proshka follow-up selected the same route (`CHOSEN: A`) and warned not
 to unfold all `Fin 46` coefficients with `norm_num`/`ring_nf`; the next named
 padding obstruction is
 `STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP`.
+
+## 2026-06-22 Current EOF State -- parameterized active-model crosswalk checked
+
+Additional Lean-checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq
+```
+
+This closes:
+
+```text
+P45(ResidualDerivmodelCoeffPadded) = P15(ResidualDerivmodelCoeff)
+```
+
+Additional Lean-checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled
+```
+
+This proves the active-model algebra for any rational degree-45 `assembled`:
+
+```text
+P45(assembled) - P15(ResidualDerivmodelCoeff)
+  = P45(ResidualTaylorCoeffOf assembled)
+```
+
+Current generated ledger status:
+
+```text
+status = fail_closed_raw_product_coeff_source_gap_after_parameterized_crosswalk
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP
+checkedParameterizedActiveModelCrosswalkTheoremPresent = true
+paddedDegree45EqualsActiveDegree15BridgePresent = true
+assembledRawDerivCoeffPresent = false
+residualTaylorCoeffPresent = false
+exactCoefficientAssemblyPassed = false
+```
+
+Still open: proof-grade exact rational `assembledRawDerivCoeff`,
+`ResidualTaylorCoeff`, and exact raw product coefficient assembly from
+`omegaPrimeCoeff`, `shapeSqCoeff`, `omegaCoeff`, and `shapeSqDerivCoeff`.
+Step33A.1-A remains OPEN.
