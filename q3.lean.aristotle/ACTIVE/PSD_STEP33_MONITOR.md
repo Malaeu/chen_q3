@@ -35417,3 +35417,82 @@ lake env lean hung silently and was interrupted after 60 seconds.
 q3_check.sh printed its internal Lean command, then hung and was interrupted
 after 60 seconds.
 ```
+
+## 2026-06-22 Current EOF State -- bound inputs checked; P45 sum-abs model killed
+
+The scaled cancellation RHS receiver now has an isolated bound-input adapter.
+The easy same-normalization inputs were Lean-checked, but the naive
+residualTaylor coefficient-sum model bound is too large for the final slope
+budget by itself.
+
+Additional Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+```
+
+Checked definitions/theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ComponentProductNominalAbsBound
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBoundRat
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBound
+primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slope_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slope_fail
+primaryFiniteRow0Parent0Split100Sub0_cell_radius_one_twentieth
+primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound
+primaryFiniteRow0Parent0Split100Sub0_activeScale_nominalScale_abs_error
+primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_abs_bound
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_model_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_cancellationResidual_bound
+```
+
+Meaning:
+
+```text
+The adapter proves the scale bounds, nominal product bound, cell radius, and
+the coefficient-sum P45 residualTaylor model bound in the exact receiver
+normalization.
+
+However:
+
+  finalSlope <
+  primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBound
+
+is Lean-checked, with a rational witness theorem.  Therefore the current
+sum-abs P45 model-bound interface cannot close the receiver even if the scaled
+cancellation RHS were zero.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the whole Step33 route.
+It kills the current coefficient-sum P45 model-bound closure attempt.
+Do not generate a cancellation-residual certificate against this budget until
+the P45 residualTaylor model bound is sharpened or replaced.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_TAYLOR_MODEL_BOUND_CONSTANT_FAIL
+```
+
+Required next proof input:
+
+```text
+A sharper proof-grade interval/rational bound for the P45 residualTaylorCoeff
+polynomial on [0,1/10], in the same rawOmegaATaylorPolynomial normalization,
+small enough to leave positive budget for the scaled cancellation RHS.
+```
+
+Validation:
+
+```text
+Direct Lean with the local .lake library path passed on the new bound-input
+file.
+.olean generation passed.
+Hole/axiom scan found no matches.
+```

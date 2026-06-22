@@ -40734,3 +40734,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   comparisons for `scaledRhsInterpolationError + residualTaylorModelBound`.
 - Boundary: this is not Step33A.1-A closure; it is a normalization and
   proof-interface reduction for the next certificate.
+
+## Insight (2026-06-22, Step33A.1-A) -- ScaledCancellationBoundInputsCheckedButP45SumAbsKilled
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`.
+- Lean checked the easy same-normalization inputs for the scaled cancellation
+  receiver: cell radius `1/20`, active scale abs bound, active-vs-nominal scale
+  mismatch bound, nominal product bound, and a named residualTaylor P45
+  coefficient-sum model bound.
+- Lean checked the conditional adapter
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_cancellationResidual_bound`,
+  which reduces the receiver to a cancellation-residual bound plus scalar
+  budget comparisons.
+- Critical kill certificate: Lean also checked
+  `primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slope_fail`
+  and its rational witness
+  `primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slope_fail_rat`.
+- Meaning: the coefficient-sum P45 residualTaylor model bound alone is larger
+  than the final slope budget
+  `1866608532757 / 500000000000000000000000000000`.
+- Boundary: this does not kill Step33A.1-A route B globally.  It kills the
+  current `sum_abs_coeff * radius^i` P45 model-bound closure attempt, even if
+  the scaled cancellation RHS were zero.
+- New exact live blocker:
+  `STEP33_A1_SUB0_RESIDUAL_TAYLOR_MODEL_BOUND_CONSTANT_FAIL`.
+- Next patch should build a sharper proof-grade interval/rational bound for
+  the P45 `ResidualTaylorCoeff` polynomial on `[0,1/10]` in the exact
+  `rawOmegaATaylorPolynomial` normalization before budgeting the cancellation
+  residual.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new bound-input file, `.olean` generation passed, and the hole/axiom scan
+  found no matches.

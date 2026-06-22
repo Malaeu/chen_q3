@@ -67632,3 +67632,88 @@ Build or kill the proof-grade bound inputs consumed by the checked adapter:
      scaledRhsInterpolationError + residualTaylorModelBound <=
      1866608532757 / 500000000000000000000000000000.
 ```
+
+## Execution Update (2026-06-22) -- bound inputs checked; P45 sum-abs model killed
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ComponentProductNominalAbsBound
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBoundRat
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBound
+primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slope_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slope_fail
+primaryFiniteRow0Parent0Split100Sub0_cell_radius_one_twentieth
+primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound
+primaryFiniteRow0Parent0Split100Sub0_activeScale_nominalScale_abs_error
+primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_abs_bound
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_model_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_cancellationResidual_bound
+```
+
+Meaning:
+
+```text
+The easy bound inputs are now checked in the exact receiver normalization:
+  - eta in [0,1/10] implies radius <= 1/20 around the Taylor center.
+  - activeScale and activeScale-nominalScale are bounded by the existing tight
+    scale certificates.
+  - ComponentProductNominal is bounded from existing nominal omega/shape
+    polynomial budgets.
+  - The residualTaylor P45 polynomial has the standard coefficient-sum bound.
+```
+
+Critical result:
+
+```text
+Lean also proves:
+
+  finalSlope <
+  primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBound
+
+where finalSlope =
+  1866608532757 / 500000000000000000000000000000.
+
+Thus the coefficient-sum P45 model-bound interface cannot close the full
+direct-norm receiver even with zero scaled-cancellation RHS.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill route B globally.
+It kills the current sum-abs residualTaylor model-bound closure attempt.
+Do not spend time generating a ComponentProductCancellationResidual bound
+against this already-impossible coefficient-sum budget.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+```
+
+Direct Lean and `.olean` generation passed on the new file.  The hole/axiom
+scan found no matches.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_RESIDUAL_TAYLOR_MODEL_BOUND_CONSTANT_FAIL
+
+Build a sharper proof-grade interval/rational bound for the P45
+residualTaylorCoeff polynomial on [0,1/10], in the same
+rawOmegaATaylorPolynomial normalization, before generating or budgeting the
+ComponentProductCancellationResidual certificate.
+```
