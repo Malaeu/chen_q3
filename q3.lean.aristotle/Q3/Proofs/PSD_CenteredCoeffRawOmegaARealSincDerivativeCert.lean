@@ -83,6 +83,80 @@ theorem step33RealSincFormalSeries_apply_two_mul_add_one (m : Nat) (x : Real) :
   rw [step33RealSincCoeff_two_mul_add_one]
   simp
 
+/-- Number of `n`-element subsets of `Fin (1+n)`.  This is the cardinality
+factor appearing in the first derivative series of a scalar formal series. -/
+theorem step33_card_subsets_fin_one_add_card_eq (n : Nat) :
+    Fintype.card {s : Finset (Fin (1 + n)) // s.card = n} = n + 1 := by
+  rw [Fintype.card_subtype]
+  change (Finset.univ.filter
+      (fun x : Finset (Fin (1 + n)) => x.card = n)).card = n + 1
+  have hfin : Finset.univ.filter
+      (fun x : Finset (Fin (1 + n)) => x.card = n) =
+        Finset.powersetCard n (Finset.univ : Finset (Fin (1 + n))) := by
+    ext s
+    simp [Finset.mem_powersetCard]
+  rw [hfin, Finset.card_powersetCard]
+  simp [Nat.add_comm, Nat.choose_succ_self_right]
+
+/-- Each change-origin term in the first derivative series of a scalar formal
+series contributes the same monomial when evaluated at scalar direction `1`. -/
+theorem step33_ofScalars_changeOriginSeriesTerm_one_apply_one
+    (c : Nat -> Real) (n : Nat) (u : Real)
+    (s : {s : Finset (Fin (1 + n)) // Finset.card s = n}) :
+    (((FormalMultilinearSeries.ofScalars Real c).changeOriginSeriesTerm 1 n
+        s.1 s.2) (fun _ : Fin n => u)) (fun _ : Fin 1 => (1 : Real)) =
+      c (1 + n) * u ^ n := by
+  rw [FormalMultilinearSeries.changeOriginSeriesTerm_apply]
+  simp only [FormalMultilinearSeries.ofScalars,
+    ContinuousMultilinearMap.smul_apply,
+    ContinuousMultilinearMap.mkPiAlgebraFin_apply, smul_eq_mul,
+    List.prod_ofFn]
+  rw [Finset.prod_piecewise]
+  simp [Finset.prod_const, s.2, mul_comm]
+
+/-- First derivative series term for a scalar formal series, evaluated at
+scalar direction `1`.  This is the local bridge missing from Mathlib for the
+`realSinc` row-`1` and iterated-row crosswalk. -/
+theorem step33_ofScalars_derivSeries_apply_one
+    (c : Nat -> Real) (n : Nat) (u : Real) :
+    (FormalMultilinearSeries.ofScalars Real c).derivSeries n
+        (fun _ : Fin n => u) (1 : Real) =
+      ((n + 1 : Nat) : Real) * c (1 + n) * u ^ n := by
+  rw [FormalMultilinearSeries.derivSeries]
+  change ((continuousMultilinearCurryFin1 Real Real Real)
+      ((((FormalMultilinearSeries.ofScalars Real c).changeOriginSeries 1) n)
+        (fun _ : Fin n => u))) (1 : Real) =
+    ((n + 1 : Nat) : Real) * c (1 + n) * u ^ n
+  rw [continuousMultilinearCurryFin1_apply]
+  rw [FormalMultilinearSeries.changeOriginSeries]
+  simp only [ContinuousMultilinearMap.sum_apply]
+  calc
+    (∑ x : {s : Finset (Fin (1 + n)) // Finset.card s = n},
+      (((FormalMultilinearSeries.ofScalars Real c).changeOriginSeriesTerm
+          1 n x.1 x.2) (fun _ : Fin n => u)) (Fin.snoc 0 1))
+        = ∑ _x : {s : Finset (Fin (1 + n)) // Finset.card s = n},
+            c (1 + n) * u ^ n := by
+          apply Finset.sum_congr rfl
+          intro x hx
+          simpa using
+            step33_ofScalars_changeOriginSeriesTerm_one_apply_one c n u x
+    _ = ((Fintype.card {s : Finset (Fin (1 + n)) // s.card = n} : Nat) :
+          Real) * (c (1 + n) * u ^ n) := by
+          simp [nsmul_eq_mul]
+    _ = ((n + 1 : Nat) : Real) * c (1 + n) * u ^ n := by
+          rw [step33_card_subsets_fin_one_add_card_eq n]
+          ring
+
+/-- Specialized first derivative-series term for the named `realSinc` formal
+series scaffold. -/
+theorem step33RealSincFormalSeries_derivSeries_apply_one
+    (n : Nat) (u : Real) :
+    step33RealSincFormalSeries.derivSeries n
+        (fun _ : Fin n => u) (1 : Real) =
+      ((n + 1 : Nat) : Real) * step33RealSincCoeff (n + 1) * u ^ n := by
+  simpa [step33RealSincFormalSeries, Nat.add_comm] using
+    step33_ofScalars_derivSeries_apply_one step33RealSincCoeff n u
+
 /-- Starting series index for the absolute majorant of the `k`-th derivative
 of `realSinc`.  This is `ceil(k / 2)`, written in integer form. -/
 def step33Sub0RealSincDerivMajorantStart (k : Nat) : Nat :=

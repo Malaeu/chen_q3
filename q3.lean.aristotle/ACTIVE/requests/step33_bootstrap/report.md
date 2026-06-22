@@ -63347,6 +63347,76 @@ Remaining exact first sub-gap:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+## 2026-06-22 Execution Update -- first scalar derivative-series bridge checked
+
+Local scratch work found that Mathlib has no ready theorem for the scalar
+direction-`1` derivative series term:
+
+```lean
+(FormalMultilinearSeries.ofScalars Real c).derivSeries n
+    (fun _ : Fin n => u) (1 : Real)
+```
+
+The first `simp` attempt reduced the problem to `changeOriginSeries`
+combinatorics.  A narrow in-app browser / Proshka advisory check then
+recommended that the next main proof route should use `changeOrigin` plus
+`iteratedFDeriv_eq_sum`, not a full manual derivative-series replay.  This
+advisory output was not used as proof evidence.
+
+Implemented the reusable first derivative scalar bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked Lean objects:
+
+```lean
+step33_card_subsets_fin_one_add_card_eq
+step33_ofScalars_changeOriginSeriesTerm_one_apply_one
+step33_ofScalars_derivSeries_apply_one
+step33RealSincFormalSeries_derivSeries_apply_one
+```
+
+Proof shape:
+
+```text
+changeOriginSeriesTerm for k=1
+-> product over n copies of u and one copy of 1
+-> cardinality of n-subsets of Fin(1+n) is n+1
+-> first scalar derivative-series term
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+git diff --check:
+  clean
+q3_check:
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  started lake env lean, produced no further output, interrupted after a bounded wait
+```
+
+Boundary: this does not prove rows `1..17`.  It is a checked local bridge for
+the first derivative-series term only.  The route review names the next useful
+subgap as:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP
+```
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
 ## 2026-06-22 Execution Update -- realSinc all-index coefficient scaffold checked
 
 Used the in-app browser / Computer Use for a narrow Proshka route check.  The

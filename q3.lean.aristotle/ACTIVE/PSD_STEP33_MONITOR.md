@@ -33711,6 +33711,53 @@ feed the scaled-sinc receiver.  The exact first remaining analytic gap is:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+## 2026-06-22 Current EOF State -- first scalar derivative-series bridge checked
+
+Used the in-app browser / Computer Use for a narrow Proshka route check after
+the local scratch proof found no ready Mathlib theorem for
+`FormalMultilinearSeries.ofScalars.derivSeries` evaluated in scalar direction
+`1`.  Proshka recommended the next main route should use
+`changeOrigin + iteratedFDeriv_eq_sum`, with the likely next reindex blocker:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP
+```
+
+Local Lean nevertheless now checks the small reusable first-derivative scalar
+series bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked objects:
+
+```lean
+step33_card_subsets_fin_one_add_card_eq
+step33_ofScalars_changeOriginSeriesTerm_one_apply_one
+step33_ofScalars_derivSeries_apply_one
+step33RealSincFormalSeries_derivSeries_apply_one
+```
+
+Meaning:
+
+```text
+(FormalMultilinearSeries.ofScalars Real c).derivSeries n
+  (fun _ : Fin n => u) 1
+= (n+1) * c(n+1) * u^n
+```
+
+Boundary: this is only the first derivative-series scalar bridge.  It does not
+prove `HasFPowerSeriesOnBall realSinc step33RealSincFormalSeries 0 r`, does
+not prove the change-origin parity reindex, does not prove rows `1..17`, does
+not assemble `Cert.Valid.bound`, and does not feed the scaled-sinc receiver.
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
 ## 2026-06-22 Current EOF State -- realSinc all-index coefficient scaffold checked
 
 Used the in-app browser / Computer Use for a narrow Proshka route check on the

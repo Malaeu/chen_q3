@@ -38719,3 +38719,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   not prove rows `1..17`, and does not feed the scaled-sinc receiver.
 - Remaining exact first sub-gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincFirstDerivSeriesBridgeChecked
+
+- Local scratch work found no ready Mathlib theorem for
+  `FormalMultilinearSeries.ofScalars.derivSeries` evaluated at scalar
+  derivative direction `1`.
+- The first proof attempt reduced the problem to `changeOriginSeries`
+  combinatorics: one finite sum over `n`-element subsets of `Fin (1+n)`.
+- Lean now checks the local bridge
+  `step33_ofScalars_derivSeries_apply_one`, proving
+  `(FormalMultilinearSeries.ofScalars Real c).derivSeries n
+    (fun _ : Fin n => u) 1 = (n+1) * c(n+1) * u^n`.
+- Supporting checked lemmas:
+  `step33_card_subsets_fin_one_add_card_eq`,
+  `step33_ofScalars_changeOriginSeriesTerm_one_apply_one`, and
+  `step33RealSincFormalSeries_derivSeries_apply_one`.
+- Browser/Proshka advisory for the next mainline step recommends using
+  `changeOrigin + iteratedFDeriv_eq_sum` rather than manually replaying all
+  derivative-series combinatorics.  The expected next reindex blocker is
+  `STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP`.
+- Boundary: this is not a rows `1..17` proof and does not feed the scaled-sinc
+  receiver.  It is a reusable first-derivative scalar-series bridge.
+- Remaining exact first sub-gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
