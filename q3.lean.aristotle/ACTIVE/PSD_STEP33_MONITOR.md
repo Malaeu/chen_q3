@@ -59,6 +59,10 @@ latest_route_level_gap_2026_06_22_raw_second_after_omega_zero: STEP33_A1_SUB0_RA
 latest_closed_success_2026_06_22_raw_second_interval: STEP33_A1_SUB0_RAW_SECOND_AT_ZERO_COARSE_INTERVAL_CLOSED
 latest_closed_success_2026_06_22_combined_deriv_zero_interval: STEP33_A1_SUB0_COMBINED_CANCELLATION_DERIV_AT_ZERO_COARSE_INTERVAL_CLOSED
 latest_route_level_gap_2026_06_22_after_combined_deriv_zero: STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP
+latest_closed_success_2026_06_22_c1_point_decision_bridge: STEP33_A1_SUB0_COMBINED_CANCELLATION_C1_POINT_DECISION_BRIDGE_CLOSED_CONDITIONAL
+latest_route_level_gap_2026_06_22_after_c1_point_decision_bridge: STEP33_A1_SUB0_COMBINED_CANCELLATION_C1_POINT_SEPARATION_GAP
+latest_closed_success_2026_06_22_high_order_taylor_receiver: STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_CLOSED
+latest_route_level_gap_2026_06_22_after_high_order_taylor_receiver: STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -36160,4 +36164,78 @@ Next exact gap:
 
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP
+```
+
+## 2026-06-22 Current EOF State -- C1 point-decision bridge checked
+
+An isolated point-decision bridge now compiles:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1PointDecision.lean
+
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationC1Source_not_valid_of_budget_lt_twentieth_deriv_abs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationC1Source_not_valid_of_twenty_mul_budget_lt_deriv_abs
+```
+
+Meaning:
+
+```text
+If a future proof-grade scalar certificate proves that
+20 * remainderAbs < |(CombinedCancellationIntervalExpr)'(0)|,
+then every current constant-midpoint `Step33Sub0CombinedCancellationC1SourceCert`
+is invalid.
+```
+
+Boundary:
+
+```text
+This is conditional only.  It does not prove the point separation, does not
+prove a tight derivative interval, and does not close the whole-cell combined
+cancellation certificate.  The current proof-grade point interval
+[-1/25, 11/250] is too coarse for this separation.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_C1_POINT_SEPARATION_GAP
+```
+
+## 2026-06-22 Current EOF State -- high-order Taylor receiver checked
+
+Browser/Computer Use escalation to Proshka/Louise rejected the C1
+point-decision branch as the main route after the local interval
+`[-1/25, 11/250]` proved too coarse for scalar separation.  The C1 bridge above
+remains a reusable conditional side lemma, not the active closure path.
+
+The active path now has an isolated whole-expression high-order Taylor receiver:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean
+
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_bound_of_centerJet15_order16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerTaylor15_remainder_of_order16
+```
+
+Meaning:
+
+```text
+For the whole combined expression on [0, 1/10], center 1/20 and radius 1/20,
+proof-grade center-jet enclosures for jets 0..15 plus a proof-grade uniform
+order-16 derivative bound and rational budget imply the degree-15
+rawOmegaATaylorPolynomial remainder bound.
+```
+
+Boundary:
+
+```text
+This is a receiver theorem, not a generated payload.  It does not provide the
+center-jet rows, does not provide the uniform order-16 rows, does not provide a
+degree-15 Horner range payload, and does not close Step33A.1-A.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```

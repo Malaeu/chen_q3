@@ -41073,3 +41073,46 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   interval certificate and not Step33A.1-A closure.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- C1PointDecisionBridgeChecked
+
+- Browser/Computer Use was used for the Proshka route correction after the
+  local ledger showed that the spendable whole-cell certificate is still
+  missing.  The route advice is advisory only; the compiled local patch below
+  is the proof object.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1PointDecision.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationC1Source_not_valid_of_budget_lt_twentieth_deriv_abs`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationC1Source_not_valid_of_twenty_mul_budget_lt_deriv_abs`.
+- Meaning: once a proof-grade scalar certificate proves
+  `20 * remainderAbs < |(CombinedCancellationIntervalExpr)'(0)|`, the current
+  constant-midpoint `Step33Sub0CombinedCancellationC1SourceCert.Valid` class is
+  impossible.
+- Boundary: this is only a conditional bridge.  It does not prove the scalar
+  separation, does not upgrade the coarse interval `[-1/25, 11/250]`, and does
+  not close the whole-cell combined-cancellation interval certificate.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_C1_POINT_SEPARATION_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- HighOrderCombinedTaylorReceiverChecked
+
+- Browser/Computer Use escalation to Proshka/Louise corrected the active route:
+  do not continue the C1 point-decision branch as the main path; build a
+  nonconstant whole-expression Taylor source instead.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_bound_of_centerJet15_order16`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerTaylor15_remainder_of_order16`.
+- Meaning: for the whole combined expression on `[0, 1/10]`, with center
+  `1/20` and radius `1/20`, proof-grade center-jet enclosures for jets `0..15`
+  plus a proof-grade uniform order-16 derivative bound and rational budget imply
+  the degree-15 `rawOmegaATaylorPolynomial` remainder bound.
+- Boundary: this is only the receiver theorem.  It does not provide generated
+  center-jet rows, order-16 segment rows, degree-15 Horner range rows, or a
+  final budget payload.  Step33A.1-A remains open.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.

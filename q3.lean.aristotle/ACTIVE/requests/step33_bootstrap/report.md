@@ -55,6 +55,19 @@ proof-grade interval/rational certificate for the combined expression
 one-segment candidate passes exact rational coverage/budget checks but remains
 non-proof.
 
+Current sub-bridge update: the C1 point-decision implication is now
+Lean-checked conditionally.  A future proof-grade scalar certificate proving
+`20 * remainderAbs < |(CombinedCancellationIntervalExpr)'(0)|` will rule out
+the current constant-midpoint C1 source class.  This does not prove the scalar
+separation and does not close the whole-cell combined interval certificate.
+
+Route correction after Browser/Computer Use escalation: the C1 point-decision
+branch is not the active closure path because the local proof-grade derivative
+interval `[-1/25, 11/250]` is too coarse.  The active path is now the
+whole-expression degree-15 Taylor receiver with center-jet rows 0..15 plus a
+uniform order-16 derivative bound.  The receiver compiles, but the generated
+payload remains missing.
+
 ## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
 
 Route: PSD-pd/Q3 Step33A.1-A realSinc derivative-majorant interface.
@@ -68594,4 +68607,73 @@ Next exact gap:
 
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CELL_CERT_SOURCE_GAP
+```
+
+## Execution Update (2026-06-22) -- C1 point-decision bridge checked
+
+Lean now checks the conditional point-decision bridge for the current
+constant-midpoint C1 source class:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationC1PointDecision.lean
+
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationC1Source_not_valid_of_budget_lt_twentieth_deriv_abs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationC1Source_not_valid_of_twenty_mul_budget_lt_deriv_abs
+```
+
+The bridge proves:
+
+```text
+if 20 * remainderAbs < |(CombinedCancellationIntervalExpr)'(0)|,
+then no `Step33Sub0CombinedCancellationC1SourceCert` can satisfy `Valid`.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.  No tight scalar separation is proved here.
+The existing proof-grade derivative interval at zero, [-1/25, 11/250], remains
+too coarse for the point-decision inequality.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_C1_POINT_SEPARATION_GAP
+```
+
+## Execution Update (2026-06-22) -- high-order Taylor receiver checked
+
+Browser/Computer Use escalation to Proshka/Louise redirected the active route
+away from C1 point separation and toward a nonconstant whole-expression Taylor
+source.  Lean now checks the isolated receiver:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean
+
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_bound_of_centerJet15_order16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerTaylor15_remainder_of_order16
+```
+
+The receiver proves:
+
+```text
+center-jet coefficient enclosures for jets 0..15
++ uniform order-16 derivative bound on [0, 1/10]
++ rational budget
+=> whole-expression degree-15 Taylor remainder bound
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.  No center-jet rows, order-16 segment rows,
+degree-15 Horner range rows, or final budget payload are provided here.  The
+C1 point-decision bridge remains conditional side infrastructure only.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
