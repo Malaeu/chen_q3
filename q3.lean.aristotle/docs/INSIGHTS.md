@@ -40709,3 +40709,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   new receiver file and `.olean` generation passed.  The hole/axiom scan found
   no matches.  `lake env lean` and `q3_check.sh` both hung for 60 seconds and
   were interrupted, matching the recent local infrastructure behavior.
+
+## Insight (2026-06-22, Step33A.1-A) -- ScaledCancellationBoundInputsInProgress
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_BOUNDS_GAP`.
+- Local `q3_docs` searches and file inspection found no theorem that already
+  closes the scaled RHS plus residualTaylor model budget.
+- Browser/Computer Use was used to ask Proshka for route review.  The response
+  is advisory only; the local proof source remains Lean and exact rational or
+  interval certificates.
+- Existing checked receiver:
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_polynomial_model_bound`.
+- Existing kill certificates show the old independent product assembly budgets
+  are too wide, so the next patch must not spend
+  `primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget` or the
+  rows0..11 product budget as final closure.
+- Minimal next Lean surface: an isolated bound-input adapter proving the easy
+  reusable inputs from existing certificates: active scale abs bound,
+  active-vs-nominal scale mismatch bound, nominal product bound, radius
+  `1/20`, and a named residualTaylor coefficient-sum model bound.
+- Expected remaining assumptions after that adapter: a proof-grade
+  `ComponentProductCancellationResidual` cell bound and exact scalar budget
+  comparisons for `scaledRhsInterpolationError + residualTaylorModelBound`.
+- Boundary: this is not Step33A.1-A closure; it is a normalization and
+  proof-interface reduction for the next certificate.
