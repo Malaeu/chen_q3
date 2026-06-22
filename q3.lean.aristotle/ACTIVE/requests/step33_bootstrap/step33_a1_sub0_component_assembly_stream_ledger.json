@@ -1,0 +1,155 @@
+{
+  "browserProshkaDecision": {
+    "chosen": "A_component_assembly_coefficient_stream_ledger_first",
+    "doNot": [
+      "do not generate ShapeSqDeriv rows 2..15 before the crosswalk",
+      "do not declare arbitrary ShapeSqDerivTightCoeff objects",
+      "do not move to the direct residual interval theorem",
+      "do not add a new receiver",
+      "do not set componentTaylorProofsPresent=true without Lean check"
+    ],
+    "failureCodeIfFails": "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH",
+    "firstPatchOrTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk",
+    "whySmallest": "Rows 2..15 can prove bounds for the correct function but still feed the wrong polynomial payload unless the component coefficient stream is first fixed in the active RawTaylorCoeffCert residual convention."
+  },
+  "componentAssemblyFormula": {
+    "assembledDegree": 45,
+    "assembledRawDerivCoeffFormula": "scale * (cauchy(omegaPrimeCoeff, shapeSqCoeff) + cauchy(omegaCoeff, shapeSqDerivCoeff))",
+    "center": "1/20",
+    "componentDegree": 15,
+    "normalizationWarning": "Do not identify a ShapeSqDeriv coefficient stream with the active residual coefficient stream. It feeds through the product assembly with omega and omegaPrime first.",
+    "rawClosedForm": "scale * (omegaPrime * shapeSq + omega * shapeSqDeriv)",
+    "residualTaylorCoeffFormula": "assembledRawDerivCoeff - zeroExtend15(ResidualDerivmodelCoeff)",
+    "scale": "((3 : Real) / 10) / Real.pi"
+  },
+  "currentComponentFieldState": {
+    "assembledRawDerivCoeffPresent": false,
+    "componentTaylorAssemblyLeanWritten": false,
+    "componentTaylorOverallProofSafe": false,
+    "componentTaylorProofsPresent": false,
+    "exactCoefficientAssemblyPassed": false,
+    "omegaDerivTaylorProofPresent": true,
+    "omegaTaylorCenterAnchorPayloadPresent": true,
+    "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
+    "payloadExists": true,
+    "payloadFirstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+    "payloadSchema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18",
+    "payloadStatus": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source",
+    "residualTaylorCoeffPresent": false,
+    "residualTaylorRemainderAbsPresent": false,
+    "shapeSqDerivCenterCoeffRowsClosedCount": 2,
+    "shapeSqDerivCenterCoeffRowsRequiredCount": 16,
+    "shapeSqDerivOrder16UniformBoundPresent": false
+  },
+  "decision": {
+    "canEmitLeanCrosswalkNow": false,
+    "canGenerateRows2To15Now": false,
+    "downstreamAfterThisCloses": [
+      "generate proof-grade ShapeSqDeriv rows 2..15 and order16",
+      "prove primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
+      "assemble raw derivative residual interval payload",
+      "prove the final direct residual interval theorem"
+    ],
+    "nextPatch": "Build the exact rational coefficient definitions and the Lean crosswalk for component assembly in the active residual model convention, then return to tight ShapeSqDeriv rows."
+  },
+  "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH",
+  "guard": {
+    "assembledRawDerivCoeffPresent": false,
+    "checkedCrosswalkTheoremPresent": false,
+    "exactCoefficientAssemblyPassed": false,
+    "guardPasses": false,
+    "residualTaylorCoeffPresent": false
+  },
+  "localAssemblyGap": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
+  "proofBoundary": "Generated audit only. No Lean theorem is emitted and Step33A.1-A is not closed.",
+  "routeLevelGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+  "schema": "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1",
+  "sourceFiles": {
+    "chunkTaylorChecker": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean",
+      "symbols": {
+        "ShapeSqDerivTaylorIntervalCert": {
+          "found": true,
+          "line": 10504
+        },
+        "integratedTaylorCoeff": {
+          "found": true,
+          "line": 50
+        },
+        "rawOmegaATaylorPolynomial": {
+          "found": true,
+          "line": 31
+        },
+        "shapeSqTaylor_bound_of_shapeSqDerivTaylor_bound": {
+          "found": true,
+          "line": 194
+        }
+      }
+    },
+    "componentPayload": {
+      "exists": true,
+      "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json",
+      "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18",
+      "status": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source"
+    },
+    "landing": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff": {
+          "found": false,
+          "line": null
+        },
+        "primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm": {
+          "found": true,
+          "line": 1820
+        },
+        "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert": {
+          "found": true,
+          "line": 190
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff": {
+          "found": true,
+          "line": 46
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff": {
+          "found": false,
+          "line": null
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk": {
+          "found": false,
+          "line": null
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel": {
+          "found": true,
+          "line": 201
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm": {
+          "found": true,
+          "line": 1912
+        }
+      }
+    },
+    "tightPayload": {
+      "exists": true,
+      "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.json",
+      "schema": "q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1",
+      "status": "fail_closed_tight_coeff_stream_not_identified"
+    }
+  },
+  "status": "fail_closed_active_model_coeff_crosswalk_not_checked",
+  "targetTheoremContract": {
+    "coeffDefinitionsRequired": [
+      "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree",
+      "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff",
+      "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff"
+    ],
+    "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
+    "name": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk",
+    "statementAscii": "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta",
+    "status": "NOT_WRITTEN"
+  }
+}

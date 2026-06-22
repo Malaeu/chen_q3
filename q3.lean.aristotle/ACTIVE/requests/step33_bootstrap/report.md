@@ -64637,3 +64637,84 @@ python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a
 ```
 
 Status boundary: Step33A.1-A remains open; no Lean proof file was modified.
+
+## 2026-06-22 Execution Update -- component assembly stream ledger generated
+
+Browser/Proshka was queried after the tight ShapeSqDeriv audit showed that the
+same-coefficient stream/crosswalk is earlier than realSinc parity rows.  The
+answer selected route `A`: build the fail-closed component assembly coefficient
+stream ledger first.
+
+Added and ran:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+```
+
+Generated artifacts:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.md
+```
+
+Generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1
+status = fail_closed_active_model_coeff_crosswalk_not_checked
+firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH
+localAssemblyGap = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP
+routeLevelGap = STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+```
+
+Positive local evidence:
+
+```text
+RawIntegrandDerivClosedForm found in PSD_CenteredCoeffRawOmegaAHRawLanding.lean
+RawTaylorCoeffCert found
+ResidualDerivmodelCoeff found
+fullTaylor_polynomial_deriv_eq_derivmodel found
+fullTaylor_residual_deriv_eq_closedForm found
+rawOmegaATaylorPolynomial / integratedTaylorCoeff receivers found
+```
+
+Fail-closed guard:
+
+```text
+checkedCrosswalkTheoremPresent = false
+assembledRawDerivCoeffPresent = false
+residualTaylorCoeffPresent = false
+exactCoefficientAssemblyPassed = false
+guardPasses = false
+```
+
+Meaning: the next proof-moving patch is not ShapeSqDeriv rows `2..15` and not
+the direct residual interval theorem.  First define and check the active
+component assembly stream:
+
+```text
+assembledRawDerivCoeff =
+  scale * (cauchy(omegaPrimeCoeff, shapeSqCoeff)
+    + cauchy(omegaCoeff, shapeSqDerivCoeff))
+
+residualTaylorCoeff =
+  assembledRawDerivCoeff - zeroExtend15(ResidualDerivmodelCoeff)
+```
+
+Then prove the target crosswalk:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+```
+
+Boundary: the generated ledger emits no Lean, does not set
+`componentTaylorProofsPresent`, and does not close Step33A.1-A.
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```

@@ -39236,3 +39236,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   identified.
 - Validation passed for Python compile, generator execution, and JSON parse.
   No Lean proof file was modified.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentAssemblyStreamLedgerPinned
+
+- Used the in-app browser / Proshka channel after the local tight-payload audit
+  showed that the same-coefficient stream/crosswalk is earlier than realSinc
+  parity rows.
+- Proshka selected route `A`: build a fail-closed component assembly
+  coefficient-stream ledger first.
+- Added and ran
+  `q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py`.
+- Generated
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.{json,md}`.
+- Generated status:
+  `fail_closed_active_model_coeff_crosswalk_not_checked`.
+- First failure:
+  `STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH`.
+- Local assembly gap:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`.
+- Positive local evidence: the active raw derivative closed form, active
+  `RawTaylorCoeffCert`, active `ResidualDerivmodelCoeff`, and the full-Taylor
+  derivative/residual crosswalks are all present.
+- Guard evidence: no checked
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`,
+  no assembled raw-derivative coefficient object, no residual Taylor
+  coefficient object, and no exact coefficient assembly pass.
+- Route boundary: do not generate ShapeSqDeriv rows `2..15`, do not emit
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, and do not
+  attack the direct residual interval until the active component coefficient
+  stream is fixed.
+- Next exact patch:
+  define/check the rational Cauchy assembly
+  `scale * (omegaPrimeCoeff * shapeSqCoeff + omegaCoeff * shapeSqDerivCoeff)`
+  and subtract the zero-extended `ResidualDerivmodelCoeff` in the active
+  `rawOmegaATaylorPolynomial` normalization.

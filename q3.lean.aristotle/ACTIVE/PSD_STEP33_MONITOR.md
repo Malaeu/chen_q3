@@ -17,16 +17,16 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: Tight ShapeSqDeriv payload audit generated; Lean theorem emission is blocked until the same-coefficient stream for active RawTaylorCoeffCert is identified
-latest_local_file_2026_06_22: q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.{json,md}, q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}, and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md
-latest_local_theorem_2026_06_22: target only -- primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
-latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1
-latest_payload_status_2026_06_22: fail_closed_tight_coeff_stream_not_identified
+latest_local_step_2026_06_22: Component assembly stream ledger generated after browser/Proshka selected route A; rows 2..15 are downstream until the active-model coefficient crosswalk is checked
+latest_local_file_2026_06_22: q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.{json,md}, q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.{json,md}, q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}, and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md
+latest_local_theorem_2026_06_22: target only -- primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1
+latest_payload_status_2026_06_22: fail_closed_active_model_coeff_crosswalk_not_checked
 latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP
-latest_boundary_2026_06_22: Coarse ShapeSq Taylor source is killed as spendable payload for RawTaylorCoeffCert.  The tight ShapeSqDeriv audit sees proof-grade receivers, rows 0/1, and the active RawTaylorCoeffCert residual surface, but no Lean-visible tight coefficient objects, no `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, and no same-coefficient crosswalk to `RawTaylorCoeffCert.residual`.  Rows 2..15 plus the order-16 bound remain downstream after this coefficient-stream guard.  The final residual interval theorem remains open.
-latest_route_review_2026_06_22: Browser/Proshka channel selected route B: build tight same-coefficient ShapeSqDeriv Taylor payload first; do not set coeff=0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the tight source and coefficient-assembly crosswalk exist
-latest_browser_note_2026_06_22: Proshka later suggested a realSinc parity/even-odd collapse route with failure code STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_HAS_SUM_EVEN_ODD_COLLAPSE_GAP.  Local audit treats that as downstream until the same-coefficient ShapeSqDeriv stream is identified.
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH
+latest_boundary_2026_06_22: The active raw derivative closed form and RawTaylorCoeffCert residual crosswalk are Lean-present, but no checked `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`, no assembled raw-derivative coefficients, and no residual Taylor coefficients are present.  Do not generate ShapeSqDeriv rows 2..15 or emit `shapeSqDeriv_tight_valid` until the component coefficient stream is fixed in the active residual model convention.  Step33A.1-A remains open.
+latest_route_review_2026_06_22: Browser/Proshka channel selected route A after local audit: build the fail-closed component assembly/coefficient-stream ledger first.  Failure code if the path cannot match the active model is STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH.
+latest_browser_note_2026_06_22: Proshka's earlier realSinc parity/even-odd collapse advice remains downstream.  The current first patch is the component assembly stream crosswalk, not rows 2..15 and not the direct residual interval theorem.
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
