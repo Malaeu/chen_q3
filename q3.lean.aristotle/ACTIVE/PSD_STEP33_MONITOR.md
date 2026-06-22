@@ -17,14 +17,14 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: realSinc local formal power-series source checked
+latest_local_step_2026_06_22: realSinc formal-series radius checked
 latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
-latest_local_theorem_2026_06_22: step33RealSincFormalSeries_hasFPowerSeriesAt_zero
+latest_local_theorem_2026_06_22: step33RealSincFormalSeries_radius_eq_top
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
 latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP
-latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0 is checked; no explicit on-ball radius covering 0..1/400 / iteratedDeriv majorant rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
-latest_route_review_2026_06_22: Proshka chose RealSincDerivativeMajorantCert route; first sub-gap is STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_ALLINDEX_EVEN_ODD_HAS_SUM_REINDEX_GAP
+latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0 and step33RealSincFormalSeries.radius = top are checked; all-index/even-odd HasSum bridge and HasFPowerSeriesOnBall 0 1 are not yet checked; no iteratedDeriv majorant rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
+latest_route_review_2026_06_22: Browser/Proshka advisory agrees the next bridge is all-index/even-odd HasSum plus on-ball, then changeOrigin + iteratedFDeriv; local Lean proof truth is only the checked radius theorem
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -33874,6 +33874,54 @@ Next exact sub-gap:
 
 ```text
 STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Current EOF State -- realSinc formal-series radius checked
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_radius_eq_top
+```
+
+New checked supporting theorem:
+
+```lean
+step33RealSincCoeff_norm_le_inv_factorial
+```
+
+Meaning: the all-index `realSinc` formal-series scaffold now has a
+Lean-checked infinite convergence radius.  The proof uses the crude coefficient
+bound `|a_n| <= 1 / n!` and compares the norm series with
+`Real.summable_pow_div_factorial`.
+
+Boundary: this closes only the radius half of the on-ball bridge.  The theorem
+`HasFPowerSeriesOnBall realSinc step33RealSincFormalSeries 0 1` is not checked
+yet because the all-index/even-odd `HasSum` bridge still needs a lightweight
+Lean proof.  A direct first attempt at that on-ball theorem was not landed
+after Lean elaboration became too heavy.
+
+Browser/Proshka advisory for this node chose the same next route: prove the
+all-index `HasSum` bridge from the even `realSinc_hasSum_even_powerSeries`, then
+assemble `HasFPowerSeriesOnBall`, then use `changeOrigin` and
+`iteratedFDeriv` for rows `1..17`.  Treat this advisory only as route guidance;
+the accepted proof objects are the Lean-checked theorems above.
+
+Validation: direct Lean passed on the touched file.  `q3_check` was attempted
+on the touched file through `bash scripts/q3_check.sh ...` and interrupted
+after a bounded wait while it was still inside `lake env lean`, matching the
+known local infrastructure hang pattern.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ALLINDEX_EVEN_ODD_HAS_SUM_REINDEX_GAP
 ```
 
 Remaining broad gap:

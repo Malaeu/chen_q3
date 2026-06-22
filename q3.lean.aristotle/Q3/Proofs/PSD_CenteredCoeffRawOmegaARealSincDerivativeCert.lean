@@ -153,6 +153,67 @@ theorem step33RealSincCoeff_two_mul_add_one (m : Nat) :
     rw [Nat.add_mul_mod_self_left]]
   norm_num
 
+/-- The all-index `realSinc` coefficient is bounded by the exponential
+coefficient.  This is deliberately crude; it is only used to expose an
+infinite convergence radius for the formal-series scaffold. -/
+theorem step33RealSincCoeff_norm_le_inv_factorial (n : Nat) :
+    ‖step33RealSincCoeff n‖ <= ((Nat.factorial n : Real))⁻¹ := by
+  rcases Nat.even_or_odd n with hEven | hOdd
+  · rcases hEven with ⟨m, hm⟩
+    subst n
+    rw [show m + m = 2 * m by omega]
+    rw [step33RealSincCoeff_two_mul]
+    have hfac_pos :
+        0 < (Nat.factorial (2 * m) : Real) := by
+      positivity
+    have hfac_succ_pos :
+        0 < (Nat.factorial (2 * m + 1) : Real) := by
+      positivity
+    have hfac_le :
+        (Nat.factorial (2 * m) : Real) <=
+          (Nat.factorial (2 * m + 1) : Real) := by
+      exact_mod_cast Nat.factorial_le (by omega : 2 * m <= 2 * m + 1)
+    calc
+      ‖((-1 : Real) ^ m / (Nat.factorial (2 * m + 1) : Real))‖
+          = ((Nat.factorial (2 * m + 1) : Real))⁻¹ := by
+            rw [Real.norm_eq_abs, abs_div, abs_pow, abs_neg, abs_one,
+              one_pow, abs_of_pos hfac_succ_pos]
+            simp [div_eq_mul_inv]
+      _ <= ((Nat.factorial (2 * m) : Real))⁻¹ := by
+            exact (inv_le_inv₀ hfac_succ_pos hfac_pos).2 hfac_le
+  · rcases hOdd with ⟨m, hm⟩
+    subst n
+    rw [step33RealSincCoeff_two_mul_add_one]
+    simp
+
+/-- The named all-index `realSinc` formal-series scaffold has infinite
+radius.  This is the radius half of the on-ball bridge needed before applying
+`changeOrigin` at `u <= 1 / 400`. -/
+theorem step33RealSincFormalSeries_radius_eq_top :
+    step33RealSincFormalSeries.radius = ⊤ := by
+  refine FormalMultilinearSeries.radius_eq_top_of_summable_norm _ ?_
+  intro r
+  refine Summable.of_nonneg_of_le
+    (f := fun n : Nat => (r : Real) ^ n / (Nat.factorial n : Real))
+    (g := fun n : Nat =>
+      ‖step33RealSincFormalSeries n‖ * (r : Real) ^ n)
+    ?hNonneg ?hLe (Real.summable_pow_div_factorial (r : Real))
+  · intro n
+    positivity
+  · intro n
+    have hcoeff := step33RealSincCoeff_norm_le_inv_factorial n
+    have hpow_nonneg : 0 <= (r : Real) ^ n := by
+      positivity
+    calc
+      ‖step33RealSincFormalSeries n‖ * (r : Real) ^ n
+          = ‖step33RealSincCoeff n‖ * (r : Real) ^ n := by
+            rw [step33RealSincFormalSeries,
+              FormalMultilinearSeries.ofScalars_norm]
+      _ <= ((Nat.factorial n : Real))⁻¹ * (r : Real) ^ n := by
+            exact mul_le_mul_of_nonneg_right hcoeff hpow_nonneg
+      _ = (r : Real) ^ n / (Nat.factorial n : Real) := by
+            rw [div_eq_mul_inv, mul_comm]
+
 /-- The `fslope` of the all-index sine series is the all-index project
 `realSinc` series. -/
 theorem step33SinFormalSeries_fslope_eq_realSincFormalSeries :

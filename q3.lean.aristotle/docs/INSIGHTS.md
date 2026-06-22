@@ -38828,3 +38828,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincFormalSeriesRadiusChecked
+
+- Used the in-app browser / Computer Use for a focused Proshka route check on
+  the on-ball prerequisite.  The advisory recommended the same next proof
+  shape: all-index/even-odd `HasSum`, then `HasFPowerSeriesOnBall`, then
+  `changeOrigin + iteratedFDeriv`; it is route guidance only, not proof
+  evidence.
+- Lean now checks the formal-series radius layer in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorems:
+  `step33RealSincCoeff_norm_le_inv_factorial` and
+  `step33RealSincFormalSeries_radius_eq_top`.
+- Meaning: the all-index `realSinc` scaffold has infinite convergence radius.
+  This is stronger than the `1 <= radius` fact needed for the unit on-ball
+  bridge.
+- Direct Lean validation passed for the touched file.  `q3_check` was attempted
+  on the touched file and interrupted after a bounded wait inside `lake env
+  lean`, consistent with the current local infrastructure hang.
+- Boundary: this is not yet `HasFPowerSeriesOnBall realSinc
+  step33RealSincFormalSeries 0 1`.  A direct first attempt at the on-ball
+  theorem was not landed after Lean elaboration became too heavy.  The next
+  patch should isolate the all-index/even-odd `HasSum` bridge first.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_ALLINDEX_EVEN_ODD_HAS_SUM_REINDEX_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.

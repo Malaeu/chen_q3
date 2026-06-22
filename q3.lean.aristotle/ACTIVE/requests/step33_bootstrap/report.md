@@ -63492,6 +63492,64 @@ Remaining broad gap:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+## 2026-06-22 Execution Update -- realSinc formal-series radius checked
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_radius_eq_top
+```
+
+New checked supporting theorem:
+
+```lean
+step33RealSincCoeff_norm_le_inv_factorial
+```
+
+New checked layer:
+
+```text
+step33RealSincFormalSeries.radius = top
+```
+
+Proof route: prove the crude coefficient comparison
+`|step33RealSincCoeff n| <= 1 / n!`, then use
+`FormalMultilinearSeries.radius_eq_top_of_summable_norm` with
+`Real.summable_pow_div_factorial`.
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+q3_check:
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  interrupted after bounded wait inside lake env lean
+```
+
+Browser/Proshka was used for the route check.  The advisory agreed that the
+next useful bridge is all-index/even-odd `HasSum` -> `HasFPowerSeriesOnBall`
+-> `changeOrigin + iteratedFDeriv`; it also noted that a weaker `1 <= radius`
+would suffice.  Locally we proved the stronger `radius = top`.
+
+Boundary: this is not an on-ball theorem and not a rows `1..17` derivative
+majorant proof.  The attempted direct `HasFPowerSeriesOnBall` theorem was not
+landed after Lean elaboration became too heavy; the next patch should isolate
+the all-index `HasSum` bridge first.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ALLINDEX_EVEN_ODD_HAS_SUM_REINDEX_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
 ## 2026-06-22 Execution Update -- realSinc all-index coefficient scaffold checked
 
 Used the in-app browser / Computer Use for a narrow Proshka route check.  The
