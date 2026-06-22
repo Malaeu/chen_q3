@@ -68357,3 +68357,48 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_DERIVATIVE_INTERVAL_SOURCE_GAP
 ```
+
+## Execution Update (2026-06-22) -- raw-second/model bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A combined cancellation derivative source.
+
+Lean bridge added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
+
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondAtZeroRat
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondAtZeroRat_eq
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_eq_rawDerivClosedForm_sub_model
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_eq_raw_second_minus_modelSecond
+```
+
+Meaning: the exact derivative at zero of
+`primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr` is now
+reduced in Lean to the true raw second derivative at zero minus the exact
+rational model curvature
+`15050077640090993308726559634073553 / 8192000000000000000000000000000000`.
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+No proof-grade interval for the true raw second derivative is proved here.
+No sampled/probe rawSecond evidence is promoted to proof.
+No unconditional combined-cancellation C1 source or hCombined is claimed.
+```
+
+Validation:
+
+```bash
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
+```

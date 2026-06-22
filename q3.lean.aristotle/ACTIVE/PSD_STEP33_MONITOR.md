@@ -35913,3 +35913,65 @@ git diff --check -- \
   ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json \
   ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
 ```
+
+## 2026-06-22 Current EOF State -- raw-second/model bridge checked
+
+Browser/Computer Use follow-up with Proshka/Louise selected the decisive
+source test for the combined-cancellation C1 route: prove a proof-grade
+two-sided rational interval for the true raw second derivative at `eta = 0`,
+then transport it through the exact full-Taylor residual crosswalk.  The first
+algebraic bridge for that route is now checked in Lean.
+
+Checked file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondAtZeroRat
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelSecondAtZeroRat_eq
+primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_deriv_at_zero
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_eq_rawDerivClosedForm_sub_model
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_eq_raw_second_minus_modelSecond
+```
+
+Meaning:
+
+```text
+The derivative at zero of the combined cancellation expression is now reduced
+in Lean to:
+
+  true raw second derivative at eta = 0
+  -
+  15050077640090993308726559634073553
+  / 8192000000000000000000000000000000.
+
+The large rational is checked as a Rat equality by native_decide and is not
+sampled/probe evidence.
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+No interval for the true raw second derivative is proved here.
+No one-sided or sampled rawSecond numeric is promoted to proof.
+No unconditional C1 source, hCombined, or finalBudgetPassed claim is made.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
+```

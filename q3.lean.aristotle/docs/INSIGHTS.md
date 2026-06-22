@@ -40961,3 +40961,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   marker scan found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`.
   `lake env lean` was attempted but interrupted after silent long startup, the
   same wrapper-slow mode already recorded for this route.
+
+## Insight (2026-06-22, Step33A.1-A) -- RawSecondModelBridgeChecked
+
+- Browser/Computer Use follow-up then identified the decisive source test:
+  prove a proof-grade rational interval for the true raw second derivative at
+  `eta = 0`, then compare it against the full Taylor model curvature.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodel_deriv_at_zero` and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationIntervalExpr_deriv_at_zero_eq_raw_second_minus_modelSecond`.
+- Meaning: the combined-cancellation derivative at zero is now exactly the
+  true raw second derivative minus the checked rational
+  `15050077640090993308726559634073553 / 8192000000000000000000000000000000`.
+- Boundary: no raw second-derivative interval is proved here, no sampled/probe
+  data is promoted, and Step33A.1-A remains open.
+- Current exact gap:
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP`.
+- Validation: direct Lean with the full local `.lake` library path passed;
+  marker scan found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`.
