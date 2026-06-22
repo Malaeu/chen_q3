@@ -49,6 +49,65 @@ The current practical front is Step33A.1-A raw-Omega route A: the
 refined-parent receiver is checked, and the first proof-producing blocker is
 the shift16 M6 digamma analytic remainder for the first refined subchunk.
 
+## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
+
+Route: PSD-pd/Q3 Step33A.1-A realSinc derivative-majorant interface.
+
+Lean payload added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean
+
+Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs
+Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs_valid
+Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs_providesAnalyticMajorant
+```
+
+Meaning: the already checked analytic bridge
+`Step33Sub0RealSincDerivativeMajorantCert.providesAnalyticMajorant_of_valid`
+now has a concrete proof-grade rational `Valid` payload with
+`prefixN = 0`, `tailAbs = 2`, and `baseAbs = 2` on all rows `0, ..., 17`.
+This is intentionally coarse and only tests the downstream receiver before any
+row-budget tightening.
+
+Browser/Proshka route advice was used as advisory only.  It selected the same
+minimal step: add an isolated named coarse payload before feeding the
+scaled-sinc receiver or optimizing the row budgets.
+
+Validation:
+
+```bash
+lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean
+lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.olean \
+  -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.ilean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean
+```
+
+Note: direct `lake env lean` was not used for the final validation because this
+dirty local checkout currently hangs before Lean at an internal
+`git diff HEAD --exit-code` status check.  The needed stale dependency `.olean`
+for `PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean` was rebuilt
+directly, then the new payload file was checked directly with the same
+toolchain and `LEAN_PATH`.
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+The scaled-sinc receiver is not fed yet.
+The coarse budget may still fail downstream shape-derivative budget checks.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_REALSINC_TO_SCALED_SINC_MAJORANT_GAP
+```
+
 ## Closed / Compiled Local Receivers
 
 Recent checked receiver chain:

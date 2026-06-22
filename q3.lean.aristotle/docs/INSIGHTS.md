@@ -38960,3 +38960,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_VALID_CERT_PAYLOAD_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_SCALED_SINC_RECEIVER_FEED_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincCoarseValidPayloadChecked
+
+- Used the in-app browser / Computer Use to ask Proshka for a focused route
+  check after the analytic `Valid -> ProvidesAnalyticMajorant` bridge was
+  available.  The advisory answer selected the same minimal move: add an
+  isolated proof-grade coarse payload first, and do not feed downstream from a
+  scratch fact.
+- Added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean`.
+- New checked declarations:
+  `Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs`,
+  `Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs_valid`, and
+  `Step33Sub0RealSincDerivativeMajorantCert.coarseTwoBaseAbs_providesAnalyticMajorant`.
+- Meaning: the realSinc derivative majorant interface now has a concrete
+  exact rational `Valid` payload with `prefixN = 0`, `tailAbs = 2`, and
+  `baseAbs = 2` for all rows `0, ..., 17`.  It is intentionally coarse and is
+  a receiver test, not an optimized row-budget certificate.
+- Direct Lean validation passed for the new payload file after rebuilding the
+  stale `.olean` for
+  `PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.  The touched-file
+  hole scan and `git diff --check` are clean.
+- Boundary: the scaled-sinc receiver has not been fed yet, and Step33A.1-A
+  remains open.  If the coarse `2` budget fails downstream, the failure should
+  be recorded as a shape-derivative budget failure, not as a missing realSinc
+  `Valid` payload.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_COARSE_TWO_REALSINC_TO_SCALED_SINC_MAJORANT_GAP`.
+- Possible downstream failure code:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPE_DERIVATIVE_BUDGET_FAIL`.
