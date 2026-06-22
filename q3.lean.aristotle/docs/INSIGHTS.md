@@ -38990,3 +38990,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COARSE_TWO_REALSINC_TO_SCALED_SINC_MAJORANT_GAP`.
 - Possible downstream failure code:
   `STEP33_A1_SUB0_COARSE_TWO_SHAPE_DERIVATIVE_BUDGET_FAIL`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincCoarseScaledShapeFeedChecked
+
+- Added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean`.
+- New checked declarations:
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoScaledAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeAbs`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo`.
+- Meaning: the exact coarse `realSinc` `Valid` payload now feeds the affine
+  scaled-sinc receiver, then the existing Leibniz shape-derivative receiver.
+  The shape-derivative theorem is checked for all `k <= 17` on
+  `eta ∈ Set.Icc 0 (1/10)`.
+- Boundary: the shape budget is exact but symbolic:
+  `‖primaryFiniteRow0Parent0Split100Sub0ShapeNormalizer‖ *
+  powDerivMajorant 11 k primaryFiniteRow0Parent0Split100Sub0CoarseTwoScaledAbs`.
+  This is not yet a rationalized generator payload and does not close the
+  later Taylor/cell certificate fields.
+- Direct Lean validation passed for the new scaled payload file and its
+  `.olean` was rebuilt directly.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPE_BUDGET_RATIONALIZATION_GAP`.

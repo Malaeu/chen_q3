@@ -108,6 +108,54 @@ Next exact gap:
 STEP33_A1_SUB0_COARSE_TWO_REALSINC_TO_SCALED_SINC_MAJORANT_GAP
 ```
 
+## Execution Update (2026-06-22) -- coarse realSinc payload fed through scaled and shape receivers
+
+Route: PSD-pd/Q3 Step33A.1-A realSinc derivative-majorant interface.
+
+Lean receiver feed added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoScaledAbs
+primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_coarseTwo
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeAbs
+primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo
+```
+
+Meaning: the coarse unscaled `realSinc` payload now feeds the existing affine
+scaled-sinc receiver and then the existing Leibniz shape-derivative receiver.
+The resulting shape bound is exact but symbolic:
+
+```lean
+‖primaryFiniteRow0Parent0Split100Sub0ShapeNormalizer‖ *
+  powDerivMajorant 11 k primaryFiniteRow0Parent0Split100Sub0CoarseTwoScaledAbs
+```
+
+Boundary:
+
+```text
+This is not yet a rational generator payload.
+No comparison from the symbolic shape budget to concrete rational shapeAbs
+fields has been proved.
+Step33A.1-A remains open.
+```
+
+Validation:
+
+```bash
+lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.olean \
+  -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.ilean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPE_BUDGET_RATIONALIZATION_GAP
+```
+
 ## Closed / Compiled Local Receivers
 
 Recent checked receiver chain:
