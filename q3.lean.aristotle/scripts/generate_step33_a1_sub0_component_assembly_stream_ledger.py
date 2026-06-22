@@ -42,6 +42,7 @@ OUTPUT_MD = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.md"
 
 SCHEMA = "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1"
 STATUS = "fail_closed_raw_product_coeff_source_gap_after_parameterized_crosswalk"
+STATUS_AFTER_CAUCHY = "fail_closed_raw_product_coeff_source_gap_after_cauchy_bridge"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 ZERO_EXTENSION_GAP = (
@@ -168,6 +169,13 @@ def has_checked_zero_extension_bridge(assembly_text: str) -> bool:
     return symbol_pattern(ZERO_EXTENSION_THEOREM).search(assembly_text) is not None
 
 
+def has_checked_cauchy_product_bridge(assembly_text: str) -> bool:
+    return (
+        symbol_pattern(CAUCHY_PRODUCT_THEOREM).search(assembly_text) is not None
+        and symbol_pattern(CAUCHY_COEFF_DEF).search(assembly_text) is not None
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -225,6 +233,7 @@ def build_report() -> dict[str, Any]:
         assembly_text
     )
     checked_zero_extension_bridge = has_checked_zero_extension_bridge(assembly_text)
+    checked_cauchy_product_bridge = has_checked_cauchy_product_bridge(assembly_text)
     fields = component_field_state(component)
     guard_passes = bool(
         checked_full_crosswalk
@@ -235,7 +244,13 @@ def build_report() -> dict[str, Any]:
 
     return {
         "schema": SCHEMA,
-        "status": "candidate_ready_for_lean_validation" if guard_passes else STATUS,
+        "status": (
+            "candidate_ready_for_lean_validation"
+            if guard_passes
+            else STATUS_AFTER_CAUCHY
+            if checked_cauchy_product_bridge
+            else STATUS
+        ),
         "firstFailure": None if guard_passes else RAW_ASSEMBLY_GAP,
         "localAssemblyGap": None if guard_passes else RAW_ASSEMBLY_GAP,
         "routeLevelGap": TIGHT_ROUTE_GAP,
@@ -243,9 +258,10 @@ def build_report() -> dict[str, Any]:
         "proofBoundary": (
             "A Lean-checked parameterized active-model crosswalk exists, "
             "including the same-degree subtraction bridge and degree-45/"
-            "degree-15 zero-extension bridge.  The proof-grade raw product "
-            "coefficient source and named coefficient objects are still open. "
-            "Step33A.1-A is not closed."
+            "degree-15 zero-extension bridge.  The generic Cauchy product "
+            "coefficient bridge is checked if recorded in the guard below. "
+            "The proof-grade raw product coefficient source and named "
+            "coefficient objects are still open. Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
             "chosen": "A_component_assembly_coefficient_stream_ledger_first",
@@ -409,6 +425,7 @@ def build_report() -> dict[str, Any]:
             "paddedDegree45EqualsActiveDegree15BridgePresent": (
                 checked_zero_extension_bridge
             ),
+            "checkedCauchyProductBridgePresent": checked_cauchy_product_bridge,
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -423,13 +440,24 @@ def build_report() -> dict[str, Any]:
             "canGenerateRows2To15Now": False,
             "canUseParameterizedLeanCrosswalkNow": checked_parameterized_full_crosswalk,
             "canEmitObjectLevelCrosswalkNow": False,
-            "nextFailureIfCauchyBridgeMissing": CAUCHY_PRODUCT_GAP,
+            "nextFailureIfCauchyBridgeMissing": (
+                None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
+            ),
             "nextPatch": (
-                "Prove the generic Cauchy product bridge "
-                "rawOmegaATaylorPolynomial_mul_coeff and define the nominal "
-                "Cauchy coefficient stream.  Only after that build proof-grade "
-                "exact rational assembledRawDerivCoeff and ResidualTaylorCoeff "
-                "objects from the component product stream."
+                "Build proof-grade exact rational assembledRawDerivCoeff and "
+                "ResidualTaylorCoeff objects from the component product stream, "
+                "using rawOmegaTaylorCauchyCoeff for omegaPrime*shapeSq and "
+                "omega*shapeSqDeriv.  Do not spend this bridge as an active "
+                "raw closed-form proof until the scale and component coefficient "
+                "sources are checked in the same normalization."
+                if checked_cauchy_product_bridge
+                else (
+                    "Prove the generic Cauchy product bridge "
+                    "rawOmegaATaylorPolynomial_mul_coeff and define the nominal "
+                    "Cauchy coefficient stream.  Only after that build proof-grade "
+                    "exact rational assembledRawDerivCoeff and ResidualTaylorCoeff "
+                    "objects from the component product stream."
+                )
             ),
             "downstreamAfterThisCloses": [
                 "generate proof-grade ShapeSqDeriv rows 2..15 and order16",

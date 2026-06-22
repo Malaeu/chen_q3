@@ -57,6 +57,163 @@ theorem rawOmegaATaylorPolynomial_sub_coeff
   norm_num
   ring
 
+/-- Cauchy coefficients for the product of two rational Taylor polynomials in
+the same centered variable.
+
+The definition is deliberately pair-indexed instead of range/antidiagonal
+indexed.  This keeps the proof below independent of a later choice of concrete
+component degrees and avoids hiding zero-extension conventions. -/
+def rawOmegaTaylorCauchyCoeff
+    (leftDegree rightDegree : Nat)
+    (leftCoeff : Fin (leftDegree + 1) -> Rat)
+    (rightCoeff : Fin (rightDegree + 1) -> Rat) :
+    Fin (leftDegree + rightDegree + 1) -> Rat :=
+  fun n =>
+    ∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+      if i.1 + j.1 = n.1 then leftCoeff i * rightCoeff j else 0
+
+theorem rawOmegaATaylorPolynomial_mul_coeff
+    (leftDegree rightDegree : Nat) (center : Rat)
+    (leftCoeff : Fin (leftDegree + 1) -> Rat)
+    (rightCoeff : Fin (rightDegree + 1) -> Rat) (eta : Real) :
+    rawOmegaATaylorPolynomial leftDegree center leftCoeff eta *
+        rawOmegaATaylorPolynomial rightDegree center rightCoeff eta =
+      rawOmegaATaylorPolynomial (leftDegree + rightDegree) center
+        (rawOmegaTaylorCauchyCoeff leftDegree rightDegree leftCoeff rightCoeff)
+        eta := by
+  let x : Real := eta - (center : Real)
+  unfold rawOmegaATaylorPolynomial rawOmegaTaylorCauchyCoeff
+  change
+    (∑ i : Fin (leftDegree + 1), (leftCoeff i : Real) * x ^ i.1) *
+        (∑ j : Fin (rightDegree + 1), (rightCoeff j : Real) * x ^ j.1) =
+      ∑ n : Fin (leftDegree + rightDegree + 1),
+        ((∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+          if i.1 + j.1 = n.1 then leftCoeff i * rightCoeff j else 0 :
+            Rat) : Real) *
+          x ^ n.1
+  have hsingle
+      (i : Fin (leftDegree + 1)) (j : Fin (rightDegree + 1)) :
+      (∑ n : Fin (leftDegree + rightDegree + 1),
+          if i.1 + j.1 = n.1 then
+            (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+          else
+            (0 : Real)) =
+        ((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ (i.1 + j.1) := by
+    let n0 : Fin (leftDegree + rightDegree + 1) :=
+      ⟨i.1 + j.1, by omega⟩
+    calc
+      (∑ n : Fin (leftDegree + rightDegree + 1),
+          if i.1 + j.1 = n.1 then
+            (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+          else
+            (0 : Real))
+          =
+        (if i.1 + j.1 = n0.1 then
+          (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n0.1)
+        else
+          (0 : Real)) := by
+          refine
+            Finset.sum_eq_single (s := Finset.univ)
+              (f := fun n : Fin (leftDegree + rightDegree + 1) =>
+                if i.1 + j.1 = n.1 then
+                  (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+                else
+                  (0 : Real))
+              n0 ?_ ?_
+          · intro n _hn hne
+            have hval : i.1 + j.1 ≠ n.1 := by
+              intro h
+              exact hne (Fin.ext h.symm)
+            simp [hval]
+          · intro hn0
+            exact False.elim (hn0 (Finset.mem_univ n0))
+      _ = ((leftCoeff i * rightCoeff j : Rat) : Real) *
+          x ^ (i.1 + j.1) := by
+          simp [n0]
+  calc
+    (∑ i : Fin (leftDegree + 1), (leftCoeff i : Real) * x ^ i.1) *
+        (∑ j : Fin (rightDegree + 1), (rightCoeff j : Real) * x ^ j.1)
+        =
+      ∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+        ((leftCoeff i : Real) * x ^ i.1) *
+          ((rightCoeff j : Real) * x ^ j.1) := by
+        rw [Finset.sum_mul]
+        refine Finset.sum_congr rfl ?_
+        intro i _hi
+        rw [Finset.mul_sum]
+    _ =
+      ∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+        ((leftCoeff i * rightCoeff j : Rat) : Real) *
+          x ^ (i.1 + j.1) := by
+        refine Finset.sum_congr rfl ?_
+        intro i _hi
+        refine Finset.sum_congr rfl ?_
+        intro j _hj
+        rw [pow_add]
+        norm_num
+        ring
+    _ =
+      ∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+        ∑ n : Fin (leftDegree + rightDegree + 1),
+          if i.1 + j.1 = n.1 then
+            (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+          else
+            (0 : Real) := by
+        refine Finset.sum_congr rfl ?_
+        intro i _hi
+        refine Finset.sum_congr rfl ?_
+        intro j _hj
+        exact (hsingle i j).symm
+    _ =
+      ∑ n : Fin (leftDegree + rightDegree + 1),
+        ∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+          if i.1 + j.1 = n.1 then
+            (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+          else
+            (0 : Real) := by
+        calc
+          (∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+              ∑ n : Fin (leftDegree + rightDegree + 1),
+                if i.1 + j.1 = n.1 then
+                  (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+                else
+                  (0 : Real))
+              =
+            ∑ i : Fin (leftDegree + 1), ∑ n : Fin (leftDegree + rightDegree + 1),
+              ∑ j : Fin (rightDegree + 1),
+                if i.1 + j.1 = n.1 then
+                  (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+                else
+                  (0 : Real) := by
+              refine Finset.sum_congr rfl ?_
+              intro i _hi
+              rw [Finset.sum_comm]
+          _ =
+            ∑ n : Fin (leftDegree + rightDegree + 1), ∑ i : Fin (leftDegree + 1),
+              ∑ j : Fin (rightDegree + 1),
+                if i.1 + j.1 = n.1 then
+                  (((leftCoeff i * rightCoeff j : Rat) : Real) * x ^ n.1)
+                else
+                  (0 : Real) := by
+              rw [Finset.sum_comm]
+    _ =
+      ∑ n : Fin (leftDegree + rightDegree + 1),
+        ((∑ i : Fin (leftDegree + 1), ∑ j : Fin (rightDegree + 1),
+          if i.1 + j.1 = n.1 then leftCoeff i * rightCoeff j else 0 :
+            Rat) : Real) *
+          x ^ n.1 := by
+        refine Finset.sum_congr rfl ?_
+        intro n _hn
+        rw [Rat.cast_sum, Finset.sum_mul]
+        refine Finset.sum_congr rfl ?_
+        intro i _hi
+        rw [Rat.cast_sum, Finset.sum_mul]
+        refine Finset.sum_congr rfl ?_
+        intro j _hj
+        by_cases h : i.1 + j.1 = n.1
+        · simp [h]
+        · simp [h]
+
 theorem primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq
     (eta : Real) :
     rawOmegaATaylorPolynomial

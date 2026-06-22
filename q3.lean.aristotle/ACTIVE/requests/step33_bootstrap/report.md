@@ -64882,3 +64882,87 @@ python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_componen
 python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
+
+## 2026-06-22 Execution Update -- Cauchy product bridge checked
+
+Extended the isolated Lean support file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked coefficient definition:
+
+```lean
+rawOmegaTaylorCauchyCoeff
+```
+
+It defines product coefficients for two rational Taylor polynomials in the
+same centered variable by summing over all coefficient pairs `(i,j)` whose
+degrees satisfy `i + j = n`.  The pair-indexed definition is intentional: it
+keeps zero-extension and concrete component-degree choices out of the generic
+bridge.
+
+New Lean-checked theorem:
+
+```lean
+rawOmegaATaylorPolynomial_mul_coeff
+```
+
+It proves, for arbitrary rational degrees, center, and coefficient streams:
+
+```text
+rawOmegaATaylorPolynomial leftDegree center leftCoeff eta
+  * rawOmegaATaylorPolynomial rightDegree center rightCoeff eta
+= rawOmegaATaylorPolynomial (leftDegree + rightDegree) center
+    (rawOmegaTaylorCauchyCoeff leftDegree rightDegree leftCoeff rightCoeff)
+    eta
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_raw_product_coeff_source_gap_after_cauchy_bridge
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP
+rawOmegaTaylorCauchyCoeff found = true
+rawOmegaATaylorPolynomial_mul_coeff found = true
+checkedCauchyProductBridgePresent = true
+```
+
+Boundary: this closes only the generic same-center Cauchy normalization.  It
+does not define proof-grade
+`primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`, does not define
+`primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`, does not prove the
+raw closed-form scale `((3 : Real) / 10) / Real.pi` is represented by a
+rational coefficient stream, and does not close the object-level theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk
+```
+
+Next exact patch:
+
+```text
+Build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff
+objects from the component product stream, using rawOmegaTaylorCauchyCoeff for
+omegaPrime*shapeSq and omega*shapeSqDeriv.  Do not spend this bridge as an
+active raw closed-form proof until the scale and component coefficient sources
+are checked in the same normalization.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+rg -n "sorry|exact\\?|admit|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.md
+```
+
+`bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was attempted, but the script hung at its internal `lake env lean` invocation
+after the direct `LEAN_PATH` Lean check had passed; it was interrupted without
+leaving a running process.

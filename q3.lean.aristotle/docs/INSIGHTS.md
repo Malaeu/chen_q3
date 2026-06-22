@@ -39342,3 +39342,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - If the Cauchy bridge closes but the assembled stream does not match the
   active model, use
   `STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH`.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentCauchyProductBridgeChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked `rawOmegaTaylorCauchyCoeff`, a pair-indexed same-center Cauchy
+  coefficient stream for rational Taylor polynomials.
+- Lean checked `rawOmegaATaylorPolynomial_mul_coeff`, proving the generic
+  product identity in the active `rawOmegaATaylorPolynomial` normalization.
+- Regenerated
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.{json,md}`.
+- New ledger status:
+  `fail_closed_raw_product_coeff_source_gap_after_cauchy_bridge`.
+- First failure remains:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`.
+- Boundary: this is not the object-level active raw-derivative assembly proof.
+  There is still no named proof-grade
+  `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`, no named
+  `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`, and no checked
+  same-normalization bridge from the component Taylor sources plus
+  `((3 : Real) / 10) / Real.pi` scale into exact rational assembled
+  coefficients.
+- Next exact patch: build proof-grade exact rational object coefficients using
+  `rawOmegaTaylorCauchyCoeff` for `omegaPrime*shapeSq` and
+  `omega*shapeSqDeriv`, then promote
+  `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`
+  to the named object-level crosswalk if the active model matches.
+- Local `q3_docs` search found no ready-made Cauchy bridge in the project
+  index; the accepted evidence is the local Lean check, not external search.
+- External search was used only as a non-proof API sanity check for the
+  standard polynomial/Cauchy coefficient shape; the theorem accepted here is
+  the local Lean-checked direct finite-sum bridge.
