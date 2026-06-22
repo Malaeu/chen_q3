@@ -64368,3 +64368,56 @@ Possible downstream failure code:
 ```text
 STEP33_A1_SUB0_COARSE_TWO_COMPONENT_BUDGET_FAIL
 ```
+
+## 2026-06-22 Execution Update -- coarse ShapeSq Taylor payload route killed
+
+Failure code:
+
+```text
+STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL
+```
+
+Advisory review via the in-app browser selected the same local conclusion as
+the Lean surface inspection: the coarse ShapeSq Taylor source is a valid
+interface check, but not a payload closure route.
+
+Checked artifacts retained:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTaylorSource_of_coarseTwo
+primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo
+```
+
+Killed use:
+
+```text
+coarse ShapeSq Taylor source
+  -> full-Taylor Step33A.1-A payload closure
+```
+
+Reason: the live receiver
+`primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound`
+requires a bound on
+`deriv primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual` by
+
+```text
+1866608532757 / 500000000000000000000000000000
+```
+
+The coarse source uses
+`primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff` and a coarse
+remainder with anchor error `1`, so it is not the same residual/certificate
+object as `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`.  Spending it
+as final Step33A.1-A budget would prove a statement about the wrong object.
+
+Decision:
+
+```text
+DO_NOT_FEED_COARSE_SHAPESQ_TAYLOR_SOURCE_INTO_FULL_TAYLOR_LANDING
+```
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP
+```

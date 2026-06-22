@@ -34275,3 +34275,47 @@ Possible downstream failure code:
 ```text
 STEP33_A1_SUB0_COARSE_TWO_COMPONENT_BUDGET_FAIL
 ```
+
+## 2026-06-22 Current EOF State -- coarse ShapeSq Taylor route killed as spendable payload
+
+Failure code:
+
+```text
+STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL
+```
+
+Local verdict: the coarse ShapeSq Taylor source remains Lean-checked and useful
+as an interface test, but it is not spendable evidence for the Step33A.1-A
+landing payload.
+
+Reason: the live full-Taylor receiver consumes the residual derivative of
+`primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual`, with target
+slope
+
+```text
+1866608532757 / 500000000000000000000000000000
+```
+
+from
+`primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound`.
+The coarse source proved in
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo` is for a
+different coefficient object,
+`primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff`, with anchor
+error `1` and derivative remainder inherited from
+`primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqDerivTaylorRemainderAbs`.
+It therefore does not define the residual of
+`primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`, and its budget is far
+outside the live residual-slope target.
+
+Do not feed the coarse ShapeSq Taylor source into the full-Taylor landing
+receiver.  Do not build an alternate coarse
+`RawOmegaATaylorModelCertificate` as Step33A.1-A closure evidence.  The next
+live gate returns to the same-coefficient residual derivative problem for the
+active `RawTaylorCoeffCert`.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP
+```

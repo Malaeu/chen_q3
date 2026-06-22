@@ -455,3 +455,36 @@ proof gap is now the unscaled realSinc derivative-bounds
 payload consumed by the scaled-sinc normalization receiver.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.
+
+## 2026-06-22 Coarse ShapeSq Taylor Payload Route Kill
+
+Failure code:
+
+```text
+STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL
+```
+
+The later checked coarse source
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo` does not
+change the payload verdict in this document.  It checks the ShapeSq Taylor
+receiver interface, but it uses
+`primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff` and a coarse
+remainder, not the active
+`primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual`.
+
+The live full-Taylor payload still needs a same-certificate residual derivative
+bound for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`, with the
+receiver target
+
+```text
+1866608532757 / 500000000000000000000000000000
+```
+
+Do not spend the coarse ShapeSq Taylor source as closure evidence for this
+payload.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP
+```
