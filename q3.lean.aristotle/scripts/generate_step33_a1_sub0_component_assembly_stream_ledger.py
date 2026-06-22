@@ -47,6 +47,7 @@ RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
 )
+CAUCHY_PRODUCT_GAP = "STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP"
 TIGHT_ROUTE_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP"
 )
@@ -81,6 +82,8 @@ ZERO_EXTENSION_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq"
 )
 SUB_COEFF_LEMMA = "rawOmegaATaylorPolynomial_sub_coeff"
+CAUCHY_PRODUCT_THEOREM = "rawOmegaATaylorPolynomial_mul_coeff"
+CAUCHY_COEFF_DEF = "rawOmegaTaylorCauchyCoeff"
 ASSEMBLED_COEFF = "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff"
 RESIDUAL_COEFF = "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff"
 RESIDUAL_COEFF_OF = "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf"
@@ -263,6 +266,26 @@ def build_report() -> dict[str, Any]:
                 "do not set componentTaylorProofsPresent=true without Lean check",
             ],
         },
+        "browserProshkaFollowupDecision": {
+            "chosen": "A_cauchy_product_crosswalk_first",
+            "firstPatchOrTheorem": CAUCHY_PRODUCT_THEOREM,
+            "coefficientDefinition": CAUCHY_COEFF_DEF,
+            "failureCodeIfFails": CAUCHY_PRODUCT_GAP,
+            "mismatchCodeAfterProductBridge": FIRST_FAILURE,
+            "whySmallest": (
+                "Fix the exact degree/factorial/center/Cauchy normalization "
+                "before generating more rows; otherwise bounds can target the "
+                "right function but the wrong polynomial payload."
+            ),
+            "doNot": [
+                "do not set exactCoefficientAssemblyPassed=true",
+                "do not treat rational scaleCenter as exact ((3/10)/Real.pi)",
+                "do not hardcode assembledDegree=45 as the real product degree; "
+                "15-by-16 products give degree 31 before zero-padding",
+                "do not generate tight rows before exact coefficient-ledger comparison",
+                "do not unfold 46-term sums with ring_nf/norm_num",
+            ],
+        },
         "targetTheoremContract": {
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
@@ -342,6 +365,8 @@ def build_report() -> dict[str, Any]:
                     ZERO_EXTENSION_THEOREM,
                     RESIDUAL_COEFF_OF,
                     SUB_COEFF_LEMMA,
+                    CAUCHY_COEFF_DEF,
+                    CAUCHY_PRODUCT_THEOREM,
                     SAME_DEGREE_THEOREM,
                     PARAMETERIZED_FULL_THEOREM,
                     TARGET_THEOREM,
@@ -398,11 +423,13 @@ def build_report() -> dict[str, Any]:
             "canGenerateRows2To15Now": False,
             "canUseParameterizedLeanCrosswalkNow": checked_parameterized_full_crosswalk,
             "canEmitObjectLevelCrosswalkNow": False,
+            "nextFailureIfCauchyBridgeMissing": CAUCHY_PRODUCT_GAP,
             "nextPatch": (
-                "Build proof-grade exact rational assembledRawDerivCoeff and "
-                "ResidualTaylorCoeff objects from the component product stream. "
-                "Then promote the parameterized theorem to the named object-level "
-                "componentTaylor_residualCoeff_crosswalk."
+                "Prove the generic Cauchy product bridge "
+                "rawOmegaATaylorPolynomial_mul_coeff and define the nominal "
+                "Cauchy coefficient stream.  Only after that build proof-grade "
+                "exact rational assembledRawDerivCoeff and ResidualTaylorCoeff "
+                "objects from the component product stream."
             ),
             "downstreamAfterThisCloses": [
                 "generate proof-grade ShapeSqDeriv rows 2..15 and order16",
@@ -443,6 +470,25 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines.append("")
     lines.append("Do not:")
     for item in decision["doNot"]:
+        lines.append(f"- {item}")
+
+    followup = report["browserProshkaFollowupDecision"]
+    lines.extend(
+        [
+            "",
+            "## Browser/Proshka Follow-up Decision",
+            "",
+            f"- chosen: `{followup['chosen']}`",
+            f"- first patch/theorem: `{followup['firstPatchOrTheorem']}`",
+            f"- coefficient definition: `{followup['coefficientDefinition']}`",
+            f"- failure code if fails: `{followup['failureCodeIfFails']}`",
+            f"- mismatch code after product bridge: `{followup['mismatchCodeAfterProductBridge']}`",
+            f"- why smallest: {followup['whySmallest']}",
+            "",
+            "Do not:",
+        ]
+    )
+    for item in followup["doNot"]:
         lines.append(f"- {item}")
 
     target = report["targetTheoremContract"]
@@ -530,6 +576,10 @@ def render_markdown(report: dict[str, Any]) -> str:
     lines.append(
         "- can emit object-level crosswalk now: "
         f"`{final_decision['canEmitObjectLevelCrosswalkNow']}`"
+    )
+    lines.append(
+        "- next failure if Cauchy bridge missing: "
+        f"`{final_decision['nextFailureIfCauchyBridgeMissing']}`"
     )
     lines.append(f"- next patch: {final_decision['nextPatch']}")
     lines.append("")

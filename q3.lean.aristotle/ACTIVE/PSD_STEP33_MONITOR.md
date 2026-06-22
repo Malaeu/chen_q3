@@ -34546,3 +34546,36 @@ Still open: proof-grade exact rational `assembledRawDerivCoeff`,
 `ResidualTaylorCoeff`, and exact raw product coefficient assembly from
 `omegaPrimeCoeff`, `shapeSqCoeff`, `omegaCoeff`, and `shapeSqDerivCoeff`.
 Step33A.1-A remains OPEN.
+
+## 2026-06-22 Current EOF State -- Cauchy product bridge selected next
+
+Browser/Proshka follow-up selected the next proof-moving patch:
+
+```lean
+rawOmegaATaylorPolynomial_mul_coeff
+rawOmegaTaylorCauchyCoeff
+```
+
+Do not define object-level `assembledRawDerivCoeff` yet from nearby
+degree-16/17 sources.  First fix the Cauchy product normalization:
+
+```text
+P_da(a) * P_db(b) = P_(da+db)(cauchy(a,b))
+```
+
+Reason: existing 15-by-16 products give degree 31 before zero-padding, while
+the current ledger convention has `assembledDegree = 45`.  A rational
+`scaleCenter` is also not exact `((3/10)/Real.pi)`.
+
+Next failure code:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP
+```
+
+After that bridge closes, compare the assembled coefficient stream against the
+active residual model.  If it does not match, use:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH
+```

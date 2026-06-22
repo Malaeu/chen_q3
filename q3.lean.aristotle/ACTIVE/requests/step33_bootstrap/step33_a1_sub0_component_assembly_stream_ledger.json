@@ -13,6 +13,21 @@
     "firstPatchOrTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk",
     "whySmallest": "Rows 2..15 can prove bounds for the correct function but still feed the wrong polynomial payload unless the component coefficient stream is first fixed in the active RawTaylorCoeffCert residual convention."
   },
+  "browserProshkaFollowupDecision": {
+    "chosen": "A_cauchy_product_crosswalk_first",
+    "coefficientDefinition": "rawOmegaTaylorCauchyCoeff",
+    "doNot": [
+      "do not set exactCoefficientAssemblyPassed=true",
+      "do not treat rational scaleCenter as exact ((3/10)/Real.pi)",
+      "do not hardcode assembledDegree=45 as the real product degree; 15-by-16 products give degree 31 before zero-padding",
+      "do not generate tight rows before exact coefficient-ledger comparison",
+      "do not unfold 46-term sums with ring_nf/norm_num"
+    ],
+    "failureCodeIfFails": "STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP",
+    "firstPatchOrTheorem": "rawOmegaATaylorPolynomial_mul_coeff",
+    "mismatchCodeAfterProductBridge": "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH",
+    "whySmallest": "Fix the exact degree/factorial/center/Cauchy normalization before generating more rows; otherwise bounds can target the right function but the wrong polynomial payload."
+  },
   "componentAssemblyFormula": {
     "assembledDegree": 45,
     "assembledRawDerivCoeffFormula": "scale * (cauchy(omegaPrimeCoeff, shapeSqCoeff) + cauchy(omegaCoeff, shapeSqDerivCoeff))",
@@ -52,7 +67,8 @@
       "assemble raw derivative residual interval payload",
       "prove the final direct residual interval theorem"
     ],
-    "nextPatch": "Build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff objects from the component product stream. Then promote the parameterized theorem to the named object-level componentTaylor_residualCoeff_crosswalk."
+    "nextFailureIfCauchyBridgeMissing": "STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP",
+    "nextPatch": "Prove the generic Cauchy product bridge rawOmegaATaylorPolynomial_mul_coeff and define the nominal Cauchy coefficient stream.  Only after that build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff objects from the component product stream."
   },
   "firstFailure": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
   "guard": {
@@ -133,9 +149,17 @@
           "found": true,
           "line": 60
         },
+        "rawOmegaATaylorPolynomial_mul_coeff": {
+          "found": false,
+          "line": null
+        },
         "rawOmegaATaylorPolynomial_sub_coeff": {
           "found": true,
           "line": 46
+        },
+        "rawOmegaTaylorCauchyCoeff": {
+          "found": false,
+          "line": null
         }
       }
     },

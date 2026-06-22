@@ -39321,3 +39321,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next patch: build those exact rational coefficient objects from the component
   product stream and then promote the parameterized theorem to the named
   object-level crosswalk.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentCauchyProductBridgeSelected
+
+- Browser/Proshka follow-up selected route `A`: do not define object-level
+  `assembledRawDerivCoeff` immediately from the existing degree-16/17
+  shape-square sources.
+- First prove the generic Cauchy normalization bridge
+  `rawOmegaATaylorPolynomial_mul_coeff`.
+- First define the coefficient operator `rawOmegaTaylorCauchyCoeff`.
+- Reason: the exact degree/factorial/center/Cauchy normalization must be fixed
+  before trusting the assembled coefficient stream; current 15-by-16 products
+  produce degree 31 before zero-padding, while the ledger convention still uses
+  `assembledDegree = 45`.
+- Do not set `exactCoefficientAssemblyPassed=true`, do not treat rational
+  `scaleCenter` as exact `((3/10)/Real.pi)`, and do not unfold the 46-term sums
+  with `ring_nf`/`norm_num`.
+- Next failure code:
+  `STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP`.
+- If the Cauchy bridge closes but the assembled stream does not match the
+  active model, use
+  `STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH`.

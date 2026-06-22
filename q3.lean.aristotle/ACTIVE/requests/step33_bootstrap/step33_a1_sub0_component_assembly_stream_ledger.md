@@ -29,6 +29,22 @@ Do not:
 - do not add a new receiver
 - do not set componentTaylorProofsPresent=true without Lean check
 
+## Browser/Proshka Follow-up Decision
+
+- chosen: `A_cauchy_product_crosswalk_first`
+- first patch/theorem: `rawOmegaATaylorPolynomial_mul_coeff`
+- coefficient definition: `rawOmegaTaylorCauchyCoeff`
+- failure code if fails: `STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP`
+- mismatch code after product bridge: `STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH`
+- why smallest: Fix the exact degree/factorial/center/Cauchy normalization before generating more rows; otherwise bounds can target the right function but the wrong polynomial payload.
+
+Do not:
+- do not set exactCoefficientAssemblyPassed=true
+- do not treat rational scaleCenter as exact ((3/10)/Real.pi)
+- do not hardcode assembledDegree=45 as the real product degree; 15-by-16 products give degree 31 before zero-padding
+- do not generate tight rows before exact coefficient-ledger comparison
+- do not unfold 46-term sums with ring_nf/norm_num
+
 ## Target Theorem Contract
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
@@ -90,6 +106,8 @@ Required coefficient definitions:
 - `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`60`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf`: found=`True`, line=`37`
 - `rawOmegaATaylorPolynomial_sub_coeff`: found=`True`, line=`46`
+- `rawOmegaTaylorCauchyCoeff`: found=`False`, line=`None`
+- `rawOmegaATaylorPolynomial_mul_coeff`: found=`False`, line=`None`
 - `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`132`
 - `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`161`
 - `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`False`, line=`None`
@@ -158,7 +176,8 @@ Required coefficient definitions:
 - can generate rows 2..15 now: `False`
 - can use parameterized Lean crosswalk now: `True`
 - can emit object-level crosswalk now: `False`
-- next patch: Build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff objects from the component product stream. Then promote the parameterized theorem to the named object-level componentTaylor_residualCoeff_crosswalk.
+- next failure if Cauchy bridge missing: `STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP`
+- next patch: Prove the generic Cauchy product bridge rawOmegaATaylorPolynomial_mul_coeff and define the nominal Cauchy coefficient stream.  Only after that build proof-grade exact rational assembledRawDerivCoeff and ResidualTaylorCoeff objects from the component product stream.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16

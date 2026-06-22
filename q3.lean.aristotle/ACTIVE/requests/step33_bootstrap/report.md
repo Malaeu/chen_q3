@@ -64774,6 +64774,53 @@ Next exact patch: build proof-grade exact rational `assembledRawDerivCoeff`
 and `ResidualTaylorCoeff` objects from the component product stream, then
 promote the parameterized theorem to the named object-level crosswalk.
 
+## 2026-06-22 Execution Update -- Cauchy product crosswalk selected next
+
+Browser/Proshka follow-up was queried after the source audit showed a fork:
+either define object-level coefficients immediately from the existing
+degree-16/17 shape-square sources, or first fix the Cauchy product
+normalization.  The answer selected the Cauchy bridge first.
+
+Selected next theorem:
+
+```lean
+rawOmegaATaylorPolynomial_mul_coeff
+```
+
+Selected coefficient definition:
+
+```lean
+rawOmegaTaylorCauchyCoeff
+```
+
+Reason: the exact degree/factorial/center/Cauchy normalization must be fixed
+before any object-level `assembledRawDerivCoeff` is trusted.  Existing
+15-by-16 products produce degree 31 before zero-padding; `assembledDegree = 45`
+must not be treated as a real product degree without a ledger bridge.
+
+Do not:
+
+```text
+do not set exactCoefficientAssemblyPassed=true
+do not treat rational scaleCenter as exact ((3/10)/Real.pi)
+do not hardcode assembledDegree=45 as the real product degree
+do not generate tight rows before exact coefficient-ledger comparison
+do not unfold 46-term sums with ring_nf/norm_num
+```
+
+Next failure code if the generic product bridge is missing:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_CAUCHY_PRODUCT_CROSSWALK_GAP
+```
+
+If the generic product bridge closes but the assembled stream does not match
+the active model, use:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH
+```
+
 ## 2026-06-22 Execution Update -- component assembly same-degree bridge checked
 
 Added isolated Lean support file:
