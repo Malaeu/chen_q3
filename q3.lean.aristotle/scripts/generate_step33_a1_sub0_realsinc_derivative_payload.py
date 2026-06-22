@@ -33,8 +33,12 @@ DEFAULT_OUT_MD = REQUEST_DIR / "step33_a1_sub0_realsinc_derivative_payload.md"
 
 SCHEMA = "q3_psdpd_step33_a1_sub0_realsinc_derivative_payload.v1"
 ROUTE_ID = "STEP33_A1_SUB0_REALSINC_DERIVATIVE_MAJORANT"
-STATUS = "fail_closed_missing_realsinc_iteratedderiv_series_majorant_crosswalk"
-FIRST_FAILURE = "STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP"
+STATUS = (
+    "fail_closed_missing_realsinc_iteratedderiv_series_majorant_rows_1_to_17"
+)
+FIRST_FAILURE = (
+    "STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP"
+)
 LEAN_CONTRACT_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean"
 )
@@ -83,6 +87,7 @@ def row(k: int, prefix_n: int) -> dict[str, Any]:
         "rationalArithmeticChecked": True,
         "tailRatioLeanChecked": True,
         "tailTsumBoundLeanChecked": True,
+        "analyticTsumMajorantLeanChecked": k == 0,
         "analyticCrosswalkPresent": False,
         "proofGrade": False,
         "firstFailure": FIRST_FAILURE,
@@ -106,6 +111,14 @@ def build_payload(prefix_n: int) -> dict[str, Any]:
             "uInterval": ["0", "1/400"],
             "orders": "0..17",
         },
+        "partialAnalyticSupport": {
+            "checkedRows": [0],
+            "checkedTarget": (
+                "||iteratedDeriv 0 realSinc u|| <= tsum_m majorantTerm 0 m"
+            ),
+            "remainingRows": "1..17",
+            "fullBaseAbsBoundPresent": False,
+        },
         "leanInterfaces": {
             "contractFile": LEAN_CONTRACT_FILE,
             "contractFileHash16": file_hash(contract_path),
@@ -122,6 +135,9 @@ def build_payload(prefix_n: int) -> dict[str, Any]:
             ),
             "tailTsumTheorem": (
                 "step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le"
+            ),
+            "row0AnalyticTsumTheorem": (
+                "realSinc_iteratedDeriv_zero_norm_le_tsum_majorant"
             ),
             "scaledReceiverFile": SCALED_RECEIVER_FILE,
             "scaledReceiverFileHash16": file_hash(receiver_path),
@@ -144,6 +160,7 @@ def build_payload(prefix_n: int) -> dict[str, Any]:
             "rationalArithmeticChecked": True,
             "tailRatioLeanChecked": True,
             "tailTsumBoundLeanChecked": True,
+            "analyticTsumMajorantRowsLeanChecked": [0],
             "proofGradeAnalyticMajorantPresent": False,
         },
         "rows": rows,
@@ -160,8 +177,8 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.append(f"- proofGrade: `{payload['proofGrade']}`")
     lines.append(
         "- key point: rational rows are emitted and the consecutive-term tail "
-        "ratio plus `tsum` tail bound are Lean-checked, but the analytic "
-        "`realSinc` derivative crosswalk is not yet proved."
+        "ratio plus `tsum` tail bound are Lean-checked; the row-0 analytic "
+        "`tsum` majorant is Lean-checked, but rows `1..17` are not yet proved."
     )
     lines.append(
         "- tailRatioLeanChecked: "
@@ -182,18 +199,23 @@ def render_markdown(payload: dict[str, Any]) -> str:
     for key, value in payload["arithmetic"].items():
         lines.append(f"- {key}: `{value}`")
     lines.append("")
+    lines.append("## Partial analytic support")
+    lines.append("")
+    for key, value in payload["partialAnalyticSupport"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.append("")
     lines.append("## Rows")
     lines.append("")
     lines.append(
-        "| k | startIndex | prefixN | tailRatioUpper | prefixExactRational | tailAbs | baseAbs | tailRatioLeanChecked | tailTsumBoundLeanChecked | proofGrade |"
+        "| k | startIndex | prefixN | tailRatioUpper | prefixExactRational | tailAbs | baseAbs | tailRatioLeanChecked | tailTsumBoundLeanChecked | analyticTsumMajorantLeanChecked | proofGrade |"
     )
-    lines.append("| --- | ---: | ---: | --- | --- | --- | --- | --- | --- | --- |")
+    lines.append("| --- | ---: | ---: | --- | --- | --- | --- | --- | --- | --- | --- |")
     for item in payload["rows"]:
         lines.append(
             "| {k} | {startIndex} | {prefixN} | `{tailRatioUpper}` | "
             "`{prefixExactRational}` | `{tailAbs}` | `{baseAbs}` | "
             "`{tailRatioLeanChecked}` | `{tailTsumBoundLeanChecked}` | "
-            "`{proofGrade}` |".format(
+            "`{analyticTsumMajorantLeanChecked}` | `{proofGrade}` |".format(
                 **item
             )
         )
@@ -201,12 +223,13 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.append("## Live gap")
     lines.append("")
     lines.append(
-        "`STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`:"
+        "`STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`:"
     )
     lines.append(
-        "prove in Lean that these rational rows majorize "
-        "`||iteratedDeriv k realSinc u||` for all `k : Fin 18` and "
-        "`u in Set.Icc 0 (1/400)`."
+        "prove in Lean that the majorant `tsum` bounds "
+        "`||iteratedDeriv k realSinc u||` for `k = 1..17` and "
+        "`u in Set.Icc 0 (1/400)`.  Row `0` is already checked at the `tsum` "
+        "majorant level, but no generated `Valid.bound` theorem is claimed."
     )
     lines.append("")
     lines.append("Closed arithmetic support:")
@@ -217,6 +240,7 @@ def render_markdown(payload: dict[str, Any]) -> str:
     lines.append(
         "- `step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le`"
     )
+    lines.append("- `realSinc_iteratedDeriv_zero_norm_le_tsum_majorant`")
     lines.append("")
     return "\n".join(lines)
 

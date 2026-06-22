@@ -63275,3 +63275,74 @@ Remaining exact first sub-gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 ```
+
+## 2026-06-22 Execution Update -- realSinc row-0 analytic tsum majorant checked
+
+Local source inventory correction:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+contains:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+realSinc_hasSum_even_powerSeries
+```
+
+Implemented the first analytic crosswalk row in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked Lean objects:
+
+```lean
+step33Sub0RealSincDerivMajorantTerm_zero_eq
+step33Sub0RealSinc_seriesTerm_norm_le_majorant_zero
+realSinc_norm_le_tsum_majorant_zero
+realSinc_iteratedDeriv_zero_norm_le_tsum_majorant
+```
+
+Proof shape:
+
+```text
+realSinc_hasSum_even_powerSeries
+-> norm_tsum_le_tsum_norm
+-> termwise |u|^(2m) <= (1/400)^(2m)
+-> row-0 majorant tsum
+```
+
+Regenerated fail-closed payload:
+
+```text
+status = fail_closed_missing_realsinc_iteratedderiv_series_majorant_rows_1_to_17
+firstFailure =
+  STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+partialAnalyticSupport.checkedRows = [0]
+row0 analyticTsumMajorantLeanChecked = true
+proofGrade = false
+```
+
+Validation:
+
+```text
+direct lean:
+  LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+python3 scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+python3 -m py_compile scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+json sanity:
+  passed; row 0 is checked at the analytic-tsum level, rows 1..17 remain false
+```
+
+Boundary: row `0` is checked only up to the full majorant `tsum`.  No generated
+`Cert.Valid.bound` theorem is claimed, and the scaled-sinc receiver is not fed.
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```

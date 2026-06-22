@@ -38672,3 +38672,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP`.
 - Remaining exact first sub-gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincRow0AnalyticTsumMajorantChecked
+
+- Corrected the local source inventory: the theorem
+  `realSinc_hasSum_even_powerSeries` already exists in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`.
+- Added row-0 analytic support to
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorem:
+  `realSinc_iteratedDeriv_zero_norm_le_tsum_majorant`.
+- It proves, for `u in Set.Icc 0 (1/400)`,
+  `||iteratedDeriv 0 realSinc u|| <= tsum_m majorantTerm 0 m`.
+- Proof pattern: use `realSinc_hasSum_even_powerSeries`, bound the absolute
+  row-0 series term by the exact row-0 majorant using `|u| <= 1/400`, then
+  apply `norm_tsum_le_tsum_norm` and `Summable.tsum_le_tsum`.
+- Regenerated the fail-closed payload with
+  `partialAnalyticSupport.checkedRows = [0]` and
+  `analyticTsumMajorantLeanChecked = true` only for row `0`.
+- Boundary: this is not the final `baseAbs`/`Valid.bound` theorem and does not
+  feed the scaled-sinc receiver.  Rows `1..17` remain open.
+- Remaining exact first sub-gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.

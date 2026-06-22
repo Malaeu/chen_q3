@@ -33653,3 +33653,60 @@ The only active first sub-gap for the realSinc payload is now:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 ```
+
+## 2026-06-22 Current EOF State -- realSinc row-0 analytic tsum majorant checked
+
+Found the real local source theorem in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+```
+
+Existing theorem:
+
+```lean
+realSinc_hasSum_even_powerSeries
+```
+
+Added the first analytic crosswalk row in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked objects:
+
+```lean
+step33Sub0RealSincDerivMajorantTerm_zero_eq
+step33Sub0RealSinc_seriesTerm_norm_le_majorant_zero
+realSinc_norm_le_tsum_majorant_zero
+realSinc_iteratedDeriv_zero_norm_le_tsum_majorant
+```
+
+Meaning:
+
+```text
+for u in Set.Icc 0 (1/400):
+  ||iteratedDeriv 0 realSinc u||
+    <= tsum_m (step33Sub0RealSincDerivMajorantTerm 0 m : Real)
+```
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.md
+status = fail_closed_missing_realsinc_iteratedderiv_series_majorant_rows_1_to_17
+firstFailure =
+  STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+row0 analyticTsumMajorantLeanChecked = true
+proofGrade = false
+```
+
+Boundary: this proves only the row-0 `tsum` majorant.  It does not prove rows
+`1..17`, does not yet assemble a generated `Cert.Valid.bound`, and does not
+feed the scaled-sinc receiver.  The exact first remaining analytic gap is:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```

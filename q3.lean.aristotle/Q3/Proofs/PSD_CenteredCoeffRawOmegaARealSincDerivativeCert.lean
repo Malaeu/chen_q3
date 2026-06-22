@@ -239,6 +239,102 @@ theorem step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le
           (1 - (((1 : Real) / 400) ^ 2)) := by
       simp [div_eq_mul_inv]
 
+/-- Closed form of the row-`0` majorant term. -/
+theorem step33Sub0RealSincDerivMajorantTerm_zero_eq (m : Nat) :
+    (step33Sub0RealSincDerivMajorantTerm 0 m : Real) =
+      (((1 : Real) / 400) ^ (2 * m)) /
+        (Nat.factorial (2 * m + 1) : Real) := by
+  rw [step33Sub0RealSincDerivMajorantTerm_real_eq]
+  unfold step33Sub0RealSincDerivMajorantTermReal
+    step33Sub0RealSincDerivMajorantExponent
+    step33Sub0RealSincDerivMajorantDenominator
+    step33Sub0RealSincDerivMajorantIndex
+    step33Sub0RealSincDerivMajorantStart
+  norm_num
+  rw [show step33Sub0RealSincDerivMajorantExponent 0 m = 2 * m by
+    unfold step33Sub0RealSincDerivMajorantExponent
+      step33Sub0RealSincDerivMajorantIndex
+      step33Sub0RealSincDerivMajorantStart
+    norm_num]
+  rw [show (2 * m + 1).factorial = (2 * m + 1) * (2 * m).factorial by
+    simpa [Nat.succ_eq_add_one, Nat.add_comm, Nat.add_left_comm,
+      Nat.add_assoc] using (Nat.factorial_succ (2 * m))]
+  norm_num
+
+/-- The absolute row-`0` sinc series term is bounded by the row-`0` majorant
+on `0 <= u <= 1/400`. -/
+theorem step33Sub0RealSinc_seriesTerm_norm_le_majorant_zero
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    (m : Nat) :
+    ‖((-1 : Real) ^ m * u ^ (2 * m) /
+        (Nat.factorial (2 * m + 1) : Real))‖ <=
+      (step33Sub0RealSincDerivMajorantTerm 0 m : Real) := by
+  rw [step33Sub0RealSincDerivMajorantTerm_zero_eq]
+  have hu_abs : |u| <= (1 : Real) / 400 := by
+    rw [abs_of_nonneg hu.1]
+    exact hu.2
+  have hpow :
+      |u| ^ (2 * m) <= ((1 : Real) / 400) ^ (2 * m) :=
+    pow_le_pow_left₀ (abs_nonneg u) hu_abs (2 * m)
+  have hden_nonneg :
+      0 <= ((Nat.factorial (2 * m + 1) : Real))⁻¹ := by
+    positivity
+  calc
+    ‖((-1 : Real) ^ m * u ^ (2 * m) /
+        (Nat.factorial (2 * m + 1) : Real))‖
+        = |u| ^ (2 * m) /
+            (Nat.factorial (2 * m + 1) : Real) := by
+          have hfact_pos :
+              0 < (Nat.factorial (2 * m + 1) : Real) := by
+            positivity
+          rw [Real.norm_eq_abs, abs_div, abs_mul, abs_pow]
+          simp [abs_of_pos hfact_pos, div_eq_mul_inv]
+    _ <= ((1 : Real) / 400) ^ (2 * m) /
+          (Nat.factorial (2 * m + 1) : Real) := by
+          exact mul_le_mul_of_nonneg_right hpow hden_nonneg
+
+/-- Row-`0` analytic crosswalk from the sinc series to the exact majorant
+`tsum`.  This closes only the zeroth derivative row. -/
+theorem realSinc_norm_le_tsum_majorant_zero
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400)) :
+    ‖realSinc u‖ <=
+      ∑' m : Nat, (step33Sub0RealSincDerivMajorantTerm 0 m : Real) := by
+  let f : Nat -> Real := fun m : Nat =>
+    ((-1 : Real) ^ m * u ^ (2 * m)) /
+      (Nat.factorial (2 * m + 1) : Real)
+  let g : Nat -> Real := fun m : Nat =>
+    (step33Sub0RealSincDerivMajorantTerm 0 m : Real)
+  have hg : Summable g := by
+    simpa [g] using
+      step33Sub0RealSincDerivMajorantTerm_real_shift_summable 0 0
+  have hfg : ∀ m : Nat, ‖f m‖ <= g m := by
+    intro m
+    simpa [f, g] using
+      step33Sub0RealSinc_seriesTerm_norm_le_majorant_zero hu m
+  have hf : Summable (fun m : Nat => ‖f m‖) := by
+    refine Summable.of_nonneg_of_le (f := g) (g := fun m : Nat => ‖f m‖)
+      ?hNonneg ?hLe hg
+    · intro m
+      exact norm_nonneg _
+    · exact hfg
+  have hsum_norm :
+      ‖∑' m : Nat, f m‖ <= ∑' m : Nat, ‖f m‖ :=
+    norm_tsum_le_tsum_norm hf
+  have hsum_le :
+      (∑' m : Nat, ‖f m‖) <= ∑' m : Nat, g m :=
+    Summable.tsum_le_tsum hfg hf hg
+  have hseries : HasSum f (realSinc u) := by
+    simpa [f] using realSinc_hasSum_even_powerSeries u
+  rw [← hseries.tsum_eq]
+  exact le_trans hsum_norm hsum_le
+
+/-- Zeroth-derivative version of the row-`0` analytic crosswalk. -/
+theorem realSinc_iteratedDeriv_zero_norm_le_tsum_majorant
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400)) :
+    ‖iteratedDeriv 0 realSinc u‖ <=
+      ∑' m : Nat, (step33Sub0RealSincDerivMajorantTerm 0 m : Real) := by
+  simpa [iteratedDeriv] using realSinc_norm_le_tsum_majorant_zero hu
+
 /-- Finite rational certificate surface for the `realSinc` derivative rows
 `k = 0, ..., 17`.
 
