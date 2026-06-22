@@ -1,0 +1,51 @@
+{
+  "checks": {
+    "certifiedRequiredErrorExceedsCurrentSlot": true,
+    "requiredErrorExceedsCurrentSlot": true,
+    "scaleLowerBelowNominal": true,
+    "scaleUpperAboveNominal": true
+  },
+  "decision": "Existing endpoint pi bounds cannot be spent through the current NominalScaleErrorAbs slot.  Do not mark generator exact-assembly fields true from this route; either prove a stronger pi/scale certificate or introduce a new same-unit product-budget cap.",
+  "derived": {
+    "certifiedRequiredScaleError": {
+      "decimal": "0.000000000000000000000000930637",
+      "value": "930637/1000000000000000000000000000000"
+    },
+    "currentScaleError": {
+      "decimal": "0.0000000000000000000000000000005",
+      "value": "1/2000000000000000000000000000000"
+    },
+    "exactRequiredScaleError": {
+      "decimal": "0.00000000000000000000000093063669938709849736116088453406503949563186986558036890481063577793186599517762",
+      "value": "2923681417955561475060893764839/3141592653589793238462674000000000000000000000000000000"
+    },
+    "nominalScale": {
+      "decimal": "0.0954929658551372014613302580235",
+      "value": "190985931710274402922660516047/2000000000000000000000000000000"
+    },
+    "scaleLower": {
+      "decimal": "0.095492965855137201461329327386800612901502638839115465934960504368130134419631095",
+      "value": "150000000000000000000000/1570796326794896619231337"
+    },
+    "scaleUpper": {
+      "decimal": "0.095492965855137201461330968789975618773400029682640172467715921463101403436185393",
+      "value": "15000000000000000000000/157079632679489661923131"
+    }
+  },
+  "failureCode": "STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL",
+  "proofGrade": "RATIONAL_ARITHMETIC_CERT_NOT_LEAN",
+  "schema": "q3_psdpd_step33_a1_sub0_existing_pi_scale_budget_cert.v1",
+  "source": {
+    "piLower": {
+      "decimal": "3.14159265358979323846262",
+      "meaning": "Existing endpoint pi lower bound from PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean",
+      "value": "157079632679489661923131/50000000000000000000000"
+    },
+    "piUpper": {
+      "decimal": "3.141592653589793238462674",
+      "meaning": "Existing endpoint pi upper bound from PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean",
+      "value": "1570796326794896619231337/500000000000000000000000"
+    }
+  },
+  "status": "fail_closed_existing_pi_scale_budget_widening_fail"
+}

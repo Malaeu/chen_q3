@@ -40,6 +40,9 @@ COMPONENT_PAYLOAD_JSON = (
     REQUESTS / "step33_a1_sub0_component_taylor_residual_payload.json"
 )
 TIGHT_PAYLOAD_JSON = REQUESTS / "step33_a1_sub0_shapesq_deriv_tight_payload.json"
+EXISTING_PI_SCALE_BUDGET_CERT_JSON = (
+    REQUESTS / "step33_a1_sub0_existing_pi_scale_budget_cert.json"
+)
 OUTPUT_JSON = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.json"
 OUTPUT_MD = REQUESTS / "step33_a1_sub0_component_assembly_stream_ledger.md"
 
@@ -80,6 +83,9 @@ STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET = (
     "fail_closed_final_scale_product_budget_checked_"
     "generator_exact_assembly_fields_gap"
 )
+STATUS_AFTER_EXISTING_PI_SCALE_BUDGET_FAIL = (
+    "fail_closed_existing_pi_scale_budget_widening_fail"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -111,6 +117,9 @@ FINAL_SCALE_PRODUCT_BUDGET_GAP = (
 )
 GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP"
+)
+EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL = (
+    "STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -579,6 +588,7 @@ def build_report() -> dict[str, Any]:
     endpoint_support_text = read_text(ENDPOINT_SUPPORT_FILE)
     component = load_json(COMPONENT_PAYLOAD_JSON)
     tight = load_json(TIGHT_PAYLOAD_JSON)
+    existing_pi_scale_budget_cert = load_json(EXISTING_PI_SCALE_BUDGET_CERT_JSON)
 
     checked_full_crosswalk = has_checked_full_crosswalk(assembly_text)
     checked_same_degree_crosswalk = has_checked_same_degree_crosswalk(assembly_text)
@@ -633,6 +643,21 @@ def build_report() -> dict[str, Any]:
         product_budget_comparisons_present
         and has_checked_final_scale_product_budget(assembly_text)
     )
+    existing_pi_scale_budget_fail_present = bool(
+        existing_pi_scale_budget_cert
+        and existing_pi_scale_budget_cert.get("failureCode")
+        == EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
+        and nested_get(
+            existing_pi_scale_budget_cert,
+            ["checks", "requiredErrorExceedsCurrentSlot"],
+            False,
+        )
+        and nested_get(
+            existing_pi_scale_budget_cert,
+            ["checks", "certifiedRequiredErrorExceedsCurrentSlot"],
+            False,
+        )
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -672,6 +697,9 @@ def build_report() -> dict[str, Any]:
                 product_budget_comparisons_present
             ),
             "finalScaleProductBudgetPresent": final_scale_product_budget_present,
+            "existingPiScaleBudgetFailPresent": (
+                existing_pi_scale_budget_fail_present
+            ),
         }
     )
     guard_passes = bool(
@@ -686,6 +714,9 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_EXISTING_PI_SCALE_BUDGET_FAIL
+            if final_scale_product_budget_present
+            and existing_pi_scale_budget_fail_present
             else STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET
             if final_scale_product_budget_present
             else STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS
@@ -713,6 +744,9 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
+            if final_scale_product_budget_present
+            and existing_pi_scale_budget_fail_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
             if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
@@ -738,6 +772,9 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
+            if final_scale_product_budget_present
+            and existing_pi_scale_budget_fail_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
             if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
@@ -786,8 +823,49 @@ def build_report() -> dict[str, Any]:
             "checked if recorded in the guard below; final scale/product "
             "arithmetic is checked if recorded in the guard below; generator "
             "exact-assembly coefficient/remainder fields remain separate. "
+            "The existing endpoint-pi route is separately audited by the "
+            "existing-pi scale budget certificate if recorded in the guard; "
+            "do not treat it as the current tight nominal scale-error slot "
+            "unless a same-unit widening cap is proved. "
             "Step33A.1-A is not closed."
         ),
+        "existingPiScaleBudgetCert": {
+            "path": str(EXISTING_PI_SCALE_BUDGET_CERT_JSON.relative_to(ROOT)),
+            "exists": EXISTING_PI_SCALE_BUDGET_CERT_JSON.exists(),
+            "status": (
+                existing_pi_scale_budget_cert.get("status")
+                if existing_pi_scale_budget_cert
+                else None
+            ),
+            "failureCode": (
+                existing_pi_scale_budget_cert.get("failureCode")
+                if existing_pi_scale_budget_cert
+                else None
+            ),
+            "proofGrade": (
+                existing_pi_scale_budget_cert.get("proofGrade")
+                if existing_pi_scale_budget_cert
+                else None
+            ),
+            "checks": (
+                existing_pi_scale_budget_cert.get("checks")
+                if existing_pi_scale_budget_cert
+                else None
+            ),
+            "certifiedRequiredScaleError": nested_get(
+                existing_pi_scale_budget_cert,
+                ["derived", "certifiedRequiredScaleError", "value"],
+            ),
+            "currentScaleError": nested_get(
+                existing_pi_scale_budget_cert,
+                ["derived", "currentScaleError", "value"],
+            ),
+            "decision": (
+                existing_pi_scale_budget_cert.get("decision")
+                if existing_pi_scale_budget_cert
+                else None
+            ),
+        },
         "browserProshkaDecision": {
             "chosen": "A_component_assembly_coefficient_stream_ledger_first",
             "firstPatchOrTheorem": TARGET_THEOREM,
@@ -1066,6 +1144,9 @@ def build_report() -> dict[str, Any]:
             "checkedFinalScaleProductBudgetPresent": (
                 final_scale_product_budget_present
             ),
+            "existingPiScaleBudgetFailPresent": (
+                existing_pi_scale_budget_fail_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -1094,6 +1175,15 @@ def build_report() -> dict[str, Any]:
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
+                "The existing endpoint-pi widening route is fail-closed: "
+                "the exact rational certificate shows the required scale "
+                "error exceeds the current NominalScaleErrorAbs slot.  Next "
+                "prove a stronger pi/scale certificate or introduce a new "
+                "same-unit product-budget cap before reconsidering generator "
+                "exact-assembly fields."
+                if final_scale_product_budget_present
+                and existing_pi_scale_budget_fail_present
+                else
                 "Fill or import proof-grade generator exact-assembly fields "
                 "only after proving that assembledRawDerivCoeff, "
                 "residualTaylorCoeff, and residualTaylorRemainderAbs match "

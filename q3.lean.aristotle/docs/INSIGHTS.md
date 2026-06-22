@@ -39760,3 +39760,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `residualTaylorRemainderAbs` match the checked component assembly and final
   product error budget; do not set `exactCoefficientAssemblyPassed` by
   documentation alone.
+
+## Insight (2026-06-22, Step33A.1-A) -- ExistingPiScaleBudgetWideningKilled
+
+- Used the in-app browser/Computer Use channel to ask Proshka the pi/scale
+  route fork after the final scale/product budget node.  Proshka selected route
+  B: first test whether existing endpoint pi bounds can be spent by widening
+  the active-scale budget, before generating stronger pi witnesses.
+- Added exact rational audit script
+  `q3.lean.aristotle/scripts/certify_step33_a1_sub0_existing_pi_scale_budget.py`
+  and certificate
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_existing_pi_scale_budget_cert.json`.
+- Certificate result:
+  `certifiedRequiredScaleError = 930637/10^30`, while the current nominal
+  scale-error slot is `1/(2*10^30)`.  Therefore the existing endpoint pi route
+  cannot be spent through the current budget.
+- Regenerated component ledger status:
+  `fail_closed_existing_pi_scale_budget_widening_fail`.
+- New first failure:
+  `STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL`.
+- Boundary: this is not a Lean closure and not Step33A.1-A closure.  It kills
+  only the route "use existing endpoint pi bounds in the current nominal
+  scale-error slot"; generator exact-assembly fields remain false.
+- Lean note: an isolated arithmetic Lean file was attempted, but the checkout
+  lacks built `.olean` files for the needed Mathlib pi-bound modules, so
+  `lake env lean` repeatedly entered long source builds.  No unvalidated Lean
+  artifact was kept.
+- Next exact patch: prove a stronger pi/scale certificate for the old tight
+  interval, or prove a new same-unit product-budget cap that can absorb the
+  certified existing-pi scale error.  Do not generate ShapeSqDeriv rows 2..15
+  or set `exactCoefficientAssemblyPassed` from this route.

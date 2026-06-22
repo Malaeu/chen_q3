@@ -65725,3 +65725,84 @@ residualTaylorRemainderAbs match the checked component assembly and final
 product error budget; do not set exactCoefficientAssemblyPassed by
 documentation alone.
 ```
+
+## Execution Update (2026-06-22) -- existing-pi scale budget widening killed
+
+Route: PSD-pd/Q3 Step33A.1-A pi/scale fork review.
+
+Browser/Proshka route review was used for the blocker.  Proshka selected the
+smallest test route:
+
+```text
+CHOSEN: B
+first test: derive an active-scale interval from existing endpoint pi bounds
+and check whether budget widening passes before generating stronger pi
+witnesses.
+```
+
+Local exact rational certificate:
+
+```text
+q3.lean.aristotle/scripts/certify_step33_a1_sub0_existing_pi_scale_budget.py
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_existing_pi_scale_budget_cert.json
+```
+
+Result:
+
+```text
+status = fail_closed_existing_pi_scale_budget_widening_fail
+failureCode = STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
+currentScaleError = 1/2000000000000000000000000000000
+certifiedRequiredScaleError = 930637/1000000000000000000000000000000
+```
+
+Meaning: the existing endpoint pi interval is proof-grade input, but it is too
+wide for the current nominal scale-error slot.  The exact required scale error
+is approximately `9.3063669938709849736116e-25`, and the checked decimal
+ceil certificate uses `930637/10^30`.  The current slot is
+`1/(2*10^30)`.
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not prove a new Lean theorem.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+It kills only the route "spend existing endpoint pi bounds through the current
+nominal scale-error budget".
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_existing_pi_scale_budget_widening_fail
+firstFailure = STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
+checkedFinalScaleProductBudgetPresent = true
+existingPiScaleBudgetFailPresent = true
+guardPasses = false
+```
+
+Validation:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py scripts/certify_step33_a1_sub0_existing_pi_scale_budget.py
+python3 scripts/certify_step33_a1_sub0_existing_pi_scale_budget.py
+python3 scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_existing_pi_scale_budget_cert.json
+```
+
+Lean note: an isolated Lean arithmetic file was attempted, but this checkout
+lacks built `.olean` files for the needed Mathlib pi-bound modules, and direct
+`lake env lean` repeatedly entered long source builds without producing a
+timely proof check.  No unvalidated Lean file was kept.
+
+Next exact patch:
+
+```text
+Either prove a stronger pi/scale certificate that puts ((3/10)/Real.pi) inside
+the old tight scale interval, or introduce and prove a new same-unit
+product-budget cap that can absorb the certified existing-pi scale error.
+Do not mark generator exact-assembly fields true from the existing-pi route.
+```
