@@ -67151,3 +67151,108 @@ a shared generated payload for rows 11..15/order16 appears first.
 The active oracle question card for the next address is
 `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row11_rows12to15_order16.md`.
 ```
+
+## Execution Update (2026-06-22) -- partial-sharp ShapeSqDeriv row 11 checked and local width pass
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Search discipline:
+
+```text
+oracle question address:
+Step33A.1-A.ShapeSqDeriv.rows11to15_order16
+
+q3_docs queries:
+1. Step33A.1-A ShapeSqDeriv row11 rows 12..15 order16 singleAbs
+2. primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv row11 coeffErrorAbs productSum n=12
+3. CoarseTwoShapeProductSum_eq n=12 shapeSq_derivative_abs_of_shape_derivative_abs row11
+```
+
+The semantic search was noisy and did not surface a ready-made row-11 theorem.
+The local rows012345678910 proof exposed the same usable surfaces as before:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+```
+
+Browser/Computer Use escalation:
+
+```text
+The in-app Proshka chat was used as a route-review channel after the old
+width_fail theorem flipped false at row 11.  Proshka chose the same local cut:
+first prove a Lean-checked local width_pass, then route the next step to the
+row11 Taylor-source product bridge.  This browser answer is advice only; it is
+not proof evidence.
+```
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567891011Coeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet11_coarseSmall_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567891011_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011TaylorSource
+primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ShapeSqDerivRows12To15_width_pass
+```
+
+Meaning:
+
+```text
+Row 11 is now proof-grade in the active generated coefficient stream.  It uses
+the existing coarse shape-derivative majorant at exact product order n=12 and
+divides by 11!, instead of spending the global order-17 constant.
+
+The old rows-11-to-15 width-fail theorem is no longer true.  Lean now checks a
+local residual-core width pass for the row11 partial-sharp ShapeSqDeriv source.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not prove finalBudgetPassed.
+This does not rewire the existing P45 bridge.
+The pass theorem covers only the local ShapeSqDeriv remainder contribution used
+by the row-by-row kill tests.  The existing product/P45 bridge still consumes
+primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean
+git diff --check
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean
+```
+
+Direct Lean passed on the new file; `.olean` generation also passed.  The
+hole/axiom scan found no matches, and `git diff --check` passed.  `lake env
+lean` hung silently during environment setup and was interrupted after 60
+seconds.  `q3_check.sh` printed its internal Lean command, then hung and was
+interrupted after 60 seconds.  No successful `lake env lean` or `q3_check`
+result is claimed for this row11 patch.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS01234567891011_TAYLOR_SOURCE_PRODUCT_BRIDGE_GAP
+
+Build the smallest same-source product bridge from
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011TaylorSource
+to the component Taylor product/P45 receiver, or name the exact assembled
+coefficient-stream mismatch.
+
+Active next-address card:
+ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_rows01234567891011_product_bridge.md
+```

@@ -40474,3 +40474,39 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   seconds.  `q3_check.sh` was run through `bash`, printed its internal Lean
   command, then hung and was interrupted after 60 seconds.  No successful
   `lake env lean` or `q3_check` result is claimed for this row10 patch.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivRows01234567891011CheckedProductBridgeGap
+
+- Used the in-app Browser/Computer Use channel to ask Proshka for a route
+  review after the old row11 `width_fail` theorem reduced to `False`.  Proshka
+  chose the same cut that local Lean then checked: prove a local `width_pass`
+  first, then route the next step to the row11 Taylor-source product bridge.
+  Browser output is route advice only, not proof evidence.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567891011Coeff_eq_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet11_coarseSmall_abs`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567891011_valid`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011TaylorSource`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ShapeSqDerivRows12To15_width_pass`.
+- Meaning: row `11` is now proof-grade in the active generated coefficient
+  stream.  It uses the existing coarse shape-derivative majorant at exact
+  product order `n = 12` and divides by `11!`, instead of spending the global
+  order-17 constant.
+- Boundary: Step33A.1-A remains open.  The local `width_pass` covers the
+  ShapeSqDeriv remainder contribution used by the row-by-row kill tests; it
+  does not rewire the existing product/P45 bridge and does not prove
+  `finalBudgetPassed`.
+- New exact live gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS01234567891011_TAYLOR_SOURCE_PRODUCT_BRIDGE_GAP`.
+- Active next-address card:
+  `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_rows01234567891011_product_bridge.md`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new file; `.olean` generation for the new file also passed.  Hole/axiom scan
+  found no matches.  `git diff --check` passed.  `lake env lean` was run and
+  again hung silently during environment setup; it was interrupted after 60
+  seconds.  `q3_check.sh` was run through `bash`, printed its internal Lean
+  command, then hung and was interrupted after 60 seconds.  No successful
+  `lake env lean` or `q3_check` result is claimed for this row11 patch.
