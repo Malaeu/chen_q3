@@ -18166,3 +18166,48 @@ interval-evaluate sin(x)/x through zero cell
 Boundary: the existing generated Sub0 ShapeSqDeriv Taylor source in
 `EndpointRationalImport` is coarse endpoint-bound packaging, not the exact
 series crosswalk needed to derive proof-grade center jets/order-16 rows.
+
+## 2026-06-22 EOF Addendum -- rows0..11 product budget constant fail
+
+Current Step33A.1-A component Taylor state has moved past the old
+ShapeSqDeriv row11/product-bridge gaps:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure
+```
+
+is Lean-checked, but the corresponding product budget final comparison is
+Lean-checked false:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ProductAssemblyErrorBudget_width_fail
+```
+
+Checked file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_PRODUCT_SOURCE_SHARPENING_AFTER_ROWS01234567891011_CONSTANT_FAIL
+```
+
+First checked failure:
+
+```text
+STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_ASSEMBLY_ERROR_BUDGET_CONSTANT_FAIL
+```
+
+Witness term:
+
+```text
+OmegaTaylorRemainderAbs * ShapeSqDerivNominalAbsBudget
+```
+
+Boundary: do not retry the same final comparison under the current source
+class, and do not continue ShapeSqDeriv row crawling as the next blind move.
+The next useful patch must sharpen the Omega/product-error source or change
+the product-error decomposition around the witness term.

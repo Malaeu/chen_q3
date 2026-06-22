@@ -67334,3 +67334,85 @@ STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_COEFF_UNFOLD_GAP
 Active next-address card:
 ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_rows01234567891011_product_budget_final_comparison.md
 ```
+
+## Execution Update (2026-06-22) -- rows0..11 product budget constant fail checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean
+```
+
+Checked arithmetic theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_omegaRemainder_shapeSqDerivNominal_width_fail
+primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ProductAssemblyErrorBudget_width_fail
+```
+
+Meaning:
+
+```text
+The previous final-comparison gap is resolved as a checked constant fail.  Lean
+proves that
+
+  target_width < 2 * Rows01234567891011ProductAssemblyErrorBudget
+
+for the current rows0..11 product source class.
+```
+
+Key witness:
+
+```text
+NominalScaleAbsBound * OmegaTaylorRemainderAbs * ShapeSqDerivNominalAbsBudget
+```
+
+This witness is already too wide and is a positive subterm of the full product
+assembly budget.
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the entire component Taylor route.
+It kills the current rows0..11 product assembly budget class.  Continuing
+ShapeSqDeriv row crawling alone is not the right next patch, because the
+failure witness uses the Omega Taylor remainder multiplied by the nominal
+ShapeSqDeriv abs budget.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+git diff --check
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean
+```
+
+Direct Lean and `.olean` generation passed on the arithmetic file.  The
+hole/axiom scan found no matches and `git diff --check` passed.  `lake env
+lean` hung silently during environment setup and was interrupted after 60
+seconds.  `q3_check.sh` printed its internal Lean command, then hung and was
+interrupted after 60 seconds.  Browser/Computer Use was used to ask Proshka for
+route review; that response guided the split into exact rational arithmetic,
+but proof evidence is the local Lean file only.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_PRODUCT_SOURCE_SHARPENING_AFTER_ROWS01234567891011_CONSTANT_FAIL
+
+Target the witness term:
+  OmegaTaylorRemainderAbs * ShapeSqDerivNominalAbsBudget
+
+Likely repairs:
+  1. sharpen the Omega Taylor remainder source;
+  2. change the product-error decomposition so the Omega remainder is not
+     multiplied by the full ShapeSqDeriv nominal abs budget;
+  3. retry the final product budget comparison only after one of those changes.
+```

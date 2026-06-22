@@ -40544,3 +40544,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   its internal Lean command, then hung and was interrupted after 60 seconds.
   No successful `lake env lean` or `q3_check` result is claimed for this bridge
   patch.
+
+## Insight (2026-06-22, Step33A.1-A) -- Rows01234567891011ProductBudgetConstantFail
+
+- Used the in-app Browser/Computer Use channel to ask Proshka for route review
+  on the stuck final comparison.  Proshka recommended splitting the product
+  budget arithmetic into exact rational evaluation.  This advice is not proof
+  evidence; the accepted evidence is the local Lean file below.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011BudgetArithmetic.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_omegaRemainder_shapeSqDerivNominal_width_fail`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ProductAssemblyErrorBudget_width_fail`.
+- Meaning: the previous final-comparison/unfold gap is resolved as a checked
+  constant fail.  For the current rows0..11 product source class, Lean proves
+  `target_width < 2 * Rows01234567891011ProductAssemblyErrorBudget`.
+- Witness: the subterm
+  `NominalScaleAbsBound * OmegaTaylorRemainderAbs * ShapeSqDerivNominalAbsBudget`
+  is already too wide and sits inside the full product assembly budget.
+- Boundary: Step33A.1-A remains open, and the component Taylor route is not
+  globally killed.  The killed class is the current rows0..11 product assembly
+  budget.  Further ShapeSqDeriv row crawling alone is not the right next patch,
+  because the witness uses the Omega Taylor remainder multiplied by the nominal
+  ShapeSqDeriv abs budget.
+- New exact live gap:
+  `STEP33_A1_SUB0_PRODUCT_SOURCE_SHARPENING_AFTER_ROWS01234567891011_CONSTANT_FAIL`.
+- First checked failure:
+  `STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_ASSEMBLY_ERROR_BUDGET_CONSTANT_FAIL`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  arithmetic file, and `.olean` generation also passed.  Hole/axiom scan found
+  no matches and `git diff --check` passed.  `lake env lean` hung silently
+  during environment setup and was interrupted after 60 seconds.  `q3_check.sh`
+  printed its internal Lean command, then hung and was interrupted after 60
+  seconds.
