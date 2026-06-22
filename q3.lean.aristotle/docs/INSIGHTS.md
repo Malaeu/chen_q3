@@ -39446,3 +39446,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: prove the same-normalization product-error budget for the
   source interval losses before generating ShapeSqDeriv rows `2..15` or
   claiming Step33A.1-A closure.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ProductErrorBudgetBridgePlan
+
+- Target blocker:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP`.
+- Local `q3_docs` search found no ready-made raw-derivative assembly theorem
+  that propagates the nominal scale and omega-anchor interval losses through
+  `omegaPrime*shapeSq + omega*shapeSqDeriv`.
+- Closest local patterns are generic absolute-value/product-budget algebra:
+  prime-side product-budget generators and the checked polynomial/model
+  `abs_mul`/`abs_add` style lemmas in
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+- External Lean/mathlib search was used only as API sanity for absolute-value
+  and ordered-ring inequality names; proof evidence must remain local Lean.
+- Exact next Lean target: add a reusable same-normalization product-error
+  bridge of the shape
+  `|s*p + s*q - sn*pn - sn*qn| <= scaleErr*(pAbs+qAbs)+snAbs*(pErr+qErr)`,
+  with explicit nonnegativity premises and no generated exact-assembly fields.
+- Boundary: this must not set `assembledRawDerivCoeffPresent`,
+  `residualTaylorCoeffPresent`, or `exactCoefficientAssemblyPassed=true`.
+  The concrete component coefficient/remainder budget remains a separate
+  generated arithmetic gate after the algebraic bridge compiles.
