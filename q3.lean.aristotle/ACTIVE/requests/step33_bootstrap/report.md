@@ -67717,3 +67717,215 @@ residualTaylorCoeff polynomial on [0,1/10], in the same
 rawOmegaATaylorPolynomial normalization, before generating or budgeting the
 ComponentProductCancellationResidual certificate.
 ```
+
+## Execution Update (2026-06-22) -- P45 center value kills triangle-split closure
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+The previous checkpoint killed only the coefficient-sum model bound.  The
+bound-input adapter now contains a stronger Lean-checked obstruction: the
+actual P45 residualTaylor polynomial at the Taylor center is already larger
+than the final slope budget.
+
+Updated Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+```
+
+Additional checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCenterAbsRat
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_center_abs_final_slope_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_polynomial_center_abs_final_slope_fail
+```
+
+Critical result:
+
+```text
+Lean proves
+
+  finalSlope <
+  |rawOmegaATaylorPolynomial degree center residualTaylorCoeff center|
+
+at eta = center = 1/20.
+
+Diagnostics from the exact coefficient stream:
+  finalSlope ~= 3.733217e-18
+  |P45 residualTaylor(1/20)| ~= 0.03811309
+```
+
+Meaning:
+
+```text
+The closure attempt that budgets
+
+  deriv residual =
+    residualTaylorCoeff polynomial + ScaledCancellationRhs
+
+by separately bounding the two terms is dead.  The P45 term alone is already
+too large, so no nonnegative scaled-RHS bound can rescue this triangle split.
+Any live route must preserve the cancellation before taking norms/absolute
+values, or replace the model so that the remainder is small in the same unit.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill route B globally.
+This does not prove finalBudgetPassed.
+It kills the current separate triangle-split closure route.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL
+```
+
+Next route-level gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
+
+## PRO_REVIEW_REQUEST
+
+Route: PSD-pd/Q3 Step33A.1-A sub0.
+
+Current step: after scaled cancellation RHS receiver and bound-input adapter.
+
+Current theorem:
+`primaryFiniteRow0Parent0Split100Sub0_residualTaylor_polynomial_center_abs_final_slope_fail`
+
+File:
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`
+
+Lean error / blocker:
+No Lean error.  The blocker is a checked constant-fail theorem: the actual P45
+residualTaylor polynomial at eta = 1/20 already exceeds finalSlope.
+
+Options:
+A. Pivot to a direct combined residual derivative interval/norm certificate on
+   `[0,1/10]`, using one same-expression certificate for
+   `deriv RawTaylorCoeffCert.residual`.
+B. Build an interval/rational certificate for the already checked combined
+   expression `residualTaylor polynomial + ScaledCancellationRhs`, without
+   separately budgeting its terms.
+C. Rechoose `modelDeriv` so the cancellation is absorbed into the model and
+   the remainder is small before any norm is taken.
+D. Other theorem surface.
+
+Codex recommendation:
+A/B are the smallest live surfaces; A is preferable if it can feed the existing
+`hResidualDerivBoundOnCell` receiver directly.  Do not keep trying the separate
+P45 model-bound lane.
+
+Question for Louise:
+Which theorem surface is the smallest and least risky first patch?
+
+Need exact answer:
+`CHOSEN`, `FIRST THEOREM`, `FILE`, `ASSUMPTIONS THAT REMAIN`, `DO_NOT`,
+`NEXT GAP CODE`.
+
+## PRO_REVIEW_RESPONSE (2026-06-22)
+
+Proshka/Louise answer:
+
+```text
+CHOSEN: B
+
+FIRST THEOREM:
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds
+
+FILE:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+
+ASSUMPTIONS THAT REMAIN:
+One proof-grade segmented interval certificate for the whole sum
+  P45 residualTaylor polynomial + ScaledCancellationRhs
+on [0,1/10].
+
+DO_NOT:
+- do not apply triangle inequality to the two summands;
+- do not replace modelDeriv first;
+- do not interval-bound P45 and ScaledCancellationRhs independently;
+- do not use sampled JSON as proof;
+- do not set finalBudgetPassed=true.
+
+NEXT GAP CODE:
+STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
+
+Codex acceptance:
+
+```text
+Accepted as route advice only.  Local proof source remains Lean plus a future
+proof-grade rational/interval certificate.
+```
+
+## Execution Update (2026-06-22) -- combined interval receiver checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_combinedCancellationIntervalExpr
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds
+```
+
+Meaning:
+
+```text
+The new receiver takes a proof-grade interval bound for the combined
+expression
+
+  residualTaylor polynomial + ScaledCancellationRhs
+
+and feeds it to the existing full-Taylor
+cellSlopeExactIntegralProofData receiver.  This preserves the cancellation
+between the large P45 residualTaylor term and the scaled RHS until after the
+interval certificate has been checked.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+No interval certificate is proved here.
+No sampled/probe JSON is used as proof.
+The triangle split remains dead.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+```
+
+Direct Lean passed, `.olean` generation passed, and the hole/axiom scan found
+no matches.

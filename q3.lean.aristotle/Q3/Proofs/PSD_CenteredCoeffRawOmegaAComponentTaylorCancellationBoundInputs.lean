@@ -8,9 +8,10 @@ set_option maxHeartbeats 0
 Bound-input adapter for the Step33A.1-A sub0 cancellation route.
 
 This file does not close the numeric Step33A.1-A budget.  It proves the easy
-same-normalization inputs for the scaled cancellation RHS receiver and reduces
-the remaining live work to a proof-grade cancellation-residual bound plus
-scalar budget comparisons.
+same-normalization inputs for the scaled cancellation RHS receiver, and it
+records two exact constant-fail certificates for the attempted triangle split:
+the coefficient-sum P45 model bound is too large, and even the actual P45
+residualTaylor polynomial at the center already exceeds the final slope.
 -/
 
 noncomputable section
@@ -59,6 +60,40 @@ theorem primaryFiniteRow0Parent0Split100Sub0_residualTaylorModelBound_final_slop
     exact_mod_cast hRat
   simpa [primaryFiniteRow0Parent0Split100Sub0ResidualTaylorModelBound] using
     hReal
+
+def primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCenterAbsRat : Rat :=
+  |primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff 0|
+
+theorem primaryFiniteRow0Parent0Split100Sub0_residualTaylor_center_abs_final_slope_fail_rat :
+    ((1866608532757 : Rat) /
+        500000000000000000000000000000) <
+      primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCenterAbsRat := by
+  native_decide
+
+theorem primaryFiniteRow0Parent0Split100Sub0_residualTaylor_polynomial_center_abs_final_slope_fail :
+    ((1866608532757 : Real) /
+        500000000000000000000000000000) <
+      |rawOmegaATaylorPolynomial
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff
+        (((1 : Rat) / 20 : Rat) : Real)| := by
+  have hRat :=
+    primaryFiniteRow0Parent0Split100Sub0_residualTaylor_center_abs_final_slope_fail_rat
+  have hReal :
+      (((1866608532757 : Rat) /
+          500000000000000000000000000000 : Rat) : Real) <
+        (primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCenterAbsRat :
+          Real) := by
+    exact_mod_cast hRat
+  rw [
+    rawOmegaATaylorPolynomial_center
+      primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+      ((1 : Rat) / 20)
+      primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff]
+  simpa [
+    primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCenterAbsRat,
+    Rat.cast_abs] using hReal
 
 theorem primaryFiniteRow0Parent0Split100Sub0_cell_radius_one_twentieth
     {eta : Real}

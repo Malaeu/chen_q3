@@ -30,17 +30,22 @@ latest_local_theorem_2026_06_22_row11: primaryFiniteRow0Parent0Split100Sub0_shap
 latest_local_theorem_2026_06_22_row11_bridge: primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_component_product_source; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_rows01234567891011ProductSource; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure
 latest_local_theorem_2026_06_22_row11_budget: primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_omegaRemainder_shapeSqDerivNominal_width_fail; primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ProductAssemblyErrorBudget_width_fail
 latest_local_theorem_2026_06_22_cancellation_bridge: primaryFiniteRow0Parent0Split100Sub0_componentProductError_eq_cancellationResidual; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_eq_scale_componentProductActual; primaryFiniteRow0Parent0Split100Sub0_nominalProduct_eq_componentProductNominal
+latest_local_file_2026_06_22_combined_interval: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+latest_local_theorem_2026_06_22_combined_interval: primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_combinedCancellationIntervalExpr; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1
-latest_payload_status_2026_06_22: row11_partial_sharp_source_and_product_bridge_checked_product_budget_constant_fail_cancellation_identity_checked
-latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_DERIV_NORM_SOURCE_GAP
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_ASSEMBLY_ERROR_BUDGET_CONSTANT_FAIL
+latest_payload_status_2026_06_22: combined_cancellation_interval_receiver_checked_p45_center_constant_fail_triangle_split_dead
+latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL
 latest_closed_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_3_4_5_6_7_8_9_10_REMAINDER_WIDTH_FAIL
 latest_closed_success_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_3_4_5_6_7_8_9_10_11_LOCAL_WIDTH_PASS
 latest_closed_success_2026_06_22_bridge: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS01234567891011_TAYLOR_SOURCE_PRODUCT_BRIDGE_CLOSED
 latest_closed_failure_2026_06_22_row11_budget: STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_ASSEMBLY_ERROR_BUDGET_CONSTANT_FAIL
 latest_closed_success_2026_06_22_cancellation_bridge: STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_IDENTITY_CLOSED
-latest_boundary_2026_06_22: A Lean-checked rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source and a Lean-checked same-source product/P45 enclosure bridge now exist, but the full rows0..11 product assembly budget is Lean-killed by `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ProductAssemblyErrorBudget_width_fail`. This is not Step33A.1-A closure. The witness term `NominalScaleAbsBound * OmegaTaylorRemainderAbs * ShapeSqDerivNominalAbsBudget` is already wider than the target interval. A new Lean-checked cancellation identity rewrites the unscaled component-product error as `primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual`; the next missing object is a cancellation-preserving derivative/norm source for that residual.
+latest_closed_failure_2026_06_22_p45_sum_abs: STEP33_A1_SUB0_RESIDUAL_TAYLOR_MODEL_BOUND_CONSTANT_FAIL
+latest_closed_failure_2026_06_22_p45_center: STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL
+latest_boundary_2026_06_22: A Lean-checked rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source, a same-source product/P45 enclosure bridge, a scaled-cancellation RHS receiver, same-normalization bound inputs, and a combined interval receiver now exist. The row11 product assembly budget is Lean-killed, the coefficient-sum P45 residualTaylor model bound is Lean-killed, and the actual P45 residualTaylor polynomial at center eta = 1/20 is itself Lean-killed against finalSlope. This is not Step33A.1-A closure. It kills the separate triangle split `residualTaylor polynomial + ScaledCancellationRhs` as a closure route; the next missing object is a proof-grade interval certificate for the combined expression before any triangle inequality.
 latest_route_review_2026_06_22: Proshka route review via in-app browser chose the cancellation route after the rows0..11 constant fail: do not try blind 1e12 Omega sharpening, do not continue rows12..15 as the immediate repair, and first build a cancellation-residual bridge. Codex accepted only the Lean-checked local theorem.
+latest_route_review_2026_06_22_triangle_split: Browser/Computer Use PRO_REVIEW_REQUEST sent after the P45 center constant fail. Proshka chose route B: build an interval/rational certificate for the combined expression `residualTaylor polynomial + ScaledCancellationRhs`, not separate bounds and not model replacement first. Codex accepted this only as route advice and added the checked local receiver.
 latest_browser_note_2026_06_22: Browser/Computer Use was used as the escalation/review channel; it confirmed the route shape but is not proof evidence.
 
 next_theorem_targets:
@@ -35495,4 +35500,145 @@ Direct Lean with the local .lake library path passed on the new bound-input
 file.
 .olean generation passed.
 Hole/axiom scan found no matches.
+```
+
+## 2026-06-22 Current EOF State -- P45 center value kills triangle split
+
+The bound-input adapter now contains a stronger constant-fail certificate than
+the coefficient-sum model failure.  The actual P45 residualTaylor polynomial at
+the Taylor center already exceeds the final slope budget.
+
+Additional checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCenterAbsRat
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_center_abs_final_slope_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_polynomial_center_abs_final_slope_fail
+```
+
+Meaning:
+
+```text
+At eta = 1/20,
+
+  finalSlope <
+  |rawOmegaATaylorPolynomial degree center residualTaylorCoeff center|
+
+where finalSlope =
+  1866608532757 / 500000000000000000000000000000.
+
+Diagnostics from the exact coefficient stream:
+  finalSlope ~= 3.733217e-18
+  |P45 residualTaylor(1/20)| ~= 0.03811309
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the whole Step33A.1-A route.
+It kills the separate triangle-split closure route
+
+  deriv residual =
+    residualTaylor polynomial + ScaledCancellationRhs
+
+when the two terms are budgeted independently.  The P45 term is already too
+large before any scaled-cancellation RHS budget is added.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL
+```
+
+Next route-level gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
+
+Required next proof object:
+
+```text
+A proof-grade interval certificate for the combined expression
+`residualTaylor polynomial + ScaledCancellationRhs` on [0,1/10], before any
+norm/absolute-value triangle split is taken.
+```
+
+Escalation:
+
+```text
+Browser/Computer Use PRO_REVIEW_REQUEST was sent to Proshka/Louise asking
+whether to choose direct combined residual derivative interval certificate,
+direct interval certificate for residualTaylor polynomial + ScaledCancellationRhs,
+or a modelDeriv replacement.  Proshka chose the direct interval certificate for
+the combined expression.  Browser advice remains advisory only; Lean and
+proof-grade rational/interval certificates remain the proof source.
+```
+
+## 2026-06-22 Current EOF State -- combined interval receiver checked
+
+Proshka/Louise selected route B after the center-value constant fail: do not
+continue the separate triangle split, and do not replace the model first.
+Instead, build one interval/rational certificate for the combined expression
+that already contains the cancellation:
+
+```text
+residualTaylor polynomial + ScaledCancellationRhs
+```
+
+Additional Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_combinedCancellationIntervalExpr
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds
+```
+
+Meaning:
+
+```text
+If a future certificate proves the combined expression lies in the existing
+one-segment interval
+
+  [-94119513411 / 500000000000000000000000000000,
+    1866608532757 / 500000000000000000000000000000]
+
+on eta in [0,1/10], Lean now feeds that directly to the full-Taylor
+cellSlopeExactIntegralProofData receiver.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+No interval certificate has been generated or accepted here.
+No sampled JSON is used as proof.
+The only remaining payload at this surface is the proof-grade combined
+interval certificate.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
+```
+
+Validation:
+
+```text
+Direct Lean with the local .lake library path passed on the new combined
+interval file.
+.olean generation passed for the updated bound-input file and the new combined
+interval file.
+Hole/axiom scan found no matches in those two files.
 ```

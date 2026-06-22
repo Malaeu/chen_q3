@@ -40766,3 +40766,52 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Validation: direct Lean with the local `.lake` library path passed on the
   new bound-input file, `.olean` generation passed, and the hole/axiom scan
   found no matches.
+
+## Insight (2026-06-22, Step33A.1-A) -- P45CenterValueKillsTriangleSplit
+
+- Updated
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`.
+- Lean checked the stronger center-value obstruction
+  `primaryFiniteRow0Parent0Split100Sub0_residualTaylor_polynomial_center_abs_final_slope_fail`
+  and its rational witness
+  `primaryFiniteRow0Parent0Split100Sub0_residualTaylor_center_abs_final_slope_fail_rat`.
+- Meaning: at eta = 1/20, the actual P45 residualTaylor polynomial already
+  exceeds finalSlope.  Diagnostics from the exact coefficient stream:
+  `finalSlope ~= 3.733217e-18`,
+  `|P45 residualTaylor(1/20)| ~= 0.03811309`.
+- This is stronger than the previous coefficient-sum kill.  It kills the
+  separate triangle-split closure route
+  `deriv residual = residualTaylor polynomial + ScaledCancellationRhs` when
+  the two terms are budgeted independently.
+- Boundary: this does not kill Step33A.1-A route B globally and does not prove
+  `finalBudgetPassed`.  It says the next proof must preserve cancellation
+  before taking norms/absolute values, or replace the model so the remainder is
+  small in the same unit.
+- Browser/Computer Use was used to send a `PRO_REVIEW_REQUEST` asking Proshka
+  to choose among direct combined residual derivative interval certificate,
+  direct combined expression certificate, or model replacement.  Proshka chose
+  route B: direct interval/rational certificate for the combined expression
+  `residualTaylor polynomial + ScaledCancellationRhs`.
+- New exact blocker:
+  `STEP33_A1_SUB0_P45_RESIDUAL_TAYLOR_CENTER_CONSTANT_FAIL`.
+- New route-level gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationIntervalReceiverChecked
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_combinedCancellationIntervalExpr`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds`,
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds`.
+- Meaning: a future proof-grade interval certificate for the combined
+  expression on `[0,1/10]` now feeds the existing full-Taylor
+  `cellSlopeExactIntegralProofData` receiver directly.
+- Boundary: no interval certificate is proved here, no sampled JSON is used as
+  proof, and Step33A.1-A is not closed.
+- Next exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`.
