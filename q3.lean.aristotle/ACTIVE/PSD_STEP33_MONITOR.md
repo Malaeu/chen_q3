@@ -18,7 +18,7 @@ h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
 latest_local_step_2026_06_22: Browser/Proshka route review pinned the next proof-producing route to tight same-coefficient ShapeSqDeriv payload first, not a monolithic residual interval theorem
-latest_local_file_2026_06_22: q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}
+latest_local_file_2026_06_22: q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}, and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md
 latest_local_theorem_2026_06_22: target only -- primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
 latest_payload_status_2026_06_22: fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source
@@ -34358,3 +34358,45 @@ active `RawTaylorCoeffCert` residual derivative bound.
 Do not attack
 `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval`
 directly before this tight source and the coefficient-assembly crosswalk exist.
+
+## 2026-06-22 Current EOF State -- tight ShapeSqDeriv payload contract added
+
+Added the fail-closed contract document:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md
+```
+
+The file records the next proof-producing target without emitting Lean:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
+```
+
+Current route-level gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+```
+
+Current local first failure:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP
+```
+
+Extra guard before Lean emission:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP
+```
+
+Meaning: before any theorem named
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid` is emitted, the
+generator must identify the exact tight coefficient stream and prove or record
+that it feeds the same active `RawTaylorCoeffCert.residual` convention.  If the
+stream cannot be identified, stop at the coefficient-stream gap rather than
+creating another receiver or a theorem about a different object.
+
+Status boundary: Step33A.1-A remains OPEN; this is a contract/checkpoint only,
+not Lean proof data.

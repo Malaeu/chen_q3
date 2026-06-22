@@ -39190,3 +39190,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch:
   `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, with tight
   same-coefficient rows `2..15` plus the order-16 bound.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivTightPayloadContractAdded
+
+- Added
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md`.
+- Status: fail-closed contract/checkpoint only; no Lean theorem was emitted and
+  Step33A.1-A remains open.
+- Target theorem shape:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`.
+- Current route-level gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`.
+- Current local first failure:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP`.
+- New guard before Lean emission:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP`.
+- Meaning: the next generator must identify the tight coefficient stream and
+  show it matches the active `RawTaylorCoeffCert.residual` coefficient
+  convention.  If that source is missing, stop at the coefficient-stream guard
+  instead of adding a receiver or proving a theorem about a different object.

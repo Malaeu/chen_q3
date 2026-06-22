@@ -64523,3 +64523,47 @@ Note: a fresh `lake env lean` run on
 stopped after more than 11 minutes with no output.  No Lean proof file was
 modified in this update; the generated report records existing local theorem
 names and hashes only.
+
+## 2026-06-22 Execution Update -- tight ShapeSqDeriv payload contract added
+
+Added a fail-closed contract file:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md
+```
+
+This is not Lean proof data and does not close Step33A.1-A.  It records the
+next local proof-producing theorem shape:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
+```
+
+The contract keeps the current route-level gap:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+```
+
+and the current local first failure:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP
+```
+
+It also adds the stop-before-Lean guard:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP
+```
+
+Meaning: before emitting any `shapeSqDeriv_tight_valid` theorem, the generator
+must identify the tight coefficient stream and confirm that it is the same
+coefficient convention consumed by the active
+`primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual`.  If that
+source is not identifiable, the next patch must fail closed at the coefficient
+stream guard.
+
+Boundary: do not add another receiver, do not use the coarse zero-coefficient
+payload, and do not attack the final same-expression residual interval before
+the tight source and same-coefficient crosswalk exist.
