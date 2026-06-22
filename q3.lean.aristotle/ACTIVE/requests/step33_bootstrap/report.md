@@ -156,6 +156,62 @@ Next exact gap:
 STEP33_A1_SUB0_COARSE_TWO_SHAPE_BUDGET_RATIONALIZATION_GAP
 ```
 
+## Execution Update (2026-06-22) -- coarse shape budget rationalized
+
+Route: PSD-pd/Q3 Step33A.1-A shape-derivative majorant interface.
+
+Lean rationalization added in:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+
+powDerivMajorant_const_two
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeRatAbs
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeRationalAbs
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeAbs_le_rationalAbs
+primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational
+```
+
+Meaning: the symbolic shape-derivative budget induced by the coarse realSinc
+payload is now bounded by the rational formula:
+
+```lean
+(2 : Rat) ^ (12 : Nat) * (12 : Rat) ^ k
+```
+
+The proof uses a closed form for the recursive Leibniz majorant
+`powDerivMajorant p n (fun _ => 2)` and a local proof that the primary `k=11`
+shape normalizer has norm at most `1`.  It does not depend on a stale exported
+normalizer theorem from `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`.
+
+Validation:
+
+```bash
+lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.olean \
+  -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.ilean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+```
+
+Boundary:
+
+```text
+The shape derivative now has a rational majorant.
+No ShapeSqDerivTaylorIntervalCert.Valid payload has been built from it yet.
+Step33A.1-A remains open.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_INTERVAL_PAYLOAD_GAP
+```
+
 ## Closed / Compiled Local Receivers
 
 Recent checked receiver chain:

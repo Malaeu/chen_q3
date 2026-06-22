@@ -17,13 +17,13 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: realSinc coarse payload fed through scaled-sinc and symbolic shape derivative receivers
+latest_local_step_2026_06_22: realSinc coarse payload rationalized through shape derivative receiver
 latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
-latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo
+latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
-latest_payload_status_2026_06_22: coarseTwoBaseAbs_scaled_and_symbolic_shape_receivers_checked
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_COARSE_TWO_SHAPE_BUDGET_RATIONALIZATION_GAP
-latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0, radius top, all-index/even-odd HasSum, HasFPowerSeriesOnBall 0 1, iteratedDeriv = factorial * changeOriginSeries.sum on [0,1/400], live-term norm <= rational majorant, odd total-degree zero after k!, even/odd all-exponent tsum reindex to live majorant, realSinc iterated-derivative row bound by live rational tsum, Valid -> ProvidesAnalyticMajorant, concrete coarseTwoBaseAbs Valid payload, affine scaled-sinc feed, and symbolic shape-derivative receiver feed are checked; no rationalized shapeAbs/payload comparison is proved yet and Step33A.1-A remains open
+latest_payload_status_2026_06_22: coarseTwoBaseAbs_scaled_shape_rational_receiver_checked
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_INTERVAL_PAYLOAD_GAP
+latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0, radius top, all-index/even-odd HasSum, HasFPowerSeriesOnBall 0 1, iteratedDeriv = factorial * changeOriginSeries.sum on [0,1/400], live-term norm <= rational majorant, odd total-degree zero after k!, even/odd all-exponent tsum reindex to live majorant, realSinc iterated-derivative row bound by live rational tsum, Valid -> ProvidesAnalyticMajorant, concrete coarseTwoBaseAbs Valid payload, affine scaled-sinc feed, symbolic shape-derivative receiver feed, and rational shape bound `2^12 * 12^k` are checked; no ShapeSqDerivTaylorIntervalCert payload is proved yet and Step33A.1-A remains open
 latest_route_review_2026_06_22: Browser/Proshka channel was used for route advice; actionable advisory matched adding an isolated proof-grade coarse payload first, while proof truth remains only the Lean-checked certificate and receiver feeds
 
 next_theorem_targets:

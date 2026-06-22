@@ -39013,3 +39013,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `.olean` was rebuilt directly.
 - Next exact sub-gap:
   `STEP33_A1_SUB0_COARSE_TWO_SHAPE_BUDGET_RATIONALIZATION_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincCoarseShapeBudgetRationalized
+
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean`.
+- New checked declarations:
+  `powDerivMajorant_const_two`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeRatAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeRationalAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeAbs_le_rationalAbs`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_coarseTwo_rational`.
+- Meaning: the coarse realSinc payload now gives a rational shape-derivative
+  majorant `2^12 * 12^k` for all `k <= 17` on `eta ∈ Set.Icc 0 (1/10)`.
+  This closes the previous symbolic shape-budget rationalization gap.
+- The proof avoids relying on a stale exported normalizer lemma: it proves
+  locally that the primary `k=11` shape normalizer has norm at most `1`, using
+  `bsplineAutocorrNorm_11_exact`, `bsplineScale`, positivity, and
+  `Real.le_sqrt`.
+- Direct Lean validation and `.olean` rebuild passed for the scaled payload
+  file.  The touched-file hole scan and `git diff --check` are clean.
+- Boundary: no `ShapeSqDerivTaylorIntervalCert.Valid` payload has been built
+  from the rational shape majorant yet, so Step33A.1-A remains open.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_INTERVAL_PAYLOAD_GAP`.
