@@ -63640,3 +63640,64 @@ Remaining broad gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Execution Update -- realSinc local formal power-series source checked
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_hasFPowerSeriesAt_zero
+```
+
+New checked layer:
+
+```text
+HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0
+```
+
+New checked objects:
+
+```lean
+step33SinCoeff
+step33SinFormalSeries
+step33SinCoeff_two_mul
+step33SinCoeff_two_mul_add_one
+step33SinCoeff_eq_iteratedDeriv_sin_div_factorial
+step33SinFormalSeries_coeff_eq_iteratedDeriv_sin_div_factorial
+step33SinFormalSeries_hasFPowerSeriesAt_zero
+step33SinFormalSeries_fslope_eq_realSincFormalSeries
+step33RealSincFormalSeries_hasFPowerSeriesAt_zero
+```
+
+Proof route: use `Real.analyticAt_sin.hasFPowerSeriesAt`, prove the named sine
+coefficient scaffold equals the normalized iterated derivatives at zero using
+`Real.iteratedDeriv_even_sin` and `Real.iteratedDeriv_odd_sin`, then apply the
+existing `realSinc_hasFPowerSeriesAt_zero_of_sin` fslope bridge.
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+```
+
+Boundary: this closes only the local formal power-series source.  It does not
+provide an explicit `HasFPowerSeriesOnBall` radius covering `0 <= u <= 1/400`,
+does not convert the source to `iteratedDeriv k realSinc u` majorants for
+rows `1..17`, and does not feed the scaled-sinc receiver.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```

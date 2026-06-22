@@ -17,13 +17,13 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: realSinc live changeOrigin parity/factorial bridge checked
+latest_local_step_2026_06_22: realSinc local formal power-series source checked
 latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
-latest_local_theorem_2026_06_22: step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_live_index
+latest_local_theorem_2026_06_22: step33RealSincFormalSeries_hasFPowerSeriesAt_zero
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
 latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP
-latest_boundary_2026_06_22: live changeOrigin parity/factorial normalization is checked; no HasFPowerSeries-to-iteratedDeriv majorant / rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP
+latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0 is checked; no explicit on-ball radius covering 0..1/400 / iteratedDeriv majorant rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
 latest_route_review_2026_06_22: Proshka chose RealSincDerivativeMajorantCert route; first sub-gap is STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 
 next_theorem_targets:
@@ -33972,6 +33972,54 @@ Next exact sub-gap:
 
 ```text
 STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Current EOF State -- realSinc local formal power-series source checked
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_hasFPowerSeriesAt_zero
+```
+
+New checked layer:
+
+```text
+HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0
+```
+
+Supporting checked objects:
+
+```lean
+step33SinCoeff
+step33SinFormalSeries
+step33SinCoeff_eq_iteratedDeriv_sin_div_factorial
+step33SinFormalSeries_hasFPowerSeriesAt_zero
+step33SinFormalSeries_fslope_eq_realSincFormalSeries
+```
+
+Meaning: the named all-index `realSinc` formal-series scaffold is now a real
+local power-series source, obtained from `Real.analyticAt_sin`, the checked
+sin iterated-derivative coefficients, and the existing local
+`realSinc_hasFPowerSeriesAt_zero_of_sin` bridge.
+
+Boundary: this closes the local `HasFPowerSeriesAt` source only.  It does not
+prove an explicit `HasFPowerSeriesOnBall` radius covering `0 <= u <= 1/400`,
+does not convert the series to `iteratedDeriv k realSinc u` majorants for
+rows `1..17`, and does not feed the scaled-sinc receiver.
+
+Validation: direct Lean passed; touched-file hole scan is clean.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP
 ```
 
 Remaining broad gap:

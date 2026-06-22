@@ -38798,3 +38798,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincFormalPowerSeriesSourceChecked
+
+- Used the in-app browser / Computer Use to read the active Proshka advisory:
+  route B remains preferred, but the local Mathlib surface exposes
+  `HasFPowerSeriesOnBall.factorial_smul`; the named
+  `iteratedFDeriv_eq_sum` appears only as a comment in this Mathlib snapshot.
+- Lean now checks the local formal power-series source in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorem:
+  `step33RealSincFormalSeries_hasFPowerSeriesAt_zero`.
+- Supporting checked objects:
+  `step33SinCoeff`, `step33SinFormalSeries`,
+  `step33SinCoeff_eq_iteratedDeriv_sin_div_factorial`,
+  `step33SinFormalSeries_hasFPowerSeriesAt_zero`, and
+  `step33SinFormalSeries_fslope_eq_realSincFormalSeries`.
+- Meaning: `step33RealSincFormalSeries` is now proved to be a local
+  `HasFPowerSeriesAt` source for `realSinc` at zero, via
+  `Real.analyticAt_sin`, checked sine iterated-derivative coefficients, and
+  the existing `realSinc_hasFPowerSeriesAt_zero_of_sin` fslope bridge.
+- Direct Lean validation passed for the touched file and the touched-file hole
+  scan is clean.
+- Boundary: this is not a rows `1..17` derivative majorant proof.  It does not
+  provide an explicit `HasFPowerSeriesOnBall` radius covering `0 <= u <= 1/400`,
+  does not convert the source to `iteratedDeriv k realSinc u` majorants, and
+  does not feed the scaled-sinc receiver.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.

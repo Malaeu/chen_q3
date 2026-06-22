@@ -47,6 +47,94 @@ theorem step33RealSincFormalSeries_coeff (n : Nat) :
     step33RealSincFormalSeries.coeff n = step33RealSincCoeff n := by
   simp [step33RealSincFormalSeries, FormalMultilinearSeries.coeff_ofScalars]
 
+/-- All-index scalar coefficient for the sine power series.  Even
+coefficients vanish; the odd coefficient `2*m+1` is
+`(-1)^m / (2*m+1)!`. -/
+def step33SinCoeff (n : Nat) : Real :=
+  if n % 2 = 1 then
+    ((-1 : Real) ^ (n / 2)) / (Nat.factorial n : Real)
+  else
+    0
+
+/-- The `FormalMultilinearSeries` surface for the all-index sine
+coefficients.  Its `fslope` is the named `realSinc` scaffold. -/
+noncomputable def step33SinFormalSeries :
+    FormalMultilinearSeries Real Real Real :=
+  FormalMultilinearSeries.ofScalars Real step33SinCoeff
+
+/-- Even coefficients of the all-index sine series vanish. -/
+theorem step33SinCoeff_two_mul (m : Nat) :
+    step33SinCoeff (2 * m) = 0 := by
+  unfold step33SinCoeff
+  have hmod : (2 * m) % 2 ≠ 1 := by
+    rw [Nat.mul_mod_right]
+    norm_num
+  rw [if_neg hmod]
+
+/-- Odd coefficients of the all-index sine series. -/
+theorem step33SinCoeff_two_mul_add_one (m : Nat) :
+    step33SinCoeff (2 * m + 1) =
+      ((-1 : Real) ^ m) / (Nat.factorial (2 * m + 1) : Real) := by
+  unfold step33SinCoeff
+  have hmod : (2 * m + 1) % 2 = 1 := by
+    rw [show 2 * m + 1 = 1 + 2 * m by omega]
+    rw [Nat.add_mul_mod_self_left]
+  have hdiv : (2 * m + 1) / 2 = m := by omega
+  rw [if_pos hmod, hdiv]
+
+/-- The sine coefficients are the normalized iterated derivatives at zero. -/
+theorem step33SinCoeff_eq_iteratedDeriv_sin_div_factorial (n : Nat) :
+    step33SinCoeff n =
+      iteratedDeriv n Real.sin (0 : Real) / (Nat.factorial n : Real) := by
+  rcases Nat.even_or_odd n with hEven | hOdd
+  · rcases hEven with ⟨m, hm⟩
+    subst n
+    have hcoeff : step33SinCoeff (m + m) = 0 := by
+      simpa [two_mul] using step33SinCoeff_two_mul m
+    rw [hcoeff]
+    have hderiv : iteratedDeriv (m + m) Real.sin (0 : Real) = 0 := by
+      simpa [two_mul] using
+        congrFun (Real.iteratedDeriv_even_sin m) (0 : Real)
+    rw [hderiv]
+    simp
+  · rcases hOdd with ⟨m, hm⟩
+    subst n
+    rw [step33SinCoeff_two_mul_add_one]
+    have hderiv :
+        iteratedDeriv (2 * m + 1) Real.sin (0 : Real) =
+          (-1 : Real) ^ m := by
+      simp
+    rw [hderiv]
+
+/-- Coefficients of the scaffolded sine formal series are the normalized
+iterated derivatives at zero. -/
+theorem step33SinFormalSeries_coeff_eq_iteratedDeriv_sin_div_factorial
+    (n : Nat) :
+    step33SinFormalSeries.coeff n =
+      iteratedDeriv n Real.sin (0 : Real) / (Nat.factorial n : Real) := by
+  rw [step33SinFormalSeries, FormalMultilinearSeries.coeff_ofScalars,
+    step33SinCoeff_eq_iteratedDeriv_sin_div_factorial]
+
+/-- The named sine formal series is a local power series for `Real.sin` at
+zero. -/
+theorem step33SinFormalSeries_hasFPowerSeriesAt_zero :
+    HasFPowerSeriesAt Real.sin step33SinFormalSeries (0 : Real) := by
+  have hAnalytic : AnalyticAt Real Real.sin (0 : Real) := Real.analyticAt_sin
+  have hraw : HasFPowerSeriesAt Real.sin
+      (FormalMultilinearSeries.ofScalars Real
+        (fun n : Nat =>
+          iteratedDeriv n Real.sin (0 : Real) / (Nat.factorial n : Real)))
+      (0 : Real) :=
+    hAnalytic.hasFPowerSeriesAt
+  convert hraw using 1
+  ext n
+  change step33SinFormalSeries.coeff n =
+    (FormalMultilinearSeries.ofScalars Real
+      (fun n : Nat =>
+        iteratedDeriv n Real.sin (0 : Real) / (Nat.factorial n : Real))).coeff n
+  rw [step33SinFormalSeries_coeff_eq_iteratedDeriv_sin_div_factorial]
+  simp [FormalMultilinearSeries.coeff_ofScalars]
+
 /-- Even coefficients of the all-index `realSinc` series. -/
 theorem step33RealSincCoeff_two_mul (m : Nat) :
     step33RealSincCoeff (2 * m) =
@@ -64,6 +152,44 @@ theorem step33RealSincCoeff_two_mul_add_one (m : Nat) :
     rw [show 2 * m + 1 = 1 + 2 * m by omega]
     rw [Nat.add_mul_mod_self_left]]
   norm_num
+
+/-- The `fslope` of the all-index sine series is the all-index project
+`realSinc` series. -/
+theorem step33SinFormalSeries_fslope_eq_realSincFormalSeries :
+    step33SinFormalSeries.fslope = step33RealSincFormalSeries := by
+  ext n
+  change step33SinFormalSeries.fslope.coeff n =
+    step33RealSincFormalSeries.coeff n
+  rw [FormalMultilinearSeries.coeff_fslope]
+  rw [step33SinFormalSeries, FormalMultilinearSeries.coeff_ofScalars]
+  rw [step33RealSincFormalSeries_coeff]
+  rcases Nat.even_or_odd n with hEven | hOdd
+  · rcases hEven with ⟨m, hm⟩
+    subst n
+    have hsin :
+        step33SinCoeff (m + m + 1) =
+          ((-1 : Real) ^ m) / (Nat.factorial (m + m + 1) : Real) := by
+      simpa [two_mul] using step33SinCoeff_two_mul_add_one m
+    have hsinc :
+        step33RealSincCoeff (m + m) =
+          ((-1 : Real) ^ m) / (Nat.factorial (m + m + 1) : Real) := by
+      simpa [two_mul] using step33RealSincCoeff_two_mul m
+    rw [hsin, hsinc]
+  · rcases hOdd with ⟨m, hm⟩
+    subst n
+    rw [show 2 * m + 1 + 1 = 2 * (m + 1) by omega]
+    rw [step33SinCoeff_two_mul]
+    rw [step33RealSincCoeff_two_mul_add_one]
+
+/-- The named all-index `realSinc` scaffold is a local power series for
+`realSinc` at zero.  This is the analytic source needed before converting the
+checked `changeOriginSeries` live-index algebra into rows `1, ..., 17`. -/
+theorem step33RealSincFormalSeries_hasFPowerSeriesAt_zero :
+    HasFPowerSeriesAt realSinc step33RealSincFormalSeries (0 : Real) := by
+  have hsinc :=
+    realSinc_hasFPowerSeriesAt_zero_of_sin
+      step33SinFormalSeries_hasFPowerSeriesAt_zero
+  simpa [step33SinFormalSeries_fslope_eq_realSincFormalSeries] using hsinc
 
 /-- Diagonal even terms of the scaffolded formal series match the usual
 even sinc power-series terms. -/
