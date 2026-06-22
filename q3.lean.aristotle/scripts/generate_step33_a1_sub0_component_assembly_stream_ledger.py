@@ -56,6 +56,9 @@ STATUS_AFTER_NOMINAL_SCALE_ABS_BOUND = (
     "fail_closed_product_error_bridge_and_nominal_scale_abs_checked_"
     "product_component_witness_gap"
 )
+STATUS_AFTER_PRODUCT_COMPONENT_BRIDGE = (
+    "fail_closed_product_component_bridge_checked_factor_witness_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -69,6 +72,9 @@ CONCRETE_PRODUCT_ERROR_BUDGET_GAP = (
 )
 PRODUCT_COMPONENT_WITNESS_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_COMPONENT_WITNESS_GAP"
+)
+PRODUCT_FACTOR_WITNESS_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_FACTOR_WITNESS_GAP"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -151,6 +157,15 @@ NOMINAL_SOURCE_INTERVAL_BRIDGE = (
 )
 PRODUCT_ERROR_BUDGET_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge"
+)
+PRODUCT_SUMMAND_ABS_BRIDGE = (
+    "primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge"
+)
+PRODUCT_SUMMAND_ERROR_BRIDGE = (
+    "primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge"
+)
+PRODUCT_COMPONENT_WITNESS_BRIDGE = (
+    "primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge"
 )
 OMEGA_PRIME_SHAPESQ_PRODUCT_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk"
@@ -283,6 +298,18 @@ def has_checked_nominal_scale_abs_bound(assembly_text: str) -> bool:
     )
 
 
+def has_checked_product_component_witness_bridge(assembly_text: str) -> bool:
+    required = [
+        PRODUCT_SUMMAND_ABS_BRIDGE,
+        PRODUCT_SUMMAND_ERROR_BRIDGE,
+        PRODUCT_COMPONENT_WITNESS_BRIDGE,
+    ]
+    return all(
+        symbol_pattern(symbol).search(assembly_text) is not None
+        for symbol in required
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -361,6 +388,10 @@ def build_report() -> dict[str, Any]:
         product_error_budget_bridge_present
         and has_checked_nominal_scale_abs_bound(assembly_text)
     )
+    product_component_witness_bridge_present = bool(
+        nominal_scale_abs_bound_present
+        and has_checked_product_component_witness_bridge(assembly_text)
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -386,6 +417,9 @@ def build_report() -> dict[str, Any]:
             ),
             "productErrorBudgetBridgePresent": product_error_budget_bridge_present,
             "nominalScaleAbsBoundPresent": nominal_scale_abs_bound_present,
+            "productComponentWitnessBridgePresent": (
+                product_component_witness_bridge_present
+            ),
         }
     )
     guard_passes = bool(
@@ -400,6 +434,8 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_PRODUCT_COMPONENT_BRIDGE
+            if product_component_witness_bridge_present
             else STATUS_AFTER_NOMINAL_SCALE_ABS_BOUND
             if nominal_scale_abs_bound_present
             else STATUS_AFTER_PRODUCT_ERROR_BRIDGE
@@ -415,6 +451,8 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else PRODUCT_FACTOR_WITNESS_GAP
+            if product_component_witness_bridge_present
             else PRODUCT_COMPONENT_WITNESS_GAP
             if nominal_scale_abs_bound_present
             else CONCRETE_PRODUCT_ERROR_BUDGET_GAP
@@ -428,6 +466,8 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else PRODUCT_FACTOR_WITNESS_GAP
+            if product_component_witness_bridge_present
             else PRODUCT_COMPONENT_WITNESS_GAP
             if nominal_scale_abs_bound_present
             else CONCRETE_PRODUCT_ERROR_BUDGET_GAP
@@ -454,7 +494,9 @@ def build_report() -> dict[str, Any]:
             "in the guard below, but concrete generated coefficient/remainder "
             "arithmetic remains separate.  The nominal-scale absolute bound is "
             "checked if recorded in the guard below; product-summand error "
-            "and absolute witnesses remain separate. "
+            "and absolute witnesses remain separate.  The factor-to-product "
+            "component witness bridge is checked if recorded in the guard "
+            "below; concrete factor witnesses remain separate. "
             "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
@@ -501,6 +543,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_COMPONENT_BRIDGE_CHECKED_FACTOR_WITNESS_OPEN"
+                if product_component_witness_bridge_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_ERROR_BRIDGE_CHECKED_CONCRETE_BUDGET_OPEN"
                 if product_error_budget_bridge_present
                 else
@@ -608,6 +653,9 @@ def build_report() -> dict[str, Any]:
                     NOMINAL_OMEGA_ANCHOR_ERROR_THEOREM,
                     NOMINAL_SOURCE_INTERVAL_BRIDGE,
                     PRODUCT_ERROR_BUDGET_THEOREM,
+                    PRODUCT_SUMMAND_ABS_BRIDGE,
+                    PRODUCT_SUMMAND_ERROR_BRIDGE,
+                    PRODUCT_COMPONENT_WITNESS_BRIDGE,
                 ],
             ),
             "chunkTaylorChecker": source_symbols(
@@ -656,6 +704,9 @@ def build_report() -> dict[str, Any]:
             "checkedNominalScaleAbsBoundPresent": (
                 nominal_scale_abs_bound_present
             ),
+            "checkedProductComponentWitnessBridgePresent": (
+                product_component_witness_bridge_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -685,11 +736,17 @@ def build_report() -> dict[str, Any]:
             ),
             "nextPatch": (
                 "Generate or import the concrete same-normalization arithmetic "
-                "budget for the product-error bridge: product-summand "
-                "coefficient/remainder errors for omegaPrime*shapeSq and "
-                "omega*shapeSqDeriv, product absolute bounds, and the final "
-                "budget comparison.  Only after that may generator exact-assembly "
-                "fields be reconsidered."
+                "budget consumed by the product-component witness bridge: "
+                "factor-level error bounds for omegaPrime, shapeSq, omega, and "
+                "shapeSqDeriv; factor absolute bounds including nominal "
+                "right-factor bounds; product abs/error budget comparisons; "
+                "and the final scale/product budget comparison.  Only after "
+                "that may generator exact-assembly fields be reconsidered."
+                if product_component_witness_bridge_present
+                else "Prove the factor-to-product component witness bridge "
+                "that turns factor-level error/absolute bounds into the "
+                "product-summand inputs consumed by the generic "
+                "product-error budget bridge."
                 if nominal_scale_abs_bound_present
                 else "Add the concrete nominal-scale absolute bound consumed by "
                 "the product-error bridge, then generate/import the remaining "

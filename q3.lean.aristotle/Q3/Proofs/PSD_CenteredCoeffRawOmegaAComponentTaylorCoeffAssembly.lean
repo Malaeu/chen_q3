@@ -449,6 +449,151 @@ theorem primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge
         add_le_add hTermScale hTermProduct
     _ <= budget := hBudget
 
+theorem primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge
+    {left right leftAbs rightAbs productAbs : Real}
+    (hLeftAbs : |left| <= leftAbs)
+    (hRightAbs : |right| <= rightAbs)
+    (hBudget : leftAbs * rightAbs <= productAbs) :
+    |left * right| <= productAbs := by
+  have hLeftAbsNonneg : 0 <= leftAbs := (abs_nonneg left).trans hLeftAbs
+  have hProduct :
+      |left| * |right| <= leftAbs * rightAbs :=
+    mul_le_mul hLeftAbs hRightAbs (abs_nonneg right) hLeftAbsNonneg
+  calc
+    |left * right| = |left| * |right| := by
+      rw [abs_mul]
+    _ <= leftAbs * rightAbs := hProduct
+    _ <= productAbs := hBudget
+
+theorem primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge
+    {left right leftNominal rightNominal leftErr rightErr leftAbs
+      rightNominalAbs productErr : Real}
+    (hLeftErr : |left - leftNominal| <= leftErr)
+    (hRightErr : |right - rightNominal| <= rightErr)
+    (hLeftAbs : |left| <= leftAbs)
+    (hRightNominalAbs : |rightNominal| <= rightNominalAbs)
+    (hBudget : leftErr * rightNominalAbs + leftAbs * rightErr <= productErr) :
+    |left * right - leftNominal * rightNominal| <= productErr := by
+  have hLeftErrNonneg : 0 <= leftErr :=
+    (abs_nonneg (left - leftNominal)).trans hLeftErr
+  have hLeftAbsNonneg : 0 <= leftAbs := (abs_nonneg left).trans hLeftAbs
+  have hTermLeft :
+      |left - leftNominal| * |rightNominal| <=
+        leftErr * rightNominalAbs :=
+    mul_le_mul hLeftErr hRightNominalAbs (abs_nonneg rightNominal)
+      hLeftErrNonneg
+  have hTermRight :
+      |left| * |right - rightNominal| <= leftAbs * rightErr :=
+    mul_le_mul hLeftAbs hRightErr (abs_nonneg (right - rightNominal))
+      hLeftAbsNonneg
+  have hDecomp :
+      left * right - leftNominal * rightNominal =
+        (left - leftNominal) * rightNominal +
+          left * (right - rightNominal) := by
+    ring
+  calc
+    |left * right - leftNominal * rightNominal|
+        =
+      |(left - leftNominal) * rightNominal +
+        left * (right - rightNominal)| := by
+        rw [hDecomp]
+    _ <=
+      |(left - leftNominal) * rightNominal| +
+        |left * (right - rightNominal)| :=
+        abs_add_le _ _
+    _ =
+      |left - leftNominal| * |rightNominal| +
+        |left| * |right - rightNominal| := by
+        rw [abs_mul, abs_mul]
+    _ <= leftErr * rightNominalAbs + leftAbs * rightErr :=
+        add_le_add hTermLeft hTermRight
+    _ <= productErr := hBudget
+
+theorem primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge
+    {scale nominalScale omegaPrime omegaPrimeNominal shapeSq shapeSqNominal
+      omega omegaNominal shapeSqDeriv shapeSqDerivNominal scaleErr
+      omegaPrimeErr shapeSqErr omegaErr shapeSqDerivErr omegaPrimeAbs
+      shapeSqAbs omegaAbs shapeSqDerivAbs shapeSqNominalAbs
+      shapeSqDerivNominalAbs nominalScaleAbs omegaPrimeShapeAbs
+      omegaShapeDerivAbs omegaPrimeShapeErr omegaShapeDerivErr budget : Real}
+    (hScale : |scale - nominalScale| <= scaleErr)
+    (hOmegaPrimeErr : |omegaPrime - omegaPrimeNominal| <= omegaPrimeErr)
+    (hShapeSqErr : |shapeSq - shapeSqNominal| <= shapeSqErr)
+    (hOmegaErr : |omega - omegaNominal| <= omegaErr)
+    (hShapeSqDerivErr :
+      |shapeSqDeriv - shapeSqDerivNominal| <= shapeSqDerivErr)
+    (hOmegaPrimeAbs : |omegaPrime| <= omegaPrimeAbs)
+    (hShapeSqAbs : |shapeSq| <= shapeSqAbs)
+    (hOmegaAbs : |omega| <= omegaAbs)
+    (hShapeSqDerivAbs : |shapeSqDeriv| <= shapeSqDerivAbs)
+    (hShapeSqNominalAbs : |shapeSqNominal| <= shapeSqNominalAbs)
+    (hShapeSqDerivNominalAbs :
+      |shapeSqDerivNominal| <= shapeSqDerivNominalAbs)
+    (hNominalScaleAbs : |nominalScale| <= nominalScaleAbs)
+    (hOmegaPrimeShapeAbsBudget :
+      omegaPrimeAbs * shapeSqAbs <= omegaPrimeShapeAbs)
+    (hOmegaShapeDerivAbsBudget :
+      omegaAbs * shapeSqDerivAbs <= omegaShapeDerivAbs)
+    (hOmegaPrimeShapeErrBudget :
+      omegaPrimeErr * shapeSqNominalAbs + omegaPrimeAbs * shapeSqErr <=
+        omegaPrimeShapeErr)
+    (hOmegaShapeDerivErrBudget :
+      omegaErr * shapeSqDerivNominalAbs + omegaAbs * shapeSqDerivErr <=
+        omegaShapeDerivErr)
+    (hBudget :
+      scaleErr * (omegaPrimeShapeAbs + omegaShapeDerivAbs) +
+          nominalScaleAbs * (omegaPrimeShapeErr + omegaShapeDerivErr) <=
+        budget) :
+    |scale * (omegaPrime * shapeSq + omega * shapeSqDeriv) -
+        nominalScale *
+          (omegaPrimeNominal * shapeSqNominal +
+            omegaNominal * shapeSqDerivNominal)| <=
+      budget := by
+  have hOmegaPrimeShapeAbs :
+      |omegaPrime * shapeSq| <= omegaPrimeShapeAbs :=
+    primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge
+      (left := omegaPrime) (right := shapeSq)
+      hOmegaPrimeAbs hShapeSqAbs hOmegaPrimeShapeAbsBudget
+  have hOmegaShapeDerivAbs :
+      |omega * shapeSqDeriv| <= omegaShapeDerivAbs :=
+    primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge
+      (left := omega) (right := shapeSqDeriv)
+      hOmegaAbs hShapeSqDerivAbs hOmegaShapeDerivAbsBudget
+  have hOmegaPrimeShapeErr :
+      |omegaPrime * shapeSq - omegaPrimeNominal * shapeSqNominal| <=
+        omegaPrimeShapeErr :=
+    primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge
+      (left := omegaPrime) (right := shapeSq)
+      (leftNominal := omegaPrimeNominal)
+      (rightNominal := shapeSqNominal)
+      hOmegaPrimeErr hShapeSqErr hOmegaPrimeAbs hShapeSqNominalAbs
+      hOmegaPrimeShapeErrBudget
+  have hOmegaShapeDerivErr :
+      |omega * shapeSqDeriv - omegaNominal * shapeSqDerivNominal| <=
+        omegaShapeDerivErr :=
+    primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge
+      (left := omega) (right := shapeSqDeriv)
+      (leftNominal := omegaNominal)
+      (rightNominal := shapeSqDerivNominal)
+      hOmegaErr hShapeSqDerivErr hOmegaAbs hShapeSqDerivNominalAbs
+      hOmegaShapeDerivErrBudget
+  have hScaleErrNonneg : 0 <= scaleErr :=
+    (abs_nonneg (scale - nominalScale)).trans hScale
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge
+      (scale := scale) (nominalScale := nominalScale)
+      (omegaPrimeShape := omegaPrime * shapeSq)
+      (omegaPrimeShapeNominal := omegaPrimeNominal * shapeSqNominal)
+      (omegaShapeDeriv := omega * shapeSqDeriv)
+      (omegaShapeDerivNominal := omegaNominal * shapeSqDerivNominal)
+      (scaleErr := scaleErr) (omegaPrimeShapeErr := omegaPrimeShapeErr)
+      (omegaShapeDerivErr := omegaShapeDerivErr)
+      (omegaPrimeShapeAbs := omegaPrimeShapeAbs)
+      (omegaShapeDerivAbs := omegaShapeDerivAbs)
+      (nominalScaleAbs := nominalScaleAbs) (budget := budget)
+      hScale hOmegaPrimeShapeErr hOmegaShapeDerivErr hOmegaPrimeShapeAbs
+      hOmegaShapeDerivAbs hNominalScaleAbs hScaleErrNonneg hBudget
+
 def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeShapeSqProductCoeff :
     Fin 32 -> Rat :=
   rawOmegaTaylorCauchyCoeff 15 16

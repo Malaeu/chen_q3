@@ -39552,3 +39552,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `residualTaylorCoeffPresent`, or `exactCoefficientAssemblyPassed=true`.
   Concrete factor witnesses and final arithmetic remain the next generated
   gate after the bridge compiles.
+
+## Insight (2026-06-22, Step33A.1-A) -- ProductComponentBridgeChecked
+
+- Extended isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge`.
+- Meaning: factor-level error/absolute bounds for `omegaPrime`, `shapeSq`,
+  `omega`, and `shapeSqDeriv` now feed the already checked
+  `primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge` without
+  adding a new receiver or setting any generator exact-assembly fields.
+- Regenerated component ledger status:
+  `fail_closed_product_component_bridge_checked_factor_witness_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_FACTOR_WITNESS_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  Concrete factor witnesses, product abs/error budget comparisons, and the
+  final scale/product budget comparison are still missing; generator
+  exact-assembly fields remain false.
+- Next exact patch: generate/import those concrete factor witnesses before
+  reconsidering `exactCoefficientAssemblyPassed`.

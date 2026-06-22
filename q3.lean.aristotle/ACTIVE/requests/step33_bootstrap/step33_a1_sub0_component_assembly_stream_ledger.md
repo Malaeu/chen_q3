@@ -2,17 +2,17 @@
 
 Schema: `q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1`
 
-Status: `fail_closed_product_error_bridge_and_nominal_scale_abs_checked_product_component_witness_gap`
+Status: `fail_closed_product_component_bridge_checked_factor_witness_gap`
 
-First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_COMPONENT_WITNESS_GAP`
+First failure: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_FACTOR_WITNESS_GAP`
 
-Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_COMPONENT_WITNESS_GAP`
+Local assembly gap: `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_FACTOR_WITNESS_GAP`
 
 Route-level gap: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 
 Zero-extension bridge gap: `None`
 
-Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate. Step33A.1-A is not closed.
+Boundary: A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate. Step33A.1-A is not closed.
 
 ## Browser/Proshka Decision
 
@@ -50,7 +50,7 @@ Do not:
 
 - name: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
-- status: `OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_ERROR_BRIDGE_CHECKED_CONCRETE_BUDGET_OPEN`
+- status: `OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_COMPONENT_BRIDGE_CHECKED_FACTOR_WITNESS_OPEN`
 
 ```text
 rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta
@@ -104,18 +104,18 @@ Required coefficient definitions:
 - exists: `True`
 - `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree`: found=`True`, line=`24`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded`: found=`True`, line=`27`
-- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`511`
+- `primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq`: found=`True`, line=`656`
 - `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf`: found=`True`, line=`37`
 - `rawOmegaATaylorPolynomial_sub_coeff`: found=`True`, line=`46`
 - `rawOmegaTaylorCauchyCoeff`: found=`True`, line=`66`
 - `rawOmegaATaylorPolynomial_mul_coeff`: found=`True`, line=`75`
-- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`485`
-- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`498`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`583`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`612`
-- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`632`
-- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`470`
-- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`479`
+- `primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk`: found=`True`, line=`630`
+- `primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk`: found=`True`, line=`643`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled`: found=`True`, line=`728`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled`: found=`True`, line=`757`
+- `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk`: found=`True`, line=`777`
+- `primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff`: found=`True`, line=`615`
+- `primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff`: found=`True`, line=`624`
 - `primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff`: found=`True`, line=`296`
 - `primaryFiniteRow0Parent0Split100Sub0TightScaleLower`: found=`True`, line=`285`
 - `primaryFiniteRow0Parent0Split100Sub0TightScaleUpper`: found=`True`, line=`289`
@@ -131,6 +131,9 @@ Required coefficient definitions:
 - `primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval`: found=`True`, line=`247`
 - `primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge`: found=`True`, line=`345`
 - `primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge`: found=`True`, line=`371`
+- `primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge`: found=`True`, line=`452`
+- `primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge`: found=`True`, line=`468`
+- `primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge`: found=`True`, line=`512`
 
 ### chunkTaylorChecker
 
@@ -185,6 +188,7 @@ Required coefficient definitions:
 - `nominalSourceIntervalBridgePresent`: `True`
 - `productErrorBudgetBridgePresent`: `True`
 - `nominalScaleAbsBoundPresent`: `True`
+- `productComponentWitnessBridgePresent`: `True`
 
 ## Guard
 
@@ -197,6 +201,7 @@ Required coefficient definitions:
 - `checkedNominalSourceIntervalBridgePresent`: `True`
 - `checkedProductErrorBudgetBridgePresent`: `True`
 - `checkedNominalScaleAbsBoundPresent`: `True`
+- `checkedProductComponentWitnessBridgePresent`: `True`
 - `paddedDegree45EqualsActiveDegree15BridgeGap`: `None`
 - `assembledRawDerivCoeffGeneratorFieldPresent`: `False`
 - `residualTaylorCoeffGeneratorFieldPresent`: `False`
@@ -211,7 +216,7 @@ Required coefficient definitions:
 - can use parameterized Lean crosswalk now: `True`
 - can emit object-level crosswalk now: `True`
 - next failure if Cauchy bridge missing: `None`
-- next patch: Generate or import the concrete same-normalization arithmetic budget for the product-error bridge: product-summand coefficient/remainder errors for omegaPrime*shapeSq and omega*shapeSqDeriv, product absolute bounds, and the final budget comparison.  Only after that may generator exact-assembly fields be reconsidered.
+- next patch: Generate or import the concrete same-normalization arithmetic budget consumed by the product-component witness bridge: factor-level error bounds for omegaPrime, shapeSq, omega, and shapeSqDeriv; factor absolute bounds including nominal right-factor bounds; product abs/error budget comparisons; and the final scale/product budget comparison.  Only after that may generator exact-assembly fields be reconsidered.
 
 Downstream after this closes:
 - generate proof-grade ShapeSqDeriv rows 2..15 and order16

@@ -64727,6 +64727,83 @@ was attempted and again hung after printing its internal Lean command; it was
 interrupted without leaving a running process.  The direct `LEAN_PATH` Lean
 check above passed.
 
+## Execution Update (2026-06-22) -- product-component witness bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended isolated Lean file:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked factor-to-product bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge
+primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge
+primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge
+```
+
+Meaning: Lean now checks the algebra that turns factor-level error/absolute
+bounds for:
+
+```text
+omegaPrime, shapeSq, omega, shapeSqDeriv
+```
+
+into the two product-summand inputs consumed by:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not provide the concrete factor-level witnesses.
+It does not provide the final concrete arithmetic comparisons.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent, or
+exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_product_component_bridge_checked_factor_witness_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_FACTOR_WITNESS_GAP
+checkedProductComponentWitnessBridgePresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Generate/import concrete same-normalization factor witnesses consumed by
+primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge:
+factor-level error bounds for omegaPrime, shapeSq, omega, and shapeSqDeriv;
+factor absolute bounds including nominal right-factor bounds; product abs/error
+budget comparisons; and the final scale/product budget comparison.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+rg -n "sorry|exact\\?|admit|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.md q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md q3.lean.aristotle/docs/INSIGHTS.md
+```
+
+`bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was attempted and again hung after printing its internal Lean command; it was
+interrupted without leaving a running process.  The direct `LEAN_PATH` Lean
+check above passed.
+
 `bash scripts/q3_check.sh
 q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
 was retried and again hung after printing its internal Lean command; it was
