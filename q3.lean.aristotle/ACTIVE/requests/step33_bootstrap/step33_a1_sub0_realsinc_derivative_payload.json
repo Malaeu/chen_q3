@@ -5,7 +5,9 @@
     "prefixN": 32,
     "proofGradeAnalyticMajorantPresent": false,
     "rationalArithmeticChecked": true,
+    "tailRatioLeanChecked": true,
     "tailRatioUpper": "1/160000",
+    "tailTsumBoundLeanChecked": false,
     "termFormula": "(1/400)^(2*n-k) / ((2*n+1) * (2*n-k)!)"
   },
   "firstFailure": "STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP",
@@ -13,15 +15,18 @@
     "analyticMajorantPredicate": "Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant",
     "certStructure": "Step33Sub0RealSincDerivativeMajorantCert",
     "contractFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean",
-    "contractFileHash16": "b936a6780f22b4b1",
+    "contractFileHash16": "0557fd55199b1f2c",
     "scaledReceiverFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean",
     "scaledReceiverFileHash16": "b6f7c834175c15aa",
     "scaledReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs",
+    "tailRatioTheorem": "step33Sub0RealSincDerivMajorantTerm_real_succ_le_ratio",
+    "termNonnegTheorem": "step33Sub0RealSincDerivMajorantTerm_real_nonneg",
     "validPredicate": "Step33Sub0RealSincDerivativeMajorantCert.Valid"
   },
   "proofGrade": false,
   "proofGradeBlockedBy": [
     "STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP",
+    "STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP",
     "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP"
   ],
   "proofMode": "exact_rational_prefix_plus_geometric_tail_contract",
@@ -39,7 +44,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 0,
       "tailAbs": "1/280651252419779633216182363578277042249988071157333564170276192916613428862540417802387572601449155180413971588804771840000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -53,7 +60,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 1,
       "tailAbs": "1/7521453564850094170193687343897824732299680307016539519763401970165239893516083197103986945718837358835094438579967885312000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -67,7 +76,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 1,
       "tailAbs": "1/289286675571157468084372590149916335857680011808328443067823152698663072827541661427076420989186052262888247637691072512000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -81,7 +92,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 2,
       "tailAbs": "1/7745974566785917876766633234760446366099670763942406371099622924498530636606115531345897003799996682979425615851011702784000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -95,7 +108,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 2,
       "tailAbs": "1/297922098722535302952562816721555629465371952459323321965370112480712716792542905051765269376922949345362523686577373184000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -109,7 +124,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 3,
       "tailAbs": "1/7970495568721741583339579125623067999899661220868273222435843878831821379696147865587807061881156007123756793122055520256000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -123,7 +140,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 3,
       "tailAbs": "1/306557521873913137820753043293194923073063893110318200862917072262762360757544148676454117764659846427836799735463673856000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -137,7 +156,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 4,
       "tailAbs": "1/8195016570657565289912525016485689633699651677794140073772064833165112122786180199829717119962315331268087970393099337728000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -151,7 +172,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 4,
       "tailAbs": "1/315192945025290972688943269864834216680755833761313079760464032044812004722545392301142966152396743510311075784349974528000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -165,7 +188,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 5,
       "tailAbs": "1/8419537572593388996485470907348311267499642134720006925108285787498402865876212534071627178043474655412419147664143155200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -179,7 +204,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 5,
       "tailAbs": "1/323828368176668807557133496436473510288447774412307958658010991826861648687546635925831814540133640592785351833236275200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -193,7 +220,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 6,
       "tailAbs": "1/8644058574529212703058416798210932901299632591645873776444506741831693608966244868313537236124633979556750324935186972672000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -207,7 +236,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 6,
       "tailAbs": "1/332463791328046642425323723008112803896139715063302837555557951608911292652547879550520662927870537675259627882122575872000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -221,7 +252,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 7,
       "tailAbs": "1/8868579576465036409631362689073554535099623048571740627780727696164984352056277202555447294205793303701081502206230790144000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -235,7 +268,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 7,
       "tailAbs": "1/341099214479424477293513949579752097503831655714297716453104911390960936617549123175209511315607434757733903931008876544000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -249,7 +284,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 8,
       "tailAbs": "1/9093100578400860116204308579936176168899613505497607479116948650498275095146309536797357352286952627845412679477274607616000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -263,7 +300,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 8,
       "tailAbs": "1/349734637630802312161704176151391391111523596365292595350651871173010580582550366799898359703344331840208179979895177216000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     },
     {
       "analyticCrosswalkPresent": false,
@@ -277,7 +316,9 @@
       "rationalArithmeticChecked": true,
       "startIndex": 9,
       "tailAbs": "1/9317621580336683822777254470798797802699603962423474330453169604831565838236341871039267410368111951989743856748318425088000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-      "tailRatioUpper": "1/160000"
+      "tailRatioLeanChecked": true,
+      "tailRatioUpper": "1/160000",
+      "tailTsumBoundLeanChecked": false
     }
   ],
   "schema": "q3_psdpd_step33_a1_sub0_realsinc_derivative_payload.v1",

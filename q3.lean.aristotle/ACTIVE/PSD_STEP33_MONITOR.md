@@ -33595,7 +33595,13 @@ Local tail-ratio probe:
 candidate:
   term(k,m+1) <= (1/400)^2 * term(k,m)
 Lean result:
-  nonneg terms compile, but ratio does not close by simp/gcongr after unfolding.
+  closed after splitting the term into index/exponent/denominator and applying
+  denominator monotonicity plus div_le_div_of_nonneg_left.
+checked theorem:
+  step33Sub0RealSincDerivMajorantTerm_real_succ_le_ratio
 next arithmetic sub-gap:
-  STEP33_A1_SUB0_REALSINC_MAJORANT_TAIL_RATIO_ARITHMETIC_GAP
+  STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP
 ```
+
+The main analytic blocker is unchanged:
+`STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.

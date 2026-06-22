@@ -63117,3 +63117,90 @@ first arithmetic sub-gap:
 This does not change the main blocker.  The proof-grade route still needs the
 series-majorant theorem plus a geometric-tail theorem before any generated
 `Valid.bound` can be claimed.
+
+## 2026-06-22 Execution Update -- realSinc majorant tail ratio checked
+
+Local search and API orientation:
+
+```text
+q3_docs queries:
+  Step33A realSinc iteratedDeriv series majorant geometric tail
+  realSinc_hasSum_even_powerSeries iteratedDeriv tsum majorant
+  STEP33_A1_SUB0_REALSINC_MAJORANT_TAIL_RATIO_ARITHMETIC_GAP
+  Mathlib SmoothSeries iteratedFDeriv_tsum geometric tail ratio factorial
+
+nearest local artifacts:
+  realSinc_hasSum_even_powerSeries
+  RKHS_cap_rayleigh geometric-tail examples
+  DigammaSeries summability/tsum patterns
+
+Mathlib API orientation:
+  Mathlib.Analysis.Calculus.SmoothSeries.iteratedFDeriv_tsum_apply
+  Mathlib.Analysis.SpecificLimits.Basic.tsum_geometric_of_lt_one
+  one_div_le_one_div_of_le / div_le_div_of_nonneg_left
+```
+
+Implemented checked arithmetic support in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked objects:
+
+```lean
+step33Sub0RealSincDerivMajorantIndex
+step33Sub0RealSincDerivMajorantExponent
+step33Sub0RealSincDerivMajorantDenominator
+step33Sub0RealSincDerivMajorantTermReal
+step33Sub0RealSincDerivMajorantTerm_real_eq
+step33Sub0RealSincDerivMajorantStart_spec
+step33Sub0RealSincDerivMajorantExponent_succ
+step33Sub0RealSincDerivMajorantDenominator_pos
+step33Sub0RealSincDerivMajorantDenominator_le_succ
+step33Sub0RealSincDerivMajorantTermReal_succ_le_ratio
+step33Sub0RealSincDerivMajorantTerm_real_succ_le_ratio
+```
+
+Meaning:
+
+```text
+(step33Sub0RealSincDerivMajorantTerm k (m+1) : Real)
+  <= (1/400)^2 * (step33Sub0RealSincDerivMajorantTerm k m : Real)
+```
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.md
+tailRatioLeanChecked = true
+tailTsumBoundLeanChecked = false
+proofGrade = false
+```
+
+Validation:
+
+```text
+direct lean:
+  LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+lake env lean:
+  no output after 60s; stopped with Ctrl-C as wrapper hang
+python3 scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+python3 -m py_compile scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+```
+
+This closes the previous tail-ratio arithmetic sub-gap, but not the full
+geometric tail theorem and not the analytic derivative-series crosswalk.
+Next exact arithmetic sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP
+```
+
+Main blocker remains:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+```

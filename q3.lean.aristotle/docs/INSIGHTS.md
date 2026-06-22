@@ -38625,3 +38625,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   unfolding the candidate ratio
   `term(k,m+1) <= (1/400)^2 * term(k,m)`, `simp` leaves the expected
   factorial/division inequality and `gcongr` does not progress.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincMajorantTailRatioChecked
+
+- Local q3_docs search still found no checked theorem proving
+  `||iteratedDeriv k realSinc u|| <= tsum majorant` on `Set.Icc 0 (1/400)`.
+  The useful local neighbors are `realSinc_hasSum_even_powerSeries`, old
+  geometric-tail examples, and summability patterns from `DigammaSeries`.
+- External Mathlib docs were used only for API orientation: `SmoothSeries`
+  provides `iteratedFDeriv_tsum_apply`, and `SpecificLimits.Basic` provides
+  `tsum_geometric_of_lt_one`.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean` by
+  splitting the rational term into index, exponent, and denominator.
+- Lean-checked the tail ratio:
+  `(term k (m+1) : Real) <= (1/400)^2 * (term k m : Real)`.
+  The proof uses exponent increment by `2`, denominator monotonicity, and
+  `div_le_div_of_nonneg_left`.
+- Regenerated the fail-closed payload with `tailRatioLeanChecked = true` and
+  `tailTsumBoundLeanChecked = false`.
+- Boundary: this closes only the consecutive-term ratio.  The exact next
+  arithmetic sub-gap is
+  `STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP`; the main analytic
+  gap remains
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.
