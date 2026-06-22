@@ -54,6 +54,8 @@ latest_boundary_2026_06_22_combined_c1: The concrete combined-cancellation condi
 latest_route_review_2026_06_22: Proshka route review via in-app browser chose the cancellation route after the rows0..11 constant fail: do not try blind 1e12 Omega sharpening, do not continue rows12..15 as the immediate repair, and first build a cancellation-residual bridge. Codex accepted only the Lean-checked local theorem.
 latest_route_review_2026_06_22_triangle_split: Browser/Computer Use PRO_REVIEW_REQUEST sent after the P45 center constant fail. Proshka chose route B: build an interval/rational certificate for the combined expression `residualTaylor polynomial + ScaledCancellationRhs`, not separate bounds and not model replacement first. Codex accepted this only as route advice and added the checked local receiver.
 latest_browser_note_2026_06_22: Browser/Computer Use was used as the escalation/review channel; it confirmed the route shape but is not proof evidence.
+latest_closed_success_2026_06_22_omega_zero_interval: STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_CLOSED_COARSE
+latest_route_level_gap_2026_06_22_raw_second_after_omega_zero: STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -36086,4 +36088,40 @@ Next exact gap:
 
 ```text
 STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_AND_RAW_SECOND_ASSEMBLY_GAP
+```
+
+## 2026-06-22 Current EOF State -- Omega-zero at zero interval checked
+
+The isolated raw-second certificate file now also proves a proof-grade
+rational interval for the Omega value at the origin:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omega_zero_eq
+primaryFiniteRow0Parent0Split100Sub0_log_pi_le_six_fifths
+primaryFiniteRow0Parent0Split100Sub0_omega_zero_interval
+```
+
+Meaning:
+
+```text
+-6 <= Omega(0) <= -5
+```
+
+in the repository's `step22OmegaArchWeight` normalization.  The proof uses the
+local `digamma(1/4)` identity plus Lean-checked rational inequalities for
+`EulerMascheroni`, `pi`, `log 2`, and `log pi`; it is not sampled evidence.
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+Omega(0) and Omega''(0) now have proof-grade coarse rational intervals.
+The raw second-derivative interval still needs final assembly through the
+checked product decomposition and pi/shape/model constants.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP
 ```

@@ -41038,3 +41038,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean` passed;
   marker scan found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`, and
   `git diff --check` passed.
+
+## Insight (2026-06-22, Step33A.1-A) -- OmegaZeroAtZeroIntervalChecked
+
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean` with a
+  proof-grade coarse interval for `Omega(0)`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_omega_zero_eq`,
+  `primaryFiniteRow0Parent0Split100Sub0_log_pi_le_six_fifths`, and
+  `primaryFiniteRow0Parent0Split100Sub0_omega_zero_interval`.
+- Proof object: the local `digamma(1/4)` identity gives
+  `Omega(0) = -EulerMascheroni - pi/2 - 3*log(2) - log(pi)`, and rational
+  inequalities give `-6 <= Omega(0) <= -5` in the exact
+  `step22OmegaArchWeight` normalization.
+- Boundary: this closes only the Omega-zero factor for the raw-second product
+  decomposition.  It does not prove the final raw second-derivative interval
+  and does not close Step33A.1-A.
+- Current exact gap:
+  `STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP`.

@@ -68508,3 +68508,48 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_OMEGA_ZERO_RATIONAL_INTERVAL_AND_RAW_SECOND_ASSEMBLY_GAP
 ```
+
+## Execution Update (2026-06-22) -- Omega-zero at zero interval checked
+
+Lean now proves the Omega-zero side of the raw-second product decomposition:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omega_zero_eq
+primaryFiniteRow0Parent0Split100Sub0_log_pi_le_six_fifths
+primaryFiniteRow0Parent0Split100Sub0_omega_zero_interval
+```
+
+Checked interval:
+
+```text
+-6 <= Omega(0) <= -5
+```
+
+Proof source:
+
+```text
+Omega(0) = -EulerMascheroni - pi/2 - 3*log(2) - log(pi)
+```
+
+with Lean-checked rational comparisons:
+
+```text
+1/2 <= EulerMascheroni <= 1
+3/2 <= pi/2 <= 8/5
+2/3 <= log(2) <= 7/10
+1 <= log(pi) <= 6/5
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+Omega(0) and Omega''(0) now have proof-grade coarse rational intervals.
+No final rawSecond interval is claimed yet.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_ASSEMBLY_INTERVAL_GAP
+```

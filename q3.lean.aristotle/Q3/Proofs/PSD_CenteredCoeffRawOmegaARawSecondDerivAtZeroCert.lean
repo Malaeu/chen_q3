@@ -1,5 +1,6 @@
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport
+import Q3.Proofs.Digamma_One_Fourth
 
 set_option linter.mathlibStandardSet false
 set_option autoImplicit false
@@ -304,6 +305,70 @@ theorem primaryFiniteRow0Parent0Split100Sub0_omega_second_deriv_at_zero_interval
   dsimp only
   rw [step22OmegaArchWeight_second_deriv_at_zero_eq_closedForm]
   exact primaryFiniteRow0Parent0Split100Sub0_omegaSecondClosedForm_at_zero_interval
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_zero_eq :
+    Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+        (0 : Real) =
+      -Real.eulerMascheroniConstant - Real.pi / 2 - 3 * Real.log 2 -
+        Real.log Real.pi := by
+  rw [Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight]
+  have harg :
+      ((1 / 4 : Complex) + Complex.I * (((0 / 2 : Real) : Complex))) =
+        (1 / 4 : Complex) := by
+    norm_num
+  rw [harg]
+  have hdig := congrArg Complex.re Q3.digamma_one_fourth_eq
+  norm_num at hdig
+  rw [hdig]
+  rw [show (Complex.log (2 : Complex)).re = Real.log 2 by
+    simpa using Complex.log_ofReal_re (2 : Real)]
+
+theorem primaryFiniteRow0Parent0Split100Sub0_log_pi_le_six_fifths :
+    Real.log Real.pi <= (6 : Real) / 5 := by
+  have hx0 : (0 : Real) <= (6 : Real) / 5 := by
+    norm_num
+  have hsum_le_exp :
+      (∑ m ∈ Finset.range 4, ((6 : Real) / 5) ^ m /
+          (Nat.factorial m : Real)) <=
+        Real.exp ((6 : Real) / 5) := by
+    simpa using (Real.sum_le_exp_of_nonneg hx0 4)
+  have hthree_fifteen_le_sum :
+      (3.15 : Real) <=
+        ∑ m ∈ Finset.range 4, ((6 : Real) / 5) ^ m /
+          (Nat.factorial m : Real) := by
+    norm_num
+  have hpi_le_exp : Real.pi <= Real.exp ((6 : Real) / 5) := by
+    exact (le_of_lt Real.pi_lt_d2).trans
+      (hthree_fifteen_le_sum.trans hsum_le_exp)
+  exact (Real.log_le_iff_le_exp Real.pi_pos).2 hpi_le_exp
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_zero_interval :
+    let Ω : Real -> Real :=
+      Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+    (-(6 : Real) <= Ω (0 : Real) ∧ Ω (0 : Real) <= -(5 : Real)) := by
+  dsimp only
+  rw [primaryFiniteRow0Parent0Split100Sub0_omega_zero_eq]
+  have hgamma_lo : (1 : Real) / 2 <= Real.eulerMascheroniConstant :=
+    le_of_lt Real.one_half_lt_eulerMascheroniConstant
+  have hgamma_hi : Real.eulerMascheroniConstant <= (1 : Real) := by
+    have hseq :=
+      le_of_lt (Real.eulerMascheroniConstant_lt_eulerMascheroniSeq' 1)
+    have hseq_one : Real.eulerMascheroniSeq' 1 = (1 : Real) := by
+      norm_num [Real.eulerMascheroniSeq']
+    rwa [hseq_one] at hseq
+  have hpi_lo : (3 : Real) / 2 <= Real.pi / 2 := by
+    nlinarith [Real.pi_gt_three]
+  have hpi_hi : Real.pi / 2 <= (8 : Real) / 5 := by
+    nlinarith [Real.pi_lt_d2]
+  have hlog2_lo : (2 : Real) / 3 <= Real.log 2 := by
+    nlinarith [Real.log_two_gt_d9]
+  have hlog2_hi : Real.log 2 <= (7 : Real) / 10 := by
+    nlinarith [Real.log_two_lt_d9]
+  have hlogpi_lo : (1 : Real) <= Real.log Real.pi :=
+    le_of_lt Q3.log_pi_gt_one
+  have hlogpi_hi : Real.log Real.pi <= (6 : Real) / 5 :=
+    primaryFiniteRow0Parent0Split100Sub0_log_pi_le_six_fifths
+  constructor <;> nlinarith
 
 theorem primaryFiniteRow0Parent0Split100Sub0_raw_second_deriv_at_zero_eq_omega_shape_constants :
     let Ω : Real -> Real :=
