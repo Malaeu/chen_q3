@@ -40608,3 +40608,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_DERIV_NORM_SOURCE_GAP`.
 - Validation: direct Lean with the local `.lake` library path passed on the
   new file.  No final budget pass or `finalBudgetPassed` claim is made.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentProductCancellationP45BridgeInProgress
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_DERIV_NORM_SOURCE_GAP`.
+- `q3_docs` searches for `ComponentProductCancellationResidual`,
+  `OmegaTaylorRemainderAbs * ShapeSqDerivNominalAbsBudget`, and
+  cancellation-preserving `hResidualDerivBoundOnCell` found no ready Step33
+  theorem.  The useful local artifacts remain the checked rows0..11 budget kill
+  and the checked cancellation identity.
+- External Lean/mathlib search was orientation only: use local `ring`/`rw`
+  algebraic bridges and do not treat web results as proof evidence.
+- Minimal next theorem surface: extend
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBridge.lean`
+  from the unscaled component-product identity to the exact scaled raw/P45
+  residual expression:
+  `rawDerivClosedForm - assembledRawDerivCoeff polynomial =
+   scale * ComponentProductCancellationResidual
+   + (scale - nominalScale) * ComponentProductNominal`.
+- This still does not prove a norm bound or `finalBudgetPassed`; it makes the
+  existing P45 receiver see the cancellation residual in the same expression it
+  already consumes.
