@@ -18211,3 +18211,40 @@ Boundary: do not retry the same final comparison under the current source
 class, and do not continue ShapeSqDeriv row crawling as the next blind move.
 The next useful patch must sharpen the Omega/product-error source or change
 the product-error decomposition around the witness term.
+
+## 2026-06-23 Active Node -- combined source-model bridge
+
+Current gate:
+
+```text
+Step33A.1-A / combined cancellation high-order Taylor source model
+```
+
+Closed this update:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16_of_omega
+```
+
+Meaning:
+
+```text
+ContDiff Real 16 step22OmegaArchWeight
+  -> ContDiff Real 16 CombinedCancellationIntervalExpr
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP
+STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP
+```
+
+Next exact move:
+
+```text
+Prove/import ContDiff Real 16 step22OmegaArchWeight, then prove the exact
+component center-jet Cauchy identity and order-16 Leibniz identity for
+CombinedCancellationIntervalExpr.  Do not run a generator or mark Valid until
+that bridge exists.
+```

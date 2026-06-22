@@ -36394,3 +36394,68 @@ Build a whole-expression source-model bridge proving center-jet rows 0..15
 and a uniform order-16 bound for `CombinedCancellationIntervalExpr` in the
 normalization consumed by `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
 ```
+
+## 2026-06-23 EOF State -- combined source-model smooth subbridge
+
+Browser/Computer Use escalation to Proshka selected route A for the current
+combined-cancellation blocker: build a structural whole-expression source-model
+bridge before running a row generator.  Local evidence then narrowed the first
+proof-safe patch to the smoothness layer only.
+
+Added isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Lean-checked local facts:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0NormalizedJetConvolution
+rawOmegaATaylorPolynomial_contDiff16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16_of_omega
+```
+
+Meaning:
+
+```text
+If the base Step22 Omega weight is available as
+ContDiff Real 16 step22OmegaArchWeight, then the whole
+CombinedCancellationIntervalExpr is ContDiff Real 16.
+```
+
+Boundary:
+
+```text
+This is only a conditional structural smoothness subbridge.  It does not
+prove center jets, does not prove the order-16 Leibniz identity, does not
+emit rational rows, and does not instantiate
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.
+```
+
+Validation:
+
+```text
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP
+```
+
+Subgap exposed by the conditional smooth bridge:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP
+```
+
+Next exact patch:
+
+```text
+Either prove ContDiff Real 16 step22OmegaArchWeight, or keep it as an explicit
+assumption while proving the exact component center-jet Cauchy and order-16
+Leibniz crosswalks for CombinedCancellationIntervalExpr.
+```

@@ -41200,3 +41200,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   build the whole-expression source-model bridge for center jets `0..15` and
   a uniform order-16 bound in the normalization consumed by
   `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+
+## Insight (2026-06-23, Step33A.1-A) -- CombinedSourceModelSmoothSubbridgeChecked
+
+- Browser/Computer Use / Proshka route review selected route A for the active
+  combined-cancellation blocker: build a structural whole-expression
+  source-model bridge before running a generator.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0NormalizedJetConvolution`,
+  `rawOmegaATaylorPolynomial_contDiff16`, and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16_of_omega`.
+- Meaning: once
+  `ContDiff Real 16 Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight`
+  is available, Lean derives
+  `ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr`.
+- Boundary: this is only a conditional smoothness subbridge.  It does not
+  prove component center-jet Cauchy identities, does not prove the order-16
+  Leibniz identity, emits no rational rows, and does not instantiate
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+- Validation used direct Lean with local `.lake` `LEAN_PATH`; `lake env lean`
+  still stalls in a child `git diff HEAD --exit-code` wrapper after useful
+  checking on this machine.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP`.
+- Subgap exposed:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP`.

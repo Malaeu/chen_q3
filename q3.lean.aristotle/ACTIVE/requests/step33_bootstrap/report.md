@@ -68867,3 +68867,82 @@ Next exact patch:
 Build a whole-expression source-model bridge for the combined expression before
 emitting concrete HighOrderTaylorCert rows.
 ```
+
+## Execution Update (2026-06-23) -- combined source-model smooth subbridge
+
+Browser/Computer Use was used for Proshka/Louise route review.  The advisory
+answer chose route A: build a structural source-model bridge for the whole
+`CombinedCancellationIntervalExpr` before running a generator.  The requested
+full target is the exact component center-jet Cauchy crosswalk and order-16
+Leibniz crosswalk.
+
+Implemented the first proof-safe slice:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+New checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0NormalizedJetConvolution
+rawOmegaATaylorPolynomial_contDiff16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16_of_omega
+```
+
+The compiled theorem proves:
+
+```text
+ContDiff Real 16 step22OmegaArchWeight
+  -> ContDiff Real 16 CombinedCancellationIntervalExpr
+```
+
+This is useful because the whole-expression high-order receiver requires a
+smoothness field, but it is not yet enough for a payload.
+
+Boundary:
+
+```text
+No concrete center-jet rows are emitted.
+No uniform order16Abs is proved.
+No Horner rows or target-budget rows are emitted.
+No Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid object is
+instantiated.
+Step33A.1-A remains open.
+```
+
+Validation:
+
+```text
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Infrastructure note:
+
+```text
+lake env lean on this machine still stalls after useful checking in a child
+git diff HEAD --exit-code process, so the validation above used direct Lean
+with the local .lake LEAN_PATH.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP
+```
+
+Subgap exposed:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP
+```
+
+Next exact patch:
+
+```text
+Prove or import ContDiff Real 16 step22OmegaArchWeight, then prove the exact
+component center-jet Cauchy identity and order-16 Leibniz identity for the
+whole CombinedCancellationIntervalExpr without using sampled rows or component
+norm bounds.
+```
