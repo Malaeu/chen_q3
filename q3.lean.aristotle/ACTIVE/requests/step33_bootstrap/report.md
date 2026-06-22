@@ -63699,6 +63699,7 @@ Remaining broad gap:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+
 ## 2026-06-22 Execution Update -- realSinc local formal power-series source checked
 
 Latest checked theorem:
@@ -63752,6 +63753,65 @@ Next exact sub-gap:
 
 ```text
 STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Execution Update -- realSinc all-index on-ball bridge checked
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_hasFPowerSeriesOnBall_one
+```
+
+New checked layer:
+
+```text
+HasFPowerSeriesOnBall realSinc step33RealSincFormalSeries 0 1
+```
+
+New checked objects:
+
+```lean
+step33RealSincCoeff_hasSum_allIndex
+step33RealSincFormalSeries_hasSum_apply
+step33RealSincFormalSeries_hasFPowerSeriesOnBall_one
+```
+
+Proof route: use the existing even `realSinc_hasSum_even_powerSeries`, prove
+the all-index odd part is zero by `step33RealSincCoeff_two_mul_add_one`, combine
+even and odd sums with `HasSum.even_add_odd`, then package the resulting
+all-index scalar sum through `FormalMultilinearSeries.ofScalars_apply_eq`.
+The previously checked radius theorem supplies the on-ball radius side.
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+git diff --check:
+  clean
+q3_check.sh:
+  attempted via bash, interrupted after bounded wait at Lean invocation
+```
+
+Boundary: this is not a rows `1..17` derivative majorant proof.  It does not
+convert the unit-ball source to `iteratedDeriv k realSinc u` majorants on
+`Set.Icc 0 (1/400)`, and it does not feed the scaled-sinc receiver.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP
 ```
 
 Remaining broad gap:

@@ -17,14 +17,14 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: realSinc formal-series radius checked
+latest_local_step_2026_06_22: realSinc all-index on-ball bridge checked
 latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
-latest_local_theorem_2026_06_22: step33RealSincFormalSeries_radius_eq_top
+latest_local_theorem_2026_06_22: step33RealSincFormalSeries_hasFPowerSeriesOnBall_one
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
 latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_ALLINDEX_EVEN_ODD_HAS_SUM_REINDEX_GAP
-latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0 and step33RealSincFormalSeries.radius = top are checked; all-index/even-odd HasSum bridge and HasFPowerSeriesOnBall 0 1 are not yet checked; no iteratedDeriv majorant rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
-latest_route_review_2026_06_22: Browser/Proshka advisory agrees the next bridge is all-index/even-odd HasSum plus on-ball, then changeOrigin + iteratedFDeriv; local Lean proof truth is only the checked radius theorem
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP
+latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0, step33RealSincFormalSeries.radius = top, all-index/even-odd HasSum, and HasFPowerSeriesOnBall 0 1 are checked; no changeOrigin-to-iteratedDeriv majorant rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
+latest_route_review_2026_06_22: Browser/Proshka channel is available for the next route fork; local Lean proof truth is the checked on-ball theorem, not advisory text
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -34068,6 +34068,57 @@ Next exact sub-gap:
 
 ```text
 STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_ON_BALL_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Current EOF State -- realSinc all-index on-ball bridge checked
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_hasFPowerSeriesOnBall_one
+```
+
+New checked layer:
+
+```text
+HasFPowerSeriesOnBall realSinc step33RealSincFormalSeries 0 1
+```
+
+Supporting checked objects:
+
+```lean
+step33RealSincCoeff_hasSum_allIndex
+step33RealSincFormalSeries_hasSum_apply
+step33RealSincFormalSeries_hasFPowerSeriesAt_zero
+step33RealSincCoeff_norm_le_inv_factorial
+step33RealSincFormalSeries_radius_eq_top
+```
+
+Meaning: the named all-index `realSinc` scaffold now has the explicit unit-ball
+power-series surface needed for the next `changeOrigin`/derivative-majorant
+step.  The even/odd `HasSum` bridge and the `FormalMultilinearSeries` apply
+bridge are Lean-checked locally.
+
+Boundary: this does not prove derivative majorant rows `1..17`, does not prove
+the `changeOrigin` to `iteratedDeriv k realSinc u` bridge on
+`Set.Icc 0 (1/400)`, and does not feed the scaled-sinc receiver.
+
+Validation: direct Lean passed on
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`; touched-file
+hole scan and `git diff --check` are clean.  `q3_check.sh` was attempted via
+`bash` and interrupted after a bounded wait at its Lean invocation, consistent
+with the current local infrastructure behavior.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP
 ```
 
 Remaining broad gap:

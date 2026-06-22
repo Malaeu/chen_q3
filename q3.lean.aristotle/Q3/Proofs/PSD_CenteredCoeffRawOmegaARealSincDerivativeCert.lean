@@ -214,6 +214,57 @@ theorem step33RealSincFormalSeries_radius_eq_top :
       _ = (r : Real) ^ n / (Nat.factorial n : Real) := by
             rw [div_eq_mul_inv, mul_comm]
 
+/-- All-index scalar summation bridge for the named `realSinc`
+coefficients.  This is the missing even/odd reindex layer between the existing
+even `realSinc` series and the all-index formal-series scaffold. -/
+theorem step33RealSincCoeff_hasSum_allIndex (x : Real) :
+    HasSum (fun n : Nat => step33RealSincCoeff n * x ^ n) (realSinc x) := by
+  have heven :
+      HasSum
+        (fun m : Nat => step33RealSincCoeff (2 * m) * x ^ (2 * m))
+        (realSinc x) := by
+    refine HasSum.congr_fun (realSinc_hasSum_even_powerSeries x) ?_
+    intro m
+    rw [step33RealSincCoeff_two_mul]
+    rw [div_mul_eq_mul_div]
+  have hodd :
+      HasSum
+        (fun m : Nat => step33RealSincCoeff (2 * m + 1) *
+          x ^ (2 * m + 1))
+        0 := by
+    simpa [step33RealSincCoeff_two_mul_add_one] using
+      (hasSum_zero : HasSum (fun _m : Nat => (0 : Real)) (0 : Real))
+  have hall :=
+    HasSum.even_add_odd
+      (f := fun n : Nat => step33RealSincCoeff n * x ^ n) heven hodd
+  simpa using hall
+
+/-- All-index formal-series summation bridge for the named `realSinc`
+scaffold.  This packages the scalar all-index bridge in the
+`FormalMultilinearSeries` convention required by `HasFPowerSeriesOnBall`. -/
+theorem step33RealSincFormalSeries_hasSum_apply (x : Real) :
+    HasSum
+      (fun n : Nat => step33RealSincFormalSeries n (fun _ : Fin n => x))
+      (realSinc x) := by
+  refine HasSum.congr_fun (step33RealSincCoeff_hasSum_allIndex x) ?_
+  intro n
+  rw [step33RealSincFormalSeries,
+    FormalMultilinearSeries.ofScalars_apply_eq]
+  simp [smul_eq_mul]
+
+/-- Unit-ball power-series surface for the named all-index `realSinc`
+scaffold.  This closes the explicit on-ball prerequisite for the subsequent
+`changeOrigin`/`iteratedDeriv` majorant bridge on `0 <= u <= 1 / 400`. -/
+theorem step33RealSincFormalSeries_hasFPowerSeriesOnBall_one :
+    HasFPowerSeriesOnBall realSinc step33RealSincFormalSeries
+      (0 : Real) (1 : ENNReal) := by
+  refine ⟨?r_le, ?r_pos, ?hasSum⟩
+  · rw [step33RealSincFormalSeries_radius_eq_top]
+    exact le_top
+  · norm_num
+  · intro y _hy
+    simpa using step33RealSincFormalSeries_hasSum_apply y
+
 /-- The `fslope` of the all-index sine series is the all-index project
 `realSinc` series. -/
 theorem step33SinFormalSeries_fslope_eq_realSincFormalSeries :

@@ -38855,3 +38855,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_ALLINDEX_EVEN_ODD_HAS_SUM_REINDEX_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincAllIndexOnBallBridgeChecked
+
+- Lean now checks the all-index/unit-ball bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorems:
+  `step33RealSincCoeff_hasSum_allIndex`,
+  `step33RealSincFormalSeries_hasSum_apply`, and
+  `step33RealSincFormalSeries_hasFPowerSeriesOnBall_one`.
+- Meaning: the named all-index `realSinc` formal-series scaffold now has
+  `HasFPowerSeriesOnBall realSinc step33RealSincFormalSeries 0 1`, with the
+  even/odd `HasSum` reindex bridge checked locally.
+- Direct Lean validation passed for the touched file; the touched-file hole
+  scan and `git diff --check` are clean.  `q3_check.sh` was attempted via
+  `bash` and interrupted after a bounded wait at its Lean invocation.
+- Boundary: this is still not the derivative rows `1..17` proof.  The missing
+  bridge is the `changeOrigin`/`HasFPowerSeriesOnBall.factorial_smul` route to
+  explicit `iteratedDeriv k realSinc u` majorants on `Set.Icc 0 (1/400)`, then
+  the scaled-sinc receiver feed.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_TO_ITERATEDDERIV_MAJORANT_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
