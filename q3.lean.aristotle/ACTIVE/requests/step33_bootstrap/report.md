@@ -64567,3 +64567,73 @@ stream guard.
 Boundary: do not add another receiver, do not use the coarse zero-coefficient
 payload, and do not attack the final same-expression residual interval before
 the tight source and same-coefficient crosswalk exist.
+
+## 2026-06-22 Execution Update -- tight ShapeSqDeriv audit generated
+
+Added and ran:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py
+```
+
+Generated artifacts:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.md
+```
+
+Generated status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1
+status = fail_closed_tight_coeff_stream_not_identified
+firstFailure = STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP
+routeLevelFailureCode = STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+```
+
+Positive local evidence:
+
+```text
+shapeSqDerivReceiversProofGrade = true
+row0IntervalProofGrade = true
+row1IntervalProofGrade = true
+activeRawTaylorResidualSurfacePresent = true
+```
+
+Fail-closed guard:
+
+```text
+tightCoeffObjectsPresentInLean = false
+tightValidTheoremPresentInLean = false
+sameCoeffCrosswalkPresent = false
+guardPasses = false
+canEmitLeanTheorem = false
+```
+
+Meaning: the component payload's rows `2..15` plus order-16 gap is real, but it
+is now downstream of the stricter same-coefficient guard.  Before generating or
+emitting `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, the
+next patch must identify the tight coefficient stream and show it is the same
+coefficient convention consumed by the active
+`primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual`.
+
+Browser/Proshka later suggested a realSinc parity/even-odd collapse route with:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_HAS_SUM_EVEN_ODD_COLLAPSE_GAP
+```
+
+Local decision: useful downstream advice only.  Do not take that route before
+the same-coefficient stream is identified, because otherwise it may prove rows
+for a source that is not yet connected to `RawTaylorCoeffCert`.
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.json
+```
+
+Status boundary: Step33A.1-A remains open; no Lean proof file was modified.

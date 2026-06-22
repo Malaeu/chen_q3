@@ -39209,3 +39209,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   show it matches the active `RawTaylorCoeffCert.residual` coefficient
   convention.  If that source is missing, stop at the coefficient-stream guard
   instead of adding a receiver or proving a theorem about a different object.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivTightPayloadAuditGenerated
+
+- Added and ran
+  `q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py`.
+- Generated
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.{json,md}`.
+- Generated status:
+  `fail_closed_tight_coeff_stream_not_identified`.
+- First failure:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP`.
+- Route-level gap remains:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`.
+- Positive local evidence: ShapeSqDeriv receivers are present, rows `0` and
+  `1` are proof-grade, and the active `RawTaylorCoeffCert` residual surface is
+  present.
+- Guard evidence: no Lean-visible tight coefficient objects, no
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`, and no
+  same-coefficient crosswalk from a tight ShapeSqDeriv coefficient stream to
+  `RawTaylorCoeffCert.residual`.
+- Proshka's latest browser advice suggested a realSinc parity/even-odd
+  collapse route with failure code
+  `STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_HAS_SUM_EVEN_ODD_COLLAPSE_GAP`;
+  local audit treats that as downstream until the same-coefficient stream is
+  identified.
+- Validation passed for Python compile, generator execution, and JSON parse.
+  No Lean proof file was modified.

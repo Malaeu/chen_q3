@@ -1,0 +1,149 @@
+{
+  "decision": {
+    "canEmitLeanTheorem": false,
+    "doNot": [
+      "do not emit primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid yet",
+      "do not spend the coarse zero-coefficient payload",
+      "do not add another receiver before a concrete missing receiver is identified",
+      "do not attack the final residual interval before same-coefficient source exists"
+    ],
+    "nextPatch": "Identify or generate the tight coefficient stream in the same RawTaylorCoeffCert residual convention. If no such source exists, keep the blocker at STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP."
+  },
+  "existingLeanInputs": {
+    "activeRawTaylorResidualSurfacePresent": true,
+    "componentPayloadFirstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+    "componentPayloadStatus": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source",
+    "row0IntervalProofGrade": true,
+    "row1IntervalProofGrade": true,
+    "shapeSqDerivReceiversProofGrade": true
+  },
+  "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP",
+  "proofBoundary": "This payload is an audit/checkpoint only. It emits no Lean and does not prove Step33A.1-A.",
+  "remainingObligations": {
+    "leanCanSeeFinalTheorem": false,
+    "order16BoundRemaining": true,
+    "rowsRemaining": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "sameCoefficientCrosswalkRemaining": true
+  },
+  "routeLevelFailureCode": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+  "sameCoefficientGuard": {
+    "guardPasses": false,
+    "required": true,
+    "sameCoeffCrosswalkPresent": false,
+    "searchedFor": [
+      "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeff",
+      "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightCoeffErrorAbs",
+      "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightOrder16Abs",
+      "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert",
+      "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff",
+      "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff"
+    ],
+    "stopCodeIfMissing": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP",
+    "tightCoeffObjectsPresentInLean": false,
+    "tightValidTheoremPresentInLean": false
+  },
+  "schema": "q3_psdpd_step33_a1_sub0_shapesq_deriv_tight_payload.v1",
+  "sourceFiles": {
+    "coeffRows": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated": {
+          "found": true,
+          "line": 53
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff1_interval_generated": {
+          "found": true,
+          "line": 171
+        }
+      }
+    },
+    "contract": {
+      "exists": true,
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload_contract.md",
+      "symbols": {
+        "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_COEFF_STREAM_GAP": {
+          "found": true,
+          "line": 107
+        },
+        "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP": {
+          "found": true,
+          "line": 119
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid": {
+          "found": true,
+          "line": 33
+        }
+      }
+    },
+    "landing": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeff": {
+          "found": true,
+          "line": 132
+        },
+        "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert": {
+          "found": true,
+          "line": 190
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff": {
+          "found": true,
+          "line": 46
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_polynomial_deriv_eq_derivmodel": {
+          "found": true,
+          "line": 201
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_closedForm": {
+          "found": true,
+          "line": 1912
+        }
+      }
+    },
+    "support": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
+      "symbols": {
+        "ShapeSqDerivTaylorIntervalCert.singleAbs": {
+          "found": true,
+          "line": 384
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivPowerSeriesAtCenter": {
+          "found": true,
+          "line": 244
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_of_shapeSq_order17_abs": {
+          "found": true,
+          "line": 346
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_powerSeriesCoeff_interval": {
+          "found": true,
+          "line": 459
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shapeSq_derivative_abs": {
+          "found": true,
+          "line": 401
+        }
+      }
+    }
+  },
+  "status": "fail_closed_tight_coeff_stream_not_identified",
+  "targetTheorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid"
+}
