@@ -31,6 +31,14 @@
     "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
     "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP"
   ],
+  "coarseShapeSqTaylorRouteKill": {
+    "activeCertObject": "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert",
+    "checkedSource": "primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo",
+    "decision": "Do not spend the coarse ShapeSq Taylor source as full-Taylor Step33A.1-A payload evidence.",
+    "failureCode": "STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL",
+    "receiverTarget": "1866608532757 / 500000000000000000000000000000",
+    "wrongCoeffObject": "primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff"
+  },
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
@@ -154,6 +162,7 @@
   },
   "failureCodes": [
     "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
@@ -1206,6 +1215,12 @@
     "followupFailureClosed": "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
     "followupFirstMissing": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
     "followupWhyA": "After the pow-12 scaled-sinc receiver was Lean-checked, the smallest local proof-moving patch was the affine-scale normalization receiver.  It turns proof-grade derivative bounds for realSinc itself on Set.Icc 0 (1/400) into proof-grade derivative bounds for the active scaled factor eta |-> realSinc (eta / 40).  It leaves the unscaled realSinc derivative-bounds payload as the first live gap.",
+    "latestDoNot": "Do not set coeff = 0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the Lean-checked tight source and coefficient-assembly crosswalk exist.",
+    "latestReview": "2026_06_22_same_expression_interval_fork",
+    "latestWhy": "Build the tight same-coefficient ShapeSqDeriv Taylor payload before attempting the final residual interval theorem.  A direct same-expression interval proof is a monolith until the tight component source exists, and another receiver would add no proof data.",
+    "localFirstSubgap": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "routeLevelFailureCode": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
+    "routeLevelFirstPatch": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
   },

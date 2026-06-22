@@ -393,9 +393,24 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - shapeDerivAnchorBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated`
 - shapeDerivIntervalBounds: `primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated`
 
+## Coarse ShapeSq Taylor Payload Route Kill
+
+- failure code: `STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL`
+- checked source retained: `primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo`
+- wrong coefficient object: `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff`
+- active certificate object: `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`
+- live receiver target: `1866608532757 / 500000000000000000000000000000`
+- decision: Do not spend the coarse ShapeSq Taylor source as full-Taylor Step33A.1-A payload evidence.
+
 ## Proshka Decision
 
 - chosen: `B_component_taylor_route`
+- latest review: `2026_06_22_same_expression_interval_fork`
+- route-level first patch: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`
+- route-level failure code: `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
+- local first subgap: `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
+- latest why: Build the tight same-coefficient ShapeSqDeriv Taylor payload before attempting the final residual interval theorem.  A direct same-expression interval proof is a monolith until the tight component source exists, and another receiver would add no proof data.
+- latest do not: Do not set coeff = 0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the Lean-checked tight source and coefficient-assembly crosswalk exist.
 - follow-up chosen: `B_scaled_realsinc_normalization_receiver_after_pow12_receiver`
 - follow-up failure closed: `STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP`
 - follow-up first missing: `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
@@ -406,6 +421,7 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 ## Failure Codes
 
 - `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`
+- `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP`
 - `STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP`
@@ -455,36 +471,3 @@ proof gap is now the unscaled realSinc derivative-bounds
 payload consumed by the scaled-sinc normalization receiver.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.
-
-## 2026-06-22 Coarse ShapeSq Taylor Payload Route Kill
-
-Failure code:
-
-```text
-STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL
-```
-
-The later checked coarse source
-`primaryFiniteRow0Parent0Split100Sub0_shapeSqTaylorSource_of_coarseTwo` does not
-change the payload verdict in this document.  It checks the ShapeSq Taylor
-receiver interface, but it uses
-`primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqTaylorCoeff` and a coarse
-remainder, not the active
-`primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert.residual`.
-
-The live full-Taylor payload still needs a same-certificate residual derivative
-bound for `primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert`, with the
-receiver target
-
-```text
-1866608532757 / 500000000000000000000000000000
-```
-
-Do not spend the coarse ShapeSq Taylor source as closure evidence for this
-payload.
-
-Next exact sub-gap:
-
-```text
-STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP
-```

@@ -39138,3 +39138,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `RawOmegaATaylorModelCertificate` as closure evidence.
 - Next exact sub-gap:
   `STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- TightSameCoeffShapeSqDerivRoutePinned
+
+- Used the in-app browser / Proshka channel on the same-expression residual
+  interval fork after the coarse ShapeSq Taylor source was killed as spendable
+  payload.  The browser answer is advisory only; the accepted state is the
+  regenerated local fail-closed payload.
+- Route choice: `B`, build a tight same-coefficient ShapeSqDeriv Taylor payload
+  before attempting the final residual interval theorem.
+- Route-level first theorem/patch target:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`.
+- Route-level failure code:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP`.
+- Regenerated
+  `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}`
+  so the advisory route and local subgap survive the next generator run.
+- Local first subgap remains:
+  `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+- Meaning: the checked scaled-sinc normalization receiver is present, but the
+  proof-grade unscaled `realSinc` derivative-bounds payload through order `17`
+  on `Set.Icc 0 (1/400)` is missing.  This is the first local input required
+  before the tight ShapeSqDeriv certificate can feed the active
+  `RawTaylorCoeffCert` residual derivative proof.
+- Do not set `coeff = 0`, do not subtract independent raw/poly boxes, do not
+  add another receiver, and do not attack
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval`
+  before the tight source and coefficient-assembly crosswalk exist.

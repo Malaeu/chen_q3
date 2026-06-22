@@ -17,14 +17,15 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: realSinc coarse payload built into a coarse ShapeSqDeriv interval cert
-latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean
-latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo
+latest_local_step_2026_06_22: Browser/Proshka route review pinned the next proof-producing route to tight same-coefficient ShapeSqDeriv payload first, not a monolithic residual interval theorem
+latest_local_file_2026_06_22: q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py and q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}
+latest_local_theorem_2026_06_22: target only -- primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
-latest_payload_status_2026_06_22: coarseTwoBaseAbs_shapeSqDeriv_singleAbs_valid_checked
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_TO_TAYLOR_PAYLOAD_FEED_GAP
-latest_boundary_2026_06_22: HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0, radius top, all-index/even-odd HasSum, HasFPowerSeriesOnBall 0 1, iteratedDeriv = factorial * changeOriginSeries.sum on [0,1/400], live-term norm <= rational majorant, odd total-degree zero after k!, even/odd all-exponent tsum reindex to live majorant, realSinc iterated-derivative row bound by live rational tsum, Valid -> ProvidesAnalyticMajorant, concrete coarseTwoBaseAbs Valid payload, affine scaled-sinc feed, symbolic shape-derivative receiver feed, rational shape bound `2^12 * 12^k`, and a coarse `ShapeSqDerivTaylorIntervalCert.singleAbs` Valid cert are checked; no downstream Taylor/component payload feed is proved yet and Step33A.1-A remains open
-latest_route_review_2026_06_22: Browser/Proshka channel was used for route advice; actionable advisory matched adding an isolated proof-grade coarse payload first, while proof truth remains only the Lean-checked certificate and receiver feeds
+latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
+latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+latest_boundary_2026_06_22: Coarse ShapeSq Taylor source is killed as spendable payload for RawTaylorCoeffCert.  Route-level next patch is a tight same-coefficient ShapeSqDeriv Taylor payload, target `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid`; local first subgap is proof-grade unscaled realSinc derivative bounds 0..17 consumed by the checked scaled-sinc normalization receiver.  The final residual interval theorem remains open.
+latest_route_review_2026_06_22: Browser/Proshka channel selected route B: build tight same-coefficient ShapeSqDeriv Taylor payload first; do not set coeff=0, do not subtract independent raw/poly boxes, do not add another receiver, and do not attack the final residual interval before the tight source and coefficient-assembly crosswalk exist
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload
@@ -34319,3 +34320,41 @@ Next exact sub-gap:
 ```text
 STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP
 ```
+
+## 2026-06-22 Current EOF State -- tight same-coefficient route pinned
+
+Browser/Proshka route review on the same-expression residual interval fork
+selected route B:
+
+```text
+tight same-coefficient ShapeSqDeriv Taylor payload first
+```
+
+Route-level target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
+```
+
+Route-level failure code:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+```
+
+The regenerated component Taylor residual payload records the narrower local
+first subgap:
+
+```text
+STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+```
+
+Meaning: the checked scaled-sinc normalization receiver is present, but the
+proof-grade unscaled `realSinc` derivative-bounds payload through order `17` is
+missing.  That payload is the first local input needed before the tight
+same-coefficient ShapeSqDeriv certificate can be closed and assembled into the
+active `RawTaylorCoeffCert` residual derivative bound.
+
+Do not attack
+`primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_closedForm_interval`
+directly before this tight source and the coefficient-assembly crosswalk exist.

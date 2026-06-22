@@ -176,6 +176,15 @@ SCALED_REALSINC_NORMALIZATION_RECEIVER_CLOSED = (
 FIRST_FAILURE_AFTER_SCALED_REALSINC_NORMALIZATION_RECEIVER = (
     "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP"
 )
+SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP = (
+    "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP"
+)
+SHAPESQ_DERIV_TIGHT_VALID_TARGET = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid"
+)
+COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL = (
+    "STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL"
+)
 SHAPE_TAYLOR_RECEIVER_GAP = (
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP"
 )
@@ -1716,6 +1725,7 @@ def build_report(
             "closedHistoricalFailures": closed_historical_failures,
             "failureCodes": list(dict.fromkeys([
                 first_failure,
+                SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP,
                 SHAPE_TAYLOR_RECEIVER_GAP,
                 SHAPESQ_INTEGRATED_RECEIVER_CLOSED,
                 FIRST_FAILURE_AFTER_SHAPESQ_RECEIVER,
@@ -2202,6 +2212,25 @@ def build_report(
         },
             "proshkaDecision": {
             "chosen": "B_component_taylor_route",
+            "latestReview": "2026_06_22_same_expression_interval_fork",
+            "routeLevelFirstPatch": SHAPESQ_DERIV_TIGHT_VALID_TARGET,
+            "routeLevelFailureCode": (
+                SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+            ),
+            "localFirstSubgap": first_failure,
+            "latestWhy": (
+                "Build the tight same-coefficient ShapeSqDeriv Taylor payload "
+                "before attempting the final residual interval theorem.  A "
+                "direct same-expression interval proof is a monolith until "
+                "the tight component source exists, and another receiver "
+                "would add no proof data."
+            ),
+            "latestDoNot": (
+                "Do not set coeff = 0, do not subtract independent raw/poly "
+                "boxes, do not add another receiver, and do not attack the "
+                "final residual interval before the Lean-checked tight source "
+                "and coefficient-assembly crosswalk exist."
+            ),
             "followupChosen": (
                 "B_scaled_realsinc_normalization_receiver_after_pow12_receiver"
                 if scaled_realsinc_normalization_receiver_closed
@@ -2334,6 +2363,28 @@ def build_report(
                 "the smallest proof-moving patch was an isolated j=0 "
                 "coefficient row.  It advances the real proof-data layer "
                 "without claiming rows 1..15 or the order-16 uniform bound."
+            ),
+        },
+        "coarseShapeSqTaylorRouteKill": {
+            "failureCode": COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL,
+            "checkedSource": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "shapeSqTaylorSource_of_coarseTwo"
+            ),
+            "wrongCoeffObject": (
+                "primaryFiniteRow0Parent0Split100Sub0CoarseTwo"
+                "ShapeSqTaylorCoeff"
+            ),
+            "activeCertObject": (
+                "primaryFiniteRow0Parent0Split100Sub0RawTaylorCoeffCert"
+            ),
+            "receiverTarget": (
+                "1866608532757 / "
+                "500000000000000000000000000000"
+            ),
+            "decision": (
+                "Do not spend the coarse ShapeSq Taylor source as "
+                "full-Taylor Step33A.1-A payload evidence."
             ),
         },
         "sourceStatus": {
@@ -2981,9 +3032,24 @@ def render_md(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
+            "## Coarse ShapeSq Taylor Payload Route Kill",
+            "",
+            f"- failure code: `{report['coarseShapeSqTaylorRouteKill']['failureCode']}`",
+            f"- checked source retained: `{report['coarseShapeSqTaylorRouteKill']['checkedSource']}`",
+            f"- wrong coefficient object: `{report['coarseShapeSqTaylorRouteKill']['wrongCoeffObject']}`",
+            f"- active certificate object: `{report['coarseShapeSqTaylorRouteKill']['activeCertObject']}`",
+            f"- live receiver target: `{report['coarseShapeSqTaylorRouteKill']['receiverTarget']}`",
+            f"- decision: {report['coarseShapeSqTaylorRouteKill']['decision']}",
+            "",
             "## Proshka Decision",
             "",
             f"- chosen: `{report['proshkaDecision']['chosen']}`",
+            f"- latest review: `{report['proshkaDecision']['latestReview']}`",
+            f"- route-level first patch: `{report['proshkaDecision']['routeLevelFirstPatch']}`",
+            f"- route-level failure code: `{report['proshkaDecision']['routeLevelFailureCode']}`",
+            f"- local first subgap: `{report['proshkaDecision']['localFirstSubgap']}`",
+            f"- latest why: {report['proshkaDecision']['latestWhy']}",
+            f"- latest do not: {report['proshkaDecision']['latestDoNot']}",
             f"- follow-up chosen: `{report['proshkaDecision']['followupChosen']}`",
             f"- follow-up failure closed: `{report['proshkaDecision']['followupFailureClosed']}`",
             f"- follow-up first missing: `{report['proshkaDecision']['followupFirstMissing']}`",

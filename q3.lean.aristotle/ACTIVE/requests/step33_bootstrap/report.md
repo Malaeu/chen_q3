@@ -64421,3 +64421,50 @@ Next exact sub-gap:
 ```text
 STEP33_A1_SUB0_TIGHT_SHAPESQ_RAWTAYLORCOEFF_RESIDUAL_DERIV_GAP
 ```
+
+## 2026-06-22 Execution Update -- tight same-coefficient route pinned
+
+Used the in-app browser / Proshka channel for the next route fork after the
+coarse ShapeSq Taylor payload was killed as spendable evidence.  This is
+advisory only; proof truth remains local Lean and generated fail-closed
+payloads.
+
+Chosen route:
+
+```text
+B
+```
+
+First theorem/patch target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid
+```
+
+Route-level failure code:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP
+```
+
+Regenerated payload:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md
+```
+
+The regenerated component payload keeps the narrower local first subgap:
+
+```text
+STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+```
+
+Interpretation: the checked scaled-sinc normalization receiver is available,
+but the proof-grade unscaled `realSinc` derivative bounds through order `17` on
+`Set.Icc 0 (1/400)` are still missing.  Those bounds are the first local input
+needed to close the tight same-coefficient ShapeSqDeriv Taylor payload.
+
+Do not set `coeff = 0`, do not subtract independent raw/poly boxes, do not add
+another receiver, and do not attack the final same-expression residual interval
+before the tight source and coefficient-assembly crosswalk exist.
