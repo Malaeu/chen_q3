@@ -62868,3 +62868,75 @@ close rows `2..15`, does not prove the full-cell order-17 shape-square bound,
 does not assemble the raw derivative, and does not close Step33A.1-A.  The live
 blocker is now exactly
 `STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+
+## 2026-06-22 Addendum -- scaled realSinc normalization receiver checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor residual, first subchunk.
+
+Local evidence search:
+
+```text
+q3_docs search did not expose an existing proof-grade scaled-realSinc
+derivative-bounds payload.  The nearest local artifacts were the checked
+realSinc power-series bridge, the active ShapeDerivative pow-12 receiver, and
+older value/power interval receivers for realSinc(eta/40).
+External web search was used only as Mathlib API orientation for
+iteratedDeriv/ContDiff; it is not proof evidence.
+```
+
+Lean receiver extended in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
+```
+
+New checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs
+```
+
+Meaning:
+
+```text
+proof-grade bounds for iteratedDeriv k realSinc u on Set.Icc 0 (1/400)
+  + scale budget ||(1/40)^k|| * baseAbs k <= scaledAbs k
+=> proof-grade bounds for iteratedDeriv k (eta |-> realSinc (eta/40)) eta
+   on Set.Icc 0 (1/10), for k <= 17.
+```
+
+This closes only the affine scale-normalization bridge from the active
+scaled factor to the unscaled project `realSinc`.  It does not provide the
+unscaled derivative bounds, rational/interval payload rows, raw-derivative
+assembly, residual polynomial bounds, or Step33A.1-A closure.
+
+Regenerated component payload:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
+status = fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
+firstFailure = STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+proofSafeClosedFields = 17
+scaledRealSincNormalizationReceiverPresent = true
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+```
+
+Validation:
+
+```text
+direct Lean compile of
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
+  passed.
+python3 -m py_compile on the generator passed.
+JSON validation for the regenerated v18 payload passed.
+hole/axiom scan over the touched Lean/generator/payload files was empty.
+git diff --check over touched files passed.
+scripts/q3_check.sh timed out after 120s inside the Lake wrapper after printing
+  lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
+This is recorded as a wrapper timeout, not as a Lean proof failure.
+```

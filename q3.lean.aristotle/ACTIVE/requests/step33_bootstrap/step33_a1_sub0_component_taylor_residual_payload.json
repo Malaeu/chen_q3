@@ -28,12 +28,13 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPESQ_DERIVATIVE_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
-    "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP"
+    "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
+    "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP"
   ],
   "componentClosureLedger": {
     "omega": "formal_center_anchor_available_missing_component_assembly",
     "omegaDeriv": "formal_available_not_assembled",
-    "shape": "pow12_scaled_sinc_receiver_formal_missing_scaled_realsinc_bounds_0_to_17_payload",
+    "shape": "scaled_sinc_normalization_receiver_formal_missing_realsinc_derivative_bounds_0_to_17_payload",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
   "componentTaylorStatus": {
@@ -114,8 +115,10 @@
     "omegaDerivTaylorValidCert": "Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_valid",
     "omegaTaylorCenterAnchor": "primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor",
     "omegaTaylorIntegratedPolyDerivCrosswalk": "Step33Sub0OmegaPrimeTaylorRemainderCert.integratedPoly_deriv_eq_poly",
+    "scaledRealSincNormalizationReceiver": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs",
     "shapeDerivAnchorBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeDerivAnchorBounds_generated",
     "shapeDerivIntervalBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeDerivClosedForm_interval_bounds_of_anchor_second_deriv_bound_generated",
+    "shapeDerivativePow12MajorantReceiver": "primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs",
     "shapeSqDerivCenterCoeff0Interval": "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_powerSeriesCoeff0_interval_generated",
     "shapeSqDerivCenterCoeff0Lower": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Lower_generated",
     "shapeSqDerivCenterCoeff0Upper": "primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivCoeff0Upper_generated",
@@ -150,7 +153,7 @@
     "shapeValueBounds": "primaryFiniteRow0Parent0Split100Sub0ShapeValueBounds_of_deriv_bounds_and_anchor_generated"
   },
   "failureCodes": [
-    "STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
     "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPESQ_INTEGRATED_POLY_DERIV_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_TAYLOR_SOURCE_GAP",
@@ -165,12 +168,14 @@
     "STEP33_A1_SUB0_SHAPESQ_DERIV_PRODUCT_LEIBNIZ_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_MAJORANT_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
+    "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_POWER_SERIES_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_1_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ITERATED_LEIBNIZ_CROSSWALK_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_SHAPE_DERIVATIVE_BOUNDS_PAYLOAD_GAP",
     "STEP33_A1_SUB0_SHAPE_DERIVATIVE_BOUNDS_0_TO_17_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
     "STEP33_A1_SUB0_SHAPESQ_DERIV_ORDER16_ZERO_CELL_PROOF_GAP",
     "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "STEP33_A1_SUB0_SHAPE_TAYLOR_REMAINDER_GAP",
@@ -179,7 +184,7 @@
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
   ],
-  "firstFailure": "STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+  "firstFailure": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
   "generatorFields": {
     "assembledRawDerivCoeff": null,
     "componentPropagationRemainderAbs": null,
@@ -719,6 +724,15 @@
     "residualPolynomialUpper": null,
     "residualTaylorCoeff": null,
     "residualTaylorRemainderAbs": null,
+    "scaledRealSincNormalizationReceiverSource": {
+      "boundary": "This is only the Lean-checked affine-scale normalization receiver from proof-grade derivative majorants for realSinc itself on Set.Icc 0 (1/400) into derivative majorants for the active scaled realSinc factor eta |-> realSinc (eta / 40). It does not provide the realSinc derivative majorants through order 17, component Taylor rows, or raw-derivative assembly.",
+      "failureClosed": "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
+      "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean",
+      "nextMissing": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+      "normalizationReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs",
+      "normalizationReceiverTheoremFound": true,
+      "proofGradeReceiver": true
+    },
     "shapeCoeff": [
       {
         "component": "shape",
@@ -1163,8 +1177,9 @@
     "omegaTaylorCenterAnchorPayloadPresent": true,
     "omegaTaylorIntegratedPolyDerivCrosswalkProofPresent": true,
     "outLeanWritten": false,
-    "proofSafeClosedFields": 16,
+    "proofSafeClosedFields": 17,
     "residualPolynomialRangePassed": false,
+    "scaledRealSincNormalizationReceiverPresent": true,
     "shapeDerivTaylorReceiverPresent": false,
     "shapeDerivativePow12MajorantReceiverPresent": true,
     "shapeEndpointBoundsProofPresent": true,
@@ -1187,15 +1202,33 @@
   },
   "proshkaDecision": {
     "chosen": "B_component_taylor_route",
-    "followupChosen": "B_shape_derivative_pow12_scaled_sinc_receiver_after_majorant",
-    "followupFailureClosed": "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
-    "followupFirstMissing": "STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
-    "followupWhyA": "After the ShapeSqDeriv majorant receiver was Lean-checked, the browser route check selected a reusable pow-12 scaled-sinc receiver before any numeric generator.  The smallest local checked patch now turns proof-grade derivative bounds for the active scaled realSinc factor into proof-grade derivative bounds for the active shape function. It leaves the scaled-realSinc derivative-bounds payload as the first live gap.",
+    "followupChosen": "B_scaled_realsinc_normalization_receiver_after_pow12_receiver",
+    "followupFailureClosed": "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
+    "followupFirstMissing": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "followupWhyA": "After the pow-12 scaled-sinc receiver was Lean-checked, the smallest local proof-moving patch was the affine-scale normalization receiver.  It turns proof-grade derivative bounds for realSinc itself on Set.Icc 0 (1/400) into proof-grade derivative bounds for the active scaled factor eta |-> realSinc (eta / 40).  It leaves the unscaled realSinc derivative-bounds payload as the first live gap.",
     "whyNotA": "Earlier endpoint finite-cover machinery still lacked proof-grade Omega/OmegaPrime/E/EPrime remainder sources; it would create another empty checker first.",
     "whyNotC": "A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem."
   },
   "routeId": "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL",
-  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v17",
+  "scaledRealSincNormalizationReceiverSource": {
+    "boundary": "This is only the Lean-checked affine-scale normalization receiver from proof-grade derivative majorants for realSinc itself on Set.Icc 0 (1/400) into derivative majorants for the active scaled realSinc factor eta |-> realSinc (eta / 40). It does not provide the realSinc derivative majorants through order 17, component Taylor rows, or raw-derivative assembly.",
+    "failureClosed": "STEP33_A1_SUB0_SCALED_REALSINC_NORMALIZATION_GAP",
+    "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean",
+    "nextMissing": "STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "normalizationReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs",
+    "normalizationReceiverTheoremFound": true,
+    "proofGradeReceiver": true
+  },
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18",
+  "shapeDerivativePow12MajorantReceiverSource": {
+    "boundary": "This is only the Lean-checked receiver from proof-grade derivative majorants for the active scaled realSinc factor into proof-grade derivative majorants for the active shape function. It does not provide scaled-realSinc derivative bounds through order 17, component Taylor rows, or raw-derivative assembly.",
+    "failureClosed": "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",
+    "leanFile": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean",
+    "nextMissing": "STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP",
+    "pow12MajorantReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs",
+    "pow12MajorantReceiverTheoremFound": true,
+    "proofGradeReceiver": true
+  },
   "shapeEndpointSource": {
     "firstShapeDerivReceiverGap": "STEP33_A1_SUB0_SHAPEDERIV_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
     "firstShapeReceiverGap": "STEP33_A1_SUB0_SHAPESQ_ENDPOINT_TO_TAYLOR_COEFF_REMAINDER_RECEIVER_GAP",
@@ -1400,7 +1433,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean": "b3cb520ff69bec38",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointRationalImport.lean": "ab027a098dbfab54",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean": "f5a113fc6ad43df8",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean": "b6f7c834175c15aa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean": "9018aa2dd36d0423",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean": "483a7bcec03c8110",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqProductBounds.lean": "c3b3c9c8353043c0"
@@ -1441,7 +1474,7 @@
     "shapeSqIntegratedTaylorReceiverProofGrade": true,
     "shapeSqTaylorSourceProofGrade": true
   },
-  "status": "fail_closed_missing_scaled_realsinc_derivative_bounds_0_to_17_payload",
+  "status": "fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload",
   "targetTheorem": {
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
     "name": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure",

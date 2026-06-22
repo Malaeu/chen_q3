@@ -218,6 +218,62 @@ theorem primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_
   rw [hShapeEq]
   exact le_trans hScaled hBudget_k
 
+/-- Receiver from proof-grade unscaled `realSinc` derivative bounds to
+proof-grade bounds for the active scaled factor.
+
+This closes only the affine-scale normalization.  The later payload must still
+prove derivative majorants for `realSinc` itself on `Set.Icc 0 (1/400)`. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs
+    {baseAbs scaledAbs : Nat -> Real}
+    (hBaseAbs :
+      ∀ u ∈ Set.Icc (0 : Real) ((1 : Real) / 400),
+        ∀ k : Nat, k <= 17 ->
+          ‖iteratedDeriv k realSinc u‖ <= baseAbs k)
+    (hBudget :
+      ∀ k : Nat, k <= 17 ->
+        ‖((1 : Real) / 40) ^ k‖ * baseAbs k <= scaledAbs k) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ∀ k : Nat, k <= 17 ->
+        ‖iteratedDeriv k
+            primaryFiniteRow0Parent0Split100Sub0ShapeScaledSinc eta‖ <=
+          scaledAbs k := by
+  intro eta heta k hk
+  have hArg :
+      ((1 : Real) / 40) * eta ∈ Set.Icc (0 : Real) ((1 : Real) / 400) := by
+    constructor <;> nlinarith [heta.1, heta.2]
+  have hScaledFun :
+      primaryFiniteRow0Parent0Split100Sub0ShapeScaledSinc =
+        fun x : Real => realSinc (((1 : Real) / 40) * x) := by
+    funext x
+    apply congrArg realSinc
+    norm_num [primaryFiniteRow0Parent0Split100Sub0ShapeScaledSinc,
+      bsplineScale]
+    ring
+  have hScaledEq :
+      iteratedDeriv k primaryFiniteRow0Parent0Split100Sub0ShapeScaledSinc eta =
+        iteratedDeriv k realSinc (((1 : Real) / 40) * eta) *
+          ((1 : Real) / 40) ^ k := by
+    have h :=
+      congrFun
+        (iteratedDeriv_comp_const_mul
+          (n := k) (f := realSinc)
+          (realSinc_contDiff (k : WithTop ENat))
+          ((1 : Real) / 40))
+        eta
+    rw [hScaledFun]
+    simpa [div_eq_mul_inv, mul_comm, mul_left_comm, mul_assoc] using h
+  rw [hScaledEq, norm_mul]
+  have hBase := hBaseAbs (((1 : Real) / 40) * eta) hArg k hk
+  have hScaledBase :
+      ‖iteratedDeriv k realSinc (((1 : Real) / 40) * eta)‖ *
+          ‖((1 : Real) / 40) ^ k‖ <=
+        baseAbs k * ‖((1 : Real) / 40) ^ k‖ :=
+    mul_le_mul_of_nonneg_right hBase (norm_nonneg _)
+  have hBudget_k :
+      baseAbs k * ‖((1 : Real) / 40) ^ k‖ <= scaledAbs k := by
+    simpa [mul_comm] using hBudget k hk
+  exact le_trans hScaledBase hBudget_k
+
 end Step33
 end PSDpd
 end Q3

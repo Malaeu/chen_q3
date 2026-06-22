@@ -38539,3 +38539,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this does not provide proof-grade scaled-realSinc derivative
   bounds, does not close rows `2..15`, does not emit a generated Lean payload,
   does not close A hbox, and does not close Step33A.1-A.
+
+## Insight (2026-06-22, Step33A.1-A) -- ScaledRealSincNormalizationReceiverChecked
+
+- Local q3_docs search found no existing proof-grade scaled-realSinc
+  derivative-bounds payload.  The nearest reusable artifacts were the checked
+  `realSinc` power-series bridge, older `realSinc(eta/40)` value/power
+  interval receivers, and the v17 ShapeDerivative pow-12 receiver.
+- External web search was used only as Mathlib API orientation for
+  `iteratedDeriv` and `ContDiff`; it is not proof evidence.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean`
+  with
+  `primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs`.
+- The theorem proves the affine-scale receiver:
+  proof-grade derivative majorants for `realSinc` itself on `Set.Icc 0
+  (1/400)` imply proof-grade derivative majorants for the active scaled factor
+  `eta |-> realSinc (eta / 40)` on `Set.Icc 0 (1/10)`, with the explicit
+  factor `||(1/40)^k||`.
+- Regenerated the component Taylor residual payload to schema
+  `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18`; it records
+  `scaledRealSincNormalizationReceiverPresent = true` and
+  `proofSafeClosedFields = 17`.
+- Current live blocker is now exactly
+  `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+- Boundary: this does not provide proof-grade unscaled `realSinc` derivative
+  bounds, rational/interval payload rows, raw-derivative assembly, residual
+  polynomial bounds, or Step33A.1-A closure.
+- Validation: direct Lean compile of the touched receiver passed; Python
+  generator compile, JSON validation, empty hole/axiom scan, and
+  `git diff --check` passed.  `scripts/q3_check.sh` timed out after 120s in
+  the Lake wrapper after printing the touched Lean file; this is a wrapper
+  timeout, not a Lean proof failure.
