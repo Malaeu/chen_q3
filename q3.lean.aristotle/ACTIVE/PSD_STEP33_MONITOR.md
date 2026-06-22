@@ -17,15 +17,15 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: Lean checked a rows-0/1/2 partial-sharp ShapeSqDeriv source. Row `2` is now proved with the existing coarse shape-derivative majorant evaluated at exact product order `n = 3`, instead of the global order-17 constant. This does not close Step33A.1-A; it narrows the live proof gap to rows `3..15` plus order `16`.
-latest_local_file_2026_06_22: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_rows2to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/VOCAB_MAP.md, q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and q3.lean.aristotle/docs/INSIGHTS.md
-latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource; primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012Coeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet2_coarseSmall_abs; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012TaylorSource; primaryFiniteRow0Parent0Split100Sub0_rows012ShapeSqDerivRows3To15_width_fail; primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource; primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource; primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure; primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail
+latest_local_step_2026_06_22: Lean checked a rows-0/1/2/3 partial-sharp ShapeSqDeriv source. Row `3` is now proved with the existing coarse shape-derivative majorant evaluated at exact product order `n = 4`, divided by `3!`, instead of the global order-17 constant. This does not close Step33A.1-A; it narrows the live proof gap to rows `4..15` plus order `16`.
+latest_local_file_2026_06_22: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row3_rows4to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row4_rows5to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/VOCAB_MAP.md, q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md, and q3.lean.aristotle/docs/INSIGHTS.md
+latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource; primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012Coeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet2_coarseSmall_abs; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012TaylorSource; primaryFiniteRow0Parent0Split100Sub0_rows012ShapeSqDerivRows3To15_width_fail; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123Coeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet3_coarseSmall_abs; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows0123TaylorSource; primaryFiniteRow0Parent0Split100Sub0_rows0123ShapeSqDerivRows4To15_width_fail; primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource; primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource; primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure; primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1
-latest_payload_status_2026_06_22: fail_closed_partial_sharp_shapesq_deriv_rows_3_to_15_width_fail_checked
-latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_3_TO_15_ORDER16_SHARP_SOURCE_GAP
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_3_TO_15_ORDER16_SHARP_SOURCE_GAP
-latest_closed_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_REMAINDER_WIDTH_FAIL
-latest_boundary_2026_06_22: A Lean-checked rows-0/1/2 partial-sharp ShapeSqDeriv source and a Lean-checked residual-core width-fail theorem now exist. This is not Step33A.1-A closure: rows `0,1,2` are spendable, but rows `3..15` plus order `16` remain coarse and still make the enclosure too wide. The generated payload fields `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and `exactCoefficientAssemblyPassed` remain false/null.
+latest_payload_status_2026_06_22: fail_closed_partial_sharp_shapesq_deriv_rows_4_to_15_width_fail_checked
+latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_4_TO_15_ORDER16_SHARP_SOURCE_GAP
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_4_TO_15_ORDER16_SHARP_SOURCE_GAP
+latest_closed_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_2_3_REMAINDER_WIDTH_FAIL
+latest_boundary_2026_06_22: A Lean-checked rows-0/1/2/3 partial-sharp ShapeSqDeriv source and a Lean-checked residual-core width-fail theorem now exist. This is not Step33A.1-A closure: rows `0,1,2,3` are spendable, but rows `4..15` plus order `16` remain coarse and still make the enclosure too wide. The generated payload fields `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and `exactCoefficientAssemblyPassed` remain false/null.
 latest_route_review_2026_06_22: Proshka route review via in-app browser chose the same local cut: first build a Lean budget comparison/kill certificate for the current coarse source, then move to a sharper ShapeSq/ShapeSqDeriv source. Codex accepted only the Lean-checked local theorem.
 latest_browser_note_2026_06_22: Browser/Computer Use was used as the escalation/review channel; it confirmed the route shape but is not proof evidence.
 
@@ -34673,4 +34673,51 @@ Next exact failure code:
 
 ```text
 STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_3_TO_15_ORDER16_SHARP_SOURCE_GAP
+```
+
+## 2026-06-22 Current EOF State -- partial-sharp ShapeSqDeriv row 3 checked
+
+This entry supersedes the previous rows-`3..15` gap.  The row-3 proof uses the
+same local product-order mechanism as row `2`: the existing coarse
+shape-derivative majorant is evaluated at exact product order `n = 4` and then
+divided by `3!`.
+
+Additional Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123Payload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123Coeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet3_coarseSmall_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows0123TaylorSource
+primaryFiniteRow0Parent0Split100Sub0_rows0123ShapeSqDerivRows4To15_width_fail
+```
+
+Meaning:
+
+```text
+Rows 0,1,2,3 are now checked and spendable in the active
+ShapeSqDerivTaylorIntervalCert.singleAbs normalization.  Row 3 avoids the
+global order-17 constant by using the local product order n=4 and division by
+3!.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the component Taylor route.
+Rows 4..15 and order 16 remain coarse and still make the residual core too
+wide for the active target interval.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_4_TO_15_ORDER16_SHARP_SOURCE_GAP
 ```

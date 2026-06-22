@@ -40098,3 +40098,48 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   through `bash`, hung after printing its internal Lean command, and was
   interrupted after 60 seconds; no successful `lake env lean` or `q3_check`
   result is claimed.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivRows0123CheckedRows4To15Gap
+
+- Opened oracle question card
+  `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row3_rows4to15_order16.md`
+  for address `Step33A.1-A.ShapeSqDeriv.rows3to15_order16`.
+- q3_docs searches run:
+  `Step33A.1-A ShapeSqDeriv row3 rows 4..15 order16 singleAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv row3 coeffErrorAbs productSum n=4`,
+  and
+  `CoarseTwoShapeProductSum_eq n=4 shapeSq_derivative_abs_of_shape_derivative_abs row3`.
+- Search result: q3_docs was noisy and did not surface a ready-made row-3
+  theorem.  The existing rows012 Lean proof already exposed the proof surfaces
+  needed for row `3`.
+- Browser/Computer Use was connected to the current Proshka/Louise chat tab;
+  no browser response is used as proof evidence for this patch.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123Payload.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123Coeff_eq_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet3_coarseSmall_abs`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123_valid`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows0123TaylorSource`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_rows0123ShapeSqDerivRows4To15_width_fail`.
+- Meaning: row `3` is now proof-grade in the active generated coefficient
+  stream.  It uses the existing coarse shape-derivative majorant at exact
+  product order `n = 4` and divides by `3!`, instead of spending the global
+  order-17 constant.
+- Boundary: Step33A.1-A remains open.  Rows `0,1,2,3` are spendable, but rows
+  `4..15` plus order `16` remain coarse, and Lean proves the rows-0/1/2/3
+  partial-sharp source is still too wide for the active target residual
+  interval.
+- New exact live gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_4_TO_15_ORDER16_SHARP_SOURCE_GAP`.
+- Active next-address card:
+  `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row4_rows5to15_order16.md`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new file; `.olean` generation for the new file also passed.  Hole/axiom scan
+  found no matches.  `git diff --check` passed on the new Lean file.
+  `lake env lean` was run and again hung silently during environment setup; it
+  was interrupted after 60 seconds.  `q3_check.sh` was run through `bash`,
+  printed its internal Lean command, then hung and was interrupted after 60
+  seconds.  No successful `lake env lean` or `q3_check` result is claimed for
+  this row3 patch.
