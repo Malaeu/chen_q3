@@ -41013,9 +41013,12 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 
 ## Insight (2026-06-22, Step33A.1-A) -- OmegaSecondAtZeroIntervalChecked
 
-- Browser/Computer Use escalation to Proshka/Louise confirmed the narrow route:
-  use the sign-preserving `m = 1` trigamma-series bridge for `Omega''(0)`,
-  not the full endpoint Taylor machinery.
+- Browser/Computer Use escalation to Proshka/Louise confirmed the narrow
+  `m = 1`, `N = 2` trigamma-series route for `Omega''(0)`, not the full
+  endpoint Taylor machinery.  Proshka preferred an explicit signed-series
+  identity; the compiled local patch below instead uses the already checked
+  symmetric prefix-tail norm bridge, which is sufficient because the interval
+  `4032 / 125 +/- 4 / 25` lies inside `[32, 33]`.
 - Extended
   `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean`.
 - Lean checked
