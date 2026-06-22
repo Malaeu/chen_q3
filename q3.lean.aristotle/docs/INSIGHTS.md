@@ -39938,3 +39938,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   new files after compiling the fresh local `.olean` dependencies. Marker scan
   found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe` in the new files;
   `git diff --check` passed.
+
+## Insight (2026-06-22, Step33A.1-A) -- CoarseFullTaylorResidualEnclosureChecked
+
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource`,
+  bridging the named raw derivative closed form to the checked tight component
+  product source.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure`.
+- Meaning: the raw closed form, nominal Taylor product, degree-45 assembled
+  polynomial, and residual Taylor convention are connected by a proof-grade
+  coarse enclosure.
+- Boundary: this is not final Step33A.1-A closure.  The checked bound is
+  `primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`, and it
+  has not been proved small enough for the final residual interval.  The next
+  exact gap is
+  `STEP33_A1_SUB0_TIGHT_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
+- Validation: direct Lean with the local `.lake` library path passed on both
+  new files after compiling the fresh local `.olean` dependencies.

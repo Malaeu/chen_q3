@@ -47,10 +47,10 @@ primary/control analytic A/P/P0 entry_hbox lemmas
 
 The current practical front is Step33A.1-A raw-Omega component Taylor route B:
 the same-coefficient ShapeSqDeriv payload, the full-cell same-coefficient
-ShapeSq bridge, and a proof-grade nonfinal tight component product source are
-Lean-checked.  The active proof-producing blocker is now the raw closed-form /
-P45 residual bridge consuming that product source; the generated residual
-payload still remains fail-closed.
+ShapeSq bridge, the tight component product source, and the coarse fullTaylor
+residual derivative enclosure are Lean-checked.  The active proof-producing
+blocker is now the final rational budget comparison/sharpness; the generated
+residual payload still remains fail-closed.
 
 ## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
 
@@ -66112,4 +66112,64 @@ The bridge should consume
 primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source and the
 existing product/coefficient crosswalks without claiming a final small budget
 unless the rational comparison is checked.
+```
+
+## Execution Update (2026-06-22) -- coarse fullTaylor residual enclosure checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean files added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource
+primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure
+```
+
+Meaning:
+
+```text
+The true raw derivative closed form is connected to the checked tight component
+product source.  The nominal Taylor product is connected to the degree-45
+assembled raw-derivative polynomial, and the existing residual coefficient
+crosswalk is used to produce a fullTaylor residual derivative enclosure.
+```
+
+Boundary:
+
+```text
+This is not final Step33A.1-A closure.
+The checked enclosure constant is
+primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget.
+It has not been proved small enough for the target residual interval.
+The generated JSON fields residualTaylorRemainderAbs,
+componentTaylorProofsPresent, and exactCoefficientAssemblyPassed remain
+false/null until the final rational budget comparison is wired.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean
+```
+
+The direct Lean checks passed.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_TIGHT_PRODUCT_BUDGET_FINAL_COMPARISON_GAP
+
+Compare primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget
+against the final allowed residual budget in the active payload normalization.
+If the coarse source is too large, sharpen the ShapeSq/ShapeSqDeriv product
+budget rather than marking componentTaylorProofsPresent=true.
 ```

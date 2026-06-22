@@ -36,6 +36,28 @@ set `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, or
 Current local first gap after the supplement:
 `STEP33_A1_SUB0_RAW_DERIV_CLOSED_FORM_TO_TIGHT_PRODUCT_REMAINDER_BRIDGE_GAP`.
 
+## Local Lean Supplement 2 (2026-06-22)
+
+A later local Lean supplement added:
+
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean`
+
+Checked supplement theorems:
+
+- `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource`
+- `primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct`
+- `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure`
+
+Meaning: the raw closed form, nominal component product, degree-45 assembled
+polynomial, and residual Taylor convention are now connected by a proof-grade
+coarse enclosure.  The enclosure constant is
+`primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`; it has
+not been proved to meet the final target budget.
+
+Current local first gap after supplement 2:
+`STEP33_A1_SUB0_TIGHT_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
+
 ## Target
 
 - theorem: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure`
