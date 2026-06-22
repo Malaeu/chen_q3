@@ -40981,3 +40981,19 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP`.
 - Validation: direct Lean with the full local `.lake` library path passed;
   marker scan found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RawSecondShapeConstantsChecked
+
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean` with
+  exact shape-side constants for the raw-second product decomposition.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_at_zero_eq` and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_eq`.
+- Values:
+  `ShapeSq(0) = 269291841030051840000 / 452937348578601132294` and
+  `ShapeSq''(0) = -269291841030051840000 / 90587469715720226458800`.
+- Boundary: this does not prove the raw second-derivative interval; it removes
+  the shape-side exact constants from the remaining problem.
+- Current exact gap:
+  `STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP`.

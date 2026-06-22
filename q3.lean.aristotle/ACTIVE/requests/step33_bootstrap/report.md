@@ -68402,3 +68402,38 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
 ```
+
+## Execution Update (2026-06-22) -- raw-second shape constants checked
+
+The raw-second/model bridge file now also checks the exact shape-side constants
+in the raw-second product decomposition:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_at_zero_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_eq
+```
+
+Values:
+
+```text
+ShapeSq(0)
+  = 269291841030051840000 / 452937348578601132294.
+
+ShapeSq''(0)
+  = -269291841030051840000 / 90587469715720226458800.
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+No proof-grade interval for the true raw second derivative is proved here.
+The remaining source problem is Omega-side rational interval/control in the
+checked raw-second product decomposition.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
+```

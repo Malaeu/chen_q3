@@ -35975,3 +35975,42 @@ LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCer
 rg -n "sorry|exact\\?|admit|axiom|unsafe" \
   Q3/Proofs/PSD_CenteredCoeffRawOmegaARawSecondDerivAtZeroCert.lean
 ```
+
+## 2026-06-22 Current EOF State -- raw-second shape constants checked
+
+The same isolated raw-second certificate file now also exposes the exact
+shape-side constants needed by the raw-second product decomposition.
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_at_zero_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_second_deriv_at_zero_eq
+```
+
+Meaning:
+
+```text
+The shape-square value at eta = 0 is exactly
+  269291841030051840000 / 452937348578601132294.
+
+The shape-square second derivative at eta = 0 is exactly
+  -269291841030051840000 / 90587469715720226458800.
+
+These are Lean equalities, not sampled diagnostics.
+```
+
+Boundary:
+
+```text
+Step33A.1-A is still not closed.
+No interval for the true raw second derivative is proved here.
+The remaining proof-grade source is the Omega-side rational interval/control
+needed to bound the product decomposition.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_RAW_SECOND_DERIV_AT_ZERO_RATIONAL_INTERVAL_GAP
+```
