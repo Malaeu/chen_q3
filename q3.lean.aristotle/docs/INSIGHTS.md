@@ -39403,3 +39403,22 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: prove the same-normalization scale/source bridge from the
   active interval/exact sources into the component product stream before
   generating ShapeSqDeriv rows `2..15` or claiming Step33A.1-A closure.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- NominalSourceIntervalBridgePlan
+
+- Target blocker:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_SCALE_SOURCE_BRIDGE_GAP`.
+- Local `q3_docs` search found no ready-made exact theorem for turning
+  `NominalScaleCoeff` into the active closed-form scale or for spending the
+  nominal omega anchor as a generator-side source field.
+- External Lean/mathlib web search was used only as API sanity for rational
+  arithmetic/inequality proof style; proof evidence must remain local Lean.
+- Exact next Lean target: add conditional interval-source bridges proving
+  `|scale - NominalScaleCoeff| <= scaleError` and
+  `|omegaCenter - NominalOmegaTaylorAnchorCoeff| <= omegaAnchorError` from the
+  already used lower/upper source intervals.
+- Boundary: this must not set `exactCoefficientAssemblyPassed=true`, must not
+  claim `NominalScaleCoeff = ((3 : Real) / 10) / Real.pi`, and must not move to
+  ShapeSqDeriv rows `2..15`.
+- Expected next gap after this patch:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_PRODUCT_ERROR_BUDGET_GAP`.
