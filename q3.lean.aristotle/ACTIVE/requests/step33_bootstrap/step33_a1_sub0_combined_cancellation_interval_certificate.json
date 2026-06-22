@@ -16,7 +16,7 @@
   },
   "candidateSegmentSource": {
     "exists": true,
-    "interpretation": "The candidate records exact rational coverage and budget checks, but its sourceProofStatus remains sampled_candidate_not_lean_proof.",
+    "interpretation": "The candidate records exact rational coverage and budget checks, but its sourceProofStatus remains sampled_candidate_not_lean_proof. It cannot instantiate the high-order Valid payload.",
     "path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json",
     "proofMode": "exact_rational_same_expression_interval",
     "schema": "q3_psdpd_step33_a1_sub0_segmented_residual_deriv_interval_payload.v6",
@@ -36,22 +36,35 @@
     "rawDeriv - assembledPoly equals the scaled cancellation RHS.",
     "deriv residual equals residualTaylor P45 polynomial plus ScaledCancellationRhs.",
     "triangle split is killed by checked residualTaylor final-slope failures.",
-    "rows0..11 independent product budget is width-killed."
+    "rows0..11 independent product budget is width-killed.",
+    "High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows."
   ],
   "combinedExpressionMeaning": "rawOmegaATaylorPolynomial assembledDegree 1/20 ResidualTaylorCoeff eta + ScaledCancellationRhs eta",
   "failureCodes": [
-    "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_ROWS_MISSING",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_ROWS_MISSING",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_ROWS_MISSING",
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_TARGET_BUDGET_ROWS_MISSING",
     "STEP33_A1_SUB0_COMBINED_INTERVAL_PROOF_GRADE_SOURCE_MISSING",
     "STEP33_A1_SUB0_COMBINED_INTERVAL_LEAN_PAYLOAD_MISSING",
     "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP"
   ],
-  "firstFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
+  "firstFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP",
   "nextImplementablePatch": {
-    "checkerTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound",
-    "firstFailureIfMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
-    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean",
-    "recommendation": "prove the proof-grade whole-expression remainder source consumed by the conditional combined-cancellation payload",
-    "remainingGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP"
+    "checkerTheorem": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined",
+    "doNot": [
+      "do not build C1 point-separation first",
+      "do not use sampled/probe rows",
+      "do not revive component triangle/product split",
+      "do not mark Valid/finalBudgetPassed before Lean-checked rows"
+    ],
+    "firstFailureIfMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP",
+    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean",
+    "recommendation": "generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload: center jets j=0..15, uniform order16Abs, degree-15 Horner range, and exact target-budget inequalities",
+    "remainingGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP"
   },
   "proofStatus": {
     "allSegmentsBudgetPassedExactRational": true,
@@ -61,6 +74,12 @@
     "combinedReceiverCheckedInLean": true,
     "conditionalPayloadIsUnconditionalProof": false,
     "conditionalPayloadPresent": true,
+    "highOrderCenterJetRowsPresent": false,
+    "highOrderHornerRangeRowsPresent": false,
+    "highOrderOrder16RowsPresent": false,
+    "highOrderSourceFilePresent": true,
+    "highOrderTargetBudgetRowsPresent": false,
+    "highOrderValidPayloadPresent": false,
     "isLeanProofData": false,
     "outLeanWritten": false,
     "proofGradeCombinedBoundsPresent": false,
@@ -74,7 +93,7 @@
     "sampledSegmentPayload": "diagnostic only, not proof evidence"
   },
   "requiredCertificate": {
-    "kind": "proof_grade_interval_or_rational_certificate",
+    "kind": "proof_grade_high_order_taylor_and_horner_payload",
     "mayUse": [
       "rational interval arithmetic",
       "Lean-verifiable matrix/free polynomial interval certificate",
@@ -86,10 +105,34 @@
       "independent raw/poly interval subtraction",
       "product-budget rows route after width-fail"
     ],
-    "mustProve": "same-expression lower/upper bound for the whole combined expression"
+    "mustProve": "a concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload plus Horner range and target-budget inequalities"
   },
-  "routeId": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL",
-  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1",
+  "requiredHighOrderPayload": {
+    "adapterChain": [
+      "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound",
+      "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid",
+      "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined",
+      "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval"
+    ],
+    "certStructure": "Step33Sub0CombinedCancellationHighOrderTaylorCert",
+    "mustProvide": [
+      "smooth proof for primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr",
+      "coeff : Fin 16 -> Rat",
+      "coeffErrorAbs : Fin 16 -> Rat",
+      "coeffErrorNonneg proof",
+      "remainderNonneg proof",
+      "centerJet rows j = 0..15 at center 1/20",
+      "uniform order16Abs on Set.Icc 0 (1/10)",
+      "remainderBudget proof",
+      "polyLower and polyUpper for the degree-15 polynomial",
+      "Step33Sub0CombinedCancellationHornerRangeCert.Valid",
+      "target lower budget proof",
+      "target upper budget proof"
+    ],
+    "validPredicate": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid"
+  },
+  "routeId": "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2",
   "segments": [
     {
       "budgetPassesExactRational": true,
@@ -105,6 +148,7 @@
   ],
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json": "df8cb8dff74f605e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean": "3f95fa0605fd469c",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean": "172524e28455ca5b",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean": "2cf0833b5b65c1f7",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
@@ -113,7 +157,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean": "aabf02168d6d50fd",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean": "3074c575ace73694"
   },
-  "status": "fail_closed_missing_proof_grade_combined_interval_certificate",
+  "status": "fail_closed_missing_high_order_valid_payload",
   "targetLeanSurface": {
     "boundInputsFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean",
     "certCheckerFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean",
@@ -128,6 +172,15 @@
     "consumerTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds",
     "expression": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr",
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean",
+    "highOrderAliasTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerTaylor15_remainder_of_order16",
+    "highOrderCertStructure": "Step33Sub0CombinedCancellationHighOrderTaylorCert",
+    "highOrderReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_bound_of_centerJet15_order16",
+    "highOrderRemainderTheorem": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound",
+    "highOrderSourceFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean",
+    "highOrderToHCombinedTheorem": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined",
+    "highOrderToIntervalTheorem": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid",
+    "highOrderToResidualTheorem": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval",
+    "highOrderValidPredicate": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid",
     "landingFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean",
     "normReceiverFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean",
     "p45BridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean",

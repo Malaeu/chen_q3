@@ -5,10 +5,10 @@ not close Step33A.1-A.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1`
-- route: `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL`
-- status: `fail_closed_missing_proof_grade_combined_interval_certificate`
-- first failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`
+- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2`
+- route: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR`
+- status: `fail_closed_missing_high_order_valid_payload`
+- first failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
 - target lower: `-94119513411/500000000000000000000000000000`
 - target upper: `1866608532757/500000000000000000000000000000`
 - target width: `245091005771/62500000000000000000000000000`
@@ -18,9 +18,18 @@ not close Step33A.1-A.
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean`
 - certCheckerFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`
 - conditionalPayloadFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`
+- highOrderSourceFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
 - certStructure: `Step33Sub0CombinedCancellationIntervalCert`
 - certValidPredicate: `Step33Sub0CombinedCancellationIntervalCert.Valid`
 - certToHCombined: `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`
+- highOrderCertStructure: `Step33Sub0CombinedCancellationHighOrderTaylorCert`
+- highOrderValidPredicate: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`
+- highOrderRemainderTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound`
+- highOrderToIntervalTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid`
+- highOrderToHCombinedTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
+- highOrderToResidualTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval`
+- highOrderReceiverTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_bound_of_centerJet15_order16`
+- highOrderAliasTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerTaylor15_remainder_of_order16`
 - conditionalRemainderProp: `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`
 - conditionalPayloadTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound`
 - conditionalHCombinedTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_remainder_bound`
@@ -32,6 +41,31 @@ not close Step33A.1-A.
 - normReceiverFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`
 - p45BridgeFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`
 - landingFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`
+
+## High-Order Payload Target
+
+- certStructure: `Step33Sub0CombinedCancellationHighOrderTaylorCert`
+- validPredicate: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`
+
+Must provide:
+- smooth proof for primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+- coeff : Fin 16 -> Rat
+- coeffErrorAbs : Fin 16 -> Rat
+- coeffErrorNonneg proof
+- remainderNonneg proof
+- centerJet rows j = 0..15 at center 1/20
+- uniform order16Abs on Set.Icc 0 (1/10)
+- remainderBudget proof
+- polyLower and polyUpper for the degree-15 polynomial
+- Step33Sub0CombinedCancellationHornerRangeCert.Valid
+- target lower budget proof
+- target upper budget proof
+
+Adapter chain:
+- `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound`
+- `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid`
+- `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
+- `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval`
 
 Target statement:
 
@@ -49,6 +83,12 @@ Combined expression:
 - outLeanWritten: `False`
 - conditionalPayloadPresent: `True`
 - conditionalPayloadIsUnconditionalProof: `False`
+- highOrderSourceFilePresent: `True`
+- highOrderValidPayloadPresent: `False`
+- highOrderCenterJetRowsPresent: `False`
+- highOrderOrder16RowsPresent: `False`
+- highOrderHornerRangeRowsPresent: `False`
+- highOrderTargetBudgetRowsPresent: `False`
 - proofSafeClosedFields: `0`
 - combinedReceiverCheckedInLean: `True`
 - combinedExpressionDefinedInLean: `True`
@@ -85,8 +125,8 @@ Combined expression:
 
 ## Required Certificate
 
-- kind: `proof_grade_interval_or_rational_certificate`
-- must prove: `same-expression lower/upper bound for the whole combined expression`
+- kind: `proof_grade_high_order_taylor_and_horner_payload`
+- must prove: `a concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload plus Horner range and target-budget inequalities`
 
 May use:
 - rational interval arithmetic
@@ -107,6 +147,7 @@ Must not use:
 - deriv residual equals residualTaylor P45 polynomial plus ScaledCancellationRhs.
 - triangle split is killed by checked residualTaylor final-slope failures.
 - rows0..11 independent product budget is width-killed.
+- High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows.
 
 ## Rejected Routes
 
@@ -122,19 +163,30 @@ Must not use:
 - status: `fail_closed_missing_cancellation_preserving_taylor_remainder_proof`
 - proofMode: `exact_rational_same_expression_interval`
 - sourceIsProofGrade: `False`
-- interpretation: `The candidate records exact rational coverage and budget checks, but its sourceProofStatus remains sampled_candidate_not_lean_proof.`
+- interpretation: `The candidate records exact rational coverage and budget checks, but its sourceProofStatus remains sampled_candidate_not_lean_proof. It cannot instantiate the high-order Valid payload.`
 
 ## Next Implementable Patch
 
-- recommendation: `prove the proof-grade whole-expression remainder source consumed by the conditional combined-cancellation payload`
-- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`
-- leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`
-- checkerTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound`
-- remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP`
+- recommendation: `generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload: center jets j=0..15, uniform order16Abs, degree-15 Horner range, and exact target-budget inequalities`
+- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
+- checkerTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
+- remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- doNot:
+  - do not build C1 point-separation first
+  - do not use sampled/probe rows
+  - do not revive component triangle/product split
+  - do not mark Valid/finalBudgetPassed before Lean-checked rows
 
 ## Failure Codes
 
-- `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_ROWS_MISSING`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_ROWS_MISSING`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_ROWS_MISSING`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_TARGET_BUDGET_ROWS_MISSING`
 - `STEP33_A1_SUB0_COMBINED_INTERVAL_PROOF_GRADE_SOURCE_MISSING`
 - `STEP33_A1_SUB0_COMBINED_INTERVAL_LEAN_PAYLOAD_MISSING`
 - `STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP`
@@ -144,6 +196,7 @@ Must not use:
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean`: `d3ce443f3d86cc33`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`: `172524e28455ca5b`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`: `2cf0833b5b65c1f7`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`: `3f95fa0605fd469c`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`: `c8832f56435b42fa`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`: `8554b282c60d9c25`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`: `aabf02168d6d50fd`

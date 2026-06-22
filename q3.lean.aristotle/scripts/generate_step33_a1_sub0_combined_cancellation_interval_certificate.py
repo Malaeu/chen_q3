@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed combined cancellation interval certificate ledger.
+"""Fail-closed combined cancellation high-order certificate ledger.
 
 This script records the exact proof-grade interface for the current
 Step33A.1-A sub0 gate:
@@ -7,8 +7,9 @@ Step33A.1-A sub0 gate:
     P45 residualTaylor polynomial + ScaledCancellationRhs
 
 on [0, 1/10].  It deliberately does not emit Lean or mark the node closed
-until a proof-grade interval/rational certificate is available.  Sampled
-diagnostic intervals may be copied into the ledger, but they remain diagnostic.
+until a proof-grade `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`
+payload is available.  Sampled diagnostic intervals may be copied into the
+ledger, but they remain diagnostic.
 """
 
 from __future__ import annotations
@@ -44,6 +45,9 @@ CERT_CHECKER_FILE = (
 CONDITIONAL_PAYLOAD_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean"
 )
+HIGH_ORDER_SOURCE_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -55,10 +59,13 @@ P45_BRIDGE_FILE = (
 )
 LANDING_FILE = "Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean"
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v1"
-ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL"
-STATUS = "fail_closed_missing_proof_grade_combined_interval_certificate"
-FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2"
+ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
+STATUS = "fail_closed_missing_high_order_valid_payload"
+FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
+NEXT_PAYLOAD_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP"
+)
 SAMPLED_STATUS = "sampled_candidate_not_lean_proof"
 TARGET_LOWER = "-94119513411/500000000000000000000000000000"
 TARGET_UPPER = "1866608532757/500000000000000000000000000000"
@@ -74,6 +81,14 @@ TARGET_CLOSED_FORM_THEOREM = (
 )
 TARGET_PROOF_DATA = (
     "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds"
+)
+HIGH_ORDER_CERT_STRUCTURE = "Step33Sub0CombinedCancellationHighOrderTaylorCert"
+HIGH_ORDER_VALID = "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid"
+HIGH_ORDER_REMAINDER = "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound"
+HIGH_ORDER_TO_INTERVAL = "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid"
+HIGH_ORDER_TO_HCOMBINED = "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined"
+HIGH_ORDER_TO_RESIDUAL = (
+    "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval"
 )
 
 
@@ -187,6 +202,12 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         "firstFailure": FIRST_FAILURE,
         "failureCodes": [
             FIRST_FAILURE,
+            "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP",
+            NEXT_PAYLOAD_FAILURE,
+            "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_ROWS_MISSING",
+            "STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_ROWS_MISSING",
+            "STEP33_A1_SUB0_COMBINED_CANCELLATION_HORNER_RANGE_ROWS_MISSING",
+            "STEP33_A1_SUB0_COMBINED_CANCELLATION_TARGET_BUDGET_ROWS_MISSING",
             "STEP33_A1_SUB0_COMBINED_INTERVAL_PROOF_GRADE_SOURCE_MISSING",
             "STEP33_A1_SUB0_COMBINED_INTERVAL_LEAN_PAYLOAD_MISSING",
             "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP",
@@ -196,6 +217,12 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "outLeanWritten": False,
             "conditionalPayloadPresent": (ROOT / CONDITIONAL_PAYLOAD_FILE).exists(),
             "conditionalPayloadIsUnconditionalProof": False,
+            "highOrderSourceFilePresent": (ROOT / HIGH_ORDER_SOURCE_FILE).exists(),
+            "highOrderValidPayloadPresent": False,
+            "highOrderCenterJetRowsPresent": False,
+            "highOrderOrder16RowsPresent": False,
+            "highOrderHornerRangeRowsPresent": False,
+            "highOrderTargetBudgetRowsPresent": False,
             "proofSafeClosedFields": 0,
             "combinedReceiverCheckedInLean": True,
             "combinedExpressionDefinedInLean": True,
@@ -219,9 +246,22 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "file": COMBINED_FILE,
             "certCheckerFile": CERT_CHECKER_FILE,
             "conditionalPayloadFile": CONDITIONAL_PAYLOAD_FILE,
+            "highOrderSourceFile": HIGH_ORDER_SOURCE_FILE,
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
+            "highOrderCertStructure": HIGH_ORDER_CERT_STRUCTURE,
+            "highOrderValidPredicate": HIGH_ORDER_VALID,
+            "highOrderRemainderTheorem": HIGH_ORDER_REMAINDER,
+            "highOrderToIntervalTheorem": HIGH_ORDER_TO_INTERVAL,
+            "highOrderToHCombinedTheorem": HIGH_ORDER_TO_HCOMBINED,
+            "highOrderToResidualTheorem": HIGH_ORDER_TO_RESIDUAL,
+            "highOrderReceiverTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_bound_of_centerJet15_order16"
+            ),
+            "highOrderAliasTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerTaylor15_remainder_of_order16"
+            ),
             "conditionalRemainderProp": (
                 "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp"
             ),
@@ -250,8 +290,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "+ ScaledCancellationRhs eta"
         ),
         "requiredCertificate": {
-            "kind": "proof_grade_interval_or_rational_certificate",
-            "mustProve": "same-expression lower/upper bound for the whole combined expression",
+            "kind": "proof_grade_high_order_taylor_and_horner_payload",
+            "mustProve": (
+                "a concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid "
+                "payload plus Horner range and target-budget inequalities"
+            ),
             "mayUse": [
                 "rational interval arithmetic",
                 "Lean-verifiable matrix/free polynomial interval certificate",
@@ -264,6 +307,30 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "product-budget rows route after width-fail",
             ],
         },
+        "requiredHighOrderPayload": {
+            "certStructure": HIGH_ORDER_CERT_STRUCTURE,
+            "validPredicate": HIGH_ORDER_VALID,
+            "mustProvide": [
+                "smooth proof for primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr",
+                "coeff : Fin 16 -> Rat",
+                "coeffErrorAbs : Fin 16 -> Rat",
+                "coeffErrorNonneg proof",
+                "remainderNonneg proof",
+                "centerJet rows j = 0..15 at center 1/20",
+                "uniform order16Abs on Set.Icc 0 (1/10)",
+                "remainderBudget proof",
+                "polyLower and polyUpper for the degree-15 polynomial",
+                "Step33Sub0CombinedCancellationHornerRangeCert.Valid",
+                "target lower budget proof",
+                "target upper budget proof",
+            ],
+            "adapterChain": [
+                HIGH_ORDER_REMAINDER,
+                HIGH_ORDER_TO_INTERVAL,
+                HIGH_ORDER_TO_HCOMBINED,
+                HIGH_ORDER_TO_RESIDUAL,
+            ],
+        },
         "candidateSegmentSource": {
             "path": str(segmented_path),
             "exists": segmented is not None,
@@ -273,7 +340,8 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceIsProofGrade": False,
             "interpretation": (
                 "The candidate records exact rational coverage and budget checks, "
-                "but its sourceProofStatus remains sampled_candidate_not_lean_proof."
+                "but its sourceProofStatus remains sampled_candidate_not_lean_proof. "
+                "It cannot instantiate the high-order Valid payload."
             ),
         },
         "segments": segments,
@@ -291,6 +359,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "deriv residual equals residualTaylor P45 polynomial plus ScaledCancellationRhs.",
             "triangle split is killed by checked residualTaylor final-slope failures.",
             "rows0..11 independent product budget is width-killed.",
+            "High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows.",
         ],
         "rejectedRoutes": {
             "independentTriangleSplit": (
@@ -303,24 +372,31 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "nextImplementablePatch": {
             "recommendation": (
-                "prove the proof-grade whole-expression remainder source consumed "
-                "by the conditional combined-cancellation payload"
+                "generate/prove the concrete "
+                "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload: "
+                "center jets j=0..15, uniform order16Abs, degree-15 Horner range, "
+                "and exact target-budget inequalities"
             ),
-            "firstFailureIfMissing": FIRST_FAILURE,
+            "firstFailureIfMissing": NEXT_PAYLOAD_FAILURE,
             "leanPayloadTarget": (
-                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean"
+                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean"
             ),
             "checkerTheorem": (
-                "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound"
+                HIGH_ORDER_TO_HCOMBINED
             ),
-            "remainingGap": (
-                "STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP"
-            ),
+            "remainingGap": NEXT_PAYLOAD_FAILURE,
+            "doNot": [
+                "do not build C1 point-separation first",
+                "do not use sampled/probe rows",
+                "do not revive component triangle/product split",
+                "do not mark Valid/finalBudgetPassed before Lean-checked rows",
+            ],
         },
         "sourceDefinitionHashes": {
             COMBINED_FILE: file_hash(ROOT / COMBINED_FILE),
             CERT_CHECKER_FILE: file_hash(ROOT / CERT_CHECKER_FILE),
             CONDITIONAL_PAYLOAD_FILE: file_hash(ROOT / CONDITIONAL_PAYLOAD_FILE),
+            HIGH_ORDER_SOURCE_FILE: file_hash(ROOT / HIGH_ORDER_SOURCE_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),
@@ -352,6 +428,21 @@ def render_md(report: dict[str, Any]) -> str:
     ]
     for key, value in report["targetLeanSurface"].items():
         lines.append(f"- {key}: `{value}`")
+    lines.extend(["", "## High-Order Payload Target", ""])
+    payload = report["requiredHighOrderPayload"]
+    lines.extend(
+        [
+            f"- certStructure: `{payload['certStructure']}`",
+            f"- validPredicate: `{payload['validPredicate']}`",
+            "",
+            "Must provide:",
+        ]
+    )
+    for item in payload["mustProvide"]:
+        lines.append(f"- {item}")
+    lines.extend(["", "Adapter chain:"])
+    for item in payload["adapterChain"]:
+        lines.append(f"- `{item}`")
     lines.extend(
         [
             "",
@@ -428,7 +519,12 @@ def render_md(report: dict[str, Any]) -> str:
         lines.append(f"- {key}: `{value}`")
     lines.extend(["", "## Next Implementable Patch", ""])
     for key, value in report["nextImplementablePatch"].items():
-        lines.append(f"- {key}: `{value}`")
+        if isinstance(value, list):
+            lines.append(f"- {key}:")
+            for item in value:
+                lines.append(f"  - {item}")
+        else:
+            lines.append(f"- {key}: `{value}`")
     lines.extend(["", "## Failure Codes", ""])
     for code in report["failureCodes"]:
         lines.append(f"- `{code}`")

@@ -41143,3 +41143,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   rows and does not close Step33A.1-A.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- HighOrderCombinedLedgerV2FailClosed
+
+- Computer Use / Proshka was used as the route-review channel.  The useful
+  route instruction is advisory only: skip the C1 point-decision branch as the
+  main path and instantiate the whole-expression high-order Taylor payload.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json`
+  and `.md` with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2`.
+- Current generated status is
+  `fail_closed_missing_high_order_valid_payload`, with
+  `proofSafeClosedFields = 0`,
+  `highOrderValidPayloadPresent = false`, and no center-jet/order16/Horner
+  rows marked present.
+- The ledger now targets the exact interface:
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` and
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`.
+- Validation for this update: Python syntax check and ledger regeneration
+  passed.  A repeat `lake env lean` check of the high-order source was
+  interrupted because the wrapper stalled on a child `git diff HEAD --exit-code`
+  process; no Lean file was changed in this update.
+- Boundary: this is a fail-closed ledger/interface correction, not proof-data
+  closure and not Step33A.1-A closure.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.

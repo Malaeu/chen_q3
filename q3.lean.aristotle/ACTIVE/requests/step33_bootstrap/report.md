@@ -68728,3 +68728,75 @@ Next exact gap:
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
 ```
+
+## Execution Update (2026-06-22) -- high-order ledger v2 regenerated
+
+Computer Use / Pro status: used.  The selected in-app Proshka/Louise answer
+again routes away from `C1PointDecision` as the main proof path and toward the
+whole-expression high-order Taylor certificate.  This is route advice only; the
+local proof boundary is still the Lean/report state below.
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```
+
+Current ledger status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v2
+routeId = STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR
+status = fail_closed_missing_high_order_valid_payload
+firstFailure = STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+proofSafeClosedFields = 0
+highOrderValidPayloadPresent = false
+highOrderCenterJetRowsPresent = false
+highOrderOrder16RowsPresent = false
+highOrderHornerRangeRowsPresent = false
+highOrderTargetBudgetRowsPresent = false
+```
+
+The next generator target is now exact:
+
+```lean
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined
+```
+
+Required payload rows:
+
+```text
+center jets j = 0..15 at center 1/20
+uniform order16Abs on Set.Icc 0 (1/10)
+remainderBudget
+degree-15 Horner range for the generated polynomial
+target lower and upper budget inequalities
+```
+
+Validation:
+
+```text
+python3 -m py_compile scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+```
+
+Both passed.  A repeat `lake env lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
+run was interrupted after the wrapper stalled on a child
+`git diff HEAD --exit-code`; no Lean proof file was modified in this update.
+
+Boundary:
+
+```text
+This update is a fail-closed ledger/interface correction only.  It does not
+instantiate Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid and does
+not close Step33A.1-A.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
