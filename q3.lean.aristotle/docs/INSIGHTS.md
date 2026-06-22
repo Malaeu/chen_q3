@@ -38766,3 +38766,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP`.
 - Remaining exact first sub-gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincLiveParityFactorialBridgeChecked
+
+- Lean now checks the local parity and factorial-normalization layer on top of
+  the scalar `changeOriginSeries` bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked objects:
+  `step33RealSincFormalSeries_changeOriginSeries_apply_ones_even_index`,
+  `step33RealSincFormalSeries_changeOriginSeries_apply_ones_odd_index`,
+  `step33RealSinc_even_choose_factorial_div_eq_majorant_coeff`,
+  `step33RealSinc_even_choose_factorial_coeff_eq_majorant_coeff`,
+  `step33Sub0RealSincDerivMajorantIndex_spec`,
+  `step33Sub0RealSincDerivMajorantIndex_add_exponent`,
+  `step33RealSincFormalSeries_changeOriginSeries_apply_ones_live_index`, and
+  `step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_live_index`.
+- The live signed formula now has the exact denominator shape of the rational
+  majorant checker:
+  `k! * changeOriginSeries(k, e_live) = (-1)^n_live /
+  ((2*n_live+1) * e_live!) * u^e_live`.
+- Direct Lean validation passed and the touched-file hole scan is clean.
+  `lake env lean` and `q3_check.sh` were interrupted after bounded waits, same
+  as the previous checked realSinc steps.
+- Boundary: this is not a proof of the derivative rows.  It does not prove
+  `HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0`, does not convert
+  the scaffold to `iteratedDeriv k realSinc u` on `Set.Icc 0 (1/400)`, and
+  does not feed the scaled-sinc receiver.
+- Nearest local analytic source for the next step:
+  `realSinc_hasFPowerSeriesAt_zero_of_sin`.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.

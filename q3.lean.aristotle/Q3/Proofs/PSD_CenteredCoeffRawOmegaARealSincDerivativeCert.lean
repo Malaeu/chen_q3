@@ -227,6 +227,90 @@ theorem step33RealSincFormalSeries_changeOriginSeries_apply_ones
   simpa [step33RealSincFormalSeries] using
     step33_ofScalars_changeOriginSeries_apply_ones step33RealSincCoeff k e u
 
+/-- Even total indices in the scalar `changeOriginSeries` bridge expose the
+usual nonzero sinc coefficient. -/
+theorem step33RealSincFormalSeries_changeOriginSeries_apply_ones_even_index
+    {k n : Nat} (hk : k <= 2 * n) (u : Real) :
+    ((step33RealSincFormalSeries.changeOriginSeries k (2 * n - k))
+        (fun _ : Fin (2 * n - k) => u)) (fun _ : Fin k => (1 : Real)) =
+      ((Nat.choose (2 * n) (2 * n - k) : Nat) : Real) *
+        (((-1 : Real) ^ n) / (Nat.factorial (2 * n + 1) : Real)) *
+        u ^ (2 * n - k) := by
+  rw [step33RealSincFormalSeries_changeOriginSeries_apply_ones]
+  have hsum : k + (2 * n - k) = 2 * n := Nat.add_sub_of_le hk
+  rw [hsum, step33RealSincCoeff_two_mul]
+
+/-- Odd total indices in the scalar `changeOriginSeries` bridge vanish for the
+all-index `realSinc` formal-series scaffold. -/
+theorem step33RealSincFormalSeries_changeOriginSeries_apply_ones_odd_index
+    {k n : Nat} (hk : k <= 2 * n + 1) (u : Real) :
+    ((step33RealSincFormalSeries.changeOriginSeries k (2 * n + 1 - k))
+        (fun _ : Fin (2 * n + 1 - k) => u))
+        (fun _ : Fin k => (1 : Real)) = 0 := by
+  rw [step33RealSincFormalSeries_changeOriginSeries_apply_ones]
+  have hsum : k + (2 * n + 1 - k) = 2 * n + 1 := Nat.add_sub_of_le hk
+  rw [hsum, step33RealSincCoeff_two_mul_add_one]
+  ring
+
+/-- Binomial/factorial normalization for the even `realSinc` derivative
+coefficient.  This is the scalar arithmetic bridge from the
+`changeOriginSeries` binomial factor to the denominator used by the rational
+majorant checker. -/
+theorem step33RealSinc_even_choose_factorial_div_eq_majorant_coeff
+    {k n : Nat} (hk : k <= 2 * n) :
+    ((Nat.factorial k : Real) *
+        ((Nat.choose (2 * n) (2 * n - k) : Nat) : Real)) /
+        (Nat.factorial (2 * n + 1) : Real) =
+      1 / (((2 * n + 1 : Nat) : Real) *
+        (Nat.factorial (2 * n - k) : Real)) := by
+  have hchoose :
+      ((Nat.choose (2 * n) (2 * n - k) : Nat) : Real) =
+        (Nat.factorial (2 * n) : Real) /
+          ((Nat.factorial (2 * n - k) : Real) *
+            (Nat.factorial k : Real)) := by
+    have hle : 2 * n - k <= 2 * n := Nat.sub_le _ _
+    have hsub : 2 * n - (2 * n - k) = k := by omega
+    simpa [hsub] using
+      (Nat.cast_choose (K := Real) (a := 2 * n - k) (b := 2 * n) hle)
+  have hfact_succ :
+      (Nat.factorial (2 * n + 1) : Real) =
+        ((2 * n + 1 : Nat) : Real) * (Nat.factorial (2 * n) : Real) := by
+    rw [show 2 * n + 1 = (2 * n).succ by omega]
+    simp [Nat.factorial_succ]
+  have hkfac : (Nat.factorial k : Real) ≠ 0 := by positivity
+  have hefac : (Nat.factorial (2 * n - k) : Real) ≠ 0 := by positivity
+  have htfac : (Nat.factorial (2 * n) : Real) ≠ 0 := by positivity
+  have hlin : ((2 * n + 1 : Nat) : Real) ≠ 0 := by positivity
+  rw [hchoose, hfact_succ]
+  field_simp [hkfac, hefac, htfac, hlin]
+
+/-- Signed version of the even binomial/factorial normalization. -/
+theorem step33RealSinc_even_choose_factorial_coeff_eq_majorant_coeff
+    {k n : Nat} (hk : k <= 2 * n) :
+    (Nat.factorial k : Real) *
+        ((Nat.choose (2 * n) (2 * n - k) : Nat) : Real) *
+        (((-1 : Real) ^ n) / (Nat.factorial (2 * n + 1) : Real)) =
+      ((-1 : Real) ^ n) /
+        (((2 * n + 1 : Nat) : Real) *
+          (Nat.factorial (2 * n - k) : Real)) := by
+  have hbase :=
+    step33RealSinc_even_choose_factorial_div_eq_majorant_coeff
+      (k := k) (n := n) hk
+  calc
+    (Nat.factorial k : Real) *
+        ((Nat.choose (2 * n) (2 * n - k) : Nat) : Real) *
+        (((-1 : Real) ^ n) / (Nat.factorial (2 * n + 1) : Real))
+        = ((-1 : Real) ^ n) *
+            (((Nat.factorial k : Real) *
+              ((Nat.choose (2 * n) (2 * n - k) : Nat) : Real)) /
+              (Nat.factorial (2 * n + 1) : Real)) := by
+          ring
+    _ = ((-1 : Real) ^ n) /
+        (((2 * n + 1 : Nat) : Real) *
+          (Nat.factorial (2 * n - k) : Real)) := by
+          rw [hbase]
+          ring
+
 /-- Starting series index for the absolute majorant of the `k`-th derivative
 of `realSinc`.  This is `ceil(k / 2)`, written in integer form. -/
 def step33Sub0RealSincDerivMajorantStart (k : Nat) : Nat :=
@@ -273,6 +357,87 @@ theorem step33Sub0RealSincDerivMajorantStart_spec (k : Nat) :
     k <= 2 * step33Sub0RealSincDerivMajorantStart k := by
   unfold step33Sub0RealSincDerivMajorantStart
   omega
+
+/-- The live majorant index is large enough for row `k`. -/
+theorem step33Sub0RealSincDerivMajorantIndex_spec (k m : Nat) :
+    k <= 2 * step33Sub0RealSincDerivMajorantIndex k m := by
+  unfold step33Sub0RealSincDerivMajorantIndex
+  have hs := step33Sub0RealSincDerivMajorantStart_spec k
+  omega
+
+/-- The live exponent is exactly the leftover even-index degree after taking
+`k` derivatives. -/
+theorem step33Sub0RealSincDerivMajorantIndex_add_exponent (k m : Nat) :
+    k + step33Sub0RealSincDerivMajorantExponent k m =
+      2 * step33Sub0RealSincDerivMajorantIndex k m := by
+  unfold step33Sub0RealSincDerivMajorantExponent
+  exact Nat.add_sub_of_le (step33Sub0RealSincDerivMajorantIndex_spec k m)
+
+/-- The `realSinc` scalar `changeOriginSeries` bridge specialized to the live
+indices used by the rational majorant checker. -/
+theorem step33RealSincFormalSeries_changeOriginSeries_apply_ones_live_index
+    (k m : Nat) (u : Real) :
+    ((step33RealSincFormalSeries.changeOriginSeries k
+        (step33Sub0RealSincDerivMajorantExponent k m))
+        (fun _ : Fin (step33Sub0RealSincDerivMajorantExponent k m) => u))
+        (fun _ : Fin k => (1 : Real)) =
+      ((Nat.choose (2 * step33Sub0RealSincDerivMajorantIndex k m)
+          (step33Sub0RealSincDerivMajorantExponent k m) : Nat) : Real) *
+        (((-1 : Real) ^ step33Sub0RealSincDerivMajorantIndex k m) /
+          (Nat.factorial
+            (2 * step33Sub0RealSincDerivMajorantIndex k m + 1) : Real)) *
+        u ^ step33Sub0RealSincDerivMajorantExponent k m := by
+  simpa [step33Sub0RealSincDerivMajorantExponent] using
+    step33RealSincFormalSeries_changeOriginSeries_apply_ones_even_index
+      (k := k) (n := step33Sub0RealSincDerivMajorantIndex k m)
+      (step33Sub0RealSincDerivMajorantIndex_spec k m) u
+
+/-- Live-index scalar bridge with the `k!` normalization expected by the
+`iteratedFDeriv`/power-series crosswalk.  This is the exact signed coefficient
+shape underlying the rational absolute majorant term. -/
+theorem step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_live_index
+    (k m : Nat) (u : Real) :
+    (Nat.factorial k : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries k
+          (step33Sub0RealSincDerivMajorantExponent k m))
+          (fun _ : Fin (step33Sub0RealSincDerivMajorantExponent k m) => u))
+          (fun _ : Fin k => (1 : Real))) =
+      (((-1 : Real) ^ step33Sub0RealSincDerivMajorantIndex k m) /
+          (((2 * step33Sub0RealSincDerivMajorantIndex k m + 1 : Nat) : Real) *
+            (Nat.factorial
+              (step33Sub0RealSincDerivMajorantExponent k m) : Real))) *
+        u ^ step33Sub0RealSincDerivMajorantExponent k m := by
+  rw [step33RealSincFormalSeries_changeOriginSeries_apply_ones_live_index]
+  have hnorm :=
+    step33RealSinc_even_choose_factorial_coeff_eq_majorant_coeff
+      (k := k) (n := step33Sub0RealSincDerivMajorantIndex k m)
+      (step33Sub0RealSincDerivMajorantIndex_spec k m)
+  calc
+    (Nat.factorial k : Real) *
+      (((Nat.choose (2 * step33Sub0RealSincDerivMajorantIndex k m)
+          (step33Sub0RealSincDerivMajorantExponent k m) : Nat) : Real) *
+        (((-1 : Real) ^ step33Sub0RealSincDerivMajorantIndex k m) /
+          (Nat.factorial
+            (2 * step33Sub0RealSincDerivMajorantIndex k m + 1) : Real)) *
+        u ^ step33Sub0RealSincDerivMajorantExponent k m)
+        =
+      ((Nat.factorial k : Real) *
+        ((Nat.choose (2 * step33Sub0RealSincDerivMajorantIndex k m)
+          (step33Sub0RealSincDerivMajorantExponent k m) : Nat) : Real) *
+        (((-1 : Real) ^ step33Sub0RealSincDerivMajorantIndex k m) /
+          (Nat.factorial
+            (2 * step33Sub0RealSincDerivMajorantIndex k m + 1) : Real))) *
+        u ^ step33Sub0RealSincDerivMajorantExponent k m := by
+          ring
+    _ =
+      (((-1 : Real) ^ step33Sub0RealSincDerivMajorantIndex k m) /
+          (((2 * step33Sub0RealSincDerivMajorantIndex k m + 1 : Nat) : Real) *
+            (Nat.factorial
+              (step33Sub0RealSincDerivMajorantExponent k m) : Real))) *
+        u ^ step33Sub0RealSincDerivMajorantExponent k m := by
+          rw [show step33Sub0RealSincDerivMajorantExponent k m =
+              2 * step33Sub0RealSincDerivMajorantIndex k m - k by rfl]
+          rw [hnorm]
 
 /-- Consecutive live terms increase the derivative exponent by exactly two. -/
 theorem step33Sub0RealSincDerivMajorantExponent_succ (k m : Nat) :

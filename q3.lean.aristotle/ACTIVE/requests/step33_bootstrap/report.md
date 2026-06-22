@@ -63417,6 +63417,81 @@ Remaining exact first sub-gap:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+## 2026-06-22 Execution Update -- realSinc live parity/factorial bridge checked
+
+Implemented the next local bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked Lean objects:
+
+```lean
+step33RealSincFormalSeries_changeOriginSeries_apply_ones_even_index
+step33RealSincFormalSeries_changeOriginSeries_apply_ones_odd_index
+step33RealSinc_even_choose_factorial_div_eq_majorant_coeff
+step33RealSinc_even_choose_factorial_coeff_eq_majorant_coeff
+step33Sub0RealSincDerivMajorantIndex_spec
+step33Sub0RealSincDerivMajorantIndex_add_exponent
+step33RealSincFormalSeries_changeOriginSeries_apply_ones_live_index
+step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_live_index
+```
+
+Proof shape:
+
+```text
+general scalar changeOriginSeries bridge
+-> even total index exposes sinc coefficient
+-> odd total index vanishes
+-> live_index/live_exponent satisfy k + exponent = 2*index
+-> k! * choose(2*index, exponent) / (2*index+1)!
+   = 1 / ((2*index+1) * exponent!)
+-> signed live coefficient matches the rational majorant denominator
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+git diff --check:
+  clean
+lake env lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  interrupted after a bounded wait
+q3_check:
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  reached lean invocation and was interrupted after a bounded wait
+```
+
+Boundary: this closes only the local parity/factorial normalization for the
+`changeOriginSeries` scaffold.  It does not prove the analytic
+`HasFPowerSeriesAt` bridge for `step33RealSincFormalSeries`, does not convert
+the scaffold to `iteratedDeriv k realSinc u` on `Set.Icc 0 (1/400)`, does not
+assemble `Cert.Valid.bound`, and does not feed the scaled-sinc receiver.
+Nearest local source for the next step:
+
+```lean
+realSinc_hasFPowerSeriesAt_zero_of_sin
+```
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
 ## 2026-06-22 Execution Update -- realSinc all-index coefficient scaffold checked
 
 Used the in-app browser / Computer Use for a narrow Proshka route check.  The
@@ -63522,6 +63597,45 @@ STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP
 ```
 
 Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Execution Update -- realSinc live parity/factorial bridge checked (supersedes scalar bridge entry)
+
+Latest checked theorem:
+
+```lean
+step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_live_index
+```
+
+New checked layer:
+
+```text
+k! * changeOriginSeries(k, live_exponent(k,m))
+  = (-1)^live_index(k,m)
+    / ((2*live_index(k,m)+1) * live_exponent(k,m)!)
+    * u^live_exponent(k,m)
+```
+
+This closes the local `choose/parity` and factorial-normalization part of the
+realSinc rows `1..17` crosswalk.  It does not prove
+`HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0`, does not convert the
+scaffold to `iteratedDeriv k realSinc u` on `Set.Icc 0 (1/400)`, and does not
+feed the scaled-sinc receiver.
+
+Validation: direct Lean passed; touched-file hole scan and `git diff --check`
+are clean.  `lake env lean` and `q3_check` were interrupted after bounded
+waits at the Lean invocation, as in the prior realSinc steps.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_FPOWER_SERIES_TO_ITERATEDDERIV_MAJORANT_GAP
+```
+
+Remaining broad gap:
 
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
