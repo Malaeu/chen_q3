@@ -539,6 +539,27 @@ theorem primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_in
       primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs] at hLower hUpper ⊢
     linarith
 
+theorem primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval :
+    (primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Real) <=
+        ((3 : Real) / 10) / Real.pi ∧
+      ((3 : Real) / 10) / Real.pi <=
+        (primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Real) := by
+  constructor
+  · have hEq :
+        (primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Real) =
+          (0.095492965855137201461330258023 : Real) := by
+      norm_num [primaryFiniteRow0Parent0Split100Sub0TightScaleLower]
+    rw [hEq]
+    exact
+      Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaEll_div_pi_tightScaleLower
+  · have hEq :
+        (primaryFiniteRow0Parent0Split100Sub0TightScaleUpper : Real) =
+          (0.095492965855137201461330258024 : Real) := by
+      norm_num [primaryFiniteRow0Parent0Split100Sub0TightScaleUpper]
+    rw [hEq]
+    exact
+      Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaEll_div_pi_tightScaleUpper
+
 theorem primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge
     {scale omegaCenter : Real}
     (hScaleLower :

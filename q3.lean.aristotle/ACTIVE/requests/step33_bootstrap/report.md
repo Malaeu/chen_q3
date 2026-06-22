@@ -65806,3 +65806,83 @@ the old tight scale interval, or introduce and prove a new same-unit
 product-budget cap that can absorb the certified existing-pi scale error.
 Do not mark generator exact-assembly fields true from the existing-pi route.
 ```
+
+## Execution Update (2026-06-22) -- actual scale tight bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A actual scale repair after the existing-pi
+widening audit.
+
+Local search/inspection found that the needed stronger pi source already
+exists in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean
+```
+
+Checked source lemmas:
+
+```text
+q3_pi_gt_d29
+q3_pi_lt_d29
+rawOmegaEll_div_pi_tightScaleLower
+rawOmegaEll_div_pi_tightScaleUpper
+```
+
+New checked theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval
+```
+
+Statement closed:
+
+```text
+TightScaleLower <= ((3 : Real) / 10) / Real.pi
+((3 : Real) / 10) / Real.pi <= TightScaleUpper
+```
+
+Meaning: the earlier exact rational existing-pi widening certificate is still
+true as an audit of the wider endpoint pi interval, but it is no longer the
+current blocker.  The checked d29 pi bridge proves the actual raw scale lies in
+the old tight interval without widening `NominalScaleErrorAbs`.
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_final_scale_product_budget_checked_generator_exact_assembly_fields_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP
+checkedActiveScaleTightIntervalPresent = true
+existingPiScaleBudgetFailPresent = true
+supersededAsCurrentBlockerByActiveScaleBridge = true
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+The remaining exact gap is generator exact-assembly fields:
+assembledRawDerivCoeff, residualTaylorCoeff, and residualTaylorRemainderAbs
+must be proof-grade and match the checked component assembly/final product
+error budget.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py scripts/certify_step33_a1_sub0_existing_pi_scale_budget.py
+python3 scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_existing_pi_scale_budget_cert.json
+rg -n "sorry|exact\?|admit|axiom|unsafe" <touched Lean/script/ledger files>
+git diff --check
+```
+
+`lake env lean` was attempted first but again hung silently during environment
+setup, so the checked Lean result above is the direct Lean invocation with the
+local `.lake` library path.  `bash scripts/q3_check.sh
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was also retried; it again hung after printing its internal Lean command and
+was interrupted without a successful `q3_check` result.

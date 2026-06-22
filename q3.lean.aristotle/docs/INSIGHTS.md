@@ -39790,3 +39790,62 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   interval, or prove a new same-unit product-budget cap that can absorb the
   certified existing-pi scale error.  Do not generate ShapeSqDeriv rows 2..15
   or set `exactCoefficientAssemblyPassed` from this route.
+
+## Insight (2026-06-22, Step33A.1-A, in progress) -- ActualScaleTightBridgePlan
+
+- Target blocker:
+  `STEP33_A1_SUB0_EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL`.
+- Local `q3_docs` search did not find a separate budget-cap theorem package
+  for this node, but local Lean inspection found the stronger pi/scale source
+  already checked in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+  `q3_pi_gt_d29`, `q3_pi_lt_d29`,
+  `rawOmegaEll_div_pi_tightScaleLower`, and
+  `rawOmegaEll_div_pi_tightScaleUpper`.
+- External Mathlib search was used only as API sanity for
+  `pi_lower_bound` / `pi_upper_bound`; proof evidence stays local Lean.
+- Exact next Lean target:
+  `primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval`,
+  proving `TightScaleLower <= ((3 : Real) / 10) / Real.pi` and
+  `((3 : Real) / 10) / Real.pi <= TightScaleUpper` from the checked d29 pi
+  bridge.
+- Boundary: this must not set `assembledRawDerivCoeffPresent`,
+  `residualTaylorCoeffPresent`, `componentTaylorProofsPresent`, or
+  `exactCoefficientAssemblyPassed=true`.  It only kills the existing-pi
+  scale-budget widening failure by proving the old tight scale interval
+  directly.
+
+## Insight (2026-06-22, Step33A.1-A) -- ActualScaleTightBridgeChecked
+
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+  with
+  `primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval`.
+- The theorem proves
+  `TightScaleLower <= ((3 : Real) / 10) / Real.pi` and
+  `((3 : Real) / 10) / Real.pi <= TightScaleUpper`.
+- Proof source: existing Lean-checked d29 pi bridge in
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean`:
+  `rawOmegaEll_div_pi_tightScaleLower` and
+  `rawOmegaEll_div_pi_tightScaleUpper`.
+- Meaning: the previous exact rational existing-pi widening certificate remains
+  a valid fail-closed audit of the wider endpoint pi interval, but it is now
+  superseded as the current blocker by the checked actual-scale tight bridge.
+- Regenerated component ledger status:
+  `fail_closed_final_scale_product_budget_checked_generator_exact_assembly_fields_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GENERATOR_FIELDS_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  It does not set `assembledRawDerivCoeffPresent`,
+  `residualTaylorCoeffPresent`, `componentTaylorProofsPresent`, or
+  `exactCoefficientAssemblyPassed=true`.
+- Validation: direct Lean with the local `.lake` library path passed; generator
+  byte-compile, regeneration, JSON parse, touched-file marker scan, and diff
+  whitespace check passed.  `lake env lean` was attempted first but again hung
+  silently during environment setup, so it was interrupted.  `q3_check.sh` was
+  retried and again hung after printing its internal Lean command, so it was
+  interrupted without a successful `q3_check` result.
+- Next exact patch: fill/import proof-grade generator exact-assembly fields
+  only after proving that `assembledRawDerivCoeff`,
+  `residualTaylorCoeff`, and `residualTaylorRemainderAbs` match the checked
+  component assembly and final product error budget.

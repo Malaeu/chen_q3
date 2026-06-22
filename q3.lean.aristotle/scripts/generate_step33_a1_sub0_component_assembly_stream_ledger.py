@@ -182,6 +182,9 @@ NOMINAL_SCALE_ABS_BOUND_THEOREM = (
 NOMINAL_SCALE_ERROR_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval"
 )
+ACTIVE_SCALE_TIGHT_INTERVAL_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval"
+)
 NOMINAL_OMEGA_ANCHOR_COEFF = (
     "primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff"
 )
@@ -423,6 +426,13 @@ def has_checked_nominal_source_interval_bridge(assembly_text: str) -> bool:
     )
 
 
+def has_checked_active_scale_tight_interval(assembly_text: str) -> bool:
+    return (
+        symbol_pattern(ACTIVE_SCALE_TIGHT_INTERVAL_THEOREM).search(assembly_text)
+        is not None
+    )
+
+
 def has_checked_product_error_budget_bridge(assembly_text: str) -> bool:
     return (
         symbol_pattern(PRODUCT_ERROR_BUDGET_THEOREM).search(assembly_text)
@@ -609,6 +619,10 @@ def build_report() -> dict[str, Any]:
         nominal_object_bridge_present
         and has_checked_nominal_source_interval_bridge(assembly_text)
     )
+    active_scale_tight_interval_present = bool(
+        nominal_source_interval_bridge_present
+        and has_checked_active_scale_tight_interval(assembly_text)
+    )
     product_error_budget_bridge_present = bool(
         nominal_source_interval_bridge_present
         and has_checked_product_error_budget_bridge(assembly_text)
@@ -681,6 +695,9 @@ def build_report() -> dict[str, Any]:
             "nominalSourceIntervalBridgePresent": (
                 nominal_source_interval_bridge_present
             ),
+            "activeScaleTightIntervalPresent": (
+                active_scale_tight_interval_present
+            ),
             "productErrorBudgetBridgePresent": product_error_budget_bridge_present,
             "nominalScaleAbsBoundPresent": nominal_scale_abs_bound_present,
             "productComponentWitnessBridgePresent": (
@@ -717,6 +734,7 @@ def build_report() -> dict[str, Any]:
             else STATUS_AFTER_EXISTING_PI_SCALE_BUDGET_FAIL
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
+            and not active_scale_tight_interval_present
             else STATUS_AFTER_FINAL_SCALE_PRODUCT_BUDGET
             if final_scale_product_budget_present
             else STATUS_AFTER_PRODUCT_BUDGET_COMPARISONS
@@ -747,6 +765,7 @@ def build_report() -> dict[str, Any]:
             else EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
+            and not active_scale_tight_interval_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
             if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
@@ -775,6 +794,7 @@ def build_report() -> dict[str, Any]:
             else EXISTING_PI_SCALE_BUDGET_WIDENING_FAIL
             if final_scale_product_budget_present
             and existing_pi_scale_budget_fail_present
+            and not active_scale_tight_interval_present
             else GENERATOR_EXACT_ASSEMBLY_FIELDS_GAP
             if final_scale_product_budget_present
             else FINAL_SCALE_PRODUCT_BUDGET_GAP
@@ -823,12 +843,29 @@ def build_report() -> dict[str, Any]:
             "checked if recorded in the guard below; final scale/product "
             "arithmetic is checked if recorded in the guard below; generator "
             "exact-assembly coefficient/remainder fields remain separate. "
+            "The actual scale tight-interval bridge is checked if recorded "
+            "in the guard below; if present, it supersedes the fail-closed "
+            "existing-pi widening audit as the current scale source. "
             "The existing endpoint-pi route is separately audited by the "
             "existing-pi scale budget certificate if recorded in the guard; "
             "do not treat it as the current tight nominal scale-error slot "
             "unless a same-unit widening cap is proved. "
             "Step33A.1-A is not closed."
         ),
+        "activeScaleTightIntervalBridge": {
+            "theorem": ACTIVE_SCALE_TIGHT_INTERVAL_THEOREM,
+            "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
+            "present": active_scale_tight_interval_present,
+            "meaning": (
+                "Proves ((3 : Real) / 10) / Real.pi lies in the old tight "
+                "scale interval using the checked d29 pi bridge, without "
+                "widening NominalScaleErrorAbs."
+            ),
+            "supersedesExistingPiWideningFailureAsCurrentBlocker": bool(
+                active_scale_tight_interval_present
+                and existing_pi_scale_budget_fail_present
+            ),
+        },
         "existingPiScaleBudgetCert": {
             "path": str(EXISTING_PI_SCALE_BUDGET_CERT_JSON.relative_to(ROOT)),
             "exists": EXISTING_PI_SCALE_BUDGET_CERT_JSON.exists(),
@@ -864,6 +901,10 @@ def build_report() -> dict[str, Any]:
                 existing_pi_scale_budget_cert.get("decision")
                 if existing_pi_scale_budget_cert
                 else None
+            ),
+            "supersededAsCurrentBlockerByActiveScaleBridge": bool(
+                active_scale_tight_interval_present
+                and existing_pi_scale_budget_fail_present
             ),
         },
         "browserProshkaDecision": {
@@ -910,6 +951,10 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_ACTIVE_SCALE_TIGHT_INTERVAL_CHECKED_GENERATOR_FIELDS_OPEN"
+                if final_scale_product_budget_present
+                and active_scale_tight_interval_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_FINAL_SCALE_PRODUCT_BUDGET_CHECKED_GENERATOR_FIELDS_OPEN"
                 if final_scale_product_budget_present
                 else
@@ -1028,6 +1073,7 @@ def build_report() -> dict[str, Any]:
                     NOMINAL_SCALE_INTERVAL_THEOREM,
                     NOMINAL_SCALE_ABS_BOUND_THEOREM,
                     NOMINAL_SCALE_ERROR_THEOREM,
+                    ACTIVE_SCALE_TIGHT_INTERVAL_THEOREM,
                     NOMINAL_OMEGA_ANCHOR_COEFF,
                     NOMINAL_OMEGA_ANCHOR_LOWER,
                     NOMINAL_OMEGA_ANCHOR_UPPER,
@@ -1120,6 +1166,9 @@ def build_report() -> dict[str, Any]:
             "checkedNominalSourceIntervalBridgePresent": (
                 nominal_source_interval_bridge_present
             ),
+            "checkedActiveScaleTightIntervalPresent": (
+                active_scale_tight_interval_present
+            ),
             "checkedProductErrorBudgetBridgePresent": (
                 product_error_budget_bridge_present
             ),
@@ -1183,6 +1232,7 @@ def build_report() -> dict[str, Any]:
                 "exact-assembly fields."
                 if final_scale_product_budget_present
                 and existing_pi_scale_budget_fail_present
+                and not active_scale_tight_interval_present
                 else
                 "Fill or import proof-grade generator exact-assembly fields "
                 "only after proving that assembledRawDerivCoeff, "
@@ -1371,6 +1421,40 @@ def render_markdown(report: dict[str, Any]) -> str:
             f"- component degree: `{formula['componentDegree']}`",
             f"- assembled degree: `{formula['assembledDegree']}`",
             f"- warning: {formula['normalizationWarning']}",
+            "",
+            "## Active Scale Bridge",
+            "",
+        ]
+    )
+    active_scale = report["activeScaleTightIntervalBridge"]
+    lines.extend(
+        [
+            f"- theorem: `{active_scale['theorem']}`",
+            f"- file: `{active_scale['file']}`",
+            f"- present: `{active_scale['present']}`",
+            f"- meaning: {active_scale['meaning']}",
+            "- supersedes existing-pi widening failure as current blocker: "
+            f"`{active_scale['supersedesExistingPiWideningFailureAsCurrentBlocker']}`",
+            "",
+            "## Existing Pi Widening Audit",
+            "",
+        ]
+    )
+    existing_pi = report["existingPiScaleBudgetCert"]
+    for key in [
+        "path",
+        "exists",
+        "status",
+        "failureCode",
+        "proofGrade",
+        "certifiedRequiredScaleError",
+        "currentScaleError",
+        "supersededAsCurrentBlockerByActiveScaleBridge",
+    ]:
+        lines.append(f"- {key}: `{existing_pi[key]}`")
+    lines.extend(
+        [
+            f"- decision: {existing_pi['decision']}",
             "",
             "## Source Files",
             "",
