@@ -18325,3 +18325,30 @@ Generalize row0 to all j : Fin 16 and prove the order-16 product-Leibniz
 identity for CombinedCancellationIntervalExpr before any generated
 HighOrderTaylorCert.Valid payload.
 ```
+
+## 2026-06-23 Active Node Addendum -- all-row helper name missing
+
+Checked after browser/Proshka advisory:
+
+```text
+#check iteratedDeriv_mul
+```
+
+Result:
+
+```text
+Unknown identifier `iteratedDeriv_mul`
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_ITERATED_DERIV_MUL_HELPER_MISSING_GAP
+```
+
+Next exact move:
+
+```text
+Do not assume a ready scalar iteratedDeriv product theorem.  Find/prove the
+product-Leibniz helper first, then generalize the row0 center-jet bridge.
+```

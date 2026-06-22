@@ -69083,3 +69083,47 @@ Prove the all-row component-source center-jet Cauchy bridge for j : Fin 16,
 then the order-16 product-Leibniz bridge.  Continue preserving cancellation
 before norms and before generated payload rows.
 ```
+
+## Execution Update (2026-06-23) -- `iteratedDeriv_mul` advisory rejected
+
+The browser/Proshka answer proposed a direct all-row patch based on a Mathlib
+helper named `iteratedDeriv_mul`.  This was checked locally before any Lean
+edit.
+
+Command shape:
+
+```text
+import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+#check iteratedDeriv_mul
+#check iteratedDeriv_add
+#check iteratedDeriv_sub
+#check iteratedDeriv_const_mul
+```
+
+Result:
+
+```text
+iteratedDeriv_mul: unknown identifier
+iteratedDeriv_add/sub/const_mul: present
+```
+
+Decision:
+
+```text
+Do not implement the Proshka theorem shape as written.  The all-row bridge
+still needs a repo-real product-Leibniz source or a separate local helper.
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_ITERATED_DERIV_MUL_HELPER_MISSING_GAP
+```
+
+Next exact patch:
+
+```text
+Search/prove the product rule through existing iteratedFDeriv/product
+infrastructure, then use it to generalize the checked row0 center-jet source
+bridge to j : Fin 16.
+```

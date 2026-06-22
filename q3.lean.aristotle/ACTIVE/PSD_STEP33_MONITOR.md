@@ -36594,3 +36594,45 @@ j : Fin 16, then prove the corresponding order-16 product-Leibniz identity
 for CombinedCancellationIntervalExpr.  Do not run the generator or mark Valid
 before this exact algebraic bridge exists.
 ```
+
+## 2026-06-23 Addendum -- Proshka all-row helper name rejected locally
+
+Proshka advisory suggested using a ready `iteratedDeriv_mul` helper for the
+all-row normalized center-jet product bridge.  Local Lean check rejects that
+name in the current Mathlib:
+
+```text
+import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+#check iteratedDeriv_mul
+```
+
+Result:
+
+```text
+Unknown identifier `iteratedDeriv_mul`
+```
+
+Available checked names include:
+
+```lean
+iteratedDeriv_add
+iteratedDeriv_sub
+iteratedDeriv_const_mul
+```
+
+Therefore the all-row patch must not assume a ready scalar product-Leibniz
+theorem under that name.
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_ITERATED_DERIV_MUL_HELPER_MISSING_GAP
+```
+
+Next exact patch:
+
+```text
+Find a repo-real product rule source, likely through iteratedFDeriv/product
+infrastructure, or prove a small local scalar product-Leibniz helper before
+generalizing the row0 center-jet bridge.
+```

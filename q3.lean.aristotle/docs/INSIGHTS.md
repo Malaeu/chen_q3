@@ -41299,3 +41299,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` remain open.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- IteratedDerivMulHelperMissing
+
+- Browser/Computer Use / Proshka advisory suggested a direct all-row patch
+  using a helper named `iteratedDeriv_mul`.
+- Local Lean rejected that exact name under
+  `Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas`:
+  `Unknown identifier iteratedDeriv_mul`.
+- The nearby helpers `iteratedDeriv_add`, `iteratedDeriv_sub`, and
+  `iteratedDeriv_const_mul` are present, so the problem is specifically the
+  missing product-Leibniz surface, not the `iteratedDeriv` namespace/import.
+- Decision: do not implement the Proshka theorem shape as written and do not
+  assume a phantom Mathlib theorem.
+- Current exact blocker:
+  `STEP33_A1_SUB0_ITERATED_DERIV_MUL_HELPER_MISSING_GAP`.
+- Next exact patch: find a repo-real product rule source, likely via
+  `iteratedFDeriv`/product infrastructure, or prove a local scalar product
+  helper before generalizing the checked row0 center-jet bridge.
