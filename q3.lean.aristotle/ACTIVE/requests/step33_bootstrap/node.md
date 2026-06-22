@@ -103,6 +103,28 @@ RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.Valid
 RawOmegaAChunkIntegral.rawOmegaAWindowPartBoundsCert_of_taylorModelCertificate
 ```
 
+2026-06-23 Step33A.1-A combined source-model update:
+
+```text
+The structural all-row component-source center-jet bridge is Lean-checked in
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean.
+
+Closed:
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP
+
+Do not look for Mathlib `iteratedDeriv_mul`; it is absent in this checkout.
+The local file proves `primaryFiniteRow0Parent0Split100Sub0_iterate_deriv_mul`
+and folds it through the normalized center-jet convention.
+
+Current live gap:
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+
+Next proof-producing patch:
+  build/prove concrete `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`
+  with rational center jets 0..15, proof-grade uniform order16Abs, degree-15
+  Horner range, and exact target-budget inequalities.
+```
+
 The current generator-facing payload adapter is checked in:
 
 ```lean

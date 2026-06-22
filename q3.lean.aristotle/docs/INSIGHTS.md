@@ -41317,3 +41317,39 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Next exact patch: find a repo-real product rule source, likely via
   `iteratedFDeriv`/product infrastructure, or prove a local scalar product
   helper before generalizing the checked row0 center-jet bridge.
+
+## Insight (2026-06-23, Step33A.1-A) -- CombinedCancellationAllRowSourceBridgeChecked
+
+- Browser/Computer Use was used for route review.  The new Proshka answer again
+  leaned on the unavailable `iteratedDeriv_mul`, so Codex rejected that as
+  proof evidence and used only locally checked Lean.
+- Local search synthesis: `q3_docs` and Mathlib/source search did not expose a
+  ready scalar all-order `iteratedDeriv` product theorem; the checked route was
+  a local induction over `deriv^[n]`, with the Pascal/reindexing step adapted
+  from `Polynomial.iterate_derivative_mul`.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`.
+- Lean checked structural helpers:
+  `primaryFiniteRow0Parent0Split100Sub0_iterate_deriv_mul`,
+  `primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_mul`,
+  `primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_add`,
+  `primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_sub`, and
+  `primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_const_mul`.
+- Lean checked all-row component-source identities for every `j : Fin 16`:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_centerJet_eq_cauchy`,
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_centerJet_eq_cauchy`,
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductCancellationResidual_centerJet_eq_cauchy`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource`.
+- Meaning: the previous all-row product-Leibniz/center-jet crosswalk gap is
+  closed in Lean for the combined-cancellation source model.  The row0
+  theorems remain as harmless corollary-style smoke checks.
+- Boundary: this still does not emit concrete rational center-jet rows, a
+  proof-grade uniform order-16 bound, Horner range rows, target-budget
+  inequalities, or a `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`
+  payload.
+- Resolved blockers:
+  `STEP33_A1_SUB0_ITERATED_DERIV_MUL_HELPER_MISSING_GAP` and
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP`.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.

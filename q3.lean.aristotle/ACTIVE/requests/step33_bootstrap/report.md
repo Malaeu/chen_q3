@@ -68,6 +68,57 @@ whole-expression degree-15 Taylor receiver with center-jet rows 0..15 plus a
 uniform order-16 derivative bound.  The receiver compiles, but the generated
 payload remains missing.
 
+## Execution Update (2026-06-23) -- combined source-model all-row bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A combined-cancellation high-order Taylor source.
+
+Lean bridge extended in:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+
+primaryFiniteRow0Parent0Split100Sub0_iterate_deriv_mul
+primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_mul
+primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_add
+primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_sub
+primaryFiniteRow0Parent0Split100Sub0_normalizedCenterJet_const_mul
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_centerJet_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_componentProductNominal_centerJet_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_componentProductCancellationResidual_centerJet_eq_cauchy
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource
+```
+
+Meaning: the component-source center-jet crosswalk is now Lean-checked for
+every `j : Fin 16`.  The local product rule is proved in this file because the
+suggested Mathlib name `iteratedDeriv_mul` is absent in this checkout.
+
+Validation:
+
+```bash
+lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+No concrete rational center-jet rows are emitted.
+No proof-grade uniform order16Abs, Horner range, or exact target-budget payload
+has been produced.
+```
+
+Resolved blocker:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```
+
 ## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
 
 Route: PSD-pd/Q3 Step33A.1-A realSinc derivative-majorant interface.
