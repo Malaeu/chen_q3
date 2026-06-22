@@ -38649,3 +38649,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP`; the main analytic
   gap remains
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincMajorantTsumTailChecked
+
+- Used the in-app browser / Computer Use for Proshka route review of the live
+  realSinc blocker.  Proshka reaffirmed route B: prove the analytic
+  derivative-series majorant, then let exact rational prefix/tail rows feed the
+  existing scaled-sinc receiver.
+- Lean-checked the arithmetic `ratio -> shifted tsum tail` bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New reusable theorem:
+  `step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le`, proving
+  `tsum_m term(k,N+m) <= term(k,N)/(1-(1/400)^2)`.
+- The proof pattern is: termwise geometric envelope from
+  `step33Sub0RealSincDerivMajorantTerm_real_succ_le_ratio`, then
+  `Summable.of_nonneg_of_le`, `Summable.tsum_le_tsum`, and
+  `tsum_geometric_of_lt_one`.
+- Regenerated the fail-closed payload with both
+  `tailRatioLeanChecked = true` and `tailTsumBoundLeanChecked = true`; the
+  payload still has `proofGrade = false`.
+- This closes
+  `STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP`.
+- Remaining exact first sub-gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.

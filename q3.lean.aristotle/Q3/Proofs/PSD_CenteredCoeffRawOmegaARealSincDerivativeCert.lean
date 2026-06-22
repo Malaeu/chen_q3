@@ -147,6 +147,98 @@ theorem step33Sub0RealSincDerivMajorantTerm_real_nonneg (k m : Nat) :
     0 <= (step33Sub0RealSincDerivMajorantTerm k m : Real) := by
   exact_mod_cast step33Sub0RealSincDerivMajorantTerm_nonneg k m
 
+/-- A shifted live-term tail is bounded termwise by the geometric envelope
+with ratio `(1/400)^2`. -/
+theorem step33Sub0RealSincDerivMajorantTerm_real_shift_le_geometric
+    (k N m : Nat) :
+    (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real) <=
+      (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+        (((1 : Real) / 400) ^ 2) ^ m := by
+  induction m with
+  | zero =>
+      simp
+  | succ m ih =>
+      have hratio :
+          (step33Sub0RealSincDerivMajorantTerm k (N + (m + 1)) : Real) <=
+            (((1 : Real) / 400) ^ 2) *
+              (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real) := by
+        simpa [Nat.add_assoc] using
+          step33Sub0RealSincDerivMajorantTerm_real_succ_le_ratio k (N + m)
+      have hstep :
+          (((1 : Real) / 400) ^ 2) *
+              (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real) <=
+            (((1 : Real) / 400) ^ 2) *
+              ((step33Sub0RealSincDerivMajorantTerm k N : Real) *
+                (((1 : Real) / 400) ^ 2) ^ m) := by
+        exact mul_le_mul_of_nonneg_left ih (by positivity)
+      calc
+        (step33Sub0RealSincDerivMajorantTerm k (N + (m + 1)) : Real)
+            <= (((1 : Real) / 400) ^ 2) *
+                (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real) := hratio
+        _ <= (((1 : Real) / 400) ^ 2) *
+              ((step33Sub0RealSincDerivMajorantTerm k N : Real) *
+                (((1 : Real) / 400) ^ 2) ^ m) := hstep
+        _ = (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+              (((1 : Real) / 400) ^ 2) ^ (m + 1) := by
+          rw [pow_succ]
+          ring
+
+/-- Shifted live-term tails are summable. -/
+theorem step33Sub0RealSincDerivMajorantTerm_real_shift_summable
+    (k N : Nat) :
+    Summable (fun m : Nat =>
+      (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real)) := by
+  refine Summable.of_nonneg_of_le
+    (f := fun m : Nat =>
+      (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+        (((1 : Real) / 400) ^ 2) ^ m)
+    (g := fun m : Nat =>
+      (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real))
+    ?hNonneg ?hLe ?hGeom
+  · intro m
+    exact step33Sub0RealSincDerivMajorantTerm_real_nonneg k (N + m)
+  · intro m
+    exact step33Sub0RealSincDerivMajorantTerm_real_shift_le_geometric k N m
+  · exact Summable.mul_left (step33Sub0RealSincDerivMajorantTerm k N : Real)
+      (summable_geometric_of_lt_one (by positivity) (by norm_num))
+
+/-- Geometric `tsum` bound for the shifted majorant tail. -/
+theorem step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le
+    (k N : Nat) :
+    (∑' m : Nat,
+      (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real)) <=
+      (step33Sub0RealSincDerivMajorantTerm k N : Real) /
+        (1 - (((1 : Real) / 400) ^ 2)) := by
+  have hShift :=
+    step33Sub0RealSincDerivMajorantTerm_real_shift_summable k N
+  have hGeom : Summable (fun m : Nat =>
+      (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+        (((1 : Real) / 400) ^ 2) ^ m) := by
+    exact Summable.mul_left (step33Sub0RealSincDerivMajorantTerm k N : Real)
+      (summable_geometric_of_lt_one (by positivity) (by norm_num))
+  have hsum :
+      (∑' m : Nat,
+        (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real)) <=
+        ∑' m : Nat,
+          (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+            (((1 : Real) / 400) ^ 2) ^ m := by
+    exact Summable.tsum_le_tsum
+      (step33Sub0RealSincDerivMajorantTerm_real_shift_le_geometric k N)
+      hShift hGeom
+  calc
+    (∑' m : Nat,
+      (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real))
+        <= ∑' m : Nat,
+          (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+            (((1 : Real) / 400) ^ 2) ^ m := hsum
+    _ = (step33Sub0RealSincDerivMajorantTerm k N : Real) *
+          (1 - (((1 : Real) / 400) ^ 2))⁻¹ := by
+      rw [tsum_mul_left,
+        tsum_geometric_of_lt_one (by positivity) (by norm_num)]
+    _ = (step33Sub0RealSincDerivMajorantTerm k N : Real) /
+          (1 - (((1 : Real) / 400) ^ 2)) := by
+      simp [div_eq_mul_inv]
+
 /-- Finite rational certificate surface for the `realSinc` derivative rows
 `k = 0, ..., 17`.
 

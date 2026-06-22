@@ -63204,3 +63204,74 @@ Main blocker remains:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 ```
+
+## 2026-06-22 Execution Update -- realSinc majorant tsum tail checked
+
+Used in-app browser / Computer Use for Proshka route review.  Proshka's
+repo-facing recommendation stays route B:
+
+```text
+realSinc derivative series
+-> absolute coefficient majorant
+-> exact finite prefix
+-> geometric tail with ratio <= 1/400^2
+-> 18 rational baseAbs rows
+-> existing scaled-sinc receiver
+```
+
+Implemented the next arithmetic bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked Lean objects:
+
+```lean
+step33Sub0RealSincDerivMajorantTerm_real_shift_le_geometric
+step33Sub0RealSincDerivMajorantTerm_real_shift_summable
+step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le
+```
+
+Meaning:
+
+```text
+(∑' m : Nat, (step33Sub0RealSincDerivMajorantTerm k (N + m) : Real))
+  <= (step33Sub0RealSincDerivMajorantTerm k N : Real)
+       / (1 - (1/400)^2)
+```
+
+Regenerated fail-closed payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.md
+tailRatioLeanChecked = true
+tailTsumBoundLeanChecked = true
+proofGrade = false
+```
+
+Validation:
+
+```text
+direct lean:
+  LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+python3 scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+python3 -m py_compile scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+json sanity:
+  passed; proofGrade remains false and proofGradeBlockedBy no longer includes
+  STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP
+```
+
+This closes:
+
+```text
+STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP
+```
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+```

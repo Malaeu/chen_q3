@@ -33605,3 +33605,51 @@ next arithmetic sub-gap:
 
 The main analytic blocker is unchanged:
 `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.
+
+## 2026-06-22 Current EOF State -- realSinc majorant tsum tail checked
+
+Used the in-app browser / Computer Use for Proshka route review of the live
+`realSinc` blocker.  The selected route stays route B: keep the existing
+scaled-sinc receiver, prove the analytic `realSinc` derivative-series
+majorant, and let the generator emit exact rational prefix/tail rows.
+
+Added checked geometric-tail support in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked objects:
+
+```lean
+step33Sub0RealSincDerivMajorantTerm_real_shift_le_geometric
+step33Sub0RealSincDerivMajorantTerm_real_shift_summable
+step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le
+```
+
+Meaning:
+
+```text
+tsum_m term(k, N + m)
+  <= term(k, N) / (1 - (1/400)^2)
+```
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.md
+tailRatioLeanChecked = true
+tailTsumBoundLeanChecked = true
+proofGrade = false
+```
+
+Boundary: this closes the previous arithmetic sub-gap
+`STEP33_A1_SUB0_REALSINC_MAJORANT_TSUM_TAIL_BOUND_GAP`, but it still does not
+prove that the majorant series bounds `‖iteratedDeriv k realSinc u‖`.
+
+The only active first sub-gap for the realSinc payload is now:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+```
