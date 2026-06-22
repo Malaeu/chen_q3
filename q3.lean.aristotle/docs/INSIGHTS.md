@@ -39906,3 +39906,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   printing its internal Lean command and was stopped after a 60 second timeout.
 - Next exact patch: build the proof-grade component Taylor remainder source
   consumed by the exact raw-derivative assembly route.
+
+## Insight (2026-06-22, Step33A.1-A) -- TightShapeSqFullCellProductSourceChecked
+
+- Used the in-app browser/Computer Use channel for a route review. Proshka
+  chose the same local cut: first prove a full-cell same-coefficient ShapeSq
+  source in the assembly coefficient convention, then build the component
+  product source. The browser answer is advisory only; the accepted evidence is
+  the local Lean check.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource`,
+  which integrates the checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource` with
+  the generated ShapeSq anchor to prove the generated ShapeSq coefficient
+  stream on the full `Set.Icc 0 (1/10)`.
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source`, a
+  proof-grade but nonfinal domination of the actual component product by the
+  nominal Taylor product plus a new coarse tight product budget.
+- Boundary: this still does not prove
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure`.
+  The generated payload fields `residualTaylorRemainderAbs`,
+  `componentTaylorProofsPresent`, and `exactCoefficientAssemblyPassed` remain
+  false/null. The next exact gap is
+  `STEP33_A1_SUB0_RAW_DERIV_CLOSED_FORM_TO_TIGHT_PRODUCT_REMAINDER_BRIDGE_GAP`.
+- Validation: direct Lean with the local `.lake` library path passed on both
+  new files after compiling the fresh local `.olean` dependencies. Marker scan
+  found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe` in the new files;
+  `git diff --check` passed.

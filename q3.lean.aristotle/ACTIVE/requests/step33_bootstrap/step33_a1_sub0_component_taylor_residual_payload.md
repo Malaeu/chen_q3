@@ -15,6 +15,27 @@ not close Step33A.1-A.
 - proof-safe closed fields: `19`
 - Lean emitted: `False`
 
+## Local Lean Supplement (2026-06-22)
+
+This generated payload is not regenerated in this patch and remains
+fail-closed.  A later local Lean supplement added:
+
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean`
+
+Checked supplement theorems:
+
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource`
+- `primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source`
+
+Meaning: the same-coefficient full-cell ShapeSq source and a proof-grade
+nonfinal tight component product source are now Lean-checked.  This does not
+set `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, or
+`exactCoefficientAssemblyPassed`.
+
+Current local first gap after the supplement:
+`STEP33_A1_SUB0_RAW_DERIV_CLOSED_FORM_TO_TIGHT_PRODUCT_REMAINDER_BRIDGE_GAP`.
+
 ## Target
 
 - theorem: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure`

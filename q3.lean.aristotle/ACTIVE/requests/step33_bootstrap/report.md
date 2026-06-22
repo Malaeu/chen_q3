@@ -46,9 +46,11 @@ primary/control analytic A/P/P0 entry_hbox lemmas
 ```
 
 The current practical front is Step33A.1-A raw-Omega component Taylor route B:
-the coarse `coarseTwo` realSinc-to-ShapeSqDeriv chain is checked only as an
-interface test, and the active proof-producing blocker is the tight
-same-coefficient ShapeSqDeriv Taylor payload.
+the same-coefficient ShapeSqDeriv payload, the full-cell same-coefficient
+ShapeSq bridge, and a proof-grade nonfinal tight component product source are
+Lean-checked.  The active proof-producing blocker is now the raw closed-form /
+P45 residual bridge consuming that product source; the generated residual
+payload still remains fail-closed.
 
 ## Execution Update (2026-06-22) -- realSinc coarse rational payload checked
 
@@ -66041,4 +66043,73 @@ Build the proof-grade component Taylor remainder source consumed by the exact
 raw-derivative assembly route.  Do not claim final residual interval closure
 until `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and
 `exactCoefficientAssemblyPassed` are all proof-grade.
+```
+
+## Execution Update (2026-06-22) -- tight full-cell ShapeSq/product source checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Browser/Proshka route advice was used as advisory only.  It selected the same
+minimal cut found locally: first repair the full-cell ShapeSq source in the
+assembly coefficient convention, then build the component product source.  The
+accepted evidence is the local Lean check.
+
+Lean files added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource
+primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source
+```
+
+Meaning:
+
+```text
+The generated ShapeSq coefficient stream now has a proof-grade full-cell
+source on Set.Icc 0 (1/10), obtained from the checked same-coeff
+ShapeSqDeriv source and the generated ShapeSq anchor.
+
+The component product source is proof-grade but nonfinal: it uses the true
+active scale interval and a new coarse tight product budget.  It does not yet
+prove the final raw-derivative/P45 residual receiver.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not set residualTaylorRemainderAbs.
+It does not set componentTaylorProofsPresent=true.
+It does not set exactCoefficientAssemblyPassed=true.
+The generated JSON payload still remains fail-closed until the raw
+closed-form/P45 residual theorem consumes this source.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" <new files>
+git diff --check
+```
+
+The direct Lean checks passed.  The marker scan found no forbidden proof
+markers in the new files.  `git diff --check` passed.
+
+Next exact patch:
+
+```text
+Prove the raw closed-form/P45 residual bridge:
+STEP33_A1_SUB0_RAW_DERIV_CLOSED_FORM_TO_TIGHT_PRODUCT_REMAINDER_BRIDGE_GAP.
+The bridge should consume
+primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source and the
+existing product/coefficient crosswalks without claiming a final small budget
+unless the rational comparison is checked.
 ```
