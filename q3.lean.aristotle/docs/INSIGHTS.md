@@ -40510,3 +40510,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   seconds.  `q3_check.sh` was run through `bash`, printed its internal Lean
   command, then hung and was interrupted after 60 seconds.  No successful
   `lake env lean` or `q3_check` result is claimed for this row11 patch.
+
+## Insight (2026-06-22, Step33A.1-A) -- Rows01234567891011ProductBridgeCheckedFinalComparisonGap
+
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_component_product_source`,
+  `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_rows01234567891011ProductSource`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure`.
+- Meaning: the row11 partial-sharp ShapeSqDeriv Taylor source now feeds the
+  component product/P45 receiver.  No new assembled coefficient stream was
+  needed because the row11 ShapeSqDeriv coefficient stream is definitionally
+  the generated stream.
+- Boundary: Step33A.1-A remains open.  The remaining target is the final
+  comparison for
+  `primaryFiniteRow0Parent0Split100Sub0Rows01234567891011ProductAssemblyErrorBudget`.
+  A direct `norm_num` comparison attempt did not close because generated and
+  integrated coefficient abs-budget surfaces remained opaque; no truth value is
+  claimed from that attempt.
+- New exact live gap:
+  `STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
+- First observed subfailure:
+  `STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_COEFF_UNFOLD_GAP`.
+- Active next-address card:
+  `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_rows01234567891011_product_budget_final_comparison.md`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new bridge file; `.olean` generation for the bridge file also passed.
+  Hole/axiom scan found no matches.  `git diff --check` passed.  `lake env
+  lean` was run and again hung silently during environment setup; it was
+  interrupted after 60 seconds.  `q3_check.sh` was run through `bash`, printed
+  its internal Lean command, then hung and was interrupted after 60 seconds.
+  No successful `lake env lean` or `q3_check` result is claimed for this bridge
+  patch.

@@ -920,3 +920,33 @@ product receiver.  `residualTaylorRemainderAbs`,
 
 Current local first gap after supplement 14:
 `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS01234567891011_TAYLOR_SOURCE_PRODUCT_BRIDGE_GAP`.
+
+## Local Lean Supplement 15 (2026-06-22)
+
+A later local Lean supplement added:
+
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean`
+
+Checked supplement theorems:
+
+- `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_component_product_source`
+- `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_rows01234567891011ProductSource`
+- `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure`
+
+Meaning: the row11 partial-sharp ShapeSqDeriv Taylor source is now consumed by
+the component Taylor product/P45 receiver.  The bridge reuses the existing
+assembled coefficient stream because the row11 ShapeSqDeriv coefficient stream
+is definitionally the generated stream.
+
+Boundary: this is not Step33A.1-A closure and does not prove
+`finalBudgetPassed`.  The remaining target is the final comparison for
+`primaryFiniteRow0Parent0Split100Sub0Rows01234567891011ProductAssemblyErrorBudget`.
+A direct `norm_num` comparison attempt left generated/integrated coefficient
+abs-budget surfaces opaque, so no truth value is claimed yet for that final
+comparison.
+
+Current local first gap after supplement 15:
+`STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
+
+First observed subfailure:
+`STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_COEFF_UNFOLD_GAP`.

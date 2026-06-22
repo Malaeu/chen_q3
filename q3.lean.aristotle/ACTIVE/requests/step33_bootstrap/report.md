@@ -67256,3 +67256,81 @@ coefficient-stream mismatch.
 Active next-address card:
 ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_rows01234567891011_product_bridge.md
 ```
+
+## Execution Update (2026-06-22) -- row11 product/P45 bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+```
+
+Checked bridge theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_component_product_source
+primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_rows01234567891011ProductSource
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure
+```
+
+Meaning:
+
+```text
+The row11 ShapeSqDeriv Taylor source now feeds the component product/P45
+receiver.  No new assembled coefficient stream was needed: the row11
+ShapeSqDeriv coefficient stream is definitionally the generated stream, which
+matches the existing ShapeSqDerivTaylorCoeff stream used by the assembled raw
+derivative coefficients.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not prove finalBudgetPassed.
+The remaining target is the final comparison for
+primaryFiniteRow0Parent0Split100Sub0Rows01234567891011ProductAssemblyErrorBudget.
+```
+
+Attempted next comparison:
+
+```text
+2 * primaryFiniteRow0Parent0Split100Sub0Rows01234567891011ProductAssemblyErrorBudget <= target_width
+```
+
+A direct `norm_num` attempt did not close.  It left generated/integrated
+coefficient abs-budget surfaces opaque, including `omegaPrimeGeneratedCoeff`,
+`integratedTaylorCoeff`, and generated shape/omega nominal-budget terms.  No
+truth value is claimed for the final comparison from that failed attempt.
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+git diff --check
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean
+```
+
+Direct Lean passed on the bridge file; `.olean` generation also passed.  The
+hole/axiom scan found no matches, and `git diff --check` passed.  `lake env
+lean` hung silently during environment setup and was interrupted after 60
+seconds.  `q3_check.sh` printed its internal Lean command, then hung and was
+interrupted after 60 seconds.  No successful `lake env lean` or `q3_check`
+result is claimed for this bridge patch.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_FINAL_COMPARISON_GAP
+
+First observed subfailure:
+STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_COEFF_UNFOLD_GAP
+
+Active next-address card:
+ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_rows01234567891011_product_budget_final_comparison.md
+```

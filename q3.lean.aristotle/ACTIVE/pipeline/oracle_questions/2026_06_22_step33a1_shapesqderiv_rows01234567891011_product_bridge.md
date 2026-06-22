@@ -1,14 +1,14 @@
 ---
-status: "active"
+status: "resolved"
 date: "2026-06-22"
 main_address: "Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge"
 related_addresses: ["Step33A.1-A.ShapeSqDeriv.rows11to15_order16"]
 ancestor_addresses: ["Step33A.1-A.ShapeSqDeriv.rows10to15_order16", "Step33A.1-A.ShapeSqDeriv.rows11to15_order16"]
-child_or_next_addresses: []
+child_or_next_addresses: ["Step33A.1-A.rows01234567891011.product_budget_final_comparison"]
 raw_address_notation: "Step33A.1-A / ShapeSqDeriv rows 0..11 Taylor source product bridge"
-normalized_addresses: ["Step33A.1-A / ShapeSqDeriv rows 0..11 Taylor source product bridge", "Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge", "Step33A.1-A.ShapeSqDeriv.rows11to15_order16", "Step33A.1-A.ShapeSqDeriv.rows10to15_order16"]
-address_status: "active"
-blocker: "Bridge row11 partial-sharp ShapeSqDeriv Taylor source into the component Taylor product/P45 receiver without spending the old TightProductAssemblyErrorBudget"
+normalized_addresses: ["Step33A.1-A / ShapeSqDeriv rows 0..11 Taylor source product bridge", "Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge", "Step33A.1-A.ShapeSqDeriv.rows11to15_order16", "Step33A.1-A.ShapeSqDeriv.rows10to15_order16", "Step33A.1-A.rows01234567891011.product_budget_final_comparison"]
+address_status: "resolved_local_bridge"
+blocker: "Resolved locally: row11 partial-sharp ShapeSqDeriv Taylor source feeds the component product/P45 enclosure"
 collections: ["q3_docs"]
 tags: ["step33", "shapesqderiv", "row11", "product-bridge"]
 insight_links: ["q3.lean.aristotle/docs/INSIGHTS.md"]
@@ -20,30 +20,25 @@ opens_new_branch_terms: []
 neighbor_addresses: []
 ---
 
-# Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge — row11 Taylor-source product bridge
+# Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge — resolved row11 Taylor-source product bridge
 
 ## Статус
 
-- active card;
+- resolved card;
 - row `11` source and local `width_pass` are Lean-checked;
-- product bridge is not yet proved.
+- product bridge is Lean-checked.
 
 ## Точный блокер
 
-The existing component Taylor/P45 bridge still consumes the old
-`primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`.  The new
-row11 theorem proves
-`primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011TaylorSource`,
-but no same-source product bridge currently rewires the product/enclosure chain
-to use it.
+Resolved locally in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean`.
+The next blocker is the final comparison for
+`primaryFiniteRow0Parent0Split100Sub0Rows01234567891011ProductAssemblyErrorBudget`.
 
 ## Почему этот поиск нужен сейчас
 
-The old row-by-row path changed state at row `11`: the previous width-fail
-surface became false and Lean now proves a local `width_pass`.  Continuing to
-rows `12..15` would skip the current interface gap.  The next useful patch is
-the smallest bridge that makes the row11 source visible to the existing
-component Taylor receiver, or names the exact coefficient-stream mismatch.
+This card records the bridge closure so future work does not continue to
+rows `12..15` before spending the row11 source through the product/P45 receiver.
 
 ## Что уже известно по этому адресу
 
@@ -53,27 +48,26 @@ component Taylor receiver, or names the exact coefficient-stream mismatch.
   `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011TaylorSource`.
 - Checked local pass:
   `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ShapeSqDerivRows12To15_width_pass`.
-- Existing old bridge:
-  `primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source`.
-- Existing P45 enclosure:
-  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure`.
+- Checked bridge:
+  `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_component_product_source`.
+- Checked raw closed-form bridge:
+  `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_rows01234567891011ProductSource`.
+- Checked P45 enclosure:
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure`.
 
 ## Что именно мы хотим узнать поиском
 
-- whether the product witness bridge can accept a replacement ShapeSqDeriv
-  coefficient stream;
-- whether the assembled P45 coefficient stream is fixed to the old
-  `ShapeSqDerivTaylorCoeff`;
-- whether a new assembled coefficient/crosswalk theorem is required before the
-  row11 Taylor source can be consumed.
+- preserve the checked theorem/file names;
+- route to the final budget comparison;
+- do not claim finalBudgetPassed from bridge closure alone.
 
 ## Серия запросов
 
 | Запрос | Адрес | Зачем этот запрос | Какая ось варьируется | Сигнал | Куда привёл |
 | --- | --- | --- | --- | --- | --- |
-| `ShapeSqDerivRows01234567891011TaylorSource tight_component_product_source` | `Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge` | find direct bridge reuse | source theorem | pending | TODO |
-| `assembledRawDerivCoeff_poly_eq_nominalProduct ShapeSqDerivTaylorCoeff replacement` | `Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge` | test coefficient-stream mismatch | assembled coeff | pending | TODO |
-| `fullTaylor_residual_deriv_tight_enclosure row11 TaylorSource` | `Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge` | locate receiver surface | P45 enclosure | pending | TODO |
+| `ShapeSqDerivRows01234567891011TaylorSource tight_component_product_source` | `Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge` | find direct bridge reuse | source theorem | usable | product source cloned with row11 budget |
+| `assembledRawDerivCoeff_poly_eq_nominalProduct ShapeSqDerivTaylorCoeff replacement` | `Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge` | test coefficient-stream mismatch | assembled coeff | matched | no new assembled coeff stream needed |
+| `fullTaylor_residual_deriv_tight_enclosure row11 TaylorSource` | `Step33A.1-A.ShapeSqDeriv.rows01234567891011.product_bridge` | locate receiver surface | P45 enclosure | closed | row11 enclosure checked |
 
 ## Пустые / шумовые слова
 
@@ -93,8 +87,5 @@ component Taylor receiver, or names the exact coefficient-stream mismatch.
 
 ## Следующий адресный шаг
 
-- Try the smallest Lean bridge around
-  `primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source`.
-- If the coefficient stream cannot match the existing assembled P45 coeffs,
-  name the blocker as:
-  `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS01234567891011_ASSEMBLED_COEFF_STREAM_GAP`.
+- Next active address:
+  `Step33A.1-A.rows01234567891011.product_budget_final_comparison`.
