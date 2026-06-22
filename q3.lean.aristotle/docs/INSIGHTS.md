@@ -39990,3 +39990,40 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   the new file, and `.olean` generation also passed.  `q3_check.sh` was run
   on the touched Lean file and again hung after printing its internal Lean
   command; it was interrupted after 60 seconds.
+
+## Insight (2026-06-22, Step33A.1-A) -- ShapeSqDerivSharpSourceSearchInProgress
+
+- Exact live target:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP`.
+- Target interface:
+  build a sharper replacement for
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTightTaylorRemainderAbs`
+  in the same `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization and
+  same generated coefficient stream
+  `primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated`.
+- Local index searches run against `q3_docs`:
+  `ShapeSqDeriv sharp remainder source rows 2..15 order16`,
+  `ShapeSqDerivTaylorIntervalCert singleAbs coeffErrorAbs order16Abs`,
+  `shape derivative majorant receiver pow12 scaled sinc derivative bounds 0 to 17`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv valid of shape derivative abs`.
+- Search result: no external hidden theorem closes the sharp source. The
+  relevant local artifacts are already in the repo:
+  `PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean` for
+  `ShapeSqDerivTaylorIntervalCert.Valid`,
+  `PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean` for checked rows
+  `j = 0, 1`,
+  `PSD_CenteredCoeffRawOmegaAShapeSqDerivMajorantReceiver.lean` for the
+  derivative-majorant receiver, and
+  `PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean` for the current
+  same-coefficient coarse payload.
+- External web search checked current Mathlib orientation only:
+  official Mathlib docs for `norm_num`, `iteratedDeriv`, and `ContDiff`.
+  This is not proof evidence and does not replace local Lean validation.
+- Numeric/rational local audit: replacing only rows `0,1` by the existing
+  checked row intervals would reduce the coarse row-sum by a huge factor, but
+  the remaining rows `2..15`, especially the `j=2` coarse term, are still far
+  above the target interval.  The smallest proof-moving patch is therefore a
+  partial-sharp Lean certificate that spends the existing row `0,1` facts,
+  proves the remaining width fail, and makes the next subgap exactly rows
+  `2..15` rather than all rows.
