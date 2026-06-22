@@ -40655,3 +40655,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Validation: direct Lean with the local `.lake` library path passed on the
   new file, `.olean` generation passed, and the hole/axiom scan found no
   matches.
+
+## Insight (2026-06-22, Step33A.1-A) -- ScaledCancellationRhsNormReceiverInProgress
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_NORM_SOURCE_GAP`.
+- `q3_docs` searches for the scaled RHS, `ComponentProductCancellationResidual`,
+  `ComponentProductNominal`, and `hResidualDerivBoundOnCell` found no existing
+  Step33 theorem that already bounds the new RHS.
+- External Lean/mathlib search was orientation only: the relevant local proof
+  shape should use standard absolute-value triangle/product steps such as
+  `abs_add_le` and `abs_mul`; web results are not proof evidence.
+- Local receiver found in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAHRawLanding.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_deriv_norm_bound`.
+- Minimal next theorem surface: add an isolated adapter file importing the
+  checked P45 cancellation bridge and the full-Taylor direct-norm receiver.
+  The adapter should prove that a proof-grade cellwise norm bound for
+  `activeScale * ComponentProductCancellationResidual
+   + (activeScale - nominalScale) * ComponentProductNominal`
+  supplies the existing `hResidualDerivBoundOnCell`.
+- Boundary: this still does not prove the numeric norm source.  It narrows the
+  live gap to producing a same-unit bound for the full scaled RHS, not only for
+  `ComponentProductCancellationResidual`.
