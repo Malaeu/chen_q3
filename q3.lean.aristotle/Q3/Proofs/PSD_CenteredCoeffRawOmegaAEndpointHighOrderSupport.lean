@@ -14546,6 +14546,20 @@ theorem Valid.bound
           ring
     _ <= (data.remainderAbs : Real) := hBudget
 
+/-- Public closed-form wrapper for the generated Omega-prime Taylor error.
+
+`Valid.bound` internally uses the local private `omegaPrimeClosedForm` abbrev;
+downstream assembly files should consume this public theorem instead. -/
+theorem omegaPrimeGeneratedRemainderCert_bound_public
+    {eta : Real}
+    (hEta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :
+    ‖step22OmegaArchWeightDerivClosedForm eta -
+        _root_.Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.rawOmegaATaylorPolynomial
+          15 step33Sub0OmegaPrimeTaylorCenter omegaPrimeGeneratedCoeff eta‖ <=
+      (omegaPrimeGeneratedRemainderAbs : Real) := by
+  simpa [omegaPrimeClosedForm, poly, omegaPrimeGeneratedRemainderCert]
+    using Valid.bound omegaPrimeGeneratedRemainderCert_valid eta hEta
+
 end Step33Sub0OmegaPrimeTaylorRemainderCert
 
 end Step33

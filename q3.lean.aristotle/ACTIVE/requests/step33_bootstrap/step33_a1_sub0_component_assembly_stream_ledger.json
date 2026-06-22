@@ -46,6 +46,7 @@
     "componentTaylorOverallProofSafe": false,
     "componentTaylorProofsPresent": false,
     "exactCoefficientAssemblyPassed": false,
+    "factorErrorWitnessesPresent": true,
     "nominalObjectBridgePresent": true,
     "nominalOmegaAnchorCoeffLeanPresent": true,
     "nominalScaleAbsBoundPresent": true,
@@ -80,13 +81,14 @@
       "prove the final direct residual interval theorem"
     ],
     "nextFailureIfCauchyBridgeMissing": null,
-    "nextPatch": "Generate or import concrete same-normalization factor error bounds and nominal polynomial absolute budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv, then prove the product abs/error budget comparisons and the final scale/product budget comparison.  Only after that may generator exact-assembly fields be reconsidered."
+    "nextPatch": "Generate or import concrete same-normalization nominal polynomial absolute budgets for omegaPrime, shapeSq, omega, and shapeSqDeriv, then prove the product abs/error budget comparisons and the final scale/product budget comparison.  Only after that may generator exact-assembly fields be reconsidered."
   },
-  "firstFailure": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FACTOR_ERROR_AND_NOMINAL_ABS_WITNESS_GAP",
+  "firstFailure": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP",
   "guard": {
     "assembledRawDerivCoeffGeneratorFieldPresent": false,
     "assembledRawDerivCoeffLeanPresent": true,
     "checkedCauchyProductBridgePresent": true,
+    "checkedFactorErrorWitnessesPresent": true,
     "checkedFullCrosswalkTheoremPresent": true,
     "checkedNominalObjectBridgePresent": true,
     "checkedNominalScaleAbsBoundPresent": true,
@@ -103,8 +105,8 @@
     "residualTaylorCoeffGeneratorFieldPresent": false,
     "residualTaylorCoeffLeanPresent": true
   },
-  "localAssemblyGap": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FACTOR_ERROR_AND_NOMINAL_ABS_WITNESS_GAP",
-  "proofBoundary": "A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below; concrete factor errors, nominal factor absolute budgets, and final arithmetic comparisons remain separate. Step33A.1-A is not closed.",
+  "localAssemblyGap": "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP",
+  "proofBoundary": "A Lean-checked parameterized active-model crosswalk exists, including the same-degree subtraction bridge and degree-45/degree-15 zero-extension bridge.  The generic Cauchy product coefficient bridge is checked if recorded in the guard below. Named nominal coefficient objects are checked if recorded in the guard below.  Source interval replacements for the nominal scale and nominal omega anchor are checked if recorded in the guard below.  They still do not prove the active raw closed form until their losses are propagated through the product assembly budget. The generic product-error budget bridge is checked if recorded in the guard below, but concrete generated coefficient/remainder arithmetic remains separate.  The nominal-scale absolute bound is checked if recorded in the guard below; product-summand error and absolute witnesses remain separate.  The factor-to-product component witness bridge is checked if recorded in the guard below; concrete factor witnesses remain separate.  The factor absolute-value interface is checked if recorded in the guard below.  Concrete factor-error witnesses are checked if recorded in the guard below; nominal factor absolute budgets and final arithmetic comparisons remain separate. Step33A.1-A is not closed.",
   "routeLevelGap": "STEP33_A1_SUB0_SHAPESQ_DERIV_TIGHT_SAME_COEFF_TAYLOR_PAYLOAD_GAP",
   "schema": "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1",
   "sourceFiles": {
@@ -136,143 +138,159 @@
       "symbols": {
         "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff": {
           "found": true,
-          "line": 723
+          "line": 920
         },
         "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree": {
           "found": true,
-          "line": 24
+          "line": 25
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff": {
           "found": true,
-          "line": 237
+          "line": 241
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs": {
           "found": true,
-          "line": 242
+          "line": 246
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower": {
           "found": true,
-          "line": 229
+          "line": 233
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper": {
           "found": true,
-          "line": 233
+          "line": 237
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound": {
           "found": true,
-          "line": 293
+          "line": 490
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff": {
           "found": true,
-          "line": 296
+          "line": 493
         },
         "primaryFiniteRow0Parent0Split100Sub0NominalScaleErrorAbs": {
           "found": true,
-          "line": 300
+          "line": 497
         },
         "primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeffPadded": {
           "found": true,
-          "line": 27
+          "line": 28
         },
         "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff": {
           "found": true,
-          "line": 732
+          "line": 929
         },
         "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffOf": {
           "found": true,
-          "line": 37
+          "line": 38
         },
         "primaryFiniteRow0Parent0Split100Sub0TightScaleLower": {
           "found": true,
-          "line": 285
+          "line": 482
         },
         "primaryFiniteRow0Parent0Split100Sub0TightScaleUpper": {
           "found": true,
-          "line": 289
+          "line": 486
         },
         "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk": {
           "found": true,
-          "line": 885
+          "line": 1082
         },
         "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_crosswalk_of_assembled": {
           "found": true,
-          "line": 865
+          "line": 1062
         },
         "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled": {
           "found": true,
-          "line": 836
+          "line": 1033
         },
         "primaryFiniteRow0Parent0Split100Sub0_factor_abs_from_error_and_nominal_abs": {
           "found": true,
-          "line": 608
+          "line": 805
         },
         "primaryFiniteRow0Parent0Split100Sub0_nominalOmegaAnchor_abs_error_of_active_interval": {
           "found": true,
-          "line": 247
+          "line": 251
         },
         "primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_bound": {
           "found": true,
-          "line": 314
+          "line": 511
         },
         "primaryFiniteRow0Parent0Split100Sub0_nominalScale_abs_error_of_active_interval": {
           "found": true,
-          "line": 323
+          "line": 520
         },
         "primaryFiniteRow0Parent0Split100Sub0_nominalScale_mem_tightInterval": {
           "found": true,
-          "line": 304
+          "line": 501
         },
         "primaryFiniteRow0Parent0Split100Sub0_nominal_factor_abs_of_coeff_radius_budget": {
           "found": true,
-          "line": 597
+          "line": 794
         },
         "primaryFiniteRow0Parent0Split100Sub0_nominal_source_interval_bridge": {
           "found": true,
-          "line": 345
+          "line": 542
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_factor_error": {
+          "found": true,
+          "line": 288
         },
         "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk": {
           "found": true,
-          "line": 738
+          "line": 935
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omega_factor_error": {
+          "found": true,
+          "line": 305
         },
         "primaryFiniteRow0Parent0Split100Sub0_omega_shapeSqDeriv_product_crosswalk": {
           "found": true,
-          "line": 751
+          "line": 948
         },
         "primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq": {
           "found": true,
-          "line": 764
+          "line": 961
         },
         "primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge": {
           "found": true,
-          "line": 623
+          "line": 820
         },
         "primaryFiniteRow0Parent0Split100Sub0_product_component_witness_bridge": {
           "found": true,
-          "line": 512
+          "line": 709
         },
         "primaryFiniteRow0Parent0Split100Sub0_product_error_budget_bridge": {
           "found": true,
-          "line": 371
+          "line": 568
         },
         "primaryFiniteRow0Parent0Split100Sub0_product_summand_abs_bridge": {
           "found": true,
-          "line": 452
+          "line": 649
         },
         "primaryFiniteRow0Parent0Split100Sub0_product_summand_error_bridge": {
           "found": true,
-          "line": 468
+          "line": 665
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_factor_error": {
+          "found": true,
+          "line": 458
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error": {
+          "found": true,
+          "line": 432
         },
         "rawOmegaATaylorPolynomial_mul_coeff": {
           "found": true,
-          "line": 75
+          "line": 76
         },
         "rawOmegaATaylorPolynomial_sub_coeff": {
           "found": true,
-          "line": 46
+          "line": 47
         },
         "rawOmegaTaylorCauchyCoeff": {
           "found": true,
-          "line": 66
+          "line": 67
         }
       }
     },
@@ -282,6 +300,16 @@
       "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json",
       "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18",
       "status": "fail_closed_coarse_shapesq_payload_not_same_coefficient_tight_source"
+    },
+    "endpointHighOrderSupport": {
+      "exists": true,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean",
+      "symbols": {
+        "omegaPrimeGeneratedRemainderCert_bound_public": {
+          "found": true,
+          "line": 14553
+        }
+      }
     },
     "landing": {
       "exists": true,
@@ -329,7 +357,7 @@
       "status": "fail_closed_tight_coeff_stream_not_identified"
     }
   },
-  "status": "fail_closed_product_factor_interface_checked_nominal_error_witness_gap",
+  "status": "fail_closed_factor_error_witnesses_checked_nominal_abs_budget_gap",
   "targetTheoremContract": {
     "coeffDefinitionsRequired": [
       "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree",
@@ -343,7 +371,7 @@
     "partialSameDegreeStatementAscii": "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) assembled eta - rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualDerivmodelCoeffPadded eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) (ResidualTaylorCoeffOf assembled) eta",
     "partialSameDegreeTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_residualCoeff_sameDegree_crosswalk_of_assembled",
     "statementAscii": "rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) AssembledRawDerivCoeff eta - rawOmegaATaylorPolynomial 15 (1/20) ResidualDerivmodelCoeff eta = rawOmegaATaylorPolynomial AssembledRawDerivDegree (1/20) ResidualTaylorCoeff eta",
-    "status": "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_FACTOR_INTERFACE_CHECKED_NOMINAL_ERROR_WITNESS_OPEN",
+    "status": "OBJECT_THEOREM_LEAN_CHECKED_FACTOR_ERROR_WITNESSES_CHECKED_NOMINAL_ABS_BUDGET_OPEN",
     "zeroExtensionTheorem": "primaryFiniteRow0Parent0Split100Sub0_padded_residualDerivmodel_poly_eq"
   },
   "zeroExtensionBridgeGap": null

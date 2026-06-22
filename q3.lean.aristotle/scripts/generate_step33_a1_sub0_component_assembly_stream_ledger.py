@@ -33,6 +33,9 @@ COMPONENT_ASSEMBLY_FILE = (
     PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean"
 )
 CHUNK_CHECKER_FILE = PROOFS / "PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean"
+ENDPOINT_SUPPORT_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean"
+)
 COMPONENT_PAYLOAD_JSON = (
     REQUESTS / "step33_a1_sub0_component_taylor_residual_payload.json"
 )
@@ -62,6 +65,9 @@ STATUS_AFTER_PRODUCT_COMPONENT_BRIDGE = (
 STATUS_AFTER_PRODUCT_FACTOR_INTERFACE = (
     "fail_closed_product_factor_interface_checked_nominal_error_witness_gap"
 )
+STATUS_AFTER_FACTOR_ERROR_WITNESSES = (
+    "fail_closed_factor_error_witnesses_checked_nominal_abs_budget_gap"
+)
 FIRST_FAILURE = "STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH"
 RAW_ASSEMBLY_GAP = "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP"
 SCALE_SOURCE_BRIDGE_GAP = (
@@ -81,6 +87,9 @@ PRODUCT_FACTOR_WITNESS_GAP = (
 )
 PRODUCT_FACTOR_ERROR_NOMINAL_ABS_WITNESS_GAP = (
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_FACTOR_ERROR_AND_NOMINAL_ABS_WITNESS_GAP"
+)
+NOMINAL_FACTOR_ABS_BUDGET_GAP = (
+    "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP"
 )
 ZERO_EXTENSION_GAP = (
     "STEP33_A1_SUB0_P45_PADDED_EQ_ACTIVE_P15_POLYNOMIAL_CROSSWALK_GAP"
@@ -181,6 +190,19 @@ FACTOR_ABS_FROM_ERROR_AND_NOMINAL_ABS = (
 )
 PRODUCT_COMPONENT_FACTOR_WITNESS_BRIDGE = (
     "primaryFiniteRow0Parent0Split100Sub0_product_component_factor_witness_bridge"
+)
+OMEGA_PRIME_FACTOR_ERROR = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_factor_error"
+)
+OMEGA_FACTOR_ERROR = "primaryFiniteRow0Parent0Split100Sub0_omega_factor_error"
+SHAPESQ_FACTOR_ERROR = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error"
+)
+SHAPESQ_DERIV_FACTOR_ERROR = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_factor_error"
+)
+OMEGA_PRIME_PUBLIC_BOUND = (
+    "omegaPrimeGeneratedRemainderCert_bound_public"
 )
 OMEGA_PRIME_SHAPESQ_PRODUCT_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_omegaPrime_shapeSq_product_crosswalk"
@@ -337,6 +359,25 @@ def has_checked_product_factor_witness_interface(assembly_text: str) -> bool:
     )
 
 
+def has_checked_factor_error_witnesses(
+    assembly_text: str, endpoint_support_text: str
+) -> bool:
+    required_assembly = [
+        OMEGA_PRIME_FACTOR_ERROR,
+        OMEGA_FACTOR_ERROR,
+        SHAPESQ_FACTOR_ERROR,
+        SHAPESQ_DERIV_FACTOR_ERROR,
+    ]
+    return (
+        symbol_pattern(OMEGA_PRIME_PUBLIC_BOUND).search(endpoint_support_text)
+        is not None
+        and all(
+            symbol_pattern(symbol).search(assembly_text) is not None
+            for symbol in required_assembly
+        )
+    )
+
+
 def component_field_state(component: dict[str, Any] | None) -> dict[str, Any]:
     generator_fields = component.get("generatorFields", {}) if component else {}
     component_status = component.get("componentTaylorStatus", {}) if component else {}
@@ -385,6 +426,7 @@ def build_report() -> dict[str, Any]:
     landing_text = read_text(LANDING_FILE)
     assembly_text = read_text(COMPONENT_ASSEMBLY_FILE)
     checker_text = read_text(CHUNK_CHECKER_FILE)
+    endpoint_support_text = read_text(ENDPOINT_SUPPORT_FILE)
     component = load_json(COMPONENT_PAYLOAD_JSON)
     tight = load_json(TIGHT_PAYLOAD_JSON)
 
@@ -423,6 +465,12 @@ def build_report() -> dict[str, Any]:
         product_component_witness_bridge_present
         and has_checked_product_factor_witness_interface(assembly_text)
     )
+    factor_error_witnesses_present = bool(
+        product_factor_witness_interface_present
+        and has_checked_factor_error_witnesses(
+            assembly_text, endpoint_support_text
+        )
+    )
     fields.update(
         {
             "assembledRawDerivCoeffLeanPresent": symbol_pattern(
@@ -454,6 +502,7 @@ def build_report() -> dict[str, Any]:
             "productFactorWitnessInterfacePresent": (
                 product_factor_witness_interface_present
             ),
+            "factorErrorWitnessesPresent": factor_error_witnesses_present,
         }
     )
     guard_passes = bool(
@@ -468,6 +517,8 @@ def build_report() -> dict[str, Any]:
         "status": (
             "candidate_ready_for_lean_validation"
             if guard_passes
+            else STATUS_AFTER_FACTOR_ERROR_WITNESSES
+            if factor_error_witnesses_present
             else STATUS_AFTER_PRODUCT_FACTOR_INTERFACE
             if product_factor_witness_interface_present
             else STATUS_AFTER_PRODUCT_COMPONENT_BRIDGE
@@ -487,6 +538,8 @@ def build_report() -> dict[str, Any]:
         "firstFailure": (
             None
             if guard_passes
+            else NOMINAL_FACTOR_ABS_BUDGET_GAP
+            if factor_error_witnesses_present
             else PRODUCT_FACTOR_ERROR_NOMINAL_ABS_WITNESS_GAP
             if product_factor_witness_interface_present
             else PRODUCT_FACTOR_WITNESS_GAP
@@ -504,6 +557,8 @@ def build_report() -> dict[str, Any]:
         "localAssemblyGap": (
             None
             if guard_passes
+            else NOMINAL_FACTOR_ABS_BUDGET_GAP
+            if factor_error_witnesses_present
             else PRODUCT_FACTOR_ERROR_NOMINAL_ABS_WITNESS_GAP
             if product_factor_witness_interface_present
             else PRODUCT_FACTOR_WITNESS_GAP
@@ -538,8 +593,9 @@ def build_report() -> dict[str, Any]:
             "component witness bridge is checked if recorded in the guard "
             "below; concrete factor witnesses remain separate.  The factor "
             "absolute-value interface is checked if recorded in the guard "
-            "below; concrete factor errors, nominal factor absolute budgets, "
-            "and final arithmetic comparisons remain separate. "
+            "below.  Concrete factor-error witnesses are checked if recorded "
+            "in the guard below; nominal factor absolute budgets and final "
+            "arithmetic comparisons remain separate. "
             "Step33A.1-A is not closed."
         ),
         "browserProshkaDecision": {
@@ -586,6 +642,9 @@ def build_report() -> dict[str, Any]:
             "name": TARGET_THEOREM,
             "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
             "status": (
+                "OBJECT_THEOREM_LEAN_CHECKED_FACTOR_ERROR_WITNESSES_CHECKED_NOMINAL_ABS_BUDGET_OPEN"
+                if factor_error_witnesses_present
+                else
                 "OBJECT_THEOREM_LEAN_CHECKED_PRODUCT_FACTOR_INTERFACE_CHECKED_NOMINAL_ERROR_WITNESS_OPEN"
                 if product_factor_witness_interface_present
                 else
@@ -705,6 +764,17 @@ def build_report() -> dict[str, Any]:
                     NOMINAL_FACTOR_ABS_RADIUS_BUDGET,
                     FACTOR_ABS_FROM_ERROR_AND_NOMINAL_ABS,
                     PRODUCT_COMPONENT_FACTOR_WITNESS_BRIDGE,
+                    OMEGA_PRIME_FACTOR_ERROR,
+                    OMEGA_FACTOR_ERROR,
+                    SHAPESQ_FACTOR_ERROR,
+                    SHAPESQ_DERIV_FACTOR_ERROR,
+                ],
+            ),
+            "endpointHighOrderSupport": source_symbols(
+                ENDPOINT_SUPPORT_FILE,
+                endpoint_support_text,
+                [
+                    OMEGA_PRIME_PUBLIC_BOUND,
                 ],
             ),
             "chunkTaylorChecker": source_symbols(
@@ -759,6 +829,9 @@ def build_report() -> dict[str, Any]:
             "checkedProductFactorWitnessInterfacePresent": (
                 product_factor_witness_interface_present
             ),
+            "checkedFactorErrorWitnessesPresent": (
+                factor_error_witnesses_present
+            ),
             "paddedDegree45EqualsActiveDegree15BridgeGap": (
                 None if checked_zero_extension_bridge else ZERO_EXTENSION_GAP
             ),
@@ -787,6 +860,14 @@ def build_report() -> dict[str, Any]:
                 None if checked_cauchy_product_bridge else CAUCHY_PRODUCT_GAP
             ),
             "nextPatch": (
+                "Generate or import concrete same-normalization nominal "
+                "polynomial absolute budgets for omegaPrime, shapeSq, omega, "
+                "and shapeSqDeriv, then prove the product abs/error budget "
+                "comparisons and the final scale/product budget comparison.  "
+                "Only after that may generator exact-assembly fields be "
+                "reconsidered."
+                if factor_error_witnesses_present
+                else
                 "Generate or import concrete same-normalization factor error "
                 "bounds and nominal polynomial absolute budgets for "
                 "omegaPrime, shapeSq, omega, and shapeSqDeriv, then prove the "

@@ -1,3 +1,4 @@
+import Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding
 import Q3.Proofs.PSD_CenteredCoeffRawOmegaAHRawLanding
 
 set_option linter.mathlibStandardSet false
@@ -226,6 +227,9 @@ rational is equal to `((3 : Real) / 10) / Real.pi`.
 def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff : Fin 16 -> Rat :=
   Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedCoeff
 
+def primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs : Rat :=
+  Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderAbs
+
 def primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower : Rat :=
   (-85314634821843642073465861701640867472353398314119326820557162830783014314359848985502357 : Rat) /
     16000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -276,11 +280,204 @@ def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff : Fin 17 -> Rat :=
     Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert
     primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff
 
+def primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs : Rat :=
+  primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs +
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs *
+      ((1 : Rat) / 20)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omegaPrime_factor_error
+    {eta : Real}
+    (hEta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :
+    |step22OmegaArchWeightDerivClosedForm eta -
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff eta| <=
+      (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs :
+        Real) := by
+  have hBound :=
+    Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_bound_public
+      hEta
+  simpa [Real.norm_eq_abs,
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff,
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs,
+    Q3.PSDpd.Step33.step33Sub0OmegaPrimeTaylorCenter]
+    using hBound
+
+theorem primaryFiniteRow0Parent0Split100Sub0_omega_factor_error
+    {eta : Real}
+    (hEta : eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)) :
+    |Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight eta -
+        rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff eta| <=
+      (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs : Real) := by
+  have hSource :
+      ∀ x ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight x -
+            rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+              primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff x‖ <=
+          (primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs :
+            Real) := by
+    refine centered_residual_bound_of_anchor_and_deriv_bound
+      (f := Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight)
+      (p := rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff)
+      (anchor := ((1 : Real) / 20)) (radius := ((1 : Real) / 20))
+      (derivBound :=
+        (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorRemainderAbs :
+          Real))
+      (anchorError :=
+        (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs :
+          Real))
+      ?_ ?_ ?_ ?_ ?_ ?_
+    · norm_num
+    · intro x _hx
+      exact
+        (Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt
+          x).sub (by
+          unfold rawOmegaATaylorPolynomial
+          fun_prop)
+    · intro x hx
+      have hPrime :=
+        primaryFiniteRow0Parent0Split100Sub0_omegaPrime_factor_error hx
+      have hDerivPoly :
+          deriv
+              (rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff) x =
+            rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+              primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff x := by
+        simpa [primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff,
+          primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff,
+          integratedTaylorCoeff,
+          Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff,
+          Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert]
+          using
+            integratedTaylorPolynomial_deriv_eq_base 15 ((1 : Rat) / 20)
+              primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff
+              primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff
+              x
+      have hDerivResidual :
+          deriv
+              (fun t : Real =>
+                Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight t -
+                  rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+                    primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff t) x =
+            step22OmegaArchWeightDerivClosedForm x -
+              rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff x := by
+        have hOmegaDiff :
+            DifferentiableAt Real
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+              x :=
+          Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt
+            x
+        have hPolyDiff :
+            DifferentiableAt Real
+              (rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff) x := by
+          unfold rawOmegaATaylorPolynomial
+          fun_prop
+        have hDerivSub :
+            deriv
+                (fun t : Real =>
+                  Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight t -
+                    rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+                      primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff t)
+                x =
+              deriv
+                  Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight
+                  x -
+                deriv
+                  (rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+                    primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff)
+                  x :=
+          deriv_sub hOmegaDiff hPolyDiff
+        rw [hDerivSub, step22OmegaArchWeight_deriv_eq_closedForm, hDerivPoly]
+      rw [hDerivResidual, Real.norm_eq_abs]
+      exact hPrime
+    · intro x hx
+      rw [Real.norm_eq_abs, abs_le]
+      rw [Set.mem_Icc] at hx
+      constructor <;> norm_num at hx ⊢ <;> linarith
+    · have hPolyCenter :
+          rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+              primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff
+              ((1 : Real) / 20) =
+            (primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff :
+              Real) := by
+        simpa [primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff,
+          Q3.PSDpd.Step33.Step33Sub0OmegaPrimeTaylorRemainderCert.integratedCoeff]
+          using
+            rawOmegaATaylorPolynomial_center 16 ((1 : Rat) / 20)
+              primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff
+      rw [hPolyCenter]
+      simpa [Real.norm_eq_abs,
+        primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorCoeff,
+        primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorErrorAbs,
+        primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorLower,
+        primaryFiniteRow0Parent0Split100Sub0NominalOmegaTaylorAnchorUpper,
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorCoeff,
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorErrorAbs,
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorLower,
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorAnchorUpper]
+        using
+          Q3.PSDpd.CenteredCoeffPrimeDeltaLiveRationalPayloadImport.RawOmegaAChunkIntegral.RawOmegaATaylorModelCertificate.primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor
+    · norm_num [primaryFiniteRow0Parent0Split100Sub0OmegaTaylorRemainderAbs]
+  simpa [Real.norm_eq_abs] using hSource eta hEta
+
 def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff : Fin 17 -> Rat :=
   primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff_generated
 
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs : Rat :=
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs_generated
+
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error
+    {eta : Real}
+    (hEta :
+      eta ∈ Set.Icc
+        ((499999999999999999999 : Real) /
+          (10000000000000000000000 : Real))
+        ((1 : Real) / 20)) :
+    |(centeredBSplineImagTransformRealClosedForm 11
+          ((3 : Real) / 10) eta) ^ 2 -
+        rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff eta| <=
+      (primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs :
+        Real) := by
+  have hBound :=
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated eta hEta
+  simpa [Real.norm_eq_abs,
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff,
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorRemainderAbs]
+    using hBound
+
 def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff : Fin 16 -> Rat :=
   primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff_generated
+
+def primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs : Rat :=
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs_generated
+
+theorem primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_factor_error
+    {eta : Real}
+    (hEta :
+      eta ∈ Set.Icc
+        ((499999999999999999999 : Real) /
+          (10000000000000000000000 : Real))
+        ((1 : Real) / 20)) :
+    |deriv
+          (fun t : Real =>
+            (centeredBSplineImagTransformRealClosedForm 11
+              ((3 : Real) / 10) t) ^ 2)
+          eta -
+        rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+          primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff eta| <=
+      (primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs :
+        Real) := by
+  have hBound :=
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorSource_generated
+      eta hEta
+  simpa [Real.norm_eq_abs,
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff,
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorRemainderAbs]
+    using hBound
 
 def primaryFiniteRow0Parent0Split100Sub0TightScaleLower : Rat :=
   (95492965855137201461330258023 : Rat) /

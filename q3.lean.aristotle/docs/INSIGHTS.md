@@ -39620,3 +39620,41 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   successful result for this patch.
 - Next exact patch: generate/import those concrete factor error and nominal
   polynomial abs witnesses before reconsidering `exactCoefficientAssemblyPassed`.
+
+## Insight (2026-06-22, Step33A.1-A) -- FactorErrorWitnessesChecked
+
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`
+  with
+  `Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_bound_public`,
+  exposing the generated Omega-prime Taylor error in the public
+  `step22OmegaArchWeightDerivClosedForm` normalization.
+- Extended
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+  with checked factor-error witnesses for `omegaPrime`, `omega`, `shapeSq`,
+  and `shapeSqDeriv`.
+- The `omega` factor witness is now derived from the Omega-prime Taylor error
+  plus the checked center-anchor error; `shapeSq` and `shapeSqDeriv` consume
+  their generated Taylor source bounds.
+- Local `q3_docs` search did not find a ready-made combined factor-error /
+  nominal-abs witness.  External Lean/mathlib search was API sanity only; proof
+  evidence is the local Lean checks above.
+- Regenerated component ledger status:
+  `fail_closed_factor_error_witnesses_checked_nominal_abs_budget_gap`.
+- New first failure:
+  `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP`.
+- Boundary: this is not exact active raw closed-form coefficient assembly.
+  Nominal polynomial absolute budgets, product abs/error budget comparisons,
+  and the final scale/product comparison remain missing; generator
+  exact-assembly fields remain false.
+- Validation: direct support Lean passed; direct support `lean -o/-i` refreshed
+  `.olean/.ilean`; endpoint landing `lean -o/-i` refreshed its exported anchor
+  theorem; direct component assembly Lean passed; generator byte-compile,
+  regeneration, and JSON parse passed.  `lake build` for the support module was
+  attempted but hung inside Lake's internal `git diff HEAD --exit-code` because
+  the worktree is dirty, so it was interrupted.  `q3_check.sh` on the component
+  assembly file was retried and again hung after printing its internal Lean
+  command, so it was interrupted without a successful `q3_check` result.
+- Next exact patch: generate/import concrete nominal polynomial absolute
+  budgets for `omegaPrime`, `shapeSq`, `omega`, and `shapeSqDeriv`, then prove
+  the product abs/error and final scale/product budget comparisons.

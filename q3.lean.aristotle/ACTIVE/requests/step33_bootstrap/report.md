@@ -64892,6 +64892,88 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_str
 python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
 ```
 
+## Execution Update (2026-06-22) -- factor-error witnesses checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
+
+Extended Lean files:
+
+```text
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+New Lean-checked public/support theorem:
+
+```lean
+Step33Sub0OmegaPrimeTaylorRemainderCert.omegaPrimeGeneratedRemainderCert_bound_public
+```
+
+New Lean-checked component factor-error witnesses:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaPrime_factor_error
+primaryFiniteRow0Parent0Split100Sub0_omega_factor_error
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_factor_error
+```
+
+Meaning: the product-factor bridge no longer has an undischarged generic
+factor-error premise for the four active component factors.  The `omega`
+witness is derived from the checked Omega-prime Taylor error plus the center
+anchor error; `shapeSq` and `shapeSqDeriv` reuse their checked generated Taylor
+source bounds.
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+It does not provide nominal polynomial absolute budgets.
+It does not prove product abs/error budget comparisons.
+It does not prove the final scale/product budget comparison.
+It does not set assembledRawDerivCoeffPresent, residualTaylorCoeffPresent,
+componentTaylorProofsPresent, or exactCoefficientAssemblyPassed.
+```
+
+Regenerated component ledger status:
+
+```text
+status = fail_closed_factor_error_witnesses_checked_nominal_abs_budget_gap
+firstFailure = STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_NOMINAL_FACTOR_ABS_BUDGET_GAP
+checkedFactorErrorWitnessesPresent = true
+guardPasses = false
+```
+
+Next exact patch:
+
+```text
+Generate/import concrete same-normalization nominal polynomial absolute budgets
+for omegaPrime, shapeSq, omega, and shapeSqDeriv, then prove the product
+abs/error budget comparisons and the final scale/product budget comparison.
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+LEAN_PATH=".lake/build/lib/lean:..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean
+LEAN_PATH=".lake/build/lib/lean:..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAEndpointHighOrderLanding.lean
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json
+```
+
+`lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport`
+was attempted but hung inside Lake's internal `git diff HEAD --exit-code`
+while the worktree was dirty.  It was interrupted; the direct `lean -o/-i`
+compilation above was used to refresh the dependency artifacts.
+
+`bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+was retried and again hung after printing its internal Lean command.  It was
+interrupted without leaving a successful `q3_check` result.  The direct Lean
+check above passed.
+
 ## Execution Update (2026-06-22) -- product factor witness interface checked
 
 Route: PSD-pd/Q3 Step33A.1-A component Taylor coefficient assembly.
