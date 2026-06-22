@@ -40027,3 +40027,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   partial-sharp Lean certificate that spends the existing row `0,1` facts,
   proves the remaining width fail, and makes the next subgap exactly rows
   `2..15` rather than all rows.
+
+## Insight (2026-06-22, Step33A.1-A) -- PartialSharpShapeSqDerivRows01Checked
+
+- Added isolated Lean file
+  `q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid`,
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail`.
+- Meaning: the active generated ShapeSqDeriv coefficient stream now has a
+  proof-grade partial-sharp source spending checked center rows `0` and `1`.
+  Rows `2..15` and order `16` deliberately remain on the coarse budget.
+- Lean also proves this partial sharpening is still too wide for the active
+  residual target interval.  Therefore rows `0,1` are no longer the live
+  obstruction, but Step33A.1-A remains open.
+- New exact live gap:
+  `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP`.
+- Validation: `lake env lean` again hung silently and was interrupted.  Direct
+  Lean with the local `.lake` library path passed after compiling the missing
+  `.olean` dependency for `PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean`;
+  `.olean` generation for the new partial-sharp file also passed.  `q3_check.sh`
+  was run through `bash`, hung after printing its internal Lean command, and
+  was interrupted after 60 seconds; no successful `q3_check` result is claimed.

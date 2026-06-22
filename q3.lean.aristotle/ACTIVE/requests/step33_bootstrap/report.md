@@ -66242,3 +66242,70 @@ Build a sharper ShapeSq/ShapeSqDeriv remainder source.  Do not set
 componentTaylorProofsPresent=true or finalBudgetPassed=true from the current
 coarse enclosure.
 ```
+
+## Execution Update (2026-06-22) -- partial-sharp ShapeSqDeriv rows 0/1 checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource
+primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail
+```
+
+Meaning:
+
+```text
+The new source keeps the active generated ShapeSqDeriv coefficient stream,
+spends the existing checked center rows 0 and 1, and leaves rows 2..15 plus
+order 16 on the previous coarse source.  Lean then proves that this partial
+sharpening is still too wide for the active target residual interval.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the component Taylor route.
+Rows 0 and 1 are checked and spendable in the active singleAbs normalization.
+Rows 2..15 plus order 16 remain the live proof gap.
+The generated JSON fields residualTaylorRemainderAbs,
+componentTaylorProofsPresent, exactCoefficientAssemblyPassed, and
+finalBudgetPassed remain false/null.
+```
+
+Validation:
+
+```text
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean
+```
+
+`lake env lean` again hung silently during environment setup and was
+interrupted.  The direct Lean checks passed after compiling the missing local
+`.olean` dependency for `PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean`;
+`.olean` generation for the new file also passed.  `q3_check.sh` was run
+through `bash` because the script is not executable in this worktree; it hung
+after printing its internal Lean command and was interrupted after 60 seconds,
+so no successful `q3_check` result is claimed.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP
+
+Generate/prove proof-grade center-jet bounds for ShapeSqDeriv rows 2..15 and
+a same-normalization order-16 bound.  Do not revisit rows 0 and 1 unless the
+coefficient-stream normalization changes.
+```

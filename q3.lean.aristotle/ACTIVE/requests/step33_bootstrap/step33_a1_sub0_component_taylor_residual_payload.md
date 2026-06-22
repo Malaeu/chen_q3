@@ -592,3 +592,31 @@ only marks the current coarse source as proof-grade-but-too-wide.
 
 Current local first gap after supplement 3:
 `STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP`.
+
+## Local Lean Supplement 4 (2026-06-22)
+
+A later local Lean supplement added:
+
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean`
+
+Checked supplement theorems:
+
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource`
+- `primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail`
+
+Meaning: Lean now proves a partial-sharp ShapeSqDeriv Taylor source in the
+same active coefficient stream and `ShapeSqDerivTaylorIntervalCert.singleAbs`
+normalization.  The source spends the checked center rows `0` and `1`, leaves
+rows `2..15` and order `16` on the coarse budget, and then proves this is
+still too wide for the active target residual interval.
+
+Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
+`0` and `1` are no longer the live obstruction; rows `2..15` plus order `16`
+remain open.  `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
+`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
+the generated payload.
+
+Current local first gap after supplement 4:
+`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP`.

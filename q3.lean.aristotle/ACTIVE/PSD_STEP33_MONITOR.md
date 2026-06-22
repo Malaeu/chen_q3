@@ -17,15 +17,15 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: Lean checked an exact width-fail certificate for the current coarse `fullTaylor` residual derivative enclosure. This does not kill Step33A.1-A; it proves the present `primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget` is too wide for the active final residual interval.
-latest_local_file_2026_06_22: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean, q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py, q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py, q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.{json,md}, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.{json,md}, q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and q3.lean.aristotle/docs/INSIGHTS.md
-latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource; primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource; primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource; primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure; primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail
+latest_local_step_2026_06_22: Lean checked a partial-sharp ShapeSqDeriv source that spends the existing proof-grade center rows `0,1`, then proves the residual core is still too wide when rows `2..15` and order `16` remain coarse. This does not close Step33A.1-A; it narrows the live proof gap to rows `2..15` / order `16`.
+latest_local_file_2026_06_22: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean, q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py, q3.lean.aristotle/scripts/generate_step33_a1_sub0_shapesq_deriv_tight_payload.py, q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_assembly_stream_ledger.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.{json,md}, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_shapesq_deriv_tight_payload.{json,md}, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.{json,md}, q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and q3.lean.aristotle/docs/INSIGHTS.md
+latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tightCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_tight_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivTightTaylorSource; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated; primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid; primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource; primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail; primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource; primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source; primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource; primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct; primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure; primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1
-latest_payload_status_2026_06_22: fail_closed_tight_product_assembly_remainder_width_constant_fail_checked_sharp_remainder_gap
-latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP
-latest_closed_failure_2026_06_22: STEP33_A1_SUB0_TIGHT_PRODUCT_ASSEMBLY_REMAINDER_WIDTH_CONSTANT_FAIL
-latest_boundary_2026_06_22: A Lean-checked coarse fullTaylor residual derivative enclosure and a Lean-checked width-fail theorem now exist. This is not Step33A.1-A closure: the current enclosure radius is provably too large for the active final residual interval, and the generated payload fields `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and `exactCoefficientAssemblyPassed` remain false/null. The next live patch must build a sharper ShapeSq/ShapeSqDeriv remainder source.
+latest_payload_status_2026_06_22: fail_closed_partial_sharp_shapesq_deriv_rows_2_to_15_width_fail_checked
+latest_route_level_gap_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP
+latest_closed_failure_2026_06_22: STEP33_A1_SUB0_SHAPESQ_DERIV_PARTIAL_SHARP_ROWS_0_1_REMAINDER_WIDTH_FAIL
+latest_boundary_2026_06_22: A Lean-checked partial-sharp ShapeSqDeriv source and a Lean-checked residual-core width-fail theorem now exist. This is not Step33A.1-A closure: rows `0,1` are spendable, but rows `2..15` plus order `16` remain coarse and still make the enclosure too wide. The generated payload fields `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and `exactCoefficientAssemblyPassed` remain false/null.
 latest_route_review_2026_06_22: Proshka route review via in-app browser chose the same local cut: first build a Lean budget comparison/kill certificate for the current coarse source, then move to a sharper ShapeSq/ShapeSqDeriv source. Codex accepted only the Lean-checked local theorem.
 latest_browser_note_2026_06_22: Browser/Computer Use was used as the escalation/review channel; it confirmed the route shape but is not proof evidence.
 
@@ -34579,4 +34579,51 @@ active residual model.  If it does not match, use:
 
 ```text
 STEP33_A1_SUB0_COMPONENT_TAYLOR_ACTIVE_MODEL_COEFF_MISMATCH
+```
+
+## 2026-06-22 Current EOF State -- partial-sharp ShapeSqDeriv rows 0/1 checked
+
+This entry supersedes the earlier Cauchy-product "selected next" entry for the
+current live patch.  The component assembly route reached a proof-grade
+fullTaylor enclosure, and a later Lean width-fail theorem proved that the
+coarse enclosure is too wide for the final Step33A.1-A target interval.
+
+Additional Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource
+primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail
+```
+
+Meaning:
+
+```text
+The partial-sharp source spends the existing proof-grade ShapeSqDeriv center
+rows 0 and 1, while rows 2..15 and order 16 remain on the previous coarse
+budget.  Lean proves this partial sharpening still makes the residual core
+width exceed the active target interval width.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not kill the component Taylor route.
+Rows 0 and 1 are no longer the live obstruction.
+The next live obstruction is rows 2..15 plus order 16 in the same
+ShapeSqDerivTaylorIntervalCert.singleAbs normalization.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP
 ```
