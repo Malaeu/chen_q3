@@ -38602,8 +38602,10 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Added isolated Lean file
   `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
 - Lean-checked the certificate surface
-  `Step33Sub0RealSincDerivativeMajorantCert`, its `Valid` predicate, and the
-  `ProvidesAnalyticMajorant` target predicate.
+  `Step33Sub0RealSincDerivativeMajorantCert`, its `Valid` predicate, the
+  `ProvidesAnalyticMajorant` target predicate, and the nonnegativity lemmas
+  `step33Sub0RealSincDerivMajorantTerm_nonneg` /
+  `step33Sub0RealSincDerivMajorantTerm_real_nonneg`.
 - Added
   `scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py`; it emits
   exact rational rows for `k = 0..17` using
@@ -38618,3 +38620,8 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`:
   prove in Lean that the rational rows majorize
   `‖iteratedDeriv k realSinc u‖` on `Set.Icc 0 (1/400)`.
+- First tail-arithmetic obstruction found by local Lean probe:
+  `STEP33_A1_SUB0_REALSINC_MAJORANT_TAIL_RATIO_ARITHMETIC_GAP`; after
+  unfolding the candidate ratio
+  `term(k,m+1) <= (1/400)^2 * term(k,m)`, `simp` leaves the expected
+  factorial/division inequality and `gcongr` does not progress.

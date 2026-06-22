@@ -63050,6 +63050,8 @@ The new Lean file checks a fail-closed certificate surface:
 
 ```lean
 step33Sub0RealSincDerivMajorantTerm
+step33Sub0RealSincDerivMajorantTerm_nonneg
+step33Sub0RealSincDerivMajorantTerm_real_nonneg
 Step33Sub0RealSincDerivativeMajorantCert
 Step33Sub0RealSincDerivativeMajorantCert.Valid
 Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant
@@ -63093,3 +63095,25 @@ next patch is to prove or fail the analytic crosswalk:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 ```
+
+Additional local probe after the first scaffold:
+
+```text
+checked:
+  step33Sub0RealSincDerivMajorantTerm_nonneg
+  step33Sub0RealSincDerivMajorantTerm_real_nonneg
+
+candidate tail-ratio lemma:
+  (term k (m+1) : Real) <= (1/400)^2 * (term k m : Real)
+
+Lean result:
+  after unfolding, simp leaves the expected factorial/division inequality;
+  gcongr does not progress.
+
+first arithmetic sub-gap:
+  STEP33_A1_SUB0_REALSINC_MAJORANT_TAIL_RATIO_ARITHMETIC_GAP
+```
+
+This does not change the main blocker.  The proof-grade route still needs the
+series-majorant theorem plus a geometric-tail theorem before any generated
+`Valid.bound` can be claimed.

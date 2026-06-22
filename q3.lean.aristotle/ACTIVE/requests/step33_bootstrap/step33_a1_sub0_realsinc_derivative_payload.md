@@ -9,7 +9,7 @@
 ## Lean interface
 
 - contractFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`
-- contractFileHash16: `6a61c0134221d3b1`
+- contractFileHash16: `b936a6780f22b4b1`
 - certStructure: `Step33Sub0RealSincDerivativeMajorantCert`
 - validPredicate: `Step33Sub0RealSincDerivativeMajorantCert.Valid`
 - analyticMajorantPredicate: `Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant`

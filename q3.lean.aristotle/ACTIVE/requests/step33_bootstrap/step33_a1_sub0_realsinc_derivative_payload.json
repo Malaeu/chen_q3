@@ -13,7 +13,7 @@
     "analyticMajorantPredicate": "Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant",
     "certStructure": "Step33Sub0RealSincDerivativeMajorantCert",
     "contractFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean",
-    "contractFileHash16": "6a61c0134221d3b1",
+    "contractFileHash16": "b936a6780f22b4b1",
     "scaledReceiverFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean",
     "scaledReceiverFileHash16": "b6f7c834175c15aa",
     "scaledReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs",

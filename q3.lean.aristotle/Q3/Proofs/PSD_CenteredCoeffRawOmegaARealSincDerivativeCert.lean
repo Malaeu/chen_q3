@@ -42,6 +42,17 @@ def step33Sub0RealSincDerivMajorantTerm (k m : Nat) : Rat :=
   (((1 : Rat) / 400) ^ e) /
     (((2 * n + 1 : Nat) : Rat) * ((Nat.factorial e : Nat) : Rat))
 
+/-- The rational majorant terms are nonnegative. -/
+theorem step33Sub0RealSincDerivMajorantTerm_nonneg (k m : Nat) :
+    0 <= step33Sub0RealSincDerivMajorantTerm k m := by
+  unfold step33Sub0RealSincDerivMajorantTerm
+  positivity
+
+/-- Real-cast form of `step33Sub0RealSincDerivMajorantTerm_nonneg`. -/
+theorem step33Sub0RealSincDerivMajorantTerm_real_nonneg (k m : Nat) :
+    0 <= (step33Sub0RealSincDerivMajorantTerm k m : Real) := by
+  exact_mod_cast step33Sub0RealSincDerivMajorantTerm_nonneg k m
+
 /-- Finite rational certificate surface for the `realSinc` derivative rows
 `k = 0, ..., 17`.
 

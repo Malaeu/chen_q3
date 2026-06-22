@@ -33559,6 +33559,8 @@ Checked objects:
 ```lean
 step33Sub0RealSincDerivMajorantStart
 step33Sub0RealSincDerivMajorantTerm
+step33Sub0RealSincDerivMajorantTerm_nonneg
+step33Sub0RealSincDerivMajorantTerm_real_nonneg
 Step33Sub0RealSincDerivativeMajorantCert
 Step33Sub0RealSincDerivativeMajorantCert.Valid
 Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant
@@ -33586,3 +33588,14 @@ now exactly
 `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`, inside
 the still-open live blocker
 `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+
+Local tail-ratio probe:
+
+```text
+candidate:
+  term(k,m+1) <= (1/400)^2 * term(k,m)
+Lean result:
+  nonneg terms compile, but ratio does not close by simp/gcongr after unfolding.
+next arithmetic sub-gap:
+  STEP33_A1_SUB0_REALSINC_MAJORANT_TAIL_RATIO_ARITHMETIC_GAP
+```
