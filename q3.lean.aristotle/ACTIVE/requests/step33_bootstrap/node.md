@@ -125,6 +125,34 @@ Next proof-producing patch:
   Horner range, and exact target-budget inequalities.
 ```
 
+2026-06-23 Step33A.1-A combined high-order ledger v4 update:
+
+```text
+The fail-closed ledger
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+now records the source-model bridge as checked support:
+
+  wholeExpressionSourceModelPresent = true
+  centerJetSourceModelPresent = true
+
+These flags come only from Lean-checked support theorems:
+
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource
+
+This is not a proof payload:
+
+  highOrderValidPayloadPresent = false
+  proofSafeClosedFields = 0
+  order16SourceModelPresent = false
+
+Current live gap remains:
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+
+First missing generator/proof interface:
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
 The current generator-facing payload adapter is checked in:
 
 ```lean

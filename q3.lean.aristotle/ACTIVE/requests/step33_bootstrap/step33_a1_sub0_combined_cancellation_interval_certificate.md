@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3`
+- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v4`
 - route: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR`
 - status: `fail_closed_missing_high_order_valid_payload`
 - first failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
@@ -19,6 +19,7 @@ not close Step33A.1-A.
 - certCheckerFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`
 - conditionalPayloadFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`
 - highOrderSourceFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
+- sourceModelBridgeFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`
 - certStructure: `Step33Sub0CombinedCancellationIntervalCert`
 - certValidPredicate: `Step33Sub0CombinedCancellationIntervalCert.Valid`
 - certToHCombined: `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`
@@ -89,8 +90,8 @@ Combined expression:
 - highOrderOrder16RowsPresent: `False`
 - highOrderHornerRangeRowsPresent: `False`
 - highOrderTargetBudgetRowsPresent: `False`
-- wholeExpressionSourceModelPresent: `False`
-- centerJetSourceModelPresent: `False`
+- wholeExpressionSourceModelPresent: `True`
+- centerJetSourceModelPresent: `True`
 - order16SourceModelPresent: `False`
 - omegaPrimePayloadReusableForWholeExpression: `False`
 - residualTaylorCoeffPayloadPresent: `True`
@@ -107,10 +108,19 @@ Combined expression:
 
 ## Source Model Inventory
 
-- status: `fail_closed_source_model_gap`
-- firstSourceFailure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`
-- centerJetFailure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_SOURCE_MODEL_GAP`
+- status: `source_model_bridge_checked_payload_rows_missing`
+- firstSourceFailure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- centerJetFailure: `None`
 - order16Failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_MODEL_GAP`
+
+Checked source-model bridge:
+- file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`
+- smoothTheorem: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16', 'line': 456, 'exists': True}`
+- centerJetTheorem: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource', 'line': 808, 'exists': True}`
+- smoothPresent: `True`
+- centerJetPresent: `True`
+- status: `checked_source_model_support`
+- whyNotEnough: `This proves the whole-expression smooth bridge and all-row component-source center-jet crosswalk. It still does not emit rational coeff rows, a uniform order16Abs bound, Horner range rows, target-budget rows, or a Valid payload.`
 
 Target function:
 - meaning: `whole expression, not a component: residualTaylor degree-45 polynomial plus ScaledCancellationRhs`
@@ -127,13 +137,13 @@ Rational polynomial part:
 
 ScaledCancellationRhs:
 
-- status: `source_model_missing`
+- status: `source_model_checked_for_center_jets`
 - definition: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean', 'symbol': 'def primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs', 'line': 34, 'exists': True}`
 - activeScale: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean', 'symbol': 'def primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff', 'line': 31, 'exists': True}`
 - formula: `ActiveScaleCoeff * ComponentProductCancellationResidual + (ActiveScaleCoeff - NominalScaleCoeff) * ComponentProductNominal`
 - normalizationHazard: `ActiveScaleCoeff is ((3/10)/Real.pi), while the residual polynomial payload is rational and nominal-scale based.`
 - missing:
-  - proof-grade center jets j=0..15 for ScaledCancellationRhs in the combined expression
+  - concrete rational center-jet rows j=0..15 for the combined expression
   - proof-grade uniform order16 bound for ScaledCancellationRhs in the combined expression
   - same-surface addition with the residualTaylor polynomial in the high-order receiver normalization
 
@@ -150,7 +160,7 @@ Required bridge shape:
 - sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 - Horner range for rawOmegaATaylorPolynomial 15 center coeff
 - target lower/upper budget after subtracting/adding remainderAbs
-- nextPatchRecommendation: `Build a whole-expression source-model bridge before emitting the concrete HighOrderTaylorCert payload rows.`
+- nextPatchRecommendation: `Generate/prove the concrete HighOrderTaylorCert payload rows from the checked source-model bridge.`
 
 ## Candidate Segments
 
@@ -201,6 +211,7 @@ Must not use:
 - triangle split is killed by checked residualTaylor final-slope failures.
 - rows0..11 independent product budget is width-killed.
 - High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows.
+- Whole-expression smoothness and all-row component-source center-jet crosswalk are Lean-checked.
 
 ## Rejected Routes
 
@@ -220,8 +231,8 @@ Must not use:
 
 ## Next Implementable Patch
 
-- recommendation: `build the whole-expression source-model bridge, then generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload`
-- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`
+- recommendation: `generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload`
+- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
 - leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`
 - checkerTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
 - remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
@@ -254,6 +265,7 @@ Must not use:
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`: `172524e28455ca5b`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`: `2cf0833b5b65c1f7`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`: `3f95fa0605fd469c`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`: `30d1d508467f4f90`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`: `c8832f56435b42fa`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`: `8554b282c60d9c25`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`: `aabf02168d6d50fd`

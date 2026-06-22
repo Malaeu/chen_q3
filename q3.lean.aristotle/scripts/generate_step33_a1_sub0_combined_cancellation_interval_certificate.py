@@ -48,6 +48,9 @@ CONDITIONAL_PAYLOAD_FILE = (
 HIGH_ORDER_SOURCE_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean"
 )
+SOURCE_MODEL_BRIDGE_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -68,7 +71,7 @@ OMEGA_PRIME_PAYLOAD = (
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v3"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v4"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
@@ -107,6 +110,12 @@ HIGH_ORDER_TO_INTERVAL = "Step33Sub0CombinedCancellationHighOrderTaylorCert.Vali
 HIGH_ORDER_TO_HCOMBINED = "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined"
 HIGH_ORDER_TO_RESIDUAL = (
     "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_fullTaylor_residual_deriv_interval"
+)
+SOURCE_MODEL_SMOOTH_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16"
+)
+SOURCE_MODEL_CENTER_JET_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource"
 )
 
 
@@ -241,6 +250,17 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         segment["isProofGrade"] for segment in segments
     )
     target_width = parse_rat(TARGET_UPPER) - parse_rat(TARGET_LOWER)
+    source_model_smooth_present = (
+        line_of_symbol(ROOT / SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_SMOOTH_THEOREM)
+        is not None
+    )
+    source_model_center_jet_present = (
+        line_of_symbol(ROOT / SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_CENTER_JET_THEOREM)
+        is not None
+    )
+    source_model_bridge_present = (
+        source_model_smooth_present and source_model_center_jet_present
+    )
 
     return {
         "schema": SCHEMA,
@@ -273,8 +293,8 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "highOrderOrder16RowsPresent": False,
             "highOrderHornerRangeRowsPresent": False,
             "highOrderTargetBudgetRowsPresent": False,
-            "wholeExpressionSourceModelPresent": False,
-            "centerJetSourceModelPresent": False,
+            "wholeExpressionSourceModelPresent": source_model_bridge_present,
+            "centerJetSourceModelPresent": source_model_center_jet_present,
             "order16SourceModelPresent": False,
             "omegaPrimePayloadReusableForWholeExpression": False,
             "residualTaylorCoeffPayloadPresent": (
@@ -305,6 +325,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "certCheckerFile": CERT_CHECKER_FILE,
             "conditionalPayloadFile": CONDITIONAL_PAYLOAD_FILE,
             "highOrderSourceFile": HIGH_ORDER_SOURCE_FILE,
+            "sourceModelBridgeFile": SOURCE_MODEL_BRIDGE_FILE,
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
@@ -390,10 +411,44 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             ],
         },
         "sourceModelInventory": {
-            "status": "fail_closed_source_model_gap",
-            "firstSourceFailure": SOURCE_MODEL_FAILURE,
-            "centerJetFailure": CENTER_JET_SOURCE_MODEL_FAILURE,
+            "status": (
+                "source_model_bridge_checked_payload_rows_missing"
+                if source_model_bridge_present
+                else "fail_closed_source_model_gap"
+            ),
+            "firstSourceFailure": (
+                NEXT_PAYLOAD_FAILURE
+                if source_model_bridge_present
+                else SOURCE_MODEL_FAILURE
+            ),
+            "centerJetFailure": (
+                None
+                if source_model_center_jet_present
+                else CENTER_JET_SOURCE_MODEL_FAILURE
+            ),
             "order16Failure": ORDER16_SOURCE_MODEL_FAILURE,
+            "checkedBridge": {
+                "file": SOURCE_MODEL_BRIDGE_FILE,
+                "smoothTheorem": symbol_ref(
+                    SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_SMOOTH_THEOREM
+                ),
+                "centerJetTheorem": symbol_ref(
+                    SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_CENTER_JET_THEOREM
+                ),
+                "smoothPresent": source_model_smooth_present,
+                "centerJetPresent": source_model_center_jet_present,
+                "status": (
+                    "checked_source_model_support"
+                    if source_model_bridge_present
+                    else "missing_or_incomplete"
+                ),
+                "whyNotEnough": (
+                    "This proves the whole-expression smooth bridge and all-row "
+                    "component-source center-jet crosswalk. It still does not "
+                    "emit rational coeff rows, a uniform order16Abs bound, "
+                    "Horner range rows, target-budget rows, or a Valid payload."
+                ),
+            },
             "targetFunction": {
                 "meaning": (
                     "whole expression, not a component: residualTaylor degree-45 "
@@ -427,7 +482,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 ),
             },
             "scaledCancellationRhs": {
-                "status": "source_model_missing",
+                "status": (
+                    "source_model_checked_for_center_jets"
+                    if source_model_center_jet_present
+                    else "source_model_missing"
+                ),
                 "definition": symbol_ref(
                     NORM_RECEIVER_FILE,
                     "def primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs",
@@ -445,7 +504,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     "polynomial payload is rational and nominal-scale based."
                 ),
                 "missing": [
-                    "proof-grade center jets j=0..15 for ScaledCancellationRhs in the combined expression",
+                    "concrete rational center-jet rows j=0..15 for the combined expression",
                     "proof-grade uniform order16 bound for ScaledCancellationRhs in the combined expression",
                     "same-surface addition with the residualTaylor polynomial in the high-order receiver normalization",
                 ],
@@ -499,8 +558,8 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "target lower/upper budget after subtracting/adding remainderAbs",
             ],
             "nextPatchRecommendation": (
-                "Build a whole-expression source-model bridge before emitting "
-                "the concrete HighOrderTaylorCert payload rows."
+                "Generate/prove the concrete HighOrderTaylorCert payload rows "
+                "from the checked source-model bridge."
             ),
         },
         "candidateSegmentSource": {
@@ -532,6 +591,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "triangle split is killed by checked residualTaylor final-slope failures.",
             "rows0..11 independent product budget is width-killed.",
             "High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows.",
+            "Whole-expression smoothness and all-row component-source center-jet crosswalk are Lean-checked.",
         ],
         "rejectedRoutes": {
             "independentTriangleSplit": (
@@ -544,11 +604,10 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "nextImplementablePatch": {
             "recommendation": (
-                "build the whole-expression source-model bridge, then "
                 "generate/prove the concrete "
                 "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload"
             ),
-            "firstFailureIfMissing": SOURCE_MODEL_FAILURE,
+            "firstFailureIfMissing": NEXT_PAYLOAD_FAILURE,
             "leanPayloadTarget": (
                 "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean"
             ),
@@ -569,6 +628,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             CERT_CHECKER_FILE: file_hash(ROOT / CERT_CHECKER_FILE),
             CONDITIONAL_PAYLOAD_FILE: file_hash(ROOT / CONDITIONAL_PAYLOAD_FILE),
             HIGH_ORDER_SOURCE_FILE: file_hash(ROOT / HIGH_ORDER_SOURCE_FILE),
+            SOURCE_MODEL_BRIDGE_FILE: file_hash(ROOT / SOURCE_MODEL_BRIDGE_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),
@@ -645,6 +705,14 @@ def render_md(report: dict[str, Any]) -> str:
             f"- firstSourceFailure: `{source_model['firstSourceFailure']}`",
             f"- centerJetFailure: `{source_model['centerJetFailure']}`",
             f"- order16Failure: `{source_model['order16Failure']}`",
+            "",
+            "Checked source-model bridge:",
+        ]
+    )
+    for key, value in source_model["checkedBridge"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.extend(
+        [
             "",
             "Target function:",
             f"- meaning: `{source_model['targetFunction']['meaning']}`",

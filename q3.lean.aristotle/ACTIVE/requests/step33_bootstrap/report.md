@@ -68,6 +68,57 @@ whole-expression degree-15 Taylor receiver with center-jet rows 0..15 plus a
 uniform order-16 derivative bound.  The receiver compiles, but the generated
 payload remains missing.
 
+## Execution Update (2026-06-23) -- combined high-order ledger v4 synced to checked source model
+
+Route: PSD-pd/Q3 Step33A.1-A combined-cancellation high-order Taylor payload.
+
+Updated fail-closed ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v4
+```
+
+Meaning: the ledger now records the Lean-checked source-model support from
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`:
+
+```text
+wholeExpressionSourceModelPresent = true
+centerJetSourceModelPresent = true
+checkedBridge.status = checked_source_model_support
+```
+
+The exact checked support theorems are:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource
+```
+
+Boundary:
+
+```text
+Step33A.1-A is not closed.
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+order16SourceModelPresent = false
+No rational center-jet rows, uniform order16Abs proof, Horner rows, or
+target-budget rows are emitted.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```
+
+First missing proof/generator interface:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
 ## Execution Update (2026-06-23) -- combined source-model all-row bridge checked
 
 Route: PSD-pd/Q3 Step33A.1-A combined-cancellation high-order Taylor source.

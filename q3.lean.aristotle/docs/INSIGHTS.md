@@ -41353,3 +41353,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_ALL_ROW_PRODUCT_LEIBNIZ_CROSSWALK_GAP`.
 - Current exact gap:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- CombinedHighOrderLedgerV4SourceModelSynced
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.
+- Local `q3_docs` search did not surface an existing generated Valid payload
+  for `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`; the useful
+  current source of truth is the checked Lean receiver plus the fail-closed
+  certificate ledger.
+- External Mathlib docs check only reconfirmed the generic Taylor-remainder
+  infrastructure shape; it is navigation, not project proof evidence.
+- Updated
+  `scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v4`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`.
+- The ledger now records the checked source-model support:
+  `wholeExpressionSourceModelPresent = true`,
+  `centerJetSourceModelPresent = true`, from
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16` and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource`.
+- Boundary: this still has `proofSafeClosedFields = 0`,
+  `highOrderValidPayloadPresent = false`, and
+  `order16SourceModelPresent = false`; it is not Step33A.1-A closure.
+- Current exact generator/proof interface:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
