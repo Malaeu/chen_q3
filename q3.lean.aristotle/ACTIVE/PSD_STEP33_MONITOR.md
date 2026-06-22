@@ -9,7 +9,7 @@ current_step_id: Step33A.1
 current_step_title: primary/control analytic A/P/P0 entry hbox lemmas
 current_target: Step33A.1-A raw-Omega A finite/tail bounds certs feeding interval/hbox receivers; Step33B/Step33C raw-Omega packaging is compiled conditional support
 current_owner: local-agent
-current_artifact: Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorPayloadImport.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkIntegralBoundsImport.lean, and Q3/Proofs/PSD_CenteredCoeffAnalyticABoundsBackend.lean
+current_artifact: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorPayloadImport.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkIntegralBoundsImport.lean, and Q3/Proofs/PSD_CenteredCoeffAnalyticABoundsBackend.lean
 request: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
 report: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
 legacy_request: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md
@@ -17,13 +17,13 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
-latest_local_step_2026_06_22: scaled realSinc normalization receiver checked
-latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
-latest_local_theorem_2026_06_22: primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs
+latest_local_step_2026_06_22: realSinc scalar changeOriginSeries binomial bridge checked
+latest_local_file_2026_06_22: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+latest_local_theorem_2026_06_22: step33RealSincFormalSeries_changeOriginSeries_apply_ones
 latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
 latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
-latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
-latest_boundary_2026_06_22: no unscaled realSinc derivative bounds 0..17 payload; Step33A.1-A remains open
+latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+latest_boundary_2026_06_22: scalar changeOriginSeries binomial bridge is checked; no parity reindex / rows 1..17 proof / scaled-sinc receiver feed; Step33A.1-A remains open
 latest_route_review_2026_06_22: Proshka chose RealSincDerivativeMajorantCert route; first sub-gap is STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 
 next_theorem_targets:
@@ -33804,6 +33804,65 @@ Boundary: this is only the coefficient/diagonal-term bridge.  It does not yet
 prove the `HasFPowerSeriesAt` crosswalk for this named scaffold, does not prove
 rows `1..17`, does not assemble `Cert.Valid.bound`, and does not feed the
 scaled-sinc receiver.
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
+
+## 2026-06-22 Current EOF State -- realSinc scalar changeOriginSeries binomial bridge checked
+
+Extended the local all-index `realSinc` formal-series scaffold in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked objects:
+
+```lean
+step33_card_subsets_fin_add_card_eq
+step33_ofScalars_changeOriginSeriesTerm_apply_ones
+step33_ofScalars_changeOriginSeries_apply_ones
+step33RealSincFormalSeries_changeOriginSeries_apply_ones
+```
+
+Meaning:
+
+```text
+((FormalMultilinearSeries.ofScalars Real c).changeOriginSeries k e
+    (fun _ : Fin e => u)) (fun _ : Fin k => 1)
+= choose(k+e,e) * c(k+e) * u^e
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+lake env lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  interrupted after a bounded wait
+q3_check:
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  reached lean invocation and was interrupted after a bounded wait
+```
+
+Boundary: this closes only the scalar `changeOriginSeries` binomial bridge.
+It does not prove `HasFPowerSeriesAt realSinc step33RealSincFormalSeries 0`,
+does not prove the parity/even reindex, does not prove rows `1..17`, does not
+assemble `Cert.Valid.bound`, and does not feed the scaled-sinc receiver.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP
+```
 
 Remaining exact first sub-gap:
 

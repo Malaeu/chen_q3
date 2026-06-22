@@ -38743,3 +38743,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   receiver.  It is a reusable first-derivative scalar-series bridge.
 - Remaining exact first sub-gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincChangeOriginSeriesBinomialBridgeChecked
+
+- Lean now checks the general scalar `changeOriginSeries` bridge in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked objects:
+  `step33_card_subsets_fin_add_card_eq`,
+  `step33_ofScalars_changeOriginSeriesTerm_apply_ones`,
+  `step33_ofScalars_changeOriginSeries_apply_ones`, and
+  `step33RealSincFormalSeries_changeOriginSeries_apply_ones`.
+- The main formula proved is:
+  `((ofScalars Real c).changeOriginSeries k e (fun _ => u)) (fun _ => 1)
+    = choose(k+e,e) * c(k+e) * u^e`.
+- Direct Lean validation passed for
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`; the
+  touched-file hole scan is clean.  `lake env lean` and the standard
+  `q3_check.sh` were both interrupted after bounded waits.
+- Boundary: this is not a `HasFPowerSeriesAt` proof, not a parity/even reindex
+  proof, not a rows `1..17` proof, and not a scaled-sinc receiver feed.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP`.
+- Remaining exact first sub-gap:
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.

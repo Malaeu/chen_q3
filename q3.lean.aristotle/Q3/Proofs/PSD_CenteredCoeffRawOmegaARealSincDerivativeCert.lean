@@ -112,7 +112,7 @@ theorem step33_ofScalars_changeOriginSeriesTerm_one_apply_one
     ContinuousMultilinearMap.mkPiAlgebraFin_apply, smul_eq_mul,
     List.prod_ofFn]
   rw [Finset.prod_piecewise]
-  simp [Finset.prod_const, s.2, mul_comm]
+  simp [Finset.prod_const, s.2]
 
 /-- First derivative series term for a scalar formal series, evaluated at
 scalar direction `1`.  This is the local bridge missing from Mathlib for the
@@ -156,6 +156,76 @@ theorem step33RealSincFormalSeries_derivSeries_apply_one
       ((n + 1 : Nat) : Real) * step33RealSincCoeff (n + 1) * u ^ n := by
   simpa [step33RealSincFormalSeries, Nat.add_comm] using
     step33_ofScalars_derivSeries_apply_one step33RealSincCoeff n u
+
+/-- Number of `e`-element subsets of `Fin (k+e)`.  This is the scalar
+binomial coefficient in the general `changeOriginSeries` term. -/
+theorem step33_card_subsets_fin_add_card_eq (k e : Nat) :
+    Fintype.card {s : Finset (Fin (k + e)) // s.card = e} =
+      Nat.choose (k + e) e := by
+  rw [Fintype.card_subtype]
+  change (Finset.univ.filter
+      (fun x : Finset (Fin (k + e)) => x.card = e)).card =
+    Nat.choose (k + e) e
+  have hfin : Finset.univ.filter
+      (fun x : Finset (Fin (k + e)) => x.card = e) =
+        Finset.powersetCard e (Finset.univ : Finset (Fin (k + e))) := by
+    ext s
+    simp [Finset.mem_powersetCard]
+  rw [hfin, Finset.card_powersetCard]
+  simp
+
+/-- Each scalar `changeOriginSeriesTerm` contributes the same monomial when the
+old variables are evaluated at `1` and the new variables at scalar `u`. -/
+theorem step33_ofScalars_changeOriginSeriesTerm_apply_ones
+    (c : Nat -> Real) (k e : Nat) (u : Real)
+    (s : {s : Finset (Fin (k + e)) // Finset.card s = e}) :
+    (((FormalMultilinearSeries.ofScalars Real c).changeOriginSeriesTerm k e
+        s.1 s.2) (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)) =
+      c (k + e) * u ^ e := by
+  rw [FormalMultilinearSeries.changeOriginSeriesTerm_apply]
+  simp only [FormalMultilinearSeries.ofScalars,
+    ContinuousMultilinearMap.smul_apply,
+    ContinuousMultilinearMap.mkPiAlgebraFin_apply, smul_eq_mul,
+    List.prod_ofFn]
+  rw [Finset.prod_piecewise]
+  simp [Finset.prod_const, s.2]
+
+/-- Scalar `changeOriginSeries` evaluated on constant scalar directions.  This
+is the binomial bridge needed before the `realSinc` parity reindex. -/
+theorem step33_ofScalars_changeOriginSeries_apply_ones
+    (c : Nat -> Real) (k e : Nat) (u : Real) :
+    (((FormalMultilinearSeries.ofScalars Real c).changeOriginSeries k e)
+        (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)) =
+      ((Nat.choose (k + e) e : Nat) : Real) * c (k + e) * u ^ e := by
+  rw [FormalMultilinearSeries.changeOriginSeries]
+  simp only [ContinuousMultilinearMap.sum_apply]
+  calc
+    (∑ x : {s : Finset (Fin (k + e)) // Finset.card s = e},
+      (((FormalMultilinearSeries.ofScalars Real c).changeOriginSeriesTerm
+          k e x.1 x.2) (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)))
+        = ∑ _x : {s : Finset (Fin (k + e)) // Finset.card s = e},
+            c (k + e) * u ^ e := by
+          apply Finset.sum_congr rfl
+          intro x hx
+          simpa using
+            step33_ofScalars_changeOriginSeriesTerm_apply_ones c k e u x
+    _ = ((Fintype.card {s : Finset (Fin (k + e)) // s.card = e} : Nat) :
+          Real) * (c (k + e) * u ^ e) := by
+          simp [nsmul_eq_mul]
+    _ = ((Nat.choose (k + e) e : Nat) : Real) * c (k + e) * u ^ e := by
+          rw [step33_card_subsets_fin_add_card_eq k e]
+          ring
+
+/-- Specialized scalar `changeOriginSeries` bridge for the named all-index
+`realSinc` formal-series scaffold. -/
+theorem step33RealSincFormalSeries_changeOriginSeries_apply_ones
+    (k e : Nat) (u : Real) :
+    ((step33RealSincFormalSeries.changeOriginSeries k e)
+        (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)) =
+      ((Nat.choose (k + e) e : Nat) : Real) *
+        step33RealSincCoeff (k + e) * u ^ e := by
+  simpa [step33RealSincFormalSeries] using
+    step33_ofScalars_changeOriginSeries_apply_ones step33RealSincCoeff k e u
 
 /-- Starting series index for the absolute majorant of the `k`-th derivative
 of `realSinc`.  This is `ceil(k / 2)`, written in integer form. -/

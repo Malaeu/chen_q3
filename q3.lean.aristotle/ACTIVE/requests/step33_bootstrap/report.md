@@ -63468,3 +63468,61 @@ Remaining exact first sub-gap:
 ```text
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
+
+## 2026-06-22 Execution Update -- realSinc scalar changeOriginSeries binomial bridge checked
+
+Implemented the next local bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+New checked Lean objects:
+
+```lean
+step33_card_subsets_fin_add_card_eq
+step33_ofScalars_changeOriginSeriesTerm_apply_ones
+step33_ofScalars_changeOriginSeries_apply_ones
+step33RealSincFormalSeries_changeOriginSeries_apply_ones
+```
+
+Proof shape:
+
+```text
+e-element subsets of Fin(k+e) have cardinal choose(k+e,e)
+each scalar changeOriginSeriesTerm evaluates to c(k+e) * u^e
+the full scalar changeOriginSeries sums to choose(k+e,e) * c(k+e) * u^e
+```
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+lake env lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  interrupted after a bounded wait
+q3_check:
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  reached lean invocation and was interrupted after a bounded wait
+```
+
+Boundary: this is a proof-moving scalar combinatorics bridge, not a row
+majorant closure.  It does not prove the parity/even reindex, rows `1..17`,
+`Cert.Valid.bound`, or the scaled-sinc receiver feed.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_CHANGEORIGIN_CHOOSE_PARITY_REINDEX_GAP
+```
+
+Remaining exact first sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
+```
