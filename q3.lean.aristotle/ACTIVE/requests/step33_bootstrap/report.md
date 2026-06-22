@@ -63492,6 +63492,82 @@ Remaining broad gap:
 STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP
 ```
 
+## 2026-06-22 Execution Update -- realSinc derivative majorant analytic bridge checked
+
+Latest checked theorem:
+
+```lean
+Step33Sub0RealSincDerivativeMajorantCert.providesAnalyticMajorant_of_valid
+```
+
+New checked layer:
+
+```text
+The analytic bridge from `iteratedDeriv k realSinc u` to the live rational
+majorant row is now closed on `0 <= u <= 1/400`.
+
+Any concrete rational `Step33Sub0RealSincDerivativeMajorantCert.Valid` payload
+now implies `ProvidesAnalyticMajorant`, i.e. the base absolute derivative
+bounds needed before the scaled-sinc receiver.
+```
+
+New checked objects:
+
+```lean
+step33Sub0RealSincDerivMajorantStart_two_mul
+step33Sub0RealSincDerivMajorantStart_two_mul_add_one
+step33RealSinc_factorial_changeOriginSeries_odd_norm_eq_zero
+step33RealSinc_factorial_changeOriginSeries_even_norm_le_majorant_sub_start
+step33RealSinc_factorial_changeOriginSeries_norm_summable
+step33RealSinc_factorial_changeOriginSeries_sum_norm_le_tsum_norm
+step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant_even_row
+step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant_odd_row
+step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant
+realSinc_iteratedDeriv_norm_le_tsum_majorant
+Step33Sub0RealSincDerivativeMajorantCert.providesAnalyticMajorant_of_valid
+```
+
+Proof route: use the checked `changeOriginSeries` equality, prove summability
+of the evaluated absolute row, apply `norm_tsum_le_tsum_norm`, split the
+all-exponent row into even/odd exponent subsequences, eliminate the odd total
+degrees, reindex the surviving even total degrees to the live majorant row,
+and finally combine the rational prefix/tail `Valid` obligations with the
+geometric tail lemma.
+
+Validation:
+
+```text
+direct lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  passed
+hole scan:
+  rg -n "sorry|admit|exact\?"
+  clean
+git diff --check:
+  clean for the touched Lean file
+q3_check.sh:
+  attempted via bash, interrupted after bounded wait at Lean invocation
+```
+
+Boundary: this does not yet supply the concrete rational certificate values
+and does not yet feed the scaled-sinc receiver
+`primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs`.
+The analytic `realSinc` row bridge is now checked; the next live layer is a
+proof-producing payload for `Step33Sub0RealSincDerivativeMajorantCert.Valid`
+and then the scaled-sinc normalization/budget handoff.
+
+Next exact sub-gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_VALID_CERT_PAYLOAD_GAP
+```
+
+Remaining broad gap:
+
+```text
+STEP33_A1_SUB0_REALSINC_SCALED_SINC_RECEIVER_FEED_GAP
+```
+
 ## 2026-06-22 Execution Update -- realSinc parity reindex arithmetic checked
 
 Latest checked theorem:

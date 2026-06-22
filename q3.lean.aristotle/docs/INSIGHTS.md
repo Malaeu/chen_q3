@@ -38932,3 +38932,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_NORM_TSUM_REINDEX_GAP`.
 - Remaining broad gap:
   `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_ROWS_1_TO_17_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincDerivativeMajorantAnalyticBridgeChecked
+
+- Lean now checks the full analytic bridge from `iteratedDeriv k realSinc u`
+  to the live rational majorant row in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- New checked theorem:
+  `realSinc_iteratedDeriv_norm_le_tsum_majorant`.
+- New certificate-interface theorem:
+  `Step33Sub0RealSincDerivativeMajorantCert.providesAnalyticMajorant_of_valid`.
+- Meaning: on `0 <= u <= 1/400`, the norm/tsum/reindex gap is closed for all
+  derivative rows, and any concrete rational
+  `Step33Sub0RealSincDerivativeMajorantCert.Valid` payload now yields
+  `ProvidesAnalyticMajorant`.
+- The proof uses `norm_tsum_le_tsum_norm`, even/odd exponent splitting, odd
+  total-degree elimination, even survivor reindexing to the live majorant row,
+  and the existing geometric tail checker for the rational prefix/tail budget.
+- Direct Lean validation passed for the touched file; the touched-file hole
+  scan and `git diff --check` are clean.  `q3_check.sh` was attempted via
+  `bash` and interrupted after a bounded wait at its Lean invocation.
+- Boundary: no concrete rational `Valid` payload is supplied yet, and the
+  scaled-sinc receiver
+  `primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs`
+  is not fed yet.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_REALSINC_VALID_CERT_PAYLOAD_GAP`.
+- Remaining broad gap:
+  `STEP33_A1_SUB0_REALSINC_SCALED_SINC_RECEIVER_FEED_GAP`.

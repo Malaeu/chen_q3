@@ -13,7 +13,7 @@ claim the remaining summation/reindex bridge from `changeOriginSeries.sum` to
 the live absolute majorant row.
 
 Current first missing bridge:
-`STEP33_A1_SUB0_REALSINC_CHANGEORIGINSERIES_TSUM_LIVE_REINDEX_GAP`.
+`STEP33_A1_SUB0_REALSINC_VALID_CERT_PAYLOAD_GAP`.
 -/
 
 noncomputable section
@@ -627,6 +627,18 @@ theorem step33Sub0RealSincDerivMajorantStart_spec (k : Nat) :
   unfold step33Sub0RealSincDerivMajorantStart
   omega
 
+/-- Start index for even derivative rows. -/
+theorem step33Sub0RealSincDerivMajorantStart_two_mul (r : Nat) :
+    step33Sub0RealSincDerivMajorantStart (2 * r) = r := by
+  unfold step33Sub0RealSincDerivMajorantStart
+  omega
+
+/-- Start index for odd derivative rows. -/
+theorem step33Sub0RealSincDerivMajorantStart_two_mul_add_one (r : Nat) :
+    step33Sub0RealSincDerivMajorantStart (2 * r + 1) = r + 1 := by
+  unfold step33Sub0RealSincDerivMajorantStart
+  omega
+
 /-- The live majorant index is large enough for row `k`. -/
 theorem step33Sub0RealSincDerivMajorantIndex_spec (k m : Nat) :
     k <= 2 * step33Sub0RealSincDerivMajorantIndex k m := by
@@ -802,6 +814,120 @@ theorem step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
           (((2 * n + 1) * e.factorial : Nat) : Real) := by
           norm_num [Nat.cast_mul]
 
+/-- Odd total degrees contribute zero to the absolute `changeOriginSeries`
+row after the derivative normalization. -/
+theorem step33RealSinc_factorial_changeOriginSeries_odd_norm_eq_zero
+    {k n : Nat} (hk : k <= 2 * n + 1) (u : Real) :
+    ‖(Nat.factorial k : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries k (2 * n + 1 - k))
+          (fun _ : Fin (2 * n + 1 - k) => u))
+          (fun _ : Fin k => (1 : Real)))‖ = 0 := by
+  rw [step33RealSincFormalSeries_factorial_mul_changeOriginSeries_apply_ones_odd_index hk u]
+  simp
+
+/-- Any surviving even total degree reindexes to the live majorant row and is
+covered by the corresponding rational term. -/
+theorem step33RealSinc_factorial_changeOriginSeries_even_norm_le_majorant_sub_start
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    {k n : Nat} (hkn : k <= 2 * n) :
+    ‖(Nat.factorial k : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries k (2 * n - k))
+          (fun _ : Fin (2 * n - k) => u))
+          (fun _ : Fin k => (1 : Real)))‖ <=
+      (step33Sub0RealSincDerivMajorantTerm k
+        (n - step33Sub0RealSincDerivMajorantStart k) : Real) := by
+  rw [← step33Sub0RealSincDerivMajorantExponent_sub_start hkn]
+  exact step33RealSinc_factorial_changeOriginSeries_live_norm_le_majorant
+    hu k (n - step33Sub0RealSincDerivMajorantStart k)
+
+/-- The absolute `changeOriginSeries` row terms are summable after evaluating
+at scalar `u` and derivative direction `1`. -/
+theorem step33RealSinc_factorial_changeOriginSeries_norm_summable
+    (u : Real) (k : Nat) :
+    Summable (fun e : Nat =>
+      ‖(Nat.factorial k : Real) *
+        (((step33RealSincFormalSeries.changeOriginSeries k e)
+            (fun _ : Fin e => u))
+            (fun _ : Fin k => (1 : Real)))‖) := by
+  let q : FormalMultilinearSeries Real Real (Real[×k]→L[Real] Real) :=
+    step33RealSincFormalSeries.changeOriginSeries k
+  have hqRadius : q.radius = ⊤ := by
+    have hle := step33RealSincFormalSeries.le_changeOriginSeries_radius k
+    exact top_unique (by
+      simpa [q, step33RealSincFormalSeries_radius_eq_top] using hle)
+  have huq : u ∈ EMetric.ball (0 : Real) q.radius := by
+    rw [mem_emetric_ball_zero_iff, hqRadius]
+    exact ENNReal.coe_lt_top
+  have hsum :
+      HasSum (fun e : Nat => (q e (fun _ : Fin e => u))
+          (fun _ : Fin k => (1 : Real)))
+        ((q.sum u) (fun _ : Fin k => (1 : Real))) := by
+    exact ContinuousMultilinearMap.hasSum_eval (q.hasSum huq)
+      (fun _ : Fin k => (1 : Real))
+  have hsumMul :
+      HasSum (fun e : Nat =>
+          (Nat.factorial k : Real) *
+            ((q e (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real))))
+        ((Nat.factorial k : Real) *
+          ((q.sum u) (fun _ : Fin k => (1 : Real)))) := by
+    simpa [mul_comm, mul_left_comm, mul_assoc] using
+      hsum.mul_left (Nat.factorial k : Real)
+  simpa [q] using hsumMul.summable.norm
+
+/-- Norm-of-sum bridge for the `k`-th `changeOriginSeries` row before parity
+reindexing.  This is the analytic `norm_tsum` half of the remaining rows
+`1..17` majorant proof. -/
+theorem step33RealSinc_factorial_changeOriginSeries_sum_norm_le_tsum_norm
+    (u : Real) (k : Nat) :
+    ‖(Nat.factorial k : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries k).sum u)
+        (fun _ : Fin k => (1 : Real)))‖ <=
+      ∑' e : Nat,
+        ‖(Nat.factorial k : Real) *
+          (((step33RealSincFormalSeries.changeOriginSeries k e)
+              (fun _ : Fin e => u))
+              (fun _ : Fin k => (1 : Real)))‖ := by
+  let q : FormalMultilinearSeries Real Real (Real[×k]→L[Real] Real) :=
+    step33RealSincFormalSeries.changeOriginSeries k
+  have hnormSumm :=
+    step33RealSinc_factorial_changeOriginSeries_norm_summable u k
+  have htermSumm :
+      Summable (fun e : Nat =>
+          (Nat.factorial k : Real) *
+            ((q e (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)))) := by
+    exact Summable.of_norm (by simpa [q] using hnormSumm)
+  have hsum :
+      HasSum (fun e : Nat => (q e (fun _ : Fin e => u))
+          (fun _ : Fin k => (1 : Real)))
+        ((q.sum u) (fun _ : Fin k => (1 : Real))) := by
+    have hqRadius : q.radius = ⊤ := by
+      have hle := step33RealSincFormalSeries.le_changeOriginSeries_radius k
+      exact top_unique (by
+        simpa [q, step33RealSincFormalSeries_radius_eq_top] using hle)
+    have huq : u ∈ EMetric.ball (0 : Real) q.radius := by
+      rw [mem_emetric_ball_zero_iff, hqRadius]
+      exact ENNReal.coe_lt_top
+    exact ContinuousMultilinearMap.hasSum_eval (q.hasSum huq)
+      (fun _ : Fin k => (1 : Real))
+  have hsumMul :
+      HasSum (fun e : Nat =>
+          (Nat.factorial k : Real) *
+            ((q e (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real))))
+        ((Nat.factorial k : Real) *
+          ((q.sum u) (fun _ : Fin k => (1 : Real)))) := by
+    simpa [mul_comm, mul_left_comm, mul_assoc] using
+      hsum.mul_left (Nat.factorial k : Real)
+  have hnorm :
+      ‖∑' e : Nat,
+          (Nat.factorial k : Real) *
+            ((q e (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)))‖ <=
+        ∑' e : Nat,
+          ‖(Nat.factorial k : Real) *
+            ((q e (fun _ : Fin e => u)) (fun _ : Fin k => (1 : Real)))‖ :=
+    norm_tsum_le_tsum_norm htermSumm.norm
+  rw [hsumMul.tsum_eq] at hnorm
+  simpa [q] using hnorm
+
 /-- Consecutive live terms increase the derivative exponent by exactly two. -/
 theorem step33Sub0RealSincDerivMajorantExponent_succ (k m : Nat) :
     step33Sub0RealSincDerivMajorantExponent k (m + 1) =
@@ -931,6 +1057,166 @@ theorem step33Sub0RealSincDerivMajorantTerm_real_shift_summable
     exact step33Sub0RealSincDerivMajorantTerm_real_shift_le_geometric k N m
   · exact Summable.mul_left (step33Sub0RealSincDerivMajorantTerm k N : Real)
       (summable_geometric_of_lt_one (by positivity) (by norm_num))
+
+/-- For even derivative rows, the all-exponent absolute `changeOriginSeries`
+row is bounded by the live rational majorant row. -/
+theorem step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant_even_row
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    (r : Nat) :
+    (∑' e : Nat,
+      ‖(Nat.factorial (2 * r) : Real) *
+        (((step33RealSincFormalSeries.changeOriginSeries (2 * r) e)
+            (fun _ : Fin e => u))
+            (fun _ : Fin (2 * r) => (1 : Real)))‖) <=
+      ∑' m : Nat,
+        (step33Sub0RealSincDerivMajorantTerm (2 * r) m : Real) := by
+  let a : Nat -> Real := fun e : Nat =>
+    ‖(Nat.factorial (2 * r) : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries (2 * r) e)
+          (fun _ : Fin e => u))
+          (fun _ : Fin (2 * r) => (1 : Real)))‖
+  let g : Nat -> Real := fun m : Nat =>
+    (step33Sub0RealSincDerivMajorantTerm (2 * r) m : Real)
+  have ha : Summable a := by
+    simpa [a] using
+      step33RealSinc_factorial_changeOriginSeries_norm_summable u (2 * r)
+  have haEven : Summable (fun m : Nat => a (2 * m)) := by
+    exact ha.comp_injective (mul_right_injective₀ (by norm_num : (2 : Nat) ≠ 0))
+  have haOdd : Summable (fun m : Nat => a (2 * m + 1)) := by
+    exact ha.comp_injective
+      ((add_left_injective 1).comp
+        (mul_right_injective₀ (by norm_num : (2 : Nat) ≠ 0)))
+  have hg : Summable g := by
+    simpa [g] using
+      step33Sub0RealSincDerivMajorantTerm_real_shift_summable (2 * r) 0
+  have hsplit :
+      (∑' e : Nat, a e) =
+        (∑' m : Nat, a (2 * m)) + (∑' m : Nat, a (2 * m + 1)) :=
+    (HasSum.even_add_odd haEven.hasSum haOdd.hasSum).tsum_eq
+  have hEvenBound : ∀ m : Nat, a (2 * m) <= g m := by
+    intro m
+    have hkn : 2 * r <= 2 * (r + m) := by omega
+    have hbase :=
+      step33RealSinc_factorial_changeOriginSeries_even_norm_le_majorant_sub_start
+        hu (k := 2 * r) (n := r + m) hkn
+    simpa [a, g, step33Sub0RealSincDerivMajorantStart_two_mul,
+      Nat.add_sub_cancel_left, show 2 * (r + m) - 2 * r = 2 * m by omega]
+      using hbase
+  have hOddZero : ∀ m : Nat, a (2 * m + 1) = 0 := by
+    intro m
+    have hk : 2 * r <= 2 * (r + m) + 1 := by omega
+    have hbase :=
+      step33RealSinc_factorial_changeOriginSeries_odd_norm_eq_zero
+        (k := 2 * r) (n := r + m) hk u
+    simpa [a, show 2 * (r + m) + 1 - 2 * r = 2 * m + 1 by omega]
+      using hbase
+  have hEvenLe :
+      (∑' m : Nat, a (2 * m)) <= ∑' m : Nat, g m :=
+    Summable.tsum_le_tsum hEvenBound haEven hg
+  have hOddTsum : (∑' m : Nat, a (2 * m + 1)) = 0 := by
+    have hzero : HasSum (fun _m : Nat => (0 : Real)) 0 := hasSum_zero
+    exact (hzero.congr_fun (fun m => hOddZero m)).tsum_eq
+  rw [hsplit, hOddTsum, add_zero]
+  exact hEvenLe
+
+/-- For odd derivative rows, the all-exponent absolute `changeOriginSeries`
+row is bounded by the live rational majorant row. -/
+theorem step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant_odd_row
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    (r : Nat) :
+    (∑' e : Nat,
+      ‖(Nat.factorial (2 * r + 1) : Real) *
+        (((step33RealSincFormalSeries.changeOriginSeries (2 * r + 1) e)
+            (fun _ : Fin e => u))
+            (fun _ : Fin (2 * r + 1) => (1 : Real)))‖) <=
+      ∑' m : Nat,
+        (step33Sub0RealSincDerivMajorantTerm (2 * r + 1) m : Real) := by
+  let a : Nat -> Real := fun e : Nat =>
+    ‖(Nat.factorial (2 * r + 1) : Real) *
+      (((step33RealSincFormalSeries.changeOriginSeries (2 * r + 1) e)
+          (fun _ : Fin e => u))
+          (fun _ : Fin (2 * r + 1) => (1 : Real)))‖
+  let g : Nat -> Real := fun m : Nat =>
+    (step33Sub0RealSincDerivMajorantTerm (2 * r + 1) m : Real)
+  have ha : Summable a := by
+    simpa [a] using
+      step33RealSinc_factorial_changeOriginSeries_norm_summable u (2 * r + 1)
+  have haEven : Summable (fun m : Nat => a (2 * m)) := by
+    exact ha.comp_injective (mul_right_injective₀ (by norm_num : (2 : Nat) ≠ 0))
+  have haOdd : Summable (fun m : Nat => a (2 * m + 1)) := by
+    exact ha.comp_injective
+      ((add_left_injective 1).comp
+        (mul_right_injective₀ (by norm_num : (2 : Nat) ≠ 0)))
+  have hg : Summable g := by
+    simpa [g] using
+      step33Sub0RealSincDerivMajorantTerm_real_shift_summable (2 * r + 1) 0
+  have hsplit :
+      (∑' e : Nat, a e) =
+        (∑' m : Nat, a (2 * m)) + (∑' m : Nat, a (2 * m + 1)) :=
+    (HasSum.even_add_odd haEven.hasSum haOdd.hasSum).tsum_eq
+  have hEvenZero : ∀ m : Nat, a (2 * m) = 0 := by
+    intro m
+    have hk : 2 * r + 1 <= 2 * (r + m) + 1 := by omega
+    have hbase :=
+      step33RealSinc_factorial_changeOriginSeries_odd_norm_eq_zero
+        (k := 2 * r + 1) (n := r + m) hk u
+    simpa [a, show 2 * (r + m) + 1 - (2 * r + 1) = 2 * m by omega]
+      using hbase
+  have hOddBound : ∀ m : Nat, a (2 * m + 1) <= g m := by
+    intro m
+    have hkn : 2 * r + 1 <= 2 * (r + m + 1) := by omega
+    have hbase :=
+      step33RealSinc_factorial_changeOriginSeries_even_norm_le_majorant_sub_start
+        hu (k := 2 * r + 1) (n := r + m + 1) hkn
+    simpa [a, g, step33Sub0RealSincDerivMajorantStart_two_mul_add_one,
+      Nat.add_sub_cancel_left,
+      show 2 * (r + m + 1) - (2 * r + 1) = 2 * m + 1 by omega]
+      using hbase
+  have hEvenTsum : (∑' m : Nat, a (2 * m)) = 0 := by
+    have hzero : HasSum (fun _m : Nat => (0 : Real)) 0 := hasSum_zero
+    exact (hzero.congr_fun (fun m => hEvenZero m)).tsum_eq
+  have hOddLe :
+      (∑' m : Nat, a (2 * m + 1)) <= ∑' m : Nat, g m :=
+    Summable.tsum_le_tsum hOddBound haOdd hg
+  rw [hsplit, hEvenTsum, zero_add]
+  exact hOddLe
+
+/-- For every derivative row, the all-exponent absolute `changeOriginSeries`
+row is bounded by the live rational majorant row. -/
+theorem step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    (k : Nat) :
+    (∑' e : Nat,
+      ‖(Nat.factorial k : Real) *
+        (((step33RealSincFormalSeries.changeOriginSeries k e)
+            (fun _ : Fin e => u))
+            (fun _ : Fin k => (1 : Real)))‖) <=
+      ∑' m : Nat,
+        (step33Sub0RealSincDerivMajorantTerm k m : Real) := by
+  rcases Nat.even_or_odd k with hEven | hOdd
+  · rcases hEven with ⟨r, hk⟩
+    subst k
+    rw [show r + r = 2 * r by omega]
+    exact
+      step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant_even_row
+        hu r
+  · rcases hOdd with ⟨r, hk⟩
+    subst k
+    simpa using
+      step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant_odd_row
+        hu r
+
+/-- Analytic crosswalk from all `realSinc` derivative rows to the live
+rational majorant `tsum` on the tiny sub0 interval. -/
+theorem realSinc_iteratedDeriv_norm_le_tsum_majorant
+    {u : Real} (hu : u ∈ Set.Icc (0 : Real) ((1 : Real) / 400))
+    (k : Nat) :
+    ‖iteratedDeriv k realSinc u‖ <=
+      ∑' m : Nat,
+        (step33Sub0RealSincDerivMajorantTerm k m : Real) := by
+  rw [step33RealSinc_iteratedDeriv_eq_factorial_changeOriginSeries_sum hu k]
+  exact (step33RealSinc_factorial_changeOriginSeries_sum_norm_le_tsum_norm u k).trans
+    (step33RealSinc_factorial_changeOriginSeries_tsum_norm_le_tsum_majorant hu k)
 
 /-- Geometric `tsum` bound for the shifted majorant tail. -/
 theorem step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le
@@ -1106,6 +1392,71 @@ def ProvidesAnalyticMajorant
   ∀ u ∈ Set.Icc (0 : Real) ((1 : Real) / 400),
     ∀ k : Fin 18,
       ‖iteratedDeriv k.1 realSinc u‖ <= (data.baseAbs k : Real)
+
+/-- A valid rational prefix/tail certificate provides the analytic derivative
+majorants required by the scaled-sinc receiver. -/
+theorem providesAnalyticMajorant_of_valid
+    {data : Step33Sub0RealSincDerivativeMajorantCert}
+    (hdata : Valid data) :
+    ProvidesAnalyticMajorant data := by
+  intro u hu k
+  have hAnalytic :=
+    realSinc_iteratedDeriv_norm_le_tsum_majorant hu k.1
+  let f : Nat -> Real := fun m : Nat =>
+    (step33Sub0RealSincDerivMajorantTerm k.1 m : Real)
+  let N : Nat := data.prefixN k
+  have hf : Summable f := by
+    simpa [f] using
+      step33Sub0RealSincDerivMajorantTerm_real_shift_summable k.1 0
+  have hsplit :
+      (Finset.range N).sum f + (∑' m : Nat, f (m + N)) =
+        ∑' m : Nat, f m := by
+    simpa using (hf.sum_add_tsum_nat_add N)
+  have htailGeom :
+      (∑' m : Nat, f (m + N)) <=
+        (step33Sub0RealSincDerivMajorantTerm k.1 N : Real) /
+          (1 - (((1 : Real) / 400) ^ 2)) := by
+    simpa [f, N, Nat.add_comm] using
+      step33Sub0RealSincDerivMajorantTerm_real_tsum_tail_le k.1 N
+  have htailBudget :
+      (step33Sub0RealSincDerivMajorantTerm k.1 N : Real) /
+          (1 - (((1 : Real) / 400) ^ 2)) <=
+        (data.tailAbs k : Real) := by
+    have htailBudget' :
+        (step33Sub0RealSincDerivMajorantTerm k.1 (data.prefixN k) : Real) /
+            (1 - (((1 : Real) / 400) ^ 2)) <=
+          (data.tailAbs k : Real) := by
+      have htailBudgetRat := hdata.tailBudget k
+      norm_num at htailBudgetRat ⊢
+      have hcast :
+          ((step33Sub0RealSincDerivMajorantTerm k.1 (data.prefixN k) /
+              ((159999 : Rat) / 160000) : Rat) : Real) <=
+            (data.tailAbs k : Real) := by
+        exact_mod_cast htailBudgetRat
+      norm_num at hcast
+      exact hcast
+    simpa [N] using htailBudget'
+  have htotal :
+      (Finset.range N).sum f + (data.tailAbs k : Real) <=
+        (data.baseAbs k : Real) := by
+    have htotal' :
+        (∑ m ∈ Finset.range (data.prefixN k),
+            (step33Sub0RealSincDerivMajorantTerm k.1 m : Real)) +
+            (data.tailAbs k : Real) <=
+          (data.baseAbs k : Real) := by
+      exact_mod_cast hdata.totalBudget k
+    simpa [f, N] using htotal'
+  have hrow :
+      (∑' m : Nat,
+        (step33Sub0RealSincDerivMajorantTerm k.1 m : Real)) <=
+        (data.baseAbs k : Real) := by
+    rw [← hsplit]
+    calc
+      (Finset.range N).sum f + (∑' m : Nat, f (m + N))
+          <= (Finset.range N).sum f + (data.tailAbs k : Real) := by
+            exact add_le_add le_rfl (htailGeom.trans htailBudget)
+      _ <= (data.baseAbs k : Real) := htotal
+  exact hAnalytic.trans hrow
 
 end Step33Sub0RealSincDerivativeMajorantCert
 
