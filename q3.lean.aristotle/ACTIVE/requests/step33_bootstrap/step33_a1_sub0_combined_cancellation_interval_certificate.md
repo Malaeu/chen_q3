@@ -17,9 +17,13 @@ not close Step33A.1-A.
 
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean`
 - certCheckerFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`
+- conditionalPayloadFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`
 - certStructure: `Step33Sub0CombinedCancellationIntervalCert`
 - certValidPredicate: `Step33Sub0CombinedCancellationIntervalCert.Valid`
 - certToHCombined: `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`
+- conditionalRemainderProp: `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`
+- conditionalPayloadTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound`
+- conditionalHCombinedTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_remainder_bound`
 - expression: `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr`
 - consumerTheorem: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds`
 - closedFormTheorem: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds`
@@ -43,6 +47,8 @@ Combined expression:
 
 - isLeanProofData: `False`
 - outLeanWritten: `False`
+- conditionalPayloadPresent: `True`
+- conditionalPayloadIsUnconditionalProof: `False`
 - proofSafeClosedFields: `0`
 - combinedReceiverCheckedInLean: `True`
 - combinedExpressionDefinedInLean: `True`
@@ -120,10 +126,11 @@ Must not use:
 
 ## Next Implementable Patch
 
-- recommendation: `build a proof-grade combined interval backend that emits a Lean certificate proving Step33Sub0CombinedCancellationIntervalCert.Valid`
+- recommendation: `prove the proof-grade whole-expression remainder source consumed by the conditional combined-cancellation payload`
 - firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP`
 - leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`
-- checkerTheorem: `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`
+- checkerTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound`
+- remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP`
 
 ## Failure Codes
 
@@ -136,6 +143,7 @@ Must not use:
 
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean`: `d3ce443f3d86cc33`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean`: `172524e28455ca5b`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`: `2cf0833b5b65c1f7`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`: `c8832f56435b42fa`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`: `8554b282c60d9c25`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`: `aabf02168d6d50fd`

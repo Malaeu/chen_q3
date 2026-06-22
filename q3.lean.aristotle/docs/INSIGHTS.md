@@ -40907,3 +40907,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   touched Lean file found no `sorry`, `exact?`, `admit`, `axiom`, or `unsafe`.
   `lake env lean` and `q3_check.sh` were attempted with 60s guards and timed
   out in the same local infrastructure mode already recorded for this route.
+
+## Insight (2026-06-22, Step33A.1-A) -- CombinedCancellationConditionalPayloadChecked
+
+- Browser/Computer Use follow-up asked Proshka/Louise for the smallest next
+  patch after the checked Horner bridge.  Proshka chose a concrete conditional
+  payload, not another generic checker.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean`.
+- Lean checked the concrete one-cell payload names:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalData`,
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationHornerRangeData`,
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationHornerRange_valid`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound`.
+- Meaning: endpoint, Horner range, remainder nonnegativity, and exact target
+  budget arithmetic are now closed in Lean for the concrete conditional
+  payload.
+- Boundary: the analytic premise
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`
+  is not proved; no unconditional `Valid`, no sampled/probe proof, and no
+  `finalBudgetPassed` claim is made.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP`.
+- Validation: direct Lean, `.olean` generation, generator `py_compile`,
+  generator execution, marker scan, and `git diff --check` passed.

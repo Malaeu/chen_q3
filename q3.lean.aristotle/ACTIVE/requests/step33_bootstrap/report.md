@@ -67918,6 +67918,85 @@ Next exact gap:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP
 ```
 
+## Execution Update (2026-06-22) -- conditional combined cancellation payload checked
+
+Browser/Computer Use follow-up asked Proshka/Louise for the smallest next
+proof-producing patch after the checked Horner bridge.  The selected patch was
+the concrete conditional payload:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+```
+
+Checked Lean names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationMidpoint
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationHalfWidth
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalData
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationHornerRangeData
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationHornerRange_valid
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_remainder_nonneg
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_budget_lower
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_budget_upper
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combinedCancellation_remainder_bound
+```
+
+Meaning:
+
+```text
+The concrete one-cell payload proves the cell endpoints, Horner range for the
+constant midpoint model, nonnegative remainder, and exact target-budget
+arithmetic.  It converts the single analytic premise
+`primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`
+into `Step33Sub0CombinedCancellationIntervalCert.Valid`, then into the checked
+combined interval and full-Taylor residual derivative interval.
+```
+
+Boundary:
+
+```text
+No proof-grade whole-expression Taylor/source theorem is proved here.
+No sampled/probe interval is used as proof.
+No unconditional `Step33Sub0CombinedCancellationIntervalCert.Valid` is claimed.
+No finalBudgetPassed claim is made.
+```
+
+Ledger update:
+
+```text
+conditionalPayloadPresent = true
+conditionalPayloadIsUnconditionalProof = false
+remainingGap = STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+rg -n "sorry|exact\?|admit|axiom|unsafe" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean \
+  q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py \
+  q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+git diff --check -- \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean \
+  q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py \
+  q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json \
+  q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
 ## Execution Update (2026-06-22) -- combined cancellation Horner range checker
 
 Route: PSD-pd/Q3 Step33A.1-A sub0 combined cancellation interval.

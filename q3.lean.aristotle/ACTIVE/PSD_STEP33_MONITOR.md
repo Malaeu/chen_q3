@@ -35843,3 +35843,69 @@ git diff --check -- Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPoly
 `lake env lean` and `q3_check.sh` were also attempted with a 60s guard and
 timed out in the same local infrastructure mode already recorded for this
 route; direct Lean and `.olean` generation passed.
+
+## 2026-06-22 Current EOF State -- conditional combined-cancellation payload checked
+
+Browser/Computer Use follow-up asked Proshka/Louise for the next
+proof-producing patch after the Horner bridge.  The chosen patch was a concrete
+conditional payload, not another generic checker.
+
+Checked file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalData
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationHornerRangeData
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationHornerRange_valid
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combinedCancellation_remainder_bound
+```
+
+Meaning:
+
+```text
+The concrete one-cell payload now closes the endpoint, constant-model Horner
+range, remainder nonnegativity, and exact target-budget arithmetic in Lean.
+The full combined interval follows conditionally from the single analytic
+premise `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp`.
+```
+
+Boundary:
+
+```text
+No proof-grade whole-expression remainder/source theorem was proved.
+No sampled JSON is used as proof.
+No unconditional `Step33Sub0CombinedCancellationIntervalCert.Valid` is claimed.
+No finalBudgetPassed claim is made.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+rg -n "sorry|exact\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean \
+  scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py \
+  ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+git diff --check -- \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean \
+  scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py \
+  ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json \
+  ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.md
+```

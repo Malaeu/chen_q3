@@ -41,6 +41,9 @@ COMBINED_FILE = (
 CERT_CHECKER_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean"
 )
+CONDITIONAL_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -191,6 +194,8 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         "proofStatus": {
             "isLeanProofData": False,
             "outLeanWritten": False,
+            "conditionalPayloadPresent": (ROOT / CONDITIONAL_PAYLOAD_FILE).exists(),
+            "conditionalPayloadIsUnconditionalProof": False,
             "proofSafeClosedFields": 0,
             "combinedReceiverCheckedInLean": True,
             "combinedExpressionDefinedInLean": True,
@@ -213,9 +218,19 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         "targetLeanSurface": {
             "file": COMBINED_FILE,
             "certCheckerFile": CERT_CHECKER_FILE,
+            "conditionalPayloadFile": CONDITIONAL_PAYLOAD_FILE,
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
+            "conditionalRemainderProp": (
+                "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp"
+            ),
+            "conditionalPayloadTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound"
+            ),
+            "conditionalHCombinedTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_remainder_bound"
+            ),
             "expression": TARGET_EXPR,
             "consumerTheorem": TARGET_THEOREM,
             "closedFormTheorem": TARGET_CLOSED_FORM_THEOREM,
@@ -288,20 +303,24 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "nextImplementablePatch": {
             "recommendation": (
-                "build a proof-grade combined interval backend that emits a Lean "
-                "certificate proving Step33Sub0CombinedCancellationIntervalCert.Valid"
+                "prove the proof-grade whole-expression remainder source consumed "
+                "by the conditional combined-cancellation payload"
             ),
             "firstFailureIfMissing": FIRST_FAILURE,
             "leanPayloadTarget": (
                 "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean"
             ),
             "checkerTheorem": (
-                "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined"
+                "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound"
+            ),
+            "remainingGap": (
+                "STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP"
             ),
         },
         "sourceDefinitionHashes": {
             COMBINED_FILE: file_hash(ROOT / COMBINED_FILE),
             CERT_CHECKER_FILE: file_hash(ROOT / CERT_CHECKER_FILE),
+            CONDITIONAL_PAYLOAD_FILE: file_hash(ROOT / CONDITIONAL_PAYLOAD_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),

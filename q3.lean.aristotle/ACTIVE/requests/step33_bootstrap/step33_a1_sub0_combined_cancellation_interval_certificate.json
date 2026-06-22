@@ -47,10 +47,11 @@
   ],
   "firstFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
   "nextImplementablePatch": {
-    "checkerTheorem": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
+    "checkerTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound",
     "firstFailureIfMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_INTERVAL_CERT_GAP",
     "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean",
-    "recommendation": "build a proof-grade combined interval backend that emits a Lean certificate proving Step33Sub0CombinedCancellationIntervalCert.Valid"
+    "recommendation": "prove the proof-grade whole-expression remainder source consumed by the conditional combined-cancellation payload",
+    "remainingGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_TAYLOR_MODEL_SOURCE_GAP"
   },
   "proofStatus": {
     "allSegmentsBudgetPassedExactRational": true,
@@ -58,6 +59,8 @@
     "combinedExpressionDefinedInLean": true,
     "combinedIntervalTheoremCheckedInLean": true,
     "combinedReceiverCheckedInLean": true,
+    "conditionalPayloadIsUnconditionalProof": false,
+    "conditionalPayloadPresent": true,
     "isLeanProofData": false,
     "outLeanWritten": false,
     "proofGradeCombinedBoundsPresent": false,
@@ -103,6 +106,7 @@
   "sourceDefinitionHashes": {
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json": "df8cb8dff74f605e",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean": "172524e28455ca5b",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean": "2cf0833b5b65c1f7",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean": "d3ce443f3d86cc33",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean": "8554b282c60d9c25",
@@ -117,6 +121,10 @@
     "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
     "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
     "closedFormTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_closedForm_residual_bounds_of_combined_bounds",
+    "conditionalHCombinedTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_hCombined_of_remainder_bound",
+    "conditionalPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean",
+    "conditionalPayloadTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationInterval_valid_of_remainder_bound",
+    "conditionalRemainderProp": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationRemainderSourceProp",
     "consumerTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_interval_of_combined_bounds",
     "expression": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr",
     "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean",
