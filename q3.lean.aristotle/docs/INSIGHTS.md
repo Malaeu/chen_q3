@@ -39037,3 +39037,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   from the rational shape majorant yet, so Step33A.1-A remains open.
 - Next exact sub-gap:
   `STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_INTERVAL_PAYLOAD_GAP`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincCoarseShapeSqDerivCertChecked
+
+- Added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean`.
+- New checked declarations:
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqBudget`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqCoeff`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqCoeffErrorAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqOrder16Abs`,
+  `primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq`, and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo`.
+- Meaning: the rational shape-derivative majorant now feeds the checked
+  ShapeSqDeriv receiver and produces a proof-grade
+  `ShapeSqDerivTaylorIntervalCert.singleAbs` `Valid` certificate.
+- The certificate is intentionally coarse: center coefficients are zero and
+  both coefficient-error and order-16 budgets use
+  `(2 : Rat)^24 * (24 : Rat)^17`.
+- Direct Lean validation and `.olean` rebuild passed for the new file.  The
+  touched-file hole scan and `git diff --check` are clean.
+- Boundary: the cert is not yet connected to downstream Taylor/component
+  residual payload fields, and the coarse constants may still be too weak for
+  final useful payload closure.
+- Next exact sub-gap:
+  `STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_TO_TAYLOR_PAYLOAD_FEED_GAP`.

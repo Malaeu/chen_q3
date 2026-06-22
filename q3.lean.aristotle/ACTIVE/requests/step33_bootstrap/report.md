@@ -212,6 +212,70 @@ Next exact gap:
 STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_INTERVAL_PAYLOAD_GAP
 ```
 
+## Execution Update (2026-06-22) -- coarse ShapeSqDeriv interval cert checked
+
+Route: PSD-pd/Q3 Step33A.1-A ShapeSqDeriv interval interface.
+
+Lean payload added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean
+
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqBudget
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqCoeff
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqCoeffErrorAbs
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeSqOrder16Abs
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_coarseTwo
+```
+
+Meaning: the rational shape-derivative majorant now builds a checked
+`ShapeSqDerivTaylorIntervalCert.singleAbs` certificate.  The cert is deliberately
+coarse:
+
+```lean
+coeff = 0
+coeffErrorAbs = order16Abs = (2 : Rat)^24 * (24 : Rat)^17
+```
+
+The proof closes the product-budget algebra with the binomial identity
+`sum choose * M_i * M_{n-i} = 2^24 * 24^n`, and uses the existing checked
+receiver
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_valid_of_shape_derivative_abs`.
+
+Validation:
+
+```bash
+lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean
+lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.olean \
+  -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.ilean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+git diff --check -- \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean
+```
+
+Boundary:
+
+```text
+The ShapeSqDeriv interval cert is checked.
+It has not yet been connected to the downstream Taylor/component residual
+payload fields.
+The constants are intentionally coarse and may fail later budget usefulness.
+Step33A.1-A remains open.
+```
+
+Next exact gap:
+
+```text
+STEP33_A1_SUB0_COARSE_TWO_SHAPESQDERIV_TO_TAYLOR_PAYLOAD_FEED_GAP
+```
+
 ## Closed / Compiled Local Receivers
 
 Recent checked receiver chain:
