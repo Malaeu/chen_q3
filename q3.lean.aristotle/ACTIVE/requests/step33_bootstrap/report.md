@@ -67483,3 +67483,66 @@ STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_DERIV_NORM_SOURCE_GAP
 Build or kill a proof-grade derivative/norm source for:
   primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
 ```
+
+## Execution Update (2026-06-22) -- cancellation P45 expression bridge checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Browser/Computer Use was used to ask Proshka for a route check on whether to
+prove the exact scaled/P45 expression bridge before attempting a norm envelope.
+The accepted proof evidence is the local Lean file below.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rawDeriv_sub_assembledPoly_eq_cancellationRhs
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_cancellationRhs
+```
+
+Meaning:
+
+```text
+The exact residual expression consumed by the P45 receiver is now rewritten as:
+
+  activeScale * ComponentProductCancellationResidual
+  + (activeScale - nominalScale) * ComponentProductNominal
+
+The second term is essential: bounding only
+ComponentProductCancellationResidual would not bound the actual P45 residual.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not prove a derivative/norm source.
+This does not prove finalBudgetPassed.
+This does not spend the killed ProductAssemblyErrorBudget.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean
+```
+
+Direct Lean and `.olean` generation passed on the new bridge file.  The
+hole/axiom scan found no matches.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_NORM_SOURCE_GAP
+
+Build or kill a proof-grade norm source for the full scaled RHS:
+  activeScale * ComponentProductCancellationResidual
+  + (activeScale - nominalScale) * ComponentProductNominal
+```

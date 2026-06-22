@@ -35281,3 +35281,58 @@ lake env lean hung silently and was interrupted after 60 seconds.
 q3_check.sh printed its internal Lean command, then hung and was interrupted
 after 60 seconds.
 ```
+
+## 2026-06-22 Current EOF State -- cancellation P45 expression bridge checked
+
+This entry supersedes the unscaled cancellation-identity-only state.  The
+cancellation residual now reaches the exact scaled raw/P45 residual expression
+consumed by the current Step33A.1-A receiver.
+
+Additional Lean file:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean
+```
+
+Checked bridge theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rawDeriv_sub_assembledPoly_eq_cancellationRhs
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_cancellationRhs
+```
+
+Meaning:
+
+```text
+The full residual expression is now rewritten as:
+
+  activeScale * ComponentProductCancellationResidual
+  + (activeScale - nominalScale) * ComponentProductNominal
+
+This preserves the scale-mismatch term instead of hiding it inside a future
+bound.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+This does not prove a norm bound.
+This does not prove finalBudgetPassed.
+It only turns the current P45 residual expression into the exact object that
+the next bound must control.
+```
+
+Next exact failure code:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_NORM_SOURCE_GAP
+```
+
+Validation:
+
+```text
+Direct Lean with the local .lake library path passed on the new bridge file.
+.olean generation passed.
+Hole/axiom scan found no matches.
+```

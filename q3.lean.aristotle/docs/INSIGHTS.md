@@ -40630,3 +40630,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This still does not prove a norm bound or `finalBudgetPassed`; it makes the
   existing P45 receiver see the cancellation residual in the same expression it
   already consumes.
+
+## Insight (2026-06-22, Step33A.1-A) -- ComponentProductCancellationP45BridgeChecked
+
+- Browser/Computer Use was used to ask Proshka whether to prove the exact
+  scaled/P45 expression bridge before attempting a cancellation norm envelope.
+  The answer chose the scaled/P45 bridge first; the local source of truth is the
+  Lean file below.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`.
+- Lean checked
+  `primaryFiniteRow0Parent0Split100Sub0_rawDeriv_sub_assembledPoly_eq_cancellationRhs`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_eq_cancellationRhs`.
+- The checked P45 residual expression is:
+  `activeScale * ComponentProductCancellationResidual
+   + (activeScale - nominalScale) * ComponentProductNominal`.
+- Boundary: this is not Step33A.1-A closure, does not prove
+  `finalBudgetPassed`, and does not provide a norm bound.  It prevents the next
+  step from accidentally bounding only `ComponentProductCancellationResidual`
+  while dropping the scale-mismatch term.
+- New exact live gap:
+  `STEP33_A1_SUB0_COMPONENT_PRODUCT_CANCELLATION_SCALED_RHS_NORM_SOURCE_GAP`.
+- Validation: direct Lean with the local `.lake` library path passed on the
+  new file, `.olean` generation passed, and the hole/axiom scan found no
+  matches.
