@@ -678,3 +678,33 @@ is still too wide for the active target interval.  `residualTaylorRemainderAbs`,
 
 Current local first gap after supplement 6:
 `STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_4_TO_15_ORDER16_SHARP_SOURCE_GAP`.
+
+## Local Lean Supplement 7 (2026-06-22)
+
+A later local Lean supplement added:
+
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean`
+
+Checked supplement theorems:
+
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234Coeff_eq_generated`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet4_coarseSmall_abs`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234_valid`
+- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234TaylorSource`
+- `primaryFiniteRow0Parent0Split100Sub0_rows01234ShapeSqDerivRows5To15_width_fail`
+
+Meaning: Lean now proves row `4` in the same active generated coefficient
+stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
+the existing coarse shape-derivative majorant at exact product order `n = 5`
+and divides by `4!`, instead of spending the global order-17 budget.
+
+Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
+`0`, `1`, `2`, `3`, and `4` are no longer the live obstruction.  Rows `5..15`
+plus order `16` remain open, and Lean proves the rows-0/1/2/3/4 partial-sharp
+source is still too wide for the active target interval.
+`residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
+`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
+the generated payload.
+
+Current local first gap after supplement 7:
+`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_5_TO_15_ORDER16_SHARP_SOURCE_GAP`.

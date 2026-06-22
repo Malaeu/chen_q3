@@ -66489,3 +66489,94 @@ shared generated payload for rows 4..15/order16 appears first.
 The active oracle question card for the next address is
 `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row4_rows5to15_order16.md`.
 ```
+
+## Execution Update (2026-06-22) -- partial-sharp ShapeSqDeriv row 4 checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Search discipline:
+
+```text
+oracle question address:
+Step33A.1-A.ShapeSqDeriv.rows4to15_order16
+
+q3_docs queries:
+1. Step33A.1-A ShapeSqDeriv row4 rows 5..15 order16 singleAbs
+2. primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv row4 coeffErrorAbs productSum n=5
+3. CoarseTwoShapeProductSum_eq n=5 shapeSq_derivative_abs_of_shape_derivative_abs row4
+```
+
+The semantic search was noisy and did not surface a ready-made row-4 theorem.
+The local rows0123 proof already exposed the usable surfaces:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+```
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234Coeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet4_coarseSmall_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234TaylorSource
+primaryFiniteRow0Parent0Split100Sub0_rows01234ShapeSqDerivRows5To15_width_fail
+```
+
+Meaning:
+
+```text
+Row 4 is now proof-grade in the active generated coefficient stream.  It uses
+the existing coarse shape-derivative majorant, but evaluates the exact product
+sum at n=5 and divides by 4!, instead of spending the global n=17 constant.
+Rows 0,1,2,3,4 are now spendable in the active singleAbs normalization.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+Rows 5..15 plus order 16 remain coarse.
+Lean proves the rows-0/1/2/3/4 partial-sharp source is still too wide for the
+active target residual interval.
+The generated JSON fields residualTaylorRemainderAbs,
+componentTaylorProofsPresent, exactCoefficientAssemblyPassed, and
+finalBudgetPassed remain false/null.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean
+```
+
+Direct Lean passed; `.olean` generation also passed.  Hole/axiom scan found no
+matches.  `git diff --check` passed on the new Lean file.  `lake env lean` was
+run and again hung silently during environment setup; it was interrupted after
+60 seconds.  `q3_check.sh` was run through `bash`, printed its internal Lean
+command, then hung and was interrupted after 60 seconds.  No successful
+`lake env lean` or `q3_check` result is claimed here.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_5_TO_15_ORDER16_SHARP_SOURCE_GAP
+
+Repeat the local product-order sharpening for row 5 using exact n=6, unless a
+shared generated payload for rows 5..15/order16 appears first.
+The active oracle question card for the next address is
+`ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row5_rows6to15_order16.md`.
+```
