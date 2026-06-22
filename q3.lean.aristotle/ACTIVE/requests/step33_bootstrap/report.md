@@ -62940,3 +62940,97 @@ scripts/q3_check.sh timed out after 120s inside the Lake wrapper after printing
   lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
 This is recorded as a wrapper timeout, not as a Lean proof failure.
 ```
+
+## 2026-06-22 Proshka route review -- realSinc derivative majorant certificate
+
+After the scaled realSinc normalization receiver was checked, I used the
+in-app browser / Computer Use for a fresh Proshka route review.  The prior
+Proshka recommendation to add the pow-12 scaled-sinc receiver is now stale
+because it is already Lean-checked locally.
+
+Current local facts supplied to Proshka:
+
+```text
+file:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeDerivativeMajorantReceiver.lean
+checked objects:
+  powDerivMajorant
+  powDerivMajorant_nonneg
+  pow_succ_derivative_abs_of_base_derivative_abs
+  primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_scaledSinc_abs
+  primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs
+payload schema:
+  q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18
+current status:
+  fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
+current first failure:
+  STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+```
+
+Proshka decision:
+
+```text
+CHOSEN: B
+next files:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+  scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+proof-grade route:
+  realSinc derivative series
+  -> absolute coefficient majorant
+  -> exact finite prefix
+  -> geometric tail with ratio <= 1/400^2
+  -> 18 rational baseAbs rows
+  -> existing scaled-sinc receiver
+```
+
+The recommended Lean-facing certificate shape is:
+
+```text
+structure Step33Sub0RealSincDerivativeMajorantCert where
+  prefixN : Fin 18 -> Nat
+  tailAbs : Fin 18 -> Rat
+  baseAbs : Fin 18 -> Rat
+
+structure Step33Sub0RealSincDerivativeMajorantCert.Valid
+    (data : Step33Sub0RealSincDerivativeMajorantCert) : Prop where
+  tailBudget : ...
+  totalBudget : ...
+
+theorem Step33Sub0RealSincDerivativeMajorantCert.Valid.bound :
+  forall k : Fin 18, forall u in Set.Icc 0 (1/400),
+    ||iteratedDeriv k.1 realSinc u|| <= data.baseAbs k
+```
+
+Local verification after the route review:
+
+```text
+Existing local source:
+  realSinc_hasSum_even_powerSeries
+No local checked theorem found:
+  realSinc_iteratedDeriv_norm_le_tsum_majorant
+  Step33Sub0RealSincDerivativeMajorantCert.Valid.bound
+```
+
+Therefore no proof-safe field is closed by this review.  The exact next
+obstruction is:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+```
+
+This is a sub-gap of the live payload blocker:
+
+```text
+STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
+```
+
+Proof-grade closure requires all of:
+
+```text
+1. Lean proves the realSinc iterated-derivative series majorant.
+2. Lean proves the geometric tail inequality.
+3. The generator emits only exact rational fields: prefixN, tailAbs, baseAbs.
+4. A generated Lean theorem proves Cert.Valid by exact rational checks.
+5. Cert.Valid.bound compiles and feeds
+   primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs.
+```

@@ -24,6 +24,7 @@ latest_payload_schema_2026_06_22: q3_psdpd_step33_a1_sub0_component_taylor_resid
 latest_payload_status_2026_06_22: fail_closed_missing_realsinc_derivative_bounds_0_to_17_payload
 latest_first_failure_2026_06_22: STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP
 latest_boundary_2026_06_22: no unscaled realSinc derivative bounds 0..17 payload; Step33A.1-A remains open
+latest_route_review_2026_06_22: Proshka chose RealSincDerivativeMajorantCert route; first sub-gap is STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
 
 next_theorem_targets:
 - RawOmegaAChunkedRangePayload

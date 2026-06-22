@@ -38571,3 +38571,28 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `git diff --check` passed.  `scripts/q3_check.sh` timed out after 120s in
   the Lake wrapper after printing the touched Lean file; this is a wrapper
   timeout, not a Lean proof failure.
+
+## Insight (2026-06-22, Step33A.1-A, Proshka) -- RealSincDerivativeMajorantCertRoute
+
+- Used the in-app browser / Computer Use for a fresh Proshka review after the
+  checked scaled realSinc normalization receiver.  The earlier Proshka route-B
+  recommendation for the pow-12 scaled-sinc receiver is already implemented
+  locally, so it is no longer the next live step.
+- Current live payload blocker remains exactly
+  `STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+- Proshka chose route B for the new blocker: add
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean` and
+  `scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py`, with a
+  proof-grade path
+  `realSinc derivative series -> absolute coefficient majorant -> exact finite
+  prefix -> geometric tail with ratio <= 1/400^2 -> 18 rational baseAbs rows`.
+- Local verification found the source lemma
+  `realSinc_hasSum_even_powerSeries`, but did not find a checked theorem
+  turning that series into
+  `||iteratedDeriv k realSinc u|| <= tsum majorant` on `Set.Icc 0 (1/400)`.
+- Therefore this review closes no proof-safe field.  The exact first sub-gap is
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`.
+- Proof-grade closure requires: Lean series-majorant theorem, Lean geometric
+  tail theorem, generated exact rational `prefixN/tailAbs/baseAbs`, generated
+  `Cert.Valid`, and a checked feed into
+  `primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs`.
