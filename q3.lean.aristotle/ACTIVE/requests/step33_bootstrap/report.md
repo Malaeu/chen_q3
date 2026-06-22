@@ -63034,3 +63034,62 @@ Proof-grade closure requires all of:
 5. Cert.Valid.bound compiles and feeds
    primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs.
 ```
+
+## 2026-06-22 Execution Update -- realSinc derivative contract and rational payload scaffold
+
+Implemented the first Proshka-selected route-B artifacts:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.md
+```
+
+The new Lean file checks a fail-closed certificate surface:
+
+```lean
+step33Sub0RealSincDerivMajorantTerm
+Step33Sub0RealSincDerivativeMajorantCert
+Step33Sub0RealSincDerivativeMajorantCert.Valid
+Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant
+```
+
+The new generator emits schema
+`q3_psdpd_step33_a1_sub0_realsinc_derivative_payload.v1` with 18 exact
+rational rows for `k = 0, ..., 17`, using:
+
+```text
+n = ceil(k/2) + m
+e = 2*n - k
+term = (1/400)^e / ((2*n+1) * e!)
+tail ratio upper = 1/160000
+prefixN = 32
+```
+
+Current generated status:
+
+```text
+status = fail_closed_missing_realsinc_iteratedderiv_series_majorant_crosswalk
+firstFailure = STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+proofGrade = false
+```
+
+This closes no proof-safe field.  The arithmetic payload is exact rational
+scaffold only; the live proof gap is still the Lean theorem that these rows
+majorize `‖iteratedDeriv k realSinc u‖` on `Set.Icc 0 (1/400)`.
+
+Validation commands:
+
+```text
+cd q3.lean.aristotle && lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py
+```
+
+The Lean check passed.  The generator and Python compile passed.  The exact
+next patch is to prove or fail the analytic crosswalk:
+
+```text
+STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+```

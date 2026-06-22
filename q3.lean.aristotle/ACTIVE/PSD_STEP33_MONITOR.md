@@ -33545,3 +33545,44 @@ not provide proof-grade scaled-realSinc derivative bounds through order `17`,
 does not emit a generated Lean payload, does not close A hbox, and does not
 close Step33A.1-A.  The live blocker is now exactly
 `STEP33_A1_SUB0_SCALED_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.
+
+## 2026-06-22 Current EOF State -- realSinc derivative cert contract checked
+
+Added isolated Lean contract:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean
+```
+
+Checked objects:
+
+```lean
+step33Sub0RealSincDerivMajorantStart
+step33Sub0RealSincDerivMajorantTerm
+Step33Sub0RealSincDerivativeMajorantCert
+Step33Sub0RealSincDerivativeMajorantCert.Valid
+Step33Sub0RealSincDerivativeMajorantCert.ProvidesAnalyticMajorant
+```
+
+Generated exact rational fail-closed payload:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.md
+schema = q3_psdpd_step33_a1_sub0_realsinc_derivative_payload.v1
+status = fail_closed_missing_realsinc_iteratedderiv_series_majorant_crosswalk
+firstFailure = STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP
+rows = 18
+prefixN = 32
+proofGrade = false
+```
+
+Boundary: this closes only the typed certificate surface and exact rational
+prefix/tail arithmetic scaffold.  It does not prove that the rows majorize
+`‖iteratedDeriv k realSinc u‖` on `Set.Icc 0 (1/400)`, does not emit a
+generated Lean theorem proving `Cert.Valid.bound`, does not feed the scaled
+sinc receiver, and does not close Step33A.1-A.  The active first sub-gap is
+now exactly
+`STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`, inside
+the still-open live blocker
+`STEP33_A1_SUB0_REALSINC_DERIVATIVE_BOUNDS_0_TO_17_GAP`.

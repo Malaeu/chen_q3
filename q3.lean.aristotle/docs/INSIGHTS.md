@@ -38596,3 +38596,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   tail theorem, generated exact rational `prefixN/tailAbs/baseAbs`, generated
   `Cert.Valid`, and a checked feed into
   `primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_realSinc_abs`.
+
+## Insight (2026-06-22, Step33A.1-A) -- RealSincDerivativeContractScaffoldChecked
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean`.
+- Lean-checked the certificate surface
+  `Step33Sub0RealSincDerivativeMajorantCert`, its `Valid` predicate, and the
+  `ProvidesAnalyticMajorant` target predicate.
+- Added
+  `scripts/generate_step33_a1_sub0_realsinc_derivative_payload.py`; it emits
+  exact rational rows for `k = 0..17` using
+  `(1/400)^(2*n-k) / ((2*n+1) * (2*n-k)!)` with `n = ceil(k/2)+m`,
+  `prefixN = 32`, and tail ratio upper `1/160000`.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_realsinc_derivative_payload.{json,md}`
+  with schema `q3_psdpd_step33_a1_sub0_realsinc_derivative_payload.v1`.
+- Boundary: this is exact rational scaffolding, not a proof-grade derivative
+  majorant.  It closes no proof-safe field and does not close Step33A.1-A.
+- Current exact first sub-gap remains
+  `STEP33_A1_SUB0_REALSINC_ITERATEDDERIV_SERIES_MAJORANT_CROSSWALK_GAP`:
+  prove in Lean that the rational rows majorize
+  `‖iteratedDeriv k realSinc u‖` on `Set.Icc 0 (1/400)`.
