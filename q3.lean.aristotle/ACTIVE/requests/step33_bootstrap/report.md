@@ -66770,3 +66770,98 @@ shared generated payload for rows 7..15/order16 appears first.
 The active oracle question card for the next address is
 `ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row7_rows8to15_order16.md`.
 ```
+
+## Execution Update (2026-06-22) -- partial-sharp ShapeSqDeriv row 7 checked
+
+Route: PSD-pd/Q3 Step33A.1-A component Taylor route B.
+
+Search discipline:
+
+```text
+oracle question address:
+Step33A.1-A.ShapeSqDeriv.rows7to15_order16
+
+q3_docs queries:
+1. Step33A.1-A ShapeSqDeriv row7 rows 8..15 order16 singleAbs
+2. primaryFiniteRow0Parent0Split100Sub0 shapeSqDeriv row7 coeffErrorAbs productSum n=8
+3. CoarseTwoShapeProductSum_eq n=8 shapeSq_derivative_abs_of_shape_derivative_abs row7
+```
+
+The semantic search was noisy and did not surface a ready-made row-7 theorem.
+The local rows0123456 proof already exposed the usable surfaces:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CoarseTwoShapeProductSum_eq
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_derivative_abs_of_shape_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_iteratedDeriv_eq_shapeSq_succ
+```
+
+External web search checked official Mathlib orientation for
+`iteratedDeriv`/Taylor only; this is not proof evidence and does not replace
+local Lean validation.
+
+Lean file added:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean
+```
+
+Checked theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567Coeff_eq_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet7_coarseSmall_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567_valid
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567TaylorSource
+primaryFiniteRow0Parent0Split100Sub0_rows01234567ShapeSqDerivRows8To15_width_fail
+```
+
+Meaning:
+
+```text
+Row 7 is now proof-grade in the active generated coefficient stream.  It uses
+the existing coarse shape-derivative majorant, but evaluates the exact product
+sum at n=8 and divides by 7!, instead of spending the global n=17 constant.
+Rows 0,1,2,3,4,5,6,7 are now spendable in the active singleAbs normalization.
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.
+Rows 8..15 plus order 16 remain coarse.
+Lean proves the rows-0/1/2/3/4/5/6/7 partial-sharp source is still too wide
+for the active target residual interval.
+The generated JSON fields residualTaylorRemainderAbs,
+componentTaylorProofsPresent, exactCoefficientAssemblyPassed, and
+finalBudgetPassed remain false/null.
+```
+
+Validation:
+
+```text
+LEAN_PATH="..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean
+LEAN_PATH="..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean
+git diff --check
+lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean
+bash ../scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean
+```
+
+Direct Lean passed; `.olean` generation also passed.  Hole/axiom scan found no
+matches.  `git diff --check` passed.  `lake env lean` was run and again hung
+silently during environment setup; it was interrupted after 60 seconds.
+`q3_check.sh` was run through `bash`, printed its internal Lean command, then
+hung and was interrupted after 60 seconds.  No successful `lake env lean` or
+`q3_check` result is claimed here.
+
+Next exact patch:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_8_TO_15_ORDER16_SHARP_SOURCE_GAP
+
+Repeat the local product-order sharpening for row 8 using exact n=9, unless a
+shared generated payload for rows 8..15/order16 appears first.
+The active oracle question card for the next address is
+`ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row8_rows9to15_order16.md`.
+```
