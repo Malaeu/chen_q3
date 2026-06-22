@@ -18248,3 +18248,41 @@ component center-jet Cauchy identity and order-16 Leibniz identity for
 CombinedCancellationIntervalExpr.  Do not run a generator or mark Valid until
 that bridge exists.
 ```
+
+## 2026-06-23 Active Node Addendum -- Step22 Omega ContDiff16 closed
+
+Closed this addendum:
+
+```lean
+step22OmegaArchWeight_contDiff16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
+```
+
+Meaning:
+
+```text
+The whole CombinedCancellationIntervalExpr smoothness bridge no longer carries
+an hOmega premise.  The proof uses the existing derivative equality to
+step22OmegaArchWeightDerivClosedForm and the existing ContDiff16 certificate
+for that closed-form derivative.
+```
+
+Resolved:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP
+```
+
+Next exact move:
+
+```text
+Prove the exact component center-jet Cauchy identity and order-16 Leibniz
+identity for CombinedCancellationIntervalExpr.  Do not run a generator or mark
+Valid until that bridge exists.
+```

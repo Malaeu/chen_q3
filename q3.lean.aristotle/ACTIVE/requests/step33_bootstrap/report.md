@@ -68946,3 +68946,71 @@ component center-jet Cauchy identity and order-16 Leibniz identity for the
 whole CombinedCancellationIntervalExpr without using sampled rows or component
 norm bounds.
 ```
+
+## Execution Update (2026-06-23) -- Step22 Omega ContDiff16 lift
+
+Browser/Computer Use / Proshka reviewed the active subgap and selected the
+same proof-safe route A: close the reusable `step22OmegaArchWeight` smoothness
+theorem from the existing derivative closed-form bridge, then remove the
+`hOmega` premise from the whole-expression smoothness theorem.
+
+Extended:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+New checked symbols:
+
+```lean
+step22OmegaArchWeight_contDiff16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
+```
+
+Proof source:
+
+```text
+contDiff_succ_iff_deriv
+step22OmegaArchWeight_differentiableAt
+step22OmegaArchWeight_deriv_eq_closedForm
+step22OmegaArchWeightDerivClosedForm_contDiff16
+```
+
+Boundary:
+
+```text
+No center-jet Cauchy identity is proved.
+No order-16 Leibniz identity is proved.
+No rational rows or Horner rows are emitted.
+No Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload is
+instantiated.
+Step33A.1-A remains open.
+```
+
+Validation:
+
+```text
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Resolved subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP
+```
+
+Next exact patch:
+
+```text
+Prove the exact component center-jet Cauchy identity and order-16 Leibniz
+identity for `CombinedCancellationIntervalExpr`, preserving cancellation before
+norms and before generated payload rows.
+```

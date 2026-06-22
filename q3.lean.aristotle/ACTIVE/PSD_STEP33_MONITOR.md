@@ -36459,3 +36459,71 @@ Either prove ContDiff Real 16 step22OmegaArchWeight, or keep it as an explicit
 assumption while proving the exact component center-jet Cauchy and order-16
 Leibniz crosswalks for CombinedCancellationIntervalExpr.
 ```
+
+## 2026-06-23 EOF State -- Step22 Omega ContDiff16 lift closed
+
+Browser/Computer Use / Proshka was used for the active subgap review.  The
+advisory answer selected route A: prove the reusable global
+`ContDiff Real 16 step22OmegaArchWeight` theorem from the existing derivative
+closed form, then discharge the conditional whole-expression smoothness bridge.
+
+Extended:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+New Lean-checked facts:
+
+```lean
+step22OmegaArchWeight_contDiff16
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
+```
+
+Meaning:
+
+```text
+The base Step22 Omega weight is C^16 because
+  deriv step22OmegaArchWeight = step22OmegaArchWeightDerivClosedForm
+and the closed-form derivative already has a C^16 certificate.
+
+Therefore the whole CombinedCancellationIntervalExpr is now C^16 without an
+extra hOmega premise.
+```
+
+Boundary:
+
+```text
+This closes only the smoothness subbridge.  It does not prove center-jet rows,
+does not prove the order-16 Leibniz identity, does not emit rational payload
+rows, and does not instantiate
+Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.
+```
+
+Validation:
+
+```text
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+git diff --check -- q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Resolved subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP
+```
+
+Next exact patch:
+
+```text
+Prove the exact component center-jet Cauchy identity and order-16 Leibniz
+identity for the whole CombinedCancellationIntervalExpr.  Do not run sampled
+rows, component norm bounds, or a concrete Valid payload before this bridge.
+```

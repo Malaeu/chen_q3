@@ -41227,3 +41227,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP`.
 - Subgap exposed:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- Step22OmegaContDiff16LiftChecked
+
+- Browser/Computer Use / Proshka was used for the active subgap.  The advisory
+  recommendation was route A: prove `ContDiff Real 16 step22OmegaArchWeight`
+  from the existing derivative closed-form bridge and then remove the `hOmega`
+  premise from the combined smoothness theorem.
+- Extended the isolated file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`.
+- Lean checked:
+  `step22OmegaArchWeight_contDiff16` and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16`.
+- Local proof ingredients:
+  `contDiff_succ_iff_deriv`,
+  `step22OmegaArchWeight_differentiableAt`,
+  `step22OmegaArchWeight_deriv_eq_closedForm`, and
+  `step22OmegaArchWeightDerivClosedForm_contDiff16`.
+- Meaning: the whole `CombinedCancellationIntervalExpr` is now `C^16`
+  unconditionally in Lean; the previous smoothness subgap is closed.
+- Boundary: this still does not prove the component center-jet Cauchy
+  identity, the order-16 Leibniz identity, any rational rows, any Horner rows,
+  or a `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` payload.
+- Resolved subgap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_STEP22_OMEGA_CONTDIFF16_GAP`.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_COMPONENT_JET_LEIBNIZ_CROSSWALK_GAP`.

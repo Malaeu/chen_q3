@@ -40,6 +40,30 @@ theorem rawOmegaATaylorPolynomial_contDiff16
   unfold rawOmegaATaylorPolynomial
   fun_prop
 
+/-- The base Step22 Omega weight is `C^16`, obtained from its differentiability
+and the existing closed-form derivative smoothness certificate. -/
+theorem step22OmegaArchWeight_contDiff16 :
+    ContDiff Real 16
+      CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight := by
+  rw [show (16 : WithTop ENat) = (15 : WithTop ENat) + 1 by norm_num,
+    contDiff_succ_iff_deriv]
+  constructor
+  · exact fun eta =>
+      CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt eta
+  · constructor
+    · intro h
+      norm_num at h
+    · have hDeriv :
+          deriv CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight =
+            step22OmegaArchWeightDerivClosedForm := by
+        funext eta
+        exact step22OmegaArchWeight_deriv_eq_closedForm eta
+      have hClosed :
+          ContDiff Real 15 step22OmegaArchWeightDerivClosedForm :=
+        step22OmegaArchWeightDerivClosedForm_contDiff16.of_le (by norm_num)
+      rw [hDeriv]
+      exact hClosed
+
 /--
 The whole combined-cancellation expression is `C^16` once the base
 `step22OmegaArchWeight` source is available as `C^16`.
@@ -117,6 +141,17 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16_of_
     simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using
       (shapeSqDeriv_contDiff16 11 ((3 : Real) / 10))
   fun_prop
+
+/--
+Unconditional structural smoothness bridge for the whole combined-cancellation
+expression. This still does not provide the center-jet rows or uniform order-16
+bound required for a concrete `Valid` payload.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16 :
+    ContDiff Real 16
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16_of_omega
+    step22OmegaArchWeight_contDiff16
 
 end Step33
 end PSDpd
