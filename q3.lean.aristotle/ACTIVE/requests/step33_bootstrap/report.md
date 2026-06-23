@@ -72842,3 +72842,89 @@ Current proof-producing gap:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
 ```
+
+## 2026-06-23 Addendum -- local model segment receiver checked
+
+Browser/Computer Use route review was used on the residual-bound payload
+surface.  Proshka's final recommendation was to add a new local segment
+receiver rather than spend source rows against whole-cell global model extrema.
+This is advisory only; the accepted proof object is the local Lean check below.
+
+Added isolated Lean receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+```
+
+Lean-checked objects:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid.to_residual_bound_on_segment
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_local_model_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_local_model_segment_cover
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_residual_local_model_segment_receiver_checked_missing_payload
+localModelSegmentReceiverClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```
+
+Exact next payload target:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_local_model_segment_cover
+```
+
+Required payload fields:
+
+```text
+sourceInterval per segment:
+  CombinedCancellationOrder16ComponentSource
+modelInterval per segment:
+  CombinedOrder16BiasedNonzeroModelPoly
+local budget rows:
+  sourceLower - modelUpper
+  sourceUpper - modelLower
+segment-to-global residualAbs rows:
+  segment residualAbs <= global residualAbs
+global slack:
+  global residualAbs <= ResidualSlackRat
+cover:
+  finite cover of [0,1/10]
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+  returned no matches.
+
+NOTE:
+  bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+  was started and reached the Lean target, but produced no further diagnostics
+  for about 90s and was stopped.  The direct Lean command above is the
+  authoritative validation for this slice.
+```
+
+Boundary:
+
+```text
+This is still a receiver/interface step.  It proves no concrete source/model
+segment rows and does not close Step33A.1-A.
+```

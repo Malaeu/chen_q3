@@ -38575,3 +38575,97 @@ Current proof-producing gap:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
 ```
+
+## 2026-06-23 Current Active Pointer -- biased nonzero residual direct route
+
+The latest committed Step33A.1-A biased residual node is:
+
+```text
+commit = 41f5e23d7 [MacOS][rh_clean][Lean] Step33 biased residual direct adapter
+proofStatus = direct_residual_adapter_checked_missing_residual_bound
+```
+
+Checked support:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_order16DirectIntervalValid
+```
+
+Normalization decision:
+
+```text
+Do not force SourceHornerFamilyCert.Valid from a pointwise
+|ComponentSource - BiasedNonzeroModelPoly| <= R bound.  That bridge mixes
+independent global extrema and can pay the biased-model width.  Spend the
+residual bound through the direct biased nonzero-model receiver.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Next proof object:
+
+```text
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid
+
+equivalently, a proof-grade signed full-cell interval for
+  activeScale * D^16(ComponentProductActual)
+plus exact budget rows against the checked biased nonzero-model range and
+  residualAbs <= ResidualSlackRat.
+```
+
+## 2026-06-23 Current Active Pointer -- local model segment receiver checked
+
+Browser/Computer Use route review found the missing normalization interface:
+per-segment source bounds must be compared with per-segment biased-model
+bounds, not the biased model's whole-cell global extrema.  The accepted proof
+object is the local Lean check below.
+
+Added isolated receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid.to_residual_bound_on_segment
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_local_model_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_local_model_segment_cover
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_RECEIVER_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```
+
+Next proof object:
+
+```text
+Concrete finite segment family with:
+  sourceLower/sourceUpper for CombinedCancellationOrder16ComponentSource,
+  modelLower/modelUpper for BiasedNonzeroModelPoly on the same segment,
+  exact sourceLower - modelUpper / sourceUpper - modelLower budget rows,
+  segment residualAbs <= global residualAbs,
+  global residualAbs <= ResidualSlackRat,
+  cover of [0,1/10].
+```

@@ -43053,3 +43053,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This ledger is not proof payload and does not close Step33A.1-A.
 - Current proof-producing gap:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- CurrentBiasedResidualBoundGap
+
+- Current active pointer after commit `41f5e23d7` is the direct biased
+  nonzero-model residual adapter, not the older source-Horner payload-row gap.
+- Spendable checked bridge:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound`.
+- Auxiliary generator-facing receiver:
+  `Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp`
+  and
+  `Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid`.
+- Guard: do not force `SourceHornerFamilyCert.Valid` from a pointwise
+  `|ComponentSource - BiasedNonzeroModelPoly| <= R` bound; that normalization
+  mixes independent global extrema and can pay the full biased-model width.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- LocalModelSegmentReceiver
+
+- Added isolated receiver
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean`.
+- The checked bridge compares `CombinedCancellationOrder16ComponentSource` and
+  `CombinedOrder16BiasedNonzeroModelPoly` on the same segment, avoiding the
+  global source/model extrema width loss.
+- New checked handoff:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_local_model_segment_cover`.
+- This closes only
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_RECEIVER_GAP`.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP`.

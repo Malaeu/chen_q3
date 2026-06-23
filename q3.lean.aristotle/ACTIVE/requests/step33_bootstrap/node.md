@@ -183,6 +183,58 @@ This is still not a proof payload.  The next proof-producing patch is to
 emit/prove a concrete `Step33Sub0CombinedCancellationSourceIntervalCert.Valid`
 payload with component-source center-jet lower/upper rows, order16 lower/upper
 rows, Horner range rows, and exact target-budget inequalities.
+
+2026-06-23 v16 addendum: the active-actual product row intervals are checked in
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean.
+The ledger now records:
+
+  activeActualProductRowIntervalsPresent = true
+  sourceIntervalCertPayloadPresent = false
+  highOrderValidPayloadPresent = false
+  proofSafeClosedFields = 0
+
+Closed support gap:
+
+  STEP33_A1_SUB0_ACTIVE_ACTUAL_PRODUCT_ROW_INTERVALS_GAP
+
+Computer Use/Proshka route review after v16 corrected the next gate: do not
+instantiate full `SourceIntervalCert.Valid` yet.  First build the signed-row to
+midpoint/error center-jet payload:
+
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationCenterJetPayload.lean
+
+Current next proof-producing gap:
+
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_SIGNED_ROWS_TO_CENTERJET_ABS_GAP
+
+Expected live blocker after that succeeds:
+
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_INTERVAL_PAYLOAD_GAP
+
+2026-06-23 v17 addendum: the signed-row to midpoint/error center-jet payload is
+checked in:
+
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationCenterJetPayload.lean
+
+The ledger now records:
+
+  centerJetAbsPayloadPresent = true
+  highOrderCenterJetRowsPresent = true
+  sourceIntervalCertPayloadPresent = false
+  highOrderValidPayloadPresent = false
+  proofSafeClosedFields = 0
+
+Closed support gap:
+
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_SIGNED_ROWS_TO_CENTERJET_ABS_GAP
+
+Current next proof-producing gap:
+
+  STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_INTERVAL_PAYLOAD_GAP
+
+Do not mark `SourceIntervalCert.Valid` or final budget as passed from these
+center-jet rows alone.  Order16 source interval rows, Horner range rows, and
+target-budget rows are still missing.
 ```
 
 The current generator-facing payload adapter is checked in:
@@ -18583,4 +18635,381 @@ Next exact move:
 Generate/prove concrete SourceIntervalCert.Valid rows through the checked
 active-actual SourceIntervalCert.Valid constructor:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+## 2026-06-23 Active Node Addendum -- ShapeSqDeriv singleAbs signed-row bridge checked
+
+Browser/Computer Use was used for route review on the current active-actual
+center-row gate.  Proshka chose the `singleAbs.Valid` to signed-interval bridge
+as the next route-B support patch.  This is advisory only; the accepted proof
+object is the local Lean check below.
+
+Added isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_centerJet_interval_of_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_singleAbs_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v13
+activeActualSingleAbsToSignedCenterJetCrosswalkPresent = true
+activeActualShapeSqDerivSingleAbsSignedRowsPresent = true
+activeActualShapeSqDerivRows01234567891011SignedPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SINGLEABS_TO_SIGNED_CENTERJET_CROSSWALK_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Next exact move:
+
+```text
+Generate proof-grade active-actual center rows from signed OmegaPrime/Omega/
+ShapeSq/ShapeSqDeriv factor intervals, exact Cauchy convolution, activeScale,
+and ResidualDerivmodelCoeff subtraction.  Do not call coarse singleAbs rows
+tight, and do not mark SourceIntervalCert.Valid before order-16, Horner, and
+target-budget rows are Lean-checked.
+```
+
+## 2026-06-23 Active Node Addendum -- active-actual factor interval receiver checked
+
+Browser/Computer Use was used again for advisory route review on the active
+combined-cancellation gate.  The accepted proof object is the local Lean check,
+not the advisory answer.
+
+Extended isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_sum_interval_of_term_intervals
+primaryFiniteRow0Parent0Split100Sub0_normalizedJetConvolution_interval_of_term_intervals
+primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_interval
+primaryFiniteRow0Parent0Split100Sub0_activeScale_nonneg
+primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_of_product_interval
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v14
+activeActualFactorIntervalReceiverPresent = true
+activeActualSumIntervalReceiverPresent = true
+activeActualCauchyIntervalReceiverPresent = true
+activeActualComponentProductCauchyIntervalReceiverPresent = true
+activeActualScaleNonnegPresent = true
+activeActualRowIntervalReceiverPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_FACTOR_INTERVAL_TO_ROW_RECEIVER_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Next exact move:
+
+```text
+Emit concrete proof-grade termwise factor-product intervals for
+OmegaPrime/Omega/ShapeSq/ShapeSqDeriv, fold them through the checked
+active-actual Cauchy-row receiver, then instantiate SourceIntervalCert.Valid
+with order16, Horner, and target-budget rows.
+```
+
+## 2026-06-23 Active Node Addendum -- active-actual factor-row inventory
+
+Local evidence inventory after the receiver patch:
+
+```text
+Proof-grade signed/abs center-jet sources found:
+  OmegaPrimeActual:
+    omegaPrimeGeneratedCenterJet
+  ShapeSqDerivActual:
+    primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval
+
+Only non-row closest artifacts found:
+  OmegaActual:
+    primaryFiniteRow0Parent0Split100Sub0_omega_factor_error
+    primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor
+  ShapeSqActual:
+    primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated
+```
+
+The non-row artifacts do not satisfy the active-actual receiver input: it needs
+signed intervals for factorial-normalized center jets of the actual factors,
+not only function/anchor or Taylor-source residual bounds.
+
+Current exact subgap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SIGNED_FACTOR_JET_ROWS_GAP
+```
+
+## 2026-06-23 Active Node Addendum -- active-actual signed factor rows checked
+
+Extended isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaPrimeActual_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval
+```
+
+Together with the existing ShapeSqDeriv row theorem, this closes the local
+signed-factor-row source gap for OmegaPrime/Omega/ShapeSq/ShapeSqDeriv actual
+factors.
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v15
+activeActualOmegaPrimeSignedRowsPresent = true
+activeActualOmegaSignedRowsPresent = true
+activeActualShapeSqSignedRowsPresent = true
+activeActualAllFactorSignedRowsPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SIGNED_FACTOR_JET_ROWS_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Next exact move:
+
+```text
+Emit concrete proof-grade active-actual product lower/upper rows from the four
+signed factor-row sources, fold them through the checked active-actual row
+receiver, then instantiate SourceIntervalCert.Valid with order16, Horner, and
+target-budget rows.
+```
+
+## 2026-06-23 Active Node Addendum -- order16 structural reduction checked
+
+Added isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean
+```
+
+New Lean-checked symbol:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_activeActual
+```
+
+This proves only the structural algebra:
+
+```text
+CombinedCancellationOrder16ComponentSource eta =
+  activeScale * iteratedDeriv 16 ComponentProductActual eta
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v18
+order16StructuralReductionPresent = true
+highOrderOrder16RowsPresent = false
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact subgap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+```
+
+Next exact move:
+
+```text
+Build proof-grade factor derivative bounds through order 16 for the actual
+component product, then use the checked order16 structural reduction to emit
+the source interval rows needed by SourceIntervalCert.Valid.
+```
+
+## 2026-06-23 Active Node Addendum -- order16 factor-derivative receiver checked
+
+Added isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ComponentProductActualOrder16Majorant
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_factor_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_factor_derivative_abs
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v19
+order16FactorDerivativeReceiverPresent = true
+order16SourceIntervalReceiverPresent = true
+highOrderOrder16RowsPresent = false
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact subgap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+```
+
+Next exact move:
+
+```text
+Build concrete proof-grade derivative-bound rows for OmegaPrimeActual,
+OmegaActual, ShapeSqActual, and ShapeSqDerivActual through order 16.  The
+Leibniz/order16 source interval receiver is now checked; the remaining missing
+object is the bound payload and scalar budget comparison.
+```
+
+## 2026-06-23 Active Node Addendum -- biased nonzero residual direct route
+
+The latest committed Step33A.1-A biased residual node is:
+
+```text
+commit = 41f5e23d7 [MacOS][rh_clean][Lean] Step33 biased residual direct adapter
+proofStatus = direct_residual_adapter_checked_missing_residual_bound
+```
+
+Checked support:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_order16DirectIntervalValid
+```
+
+Normalization decision:
+
+```text
+Do not force SourceHornerFamilyCert.Valid from a pointwise
+|ComponentSource - BiasedNonzeroModelPoly| <= R bound.  That bridge mixes
+independent global extrema and can pay the biased-model width.  Spend the
+residual bound through the direct biased nonzero-model receiver.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Next proof object:
+
+```text
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid
+
+equivalently, a proof-grade signed full-cell interval for
+  activeScale * D^16(ComponentProductActual)
+plus exact budget rows against the checked biased nonzero-model range and
+  residualAbs <= ResidualSlackRat.
+```
+
+## 2026-06-23 Active Node Addendum -- local model segment receiver checked
+
+Browser/Computer Use route review identified the exact missing bridge: the
+segment payload needs source and biased-model bounds on the same cell.  The old
+global source/model extrema receiver can pay the full biased-model width and is
+not the payload target for this route.
+
+Added isolated receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert.Valid.to_residual_bound_on_segment
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_local_model_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_local_model_segment_cover
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_RECEIVER_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```
+
+Next exact move:
+
+```text
+Generate/prove a concrete finite local-model segment family: source rows,
+biased-model rows on the same cells, exact residual budget rows, segment
+residualAbs <= global residualAbs, global residualAbs <= ResidualSlackRat, and
+a cover of [0,1/10].  Do not mark Step33A.1-A closed from the receiver alone.
 ```
