@@ -72995,3 +72995,48 @@ The family target and ledger are proof-interface work only.  They do not emit
 source/model segment rows, budget rows, a cover proof, or a Step33A.1-A closure
 claim.
 ```
+
+## 2026-06-23 Report Addendum -- direct residual bound retarget
+
+Used Computer Use / Proshka escalation for the active Step33A.1-A payload
+fork.  The local repo already contains the checked direct adapter and the
+generator-facing residual-Horner handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Active live gate:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Computer Use / Proshka returned:
+
+```text
+CHOSEN: B
+FIRST FILE: Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+FIRST FAILURE CODE: STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP
+```
+
+This is the concrete residual-Horner payload gap inside the generic residual
+bound gate.
+
+Boundary:
+
+```text
+No Step33A.1-A closure is claimed.  The local-model segment family target is
+checked fallback infrastructure; the direct residual-bound target is the
+smallest current proof-producing gate.
+```

@@ -19048,3 +19048,45 @@ STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
 The next proof-producing patch is now a concrete
 `Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid`
 payload.  The ledger is fail-closed and does not claim Step33A.1-A closure.
+
+## 2026-06-23 Active Node Addendum -- direct residual bound is the live gate
+
+Computer Use / Proshka escalation was used for the local-model-vs-direct
+residual payload fork.  Local evidence now pins the live gate to the checked
+same-unit direct residual interface:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Next exact proof object:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Computer Use / Proshka route answer:
+
+```text
+CHOSEN: B
+FIRST FILE: Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+FIRST FAILURE CODE: STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP
+```
+
+The concrete payload gap above is the residual-Horner family route for proving
+the same-unit residual bound.
+
+The local-model segment family stays checked and useful, but it is fallback
+payload infrastructure.  Do not claim Step33A.1-A from it until concrete
+source/model rows, budget rows, cover, and slack comparison are proof-grade
+Lean artifacts.

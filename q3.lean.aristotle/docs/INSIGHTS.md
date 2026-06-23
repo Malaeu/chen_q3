@@ -43101,3 +43101,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `biased_residual_local_model_segment_family_receiver_checked_missing_payload`.
 - Current proof-producing gap remains:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- DirectResidualBoundRetarget
+
+- Used Computer Use / Proshka escalation for the fork between the checked
+  local-model segment family and the already checked direct residual interface.
+- Local repo evidence confirms the direct adapter:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound`.
+- Local repo evidence also confirms the generator-facing residual-Horner
+  bridge:
+  `Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp`
+  and
+  `Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid`.
+- The smallest live proof object is now a proof-grade theorem of
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp`
+  at `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`.
+- Computer Use / Proshka returned `CHOSEN: B`: the first concrete payload file
+  should be
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean`.
+- Concrete failure code:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP`.
+- The local-model segment family remains checked fallback infrastructure; it
+  is not Step33A.1-A closure.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP`.

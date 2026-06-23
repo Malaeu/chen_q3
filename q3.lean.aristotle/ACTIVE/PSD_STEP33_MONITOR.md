@@ -38702,3 +38702,45 @@ Current proof-producing gap:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
 ```
+
+## 2026-06-23 Current Active Pointer -- direct residual bound retarget audit
+
+Computer Use / Proshka escalation was used for the Step33A.1-A payload fork
+after the local-model segment receiver was checked.  The local repo evidence
+pins a smaller live gate than another receiver layer:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Active proof-producing target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Proshka / Computer Use route review returned:
+
+```text
+CHOSEN: B
+FIRST FILE: Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+FIRST FAILURE CODE: STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP
+```
+
+This payload gap is the concrete residual-Horner way to discharge the generic
+same-unit residual-bound gap above.
+
+The checked local-model segment family remains a valid fallback payload
+surface.  It is not a Step33A.1-A closure and should not supersede the direct
+residual-bound target unless the residual-Horner payload route fails with a
+concrete proof-grade obstruction.
