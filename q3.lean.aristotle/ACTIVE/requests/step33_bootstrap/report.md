@@ -73628,3 +73628,52 @@ There is no local theorem converting it into the order-16
 ComponentSource - NonzeroModelPoly interval.  Do not route back to B unless a
 new same-expression Lean bridge is added and checked.
 ```
+
+## 2026-06-23 Report Addendum -- direct row-obligation worklist emitted
+
+Computer Use / Proshka was used on the next fork after route A was accepted.
+Advisory answer:
+
+```text
+CHOSEN: A
+FIRST FILE:
+  scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+FIRST THEOREM/OBJECT:
+  step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+FAILURE CODE if it still fails:
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Updated generated outputs:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.md
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v3
+proofStatus = direct_nonzero_model_row_worklist_emitted_missing_interval_cert
+rowWorklistEmitted = true
+firstMissingProofObject =
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+The row worklist names the first proof-producing obligations:
+
+```text
+R0 cell cover
+R1 whole signed expression interval
+R2 proof-grade rational/interval rows
+R3 budget rows against BiasedResidualRemainderAbs
+R4 source-prop adapter
+R5 checked zero-model payload target handoff
+```
+
+Boundary:
+
+```text
+This is not a proof-grade interval certificate and not Step33A.1-A closure.
+The exact live gap remains the direct signed interval/rational certificate for
+ComponentSource - NonzeroModelPoly on [0,1/10], at BiasedResidualRemainderAbs.
+The new row-source failure code is:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```

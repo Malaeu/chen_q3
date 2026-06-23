@@ -43347,3 +43347,26 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`.
 - Current live gap remains exactly:
   `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- DirectScaledRemainderRowWorklist
+
+- Used Computer Use / Proshka on the fork between immediate proof-producing
+  Lean generation and a fail-closed row-obligation patch.
+- Advisory answer: `CHOSEN: A`.
+- Updated
+  `scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v3`.
+- Generated a separate machine-readable worklist:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json`.
+- The first missing proof object is still:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`.
+- New row-source failure code:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`.
+- Candidate reuse routes are now explicitly classified: P45/full-Taylor is
+  rejected as not the same expression; direct payload is usable interface only;
+  direct model payload is conditional on the current hard premise; biased
+  Horner/signed-factor paths are not same-target certificates without a new
+  checked bridge.
+- Boundary: this is not Step33A.1-A closure.  It only names the exact row
+  obligations for the next proof-producing rational/interval generator.

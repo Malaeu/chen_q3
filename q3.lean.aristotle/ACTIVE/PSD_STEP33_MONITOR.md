@@ -39138,3 +39138,40 @@ Direct whole-expression interval/rational generator for
 ComponentSource - NonzeroModelPoly on [0,1/10], at
 primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs.
 ```
+
+## 2026-06-23 Current Active Pointer -- direct row-obligation worklist
+
+Computer Use / Proshka chose the worklist patch for the immediate fork:
+
+```text
+CHOSEN: A
+FIRST THEOREM/OBJECT:
+  step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+FAILURE CODE if it still fails:
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Updated direct scaled-remainder ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v3
+proofStatus = direct_nonzero_model_row_worklist_emitted_missing_interval_cert
+rowWorklistEmitted = true
+rowWorklistFile =
+  ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+```
+
+The first missing proof-producing object remains:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.  The next real proof-producing patch must
+generate/check proof-grade rational or interval rows for the assembled signed
+expression ComponentSource - NonzeroModelPoly, not reuse P45/full-Taylor or
+biased/signed-factor adapters as if they were same-target certificates.
+```

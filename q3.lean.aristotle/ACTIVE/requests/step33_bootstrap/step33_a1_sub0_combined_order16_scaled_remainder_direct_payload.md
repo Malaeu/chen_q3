@@ -1,8 +1,8 @@
 # Step33A.1-A Direct Scaled-Remainder Payload Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v2`
+schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v3`
 route: `direct_nonzero_model_scaled_remainder_interval`
-proofStatus: `direct_nonzero_model_payload_surface_checked_missing_interval_cert`
+proofStatus: `direct_nonzero_model_row_worklist_emitted_missing_interval_cert`
 
 ## Status
 
@@ -13,11 +13,19 @@ proofStatus: `direct_nonzero_model_payload_surface_checked_missing_interval_cert
 - remainderBridgePresent: `True`
 - p45FullTaylorBridgePresent: `True`
 - order16NonzeroModelBridgePresent: `True`
+- directIntervalPayloadPresent: `True`
+- directModelPayloadPresent: `True`
+- biasedSourceHornerPresent: `False`
+- biasedSignedFactorAdapterPresent: `True`
 - directNonzeroModelIntervalRowsLeanChecked: `False`
 - directNonzeroModelSourcePropLeanChecked: `False`
 - zeroModelPayloadTargetLeanChecked: `True`
 - step33A1ClosedClaimed: `False`
 - doNotSplitSummands: `True`
+- rowWorklistEmitted: `True`
+- rowWorklistFile: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json`
+- firstMissingProofObject: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- firstRowFailureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 
 ## Current Gap
 
@@ -30,6 +38,10 @@ Parent gap:
 First failure code if the direct route fails:
 
 `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
+First row-source failure code if the row generator fails:
+
+`STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 
 P45/full-Taylor reuse verdict:
 
@@ -53,6 +65,8 @@ P45/full-Taylor reuse failure code:
 - decision: `CHOSEN: A`
 - question: Does the existing P45/full-Taylor interval machinery prove the order-16 ComponentSource - NonzeroModelPoly source bound, or is a separate direct certificate target still needed?
 - answer: A: proceed with the direct rational/Horner interval generator; P45/full-Taylor bounds a different derivative-level expression and does not prove the uniform order-16 source-minus-nonzero-model interval.
+- row worklist decision: `CHOSEN: A`
+- row worklist answer: First patch should emit exact row obligations; an immediate Lean certificate would still be conditional without proof-grade whole-expression remainder source rows.
 
 ## Why P45/full-Taylor Is Not Enough
 
@@ -69,6 +83,96 @@ prove a signed interval on [0,1/10] for ComponentSource - NonzeroModelPoly insid
 - whole-expression remainder rows
 - per-segment lower/upper budget rows
 - global residualAbs = BiasedResidualRemainderAbs
+
+## Row Obligations
+
+### R0_cell_cover
+
+- `object`: `segment cells cover Set.Icc 0 (1/10)`
+- `requiredFor`: `Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCover`
+- `status`: `interface_ready_rows_missing`
+- `proofGrade`: `False`
+
+### R1_whole_signed_expression_range
+
+- `object`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- `statement`: `for all eta in [0,1/10], -BiasedResidualRemainderAbs <= ComponentSource eta - NonzeroModelPoly eta and ComponentSource eta - NonzeroModelPoly eta <= BiasedResidualRemainderAbs`
+- `status`: `missing_first_proof_object`
+- `proofGrade`: `False`
+
+### R2_horner_or_interval_rows
+
+- `object`: `proof-grade rational/interval rows for the assembled signed expression`
+- `requiredFor`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- `status`: `missing`
+- `proofGrade`: `False`
+
+### R3_budget_rows
+
+- `object`: `lowerBudget and upperBudget against BiasedResidualRemainderAbs`
+- `requiredFor`: `Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert.Valid`
+- `status`: `missing`
+- `proofGrade`: `False`
+
+### R4_source_prop_adapter
+
+- `object`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_generated`
+- `requiredFor`: `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`
+- `status`: `interface_ready_depends_on_R1`
+- `proofGrade`: `False`
+
+### R5_zero_model_payload_target
+
+- `object`: `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload`
+- `requiredFor`: `biased residual-Horner zero-model handoff`
+- `status`: `checked_bridge_depends_on_R4`
+- `checkedBridge`: `True`
+- `proofGrade`: `False`
+
+## Candidate Reuse Routes
+
+### p45_full_taylor
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`
+- `surfacePresent`: `True`
+- `verdict`: `rejected_not_same_expression`
+- `failureCode`: `STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH`
+
+### direct_payload_surface
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean`
+- `surfacePresent`: `True`
+- `verdict`: `usable_interface_no_rows`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
+### direct_interval_payload
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean`
+- `surfacePresent`: `True`
+- `verdict`: `old_source_interval_interface_not_scaled_nonzero_model_interval`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
+### direct_model_payload
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean`
+- `surfacePresent`: `True`
+- `verdict`: `conditional_checker_only_hard_remainder_premise_is_current_gap`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
+### biased_source_horner
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean`
+- `surfacePresent`: `False`
+- `verdict`: `not_same_target_without_new_bridge`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
+### biased_signed_factor_adapter
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean`
+- `surfacePresent`: `True`
+- `verdict`: `adapter_for_biased_route_only_not_direct_nonzero_model_rows`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
 
 ## Direct Payload Symbols
 
@@ -110,6 +214,29 @@ prove a signed interval on [0,1/10] for ComponentSource - NonzeroModelPoly insid
 
 - `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelSource`: `True`
+
+## Direct Interval Payload Symbols
+
+- `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16DirectIntervalTarget`: `True`
+- `Step33Sub0CombinedCancellationOrder16DirectIntervalCert`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_direct_interval_to_source_field`: `True`
+
+## Direct Model Payload Symbols
+
+- `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectRemainderSourceProp`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectInterval_valid_of_horner_remainder`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelRemainderSourceProp`: `True`
+
+## Biased Source Horner Symbols
+
+- `Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert`: `True`
+- `Step33Sub0CombinedOrder16BiasedResidualSourceHornerRangeCert`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_horner_family`: `False`
+
+## Biased Signed-Factor Adapter Symbols
+
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_signedFactor_segment_cover`: `True`
+- `Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert`: `True`
 
 ## Prior Ledgers
 

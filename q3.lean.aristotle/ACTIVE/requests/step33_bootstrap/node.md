@@ -19423,3 +19423,41 @@ Do not reuse the P45/full-Taylor residual machinery as the source certificate.
 The next patch remains the direct whole-expression interval/rational generator
 for ComponentSource - NonzeroModelPoly at BiasedResidualRemainderAbs.
 ```
+
+## 2026-06-23 Active Node Addendum -- direct row-obligation worklist
+
+Computer Use / Proshka chose the fail-closed worklist patch before any
+proof-producing Lean certificate:
+
+```text
+CHOSEN: A
+FIRST FILE:
+  scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+FIRST THEOREM/OBJECT:
+  step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+FAILURE CODE if it still fails:
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Generated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.{json,md}
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v3
+proofStatus = direct_nonzero_model_row_worklist_emitted_missing_interval_cert
+```
+
+First missing proof object:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Boundary:
+
+```text
+This worklist is not a certificate.  Step33A.1-A remains open until the whole
+signed expression interval for ComponentSource - NonzeroModelPoly is
+Lean-checked or backed by proof-grade generated rational/interval rows.
+```

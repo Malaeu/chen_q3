@@ -1,0 +1,100 @@
+{
+  "candidateReuseRoutes": [
+    {
+      "failureCode": "STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH",
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean",
+      "route": "p45_full_taylor",
+      "surfacePresent": true,
+      "verdict": "rejected_not_same_expression"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean",
+      "route": "direct_payload_surface",
+      "surfacePresent": true,
+      "verdict": "usable_interface_no_rows"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean",
+      "route": "direct_interval_payload",
+      "surfacePresent": true,
+      "verdict": "old_source_interval_interface_not_scaled_nonzero_model_interval"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean",
+      "route": "direct_model_payload",
+      "surfacePresent": true,
+      "verdict": "conditional_checker_only_hard_remainder_premise_is_current_gap"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean",
+      "route": "biased_source_horner",
+      "surfacePresent": false,
+      "verdict": "not_same_target_without_new_bridge"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean",
+      "route": "biased_signed_factor_adapter",
+      "surfacePresent": true,
+      "verdict": "adapter_for_biased_route_only_not_direct_nonzero_model_rows"
+    }
+  ],
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+  "firstMissingProofObject": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated",
+  "firstRowFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+  "generatedAt": "2026-06-23T18:05:12.195710+00:00",
+  "guard": "This is an interface and fail-closed ledger only.  It does not prove the interval rows, and it must not be treated as Step33A.1-A closure until the direct nonzero-model source proposition is Lean-checked or backed by proof-grade generated rows.",
+  "route": "direct_nonzero_model_scaled_remainder_interval",
+  "rowObligations": [
+    {
+      "id": "R0_cell_cover",
+      "object": "segment cells cover Set.Icc 0 (1/10)",
+      "proofGrade": false,
+      "requiredFor": "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCover",
+      "status": "interface_ready_rows_missing"
+    },
+    {
+      "id": "R1_whole_signed_expression_range",
+      "object": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated",
+      "proofGrade": false,
+      "statement": "for all eta in [0,1/10], -BiasedResidualRemainderAbs <= ComponentSource eta - NonzeroModelPoly eta and ComponentSource eta - NonzeroModelPoly eta <= BiasedResidualRemainderAbs",
+      "status": "missing_first_proof_object"
+    },
+    {
+      "id": "R2_horner_or_interval_rows",
+      "object": "proof-grade rational/interval rows for the assembled signed expression",
+      "proofGrade": false,
+      "requiredFor": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated",
+      "status": "missing"
+    },
+    {
+      "id": "R3_budget_rows",
+      "object": "lowerBudget and upperBudget against BiasedResidualRemainderAbs",
+      "proofGrade": false,
+      "requiredFor": "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert.Valid",
+      "status": "missing"
+    },
+    {
+      "id": "R4_source_prop_adapter",
+      "object": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_generated",
+      "proofGrade": false,
+      "requiredFor": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp",
+      "status": "interface_ready_depends_on_R1"
+    },
+    {
+      "checkedBridge": true,
+      "id": "R5_zero_model_payload_target",
+      "object": "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload",
+      "proofGrade": false,
+      "requiredFor": "biased residual-Horner zero-model handoff",
+      "status": "checked_bridge_depends_on_R4"
+    }
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v3.row_obligations",
+  "targetBudget": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
+  "targetExpression": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource eta - primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelPoly eta"
+}

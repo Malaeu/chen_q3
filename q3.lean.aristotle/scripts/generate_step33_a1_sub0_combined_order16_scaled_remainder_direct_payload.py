@@ -21,7 +21,7 @@ from typing import Any
 
 SCHEMA = (
     "q3_psdpd_step33_a1_sub0_combined_order16_"
-    "scaled_remainder_direct_payload.v2"
+    "scaled_remainder_direct_payload.v3"
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +50,20 @@ P45_FULL_TAYLOR_BRIDGE_FILE = (
 ORDER16_NONZERO_MODEL_FILE = (
     PROOFS / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean"
 )
+DIRECT_INTERVAL_PAYLOAD_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean"
+)
+DIRECT_MODEL_PAYLOAD_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean"
+)
+BIASED_SOURCE_HORNER_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean"
+)
+BIASED_SIGNED_FACTOR_ADAPTER_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean"
+)
 
 JSON_OUT = (
     REQUEST_DIR
@@ -58,6 +72,10 @@ JSON_OUT = (
 MD_OUT = (
     REQUEST_DIR
     / "step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.md"
+)
+ROW_OBLIGATIONS_JSON_OUT = (
+    REQUEST_DIR
+    / "step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json"
 )
 
 DIRECT_PAYLOAD_SYMBOLS = [
@@ -101,6 +119,29 @@ ORDER16_NONZERO_MODEL_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelSource",
 ]
 
+DIRECT_INTERVAL_PAYLOAD_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16DirectIntervalTarget",
+    "Step33Sub0CombinedCancellationOrder16DirectIntervalCert",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_direct_interval_to_source_field",
+]
+
+DIRECT_MODEL_PAYLOAD_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectRemainderSourceProp",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectInterval_valid_of_horner_remainder",
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelRemainderSourceProp",
+]
+
+BIASED_SOURCE_HORNER_SYMBOLS = [
+    "Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert",
+    "Step33Sub0CombinedOrder16BiasedResidualSourceHornerRangeCert",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_horner_family",
+]
+
+BIASED_SIGNED_FACTOR_ADAPTER_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_signedFactor_segment_cover",
+    "Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert",
+]
+
 CURRENT_GAP = (
     "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
     "NONZERO_MODEL_INTERVAL_CERT_GAP"
@@ -111,6 +152,10 @@ PARENT_GAP = (
 )
 P45_REUSE_FAILURE = (
     "STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH"
+)
+DIRECT_ROW_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
+    "DIRECT_ROW_SOURCE_GAP"
 )
 FIRST_GENERATED_INTERVAL_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
@@ -164,6 +209,18 @@ def build_ledger() -> dict[str, Any]:
     order16_nonzero_model_symbols = file_contains(
         ORDER16_NONZERO_MODEL_FILE, ORDER16_NONZERO_MODEL_SYMBOLS
     )
+    direct_interval_payload_symbols = file_contains(
+        DIRECT_INTERVAL_PAYLOAD_FILE, DIRECT_INTERVAL_PAYLOAD_SYMBOLS
+    )
+    direct_model_payload_symbols = file_contains(
+        DIRECT_MODEL_PAYLOAD_FILE, DIRECT_MODEL_PAYLOAD_SYMBOLS
+    )
+    biased_source_horner_symbols = file_contains(
+        BIASED_SOURCE_HORNER_FILE, BIASED_SOURCE_HORNER_SYMBOLS
+    )
+    biased_signed_factor_adapter_symbols = file_contains(
+        BIASED_SIGNED_FACTOR_ADAPTER_FILE, BIASED_SIGNED_FACTOR_ADAPTER_SYMBOLS
+    )
 
     direct_surface_present = all_true(direct_symbols)
     zero_model_bridge_present = all_true(zero_model_symbols)
@@ -171,9 +228,15 @@ def build_ledger() -> dict[str, Any]:
     remainder_bridge_present = all_true(remainder_bridge_symbols)
     p45_full_taylor_bridge_present = all_true(p45_full_taylor_symbols)
     order16_nonzero_model_bridge_present = all_true(order16_nonzero_model_symbols)
+    direct_interval_payload_present = all_true(direct_interval_payload_symbols)
+    direct_model_payload_present = all_true(direct_model_payload_symbols)
+    biased_source_horner_present = all_true(biased_source_horner_symbols)
+    biased_signed_factor_adapter_present = all_true(
+        biased_signed_factor_adapter_symbols
+    )
 
     proof_status = (
-        "direct_nonzero_model_payload_surface_checked_missing_interval_cert"
+        "direct_nonzero_model_row_worklist_emitted_missing_interval_cert"
         if direct_surface_present
         and zero_model_bridge_present
         and interval_surface_present
@@ -206,6 +269,102 @@ def build_ledger() -> dict[str, Any]:
         ),
     }
 
+    row_obligations = [
+        {
+            "id": "R0_cell_cover",
+            "object": "segment cells cover Set.Icc 0 (1/10)",
+            "requiredFor": "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCover",
+            "status": "interface_ready_rows_missing",
+            "proofGrade": False,
+        },
+        {
+            "id": "R1_whole_signed_expression_range",
+            "object": FIRST_GENERATED_INTERVAL_THEOREM,
+            "statement": (
+                "for all eta in [0,1/10], "
+                "-BiasedResidualRemainderAbs <= ComponentSource eta - "
+                "NonzeroModelPoly eta and ComponentSource eta - "
+                "NonzeroModelPoly eta <= BiasedResidualRemainderAbs"
+            ),
+            "status": "missing_first_proof_object",
+            "proofGrade": False,
+        },
+        {
+            "id": "R2_horner_or_interval_rows",
+            "object": "proof-grade rational/interval rows for the assembled signed expression",
+            "requiredFor": FIRST_GENERATED_INTERVAL_THEOREM,
+            "status": "missing",
+            "proofGrade": False,
+        },
+        {
+            "id": "R3_budget_rows",
+            "object": "lowerBudget and upperBudget against BiasedResidualRemainderAbs",
+            "requiredFor": "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert.Valid",
+            "status": "missing",
+            "proofGrade": False,
+        },
+        {
+            "id": "R4_source_prop_adapter",
+            "object": FIRST_GENERATED_SOURCE_PROP_THEOREM,
+            "requiredFor": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp",
+            "status": "interface_ready_depends_on_R1",
+            "proofGrade": False,
+        },
+        {
+            "id": "R5_zero_model_payload_target",
+            "object": "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload",
+            "requiredFor": "biased residual-Horner zero-model handoff",
+            "status": "checked_bridge_depends_on_R4",
+            "checkedBridge": bool(zero_model_bridge_present),
+            "proofGrade": False,
+        },
+    ]
+
+    candidate_reuse_routes = [
+        {
+            "route": "p45_full_taylor",
+            "file": rel(P45_FULL_TAYLOR_BRIDGE_FILE),
+            "surfacePresent": p45_full_taylor_bridge_present,
+            "verdict": "rejected_not_same_expression",
+            "failureCode": P45_REUSE_FAILURE,
+        },
+        {
+            "route": "direct_payload_surface",
+            "file": rel(DIRECT_PAYLOAD_FILE),
+            "surfacePresent": direct_surface_present,
+            "verdict": "usable_interface_no_rows",
+            "failureCode": CURRENT_GAP,
+        },
+        {
+            "route": "direct_interval_payload",
+            "file": rel(DIRECT_INTERVAL_PAYLOAD_FILE),
+            "surfacePresent": direct_interval_payload_present,
+            "verdict": "old_source_interval_interface_not_scaled_nonzero_model_interval",
+            "failureCode": CURRENT_GAP,
+        },
+        {
+            "route": "direct_model_payload",
+            "file": rel(DIRECT_MODEL_PAYLOAD_FILE),
+            "surfacePresent": direct_model_payload_present,
+            "verdict": "conditional_checker_only_hard_remainder_premise_is_current_gap",
+            "failureCode": CURRENT_GAP,
+        },
+        {
+            "route": "biased_source_horner",
+            "file": rel(BIASED_SOURCE_HORNER_FILE),
+            "surfacePresent": biased_source_horner_present,
+            "verdict": "not_same_target_without_new_bridge",
+            "failureCode": CURRENT_GAP,
+        },
+        {
+            "route": "biased_signed_factor_adapter",
+            "file": rel(BIASED_SIGNED_FACTOR_ADAPTER_FILE),
+            "surfacePresent": biased_signed_factor_adapter_present,
+            "verdict": "adapter_for_biased_route_only_not_direct_nonzero_model_rows",
+            "failureCode": CURRENT_GAP,
+        },
+    ]
+
     return {
         "schema": SCHEMA,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
@@ -216,23 +375,41 @@ def build_ledger() -> dict[str, Any]:
         "remainderBridgeFile": rel(REMAINDER_BRIDGE_FILE),
         "p45FullTaylorBridgeFile": rel(P45_FULL_TAYLOR_BRIDGE_FILE),
         "order16NonzeroModelFile": rel(ORDER16_NONZERO_MODEL_FILE),
+        "directIntervalPayloadFile": rel(DIRECT_INTERVAL_PAYLOAD_FILE),
+        "directModelPayloadFile": rel(DIRECT_MODEL_PAYLOAD_FILE),
+        "biasedSourceHornerFile": rel(BIASED_SOURCE_HORNER_FILE),
+        "biasedSignedFactorAdapterFile": rel(BIASED_SIGNED_FACTOR_ADAPTER_FILE),
         "directPayloadSymbols": direct_symbols,
         "zeroModelSymbols": zero_model_symbols,
         "intervalPayloadSymbols": interval_symbols,
         "remainderBridgeSymbols": remainder_bridge_symbols,
         "p45FullTaylorBridgeSymbols": p45_full_taylor_symbols,
         "order16NonzeroModelSymbols": order16_nonzero_model_symbols,
+        "directIntervalPayloadSymbols": direct_interval_payload_symbols,
+        "directModelPayloadSymbols": direct_model_payload_symbols,
+        "biasedSourceHornerSymbols": biased_source_horner_symbols,
+        "biasedSignedFactorAdapterSymbols": biased_signed_factor_adapter_symbols,
         "directPayloadSurfacePresent": direct_surface_present,
         "zeroModelBridgePresent": zero_model_bridge_present,
         "intervalPayloadSurfacePresent": interval_surface_present,
         "remainderBridgePresent": remainder_bridge_present,
         "p45FullTaylorBridgePresent": p45_full_taylor_bridge_present,
         "order16NonzeroModelBridgePresent": order16_nonzero_model_bridge_present,
+        "directIntervalPayloadPresent": direct_interval_payload_present,
+        "directModelPayloadPresent": direct_model_payload_present,
+        "biasedSourceHornerPresent": biased_source_horner_present,
+        "biasedSignedFactorAdapterPresent": biased_signed_factor_adapter_present,
         "proofStatus": proof_status,
         "proofGrade": False,
         "currentGap": CURRENT_GAP,
         "parentGap": PARENT_GAP,
         "firstFailureCode": CURRENT_GAP,
+        "firstRowFailureCode": DIRECT_ROW_SOURCE_GAP,
+        "firstMissingProofObject": FIRST_GENERATED_INTERVAL_THEOREM,
+        "rowWorklistEmitted": True,
+        "rowWorklistFile": rel(ROW_OBLIGATIONS_JSON_OUT),
+        "rowObligations": row_obligations,
+        "candidateReuseRoutes": candidate_reuse_routes,
         "p45FullTaylorReuseVerdict": "not_spendable_for_order16_direct_source_bound",
         "p45FullTaylorReuseFailureCode": P45_REUSE_FAILURE,
         "proshkaRouteReviewDecision": "CHOSEN: A",
@@ -246,6 +423,12 @@ def build_ledger() -> dict[str, Any]:
             "P45/full-Taylor bounds a different derivative-level expression "
             "and does not prove the uniform order-16 source-minus-nonzero-model "
             "interval."
+        ),
+        "proshkaRowWorklistDecision": "CHOSEN: A",
+        "proshkaRowWorklistAnswer": (
+            "First patch should emit exact row obligations; an immediate Lean "
+            "certificate would still be conditional without proof-grade "
+            "whole-expression remainder source rows."
         ),
         "directNonzeroModelIntervalRowsLeanChecked": False,
         "directNonzeroModelSourcePropLeanChecked": False,
@@ -328,6 +511,12 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"- p45FullTaylorBridgePresent: `{ledger['p45FullTaylorBridgePresent']}`",
         "- order16NonzeroModelBridgePresent: "
         f"`{ledger['order16NonzeroModelBridgePresent']}`",
+        "- directIntervalPayloadPresent: "
+        f"`{ledger['directIntervalPayloadPresent']}`",
+        f"- directModelPayloadPresent: `{ledger['directModelPayloadPresent']}`",
+        f"- biasedSourceHornerPresent: `{ledger['biasedSourceHornerPresent']}`",
+        "- biasedSignedFactorAdapterPresent: "
+        f"`{ledger['biasedSignedFactorAdapterPresent']}`",
         "- directNonzeroModelIntervalRowsLeanChecked: "
         f"`{ledger['directNonzeroModelIntervalRowsLeanChecked']}`",
         "- directNonzeroModelSourcePropLeanChecked: "
@@ -336,6 +525,10 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"`{ledger['zeroModelPayloadTargetLeanChecked']}`",
         f"- step33A1ClosedClaimed: `{ledger['step33A1ClosedClaimed']}`",
         f"- doNotSplitSummands: `{ledger['doNotSplitSummands']}`",
+        f"- rowWorklistEmitted: `{ledger['rowWorklistEmitted']}`",
+        f"- rowWorklistFile: `{ledger['rowWorklistFile']}`",
+        f"- firstMissingProofObject: `{ledger['firstMissingProofObject']}`",
+        f"- firstRowFailureCode: `{ledger['firstRowFailureCode']}`",
         "",
         "## Current Gap",
         "",
@@ -348,6 +541,10 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         "First failure code if the direct route fails:",
         "",
         f"`{ledger['firstFailureCode']}`",
+        "",
+        "First row-source failure code if the row generator fails:",
+        "",
+        f"`{ledger['firstRowFailureCode']}`",
         "",
         "P45/full-Taylor reuse verdict:",
         "",
@@ -371,6 +568,8 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"- decision: `{ledger['proshkaRouteReviewDecision']}`",
         f"- question: {ledger['proshkaRouteReviewQuestion']}",
         f"- answer: {ledger['proshkaRouteReviewAnswer']}",
+        f"- row worklist decision: `{ledger['proshkaRowWorklistDecision']}`",
+        f"- row worklist answer: {ledger['proshkaRowWorklistAnswer']}",
         "",
         "## Why P45/full-Taylor Is Not Enough",
         "",
@@ -384,6 +583,24 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         "",
     ]
     lines.extend(f"- {item}" for item in ledger["certificateShape"])
+    lines.extend(["", "## Row Obligations", ""])
+    for row in ledger["rowObligations"]:
+        lines.append(f"### {row['id']}")
+        lines.append("")
+        for key, value in row.items():
+            if key == "id":
+                continue
+            lines.append(f"- `{key}`: `{value}`")
+        lines.append("")
+    lines.extend(["## Candidate Reuse Routes", ""])
+    for route in ledger["candidateReuseRoutes"]:
+        lines.append(f"### {route['route']}")
+        lines.append("")
+        for key, value in route.items():
+            if key == "route":
+                continue
+            lines.append(f"- `{key}`: `{value}`")
+        lines.append("")
     lines.extend(render_symbols("Direct Payload Symbols", ledger["directPayloadSymbols"]))
     lines.extend(render_symbols("Zero Model Symbols", ledger["zeroModelSymbols"]))
     lines.extend(render_symbols("Interval Payload Symbols", ledger["intervalPayloadSymbols"]))
@@ -396,6 +613,23 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     lines.extend(
         render_symbols(
             "Order16 Nonzero-Model Symbols", ledger["order16NonzeroModelSymbols"]
+        )
+    )
+    lines.extend(
+        render_symbols(
+            "Direct Interval Payload Symbols", ledger["directIntervalPayloadSymbols"]
+        )
+    )
+    lines.extend(
+        render_symbols("Direct Model Payload Symbols", ledger["directModelPayloadSymbols"])
+    )
+    lines.extend(
+        render_symbols("Biased Source Horner Symbols", ledger["biasedSourceHornerSymbols"])
+    )
+    lines.extend(
+        render_symbols(
+            "Biased Signed-Factor Adapter Symbols",
+            ledger["biasedSignedFactorAdapterSymbols"],
         )
     )
     lines.extend(["", "## Prior Ledgers", ""])
@@ -413,9 +647,30 @@ def main() -> None:
     ledger = build_ledger()
     REQUEST_DIR.mkdir(parents=True, exist_ok=True)
     JSON_OUT.write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n")
+    ROW_OBLIGATIONS_JSON_OUT.write_text(
+        json.dumps(
+            {
+                "schema": f"{SCHEMA}.row_obligations",
+                "generatedAt": ledger["generatedAt"],
+                "route": ledger["route"],
+                "currentGap": ledger["currentGap"],
+                "firstRowFailureCode": ledger["firstRowFailureCode"],
+                "firstMissingProofObject": ledger["firstMissingProofObject"],
+                "targetExpression": ledger["targetExpression"],
+                "targetBudget": ledger["targetBudget"],
+                "rowObligations": ledger["rowObligations"],
+                "candidateReuseRoutes": ledger["candidateReuseRoutes"],
+                "guard": ledger["guard"],
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n"
+    )
     MD_OUT.write_text(render_markdown(ledger), encoding="utf-8")
     print(ledger["proofStatus"])
     print(ledger["firstFailureCode"])
+    print(ledger["firstRowFailureCode"])
     print(ledger["currentGap"])
     print(ledger["p45FullTaylorReuseVerdict"])
 
