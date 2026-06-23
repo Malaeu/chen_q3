@@ -42845,3 +42845,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   remains open.
 - Current proof-producing gap:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_SEGMENT_PAYLOAD_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- SignedFactorSourceOnlyAdapter
+
+- Added a source-only signed-factor validity predicate that keeps the existing
+  signed Leibniz row checker but removes the old direct-zero
+  `zeroModelBudget` requirement.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SignedFactorChecker.lean`
+  and added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean`.
+- Lean checked:
+  `Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid.to_sourceInterval`,
+  `Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid.to_biasedResidualSourceSegmentValid`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_signedFactor_segment_cover`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_signedFactor_segment_cover`.
+- New preferred payload target:
+  `∀ i, (seg i).SourceIntervalValid`, a signed-factor segment cover, exact
+  per-segment budget rows against the checked biased-model polynomial range,
+  and the global comparison
+  `residualAbs <=
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat`.
+- Closed interface subgap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_TO_SOURCE_SEGMENT_RECEIVER_CLOSED`.
+- Boundary: no concrete signed-factor segment rows were generated here;
+  Step33A.1-A remains open.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP`.

@@ -72314,3 +72314,98 @@ Boundary:
 This is still a receiver/interface step.  It proves no concrete source segment
 rows and does not close Step33A.1-A.
 ```
+
+## 2026-06-23 Addendum -- signed-factor source-only adapter checked
+
+The source segment receiver now has a checked signed-factor adapter that avoids
+the old direct-zero `zeroModelBudget` row.
+
+Extended signed-factor checker:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SignedFactorChecker.lean
+```
+
+New isolated adapter:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean
+```
+
+Lean-checked objects:
+
+```lean
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid.to_leftTermRows
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid.to_rightTermRows
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid.to_sourceInterval
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.Valid.to_sourceIntervalValid
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.toBiasedResidualSourceSegment
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.SourceIntervalValid.to_biasedResidualSourceSegmentValid
+Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_signedFactor_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_signedFactor_segment_cover
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_residual_signed_factor_source_only_adapter_checked_missing_segment_payload
+biasedResidualSignedFactorSourceOnlyAdapterClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
+```
+
+Exact next payload target:
+
+```lean
+∀ i : Fin n, (seg i).SourceIntervalValid
+Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentCover n seg
+∀ i : Fin n,
+  -(residualAbs : Real) <=
+    ((seg i).sourceLower : Real) -
+      (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+        Real)
+∀ i : Fin n,
+  ((seg i).sourceUpper : Real) -
+      (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+        Real) <=
+    (residualAbs : Real)
+(residualAbs : Real) <=
+  (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+    Real)
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SignedFactorChecker.lean
+
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean
+
+PASS marker scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" <touched Lean files>
+  returned no matches.
+
+PASS whitespace:
+  git diff --check on touched files.
+
+NOTE:
+  `lake env lean
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean`
+  produced no diagnostics for about 60s and was stopped.  The direct Lean
+  command above completed cleanly after the required local `.olean` imports
+  were generated for the two touched bridge files.
+```
+
+Boundary:
+
+```text
+This is still a receiver/interface step.  It proves no concrete signed-factor
+segment rows and does not close Step33A.1-A.
+```
