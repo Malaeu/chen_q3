@@ -19130,3 +19130,47 @@ Boundary:
 The payload interface is Lean-checked; the concrete family rows are not yet
 proved.  Do not mark Step33A.1-A closed.
 ```
+
+## 2026-06-23 Active Node Addendum -- residual-Horner coefficient bridge checked
+
+Computer Use / Proshka was used again for the residual-Horner payload fork.
+The advisory answer selected route 1: assemble the biased residual-Horner
+polynomial from existing `ResidualTaylorCoeff` and biased-model coefficient
+rows, then identify the first missing proof-grade row.
+
+Added Lean-checked bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean
+```
+
+New checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerCoeff
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_eq_neg_biasCoeff
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_poly_eq_nonzero_sub_biased
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_poly_eq_neg_bias
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder
+```
+
+Updated ledger result:
+
+```text
+biased_residual_horner_coefficient_bridge_checked_missing_remainder_rows
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Current exact proof-producing gap:
+
+```text
+proof-grade uniform remainder rows for the analytic scaled remainder in
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder
+```
+
+Boundary:
+
+```text
+The coefficient bridge is Lean-checked.  No concrete family Valid theorem,
+segment/range/remainder/budget rows, or Step33A.1-A closure is claimed.
+```

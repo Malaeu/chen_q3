@@ -38810,3 +38810,79 @@ Boundary:
 This is still a payload interface step.  It proves no concrete residual-Horner
 family rows and does not close Step33A.1-A.
 ```
+
+## 2026-06-23 Current Active Pointer -- residual-Horner coefficient bridge checked
+
+Computer Use / Proshka follow-up selected route 1 for the current
+residual-Horner payload:
+
+```text
+assemble biased residual-Horner coefficients, then prove proof-grade remainder
+rows for the analytic scaled remainder.
+```
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean
+```
+
+Lean-checked bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder
+```
+
+Updated fail-closed ledger:
+
+```text
+biased_residual_horner_coefficient_bridge_checked_missing_remainder_rows
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean
+
+PASS manual olean build for the bridge file.
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean
+  returned no matches.
+
+PASS python compile:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+PASS ledger:
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+NOTE:
+  lake env lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean
+  produced no diagnostics for about 90s after the direct Lean pass and was
+  stopped.
+
+  bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean
+  reached the Lean target and then produced no further diagnostics for about
+  90s; it was stopped.  The direct Lean command above passed.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Boundary:
+
+```text
+This is an algebraic bridge only.  It does not prove the analytic remainder
+bound, residual budget rows, a concrete family Valid theorem, or Step33A.1-A.
+```

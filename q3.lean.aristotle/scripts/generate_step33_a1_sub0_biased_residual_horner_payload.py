@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v2"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -30,6 +30,10 @@ HORNER_CERT_FILE = (
 DIRECT_ADAPTER_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean"
+)
+CONCRETE_BRIDGE_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean"
 )
 
 JSON_OUT = REQUEST_DIR / "step33_a1_sub0_biased_residual_horner_payload.json"
@@ -57,6 +61,14 @@ DIRECT_ADAPTER_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound",
 ]
 
+CONCRETE_BRIDGE_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerCoeff",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_eq_neg_biasCoeff",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_poly_eq_nonzero_sub_biased",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_poly_eq_neg_bias",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder",
+]
+
 
 def file_contains(path: Path, symbols: list[str]) -> dict[str, bool]:
     if not path.exists():
@@ -77,12 +89,16 @@ def build_ledger() -> dict[str, object]:
     payload_symbols = file_contains(PAYLOAD_FILE, PAYLOAD_SYMBOLS)
     horner_cert_symbols = file_contains(HORNER_CERT_FILE, HORNER_CERT_SYMBOLS)
     direct_adapter_symbols = file_contains(DIRECT_ADAPTER_FILE, DIRECT_ADAPTER_SYMBOLS)
+    concrete_bridge_symbols = file_contains(
+        CONCRETE_BRIDGE_FILE, CONCRETE_BRIDGE_SYMBOLS
+    )
 
     interface_ready = (
         all_true(payload_symbols)
         and all_true(horner_cert_symbols)
         and all_true(direct_adapter_symbols)
     )
+    concrete_bridge_ready = all_true(concrete_bridge_symbols)
 
     return {
         "schema": SCHEMA,
@@ -91,17 +107,23 @@ def build_ledger() -> dict[str, object]:
         "payloadFile": rel(PAYLOAD_FILE),
         "hornerCertFile": rel(HORNER_CERT_FILE),
         "directAdapterFile": rel(DIRECT_ADAPTER_FILE),
+        "concreteBridgeFile": rel(CONCRETE_BRIDGE_FILE),
         "proofStatus": (
-            "biased_residual_horner_payload_interface_checked_missing_family_rows"
+            "biased_residual_horner_coefficient_bridge_checked_missing_remainder_rows"
+            if interface_ready and concrete_bridge_ready
+            else "biased_residual_horner_payload_interface_checked_missing_family_rows"
             if interface_ready
             else "biased_residual_horner_payload_interface_incomplete"
         ),
         "payloadInterfacePresent": all_true(payload_symbols),
         "hornerFamilyReceiverPresent": all_true(horner_cert_symbols),
         "directResidualAdapterPresent": all_true(direct_adapter_symbols),
+        "coefficientBridgePresent": concrete_bridge_ready,
         "payloadSymbols": payload_symbols,
         "hornerCertSymbols": horner_cert_symbols,
         "directAdapterSymbols": direct_adapter_symbols,
+        "concreteBridgeSymbols": concrete_bridge_symbols,
+        "coefficientBridgeLeanChecked": concrete_bridge_ready,
         "concreteFamilyDataLeanChecked": False,
         "segmentRowsLeanChecked": False,
         "hornerRangeRowsLeanChecked": False,
@@ -115,7 +137,9 @@ def build_ledger() -> dict[str, object]:
         "step33A1ClosedClaimed": False,
         "proofGrade": False,
         "currentGap": (
-            "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP"
+            "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP"
+            if concrete_bridge_ready
+            else "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP"
         ),
         "closedInterfaceCode": (
             "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_PAYLOAD_INTERFACE_CLOSED"
@@ -130,10 +154,13 @@ def build_ledger() -> dict[str, object]:
             "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_BUDGET_CONSTANT_FAIL"
         ),
         "nextProofObject": (
-            "a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert "
-            "with segment data, Horner range rows, residual remainder rows, "
-            "residual budget rows, cover of [0,1/10], and residualAbs equal "
-            "to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs"
+            "proof-grade residual remainder rows for the analytic scaled "
+            "remainder in "
+            "primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder; "
+            "then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert "
+            "with Horner range rows, residual budget rows, cover of [0,1/10], "
+            "and residualAbs equal to "
+            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs"
         ),
         "guard": (
             "Do not claim Step33A.1-A from the interface alone.  The payload "
@@ -153,9 +180,11 @@ def render_markdown(ledger: dict[str, object]) -> str:
     payload_symbols = ledger["payloadSymbols"]
     horner_cert_symbols = ledger["hornerCertSymbols"]
     direct_adapter_symbols = ledger["directAdapterSymbols"]
+    concrete_bridge_symbols = ledger["concreteBridgeSymbols"]
     assert isinstance(payload_symbols, dict)
     assert isinstance(horner_cert_symbols, dict)
     assert isinstance(direct_adapter_symbols, dict)
+    assert isinstance(concrete_bridge_symbols, dict)
 
     lines = [
         "# Step33A.1-A Biased Residual-Horner Payload Ledger",
@@ -169,15 +198,19 @@ def render_markdown(ledger: dict[str, object]) -> str:
         f"- payloadInterfacePresent: `{ledger['payloadInterfacePresent']}`",
         f"- hornerFamilyReceiverPresent: `{ledger['hornerFamilyReceiverPresent']}`",
         f"- directResidualAdapterPresent: `{ledger['directResidualAdapterPresent']}`",
+        f"- coefficientBridgePresent: `{ledger['coefficientBridgePresent']}`",
     ]
     lines.extend(render_symbol_section("Payload Interface Symbols", payload_symbols))
     lines.extend(render_symbol_section("Residual-Horner Receiver Symbols", horner_cert_symbols))
     lines.extend(render_symbol_section("Direct Residual Adapter Symbols", direct_adapter_symbols))
+    lines.extend(render_symbol_section("Concrete Coefficient Bridge Symbols", concrete_bridge_symbols))
     lines.extend(
         [
             "",
             "## Missing Proof Payload",
             "",
+            "- coefficientBridgeLeanChecked: "
+            f"`{ledger['coefficientBridgeLeanChecked']}`",
             f"- concreteFamilyDataLeanChecked: `{ledger['concreteFamilyDataLeanChecked']}`",
             f"- segmentRowsLeanChecked: `{ledger['segmentRowsLeanChecked']}`",
             f"- hornerRangeRowsLeanChecked: `{ledger['hornerRangeRowsLeanChecked']}`",

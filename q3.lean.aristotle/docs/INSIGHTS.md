@@ -43149,3 +43149,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP`.
 - This is not Step33A.1-A closure; no concrete segment/range/remainder rows
   are claimed yet.
+
+## Insight (2026-06-23, Step33A.1-A) -- ResidualHornerCoefficientBridge
+
+- Used Computer Use / Proshka follow-up on the residual-Horner family payload
+  shape; the advisory route was to assemble the biased residual-Horner
+  coefficient bridge first, then target the analytic remainder rows.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerConcretePayload.lean`.
+- Checked coefficient bridge:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_eq_neg_biasCoeff`.
+- Checked polynomial/remainder split:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder`.
+- Updated fail-closed ledger
+  `scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py`.
+- Ledger status:
+  `biased_residual_horner_coefficient_bridge_checked_missing_remainder_rows`.
+- Current concrete gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP`.
+- This is still not Step33A.1-A closure; the uniform analytic remainder rows,
+  residual budget rows, concrete family `Valid` theorem, and direct interval
+  closure are not claimed.

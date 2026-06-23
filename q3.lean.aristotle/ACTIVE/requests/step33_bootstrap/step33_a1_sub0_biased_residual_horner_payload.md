@@ -1,14 +1,15 @@
 # Step33A.1-A Biased Residual-Horner Payload Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v1`
+schema: `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v2`
 route: `biased_residual_horner_family_payload`
-proofStatus: `biased_residual_horner_payload_interface_checked_missing_family_rows`
+proofStatus: `biased_residual_horner_coefficient_bridge_checked_missing_remainder_rows`
 
 ## Present
 
 - payloadInterfacePresent: `True`
 - hornerFamilyReceiverPresent: `True`
 - directResidualAdapterPresent: `True`
+- coefficientBridgePresent: `True`
 
 ## Payload Interface Symbols
 
@@ -32,8 +33,17 @@ proofStatus: `biased_residual_horner_payload_interface_checked_missing_family_ro
 - `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound`: `True`
 
+## Concrete Coefficient Bridge Symbols
+
+- `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerCoeff`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_eq_neg_biasCoeff`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_poly_eq_nonzero_sub_biased`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerCoeff_poly_eq_neg_bias`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder`: `True`
+
 ## Missing Proof Payload
 
+- coefficientBridgeLeanChecked: `True`
 - concreteFamilyDataLeanChecked: `False`
 - segmentRowsLeanChecked: `False`
 - hornerRangeRowsLeanChecked: `False`
@@ -49,11 +59,11 @@ proofStatus: `biased_residual_horner_payload_interface_checked_missing_family_ro
 
 ## Current Gap
 
-`STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP`
+`STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP`
 
 ## Next Proof Object
 
-a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with segment data, Horner range rows, residual remainder rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+proof-grade residual remainder rows for the analytic scaled remainder in primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
 
 ## Failure Codes
 
