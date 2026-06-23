@@ -308,6 +308,143 @@ theorem of_horner_range
 end Valid
 end Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert
 
+/--
+The Horner-source segment family covers the active cell when the underlying
+source-segment family covers it.
+-/
+def Step33Sub0CombinedOrder16BiasedResidualSourceHornerSegmentCover
+    (n : Nat)
+    (seg :
+      Fin n ->
+        Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert) :
+    Prop :=
+  Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover n
+    (fun i => (seg i).toSourceSegment)
+
+/--
+A generator-facing Horner family certificate for the biased residual source.
+
+This packages the per-segment Horner range rows, source remainder rows, the
+same-unit residual budgets against the biased nonzero model, and the finite
+cover into one object that feeds the already checked interval receiver.
+-/
+structure Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert where
+  n : Nat
+  residualAbs : Rat
+  seg : Fin n -> Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert
+  range :
+    (i : Fin n) ->
+      Step33Sub0CombinedOrder16BiasedResidualSourceHornerRangeCert (seg i)
+
+namespace Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert
+
+structure Valid
+    (cert :
+      Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert) :
+    Prop where
+  cellSubset :
+    ∀ i : Fin cert.n,
+      ∀ eta ∈ Set.Icc ((cert.seg i).cellL : Real) ((cert.seg i).cellU : Real),
+        eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)
+  remainderNonneg :
+    ∀ i : Fin cert.n,
+      0 <= ((cert.seg i).remainderAbs : Real)
+  sourceRemainder :
+    ∀ i : Fin cert.n,
+      ∀ eta ∈ Set.Icc ((cert.seg i).cellL : Real) ((cert.seg i).cellU : Real),
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta -
+            (cert.seg i).poly eta‖ <=
+          ((cert.seg i).remainderAbs : Real)
+  rangeValid :
+    ∀ i : Fin cert.n, (cert.range i).Valid
+  sourceLowerBudget :
+    ∀ i : Fin cert.n,
+      ((cert.seg i).sourceLower : Real) <=
+        ((cert.seg i).polyLower : Real) -
+          ((cert.seg i).remainderAbs : Real)
+  sourceUpperBudget :
+    ∀ i : Fin cert.n,
+      ((cert.seg i).polyUpper : Real) +
+          ((cert.seg i).remainderAbs : Real) <=
+        ((cert.seg i).sourceUpper : Real)
+  biasedLowerBudget :
+    ∀ i : Fin cert.n,
+      -(cert.residualAbs : Real) <=
+        ((cert.seg i).sourceLower : Real) -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+            Real)
+  biasedUpperBudget :
+    ∀ i : Fin cert.n,
+      ((cert.seg i).sourceUpper : Real) -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+            Real) <=
+        (cert.residualAbs : Real)
+  cover :
+    Step33Sub0CombinedOrder16BiasedResidualSourceHornerSegmentCover
+      cert.n cert.seg
+  residualSlack :
+    (cert.residualAbs : Real) <=
+      (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+        Real)
+
+namespace Valid
+
+theorem to_segmentValid
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert}
+    (h : cert.Valid)
+    (i : Fin cert.n) :
+    (cert.seg i).Valid := by
+  exact
+    Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.of_horner_range
+      (h.cellSubset i)
+      (h.remainderNonneg i)
+      (h.sourceRemainder i)
+      (h.rangeValid i)
+      (h.sourceLowerBudget i)
+      (h.sourceUpperBudget i)
+
+theorem to_sourceSegmentValid
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert}
+    (h : cert.Valid) :
+    ∀ i : Fin cert.n, ((cert.seg i).toSourceSegment).Valid cert.residualAbs := by
+  intro i
+  exact
+    (h.to_segmentValid i).to_sourceSegmentValid
+      (h.biasedLowerBudget i)
+      (h.biasedUpperBudget i)
+
+theorem to_residualSourceProp
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+      cert.residualAbs := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_segment_cover
+      (n := cert.n)
+      (seg := fun i => (cert.seg i).toSourceSegment)
+      h.to_sourceSegmentValid
+      h.cover
+
+theorem to_order16DirectIntervalValid
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelOrder16IntervalData.Valid := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_source_segment_cover
+      (n := cert.n)
+      (seg := fun i => (cert.seg i).toSourceSegment)
+      h.residualSlack
+      h.to_sourceSegmentValid
+      h.cover
+
+end Valid
+end Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert
+
 end Step33
 end PSDpd
 end Q3

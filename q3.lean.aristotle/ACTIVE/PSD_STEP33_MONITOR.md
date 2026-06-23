@@ -38273,6 +38273,158 @@ Current proof-producing gap:
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
 ```
 
+## 2026-06-23 Addendum -- biased residual source Horner family adapter
+
+Extended the direct source-Horner receiver with a generator-facing finite
+family adapter:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerSegmentCover
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_segmentValid
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_sourceSegmentValid
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Checked theorem route:
+
+```text
+finite source-Horner family Valid
+-> per-segment SourceHornerCert.Valid
+-> per-segment SourceSegmentCert.Valid
+-> residualSourceProp
+-> existing biased nonzero-model order16 direct interval Valid
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean
+```
+
+Boundary:
+
+```text
+No concrete source-Horner payload rows were generated.  No coefficients,
+Horner stage bounds, source remainderBound, exact biased-residual budget rows,
+or Step33A.1-A closure are claimed by this adapter.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP
+```
+
+## 2026-06-23 Addendum -- direct residual adapter and normalization repair
+
+Browser/Computer Use follow-up confirmed the normalization issue:
+
+```text
+SourceHornerFamilyCert.Valid is not the right object to spend a pointwise
+|ComponentSource - BiasedNonzeroModelPoly| <= R bound, because its
+SourceSegmentCert bridge compares independent global extrema sourceLower and
+BiasedNonzeroModelData.polyUpper/polyLower and can pay the full model width.
+```
+
+Added the checked direct adapter:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean
+```
+
+Checked names:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+```
+
+Also added an auxiliary residual-Horner receiver for future row generation:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean
+```
+
+Checked names:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualHornerCert
+Step33Sub0CombinedOrder16BiasedResidualHornerRangeCert
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean
+
+PASS ledger:
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_source_horner_cert.py
+  direct_residual_adapter_checked_missing_residual_bound
+```
+
+Boundary:
+
+```text
+No analytic residual bound is proved here.  No Step33A.1-A closure is claimed.
+The spendable remaining proof object is exactly
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+with residualAbs <= ResidualSlackRat.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+## 2026-06-23 Addendum -- source Horner payload ledger
+
+Added and ran a fail-closed ledger generator for the new source-Horner family
+target:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_source_horner_cert.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.md
+```
+
+Ledger status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_biased_residual_source_horner_cert.v1
+proofStatus = source_horner_family_receiver_checked_missing_payload_rows
+sourceHornerReceiverPresent = true
+biasedResidualSourceSegmentReceiverPresent = true
+biasedModelBudgetSurfacePresent = true
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Meaning:
+
+```text
+The SourceHornerFamilyCert receiver is present and checked, but no concrete
+source-Horner coefficients, Horner stage rows, source remainderBound,
+lower/upper source rows, biased budget rows, cover, or residualSlack comparison
+have been generated.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP
+```
+
 ## 2026-06-23 Addendum -- biased residual direct source Horner receiver
 
 Browser/Computer Use route review confirmed the next proof surface after the

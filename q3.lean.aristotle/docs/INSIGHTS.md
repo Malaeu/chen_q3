@@ -42981,3 +42981,75 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_CERT_GAP`.
 - Fallback if payload generation cannot hit the checker normalization:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_NORMALIZATION_MISMATCH_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- BiasedResidualSourceHornerFamily
+
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean`
+  with a finite-family adapter over the direct source-Horner segment checker.
+- Lean checked:
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerSegmentCover`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_segmentValid`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_sourceSegmentValid`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_residualSourceProp`,
+  and
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_order16DirectIntervalValid`.
+- The new bridge is:
+  finite source-Horner family `Valid` -> per-segment source segment `Valid`
+  -> residual source property -> existing biased nonzero-model order16 direct
+  interval `Valid`.
+- Boundary: still no concrete source-Horner coefficients, Horner stage bounds,
+  source remainderBound, exact biased-residual budget rows, or Step33A.1-A
+  closure claim.
+- Browser/Computer Use follow-up was sent to choose the next payload patch:
+  fail-closed generator, concrete rational payload attempt, or Aristotle
+  whole-source remainder theorem.  Pending at this checkpoint.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- DirectResidualAdapter
+
+- Browser/Computer Use follow-up confirmed the normalization issue in the
+  naive source-Horner payload: `SourceHornerFamilyCert.Valid` compares source
+  interval rows against independent global biased-model extrema, so a
+  pointwise `|ComponentSource - BiasedNonzeroModelPoly| <= R` bound can pay the
+  full biased-model width.
+- Added the checked direct adapter:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`,
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound`.
+- Added auxiliary residual-Horner receiver:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean`,
+  with
+  `Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp`
+  and
+  `Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.json`
+  and `.md`; ledger status is now
+  `direct_residual_adapter_checked_missing_residual_bound`.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- SourceHornerPayloadLedger
+
+- Added
+  `scripts/generate_step33_a1_sub0_biased_residual_source_horner_cert.py`
+  as a fail-closed ledger for the checked `SourceHornerFamilyCert` receiver.
+- Generated:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.json`
+  and
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.md`.
+- Ledger status:
+  `source_horner_family_receiver_checked_missing_payload_rows`.
+- The live missing proof object is now exact: concrete source-Horner
+  coefficients, Horner stage bounds, proof-grade whole-source remainderBound,
+  same-unit source/budget rows, cover of `[0,1/10]`, and
+  `residualAbs <= ResidualSlackRat`.
+- This ledger is not proof payload and does not close Step33A.1-A.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP`.

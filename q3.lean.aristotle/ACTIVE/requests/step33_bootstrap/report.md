@@ -72686,3 +72686,159 @@ Fallback if payload generation reveals a normalization mismatch:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_NORMALIZATION_MISMATCH_GAP
 ```
+
+## 2026-06-23 Addendum -- biased residual source Horner family adapter
+
+Added the finite-family adapter on top of the direct source-Horner segment
+checker:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerSegmentCover
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_segmentValid
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_sourceSegmentValid
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+The adapter proves the checked bridge:
+
+```text
+SourceHornerFamilyCert.Valid
+-> residualSourceProp
+-> primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelOrder16IntervalData.Valid
+```
+
+Boundary:
+
+```text
+This is still a receiver/bridge theorem.  It does not generate concrete
+source-Horner coefficients, Horner stage bounds, source remainderBound rows,
+biased residual budget rows, or a Step33A.1-A closure claim.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean
+```
+
+Browser/Computer Use escalation sent after the adapter compiled:
+
+```text
+Question: choose the first next payload patch among
+A fail-closed SourceHornerFamilyCert generator, B concrete rational
+source-Horner payload attempt, C Aristotle whole-source remainderBound theorem.
+Status: pending at this checkpoint.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP
+```
+
+## 2026-06-23 Addendum -- source Horner payload ledger
+
+Added and ran:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_source_horner_cert.py
+```
+
+Outputs:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_source_horner_cert.md
+```
+
+Run result:
+
+```text
+source_horner_family_receiver_checked_missing_payload_rows
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_PAYLOAD_ROWS_GAP
+```
+
+Validation:
+
+```text
+PASS python compile:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_source_horner_cert.py
+```
+
+Boundary:
+
+```text
+The ledger is fail-closed.  It records the checked receiver and missing rows;
+it does not emit numerical payload rows and does not claim Step33A.1-A closure.
+```
+
+## 2026-06-23 Addendum -- direct residual adapter and normalization repair
+
+Browser/Computer Use follow-up answer:
+
+```text
+CHOSEN: A
+FIRST FILE:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean
+FAILURE CODE:
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_DIRECT_INTERVAL_ADAPTER_GAP
+After adapter compiles:
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Reason:
+
+```text
+Do not force SourceHornerFamilyCert.Valid from a pointwise residual bound.
+That bridge mixes independent global extrema and pays model width.  The
+existing biased nonzero-model direct interval receiver has the correct
+pointwise normalization.
+```
+
+Added checked adapter:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound
+```
+
+Added auxiliary residual-Horner receiver for later proof-grade row generation:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualHornerCert
+Step33Sub0CombinedOrder16BiasedResidualHornerRangeCert
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean
+
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean
+
+PASS ledger:
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_source_horner_cert.py
+  direct_residual_adapter_checked_missing_residual_bound
+  STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
