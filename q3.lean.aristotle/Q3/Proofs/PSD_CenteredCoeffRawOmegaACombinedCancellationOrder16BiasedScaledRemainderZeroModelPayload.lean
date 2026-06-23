@@ -57,6 +57,43 @@ theorem primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_n
   exact_mod_cast
     primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_residualSlack_nonneg_rat
 
+/-- Same analytic remainder, in the nonzero-model source convention. -/
+def primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp
+    (remainderAbs : Rat) : Prop :=
+  ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+    ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+          eta -
+        primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelPoly
+          eta‖ <=
+      (remainderAbs : Real)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual
+    (eta : Real) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder
+        eta =
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+          eta -
+        primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelPoly
+          eta := by
+  unfold
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder
+  symm
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly
+      eta
+
+theorem primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual
+    {remainderAbs : Rat}
+    (hResidual :
+      primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp
+        remainderAbs) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp
+      remainderAbs := by
+  intro eta hEta
+  rw [
+    primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual]
+  exact hResidual eta hEta
+
 theorem primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid
     (hScaled :
       primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp
@@ -138,6 +175,16 @@ theorem primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payl
     ⟨primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid
         hScaled,
       rfl⟩
+
+theorem primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual
+    (hResidual :
+      primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp
+        primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs) :
+    primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget
+      primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily :=
+  primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+    (primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual
+      hResidual)
 
 theorem primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
     (hScaled :

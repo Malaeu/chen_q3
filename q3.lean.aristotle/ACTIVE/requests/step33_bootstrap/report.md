@@ -73433,9 +73433,13 @@ New Lean-checked symbols:
 primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment
 primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily
 primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual
 primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid
 primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid
 primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual
 primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
 ```
 
@@ -73448,6 +73452,8 @@ biased scaled-remainder interval:
   segmentCoverLeanChecked = true
   budgetRowsLeanChecked = true
   wholeExpressionScaledRemainderSourceBoundLeanChecked = false
+  nonzeroModelResidualBridgeLeanChecked = true
+  nonzeroModelResidualSourceBoundLeanChecked = false
 
 biased residual-Horner:
   schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5
@@ -73479,8 +73485,10 @@ PASS marker scan:
 NOTE:
   lake env lean ...BiasedScaledRemainderZeroModelPayload.lean and
   bash scripts/q3_check.sh ...BiasedScaledRemainderZeroModelPayload.lean
-  both reached the Lean target and then produced no diagnostics for more than
-  90s; both were stopped. The direct Lean command above passed.
+  both reached the Lean target and then produced no Lean diagnostics before a
+  95s alarm limit; both exited with code 142. The q3_check wrapper additionally
+  reported local changes in `.lake/packages/mathlib` and
+  `.lake/packages/BibtexQuery`. The direct Lean command above passed.
 ```
 
 Boundary:
@@ -73491,5 +73499,7 @@ plumbing.  It does not prove
 primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp,
 does not prove residual-Horner family Valid, and does not close Step33A.1-A.
 The next proof-producing object is a proof-grade bound for the complete signed
-scaled remainder at the canonical BiasedResidualRemainderAbs budget.
+scaled remainder in the nonzero-model convention,
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`,
+at the canonical BiasedResidualRemainderAbs budget.
 ```

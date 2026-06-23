@@ -12,6 +12,8 @@ proofStatus: `biased_scaled_remainder_zero_model_checker_checked_missing_source_
 - proofGrade: `False`
 - wholeExpressionIntervalRowsLeanChecked: `False`
 - wholeExpressionScaledRemainderSourceBoundLeanChecked: `False`
+- nonzeroModelResidualBridgeLeanChecked: `True`
+- nonzeroModelResidualSourceBoundLeanChecked: `False`
 - zeroModelPayloadTargetLeanChecked: `True`
 - segmentCoverLeanChecked: `True`
 - budgetRowsLeanChecked: `True`
@@ -34,9 +36,13 @@ proofStatus: `biased_scaled_remainder_zero_model_checker_checked_missing_source_
 - `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`: `True`
 
 ## Remainder Bridge Symbols
@@ -121,7 +127,7 @@ First failure code if the new route fails:
 
 ## Next Proof Object
 
-A proof-grade theorem of primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs, feeding the checked zero-model payload target.
+A proof-grade theorem of primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs, feeding the checked nonzero-model-to-scaled zero-model payload target.
 
 ## Guard
 

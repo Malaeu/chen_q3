@@ -100,7 +100,11 @@ SCALED_REMAINDER_INTERVAL_PAYLOAD_SYMBOLS = [
 SCALED_REMAINDER_ZERO_MODEL_PAYLOAD_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment",
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily",
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual",
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual",
     "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel",
 ]
 
@@ -218,6 +222,10 @@ def build_ledger() -> dict[str, object]:
         "scaledRemainderZeroModelPayloadTargetLeanChecked": (
             scaled_remainder_zero_model_payload_ready
         ),
+        "nonzeroModelResidualBridgeLeanChecked": (
+            scaled_remainder_zero_model_payload_ready
+        ),
+        "nonzeroModelResidualSourceBoundLeanChecked": False,
         "scaledRemainderIntervalRowsLeanChecked": False,
         "residualBudgetRowsLeanChecked": False,
         "coverLeanChecked": False,
@@ -256,7 +264,7 @@ def build_ledger() -> dict[str, object]:
         ),
         "nextProofObject": (
             "proof-grade bound for "
-            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; "
+            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp; "
             "the generator-facing whole-expression zero-model interval target is "
             "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target; "
             "then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert "
@@ -352,6 +360,10 @@ def render_markdown(ledger: dict[str, object]) -> str:
             f"`{ledger['scaledRemainderBoundLeanChecked']}`",
             "- scaledRemainderZeroModelPayloadTargetLeanChecked: "
             f"`{ledger['scaledRemainderZeroModelPayloadTargetLeanChecked']}`",
+            "- nonzeroModelResidualBridgeLeanChecked: "
+            f"`{ledger['nonzeroModelResidualBridgeLeanChecked']}`",
+            "- nonzeroModelResidualSourceBoundLeanChecked: "
+            f"`{ledger['nonzeroModelResidualSourceBoundLeanChecked']}`",
             "- scaledRemainderIntervalRowsLeanChecked: "
             f"`{ledger['scaledRemainderIntervalRowsLeanChecked']}`",
             "- residualBudgetRowsLeanChecked: "

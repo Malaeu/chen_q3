@@ -230,6 +230,9 @@ Checked handoff:
 
 ```lean
 primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual
 primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
 ```
 
@@ -242,5 +245,5 @@ INTERVAL_CERT_GAP
 
 Boundary: this closes only the one-cell cover/budget checker for the canonical
 `BiasedResidualRemainderAbs` budget. It still requires a proof-grade theorem of
-`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`
 before any residual-Horner family `Valid` or Step33A.1-A closure can be claimed.

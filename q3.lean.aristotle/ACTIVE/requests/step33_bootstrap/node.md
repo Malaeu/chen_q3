@@ -19300,6 +19300,9 @@ Checked handoff:
 
 ```lean
 primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual
 primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
 ```
 
@@ -19319,6 +19322,7 @@ Boundary:
 ```text
 The one-cell zero-model checker closes only cover/budget plumbing for the
 canonical residual budget. It still depends on a proof-grade source bound for
-the complete signed scaled remainder on `[0,1/10]`. This is not a
-residual-Horner family Valid theorem and not Step33A.1-A closure.
+`ComponentSource - NonzeroModelPoly` on `[0,1/10]`, exposed as
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`.
+This is not a residual-Horner family Valid theorem and not Step33A.1-A closure.
 ```

@@ -43269,7 +43269,10 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Checked one-cell zero-model support:
   `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment`,
   `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily`,
+  `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual`,
+  `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual`,
   `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target`,
+  `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual`,
   and
   `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`.
 - Updated fail-closed scaled-remainder ledger to schema
@@ -43285,6 +43288,6 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP`.
 - Next proof-producing object:
   proof-grade
-  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`
   at
   `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`.

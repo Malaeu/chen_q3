@@ -77,9 +77,13 @@ ZERO_MODEL_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment",
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily",
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg",
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual",
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid",
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid",
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual",
     "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel",
 ]
 
@@ -239,6 +243,8 @@ def build_ledger() -> dict[str, Any]:
         "proofGrade": False,
         "wholeExpressionIntervalRowsLeanChecked": False,
         "wholeExpressionScaledRemainderSourceBoundLeanChecked": False,
+        "nonzeroModelResidualBridgeLeanChecked": zero_model_ready,
+        "nonzeroModelResidualSourceBoundLeanChecked": False,
         "zeroModelPayloadTargetLeanChecked": zero_model_ready,
         "segmentCoverLeanChecked": zero_model_ready,
         "budgetRowsLeanChecked": zero_model_ready,
@@ -271,10 +277,11 @@ def build_ledger() -> dict[str, Any]:
         ),
         "nextProofObject": (
             "A proof-grade theorem of "
-            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHorner"
-            "ScaledRemainderSourceProp at "
+            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16"
+            "ScaledRemainderNonzeroModelSourceProp at "
             "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidual"
-            "RemainderAbs, feeding the checked zero-model payload target."
+            "RemainderAbs, feeding the checked nonzero-model-to-scaled "
+            "zero-model payload target."
         ),
     }
 
@@ -303,6 +310,10 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"`{ledger['wholeExpressionIntervalRowsLeanChecked']}`",
         "- wholeExpressionScaledRemainderSourceBoundLeanChecked: "
         f"`{ledger['wholeExpressionScaledRemainderSourceBoundLeanChecked']}`",
+        "- nonzeroModelResidualBridgeLeanChecked: "
+        f"`{ledger['nonzeroModelResidualBridgeLeanChecked']}`",
+        "- nonzeroModelResidualSourceBoundLeanChecked: "
+        f"`{ledger['nonzeroModelResidualSourceBoundLeanChecked']}`",
         "- zeroModelPayloadTargetLeanChecked: "
         f"`{ledger['zeroModelPayloadTargetLeanChecked']}`",
         f"- segmentCoverLeanChecked: `{ledger['segmentCoverLeanChecked']}`",

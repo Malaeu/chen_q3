@@ -64,7 +64,11 @@ proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_re
 
 - `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`: `True`
 
 ## Missing Proof Payload
@@ -77,6 +81,8 @@ proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_re
 - residualRemainderRowsLeanChecked: `False`
 - scaledRemainderBoundLeanChecked: `False`
 - scaledRemainderZeroModelPayloadTargetLeanChecked: `True`
+- nonzeroModelResidualBridgeLeanChecked: `True`
+- nonzeroModelResidualSourceBoundLeanChecked: `False`
 - scaledRemainderIntervalRowsLeanChecked: `False`
 - residualBudgetRowsLeanChecked: `False`
 - coverLeanChecked: `False`
@@ -97,7 +103,7 @@ Parent gap:
 
 ## Next Proof Object
 
-proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; the generator-facing whole-expression zero-model interval target is primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp; the generator-facing whole-expression zero-model interval target is primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
 
 ## Failure Codes
 

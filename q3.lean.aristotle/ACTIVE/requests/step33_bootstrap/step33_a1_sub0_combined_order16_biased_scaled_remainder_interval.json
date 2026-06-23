@@ -11,9 +11,11 @@
   "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
   "doNotSplitSummands": true,
   "firstFailureCode": "INTERVAL_CERT_GAP",
-  "generatedAt": "2026-06-23T17:03:49.464864+00:00",
+  "generatedAt": "2026-06-23T17:12:48.312264+00:00",
   "guard": "This ledger is not proof evidence.  Do not split the two analytic summands as the primary route and do not claim residual-Horner family Valid until a proof-grade whole-expression scaled-remainder source bound instantiates the zero-model payload target.",
-  "nextProofObject": "A proof-grade theorem of primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs, feeding the checked zero-model payload target.",
+  "nextProofObject": "A proof-grade theorem of primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs, feeding the checked nonzero-model-to-scaled zero-model payload target.",
+  "nonzeroModelResidualBridgeLeanChecked": true,
+  "nonzeroModelResidualSourceBoundLeanChecked": false,
   "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
   "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean",
   "payloadInterfacePresent": true,
@@ -98,10 +100,14 @@
   "zeroModelSymbols": {
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily": true,
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment": true,
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp": true,
     "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderSourceProp_of_nonzeroModelResidual": true,
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid": true,
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual": true,
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_eq_nonzeroModelResidual": true,
     "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg": true
   }
 }
