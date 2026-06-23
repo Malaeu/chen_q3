@@ -173,6 +173,73 @@ prove a signed interval on [0,1/10] for ComponentSource - NonzeroModelPoly insid
 - `verdict`: `adapter_for_biased_route_only_not_direct_nonzero_model_rows`
 - `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
 
+## Source Availability Audit
+
+### order16_nonzero_model_normal_forms
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean`
+- `artifactStatus`: `lean_surface_present`
+- `sameTarget`: `True`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `Exact normal-form names exist for the current residual, but there is no generated signed interval theorem proving the whole expression inside BiasedResidualRemainderAbs.`
+- `firstMissingProofObject`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+
+### direct_scaled_remainder_payload_surface
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean`
+- `artifactStatus`: `lean_receiver_present`
+- `sameTarget`: `True`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `The receiver can consume a proof-grade direct payload, but the segment rows and whole-expression range certificate are still missing.`
+- `firstMissingProofObject`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+
+### combined_cancellation_order16_direct_zero_model_ledger
+
+- `ledger`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_order16_direct_payload.json`
+- `artifactStatus`: `local_ledger_present`
+- `sameTarget`: `False`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `This threshold zero-model route records a checked interface but is killed by the rawProduct17 centered-Taylor budget and does not bound ComponentSource - NonzeroModelPoly.`
+- `blockingGap`: `STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL`
+
+### combined_order16_source_interval_ledger
+
+- `ledger`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_source_interval.json`
+- `artifactStatus`: `local_ledger_present`
+- `sameTarget`: `False`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `This is a zero-model whole-source interval receiver; its current gap is signed-factor/source rows, not the nonzero model residual interval needed here.`
+- `blockingGap`: `STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP`
+
+### combined_order16_signed_factor_rows_ledger
+
+- `ledger`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_signed_factor_rows.json`
+- `artifactStatus`: `local_ledger_present`
+- `sameTarget`: `False`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `The signed Leibniz checker interface is alive, but the centered-Taylor abs-row route is budget-killed and does not supply the direct nonzero-model source interval.`
+- `blockingGap`: `STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP`
+- `failureCode`: `STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL`
+
+### p45_full_taylor_bridge
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`
+- `artifactStatus`: `lean_surface_present`
+- `sameTarget`: `False`
+- `proofGradeRowsPresent`: `True`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `P45/full-Taylor controls a derivative-level residual error; no local theorem converts it to the order-16 ComponentSource - NonzeroModelPoly interval.`
+- `failureCode`: `STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH`
+
 
 ## Direct Payload Symbols
 

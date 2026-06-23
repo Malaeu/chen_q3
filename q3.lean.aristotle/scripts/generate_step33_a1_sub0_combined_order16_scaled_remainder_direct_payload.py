@@ -77,6 +77,15 @@ ROW_OBLIGATIONS_JSON_OUT = (
     REQUEST_DIR
     / "step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json"
 )
+CANCELLATION_DIRECT_LEDGER_FILE = (
+    REQUEST_DIR / "step33_a1_sub0_combined_cancellation_order16_direct_payload.json"
+)
+SOURCE_INTERVAL_LEDGER_FILE = (
+    REQUEST_DIR / "step33_a1_sub0_combined_order16_source_interval.json"
+)
+SIGNED_FACTOR_ROWS_LEDGER_FILE = (
+    REQUEST_DIR / "step33_a1_sub0_combined_order16_signed_factor_rows.json"
+)
 
 DIRECT_PAYLOAD_SYMBOLS = [
     "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert",
@@ -269,6 +278,116 @@ def build_ledger() -> dict[str, Any]:
         ),
     }
 
+    source_availability_audit = [
+        {
+            "source": "order16_nonzero_model_normal_forms",
+            "file": rel(ORDER16_NONZERO_MODEL_FILE),
+            "artifactStatus": "lean_surface_present",
+            "sameTarget": True,
+            "proofGradeRowsPresent": False,
+            "spendableForCurrentTarget": False,
+            "reason": (
+                "Exact normal-form names exist for the current residual, but "
+                "there is no generated signed interval theorem proving the "
+                "whole expression inside BiasedResidualRemainderAbs."
+            ),
+            "firstMissingProofObject": FIRST_GENERATED_INTERVAL_THEOREM,
+            "failureCode": DIRECT_ROW_SOURCE_GAP,
+        },
+        {
+            "source": "direct_scaled_remainder_payload_surface",
+            "file": rel(DIRECT_PAYLOAD_FILE),
+            "artifactStatus": "lean_receiver_present",
+            "sameTarget": True,
+            "proofGradeRowsPresent": False,
+            "spendableForCurrentTarget": False,
+            "reason": (
+                "The receiver can consume a proof-grade direct payload, but "
+                "the segment rows and whole-expression range certificate are "
+                "still missing."
+            ),
+            "firstMissingProofObject": FIRST_GENERATED_INTERVAL_THEOREM,
+            "failureCode": CURRENT_GAP,
+        },
+        {
+            "source": "combined_cancellation_order16_direct_zero_model_ledger",
+            "ledger": rel(CANCELLATION_DIRECT_LEDGER_FILE),
+            "artifactStatus": "local_ledger_present"
+            if CANCELLATION_DIRECT_LEDGER_FILE.exists()
+            else "ledger_missing",
+            "sameTarget": False,
+            "proofGradeRowsPresent": False,
+            "spendableForCurrentTarget": False,
+            "reason": (
+                "This threshold zero-model route records a checked interface "
+                "but is killed by the rawProduct17 centered-Taylor budget and "
+                "does not bound ComponentSource - NonzeroModelPoly."
+            ),
+            "blockingGap": load_json(CANCELLATION_DIRECT_LEDGER_FILE).get(
+                "currentGap"
+            ),
+            "failureCode": load_json(CANCELLATION_DIRECT_LEDGER_FILE).get(
+                "failureCodeIfRawProduct17BoundFails"
+            ),
+        },
+        {
+            "source": "combined_order16_source_interval_ledger",
+            "ledger": rel(SOURCE_INTERVAL_LEDGER_FILE),
+            "artifactStatus": "local_ledger_present"
+            if SOURCE_INTERVAL_LEDGER_FILE.exists()
+            else "ledger_missing",
+            "sameTarget": False,
+            "proofGradeRowsPresent": False,
+            "spendableForCurrentTarget": False,
+            "reason": (
+                "This is a zero-model whole-source interval receiver; its "
+                "current gap is signed-factor/source rows, not the nonzero "
+                "model residual interval needed here."
+            ),
+            "blockingGap": load_json(SOURCE_INTERVAL_LEDGER_FILE).get(
+                "currentGap"
+            ),
+            "failureCode": load_json(SOURCE_INTERVAL_LEDGER_FILE).get(
+                "failureCodeIfRowsMissing"
+            ),
+        },
+        {
+            "source": "combined_order16_signed_factor_rows_ledger",
+            "ledger": rel(SIGNED_FACTOR_ROWS_LEDGER_FILE),
+            "artifactStatus": "local_ledger_present"
+            if SIGNED_FACTOR_ROWS_LEDGER_FILE.exists()
+            else "ledger_missing",
+            "sameTarget": False,
+            "proofGradeRowsPresent": False,
+            "spendableForCurrentTarget": False,
+            "reason": (
+                "The signed Leibniz checker interface is alive, but the "
+                "centered-Taylor abs-row route is budget-killed and does not "
+                "supply the direct nonzero-model source interval."
+            ),
+            "blockingGap": load_json(SIGNED_FACTOR_ROWS_LEDGER_FILE).get(
+                "currentGap"
+            ),
+            "failureCode": load_json(SIGNED_FACTOR_ROWS_LEDGER_FILE).get(
+                "failureCodeIfCenteredTaylorAbsRowsUsed"
+            ),
+        },
+        {
+            "source": "p45_full_taylor_bridge",
+            "file": rel(P45_FULL_TAYLOR_BRIDGE_FILE),
+            "artifactStatus": "lean_surface_present",
+            "sameTarget": False,
+            "proofGradeRowsPresent": p45_full_taylor_bridge_present,
+            "spendableForCurrentTarget": False,
+            "reason": (
+                "P45/full-Taylor controls a derivative-level residual error; "
+                "no local theorem converts it to the order-16 "
+                "ComponentSource - NonzeroModelPoly interval."
+            ),
+            "failureCode": P45_REUSE_FAILURE,
+        },
+    ]
+
     row_obligations = [
         {
             "id": "R0_cell_cover",
@@ -410,6 +529,7 @@ def build_ledger() -> dict[str, Any]:
         "rowWorklistFile": rel(ROW_OBLIGATIONS_JSON_OUT),
         "rowObligations": row_obligations,
         "candidateReuseRoutes": candidate_reuse_routes,
+        "sourceAvailabilityAudit": source_availability_audit,
         "p45FullTaylorReuseVerdict": "not_spendable_for_order16_direct_source_bound",
         "p45FullTaylorReuseFailureCode": P45_REUSE_FAILURE,
         "proshkaRouteReviewDecision": "CHOSEN: A",
@@ -601,6 +721,15 @@ def render_markdown(ledger: dict[str, Any]) -> str:
                 continue
             lines.append(f"- `{key}`: `{value}`")
         lines.append("")
+    lines.extend(["## Source Availability Audit", ""])
+    for item in ledger["sourceAvailabilityAudit"]:
+        lines.append(f"### {item['source']}")
+        lines.append("")
+        for key, value in item.items():
+            if key == "source":
+                continue
+            lines.append(f"- `{key}`: `{value}`")
+        lines.append("")
     lines.extend(render_symbols("Direct Payload Symbols", ledger["directPayloadSymbols"]))
     lines.extend(render_symbols("Zero Model Symbols", ledger["zeroModelSymbols"]))
     lines.extend(render_symbols("Interval Payload Symbols", ledger["intervalPayloadSymbols"]))
@@ -660,6 +789,7 @@ def main() -> None:
                 "targetBudget": ledger["targetBudget"],
                 "rowObligations": ledger["rowObligations"],
                 "candidateReuseRoutes": ledger["candidateReuseRoutes"],
+                "sourceAvailabilityAudit": ledger["sourceAvailabilityAudit"],
                 "guard": ledger["guard"],
             },
             indent=2,

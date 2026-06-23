@@ -39175,3 +39175,29 @@ generate/check proof-grade rational or interval rows for the assembled signed
 expression ComponentSource - NonzeroModelPoly, not reuse P45/full-Taylor or
 biased/signed-factor adapters as if they were same-target certificates.
 ```
+
+## 2026-06-23 Current Active Pointer -- source-availability audit
+
+The active direct scaled-remainder payload now carries a machine-readable
+`sourceAvailabilityAudit`.
+
+Spendable status:
+
+```text
+No local source audited here is spendable as the current proof object.
+Same-target surfaces exist, but proof-grade interval/rational rows are missing.
+Older zero-model/direct source/signed-factor/P45 routes remain pattern or
+diagnostic material only for this node.
+```
+
+First missing proof object:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Current failure code:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```

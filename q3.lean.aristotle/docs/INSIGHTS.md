@@ -43370,3 +43370,23 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   checked bridge.
 - Boundary: this is not Step33A.1-A closure.  It only names the exact row
   obligations for the next proof-producing rational/interval generator.
+
+## Insight (2026-06-23, Step33A.1-A) -- DirectSourceAvailabilityAudit
+
+- Extended the direct scaled-remainder v3 generator with
+  `sourceAvailabilityAudit` in the main payload and row-obligations JSON.
+- The audit records that the nonzero-model normal forms and direct payload
+  receiver are same-target surfaces, but neither provides proof-grade
+  interval/rational rows.
+- The local zero-model direct ledger is not spendable here: it is budget-killed
+  by
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL`.
+- The zero-model source-interval and signed-factor ledgers are not current
+  proof objects: their live failures are
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP`
+  and
+  `STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL`.
+- The P45/full-Taylor bridge remains not same-target for
+  `ComponentSource - NonzeroModelPoly`.
+- Current first missing proof object remains
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`.

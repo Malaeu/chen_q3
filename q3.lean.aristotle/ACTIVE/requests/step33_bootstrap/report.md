@@ -73677,3 +73677,38 @@ ComponentSource - NonzeroModelPoly on [0,1/10], at BiasedResidualRemainderAbs.
 The new row-source failure code is:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
+
+## 2026-06-23 Report Addendum -- direct source-availability audit
+
+The direct scaled-remainder ledger now includes a machine-readable
+`sourceAvailabilityAudit` in both generated outputs:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json
+```
+
+Audit verdict:
+
+```text
+order16_nonzero_model_normal_forms: same target, but no proof-grade rows
+direct_scaled_remainder_payload_surface: receiver only, no rows
+combined_cancellation_order16_direct_zero_model_ledger: not same target,
+  budget-killed by STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL
+combined_order16_source_interval_ledger: zero-model source receiver only,
+  rows gap STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP
+combined_order16_signed_factor_rows_ledger: signed checker alive, but
+  centered-Taylor abs route budget-killed by
+  STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL
+p45_full_taylor_bridge: not same target
+```
+
+Boundary:
+
+```text
+No audited source is spendable as the current proof object.  The first missing
+proof object remains
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+with failure code
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP.
+```

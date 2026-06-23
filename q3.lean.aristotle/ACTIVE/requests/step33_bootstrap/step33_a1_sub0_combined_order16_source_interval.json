@@ -1,0 +1,47 @@
+{
+  "certFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SourceIntervalCert.lean",
+  "certSymbols": {
+    "Step33Sub0CombinedCancellationOrder16SourceSegmentCert": true,
+    "Step33Sub0CombinedCancellationOrder16SourceSegmentCover": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_segment_cover": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_abs_of_segment_cover": true,
+    "structure Valid": true,
+    "to_componentSource_abs_on_segment": true
+  },
+  "currentGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP",
+  "directBridgeSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_componentSource_abs": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_valid_of_remainder": true
+  },
+  "directIntervalValidClaimed": false,
+  "directModelFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean",
+  "failureCodeIfRowsMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP",
+  "failureCodeIfZeroModelTooSmall": "STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_ZERO_MODEL_CONSTANT_FAIL",
+  "generatedAt": "2026-06-23T18:13:32.019840+00:00",
+  "globalCoverLeanChecked": true,
+  "guard": "Do not use sampled intervals or independent product-summand norm bounds as proof; the source intervals must bound the whole assembled signed expression.",
+  "nextProofObject": "proof-grade signed factor derivative rows, exact Leibniz term interval rows, and active-scale sourceAssembly rows instantiating the signed whole-source interval for the concrete whole-cell zero-model segment",
+  "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SourceIntervalPayload.lean",
+  "payloadSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16SourceWholeCellSegment": true,
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16SourceWholeCellSegments": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_wholeCell_direct_interval": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_valid_of_wholeCell_direct_interval": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16SourceWholeCell_cover": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16SourceWholeCell_valid_of_direct_interval": true
+  },
+  "proofGrade": false,
+  "proofStatus": "whole_cell_receiver_checked_missing_signed_source_interval",
+  "refinedByLedger": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_signed_factor_rows.json",
+  "route": "direct_signed_whole_source_interval_for_zero_model",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_order16_source_interval.v1",
+  "signedFactorRowsLeanChecked": false,
+  "sourceIntervalCertValidClaimed": false,
+  "sourceIntervalCheckerPresent": true,
+  "step33A1ClosedClaimed": false,
+  "wholeCellPayloadPresent": true,
+  "wholeSourceAssemblyLeanChecked": false,
+  "zeroModelAbsBoundLeanChecked": false,
+  "zeroModelIntervalDataValidReceiverPresent": true,
+  "zeroModelRemainderBridgePresent": true
+}

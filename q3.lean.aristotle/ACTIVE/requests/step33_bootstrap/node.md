@@ -19461,3 +19461,30 @@ This worklist is not a certificate.  Step33A.1-A remains open until the whole
 signed expression interval for ComponentSource - NonzeroModelPoly is
 Lean-checked or backed by proof-grade generated rational/interval rows.
 ```
+
+## 2026-06-23 Active Node Addendum -- source-availability audit
+
+The v3 direct scaled-remainder ledger now records `sourceAvailabilityAudit`.
+It classifies the local possible sources before any proof-producing Lean edit:
+
+```text
+same-target but rows missing:
+  order16_nonzero_model_normal_forms
+  direct_scaled_remainder_payload_surface
+
+not spendable for the current target:
+  combined_cancellation_order16_direct_zero_model_ledger
+  combined_order16_source_interval_ledger
+  combined_order16_signed_factor_rows_ledger
+  p45_full_taylor_bridge
+```
+
+Boundary:
+
+```text
+The source audit closes only bookkeeping.  It does not prove the interval.
+Current live proof object:
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+Current row-source failure:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
