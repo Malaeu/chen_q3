@@ -41380,3 +41380,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `order16SourceModelPresent = false`; it is not Step33A.1-A closure.
 - Current exact generator/proof interface:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- CombinedOrder16SourceModelChecked
+
+- Browser/Computer Use was used for route review after ledger v4.  Proshka
+  chose route C: fix the whole-expression order-16 source model before any
+  concrete generator.  This was advisory only; the accepted proof object is the
+  local Lean check.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`
+  in the repository's actual normalization:
+  `CombinedCancellationIntervalExpr = residualTaylor degree-45 polynomial +
+  ScaledCancellationRhs`.  The advisory degree-15-zero sketch was not used.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`
+  with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v5`.
+- The ledger now records `order16SourceModelPresent = true` and
+  `fullSourceModelBridgePresent = true`, while
+  `highOrderValidPayloadPresent = false`, `highOrderCenterJetRowsPresent =
+  false`, `highOrderOrder16RowsPresent = false`, and `proofSafeClosedFields =
+  0`.
+- Boundary: this is not Step33A.1-A closure.  It still does not emit rational
+  center-jet rows, a proof-grade `order16Abs` source bound, Horner range rows,
+  target-budget inequalities, or a
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` payload.
+- Current exact generator/proof interface:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.

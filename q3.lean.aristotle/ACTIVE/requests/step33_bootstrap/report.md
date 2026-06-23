@@ -102,7 +102,8 @@ Boundary:
 Step33A.1-A is not closed.
 highOrderValidPayloadPresent = false
 proofSafeClosedFields = 0
-order16SourceModelPresent = false
+order16SourceModelPresent = true
+fullSourceModelBridgePresent = true
 No rational center-jet rows, uniform order16Abs proof, Horner rows, or
 target-budget rows are emitted.
 ```
@@ -69228,4 +69229,53 @@ Next exact patch:
 Search/prove the product rule through existing iteratedFDeriv/product
 infrastructure, then use it to generalize the checked row0 center-jet source
 bridge to j : Fin 16.
+```
+
+## Execution Update (2026-06-23) -- combined order-16 source model checked
+
+Browser/Computer Use was used for a route review after ledger v4.  Proshka
+chose route C: fix the whole-expression order-16 source model before any
+concrete generator.  Codex accepted that only as route advice and used the
+repo-real normalization:
+
+```text
+CombinedCancellationIntervalExpr =
+  residualTaylor degree-45 polynomial + ScaledCancellationRhs
+```
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
+```
+
+Ledger regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v5
+order16SourceModelPresent = true
+fullSourceModelBridgePresent = true
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```
+
+First missing proof/generator interface:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```

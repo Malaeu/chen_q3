@@ -125,7 +125,7 @@ Next proof-producing patch:
   Horner range, and exact target-budget inequalities.
 ```
 
-2026-06-23 Step33A.1-A combined high-order ledger v4 update:
+2026-06-23 Step33A.1-A combined high-order ledger v5 update:
 
 ```text
 The fail-closed ledger
@@ -134,17 +134,23 @@ now records the source-model bridge as checked support:
 
   wholeExpressionSourceModelPresent = true
   centerJetSourceModelPresent = true
+  order16SourceModelPresent = true
+  fullSourceModelBridgePresent = true
 
 These flags come only from Lean-checked support theorems:
 
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource
+  primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
 
 This is not a proof payload:
 
   highOrderValidPayloadPresent = false
   proofSafeClosedFields = 0
-  order16SourceModelPresent = false
+  highOrderCenterJetRowsPresent = false
+  highOrderOrder16RowsPresent = false
 
 Current live gap remains:
   STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP

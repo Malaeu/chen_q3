@@ -954,6 +954,223 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_c
   unfold primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly
   ring_nf
 
+/--
+Order-16 source for the whole combined-cancellation expression, with the
+cancellation RHS kept assembled before any norm estimate.
+
+The residual Taylor polynomial is the repository's assembled degree-45
+polynomial, so its order-16 derivative is part of the source model.
+-/
+def primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+    (eta : Real) : Real :=
+  iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly eta +
+    primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+      iteratedDeriv 16
+        primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+        eta +
+    (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+        (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)) *
+      iteratedDeriv 16
+        primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal eta
+
+/--
+Exact order-16 source-model bridge for the whole combined-cancellation
+expression.
+
+This fixes the source expression a generator must bound; it does not provide
+the bound itself.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource
+    (eta : Real) :
+    iteratedDeriv 16
+        primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+        eta =
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+        eta := by
+  have hResidualPoly :
+      ContDiff Real 16
+        primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly := by
+    change ContDiff Real 16
+      (rawOmegaATaylorPolynomial
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff)
+    exact
+      rawOmegaATaylorPolynomial_contDiff16
+        primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+        ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff
+  have hOmegaPrime :
+      ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActual := by
+    simpa [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActual] using
+      step22OmegaArchWeightDerivClosedForm_contDiff16
+  have hOmega :
+      ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0OmegaActual := by
+    simpa [primaryFiniteRow0Parent0Split100Sub0OmegaActual] using
+      step22OmegaArchWeight_contDiff16
+  have hShapeSq :
+      ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqActual := by
+    unfold primaryFiniteRow0Parent0Split100Sub0ShapeSqActual
+    fun_prop
+  have hShapeSqDeriv :
+      ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActual := by
+    simpa [primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActual,
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using
+      shapeSqDeriv_contDiff16 11 ((3 : Real) / 10)
+  have hOmegaPrimePoly :
+      ContDiff Real 16
+        primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorPoly := by
+    change ContDiff Real 16
+      (rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff)
+    exact
+      rawOmegaATaylorPolynomial_contDiff16 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaPrimeTaylorCoeff
+  have hOmegaPoly :
+      ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0OmegaTaylorPoly := by
+    change ContDiff Real 16
+      (rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff)
+    exact
+      rawOmegaATaylorPolynomial_contDiff16 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff
+  have hShapeSqPoly :
+      ContDiff Real 16
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorPoly := by
+    change ContDiff Real 16
+      (rawOmegaATaylorPolynomial 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff)
+    exact
+      rawOmegaATaylorPolynomial_contDiff16 16 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff
+  have hShapeSqDerivPoly :
+      ContDiff Real 16
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorPoly := by
+    change ContDiff Real 16
+      (rawOmegaATaylorPolynomial 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff)
+    exact
+      rawOmegaATaylorPolynomial_contDiff16 15 ((1 : Rat) / 20)
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivTaylorCoeff
+  have hNominal :
+      ContDiff Real 16
+        primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal := by
+    unfold primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal
+    exact
+      (hOmegaPrimePoly.mul hShapeSqPoly).add
+        (hOmegaPoly.mul hShapeSqDerivPoly)
+  have hResidual :
+      ContDiff Real 16
+        primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual := by
+    unfold primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+    exact
+      ((((hOmegaPrime.sub hOmegaPrimePoly).mul hShapeSq).add
+        (hOmegaPrimePoly.mul (hShapeSq.sub hShapeSqPoly))).add
+        ((hOmega.sub hOmegaPoly).mul hShapeSqDeriv)).add
+        (hOmegaPoly.mul (hShapeSqDeriv.sub hShapeSqDerivPoly))
+  have hScaledResidual :
+      ContDiff Real 16
+        (fun eta : Real =>
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+              eta) := by
+    simpa using
+      (ContDiff.const_smul
+        primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff hResidual)
+  have hScaledNominal :
+      ContDiff Real 16
+        (fun eta : Real =>
+          (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+              (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)) *
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal eta) := by
+    simpa using
+      (ContDiff.const_smul
+        (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+          (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real))
+        hNominal)
+  have hScaledRhs :
+      ContDiff Real 16 primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs := by
+    unfold primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs
+    exact hScaledResidual.add hScaledNominal
+  unfold primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+  unfold primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+  change
+    iteratedDeriv 16
+        (primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly +
+          primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs) eta =
+      iteratedDeriv 16 primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly
+          eta +
+        primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+          iteratedDeriv 16
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+            eta +
+      (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+          (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)) *
+        iteratedDeriv 16
+          primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal eta
+  rw [iteratedDeriv_add hResidualPoly.contDiffAt hScaledRhs.contDiffAt]
+  unfold primaryFiniteRow0Parent0Split100Sub0ResidualTaylorPoly
+  unfold primaryFiniteRow0Parent0Split100Sub0ScaledCancellationRhs
+  change
+    iteratedDeriv 16
+          (fun eta =>
+            rawOmegaATaylorPolynomial
+              primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+              ((1 : Rat) / 20)
+              primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff eta)
+          eta +
+        iteratedDeriv 16
+          ((fun eta : Real =>
+              primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+                  eta) +
+            fun eta : Real =>
+              (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+                  (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)) *
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal eta)
+          eta =
+      iteratedDeriv 16
+            (fun eta =>
+              rawOmegaATaylorPolynomial
+                primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivDegree
+                ((1 : Rat) / 20)
+                primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff eta)
+            eta +
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductCancellationResidual
+              eta +
+        (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+            (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real)) *
+          iteratedDeriv 16
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductNominal eta
+  rw [iteratedDeriv_add hScaledResidual.contDiffAt hScaledNominal.contDiffAt]
+  rw [iteratedDeriv_const_mul hResidual.contDiffAt
+    primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff]
+  rw [iteratedDeriv_const_mul hNominal.contDiffAt
+    (primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff -
+      (primaryFiniteRow0Parent0Split100Sub0NominalScaleCoeff : Real))]
+  ring
+
+/--
+Norm-bound adapter for the exact order-16 component source.  The hard work is
+still the proof-grade source bound supplied by a later certificate.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
+    (order16Abs : Real)
+    (hSource :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+            eta‖ <= order16Abs) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖iteratedDeriv 16
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+          eta‖ <= order16Abs := by
+  intro eta hEta
+  rw [
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource]
+  exact hSource eta hEta
+
 end Step33
 end PSDpd
 end Q3

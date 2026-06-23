@@ -71,7 +71,7 @@ OMEGA_PRIME_PAYLOAD = (
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v4"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v5"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
@@ -116,6 +116,15 @@ SOURCE_MODEL_SMOOTH_THEOREM = (
 )
 SOURCE_MODEL_CENTER_JET_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource"
+)
+SOURCE_MODEL_ORDER16_DEF = (
+    "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource"
+)
+SOURCE_MODEL_ORDER16_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource"
+)
+SOURCE_MODEL_ORDER16_BOUND_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource"
 )
 
 
@@ -258,8 +267,21 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         line_of_symbol(ROOT / SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_CENTER_JET_THEOREM)
         is not None
     )
+    source_model_order16_present = (
+        line_of_symbol(ROOT / SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_DEF)
+        is not None
+        and line_of_symbol(ROOT / SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_THEOREM)
+        is not None
+        and line_of_symbol(
+            ROOT / SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_BOUND_THEOREM
+        )
+        is not None
+    )
     source_model_bridge_present = (
         source_model_smooth_present and source_model_center_jet_present
+    )
+    full_source_model_bridge_present = (
+        source_model_bridge_present and source_model_order16_present
     )
 
     return {
@@ -295,7 +317,8 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "highOrderTargetBudgetRowsPresent": False,
             "wholeExpressionSourceModelPresent": source_model_bridge_present,
             "centerJetSourceModelPresent": source_model_center_jet_present,
-            "order16SourceModelPresent": False,
+            "order16SourceModelPresent": source_model_order16_present,
+            "fullSourceModelBridgePresent": full_source_model_bridge_present,
             "omegaPrimePayloadReusableForWholeExpression": False,
             "residualTaylorCoeffPayloadPresent": (
                 ROOT / COMPONENT_ASSEMBLY_PAYLOAD_FILE
@@ -326,6 +349,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "conditionalPayloadFile": CONDITIONAL_PAYLOAD_FILE,
             "highOrderSourceFile": HIGH_ORDER_SOURCE_FILE,
             "sourceModelBridgeFile": SOURCE_MODEL_BRIDGE_FILE,
+            "sourceModelOrder16Source": SOURCE_MODEL_ORDER16_DEF,
+            "sourceModelOrder16Theorem": SOURCE_MODEL_ORDER16_THEOREM,
+            "sourceModelOrder16BoundAdapter": SOURCE_MODEL_ORDER16_BOUND_THEOREM,
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
@@ -413,11 +439,15 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         "sourceModelInventory": {
             "status": (
                 "source_model_bridge_checked_payload_rows_missing"
+                if full_source_model_bridge_present
+                else "center_jet_source_model_checked_order16_source_missing"
                 if source_model_bridge_present
                 else "fail_closed_source_model_gap"
             ),
             "firstSourceFailure": (
                 NEXT_PAYLOAD_FAILURE
+                if full_source_model_bridge_present
+                else ORDER16_SOURCE_MODEL_FAILURE
                 if source_model_bridge_present
                 else SOURCE_MODEL_FAILURE
             ),
@@ -426,7 +456,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 if source_model_center_jet_present
                 else CENTER_JET_SOURCE_MODEL_FAILURE
             ),
-            "order16Failure": ORDER16_SOURCE_MODEL_FAILURE,
+            "order16Failure": (
+                None if source_model_order16_present else ORDER16_SOURCE_MODEL_FAILURE
+            ),
             "checkedBridge": {
                 "file": SOURCE_MODEL_BRIDGE_FILE,
                 "smoothTheorem": symbol_ref(
@@ -435,18 +467,32 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "centerJetTheorem": symbol_ref(
                     SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_CENTER_JET_THEOREM
                 ),
+                "order16Source": symbol_ref(
+                    SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_DEF
+                ),
+                "order16Theorem": symbol_ref(
+                    SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_THEOREM
+                ),
+                "order16BoundAdapter": symbol_ref(
+                    SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_BOUND_THEOREM
+                ),
                 "smoothPresent": source_model_smooth_present,
                 "centerJetPresent": source_model_center_jet_present,
+                "order16Present": source_model_order16_present,
                 "status": (
                     "checked_source_model_support"
+                    if full_source_model_bridge_present
+                    else "checked_center_jet_support_order16_missing"
                     if source_model_bridge_present
                     else "missing_or_incomplete"
                 ),
                 "whyNotEnough": (
-                    "This proves the whole-expression smooth bridge and all-row "
-                    "component-source center-jet crosswalk. It still does not "
-                    "emit rational coeff rows, a uniform order16Abs bound, "
-                    "Horner range rows, target-budget rows, or a Valid payload."
+                    "This proves the whole-expression smooth bridge, all-row "
+                    "component-source center-jet crosswalk, and an exact "
+                    "order-16 source-model/norm adapter. It still does not "
+                    "emit rational coeff rows, a proof-grade order16Abs source "
+                    "bound, Horner range rows, target-budget rows, or a Valid "
+                    "payload."
                 ),
             },
             "targetFunction": {
@@ -483,7 +529,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             },
             "scaledCancellationRhs": {
                 "status": (
-                    "source_model_checked_for_center_jets"
+                    "source_model_checked_for_center_jets_and_order16"
+                    if source_model_order16_present
+                    else "source_model_checked_for_center_jets"
                     if source_model_center_jet_present
                     else "source_model_missing"
                 ),
@@ -505,7 +553,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 ),
                 "missing": [
                     "concrete rational center-jet rows j=0..15 for the combined expression",
-                    "proof-grade uniform order16 bound for ScaledCancellationRhs in the combined expression",
+                    "proof-grade uniform order16 bound for the order16 component source",
                     "same-surface addition with the residualTaylor polynomial in the high-order receiver normalization",
                 ],
             },
@@ -558,8 +606,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "target lower/upper budget after subtracting/adding remainderAbs",
             ],
             "nextPatchRecommendation": (
-                "Generate/prove the concrete HighOrderTaylorCert payload rows "
-                "from the checked source-model bridge."
+                "Generate/prove concrete HighOrderTaylorCert payload rows and "
+                "the order16Abs source bound from the checked source-model "
+                "bridge."
             ),
         },
         "candidateSegmentSource": {
@@ -592,6 +641,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "rows0..11 independent product budget is width-killed.",
             "High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows.",
             "Whole-expression smoothness and all-row component-source center-jet crosswalk are Lean-checked.",
+            "Whole-expression order-16 component-source bridge and norm adapter are Lean-checked.",
         ],
         "rejectedRoutes": {
             "independentTriangleSplit": (
