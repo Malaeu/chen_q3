@@ -120,6 +120,50 @@ First missing proof/generator interface:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
 
+## Execution Update (2026-06-23) -- active-actual interval adapter checked
+
+After the nonconditional source normal form was checked, the next smallest
+proof-safe step was to expose the generator-facing interval-row interface.  This
+does not emit rows; it only transports future active-actual lower/upper row
+proofs into the existing component-source certificate convention.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_activeActual_interval
+```
+
+Ledger regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v11
+sourceNormalFormActiveActualInterfacePresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Next exact patch:
+
+```text
+Generate/prove concrete SourceIntervalCert.Valid rows through the checked
+active-actual interval adapter.
+```
+
 ## Execution Update (2026-06-23) -- nonconditional source normal form checked
 
 Browser/Computer Use was used for advisory review of the coefficient-alignment

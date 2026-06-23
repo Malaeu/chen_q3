@@ -10,16 +10,14 @@ combined-cancellation source rows.
 
 This file does not emit source intervals and does not instantiate
 `Step33Sub0CombinedCancellationSourceIntervalCert.Valid`.  It records the
-Lean-checked algebra that is available before the remaining coefficient
-alignment bridge:
+Lean-checked algebra that is available before the remaining source-row payload:
 
 * the cancellation-residual Cauchy source equals actual minus nominal in the
   repository's factorial-normalized center-jet convention;
-* once the residual Taylor center jet is aligned with the same convention, the
-  combined source reduces to active actual product minus the residual model row.
-
-The missing nonconditional bridge is the coefficient extraction theorem from
-`rawOmegaATaylorPolynomial` coefficients to normalized center jets.
+* the residual Taylor center jet is aligned with the same convention;
+* the combined source reduces to active actual product minus the residual model
+  row, and generated active-actual row intervals can be transported into the
+  existing source-interval certificate interface.
 -/
 
 noncomputable section
@@ -435,6 +433,106 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_a
     j
     (primaryFiniteRow0Parent0Split100Sub0_residualTaylor_centerJet_low_eq_nominalProduct_sub_model
       j)
+
+/--
+Transport generated active-actual row intervals through the nonconditional
+normal form into the component-source center-jet rows consumed by
+`Step33Sub0CombinedCancellationSourceIntervalCert.Valid`.
+
+This is only an interface theorem.  It does not provide the rational interval
+rows.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval
+    (coeffLower coeffUpper : Fin 16 -> Rat)
+    (hActiveActualRows :
+      ∀ j : Fin 16,
+        (coeffLower j : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+                j.1 -
+              (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff j :
+                Real) ∧
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+                j.1 -
+              (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff j :
+                Real) <=
+            (coeffUpper j : Real)) :
+    ∀ j : Fin 16,
+      (coeffLower j : Real) <=
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+            j.1 ∧
+        primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+            j.1 <=
+          (coeffUpper j : Real) := by
+  intro j
+  rw [
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model
+      j]
+  exact hActiveActualRows j
+
+/--
+Generator-facing constructor when the source-row generator proves center rows in
+the active-actual normal form and keeps the order-16 source in the existing
+component-source convention.
+
+The remaining proof obligations are still proof-grade data: rational
+active-actual row intervals, a source bound for `order16Abs`, Horner rows, and
+the target-budget rows.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_activeActual_interval
+    (data : Step33Sub0CombinedCancellationHighOrderTaylorCert)
+    (coeffLower coeffUpper : Fin 16 -> Rat)
+    (order16Lower order16Upper : Rat)
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (data.coeffErrorAbs j : Real))
+    (hRemainderNonneg : 0 <= (data.remainderAbs : Real))
+    (hActiveActualRows :
+      ∀ j : Fin 16,
+        (coeffLower j : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+                j.1 -
+              (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff j :
+                Real) ∧
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+                j.1 -
+              (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff j :
+                Real) <=
+            (coeffUpper j : Real))
+    (hCoeffErrorBudget :
+      ∀ j : Fin 16,
+        (data.coeff j : Real) - (data.coeffErrorAbs j : Real) <=
+            (coeffLower j : Real) ∧
+          (coeffUpper j : Real) <=
+            (data.coeff j : Real) + (data.coeffErrorAbs j : Real))
+    (hOrder16SourceInterval :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        (order16Lower : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta ∧
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta <=
+            (order16Upper : Real))
+    (hOrder16Budget :
+      -(data.order16Abs : Real) <= (order16Lower : Real) ∧
+        (order16Upper : Real) <= (data.order16Abs : Real))
+    (hBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) * ((1 : Real) / 20) ^ j.1) +
+          (data.order16Abs : Real) * ((1 : Real) / 20) ^ 16 /
+            (Nat.factorial 16 : Real) <=
+        (data.remainderAbs : Real)) :
+    data.Valid := by
+  refine
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval
+      data coeffLower coeffUpper order16Lower order16Upper hCoeffErrorNonneg
+      hRemainderNonneg ?_ hCoeffErrorBudget hOrder16SourceInterval
+      hOrder16Budget hBudget
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval
+      coeffLower coeffUpper hActiveActualRows
 
 end Step33
 end PSDpd
