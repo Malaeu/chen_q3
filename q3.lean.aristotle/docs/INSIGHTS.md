@@ -43291,3 +43291,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`
   at
   `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`.
+
+## Insight (2026-06-23, Step33A.1-A) -- DirectScaledRemainderPayloadSurface
+
+- Used Computer Use / Proshka after the zero-model bridge; advisory route was
+  `CHOSEN: A`, direct interval/rational rows for
+  `ComponentSource - NonzeroModelPoly` on `[0,1/10]`.
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean`.
+- Checked direct payload surface:
+  `Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert`,
+  `Step33Sub0CombinedOrder16ScaledRemainderDirectFamilyCert`,
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload`,
+  `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval`.
+- Added fail-closed generator
+  `scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py`.
+- Generated:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json`
+  and `.md`.
+- Updated residual-Horner ledger to schema
+  `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v6`.
+- New exact live gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`.
+- Boundary: this is only the checked interface and route ledger.  It does not
+  prove the direct interval rows, does not prove residual-Horner family
+  `Valid`, and does not close Step33A.1-A.

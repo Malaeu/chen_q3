@@ -20,13 +20,15 @@
     "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound": true,
     "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound": true
   },
+  "directNonzeroModelIntervalRowsLeanChecked": false,
+  "directNonzeroModelSourcePropLeanChecked": false,
   "directResidualAdapterPresent": true,
   "failureCodeIfBudgetRowsFail": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_BUDGET_CONSTANT_FAIL",
   "failureCodeIfFamilyRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP",
   "failureCodeIfRemainderRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
   "failureCodeIfScaledRemainderBoundMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
   "failureCodeIfScaledRemainderIntervalCertMissing": "INTERVAL_CERT_GAP",
-  "generatedAt": "2026-06-23T17:12:48.335470+00:00",
+  "generatedAt": "2026-06-23T17:30:40.147326+00:00",
   "guard": "Do not claim Step33A.1-A from the interface alone.  The payload must prove the residual-Horner family Valid predicate and the canonical residual budget in Lean.",
   "hornerCertFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean",
   "hornerCertSymbols": {
@@ -54,7 +56,7 @@
   },
   "payloadTargetClaimed": false,
   "proofGrade": false,
-  "proofStatus": "biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound",
+  "proofStatus": "biased_residual_horner_direct_nonzero_model_payload_checked_missing_interval_cert",
   "remainderBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean",
   "remainderBridgePresent": true,
   "remainderBridgeSymbols": {
@@ -70,6 +72,16 @@
   "residualSourcePropClaimed": false,
   "route": "biased_residual_horner_family_payload",
   "scaledRemainderBoundLeanChecked": false,
+  "scaledRemainderDirectPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean",
+  "scaledRemainderDirectPayloadSurfacePresent": true,
+  "scaledRemainderDirectPayloadSymbols": {
+    "Step33Sub0CombinedOrder16ScaledRemainderDirectFamilyCert": true,
+    "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert": true,
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval": true
+  },
   "scaledRemainderIntervalPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean",
   "scaledRemainderIntervalPayloadInterfacePresent": true,
   "scaledRemainderIntervalPayloadSymbols": {
@@ -93,7 +105,7 @@
   },
   "scaledRemainderZeroModelPayloadTargetLeanChecked": true,
   "scaledRemainderZeroModelPayloadTargetPresent": true,
-  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5",
+  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v6",
   "segmentRowsLeanChecked": false,
   "step33A1ClosedClaimed": false
 }

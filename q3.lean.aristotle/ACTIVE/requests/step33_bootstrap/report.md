@@ -73503,3 +73503,87 @@ scaled remainder in the nonzero-model convention,
 `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`,
 at the canonical BiasedResidualRemainderAbs budget.
 ```
+
+## 2026-06-23 Report Addendum -- direct nonzero-model scaled-remainder payload
+
+Computer Use / Proshka escalation was used on the exact current blocker after
+the zero-model bridge commit.  Advisory result:
+
+```text
+CHOSEN: A
+FIRST FILE/SCRIPT:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+  scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+FAILURE CODE:
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP
+```
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.md
+```
+
+New Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert
+Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCover
+Step33Sub0CombinedOrder16ScaledRemainderDirectFamilyCert
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval
+```
+
+Updated ledgers:
+
+```text
+direct scaled-remainder:
+  schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v1
+  proofStatus = direct_nonzero_model_payload_surface_checked_missing_interval_cert
+  directNonzeroModelIntervalRowsLeanChecked = false
+  directNonzeroModelSourcePropLeanChecked = false
+
+biased residual-Horner:
+  schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v6
+  proofStatus = biased_residual_horner_direct_nonzero_model_payload_checked_missing_interval_cert
+  scaledRemainderDirectPayloadSurfacePresent = true
+  directNonzeroModelIntervalRowsLeanChecked = false
+  directNonzeroModelSourcePropLeanChecked = false
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+
+PASS python compile and ledgers:
+  python3 -m py_compile \
+    scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py \
+    scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+  python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+  python3 scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+NOTE:
+  bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+  reached the Lean target and produced no diagnostics before a 95s alarm
+  limit; it exited with code 142.  The direct Lean command above passed.
+```
+
+Boundary:
+
+```text
+This is not a proof-grade interval certificate and not Step33A.1-A closure.
+The exact live gap is a direct signed interval/rational certificate for
+ComponentSource - NonzeroModelPoly on [0,1/10], within
+BiasedResidualRemainderAbs.  The certificate must preserve the whole-expression
+cancellation; do not split analytic summands as the primary route.
+```

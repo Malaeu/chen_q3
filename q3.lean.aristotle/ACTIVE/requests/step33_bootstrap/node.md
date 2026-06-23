@@ -19326,3 +19326,55 @@ canonical residual budget. It still depends on a proof-grade source bound for
 `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp`.
 This is not a residual-Horner family Valid theorem and not Step33A.1-A closure.
 ```
+
+## 2026-06-23 Active Node Addendum -- direct nonzero-model scaled-remainder payload
+
+Computer Use / Proshka route review was run on the zero-model bridge state.
+Advisory result was `CHOSEN: A`: build the proof-grade direct interval payload
+for
+
+```text
+CombinedCancellationOrder16ComponentSource eta
+  - CombinedOrder16NonzeroModelPoly eta
+```
+
+on `[0,1/10]`, at the canonical
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`
+budget.
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.{json,md}
+```
+
+Checked handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval
+```
+
+Ledger result:
+
+```text
+direct_nonzero_model_payload_surface_checked_missing_interval_cert
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP
+```
+
+The residual-Horner ledger is now schema v6 and records
+`scaledRemainderDirectPayloadSurfacePresent = true`.
+
+Boundary:
+
+```text
+This is not a proof of the direct interval rows.  It only pins the
+proof-producing certificate surface in the nonzero-model normalization already
+checked by the zero-model bridge.  Step33A.1-A remains open until the direct
+source proposition is Lean-checked or backed by proof-grade generated interval
+rows.
+```

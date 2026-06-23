@@ -1,8 +1,8 @@
 # Step33A.1-A Biased Residual-Horner Payload Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5`
+schema: `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v6`
 route: `biased_residual_horner_family_payload`
-proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound`
+proofStatus: `biased_residual_horner_direct_nonzero_model_payload_checked_missing_interval_cert`
 
 ## Present
 
@@ -13,6 +13,7 @@ proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_re
 - remainderBridgePresent: `True`
 - scaledRemainderIntervalPayloadInterfacePresent: `True`
 - scaledRemainderZeroModelPayloadTargetPresent: `True`
+- scaledRemainderDirectPayloadSurfacePresent: `True`
 
 ## Payload Interface Symbols
 
@@ -71,6 +72,15 @@ proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_re
 - `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_nonzeroModelResidual`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`: `True`
 
+## Scaled Remainder Direct Payload Symbols
+
+- `Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert`: `True`
+- `Step33Sub0CombinedOrder16ScaledRemainderDirectFamilyCert`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval`: `True`
+
 ## Missing Proof Payload
 
 - coefficientBridgeLeanChecked: `True`
@@ -84,6 +94,8 @@ proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_re
 - nonzeroModelResidualBridgeLeanChecked: `True`
 - nonzeroModelResidualSourceBoundLeanChecked: `False`
 - scaledRemainderIntervalRowsLeanChecked: `False`
+- directNonzeroModelIntervalRowsLeanChecked: `False`
+- directNonzeroModelSourcePropLeanChecked: `False`
 - residualBudgetRowsLeanChecked: `False`
 - coverLeanChecked: `False`
 - canonicalResidualAbsLeanChecked: `False`

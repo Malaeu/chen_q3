@@ -39052,3 +39052,51 @@ Step33A.1-A.  The next proof-producing object is still a proof-grade theorem of
 primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp
 at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs.
 ```
+
+## 2026-06-23 Current Active Pointer -- direct nonzero-model scaled-remainder payload
+
+Used the in-app browser / Computer Use Proshka route review on the current
+zero-model bridge state.  Advisory answer:
+
+```text
+CHOSEN: A
+FIRST FILE/SCRIPT:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+  scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+FAILURE CODE:
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP
+```
+
+Added and Lean-checked the direct payload surface:
+
+```lean
+Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert
+Step33Sub0CombinedOrder16ScaledRemainderDirectFamilyCert
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval
+```
+
+Updated ledgers:
+
+```text
+direct scaled-remainder:
+  schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v1
+  proofStatus = direct_nonzero_model_payload_surface_checked_missing_interval_cert
+
+biased residual-Horner:
+  schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v6
+  proofStatus = biased_residual_horner_direct_nonzero_model_payload_checked_missing_interval_cert
+  scaledRemainderDirectPayloadSurfacePresent = true
+```
+
+Boundary:
+
+```text
+This is still not the interval certificate and not Step33A.1-A closure.  The
+exact live proof-producing gap is now the direct signed interval/rational
+certificate for
+ComponentSource - NonzeroModelPoly on [0,1/10], at BiasedResidualRemainderAbs.
+Do not split the analytic summands as the primary route.
+```

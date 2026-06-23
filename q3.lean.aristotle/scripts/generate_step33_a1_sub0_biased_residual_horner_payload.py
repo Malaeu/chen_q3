@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5"
+SCHEMA = "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v6"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -46,6 +46,10 @@ SCALED_REMAINDER_INTERVAL_PAYLOAD_FILE = (
 SCALED_REMAINDER_ZERO_MODEL_PAYLOAD_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean"
+)
+SCALED_REMAINDER_DIRECT_PAYLOAD_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean"
 )
 
 JSON_OUT = REQUEST_DIR / "step33_a1_sub0_biased_residual_horner_payload.json"
@@ -108,6 +112,15 @@ SCALED_REMAINDER_ZERO_MODEL_PAYLOAD_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel",
 ]
 
+SCALED_REMAINDER_DIRECT_PAYLOAD_SYMBOLS = [
+    "Step33Sub0CombinedOrder16ScaledRemainderDirectSegmentCert",
+    "Step33Sub0CombinedOrder16ScaledRemainderDirectFamilyCert",
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectPayloadTarget",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_direct_payload",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target_of_direct_payload",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_of_full_cell_interval",
+]
+
 
 def file_contains(path: Path, symbols: list[str]) -> dict[str, bool]:
     if not path.exists():
@@ -142,6 +155,10 @@ def build_ledger() -> dict[str, object]:
         SCALED_REMAINDER_ZERO_MODEL_PAYLOAD_FILE,
         SCALED_REMAINDER_ZERO_MODEL_PAYLOAD_SYMBOLS,
     )
+    scaled_remainder_direct_payload_symbols = file_contains(
+        SCALED_REMAINDER_DIRECT_PAYLOAD_FILE,
+        SCALED_REMAINDER_DIRECT_PAYLOAD_SYMBOLS,
+    )
 
     interface_ready = (
         all_true(payload_symbols)
@@ -155,6 +172,9 @@ def build_ledger() -> dict[str, object]:
     )
     scaled_remainder_zero_model_payload_ready = all_true(
         scaled_remainder_zero_model_payload_symbols
+    )
+    scaled_remainder_direct_payload_ready = all_true(
+        scaled_remainder_direct_payload_symbols
     )
 
     return {
@@ -172,7 +192,19 @@ def build_ledger() -> dict[str, object]:
         "scaledRemainderZeroModelPayloadFile": rel(
             SCALED_REMAINDER_ZERO_MODEL_PAYLOAD_FILE
         ),
+        "scaledRemainderDirectPayloadFile": rel(
+            SCALED_REMAINDER_DIRECT_PAYLOAD_FILE
+        ),
         "proofStatus": (
+            "biased_residual_horner_direct_nonzero_model_payload_checked_missing_interval_cert"
+            if (
+                interface_ready
+                and concrete_bridge_ready
+                and remainder_bridge_ready
+                and scaled_remainder_zero_model_payload_ready
+                and scaled_remainder_direct_payload_ready
+            )
+            else
             "biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound"
             if (
                 interface_ready
@@ -206,6 +238,9 @@ def build_ledger() -> dict[str, object]:
         "scaledRemainderZeroModelPayloadSymbols": (
             scaled_remainder_zero_model_payload_symbols
         ),
+        "scaledRemainderDirectPayloadSymbols": (
+            scaled_remainder_direct_payload_symbols
+        ),
         "coefficientBridgeLeanChecked": concrete_bridge_ready,
         "residualRemainderInterfaceLeanChecked": remainder_bridge_ready,
         "scaledRemainderIntervalPayloadInterfacePresent": (
@@ -213,6 +248,9 @@ def build_ledger() -> dict[str, object]:
         ),
         "scaledRemainderZeroModelPayloadTargetPresent": (
             scaled_remainder_zero_model_payload_ready
+        ),
+        "scaledRemainderDirectPayloadSurfacePresent": (
+            scaled_remainder_direct_payload_ready
         ),
         "concreteFamilyDataLeanChecked": False,
         "segmentRowsLeanChecked": False,
@@ -227,6 +265,8 @@ def build_ledger() -> dict[str, object]:
         ),
         "nonzeroModelResidualSourceBoundLeanChecked": False,
         "scaledRemainderIntervalRowsLeanChecked": False,
+        "directNonzeroModelIntervalRowsLeanChecked": False,
+        "directNonzeroModelSourcePropLeanChecked": False,
         "residualBudgetRowsLeanChecked": False,
         "coverLeanChecked": False,
         "canonicalResidualAbsLeanChecked": False,
@@ -298,6 +338,9 @@ def render_markdown(ledger: dict[str, object]) -> str:
     scaled_remainder_zero_model_payload_symbols = ledger[
         "scaledRemainderZeroModelPayloadSymbols"
     ]
+    scaled_remainder_direct_payload_symbols = ledger[
+        "scaledRemainderDirectPayloadSymbols"
+    ]
     assert isinstance(payload_symbols, dict)
     assert isinstance(horner_cert_symbols, dict)
     assert isinstance(direct_adapter_symbols, dict)
@@ -305,6 +348,7 @@ def render_markdown(ledger: dict[str, object]) -> str:
     assert isinstance(remainder_bridge_symbols, dict)
     assert isinstance(scaled_remainder_interval_payload_symbols, dict)
     assert isinstance(scaled_remainder_zero_model_payload_symbols, dict)
+    assert isinstance(scaled_remainder_direct_payload_symbols, dict)
 
     lines = [
         "# Step33A.1-A Biased Residual-Horner Payload Ledger",
@@ -324,6 +368,8 @@ def render_markdown(ledger: dict[str, object]) -> str:
         f"`{ledger['scaledRemainderIntervalPayloadInterfacePresent']}`",
         "- scaledRemainderZeroModelPayloadTargetPresent: "
         f"`{ledger['scaledRemainderZeroModelPayloadTargetPresent']}`",
+        "- scaledRemainderDirectPayloadSurfacePresent: "
+        f"`{ledger['scaledRemainderDirectPayloadSurfacePresent']}`",
     ]
     lines.extend(render_symbol_section("Payload Interface Symbols", payload_symbols))
     lines.extend(render_symbol_section("Residual-Horner Receiver Symbols", horner_cert_symbols))
@@ -340,6 +386,12 @@ def render_markdown(ledger: dict[str, object]) -> str:
         render_symbol_section(
             "Scaled Remainder Zero Model Payload Symbols",
             scaled_remainder_zero_model_payload_symbols,
+        )
+    )
+    lines.extend(
+        render_symbol_section(
+            "Scaled Remainder Direct Payload Symbols",
+            scaled_remainder_direct_payload_symbols,
         )
     )
     lines.extend(
@@ -366,6 +418,10 @@ def render_markdown(ledger: dict[str, object]) -> str:
             f"`{ledger['nonzeroModelResidualSourceBoundLeanChecked']}`",
             "- scaledRemainderIntervalRowsLeanChecked: "
             f"`{ledger['scaledRemainderIntervalRowsLeanChecked']}`",
+            "- directNonzeroModelIntervalRowsLeanChecked: "
+            f"`{ledger['directNonzeroModelIntervalRowsLeanChecked']}`",
+            "- directNonzeroModelSourcePropLeanChecked: "
+            f"`{ledger['directNonzeroModelSourcePropLeanChecked']}`",
             "- residualBudgetRowsLeanChecked: "
             f"`{ledger['residualBudgetRowsLeanChecked']}`",
             f"- coverLeanChecked: `{ledger['coverLeanChecked']}`",
