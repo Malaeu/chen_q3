@@ -54,6 +54,9 @@ SOURCE_MODEL_BRIDGE_FILE = (
 SOURCE_INTERVAL_CERT_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean"
 )
+SOURCE_NORMAL_FORM_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -74,7 +77,7 @@ OMEGA_PRIME_PAYLOAD = (
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v8"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v9"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
@@ -148,6 +151,15 @@ SOURCE_INTERVAL_CERT_TO_HCOMBINED = (
 )
 SOURCE_INTERVAL_CERT_TO_RESIDUAL = (
     "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval"
+)
+SOURCE_NORMAL_FORM_CANCELLATION_CAUCHY = (
+    "primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal"
+)
+SOURCE_NORMAL_FORM_CONDITIONAL_CENTER_JET = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet"
+)
+SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP"
 )
 
 
@@ -369,6 +381,24 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         and source_interval_cert_to_hcombined_present
         and source_interval_cert_to_residual_present
     )
+    source_normal_form_cancellation_cauchy_present = (
+        line_of_symbol(
+            ROOT / SOURCE_NORMAL_FORM_FILE,
+            f"theorem {SOURCE_NORMAL_FORM_CANCELLATION_CAUCHY}",
+        )
+        is not None
+    )
+    source_normal_form_conditional_center_jet_present = (
+        line_of_symbol(
+            ROOT / SOURCE_NORMAL_FORM_FILE,
+            f"theorem {SOURCE_NORMAL_FORM_CONDITIONAL_CENTER_JET}",
+        )
+        is not None
+    )
+    source_normal_form_support_present = (
+        source_normal_form_cancellation_cauchy_present
+        and source_normal_form_conditional_center_jet_present
+    )
 
     return {
         "schema": SCHEMA,
@@ -389,6 +419,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "STEP33_A1_SUB0_COMBINED_INTERVAL_PROOF_GRADE_SOURCE_MISSING",
             "STEP33_A1_SUB0_COMBINED_INTERVAL_LEAN_PAYLOAD_MISSING",
             "STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP",
+            SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE,
         ],
         "proofStatus": {
             "isLeanProofData": False,
@@ -426,6 +457,15 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceIntervalCertToResidualIntervalPresent": (
                 source_interval_cert_to_residual_present
             ),
+            "sourceNormalFormCancellationCauchyPresent": (
+                source_normal_form_cancellation_cauchy_present
+            ),
+            "sourceNormalFormConditionalCenterJetPresent": (
+                source_normal_form_conditional_center_jet_present
+            ),
+            "sourceNormalFormSupportPresent": source_normal_form_support_present,
+            "sourceNormalFormResidualJetBridgePresent": False,
+            "sourceNormalFormNonconditionalPresent": False,
             "sourceIntervalCertPayloadPresent": False,
             "omegaPrimePayloadReusableForWholeExpression": False,
             "residualTaylorCoeffPayloadPresent": (
@@ -471,6 +511,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceIntervalCertToHighOrderValid": SOURCE_INTERVAL_CERT_TO_HIGH_ORDER,
             "sourceIntervalCertToHCombined": SOURCE_INTERVAL_CERT_TO_HCOMBINED,
             "sourceIntervalCertToResidualInterval": SOURCE_INTERVAL_CERT_TO_RESIDUAL,
+            "sourceNormalFormFile": SOURCE_NORMAL_FORM_FILE,
+            "sourceNormalFormCancellationCauchy": SOURCE_NORMAL_FORM_CANCELLATION_CAUCHY,
+            "sourceNormalFormConditionalCenterJet": (
+                SOURCE_NORMAL_FORM_CONDITIONAL_CENTER_JET
+            ),
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
@@ -641,6 +686,45 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     "target-budget rows, or a Valid payload."
                 ),
             },
+            "sourceNormalFormSupport": {
+                "file": SOURCE_NORMAL_FORM_FILE,
+                "cancellationResidualCauchy": symbol_ref_lookup(
+                    SOURCE_NORMAL_FORM_FILE,
+                    SOURCE_NORMAL_FORM_CANCELLATION_CAUCHY,
+                    f"theorem {SOURCE_NORMAL_FORM_CANCELLATION_CAUCHY}",
+                ),
+                "conditionalCenterJetNormalForm": symbol_ref_lookup(
+                    SOURCE_NORMAL_FORM_FILE,
+                    SOURCE_NORMAL_FORM_CONDITIONAL_CENTER_JET,
+                    f"theorem {SOURCE_NORMAL_FORM_CONDITIONAL_CENTER_JET}",
+                ),
+                "supportPresent": source_normal_form_support_present,
+                "residualJetBridgePresent": False,
+                "nonconditionalNormalFormPresent": False,
+                "status": (
+                    "checked_conditional_residual_jet_bridge_missing"
+                    if source_normal_form_support_present
+                    else "missing_or_incomplete"
+                ),
+                "firstFailure": SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE,
+                "missingBridge": (
+                    "prove the residual Taylor center-jet coefficient "
+                    "alignment: for every j : Fin 16, "
+                    "NormalizedCenterJet ResidualTaylorPoly j.1 equals "
+                    "NominalScaleCoeff * ComponentProductNominalCauchyCenterJet "
+                    "j.1 minus ResidualDerivmodelCoeff j"
+                ),
+                "whyNotEnough": (
+                    "This proves the cancellation-residual Cauchy rows equal "
+                    "actual Cauchy rows minus nominal Cauchy rows, and proves "
+                    "the combined source active-actual normal form only under "
+                    "the explicit residual-jet alignment hypothesis. It does "
+                    "not prove the coefficient extraction bridge from "
+                    "rawOmegaATaylorPolynomial coefficients to normalized "
+                    "center jets, so it is not the nonconditional normal form "
+                    "and cannot feed a generated payload yet."
+                ),
+            },
             "checkedBridge": {
                 "file": SOURCE_MODEL_BRIDGE_FILE,
                 "smoothTheorem": symbol_ref(
@@ -691,6 +775,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     "order-16 source-model/norm adapter, plus the constructor "
                     "from source-bounds to HighOrderTaylorCert.Valid and the "
                     "interval-row constructor for component-source rows. It "
+                    "also has separate conditional normal-form support, but "
+                    "the residual-jet coefficient alignment bridge is still "
+                    "missing. It "
                     "still does not emit rational coeff rows, a proof-grade "
                     "order16Abs source bound, Horner range rows, target-budget "
                     "rows, or a concrete Valid payload."
@@ -796,6 +883,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     "are still missing"
                 ),
                 (
+                    "first prove residual-jet coefficient alignment for "
+                    "ResidualTaylorPoly before spending the active-actual "
+                    "normal form nonconditionally"
+                ),
+                (
                     "forall j : Fin 16, norm(iteratedDeriv j "
                     "CombinedCancellationIntervalExpr center / j! - coeff[j]) "
                     "<= coeffErrorAbs[j]"
@@ -812,10 +904,10 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "target lower/upper budget after subtracting/adding remainderAbs",
             ],
             "nextPatchRecommendation": (
-                "Generate/prove concrete SourceIntervalCert.Valid rows, the "
-                "proof-grade order16Abs source bound, Horner range rows, and "
-                "target-budget inequalities against the checked Valid "
-                "constructor."
+                "Prove the residual Taylor coefficient/center-jet alignment "
+                "bridge needed to remove the hypothesis from the checked "
+                "source-normal-form support. Only after that, generate/prove "
+                "concrete SourceIntervalCert.Valid rows."
             ),
         },
         "candidateSegmentSource": {
@@ -852,6 +944,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "Source-bounds-to-HighOrderTaylorCert.Valid constructor is Lean-checked.",
             "Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor.",
             "Source-interval certificate target routes component-source lower/upper rows to HighOrderTaylorCert.Valid and final combined interval receivers.",
+            "Conditional source-normal-form support is Lean-checked: cancellationResidualCauchy = actualCauchy - nominalCauchy, and the active-actual center-jet normal form follows from the explicit residual-jet alignment hypothesis.",
         ],
         "rejectedRoutes": {
             "independentTriangleSplit": (
@@ -864,23 +957,25 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "nextImplementablePatch": {
             "recommendation": (
-                "generate/prove the concrete "
-                "Step33Sub0CombinedCancellationSourceIntervalCert.Valid payload"
+                "prove the residual Taylor coefficient/normalized center-jet "
+                "alignment bridge, then remove the hypothesis from the "
+                "source-normal-form theorem"
             ),
-            "firstFailureIfMissing": NEXT_PAYLOAD_FAILURE,
+            "firstFailureIfMissing": SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE,
             "leanPayloadTarget": (
-                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean"
+                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean"
             ),
             "checkerTheorem": (
                 HIGH_ORDER_TO_HCOMBINED
             ),
-            "remainingGap": NEXT_PAYLOAD_FAILURE,
+            "remainingGap": SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE,
             "doNot": [
                 "do not build C1 point-separation first",
                 "do not use sampled/probe rows",
                 "do not revive component triangle/product split",
                 "do not reuse OmegaPrime payload as a certificate for the whole expression",
                 "do not mark Valid/finalBudgetPassed before Lean-checked rows",
+                "do not run the source-row generator before the nonconditional normal form is proved",
             ],
         },
         "sourceDefinitionHashes": {
@@ -890,6 +985,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             HIGH_ORDER_SOURCE_FILE: file_hash(ROOT / HIGH_ORDER_SOURCE_FILE),
             SOURCE_MODEL_BRIDGE_FILE: file_hash(ROOT / SOURCE_MODEL_BRIDGE_FILE),
             SOURCE_INTERVAL_CERT_FILE: file_hash(ROOT / SOURCE_INTERVAL_CERT_FILE),
+            SOURCE_NORMAL_FORM_FILE: file_hash(ROOT / SOURCE_NORMAL_FORM_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),
@@ -971,6 +1067,14 @@ def render_md(report: dict[str, Any]) -> str:
         ]
     )
     for key, value in source_model["sourceIntervalCertTarget"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.extend(
+        [
+            "",
+            "Source normal-form support:",
+        ]
+    )
+    for key, value in source_model["sourceNormalFormSupport"].items():
         lines.append(f"- {key}: `{value}`")
     lines.extend(
         [

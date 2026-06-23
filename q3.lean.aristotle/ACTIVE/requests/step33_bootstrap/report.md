@@ -120,6 +120,61 @@ First missing proof/generator interface:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
 
+## Execution Update (2026-06-23) -- source normal-form support checked
+
+Browser/Computer Use was used for route review after the v8 source-interval
+certificate target.  The advised route was to preserve cancellation through a
+direct assembled-source normal form before generating interval rows.
+
+Added isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+Lean checked:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet
+```
+
+This proves the cancellation-residual Cauchy rows equal actual Cauchy rows
+minus nominal Cauchy rows, and proves the active-actual center-jet normal form
+conditionally on the residual Taylor center-jet alignment hypothesis.
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v9
+sourceNormalFormSupportPresent = true
+sourceNormalFormResidualJetBridgePresent = false
+sourceNormalFormNonconditionalPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Boundary:
+
+```text
+This is not a nonconditional source normal form, not a generated payload, and
+not Step33A.1-A closure.
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP
+```
+
+Next exact patch:
+
+```text
+Prove the residual Taylor coefficient/normalized center-jet alignment bridge,
+then remove the residual-jet hypothesis from the source-normal-form theorem.
+```
+
 ## Execution Update (2026-06-23) -- source bounds to Valid constructor checked
 
 After the order-16 source model was fixed, Codex added the next local

@@ -18434,3 +18434,45 @@ Next exact move:
 Do not assume a ready scalar iteratedDeriv product theorem.  Find/prove the
 product-Leibniz helper first, then generalize the row0 center-jet bridge.
 ```
+
+## 2026-06-23 Active Node Addendum -- source normal-form support checked
+
+Checked isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+Closed support:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v9
+sourceNormalFormSupportPresent = true
+sourceNormalFormResidualJetBridgePresent = false
+sourceNormalFormNonconditionalPresent = false
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP
+```
+
+Next exact move:
+
+```text
+Prove the residual Taylor coefficient/normalized center-jet alignment bridge
+and then remove the residual-jet hypothesis from the source-normal-form theorem.
+Do not run the source-row generator before this nonconditional normal form is
+Lean-checked.
+```

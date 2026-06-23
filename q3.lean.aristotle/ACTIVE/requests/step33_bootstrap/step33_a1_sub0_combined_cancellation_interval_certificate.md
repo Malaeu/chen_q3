@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v8`
+- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v9`
 - route: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR`
 - status: `fail_closed_missing_high_order_valid_payload`
 - first failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
@@ -32,6 +32,9 @@ not close Step33A.1-A.
 - sourceIntervalCertToHighOrderValid: `Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid`
 - sourceIntervalCertToHCombined: `Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined`
 - sourceIntervalCertToResidualInterval: `Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval`
+- sourceNormalFormFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`
+- sourceNormalFormCancellationCauchy: `primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal`
+- sourceNormalFormConditionalCenterJet: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet`
 - certStructure: `Step33Sub0CombinedCancellationIntervalCert`
 - certValidPredicate: `Step33Sub0CombinedCancellationIntervalCert.Valid`
 - certToHCombined: `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`
@@ -120,6 +123,11 @@ Combined expression:
 - sourceIntervalCertToHighOrderValidPresent: `True`
 - sourceIntervalCertToHCombinedPresent: `True`
 - sourceIntervalCertToResidualIntervalPresent: `True`
+- sourceNormalFormCancellationCauchyPresent: `True`
+- sourceNormalFormConditionalCenterJetPresent: `True`
+- sourceNormalFormSupportPresent: `True`
+- sourceNormalFormResidualJetBridgePresent: `False`
+- sourceNormalFormNonconditionalPresent: `False`
 - sourceIntervalCertPayloadPresent: `False`
 - omegaPrimePayloadReusableForWholeExpression: `False`
 - residualTaylorCoeffPayloadPresent: `True`
@@ -158,6 +166,18 @@ Source-interval certificate target:
 - status: `checked_target_payload_missing`
 - whyNotEnough: `This packages the component-source lower/upper row obligations into a Lean-checked certificate target and routes any Valid payload to HighOrderTaylorCert.Valid and the final residual-derivative interval receiver. It does not emit concrete lower/upper rows, Horner rows, target-budget rows, or a Valid payload.`
 
+Source normal-form support:
+- file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`
+- cancellationResidualCauchy: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal', 'lookupSymbol': 'theorem primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal', 'line': 111, 'exists': True}`
+- conditionalCenterJetNormalForm: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet', 'lookupSymbol': 'theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet', 'line': 145, 'exists': True}`
+- supportPresent: `True`
+- residualJetBridgePresent: `False`
+- nonconditionalNormalFormPresent: `False`
+- status: `checked_conditional_residual_jet_bridge_missing`
+- firstFailure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP`
+- missingBridge: `prove the residual Taylor center-jet coefficient alignment: for every j : Fin 16, NormalizedCenterJet ResidualTaylorPoly j.1 equals NominalScaleCoeff * ComponentProductNominalCauchyCenterJet j.1 minus ResidualDerivmodelCoeff j`
+- whyNotEnough: `This proves the cancellation-residual Cauchy rows equal actual Cauchy rows minus nominal Cauchy rows, and proves the combined source active-actual normal form only under the explicit residual-jet alignment hypothesis. It does not prove the coefficient extraction bridge from rawOmegaATaylorPolynomial coefficients to normalized center jets, so it is not the nonconditional normal form and cannot feed a generated payload yet.`
+
 Checked source-model bridge:
 - file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`
 - smoothTheorem: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16', 'line': 456, 'exists': True}`
@@ -174,7 +194,7 @@ Checked source-model bridge:
 - sourceBoundsConstructorPresent: `True`
 - sourceIntervalConstructorPresent: `True`
 - status: `checked_source_interval_rows_to_valid_constructor`
-- whyNotEnough: `This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid and the interval-row constructor for component-source rows. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload.`
+- whyNotEnough: `This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid and the interval-row constructor for component-source rows. It also has separate conditional normal-form support, but the residual-jet coefficient alignment bridge is still missing. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload.`
 
 Target function:
 - meaning: `whole expression, not a component: residualTaylor degree-45 polynomial plus ScaledCancellationRhs`
@@ -210,12 +230,13 @@ Reusable but not sufficient:
 Required bridge shape:
 
 - component-source lower/upper row intervals may be used via the checked interval-row constructor, but the concrete rows are still missing
+- first prove residual-jet coefficient alignment for ResidualTaylorPoly before spending the active-actual normal form nonconditionally
 - forall j : Fin 16, norm(iteratedDeriv j CombinedCancellationIntervalExpr center / j! - coeff[j]) <= coeffErrorAbs[j]
 - forall eta in Icc 0 (1/10), norm(iteratedDeriv 16 CombinedCancellationIntervalExpr eta) <= order16Abs
 - sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 - Horner range for rawOmegaATaylorPolynomial 15 center coeff
 - target lower/upper budget after subtracting/adding remainderAbs
-- nextPatchRecommendation: `Generate/prove concrete SourceIntervalCert.Valid rows, the proof-grade order16Abs source bound, Horner range rows, and target-budget inequalities against the checked Valid constructor.`
+- nextPatchRecommendation: `Prove the residual Taylor coefficient/center-jet alignment bridge needed to remove the hypothesis from the checked source-normal-form support. Only after that, generate/prove concrete SourceIntervalCert.Valid rows.`
 
 ## Candidate Segments
 
@@ -271,6 +292,7 @@ Must not use:
 - Source-bounds-to-HighOrderTaylorCert.Valid constructor is Lean-checked.
 - Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor.
 - Source-interval certificate target routes component-source lower/upper rows to HighOrderTaylorCert.Valid and final combined interval receivers.
+- Conditional source-normal-form support is Lean-checked: cancellationResidualCauchy = actualCauchy - nominalCauchy, and the active-actual center-jet normal form follows from the explicit residual-jet alignment hypothesis.
 
 ## Rejected Routes
 
@@ -290,17 +312,18 @@ Must not use:
 
 ## Next Implementable Patch
 
-- recommendation: `generate/prove the concrete Step33Sub0CombinedCancellationSourceIntervalCert.Valid payload`
-- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
-- leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean`
+- recommendation: `prove the residual Taylor coefficient/normalized center-jet alignment bridge, then remove the hypothesis from the source-normal-form theorem`
+- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP`
+- leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`
 - checkerTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
-- remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP`
 - doNot:
   - do not build C1 point-separation first
   - do not use sampled/probe rows
   - do not revive component triangle/product split
   - do not reuse OmegaPrime payload as a certificate for the whole expression
   - do not mark Valid/finalBudgetPassed before Lean-checked rows
+  - do not run the source-row generator before the nonconditional normal form is proved
 
 ## Failure Codes
 
@@ -317,6 +340,7 @@ Must not use:
 - `STEP33_A1_SUB0_COMBINED_INTERVAL_PROOF_GRADE_SOURCE_MISSING`
 - `STEP33_A1_SUB0_COMBINED_INTERVAL_LEAN_PAYLOAD_MISSING`
 - `STEP33_A1_SUB0_CANCELLATION_PRESERVING_TAYLOR_REMAINDER_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP`
 
 ## Source Hashes
 
@@ -326,6 +350,7 @@ Must not use:
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean`: `3f95fa0605fd469c`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`: `84628671b07f836b`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean`: `05fae4f366bb39df`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`: `c9379361db41061b`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`: `c8832f56435b42fa`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`: `8554b282c60d9c25`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`: `aabf02168d6d50fd`

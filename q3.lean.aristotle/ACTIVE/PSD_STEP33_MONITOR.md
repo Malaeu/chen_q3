@@ -36686,3 +36686,61 @@ Find a repo-real product rule source, likely through iteratedFDeriv/product
 infrastructure, or prove a small local scalar product-Leibniz helper before
 generalizing the row0 center-jet bridge.
 ```
+
+## 2026-06-23 Addendum -- source normal-form support checked, residual-jet bridge open
+
+Added isolated Lean support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet
+```
+
+Meaning:
+
+```text
+The cancellation-residual Cauchy source is now proved equal to actual Cauchy
+rows minus nominal Cauchy rows.  The active-actual combined source normal form
+is proved conditionally on the explicit residual Taylor center-jet alignment
+hypothesis.
+```
+
+Boundary:
+
+```text
+This is not the nonconditional normal form, not a generated payload, and not
+Step33A.1-A closure.  The missing bridge is coefficient extraction from
+rawOmegaATaylorPolynomial / ResidualTaylorPoly coefficients into the
+factorial-normalized center-jet convention.
+```
+
+Ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v9
+sourceNormalFormSupportPresent = true
+sourceNormalFormResidualJetBridgePresent = false
+sourceNormalFormNonconditionalPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP
+```
+
+Next exact patch:
+
+```text
+Prove the residual Taylor coefficient/normalized center-jet alignment bridge,
+then remove the hypothesis from the source-normal-form theorem.  Do not run
+the source-row generator before the nonconditional normal form is proved.
+```
