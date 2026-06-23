@@ -1,6 +1,6 @@
 # Step33A.1-A Biased Residual Signed-Factor Segment Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v1`
+schema: `q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v2`
 route: `biased_residual_source_only_signed_factor_segments`
 proofStatus: `biased_residual_signed_factor_source_only_interface_checked_missing_segment_payload`
 
@@ -63,6 +63,15 @@ proofStatus: `biased_residual_signed_factor_source_only_interface_checked_missin
 - oldZeroModelBudgetKilled: `True`
 - oldZeroModelBudgetSpendableForBiasedResidual: `False`
 
+## Biased Residual CenteredTaylor Budget Guard
+
+- `primaryFiniteRow0Parent0Split100Sub0BiasedResidualCenteredTaylorNeededAbsRat`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_budget_fail_rat`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_not_budgeted_rat`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_budget_fail_rat`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_not_spendable`: `True`
+- biasedResidualCenteredTaylorAbsBudgetKilled: `True`
+
 ## Missing Proof Payload
 
 - concreteSegmentsLeanChecked: `False`
@@ -89,6 +98,7 @@ concrete signed-factor segment family proving SourceIntervalValid, a cover of [0
 
 - closed interface: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_TO_SOURCE_SEGMENT_RECEIVER_CLOSED`
 - old budget reuse invalid: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_OLD_ZERO_MODEL_BUDGET_REUSE_INVALID`
+- centeredTaylor abs budget reuse invalid: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERED_TAYLOR_ABS_BUDGET_REUSE_INVALID`
 - rows missing: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP`
 - budget rows fail: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_BUDGET_CONSTANT_FAIL`
 

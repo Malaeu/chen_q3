@@ -38273,6 +38273,53 @@ Current proof-producing gap:
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
 ```
 
+## 2026-06-23 Addendum -- centeredTaylor biased residual budget audit
+
+The symmetric whole-cell centeredTaylor absolute majorant has now been killed
+as a biased residual budget source by exact Lean/Rat arithmetic:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualBudgetAudit.lean
+```
+
+Checked verdict:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_not_budgeted_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_not_spendable
+```
+
+Meaning:
+
+```text
+biasedResidualSlackRat < centeredTaylorNeededAbsRat
+```
+
+Boundary:
+
+```text
+This only kills the symmetric abs-budget candidate.  It does not provide
+concrete signed-factor segment rows and does not close Step33A.1-A.
+```
+
+Ledger update:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v2
+biasedResidualCenteredTaylorAbsBudgetKilled = true
+oldZeroModelBudgetSpendableForBiasedResidual = false
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Current proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
+```
+
 ## 2026-06-23 Addendum -- biased residual signed-factor segment ledger
 
 Added a fail-closed control ledger for the new source-only biased residual

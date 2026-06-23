@@ -42899,3 +42899,38 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert.Valid cert`,
   with concrete source-only segment rows, cover, same-unit biased-model budget
   rows, and residual slack comparison.
+
+## Insight (2026-06-23, Step33A.1-A) -- BiasedResidualCenteredTaylorBudgetAudit
+
+- Browser/Computer Use route review chose `A`: first add the centeredTaylor
+  budget kill/audit, then continue to the already selected collapse-first
+  signed interval path.
+- Added fail-closed Lean audit file:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualBudgetAudit.lean`.
+- Lean checked exact rational kill facts:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_budget_fail_rat`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_not_budgeted_rat`.
+- Added route-review-aligned aliases/bridge:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_budget_fail_rat`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_not_spendable`.
+- Verdict:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat`
+  is strictly smaller than the symmetric centeredTaylor needed absolute
+  budget.  Therefore that centeredTaylor whole-cell abs majorant is not
+  spendable for the biased residual route.
+- Boundary: this is only a kill certificate for one budget source.  It
+  generates no source segment rows, no signed-factor family certificate, and no
+  Step33A.1-A closure.
+- The biased residual signed-factor ledger was regenerated as schema
+  `q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v2` with
+  `biasedResidualCenteredTaylorAbsBudgetKilled = true`,
+  `oldZeroModelBudgetSpendableForBiasedResidual = false`,
+  `proofGrade = false`, and `step33A1ClosedClaimed = false`.
+- Current proof-producing gap remains:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP`.
+- Next patch: follow the Browser/Computer Use route review and implement the
+  collapse-first signed interval path, starting with the activeActual minus
+  nominalNominal normal form before generating proof-grade source-only signed
+  segment rows.

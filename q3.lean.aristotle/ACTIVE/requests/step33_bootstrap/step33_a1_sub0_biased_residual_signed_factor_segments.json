@@ -11,6 +11,14 @@
     "toBiasedResidualSourceSegment": true,
     "to_biasedResidualSourceSegmentValid": true
   },
+  "biasedBudgetAuditFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualBudgetAudit.lean",
+  "biasedBudgetKillSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0BiasedResidualCenteredTaylorNeededAbsRat": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_budget_fail_rat": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_not_budgeted_rat": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_budget_fail_rat": true,
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_not_spendable": true
+  },
   "biasedBudgetRowsLeanChecked": false,
   "biasedIntervalFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean",
   "biasedIntervalSymbols": {
@@ -23,6 +31,7 @@
     "theorem to_residual_bound_on_segment": true
   },
   "biasedModelBudgetSurfacePresent": true,
+  "biasedResidualCenteredTaylorAbsBudgetKilled": true,
   "biasedResidualSignedFactorAdapterPresent": true,
   "biasedResidualSourceSegmentReceiverPresent": true,
   "budgetAuditFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean",
@@ -47,9 +56,10 @@
   "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP",
   "factorRowsLeanChecked": false,
   "failureCodeIfBudgetRowsFail": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_BUDGET_CONSTANT_FAIL",
+  "failureCodeIfCenteredTaylorAbsBudgetReused": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERED_TAYLOR_ABS_BUDGET_REUSE_INVALID",
   "failureCodeIfOldBudgetReused": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_OLD_ZERO_MODEL_BUDGET_REUSE_INVALID",
   "failureCodeIfRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP",
-  "generatedAt": "2026-06-23T13:21:08.638241+00:00",
+  "generatedAt": "2026-06-23T13:38:20.562489+00:00",
   "generatorFacingFamilyCertPresent": true,
   "globalCoverLeanChecked": false,
   "guard": "Do not reuse Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.Valid or its zeroModelBudget row for the biased residual.  The live route uses SourceIntervalValid plus fresh same-unit budget rows against the checked biased nonzero-model polynomial range.",
@@ -73,7 +83,7 @@
   "residualSlackComparisonLeanChecked": false,
   "residualSourcePropClaimed": false,
   "route": "biased_residual_source_only_signed_factor_segments",
-  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v1",
+  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v2",
   "sourceAssemblyRowsLeanChecked": false,
   "sourceOnlyInterfaceReady": true,
   "sourceOnlySignedFactorCheckerPresent": true,

@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v2"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -41,6 +41,10 @@ NONZERO_MODEL_FILE = (
 BUDGET_AUDIT_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean"
+)
+BIASED_BUDGET_AUDIT_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualBudgetAudit.lean"
 )
 OLD_SIGNED_FACTOR_LEDGER = (
     REQUEST_DIR / "step33_a1_sub0_combined_order16_signed_factor_rows.json"
@@ -100,6 +104,14 @@ BUDGET_KILL_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail",
 ]
 
+BIASED_BUDGET_KILL_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0BiasedResidualCenteredTaylorNeededAbsRat",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_budget_fail_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_not_budgeted_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_budget_fail_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_not_spendable",
+]
+
 
 def file_contains(path: Path, symbols: list[str]) -> dict[str, bool]:
     if not path.exists():
@@ -126,6 +138,9 @@ def build_ledger() -> dict[str, object]:
     )
     nonzero_model_symbols = file_contains(NONZERO_MODEL_FILE, NONZERO_MODEL_SYMBOLS)
     budget_kill_symbols = file_contains(BUDGET_AUDIT_FILE, BUDGET_KILL_SYMBOLS)
+    biased_budget_kill_symbols = file_contains(
+        BIASED_BUDGET_AUDIT_FILE, BIASED_BUDGET_KILL_SYMBOLS
+    )
     old_ledger = load_old_ledger()
 
     checker_present = all_true(checker_symbols)
@@ -135,6 +150,7 @@ def build_ledger() -> dict[str, object]:
     old_zero_model_budget_killed = bool(
         old_ledger.get("centeredTaylorAbsRowsBudgetKilled")
     ) or all_true(budget_kill_symbols)
+    biased_centered_taylor_budget_killed = all_true(biased_budget_kill_symbols)
 
     interface_ready = (
         checker_present
@@ -151,6 +167,7 @@ def build_ledger() -> dict[str, object]:
         "biasedIntervalFile": str(BIASED_INTERVAL_FILE.relative_to(ROOT)),
         "nonzeroModelFile": str(NONZERO_MODEL_FILE.relative_to(ROOT)),
         "budgetAuditFile": str(BUDGET_AUDIT_FILE.relative_to(ROOT)),
+        "biasedBudgetAuditFile": str(BIASED_BUDGET_AUDIT_FILE.relative_to(ROOT)),
         "oldSignedFactorLedger": str(OLD_SIGNED_FACTOR_LEDGER.relative_to(ROOT)),
         "route": "biased_residual_source_only_signed_factor_segments",
         "proofStatus": (
@@ -167,7 +184,11 @@ def build_ledger() -> dict[str, object]:
         "biasedIntervalSymbols": biased_interval_symbols,
         "nonzeroModelSymbols": nonzero_model_symbols,
         "budgetKillSymbols": budget_kill_symbols,
+        "biasedBudgetKillSymbols": biased_budget_kill_symbols,
         "oldZeroModelBudgetKilled": old_zero_model_budget_killed,
+        "biasedResidualCenteredTaylorAbsBudgetKilled": (
+            biased_centered_taylor_budget_killed
+        ),
         "oldZeroModelBudgetSpendableForBiasedResidual": False,
         "sourceOnlyInterfaceReady": interface_ready,
         "generatorFacingFamilyCertPresent": all_true(adapter_symbols),
@@ -197,6 +218,9 @@ def build_ledger() -> dict[str, object]:
         "failureCodeIfBudgetRowsFail": (
             "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_BUDGET_CONSTANT_FAIL"
         ),
+        "failureCodeIfCenteredTaylorAbsBudgetReused": (
+            "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERED_TAYLOR_ABS_BUDGET_REUSE_INVALID"
+        ),
         "nextProofObject": (
             "concrete signed-factor segment family proving SourceIntervalValid, "
             "a cover of [0,1/10], exact per-segment biased-model lower/upper "
@@ -217,11 +241,13 @@ def render_markdown(ledger: dict[str, object]) -> str:
     biased_interval_symbols = ledger["biasedIntervalSymbols"]
     nonzero_model_symbols = ledger["nonzeroModelSymbols"]
     budget_kill_symbols = ledger["budgetKillSymbols"]
+    biased_budget_kill_symbols = ledger["biasedBudgetKillSymbols"]
     assert isinstance(checker_symbols, dict)
     assert isinstance(adapter_symbols, dict)
     assert isinstance(biased_interval_symbols, dict)
     assert isinstance(nonzero_model_symbols, dict)
     assert isinstance(budget_kill_symbols, dict)
+    assert isinstance(biased_budget_kill_symbols, dict)
 
     lines = [
         "# Step33A.1-A Biased Residual Signed-Factor Segment Ledger",
@@ -267,6 +293,17 @@ def render_markdown(ledger: dict[str, object]) -> str:
             "- oldZeroModelBudgetSpendableForBiasedResidual: "
             f"`{ledger['oldZeroModelBudgetSpendableForBiasedResidual']}`",
             "",
+            "## Biased Residual CenteredTaylor Budget Guard",
+            "",
+        ]
+    )
+    for symbol, present in biased_budget_kill_symbols.items():
+        lines.append(f"- `{symbol}`: `{present}`")
+    lines.extend(
+        [
+            "- biasedResidualCenteredTaylorAbsBudgetKilled: "
+            f"`{ledger['biasedResidualCenteredTaylorAbsBudgetKilled']}`",
+            "",
             "## Missing Proof Payload",
             "",
             f"- concreteSegmentsLeanChecked: `{ledger['concreteSegmentsLeanChecked']}`",
@@ -297,6 +334,8 @@ def render_markdown(ledger: dict[str, object]) -> str:
             "",
             f"- closed interface: `{ledger['closedInterfaceCode']}`",
             f"- old budget reuse invalid: `{ledger['failureCodeIfOldBudgetReused']}`",
+            "- centeredTaylor abs budget reuse invalid: "
+            f"`{ledger['failureCodeIfCenteredTaylorAbsBudgetReused']}`",
             f"- rows missing: `{ledger['failureCodeIfRowsMissing']}`",
             f"- budget rows fail: `{ledger['failureCodeIfBudgetRowsFail']}`",
             "",

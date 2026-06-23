@@ -72495,3 +72495,79 @@ Boundary:
 No concrete segment rows were generated.  No residualSourceProp, no
 order16DirectIntervalValid, and no Step33A.1-A closure are claimed.
 ```
+
+## 2026-06-23 Addendum -- biased residual centeredTaylor budget audit
+
+Browser/Computer Use route review returned:
+
+```text
+CHOSEN: A
+First file: biased residual centeredTaylor budget kill/audit
+Then continue to the collapse-first signed interval path.
+```
+
+Added a fail-closed Lean audit for the symmetric whole-cell centeredTaylor
+absolute majorant against the biased residual slack:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualBudgetAudit.lean
+```
+
+Lean-checked exact rational verdict:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_biasedResidual_centeredTaylorNeededAbs_not_budgeted_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_centeredTaylor_not_spendable
+```
+
+Meaning:
+
+```text
+The symmetric centeredTaylor abs candidate is not a proof object for the
+biased residual route.  Exact Rat arithmetic proves the current biased
+residual slack is strictly smaller than the needed absolute budget.
+```
+
+Boundary:
+
+```text
+This is a kill certificate for one budget source only.  It does not generate
+source segment rows, does not prove the signed-factor segment family payload,
+and does not close Step33A.1-A.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualBudgetAudit.lean
+
+PASS ledger regeneration:
+  python3 -m py_compile scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py
+  python3 scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py
+
+Ledger v2 fields:
+  biasedResidualCenteredTaylorAbsBudgetKilled = true
+  oldZeroModelBudgetSpendableForBiasedResidual = false
+  proofGrade = false
+  step33A1ClosedClaimed = false
+```
+
+Current proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
+```
+
+Next exact patch:
+
+```text
+Implement the collapse-first signed interval path from the Browser/Computer
+Use route review: expose/publicize the activeActual minus nominalNominal
+normal form and then generate proof-grade uniform signed segment rows for the
+source-only signed-factor family certificate.
+```
