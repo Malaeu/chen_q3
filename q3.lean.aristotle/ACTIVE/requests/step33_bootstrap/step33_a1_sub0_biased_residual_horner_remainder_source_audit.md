@@ -149,3 +149,38 @@ Build one of the following, in this order of preference:
    `residual_remainder` field of the residual-Horner segment cert.
 
 Do not use sampled/probe residual candidates as proof rows.
+
+## 2026-06-23 Addendum: Remainder Bridge Checked
+
+The subtraction form of the coefficient bridge is now Lean-checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+```
+
+Checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_sub_hornerPoly_eq_scaledRemainder
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_segmentResidualRemainder_of_scaledRemainder_bound
+```
+
+Refined current gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+```
+
+Parent gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Boundary: the bridge proves only that a future bound for
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
+is the exact `residual_remainder` row needed by the residual-Horner cert. It
+does not prove that bound and does not claim a concrete family `Valid` theorem.

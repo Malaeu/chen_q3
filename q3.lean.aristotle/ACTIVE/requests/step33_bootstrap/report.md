@@ -73232,3 +73232,66 @@ Do not emit a concrete residual-Horner family Valid theorem from the sampled
 candidate rows.  The spendable object is a Lean-checked component Taylor
 remainder source or a same-expression residual interval certificate.
 ```
+
+## 2026-06-23 Report Addendum -- residual-Horner remainder bridge checked
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_sub_hornerPoly_eq_scaledRemainder
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_segmentResidualRemainder_of_scaledRemainder_bound
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v3
+proofStatus = biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+parentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+
+PASS manual olean build for the bridge file.
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+  returned no matches.
+
+PASS python compile and ledger:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+NOTE:
+  bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+  reached the Lean target and then produced no further diagnostics for about
+  90s; it was stopped. The direct Lean command above passed.
+```
+
+Boundary:
+
+```text
+This is not a proof of the scaled remainder bound and not Step33A.1-A closure.
+The next proof-producing object is a proof-grade bound for
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp.
+No concrete residual-Horner family Valid theorem is claimed.
+```

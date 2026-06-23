@@ -38929,3 +38929,42 @@ The one-segment rational geometry and budget candidates are diagnostics only
 until a same-expression residual interval proof or component Taylor remainder
 source is Lean-checked.
 ```
+
+## 2026-06-23 Current Active Pointer -- residual-Horner remainder bridge checked
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+```
+
+Lean-checked bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_sub_hornerPoly_eq_scaledRemainder
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_segmentResidualRemainder_of_scaledRemainder_bound
+```
+
+Updated fail-closed ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v3
+proofStatus = biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+parentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Boundary:
+
+```text
+This closes only the remainder-interface bridge. It does not prove the scaled
+remainder bound, residual budget rows, concrete family Valid theorem, or
+Step33A.1-A closure.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+```

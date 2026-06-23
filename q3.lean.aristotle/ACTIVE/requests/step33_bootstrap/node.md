@@ -19216,3 +19216,30 @@ Sampled residual interval candidates and passing rational geometry/budget rows
 are not proof rows.  Do not emit a residual-Horner family Valid theorem until
 the same-expression analytic remainder bound is proof-grade.
 ```
+
+2026-06-23 addendum: the residual-Horner subtraction/remainder bridge is now
+checked in:
+
+```lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean
+
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_sub_hornerPoly_eq_scaledRemainder
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_segmentResidualRemainder_of_scaledRemainder_bound
+```
+
+Active ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v3
+proofStatus = biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+parentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+This is not closure. The next proof-producing object is a proof-grade bound
+for
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`,
+then concrete residual-Horner family rows and residual budget rows.

@@ -13,7 +13,7 @@
   },
   "concreteFamilyDataLeanChecked": false,
   "coverLeanChecked": false,
-  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
   "directAdapterFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean",
   "directAdapterSymbols": {
     "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs": true,
@@ -24,7 +24,8 @@
   "failureCodeIfBudgetRowsFail": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_BUDGET_CONSTANT_FAIL",
   "failureCodeIfFamilyRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP",
   "failureCodeIfRemainderRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
-  "generatedAt": "2026-06-23T16:03:06.665652+00:00",
+  "failureCodeIfScaledRemainderBoundMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
+  "generatedAt": "2026-06-23T16:22:02.143566+00:00",
   "guard": "Do not claim Step33A.1-A from the interface alone.  The payload must prove the residual-Horner family Valid predicate and the canonical residual budget in Lean.",
   "hornerCertFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean",
   "hornerCertSymbols": {
@@ -36,8 +37,9 @@
   },
   "hornerFamilyReceiverPresent": true,
   "hornerRangeRowsLeanChecked": false,
-  "nextProofObject": "proof-grade residual remainder rows for the analytic scaled remainder in primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_eq_hornerPoly_add_scaledRemainder; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
+  "nextProofObject": "proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
   "order16DirectIntervalValidClaimed": false,
+  "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
   "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean",
   "payloadInterfacePresent": true,
   "payloadSymbols": {
@@ -49,12 +51,23 @@
   },
   "payloadTargetClaimed": false,
   "proofGrade": false,
-  "proofStatus": "biased_residual_horner_coefficient_bridge_checked_missing_remainder_rows",
+  "proofStatus": "biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound",
+  "remainderBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean",
+  "remainderBridgePresent": true,
+  "remainderBridgeSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder": true,
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_segmentResidualRemainder_of_scaledRemainder_bound": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_sub_hornerPoly_eq_scaledRemainder": true
+  },
   "residualBudgetRowsLeanChecked": false,
+  "residualRemainderInterfaceLeanChecked": true,
   "residualRemainderRowsLeanChecked": false,
   "residualSourcePropClaimed": false,
   "route": "biased_residual_horner_family_payload",
-  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v2",
+  "scaledRemainderBoundLeanChecked": false,
+  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v3",
   "segmentRowsLeanChecked": false,
   "step33A1ClosedClaimed": false
 }

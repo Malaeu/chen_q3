@@ -43188,3 +43188,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Do not emit a concrete residual-Horner family `Valid` theorem from sampled
   rows; the next spendable object is a Lean-checked component Taylor remainder
   source or same-expression residual interval certificate.
+
+## Insight (2026-06-23, Step33A.1-A) -- ResidualHornerRemainderBridge
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean`.
+- Checked the exact subtraction form:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidualTarget_sub_hornerPoly_eq_scaledRemainder`.
+- Checked the bridge from a future proof-grade
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
+  to the residual-Horner `residual_remainder` field.
+- Updated
+  `scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py`
+  to schema `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v3`.
+- Ledger status:
+  `biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound`.
+- Current exact gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP`.
+- Parent gap remains:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP`.
+- This is not Step33A.1-A closure; no scaled remainder bound, budget rows, or
+  concrete residual-Horner family `Valid` theorem is claimed.
