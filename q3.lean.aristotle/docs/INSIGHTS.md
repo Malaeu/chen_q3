@@ -41381,6 +41381,32 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Current exact generator/proof interface:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
 
+## Insight (2026-06-23, Step33A.1-A) -- SourceIntervalRowsToHighOrderValidConstructorChecked
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.
+- After the source-bounds constructor was checked, the next proof-safe local
+  patch was to expose the exact interval-row interface the generator should
+  use for component-source rows.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`
+  with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v7`.
+- The ledger now records
+  `sourceIntervalRowsToHighOrderValidConstructorPresent = true`.
+- Boundary: this is not a generated payload and not Step33A.1-A closure.
+  `highOrderValidPayloadPresent = false`, `highOrderCenterJetRowsPresent =
+  false`, `highOrderOrder16RowsPresent = false`, and `proofSafeClosedFields =
+  0`.
+- Next exact proof-producing patch: generate/prove component-source lower/upper
+  rows for center jets `0..15` and order16 on `[0,1/10]`, then Horner range
+  rows and exact target-budget inequalities against the checked interval-row
+  constructor.
+
 ## Insight (2026-06-23, Step33A.1-A) -- SourceBoundsToHighOrderValidConstructorChecked
 
 - Target blocker:

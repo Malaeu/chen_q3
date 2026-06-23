@@ -163,6 +163,49 @@ order16Abs source bound, Horner range rows, and exact target-budget
 inequalities against the checked Valid constructor.
 ```
 
+## Execution Update (2026-06-23) -- source interval rows to Valid constructor checked
+
+Codex added the next local proof-safe adapter for the same high-order payload.
+It does not emit any generated row and does not close the payload; it lets the
+generator use lower/upper interval rows in the checked component-source
+normalization.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Lean-checked symbol:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval
+```
+
+Ledger regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v7
+sourceIntervalRowsToHighOrderValidConstructorPresent = true
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```
+
+Next proof-producing patch:
+
+```text
+Generate/prove concrete component-source lower/upper rows for center jets
+0..15 and order16 on [0,1/10], then Horner range rows and exact target-budget
+inequalities against the checked interval-row constructor.
+```
+
 ## Execution Update (2026-06-23) -- combined source-model all-row bridge checked
 
 Route: PSD-pd/Q3 Step33A.1-A combined-cancellation high-order Taylor source.

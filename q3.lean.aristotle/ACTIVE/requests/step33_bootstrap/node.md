@@ -137,6 +137,7 @@ now records the source-model bridge as checked support:
   order16SourceModelPresent = true
   fullSourceModelBridgePresent = true
   sourceBoundsToHighOrderValidConstructorPresent = true
+  sourceIntervalRowsToHighOrderValidConstructorPresent = true
 
 These flags come only from Lean-checked support theorems:
 
@@ -147,6 +148,7 @@ These flags come only from Lean-checked support theorems:
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval
 
 This is not a proof payload:
 
@@ -160,6 +162,11 @@ Current live gap remains:
 
 First missing generator/proof interface:
   STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+
+2026-06-23 v7 addendum: the interval-row constructor is checked.  The next
+proof-producing generator may work with component-source lower/upper rows for
+center jets and order16; it still must emit those rows and exact budget/Horner
+proofs before `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` exists.
 ```
 
 The current generator-facing payload adapter is checked in:

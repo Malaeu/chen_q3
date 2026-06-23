@@ -1256,6 +1256,80 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid
       primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
         (data.order16Abs : Real) hOrder16Source
 
+/--
+Generator-facing interval-row constructor for the high-order
+combined-cancellation payload.
+
+This is still not a concrete payload: it only converts exact rational
+lower/upper rows for the checked component-source convention into the absolute
+row and order-16 bounds consumed by
+`Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval
+    (data : Step33Sub0CombinedCancellationHighOrderTaylorCert)
+    (coeffLower coeffUpper : Fin 16 -> Rat)
+    (order16Lower order16Upper : Rat)
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (data.coeffErrorAbs j : Real))
+    (hRemainderNonneg : 0 <= (data.remainderAbs : Real))
+    (hSourceCenterInterval :
+      ∀ j : Fin 16,
+        (coeffLower j : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+              j.1 ∧
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+              j.1 <=
+            (coeffUpper j : Real))
+    (hCoeffErrorBudget :
+      ∀ j : Fin 16,
+        (data.coeff j : Real) - (data.coeffErrorAbs j : Real) <=
+            (coeffLower j : Real) ∧
+          (coeffUpper j : Real) <=
+            (data.coeff j : Real) + (data.coeffErrorAbs j : Real))
+    (hOrder16SourceInterval :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        (order16Lower : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta ∧
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta <=
+            (order16Upper : Real))
+    (hOrder16Budget :
+      -(data.order16Abs : Real) <= (order16Lower : Real) ∧
+        (order16Upper : Real) <= (data.order16Abs : Real))
+    (hBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) * ((1 : Real) / 20) ^ j.1) +
+          (data.order16Abs : Real) * ((1 : Real) / 20) ^ 16 /
+            (Nat.factorial 16 : Real) <=
+        (data.remainderAbs : Real)) :
+    data.Valid := by
+  refine
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds
+      data hCoeffErrorNonneg hRemainderNonneg ?_ ?_ hBudget
+  · intro j
+    rw [Real.norm_eq_abs]
+    refine abs_le.mpr ?_
+    constructor
+    · have hLower :
+        (data.coeff j : Real) - (data.coeffErrorAbs j : Real) <=
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+            j.1 :=
+        le_trans (hCoeffErrorBudget j).1 (hSourceCenterInterval j).1
+      linarith
+    · have hUpper :
+        primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+            j.1 <=
+          (data.coeff j : Real) + (data.coeffErrorAbs j : Real) :=
+        le_trans (hSourceCenterInterval j).2 (hCoeffErrorBudget j).2
+      linarith
+  · intro eta hEta
+    rw [Real.norm_eq_abs]
+    refine abs_le.mpr ?_
+    constructor
+    · exact le_trans hOrder16Budget.1 (hOrder16SourceInterval eta hEta).1
+    · exact le_trans (hOrder16SourceInterval eta hEta).2 hOrder16Budget.2
+
 end Step33
 end PSDpd
 end Q3
