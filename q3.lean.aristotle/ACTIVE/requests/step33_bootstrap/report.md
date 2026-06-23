@@ -72214,6 +72214,19 @@ PASS direct Lean:
   env LEAN_PATH="$(printf ':%s' .lake/build/lib/lean .lake/packages/*/.lake/build/lib/lean | cut -c2-)" \
     /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
     Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+
+PASS marker scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" <touched Lean files>
+  returned no matches.
+
+PASS whitespace:
+  git diff --check on touched files.
+
+NOTE:
+  `lake env lean` and `bash scripts/q3_check.sh` were both started for
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean.
+  They produced no diagnostics for about 90s and were stopped.  The direct Lean
+  command above is the authoritative check for this slice.
 ```
 
 Boundary:
@@ -72223,4 +72236,81 @@ This does not generate the signed interval payload and does not close
 Step33A.1-A.  If the repository only has center-jet rows for these quantities,
 the exact failure code is:
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERJET_UNIFORM_INTERVAL_MISMATCH_GAP
+```
+
+## 2026-06-23 Addendum -- biased model range spend receiver checked
+
+The checked biased nonzero-model Horner range is now spent directly against the
+actual source row.  This narrows the next payload: it no longer needs a separate
+generated signed interval for `nominalScale * D16(ComponentProductNominal)`.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_activeActual_signed_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_activeActual_signed_interval
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_order16DirectIntervalValid
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid.to_residual_bound_on_segment
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_source_segment_cover
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_residual_biased_model_range_spend_receiver_checked_missing_source_segment_payload
+biasedResidualBiasedModelRangeSpendReceiverClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_SEGMENT_PAYLOAD_GAP
+```
+
+Exact next payload target:
+
+```lean
+∀ i : Fin n, (seg i).Valid residualAbs
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover n seg
+(residualAbs : Real) <=
+  (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat : Real)
+```
+
+Required payload fields:
+
+```text
+sourceInterval per segment:
+  signed interval for CombinedCancellationOrder16ComponentSource
+  equivalently activeScale * D16(ComponentProductActual)
+
+lowerBudget / upperBudget per segment:
+  sourceLower - biasedModelPolyUpper
+  sourceUpper - biasedModelPolyLower
+
+global slack:
+  residualAbs <= ResidualSlackRat
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH="$(printf ':%s' .lake/build/lib/lean .lake/packages/*/.lake/build/lib/lean | cut -c2-)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Boundary:
+
+```text
+This is still a receiver/interface step.  It proves no concrete source segment
+rows and does not close Step33A.1-A.
 ```

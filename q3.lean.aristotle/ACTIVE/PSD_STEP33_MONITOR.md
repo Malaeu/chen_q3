@@ -38150,3 +38150,67 @@ If only center-jet artifacts exist, keep the failure code:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERJET_UNIFORM_INTERVAL_MISMATCH_GAP
 ```
+
+## 2026-06-23 Addendum -- biased model range spend receiver checked
+
+The checked biased nonzero-model Horner range can be spent directly against the
+actual source row.  This removes the need for a separate generated signed
+interval for `nominalScale * D16(ComponentProductNominal)` in the preferred
+payload.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_activeActual_signed_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_activeActual_signed_interval
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_order16DirectIntervalValid
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid.to_residual_bound_on_segment
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_source_segment_cover
+```
+
+Current preferred payload target:
+
+```lean
+∀ i : Fin n, (seg i).Valid residualAbs
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover n seg
+(residualAbs : Real) <=
+  (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat : Real)
+```
+
+Meaning:
+
+```text
+The remaining proof-producing payload is now only a proof-grade segmented
+signed interval for the whole source row
+
+  primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+
+equivalently `activeScale * D16(ComponentProductActual)`, plus exact
+per-segment residual budget rows against the already checked biased model
+Horner envelope.
+```
+
+Closed interface subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_BIASED_MODEL_RANGE_SPEND_RECEIVER_CLOSED
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_SEGMENT_PAYLOAD_GAP
+```

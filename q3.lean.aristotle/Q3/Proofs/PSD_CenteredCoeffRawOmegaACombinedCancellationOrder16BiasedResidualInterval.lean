@@ -343,6 +343,107 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourc
       hActual hNominal hLower hUpper
 
 /--
+Spend the checked biased nonzero-model Horner range directly.
+
+This is the smallest live residual receiver: once the biased model range is
+known, the remaining analytic payload is only a signed full-cell interval for
+`activeScale * D16(ComponentProductActual)`.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_activeActual_signed_interval
+    {actualLower actualUpper remainderAbs : Real}
+    (hActual :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        actualLower <=
+            primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              iteratedDeriv 16
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta ∧
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta <=
+            actualUpper)
+    (hLower :
+      -remainderAbs <=
+        actualLower -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+            Real))
+    (hUpper :
+      actualUpper -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+            Real) <=
+        remainderAbs) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+            eta -
+          primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+            eta‖ <=
+        remainderAbs := by
+  intro eta hEta
+  rw [
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_activeActual,
+    Real.norm_eq_abs,
+    abs_le]
+  have ha := hActual eta hEta
+  have hp :=
+    primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_poly_range
+      hEta
+  constructor
+  · calc
+      -remainderAbs <=
+          actualLower -
+            (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+              Real) := hLower
+      _ <=
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              iteratedDeriv 16
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta -
+            primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+              eta :=
+          sub_le_sub ha.1 hp.2
+  · calc
+      primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              iteratedDeriv 16
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta -
+            primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+              eta <=
+          actualUpper -
+            (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+              Real) :=
+          sub_le_sub ha.2 hp.1
+      _ <= remainderAbs := hUpper
+
+/--
+Rat-facing wrapper for the single-row active-actual residual receiver.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_activeActual_signed_interval
+    {actualLower actualUpper : Real}
+    {residualAbs : Rat}
+    (hActual :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        actualLower <=
+            primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              iteratedDeriv 16
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta ∧
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta <=
+            actualUpper)
+    (hLower :
+      -(residualAbs : Real) <=
+        actualLower -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+            Real))
+    (hUpper :
+      actualUpper -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+            Real) <=
+        (residualAbs : Real)) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+      residualAbs := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_activeActual_signed_interval
+      hActual hLower hUpper
+
+/--
 Assemble signed full-cell intervals for the two surviving biased residual
 summands into a symmetric bound for `source - biasedNonzeroModel`.
 
@@ -621,6 +722,203 @@ theorem to_order16DirectIntervalValid
 
 end Valid
 end Step33Sub0CombinedOrder16BiasedResidualActiveActualNominalSignedIntervalCert
+
+/--
+Generator-facing data for the preferred single-row biased residual route.
+
+The biased nonzero-model Horner range is already Lean-checked, so the next
+payload only has to enclose the active-scaled actual order-16 row.
+-/
+structure Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert where
+  actualLower : Rat
+  actualUpper : Rat
+  residualAbs : Rat
+
+namespace Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert
+
+/--
+Proof-bearing validity predicate for the single-row route.
+-/
+structure Valid
+    (cert :
+      Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert) :
+    Prop where
+  actualInterval :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      (cert.actualLower : Real) <=
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta ∧
+        primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+          iteratedDeriv 16
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta <=
+          (cert.actualUpper : Real)
+  lowerBudget :
+    -(cert.residualAbs : Real) <=
+      (cert.actualLower : Real) -
+        (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+          Real)
+  upperBudget :
+    (cert.actualUpper : Real) -
+        (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+          Real) <=
+      (cert.residualAbs : Real)
+  slackBudget :
+    (cert.residualAbs : Real) <=
+      (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+        Real)
+
+namespace Valid
+
+theorem to_residualSourceProp
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+      cert.residualAbs :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_activeActual_signed_interval
+    h.actualInterval h.lowerBudget h.upperBudget
+
+theorem to_order16DirectIntervalValid
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelOrder16IntervalData.Valid :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_order16_direct_interval_valid_of_residual_bound
+    h.slackBudget h.to_residualSourceProp
+
+end Valid
+end Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert
+
+/--
+One signed interval row for the active-actual/source term on a subsegment, used
+against the already checked biased nonzero-model range.
+-/
+structure Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert where
+  cellL : Rat
+  cellU : Rat
+  sourceLower : Rat
+  sourceUpper : Rat
+
+namespace Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert
+
+/--
+Proof-bearing predicate for one biased-residual source segment.
+
+`residualAbs` is global for the resulting residual certificate; each segment
+must fit inside that same budget after subtracting the biased model range.
+-/
+structure Valid
+    (residualAbs : Rat)
+    (cert : Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert) :
+    Prop where
+  cellSubset :
+    ∀ eta ∈ Set.Icc (cert.cellL : Real) (cert.cellU : Real),
+      eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10)
+  sourceInterval :
+    ∀ eta ∈ Set.Icc (cert.cellL : Real) (cert.cellU : Real),
+      (cert.sourceLower : Real) <=
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+            eta ∧
+        primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+            eta <=
+          (cert.sourceUpper : Real)
+  lowerBudget :
+    -(residualAbs : Real) <=
+      (cert.sourceLower : Real) -
+        (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+          Real)
+  upperBudget :
+    (cert.sourceUpper : Real) -
+        (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+          Real) <=
+      (residualAbs : Real)
+
+namespace Valid
+
+theorem to_residual_bound_on_segment
+    {residualAbs : Rat}
+    {cert : Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert}
+    (h : cert.Valid residualAbs) :
+    ∀ eta ∈ Set.Icc (cert.cellL : Real) (cert.cellU : Real),
+      ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+            eta -
+          primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+            eta‖ <=
+        (residualAbs : Real) := by
+  intro eta hEta
+  have hCell := h.cellSubset eta hEta
+  have hSource := h.sourceInterval eta hEta
+  have hPoly :=
+    primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_poly_range
+      hCell
+  rw [Real.norm_eq_abs, abs_le]
+  constructor
+  · calc
+      -(residualAbs : Real) <=
+          (cert.sourceLower : Real) -
+            (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+              Real) := h.lowerBudget
+      _ <=
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta -
+            primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+              eta :=
+          sub_le_sub hSource.1 hPoly.2
+  · calc
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta -
+            primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+              eta <=
+          (cert.sourceUpper : Real) -
+            (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+              Real) :=
+          sub_le_sub hSource.2 hPoly.1
+      _ <= (residualAbs : Real) := h.upperBudget
+
+end Valid
+end Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert
+
+/-- A finite biased-residual source segment family covers the active cell. -/
+def Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover
+    (n : Nat)
+    (seg : Fin n -> Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert) :
+    Prop :=
+  ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+    ∃ i : Fin n,
+      eta ∈ Set.Icc ((seg i).cellL : Real) ((seg i).cellU : Real)
+
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_segment_cover
+    {n : Nat}
+    {seg : Fin n -> Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert}
+    {residualAbs : Rat}
+    (hValid :
+      ∀ i : Fin n, (seg i).Valid residualAbs)
+    (hCover :
+      Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover n seg) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+      residualAbs := by
+  intro eta hEta
+  rcases hCover eta hEta with ⟨i, hEtaSeg⟩
+  exact (hValid i).to_residual_bound_on_segment eta hEtaSeg
+
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_source_segment_cover
+    {n : Nat}
+    {seg : Fin n -> Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert}
+    {residualAbs : Rat}
+    (hResidualBudget :
+      (residualAbs : Real) <=
+        (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+          Real))
+    (hValid :
+      ∀ i : Fin n, (seg i).Valid residualAbs)
+    (hCover :
+      Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover n seg) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelOrder16IntervalData.Valid :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_order16_direct_interval_valid_of_residual_bound
+    hResidualBudget
+    (primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_segment_cover
+      hValid hCover)
 
 end Step33
 end PSDpd

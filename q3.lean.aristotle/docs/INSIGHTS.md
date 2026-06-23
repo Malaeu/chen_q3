@@ -42809,3 +42809,39 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_ACTIVE_ACTUAL_NOMINAL_SIGNED_INTERVAL_PAYLOAD_GAP`.
 - If only center-jet data exists, use:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERJET_UNIFORM_INTERVAL_MISMATCH_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- DirectOrder16BiasedResidualModelRangeSpendReceiver
+
+- Refined the collapsed receiver one more step: the checked biased nonzero
+  model Horner range can be spent directly, so the preferred residual payload
+  no longer needs a separate signed interval for
+  `nominalScale * D16(ComponentProductNominal)`.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_activeActual_signed_interval`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_activeActual_signed_interval`,
+  `Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_residualSourceProp`,
+  `Step33Sub0CombinedOrder16BiasedResidualActiveActualSignedIntervalCert.Valid.to_order16DirectIntervalValid`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid.to_residual_bound_on_segment`,
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_source_segment_cover`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_source_segment_cover`.
+- New preferred payload target:
+  segment rows `seg : Fin n ->
+  Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert`,
+  proofs `∀ i, (seg i).Valid residualAbs`, a cover
+  `Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCover n seg`,
+  and the global slack comparison
+  `residualAbs <=
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat`.
+- Required row: a proof-grade segmented signed interval for the whole source
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource`,
+  equivalently `activeScale * D16(ComponentProductActual)`, plus exact
+  per-segment budget rows against the already checked biased model envelope.
+- Closed interface subgap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_BIASED_MODEL_RANGE_SPEND_RECEIVER_CLOSED`.
+- Boundary: no concrete source segment rows were generated here; Step33A.1-A
+  remains open.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_SEGMENT_PAYLOAD_GAP`.
