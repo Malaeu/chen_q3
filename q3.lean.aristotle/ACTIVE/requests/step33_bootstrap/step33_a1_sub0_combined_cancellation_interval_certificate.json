@@ -112,6 +112,7 @@
     "sourceIntervalRowsToHighOrderValidConstructorPresent": true,
     "sourceNormalFormActiveActualInterfacePresent": true,
     "sourceNormalFormActiveActualIntervalPresent": true,
+    "sourceNormalFormActiveActualSourceIntervalValidPresent": true,
     "sourceNormalFormActiveActualValidConstructorPresent": true,
     "sourceNormalFormCancellationCauchyPresent": true,
     "sourceNormalFormConditionalCenterJetPresent": true,
@@ -172,7 +173,7 @@
     "validPredicate": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid"
   },
   "routeId": "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR",
-  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v11",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12",
   "segments": [
     {
       "budgetPassesExactRational": true,
@@ -195,7 +196,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean": "2cf0833b5b65c1f7",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean": "05fae4f366bb39df",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean": "84628671b07f836b",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean": "187d8f22bc9689d7",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean": "154d430ef1dc8eef",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean": "d3ce443f3d86cc33",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean": "8554b282c60d9c25",
@@ -264,7 +265,7 @@
       "whyNotEnough": "This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid and the interval-row constructor for component-source rows. The nonconditional source normal form is also checked. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload."
     },
     "firstSourceFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP",
-    "nextPatchRecommendation": "Generate/prove concrete SourceIntervalCert.Valid rows through the checked active-actual interval adapter.",
+    "nextPatchRecommendation": "Generate/prove concrete SourceIntervalCert.Valid rows through the checked active-actual SourceIntervalCert.Valid constructor.",
     "order16Failure": null,
     "rationalPolynomialPart": {
       "definition": {
@@ -291,7 +292,7 @@
     },
     "requiredBridgeShape": [
       "component-source lower/upper row intervals may be used via the checked interval-row constructor, but the concrete rows are still missing",
-      "prove active-actual lower/upper row intervals and feed them through the checked active-actual interval adapter",
+      "prove active-actual lower/upper row intervals and feed them through the checked active-actual SourceIntervalCert.Valid constructor",
       "forall j : Fin 16, norm(iteratedDeriv j CombinedCancellationIntervalExpr center / j! - coeff[j]) <= coeffErrorAbs[j]",
       "forall eta in Icc 0 (1/10), norm(iteratedDeriv 16 CombinedCancellationIntervalExpr eta) <= order16Abs",
       "sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs",
@@ -400,6 +401,13 @@
         "lookupSymbol": "theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval",
         "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval"
       },
+      "activeActualSourceIntervalValid": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean",
+        "line": 545,
+        "lookupSymbol": "theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval",
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval"
+      },
       "activeActualValidConstructor": {
         "exists": true,
         "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean",
@@ -442,7 +450,7 @@
       "residualJetBridgePresent": true,
       "status": "checked_nonconditional_normal_form_payload_missing",
       "supportPresent": true,
-      "whyNotEnough": "The residual Taylor center-jet alignment bridge and nonconditional active-actual normal form are now Lean-checked, including a generator-facing active-actual interval adapter. This is still not a generated source interval payload: concrete lower/upper rows, Horner rows, target-budget rows, and a Valid payload are still missing."
+      "whyNotEnough": "The residual Taylor center-jet alignment bridge and nonconditional active-actual normal form are now Lean-checked, including a generator-facing active-actual interval adapter and source-interval Valid constructor. This is still not a generated source interval payload: concrete lower/upper rows, Horner rows, target-budget rows, and a Valid payload are still missing."
     },
     "status": "source_interval_cert_target_checked_payload_missing",
     "targetFunction": {
@@ -498,6 +506,7 @@
     "sourceModelOrder16Source": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource",
     "sourceModelOrder16Theorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource",
     "sourceNormalFormActiveActualInterval": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval",
+    "sourceNormalFormActiveActualSourceIntervalValid": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval",
     "sourceNormalFormActiveActualValidConstructor": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_activeActual_interval",
     "sourceNormalFormCancellationCauchy": "primaryFiniteRow0Parent0Split100Sub0_cancellationResidualCauchy_eq_actual_sub_nominal",
     "sourceNormalFormConditionalCenterJet": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model_of_residualJet",

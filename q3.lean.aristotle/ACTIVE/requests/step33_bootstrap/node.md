@@ -18551,3 +18551,36 @@ Generate/prove concrete SourceIntervalCert.Valid rows through the checked
 active-actual interval adapter:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
+
+## 2026-06-23 Active Node Addendum -- active-actual SourceIntervalCert.Valid constructor checked
+
+Checked isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+New support:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12
+sourceNormalFormActiveActualSourceIntervalValidPresent = true
+sourceNormalFormActiveActualInterfacePresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Next exact move:
+
+```text
+Generate/prove concrete SourceIntervalCert.Valid rows through the checked
+active-actual SourceIntervalCert.Valid constructor:
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```

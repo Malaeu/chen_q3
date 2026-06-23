@@ -36785,6 +36785,36 @@ Still open:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
 
+## 2026-06-23 Addendum -- active-actual SourceIntervalCert.Valid constructor checked
+
+Extended isolated Lean support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+New Lean-checked symbol:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12
+sourceNormalFormActiveActualSourceIntervalValidPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
 ## 2026-06-23 Addendum -- active-actual interval adapter checked
 
 Extended isolated Lean support file:

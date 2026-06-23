@@ -77,7 +77,7 @@ OMEGA_PRIME_PAYLOAD = (
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v11"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
@@ -169,6 +169,9 @@ SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_INTERVAL = (
 )
 SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_VALID_CONSTRUCTOR = (
     "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_activeActual_interval"
+)
+SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval"
 )
 SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE = (
     "STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP"
@@ -435,6 +438,13 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         )
         is not None
     )
+    source_normal_form_active_actual_source_interval_valid_present = (
+        line_of_symbol(
+            ROOT / SOURCE_NORMAL_FORM_FILE,
+            f"theorem {SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID}",
+        )
+        is not None
+    )
     source_normal_form_support_present = (
         source_normal_form_cancellation_cauchy_present
         and source_normal_form_conditional_center_jet_present
@@ -448,6 +458,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         source_normal_form_complete_present
         and source_normal_form_active_actual_interval_present
         and source_normal_form_active_actual_valid_constructor_present
+        and source_normal_form_active_actual_source_interval_valid_present
     )
 
     return {
@@ -525,6 +536,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceNormalFormActiveActualValidConstructorPresent": (
                 source_normal_form_active_actual_valid_constructor_present
             ),
+            "sourceNormalFormActiveActualSourceIntervalValidPresent": (
+                source_normal_form_active_actual_source_interval_valid_present
+            ),
             "sourceNormalFormActiveActualInterfacePresent": (
                 source_normal_form_active_actual_interface_present
             ),
@@ -587,6 +601,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             ),
             "sourceNormalFormActiveActualValidConstructor": (
                 SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_VALID_CONSTRUCTOR
+            ),
+            "sourceNormalFormActiveActualSourceIntervalValid": (
+                SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID
             ),
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
@@ -790,6 +807,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_VALID_CONSTRUCTOR,
                     f"theorem {SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_VALID_CONSTRUCTOR}",
                 ),
+                "activeActualSourceIntervalValid": symbol_ref_lookup(
+                    SOURCE_NORMAL_FORM_FILE,
+                    SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID,
+                    f"theorem {SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID}",
+                ),
                 "supportPresent": source_normal_form_support_present,
                 "residualJetBridgePresent": (
                     source_normal_form_residual_jet_bridge_present
@@ -829,9 +851,10 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     "The residual Taylor center-jet alignment bridge and "
                     "nonconditional active-actual normal form are now "
                     "Lean-checked, including a generator-facing active-actual "
-                    "interval adapter. This is still not a generated source "
-                    "interval payload: concrete lower/upper rows, Horner rows, "
-                    "target-budget rows, and a Valid payload are still missing."
+                    "interval adapter and source-interval Valid constructor. "
+                    "This is still not a generated source interval payload: "
+                    "concrete lower/upper rows, Horner rows, target-budget "
+                    "rows, and a Valid payload are still missing."
                     if source_normal_form_complete_present
                     else (
                         "This proves the cancellation-residual Cauchy rows equal "
@@ -1002,7 +1025,8 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 ),
                 (
                     "prove active-actual lower/upper row intervals and feed "
-                    "them through the checked active-actual interval adapter"
+                    "them through the checked active-actual SourceIntervalCert.Valid "
+                    "constructor"
                 ),
                 (
                     "forall j : Fin 16, norm(iteratedDeriv j "
@@ -1022,7 +1046,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             ],
             "nextPatchRecommendation": (
                 "Generate/prove concrete SourceIntervalCert.Valid rows through "
-                "the checked active-actual interval adapter."
+                "the checked active-actual SourceIntervalCert.Valid constructor."
             ),
         },
         "candidateSegmentSource": {

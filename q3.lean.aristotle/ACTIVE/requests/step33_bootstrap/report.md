@@ -164,6 +164,70 @@ Generate/prove concrete SourceIntervalCert.Valid rows through the checked
 active-actual interval adapter.
 ```
 
+## Execution Update (2026-06-23) -- active-actual SourceIntervalCert.Valid constructor checked
+
+After the active-actual interval adapter, the remaining interface mismatch was
+that the generator target is a concrete
+`Step33Sub0CombinedCancellationSourceIntervalCert.Valid`, not just a direct
+`Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+New Lean-checked symbol:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval
+```
+
+Ledger regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12
+sourceNormalFormActiveActualSourceIntervalValidPresent = true
+sourceNormalFormActiveActualInterfacePresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Boundary:
+
+```text
+This is not the concrete payload and not Step33A.1-A closure.
+```
+
+Validation:
+
+```text
+LEAN_PATH=... lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json
+rg -n "sorry|admit|exact\?|axiom|unsafe" touched Lean/script
+git diff --check via temporary index
+```
+
+`bash scripts/q3_check.sh ...SourceNormalForm.lean` was attempted; it entered
+the same Lean check and was stopped after several minutes without diagnostic
+output.  The direct Lean command above completed successfully.
+
+Current exact gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Next exact patch:
+
+```text
+Generate/prove concrete SourceIntervalCert.Valid rows through the checked
+active-actual SourceIntervalCert.Valid constructor.
+```
+
 ## Execution Update (2026-06-23) -- nonconditional source normal form checked
 
 Browser/Computer Use was used for advisory review of the coefficient-alignment

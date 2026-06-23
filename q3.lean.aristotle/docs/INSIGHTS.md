@@ -41588,3 +41588,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `SourceIntervalCert.Valid` rows through the checked active-actual interval
   adapter, including the order-16 source interval, Horner range rows, and exact
   target-budget inequalities.
+
+## Insight (2026-06-23, Step33A.1-A) -- ActiveActualSourceIntervalValidConstructorChecked
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
+- The previous active-actual adapter could route future rows directly into
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`, but the generator
+  contract is stricter: it must materialize a concrete
+  `Step33Sub0CombinedCancellationSourceIntervalCert.Valid`.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`
+  with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12`.
+- The ledger now records
+  `sourceNormalFormActiveActualSourceIntervalValidPresent = true` and
+  `sourceNormalFormActiveActualInterfacePresent = true`.
+- Boundary: this is not a generated payload and not Step33A.1-A closure.
+  `sourceIntervalCertPayloadPresent = false`, `highOrderValidPayloadPresent =
+  false`, and `proofSafeClosedFields = 0`.
+- Next exact proof-producing patch: generate/prove concrete source rows for
+  that constructor: active-actual center lower/upper rows, order-16 source
+  interval, Horner range rows, and exact target-budget inequalities.

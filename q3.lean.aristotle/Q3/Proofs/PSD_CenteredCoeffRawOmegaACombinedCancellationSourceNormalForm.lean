@@ -534,6 +534,69 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid
     primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval
       coeffLower coeffUpper hActiveActualRows
 
+/--
+Generator-facing constructor for the exact source-interval certificate when the
+generated center rows are proved in the active-actual normal form.
+
+This keeps the concrete payload target at
+`Step33Sub0CombinedCancellationSourceIntervalCert.Valid` instead of bypassing it
+through `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval
+    (cert : Step33Sub0CombinedCancellationSourceIntervalCert)
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (cert.data.coeffErrorAbs j : Real))
+    (hRemainderNonneg : 0 <= (cert.data.remainderAbs : Real))
+    (hActiveActualRows :
+      ∀ j : Fin 16,
+        (cert.coeffLower j : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+                j.1 -
+              (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff j :
+                Real) ∧
+          primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyCenterJet
+                j.1 -
+              (primaryFiniteRow0Parent0Split100Sub0ResidualDerivmodelCoeff j :
+                Real) <=
+            (cert.coeffUpper j : Real))
+    (hCoeffErrorBudget :
+      ∀ j : Fin 16,
+        (cert.data.coeff j : Real) - (cert.data.coeffErrorAbs j : Real) <=
+            (cert.coeffLower j : Real) ∧
+          (cert.coeffUpper j : Real) <=
+            (cert.data.coeff j : Real) + (cert.data.coeffErrorAbs j : Real))
+    (hOrder16SourceInterval :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        (cert.order16Lower : Real) <=
+            primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta ∧
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+              eta <=
+            (cert.order16Upper : Real))
+    (hOrder16Budget :
+      -(cert.data.order16Abs : Real) <= (cert.order16Lower : Real) ∧
+        (cert.order16Upper : Real) <= (cert.data.order16Abs : Real))
+    (hBudget :
+      (∑ j : Fin 16,
+          (cert.data.coeffErrorAbs j : Real) * ((1 : Real) / 20) ^ j.1) +
+          (cert.data.order16Abs : Real) * ((1 : Real) / 20) ^ 16 /
+            (Nat.factorial 16 : Real) <=
+        (cert.data.remainderAbs : Real)) :
+    cert.Valid := by
+  refine
+    { coeffErrorNonneg := hCoeffErrorNonneg
+      remainderNonneg := hRemainderNonneg
+      sourceCenterInterval := ?_
+      coeffErrorBudget := hCoeffErrorBudget
+      order16SourceInterval := hOrder16SourceInterval
+      order16Budget := hOrder16Budget
+      remainderBudget := hBudget }
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval
+      cert.coeffLower cert.coeffUpper hActiveActualRows
+
 end Step33
 end PSDpd
 end Q3
