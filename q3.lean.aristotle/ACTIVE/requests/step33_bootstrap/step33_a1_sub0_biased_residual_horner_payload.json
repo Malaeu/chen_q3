@@ -25,7 +25,8 @@
   "failureCodeIfFamilyRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP",
   "failureCodeIfRemainderRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
   "failureCodeIfScaledRemainderBoundMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
-  "generatedAt": "2026-06-23T16:22:02.143566+00:00",
+  "failureCodeIfScaledRemainderIntervalCertMissing": "INTERVAL_CERT_GAP",
+  "generatedAt": "2026-06-23T16:52:47.441851+00:00",
   "guard": "Do not claim Step33A.1-A from the interface alone.  The payload must prove the residual-Horner family Valid predicate and the canonical residual budget in Lean.",
   "hornerCertFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean",
   "hornerCertSymbols": {
@@ -37,7 +38,7 @@
   },
   "hornerFamilyReceiverPresent": true,
   "hornerRangeRowsLeanChecked": false,
-  "nextProofObject": "proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
+  "nextProofObject": "proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; the generator-facing whole-expression interval target is primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
   "order16DirectIntervalValidClaimed": false,
   "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
   "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean",
@@ -67,7 +68,17 @@
   "residualSourcePropClaimed": false,
   "route": "biased_residual_horner_family_payload",
   "scaledRemainderBoundLeanChecked": false,
-  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v3",
+  "scaledRemainderIntervalPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean",
+  "scaledRemainderIntervalPayloadInterfacePresent": true,
+  "scaledRemainderIntervalPayloadSymbols": {
+    "Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalFamilyCert": true,
+    "Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalSegmentCert": true,
+    "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload": true,
+    "primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target": true
+  },
+  "scaledRemainderIntervalRowsLeanChecked": false,
+  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v4",
   "segmentRowsLeanChecked": false,
   "step33A1ClosedClaimed": false
 }

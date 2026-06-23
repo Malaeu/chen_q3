@@ -1,0 +1,94 @@
+{
+  "budgetRowsLeanChecked": false,
+  "certificateShape": [
+    "per segment: cellL, cellU, lower, upper, remainderAbs",
+    "proof-grade interval for the complete signed scaled remainder",
+    "-remainderAbs <= lower",
+    "upper <= remainderAbs",
+    "finite segment cover of [0, 1/10]",
+    "global residualAbs equal to BiasedResidualRemainderAbs"
+  ],
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
+  "doNotSplitSummands": true,
+  "firstFailureCode": "INTERVAL_CERT_GAP",
+  "generatedAt": "2026-06-23T16:52:47.419241+00:00",
+  "guard": "This ledger is not proof evidence.  Do not split the two analytic summands as the primary route and do not claim residual-Horner family Valid until a proof-grade whole-expression interval certificate instantiates the payload target.",
+  "nextProofObject": "A rational/interval certificate for the complete signed scaled remainder expression on [0,1/10], feeding primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget.",
+  "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
+  "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean",
+  "payloadInterfacePresent": true,
+  "payloadSymbols": {
+    "Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalFamilyCert": true,
+    "Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalSegmentCert": true,
+    "Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalSegmentCover": true,
+    "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload": true,
+    "primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target": true
+  },
+  "proofGrade": false,
+  "proofStatus": "biased_scaled_remainder_interval_surface_checked_missing_interval_cert",
+  "remainderBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean",
+  "remainderBridgePresent": true,
+  "remainderBridgeSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainder": true,
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound": true
+  },
+  "residualRemainderRowsClaimed": false,
+  "route": "biased_scaled_remainder_whole_expression_interval",
+  "scaledRemainderSourcePropClaimed": false,
+  "schema": "q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v1",
+  "segmentCoverLeanChecked": false,
+  "step33A1ClosedClaimed": false,
+  "targetPayload": "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget",
+  "targetProp": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp",
+  "upstreamEvidence": {
+    "biasedSignedFactorLedger": {
+      "concreteSegmentsLeanChecked": false,
+      "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP",
+      "exists": true,
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_signed_factor_segments.json",
+      "proofGrade": false,
+      "proofStatus": "biased_residual_signed_factor_source_only_interface_checked_missing_segment_payload",
+      "residualSourcePropClaimed": false
+    },
+    "order16DirectLedger": {
+      "currentGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL",
+      "exists": true,
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_order16_direct_payload.json",
+      "proofStatus": "raw_product17_centeredTaylor_bound_checked_but_budget_killed",
+      "sourceIntervalCertValidClaimed": false,
+      "step33A1ClosedClaimed": false
+    },
+    "residualHornerLedger": {
+      "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
+      "exists": true,
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.json",
+      "proofGrade": false,
+      "proofStatus": "biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound",
+      "residualRemainderInterfaceLeanChecked": true,
+      "scaledRemainderBoundLeanChecked": false
+    },
+    "segmentedResidualDerivativeLedger": {
+      "budgetPassedExactRational": true,
+      "candidateReadyForLeanShape": true,
+      "exists": true,
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_segmented_residual_deriv_interval_payload.json",
+      "proofGradeFullTaylorResidualBoundsPresent": false,
+      "proofGradeResidualBoundsPresent": false,
+      "proofMode": "exact_rational_same_expression_interval",
+      "sameExpressionResidualIntervalProofPresent": false,
+      "status": "fail_closed_missing_cancellation_preserving_taylor_remainder_proof"
+    },
+    "signedFactorLedger": {
+      "currentGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP",
+      "exists": true,
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_signed_factor_rows.json",
+      "proofGrade": false,
+      "proofStatus": "abs_to_signed_factor_bridge_checked_but_centered_taylor_budget_killed",
+      "signedFactorRowsLeanChecked": false,
+      "sourceAssemblyRowsLeanChecked": false
+    }
+  },
+  "wholeExpressionIntervalRowsLeanChecked": false
+}

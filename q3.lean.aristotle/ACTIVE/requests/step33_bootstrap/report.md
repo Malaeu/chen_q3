@@ -73345,3 +73345,76 @@ scaled remainder expression directly; splitting the two analytic summands is
 not the preferred route because it can lose the cancellation preserved by the
 residual-Horner bridge.
 ```
+
+## 2026-06-23 Report Addendum -- biased scaled-remainder interval surface checked
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.{json,md}
+```
+
+New Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalSegmentCert
+Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalSegmentCover
+Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalFamilyCert
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload
+```
+
+Updated ledgers:
+
+```text
+biased scaled-remainder interval:
+  schema = q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v1
+  proofStatus = biased_scaled_remainder_interval_surface_checked_missing_interval_cert
+  firstFailureCode = INTERVAL_CERT_GAP
+  currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+
+biased residual-Horner:
+  schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v4
+  scaledRemainderIntervalPayloadInterfacePresent = true
+  scaledRemainderIntervalRowsLeanChecked = false
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+  returned no matches.
+
+PASS python compile and ledgers:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+NOTE:
+  lake env lean ...BiasedScaledRemainderIntervalPayload.lean and
+  bash scripts/q3_check.sh ...BiasedScaledRemainderIntervalPayload.lean
+  both reached the Lean target and then produced no diagnostics for more than
+  90s; both were stopped. The direct Lean command above passed.
+```
+
+Boundary:
+
+```text
+This is not a proof of the interval bound and not Step33A.1-A closure.  It
+turns the next proof-producing step into the exact payload target
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget.
+The first real failure code remains INTERVAL_CERT_GAP until proof-grade
+whole-expression interval rows are generated and checked.
+```

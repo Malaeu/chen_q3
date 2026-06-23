@@ -38968,3 +38968,45 @@ Current proof-producing gap:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
 ```
+
+## 2026-06-23 Current Active Pointer -- biased scaled-remainder interval surface
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.{json,md}
+```
+
+Lean-checked payload surface:
+
+```lean
+Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalSegmentCert
+Step33Sub0CombinedOrder16BiasedScaledRemainderIntervalFamilyCert
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload
+```
+
+Updated ledgers:
+
+```text
+biased scaled-remainder interval:
+  schema = q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v1
+  proofStatus = biased_scaled_remainder_interval_surface_checked_missing_interval_cert
+  firstFailureCode = INTERVAL_CERT_GAP
+
+biased residual-Horner:
+  schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v4
+  scaledRemainderIntervalPayloadInterfacePresent = true
+```
+
+Boundary:
+
+```text
+This is not the interval certificate and not Step33A.1-A closure.  The next
+proof object is still a proof-grade whole-expression interval/rational
+certificate for the complete signed scaled remainder on [0,1/10].  Do not
+split the two analytic summands as the primary route.
+```

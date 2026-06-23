@@ -19243,3 +19243,47 @@ This is not closure. The next proof-producing object is a proof-grade bound
 for
 `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`,
 then concrete residual-Horner family rows and residual budget rows.
+
+## 2026-06-23 Active Node Addendum -- biased scaled-remainder interval surface
+
+Added isolated payload surface:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+```
+
+Added fail-closed generator and ledger:
+
+```text
+scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.md
+```
+
+Checked handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload
+```
+
+Ledger result:
+
+```text
+biased_scaled_remainder_interval_surface_checked_missing_interval_cert
+INTERVAL_CERT_GAP
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+```
+
+The residual-Horner ledger is now schema v4 and records
+`scaledRemainderIntervalPayloadInterfacePresent = true`.
+
+Boundary:
+
+```text
+This is not a proof of the scaled remainder bound.  It only pins the
+generator-facing interval payload target for the complete signed
+scaled-remainder expression.  Do not claim a residual-Horner family Valid
+theorem until a proof-grade interval/rational certificate instantiates this
+target.
+```

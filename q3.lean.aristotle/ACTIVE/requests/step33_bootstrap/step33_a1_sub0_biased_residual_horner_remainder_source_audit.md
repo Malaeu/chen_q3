@@ -184,3 +184,36 @@ Boundary: the bridge proves only that a future bound for
 `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
 is the exact `residual_remainder` row needed by the residual-Horner cert. It
 does not prove that bound and does not claim a concrete family `Valid` theorem.
+
+## 2026-06-23 Addendum: Interval Payload Surface Checked
+
+The generator-facing whole-expression interval target is now Lean-checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+```
+
+Checked handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload
+```
+
+Generated fail-closed ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.{json,md}
+```
+
+Ledger status:
+
+```text
+biased_scaled_remainder_interval_surface_checked_missing_interval_cert
+INTERVAL_CERT_GAP
+```
+
+Boundary: this still does not prove the scaled remainder bound. It only pins
+the next proof-producing payload target for a proof-grade whole-expression
+interval/rational certificate on `[0,1/10]`.

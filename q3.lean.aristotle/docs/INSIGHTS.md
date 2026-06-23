@@ -43231,3 +43231,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - If this fails, first failure code is `INTERVAL_CERT_GAP`.
 - This entry is advisory only; it is not proof evidence and does not claim
   Step33A.1-A closure.
+
+## Insight (2026-06-23, Step33A.1-A) -- BiasedScaledRemainderIntervalSurface
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean`.
+- Checked generator-facing whole-expression interval target:
+  `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget`.
+- Checked handoff:
+  `primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target`.
+- Checked residual-Horner consumption:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload`.
+- Added fail-closed generator
+  `scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py`.
+- Generated:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.json`
+  and `.md`.
+- Updated residual-Horner ledger to schema
+  `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v4` with
+  `scaledRemainderIntervalPayloadInterfacePresent = true`.
+- Ledger status:
+  `biased_scaled_remainder_interval_surface_checked_missing_interval_cert`.
+- First failure code:
+  `INTERVAL_CERT_GAP`.
+- Current exact gap remains:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP`.
+- Boundary: this is not the interval certificate, not proof-grade rows, and not
+  Step33A.1-A closure.  The next object must be a proof-grade
+  whole-expression interval/rational certificate for the complete signed
+  scaled remainder; do not split the two analytic summands as the primary
+  route.
