@@ -69632,3 +69632,2595 @@ First missing proof/generator interface:
 ```text
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
+
+## Execution Update (2026-06-23) -- ShapeSqDeriv singleAbs signed-row bridge checked
+
+Browser/Computer Use was used for the route review on the current
+active-actual center-row gate.  Proshka chose route B: a proof-grade
+`singleAbs.Valid` source may be converted to signed two-sided center-jet rows;
+coarseness is a later budget issue, not a correctness issue.  This advisory
+answer is not proof evidence; the accepted artifact is the local Lean check.
+
+Added isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_centerJet_interval_of_abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_singleAbs_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval
+```
+
+Meaning:
+
+```text
+The existing ShapeSqDeriv `singleAbs` / partial-sharp `Valid` payload can now
+be used as a proof-grade signed center-jet interval input for the
+ShapeSqDerivActual factor in the active combined-cancellation normalization.
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v13
+activeActualSingleAbsToSignedCenterJetCrosswalkPresent = true
+activeActualShapeSqDerivRows01234567891011SignedPresent = true
+highOrderCenterJetRowsPresent = false
+sourceIntervalCertPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SINGLEABS_TO_SIGNED_CENTERJET_CROSSWALK_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Next exact patch:
+
+```text
+Generate proof-grade active-actual center rows from signed OmegaPrime/Omega/
+ShapeSq/ShapeSqDeriv factor intervals, exact Cauchy convolution, activeScale,
+and ResidualDerivmodelCoeff subtraction.  Do not mark the source interval
+certificate Valid until those rows, order-16 source interval, Horner range,
+and target-budget rows are Lean-checked.
+```
+
+## Execution Update (2026-06-23) -- active-actual factor interval receiver checked
+
+Browser/Computer Use was used again for route review on the same live gate.
+That advisory channel is not proof evidence; the accepted artifacts are the
+local Lean check and regenerated fail-closed ledger.
+
+Extended isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_sum_interval_of_term_intervals
+primaryFiniteRow0Parent0Split100Sub0_normalizedJetConvolution_interval_of_term_intervals
+primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_interval
+primaryFiniteRow0Parent0Split100Sub0_activeScale_nonneg
+primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_of_product_interval
+```
+
+Meaning:
+
+```text
+Termwise factor-product intervals can now be transported through the checked
+Cauchy convolution receiver, the nonnegative activeScale multiplier, and
+ResidualDerivmodelCoeff subtraction into the exact active-actual center-row
+premise consumed by the SourceIntervalCert.Valid constructor.
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v14
+activeActualFactorIntervalReceiverPresent = true
+activeActualCauchyIntervalReceiverPresent = true
+activeActualRowIntervalReceiverPresent = true
+sourceIntervalCertPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_FACTOR_INTERVAL_TO_ROW_RECEIVER_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Boundary:
+
+```text
+No concrete factor-product rows, no order-16 source interval, no Horner range,
+no target-budget rows, and no SourceIntervalCert.Valid payload have been
+produced by this patch.
+```
+
+Next exact patch:
+
+```text
+Emit concrete proof-grade termwise factor-product intervals for
+OmegaPrime/Omega/ShapeSq/ShapeSqDeriv, fold them through the checked
+active-actual Cauchy-row receiver, then instantiate SourceIntervalCert.Valid
+with order16, Horner, and target-budget rows.
+```
+
+## Execution Update (2026-06-23) -- active-actual factor-row inventory
+
+Browser/Computer Use was already used for the route decision; this checkpoint
+records only local repository evidence.  No Lean proof files were modified by
+this inventory step.
+
+Proof-grade factor-row sources currently found:
+
+```text
+OmegaPrimeActual:
+  omegaPrimeGeneratedCenterJet
+  omegaPrimeGeneratedCoeff
+  omegaPrimeGeneratedCoeffErrorAbs
+
+ShapeSqDerivActual:
+  primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval
+```
+
+Closest local artifacts that are not enough for actual factor center rows:
+
+```text
+OmegaActual:
+  primaryFiniteRow0Parent0Split100Sub0_omega_factor_error
+  primaryFiniteRow0Parent0Split100Sub0_omegaTaylor_center_anchor
+
+ShapeSqActual:
+  primaryFiniteRow0Parent0Split100Sub0_shapeSq_factor_error
+  primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorSource_generated
+```
+
+Reason they are not enough:
+
+```text
+The current active-actual Cauchy receiver consumes signed intervals for
+factorial-normalized center jets of the actual factors.  The Omega and ShapeSq
+artifacts above give anchor/function or uniform Taylor-source error control,
+not signed center-jet rows for all rows 0..15 in the actual-factor convention.
+```
+
+Current exact subgap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SIGNED_FACTOR_JET_ROWS_GAP
+```
+
+Boundary:
+
+```text
+The receiver side is checked, but no concrete active-actual factor-product row
+payload and no SourceIntervalCert.Valid payload exists yet.
+```
+
+## Execution Update (2026-06-23) -- active-actual signed factor rows checked
+
+The previous factor-row inventory gap is now locally closed in the isolated
+support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_omegaPrimeActual_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval
+```
+
+Together with the already checked
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval`,
+these provide signed center-jet interval sources for all four actual factors
+needed by the active-actual Cauchy receiver:
+
+```text
+OmegaPrimeActual
+OmegaActual
+ShapeSqActual
+ShapeSqDerivActual
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v15
+activeActualOmegaPrimeSignedRowsPresent = true
+activeActualOmegaSignedRowsPresent = true
+activeActualShapeSqSignedRowsPresent = true
+activeActualAllFactorSignedRowsPresent = true
+sourceIntervalCertPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SIGNED_FACTOR_JET_ROWS_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
+Boundary:
+
+```text
+This patch proves row sources and keeps the checked receiver available. It does
+not emit concrete termwise factor-product interval rows, order-16 source rows,
+Horner rows, target-budget rows, or a SourceIntervalCert.Valid payload.
+```
+
+Next exact patch:
+
+```text
+Generate/prove the concrete active-actual product lower/upper rows from the
+four signed factor-row sources, fold them through
+primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_of_product_interval,
+then instantiate SourceIntervalCert.Valid with order16, Horner, and exact
+target-budget rows.
+```
+
+## Execution Update (2026-06-23) -- active-actual product row intervals checked
+
+The concrete active-actual product row interval support is now Lean-checked in
+the isolated support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyAbs
+primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_abs_interval
+primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowLower
+primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowUpper
+primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_from_factor_rows
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v16
+activeActualProductRowIntervalsPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_PRODUCT_ROW_INTERVALS_GAP
+```
+
+Browser/Computer Use route review after this patch:
+
+```text
+Do not jump straight to full SourceIntervalCert.Valid.
+First build the signed-row -> midpoint/error center-jet payload.
+Do not redo the singleAbs -> signed bridge.
+```
+
+Current exact next proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SIGNED_ROWS_TO_CENTERJET_ABS_GAP
+```
+
+Expected route-level gap after that succeeds:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_INTERVAL_PAYLOAD_GAP
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure.  No SourceIntervalCert.Valid payload exists,
+no order-16 source interval rows are proved, and no Horner/target-budget rows
+are proved.
+```
+
+## Execution Update (2026-06-23) -- signed rows to center-jet abs payload checked
+
+The Browser/Computer Use route-review gate is now locally closed in an isolated
+Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationCenterJetPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCoeff
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCoeffErrorAbs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_coeffErrorAbs_nonneg
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_componentSource_centerJet_abs_generated
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_abs_generated
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v17
+centerJetAbsPayloadPresent = true
+highOrderCenterJetRowsPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SIGNED_ROWS_TO_CENTERJET_ABS_GAP
+```
+
+Current exact next proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_INTERVAL_PAYLOAD_GAP
+```
+
+Boundary:
+
+```text
+This is not Step33A.1-A closure and not a SourceIntervalCert.Valid payload.
+The order-16 source interval, Horner range rows, and target-budget rows are
+still missing.
+```
+
+## Execution Update (2026-06-23) -- order16 structural reduction checked
+
+Browser/Computer Use route review selected the factor-majorant route for the
+current order16 gate.  The advisory route was accepted only after a local Lean
+check of the structural bridge.
+
+New isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean
+```
+
+New Lean-checked symbol:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_activeActual
+```
+
+Meaning:
+
+```text
+CombinedCancellationOrder16ComponentSource eta =
+  activeScale * iteratedDeriv 16 ComponentProductActual eta
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v18
+order16StructuralReductionPresent = true
+highOrderOrder16RowsPresent = false
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_MODEL_GAP
+```
+
+Current exact next proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+```
+
+Boundary:
+
+```text
+This is not an order16 numeric bound, not SourceIntervalCert.Valid, and not
+Step33A.1-A closure.  The factor-derivative bounds through order 16, order16
+source interval rows, Horner range rows, and target-budget rows are still
+missing.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH="q3.lean.aristotle/.lake/build/lib/lean:..." lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean
+PASS py_compile:
+  python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+PASS ledger regeneration:
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+PASS hole/axiom scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" ... returned no matches
+PASS targeted diff check:
+  git diff --check -- <touched files>
+INTERRUPTED after no diagnostic output:
+  lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean
+```
+
+## Execution Update (2026-06-23) -- order16 factor-derivative receiver checked
+
+Added isolated Lean receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0ComponentProductActualOrder16Majorant
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_factor_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_abs_of_factor_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_factor_derivative_abs
+```
+
+Meaning:
+
+```text
+If OmegaPrimeActual, OmegaActual, ShapeSqActual, and ShapeSqDerivActual have
+proof-grade derivative bounds through order 16 on [0,1/10], and the active
+scale budget comparison passes, then the checked order16 component source has
+the signed interval row required by SourceIntervalCert.Valid.
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v19
+order16FactorDerivativeReceiverPresent = true
+order16SourceIntervalReceiverPresent = true
+highOrderOrder16RowsPresent = false
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed support subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_FACTOR_DERIVATIVE_RECEIVER_GAP
+```
+
+Current exact next proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+```
+
+Boundary:
+
+```text
+This is not a concrete factor-bound payload, not an order16 numeric bound, not
+SourceIntervalCert.Valid, and not Step33A.1-A closure.  The concrete
+OmegaPrime/Omega/ShapeSq/ShapeSqDeriv derivative bounds through order 16,
+Horner range rows, and target-budget rows remain missing.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH="q3.lean.aristotle/.lake/build/lib/lean:..." lean q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean
+PASS local .olean generation:
+  lean -o ...PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.olean -i ...
+PASS py_compile and ledger regeneration:
+  python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py
+PASS marker scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" <new Lean file> <ledger script>
+  returned no matches
+PASS targeted diff check:
+  git diff --check -- <tracked touched files>
+  git diff --no-index --check /dev/null <new Lean file>
+PASS v19 ledger sanity:
+  order16FactorDerivativeReceiverPresent = true
+  order16SourceIntervalReceiverPresent = true
+  highOrderOrder16RowsPresent = false
+  sourceIntervalCertPayloadPresent = false
+  highOrderValidPayloadPresent = false
+  proofSafeClosedFields = 0
+TIMEOUT after 60s with no proof error:
+  lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean
+```
+
+## 2026-06-23 Addendum -- factor-derivative payload inventory
+
+Browser/Computer Use escalation was opened for the current route fork:
+generic Taylor-to-uniform-derivative-bound adapter vs direct Taylor-source
+order16 product receiver vs explicit interval/rational factor derivative rows.
+The response is advisory only; local Lean artifacts remain the proof evidence.
+
+Local inventory:
+
+```text
+Checked structural layer:
+  PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean
+
+Checked receiver layer:
+  PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean
+
+Checked center-jet/product-row artifacts:
+  PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean
+```
+
+Important boundary:
+
+```text
+The active-actual center-jet and Cauchy product rows are center rows at the
+combined-cancellation center.  They are not uniform factor derivative bounds on
+eta in [0, 1/10], so they cannot be directly spent as the hypotheses of
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_factor_derivative_abs.
+```
+
+Current exact proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+```
+
+## 2026-06-23 Addendum -- centered Taylor derivative majorant endpoint
+
+Browser/Computer Use advisory route selected the generic
+Taylor-certificate-to-derivative-majorant bridge as the preferred next layer.
+This addendum records only the local Lean-checked endpoint support.
+
+Added isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+```
+
+Lean-checked symbols:
+
+```lean
+centeredTaylorDerivMajorant16
+centeredTaylorDerivMajorant16_last
+iteratedDeriv_norm_le_centeredTaylorDerivMajorant16_last
+```
+
+Meaning:
+
+```text
+The proposed derivative-majorant normalization is checked at k = 16.  At this
+endpoint the Taylor-model contribution is empty and the majorant reduces
+exactly to the supplied uniform order-16 bound.
+```
+
+Boundary:
+
+```text
+This is not the full k = 0..15 Taylor-to-derivative-majorant bridge, not a
+factor derivative payload, and not Step33A.1-A closure.
+```
+
+Current exact subgap:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_DERIVATIVE_MAJORANT_ITERATE_CROSSWALK_GAP
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+
+TOOLING BLOCKED before Lean:
+  lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+  bash scripts/q3_check.sh q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+
+Cause observed locally:
+  lake env lean spawned git diff HEAD --exit-code and hung before running the
+  target Lean file.
+```
+
+## 2026-06-23 Addendum -- centered Taylor variable-order bridge checked
+
+Browser/Computer Use follow-up returned a concrete route for the stuck
+`k < 16` bridge: use `g := iteratedDeriv k f`, degree `n - 1` with
+`k + n = 16`, and keep the reflected left-cell geometry explicit.  This is
+advisory route input only; the accepted evidence below is the local Lean check.
+
+Extended isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+centerJetTaylorPolynomialN
+centerJetTaylorPolynomialN_norm_bound
+taylorWithinEval_eq_centerJetTaylorPolynomialN
+centerJetTaylorPolynomialN_center
+iteratedDeriv_reflect_two_center_sub
+centerJetTaylorPolynomialN_reflect_eq
+centerJetTaylorPolynomialN_remainder_bound_right
+centerJetTaylorPolynomialN_remainder_bound_left
+iteratedDeriv_iteratedDeriv_eq_add
+iteratedDeriv_iteratedDeriv_eq_add_comm
+contDiff_iteratedDeriv_of_add_le_sixteen
+iteratedDeriv_iteratedDeriv_norm_bound_of_add_eq_sixteen
+iteratedDeriv_centerJetTaylorPolynomialN_remainder_bound_right
+iteratedDeriv_centerJetTaylorPolynomialN_remainder_bound_left
+iteratedDeriv_centerJet_bound_of_shift
+centeredTaylorDerivMajorant16Range
+iteratedDeriv_norm_le_centeredTaylorDerivMajorant16Range
+centeredTaylorDerivMajorant16
+centeredTaylorDerivMajorant16_last
+iteratedDeriv_norm_le_centeredTaylorDerivMajorant16_last
+```
+
+Meaning:
+
+```text
+The variable-order Taylor API bridge is now proof-checked for the local
+normalization:
+
+  degree = n - 1
+  g = iteratedDeriv k f
+  k + n = 16
+
+Lean proves both right and left Taylor remainder bounds for `g`, including the
+reflection step.  The left theorem keeps the reflected-cell hypothesis visible
+instead of assuming symmetry silently.  Lean also assembles the polynomial norm
+bound, shifted center-jet bound, and remainder bound into the range-indexed
+majorant `centeredTaylorDerivMajorant16Range`.
+```
+
+Closed support subgap:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_VARIABLE_ORDER_REMAINDER_BRIDGE_CLOSED
+STEP33_A1_SUB0_CENTERED_TAYLOR_RANGE_MAJORANT_ASSEMBLY_CLOSED
+```
+
+Current exact next gap:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_RANGE_TO_FIN17_NORMALIZATION_GAP
+```
+
+Boundary:
+
+```text
+This is still not a concrete factor derivative payload and not Step33A.1-A
+closure.  The remaining proof work is to rewrite the range-indexed
+`centeredTaylorDerivMajorant16Range` theorem into the public
+`centeredTaylorDerivMajorant16` `Fin 17` normalization, then instantiate the
+four actual factor rows and scalar budget comparison.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+PASS touched Lean marker scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+  returned no matches
+PASS whitespace/diff checks:
+  git diff --check -- <tracked touched docs>
+  git diff --no-index --check /dev/null \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+
+Not yet counted as full project validation:
+  /opt/local/bin/gtimeout 30s lake env lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+  /opt/local/bin/gtimeout 30s bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+
+Both timed out without a Lean proof error; this matches the known dirty
+worktree wrapper/tooling block.
+```
+
+## Execution Update (2026-06-23) -- centered Taylor Fin17 normalization checked
+
+The range-indexed derivative majorant bridge was promoted to the public
+receiver-facing `Fin 17` statement.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+centeredTaylorDerivMajorant16Range_eq
+iteratedDeriv_norm_le_centeredTaylorDerivMajorant16
+```
+
+Meaning:
+
+```text
+The checked variable-order Taylor theorem
+`iteratedDeriv_norm_le_centeredTaylorDerivMajorant16Range` now rewrites to the
+public `centeredTaylorDerivMajorant16` `Fin 17` normalization.  The proof uses
+an explicit range-to-filtered-Fin reindexing: `Fin 16` is converted to
+`range 16`, the prefix `j < k` is zero, and the tail is reindexed by
+`j = k + m`.
+```
+
+Closed support subgaps:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_RANGE_TO_FIN17_NORMALIZATION_CLOSED
+STEP33_A1_SUB0_CENTERED_TAYLOR_PUBLIC_FIN17_MAJORANT_CLOSED
+```
+
+Current exact proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+```
+
+Boundary:
+
+```text
+This does not instantiate concrete factor derivative rows and does not close
+Step33A.1-A.  The next proof object must provide proof-grade derivative bounds
+for OmegaPrimeActual/OmegaActual/ShapeSqActual/ShapeSqDerivActual through the
+new public majorant interface, then feed the existing active-actual product row
+path.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant.lean
+```
+
+## Execution Update (2026-06-23) -- factor derivative majorant bridge checked
+
+Browser/Computer Use was used as route review.  Proshka chose route A:
+instantiate the checked generic centered Taylor majorant first.  The accepted
+proof object is the local Lean check below.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActualDerivativeMajorant
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActualDerivativeMajorant
+primaryFiniteRow0Parent0Split100Sub0OmegaActualDerivativeMajorant
+primaryFiniteRow0Parent0Split100Sub0ShapeSqActualDerivativeMajorant
+primaryFiniteRow0Parent0Split100Sub0_omegaPrimeActual_derivative_abs_of_centeredTaylor
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivActual_derivative_abs_of_centeredTaylor
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_abs_of_centeredTaylor
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_centeredTaylor
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_centeredTaylor_factor_majorants
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_centeredTaylor_factor_majorants
+```
+
+Meaning:
+
+```text
+The four active actual factors now have proof-grade uniform derivative arrays
+on `[0, 1/10]` through the public centered Taylor majorant.  The active actual
+component-product order-16 receiver can consume those arrays, and the combined
+order-16 component-source interval follows conditionally from a concrete
+active-scale absolute bound plus the final rational budget inequality.
+```
+
+Closed support gaps:
+
+```text
+STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP
+STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_TO_ORDER16_SOURCE_INTERVAL_BRIDGE_CLOSED
+```
+
+Current exact proof-producing gap:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_PAYLOAD_GAP
+```
+
+Boundary:
+
+```text
+This is not the final SourceIntervalCert.Valid payload and not Step33A.1-A
+closure.  The remaining concrete payload must prove `hActiveScaleAbs` and:
+
+activeScaleAbs *
+  primaryFiniteRow0Parent0Split100Sub0ComponentProductActualOrder16Majorant
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActualDerivativeMajorant
+    primaryFiniteRow0Parent0Split100Sub0OmegaActualDerivativeMajorant
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqActualDerivativeMajorant
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActualDerivativeMajorant
+  <= order16Abs
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean
+PASS touched Lean marker scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" touched Lean files
+  returned no matches
+PASS whitespace/diff checks:
+  git diff --check -- touched tracked docs
+  git diff --no-index --check /dev/null touched untracked Lean files
+
+Not counted as a Lean proof failure:
+  /opt/local/bin/gtimeout 45s lake env lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean
+  timed out without diagnostic output, matching the known dirty-worktree
+  wrapper/tooling block.
+```
+
+## Execution Update (2026-06-23) -- order16 budget audit and sharp ShapeSqDeriv target
+
+The centered-Taylor factor-majorant bridge was audited with exact rational
+budget mirrors.  The audit is fail-closed: the current coarse ShapeSqDeriv
+order-16 budget is too large for the current one-cell combined-cancellation
+half-width.
+
+Lean-checked audit file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean
+```
+
+Lean-checked audit symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_activeScaleAbs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16BudgetRat_le_declaredAbs
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail
+```
+
+Closed failure:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Browser/Computer Use route review was used after this exact kill.  Proshka
+chose route A: sharpen only `ShapeSqDerivActual` order16 first; do not move to
+rows `12..15`, cell splitting, or a direct combined-source backend before a
+new budget test.
+
+Checked target ledger:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivSharpOrder16Payload.lean
+```
+
+Target definitions/proposition checked by direct Lean:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0SharpScaledSincAbs
+primaryFiniteRow0Parent0Split100Sub0SharpShapeRatAbs
+primaryFiniteRow0Parent0Split100Sub0SharpShapeAbs
+primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivSharpOrder16Abs
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationSharpShapeSqDerivOrder16BudgetPass
+```
+
+Meaning:
+
+```text
+The next sharp route is now pinned to preserving the affine `realSinc(eta/40)`
+factor: scaled-sinc target `2*(1/40)^k`, shape target
+`2^12*(3/10)^k`, and ShapeSqDeriv order16 target `2^24*(3/5)^17`.
+This is a target ledger only, not a proof theorem.
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_ORDER16_FIN18_TABLE_ARITH_GAP
+```
+
+Boundary:
+
+```text
+The theorem
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_sharp` is not
+closed.  A first proof attempt using a generic
+`powDerivMajorant p n (fun k => c*a^k)` closed-form normalization made direct
+Lean hang for more than 90 seconds before the final rational budget
+`native_decide` was reached.  Browser/Computer Use follow-up chose a finite
+`Fin 18` table for `powDerivMajorant 11`; local testing showed the advisory
+`native_decide` theorem is not applicable to the current `Real` definitions
+(`no executable code`), and `fin_cases` + `norm_num` leaves nested
+`Finset.sum` goals.  No SourceIntervalCert.Valid payload is claimed.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivSharpOrder16Payload.lean
+PASS marker scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" touched Lean files
+  returned no matches
+PASS whitespace/diff checks:
+  git diff --check -- touched tracked docs
+  git diff --no-index --check /dev/null touched untracked Lean files
+
+Not counted as a proof failure:
+  git status --short
+  hung in the known dirty-worktree/git tooling zone and was interrupted.
+```
+
+## Execution Update (2026-06-23) -- sharp ShapeSqDeriv order16 closed; budget still fails
+
+The `powDerivMajorant 11` arithmetic gap was closed by moving the binomial
+algebra into a small computable rational file and casting once into `Real`.
+
+New Lean-checked file:
+
+```text
+Q3/Proofs/PSD_PowDerivMajorantRat.lean
+```
+
+New Lean-checked support:
+
+```lean
+powDerivMajorantRat
+powDerivMajorantRat_const_mul_pow
+powDerivMajorantRat_sharpScaledSinc_11
+powDerivMajorantRat_sharpShapeSq_1
+```
+
+Extended Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivSharpOrder16Payload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_powDerivMajorantRat_cast
+primaryFiniteRow0Parent0Split100Sub0_powDerivMajorant11_sharp_rat_table
+primaryFiniteRow0Parent0Split100Sub0_powDerivMajorant11_sharp_table
+primaryFiniteRow0Parent0Split100Sub0_scaledSinc_derivative_abs_of_sharp
+primaryFiniteRow0Parent0Split100Sub0_sharpShapeSqProductSum_eq
+primaryFiniteRow0Parent0Split100Sub0_shape_derivative_abs_of_sharp
+primaryFiniteRow0Parent0Split100Sub0_shapeSq_order17_abs_of_sharp
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_order16_abs_sharp
+primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivActual_derivative_abs_of_sharp_centeredTaylor
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp_centeredTaylor
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_sharp_shapeSqDeriv
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_sharp_shapeSqDeriv
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sharpShapeSqDeriv_order16Budget_remainder_width_fail_rat
+```
+
+Closed support:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_ORDER16_PROOF_GRADE_CLOSED
+```
+
+Closed failure:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Meaning:
+
+```text
+The proof-grade sharp ShapeSqDeriv order16 path is now real Lean evidence:
+the affine `realSinc(eta/40)` factor is preserved through the scaled-sinc,
+shape, shape-square, ShapeSqDeriv, centeredTaylor factor-majorant, and
+component-product receiver layers.
+
+However, the exact rational remainder-width comparison still fails:
+
+  CombinedCancellationHalfWidth <
+    SharpShapeSqDerivOrder16BudgetRat * (1/20)^16 / 16!
+
+So this route does not produce `SourceIntervalCert.Valid`.
+```
+
+Current exact blocker:
+
+```text
+STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Browser/Computer Use:
+
+```text
+A new PRO_REVIEW_REQUEST was sent after this Lean-checked constant fail.
+Pending route choice: segmented centeredTaylor radius, direct combined-source
+order16 interval certificate, additional Omega/OmegaPrime sharpening, or C1
+separation.
+```
+
+## Execution Update (2026-06-23) -- half-cell segmented budget audit killed
+
+Browser/Computer Use route review chose a smaller arithmetic gate before any
+segmented receiver plumbing: check whether the sharp order16 budget fits after
+halving the centered-Taylor radius from `1/20` to `1/40`.
+
+New Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSegmentedBudgetAudit.lean
+```
+
+Lean-checked result:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sharpOrder16_halfCell_width_fail_rat
+```
+
+Exact meaning:
+
+```text
+CombinedCancellationHalfWidth <
+  SharpShapeSqDerivOrder16BudgetRat * (1/40)^16 / 16!
+```
+
+Closed failure:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HALF_CELL_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Boundary:
+
+```text
+The two-segment/half-cell arithmetic gate is false.  No segmented center-jet
+transport, segmented source-interval row, Horner row, target-budget row, or
+SourceIntervalCert.Valid payload is claimed.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:..." \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSegmentedBudgetAudit.lean
+```
+
+Follow-up segmented-radius audit:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sharpOrder16_quarterCell_width_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sharpOrder16_radius1280_width_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sharpOrder16_radius2560_width_pass_rat
+```
+
+Exact meaning:
+
+```text
+radius 1/40:   fail
+radius 1/80:   fail
+radius 1/1280: fail
+radius 1/2560: pass
+```
+
+For the full interval `[0,1/10]`, radius `1/2560` corresponds to 128 equal
+subsegments under naive centered-Taylor splitting.
+
+Current exact route gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_128_SEGMENT_CENTERJET_TRANSPORT_GAP
+```
+
+Browser/Computer Use:
+
+```text
+A new PRO_REVIEW_REQUEST was sent with the exact threshold data.  Codex
+recommended switching to a direct combined-source order16 interval certificate
+unless a compressed segmented transport theorem already exists.
+```
+
+## Execution Update (2026-06-23) -- direct order16 interval route selected
+
+Browser/Computer Use route review selected route B after the exact segmented
+threshold audit:
+
+```text
+Build a direct combined-source order16 interval certificate for the whole
+signed expression, bypassing factor-product centeredTaylor majorants.
+```
+
+Rejected:
+
+```text
+- 128 center-jet transports
+- bounding the two product summands separately
+- old ProductAssemblyErrorBudget reuse
+- sampled interval data as proof
+```
+
+New Lean-checked interface file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16DirectIntervalTarget
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_direct_interval_to_source_field
+```
+
+Meaning:
+
+```text
+The exact direct-order16 target is now pinned to the repository's current
+source normalization:
+
+  forall eta in [0,1/10],
+    lower <= CombinedCancellationOrder16ComponentSource eta <= upper
+
+This is exactly the `order16SourceInterval` field consumed by
+Step33Sub0CombinedCancellationSourceIntervalCert.Valid.
+```
+
+Current exact proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_INTERVAL_CERT_GAP
+```
+
+Boundary:
+
+```text
+No concrete rational lower/upper rows are emitted yet, and no
+SourceIntervalCert.Valid payload is claimed.
+```
+
+## Execution Update (2026-06-23) -- direct order16 interval cert adapter checked
+
+Extended isolated interface file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid.to_order16SourceInterval
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid.to_order16Budget
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid.to_componentSource_abs_bound
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid.to_combinedCancellation_order16_abs_bound
+```
+
+Meaning:
+
+```text
+A future rational direct interval certificate now has a checked local adapter:
+lower/upper rows feed the existing `order16SourceInterval` field, and
+lower/upper plus `order16Abs` feed the existing whole-expression order16 norm
+bridge.
+```
+
+Closed support subgap:
+
+```text
+STEP33_A1_SUB0_DIRECT_ORDER16_INTERVAL_CERT_ADAPTER_CLOSED
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_INTERVAL_CERT_GAP
+```
+
+Boundary:
+
+```text
+This is not a proof-grade rational interval certificate, not
+SourceIntervalCert.Valid, and not Step33A.1-A closure.  It only fixes the
+interface that the future certificate must inhabit.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean
+PASS dependency scan:
+  LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    lean --deps Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean
+PASS marker scan:
+  rg -n "sorry|admit|exact\\?" <touched Lean files>
+  returned no matches
+PASS whitespace/diff check:
+  git diff --no-index --check /dev/null \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean
+
+Interrupted before final result, not counted as failure:
+  lake env lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload.lean
+  lake build Q3.Proofs.PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectIntervalPayload
+```
+
+Browser/Computer Use:
+
+```text
+PRO_REVIEW_REQUEST sent after the local adapter check.  Proshka chose the
+cancellation-preserving direct polynomial/Horner route: Lean-check all rational
+Horner rows, poly range, remainder propagation, and order16Abs arithmetic, while
+leaving only the analytic source approximation as an explicit `hRemainder`
+premise.
+```
+
+Next exact proof-producing patch:
+
+```text
+Create:
+
+  scripts/generate_step33_a1_sub0_combined_cancellation_order16_direct_payload.py
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean
+
+The patch must compile exact polynomial data, Horner stage lower/upper rows,
+polyLower/polyUpper, sourceLower/sourceUpper, order16Abs arithmetic, and a
+conditional theorem routing `hRemainder` into
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid.
+```
+
+Remaining gap after the conditional model patch:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP
+```
+
+Failure code if the concrete rational Horner model does not fit:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_CONCRETE_HORNER_BUDGET_GAP
+```
+
+## Execution Update (2026-06-23) -- direct order16 model conditional checker checked
+
+Added isolated Lean checker:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectIntervalData
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectInterval_valid_of_horner_remainder
+```
+
+Meaning:
+
+```text
+Exact Horner range rows for a cancellation-preserving polynomial model of the
+assembled order16 component source can now be routed into
+Step33Sub0CombinedCancellationOrder16DirectIntervalCert.Valid.  The theorem
+keeps the analytic source approximation as an explicit `hRemainder` premise and
+does not bound product summands separately.
+```
+
+Added fail-closed ledger generator:
+
+```text
+scripts/generate_step33_a1_sub0_combined_cancellation_order16_direct_payload.py
+```
+
+Generated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_order16_direct_payload.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_order16_direct_payload.v1
+proofStatus = conditional_checker_only_missing_concrete_rows
+directIntervalAdapterPresent = true
+directModelConditionalCheckerPresent = true
+concretePolynomialDataPresent = false
+hornerStageRowsPresent = false
+polyRangeRowsPresent = false
+sourceLowerUpperRowsPresent = false
+order16AbsArithmeticPresent = false
+sourceExpressionHashPresent = false
+sourceIntervalCertValidClaimed = false
+step33A1ClosedClaimed = false
+```
+
+Closed support subgap:
+
+```text
+STEP33_A1_SUB0_DIRECT_ORDER16_MODEL_CONDITIONAL_CHECKER_CLOSED
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP
+```
+
+Failure code if the concrete rational Horner model does not fit:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_CONCRETE_HORNER_BUDGET_GAP
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean
+PASS local .olean generation:
+  lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.olean \
+    -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.ilean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean
+PASS py_compile and ledger generation:
+  python3 -m py_compile scripts/generate_step33_a1_sub0_combined_cancellation_order16_direct_payload.py
+  python3 scripts/generate_step33_a1_sub0_combined_cancellation_order16_direct_payload.py
+```
+
+Next exact proof-producing patch:
+
+```text
+Generate proof-grade cancellation-preserving polynomial coefficients, Horner
+stage lower/upper rows, poly range rows, source lower/upper rows, order16Abs
+arithmetic, and a source expression hash.  If the concrete rational model
+cannot fit the required budget, report
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_CONCRETE_HORNER_BUDGET_GAP.
+```
+
+## Execution Update (2026-06-23) -- direct order16 threshold zero-model arithmetic checked
+
+Extended:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16DirectModelPayload.lean
+```
+
+New Lean-checked concrete threshold zero-model symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelOrder16Abs
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelData
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelHornerRangeData
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelSourceLower
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelSourceUpper
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelIntervalData
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelRemainderSourceProp
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_horner_valid
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_source_lower_budget
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_source_upper_budget
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_order16_budget
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_order16_remainder_width_pass_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_valid_of_remainder
+```
+
+Meaning:
+
+```text
+The direct-order16 checker now has a concrete rational threshold zero-model:
+degree 0 polynomial, exact Horner range, exact lower/upper propagation, exact
+order16Abs budget, and exact one-cell order16 Taylor-remainder width pass.
+```
+
+Regenerated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_order16_direct_payload.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_order16_direct_payload.v1
+proofStatus = conditional_threshold_zero_model_missing_hRemainder
+concretePayloadKind = threshold_zero_model
+directZeroModelConcreteRowsPresent = true
+concretePolynomialDataPresent = true
+hornerStageRowsPresent = true
+polyRangeRowsPresent = true
+sourceLowerUpperRowsPresent = true
+order16AbsArithmeticPresent = true
+sourceExpressionHashPresent = true
+sourceExpressionHash = 4c2561f694c847777dd6ac20441538df364a28d491d2713adf6431bd0e3c0a9f
+sourceIntervalCertValidClaimed = false
+step33A1ClosedClaimed = false
+```
+
+Closed support subgap:
+
+```text
+STEP33_A1_SUB0_DIRECT_ORDER16_THRESHOLD_ZERO_MODEL_ARITHMETIC_CLOSED
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP
+```
+
+Boundary:
+
+```text
+The analytic premise
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16DirectZeroModelRemainderSourceProp
+is not proved.  This patch does not claim SourceIntervalCert.Valid, does not
+claim Step33A.1-A closure, and does not use sampled intervals as proof.
+```
+
+Additional Lean-checked bridge:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_componentSource_abs
+```
+
+Meaning:
+
+```text
+A future proof-grade bound
+  norm(CombinedCancellationOrder16ComponentSource eta) <= ZeroModelOrder16Abs
+on eta in [0, 1/10] now feeds the exact zero-model hRemainder premise.
+This is only an interface bridge; it does not provide the source bound.
+```
+
+Search synthesis:
+
+```text
+q3_docs search found no existing direct-order16 hRemainder/polynomial
+certificate.  It surfaced the current direct model checker and sampled
+derivative diagnostics only.  External web search found no drop-in Lean/mathlib
+interval certificate for this repo-specific analytic source.  Keep the local
+rational Horner checker and explicit hRemainder premise.
+```
+
+Next exact proof-producing patch:
+
+```text
+Prove the threshold zero-model hRemainder, or replace the zero-model with a
+sharper cancellation-preserving polynomial model if that analytic premise is
+too strong.
+```
+
+Validation:
+
+```text
+direct lean check: passed
+.olean generation: passed
+python py_compile for generator: passed
+ledger regeneration: passed
+marker scan: clean for sorry/admit/exact?/axiom/unsafe
+diff whitespace check: clean
+lake env lean wrapper: timed out after 60s without diagnostics
+scripts/q3_check.sh wrapper: timed out after 60s without diagnostics
+```
+
+Route boundary:
+
+```text
+Existing centered-Taylor/factor-majorant receivers are proof-bearing adapters,
+but the recorded exact arithmetic audits show that their current one-cell
+order-16 budgets are too coarse.  They do not prove the direct zero-model
+hRemainder and must not be promoted to a Step33A.1-A closure claim.
+```
+
+## 2026-06-23 Addendum -- signed whole-source interval checker
+
+Proshka route review:
+
+```text
+CHOSEN: C
+Build a signed whole-source interval certificate targeting the existing zero
+model first.  Do not replace the zero model before a proof-grade signed
+interval audit says it cannot contain the true source.
+```
+
+Added isolated Lean checker:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SourceIntervalCert.lean
+```
+
+Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedCancellationOrder16SourceSegmentCert
+Step33Sub0CombinedCancellationOrder16SourceSegmentCert.Valid
+Step33Sub0CombinedCancellationOrder16SourceSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_abs_of_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_segment_cover
+```
+
+Generated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_source_interval.{json,md}
+proofStatus = checker_only_missing_signed_segment_payload
+sourceIntervalCheckerPresent = true
+zeroModelRemainderBridgePresent = true
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Validation:
+
+```text
+direct lean check: passed
+.olean generation: passed
+python py_compile and ledger generation: passed
+marker scan: clean for sorry/admit/exact?/axiom/unsafe
+whitespace checks: clean
+lake env lean wrapper: timed out after 60s without diagnostics
+scripts/q3_check.sh wrapper: timed out after 60s without diagnostics
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP
+```
+
+Failure codes:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_ZERO_MODEL_CONSTANT_FAIL
+```
+
+## 2026-06-23 Addendum -- whole-cell source interval payload receiver
+
+Added isolated payload receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SourceIntervalPayload.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16SourceWholeCellSegment
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16SourceWholeCellSegments
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16SourceWholeCell_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16SourceWholeCell_valid_of_direct_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_wholeCell_direct_interval
+```
+
+Updated ledger:
+
+```text
+proofStatus = whole_cell_receiver_checked_missing_signed_source_interval
+wholeCellPayloadPresent = true
+globalCoverLeanChecked = true
+zeroModelAbsBoundLeanChecked = false
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Validation:
+
+```text
+direct lean check: passed
+.olean generation: passed
+python py_compile and ledger generation: passed
+marker scan: clean for sorry/admit/exact?/axiom/unsafe
+whitespace checks: clean
+lake env lean wrapper: timed out after 60s without diagnostics
+scripts/q3_check.sh wrapper: timed out after 60s without diagnostics
+```
+
+Meaning:
+
+```text
+The concrete whole-cell segment and cover are now Lean checked.  The remaining
+proof object is the signed whole-source interval
+DirectIntervalTarget ZeroModelSourceLower ZeroModelSourceUpper for
+CombinedCancellationOrder16ComponentSource on [0,1/10].
+```
+
+## 2026-06-23 Addendum -- signed Leibniz checker closed, rows still missing
+
+Proshka route review after the whole-cell receiver chose:
+
+```text
+CHOSEN: A
+FIRST PATCH: prove a generic signed Leibniz interval checker for one segment;
+then the generator emits proof-grade factor rows.
+```
+
+Added isolated Lean checker:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SignedFactorChecker.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0Order16SignedLeftTerm
+primaryFiniteRow0Parent0Split100Sub0Order16SignedRightTerm
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_eq_signedLeibniz
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.toSourceSegment
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.Valid.to_sourceInterval
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.Valid.to_sourceSegmentValid
+```
+
+Also extended the whole-cell receiver:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_valid_of_wholeCell_direct_interval
+```
+
+Generated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_signed_factor_rows.{json,md}
+proofStatus = signed_leibniz_checker_checked_missing_signed_factor_rows
+signedLeibnizCheckerPresent = true
+sourceSegmentReceiverPresent = true
+zeroModelValidReceiverPresent = true
+sourceAssemblyLeanChecked = true
+signedFactorRowsLeanChecked = false
+leibnizTermRowsLeanChecked = false
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Validation:
+
+```text
+direct lean check: passed
+.olean generation: passed
+python py_compile and ledger generation: passed
+marker scan: clean for sorry/admit/exact?/axiom/unsafe
+scoped whitespace checks: clean
+lake env lean wrapper: timed out after 60s without diagnostics
+scripts/q3_check.sh wrapper: timed out after 60s without diagnostics
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_LEIBNIZ_CHECKER_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP
+```
+
+Next proof object:
+
+```text
+proof-grade signed factor derivative rows, exact Leibniz term interval rows,
+and active-scale sourceAssembly rows instantiating the signed checker.
+```
+
+## 2026-06-23 Addendum -- factor rows now derive Leibniz term rows
+
+Refined checker:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SignedFactorChecker.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.leftTermCornerRows
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.rightTermCornerRows
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.Valid.to_leftTermRows
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.Valid.to_rightTermRows
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_signedFactor_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_valid_of_signedFactor_segment_cover
+```
+
+Proof-grade bridge:
+
+```text
+signed factor derivative rows + endpoint corner arithmetic rows
+  -> Lean-derived left/right Leibniz term rows
+  -> existing sourceAssembly path
+```
+
+The bridge uses the existing local theorem:
+
+```lean
+const_mul_mul_interval_bounds_of_four_corners
+```
+
+Updated ledger:
+
+```text
+proofStatus = factor_to_leibniz_term_checker_checked_missing_concrete_rows
+factorToLeibnizTermCheckerPresent = true
+signedFactorCoverReceiverPresent = true
+zeroModelValidOfSignedFactorCoverPresent = true
+leibnizTermRowsDerivedByLean = true
+leibnizCornerRowsLeanChecked = false
+sourceAssemblyRowsLeanChecked = false
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Validation:
+
+```text
+direct lean check: passed
+.olean generation: passed
+python py_compile and ledger generation: passed
+marker scan: clean for sorry/admit/exact?/axiom/unsafe
+scoped whitespace checks: clean
+lake env lean wrapper: timed out after 60s without diagnostics
+scripts/q3_check.sh wrapper: timed out after 60s without diagnostics
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_FACTOR_TO_LEIBNIZ_TERM_CHECKER_CLOSED
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP
+```
+
+## 2026-06-23 Addendum -- abs majorants bridge to signed factor rows
+
+Added isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16SignedFactorAbsBridge.lean
+```
+
+Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.centeredTaylorAbsEnclosures
+Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert.factorRows_of_centeredTaylorAbsEnclosures
+```
+
+Proof-grade bridge:
+
+```text
+centered-Taylor absolute factor majorant rows
+  -> Lean-derived signed factor derivative rows
+  -> Lean-derived left/right Leibniz term rows
+  -> existing sourceAssembly path
+```
+
+Updated ledger:
+
+```text
+proofStatus = abs_to_signed_factor_checker_checked_missing_concrete_rows
+absToSignedFactorRowsBridgePresent = true
+factorAbsMajorantRowsLeanChecked = false
+leibnizTermRowsDerivedByLean = true
+leibnizCornerRowsLeanChecked = false
+sourceAssemblyRowsLeanChecked = false
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Validation:
+
+```text
+direct lean check: passed
+.olean generation: passed
+python py_compile and ledger generation: passed
+marker scan: clean for sorry/admit/exact?/axiom/unsafe
+scoped whitespace checks: clean
+lake env lean wrapper: timed out after 60s without diagnostics
+scripts/q3_check.sh wrapper: timed out after 60s without diagnostics
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_ABS_TO_SIGNED_FACTOR_ROWS_BRIDGE_CLOSED
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_SIGNED_FACTOR_ROWS_GAP
+```
+
+Next proof object:
+
+```text
+rational enclosures of the existing centered-Taylor absolute factor majorants,
+exact Leibniz term corner arithmetic rows, and active-scale sourceAssembly rows
+for each segment.
+```
+
+## 2026-06-23 Addendum -- centered-Taylor abs rows are budget-killed
+
+Updated fail-closed ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_signed_factor_rows.{json,md}
+proofStatus = abs_to_signed_factor_bridge_checked_but_centered_taylor_budget_killed
+centeredTaylorAbsRowsBudgetKilled = true
+factorAbsMajorantRowsThresholdViable = false
+currentGap = STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP
+```
+
+Meaning:
+
+```text
+The abs-to-signed-factor bridge remains Lean-checked support, but the exact
+centered-Taylor factor-majorant budget audit already proves that spending those
+uniform abs rows cannot fit the current zero-model threshold.  Do not generate
+the centered-Taylor abs row payload as the next closure attempt.
+```
+
+Budget-kill evidence:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail
+```
+
+Closed/killed branch:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Live gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_DIRECT_ORDER16_TAYLOR_SOURCE_GAP
+```
+
+Next proof object:
+
+```text
+proof-grade direct hRemainder for the threshold zero-model, or a sharper
+cancellation-preserving polynomial source model.
+```
+
+## 2026-06-23 Addendum -- rawProduct17 normal form checked
+
+Added isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NormalForm.lean
+```
+
+Lean-checked normal form:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_rawProduct17
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_rawProduct17_abs
+```
+
+Meaning:
+
+```text
+The assembled order-16 combined-cancellation source is now reduced to
+activeScale * D^17(OmegaActual * ShapeSqActual).  This is a structural
+normal-form bridge only; it does not provide the required analytic bound.
+```
+
+Updated fail-closed ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_order16_direct_payload.{json,md}
+proofStatus = raw_product17_normal_form_checked_missing_raw_product17_bound
+rawProduct17NormalFormPresent = true
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_RAW_PRODUCT17_NORMAL_FORM_CLOSED
+```
+
+Live gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BOUND_GAP
+```
+
+Next proof object:
+
+```text
+proof-grade rational/interval bound raw17Abs for D^17(RawProductActual) on
+[0,1/10], plus the exact budget inequality
+|activeScale| * raw17Abs <= DirectZeroModelOrder16Abs.
+```
+
+## 2026-06-23 Addendum -- rawProduct17 bound interface checked
+
+Extended the same isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NormalForm.lean
+```
+
+New Lean-checked interface:
+
+```lean
+step22OmegaArchWeight_contDiff17_normalForm
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order17_abs_of_centeredTaylor17
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16DirectZeroModel_remainder_of_centeredTaylor_rawProduct17_budget
+```
+
+Meaning:
+
+```text
+The repo now has a formal product-Leibniz receiver for
+D^17(OmegaActual * ShapeSqActual) using the centeredTaylor-derived
+OmegaActual/ShapeSqActual majorants through order 17.  The remaining item is
+one exact budget row, not the analytic rawProduct17 interface.
+```
+
+Updated fail-closed ledger:
+
+```text
+proofStatus = raw_product17_centeredTaylor_bound_checked_missing_budget_row
+currentGap = STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_ROW_GAP
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BOUND_INTERFACE_CLOSED
+```
+
+Next proof object:
+
+```text
+prove or kill the exact rational inequality
+|activeScale| * RawProductActualOrder17Majorant(OmegaActualDerivativeMajorant17,
+ShapeSqActualDerivativeMajorant17) <= DirectZeroModelOrder16Abs.
+```
+
+## 2026-06-23 Addendum -- centeredTaylor rawProduct17 budget killed
+
+Added exact rational audit:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16RawProduct17BudgetAudit.lean
+```
+
+Lean-checked fail theorems:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rawProduct17_lowerScaleBudget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_rawProduct17_nominalScaleBudget_fail_rat
+```
+
+Meaning:
+
+```text
+Even TightScaleLower * RawProductActualOrder17MajorantRat is strictly larger
+than CombinedOrder16DirectZeroModelOrder16Abs.  The centeredTaylor rawProduct17
+majorant is therefore not spendable for the current zero-model threshold.
+```
+
+Updated fail-closed ledger:
+
+```text
+proofStatus = raw_product17_centeredTaylor_bound_checked_but_budget_killed
+rawProduct17CenteredTaylorBudgetKilled = true
+currentGap = STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL
+```
+
+Killed branch:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_RAW_PRODUCT17_BUDGET_CONSTANT_FAIL
+```
+
+Next route decision requested through Browser/Computer Use:
+
+```text
+choose between a sharper segmented interval/Horner certificate for
+D^17(RawProductActual) and a nonzero cancellation-preserving polynomial model.
+```
+
+## 2026-06-23 Addendum -- nonzero model source split checked
+
+Browser/Computer Use route review selected the nonzero cancellation-preserving
+model route after the centeredTaylor rawProduct17 zero-model budget was killed.
+
+Added isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean
+```
+
+Lean-checked theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelCoeff
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelPoly
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelSource
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_order16_eq_nonzeroModelPoly
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelSource
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly
+```
+
+Meaning:
+
+```text
+The assembled order-16 source minus the nominal nonzero model is exactly
+activeScale * D^16(ComponentProductActual - ComponentProductNominal)
++ (activeScale - nominalScale) * D^16(ComponentProductNominal).
+The degree-45 residual Taylor polynomial differentiated sixteen times is exactly
+the degree-29 nonzero model polynomial.
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_SOURCE_SPLIT_CLOSED
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_COEFF_CROSSWALK_CLOSED
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_HORNER_RANGE_GAP
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Next proof object:
+
+```text
+generate exact rational Horner/range rows for the checked nonzero model
+polynomial in the direct interval checker normalization, then provide
+proof-grade bounds for the two residual terms
+and a proof-grade bound for the two residual terms in the split.
+```
+
+## 2026-06-23 Addendum -- nonzero model sum-abs range checked and killed
+
+Used Browser/Computer Use for route review on whether to first prove a direct
+sum-abs range theorem or jump immediately to the stage-wise Horner certificate.
+The reviewed route was to prove the direct exact envelope first, then treat
+Horner as a sharper certificate only if the envelope misses budget.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelAbsBoundRat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModelPoly_abs_le
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModelPoly_range
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModel_sumAbsBudget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelHornerInterval
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModel_singleCellHornerLower_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModel_singleCellHornerUpper_pass_rat
+```
+
+Meaning:
+
+```text
+The degree-29 nonzero model polynomial has a formal exact rational range
+envelope obtained from the repository's generic
+abs_rawOmegaATaylorPolynomial_le_sum_abs_coeff_mul_radius lemma and the
+one-twentieth cell radius.  The exact rational budget audit also proves that
+this coarse envelope cannot close the current final-slope threshold.  A
+one-cell symmetric Horner interval audit is also Lean-checked: the upper target
+passes, but the lower target fails.
+```
+
+Updated ledger:
+
+```text
+proofStatus = nonzero_model_sum_abs_range_checked_but_budget_killed
+nonzeroModelSumAbsRangeEnvelopeClosed = true
+nonzeroModelSumAbsRangeBudgetKilled = true
+nonzeroModelSingleCellHornerUpperPassed = true
+nonzeroModelSingleCellHornerLowerKilled = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_SEGMENTED_OR_ASYMMETRIC_HORNER_RANGE_GAP
+supportGap = STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_SUM_ABS_RANGE_ENVELOPE_CLOSED
+```
+
+Killed coarse envelope:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_SUM_ABS_RANGE_BUDGET_FAIL
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_SINGLE_CELL_HORNER_LOWER_FAIL
+```
+
+Next proof object:
+
+```text
+generate sharper exact rational segmented/asymmetric Horner rows, or recenter
+the checked degree-29 nonzero model in the direct interval checker
+normalization; then combine that range with proof-grade bounds for the two
+residual terms in the source split.
+```
+
+## 2026-06-23 Addendum -- biased nonzero model window checked
+
+Used Browser/Computer Use follow-up route review after exact local probes killed
+the segmentation-only repair.  The reviewed route was to shift the checked
+nonzero model by an exact rational bias, then keep the residual split explicit.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelCenterValueRat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModel_centerLower_fail_rat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelCurrentLowerRat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelCurrentUpperRat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelBiasLowerRat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelBiasUpperRat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelBiasRat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16NonzeroModel_bias_window_nonempty_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_singleCellHornerLower_pass_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_singleCellHornerUpper_pass_rat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelPoly
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelBiasCoeff
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelCoeff
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelCoeffPoly
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModelPoly_eq
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModelCoeffPoly_eq
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_biasedNonzeroModelPoly
+```
+
+Exact probes recorded:
+
+```text
+two-segment Horner probe: lower still fails, upper passes
+uniform 2/4/8/16/32 segmentation probes: lower still fails, upper passes
+pointwise rational center check: model(center) < targetLower
+```
+
+Meaning:
+
+```text
+The unbiased nonzero model's lower-side failure is not just a coarse interval
+artifact: the model center is below targetLower.  The exact rational bias
+window is nonempty, and the chosen midpoint bias moves the current one-cell
+Horner audit endpoints inside [targetLower,targetUpper].  Subtracting the
+biased model changes the existing residual split by exactly subtracting the
+bias constant.  The biased coefficient-row polynomial is Lean-checked equal to
+the direct biased model, so the model is now in the official centered-Taylor
+coefficient convention.
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_nonzero_model_bias_window_checked_missing_range_cert_and_residual_bound
+nonzeroModelCenterLowerKilled = true
+nonzeroModelBiasWindowClosed = true
+biasedNonzeroModelCoeffRowBridgeClosed = true
+biasedNonzeroModelAuditEndpointsPass = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_HORNER_RANGE_CERT_GAP
+supportGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_BIAS_WINDOW_CLOSED
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_COEFF_ROW_BRIDGE_CLOSED
+```
+
+Killed route:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NONZERO_MODEL_SEGMENTATION_ONLY_LOWER_FAIL
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_HORNER_RANGE_CERT_GAP
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Next proof object:
+
+```text
+promote the biased model into the official
+Step33Sub0CombinedCancellationHornerRangeCert normalization and then prove a
+same-unit bound for the exact biased residual split.
+```
+
+Browser/Computer Use follow-up after the coefficient-row bridge chose this
+ordering explicitly:
+
+```text
+Route A: first close the biased model HornerRangeCert.Valid stage-bound payload;
+after that, leave exactly the biased residual bound as the remaining analytic
+object.
+```
+
+Failure code for the next patch:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_HORNER_CERT_GAP
+```
+
+## 2026-06-23 Addendum -- biased nonzero model Horner cert checked
+
+Implemented the Browser/Computer Use route choice to close the official
+Horner certificate before attacking the residual bound.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelHornerRangeData
+primaryFiniteRow0Parent0Split100Sub0_abs_le_max_abs_of_mem_interval
+primaryFiniteRow0Parent0Split100Sub0_mul_mem_symmetric_interval_of_mem_interval
+primaryFiniteRow0Parent0Split100Sub0_ratCast_max_abs
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_hornerStage29_bounds
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelNatTailTerm
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelNatTail
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_natTailTerm_step
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_hornerTail_eq_natTail
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_natTail_step
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_hornerStageStep_bounds
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_hornerStageStep_bounds_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_hornerStage28_bounds
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_horner_valid
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_poly_range
+```
+
+Meaning:
+
+```text
+The biased coefficient polynomial is now certified through the repository's
+official Step33Sub0CombinedCancellationHornerRangeCert.Valid interface.  The
+proof does not expand all 30 sums; it uses a Nat-tail recurrence, a generic
+stage-step interval lemma, and exact native_decide Rat rows for each stage.
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_nonzero_model_horner_cert_checked_missing_residual_bound
+biasedNonzeroModelHornerCertClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_HORNER_CERT_GAP
+```
+
+Boundary:
+
+```text
+No Step33A.1-A closure is claimed.  The remaining required proof object is a
+same-unit bound for source - biasedNonzeroModelPoly, equivalently the checked
+biased residual split.
+```
+
+## 2026-06-23 Addendum -- biased residual-bound interface checked
+
+Added the conditional Lean bridge that spends a future biased residual bound.
+This is not a residual-bound proof and does not close Step33A.1-A.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_residualSlack_nonneg_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_residualSlack_lower_rat
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_residualSlack_upper_rat
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_componentSource_target_interval_of_residual_bound
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_order16_direct_interval_valid_of_residual_bound
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_nonzero_model_residual_bound_interface_checked_missing_certificate
+biasedNonzeroModelResidualBoundInterfaceClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP
+```
+
+Exact remaining theorem interface:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+  residualAbs
+```
+
+with:
+
+```lean
+(residualAbs : Real) <=
+  (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+    Real)
+```
+
+## 2026-06-23 Addendum -- biased residual signed-interval adapter checked
+
+After Browser/Computer Use route review, added the next conditional bridge:
+signed intervals for the two already-scaled residual summands imply the
+`ResidualSourceProp residualAbs` required by the biased nonzero-model route.
+
+Created isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_scaled_signed_intervals
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_scaled_signed_intervals
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_residual_signed_interval_adapter_checked_missing_rows
+biasedResidualSignedIntervalAdapterClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_INTERVAL_ROWS_GAP
+```
+
+Required next rows:
+
+```text
+activeScale * D16(ComponentProductCancellationResidual)
+(activeScale - nominalScale) * D16(ComponentProductNominal)
+exact budget after subtracting BiasRat and comparison to ResidualSlackRat
+```
+
+Route-audit note:
+
+```text
+Checked the existing direct-zero signed-factor ledger and segmented
+residual-derivative ledger.  They do not provide spendable rows for the biased
+split.  The former is tied to the killed direct-zero/absolute-majorant budget;
+the latter is fail-closed diagnostic candidate data for the residual derivative,
+not a proof-grade uniform interval for these two order-16 split terms.
+```
+
+## 2026-06-23 Addendum -- biased residual signed-row cert target checked
+
+Added the generator-facing proof-bearing target for the biased residual signed
+row route.
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Lean-checked objects:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSignedIntervalCert
+Step33Sub0CombinedOrder16BiasedResidualSignedIntervalCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualSignedIntervalCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualSignedIntervalCert.Valid.to_order16DirectIntervalValid
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_residual_signed_row_cert_target_checked_missing_payload
+biasedResidualSignedRowCertTargetClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_ROW_PAYLOAD_GAP
+```
+
+Exact next payload target:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSignedIntervalCert.Valid cert
+```
+
+Required payload fields:
+
+```text
+cancelInterval:
+  activeScale * D16(ComponentProductCancellationResidual)
+nominalInterval:
+  (activeScale - nominalScale) * D16(ComponentProductNominal)
+lowerBudget / upperBudget:
+  assemble the two signed rows and subtract BiasRat into residualAbs
+slackBudget:
+  residualAbs <= ResidualSlackRat
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH="$(printf ':%s' .lake/build/lib/lean .lake/packages/*/.lake/build/lib/lean | cut -c2-)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean
+
+PASS direct Lean:
+  env LEAN_PATH="$(printf ':%s' .lake/build/lib/lean .lake/packages/*/.lake/build/lib/lean | cut -c2-)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+
+PASS hole scan:
+  rg -n "sorry|admit|exact\\?|axiom|unsafe" <two touched Lean files>
+  returned no matches.
+
+PASS whitespace:
+  git diff --check on touched files.
+
+NOTE:
+  scripts/q3_check.sh is not directly executable in this checkout.  Running it
+  through bash started the Lean check and produced no additional output for
+  about 60s, so it was stopped.  The direct Lean commands above are the
+  authoritative validation for this slice.
+```
+
+## 2026-06-23 Addendum -- collapsed activeActual/nominal receiver checked
+
+Browser/Computer Use route review selected the smaller receiver:
+
+```text
+activeScale * D16(ComponentProductCancellationResidual)
+  + (activeScale - nominalScale) * D16(ComponentProductNominal)
+= activeScale * D16(ComponentProductActual)
+  - nominalScale * D16(ComponentProductNominal)
+```
+
+Extended isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Lean-checked objects:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_componentProductCancellationResidual_order16_eq_biasedResidual
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_eq_activeActual_sub_nominalNominal
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_abs_le_of_activeActual_nominal_signed_intervals
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_activeActual_nominal_signed_intervals
+Step33Sub0CombinedOrder16BiasedResidualActiveActualNominalSignedIntervalCert
+Step33Sub0CombinedOrder16BiasedResidualActiveActualNominalSignedIntervalCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualActiveActualNominalSignedIntervalCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualActiveActualNominalSignedIntervalCert.Valid.to_order16DirectIntervalValid
+```
+
+Updated ledger:
+
+```text
+proofStatus = biased_residual_collapsed_active_actual_nominal_receiver_checked_missing_payload
+biasedResidualCollapsedActiveActualNominalReceiverClosed = true
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_ACTIVE_ACTUAL_NOMINAL_SIGNED_INTERVAL_PAYLOAD_GAP
+```
+
+Exact next payload target:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualActiveActualNominalSignedIntervalCert.Valid cert
+```
+
+Required payload fields:
+
+```text
+actualInterval:
+  activeScale * D16(ComponentProductActual)
+nominalInterval:
+  nominalScale * D16(ComponentProductNominal)
+lowerBudget / upperBudget:
+  assemble actual - nominal - BiasRat into residualAbs
+slackBudget:
+  residualAbs <= ResidualSlackRat
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH="$(printf ':%s' .lake/build/lib/lean .lake/packages/*/.lake/build/lib/lean | cut -c2-)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualInterval.lean
+```
+
+Boundary:
+
+```text
+This does not generate the signed interval payload and does not close
+Step33A.1-A.  If the repository only has center-jet rows for these quantities,
+the exact failure code is:
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERJET_UNIFORM_INTERVAL_MISMATCH_GAP
+```
