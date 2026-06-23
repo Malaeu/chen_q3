@@ -149,6 +149,77 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order
     (primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_signedFactor_segment_cover
       hValid hLower hUpper hCover)
 
+/--
+Generator-facing payload for the biased residual signed-factor segment route.
+
+The certificate carries only data.  The proof object is `Valid`, which must
+prove source-only signed-factor segment validity, coverage, same-unit
+biased-model budget rows, and the global residual slack comparison.
+-/
+structure Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert where
+  n : Nat
+  residualAbs : Rat
+  seg :
+    Fin n ->
+      Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert
+
+namespace Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert
+
+/-- Proof-bearing predicate for the biased residual signed-factor segment
+payload. -/
+structure Valid
+    (cert :
+      Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert) :
+    Prop where
+  residualBudget :
+    (cert.residualAbs : Real) <=
+      (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+        Real)
+  segmentValid :
+    ∀ i : Fin cert.n, (cert.seg i).SourceIntervalValid
+  lowerBudget :
+    ∀ i : Fin cert.n,
+      -(cert.residualAbs : Real) <=
+        ((cert.seg i).sourceLower : Real) -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyUpper :
+            Real)
+  upperBudget :
+    ∀ i : Fin cert.n,
+      ((cert.seg i).sourceUpper : Real) -
+          (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.polyLower :
+            Real) <=
+        (cert.residualAbs : Real)
+  cover :
+    Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentCover
+      cert.n cert.seg
+
+namespace Valid
+
+theorem to_residualSourceProp
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+      cert.residualAbs :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_signedFactor_segment_cover
+    (n := cert.n)
+    (seg := cert.seg)
+    h.segmentValid
+    h.lowerBudget
+    h.upperBudget
+    h.cover
+
+theorem to_order16DirectIntervalValid
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelOrder16IntervalData.Valid :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedNonzeroModel_order16_direct_interval_valid_of_residual_bound
+    h.residualBudget h.to_residualSourceProp
+
+end Valid
+end Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert
+
 end Step33
 end PSDpd
 end Q3

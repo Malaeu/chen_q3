@@ -72409,3 +72409,89 @@ Boundary:
 This is still a receiver/interface step.  It proves no concrete signed-factor
 segment rows and does not close Step33A.1-A.
 ```
+
+## 2026-06-23 Addendum -- biased residual signed-factor segment ledger
+
+Added a fail-closed ledger for the source-only biased residual signed-factor
+segment route:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_signed_factor_segments.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_signed_factor_segments.md
+```
+
+Generated status:
+
+```text
+proofStatus = biased_residual_signed_factor_source_only_interface_checked_missing_segment_payload
+sourceOnlyInterfaceReady = true
+generatorFacingFamilyCertPresent = true
+oldZeroModelBudgetKilled = true
+oldZeroModelBudgetSpendableForBiasedResidual = false
+proofGrade = false
+step33A1ClosedClaimed = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
+```
+
+Purpose:
+
+```text
+This ledger prevents the old direct-zero signed-factor path from being reused
+as a biased residual proof object.  The old centeredTaylor/zero-model budget
+kill is still recorded, but the live biased route spends only
+SourceIntervalValid plus fresh same-unit budget rows against
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData.
+```
+
+Exact next proof object:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert.Valid cert
+```
+
+This packages:
+
+```lean
+cert.seg : Fin cert.n ->
+  Step33Sub0CombinedCancellationOrder16SignedFactorSegmentCert
+∀ i : Fin cert.n, (cert.seg i).SourceIntervalValid
+Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentCover cert.n cert.seg
+per-segment lower/upper rows against
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelData
+(cert.residualAbs : Real) <=
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat
+```
+
+Validation:
+
+```text
+PASS:
+  direct Lean on Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean
+  python3 -m py_compile scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py
+  python3 scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py
+  JSON invariant check:
+    sourceOnlyInterfaceReady = true
+    generatorFacingFamilyCertPresent = true
+    oldZeroModelBudgetSpendableForBiasedResidual = false
+    proofGrade = false
+    step33A1ClosedClaimed = false
+  marker scan on touched Lean/script files
+  git diff --check on touched files
+
+NOTE:
+  `lake env lean
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean`
+  produced no diagnostics for about 60s and was stopped.  `bash
+  scripts/q3_check.sh
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSignedFactorAdapter.lean`
+  printed its Lean target and then produced no diagnostics for about 60s; it
+  was also stopped.  The direct Lean command above completed cleanly.
+```
+
+Boundary:
+
+```text
+No concrete segment rows were generated.  No residualSourceProp, no
+order16DirectIntervalValid, and no Step33A.1-A closure are claimed.
+```

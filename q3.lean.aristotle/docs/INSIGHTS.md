@@ -42873,3 +42873,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   Step33A.1-A remains open.
 - Current proof-producing gap:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- BiasedResidualSignedFactorLedger
+
+- Added fail-closed ledger generator
+  `scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py`.
+- Generated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_signed_factor_segments.json`
+  and `.md`.
+- Ledger result:
+  `sourceOnlyInterfaceReady = true`,
+  `generatorFacingFamilyCertPresent = true`,
+  `oldZeroModelBudgetSpendableForBiasedResidual = false`,
+  `proofGrade = false`, and `step33A1ClosedClaimed = false`.
+- Added generator-facing Lean target
+  `Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert.Valid`;
+  its `.to_residualSourceProp` and `.to_order16DirectIntervalValid` receivers
+  are Lean-checked in the biased residual signed-factor adapter.
+- Purpose: separate the checked source-only biased residual receiver from the
+  old direct-zero signed-factor ledger whose centeredTaylor/zero-model budget
+  route is already killed.
+- Current proof-producing gap remains:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP`.
+- Next proof object:
+  `Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert.Valid cert`,
+  with concrete source-only segment rows, cover, same-unit biased-model budget
+  rows, and residual slack comparison.

@@ -38272,3 +38272,44 @@ Current proof-producing gap:
 ```text
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
 ```
+
+## 2026-06-23 Addendum -- biased residual signed-factor segment ledger
+
+Added a fail-closed control ledger for the new source-only biased residual
+route:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_signed_factor_segments.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_signed_factor_segments.md
+scripts/generate_step33_a1_sub0_biased_residual_signed_factor_segments.py
+```
+
+Ledger status:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_biased_residual_signed_factor_segments.v1
+proofStatus = biased_residual_signed_factor_source_only_interface_checked_missing_segment_payload
+sourceOnlyInterfaceReady = true
+generatorFacingFamilyCertPresent = true
+oldZeroModelBudgetKilled = true
+oldZeroModelBudgetSpendableForBiasedResidual = false
+proofGrade = false
+step33A1ClosedClaimed = false
+```
+
+Meaning:
+
+```text
+The checked source-only signed-factor interface is now separated from the old
+direct-zero signed-factor ledger and packaged as the generator-facing target
+`Step33Sub0CombinedOrder16BiasedResidualSignedFactorSegmentFamilyCert.Valid`.
+The old centeredTaylor/zero-model budget kill remains alive and explicitly
+non-spendable for the biased residual route.  The remaining object is a
+concrete segment family proving `Valid`.
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
+```
