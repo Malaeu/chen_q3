@@ -43319,3 +43319,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: this is only the checked interface and route ledger.  It does not
   prove the direct interval rows, does not prove residual-Horner family
   `Valid`, and does not close Step33A.1-A.
+
+## Insight (2026-06-23, Step33A.1-A) -- P45FullTaylorReuseBlocked
+
+- Used Computer Use / Proshka again after inspecting the local P45/full-Taylor
+  bridge.
+- Local bridge exists:
+  `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs`.
+- Direct order-16 target is still:
+  `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource eta
+  - primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelPoly eta`.
+- Lean normal form for the target:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly`.
+- Proshka confirmed `CHOSEN: A`: proceed with the direct rational/Horner
+  interval generator.  The P45/full-Taylor machinery bounds a different
+  derivative-level expression and does not prove the uniform order-16
+  source-minus-nonzero-model interval.
+- Updated
+  `scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py`
+  to schema
+  `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v2`.
+- New ledger fields:
+  `p45FullTaylorReuseVerdict = not_spendable_for_order16_direct_source_bound`
+  and
+  `p45FullTaylorReuseFailureCode = STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH`.
+- First generated theorem target remains:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`.
+- Current live gap remains exactly:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`.

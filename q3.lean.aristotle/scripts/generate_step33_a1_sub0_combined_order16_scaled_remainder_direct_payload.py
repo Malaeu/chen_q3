@@ -21,7 +21,7 @@ from typing import Any
 
 SCHEMA = (
     "q3_psdpd_step33_a1_sub0_combined_order16_"
-    "scaled_remainder_direct_payload.v1"
+    "scaled_remainder_direct_payload.v2"
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,6 +43,12 @@ INTERVAL_PAYLOAD_FILE = (
 REMAINDER_BRIDGE_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean"
+)
+P45_FULL_TAYLOR_BRIDGE_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean"
+)
+ORDER16_NONZERO_MODEL_FILE = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NonzeroModel.lean"
 )
 
 JSON_OUT = (
@@ -84,6 +90,17 @@ REMAINDER_BRIDGE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_bound",
 ]
 
+P45_FULL_TAYLOR_BRIDGE_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs",
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_bound_of_scaledCancellationRhs_bound",
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_scaledCancellationRhs_bound",
+]
+
+ORDER16_NONZERO_MODEL_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelSource",
+]
+
 CURRENT_GAP = (
     "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
     "NONZERO_MODEL_INTERVAL_CERT_GAP"
@@ -91,6 +108,17 @@ CURRENT_GAP = (
 PARENT_GAP = (
     "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_"
     "SCALED_REMAINDER_BOUND_GAP"
+)
+P45_REUSE_FAILURE = (
+    "STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH"
+)
+FIRST_GENERATED_INTERVAL_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+    "nonzeroModel_interval_generated"
+)
+FIRST_GENERATED_SOURCE_PROP_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+    "nonzeroModel_sourceProp_generated"
 )
 
 
@@ -130,11 +158,19 @@ def build_ledger() -> dict[str, Any]:
     remainder_bridge_symbols = file_contains(
         REMAINDER_BRIDGE_FILE, REMAINDER_BRIDGE_SYMBOLS
     )
+    p45_full_taylor_symbols = file_contains(
+        P45_FULL_TAYLOR_BRIDGE_FILE, P45_FULL_TAYLOR_BRIDGE_SYMBOLS
+    )
+    order16_nonzero_model_symbols = file_contains(
+        ORDER16_NONZERO_MODEL_FILE, ORDER16_NONZERO_MODEL_SYMBOLS
+    )
 
     direct_surface_present = all_true(direct_symbols)
     zero_model_bridge_present = all_true(zero_model_symbols)
     interval_surface_present = all_true(interval_symbols)
     remainder_bridge_present = all_true(remainder_bridge_symbols)
+    p45_full_taylor_bridge_present = all_true(p45_full_taylor_symbols)
+    order16_nonzero_model_bridge_present = all_true(order16_nonzero_model_symbols)
 
     proof_status = (
         "direct_nonzero_model_payload_surface_checked_missing_interval_cert"
@@ -178,19 +214,39 @@ def build_ledger() -> dict[str, Any]:
         "zeroModelPayloadFile": rel(ZERO_MODEL_FILE),
         "intervalPayloadFile": rel(INTERVAL_PAYLOAD_FILE),
         "remainderBridgeFile": rel(REMAINDER_BRIDGE_FILE),
+        "p45FullTaylorBridgeFile": rel(P45_FULL_TAYLOR_BRIDGE_FILE),
+        "order16NonzeroModelFile": rel(ORDER16_NONZERO_MODEL_FILE),
         "directPayloadSymbols": direct_symbols,
         "zeroModelSymbols": zero_model_symbols,
         "intervalPayloadSymbols": interval_symbols,
         "remainderBridgeSymbols": remainder_bridge_symbols,
+        "p45FullTaylorBridgeSymbols": p45_full_taylor_symbols,
+        "order16NonzeroModelSymbols": order16_nonzero_model_symbols,
         "directPayloadSurfacePresent": direct_surface_present,
         "zeroModelBridgePresent": zero_model_bridge_present,
         "intervalPayloadSurfacePresent": interval_surface_present,
         "remainderBridgePresent": remainder_bridge_present,
+        "p45FullTaylorBridgePresent": p45_full_taylor_bridge_present,
+        "order16NonzeroModelBridgePresent": order16_nonzero_model_bridge_present,
         "proofStatus": proof_status,
         "proofGrade": False,
         "currentGap": CURRENT_GAP,
         "parentGap": PARENT_GAP,
         "firstFailureCode": CURRENT_GAP,
+        "p45FullTaylorReuseVerdict": "not_spendable_for_order16_direct_source_bound",
+        "p45FullTaylorReuseFailureCode": P45_REUSE_FAILURE,
+        "proshkaRouteReviewDecision": "CHOSEN: A",
+        "proshkaRouteReviewQuestion": (
+            "Does the existing P45/full-Taylor interval machinery prove the "
+            "order-16 ComponentSource - NonzeroModelPoly source bound, or is "
+            "a separate direct certificate target still needed?"
+        ),
+        "proshkaRouteReviewAnswer": (
+            "A: proceed with the direct rational/Horner interval generator; "
+            "P45/full-Taylor bounds a different derivative-level expression "
+            "and does not prove the uniform order-16 source-minus-nonzero-model "
+            "interval."
+        ),
         "directNonzeroModelIntervalRowsLeanChecked": False,
         "directNonzeroModelSourcePropLeanChecked": False,
         "zeroModelPayloadTargetLeanChecked": zero_model_bridge_present,
@@ -212,6 +268,17 @@ def build_ledger() -> dict[str, Any]:
         "targetPayload": (
             "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16"
             "ScaledRemainderDirectPayloadTarget"
+        ),
+        "firstGeneratedIntervalTheorem": FIRST_GENERATED_INTERVAL_THEOREM,
+        "firstGeneratedSourcePropTheorem": FIRST_GENERATED_SOURCE_PROP_THEOREM,
+        "whyP45FullTaylorIsNotEnough": (
+            "The P45/full-Taylor bridge rewrites a derivative-level residual "
+            "error into the scaled cancellation RHS. The current direct target "
+            "is the order-16 source residual ComponentSource - NonzeroModelPoly, "
+            "which Lean identifies with ActiveScaleCoeff * D^16"
+            "(ComponentProductCancellationResidual) plus the same-unit "
+            "scale-mismatch nominal-product term. No local theorem converts the "
+            "P45/full-Taylor interval into this order-16 source interval."
         ),
         "theoremShape": (
             "prove a signed interval on [0,1/10] for ComponentSource - "
@@ -258,6 +325,9 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"- zeroModelBridgePresent: `{ledger['zeroModelBridgePresent']}`",
         f"- intervalPayloadSurfacePresent: `{ledger['intervalPayloadSurfacePresent']}`",
         f"- remainderBridgePresent: `{ledger['remainderBridgePresent']}`",
+        f"- p45FullTaylorBridgePresent: `{ledger['p45FullTaylorBridgePresent']}`",
+        "- order16NonzeroModelBridgePresent: "
+        f"`{ledger['order16NonzeroModelBridgePresent']}`",
         "- directNonzeroModelIntervalRowsLeanChecked: "
         f"`{ledger['directNonzeroModelIntervalRowsLeanChecked']}`",
         "- directNonzeroModelSourcePropLeanChecked: "
@@ -279,12 +349,32 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         "",
         f"`{ledger['firstFailureCode']}`",
         "",
+        "P45/full-Taylor reuse verdict:",
+        "",
+        f"`{ledger['p45FullTaylorReuseVerdict']}`",
+        "",
+        "P45/full-Taylor reuse failure code:",
+        "",
+        f"`{ledger['p45FullTaylorReuseFailureCode']}`",
+        "",
         "## Target",
         "",
         f"- expression: `{ledger['targetExpression']}`",
         f"- budget: `{ledger['targetBudget']}`",
         f"- prop: `{ledger['targetProp']}`",
         f"- payload: `{ledger['targetPayload']}`",
+        f"- first interval theorem: `{ledger['firstGeneratedIntervalTheorem']}`",
+        f"- first source-prop theorem: `{ledger['firstGeneratedSourcePropTheorem']}`",
+        "",
+        "## Route Review",
+        "",
+        f"- decision: `{ledger['proshkaRouteReviewDecision']}`",
+        f"- question: {ledger['proshkaRouteReviewQuestion']}",
+        f"- answer: {ledger['proshkaRouteReviewAnswer']}",
+        "",
+        "## Why P45/full-Taylor Is Not Enough",
+        "",
+        str(ledger["whyP45FullTaylorIsNotEnough"]),
         "",
         "## Theorem Shape",
         "",
@@ -298,6 +388,16 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     lines.extend(render_symbols("Zero Model Symbols", ledger["zeroModelSymbols"]))
     lines.extend(render_symbols("Interval Payload Symbols", ledger["intervalPayloadSymbols"]))
     lines.extend(render_symbols("Remainder Bridge Symbols", ledger["remainderBridgeSymbols"]))
+    lines.extend(
+        render_symbols(
+            "P45/full-Taylor Bridge Symbols", ledger["p45FullTaylorBridgeSymbols"]
+        )
+    )
+    lines.extend(
+        render_symbols(
+            "Order16 Nonzero-Model Symbols", ledger["order16NonzeroModelSymbols"]
+        )
+    )
     lines.extend(["", "## Prior Ledgers", ""])
     for name, summary in ledger["priorLedgers"].items():
         lines.append(f"### {name}")
@@ -317,6 +417,7 @@ def main() -> None:
     print(ledger["proofStatus"])
     print(ledger["firstFailureCode"])
     print(ledger["currentGap"])
+    print(ledger["p45FullTaylorReuseVerdict"])
 
 
 if __name__ == "__main__":

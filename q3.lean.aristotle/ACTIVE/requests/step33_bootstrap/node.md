@@ -19378,3 +19378,48 @@ checked by the zero-model bridge.  Step33A.1-A remains open until the direct
 source proposition is Lean-checked or backed by proof-grade generated interval
 rows.
 ```
+
+## 2026-06-23 Active Node Addendum -- P45/full-Taylor reuse blocked
+
+Computer Use / Proshka was used after the local P45/full-Taylor bridge was
+inspected.  The bridge exists, but it is not spendable for this node:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs
+```
+
+does not prove the order-16 direct interval target:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+because the current target is:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource eta
+  - primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelPoly eta
+```
+
+and Lean identifies it through:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly
+```
+
+Ledger result:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v2
+p45FullTaylorReuseVerdict = not_spendable_for_order16_direct_source_bound
+p45FullTaylorReuseFailureCode = STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP
+```
+
+Boundary:
+
+```text
+Do not reuse the P45/full-Taylor residual machinery as the source certificate.
+The next patch remains the direct whole-expression interval/rational generator
+for ComponentSource - NonzeroModelPoly at BiasedResidualRemainderAbs.
+```

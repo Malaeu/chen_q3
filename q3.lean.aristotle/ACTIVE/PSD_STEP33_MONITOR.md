@@ -39100,3 +39100,41 @@ certificate for
 ComponentSource - NonzeroModelPoly on [0,1/10], at BiasedResidualRemainderAbs.
 Do not split the analytic summands as the primary route.
 ```
+
+## 2026-06-23 Current Active Pointer -- P45/full-Taylor reuse audit
+
+Computer Use / Proshka confirmed the local audit after the P45/full-Taylor
+bridge was inspected:
+
+```text
+CHOSEN: A
+```
+
+The existing bridge:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_error_eq_scaledCancellationRhs
+```
+
+is not a proof of:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Updated direct scaled-remainder ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v2
+p45FullTaylorReuseVerdict = not_spendable_for_order16_direct_source_bound
+p45FullTaylorReuseFailureCode = STEP33_A1_SUB0_P45_FULL_TAYLOR_ORDER16_SOURCE_MISMATCH
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP
+```
+
+Next proof object:
+
+```text
+Direct whole-expression interval/rational generator for
+ComponentSource - NonzeroModelPoly on [0,1/10], at
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs.
+```
