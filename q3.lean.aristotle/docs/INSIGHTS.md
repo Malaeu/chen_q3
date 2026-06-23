@@ -42934,3 +42934,50 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   collapse-first signed interval path, starting with the activeActual minus
   nominalNominal normal form before generating proof-grade source-only signed
   segment rows.
+
+## Insight (2026-06-23, Step33A.1-A) -- CenteredSignedTaylorSegmentCandidateFail
+
+- Tested the center-based signed Taylor segment candidate in exact Rat scratch
+  arithmetic (`/tmp/biased_signed_candidate.lean`): signed factor intervals
+  around center `1/20`, active scale interval
+  `[TightScaleLower, TightScaleUpper]`, and segment covers of `[0,1/10]`.
+- Results: `neededAbsN(n) <= residualSlackRat` is false for
+  `n = 1,2,4,8,16,32,64`; even
+  `neededAbsN(64) <= 10 * residualSlackRat` is false.
+- Verdict: center-based signed Taylor segment rows are shape-dead for the
+  current biased residual budget.  This is a diagnostic obstruction, not a
+  proof payload and not Step33A.1-A closure.
+- Browser/Computer Use escalation was sent asking whether the next proof shape
+  is an audit-kill, segment-local Taylor-center receiver, direct
+  source-polynomial/Horner/minimax certificate, or another theorem shape.
+- Current failure code candidate:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_CENTERED_TAYLOR_SIGNED_SEGMENT_BUDGET_CONSTANT_FAIL`.
+
+## Insight (2026-06-23, Step33A.1-A) -- BiasedResidualSourceHornerCert
+
+- Browser/Computer Use route review confirmed the direct biased-residual source
+  Horner surface and rejected reusing
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert`, whose target and
+  normalization are for the old combined expression/zero-model route.
+- Added fail-closed Lean checker:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean`.
+- Lean checked:
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerRangeCert`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.sourceInterval`,
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.to_sourceSegmentValid`,
+  and
+  `Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.of_horner_range`.
+- The checker route is:
+  Horner range -> polynomial range -> whole-source remainder -> source interval
+  -> exact biased-model budget rows -> existing
+  `Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid`.
+- Boundary: no concrete source coefficients, Horner stages, source
+  `remainderBound`, or exact budget rows were generated; Step33A.1-A remains
+  open.
+- The centered signed segment general floor is not locally proved:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_CENTERED_TAYLOR_SIGNED_SEGMENT_IRREDUCIBLE_FLOOR_GAP`.
+- Current proof-producing gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_CERT_GAP`.
+- Fallback if payload generation cannot hit the checker normalization:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_NORMALIZATION_MISMATCH_GAP`.

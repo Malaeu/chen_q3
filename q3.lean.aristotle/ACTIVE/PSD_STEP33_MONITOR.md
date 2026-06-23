@@ -38273,6 +38273,69 @@ Current proof-producing gap:
 STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SIGNED_FACTOR_SEGMENT_PAYLOAD_GAP
 ```
 
+## 2026-06-23 Addendum -- biased residual direct source Horner receiver
+
+Browser/Computer Use route review confirmed the next proof surface after the
+center-based signed segment diagnostics:
+
+```text
+CHOSEN: A
+FIRST FILE:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean
+```
+
+Added the fail-closed Lean checker:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerRangeCert
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.sourceInterval
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.to_sourceSegmentValid
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.of_horner_range
+```
+
+Meaning:
+
+```text
+Horner Valid -> polynomial range -> whole-source remainder theorem ->
+signed source interval -> existing biased-model budget rows ->
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid
+```
+
+Boundary:
+
+```text
+No concrete source coefficients, Horner stages, source remainder proof, or
+budget rows are emitted here.  Step33A.1-A is not closed.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean
+```
+
+The centered signed segment general floor is not locally closed:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_CENTERED_TAYLOR_SIGNED_SEGMENT_IRREDUCIBLE_FLOOR_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_CERT_GAP
+```
+
+Fallback if a generated payload cannot target this normalization:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_NORMALIZATION_MISMATCH_GAP
+```
+
 ## 2026-06-23 Addendum -- centeredTaylor biased residual budget audit
 
 The symmetric whole-cell centeredTaylor absolute majorant has now been killed

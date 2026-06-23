@@ -72571,3 +72571,118 @@ Use route review: expose/publicize the activeActual minus nominalNominal
 normal form and then generate proof-grade uniform signed segment rows for the
 source-only signed-factor family certificate.
 ```
+
+## 2026-06-23 Addendum -- centered signed Taylor segment candidate fails
+
+Local exact Rat scratch audit for the center-based signed Taylor segment
+candidate:
+
+```text
+scratch = /tmp/biased_signed_candidate.lean
+candidate = signed Taylor factor intervals around center 1/20
+scale = activeScale interval [TightScaleLower, TightScaleUpper]
+budget = biased residual slack
+```
+
+Verdict:
+
+```text
+n = 1,2,4,8,16,32,64:
+  neededAbsN(n) <= residualSlackRat = false
+n = 64:
+  neededAbsN(64) <= 2 * residualSlackRat = false
+  neededAbsN(64) <= 10 * residualSlackRat = false
+```
+
+Meaning:
+
+```text
+The center-based signed Taylor segment-row candidate is not just slightly too
+wide; it is shape-dead for the current biased residual budget.
+```
+
+Boundary:
+
+```text
+This is an exact local diagnostic, not a generated proof payload and not
+Step33A.1-A closure.  Do not use centeredTaylor abs or centeredTaylor signed
+segment rows as proof data for the biased residual route without a new
+proof-grade row source.
+```
+
+Browser/Computer Use escalation sent:
+
+```text
+Question: choose next theorem shape after CENTERED_TAYLOR_SIGNED_SEGMENT_BUDGET_CONSTANT_FAIL.
+Options: A audit-kill, B segment-local Taylor centers, C direct
+source polynomial/Horner/minimax certificate, D other.
+Status: answered.  Route review chose a direct biased-residual source Horner
+cert surface and explicitly rejected adapting the old
+Step33Sub0CombinedCancellationHighOrderTaylorCert normalization.
+```
+
+## 2026-06-23 Addendum -- biased residual source Horner cert receiver
+
+Browser/Computer Use route review returned:
+
+```text
+CHOSEN: A
+FIRST FILE:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean
+FAILURE CODE:
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_CERT_GAP
+```
+
+Added the fail-closed Lean checker:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerRangeCert
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.sourceInterval
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.to_sourceSegmentValid
+Step33Sub0CombinedOrder16BiasedResidualSourceHornerCert.Valid.of_horner_range
+```
+
+The checker proves only the route interface:
+
+```text
+Horner Valid -> polynomial range -> whole-source remainder theorem ->
+signed source interval -> existing biased-model range/budget rows ->
+Step33Sub0CombinedOrder16BiasedResidualSourceSegmentCert.Valid
+```
+
+Boundary:
+
+```text
+No concrete source-model coefficients, Horner stages, source remainderBound,
+or exact biased-residual budget rows were generated.  No residualSourceProp,
+no order16DirectIntervalValid, and no Step33A.1-A closure are claimed.
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerCert.lean
+```
+
+The general centered-signed segment floor requested by route review was not
+derived locally, so this obstruction remains named exactly:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_CENTERED_TAYLOR_SIGNED_SEGMENT_IRREDUCIBLE_FLOOR_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_HORNER_CERT_GAP
+```
+
+Fallback if payload generation reveals a normalization mismatch:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_NORMALIZATION_MISMATCH_GAP
+```
