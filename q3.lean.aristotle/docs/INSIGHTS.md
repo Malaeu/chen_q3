@@ -43209,3 +43209,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP`.
 - This is not Step33A.1-A closure; no scaled remainder bound, budget rows, or
   concrete residual-Horner family `Valid` theorem is claimed.
+
+## Insight (2026-06-23, Step33A.1-A) -- ProshkaScaledRemainderReview
+
+- Used Computer Use / Proshka on the exact current blocker
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP`.
+- Advisory route:
+  `CHOSEN: A` -- generate interval/rational bound rows for the whole signed
+  scaled analytic remainder directly.
+- Recommended first local target:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean`.
+- Recommended generator name:
+  `scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py`.
+- Certificate shape: per segment, exact rational cell endpoints/center,
+  rational coefficients for the complete scaled remainder expression, exact
+  Horner stage lower/upper rows, polynomial lower/upper rows, rational
+  `remainderAbs`, and final comparison against
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`.
+- Do not split the two analytic summands as the primary route: that can lose
+  the cancellation that the residual-Horner split was introduced to preserve.
+- If this fails, first failure code is `INTERVAL_CERT_GAP`.
+- This entry is advisory only; it is not proof evidence and does not claim
+  Step33A.1-A closure.

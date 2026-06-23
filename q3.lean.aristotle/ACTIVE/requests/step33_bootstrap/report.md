@@ -73295,3 +73295,53 @@ The next proof-producing object is a proof-grade bound for
 primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp.
 No concrete residual-Horner family Valid theorem is claimed.
 ```
+
+## 2026-06-23 Report Addendum -- Proshka scaled-remainder review
+
+Computer Use / Proshka was used on the exact current blocker:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+```
+
+Advisory answer:
+
+```text
+CHOSEN: A
+FIRST FILE:
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean
+FIRST THEOREM_OR_SCRIPT:
+  scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py
+FIRST FAILURE CODE if it fails:
+  INTERVAL_CERT_GAP
+```
+
+Certificate surface:
+
+```text
+Per segment:
+  cellL, cellU, center
+  exact Rat coeff[] for the full signed scaled remainder expression
+  remainderAbs
+  exact Horner stageLower/stageUpper rows
+  polyLower/polyUpper
+  sourceLower = polyLower - remainderAbs
+  sourceUpper = polyUpper + remainderAbs
+
+Lean Valid obligations:
+  segment cover of [0,1/10]
+  whole-expression remainder bound for the full scaled remainder
+  Horner polynomial range
+  -BiasedResidualRemainderAbs <= sourceLower
+  sourceUpper <= BiasedResidualRemainderAbs
+```
+
+Boundary:
+
+```text
+This is advisory only.  It is not proof evidence and does not close
+Step33A.1-A.  The primary next patch should target the complete signed
+scaled remainder expression directly; splitting the two analytic summands is
+not the preferred route because it can lose the cancellation preserved by the
+residual-Horner bridge.
+```
