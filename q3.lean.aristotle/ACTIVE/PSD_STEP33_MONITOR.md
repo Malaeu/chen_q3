@@ -39010,3 +39010,42 @@ proof object is still a proof-grade whole-expression interval/rational
 certificate for the complete signed scaled remainder on [0,1/10].  Do not
 split the two analytic summands as the primary route.
 ```
+
+## 2026-06-23 Current Active Pointer -- biased scaled-remainder zero-model checker
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean
+```
+
+Lean-checked zero-model support:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
+```
+
+Updated ledgers:
+
+```text
+biased scaled-remainder interval:
+  schema = q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v2
+  proofStatus = biased_scaled_remainder_zero_model_checker_checked_missing_source_bound
+
+biased residual-Horner:
+  schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5
+  proofStatus = biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound
+```
+
+Boundary:
+
+```text
+This closes only the one-cell zero-model checker and canonical budget plumbing.
+It does not prove the scaled-remainder source bound and does not close
+Step33A.1-A.  The next proof-producing object is still a proof-grade theorem of
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp
+at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs.
+```

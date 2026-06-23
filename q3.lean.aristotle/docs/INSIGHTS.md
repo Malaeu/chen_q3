@@ -43261,3 +43261,30 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   whole-expression interval/rational certificate for the complete signed
   scaled remainder; do not split the two analytic summands as the primary
   route.
+
+## Insight (2026-06-23, Step33A.1-A) -- BiasedScaledRemainderZeroModelChecker
+
+- Added isolated Lean file
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean`.
+- Checked one-cell zero-model support:
+  `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment`,
+  `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily`,
+  `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`.
+- Updated fail-closed scaled-remainder ledger to schema
+  `q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v2`.
+- Updated residual-Horner ledger to schema
+  `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5`.
+- Ledger status:
+  `biased_scaled_remainder_zero_model_checker_checked_missing_source_bound`.
+- This closes only canonical cover/budget plumbing for a one-cell zero-model.
+  It does not prove the complete signed scaled-remainder source bound and does
+  not close Step33A.1-A.
+- Current exact gap remains:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP`.
+- Next proof-producing object:
+  proof-grade
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
+  at
+  `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`.

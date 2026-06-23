@@ -217,3 +217,30 @@ INTERVAL_CERT_GAP
 Boundary: this still does not prove the scaled remainder bound. It only pins
 the next proof-producing payload target for a proof-grade whole-expression
 interval/rational certificate on `[0,1/10]`.
+
+## 2026-06-23 Addendum: Zero-Model Checker Checked
+
+The one-cell zero-model checker is now Lean-checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean
+```
+
+Checked handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
+```
+
+Generated fail-closed ledger status:
+
+```text
+biased_scaled_remainder_zero_model_checker_checked_missing_source_bound
+INTERVAL_CERT_GAP
+```
+
+Boundary: this closes only the one-cell cover/budget checker for the canonical
+`BiasedResidualRemainderAbs` budget. It still requires a proof-grade theorem of
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp`
+before any residual-Horner family `Valid` or Step33A.1-A closure can be claimed.

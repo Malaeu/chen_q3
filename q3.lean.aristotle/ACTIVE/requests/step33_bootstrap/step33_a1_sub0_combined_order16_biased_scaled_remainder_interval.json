@@ -1,19 +1,19 @@
 {
-  "budgetRowsLeanChecked": false,
+  "budgetRowsLeanChecked": true,
   "certificateShape": [
-    "per segment: cellL, cellU, lower, upper, remainderAbs",
-    "proof-grade interval for the complete signed scaled remainder",
-    "-remainderAbs <= lower",
-    "upper <= remainderAbs",
-    "finite segment cover of [0, 1/10]",
-    "global residualAbs equal to BiasedResidualRemainderAbs"
+    "v2 zero-model route: one segment cellL=0, cellU=1/10",
+    "lower = -BiasedResidualRemainderAbs",
+    "upper = BiasedResidualRemainderAbs",
+    "remainderAbs = BiasedResidualRemainderAbs",
+    "Lean-checked cover and budget plumbing",
+    "still missing proof-grade complete signed scaled-remainder source bound"
   ],
   "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP",
   "doNotSplitSummands": true,
   "firstFailureCode": "INTERVAL_CERT_GAP",
-  "generatedAt": "2026-06-23T16:52:47.419241+00:00",
-  "guard": "This ledger is not proof evidence.  Do not split the two analytic summands as the primary route and do not claim residual-Horner family Valid until a proof-grade whole-expression interval certificate instantiates the payload target.",
-  "nextProofObject": "A rational/interval certificate for the complete signed scaled remainder expression on [0,1/10], feeding primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget.",
+  "generatedAt": "2026-06-23T17:03:49.464864+00:00",
+  "guard": "This ledger is not proof evidence.  Do not split the two analytic summands as the primary route and do not claim residual-Horner family Valid until a proof-grade whole-expression scaled-remainder source bound instantiates the zero-model payload target.",
+  "nextProofObject": "A proof-grade theorem of primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs, feeding the checked zero-model payload target.",
   "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
   "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean",
   "payloadInterfacePresent": true,
@@ -26,7 +26,7 @@
     "primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target": true
   },
   "proofGrade": false,
-  "proofStatus": "biased_scaled_remainder_interval_surface_checked_missing_interval_cert",
+  "proofStatus": "biased_scaled_remainder_zero_model_checker_checked_missing_source_bound",
   "remainderBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerRemainderBridge.lean",
   "remainderBridgePresent": true,
   "remainderBridgeSymbols": {
@@ -37,8 +37,8 @@
   "residualRemainderRowsClaimed": false,
   "route": "biased_scaled_remainder_whole_expression_interval",
   "scaledRemainderSourcePropClaimed": false,
-  "schema": "q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v1",
-  "segmentCoverLeanChecked": false,
+  "schema": "q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v2",
+  "segmentCoverLeanChecked": true,
   "step33A1ClosedClaimed": false,
   "targetPayload": "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget",
   "targetProp": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp",
@@ -65,7 +65,7 @@
       "exists": true,
       "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.json",
       "proofGrade": false,
-      "proofStatus": "biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound",
+      "proofStatus": "biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound",
       "residualRemainderInterfaceLeanChecked": true,
       "scaledRemainderBoundLeanChecked": false
     },
@@ -90,5 +90,18 @@
       "sourceAssemblyRowsLeanChecked": false
     }
   },
-  "wholeExpressionIntervalRowsLeanChecked": false
+  "wholeExpressionIntervalRowsLeanChecked": false,
+  "wholeExpressionScaledRemainderSourceBoundLeanChecked": false,
+  "zeroModelCheckerPresent": true,
+  "zeroModelPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean",
+  "zeroModelPayloadTargetLeanChecked": true,
+  "zeroModelSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily": true,
+    "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg": true
+  }
 }

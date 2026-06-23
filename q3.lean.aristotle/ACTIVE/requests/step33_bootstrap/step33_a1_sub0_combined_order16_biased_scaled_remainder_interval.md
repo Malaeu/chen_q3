@@ -1,17 +1,20 @@
 # Step33A.1-A Biased Scaled-Remainder Interval Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v1`
+schema: `q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v2`
 route: `biased_scaled_remainder_whole_expression_interval`
-proofStatus: `biased_scaled_remainder_interval_surface_checked_missing_interval_cert`
+proofStatus: `biased_scaled_remainder_zero_model_checker_checked_missing_source_bound`
 
 ## Status
 
 - payloadInterfacePresent: `True`
+- zeroModelCheckerPresent: `True`
 - remainderBridgePresent: `True`
 - proofGrade: `False`
 - wholeExpressionIntervalRowsLeanChecked: `False`
-- segmentCoverLeanChecked: `False`
-- budgetRowsLeanChecked: `False`
+- wholeExpressionScaledRemainderSourceBoundLeanChecked: `False`
+- zeroModelPayloadTargetLeanChecked: `True`
+- segmentCoverLeanChecked: `True`
+- budgetRowsLeanChecked: `True`
 - scaledRemainderSourcePropClaimed: `False`
 - residualRemainderRowsClaimed: `False`
 - step33A1ClosedClaimed: `False`
@@ -25,6 +28,16 @@ proofStatus: `biased_scaled_remainder_interval_surface_checked_missing_interval_
 - `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload`: `True`
+
+## Zero Model Symbols
+
+- `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`: `True`
 
 ## Remainder Bridge Symbols
 
@@ -46,12 +59,12 @@ First failure code if the new route fails:
 
 ## Certificate Shape
 
-- per segment: cellL, cellU, lower, upper, remainderAbs
-- proof-grade interval for the complete signed scaled remainder
-- -remainderAbs <= lower
-- upper <= remainderAbs
-- finite segment cover of [0, 1/10]
-- global residualAbs equal to BiasedResidualRemainderAbs
+- v2 zero-model route: one segment cellL=0, cellU=1/10
+- lower = -BiasedResidualRemainderAbs
+- upper = BiasedResidualRemainderAbs
+- remainderAbs = BiasedResidualRemainderAbs
+- Lean-checked cover and budget plumbing
+- still missing proof-grade complete signed scaled-remainder source bound
 
 ## Upstream Evidence
 
@@ -59,7 +72,7 @@ First failure code if the new route fails:
 
 - `path`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.json`
 - `exists`: `True`
-- `proofStatus`: `biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound`
+- `proofStatus`: `biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound`
 - `currentGap`: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP`
 - `proofGrade`: `False`
 - `scaledRemainderBoundLeanChecked`: `False`
@@ -108,8 +121,8 @@ First failure code if the new route fails:
 
 ## Next Proof Object
 
-A rational/interval certificate for the complete signed scaled remainder expression on [0,1/10], feeding primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget.
+A proof-grade theorem of primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp at primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs, feeding the checked zero-model payload target.
 
 ## Guard
 
-This ledger is not proof evidence.  Do not split the two analytic summands as the primary route and do not claim residual-Horner family Valid until a proof-grade whole-expression interval certificate instantiates the payload target.
+This ledger is not proof evidence.  Do not split the two analytic summands as the primary route and do not claim residual-Horner family Valid until a proof-grade whole-expression scaled-remainder source bound instantiates the zero-model payload target.

@@ -21,7 +21,7 @@ from typing import Any
 
 SCHEMA = (
     "q3_psdpd_step33_a1_sub0_combined_order16_"
-    "biased_scaled_remainder_interval.v1"
+    "biased_scaled_remainder_interval.v2"
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,6 +31,10 @@ REQUEST_DIR = ROOT / "ACTIVE" / "requests" / "step33_bootstrap"
 PAYLOAD_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean"
+)
+ZERO_MODEL_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean"
 )
 REMAINDER_BRIDGE_FILE = (
     PROOFS
@@ -67,6 +71,16 @@ PAYLOAD_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget",
     "primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target",
     "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload",
+]
+
+ZERO_MODEL_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment",
+    "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target",
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel",
 ]
 
 REMAINDER_BRIDGE_SYMBOLS = [
@@ -144,10 +158,12 @@ def summarize_segmented_residual_ledger(path: Path) -> dict[str, Any]:
 
 def build_ledger() -> dict[str, Any]:
     payload_symbols = file_contains(PAYLOAD_FILE, PAYLOAD_SYMBOLS)
+    zero_model_symbols = file_contains(ZERO_MODEL_FILE, ZERO_MODEL_SYMBOLS)
     remainder_bridge_symbols = file_contains(
         REMAINDER_BRIDGE_FILE, REMAINDER_BRIDGE_SYMBOLS
     )
     payload_interface_ready = all_true(payload_symbols)
+    zero_model_ready = all_true(zero_model_symbols)
     remainder_bridge_ready = all_true(remainder_bridge_symbols)
 
     upstream = {
@@ -196,7 +212,9 @@ def build_ledger() -> dict[str, Any]:
     }
 
     proof_status = (
-        "biased_scaled_remainder_interval_surface_checked_missing_interval_cert"
+        "biased_scaled_remainder_zero_model_checker_checked_missing_source_bound"
+        if payload_interface_ready and zero_model_ready and remainder_bridge_ready
+        else "biased_scaled_remainder_interval_surface_checked_missing_interval_cert"
         if payload_interface_ready and remainder_bridge_ready
         else "biased_scaled_remainder_interval_surface_incomplete"
     )
@@ -206,10 +224,13 @@ def build_ledger() -> dict[str, Any]:
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "route": "biased_scaled_remainder_whole_expression_interval",
         "payloadFile": rel(PAYLOAD_FILE),
+        "zeroModelPayloadFile": rel(ZERO_MODEL_FILE),
         "remainderBridgeFile": rel(REMAINDER_BRIDGE_FILE),
         "payloadSymbols": payload_symbols,
+        "zeroModelSymbols": zero_model_symbols,
         "remainderBridgeSymbols": remainder_bridge_symbols,
         "payloadInterfacePresent": payload_interface_ready,
+        "zeroModelCheckerPresent": zero_model_ready,
         "remainderBridgePresent": remainder_bridge_ready,
         "proofStatus": proof_status,
         "currentGap": CURRENT_GAP,
@@ -217,19 +238,21 @@ def build_ledger() -> dict[str, Any]:
         "firstFailureCode": FIRST_FAILURE,
         "proofGrade": False,
         "wholeExpressionIntervalRowsLeanChecked": False,
-        "segmentCoverLeanChecked": False,
-        "budgetRowsLeanChecked": False,
+        "wholeExpressionScaledRemainderSourceBoundLeanChecked": False,
+        "zeroModelPayloadTargetLeanChecked": zero_model_ready,
+        "segmentCoverLeanChecked": zero_model_ready,
+        "budgetRowsLeanChecked": zero_model_ready,
         "scaledRemainderSourcePropClaimed": False,
         "residualRemainderRowsClaimed": False,
         "step33A1ClosedClaimed": False,
         "doNotSplitSummands": True,
         "certificateShape": [
-            "per segment: cellL, cellU, lower, upper, remainderAbs",
-            "proof-grade interval for the complete signed scaled remainder",
-            "-remainderAbs <= lower",
-            "upper <= remainderAbs",
-            "finite segment cover of [0, 1/10]",
-            "global residualAbs equal to BiasedResidualRemainderAbs",
+            "v2 zero-model route: one segment cellL=0, cellU=1/10",
+            "lower = -BiasedResidualRemainderAbs",
+            "upper = BiasedResidualRemainderAbs",
+            "remainderAbs = BiasedResidualRemainderAbs",
+            "Lean-checked cover and budget plumbing",
+            "still missing proof-grade complete signed scaled-remainder source bound",
         ],
         "targetProp": (
             "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHorner"
@@ -243,14 +266,15 @@ def build_ledger() -> dict[str, Any]:
         "guard": (
             "This ledger is not proof evidence.  Do not split the two analytic "
             "summands as the primary route and do not claim residual-Horner "
-            "family Valid until a proof-grade whole-expression interval "
-            "certificate instantiates the payload target."
+            "family Valid until a proof-grade whole-expression scaled-remainder "
+            "source bound instantiates the zero-model payload target."
         ),
         "nextProofObject": (
-            "A rational/interval certificate for the complete signed scaled "
-            "remainder expression on [0,1/10], feeding "
-            "primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderInterval"
-            "PayloadTarget."
+            "A proof-grade theorem of "
+            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHorner"
+            "ScaledRemainderSourceProp at "
+            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidual"
+            "RemainderAbs, feeding the checked zero-model payload target."
         ),
     }
 
@@ -272,10 +296,15 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         "## Status",
         "",
         f"- payloadInterfacePresent: `{ledger['payloadInterfacePresent']}`",
+        f"- zeroModelCheckerPresent: `{ledger['zeroModelCheckerPresent']}`",
         f"- remainderBridgePresent: `{ledger['remainderBridgePresent']}`",
         f"- proofGrade: `{ledger['proofGrade']}`",
         "- wholeExpressionIntervalRowsLeanChecked: "
         f"`{ledger['wholeExpressionIntervalRowsLeanChecked']}`",
+        "- wholeExpressionScaledRemainderSourceBoundLeanChecked: "
+        f"`{ledger['wholeExpressionScaledRemainderSourceBoundLeanChecked']}`",
+        "- zeroModelPayloadTargetLeanChecked: "
+        f"`{ledger['zeroModelPayloadTargetLeanChecked']}`",
         f"- segmentCoverLeanChecked: `{ledger['segmentCoverLeanChecked']}`",
         f"- budgetRowsLeanChecked: `{ledger['budgetRowsLeanChecked']}`",
         "- scaledRemainderSourcePropClaimed: "
@@ -287,6 +316,7 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     ]
 
     lines.extend(render_symbols("Payload Symbols", ledger["payloadSymbols"]))
+    lines.extend(render_symbols("Zero Model Symbols", ledger["zeroModelSymbols"]))
     lines.extend(
         render_symbols("Remainder Bridge Symbols", ledger["remainderBridgeSymbols"])
     )

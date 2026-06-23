@@ -73418,3 +73418,78 @@ primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget.
 The first real failure code remains INTERVAL_CERT_GAP until proof-grade
 whole-expression interval rows are generated and checked.
 ```
+
+## 2026-06-23 Report Addendum -- biased scaled-remainder zero-model checker
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment
+primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainder_residualAbs_nonneg
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_segment_valid
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_family_valid
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
+```
+
+Updated ledgers:
+
+```text
+biased scaled-remainder interval:
+  schema = q3_psdpd_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.v2
+  proofStatus = biased_scaled_remainder_zero_model_checker_checked_missing_source_bound
+  segmentCoverLeanChecked = true
+  budgetRowsLeanChecked = true
+  wholeExpressionScaledRemainderSourceBoundLeanChecked = false
+
+biased residual-Horner:
+  schema = q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5
+  proofStatus = biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound
+  scaledRemainderZeroModelPayloadTargetPresent = true
+  scaledRemainderBoundLeanChecked = false
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean
+
+PASS python compile and ledgers:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_biased_scaled_remainder_interval.py
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean
+  returned no matches.
+
+NOTE:
+  lake env lean ...BiasedScaledRemainderZeroModelPayload.lean and
+  bash scripts/q3_check.sh ...BiasedScaledRemainderZeroModelPayload.lean
+  both reached the Lean target and then produced no diagnostics for more than
+  90s; both were stopped. The direct Lean command above passed.
+```
+
+Boundary:
+
+```text
+This proves only the one-cell zero-model checker and canonical residual-budget
+plumbing.  It does not prove
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp,
+does not prove residual-Horner family Valid, and does not close Step33A.1-A.
+The next proof-producing object is a proof-grade bound for the complete signed
+scaled remainder at the canonical BiasedResidualRemainderAbs budget.
+```

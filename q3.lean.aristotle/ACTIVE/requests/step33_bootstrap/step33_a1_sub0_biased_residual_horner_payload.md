@@ -1,8 +1,8 @@
 # Step33A.1-A Biased Residual-Horner Payload Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v4`
+schema: `q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v5`
 route: `biased_residual_horner_family_payload`
-proofStatus: `biased_residual_horner_remainder_bridge_checked_missing_scaled_remainder_bound`
+proofStatus: `biased_residual_horner_zero_model_target_checked_missing_scaled_remainder_bound`
 
 ## Present
 
@@ -12,6 +12,7 @@ proofStatus: `biased_residual_horner_remainder_bridge_checked_missing_scaled_rem
 - coefficientBridgePresent: `True`
 - remainderBridgePresent: `True`
 - scaledRemainderIntervalPayloadInterfacePresent: `True`
+- scaledRemainderZeroModelPayloadTargetPresent: `True`
 
 ## Payload Interface Symbols
 
@@ -59,6 +60,13 @@ proofStatus: `biased_residual_horner_remainder_bridge_checked_missing_scaled_rem
 - `primaryFiniteRow0Parent0Split100Sub0_scaledRemainderSourceProp_of_interval_payload_target`: `True`
 - `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_interval_payload`: `True`
 
+## Scaled Remainder Zero Model Payload Symbols
+
+- `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelSegment`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderZeroModelFamily`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target`: `True`
+- `primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel`: `True`
+
 ## Missing Proof Payload
 
 - coefficientBridgeLeanChecked: `True`
@@ -68,6 +76,7 @@ proofStatus: `biased_residual_horner_remainder_bridge_checked_missing_scaled_rem
 - hornerRangeRowsLeanChecked: `False`
 - residualRemainderRowsLeanChecked: `False`
 - scaledRemainderBoundLeanChecked: `False`
+- scaledRemainderZeroModelPayloadTargetLeanChecked: `True`
 - scaledRemainderIntervalRowsLeanChecked: `False`
 - residualBudgetRowsLeanChecked: `False`
 - coverLeanChecked: `False`
@@ -88,7 +97,7 @@ Parent gap:
 
 ## Next Proof Object
 
-proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; the generator-facing whole-expression interval target is primaryFiniteRow0Parent0Split100Sub0BiasedScaledRemainderIntervalPayloadTarget; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+proof-grade bound for primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualHornerScaledRemainderSourceProp; the generator-facing whole-expression zero-model interval target is primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target; then a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with Horner range rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
 
 ## Failure Codes
 

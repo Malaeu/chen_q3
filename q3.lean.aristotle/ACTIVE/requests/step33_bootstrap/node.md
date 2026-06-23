@@ -19287,3 +19287,38 @@ scaled-remainder expression.  Do not claim a residual-Horner family Valid
 theorem until a proof-grade interval/rational certificate instantiates this
 target.
 ```
+
+## 2026-06-23 Active Node Addendum -- biased scaled-remainder zero-model checker
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderZeroModelPayload.lean
+```
+
+Checked handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedScaledRemainderZeroModel_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHorner_residualRemainder_of_scaledRemainder_zeroModel
+```
+
+Ledger result:
+
+```text
+biased_scaled_remainder_zero_model_checker_checked_missing_source_bound
+INTERVAL_CERT_GAP
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_SCALED_REMAINDER_BOUND_GAP
+```
+
+The residual-Horner ledger is now schema v5 and records
+`scaledRemainderZeroModelPayloadTargetPresent = true`.
+
+Boundary:
+
+```text
+The one-cell zero-model checker closes only cover/budget plumbing for the
+canonical residual budget. It still depends on a proof-grade source bound for
+the complete signed scaled remainder on `[0,1/10]`. This is not a
+residual-Horner family Valid theorem and not Step33A.1-A closure.
+```
