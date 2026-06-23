@@ -206,6 +206,57 @@ Generate/prove concrete component-source lower/upper rows for center jets
 inequalities against the checked interval-row constructor.
 ```
 
+## Execution Update (2026-06-23) -- source interval certificate target checked
+
+Codex added a proof-bearing target file for the same high-order payload.  This
+still does not emit generated rows and does not close Step33A.1-A; it gives the
+generator a single Lean predicate to instantiate from component-source
+lower/upper rows.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean
+```
+
+Lean-checked symbols:
+
+```lean
+Step33Sub0CombinedCancellationSourceIntervalCert
+Step33Sub0CombinedCancellationSourceIntervalCert.Valid
+Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid
+Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined
+Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval
+```
+
+Ledger regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v8
+sourceIntervalCertStructurePresent = true
+sourceIntervalCertToHighOrderValidPresent = true
+sourceIntervalCertToHCombinedPresent = true
+sourceIntervalCertToResidualIntervalPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```
+
+Next proof-producing patch:
+
+```text
+Emit/prove a concrete Step33Sub0CombinedCancellationSourceIntervalCert.Valid
+payload with component-source center-jet lower/upper rows, order16 lower/upper
+rows, Horner range rows, and exact target-budget inequalities.
+```
+
 ## Execution Update (2026-06-23) -- combined source-model all-row bridge checked
 
 Route: PSD-pd/Q3 Step33A.1-A combined-cancellation high-order Taylor source.

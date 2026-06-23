@@ -51,6 +51,9 @@ HIGH_ORDER_SOURCE_FILE = (
 SOURCE_MODEL_BRIDGE_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean"
 )
+SOURCE_INTERVAL_CERT_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -71,7 +74,7 @@ OMEGA_PRIME_PAYLOAD = (
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v7"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v8"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
@@ -134,6 +137,17 @@ SOURCE_MODEL_HIGH_ORDER_VALID_CONSTRUCTOR = (
 )
 SOURCE_MODEL_HIGH_ORDER_INTERVAL_CONSTRUCTOR = (
     "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval"
+)
+SOURCE_INTERVAL_CERT_STRUCTURE = "Step33Sub0CombinedCancellationSourceIntervalCert"
+SOURCE_INTERVAL_CERT_VALID = "Step33Sub0CombinedCancellationSourceIntervalCert.Valid"
+SOURCE_INTERVAL_CERT_TO_HIGH_ORDER = (
+    "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid"
+)
+SOURCE_INTERVAL_CERT_TO_HCOMBINED = (
+    "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined"
+)
+SOURCE_INTERVAL_CERT_TO_RESIDUAL = (
+    "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval"
 )
 
 
@@ -257,6 +271,17 @@ def symbol_ref(file_name: str, symbol: str) -> dict[str, Any]:
     }
 
 
+def symbol_ref_lookup(file_name: str, symbol: str, lookup_symbol: str) -> dict[str, Any]:
+    path = ROOT / file_name
+    return {
+        "file": file_name,
+        "symbol": symbol,
+        "lookupSymbol": lookup_symbol,
+        "line": line_of_symbol(path, lookup_symbol),
+        "exists": path.exists(),
+    }
+
+
 def build_report(segmented_path: Path) -> dict[str, Any]:
     segmented = load_json(segmented_path)
     segments = normalize_segments(segmented)
@@ -311,6 +336,39 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         )
         is not None
     )
+    source_interval_cert_structure_present = (
+        line_of_symbol(
+            ROOT / SOURCE_INTERVAL_CERT_FILE,
+            f"structure {SOURCE_INTERVAL_CERT_STRUCTURE}",
+        )
+        is not None
+    )
+    source_interval_cert_valid_present = (
+        line_of_symbol(ROOT / SOURCE_INTERVAL_CERT_FILE, "structure Valid")
+        is not None
+    )
+    source_interval_cert_to_high_order_present = (
+        line_of_symbol(ROOT / SOURCE_INTERVAL_CERT_FILE, "theorem to_highOrderValid")
+        is not None
+    )
+    source_interval_cert_to_hcombined_present = (
+        line_of_symbol(ROOT / SOURCE_INTERVAL_CERT_FILE, "theorem to_hCombined")
+        is not None
+    )
+    source_interval_cert_to_residual_present = (
+        line_of_symbol(
+            ROOT / SOURCE_INTERVAL_CERT_FILE,
+            "theorem to_fullTaylor_residual_deriv_interval",
+        )
+        is not None
+    )
+    source_interval_cert_target_present = (
+        source_interval_cert_structure_present
+        and source_interval_cert_valid_present
+        and source_interval_cert_to_high_order_present
+        and source_interval_cert_to_hcombined_present
+        and source_interval_cert_to_residual_present
+    )
 
     return {
         "schema": SCHEMA,
@@ -353,6 +411,22 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceIntervalRowsToHighOrderValidConstructorPresent": (
                 source_interval_constructor_present
             ),
+            "sourceIntervalCertStructurePresent": (
+                source_interval_cert_structure_present
+            ),
+            "sourceIntervalCertValidPredicatePresent": (
+                source_interval_cert_valid_present
+            ),
+            "sourceIntervalCertToHighOrderValidPresent": (
+                source_interval_cert_to_high_order_present
+            ),
+            "sourceIntervalCertToHCombinedPresent": (
+                source_interval_cert_to_hcombined_present
+            ),
+            "sourceIntervalCertToResidualIntervalPresent": (
+                source_interval_cert_to_residual_present
+            ),
+            "sourceIntervalCertPayloadPresent": False,
             "omegaPrimePayloadReusableForWholeExpression": False,
             "residualTaylorCoeffPayloadPresent": (
                 ROOT / COMPONENT_ASSEMBLY_PAYLOAD_FILE
@@ -391,6 +465,12 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceModelHighOrderIntervalConstructor": (
                 SOURCE_MODEL_HIGH_ORDER_INTERVAL_CONSTRUCTOR
             ),
+            "sourceIntervalCertFile": SOURCE_INTERVAL_CERT_FILE,
+            "sourceIntervalCertStructure": SOURCE_INTERVAL_CERT_STRUCTURE,
+            "sourceIntervalCertValidPredicate": SOURCE_INTERVAL_CERT_VALID,
+            "sourceIntervalCertToHighOrderValid": SOURCE_INTERVAL_CERT_TO_HIGH_ORDER,
+            "sourceIntervalCertToHCombined": SOURCE_INTERVAL_CERT_TO_HCOMBINED,
+            "sourceIntervalCertToResidualInterval": SOURCE_INTERVAL_CERT_TO_RESIDUAL,
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
@@ -436,7 +516,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         "requiredCertificate": {
             "kind": "proof_grade_high_order_taylor_and_horner_payload",
             "mustProve": (
-                "a concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid "
+                "a concrete Step33Sub0CombinedCancellationSourceIntervalCert.Valid "
                 "payload plus Horner range and target-budget inequalities"
             ),
             "mayUse": [
@@ -471,6 +551,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "target upper budget proof",
             ],
             "adapterChain": [
+                SOURCE_INTERVAL_CERT_TO_HIGH_ORDER,
+                SOURCE_INTERVAL_CERT_TO_HCOMBINED,
+                SOURCE_INTERVAL_CERT_TO_RESIDUAL,
                 SOURCE_MODEL_HIGH_ORDER_INTERVAL_CONSTRUCTOR,
                 SOURCE_MODEL_HIGH_ORDER_VALID_CONSTRUCTOR,
                 HIGH_ORDER_REMAINDER,
@@ -481,6 +564,9 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         },
         "sourceModelInventory": {
             "status": (
+                "source_interval_cert_target_checked_payload_missing"
+                if source_interval_cert_target_present
+                else
                 "source_interval_rows_to_valid_constructor_checked_payload_rows_missing"
                 if source_interval_constructor_present
                 else
@@ -507,6 +593,54 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "order16Failure": (
                 None if source_model_order16_present else ORDER16_SOURCE_MODEL_FAILURE
             ),
+            "sourceIntervalCertTarget": {
+                "file": SOURCE_INTERVAL_CERT_FILE,
+                "structure": symbol_ref_lookup(
+                    SOURCE_INTERVAL_CERT_FILE,
+                    SOURCE_INTERVAL_CERT_STRUCTURE,
+                    f"structure {SOURCE_INTERVAL_CERT_STRUCTURE}",
+                ),
+                "validPredicate": symbol_ref_lookup(
+                    SOURCE_INTERVAL_CERT_FILE,
+                    SOURCE_INTERVAL_CERT_VALID,
+                    "structure Valid",
+                ),
+                "toHighOrderValid": symbol_ref_lookup(
+                    SOURCE_INTERVAL_CERT_FILE,
+                    SOURCE_INTERVAL_CERT_TO_HIGH_ORDER,
+                    "theorem to_highOrderValid",
+                ),
+                "toHCombined": symbol_ref_lookup(
+                    SOURCE_INTERVAL_CERT_FILE,
+                    SOURCE_INTERVAL_CERT_TO_HCOMBINED,
+                    "theorem to_hCombined",
+                ),
+                "toResidualInterval": symbol_ref_lookup(
+                    SOURCE_INTERVAL_CERT_FILE,
+                    SOURCE_INTERVAL_CERT_TO_RESIDUAL,
+                    "theorem to_fullTaylor_residual_deriv_interval",
+                ),
+                "structurePresent": source_interval_cert_structure_present,
+                "validPredicatePresent": source_interval_cert_valid_present,
+                "toHighOrderValidPresent": source_interval_cert_to_high_order_present,
+                "toHCombinedPresent": source_interval_cert_to_hcombined_present,
+                "toResidualIntervalPresent": source_interval_cert_to_residual_present,
+                "targetPresent": source_interval_cert_target_present,
+                "payloadPresent": False,
+                "status": (
+                    "checked_target_payload_missing"
+                    if source_interval_cert_target_present
+                    else "missing_or_incomplete"
+                ),
+                "whyNotEnough": (
+                    "This packages the component-source lower/upper row "
+                    "obligations into a Lean-checked certificate target and "
+                    "routes any Valid payload to HighOrderTaylorCert.Valid and "
+                    "the final residual-derivative interval receiver. It does "
+                    "not emit concrete lower/upper rows, Horner rows, "
+                    "target-budget rows, or a Valid payload."
+                ),
+            },
             "checkedBridge": {
                 "file": SOURCE_MODEL_BRIDGE_FILE,
                 "smoothTheorem": symbol_ref(
@@ -678,7 +812,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "target lower/upper budget after subtracting/adding remainderAbs",
             ],
             "nextPatchRecommendation": (
-                "Generate/prove concrete HighOrderTaylorCert source rows, the "
+                "Generate/prove concrete SourceIntervalCert.Valid rows, the "
                 "proof-grade order16Abs source bound, Horner range rows, and "
                 "target-budget inequalities against the checked Valid "
                 "constructor."
@@ -717,6 +851,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "Whole-expression order-16 component-source bridge and norm adapter are Lean-checked.",
             "Source-bounds-to-HighOrderTaylorCert.Valid constructor is Lean-checked.",
             "Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor.",
+            "Source-interval certificate target routes component-source lower/upper rows to HighOrderTaylorCert.Valid and final combined interval receivers.",
         ],
         "rejectedRoutes": {
             "independentTriangleSplit": (
@@ -730,11 +865,11 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         "nextImplementablePatch": {
             "recommendation": (
                 "generate/prove the concrete "
-                "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload"
+                "Step33Sub0CombinedCancellationSourceIntervalCert.Valid payload"
             ),
             "firstFailureIfMissing": NEXT_PAYLOAD_FAILURE,
             "leanPayloadTarget": (
-                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean"
+                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean"
             ),
             "checkerTheorem": (
                 HIGH_ORDER_TO_HCOMBINED
@@ -754,6 +889,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             CONDITIONAL_PAYLOAD_FILE: file_hash(ROOT / CONDITIONAL_PAYLOAD_FILE),
             HIGH_ORDER_SOURCE_FILE: file_hash(ROOT / HIGH_ORDER_SOURCE_FILE),
             SOURCE_MODEL_BRIDGE_FILE: file_hash(ROOT / SOURCE_MODEL_BRIDGE_FILE),
+            SOURCE_INTERVAL_CERT_FILE: file_hash(ROOT / SOURCE_INTERVAL_CERT_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),
@@ -830,6 +966,14 @@ def render_md(report: dict[str, Any]) -> str:
             f"- firstSourceFailure: `{source_model['firstSourceFailure']}`",
             f"- centerJetFailure: `{source_model['centerJetFailure']}`",
             f"- order16Failure: `{source_model['order16Failure']}`",
+            "",
+            "Source-interval certificate target:",
+        ]
+    )
+    for key, value in source_model["sourceIntervalCertTarget"].items():
+        lines.append(f"- {key}: `{value}`")
+    lines.extend(
+        [
             "",
             "Checked source-model bridge:",
         ]

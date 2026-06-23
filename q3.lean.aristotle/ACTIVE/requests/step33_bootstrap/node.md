@@ -167,6 +167,22 @@ First missing generator/proof interface:
 proof-producing generator may work with component-source lower/upper rows for
 center jets and order16; it still must emit those rows and exact budget/Horner
 proofs before `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid` exists.
+
+2026-06-23 v8 addendum: the source-interval certificate target is checked in
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean.
+The ledger now records:
+
+  sourceIntervalCertStructurePresent = true
+  sourceIntervalCertValidPredicatePresent = true
+  sourceIntervalCertToHighOrderValidPresent = true
+  sourceIntervalCertToHCombinedPresent = true
+  sourceIntervalCertToResidualIntervalPresent = true
+  sourceIntervalCertPayloadPresent = false
+
+This is still not a proof payload.  The next proof-producing patch is to
+emit/prove a concrete `Step33Sub0CombinedCancellationSourceIntervalCert.Valid`
+payload with component-source center-jet lower/upper rows, order16 lower/upper
+rows, Horner range rows, and exact target-budget inequalities.
 ```
 
 The current generator-facing payload adapter is checked in:

@@ -41,7 +41,8 @@
     "Whole-expression smoothness and all-row component-source center-jet crosswalk are Lean-checked.",
     "Whole-expression order-16 component-source bridge and norm adapter are Lean-checked.",
     "Source-bounds-to-HighOrderTaylorCert.Valid constructor is Lean-checked.",
-    "Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor."
+    "Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor.",
+    "Source-interval certificate target routes component-source lower/upper rows to HighOrderTaylorCert.Valid and final combined interval receivers."
   ],
   "combinedExpressionMeaning": "rawOmegaATaylorPolynomial assembledDegree 1/20 ResidualTaylorCoeff eta + ScaledCancellationRhs eta",
   "failureCodes": [
@@ -70,8 +71,8 @@
       "do not mark Valid/finalBudgetPassed before Lean-checked rows"
     ],
     "firstFailureIfMissing": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP",
-    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean",
-    "recommendation": "generate/prove the concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload",
+    "leanPayloadTarget": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+    "recommendation": "generate/prove the concrete Step33Sub0CombinedCancellationSourceIntervalCert.Valid payload",
     "remainingGap": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP"
   },
   "proofStatus": {
@@ -101,6 +102,12 @@
     "sampledCandidateIsProof": false,
     "segmentCoveragePassedExactRational": true,
     "sourceBoundsToHighOrderValidConstructorPresent": true,
+    "sourceIntervalCertPayloadPresent": false,
+    "sourceIntervalCertStructurePresent": true,
+    "sourceIntervalCertToHCombinedPresent": true,
+    "sourceIntervalCertToHighOrderValidPresent": true,
+    "sourceIntervalCertToResidualIntervalPresent": true,
+    "sourceIntervalCertValidPredicatePresent": true,
     "sourceIntervalRowsToHighOrderValidConstructorPresent": true,
     "wholeExpressionSourceModelPresent": true
   },
@@ -122,10 +129,13 @@
       "independent raw/poly interval subtraction",
       "product-budget rows route after width-fail"
     ],
-    "mustProve": "a concrete Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid payload plus Horner range and target-budget inequalities"
+    "mustProve": "a concrete Step33Sub0CombinedCancellationSourceIntervalCert.Valid payload plus Horner range and target-budget inequalities"
   },
   "requiredHighOrderPayload": {
     "adapterChain": [
+      "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid",
+      "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined",
+      "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval",
       "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval",
       "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds",
       "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound",
@@ -153,7 +163,7 @@
     "validPredicate": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid"
   },
   "routeId": "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR",
-  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v7",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v8",
   "segments": [
     {
       "budgetPassesExactRational": true,
@@ -174,6 +184,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean": "3f95fa0605fd469c",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean": "172524e28455ca5b",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean": "2cf0833b5b65c1f7",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean": "05fae4f366bb39df",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean": "84628671b07f836b",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean": "d3ce443f3d86cc33",
@@ -243,7 +254,7 @@
       "whyNotEnough": "This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid and the interval-row constructor for component-source rows. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload."
     },
     "firstSourceFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP",
-    "nextPatchRecommendation": "Generate/prove concrete HighOrderTaylorCert source rows, the proof-grade order16Abs source bound, Horner range rows, and target-budget inequalities against the checked Valid constructor.",
+    "nextPatchRecommendation": "Generate/prove concrete SourceIntervalCert.Valid rows, the proof-grade order16Abs source bound, Horner range rows, and target-budget inequalities against the checked Valid constructor.",
     "order16Failure": null,
     "rationalPolynomialPart": {
       "definition": {
@@ -322,7 +333,54 @@
       "normalizationHazard": "ActiveScaleCoeff is ((3/10)/Real.pi), while the residual polynomial payload is rational and nominal-scale based.",
       "status": "source_model_checked_for_center_jets_and_order16"
     },
-    "status": "source_interval_rows_to_valid_constructor_checked_payload_rows_missing",
+    "sourceIntervalCertTarget": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+      "payloadPresent": false,
+      "status": "checked_target_payload_missing",
+      "structure": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+        "line": 36,
+        "lookupSymbol": "structure Step33Sub0CombinedCancellationSourceIntervalCert",
+        "symbol": "Step33Sub0CombinedCancellationSourceIntervalCert"
+      },
+      "structurePresent": true,
+      "targetPresent": true,
+      "toHCombined": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+        "line": 112,
+        "lookupSymbol": "theorem to_hCombined",
+        "symbol": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined"
+      },
+      "toHCombinedPresent": true,
+      "toHighOrderValid": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+        "line": 98,
+        "lookupSymbol": "theorem to_highOrderValid",
+        "symbol": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid"
+      },
+      "toHighOrderValidPresent": true,
+      "toResidualInterval": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+        "line": 138,
+        "lookupSymbol": "theorem to_fullTaylor_residual_deriv_interval",
+        "symbol": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval"
+      },
+      "toResidualIntervalPresent": true,
+      "validPredicate": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+        "line": 56,
+        "lookupSymbol": "structure Valid",
+        "symbol": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid"
+      },
+      "validPredicatePresent": true,
+      "whyNotEnough": "This packages the component-source lower/upper row obligations into a Lean-checked certificate target and routes any Valid payload to HighOrderTaylorCert.Valid and the final residual-derivative interval receiver. It does not emit concrete lower/upper rows, Horner rows, target-budget rows, or a Valid payload."
+    },
+    "status": "source_interval_cert_target_checked_payload_missing",
     "targetFunction": {
       "definition": {
         "exists": true,
@@ -362,6 +420,12 @@
     "normReceiverFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean",
     "p45BridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean",
     "proofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds",
+    "sourceIntervalCertFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+    "sourceIntervalCertStructure": "Step33Sub0CombinedCancellationSourceIntervalCert",
+    "sourceIntervalCertToHCombined": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined",
+    "sourceIntervalCertToHighOrderValid": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid",
+    "sourceIntervalCertToResidualInterval": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval",
+    "sourceIntervalCertValidPredicate": "Step33Sub0CombinedCancellationSourceIntervalCert.Valid",
     "sourceModelBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean",
     "sourceModelCenterJetBoundsAdapter": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource",
     "sourceModelHighOrderIntervalConstructor": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval",

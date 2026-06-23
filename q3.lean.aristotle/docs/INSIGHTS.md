@@ -41407,6 +41407,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   rows and exact target-budget inequalities against the checked interval-row
   constructor.
 
+## Insight (2026-06-23, Step33A.1-A) -- SourceIntervalCertTargetChecked
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.
+- Local `q3_docs` search did not reveal an existing concrete source-interval
+  row payload for the combined-cancellation high-order target.
+- Added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean`.
+- Lean checked:
+  `Step33Sub0CombinedCancellationSourceIntervalCert`,
+  `Step33Sub0CombinedCancellationSourceIntervalCert.Valid`,
+  `Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_highOrderValid`,
+  `Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_hCombined`, and
+  `Step33Sub0CombinedCancellationSourceIntervalCert.Valid.to_fullTaylor_residual_deriv_interval`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`
+  with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v8`.
+- The ledger now records `sourceIntervalCertStructurePresent = true`,
+  `sourceIntervalCertToHighOrderValidPresent = true`,
+  `sourceIntervalCertToHCombinedPresent = true`, and
+  `sourceIntervalCertToResidualIntervalPresent = true`.
+- Boundary: this is not a generated payload and not Step33A.1-A closure.
+  `sourceIntervalCertPayloadPresent = false`,
+  `highOrderValidPayloadPresent = false`, and `proofSafeClosedFields = 0`.
+- Next exact proof-producing patch: emit/prove a concrete
+  `Step33Sub0CombinedCancellationSourceIntervalCert.Valid` payload with
+  component-source center-jet lower/upper rows, order16 lower/upper rows,
+  Horner range rows, and exact target-budget inequalities.
+
 ## Insight (2026-06-23, Step33A.1-A) -- SourceBoundsToHighOrderValidConstructorChecked
 
 - Target blocker:
