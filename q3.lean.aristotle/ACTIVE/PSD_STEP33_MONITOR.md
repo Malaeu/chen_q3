@@ -36744,3 +36744,43 @@ Prove the residual Taylor coefficient/normalized center-jet alignment bridge,
 then remove the hypothesis from the source-normal-form theorem.  Do not run
 the source-row generator before the nonconditional normal form is proved.
 ```
+
+## 2026-06-23 Addendum -- nonconditional source normal form checked
+
+Extended isolated Lean support file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rawOmegaTaylorPoly_centerJet_eq_coeff
+primaryFiniteRow0Parent0Split100Sub0_nominalProductCauchyCenterJet_eq_assembledCoeff_low
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_centerJet_low_eq_nominalProduct_sub_model
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model
+```
+
+Updated ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v10
+sourceNormalFormResidualJetBridgePresent = true
+sourceNormalFormNonconditionalPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP
+```
+
+Still open:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```

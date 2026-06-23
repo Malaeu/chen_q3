@@ -120,6 +120,59 @@ First missing proof/generator interface:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
 
+## Execution Update (2026-06-23) -- nonconditional source normal form checked
+
+Browser/Computer Use was used for advisory review of the coefficient-alignment
+bridge.  The accepted proof object is the local Lean check.
+
+Extended isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_rawOmegaTaylorPoly_centerJet_eq_coeff
+primaryFiniteRow0Parent0Split100Sub0_nominalProductCauchyCenterJet_eq_assembledCoeff_low
+primaryFiniteRow0Parent0Split100Sub0_residualTaylor_centerJet_low_eq_nominalProduct_sub_model
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model
+```
+
+Meaning:
+
+```text
+The raw Taylor coefficient extraction bridge is checked in the repository's
+factorial-normalized center-jet convention.  The residual Taylor low rows now
+equal nominalScale * nominalProductCauchy - residualDerivmodelCoeff, and the
+combined source active-actual normal form is nonconditional for all j : Fin 16.
+```
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v10
+sourceNormalFormResidualJetBridgePresent = true
+sourceNormalFormNonconditionalPresent = true
+sourceIntervalCertPayloadPresent = false
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Closed gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP
+```
+
+Current exact generator/proof interface:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
+```
+
 ## Execution Update (2026-06-23) -- source normal-form support checked
 
 Browser/Computer Use was used for route review after the v8 source-interval

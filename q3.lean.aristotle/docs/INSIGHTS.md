@@ -41381,6 +41381,37 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Current exact generator/proof interface:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
 
+## Insight (2026-06-23, Step33A.1-A) -- NonconditionalSourceNormalFormChecked
+
+- Browser/Computer Use was used for advisory review of the coefficient
+  alignment bridge.  The accepted artifact is the local Lean check, not the
+  browser answer.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_rawOmegaTaylorPoly_centerJet_eq_coeff`,
+  `primaryFiniteRow0Parent0Split100Sub0_nominalProductCauchyCenterJet_eq_assembledCoeff_low`,
+  `primaryFiniteRow0Parent0Split100Sub0_residualTaylor_centerJet_low_eq_nominalProduct_sub_model`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_activeActual_sub_model`.
+- The residual Taylor low rows now expose
+  `nominalScale * nominalProductCauchy - residualDerivmodelCoeff` in the same
+  factorial-normalized center-jet convention, and the combined source
+  active-actual normal form is nonconditional for all `j : Fin 16`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`
+  with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v10`.
+- The ledger now records
+  `sourceNormalFormResidualJetBridgePresent = true` and
+  `sourceNormalFormNonconditionalPresent = true`, while
+  `sourceIntervalCertPayloadPresent = false`, `highOrderValidPayloadPresent =
+  false`, and `proofSafeClosedFields = 0`.
+- Closed:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP`.
+- Current exact generator/proof interface:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
+
 ## Insight (2026-06-23, Step33A.1-A) -- SourceNormalFormSupportChecked
 
 - Target blocker:
