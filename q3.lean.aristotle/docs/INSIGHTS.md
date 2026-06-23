@@ -43127,3 +43127,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   is not Step33A.1-A closure.
 - Current proof-producing gap:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_NONZERO_MODEL_RESIDUAL_BOUND_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- ResidualHornerPayloadInterface
+
+- Added
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean`.
+- The new payload target is
+  `primaryFiniteRow0Parent0Split100Sub0BiasedResidualHornerFamilyPayloadTarget`:
+  a valid residual-Horner family plus equality of `residualAbs` with the
+  canonical `BiasedResidualRemainderAbs`.
+- Checked handoff:
+  `primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_biasedResidualHornerFamily_payload`.
+- Added fail-closed ledger
+  `scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py`.
+- Generated:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.json`
+  and `.md`.
+- Ledger status:
+  `biased_residual_horner_payload_interface_checked_missing_family_rows`.
+- Current concrete gap:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP`.
+- This is not Step33A.1-A closure; no concrete segment/range/remainder rows
+  are claimed yet.

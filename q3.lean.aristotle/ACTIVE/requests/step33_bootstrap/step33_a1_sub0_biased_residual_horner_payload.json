@@ -1,0 +1,50 @@
+{
+  "canonicalResidualAbsLeanChecked": false,
+  "closedInterfaceCode": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_PAYLOAD_INTERFACE_CLOSED",
+  "concreteFamilyDataLeanChecked": false,
+  "coverLeanChecked": false,
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP",
+  "directAdapterFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualSourceHornerPayload.lean",
+  "directAdapterSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_remainder_bound": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_slack_remainder_bound": true
+  },
+  "directResidualAdapterPresent": true,
+  "failureCodeIfBudgetRowsFail": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_BUDGET_CONSTANT_FAIL",
+  "failureCodeIfFamilyRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP",
+  "failureCodeIfRemainderRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP",
+  "generatedAt": "2026-06-23T15:44:51.490260+00:00",
+  "guard": "Do not claim Step33A.1-A from the interface alone.  The payload must prove the residual-Horner family Valid predicate and the canonical residual budget in Lean.",
+  "hornerCertFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerCert.lean",
+  "hornerCertSymbols": {
+    "Step33Sub0CombinedOrder16BiasedResidualHornerCert": true,
+    "Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert": true,
+    "Step33Sub0CombinedOrder16BiasedResidualHornerRangeCert": true,
+    "theorem to_order16DirectIntervalValid": true,
+    "theorem to_residualSourceProp": true
+  },
+  "hornerFamilyReceiverPresent": true,
+  "hornerRangeRowsLeanChecked": false,
+  "nextProofObject": "a concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with segment data, Horner range rows, residual remainder rows, residual budget rows, cover of [0,1/10], and residualAbs equal to primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
+  "order16DirectIntervalValidClaimed": false,
+  "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean",
+  "payloadInterfacePresent": true,
+  "payloadSymbols": {
+    "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP": true,
+    "primaryFiniteRow0Parent0Split100Sub0BiasedResidualHornerFamilyPayloadTarget": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_biasedResidualHornerFamily_payload": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_biasedResidualHornerFamily_valid": true,
+    "primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerFamily_residualSourceProp_of_payload_target": true
+  },
+  "payloadTargetClaimed": false,
+  "proofGrade": false,
+  "proofStatus": "biased_residual_horner_payload_interface_checked_missing_family_rows",
+  "residualBudgetRowsLeanChecked": false,
+  "residualRemainderRowsLeanChecked": false,
+  "residualSourcePropClaimed": false,
+  "route": "biased_residual_horner_family_payload",
+  "schema": "q3_psdpd_step33_a1_sub0_biased_residual_horner_payload.v1",
+  "segmentRowsLeanChecked": false,
+  "step33A1ClosedClaimed": false
+}

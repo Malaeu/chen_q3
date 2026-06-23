@@ -38744,3 +38744,69 @@ The checked local-model segment family remains a valid fallback payload
 surface.  It is not a Step33A.1-A closure and should not supersede the direct
 residual-bound target unless the residual-Horner payload route fails with a
 concrete proof-grade obstruction.
+
+## 2026-06-23 Current Active Pointer -- residual-Horner payload interface checked
+
+Added the first concrete residual-Horner payload file selected by Proshka:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+```
+
+New Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0BiasedResidualHornerFamilyPayloadTarget
+primaryFiniteRow0Parent0Split100Sub0_biasedResidualHornerFamily_residualSourceProp_of_payload_target
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_biasedResidualHornerFamily_payload
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_biasedResidualHornerFamily_valid
+```
+
+Added and ran the fail-closed ledger:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.md
+```
+
+Ledger status:
+
+```text
+biased_residual_horner_payload_interface_checked_missing_family_rows
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+  returned no matches.
+
+PASS python compile:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+PASS ledger:
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+
+NOTE:
+  bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+  reached the Lean target and then produced no further diagnostics for about
+  90s; it was stopped.  The direct Lean command above passed.
+```
+
+Boundary:
+
+```text
+This is still a payload interface step.  It proves no concrete residual-Horner
+family rows and does not close Step33A.1-A.
+```

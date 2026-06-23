@@ -19090,3 +19090,43 @@ The local-model segment family stays checked and useful, but it is fallback
 payload infrastructure.  Do not claim Step33A.1-A from it until concrete
 source/model rows, budget rows, cover, and slack comparison are proof-grade
 Lean artifacts.
+
+## 2026-06-23 Active Node Addendum -- residual-Horner payload interface checked
+
+Added:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualHornerPayload.lean
+scripts/generate_step33_a1_sub0_biased_residual_horner_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_payload.md
+```
+
+New checked handoff:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_biasedNonzeroModel_directInterval_valid_of_biasedResidualHornerFamily_payload
+```
+
+Ledger result:
+
+```text
+biased_residual_horner_payload_interface_checked_missing_family_rows
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_FAMILY_PAYLOAD_GAP
+```
+
+Next proof object:
+
+```text
+Concrete Step33Sub0CombinedOrder16BiasedResidualHornerFamilyCert with segment
+data, Horner range rows, residual remainder rows, residual budget rows, cover
+of [0,1/10], and residualAbs equal to
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs.
+```
+
+Boundary:
+
+```text
+The payload interface is Lean-checked; the concrete family rows are not yet
+proved.  Do not mark Step33A.1-A closed.
+```
