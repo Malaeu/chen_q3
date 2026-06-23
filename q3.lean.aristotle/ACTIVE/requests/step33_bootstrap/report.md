@@ -73183,3 +73183,52 @@ This proves only the coefficient/remainder split.  It does not prove the
 uniform analytic remainder bound, residual budget rows, concrete family
 Valid theorem, or Step33A.1-A closure.
 ```
+
+## 2026-06-23 Report Addendum -- residual-Horner remainder source audit
+
+Added:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_remainder_source_audit.md
+```
+
+Verdict:
+
+```text
+GAP_EXACTLY_NAMED
+```
+
+Current residual-Horner gate:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Immediate upstream local blocker:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+```
+
+Local evidence:
+
+```text
+component_assembly_stream_ledger:
+  componentTaylorProofsPresent = false
+  residualTaylorRemainderAbsPresent = false
+
+component_taylor_residual_payload:
+  first failure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+
+segmented_residual_deriv_interval_payload:
+  proofGradeFullTaylorResidualBoundsPresent = false
+  sameExpressionResidualIntervalProofPresent = false
+```
+
+Boundary:
+
+```text
+Do not emit a concrete residual-Horner family Valid theorem from the sampled
+candidate rows.  The spendable object is a Lean-checked component Taylor
+remainder source or a same-expression residual interval certificate.
+```

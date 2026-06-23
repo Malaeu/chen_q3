@@ -38886,3 +38886,46 @@ Boundary:
 This is an algebraic bridge only.  It does not prove the analytic remainder
 bound, residual budget rows, a concrete family Valid theorem, or Step33A.1-A.
 ```
+
+## 2026-06-23 Current Active Pointer -- residual-Horner remainder source audited
+
+Added fail-closed audit:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_remainder_source_audit.md
+```
+
+Audit verdict:
+
+```text
+GAP_EXACTLY_NAMED
+```
+
+Residual-Horner live gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Immediate upstream blocker from local evidence:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+```
+
+Key local evidence:
+
+```text
+componentTaylorProofsPresent = false
+residualTaylorRemainderAbsPresent = false
+proofGradeFullTaylorResidualBoundsPresent = false
+sameExpressionResidualIntervalProofPresent = false
+```
+
+Boundary:
+
+```text
+The one-segment rational geometry and budget candidates are diagnostics only
+until a same-expression residual interval proof or component Taylor remainder
+source is Lean-checked.
+```

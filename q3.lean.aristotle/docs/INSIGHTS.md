@@ -43170,3 +43170,21 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This is still not Step33A.1-A closure; the uniform analytic remainder rows,
   residual budget rows, concrete family `Valid` theorem, and direct interval
   closure are not claimed.
+
+## Insight (2026-06-23, Step33A.1-A) -- ResidualHornerRemainderSourceAudit
+
+- Added fail-closed audit
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_remainder_source_audit.md`.
+- The residual-Horner live gap is now exactly
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP`.
+- Local evidence maps that gap to the upstream blocker
+  `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`.
+- The component assembly ledger still has
+  `componentTaylorProofsPresent = false` and
+  `residualTaylorRemainderAbsPresent = false`.
+- The segmented residual derivative ledger has exact one-segment geometry and
+  budget candidates, but `proofGradeFullTaylorResidualBoundsPresent = false`
+  and `sameExpressionResidualIntervalProofPresent = false`.
+- Do not emit a concrete residual-Horner family `Valid` theorem from sampled
+  rows; the next spendable object is a Lean-checked component Taylor remainder
+  source or same-expression residual interval certificate.

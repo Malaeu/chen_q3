@@ -19174,3 +19174,45 @@ Boundary:
 The coefficient bridge is Lean-checked.  No concrete family Valid theorem,
 segment/range/remainder/budget rows, or Step33A.1-A closure is claimed.
 ```
+
+## 2026-06-23 Active Node Addendum -- residual-Horner remainder source audited
+
+Added:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_horner_remainder_source_audit.md
+```
+
+Verdict:
+
+```text
+GAP_EXACTLY_NAMED
+```
+
+Current residual-Horner gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP
+```
+
+Immediate upstream blocker:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+```
+
+Next proof-producing object:
+
+```text
+Lean-checked component Taylor remainder source, or direct same-expression
+interval certificate for the analytic scaled remainder in the checked
+residual-Horner split.
+```
+
+Boundary:
+
+```text
+Sampled residual interval candidates and passing rational geometry/budget rows
+are not proof rows.  Do not emit a residual-Horner family Valid theorem until
+the same-expression analytic remainder bound is proof-grade.
+```
