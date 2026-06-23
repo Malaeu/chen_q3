@@ -72928,3 +72928,70 @@ Boundary:
 This is still a receiver/interface step.  It proves no concrete source/model
 segment rows and does not close Step33A.1-A.
 ```
+
+## 2026-06-23 Addendum -- local model segment family target checked
+
+Extended the local-model receiver with the generator-facing family wrapper:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Added and ran:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_local_model_segments.py
+```
+
+Generated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.md
+```
+
+Run result:
+
+```text
+biased_residual_local_model_segment_family_receiver_checked_missing_payload
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```
+
+Validation:
+
+```text
+PASS direct Lean:
+  env LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" \
+    /Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/bin/lean \
+    Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+
+PASS marker scan:
+  rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+  returned no matches.
+
+PASS python compile:
+  python3 -m py_compile \
+    q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_local_model_segments.py
+
+PASS ledger:
+  python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_biased_residual_local_model_segments.py
+
+NOTE:
+  bash scripts/q3_check.sh \
+    q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedResidualLocalModelSegmentCert.lean
+  was started and reached the Lean target, but produced no further diagnostics
+  for about 90s and was stopped.  The direct Lean command above is the
+  authoritative validation for this slice.
+```
+
+Boundary:
+
+```text
+The family target and ledger are proof-interface work only.  They do not emit
+source/model segment rows, budget rows, a cover proof, or a Step33A.1-A closure
+claim.
+```

@@ -19013,3 +19013,38 @@ biased-model rows on the same cells, exact residual budget rows, segment
 residualAbs <= global residualAbs, global residualAbs <= ResidualSlackRat, and
 a cover of [0,1/10].  Do not mark Step33A.1-A closed from the receiver alone.
 ```
+
+## 2026-06-23 Active Node Addendum -- local model segment family target checked
+
+Extended the receiver with a generator-facing family target:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Added and ran:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_local_model_segments.py
+```
+
+Generated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.md
+```
+
+Run result:
+
+```text
+biased_residual_local_model_segment_family_receiver_checked_missing_payload
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```
+
+The next proof-producing patch is now a concrete
+`Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid`
+payload.  The ledger is fail-closed and does not claim Step33A.1-A closure.

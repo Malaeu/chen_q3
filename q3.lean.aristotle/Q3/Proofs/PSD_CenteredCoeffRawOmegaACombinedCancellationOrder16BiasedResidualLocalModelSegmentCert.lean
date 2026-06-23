@@ -165,6 +165,61 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order
     (primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_local_model_segment_cover
       hValid hSegmentBudget hCover)
 
+/--
+Generator-facing finite local-model segment family.
+
+`residualAbs` is the global residual budget spent by the biased nonzero-model
+direct interval receiver; each segment may carry a smaller local residual
+budget, provided it is bounded by this global value.
+-/
+structure Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert where
+  n : Nat
+  residualAbs : Rat
+  seg : Fin n ->
+    Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCert
+
+namespace Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert
+
+/-- Proof-bearing validity predicate for a local-model segment family. -/
+structure Valid
+    (cert :
+      Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert) :
+    Prop where
+  segmentValid :
+    ∀ i : Fin cert.n, (cert.seg i).Valid
+  segmentBudget :
+    ∀ i : Fin cert.n,
+      (((cert.seg i).residualAbs : Rat) : Real) <= (cert.residualAbs : Real)
+  cover :
+    Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentCover
+      cert.n cert.seg
+  slackBudget :
+    (cert.residualAbs : Real) <=
+      (primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSlackRat :
+        Real)
+
+namespace Valid
+
+theorem to_residualSourceProp
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+      cert.residualAbs :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_sourceProp_of_local_model_segment_cover
+    h.segmentValid h.segmentBudget h.cover
+
+theorem to_order16DirectIntervalValid
+    {cert :
+      Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert}
+    (h : cert.Valid) :
+    primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelOrder16IntervalData.Valid :=
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16BiasedResidual_order16DirectIntervalValid_of_local_model_segment_cover
+    h.slackBudget h.segmentValid h.segmentBudget h.cover
+
+end Valid
+end Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert
+
 end Step33
 end PSDpd
 end Q3

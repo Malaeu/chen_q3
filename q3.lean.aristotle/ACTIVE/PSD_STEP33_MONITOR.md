@@ -38669,3 +38669,36 @@ Concrete finite segment family with:
   global residualAbs <= ResidualSlackRat,
   cover of [0,1/10].
 ```
+
+## 2026-06-23 Current Active Pointer -- local model segment family target checked
+
+Extended the local-model segment receiver with the generator-facing finite
+family wrapper:
+
+```lean
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid.to_residualSourceProp
+Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid.to_order16DirectIntervalValid
+```
+
+Added and ran the fail-closed ledger:
+
+```text
+scripts/generate_step33_a1_sub0_biased_residual_local_model_segments.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.md
+```
+
+Ledger status:
+
+```text
+biased_residual_local_model_segment_family_receiver_checked_missing_payload
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```
+
+Current proof-producing gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP
+```

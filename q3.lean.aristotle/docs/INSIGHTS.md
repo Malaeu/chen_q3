@@ -43085,3 +43085,19 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_RECEIVER_GAP`.
 - Current proof-producing gap:
   `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP`.
+
+## Insight (2026-06-23, Step33A.1-A) -- LocalModelSegmentFamilyTarget
+
+- Extended the local-model segment receiver with
+  `Step33Sub0CombinedOrder16BiasedResidualLocalModelSegmentFamilyCert.Valid`.
+- Checked family handoff:
+  `Valid.to_residualSourceProp` and `Valid.to_order16DirectIntervalValid`.
+- Added fail-closed ledger
+  `scripts/generate_step33_a1_sub0_biased_residual_local_model_segments.py`.
+- Generated:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_biased_residual_local_model_segments.json`
+  and `.md`.
+- Ledger status:
+  `biased_residual_local_model_segment_family_receiver_checked_missing_payload`.
+- Current proof-producing gap remains:
+  `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_LOCAL_MODEL_SEGMENT_PAYLOAD_GAP`.
