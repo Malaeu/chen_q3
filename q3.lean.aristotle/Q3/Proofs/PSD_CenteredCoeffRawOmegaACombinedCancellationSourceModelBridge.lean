@@ -1171,6 +1171,91 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_
     primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource]
   exact hSource eta hEta
 
+/--
+Transport generated component-source row bounds into the center-jet field used
+by `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+
+This is only a normalization bridge: it does not provide rational rows or an
+order-16 source bound.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource
+    (data : Step33Sub0CombinedCancellationHighOrderTaylorCert)
+    (hSourceRows :
+      ∀ j : Fin 16,
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+            j.1 -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real)) :
+    ∀ j : Fin 16,
+      ‖iteratedDeriv j.1
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+          ((1 / 20 : Rat) : Real) /
+        (Nat.factorial j.1 : Real) -
+        (data.coeff j : Real)‖ <=
+        (data.coeffErrorAbs j : Real) := by
+  intro j
+  have hEq :=
+    primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource
+      j
+  have hEq' :
+      iteratedDeriv j.1
+          primaryFiniteRow0Parent0Split100Sub0CombinedCancellationIntervalExpr
+          ((1 / 20 : Rat) : Real) /
+        (Nat.factorial j.1 : Real) =
+        primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+          j.1 := by
+    simpa [primaryFiniteRow0Parent0Split100Sub0NormalizedCenterJet,
+      primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCenter] using hEq
+  rw [hEq']
+  exact hSourceRows j
+
+/--
+Constructor for the high-order combined-cancellation payload when a generator
+works in the checked component-source conventions for both center jets and the
+order-16 source bound.
+
+The remaining proof obligations are still proof-grade data: rational
+component-source row bounds, a source bound for `order16Abs`, and the Taylor
+budget.
+-/
+theorem primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds
+    (data : Step33Sub0CombinedCancellationHighOrderTaylorCert)
+    (hCoeffErrorNonneg :
+      ∀ j : Fin 16, 0 <= (data.coeffErrorAbs j : Real))
+    (hRemainderNonneg : 0 <= (data.remainderAbs : Real))
+    (hSourceRows :
+      ∀ j : Fin 16,
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationComponentSourceCenterJet
+            j.1 -
+          (data.coeff j : Real)‖ <=
+          (data.coeffErrorAbs j : Real))
+    (hOrder16Source :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
+            eta‖ <=
+          (data.order16Abs : Real))
+    (hBudget :
+      (∑ j : Fin 16,
+          (data.coeffErrorAbs j : Real) * ((1 : Real) / 20) ^ j.1) +
+          (data.order16Abs : Real) * ((1 : Real) / 20) ^ 16 /
+            (Nat.factorial 16 : Real) <=
+        (data.remainderAbs : Real)) :
+    data.Valid := by
+  refine
+    { smooth :=
+        primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16
+      coeffErrorNonneg := hCoeffErrorNonneg
+      remainderNonneg := hRemainderNonneg
+      centerJet := ?_
+      order16 := ?_
+      remainderBudget := hBudget }
+  · exact
+      primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource
+        data hSourceRows
+  · exact
+      primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
+        (data.order16Abs : Real) hOrder16Source
+
 end Step33
 end PSDpd
 end Q3

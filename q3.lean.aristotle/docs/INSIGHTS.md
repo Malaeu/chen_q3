@@ -41381,6 +41381,33 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Current exact generator/proof interface:
   `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`.
 
+## Insight (2026-06-23, Step33A.1-A) -- SourceBoundsToHighOrderValidConstructorChecked
+
+- Target blocker:
+  `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`.
+- After the order-16 source model was fixed, the next local proof-safe patch was
+  to expose a direct constructor from checked source-bound conventions to
+  `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid`.
+- Extended
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`.
+- Lean checked:
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}`
+  with schema
+  `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v6`.
+- The ledger now records
+  `sourceBoundsToHighOrderValidConstructorPresent = true`.
+- Boundary: this is not a generated payload and not Step33A.1-A closure.
+  `highOrderValidPayloadPresent = false`, `highOrderCenterJetRowsPresent =
+  false`, `highOrderOrder16RowsPresent = false`, and `proofSafeClosedFields =
+  0`.
+- Next exact proof-producing patch: generate/prove concrete source rows,
+  proof-grade `order16Abs` source bound, Horner range rows, and exact
+  target-budget inequalities against the checked constructor.
+
 ## Insight (2026-06-23, Step33A.1-A) -- CombinedOrder16SourceModelChecked
 
 - Browser/Computer Use was used for route review after ledger v4.  Proshka

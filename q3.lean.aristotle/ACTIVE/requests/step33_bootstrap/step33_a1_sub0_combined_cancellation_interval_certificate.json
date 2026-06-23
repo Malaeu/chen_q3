@@ -39,7 +39,8 @@
     "rows0..11 independent product budget is width-killed.",
     "High-order Taylor receiver surface is the target adapter; it still needs concrete proof rows.",
     "Whole-expression smoothness and all-row component-source center-jet crosswalk are Lean-checked.",
-    "Whole-expression order-16 component-source bridge and norm adapter are Lean-checked."
+    "Whole-expression order-16 component-source bridge and norm adapter are Lean-checked.",
+    "Source-bounds-to-HighOrderTaylorCert.Valid constructor is Lean-checked."
   ],
   "combinedExpressionMeaning": "rawOmegaATaylorPolynomial assembledDegree 1/20 ResidualTaylorCoeff eta + ScaledCancellationRhs eta",
   "failureCodes": [
@@ -98,6 +99,7 @@
     "residualTaylorCoeffPayloadPresent": true,
     "sampledCandidateIsProof": false,
     "segmentCoveragePassedExactRational": true,
+    "sourceBoundsToHighOrderValidConstructorPresent": true,
     "wholeExpressionSourceModelPresent": true
   },
   "rejectedRoutes": {
@@ -122,6 +124,7 @@
   },
   "requiredHighOrderPayload": {
     "adapterChain": [
+      "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds",
       "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.remainder_bound",
       "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_interval_valid",
       "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined",
@@ -145,7 +148,7 @@
     "validPredicate": "Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid"
   },
   "routeId": "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR",
-  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v5",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v6",
   "segments": [
     {
       "budgetPassesExactRational": true,
@@ -166,7 +169,7 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationHighOrderTaylorSource.lean": "3f95fa0605fd469c",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalCert.lean": "172524e28455ca5b",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationIntervalPayload.lean": "2cf0833b5b65c1f7",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean": "5e8bf5a1770ac932",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean": "532be7c81f02e0f8",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationCombinedInterval.lean": "d3ce443f3d86cc33",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean": "8554b282c60d9c25",
@@ -177,6 +180,12 @@
   "sourceModelInventory": {
     "centerJetFailure": null,
     "checkedBridge": {
+      "centerJetBoundsAdapter": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean",
+        "line": 1181,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource"
+      },
       "centerJetPresent": true,
       "centerJetTheorem": {
         "exists": true,
@@ -185,6 +194,12 @@
         "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_eq_componentSource"
       },
       "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean",
+      "highOrderValidConstructor": {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean",
+        "line": 1221,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds"
+      },
       "order16BoundAdapter": {
         "exists": true,
         "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean",
@@ -211,11 +226,12 @@
         "line": 456,
         "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_contDiff16"
       },
-      "status": "checked_source_model_support",
-      "whyNotEnough": "This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a Valid payload."
+      "sourceBoundsConstructorPresent": true,
+      "status": "checked_source_bounds_to_valid_constructor",
+      "whyNotEnough": "This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload."
     },
     "firstSourceFailure": "STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP",
-    "nextPatchRecommendation": "Generate/prove concrete HighOrderTaylorCert payload rows and the order16Abs source bound from the checked source-model bridge.",
+    "nextPatchRecommendation": "Generate/prove concrete HighOrderTaylorCert source rows, the proof-grade order16Abs source bound, Horner range rows, and target-budget inequalities against the checked Valid constructor.",
     "order16Failure": null,
     "rationalPolynomialPart": {
       "definition": {
@@ -293,7 +309,7 @@
       "normalizationHazard": "ActiveScaleCoeff is ((3/10)/Real.pi), while the residual polynomial payload is rational and nominal-scale based.",
       "status": "source_model_checked_for_center_jets_and_order16"
     },
-    "status": "source_model_bridge_checked_payload_rows_missing",
+    "status": "source_bounds_to_valid_constructor_checked_payload_rows_missing",
     "targetFunction": {
       "definition": {
         "exists": true,
@@ -334,6 +350,8 @@
     "p45BridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean",
     "proofDataWrapper": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_cellSlopeExactIntegralProofData_of_checked_hRawCenterCoeffAbs_and_combined_bounds",
     "sourceModelBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean",
+    "sourceModelCenterJetBoundsAdapter": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource",
+    "sourceModelHighOrderValidConstructor": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds",
     "sourceModelOrder16BoundAdapter": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource",
     "sourceModelOrder16Source": "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource",
     "sourceModelOrder16Theorem": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource"

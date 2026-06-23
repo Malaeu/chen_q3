@@ -120,6 +120,49 @@ First missing proof/generator interface:
 STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP
 ```
 
+## Execution Update (2026-06-23) -- source bounds to Valid constructor checked
+
+After the order-16 source model was fixed, Codex added the next local
+proof-safe adapter.  It does not generate rows and does not close the payload;
+it only gives the generator a direct Lean target.
+
+Lean-checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean
+```
+
+Lean-checked symbols:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds
+```
+
+Ledger regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.{json,md}
+schema = q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v6
+sourceBoundsToHighOrderValidConstructorPresent = true
+highOrderValidPayloadPresent = false
+proofSafeClosedFields = 0
+```
+
+Current exact gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP
+```
+
+Next proof-producing patch:
+
+```text
+Generate/prove concrete HighOrderTaylorCert source rows, proof-grade
+order16Abs source bound, Horner range rows, and exact target-budget
+inequalities against the checked Valid constructor.
+```
+
 ## Execution Update (2026-06-23) -- combined source-model all-row bridge checked
 
 Route: PSD-pd/Q3 Step33A.1-A combined-cancellation high-order Taylor source.

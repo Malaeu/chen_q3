@@ -136,6 +136,7 @@ now records the source-model bridge as checked support:
   centerJetSourceModelPresent = true
   order16SourceModelPresent = true
   fullSourceModelBridgePresent = true
+  sourceBoundsToHighOrderValidConstructorPresent = true
 
 These flags come only from Lean-checked support theorems:
 
@@ -144,6 +145,8 @@ These flags come only from Lean-checked support theorems:
   primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource
   primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource
+  primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds
 
 This is not a proof payload:
 
