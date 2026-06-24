@@ -44219,3 +44219,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This is a route/gate closure only.  It supplies no D16 center row, no D17
   uniform row, no active-scale proof row, no degree-0 budget proof, no Lean
   payload, and no Step33A.1-A closure.
+
+## Insight (2026-06-24, Step33A.1-A) -- Degree0PreflightSearchSynthesis
+
+- Target blocker:
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`,
+  feeding
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`.
+- Local `q3_docs` searches for D16 center, D17 uniform, activeScaleAbs, and
+  degree-0 budget did not surface a ready proof-grade D16/D17 source object.
+  They did confirm the relevant current docs live in the recent Step33
+  activeActual insight tail rather than an older global/H-route artifact.
+- External primary Lean/Mathlib docs were checked only for infrastructure:
+  `iteratedDeriv`/`ContDiff` APIs and rational/numeric inequality checking.
+  No web result is proof evidence for this repo-specific certificate.
+- Local grep found a proof-grade active-scale input already in the repo:
+  `primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`.
+- The exact bound target is
+  `primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound`, defined as
+  `primaryFiniteRow0Parent0Split100Sub0TightScaleUpper` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- In-progress next patch: populate only the active-scale slot of
+  `step33_a1_sub0_active_actual_order16_degree0_payload.json` as proof-grade.
+  Keep `firstFailure` at the D16/D17 source gap until those rows exist.
