@@ -1,18 +1,18 @@
 # Step33A.1-A ActiveActual Order-16 Horner Payload Gate
 
-schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2`
+schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3`
 route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Verdict
 
-- proofStatus: `blocked_missing_low_degree_segment_remainder_source`
+- proofStatus: `blocked_missing_d16_center_d17_uniform_source`
 - proofGrade: `False`
 - proofSafeClosedFields: `0`
 - interfaceReady: `True`
 - outLeanWritten: `False`
 - currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
 - firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
-- firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP`
+- firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 - leanValidationStatus: `not_run_payload_not_emitted`
 
 ## Target Lean Surface
@@ -20,6 +20,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `dataObject`: `primaryFiniteRow0Parent0Split100Sub0ActiveActualOrder16HornerSegment0`
 - `validTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_valid`
 - `remainderTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated`
+- `degree0SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
 - `familyValidTarget`: `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`
 - `payloadTarget`: `primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily`
 
@@ -43,6 +44,9 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `lowDegreeBridge`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean`
 - `zeroExtendDef`: `primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29`
 - `transferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree`
+- `degree0SourceBridge`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`
+- `degree0SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
+- `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 - `fullDegree29Specialization`: `{'coefficientJetOrdersNeeded': '16..45', 'uniformRemainderDerivativeOrderNeeded': 46, 'firstMissingSubgapIfChosen': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP'}`
 
 ## Required Inputs
@@ -58,16 +62,24 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 ### S1_low_degree_activeActual_row
 
 - `status`: `missing`
-- `required`: `Choose d <= 29 and supply Rat coeff : Fin (d + 1) -> Rat for activeScale * D^16(ComponentProductActual)`
+- `required`: `Use the degree-0 source first: supply a Rat coeff0 for activeScale * D^16(ComponentProductActual) at center 1/20`
 - `degreePolicy`: `low-degree row accepted via checked zero-extension into Fin30`
-- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP`
+- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 
 ### S2_low_degree_uniform_remainder
 
 - `status`: `missing`
-- `required`: `uniform segment remainder for the selected low-degree D16 Taylor/Horner row`
-- `analyticOrderForDegreeD`: `17 + d for a Taylor-source proof`
-- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP`
+- `required`: `D16 center enclosure, D17 uniform bound, derivative-shift/differentiability source, and exact rational budget`
+- `analyticOrderForDegree0`: `D16 center plus D17 uniform derivative source`
+- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
+
+### S2a_degree0_source_interface
+
+- `status`: `checked`
+- `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`
+- `coeffDef`: `primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff`
+- `theorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
+- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 
 ### S3_zero_extend_low_degree_to_Fin30
 
@@ -94,7 +106,9 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `segmentReceiverReady`: `True`
 - `familyBridgeReady`: `True`
 - `lowDegreeBridgeReady`: `True`
+- `degree0SourceInterfaceReady`: `True`
 - `activeActualLowDegreeSegmentRemainderSourceChecked`: `False`
+- `activeActualD16CenterD17UniformSourceChecked`: `False`
 - `activeActualD46UniformRemainderSourceChecked`: `False`
 - `activeActualCoeffOrders16To45Checked`: `False`
 - `smokeSegmentValidChecked`: `False`
@@ -119,7 +133,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 ## Row Source Ledger
 
 - `path`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
-- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3`
+- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4`
 - `proofStatus`: `interface_ready_rows_missing`
 - `proofGrade`: `False`
 - `firstFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
@@ -129,7 +143,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `used`: `True`
 - `advisoryOnly`: `True`
 - `recommendedOption`: `B`
-- `decision`: `Use a low-degree-to-Fin30 bridge before building any D46 backend; degree 29 is a container requirement, not the first analytic obligation.`
+- `decision`: `Use a low-degree-to-Fin30 bridge, then the degree-0 D16-center/D17-uniform source interface, before building D18/D46 machinery.`
 - `notProofEvidence`: `True`
 
 ## Do Not Use As Proof
@@ -143,4 +157,4 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Next Implementable Patch
 
-Produce a proof-grade low-degree source for the smoke segment: choose d <= 29, emit rational coeff : Fin (d + 1) -> Rat for activeScale * D^16(ComponentProductActual), prove the uniform segment remainder, then zero-extend into the existing Fin30 activeActual Horner container.
+Fill the degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, derivative-shift/differentiability source, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.

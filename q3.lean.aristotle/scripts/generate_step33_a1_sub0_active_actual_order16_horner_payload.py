@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -44,6 +44,10 @@ LOW_DEGREE_BRIDGE_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean"
 )
+DEGREE0_SOURCE_LEAN = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean"
+)
 FUTURE_PAYLOAD_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean"
@@ -56,6 +60,9 @@ LOW_DEGREE_SOURCE_GAP = (
 )
 LOW_DEGREE_ALIGNMENT_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_TO_FIN30_ALIGNMENT_GAP"
+)
+D16_CENTER_D17_SOURCE_GAP = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP"
 )
 PAYLOAD_VALIDATION_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_LEAN_PAYLOAD_VALIDATION_GAP"
@@ -78,6 +85,12 @@ REQUIRED_LOW_DEGREE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
     "primaryFiniteRow0Parent0Split100Sub0_activeActualPoly_zeroExtend29_eq",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
+]
+
+REQUIRED_DEGREE0_SOURCE_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
 ]
 
 
@@ -151,10 +164,12 @@ def build_ledger() -> dict[str, Any]:
     segment_symbols = symbol_audit(SEGMENT_RECEIVER_LEAN, REQUIRED_SEGMENT_SYMBOLS)
     family_symbols = symbol_audit(FAMILY_BRIDGE_LEAN, REQUIRED_FAMILY_SYMBOLS)
     low_degree_symbols = symbol_audit(LOW_DEGREE_BRIDGE_LEAN, REQUIRED_LOW_DEGREE_SYMBOLS)
+    degree0_symbols = symbol_audit(DEGREE0_SOURCE_LEAN, REQUIRED_DEGREE0_SOURCE_SYMBOLS)
     segment_ready = all_present(segment_symbols)
     family_ready = all_present(family_symbols)
     low_degree_ready = all_present(low_degree_symbols)
-    interface_ready = segment_ready and family_ready and low_degree_ready
+    degree0_ready = all_present(degree0_symbols)
+    interface_ready = segment_ready and family_ready and low_degree_ready and degree0_ready
 
     required_inputs = [
         {
@@ -169,21 +184,29 @@ def build_ledger() -> dict[str, Any]:
             "id": "S1_low_degree_activeActual_row",
             "status": "missing",
             "required": (
-                "Choose d <= 29 and supply Rat coeff : Fin (d + 1) -> Rat "
-                "for activeScale * D^16(ComponentProductActual)"
+                "Use the degree-0 source first: supply a Rat coeff0 for "
+                "activeScale * D^16(ComponentProductActual) at center 1/20"
             ),
             "degreePolicy": "low-degree row accepted via checked zero-extension into Fin30",
-            "failureCode": LOW_DEGREE_SOURCE_GAP,
+            "failureCode": D16_CENTER_D17_SOURCE_GAP,
         },
         {
             "id": "S2_low_degree_uniform_remainder",
             "status": "missing",
             "required": (
-                "uniform segment remainder for the selected low-degree "
-                "D16 Taylor/Horner row"
+                "D16 center enclosure, D17 uniform bound, derivative-shift/"
+                "differentiability source, and exact rational budget"
             ),
-            "analyticOrderForDegreeD": "17 + d for a Taylor-source proof",
-            "failureCode": LOW_DEGREE_SOURCE_GAP,
+            "analyticOrderForDegree0": "D16 center plus D17 uniform derivative source",
+            "failureCode": D16_CENTER_D17_SOURCE_GAP,
+        },
+        {
+            "id": "S2a_degree0_source_interface",
+            "status": "checked" if degree0_ready else "missing",
+            "source": rel(DEGREE0_SOURCE_LEAN),
+            "coeffDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
+            "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+            "failureCode": D16_CENTER_D17_SOURCE_GAP,
         },
         {
             "id": "S3_zero_extend_low_degree_to_Fin30",
@@ -211,7 +234,7 @@ def build_ledger() -> dict[str, Any]:
         "schema": SCHEMA,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "route": "active_actual_order16_horner_payload_smoke_segment",
-        "proofStatus": "blocked_missing_low_degree_segment_remainder_source",
+        "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
         "proofGrade": False,
         "proofSafeClosedFields": 0,
         "interfaceReady": interface_ready,
@@ -219,12 +242,13 @@ def build_ledger() -> dict[str, Any]:
         "targetLeanFileWhenRowsPass": rel(FUTURE_PAYLOAD_LEAN),
         "currentGap": ROW_SOURCE_GAP,
         "firstFailureCode": ROW_SOURCE_GAP,
-        "firstConcreteSubgap": LOW_DEGREE_SOURCE_GAP,
+        "firstConcreteSubgap": D16_CENTER_D17_SOURCE_GAP,
         "leanValidationStatus": "not_run_payload_not_emitted",
         "sourceFileDigests": {
             rel(SEGMENT_RECEIVER_LEAN): sha256_file(SEGMENT_RECEIVER_LEAN),
             rel(FAMILY_BRIDGE_LEAN): sha256_file(FAMILY_BRIDGE_LEAN),
             rel(LOW_DEGREE_BRIDGE_LEAN): sha256_file(LOW_DEGREE_BRIDGE_LEAN),
+            rel(DEGREE0_SOURCE_LEAN): sha256_file(DEGREE0_SOURCE_LEAN),
             rel(ACTIVE_CENTER_ROWS_LEAN): sha256_file(ACTIVE_CENTER_ROWS_LEAN),
             rel(ROW_SOURCE_JSON): sha256_file(ROW_SOURCE_JSON),
         },
@@ -239,6 +263,7 @@ def build_ledger() -> dict[str, Any]:
             "dataObject": "primaryFiniteRow0Parent0Split100Sub0ActiveActualOrder16HornerSegment0",
             "validTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_valid",
             "remainderTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated",
+            "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
             "familyValidTarget": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
             "payloadTarget": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
         },
@@ -260,6 +285,9 @@ def build_ledger() -> dict[str, Any]:
             "lowDegreeBridge": rel(LOW_DEGREE_BRIDGE_LEAN),
             "zeroExtendDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
             "transferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
+            "degree0SourceBridge": rel(DEGREE0_SOURCE_LEAN),
+            "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+            "firstConcreteSubgap": D16_CENTER_D17_SOURCE_GAP,
             "fullDegree29Specialization": {
                 "coefficientJetOrdersNeeded": "16..45",
                 "uniformRemainderDerivativeOrderNeeded": 46,
@@ -274,7 +302,9 @@ def build_ledger() -> dict[str, Any]:
             "segmentReceiverReady": segment_ready,
             "familyBridgeReady": family_ready,
             "lowDegreeBridgeReady": low_degree_ready,
+            "degree0SourceInterfaceReady": degree0_ready,
             "activeActualLowDegreeSegmentRemainderSourceChecked": False,
+            "activeActualD16CenterD17UniformSourceChecked": False,
             "activeActualD46UniformRemainderSourceChecked": False,
             "activeActualCoeffOrders16To45Checked": False,
             "smokeSegmentValidChecked": False,
@@ -287,9 +317,8 @@ def build_ledger() -> dict[str, Any]:
             "advisoryOnly": True,
             "recommendedOption": "B",
             "decision": (
-                "Use a low-degree-to-Fin30 bridge before building any D46 "
-                "backend; degree 29 is a container requirement, not the first "
-                "analytic obligation."
+                "Use a low-degree-to-Fin30 bridge, then the degree-0 D16-center/"
+                "D17-uniform source interface, before building D18/D46 machinery."
             ),
             "notProofEvidence": True,
         },
@@ -302,11 +331,10 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Produce a proof-grade low-degree source for the smoke segment: "
-            "choose d <= 29, emit rational coeff : Fin (d + 1) -> Rat for "
-            "activeScale * D^16(ComponentProductActual), prove the uniform "
-            "segment remainder, then zero-extend into the existing Fin30 "
-            "activeActual Horner container."
+            "Fill the degree-0 source inputs: proof-grade D16 center enclosure, "
+            "proof-grade D17 uniform bound, derivative-shift/differentiability "
+            "source, and exact rational budget; then zero-extend into the "
+            "existing Fin30 activeActual Horner container."
         ),
     }
 

@@ -18,7 +18,7 @@
   },
   "computerUseDecision": {
     "advisoryOnly": true,
-    "decision": "Use a low-degree-to-Fin30 bridge before building any D46 backend; degree 29 is a container requirement, not the first analytic obligation.",
+    "decision": "Use a low-degree-to-Fin30 bridge, then the degree-0 D16-center/D17-uniform source interface, before building D18/D46 machinery.",
     "notProofEvidence": true,
     "recommendedOption": "B",
     "used": true
@@ -27,6 +27,9 @@
   "degree29ContainerPolicy": {
     "containerCoeffType": "Fin 30 -> Rat",
     "containerDegree": 29,
+    "degree0SourceBridge": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean",
+    "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+    "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
     "fullDegree29Specialization": {
       "coefficientJetOrdersNeeded": "16..45",
       "firstMissingSubgapIfChosen": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP",
@@ -46,16 +49,16 @@
     "Lean payload file before S1/S2 proof-grade inputs exist",
     "D46 backend as mandatory before the low-degree source is tested"
   ],
-  "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
+  "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T01:27:43.409825+00:00",
+  "generatedAt": "2026-06-24T01:54:34.869260+00:00",
   "interfaceReady": true,
   "leanValidationStatus": "not_run_payload_not_emitted",
-  "nextImplementablePatch": "Produce a proof-grade low-degree source for the smoke segment: choose d <= 29, emit rational coeff : Fin (d + 1) -> Rat for activeScale * D^16(ComponentProductActual), prove the uniform segment remainder, then zero-extend into the existing Fin30 activeActual Horner container.",
+  "nextImplementablePatch": "Fill the degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, derivative-shift/differentiability source, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.",
   "outLeanWritten": false,
   "proofGrade": false,
   "proofSafeClosedFields": 0,
-  "proofStatus": "blocked_missing_low_degree_segment_remainder_source",
+  "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
   "requiredInputs": [
     {
       "cellL": "0",
@@ -67,17 +70,25 @@
     },
     {
       "degreePolicy": "low-degree row accepted via checked zero-extension into Fin30",
-      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
       "id": "S1_low_degree_activeActual_row",
-      "required": "Choose d <= 29 and supply Rat coeff : Fin (d + 1) -> Rat for activeScale * D^16(ComponentProductActual)",
+      "required": "Use the degree-0 source first: supply a Rat coeff0 for activeScale * D^16(ComponentProductActual) at center 1/20",
       "status": "missing"
     },
     {
-      "analyticOrderForDegreeD": "17 + d for a Taylor-source proof",
-      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
+      "analyticOrderForDegree0": "D16 center plus D17 uniform derivative source",
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
       "id": "S2_low_degree_uniform_remainder",
-      "required": "uniform segment remainder for the selected low-degree D16 Taylor/Horner row",
+      "required": "D16 center enclosure, D17 uniform bound, derivative-shift/differentiability source, and exact rational budget",
       "status": "missing"
+    },
+    {
+      "coeffDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
+      "id": "S2a_degree0_source_interface",
+      "source": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean",
+      "status": "checked",
+      "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source"
     },
     {
       "def": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
@@ -106,9 +117,9 @@
     "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json",
     "proofGrade": false,
     "proofStatus": "interface_ready_rows_missing",
-    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3"
+    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4"
   },
-  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2",
+  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3",
   "smokeSegment": {
     "cell": "Set.Icc 0 (1/10)",
     "cellL": "0",
@@ -120,8 +131,9 @@
     "payloadAllowed": false
   },
   "sourceFileDigests": {
-    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json": "aa6a401504b2d9dc1820891c3fb1093caaf79c08275b3c28370942203eaaa040",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json": "1ef0ae3e65794f3cc6e8033babac6bb5eeb09cc8e3cd0ef11d83434576f84292",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean": "724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean": "2f3b65a09280f1aeacf76ab33fa35cfb7ccfeb1c9d38410c2b48d4f08aea6e7e",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean": "7779f7ada25fa2422977eacae90788724294a965944e50d0d69c37d9fd314676",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean": "26bc3873205b8196731bdb86015318d8457f4a51d1b76e9675e174ffd6c19238",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean": "eb2d78a61788b5dfe9a08c6ea678969485da8006c028eac5a13cf5e075ad2d75"
@@ -129,6 +141,7 @@
   "targetLeanFileWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean",
   "targetLeanSurface": {
     "dataObject": "primaryFiniteRow0Parent0Split100Sub0ActiveActualOrder16HornerSegment0",
+    "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
     "familyValidTarget": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
     "payloadTarget": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
     "remainderTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated",
@@ -136,10 +149,12 @@
   },
   "validationGates": {
     "activeActualCoeffOrders16To45Checked": false,
+    "activeActualD16CenterD17UniformSourceChecked": false,
     "activeActualD46UniformRemainderSourceChecked": false,
     "activeActualLowDegreeSegmentRemainderSourceChecked": false,
     "allPayloadObligationsPassed": false,
     "budgetRowsChecked": false,
+    "degree0SourceInterfaceReady": true,
     "familyBridgeReady": true,
     "hornerRangeRowsChecked": false,
     "lowDegreeBridgeReady": true,

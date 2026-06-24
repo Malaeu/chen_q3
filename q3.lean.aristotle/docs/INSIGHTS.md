@@ -44101,3 +44101,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   low-degree segment row for
   `activeScale * D^16(ComponentProductActual)`, then zero-extend it and feed the
   existing activeActual Horner family receiver.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualDegree0SourceBridge
+
+- Target blocker after low-degree zero-extension:
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP`.
+- Used the in-app Browser/Computer Use with the exact low-degree source fork.
+  Advisory result: `CHOSEN: A`; treated only as route advice.
+- Local check found an important prior boundary:
+  `PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NormalForm.lean` already
+  has zero-model/direct order-16 source interfaces, but
+  `PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16RawProduct17BudgetAudit.lean`
+  Lean-kills the coarse whole-cell rawProduct17 zero-model budget.  So the new
+  patch must not claim zero-model/direct closure.
+- Added checked file:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`.
+- New checked objects:
+  `primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff`,
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`.
+- The bridge proves the degree-0 source theorem conditionally from:
+  proof-grade D16 center enclosure, proof-grade D17 uniform bound,
+  derivative-shift/differentiability source, and exact rational budget.  It then
+  transports that row through the existing low-degree Fin30 zero-extension.
+- Regenerated activeActual ledgers to
+  `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4` and
+  `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3`.
+- Current live gap remains the row-source gap:
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`;
+  the first concrete source subgap is now exactly
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
+- Next proof-producing patch: provide/check the D16 center row, D17 uniform row,
+  derivative-shift/differentiability source, and exact budget for degree 0.

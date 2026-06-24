@@ -74684,6 +74684,73 @@ python3 -m json.tool payload/row-obligations/row-source-audit/certificate JSON
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual degree-0 source bridge checked
+
+Computer Use / Proshka follow-up after the low-degree zero-extension bridge
+selected:
+
+```text
+CHOSEN: A
+```
+
+Added and direct-Lean checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
+```
+
+Checked source-interface objects:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source
+```
+
+Meaning: a future degree-0 row for
+`ActiveScaleCoeff * D^16(ComponentProductActual)` can be proved from a D16
+center enclosure, a D17 uniform bound, a derivative-shift/differentiability
+source, and an exact rational budget, then transported through the checked
+low-degree Fin30 zero-extension bridge.  This is not a concrete row and not
+Step33A.1-A closure.
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_active_actual_horner_row_source.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4
+
+step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3
+```
+
+Validation:
+
+```text
+LEAN_PATH=.lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:.lake/packages/plausible/.lake/build/lib/lean:.lake/packages/proofwidgets/.lake/build/lib/lean:.lake/packages/batteries/.lake/build/lib/lean:.lake/packages/aesop/.lake/build/lib/lean:.lake/packages/importGraph/.lake/build/lib/lean:.lake/packages/LeanSearchClient/.lake/build/lib/lean:.lake/packages/Qq/.lake/build/lib/lean lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+python3 -m py_compile scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+python3 scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Current live proof-producing gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+First concrete source subgap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Boundary: no proof-grade D16 center enclosure, no proof-grade D17 uniform
+bound, no derivative-shift/differentiability source payload, no exact degree-0
+budget instantiation, no concrete activeActual Horner payload, and no
+Step33A.1-A closure exists yet.
+
 ## 2026-06-23 Report Addendum -- direct row-source audit CHOSEN C
 
 Computer Use / Proshka follow-up after the v10 interface guard selected:

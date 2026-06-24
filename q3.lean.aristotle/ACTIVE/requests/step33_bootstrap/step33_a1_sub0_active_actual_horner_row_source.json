@@ -28,6 +28,10 @@
   "degree29ContainerPolicy": {
     "containerCoeffType": "Fin 30 -> Rat",
     "containerDegree": 29,
+    "degree0SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+    "degree0SourceBridge": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean",
+    "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
+    "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
     "firstMissingSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
     "fullDegree29Specialization": {
       "coefficientJetOrdersNeeded": "16..45",
@@ -76,6 +80,7 @@
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SEGMENT_RECEIVER_GAP",
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_FAMILY_ALIGNMENT_GAP",
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_TO_FIN30_ALIGNMENT_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP",
@@ -88,9 +93,18 @@
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_FINAL_BUDGET_ROWS_GAP",
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_LEAN_PAYLOAD_VALIDATION_GAP"
   ],
+  "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T01:27:43.382719+00:00",
-  "interfaceClosedFields": 6,
+  "generatedAt": "2026-06-24T01:54:34.777221+00:00",
+  "interfaceClosedFields": 7,
+  "latestComputerUseDegree0SourceDecision": {
+    "advisoryOnly": true,
+    "decision": "Implement a degree-0 activeActual D16 source bridge before degree-1, D18, or D46 machinery.",
+    "firstFailureCodeIfDataMissing": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
+    "notProofEvidence": true,
+    "recommendedOption": "A",
+    "used": true
+  },
   "latestComputerUsePayloadDecision": {
     "advisoryOnly": true,
     "decision": "Add/use a low-degree-to-Fin30 bridge before building any D46 backend.  The degree-29 container can carry a lower-degree activeActual source row.",
@@ -100,19 +114,32 @@
     "used": true
   },
   "leanValidationStatus": "not_run_rows_missing",
-  "nextImplementablePatch": "Build the first proof-grade low-degree activeActual segment row: choose d <= 29, produce rational/interval coeff : Fin (d + 1) -> Rat and a uniform remainder proof for activeScale * D^16(ComponentProductActual), then zero-extend it into the existing Fin30 Horner family.",
+  "nextImplementablePatch": "Fill the degree-0 source inputs: a proof-grade D16 center enclosure, a proof-grade D17 uniform bound, the derivative-shift/differentiability source, and the exact rational budget comparison; then instantiate the checked degree-0 theorem and zero-extend into the existing Fin30 Horner family.",
   "outLeanWritten": false,
   "proofGrade": false,
   "proofSafeClosedFields": 0,
   "proofStatus": "interface_ready_rows_missing",
   "requiredRows": [
     {
-      "analyticOrderForDegreeD": "17 + d for a Taylor-source proof",
-      "degreePolicy": "choose d <= 29 and zero-extend into Fin30 via checked bridge",
-      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
+      "id": "A_minus2_degree0_source_interface",
+      "leanField": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+      "object": "checked degree-0 activeActual source bridge from D16 center, D17 uniform bound, derivative shift, and exact budget",
+      "remainingData": [
+        "proof-grade D16 center enclosure",
+        "proof-grade D17 uniform bound",
+        "derivative-shift/differentiability source",
+        "exact rational budget comparison"
+      ],
+      "status": "checked"
+    },
+    {
+      "analyticOrderForDegree0": "D16 center plus D17 uniform derivative source",
+      "degreePolicy": "try d = 0 before D18/D46; zero-extend into Fin30 via checked bridge",
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
       "id": "A_minus1_low_degree_segment_remainder_source",
       "leanField": "Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid.remainderBound",
-      "object": "proof-grade low-degree Taylor/Horner source for scaled D^16(ComponentProductActual)",
+      "object": "proof-grade low-degree Taylor/Horner source for scaled D^16(ComponentProductActual); first route is degree 0",
       "status": "missing"
     },
     {
@@ -212,9 +239,9 @@
       "remainderBound for activeScale * D^16(ComponentProductActual)"
     ]
   },
-  "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3",
+  "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4",
   "smokeSegmentPayloadGate": {
-    "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP",
+    "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
     "firstDataObject": "primaryFiniteRow0Parent0Split100Sub0ActiveActualOrder16HornerSegment0",
     "firstRemainderTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated",
     "firstValidityTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_valid",
@@ -223,11 +250,12 @@
     "outLeanWritten": false,
     "payloadAllowed": false,
     "recommendedScript": "scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py",
-    "status": "blocked_missing_low_degree_segment_remainder_source",
+    "status": "blocked_missing_d16_center_d17_uniform_source",
     "targetLeanFileWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean"
   },
   "sourceFileDigests": {
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean": "724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean": "2f3b65a09280f1aeacf76ab33fa35cfb7ccfeb1c9d38410c2b48d4f08aea6e7e",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean": "7779f7ada25fa2422977eacae90788724294a965944e50d0d69c37d9fd314676",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean": "26bc3873205b8196731bdb86015318d8457f4a51d1b76e9675e174ffd6c19238",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean": "eb2d78a61788b5dfe9a08c6ea678969485da8006c028eac5a13cf5e075ad2d75",
@@ -236,6 +264,9 @@
   },
   "targetLeanSurface": {
     "collapsedReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsed_segment_remainder_of_activeActualHorner",
+    "degree0CoeffDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
+    "degree0SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+    "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
     "familyBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_directHornerFamily_valid_of_activeActualHornerFamily",
     "familyDataObject": "Step33Sub0ActiveActualOrder16HornerFamilyCert",
     "familyValidPredicate": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
@@ -251,6 +282,7 @@
     "targetBudgetConstant": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs"
   },
   "validationGates": {
+    "activeActualD16CenterD17UniformSourceChecked": false,
     "activeActualD46UniformRemainderSourceChecked": false,
     "activeActualLowDegreeSegmentRemainderSourceChecked": false,
     "activeActualRemainderRowsChecked": false,
@@ -258,6 +290,7 @@
     "allPayloadObligationsPassed": false,
     "allSegmentsProvided": false,
     "collapsedSourceBridgeLeanChecked": true,
+    "degree0SourceInterfaceLeanChecked": true,
     "directHornerReceiverLeanChecked": true,
     "directPayloadTargetChecked": false,
     "exactRationalArithmeticPassed": false,

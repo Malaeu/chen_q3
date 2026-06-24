@@ -39887,6 +39887,59 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual degree-0 source bridge checked
+
+Browser/Computer Use follow-up after the checked low-degree bridge selected:
+
+```text
+CHOSEN: A
+```
+
+Meaning: build the degree-0 activeActual D16 source bridge first; do not start
+degree-1/D18 or full degree-29/D46 machinery before a degree-0 budget/source
+audit.
+
+Added and direct-Lean checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
+```
+
+Checked objects:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source
+```
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_active_actual_horner_row_source.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4
+
+step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3
+```
+
+Current live proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+First concrete source subgap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Boundary: no proof-grade D16 center enclosure, no proof-grade D17 uniform
+bound, no derivative-shift/differentiability source payload, no exact degree-0
+budget instantiation, no concrete activeActual Horner payload, and no
+Step33A.1-A closure exists yet.
+
 ### 2026-06-24 Update -- activeActual low-degree container bridge checked
 
 Computer Use / Proshka follow-up after the D46 smoke-row blocker selected:
