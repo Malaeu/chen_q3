@@ -34,6 +34,120 @@ def primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff
     (coeff0 : Rat) : Fin 1 -> Rat :=
   fun _ => coeff0
 
+/-- Local `C^17` source for the Step22 Omega derivative closed form. -/
+private theorem
+    primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActual_contDiff17 :
+    ContDiff Real 17
+      primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActual := by
+  have hBase :
+      ContDiff Real 17 step22OmegaArchWeightDerivClosedForm := by
+    let z : Real -> Complex :=
+      fun t : Real =>
+        (1 / 4 : Complex) + Complex.I * (((t / 2 : Real) : Complex))
+    have hzCont : ContDiff Real 17 z := by
+      have hdiv : ContDiff Real 17 (fun t : Real => t / 2) := by
+        fun_prop
+      have hcast :
+          ContDiff Real 17
+            (fun t : Real => (((t / 2 : Real) : Real) : Complex)) :=
+        Complex.ofRealCLM.contDiff.comp hdiv
+      have hmul :
+          ContDiff Real 17
+            (fun t : Real =>
+              Complex.I * (((t / 2 : Real) : Real) : Complex)) :=
+        (contDiff_const : ContDiff Real 17 (fun _ : Real => Complex.I)).mul
+          hcast
+      simpa [z] using
+        (contDiff_const :
+          ContDiff Real 17 (fun _ : Real => (1 / 4 : Complex))).add hmul
+    have hTrigamma :
+        ContDiff Real 17 (fun t : Real => trigamma (z t)) := by
+      rw [contDiff_iff_contDiffAt]
+      intro eta
+      have hzPos : 0 < (z eta).re := by
+        dsimp [z]
+        norm_num [Complex.add_re, Complex.mul_re]
+      exact
+        ((trigamma_analyticAt_of_re_pos hzPos).contDiffAt.restrict_scalars
+            Real).comp eta hzCont.contDiffAt
+    have hIm : ContDiff Real 17 (fun t : Real => (trigamma (z t)).im) :=
+      Complex.imCLM.contDiff.comp hTrigamma
+    change
+      ContDiff Real 17
+        (fun t : Real =>
+          -((trigamma
+            ((1 / 4 : Complex) + Complex.I *
+              (((t / 2 : Real) : Complex)))).im * (1 / 2 : Real)))
+    simpa [z] using
+      (hIm.mul
+        (contDiff_const : ContDiff Real 17
+          (fun _ : Real => (1 / 2 : Real)))).neg
+  simpa [primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActual] using hBase
+
+/-- Local `C^17` source for the Step22 Omega weight. -/
+private theorem primaryFiniteRow0Parent0Split100Sub0OmegaActual_contDiff17 :
+    ContDiff Real 17 primaryFiniteRow0Parent0Split100Sub0OmegaActual := by
+  have hStep :
+      ContDiff Real 17
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight := by
+    rw [show (17 : WithTop ENat) = (16 : WithTop ENat) + 1 by norm_num,
+      contDiff_succ_iff_deriv]
+    constructor
+    · exact fun eta =>
+        Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight_differentiableAt
+          eta
+    · constructor
+      · intro h
+        norm_num at h
+      · have hDeriv :
+            deriv
+              Q3.PSDpd.CenteredCoeffAnalyticABoundsBackend.step22OmegaArchWeight =
+              step22OmegaArchWeightDerivClosedForm := by
+          funext eta
+          exact step22OmegaArchWeight_deriv_eq_closedForm eta
+        rw [hDeriv]
+        exact step22OmegaArchWeightDerivClosedForm_contDiff16
+  simpa [primaryFiniteRow0Parent0Split100Sub0OmegaActual] using hStep
+
+/-- Local `C^17` source for the B-spline shape-square derivative. -/
+private theorem
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActual_contDiff17 :
+    ContDiff Real 17
+      primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActual := by
+  have hbase :
+      ContDiff Real (18 : Nat)
+        (fun t : Real =>
+          (centeredBSplineImagTransformRealClosedForm 11
+            ((3 : Real) / 10) t) ^ 2) := by
+    fun_prop
+  have hderiv :
+      ContDiff Real 17
+        (fun eta : Real =>
+          deriv
+            (fun t : Real =>
+              (centeredBSplineImagTransformRealClosedForm 11
+                ((3 : Real) / 10) t) ^ 2)
+            eta) := by
+    simpa using (ContDiff.deriv' (n := (17 : Nat)) hbase)
+  simpa [
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActual,
+    primaryFiniteRow0Parent0Split100Sub0ShapeSqDeriv] using hderiv
+
+/-- Checked `C^17` source for the active-actual component product. -/
+theorem primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17 :
+    ContDiff Real 17
+      primaryFiniteRow0Parent0Split100Sub0ComponentProductActual := by
+  have hShape :
+      ContDiff Real 17
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqActual := by
+    unfold primaryFiniteRow0Parent0Split100Sub0ShapeSqActual
+    fun_prop
+  simpa [primaryFiniteRow0Parent0Split100Sub0ComponentProductActual] using
+    (primaryFiniteRow0Parent0Split100Sub0OmegaPrimeActual_contDiff17.mul
+      hShape).add
+      (primaryFiniteRow0Parent0Split100Sub0OmegaActual_contDiff17.mul
+        primaryFiniteRow0Parent0Split100Sub0ShapeSqDerivActual_contDiff17)
+
 /--
 Degree-0 active-actual source theorem on the whole active cell.
 
@@ -301,6 +415,48 @@ theorem
       hActiveScaleAbs hDiff hDerivShift hCenter hOrder17 hBudget
 
 /--
+Degree-0 active-actual source theorem with the local `ContDiff17` source already
+checked in this file.  The remaining inputs are exactly the source rows and
+budget: active-scale bound, D16 center enclosure, D17 uniform bound, and
+rational error budget.
+-/
+theorem
+    primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17
+    {coeff0 coeffErrorAbs activeScaleAbs order17Abs polyErrorAbs : Rat}
+    (hActiveScaleAbs :
+      |primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff| <=
+        (activeScaleAbs : Real))
+    (hCenter :
+      ‖primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual
+                ((1 : Real) / 20) -
+          (coeff0 : Real)‖ <=
+        (coeffErrorAbs : Real))
+    (hOrder17 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 17
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta‖ <=
+          (order17Abs : Real))
+    (hBudget :
+      (coeffErrorAbs : Real) +
+          (activeScaleAbs : Real) * (order17Abs : Real) *
+            ((1 : Real) / 20) <=
+        (polyErrorAbs : Real)) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta -
+          rawOmegaATaylorPolynomial 0 ((1 : Rat) / 20)
+            (primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff
+              coeff0) eta‖ <=
+        (polyErrorAbs : Real) := by
+  exact
+    primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17
+      primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17
+      hActiveScaleAbs hCenter hOrder17 hBudget
+
+/--
 Whole-cell degree-0 source, transported through the existing low-degree
 zero-extension bridge into the fixed degree-29 Horner normalization.
 -/
@@ -373,6 +529,66 @@ theorem
     exact
       primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder
         hActiveScaleAbs hDiff hDerivShift hCenter hOrder17 hBudget eta
+        (by simpa using hEta)
+  intro eta hEta
+  exact
+    (primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree
+      (d := 0) (cellL := 0) (cellU := (1 : Rat) / 10)
+      (polyErrorAbs := polyErrorAbs) (by norm_num)
+      (coeff :=
+        primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff coeff0)
+      hLow) eta (by simpa using hEta)
+
+/--
+Degree-0 active-actual source transported to the degree-29 Horner container,
+with the local `ContDiff17` source already checked in this file.
+-/
+theorem
+    primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17
+    {coeff0 coeffErrorAbs activeScaleAbs order17Abs polyErrorAbs : Rat}
+    (hActiveScaleAbs :
+      |primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff| <=
+        (activeScaleAbs : Real))
+    (hCenter :
+      ‖primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual
+                ((1 : Real) / 20) -
+          (coeff0 : Real)‖ <=
+        (coeffErrorAbs : Real))
+    (hOrder17 :
+      ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+        ‖iteratedDeriv 17
+            primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta‖ <=
+          (order17Abs : Real))
+    (hBudget :
+      (coeffErrorAbs : Real) +
+          (activeScaleAbs : Real) * (order17Abs : Real) *
+            ((1 : Real) / 20) <=
+        (polyErrorAbs : Real)) :
+    ∀ eta ∈ Set.Icc (0 : Real) ((1 : Real) / 10),
+      ‖primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+            iteratedDeriv 16
+              primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta -
+          rawOmegaATaylorPolynomial 29 ((1 : Rat) / 20)
+            (primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29
+              (by norm_num : 0 <= 29)
+              (primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff
+                coeff0)) eta‖ <=
+        (polyErrorAbs : Real) := by
+  have hLow :
+      ∀ eta ∈ Set.Icc ((0 : Rat) : Real) (((1 : Rat) / 10 : Rat) : Real),
+        ‖primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff *
+              iteratedDeriv 16
+                primaryFiniteRow0Parent0Split100Sub0ComponentProductActual eta -
+            rawOmegaATaylorPolynomial 0 ((1 : Rat) / 20)
+              (primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff
+                coeff0) eta‖ <=
+          (polyErrorAbs : Real) := by
+    intro eta hEta
+    exact
+      primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17
+        hActiveScaleAbs hCenter hOrder17 hBudget eta
         (by simpa using hEta)
   intro eta hEta
   exact

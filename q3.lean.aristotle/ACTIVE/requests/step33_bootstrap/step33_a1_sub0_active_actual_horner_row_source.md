@@ -1,6 +1,6 @@
 # Step33A.1-A Active-Actual Horner Row-Source Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v5`
+schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v6`
 route: `active_actual_order16_horner_row_source`
 proofStatus: `interface_ready_rows_missing`
 
@@ -27,10 +27,13 @@ proofStatus: `interface_ready_rows_missing`
 - `lowDegreeZeroExtendDef`: `primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29`
 - `lowDegreeTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree`
 - `degree0CoeffDef`: `primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff`
+- `componentProductActualContDiff17`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17`
 - `degree0SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder`
 - `degree0SegmentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
 - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17`
 - `degree0ContDiff17SegmentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
+- `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17`
+- `degree0CheckedContDiff17SegmentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
 - `payloadTargetTheorem`: `primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily`
 - `sourcePropTheorem`: `primaryFiniteRow0Parent0Split100Sub0_nonzeroModelSourceProp_of_activeActualHornerFamily`
 - `targetBudgetConstant`: `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs`
@@ -94,10 +97,10 @@ proofStatus: `interface_ready_rows_missing`
 
 ### A_minus2_degree0_source_interface
 
-- `object`: `checked degree-0 activeActual source bridge from ContDiff17, D16 center, D17 uniform bound, and exact budget`
-- `leanField`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
+- `object`: `checked degree-0 activeActual source bridge from D16 center, D17 uniform bound, and exact budget`
+- `leanField`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
 - `status`: `checked`
-- `remainingData`: `['proof-grade ContDiff17(ComponentProductActual) source', 'proof-grade D16 center enclosure', 'proof-grade D17 uniform bound', 'exact rational budget comparison']`
+- `remainingData`: `['proof-grade D16 center enclosure', 'proof-grade D17 uniform bound', 'exact rational budget comparison']`
 - `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 
 ### A_minus1_low_degree_segment_remainder_source
@@ -247,10 +250,13 @@ proofStatus: `interface_ready_rows_missing`
 ### Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
 
 - `primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff`: present=`True`, line=`33`
-- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder`: present=`True`, line=`46`
-- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`: present=`True`, line=`308`
-- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17`: present=`True`, line=`165`
-- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`: present=`True`, line=`391`
+- `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17`: present=`True`, line=`137`
+- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder`: present=`True`, line=`160`
+- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`: present=`True`, line=`464`
+- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17`: present=`True`, line=`279`
+- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`: present=`True`, line=`607`
+- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17`: present=`True`, line=`424`
+- `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`: present=`True`, line=`547`
 
 ### Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerCert.lean
 
@@ -274,7 +280,7 @@ proofStatus: `interface_ready_rows_missing`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean`: `26bc3873205b8196731bdb86015318d8457f4a51d1b76e9675e174ffd6c19238`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean`: `7779f7ada25fa2422977eacae90788724294a965944e50d0d69c37d9fd314676`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean`: `eb2d78a61788b5dfe9a08c6ea678969485da8006c028eac5a13cf5e075ad2d75`
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`: `c3630a939af04e7e99d2414323950decf994689cf4f1509e261467e59964335e`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`: `b08cf8108d21e403ba24c3a6dc7461eb91786b6579c1056994a8dfec1837d970`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerCert.lean`: `3f3d6cf5e0d217ab8177fbc121fc1272740914c7b9beb210db3cef993d55936b`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerSourceBridge.lean`: `e78af17bb313fec8e155d2e0dab906b3ed2c53c2c44e0c9c413ef1afde94e6f3`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean`: `724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4`
@@ -339,10 +345,13 @@ proofStatus: `interface_ready_rows_missing`
 - `transferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree`
 - `firstMissingSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP`
 - `degree0SourceBridge`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`
+- `componentProductActualContDiff17`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17`
 - `degree0SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder`
 - `degree0SegmentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
 - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17`
 - `degree0ContDiff17SegmentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
+- `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17`
+- `degree0CheckedContDiff17SegmentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
 - `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 - `fullDegree29Specialization`: `{'coefficientJetOrdersNeeded': '16..45', 'uniformRemainderDerivativeOrderNeeded': 46, 'firstMissingSubgapIfChosen': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP'}`
 
@@ -376,4 +385,4 @@ proofStatus: `interface_ready_rows_missing`
 
 ## Next Implementable Patch
 
-Fill the degree-0 source inputs: a proof-grade D16 center enclosure, a proof-grade D17 uniform bound, a ContDiff17 source for ComponentProductActual, and the exact rational budget comparison; then instantiate the checked degree-0 theorem and zero-extend into the existing Fin30 Horner family.
+Fill the degree-0 source inputs: a proof-grade D16 center enclosure, a proof-grade D17 uniform bound, and the exact rational budget comparison; then instantiate the checked degree-0 theorem and zero-extend into the existing Fin30 Horner family.

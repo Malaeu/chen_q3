@@ -44165,3 +44165,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`;
   first concrete subgap remains
   `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualComponentProductContDiff17
+
+- Target subgap after the degree-0 wrapper:
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
+- Local `q3_docs` searches for `ComponentProductActual` smoothness, D16 center,
+  D17 uniform, and Omega/shape derivative sources found no pre-existing
+  theorem that supplied `ContDiff17(ComponentProductActual)`.
+- External primary Mathlib docs confirmed the local proof shape:
+  use `ContDiff.deriv'` for derivative smoothness and product/add closure for
+  `ContDiff`; use the existing `iteratedDeriv_succ` bridge downstream.
+- Added a Lean-checked local smoothness source in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17`.
+- The proof derives `OmegaPrimeActual` smoothness from the trigamma analytic
+  right-half-plane source, derives `ShapeSqDerivActual` smoothness from the
+  smooth B-spline shape square via `ContDiff.deriv'`, and combines the two
+  product summands defining `ComponentProductActual`.
+- Added checked no-`hSmooth` degree-0 source wrappers:
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`.
+- Regenerated activeActual ledgers to
+  `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v6` and
+  `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v5`.
+- Remaining proof inputs are now narrowed to: proof-grade D16 center enclosure,
+  proof-grade D17 uniform bound, and exact rational degree-0 budget.  No
+  concrete activeActual Horner payload or Step33A.1-A closure exists yet.

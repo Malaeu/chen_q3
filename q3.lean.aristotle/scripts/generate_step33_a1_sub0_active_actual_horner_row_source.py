@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v5"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v6"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -139,10 +139,13 @@ ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_SYMBOLS = [
 
 ACTIVE_ACTUAL_DEGREE0_SOURCE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
 ]
 
 ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP = (
@@ -399,10 +402,13 @@ def build_ledger() -> dict[str, Any]:
             "lowDegreeZeroExtendDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
             "lowDegreeTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
             "degree0CoeffDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
+            "componentProductActualContDiff17": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17",
             "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
             "degree0SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
             "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17",
             "degree0ContDiff17SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
+            "degree0CheckedContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17",
+            "degree0CheckedContDiff17SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
             "payloadTargetTheorem": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
             "sourcePropTheorem": "primaryFiniteRow0Parent0Split100Sub0_nonzeroModelSourceProp_of_activeActualHornerFamily",
             "targetBudgetConstant": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
@@ -453,11 +459,10 @@ def build_ledger() -> dict[str, Any]:
         "requiredRows": [
             {
                 "id": "A_minus2_degree0_source_interface",
-                "object": "checked degree-0 activeActual source bridge from ContDiff17, D16 center, D17 uniform bound, and exact budget",
-                "leanField": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
+                "object": "checked degree-0 activeActual source bridge from D16 center, D17 uniform bound, and exact budget",
+                "leanField": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
                 "status": "checked" if degree0_source_ready else "missing",
                 "remainingData": [
-                    "proof-grade ContDiff17(ComponentProductActual) source",
                     "proof-grade D16 center enclosure",
                     "proof-grade D17 uniform bound",
                     "exact rational budget comparison",
@@ -615,10 +620,13 @@ def build_ledger() -> dict[str, Any]:
             "transferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
             "firstMissingSubgap": ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP,
             "degree0SourceBridge": rel(ACTIVE_ACTUAL_DEGREE0_SOURCE_FILE),
+            "componentProductActualContDiff17": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_contDiff17",
             "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
             "degree0SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
             "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17",
             "degree0ContDiff17SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
+            "degree0CheckedContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17",
+            "degree0CheckedContDiff17SegmentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
             "firstConcreteSubgap": ACTIVE_ACTUAL_HORNER_D16_CENTER_D17_SOURCE_GAP,
             "fullDegree29Specialization": {
                 "coefficientJetOrdersNeeded": "16..45",
@@ -656,8 +664,7 @@ def build_ledger() -> dict[str, Any]:
         ],
         "nextImplementablePatch": (
             "Fill the degree-0 source inputs: a proof-grade D16 center "
-            "enclosure, a proof-grade D17 uniform bound, a ContDiff17 "
-            "source for ComponentProductActual, and the exact rational budget comparison; "
+            "enclosure, a proof-grade D17 uniform bound, and the exact rational budget comparison; "
             "then instantiate the checked degree-0 theorem and zero-extend into "
             "the existing Fin30 Horner family."
         ),
