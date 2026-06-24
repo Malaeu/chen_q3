@@ -19488,3 +19488,989 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel
 Current row-source failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
+
+## 2026-06-23 Active Node Addendum -- factor-derivative route budget kill
+
+Computer Use / Proshka recommended trying the existing factor-derivative
+receiver path as the narrowest proof/kill test.  Local audit resolves it:
+
+```text
+adapter present:
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_centeredTaylor_factor_majorants
+
+exact budget kill present:
+primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail
+
+ledger schema:
+q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v20
+```
+
+Verdict:
+
+```text
+The centered-Taylor factor-derivative route is checked as an adapter/pattern,
+but it is budget-killed at current constants.
+
+Killed alternative:
+STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Current live proof object remains:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Do not mark Step33A.1-A closed from factor-majorant data; next patch must
+produce the whole-expression interval/rational certificate for
+`ComponentSource - NonzeroModelPoly`.
+
+## 2026-06-23 Active Node Addendum -- post-budget-kill route review
+
+Computer Use / Proshka was used after the factor-derivative receiver route was
+confirmed as budget-killed:
+
+```text
+STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL
+```
+
+Decision:
+
+```text
+CHOSEN: A
+```
+
+The next proof-producing patch is now explicitly:
+
+```text
+scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectConcretePayload.lean
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+The active ledger is now:
+
+```text
+q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v4
+```
+
+Boundary:
+
+```text
+This is still not Step33A.1-A closure.  The row-source gap remains
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP.
+```
+
+## 2026-06-23 Active Node Addendum -- direct certificate preflight
+
+The named generator now exists:
+
+```text
+scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+```
+
+Generated artifacts:
+
+```text
+step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.md
+```
+
+Current verdict:
+
+```text
+receiverReady = true
+leanPayloadAllowed = false
+leanPayloadWritten = false
+proofStatus = lean_payload_generation_blocked_missing_whole_expression_rows
+```
+
+The exact next missing rows are:
+
+```text
+C2_whole_expression_interval_rows
+C4_analytic_remainder_rows
+```
+
+The first failure code remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+## 2026-06-23 Active Node Addendum -- Computer Use verdict in certificate ledger
+
+The certificate preflight JSON/MD now embeds the Computer Use / Proshka route
+review:
+
+```text
+recommendedOption = A
+decision = build proof-grade rational/interval rows for the whole signed
+  expression ComponentSource - NonzeroModelPoly on [0,1/10]
+```
+
+This does not change the active gap.  It only fixes the route record so later
+patches cannot spend Horner/local-model/source-Horner artifacts unless they
+feed the exact current theorem.
+
+## 2026-06-23 Active Node Addendum -- direct Horner smoke gate
+
+Computer Use / Proshka was used after the direct Horner receiver surface was
+introduced.  The latest route decision is:
+
+```text
+CHOSEN: B as immediate smoke gate
+```
+
+New smoke file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerCertSmoke.lean
+```
+
+Smoke theorem:
+
+```lean
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainderDirectHorner_receiver_smoke
+```
+
+The smoke theorem is intended to validate that
+`Step33Sub0CombinedOrder16ScaledRemainderDirectHornerFamilyCert.Valid` reaches
+the exact current nonzero-model source proposition before concrete row
+generation starts.
+
+Current validation status:
+
+```text
+directHornerSmokePresent = true
+directHornerSmokeLeanChecked = false
+Lean smoke validation = not_completed_import_timeout
+```
+
+The preflight ledger now reports first failure:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_HORNER_RECEIVER_VALIDATION_GAP
+```
+
+Boundary: no Step33A.1-A closure is claimed.  Concrete whole-expression rows are
+still missing and must not be generated until this smoke receiver surface
+Lean-passes.
+
+## 2026-06-23 Active Node Addendum -- direct Horner smoke direct Lean pass
+
+The direct Horner smoke surface now has a direct Lean pass.  The checked files
+are:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerCert.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerCertSmoke.lean
+```
+
+Validation status:
+
+```text
+directHornerReceiverLeanChecked = true
+directHornerSmokeLeanChecked = true
+lake env lean = not_completed_entrypoint_timeout
+q3_check = not_completed_entrypoint_timeout
+```
+
+The regenerated preflight ledger now returns the active first failure to:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Next proof-producing patch: build proof-grade rational/interval rows for the
+whole signed expression `ComponentSource - NonzeroModelPoly`, then emit the
+concrete direct payload only if those rows are checked.
+
+## 2026-06-23 Current Active Pointer -- direct scaled-remainder upstream audit
+
+The direct scaled-remainder ledgers now refine the row-source blocker to the
+nearest local upstream source ledger.
+
+Regenerated ledgers:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+```
+
+Schemas:
+
+```text
+q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v5
+q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v2
+```
+
+Direct-level blocker remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+First concrete upstream blocker:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+```
+
+Local evidence:
+
+```text
+step33_a1_sub0_shapesq_deriv_tight_payload.json
+  status = same_coefficient_tight_payload_checked_budget_nonfinal
+  firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+
+step33_a1_sub0_component_taylor_residual_payload.json
+  status = fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap
+  firstFailure = STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP
+```
+
+Boundary: ShapeSqDeriv tight support is alive and checked, but it is not a final
+scaled-remainder interval.  No concrete direct payload is emitted and no
+Step33A.1-A closure is claimed.
+
+Next implementable patch: build the component Taylor remainder source consumed
+by exact raw-derivative assembly, then regenerate the direct nonzero-model
+scaled-remainder row generator.
+
+## 2026-06-23 Current Active Pointer -- component Taylor remainder route review
+
+Computer Use / Proshka was used after the direct scaled-remainder upstream
+audit exposed `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP` as the
+first concrete source blocker.
+
+Advisory route decision:
+
+```text
+recommended option = B
+```
+
+Meaning: first build a proof-grade rational generator for the signed component
+Taylor remainder rows, then add the small Lean payload theorem only after rows
+and budget are checked.
+
+Updated component ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19
+```
+
+First target file/theorem if rows become proof-grade:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRemainderPayload.lean
+primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated
+```
+
+Failure codes:
+
+```text
+STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP
+STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL
+```
+
+Do not reuse `TightProductAssemblyErrorBudget`, rows0..11 killed product
+budget, centeredTaylor factor-majorant budget, zero-model budget,
+sampled/probe rows, or independent norm spends for the two product summands.
+
+Boundary: `componentPropagationRemainderAbs` and `residualTaylorRemainderAbs`
+are still null, `componentTaylorProofsPresent = false`, and no Lean payload is
+created.
+
+## 2026-06-23 Current Active Pointer -- component Taylor remainder fail-closed payload
+
+Created a dedicated fail-closed audit:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_remainder_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_remainder_payload.v1
+status = fail_closed_component_taylor_remainder_signed_rows_missing
+firstFailure =
+  STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP
+proofGrade = false
+leanPayloadWritten = false
+```
+
+It records the exact target:
+
+```text
+RawIntegrandDerivClosedForm eta
+  - rawOmegaATaylorPolynomial 45 (1/20) AssembledRawDerivCoeff eta
+```
+
+Current row ledger:
+
+```text
+R0 exact degree-45 coefficient assembly = FORMAL_PAYLOAD_LIST_EQ_ONLY
+R1 activeActual center-row intervals = FORMAL_INPUT_CANDIDATE
+R2 direct signed component remainder rows = GAP
+R3 ComponentPropagationRemainderAbs = GAP
+R4 ResidualTaylorRemainderAbs = GAP
+R5 exact rational budget comparison = GAP
+```
+
+Boundary: activeActual rows are not reusable as the component remainder theorem
+without the new whole-cell signed-row/budget bridge.  Do not write the Lean
+payload file until that bridge is proof-grade.
+
+## 2026-06-23 Current Active Pointer -- component Taylor coarse source budget-kill
+
+The component Taylor remainder payload has been corrected to record the
+existing local coarse P45 bridge:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_remainder_payload.json
+schema = q3_psdpd_step33_a1_sub0_component_taylor_remainder_payload.v2
+status = fail_closed_component_taylor_remainder_coarse_source_budget_killed
+firstFailure =
+  STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL
+proofGrade = false
+leanPayloadWritten = false
+```
+
+Formal source is present:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightAssembledSource
+primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure
+```
+
+but it spends:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget
+```
+
+and the local budget-kill theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail
+```
+
+proves that this coarse constant is too wide for the target residual interval.
+
+Next node: build a sharper rational/interval component Taylor remainder
+generator for the same exact target.  Do not emit
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRemainderPayload.lean`
+until the sharper rows and exact rational budget comparison pass.
+
+## 2026-06-23 Current Active Pointer -- order16 direct Horner rows
+
+Fresh Proshka/Louise browser review selected the direct Horner row route:
+
+```text
+CHOSEN: B -- order16 shifted-residual direct Horner rows
+failure code =
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Regenerated direct scaled-remainder ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v6
+proofGrade = false
+directHornerReceiverPresent = true
+directHornerSmokePresent = true
+directHornerRowsLeanChecked = false
+```
+
+Next proof-producing object:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Required rows:
+
+```text
+R0 exact segment cover
+R1 whole signed expression range
+R2 direct Horner rows / stage bounds
+R3 +/- BiasedResidualRemainderAbs budget rows
+R4 source-prop adapter
+R5 zero-model payload handoff
+```
+
+Boundary: the component Taylor gap is bypassed by the selected direct Horner
+route, not solved.  The coarse P45 source and killed budget remain non-spendable.
+No Lean payload may be emitted until the direct Horner rows are proof-grade and
+budget-checked.
+
+## 2026-06-23 Current Active Pointer -- direct split crosswalk
+
+The direct scaled-remainder ledger is now schema
+`q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v7`.
+It pins the exact Lean split theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly
+```
+
+This split is usable as a row-source crosswalk for the direct Horner generator,
+but not as a budget spend:
+
+```text
+algebraicSplitAllowedForRowSource = true
+independentNormSpendAllowed = false
+finalReceiverTargetMustBeWholeExpression = true
+receiverField =
+  Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert.Valid.directRemainder
+```
+
+Next node: generate proof-grade direct Horner row data that proves the
+whole-expression `directRemainder` for `ComponentSource - NonzeroModelPoly`,
+then exact segment cover, Horner stage bounds, and
+`+/-BiasedResidualRemainderAbs` budget rows.  If that cannot be built, report
+`STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`.
+
+Follow-up Proshka decision for the row shape:
+
+```text
+CHOSEN: A -- one whole-expression rational coefficient stream
+row theorem =
+  primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_wholeExpression_row
+```
+
+Generate the complete signed-expression stream after collapsing to
+`ActiveScaleCoeff * D^16(ComponentProductActual) - NominalScaleCoeff *
+D^16(ComponentProductNominal)`.  Do not create separate error budgets for the
+two split summands.
+
+## 2026-06-23 Current Active Pointer -- biased residual reuse via BiasRat
+
+New checked bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderViaBiasedResidualPayload.lean
+```
+
+Key theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainder_nonzeroModel_sourceProp_of_biasedResidualSourceProp
+```
+
+Live reduction:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp biasedAbs
+and exact bias-budget rows
+  => primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderNonzeroModelSourceProp
+       primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs
+```
+
+Required exact budget rows:
+
+```text
+-DirectR <= BiasRat - biasedAbs
+BiasRat + biasedAbs <= DirectR
+```
+
+Current ledger:
+
+```text
+schema =
+  q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v8
+viaBiasedResidualBridgePresent = true
+biasedResidualSourceSegmentPresent = true
+firstMissingProofObject =
+  primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedNonzeroModelResidualSourceProp
+firstRowFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_SOURCE_SEGMENT_PAYLOAD_GAP
+biasShiftFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_TO_DIRECT_TARGET_BIAS_SHIFT_GAP
+```
+
+Next node: generate or prove the biased-residual source proposition, preferably
+with sourceInterval or same-cell local-model segment rows, then spend the exact
+BiasRat-shift budget into the direct nonzero-model payload.  This is not
+Step33A.1-A closure.
+
+### 2026-06-23 Correction -- biased reuse budget dead
+
+The above bridge is checked, but its current-budget spend is killed:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainder_bias_exceeds_direct_budget_rat
+primaryFiniteRow0Parent0Split100Sub0_scaledRemainder_biasShift_upperBudget_impossible_of_nonneg
+```
+
+So:
+
+```text
+DirectR < BiasRat
+BiasRat + biasedAbs <= DirectR is impossible for biasedAbs >= 0
+```
+
+Current next node is therefore not biased-residual source rows.  It returns to
+the direct target:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Failure codes:
+
+```text
+live direct row failure =
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+killed biased-reuse budget failure =
+  STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_TO_DIRECT_TARGET_BIAS_BUDGET_FAIL
+```
+
+### 2026-06-23 Current Active Pointer -- direct collapse bridge checked
+
+The biased residual reuse route remains killed for the canonical budget.  The
+direct target now has a checked source bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectSourceBridge.lean
+```
+
+Checked theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_eq_collapsedExpression
+```
+
+It proves:
+
+```text
+ComponentSource eta - NonzeroModelPoly eta
+  =
+ActiveScaleCoeff * D^16(ComponentProductActual) eta
+  - NominalScaleCoeff * D^16(ComponentProductNominal) eta
+```
+
+Also checked:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_sourceProp_of_collapsed_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_canonicalSourceProp_of_collapsed_interval
+```
+
+So the next generator should build one proof-grade collapsed-expression
+rational/interval row stream and feed it through this bridge.  This update
+does not prove `interval_generated`.
+
+Current ledgers:
+
+```text
+direct payload schema =
+  q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v9
+direct certificate schema =
+  q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v3
+directSourceBridgePresent = true
+leanPayloadAllowed = false
+```
+
+Current next proof-producing object remains:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated
+```
+
+Failure code if rows remain missing:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+### 2026-06-23 Current Active Pointer -- direct Horner row stream missing
+
+Computer Use / Proshka follow-up after the checked collapse bridge selected:
+
+```text
+CHOSEN: A
+```
+
+The active proof-producing patch is therefore a whole-expression
+rational/Horner row stream for the checked collapsed expression.  The first
+expected concrete Lean file/object pair is:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectConcretePayload.lean
+
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectHornerData
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid
+```
+
+The direct certificate preflight is now at schema:
+
+```text
+q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v5
+```
+
+It confirms:
+
+```text
+directHornerReceiverPresent = true
+directHornerSmokePresent = true
+directSourceBridgePresent = true
+directConcretePayloadPresent = false
+rowStreamPresent = false
+leanPayloadAllowed = false
+```
+
+Live failure:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+## 2026-06-24 ActiveActual Horner family bridge
+
+Computer Use / Proshka selected `CHOICE: A` after the activeActual Horner
+segment receiver.
+
+New isolated Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean
+```
+
+Checked theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_directHornerFamily_valid_of_activeActualHornerFamily
+```
+
+The bridge packages valid activeActual Horner segment rows into the existing
+DirectHorner family receiver.  It is conditional only: no concrete coefficients,
+no Horner range rows, no segment cover rows, no interval/rational remainder
+certificate, and no final budget rows are supplied.
+
+Regenerated ledgers:
+
+```text
+direct payload schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v17
+direct certificate schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v11
+activeActualHornerFamilyBridgePresent = true
+firstConcreteUpstreamFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Live failure is now pinned more specifically:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+## 2026-06-24 ActiveActual Horner Segment Receiver
+
+Computer Use / Proshka follow-up after the activeActual remainder adapter
+selected:
+
+```text
+CHOSEN: B
+```
+
+Added and direct-Lean checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean
+```
+
+New conditional receiver objects:
+
+```text
+Step33Sub0ActiveActualOrder16HornerSegmentCert
+Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid.to_activeActual_order16_segment_remainder
+Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid.to_collapsed_segment_remainder
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_horner_cert
+primaryFiniteRow0Parent0Split100Sub0_collapsed_segment_remainder_of_activeActualHorner
+```
+
+Ledger schemas after regeneration:
+
+```text
+direct_payload.v16
+direct_certificate.v10
+```
+
+Current live proof-producing gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Next source needed: proof-grade rational/interval activeActual Horner rows
+satisfying
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_horner_cert
+```
+
+Boundary: this is a receiver contract only.  No `DirectConcretePayload.lean`,
+no `interval_generated` theorem, and no Step33A.1-A closure exists yet.
+
+## 2026-06-24 ActiveActual Adapter Update
+
+New checked adapter file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRemainderBridge.lean
+```
+
+Checked objects:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16CollapsedCoeffOf
+primaryFiniteRow0Parent0Split100Sub0_collapsedCoeffOf_poly_eq_activePoly_sub_nominal
+primaryFiniteRow0Parent0Split100Sub0_collapsed_segment_remainder_of_activeActual
+```
+
+Use: transport a future proof-grade scaled-active-actual segment row into the
+collapsed-expression remainder row by subtracting `nominalOrder16Poly` in the
+same coefficient stream.
+
+Do not treat this as closure.  It supplies no row data and does not allow a
+`DirectConcretePayload.lean` emission.
+
+Current first proof-producing gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_SOURCE_GAP
+```
+
+Next missing theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder
+```
+
+Then transport to:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder
+```
+
+## 2026-06-24 Live Node Update -- nominal polynomial bridge
+
+Closed subgap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_NOMINAL_POLY_COEFF_CROSSWALK_CLOSED
+```
+
+Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NominalPolynomialBridge.lean
+```
+
+Checked theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16CollapsedExpression_eq_activeActual_sub_nominalOrder16Poly
+```
+
+Current node remains open.  The next proof-producing object is still:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder
+```
+
+The future generator must prove one whole-expression row for
+`collapsedExpression`; do not spend `nominalOrder16Poly` separately and do not
+emit `DirectConcretePayload.lean` until the collapsed segment remainder,
+Horner rows, segment cover, and final budget rows are all proof-grade.
+
+## 2026-06-24 Collapsed Row-Source Correction
+
+Computer Use / Proshka follow-up after the checked
+`DirectHornerSourceBridge` selected:
+
+```text
+CHOSEN: C
+```
+
+Do not create `DirectConcretePayload.lean` yet.  The receiver transport from
+`CollapsedExpression` into `directRemainder` is already covered by
+`Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert.Valid.of_collapsed_horner_range`
+and the family bridge.
+
+Current exact missing theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder
+```
+
+Required future data:
+
+```text
+exact segment cover
+one rational coefficient stream for the complete collapsed expression
+Horner stage bounds
+proof-grade collapsed segment remainder rows
+final +/- BiasedResidualRemainderAbs rows
+```
+
+Updated ledgers:
+
+```text
+step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v13
+
+step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v7
+```
+
+## 2026-06-24 Direct Horner Collapsed-Source Bridge
+
+Added isolated Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerSourceBridge.lean
+```
+
+It proves:
+
+```text
+Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert.Valid.of_collapsed_horner_range
+Step33Sub0CombinedOrder16ScaledRemainderDirectHornerFamilyCert.valid_of_collapsed_horner_rows
+```
+
+So the future row source is sharpened from:
+
+```text
+‖(ComponentSource eta - NonzeroModelPoly eta) - poly eta‖ <= polyErrorAbs
+```
+
+to the equivalent checked receiver input:
+
+```text
+‖CollapsedExpression eta - poly eta‖ <= polyErrorAbs
+```
+
+where `CollapsedExpression` is the already checked
+`ActiveScaleCoeff * D^16(ComponentProductActual) -
+NominalScaleCoeff * D^16(ComponentProductNominal)` expression.
+
+Ledger updates:
+
+```text
+direct payload schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v12
+direct certificate schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v6
+directHornerSourceBridgePresent = true
+```
+
+This is still not a payload.  The missing proof-grade rows are now:
+
+```text
+collapsedExpression coefficient/model rows
+collapsedExpression analytic remainder rows
+Horner stage bounds
+segment cover
+final +/- BiasedResidualRemainderAbs budget rows
+```
+
+Live failure remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Follow-up route-fork review confirmed `CHOSEN: A`: build the direct
+whole-expression interval/Horner generator immediately for
+`collapsedExpression`.  Do not make `componentTaylorRemainder` an obligatory
+intermediate ledger layer, and do not create a coefficient-bridge-only Lean
+file without `directRemainder` rows.
+
+## 2026-06-23 Direct Scaled-Remainder v10 Interface Guard
+
+The direct scaled-remainder payload ledger is now normalized to schema
+`q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v10`.
+
+The first concrete payload object is consistently:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectHornerData
+```
+
+with validity theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid
+```
+
+The certificate preflight records:
+
+```text
+payloadLedgerInterface.matchesCertificate = true
+```
+
+and will report:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_HORNER_LEDGER_INTERFACE_MISMATCH
+```
+
+if the payload ledger and certificate ledger diverge again.
+
+This is only an interface guard.  The live proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+No `DirectConcretePayload.lean`, no `interval_generated` theorem, and no
+proof-grade whole-expression `directRemainder` row exists yet.
+
+## 2026-06-23 Direct Row-Source Audit C
+
+Computer Use / Proshka follow-up after the v10 interface guard selected:
+
+```text
+CHOSEN: C
+```
+
+The active patch is no longer "pretend to emit a concrete direct payload".
+Instead, the generator records the first exact obstruction as a fail-closed
+row-source audit.
+
+Generated audit files:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_source_audit.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_source_audit.md
+```
+
+Payload schema is now:
+
+```text
+q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v11
+```
+
+Named missing theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_direct_segment_remainder
+```
+
+Source verdict:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff
+  is not the direct collapsed-expression residual coefficient stream
+
+primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelCoeff
+  is the already-subtracted model coefficient source, not coefficients for
+  ComponentSource - NonzeroModelPoly
+```
+
+The direct collapse bridge remains useful as target identification, but it does
+not supply Horner rows, analytic remainder rows, or final
+`+/-BiasedResidualRemainderAbs` budget rows.
+
+Live failure:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
