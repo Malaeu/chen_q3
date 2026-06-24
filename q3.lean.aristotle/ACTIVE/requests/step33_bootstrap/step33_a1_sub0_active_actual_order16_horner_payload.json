@@ -14,6 +14,18 @@
       "proofGradeForCenterJetsOnly": true,
       "usableAsLowDegreeCoefficientSeedOnly": true,
       "usableForSmokeSegmentRemainder": false
+    },
+    "activeScaleBound": {
+      "exactBoundDef": "primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound",
+      "exactBoundLine": 490,
+      "exactBoundPath": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
+      "exactRat": "95492965855137201461330258024/1000000000000000000000000000000",
+      "kind": "Lean",
+      "line": 111,
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean",
+      "statement": "|primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff| <= (primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real)",
+      "status": "checked",
+      "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound"
     }
   },
   "computerUseDecision": {
@@ -29,6 +41,8 @@
   },
   "currentGap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
   "degree0Preflight": {
+    "activeScaleAbs": "95492965855137201461330258024/1000000000000000000000000000000",
+    "activeScaleProofGrade": true,
     "budgetPassed": null,
     "firstFailure": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
     "markdown": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md",
@@ -66,13 +80,13 @@
   ],
   "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T02:39:01.837451+00:00",
+  "generatedAt": "2026-06-24T02:50:24.811597+00:00",
   "interfaceReady": true,
   "leanValidationStatus": "not_run_payload_not_emitted",
-  "nextImplementablePatch": "Fill the degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.",
+  "nextImplementablePatch": "Fill the remaining degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, coeff/poly error bounds, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.",
   "outLeanWritten": false,
   "proofGrade": false,
-  "proofSafeClosedFields": 0,
+  "proofSafeClosedFields": 1,
   "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
   "requiredInputs": [
     {
@@ -152,7 +166,9 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean": "b08cf8108d21e403ba24c3a6dc7461eb91786b6579c1056994a8dfec1837d970",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean": "7779f7ada25fa2422977eacae90788724294a965944e50d0d69c37d9fd314676",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean": "26bc3873205b8196731bdb86015318d8457f4a51d1b76e9675e174ffd6c19238",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean": "eb2d78a61788b5dfe9a08c6ea678969485da8006c028eac5a13cf5e075ad2d75"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean": "eb2d78a61788b5dfe9a08c6ea678969485da8006c028eac5a13cf5e075ad2d75",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa05a0d128e54152517b4bad4008afebaa030e8a9050afc68a",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean": "bfa94f3f7865292733f65705ffb6d813abbc658c5efa66fb87fb3f6957d3fbba"
   },
   "targetLeanFileWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean",
   "targetLeanSurface": {
@@ -170,6 +186,7 @@
     "activeActualD16CenterD17UniformSourceChecked": false,
     "activeActualD46UniformRemainderSourceChecked": false,
     "activeActualLowDegreeSegmentRemainderSourceChecked": false,
+    "activeScaleBoundChecked": true,
     "allPayloadObligationsPassed": false,
     "budgetRowsChecked": false,
     "degree0BudgetPassed": null,

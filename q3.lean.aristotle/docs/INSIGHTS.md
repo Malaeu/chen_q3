@@ -44240,6 +44240,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound`, defined as
   `primaryFiniteRow0Parent0Split100Sub0TightScaleUpper` in
   `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
-- In-progress next patch: populate only the active-scale slot of
-  `step33_a1_sub0_active_actual_order16_degree0_payload.json` as proof-grade.
-  Keep `firstFailure` at the D16/D17 source gap until those rows exist.
+- Completed next patch: populated only the active-scale slot of
+  `step33_a1_sub0_active_actual_order16_degree0_payload.json` as proof-grade,
+  using the existing Lean theorem
+  `primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound`.
+- Keep `firstFailure` at the D16/D17 source gap until proof-grade D16 center
+  and D17 uniform rows exist.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveScaleSlotPopulated
+
+- Browser/Computer Use follow-up answered `PATCH_ACTIVE_SCALE_SLOT`, matching
+  the local recommendation to avoid jumping directly to D16/D17 construction
+  before the preflight ledger records every available proof-grade input.
+- Patched
+  `scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py`
+  to set
+  `activeScaleAbs =
+  95492965855137201461330258024/1000000000000000000000000000000`
+  and `activeScaleProofGrade = true`.
+- Source theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`.
+- Exact bound definition:
+  `primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound` in
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`.
+- Regenerated
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
+  and the companion Horner payload ledger.  The budget audit now misses only
+  `coeffErrorAbs`, `order17Abs`, and `polyErrorAbs`.
+- This is not Step33A.1-A closure: `proofGrade = false`, `budgetPassed = null`,
+  and first failure remains
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.

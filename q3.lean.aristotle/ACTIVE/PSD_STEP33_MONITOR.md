@@ -40503,6 +40503,8 @@ Current verdict:
 
 ```text
 receiverReady = true
+activeScaleProofGrade = true
+activeScaleAbs = 95492965855137201461330258024/1000000000000000000000000000000
 budgetPassed = null
 proofGrade = false
 outLeanWritten = false
@@ -40511,8 +40513,36 @@ firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURC
 
 Browser/Computer Use chose `A`: keep degree 0 only and do not start D18,
 higher degree, D46, or Lean payload emission before the exact rational
-preflight has proof-grade D16 center, D17 uniform, active-scale, and budget
-rows.  If the exact budget fails, emit
+preflight has proof-grade D16 center, D17 uniform, coefficient/error, and budget
+rows.  The active-scale slot is now proof-grade via
+`primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound`.  If the exact
+budget fails, emit
 `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`;
 if arithmetic passes but the D17 source is missing, emit
 `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`.
+
+### 2026-06-24 Update -- activeScale slot proof-grade
+
+Browser/Computer Use follow-up answered:
+
+```text
+PATCH_ACTIVE_SCALE_SLOT
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Current degree-0 payload now records:
+
+```text
+activeScaleProofGrade = true
+budgetAudit.missing = coeffErrorAbs, order17Abs, polyErrorAbs
+proofGrade = false
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Boundary: no D16 center enclosure, no D17 uniform bound, no exact rational
+budget, no Lean payload, and no Step33A.1-A closure exists yet.

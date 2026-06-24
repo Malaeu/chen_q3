@@ -7,7 +7,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 - proofStatus: `blocked_missing_d16_center_d17_uniform_source`
 - proofGrade: `False`
-- proofSafeClosedFields: `0`
+- proofSafeClosedFields: `1`
 - interfaceReady: `True`
 - outLeanWritten: `False`
 - currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
@@ -46,6 +46,8 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `budgetPassed`: `None`
 - `firstFailure`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 - `receiverReady`: `True`
+- `activeScaleAbs`: `95492965855137201461330258024/1000000000000000000000000000000`
+- `activeScaleProofGrade`: `True`
 
 ## Degree-29 Container Policy
 
@@ -124,6 +126,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `degree0SourceInterfaceReady`: `True`
 - `degree0PreflightWritten`: `True`
 - `degree0BudgetPassed`: `None`
+- `activeScaleBoundChecked`: `True`
 - `activeActualLowDegreeSegmentRemainderSourceChecked`: `False`
 - `activeActualD16CenterD17UniformSourceChecked`: `False`
 - `activeActualD46UniformRemainderSourceChecked`: `False`
@@ -178,4 +181,4 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Next Implementable Patch
 
-Fill the degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.
+Fill the remaining degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, coeff/poly error bounds, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.

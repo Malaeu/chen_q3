@@ -20172,6 +20172,36 @@ Live failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 Tail Anchor -- activeActual degree-0 preflight
+
+Current active gate has moved to:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Current verdict:
+
+```text
+receiverReady = true
+activeScaleProofGrade = true
+budgetPassed = null
+proofGrade = false
+outLeanWritten = false
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+The active-scale slot is proof-grade via:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound
+```
+
+The next proof-producing inputs are D16 center enclosure, D17 uniform bound,
+coeff/poly error bounds, and exact rational budget.  Do not emit a Lean payload,
+start D18/D46, or route H1/PO3 before the degree-0 preflight becomes
+proof-grade.
+
 ## 2026-06-24 ActiveActual Order-16 Horner Payload Gate
 
 Computer Use / Proshka follow-up after the activeActual Horner row-source

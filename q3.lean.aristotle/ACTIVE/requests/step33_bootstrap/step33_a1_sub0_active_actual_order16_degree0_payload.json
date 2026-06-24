@@ -1,12 +1,23 @@
 {
-  "activeScaleProofGrade": false,
+  "activeScaleProofGrade": true,
+  "activeScaleSource": {
+    "exactBoundDef": "primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound",
+    "exactBoundLine": 490,
+    "exactBoundPath": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean",
+    "exactRat": "95492965855137201461330258024/1000000000000000000000000000000",
+    "kind": "Lean",
+    "line": 111,
+    "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean",
+    "statement": "|primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff| <= (primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real)",
+    "status": "checked",
+    "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound"
+  },
   "budgetAudit": {
     "available": false,
     "failureIfFalse": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL",
     "lhs": null,
     "missing": [
       "coeffErrorAbs",
-      "activeScaleAbs",
       "order17Abs",
       "polyErrorAbs"
     ],
@@ -39,7 +50,7 @@
     "missingD17AfterArithmeticPass": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP"
   },
   "fields": {
-    "activeScaleAbs": null,
+    "activeScaleAbs": "95492965855137201461330258024/1000000000000000000000000000000",
     "coeff0": null,
     "coeffErrorAbs": null,
     "d16CenterLower": null,
@@ -49,7 +60,7 @@
   },
   "firstFailure": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFileToEdit": "scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py",
-  "generatedAt": "2026-06-24T02:39:01.837988+00:00",
+  "generatedAt": "2026-06-24T02:50:24.812515+00:00",
   "order17UniformProofGrade": false,
   "outLeanWritten": false,
   "outputObject": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json",

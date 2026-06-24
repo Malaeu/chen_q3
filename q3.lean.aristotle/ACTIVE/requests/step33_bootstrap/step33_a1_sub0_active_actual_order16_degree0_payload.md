@@ -27,14 +27,14 @@ route: `active_actual_order16_degree0_preflight`
 - `coeff0`: `None`
 - `coeffErrorAbs`: `None`
 - `order17Abs`: `None`
-- `activeScaleAbs`: `None`
+- `activeScaleAbs`: `95492965855137201461330258024/1000000000000000000000000000000`
 - `polyErrorAbs`: `None`
 
 ## Budget Audit
 
 - formula: `coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs`
 - `available`: `False`
-- `missing`: `['coeffErrorAbs', 'activeScaleAbs', 'order17Abs', 'polyErrorAbs']`
+- `missing`: `['coeffErrorAbs', 'order17Abs', 'polyErrorAbs']`
 - `lhs`: `None`
 - `rhs`: `None`
 - `passed`: `None`
@@ -44,7 +44,20 @@ route: `active_actual_order16_degree0_preflight`
 
 - `d16CenterProofGrade`: `False`
 - `order17UniformProofGrade`: `False`
-- `activeScaleProofGrade`: `False`
+- `activeScaleProofGrade`: `True`
+
+## Active Scale Source
+
+- `status`: `checked`
+- `kind`: `Lean`
+- `path`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`
+- `theorem`: `primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound`
+- `line`: `111`
+- `statement`: `|primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff| <= (primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real)`
+- `exactBoundPath`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean`
+- `exactBoundDef`: `primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound`
+- `exactBoundLine`: `490`
+- `exactRat`: `95492965855137201461330258024/1000000000000000000000000000000`
 
 ## Failure Codes
 

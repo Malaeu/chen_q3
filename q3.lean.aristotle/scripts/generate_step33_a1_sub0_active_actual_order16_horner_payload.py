@@ -56,6 +56,12 @@ DEGREE0_SOURCE_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean"
 )
+ACTIVE_SCALE_BOUND_INPUTS_LEAN = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
+)
+ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean"
+)
 FUTURE_PAYLOAD_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean"
@@ -110,9 +116,32 @@ REQUIRED_DEGREE0_SOURCE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
 ]
 
+ACTIVE_SCALE_ABS_BOUND_RAT = (
+    "95492965855137201461330258024/"
+    "1000000000000000000000000000000"
+)
+
 
 def rel(path: Path) -> str:
     return str(path.relative_to(ROOT))
+
+
+def active_scale_source() -> dict[str, Any]:
+    return {
+        "status": "checked",
+        "kind": "Lean",
+        "path": rel(ACTIVE_SCALE_BOUND_INPUTS_LEAN),
+        "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound",
+        "line": 111,
+        "statement": (
+            "|primaryFiniteRow0Parent0Split100Sub0ActiveScaleCoeff| <= "
+            "(primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound : Real)"
+        ),
+        "exactBoundPath": rel(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN),
+        "exactBoundDef": "primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound",
+        "exactBoundLine": 490,
+        "exactRat": ACTIVE_SCALE_ABS_BOUND_RAT,
+    }
 
 
 def read_text(path: Path) -> str:
@@ -238,7 +267,7 @@ def build_degree0_preflight(degree0_ready: bool) -> dict[str, Any]:
         "coeff0": None,
         "coeffErrorAbs": None,
         "order17Abs": None,
-        "activeScaleAbs": None,
+        "activeScaleAbs": ACTIVE_SCALE_ABS_BOUND_RAT,
         "polyErrorAbs": None,
     }
     budget = exact_degree0_budget(
@@ -249,6 +278,7 @@ def build_degree0_preflight(degree0_ready: bool) -> dict[str, Any]:
     )
     d16_proof_grade = False
     d17_proof_grade = False
+    active_scale_proof_grade = True
     first_failure = D16_CENTER_D17_SOURCE_GAP
     if budget["available"] and not budget["passed"]:
         first_failure = DEGREE0_BUDGET_CONSTANT_FAIL
@@ -271,12 +301,13 @@ def build_degree0_preflight(degree0_ready: bool) -> dict[str, Any]:
         "outputObject": rel(DEGREE0_JSON_OUT),
         "firstFileToEdit": rel(Path(__file__).resolve()),
         "fields": fields,
+        "activeScaleSource": active_scale_source(),
         "budgetFormula": "coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs",
         "budgetPassed": budget["passed"],
         "budgetAudit": budget,
         "d16CenterProofGrade": d16_proof_grade,
         "order17UniformProofGrade": d17_proof_grade,
-        "activeScaleProofGrade": False,
+        "activeScaleProofGrade": active_scale_proof_grade,
         "firstFailure": first_failure,
         "failureCodes": {
             "missingD16OrD17": D16_CENTER_D17_SOURCE_GAP,
@@ -378,7 +409,7 @@ def build_ledger() -> dict[str, Any]:
         "route": "active_actual_order16_horner_payload_smoke_segment",
         "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
         "proofGrade": False,
-        "proofSafeClosedFields": 0,
+        "proofSafeClosedFields": 1 if degree0_preflight["activeScaleProofGrade"] else 0,
         "interfaceReady": interface_ready,
         "outLeanWritten": False,
         "targetLeanFileWhenRowsPass": rel(FUTURE_PAYLOAD_LEAN),
@@ -392,6 +423,8 @@ def build_ledger() -> dict[str, Any]:
             rel(LOW_DEGREE_BRIDGE_LEAN): sha256_file(LOW_DEGREE_BRIDGE_LEAN),
             rel(DEGREE0_SOURCE_LEAN): sha256_file(DEGREE0_SOURCE_LEAN),
             rel(ACTIVE_CENTER_ROWS_LEAN): sha256_file(ACTIVE_CENTER_ROWS_LEAN),
+            rel(ACTIVE_SCALE_BOUND_INPUTS_LEAN): sha256_file(ACTIVE_SCALE_BOUND_INPUTS_LEAN),
+            rel(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN): sha256_file(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN),
             rel(ROW_SOURCE_JSON): sha256_file(ROW_SOURCE_JSON),
         },
         "degree0Preflight": {
@@ -402,6 +435,8 @@ def build_ledger() -> dict[str, Any]:
             "budgetPassed": degree0_preflight["budgetPassed"],
             "firstFailure": degree0_preflight["firstFailure"],
             "receiverReady": degree0_preflight["receiverReady"],
+            "activeScaleAbs": degree0_preflight["fields"]["activeScaleAbs"],
+            "activeScaleProofGrade": degree0_preflight["activeScaleProofGrade"],
         },
         "rowSourceLedger": {
             "path": rel(ROW_SOURCE_JSON),
@@ -451,6 +486,7 @@ def build_ledger() -> dict[str, Any]:
         },
         "availableUpstreamEvidence": {
             "activeActualCenterJetRows": center_row_status(),
+            "activeScaleBound": active_scale_source(),
         },
         "requiredInputs": required_inputs,
         "validationGates": {
@@ -460,6 +496,7 @@ def build_ledger() -> dict[str, Any]:
             "degree0SourceInterfaceReady": degree0_ready,
             "degree0PreflightWritten": True,
             "degree0BudgetPassed": degree0_preflight["budgetPassed"],
+            "activeScaleBoundChecked": degree0_preflight["activeScaleProofGrade"],
             "activeActualLowDegreeSegmentRemainderSourceChecked": False,
             "activeActualD16CenterD17UniformSourceChecked": False,
             "activeActualD46UniformRemainderSourceChecked": False,
@@ -493,9 +530,10 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Fill the degree-0 source inputs: proof-grade D16 center enclosure, "
-            "proof-grade D17 uniform bound, and exact rational budget; then zero-extend into the "
-            "existing Fin30 activeActual Horner container."
+            "Fill the remaining degree-0 source inputs: proof-grade D16 center "
+            "enclosure, proof-grade D17 uniform bound, coeff/poly error bounds, "
+            "and exact rational budget; then zero-extend into the existing Fin30 "
+            "activeActual Horner container."
         ),
     }
 
@@ -615,6 +653,10 @@ def render_degree0_markdown(preflight: dict[str, Any]) -> str:
     lines.append(f"- `d16CenterProofGrade`: `{preflight['d16CenterProofGrade']}`")
     lines.append(f"- `order17UniformProofGrade`: `{preflight['order17UniformProofGrade']}`")
     lines.append(f"- `activeScaleProofGrade`: `{preflight['activeScaleProofGrade']}`")
+
+    lines.extend(["", "## Active Scale Source", ""])
+    for key, value in preflight["activeScaleSource"].items():
+        lines.append(f"- `{key}`: `{value}`")
 
     lines.extend(["", "## Failure Codes", ""])
     for key, value in preflight["failureCodes"].items():

@@ -75531,7 +75531,7 @@ The degree-0 preflight currently records:
 receiverReady = true
 d16CenterProofGrade = false
 order17UniformProofGrade = false
-activeScaleProofGrade = false
+activeScaleProofGrade = true
 budgetPassed = null
 proofGrade = false
 firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
@@ -75555,4 +75555,57 @@ python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a
 
 Boundary: this is not a proof of the source row and not Step33A.1-A closure.
 It is the exact fail-closed preflight object that blocks Lean payload emission
-until D16 center, D17 uniform, active-scale, and budget rows are proof-grade.
+until D16 center, D17 uniform, coefficient/error, and budget rows are
+proof-grade.
+
+## PRO_REVIEW_RESPONSE / ACTIVE-SCALE SLOT (2026-06-24)
+
+Browser/Computer Use follow-up after local grep found a checked active-scale
+bound:
+
+```text
+PATCH_ACTIVE_SCALE_SLOT
+```
+
+Patched the degree-0 generator to populate only the active-scale slot from the
+existing Lean theorem:
+
+```text
+theorem:
+primaryFiniteRow0Parent0Split100Sub0_activeScale_abs_bound
+
+file:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean
+
+exact bound:
+primaryFiniteRow0Parent0Split100Sub0NominalScaleAbsBound
+= 95492965855137201461330258024/1000000000000000000000000000000
+
+bound source:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean
+```
+
+Current generated degree-0 preflight:
+
+```text
+activeScaleProofGrade = true
+activeScaleAbs =
+95492965855137201461330258024/1000000000000000000000000000000
+budgetPassed = null
+proofGrade = false
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+budgetAudit.missing = coeffErrorAbs, order17Abs, polyErrorAbs
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Boundary: this closes only the active-scale input slot for the fail-closed
+degree-0 preflight.  It supplies no D16 center enclosure, no D17 uniform bound,
+no exact rational budget, no Lean payload, and no Step33A.1-A closure.
