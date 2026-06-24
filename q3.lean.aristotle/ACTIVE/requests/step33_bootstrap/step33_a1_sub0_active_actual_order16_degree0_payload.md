@@ -1,6 +1,6 @@
 # Step33A.1-A ActiveActual Order-16 Degree-0 Preflight
 
-schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1`
+schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v2`
 route: `active_actual_order16_degree0_preflight`
 
 ## Verdict
@@ -59,10 +59,19 @@ route: `active_actual_order16_degree0_preflight`
 - `exactBoundLine`: `490`
 - `exactRat`: `95492965855137201461330258024/1000000000000000000000000000000`
 
+## Order17 Uniform Route
+
+- `selectedRoute`: `B_rawProduct18`
+- `selectedBy`: `Browser/Computer Use Proshka review`
+- `bridge`: `{'status': 'checked', 'kind': 'Lean', 'path': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'equalityTheorem': 'primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18', 'absTransferTheorem': 'primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs', 'meaning': 'D^17(ComponentProductActual) is reduced to D^18(RawProductActual)', 'stillMissing': 'proof-grade uniform source for D^18(RawProductActual) on Set.Icc 0 (1/10)', 'failureIfMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP'}`
+- `requiredUniformSource`: `forall eta in Set.Icc 0 (1/10), |D^18(RawProductActual)(eta)| <= order17Abs`
+- `notClosedByBridgeAlone`: `True`
+
 ## Failure Codes
 
 - `missingD16OrD17`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 - `missingD17AfterArithmeticPass`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`
+- `missingRawProduct18UniformSource`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP`
 - `exactBudgetFalse`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`
 
 ## Check Order
@@ -76,7 +85,7 @@ route: `active_actual_order16_degree0_preflight`
 
 ## Do Not Proceed To
 
-- D18
+- higher degree beyond the selected RawProduct18 D17-uniform route
 - higher degree
 - D46
 - Lean payload emission

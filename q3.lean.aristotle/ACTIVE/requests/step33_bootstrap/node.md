@@ -19536,6 +19536,55 @@ Current row-source failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 Tail Anchor -- activeActual rawProduct18 bridge is current gate
+
+Browser/Computer Use follow-up selected route `B`: reduce the missing
+degree-0 D17(component) uniform source to a RawProduct18 source.
+
+Checked Lean bridge:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean
+```
+
+Theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs
+```
+
+Generated payloads were refreshed:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v7
+
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v2
+```
+
+Current verdict:
+
+```text
+receiverReady = true
+activeScaleProofGrade = true
+rawProduct18BridgeReady = true
+rawProduct18UniformSourceChecked = false
+budgetPassed = null
+proofGrade = false
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Next exact source gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP
+```
+
+Boundary: the bridge is checked, but it supplies no proof-grade
+`D^18(RawProductActual)` uniform majorant and no degree-0 budget closure.
+
 ## 2026-06-23 Active Node Addendum -- factor-derivative route budget kill
 
 Computer Use / Proshka recommended trying the existing factor-derivative

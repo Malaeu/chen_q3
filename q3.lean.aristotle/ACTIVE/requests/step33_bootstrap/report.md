@@ -75609,3 +75609,59 @@ python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a
 Boundary: this closes only the active-scale input slot for the fail-closed
 degree-0 preflight.  It supplies no D16 center enclosure, no D17 uniform bound,
 no exact rational budget, no Lean payload, and no Step33A.1-A closure.
+
+## PRO_REVIEW_RESPONSE / RAW-PRODUCT18 BRIDGE (2026-06-24)
+
+Browser/Computer Use follow-up after the active-scale slot was populated chose:
+
+```text
+CHOSEN: B
+```
+
+Route decision: reduce the missing degree-0 D17(component) uniform source to a
+RawProduct18 source, using the existing normal form
+`ComponentProductActual = deriv RawProductActual`.
+
+Added checked Lean bridge:
+
+```text
+file:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean
+
+theorems:
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Current generated gate now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v7
+degree0 schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v2
+rawProduct18BridgeReady = true
+rawProduct18UniformSourceChecked = false
+proofGrade = false
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+New exact subgap for the D17-uniform route:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP
+```
+
+Boundary: this is not a D17 uniform certificate and not Step33A.1-A closure.
+It only proves the index bridge
+`D^17(ComponentProductActual) = D^18(RawProductActual)`.  The next proof object
+must be a proof-grade uniform bound for `D^18(RawProductActual)` on
+`Set.Icc 0 (1/10)`, followed by the exact rational degree-0 budget.

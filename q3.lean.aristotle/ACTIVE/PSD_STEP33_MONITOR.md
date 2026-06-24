@@ -40546,3 +40546,41 @@ firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURC
 
 Boundary: no D16 center enclosure, no D17 uniform bound, no exact rational
 budget, no Lean payload, and no Step33A.1-A closure exists yet.
+
+### 2026-06-24 Update -- RawProduct18 bridge checked
+
+Browser/Computer Use follow-up selected `B`: prove the index bridge from
+D17(component) to D18(rawProduct), then seek a RawProduct18 uniform source.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs
+```
+
+Current generated degree-0/horner payload state:
+
+```text
+activeScaleProofGrade = true
+rawProduct18BridgeReady = true
+rawProduct18UniformSourceChecked = false
+budgetPassed = null
+proofGrade = false
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP
+```
+
+Boundary: this does not prove the uniform D18(rawProduct) bound and does not
+emit a Lean payload.

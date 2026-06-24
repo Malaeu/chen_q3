@@ -44271,3 +44271,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This is not Step33A.1-A closure: `proofGrade = false`, `budgetPassed = null`,
   and first failure remains
   `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
+
+## Insight (2026-06-24, Step33A.1-A) -- RawProduct18BridgeForD17Uniform
+
+- Browser/Computer Use follow-up after the active-scale slot selected route
+  `B`: reduce D17(component) to D18(rawProduct) using the existing normal form
+  `ComponentProductActual = deriv RawProductActual`.
+- Added checked bridge file:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean`.
+- Checked theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18`.
+- Checked transfer theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs`.
+- Refreshed activeActual Horner/degree-0 payload schemas to v7/v2.  The payload
+  now records `rawProduct18BridgeReady = true` and
+  `rawProduct18UniformSourceChecked = false`.
+- This is not a D17 uniform certificate and not Step33A.1-A closure.  The new
+  exact source gap is
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP`.
+- Next patch should build a proof-grade uniform bound for
+  `D^18(RawProductActual)` on `Set.Icc 0 (1/10)`, then fill the degree-0
+  rational budget.  Do not emit activeActual Lean payload before that source
+  exists.
