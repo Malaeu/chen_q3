@@ -251,7 +251,7 @@ Meaning: valid activeActual Horner segment rows can now be packaged as the exist
 
 - file: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
 - exists: `True`
-- schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1`
+- schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2`
 - proofStatus: `interface_ready_rows_missing`
 - proofGrade: `False`
 - proofSafeClosedFields: `0`

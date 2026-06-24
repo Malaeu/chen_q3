@@ -44040,3 +44040,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   rational/interval activeActual segment rows, Horner stage rows, cover rows,
   and final budget rows; then emit an isolated Lean payload proving
   `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualOrder16HornerPayloadGate
+
+- Used the in-app Browser/Computer Use again after the fail-closed row-source
+  ledger.  Advisory result: `CHOICE: A`; treated only as route advice.
+- Proshka's next requested surface is one smoke-segment activeActual order-16
+  Horner payload against `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`,
+  not another receiver and not a reroute.
+- Added fail-closed entrypoint
+  `scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py`.
+- Generated payload-gate ledgers:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json`
+  and
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md`.
+- The new gate records the first concrete subgap:
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP`.
+- Reason: a degree-29 Horner row for
+  `activeScale * D^16(ComponentProductActual)` needs coefficient jet orders
+  `16..45` and a uniform order-`46` remainder source, while the existing
+  proof-grade activeActual center rows only cover `0..15`.
+- Current status remains `proofGrade = false`, `outLeanWritten = false`, and
+  `allPayloadObligationsPassed = false`; no Lean payload file was emitted.
+- Validation:
+  `python3 -m py_compile` on the row-source and payload-gate scripts passed;
+  both generators ran; JSON validation passed for both new/updated ledgers.
+- Boundary: center-jet rows, sampled rows, coarse P45/factor-majorant routes,
+  and separate activeActual/nominal budgets are still not proof of the required
+  uniform segment remainder.

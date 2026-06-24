@@ -74238,6 +74238,71 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scale
 
 No Lean proof files were edited in this event.
 
+## 2026-06-24 ActiveActual Order-16 Horner Payload Gate
+
+Computer Use / Proshka follow-up after the activeActual Horner row-source
+ledger selected:
+
+```text
+CHOICE: A
+```
+
+Implemented as a fail-closed payload gate:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+```
+
+Updated row-source ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2
+proofStatus = interface_ready_rows_missing
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+New payload gate:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v1
+proofStatus = blocked_missing_D46_uniform_remainder_source
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP
+outLeanWritten = false
+proofGrade = false
+```
+
+Exact next proof-producing input:
+
+```text
+target = activeScale * D^16(ComponentProductActual)
+cell = Set.Icc 0 (1/10)
+center = 1/20
+degree = 29
+coefficient orders needed = 16..45
+uniform remainder derivative order needed = 46
+```
+
+Existing activeActual center-jet rows are proof-grade only for center rows
+`0..15`; they are not a uniform segment remainder source and cannot be spent as
+the smoke-segment payload.
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+```
+
+No Lean proof files were edited in this event.
+
 ### 2026-06-24 Report Addendum -- activeActual Horner row-source ledger
 
 Browser/Computer Use route review after the checked activeActual Horner family

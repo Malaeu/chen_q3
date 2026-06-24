@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -44,6 +44,14 @@ FUTURE_LEAN_OUT = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerConcretePayload.lean"
 )
+SMOKE_PAYLOAD_LEAN_OUT = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean"
+)
+ACTIVE_ACTUAL_CENTER_JET_ROWS_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean"
+)
 
 DIRECT_PAYLOAD_LEDGER = (
     REQUEST_DIR
@@ -56,6 +64,15 @@ DIRECT_CERTIFICATE_LEDGER = (
 
 JSON_OUT = REQUEST_DIR / "step33_a1_sub0_active_actual_horner_row_source.json"
 MD_OUT = REQUEST_DIR / "step33_a1_sub0_active_actual_horner_row_source.md"
+SMOKE_PAYLOAD_SCRIPT = (
+    ROOT / "scripts" / "generate_step33_a1_sub0_active_actual_order16_horner_payload.py"
+)
+SMOKE_PAYLOAD_JSON = (
+    REQUEST_DIR / "step33_a1_sub0_active_actual_order16_horner_payload.json"
+)
+SMOKE_PAYLOAD_MD = (
+    REQUEST_DIR / "step33_a1_sub0_active_actual_order16_horner_payload.md"
+)
 
 ACTIVE_ACTUAL_HORNER_SEGMENT_SYMBOLS = [
     "Step33Sub0ActiveActualOrder16HornerSegmentCert",
@@ -139,6 +156,12 @@ ACTIVE_ACTUAL_HORNER_FINAL_BUDGET_ROWS_GAP = (
 ACTIVE_ACTUAL_HORNER_LEAN_PAYLOAD_VALIDATION_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_LEAN_PAYLOAD_VALIDATION_GAP"
 )
+ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP"
+)
+ACTIVE_ACTUAL_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP"
+)
 
 
 def rel(path: Path) -> str:
@@ -189,6 +212,24 @@ def compact_ledger(path: Path, keys: list[str]) -> dict[str, Any]:
     return out
 
 
+def active_actual_center_jet_status() -> dict[str, Any]:
+    text = read_text(ACTIVE_ACTUAL_CENTER_JET_ROWS_FILE)
+    return {
+        "path": rel(ACTIVE_ACTUAL_CENTER_JET_ROWS_FILE),
+        "exists": ACTIVE_ACTUAL_CENTER_JET_ROWS_FILE.exists(),
+        "hasFin16CenterRows": "Fin 16" in text,
+        "hasActiveActualCenterRowInterval": (
+            "primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_from_factor_rows"
+            in text
+        ),
+        "availableJetOrders": "0..15",
+        "neededForDegree29D16HornerCoeffOrders": "16..45",
+        "neededUniformRemainderOrder": 46,
+        "usableAsUniformSegmentRemainder": False,
+        "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+    }
+
+
 def build_ledger() -> dict[str, Any]:
     segment_symbols = symbol_lines(
         ACTIVE_ACTUAL_HORNER_SEGMENT_FILE,
@@ -230,6 +271,8 @@ def build_ledger() -> dict[str, Any]:
         "familyBridgeLeanChecked": family_bridge_ready,
         "directHornerReceiverLeanChecked": direct_horner_ready,
         "collapsedSourceBridgeLeanChecked": source_bridge_ready,
+        "activeActualD46UniformRemainderSourceChecked": False,
+        "smokeSegmentPayloadAllowed": False,
         "allSegmentsProvided": False,
         "allCoefficientRowsRational": False,
         "activeActualRemainderRowsChecked": False,
@@ -279,6 +322,9 @@ def build_ledger() -> dict[str, Any]:
             rel(DIRECT_HORNER_SOURCE_BRIDGE_FILE): sha256_file(
                 DIRECT_HORNER_SOURCE_BRIDGE_FILE
             ),
+            rel(ACTIVE_ACTUAL_CENTER_JET_ROWS_FILE): sha256_file(
+                ACTIVE_ACTUAL_CENTER_JET_ROWS_FILE
+            ),
         },
         "targetLeanSurface": {
             "segmentDataObject": "Step33Sub0ActiveActualOrder16HornerSegmentCert",
@@ -292,6 +338,7 @@ def build_ledger() -> dict[str, Any]:
             "sourcePropTheorem": "primaryFiniteRow0Parent0Split100Sub0_nonzeroModelSourceProp_of_activeActualHornerFamily",
             "targetBudgetConstant": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
             "futureLeanPayloadFileWhenRowsPass": rel(FUTURE_LEAN_OUT),
+            "smokePayloadLeanFileWhenRowsPass": rel(SMOKE_PAYLOAD_LEAN_OUT),
         },
         "rowDataContract": {
             "familyFields": ["n", "residualAbs", "seg", "range"],
@@ -331,6 +378,13 @@ def build_ledger() -> dict[str, Any]:
             "cell": "Set.Icc 0 (1/10)",
         },
         "requiredRows": [
+            {
+                "id": "A_minus1_D46_uniform_remainder_source",
+                "object": "proof-grade Taylor/Horner source for scaled D^16(ComponentProductActual), coefficient orders 16..45 and uniform remainder order 46",
+                "leanField": "Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid.remainderBound",
+                "status": "missing",
+                "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+            },
             {
                 "id": "A0_segment_cover",
                 "object": "cover of Set.Icc 0 (1/10)",
@@ -380,6 +434,8 @@ def build_ledger() -> dict[str, Any]:
             ACTIVE_ACTUAL_HORNER_SEGMENT_RECEIVER_GAP,
             ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP,
             ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP,
+            ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+            ACTIVE_ACTUAL_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP,
             ACTIVE_ACTUAL_HORNER_COEFF_ROWS_GAP,
             ACTIVE_ACTUAL_HORNER_REMAINDER_ROWS_GAP,
             ACTIVE_ACTUAL_HORNER_RANGE_ROWS_GAP,
@@ -421,6 +477,52 @@ def build_ledger() -> dict[str, Any]:
             ),
             "notProofEvidence": True,
         },
+        "latestComputerUsePayloadDecision": {
+            "used": True,
+            "advisoryOnly": True,
+            "recommendedOption": "A",
+            "decision": (
+                "Build a rational/interval activeActual coefficient and "
+                "remainder row generator directly against "
+                "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid, starting "
+                "with one smoke segment."
+            ),
+            "firstFailureCodeIfRowsMissing": (
+                ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+            ),
+            "notProofEvidence": True,
+        },
+        "availableUpstreamEvidence": {
+            "activeActualCenterJetRows": active_actual_center_jet_status(),
+        },
+        "degree29D16Requirement": {
+            "targetFunction": "activeScale * D^16(ComponentProductActual)",
+            "polynomialDegree": 29,
+            "coefficientJetOrdersNeeded": "16..45",
+            "uniformRemainderDerivativeOrderNeeded": 46,
+            "currentProofGradeCenterRows": "0..15 only",
+            "firstMissingCoefficientOrder": 16,
+            "firstMissingSubgap": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+        },
+        "smokeSegmentPayloadGate": {
+            "recommendedScript": rel(SMOKE_PAYLOAD_SCRIPT),
+            "ledgerJson": rel(SMOKE_PAYLOAD_JSON),
+            "ledgerMarkdown": rel(SMOKE_PAYLOAD_MD),
+            "targetLeanFileWhenRowsPass": rel(SMOKE_PAYLOAD_LEAN_OUT),
+            "firstDataObject": (
+                "primaryFiniteRow0Parent0Split100Sub0ActiveActualOrder16HornerSegment0"
+            ),
+            "firstValidityTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_valid"
+            ),
+            "firstRemainderTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated"
+            ),
+            "status": "blocked_missing_D46_uniform_remainder_source",
+            "payloadAllowed": False,
+            "outLeanWritten": False,
+            "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+        },
         "doNotUseAsProof": [
             "sampled or float rows",
             "activeActual center jets as uniform segment bounds",
@@ -430,9 +532,11 @@ def build_ledger() -> dict[str, Any]:
             "DirectConcretePayload.lean before this ledger has all payload obligations passed",
         ],
         "nextImplementablePatch": (
-            "Fill this row-source contract with rational/interval segment rows, "
-            "then emit an isolated Lean payload proving "
-            "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid."
+            "Run the activeActual order-16 Horner payload entrypoint for the "
+            "first smoke segment.  It must fail closed until a proof-grade "
+            "rational/interval source supplies coefficient orders 16..45 and a "
+            "uniform order-46 remainder bound for activeScale * "
+            "D^16(ComponentProductActual)."
         ),
     }
 
@@ -544,6 +648,37 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     )
     for item in ledger["doNotUseAsProof"]:
         lines.append(f"- {item}")
+
+    latest = ledger["latestComputerUsePayloadDecision"]
+    lines.extend(
+        [
+            "",
+            "## Latest Computer Use Payload Decision",
+            "",
+            f"- used: `{latest['used']}`",
+            f"- advisoryOnly: `{latest['advisoryOnly']}`",
+            f"- recommendedOption: `{latest['recommendedOption']}`",
+            f"- decision: {latest['decision']}",
+            f"- firstFailureCodeIfRowsMissing: `{latest['firstFailureCodeIfRowsMissing']}`",
+            f"- notProofEvidence: `{latest['notProofEvidence']}`",
+            "",
+            "## Degree-29 D16 Requirement",
+            "",
+        ]
+    )
+    for key, value in ledger["degree29D16Requirement"].items():
+        lines.append(f"- `{key}`: `{value}`")
+
+    lines.extend(["", "## Smoke Segment Payload Gate", ""])
+    for key, value in ledger["smokeSegmentPayloadGate"].items():
+        lines.append(f"- `{key}`: `{value}`")
+
+    lines.extend(["", "## Available Upstream Evidence", ""])
+    active = ledger["availableUpstreamEvidence"]["activeActualCenterJetRows"]
+    lines.append("### activeActualCenterJetRows")
+    lines.append("")
+    for key, value in active.items():
+        lines.append(f"- `{key}`: `{value}`")
 
     lines.extend(
         [

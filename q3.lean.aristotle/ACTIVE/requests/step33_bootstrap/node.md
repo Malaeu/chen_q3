@@ -20125,6 +20125,53 @@ Live failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 ActiveActual Order-16 Horner Payload Gate
+
+Computer Use / Proshka follow-up after the activeActual Horner row-source
+ledger selected:
+
+```text
+CHOICE: A
+```
+
+Interpretation: build the activeActual order-16 Horner payload generator
+directly against `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`,
+starting with one smoke segment.  This is route advice only, not proof
+evidence.
+
+Implemented as a fail-closed payload gate:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+```
+
+Current gate output:
+
+```text
+proofStatus = blocked_missing_D46_uniform_remainder_source
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP
+outLeanWritten = false
+proofGrade = false
+```
+
+Exact next proof-producing input:
+
+```text
+target = activeScale * D^16(ComponentProductActual)
+cell = Set.Icc 0 (1/10)
+center = 1/20
+degree = 29
+coefficient orders needed = 16..45
+uniform remainder derivative order needed = 46
+```
+
+Existing activeActual center-jet rows are proof-grade only for center rows
+`0..15`; they are not a uniform segment remainder source and cannot be spent as
+the smoke-segment payload.
+
 ## 2026-06-24 ActiveActual Horner Row-Source Ledger
 
 Computer Use / Proshka route review selected `CHOICE: A`: build a fail-closed

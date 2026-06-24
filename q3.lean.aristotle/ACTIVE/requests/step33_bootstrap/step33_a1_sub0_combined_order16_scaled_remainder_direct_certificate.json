@@ -43,7 +43,7 @@
     "proofGrade": false,
     "proofSafeClosedFields": 0,
     "proofStatus": "interface_ready_rows_missing",
-    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1"
+    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2"
   },
   "activeActualHornerRowSourceLedgerFile": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json",
   "activeActualHornerSegmentFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean",
@@ -194,7 +194,7 @@
   ],
   "firstConcreteUpstreamFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
   "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T00:38:44.651598+00:00",
+  "generatedAt": "2026-06-24T00:58:26.714306+00:00",
   "guard": "This generator must not write the Lean payload until the whole signed expression interval rows are proof-grade.  The current run is a fail-closed preflight, not Step33A.1-A closure.",
   "implementationModes": [
     {

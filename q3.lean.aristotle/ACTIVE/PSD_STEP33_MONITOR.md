@@ -39887,6 +39887,53 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual order-16 Horner payload gate
+
+Computer Use / Proshka follow-up after the fail-closed activeActual Horner
+row-source ledger selected:
+
+```text
+CHOICE: A
+```
+
+Implemented the route as a fail-closed smoke-payload gate, not as a theorem:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+```
+
+The row-source ledger is now:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2
+proofStatus = interface_ready_rows_missing
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+The new smoke-payload gate is:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v1
+proofStatus = blocked_missing_D46_uniform_remainder_source
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP
+```
+
+Exact missing source:
+
+```text
+activeScale * D^16(ComponentProductActual)
+degree = 29
+coefficient jet orders needed = 16..45
+uniform remainder derivative order needed = 46
+current proof-grade activeActual center rows = 0..15 only
+```
+
+No Lean proof file was created.  No activeActual Horner payload, no
+`DirectConcretePayload.lean`, and no Step33A.1-A closure exists yet.
+
 ### 2026-06-24 Update -- activeActual Horner row-source ledger emitted
 
 Browser/Computer Use follow-up after the checked activeActual Horner family
