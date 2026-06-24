@@ -1,6 +1,6 @@
 # Step33A.1-A ActiveActual Order-16 Degree-0 Preflight
 
-schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v2`
+schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3`
 route: `active_actual_order16_degree0_preflight`
 
 ## Verdict
@@ -64,7 +64,9 @@ route: `active_actual_order16_degree0_preflight`
 - `selectedRoute`: `B_rawProduct18`
 - `selectedBy`: `Browser/Computer Use Proshka review`
 - `bridge`: `{'status': 'checked', 'kind': 'Lean', 'path': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'equalityTheorem': 'primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18', 'absTransferTheorem': 'primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs', 'meaning': 'D^17(ComponentProductActual) is reduced to D^18(RawProductActual)', 'stillMissing': 'proof-grade uniform source for D^18(RawProductActual) on Set.Icc 0 (1/10)', 'failureIfMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP'}`
+- `majorantReceiver`: `{'status': 'checked', 'kind': 'Lean', 'path': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean', 'majorantDef': 'primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant', 'rawProductTheorem': 'primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs', 'componentTransferTheorem': 'primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs', 'meaning': 'conditional Leibniz receiver from Omega/ShapeSq derivative bounds 0..18 to the D18(RawProductActual) majorant', 'stillMissing': ['STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP', 'STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP'], 'failureIfMissing': 'STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP'}`
 - `requiredUniformSource`: `forall eta in Set.Icc 0 (1/10), |D^18(RawProductActual)(eta)| <= order17Abs`
+- `remainingFactorSources`: `['STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP', 'STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP']`
 - `notClosedByBridgeAlone`: `True`
 
 ## Failure Codes
@@ -72,6 +74,9 @@ route: `active_actual_order16_degree0_preflight`
 - `missingD16OrD17`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 - `missingD17AfterArithmeticPass`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`
 - `missingRawProduct18UniformSource`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP`
+- `missingRawProduct18LeibnizReceiver`: `STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP`
+- `missingOmegaPrimeOrder17Source`: `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP`
+- `missingShapeSqOrder18Source`: `STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP`
 - `exactBudgetFalse`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`
 
 ## Check Order

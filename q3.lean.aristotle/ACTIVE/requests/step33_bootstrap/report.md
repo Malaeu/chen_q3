@@ -75665,3 +75665,60 @@ It only proves the index bridge
 `D^17(ComponentProductActual) = D^18(RawProductActual)`.  The next proof object
 must be a proof-grade uniform bound for `D^18(RawProductActual)` on
 `Set.Icc 0 (1/10)`, followed by the exact rational degree-0 budget.
+
+## PRO_REVIEW_RESPONSE / RAW-PRODUCT18 RECEIVER (2026-06-24)
+
+Browser/Computer Use follow-up after local search found no ready order18 source
+selected:
+
+```text
+CHOSEN: A
+```
+
+Added a conditional Leibniz receiver:
+
+```text
+file:
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean
+
+definition:
+primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant
+
+theorems:
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Current generated gate now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v8
+degree0 schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3
+rawProduct18BridgeReady = true
+rawProduct18MajorantReceiverReady = true
+rawProduct18UniformSourceChecked = false
+omegaPrimeOrder17UniformSourceChecked = false
+shapeSqOrder18UniformSourceChecked = false
+```
+
+Live source gaps after the receiver:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP
+STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP
+```
+
+Boundary: the receiver is conditional.  It proves no OmegaPrime order17 row,
+no ShapeSq order18 row, no numeric RawProduct18 bound, no degree-0 budget, and
+no Step33A.1-A closure.

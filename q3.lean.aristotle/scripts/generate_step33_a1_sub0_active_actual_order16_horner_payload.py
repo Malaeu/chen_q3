@@ -19,8 +19,8 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v7"
-DEGREE0_SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v2"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v8"
+DEGREE0_SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -60,6 +60,10 @@ RAW_PRODUCT18_BRIDGE_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean"
 )
+RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean"
+)
 ACTIVE_SCALE_BOUND_INPUTS_LEAN = (
     PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -85,6 +89,15 @@ D16_CENTER_D17_SOURCE_GAP = (
 D17_UNIFORM_SOURCE_GAP = "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP"
 RAW_PRODUCT18_UNIFORM_SOURCE_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP"
+)
+RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP = (
+    "STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP"
+)
+OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP = (
+    "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
+)
+SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP = (
+    "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP"
 )
 DEGREE0_BUDGET_CONSTANT_FAIL = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL"
@@ -126,6 +139,12 @@ REQUIRED_DEGREE0_SOURCE_SYMBOLS = [
 REQUIRED_RAW_PRODUCT18_BRIDGE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18",
     "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_abs",
+]
+
+REQUIRED_RAW_PRODUCT18_MAJORANT_RECEIVER_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant",
+    "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs",
 ]
 
 ACTIVE_SCALE_ABS_BOUND_RAT = (
@@ -174,6 +193,30 @@ def raw_product18_bridge_source(raw_product18_ready: bool) -> dict[str, Any]:
             "proof-grade uniform source for D^18(RawProductActual) on Set.Icc 0 (1/10)"
         ),
         "failureIfMissing": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
+    }
+
+
+def raw_product18_majorant_receiver_source(receiver_ready: bool) -> dict[str, Any]:
+    return {
+        "status": "checked" if receiver_ready else "missing",
+        "kind": "Lean",
+        "path": rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN),
+        "majorantDef": "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant",
+        "rawProductTheorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs"
+        ),
+        "componentTransferTheorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs"
+        ),
+        "meaning": (
+            "conditional Leibniz receiver from Omega/ShapeSq derivative bounds 0..18 "
+            "to the D18(RawProductActual) majorant"
+        ),
+        "stillMissing": [
+            OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
+            SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+        ],
+        "failureIfMissing": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
     }
 
 
@@ -294,7 +337,9 @@ def center_row_status() -> dict[str, Any]:
 
 
 def build_degree0_preflight(
-    degree0_ready: bool, raw_product18_bridge_ready: bool
+    degree0_ready: bool,
+    raw_product18_bridge_ready: bool,
+    raw_product18_majorant_receiver_ready: bool,
 ) -> dict[str, Any]:
     fields: dict[str, str | None] = {
         "d16CenterLower": None,
@@ -341,10 +386,17 @@ def build_degree0_preflight(
             "selectedRoute": "B_rawProduct18",
             "selectedBy": "Browser/Computer Use Proshka review",
             "bridge": raw_product18_bridge_source(raw_product18_bridge_ready),
+            "majorantReceiver": raw_product18_majorant_receiver_source(
+                raw_product18_majorant_receiver_ready
+            ),
             "requiredUniformSource": (
                 "forall eta in Set.Icc 0 (1/10), "
                 "|D^18(RawProductActual)(eta)| <= order17Abs"
             ),
+            "remainingFactorSources": [
+                OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
+                SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+            ],
             "notClosedByBridgeAlone": True,
         },
         "budgetFormula": "coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs",
@@ -358,6 +410,9 @@ def build_degree0_preflight(
             "missingD16OrD17": D16_CENTER_D17_SOURCE_GAP,
             "missingD17AfterArithmeticPass": D17_UNIFORM_SOURCE_GAP,
             "missingRawProduct18UniformSource": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
+            "missingRawProduct18LeibnizReceiver": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
+            "missingOmegaPrimeOrder17Source": OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
+            "missingShapeSqOrder18Source": SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
             "exactBudgetFalse": DEGREE0_BUDGET_CONSTANT_FAIL,
         },
         "checkOrder": [
@@ -386,14 +441,21 @@ def build_ledger() -> dict[str, Any]:
     raw_product18_symbols = symbol_audit(
         RAW_PRODUCT18_BRIDGE_LEAN, REQUIRED_RAW_PRODUCT18_BRIDGE_SYMBOLS
     )
+    raw_product18_majorant_receiver_symbols = symbol_audit(
+        RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN,
+        REQUIRED_RAW_PRODUCT18_MAJORANT_RECEIVER_SYMBOLS,
+    )
     segment_ready = all_present(segment_symbols)
     family_ready = all_present(family_symbols)
     low_degree_ready = all_present(low_degree_symbols)
     degree0_ready = all_present(degree0_symbols)
     raw_product18_bridge_ready = all_present(raw_product18_symbols)
+    raw_product18_majorant_receiver_ready = all_present(
+        raw_product18_majorant_receiver_symbols
+    )
     interface_ready = segment_ready and family_ready and low_degree_ready and degree0_ready
     degree0_preflight = build_degree0_preflight(
-        degree0_ready, raw_product18_bridge_ready
+        degree0_ready, raw_product18_bridge_ready, raw_product18_majorant_receiver_ready
     )
 
     required_inputs = [
@@ -443,6 +505,19 @@ def build_ledger() -> dict[str, Any]:
             "failureCode": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
         },
         {
+            "id": "S2c_rawProduct18_factor_leibniz_receiver",
+            "status": "checked" if raw_product18_majorant_receiver_ready else "missing",
+            "source": rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN),
+            "majorantDef": "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant",
+            "rawProductTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
+            "componentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs",
+            "requiredNextSources": [
+                OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
+                SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+            ],
+            "failureCode": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
+        },
+        {
             "id": "S3_zero_extend_low_degree_to_Fin30",
             "status": "checked" if low_degree_ready else "missing",
             "source": rel(LOW_DEGREE_BRIDGE_LEAN),
@@ -484,6 +559,9 @@ def build_ledger() -> dict[str, Any]:
             rel(LOW_DEGREE_BRIDGE_LEAN): sha256_file(LOW_DEGREE_BRIDGE_LEAN),
             rel(DEGREE0_SOURCE_LEAN): sha256_file(DEGREE0_SOURCE_LEAN),
             rel(RAW_PRODUCT18_BRIDGE_LEAN): sha256_file(RAW_PRODUCT18_BRIDGE_LEAN),
+            rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN): sha256_file(
+                RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN
+            ),
             rel(ACTIVE_CENTER_ROWS_LEAN): sha256_file(ACTIVE_CENTER_ROWS_LEAN),
             rel(ACTIVE_SCALE_BOUND_INPUTS_LEAN): sha256_file(ACTIVE_SCALE_BOUND_INPUTS_LEAN),
             rel(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN): sha256_file(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN),
@@ -500,6 +578,7 @@ def build_ledger() -> dict[str, Any]:
             "activeScaleAbs": degree0_preflight["fields"]["activeScaleAbs"],
             "activeScaleProofGrade": degree0_preflight["activeScaleProofGrade"],
             "rawProduct18BridgeReady": raw_product18_bridge_ready,
+            "rawProduct18MajorantReceiverReady": raw_product18_majorant_receiver_ready,
             "rawProduct18UniformSourceChecked": False,
         },
         "rowSourceLedger": {
@@ -546,7 +625,13 @@ def build_ledger() -> dict[str, Any]:
                 "selectedRoute": "B_rawProduct18",
                 "bridgeSource": rel(RAW_PRODUCT18_BRIDGE_LEAN),
                 "bridgeReady": raw_product18_bridge_ready,
+                "majorantReceiverSource": rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN),
+                "majorantReceiverReady": raw_product18_majorant_receiver_ready,
                 "failureIfUniformSourceMissing": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
+                "remainingFactorSources": [
+                    OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
+                    SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+                ],
             },
             "fullDegree29Specialization": {
                 "coefficientJetOrdersNeeded": "16..45",
@@ -558,6 +643,9 @@ def build_ledger() -> dict[str, Any]:
             "activeActualCenterJetRows": center_row_status(),
             "activeScaleBound": active_scale_source(),
             "rawProduct18Bridge": raw_product18_bridge_source(raw_product18_bridge_ready),
+            "rawProduct18MajorantReceiver": raw_product18_majorant_receiver_source(
+                raw_product18_majorant_receiver_ready
+            ),
         },
         "requiredInputs": required_inputs,
         "validationGates": {
@@ -566,7 +654,10 @@ def build_ledger() -> dict[str, Any]:
             "lowDegreeBridgeReady": low_degree_ready,
             "degree0SourceInterfaceReady": degree0_ready,
             "rawProduct18BridgeReady": raw_product18_bridge_ready,
+            "rawProduct18MajorantReceiverReady": raw_product18_majorant_receiver_ready,
             "rawProduct18UniformSourceChecked": False,
+            "omegaPrimeOrder17UniformSourceChecked": False,
+            "shapeSqOrder18UniformSourceChecked": False,
             "degree0PreflightWritten": True,
             "degree0BudgetPassed": degree0_preflight["budgetPassed"],
             "activeScaleBoundChecked": degree0_preflight["activeScaleProofGrade"],
@@ -605,6 +696,17 @@ def build_ledger() -> dict[str, Any]:
             "budgetFailureCode": DEGREE0_BUDGET_CONSTANT_FAIL,
             "notProofEvidence": True,
         },
+        "computerUseRawProduct18ReceiverDecision": {
+            "used": True,
+            "advisoryOnly": True,
+            "recommendedOption": "A",
+            "firstFileToEdit": rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN),
+            "firstTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
+            "receiverFailureCode": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
+            "omegaPrimeOrder17SourceFailureCode": OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
+            "shapeSqOrder18SourceFailureCode": SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+            "notProofEvidence": True,
+        },
         "doNotUseAsProof": [
             "sampled activeActual rows",
             "center-jet rows as uniform segment remainder rows",
@@ -614,10 +716,10 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Build the proof-grade RawProduct18 uniform source required by the "
-            "checked D17(component)-to-D18(rawProduct) bridge, then fill the "
-            "degree-0 source inputs and exact rational budget before emitting "
-            "any Lean payload."
+            "Build the remaining proof-grade factor sources for the checked "
+            "RawProduct18 receiver: OmegaPrime order17 and ShapeSq order18, "
+            "then compute the exact RawProduct18 majorant and degree-0 budget "
+            "before emitting any Lean payload."
         ),
     }
 
@@ -691,6 +793,11 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     raw_decision = ledger["computerUseRawProduct18Decision"]
     lines.extend(["", "## Computer Use RawProduct18 Decision", ""])
     for key, value in raw_decision.items():
+        lines.append(f"- `{key}`: `{value}`")
+
+    receiver_decision = ledger["computerUseRawProduct18ReceiverDecision"]
+    lines.extend(["", "## Computer Use RawProduct18 Receiver Decision", ""])
+    for key, value in receiver_decision.items():
         lines.append(f"- `{key}`: `{value}`")
 
     lines.extend(["", "## Do Not Use As Proof", ""])
@@ -771,6 +878,7 @@ def main() -> None:
     degree0_preflight = build_degree0_preflight(
         bool(ledger["validationGates"]["degree0SourceInterfaceReady"]),
         bool(ledger["validationGates"]["rawProduct18BridgeReady"]),
+        bool(ledger["validationGates"]["rawProduct18MajorantReceiverReady"]),
     )
     REQUEST_DIR.mkdir(parents=True, exist_ok=True)
     JSON_OUT.write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n")

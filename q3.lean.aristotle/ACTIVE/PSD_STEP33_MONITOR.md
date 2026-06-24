@@ -40584,3 +40584,43 @@ STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP
 
 Boundary: this does not prove the uniform D18(rawProduct) bound and does not
 emit a Lean payload.
+
+### 2026-06-24 Update -- RawProduct18 majorant receiver checked
+
+Browser/Computer Use follow-up selected `A`: add the local conditional
+RawProduct18 Leibniz receiver before building factor sources.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean
+```
+
+Checked items:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs
+```
+
+Current generated gate:
+
+```text
+rawProduct18BridgeReady = true
+rawProduct18MajorantReceiverReady = true
+rawProduct18UniformSourceChecked = false
+omegaPrimeOrder17UniformSourceChecked = false
+shapeSqOrder18UniformSourceChecked = false
+proofGrade = false
+```
+
+Next exact blockers:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP
+STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP
+```
+
+Boundary: no factor-source rows, no RawProduct18 numeric bound, no degree-0
+budget closure, and no Lean payload emission yet.

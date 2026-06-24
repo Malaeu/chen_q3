@@ -1,6 +1,6 @@
 # Step33A.1-A ActiveActual Order-16 Horner Payload Gate
 
-schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v7`
+schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v8`
 route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Verdict
@@ -41,7 +41,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 - `path`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
 - `markdown`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md`
-- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v2`
+- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3`
 - `proofGrade`: `False`
 - `budgetPassed`: `None`
 - `firstFailure`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
@@ -49,6 +49,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `activeScaleAbs`: `95492965855137201461330258024/1000000000000000000000000000000`
 - `activeScaleProofGrade`: `True`
 - `rawProduct18BridgeReady`: `True`
+- `rawProduct18MajorantReceiverReady`: `True`
 - `rawProduct18UniformSourceChecked`: `False`
 
 ## Degree-29 Container Policy
@@ -65,7 +66,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
 - `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
 - `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
-- `d17UniformRoute`: `{'selectedRoute': 'B_rawProduct18', 'bridgeSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'bridgeReady': True, 'failureIfUniformSourceMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP'}`
+- `d17UniformRoute`: `{'selectedRoute': 'B_rawProduct18', 'bridgeSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'bridgeReady': True, 'majorantReceiverSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean', 'majorantReceiverReady': True, 'failureIfUniformSourceMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP', 'remainingFactorSources': ['STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP', 'STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP']}`
 - `fullDegree29Specialization`: `{'coefficientJetOrdersNeeded': '16..45', 'uniformRemainderDerivativeOrderNeeded': 46, 'firstMissingSubgapIfChosen': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP'}`
 
 ## Required Inputs
@@ -110,6 +111,16 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `requiredNextSource`: `proof-grade uniform D18(RawProductActual) bound`
 - `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP`
 
+### S2c_rawProduct18_factor_leibniz_receiver
+
+- `status`: `checked`
+- `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean`
+- `majorantDef`: `primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant`
+- `rawProductTheorem`: `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs`
+- `componentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs`
+- `requiredNextSources`: `['STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP', 'STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP']`
+- `failureCode`: `STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP`
+
 ### S3_zero_extend_low_degree_to_Fin30
 
 - `status`: `checked`
@@ -137,7 +148,10 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `lowDegreeBridgeReady`: `True`
 - `degree0SourceInterfaceReady`: `True`
 - `rawProduct18BridgeReady`: `True`
+- `rawProduct18MajorantReceiverReady`: `True`
 - `rawProduct18UniformSourceChecked`: `False`
+- `omegaPrimeOrder17UniformSourceChecked`: `False`
+- `shapeSqOrder18UniformSourceChecked`: `False`
 - `degree0PreflightWritten`: `True`
 - `degree0BudgetPassed`: `None`
 - `activeScaleBoundChecked`: `True`
@@ -196,6 +210,18 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `budgetFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`
 - `notProofEvidence`: `True`
 
+## Computer Use RawProduct18 Receiver Decision
+
+- `used`: `True`
+- `advisoryOnly`: `True`
+- `recommendedOption`: `A`
+- `firstFileToEdit`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean`
+- `firstTheorem`: `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs`
+- `receiverFailureCode`: `STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP`
+- `omegaPrimeOrder17SourceFailureCode`: `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP`
+- `shapeSqOrder18SourceFailureCode`: `STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP`
+- `notProofEvidence`: `True`
+
 ## Do Not Use As Proof
 
 - sampled activeActual rows
@@ -207,4 +233,4 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Next Implementable Patch
 
-Build the proof-grade RawProduct18 uniform source required by the checked D17(component)-to-D18(rawProduct) bridge, then fill the degree-0 source inputs and exact rational budget before emitting any Lean payload.
+Build the remaining proof-grade factor sources for the checked RawProduct18 receiver: OmegaPrime order17 and ShapeSq order18, then compute the exact RawProduct18 majorant and degree-0 budget before emitting any Lean payload.

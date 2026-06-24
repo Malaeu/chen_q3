@@ -44293,3 +44293,24 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `D^18(RawProductActual)` on `Set.Icc 0 (1/10)`, then fill the degree-0
   rational budget.  Do not emit activeActual Lean payload before that source
   exists.
+
+## Insight (2026-06-24, Step33A.1-A) -- RawProduct18LeibnizReceiver
+
+- Browser/Computer Use follow-up after local RawProduct18 source search selected
+  route `A`: add the local conditional product-rule receiver before building
+  the factor sources.
+- Added checked receiver file:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean`.
+- Checked definition:
+  `primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant`.
+- Checked receiver theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs`.
+- Checked component transfer theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs`.
+- Refreshed activeActual Horner/degree-0 payload schemas to v8/v3.  The payload
+  now records `rawProduct18BridgeReady = true`,
+  `rawProduct18MajorantReceiverReady = true`, and
+  `rawProduct18UniformSourceChecked = false`.
+- The receiver is conditional, not a certificate.  The next exact source gaps
+  are `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP` and
+  `STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP`.

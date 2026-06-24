@@ -19585,6 +19585,57 @@ STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP
 Boundary: the bridge is checked, but it supplies no proof-grade
 `D^18(RawProductActual)` uniform majorant and no degree-0 budget closure.
 
+## 2026-06-24 Tail Anchor -- rawProduct18 Leibniz receiver checked
+
+Browser/Computer Use follow-up selected route `A` after the RawProduct18 bridge:
+add the local conditional product-rule receiver first, then build the missing
+factor sources.
+
+Checked Lean receiver:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean
+```
+
+Definitions/theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs
+```
+
+Generated payloads were refreshed:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v8
+
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3
+```
+
+Current verdict:
+
+```text
+rawProduct18BridgeReady = true
+rawProduct18MajorantReceiverReady = true
+rawProduct18UniformSourceChecked = false
+omegaPrimeOrder17UniformSourceChecked = false
+shapeSqOrder18UniformSourceChecked = false
+proofGrade = false
+```
+
+Next exact source gaps:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP
+STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP
+```
+
+Boundary: the receiver is checked but conditional.  It does not prove the
+factor sources, the numeric RawProduct18 bound, or the degree-0 budget.
+
 ## 2026-06-23 Active Node Addendum -- factor-derivative route budget kill
 
 Computer Use / Proshka recommended trying the existing factor-derivative
