@@ -21,7 +21,7 @@
     "proofGrade": false,
     "proofSafeClosedFields": 0,
     "proofStatus": "interface_ready_rows_missing",
-    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2"
+    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3"
   },
   "activeActualHornerRowSourceLedgerFile": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json",
   "activeActualHornerSegmentFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean",
@@ -370,7 +370,7 @@
   "firstGeneratedSourcePropTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_sourceProp_generated",
   "firstMissingProofObject": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated",
   "firstRowFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T00:58:26.715899+00:00",
+  "generatedAt": "2026-06-24T01:27:54.759335+00:00",
   "guard": "This is an interface and fail-closed ledger only.  It does not prove the interval rows, and it must not be treated as Step33A.1-A closure until the direct nonzero-model source proposition is Lean-checked or backed by proof-grade generated rows.",
   "intervalPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BiasedScaledRemainderIntervalPayload.lean",
   "intervalPayloadSurfacePresent": true,

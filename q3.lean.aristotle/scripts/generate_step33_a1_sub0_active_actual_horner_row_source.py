@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -31,6 +31,10 @@ ACTIVE_ACTUAL_HORNER_SEGMENT_FILE = (
 ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean"
+)
+ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean"
 )
 DIRECT_HORNER_FILE = (
     PROOFS
@@ -123,6 +127,12 @@ DIRECT_HORNER_SOURCE_BRIDGE_SYMBOLS = [
     "theorem valid_of_collapsed_horner_rows",
 ]
 
+ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActualPoly_zeroExtend29_eq",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
+]
+
 ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP"
 )
@@ -158,6 +168,12 @@ ACTIVE_ACTUAL_HORNER_LEAN_PAYLOAD_VALIDATION_GAP = (
 )
 ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP"
+)
+ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP"
+)
+ACTIVE_ACTUAL_HORNER_LOW_DEGREE_ALIGNMENT_GAP = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_TO_FIN30_ALIGNMENT_GAP"
 )
 ACTIVE_ACTUAL_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP"
@@ -223,10 +239,14 @@ def active_actual_center_jet_status() -> dict[str, Any]:
             in text
         ),
         "availableJetOrders": "0..15",
-        "neededForDegree29D16HornerCoeffOrders": "16..45",
-        "neededUniformRemainderOrder": 46,
+        "usableAsLowDegreeCoefficientSeedOnly": True,
+        "fullDegree29Specialization": {
+            "neededForDegree29D16HornerCoeffOrders": "16..45",
+            "neededUniformRemainderOrder": 46,
+            "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+        },
         "usableAsUniformSegmentRemainder": False,
-        "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+        "failureCode": ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP,
     }
 
 
@@ -239,6 +259,10 @@ def build_ledger() -> dict[str, Any]:
         ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE,
         ACTIVE_ACTUAL_HORNER_FAMILY_SYMBOLS,
     )
+    low_degree_symbols = symbol_lines(
+        ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE,
+        ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_SYMBOLS,
+    )
     direct_horner_symbols = symbol_lines(DIRECT_HORNER_FILE, DIRECT_HORNER_SYMBOLS)
     source_bridge_symbols = symbol_lines(
         DIRECT_HORNER_SOURCE_BRIDGE_FILE,
@@ -247,11 +271,13 @@ def build_ledger() -> dict[str, Any]:
 
     segment_receiver_ready = all_present(segment_symbols)
     family_bridge_ready = all_present(family_symbols)
+    low_degree_bridge_ready = all_present(low_degree_symbols)
     direct_horner_ready = all_present(direct_horner_symbols)
     source_bridge_ready = all_present(source_bridge_symbols)
     interface_ready = (
         segment_receiver_ready
         and family_bridge_ready
+        and low_degree_bridge_ready
         and direct_horner_ready
         and source_bridge_ready
     )
@@ -260,6 +286,8 @@ def build_ledger() -> dict[str, Any]:
         first_failure = ACTIVE_ACTUAL_HORNER_SEGMENT_RECEIVER_GAP
     elif not family_bridge_ready:
         first_failure = ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP
+    elif not low_degree_bridge_ready:
+        first_failure = ACTIVE_ACTUAL_HORNER_LOW_DEGREE_ALIGNMENT_GAP
     elif not source_bridge_ready:
         first_failure = ACTIVE_ACTUAL_HORNER_STALE_SCHEMA_FAIL
     else:
@@ -269,8 +297,10 @@ def build_ledger() -> dict[str, Any]:
         "interfaceReady": interface_ready,
         "segmentReceiverLeanChecked": segment_receiver_ready,
         "familyBridgeLeanChecked": family_bridge_ready,
+        "lowDegreeBridgeLeanChecked": low_degree_bridge_ready,
         "directHornerReceiverLeanChecked": direct_horner_ready,
         "collapsedSourceBridgeLeanChecked": source_bridge_ready,
+        "activeActualLowDegreeSegmentRemainderSourceChecked": False,
         "activeActualD46UniformRemainderSourceChecked": False,
         "smokeSegmentPayloadAllowed": False,
         "allSegmentsProvided": False,
@@ -318,6 +348,9 @@ def build_ledger() -> dict[str, Any]:
             rel(ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE): sha256_file(
                 ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE
             ),
+            rel(ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE): sha256_file(
+                ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE
+            ),
             rel(DIRECT_HORNER_FILE): sha256_file(DIRECT_HORNER_FILE),
             rel(DIRECT_HORNER_SOURCE_BRIDGE_FILE): sha256_file(
                 DIRECT_HORNER_SOURCE_BRIDGE_FILE
@@ -334,6 +367,8 @@ def build_ledger() -> dict[str, Any]:
             "familyDataObject": "Step33Sub0ActiveActualOrder16HornerFamilyCert",
             "familyValidPredicate": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
             "familyBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_directHornerFamily_valid_of_activeActualHornerFamily",
+            "lowDegreeZeroExtendDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
+            "lowDegreeTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
             "payloadTargetTheorem": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
             "sourcePropTheorem": "primaryFiniteRow0Parent0Split100Sub0_nonzeroModelSourceProp_of_activeActualHornerFamily",
             "targetBudgetConstant": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs",
@@ -376,14 +411,27 @@ def build_ledger() -> dict[str, Any]:
             "center": "1/20",
             "degree": 29,
             "cell": "Set.Icc 0 (1/10)",
+            "acceptedCoefficientSources": [
+                "direct degree-29 coeff : Fin 30 -> Rat",
+                "low-degree coeff : Fin (d + 1) -> Rat with d <= 29, zero-extended by primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
+            ],
         },
         "requiredRows": [
             {
-                "id": "A_minus1_D46_uniform_remainder_source",
-                "object": "proof-grade Taylor/Horner source for scaled D^16(ComponentProductActual), coefficient orders 16..45 and uniform remainder order 46",
+                "id": "A_minus1_low_degree_segment_remainder_source",
+                "object": "proof-grade low-degree Taylor/Horner source for scaled D^16(ComponentProductActual)",
                 "leanField": "Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid.remainderBound",
                 "status": "missing",
-                "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+                "degreePolicy": "choose d <= 29 and zero-extend into Fin30 via checked bridge",
+                "analyticOrderForDegreeD": "17 + d for a Taylor-source proof",
+                "failureCode": ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP,
+            },
+            {
+                "id": "A_minus0_low_degree_to_Fin30_bridge",
+                "object": "checked coefficient/remainder transport from low-degree row to the existing degree-29 activeActual container",
+                "leanField": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
+                "status": "checked" if low_degree_bridge_ready else "missing",
+                "failureCode": ACTIVE_ACTUAL_HORNER_LOW_DEGREE_ALIGNMENT_GAP,
             },
             {
                 "id": "A0_segment_cover",
@@ -394,7 +442,7 @@ def build_ledger() -> dict[str, Any]:
             },
             {
                 "id": "A1_active_actual_coefficients",
-                "object": "proof-grade coeff : Fin 30 -> Rat for scaled activeActual",
+                "object": "proof-grade low-degree coeff plus zero-extended coeff : Fin 30 -> Rat for scaled activeActual",
                 "leanField": "Step33Sub0ActiveActualOrder16HornerSegmentCert.coeff",
                 "status": "missing",
                 "failureCode": ACTIVE_ACTUAL_HORNER_COEFF_ROWS_GAP,
@@ -433,7 +481,9 @@ def build_ledger() -> dict[str, Any]:
             ACTIVE_ACTUAL_HORNER_STALE_SCHEMA_FAIL,
             ACTIVE_ACTUAL_HORNER_SEGMENT_RECEIVER_GAP,
             ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP,
+            ACTIVE_ACTUAL_HORNER_LOW_DEGREE_ALIGNMENT_GAP,
             ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP,
+            ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP,
             ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
             ACTIVE_ACTUAL_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP,
             ACTIVE_ACTUAL_HORNER_COEFF_ROWS_GAP,
@@ -480,29 +530,34 @@ def build_ledger() -> dict[str, Any]:
         "latestComputerUsePayloadDecision": {
             "used": True,
             "advisoryOnly": True,
-            "recommendedOption": "A",
+            "recommendedOption": "B",
             "decision": (
-                "Build a rational/interval activeActual coefficient and "
-                "remainder row generator directly against "
-                "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid, starting "
-                "with one smoke segment."
+                "Add/use a low-degree-to-Fin30 bridge before building any D46 "
+                "backend.  The degree-29 container can carry a lower-degree "
+                "activeActual source row."
             ),
             "firstFailureCodeIfRowsMissing": (
-                ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+                ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP
             ),
             "notProofEvidence": True,
         },
         "availableUpstreamEvidence": {
             "activeActualCenterJetRows": active_actual_center_jet_status(),
         },
-        "degree29D16Requirement": {
+        "degree29ContainerPolicy": {
             "targetFunction": "activeScale * D^16(ComponentProductActual)",
-            "polynomialDegree": 29,
-            "coefficientJetOrdersNeeded": "16..45",
-            "uniformRemainderDerivativeOrderNeeded": 46,
-            "currentProofGradeCenterRows": "0..15 only",
-            "firstMissingCoefficientOrder": 16,
-            "firstMissingSubgap": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+            "containerDegree": 29,
+            "containerCoeffType": "Fin 30 -> Rat",
+            "lowDegreeAccepted": low_degree_bridge_ready,
+            "lowDegreeBridge": rel(ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE),
+            "zeroExtendDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
+            "transferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
+            "firstMissingSubgap": ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP,
+            "fullDegree29Specialization": {
+                "coefficientJetOrdersNeeded": "16..45",
+                "uniformRemainderDerivativeOrderNeeded": 46,
+                "firstMissingSubgapIfChosen": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+            },
         },
         "smokeSegmentPayloadGate": {
             "recommendedScript": rel(SMOKE_PAYLOAD_SCRIPT),
@@ -518,10 +573,10 @@ def build_ledger() -> dict[str, Any]:
             "firstRemainderTheorem": (
                 "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated"
             ),
-            "status": "blocked_missing_D46_uniform_remainder_source",
+            "status": "blocked_missing_low_degree_segment_remainder_source",
             "payloadAllowed": False,
             "outLeanWritten": False,
-            "failureCode": ACTIVE_ACTUAL_HORNER_D46_REMAINDER_SOURCE_GAP,
+            "failureCode": ACTIVE_ACTUAL_HORNER_LOW_DEGREE_REMAINDER_SOURCE_GAP,
         },
         "doNotUseAsProof": [
             "sampled or float rows",
@@ -530,13 +585,14 @@ def build_ledger() -> dict[str, Any]:
             "P45/full-Taylor wrong-target rows",
             "separate activeActual and nominal independent norm budgets",
             "DirectConcretePayload.lean before this ledger has all payload obligations passed",
+            "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Run the activeActual order-16 Horner payload entrypoint for the "
-            "first smoke segment.  It must fail closed until a proof-grade "
-            "rational/interval source supplies coefficient orders 16..45 and a "
-            "uniform order-46 remainder bound for activeScale * "
-            "D^16(ComponentProductActual)."
+            "Build the first proof-grade low-degree activeActual segment row: "
+            "choose d <= 29, produce rational/interval coeff : Fin (d + 1) -> "
+            "Rat and a uniform remainder proof for activeScale * "
+            "D^16(ComponentProductActual), then zero-extend it into the "
+            "existing Fin30 Horner family."
         ),
     }
 
@@ -605,6 +661,10 @@ def render_markdown(ledger: dict[str, Any]) -> str:
             ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE,
             ACTIVE_ACTUAL_HORNER_FAMILY_SYMBOLS,
         ),
+        rel(ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE): symbol_lines(
+            ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_FILE,
+            ACTIVE_ACTUAL_LOW_DEGREE_BRIDGE_SYMBOLS,
+        ),
         rel(DIRECT_HORNER_FILE): symbol_lines(DIRECT_HORNER_FILE, DIRECT_HORNER_SYMBOLS),
         rel(DIRECT_HORNER_SOURCE_BRIDGE_FILE): symbol_lines(
             DIRECT_HORNER_SOURCE_BRIDGE_FILE,
@@ -662,11 +722,11 @@ def render_markdown(ledger: dict[str, Any]) -> str:
             f"- firstFailureCodeIfRowsMissing: `{latest['firstFailureCodeIfRowsMissing']}`",
             f"- notProofEvidence: `{latest['notProofEvidence']}`",
             "",
-            "## Degree-29 D16 Requirement",
+            "## Degree-29 Container Policy",
             "",
         ]
     )
-    for key, value in ledger["degree29D16Requirement"].items():
+    for key, value in ledger["degree29ContainerPolicy"].items():
         lines.append(f"- `{key}`: `{value}`")
 
     lines.extend(["", "## Smoke Segment Payload Gate", ""])

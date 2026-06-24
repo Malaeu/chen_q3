@@ -39887,6 +39887,72 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual low-degree container bridge checked
+
+Computer Use / Proshka follow-up after the D46 smoke-row blocker selected:
+
+```text
+CHOSEN: B
+```
+
+Added and direct-Lean checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean
+```
+
+Checked bridge objects:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29
+primaryFiniteRow0Parent0Split100Sub0_activeActualPoly_zeroExtend29_eq
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree
+```
+
+Meaning: the existing activeActual Horner segment container remains degree
+`29` with `coeff : Fin 30 -> Rat`, but that degree is now only a container
+format.  A future proof-grade row may choose any `d <= 29`, prove the
+low-degree activeActual segment remainder, and zero-extend into the existing
+Fin30 receiver.
+
+This does not supply the analytic low-degree row source, interval rows, Horner
+range rows, budget rows, or Step33A.1-A closure.
+
+Validation:
+
+```text
+LEAN_PATH=.lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:.lake/packages/plausible/.lake/build/lib/lean:.lake/packages/proofwidgets/.lake/build/lib/lean:.lake/packages/batteries/.lake/build/lib/lean:.lake/packages/aesop/.lake/build/lib/lean:.lake/packages/importGraph/.lake/build/lib/lean:.lake/packages/LeanSearchClient/.lake/build/lib/lean:.lake/packages/Qq/.lake/build/lib/lean lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean
+```
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_active_actual_horner_row_source.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3
+lowDegreeBridgeLeanChecked = true
+firstMissingSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+
+step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2
+proofStatus = blocked_missing_low_degree_segment_remainder_source
+firstConcreteSubgap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+```
+
+Current live proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+The first concrete subgap is now:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+```
+
+D46 is no longer the first mandatory blocker; it is only the specialization if
+the generator insists on a full degree-29 Taylor source.
+
 ### 2026-06-24 Update -- activeActual order-16 Horner payload gate
 
 Computer Use / Proshka follow-up after the fail-closed activeActual Horner

@@ -237,6 +237,53 @@ center-jet rows alone.  Order16 source interval rows, Horner range rows, and
 target-budget rows are still missing.
 ```
 
+2026-06-24 activeActual low-degree bridge addendum:
+
+```text
+Computer Use/Proshka after the D46 smoke-row blocker chose the low-degree
+container bridge route:
+
+  CHOSEN: B
+
+Lean-checked file:
+
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean
+
+Checked objects:
+
+  primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29
+  primaryFiniteRow0Parent0Split100Sub0_activeActualPoly_zeroExtend29_eq
+  primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree
+
+The activeActual Horner receiver still consumes degree 29 / Fin30 rows, but
+degree 29 is now a container convention.  A proof-grade low-degree row with
+d <= 29 can be zero-extended into the existing receiver.
+
+Regenerated ledgers:
+
+  step33_a1_sub0_active_actual_horner_row_source.json
+    schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3
+    lowDegreeBridgeLeanChecked = true
+
+  step33_a1_sub0_active_actual_order16_horner_payload.json
+    schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2
+    proofStatus = blocked_missing_low_degree_segment_remainder_source
+    firstConcreteSubgap =
+      STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+
+Current live gap:
+  STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+
+First concrete subgap:
+  STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+
+D46 remains only the full degree-29 specialization:
+  STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP
+
+No activeActual low-degree row, Horner range row, budget row,
+DirectConcretePayload.lean, or Step33A.1-A closure exists yet.
+```
+
 The current generator-facing payload adapter is checked in:
 
 ```lean

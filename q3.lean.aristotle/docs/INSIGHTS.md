@@ -44068,3 +44068,36 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Boundary: center-jet rows, sampled rows, coarse P45/factor-majorant routes,
   and separate activeActual/nominal budgets are still not proof of the required
   uniform segment remainder.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualLowDegreeBridge
+
+- Target blocker:
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP`,
+  arising from the degree-29 smoke-row reading of the activeActual Horner
+  container.
+- Local check: the Horner segment receiver fixes degree `29` and
+  `coeff : Fin 30 -> Rat`, but this is a receiver container convention, not
+  necessarily the minimal analytic degree of the row source.
+- Used the in-app Browser/Computer Use with the exact D46 blocker.  Advisory
+  result: `CHOSEN: B`; treated only as route advice.
+- Added checked bridge:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean`.
+- New checked objects:
+  `primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29`,
+  `primaryFiniteRow0Parent0Split100Sub0_activeActualPoly_zeroExtend29_eq`,
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree`.
+- Consequence: a future proof-grade low-degree row with `d <= 29` can be
+  zero-extended into the existing Fin30 receiver; D46 is now only the full
+  degree-29 specialization.
+- Regenerated activeActual ledgers to
+  `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3` and
+  `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2`.
+- Current live gap remains
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`; the
+  first concrete subgap is now
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP`.
+- Next proof-producing patch: construct the first rational/interval
+  low-degree segment row for
+  `activeScale * D^16(ComponentProductActual)`, then zero-extend it and feed the
+  existing activeActual Horner family receiver.

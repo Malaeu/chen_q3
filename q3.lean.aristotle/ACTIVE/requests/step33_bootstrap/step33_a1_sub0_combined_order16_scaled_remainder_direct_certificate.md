@@ -27,7 +27,7 @@ proofStatus: `lean_payload_generation_blocked_missing_collapsed_segment_rows`
 
 - file: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
 - exists: `True`
-- schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v2`
+- schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3`
 - proofStatus: `interface_ready_rows_missing`
 - proofGrade: `False`
 - proofSafeClosedFields: `0`

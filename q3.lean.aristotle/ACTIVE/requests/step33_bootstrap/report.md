@@ -74542,6 +74542,76 @@ New first concrete upstream failure:
 
 ```text
 STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_SOURCE_GAP
+
+## 2026-06-24 Report Addendum -- activeActual low-degree bridge checked
+
+After the fail-closed D46 smoke-row ledger, I escalated the route choice through
+the in-app Browser/Computer Use.  Advisory result:
+
+```text
+CHOSEN: B
+```
+
+Implemented the exact next patch:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean
+```
+
+Lean-checked objects:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29
+primaryFiniteRow0Parent0Split100Sub0_activeActualPoly_zeroExtend29_eq
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree
+```
+
+Meaning: the activeActual Horner row receiver still has degree `29` and
+`coeff : Fin 30 -> Rat`, but a future row source may now prove a lower-degree
+segment approximation for `activeScale * D^16(ComponentProductActual)` and
+zero-extend it into that container.  D46 is no longer the mandatory first
+analytic source; it is only the full degree-29 specialization.
+
+Validation:
+
+```text
+LEAN_PATH=.lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:.lake/packages/plausible/.lake/build/lib/lean:.lake/packages/proofwidgets/.lake/build/lib/lean:.lake/packages/batteries/.lake/build/lib/lean:.lake/packages/aesop/.lake/build/lib/lean:.lake/packages/importGraph/.lake/build/lib/lean:.lake/packages/LeanSearchClient/.lake/build/lib/lean:.lake/packages/Qq/.lake/build/lib/lean lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+```
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_active_actual_horner_row_source.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v3
+lowDegreeBridgeLeanChecked = true
+
+step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v2
+proofStatus = blocked_missing_low_degree_segment_remainder_source
+firstConcreteSubgap =
+  STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+```
+
+Current live gap remains:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+First concrete subgap is now:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_LOW_DEGREE_SEGMENT_REMAINDER_SOURCE_GAP
+```
+
+Boundary: no activeActual low-degree interval/rational row source, no Horner
+range rows, no final budget rows, no `DirectConcretePayload.lean`, and no
+Step33A.1-A closure were produced by this patch.
 ```
 
 Next missing theorem:
