@@ -19,8 +19,8 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v8"
-DEGREE0_SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v10"
+DEGREE0_SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v5"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -63,6 +63,15 @@ RAW_PRODUCT18_BRIDGE_LEAN = (
 RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean"
+)
+REALSINC_DERIVATIVE_CERT19_LEAN = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean"
+)
+REALSINC_DERIVATIVE_ORDER18_LEAN = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean"
+)
+SHAPESQ_ORDER18_SOURCE_LEAN = (
+    PROOFS / "PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean"
 )
 ACTIVE_SCALE_BOUND_INPUTS_LEAN = (
     PROOFS / "PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
@@ -147,6 +156,24 @@ REQUIRED_RAW_PRODUCT18_MAJORANT_RECEIVER_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs",
 ]
 
+REQUIRED_REALSINC_CERT19_SYMBOLS = [
+    "Step33Sub0RealSincDerivativeMajorantCert19",
+    "coarseTwoBaseAbs_valid",
+    "coarseTwoBaseAbs_providesAnalyticMajorant",
+]
+
+REQUIRED_REALSINC_ORDER18_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two",
+    "primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18",
+]
+
+REQUIRED_SHAPESQ_ORDER18_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqSharpOrder18Abs",
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp",
+    "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualSharpDerivativeMajorant18",
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18",
+]
+
 ACTIVE_SCALE_ABS_BOUND_RAT = (
     "95492965855137201461330258024/"
     "1000000000000000000000000000000"
@@ -196,7 +223,46 @@ def raw_product18_bridge_source(raw_product18_ready: bool) -> dict[str, Any]:
     }
 
 
-def raw_product18_majorant_receiver_source(receiver_ready: bool) -> dict[str, Any]:
+def remaining_factor_sources(*, shape_sq_order18_ready: bool) -> list[str]:
+    sources = [OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP]
+    if not shape_sq_order18_ready:
+        sources.append(SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP)
+    return sources
+
+
+def shape_sq_order18_source(shape_sq_order18_ready: bool) -> dict[str, Any]:
+    return {
+        "status": "checked" if shape_sq_order18_ready else "missing",
+        "kind": "Lean",
+        "realSincOrder18Path": rel(REALSINC_DERIVATIVE_ORDER18_LEAN),
+        "realSincFin19SupportPath": rel(REALSINC_DERIVATIVE_CERT19_LEAN),
+        "path": rel(SHAPESQ_ORDER18_SOURCE_LEAN),
+        "realSincOrder18Theorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two"
+        ),
+        "realSincThrough18Theorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18"
+        ),
+        "shapeSqOrder18Theorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp"
+        ),
+        "shapeSqThrough18Theorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18"
+        ),
+        "meaning": (
+            "proof-grade ShapeSqActual derivative source through k <= 18 for the "
+            "RawProduct18 Leibniz receiver"
+        ),
+        "stillMissing": [] if shape_sq_order18_ready else [SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP],
+        "failureIfMissing": SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+    }
+
+
+def raw_product18_majorant_receiver_source(
+    receiver_ready: bool,
+    *,
+    shape_sq_order18_ready: bool = False,
+) -> dict[str, Any]:
     return {
         "status": "checked" if receiver_ready else "missing",
         "kind": "Lean",
@@ -212,10 +278,9 @@ def raw_product18_majorant_receiver_source(receiver_ready: bool) -> dict[str, An
             "conditional Leibniz receiver from Omega/ShapeSq derivative bounds 0..18 "
             "to the D18(RawProductActual) majorant"
         ),
-        "stillMissing": [
-            OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
-            SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
-        ],
+        "stillMissing": remaining_factor_sources(
+            shape_sq_order18_ready=shape_sq_order18_ready
+        ),
         "failureIfMissing": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
     }
 
@@ -340,6 +405,7 @@ def build_degree0_preflight(
     degree0_ready: bool,
     raw_product18_bridge_ready: bool,
     raw_product18_majorant_receiver_ready: bool,
+    shape_sq_order18_ready: bool,
 ) -> dict[str, Any]:
     fields: dict[str, str | None] = {
         "d16CenterLower": None,
@@ -387,16 +453,17 @@ def build_degree0_preflight(
             "selectedBy": "Browser/Computer Use Proshka review",
             "bridge": raw_product18_bridge_source(raw_product18_bridge_ready),
             "majorantReceiver": raw_product18_majorant_receiver_source(
-                raw_product18_majorant_receiver_ready
+                raw_product18_majorant_receiver_ready,
+                shape_sq_order18_ready=shape_sq_order18_ready,
             ),
+            "shapeSqOrder18Source": shape_sq_order18_source(shape_sq_order18_ready),
             "requiredUniformSource": (
                 "forall eta in Set.Icc 0 (1/10), "
                 "|D^18(RawProductActual)(eta)| <= order17Abs"
             ),
-            "remainingFactorSources": [
-                OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
-                SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
-            ],
+            "remainingFactorSources": remaining_factor_sources(
+                shape_sq_order18_ready=shape_sq_order18_ready
+            ),
             "notClosedByBridgeAlone": True,
         },
         "budgetFormula": "coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs",
@@ -445,6 +512,15 @@ def build_ledger() -> dict[str, Any]:
         RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN,
         REQUIRED_RAW_PRODUCT18_MAJORANT_RECEIVER_SYMBOLS,
     )
+    real_sinc_cert19_symbols = symbol_audit(
+        REALSINC_DERIVATIVE_CERT19_LEAN, REQUIRED_REALSINC_CERT19_SYMBOLS
+    )
+    real_sinc_order18_symbols = symbol_audit(
+        REALSINC_DERIVATIVE_ORDER18_LEAN, REQUIRED_REALSINC_ORDER18_SYMBOLS
+    )
+    shape_sq_order18_symbols = symbol_audit(
+        SHAPESQ_ORDER18_SOURCE_LEAN, REQUIRED_SHAPESQ_ORDER18_SYMBOLS
+    )
     segment_ready = all_present(segment_symbols)
     family_ready = all_present(family_symbols)
     low_degree_ready = all_present(low_degree_symbols)
@@ -453,9 +529,19 @@ def build_ledger() -> dict[str, Any]:
     raw_product18_majorant_receiver_ready = all_present(
         raw_product18_majorant_receiver_symbols
     )
+    real_sinc_cert19_ready = all_present(real_sinc_cert19_symbols)
+    real_sinc_order18_ready = all_present(real_sinc_order18_symbols)
+    shape_sq_order18_ready = (
+        real_sinc_cert19_ready
+        and real_sinc_order18_ready
+        and all_present(shape_sq_order18_symbols)
+    )
     interface_ready = segment_ready and family_ready and low_degree_ready and degree0_ready
     degree0_preflight = build_degree0_preflight(
-        degree0_ready, raw_product18_bridge_ready, raw_product18_majorant_receiver_ready
+        degree0_ready,
+        raw_product18_bridge_ready,
+        raw_product18_majorant_receiver_ready,
+        shape_sq_order18_ready,
     )
 
     required_inputs = [
@@ -512,8 +598,9 @@ def build_ledger() -> dict[str, Any]:
             "rawProductTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
             "componentTransferTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_factor_derivative_abs",
             "requiredNextSources": [
-                OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
-                SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+                *remaining_factor_sources(
+                    shape_sq_order18_ready=shape_sq_order18_ready
+                ),
             ],
             "failureCode": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
         },
@@ -562,6 +649,13 @@ def build_ledger() -> dict[str, Any]:
             rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN): sha256_file(
                 RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN
             ),
+            rel(REALSINC_DERIVATIVE_CERT19_LEAN): sha256_file(
+                REALSINC_DERIVATIVE_CERT19_LEAN
+            ),
+            rel(REALSINC_DERIVATIVE_ORDER18_LEAN): sha256_file(
+                REALSINC_DERIVATIVE_ORDER18_LEAN
+            ),
+            rel(SHAPESQ_ORDER18_SOURCE_LEAN): sha256_file(SHAPESQ_ORDER18_SOURCE_LEAN),
             rel(ACTIVE_CENTER_ROWS_LEAN): sha256_file(ACTIVE_CENTER_ROWS_LEAN),
             rel(ACTIVE_SCALE_BOUND_INPUTS_LEAN): sha256_file(ACTIVE_SCALE_BOUND_INPUTS_LEAN),
             rel(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN): sha256_file(ACTIVE_SCALE_BOUND_ASSEMBLY_LEAN),
@@ -580,6 +674,9 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18BridgeReady": raw_product18_bridge_ready,
             "rawProduct18MajorantReceiverReady": raw_product18_majorant_receiver_ready,
             "rawProduct18UniformSourceChecked": False,
+            "realSincFin19DerivativeSourceChecked": real_sinc_cert19_ready,
+            "realSincOrder18DerivativeSourceChecked": real_sinc_order18_ready,
+            "shapeSqOrder18UniformSourceChecked": shape_sq_order18_ready,
         },
         "rowSourceLedger": {
             "path": rel(ROW_SOURCE_JSON),
@@ -628,10 +725,11 @@ def build_ledger() -> dict[str, Any]:
                 "majorantReceiverSource": rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN),
                 "majorantReceiverReady": raw_product18_majorant_receiver_ready,
                 "failureIfUniformSourceMissing": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
-                "remainingFactorSources": [
-                    OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
-                    SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
-                ],
+                "shapeSqOrder18Source": rel(SHAPESQ_ORDER18_SOURCE_LEAN),
+                "shapeSqOrder18SourceReady": shape_sq_order18_ready,
+                "remainingFactorSources": remaining_factor_sources(
+                    shape_sq_order18_ready=shape_sq_order18_ready
+                ),
             },
             "fullDegree29Specialization": {
                 "coefficientJetOrdersNeeded": "16..45",
@@ -644,8 +742,22 @@ def build_ledger() -> dict[str, Any]:
             "activeScaleBound": active_scale_source(),
             "rawProduct18Bridge": raw_product18_bridge_source(raw_product18_bridge_ready),
             "rawProduct18MajorantReceiver": raw_product18_majorant_receiver_source(
-                raw_product18_majorant_receiver_ready
+                raw_product18_majorant_receiver_ready,
+                shape_sq_order18_ready=shape_sq_order18_ready,
             ),
+            "realSincFin19DerivativeSource": {
+                "status": "checked" if real_sinc_cert19_ready else "missing",
+                "kind": "Lean",
+                "path": rel(REALSINC_DERIVATIVE_CERT19_LEAN),
+                "symbols": real_sinc_cert19_symbols,
+            },
+            "realSincOrder18DerivativeSource": {
+                "status": "checked" if real_sinc_order18_ready else "missing",
+                "kind": "Lean",
+                "path": rel(REALSINC_DERIVATIVE_ORDER18_LEAN),
+                "symbols": real_sinc_order18_symbols,
+            },
+            "shapeSqOrder18Source": shape_sq_order18_source(shape_sq_order18_ready),
         },
         "requiredInputs": required_inputs,
         "validationGates": {
@@ -657,7 +769,9 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18MajorantReceiverReady": raw_product18_majorant_receiver_ready,
             "rawProduct18UniformSourceChecked": False,
             "omegaPrimeOrder17UniformSourceChecked": False,
-            "shapeSqOrder18UniformSourceChecked": False,
+            "realSincFin19DerivativeSourceChecked": real_sinc_cert19_ready,
+            "realSincOrder18DerivativeSourceChecked": real_sinc_order18_ready,
+            "shapeSqOrder18UniformSourceChecked": shape_sq_order18_ready,
             "degree0PreflightWritten": True,
             "degree0BudgetPassed": degree0_preflight["budgetPassed"],
             "activeScaleBoundChecked": degree0_preflight["activeScaleProofGrade"],
@@ -707,6 +821,22 @@ def build_ledger() -> dict[str, Any]:
             "shapeSqOrder18SourceFailureCode": SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
             "notProofEvidence": True,
         },
+        "computerUseShapeSqOrder18Decision": {
+            "used": True,
+            "advisoryOnly": True,
+            "recommendedOption": "B",
+            "firstFileToEdit": rel(REALSINC_DERIVATIVE_ORDER18_LEAN),
+            "firstTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two"
+            ),
+            "secondFile": rel(SHAPESQ_ORDER18_SOURCE_LEAN),
+            "shapeSqThrough18Theorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18"
+            ),
+            "internalSupportFile": rel(REALSINC_DERIVATIVE_CERT19_LEAN),
+            "failureCode": SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP,
+            "notProofEvidence": True,
+        },
         "doNotUseAsProof": [
             "sampled activeActual rows",
             "center-jet rows as uniform segment remainder rows",
@@ -716,9 +846,9 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Build the remaining proof-grade factor sources for the checked "
-            "RawProduct18 receiver: OmegaPrime order17 and ShapeSq order18, "
-            "then compute the exact RawProduct18 majorant and degree-0 budget "
+            "Build the remaining proof-grade factor source for the checked "
+            "RawProduct18 receiver: OmegaPrime order17, then compute the exact "
+            "RawProduct18 majorant and degree-0 budget "
             "before emitting any Lean payload."
         ),
     }
@@ -879,6 +1009,7 @@ def main() -> None:
         bool(ledger["validationGates"]["degree0SourceInterfaceReady"]),
         bool(ledger["validationGates"]["rawProduct18BridgeReady"]),
         bool(ledger["validationGates"]["rawProduct18MajorantReceiverReady"]),
+        bool(ledger["validationGates"]["shapeSqOrder18UniformSourceChecked"]),
     )
     REQUEST_DIR.mkdir(parents=True, exist_ok=True)
     JSON_OUT.write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n")

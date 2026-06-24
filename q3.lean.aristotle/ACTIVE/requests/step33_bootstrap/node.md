@@ -20272,6 +20272,65 @@ Live failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 RawProduct18 ShapeSq18 Source
+
+Computer Use / Proshka follow-up after the checked RawProduct18 Leibniz
+receiver selected the factor-source direction rather than audit-only work, then
+the standalone row-18 realSinc surface for the ShapeSq side.  The smaller local
+patch was to close the ShapeSq side through the receiver's `k <= 18` interface.
+
+Checked Lean files:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean
+```
+
+Checked Lean items:
+
+```text
+Step33Sub0RealSincDerivativeMajorantCert19
+Step33Sub0RealSincDerivativeMajorantCert19.coarseTwoBaseAbs_valid
+Step33Sub0RealSincDerivativeMajorantCert19.coarseTwoBaseAbs_providesAnalyticMajorant
+primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two
+primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18
+primaryFiniteRow0Parent0Split100Sub0ShapeSqSharpOrder18Abs
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp
+primaryFiniteRow0Parent0Split100Sub0ShapeSqActualSharpDerivativeMajorant18
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18
+```
+
+Regenerated activeActual ledgers:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md
+```
+
+Ledger state:
+
+```text
+realSincFin19DerivativeSourceChecked = true
+realSincOrder18DerivativeSourceChecked = true
+shapeSqOrder18UniformSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = false
+rawProduct18UniformSourceChecked = false
+remainingFactorSources = [STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP]
+```
+
+Boundary: this is not a RawProduct18 uniform certificate and not Step33A.1-A
+closure.  It only removes the ShapeSq side of the checked RawProduct18
+receiver.
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP
+```
+
 ## 2026-06-24 Tail Anchor -- activeActual degree-0 preflight
 
 Current active gate has moved to:

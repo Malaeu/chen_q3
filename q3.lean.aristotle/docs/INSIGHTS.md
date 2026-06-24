@@ -44314,3 +44314,35 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - The receiver is conditional, not a certificate.  The next exact source gaps
   are `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP` and
   `STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP`.
+
+## Insight (2026-06-24, Step33A.1-A) -- ShapeSqOrder18Source
+
+- Browser/Computer Use follow-up after the checked RawProduct18 receiver
+  pushed the factor-source route, then selected the standalone row-18 realSinc
+  surface for the ShapeSq side.  Local evidence showed ShapeSq was the smaller
+  source patch: existing realSinc/ShapeSq machinery stopped at rows `0..17`,
+  while the RawProduct18 receiver needs ShapeSq through `k <= 18`.
+- Added checked Fin19 realSinc certificate surface:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean`.
+- Checked realSinc items:
+  `Step33Sub0RealSincDerivativeMajorantCert19.coarseTwoBaseAbs_valid` and
+  `Step33Sub0RealSincDerivativeMajorantCert19.coarseTwoBaseAbs_providesAnalyticMajorant`.
+- Added checked standalone row-18 realSinc payload surface:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean`.
+- Checked row-18 items:
+  `primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18`.
+- Added checked ShapeSq source:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean`.
+- Checked ShapeSq items:
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18`.
+- Refreshed activeActual Horner/degree-0 payload schemas to v10/v5.  The
+  ledgers now record `realSincFin19DerivativeSourceChecked = true`,
+  `realSincOrder18DerivativeSourceChecked = true`, and
+  `shapeSqOrder18UniformSourceChecked = true`.
+- This is not RawProduct18 closure: `rawProduct18UniformSourceChecked = false`
+  and the remaining exact source blocker is
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP`.

@@ -47,9 +47,56 @@
       "rawProductTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
       "status": "checked",
       "stillMissing": [
-        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP",
-        "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP"
+        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
       ]
+    },
+    "realSincFin19DerivativeSource": {
+      "kind": "Lean",
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean",
+      "status": "checked",
+      "symbols": {
+        "Step33Sub0RealSincDerivativeMajorantCert19": {
+          "line": 24,
+          "present": true
+        },
+        "coarseTwoBaseAbs_providesAnalyticMajorant": {
+          "line": 134,
+          "present": true
+        },
+        "coarseTwoBaseAbs_valid": {
+          "line": 125,
+          "present": true
+        }
+      }
+    },
+    "realSincOrder18DerivativeSource": {
+      "kind": "Lean",
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean",
+      "status": "checked",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18": {
+          "line": 30,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two": {
+          "line": 21,
+          "present": true
+        }
+      }
+    },
+    "shapeSqOrder18Source": {
+      "failureIfMissing": "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP",
+      "kind": "Lean",
+      "meaning": "proof-grade ShapeSqActual derivative source through k <= 18 for the RawProduct18 Leibniz receiver",
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean",
+      "realSincFin19SupportPath": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean",
+      "realSincOrder18Path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean",
+      "realSincOrder18Theorem": "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two",
+      "realSincThrough18Theorem": "primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18",
+      "shapeSqOrder18Theorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp",
+      "shapeSqThrough18Theorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18",
+      "status": "checked",
+      "stillMissing": []
     }
   },
   "computerUseDecision": {
@@ -85,6 +132,18 @@
     "shapeSqOrder18SourceFailureCode": "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP",
     "used": true
   },
+  "computerUseShapeSqOrder18Decision": {
+    "advisoryOnly": true,
+    "failureCode": "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP",
+    "firstFileToEdit": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean",
+    "firstTheorem": "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two",
+    "internalSupportFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean",
+    "notProofEvidence": true,
+    "recommendedOption": "B",
+    "secondFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean",
+    "shapeSqThrough18Theorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18",
+    "used": true
+  },
   "currentGap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
   "degree0Preflight": {
     "activeScaleAbs": "95492965855137201461330258024/1000000000000000000000000000000",
@@ -97,8 +156,11 @@
     "rawProduct18BridgeReady": true,
     "rawProduct18MajorantReceiverReady": true,
     "rawProduct18UniformSourceChecked": false,
+    "realSincFin19DerivativeSourceChecked": true,
+    "realSincOrder18DerivativeSourceChecked": true,
     "receiverReady": true,
-    "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3"
+    "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v5",
+    "shapeSqOrder18UniformSourceChecked": true
   },
   "degree29ContainerPolicy": {
     "containerCoeffType": "Fin 30 -> Rat",
@@ -110,10 +172,11 @@
       "majorantReceiverReady": true,
       "majorantReceiverSource": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean",
       "remainingFactorSources": [
-        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP",
-        "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP"
+        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
       ],
-      "selectedRoute": "B_rawProduct18"
+      "selectedRoute": "B_rawProduct18",
+      "shapeSqOrder18Source": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean",
+      "shapeSqOrder18SourceReady": true
     },
     "degree0CheckedContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
     "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
@@ -141,10 +204,10 @@
   ],
   "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T03:23:02.088414+00:00",
+  "generatedAt": "2026-06-24T03:43:49.194672+00:00",
   "interfaceReady": true,
   "leanValidationStatus": "not_run_payload_not_emitted",
-  "nextImplementablePatch": "Build the remaining proof-grade factor sources for the checked RawProduct18 receiver: OmegaPrime order17 and ShapeSq order18, then compute the exact RawProduct18 majorant and degree-0 budget before emitting any Lean payload.",
+  "nextImplementablePatch": "Build the remaining proof-grade factor source for the checked RawProduct18 receiver: OmegaPrime order17, then compute the exact RawProduct18 majorant and degree-0 budget before emitting any Lean payload.",
   "outLeanWritten": false,
   "proofGrade": false,
   "proofSafeClosedFields": 1,
@@ -197,8 +260,7 @@
       "majorantDef": "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18Majorant",
       "rawProductTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
       "requiredNextSources": [
-        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP",
-        "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP"
+        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
       ],
       "source": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean",
       "status": "checked"
@@ -232,7 +294,7 @@
     "proofStatus": "interface_ready_rows_missing",
     "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v6"
   },
-  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v8",
+  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v10",
   "smokeSegment": {
     "cell": "Set.Icc 0 (1/10)",
     "cellL": "0",
@@ -253,7 +315,10 @@
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean": "7e658b72f129d833fa8cc331e12f2cf43786a5244d73f3dbcebbc3ab4ba7a89f",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean": "99ec81b257757064fb83ebc5c88f30daddd6e1b1f629ad4334a7a4dfdbcd0f2a",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean": "c8832f56435b42fa05a0d128e54152517b4bad4008afebaa030e8a9050afc68a",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean": "bfa94f3f7865292733f65705ffb6d813abbc658c5efa66fb87fb3f6957d3fbba"
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean": "bfa94f3f7865292733f65705ffb6d813abbc658c5efa66fb87fb3f6957d3fbba",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean": "5cd8144e79aa607f11d44aff8b34cd5d328af0c54740957840c861aff808df5b",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean": "faabe28c1958e82b13974c61b3db52d5933c7a2319a9a5daeffeb684ad19e8ef",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean": "e16cc19cae3870a7e442b6cad4ac01f8e9ab335a05f656b299a258693f5caa86"
   },
   "targetLeanFileWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean",
   "targetLeanSurface": {
@@ -284,8 +349,10 @@
     "rawProduct18BridgeReady": true,
     "rawProduct18MajorantReceiverReady": true,
     "rawProduct18UniformSourceChecked": false,
+    "realSincFin19DerivativeSourceChecked": true,
+    "realSincOrder18DerivativeSourceChecked": true,
     "segmentReceiverReady": true,
-    "shapeSqOrder18UniformSourceChecked": false,
+    "shapeSqOrder18UniformSourceChecked": true,
     "smokeSegmentValidChecked": false
   }
 }

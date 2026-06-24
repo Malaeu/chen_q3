@@ -64,7 +64,7 @@
   },
   "firstFailure": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFileToEdit": "scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py",
-  "generatedAt": "2026-06-24T03:23:02.089524+00:00",
+  "generatedAt": "2026-06-24T03:43:49.195638+00:00",
   "order17UniformProofGrade": false,
   "order17UniformRoute": {
     "bridge": {
@@ -87,18 +87,30 @@
       "rawProductTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_of_factor_derivative_abs",
       "status": "checked",
       "stillMissing": [
-        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP",
-        "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP"
+        "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
       ]
     },
     "notClosedByBridgeAlone": true,
     "remainingFactorSources": [
-      "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP",
-      "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP"
+      "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
     ],
     "requiredUniformSource": "forall eta in Set.Icc 0 (1/10), |D^18(RawProductActual)(eta)| <= order17Abs",
     "selectedBy": "Browser/Computer Use Proshka review",
-    "selectedRoute": "B_rawProduct18"
+    "selectedRoute": "B_rawProduct18",
+    "shapeSqOrder18Source": {
+      "failureIfMissing": "STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP",
+      "kind": "Lean",
+      "meaning": "proof-grade ShapeSqActual derivative source through k <= 18 for the RawProduct18 Leibniz receiver",
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean",
+      "realSincFin19SupportPath": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean",
+      "realSincOrder18Path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean",
+      "realSincOrder18Theorem": "primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two",
+      "realSincThrough18Theorem": "primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18",
+      "shapeSqOrder18Theorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp",
+      "shapeSqThrough18Theorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18",
+      "status": "checked",
+      "stillMissing": []
+    }
   },
   "outLeanWritten": false,
   "outputObject": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json",
@@ -107,6 +119,6 @@
   "receiverReady": true,
   "receiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
   "route": "active_actual_order16_degree0_preflight",
-  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v3",
+  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v5",
   "target": "ActiveScaleCoeff * D^16(ComponentProductActual)"
 }

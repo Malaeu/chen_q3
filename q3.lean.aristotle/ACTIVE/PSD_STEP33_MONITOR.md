@@ -40624,3 +40624,49 @@ STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP
 
 Boundary: no factor-source rows, no RawProduct18 numeric bound, no degree-0
 budget closure, and no Lean payload emission yet.
+
+### 2026-06-24 Update -- ShapeSq order18 source checked
+
+Browser/Computer Use follow-up targeted the smaller source gap first: extend
+the ShapeSq factor source to the RawProduct18 receiver's `k <= 18` interface.
+
+Checked files:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean
+```
+
+Checked items:
+
+```text
+Step33Sub0RealSincDerivativeMajorantCert19.coarseTwoBaseAbs_providesAnalyticMajorant
+primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two
+primaryFiniteRow0Parent0Split100Sub0_realSinc_derivative_abs_through18
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_abs_of_sharp
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18
+```
+
+Current generated gate:
+
+```text
+rawProduct18BridgeReady = true
+rawProduct18MajorantReceiverReady = true
+realSincFin19DerivativeSourceChecked = true
+realSincOrder18DerivativeSourceChecked = true
+shapeSqOrder18UniformSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = false
+rawProduct18UniformSourceChecked = false
+proofGrade = false
+```
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP
+```
+
+Boundary: ShapeSq18 is now a checked factor source, but RawProduct18 is still
+not a uniform source until the Omega/OmegaPrime order-17 side is checked and
+the exact RawProduct18 majorant/budget is computed.
