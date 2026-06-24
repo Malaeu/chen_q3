@@ -20125,6 +20125,56 @@ Live failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 ActiveActual Horner Row-Source Ledger
+
+Computer Use / Proshka route review selected `CHOICE: A`: build a fail-closed
+activeActual Horner row-source generator/ledger before any Lean payload emission.
+
+Generated:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.md
+```
+
+The ledger contract is:
+
+```text
+Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid
+Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid
+primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily
+```
+
+Current ledger status:
+
+```text
+proofStatus = interface_ready_rows_missing
+proofGrade = false
+proofSafeClosedFields = 0
+allPayloadObligationsPassed = false
+outLeanWritten = false
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Regenerated direct ledgers:
+
+```text
+payload schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18
+certificate schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12
+```
+
+Current live blocker:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Next proof-producing patch: provide rational/interval activeActual segment
+coefficients, activeActual remainder rows, Horner stage bounds, exact cover rows,
+and final budget rows, then emit an isolated Lean payload proving
+`Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`.
+
 ## 2026-06-24 ActiveActual Horner family bridge
 
 Computer Use / Proshka selected `CHOICE: A` after the activeActual Horner

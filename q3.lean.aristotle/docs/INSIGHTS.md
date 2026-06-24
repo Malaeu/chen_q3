@@ -44012,3 +44012,31 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_FAMILY_ALIGNMENT_GAP`.
 - Boundary: this bridge is still not row data, not an interval/rational
   certificate, not `DirectConcretePayload.lean`, and not Step33A.1-A closure.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualHornerRowSourceLedger
+
+- Used the in-app Browser/Computer Use after the checked activeActual Horner
+  family bridge.  Advisory result: `CHOICE: A`; treated as route advice only,
+  not proof evidence.
+- Added fail-closed generator
+  `scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py`.
+- Generated row-source ledgers:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
+  and
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.md`.
+- The ledger records the exact Lean row contract:
+  `Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid`,
+  `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`, and the downstream
+  `primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily`.
+- Current status: `proofGrade = false`, `proofSafeClosedFields = 0`,
+  `outLeanWritten = false`, `allPayloadObligationsPassed = false`.
+- Regenerated the direct payload ledger to schema
+  `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18`.
+- Regenerated the direct certificate preflight to schema
+  `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12`.
+- Active blocker remains exactly
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`.
+- Next proof-producing patch: fill this row-source contract with
+  rational/interval activeActual segment rows, Horner stage rows, cover rows,
+  and final budget rows; then emit an isolated Lean payload proving
+  `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`.

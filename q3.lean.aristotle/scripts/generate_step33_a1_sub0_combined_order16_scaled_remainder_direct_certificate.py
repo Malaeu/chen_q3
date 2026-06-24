@@ -18,7 +18,7 @@ from typing import Any
 
 SCHEMA = (
     "q3_psdpd_step33_a1_sub0_combined_order16_"
-    "scaled_remainder_direct_certificate.v11"
+    "scaled_remainder_direct_certificate.v12"
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -117,6 +117,9 @@ COMPONENT_TAYLOR_RESIDUAL_LEDGER = (
 )
 SHAPESQ_DERIV_TIGHT_LEDGER = (
     REQUEST_DIR / "step33_a1_sub0_shapesq_deriv_tight_payload.json"
+)
+ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER = (
+    REQUEST_DIR / "step33_a1_sub0_active_actual_horner_row_source.json"
 )
 
 TARGET_THEOREM = (
@@ -358,6 +361,14 @@ def ledger_bool(data: dict[str, Any], key: str) -> bool:
     return bool(data.get(key))
 
 
+def compact_ledger(path: Path, keys: list[str]) -> dict[str, Any]:
+    data = load_json(path)
+    out: dict[str, Any] = {"path": rel(path), "exists": bool(data)}
+    for key in keys:
+        out[key] = data.get(key)
+    return out
+
+
 def nested_get(data: dict[str, Any], path: list[str], default: Any = None) -> Any:
     current: Any = data
     for key in path:
@@ -482,6 +493,9 @@ def build_ledger() -> dict[str, Any]:
     local_model_ledger = load_json(BIASED_LOCAL_MODEL_LEDGER)
     component_taylor_ledger = load_json(COMPONENT_TAYLOR_RESIDUAL_LEDGER)
     shapesq_tight_ledger = load_json(SHAPESQ_DERIV_TIGHT_LEDGER)
+    active_actual_horner_row_source_ledger = load_json(
+        ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER
+    )
 
     direct_payload_symbols = symbol_lines(DIRECT_PAYLOAD_FILE, DIRECT_PAYLOAD_SYMBOLS)
     zero_model_symbols = symbol_lines(ZERO_MODEL_FILE, ZERO_MODEL_SYMBOLS)
@@ -599,6 +613,10 @@ def build_ledger() -> dict[str, Any]:
         ledger_bool(payload_ledger, "directNonzeroModelIntervalRowsLeanChecked")
         or ledger_bool(source_horner_ledger, "sourceRemainderBoundLeanChecked")
         or ledger_bool(local_model_ledger, "sourceRowsLeanChecked")
+        or ledger_bool(
+            active_actual_horner_row_source_ledger,
+            "allPayloadObligationsPassed",
+        )
         or direct_concrete_payload_present
     )
     lean_payload_allowed = receiver_ready and proof_rows_present
@@ -931,6 +949,9 @@ def build_ledger() -> dict[str, Any]:
         "activeActualHornerFamilyBridgeFile": rel(
             ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE
         ),
+        "activeActualHornerRowSourceLedgerFile": rel(
+            ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER
+        ),
         "nominalPolynomialBridgeSymbols": nominal_polynomial_bridge_symbols,
         "activeActualRemainderBridgeSymbols": (
             active_actual_remainder_bridge_symbols
@@ -958,6 +979,20 @@ def build_ledger() -> dict[str, Any]:
         ),
         "activeActualHornerFamilyBridgeLeanChecked": (
             active_actual_horner_family_bridge_lean_checked
+        ),
+        "activeActualHornerRowSourceLedger": compact_ledger(
+            ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER,
+            [
+                "schema",
+                "proofStatus",
+                "proofGrade",
+                "proofSafeClosedFields",
+                "currentGap",
+                "firstFailureCode",
+                "outLeanWritten",
+                "leanValidationStatus",
+                "allPayloadObligationsPassed",
+            ],
         ),
         "currentGap": INTERVAL_CERT_GAP,
         "firstFailureCode": (
@@ -1342,6 +1377,25 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         "- firstConcreteUpstreamFailureCode: "
         f"`{ledger['firstConcreteUpstreamFailureCode']}`",
         f"- Computer Use route review: `{ledger['computerUseRouteReview']['recommendedOption']}`",
+        "",
+        "## Active-Actual Horner Row-Source Ledger",
+        "",
+        f"- file: `{ledger['activeActualHornerRowSourceLedgerFile']}`",
+        f"- exists: `{ledger['activeActualHornerRowSourceLedger']['exists']}`",
+        f"- schema: `{ledger['activeActualHornerRowSourceLedger']['schema']}`",
+        "- proofStatus: "
+        f"`{ledger['activeActualHornerRowSourceLedger']['proofStatus']}`",
+        f"- proofGrade: `{ledger['activeActualHornerRowSourceLedger']['proofGrade']}`",
+        "- proofSafeClosedFields: "
+        f"`{ledger['activeActualHornerRowSourceLedger']['proofSafeClosedFields']}`",
+        "- allPayloadObligationsPassed: "
+        f"`{ledger['activeActualHornerRowSourceLedger']['allPayloadObligationsPassed']}`",
+        "- firstFailureCode: "
+        f"`{ledger['activeActualHornerRowSourceLedger']['firstFailureCode']}`",
+        "",
+        "This ledger is a generator contract only.  It is not a proof row and "
+        "does not permit Lean payload emission while `allPayloadObligationsPassed` "
+        "is false.",
         "",
         "## Target",
         "",

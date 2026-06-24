@@ -1,6 +1,6 @@
 # Step33A.1-A Direct Scaled-Remainder Certificate Preflight
 
-schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v11`
+schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12`
 route: `direct_whole_expression_scaled_remainder_certificate`
 proofStatus: `lean_payload_generation_blocked_missing_collapsed_segment_rows`
 
@@ -22,6 +22,19 @@ proofStatus: `lean_payload_generation_blocked_missing_collapsed_segment_rows`
 - activeActualHornerFamilyBridgeLeanChecked: `True`
 - firstConcreteUpstreamFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
 - Computer Use route review: `C`
+
+## Active-Actual Horner Row-Source Ledger
+
+- file: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
+- exists: `True`
+- schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1`
+- proofStatus: `interface_ready_rows_missing`
+- proofGrade: `False`
+- proofSafeClosedFields: `0`
+- allPayloadObligationsPassed: `False`
+- firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+
+This ledger is a generator contract only.  It is not a proof row and does not permit Lean payload emission while `allPayloadObligationsPassed` is false.
 
 ## Target
 
@@ -52,7 +65,7 @@ proofStatus: `lean_payload_generation_blocked_missing_collapsed_segment_rows`
 ## Payload Ledger Interface
 
 - path: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json`
-- schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v17`
+- schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18`
 - expectedDataObject: `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectHornerData`
 - expectedValidityTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid`
 - certificateDataObject: `primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderDirectHornerData`

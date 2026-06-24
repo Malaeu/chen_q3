@@ -74238,6 +74238,71 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scale
 
 No Lean proof files were edited in this event.
 
+### 2026-06-24 Report Addendum -- activeActual Horner row-source ledger
+
+Browser/Computer Use route review after the checked activeActual Horner family
+bridge selected `CHOICE: A`: create a fail-closed row-source generator/ledger
+before any Lean payload emission.
+
+New generator:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+```
+
+Generated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.md
+```
+
+The ledger is aligned to the checked Lean surface:
+
+```text
+Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid
+Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid
+primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily
+```
+
+Current ledger state:
+
+```text
+proofStatus = interface_ready_rows_missing
+proofGrade = false
+proofSafeClosedFields = 0
+allPayloadObligationsPassed = false
+outLeanWritten = false
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Regenerated:
+
+```text
+step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18
+
+step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+```
+
+Boundary: this is not Step33A.1-A closure.  The active blocker remains
+`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`; the
+next proof-producing patch must supply rational/interval activeActual segment
+rows, Horner bounds, cover rows, and final budget rows.
+
 ## 2026-06-24 Report Addendum -- activeActual Horner family bridge
 
 Computer Use / Proshka follow-up after the activeActual Horner segment receiver

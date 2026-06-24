@@ -1,6 +1,6 @@
 # Step33A.1-A Direct Scaled-Remainder Payload Ledger
 
-schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v17`
+schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18`
 route: `direct_nonzero_model_scaled_remainder_interval`
 proofStatus: `direct_nonzero_model_row_worklist_emitted_missing_interval_cert`
 
@@ -247,6 +247,19 @@ Meaning: a future proof-grade activeActual Horner row can now feed the checked a
 
 Meaning: valid activeActual Horner segment rows can now be packaged as the existing DirectHorner family receiver expects.  This is a conditional bridge only; the activeActual segment rows, Horner range rows, cover rows, and budget rows are still missing.
 
+## Active-Actual Horner Row-Source Ledger
+
+- file: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
+- exists: `True`
+- schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1`
+- proofStatus: `interface_ready_rows_missing`
+- proofGrade: `False`
+- proofSafeClosedFields: `0`
+- outLeanWritten: `False`
+- firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+
+Meaning: this is the fail-closed generator contract selected by Computer Use / Proshka.  It records the exact segment/family/range/budget rows required before any activeActual Horner payload may be written; it is not a proof object.
+
 Minimal row data:
 
 - exact segment cover
@@ -315,7 +328,7 @@ Required rows:
 
 Next implementable patch:
 
-Use the Lean-checked activeActual Horner segment receiver only as a row contract.  The next proof-producing patch must generate rational/interval row data satisfying primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_horner_cert; the receiver and adapter then transport it through primaryFiniteRow0Parent0Split100Sub0_directHornerFamily_valid_of_activeActualHornerFamily to primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder. Do not emit DirectConcretePayload.lean before the transported collapsed rows, Horner rows, and final budget rows exist.
+Use the fail-closed activeActual Horner row-source ledger as the generator contract.  The next proof-producing patch must fill it with rational/interval row data satisfying primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_horner_cert; the receiver and adapter then transport it through primaryFiniteRow0Parent0Split100Sub0_directHornerFamily_valid_of_activeActualHornerFamily to primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder. Do not emit DirectConcretePayload.lean before the transported collapsed rows, Horner rows, and final budget rows exist.
 
 ## Why P45/full-Taylor Is Not Enough
 

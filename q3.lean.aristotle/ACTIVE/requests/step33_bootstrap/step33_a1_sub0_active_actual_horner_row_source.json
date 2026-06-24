@@ -1,0 +1,190 @@
+{
+  "allPayloadObligationsPassed": false,
+  "computerUseDecision": {
+    "advisoryOnly": true,
+    "decision": "Synchronize a fail-closed activeActual Horner row-source generator with the checked receiver before emitting any Lean payload.",
+    "notProofEvidence": true,
+    "recommendedOption": "A",
+    "used": true
+  },
+  "currentGap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
+  "directLedgerInputs": {
+    "directCertificate": {
+      "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "exists": true,
+      "firstConcreteUpstreamFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
+      "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json",
+      "proofGrade": false,
+      "schema": "q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12"
+    },
+    "directPayload": {
+      "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "exists": true,
+      "firstConcreteUpstreamFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
+      "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json",
+      "proofGrade": false,
+      "schema": "q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18"
+    }
+  },
+  "directPayloadTargetChecked": false,
+  "doNotUseAsProof": [
+    "sampled or float rows",
+    "activeActual center jets as uniform segment bounds",
+    "killed factor-majorant budgets",
+    "P45/full-Taylor wrong-target rows",
+    "separate activeActual and nominal independent norm budgets",
+    "DirectConcretePayload.lean before this ledger has all payload obligations passed"
+  ],
+  "exactRationalArithmeticPassed": false,
+  "failurePriority": [
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_ROW_SOURCE_STALE_RECEIVER_SCHEMA_FAIL",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SEGMENT_RECEIVER_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_FAMILY_ALIGNMENT_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_COEFF_ROWS_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_REMAINDER_ROWS_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_ROWS_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_INTERVAL_BUDGET_ROWS_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_COVER_ROWS_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_FINAL_BUDGET_ROWS_GAP",
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_LEAN_PAYLOAD_VALIDATION_GAP"
+  ],
+  "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
+  "generatedAt": "2026-06-24T00:38:44.590624+00:00",
+  "interfaceClosedFields": 5,
+  "leanValidationStatus": "not_run_rows_missing",
+  "nextImplementablePatch": "Fill this row-source contract with rational/interval segment rows, then emit an isolated Lean payload proving Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid.",
+  "outLeanWritten": false,
+  "proofGrade": false,
+  "proofSafeClosedFields": 0,
+  "proofStatus": "interface_ready_rows_missing",
+  "requiredRows": [
+    {
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_COVER_ROWS_GAP",
+      "id": "A0_segment_cover",
+      "leanField": "Step33Sub0CombinedOrder16ScaledRemainderDirectHornerSegmentCover",
+      "object": "cover of Set.Icc 0 (1/10)",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_COEFF_ROWS_GAP",
+      "id": "A1_active_actual_coefficients",
+      "leanField": "Step33Sub0ActiveActualOrder16HornerSegmentCert.coeff",
+      "object": "proof-grade coeff : Fin 30 -> Rat for scaled activeActual",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_REMAINDER_ROWS_GAP",
+      "id": "A2_active_actual_remainder",
+      "leanField": "Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid.remainderBound",
+      "object": "uniform activeActual order-16 segment remainder bound",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_ROWS_GAP",
+      "id": "A3_horner_range",
+      "leanField": "Step33Sub0ActiveActualOrder16HornerDirectRangeCert.Valid",
+      "object": "stageLower/stageUpper Horner bounds",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_INTERVAL_BUDGET_ROWS_GAP",
+      "id": "A4_interval_budget",
+      "leanField": "intervalLowerBudget and intervalUpperBudget",
+      "object": "polyLower/polyUpper/lower/upper interval budget rows",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_FINAL_BUDGET_ROWS_GAP",
+      "id": "A5_final_budget",
+      "leanField": "segmentBudget plus hResidualAbs",
+      "object": "segment residualAbs <= family residualAbs and residualAbs equals target budget",
+      "status": "missing"
+    }
+  ],
+  "route": "active_actual_order16_horner_row_source",
+  "rowDataContract": {
+    "cell": "Set.Icc 0 (1/10)",
+    "center": "1/20",
+    "degree": 29,
+    "familyFields": [
+      "n",
+      "residualAbs",
+      "seg",
+      "range"
+    ],
+    "familyValidFields": [
+      "activeValid",
+      "rangeValid",
+      "intervalLowerBudget",
+      "intervalUpperBudget",
+      "segmentResidualNonneg",
+      "segmentLowerBudget",
+      "segmentUpperBudget",
+      "segmentBudget",
+      "cover"
+    ],
+    "rangeFields": [
+      "stageLower : Fin (degree + 1) -> Rat",
+      "stageUpper : Fin (degree + 1) -> Rat"
+    ],
+    "segmentFields": [
+      "cellL",
+      "cellU",
+      "coeff : Fin 30 -> Rat",
+      "polyErrorAbs",
+      "polyLower",
+      "polyUpper",
+      "lower",
+      "upper",
+      "residualAbs"
+    ],
+    "segmentValidFields": [
+      "cellSubset",
+      "polyErrorNonneg",
+      "remainderBound for activeScale * D^16(ComponentProductActual)"
+    ]
+  },
+  "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1",
+  "sourceFileDigests": {
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean": "7779f7ada25fa2422977eacae90788724294a965944e50d0d69c37d9fd314676",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean": "26bc3873205b8196731bdb86015318d8457f4a51d1b76e9675e174ffd6c19238",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerCert.lean": "3f3d6cf5e0d217ab8177fbc121fc1272740914c7b9beb210db3cef993d55936b",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerSourceBridge.lean": "e78af17bb313fec8e155d2e0dab906b3ed2c53c2c44e0c9c413ef1afde94e6f3"
+  },
+  "targetLeanSurface": {
+    "collapsedReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsed_segment_remainder_of_activeActualHorner",
+    "familyBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_directHornerFamily_valid_of_activeActualHornerFamily",
+    "familyDataObject": "Step33Sub0ActiveActualOrder16HornerFamilyCert",
+    "familyValidPredicate": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
+    "futureLeanPayloadFileWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerConcretePayload.lean",
+    "payloadTargetTheorem": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
+    "segmentDataObject": "Step33Sub0ActiveActualOrder16HornerSegmentCert",
+    "segmentReceiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_horner_cert",
+    "segmentValidPredicate": "Step33Sub0ActiveActualOrder16HornerSegmentCert.Valid",
+    "sourcePropTheorem": "primaryFiniteRow0Parent0Split100Sub0_nonzeroModelSourceProp_of_activeActualHornerFamily",
+    "targetBudgetConstant": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16BiasedResidualRemainderAbs"
+  },
+  "validationGates": {
+    "activeActualRemainderRowsChecked": false,
+    "allCoefficientRowsRational": false,
+    "allPayloadObligationsPassed": false,
+    "allSegmentsProvided": false,
+    "collapsedSourceBridgeLeanChecked": true,
+    "directHornerReceiverLeanChecked": true,
+    "directPayloadTargetChecked": false,
+    "exactRationalArithmeticPassed": false,
+    "familyBridgeLeanChecked": true,
+    "finalResidualBudgetRowsChecked": false,
+    "hornerRangeRowsChecked": false,
+    "interfaceReady": true,
+    "intervalBudgetRowsChecked": false,
+    "leanValidationStatus": "not_run_rows_missing",
+    "outLeanWritten": false,
+    "residualAbsEqualityChecked": false,
+    "segmentCoverChecked": false,
+    "segmentReceiverLeanChecked": true
+  }
+}

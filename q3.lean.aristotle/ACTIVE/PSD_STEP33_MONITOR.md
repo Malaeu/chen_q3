@@ -39887,6 +39887,70 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual Horner row-source ledger emitted
+
+Browser/Computer Use follow-up after the checked activeActual Horner family
+bridge selected:
+
+```text
+CHOICE: A
+```
+
+Meaning: synchronize a fail-closed activeActual Horner row-source generator with
+the checked receiver before emitting any Lean payload.  The advice is route
+selection only; proof evidence remains local scripts, JSON/MD ledgers, and
+Lean-checked files.
+
+New generator:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+```
+
+Generated ledgers:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.md
+```
+
+Key ledger fields:
+
+```text
+proofStatus = interface_ready_rows_missing
+proofGrade = false
+proofSafeClosedFields = 0
+allPayloadObligationsPassed = false
+outLeanWritten = false
+firstFailureCode = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18
+
+step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+schema = q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12
+```
+
+Current live blocker remains:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+Next proof-producing patch: fill the activeActual Horner row-source contract
+with rational/interval segment coefficients, activeActual remainder rows, Horner
+stage bounds, exact cover rows, and final budget rows; only then emit an
+isolated Lean payload proving
+`Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`.
+
+Boundary: no Lean proof files were edited in this event, no
+`DirectConcretePayload.lean`, no `interval_generated` theorem, and no Step33A.1-A
+closure exists yet.
+
 ### 2026-06-24 Update -- activeActual Horner family bridge checked
 
 Computer Use / Proshka follow-up after the activeActual Horner segment receiver

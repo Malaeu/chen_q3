@@ -21,7 +21,7 @@ from typing import Any
 
 SCHEMA = (
     "q3_psdpd_step33_a1_sub0_combined_order16_"
-    "scaled_remainder_direct_payload.v17"
+    "scaled_remainder_direct_payload.v18"
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -139,6 +139,9 @@ COMPONENT_TAYLOR_RESIDUAL_LEDGER_FILE = (
 )
 SHAPESQ_DERIV_TIGHT_LEDGER_FILE = (
     REQUEST_DIR / "step33_a1_sub0_shapesq_deriv_tight_payload.json"
+)
+ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER_FILE = (
+    REQUEST_DIR / "step33_a1_sub0_active_actual_horner_row_source.json"
 )
 
 DIRECT_PAYLOAD_SYMBOLS = [
@@ -393,6 +396,9 @@ FIRST_GENERATED_SOURCE_PROP_THEOREM = (
 FIRST_PROOF_PRODUCING_GENERATOR = (
     "scripts/generate_step33_a1_sub0_combined_order16_"
     "scaled_remainder_direct_certificate.py"
+)
+ACTIVE_ACTUAL_HORNER_ROW_SOURCE_GENERATOR = (
+    "scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py"
 )
 FIRST_PROOF_PRODUCING_LEAN_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16"
@@ -679,6 +685,9 @@ def build_direct_row_source_implementation_review() -> dict[str, Any]:
 def build_ledger() -> dict[str, Any]:
     component_taylor_residual_ledger = load_json(COMPONENT_TAYLOR_RESIDUAL_LEDGER_FILE)
     shapesq_deriv_tight_ledger = load_json(SHAPESQ_DERIV_TIGHT_LEDGER_FILE)
+    active_actual_horner_row_source_ledger = load_json(
+        ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER_FILE
+    )
     direct_symbols = file_contains(DIRECT_PAYLOAD_FILE, DIRECT_PAYLOAD_SYMBOLS)
     zero_model_symbols = file_contains(ZERO_MODEL_FILE, ZERO_MODEL_SYMBOLS)
     interval_symbols = file_contains(INTERVAL_PAYLOAD_FILE, INTERVAL_PAYLOAD_SYMBOLS)
@@ -1383,6 +1392,9 @@ def build_ledger() -> dict[str, Any]:
         "activeActualHornerFamilyBridgeFile": rel(
             ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE
         ),
+        "activeActualHornerRowSourceLedgerFile": rel(
+            ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER_FILE
+        ),
         "biasedSourceHornerFile": rel(BIASED_SOURCE_HORNER_FILE),
         "biasedResidualIntervalFile": rel(BIASED_RESIDUAL_INTERVAL_FILE),
         "biasedSignedFactorAdapterFile": rel(BIASED_SIGNED_FACTOR_ADAPTER_FILE),
@@ -1443,6 +1455,19 @@ def build_ledger() -> dict[str, Any]:
         ),
         "activeActualHornerFamilyBridgeLeanChecked": (
             active_actual_horner_family_bridge_present
+        ),
+        "activeActualHornerRowSourceLedger": summarize_existing_ledger(
+            ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER_FILE,
+            [
+                "schema",
+                "proofStatus",
+                "proofGrade",
+                "proofSafeClosedFields",
+                "currentGap",
+                "firstFailureCode",
+                "outLeanWritten",
+                "leanValidationStatus",
+            ],
         ),
         "biasedSourceHornerPresent": biased_source_horner_present,
         "biasedResidualSourceSegmentPresent": biased_residual_source_segment_present,
@@ -1674,9 +1699,9 @@ def build_ledger() -> dict[str, Any]:
         },
         "postBudgetKillFailureCode": POST_BUDGET_KILL_FAILURE,
         "nextImplementablePatch": (
-            "Use the Lean-checked activeActual Horner segment receiver only as "
-            "a row contract.  The next proof-producing patch must generate "
-            "rational/interval row data satisfying "
+            "Use the fail-closed activeActual Horner row-source ledger as the "
+            "generator contract.  The next proof-producing patch must fill it "
+            "with rational/interval row data satisfying "
             f"{ACTIVE_ACTUAL_HORNER_SEGMENT_THEOREM}; the receiver and adapter "
             f"then transport it through {ACTIVE_ACTUAL_HORNER_FAMILY_VALID_THEOREM} "
             f"to {COLLAPSED_SEGMENT_REMAINDER_THEOREM}. "
@@ -1685,6 +1710,8 @@ def build_ledger() -> dict[str, Any]:
         ),
         "nextProofProducingPatch": {
             "generator": FIRST_PROOF_PRODUCING_GENERATOR,
+            "rowSourceGenerator": ACTIVE_ACTUAL_HORNER_ROW_SOURCE_GENERATOR,
+            "rowSourceLedger": rel(ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER_FILE),
             "leanFile": FIRST_PROOF_PRODUCING_LEAN_FILE,
             "theorem": FIRST_GENERATED_INTERVAL_THEOREM,
             "missingRemainderTheorem": COLLAPSED_SEGMENT_REMAINDER_THEOREM,
@@ -2122,6 +2149,30 @@ def render_markdown(ledger: dict[str, Any]) -> str:
             "conditional bridge only; the activeActual segment rows, Horner "
             "range rows, cover rows, and budget rows are still missing.",
             "",
+            "## Active-Actual Horner Row-Source Ledger",
+            "",
+            "- file: "
+            f"`{ledger['activeActualHornerRowSourceLedgerFile']}`",
+            "- exists: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['exists']}`",
+            "- schema: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['schema']}`",
+            "- proofStatus: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['proofStatus']}`",
+            "- proofGrade: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['proofGrade']}`",
+            "- proofSafeClosedFields: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['proofSafeClosedFields']}`",
+            "- outLeanWritten: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['outLeanWritten']}`",
+            "- firstFailureCode: "
+            f"`{ledger['activeActualHornerRowSourceLedger']['firstFailureCode']}`",
+            "",
+            "Meaning: this is the fail-closed generator contract selected by "
+            "Computer Use / Proshka.  It records the exact segment/family/range/"
+            "budget rows required before any activeActual Horner payload may be "
+            "written; it is not a proof object.",
+            "",
             "Minimal row data:",
             "",
         ]
@@ -2414,6 +2465,15 @@ def render_row_source_audit_markdown(ledger: dict[str, Any]) -> str:
             f"- whyNotB: {review['whyNotB']}",
             f"- whyNotD: {review['whyNotD']}",
             "",
+            "## Active-Actual Horner Row-Source Ledger",
+            "",
+        ]
+    )
+    for key, value in ledger["activeActualHornerRowSourceLedger"].items():
+        lines.append(f"- `{key}`: `{value}`")
+    lines.extend(
+        [
+            "",
             "## Source Availability Audit",
             "",
         ]
@@ -2480,6 +2540,9 @@ def main() -> None:
                 ],
                 "nextImplementablePatch": ledger["nextImplementablePatch"],
                 "nextProofProducingPatch": ledger["nextProofProducingPatch"],
+                "activeActualHornerRowSourceLedger": ledger[
+                    "activeActualHornerRowSourceLedger"
+                ],
                 "upstreamProofProducingPatch": ledger["upstreamProofProducingPatch"],
                 "rowObligations": ledger["rowObligations"],
                 "candidateReuseRoutes": ledger["candidateReuseRoutes"],
@@ -2512,6 +2575,9 @@ def main() -> None:
                 "directSourceBridgeSymbols": ledger["directSourceBridgeSymbols"],
                 "directRowSourceImplementationReview": ledger[
                     "directRowSourceImplementationReview"
+                ],
+                "activeActualHornerRowSourceLedger": ledger[
+                    "activeActualHornerRowSourceLedger"
                 ],
                 "sourceAvailabilityAudit": ledger["sourceAvailabilityAudit"],
                 "rowObligations": ledger["rowObligations"],
