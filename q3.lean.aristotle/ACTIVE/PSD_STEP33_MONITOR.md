@@ -39887,6 +39887,60 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual ContDiff17 degree-0 wrapper checked
+
+Computer Use / Proshka route advice:
+
+```text
+CHOSEN: A
+degree 0 only before D18/D46 machinery
+```
+
+Added and direct-Lean checked in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
+```
+
+New checked objects:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17
+```
+
+Meaning: from
+`ContDiff Real 17 primaryFiniteRow0Parent0Split100Sub0ComponentProductActual`,
+Lean now derives the derivative-shift/differentiability obligations needed by
+the existing degree-0 source bridge.  This is only an interface tightening; it
+does not supply the D16 center row, D17 uniform row, or rational budget.
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_active_actual_horner_row_source.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v5
+
+step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v4
+```
+
+Current live proof-producing gap remains:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+First concrete source subgap remains:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Remaining exact inputs: proof-grade ContDiff17(ComponentProductActual), D16
+center enclosure, D17 uniform bound, and exact rational degree-0 budget.  No
+Step33A.1-A closure exists yet.
+
 ### 2026-06-24 Update -- activeActual degree-0 source bridge checked
 
 Browser/Computer Use follow-up after the checked low-degree bridge selected:

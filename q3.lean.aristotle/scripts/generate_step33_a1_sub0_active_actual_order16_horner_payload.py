@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v4"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -91,6 +91,8 @@ REQUIRED_DEGREE0_SOURCE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
 ]
 
 
@@ -194,8 +196,8 @@ def build_ledger() -> dict[str, Any]:
             "id": "S2_low_degree_uniform_remainder",
             "status": "missing",
             "required": (
-                "D16 center enclosure, D17 uniform bound, derivative-shift/"
-                "differentiability source, and exact rational budget"
+                "ContDiff17(ComponentProductActual), D16 center enclosure, "
+                "D17 uniform bound, and exact rational budget"
             ),
             "analyticOrderForDegree0": "D16 center plus D17 uniform derivative source",
             "failureCode": D16_CENTER_D17_SOURCE_GAP,
@@ -205,7 +207,7 @@ def build_ledger() -> dict[str, Any]:
             "status": "checked" if degree0_ready else "missing",
             "source": rel(DEGREE0_SOURCE_LEAN),
             "coeffDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff",
-            "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+            "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
             "failureCode": D16_CENTER_D17_SOURCE_GAP,
         },
         {
@@ -264,6 +266,7 @@ def build_ledger() -> dict[str, Any]:
             "validTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_valid",
             "remainderTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment0_remainder_generated",
             "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+            "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
             "familyValidTarget": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
             "payloadTarget": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
         },
@@ -287,6 +290,7 @@ def build_ledger() -> dict[str, Any]:
             "transferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
             "degree0SourceBridge": rel(DEGREE0_SOURCE_LEAN),
             "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+            "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
             "firstConcreteSubgap": D16_CENTER_D17_SOURCE_GAP,
             "fullDegree29Specialization": {
                 "coefficientJetOrdersNeeded": "16..45",
@@ -332,8 +336,8 @@ def build_ledger() -> dict[str, Any]:
         ],
         "nextImplementablePatch": (
             "Fill the degree-0 source inputs: proof-grade D16 center enclosure, "
-            "proof-grade D17 uniform bound, derivative-shift/differentiability "
-            "source, and exact rational budget; then zero-extend into the "
+            "proof-grade D17 uniform bound, a ContDiff17 source for "
+            "ComponentProductActual, and exact rational budget; then zero-extend into the "
             "existing Fin30 activeActual Horner container."
         ),
     }

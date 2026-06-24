@@ -27,6 +27,7 @@
   "degree29ContainerPolicy": {
     "containerCoeffType": "Fin 30 -> Rat",
     "containerDegree": 29,
+    "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
     "degree0SourceBridge": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean",
     "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
     "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
@@ -51,10 +52,10 @@
   ],
   "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
   "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP",
-  "generatedAt": "2026-06-24T01:54:34.869260+00:00",
+  "generatedAt": "2026-06-24T02:08:39.267787+00:00",
   "interfaceReady": true,
   "leanValidationStatus": "not_run_payload_not_emitted",
-  "nextImplementablePatch": "Fill the degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, derivative-shift/differentiability source, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.",
+  "nextImplementablePatch": "Fill the degree-0 source inputs: proof-grade D16 center enclosure, proof-grade D17 uniform bound, a ContDiff17 source for ComponentProductActual, and exact rational budget; then zero-extend into the existing Fin30 activeActual Horner container.",
   "outLeanWritten": false,
   "proofGrade": false,
   "proofSafeClosedFields": 0,
@@ -79,7 +80,7 @@
       "analyticOrderForDegree0": "D16 center plus D17 uniform derivative source",
       "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
       "id": "S2_low_degree_uniform_remainder",
-      "required": "D16 center enclosure, D17 uniform bound, derivative-shift/differentiability source, and exact rational budget",
+      "required": "ContDiff17(ComponentProductActual), D16 center enclosure, D17 uniform bound, and exact rational budget",
       "status": "missing"
     },
     {
@@ -88,7 +89,7 @@
       "id": "S2a_degree0_source_interface",
       "source": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean",
       "status": "checked",
-      "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source"
+      "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17"
     },
     {
       "def": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
@@ -117,9 +118,9 @@
     "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json",
     "proofGrade": false,
     "proofStatus": "interface_ready_rows_missing",
-    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v4"
+    "schema": "q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v5"
   },
-  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v3",
+  "schema": "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v4",
   "smokeSegment": {
     "cell": "Set.Icc 0 (1/10)",
     "cellL": "0",
@@ -131,9 +132,9 @@
     "payloadAllowed": false
   },
   "sourceFileDigests": {
-    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json": "1ef0ae3e65794f3cc6e8033babac6bb5eeb09cc8e3cd0ef11d83434576f84292",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json": "7d15e2a8a79a613142a7db84e15fc2e58edeaf76c9ffc8d9816f2755c9a5ac7f",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean": "724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4",
-    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean": "2f3b65a09280f1aeacf76ab33fa35cfb7ccfeb1c9d38410c2b48d4f08aea6e7e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean": "c3630a939af04e7e99d2414323950decf994689cf4f1509e261467e59964335e",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean": "7779f7ada25fa2422977eacae90788724294a965944e50d0d69c37d9fd314676",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerSegmentCert.lean": "26bc3873205b8196731bdb86015318d8457f4a51d1b76e9675e174ffd6c19238",
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualLowDegreeBridge.lean": "eb2d78a61788b5dfe9a08c6ea678969485da8006c028eac5a13cf5e075ad2d75"
@@ -141,6 +142,7 @@
   "targetLeanFileWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerPayload.lean",
   "targetLeanSurface": {
     "dataObject": "primaryFiniteRow0Parent0Split100Sub0ActiveActualOrder16HornerSegment0",
+    "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
     "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
     "familyValidTarget": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
     "payloadTarget": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",

@@ -74238,6 +74238,72 @@ python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scale
 
 No Lean proof files were edited in this event.
 
+### 2026-06-24 Update -- activeActual ContDiff17 degree-0 wrapper checked
+
+Computer Use / Proshka route advice:
+
+```text
+CHOSEN: A
+degree 0 only before D18/D46 machinery
+```
+
+Added and direct-Lean checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
+```
+
+New checked wrapper theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17
+primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17
+```
+
+Meaning: the degree-0 activeActual source bridge no longer needs separate
+handwritten derivative-shift/differentiability assumptions when a proof of
+`ContDiff Real 17 primaryFiniteRow0Parent0Split100Sub0ComponentProductActual`
+is supplied.  The wrapper derives differentiability of
+`D^16(ComponentProductActual)` and rewrites its derivative to
+`D^17(ComponentProductActual)`.
+
+Regenerated ledgers:
+
+```text
+step33_a1_sub0_active_actual_horner_row_source.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v5
+
+step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v4
+```
+
+Validation:
+
+```text
+LEAN_PATH=.lake/build/lib/lean:.lake/packages/mathlib/.lake/build/lib/lean:.lake/packages/plausible/.lake/build/lib/lean:.lake/packages/proofwidgets/.lake/build/lib/lean:.lake/packages/batteries/.lake/build/lib/lean:.lake/packages/aesop/.lake/build/lib/lean:.lake/packages/importGraph/.lake/build/lib/lean:.lake/packages/LeanSearchClient/.lake/build/lib/lean:.lake/packages/Qq/.lake/build/lib/lean lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.olean -i .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.ilean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 scripts/generate_step33_a1_sub0_active_actual_horner_row_source.py
+python3 scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+```
+
+Current live proof-producing gap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+```
+
+First concrete source subgap:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Boundary: no proof-grade ContDiff17(ComponentProductActual) source, no D16
+center enclosure, no D17 uniform bound, no exact degree-0 rational budget, no
+concrete activeActual Horner payload, and no Step33A.1-A closure exists yet.
+
 ## 2026-06-24 ActiveActual Order-16 Horner Payload Gate
 
 Computer Use / Proshka follow-up after the activeActual Horner row-source

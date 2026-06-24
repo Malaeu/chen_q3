@@ -44134,3 +44134,34 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
 - Next proof-producing patch: provide/check the D16 center row, D17 uniform row,
   derivative-shift/differentiability source, and exact budget for degree 0.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualContDiff17Degree0Wrapper
+
+- Local `q3_docs` searches for activeActual D16 center / D17 uniform /
+  derivative-shift sources found no existing proof object for the current
+  row-source gap.
+- External primary Mathlib docs confirm the right local bridge surface:
+  `ContDiff.differentiable_iteratedDeriv` supplies differentiability of
+  `D^16(ComponentProductActual)` from `ContDiff17`, and `iteratedDeriv_succ`
+  rewrites its derivative to `D^17(ComponentProductActual)`.
+- Used the already-open Browser/Computer Use Proshka thread as route advice.
+  Advisory result again chose Route A: degree 0 first in
+  `PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`.
+- Added Lean-checked wrappers:
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_contDiff17`
+  and
+  `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`.
+- Meaning: derivative-shift and differentiability are no longer separate
+  handwritten source assumptions once a proof of
+  `ContDiff Real 17 primaryFiniteRow0Parent0Split100Sub0ComponentProductActual`
+  is available.
+- Remaining proof inputs are still not supplied: proof-grade
+  `ContDiff17(ComponentProductActual)`, D16 center enclosure, D17 uniform bound,
+  and exact rational degree-0 budget.
+- Regenerated activeActual ledgers to
+  `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v5` and
+  `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v4`.
+- Current live gap remains
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`;
+  first concrete subgap remains
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
