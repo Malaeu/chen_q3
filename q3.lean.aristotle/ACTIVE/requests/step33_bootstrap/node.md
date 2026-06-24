@@ -20309,6 +20309,64 @@ Next exact patch:
 ```text
 export exact Rat scalar for RawProductActualOrder18MajorantGenerated, then run
 coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
+
+## 2026-06-24 RawProduct18 Rat budget audit checked
+
+Computer Use / Proshka follow-up selected a separate BudgetAudit file rather
+than mixing exact scalar ledger arithmetic into the RawProduct18 analytic
+source file.  Local Lean now checks the exact Rat scalar bridge.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18BudgetAudit.lean
+```
+
+Checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat
+primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_rat
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat
+```
+
+Generator:
+
+```text
+scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Regenerated files:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md
+```
+
+Current exact gate:
+
+```text
+rawProduct18UniformSourceChecked = true
+rawProduct18BudgetAuditChecked = true
+rawProduct18Order17AbsExported = true
+order17UniformProofGrade = true
+budgetAudit.missing = [coeffErrorAbs, polyErrorAbs]
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+The full exact `order17Abs` is stored in JSON.  The markdown display is
+head/tail shortened and records `len=24620`.
+
+Boundary: this is not Step33A.1-A closure.  The remaining local bridge is the
+proof-grade D16 center enclosure plus `coeffErrorAbs` and `polyErrorAbs`, then
+the exact budget comparison:
+
+```text
+coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
+```
 ```
 
 ## 2026-06-24 RawProduct18 OmegaPrime Order17 Rational Payload

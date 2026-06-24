@@ -44429,3 +44429,25 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `Real` majorant definition; the degree-0 budget still needs an exact Rat
   scalar export for `RawProductActualOrder18MajorantGenerated`, plus the D16
   center enclosure, `coeffErrorAbs`, and `polyErrorAbs`.
+
+## Insight (2026-06-24, Step33A.1-A) -- RawProduct18RatBudgetAuditChecked
+
+- Added checked standalone RawProduct18 budget audit:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18BudgetAudit.lean`.
+- Checked theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat`.
+- Added downstream Rat-bound adapters:
+  `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_rat` and
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat`.
+- Updated `scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py`
+  to fail-closed on the new audit symbols and to export the exact
+  RawProduct18 `order17Abs` through Lean `#eval toString`.  The JSON stores the
+  full exact fraction; markdown displays head/tail with `len=24620`.
+- Regenerated activeActual Horner/degree-0 ledgers.  They now record
+  `rawProduct18BudgetAuditChecked = true`,
+  `rawProduct18Order17AbsExported = true`, and
+  `order17UniformProofGrade = true`.
+- Boundary: this is not Step33A.1-A closure.  The exact remaining gate is the
+  proof-grade D16 center enclosure plus `coeffErrorAbs` and `polyErrorAbs`,
+  followed by the exact budget comparison
+  `coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs`.

@@ -7,7 +7,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 - proofStatus: `blocked_missing_d16_center_d17_uniform_source`
 - proofGrade: `False`
-- proofSafeClosedFields: `1`
+- proofSafeClosedFields: `2`
 - interfaceReady: `True`
 - outLeanWritten: `False`
 - currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
@@ -51,6 +51,9 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `rawProduct18BridgeReady`: `True`
 - `rawProduct18MajorantReceiverReady`: `True`
 - `rawProduct18UniformSourceChecked`: `True`
+- `rawProduct18BudgetAuditChecked`: `True`
+- `rawProduct18Order17Abs`: `536101492457011486373710878060534674555768693644010900930419739115781589076738679598264326...310667112469673156738281250000000000000000000000000000000000000000000000000000000000000000 (len=24620)`
+- `rawProduct18Order17AbsEvalError`: `None`
 - `omegaPrimeOrder17AnalyticTsumSourceChecked`: `True`
 - `omegaPrimeOrder17UniformSourceChecked`: `True`
 - `omegaPrimeOrder17Abs`: `1024379792916537436656292891459584/152587890625`
@@ -151,8 +154,20 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean`
 - `rawProductTheorem`: `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated`
 - `componentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated`
-- `requiredNextSource`: `exact Rat scalar export for RawProductActualOrder18MajorantGenerated before the degree-0 budget formula can be checked`
+- `requiredNextSource`: `exact Rat budget audit for RawProductActualOrder18MajorantGenerated before the degree-0 budget formula can spend order17Abs`
 - `failureCode`: `STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP`
+
+### S2g_rawProduct18_rat_budget_audit
+
+- `status`: `checked`
+- `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18BudgetAudit.lean`
+- `majorantDef`: `primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat`
+- `equalityTheorem`: `primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat`
+- `componentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat`
+- `order17Abs`: `536101492457011486373710878060534674555768693644010900930419739115781589076738679598264326...310667112469673156738281250000000000000000000000000000000000000000000000000000000000000000 (len=24620)`
+- `evalError`: `None`
+- `requiredNextSource`: `D16 center enclosure, coeffErrorAbs, polyErrorAbs, and exact degree-0 budget comparison`
+- `failureCode`: `STEP33_A1_SUB0_RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP`
 
 ### S3_zero_extend_low_degree_to_Fin30
 
@@ -183,6 +198,8 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `rawProduct18BridgeReady`: `True`
 - `rawProduct18MajorantReceiverReady`: `True`
 - `rawProduct18UniformSourceChecked`: `True`
+- `rawProduct18BudgetAuditChecked`: `True`
+- `rawProduct18Order17AbsExported`: `True`
 - `omegaPrimeOrder17AnalyticTsumSourceChecked`: `True`
 - `omegaPrimeOrder17UniformSourceChecked`: `True`
 - `omegaPrimeOrder17RationalPayloadChecked`: `True`
@@ -322,4 +339,4 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Next Implementable Patch
 
-Export an exact Rat scalar mirror for RawProductActualOrder18MajorantGenerated, then combine it with the D16 center enclosure, coeffErrorAbs, and polyErrorAbs in the degree-0 budget comparison before emitting any Lean payload.
+Build the proof-grade D16 center enclosure for the activeActual degree-0 source, export coeffErrorAbs/polyErrorAbs, and run the exact degree-0 budget comparison using the checked RawProduct18 Rat order17Abs before emitting any Lean payload.

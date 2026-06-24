@@ -13,11 +13,17 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
+import subprocess
+import sys
 from datetime import datetime, timezone
 from fractions import Fraction
 from pathlib import Path
 from typing import Any
 
+
+if hasattr(sys, "set_int_max_str_digits"):
+    sys.set_int_max_str_digits(0)
 
 SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v10"
 DEGREE0_SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v5"
@@ -67,6 +73,10 @@ RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN = (
 RAW_PRODUCT18_SOURCE_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean"
+)
+RAW_PRODUCT18_BUDGET_AUDIT_LEAN = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18BudgetAudit.lean"
 )
 REALSINC_DERIVATIVE_CERT19_LEAN = (
     PROOFS / "PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean"
@@ -118,6 +128,9 @@ RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP = (
 )
 RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP = (
     "STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP"
+)
+RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP = (
+    "STEP33_A1_SUB0_RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP"
 )
 OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP = (
     "STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP"
@@ -183,6 +196,13 @@ REQUIRED_RAW_PRODUCT18_SOURCE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantGenerated",
     "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated",
     "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated",
+]
+
+REQUIRED_RAW_PRODUCT18_BUDGET_AUDIT_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat",
+    "primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat",
 ]
 
 REQUIRED_REALSINC_CERT19_SYMBOLS = [
@@ -437,6 +457,42 @@ def raw_product18_uniform_source(
     }
 
 
+def raw_product18_budget_audit_source(
+    audit_ready: bool,
+    order17_abs: str | None,
+    eval_error: str | None,
+) -> dict[str, Any]:
+    return {
+        "status": "checked" if audit_ready and order17_abs is not None else "missing",
+        "kind": "Lean+#eval",
+        "path": rel(RAW_PRODUCT18_BUDGET_AUDIT_LEAN),
+        "majorantDef": (
+            "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat"
+        ),
+        "equalityTheorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat"
+        ),
+        "rawProductTheorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_rat"
+        ),
+        "componentTransferTheorem": (
+            "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat"
+        ),
+        "order17Abs": order17_abs,
+        "evalError": eval_error,
+        "meaning": (
+            "proof-grade exact Rat scalar for the full RawProduct18/ComponentProductActual "
+            "D17 uniform budget; not the OmegaPrime factor scalar"
+        ),
+        "stillMissing": (
+            []
+            if audit_ready and order17_abs is not None
+            else [RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP]
+        ),
+        "failureIfMissing": RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP,
+    }
+
+
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8") if path.exists() else ""
 
@@ -485,6 +541,55 @@ def rat_str(value: Fraction | None) -> str | None:
     if value.denominator == 1:
         return str(value.numerator)
     return f"{value.numerator}/{value.denominator}"
+
+
+def lean_path() -> str:
+    dirs = [
+        ROOT / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "mathlib" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "plausible" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "proofwidgets" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "batteries" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "aesop" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "importGraph" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "LeanSearchClient" / ".lake" / "build" / "lib" / "lean",
+        ROOT / ".lake" / "packages" / "Qq" / ".lake" / "build" / "lib" / "lean",
+    ]
+    base = ":".join(str(path) for path in dirs)
+    existing = os.environ.get("LEAN_PATH")
+    return f"{base}:{existing}" if existing else base
+
+
+def eval_raw_product18_majorant_rat() -> tuple[str | None, str | None]:
+    code = """\
+import Q3.Proofs.PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18BudgetAudit
+#eval toString Q3.PSDpd.Step33.primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat
+"""
+    env = os.environ.copy()
+    env["LEAN_PATH"] = lean_path()
+    try:
+        result = subprocess.run(
+            ["lean", "--stdin"],
+            cwd=ROOT,
+            env=env,
+            input=code,
+            text=True,
+            capture_output=True,
+            timeout=90,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return None, str(exc)
+    if result.returncode != 0:
+        return None, (result.stderr or result.stdout).strip()[:1000]
+    text = result.stdout.strip()
+    try:
+        value = json.loads(text)
+    except json.JSONDecodeError:
+        return None, f"unexpected Lean #eval output: {text[:1000]}"
+    if not isinstance(value, str) or not value:
+        return None, f"unexpected Lean #eval value: {value!r}"
+    return value, None
 
 
 def exact_degree0_budget(
@@ -558,6 +663,9 @@ def build_degree0_preflight(
     raw_product18_bridge_ready: bool,
     raw_product18_majorant_receiver_ready: bool,
     raw_product18_source_ready: bool,
+    raw_product18_budget_audit_ready: bool,
+    raw_product18_order17_abs: str | None,
+    raw_product18_order17_abs_eval_error: str | None,
     shape_sq_order18_ready: bool,
     omega_prime_order17_analytic_ready: bool,
     omega_prime_order17_rational_ready: bool,
@@ -568,12 +676,18 @@ def build_degree0_preflight(
         "d16CenterUpper": None,
         "coeff0": None,
         "coeffErrorAbs": None,
-        "order17Abs": None,
+        "order17Abs": (
+            raw_product18_order17_abs
+            if raw_product18_budget_audit_ready
+            else None
+        ),
         "omegaPrimeOrder17Abs": (
             omega_prime_order17_abs if omega_prime_order17_rational_ready else None
         ),
         "rawProduct18MajorantDef": (
-            "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantGenerated"
+            "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat"
+            if raw_product18_budget_audit_ready
+            else "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantGenerated"
             if raw_product18_source_ready
             else None
         ),
@@ -587,7 +701,11 @@ def build_degree0_preflight(
         poly_error_abs=fields["polyErrorAbs"],
     )
     d16_proof_grade = False
-    d17_proof_grade = raw_product18_source_ready
+    d17_proof_grade = (
+        raw_product18_source_ready
+        and raw_product18_budget_audit_ready
+        and raw_product18_order17_abs is not None
+    )
     active_scale_proof_grade = True
     first_failure = D16_CENTER_D17_SOURCE_GAP
     if budget["available"] and not budget["passed"]:
@@ -638,11 +756,16 @@ def build_degree0_preflight(
             "rawProduct18UniformSource": raw_product18_uniform_source(
                 raw_product18_source_ready
             ),
+            "rawProduct18BudgetAudit": raw_product18_budget_audit_source(
+                raw_product18_budget_audit_ready,
+                raw_product18_order17_abs,
+                raw_product18_order17_abs_eval_error,
+            ),
             "requiredUniformSource": (
                 "forall eta in Set.Icc 0 (1/10), "
                 "|D^18(RawProductActual)(eta)| <= "
-                "RawProductActualOrder18MajorantGenerated; exact Rat order17Abs "
-                "for the degree-0 budget is still a separate scalar export"
+                "(RawProductActualOrder18MajorantRat : Real); exact Rat order17Abs "
+                "is exported only by the RawProduct18 budget audit"
             ),
             "remainingFactorSources": remaining_factor_sources(
                 shape_sq_order18_ready=shape_sq_order18_ready,
@@ -664,6 +787,7 @@ def build_degree0_preflight(
             "missingRawProduct18UniformSource": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
             "missingRawProduct18LeibnizReceiver": RAW_PRODUCT18_FACTOR_LEIBNIZ_RECEIVER_GAP,
             "missingRawProduct18FactorArrayAssembly": RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP,
+            "missingRawProduct18RatMajorantExport": RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP,
             "missingOmegaPrimeOrder17Source": OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP,
             "missingOmegaPrimeOrder17RationalTailPayload": (
                 OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP
@@ -705,6 +829,10 @@ def build_ledger() -> dict[str, Any]:
     raw_product18_source_symbols = symbol_audit(
         RAW_PRODUCT18_SOURCE_LEAN, REQUIRED_RAW_PRODUCT18_SOURCE_SYMBOLS
     )
+    raw_product18_budget_audit_symbols = symbol_audit(
+        RAW_PRODUCT18_BUDGET_AUDIT_LEAN,
+        REQUIRED_RAW_PRODUCT18_BUDGET_AUDIT_SYMBOLS,
+    )
     real_sinc_cert19_symbols = symbol_audit(
         REALSINC_DERIVATIVE_CERT19_LEAN, REQUIRED_REALSINC_CERT19_SYMBOLS
     )
@@ -731,6 +859,14 @@ def build_ledger() -> dict[str, Any]:
         raw_product18_majorant_receiver_symbols
     )
     raw_product18_source_ready = all_present(raw_product18_source_symbols)
+    raw_product18_budget_audit_ready = all_present(raw_product18_budget_audit_symbols)
+    if raw_product18_budget_audit_ready:
+        raw_product18_order17_abs, raw_product18_order17_abs_eval_error = (
+            eval_raw_product18_majorant_rat()
+        )
+    else:
+        raw_product18_order17_abs = None
+        raw_product18_order17_abs_eval_error = None
     real_sinc_cert19_ready = all_present(real_sinc_cert19_symbols)
     real_sinc_order18_ready = all_present(real_sinc_order18_symbols)
     shape_sq_order18_ready = (
@@ -752,6 +888,9 @@ def build_ledger() -> dict[str, Any]:
         raw_product18_bridge_ready,
         raw_product18_majorant_receiver_ready,
         raw_product18_source_ready,
+        raw_product18_budget_audit_ready,
+        raw_product18_order17_abs,
+        raw_product18_order17_abs_eval_error,
         shape_sq_order18_ready,
         omega_prime_order17_analytic_ready,
         omega_prime_order17_rational_ready,
@@ -861,10 +1000,33 @@ def build_ledger() -> dict[str, Any]:
                 "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated"
             ),
             "requiredNextSource": (
-                "exact Rat scalar export for RawProductActualOrder18MajorantGenerated "
-                "before the degree-0 budget formula can be checked"
+                "exact Rat budget audit for RawProductActualOrder18MajorantGenerated "
+                "before the degree-0 budget formula can spend order17Abs"
             ),
             "failureCode": RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP,
+        },
+        {
+            "id": "S2g_rawProduct18_rat_budget_audit",
+            "status": (
+                "checked"
+                if raw_product18_budget_audit_ready and raw_product18_order17_abs
+                else "missing"
+            ),
+            "source": rel(RAW_PRODUCT18_BUDGET_AUDIT_LEAN),
+            "majorantDef": "primaryFiniteRow0Parent0Split100Sub0RawProductActualOrder18MajorantRat",
+            "equalityTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat"
+            ),
+            "componentTransferTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat"
+            ),
+            "order17Abs": raw_product18_order17_abs,
+            "evalError": raw_product18_order17_abs_eval_error,
+            "requiredNextSource": (
+                "D16 center enclosure, coeffErrorAbs, polyErrorAbs, and exact "
+                "degree-0 budget comparison"
+            ),
+            "failureCode": RAW_PRODUCT18_RAT_MAJORANT_EXPORT_GAP,
         },
         {
             "id": "S3_zero_extend_low_degree_to_Fin30",
@@ -894,7 +1056,10 @@ def build_ledger() -> dict[str, Any]:
         "route": "active_actual_order16_horner_payload_smoke_segment",
         "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
         "proofGrade": False,
-        "proofSafeClosedFields": 1 if degree0_preflight["activeScaleProofGrade"] else 0,
+        "proofSafeClosedFields": (
+            (1 if degree0_preflight["activeScaleProofGrade"] else 0)
+            + (1 if degree0_preflight["order17UniformProofGrade"] else 0)
+        ),
         "interfaceReady": interface_ready,
         "outLeanWritten": False,
         "targetLeanFileWhenRowsPass": rel(FUTURE_PAYLOAD_LEAN),
@@ -912,6 +1077,9 @@ def build_ledger() -> dict[str, Any]:
                 RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN
             ),
             rel(RAW_PRODUCT18_SOURCE_LEAN): sha256_file(RAW_PRODUCT18_SOURCE_LEAN),
+            rel(RAW_PRODUCT18_BUDGET_AUDIT_LEAN): sha256_file(
+                RAW_PRODUCT18_BUDGET_AUDIT_LEAN
+            ),
             rel(REALSINC_DERIVATIVE_CERT19_LEAN): sha256_file(
                 REALSINC_DERIVATIVE_CERT19_LEAN
             ),
@@ -946,6 +1114,9 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18BridgeReady": raw_product18_bridge_ready,
             "rawProduct18MajorantReceiverReady": raw_product18_majorant_receiver_ready,
             "rawProduct18UniformSourceChecked": raw_product18_source_ready,
+            "rawProduct18BudgetAuditChecked": raw_product18_budget_audit_ready,
+            "rawProduct18Order17Abs": raw_product18_order17_abs,
+            "rawProduct18Order17AbsEvalError": raw_product18_order17_abs_eval_error,
             "omegaPrimeOrder17AnalyticTsumSourceChecked": (
                 omega_prime_order17_analytic_ready
             ),
@@ -1047,6 +1218,11 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18UniformSource": raw_product18_uniform_source(
                 raw_product18_source_ready
             ),
+            "rawProduct18BudgetAudit": raw_product18_budget_audit_source(
+                raw_product18_budget_audit_ready,
+                raw_product18_order17_abs,
+                raw_product18_order17_abs_eval_error,
+            ),
             "omegaPrimeOrder17AnalyticSource": omega_prime_order17_analytic_source(
                 omega_prime_order17_analytic_ready
             ),
@@ -1077,6 +1253,8 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18BridgeReady": raw_product18_bridge_ready,
             "rawProduct18MajorantReceiverReady": raw_product18_majorant_receiver_ready,
             "rawProduct18UniformSourceChecked": raw_product18_source_ready,
+            "rawProduct18BudgetAuditChecked": raw_product18_budget_audit_ready,
+            "rawProduct18Order17AbsExported": raw_product18_order17_abs is not None,
             "omegaPrimeOrder17AnalyticTsumSourceChecked": (
                 omega_prime_order17_analytic_ready
             ),
@@ -1213,10 +1391,10 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Export an exact Rat scalar mirror for "
-            "RawProductActualOrder18MajorantGenerated, then combine it with "
-            "the D16 center enclosure, coeffErrorAbs, and polyErrorAbs in the "
-            "degree-0 budget comparison before emitting any Lean payload."
+            "Build the proof-grade D16 center enclosure for the activeActual "
+            "degree-0 source, export coeffErrorAbs/polyErrorAbs, and run the "
+            "exact degree-0 budget comparison using the checked RawProduct18 "
+            "Rat order17Abs before emitting any Lean payload."
         ),
     }
 
@@ -1252,7 +1430,7 @@ def render_markdown(ledger: dict[str, Any]) -> str:
 
     lines.extend(["", "## Degree-0 Preflight", ""])
     for key, value in ledger["degree0Preflight"].items():
-        lines.append(f"- `{key}`: `{value}`")
+        lines.append(f"- `{key}`: `{md_value(value)}`")
 
     lines.extend(["", "## Degree-29 Container Policy", ""])
     for key, value in ledger["degree29ContainerPolicy"].items():
@@ -1264,7 +1442,7 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         lines.append("")
         for key, value in item.items():
             if key != "id":
-                lines.append(f"- `{key}`: `{value}`")
+                lines.append(f"- `{key}`: `{md_value(value)}`")
         lines.append("")
 
     lines.extend(["## Validation Gates", ""])
@@ -1327,6 +1505,31 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def shorten_md_string(value: str, limit: int = 220) -> str:
+    if len(value) <= limit:
+        return value
+    head = max(40, limit // 2 - 20)
+    tail = max(40, limit // 2 - 20)
+    return f"{value[:head]}...{value[-tail:]} (len={len(value)})"
+
+
+def scrub_long_strings(value: Any) -> Any:
+    if isinstance(value, str):
+        return shorten_md_string(value)
+    if isinstance(value, list):
+        return [scrub_long_strings(item) for item in value]
+    if isinstance(value, dict):
+        return {key: scrub_long_strings(item) for key, item in value.items()}
+    return value
+
+
+def md_value(value: Any) -> str:
+    scrubbed = scrub_long_strings(value)
+    if isinstance(scrubbed, (dict, list)):
+        return json.dumps(scrubbed, sort_keys=True)
+    return str(scrubbed)
+
+
 def render_degree0_markdown(preflight: dict[str, Any]) -> str:
     lines = [
         "# Step33A.1-A ActiveActual Order-16 Degree-0 Preflight",
@@ -1355,12 +1558,12 @@ def render_degree0_markdown(preflight: dict[str, Any]) -> str:
         "",
     ]
     for key, value in preflight["fields"].items():
-        lines.append(f"- `{key}`: `{value}`")
+        lines.append(f"- `{key}`: `{md_value(value)}`")
 
     lines.extend(["", "## Budget Audit", ""])
     lines.append(f"- formula: `{preflight['budgetFormula']}`")
     for key, value in preflight["budgetAudit"].items():
-        lines.append(f"- `{key}`: `{value}`")
+        lines.append(f"- `{key}`: `{md_value(value)}`")
 
     lines.extend(["", "## Proof Flags", ""])
     lines.append(f"- `d16CenterProofGrade`: `{preflight['d16CenterProofGrade']}`")
@@ -1373,7 +1576,7 @@ def render_degree0_markdown(preflight: dict[str, Any]) -> str:
 
     lines.extend(["", "## Order17 Uniform Route", ""])
     for key, value in preflight["order17UniformRoute"].items():
-        lines.append(f"- `{key}`: `{value}`")
+        lines.append(f"- `{key}`: `{md_value(value)}`")
 
     lines.extend(["", "## Failure Codes", ""])
     for key, value in preflight["failureCodes"].items():
@@ -1397,6 +1600,9 @@ def main() -> None:
         bool(ledger["validationGates"]["rawProduct18BridgeReady"]),
         bool(ledger["validationGates"]["rawProduct18MajorantReceiverReady"]),
         bool(ledger["validationGates"]["rawProduct18UniformSourceChecked"]),
+        bool(ledger["validationGates"]["rawProduct18BudgetAuditChecked"]),
+        ledger["degree0Preflight"].get("rawProduct18Order17Abs"),
+        ledger["degree0Preflight"].get("rawProduct18Order17AbsEvalError"),
         bool(ledger["validationGates"]["shapeSqOrder18UniformSourceChecked"]),
         bool(ledger["validationGates"]["omegaPrimeOrder17AnalyticTsumSourceChecked"]),
         bool(ledger["validationGates"]["omegaPrimeOrder17UniformSourceChecked"]),

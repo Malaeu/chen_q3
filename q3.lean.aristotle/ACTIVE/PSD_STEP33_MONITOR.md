@@ -40803,3 +40803,56 @@ Next implementable patch:
 export exact Rat scalar for RawProductActualOrder18MajorantGenerated; then
 combine with D16 center, coeffErrorAbs, and polyErrorAbs in the degree-0 budget
 ```
+
+### 2026-06-24 Update -- RawProduct18 Rat budget audit checked
+
+Computer Use / Proshka follow-up selected a separate BudgetAudit file for the
+RawProduct18 exact Rat scalar.  Local Lean closed a stronger normalization
+audit than requested: equality between the generated `Real` majorant and the
+new exact `Rat` majorant.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18BudgetAudit.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_rawProductActualOrder18MajorantGenerated_eq_rat
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_rat
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_of_rawProduct18_rat
+```
+
+Generator update:
+
+```text
+scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Current generated degree-0 gate now records:
+
+```text
+rawProduct18BudgetAuditChecked = true
+rawProduct18Order17AbsExported = true
+order17UniformProofGrade = true
+budgetAudit.missing = [coeffErrorAbs, polyErrorAbs]
+proofGrade = false
+```
+
+The exact `order17Abs` is exported through Lean `#eval toString` from the
+checked Rat definition and stored fully in the JSON payload.  The markdown
+payload displays only a shortened head/tail form with `len=24620`.
+
+Boundary: this closes the RawProduct18 Rat scalar export only.  It does not
+close Step33A.1-A because the degree-0 budget still lacks the proof-grade D16
+center enclosure, `coeffErrorAbs`, and `polyErrorAbs`.
+
+Next implementable patch:
+
+```text
+build the proof-grade D16 center enclosure for the activeActual degree-0 source,
+export coeffErrorAbs/polyErrorAbs, and run the exact degree-0 budget comparison
+using the checked RawProduct18 Rat order17Abs
+```
