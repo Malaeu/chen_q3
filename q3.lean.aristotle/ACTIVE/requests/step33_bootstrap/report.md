@@ -75442,3 +75442,117 @@ STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
 Boundary: no proof-grade D16 center enclosure, no proof-grade D17 uniform
 bound, no exact degree-0 rational budget, no concrete activeActual Horner
 payload, and no Step33A.1-A closure exists yet.
+
+## PRO_REVIEW_REQUEST
+
+Route:
+Step33A.1-A activeActual degree-0 row source after local
+`ContDiff17(ComponentProductActual)` closure.
+
+Current step:
+Choose the smallest proof-producing patch for the remaining source rows of
+`ActiveScaleCoeff * D^16(ComponentProductActual)` on `Set.Icc 0 (1/10)`,
+center `1/20`, degree `0`.
+
+Current theorem:
+`primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
+
+File:
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`
+
+Lean error / blocker:
+No Lean error in the checked wrapper.  The remaining proof-producing blocker is
+`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
+The checked interface still needs:
+`hCenter` for the D16 center enclosure,
+`hOrder17` for the uniform D17 bound, and
+`hBudget : coeffErrorAbs + activeScaleAbs * order17Abs * (1/20) <= polyErrorAbs`.
+
+Options:
+A. Build a fail-closed interval/rational degree-0 certificate generator first:
+compute/prove D16 center interval, D17 uniform bound, active-scale bound, and
+exact rational budget; emit JSON/MD only until all inequalities pass.
+B. First ask Lean/Aristotle for an analytic D17 uniform theorem from the
+factor-derivative majorants, then build the degree-0 certificate around that
+theorem.
+C. Skip degree 0 and return to the full low-degree/Horner row generator.
+D. Abandon the activeActual degree-0 route and return to the direct collapsed
+whole-expression row source.
+
+Codex recommendation:
+A. It is the narrowest route and preserves the checked degree-0 bridge.  If the
+D17 bound or rational budget fails numerically, record the exact constants and
+then switch to B with the smallest missing analytic theorem.
+
+Question for Louise:
+Choose A/B/C/D.  If A, name the first file to edit and the failure code to emit
+if the degree-0 rational budget fails.
+
+## PRO_REVIEW_RESPONSE / IMPLEMENTATION (2026-06-24 degree-0 preflight)
+
+Browser/Computer Use response:
+
+```text
+CHOSEN: A
+FIRST FILE TO EDIT:
+scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+
+EXACT OUTPUT OBJECT:
+step33_a1_sub0_active_actual_order16_degree0_payload.json
+
+FAILURE CODE if exact degree-0 budget is false:
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL
+
+FAILURE CODE if arithmetic passes but no proof-grade D17 source exists:
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP
+```
+
+Implemented a fail-closed degree-0 preflight mode in:
+
+```text
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+New generated artifacts:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1
+
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md
+
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v6
+```
+
+The degree-0 preflight currently records:
+
+```text
+receiverReady = true
+d16CenterProofGrade = false
+order17UniformProofGrade = false
+activeScaleProofGrade = false
+budgetPassed = null
+proofGrade = false
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+outLeanWritten = false
+```
+
+Budget expression pinned for exact rational checking:
+
+```text
+coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+python3 -m json.tool q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Boundary: this is not a proof of the source row and not Step33A.1-A closure.
+It is the exact fail-closed preflight object that blocks Lean payload emission
+until D16 center, D17 uniform, active-scale, and budget rows are proof-grade.

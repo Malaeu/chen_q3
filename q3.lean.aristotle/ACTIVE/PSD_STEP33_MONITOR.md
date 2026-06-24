@@ -39887,6 +39887,60 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
 
+### 2026-06-24 Update -- activeActual degree-0 preflight gate added
+
+Browser/Computer Use route review after the checked
+`ContDiff17(ComponentProductActual)` source selected:
+
+```text
+CHOSEN: A
+FIRST FILE TO EDIT:
+scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+EXACT OUTPUT OBJECT:
+step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Implemented a fail-closed degree-0 preflight gate:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1
+
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v6
+```
+
+Current preflight verdict:
+
+```text
+receiverReady = true
+budgetPassed = null
+proofGrade = false
+outLeanWritten = false
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Exact budget expression now pinned:
+
+```text
+coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
+```
+
+If the exact rational budget is false after fields are populated, emit:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL
+```
+
+If arithmetic passes but no proof-grade D17 source exists, emit:
+
+```text
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP
+```
+
+Boundary: no D16 center row, no D17 uniform row, no active-scale proof row, no
+degree-0 budget proof, no Lean payload, and no Step33A.1-A closure exists yet.
+
 ### 2026-06-24 Update -- activeActual ComponentProductActual ContDiff17 checked
 
 Added and direct-Lean checked in:
@@ -40435,3 +40489,30 @@ primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_se
 
 Boundary: no `DirectConcretePayload.lean`, no `interval_generated` theorem, and
 no Step33A.1-A closure exists yet.
+
+### 2026-06-24 Tail Anchor -- activeActual degree-0 preflight is current gate
+
+Current activeActual payload gate:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+schema = q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1
+```
+
+Current verdict:
+
+```text
+receiverReady = true
+budgetPassed = null
+proofGrade = false
+outLeanWritten = false
+firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP
+```
+
+Browser/Computer Use chose `A`: keep degree 0 only and do not start D18,
+higher degree, D46, or Lean payload emission before the exact rational
+preflight has proof-grade D16 center, D17 uniform, active-scale, and budget
+rows.  If the exact budget fails, emit
+`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`;
+if arithmetic passes but the D17 source is missing, emit
+`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`.

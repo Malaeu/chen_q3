@@ -44193,3 +44193,29 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - Remaining proof inputs are now narrowed to: proof-grade D16 center enclosure,
   proof-grade D17 uniform bound, and exact rational degree-0 budget.  No
   concrete activeActual Horner payload or Step33A.1-A closure exists yet.
+
+## Insight (2026-06-24, Step33A.1-A) -- ActiveActualDegree0PreflightGate
+
+- Browser/Computer Use was used on the open Proshka/Louise thread after local
+  `ContDiff17(ComponentProductActual)` closure.  Route decision: `CHOSEN: A`.
+- The selected next patch is not D18, higher degree, D46, or Lean payload
+  emission.  It is a fail-closed degree-0 preflight in
+  `scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py`.
+- Added generated gate:
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
+  with schema
+  `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1`.
+- The preflight pins the exact budget expression
+  `coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs`.
+- Current generated verdict is intentionally open:
+  `receiverReady = true`, `budgetPassed = null`, `proofGrade = false`,
+  `outLeanWritten = false`, and
+  `firstFailure = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`.
+- If the exact rational budget is false after fields are populated, the failure
+  code is
+  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`.
+- If the arithmetic passes but no proof-grade D17 source exists, the failure
+  code is `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`.
+- This is a route/gate closure only.  It supplies no D16 center row, no D17
+  uniform row, no active-scale proof row, no degree-0 budget proof, no Lean
+  payload, and no Step33A.1-A closure.

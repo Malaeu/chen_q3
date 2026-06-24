@@ -14,11 +14,13 @@ from __future__ import annotations
 import hashlib
 import json
 from datetime import datetime, timezone
+from fractions import Fraction
 from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v5"
+SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v6"
+DEGREE0_SCHEMA = "q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1"
 
 ROOT = Path(__file__).resolve().parents[1]
 PROOFS = ROOT / "Q3" / "Proofs"
@@ -27,6 +29,12 @@ REQUEST_DIR = ROOT / "ACTIVE" / "requests" / "step33_bootstrap"
 ROW_SOURCE_JSON = REQUEST_DIR / "step33_a1_sub0_active_actual_horner_row_source.json"
 JSON_OUT = REQUEST_DIR / "step33_a1_sub0_active_actual_order16_horner_payload.json"
 MD_OUT = REQUEST_DIR / "step33_a1_sub0_active_actual_order16_horner_payload.md"
+DEGREE0_JSON_OUT = (
+    REQUEST_DIR / "step33_a1_sub0_active_actual_order16_degree0_payload.json"
+)
+DEGREE0_MD_OUT = (
+    REQUEST_DIR / "step33_a1_sub0_active_actual_order16_degree0_payload.md"
+)
 
 SEGMENT_RECEIVER_LEAN = (
     PROOFS
@@ -63,6 +71,10 @@ LOW_DEGREE_ALIGNMENT_GAP = (
 )
 D16_CENTER_D17_SOURCE_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP"
+)
+D17_UNIFORM_SOURCE_GAP = "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP"
+DEGREE0_BUDGET_CONSTANT_FAIL = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL"
 )
 PAYLOAD_VALIDATION_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_LEAN_PAYLOAD_VALIDATION_GAP"
@@ -139,6 +151,61 @@ def all_present(items: dict[str, dict[str, Any]]) -> bool:
     return all(bool(item["present"]) for item in items.values())
 
 
+def rat_or_none(value: str | None) -> Fraction | None:
+    if value is None:
+        return None
+    return Fraction(value)
+
+
+def rat_str(value: Fraction | None) -> str | None:
+    if value is None:
+        return None
+    if value.denominator == 1:
+        return str(value.numerator)
+    return f"{value.numerator}/{value.denominator}"
+
+
+def exact_degree0_budget(
+    *,
+    coeff_error_abs: str | None,
+    active_scale_abs: str | None,
+    order17_abs: str | None,
+    poly_error_abs: str | None,
+) -> dict[str, Any]:
+    coeff_error_abs_rat = rat_or_none(coeff_error_abs)
+    active_scale_abs_rat = rat_or_none(active_scale_abs)
+    order17_abs_rat = rat_or_none(order17_abs)
+    poly_error_abs_rat = rat_or_none(poly_error_abs)
+    missing = [
+        name
+        for name, value in [
+            ("coeffErrorAbs", coeff_error_abs_rat),
+            ("activeScaleAbs", active_scale_abs_rat),
+            ("order17Abs", order17_abs_rat),
+            ("polyErrorAbs", poly_error_abs_rat),
+        ]
+        if value is None
+    ]
+    if missing:
+        return {
+            "available": False,
+            "missing": missing,
+            "lhs": None,
+            "rhs": poly_error_abs,
+            "passed": None,
+            "failureIfFalse": DEGREE0_BUDGET_CONSTANT_FAIL,
+        }
+    lhs = coeff_error_abs_rat + active_scale_abs_rat * order17_abs_rat / 20
+    return {
+        "available": True,
+        "missing": [],
+        "lhs": rat_str(lhs),
+        "rhs": poly_error_abs,
+        "passed": lhs <= poly_error_abs_rat,
+        "failureIfFalse": DEGREE0_BUDGET_CONSTANT_FAIL,
+    }
+
+
 def center_row_status() -> dict[str, Any]:
     text = read_text(ACTIVE_CENTER_ROWS_LEAN)
     return {
@@ -164,6 +231,75 @@ def center_row_status() -> dict[str, Any]:
     }
 
 
+def build_degree0_preflight(degree0_ready: bool) -> dict[str, Any]:
+    fields: dict[str, str | None] = {
+        "d16CenterLower": None,
+        "d16CenterUpper": None,
+        "coeff0": None,
+        "coeffErrorAbs": None,
+        "order17Abs": None,
+        "activeScaleAbs": None,
+        "polyErrorAbs": None,
+    }
+    budget = exact_degree0_budget(
+        coeff_error_abs=fields["coeffErrorAbs"],
+        active_scale_abs=fields["activeScaleAbs"],
+        order17_abs=fields["order17Abs"],
+        poly_error_abs=fields["polyErrorAbs"],
+    )
+    d16_proof_grade = False
+    d17_proof_grade = False
+    first_failure = D16_CENTER_D17_SOURCE_GAP
+    if budget["available"] and not budget["passed"]:
+        first_failure = DEGREE0_BUDGET_CONSTANT_FAIL
+    elif budget["available"] and not d17_proof_grade:
+        first_failure = D17_UNIFORM_SOURCE_GAP
+
+    return {
+        "schema": DEGREE0_SCHEMA,
+        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "route": "active_actual_order16_degree0_preflight",
+        "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
+        "proofGrade": False,
+        "receiverReady": degree0_ready,
+        "outLeanWritten": False,
+        "target": "ActiveScaleCoeff * D^16(ComponentProductActual)",
+        "cell": "Set.Icc 0 (1/10)",
+        "center": "1/20",
+        "degree": 0,
+        "receiverTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
+        "outputObject": rel(DEGREE0_JSON_OUT),
+        "firstFileToEdit": rel(Path(__file__).resolve()),
+        "fields": fields,
+        "budgetFormula": "coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs",
+        "budgetPassed": budget["passed"],
+        "budgetAudit": budget,
+        "d16CenterProofGrade": d16_proof_grade,
+        "order17UniformProofGrade": d17_proof_grade,
+        "activeScaleProofGrade": False,
+        "firstFailure": first_failure,
+        "failureCodes": {
+            "missingD16OrD17": D16_CENTER_D17_SOURCE_GAP,
+            "missingD17AfterArithmeticPass": D17_UNIFORM_SOURCE_GAP,
+            "exactBudgetFalse": DEGREE0_BUDGET_CONSTANT_FAIL,
+        },
+        "checkOrder": [
+            "D16 center interval",
+            "midpoint/error",
+            "uniform D17 bound",
+            "active-scale multiplication",
+            "coeffErrorAbs + activeScaleAbs * order17Abs / 20",
+            "exact Rat comparison with polyErrorAbs",
+        ],
+        "doNotProceedTo": [
+            "D18",
+            "higher degree",
+            "D46",
+            "Lean payload emission",
+        ],
+    }
+
+
 def build_ledger() -> dict[str, Any]:
     row_source = load_json(ROW_SOURCE_JSON)
     segment_symbols = symbol_audit(SEGMENT_RECEIVER_LEAN, REQUIRED_SEGMENT_SYMBOLS)
@@ -175,6 +311,7 @@ def build_ledger() -> dict[str, Any]:
     low_degree_ready = all_present(low_degree_symbols)
     degree0_ready = all_present(degree0_symbols)
     interface_ready = segment_ready and family_ready and low_degree_ready and degree0_ready
+    degree0_preflight = build_degree0_preflight(degree0_ready)
 
     required_inputs = [
         {
@@ -247,7 +384,7 @@ def build_ledger() -> dict[str, Any]:
         "targetLeanFileWhenRowsPass": rel(FUTURE_PAYLOAD_LEAN),
         "currentGap": ROW_SOURCE_GAP,
         "firstFailureCode": ROW_SOURCE_GAP,
-        "firstConcreteSubgap": D16_CENTER_D17_SOURCE_GAP,
+        "firstConcreteSubgap": degree0_preflight["firstFailure"],
         "leanValidationStatus": "not_run_payload_not_emitted",
         "sourceFileDigests": {
             rel(SEGMENT_RECEIVER_LEAN): sha256_file(SEGMENT_RECEIVER_LEAN),
@@ -256,6 +393,15 @@ def build_ledger() -> dict[str, Any]:
             rel(DEGREE0_SOURCE_LEAN): sha256_file(DEGREE0_SOURCE_LEAN),
             rel(ACTIVE_CENTER_ROWS_LEAN): sha256_file(ACTIVE_CENTER_ROWS_LEAN),
             rel(ROW_SOURCE_JSON): sha256_file(ROW_SOURCE_JSON),
+        },
+        "degree0Preflight": {
+            "path": rel(DEGREE0_JSON_OUT),
+            "markdown": rel(DEGREE0_MD_OUT),
+            "schema": DEGREE0_SCHEMA,
+            "proofGrade": degree0_preflight["proofGrade"],
+            "budgetPassed": degree0_preflight["budgetPassed"],
+            "firstFailure": degree0_preflight["firstFailure"],
+            "receiverReady": degree0_preflight["receiverReady"],
         },
         "rowSourceLedger": {
             "path": rel(ROW_SOURCE_JSON),
@@ -312,6 +458,8 @@ def build_ledger() -> dict[str, Any]:
             "familyBridgeReady": family_ready,
             "lowDegreeBridgeReady": low_degree_ready,
             "degree0SourceInterfaceReady": degree0_ready,
+            "degree0PreflightWritten": True,
+            "degree0BudgetPassed": degree0_preflight["budgetPassed"],
             "activeActualLowDegreeSegmentRemainderSourceChecked": False,
             "activeActualD16CenterD17UniformSourceChecked": False,
             "activeActualD46UniformRemainderSourceChecked": False,
@@ -324,11 +472,16 @@ def build_ledger() -> dict[str, Any]:
         "computerUseDecision": {
             "used": True,
             "advisoryOnly": True,
-            "recommendedOption": "B",
+            "recommendedOption": "A",
+            "firstFileToEdit": rel(Path(__file__).resolve()),
+            "exactOutputObject": rel(DEGREE0_JSON_OUT),
             "decision": (
-                "Use a low-degree-to-Fin30 bridge, then the degree-0 D16-center/"
-                "D17-uniform source interface, before building D18/D46 machinery."
+                "Add a fail-closed degree-0 preflight for the checked "
+                "Degree0Source receiver before D18, higher degree, D46, or Lean "
+                "payload emission."
             ),
+            "budgetFailureCode": DEGREE0_BUDGET_CONSTANT_FAIL,
+            "d17SourceFailureCode": D17_UNIFORM_SOURCE_GAP,
             "notProofEvidence": True,
         },
         "doNotUseAsProof": [
@@ -376,6 +529,10 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     for key, value in ledger["smokeSegment"].items():
         lines.append(f"- `{key}`: `{value}`")
 
+    lines.extend(["", "## Degree-0 Preflight", ""])
+    for key, value in ledger["degree0Preflight"].items():
+        lines.append(f"- `{key}`: `{value}`")
+
     lines.extend(["", "## Degree-29 Container Policy", ""])
     for key, value in ledger["degree29ContainerPolicy"].items():
         lines.append(f"- `{key}`: `{value}`")
@@ -419,16 +576,82 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_degree0_markdown(preflight: dict[str, Any]) -> str:
+    lines = [
+        "# Step33A.1-A ActiveActual Order-16 Degree-0 Preflight",
+        "",
+        f"schema: `{preflight['schema']}`",
+        f"route: `{preflight['route']}`",
+        "",
+        "## Verdict",
+        "",
+        f"- proofStatus: `{preflight['proofStatus']}`",
+        f"- proofGrade: `{preflight['proofGrade']}`",
+        f"- receiverReady: `{preflight['receiverReady']}`",
+        f"- outLeanWritten: `{preflight['outLeanWritten']}`",
+        f"- budgetPassed: `{preflight['budgetPassed']}`",
+        f"- firstFailure: `{preflight['firstFailure']}`",
+        "",
+        "## Target",
+        "",
+        f"- target: `{preflight['target']}`",
+        f"- cell: `{preflight['cell']}`",
+        f"- center: `{preflight['center']}`",
+        f"- degree: `{preflight['degree']}`",
+        f"- receiverTheorem: `{preflight['receiverTheorem']}`",
+        "",
+        "## Fields",
+        "",
+    ]
+    for key, value in preflight["fields"].items():
+        lines.append(f"- `{key}`: `{value}`")
+
+    lines.extend(["", "## Budget Audit", ""])
+    lines.append(f"- formula: `{preflight['budgetFormula']}`")
+    for key, value in preflight["budgetAudit"].items():
+        lines.append(f"- `{key}`: `{value}`")
+
+    lines.extend(["", "## Proof Flags", ""])
+    lines.append(f"- `d16CenterProofGrade`: `{preflight['d16CenterProofGrade']}`")
+    lines.append(f"- `order17UniformProofGrade`: `{preflight['order17UniformProofGrade']}`")
+    lines.append(f"- `activeScaleProofGrade`: `{preflight['activeScaleProofGrade']}`")
+
+    lines.extend(["", "## Failure Codes", ""])
+    for key, value in preflight["failureCodes"].items():
+        lines.append(f"- `{key}`: `{value}`")
+
+    lines.extend(["", "## Check Order", ""])
+    for item in preflight["checkOrder"]:
+        lines.append(f"- {item}")
+
+    lines.extend(["", "## Do Not Proceed To", ""])
+    for item in preflight["doNotProceedTo"]:
+        lines.append(f"- {item}")
+    lines.append("")
+    return "\n".join(lines)
+
+
 def main() -> None:
     ledger = build_ledger()
+    degree0_preflight = build_degree0_preflight(
+        bool(ledger["validationGates"]["degree0SourceInterfaceReady"])
+    )
     REQUEST_DIR.mkdir(parents=True, exist_ok=True)
     JSON_OUT.write_text(json.dumps(ledger, indent=2, sort_keys=True) + "\n")
     MD_OUT.write_text(render_markdown(ledger), encoding="utf-8")
+    DEGREE0_JSON_OUT.write_text(
+        json.dumps(degree0_preflight, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    DEGREE0_MD_OUT.write_text(render_degree0_markdown(degree0_preflight), encoding="utf-8")
     print(f"wrote {rel(JSON_OUT)}")
     print(f"wrote {rel(MD_OUT)}")
+    print(f"wrote {rel(DEGREE0_JSON_OUT)}")
+    print(f"wrote {rel(DEGREE0_MD_OUT)}")
     print(ledger["proofStatus"])
     print(ledger["firstFailureCode"])
     print(ledger["firstConcreteSubgap"])
+    print(degree0_preflight["firstFailure"])
 
     if ledger["validationGates"]["allPayloadObligationsPassed"]:
         raise SystemExit(

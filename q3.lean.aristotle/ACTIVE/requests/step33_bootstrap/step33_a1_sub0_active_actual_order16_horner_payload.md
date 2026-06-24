@@ -1,6 +1,6 @@
 # Step33A.1-A ActiveActual Order-16 Horner Payload Gate
 
-schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v5`
+schema: `q3_psdpd_step33_a1_sub0_active_actual_order16_horner_payload.v6`
 route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Verdict
@@ -36,6 +36,16 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `payloadAllowed`: `False`
 - `outLeanWritten`: `False`
 - `degree29IsContainerOnly`: `True`
+
+## Degree-0 Preflight
+
+- `path`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
+- `markdown`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md`
+- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v1`
+- `proofGrade`: `False`
+- `budgetPassed`: `None`
+- `firstFailure`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
+- `receiverReady`: `True`
 
 ## Degree-29 Container Policy
 
@@ -112,6 +122,8 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `familyBridgeReady`: `True`
 - `lowDegreeBridgeReady`: `True`
 - `degree0SourceInterfaceReady`: `True`
+- `degree0PreflightWritten`: `True`
+- `degree0BudgetPassed`: `None`
 - `activeActualLowDegreeSegmentRemainderSourceChecked`: `False`
 - `activeActualD16CenterD17UniformSourceChecked`: `False`
 - `activeActualD46UniformRemainderSourceChecked`: `False`
@@ -147,8 +159,12 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 - `used`: `True`
 - `advisoryOnly`: `True`
-- `recommendedOption`: `B`
-- `decision`: `Use a low-degree-to-Fin30 bridge, then the degree-0 D16-center/D17-uniform source interface, before building D18/D46 machinery.`
+- `recommendedOption`: `A`
+- `firstFileToEdit`: `scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py`
+- `exactOutputObject`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
+- `decision`: `Add a fail-closed degree-0 preflight for the checked Degree0Source receiver before D18, higher degree, D46, or Lean payload emission.`
+- `budgetFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`
+- `d17SourceFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`
 - `notProofEvidence`: `True`
 
 ## Do Not Use As Proof
