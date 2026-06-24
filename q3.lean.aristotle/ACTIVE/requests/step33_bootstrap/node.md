@@ -20272,6 +20272,95 @@ Live failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 RawProduct18 OmegaPrime Order17 Rational Payload
+
+Computer Use / Proshka follow-up selected route `A`: keep the already checked
+analytic `tsum` bridge and add a standalone rational prefix/tail row for
+OmegaPrime derivative order 17.
+
+New checked Lean file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean
+```
+
+New generated ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.md
+```
+
+Checked theorem:
+
+```text
+Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_generated
+```
+
+Exact source row:
+
+```text
+prefixN = 2
+order17Abs = 1024379792916537436656292891459584/152587890625
+```
+
+Regenerated activeActual Horner/degree-0 ledgers now record:
+
+```text
+omegaPrimeOrder17AnalyticTsumSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = true
+rawProduct18UniformSourceChecked = false
+```
+
+Boundary: this is not Step33A.1-A closure.  The OmegaPrime row is now a
+proof-grade rational source, but the route still needs exact RawProduct18
+majorant assembly plus the degree-0 budget comparison.
+
+## 2026-06-24 RawProduct18 OmegaPrime Order17 Analytic-Tsum Source
+
+Computer Use / Proshka follow-up selected route `A` for the OmegaPrime side:
+add a standalone order-17 analytic bridge instead of cloning the generated
+`order16Abs` certificate stack.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean
+```
+
+Checked theorem:
+
+```text
+Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_tsum
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m py_compile scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Current generated gate:
+
+```text
+omegaPrimeOrder17AnalyticTsumSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = false
+rawProduct18UniformSourceChecked = false
+proofGrade = false
+remainingFactorSources = [STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP]
+```
+
+Boundary: the analytic theorem bounds by a `tsum` majorant.  It is not yet the
+rational/interval uniform source required by the RawProduct18 budget.
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP
+```
+
 ## 2026-06-24 RawProduct18 ShapeSq18 Source
 
 Computer Use / Proshka follow-up after the checked RawProduct18 Leibniz

@@ -75722,3 +75722,58 @@ STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP
 Boundary: the receiver is conditional.  It proves no OmegaPrime order17 row,
 no ShapeSq order18 row, no numeric RawProduct18 bound, no degree-0 budget, and
 no Step33A.1-A closure.
+
+## 2026-06-24 -- OmegaPrime order17 rational prefix/tail payload checked
+
+Browser/Computer Use follow-up selected:
+
+```text
+CHOSEN: A
+```
+
+Added standalone rational payload:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean
+scripts/generate_step33_a1_sub0_omega_prime_order17_payload.py
+```
+
+Checked theorem:
+
+```text
+Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_generated
+```
+
+The generated exact source row is:
+
+```text
+prefixN = 2
+prefixAbs = 1024379792916533707003286859546624/152587890625
+tailAbs = 745930601206382592/30517578125
+order17Abs = 1024379792916537436656292891459584/152587890625
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_omega_prime_order17_payload.py scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 scripts/generate_step33_a1_sub0_omega_prime_order17_payload.py
+python3 scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Current generated gate now records:
+
+```text
+omegaPrimeOrder17AnalyticTsumSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = true
+rawProduct18UniformSourceChecked = false
+remainingFactorSources = []
+proofGrade = false
+```
+
+Boundary: this closes only the OmegaPrime order-17 rational source row.  It
+does not close RawProduct18, D16 center, the degree-0 budget, or Step33A.1-A.
+The next proof-producing patch is exact RawProduct18 majorant assembly and
+then the degree-0 comparison
+`coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs`.

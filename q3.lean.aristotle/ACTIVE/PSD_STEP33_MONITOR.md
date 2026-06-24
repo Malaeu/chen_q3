@@ -40670,3 +40670,95 @@ STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP
 Boundary: ShapeSq18 is now a checked factor source, but RawProduct18 is still
 not a uniform source until the Omega/OmegaPrime order-17 side is checked and
 the exact RawProduct18 majorant/budget is computed.
+
+### 2026-06-24 Update -- OmegaPrime order17 analytic-tsum source checked
+
+Browser/Computer Use follow-up selected the standalone OmegaPrime row-17 route:
+add only the missing analytic `tsum` bridge and avoid cloning the generated
+order-16 Taylor certificate stack.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean
+```
+
+Checked theorem:
+
+```text
+Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_tsum
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean
+rg -n "sorry|admit|exact\\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m py_compile scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+```
+
+Current generated gate:
+
+```text
+omegaPrimeOrder17AnalyticTsumSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = false
+rawProduct18UniformSourceChecked = false
+proofGrade = false
+remainingFactorSources = [STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP]
+```
+
+Boundary: this is not RawProduct18 closure.  The analytic bound is proof-grade,
+but the right side is a `tsum` majorant and still needs a rational/interval
+tail payload before it can be spent as the OmegaPrime order-17 uniform source.
+
+Next exact blocker:
+
+```text
+STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP
+```
+
+### 2026-06-24 Update -- OmegaPrime order17 rational payload checked
+
+Browser/Computer Use follow-up selected route `A`: build a standalone
+OmegaPrime order-17 rational prefix/tail payload, not a clone of the old
+order-16 Taylor remainder certificate stack.
+
+Checked files:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean
+scripts/generate_step33_a1_sub0_omega_prime_order17_payload.py
+```
+
+Checked theorem:
+
+```text
+Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_generated
+```
+
+Exact generated constant:
+
+```text
+prefixN = 2
+order17Abs = 1024379792916537436656292891459584/152587890625
+```
+
+Current generated gate:
+
+```text
+omegaPrimeOrder17AnalyticTsumSourceChecked = true
+omegaPrimeOrder17UniformSourceChecked = true
+rawProduct18UniformSourceChecked = false
+proofGrade = false
+```
+
+Boundary: this closes the OmegaPrime order-17 rational source row only.  It
+does not close RawProduct18, the D16 center interval, the degree-0 budget, or
+Step33A.1-A.
+
+Next implementable patch:
+
+```text
+compute exact RawProduct18 majorant from checked ShapeSq18 + OmegaPrime17
+sources, then run coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
+```

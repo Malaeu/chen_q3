@@ -44346,3 +44346,68 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
 - This is not RawProduct18 closure: `rawProduct18UniformSourceChecked = false`
   and the remaining exact source blocker is
   `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_UNIFORM_SOURCE_GAP`.
+
+## Insight (2026-06-24, Step33A.1-A) -- OmegaPrimeOrder17SourceRoute
+
+- Browser/Computer Use follow-up after the checked ShapeSq order-18 source
+  selected route `A`: add a standalone OmegaPrime derivative row-17 payload,
+  not a generated `order17Abs` clone of the whole order-16 Taylor remainder
+  certificate.
+- Local evidence: `PSD_CenteredCoeffRawOmegaAEndpointHighOrderSupport.lean`
+  already has generic trigamma term derivatives, summability, and shifted-tail
+  bounds, but the public termwise/closed-form bridges are currently exposed
+  only as `_of_le16`.  The active RawProduct18 receiver needs exactly the
+  `OmegaPrime` row through derivative order 17.
+- Smallest proof-grade patch: create
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean`
+  with an analytic theorem of the form
+  `‖iteratedDeriv 17 step22OmegaArchWeightDerivClosedForm eta‖ <=
+  (1 / 2) * ∑' n, omegaPrimeTrigammaDerivMajorant 17 n`, then add the
+  rational tail/budget theorem as a separate step.
+- First failure code if the standalone analytic bridge does not compile:
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_TERMwise_TSUM_MAJORANT_GAP`.
+- If the analytic bridge compiles but no rational upper bound is available yet,
+  the exact next blocker is
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP`.
+
+## Insight (2026-06-24, Step33A.1-A) -- OmegaPrimeOrder17AnalyticTsumChecked
+
+- Added checked standalone OmegaPrime row-17 analytic source:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean`.
+- Checked theorem:
+  `Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_tsum`.
+- The theorem proves a proof-grade analytic domination by
+  `(1 / 2) * ∑' n, omegaPrimeTrigammaDerivMajorant 17 n` on
+  `Set.Icc 0 (1/10)`, using a row-17 termwise/tsum bridge and the public
+  `C^17` source for `step22OmegaArchWeightDerivClosedForm`.
+- Validation:
+  `LEAN_PATH=... lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean`;
+  hole scan for `sorry|admit|exact?|axiom|unsafe` is clean.
+- Regenerated activeActual Horner/degree-0 ledgers.  They now record
+  `omegaPrimeOrder17AnalyticTsumSourceChecked = true` and
+  `omegaPrimeOrder17UniformSourceChecked = false`.
+- Boundary: this is not a rational/interval uniform source and not
+  RawProduct18 closure.  The exact next blocker is
+  `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP`.
+
+## Insight (2026-06-24, Step33A.1-A) -- OmegaPrimeOrder17RationalPayloadChecked
+
+- Added checked standalone OmegaPrime row-17 rational source:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean`.
+- Added generator/ledger:
+  `scripts/generate_step33_a1_sub0_omega_prime_order17_payload.py`,
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.json`,
+  and
+  `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.md`.
+- Checked theorem:
+  `Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_generated`.
+- Exact rational source row:
+  `prefixN = 2`,
+  `order17Abs = 1024379792916537436656292891459584/152587890625`.
+- Regenerated activeActual Horner/degree-0 ledgers.  They now record
+  `omegaPrimeOrder17UniformSourceChecked = true` and carry the exact
+  `order17Abs` into the degree-0 preflight fields.
+- Boundary: this is not RawProduct18 closure and not Step33A.1-A.  The next
+  implementable patch is exact RawProduct18 majorant assembly from the checked
+  ShapeSq18 and OmegaPrime17 factor sources, followed by the degree-0 budget
+  comparison.
