@@ -20272,6 +20272,45 @@ Live failure:
 STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
 ```
 
+## 2026-06-24 RawProduct18 uniform source checked
+
+Computer Use / Proshka follow-up selected the isolated RawProduct18 source
+route after OmegaPrime order17 and ShapeSq order18 were both checked.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_iteratedDeriv18_eq_omegaPrime17
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated
+```
+
+Generated activeActual Horner/degree-0 ledgers now record:
+
+```text
+rawProduct18UniformSourceChecked = true
+order17UniformProofGrade = true
+budgetAudit.missing = [coeffErrorAbs, order17Abs, polyErrorAbs]
+```
+
+Boundary: this is not Step33A.1-A closure.  The field `omegaPrimeOrder17Abs`
+is only the OmegaPrime row-17 source.  The degree-0 budget field `order17Abs`
+must be an exact Rat scalar for the whole
+`RawProductActualOrder18MajorantGenerated`, so it remains missing.
+
+Next exact patch:
+
+```text
+export exact Rat scalar for RawProductActualOrder18MajorantGenerated, then run
+coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
+```
+
 ## 2026-06-24 RawProduct18 OmegaPrime Order17 Rational Payload
 
 Computer Use / Proshka follow-up selected route `A`: keep the already checked

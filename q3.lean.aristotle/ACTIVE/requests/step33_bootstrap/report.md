@@ -75777,3 +75777,50 @@ does not close RawProduct18, D16 center, the degree-0 budget, or Step33A.1-A.
 The next proof-producing patch is exact RawProduct18 majorant assembly and
 then the degree-0 comparison
 `coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs`.
+
+## 2026-06-24 -- RawProduct18 uniform source checked
+
+Computer Use / Proshka follow-up selected:
+
+```text
+CHOSEN: A
+```
+
+Added isolated RawProduct18 source:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:..." lean -o .lake/build/lib/lean/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.olean Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+python3 -m json.tool ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+```
+
+Current generated gate now records:
+
+```text
+rawProduct18UniformSourceChecked = true
+order17UniformProofGrade = true
+omegaPrimeOrder17Abs = 1024379792916537436656292891459584/152587890625
+order17Abs = null
+budgetAudit.missing = [coeffErrorAbs, order17Abs, polyErrorAbs]
+proofGrade = false
+```
+
+Boundary: the OmegaPrime row-17 scalar is not the degree-0 `order17Abs`.
+The degree-0 budget still needs an exact Rat scalar export for
+`RawProductActualOrder18MajorantGenerated`, plus the D16 center enclosure,
+`coeffErrorAbs`, and `polyErrorAbs`.

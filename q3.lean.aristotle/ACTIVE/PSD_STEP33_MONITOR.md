@@ -40762,3 +40762,44 @@ Next implementable patch:
 compute exact RawProduct18 majorant from checked ShapeSq18 + OmegaPrime17
 sources, then run coeffErrorAbs + activeScaleAbs * order17Abs / 20 <= polyErrorAbs
 ```
+
+### 2026-06-24 Update -- RawProduct18 uniform source checked
+
+Browser/Computer Use follow-up selected route `A`: create an isolated
+RawProduct18 source file wiring the checked factor rows into the existing
+Leibniz receiver.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated
+```
+
+Current generated gate now records:
+
+```text
+rawProduct18UniformSourceChecked = true
+order17UniformProofGrade = true
+budgetAudit.missing = [coeffErrorAbs, order17Abs, polyErrorAbs]
+proofGrade = false
+```
+
+Boundary: this closes the Lean uniform source for
+`D^17(ComponentProductActual)` only.  It does not close the degree-0 budget:
+`order17Abs` for that budget must be an exact Rat scalar for
+`RawProductActualOrder18MajorantGenerated`, not the OmegaPrime-only row-17
+constant.
+
+Next implementable patch:
+
+```text
+export exact Rat scalar for RawProductActualOrder18MajorantGenerated; then
+combine with D16 center, coeffErrorAbs, and polyErrorAbs in the degree-0 budget
+```

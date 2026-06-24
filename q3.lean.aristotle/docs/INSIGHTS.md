@@ -44405,9 +44405,27 @@ status is `B2B_GATE_GREEN_NUMERICAL_DIAGNOSTIC` for S3 closure and
   `prefixN = 2`,
   `order17Abs = 1024379792916537436656292891459584/152587890625`.
 - Regenerated activeActual Horner/degree-0 ledgers.  They now record
-  `omegaPrimeOrder17UniformSourceChecked = true` and carry the exact
-  `order17Abs` into the degree-0 preflight fields.
+  `omegaPrimeOrder17UniformSourceChecked = true` and keep the exact
+  OmegaPrime row as `omegaPrimeOrder17Abs`; it is not by itself the
+  degree-0 budget scalar `order17Abs` for the whole RawProduct18 source.
 - Boundary: this is not RawProduct18 closure and not Step33A.1-A.  The next
   implementable patch is exact RawProduct18 majorant assembly from the checked
   ShapeSq18 and OmegaPrime17 factor sources, followed by the degree-0 budget
   comparison.
+
+## Insight (2026-06-24, Step33A.1-A) -- RawProduct18UniformSourceChecked
+
+- Added checked standalone RawProduct18 uniform source:
+  `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean`.
+- Checked theorem:
+  `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated`.
+- The file wires the existing RawProduct18 Leibniz receiver to checked factor
+  sources: `OmegaActual` rows `0..17`, the OmegaPrime row-17 rational payload
+  for `OmegaActual` row `18`, and the ShapeSqActual sharp source through
+  order `18`.
+- Regenerated activeActual Horner/degree-0 ledgers.  They now record
+  `rawProduct18UniformSourceChecked = true`.
+- Boundary: this is not Step33A.1-A closure.  The generated source is a Lean
+  `Real` majorant definition; the degree-0 budget still needs an exact Rat
+  scalar export for `RawProductActualOrder18MajorantGenerated`, plus the D16
+  center enclosure, `coeffErrorAbs`, and `polyErrorAbs`.

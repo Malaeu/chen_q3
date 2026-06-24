@@ -50,7 +50,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `activeScaleProofGrade`: `True`
 - `rawProduct18BridgeReady`: `True`
 - `rawProduct18MajorantReceiverReady`: `True`
-- `rawProduct18UniformSourceChecked`: `False`
+- `rawProduct18UniformSourceChecked`: `True`
 - `omegaPrimeOrder17AnalyticTsumSourceChecked`: `True`
 - `omegaPrimeOrder17UniformSourceChecked`: `True`
 - `omegaPrimeOrder17Abs`: `1024379792916537436656292891459584/152587890625`
@@ -72,7 +72,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
 - `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
 - `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
-- `d17UniformRoute`: `{'selectedRoute': 'B_rawProduct18', 'bridgeSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'bridgeReady': True, 'majorantReceiverSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean', 'majorantReceiverReady': True, 'failureIfUniformSourceMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP', 'shapeSqOrder18Source': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean', 'shapeSqOrder18SourceReady': True, 'omegaPrimeOrder17AnalyticSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean', 'omegaPrimeOrder17AnalyticSourceReady': True, 'omegaPrimeOrder17RationalSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean', 'omegaPrimeOrder17RationalPayload': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.json', 'omegaPrimeOrder17RationalSourceReady': True, 'omegaPrimeOrder17Abs': '1024379792916537436656292891459584/152587890625', 'remainingFactorSources': []}`
+- `d17UniformRoute`: `{'selectedRoute': 'B_rawProduct18', 'bridgeSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'bridgeReady': True, 'majorantReceiverSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean', 'majorantReceiverReady': True, 'uniformSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean', 'uniformSourceReady': True, 'failureIfUniformSourceMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP', 'shapeSqOrder18Source': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean', 'shapeSqOrder18SourceReady': True, 'omegaPrimeOrder17AnalyticSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean', 'omegaPrimeOrder17AnalyticSourceReady': True, 'omegaPrimeOrder17RationalSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean', 'omegaPrimeOrder17RationalPayload': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.json', 'omegaPrimeOrder17RationalSourceReady': True, 'omegaPrimeOrder17Abs': '1024379792916537436656292891459584/152587890625', 'remainingFactorSources': []}`
 - `fullDegree29Specialization`: `{'coefficientJetOrdersNeeded': '16..45', 'uniformRemainderDerivativeOrderNeeded': 46, 'firstMissingSubgapIfChosen': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP'}`
 
 ## Required Inputs
@@ -145,6 +145,15 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `requiredNextSource`: `RawProduct18 rational majorant assembly and degree-0 budget`
 - `failureCode`: `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP`
 
+### S2f_rawProduct18_uniform_source
+
+- `status`: `checked`
+- `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean`
+- `rawProductTheorem`: `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated`
+- `componentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated`
+- `requiredNextSource`: `exact Rat scalar export for RawProductActualOrder18MajorantGenerated before the degree-0 budget formula can be checked`
+- `failureCode`: `STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP`
+
 ### S3_zero_extend_low_degree_to_Fin30
 
 - `status`: `checked`
@@ -173,7 +182,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `degree0SourceInterfaceReady`: `True`
 - `rawProduct18BridgeReady`: `True`
 - `rawProduct18MajorantReceiverReady`: `True`
-- `rawProduct18UniformSourceChecked`: `False`
+- `rawProduct18UniformSourceChecked`: `True`
 - `omegaPrimeOrder17AnalyticTsumSourceChecked`: `True`
 - `omegaPrimeOrder17UniformSourceChecked`: `True`
 - `omegaPrimeOrder17RationalPayloadChecked`: `True`
@@ -262,6 +271,46 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `remainingFailureCode`: `STEP33_A1_SUB0_OMEGAPRIME_ORDER17_RATIONAL_TAIL_PAYLOAD_GAP`
 - `notProofEvidence`: `True`
 
+## Computer Use OmegaPrime Order17 Rational Decision
+
+- `used`: `True`
+- `advisoryOnly`: `True`
+- `recommendedOption`: `A`
+- `firstFileToEdit`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean`
+- `generator`: `scripts/generate_step33_a1_sub0_omega_prime_order17_payload.py`
+- `theorem`: `Step33Sub0OmegaPrimeOrder17Payload.primaryFiniteRow0Parent0Split100Sub0_omegaPrime_iteratedDeriv17_norm_le_generated`
+- `rationalPayloadChecked`: `True`
+- `order17Abs`: `1024379792916537436656292891459584/152587890625`
+- `remainingFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP`
+- `notProofEvidence`: `True`
+
+## Computer Use RawProduct18 Source Decision
+
+- `used`: `True`
+- `advisoryOnly`: `True`
+- `recommendedOption`: `A`
+- `firstFileToEdit`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean`
+- `firstTheorem`: `primaryFiniteRow0Parent0Split100Sub0_omegaActual_iteratedDeriv18_eq_omegaPrime17`
+- `rawProductTheorem`: `primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated`
+- `componentTransferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated`
+- `sourceChecked`: `True`
+- `remainingFailureCode`: `STEP33_A1_SUB0_RAW_PRODUCT18_FACTOR_ARRAY_ASSEMBLY_GAP`
+- `budgetFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`
+- `notProofEvidence`: `True`
+
+## Computer Use ShapeSq Order18 Decision
+
+- `used`: `True`
+- `advisoryOnly`: `True`
+- `recommendedOption`: `B`
+- `firstFileToEdit`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeOrder18Payload.lean`
+- `firstTheorem`: `primaryFiniteRow0Parent0Split100Sub0_realSinc_iteratedDeriv18_norm_le_two`
+- `secondFile`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean`
+- `shapeSqThrough18Theorem`: `primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18`
+- `internalSupportFile`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert19.lean`
+- `failureCode`: `STEP33_A1_SUB0_SHAPESQ_ORDER18_UNIFORM_SOURCE_GAP`
+- `notProofEvidence`: `True`
+
 ## Do Not Use As Proof
 
 - sampled activeActual rows
@@ -273,4 +322,4 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Next Implementable Patch
 
-Compute the exact RawProduct18 majorant from the checked ShapeSq order18 and OmegaPrime order17 rational sources, then run the degree-0 budget comparison before emitting any Lean payload.
+Export an exact Rat scalar mirror for RawProductActualOrder18MajorantGenerated, then combine it with the D16 center enclosure, coeffErrorAbs, and polyErrorAbs in the degree-0 budget comparison before emitting any Lean payload.
