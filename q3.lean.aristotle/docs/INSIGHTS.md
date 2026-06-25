@@ -45979,3 +45979,45 @@ not the raw-D17 factorwise support class.
   or a concrete
   `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid`
   payload.
+
+## Insight (2026-06-25, Weil route audit) -- WeilSquarePacketExhaustionCheck
+
+- Target checked: whether the repo or primary literature already supplies a
+  strict density/continuity chain for the exact Weil Hermitian-square packet
+  class, i.e. a future `WeilSquarePacketExhaustion` / `A1-pd` theorem rather
+  than broad-cone `A1'` density.
+- Local semantic queries:
+  `WeilSquarePacketExhaustion exact Weil square class density continuity boundary null`,
+  `A1-pd centered packet density positive definite cone autocorrelation continuity`,
+  `boundary-null exhaustion Hermitian square compact support Weil form topology`,
+  and `finite certified B-spline packet exhaustion global Weil positivity density continuity`.
+- Result: no ready theorem was found.  The hits confirm the corrected target
+  cone and the right theorem shape, but not the final proof.
+- Local positive evidence:
+  `full/sections/Notation/qstar_contract.tex` defines
+  `\mathcal W_K^{pd}`, `\mathcal G_K^{pd}`, and `K_Q`;
+  `full/sections/A1prime.tex` states that broad `A1'` does not provide the
+  mainline `A1-pd`; `docs/PAPER_MAINLINE_TRACKER.md` keeps `A1-pd`,
+  `packet-Rayleigh-pd`, and `PSD-pd` as theorem blocks.
+- Lean-side evidence: `Q3/Proofs/PSD_BoundaryNullExhaustion.lean` proves an
+  abstract conversion from ordinary sequential density plus correction-closure
+  to boundary-null sequential density; `Q3/Proofs/PSD_CertificateFamily.lean`
+  explicitly marks analytic exhaustion/global positivity as future payload.
+- External check: Bombieri's Weil quadratic functional source confirms the
+  standard positivity criterion, while Lagarias-style Weil scalar product
+  sources confirm the Hermitian-square/scalar-product shape.  Ehm--Gneiting--
+  Richards on compactly supported convolution roots warns that support/root
+  constraints are nontrivial, so the packet exhaustion cannot be treated as an
+  automatic corollary.
+- Current status: `OPEN / NOT_FOUND_READY_CHAIN`.
+- Minimal next theorem interface:
+  for every `h` in the exact compact-support Hermitian-square Weil class with
+  the required boundary-null conditions, construct packet autocorrelations
+  `h_n` in the finite/directed packet family such that `h_n -> h` in the
+  topology used by `Q`, boundary-null is preserved, and Arch/Prime parts of
+  `Q(h_n)` converge to `Q(h)`.
+- Recommended next step: write the Lean-facing theorem skeleton as an interface
+  that reuses `BoundaryNullSequentialExhaustive` and `DirectedCertFamily`, with
+  three separate assumptions: pre-square density, autocorrelation continuity,
+  and correction-closure of the chosen packet family.  Do not claim global RH
+  progress from finite PSD blocks until this interface is filled.
