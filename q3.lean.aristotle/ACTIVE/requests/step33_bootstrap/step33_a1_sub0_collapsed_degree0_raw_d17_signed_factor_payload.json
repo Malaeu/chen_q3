@@ -1,0 +1,112 @@
+{
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "doNotClaim": [
+    "Step33A.1-A closure",
+    "direct-route impossibility",
+    "spendability of old symmetric RawProduct18 majorants"
+  ],
+  "firstConcreteSubgap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "generatedAt": "2026-06-24T10:55:19.849649+00:00",
+  "leanPayloadWritten": true,
+  "nextFailureCodeIfBudgetFalse": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "nextFailureCodeIfRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_ROWS_GAP",
+  "nextPatchLeanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+  "nextPatchScript": "scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py",
+  "nextPatchSegments": [
+    "[0, 1/20]",
+    "[1/20, 1/10]"
+  ],
+  "nextPatchTheorems": [
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_left_valid",
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_right_valid",
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_family_valid"
+  ],
+  "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean",
+  "payloadFileSha256": "275365f66124a94ea0b89d65bd0fe834568d8bdd049d0beacee6c7fdba29f9cb",
+  "payloadProofGrade": true,
+  "payloadSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0RawD17OmegaLower": {
+      "line": 68,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17OmegaUpper": {
+      "line": 72,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17ShapeSqLower": {
+      "line": 76,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17ShapeSqUpper": {
+      "line": 80,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorRawPolySegment0": {
+      "line": 348,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0": {
+      "line": 115,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorTermLower": {
+      "line": 93,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorTermUpper": {
+      "line": 98,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_rawPoly_segment0_valid": {
+      "line": 359,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_fail_rat": {
+      "line": 394,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable": {
+      "line": 403,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_valid": {
+      "line": 267,
+      "present": true
+    }
+  },
+  "proofStatus": "fail_closed_segment0_budget_not_spendable",
+  "rawD17SignedFactorSegment0Valid": true,
+  "rawPolySegment0Valid": true,
+  "route": "collapsed_degree0_raw_d17_signed_factor_payload",
+  "rowsFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean",
+  "rowsFileSha256": "61b77b223ee3531a22ab06b5a5a82ca661e5462c13c574aa4a80da64ba6b4c34",
+  "rowsReceiverLeanChecked": true,
+  "rowsReceiverPresent": true,
+  "rowsSymbols": {
+    "Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert": {
+      "line": 116,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment": {
+      "line": 368,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment": {
+      "line": 383,
+      "present": true
+    },
+    "theorem to_rawInterval": {
+      "line": 263,
+      "present": true
+    },
+    "theorem to_rawPolySegmentValid": {
+      "line": 342,
+      "present": true
+    }
+  },
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_payload.v1",
+  "segment0BudgetFailureTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable",
+  "segment0BudgetSpendable": false,
+  "selectedNextPatch": "build_two_segment_raw_d17_signed_factor_payload"
+}

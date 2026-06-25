@@ -208,7 +208,7 @@ Required coefficient definitions:
 
 - path: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json`
 - exists: `True`
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19`
 - status: `fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap`
 - firstFailure: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 
@@ -240,7 +240,7 @@ Required coefficient definitions:
 ## Current Component Field State
 
 - `payloadExists`: `True`
-- `payloadSchema`: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18`
+- `payloadSchema`: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19`
 - `payloadStatus`: `fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap`
 - `payloadFirstFailure`: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
 - `componentTaylorAssemblyLeanWritten`: `False`

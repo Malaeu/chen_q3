@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Status
 
-- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18`
+- schema: `q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19`
 - route: `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL`
 - chosen route: `B`
 - status: `fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap`
@@ -14,49 +14,6 @@ not close Step33A.1-A.
 - advisory source: `browser_proshka_route_advice_not_proof_evidence`
 - proof-safe closed fields: `19`
 - Lean emitted: `False`
-
-## Local Lean Supplement (2026-06-22)
-
-This generated payload is not regenerated in this patch and remains
-fail-closed.  A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean`
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqTightFullCellTaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_tight_component_product_source`
-
-Meaning: the same-coefficient full-cell ShapeSq source and a proof-grade
-nonfinal tight component product source are now Lean-checked.  This does not
-set `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, or
-`exactCoefficientAssemblyPassed`.
-
-Current local first gap after the supplement:
-`STEP33_A1_SUB0_RAW_DERIV_CLOSED_FORM_TO_TIGHT_PRODUCT_REMAINDER_BRIDGE_GAP`.
-
-## Local Lean Supplement 2 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean`
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightProductSource`
-- `primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_poly_eq_nominalProduct`
-- `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure`
-
-Meaning: the raw closed form, nominal component product, degree-45 assembled
-polynomial, and residual Taylor convention are now connected by a proof-grade
-coarse enclosure.  The enclosure constant is
-`primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`; it has
-not been proved to meet the final target budget.
-
-Current local first gap after supplement 2:
-`STEP33_A1_SUB0_TIGHT_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
 
 ## Target
 
@@ -511,6 +468,50 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - why not C: A monolithic direct Lean proof would mix component expansions, product assembly, model subtraction, and range proof in one hard-to-audit theorem.
 - follow-up why A: The same-coefficient ShapeSqDeriv Taylor payload is now Lean-checked and tied by theorem to the active generated coefficient stream.  It is still a coarse/nonfinal budget, so the smallest next proof-moving patch is the component Taylor remainder source that assembles this payload into the raw-derivative residual route.
 
+## Component Taylor Remainder Route Review
+
+- source: `Computer Use / Proshka route review 2026-06-23`
+- advisory only: `True`
+- recommended option: `B`
+- decision: Build a proof-grade rational generator for the signed component Taylor remainder rows first, then feed a small Lean receiver/payload.  Do not create the Lean payload as a proof object before rows and budget are checked.
+- first theorem/object: `primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated`
+- transport theorem/object: `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure_generated`
+- premise shape: proof-grade signed interval/rational rows for RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 45 (1/20) AssembledRawDerivCoeff eta on [0,1/10]
+- conclusion shape: norm of the signed component remainder is bounded by ComponentPropagationRemainderAbs, then transported to the residual Taylor enclosure with ResidualTaylorRemainderAbs
+- failure code if rows missing: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP`
+- failure code if budget false: `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL`
+- proof claim allowed now: `False`
+
+### First Files
+
+- `scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRemainderPayload.lean`
+
+### Required Rows
+
+- omegaPrime / omega proof-grade Taylor coefficients and remainders
+- ShapeSq tight full-cell coefficients and remainder
+- ShapeSqDeriv tight same-coefficient coefficients and remainder
+- activeScale tight interval and nominalScale
+- exact degree-45 Cauchy assembly array
+- direct signed rows for ActualComponent - P45(assembledCoeff)
+- componentPropagationRemainderAbs
+- residualTaylorRemainderAbs
+- exact rational budget comparison
+
+### What Not To Reuse
+
+- TightProductAssemblyErrorBudget
+- rows0..11 killed product budget
+- centeredTaylor factor-majorant budget
+- zero-model budget
+- sampled/probe rows
+- independent norm spends for the two product summands
+
+### Why B
+
+Receivers and coefficient assembly already exist; the live uncertainty is numerical reachability of a proof-grade signed remainder and exact budget.  The generator should kill or validate that before another large Lean theorem.
+
 ## Failure Codes
 
 - `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP`
@@ -545,6 +546,8 @@ Extracted from local Lean definition `primaryFiniteRow0Parent0Split100Sub0Residu
 - `STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP`
 - `STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP`
 - `STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING`
+- `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP`
+- `STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL`
 
 ## Decision
 
@@ -568,385 +571,3 @@ proof gap is now the component Taylor remainder source that can
 be assembled into the raw derivative residual route.
 Raw-derivative assembly, residual polynomial bounds, and the
 final interval theorem remain open.
-
-## Local Lean Supplement 3 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean`
-
-Checked supplement theorem:
-
-- `primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail`
-
-Meaning: Lean now proves the active target residual interval width is
-strictly smaller than
-`2 * primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`.
-Therefore the current proof-grade coarse enclosure cannot close the final
-target interval receiver.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  It
-only marks the current coarse source as proof-grade-but-too-wide.
-`residualTaylorRemainderAbs`, `componentTaylorProofsPresent`, and
-`exactCoefficientAssemblyPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 3:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_SHARP_REMAINDER_SOURCE_GAP`.
-
-## Local Lean Supplement 4 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharpCoeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_partialSharp_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivPartialSharpTaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_partialSharpShapeSqDerivRows2To15_width_fail`
-
-Meaning: Lean now proves a partial-sharp ShapeSqDeriv Taylor source in the
-same active coefficient stream and `ShapeSqDerivTaylorIntervalCert.singleAbs`
-normalization.  The source spends the checked center rows `0` and `1`, leaves
-rows `2..15` and order `16` on the coarse budget, and then proves this is
-still too wide for the active target residual interval.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0` and `1` are no longer the live obstruction; rows `2..15` plus order `16`
-remain open.  `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
-`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
-the generated payload.
-
-Current local first gap after supplement 4:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_2_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 5 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet2_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows012ShapeSqDerivRows3To15_width_fail`
-
-Meaning: Lean now proves row `2` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 3`
-and divides by `2!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, and `2` are no longer the live obstruction.  Rows `3..15` plus order
-`16` remain open, and Lean proves the rows-0/1/2 partial-sharp source is still
-too wide for the active target interval.  `residualTaylorRemainderAbs`,
-`componentTaylorProofsPresent`, `exactCoefficientAssemblyPassed`, and
-`finalBudgetPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 5:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_3_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 6 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet3_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows0123TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows0123ShapeSqDerivRows4To15_width_fail`
-
-Meaning: Lean now proves row `3` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 4`
-and divides by `3!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, and `3` are no longer the live obstruction.  Rows `4..15` plus
-order `16` remain open, and Lean proves the rows-0/1/2/3 partial-sharp source
-is still too wide for the active target interval.  `residualTaylorRemainderAbs`,
-`componentTaylorProofsPresent`, `exactCoefficientAssemblyPassed`, and
-`finalBudgetPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 6:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_4_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 7 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet4_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows01234ShapeSqDerivRows5To15_width_fail`
-
-Meaning: Lean now proves row `4` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 5`
-and divides by `4!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, and `4` are no longer the live obstruction.  Rows `5..15`
-plus order `16` remain open, and Lean proves the rows-0/1/2/3/4 partial-sharp
-source is still too wide for the active target interval.
-`residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
-`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
-the generated payload.
-
-Current local first gap after supplement 7:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_5_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 8 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012345Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet5_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012345_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012345TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows012345ShapeSqDerivRows6To15_width_fail`
-
-Meaning: Lean now proves row `5` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 6`
-and divides by `5!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, `4`, and `5` are no longer the live obstruction.  Rows
-`6..15` plus order `16` remain open, and Lean proves the rows-0/1/2/3/4/5
-partial-sharp source is still too wide for the active target interval.
-`residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
-`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
-the generated payload.
-
-Current local first gap after supplement 8:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_6_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 9 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123456Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123456Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet6_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123456_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows0123456TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows0123456ShapeSqDerivRows7To15_width_fail`
-
-Meaning: Lean now proves row `6` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 7`
-and divides by `6!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, `4`, `5`, and `6` are no longer the live obstruction.
-Rows `7..15` plus order `16` remain open, and Lean proves the
-rows-0/1/2/3/4/5/6 partial-sharp source is still too wide for the active target
-interval.  `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
-`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
-the generated payload.
-
-Current local first gap after supplement 9:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_7_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 10 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet7_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows01234567ShapeSqDerivRows8To15_width_fail`
-
-Meaning: Lean now proves row `7` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 8`
-and divides by `7!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, `4`, `5`, `6`, and `7` are no longer the live obstruction.
-Rows `8..15` plus order `16` remain open, and Lean proves the
-rows-0/1/2/3/4/5/6/7 partial-sharp source is still too wide for the active
-target interval.  `residualTaylorRemainderAbs`, `componentTaylorProofsPresent`,
-`exactCoefficientAssemblyPassed`, and `finalBudgetPassed` remain false/null in
-the generated payload.
-
-Current local first gap after supplement 10:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_8_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 11 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345678Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012345678Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet8_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012345678_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012345678TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows012345678ShapeSqDerivRows9To15_width_fail`
-
-Meaning: Lean now proves row `8` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 9`
-and divides by `8!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, and `8` are no longer the live
-obstruction.  Rows `9..15` plus order `16` remain open, and Lean proves the
-rows-0/1/2/3/4/5/6/7/8 partial-sharp source is still too wide for the active
-target interval.  `residualTaylorRemainderAbs`,
-`componentTaylorProofsPresent`, `exactCoefficientAssemblyPassed`, and
-`finalBudgetPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 11:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_9_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 12 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123456789Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123456789Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet9_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows0123456789_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows0123456789TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows0123456789ShapeSqDerivRows10To15_width_fail`
-
-Meaning: Lean now proves row `9` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 10`
-and divides by `9!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, and `9` are no longer the live
-obstruction.  Rows `10..15` plus order `16` remain open, and Lean proves the
-rows-0/1/2/3/4/5/6/7/8/9 partial-sharp source is still too wide for the active
-target interval.  `residualTaylorRemainderAbs`,
-`componentTaylorProofsPresent`, `exactCoefficientAssemblyPassed`, and
-`finalBudgetPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 12:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_10_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 13 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345678910Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012345678910Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet10_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows012345678910_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows012345678910TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows012345678910ShapeSqDerivRows11To15_width_fail`
-
-Meaning: Lean now proves row `10` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 11`
-and divides by `10!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not kill the route.  Rows
-`0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, and `10` are no longer the
-live obstruction.  Rows `11..15` plus order `16` remain open, and Lean proves
-the rows-0/1/2/3/4/5/6/7/8/9/10 partial-sharp source is still too wide for the
-active target interval.  `residualTaylorRemainderAbs`,
-`componentTaylorProofsPresent`, `exactCoefficientAssemblyPassed`, and
-`finalBudgetPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 13:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS_11_TO_15_ORDER16_SHARP_SOURCE_GAP`.
-
-## Local Lean Supplement 14 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567891011Payload.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567891011Coeff_eq_generated`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_centerJet11_coarseSmall_abs`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_rows01234567891011_valid`
-- `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011TaylorSource`
-- `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011ShapeSqDerivRows12To15_width_pass`
-
-Meaning: Lean now proves row `11` in the same active generated coefficient
-stream and `ShapeSqDerivTaylorIntervalCert.singleAbs` normalization.  This uses
-the existing coarse shape-derivative majorant at exact product order `n = 12`
-and divides by `11!`, instead of spending the global order-17 budget.
-
-Boundary: this is not Step33A.1-A closure and does not prove
-`finalBudgetPassed`.  Rows `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`,
-`10`, and `11` are spendable in the local ShapeSqDeriv source, and the local
-row-by-row width test now passes.  The existing product/P45 bridge still
-consumes the old `primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget`,
-so the row11 Taylor source must still be bridged into the component Taylor
-product receiver.  `residualTaylorRemainderAbs`,
-`componentTaylorProofsPresent`, `exactCoefficientAssemblyPassed`, and
-`finalBudgetPassed` remain false/null in the generated payload.
-
-Current local first gap after supplement 14:
-`STEP33_A1_SUB0_SHAPESQ_DERIV_ROWS01234567891011_TAYLOR_SOURCE_PRODUCT_BRIDGE_GAP`.
-
-## Local Lean Supplement 15 (2026-06-22)
-
-A later local Lean supplement added:
-
-- `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRows01234567891011ProductBridge.lean`
-
-Checked supplement theorems:
-
-- `primaryFiniteRow0Parent0Split100Sub0_rows01234567891011_component_product_source`
-- `primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_rows01234567891011ProductSource`
-- `primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_rows01234567891011_enclosure`
-
-Meaning: the row11 partial-sharp ShapeSqDeriv Taylor source is now consumed by
-the component Taylor product/P45 receiver.  The bridge reuses the existing
-assembled coefficient stream because the row11 ShapeSqDeriv coefficient stream
-is definitionally the generated stream.
-
-Boundary: this is not Step33A.1-A closure and does not prove
-`finalBudgetPassed`.  The remaining target is the final comparison for
-`primaryFiniteRow0Parent0Split100Sub0Rows01234567891011ProductAssemblyErrorBudget`.
-A direct `norm_num` comparison attempt left generated/integrated coefficient
-abs-budget surfaces opaque, so no truth value is claimed yet for that final
-comparison.
-
-Current local first gap after supplement 15:
-`STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_FINAL_COMPARISON_GAP`.
-
-First observed subfailure:
-`STEP33_A1_SUB0_ROWS01234567891011_PRODUCT_BUDGET_COEFF_UNFOLD_GAP`.

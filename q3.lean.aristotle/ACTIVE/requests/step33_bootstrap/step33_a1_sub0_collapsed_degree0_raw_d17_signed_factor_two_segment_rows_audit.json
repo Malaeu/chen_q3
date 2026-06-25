@@ -1,0 +1,291 @@
+{
+  "budgetFailTheorems": {
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_budget_fail_rat": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+      "line": 456,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_budget_not_spendable": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+      "line": 464,
+      "present": true
+    }
+  },
+  "computerUseReview": {
+    "choice": "A",
+    "meaning": "Create the raw-D17 local center-jet order18 payload first; do not create TwoSegmentPayload.lean until those rows and the derived two-segment OmegaActual and ShapeSqActual derivative rows exist.",
+    "used": true
+  },
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "derivativeRowsGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_TWO_SEGMENT_DERIVATIVE_ROWS_ORDER18_GAP",
+  "doNotClaim": [
+    "Step33A.1-A closure",
+    "two-segment route failure",
+    "direct whole-expression route failure",
+    "spendability of global symmetric full-cell rows"
+  ],
+  "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "generatedAt": "2026-06-24T12:04:41.677234+00:00",
+  "legacyRowsGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_ROWS_GAP",
+  "localCenterJetsGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_CENTER_JET_ROWS_GAP",
+  "nextFailureCodeIfRowsCloseButBudgetFails": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "order18TaylorBridgePresent": true,
+  "order18TaylorBridgeStatus": "present",
+  "order18UniformSourcesPresent": true,
+  "order18UniformSourcesStatus": "present",
+  "payloadTargetTheorems": {
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_left_valid": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+      "line": 366,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_right_valid": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+      "line": 373,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_family_valid": {
+      "file": null,
+      "line": null,
+      "present": false
+    }
+  },
+  "proofGradeLocalCenterJetsPresent": true,
+  "proofGradeLocalRowsPresent": true,
+  "proofStatus": "fail_closed_two_segment_budget_constant_fail",
+  "requiredLocalCenterJetTheorems": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean",
+      "line": 266,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet18_twoSegment_interval",
+      "present": true,
+      "purpose": "proof-grade lower/upper rows for normalized OmegaActual center jets through j < 18 at local centers 1/40 and 3/40",
+      "statement": "theorem\n    primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet18_twoSegment_interval\n    (i : Fin 2) (j : Fin 18) :\n    let center : Real := if i.1 = 0 then (1/40 : Real) else (3/40 : Real)\n    (omegaCenterJetLower i j : Real) <=\n        iteratedDeriv j.1 step22OmegaArchWeight center /\n          (Nat.factorial j.1 : Real)\n    /\\\n        iteratedDeriv j.1 step22OmegaArchWeight center /\n          (Nat.factorial j.1 : Real)\n      <= (omegaCenterJetUpper i j : Real)",
+      "status": "present"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean",
+      "line": 284,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet18_twoSegment_interval",
+      "present": true,
+      "purpose": "proof-grade lower/upper rows for normalized ShapeSqActual center jets through j < 18 at local centers 1/40 and 3/40",
+      "statement": "theorem\n    primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet18_twoSegment_interval\n    (i : Fin 2) (j : Fin 18) :\n    let center : Real := if i.1 = 0 then (1/40 : Real) else (3/40 : Real)\n    (shapeSqCenterJetLower i j : Real) <=\n        iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSq center /\n          (Nat.factorial j.1 : Real)\n    /\\\n        iteratedDeriv j.1 primaryFiniteRow0Parent0Split100Sub0ShapeSq center /\n          (Nat.factorial j.1 : Real)\n      <= (shapeSqCenterJetUpper i j : Real)",
+      "status": "present"
+    }
+  ],
+  "requiredLocalRowTheorems": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean",
+      "line": 497,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_interval",
+      "present": true,
+      "purpose": "uniform local lower/upper rows for OmegaActual derivatives on each of the two subsegments, derived from local center jets and centeredTaylorDerivMajorant18",
+      "statement": "theorem\n    primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_interval\n    (i : Fin 2) (k : Fin 19) :\n    forall eta in Set.Icc (cellL i : Real) (cellU i : Real),\n      (omegaLower i k : Real) <=\n          iteratedDeriv k.1 step22OmegaArchWeight eta\n      /\\\n          iteratedDeriv k.1 step22OmegaArchWeight eta\n        <= (omegaUpper i k : Real)",
+      "status": "present"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean",
+      "line": 555,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_interval",
+      "present": true,
+      "purpose": "uniform local lower/upper rows for ShapeSqActual derivatives on each of the two subsegments, derived from local center jets and centeredTaylorDerivMajorant18",
+      "statement": "theorem\n    primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_interval\n    (i : Fin 2) (k : Fin 19) :\n    forall eta in Set.Icc (cellL i : Real) (cellU i : Real),\n      (shapeSqLower i k : Real) <=\n          iteratedDeriv k.1\n            primaryFiniteRow0Parent0Split100Sub0ShapeSq eta\n      /\\\n          iteratedDeriv k.1\n            primaryFiniteRow0Parent0Split100Sub0ShapeSq eta\n        <= (shapeSqUpper i k : Real)",
+      "status": "present"
+    }
+  ],
+  "route": "collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit",
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.v3",
+  "segments": [
+    {
+      "cellL": "0",
+      "cellU": "1/20",
+      "name": "left"
+    },
+    {
+      "cellL": "1/20",
+      "cellU": "1/10",
+      "name": "right"
+    }
+  ],
+  "shapeSqLocalCenterJetsGap": "STEP33_A1_SUB0_SHAPESQ_LOCAL_CENTER_JETS18_PAYLOAD_GAP",
+  "shouldEmitTwoSegmentLeanPayload": false,
+  "supportSurfaces": {
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant18.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "54da6c8ce5cacc7c5de63ef256fd81a878f96fd3f356d6d32c1ca70fab84bcaa",
+      "symbols": {
+        "centeredTaylorDerivMajorant18": {
+          "line": 168,
+          "present": true
+        },
+        "centeredTaylorDerivMajorant18Range": {
+          "line": 185,
+          "present": true
+        },
+        "centeredTaylorDerivMajorant18_last": {
+          "line": 395,
+          "present": true
+        },
+        "iteratedDeriv_norm_le_centeredTaylorDerivMajorant18": {
+          "line": 202,
+          "present": true
+        },
+        "iteratedDeriv_norm_le_centeredTaylorDerivMajorant18_last": {
+          "line": 419,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "a5c3f5968ec55f259c292e18135ceb785a979b6e776b5a4638342c45dc425c68",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0OmegaActualDerivativeMajorant18": {
+          "line": 83,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_abs18": {
+          "line": 115,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "275365f66124a94ea0b89d65bd0fe834568d8bdd049d0beacee6c7fdba29f9cb",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_rawPoly_segment0_valid": {
+          "line": 359,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable": {
+          "line": 403,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_valid": {
+          "line": 267,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "61b77b223ee3531a22ab06b5a5a82ca661e5462c13c574aa4a80da64ba6b4c34",
+      "symbols": {
+        "Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert": {
+          "line": 116,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment": {
+          "line": 368,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment": {
+          "line": 383,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "9658b8145980ecb70c319d7f1b90c7ef19fddc92c935fc52cc99b504c2e0b5f8",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_left_valid": {
+          "line": 366,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_right_valid": {
+          "line": 373,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_budget_not_spendable": {
+          "line": 464,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "b738f63142f35c9679158af0ebe30acd2a60d37eeb5012c4a80207ee12feec46",
+      "symbols": {
+        "Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert": {
+          "line": 556,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_raw_poly_segment_family_cert": {
+          "line": 635,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "9d7f97e213eb9419239cfbd47c9d0c05766f755b5122d0e8f003c8b824ce96dd",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0OmegaActualLocalJetLower": {
+          "line": 142,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0OmegaActualLocalJetUpper": {
+          "line": 147,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0RawD17LocalCenter": {
+          "line": 28,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualLocalJetLower": {
+          "line": 159,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualLocalJetUpper": {
+          "line": 164,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_interval": {
+          "line": 497,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet_interval_generated": {
+          "line": 188,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_interval": {
+          "line": 555,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet_interval_generated": {
+          "line": 227,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "e16cc19cae3870a7e442b6cad4ac01f8e9ab335a05f656b299a258693f5caa86",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualSharpDerivativeMajorant18": {
+          "line": 322,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18": {
+          "line": 333,
+          "present": true
+        }
+      }
+    }
+  },
+  "taylorBridgeGap": "STEP33_A1_SUB0_CENTERED_TAYLOR_DERIVATIVE_MAJORANT18_BRIDGE_GAP",
+  "twoSegmentBudgetFailPresent": true,
+  "twoSegmentPayloadExists": true,
+  "twoSegmentPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+  "twoSegmentPayloadTheoremsPresent": false
+}

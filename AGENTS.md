@@ -54,6 +54,10 @@ Pro / Louise escalation protocol:
 - Codex must not assume automatic access to the Pro chat.  If the user
   attaches, pastes, or appshots the Pro chat, Codex may use it as context.
   Otherwise Codex must write a compact escalation block in the active report:
+  If the current Codex Desktop session confirms that the in-app browser is open
+  to the Pro/Louise chat, Codex should use Computer Use for route-review before
+  changing strategy on a loop trap or real theorem-shape fork; if that browser
+  context is absent, fall back to the report block below.
 
 ```md
 ## PRO_REVIEW_REQUEST

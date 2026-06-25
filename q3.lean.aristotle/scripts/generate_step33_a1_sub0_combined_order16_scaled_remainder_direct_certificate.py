@@ -18,7 +18,7 @@ from typing import Any
 
 SCHEMA = (
     "q3_psdpd_step33_a1_sub0_combined_order16_"
-    "scaled_remainder_direct_certificate.v12"
+    "scaled_remainder_direct_certificate.v16"
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -64,6 +64,39 @@ DIRECT_HORNER_SOURCE_BRIDGE_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerSourceBridge.lean"
 )
+DIRECT_COLLAPSED_TAYLOR_SOURCE_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedTaylorSource.lean"
+)
+DIRECT_COLLAPSED_SOURCE_INTERVAL_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.lean"
+)
+DIRECT_COLLAPSED_LOW_DEGREE_SOURCE_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedLowDegreeSource.lean"
+)
+DIRECT_COLLAPSED_DEGREE0_DERIVATIVE_SHIFT_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0DerivativeShift.lean"
+)
+DIRECT_COLLAPSED_DEGREE0_CENTER_AUDIT_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0CenterAudit.lean"
+)
+DIRECT_COLLAPSED_DEGREE0_SIGNED_SOURCE_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean"
+)
+DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean"
+)
+DIRECT_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_KILL_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0"
+    "RawD17SharpTwoSegmentBudgetKill.lean"
+)
 NOMINAL_POLYNOMIAL_BRIDGE_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NominalPolynomialBridge.lean"
@@ -79,6 +112,10 @@ ACTIVE_ACTUAL_HORNER_SEGMENT_FILE = (
 ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualHornerFamilyBridge.lean"
+)
+ACTIVE_ACTUAL_DEGREE0_AUDIT_FILE = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean"
 )
 BIASED_INTERVAL_FILE = (
     PROOFS
@@ -121,6 +158,19 @@ SHAPESQ_DERIV_TIGHT_LEDGER = (
 ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER = (
     REQUEST_DIR / "step33_a1_sub0_active_actual_horner_row_source.json"
 )
+WHOLE_EXPRESSION_PILOT_SCRIPT = (
+    ROOT
+    / "scripts"
+    / "generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py"
+)
+WHOLE_EXPRESSION_PILOT_JSON = (
+    REQUEST_DIR
+    / "step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.json"
+)
+WHOLE_EXPRESSION_PILOT_MD = (
+    REQUEST_DIR
+    / "step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.md"
+)
 
 TARGET_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
@@ -138,6 +188,10 @@ TARGET_EXPRESSION = (
 TARGET_BUDGET = (
     "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16Biased"
     "ResidualRemainderAbs"
+)
+FIRST_PROOF_PRODUCING_GENERATOR = (
+    "scripts/generate_step33_a1_sub0_combined_order16_"
+    "scaled_remainder_direct_certificate.py"
 )
 DIRECT_ROW_SOURCE_GAP = (
     "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
@@ -178,6 +232,50 @@ COLLAPSED_SEGMENT_REMAINDER_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "combinedOrder16ScaledRemainder_collapsed_segment_remainder"
 )
+COLLAPSED_TAYLOR_RECEIVER_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "combinedOrder16ScaledRemainder_"
+    "collapsed_segment_remainder_of_centerJet15_order16"
+)
+COLLAPSED_TAYLOR_RECEIVER_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_TAYLOR_RECEIVER_GAP"
+)
+COLLAPSED_CENTER_JETS_ORDER16_ROW_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_CENTER_JETS_"
+    "ORDER16_ROW_SOURCE_GAP"
+)
+COLLAPSED_SOURCE_INTERVAL_CERT_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_"
+    "INTERVAL_CERT_GAP"
+)
+COLLAPSED_SOURCE_INTERVAL_ROWS_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_"
+    "INTERVAL_ROWS_GAP"
+)
+COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_"
+    "D17_SIGNED_SOURCE_GAP"
+)
+COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_"
+    "POLY_DERIV_SIGNED_SOURCE_GAP"
+)
+COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_"
+    "RAW_D17_LOCAL_INTERVAL_ROWS_GAP"
+)
+COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_"
+    "RAW_D17_SIGNED_FACTOR_ROWS_GAP"
+)
+COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_FAIL = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_"
+    "RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL"
+)
+COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_"
+    "BUDGET_CONSTANT_FAIL"
+)
 ACTIVE_ACTUAL_SEGMENT_REMAINDER_SOURCE_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_SOURCE_GAP"
 )
@@ -189,6 +287,18 @@ ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP = (
 )
 ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP"
+)
+ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_FAIL = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_"
+    "DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD"
+)
+WHOLE_EXPRESSION_PILOT_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
+    "WHOLE_EXPRESSION_PILOT_GAP"
+)
+WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
+    "WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP"
 )
 ACTIVE_ACTUAL_SEGMENT_REMAINDER_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
@@ -209,6 +319,10 @@ ACTIVE_ACTUAL_HORNER_FAMILY_VALID_THEOREM = (
 ACTIVE_ACTUAL_HORNER_FAMILY_PAYLOAD_THEOREM = (
     "primaryFiniteRow0Parent0Split100Sub0_"
     "directPayloadTarget_of_activeActualHornerFamily"
+)
+ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "activeActual_degree0_directPayloadBudget_fail_rat"
 )
 
 DIRECT_PAYLOAD_SYMBOLS = [
@@ -275,6 +389,149 @@ DIRECT_HORNER_SOURCE_BRIDGE_SYMBOLS = [
     "theorem of_collapsed_horner_range",
     "theorem valid_of_collapsed_horner_rows",
 ]
+DIRECT_COLLAPSED_TAYLOR_SOURCE_SYMBOLS = [
+    COLLAPSED_TAYLOR_RECEIVER_THEOREM,
+    "Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedTaylorCert",
+    "def toDirectHornerSegment",
+    "theorem remainder_bound",
+    "theorem to_directHorner_valid",
+]
+DIRECT_COLLAPSED_SOURCE_INTERVAL_SYMBOLS = [
+    "Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedSourceIntervalCert",
+    "structure Valid",
+    "theorem centerJet",
+    "theorem order16",
+    "theorem to_collapsedTaylorValid",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsedTaylorValid_of_source_interval"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsed_segment_remainder_of_source_interval"
+    ),
+]
+
+DIRECT_COLLAPSED_LOW_DEGREE_SOURCE_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0Coeff",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsed_degree0_remainder"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsed_degree0_remainder_of_deriv_bound"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsed_degree0_remainder_of_signedD17_source"
+    ),
+    COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP,
+]
+
+DIRECT_COLLAPSED_DEGREE0_DERIVATIVE_SHIFT_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_differentiableAt",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsedExpression_deriv_eq_activeActualD17_sub_nominalOrder16PolyDeriv"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsed_degree0_remainder_of_polyDeriv_signedD17_source"
+    ),
+    COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP,
+]
+
+DIRECT_COLLAPSED_DEGREE0_CENTER_AUDIT_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0Coeff0",
+    "primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0CoeffErrorAbs",
+    "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_center",
+    "primaryFiniteRow0Parent0Split100Sub0_directCollapsed_degree0_hCenter_generated",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_"
+        "collapsed_degree0_remainder_of_center_and_polyDeriv_source"
+    ),
+]
+
+DIRECT_COLLAPSED_DEGREE0_SIGNED_SOURCE_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr",
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceTarget",
+    "Step33Sub0CollapsedDegree0SignedSourceCert",
+    "structure Valid",
+    "theorem valid_of_signed_interval_and_budget",
+    "theorem to_hSignedD17PolyDeriv",
+    "theorem to_collapsed_degree0_remainder",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsedDegree0_hSignedD17PolyDeriv_of_signed_interval"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsed_degree0_remainder_of_signed_interval_and_budget"
+    ),
+    "Step33Sub0CollapsedDegree0SignedSourceSegmentCert",
+    "Step33Sub0CollapsedDegree0RawPolySegmentCert where",
+    "def toSignedSegmentCert",
+    "namespace Step33Sub0CollapsedDegree0RawPolySegmentCert",
+    "theorem valid_of_raw_poly_intervals",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsedDegree0_signedSegmentValid_of_raw_poly_intervals"
+    ),
+    "Step33Sub0CollapsedDegree0SignedSourceSegmentCover",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsedDegree0_hSignedD17PolyDeriv_of_signed_segment_cover"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsed_degree0_remainder_of_signed_segment_cover_and_budget"
+    ),
+    "Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert",
+    "Step33Sub0CollapsedDegree0RawPolySegmentCover",
+    "Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert",
+    "theorem to_signedSegmentFamilyValid",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsed_degree0_remainder_of_raw_poly_segment_family_cert"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsed_degree0_remainder_of_signed_segment_family_cert"
+    ),
+    "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_source_cert",
+]
+
+DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0RawProduct18SignedTerm",
+    "Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert",
+    "def termCornerRows",
+    "def toRawPolySegmentCert",
+    "namespace Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert",
+    "theorem to_termRows",
+    "theorem to_rawInterval",
+    "theorem to_rawPolySegmentValid",
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsedDegree0_rawD17_interval_of_signed_factor_segment"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment"
+    ),
+]
+
+DIRECT_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_KILL_SYMBOLS = [
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "rawD17_signedFactor_sharp_twoSegment_budget_fail_rat"
+    ),
+    (
+        "primaryFiniteRow0Parent0Split100Sub0_"
+        "rawD17_signedFactor_sharp_twoSegment_budget_not_spendable"
+    ),
+]
+
 NOMINAL_POLYNOMIAL_BRIDGE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0NominalOrder16Coeff",
     "primaryFiniteRow0Parent0Split100Sub0NominalOrder16Poly",
@@ -367,6 +624,104 @@ def compact_ledger(path: Path, keys: list[str]) -> dict[str, Any]:
     for key in keys:
         out[key] = data.get(key)
     return out
+
+
+def build_whole_expression_pilot_contract() -> dict[str, Any]:
+    script_exists = WHOLE_EXPRESSION_PILOT_SCRIPT.exists()
+    pilot_output = load_json(WHOLE_EXPRESSION_PILOT_JSON)
+    output_loaded = bool(pilot_output)
+    phase2_result = (
+        pilot_output.get("phase2ResultNow")
+        if output_loaded
+        else (
+            "NOT_RUN_MISSING_PILOT_SCRIPT"
+            if not script_exists
+            else "NOT_RUN_READY_TO_RUN"
+        )
+    )
+    first_failure = (
+        pilot_output.get("currentGap")
+        if output_loaded
+        else (
+            WHOLE_EXPRESSION_PILOT_GAP
+            if not script_exists
+            else DIRECT_ROW_SOURCE_GAP
+        )
+    )
+    status = (
+        pilot_output.get("status")
+        if output_loaded
+        else ("ready_to_run" if script_exists else "missing_pilot_script")
+    )
+    return {
+        "phase": "Phase2_Cheap_Whole_Expression_Pilot",
+        "status": status,
+        "proofGrade": bool(pilot_output.get("proofGrade", False)),
+        "pilotScript": rel(WHOLE_EXPRESSION_PILOT_SCRIPT),
+        "pilotScriptExists": script_exists,
+        "pilotOutputJson": rel(WHOLE_EXPRESSION_PILOT_JSON),
+        "pilotOutputMarkdown": rel(WHOLE_EXPRESSION_PILOT_MD),
+        "pilotOutputLoaded": output_loaded,
+        "pilotVerdict": pilot_output.get("pilotVerdict"),
+        "sourceDataReady": pilot_output.get("sourceDataReady"),
+        "sourceDataStatus": pilot_output.get("sourceDataStatus"),
+        "blockingMissingArtifacts": [
+            item
+            for item in pilot_output.get("missingArtifacts", [])
+            if not item.get("present", False)
+        ],
+        "commandWhenImplemented": (
+            "python3 scripts/generate_step33_a1_sub0_combined_order16_"
+            "scaled_remainder_whole_expression_pilot.py"
+        ),
+        "mustEvaluateExpression": (
+            "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16"
+            "ScaledRemainderCollapsedExpression"
+        ),
+        "mustFeedReceiverTheorem": COLLAPSED_SEGMENT_REMAINDER_THEOREM,
+        "receiverField": (
+            "Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert."
+            "Valid.directRemainder"
+        ),
+        "targetInterval": "Set.Icc (0 : Real) ((1 : Real) / 10)",
+        "preserveCancellation": True,
+        "requiredRows": [
+            "same-target collapsedExpression coefficient stream",
+            "proof-grade collapsedExpression segment remainder rows",
+            "Horner stage lower/upper rows",
+            "exact segment cover of Set.Icc 0 (1/10)",
+            "final lower/upper budget rows against BiasedResidualRemainderAbs",
+        ],
+        "acceptedPilotVerdicts": [
+            "PASS_STABLE_MARGIN",
+            "NEGATIVE_MARGIN",
+            "UNSTABLE_MARGIN",
+            "SEGMENT_EXPLOSION",
+        ],
+        "phase2ResultNow": phase2_result,
+        "firstFailureCode": first_failure,
+        "decisionRule": (
+            "If the pilot is not PASS_STABLE_MARGIN, stop subdividing this "
+            "row class and record NEGATIVE_MARGIN, UNSTABLE_MARGIN, or "
+            "SEGMENT_EXPLOSION as the route decision."
+        ),
+        "doNotUse": [
+            "factorwise raw-D17 budget spending",
+            "separate activeActual and nominal budgets",
+            "sampled rows as proof",
+            "DirectConcretePayload.lean before all required rows pass",
+        ],
+        "nextImplementablePatch": (
+            pilot_output.get("nextImplementablePatch")
+            if output_loaded
+            else (
+                "Implement the missing high-precision whole-expression pilot "
+                "script so it reports exactly PASS_STABLE_MARGIN, "
+                "NEGATIVE_MARGIN, UNSTABLE_MARGIN, or SEGMENT_EXPLOSION before "
+                "any payload emission."
+            )
+        ),
+    }
 
 
 def nested_get(data: dict[str, Any], path: list[str], default: Any = None) -> Any:
@@ -519,6 +874,39 @@ def build_ledger() -> dict[str, Any]:
     direct_horner_source_bridge_symbols = symbol_lines(
         DIRECT_HORNER_SOURCE_BRIDGE_FILE, DIRECT_HORNER_SOURCE_BRIDGE_SYMBOLS
     )
+    direct_collapsed_taylor_source_symbols = symbol_lines(
+        DIRECT_COLLAPSED_TAYLOR_SOURCE_FILE, DIRECT_COLLAPSED_TAYLOR_SOURCE_SYMBOLS
+    )
+    direct_collapsed_source_interval_symbols = symbol_lines(
+        DIRECT_COLLAPSED_SOURCE_INTERVAL_FILE,
+        DIRECT_COLLAPSED_SOURCE_INTERVAL_SYMBOLS,
+    )
+    direct_collapsed_low_degree_source_symbols = symbol_lines(
+        DIRECT_COLLAPSED_LOW_DEGREE_SOURCE_FILE,
+        DIRECT_COLLAPSED_LOW_DEGREE_SOURCE_SYMBOLS,
+    )
+    direct_collapsed_degree0_derivative_shift_symbols = symbol_lines(
+        DIRECT_COLLAPSED_DEGREE0_DERIVATIVE_SHIFT_FILE,
+        DIRECT_COLLAPSED_DEGREE0_DERIVATIVE_SHIFT_SYMBOLS,
+    )
+    direct_collapsed_degree0_center_audit_symbols = symbol_lines(
+        DIRECT_COLLAPSED_DEGREE0_CENTER_AUDIT_FILE,
+        DIRECT_COLLAPSED_DEGREE0_CENTER_AUDIT_SYMBOLS,
+    )
+    direct_collapsed_degree0_signed_source_symbols = symbol_lines(
+        DIRECT_COLLAPSED_DEGREE0_SIGNED_SOURCE_FILE,
+        DIRECT_COLLAPSED_DEGREE0_SIGNED_SOURCE_SYMBOLS,
+    )
+    direct_collapsed_degree0_raw_d17_signed_factor_rows_symbols = symbol_lines(
+        DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_FILE,
+        DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_SYMBOLS,
+    )
+    direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_symbols = (
+        symbol_lines(
+            DIRECT_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_KILL_FILE,
+            DIRECT_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_KILL_SYMBOLS,
+        )
+    )
     nominal_polynomial_bridge_symbols = symbol_lines(
         NOMINAL_POLYNOMIAL_BRIDGE_FILE, NOMINAL_POLYNOMIAL_BRIDGE_SYMBOLS
     )
@@ -544,6 +932,32 @@ def build_ledger() -> dict[str, Any]:
     direct_horner_source_bridge_present = all_present(
         direct_horner_source_bridge_symbols
     )
+    direct_collapsed_taylor_source_present = all_present(
+        direct_collapsed_taylor_source_symbols
+    )
+    direct_collapsed_source_interval_present = all_present(
+        direct_collapsed_source_interval_symbols
+    )
+    direct_collapsed_low_degree_source_present = all_present(
+        direct_collapsed_low_degree_source_symbols
+    )
+    direct_collapsed_degree0_derivative_shift_present = all_present(
+        direct_collapsed_degree0_derivative_shift_symbols
+    )
+    direct_collapsed_degree0_center_audit_present = all_present(
+        direct_collapsed_degree0_center_audit_symbols
+    )
+    direct_collapsed_degree0_signed_source_present = all_present(
+        direct_collapsed_degree0_signed_source_symbols
+    )
+    direct_collapsed_degree0_raw_d17_signed_factor_rows_present = all_present(
+        direct_collapsed_degree0_raw_d17_signed_factor_rows_symbols
+    )
+    direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_present = (
+        all_present(
+            direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_symbols
+        )
+    )
     nominal_polynomial_bridge_present = all_present(
         nominal_polynomial_bridge_symbols
     )
@@ -561,6 +975,30 @@ def build_ledger() -> dict[str, Any]:
     direct_horner_smoke_lean_checked = direct_horner_smoke_present
     direct_source_bridge_lean_checked = direct_source_bridge_present
     direct_horner_source_bridge_lean_checked = direct_horner_source_bridge_present
+    direct_collapsed_taylor_source_lean_checked = (
+        direct_collapsed_taylor_source_present
+    )
+    direct_collapsed_source_interval_lean_checked = (
+        direct_collapsed_source_interval_present
+    )
+    direct_collapsed_low_degree_source_lean_checked = (
+        direct_collapsed_low_degree_source_present
+    )
+    direct_collapsed_degree0_derivative_shift_lean_checked = (
+        direct_collapsed_degree0_derivative_shift_present
+    )
+    direct_collapsed_degree0_center_audit_lean_checked = (
+        direct_collapsed_degree0_center_audit_present
+    )
+    direct_collapsed_degree0_signed_source_lean_checked = (
+        direct_collapsed_degree0_signed_source_present
+    )
+    direct_collapsed_degree0_raw_d17_signed_factor_rows_lean_checked = (
+        direct_collapsed_degree0_raw_d17_signed_factor_rows_present
+    )
+    direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_lean_checked = (
+        direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_present
+    )
     nominal_polynomial_bridge_lean_checked = nominal_polynomial_bridge_present
     active_actual_remainder_bridge_lean_checked = (
         active_actual_remainder_bridge_present
@@ -586,16 +1024,34 @@ def build_ledger() -> dict[str, Any]:
         component_taylor_ledger,
         shapesq_tight_ledger,
     )
-    if active_actual_horner_family_bridge_present:
-        upstream_failure_code = ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP
-    elif active_actual_horner_segment_receiver_present:
-        upstream_failure_code = ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP
-    elif active_actual_remainder_bridge_present:
-        upstream_failure_code = ACTIVE_ACTUAL_HORNER_SEGMENT_RECEIVER_GAP
-    else:
-        upstream_failure_code = upstream_row_source_audit[
-            "firstConcreteUpstreamFailureCode"
-        ]
+    upstream_failure_code = DIRECT_ROW_SOURCE_GAP
+    direct_collapsed_taylor_row_failure = (
+        DIRECT_ROW_SOURCE_GAP
+        if direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_present
+        else COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP
+        if direct_collapsed_degree0_derivative_shift_present
+        else COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP
+        if direct_collapsed_low_degree_source_present
+        else COLLAPSED_SOURCE_INTERVAL_ROWS_GAP
+        if direct_collapsed_source_interval_present
+        else COLLAPSED_SOURCE_INTERVAL_CERT_GAP
+        if direct_collapsed_taylor_source_present
+        else COLLAPSED_TAYLOR_RECEIVER_GAP
+    )
+    direct_collapsed_degree0_raw_d17_first_concrete_gap = (
+        COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_FAIL
+        if direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_present
+        else COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_GAP
+        if direct_collapsed_degree0_raw_d17_signed_factor_rows_present
+        else COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP
+        if direct_collapsed_degree0_derivative_shift_present
+        else direct_collapsed_taylor_row_failure
+    )
+    upstream_failure_code = (
+        direct_collapsed_degree0_raw_d17_first_concrete_gap
+        if direct_collapsed_degree0_derivative_shift_present
+        else direct_collapsed_taylor_row_failure
+    )
     payload_first_object = nested_get(
         payload_ledger,
         ["directWholeExpressionRowReview", "firstObject"],
@@ -694,6 +1150,36 @@ def build_ledger() -> dict[str, Any]:
             "leanValidation": "direct_lean_pass"
             if direct_horner_source_bridge_lean_checked
             else "not_checked",
+        },
+        {
+            "mode": "direct_collapsed_taylor_receiver",
+            "target": COLLAPSED_TAYLOR_RECEIVER_THEOREM,
+            "file": rel(DIRECT_COLLAPSED_TAYLOR_SOURCE_FILE),
+            "status": (
+                "collapsed_taylor_receiver_lean_checked_source_interval_cert_ready"
+                if direct_collapsed_taylor_source_present
+                else "collapsed_taylor_receiver_missing"
+            ),
+            "finalTheoremTarget": False,
+            "useOnlyAsReceiverBeforeRows": True,
+            "failureCode": direct_collapsed_taylor_row_failure,
+        },
+        {
+            "mode": "direct_collapsed_source_interval_adapter",
+            "target": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "combinedOrder16ScaledRemainder_"
+                "collapsedTaylorValid_of_source_interval"
+            ),
+            "file": rel(DIRECT_COLLAPSED_SOURCE_INTERVAL_FILE),
+            "status": (
+                "collapsed_source_interval_adapter_lean_checked_rows_missing"
+                if direct_collapsed_source_interval_present
+                else "collapsed_source_interval_adapter_missing"
+            ),
+            "finalTheoremTarget": False,
+            "useOnlyAsReceiverBeforeRows": True,
+            "failureCode": direct_collapsed_taylor_row_failure,
         },
         {
             "mode": "nominal_polynomial_bridge",
@@ -924,6 +1410,7 @@ def build_ledger() -> dict[str, Any]:
             "proofObject": rel(LEAN_OUT),
         },
     ]
+    whole_expression_pilot_contract = build_whole_expression_pilot_contract()
 
     return {
         "schema": SCHEMA,
@@ -949,8 +1436,34 @@ def build_ledger() -> dict[str, Any]:
         "activeActualHornerFamilyBridgeFile": rel(
             ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE
         ),
+        "directCollapsedTaylorSourceFile": rel(DIRECT_COLLAPSED_TAYLOR_SOURCE_FILE),
+        "directCollapsedSourceIntervalFile": rel(
+            DIRECT_COLLAPSED_SOURCE_INTERVAL_FILE
+        ),
+        "directCollapsedLowDegreeSourceFile": rel(
+            DIRECT_COLLAPSED_LOW_DEGREE_SOURCE_FILE
+        ),
+        "directCollapsedDegree0DerivativeShiftFile": rel(
+            DIRECT_COLLAPSED_DEGREE0_DERIVATIVE_SHIFT_FILE
+        ),
+        "directCollapsedDegree0CenterAuditFile": rel(
+            DIRECT_COLLAPSED_DEGREE0_CENTER_AUDIT_FILE
+        ),
+        "directCollapsedDegree0SignedSourceFile": rel(
+            DIRECT_COLLAPSED_DEGREE0_SIGNED_SOURCE_FILE
+        ),
+        "directCollapsedDegree0RawD17SignedFactorRowsFile": rel(
+            DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_FILE
+        ),
         "activeActualHornerRowSourceLedgerFile": rel(
             ACTIVE_ACTUAL_HORNER_ROW_SOURCE_LEDGER
+        ),
+        "activeActualDegree0AuditFile": rel(ACTIVE_ACTUAL_DEGREE0_AUDIT_FILE),
+        "activeActualDegree0DirectBudgetKillTheorem": (
+            ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM
+        ),
+        "activeActualDegree0DirectBudgetFailureCode": (
+            ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_FAIL
         ),
         "nominalPolynomialBridgeSymbols": nominal_polynomial_bridge_symbols,
         "activeActualRemainderBridgeSymbols": (
@@ -960,8 +1473,84 @@ def build_ledger() -> dict[str, Any]:
         "activeActualHornerFamilyBridgeSymbols": (
             active_actual_horner_family_bridge_symbols
         ),
+        "directCollapsedTaylorSourceSymbols": (
+            direct_collapsed_taylor_source_symbols
+        ),
+        "directCollapsedSourceIntervalSymbols": (
+            direct_collapsed_source_interval_symbols
+        ),
+        "directCollapsedLowDegreeSourceSymbols": (
+            direct_collapsed_low_degree_source_symbols
+        ),
+        "directCollapsedDegree0DerivativeShiftSymbols": (
+            direct_collapsed_degree0_derivative_shift_symbols
+        ),
+        "directCollapsedDegree0CenterAuditSymbols": (
+            direct_collapsed_degree0_center_audit_symbols
+        ),
+        "directCollapsedDegree0SignedSourceSymbols": (
+            direct_collapsed_degree0_signed_source_symbols
+        ),
+        "directCollapsedDegree0RawD17SignedFactorRowsSymbols": (
+            direct_collapsed_degree0_raw_d17_signed_factor_rows_symbols
+        ),
+        "directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillSymbols": (
+            direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_symbols
+        ),
         "nominalPolynomialBridgePresent": nominal_polynomial_bridge_present,
         "nominalPolynomialBridgeLeanChecked": nominal_polynomial_bridge_lean_checked,
+        "directCollapsedTaylorSourcePresent": direct_collapsed_taylor_source_present,
+        "directCollapsedTaylorSourceLeanChecked": (
+            direct_collapsed_taylor_source_lean_checked
+        ),
+        "directCollapsedSourceIntervalPresent": (
+            direct_collapsed_source_interval_present
+        ),
+        "directCollapsedSourceIntervalLeanChecked": (
+            direct_collapsed_source_interval_lean_checked
+        ),
+        "directCollapsedLowDegreeSourcePresent": (
+            direct_collapsed_low_degree_source_present
+        ),
+        "directCollapsedLowDegreeSourceLeanChecked": (
+            direct_collapsed_low_degree_source_lean_checked
+        ),
+        "directCollapsedDegree0DerivativeShiftPresent": (
+            direct_collapsed_degree0_derivative_shift_present
+        ),
+        "directCollapsedDegree0DerivativeShiftLeanChecked": (
+            direct_collapsed_degree0_derivative_shift_lean_checked
+        ),
+        "directCollapsedDegree0CenterAuditPresent": (
+            direct_collapsed_degree0_center_audit_present
+        ),
+        "directCollapsedDegree0CenterAuditLeanChecked": (
+            direct_collapsed_degree0_center_audit_lean_checked
+        ),
+        "directCollapsedDegree0SignedSourcePresent": (
+            direct_collapsed_degree0_signed_source_present
+        ),
+        "directCollapsedDegree0SignedSourceLeanChecked": (
+            direct_collapsed_degree0_signed_source_lean_checked
+        ),
+        "directCollapsedDegree0RawD17SignedFactorRowsPresent": (
+            direct_collapsed_degree0_raw_d17_signed_factor_rows_present
+        ),
+        "directCollapsedDegree0RawD17SignedFactorRowsLeanChecked": (
+            direct_collapsed_degree0_raw_d17_signed_factor_rows_lean_checked
+        ),
+        "directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillFile": rel(
+            DIRECT_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_KILL_FILE
+        ),
+        "directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillPresent": (
+            direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_present
+        ),
+        "directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillLeanChecked": (
+            direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_lean_checked
+        ),
+        "directCollapsedDegree0RawD17SharpTwoSegmentBudgetFailureCode": (
+            COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_FAIL
+        ),
         "activeActualRemainderBridgePresent": (
             active_actual_remainder_bridge_present
         ),
@@ -994,11 +1583,26 @@ def build_ledger() -> dict[str, Any]:
                 "allPayloadObligationsPassed",
             ],
         ),
-        "currentGap": INTERVAL_CERT_GAP,
+        "currentGap": direct_collapsed_taylor_row_failure,
         "firstFailureCode": (
-            immediate_failure_code
+            direct_collapsed_taylor_row_failure
             if payload_horner_interface_matches
             else DIRECT_HORNER_LEDGER_INTERFACE_MISMATCH
+        ),
+        "parentDirectRowFailureCode": DIRECT_ROW_SOURCE_GAP,
+        "legacyImmediateFailureCode": immediate_failure_code,
+        "firstRowFailureCode": direct_collapsed_taylor_row_failure,
+        "directCollapsedTaylorRowFailureCode": direct_collapsed_taylor_row_failure,
+        "directCollapsedLowDegreeFailureCode": (
+            direct_collapsed_degree0_raw_d17_first_concrete_gap
+            if direct_collapsed_degree0_derivative_shift_present
+            else COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP
+        ),
+        "directCollapsedDegree0RawD17FirstConcreteGap": (
+            direct_collapsed_degree0_raw_d17_first_concrete_gap
+        ),
+        "directCollapsedLowDegreeBudgetFailureCode": (
+            COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL
         ),
         "firstConcreteUpstreamFailureCode": upstream_failure_code,
         "payloadLedgerInterface": {
@@ -1013,99 +1617,122 @@ def build_ledger() -> dict[str, Any]:
         },
         "postBudgetKillFailureCode": FACTOR_BUDGET_KILL,
         "proshkaDecision": (
-            "CHOSEN: A for the partial nominal polynomial bridge; keep the "
-            "direct generator fail-closed and do not emit "
+            "CHOSEN: A after the activeActual degree-0 budget failure: keep "
+            "CollapsedExpression as one direct object and do not emit "
             "DirectConcretePayload.lean until the collapsed segment remainder "
-            "theorem and complete coefficient stream exist"
+            "theorem, Horner rows, segment cover, and final budget rows exist"
         ),
         "latestComputerUseRowReview": {
             "used": True,
             "url": COMPUTER_USE_REVIEW_URL,
-            "recommendedOption": (
-                "A_for_active_actual_horner_family_bridge_then_fail_closed_rows"
-            ),
+            "recommendedOption": "A_direct_collapsed_expression_after_degree0_kill",
             "decision": (
-                "After the activeActual Horner segment receiver, add an "
-                "isolated activeActual Horner family bridge into the existing "
-                "DirectHorner family receiver.  It is conditional only; the "
-                "proof-row generator remains blocked until rational/interval "
-                "activeActual segment rows, range rows, cover rows, and "
-                "budget rows exist."
+                "The activeActual degree-0 row source is Lean-checked but "
+                "budget-killed for the direct payload.  Keep the direct "
+                "certificate fail-closed and build one proof-grade "
+                "collapsedExpression segment remainder theorem for "
+                "ComponentSource - NonzeroModelPoly."
             ),
             "routeForkFollowup": {
                 "used": True,
-                "recommendedOption": "A_for_partial_nominal_bridge",
+                "recommendedOption": "A_direct_whole_expression_rows",
                 "decision": (
-                    "The partial nominal polynomial bridge is useful as exact "
-                    "rational extraction of the subtracted nominal polynomial."
+                    "Use the direct whole-expression collapsedExpression row "
+                    "source.  ActiveActual/nominal pieces may be internal "
+                    "coefficient construction only, not separately spendable "
+                    "budgets."
                 ),
                 "whyNoDirectConcretePayloadYet": (
-                    "The bridge is not a complete collapsedExpression "
-                    "coefficient stream and does not prove collapsed segment "
-                    "remainder rows."
+                    "The proof-grade collapsed segment remainder theorem, "
+                    "Horner rows, segment cover, and final +/- budget rows "
+                    "are still missing."
                 ),
                 "whyNotB": (
-                    "B is already subsumed by "
-                    "Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert."
-                    "Valid.of_collapsed_horner_range and the family bridge."
+                    "Separate activeActual and nominal bounds resurrect the "
+                    "killed triangle-loss route."
                 ),
                 "whyNotD": (
-                    "The route is not killed; the exact missing row-source "
-                    "interface is now named."
+                    "The direct route is still alive; the missing object is "
+                    "exactly named by the collapsed segment theorem."
                 ),
             },
-            "firstFileToEdit": rel(NOMINAL_POLYNOMIAL_BRIDGE_FILE),
-            "firstFileToCreate": rel(ACTIVE_ACTUAL_HORNER_SEGMENT_FILE),
-            "secondFileCreated": rel(ACTIVE_ACTUAL_HORNER_FAMILY_BRIDGE_FILE),
-            "firstLeanDataObject": (
-                "Step33Sub0ActiveActualOrder16HornerSegmentCert"
-            ),
-            "familyBridgeDataObject": (
-                "Step33Sub0ActiveActualOrder16HornerFamilyCert"
-            ),
-            "firstLeanValidityTheorem": (
-                ACTIVE_ACTUAL_HORNER_SEGMENT_THEOREM
-            ),
-            "familyBridgeValidityTheorem": (
-                ACTIVE_ACTUAL_HORNER_FAMILY_VALID_THEOREM
-            ),
-            "familyBridgePayloadTheorem": (
-                ACTIVE_ACTUAL_HORNER_FAMILY_PAYLOAD_THEOREM
-            ),
-            "activeActualMissingRemainderTheorem": (
-                ACTIVE_ACTUAL_SEGMENT_REMAINDER_THEOREM
-            ),
-            "activeActualHornerReceiverTheorem": (
-                ACTIVE_ACTUAL_HORNER_SEGMENT_THEOREM
-            ),
-            "activeActualCollapsedHornerTheorem": (
-                ACTIVE_ACTUAL_COLLAPSED_HORNER_THEOREM
-            ),
-            "activeActualHornerFamilyTheorem": (
-                ACTIVE_ACTUAL_HORNER_FAMILY_VALID_THEOREM
-            ),
-            "activeActualHornerFamilyPayloadTheorem": (
-                ACTIVE_ACTUAL_HORNER_FAMILY_PAYLOAD_THEOREM
-            ),
+            "firstFileToEdit": FIRST_PROOF_PRODUCING_GENERATOR,
+            "firstFileToCreate": rel(LEAN_OUT),
+            "secondFileCreated": "none_until_rows_pass",
+            "firstLeanDataObject": DIRECT_HORNER_DATA_OBJECT,
+            "familyBridgeDataObject": DIRECT_HORNER_DATA_OBJECT,
+            "firstLeanValidityTheorem": DIRECT_HORNER_VALID_THEOREM,
+            "familyBridgeValidityTheorem": DIRECT_HORNER_VALID_THEOREM,
+            "familyBridgePayloadTheorem": TARGET_THEOREM,
+            "activeActualMissingRemainderTheorem": COLLAPSED_SEGMENT_REMAINDER_THEOREM,
+            "activeActualHornerReceiverTheorem": COLLAPSED_SEGMENT_REMAINDER_THEOREM,
+            "activeActualCollapsedHornerTheorem": COLLAPSED_SEGMENT_REMAINDER_THEOREM,
+            "activeActualHornerFamilyTheorem": DIRECT_HORNER_VALID_THEOREM,
+            "activeActualHornerFamilyPayloadTheorem": TARGET_THEOREM,
             "minimalRowDataRequired": [
                 "exact segment cover for Set.Icc 0 (1/10)",
-                "proof-grade scaled-active-actual rational coefficient stream",
-                f"proof-grade {ACTIVE_ACTUAL_HORNER_SEGMENT_THEOREM} rows",
-                "transport through activeActual remainder adapter into collapsed rows",
-                "Horner stage lower/upper bounds",
+                "one proof-grade degree-0 rational coefficient for collapsedExpression",
+                "proof-grade center enclosure for collapsedExpression at 1/20",
+                "proof-grade signed activeD17-minus-deriv(NominalOrder16Poly) source row",
+                "rational degree-0 budget comparison",
                 f"proof-grade {COLLAPSED_SEGMENT_REMAINDER_THEOREM} rows",
+                "Horner stage lower/upper bounds",
                 "final +/- BiasedResidualRemainderAbs budget rows",
             ],
             "failureCodeIfRowsMissing": (
-                ACTIVE_ACTUAL_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+                COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
             ),
-            "failureCodeIfFamilyBridgeMissing": (
-                ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP
+            "failureCodeIfDegree0BudgetFails": (
+                COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL
             ),
-            "failureCodeIfReceiverMissing": ACTIVE_ACTUAL_HORNER_SEGMENT_RECEIVER_GAP,
+            "parentFailureCodeIfRowsMissing": DIRECT_ROW_SOURCE_GAP,
+            "failureCodeIfSourceIntervalCertMissing": (
+                COLLAPSED_SOURCE_INTERVAL_CERT_GAP
+            ),
+            "failureCodeIfCollapsedTaylorReceiverMissing": (
+                COLLAPSED_TAYLOR_RECEIVER_GAP
+            ),
+            "failureCodeIfFamilyBridgeMissing": DIRECT_ROW_SOURCE_GAP,
+            "failureCodeIfReceiverMissing": DIRECT_HORNER_RECEIVER_VALIDATION_GAP,
+            "activeActualDegree0AuditFile": rel(ACTIVE_ACTUAL_DEGREE0_AUDIT_FILE),
+            "activeActualDegree0BudgetKillTheorem": (
+                ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM
+            ),
+            "activeActualDegree0BudgetFailureCode": (
+                ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_FAIL
+            ),
+            "degree0SignedSourceFile": rel(
+                DIRECT_COLLAPSED_DEGREE0_SIGNED_SOURCE_FILE
+            ),
+            "degree0SignedSourcePresent": (
+                direct_collapsed_degree0_signed_source_present
+            ),
+            "degree0SignedSourceLeanChecked": (
+                direct_collapsed_degree0_signed_source_lean_checked
+            ),
+            "degree0RawD17SignedFactorRowsFile": rel(
+                DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_FILE
+            ),
+            "degree0RawD17SignedFactorRowsPresent": (
+                direct_collapsed_degree0_raw_d17_signed_factor_rows_present
+            ),
+            "degree0RawD17SignedFactorRowsLeanChecked": (
+                direct_collapsed_degree0_raw_d17_signed_factor_rows_lean_checked
+            ),
+            "rawD17SignedFactorBridgeTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "collapsedDegree0_rawD17_interval_of_signed_factor_segment"
+            ),
+            "rawD17RawPolySegmentBridgeTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment"
+            ),
+            "firstConcreteSubgap": (
+                direct_collapsed_degree0_raw_d17_first_concrete_gap
+            ),
             "whatMustNotBeReused": [
                 "killed factor majorants",
-                "activeActual center jets as uniform cell bounds",
+                "activeActual degree-0 polyErrorAbs as the direct payload budget",
                 "separate actual/nominal norm budgets",
                 "zero-model budget",
                 "sampled rows",
@@ -1115,6 +1742,129 @@ def build_ledger() -> dict[str, Any]:
                 "nominalOrder16Poly as an independent spendable budget",
             ],
             "advisoryOnly": True,
+        },
+        "directCollapsedTaylorReceiverReview": {
+            "used": True,
+            "url": COMPUTER_USE_REVIEW_URL,
+            "recommendedOption": "C",
+            "file": rel(DIRECT_COLLAPSED_TAYLOR_SOURCE_FILE),
+            "present": direct_collapsed_taylor_source_present,
+            "leanChecked": direct_collapsed_taylor_source_lean_checked,
+            "sourceIntervalFile": rel(DIRECT_COLLAPSED_SOURCE_INTERVAL_FILE),
+            "sourceIntervalPresent": direct_collapsed_source_interval_present,
+            "sourceIntervalLeanChecked": (
+                direct_collapsed_source_interval_lean_checked
+            ),
+            "lowDegreeSourceFile": rel(DIRECT_COLLAPSED_LOW_DEGREE_SOURCE_FILE),
+            "lowDegreeSourcePresent": direct_collapsed_low_degree_source_present,
+            "lowDegreeSourceLeanChecked": (
+                direct_collapsed_low_degree_source_lean_checked
+            ),
+            "degree0DerivativeShiftFile": rel(
+                DIRECT_COLLAPSED_DEGREE0_DERIVATIVE_SHIFT_FILE
+            ),
+            "degree0DerivativeShiftPresent": (
+                direct_collapsed_degree0_derivative_shift_present
+            ),
+            "degree0DerivativeShiftLeanChecked": (
+                direct_collapsed_degree0_derivative_shift_lean_checked
+            ),
+            "degree0CenterAuditFile": rel(
+                DIRECT_COLLAPSED_DEGREE0_CENTER_AUDIT_FILE
+            ),
+            "degree0CenterAuditPresent": (
+                direct_collapsed_degree0_center_audit_present
+            ),
+            "degree0CenterAuditLeanChecked": (
+                direct_collapsed_degree0_center_audit_lean_checked
+            ),
+            "degree0RawD17SignedFactorRowsFile": rel(
+                DIRECT_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_FILE
+            ),
+            "degree0RawD17SignedFactorRowsPresent": (
+                direct_collapsed_degree0_raw_d17_signed_factor_rows_present
+            ),
+            "degree0RawD17SignedFactorRowsLeanChecked": (
+                direct_collapsed_degree0_raw_d17_signed_factor_rows_lean_checked
+            ),
+            "rawD17SignedFactorBridgeTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "collapsedDegree0_rawD17_interval_of_signed_factor_segment"
+            ),
+            "rawD17RawPolySegmentBridgeTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment"
+            ),
+            "firstConcreteSubgap": (
+                direct_collapsed_degree0_raw_d17_first_concrete_gap
+            ),
+            "receiverTheorem": COLLAPSED_TAYLOR_RECEIVER_THEOREM,
+            "preferredLowDegreeTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "combinedOrder16ScaledRemainder_"
+                "collapsed_degree0_remainder_of_signedD17_source"
+            ),
+            "preferredPolyDerivTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "combinedOrder16ScaledRemainder_"
+                "collapsed_degree0_remainder_of_polyDeriv_signedD17_source"
+            ),
+            "adapterTheorem": (
+                "Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedTaylorCert."
+                "Valid.to_directHorner_valid"
+            ),
+            "sourceIntervalTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "combinedOrder16ScaledRemainder_"
+                "collapsedTaylorValid_of_source_interval"
+            ),
+            "sourceIntervalRemainderTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_"
+                "combinedOrder16ScaledRemainder_"
+                "collapsed_segment_remainder_of_source_interval"
+            ),
+            "decision": (
+                "Use the cheaper degree-0 receiver for the whole "
+                "CollapsedExpression before spending the degree-15 Taylor "
+                "route.  The checked derivative-shift bridge reduces the "
+                "first missing proof object to signed-factor term rows for "
+                "activeScale * D17(ComponentProductActual), then the same-"
+                "segment subtraction against deriv(NominalOrder16Poly)."
+            ),
+            "closedSubgap": (
+                "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RECEIVER_CLOSED"
+                if direct_collapsed_low_degree_source_present
+                else "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_CERT_CLOSED"
+                if direct_collapsed_source_interval_present
+                else "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_TAYLOR_RECEIVER_CLOSED"
+                if direct_collapsed_taylor_source_present
+                else None
+            ),
+            "firstMissingRows": [
+                "proof-grade center enclosure for CollapsedExpression at 1/20",
+                "proof-grade signed-factor term rows for activeScale * D17(ComponentProductActual)",
+                "proof-grade raw-D17 interval assembly from the signed-factor term rows",
+                "exact same-segment signed subtraction rows against the checked nominal poly derivative row",
+                "rational degree-0 budget comparison",
+                "Horner stage bounds",
+                "final +/- BiasedResidualRemainderAbs budget rows",
+            ],
+            "hiddenMismatchesToGuard": [
+                "the signed source row must bound activeScale * D17(ComponentProductActual) - deriv(NominalOrder16Poly) before taking norms",
+                "do not spend activeActual-alone, nominal-alone, or killed degree-0 activeActual budgets",
+                "degree-15/source-interval rows remain valid but are no longer the first route-C gap",
+            ],
+            "failureCodeIfReceiverFails": COLLAPSED_TAYLOR_RECEIVER_GAP,
+            "failureCodeIfSourceIntervalCertMissing": (
+                COLLAPSED_SOURCE_INTERVAL_CERT_GAP
+            ),
+            "failureCodeIfRowsMissing": (
+                direct_collapsed_degree0_raw_d17_first_concrete_gap
+            ),
+            "failureCodeIfDegree0BudgetFails": (
+                COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL
+            ),
+            "proofClaimAllowedNow": False,
         },
         "directHornerRowStreamStatus": {
             "targetFile": rel(LEAN_OUT),
@@ -1129,13 +1879,15 @@ def build_ledger() -> dict[str, Any]:
         "computerUseRouteReview": {
             "used": True,
             "url": COMPUTER_USE_REVIEW_URL,
-            "recommendedOption": "C",
+            "recommendedOption": "A",
             "supersededForPartialNominalBridgeBy": "CHOSEN: A",
             "supersededForActiveActualAdapterBy": "CHOSEN: A",
+            "supersededForDegree0BudgetKillBy": "CHOSEN: A",
             "decision": (
-                "Keep the direct route open, but do not build "
-                "DirectConcretePayload.lean until the collapsedExpression "
-                "coefficient stream and segment remainder theorem are present."
+                "Build the direct collapsedExpression row source first.  Keep "
+                "CollapsedExpression as one object and take norms only after "
+                "the activeActual-minus-nominal subtraction; activeActual "
+                "degree-0 is budget-killed for the direct payload."
             ),
             "firstArtifacts": [
                 "scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py",
@@ -1232,6 +1984,12 @@ def build_ledger() -> dict[str, Any]:
             "directHornerSourceBridgeLeanChecked": (
                 direct_horner_source_bridge_lean_checked
             ),
+            "directCollapsedTaylorSourcePresent": (
+                direct_collapsed_taylor_source_present
+            ),
+            "directCollapsedTaylorSourceLeanChecked": (
+                direct_collapsed_taylor_source_lean_checked
+            ),
             "directConcretePayloadPresent": direct_concrete_payload_present,
             "directHornerLakeEnvLeanChecked": False,
             "sourceRemainderBoundLeanChecked": ledger_bool(
@@ -1292,6 +2050,11 @@ def build_ledger() -> dict[str, Any]:
                     "Q3/Proofs/"
                     "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerSourceBridge.lean"
                 ),
+                (
+                    "LEAN_PATH=<repo and package olean paths> lean -j 1 -s 65536 "
+                    "Q3/Proofs/"
+                    "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedTaylorSource.lean"
+                ),
             ],
             "lakeEnvLean": {
                 "status": "not_completed_entrypoint_timeout",
@@ -1305,6 +2068,7 @@ def build_ledger() -> dict[str, Any]:
                 ),
             },
         },
+        "cheapWholeExpressionPilot": whole_expression_pilot_contract,
         "implementationModes": implementation_modes,
         "requiredRows": required_rows,
         "symbolAudit": {
@@ -1319,6 +2083,12 @@ def build_ledger() -> dict[str, Any]:
             rel(DIRECT_SOURCE_BRIDGE_FILE): direct_source_bridge_symbols,
             rel(DIRECT_HORNER_SOURCE_BRIDGE_FILE): (
                 direct_horner_source_bridge_symbols
+            ),
+            rel(DIRECT_COLLAPSED_TAYLOR_SOURCE_FILE): (
+                direct_collapsed_taylor_source_symbols
+            ),
+            rel(DIRECT_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_KILL_FILE): (
+                direct_collapsed_degree0_raw_d17_sharp_two_segment_budget_kill_symbols
             ),
             rel(ACTIVE_ACTUAL_HORNER_SEGMENT_FILE): (
                 active_actual_horner_segment_symbols
@@ -1358,6 +2128,23 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"- leanPayloadWritten: `{ledger['leanPayloadWritten']}`",
         f"- currentGap: `{ledger['currentGap']}`",
         f"- firstFailureCode: `{ledger['firstFailureCode']}`",
+        f"- firstRowFailureCode: `{ledger['firstRowFailureCode']}`",
+        "- directCollapsedTaylorSourcePresent: "
+        f"`{ledger['directCollapsedTaylorSourcePresent']}`",
+        "- directCollapsedTaylorSourceLeanChecked: "
+        f"`{ledger['directCollapsedTaylorSourceLeanChecked']}`",
+        "- directCollapsedDegree0DerivativeShiftLeanChecked: "
+        f"`{ledger['directCollapsedDegree0DerivativeShiftLeanChecked']}`",
+        "- directCollapsedDegree0CenterAuditLeanChecked: "
+        f"`{ledger['directCollapsedDegree0CenterAuditLeanChecked']}`",
+        "- directCollapsedDegree0SignedSourceLeanChecked: "
+        f"`{ledger['directCollapsedDegree0SignedSourceLeanChecked']}`",
+        "- directCollapsedDegree0RawD17SignedFactorRowsLeanChecked: "
+        f"`{ledger['directCollapsedDegree0RawD17SignedFactorRowsLeanChecked']}`",
+        "- directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillPresent: "
+        f"`{ledger['directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillPresent']}`",
+        "- directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillLeanChecked: "
+        f"`{ledger['directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillLeanChecked']}`",
         "- nominalPolynomialBridgePresent: "
         f"`{ledger['nominalPolynomialBridgePresent']}`",
         "- nominalPolynomialBridgeLeanChecked: "
@@ -1411,6 +2198,59 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     for key, value in ledger["proofRowInputs"].items():
         lines.append(f"- `{key}`: `{value}`")
 
+    pilot = ledger["cheapWholeExpressionPilot"]
+    lines.extend(
+        [
+            "",
+            "## Cheap Whole-Expression Pilot Contract",
+            "",
+            f"- phase: `{pilot['phase']}`",
+            f"- status: `{pilot['status']}`",
+            f"- proofGrade: `{pilot['proofGrade']}`",
+            f"- pilotScript: `{pilot['pilotScript']}`",
+            f"- pilotScriptExists: `{pilot['pilotScriptExists']}`",
+            f"- pilotOutputJson: `{pilot['pilotOutputJson']}`",
+            f"- pilotOutputMarkdown: `{pilot['pilotOutputMarkdown']}`",
+            f"- pilotOutputLoaded: `{pilot['pilotOutputLoaded']}`",
+            f"- pilotVerdict: `{pilot['pilotVerdict']}`",
+            f"- sourceDataReady: `{pilot['sourceDataReady']}`",
+            f"- sourceDataStatus: `{pilot['sourceDataStatus']}`",
+            f"- commandWhenImplemented: `{pilot['commandWhenImplemented']}`",
+            f"- mustEvaluateExpression: `{pilot['mustEvaluateExpression']}`",
+            f"- mustFeedReceiverTheorem: `{pilot['mustFeedReceiverTheorem']}`",
+            f"- receiverField: `{pilot['receiverField']}`",
+            f"- targetInterval: `{pilot['targetInterval']}`",
+            f"- preserveCancellation: `{pilot['preserveCancellation']}`",
+            f"- phase2ResultNow: `{pilot['phase2ResultNow']}`",
+            f"- firstFailureCode: `{pilot['firstFailureCode']}`",
+            f"- decisionRule: {pilot['decisionRule']}",
+            "",
+            "Accepted pilot verdicts:",
+            "",
+        ]
+    )
+    for verdict in pilot["acceptedPilotVerdicts"]:
+        lines.append(f"- `{verdict}`")
+    lines.extend(["", "Blocking missing artifacts:", ""])
+    for item in pilot["blockingMissingArtifacts"]:
+        lines.append(
+            f"- `{item.get('id')}`: {item.get('required')}"
+        )
+    lines.extend(["", "Required rows before payload:", ""])
+    for item in pilot["requiredRows"]:
+        lines.append(f"- {item}")
+    lines.extend(["", "Do not use:", ""])
+    for item in pilot["doNotUse"]:
+        lines.append(f"- {item}")
+    lines.extend(
+        [
+            "",
+            "Next implementable patch:",
+            "",
+            pilot["nextImplementablePatch"],
+        ]
+    )
+
     interface = ledger["payloadLedgerInterface"]
     lines.extend(
         [
@@ -1451,7 +2291,15 @@ def render_markdown(ledger: dict[str, Any]) -> str:
             f"- familyBridgePayloadTheorem: `{latest_review['familyBridgePayloadTheorem']}`",
             "- activeActualMissingRemainderTheorem: "
             f"`{latest_review['activeActualMissingRemainderTheorem']}`",
+            "- activeActualDegree0BudgetKillTheorem: "
+            f"`{latest_review['activeActualDegree0BudgetKillTheorem']}`",
+            "- activeActualDegree0BudgetFailureCode: "
+            f"`{latest_review['activeActualDegree0BudgetFailureCode']}`",
             f"- failureCodeIfRowsMissing: `{latest_review['failureCodeIfRowsMissing']}`",
+            "- parentFailureCodeIfRowsMissing: "
+            f"`{latest_review['parentFailureCodeIfRowsMissing']}`",
+            "- failureCodeIfCollapsedTaylorReceiverMissing: "
+            f"`{latest_review['failureCodeIfCollapsedTaylorReceiverMissing']}`",
             "- failureCodeIfFamilyBridgeMissing: "
             f"`{latest_review['failureCodeIfFamilyBridgeMissing']}`",
             "",
@@ -1461,6 +2309,75 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     )
     for item in latest_review["minimalRowDataRequired"]:
         lines.append(f"- {item}")
+    collapsed_taylor_review = ledger["directCollapsedTaylorReceiverReview"]
+    lines.extend(
+        [
+            "",
+            "## Direct Collapsed Taylor Receiver Review",
+            "",
+            f"- used: `{collapsed_taylor_review['used']}`",
+            f"- url: `{collapsed_taylor_review['url']}`",
+            f"- recommendedOption: `{collapsed_taylor_review['recommendedOption']}`",
+            f"- file: `{collapsed_taylor_review['file']}`",
+            f"- present: `{collapsed_taylor_review['present']}`",
+            f"- leanChecked: `{collapsed_taylor_review['leanChecked']}`",
+            "- low-degree source file: "
+            f"`{collapsed_taylor_review['lowDegreeSourceFile']}`",
+            "- low-degree source present: "
+            f"`{collapsed_taylor_review['lowDegreeSourcePresent']}`",
+            "- low-degree source Lean-checked: "
+            f"`{collapsed_taylor_review['lowDegreeSourceLeanChecked']}`",
+            "- degree-0 derivative-shift file: "
+            f"`{collapsed_taylor_review['degree0DerivativeShiftFile']}`",
+            "- degree-0 derivative-shift present: "
+            f"`{collapsed_taylor_review['degree0DerivativeShiftPresent']}`",
+            "- degree-0 derivative-shift Lean-checked: "
+            f"`{collapsed_taylor_review['degree0DerivativeShiftLeanChecked']}`",
+            "- receiver theorem: "
+            f"`{collapsed_taylor_review['receiverTheorem']}`",
+            "- preferred low-degree theorem: "
+            f"`{collapsed_taylor_review['preferredLowDegreeTheorem']}`",
+            "- preferred poly-deriv theorem: "
+            f"`{collapsed_taylor_review['preferredPolyDerivTheorem']}`",
+            f"- adapter theorem: `{collapsed_taylor_review['adapterTheorem']}`",
+            f"- decision: {collapsed_taylor_review['decision']}",
+            f"- closed subgap: `{collapsed_taylor_review['closedSubgap']}`",
+            "- failure code if receiver fails: "
+            f"`{collapsed_taylor_review['failureCodeIfReceiverFails']}`",
+            "- failure code if rows missing: "
+            f"`{collapsed_taylor_review['failureCodeIfRowsMissing']}`",
+            "- failure code if degree-0 budget fails: "
+            f"`{collapsed_taylor_review['failureCodeIfDegree0BudgetFails']}`",
+            "- proof claim allowed now: "
+            f"`{collapsed_taylor_review['proofClaimAllowedNow']}`",
+            "",
+            "First missing rows:",
+            "",
+        ]
+    )
+    for item in collapsed_taylor_review["firstMissingRows"]:
+        lines.append(f"- {item}")
+    lines.extend(["", "Hidden mismatches to guard:", ""])
+    for item in collapsed_taylor_review["hiddenMismatchesToGuard"]:
+        lines.append(f"- {item}")
+    lines.extend(
+        [
+            "",
+            "### Sharp Two-Segment Factorwise Kill",
+            "",
+            "- file: "
+            f"`{ledger['directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillFile']}`",
+            "- present: "
+            f"`{ledger['directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillPresent']}`",
+            "- Lean checked: "
+            f"`{ledger['directCollapsedDegree0RawD17SharpTwoSegmentBudgetKillLeanChecked']}`",
+            "- closed failure code: "
+            f"`{ledger['directCollapsedDegree0RawD17SharpTwoSegmentBudgetFailureCode']}`",
+            "- effect: this factorwise two-segment class is not a spendable "
+            "direct row source; keep `CollapsedExpression` whole and build "
+            "proof-grade direct rows.",
+        ]
+    )
     lines.extend(
         [
             "",

@@ -1,0 +1,203 @@
+{
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAT_POINT_ROW_BUDGET_KILL_GAP",
+  "expectedPayloadSymbols": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+      "line": 145,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_rat_generated"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+      "line": 476,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated"
+    }
+  ],
+  "factorPointRows": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 503,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_point_interval_generated"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 573,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_point_interval_generated"
+    }
+  ],
+  "factorPointRowsPresent": true,
+  "fileHashes": {
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean": "29cccd9536ab2cc24fee7b6016b7f0cab844cb8079e7848f60a6727e6ab0ae93",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean": "724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean": "99ec81b257757064fb83ebc5c88f30daddd6e1b1f629ad4334a7a4dfdbcd0f2a",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean": "630853d89234ec3e47c57196c559b8be4ea824137c9822c9a2fad61928fcb9fd",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean": "02a2b02d6f6e8dde8ea387cce83f3e251634a716a35645b717752bd60c5850da",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean": "c31937753ea043488ee30d4373a69a8b857e7d5bd936ef7890f86598c2d966b6",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean": "ea16467b384dc6b62215e488dd8191df5aaf95d8d86f8bfe0f74f8642412353f",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean": "dee0ec422749899121a5b54e3d4f0da02e61109d6367d1eb162d03255d147463"
+  },
+  "finalCollapsedPointRowPresent": true,
+  "finalPointRowTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated",
+  "firstTheorem": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_rat_generated",
+  "generatedAt": "2026-06-24T15:24:43.130445+00:00",
+  "order17CenterLedger": {
+    "evidence": [
+      {
+        "line": 250,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval"
+      },
+      {
+        "line": 376,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval"
+      }
+    ],
+    "omegaActualSignedCenterJets": "Fin 17 / orders 0..16",
+    "order17CenterSource": "symmetric proof-grade interval from order17 derivative absolute majorant, used only inside the signed point receiver",
+    "shapeSqActualSignedCenterJets": "Fin 17 / orders 0..16"
+  },
+  "proofStatus": "rat_payload_present_budget_kill_not_closed",
+  "ratPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+  "ratPayloadLeanChecked": true,
+  "rawProduct18PointAssemblyPresent": true,
+  "requiredSymbols": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean",
+      "line": 266,
+      "present": true,
+      "symbol": "iteratedDeriv_mem_Icc_of_centerJet18_point"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean",
+      "line": 100,
+      "present": true,
+      "symbol": "centeredTaylorDerivPointLower18"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean",
+      "line": 106,
+      "present": true,
+      "symbol": "centeredTaylorDerivPointUpper18"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean",
+      "line": 50,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRowValid_of_collapsedExpressionDeriv_point_interval"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean",
+      "line": 80,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedTaylorTransferGap"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "line": 601,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0OmegaActualCenterJetLower"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "line": 610,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0OmegaActualCenterJetUpper"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "line": 619,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualCenterJetLower"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "line": 628,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualCenterJetUpper"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "line": 250,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "line": 376,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean",
+      "line": 75,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0RawProduct18SignedTerm"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean",
+      "line": 84,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_eq_signedLeibniz"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean",
+      "line": 368,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 388,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_sharpSourceCenterJet18_signed_interval"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 434,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_sharpSourceCenterJet18_signed_interval"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 503,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_point_interval_generated"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 573,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_point_interval_generated"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean",
+      "line": 49,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean",
+      "line": 75,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_eq_poly"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean",
+      "line": 174,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_interval_generated"
+    }
+  ],
+  "route": "collapsed_degree0_point_slope_signed_factor_point_rows",
+  "routingGuard": [
+    "do_not_instantiate_signed_taylor_on_whole_collapsed_expression",
+    "do_not_instantiate_signed_taylor_directly_on_componentProductActual",
+    "apply_signed_taylor_to_OmegaActual_and_ShapeSqActual_first",
+    "assemble_RawProduct18_by_exact_signed_Leibniz",
+    "then_active_scale_and_subtract_exact_nominal_derivative_point_row"
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_point_slope_rows.v1",
+  "shouldEmitLeanPayload": false
+}

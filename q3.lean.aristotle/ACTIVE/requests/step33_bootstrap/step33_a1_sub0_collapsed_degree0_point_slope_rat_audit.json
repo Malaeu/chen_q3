@@ -1,0 +1,87 @@
+{
+  "boundary": "The Rat point-row payload remains useful and checked, but the current session has no Lean-validated theorem that the Rat rows instantiate positive_row_budget_impossible or negative_row_budget_impossible.  This audit is a fail-closed diagnostic and must not be used as proof of a budget kill.",
+  "budgetGateRequiredComparisons": {
+    "negative": [
+      "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointUpperRat i <= 0",
+      "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0AllowedDerivAbsRat < -primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointUpperRat i"
+    ],
+    "positive": [
+      "0 <= primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointLowerRat i",
+      "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0AllowedDerivAbsRat < primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointLowerRat i"
+    ]
+  },
+  "computerUseRouteReview": {
+    "artifact": "scripts/generate_step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.py",
+    "decision": "CHOSEN: A",
+    "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+    "nextGenerator": "scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py",
+    "notProofEvidence": true,
+    "outputs": [
+      "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.json",
+      "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.md"
+    ],
+    "used": true
+  },
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+  "diagnosticGrade": true,
+  "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+  "generatedAt": "2026-06-24T15:54:31.667588+00:00",
+  "leanBudgetKillClaimAllowed": false,
+  "nextPatch": "Use the direct whole CollapsedExpression row-source generator.  Do not spend further factorwise point-row budgets as closure.",
+  "previousGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAT_POINT_ROW_BUDGET_KILL_GAP",
+  "proofGrade": false,
+  "proofStatus": "fail_closed_rat_point_row_budget_kill_unvalidated",
+  "ratPayloadAuditProofStatus": "rat_payload_present_budget_kill_not_closed",
+  "ratPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+  "ratPayloadFileHash": "02a2b02d6f6e8dde8ea387cce83f3e251634a716a35645b717752bd60c5850da",
+  "ratPayloadLeanCheckedFromPreviousAudit": true,
+  "ratPayloadPresent": true,
+  "ratPayloadSymbols": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+      "line": 145,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_rat_generated"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+      "line": 267,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_activeScaled_componentProductActual_order17_point_interval_rat_generated"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+      "line": 439,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_localCenter_eq_rat"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+      "line": 476,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated"
+    }
+  ],
+  "relatedTwoSegmentBudgetKillFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean",
+  "relatedTwoSegmentBudgetKillFileHash": "ff86d9e23189e45397b1596a46876fc620f0b1f468bb4fb50d49654ad661dfe3",
+  "relatedTwoSegmentBudgetKillPresent": true,
+  "relatedTwoSegmentBudgetKillSymbols": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean",
+      "line": 31,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_twoSegment_budget_fail_rat"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean",
+      "line": 41,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_twoSegment_budget_not_spendable"
+    }
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.v1",
+  "step33A1AClosureClaimAllowed": false,
+  "unvalidatedLeanBudgetFailDisposition": "deleted_or_absent",
+  "unvalidatedLeanBudgetFailFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatBudgetFail.lean",
+  "unvalidatedLeanBudgetFailFileExists": false
+}

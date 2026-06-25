@@ -1,9 +1,9 @@
 # Step33A.1-A Direct Row-Source Audit
 
-schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18.row_source_audit`
+schema: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v21.row_source_audit`
 route: `direct_nonzero_model_scaled_remainder_interval`
 proofGrade: `False`
-currentGap: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+currentGap: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 firstRowFailureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 
 ## Verdict
@@ -69,6 +69,66 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_coll
 - separate actual/nominal norm budgets
 - nominalOrder16Poly as an independent spendable budget
 
+## Preferred Collapsed Low-Degree Row-Source Contract
+
+- choice: `A`
+- source: `preferred_collapsed_low_degree_signed_source_contract`
+- status: `fail_closed_contract_only`
+- proofGrade: `False`
+- generator to patch: `scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py`
+- Lean file to emit only when rows pass: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectConcretePayload.lean`
+- final theorem when rows pass: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- row theorem when rows pass: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder`
+- first failure if rows are missing: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`
+- parent failure if rows are missing: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+- budget failure code: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL`
+
+The direct collapsed degree-0 receiver is the smallest current whole-expression route: it keeps activeActual-minus-nominal cancellation inside one target, uses the checked center row, and requires only a signed derivative source row plus exact rational budgets before Horner/final-budget emission.
+
+### Receiver Chain
+
+- `checked`: `primaryFiniteRow0Parent0Split100Sub0_directCollapsed_degree0_hCenter_generated`
+  file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0CenterAudit.lean`
+  failureCodeIfMissing: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+- `checked`: `primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_deriv_eq_activeActualD17_sub_nominalOrder16PolyDeriv`
+  file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0DerivativeShift.lean`
+  failureCodeIfMissing: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`
+- `checked`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_signedD17_source`
+  file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedLowDegreeSource.lean`
+  failureCodeIfMissing: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP`
+- `checked_receiver_rows_missing`: `Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert.Valid.to_collapsed_degree0_remainder`
+  file: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean`
+  failureCodeIfMissing: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`
+
+### Required Exact Rows Before Lean Emission
+
+- `L0_segment_cover`: `missing`
+  object: `Step33Sub0CollapsedDegree0SignedSourceSegmentCover for the generated segments covering Set.Icc 0 (1/10)`
+  failureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`
+- `L1_signed_source_segment_rows`: `missing`
+  object: `proof-grade lower/upper rows for ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly) on each segment`
+  failureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`
+- `L2_deriv_abs_budget`: `missing`
+  object: `exact rational proof that the generated lower/upper rows are contained in [-derivAbs, derivAbs]`
+  failureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL`
+- `L3_degree0_remainder_budget`: `missing`
+  object: `exact rational proof that coeffErrorAbs + derivAbs * (1/20) <= polyErrorAbs`
+  failureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL`
+- `L4_collapsed_segment_remainder`: `missing_until_L0_L3_pass`
+  object: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder`
+  failureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+- `L5_horner_and_final_budget_rows`: `missing`
+  object: `Horner stage bounds, segment cover for the direct family, and final +/- BiasedResidualRemainderAbs rows`
+  failureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_ROWS_GAP`
+
+### Contract Do Not Use
+
+- activeActual degree0 polyErrorAbs as the final direct budget
+- factorwise RawD17/two-segment budget kills as closure
+- separate activeActual and nominal independent norm budgets
+- sampled point rows or Python diagnostics as proof
+- DirectConcretePayload.lean before all L0-L5 rows pass
+
 ## Route Options
 
 - why no DirectConcretePayload yet: The partial nominal polynomial bridge is not the full collapsedExpression coefficient stream and does not prove the collapsed-segment remainder theorem.
@@ -79,12 +139,12 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_coll
 
 - `path`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_horner_row_source.json`
 - `exists`: `True`
-- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v1`
-- `proofStatus`: `interface_ready_rows_missing`
+- `schema`: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v6`
+- `proofStatus`: `superseded_by_direct_collapsed_expression_budget_kill`
 - `proofGrade`: `False`
 - `proofSafeClosedFields`: `0`
-- `currentGap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
-- `firstFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+- `currentGap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+- `firstFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
 - `outLeanWritten`: `False`
 - `leanValidationStatus`: `not_run_rows_missing`
 
@@ -146,6 +206,57 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_coll
 - `reason`: `A Lean-checked receiver bridge now transports a proof-grade collapsedExpression Horner remainder row into the existing directRemainder field.  It still supplies no coefficients, no Horner range rows, and no final budget rows.`
 - `closedSubgap`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_HORNER_COLLAPSED_SOURCE_BRIDGE_CLOSED`
 - `firstMissingProofObject`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+
+### direct_collapsed_taylor_receiver
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedTaylorSource.lean`
+- `artifactStatus`: `lean_collapsed_taylor_receiver_present`
+- `sameTarget`: `True`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `The Lean receiver converts segment-wise center-jet/order-16 Taylor proof data for the whole collapsedExpression into the existing direct Horner receiver.  It intentionally supplies no center jets, no order-16 derivative rows, no Horner range rows, and no final budget rows.`
+- `closedSubgap`: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_TAYLOR_RECEIVER_CLOSED`
+- `receiverTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_centerJet15_order16`
+- `adapterTheorem`: `Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedTaylorCert.Valid.to_directHorner_valid`
+- `firstMissingProofObject`: `proof-grade lower/upper source-interval rows for collapsedExpression`
+- `hiddenMismatchesToGuard`: `['degree-15/Fin 16 rows must match the DirectHorner degree field', 'CollapsedExpression already contains D16, so an order-16 row is a high derivative requirement on the source products', 'segment centers must be local; the full-cell center 1/20 is not a universal local-row substitute']`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+
+### direct_collapsed_low_degree_receiver
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedLowDegreeSource.lean`
+- `artifactStatus`: `lean_collapsed_low_degree_receiver_present`
+- `sameTarget`: `True`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `The Lean receiver reduces the whole CollapsedExpression segment remainder to a degree-0 center row, a signed activeD17-minus-nominal-polynomial-derivative source row, and a rational budget comparison.  It avoids the degree-15/order-16 source row, but still emits no numeric source rows and no final Horner budget rows.`
+- `closedSubgap`: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RECEIVER_CLOSED`
+- `receiverTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_signedD17_source`
+- `derivativeShiftFile`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0DerivativeShift.lean`
+- `derivativeShiftPresent`: `True`
+- `derivativeShiftTheorem`: `primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_deriv_eq_activeActualD17_sub_nominalOrder16PolyDeriv`
+- `centerAuditFile`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0CenterAudit.lean`
+- `centerAuditPresent`: `True`
+- `centerAuditTheorem`: `primaryFiniteRow0Parent0Split100Sub0_directCollapsed_degree0_hCenter_generated`
+- `signedSourceFile`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean`
+- `signedSourcePresent`: `True`
+- `signedSourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_source_cert`
+- `polyDerivReceiverTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_polyDeriv_signedD17_source`
+- `firstMissingProofObject`: `proof-grade signed activeD17-minus-deriv(NominalOrder16Poly) source row`
+- `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+
+### direct_collapsed_source_interval_adapter
+
+- `file`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.lean`
+- `artifactStatus`: `lean_collapsed_source_interval_adapter_present`
+- `sameTarget`: `True`
+- `proofGradeRowsPresent`: `False`
+- `spendableForCurrentTarget`: `False`
+- `reason`: `The Lean adapter converts future rational lower/upper source intervals for the whole collapsedExpression into the checked absolute-error Taylor receiver.  It supplies no source rows, no Horner range rows, and no final budget rows.`
+- `closedSubgap`: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_CERT_CLOSED`
+- `sourceIntervalTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsedTaylorValid_of_source_interval`
+- `firstMissingProofObject`: `proof-grade rational lower/upper source-interval rows`
 - `failureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 
 ### nominal_polynomial_bridge
@@ -277,22 +388,26 @@ theorem primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_coll
 - `object`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
 - `statement`: `for all eta in [0,1/10], -BiasedResidualRemainderAbs <= ComponentSource eta - NonzeroModelPoly eta and ComponentSource eta - NonzeroModelPoly eta <= BiasedResidualRemainderAbs`
 - `status`: `missing_first_proof_object`
-- `upstreamFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+- `upstreamFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL`
 - `proofGrade`: `False`
 
 ### R2_horner_or_interval_rows
 
 - `object`: `proof-grade rational/interval rows for the assembled signed expression`
 - `requiredFor`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
-- `status`: `direct_horner_receiver_ready_source_bridge_checked_rows_missing`
-- `upstreamFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+- `status`: `collapsed_source_interval_adapter_checked_rows_missing`
+- `upstreamFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL`
+- `directCollapsedTaylorReceiverFile`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedTaylorSource.lean`
+- `directCollapsedTaylorReceiverPresent`: `True`
+- `directCollapsedTaylorReceiverTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_centerJet15_order16`
+- `directCollapsedTaylorFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 - `componentTaylorGapBypassedByDirectHornerRoute`: `False`
 - `sourceSplitTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16Source_sub_nonzeroModelPoly`
 - `collapsedExpressionBridgeTheorem`: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_eq_collapsedExpression`
 - `collapsedHornerReceiverBridgeTheorem`: `Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert.Valid.of_collapsed_horner_range`
 - `collapsedHornerFamilyBridgeTheorem`: `Step33Sub0CombinedOrder16ScaledRemainderDirectHornerFamilyCert.valid_of_collapsed_horner_rows`
 - `receiverField`: `Step33Sub0CombinedOrder16ScaledRemainderDirectHornerCert.Valid.directRemainder`
-- `guard`: `The Lean split theorem is allowed as the row-source crosswalk.  With the collapsed Horner source bridge, a future row may prove the remainder against CollapsedExpression and transport it into directRemainder.  The coefficient stream, range rows, and budget rows are still missing.`
+- `guard`: `The Lean split theorem is allowed as the row-source crosswalk.  With the collapsed Horner source bridge, a future row may prove the remainder against CollapsedExpression and transport it into directRemainder.  The checked collapsed Taylor receiver now fixes the center-jet/order-16 row interface, but the coefficient stream, derivative rows, Horner range rows, and budget rows are still missing.`
 - `proofGrade`: `False`
 
 ### R2b_biased_residual_bias_shift

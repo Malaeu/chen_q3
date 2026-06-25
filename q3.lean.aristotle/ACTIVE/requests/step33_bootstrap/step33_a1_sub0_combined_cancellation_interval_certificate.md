@@ -5,7 +5,7 @@ not close Step33A.1-A.
 
 ## Summary
 
-- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12`
+- schema: `q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v20`
 - route: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR`
 - status: `fail_closed_missing_high_order_valid_payload`
 - first failure: `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
@@ -40,6 +40,39 @@ not close Step33A.1-A.
 - sourceNormalFormActiveActualInterval: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceCenterInterval_of_activeActual_interval`
 - sourceNormalFormActiveActualValidConstructor: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_activeActual_interval`
 - sourceNormalFormActiveActualSourceIntervalValid: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval`
+- activeActualCenterJetRowsFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean`
+- activeActualCenterJetIntervalOfAbs: `primaryFiniteRow0Parent0Split100Sub0_centerJet_interval_of_abs`
+- activeActualShapeSqDerivSingleAbsSigned: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_singleAbs_signed_centerJet_interval`
+- activeActualShapeSqDerivRows01234567891011Signed: `primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval`
+- activeActualOmegaPrimeSignedRows: `primaryFiniteRow0Parent0Split100Sub0_omegaPrimeActual_signed_centerJet_interval`
+- activeActualOmegaSignedRows: `primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval`
+- activeActualShapeSqSignedRows: `primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval`
+- activeActualSumIntervalReceiver: `primaryFiniteRow0Parent0Split100Sub0_sum_interval_of_term_intervals`
+- activeActualCauchyIntervalReceiver: `primaryFiniteRow0Parent0Split100Sub0_normalizedJetConvolution_interval_of_term_intervals`
+- activeActualComponentProductCauchyIntervalReceiver: `primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_interval`
+- activeActualScaleNonneg: `primaryFiniteRow0Parent0Split100Sub0_activeScale_nonneg`
+- activeActualRowIntervalReceiver: `primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_of_product_interval`
+- activeActualComponentProductAbs: `primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyAbs`
+- activeActualComponentProductAbsInterval: `primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_abs_interval`
+- activeActualComponentProductAbsNonneg: `primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchyAbs_nonneg`
+- activeActualCenterRowLower: `primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowLower`
+- activeActualCenterRowUpper: `primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowUpper`
+- activeActualCenterRowIntervalFromFactorRows: `primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_from_factor_rows`
+- centerJetPayloadFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationCenterJetPayload.lean`
+- centerJetCoeff: `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCoeff`
+- centerJetCoeffErrorAbs: `primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCoeffErrorAbs`
+- centerJetCoeffErrorAbsNonneg: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_coeffErrorAbs_nonneg`
+- centerJetComponentSourceAbsGenerated: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_componentSource_centerJet_abs_generated`
+- centerJetAbsGenerated: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_abs_generated`
+- order16FactorMajorantFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean`
+- order16SourceEqActiveActual: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_activeActual`
+- order16FactorDerivativeReceiverFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean`
+- order16FactorDerivativeMajorantBridgeFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean`
+- order16BudgetPayloadFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean`
+- order16ComponentProductMajorant: `primaryFiniteRow0Parent0Split100Sub0ComponentProductActualOrder16Majorant`
+- order16ComponentProductAbsReceiver: `primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_factor_derivative_abs`
+- order16SourceAbsReceiver: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_abs_of_factor_derivative_abs`
+- order16SourceIntervalReceiver: `primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_factor_derivative_abs`
 - certStructure: `Step33Sub0CombinedCancellationIntervalCert`
 - certValidPredicate: `Step33Sub0CombinedCancellationIntervalCert.Valid`
 - certToHCombined: `Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined`
@@ -113,7 +146,7 @@ Combined expression:
 - conditionalPayloadIsUnconditionalProof: `False`
 - highOrderSourceFilePresent: `True`
 - highOrderValidPayloadPresent: `False`
-- highOrderCenterJetRowsPresent: `False`
+- highOrderCenterJetRowsPresent: `True`
 - highOrderOrder16RowsPresent: `False`
 - highOrderHornerRangeRowsPresent: `False`
 - highOrderTargetBudgetRowsPresent: `False`
@@ -137,6 +170,50 @@ Combined expression:
 - sourceNormalFormActiveActualValidConstructorPresent: `True`
 - sourceNormalFormActiveActualSourceIntervalValidPresent: `True`
 - sourceNormalFormActiveActualInterfacePresent: `True`
+- activeActualCenterJetRowsFilePresent: `True`
+- activeActualSingleAbsToSignedCenterJetCrosswalkPresent: `True`
+- activeActualShapeSqDerivSingleAbsSignedRowsPresent: `True`
+- activeActualShapeSqDerivRows01234567891011SignedPresent: `True`
+- activeActualOmegaPrimeSignedRowsPresent: `True`
+- activeActualOmegaSignedRowsPresent: `True`
+- activeActualShapeSqSignedRowsPresent: `True`
+- activeActualAllFactorSignedRowsPresent: `True`
+- activeActualFactorIntervalReceiverPresent: `True`
+- activeActualSumIntervalReceiverPresent: `True`
+- activeActualCauchyIntervalReceiverPresent: `True`
+- activeActualComponentProductCauchyIntervalReceiverPresent: `True`
+- activeActualScaleNonnegPresent: `True`
+- activeActualRowIntervalReceiverPresent: `True`
+- activeActualComponentProductAbsPresent: `True`
+- activeActualComponentProductAbsIntervalPresent: `True`
+- activeActualComponentProductAbsNonnegPresent: `True`
+- activeActualCenterRowLowerPresent: `True`
+- activeActualCenterRowUpperPresent: `True`
+- activeActualCenterRowIntervalFromFactorRowsPresent: `True`
+- activeActualProductRowIntervalsPresent: `True`
+- centerJetPayloadFilePresent: `True`
+- centerJetCoeffPresent: `True`
+- centerJetCoeffErrorAbsPresent: `True`
+- centerJetCoeffErrorAbsNonnegPresent: `True`
+- centerJetComponentSourceAbsGeneratedPresent: `True`
+- centerJetAbsGeneratedPresent: `True`
+- centerJetAbsPayloadPresent: `True`
+- order16FactorMajorantFilePresent: `True`
+- order16SourceEqActiveActualPresent: `True`
+- order16StructuralReductionPresent: `True`
+- order16FactorDerivativeReceiverFilePresent: `True`
+- order16ComponentProductMajorantPresent: `True`
+- order16ComponentProductAbsReceiverPresent: `True`
+- order16SourceAbsReceiverPresent: `True`
+- order16SourceIntervalReceiverPresent: `True`
+- order16FactorDerivativeReceiverPresent: `True`
+- order16CenteredTaylorFactorMajorantBridgePresent: `True`
+- order16BudgetPayloadFilePresent: `True`
+- order16ActiveScaleAbsPresent: `True`
+- order16BudgetLeDeclaredAbsPresent: `True`
+- order16RemainderWidthFailRatPresent: `True`
+- order16RemainderWidthFailPresent: `True`
+- order16CenteredTaylorFactorRouteBudgetKilled: `True`
 - sourceIntervalCertPayloadPresent: `False`
 - omegaPrimePayloadReusableForWholeExpression: `False`
 - residualTaylorCoeffPayloadPresent: `True`
@@ -200,16 +277,35 @@ Checked source-model bridge:
 - order16Source: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0CombinedCancellationOrder16ComponentSource', 'line': 964, 'exists': True}`
 - order16Theorem: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_eq_componentSource', 'line': 983, 'exists': True}`
 - order16BoundAdapter: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_bound_of_componentSource', 'line': 1159, 'exists': True}`
+- order16StructuralReduction: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_activeActual', 'line': 313, 'exists': True}`
+- order16FactorDerivativeReceiverFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean`
+- order16FactorDerivativeMajorantBridgeFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean`
+- order16BudgetPayloadFile: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean`
+- order16ComponentProductMajorant: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0ComponentProductActualOrder16Majorant', 'line': 28, 'exists': True}`
+- order16ComponentProductAbsReceiver: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_factor_derivative_abs', 'line': 123, 'exists': True}`
+- order16SourceAbsReceiver: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_abs_of_factor_derivative_abs', 'line': 244, 'exists': True}`
+- order16SourceIntervalReceiver: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_factor_derivative_abs', 'line': 314, 'exists': True}`
+- order16CenteredTaylorFactorMajorantsReceiver: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_centeredTaylor_factor_majorants', 'line': 464, 'exists': True}`
+- order16ActiveScaleAbs: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_activeScaleAbs', 'line': 104, 'exists': True}`
+- order16BudgetLeDeclaredAbs: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16BudgetRat_le_declaredAbs', 'line': 109, 'exists': True}`
+- order16RemainderWidthFailRat: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail_rat', 'line': 114, 'exists': True}`
+- order16RemainderWidthFail: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail', 'line': 114, 'exists': True}`
 - centerJetBoundsAdapter: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_bounds_of_componentSource', 'line': 1181, 'exists': True}`
 - highOrderValidConstructor: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_bounds', 'line': 1221, 'exists': True}`
 - highOrderIntervalConstructor: `{'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean', 'symbol': 'primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_highOrderValid_of_componentSource_interval', 'line': 1268, 'exists': True}`
 - smoothPresent: `True`
 - centerJetPresent: `True`
 - order16Present: `True`
+- order16StructuralReductionPresent: `True`
+- order16FactorDerivativeReceiverPresent: `True`
+- order16CenteredTaylorFactorMajorantBridgePresent: `True`
+- order16CenteredTaylorFactorRouteBudgetKilled: `True`
+- order16CenteredTaylorFactorBudgetFailure: `STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL`
 - sourceBoundsConstructorPresent: `True`
 - sourceIntervalConstructorPresent: `True`
-- status: `checked_source_interval_rows_to_valid_constructor`
-- whyNotEnough: `This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid and the interval-row constructor for component-source rows. The nonconditional source normal form is also checked. It still does not emit rational coeff rows, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload.`
+- status: `checked_centered_taylor_factor_route_budget_killed`
+- whyNotEnough: `This proves the whole-expression smooth bridge, all-row component-source center-jet crosswalk, and an exact order-16 source-model/norm adapter, plus the constructor from source-bounds to HighOrderTaylorCert.Valid and the interval-row constructor for component-source rows. The nonconditional source normal form is also checked, and the order-16 component source structurally reduces to activeScale times the actual component-product order-16 derivative. A separate checked receiver now shows that proof-grade factor derivative bounds through order 16 would feed a signed order16 source interval. It still does not emit rational coeff rows, concrete factor derivative bounds, a proof-grade order16Abs source bound, Horner range rows, target-budget rows, or a concrete Valid payload.`
+- budgetKillMeaning: `The centered-Taylor factor-majorant bridge now supplies the four uniform factor-derivative families and an adapter to a signed order16 source interval, but the existing exact budget audit proves this route is too wide for the current combined-cancellation half-width. It is therefore a checked kill certificate/pattern, not the current closure route.`
 
 Target function:
 - meaning: `whole expression, not a component: residualTaylor degree-45 polynomial plus ScaledCancellationRhs`
@@ -241,17 +337,18 @@ Reusable but not sufficient:
 - omegaPrimePayload: `{'path': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json', 'exists': True, 'status': 'proof_grade_for_omega_prime_only', 'whyNotEnough': 'It certifies step22OmegaArchWeightDerivClosedForm, not the whole CombinedCancellationIntervalExpr.'}`
 - hornerRangeChecker: `{'definition': {'file': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationPolynomialRange.lean', 'symbol': 'structure Step33Sub0CombinedCancellationHornerRangeCert', 'line': 63, 'exists': True}, 'status': 'ready_after_coefficients', 'whyNotEnough': 'It consumes a degree-15 polynomial range; it does not produce center jets or order16 source bounds.'}`
 - componentAssemblyLedger: `{'path': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json', 'exists': True, 'status': 'algebraic_coefficients_checked_remainder_source_open', 'whyNotEnough': 'It records exact assembly/payload facts but still marks component remainder/source-model closure open.'}`
+- centeredTaylorFactorDerivativeRoute: `{'bridgeFile': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean', 'budgetFile': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean', 'status': 'checked_but_budget_killed', 'failureCode': 'STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL', 'whyNotEnough': 'It proves a useful receiver/pattern for future sharper factor rows, but current centered-Taylor majorants do not fit the active budget. The live proof object remains a whole-expression interval certificate for ComponentSource - NonzeroModelPoly.'}`
 
 Required bridge shape:
 
-- component-source lower/upper row intervals may be used via the checked interval-row constructor, but the concrete rows are still missing
-- prove active-actual lower/upper row intervals and feed them through the checked active-actual SourceIntervalCert.Valid constructor
+- active-actual lower/upper center-row intervals are now available from the signed factor rows and checked factor-product receiver
+- midpoint/error center-jet abs rows are now available for the whole combined expression
 - forall j : Fin 16, norm(iteratedDeriv j CombinedCancellationIntervalExpr center / j! - coeff[j]) <= coeffErrorAbs[j]
 - forall eta in Icc 0 (1/10), norm(iteratedDeriv 16 CombinedCancellationIntervalExpr eta) <= order16Abs
 - sum_j coeffErrorAbs[j] * radius^j + order16Abs * radius^16 / 16! <= remainderAbs
 - Horner range for rawOmegaATaylorPolynomial 15 center coeff
 - target lower/upper budget after subtracting/adding remainderAbs
-- nextPatchRecommendation: `Generate/prove concrete SourceIntervalCert.Valid rows through the checked active-actual SourceIntervalCert.Valid constructor.`
+- nextPatchRecommendation: `Build the order16 source interval payload in the same source normalization. Do not instantiate SourceIntervalCert.Valid until order16 source interval, Horner range, and target-budget rows are all proof-grade.`
 
 ## Candidate Segments
 
@@ -308,11 +405,20 @@ Must not use:
 - Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor.
 - Source-interval certificate target routes component-source lower/upper rows to HighOrderTaylorCert.Valid and final combined interval receivers.
 - Nonconditional source-normal-form support is Lean-checked: cancellationResidualCauchy = actualCauchy - nominalCauchy, the residual Taylor center-jet alignment bridge is checked, and the active-actual center-jet normal form no longer has a residual-jet hypothesis.
+- ShapeSqDeriv singleAbs/partial-sharp Valid rows can now be transported to signed center-jet intervals for the ShapeSqDerivActual factor.
+- OmegaPrimeActual, OmegaActual, ShapeSqActual, and ShapeSqDerivActual now have Lean-checked signed center-jet interval row sources.
+- A Lean-checked receiver now transports termwise factor-product intervals through Cauchy convolution, activeScale, and ResidualDerivmodelCoeff subtraction to active-actual center-row intervals.
+- Concrete rational active-actual center-row lower/upper definitions and row interval proof are Lean-checked from the signed factor rows and scale upper bound.
+- The signed active-actual lower/upper rows now feed midpoint/error coeff rows and a Lean-checked center-jet abs theorem for the whole combined expression.
+- Order-16 component-source algebra now Lean-reduces to activeScale times the actual component-product order-16 derivative.
+- A Lean-checked order16 factor-derivative receiver now reduces the source interval row to concrete factor derivative bounds for OmegaPrimeActual, OmegaActual, ShapeSqActual, and ShapeSqDerivActual through order 16 plus a scalar active-scale budget comparison.
+- The centered-Taylor factor-majorant adapter for those four factor families is now locally present, but the exact rational budget audit is killed by the checked order16 remainder-width failure.
 
 ## Rejected Routes
 
 - independentTriangleSplit: killed: residualTaylor polynomial alone exceeds final slope at the center
 - rowsProductBudgetRefinement: not a closure path while it preserves the independent product-budget style
+- centeredTaylorFactorDerivativeRoute: checked adapter/pattern but budget-killed at current constants; use STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL
 - sampledSegmentPayload: diagnostic only, not proof evidence
 
 ## Candidate Source
@@ -327,23 +433,41 @@ Must not use:
 
 ## Next Implementable Patch
 
-- recommendation: `build proof-grade source interval rows/payload for the nonconditional active-actual source normal form`
-- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
-- leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean`
-- checkerTheorem: `Step33Sub0CombinedCancellationHighOrderTaylorCert.Valid.to_hCombined`
-- remainingGap: `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- recommendation: `build the proof-grade whole-expression interval certificate for ComponentSource - NonzeroModelPoly in the active nonzero-model scaled-remainder normalization; the current centered-Taylor factor-derivative route is checked as a pattern but budget-killed`
+- firstFailureIfMissing: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+- leanPayloadTarget: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean`
+- checkerTheorem: `primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated`
+- remainingGap: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+- nextRouteLevelGapAfterSuccess: `STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP`
+- killedAlternative: `STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL`
 - doNot:
   - do not build C1 point-separation first
   - do not use sampled/probe rows
   - do not revive component triangle/product split
   - do not reuse OmegaPrime payload as a certificate for the whole expression
   - do not mark Valid/finalBudgetPassed before Lean-checked rows
+  - do not call coarse singleAbs rows tight; they are only proof-grade intervals
+  - do not treat active-actual product row intervals as a SourceIntervalCert.Valid payload
+  - do not treat center-jet abs rows as a SourceIntervalCert.Valid payload
+  - do not treat the order16 structural reduction as a numeric bound
+  - do not treat the factor-derivative receiver as a concrete closure payload
+  - do not spend the centered-Taylor factor-majorant route at current constants; it is budget-killed
+  - do not mark Valid/finalBudgetPassed before order16, Horner, and target-budget rows are checked
 
 ## Failure Codes
 
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JETS_ORDER16_PAYLOAD_GAP`
+- `STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SINGLEABS_TO_SIGNED_CENTERJET_CROSSWALK_GAP`
+- `STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SIGNED_FACTOR_JET_ROWS_GAP`
+- `STEP33_A1_SUB0_ACTIVE_ACTUAL_FACTOR_INTERVAL_TO_ROW_RECEIVER_GAP`
+- `STEP33_A1_SUB0_ACTIVE_ACTUAL_PRODUCT_ROW_INTERVALS_GAP`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_SIGNED_ROWS_TO_CENTERJET_ABS_GAP`
+- `STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP`
+- `STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL`
+- `STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BUDGET_CONSTANT_FAIL`
+- `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_INTERVAL_PAYLOAD_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_WHOLE_EXPRESSION_SOURCE_MODEL_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_CENTER_JET_SOURCE_MODEL_GAP`
 - `STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_MODEL_GAP`
@@ -364,6 +488,12 @@ Must not use:
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceModelBridge.lean`: `84628671b07f836b`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean`: `05fae4f366bb39df`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean`: `154d430ef1dc8eef`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean`: `f405fe44902d592b`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean`: `b2aa17bf2f805083`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean`: `15747c8075590c1b`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean`: `cb2e4601f2ad6425`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean`: `724577b57337b00d`
+- `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationCenterJetPayload.lean`: `9d7e6b13254e7482`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean`: `c8832f56435b42fa`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationNormReceiver.lean`: `8554b282c60d9c25`
 - `Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationP45Bridge.lean`: `aabf02168d6d50fd`

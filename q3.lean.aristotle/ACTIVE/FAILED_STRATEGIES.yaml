@@ -1,0 +1,107 @@
+schema: q3_failed_strategies_v1
+status: active
+updated: 2026-06-25
+
+entries:
+  - name: manual_row_by_row_scalar_replay
+    context: PSD Step33A.1 entry hbox / finite certificate backend
+    symptom: many scalar payload fragments can be generated without closing a
+      receiver or reducing the active row-source gap
+    cause: row replay does not by itself create a spendable receiver theorem
+    failed_strategy: continue manual row-by-row or entry-by-entry scalar replay
+    escape_operator: CertificateShift
+    next_action: use compressed direct whole-expression row certificates with a
+      small Lean receiver
+    evidence:
+      files:
+        - AGENTS.md
+        - q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+      failure_codes:
+        - STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+    status: active
+
+  - name: factorwise_raw_d17_two_segment_budget_spend
+    context: PSD Step33A.1 collapsed degree-0 direct signed-source route
+    symptom: segment rows and support cover compile, but exact budget comparison
+      is false
+    cause: the factorwise sharp two-segment class covers the cell but is not
+      spendable under the current biased residual budget
+    failed_strategy: keep sharpening the same factorwise raw-D17 two-segment
+      class after the budget kill
+    escape_operator: RepresentationShift
+    next_action: preserve cancellation and build direct whole-expression
+      CollapsedExpression row-source payload
+    evidence:
+      files:
+        - q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+        - q3.lean.aristotle/docs/INSIGHTS.md
+      failure_codes:
+        - STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL
+        - STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+    status: killed
+
+  - name: direct_concrete_payload_before_whole_expression_pilot
+    context: PSD Step33A.1 collapsed whole-expression direct row-source route
+    symptom: receiver and bridge surfaces exist, but the complete
+      CollapsedExpression pilot rows have not been generated or stress-tested
+    cause: emitting DirectConcretePayload.lean before segment rows, Horner rows,
+      exact cover, and final budget rows would create a wrapper-only proof
+      surface instead of a proof-grade certificate
+    failed_strategy: create or hand-fill DirectConcretePayload.lean before a
+      whole-expression pilot returns PASS_STABLE_MARGIN
+    escape_operator: CertificateShift
+    next_action: implement
+      scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py
+      and require PASS_STABLE_MARGIN / NEGATIVE_MARGIN / UNSTABLE_MARGIN /
+      SEGMENT_EXPLOSION before any payload emission
+    evidence:
+      files:
+        - q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.md
+        - q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+      failure_codes:
+        - STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_GAP
+        - STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+    status: active
+
+  - name: whole_expression_pilot_without_complete_source_stream
+    context: PSD Step33A.1-A direct whole-expression CollapsedExpression pilot
+    symptom: a pilot entrypoint exists, but no accepted pilot verdict can be
+      produced because the complete same-target coefficient/remainder stream is
+      absent
+    cause: repository evidence is only a partial nominal polynomial bridge;
+      the direct payload ledger reports
+      PARTIAL_NOMINAL_POLY_BRIDGE_PRESENT_COMPLETE_STREAM_ABSENT
+    failed_strategy: run numeric/probe whole-expression pilots or emit
+      DirectConcretePayload.lean before source-interval or DirectHorner rows
+      exist
+    escape_operator: CertificateShift
+    next_action: produce proof-grade same-target collapsedExpression
+      coefficient stream plus source-interval rows, or a concrete DirectHorner
+      valid payload, then rerun the pilot gate
+    evidence:
+      files:
+        - q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.json
+        - q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+      failure_codes:
+        - STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP
+        - STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+    status: active
+
+  - name: trackb_scalar_pointwise_edge_majorant
+    context: Track B / E5p / edge_majorant_bridge_K
+    symptom: scalar Selberg/Vaaler majorant passes pointwise prime-node checks
+      but does not prove Track B packet operator domination
+    cause: pointwise majorization does not transport to Q3 A3 admissibility or
+      B-spline packet Loewner order
+    failed_strategy: tune scalar Psi_K or spend tiny-B c_arch without same-unit
+      operator bridge
+    escape_operator: RepresentationShift
+    next_action: replace the scalar route by a direct interval/rational
+      projected PSD certificate in Track B G_K / kerQ units
+    evidence:
+      files:
+        - docs/trackB/lemmas/EDGE_MAJORANT_BRIDGE_K.md
+      failure_codes:
+        - KERNEL_MISMATCH
+        - TRACKB_E5P_EDGE_PROJECTED_PSD_CERT_GAP
+    status: avoided

@@ -1,0 +1,570 @@
+{
+  "activeDirectV21Contract": true,
+  "budgetFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+  "centerAuditFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0CenterAudit.lean",
+  "centerAuditFileSha256": "333f4731f87081e413eea0a0f201c6c42b100e0290318255e2a6e8102aa5c1b6",
+  "centerAuditLeanChecked": true,
+  "centerAuditPresent": true,
+  "centerAuditSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0Coeff0": {
+      "line": 26,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0CoeffErrorAbs": {
+      "line": 31,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_center_and_polyDeriv_source": {
+      "line": 80,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_directCollapsed_degree0_hCenter_generated": {
+      "line": 46,
+      "present": true
+    }
+  },
+  "coarseTriangleAuditFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_COARSE_TRIANGLE_BUDGET_AUDIT_GAP",
+  "coarseTriangleBudgetAuditFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourceBudgetAudit.lean",
+  "coarseTriangleBudgetAuditFileSha256": "c17647fc1f7c9ba1ebb6f193a303e35c4783b51ff7e300432734111fcb446c6d",
+  "coarseTriangleBudgetAuditLeanChecked": true,
+  "coarseTriangleBudgetAuditPresent": true,
+  "coarseTriangleBudgetAuditSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0TriangleDerivAbsRat": {
+      "line": 40,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_triangle_budget_fail_rat": {
+      "line": 49,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_triangle_budget_not_spendable": {
+      "line": 58,
+      "present": true
+    }
+  },
+  "coarseTriangleBudgetKillTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_triangle_budget_fail_rat",
+  "coarseTriangleBudgetPassed": false,
+  "coarseTriangleCandidateClass": "independent_abs_triangle",
+  "computerUseRouteReview": {
+    "decision": "Build the first Lean-checkable direct signed-source segment for the already-subtracted expression.  Keep the raw-D17 smoke payload as support evidence, but do not use it as the active next patch after its budget failure.",
+    "destination": "in-app ChatGPT Pro / Louise browser",
+    "doNotUse": [
+      "raw-D17 factorwise/two-segment rows",
+      "RawProduct18 absolute majorant",
+      "activeActual-alone budget",
+      "P45/zero-model budgets",
+      "sampled or float intervals",
+      "center jets as uniform bounds",
+      "new alias/receiver wrappers before source rows exist"
+    ],
+    "exactNextPatchScript": "scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py",
+    "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+    "firstTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated",
+    "gateScript": "scripts/generate_step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.py",
+    "latestRequest": "Step33A.1-A direct row-source gate after v21",
+    "latestStatus": "answered",
+    "localDecision": "A",
+    "note": "The next missing proof object is the exact Rat interval row for segment0 of ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly) in the same target normalization.  Then lift segment interval to SegmentCert.Valid, derivAbs, exact budget, and the collapsed segment remainder.",
+    "recommendedOption": "A",
+    "targetLeanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourcePayload.lean",
+    "used": true
+  },
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "directPayloadCurrentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+  "directPayloadProofGrade": false,
+  "directSignedSourceRowsGateCurrentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "directSignedSourceRowsGateFirstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "directSignedSourceRowsGateFollowUpChoice": "A",
+  "directSignedSourceRowsGateFollowUpStatus": "answered",
+  "directSignedSourceRowsGateLedgerFile": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.json",
+  "directSignedSourceRowsGateProofStatus": "fail_closed_missing_direct_signed_source_payload",
+  "directSignedSourceRowsGateTargetPayloadPresent": false,
+  "directV21Contract": {
+    "budgetFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+    "choice": "A",
+    "doNotUse": [
+      "activeActual degree0 polyErrorAbs as the final direct budget",
+      "factorwise RawD17/two-segment budget kills as closure",
+      "separate activeActual and nominal independent norm budgets",
+      "sampled point rows or Python diagnostics as proof",
+      "DirectConcretePayload.lean before all L0-L5 rows pass"
+    ],
+    "finalTheoremWhenRowsPass": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated",
+    "firstFailureCodeIfRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+    "generatorToPatch": "scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py",
+    "leanFileToEmitOnlyWhenRowsPass": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectConcretePayload.lean",
+    "parentFailureCodeIfRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+    "proofClaimAllowedNow": false,
+    "proofGrade": false,
+    "reason": "The direct collapsed degree-0 receiver is the smallest current whole-expression route: it keeps activeActual-minus-nominal cancellation inside one target, uses the checked center row, and requires only a signed derivative source row plus exact rational budgets before Horner/final-budget emission.",
+    "receiverChain": [
+      {
+        "failureCodeIfMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0CenterAudit.lean",
+        "status": "checked",
+        "theorem": "primaryFiniteRow0Parent0Split100Sub0_directCollapsed_degree0_hCenter_generated"
+      },
+      {
+        "failureCodeIfMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0DerivativeShift.lean",
+        "status": "checked",
+        "theorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_deriv_eq_activeActualD17_sub_nominalOrder16PolyDeriv"
+      },
+      {
+        "failureCodeIfMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP",
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedLowDegreeSource.lean",
+        "status": "checked",
+        "theorem": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_signedD17_source"
+      },
+      {
+        "failureCodeIfMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean",
+        "status": "checked_receiver_rows_missing",
+        "theorem": "Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert.Valid.to_collapsed_degree0_remainder"
+      }
+    ],
+    "requiredExactRowsBeforeLeanEmission": [
+      {
+        "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+        "id": "L0_segment_cover",
+        "object": "Step33Sub0CollapsedDegree0SignedSourceSegmentCover for the generated segments covering Set.Icc 0 (1/10)",
+        "status": "missing"
+      },
+      {
+        "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+        "id": "L1_signed_source_segment_rows",
+        "object": "proof-grade lower/upper rows for ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly) on each segment",
+        "status": "missing"
+      },
+      {
+        "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+        "id": "L2_deriv_abs_budget",
+        "object": "exact rational proof that the generated lower/upper rows are contained in [-derivAbs, derivAbs]",
+        "status": "missing"
+      },
+      {
+        "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+        "id": "L3_degree0_remainder_budget",
+        "object": "exact rational proof that coeffErrorAbs + derivAbs * (1/20) <= polyErrorAbs",
+        "status": "missing"
+      },
+      {
+        "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+        "id": "L4_collapsed_segment_remainder",
+        "object": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder",
+        "status": "missing_until_L0_L3_pass"
+      },
+      {
+        "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_ROWS_GAP",
+        "id": "L5_horner_and_final_budget_rows",
+        "object": "Horner stage bounds, segment cover for the direct family, and final +/- BiasedResidualRemainderAbs rows",
+        "status": "missing"
+      }
+    ],
+    "rowSourceLedger": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_source_audit.json",
+    "rowTheoremWhenRowsPass": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder",
+    "sameTarget": true,
+    "source": "preferred_collapsed_low_degree_signed_source_contract",
+    "status": "fail_closed_contract_only"
+  },
+  "directV21ContractSource": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json",
+  "directV21RequiredRows": [
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "L0_segment_cover",
+      "object": "Step33Sub0CollapsedDegree0SignedSourceSegmentCover for the generated segments covering Set.Icc 0 (1/10)",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "L1_signed_source_segment_rows",
+      "object": "proof-grade lower/upper rows for ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly) on each segment",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+      "id": "L2_deriv_abs_budget",
+      "object": "exact rational proof that the generated lower/upper rows are contained in [-derivAbs, derivAbs]",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+      "id": "L3_degree0_remainder_budget",
+      "object": "exact rational proof that coeffErrorAbs + derivAbs * (1/20) <= polyErrorAbs",
+      "status": "missing"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+      "id": "L4_collapsed_segment_remainder",
+      "object": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder",
+      "status": "missing_until_L0_L3_pass"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_ROWS_GAP",
+      "id": "L5_horner_and_final_budget_rows",
+      "object": "Horner stage bounds, segment cover for the direct family, and final +/- BiasedResidualRemainderAbs rows",
+      "status": "missing"
+    }
+  ],
+  "doNotSpend": [
+    "activeActual-alone D17 norm budget",
+    "separate deriv(NominalOrder16Poly) norm budget",
+    "raw-D17 factorwise/two-segment rows",
+    "RawProduct18 absolute majorant",
+    "factor/P45/zero-model killed budgets",
+    "sampled rows or center jets as uniform full-cell bounds"
+  ],
+  "expectedAbsTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_generated",
+  "expectedBudgetTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_budget_pass_rat",
+  "expectedFinalBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_interval_and_budget",
+  "expectedGeneratedConstants": [
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0DerivLower",
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0DerivUpper",
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0DerivAbs",
+    "primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0PolyErrorAbs"
+  ],
+  "expectedGeneratedTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_polyDeriv_signed_interval_generated",
+  "expectedRawD17SignedFactorBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment",
+  "expectedRawPolyFamilyBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_raw_poly_segment_family_cert",
+  "expectedRawPolySignedFactorBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment",
+  "expectedRawPolySubtractionBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSegmentValid_of_raw_poly_intervals",
+  "expectedSegmentAbsTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_segment_cover",
+  "expectedSegmentFinalBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_segment_family_cert",
+  "expectedSegmentGeneratedTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated",
+  "firstConcreteSubgap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "generatedAt": "2026-06-24T17:27:40.598944+00:00",
+  "leanPayloadWritten": true,
+  "nextFailureCodeIfBudgetFalse": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL",
+  "nextFailureCodeIfRowsMissing": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "nextPatchLeanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourcePayload.lean",
+  "nextPatchScript": "scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py",
+  "nextPatchSegments": [
+    "generated proof-grade cover of Set.Icc 0 (1/10)"
+  ],
+  "nextPatchTheorems": [
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated",
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_segment_family_generated",
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_derivAbs_budget_pass_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_degree0_budget_pass_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder"
+  ],
+  "nominalPolyDerivRowsFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean",
+  "nominalPolyDerivRowsFileSha256": "630853d89234ec3e47c57196c559b8be4ea824137c9822c9a2fad61928fcb9fd",
+  "nominalPolyDerivRowsLeanChecked": true,
+  "nominalPolyDerivRowsPresent": true,
+  "nominalPolyDerivRowsSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivAbsRat": {
+      "line": 43,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivCoeff": {
+      "line": 35,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivSegmentCount": {
+      "line": 118,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_abs_le": {
+      "line": 90,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_eq_poly": {
+      "line": 75,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_cover": {
+      "line": 149,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_interval_generated": {
+      "line": 174,
+      "present": true
+    }
+  },
+  "proofGrade": false,
+  "proofStatus": "fail_closed_missing_v21_direct_signed_source_segment_rows",
+  "rawD17FactorRouteActiveNextPatch": false,
+  "rawD17FactorRouteStatus": "superseded_by_v21_direct_whole_expression_row_source",
+  "rawD17SignedFactorPayloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean",
+  "rawD17SignedFactorPayloadFileSha256": "275365f66124a94ea0b89d65bd0fe834568d8bdd049d0beacee6c7fdba29f9cb",
+  "rawD17SignedFactorPayloadLeanChecked": true,
+  "rawD17SignedFactorPayloadLedgerCurrentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "rawD17SignedFactorPayloadLedgerFile": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_payload.json",
+  "rawD17SignedFactorPayloadPresent": true,
+  "rawD17SignedFactorPayloadSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorRawPolySegment0": {
+      "line": 348,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0": {
+      "line": 115,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_rawPoly_segment0_valid": {
+      "line": 359,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_fail_rat": {
+      "line": 394,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable": {
+      "line": 403,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_valid": {
+      "line": 267,
+      "present": true
+    }
+  },
+  "rawD17SignedFactorRawPolySegment0Valid": true,
+  "rawD17SignedFactorRowsFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean",
+  "rawD17SignedFactorRowsFileSha256": "ea16467b384dc6b62215e488dd8191df5aaf95d8d86f8bfe0f74f8642412353f",
+  "rawD17SignedFactorRowsLeanChecked": true,
+  "rawD17SignedFactorRowsPresent": true,
+  "rawD17SignedFactorRowsSymbols": {
+    "Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert": {
+      "line": 116,
+      "present": true
+    },
+    "def termCornerRows": {
+      "line": 131,
+      "present": true
+    },
+    "def toRawPolySegmentCert": {
+      "line": 168,
+      "present": true
+    },
+    "factorRows": {
+      "line": 188,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0RawProduct18SignedTerm": {
+      "line": 75,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment": {
+      "line": 368,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment": {
+      "line": 383,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_eq_signedLeibniz": {
+      "line": 84,
+      "present": true
+    },
+    "rawAssembly": {
+      "line": 205,
+      "present": true
+    },
+    "structure Valid": {
+      "line": 182,
+      "present": true
+    },
+    "termCorners": {
+      "line": 203,
+      "present": true
+    },
+    "theorem to_rawInterval": {
+      "line": 263,
+      "present": true
+    },
+    "theorem to_rawPolySegmentValid": {
+      "line": 342,
+      "present": true
+    },
+    "theorem to_termRows": {
+      "line": 215,
+      "present": true
+    }
+  },
+  "rawD17SignedFactorSegment0BudgetFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "rawD17SignedFactorSegment0BudgetFailureTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable",
+  "rawD17SignedFactorSegment0BudgetSpendable": false,
+  "rawD17SignedFactorSegment0Valid": true,
+  "requiredRows": [
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "A0_raw_d17_signed_factor_rows",
+      "object": "segment-local signed factor interval rows for OmegaActual and ShapeSqActual derivatives through order 18",
+      "status": "checked_full_cell_smoke_payload_not_budget_spendable"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "A0b_raw_d17_term_corner_rows",
+      "object": "exact corner rows for choose(18,k) * D^(18-k)OmegaActual * D^kShapeSqActual",
+      "status": "checked_for_full_cell_smoke_only_missing_tighter_local_rows"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "A0c_scaled_raw_d17_assembly_rows",
+      "object": "rawLower <= ActiveScaleCoeff * sum termLower and ActiveScaleCoeff * sum termUpper <= rawUpper",
+      "status": "checked_for_full_cell_smoke_only_missing_tighter_local_rows"
+    },
+    {
+      "failureCode": "NONE",
+      "id": "A1_poly_segment_interval_rows",
+      "object": "segment-local lower/upper interval theorems for deriv(NominalOrder16Poly)",
+      "status": "checked_proof_grade_full_cell_row"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "A2_signed_subtraction_rows",
+      "object": "exact rational rows lower <= rawLower - polyUpper and rawUpper - polyLower <= upper",
+      "status": "checked_for_full_cell_smoke_only_not_budget_spendable"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "A3_segment_cover",
+      "object": "exact cover of Set.Icc 0 (1/10) by generated segments",
+      "status": "missing_tighter_local_family"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "B_deriv_abs_budget",
+      "object": "for every segment, -derivAbs <= lower_i and upper_i <= derivAbs",
+      "status": "failed_for_full_cell_smoke_segment0"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "C_degree0_budget",
+      "object": "coeffErrorAbs + derivAbs / 20 <= polyErrorAbs",
+      "status": "failed_for_full_cell_smoke_segment0"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+      "id": "D_final_bridge",
+      "object": "apply primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_segment_family_cert",
+      "status": "checked_receiver_present"
+    }
+  ],
+  "route": "collapsed_degree0_signed_poly_deriv_source",
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v11",
+  "selectedNextPatch": "emit_first_direct_signed_source_segment0_interval",
+  "signedIntervalBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_interval",
+  "signedSegmentBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_segment_cover",
+  "signedSourceFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean",
+  "signedSourceFileSha256": "b738f63142f35c9679158af0ebe30acd2a60d37eeb5012c4a80207ee12feec46",
+  "signedSourceSurfaceLeanChecked": true,
+  "signedSourceSurfacePresent": true,
+  "signedSourceSymbols": {
+    "Step33Sub0CollapsedDegree0RawPolySegmentCert where": {
+      "line": 340,
+      "present": true
+    },
+    "Step33Sub0CollapsedDegree0RawPolySegmentCover": {
+      "line": 546,
+      "present": true
+    },
+    "Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert": {
+      "line": 556,
+      "present": true
+    },
+    "Step33Sub0CollapsedDegree0SignedSourceCert": {
+      "line": 54,
+      "present": true
+    },
+    "Step33Sub0CollapsedDegree0SignedSourceSegmentCert": {
+      "line": 215,
+      "present": true
+    },
+    "Step33Sub0CollapsedDegree0SignedSourceSegmentCover": {
+      "line": 404,
+      "present": true
+    },
+    "Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert": {
+      "line": 484,
+      "present": true
+    },
+    "def toSignedSegmentCert": {
+      "line": 353,
+      "present": true
+    },
+    "degree0Budget": {
+      "line": 77,
+      "present": true
+    },
+    "derivAbsBudget": {
+      "line": 74,
+      "present": true
+    },
+    "namespace Step33Sub0CollapsedDegree0RawPolySegmentCert": {
+      "line": 350,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr": {
+      "line": 31,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceTarget": {
+      "line": 39,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_interval": {
+      "line": 157,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_segment_cover": {
+      "line": 416,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSegmentValid_of_raw_poly_intervals": {
+      "line": 309,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_raw_poly_segment_family_cert": {
+      "line": 635,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_interval_and_budget": {
+      "line": 190,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_segment_cover_and_budget": {
+      "line": 453,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_segment_family_cert": {
+      "line": 665,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_source_cert": {
+      "line": 650,
+      "present": true
+    },
+    "sourceInterval": {
+      "line": 65,
+      "present": true
+    },
+    "structure Valid": {
+      "line": 69,
+      "present": true
+    },
+    "theorem to_collapsed_degree0_remainder": {
+      "line": 135,
+      "present": true
+    },
+    "theorem to_hSignedD17PolyDeriv": {
+      "line": 109,
+      "present": true
+    },
+    "theorem to_signedSegmentFamilyValid": {
+      "line": 589,
+      "present": true
+    },
+    "theorem valid_of_raw_poly_intervals": {
+      "line": 245,
+      "present": true
+    },
+    "theorem valid_of_signed_interval_and_budget": {
+      "line": 86,
+      "present": true
+    }
+  },
+  "signedWholeExpressionRowsPresent": false,
+  "targetExpression": "ActiveScaleCoeff * iteratedDeriv 17 ComponentProductActual - deriv NominalOrder16Poly"
+}

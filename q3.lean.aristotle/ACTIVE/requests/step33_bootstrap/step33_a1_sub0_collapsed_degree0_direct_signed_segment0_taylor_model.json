@@ -1,0 +1,486 @@
+{
+  "budgetFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_BUDGET_CONSTANT_FAIL",
+  "componentAssemblyAudit": {
+    "centerCrosswalkStatus": "missing: available component assembly is centered at 1/20; the active segment0 target is centered at 1/40",
+    "componentAssemblyFormula": {
+      "center": "1/20",
+      "residualTaylorCoeffFormula": "assembledRawDerivCoeff - zeroExtend15(ResidualDerivmodelCoeff)",
+      "statementAscii": null
+    },
+    "componentResidualPayload": {
+      "exists": true,
+      "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+      "modelDerivCoeff": {
+        "kind": "list",
+        "length": 16,
+        "present": true
+      },
+      "modelDerivCoeffPaddedToAssembledDegree": {
+        "kind": "list",
+        "length": 46,
+        "present": true
+      },
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json",
+      "proofStatusSubset": {
+        "componentTaylorProofsPresent": false,
+        "exactCoefficientAssemblyPassed": false,
+        "finalBudgetPassed": false,
+        "outLeanWritten": false,
+        "shapeSqDerivCenterCoeffRowsClosedCount": 2,
+        "shapeSqDerivCenterCoeffRowsRequiredCount": 16
+      },
+      "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19",
+      "status": "fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap"
+    },
+    "exactAssemblyCertificate": {
+      "assembledRawDerivCoeff": {
+        "kind": "list",
+        "length": 46,
+        "present": true
+      },
+      "checks": {
+        "algebraicAssemblyCrosswalkPassed": true,
+        "assembledLength": 46,
+        "componentTaylorOverallProofSafe": false,
+        "componentTaylorProofsPresent": false,
+        "exactCoefficientAssemblyPassed": false,
+        "residualLength": 46,
+        "residualTaylorRemainderAbsPresent": false
+      },
+      "componentPropagationRemainderAbs": {
+        "kind": "missing",
+        "present": false,
+        "value": null
+      },
+      "exists": true,
+      "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json",
+      "proofGrade": "LEAN_LIST_EQ_CHECKED_FOR_ALGEBRAIC_COEFFICIENT_ARRAYS_ONLY",
+      "residualTaylorCoeff": {
+        "kind": "list",
+        "length": 46,
+        "present": true
+      },
+      "residualTaylorRemainderAbs": {
+        "kind": "missing",
+        "present": false,
+        "value": null
+      },
+      "schema": "q3_psdpd_step33_a1_sub0_component_taylor_exact_assembly_certificate.v1",
+      "status": "algebraic_assembly_payload_checked_remainder_source_open"
+    },
+    "failureCodeIfUsedAsClosure": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_LOCAL_FACTOR_JETS_TO_WHOLE_EXPRESSION_TAYLOR_MODEL_GAP",
+    "segment0Target": {
+      "cellL": "0",
+      "cellU": "1/20",
+      "center": "1/40",
+      "radius": "1/40"
+    },
+    "streamLedger": {
+      "exists": true,
+      "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json",
+      "schema": "q3_psdpd_step33_a1_sub0_component_assembly_stream_ledger.v1",
+      "status": "fail_closed_algebraic_assembly_and_shapesq_same_coeff_payload_checked_component_remainder_source_gap"
+    },
+    "verdict": "support_present_but_not_segment0_whole_expression_source",
+    "whyNotProofCargo": "These artifacts are useful coefficient/support evidence, but they do not provide a same-center segment0 theorem for the complete already-subtracted expression with modelCoeff, remainderAbs, Horner bounds, and sourceLower/sourceUpper."
+  },
+  "computerUseRouteReview": {
+    "budgetFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_BUDGET_CONSTANT_FAIL",
+    "exactExistingTheoremsSeen": [
+      "primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet18_sharp_interval_generated",
+      "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet18_sharp_interval_generated",
+      "iteratedDeriv_norm_le_centeredTaylorDerivMajorant18",
+      "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_eq_signedLeibniz",
+      "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18",
+      "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_eq_poly",
+      "primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval",
+      "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_remainder_of_localFactorTaylor18"
+    ],
+    "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_LOCAL_FACTOR_TAYLOR18_SEGMENT0_PAYLOAD_GAP",
+    "failureCodeIfNotProducibleNow": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_LOCAL_FACTOR_JETS_TO_WHOLE_EXPRESSION_TAYLOR_MODEL_GAP",
+    "firstGeneratedArtifact": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_segment0_taylor_model.json",
+    "firstGenericLeanBridge": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeModel18.lean",
+    "firstLeanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourceSegment0Payload.lean",
+    "firstScript": "scripts/generate_step33_a1_sub0_collapsed_degree0_direct_signed_segment0.py",
+    "followupChoice": "C",
+    "followupFirstFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0LocalFactorTaylorModelBridge.lean",
+    "latestVisibleAnswerUsed": true,
+    "modelRemainderTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_model_remainder_generated",
+    "nextPatch": "direct segment-0 Taylor-model certificate for the complete already-subtracted signed expression",
+    "segmentIntervalTheorem": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated",
+    "source": "in-app Browser/Computer Use Proshka route review",
+    "status": "answered",
+    "used": true
+  },
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SOURCE_UNIFORM_SEGMENT_ROWS_GAP",
+  "doNotUse": [
+    "independent Omega/ShapeSq final intervals",
+    "raw-D17 factorwise budget",
+    "RawProduct18 symmetric majorant",
+    "activeActual-alone norm budget",
+    "P45 / zero-model budgets",
+    "sampled or floating-point rows",
+    "point rows as uniform segment rows",
+    "manual row-by-row Lean replay",
+    "conditional Payload.lean fields"
+  ],
+  "firstFailureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SOURCE_UNIFORM_SEGMENT_ROWS_GAP",
+  "generatedAt": "2026-06-24T19:09:55.762027+00:00",
+  "nextProofProducingPatch": "Generate/prove the remaining direct signed-source segment rows for the full cell, then prove exact derivAbs and degree-0 budget rows.  The segment0 interval theorem is checked.",
+  "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "previousSourceGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_TAYLOR_MODEL_SOURCE_GAP",
+  "proofGrade": false,
+  "proofStatus": "segment0_interval_checked_missing_family_budget",
+  "requiredData": [
+    {
+      "id": "cell",
+      "needed": "cellL=0, cellU=1/20, center=1/40, radius=1/40",
+      "status": "specified"
+    },
+    {
+      "id": "signed_center_jets",
+      "needed": "OmegaActual and ShapeSqActual signed center jets sufficient to assemble the complete D17 product row before interval widening",
+      "status": "partial_support_only"
+    },
+    {
+      "id": "uniform_order18_bounds",
+      "needed": "uniform order18 bounds for the factors on segment0",
+      "status": "support_present_but_not_whole_expression_source"
+    },
+    {
+      "failureCode": null,
+      "id": "signed_leibniz_assembly",
+      "needed": "exact signed Leibniz assembly for the product-derivative and remainder terms underlying activeScale * D17(ComponentProductActual) - deriv(NominalOrder16Poly)",
+      "status": "checked_for_segment0"
+    },
+    {
+      "failureCode": null,
+      "id": "whole_expression_model",
+      "needed": "concrete LocalFactorTaylor18Segment0Cert rows producing the same-segment signed-source interval",
+      "status": "checked_for_segment0_via_local_factor_taylor18_payload"
+    },
+    {
+      "failureCode": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SOURCE_UNIFORM_SEGMENT_ROWS_GAP",
+      "id": "whole_expression_remainder",
+      "needed": "derived segment0 sourceLower/sourceUpper plus final derivAbs and degree-0 budget rows",
+      "status": "blocked_until_uniform_family_and_budget_rows_exist"
+    },
+    {
+      "id": "horner_interval",
+      "needed": "Horner stageLower/stageUpper, modelLower/modelUpper",
+      "status": "blocked_until_model_exists"
+    },
+    {
+      "id": "final_source_interval",
+      "needed": "final sourceLower/sourceUpper for SignedSourceExpr",
+      "status": "blocked_until_model_exists"
+    }
+  ],
+  "route": "collapsed_degree0_direct_signed_segment0_taylor_model",
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_direct_signed_segment0_taylor_model_gate.v4",
+  "segment0Convention": {
+    "cellL": "0",
+    "cellU": "1/20",
+    "center": "1/40",
+    "expression": "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr",
+    "polynomialDegree": 28,
+    "radius": "1/40"
+  },
+  "shouldEmitLeanPayload": false,
+  "sourceMaterialAudit": {
+    "firstUnmetInput": "full_segment_family_cover_and_derivAbs_degree0_budget_rows",
+    "notYetProofCargo": [
+      "final segment-family cover, derivAbs budget, and degree-0 budget rows"
+    ],
+    "nowProofCargo": [
+      "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0LocalFactorTaylorModelPayload.lean",
+      "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourceSegment0Payload.lean",
+      "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated"
+    ],
+    "usableSupport": [
+      "local signed factor center-jet intervals at 1/40 and 3/40, plus factor order18 bounds",
+      "signed Leibniz equality/receiver for raw-D17 factor segments",
+      "nominal polynomial derivative interval rows in the target subtraction",
+      "signed-source segment-family receiver and final degree-0 bridge",
+      "Lean-checked local factor Taylor18 bridge from segment0 factor models into the signed-source segment receiver"
+    ],
+    "whyExistingRowsAreInsufficient": "The segment0 interval row is Lean-checked.  It still covers only `[0, 1/20]` and does not provide the full segment-family cover, the global `derivAbs` containment, or the degree-0 budget row.  Point rows, factorwise intervals, and budget-killed raw-D17 payloads do not provide those missing rows."
+  },
+  "stopRule": "Stop and report CURRENT_GAP if the generator cannot produce a Lean-checkable whole-expression remainder theorem from local signed jets and order18 bounds.  Do not emit Payload.lean with a conditional field.",
+  "supportSurfaces": {
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant18.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "54da6c8ce5cacc7c5de63ef256fd81a878f96fd3f356d6d32c1ca70fab84bcaa",
+      "symbols": {
+        "centeredTaylorDerivMajorant18": {
+          "line": 168,
+          "present": true
+        },
+        "iteratedDeriv_norm_le_centeredTaylorDerivMajorant18": {
+          "line": 202,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeModel18.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "71c68144cf09be3f043c718b0de71ecac9c21c79450c88195c9890c8d9831fa3",
+      "symbols": {
+        "centeredTaylorDerivError18": {
+          "line": 38,
+          "present": true
+        },
+        "centeredTaylorDerivPolynomial18": {
+          "line": 26,
+          "present": true
+        },
+        "centeredTaylorDerivPolynomial18_abs_bound": {
+          "line": 52,
+          "present": true
+        },
+        "iteratedDeriv_sub_centeredTaylorDerivPolynomial18_norm_le": {
+          "line": 138,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "29cccd9536ab2cc24fee7b6016b7f0cab844cb8079e7848f60a6727e6ab0ae93",
+      "symbols": {
+        "centeredTaylorDerivPointLower18": {
+          "line": 100,
+          "present": true
+        },
+        "centeredTaylorDerivPointUpper18": {
+          "line": 106,
+          "present": true
+        },
+        "iteratedDeriv_mem_Icc_of_centerJet18_point_remainder": {
+          "line": 197,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_from_factor_rows": {
+          "line": 927,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval": {
+          "line": 250,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval": {
+          "line": 376,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "a5c3f5968ec55f259c292e18135ceb785a979b6e776b5a4638342c45dc425c68",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_abs_generated": {
+          "line": 160,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_abs_generated": {
+          "line": 147,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0LocalFactorTaylorModelBridge.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "af7d30e64d4f09e121a344b0d236cf2d043ae5def8946474221fd203c196d220",
+      "symbols": {
+        "Step33Sub0CollapsedDegree0LocalFactorTaylor18Segment0Cert": {
+          "line": 99,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_remainder_of_localFactorTaylor18": {
+          "line": 491,
+          "present": true
+        },
+        "structure Valid": {
+          "line": 207,
+          "present": true
+        },
+        "to_rawD17SignedFactorSegmentValid": {
+          "line": 452,
+          "present": true
+        },
+        "to_rawPolySegmentValid": {
+          "line": 466,
+          "present": true
+        },
+        "to_signedSegmentValid": {
+          "line": 476,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "630853d89234ec3e47c57196c559b8be4ea824137c9822c9a2fad61928fcb9fd",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_eq_poly": {
+          "line": 75,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_interval_generated": {
+          "line": 174,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "275365f66124a94ea0b89d65bd0fe834568d8bdd049d0beacee6c7fdba29f9cb",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0": {
+          "line": 115,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable": {
+          "line": 403,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_valid": {
+          "line": 267,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "ea16467b384dc6b62215e488dd8191df5aaf95d8d86f8bfe0f74f8642412353f",
+      "symbols": {
+        "Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert": {
+          "line": 116,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0RawProduct18SignedTerm": {
+          "line": 75,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment": {
+          "line": 368,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_eq_signedLeibniz": {
+          "line": 84,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "b738f63142f35c9679158af0ebe30acd2a60d37eeb5012c4a80207ee12feec46",
+      "symbols": {
+        "Step33Sub0CollapsedDegree0SignedSourceSegmentCert": {
+          "line": 215,
+          "present": true
+        },
+        "Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert": {
+          "line": 484,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr": {
+          "line": 31,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssembly.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "bfa94f3f7865292733f65705ffb6d813abbc658c5efa66fb87fb3f6957d3fbba",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0OmegaShapeSqDerivProductCoeff": {
+          "line": 1121,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0OmegaTaylorCoeff": {
+          "line": 278,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqTaylorCoeff": {
+          "line": 426,
+          "present": true
+        }
+      }
+    },
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean": {
+      "allSymbolsPresent": true,
+      "exists": true,
+      "sha256": "dee0ec422749899121a5b54e3d4f0da02e61109d6367d1eb162d03255d147463",
+      "symbols": {
+        "primaryFiniteRow0Parent0Split100Sub0OmegaActualDerivativeMajorant18Rat": {
+          "line": 172,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0ShapeSqActualSharpDerivativeMajorant18Rat": {
+          "line": 182,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_sharp_interval": {
+          "line": 941,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet18_sharp_interval": {
+          "line": 831,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_omegaActual_order18_on_rawD17Segment_sharp": {
+          "line": 254,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_sharp_interval": {
+          "line": 999,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet18_sharp_interval": {
+          "line": 855,
+          "present": true
+        },
+        "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_order18_on_rawD17Segment_sharp": {
+          "line": 275,
+          "present": true
+        }
+      }
+    }
+  },
+  "targetLeanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourceSegment0Payload.lean",
+  "targetLeanFileExists": true,
+  "targetPayloadPresent": true,
+  "targetSymbols": {
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_segment0_valid_generated": {
+      "line": 47,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated": {
+      "line": 29,
+      "present": true
+    }
+  },
+  "upstreamDirectSourceRowsGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP",
+  "upstreamDirectSourceRowsLedger": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.json",
+  "upstreamDirectSourceRowsProofStatus": "fail_closed_missing_direct_signed_source_payload"
+}

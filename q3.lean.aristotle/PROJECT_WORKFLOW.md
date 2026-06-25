@@ -237,6 +237,35 @@ python3 q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 1
 
 This is the full project loop; Aristotle и Прошка — ключевые инструменты.
 
+## Cognitive Governor Hook
+
+`COGNITIVE_KERNEL.md`, `COGNITIVE_OPERATORS.md`, and
+`ACTIVE/COGNITIVE_GOVERNOR.md` define the meta-learning layer for this project.
+They do not replace the route monitor or proof gates.  They are invoked when
+the local loop starts bisecting without proof progress.
+
+After each meaningful iteration, classify the result:
+
+```text
+PROOF_PROGRESS / GAP_SHRINK / COUNTEREXAMPLE / ROUTE_KILL /
+DIAGNOSTIC_ONLY / NO_PROGRESS
+```
+
+If 3 consecutive iterations are `DIAGNOSTIC_ONLY` or `NO_PROGRESS`, invoke the
+kernel before doing more local decomposition:
+
+```text
+classify_gap()
+select_cognitive_operator()
+record_failed_strategy_if_reusable()
+ask_Proshka_via_Computer_Use_if_browser_available()
+choose_smallest_next_proof_artifact()
+```
+
+Proshka/Louise remains advisory.  Accepted output must be translated into a
+local theorem shape, certificate target, route-kill statement, or monitor/report
+update before implementation.
+
 ## Route-kill protocol
 
 Если активная доказательная ветка упирается не во временный technical blocker,

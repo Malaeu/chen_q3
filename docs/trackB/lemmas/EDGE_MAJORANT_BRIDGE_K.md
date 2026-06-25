@@ -11,6 +11,8 @@ Final verdict:
 ```text
 edge_majorant_bridge_K is NOT proved.
 Exact failure: KERNEL_MISMATCH.
+Advisory route review: CHOSEN: B, replace the scalar-majorant route by a
+direct interval/rational projected PSD certificate in Track B units.
 ```
 
 The scalar Selberg/CLV majorant can be defined and gives the required
@@ -18,6 +20,13 @@ pointwise majorization on prime nodes.  The proof fails at line 3: the current
 majorant is not proved to be admissible for the Q3 A3 / Toeplitz bridge, and
 local Track B evidence shows that pointwise majorants do not transport to the
 packet operator order.
+
+Browser/Proshka advisory review on 2026-06-24 independently selected route B:
+pointwise majorization does not transport to projected B-spline packet Loewner
+order, so continuing to tune scalar `Psi_K` is the wrong patch.  The recommended
+next proof object is a direct interval/rational projected PSD certificate in the
+Track B `G_K` / `ker(Q_K)` normalization.  This advisory output is not proof
+evidence; it only confirms the local route choice already supported below.
 
 ---
 
@@ -395,7 +404,8 @@ One of the following is required:
 
 1. Construct `Psi_K` inside the Q3 Fejer-heat / Fourier Toeplitz admissible
    class and prove it majorizes the Track B edge operator, not merely the edge
-   indicator pointwise.
+   indicator pointwise.  Current route status: not recommended; local evidence
+   and advisory review both classify this as the scalar-majorant swamp.
 
 2. Prove a direct projected finite operator majorant:
 
@@ -404,7 +414,7 @@ One of the following is required:
    ```
 
    in the Track B `G_K` normalization, with interval/rational certificate
-   quality.
+   quality.  Current route status: recommended next patch.
 
 3. Construct and certify the norm-transfer map:
 
@@ -420,6 +430,14 @@ One of the following is required:
 
 Only after one of these repairs can `R_K`, `Loss_K`, and the threshold
 comparison be meaningful.
+
+The exact next patch should therefore be a certificate generator and audit for
+the direct projected PSD object, not a new Lean theorem stub.  The expected
+gap label for that patch is:
+
+```text
+TRACKB_E5P_EDGE_PROJECTED_PSD_CERT_GAP
+```
 
 ---
 

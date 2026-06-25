@@ -57,6 +57,24 @@ SOURCE_INTERVAL_CERT_FILE = (
 SOURCE_NORMAL_FORM_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean"
 )
+ACTIVE_ACTUAL_CENTERJET_ROWS_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean"
+)
+CENTERJET_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationCenterJetPayload.lean"
+)
+ORDER16_FACTOR_MAJORANT_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorMajorant.lean"
+)
+ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16FactorDerivativeReceiver.lean"
+)
+ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationFactorDerivativeMajorantBridge.lean"
+)
+ORDER16_BUDGET_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16BudgetPayload.lean"
+)
 BOUND_INPUTS_FILE = (
     "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCancellationBoundInputs.lean"
 )
@@ -77,7 +95,7 @@ OMEGA_PRIME_PAYLOAD = (
     "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_taylor_payload.json"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v12"
+SCHEMA = "q3_psdpd_step33_a1_sub0_combined_cancellation_interval_certificate.v20"
 ROUTE_ID = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR"
 STATUS = "fail_closed_missing_high_order_valid_payload"
 FIRST_FAILURE = "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_VALID_PAYLOAD_GAP"
@@ -175,6 +193,129 @@ SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID = (
 )
 SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_FAILURE = (
     "STEP33_A1_SUB0_COMBINED_CANCELLATION_SOURCE_NORMAL_FORM_COEFF_ALIGNMENT_GAP"
+)
+ACTIVE_ACTUAL_SINGLEABS_TO_SIGNED_FAILURE = (
+    "STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SINGLEABS_TO_SIGNED_CENTERJET_CROSSWALK_GAP"
+)
+ACTIVE_ACTUAL_CENTERJET_INTERVAL_OF_ABS = (
+    "primaryFiniteRow0Parent0Split100Sub0_centerJet_interval_of_abs"
+)
+ACTIVE_ACTUAL_SHAPESQDERIV_SINGLEABS_SIGNED = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDeriv_singleAbs_signed_centerJet_interval"
+)
+ACTIVE_ACTUAL_SHAPESQDERIV_ROWS_SIGNED = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqDerivRows01234567891011_signed_centerJet_interval"
+)
+ACTIVE_ACTUAL_OMEGAPRIME_SIGNED = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaPrimeActual_signed_centerJet_interval"
+)
+ACTIVE_ACTUAL_OMEGA_SIGNED = (
+    "primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval"
+)
+ACTIVE_ACTUAL_SHAPESQ_SIGNED = (
+    "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval"
+)
+ACTIVE_ACTUAL_SIGNED_FACTOR_ROWS_FAILURE = (
+    "STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_SIGNED_FACTOR_JET_ROWS_GAP"
+)
+ACTIVE_ACTUAL_FACTOR_INTERVAL_RECEIVER_FAILURE = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_FACTOR_INTERVAL_TO_ROW_RECEIVER_GAP"
+)
+ACTIVE_ACTUAL_SUM_INTERVAL = (
+    "primaryFiniteRow0Parent0Split100Sub0_sum_interval_of_term_intervals"
+)
+ACTIVE_ACTUAL_CAUCHY_INTERVAL = (
+    "primaryFiniteRow0Parent0Split100Sub0_normalizedJetConvolution_interval_of_term_intervals"
+)
+ACTIVE_ACTUAL_COMPONENT_PRODUCT_CAUCHY_INTERVAL = (
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_interval"
+)
+ACTIVE_ACTUAL_SCALE_NONNEG = (
+    "primaryFiniteRow0Parent0Split100Sub0_activeScale_nonneg"
+)
+ACTIVE_ACTUAL_ROW_INTERVAL = (
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_of_product_interval"
+)
+ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS = (
+    "primaryFiniteRow0Parent0Split100Sub0ComponentProductActualCauchyAbs"
+)
+ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_INTERVAL = (
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchy_abs_interval"
+)
+ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_NONNEG = (
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActualCauchyAbs_nonneg"
+)
+ACTIVE_ACTUAL_CENTER_ROW_LOWER = (
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowLower"
+)
+ACTIVE_ACTUAL_CENTER_ROW_UPPER = (
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowUpper"
+)
+ACTIVE_ACTUAL_CENTER_ROW_INTERVAL_FROM_FACTOR_ROWS = (
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_from_factor_rows"
+)
+ACTIVE_ACTUAL_PRODUCT_ROWS_FAILURE = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_PRODUCT_ROW_INTERVALS_GAP"
+)
+CENTERJET_ABS_PAYLOAD_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_SIGNED_ROWS_TO_CENTERJET_ABS_GAP"
+)
+ORDER16_SOURCE_INTERVAL_PAYLOAD_FAILURE = (
+    "STEP33_A1_SUB0_COMBINED_CANCELLATION_ORDER16_SOURCE_INTERVAL_PAYLOAD_GAP"
+)
+FACTOR_DERIVATIVE_BOUNDS_FAILURE = (
+    "STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BOUNDS_0_TO_16_GAP"
+)
+FACTOR_DERIVATIVE_BUDGET_FAILURE = (
+    "STEP33_A1_SUB0_CENTERED_TAYLOR_FACTOR_MAJORANT_ORDER16_BUDGET_CONSTANT_FAIL"
+)
+FACTOR_DERIVATIVE_BUDGET_FAILURE_ALIAS = (
+    "STEP33_A1_SUB0_COMPONENT_PRODUCT_ACTUAL_FACTOR_DERIVATIVE_BUDGET_CONSTANT_FAIL"
+)
+CENTERJET_COEFF = (
+    "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCoeff"
+)
+CENTERJET_COEFF_ERROR_ABS = (
+    "primaryFiniteRow0Parent0Split100Sub0CombinedCancellationCoeffErrorAbs"
+)
+CENTERJET_COEFF_ERROR_ABS_NONNEG = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_coeffErrorAbs_nonneg"
+)
+CENTERJET_COMPONENT_SOURCE_ABS_GENERATED = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_componentSource_centerJet_abs_generated"
+)
+CENTERJET_ABS_GENERATED = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_centerJet_abs_generated"
+)
+ORDER16_SOURCE_EQ_ACTIVE_ACTUAL = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_eq_activeActual"
+)
+ORDER16_COMPONENT_PRODUCT_MAJORANT = (
+    "primaryFiniteRow0Parent0Split100Sub0ComponentProductActualOrder16Majorant"
+)
+ORDER16_COMPONENT_PRODUCT_ABS_RECEIVER = (
+    "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order16_abs_of_factor_derivative_abs"
+)
+ORDER16_SOURCE_ABS_RECEIVER = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_abs_of_factor_derivative_abs"
+)
+ORDER16_SOURCE_INTERVAL_RECEIVER = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_factor_derivative_abs"
+)
+ORDER16_SOURCE_INTERVAL_CENTERED_TAYLOR_RECEIVER = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellationOrder16Source_interval_of_centeredTaylor_factor_majorants"
+)
+ORDER16_ACTIVE_SCALE_ABS = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16_activeScaleAbs"
+)
+ORDER16_BUDGET_LE_DECLARED_ABS = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16BudgetRat_le_declaredAbs"
+)
+ORDER16_REMAINDER_WIDTH_FAIL_RAT = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail_rat"
+)
+ORDER16_REMAINDER_WIDTH_FAIL = (
+    "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_order16Budget_remainder_width_fail"
 )
 
 
@@ -460,6 +601,283 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
         and source_normal_form_active_actual_valid_constructor_present
         and source_normal_form_active_actual_source_interval_valid_present
     )
+    active_actual_centerjet_interval_of_abs_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_CENTERJET_INTERVAL_OF_ABS}",
+        )
+        is not None
+    )
+    active_actual_shapesqderiv_singleabs_signed_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_SHAPESQDERIV_SINGLEABS_SIGNED}",
+        )
+        is not None
+    )
+    active_actual_shapesqderiv_rows_signed_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_SHAPESQDERIV_ROWS_SIGNED}",
+        )
+        is not None
+    )
+    active_actual_omegaprime_signed_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_OMEGAPRIME_SIGNED}",
+        )
+        is not None
+    )
+    active_actual_omega_signed_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_OMEGA_SIGNED}",
+        )
+        is not None
+    )
+    active_actual_shapesq_signed_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_SHAPESQ_SIGNED}",
+        )
+        is not None
+    )
+    active_actual_singleabs_to_signed_present = (
+        active_actual_centerjet_interval_of_abs_present
+        and active_actual_shapesqderiv_singleabs_signed_present
+        and active_actual_shapesqderiv_rows_signed_present
+    )
+    active_actual_all_factor_signed_rows_present = (
+        active_actual_omegaprime_signed_present
+        and active_actual_omega_signed_present
+        and active_actual_shapesq_signed_present
+        and active_actual_shapesqderiv_rows_signed_present
+    )
+    active_actual_sum_interval_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_SUM_INTERVAL}",
+        )
+        is not None
+    )
+    active_actual_cauchy_interval_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_CAUCHY_INTERVAL}",
+        )
+        is not None
+    )
+    active_actual_component_product_cauchy_interval_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_COMPONENT_PRODUCT_CAUCHY_INTERVAL}",
+        )
+        is not None
+    )
+    active_actual_scale_nonneg_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_SCALE_NONNEG}",
+        )
+        is not None
+    )
+    active_actual_row_interval_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_ROW_INTERVAL}",
+        )
+        is not None
+    )
+    active_actual_factor_interval_receiver_present = (
+        active_actual_sum_interval_present
+        and active_actual_cauchy_interval_present
+        and active_actual_component_product_cauchy_interval_present
+        and active_actual_scale_nonneg_present
+        and active_actual_row_interval_present
+    )
+    active_actual_component_product_abs_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"def {ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS}",
+        )
+        is not None
+    )
+    active_actual_component_product_abs_interval_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_INTERVAL}",
+        )
+        is not None
+    )
+    active_actual_component_product_abs_nonneg_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_NONNEG}",
+        )
+        is not None
+    )
+    active_actual_center_row_lower_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"def {ACTIVE_ACTUAL_CENTER_ROW_LOWER}",
+        )
+        is not None
+    )
+    active_actual_center_row_upper_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"def {ACTIVE_ACTUAL_CENTER_ROW_UPPER}",
+        )
+        is not None
+    )
+    active_actual_center_row_interval_from_factor_rows_present = (
+        line_of_symbol(
+            ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            f"theorem {ACTIVE_ACTUAL_CENTER_ROW_INTERVAL_FROM_FACTOR_ROWS}",
+        )
+        is not None
+    )
+    active_actual_product_row_intervals_present = (
+        active_actual_component_product_abs_present
+        and active_actual_component_product_abs_interval_present
+        and active_actual_component_product_abs_nonneg_present
+        and active_actual_center_row_lower_present
+        and active_actual_center_row_upper_present
+        and active_actual_center_row_interval_from_factor_rows_present
+    )
+    centerjet_payload_file_present = (ROOT / CENTERJET_PAYLOAD_FILE).exists()
+    centerjet_coeff_present = (
+        line_of_symbol(ROOT / CENTERJET_PAYLOAD_FILE, f"def {CENTERJET_COEFF}")
+        is not None
+    )
+    centerjet_coeff_error_abs_present = (
+        line_of_symbol(
+            ROOT / CENTERJET_PAYLOAD_FILE, f"def {CENTERJET_COEFF_ERROR_ABS}"
+        )
+        is not None
+    )
+    centerjet_coeff_error_abs_nonneg_present = (
+        line_of_symbol(
+            ROOT / CENTERJET_PAYLOAD_FILE,
+            f"theorem {CENTERJET_COEFF_ERROR_ABS_NONNEG}",
+        )
+        is not None
+    )
+    centerjet_component_source_abs_present = (
+        line_of_symbol(
+            ROOT / CENTERJET_PAYLOAD_FILE,
+            f"theorem {CENTERJET_COMPONENT_SOURCE_ABS_GENERATED}",
+        )
+        is not None
+    )
+    centerjet_abs_generated_present = (
+        line_of_symbol(
+            ROOT / CENTERJET_PAYLOAD_FILE,
+            f"theorem {CENTERJET_ABS_GENERATED}",
+        )
+        is not None
+    )
+    centerjet_abs_payload_present = (
+        centerjet_payload_file_present
+        and centerjet_coeff_present
+        and centerjet_coeff_error_abs_present
+        and centerjet_coeff_error_abs_nonneg_present
+        and centerjet_component_source_abs_present
+        and centerjet_abs_generated_present
+    )
+    order16_factor_majorant_file_present = (ROOT / ORDER16_FACTOR_MAJORANT_FILE).exists()
+    order16_source_eq_active_actual_present = (
+        line_of_symbol(
+            ROOT / ORDER16_FACTOR_MAJORANT_FILE,
+            f"theorem {ORDER16_SOURCE_EQ_ACTIVE_ACTUAL}",
+        )
+        is not None
+    )
+    order16_structural_reduction_present = (
+        order16_factor_majorant_file_present
+        and order16_source_eq_active_actual_present
+    )
+    order16_factor_derivative_receiver_file_present = (
+        ROOT / ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE
+    ).exists()
+    order16_component_product_majorant_present = (
+        line_of_symbol(
+            ROOT / ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+            f"def {ORDER16_COMPONENT_PRODUCT_MAJORANT}",
+        )
+        is not None
+    )
+    order16_component_product_abs_receiver_present = (
+        line_of_symbol(
+            ROOT / ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+            f"theorem {ORDER16_COMPONENT_PRODUCT_ABS_RECEIVER}",
+        )
+        is not None
+    )
+    order16_source_abs_receiver_present = (
+        line_of_symbol(
+            ROOT / ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+            f"theorem {ORDER16_SOURCE_ABS_RECEIVER}",
+        )
+        is not None
+    )
+    order16_source_interval_receiver_present = (
+        line_of_symbol(
+            ROOT / ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+            f"theorem {ORDER16_SOURCE_INTERVAL_RECEIVER}",
+        )
+        is not None
+    )
+    order16_factor_derivative_receiver_present = (
+        order16_factor_derivative_receiver_file_present
+        and order16_component_product_majorant_present
+        and order16_component_product_abs_receiver_present
+        and order16_source_abs_receiver_present
+        and order16_source_interval_receiver_present
+    )
+    order16_centered_taylor_factor_majorant_bridge_present = (
+        line_of_symbol(
+            ROOT / ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE,
+            f"theorem {ORDER16_SOURCE_INTERVAL_CENTERED_TAYLOR_RECEIVER}",
+        )
+        is not None
+    )
+    order16_budget_payload_file_present = (ROOT / ORDER16_BUDGET_PAYLOAD_FILE).exists()
+    order16_active_scale_abs_present = (
+        line_of_symbol(
+            ROOT / ORDER16_BUDGET_PAYLOAD_FILE,
+            f"theorem {ORDER16_ACTIVE_SCALE_ABS}",
+        )
+        is not None
+    )
+    order16_budget_le_declared_abs_present = (
+        line_of_symbol(
+            ROOT / ORDER16_BUDGET_PAYLOAD_FILE,
+            f"theorem {ORDER16_BUDGET_LE_DECLARED_ABS}",
+        )
+        is not None
+    )
+    order16_remainder_width_fail_rat_present = (
+        line_of_symbol(
+            ROOT / ORDER16_BUDGET_PAYLOAD_FILE,
+            f"theorem {ORDER16_REMAINDER_WIDTH_FAIL_RAT}",
+        )
+        is not None
+    )
+    order16_remainder_width_fail_present = (
+        line_of_symbol(
+            ROOT / ORDER16_BUDGET_PAYLOAD_FILE,
+            f"theorem {ORDER16_REMAINDER_WIDTH_FAIL}",
+        )
+        is not None
+    )
+    order16_centered_taylor_factor_route_budget_killed = (
+        order16_centered_taylor_factor_majorant_bridge_present
+        and order16_budget_payload_file_present
+        and order16_active_scale_abs_present
+        and order16_remainder_width_fail_present
+    )
 
     return {
         "schema": SCHEMA,
@@ -470,6 +888,15 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             FIRST_FAILURE,
             "STEP33_A1_SUB0_COMBINED_CANCELLATION_HIGH_ORDER_TAYLOR_RECEIVER_GAP",
             NEXT_PAYLOAD_FAILURE,
+            ACTIVE_ACTUAL_SINGLEABS_TO_SIGNED_FAILURE,
+            ACTIVE_ACTUAL_SIGNED_FACTOR_ROWS_FAILURE,
+            ACTIVE_ACTUAL_FACTOR_INTERVAL_RECEIVER_FAILURE,
+            ACTIVE_ACTUAL_PRODUCT_ROWS_FAILURE,
+            CENTERJET_ABS_PAYLOAD_FAILURE,
+            FACTOR_DERIVATIVE_BOUNDS_FAILURE,
+            FACTOR_DERIVATIVE_BUDGET_FAILURE,
+            FACTOR_DERIVATIVE_BUDGET_FAILURE_ALIAS,
+            ORDER16_SOURCE_INTERVAL_PAYLOAD_FAILURE,
             SOURCE_MODEL_FAILURE,
             CENTER_JET_SOURCE_MODEL_FAILURE,
             ORDER16_SOURCE_MODEL_FAILURE,
@@ -488,7 +915,7 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "conditionalPayloadIsUnconditionalProof": False,
             "highOrderSourceFilePresent": (ROOT / HIGH_ORDER_SOURCE_FILE).exists(),
             "highOrderValidPayloadPresent": False,
-            "highOrderCenterJetRowsPresent": False,
+            "highOrderCenterJetRowsPresent": centerjet_abs_payload_present,
             "highOrderOrder16RowsPresent": False,
             "highOrderHornerRangeRowsPresent": False,
             "highOrderTargetBudgetRowsPresent": False,
@@ -541,6 +968,122 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             ),
             "sourceNormalFormActiveActualInterfacePresent": (
                 source_normal_form_active_actual_interface_present
+            ),
+            "activeActualCenterJetRowsFilePresent": (
+                ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE
+            ).exists(),
+            "activeActualSingleAbsToSignedCenterJetCrosswalkPresent": (
+                active_actual_singleabs_to_signed_present
+            ),
+            "activeActualShapeSqDerivSingleAbsSignedRowsPresent": (
+                active_actual_shapesqderiv_singleabs_signed_present
+            ),
+            "activeActualShapeSqDerivRows01234567891011SignedPresent": (
+                active_actual_shapesqderiv_rows_signed_present
+            ),
+            "activeActualOmegaPrimeSignedRowsPresent": (
+                active_actual_omegaprime_signed_present
+            ),
+            "activeActualOmegaSignedRowsPresent": (
+                active_actual_omega_signed_present
+            ),
+            "activeActualShapeSqSignedRowsPresent": (
+                active_actual_shapesq_signed_present
+            ),
+            "activeActualAllFactorSignedRowsPresent": (
+                active_actual_all_factor_signed_rows_present
+            ),
+            "activeActualFactorIntervalReceiverPresent": (
+                active_actual_factor_interval_receiver_present
+            ),
+            "activeActualSumIntervalReceiverPresent": (
+                active_actual_sum_interval_present
+            ),
+            "activeActualCauchyIntervalReceiverPresent": (
+                active_actual_cauchy_interval_present
+            ),
+            "activeActualComponentProductCauchyIntervalReceiverPresent": (
+                active_actual_component_product_cauchy_interval_present
+            ),
+            "activeActualScaleNonnegPresent": active_actual_scale_nonneg_present,
+            "activeActualRowIntervalReceiverPresent": (
+                active_actual_row_interval_present
+            ),
+            "activeActualComponentProductAbsPresent": (
+                active_actual_component_product_abs_present
+            ),
+            "activeActualComponentProductAbsIntervalPresent": (
+                active_actual_component_product_abs_interval_present
+            ),
+            "activeActualComponentProductAbsNonnegPresent": (
+                active_actual_component_product_abs_nonneg_present
+            ),
+            "activeActualCenterRowLowerPresent": (
+                active_actual_center_row_lower_present
+            ),
+            "activeActualCenterRowUpperPresent": (
+                active_actual_center_row_upper_present
+            ),
+            "activeActualCenterRowIntervalFromFactorRowsPresent": (
+                active_actual_center_row_interval_from_factor_rows_present
+            ),
+            "activeActualProductRowIntervalsPresent": (
+                active_actual_product_row_intervals_present
+            ),
+            "centerJetPayloadFilePresent": centerjet_payload_file_present,
+            "centerJetCoeffPresent": centerjet_coeff_present,
+            "centerJetCoeffErrorAbsPresent": centerjet_coeff_error_abs_present,
+            "centerJetCoeffErrorAbsNonnegPresent": (
+                centerjet_coeff_error_abs_nonneg_present
+            ),
+            "centerJetComponentSourceAbsGeneratedPresent": (
+                centerjet_component_source_abs_present
+            ),
+            "centerJetAbsGeneratedPresent": centerjet_abs_generated_present,
+            "centerJetAbsPayloadPresent": centerjet_abs_payload_present,
+            "order16FactorMajorantFilePresent": (
+                order16_factor_majorant_file_present
+            ),
+            "order16SourceEqActiveActualPresent": (
+                order16_source_eq_active_actual_present
+            ),
+            "order16StructuralReductionPresent": (
+                order16_structural_reduction_present
+            ),
+            "order16FactorDerivativeReceiverFilePresent": (
+                order16_factor_derivative_receiver_file_present
+            ),
+            "order16ComponentProductMajorantPresent": (
+                order16_component_product_majorant_present
+            ),
+            "order16ComponentProductAbsReceiverPresent": (
+                order16_component_product_abs_receiver_present
+            ),
+            "order16SourceAbsReceiverPresent": (
+                order16_source_abs_receiver_present
+            ),
+            "order16SourceIntervalReceiverPresent": (
+                order16_source_interval_receiver_present
+            ),
+            "order16FactorDerivativeReceiverPresent": (
+                order16_factor_derivative_receiver_present
+            ),
+            "order16CenteredTaylorFactorMajorantBridgePresent": (
+                order16_centered_taylor_factor_majorant_bridge_present
+            ),
+            "order16BudgetPayloadFilePresent": order16_budget_payload_file_present,
+            "order16ActiveScaleAbsPresent": order16_active_scale_abs_present,
+            "order16BudgetLeDeclaredAbsPresent": (
+                order16_budget_le_declared_abs_present
+            ),
+            "order16RemainderWidthFailRatPresent": (
+                order16_remainder_width_fail_rat_present
+            ),
+            "order16RemainderWidthFailPresent": (
+                order16_remainder_width_fail_present
+            ),
+            "order16CenteredTaylorFactorRouteBudgetKilled": (
+                order16_centered_taylor_factor_route_budget_killed
             ),
             "sourceIntervalCertPayloadPresent": False,
             "omegaPrimePayloadReusableForWholeExpression": False,
@@ -605,6 +1148,61 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "sourceNormalFormActiveActualSourceIntervalValid": (
                 SOURCE_NORMAL_FORM_ACTIVE_ACTUAL_SOURCE_INTERVAL_VALID
             ),
+            "activeActualCenterJetRowsFile": ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+            "activeActualCenterJetIntervalOfAbs": (
+                ACTIVE_ACTUAL_CENTERJET_INTERVAL_OF_ABS
+            ),
+            "activeActualShapeSqDerivSingleAbsSigned": (
+                ACTIVE_ACTUAL_SHAPESQDERIV_SINGLEABS_SIGNED
+            ),
+            "activeActualShapeSqDerivRows01234567891011Signed": (
+                ACTIVE_ACTUAL_SHAPESQDERIV_ROWS_SIGNED
+            ),
+            "activeActualOmegaPrimeSignedRows": ACTIVE_ACTUAL_OMEGAPRIME_SIGNED,
+            "activeActualOmegaSignedRows": ACTIVE_ACTUAL_OMEGA_SIGNED,
+            "activeActualShapeSqSignedRows": ACTIVE_ACTUAL_SHAPESQ_SIGNED,
+            "activeActualSumIntervalReceiver": ACTIVE_ACTUAL_SUM_INTERVAL,
+            "activeActualCauchyIntervalReceiver": ACTIVE_ACTUAL_CAUCHY_INTERVAL,
+            "activeActualComponentProductCauchyIntervalReceiver": (
+                ACTIVE_ACTUAL_COMPONENT_PRODUCT_CAUCHY_INTERVAL
+            ),
+            "activeActualScaleNonneg": ACTIVE_ACTUAL_SCALE_NONNEG,
+            "activeActualRowIntervalReceiver": ACTIVE_ACTUAL_ROW_INTERVAL,
+            "activeActualComponentProductAbs": ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS,
+            "activeActualComponentProductAbsInterval": (
+                ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_INTERVAL
+            ),
+            "activeActualComponentProductAbsNonneg": (
+                ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_NONNEG
+            ),
+            "activeActualCenterRowLower": ACTIVE_ACTUAL_CENTER_ROW_LOWER,
+            "activeActualCenterRowUpper": ACTIVE_ACTUAL_CENTER_ROW_UPPER,
+            "activeActualCenterRowIntervalFromFactorRows": (
+                ACTIVE_ACTUAL_CENTER_ROW_INTERVAL_FROM_FACTOR_ROWS
+            ),
+            "centerJetPayloadFile": CENTERJET_PAYLOAD_FILE,
+            "centerJetCoeff": CENTERJET_COEFF,
+            "centerJetCoeffErrorAbs": CENTERJET_COEFF_ERROR_ABS,
+            "centerJetCoeffErrorAbsNonneg": CENTERJET_COEFF_ERROR_ABS_NONNEG,
+            "centerJetComponentSourceAbsGenerated": (
+                CENTERJET_COMPONENT_SOURCE_ABS_GENERATED
+            ),
+            "centerJetAbsGenerated": CENTERJET_ABS_GENERATED,
+            "order16FactorMajorantFile": ORDER16_FACTOR_MAJORANT_FILE,
+            "order16SourceEqActiveActual": ORDER16_SOURCE_EQ_ACTIVE_ACTUAL,
+            "order16FactorDerivativeReceiverFile": (
+                ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE
+            ),
+            "order16FactorDerivativeMajorantBridgeFile": (
+                ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE
+            ),
+            "order16BudgetPayloadFile": ORDER16_BUDGET_PAYLOAD_FILE,
+            "order16ComponentProductMajorant": ORDER16_COMPONENT_PRODUCT_MAJORANT,
+            "order16ComponentProductAbsReceiver": (
+                ORDER16_COMPONENT_PRODUCT_ABS_RECEIVER
+            ),
+            "order16SourceAbsReceiver": ORDER16_SOURCE_ABS_RECEIVER,
+            "order16SourceIntervalReceiver": ORDER16_SOURCE_INTERVAL_RECEIVER,
             "certStructure": "Step33Sub0CombinedCancellationIntervalCert",
             "certValidPredicate": "Step33Sub0CombinedCancellationIntervalCert.Valid",
             "certToHCombined": "Step33Sub0CombinedCancellationIntervalCert.Valid.to_hCombined",
@@ -868,6 +1466,227 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     )
                 ),
             },
+            "activeActualFactorRowsBridge": {
+                "file": ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                "intervalOfAbs": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_CENTERJET_INTERVAL_OF_ABS,
+                    f"theorem {ACTIVE_ACTUAL_CENTERJET_INTERVAL_OF_ABS}",
+                ),
+                "shapeSqDerivSingleAbsSigned": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_SHAPESQDERIV_SINGLEABS_SIGNED,
+                    f"theorem {ACTIVE_ACTUAL_SHAPESQDERIV_SINGLEABS_SIGNED}",
+                ),
+                "shapeSqDerivRows01234567891011Signed": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_SHAPESQDERIV_ROWS_SIGNED,
+                    f"theorem {ACTIVE_ACTUAL_SHAPESQDERIV_ROWS_SIGNED}",
+                ),
+                "omegaPrimeSignedRows": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_OMEGAPRIME_SIGNED,
+                    f"theorem {ACTIVE_ACTUAL_OMEGAPRIME_SIGNED}",
+                ),
+                "omegaSignedRows": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_OMEGA_SIGNED,
+                    f"theorem {ACTIVE_ACTUAL_OMEGA_SIGNED}",
+                ),
+                "shapeSqSignedRows": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_SHAPESQ_SIGNED,
+                    f"theorem {ACTIVE_ACTUAL_SHAPESQ_SIGNED}",
+                ),
+                "sumIntervalReceiver": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_SUM_INTERVAL,
+                    f"theorem {ACTIVE_ACTUAL_SUM_INTERVAL}",
+                ),
+                "cauchyIntervalReceiver": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_CAUCHY_INTERVAL,
+                    f"theorem {ACTIVE_ACTUAL_CAUCHY_INTERVAL}",
+                ),
+                "componentProductCauchyIntervalReceiver": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_COMPONENT_PRODUCT_CAUCHY_INTERVAL,
+                    f"theorem {ACTIVE_ACTUAL_COMPONENT_PRODUCT_CAUCHY_INTERVAL}",
+                ),
+                "activeScaleNonneg": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_SCALE_NONNEG,
+                    f"theorem {ACTIVE_ACTUAL_SCALE_NONNEG}",
+                ),
+                "activeActualRowIntervalReceiver": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_ROW_INTERVAL,
+                    f"theorem {ACTIVE_ACTUAL_ROW_INTERVAL}",
+                ),
+                "componentProductAbs": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS,
+                    f"def {ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS}",
+                ),
+                "componentProductAbsInterval": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_INTERVAL,
+                    f"theorem {ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_INTERVAL}",
+                ),
+                "componentProductAbsNonneg": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_NONNEG,
+                    f"theorem {ACTIVE_ACTUAL_COMPONENT_PRODUCT_ABS_NONNEG}",
+                ),
+                "activeActualCenterRowLower": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_CENTER_ROW_LOWER,
+                    f"def {ACTIVE_ACTUAL_CENTER_ROW_LOWER}",
+                ),
+                "activeActualCenterRowUpper": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_CENTER_ROW_UPPER,
+                    f"def {ACTIVE_ACTUAL_CENTER_ROW_UPPER}",
+                ),
+                "activeActualCenterRowIntervalFromFactorRows": symbol_ref_lookup(
+                    ACTIVE_ACTUAL_CENTERJET_ROWS_FILE,
+                    ACTIVE_ACTUAL_CENTER_ROW_INTERVAL_FROM_FACTOR_ROWS,
+                    f"theorem {ACTIVE_ACTUAL_CENTER_ROW_INTERVAL_FROM_FACTOR_ROWS}",
+                ),
+                "singleAbsToSignedPresent": active_actual_singleabs_to_signed_present,
+                "omegaPrimeSignedRowsPresent": active_actual_omegaprime_signed_present,
+                "omegaSignedRowsPresent": active_actual_omega_signed_present,
+                "shapeSqSignedRowsPresent": active_actual_shapesq_signed_present,
+                "allFactorSignedRowsPresent": (
+                    active_actual_all_factor_signed_rows_present
+                ),
+                "factorIntervalReceiverPresent": (
+                    active_actual_factor_interval_receiver_present
+                ),
+                "componentProductAbsPresent": (
+                    active_actual_component_product_abs_present
+                ),
+                "componentProductAbsIntervalPresent": (
+                    active_actual_component_product_abs_interval_present
+                ),
+                "componentProductAbsNonnegPresent": (
+                    active_actual_component_product_abs_nonneg_present
+                ),
+                "activeActualCenterRowLowerPresent": (
+                    active_actual_center_row_lower_present
+                ),
+                "activeActualCenterRowUpperPresent": (
+                    active_actual_center_row_upper_present
+                ),
+                "activeActualCenterRowIntervalFromFactorRowsPresent": (
+                    active_actual_center_row_interval_from_factor_rows_present
+                ),
+                "activeActualProductRowIntervalsPresent": (
+                    active_actual_product_row_intervals_present
+                ),
+                "closedFailure": (
+                    ACTIVE_ACTUAL_SINGLEABS_TO_SIGNED_FAILURE
+                    if active_actual_singleabs_to_signed_present
+                    else None
+                ),
+                "closedFactorRowsFailure": (
+                    ACTIVE_ACTUAL_SIGNED_FACTOR_ROWS_FAILURE
+                    if active_actual_all_factor_signed_rows_present
+                    else None
+                ),
+                "closedReceiverFailure": (
+                    ACTIVE_ACTUAL_FACTOR_INTERVAL_RECEIVER_FAILURE
+                    if active_actual_factor_interval_receiver_present
+                    else None
+                ),
+                "closedProductRowsFailure": (
+                    ACTIVE_ACTUAL_PRODUCT_ROWS_FAILURE
+                    if active_actual_product_row_intervals_present
+                    else None
+                ),
+                "status": (
+                    "checked_factor_signed_rows_active_actual_product_rows_and_receiver"
+                    if (
+                        active_actual_all_factor_signed_rows_present
+                        and active_actual_product_row_intervals_present
+                        and active_actual_factor_interval_receiver_present
+                    )
+                    else "checked_factor_signed_rows_and_active_actual_row_receiver"
+                    if (
+                        active_actual_all_factor_signed_rows_present
+                        and active_actual_factor_interval_receiver_present
+                    )
+                    else "checked_factor_interval_to_active_actual_row_receiver"
+                    if active_actual_factor_interval_receiver_present
+                    else "checked_factor_signed_rows"
+                    if active_actual_all_factor_signed_rows_present
+                    else "checked_shapesqderiv_singleabs_to_signed_rows"
+                    if active_actual_singleabs_to_signed_present
+                    else "missing_or_incomplete"
+                ),
+                "whyNotEnough": (
+                    "Lean now has proof-grade signed center-jet intervals for "
+                    "OmegaPrimeActual, OmegaActual, ShapeSqActual, and "
+                    "ShapeSqDerivActual, a receiver from termwise "
+                    "factor-product intervals through Cauchy convolution, "
+                    "activeScale, and ResidualDerivmodelCoeff subtraction to "
+                    "the active-actual row premise, and concrete rational "
+                    "active-actual center-row lower/upper definitions with a "
+                    "checked row interval proof. This still does not "
+                    "instantiate SourceIntervalCert.Valid: highOrderData, "
+                    "coeffErrorBudget/remainderBudget, order16 source "
+                    "interval, Horner range, and target-budget rows are still "
+                    "missing."
+                ),
+                "nextFailure": NEXT_PAYLOAD_FAILURE,
+            },
+            "centerJetPayload": {
+                "file": CENTERJET_PAYLOAD_FILE,
+                "coeff": symbol_ref_lookup(
+                    CENTERJET_PAYLOAD_FILE,
+                    CENTERJET_COEFF,
+                    f"def {CENTERJET_COEFF}",
+                ),
+                "coeffErrorAbs": symbol_ref_lookup(
+                    CENTERJET_PAYLOAD_FILE,
+                    CENTERJET_COEFF_ERROR_ABS,
+                    f"def {CENTERJET_COEFF_ERROR_ABS}",
+                ),
+                "coeffErrorAbsNonneg": symbol_ref_lookup(
+                    CENTERJET_PAYLOAD_FILE,
+                    CENTERJET_COEFF_ERROR_ABS_NONNEG,
+                    f"theorem {CENTERJET_COEFF_ERROR_ABS_NONNEG}",
+                ),
+                "componentSourceAbsGenerated": symbol_ref_lookup(
+                    CENTERJET_PAYLOAD_FILE,
+                    CENTERJET_COMPONENT_SOURCE_ABS_GENERATED,
+                    f"theorem {CENTERJET_COMPONENT_SOURCE_ABS_GENERATED}",
+                ),
+                "centerJetAbsGenerated": symbol_ref_lookup(
+                    CENTERJET_PAYLOAD_FILE,
+                    CENTERJET_ABS_GENERATED,
+                    f"theorem {CENTERJET_ABS_GENERATED}",
+                ),
+                "payloadPresent": centerjet_abs_payload_present,
+                "closedFailure": (
+                    CENTERJET_ABS_PAYLOAD_FAILURE
+                    if centerjet_abs_payload_present
+                    else None
+                ),
+                "status": (
+                    "checked_signed_rows_to_midpoint_error_centerjet_abs_payload"
+                    if centerjet_abs_payload_present
+                    else "missing_or_incomplete"
+                ),
+                "whyNotEnough": (
+                    "This provides coeff and coeffErrorAbs from the active-actual "
+                    "lower/upper rows and proves the high-order center-jet abs "
+                    "rows for the whole combined expression. It still does not "
+                    "provide the order16 source interval, Horner rows, "
+                    "target-budget rows, or SourceIntervalCert.Valid."
+                ),
+                "nextFailure": ORDER16_SOURCE_INTERVAL_PAYLOAD_FAILURE,
+            },
             "checkedBridge": {
                 "file": SOURCE_MODEL_BRIDGE_FILE,
                 "smoothTheorem": symbol_ref(
@@ -885,6 +1704,52 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "order16BoundAdapter": symbol_ref(
                     SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_ORDER16_BOUND_THEOREM
                 ),
+                "order16StructuralReduction": symbol_ref(
+                    ORDER16_FACTOR_MAJORANT_FILE, ORDER16_SOURCE_EQ_ACTIVE_ACTUAL
+                ),
+                "order16FactorDerivativeReceiverFile": (
+                    ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE
+                ),
+                "order16FactorDerivativeMajorantBridgeFile": (
+                    ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE
+                ),
+                "order16BudgetPayloadFile": ORDER16_BUDGET_PAYLOAD_FILE,
+                "order16ComponentProductMajorant": symbol_ref(
+                    ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+                    ORDER16_COMPONENT_PRODUCT_MAJORANT,
+                ),
+                "order16ComponentProductAbsReceiver": symbol_ref(
+                    ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+                    ORDER16_COMPONENT_PRODUCT_ABS_RECEIVER,
+                ),
+                "order16SourceAbsReceiver": symbol_ref(
+                    ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+                    ORDER16_SOURCE_ABS_RECEIVER,
+                ),
+                "order16SourceIntervalReceiver": symbol_ref(
+                    ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE,
+                    ORDER16_SOURCE_INTERVAL_RECEIVER,
+                ),
+                "order16CenteredTaylorFactorMajorantsReceiver": symbol_ref(
+                    ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE,
+                    ORDER16_SOURCE_INTERVAL_CENTERED_TAYLOR_RECEIVER,
+                ),
+                "order16ActiveScaleAbs": symbol_ref(
+                    ORDER16_BUDGET_PAYLOAD_FILE,
+                    ORDER16_ACTIVE_SCALE_ABS,
+                ),
+                "order16BudgetLeDeclaredAbs": symbol_ref(
+                    ORDER16_BUDGET_PAYLOAD_FILE,
+                    ORDER16_BUDGET_LE_DECLARED_ABS,
+                ),
+                "order16RemainderWidthFailRat": symbol_ref(
+                    ORDER16_BUDGET_PAYLOAD_FILE,
+                    ORDER16_REMAINDER_WIDTH_FAIL_RAT,
+                ),
+                "order16RemainderWidthFail": symbol_ref(
+                    ORDER16_BUDGET_PAYLOAD_FILE,
+                    ORDER16_REMAINDER_WIDTH_FAIL,
+                ),
                 "centerJetBoundsAdapter": symbol_ref(
                     SOURCE_MODEL_BRIDGE_FILE, SOURCE_MODEL_CENTER_JET_BOUNDS_THEOREM
                 ),
@@ -898,9 +1763,32 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "smoothPresent": source_model_smooth_present,
                 "centerJetPresent": source_model_center_jet_present,
                 "order16Present": source_model_order16_present,
+                "order16StructuralReductionPresent": (
+                    order16_structural_reduction_present
+                ),
+                "order16FactorDerivativeReceiverPresent": (
+                    order16_factor_derivative_receiver_present
+                ),
+                "order16CenteredTaylorFactorMajorantBridgePresent": (
+                    order16_centered_taylor_factor_majorant_bridge_present
+                ),
+                "order16CenteredTaylorFactorRouteBudgetKilled": (
+                    order16_centered_taylor_factor_route_budget_killed
+                ),
+                "order16CenteredTaylorFactorBudgetFailure": (
+                    FACTOR_DERIVATIVE_BUDGET_FAILURE
+                    if order16_centered_taylor_factor_route_budget_killed
+                    else None
+                ),
                 "sourceBoundsConstructorPresent": source_bounds_constructor_present,
                 "sourceIntervalConstructorPresent": source_interval_constructor_present,
                 "status": (
+                    "checked_centered_taylor_factor_route_budget_killed"
+                    if order16_centered_taylor_factor_route_budget_killed
+                    else
+                    "checked_order16_factor_derivative_receiver_payload_missing"
+                    if order16_factor_derivative_receiver_present
+                    else
                     "checked_source_interval_rows_to_valid_constructor"
                     if source_interval_constructor_present
                     else
@@ -918,10 +1806,24 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                     "order-16 source-model/norm adapter, plus the constructor "
                     "from source-bounds to HighOrderTaylorCert.Valid and the "
                     "interval-row constructor for component-source rows. The "
-                    "nonconditional source normal form is also checked. It "
-                    "still does not emit rational coeff rows, a proof-grade "
-                    "order16Abs source bound, Horner range rows, target-budget "
-                    "rows, or a concrete Valid payload."
+                    "nonconditional source normal form is also checked, and "
+                    "the order-16 component source structurally reduces to "
+                    "activeScale times the actual component-product order-16 "
+                    "derivative. A separate checked receiver now shows that "
+                    "proof-grade factor derivative bounds through order 16 "
+                    "would feed a signed order16 source interval. It still "
+                    "does not emit rational coeff rows, concrete factor "
+                    "derivative bounds, a proof-grade order16Abs source bound, "
+                    "Horner range rows, target-budget rows, or a concrete "
+                    "Valid payload."
+                ),
+                "budgetKillMeaning": (
+                    "The centered-Taylor factor-majorant bridge now supplies the "
+                    "four uniform factor-derivative families and an adapter to "
+                    "a signed order16 source interval, but the existing exact "
+                    "budget audit proves this route is too wide for the current "
+                    "combined-cancellation half-width. It is therefore a checked "
+                    "kill certificate/pattern, not the current closure route."
                 ),
             },
             "targetFunction": {
@@ -1016,17 +1918,37 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                         "component remainder/source-model closure open."
                     ),
                 },
+                "centeredTaylorFactorDerivativeRoute": {
+                    "bridgeFile": ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE,
+                    "budgetFile": ORDER16_BUDGET_PAYLOAD_FILE,
+                    "status": (
+                        "checked_but_budget_killed"
+                        if order16_centered_taylor_factor_route_budget_killed
+                        else "missing_or_incomplete"
+                    ),
+                    "failureCode": (
+                        FACTOR_DERIVATIVE_BUDGET_FAILURE
+                        if order16_centered_taylor_factor_route_budget_killed
+                        else FACTOR_DERIVATIVE_BOUNDS_FAILURE
+                    ),
+                    "whyNotEnough": (
+                        "It proves a useful receiver/pattern for future sharper "
+                        "factor rows, but current centered-Taylor majorants do "
+                        "not fit the active budget. The live proof object remains "
+                        "a whole-expression interval certificate for "
+                        "ComponentSource - NonzeroModelPoly."
+                    ),
+                },
             },
             "requiredBridgeShape": [
                 (
-                    "component-source lower/upper row intervals may be used via "
-                    "the checked interval-row constructor, but the concrete rows "
-                    "are still missing"
+                    "active-actual lower/upper center-row intervals are now "
+                    "available from the signed factor rows and checked "
+                    "factor-product receiver"
                 ),
                 (
-                    "prove active-actual lower/upper row intervals and feed "
-                    "them through the checked active-actual SourceIntervalCert.Valid "
-                    "constructor"
+                    "midpoint/error center-jet abs rows are now available for "
+                    "the whole combined expression"
                 ),
                 (
                     "forall j : Fin 16, norm(iteratedDeriv j "
@@ -1045,8 +1967,10 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
                 "target lower/upper budget after subtracting/adding remainderAbs",
             ],
             "nextPatchRecommendation": (
-                "Generate/prove concrete SourceIntervalCert.Valid rows through "
-                "the checked active-actual SourceIntervalCert.Valid constructor."
+                "Build the order16 source interval payload in the same source "
+                "normalization. Do not instantiate SourceIntervalCert.Valid "
+                "until order16 source interval, Horner range, and target-budget "
+                "rows are all proof-grade."
             ),
         },
         "candidateSegmentSource": {
@@ -1084,6 +2008,14 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "Component-source lower/upper interval rows can feed HighOrderTaylorCert.Valid through a Lean-checked constructor.",
             "Source-interval certificate target routes component-source lower/upper rows to HighOrderTaylorCert.Valid and final combined interval receivers.",
             "Nonconditional source-normal-form support is Lean-checked: cancellationResidualCauchy = actualCauchy - nominalCauchy, the residual Taylor center-jet alignment bridge is checked, and the active-actual center-jet normal form no longer has a residual-jet hypothesis.",
+            "ShapeSqDeriv singleAbs/partial-sharp Valid rows can now be transported to signed center-jet intervals for the ShapeSqDerivActual factor.",
+            "OmegaPrimeActual, OmegaActual, ShapeSqActual, and ShapeSqDerivActual now have Lean-checked signed center-jet interval row sources.",
+            "A Lean-checked receiver now transports termwise factor-product intervals through Cauchy convolution, activeScale, and ResidualDerivmodelCoeff subtraction to active-actual center-row intervals.",
+            "Concrete rational active-actual center-row lower/upper definitions and row interval proof are Lean-checked from the signed factor rows and scale upper bound.",
+            "The signed active-actual lower/upper rows now feed midpoint/error coeff rows and a Lean-checked center-jet abs theorem for the whole combined expression.",
+            "Order-16 component-source algebra now Lean-reduces to activeScale times the actual component-product order-16 derivative.",
+            "A Lean-checked order16 factor-derivative receiver now reduces the source interval row to concrete factor derivative bounds for OmegaPrimeActual, OmegaActual, ShapeSqActual, and ShapeSqDerivActual through order 16 plus a scalar active-scale budget comparison.",
+            "The centered-Taylor factor-majorant adapter for those four factor families is now locally present, but the exact rational budget audit is killed by the checked order16 remainder-width failure.",
         ],
         "rejectedRoutes": {
             "independentTriangleSplit": (
@@ -1092,27 +2024,49 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             "rowsProductBudgetRefinement": (
                 "not a closure path while it preserves the independent product-budget style"
             ),
+            "centeredTaylorFactorDerivativeRoute": (
+                "checked adapter/pattern but budget-killed at current constants; use "
+                f"{FACTOR_DERIVATIVE_BUDGET_FAILURE}"
+            ),
             "sampledSegmentPayload": "diagnostic only, not proof evidence",
         },
         "nextImplementablePatch": {
             "recommendation": (
-                "build proof-grade source interval rows/payload for the "
-                "nonconditional active-actual source normal form"
+                "build the proof-grade whole-expression interval certificate "
+                "for ComponentSource - NonzeroModelPoly in the active "
+                "nonzero-model scaled-remainder normalization; the current "
+                "centered-Taylor factor-derivative route is checked as a pattern "
+                "but budget-killed"
             ),
-            "firstFailureIfMissing": NEXT_PAYLOAD_FAILURE,
+            "firstFailureIfMissing": (
+                "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP"
+            ),
             "leanPayloadTarget": (
-                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean"
+                "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectPayload.lean"
             ),
             "checkerTheorem": (
-                HIGH_ORDER_TO_HCOMBINED
+                "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_nonzeroModel_interval_generated"
             ),
-            "remainingGap": NEXT_PAYLOAD_FAILURE,
+            "remainingGap": (
+                "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP"
+            ),
+            "nextRouteLevelGapAfterSuccess": (
+                "STEP33_A1_SUB0_COMBINED_ORDER16_BIASED_RESIDUAL_HORNER_REMAINDER_ROWS_GAP"
+            ),
+            "killedAlternative": FACTOR_DERIVATIVE_BUDGET_FAILURE,
             "doNot": [
                 "do not build C1 point-separation first",
                 "do not use sampled/probe rows",
                 "do not revive component triangle/product split",
                 "do not reuse OmegaPrime payload as a certificate for the whole expression",
                 "do not mark Valid/finalBudgetPassed before Lean-checked rows",
+                "do not call coarse singleAbs rows tight; they are only proof-grade intervals",
+                "do not treat active-actual product row intervals as a SourceIntervalCert.Valid payload",
+                "do not treat center-jet abs rows as a SourceIntervalCert.Valid payload",
+                "do not treat the order16 structural reduction as a numeric bound",
+                "do not treat the factor-derivative receiver as a concrete closure payload",
+                "do not spend the centered-Taylor factor-majorant route at current constants; it is budget-killed",
+                "do not mark Valid/finalBudgetPassed before order16, Horner, and target-budget rows are checked",
             ],
         },
         "sourceDefinitionHashes": {
@@ -1123,6 +2077,18 @@ def build_report(segmented_path: Path) -> dict[str, Any]:
             SOURCE_MODEL_BRIDGE_FILE: file_hash(ROOT / SOURCE_MODEL_BRIDGE_FILE),
             SOURCE_INTERVAL_CERT_FILE: file_hash(ROOT / SOURCE_INTERVAL_CERT_FILE),
             SOURCE_NORMAL_FORM_FILE: file_hash(ROOT / SOURCE_NORMAL_FORM_FILE),
+            ORDER16_FACTOR_MAJORANT_FILE: file_hash(ROOT / ORDER16_FACTOR_MAJORANT_FILE),
+            ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE: file_hash(
+                ROOT / ORDER16_FACTOR_DERIVATIVE_RECEIVER_FILE
+            ),
+            ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE: file_hash(
+                ROOT / ORDER16_FACTOR_DERIVATIVE_MAJORANT_BRIDGE_FILE
+            ),
+            ORDER16_BUDGET_PAYLOAD_FILE: file_hash(ROOT / ORDER16_BUDGET_PAYLOAD_FILE),
+            ACTIVE_ACTUAL_CENTERJET_ROWS_FILE: file_hash(
+                ROOT / ACTIVE_ACTUAL_CENTERJET_ROWS_FILE
+            ),
+            CENTERJET_PAYLOAD_FILE: file_hash(ROOT / CENTERJET_PAYLOAD_FILE),
             BOUND_INPUTS_FILE: file_hash(ROOT / BOUND_INPUTS_FILE),
             NORM_RECEIVER_FILE: file_hash(ROOT / NORM_RECEIVER_FILE),
             P45_BRIDGE_FILE: file_hash(ROOT / P45_BRIDGE_FILE),

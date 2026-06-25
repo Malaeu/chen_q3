@@ -1,0 +1,167 @@
+{
+  "candidateSourceSurfaces": {
+    "scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py": {
+      "exists": true,
+      "sha256": "01f0486d49e7a6f3e80e025a9c0d1dbab4bc460fe1e999b3dab54ea85dd63e34",
+      "symbols": {
+        "SHAPESQ_DERIV_TAYLOR_COARSE_CENTER": {
+          "line": 350,
+          "present": true
+        },
+        "SHAPESQ_DERIV_TAYLOR_COARSE_REMAINDER": {
+          "line": 351,
+          "present": true
+        },
+        "omegaTaylorCenterAnchorSource": {
+          "line": 2380,
+          "present": true
+        }
+      }
+    },
+    "scripts/generate_step33_a1_sub0_omega_prime_taylor_payload.py": {
+      "exists": true,
+      "sha256": "7fe0761bb92e82851651dafeb11aca77834c32f15cac2258b7599b7f2afb091c",
+      "symbols": {
+        "build_center_jet_prefix_tail_rows": {
+          "line": 408,
+          "present": true
+        },
+        "centerJetPrefixTailBridgeTheorem": {
+          "line": 939,
+          "present": true
+        },
+        "centerJetPrefixTailRowsProofGrade": {
+          "line": 955,
+          "present": true
+        }
+      }
+    },
+    "scripts/q3_psdpd_step33_a_refined_subchunk_endpoint_rational_lean.py": {
+      "exists": true,
+      "sha256": "e8af9db5f0a358975ace698edd2b045c8412b3611f66da483f1fd36871c432f2",
+      "symbols": {
+        "EndpointIntervalCert_of_shifted_digamma_series": {
+          "line": 592,
+          "present": true
+        },
+        "shifted_digamma_series_prefix_tail_interval": {
+          "line": 589,
+          "present": true
+        }
+      }
+    }
+  },
+  "coarseBudgetFail": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "coarseTwoSegmentBudgetFailPresent": true,
+  "coarseTwoSegmentBudgetFailTheorems": {
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_budget_fail_rat": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+      "line": 456,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_budget_not_spendable": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean",
+      "line": 464,
+      "present": true
+    }
+  },
+  "computerUseReview": [
+    {
+      "choice": "A",
+      "meaning": "first review: sharpen the same two-segment raw-D17 class using proof-grade local center-jet values",
+      "used": true
+    },
+    {
+      "choice": "A",
+      "meaning": "second review after sharp budget fail: stop this factorwise two-segment class and pivot to the direct whole-expression row-source route",
+      "used": true
+    }
+  ],
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "doNotClaim": [
+    "Step33A.1-A closure",
+    "all raw-D17 factor routes fail",
+    "full-cell absolute majorants are sharp local rows"
+  ],
+  "generatedAt": "2026-06-24T12:51:57.290878+00:00",
+  "nextImplementablePatch": "Pivot to the direct whole-expression row-source route and keep `CollapsedExpression` intact through interval widening.  Do not continue factorwise two-segment sharpening.",
+  "proofStatus": "fail_closed_sharp_two_segment_budget_constant_fail",
+  "requiredSharpTheorems": [
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 539,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet18_sharp_interval_generated",
+      "present": true,
+      "purpose": "proof-grade sharp lower/upper rows for normalized OmegaActual center jets through j < 18 at local centers 1/40 and 3/40",
+      "status": "present"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 563,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet18_sharp_interval_generated",
+      "present": true,
+      "purpose": "proof-grade sharp lower/upper rows for normalized ShapeSqActual center jets through j < 18 at local centers 1/40 and 3/40",
+      "status": "present"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 649,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_sharp_interval",
+      "present": true,
+      "purpose": "two-segment OmegaActual derivative rows derived from sharp local center jets and centeredTaylorDerivMajorant18",
+      "status": "present"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 707,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_sharp_interval",
+      "present": true,
+      "purpose": "two-segment ShapeSqActual derivative rows derived from sharp local center jets and centeredTaylorDerivMajorant18",
+      "status": "present"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 1048,
+      "name": "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_sharp_valid",
+      "present": true,
+      "purpose": "raw-D17 signed-factor segment/family receiver fed by sharp rows",
+      "status": "present"
+    }
+  ],
+  "route": "raw_d17_sharp_local_center_jets18",
+  "schema": "q3_psdpd_step33_a1_sub0_raw_d17_sharp_local_center_jets18.v1",
+  "sharpBudgetCheckGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CHECK_GAP",
+  "sharpBudgetFail": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL",
+  "sharpBudgetFailPresent": true,
+  "sharpBudgetFailTheorems": {
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_sharp_budget_fail_rat": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 1180,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_sharp_budget_not_spendable": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean",
+      "line": 1188,
+      "present": true
+    }
+  },
+  "sharpBudgetKillFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean",
+  "sharpBudgetKillFileExists": true,
+  "sharpBudgetKillPresent": true,
+  "sharpLocalCenterGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_LOCAL_CENTER_JET_ROWS_GAP",
+  "sharpRouteKillTheorems": {
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_twoSegment_budget_fail_rat": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean",
+      "line": 31,
+      "present": true
+    },
+    "primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_twoSegment_budget_not_spendable": {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean",
+      "line": 41,
+      "present": true
+    }
+  },
+  "sharpRowsPresent": true,
+  "targetLeanExists": true,
+  "targetLeanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean"
+}

@@ -196,6 +196,18 @@ ACTIVE_ACTUAL_HORNER_D16_CENTER_D17_SOURCE_GAP = (
 ACTIVE_ACTUAL_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP = (
     "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SMOKE_SEGMENT_PAYLOAD_GAP"
 )
+DIRECT_ROW_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_"
+    "DIRECT_ROW_SOURCE_GAP"
+)
+ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_FAIL = (
+    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_"
+    "DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD"
+)
+ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_"
+    "activeActual_degree0_directPayloadBudget_fail_rat"
+)
 
 
 def rel(path: Path) -> str:
@@ -269,6 +281,15 @@ def active_actual_center_jet_status() -> dict[str, Any]:
 
 
 def build_ledger() -> dict[str, Any]:
+    direct_payload_ledger = load_json(DIRECT_PAYLOAD_LEDGER)
+    direct_certificate_ledger = load_json(DIRECT_CERTIFICATE_LEDGER)
+    degree0_killed_for_direct = (
+        direct_payload_ledger.get("activeActualDegree0DirectBudgetKillTheorem")
+        == ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM
+        or direct_certificate_ledger.get("activeActualDegree0DirectBudgetKillTheorem")
+        == ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM
+    )
+
     segment_symbols = symbol_lines(
         ACTIVE_ACTUAL_HORNER_SEGMENT_FILE,
         ACTIVE_ACTUAL_HORNER_SEGMENT_SYMBOLS,
@@ -306,7 +327,9 @@ def build_ledger() -> dict[str, Any]:
         and source_bridge_ready
     )
 
-    if not segment_receiver_ready:
+    if degree0_killed_for_direct:
+        first_failure = ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_FAIL
+    elif not segment_receiver_ready:
         first_failure = ACTIVE_ACTUAL_HORNER_SEGMENT_RECEIVER_GAP
     elif not family_bridge_ready:
         first_failure = ACTIVE_ACTUAL_HORNER_FAMILY_ALIGNMENT_GAP
@@ -351,6 +374,9 @@ def build_ledger() -> dict[str, Any]:
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "route": "active_actual_order16_horner_row_source",
         "proofStatus": (
+            "superseded_by_direct_collapsed_expression_budget_kill"
+            if degree0_killed_for_direct
+            else
             "interface_ready_rows_missing"
             if interface_ready
             else "receiver_interface_incomplete"
@@ -368,6 +394,15 @@ def build_ledger() -> dict[str, Any]:
         "currentGap": first_failure,
         "firstFailureCode": first_failure,
         "firstConcreteSubgap": ACTIVE_ACTUAL_HORNER_D16_CENTER_D17_SOURCE_GAP,
+        "routeSupersededForDirectPayload": degree0_killed_for_direct,
+        "supersedingFailureCode": (
+            DIRECT_ROW_SOURCE_GAP if degree0_killed_for_direct else None
+        ),
+        "directBudgetKillTheorem": (
+            ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM
+            if degree0_killed_for_direct
+            else None
+        ),
         "outLeanWritten": False,
         "leanValidationStatus": validation_gates["leanValidationStatus"],
         "sourceFileDigests": {
@@ -556,6 +591,8 @@ def build_ledger() -> dict[str, Any]:
                     "currentGap",
                     "firstConcreteUpstreamFailureCode",
                     "firstFailureCode",
+                    "activeActualDegree0DirectBudgetKillTheorem",
+                    "activeActualDegree0DirectBudgetFailureCode",
                 ],
             ),
             "directCertificate": compact_ledger(
@@ -566,8 +603,27 @@ def build_ledger() -> dict[str, Any]:
                     "currentGap",
                     "firstConcreteUpstreamFailureCode",
                     "firstFailureCode",
+                    "activeActualDegree0DirectBudgetKillTheorem",
+                    "activeActualDegree0DirectBudgetFailureCode",
                 ],
             ),
+        },
+        "latestComputerUseDegree0BudgetKillDecision": {
+            "used": degree0_killed_for_direct,
+            "advisoryOnly": True,
+            "recommendedOption": "A",
+            "decision": (
+                "The activeActual degree-0 source may remain as checked local "
+                "evidence, but it is not spendable for the direct payload "
+                "budget.  The active route is now the direct collapsedExpression "
+                "row source."
+            ),
+            "budgetKillTheorem": ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_KILL_THEOREM,
+            "failureCodeIfReusedForDirectPayload": (
+                ACTIVE_ACTUAL_DEGREE0_DIRECT_BUDGET_FAIL
+            ),
+            "nextActiveFailureCode": DIRECT_ROW_SOURCE_GAP,
+            "notProofEvidence": True,
         },
         "computerUseDecision": {
             "used": True,
@@ -655,6 +711,7 @@ def build_ledger() -> dict[str, Any]:
         },
         "doNotUseAsProof": [
             "sampled or float rows",
+            "activeActual degree0 polyErrorAbs as the direct payload budget",
             "activeActual center jets as uniform segment bounds",
             "killed factor-majorant budgets",
             "P45/full-Taylor wrong-target rows",
@@ -663,6 +720,12 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
+            "Do not continue this activeActual row-source ledger as the direct "
+            "payload route.  Build the direct whole-expression "
+            "collapsedExpression rational/interval row source for "
+            "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder."
+            if degree0_killed_for_direct
+            else
             "Fill the degree-0 source inputs: a proof-grade D16 center "
             "enclosure, a proof-grade D17 uniform bound, and the exact rational budget comparison; "
             "then instantiate the checked degree-0 theorem and zero-extend into "
@@ -689,6 +752,10 @@ def render_markdown(ledger: dict[str, Any]) -> str:
         f"- currentGap: `{ledger['currentGap']}`",
         f"- firstFailureCode: `{ledger['firstFailureCode']}`",
         f"- firstConcreteSubgap: `{ledger['firstConcreteSubgap']}`",
+        "- routeSupersededForDirectPayload: "
+        f"`{ledger['routeSupersededForDirectPayload']}`",
+        f"- supersedingFailureCode: `{ledger['supersedingFailureCode']}`",
+        f"- directBudgetKillTheorem: `{ledger['directBudgetKillTheorem']}`",
         "",
         "## Target Lean Surface",
         "",
@@ -787,6 +854,24 @@ def render_markdown(ledger: dict[str, Any]) -> str:
     )
     for item in ledger["doNotUseAsProof"]:
         lines.append(f"- {item}")
+
+    degree0_kill = ledger["latestComputerUseDegree0BudgetKillDecision"]
+    lines.extend(
+        [
+            "",
+            "## Degree0 Direct-Budget Kill",
+            "",
+            f"- used: `{degree0_kill['used']}`",
+            f"- advisoryOnly: `{degree0_kill['advisoryOnly']}`",
+            f"- recommendedOption: `{degree0_kill['recommendedOption']}`",
+            f"- decision: {degree0_kill['decision']}",
+            f"- budgetKillTheorem: `{degree0_kill['budgetKillTheorem']}`",
+            "- failureCodeIfReusedForDirectPayload: "
+            f"`{degree0_kill['failureCodeIfReusedForDirectPayload']}`",
+            f"- nextActiveFailureCode: `{degree0_kill['nextActiveFailureCode']}`",
+            f"- notProofEvidence: `{degree0_kill['notProofEvidence']}`",
+        ]
+    )
 
     latest = ledger["latestComputerUsePayloadDecision"]
     lines.extend(

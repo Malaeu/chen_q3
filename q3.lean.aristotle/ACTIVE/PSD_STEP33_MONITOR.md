@@ -17,6 +17,430 @@ legacy_report: q3.lean.aristotle/ACTIVE/requests/step32_next_gate/report.md
 h1_monitor: q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
 h1_monitor_status_for_this_goal: PARKED_BACKGROUND
 
+latest_route_review_2026_06_24_after_direct_row_source_gap:
+Computer Use / Proshka chose route D before building a full direct row
+generator: first add a point-slope necessary-condition audit for the collapsed
+degree-0 signed-source class.  This is advisory only; accepted proof content is
+the Lean-checked conditional interface below.
+latest_local_step_2026_06_24_collapsed_degree0_point_slope_decision:
+Lean checked the point-slope decision interface for the direct collapsed
+degree-0 route.  The file proves the exact conditional obstruction: any
+degree-0 payload spending the current biased residual budget can only afford
+`CollapsedDegree0AllowedDerivAbsRat`; a future proof-grade point lower bound
+above that value kills the degree-0 class before full-cell row generation.
+latest_local_file_2026_06_24_collapsed_degree0_point_slope_decision:
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeDecision.lean
+latest_local_theorem_2026_06_24_collapsed_degree0_point_slope_decision:
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointSlopeLocalCenter;
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0AllowedDerivAbsRat;
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_allowedDerivAbs_of_budget;
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointSlope_budget_impossible;
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointSlopeDecisionGap
+latest_route_level_gap_2026_06_24_after_collapsed_degree0_point_slope_decision:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_DECISION_GAP
+latest_next_patch_2026_06_24_after_collapsed_degree0_point_slope_decision:
+generate proof-grade point lower/upper rows for
+`CollapsedDegree0SignedSourceExpr` at local centers `1/40` and `3/40`, with
+subtraction preserved before absolute value; instantiate
+`collapsedDegree0_pointSlope_budget_impossible` if the exact Rat comparison
+`CollapsedDegree0AllowedDerivAbsRat < pointAbsLower` holds.  Do not claim
+Step33A.1-A closure.
+latest_local_step_2026_06_24_collapsed_degree0_point_row_receiver:
+Lean checked the point-row receiver layer for the collapsed degree-0
+point-slope decision.  The same file now has a proof-bearing
+`Step33Sub0CollapsedDegree0PointRowCert.Valid` and two route-facing
+instantiation theorems: positive point rows and negative point rows can each
+feed the already checked conditional budget obstruction.  This adds no numeric
+point row and does not claim Step33A.1-A closure.
+latest_local_theorem_2026_06_24_collapsed_degree0_point_row_receiver:
+Step33Sub0CollapsedDegree0PointRowCert;
+Step33Sub0CollapsedDegree0PointRowCert.Valid;
+Step33Sub0CollapsedDegree0PointRowCert.Valid.positive_row_budget_impossible;
+Step33Sub0CollapsedDegree0PointRowCert.Valid.negative_row_budget_impossible
+latest_validation_2026_06_24_collapsed_degree0_point_row_receiver:
+direct Lean with explicit `.lake` search path passed; hole scan on the touched
+file returned no hits; `lake env lean` / `q3_check.sh` were attempted but did
+not complete in the local window and were manually interrupted, so they are not
+claimed as passed for this patch.
+latest_next_patch_2026_06_24_after_collapsed_degree0_point_row_receiver:
+emit/prove the actual proof-grade point row certificate for
+`CollapsedDegree0SignedSourceExpr` at one of the local centers `1/40` or
+`3/40`, then instantiate either
+`Step33Sub0CollapsedDegree0PointRowCert.Valid.positive_row_budget_impossible`
+or
+`Step33Sub0CollapsedDegree0PointRowCert.Valid.negative_row_budget_impossible`
+depending on the certified sign.  Current route gap remains
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_DECISION_GAP.
+latest_route_review_2026_06_24_after_point_row_receiver:
+Computer Use / Proshka chose route A: build signed Taylor transfer from the
+active-center signed jets at `1/20` to point rows at `1/40` and `3/40`, with
+order-18 remainder, preserving odd-power signs until the final interval.  Do
+not jump to whole-cell rows or a new analytic point evaluator unless this
+signed transfer is too wide.
+latest_local_step_2026_06_24_signed_taylor_point_interval18:
+Lean checked the generic signed point-interval assembly layer in
+`PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean`.
+This file defines scalar-multiplication interval endpoints, signed Taylor
+point polynomial lower/upper sums, and proves that signed normalized center
+jets plus a same-point Taylor remainder bound imply a signed point interval for
+`iteratedDeriv k f x`.  It provides no numeric point rows.
+latest_local_file_2026_06_24_signed_taylor_point_interval18:
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean
+latest_local_theorem_2026_06_24_signed_taylor_point_interval18:
+scalarMulInterval_mem;
+iteratedDeriv_centerJet_eq_shift18;
+centerJetTaylorPolynomialN_deriv_point_interval18;
+iteratedDeriv_mem_Icc_of_centerJet18_point_remainder
+latest_route_level_gap_2026_06_24_after_signed_taylor_point_interval18:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_SIGNED_TAYLOR_TRANSFER_GAP
+latest_next_patch_2026_06_24_after_signed_taylor_point_interval18:
+instantiate the signed point-interval assembly for
+`primaryFiniteRow0Parent0Split100Sub0ComponentProductActual` with `k = 17`,
+active center `1/20`, local centers `1/40` and `3/40`, signed center jets, and
+the existing order-18 remainder bound; then subtract the exact
+`NominalOrder16Poly` derivative interval to build
+`primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated`.
+latest_local_step_2026_06_24_point_slope_segment_bridge:
+Lean checked the point-row bridge from existing signed-source/raw-poly segment
+rows into the point-slope receiver.  The new isolated file proves that
+`PointSlopeLocalCenter i = RawD17LocalCenter i`, that a valid signed-source
+segment containing the local point yields `PointRowCert.Valid`, and that the
+already checked two-segment raw/poly payload can be viewed as point rows at
+`1/40` and `3/40`.  These point rows are still the existing coarse rows and do
+not decide the budget obstruction.
+latest_local_file_2026_06_24_point_slope_segment_bridge:
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean
+latest_local_theorem_2026_06_24_point_slope_segment_bridge:
+primaryFiniteRow0Parent0Split100Sub0_pointSlopeLocalCenter_eq_rawD17LocalCenter;
+Step33Sub0CollapsedDegree0SignedSourceSegmentCert.Valid.to_pointRowValid;
+Step33Sub0CollapsedDegree0RawPolySegmentCert.Valid.to_pointRowValid;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_point_mem;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_pointRow_valid;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_left_pointRow_valid;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_right_pointRow_valid
+latest_validation_2026_06_24_point_slope_segment_bridge:
+direct Lean with explicit `.lake` search path passed for
+`CollapsedDegree0PointSlopeDecision.lean`,
+`CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean`, and
+`CollapsedDegree0PointSlopeRows.lean`; touched-file hole scan returned no
+hits; `git diff --check` returned no whitespace errors on the touched Lean
+surface.
+latest_route_level_gap_2026_06_24_after_point_slope_segment_bridge:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_SHARP_POINT_ROW_GAP
+latest_next_patch_2026_06_24_after_point_slope_segment_bridge:
+emit/prove sharp signed point rows for
+`primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr` at
+`1/40` or `3/40`, then instantiate the existing
+`PointRowCert.Valid.positive_row_budget_impossible` or
+`PointRowCert.Valid.negative_row_budget_impossible`.  Do not reuse the coarse
+two-segment symmetric row as a budget decision.
+latest_local_step_2026_06_24_sharp_factorwise_point_rows_straddle_zero:
+Lean checked the exact point-row obstruction for the already checked sharp
+two-segment factorwise raw/poly payload.  The sharp raw/poly segments can be
+viewed as valid point rows at `1/40` and `3/40`, but the exact rational
+endpoints still straddle zero on both points.  Therefore this factorwise
+sharp row class cannot instantiate either the positive or the negative
+point-slope budget obstruction.
+latest_local_theorem_2026_06_24_sharp_factorwise_point_rows_straddle_zero:
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_sharp_point_mem;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_sharp_pointRow_valid;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_left_pointRow_valid;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_right_pointRow_valid;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_pointRows_straddle_zero;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_left_pointRow_straddles_zero;
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_sharp_right_pointRow_straddles_zero
+latest_validation_2026_06_24_sharp_factorwise_point_rows_straddle_zero:
+direct Lean with explicit `.lake` search path passed for
+`CollapsedDegree0PointSlopeRows.lean`; touched-file hole scan returned no
+hits; `git diff --check` returned no whitespace errors.  `lake env lean` and
+`scripts/q3_check.sh` were attempted, stayed silent for 60 seconds, and were
+manually interrupted, so they are not claimed as passed.
+latest_route_level_gap_2026_06_24_after_sharp_factorwise_point_rows_straddle_zero:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_POINT_ROW_GAP
+latest_next_patch_2026_06_24_after_sharp_factorwise_point_rows_straddle_zero:
+generate/prove direct signed point rows for the whole
+`primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr` at
+`1/40` or `3/40`; do not spend the factorwise sharp raw/poly rows, because
+Lean now proves those point rows straddle zero.
+
+latest_local_step_2026_06_24_raw_d17_two_segment_budget_fail: Lean checked the
+raw-D17 two-segment signed-factor payload attempt from the local center-jet and
+two-segment derivative rows.  Both segment-valid and raw/poly segment-valid
+theorems compile, but the exact two-segment budget comparison fails.
+latest_local_file_2026_06_24_raw_d17_two_segment_budget_fail:
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean,
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean,
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.md,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and
+q3.lean.aristotle/docs/INSIGHTS.md
+latest_payload_status_2026_06_24_raw_d17_two_segment_budget_fail:
+`proofGradeLocalCenterJetsPresent = true`;
+`proofGradeLocalRowsPresent = true`;
+`twoSegmentPayloadExists = true`;
+`twoSegmentBudgetFailPresent = true`;
+`proofStatus = fail_closed_two_segment_budget_constant_fail`.
+latest_route_level_gap_2026_06_24_after_raw_d17_two_segment_budget_fail:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL
+latest_next_patch_2026_06_24_after_raw_d17_two_segment_budget_fail: ask
+Computer Use / Proshka whether to sharpen this local row class or abandon it
+for the direct whole-expression row route; do not claim Step33A.1-A closure.
+latest_route_review_2026_06_24_after_raw_d17_two_segment_budget_fail:
+Computer Use / Proshka chose route A: sharpen the same two-segment class with
+proof-grade local center-jet values, not full-cell absolute majorants.  Next
+files are
+`scripts/generate_step33_a1_sub0_raw_d17_sharp_local_center_jets18.py` and
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean`.
+First failure code:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_LOCAL_CENTER_JET_ROWS_GAP.
+latest_local_step_2026_06_24_raw_d17_sharp_audit: Added fail-closed sharp
+local center-jet audit generator and artifacts.  Local q3_docs / rg search did
+not find an existing sharp payload theorem; closest source surfaces are the
+OmegaPrime prefix-tail generator, component Taylor residual generator, and
+refined endpoint rational generator.
+latest_local_file_2026_06_24_raw_d17_sharp_audit:
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_raw_d17_sharp_local_center_jets18.py,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_raw_d17_sharp_local_center_jets18_audit.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_raw_d17_sharp_local_center_jets18_audit.md,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and
+q3.lean.aristotle/docs/INSIGHTS.md
+latest_route_level_gap_2026_06_24_after_raw_d17_sharp_audit:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_LOCAL_CENTER_JET_ROWS_GAP
+latest_local_step_2026_06_24_raw_d17_sharp_budget_kill: Lean checked the
+sharp raw-D17 local center-jet payload and the route-facing kill certificate.
+The sharp local-center rows, two-segment derivative rows, signed-factor
+receiver, and raw/poly receiver all compile, but the exact Rat budget
+comparison is still false.
+latest_local_file_2026_06_24_raw_d17_sharp_budget_kill:
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean,
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean,
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_raw_d17_sharp_local_center_jets18.py,
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_raw_d17_sharp_local_center_jets18_audit.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_raw_d17_sharp_local_center_jets18_audit.md,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.md,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and
+q3.lean.aristotle/docs/INSIGHTS.md
+latest_payload_status_2026_06_24_raw_d17_sharp_budget_kill:
+`sharpRowsPresent = true`;
+`sharpBudgetFailPresent = true`;
+`sharpBudgetKillPresent = true`;
+`proofStatus = fail_closed_sharp_two_segment_budget_constant_fail`.
+The direct scaled-remainder certificate preflight was also regenerated and now
+records `proofStatus = lean_payload_generation_blocked_missing_collapsed_segment_rows`
+and direct preflight currentGap:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP.
+latest_closed_failure_2026_06_24_raw_d17_sharp_budget_kill:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SHARP_TWO_SEGMENT_BUDGET_CONSTANT_FAIL
+latest_route_review_2026_06_24_after_raw_d17_sharp_budget_kill:
+Computer Use / Proshka chose route A after the sharp budget fail: stop this
+two-segment factorwise class, keep `CollapsedExpression` intact, and pivot to
+the direct whole-expression row-source route.  The advisory next file name was
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SharpTwoSegmentBudgetKill.lean`,
+which is now present as a route-facing alias over the checked sharp budget
+failure.
+latest_route_level_gap_2026_06_24_after_raw_d17_sharp_budget_kill:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+latest_next_patch_2026_06_24_after_raw_d17_sharp_budget_kill: build
+proof-grade direct whole-expression `CollapsedExpression` row-source payload
+and preserve cancellation through interval widening; do not continue
+factorwise two-segment sharpening, do not use global symmetric rows, separate
+Omega/ShapeSq budgets, RawProduct18 abs-majorant, P45/zero-model budgets, or
+sampled rows as proof.
+
+latest_local_step_2026_06_24_raw_d17_center_jets18: Lean checked the coarse
+raw-D17 local center-jet payload for the two local centers `1/40` and `3/40`.
+The file proves proof-grade normalized jet intervals for `OmegaActual` and
+`ShapeSqActual` through `j : Fin 18` by reusing the existing full-cell order-18
+absolute derivative majorants.  This is a local row-source bridge only; it is
+not Step33A.1-A closure.
+latest_local_file_2026_06_24_raw_d17_center_jets18:
+q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean,
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.md,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and
+q3.lean.aristotle/docs/INSIGHTS.md
+latest_payload_status_2026_06_24_raw_d17_center_jets18:
+`proofGradeLocalCenterJetsPresent = true`;
+`proofGradeLocalRowsPresent = false`;
+`proofStatus = fail_closed_two_segment_derivative_rows_gap`;
+`shouldEmitTwoSegmentLeanPayload = false`.
+latest_route_level_gap_2026_06_24_after_raw_d17_center_jets18:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_TWO_SEGMENT_DERIVATIVE_ROWS_ORDER18_GAP
+latest_next_patch_2026_06_24_after_raw_d17_center_jets18: derive and Lean-check
+the two-segment derivative interval rows
+`primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_interval`
+and
+`primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_interval`
+from the local center jets plus `centeredTaylorDerivMajorant18`; do not emit
+`TwoSegmentPayload.lean` until those rows exist.
+
+latest_local_step_2026_06_24_active_actual_degree0: Lean checked the isolated
+activeActual degree-0 center/budget audit.  The theorem
+`primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated`
+closes the degree-0 source receiver using rawProduct17 only for the point-center
+`hCenter` and RawProduct18 Rat for the uniform D17/budget scalar.  This is not
+Step33A.1-A closure.
+latest_local_file_2026_06_24_active_actual_degree0: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean, q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, q3.lean.aristotle/docs/INSIGHTS.md
+latest_payload_status_2026_06_24_active_actual_degree0: degree0Preflight.proofGrade=true; degree0BudgetPassed=true; activeActualD16CenterD17UniformSourceChecked=true
+latest_route_level_gap_2026_06_24_after_active_actual_degree0: STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP
+latest_next_patch_2026_06_24_after_active_actual_degree0: emit concrete activeActual Horner segment rows from the checked degree-0 source theorem and validate the segment/family receiver; do not reopen D16/D17 unless row emission mismatches the receiver
+
+latest_local_step_2026_06_24_direct_budget_kill: Computer Use / Proshka was
+used for the post-degree0 route fork and chose Route A: do not spend the
+degree-0 activeActual source as the direct payload budget; keep
+`CollapsedExpression` as one object and build the direct row source.  Lean
+checked
+`primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`,
+showing the canonical direct residual budget is strictly smaller than the
+degree-0 activeActual `polyErrorAbs`.
+latest_payload_status_2026_06_24_direct_budget_kill: direct scaled-remainder
+payload/certificate ledgers regenerated fail-closed with
+`firstConcreteUpstreamFailureCode =
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP` and no
+`DirectConcretePayload.lean` emitted.  The old activeActual Horner row-source
+ledger was also regenerated as
+`superseded_by_direct_collapsed_expression_budget_kill`, with
+`currentGap =
+STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`.
+latest_route_level_gap_2026_06_24_direct_budget_kill:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+latest_next_patch_2026_06_24_direct_budget_kill: build proof-grade
+`primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder`
+rows for the direct `CollapsedExpression` target, then Horner/cover rows and
+final `+/- BiasedResidualRemainderAbs` budget rows; do not reuse activeActual
+degree0, separate actual/nominal budgets, sampled rows, or P45 wrong-target
+machinery as proof.
+
+latest_local_step_2026_06_24_direct_row_source_contract_v21: Updated the
+direct whole-expression generator to schema
+`q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v21`.
+The fail-closed row-source audit now includes
+`preferredCollapsedLowDegreeRowSourceContract`, the current smallest direct
+row-source contract for the checked collapsed degree-0 route.  It names the
+exact required rows before any `DirectConcretePayload.lean` emission: segment
+cover, signed rows for
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`,
+derivAbs budget, degree-0 remainder budget, collapsed segment remainder, and
+Horner/final budget rows.
+latest_local_file_2026_06_24_direct_row_source_contract_v21:
+q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_obligations.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_source_audit.json,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_row_source_audit.md,
+q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, and
+q3.lean.aristotle/docs/INSIGHTS.md
+latest_payload_status_2026_06_24_direct_row_source_contract_v21:
+`proofGrade = false`; `proofClaimAllowedNow = false`;
+`firstFailureCodeIfRowsMissing =
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`;
+`budgetFailureCode =
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_BUDGET_CONSTANT_FAIL`;
+parent gap remains
+`STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`.
+latest_route_level_gap_2026_06_24_after_direct_row_source_contract_v21:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+latest_next_patch_2026_06_24_after_direct_row_source_contract_v21: implement
+the contract rows in
+`scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py`;
+first proof-producing subgap is the proof-grade signed segment row for
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`.
+Do not emit `DirectConcretePayload.lean` until L0-L5 rows pass exactly.
+
+latest_local_step_2026_06_25_direct_certificate_pilot_contract_v15: Updated
+the direct scaled-remainder certificate preflight to schema
+`q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v15`.
+The ledger now includes an explicit Phase 2 cheap whole-expression pilot
+contract.  It names the missing script
+`scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py`,
+the expected output ledgers, the required verdict enum
+`PASS_STABLE_MARGIN / NEGATIVE_MARGIN / UNSTABLE_MARGIN / SEGMENT_EXPLOSION`,
+and the receiver it must feed:
+`primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder`.
+latest_payload_status_2026_06_25_direct_certificate_pilot_contract_v15:
+`proofStatus = lean_payload_generation_blocked_missing_collapsed_segment_rows`;
+`proofGrade = false`; `leanPayloadWritten = false`;
+`phase2ResultNow = NOT_RUN_MISSING_PILOT_SCRIPT`;
+`pilotScriptExists = false`; `DirectConcretePayload.lean` remains absent.
+latest_route_level_gap_2026_06_25_after_direct_certificate_pilot_contract_v15:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_GAP
+latest_next_patch_2026_06_25_after_direct_certificate_pilot_contract_v15:
+implement
+`scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py`
+so it evaluates the complete
+`primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderCollapsedExpression`
+as one object, preserves cancellation, and returns exactly
+`PASS_STABLE_MARGIN`, `NEGATIVE_MARGIN`, `UNSTABLE_MARGIN`, or
+`SEGMENT_EXPLOSION`.  If it is not `PASS_STABLE_MARGIN`, stop subdividing this
+row class and record the route decision.
+
+latest_local_step_2026_06_24_signed_source_ledger_v10: Synced the stale
+collapsed degree-0 signed-source ledger to the active v21 direct contract.
+`scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py` now emits
+schema `q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v10` with
+`activeDirectV21Contract = true`.
+latest_payload_status_2026_06_24_signed_source_ledger_v10:
+`proofStatus = fail_closed_missing_v21_direct_signed_source_segment_rows`;
+`currentGap =
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`;
+`selectedNextPatch = emit_first_direct_signed_source_segment0_interval`;
+`rawD17FactorRouteActiveNextPatch = false`.
+latest_browser_review_2026_06_24_signed_source_ledger_v10: The initial
+Computer Use / Proshka wait timed out, but the open browser thread later
+returned a parseable answer.  The accepted route advice is `CHOICE: B`: keep the
+raw-D17 smoke payload as support evidence, do not spend it as an active next
+patch after its budget failure, and build the first direct signed-source
+segment0 interval payload for the already-subtracted expression.
+latest_route_level_gap_2026_06_24_after_signed_source_ledger_v10:
+STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+latest_first_subgap_2026_06_24_after_signed_source_ledger_v10:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+
+latest_local_step_2026_06_24_direct_signed_source_rows_gate_v1: Added the
+fail-closed direct signed-source row gatekeeper
+`scripts/generate_step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.py`
+and generated
+`ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.{json,md}`.
+The v10 signed-source ledger now imports that gate status.
+Browser/Computer Use update: the open Proshka thread did return a route answer
+after the earlier local timeout.  The answer selected `CHOICE: B`: the first
+proof object should be a direct signed-source segment payload for the
+already-subtracted expression, not another audit-only sync.
+latest_payload_status_2026_06_24_direct_signed_source_rows_gate_v1:
+`proofStatus = fail_closed_missing_direct_signed_source_payload`;
+`currentGap =
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`;
+`firstFailureCode =
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP`;
+`uniformSegmentRowsSubgap =
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SOURCE_UNIFORM_SEGMENT_ROWS_GAP`;
+`targetPayloadPresent = false`; `shouldEmitLeanPayload = false`.
+latest_boundary_2026_06_24_direct_signed_source_rows_gate_v1: Point-row Rat
+payloads are checked support but not uniform segment-family certificates.
+Raw-D17 sharp/two-segment support is budget-killed and remains support only,
+not an active v21 next patch.  No Lean proof file was modified or emitted.
+latest_next_patch_2026_06_24_after_direct_signed_source_rows_gate_v2: emit the
+first exact Rat interval theorem
+`primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated`
+for the whole signed expression
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`.
+Then lift segment interval -> `SegmentCert.Valid` -> `derivAbs =
+max(-lower, upper)` -> exact degree-0 budget -> collapsed segment remainder.
+Only after those rows and budgets pass, emit
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourcePayload.lean`.
+latest_browser_followup_2026_06_24_direct_signed_source_segment0_source:
+Computer Use / Proshka was asked the next narrower question: which proof-grade
+source should produce the segment0 interval row for the already-subtracted
+signed expression, given that local search found no existing
+`DirectSignedSourcePayload.lean` or direct segment row theorem.  No parseable
+answer arrived in the local wait window.  Until that answer or a local source
+appears, do not emit Lean payload rows; keep the failure code
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP.
+
 latest_local_step_2026_06_22: Lean checked a rows-0/1/2/3/4/5/6/7/8/9/10/11 partial-sharp ShapeSqDeriv source, a same-source row11 component product/P45 enclosure bridge, an exact arithmetic kill for the full rows0..11 product assembly budget, a component-product cancellation identity, same-normalization bound inputs, a combined cancellation interval receiver, and a combined interval certificate checker. A fail-closed combined interval certificate ledger now records the exact remaining `hCombined` object. The sampled one-segment candidate passes rational coverage/budget checks but is explicitly not proof-grade. The next proof surface is a proof-grade interval/rational payload proving `Step33Sub0CombinedCancellationIntervalCert.Valid`.
 latest_local_file_2026_06_22: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivTightPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivCoeffRows.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpPayload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123456Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows01234567Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345678Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows0123456789Payload.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqTightFullCellSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRawBridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean, q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row3_rows4to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row4_rows5to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row5_rows6to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row6_rows7to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row7_rows8to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row8_rows9to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row9_rows10to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row10_rows11to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/VOCAB_MAP.md, q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md, q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.md, and q3.lean.aristotle/docs/INSIGHTS.md
 latest_local_file_2026_06_22_row10: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqDerivPartialSharpRows012345678910Payload.lean, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row10_rows11to15_order16.md, q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_06_22_step33a1_shapesqderiv_row11_rows12to15_order16.md
@@ -40856,3 +41280,1667 @@ build the proof-grade D16 center enclosure for the activeActual degree-0 source,
 export coeffErrorAbs/polyErrorAbs, and run the exact degree-0 budget comparison
 using the checked RawProduct18 Rat order17Abs
 ```
+
+### 2026-06-24 Update -- direct collapsed Taylor receiver checked
+
+Computer Use / Proshka follow-up selected route `A`: add an isolated receiver
+for segment-wise Taylor data on the whole direct `CollapsedExpression`, then
+generate center-jet/order-16 rows for that same expression.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedTaylorSource.lean
+```
+
+Checked theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_centerJet15_order16
+```
+
+The receiver feeds the existing direct Horner bridge through:
+
+```text
+Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedTaylorCert.Valid.to_directHorner_valid
+```
+
+Current generated gate now records:
+
+```text
+directCollapsedTaylorSourcePresent = true
+directCollapsedTaylorSourceLeanChecked = true
+firstRowFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_CENTER_JETS_ORDER16_ROW_SOURCE_GAP
+closedSubgap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_TAYLOR_RECEIVER_CLOSED
+```
+
+Boundary: this closes only the receiver/interface.  It does not emit
+`DirectConcretePayload.lean` and does not close Step33A.1-A.  The exact next
+proof-producing patch is to generate proof-grade center-jet/order-16 rows for
+the whole `CollapsedExpression`, then Horner rows, segment cover, and the final
+`+/- BiasedResidualRemainderAbs` budget rows.
+
+### 2026-06-24 Update -- direct collapsed source-interval adapter checked
+
+Added an isolated source-interval adapter for the same direct
+`CollapsedExpression` route.  This is one layer before the existing Taylor
+receiver: future generators may provide rational lower/upper source intervals
+for center jets and the order-16 derivative, and Lean converts those interval
+rows into the existing absolute-error Taylor cert.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.lean
+```
+
+Checked theorems:
+
+```text
+Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.Valid.centerJet
+Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.Valid.order16
+Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.Valid.to_collapsedTaylorValid
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsedTaylorValid_of_source_interval
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_source_interval
+```
+
+Current generated gate now records:
+
+```text
+directCollapsedSourceIntervalPresent = true
+directCollapsedSourceIntervalLeanChecked = true
+firstRowFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_ROWS_GAP
+closedSubgap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_SOURCE_INTERVAL_CERT_CLOSED
+```
+
+Boundary: this closes only the source-interval adapter/interface.  It does not
+emit `DirectConcretePayload.lean` and does not close Step33A.1-A.  The exact
+next proof-producing patch is to emit proof-grade rational lower/upper
+source-interval rows for the whole `CollapsedExpression`, then Horner rows,
+segment cover, and final `+/- BiasedResidualRemainderAbs` budget rows.
+
+### 2026-06-24 Update -- direct collapsed degree-0 receiver checked
+
+Computer Use / Proshka follow-up selected route `C`: before spending the
+degree-15/source-interval route, test the cheaper degree-0 receiver for the
+whole direct `CollapsedExpression`.  This avoids making the first live row an
+order-16 derivative row of an expression that already contains `D16`.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedLowDegreeSource.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0Coeff
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_deriv_bound
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_signedD17_source
+```
+
+Current generated gate now records:
+
+```text
+directCollapsedLowDegreeSourcePresent = true
+directCollapsedLowDegreeSourceLeanChecked = true
+firstRowFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_D17_SIGNED_SOURCE_GAP
+closedSubgap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RECEIVER_CLOSED
+```
+
+Boundary: this closes only the degree-0 receiver/interface.  It does not emit
+`DirectConcretePayload.lean` and does not close Step33A.1-A.  The exact next
+proof-producing patch is the signed D17 source row for the derivative of the
+whole `CollapsedExpression`, plus the center row and degree-0 budget comparison;
+do not spend separate activeActual/nominal absolute budgets.
+
+### 2026-06-24 Update -- direct collapsed degree-0 derivative-shift checked
+
+Computer Use / Proshka follow-up confirmed the minimal narrowing: use the
+checked identity
+
+```text
+CollapsedExpression =
+  ActiveScaleCoeff * D16(ComponentProductActual) - NominalOrder16Poly
+```
+
+and differentiate the nominal side as `deriv NominalOrder16Poly`, instead of
+requiring a separate `ContDiff 17` gate for `ComponentProductNominal`.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0DerivativeShift.lean
+```
+
+Checked theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_differentiableAt
+primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_deriv_eq_activeActualD17_sub_nominalOrder16PolyDeriv
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_polyDeriv_signedD17_source
+```
+
+Current generated gate now records:
+
+```text
+directCollapsedDegree0DerivativeShiftPresent = true
+directCollapsedDegree0DerivativeShiftLeanChecked = true
+firstRowFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Boundary: this closes only the derivative-shift bridge/interface.  It does not
+emit `DirectConcretePayload.lean` and does not close Step33A.1-A.  The exact
+next proof-producing patch is the proof-grade signed source row
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`,
+plus the center row and degree-0 budget comparison.
+
+### 2026-06-24 Update -- direct collapsed degree-0 center audit checked
+
+Checked the center input for the whole degree-0 direct collapsed receiver.
+This uses the active-actual center audit and the exact center value of
+`NominalOrder16Poly`; it does not spend separate active/nominal segment
+budgets.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedDegree0CenterAudit.lean
+```
+
+Checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0Coeff0
+primaryFiniteRow0Parent0Split100Sub0DirectCollapsedDegree0CoeffErrorAbs
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_center
+primaryFiniteRow0Parent0Split100Sub0_directCollapsed_degree0_hCenter_generated
+primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_degree0_remainder_of_center_and_polyDeriv_source
+```
+
+Current generated gate now records:
+
+```text
+directCollapsedDegree0CenterAuditPresent = true
+directCollapsedDegree0CenterAuditLeanChecked = true
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+firstRowFailureCode =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Boundary: this closes only the center input.  It does not emit
+`DirectConcretePayload.lean` and does not close Step33A.1-A.  The exact
+remaining proof object is still the proof-grade signed source row
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`,
+followed by the rational degree-0 budget comparison.
+
+### 2026-06-24 Update -- collapsed degree-0 signed-source surface checked
+
+Computer Use / Proshka follow-up selected route `A`: build lower/upper rows for
+the already-subtracted signed expression
+
+```text
+ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)
+```
+
+and do not spend separate activeActual/nominal budgets.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+```
+
+Checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceExpr
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedSourceTarget
+Step33Sub0CollapsedDegree0SignedSourceCert.Valid.to_hSignedD17PolyDeriv
+Step33Sub0CollapsedDegree0SignedSourceCert.Valid.to_collapsed_degree0_remainder
+primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_source_cert
+```
+
+New fail-closed ledger:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_signed_source.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_signed_source.md
+```
+
+Current generated gate now records:
+
+```text
+directCollapsedDegree0SignedSourcePresent = true
+directCollapsedDegree0SignedSourceLeanChecked = true
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Boundary: this closes only the certificate surface.  The proof-grade
+lower/upper interval rows and exact rational budget rows are still missing, so
+Step33A.1-A remains open.
+
+### 2026-06-24 Update -- collapsed degree-0 coarse triangle budget killed
+
+Computer Use / Proshka follow-up selected a narrow guard before building the
+signed-row generator: kill the tempting independent absolute/triangle budget
+candidate
+
+```text
+|ActiveScaleCoeff * D17(ComponentProductActual)|
++ |deriv(NominalOrder16Poly)|
+```
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourceBudgetAudit.lean
+```
+
+Checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivCoeff
+primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivAbsRat
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0TriangleDerivAbsRat
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_triangle_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_triangle_budget_not_spendable
+```
+
+Current signed-source ledger now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v2
+coarseTriangleBudgetAuditLeanChecked = true
+coarseTriangleBudgetPassed = false
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Boundary: this kills only the independent absolute/triangle estimate.  It does
+not prove that the true signed whole-expression row fails, does not emit
+interval rows, and does not close Step33A.1-A.  The next proof-producing patch
+remains the proof-grade lower/upper row generator for
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`.
+
+### 2026-06-24 Update -- collapsed degree-0 signed interval bridge fixed
+
+Computer Use / Proshka follow-up selected option A after the coarse triangle
+kill: do not add a separate direct-norm receiver.  The existing
+`Step33Sub0CollapsedDegree0SignedSourceCert.Valid.to_hSignedD17PolyDeriv`
+bridge already converts lower/upper signed-source rows into the norm bound.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+```
+
+New checked theorem surface:
+
+```text
+Step33Sub0CollapsedDegree0SignedSourceCert.valid_of_signed_interval_and_budget
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_interval
+primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_interval_and_budget
+```
+
+Current signed-source ledger now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v3
+selectedNextPatch = build_lower_upper_signed_row_generator
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:...:.lake/packages/plausible/.lake/build/lib/lean:..." lean -j 1 -s 65536 Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py
+python3 scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py
+python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+```
+
+Boundary: this is still not Step33A.1-A closure.  The first missing object is
+still a proof-grade generated lower/upper interval theorem for the already
+subtracted expression
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`,
+plus exact rational `derivAbs` and degree-0 budget rows.
+
+### 2026-06-24 Update -- collapsed degree-0 signed segment-family bridge checked
+
+Added a checked segment-family lower/upper receiver for the signed degree-0
+source.  This keeps the Proshka-selected route A, but removes the artificial
+requirement that the next generator emit one coarse full-cell lower/upper pair.
+The generator may now emit segment-local lower/upper rows plus an exact segment
+cover and common `derivAbs` budget.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+```
+
+New checked theorem surface:
+
+```text
+Step33Sub0CollapsedDegree0SignedSourceSegmentCert.Valid
+Step33Sub0CollapsedDegree0SignedSourceSegmentCover
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_hSignedD17PolyDeriv_of_signed_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_segment_cover_and_budget
+Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert.Valid.to_hSignedD17PolyDeriv
+Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert.Valid.to_collapsed_degree0_remainder
+primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_signed_segment_family_cert
+```
+
+Current signed-source ledger now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v4
+proofStatus = fail_closed_missing_segmented_signed_source_interval_rows
+selectedNextPatch = build_segmented_lower_upper_signed_row_generator
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:...:.lake/packages/plausible/.lake/build/lib/lean:..." lean -j 1 -s 65536 Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+python3 scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py
+python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+```
+
+Boundary: this is still not Step33A.1-A closure.  The first missing object is
+now sharpened to a proof-grade segmented signed lower/upper generator for
+`ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)`,
+including exact segment cover, per-segment lower/upper rows, per-segment
+`-derivAbs <= lower_i` / `upper_i <= derivAbs` budget rows, and the final
+degree-0 rational budget row.
+
+### 2026-06-24 Update -- collapsed degree-0 raw/poly same-segment bridge checked
+
+Computer Use / Proshka was asked whether raw/poly interval enclosures on the
+same segment are allowed under the "do not spend separate component budgets"
+guard.  The answer was yes for monotone signed interval subtraction, provided
+the bridge produces signed rows before the norm budget and does not claim full
+pointwise cancellation is preserved.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+```
+
+New checked theorem surface:
+
+```text
+Step33Sub0CollapsedDegree0SignedSourceSegmentCert.valid_of_raw_poly_intervals
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSegmentValid_of_raw_poly_intervals
+```
+
+Current signed-source ledger now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v5
+proofStatus = fail_closed_missing_raw_poly_segment_interval_rows
+selectedNextPatch = build_segmented_raw_poly_interval_subtraction_generator
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:...:.lake/packages/plausible/.lake/build/lib/lean:..." lean -j 1 -s 65536 Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+python3 -m py_compile scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+python3 scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py
+python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+python3 scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py
+```
+
+Boundary: this is still not Step33A.1-A closure.  The next proof-producing
+patch is the segmented raw/poly interval generator: raw rows for
+`ActiveScaleCoeff * D17(ComponentProductActual)`, poly rows for
+`deriv(NominalOrder16Poly)`, exact subtraction rows
+`lower <= rawLower - polyUpper` and `rawUpper - polyLower <= upper`, exact
+cover, and the final rational degree-0 budget row.
+
+### 2026-06-24 Update -- collapsed degree-0 raw/poly segment-family receiver checked
+
+Added a checked family-level receiver for the same-segment raw/poly route.  The
+future generator can now emit one
+`Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert.Valid` proof object and
+Lean converts it through the already checked signed-source segment-family
+receiver.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0SignedSourcePayload.lean
+```
+
+New checked theorem surface:
+
+```text
+Step33Sub0CollapsedDegree0RawPolySegmentCert.Valid.to_signedSegmentValid
+Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert.Valid.to_signedSegmentFamilyValid
+Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert.Valid.to_hSignedD17PolyDeriv
+Step33Sub0CollapsedDegree0RawPolySegmentFamilyCert.Valid.to_collapsed_degree0_remainder
+primaryFiniteRow0Parent0Split100Sub0_collapsed_degree0_remainder_of_raw_poly_segment_family_cert
+```
+
+Current signed-source ledger now records:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v6
+proofStatus = fail_closed_missing_raw_poly_segment_interval_rows
+selectedNextPatch = build_segmented_raw_poly_interval_subtraction_generator
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Boundary: this is still not source-row generation and not Step33A.1-A closure.
+The first missing proof-grade source remains the segment-local raw interval
+rows for `ActiveScaleCoeff * D17(ComponentProductActual)` and the matching
+poly-derivative interval/subtraction/budget rows.
+
+### 2026-06-24 Update -- Proshka next patch after raw/poly family receiver
+
+Computer Use / Proshka was asked which proof-producing patch should follow the
+raw/poly family receiver.  Decision: first close the rational nominal
+polynomial derivative segment rows, because they are the cheap fully algebraic
+half of the receiver.  Do not hide the same missing raw source inside a
+monolithic direct signed-expression generator.
+
+Next file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean
+```
+
+First theorem shape:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_interval_generated
+```
+
+Patch failure code:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_NOMINAL_POLY_DERIV_SEGMENT_ROWS_GAP
+```
+
+After that patch succeeds, the sharpened live gap should be:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP
+```
+
+Boundary: do not claim the signed whole-expression source, degree-0 budget, or
+Step33A.1-A is closed from the nominal-polynomial rows alone.
+
+### 2026-06-24 Update -- nominal poly derivative rows checked
+
+Added a checked proof-grade full-cell segment row for
+`deriv(NominalOrder16Poly)`.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0NominalPolyDerivRows.lean
+```
+
+New checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_eq_poly
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_abs_le
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_cover
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_segment_interval_generated
+```
+
+`primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivCoeff` and
+`primaryFiniteRow0Parent0Split100Sub0NominalOrder16PolyDerivAbsRat` now live in
+the rows file; `CollapsedDegree0SignedSourceBudgetAudit` imports them instead
+of defining a duplicate copy.
+
+Updated signed-source ledger:
+
+```text
+schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v7
+proofStatus = fail_closed_missing_raw_d17_local_interval_rows
+selectedNextPatch =
+  build_raw_d17_local_interval_rows_for_collapsed_degree0_raw_poly_family
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP
+```
+
+Boundary: this is still not the signed whole-expression source, not the
+degree-0 budget, and not Step33A.1-A closure.  The active missing proof object
+is now the raw local interval rows for
+`ActiveScaleCoeff * D17(ComponentProductActual)`, followed by exact
+same-segment subtraction rows and budget rows.
+
+### 2026-06-24 Update -- symmetric raw-D17 class kill checked
+
+Computer Use / Proshka was asked whether to emit the coarse proof-grade
+RawProduct18-derived full-cell raw row, build tighter local rows immediately,
+or switch to a direct signed whole-expression generator.  Decision: first kill
+the whole symmetric RawProduct18-row class before wiring it into the family.
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SymmetricClassKill.lean
+```
+
+New checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0RawD17SymmetricAbsRat
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_symmetric_abs_nonneg
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_symmetric_interval
+primaryFiniteRow0Parent0Split100Sub0_rawPoly_subtraction_radius_ge_raw_symmetric_radius
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_symmetric_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_symmetric_budget_not_spendable
+```
+
+Meaning: the checked full-cell symmetric interval for
+`ActiveScaleCoeff * D17(ComponentProductActual)` is already too large for the
+current collapsed degree-0 budget.  Wiring this row through the raw/poly family
+would only reproduce a budget-constant failure.
+
+Active failure code for this killed class:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SYMMETRIC_CLASS_KILL_GAP
+```
+
+The live gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP
+```
+
+Boundary: this does not kill tight local signed raw intervals, the direct
+whole-expression route, or Step33A.1-A.  It only kills the symmetric global
+RawProduct18 majorant class as a spendable collapsed degree-0 source row.
+
+### 2026-06-24 Update -- raw-D17 signed-factor bridge checked
+
+Checked file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean
+```
+
+New checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawProduct18SignedTerm
+Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert
+Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert.Valid.to_termRows
+Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert.Valid.to_rawInterval
+Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert.Valid.to_rawPolySegmentValid
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawD17_interval_of_signed_factor_segment
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_rawPolySegmentValid_of_rawD17_signed_factor_segment
+```
+
+Meaning: the symmetric RawProduct18 class is dead as a budget object, but the
+signed Leibniz-row receiver is now live.  It converts proof-grade signed-factor
+term rows for `ActiveScaleCoeff * D17(ComponentProductActual)` into the existing
+raw/poly same-segment receiver.
+
+Updated ledgers:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_signed_source.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.json
+```
+
+Current broad gap remains:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_INTERVAL_ROWS_GAP
+```
+
+First concrete subgap is now:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_GAP
+```
+
+Boundary: this is still not Step33A.1-A closure.  The next proof-producing
+patch is the rational/interval signed-factor term-row generator, followed by
+raw-D17 assembly, same-segment subtraction against the nominal derivative row,
+and the degree-0 budget row.
+
+### 2026-06-24 Route advisory -- first raw-D17 signed-factor segment payload
+
+Computer Use / Proshka was asked whether to add another checker bridge, use the
+old absolute majorants only as a fail-closed kill, switch to direct
+whole-expression rows, or build the first concrete signed-factor segment.  The
+advisory choice was the first concrete segment payload:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean
+```
+
+Target object/theorem shape:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0 :
+  Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert
+
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_valid :
+  primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0.Valid
+```
+
+Failure code while rows remain open:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_ROWS_GAP
+```
+
+If the segment rows become Lean-checked but the degree-0 segment budget fails:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL
+```
+
+Boundary: this is advisory only.  Do not claim Step33A.1-A closure, do not claim
+the degree-0/direct route impossible, do not treat sampled rows as proof, and do
+not spend the killed symmetric RawProduct18 majorant as the live route.
+
+### 2026-06-24 Raw-D17 signed-factor segment0 smoke payload checked
+
+Implemented and Lean-checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean
+```
+
+Checked object/theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0 :
+  Step33Sub0CollapsedDegree0RawD17SignedFactorSegmentCert
+
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_valid :
+  primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorSegment0.Valid
+
+primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorRawPolySegment0 :
+  Step33Sub0CollapsedDegree0RawPolySegmentCert
+
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_rawPoly_segment0_valid :
+  primaryFiniteRow0Parent0Split100Sub0RawD17SignedFactorRawPolySegment0.Valid
+
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_fail_rat
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_segment0_budget_not_spendable
+```
+
+Meaning: the receiver can now consume a proof-grade full-cell signed-factor
+payload built from the existing absolute derivative majorants, and the same
+payload wires through the raw/poly same-segment bridge with the checked
+nominal-polynomial derivative row.  Exact arithmetic also proves this smoke
+segment is not budget-spendable.  It does not revive the killed symmetric
+RawProduct18 budget class.
+
+Validation:
+
+```text
+lean -j 1 -s 65536 Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorPayload.lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorRows.lean
+```
+
+Current next gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_SEGMENT_BUDGET_CONSTANT_FAIL
+```
+
+Reason: the full-cell absolute-majorant smoke segment is proof-grade as an
+interface payload and now has an exact fail-closed budget theorem.  The live
+route needs a genuinely tighter local segment payload or a different direct
+whole-expression row.  Still do not claim Step33A.1-A closure or degree-0 route
+impossibility.
+
+### 2026-06-24 Computer Use route review: Raw-D17 two-segment next patch
+
+Computer Use / Proshka review after the checked smoke payload selected the
+next local patch:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean
+```
+
+Segments:
+
+```text
+[0, 1/20]
+[1/20, 1/10]
+```
+
+First required theorem names:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_left_valid
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_right_valid
+primaryFiniteRow0Parent0Split100Sub0_rawD17_signedFactor_twoSegment_family_valid
+```
+
+Failure while the two local segment rows are missing:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_ROWS_GAP
+```
+
+If both segments Lean-check but the budget still fails:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_BUDGET_CONSTANT_FAIL
+```
+
+Boundary: do not use global symmetric `[-M,M]` rows as the next payload, and do
+not claim that a two-segment budget failure kills the direct whole-expression
+route.
+
+### 2026-06-24 Computer Use route review: two-segment rows audit first
+
+Follow-up Computer Use / Proshka review narrowed the previous "two-segment
+payload" instruction: do not create
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0RawD17SignedFactorTwoSegmentPayload.lean`
+until the proof-grade local row sources exist.  Added the audit generator:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py
+```
+
+Generated audit artifacts:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.md
+```
+
+Audit verdict:
+
+```text
+proofStatus = fail_closed_two_segment_rows_gap
+shouldEmitTwoSegmentLeanPayload = false
+twoSegmentPayloadExists = false
+proofGradeLocalRowsPresent = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_SIGNED_FACTOR_TWO_SEGMENT_ROWS_GAP
+```
+
+Missing proof-grade row theorem shapes:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_derivative_twoSegment_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_twoSegment_interval
+```
+
+Boundary: this is an exact local GAP checkpoint, not Step33A.1-A closure and
+not a route-kill.  The full-cell smoke segment remains non-spendable, and the
+global symmetric rows must not be used as local two-segment rows.
+
+### 2026-06-24 Raw-D17 order18 generic Taylor bridge checked
+
+Computer Use / Proshka follow-up selected the isolated order-18 generic Taylor
+bridge as the smallest proof-producing patch before any two-segment payload.
+
+Implemented and direct-Lean checked:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant18.lean
+```
+
+Public bridge surface:
+
+```text
+centeredTaylorDerivMajorant18
+centeredTaylorDerivMajorant18Range
+iteratedDeriv_norm_le_centeredTaylorDerivMajorant18
+```
+
+Validation:
+
+```text
+LEAN_PATH=<built .lake paths> lean \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant18.lean
+rg -n "sorry|exact\\?|admit|axiom|unsafe" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeMajorant18.lean
+```
+
+`q3_check.sh` was attempted through `bash`, but its internal `lake env lean`
+wrapper hung after the target line and was stopped.  Direct Lean with the same
+built search path compiled the file cleanly.
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_CENTER_JET_ROWS_GAP
+```
+
+Boundary: no two-segment Lean payload exists yet.  The new bridge is generic
+analytic transport only; it does not close Step33A.1-A and does not make the
+full-cell smoke payload spendable.
+
+### 2026-06-24 Raw-D17 two-segment audit v3 checked
+
+The fail-closed raw-D17 two-segment audit now records the order-18 bridge as
+and the uniform order-18 source rows as present, and narrows the remaining
+obstruction to local center-jet rows.
+
+Regenerated:
+
+```text
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_two_segment_rows_audit.md
+```
+
+Current verdict:
+
+```text
+proofStatus = fail_closed_local_center_jet_rows_gap
+order18TaylorBridgePresent = true
+order18UniformSourcesPresent = true
+proofGradeLocalCenterJetsPresent = false
+proofGradeLocalRowsPresent = false
+shouldEmitTwoSegmentLeanPayload = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_CENTER_JET_ROWS_GAP
+```
+
+Next local payload interfaces:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet18_twoSegment_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet18_twoSegment_interval
+```
+
+Validation:
+
+```text
+python3 -m py_compile q3.lean.aristotle/scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py
+python3 q3.lean.aristotle/scripts/generate_step33_a1_sub0_collapsed_degree0_raw_d17_signed_factor_segments.py
+```
+
+Boundary: no `TwoSegmentPayload.lean` was emitted.  This is not Step33A.1-A
+closure and not a route-kill.
+
+Computer Use / Proshka follow-up selected route `A`: build the local center-jet
+payload next.
+
+Next files:
+
+```text
+scripts/generate_step33_a1_sub0_raw_d17_local_center_jets18_payload.py
+Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17LocalCenterJets18Payload.lean
+```
+
+First generated interfaces:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0RawD17LocalCenter
+primaryFiniteRow0Parent0Split100Sub0OmegaActualLocalJetLower
+primaryFiniteRow0Parent0Split100Sub0OmegaActualLocalJetUpper
+primaryFiniteRow0Parent0Split100Sub0ShapeSqActualLocalJetLower
+primaryFiniteRow0Parent0Split100Sub0ShapeSqActualLocalJetUpper
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_localCenterJet_interval_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_localCenterJet_interval_generated
+```
+
+Failure codes:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_RAW_D17_LOCAL_CENTER_JET_ROWS_GAP
+STEP33_A1_SUB0_SHAPESQ_LOCAL_CENTER_JETS18_PAYLOAD_GAP
+```
+
+Boundary: reuse checked full-cell order-18 Omega/ShapeSq sources; do not claim
+`TwoSegmentPayload.Valid` until all local rows and derived derivative rows
+Lean-check.
+
+### 2026-06-24 Collapsed degree-0 signed Taylor point-row bridge checked
+
+Browser/Computer Use / Proshka route review chose route `A`: signed Taylor
+transfer from the active center to point rows at `1/40` and `3/40`, preserving
+the subtraction before any absolute-value spend.
+
+Local audit found that the generic signed point receiver is already present:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean
+iteratedDeriv_mem_Icc_of_centerJet18_point_remainder
+```
+
+Implemented and direct-Lean checked the smaller bridge in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean
+```
+
+New checked surfaces:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRowValid_of_collapsedExpressionDeriv_point_interval
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0SignedTaylorTransferGap
+primaryFiniteRow0Parent0Split100Sub0CollapsedDegree0PointSlopeDecisionGap_of_signedTaylorTransferGap
+```
+
+Meaning: a proof-grade signed point interval for
+`deriv CombinedOrder16ScaledRemainderCollapsedExpression` at either local
+center now directly feeds the existing `Step33Sub0CollapsedDegree0PointRowCert`
+decision interface, using the checked derivative-shift theorem
+`primaryFiniteRow0Parent0Split100Sub0_collapsedExpression_deriv_eq_activeActualD17_sub_nominalOrder16PolyDeriv`.
+
+Validation:
+
+```text
+LEAN_PATH=<built .lake paths> lean -j 1 -s 65536 \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean
+rg -n "sorry|admit|exact\\?" \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean
+git diff --check -- \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean
+```
+
+Result: direct Lean passed; hole scan returned no hits; diff check was clean.
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_SIGNED_TAYLOR_TRANSFER_GAP
+```
+
+Next proof-producing patch: generate proof-grade Rat point rows for the whole
+collapsed-expression derivative at local centers `1/40` and `3/40`, using the
+existing signed Taylor point receiver and preserving odd-power signs.  Do not
+reuse factorwise sharp rows as a budget decision; Lean already proved they
+straddle zero.
+
+### 2026-06-24 Signed Taylor point receiver checked
+
+Implemented and direct-Lean checked the generic point receiver selected by the
+Browser/Computer Use / Proshka route review:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean
+iteratedDeriv_mem_Icc_of_centerJet18_point
+```
+
+Meaning: from proof-grade signed center jets and an order-18 derivative bound
+on `Set.uIcc center x`, Lean now derives the signed Taylor point interval
+directly.  The Taylor polynomial keeps the sign of `x - center`; the only
+symmetric spend is the order-18 remainder.  This removes the need to pass a
+manual `hRemainder` proof to
+`iteratedDeriv_mem_Icc_of_centerJet18_point_remainder`.
+
+Validation:
+
+```text
+LEAN_PATH=<built .lake paths> lean -j 1 -s 65536 \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean
+rg -n "sorry|admit|exact\\?" \
+  Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean
+git diff --check -- \
+  q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativePointInterval18.lean
+```
+
+Result: direct Lean passed; hole scan returned no hits; diff check was clean.
+
+Boundary: this is still not Step33A.1-A closure.  It closes the generic
+signed Taylor transfer receiver only; no proof-grade numeric point row has
+been emitted for the collapsed source.
+
+Current exact gap:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_SIGNED_TAYLOR_PAYLOAD_GAP
+```
+
+Next proof-producing patch: instantiate the receiver with proof-grade Rat
+payload rows for the collapsed derivative source at local centers `1/40` and
+`3/40`, preserving subtraction before the final point-row comparison.
+
+### 2026-06-24 Proshka follow-up after receiver check
+
+Browser/Computer Use follow-up after the receiver Lean check chose route `B`
+with a stricter routing rule:
+
+```text
+FIRST FILES:
+scripts/generate_step33_a1_sub0_collapsed_degree0_point_slope_rows.py
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean
+
+FIRST THEOREM:
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_generated
+
+FAILURE CODE:
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAWPRODUCT18_SIGNED_POINT_ROWS_GAP
+```
+
+Routing correction: do not instantiate the signed Taylor theorem on the whole
+`CombinedOrder16ScaledRemainderCollapsedExpression`, because that creates the
+wrong high-derivative wall.  Do not instantiate it directly on
+`ComponentProductActual` either, because that asks for the wrong next
+RawProduct derivative.  Apply signed Taylor to the two actual factors, assemble
+the signed product row by the exact Leibniz/RawProduct18 crosswalk, then apply
+the active scale and subtract the exact `deriv NominalOrder16Poly` point value.
+
+Current exact gap remains payload-level:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAWPRODUCT18_SIGNED_POINT_ROWS_GAP
+```
+
+### 2026-06-24 Point-slope payload audit fail-closed
+
+Added and ran:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_point_slope_rows.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rows.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rows.md
+```
+
+Audit result:
+
+```text
+proofStatus = fail_closed_missing_factor_signed_point_rows
+shouldEmitLeanPayload = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAWPRODUCT18_SIGNED_POINT_ROWS_GAP
+```
+
+First blocking evidence:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_centerJet_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_centerJet_interval
+```
+
+are present only as `Fin 17` signed center rows, i.e. orders `0..16`.  The
+point-slope RawProduct18 route still lacks proof-grade factor signed point rows
+and the generated payload theorems:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_generated
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated
+```
+
+Boundary: no Lean payload was emitted and no Step33A.1-A closure is claimed.
+
+### 2026-06-24 Factor signed point rows checked
+
+Lean checked the factor point-row bridge selected by the Browser/Computer Use
+route review.  The sharp source-center factor rows in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean`
+now instantiate the signed Taylor point receiver at local centers `1/40` and
+`3/40`.
+
+New checked theorem surfaces:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_sharpSourceCenterJet18_signed_interval
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_sharpSourceCenterJet18_signed_interval
+primaryFiniteRow0Parent0Split100Sub0_omegaActual_signed_point_interval_generated
+primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_signed_point_interval_generated
+```
+
+Regenerated audit result:
+
+```text
+proofStatus = fail_closed_missing_rawproduct18_point_assembly_payload
+factorPointRowsPresent = true
+shouldEmitLeanPayload = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAWPRODUCT18_POINT_ASSEMBLY_GAP
+```
+
+Validation: direct Lean with explicit `.lake` search path passed for
+`PSD_CenteredCoeffRawOmegaARawD17SharpLocalCenterJets18Payload.lean`; touched
+hole scan returned no hits; the point-slope audit generator passed
+`python3 -m py_compile` and regenerated its JSON/MD artifacts.
+
+Boundary: this is not Step33A.1-A closure.  It closes the factor signed
+point-row layer only; the remaining proof-producing patch is exact RawProduct18
+point assembly, then active-scale and subtraction of the exact nominal
+derivative point row.
+
+### 2026-06-24 RawProduct18 point assembly checked
+
+Lean checked the next bridge in
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRows.lean`.
+The file now assembles the factor point intervals into a point interval for
+`D17(ComponentProductActual)` at the two local centers using the exact
+RawProduct18 signed Leibniz bridge.
+
+New checked theorem surface:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_generated
+```
+
+The assembly uses signed point rows for factor orders `0..17` and the existing
+proof-grade symmetric order-18 factor rows for the endpoint Leibniz terms.
+This is deliberate bookkeeping; it is not the old two-segment budget row and
+does not reuse the straddling sharp raw/poly budget.
+
+Regenerated audit result:
+
+```text
+proofStatus = fail_closed_missing_collapsed_point_row_rat_payload
+rawProduct18PointAssemblyPresent = true
+finalCollapsedPointRowPresent = false
+shouldEmitLeanPayload = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_COLLAPSED_POINT_ROW_RAT_PAYLOAD_GAP
+```
+
+Boundary: this is not Step33A.1-A closure.  The remaining patch must convert
+the assembled RawProduct18 point interval through active-scale and exact
+`deriv NominalOrder16Poly(localCenter i)` subtraction into the final
+`primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated`
+Rat payload.
+
+### 2026-06-24 Proshka follow-up after RawProduct18 point assembly
+
+Browser/Computer Use follow-up chose route `A`: build a separate Rat mirror
+payload, not a Real-endpoint receiver change.
+
+First files:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_point_slope_rat_payload.py
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean
+```
+
+First theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_rat_generated
+```
+
+Then prove exact nominal point evaluation:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_localCenter_eq_rat
+```
+
+Final theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated
+```
+
+Routing guard: active-scale interval times signed raw interval must use four
+corners through min/max; do not assume the raw-row sign.  If the final interval
+does not instantiate either positive or negative point-slope kill, the result
+is inconclusive, not Step33A.1-A closure.
+
+Failure code:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAWPRODUCT18_POINT_RAT_MIRROR_GAP
+```
+
+### 2026-06-24 Rat point-row payload checked
+
+Implemented and direct-Lean checked the separate Rat mirror payload:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean
+```
+
+New checked theorem surfaces:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_rat_generated
+primaryFiniteRow0Parent0Split100Sub0_activeScaled_componentProductActual_order17_point_interval_rat_generated
+primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_localCenter_eq_rat
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated
+```
+
+The payload uses the checked tight active-scale interval, four-corner
+min/max multiplication against the signed raw interval, and a structural
+Rat-cast evaluation of `deriv NominalOrder16Poly` at the local centers.
+
+Regenerated audit result:
+
+```text
+proofStatus = rat_payload_present_budget_kill_not_closed
+ratPayloadLeanChecked = true
+rawProduct18PointAssemblyPresent = true
+finalCollapsedPointRowPresent = true
+shouldEmitLeanPayload = false
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAT_POINT_ROW_BUDGET_KILL_GAP
+```
+
+Additional Rat payload audit artifacts:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_point_slope_rat_payload.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rat_payload.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rat_payload.md
+```
+
+Boundary: this is proof-grade point-row payload progress, not Step33A.1-A
+closure.  The next exact proof gate is to either instantiate
+`positive_row_budget_impossible` / `negative_row_budget_impossible` from the
+current Rat row or prove that this row is too coarse and must be replaced by a
+true point-specific RawProduct18 Rat mirror.
+
+### 2026-06-24 Rat point-row budget audit fail-closed
+
+Computer Use / Proshka route check confirmed option `A`: delete the
+unvalidated `PointSlopeRatBudgetFail.lean` attempt, keep a Python audit as
+diagnostic only, and return the live gate to the direct whole-expression
+generator.
+
+New audit artifacts:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_point_slope_rat_audit.md
+```
+
+Audit result:
+
+```text
+proofStatus = fail_closed_rat_point_row_budget_kill_unvalidated
+proofGrade = false
+diagnosticGrade = true
+leanBudgetKillClaimAllowed = false
+step33A1AClosureClaimAllowed = false
+unvalidatedLeanBudgetFailFileExists = false
+previousGap = STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAT_POINT_ROW_BUDGET_KILL_GAP
+currentGap = STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP
+```
+
+Boundary: the Rat point-row payload remains checked support, and the
+two-segment factorwise budget kill remains a checked related obstruction, but
+there is no Lean-validated theorem that the current Rat point rows instantiate
+`positive_row_budget_impossible` or `negative_row_budget_impossible`.
+
+Next implementable patch:
+
+```text
+scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py
+```
+
+Do not spend further factorwise point-row budgets as Step33A.1-A closure.
+
+### 2026-06-24 Direct signed-source follow-up answered
+
+Used the already-open in-app Browser/Computer Use Proshka thread for the
+narrow segment0 source-row question.  The follow-up answer selected `CHOICE: A`:
+build a direct rational/interval generator for the already-subtracted signed
+expression
+
+```text
+ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)
+```
+
+and feed the existing degree-0 signed-source receiver only after proof-grade
+rows exist.
+
+Updated and regenerated:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.py
+scripts/generate_step33_a1_sub0_collapsed_degree0_signed_source.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_source_rows.md
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_signed_source.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_signed_source.md
+```
+
+Current generated status:
+
+```text
+direct rows schema = q3_psdpd_step33_a1_sub0_collapsed_degree0_direct_signed_source_payload_gate.v3
+computerUseFollowUpStatus = answered
+computerUseFollowUpChoice = A
+selectedProofGradeSource = direct_rational_interval_generator_for_complete_signed_expression
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+```
+
+Boundary: this is advisory route synchronization and fail-closed source-row
+pinning.  No Lean proof payload was emitted, and Step33A.1-A is not closed.
+The next proof-producing object is still the first uniform exact interval row
+for the whole signed expression, beginning with segment0.
+
+### 2026-06-24 Direct signed segment0 Taylor-model gate
+
+Computer Use / Proshka was used again on the already-open route thread for the
+exact next object after the direct signed-source rows gate.  The answer chose a
+direct segment-0 Taylor-model certificate for the complete already-subtracted
+signed expression
+
+```text
+ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)
+```
+
+New fail-closed generator and ledgers:
+
+```text
+scripts/generate_step33_a1_sub0_collapsed_degree0_direct_signed_segment0.py
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_segment0_taylor_model.json
+ACTIVE/requests/step33_bootstrap/step33_a1_sub0_collapsed_degree0_direct_signed_segment0_taylor_model.md
+```
+
+The direct rows gate was bumped to schema
+`q3_psdpd_step33_a1_sub0_collapsed_degree0_direct_signed_source_payload_gate.v4`
+and now records the narrower first-row source:
+
+```text
+selectedFirstRowSource =
+  direct_segment0_taylor_model_certificate_for_complete_signed_expression
+segment0TaylorModelGateProofStatus =
+  fail_closed_missing_direct_signed_segment0_taylor_model_source
+segment0TaylorModelGateGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Boundary: no Lean payload file was emitted and no Step33A.1-A closure is
+claimed.  The next proof-producing patch is the exact signed Leibniz assembly
+and rational segment0 Taylor-model source producing `modelCoeff`,
+`remainderAbs`, Horner bounds, and then
+`primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated`.
+
+### 2026-06-24 Direct signed segment0 Computer Use bridge audit v3
+
+The already-open Browser/Computer Use route thread was inspected again.  The
+visible Proshka answer names the intended local-factor-to-whole-expression
+bridge and the exact failure code to use if the source cannot be produced:
+
+```text
+STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_LOCAL_FACTOR_JETS_TO_WHOLE_EXPRESSION_TAYLOR_MODEL_GAP
+```
+
+The segment0 gate now records the observed theorem names
+`iteratedDeriv_norm_le_centeredTaylorDerivMajorant18`,
+`primaryFiniteRow0Parent0Split100Sub0_rawProductActual_order18_eq_signedLeibniz`,
+`primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_eq_rawProduct18`,
+`primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_eq_poly`, and
+`primaryFiniteRow0Parent0Split100Sub0_activeScale_mem_tightInterval`.
+
+Local audit result:
+
+```text
+component assembly center = 1/20
+segment0 target center = 1/40
+componentPropagationRemainderAbs = missing
+residualTaylorRemainderAbs = missing
+target segment0 payload present = false
+```
+
+Boundary: the component assembly and generic Taylor receivers are useful
+support, but not a proof-grade same-center segment0 certificate for the
+already-subtracted signed expression.  No Lean proof file was modified or
+emitted.
+
+### 2026-06-24 Direct signed segment0 derivative-model bridge
+
+The first generic Lean-side bridge requested by the Browser/Computer Use route
+answer was added in an isolated file:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeModel18.lean
+```
+
+New checked theorem:
+
+```text
+iteratedDeriv_sub_centeredTaylorDerivPolynomial18_norm_le
+```
+
+This proves that approximate normalized center jets through order 17 plus a
+uniform order-18 bound produce a polynomial model for `iteratedDeriv k f` with
+the explicit `centeredTaylorDerivError18` budget.
+
+Validation:
+
+```text
+LEAN_PATH=".lake/build/lib/lean:$(find .lake/packages -path '*/.lake/build/lib/lean' -type d | paste -sd: -)" lean Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeModel18.lean
+rg -n "sorry|admit|exact\?|axiom|unsafe" Q3/Proofs/PSD_CenteredCoeffRawOmegaACenteredTaylorDerivativeModel18.lean
+```
+
+Note: `lake env lean` currently hangs even for `lean --version`, so the direct
+`LEAN_PATH` check was used.  The segment0 direct signed payload remains absent;
+the current gate is still
+`STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_TAYLOR_MODEL_SOURCE_GAP`.
+
+Follow-up Browser/Computer Use answer chose route `C`: build the next bridge in
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0LocalFactorTaylorModelBridge.lean
+```
+
+The newly checked `CenteredTaylorDerivativeModel18` file supplies the first
+helpers for that bridge:
+`centeredTaylorDerivPolynomial18`, `centeredTaylorDerivError18`, and
+`centeredTaylorDerivPolynomial18_abs_bound`.  The remaining work is the
+local-factor-to-whole-expression theorem and concrete rational rows.
+
+### 2026-06-24 Direct signed segment0 source-material audit v2
+
+The segment0 Taylor-model gate was tightened after local inspection of the
+available proof cargo.  The generator now records that the following support is
+present:
+
+```text
+RawD17SharpLocalCenterJets18Payload:
+  local signed factor center-jet intervals at 1/40 and 3/40
+  factor order18 bounds on the raw-D17 segments
+CollapsedDegree0RawD17SignedFactorRows/Payload:
+  signed Leibniz receiver/support
+  segment0 smoke payload
+  exact budget-not-spendable theorem
+NominalPolyDerivRows:
+  nominal polynomial derivative interval row
+```
+
+Current segment0 gate:
+
+```text
+schema =
+  q3_psdpd_step33_a1_sub0_collapsed_degree0_direct_signed_segment0_taylor_model_gate.v2
+firstUnmetInput =
+  whole_expression_modelCoeff_and_remainder_from_signed_leibniz_assembly
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Boundary: existing rows are support, not proof cargo for the spendable route.
+The missing object is still a same-segment whole-expression Taylor-model
+certificate for the already-subtracted signed expression, with `modelCoeff`,
+`remainderAbs`, a Lean-checkable remainder theorem, Horner bounds, and final
+`sourceLower/sourceUpper`.
+
+### 2026-06-24 Direct signed-source Computer Use resync v5/v11
+
+The in-app Browser/Computer Use thread was used again for the current
+Step33A.1-A direct signed-source blocker.  The stable local decision is now
+recorded as `CHOICE: A` in both active ledgers: build a direct
+rational/interval generator for the complete already-subtracted signed
+expression
+
+```text
+ActiveScaleCoeff * D17(ComponentProductActual) - deriv(NominalOrder16Poly)
+```
+
+Regenerated status:
+
+```text
+direct rows schema =
+  q3_psdpd_step33_a1_sub0_collapsed_degree0_direct_signed_source_payload_gate.v5
+signed source schema =
+  q3_psdpd_step33_a1_sub0_collapsed_degree0_signed_source.v11
+computerUseChoice = A
+computerUseFollowUpChoice = A
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POLY_DERIV_SIGNED_SOURCE_GAP
+segment0TaylorModelGateGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Boundary: no Lean proof payload was emitted.  The exact next
+proof-producing object remains the segment0 whole-expression Taylor-model
+source producing a Lean-checkable remainder theorem and then
+`primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated`.
+
+### 2026-06-24 Direct signed segment0 local-factor Taylor18 bridge
+
+Route `C` from the Browser/Computer Use follow-up is now Lean-checked as a
+bridge surface in:
+
+```text
+Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0LocalFactorTaylorModelBridge.lean
+```
+
+New checked theorem:
+
+```text
+primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_remainder_of_localFactorTaylor18
+```
+
+The theorem proves that a valid segment0 local-factor Taylor18 certificate,
+including factor center-jet rows, order18 rows, polynomial range rows,
+Leibniz term-corner rows, rawAssembly, nominal derivative rows, and raw/poly
+subtraction bookkeeping, produces the already-subtracted signed-source segment
+row consumed by the existing collapsed degree-0 receiver.
+
+Regenerated segment0 gate:
+
+```text
+schema =
+  q3_psdpd_step33_a1_sub0_collapsed_degree0_direct_signed_segment0_taylor_model_gate.v3
+proofStatus =
+  fail_closed_missing_local_factor_taylor18_segment0_payload
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_LOCAL_FACTOR_TAYLOR18_SEGMENT0_PAYLOAD_GAP
+previousSourceGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SEGMENT0_TAYLOR_MODEL_SOURCE_GAP
+```
+
+Validation used direct Lean with the local `.lake` search path for the new
+bridge and the centered Taylor helper chain.  Hole scan on the touched Lean
+surface returned no `sorry`, `admit`, `exact?`, `axiom`, or `unsafe`.
+`gtimeout 90s bash scripts/q3_check.sh ...LocalFactorTaylorModelBridge.lean`
+timed out after starting Lean, matching the current local wrapper hang pattern;
+it is not claimed as passed.
+
+Boundary: this is not a generated payload and not Step33A.1-A closure.  The
+next proof-producing patch is the concrete
+`Step33Sub0CollapsedDegree0LocalFactorTaylor18Segment0Cert.Valid` payload rows
+and exact final budget rows.
+
+latest_local_file_2026_06_24_local_factor_taylor18_payload: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0LocalFactorTaylorModelPayload.lean
+latest_local_theorem_2026_06_24_local_factor_taylor18_payload: primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_localFactorTaylor18_segment0_valid; primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_of_localFactorTaylor18_payload
+latest_closed_support_2026_06_24_local_factor_taylor18_payload: Lean-checked concrete segment0 local-factor Taylor18 certificate; closes `STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_LOCAL_FACTOR_TAYLOR18_SEGMENT0_PAYLOAD_GAP`
+latest_open_support_2026_06_24_local_factor_taylor18_payload: no Step33A.1-A closure and no final direct signed-source budget spend claimed
+latest_next_patch_2026_06_24_after_local_factor_taylor18_payload: connect the checked signed-source segment0 receiver output to the active direct degree-0 budget/ledger target, or emit the exact budget failure if constants do not fit
+
+latest_local_file_2026_06_24_direct_signed_segment0_payload: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourceSegment0Payload.lean
+latest_local_theorem_2026_06_24_direct_signed_segment0_payload: primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_signedSource_segment0_interval_generated; primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_segment0_valid_generated
+latest_closed_support_2026_06_24_direct_signed_segment0_payload: first segment0 direct signed-source interval theorem is Lean-checked on `[0, 1/20]`
+latest_open_support_2026_06_24_direct_signed_segment0_payload: full segment-family cover beyond segment0, exact derivAbs containment, and degree-0 budget rows remain open; no Step33A.1-A closure
+latest_next_patch_2026_06_24_after_direct_signed_segment0_payload: build remaining segment rows/cover and exact budget rows for `Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert.Valid`
+
+latest_local_file_2026_06_24_direct_signed_parent_surface: q3.lean.aristotle/Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0DirectSignedSourcePayload.lean
+latest_local_theorem_2026_06_24_direct_signed_parent_surface: primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_segment0_parent_valid; primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_directSignedSource_segment0_only_family_not_cover
+latest_closed_support_2026_06_24_direct_signed_parent_surface: Lean proves the checked segment0 row is a valid parent-surface segment row and also proves the segment0-only family does not cover `[0,1/10]`
+latest_route_level_gap_2026_06_24_after_direct_signed_parent_surface: STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SOURCE_UNIFORM_SEGMENT_ROWS_GAP
+latest_payload_status_2026_06_24_direct_signed_parent_surface: direct source rows gate schema v6 records `segment0_checked_missing_uniform_family_budget`; segment0 Taylor gate schema v4 records `segment0_interval_checked_missing_family_budget`
+latest_next_patch_2026_06_24_after_direct_signed_parent_surface: generate/prove remaining direct signed-source segment rows beyond segment0, then exact `derivAbs` and degree-0 budget rows for `Step33Sub0CollapsedDegree0SignedSourceSegmentFamilyCert.Valid`
+
+latest_local_theorem_2026_06_24_raw_d17_sharp_support_kill_parent_surface: primaryFiniteRow0Parent0Split100Sub0DirectSignedSourceRawD17SharpTwoSegmentFamily; primaryFiniteRow0Parent0Split100Sub0_directSignedSource_rawD17SharpTwoSegment_segment_rows_valid; primaryFiniteRow0Parent0Split100Sub0_directSignedSource_rawD17SharpTwoSegment_cover; primaryFiniteRow0Parent0Split100Sub0_directSignedSource_rawD17SharpTwoSegment_budget_not_spendable
+latest_closed_support_2026_06_24_raw_d17_sharp_support_kill_parent_surface: Lean proves the raw-D17 sharp factorwise two-segment support class has valid segment rows and full `[0,1/10]` cover
+latest_kill_2026_06_24_raw_d17_sharp_support_kill_parent_surface: Lean also proves that same support class is not spendable against the collapsed degree-0 budget; this is a kill certificate, not closure
+latest_route_level_gap_2026_06_24_after_raw_d17_sharp_support_kill_parent_surface: STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_DIRECT_SIGNED_SOURCE_UNIFORM_SEGMENT_ROWS_GAP
+latest_next_patch_2026_06_24_after_raw_d17_sharp_support_kill_parent_surface: build a stronger direct whole-expression segment-row source, not the budget-killed raw-D17 factorwise class
+
+latest_route_review_2026_06_24_after_stale_bridge_answer:
+Browser/Computer Use was used on the open Proshka/Louise thread after a stale
+answer suggested the already checked local-factor bridge.  The corrected
+visible answer chose route `A`: continue toward the direct whole
+`CollapsedExpression` rational/Horner row-source and eventual
+`Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectConcretePayload.lean`.
+This is advisory only.  Local guardrail: do not emit `DirectConcretePayload.lean`
+until segment0, segment1, Horner range rows, exact `[0,1/10]` cover, and final
+`+/- BiasedResidualRemainderAbs` budget rows exist.  The current live gap
+remains
+`STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`, with
+first missing local row theorem
+`primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder`.
+latest_next_patch_2026_06_24_after_stale_bridge_answer:
+build the proof-grade direct whole-expression row-source rows; keep
+`PointSlopeRatPayload` diagnostic-only and do not create a wrapper-only
+`DirectConcretePayload.lean`.
+
+latest_local_step_2026_06_25_whole_expression_pilot_source_data_gate_v1:
+`scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py`
+now exists and writes
+`ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.{json,md}`.
+It is a fail-closed Phase 2 source-data gate, not a proof object.
+
+Pilot output:
+
+```text
+schema =
+  q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.v1
+phase2ResultNow =
+  NOT_RUN_SOURCE_DATA_GAP
+currentGap =
+  STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP
+sourceDataReady =
+  false
+```
+
+The direct certificate preflight is regenerated as schema
+`q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v16`
+and now loads this pilot output.
+
+Exact missing artifacts:
+
+```text
+complete_collapsed_expression_coeff_stream
+collapsed_segment_remainder_rows
+source_interval_generated_or_direct_horner_valid
+direct_concrete_payload_file
+```
+
+This is `GAP_EXACTLY_NAMED_WITH_NEXT_CERT_INTERFACE`: no pilot verdict
+(`PASS_STABLE_MARGIN`, `NEGATIVE_MARGIN`, `UNSTABLE_MARGIN`, or
+`SEGMENT_EXPLOSION`) was produced because the same-target proof source data is
+absent.  No Lean proof files were touched, no `DirectConcretePayload.lean` was
+created, and Step33A.1-A is not closed.
+
+latest_next_patch_2026_06_25_after_whole_expression_pilot_source_data_gate:
+produce the same-target `CollapsedExpression` coefficient stream plus
+proof-grade source-interval rows feeding
+`primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_source_interval`,
+or equivalently a concrete
+`primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid`
+payload, then rerun the pilot gate.

@@ -5,14 +5,14 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Verdict
 
-- proofStatus: `blocked_missing_d16_center_d17_uniform_source`
+- proofStatus: `blocked_missing_horner_rows_after_degree0_source`
 - proofGrade: `False`
-- proofSafeClosedFields: `2`
+- proofSafeClosedFields: `3`
 - interfaceReady: `True`
 - outLeanWritten: `False`
 - currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
 - firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
-- firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
+- firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
 - leanValidationStatus: `not_run_payload_not_emitted`
 
 ## Target Lean Surface
@@ -23,6 +23,7 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `degree0SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
 - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
 - `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
+- `degree0BudgetGeneratedTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated`
 - `familyValidTarget`: `Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid`
 - `payloadTarget`: `primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily`
 
@@ -42,9 +43,9 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `path`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
 - `markdown`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.md`
 - `schema`: `q3_psdpd_step33_a1_sub0_active_actual_order16_degree0_payload.v5`
-- `proofGrade`: `False`
-- `budgetPassed`: `None`
-- `firstFailure`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
+- `proofGrade`: `True`
+- `budgetPassed`: `True`
+- `firstFailure`: `None`
 - `receiverReady`: `True`
 - `activeScaleAbs`: `95492965855137201461330258024/1000000000000000000000000000000`
 - `activeScaleProofGrade`: `True`
@@ -54,6 +55,12 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `rawProduct18BudgetAuditChecked`: `True`
 - `rawProduct18Order17Abs`: `536101492457011486373710878060534674555768693644010900930419739115781589076738679598264326...310667112469673156738281250000000000000000000000000000000000000000000000000000000000000000 (len=24620)`
 - `rawProduct18Order17AbsEvalError`: `None`
+- `degree0CenterBudgetAuditChecked`: `True`
+- `degree0CenterBudgetValues`: `{"coeff0": "0", "coeffErrorAbs": "432097333220807732737269131883604812946442340352715460669938517334554061124946351914901069...000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (len=24647)", "order17Abs": "536101492457011486373710878060534674555768693644010900930419739115781589076738679598264326...310667112469673156738281250000000000000000000000000000000000000000000000000000000000000000 (len=24620)", "polyErrorAbs": "917303650681634865534253804516394571240760330605472010236160329700392244710094113564999257...000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (len=24671)"}`
+- `degree0CenterBudgetEvalError`: `None`
+- `coeff0`: `0`
+- `coeffErrorAbs`: `432097333220807732737269131883604812946442340352715460669938517334554061124946351914901069...000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (len=24647)`
+- `polyErrorAbs`: `917303650681634865534253804516394571240760330605472010236160329700392244710094113564999257...000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 (len=24671)`
 - `omegaPrimeOrder17AnalyticTsumSourceChecked`: `True`
 - `omegaPrimeOrder17UniformSourceChecked`: `True`
 - `omegaPrimeOrder17Abs`: `1024379792916537436656292891459584/152587890625`
@@ -71,10 +78,12 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `zeroExtendDef`: `primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29`
 - `transferTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree`
 - `degree0SourceBridge`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean`
+- `degree0CenterBudgetAudit`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean`
 - `degree0SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source`
 - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
 - `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
-- `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
+- `degree0BudgetGeneratedTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated`
+- `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
 - `d17UniformRoute`: `{'selectedRoute': 'B_rawProduct18', 'bridgeSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'bridgeReady': True, 'majorantReceiverSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean', 'majorantReceiverReady': True, 'uniformSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean', 'uniformSourceReady': True, 'failureIfUniformSourceMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP', 'shapeSqOrder18Source': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean', 'shapeSqOrder18SourceReady': True, 'omegaPrimeOrder17AnalyticSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean', 'omegaPrimeOrder17AnalyticSourceReady': True, 'omegaPrimeOrder17RationalSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean', 'omegaPrimeOrder17RationalPayload': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.json', 'omegaPrimeOrder17RationalSourceReady': True, 'omegaPrimeOrder17Abs': '1024379792916537436656292891459584/152587890625', 'remainingFactorSources': []}`
 - `fullDegree29Specialization`: `{'coefficientJetOrdersNeeded': '16..45', 'uniformRemainderDerivativeOrderNeeded': 46, 'firstMissingSubgapIfChosen': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP'}`
 
@@ -90,15 +99,19 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ### S1_low_degree_activeActual_row
 
-- `status`: `missing`
+- `status`: `checked`
 - `required`: `Use the degree-0 source first: supply a Rat coeff0 for activeScale * D^16(ComponentProductActual) at center 1/20`
+- `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean`
+- `coeff0`: `0`
 - `degreePolicy`: `low-degree row accepted via checked zero-extension into Fin30`
 - `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 
 ### S2_low_degree_uniform_remainder
 
-- `status`: `missing`
+- `status`: `checked`
 - `required`: `D16 center enclosure, D17 uniform bound, and exact rational budget`
+- `source`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean`
+- `theorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated`
 - `analyticOrderForDegree0`: `D16 center plus D17 uniform derivative source`
 - `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
 
@@ -200,6 +213,8 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `rawProduct18UniformSourceChecked`: `True`
 - `rawProduct18BudgetAuditChecked`: `True`
 - `rawProduct18Order17AbsExported`: `True`
+- `degree0CenterBudgetAuditChecked`: `True`
+- `degree0CenterBudgetValuesExported`: `True`
 - `omegaPrimeOrder17AnalyticTsumSourceChecked`: `True`
 - `omegaPrimeOrder17UniformSourceChecked`: `True`
 - `omegaPrimeOrder17RationalPayloadChecked`: `True`
@@ -207,10 +222,10 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `realSincOrder18DerivativeSourceChecked`: `True`
 - `shapeSqOrder18UniformSourceChecked`: `True`
 - `degree0PreflightWritten`: `True`
-- `degree0BudgetPassed`: `None`
+- `degree0BudgetPassed`: `True`
 - `activeScaleBoundChecked`: `True`
-- `activeActualLowDegreeSegmentRemainderSourceChecked`: `False`
-- `activeActualD16CenterD17UniformSourceChecked`: `False`
+- `activeActualLowDegreeSegmentRemainderSourceChecked`: `True`
+- `activeActualD16CenterD17UniformSourceChecked`: `True`
 - `activeActualD46UniformRemainderSourceChecked`: `False`
 - `activeActualCoeffOrders16To45Checked`: `False`
 - `smokeSegmentValidChecked`: `False`
@@ -245,9 +260,10 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 - `used`: `True`
 - `advisoryOnly`: `True`
 - `recommendedOption`: `A`
-- `firstFileToEdit`: `scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py`
+- `firstFileToEdit`: `Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean`
 - `exactOutputObject`: `ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json`
-- `decision`: `Add a fail-closed degree-0 preflight for the checked Degree0Source receiver before D18, higher degree, D46, or Lean payload emission.`
+- `decision`: `Use the checked RawProduct17 center bridge only for hCenter, then spend the checked RawProduct18 Rat order17Abs in the exact degree-0 budget receiver.`
+- `degree0CenterBudgetAuditChecked`: `True`
 - `budgetFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_REMAINDER_BUDGET_CONSTANT_FAIL`
 - `d17SourceFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D17_UNIFORM_SOURCE_GAP`
 - `rawProduct18UniformSourceFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP`
@@ -339,4 +355,4 @@ route: `active_actual_order16_horner_payload_smoke_segment`
 
 ## Next Implementable Patch
 
-Build the proof-grade D16 center enclosure for the activeActual degree-0 source, export coeffErrorAbs/polyErrorAbs, and run the exact degree-0 budget comparison using the checked RawProduct18 Rat order17Abs before emitting any Lean payload.
+Emit the concrete activeActual Horner segment rows from the checked degree-0 source theorem, then validate the segment/family receiver. Do not reopen D16/D17 unless the row emission mismatches the receiver.

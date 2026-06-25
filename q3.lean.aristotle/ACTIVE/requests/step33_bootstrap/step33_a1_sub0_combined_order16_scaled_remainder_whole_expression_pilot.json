@@ -1,0 +1,128 @@
+{
+  "acceptedPilotVerdicts": [
+    "PASS_STABLE_MARGIN",
+    "NEGATIVE_MARGIN",
+    "UNSTABLE_MARGIN",
+    "SEGMENT_EXPLOSION"
+  ],
+  "checkedSupport": {
+    "collapsedSourceIntervalReceiver": {
+      "exists": true,
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedSourceIntervalCert.lean",
+      "symbols": {
+        "Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedSourceIntervalCert": true,
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_source_interval": true
+      }
+    },
+    "collapsedTaylorReceiver": {
+      "exists": true,
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectCollapsedTaylorSource.lean",
+      "symbols": {
+        "Step33Sub0CombinedOrder16ScaledRemainderDirectCollapsedTaylorCert": true,
+        "collapsed_segment_remainder_of_centerJet15_order16": true
+      }
+    },
+    "directHornerSourceBridge": {
+      "exists": true,
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectHornerSourceBridge.lean",
+      "symbols": {
+        "of_collapsed_horner_range": true,
+        "valid_of_collapsed_horner_rows": true
+      }
+    },
+    "directSourceBridge": {
+      "exists": true,
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectSourceBridge.lean",
+      "symbols": {
+        "combinedOrder16ScaledRemainder_eq_collapsedExpression": true,
+        "combinedOrder16ScaledRemainder_sourceProp_of_collapsed_interval": true,
+        "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderCollapsedExpression": true
+      }
+    },
+    "nominalPolynomialBridge": {
+      "exists": true,
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NominalPolynomialBridge.lean",
+      "symbols": {
+        "combinedOrder16CollapsedExpression_eq_activeActual_sub_nominalOrder16Poly": true,
+        "primaryFiniteRow0Parent0Split100Sub0NominalOrder16Coeff": true
+      }
+    }
+  },
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP",
+  "generatedAt": "2026-06-25T11:53:55.937274+00:00",
+  "missingArtifacts": [
+    {
+      "currentEvidence": "PARTIAL_NOMINAL_POLY_BRIDGE_PRESENT_COMPLETE_STREAM_ABSENT",
+      "id": "complete_collapsed_expression_coeff_stream",
+      "present": false,
+      "required": "proof-grade rational coefficients for the complete CollapsedExpression on each chosen segment"
+    },
+    {
+      "id": "collapsed_segment_remainder_rows",
+      "present": false,
+      "required": "Lean-visible rows proving CollapsedExpression minus the generated rawOmegaATaylorPolynomial is bounded on every segment",
+      "theorem": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder"
+    },
+    {
+      "acceptedInterfaces": [
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_source_interval",
+        "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid"
+      ],
+      "id": "source_interval_generated_or_direct_horner_valid",
+      "present": false,
+      "required": "either a concrete source-interval generated theorem feeding the checked receiver, or a concrete DirectHorner valid theorem"
+    },
+    {
+      "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ScaledRemainderDirectConcretePayload.lean",
+      "id": "direct_concrete_payload_file",
+      "present": false,
+      "required": "DirectConcretePayload.lean only after segment rows, Horner rows, exact cover, and budget rows exist"
+    }
+  ],
+  "nextCertificateInterface": {
+    "alternative": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainderDirectHorner_valid",
+    "mustInclude": [
+      "exact segment cover of Set.Icc 0 (1/10)",
+      "same-target collapsedExpression coefficients",
+      "proof-grade remainder rows per segment",
+      "Horner lower/upper rows if using the Horner receiver",
+      "final +/- BiasedResidualRemainderAbs budget rows"
+    ],
+    "preferred": "interval_or_rational_source_interval_rows",
+    "receiver": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder_of_source_interval"
+  },
+  "nextImplementablePatch": "Produce the same-target collapsedExpression coefficient stream plus proof-grade source-interval or direct-Horner remainder rows; then rerun this pilot.",
+  "noPilotComputationReason": "complete same-target coefficient/remainder source data is absent",
+  "parentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP",
+  "payloadLedger": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.json",
+  "payloadLedgerExactCoefficientSource": {
+    "notes": [
+      "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeff is a model coefficient source, not the direct collapsed-expression residual coefficient stream.",
+      "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16NonzeroModelCoeff is the already-subtracted model coefficient source, not coefficients for ComponentSource - NonzeroModelPoly.",
+      "The nominal polynomial bridge extracts the rational nominal subtracted polynomial only; it is not a complete coefficient stream for collapsedExpression.",
+      "The checked collapse and nominal polynomial bridge do not produce Horner rows or an analytic remainder bound."
+    ],
+    "partialBridgeFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16NominalPolynomialBridge.lean",
+    "partialBridgeTheorem": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16CollapsedExpression_eq_activeActual_sub_nominalOrder16Poly",
+    "status": "PARTIAL_NOMINAL_POLY_BRIDGE_PRESENT_COMPLETE_STREAM_ABSENT"
+  },
+  "phase2ResultNow": "NOT_RUN_SOURCE_DATA_GAP",
+  "pilotVerdict": null,
+  "preserveCancellation": true,
+  "proofGrade": false,
+  "proofTruth": {
+    "acceptedPilotVerdictProduced": false,
+    "directConcretePayloadWritten": false,
+    "leanFilesModified": false,
+    "numericSamplingUsedAsProof": false,
+    "step33A1AClosed": false
+  },
+  "route": "Step33A.1-A direct whole-expression CollapsedExpression pilot",
+  "schema": "q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.v1",
+  "sourceDataReady": false,
+  "sourceDataStatus": "source_data_gap",
+  "status": "source_data_gap",
+  "targetExpression": "primaryFiniteRow0Parent0Split100Sub0CombinedOrder16ScaledRemainderCollapsedExpression",
+  "targetInterval": "Set.Icc (0 : Real) ((1 : Real) / 10)",
+  "targetReceiver": "primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder"
+}

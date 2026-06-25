@@ -1,0 +1,246 @@
+{
+  "advisoryRouteReview": {
+    "advisoryOnly": true,
+    "proofClaimAllowedNow": false,
+    "recommendedOption": "B",
+    "source": "Computer Use / Proshka route review 2026-06-23"
+  },
+  "doNotWriteLeanPayloadYet": true,
+  "failureCodeIfBudgetFalse": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL",
+  "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL",
+  "inputs": {
+    "activeActualCandidate": {
+      "limitation": "This is a source-model center-jet interval layer, not a whole-cell degree-45 component Taylor remainder proof.",
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "proofStatusKeys": {
+        "activeActualCenterJetRowsFilePresent": true,
+        "activeActualCenterRowIntervalFromFactorRowsPresent": true,
+        "activeActualFactorIntervalReceiverPresent": true,
+        "activeActualProductRowIntervalsPresent": true,
+        "sourceIntervalCertToResidualIntervalPresent": true,
+        "sourceNormalFormActiveActualSourceIntervalValidPresent": true
+      }
+    },
+    "coarseP45Source": {
+      "budgetKillPath": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean",
+      "budgetKillReady": true,
+      "budgetKillTheorem": "primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail",
+      "budgetName": "primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget",
+      "budgetSourcePath": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean",
+      "limitation": "This is a formal coarse P45 source and a formal negative budget comparison.  It is alive as source evidence, but not a closing Step33A.1-A certificate.",
+      "path": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+      "sourceReady": true,
+      "sourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightAssembledSource",
+      "spendableForStep33A1A": false,
+      "transportTheorem": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure"
+    },
+    "coefficientAssembly": {
+      "algebraicAssemblyCrosswalkPassed": true,
+      "assembledRawDerivCoeffLength": 46,
+      "componentPropagationRemainderAbs": null,
+      "componentTaylorProofsPresent": false,
+      "firstFailure": "STEP33_A1_SUB0_SHAPESQ_DERIV_EXPLICIT_CAUCHY_ROWS_2_TO_15_ORDER16_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json",
+      "residualTaylorCoeffLength": 46,
+      "residualTaylorRemainderAbs": null,
+      "schema": "q3_psdpd_step33_a1_sub0_component_taylor_exact_assembly_certificate.v1",
+      "status": "algebraic_assembly_payload_checked_remainder_source_open"
+    },
+    "componentResidualLedger": {
+      "componentTaylorRemainder": null,
+      "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
+      "path": "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json",
+      "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19",
+      "status": "fail_closed_shapesq_same_coeff_payload_checked_component_remainder_gap"
+    }
+  },
+  "leanPayloadWritten": false,
+  "nextImplementablePatch": {
+    "action": "build_sharper_component_taylor_remainder_interval_generator",
+    "description": "Generate sharper rational/interval signed rows for the exact target expression, compute a smaller ComponentPropagationRemainderAbs plus ResidualTaylorRemainderAbs, and keep Lean output disabled until all rows and the exact rational budget comparison pass.",
+    "ifBudgetFalse": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL",
+    "ifRowsMissing": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SHARPER_SIGNED_ROW_SOURCE_GAP"
+  },
+  "proofGrade": false,
+  "requiredRows": [
+    {
+      "artifact": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+      "id": "R0_exact_degree45_assembly_coefficients",
+      "notes": "Lean list equalities materialize AssembledRawDerivCoeff and ResidualTaylorCoeff, but they do not bound the analytic component remainder.",
+      "status": "FORMAL_PAYLOAD_LIST_EQ_ONLY"
+    },
+    {
+      "artifact": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+      "id": "R1_active_actual_center_row_intervals",
+      "notes": "Rows are only center-jet row intervals for the activeActual source-model layer in degrees 0..15 after model subtraction. They are not yet the whole-cell bound for ActualComponent - P45(AssembledRawDerivCoeff).",
+      "status": "FORMAL_INPUT_CANDIDATE"
+    },
+    {
+      "artifact": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+      "id": "R2_direct_signed_component_remainder_rows",
+      "notes": "A formal coarse P45 source exists for RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 45 (1/20) AssembledRawDerivCoeff eta on Set.Icc 0 (1/10), bounded by primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget.  The local budget-kill file proves this coarse symmetric budget is too wide, so sharper signed rows are still missing for closure.",
+      "status": "FORMAL_COARSE_SOURCE_PRESENT_BUDGET_KILLED"
+    },
+    {
+      "artifact": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+      "id": "R3_componentPropagationRemainderAbs",
+      "notes": "The available candidate is primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget; it is formal, but not spendable as the final component remainder budget because the exact budget comparison fails.",
+      "status": "FORMAL_COARSE_CANDIDATE_BUDGET_KILLED"
+    },
+    {
+      "artifact": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+      "id": "R4_residualTaylorRemainderAbs",
+      "notes": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure transports the coarse source into the residual derivative enclosure, but it carries the same budget-killed coarse constant.",
+      "status": "FORMAL_COARSE_CANDIDATE_BUDGET_KILLED"
+    },
+    {
+      "artifact": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean",
+      "id": "R5_exact_rational_budget_comparison",
+      "notes": "primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail proves the coarse source width exceeds the target interval width, so the first failure for the current local source is STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL.",
+      "status": "FORMAL_FAIL_COARSE_SOURCE"
+    }
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_remainder_payload.v2",
+  "sourceHashes": {
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_combined_cancellation_interval_certificate.json": "3ca730c857447b27571d7c1fa42076add142653d13b2835a521ce9ca6a58af50",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_exact_assembly_certificate.json": "757b2e1a41cc4c839c7dfa4b926739101bf07529ab7601876c78ee7ebb60f0ef",
+    "ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_taylor_residual_payload.json": "e4b6e5a93830c60022d4ce67eab5ce8387d57dfa7be7e40fa09a0f5f80e2c39b",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean": "724577b57337b00d52eda470d47b245dd558c913d289e5153f464227c65f62f4",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean": "b143a7bacb1c90fd256762b490fb301ae3b39f5e23337693c0e21771ee084814",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean": "43f0567f1ef89888fdc190d5dc2ddcb4ecaa8d23233e74078f260ca3fb1ecffb",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean": "c2bf1d993ddab6bb37e3999da2a107d6768c2a35c486a32e6474373e20c1012e",
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean": "61659e34ba42cbd268a501cdee8afaad13b4e8b951cb0b1282f4c81f16bbbfe6"
+  },
+  "status": "fail_closed_component_taylor_remainder_coarse_source_budget_killed",
+  "symbolInventory": {
+    "activeActualRows": [
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+        "line": 898,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowLower"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+        "line": 903,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCenterJetRowUpper"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+        "line": 927,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_activeActual_centerJet_row_interval_from_factor_rows"
+      }
+    ],
+    "coarseP45Bridge": [
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+        "line": 129,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightAssembledSource"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+        "line": 144,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightProductSource.lean",
+        "line": 55,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0TightProductAssemblyErrorBudget"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorTightBudgetKill.lean",
+        "line": 30,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail"
+      }
+    ],
+    "coefficientPayload": [
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+        "line": 25,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeffPayload"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+        "line": 74,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0ResidualTaylorCoeffPayload"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+        "line": 123,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_assembledRawDerivCoeff_payload_eq"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+        "line": 128,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_residualTaylorCoeff_payload_eq"
+      }
+    ],
+    "missingGeneratedTarget": [
+      {
+        "exists": false,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorCoeffAssemblyPayload.lean",
+        "line": null,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated"
+      },
+      {
+        "exists": false,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationActiveActualCenterJetRowsPayload.lean",
+        "line": null,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated"
+      },
+      {
+        "exists": false,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+        "line": null,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated"
+      },
+      {
+        "exists": false,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorP45Bridge.lean",
+        "line": null,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure_generated"
+      }
+    ],
+    "sourceNormalForm": [
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceNormalForm.lean",
+        "line": 545,
+        "symbol": "primaryFiniteRow0Parent0Split100Sub0_combinedCancellation_sourceIntervalValid_of_activeActual_interval"
+      },
+      {
+        "exists": true,
+        "file": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationSourceIntervalCert.lean",
+        "line": 138,
+        "symbol": "theorem to_fullTaylor_residual_deriv_interval"
+      }
+    ]
+  },
+  "target": {
+    "assembledDegree": 45,
+    "cell": "Set.Icc (0 : Real) ((1 : Real) / 10)",
+    "center": "1/20",
+    "firstTheoremObject": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated",
+    "leanFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRemainderPayload.lean",
+    "requiredConclusion": "|targetExpression eta| <= ComponentPropagationRemainderAbs, then transport to ResidualTaylorRemainderAbs",
+    "targetExpressionAscii": "primaryFiniteRow0Parent0Split100Sub0RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 45 ((1 : Rat) / 20) primaryFiniteRow0Parent0Split100Sub0AssembledRawDerivCoeff eta",
+    "transportTheoremObject": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure_generated"
+  },
+  "whyExistingArtifactsAreNotEnough": [
+    "Exact coefficient assembly is algebraic and proof-checked as list equality, but it gives no analytic remainder bound.",
+    "The activeActual rows are degree-0..15 source-model center-jet intervals after residual model subtraction; the requested component remainder is a whole-cell degree-45 error against AssembledRawDerivCoeff.",
+    "The combined/source interval certificates route residual derivative intervals, but the current component ledger still has ComponentPropagationRemainderAbs and ResidualTaylorRemainderAbs set to null.",
+    "primaryFiniteRow0Parent0Split100Sub0_rawDerivClosedForm_tightAssembledSource and primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_tight_enclosure give a formal coarse P45 source, but primaryFiniteRow0Parent0Split100Sub0_tightProductAssemblyErrorBudget_width_fail proves the carried coarse budget is too wide for the target residual interval.",
+    "No local file currently defines the generated sharper objects primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated or primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure_generated; those names remain reserved until sharper signed rows and their exact budget comparison pass."
+  ]
+}

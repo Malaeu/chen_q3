@@ -65,6 +65,43 @@
     "shape": "same_coefficient_shapesq_deriv_payload_formal_missing_component_taylor_remainder_source",
     "shapeDeriv": "endpoint_deriv_bounds_formal_missing_component_taylor_receiver"
   },
+  "componentTaylorRemainderRouteReview": {
+    "advisoryOnly": true,
+    "conclusionShape": "norm of the signed component remainder is bounded by ComponentPropagationRemainderAbs, then transported to the residual Taylor enclosure with ResidualTaylorRemainderAbs",
+    "decision": "Build a proof-grade rational generator for the signed component Taylor remainder rows first, then feed a small Lean receiver/payload.  Do not create the Lean payload as a proof object before rows and budget are checked.",
+    "failureCodeIfBudgetFalse": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL",
+    "failureCodeIfRowsMissing": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP",
+    "firstFiles": [
+      "scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py",
+      "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRemainderPayload.lean"
+    ],
+    "firstTheoremObject": "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated",
+    "premiseShape": "proof-grade signed interval/rational rows for RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 45 (1/20) AssembledRawDerivCoeff eta on [0,1/10]",
+    "proofClaimAllowedNow": false,
+    "recommendedOption": "B",
+    "requiredRows": [
+      "omegaPrime / omega proof-grade Taylor coefficients and remainders",
+      "ShapeSq tight full-cell coefficients and remainder",
+      "ShapeSqDeriv tight same-coefficient coefficients and remainder",
+      "activeScale tight interval and nominalScale",
+      "exact degree-45 Cauchy assembly array",
+      "direct signed rows for ActualComponent - P45(assembledCoeff)",
+      "componentPropagationRemainderAbs",
+      "residualTaylorRemainderAbs",
+      "exact rational budget comparison"
+    ],
+    "source": "Computer Use / Proshka route review 2026-06-23",
+    "transportTheoremObject": "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure_generated",
+    "whatNotToReuse": [
+      "TightProductAssemblyErrorBudget",
+      "rows0..11 killed product budget",
+      "centeredTaylor factor-majorant budget",
+      "zero-model budget",
+      "sampled/probe rows",
+      "independent norm spends for the two product summands"
+    ],
+    "whyB": "Receivers and coefficient assembly already exist; the live uncertainty is numerical reachability of a proof-grade signed remainder and exact budget.  The generator should kill or validate that before another large Lean theorem."
+  },
   "componentTaylorStatus": {
     "assemblyLeanWritten": false,
     "omegaDerivTaylor": {
@@ -222,7 +259,9 @@
     "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
     "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
     "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
-    "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING"
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING",
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP",
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL"
   ],
   "firstFailure": "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP",
   "generatorFields": {
@@ -1313,7 +1352,7 @@
     "normalizationReceiverTheoremFound": true,
     "proofGradeReceiver": true
   },
-  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18",
+  "schema": "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19",
   "shapeDerivativePow12MajorantReceiverSource": {
     "boundary": "This is only the Lean-checked receiver from proof-grade derivative majorants for the active scaled realSinc factor into proof-grade derivative majorants for the active shape function. It does not provide scaled-realSinc derivative bounds through order 17, component Taylor rows, or raw-derivative assembly.",
     "failureClosed": "STEP33_A1_SUB0_SHAPE_POW12_MAJORANT_RECURRENCE_GAP",

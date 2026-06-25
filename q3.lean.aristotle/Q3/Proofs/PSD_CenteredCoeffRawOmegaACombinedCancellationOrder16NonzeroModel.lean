@@ -1354,6 +1354,21 @@ private theorem
           ((16 + j.1).descFactorial 16 : Rat) *
             coeff ⟨16 + j.1, by omega⟩) eta := hRhsTerms.symm
 
+/-- Public wrapper for the degree-45-to-degree-29 order-16 Taylor derivative
+shift.  This exposes only the coefficient-shift theorem; it does not expose or
+reuse any numerical budget. -/
+theorem
+    primaryFiniteRow0Parent0Split100Sub0_rawOmegaTaylorPolynomial_deriv16_eq_shifted29_public
+    (coeff : Fin 46 -> Rat) (eta : Real) :
+    iteratedDeriv 16
+        (rawOmegaATaylorPolynomial 45 ((1 : Rat) / 20) coeff) eta =
+      rawOmegaATaylorPolynomial 29 ((1 : Rat) / 20)
+        (fun j : Fin 30 =>
+          ((16 + j.1).descFactorial 16 : Rat) *
+            coeff ⟨16 + j.1, by omega⟩) eta :=
+  primaryFiniteRow0Parent0Split100Sub0_rawOmegaTaylorPolynomial_deriv16_eq_shifted29
+    coeff eta
+
 /- Coefficient crosswalk: the degree-45 residual Taylor polynomial, after sixteen
 derivatives, is exactly the degree-29 nonzero model polynomial.  The remaining
 work is the proof-grade Horner/range payload and residual-term bounds; this file

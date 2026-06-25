@@ -2,7 +2,7 @@
 
 schema: `q3_psdpd_step33_a1_sub0_active_actual_horner_row_source.v6`
 route: `active_actual_order16_horner_row_source`
-proofStatus: `interface_ready_rows_missing`
+proofStatus: `superseded_by_direct_collapsed_expression_budget_kill`
 
 ## Verdict
 
@@ -11,9 +11,12 @@ proofStatus: `interface_ready_rows_missing`
 - interfaceClosedFields: `7`
 - outLeanWritten: `False`
 - leanValidationStatus: `not_run_rows_missing`
-- currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
-- firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+- currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+- firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
 - firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP`
+- routeSupersededForDirectPayload: `True`
+- supersedingFailureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+- directBudgetKillTheorem: `primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`
 
 ## Target Lean Surface
 
@@ -294,8 +297,10 @@ proofStatus: `interface_ready_rows_missing`
 - `schema`: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.v18`
 - `proofGrade`: `False`
 - `currentGap`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
-- `firstConcreteUpstreamFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+- `firstConcreteUpstreamFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 - `firstFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
+- `activeActualDegree0DirectBudgetKillTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`
+- `activeActualDegree0DirectBudgetFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
 
 ### directCertificate
 
@@ -304,8 +309,10 @@ proofStatus: `interface_ready_rows_missing`
 - `schema`: `q3_psdpd_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.v12`
 - `proofGrade`: `False`
 - `currentGap`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_NONZERO_MODEL_INTERVAL_CERT_GAP`
-- `firstConcreteUpstreamFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP`
+- `firstConcreteUpstreamFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
 - `firstFailureCode`: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+- `activeActualDegree0DirectBudgetKillTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`
+- `activeActualDegree0DirectBudgetFailureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
 
 ## Computer Use Decision
 
@@ -318,12 +325,24 @@ proofStatus: `interface_ready_rows_missing`
 ## Do Not Use As Proof
 
 - sampled or float rows
+- activeActual degree0 polyErrorAbs as the direct payload budget
 - activeActual center jets as uniform segment bounds
 - killed factor-majorant budgets
 - P45/full-Taylor wrong-target rows
 - separate activeActual and nominal independent norm budgets
 - DirectConcretePayload.lean before this ledger has all payload obligations passed
 - D46 backend as mandatory before the low-degree source is tested
+
+## Degree0 Direct-Budget Kill
+
+- used: `True`
+- advisoryOnly: `True`
+- recommendedOption: `A`
+- decision: The activeActual degree-0 source may remain as checked local evidence, but it is not spendable for the direct payload budget.  The active route is now the direct collapsedExpression row source.
+- budgetKillTheorem: `primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`
+- failureCodeIfReusedForDirectPayload: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+- nextActiveFailureCode: `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP`
+- notProofEvidence: `True`
 
 ## Latest Computer Use Payload Decision
 
@@ -385,4 +404,4 @@ proofStatus: `interface_ready_rows_missing`
 
 ## Next Implementable Patch
 
-Fill the degree-0 source inputs: a proof-grade D16 center enclosure, a proof-grade D17 uniform bound, and the exact rational budget comparison; then instantiate the checked degree-0 theorem and zero-extend into the existing Fin30 Horner family.
+Do not continue this activeActual row-source ledger as the direct payload route.  Build the direct whole-expression collapsedExpression rational/interval row source for primaryFiniteRow0Parent0Split100Sub0_combinedOrder16ScaledRemainder_collapsed_segment_remainder.

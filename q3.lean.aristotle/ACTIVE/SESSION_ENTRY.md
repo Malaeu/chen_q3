@@ -27,6 +27,14 @@
 7. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
 8. `q3.lean.aristotle/docs/INSIGHTS.md`
 
+Если задача явно про повторяющийся loop, смену стратегии, route-review,
+бесплодную бисекцию, stalled proof-loop или "как агент должен думать дальше",
+прочитать также:
+
+9. `q3.lean.aristotle/COGNITIVE_KERNEL.md`
+10. `q3.lean.aristotle/COGNITIVE_OPERATORS.md`
+11. `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md`
+
 Если работаешь с embeddings / incoming notes, потом ещё:
 
 9. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
@@ -273,6 +281,10 @@ source of truth:
    - математически честен,
    - повторно использует уже доказанные модули,
    - не плодит новые необязательные слои.
+6. Если 3–5 итераций подряд не дают theorem/certificate/gap-shrink/
+   counterexample/route-kill, включить Cognitive Kernel:
+   классифицировать gap, записать failed strategy, выбрать cognitive operator,
+   и только потом продолжать локальное дробление.
 
 ## Что сейчас source of truth
 
@@ -341,6 +353,12 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 
 Если готовим пакет для Прошки, не рассчитываем, что он будет читать наши
 локальные `.tex` или произвольные text files как source of truth.
+
+Если в текущей Codex Desktop сессии справа открыт in-app browser с Proshka /
+Louise, это можно и нужно использовать как Computer Use route-review при
+loop-trap, theorem-shape fork или payload ambiguity.  Ответ Прошки остаётся
+advisory: он выбирает следующий route/operator, но не является доказательством.
+Если браузер недоступен, использовать обычный `PRO_REVIEW_REQUEST`.
 
 Правильный формат по умолчанию:
 

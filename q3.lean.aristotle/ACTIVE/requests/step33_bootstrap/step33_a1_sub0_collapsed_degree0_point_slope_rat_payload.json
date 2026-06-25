@@ -1,0 +1,33 @@
+{
+  "boundary": "Rat payload presence is not Step33A.1-A closure; budget/sign kill must be proved separately.",
+  "currentGap": "STEP33_A1_SUB0_COMBINED_ORDER16_COLLAPSED_DEGREE0_POINT_SLOPE_RAT_POINT_ROW_BUDGET_KILL_GAP",
+  "fileHash": "02a2b02d6f6e8dde8ea387cce83f3e251634a716a35645b717752bd60c5850da",
+  "generatedAt": "2026-06-24T15:28:11.705806+00:00",
+  "nextPatch": "Try positive_row_budget_impossible/negative_row_budget_impossible from the Rat PointRowCert.Valid; if exact sign or threshold fails, replace the coarse raw Rat row with a true point-specific RawProduct18 Rat mirror.",
+  "payloadFile": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16CollapsedDegree0PointSlopeRatPayload.lean",
+  "payloadPresent": true,
+  "proofStatus": "rat_payload_present_budget_kill_not_closed",
+  "requiredSymbols": [
+    {
+      "line": 145,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_componentProductActual_order17_point_interval_rat_generated"
+    },
+    {
+      "line": 267,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_activeScaled_componentProductActual_order17_point_interval_rat_generated"
+    },
+    {
+      "line": 439,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_nominalOrder16Poly_deriv_localCenter_eq_rat"
+    },
+    {
+      "line": 476,
+      "present": true,
+      "symbol": "primaryFiniteRow0Parent0Split100Sub0_collapsedDegree0_pointRow_generated"
+    }
+  ],
+  "schema": "q3_psdpd_step33_a1_sub0_collapsed_degree0_point_slope_rat_payload.v1"
+}

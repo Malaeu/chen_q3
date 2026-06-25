@@ -49,7 +49,7 @@ DEFAULT_OUT_MD = (
     REQUEST_DIR / "step33_a1_sub0_component_taylor_residual_payload.md"
 )
 
-SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v18"
+SCHEMA = "q3_psdpd_step33_a1_sub0_component_taylor_residual_payload.v19"
 ROUTE_ID = "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL"
 STATUS_MISSING_OMEGA_PRIME = "fail_closed_missing_omega_omegaprime_taylor_remainder"
 STATUS_AFTER_OMEGA_PRIME = (
@@ -190,6 +190,21 @@ SHAPESQ_DERIV_TIGHT_VALID_TARGET = (
 )
 FIRST_FAILURE_AFTER_SHAPESQ_TIGHT_SAME_COEFF_PAYLOAD = (
     "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SOURCE_GAP"
+)
+COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP = (
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP"
+)
+COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL = (
+    "STEP33_A1_SUB0_COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL"
+)
+COMPONENT_TAYLOR_REMAINDER_PAYLOAD_FILE = (
+    "Q3/Proofs/PSD_CenteredCoeffRawOmegaAComponentTaylorRemainderPayload.lean"
+)
+COMPONENT_TAYLOR_REMAINDER_SOURCE_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_componentTaylor_remainder_source_generated"
+)
+COMPONENT_TAYLOR_RESIDUAL_ENCLOSURE_THEOREM = (
+    "primaryFiniteRow0Parent0Split100Sub0_fullTaylor_residual_deriv_taylor_enclosure_generated"
 )
 COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL = (
     "STEP33_A1_SUB0_COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL"
@@ -2010,7 +2025,9 @@ def build_report(
                 "STEP33_A1_SUB0_SHAPE_SHAPEDERIV_TAYLOR_REMAINDER_GAP",
                 "STEP33_A1_SUB0_RAW_DERIV_EXACT_ASSEMBLY_GAP",
                 "STEP33_A1_SUB0_RESIDUAL_POLYNOMIAL_RANGE_GAP",
-            "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING",
+                "STEP33_A1_SUB0_COMPONENT_TAYLOR_RESIDUAL_LEAN_PAYLOAD_MISSING",
+                COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP,
+                COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL,
         ])),
         "cell": {
             "cellL": CELL_L,
@@ -2694,6 +2711,65 @@ def build_report(
                 "coefficient row.  It advances the real proof-data layer "
                 "without claiming rows 1..15 or the order-16 uniform bound."
             ),
+        },
+        "componentTaylorRemainderRouteReview": {
+            "source": "Computer Use / Proshka route review 2026-06-23",
+            "advisoryOnly": True,
+            "recommendedOption": "B",
+            "decision": (
+                "Build a proof-grade rational generator for the signed "
+                "component Taylor remainder rows first, then feed a small "
+                "Lean receiver/payload.  Do not create the Lean payload as "
+                "a proof object before rows and budget are checked."
+            ),
+            "firstFiles": [
+                "scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py",
+                COMPONENT_TAYLOR_REMAINDER_PAYLOAD_FILE,
+            ],
+            "firstTheoremObject": COMPONENT_TAYLOR_REMAINDER_SOURCE_THEOREM,
+            "transportTheoremObject": COMPONENT_TAYLOR_RESIDUAL_ENCLOSURE_THEOREM,
+            "premiseShape": (
+                "proof-grade signed interval/rational rows for "
+                "RawIntegrandDerivClosedForm eta - rawOmegaATaylorPolynomial 45 "
+                "(1/20) AssembledRawDerivCoeff eta on [0,1/10]"
+            ),
+            "conclusionShape": (
+                "norm of the signed component remainder is bounded by "
+                "ComponentPropagationRemainderAbs, then transported to the "
+                "residual Taylor enclosure with ResidualTaylorRemainderAbs"
+            ),
+            "requiredRows": [
+                "omegaPrime / omega proof-grade Taylor coefficients and remainders",
+                "ShapeSq tight full-cell coefficients and remainder",
+                "ShapeSqDeriv tight same-coefficient coefficients and remainder",
+                "activeScale tight interval and nominalScale",
+                "exact degree-45 Cauchy assembly array",
+                "direct signed rows for ActualComponent - P45(assembledCoeff)",
+                "componentPropagationRemainderAbs",
+                "residualTaylorRemainderAbs",
+                "exact rational budget comparison",
+            ],
+            "failureCodeIfRowsMissing": (
+                COMPONENT_TAYLOR_REMAINDER_SIGNED_ROW_SOURCE_GAP
+            ),
+            "failureCodeIfBudgetFalse": (
+                COMPONENT_TAYLOR_REMAINDER_BUDGET_CONSTANT_FAIL
+            ),
+            "whatNotToReuse": [
+                "TightProductAssemblyErrorBudget",
+                "rows0..11 killed product budget",
+                "centeredTaylor factor-majorant budget",
+                "zero-model budget",
+                "sampled/probe rows",
+                "independent norm spends for the two product summands",
+            ],
+            "whyB": (
+                "Receivers and coefficient assembly already exist; the live "
+                "uncertainty is numerical reachability of a proof-grade signed "
+                "remainder and exact budget.  The generator should kill or "
+                "validate that before another large Lean theorem."
+            ),
+            "proofClaimAllowedNow": False,
         },
         "coarseShapeSqTaylorRouteKill": {
             "failureCode": COARSE_SHAPESQ_TAYLOR_PRIMARY_RESIDUAL_CROSSWALK_FAIL,
@@ -3484,6 +3560,49 @@ def render_md(report: dict[str, Any]) -> str:
             f"- why not A: {report['proshkaDecision']['whyNotA']}",
             f"- why not C: {report['proshkaDecision']['whyNotC']}",
             f"- follow-up why A: {report['proshkaDecision']['followupWhyA']}",
+            "",
+            "## Component Taylor Remainder Route Review",
+            "",
+            "- source: "
+            f"`{report['componentTaylorRemainderRouteReview']['source']}`",
+            "- advisory only: "
+            f"`{report['componentTaylorRemainderRouteReview']['advisoryOnly']}`",
+            "- recommended option: "
+            f"`{report['componentTaylorRemainderRouteReview']['recommendedOption']}`",
+            f"- decision: {report['componentTaylorRemainderRouteReview']['decision']}",
+            "- first theorem/object: "
+            f"`{report['componentTaylorRemainderRouteReview']['firstTheoremObject']}`",
+            "- transport theorem/object: "
+            f"`{report['componentTaylorRemainderRouteReview']['transportTheoremObject']}`",
+            "- premise shape: "
+            f"{report['componentTaylorRemainderRouteReview']['premiseShape']}",
+            "- conclusion shape: "
+            f"{report['componentTaylorRemainderRouteReview']['conclusionShape']}",
+            "- failure code if rows missing: "
+            f"`{report['componentTaylorRemainderRouteReview']['failureCodeIfRowsMissing']}`",
+            "- failure code if budget false: "
+            f"`{report['componentTaylorRemainderRouteReview']['failureCodeIfBudgetFalse']}`",
+            "- proof claim allowed now: "
+            f"`{report['componentTaylorRemainderRouteReview']['proofClaimAllowedNow']}`",
+            "",
+            "### First Files",
+            "",
+        ]
+    )
+    for path in report["componentTaylorRemainderRouteReview"]["firstFiles"]:
+        lines.append(f"- `{path}`")
+    lines.extend(["", "### Required Rows", ""])
+    for item in report["componentTaylorRemainderRouteReview"]["requiredRows"]:
+        lines.append(f"- {item}")
+    lines.extend(["", "### What Not To Reuse", ""])
+    for item in report["componentTaylorRemainderRouteReview"]["whatNotToReuse"]:
+        lines.append(f"- {item}")
+    lines.extend(
+        [
+            "",
+            "### Why B",
+            "",
+            report["componentTaylorRemainderRouteReview"]["whyB"],
             "",
             "## Failure Codes",
             "",

@@ -62,6 +62,10 @@ DEGREE0_SOURCE_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean"
 )
+DEGREE0_CENTER_BUDGET_AUDIT_LEAN = (
+    PROOFS
+    / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean"
+)
 RAW_PRODUCT18_BRIDGE_LEAN = (
     PROOFS
     / "PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean"
@@ -176,6 +180,16 @@ REQUIRED_DEGREE0_SOURCE_SYMBOLS = [
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_degree0_remainder_of_checked_contDiff17",
     "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
+]
+
+REQUIRED_DEGREE0_CENTER_BUDGET_AUDIT_SYMBOLS = [
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff0",
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0CoeffErrorAbs",
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Order17Abs",
+    "primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0PolyErrorAbs",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_hCenter_generated",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_budget_pass_rat",
+    "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated",
 ]
 
 REQUIRED_RAW_PRODUCT18_BRIDGE_SYMBOLS = [
@@ -592,6 +606,47 @@ import Q3.Proofs.PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActu
     return value, None
 
 
+def eval_degree0_center_budget_rats() -> tuple[dict[str, str], str | None]:
+    code = """\
+import Q3.Proofs.PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit
+#eval toString Q3.PSDpd.Step33.primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Coeff0
+#eval toString Q3.PSDpd.Step33.primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0CoeffErrorAbs
+#eval toString Q3.PSDpd.Step33.primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0Order17Abs
+#eval toString Q3.PSDpd.Step33.primaryFiniteRow0Parent0Split100Sub0ActiveActualDegree0PolyErrorAbs
+"""
+    env = os.environ.copy()
+    env["LEAN_PATH"] = lean_path()
+    try:
+        result = subprocess.run(
+            ["lean", "--stdin"],
+            cwd=ROOT,
+            env=env,
+            input=code,
+            text=True,
+            capture_output=True,
+            timeout=90,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        return {}, str(exc)
+    if result.returncode != 0:
+        return {}, (result.stderr or result.stdout).strip()[:1000]
+    lines = [line for line in result.stdout.strip().splitlines() if line.strip()]
+    if len(lines) != 4:
+        return {}, f"unexpected Lean #eval output: {result.stdout.strip()[:1000]}"
+    keys = ["coeff0", "coeffErrorAbs", "order17Abs", "polyErrorAbs"]
+    values: dict[str, str] = {}
+    try:
+        for key, line in zip(keys, lines, strict=True):
+            value = json.loads(line)
+            if not isinstance(value, str) or not value:
+                return {}, f"unexpected Lean #eval value for {key}: {value!r}"
+            values[key] = value
+    except (json.JSONDecodeError, ValueError) as exc:
+        return {}, f"unexpected Lean #eval JSON output: {exc}"
+    return values, None
+
+
 def exact_degree0_budget(
     *,
     coeff_error_abs: str | None,
@@ -660,6 +715,9 @@ def center_row_status() -> dict[str, Any]:
 
 def build_degree0_preflight(
     degree0_ready: bool,
+    degree0_center_budget_audit_ready: bool,
+    degree0_center_budget_values: dict[str, str],
+    degree0_center_budget_eval_error: str | None,
     raw_product18_bridge_ready: bool,
     raw_product18_majorant_receiver_ready: bool,
     raw_product18_source_ready: bool,
@@ -671,11 +729,30 @@ def build_degree0_preflight(
     omega_prime_order17_rational_ready: bool,
     omega_prime_order17_abs: str | None,
 ) -> dict[str, Any]:
+    coeff0 = (
+        degree0_center_budget_values.get("coeff0")
+        if degree0_center_budget_audit_ready
+        else None
+    )
+    coeff_error_abs = (
+        degree0_center_budget_values.get("coeffErrorAbs")
+        if degree0_center_budget_audit_ready
+        else None
+    )
+    poly_error_abs = (
+        degree0_center_budget_values.get("polyErrorAbs")
+        if degree0_center_budget_audit_ready
+        else None
+    )
+    center = rat_or_none(coeff0)
+    center_error = rat_or_none(coeff_error_abs)
+    center_lower = rat_str(center - center_error) if center is not None and center_error is not None else None
+    center_upper = rat_str(center + center_error) if center is not None and center_error is not None else None
     fields: dict[str, str | None] = {
-        "d16CenterLower": None,
-        "d16CenterUpper": None,
-        "coeff0": None,
-        "coeffErrorAbs": None,
+        "d16CenterLower": center_lower,
+        "d16CenterUpper": center_upper,
+        "coeff0": coeff0,
+        "coeffErrorAbs": coeff_error_abs,
         "order17Abs": (
             raw_product18_order17_abs
             if raw_product18_budget_audit_ready
@@ -692,7 +769,7 @@ def build_degree0_preflight(
             else None
         ),
         "activeScaleAbs": ACTIVE_SCALE_ABS_BOUND_RAT,
-        "polyErrorAbs": None,
+        "polyErrorAbs": poly_error_abs,
     }
     budget = exact_degree0_budget(
         coeff_error_abs=fields["coeffErrorAbs"],
@@ -700,7 +777,13 @@ def build_degree0_preflight(
         order17_abs=fields["order17Abs"],
         poly_error_abs=fields["polyErrorAbs"],
     )
-    d16_proof_grade = False
+    d16_proof_grade = (
+        degree0_center_budget_audit_ready
+        and degree0_center_budget_eval_error is None
+        and coeff0 is not None
+        and coeff_error_abs is not None
+        and poly_error_abs is not None
+    )
     d17_proof_grade = (
         raw_product18_source_ready
         and raw_product18_budget_audit_ready
@@ -708,17 +791,30 @@ def build_degree0_preflight(
     )
     active_scale_proof_grade = True
     first_failure = D16_CENTER_D17_SOURCE_GAP
+    proof_grade = (
+        degree0_ready
+        and d16_proof_grade
+        and d17_proof_grade
+        and bool(budget["available"])
+        and bool(budget["passed"])
+    )
     if budget["available"] and not budget["passed"]:
         first_failure = DEGREE0_BUDGET_CONSTANT_FAIL
     elif budget["available"] and not d17_proof_grade:
         first_failure = D17_UNIFORM_SOURCE_GAP
+    elif proof_grade:
+        first_failure = None
 
     return {
         "schema": DEGREE0_SCHEMA,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "route": "active_actual_order16_degree0_preflight",
-        "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
-        "proofGrade": False,
+        "proofStatus": (
+            "closed_degree0_center_budget_source"
+            if proof_grade
+            else "blocked_missing_d16_center_d17_uniform_source"
+        ),
+        "proofGrade": proof_grade,
         "receiverReady": degree0_ready,
         "outLeanWritten": False,
         "target": "ActiveScaleCoeff * D^16(ComponentProductActual)",
@@ -730,6 +826,28 @@ def build_degree0_preflight(
         "firstFileToEdit": rel(Path(__file__).resolve()),
         "fields": fields,
         "activeScaleSource": active_scale_source(),
+        "degree0CenterBudgetAudit": {
+            "status": (
+                "checked"
+                if degree0_center_budget_audit_ready
+                and degree0_center_budget_eval_error is None
+                else "missing"
+            ),
+            "kind": "Lean+#eval",
+            "path": rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN),
+            "hCenterTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_hCenter_generated"
+            ),
+            "budgetTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_budget_pass_rat"
+            ),
+            "segmentRemainderTheorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated"
+            ),
+            "values": degree0_center_budget_values,
+            "evalError": degree0_center_budget_eval_error,
+            "failureIfMissing": D16_CENTER_D17_SOURCE_GAP,
+        },
         "order17UniformRoute": {
             "selectedRoute": "B_rawProduct18",
             "selectedBy": "Browser/Computer Use Proshka review",
@@ -819,6 +937,10 @@ def build_ledger() -> dict[str, Any]:
     family_symbols = symbol_audit(FAMILY_BRIDGE_LEAN, REQUIRED_FAMILY_SYMBOLS)
     low_degree_symbols = symbol_audit(LOW_DEGREE_BRIDGE_LEAN, REQUIRED_LOW_DEGREE_SYMBOLS)
     degree0_symbols = symbol_audit(DEGREE0_SOURCE_LEAN, REQUIRED_DEGREE0_SOURCE_SYMBOLS)
+    degree0_center_budget_symbols = symbol_audit(
+        DEGREE0_CENTER_BUDGET_AUDIT_LEAN,
+        REQUIRED_DEGREE0_CENTER_BUDGET_AUDIT_SYMBOLS,
+    )
     raw_product18_symbols = symbol_audit(
         RAW_PRODUCT18_BRIDGE_LEAN, REQUIRED_RAW_PRODUCT18_BRIDGE_SYMBOLS
     )
@@ -854,6 +976,14 @@ def build_ledger() -> dict[str, Any]:
     family_ready = all_present(family_symbols)
     low_degree_ready = all_present(low_degree_symbols)
     degree0_ready = all_present(degree0_symbols)
+    degree0_center_budget_audit_ready = all_present(degree0_center_budget_symbols)
+    if degree0_center_budget_audit_ready:
+        degree0_center_budget_values, degree0_center_budget_eval_error = (
+            eval_degree0_center_budget_rats()
+        )
+    else:
+        degree0_center_budget_values = {}
+        degree0_center_budget_eval_error = None
     raw_product18_bridge_ready = all_present(raw_product18_symbols)
     raw_product18_majorant_receiver_ready = all_present(
         raw_product18_majorant_receiver_symbols
@@ -885,6 +1015,9 @@ def build_ledger() -> dict[str, Any]:
     interface_ready = segment_ready and family_ready and low_degree_ready and degree0_ready
     degree0_preflight = build_degree0_preflight(
         degree0_ready,
+        degree0_center_budget_audit_ready,
+        degree0_center_budget_values,
+        degree0_center_budget_eval_error,
         raw_product18_bridge_ready,
         raw_product18_majorant_receiver_ready,
         raw_product18_source_ready,
@@ -908,19 +1041,25 @@ def build_ledger() -> dict[str, Any]:
         },
         {
             "id": "S1_low_degree_activeActual_row",
-            "status": "missing",
+            "status": "checked" if degree0_preflight["proofGrade"] else "missing",
             "required": (
                 "Use the degree-0 source first: supply a Rat coeff0 for "
                 "activeScale * D^16(ComponentProductActual) at center 1/20"
             ),
+            "source": rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN),
+            "coeff0": degree0_preflight["fields"]["coeff0"],
             "degreePolicy": "low-degree row accepted via checked zero-extension into Fin30",
             "failureCode": D16_CENTER_D17_SOURCE_GAP,
         },
         {
             "id": "S2_low_degree_uniform_remainder",
-            "status": "missing",
+            "status": "checked" if degree0_preflight["proofGrade"] else "missing",
             "required": (
                 "D16 center enclosure, D17 uniform bound, and exact rational budget"
+            ),
+            "source": rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN),
+            "theorem": (
+                "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated"
             ),
             "analyticOrderForDegree0": "D16 center plus D17 uniform derivative source",
             "failureCode": D16_CENTER_D17_SOURCE_GAP,
@@ -1054,24 +1193,36 @@ def build_ledger() -> dict[str, Any]:
         "schema": SCHEMA,
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "route": "active_actual_order16_horner_payload_smoke_segment",
-        "proofStatus": "blocked_missing_d16_center_d17_uniform_source",
+        "proofStatus": (
+            "blocked_missing_horner_rows_after_degree0_source"
+            if degree0_preflight["proofGrade"]
+            else "blocked_missing_d16_center_d17_uniform_source"
+        ),
         "proofGrade": False,
         "proofSafeClosedFields": (
             (1 if degree0_preflight["activeScaleProofGrade"] else 0)
             + (1 if degree0_preflight["order17UniformProofGrade"] else 0)
+            + (1 if degree0_preflight["d16CenterProofGrade"] else 0)
         ),
         "interfaceReady": interface_ready,
         "outLeanWritten": False,
         "targetLeanFileWhenRowsPass": rel(FUTURE_PAYLOAD_LEAN),
         "currentGap": ROW_SOURCE_GAP,
         "firstFailureCode": ROW_SOURCE_GAP,
-        "firstConcreteSubgap": degree0_preflight["firstFailure"],
+        "firstConcreteSubgap": (
+            ROW_SOURCE_GAP
+            if degree0_preflight["proofGrade"]
+            else degree0_preflight["firstFailure"]
+        ),
         "leanValidationStatus": "not_run_payload_not_emitted",
         "sourceFileDigests": {
             rel(SEGMENT_RECEIVER_LEAN): sha256_file(SEGMENT_RECEIVER_LEAN),
             rel(FAMILY_BRIDGE_LEAN): sha256_file(FAMILY_BRIDGE_LEAN),
             rel(LOW_DEGREE_BRIDGE_LEAN): sha256_file(LOW_DEGREE_BRIDGE_LEAN),
             rel(DEGREE0_SOURCE_LEAN): sha256_file(DEGREE0_SOURCE_LEAN),
+            rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN): sha256_file(
+                DEGREE0_CENTER_BUDGET_AUDIT_LEAN
+            ),
             rel(RAW_PRODUCT18_BRIDGE_LEAN): sha256_file(RAW_PRODUCT18_BRIDGE_LEAN),
             rel(RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN): sha256_file(
                 RAW_PRODUCT18_MAJORANT_RECEIVER_LEAN
@@ -1117,6 +1268,12 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18BudgetAuditChecked": raw_product18_budget_audit_ready,
             "rawProduct18Order17Abs": raw_product18_order17_abs,
             "rawProduct18Order17AbsEvalError": raw_product18_order17_abs_eval_error,
+            "degree0CenterBudgetAuditChecked": degree0_center_budget_audit_ready,
+            "degree0CenterBudgetValues": degree0_center_budget_values,
+            "degree0CenterBudgetEvalError": degree0_center_budget_eval_error,
+            "coeff0": degree0_preflight["fields"]["coeff0"],
+            "coeffErrorAbs": degree0_preflight["fields"]["coeffErrorAbs"],
+            "polyErrorAbs": degree0_preflight["fields"]["polyErrorAbs"],
             "omegaPrimeOrder17AnalyticTsumSourceChecked": (
                 omega_prime_order17_analytic_ready
             ),
@@ -1140,6 +1297,7 @@ def build_ledger() -> dict[str, Any]:
             "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
             "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
             "degree0CheckedContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
+            "degree0BudgetGeneratedTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated",
             "familyValidTarget": "Step33Sub0ActiveActualOrder16HornerFamilyCert.Valid",
             "payloadTarget": "primaryFiniteRow0Parent0Split100Sub0_directPayloadTarget_of_activeActualHornerFamily",
         },
@@ -1162,10 +1320,16 @@ def build_ledger() -> dict[str, Any]:
             "zeroExtendDef": "primaryFiniteRow0Parent0Split100Sub0ActiveActualCoeffZeroExtend29",
             "transferTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree",
             "degree0SourceBridge": rel(DEGREE0_SOURCE_LEAN),
+            "degree0CenterBudgetAudit": rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN),
             "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
             "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
             "degree0CheckedContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17",
-            "firstConcreteSubgap": D16_CENTER_D17_SOURCE_GAP,
+            "degree0BudgetGeneratedTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated",
+            "firstConcreteSubgap": (
+                ROW_SOURCE_GAP
+                if degree0_preflight["proofGrade"]
+                else D16_CENTER_D17_SOURCE_GAP
+            ),
             "d17UniformRoute": {
                 "selectedRoute": "B_rawProduct18",
                 "bridgeSource": rel(RAW_PRODUCT18_BRIDGE_LEAN),
@@ -1223,6 +1387,7 @@ def build_ledger() -> dict[str, Any]:
                 raw_product18_order17_abs,
                 raw_product18_order17_abs_eval_error,
             ),
+            "degree0CenterBudgetAudit": degree0_preflight["degree0CenterBudgetAudit"],
             "omegaPrimeOrder17AnalyticSource": omega_prime_order17_analytic_source(
                 omega_prime_order17_analytic_ready
             ),
@@ -1255,6 +1420,8 @@ def build_ledger() -> dict[str, Any]:
             "rawProduct18UniformSourceChecked": raw_product18_source_ready,
             "rawProduct18BudgetAuditChecked": raw_product18_budget_audit_ready,
             "rawProduct18Order17AbsExported": raw_product18_order17_abs is not None,
+            "degree0CenterBudgetAuditChecked": degree0_center_budget_audit_ready,
+            "degree0CenterBudgetValuesExported": bool(degree0_center_budget_values),
             "omegaPrimeOrder17AnalyticTsumSourceChecked": (
                 omega_prime_order17_analytic_ready
             ),
@@ -1266,8 +1433,12 @@ def build_ledger() -> dict[str, Any]:
             "degree0PreflightWritten": True,
             "degree0BudgetPassed": degree0_preflight["budgetPassed"],
             "activeScaleBoundChecked": degree0_preflight["activeScaleProofGrade"],
-            "activeActualLowDegreeSegmentRemainderSourceChecked": False,
-            "activeActualD16CenterD17UniformSourceChecked": False,
+            "activeActualLowDegreeSegmentRemainderSourceChecked": degree0_preflight[
+                "proofGrade"
+            ],
+            "activeActualD16CenterD17UniformSourceChecked": degree0_preflight[
+                "proofGrade"
+            ],
             "activeActualD46UniformRemainderSourceChecked": False,
             "activeActualCoeffOrders16To45Checked": False,
             "smokeSegmentValidChecked": False,
@@ -1279,13 +1450,14 @@ def build_ledger() -> dict[str, Any]:
             "used": True,
             "advisoryOnly": True,
             "recommendedOption": "A",
-            "firstFileToEdit": rel(Path(__file__).resolve()),
+            "firstFileToEdit": rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN),
             "exactOutputObject": rel(DEGREE0_JSON_OUT),
             "decision": (
-                "Add a fail-closed degree-0 preflight for the checked "
-                "Degree0Source receiver before D18, higher degree, D46, or Lean "
-                "payload emission."
+                "Use the checked RawProduct17 center bridge only for hCenter, "
+                "then spend the checked RawProduct18 Rat order17Abs in the exact "
+                "degree-0 budget receiver."
             ),
+            "degree0CenterBudgetAuditChecked": degree0_center_budget_audit_ready,
             "budgetFailureCode": DEGREE0_BUDGET_CONSTANT_FAIL,
             "d17SourceFailureCode": D17_UNIFORM_SOURCE_GAP,
             "rawProduct18UniformSourceFailureCode": RAW_PRODUCT18_UNIFORM_SOURCE_GAP,
@@ -1391,10 +1563,9 @@ def build_ledger() -> dict[str, Any]:
             "D46 backend as mandatory before the low-degree source is tested",
         ],
         "nextImplementablePatch": (
-            "Build the proof-grade D16 center enclosure for the activeActual "
-            "degree-0 source, export coeffErrorAbs/polyErrorAbs, and run the "
-            "exact degree-0 budget comparison using the checked RawProduct18 "
-            "Rat order17Abs before emitting any Lean payload."
+            "Emit the concrete activeActual Horner segment rows from the checked "
+            "degree-0 source theorem, then validate the segment/family receiver. "
+            "Do not reopen D16/D17 unless the row emission mismatches the receiver."
         ),
     }
 
@@ -1574,6 +1745,10 @@ def render_degree0_markdown(preflight: dict[str, Any]) -> str:
     for key, value in preflight["activeScaleSource"].items():
         lines.append(f"- `{key}`: `{value}`")
 
+    lines.extend(["", "## Degree-0 Center Budget Audit", ""])
+    for key, value in preflight["degree0CenterBudgetAudit"].items():
+        lines.append(f"- `{key}`: `{md_value(value)}`")
+
     lines.extend(["", "## Order17 Uniform Route", ""])
     for key, value in preflight["order17UniformRoute"].items():
         lines.append(f"- `{key}`: `{md_value(value)}`")
@@ -1597,6 +1772,9 @@ def main() -> None:
     ledger = build_ledger()
     degree0_preflight = build_degree0_preflight(
         bool(ledger["validationGates"]["degree0SourceInterfaceReady"]),
+        bool(ledger["validationGates"]["degree0CenterBudgetAuditChecked"]),
+        ledger["degree0Preflight"].get("degree0CenterBudgetValues", {}),
+        ledger["degree0Preflight"].get("degree0CenterBudgetEvalError"),
         bool(ledger["validationGates"]["rawProduct18BridgeReady"]),
         bool(ledger["validationGates"]["rawProduct18MajorantReceiverReady"]),
         bool(ledger["validationGates"]["rawProduct18UniformSourceChecked"]),
