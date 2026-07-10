@@ -16,6 +16,11 @@ Important: this is the current compiled broad-cone route, not the frozen public
 RH contract after the 2026-03-07 target-cone audit. It is retained because the
 scalar layer still carries reusable local lemmas, but the public manuscript has
 pivoted to a corrected positive-definite target cone.
+
+Fatal square-class audit note (2026-06-25): this file still records the legacy
+broad-cone wrapper through `Weil_cone`/`Weil_criterion`.  It is not the corrected
+Weil-square RH export route; the new interface starts at
+`Q3.Basic.WeilSquareClass`.
 -/
 
 import Q3.Proofs.PaperMainlineAtomRoute
@@ -29,7 +34,8 @@ namespace Q3.Main
 /-- Current top-level broad-cone positivity export.
 
 This export reflects the active compiled route and its live axiom profile; it
-should not be read as the frozen public RH contract after the target-cone audit. -/
+should not be read as the frozen public RH contract after the target-cone audit
+or after the 2026-06-25 Weil-square audit. -/
 theorem Q_nonneg_on_Weil_cone :
     ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 :=
   Q3.Q_nonneg_on_Weil_cone_current_atom_route
@@ -38,7 +44,8 @@ theorem Q_nonneg_on_Weil_cone :
 
 Its present meaning is structural: it records the active route and axiom profile
 used by `Q3.Main`, while the scalar closure gate is still unresolved and the
-public target cone has already been narrowed in the paper/control-doc layer. -/
+public target cone has already been narrowed in the paper/control-doc layer.
+This wrapper must not be used as the corrected Weil-square RH export. -/
 theorem RH_of_Weil_and_Q3 : Q3.RH :=
   Q3.RH_of_shifted_atom_route
 

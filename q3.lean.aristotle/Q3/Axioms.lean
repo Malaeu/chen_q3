@@ -38,7 +38,7 @@ These are well-established theorems from peer-reviewed mathematics.
 Each is cited with publication details.
 -/
 
-/-! ## Axiom T1.1: Weil Criterion (1952)
+/-! ## Axiom T1.1: Legacy broad-cone Weil Criterion export (1952)
 
 The Weil explicit formula criterion:
   RH ⟺ Q(Φ) ≥ 0 for all Φ in the Weil cone
@@ -54,6 +54,12 @@ Status note (2026-03-07):
   convolution-square cone;
 - no theorem-name rewrite is performed yet because the corrected contract is
   being frozen upstream in the docs/manuscript layer first.
+
+Fatal audit note (2026-06-25):
+- the broad pointwise-nonnegative `Weil_cone` is not the exact Weil test class;
+- do not use this declaration as the RH export route for new work;
+- the corrected interface is the Hermitian-square class in
+  `Q3.Basic.WeilSquareClass`.
 -/
 axiom Weil_criterion : (∀ Φ ∈ Weil_cone, Q Φ ≥ 0) ↔ RH
 

@@ -1,0 +1,126 @@
+CANONICAL_REPO_PATH: /Users/emalam/GitHub/rh_lean_01_2026
+
+# ROUTE_B_STATE
+
+## DOOR
+
+`AnchorLockedKChannel_v1: ANCHOR_REPRODUCED, PLANCHEREL_REAL_PASS, CROSSOVER_CONFIRMED, TAIL_MASS_LEVEL_CONFIRMED, TAIL_PROFILE_TROUGH`
+
+`AnchorLocked_Extraction_v1: REVIEWED_TAIL_RELABEL_DONE`
+
+Single source of truth: this file plus `loop_state.json` in the canonical repo path above. The stale twin path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this request state.
+
+## LOCAL DIAGNOSTIC SUPPORT
+
+- Previous PortableKChannel_v1 Plancherel is voided as `VOID_TAUTOLOGICAL_JUDGE`.
+- Previous PortableKChannel_v1 crossover is reset to `UNTESTED`.
+- Anchor reproduction j<=10: `ANCHOR_REPRODUCED` with max relative diff `1.6484314e-49`.
+- Real t-quadrature Plancherel all points pass `True`.
+
+## OPEN
+
+- No RH inference; alpha-Gate remains RH-equivalent core.
+- DISPLACED_PROFILE remains unpromoted unless anchor, real Plancherel, crossover, and tail gates all pass.
+
+## ANCHOR LOCKED K CHANNEL V1
+
+- A0 provenance points: `4`.
+- A1 anchor code `ANCHOR_REPRODUCED`.
+- A2 status `RUN`; all pass `True`.
+- A3 standing ceiling `PASS`.
+- A4 crossover `CROSSOVER_CONFIRMED`.
+- A5 raw law judge: `TAIL_FLATTENING_REFUTED`.
+- A5 reviewed budget/profile labels: `TAIL_MASS_LEVEL_CONFIRMED` + `TAIL_PROFILE_TROUGH`.
+- Actions log `anchor_locked_k_channel_v1_actions_log.md`.
+
+## ANCHOR LOCKED EXTRACTION V1
+
+- J0 input judge: `JSON_SHA_MATCH` for `out/anchor_locked_k_channel_v1.json`.
+- K1 extractor self-test: shadow `C * 3` fired at `lambda_sq_14_N_120/J=100/C`.
+- Edge weight `lambda^11 E`: two channels: packet `11.27` plus zero-side `10.6081165937` (`FIT_NOT_LAW`).
+- E1 ledger code: `LEDGER_LAMBDA_CLASS_PASS`.
+- E2 mass-p law judge: `MASS_P_OUT_OF_RANGE`; checkpoint C-band passes, but strict DeltaS p rows are `2.02180339103`, `4.63439244204`, `1.39442397632`.
+- Reviewer ruling: dual judge split accepted. The strict DeltaS p rows refute a single `p=1` law, while the budget envelope judge passes the lemma budget.
+- Tail label relabel: `TAIL_FLATTENING_REFUTED -> TAIL_MASS_LEVEL_CONFIRMED + TAIL_PROFILE_TROUGH`.
+- Grounds: S2000/a1 `0.87059768426044775376272264634320593360472377175817945734893165465299634801616243693750656` in registered `[0.82,0.95]`; C_refit relative miss `0.00240170416777235807135863169895080726085018263076526179861967353813370907540083849703503189`; envelope check `R(2515)=0.129 <= 0.182` at `C_env=1.05e-28`.
+- U3: `UNIVERSAL_COLLAPSE_CONFIRMED`; mean `0.531595934779`, spread `0.0331233571347`.
+- TroughBoundary: `REGISTERED`; gamma `[1419,2515]`; `C_eff=2.7e-29..3.0e-29` vs plateau `0.78e-28..1.05e-28`; interpretation `smooth-part amplitude calibration ~3e-29` (medium confidence).
+- Deferred optional probe: `TAIL_RETURN_PROBE`, J `3000..5000`, NOT scheduled; registered if ever run: `S_J` resumes climbing with effective C in `[6e-29,1.1e-28]`.
+- Mythos public score correction: W3/W4 per-window C `9.3e-29/8.7e-29 -> 3.0e-29/2.7e-29`; sqrt-slip retracted.
+- Future note for gates that rebuild denominators: raise tau denominator dps `80 -> 100`.
+- Extraction report `anchor_locked_extraction_v1.md`.
+- Extraction actions log `anchor_locked_extraction_v1_actions_log.md`.
+
+## READ-ONLY IMPORTS (do not edit)
+
+Canonical Mythos docs dir: `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs`.
+
+Paths are relative to `q3.lean.aristotle/`.
+
+- `docs/MYTHOS_KERNEL_PROTOCOL.md`
+  sha256 `0bb4d6613e74c65f5fa0f436904319b8da9208ced26c7eb66e32de0d3d47ec49`
+- `docs/RESEARCH_DIGEST_LITERATURE_2026-07.md`
+  sha256 `8dbcef9f253d10737eedaf231c732d7053a5d6e5b2937e92373c77ba2dce8335`
+
+Mythos-maintained living docs, read-only for Codex, no sha pin:
+
+- `docs/PROJECT_TREE.md`
+- `docs/project_tree.json`
+- `docs/PROJECT_MAP_LEVEL0.svg`
+
+Rule: Codex reads/cites; any edit = protocol violation; corrections via Mythos
+review only; verify sha before every import.
+
+Header check:
+
+- `docs/MYTHOS_KERNEL_PROTOCOL.md` first line:
+  `# MYTHOS KERNEL — RH Campaign Discipline Protocol (K1–K9)`
+- `docs/RESEARCH_DIGEST_LITERATURE_2026-07.md` first line:
+  `# RESEARCH DIGEST — Literature for the Weil-Positivity / Prolate RH Paper`
+- `EPISTEMIC FIREWALL` section visible in
+  `docs/RESEARCH_DIGEST_LITERATURE_2026-07.md`; this is the anti-circularity
+  guard for future gates: RH-conditional imports never enter the concluding
+  chain.
+
+## NEXT STEP
+
+`G3_0_CanonicalObjectDictionary` is green in
+`docs/PEN_3_3_G04_OBJECT_DICTIONARY.md`.  The selected next mathematical target
+is `ProjectedProlateDefectEquation`, with its commutator/boundary source kept
+explicit; do not substitute a homogeneous ODE for the projected defect.
+
+The exact two-mode H2 branch is `H2-POLE/CORRECTION`.  The 2026-07-08
+threshold-only `H2_HOLDS` history row is retained as a numerical record but is
+superseded as an exact classification.
+
+## CURRENT_CODES
+
+`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`
+
+## History
+
+- 2026-07-04 18:54:00 CEST: RotationTrend_and_VectorRecert_v1 -> ROTATION_DECAYING(slope_-2), LAMBDA1_CONVENTION_RESOLVED, VECTOR_RECERT_PASS; door=EXTEND_PACKET_NEXT; theta_trend=ROTATION_DECAYING(slope_-2); vector=VECTOR_RECERT_PASS.
+- 2026-07-06 00:23:05 CEST: LadderLaw_v1 -> LADDERLAW_PREFLIGHT_PASS, TRUNCATION_CONFIRMED; door=LADDERLAW_PREFLIGHT_PASS_WAIT_FOR_PROSHKA; W_prime_decreasing=True; rungs=True; y_mass=True; T6=TRUNCATION_CONFIRMED.
+- 2026-07-06: LadderLaw_v1_Addendum -> gap_slope=19.6819692055 PASS; W_prime_slope=-5.00273858981 registered_miss_favorable; rung6_residual=1.48x floor miss; G4'=CONDITIONAL theorem / UNCONDITIONAL detector.
+- 2026-07-06 01:37:28 CEST: SymbolDiagonalCrossCheck_v1 -> SYMBOL_MATCH; a_sym=5.37295373544e-59; rel_diff=2.3763015e-91; G3a=TraceCompressionBound.
+- 2026-07-06 06:54:15 CEST: ZeroSumCrossCheck_v1 -> SLOW_TAIL; S100/a1=0.31193244; K1=9.6289495e-33; p=-2.1032633; SymbolDiagonal=TAUTOLOGICAL_CHANNEL.
+- 2026-07-06 15:03:26 CEST: ZeroSumProfile_v2 -> CHANNEL_DUST_FLOOR, PARTIAL_DISPLACED_PROFILE, COMB_MECHANISM_REFUTED, PROFILE_FIT_OUT_OF_RANGE; S500/a1=0.71413107; peak_j=62; im_ratio=0.65200077; post_corr_T=0.34132012; p=1.3966299.
+- 2026-07-06 16:27:34 CEST: ZeroSumProfile_v2_Addendum -> PHASE_NOT_LINEAR, COMB_MECHANISM_STILL_REFUTED, EDGE_CLOSURE_PASS, BK_EDGE_IMPORT_INCOMPLETE; phase_MAD=0.65380443; comb_T=0.040169048; edge_ratio=0.67136387; A4=NOT_RUN.
+- 2026-07-06 17:26:31 CEST: PhaseTraceAndLedgerFilter_v1 -> PHASE_STRUCTURE_DEEPER, LEDGER_ENVELOPE_CONSISTENT, GUE_MODULATION_ABSENT; phi500=-0.012269367; dust100_ratio=1.0304966; Cmean=7.9149918e-29; GUE=GUE_MODULATION_ABSENT.
+- 2026-07-06 18:22:53 CEST: DustModelAndCrossover_v1 -> DUST_ADDITIVE_REFUTED, CROSSOVER_LAW_REFUTED; D1=DUST_ADDITIVE_REFUTED; D2=ZONED_JUDGE_PASS zc_frac=0.55; D4=CROSSOVER_LAW_REFUTED; D5=NOT_RUN.
+- 2026-07-06 21:18:08 CEST: PortableKChannel_v1 -> PLANCHEREL_PASS, CROSSOVER_REFUTED; Plancherel=True; crossover=CROSSOVER_REFUTED; edge_slope=11.265672; tail=RUN.
+- 2026-07-06 21:21:03 CEST: PortableKChannel_v1 -> PLANCHEREL_PASS, CROSSOVER_REFUTED; Plancherel=True; old_profile_agreement=False; crossover=CROSSOVER_REFUTED; edge_slope=11.265672; tail=RUN.
+- 2026-07-06: AnchorLockedKChannel_v1 preflight rollback -> Plancherel=VOID_TAUTOLOGICAL_JUDGE; crossover=UNTESTED.
+- 2026-07-06 22:03:09 CEST: AnchorLockedKChannel_v1 -> ANCHOR_REPRODUCED, PLANCHEREL_REAL_PASS, CROSSOVER_CONFIRMED, TAIL_FLATTENING_REFUTED; A1=True; A2=True; A4=CROSSOVER_CONFIRMED; A5=TAIL_FLATTENING_REFUTED.
+- 2026-07-06 22:06:55 CEST: AnchorLockedKChannel_v1 -> ANCHOR_REPRODUCED, PLANCHEREL_REAL_PASS, CROSSOVER_CONFIRMED, TAIL_FLATTENING_REFUTED; A1=True; A2=True; A4=CROSSOVER_CONFIRMED; A5=TAIL_FLATTENING_REFUTED.
+- 2026-07-07 00:31:54 CEST: AnchorLocked_Extraction_v1 -> LEDGER_LAMBDA_CLASS_PASS, MASS_P_OUT_OF_RANGE, UNIVERSAL_COLLAPSE_CONFIRMED, RELABEL_REJECTED_E2_MASS_P_OUT_OF_RANGE; edge=lambda^11 E two-channel packet=11.27 zero=10.6081165937; U3=CONFIRMED; tail relabel NOT_PROMOTED.
+- 2026-07-07 19:44:06 CEST: TroughRelabel_and_BusSync_v1 -> REVIEWED_TAIL_RELABEL_DONE, TAIL_MASS_LEVEL_CONFIRMED, TAIL_PROFILE_TROUGH, TroughBoundary REGISTERED, BUS_SYNC_DONE; canonical repo `/Users/emalam/GitHub/rh_lean_01_2026`; stale twin pointer written under `/Users/emalam/Documents/GitHub/rh_lean_01_2026`; no compute; no next gate selected.
+- 2026-07-07 20:34:59 CEST: RegisterReadOnlyDocs_v1 -> READ_ONLY_IMPORTS_REGISTERED, EPISTEMIC_FIREWALL_VISIBLE; pinned docs/MYTHOS_KERNEL_PROTOCOL.md and docs/RESEARCH_DIGEST_LITERATURE_2026-07.md by sha256; read-only rule registered; no compute; no next gate selected.
+- 2026-07-07 21:55:13 CEST: CombMeanValueFalsifier_v1 -> COMB_MEANVALUE_CONFIRMED; F1 means J500=1.50783181965, J1000=1.70157105569, J2000=1.86470486601 in registered bands; shadow +0.25 J2000=1.95882716842 moves toward null; F2 midpoint/zero ratio=1.91978809365; no next gate selected.
+- 2026-07-07 23:43:48 CEST: TailReturnProbe_v1 -> AMBIGUOUS, LEDGER_CONSISTENT, MASS_P_OUT_OF_RANGE; C_eff(W8)=8.88720589993e-29 in [6e-29,1.1e-28]; S5000/a1=0.911323348114 in [0.90,0.96] and rising; C_refit_checkpoint_mean=8.77110786822e-29 rel_miss=0.110266818762; p_mass(W7/W8)=0.468369826058 outside [0.7,1.5]; ceiling max=0.911323348114; NOT_RH; no next gate selected.
+- 2026-07-08 00:02:52 CEST: LeakageFalsifier_v1 -> H2_HOLDS, SIN_VANISHING_REFUTED, LEFT_EDGE_MISMATCH; g04(0)/||E(g04)||=3.26204312015e-60; integer-sample k^-2 law fails (ratios for k=2..4 outside [0.5,1.5], signs alternate; quad cross-checked by Legendre/Bessel); left-edge magnitude passes |E(1/lambda)|/||E||=3.48978688614e-29 but direct/Poisson k<=8 relative mismatch=0.0117387719214; planted i^n->+1 judge inert for current g04=h0/h4 (both phases +1); NOT_RH; no next gate selected.
+- 2026-07-09 07:14:58 CEST: SplitIdentityCheck_v1 -> SMOOTH_NOT_SUBDOMINANT, K_SPLIT_EDGE_ACCOUNTING_GAP(planted); S1 far ratios gamma500=2.57227201607 and midpoint=2.03867370592 exceed bound 0.5; planted m=13 residual jump relerr=0; half-open double-count code silent; mean_j<=62 |D12|^2=0.698370441127; NOT_RH; no next gate selected.
+- 2026-07-10: G3_0_CanonicalObjectDictionary -> OBJECT_DICTIONARY_LOCKED, H2_POLE_CORRECTION_SELECTED, MIDPOINT_CONVENTION_LOCKED, NO_FIT_NORMALIZATION_PASS; exact index h0<->chi0 and h4<->chi2; threshold-only H2_HOLDS superseded by exact h_lambda(0)!=0; fresh d^*T*d rebuild at lambda^2=13,N=120 agrees with normalized a1_raw to relative 3.53974503260e-64; next=ProjectedProlateDefectEquation with commutator/boundary source; NOT_RH.
+- 2026-07-10 18:28:02 CEST: TailReturnRelabel_v1 -> TAIL_RETURN_CONFIRMED, P_TRANSIENT_RECOVERY, TailProfileArc REGISTERED; bus 002 strict p-law judge retired as a LAW judge and retained as a PROFILE probe; envelope C_resid(5000)=1.0248e-28 <= 1.05e-28, paper-facing constant <= 1.1e-28; ZERO compute; NOT_RH; no next gate selected.
+- 2026-07-10 18:52:19 CEST: LeakageCloseout_v1 -> H2_NUMERIC_ONLY, SECOND_EDGE_CHANNEL, STAIL_DIVERGENT_SUSPECT, PLANT_REDESIGNED_FIRES; true-precision g04 constructor imposes only integral(f)=0 and no f(0)=0 row; Poisson relative mismatch k<=8/20/40 = 0.0117388/0.00712239/0.0651060, so truncation hypothesis refuted; S_tail(200)/leading=0.238061 passes size budget but 100->200 increment=0.0661527 misses <5% convergence judge; conjugate shadow inert exactly and c4-flip amplifies mismatch 29.7193x; NOT_RH; no next gate selected.
+- 2026-07-10 20:17:40 CEST: PoissonResidualChannelAudit_v1 -> MIDPOINT_POLE_LEDGER_REPAIR; whole-ledger exact relative closure=2.21795886424e-89, certified-interval worst relative closure=1.90764732499e-8; signed-tail=SIGNED_TAIL_INSUFFICIENT (certified T40 closes starred identity but exact C_mid remains for Bus-006 full endpoint); H2=PRESENT_EXACT, midpoint=PRESENT_EXACT, C_left=ABSENT_FROM_CURRENT_IDENTITY, C_right=ABSENT_FROM_CURRENT_IDENTITY, R_other=ZERO_EXACT; all plants fire; NOT_RH; no next gate selected.

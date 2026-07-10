@@ -1,0 +1,62 @@
+{
+  "F1": {
+    "J1000": {
+      "gamma_J": 1419.4224809459956,
+      "mean_abs_D_sq": 1.7015710556889008
+    },
+    "J2000": {
+      "gamma_J": 2515.286482924713,
+      "mean_abs_D_sq": 1.8647048660110044,
+      "prediction": 1.853,
+      "registered_band": [
+        1.55,
+        2.15
+      ],
+      "registered_pass": true
+    },
+    "J500": {
+      "gamma_J": 811.1843588465063,
+      "mean_abs_D_sq": 1.5078318196527396,
+      "prediction": 1.468,
+      "registered_band": [
+        1.1,
+        1.9
+      ],
+      "registered_pass": true
+    },
+    "null_control": {
+      "H13": 3.180133755133755,
+      "excluded_at_J2000": true,
+      "null_value": 3.18
+    },
+    "shadow_shift_plus_0_25_J2000": {
+      "mean_abs_D_sq": 1.9588271684247205,
+      "moves_toward_null": true,
+      "target_null_value": 3.18
+    }
+  },
+  "F2": {
+    "direction_pass": true,
+    "midpoint_J500_mean_abs_D_sq": 2.8947175745927485,
+    "ratio_midpoint_over_zero": 1.919788093647881,
+    "zero_J500_mean_abs_D_sq": 1.5078318196527396
+  },
+  "compute_class": "near_zero_float64_13_term_sums_on_cached_zeros",
+  "float64_used": true,
+  "formula": "D(gamma)=sum_{m<=13} m^(-1/2+i gamma)",
+  "gate": "CombMeanValueFalsifier_v1",
+  "guardrails": {
+    "next_gate_selected": false,
+    "not_RH": true,
+    "packet_definition_changed": false,
+    "phase2_run": false,
+    "q3_main_touched": false,
+    "qW_formula_changed": false
+  },
+  "status": "NOT_RH_DIAGNOSTIC_ONLY",
+  "verdict": "COMB_MEANVALUE_CONFIRMED",
+  "zero_compute": false,
+  "zero_dataset": "out/anchor_locked_zeros_first_2000.json",
+  "zero_dataset_sha256": "60dba843b9dca732b232d1bf4f3a133b174ca403fd9929d99d49122a38303356",
+  "zeros_recomputed": false
+}

@@ -1,0 +1,50 @@
+{
+  "project": "RH via Weil positivity / Route B (Connes prolate)",
+  "version": "2026-07-07.2",
+  "maintainer": "Mythos",
+  "codex_access": "read-only",
+  "status_legend": {
+    "green": "доказано/закрыто",
+    "amber": "почти закрыто/в работе",
+    "red": "открыто",
+    "gray": "заморожено/нейтрально"
+  },
+  "zoom_protocol": "«зумни N» → под-карта узла N с адресами N.1, N.2, ...; номера заморожены, только алиасы",
+  "canonical_docs_dir": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/docs",
+  "nodes": [
+    { "id": "1", "name": "Гипотеза Римана", "status": "gray", "children": [] },
+    { "id": "2", "name": "Цепь доказана пером (α-детектор ⟺ RH при G3a)", "status": "green",
+      "children": [
+        { "id": "2.1", "name": "α-детектор: RH ⟺ liminf α = 0", "status": "green" },
+        { "id": "2.2", "name": "ZEO v2: W′ → 0 ⟹ RH", "status": "green" },
+        { "id": "2.3", "name": "RayleighLadderTracking", "status": "green" },
+        { "id": "2.4", "name": "PoissonParityLadder", "status": "green" },
+        { "id": "2.5", "name": "E3-полоса + внешний хэндофф (CF, Гурвиц, Fact 6.4)", "status": "green" }
+      ] },
+    { "id": "3", "name": "Стена 1: G3a — высота догадки", "status": "red",
+      "children": [
+        { "id": "3.1", "name": "Хвост γ>2c — EdgeJumpTailBound", "status": "amber",
+          "children": [
+            { "id": "3.1.1", "name": "Гребёнка скачков u=λ/m + IBP", "status": "green" },
+            { "id": "3.1.2", "name": "Вес края λ^11·E (BK; каналы 11.27/10.61)", "status": "green" },
+            { "id": "3.1.3", "name": "Некогерентность по нулям — комб закрыт (Прошка PASS, F1 ✓ 0.63%)", "status": "green" },
+            { "id": "3.1.4", "name": "Остаток K^rem", "status": "amber",
+              "children": [
+                { "id": "3.1.4.1", "alias": "3.1.4a LeftEdgeLeakage", "name": "Левый край: Пуассон-узлы = пролат в целых; класс λ³(logλ)E", "status": "amber" },
+                { "id": "3.1.4.2", "alias": "3.1.4b InteriorSmoothRemainder", "name": "Внутренний AC-остаток — единственный открытый бюджет хвоста", "status": "red" }
+              ] }
+          ] },
+        { "id": "3.2", "name": "Горб γ≤2c — HumpMassBound (Конн §6)", "status": "red" }
+      ] },
+    { "id": "4", "name": "Стена 2: α-Gate (сейф, RH-эквивалент)", "status": "red",
+      "children": [
+        { "id": "4.1", "name": "α→0? — мерить, не доказать (детектор W′ взведён)", "status": "red" }
+      ] },
+    { "id": "5", "name": "Q3 Lean mainline (параллельная программа)", "status": "gray",
+      "children": [
+        { "id": "5.1", "name": "~68 открытых аксиом", "status": "gray" },
+        { "id": "5.2", "name": "Ложные звенья: uniform cap, a_star_pos", "status": "gray" },
+        { "id": "5.3", "name": "Разморозка: Lean = финальная печать (P5)", "status": "gray" }
+      ] }
+  ]
+}

@@ -10,6 +10,8 @@ Main result: `Q3.Main.RH_of_Weil_and_Q3 : RH`
 
 -- Core modules (for doc-gen4 to include in documentation)
 import Q3.Basic.Defs
+import Q3.Basic.WeilSquareClass
+import Q3.Basic.WeilDirectRoute
 import Q3.Axioms
 import Q3.AxiomsTheorems
 import Q3.Main

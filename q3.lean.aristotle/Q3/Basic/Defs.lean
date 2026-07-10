@@ -138,7 +138,12 @@ def IsNonneg (Φ : ℝ → ℝ) : Prop := ∀ x, 0 ≤ Φ x
     compact support.
 
     After the 2026-03-07 target-cone audit this is kept as a compiled background
-    object, not as the frozen public RH target. -/
+    object, not as the frozen public RH target.
+
+    Fatal square-class audit note (2026-06-25): this broad pointwise-nonnegative
+    cone is not the exact Weil test class and must not be used as an RH export
+    route for new work.  The corrected interface is `Q3.W_sq_K` in
+    `Q3.Basic.WeilSquareClass`. -/
 def Weil_cone : Set (ℝ → ℝ) :=
   {Φ | IsEven Φ ∧ IsNonneg Φ ∧ HasCompactSupport Φ ∧ Continuous Φ}
 
@@ -149,7 +154,12 @@ def Weil_cone_K (K : ℝ) : Set (ℝ → ℝ) :=
 /-- Broad legacy local cone used by the current compiled route.
 
     After the target-cone audit this remains useful for local lemma extraction,
-    but it is no longer the public paper target for RH. -/
+    but it is no longer the public paper target for RH.
+
+    Fatal square-class audit note (2026-06-25): `W_K` is a broad
+    pointwise-nonnegative compact slice, not the Hermitian-square class.  Do not
+    route RH export through `Q_nonneg_on_W_K`; use the corrected square-class
+    interface `Q3.W_sq_K` instead. -/
 def W_K (K : ℝ) : Set (ℝ → ℝ) :=
   {Φ | Continuous Φ ∧
        Function.support Φ ⊆ Set.Ioo (-K) K ∧

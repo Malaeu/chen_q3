@@ -1,0 +1,163 @@
+{
+  "block_split_raw_not_interpreted": {
+    "Delta_eff_odd_minus_even_ground": "(3.0555650575790040654917810671080714191242947411280989866975761841450172491130507e-55 + 3.8407788224652712412272288196597754899615475817897888197715808658922209072044127e-93j)",
+    "S0_even_2x2": [
+      [
+        "(4.0994948282303368428370854804946497870363706184663148269383301519283501137291098e-59 - 1.8071686368386157447749190789054347119606978325923877941170583723519237499101459e-96j)",
+        "(8.9858500651721140258718928201443543233349382153737217112561072715652867316939229e-56 - 8.1502517746032472666262270523865884782302031838015143288097282559234104682786928e-92j)"
+      ],
+      [
+        "(8.9858500651721140258718928201443543233349382153737217112561072715652867316939229e-56 + 5.9424024137510283212522143378583819837671410065230957586836783198509906121426697e-92j)",
+        "(1.3118543285651468805003890599579544843036464471661098585841249515961537934203861e-51 - 1.5311226842482146619019224835366122177999270045413713756691377350266852028118307e-92j)"
+      ]
+    ],
+    "S0_odd_scalar_S0_oo": "(3.0559134563989372500529767361349022218785049287059669709510014183634932257280172e-55 + 3.8407788224652712412272288196597754899615475817897888197715808658922209072044127e-93j)",
+    "S0_order": "[k1, k2_odd, k2_even]",
+    "eig_even_2x2": [
+      "3.4839881993313211961662855573281512815804405774566057431390124475579670783137338e-59",
+      "1.3118543347202132108870878947367988798274794795109816081232281113233331856897737e-51"
+    ],
+    "not_interpreted_because": "PARITY_CONTAMINATION"
+  },
+  "created_at_unix": 1783113708.7931678,
+  "formulas_changed": false,
+  "gate": "OperatorStaticSchurStabilityGate",
+  "hard_anchor_12_120_status": "NOT_BOUGHT_BECAUSE_PARITY_CONTAMINATION_STOPS_BEFORE_DRIFT",
+  "inventory": [
+    {
+      "N": 60,
+      "has_G_matrix": false,
+      "has_K_schur_matrix": false,
+      "has_S0_matrix": false,
+      "has_static_theta": true,
+      "lambda_sq": 12,
+      "operator_schur_json": false,
+      "phase1_dps": 186,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true,
+      "static_schur_progress": "eigenvalues_only_no_S0_matrix"
+    },
+    {
+      "N": 90,
+      "has_G_matrix": false,
+      "has_K_schur_matrix": false,
+      "has_S0_matrix": false,
+      "has_static_theta": true,
+      "lambda_sq": 12,
+      "operator_schur_json": false,
+      "phase1_dps": 186,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true,
+      "static_schur_progress": "eigenvalues_only_no_S0_matrix"
+    },
+    {
+      "N": 120,
+      "lambda_sq": 12,
+      "operator_schur_json": false,
+      "phase1_dps": 186,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true
+    },
+    {
+      "N": 60,
+      "lambda_sq": 13,
+      "operator_schur_json": false,
+      "phase1_dps": 191,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true
+    },
+    {
+      "N": 90,
+      "lambda_sq": 13,
+      "operator_schur_json": false,
+      "phase1_dps": 191,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true
+    },
+    {
+      "N": 120,
+      "has_C_spectral": true,
+      "has_G_matrix": true,
+      "has_K_schur_matrix": true,
+      "has_S0_matrix": true,
+      "lambda_sq": 13,
+      "operator_schur_json": false,
+      "phase1_dps": 191,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true,
+      "static_schur_progress": "full_operator_anchor_from_nconv"
+    },
+    {
+      "N": 60,
+      "lambda_sq": 14,
+      "operator_schur_json": false,
+      "phase1_dps": 197,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true
+    },
+    {
+      "N": 90,
+      "lambda_sq": 14,
+      "operator_schur_json": false,
+      "phase1_dps": 197,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true
+    },
+    {
+      "N": 120,
+      "has_G_matrix": true,
+      "has_K_schur_matrix": false,
+      "has_S0_matrix": false,
+      "has_static_theta": true,
+      "lambda_sq": 14,
+      "operator_schur_json": false,
+      "phase1_dps": 197,
+      "phase1_has_mu": true,
+      "phase1_scalar_json": true,
+      "static_schur_progress": "feshbach_static_eigenvalues_plus_G_no_S0_matrix"
+    }
+  ],
+  "parity_judge_anchor": {
+    "N": 120,
+    "lambda_sq": 13,
+    "source": "out/nconv_anchor_lambda_sq_13_N_120.json"
+  },
+  "parity_judges": [
+    {
+      "abs_even2_odd": "2.3765889971047193918177456474280288760480489448220797032762988440686503289513143e-28",
+      "abs_k1_odd": "1.3205665828854042051004226862847315439997259225192200264228522883210350245038883e-28",
+      "matrix": "G",
+      "norm_fro": "1.3314325737404509788515837121889729002723628253300633585577683737282230803933292e-27",
+      "pass": false,
+      "ratio_even2_odd_over_norm": "0.17849863703034285489223975673667155206203460693359375",
+      "ratio_k1_odd_over_norm": "0.099183887260282321829407692348468117415904998779296875",
+      "threshold": "0.00000000000000000000000010000000000000000384948697491918390813719893615913383013961276435003578191840212"
+    },
+    {
+      "abs_even2_odd": "2.3765889971047193918177456474280288760480489448220797032762988440686503289513143e-28",
+      "abs_k1_odd": "1.3205665828854042051004226862847315439997259225192200264228522883210350245038883e-28",
+      "matrix": "K_schur",
+      "norm_fro": "1.3314325737404509788515837121889729002723628253300633585577683737282230803933292e-27",
+      "pass": false,
+      "ratio_even2_odd_over_norm": "0.17849863703034285489223975673667155206203460693359375",
+      "ratio_k1_odd_over_norm": "0.099183887260282321829407692348468117415904998779296875",
+      "threshold": "0.00000000000000000000000010000000000000000384948697491918390813719893615913383013961276435003578191840212"
+    },
+    {
+      "abs_even2_odd": "1.4873870131117149444902003816175225516311572055077601502700669126034888056940029e-66",
+      "abs_k1_odd": "5.3789103105807356352281036342166596225285538403804874496370179764432445653040186e-70",
+      "matrix": "S0",
+      "norm_fro": "1.3118543703133686368661898279164263442855540619376792554278617084169601921498203e-51",
+      "pass": false,
+      "ratio_even2_odd_over_norm": "0.0000000000000011338049762005335846232143132744910635019197414283254055078486999263986945152283",
+      "ratio_k1_odd_over_norm": "0.00000000000000000041002343189174655627507684981778723679559590135915094107066369844005748745985329",
+      "threshold": "0.00000000000000000000000010000000000000000384948697491918390813719893615913383013961276435003578191840212"
+    }
+  ],
+  "phase2_run": false,
+  "q3_main_touched": false,
+  "reason": "O2+ parity-zero structural judge failed on the only available full operator anchor (lambda_sq=13,N=120).",
+  "route": "RouteB_TwoLevelSpectralLadder",
+  "status": "STOPPED_BEFORE_DRIFT_INTERPRETATION",
+  "verdict": "PARITY_CONTAMINATION"
+}

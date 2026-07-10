@@ -231,7 +231,11 @@ theorem T5_transfer_tau0 (K : ℝ) (hK : K ≥ 1) (t0 B_min B_max : ℝ) (ht0 : 
     exact lt_trans h_Qg_lt_neg_half this
   linarith
 
-/-- Corollary: Q is nonnegative on W_K for K ≥ 1 -/
+/-- Legacy broad-cone corollary: Q is nonnegative on `W_K` for `K ≥ 1`.
+
+After the 2026-06-25 square-class audit this theorem must not be used as an RH
+export route.  Its target is the broad pointwise-nonnegative class `W_K`, not
+the corrected Hermitian-square class `W_sq_K` from `Q3.Basic.WeilSquareClass`. -/
 theorem Q_nonneg_on_W_K (K : ℝ) (hK : K ≥ 1) :
     ∀ Φ ∈ W_K K, Q Φ ≥ 0 :=
   T5_transfer K hK

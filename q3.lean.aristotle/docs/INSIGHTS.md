@@ -11,6 +11,29 @@
 
 ## Навигация (кратко)
 
+## Insight (2026-07-07, Route B state hygiene) -- TroughRelabel_and_BusSync_v1
+
+- Route B request state had a two-copy split: `/Users/emalam/GitHub/rh_lean_01_2026`
+  contained the canonical `AnchorLocked_Extraction_v1` state, while
+  `/Users/emalam/Documents/GitHub/rh_lean_01_2026` retained useful older
+  request artifacts and a richer pre-extraction `loop_state.json`.
+- Both copies had the same git HEAD, so canonical selection used the active
+  Codex workspace and the newer extraction section in `ROUTE_B_STATE.md`.
+- Missing request-local artifacts were merged into the canonical copy without
+  overwriting canonical files; the stale twin now has only a pointer file for
+  this request state.
+- Reviewer ruling applied:
+  `TAIL_FLATTENING_REFUTED -> TAIL_MASS_LEVEL_CONFIRMED + TAIL_PROFILE_TROUGH`.
+  The strict DeltaS rows `[2.02180339103, 4.63439244204, 1.39442397632]`
+  remain the law-judge refutation of a single `p=1` law; the budget envelope
+  judge passes for the lemma-budget state.
+- `TroughBoundary` is registered at gamma `[1419,2515]`, with
+  `C_eff=2.7e-29..3.0e-29` vs plateau `0.78e-28..1.05e-28`; interpretation is
+  smooth-part amplitude calibration around `3e-29` (medium confidence).
+- `LOOP.md` in the canonical request directory is now pointer-only; the old
+  dust-era loop is archived as `LOOP_ARCHIVED_dust_era.md`.  No RH claim, no
+  Phase 2, no new computation, and no next mathematical gate selected.
+
 ## Synthesis (2026-06-14, in progress) -- Track B E5' edge-defect contract
 
 - Target lemma: prove `Edge_K(h) <= mu_K Norm_K(h)` for `h in C_K cap kerQ`,
@@ -46021,3 +46044,75 @@ not the raw-D17 factorwise support class.
   three separate assumptions: pre-square density, autocorrelation continuity,
   and correction-closure of the chosen packet family.  Do not claim global RH
   progress from finite PSD blocks until this interface is filled.
+
+## Insight (2026-06-25, Weil route audit) -- WeilSquareClassSpecGate
+
+- Added `docs/trackB/WEIL_SQUARE_CLASS_SPEC.md` as a proof-contract note for
+  the exact test class.  This is `SPEC_ONLY / NO_RH_CLAIM`.
+- Core correction: the classical Weil/Bombieri target is positivity on
+  admissible Hermitian squares `Phi = g * g_sharp` with compact-support /
+  smoothness-decay assumptions and finite pole-cancelling boundary conditions.
+  It is not positivity on arbitrary broad compact bumps, and it is not the
+  restricted tau0/fixed-B packet cone.
+- Local Lean anchor: `q3.lean.aristotle/Q3/Basic/WeilSquareClass.lean` already
+  exposes `sharp`, `hermitianSquareC`, `HasWeilBoundaryNull`, `W_sq_K`, `W_sq`,
+  and `ExactWeilCriterion`.  The next issue is not naming the class; it is
+  proving the normalization, exhaustion, same-class packet positivity, and
+  continuity interfaces.
+- Required gate names to keep the route honest:
+  `WEIL_SQUARE_CLASS_SPEC_GAP`, `FINITE_BOUNDARY_NORMALIZATION_GAP`,
+  `CLASSICAL_WEIL_LINKAGE_GAP`, `TAU0_RESTRICTED_CONE_GAP`,
+  `A1PD_PACKET_EXHAUSTION_GAP`, `BOUNDARY_NULL_CORRECTION_GAP`,
+  `Q_CONTINUITY_TOPOLOGY_GAP`, and `PACKET_PSD_SAME_CLASS_GAP`.
+- Operational consequence: do not spend A3/IND/T5 effort as if broad A1' or
+  `Weil_criterion_tau0` had already closed the exact Weil-square target.  First
+  close or explicitly assume the square-class linkage:
+  `ExactWeilCriterion -> W_sq/W_sq_K -> A1-pd/WeilSquarePacketExhaustion ->
+  packet-Rayleigh-pd/PSD-pd -> A2 closure`.
+
+## Insight (2026-07-10, Route B supply side) -- G3_0_CanonicalObjectDictionary
+
+- Added `docs/PEN_3_3_G04_OBJECT_DICTIONARY.md`; status is
+  `GREEN / OBJECT_DICTIONARY_LOCKED / NOT_RH`.
+- Local `q3_docs` searches for the new object-dictionary vocabulary returned
+  only low-confidence older-route hits, so the lock uses Connes §§6.3--6.4,
+  the local quadratic-form paper, and the request-local true-precision code.
+- Exact index map: `h0 <-> chi0`, `h4 <-> chi2`; the bandwidth is
+  `C_lambda = 2*pi*lambda^2`.
+- The canonical time packet is the L2-normalized `I4*h0-I0*h4` combination;
+  its integral vanishes exactly.
+- Exact H2 audit reverses the threshold-only diagnostic: the two-mode packet
+  has nonzero value at the origin and therefore selects `H2-POLE/CORRECTION`,
+  not `H2-ZERO`.
+- The window representative uses midpoint/half endpoint weights.  Existing
+  full-endpoint left-edge diagnostics require a midpoint rerun before they can
+  be promoted to a starred Poisson certificate.
+- The fixed-cell normalization lock is `lambda^2=13`, `N=120`, with both
+  parameters kept explicit and no fitted constant.  A fresh `d^* T d`
+  contraction at matrix `dps=191` reproduces the normalized `a1_raw` with
+  relative difference `3.53974503260e-64`.
+- Next mathematical target: `ProjectedProlateDefectEquation`, retaining its
+  commutator/boundary source rather than imposing a homogeneous ODE after
+  projection.
+
+## Insight (2026-07-10, Route B local audit) -- PoissonResidualChannelAudit_v1
+
+- Exact target: reconstruct the fixed-cell identity
+  `D_direct = P_40 + T_40 + C_pole + C_mid + C_left + C_right + R_other`
+  before accepting the Bus 006 second-edge diagnosis.
+- Four `q3_docs` searches returned only low-confidence route background and no
+  ready theorem for this exact residual ledger.  The external primary-source
+  check (Connes--Consani, arXiv:1910.14368) supplied structural Poisson-operator
+  background only; the local object dictionary and exact code remain decisive.
+- The integer phase `C=2*pi*13` turns the finite even-Legendre/Bessel expansion
+  into the exact polynomial `p_k=sum_{r=1..90} A_(2r)/k^(2r)`.  Its zeta tail at
+  `K=40` is certified, with a conservative interval error below `2e-8` relative
+  after propagation through the ledger.
+- Result: `MIDPOINT_POLE_LEDGER_REPAIR`.  The signed tail closes the canonical
+  starred identity with the explicit H2 term; the old Bus 006 direct value used
+  full endpoint weight and requires the exact half-endpoint correction
+  `C_mid=-2.3553130263367307912e-30`.
+- `C_right` is `ABSENT_FROM_CURRENT_IDENTITY`, `C_left` is not an added channel,
+  and `R_other=0` in the fixed finite model.  No fitted correction was used.
+- All coefficient-sign, endpoint-weight, and deleted-channel plants fire.
+  Scope remains `NOT_RH`; no downstream gate is selected by this audit.
