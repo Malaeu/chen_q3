@@ -17,14 +17,14 @@
   "anchor_locked_A3_status": "PASS",
   "anchor_locked_A4_code": "CROSSOVER_CONFIRMED",
   "anchor_locked_A5_tail_code": "TAIL_FLATTENING_REFUTED",
-  "current_gate": "REGISTER_READ_ONLY_DOCS_DONE",
+  "current_gate": "AWAIT_BUS",
   "dust_model_D1_code": "DUST_ADDITIVE_REFUTED",
   "dust_model_D2_code": "ZONED_JUDGE_PASS",
   "dust_model_D2_zero_consistent_fraction_j100": "0.5500000000000000444089209850062616169452667236328125",
   "dust_model_D3_first_zero_share_ZC_pass": true,
   "dust_model_D4_code": "CROSSOVER_LAW_REFUTED",
   "dust_model_D5_status": "NOT_RUN",
-  "failure_code": "NONE",
+  "failure_code": "ZEO_EXPORT_AMBIGUOUS",
   "forbidden_next_before_operator_gate": [
     "BoundaryOperatorConstructionAudit",
     "ProlateBranchBasisConstructionAudit",
@@ -32,7 +32,7 @@
     "slope_refit",
     "raw_scalar_N_convergence_repair"
   ],
-  "last_attempted_gate": "RegisterReadOnlyDocs_v1",
+  "last_attempted_gate": "ContractV2CrosscheckAndStateSync_v1",
   "last_codes": [
     "ANCHOR_REPRODUCED",
     "PLANCHEREL_REAL_PASS",
@@ -45,14 +45,23 @@
     "REVIEWED_TAIL_RELABEL_DONE",
     "BUS_SYNC_DONE",
     "READ_ONLY_IMPORTS_REGISTERED",
-    "EPISTEMIC_FIREWALL_VISIBLE"
+    "EPISTEMIC_FIREWALL_VISIBLE",
+    "MIDPOINT_POLE_LEDGER_REPAIR",
+    "CONTRACT_V2_LOCKED",
+    "STATE_LOOP_SYNCED",
+    "ZEO_EXPORT_AMBIGUOUS",
+    "R13_SOURCE_MISSING",
+    "PROVENANCE_PLANT_ABSENT_CONFIRMED"
   ],
-  "last_completed_gate": "RegisterReadOnlyDocs_v1",
-  "last_completed_gate_status": "COMPLETED_STATE_ONLY",
-  "last_failure_codes": [],
+  "last_completed_gate": "ContractV2CrosscheckAndStateSync_v1",
+  "last_completed_gate_status": "CONTRACT_V2_LOCKED_PLUS_STATE_LOOP_SYNCED_PLUS_ZEO_EXPORT_AMBIGUOUS",
+  "last_failure_codes": [
+    "ZEO_EXPORT_AMBIGUOUS",
+    "R13_SOURCE_MISSING"
+  ],
   "last_json": "NONE_ZERO_COMPUTE",
-  "last_report": "register_read_only_docs_v1.md",
-  "last_verdict": "READ_ONLY_IMPORTS_REGISTERED_PLUS_EPISTEMIC_FIREWALL_VISIBLE",
+  "last_report": "bus/008_contract_v2_crosscheck_and_state_sync.answer.md",
+  "last_verdict": "CONTRACT_V2_LOCKED;STATE_LOOP_SYNCED;ZEO_EXPORT_AMBIGUOUS;R13_SOURCE_MISSING;PROVENANCE_PLANT_ABSENT_CONFIRMED",
   "ledger_preflight_json": "out/ledger_audit_v2_preflight.json",
   "ledger_preflight_report": "ledger_audit_v2.md",
   "ledger_preflight_status": "LEDGER_AUDIT_BLOCKED",
@@ -140,7 +149,7 @@
   "symbol_diagonal_crosscheck_v1_status": "SYMBOL_MATCH",
   "symbol_diagonal_crosscheck_v1_target": "5.372953735442023358686874141966224563339e-59",
   "tertiary_diagnosis": "BROAD_TAIL_SELF_ENERGY_CONFIRMED",
-  "updated_at_unix": 1783449299,
+  "updated_at_unix": 1783713636,
   "zero_sum_crosscheck_v1_K_gamma1_abs": "9.628949471605359762806294511892400812945e-33",
   "zero_sum_crosscheck_v1_S100_over_a1_raw": "0.3119324359157064850341913085694082904494",
   "zero_sum_crosscheck_v1_decay_p": "-2.103263284182954924754764543651405930741",
@@ -165,8 +174,8 @@
   "canonical_repo_selection": "git_HEAD_tie_resolved_by_active_Codex_workspace_and_newer_ROUTE_B_STATE_extraction_section",
   "stale_twin_repo_path": "/Users/emalam/Documents/GitHub/rh_lean_01_2026",
   "stale_twin_pointer": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/STALE_TWIN_POINTER.md",
-  "bus_sync_status": "CANONICAL_ROUTE_B_STATE_AND_LOOP_STATE_SYNCHRONIZED",
-  "bus_sync_completed_at": "2026-07-07 19:44:06 CEST",
+  "bus_sync_status": "CONTROL_PLANE_SYNCHRONIZED_THROUGH_BUS_008",
+  "bus_sync_completed_at": "2026-07-10 22:00:36 CEST",
   "bus_sync_actions_log": "trough_relabel_and_bus_sync_v1_actions_log.md",
   "anchor_locked_extraction_report": "anchor_locked_extraction_v1.md",
   "anchor_locked_extraction_actions_log": "anchor_locked_extraction_v1_actions_log.md",
@@ -210,12 +219,81 @@
   },
   "mythos_hand_values_correction": "W3/W4 per-window C corrected 9.3e-29/8.7e-29 -> 3.0e-29/2.7e-29; sqrt-slip retracted",
   "loop_md_status": "ARCHIVED_DUST_ERA_POINTER_ONLY",
-  "single_source_of_truth": "ROUTE_B_STATE.md",
+  "single_source_of_truth": "layered: bus/ for executability; ROUTE_B_EXECUTION_STATE.json for current step; ROUTE_B_STATE.md for facts/history",
   "route_history_pointer": "ROUTE_B_STATE.md#History",
   "anchor_locked_A5_reviewed_labels": [
     "TAIL_MASS_LEVEL_CONFIRMED",
     "TAIL_PROFILE_TROUGH"
   ],
+  "execution_control_file": "ROUTE_B_EXECUTION_CONTROL.md",
+  "execution_state_file": "ROUTE_B_EXECUTION_STATE.json",
+  "request_local_implementation_plan": "IMPLEMENTATION_PLAN.md",
+  "routeb_status_tool": "routeb_status.py",
+  "contract_v2_path": "../../../docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+  "contract_v2_status": "CONTRACT_LOCKED_PO0_BLOCKED_ON_ZEO_PROVENANCE",
+  "current_execution_stage": "RB-0",
+  "current_contract_obligation": "PO-0",
+  "current_execution_status": "RB0_BLOCKED_ZEO_EXPORT_AMBIGUOUS",
+  "latest_closed_bus_nnn": "008",
+  "lowest_unanswered_bus_nnn": null,
+  "next_expected_bus_nnn": "009",
+  "selected_next_bus_gate": null,
+  "bus_operational_status": "IDLE_WAITING_FOR_GOAL",
+  "last_completed_bus_nnn": "008",
+  "last_mathematical_bus_nnn": "007",
+  "last_mathematical_gate": "PoissonResidualChannelAudit_v1",
+  "last_mathematical_verdict": "MIDPOINT_POLE_LEDGER_REPAIR",
+  "zeo_export_current_status": "OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS",
+  "legacy_AlphaDetector_ZEO_registration_is_proof": false,
+  "rGap13_source_status": "R13_SOURCE_MISSING",
+  "bus_gate_lineage": [
+    {
+      "nnn": "001",
+      "date": "2026-07-07 21:55:13 CEST",
+      "name": "CombMeanValueFalsifier_v1",
+      "verdict_codes": ["COMB_MEANVALUE_CONFIRMED"]
+    },
+    {
+      "nnn": "002",
+      "date": "2026-07-07 23:43:48 CEST",
+      "name": "TailReturnProbe_v1",
+      "verdict_codes": ["AMBIGUOUS", "LEDGER_CONSISTENT", "MASS_P_OUT_OF_RANGE"]
+    },
+    {
+      "nnn": "003",
+      "date": "2026-07-08 00:02:52 CEST",
+      "name": "LeakageFalsifier_v1",
+      "verdict_codes": ["H2_HOLDS", "SIN_VANISHING_REFUTED", "LEFT_EDGE_MISMATCH"]
+    },
+    {
+      "nnn": "004",
+      "date": "2026-07-09 07:14:58 CEST",
+      "name": "SplitIdentityCheck_v1",
+      "verdict_codes": ["SMOOTH_NOT_SUBDOMINANT", "K_SPLIT_EDGE_ACCOUNTING_GAP"],
+      "annotations": ["planted"]
+    },
+    {
+      "nnn": "005",
+      "date": "2026-07-10 18:28:02 CEST",
+      "name": "TailReturnRelabel_v1",
+      "verdict_codes": ["TAIL_RETURN_CONFIRMED", "P_TRANSIENT_RECOVERY"],
+      "registrations": ["TailProfileArc"]
+    },
+    {
+      "nnn": "006",
+      "date": "2026-07-10 18:52:19 CEST",
+      "name": "LeakageCloseout_v1",
+      "verdict_codes": ["H2_NUMERIC_ONLY", "SECOND_EDGE_CHANNEL", "STAIL_DIVERGENT_SUSPECT", "PLANT_REDESIGNED_FIRES"]
+    },
+    {
+      "nnn": "007",
+      "date": "2026-07-10 20:17:40 CEST",
+      "name": "PoissonResidualChannelAudit_v1",
+      "verdict_codes": ["MIDPOINT_POLE_LEDGER_REPAIR"]
+    }
+  ],
+  "codex_may_create_next_goal": false,
+  "root_implementation_plan_overridden": false,
   "read_only_imports_status": "REGISTERED",
   "read_only_imports_actions_log": "register_read_only_docs_v1_actions_log.md",
   "read_only_imports": [

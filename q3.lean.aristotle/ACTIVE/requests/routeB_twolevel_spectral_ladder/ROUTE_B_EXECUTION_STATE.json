@@ -1,0 +1,188 @@
+{
+  "schema_version": "route_b_execution_state.v1",
+  "updated_at": "2026-07-10T22:00:36+02:00",
+  "route_id": "RouteB_TwoLevelSpectralLadder",
+  "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
+  "architecture": {
+    "status": "ALPHA_ROUTE_REMAINS_CHALLENGER",
+    "global_mainline": "T0-pd -> H-bridge -> H4 -> RH",
+    "global_mainline_frontier": "PO3-square.2d3",
+    "route_b_rh_status": "NOT_RH",
+    "root_implementation_plan_overridden": false
+  },
+  "operational_status": "RB0_BLOCKED_ZEO_EXPORT_AMBIGUOUS",
+  "current": {
+    "stage_id": "RB-0",
+    "contract_obligation": "PO-0",
+    "name": "PO0SourceAndZEOProvenanceRepair",
+    "status": "BLOCKED_AFTER_BUS_008",
+    "selected_bus_goal_nnn": null,
+    "selected_bus_goal_path": null,
+    "next_required_actor": "Mythos",
+    "next_action": "Score Bus 008; decide whether to issue a provenance/ZEO repair as immutable 009_*.goal.md. Codex must not create or select it.",
+    "exit_codes": [
+      "CONTRACT_V2_LOCKED",
+      "STATE_LOOP_SYNCED",
+      "PROVENANCE_LOCKED"
+    ],
+    "kill_codes": [
+      "CONTRACT_DEPENDENCY_GAP",
+      "SAFE_RATE_NOT_SUFFICIENT",
+      "SOURCE_POINTER_MISSING",
+      "ZEO_EXPORT_AMBIGUOUS"
+    ]
+  },
+  "bus": {
+    "status": "IDLE_WAITING_FOR_GOAL",
+    "closed_nnns": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008"
+    ],
+    "last_contiguous_closed_nnn": "008",
+    "lowest_unanswered_nnn": null,
+    "next_expected_nnn": "009",
+    "selected_next_gate": null
+  },
+  "last_closed": {
+    "nnn": "008",
+    "name": "ContractV2CrosscheckAndStateSync_v1",
+    "goal_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/008_contract_v2_crosscheck_and_state_sync.goal.md",
+    "answer_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/008_contract_v2_crosscheck_and_state_sync.answer.md",
+    "goal_sha256": "e006a5bb685bb6389fcdb8086c1e0ce547269d3faa683188ba9db4b8db879460",
+    "answer_hash_mode": "canonical_payload_omit_hash_lines",
+    "answer_sha256": "47dc93e301845e3dfffc28531f733fc91cc35d21962bb0e892d87fa55137846c",
+    "verdict": "CONTRACT_V2_LOCKED;STATE_LOOP_SYNCED;ZEO_EXPORT_AMBIGUOUS;R13_SOURCE_MISSING;PROVENANCE_PLANT_ABSENT_CONFIRMED",
+    "rh_status": "NOT_RH",
+    "terminal_status": "STOP"
+  },
+  "contract": {
+    "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+    "version": "v2",
+    "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+    "status": "CONTRACT_LOCKED_PO0_BLOCKED_ON_ZEO_PROVENANCE",
+    "safe_rate_condition": "r_delta - r_alpha > 2*q_b + 1"
+  },
+  "waiting_reasons": [
+    {
+      "code": "ZEO_EXPORT_AMBIGUOUS",
+      "class": "PO0_PROVENANCE_BLOCKER",
+      "owner": "Mythos",
+      "detail": "Older files call ZEO registered/proven while contract v2 correctly keeps ZEOExportSoundness OPEN_CRITICAL."
+    },
+    {
+      "code": "R13_SOURCE_MISSING",
+      "class": "PO0_SOURCE_POINTER_BLOCKER",
+      "owner": "Mythos",
+      "detail": "The claimed mu1/(mu3-mu1) approximately 2.66e-8 has no persisted ratio artifact or certified source."
+    },
+    {
+      "code": "NO_OPEN_BUS_GOAL",
+      "class": "PROTOCOL_WAIT",
+      "owner": "Mythos",
+      "detail": "Bus 008 is closed and no 009_*.goal.md exists; free number 009 is not a selected gate."
+    }
+  ],
+  "guardrails": {
+    "not_rh": true,
+    "phase2_allowed": false,
+    "q3_main_allowed": false,
+    "q3_main_touched": false,
+    "qW_formula_changed": false,
+    "packet_definition_changed": false,
+    "codex_may_create_next_goal": false,
+    "zero_compute_until_goal_scope_says_otherwise": true
+  },
+  "pins": {
+    "mythos_kernel": {
+      "path": "q3.lean.aristotle/docs/MYTHOS_KERNEL_PROTOCOL.md",
+      "sha256": "0bb4d6613e74c65f5fa0f436904319b8da9208ced26c7eb66e32de0d3d47ec49"
+    },
+    "literature_digest": {
+      "path": "q3.lean.aristotle/docs/RESEARCH_DIGEST_LITERATURE_2026-07.md",
+      "sha256": "8dbcef9f253d10737eedaf231c732d7053a5d6e5b2937e92373c77ba2dce8335"
+    }
+  },
+  "stages": [
+    {
+      "id": "RB-0",
+      "obligations": ["PO-0"],
+      "name": "ContractV2CrosscheckAndStateSync",
+      "status": "BLOCKED_G3_ZEO_AND_SOURCE_PROVENANCE"
+    },
+    {
+      "id": "RB-1",
+      "obligations": ["PO-1"],
+      "name": "ExactDetectorDictionary",
+      "status": "BLOCKED_BY_RB-0"
+    },
+    {
+      "id": "RB-2",
+      "obligations": ["PO-2"],
+      "name": "ParityInstrumentLock",
+      "status": "BLOCKED_BY_RB-0"
+    },
+    {
+      "id": "RB-3",
+      "obligations": ["PO-11"],
+      "name": "ZEOExportSoundness",
+      "status": "BLOCKED_BY_RB-0"
+    },
+    {
+      "id": "RB-4",
+      "obligations": ["PO-12a"],
+      "name": "SafeFeasibility",
+      "status": "BLOCKED_BY_RB-0"
+    },
+    {
+      "id": "RB-5",
+      "obligations": ["PO-3"],
+      "name": "ProjectedProlateDefectEquation",
+      "status": "BLOCKED_BY_LEVEL_1"
+    },
+    {
+      "id": "RB-6",
+      "obligations": ["PO-4", "PO-5", "PO-6"],
+      "name": "Gate6Supply",
+      "status": "BLOCKED_BY_RB-5"
+    },
+    {
+      "id": "RB-7",
+      "obligations": ["PO-7", "PO-8", "PO-9"],
+      "name": "Node33AndG3aLedger",
+      "status": "BLOCKED_BY_RB-6"
+    },
+    {
+      "id": "RB-8",
+      "obligations": ["PO-10"],
+      "name": "DetectorBridgeToSafeAlphaUpper",
+      "status": "BLOCKED_BY_RB-7"
+    },
+    {
+      "id": "RB-9",
+      "obligations": ["PO-12"],
+      "name": "QuantitativeSafeWitness",
+      "status": "BLOCKED_BY_RB-8"
+    },
+    {
+      "id": "RB-10",
+      "obligations": ["PO-13"],
+      "name": "LeanExportAndAxiomAudit",
+      "status": "BLOCKED_BY_RB-9"
+    }
+  ],
+  "authorities": {
+    "architecture": "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md",
+    "execution_control": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md",
+    "execution_state": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json",
+    "mathematical_history": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md",
+    "queue": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus",
+    "compatibility_mirror": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/loop_state.json",
+    "request_local_plan": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/IMPLEMENTATION_PLAN.md"
+  }
+}

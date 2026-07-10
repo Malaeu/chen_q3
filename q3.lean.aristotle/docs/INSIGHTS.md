@@ -46116,3 +46116,51 @@ not the raw-D17 factorwise support class.
   and `R_other=0` in the fixed finite model.  No fitted correction was used.
 - All coefficient-sign, endpoint-weight, and deleted-channel plants fire.
   Scope remains `NOT_RH`; no downstream gate is selected by this audit.
+
+## Insight (2026-07-10, Route B strategy memory) -- DetectorRHClosureMap
+
+- Preserved the user-provided strategic image as
+  `docs/ROUTE_B_DETECTOR_RH_CLOSURE_MAP_2026-07-10.png`, with a full
+  transcription and audit in the companion `.md` file.
+- The map orders the detector challenger as contract/SAFE audit -> A1-A8 and
+  parity cleanup -> projected tail equation with source -> Gate 6 and node 3.3
+  -> DetectorBridge plus two-sided alpha/ZEO -> SAFE and Lean axiom audit.
+- Precision correction: Bus 007 closed the Poisson ledger with
+  `T_40 + C_pole + C_mid`; `C_right` remains
+  `ABSENT_FROM_CURRENT_IDENTITY`.  The projected defect equation remains a
+  Gate-6A target, not a missing-second-edge explanation.
+- `SAFE` is not a completed terminal action.  Current honest status is
+  `SAFE_MECHANISM_CANDIDATE_IDENTIFIED / SAFE_THEOREM_NOT_PROVED`; the candidate
+  is a two-sided polynomial-sharp spectral pair controlling the canonical
+  `alpha` above and `mu_3-mu_1` below, plus `b`, sign/nondegeneracy, and an
+  explicit `N(lambda)` or finite-to-continuum bridge.  The strict rate margin
+  in contract v2 is `r_delta-r_alpha>2*q_b+1`.
+- The image's “old road frozen” label is local campaign language only.  Global
+  project control still keeps `H-bridge` official unless a separate route
+  promotion is recorded.
+- Scope: `STRATEGIC_MAP / NOT_RH / NON-NORMATIVE`; the image and card do not
+  replace `PROJECT_ORCHESTRATOR.md`, Route B execution state, or Mythos
+  contract v2. Bus 008 locked the contract algebra but left PO-0 open on
+  `ZEO_EXPORT_AMBIGUOUS / R13_SOURCE_MISSING`.
+
+## Insight (2026-07-10, Route B control plane) -- RouteBProofCompilerControl_v1
+
+- Added request-local `ROUTE_B_EXECUTION_CONTROL.md`,
+  `ROUTE_B_EXECUTION_STATE.json`, `IMPLEMENTATION_PLAN.md`, and the read-only
+  `routeb_status.py --check` validator.
+- Bus 008 then locked contract v2 algebra and synchronized the legacy lineage,
+  but failed G3 with `ZEO_EXPORT_AMBIGUOUS`; `R13_SOURCE_MISSING` records that
+  the claimed `mu1/(mu3-mu1) ≈ 2.66e-8` has no persisted ratio artifact.
+- Current honest address is `RB-0 / PO-0 /
+  RB0_BLOCKED_ZEO_EXPORT_AMBIGUOUS`: physical pairs `001..008` are closed,
+  no 009 goal is selected, and level 1 remains blocked.
+- The physical bus now decides executability; execution JSON decides the
+  current Route B step; `ROUTE_B_STATE.md` stores facts/history; legacy
+  `loop_state.json` is only a compatibility mirror.
+- The archived `node.md` and the old static queue are hard-stopped so a future
+  agent cannot restart the old pilot or mistake free number 009 for a selected
+  theorem gate.
+- The proof-compiler stages are `RB-0..RB-10`; exactly one immutable bus goal
+  is executed per run, followed by answer, state sync, validator, and `STOP`.
+- Global architecture is unchanged: H-bridge remains the official mainline;
+  Route B remains `CHALLENGER / NOT_RH`.

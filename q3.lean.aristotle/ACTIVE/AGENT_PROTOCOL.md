@@ -120,6 +120,20 @@ Worker agent читает ровно это:
 5. текущий request node из `q3.lean.aristotle/ACTIVE/requests/.../node.md`
 6. только те supporting files, которые перечислены в request node
 
+Route B exception: если задача про detector/alpha/SAFE/ZEO или
+`routeB_twolevel_spectral_ladder`, старый `node.md` не является current
+request. Worker читает:
+
+1. `ROUTE_B_EXECUTION_STATE.json`;
+2. `ROUTE_B_EXECUTION_CONTROL.md`;
+3. `bus/BUS_PROTOCOL.md`;
+4. физический минимальный `NNN_*.goal.md` без matching answer и только
+   перечисленные в нём supporting files.
+
+Если unanswered goal отсутствует, worker возвращает `NO_OPEN_BUS_GOAL` и
+ничего не исполняет. Ни worker, ни orchestrator-Codex не создают следующий
+Route B goal.
+
 Если blocker не возник, worker agent не должен заново перечитывать весь
 control-plane.
 

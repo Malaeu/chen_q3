@@ -1,7 +1,7 @@
 # BUS_PROTOCOL — файловая шина Mythos ⇄ Codex (goal bus)
 
 Path: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/
-Version: v1, 2026-07-07. Owner: Ылша. Writers: Mythos (goals), Codex (answers).
+Version: v2, 2026-07-10. Owner: Ылша. Writers: Mythos (goals), Codex (answers).
 
 ## Именование
 
@@ -38,8 +38,31 @@ Version: v1, 2026-07-07. Owner: Ылша. Writers: Mythos (goals), Codex (answer
 - Codex-сторона: Ылша настраивает вотчер/цикл на появление новых
   `.goal.md` (fswatch или ручной запуск) — зона Ылши.
 
-## Текущая очередь (roadmap, обновляет Mythos)
+## Текущая очередь выводится с диска
 
-- 001 CombMeanValueFalsifier (F1/F2, почти ноль цены) — АКТИВЕН
-- 002 (резерв) TAIL_RETURN_PROBE J=3000..5000 — средняя цена, по решению
-- Параллельно вне шины: адверсарный прогон PEN_3_1_3 Прошкой (через Ылшу)
+Статическая roadmap-таблица больше не является источником истины: она однажды
+застряла на `001`, когда физическая шина уже ушла дальше.
+
+Operational rule:
+
+```text
+active = smallest NNN with goal and without matching answer
+if active is absent: NO_OPEN_BUS_GOAL / STOP
+next free NNN is a number only, not a selected theorem gate
+```
+
+Текущий snapshot после Bus 008: пары `001..008` закрыты, active goal
+отсутствует, следующий свободный номер `009`. `PO-0` остаётся открыт из-за
+`ZEO_EXPORT_AMBIGUOUS` и `R13_SOURCE_MISSING`; 009 не становится задачей, пока
+Mythos не создаст физический immutable goal.
+
+Машинная проверка:
+
+```bash
+python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
+```
+
+Current address и proof-compiler DAG:
+
+- `../ROUTE_B_EXECUTION_STATE.json`;
+- `../ROUTE_B_EXECUTION_CONTROL.md`.

@@ -1,6 +1,6 @@
 # PROJECT ORCHESTRATOR - Q3
 
-Updated: 2026-04-21
+Updated: 2026-07-10 (Route B challenger routing overlay; mainline unchanged)
 
 ## Role
 
@@ -45,6 +45,23 @@ Broad-cone route status:
 - it may still produce reusable local lemmas,
 - but it is no longer the public RH contract.
 
+## Route B Challenger Overlay
+
+Route B detector work is a separate `CHALLENGER / NOT_RH` campaign. It does
+not change the public mainline, the gate table below, the active H-bridge
+milestone, or the root `IMPLEMENTATION_PLAN.md`.
+
+When a task explicitly mentions Route B, detector, alpha/SAFE, ZEO, or the
+two-level spectral ladder, its current operational step is read from:
+
+- `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
+- `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`;
+- the physical `ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/`.
+
+Do not copy a dated Route B snapshot into this global file. Always read the
+request-local execution JSON and run `routeb_status.py --check`; the global
+fact frozen here is only that Route B remains a challenger.
+
 ## Canonical PO3 Subroute
 
 For the active `H-bridge` route, the `PO3` lower-shell execution truth is now:
@@ -79,6 +96,16 @@ Interpretation:
 - `IMPLEMENTATION_PLAN.md` decides only the current execution queue.
 - generated address/status artifacts and `docs/INSIGHTS.md` are non-normative
   and may lag the canonical control-plane docs.
+
+Scoped Route B precedence:
+
+- this orchestrator decides that Route B remains a challenger;
+- the physical Route B bus decides whether executable work exists;
+- `ROUTE_B_EXECUTION_STATE.json` decides the current Route B step;
+- `ROUTE_B_THEOREM_CONTRACT_v2.md` plus `ROUTE_B_EXECUTION_CONTROL.md` decide
+  its target DAG;
+- `ROUTE_B_STATE.md` stores verified Route B facts/history;
+- `loop_state.json` is only a compatibility mirror and cannot select a gate.
 
 Route-level dead-end handling:
 

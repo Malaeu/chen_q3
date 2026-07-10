@@ -16,6 +16,9 @@ control-plane:
   the requested route: `PSD_STEP33_MONITOR.md` for PSD/Step33 work,
   `PHASE_MONITOR.md` for H1/PO3 work, or `SPRINT_MONITOR.md` for an active
   sprint;
+- Route B is the conditional exception: detector/alpha/SAFE/ZEO workers read
+  its request-local `ROUTE_B_EXECUTION_STATE.json`,
+  `ROUTE_B_EXECUTION_CONTROL.md`, and physical bus before any generic monitor;
 - all parallel math work still flows through
   `ACTIVE/AGENT_PROTOCOL.md` plus `request node -> report file`;
 - custom project-scoped agents live in `.codex/agents/`;
@@ -236,6 +239,41 @@ python3 q3.lean.aristotle/scripts/aristotle_dag_loop.py --refresh --print-next 1
 ## Project Workflow (Decision Loop)
 
 This is the full project loop; Aristotle и Прошка — ключевые инструменты.
+
+### Route B proof-compiler loop
+
+Этот loop включается только для Route B / detector / alpha/SAFE / ZEO / the
+two-level spectral ladder. Он не меняет H-bridge mainline.
+
+```text
+read execution state
+-> scan physical bus
+-> if no unanswered goal: NO_OPEN_BUS_GOAL / STOP
+-> else choose smallest unanswered NNN only
+-> execute exactly one immutable goal
+-> write matching MYTHOS_PROSHKA_HANDOFF + ACTIONS LOG
+-> sync ROUTE_B_STATE + ROUTE_B_EXECUTION_STATE + loop_state
+-> routeb_status.py --check
+-> STOP
+```
+
+Роли жёсткие:
+
+- Mythos выбирает theorem gate и пишет следующий physical goal;
+- Proshka атакует theorem shape, но не является proof authority;
+- Codex исполняет только существующий минимальный goal и не создаёт следующий;
+- пользователь будит Mythos и разрешает commit/push.
+
+`/plan`, `plan-only`, `read-only` и `ZERO compute` — hard mode switches. При
+них запрещены новые вычисления и доказательные мутации. Один bus goal — один
+запуск; root `IMPLEMENTATION_PLAN.md` не используется как Route B queue.
+
+Request-local источники:
+
+- `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`;
+- `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
+- `ACTIVE/requests/routeB_twolevel_spectral_ladder/IMPLEMENTATION_PLAN.md`;
+- `ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md`.
 
 ## Cognitive Governor Hook
 
@@ -492,7 +530,7 @@ theorem new_result : Q := by
 
 ```bash
 # Активация окружения
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 
 # Безопасность:

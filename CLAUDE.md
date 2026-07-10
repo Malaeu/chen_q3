@@ -10,7 +10,7 @@
 ## Paths (OS‑specific)
 
 - **Linux root:** `/mnt/hdd01/Soft/GitHub/chen_q3`
-- **macOS root:** `/Users/emalam/Documents/GitHub/chen_q3`
+- **macOS canonical root:** `/Users/emalam/GitHub/rh_lean_01_2026`
 
 Prefer **repo‑relative** paths below (work on both OS). If you need absolute paths,
 prepend the correct root above.
@@ -29,6 +29,13 @@ prepend the correct root above.
 **START HERE (session):** `SESSION_ENTRY.md`
 
 Session entry is `SESSION_ENTRY.md` (single entry point). All other docs are linked from there.
+
+**Route B conditional entry:** if the task mentions Route B, detector,
+alpha/SAFE, ZEO, or the two-level spectral ladder, read
+`q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
+and `ROUTE_B_EXECUTION_CONTROL.md`, then run `routeb_status.py --check`.
+The physical bus selects work; no open goal means `NO_OPEN_BUS_GOAL / STOP`.
+This challenger does not replace the H-bridge mainline.
 
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
@@ -280,7 +287,7 @@ Linux:
 cd /mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle
 
 macOS:
-cd /Users/emalam/Documents/GitHub/chen_q3/q3.lean.aristotle
+cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
 
 # Build
 lake build Q3.Main
@@ -359,7 +366,8 @@ Linux:
 source /mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
 
 macOS:
-source /Users/emalam/Documents/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
+cd /Users/emalam/GitHub/rh_lean_01_2026
+source .venv/bin/activate
 aristotle prove-from-file --informal --no-validate-lean-project --no-wait input.md
 ```
 

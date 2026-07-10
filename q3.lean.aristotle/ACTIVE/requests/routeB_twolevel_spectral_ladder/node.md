@@ -1,4 +1,20 @@
-# Route B — TwoLevelSpectralLadder Pilot v2 (merged)
+# SUPERSEDED REQUEST POINTER — DO NOT EXECUTE
+
+Этот файл — исторический math spec старого диагностического pilot, а не
+текущая задача. Не запускать его и не выводить из него current gate.
+
+Текущий адрес:
+
+- `ROUTE_B_EXECUTION_STATE.json`;
+- `ROUTE_B_EXECUTION_CONTROL.md`;
+- физический минимальный `bus/NNN_*.goal.md` без matching answer.
+
+Если такого goal нет, вернуть `NO_OPEN_BUS_GOAL / STOP`. Codex не создаёт и не
+выбирает следующий goal. Ниже сохранён архивный spec только для provenance.
+
+---
+
+# Route B — TwoLevelSpectralLadder Pilot v2 (historical merged spec)
 
 ## Status
 NOT a proof of RH. Diagnostic FALSIFIER for the Connes-prolate Route B

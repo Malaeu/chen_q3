@@ -27,6 +27,17 @@ Codex self-config bootstrap:
   project files. Do not delete, stage, or describe them as foreign unless the
   current task explicitly requires it.
 
+Route B detector challenger bootstrap (only when the task explicitly mentions
+Route B, detector, alpha/SAFE, ZEO, or the two-level spectral ladder):
+- Read `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
+  and `ROUTE_B_EXECUTION_CONTROL.md` before any generic monitor.
+- Run the read-only `routeb_status.py --check`; the physical `bus/` decides
+  whether an executable goal exists.
+- Execute only the smallest `NNN_*.goal.md` without a matching answer. If none
+  exists, report `NO_OPEN_BUS_GOAL` and stop; Codex never creates the next goal.
+- Route B remains `CHALLENGER / NOT_RH` and does not override the H-bridge
+  mainline or root `IMPLEMENTATION_PLAN.md`.
+
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
 - Submit via `aristotle prove-from-file` and check/download via the Python API snippets in the Aristotle skill.

@@ -19,6 +19,18 @@ PROJECT_ORCHESTRATOR.md
 Если продолжаешь активную работу, сначала смотри:
 `ACTIVE/SESSION_ENTRY.md`
 
+Если задача явно про Route B / detector / alpha / SAFE / ZEO / two-level
+spectral ladder, generic monitor не выбирает текущий шаг. Сначала читать:
+
+```text
+ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json
+ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md
+```
+
+Затем запустить `routeb_status.py --check` и исполнять только минимальный
+физический bus goal без answer. Если его нет — `NO_OPEN_BUS_GOAL / STOP`.
+Route B остаётся challenger и не меняет официальный H-bridge mainline.
+
 ---
 
 ## 🚨 ERRORS DESTROYER (Работа над ошибками)
@@ -251,7 +263,7 @@ Only then proceed with the full dossier structure.
 ## ARISTOTLE COMMANDS
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 aristotle formalize q3.lean.aristotle/aristotle_input/file.md
 

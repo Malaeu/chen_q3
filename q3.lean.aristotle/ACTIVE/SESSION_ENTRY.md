@@ -7,7 +7,7 @@
 
 Мы ведём один проект:
 
-- `/Users/emalam/Documents/GitHub/rh_lean_01_2026`
+- `/Users/emalam/GitHub/rh_lean_01_2026`
 
 Цель сейчас не “заявить доказательство RH”, а максимально быстро двигать
 вперёд **правдоподобный и математически честный route** внутри Q3:
@@ -26,6 +26,24 @@
 6. `IMPLEMENTATION_PLAN.md`
 7. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
 8. `q3.lean.aristotle/docs/INSIGHTS.md`
+
+### Route B conditional read order
+
+Если задача явно упоминает Route B, detector, alpha/SAFE, ZEO или
+two-level spectral ladder, до generic monitors прочитать:
+
+1. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
+2. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`
+3. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md`
+4. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md`
+5. физическую папку `bus/`, затем запустить read-only
+   `routeb_status.py --check`.
+
+Для Route B именно execution-state отвечает на вопрос «какой сейчас шаг», а
+физический минимальный goal без answer — единственная исполнимая задача. Если
+такого goal нет, ответ — `NO_OPEN_BUS_GOAL / STOP`; Codex не создаёт следующий
+goal сам. После этого всё равно прочитать `PROJECT_ORCHESTRATOR.md`, чтобы не
+перепутать challenger с официальным mainline.
 
 Если задача явно про повторяющийся loop, смену стратегии, route-review,
 бесплодную бисекцию, stalled proof-loop или "как агент должен думать дальше",
@@ -97,6 +115,11 @@
   `H-bridge` и `PSD-pd`.
 
 ## Текущий практический next step
+
+Если задача явно Route B, этот раздел не выбирает её шаг. Использовать только
+request-local `ROUTE_B_EXECUTION_STATE.json` + физическую шину; generic
+PSD/PHASE/SPRINT monitors не переопределяют Route B. Не копировать сюда
+датированный адрес: живой JSON и bus всегда проверяются заново.
 
 Если `ACTIVE/PSD_STEP33_MONITOR.md` существует, имеет `status: ACTIVE`, и
 текущая задача явно про PSD-pd / Step33 / B-spline finite certificate backend,
@@ -302,6 +325,15 @@ source of truth:
 - implementation plan решает ровно текущую очередь;
 - insights ничего не переопределяет.
 
+Для Route B действует scoped precedence, не меняющий порядок global mainline:
+
+1. `PROJECT_ORCHESTRATOR.md` решает только архитектурный ранг маршрута.
+2. Физическая шина решает наличие исполнимого goal.
+3. `ROUTE_B_EXECUTION_STATE.json` решает текущий operational address.
+4. `ROUTE_B_THEOREM_CONTRACT_v2.md` и `ROUTE_B_EXECUTION_CONTROL.md` задают DAG.
+5. `ROUTE_B_STATE.md` хранит проверенные факты и историю.
+6. `loop_state.json` — compatibility mirror; `INSIGHTS` — non-normative memory.
+
 ## Как работать по сессии
 
 ### Если задача математическая / theorem-level
@@ -320,7 +352,7 @@ source of truth:
 Сначала проверь статус inbox:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
 ./scripts/ingest_incoming_notes.py status
 ```
 
@@ -381,19 +413,19 @@ advisory: он выбирает следующий route/operator, но не я�
 - не ожидать, что Прошка сам восстановит normalization из старых A3 файлов.
 - для локального быстрого check использовать:
   ```bash
-  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  cd /Users/emalam/GitHub/rh_lean_01_2026
   source .venv/bin/activate
   python src/h1_raw_bulk_match.py --a 1.0 --M 3 --B 0.2 --t 0.15 --zeros 50
   ```
 - для текущего live bulk-frontier использовать уже filtered checker:
   ```bash
-  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  cd /Users/emalam/GitHub/rh_lean_01_2026
   source .venv/bin/activate
   python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
   ```
 - для первого diagnostic sweep:
   ```bash
-  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  cd /Users/emalam/GitHub/rh_lean_01_2026
   source .venv/bin/activate
   python -u src/h1_filtered_bulk_match.py --sweep --B 0.2 --t 0.15
   ```
@@ -407,7 +439,7 @@ advisory: он выбирает следующий route/operator, но не я�
   low-mode-supported defect.
 - для cap-defect classifier на canonical case:
   ```bash
-  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  cd /Users/emalam/GitHub/rh_lean_01_2026
   source .venv/bin/activate
   python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 2
   ```
@@ -418,7 +450,7 @@ advisory: он выбирает следующий route/operator, но не я�
   конечномерный cap-space для `++` и `+-`.
 - для joint shared-cap candidate на rank `3`:
   ```bash
-  cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+  cd /Users/emalam/GitHub/rh_lean_01_2026
   source .venv/bin/activate
   python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
   ```
@@ -430,10 +462,10 @@ advisory: он выбирает следующий route/operator, но не я�
 ## Python / src rule
 
 Если пишем executable sanity-check или numerical bridge probe, код кладём в
-`/Users/emalam/Documents/GitHub/rh_lean_01_2026/src/`, а запуск в новых сессиях
+`/Users/emalam/GitHub/rh_lean_01_2026/src/`, а запуск в новых сессиях
 делаем из корня repo после активации `.venv`. CSV и прочие одноразовые
 diagnostic outputs по умолчанию писать в
-`/Users/emalam/Documents/GitHub/rh_lean_01_2026/tmp/`, не в tracked docs.
+`/Users/emalam/GitHub/rh_lean_01_2026/tmp/`, не в tracked docs.
 
 ## Repo map (только живой минимум)
 
@@ -443,6 +475,10 @@ diagnostic outputs по умолчанию писать в
 - `IMPLEMENTATION_PLAN.md`
 - `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
 - `q3.lean.aristotle/docs/INSIGHTS.md`
+- Route B challenger only:
+  `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
+- Route B method/DAG:
+  `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`
 
 ### Manuscript
 
@@ -470,7 +506,7 @@ diagnostic outputs по умолчанию писать в
 ### Lean
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
 lake env lean Q3/Main.lean
 printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin
 ```
@@ -486,14 +522,14 @@ printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env le
 ### TeX
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/full
+cd /Users/emalam/GitHub/rh_lean_01_2026/full
 latexmk -pdf RH_Q3.tex
 ```
 
 ### Embeddings
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026/q3.lean.aristotle
+cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
 ./scripts/ingest_incoming_notes.py status
 python3 -u ./scripts/refresh_q3_docs.py
 python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
@@ -503,12 +539,12 @@ python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
 
 Новый Python-код для быстрых sanity-check / numerical audit по Q3 держим в:
 
-- `/Users/emalam/Documents/GitHub/rh_lean_01_2026/src`
+- `/Users/emalam/GitHub/rh_lean_01_2026/src`
 
 Запускать такие проверки надо от repo-root и через локальную `.venv`:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python src/h1_raw_operator_sanity.py
 ```
@@ -516,7 +552,7 @@ python src/h1_raw_operator_sanity.py
 Для текущего H1 bulk-normalization brick canonical script такой:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
 ```
@@ -530,7 +566,7 @@ python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
 Для текущего live `H1^f` brick canonical filtered checker такой:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
 ```
@@ -539,7 +575,7 @@ python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 1
 такой canonical case:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
 ```
@@ -547,7 +583,7 @@ python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 
 A для честного Gate A stability harness полный command-line target такой:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py \
   --sweep \
@@ -561,7 +597,7 @@ python -u src/h1_filtered_bulk_match.py \
 Gate A verdict лучше получать двумя урезанными прогонами:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py \
   --sweep \
@@ -605,7 +641,7 @@ python -u src/h1_filtered_bulk_match.py \
 Для первого fixed-scale split-classifier run использовать:
 
 ```bash
-cd /Users/emalam/Documents/GitHub/rh_lean_01_2026
+cd /Users/emalam/GitHub/rh_lean_01_2026
 source .venv/bin/activate
 python -u src/h1_filtered_bulk_match.py \
   --split-classifier \
@@ -644,6 +680,11 @@ python -u src/h1_filtered_bulk_match.py \
 - Не коммитить skill-файлы из `~/.codex/skills` в repo.
 
 ## Текущий практический next step
+
+Route B exception: если пользователь спрашивает про detector/alpha/SAFE/ZEO,
+не брать нижеследующий H-bridge frontier как ответ. Читать request-local
+execution state и физическую шину. При отсутствии goal вернуть
+`NO_OPEN_BUS_GOAL / STOP`.
 
 Если нет нового user redirect, текущий честный frontier такой:
 
