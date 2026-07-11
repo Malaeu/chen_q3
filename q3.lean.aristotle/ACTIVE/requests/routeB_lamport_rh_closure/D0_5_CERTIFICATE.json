@@ -1,0 +1,69 @@
+{
+  "schema": "route_b_d0_5_certificate.v1",
+  "created_at": "2026-07-11T22:21:29+02:00",
+  "node_id": "D0.5",
+  "name": "ExactGroundEigenspaceAndTrialVectorTypes",
+  "proof_status": "PROVED",
+  "progress_class": "PROOF_PROGRESS",
+  "exit_code": "GROUND_TRIAL_TYPES_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "dependency": {
+    "node": "D0.4",
+    "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_4_CERTIFICATE.json",
+    "certificate_sha256": "86eaa3967717e58a54ac71546a3a763be2afacbf0c071c24cb7267a19e91b0f8"
+  },
+  "ground_lock": {
+    "value": "groundValue_m_N=nu_1(m,N)",
+    "space": "GroundSpace_m_N=ker(Mfin_m_N-groundValue_m_N*I)",
+    "nonzero": true,
+    "unit_set": "GroundUnit_m_N",
+    "simple": "NOT_CLAIMED",
+    "even": "NOT_CLAIMED",
+    "sector_identity": "nu_1=min(epsilon_plus_1,epsilon_minus_1)"
+  },
+  "trial_lock": {
+    "time_carrier": "Ktime_lambda=L2([-lambda,lambda],dx)",
+    "time_packet": "hTrial_m=(I4*h0-I0*h4)/sqrt(I0^2+I4^2)",
+    "time_norm": "1",
+    "time_integral": "0",
+    "prolate_indices": "h0_to_chi0_AND_h4_to_chi2",
+    "multiplicative_packet": "gTrial_m=E_star(hTrial_m)|window",
+    "finite_packet": "gTrial_m_N=P_m_N(gTrial_m)",
+    "normalized_packet": "kTrial_m_N=gTrial_m_N/norm(gTrial_m_N)_ON_TrialNonzero",
+    "rayleigh": "aTrial_m_N=<kTrial_m_N,Mfin_m_N*kTrial_m_N>",
+    "variational": "groundValue_m_N<=aTrial_m_N",
+    "ground_identity": "NOT_CLAIMED"
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_GROUND_AND_TRIAL_TYPES.md",
+    "sha256": "9cb7a9e34d0d051fc78c9c7a69e71fc91e7c7722f3d8c9a5713469d4f3bd5547"
+  },
+  "plants": {
+    "simple_ground": "D0_5_SIMPLE_GROUND_PLANT_FIRES",
+    "even_ground": "D0_5_EVEN_GROUND_PLANT_FIRES",
+    "zero_trial": "D0_5_ZERO_TRIAL_PLANT_FIRES",
+    "trial_equals_ground": "D0_5_TRIAL_GROUND_PLANT_FIRES",
+    "carrier_alias": "D0_5_CARRIER_ALIAS_PLANT_FIRES",
+    "h4_index": "D0_5_H4_INDEX_PLANT_FIRES",
+    "midpoint_l2": "D0_5_MIDPOINT_L2_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_SIMPLE_GROUND",
+    "NO_EVEN_GROUND",
+    "NO_GROUND_VECTOR_SELECTION",
+    "NO_UNCONDITIONAL_TRIAL_NORMALIZATION",
+    "NO_TRIAL_GROUND_IDENTITY",
+    "NO_GROUND_TRIAL_RATE",
+    "NO_OPERATOR_CONFLATION",
+    "NO_H2_H4",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "schema": "route_b_d0_3_certificate.v2",
+  "created_at": "2026-07-11T21:40:04+02:00",
+  "updated_at": "2026-07-11T22:14:16+02:00",
+  "node_id": "D0.3",
+  "name": "ExactOperatorTypeRegistry",
+  "proof_status": "PROVED",
+  "progress_class": "PROOF_PROGRESS",
+  "exit_code": "EXACT_OPERATOR_TYPES_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "dependencies": [
+    {
+      "node": "D0.1",
+      "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_1_CERTIFICATE.json",
+      "certificate_sha256": "0cdd2bbd6cf90e3ece6f3293c4f95b18718d195a26d81307b86d70c10ed838eb"
+    },
+    {
+      "node": "D0.2",
+      "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_2_CERTIFICATE.json",
+      "certificate_sha256": "59a775a2b0e2d6cfffda1241547adf67a417af20938899b3bdd961255e98352a"
+    }
+  ],
+  "decomposition": {
+    "node": "D0.3.0",
+    "proof_status": "PROVED",
+    "children": [
+      "D0.3a",
+      "D0.3b",
+      "D0.3c",
+      "D0.3d",
+      "D0.3e",
+      "D0.3f",
+      "D0.3g",
+      "D0.3h"
+    ],
+    "assembly": "D0.3i",
+    "artifact": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_DECOMPOSITION_CONTRACT.md",
+      "sha256": "30a7f80af376bd62dfcd5f2e16274d1db3b32e29f1aeff89ae8cbb6b1e0a2fb9"
+    }
+  },
+  "components": {
+    "D0.3a": {
+      "name": "FormRepresentationOperator",
+      "proof_status": "PROVED",
+      "carrier": "H_m=L2([lambda^-1,lambda],du/u)",
+      "domain": "Dom(A_m) subset Dom(BW_m) subset H_m",
+      "selfadjointness": "STANDARD_H_m",
+      "equality_status": "NO_ALIAS_TO_DLOG_OR_FINITE_RIESZ"
+    },
+    "D0.3b": {
+      "name": "PeriodicScalingOperator",
+      "proof_status": "PROVED",
+      "carrier": "H_m",
+      "domain": "kappa_m({F in H1([0,L]):trace(F)(0)=trace(F)(L)})",
+      "selfadjointness": "STANDARD_H_m",
+      "spectrum": "(2*pi/L)*Z"
+    },
+    "D0.3c": {
+      "name": "FiniteFormRieszOperator",
+      "proof_status": "PROVED",
+      "carrier": "E_m_N",
+      "matrix": "WeilMat_m_N",
+      "selfadjointness": "STANDARD_E_m_N",
+      "not_claimed": "A_m_RESTRICTION_OR_COMPRESSION"
+    },
+    "D0.3d": {
+      "name": "PerturbedScalingCarrierSplit",
+      "proof_status": "PROVED",
+      "raw_carrier": "H_m_STANDARD_INNER_PRODUCT",
+      "raw_domain": "Dom(Dlog_m)",
+      "raw_selfadjointness": "NOT_CLAIMED_FALSE_IN_GENERAL",
+      "canonical_status": "CONDITIONAL_ON_SIMPLE_EVEN_GROUND_AND_DELTA_NONZERO",
+      "canonical_carrier": "(E_m_N/C*xi,QW_SHIFT_INNER_PRODUCT)_direct_sum_E_m_N_perp",
+      "dependency_status": "OPEN_H2a"
+    },
+    "D0.3e": {
+      "name": "ProlateDifferentialExpression",
+      "proof_status": "PROVED",
+      "carrier": "Ktime_m=L2([-lambda,lambda],dx)",
+      "domain": "C_c_infinity((-lambda,lambda))",
+      "selfadjointness": "NOT_CLAIMED_FORMAL_EXPRESSION_ONLY"
+    },
+    "D0.3f": {
+      "name": "ProlateSelfadjointRealization",
+      "proof_status": "PROVED",
+      "carrier": "Ktime_lambda=L2([-lambda,lambda],dx)",
+      "domain": "Dom_max plus zero flux (lambda^2-x^2)f_prime at both endpoints",
+      "selfadjointness": "POSITIVE_SIMPLE_DISCRETE_WINDOW_REALIZATION",
+      "source": "arXiv:1603.07542v1",
+      "exit_code": "PROLATE_SELFADJOINT_REALIZATION_LOCKED"
+    },
+    "D0.3g": {
+      "name": "CanonicalFiniteWeilDetector",
+      "proof_status": "PROVED",
+      "definition_status": "Mfin_m_N:=WeilOp_m_N",
+      "carrier": "E_m_N",
+      "ordered_basis": "(V_-N_m,...,V_N_m)",
+      "gram": "I_(2N+1)",
+      "matrix": "WeilMat_m_N",
+      "M_lambda_status": "UNDEFINED_PENDING_SELECTOR",
+      "exit_code": "D03G_CANONICAL_WEILOP_LOCKED",
+      "forbidden_aliases": [
+        "G_even",
+        "SchurComplement",
+        "ProlateLegendrePilot",
+        "M_lambda"
+      ]
+    },
+    "D0.3h": {
+      "name": "OperatorNonconflationFirewall",
+      "proof_status": "PROVED",
+      "equality_rule": "NAMED_UNITARY_PLUS_DOMAIN_TRANSPORT_PLUS_INTERTWINER_PLUS_INNER_PRODUCT_ID",
+      "crosswalk_status": "NOT_ASSERTED"
+    },
+    "D0.3i": {
+      "name": "ExactOperatorRegistryAssembly",
+      "proof_status": "PROVED",
+      "assembly": "D0.3a_AND_D0.3b_AND_D0.3c_AND_D0.3d_AND_D0.3e_AND_D0.3f_AND_D0.3g_AND_D0.3h_IMPLIES_D0.3"
+    }
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ALPHA_DETECTOR_OBJECT_LOCK.md",
+      "sha256": "e0f91555cc5c33660be62001039c134652970cac543658a1d8d0e385af87add8"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md",
+    "sha256": "c631554f7aafc8c56dbec744cc43e05ee8c42512025bcfb10f3e9e766d047216"
+  },
+  "proved_component_pins": [
+    {
+      "node": "D0.3f",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3F_CERTIFICATE.json",
+      "sha256": "ba48f8ac4e103fc2e29e8189611e062ea340106f7e038e584696bb3ff5c06e47"
+    },
+    {
+      "node": "D0.3g",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3G_CERTIFICATE.json",
+      "sha256": "6a2ca4374bffa4fa024e4e35ffdd9231ede6b4288985815688756800dd66a041"
+    }
+  ],
+  "plants": {
+    "form_domain_only": "D0_3_FORM_OPERATOR_DOMAIN_PLANT_FIRES",
+    "wrong_dlog_domain": "D0_3_PERIODIC_DOMAIN_PLANT_FIRES",
+    "finite_compression_alias": "D0_3_FINITE_COMPRESSION_PLANT_FIRES",
+    "missing_xi": "D0_3_XI_PARAMETER_PLANT_FIRES",
+    "selfadjointness_smuggle": "D0_3_INNER_PRODUCT_PLANT_FIRES",
+    "pw_space_alias": "D0_3_PW_SPACE_PLANT_FIRES",
+    "detector_alias": "D0_3_DETECTOR_SCOPE_PLANT_FIRES",
+    "qw_shift_dependency": "D0_3_DEPENDENCY_PLANT_FIRES"
+  },
+  "next_independent_leaf": "D0.4",
+  "explicit_nonclaims": [
+    "NO_M_LAMBDA",
+    "NO_SIMPLE_EVEN_GROUND",
+    "NO_STANDARD_H_SELFADJOINT_PERTURBATION",
+    "NO_WEILMAT_EQUALS_A_RESTRICTION",
+    "NO_D0_ASSEMBLY",
+    "NO_H1_H4",
+    "NO_RH"
+  ]
+}

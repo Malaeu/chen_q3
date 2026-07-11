@@ -248,20 +248,27 @@ two-level spectral ladder. Он не меняет H-bridge mainline.
 ```text
 read execution state
 -> scan physical bus
--> if no unanswered goal: NO_OPEN_BUS_GOAL / STOP
--> else choose smallest unanswered NNN only
--> execute exactly one immutable goal
--> write matching MYTHOS_PROSHKA_HANDOFF + ACTIONS LOG
+-> if unanswered goal exists: choose smallest unanswered NNN only
+-> if no unanswered goal and mode=MANUAL_BUS: NO_OPEN_BUS_GOAL / STOP
+-> if no unanswered goal and mode=OWNER_AUTHORIZED_AUTORUN:
+     choose first eligible leaf in routeB_lamport_rh_closure/MASTER_GOAL.md
+-> execute the selected transaction
+-> for a physical goal, write matching MYTHOS_PROSHKA_HANDOFF + ACTIONS LOG
 -> sync ROUTE_B_STATE + ROUTE_B_EXECUTION_STATE + loop_state
 -> routeb_status.py --check
--> STOP
+-> in MANUAL_BUS: STOP
+-> in OWNER_AUTHORIZED_AUTORUN: zoom out, validate, and continue to the next
+   eligible master leaf; never manufacture the next numbered bus goal
 ```
 
 Роли жёсткие:
 
 - Mythos выбирает theorem gate и пишет следующий physical goal;
 - Proshka атакует theorem shape, но не является proof authority;
-- Codex исполняет только существующий минимальный goal и не создаёт следующий;
+- Codex всегда отдаёт приоритет существующему минимальному physical goal и не
+  создаёт следующий; при явно записанном `OWNER_AUTHORIZED_AUTORUN` и пустой
+  шине Codex исполняет master DAG до настоящего математического/данного
+  блокера или пользовательской паузы;
 - пользователь будит Mythos и разрешает commit/push.
 
 `/plan`, `plan-only`, `read-only` и `ZERO compute` — hard mode switches. При

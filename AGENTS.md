@@ -34,7 +34,13 @@ Route B, detector, alpha/SAFE, ZEO, or the two-level spectral ladder):
 - Run the read-only `routeb_status.py --check`; the physical `bus/` decides
   whether an executable goal exists.
 - Execute only the smallest `NNN_*.goal.md` without a matching answer. If none
-  exists, report `NO_OPEN_BUS_GOAL` and stop; Codex never creates the next goal.
+  exists, inspect the scheduler mode in `ROUTE_B_EXECUTION_STATE.json` and
+  `bus/BUS_PROTOCOL.md`. In `MANUAL_BUS`, report `NO_OPEN_BUS_GOAL` and stop.
+  In `OWNER_AUTHORIZED_AUTORUN`, execute the first eligible leaf of the
+  canonical Lamport master DAG under
+  `ACTIVE/requests/routeB_lamport_rh_closure/`; Codex still never creates the
+  next numbered bus goal. A newly appearing physical unanswered goal always
+  preempts master-DAG autorun.
 - Route B remains `CHALLENGER / NOT_RH` and does not override the H-bridge
   mainline or root `IMPLEMENTATION_PLAN.md`.
 

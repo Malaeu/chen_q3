@@ -1,9 +1,34 @@
 # Route B — execution control
 
-Status: `CONTROL_PLANE / NOT_RH / CHALLENGER`
-Schema: `route_b_execution_control.v1`
+Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT / CONTROL_PLANE / NOT_RH / CHALLENGER`
+Schema: `route_b_execution_control.v2`
 Canonical repo: `/Users/emalam/GitHub/rh_lean_01_2026`
-Current address: `RB-0 / PO-0 / RB0_BLOCKED_ZEO_EXPORT_AMBIGUOUS`
+Current address: `RB-LAMPORT-D0 / D0.7e / ExactDetectorBDefinitionAndCrosswalk`
+
+## Owner autorun override — 2026-07-11
+
+Ылша explicitly authorized Codex to remove the unconditional post-answer
+STOP and drive the recursive Lamport compiler autonomously. The authoritative
+master is:
+
+```text
+../routeB_lamport_rh_closure/MASTER_GOAL.md
+../routeB_lamport_rh_closure/STATE.json
+```
+
+Scheduling rule:
+
+```text
+physical unanswered bus goal exists -> execute the smallest NNN first
+no physical unanswered goal          -> execute the first eligible master leaf
+leaf closes                          -> validate, assemble/zoom out, continue
+real mathematical blocker            -> record exact fatal code and pause
+```
+
+This is an execution-policy override, not a mathematical override. Bus 009's
+`OVERCLAIM_LIST`, ZEO ambiguity, and missing rGap13 provenance remain open.
+Route B stays `CHALLENGER / NOT_RH`, and D0 object locking does not count as
+closing `PO-0` or ZEO.
 
 Этот файл отвечает на вопрос «как мы идём». Текущий машинный ответ на вопрос
 «где мы сейчас» хранится в `ROUTE_B_EXECUTION_STATE.json` и проверяется
@@ -18,13 +43,34 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 ```text
 GLOBAL MAINLINE: T0-pd -> H-bridge -> H4 -> RH
 ROUTE B: challenger / NOT_RH
-CURRENT: RB-0 / PO-0 / ContractV2CrosscheckAndStateSync
-CONTRACT: v2 locked by G1; PO-0 remains open because G3 failed
-BUS: 001..008 closed; active goal NONE; next free number 009
-BLOCKERS: ZEO_EXPORT_AMBIGUOUS + R13_SOURCE_MISSING
-WAITING FOR: Mythos scores 008 and decides whether to issue repair goal 009
-CODEX: must not invent or create 009
+CURRENT: RB-LAMPORT-D0 / D0.7e / ExactDetectorBDefinitionAndCrosswalk
+CONTRACT: v2 locked; PO-0/ZEO blockers retained, not bypassed as facts
+BUS: 001..009 closed; active physical goal NONE; next free number 010
+MODE: OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT
+CODEX: D0.1--D0.6 and D0.7a--D0.7d proved; exact detector b is missing;
+MYTHOS/OWNER: supply D0_7E_OWNER_INPUT_REQUEST.md; do not create 010;
+              bPilot/bWeil aliases and H4d bound smuggling are rejected
 ```
+
+The retired D0.3g blockers remain historical warnings, not current stops:
+
+```text
+D0_3_DETECTOR_OPERATOR_MISSING             [retired by finite ratification]
+D0_3_DETECTOR_CROSSWALK_UNRATIFIED         [retired at finite (m,N) scope]
+D0_3_MU_PROVENANCE_COLLISION               [repaired by nu/epsilon/theta namespaces]
+```
+
+Pro review ratified only `Mfin_(m,N)=WeilOp_(m,N)`. It did not define
+`M_lambda`, prove a global rank crosswalk, or identify Schur diagnostics
+`theta_j` with exact full/sector spectra. With that firewall, D0.3, D0.4, and
+D0.5 are proved. D0.7a--D0.7d now lock `delta_(m,N)`, dependent trial/ground
+normalizations, scalar/phase conventions, and the `b` namespace firewall.
+The unresolved address is D0.7e: the canonical `b` consumed by `W'` is still
+`MISSING` in the later object-lock. Pro review returned the primary verdict
+`EXTERNAL_OWNER_INPUT_REQUIRED` and rejected promotion of `bPilot`. The exact
+minimal source statement is frozen in `D0_7E_OWNER_INPUT_REQUEST.md`. Autorun
+is paused at this external-authority boundary; the uniform nonzero/growth
+estimates remain separate H4d obligations.
 
 ## Разделение полномочий
 
@@ -107,7 +153,7 @@ W' <= C lambda^[q_b + (1 + r_alpha - r_delta)/2].
 
 | Stage | Contract obligations | Смысл | Текущий статус | Exit | Основной kill |
 | --- | --- | --- | --- | --- | --- |
-| `RB-0` | `PO-0` | Контрпроверка v2, provenance, синхронизация state/loop | `CURRENT / BLOCKED_AFTER_008` | `CONTRACT_V2_LOCKED`, `STATE_LOOP_SYNCED`, `PROVENANCE_LOCKED` | current: `ZEO_EXPORT_AMBIGUOUS`, `R13_SOURCE_MISSING` |
+| `RB-0` | `PO-0` | Контрпроверка v2, provenance, синхронизация state/loop | `PO0_OPEN / BLOCKED_AFTER_009` | `CONTRACT_V2_LOCKED`, `STATE_LOOP_SYNCED`, `PROVENANCE_LOCKED` | current: `ZEO_EXPORT_AMBIGUOUS`, `R13_SOURCE_MISSING` |
 | `RB-1` | `PO-1` | ExactDetectorDictionary: alpha, crosswalk, N-mode, gap, b | `BLOCKED_BY_RB-0` | `DETECTOR_DICTIONARY_LOCKED` | `ALPHA_OBJECT_MISMATCH`, `B_NONDEGENERACY_OPEN` |
 | `RB-2` | `PO-2` | ParityLeakSourceAudit -> ParityProjectedOperatorLock | `BLOCKED_BY_RB-0` | `PARITY_INSTRUMENT_LOCKED` | `PARITY_CONTAMINATION_UNLOCALIZED`, `INSTRUMENT_NOT_CERTIFIED` |
 | `RB-3` | `PO-11` | ZEOExportSoundness с точными кванторами и пределом Xi | `BLOCKED_BY_RB-0` | `ZEO_EXPORT_DERIVED` | `ROUCHE_QUANTIFIER_GAP`, `XI_LIMIT_IDENTIFICATION_GAP`, `FINITE_TO_UNIVERSAL_GAP` |
@@ -119,7 +165,7 @@ W' <= C lambda^[q_b + (1 + r_alpha - r_delta)/2].
 | `RB-9` | `PO-12` | AlphaUpper + GapLower + SignAndB + Rate | `BLOCKED_BY_RB-8` | `QUANTITATIVE_SAFE_WITNESS` | `SAFE_IS_RH_REPACKAGING` |
 | `RB-10` | `PO-13` | Lean definitions, тела теорем, export и axiom audit | `BLOCKED_BY_RB-9` | `ZERO_SORRY_ZERO_UNEXPECTED_AXIOMS` | `LEAN_EXPORT_INTERFACE_GAP`, `RH_CONDITIONAL_IMPORT` |
 
-## Один bus goal — один запуск
+## Transaction discipline
 
 Каждый математический узел проходит один и тот же цикл:
 
@@ -130,16 +176,20 @@ W' <= C lambda^[q_b + (1 + r_alpha - r_delta)/2].
 4. Codex: smallest unanswered NNN only; exactly one task.
 5. Codex: matching answer with MYTHOS_PROSHKA_HANDOFF + ACTIONS LOG.
 6. Sync: ROUTE_B_STATE -> ROUTE_B_EXECUTION_STATE -> loop_state mirror.
-7. Verify: routeb_status.py --check; then STOP.
+7. Verify: routeb_status.py --check; then STOP in `MANUAL_BUS`, or resume the
+   first eligible master leaf in `OWNER_AUTHORIZED_AUTORUN`.
 8. Mythos: HIT/MISS and, only if justified, the next physical goal.
 ```
 
 `ZERO compute`, `plan-only` и `read-only` — жёсткие switches. Они запрещают
 новые численные запуски, матрицы и изменение доказательных файлов.
 
-После answer Codex не создаёт следующий goal, не превращает свободный номер в
-математическую задачу и не повышает Route B до mainline. Стадирование допускается
-только в разрешённом scope; commit/push — только по явной команде пользователя.
+После answer Codex не создаёт следующий физический goal и не превращает
+свободный номер в математическую задачу. В `MANUAL_BUS` режиме действует STOP.
+В текущем owner-authorized autorun режиме Codex продолжает по master DAG,
+сохраняя один active leaf и отдельную валидацию каждого закрытия. Ни один такой
+переход не повышает Route B до mainline. Commit/push — только по явной команде
+пользователя.
 
 ## Transaction при изменении состояния
 
@@ -159,12 +209,16 @@ W' <= C lambda^[q_b + (1 + r_alpha - r_delta)/2].
 
 ## Уже импортированные факты
 
-- Bus `001..008` закрыт физическими парами.
+- Bus `001..009` закрыт физическими парами; `010` — только свободный номер,
+  физического goal нет.
 - Bus 007: `MIDPOINT_POLE_LEDGER_REPAIR`, exact relative closure
   `2.21795886424e-89`, `C_mid` и `C_pole` присутствуют точно.
 - Bus 008: G1 `CONTRACT_V2_LOCKED`, G2 `STATE_LOOP_SYNCED`, G3
   `ZEO_EXPORT_AMBIGUOUS`; подстатус `R13_SOURCE_MISSING`. Поэтому `PO-0`
   остаётся открыт и уровень 1 не выбран.
+- Bus 009: negative answer `OVERCLAIM_LIST / MYTHOS_REPAIRS_PRESENT /
+  OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS / PLANT_INERT`; транзакция закрыта, но
+  `PO-0` и ZEO не закрыты математически.
 - `C_left` и `C_right` отсутствуют в текущем identity; нового second-edge
   channel нет.
 - Route B остаётся `NOT_RH`.

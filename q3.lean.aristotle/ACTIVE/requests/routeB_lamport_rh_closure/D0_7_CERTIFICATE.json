@@ -1,0 +1,123 @@
+{
+  "schema": "route_b_d0_7_certificate.v1",
+  "created_at": "2026-07-11T22:35:00+02:00",
+  "node_id": "D0.7",
+  "name": "ExactNormalization",
+  "proof_status": "BLOCKED",
+  "progress_class": "FALSIFICATION_PROGRESS",
+  "partial_exit_code": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
+  "stop_code": "D0_7_DETECTOR_B_DEFINITION_MISSING",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "children": {
+    "D0.7a": "PROVED",
+    "D0.7b": "PROVED",
+    "D0.7c": "PROVED_CONDITIONAL_INTERFACE",
+    "D0.7d": "PROVED",
+    "D0.7e": "BLOCKED",
+    "D0.7f": "BLOCKED_BY_D0.7e"
+  },
+  "delta_lock": {
+    "parameter": "lambda_m=sqrt(m);L_m=log(m)",
+    "vector": "L_m^(-1/2)*sum_|n|<=N V_n_m",
+    "norm_square": "(2N+1)/L_m",
+    "functional": "<deltaVec_m_N,f>_ANTILINEAR_FIRST",
+    "finite_evaluation": "f(lambda_m^-1)=f(lambda_m)",
+    "domain_limit": "Dom(Dlog_m)_N_TO_INFINITY",
+    "all_H_evaluation": "NOT_CLAIMED"
+  },
+  "trial_lock": {
+    "domain": "TrialNonzero={(m,N):norm(gTrial_m_N)>0}",
+    "source_phase": "I0>0_AND_I4>0",
+    "scale": "sTrial_m_N=norm(gTrial_m_N)^(-1)",
+    "scale_positive": true,
+    "normalized": "kTrial_m_N=sTrial_m_N*gTrial_m_N",
+    "detector_b_identity": "NOT_CLAIMED"
+  },
+  "ground_lock": {
+    "domain": "GroundDeltaNonzero={(m,N,xi):xi_in_GroundUnit_AND_deltaFun(xi)!=0}",
+    "phase_vector": "conj(c)/abs(c)*xi",
+    "phase_norm": "1",
+    "phase_delta": "abs(c)>0",
+    "boundary_vector": "c^(-1)*xi",
+    "boundary_delta": "1",
+    "boundary_unit": "NOT_CLAIMED",
+    "unconditional_nonzero": "NOT_CLAIMED"
+  },
+  "b_lock": {
+    "weil_coefficients": "bWeil_j(m,N)_EXACT_ODD_SEQUENCE",
+    "historical_pilot": "bPilot_m_N=norm(E(g04))_SUPERSEDED",
+    "detector_definition": "MISSING",
+    "pilot_crosswalk": "NOT_PROVED",
+    "weil_coefficient_crosswalk": "TYPE_MISMATCH",
+    "uniform_bounds": "H4D_OPEN"
+  },
+  "dependency_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_1_CERTIFICATE.json",
+      "sha256": "0cdd2bbd6cf90e3ece6f3293c4f95b18718d195a26d81307b86d70c10ed838eb"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_CERTIFICATE.json",
+      "sha256": "b166078a441544e6aca907bd6c49e57eab5750047863fa97a0c1cc49bcf5ad2b"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_6_CERTIFICATE.json",
+      "sha256": "57e96b1b7fbd4deb8f65c32315a6a9f9f3d0916a8a46e0be3009c3f65c436dc5"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ALPHA_DETECTOR_OBJECT_LOCK.md",
+      "sha256": "e0f91555cc5c33660be62001039c134652970cac543658a1d8d0e385af87add8"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_DECOMPOSITION_CONTRACT.md",
+      "sha256": "777c64cbe999e84f29132ebddf8ebd0dc2aa2a987a60fdeade4b68a0ece4d378"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md",
+      "sha256": "8145d39fe267e417746aa2f24426183b8f0e2c96cc88fe68d94347ace1397aeb"
+    }
+  ],
+  "proof_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md",
+  "plants": {
+    "delta_scale": "D0_7_DELTA_SCALE_PLANT_FIRES",
+    "inner_product_order": "D0_7_INNER_PRODUCT_ORDER_PLANT_FIRES",
+    "all_H_evaluation": "D0_7_ALL_H_EVALUATION_PLANT_FIRES",
+    "ground_zero": "D0_7_GROUND_ZERO_PLANT_FIRES",
+    "phase_boundary": "D0_7_PHASE_BOUNDARY_PLANT_FIRES",
+    "bweil_alias": "D0_7_BWEIL_ALIAS_PLANT_FIRES",
+    "bpilot_alias": "D0_7_BPILOT_ALIAS_PLANT_FIRES",
+    "h4d_smuggle": "D0_7_H4D_SMUGGLE_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_UNCONDITIONAL_GROUND_SELECTION",
+    "NO_SIMPLE_EVEN_GROUND",
+    "NO_UNCONDITIONAL_DELTA_NONZERO",
+    "NO_UNCONDITIONAL_TRIAL_NONZERO",
+    "NO_BOUNDED_EVALUATION_ON_ALL_H",
+    "NO_ENDPOINT_REPRESENTATIVE_ALIAS",
+    "NO_DETECTOR_B_DEFINITION",
+    "NO_BPILOT_BDET_CROSSWALK",
+    "NO_B_BOUNDS",
+    "NO_H4D",
+    "NO_N_LAMBDA_SELECTOR",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

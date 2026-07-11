@@ -1,0 +1,84 @@
+{
+  "schema": "route_b_d0_2_certificate.v1",
+  "created_at": "2026-07-11T21:22:45+02:00",
+  "node_id": "D0.2",
+  "name": "ExactWeilSesquilinearForm",
+  "proof_status": "PROVED",
+  "progress_class": "PROOF_PROGRESS",
+  "exit_code": "EXACT_WEIL_FORM_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "dependency": {
+    "node": "D0.1",
+    "exit_code": "EXACT_HILBERT_SPACE_AND_NORM_LOCKED",
+    "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_1_CERTIFICATE.json",
+    "certificate_sha256": "0cdd2bbd6cf90e3ece6f3293c4f95b18718d195a26d81307b86d70c10ed838eb"
+  },
+  "form_lock": {
+    "half_density": "F(x)=x^(1/2)f(x)",
+    "haar_measure": "d*u=du/u",
+    "involution": "F*(u)=conjugate(F(u^-1))",
+    "linearity": "antilinear_first_linear_second",
+    "functional": "Psi=W_0_2-W_R-sum_p W_p",
+    "one_sided_functional": "Psi_sharp=W_0_2_sharp-W_R_sharp-sum_p W_p_sharp",
+    "arch_half_factor": "1/2",
+    "window_form_type": "qW_m:H_m->R_union_{+infinity}",
+    "form_domain": "Dom(qW_m)={f:qW_m(f)<+infinity}",
+    "finite_form": "BW_m_N=BW_m restricted to E_m_N x E_m_N",
+    "matrix": "WeilMat_m_N[r,s]=BW_m(V_r_m,V_s_m)",
+    "coefficient_law": "BW_m_N(f,g)=c^* WeilMat_m_N d",
+    "matrix_class": "real_symmetric_hence_Hermitian",
+    "positivity": "NOT_CLAIMED_LOWER_BOUNDED_ONLY"
+  },
+  "proved_checks": [
+    "HALF_DENSITY_CONVENTION_LOCKED",
+    "PSI_SIGN_LEDGER_LOCKED",
+    "ARCH_HALF_FACTOR_LOCKED",
+    "FORM_DOMAIN_LOCKED",
+    "FINITE_RESTRICTION_LOCKED",
+    "CONJUGATE_COEFFICIENT_LAW_PROVED",
+    "REAL_SYMMETRIC_WEIL_MATRIX_LOCKED",
+    "LOWER_BOUND_TRANSFER_PROVED",
+    "POSITIVITY_FIREWALL_LOCKED",
+    "TRIAL_EIGENVALUE_FIREWALL_LOCKED"
+  ],
+  "plants": {
+    "prime_sign_reversal": "D0_2_PRIME_SIGN_PLANT_FIRES",
+    "missing_first_slot_conjugation": "D0_2_CONJUGATION_PLANT_FIRES",
+    "positivity_smuggling": "D0_2_POSITIVITY_OVERCLAIM_PLANT_FIRES",
+    "everywhere_finite_form": "D0_2_DOMAIN_OVERCLAIM_PLANT_FIRES",
+    "arch_half_factor_dropped": "D0_2_ARCH_HALF_FACTOR_PLANT_FIRES",
+    "trial_equals_ground": "D0_2_TRIAL_EIGENVALUE_CONFLATION_PLANT_FIRES"
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md",
+    "sha256": "52c58cee35344edc5baa30f3e2028b402c9a64a0e9a08c4dd093557a5a561308"
+  },
+  "explicit_nonclaims": [
+    "NO_QW_POSITIVITY",
+    "NO_EVERYWHERE_FINITE_FORM",
+    "NO_A_LAMBDA_OPERATOR",
+    "NO_D_LOG_OPERATOR",
+    "NO_PARITY_THEOREM",
+    "NO_GROUND_VECTOR",
+    "NO_TRIAL_GROUND_IDENTITY",
+    "NO_ALPHA_OR_ZEO",
+    "NO_H1_H4",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "schema": "route_b_d0_6_certificate.v1",
+  "created_at": "2026-07-11T21:51:45+02:00",
+  "node_id": "D0.6",
+  "name": "ExactTransformConvention",
+  "proof_status": "PROVED",
+  "progress_class": "PROOF_PROGRESS",
+  "exit_code": "EXACT_TRANSFORM_CONVENTION_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "dependency": {
+    "node": "D0.1",
+    "exit_code": "EXACT_HILBERT_SPACE_AND_NORM_LOCKED",
+    "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_1_CERTIFICATE.json",
+    "certificate_sha256": "0cdd2bbd6cf90e3ece6f3293c4f95b18718d195a26d81307b86d70c10ed838eb"
+  },
+  "transform_lock": {
+    "zero_extension": "Z_m:H_m->L1_intersection_L2(R_+^*,du/u)",
+    "measure": "d*u=du/u",
+    "kernel": "u^(-i*z)=exp(-i*z*log(u))",
+    "transform": "T_m(f)(z)=integral Z_m(f)(u)u^(-i*z)du/u",
+    "entire": true,
+    "derivative_kernel": "(-i*log(u))^r*u^(-i*z)",
+    "log_coordinate": "T_m(kappa_m(g))(z)=lambda^(i*z)*integral_0^L g(x)exp(-i*z*x)dx",
+    "mode_formula": "2*L^(-1/2)*sin(z*L/2)/(z-2*pi*n/L)",
+    "removable_value": "sqrt(L)*(-1)^n",
+    "mellin_convention": "Mellin(g)(s)=integral g(u)u^(s-1)du",
+    "half_density_crosswalk": "F_mu(u^(1/2)g)(z)=Mellin(g)(1/2-i*z)",
+    "xi_crosswalk": "Xi(z)=F_mu(u^(1/2)g)(-z)_when_Mellin(g)=xi",
+    "packet_already_half_shifted": "F_mu(k)(z)=Mellin(k)(-i*z)",
+    "additive_transform": "F_add(h)(y)=integral h(x)exp(2*pi*i*x*y)dx_DISTINCT_TYPE"
+  },
+  "topology_lock": {
+    "strip": "S={z:abs(Im(z))<1/2}",
+    "topology": "COMPACT_OPEN_ON_S",
+    "seminorms": "p_R_a(G)=sup_{abs(Re(z))<=R,abs(Im(z))<=a}|G(z)|",
+    "fixed_m_bound": "p_R_a(T_m f)<=lambda^a*sqrt(L)*norm2(f)",
+    "uniform_in_lambda": "NOT_CLAIMED",
+    "global_closed_substrip_uniformity": "NOT_CLAIMED",
+    "h3_status": "OPEN_NOT_DISCHARGED"
+  },
+  "proved_checks": [
+    "ZERO_EXTENSION_L1_L2_LOCKED",
+    "MULTIPLICATIVE_FOURIER_SIGN_LOCKED",
+    "CENTERING_PHASE_LOCKED",
+    "FINITE_MODE_FORMULA_LOCKED",
+    "REMOVABLE_LATTICE_VALUES_LOCKED",
+    "MELLIN_HALF_SHIFT_SIGN_LOCKED",
+    "ADDITIVE_MULTIPLICATIVE_FIREWALL_LOCKED",
+    "COMPACT_OPEN_TOPOLOGY_LOCKED",
+    "FIXED_M_EVALUATION_BOUND_PROVED",
+    "UNIFORMITY_OVERCLAIM_REJECTED",
+    "TRIAL_GROUND_FIREWALL_LOCKED"
+  ],
+  "plants": {
+    "measure": "D0_6_MEASURE_PLANT_FIRES",
+    "sign": "D0_6_TRANSFORM_SIGN_PLANT_FIRES",
+    "half_shift": "D0_6_HALF_SHIFT_PLANT_FIRES",
+    "centering_phase": "D0_6_CENTERING_PHASE_PLANT_FIRES",
+    "removable_pole": "D0_6_REMOVABLE_POLE_PLANT_FIRES",
+    "topology": "D0_6_TOPOLOGY_PLANT_FIRES",
+    "lambda_uniformity": "D0_6_LAMBDA_UNIFORMITY_PLANT_FIRES",
+    "endpoint_representative": "D0_6_REPRESENTATIVE_PLANT_FIRES",
+    "trial_ground": "D0_6_TRIAL_GROUND_PLANT_FIRES"
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_6_EXACT_TRANSFORM_CONVENTION.md",
+    "sha256": "db4b185e9e9ba750936410f9c4e37d90b10586624e06315f1e045d604a0ac3ff"
+  },
+  "explicit_nonclaims": [
+    "NO_BOUNDARY_NORMALIZATION",
+    "NO_UNIFORM_IN_LAMBDA_EVALUATION",
+    "NO_GLOBAL_CLOSED_SUBSTRIP_TOPOLOGY",
+    "NO_TRIAL_GROUND_CROSSWALK",
+    "NO_N_LAMBDA_SCHEDULE",
+    "NO_H1_FAMILY_SELECTED",
+    "NO_H3",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

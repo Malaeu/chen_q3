@@ -8,7 +8,11 @@ CANONICAL_REPO_PATH: /Users/emalam/GitHub/rh_lean_01_2026
 
 `AnchorLocked_Extraction_v1: REVIEWED_TAIL_RELABEL_DONE`
 
-Single source of truth: this file plus `loop_state.json` in the canonical repo path above. The stale twin path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this request state.
+Layered source of truth: physical executability is `bus/`, the current machine
+address is `ROUTE_B_EXECUTION_STATE.json`, and this file stores mathematical
+facts/history. `loop_state.json` is a compatibility mirror only. The stale twin
+path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this
+request state.
 
 ## LOCAL DIAGNOSTIC SUPPORT
 
@@ -84,10 +88,18 @@ Header check:
 
 ## NEXT STEP
 
-`G3_0_CanonicalObjectDictionary` is green in
-`docs/PEN_3_3_G04_OBJECT_DICTIONARY.md`.  The selected next mathematical target
-is `ProjectedProlateDefectEquation`, with its commutator/boundary source kept
-explicit; do not substitute a homogeneous ODE for the projected defect.
+The owner-authorized recursive compiler has proved D0.1--D0.6 and four of the
+five D0.7 components. `delta_(m,N)`, dependent boundary/ground/trial
+normalizations, scalar/phase conventions, and the `b` namespace firewall are
+locked. The unresolved master address is
+`D0.7e ExactDetectorBDefinitionAndCrosswalk`: the canonical detector `b`
+consumed by `W'` is absent from the source corpus. Pro review returned
+`EXTERNAL_OWNER_INPUT_REQUIRED` and rejected promotion of `bPilot`. The
+owner-authorized compiler is paused until Mythos/owner supplies the exact
+formula, type, entire-function normalization identity, and non-circular ZEO
+crosswalk frozen in `D0_7E_OWNER_INPUT_REQUEST.md`. No pilot norm, Weil matrix
+coefficient, or uniform H4d bound may fill that slot. `ProjectedProlateDefectEquation`
+remains a later physical Route B target and is not the current compiler leaf.
 
 The exact two-mode H2 branch is `H2-POLE/CORRECTION`.  The 2026-07-08
 threshold-only `H2_HOLDS` history row is retained as a numerical record but is
@@ -95,7 +107,7 @@ superseded as an exact classification.
 
 ## CURRENT_CODES
 
-`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`
+`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`
 
 ## History
 
@@ -125,3 +137,16 @@ superseded as an exact classification.
 - 2026-07-10 18:52:19 CEST: LeakageCloseout_v1 -> H2_NUMERIC_ONLY, SECOND_EDGE_CHANNEL, STAIL_DIVERGENT_SUSPECT, PLANT_REDESIGNED_FIRES; true-precision g04 constructor imposes only integral(f)=0 and no f(0)=0 row; Poisson relative mismatch k<=8/20/40 = 0.0117388/0.00712239/0.0651060, so truncation hypothesis refuted; S_tail(200)/leading=0.238061 passes size budget but 100->200 increment=0.0661527 misses <5% convergence judge; conjugate shadow inert exactly and c4-flip amplifies mismatch 29.7193x; NOT_RH; no next gate selected.
 - 2026-07-10 20:17:40 CEST: PoissonResidualChannelAudit_v1 -> MIDPOINT_POLE_LEDGER_REPAIR; whole-ledger exact relative closure=2.21795886424e-89, certified-interval worst relative closure=1.90764732499e-8; signed-tail=SIGNED_TAIL_INSUFFICIENT (certified T40 closes starred identity but exact C_mid remains for Bus-006 full endpoint); H2=PRESENT_EXACT, midpoint=PRESENT_EXACT, C_left=ABSENT_FROM_CURRENT_IDENTITY, C_right=ABSENT_FROM_CURRENT_IDENTITY, R_other=ZERO_EXACT; all plants fire; NOT_RH; no next gate selected.
 - 2026-07-10 22:00:36 CEST: ContractV2CrosscheckAndStateSync_v1 -> CONTRACT_V2_LOCKED, STATE_LOOP_SYNCED, ZEO_EXPORT_AMBIGUOUS; R13_SOURCE_MISSING; planted=PROVENANCE_PLANT_ABSENT_CONFIRMED; ZERO compute; NOT_RH; PO-0 remains open; no next gate selected.
+- 2026-07-11 20:29:57 CEST: ZeoProvenanceHarmonizationVerify_v1 -> OVERCLAIM_LIST, MYTHOS_REPAIRS_PRESENT; G3=OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS; planted=PLANT_INERT; secondary=CLASSIFICATION_SCOPE_INCOMPLETE, EXECUTION_STATE_OUT_OF_SCOPE_STALE_AFTER_009; ZERO compute; NOT_RH; PO-0 remains open; no next gate selected.
+- 2026-07-11 21:14:20 CEST: owner Ылша explicitly authorized `OWNER_AUTHORIZED_AUTORUN`; physical Bus 001..009 synchronized, next free NNN=010 remains uncreated; empty physical bus now releases the first eligible recursive Lamport master leaf, initially `D0.1 ExactHilbertSpaceAndNorm`; Bus 009 `OVERCLAIM_LIST`, ZEO ambiguity, and rGap13 provenance remain open; scheduler override only, NOT_RH.
+- 2026-07-11 21:22:45 CEST: Lamport D0.1 `ExactHilbertSpaceAndNorm` -> `EXACT_HILBERT_SPACE_AND_NORM_LOCKED`; parameter family `lambda=sqrt(m), m>=2`, finite index `N>=1`, unitary log-coordinate, ON modes, dimension `2N+1`, projection, zero-extension and sharp L2-to-L1 bound proved; all four plants fired; `N(lambda)` and Lean interface remain open; autorun advanced to D0.2; NOT_RH.
+- 2026-07-11 21:31:04 CEST: Lamport D0.2 `ExactWeilSesquilinearForm` -> `EXACT_WEIL_FORM_LOCKED`; half-density convention, `Psi=W_0_2-W_R-sum W_p`, form domain, finite restriction, real-symmetric Weil matrix and `c^*Tc` law locked; positivity and trial=eigenvalue overclaims rejected; seven plants fired; autorun advanced to D0.3; NOT_RH.
+- 2026-07-11 21:45:58 CEST: Lamport D0.3 `ExactOperatorRegistry` legally decomposed -> `D0_3_PARTIAL_OPERATOR_REGISTRY_LOCKED`; source-locked `A_m`, periodic `Dlog_m`, finite Riesz `WeilOp_m_N`, raw-vs-modified perturbed-scaling carrier split, formal prolate expression, and nonconflation firewall proved; full AND node remains `BLOCKED` by `D0_3_PW_SELFADJOINT_DOMAIN_MISSING` and `D0_3_DETECTOR_OPERATOR_MISSING`; no pilot alias accepted; eight plants fired; autorun advanced to independent D0.6; NOT_RH.
+- 2026-07-11 21:51:45 CEST: Lamport D0.6 `ExactTransformConvention` -> `EXACT_TRANSFORM_CONVENTION_LOCKED`; a.e. zero extension, Haar measure, kernel `u^(-iz)`, centered `lambda^(iz)` phase, finite-mode removable values, Mellin crosswalk `1/2-iz`, additive/multiplicative firewall, compact-open topology, and fixed-m evaluation bound proved; uniform-in-lambda evaluation and trial/ground H3 bridge explicitly rejected; nine plants fired; NOT_RH.
+- 2026-07-11 22:00:48 CEST: Lamport D0.3f `ProlateSelfadjointRealization` -> `PROLATE_SELFADJOINT_REALIZATION_LOCKED`; primary source arXiv:1603.07542v1 TeX member sha256 `6d36ac8201d07c96a981a112f0947a2a6b8b5a10d8ddc11577d75264984f8e33` pins the maximal domain and two zero-flux conditions; exact scaling `c=sqrt(2pi), a=c*lambda` proves the project operator is `(2pi lambda^2)U^-1 L_(a,I)U`; window/global operators remain distinct; seven plants fired; the former PW-domain stop-code is retired; D0.3 remains blocked only at D0.3g detector ratification; NOT_RH.
+- 2026-07-11 22:25:30 CEST: Lamport D0.3g `CanonicalDetectorOperator` -> `D03G_CANONICAL_WEILOP_LOCKED`; Pro review ratified only the finite carrier `Mfin_(m,N)=WeilOp_(m,N)` in the ON basis `(V_-N,...,V_N)` with Gram `I`; exact namespaces are full `nu_j(m,N)`, even/odd `epsilon_plus_j(m,N)`,`epsilon_minus_j(m,N)`, while Schur `theta_j` stays diagnostic; no `M_lambda`, global-rank crosswalk, strict same-sector gap, or `theta=nu` alias was imported; eight plants fired; NOT_RH.
+- 2026-07-11 22:25:30 CEST: Lamport D0.3 assembly -> `EXACT_OPERATOR_TYPES_LOCKED`; all eight children D0.3a--D0.3h and the AND assembly validate; the finite Weil detector, continuum form operator, periodic/perturbed scaling operators, and prolate operators remain distinct; D0.3's former detector stop-codes are retired only at finite `(m,N)` scope; NOT_RH.
+- 2026-07-11 22:25:30 CEST: Lamport D0.4 `ExactParitySector` -> `EXACT_PARITY_SECTORS_LOCKED`; inversion is `u->u^-1`, log reflection is `x->L-x`, and `Inv_m V_n=V_-n`; exact full and finite parity reductions proved; global eigenvalue order, strict gap, and pilot cleanliness are not claimed; six plants fired; NOT_RH.
+- 2026-07-11 22:25:30 CEST: Lamport D0.5 `ExactGroundEigenspaceAndTrialVectorTypes` -> `GROUND_TRIAL_TYPES_LOCKED`; the bottom eigenspace is nonempty but set-valued with no simple-even selection; the prolate/starred-sum finite trial is normalized only on `TrialNonzero`; Rayleigh gives `groundValue<=aTrial` without equality; carrier aliases and unconditional nonzero claims rejected; seven plants fired; autorun advanced to D0.7; NOT_RH.
+- 2026-07-11 22:38:00 CEST: Lamport D0.7 `ExactNormalization` legally decomposed -> `D0_7_PARTIAL_NORMALIZATION_LOCKED`; exact `deltaVec_(m,N)=L_m^(-1/2) sum V_n`, its linear boundary functional, finite endpoint identity and Dom(Dlog) limit proved; trial scalar/phase locked on `TrialNonzero`; phase-unit and delta=1 ground normalizations typed only on `GroundDeltaNonzero`; `bWeil_j`, `xihat`, superseded `bPilot`, and detector `b` separated; eight plants fired; D0.7 remains `BLOCKED / 4_OF_5_COMPONENTS_PROVED` by `D0_7_DETECTOR_B_DEFINITION_MISSING`; D0.7e escalated to Pro; NOT_RH.
+- 2026-07-11 22:44:00 CEST: Lamport D0.7e Pro review -> `EXTERNAL_OWNER_INPUT_REQUIRED`; trial normalization and entire-function/ZEO normalization are different object roles, so neither `sTrial` nor superseded `bPilot=||E(g04)||` can be promoted without a theorem crosswalk; inventing an inverse-boundary normalization would reconstruct the target and risk `NORMALIZATION_DEGENERACY`; minimal immutable owner request frozen as `D0_7E_OWNER_INPUT_REQUEST.md` and validator exits `D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED`; autorun paused at exact stop `D0_7_DETECTOR_B_DEFINITION_MISSING`; no Bus 010 created; NOT_RH.

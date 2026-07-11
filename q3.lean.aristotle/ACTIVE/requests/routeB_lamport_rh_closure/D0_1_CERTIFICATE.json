@@ -1,0 +1,81 @@
+{
+  "schema": "route_b_d0_1_certificate.v1",
+  "created_at": "2026-07-11T21:14:20+02:00",
+  "node_id": "D0.1",
+  "name": "ExactHilbertSpaceAndNorm",
+  "proof_status": "PROVED",
+  "progress_class": "PROOF_PROGRESS",
+  "exit_code": "EXACT_HILBERT_SPACE_AND_NORM_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "parameter_lock": {
+    "lambda_set": "Lambda_int={sqrt(m):m in N,m>=2}",
+    "finite_index_set": "I_fin={(m,N):m>=2,N>=1}",
+    "lambda_m": "sqrt(m)",
+    "L_m": "2*log(lambda_m)=log(m)",
+    "cofinality": "m_j->infinity implies lambda_m_j->infinity",
+    "N_schedule": "UNSELECTED_LATER_D0_8_H3C_OBLIGATION"
+  },
+  "object_lock": {
+    "scalar_field": "C",
+    "hilbert_space": "H_m=L2([lambda_m^-1,lambda_m],du/u)",
+    "inner_product": "integral conjugate(f(u))*g(u) du/u",
+    "kappa": "kappa_m(f)(u)=f(log(lambda_m*u))",
+    "source_mode": "U_n_m(x)=L_m^(-1/2)*exp(2*pi*i*n*x/L_m)",
+    "target_mode": "V_n_m=kappa_m(U_n_m)",
+    "finite_space": "E_m_N=span_C{V_n_m:-N<=n<=N}",
+    "finite_dimension": "2*N+1",
+    "projection": "orthogonal projection P_m_N:H_m->E_m_N",
+    "zero_extension": "a.e. zero outside [lambda_m^-1,lambda_m]",
+    "l1_bound": "norm1<=sqrt(L_m)*norm2"
+  },
+  "proved_checks": [
+    "LAMBDA_INT_COFINAL",
+    "KAPPA_UNITARY",
+    "U_MODES_ORTHONORMAL",
+    "V_MODES_ORTHONORMAL",
+    "FINITE_DIMENSION_2N_PLUS_1",
+    "ORTHOGONAL_PROJECTION_EXISTS",
+    "ZERO_EXTENSION_L2_ISOMETRY",
+    "ZERO_EXTENSION_ESS_SUPPORT_SUBSET",
+    "L2_TO_L1_SHARP_BOUND"
+  ],
+  "plants": {
+    "wrong_measure_du": "D0_1_MEASURE_PLANT_FIRES",
+    "missing_L_inverse_sqrt": "D0_1_MODE_NORMALIZATION_PLANT_FIRES",
+    "wrong_coordinate_log_u": "D0_1_COORDINATE_PLANT_FIRES",
+    "full_support_for_every_H_element": "D0_1_SUPPORT_OVERCLAIM_PLANT_FIRES"
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ALPHA_DEMAND_AUDIT.md",
+      "sha256": "18d5323f441cb4bba2efee0608af728930c3a5dc535519bfcef304cff025cdd2"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_1_EXACT_HILBERT_SPACE_AND_NORM.md",
+    "sha256": "72d9bc019e56bfeeddbef4b5ac345cf2d502b334a4d5c3aa23c4270b80ea087b"
+  },
+  "explicit_nonclaims": [
+    "NO_QW_DEFINITION",
+    "NO_OPERATOR_CROSSWALK",
+    "NO_SIMPLE_EVEN_GROUND",
+    "NO_N_OF_LAMBDA",
+    "NO_FINITE_TO_CONTINUUM_CONVERGENCE",
+    "NO_H1_H4",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

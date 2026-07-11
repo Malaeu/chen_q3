@@ -46164,3 +46164,267 @@ not the raw-D17 factorwise support class.
   is executed per run, followed by answer, state sync, validator, and `STOP`.
 - Global architecture is unchanged: H-bridge remains the official mainline;
   Route B remains `CHALLENGER / NOT_RH`.
+
+## Insight (2026-07-11, Route B proof compiler) -- LamportRHClosureCompiler_v1
+
+- The exact complex-analytic export is now isolated as four obligations:
+  `H1 EntireApproximants`, `H2 RealZeroApproximants`,
+  `H3 StripUniformTracking`, and `H4 DetectorDecay`.  A complete disk/Rouche
+  argument proves their conjunction implies RH; this is a conditional export,
+  not supply of the four hypotheses.
+- The July 11 transcript's finite Gram-corrected matrix algebra is retained as
+  a conditional interface only.  Its internal eigenvector residual is exactly
+  zero; the nontrivial candidate is an off-subspace/continuum residual, which
+  requires an exact ambient operator and spectral-distance theorem.
+- Source `literature/zotero/H8ULBMAL/fulltext.md`, Theorem 5.10, derives a
+  real-zero entire transform from a simple even smallest eigenvector of the
+  finite Weil form.  The same source explicitly leaves simple-even ground
+  supply and sufficiently accurate trial/ground tracking open.  These become
+  separate H2/H3 leaves rather than imported conclusions.
+- `ArchFormBoundedOnFixedWindow` is not accepted as the unconditional next
+  theorem until the exact Hilbert space, norm, canonical Arch/prime forms, and
+  their crosswalk to the source Weil object are locked.  Otherwise it can build
+  a convenient surrogate operator without advancing the ZEO chain.
+- Added request-local `routeB_lamport_rh_closure/MASTER_GOAL.md` and
+  `STATE.json`.  The physical bus retains precedence; at creation time active
+  Bus 009 blocks mathematical leaf execution and is expected to return a
+  negative provenance/falsifier report before any dictionary theorem begins.
+- Honest public status remains
+  `CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / CHALLENGER / NOT_RH`.
+
+## Insight (2026-07-11, Route B proof compiler) -- RecursiveLamportSemantics_v2
+
+- Proshka's architecture review exposed a real control gap: a list of leaves is
+  not an executable proof compiler unless AND/OR closure, decomposition
+  contracts, assembly theorems, and zoom-out are formal state transitions.
+- `MASTER_GOAL.md` now separates proof status from scheduler activity. Only
+  `PROVED` discharges a dependency; a `CONDITIONAL` child never closes a
+  parent, and no parent closes by propagation without its assembly theorem.
+- Exactly one canonical mutation leaf may be active, while independent
+  prover, falsifier, source, representation, Lean, and circularity workers may
+  investigate that same leaf. Root alone mutates the canonical DAG.
+- Progress is keyed by `(leaf, strategy)`. Two consecutive `NO_PROGRESS`
+  results kill that strategy and force a materially different representation,
+  falsifier, dual, boundary, unit, or minimal-lemma move. Route abandonment is
+  a recommendation, not automatic theorem falsification.
+- D0 is now an AND node with `D0.1..D0.8`; `D0.9` is the assembly application,
+  not a ninth analytic sibling. The first mathematical leaf after explicit
+  protocol release is `D0.1 ExactHilbertSpaceAndNorm`.
+- The proposed automatic `BUS_INVALID_SPEC -> master DAG` escape was rejected
+  as incompatible with `BUS_PROTOCOL.md`. Spec validity and route effect are
+  separate reviewer axes; even an invalid goal gets a negative answer and an
+  unconditional STOP. Only owner/Mythos plus a synchronized green control
+  plane may release a later master leaf.
+- Added request-local `START_GOAL.md` and machine-readable `STATE.json` v2.
+  Current state remains fail-closed: Bus 009 awaits score/state sync, no master
+  leaf is active, Route B is `CHALLENGER / NOT_RH`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_1ExactHilbertSpaceAndNorm
+
+- Owner authorization changed scheduling to `OWNER_AUTHORIZED_AUTORUN` while
+  preserving physical-bus preemption and all proof firewalls. Bus 009 remains
+  blocking for PO-0/ZEO; it does not block independent D0 source locking.
+- D0.1 fixes the project grid as
+  `Lambda_int={sqrt(m):m>=2}` and the full finite family as pairs `(m,N)` with
+  `N>=1`. No `N(lambda)` was invented; diagonal/iterated convergence remains
+  a D0.8/H3c obligation.
+- For `L=log(m)=2 log(lambda)`, the change of variables
+  `x=log(lambda*u)` proves that `kappa` is unitary from `L2([0,L],dx)` to
+  `L2([lambda^-1,lambda],du/u)`. It transports the normalized exponential
+  modes to an ON family `V_n`, so `E_(m,N)` has dimension `2N+1` and a unique
+  orthogonal projection.
+- A.e. zero extension is an L2 isometry and obeys the sharp finite-window
+  estimate `norm1 <= sqrt(2 log lambda)*norm2`. Exact full-window support is
+  true for nonzero finite trigonometric packets, but false for arbitrary H
+  elements; the leaf records only the universally valid support inclusion.
+- Deterministic validation pins four sources and fires plants for `du` versus
+  `du/u`, missing `L^-1/2`, `log u` versus `log(lambda*u)`, and the universal
+  full-support overclaim. Exit is
+  `EXACT_HILBERT_SPACE_AND_NORM_LOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`.
+- Autorun advanced to `D0.2 ExactWeilSesquilinearForm`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_2ExactWeilForm
+
+- D0.2 source-locks the half-density Weil form, not the original Mellin-class
+  function: `F=x^(1/2)f`, `d*u=du/u`, and first-slot conjugation are part of
+  the type contract.
+- The exact sign ledger is `Psi=W_0_2-W_R-sum_p W_p`; the one-sided
+  archimedean term retains its factor `1/2`. `Psi_sharp` and its log-pushforward
+  are distributions, not assumed ordinary kernels.
+- `QW_lambda` is a lower-bounded l.s.c. extended-real quadratic form with an
+  explicit form domain. On `E_(m,N)` its polarization is finite and has the
+  exact coefficient law `c^* WeilMat_(m,N) d`; the source matrix is real
+  symmetric in the `V_n` basis.
+- Lower boundedness is not positivity. A normalized packet value is a
+  Rayleigh value and is not the ground eigenvalue without an eigenspace
+  theorem. This prevents importing alpha, pilot `mu1`, or RH positivity into
+  the object definition.
+- Deterministic validation pins the source and fires sign, conjugation,
+  positivity, form-domain, arch-half-factor, trial/eigenvalue, and matrix-index
+  plants. Exit is `EXACT_WEIL_FORM_LOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`.
+- Autorun advanced to `D0.3 ExactOperatorRepresentation`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_3ExactOperatorRegistry
+
+- The owner-authorized scheduler was synchronized into the root entrypoints
+  `AGENTS.md` and `PROJECT_WORKFLOW.md`; the old unconditional empty-bus STOP
+  had survived there and could still divert a fresh worker despite the newer
+  bus/execution-state authorization. Physical unanswered bus goals retain
+  priority, and Codex still may not manufacture Bus 010.
+- D0.3 was legally refined into an AND registry. The source locks the
+  closed-form representation operator `A_m`, the periodic scaling operator
+  `Dlog_m`, the finite Riesz operator `WeilOp_(m,N)`, a conditional
+  xi-indexed rank-one perturbation, and the formal prolate differential
+  expression.
+- `WeilOp_(m,N)` has matrix `WeilMat_(m,N)` on finite `E_(m,N)`, but it is not
+  `A_m|E_(m,N)` without operator-domain membership and invariance. The raw
+  `Dlog` perturbation is not selfadjoint in the standard `H_m` metric in
+  general; the source theorem instead uses a shifted-Weil inner product on
+  `E_(m,N)/C*xi direct_sum E_(m,N)^perp` and remains conditional on the
+  simple-even ground hypothesis.
+- Two exact slots remain blocked. The local source gives the prolate
+  differential expression but no authoritative window endpoint domain for a
+  selfadjoint realization (`D0_3_PW_SELFADJOINT_DOMAIN_MISSING`). Contract v2
+  and the object-lock still mark the canonical detector carrying
+  `mu1,mu2,mu3` as missing (`D0_3_DETECTOR_OPERATOR_MISSING`). No pilot
+  `WeilMat`, `G_even`, Schur complement, or prolate Galerkin matrix fills it.
+- The partial validator pins all sources and fires eight plants covering form
+  versus operator domain, periodic boundary, finite compression, xi
+  dependence, inner-product smuggling, additive/multiplicative space, missing
+  detector, and QW-dependency propagation. The honest exit is
+  `D0_3_PARTIAL_OPERATOR_REGISTRY_LOCKED`; full D0.3 and D0.4 remain blocked.
+- Autorun advanced to the independent leaf `D0.6 ExactTransformConvention`,
+  whose only dependency D0.1 is proved. Route status remains `NOT_RH`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_6ExactTransformConvention
+
+- The exact multiplicative transform is
+  `T_m f(z)=integral (Z_m f)(u)u^(-iz)du/u`. In log coordinates it contains
+  the nonoptional centering phase `lambda^(iz)`.
+- For the classical Mellin convention, the exact half-density crosswalk is
+  `F_mu(u^(1/2)g)(z)=Mellin(g)(1/2-iz)`. Since the project defines
+  `Xi(z)=xi(1/2+iz)`, literal identification uses reflection `z -> -z`; a
+  sign change without an evenness theorem is illegal.
+- Compact log support proves every fixed-window transform entire. The mode
+  formula is `2 L^(-1/2) sin(zL/2)/(z-2pi n/L)`, with removable value
+  `sqrt(L)(-1)^n` at its own lattice frequency.
+- The target topology is compact-open on `|Im z|<1/2`, not uniform convergence
+  on an unbounded closed substrip. The fixed-m bound
+  `p_(R,a)(T_m f)<=lambda^a sqrt(L)||f||2` is correct but not uniform in m;
+  `T_m V_0(i sigma)` diverges with lambda. H3 still needs a weighted norm or
+  an error rate that absorbs this growth.
+- Additive prolate Fourier, a.e. multiplicative zero extension, and pointwise
+  midpoint representatives remain separate types. The source trial limit is
+  not relabelled as ground-vector convergence.
+- Exit: `EXACT_TRANSFORM_CONVENTION_LOCKED / H3_OPEN / NOT_RH`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_3fProlateDomainRepair
+
+- Local embedding search did not locate an exact endpoint domain. External
+  primary-source search found Victor Katsnelson, arXiv:1603.07542v1, which
+  classifies the selfadjoint boundary conditions for the finite-window
+  prolate operator. The source TeX member is pinned by sha256
+  `6d36ac8201d07c96a981a112f0947a2a6b8b5a10d8ddc11577d75264984f8e33`.
+- The canonical window domain is the maximal Sturm-Liouville domain plus both
+  zero-flux conditions
+  `(lambda^2-x^2)f'(x)->0` at `-lambda` and `+lambda`. It is not merely
+  `C_c^infinity`, the maximal domain, Dirichlet data, or a one-endpoint rule.
+- Exact normalization transport uses `c=sqrt(2pi)`, `a=c lambda`, and
+  `(Uf)(t)=c^(-1/2)f(t/c)`. It proves
+  `PW_lambda=(2pi lambda^2)U^-1 L_(a,I)U`, simultaneously matching the
+  potential, source kernel `exp(i t xi)`, project kernel `exp(2pi ixy)`, and
+  dimensionless bandwidth `2pi lambda^2`.
+- The resulting window operator is positive selfadjoint with simple discrete
+  spectrum and complete prolate eigenfamily. The Connes-Moscovici global
+  `L2(R)` extension is a distinct operator with additional infinity data and
+  is not aliased to the window realization.
+- The former `D0_3_PW_SELFADJOINT_DOMAIN_MISSING` blocker is retired. D0.3 now
+  has one remaining slot: canonical detector ratification/provenance.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_3gFiniteDetectorRatification
+
+- Independent provenance audit found one exact finite Riesz operator but no
+  legal one-parameter detector family. Pro review selected
+  `Mfin_(m,N)=WeilOp_(m,N)` on `E_(m,N)` in the ordered ON basis
+  `(V_-N,...,V_N)`, whose Gram matrix is exactly `I` and whose matrix is
+  `WeilMat_(m,N)`.
+- This decision is deliberately finite in both indices. It does not define
+  `M_lambda`, choose `N(lambda)`, prove a continuum limit, or promote a pilot
+  truncation schedule to a theorem. Those obligations remain in D0.8/H3.
+- Exact spectral namespaces are separated: `nu_j(m,N)` is the full ordered
+  spectrum and `epsilon_plus_j(m,N)`, `epsilon_minus_j(m,N)` are the sector
+  spectra. Static-Schur/LadderLaw values remain `theta_j` diagnostics. No
+  tolerance-based `theta=nu` identity is admissible.
+- Matrix centrosymmetry proves exact parity reduction and the multiset union
+  of the two sector spectra. It does not prove which sector contains the
+  global ground state, the global ranks of sector levels, or a strict
+  same-sector gap.
+- Exit is `D03G_CANONICAL_WEILOP_LOCKED`; all D0.3 children then assemble to
+  `EXACT_OPERATOR_TYPES_LOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_4ExactParitySectors
+
+- Multiplicative inversion is `Inv_m f(u)=f(u^-1)` and becomes reflection
+  `x -> L-x` in the centered log coordinate. Therefore
+  `Inv_m V_n=V_-n`, including the fixed mode `V_0`.
+- The involution yields exact orthogonal full-space and finite-dimensional
+  even/odd sectors. Since `Mfin_(m,N)` commutes with it, those sectors reduce
+  the exact finite detector.
+- This type-level theorem does not certify numerical parity cleanliness,
+  global eigenvalue ordering, or a strict gap. Those claims stay outside D0.4.
+- Exit is `EXACT_PARITY_SECTORS_LOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_5GroundTrialTypes
+
+- The exact ground object is the nonzero set-valued eigenspace
+  `ker(Mfin_(m,N)-nu_1(m,N)I)`. Finite spectral theory supplies unit vectors,
+  but neither simplicity, even parity, nor a canonical phase.
+- Orthogonal parity reduction gives only
+  `nu_1=min(epsilon_plus_1,epsilon_minus_1)`; it does not decide which sector
+  wins or exclude equality.
+- The additive two-prolate-mode packet, its starred-sum multiplicative image,
+  and its finite projection are distinct typed objects. The normalized trial
+  and its Rayleigh value are defined only on the dependent locus where the
+  finite projection has nonzero norm.
+- Rayleigh--Ritz gives `groundValue<=aTrial`; equality would require actual
+  ground-space membership and is not imported. Trial/ground tracking remains
+  a later H3 obligation.
+- Exit is `GROUND_TRIAL_TYPES_LOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`;
+  autorun advances to D0.7 exact normalization.
+
+## Insight (2026-07-11, Route B Lamport compiler) -- D0_7NormalizationAndMissingDetectorB
+
+- Four local `q3_docs` searches did not locate a Route B detector-`b`
+  definition. Primary-source review of *Zeta Spectral Triples* locks the
+  Dirichlet boundary vector, conditional ground normalization, perturbed
+  scaling operator, transform, and determinant, but not the later `W'`
+  detector scalar.
+- With `lambda_m=sqrt(m)` and `L_m=log m`, the exact boundary vector is
+  `deltaVec_(m,N)=L_m^(-1/2) sum_(|n|<=N) V_n`. Under the antilinear-first
+  convention its represented linear functional is
+  `deltaFun(f)=<deltaVec,f>`. It evaluates finite packets at both periodic
+  endpoints and converges to endpoint evaluation on `Dom(Dlog_m)` as
+  `N->infinity`; it is not bounded point evaluation on all L2.
+- The prolate trial phase is fixed by `I0,I4>0`. Its finite normalization is
+  defined only on `TrialNonzero`. For a unit ground vector with
+  `c=deltaFun(xi)!=0`, unit phase normalization and `delta=1` boundary
+  normalization are different: the latter has norm `1/|c|`. D0.5 does not
+  supply simple-even ground or unconditional `c!=0`.
+- Four `b`-looking namespaces are now firewalled: exact Weil matrix
+  coefficients `bWeil_j`, OCR `xihat` for the Fourier transform, a superseded
+  pilot norm `bPilot=||E(g04)||`, and the canonical detector `b` consumed by
+  `W'`. The last is explicitly `MISSING` in the newer object-lock; no source
+  proves `bPilot=bDet`.
+- D0.7a--D0.7d are proved and eight plants fire. D0.7e remains blocked by
+  `D0_7_DETECTOR_B_DEFINITION_MISSING`, so the parent exit
+  `EXACT_NORMALIZATION_DEFINED` is not issued. Uniform nonzero/growth bounds
+  remain H4d even after an exact definition is supplied. Route B is `NOT_RH`.
+- Pro architecture review returned `EXTERNAL_OWNER_INPUT_REQUIRED`. It
+  rejected both promotion of `sTrial`/`bPilot` and invention of an inverse
+  boundary scalar: Hilbert-vector normalization and entire-function/ZEO
+  normalization are different roles until an exact theorem connects them.
+- The minimal owner input is now frozen in `D0_7E_OWNER_INPUT_REQUEST.md`:
+  formula, indexed type, normalized object, exact entire-function identity,
+  dependent nonvanishing/phase convention, source pointer, and a non-circular
+  theorem showing the same scalar enters `W'`. The request validator passes as
+  `D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED`; no Bus 010 was created.

@@ -1,0 +1,58 @@
+{
+  "schema": "route_b_d0_4_certificate.v1",
+  "created_at": "2026-07-11T22:18:57+02:00",
+  "node_id": "D0.4",
+  "name": "ExactParitySectors",
+  "proof_status": "PROVED",
+  "progress_class": "PROOF_PROGRESS",
+  "exit_code": "EXACT_PARITY_SECTORS_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "dependency": {
+    "node": "D0.3g",
+    "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3G_CERTIFICATE.json",
+    "certificate_sha256": "6a2ca4374bffa4fa024e4e35ffdd9231ede6b4288985815688756800dd66a041"
+  },
+  "parity_lock": {
+    "full_inversion": "Inv_m(f)(u)=f(u^-1)",
+    "log_coordinate": "x_to_L_minus_x",
+    "mode_action": "Inv_m(V_n_m)=V_-n_m",
+    "full_operator_class": "SELFADJOINT_UNITARY_INVOLUTION",
+    "full_sectors": "H_m=Hplus_m_orthogonal_sum_Hminus_m",
+    "finite_even_dimension": "N+1",
+    "finite_odd_dimension": "N",
+    "finite_commutation": "R_m_N*Mfin_m_N=Mfin_m_N*R_m_N",
+    "finite_restrictions": "Mplus_m_N_AND_Mminus_m_N_SELFADJOINT"
+  },
+  "spectral_firewall": {
+    "full": "nu_j",
+    "even": "epsilon_plus_j",
+    "odd": "epsilon_minus_j",
+    "schur": "theta_j_DIAGNOSTIC_ONLY",
+    "global_bottom_three_pattern": "NOT_CLAIMED",
+    "strict_gap": "NOT_CLAIMED",
+    "pilot_cleanliness": "NOT_CLAIMED"
+  },
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_4_EXACT_PARITY_SECTORS.md",
+    "sha256": "18d0fb4c9a016d1635ee4d7b2ef83fcf65f14285312d3ea335cddd92040529a6"
+  },
+  "plants": {
+    "uncentered_inversion": "D0_4_UNCENTERED_INVERSION_PLANT_FIRES",
+    "wrong_map": "D0_4_WRONG_MAP_PLANT_FIRES",
+    "missing_v0": "D0_4_MISSING_V0_PLANT_FIRES",
+    "wrong_parity": "D0_4_WRONG_PARITY_PLANT_FIRES",
+    "global_order": "D0_4_GLOBAL_ORDER_PLANT_FIRES",
+    "pilot_cleanliness": "D0_4_PILOT_CLEANNESS_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_GLOBAL_BOTTOM_THREE_SECTOR_PATTERN",
+    "NO_STRICT_SECTOR_GAP",
+    "NO_SIMPLE_EVEN_GROUND",
+    "NO_PILOT_PARITY_CLEANNESS",
+    "NO_THETA_NU_EQUALITY",
+    "NO_H2_H4",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

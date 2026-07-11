@@ -1,0 +1,104 @@
+{
+  "schema": "route_b_d0_3g_certificate.v1",
+  "created_at": "2026-07-11T22:14:16+02:00",
+  "node_id": "D0.3g",
+  "name": "CanonicalFiniteWeilDetector",
+  "proof_status": "PROVED",
+  "progress_class": "REPRESENTATION_PROGRESS",
+  "exit_code": "D03G_CANONICAL_WEILOP_LOCKED",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "dependency": {
+    "node": "D0.2",
+    "certificate_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_2_CERTIFICATE.json",
+    "certificate_sha256": "59a775a2b0e2d6cfffda1241547adf67a417af20938899b3bdd961255e98352a"
+  },
+  "decomposition": {
+    "node": "D0.3g.0",
+    "proof_status": "PROVED",
+    "children": ["D0.3g.1", "D0.3g.2", "D0.3g.3", "D0.3g.4", "D0.3g.5"],
+    "assembly": "D0.3g.6",
+    "artifact": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3G_DECOMPOSITION_CONTRACT.md",
+      "sha256": "2afb083a16cd20255333acb350e5661554da263447045b926837468abc591581"
+    }
+  },
+  "components": {
+    "D0.3g.1": "CANONICAL_FINITE_CARRIER_SOURCE_LOCKED",
+    "D0.3g.2": "PARITY_SELFADJOINT_UNITARY_INVOLUTION_PROVED",
+    "D0.3g.3": "WEILOP_PARITY_COMMUTATION_PROVED",
+    "D0.3g.4": "ORTHOGONAL_SECTOR_REDUCTION_AND_SPECTRA_PROVED",
+    "D0.3g.5": "SPECTRAL_PROVENANCE_FIREWALL_PROVED",
+    "D0.3g.6": "ASSEMBLY_PROVED"
+  },
+  "operator_lock": {
+    "name": "Mfin_m_N",
+    "definition": "Mfin_m_N:=WeilOp_m_N",
+    "carrier": "E_m_N",
+    "ordered_basis": "(V_-N_m,...,V_N_m)",
+    "gram": "I_(2N+1)",
+    "matrix": "WeilMat_m_N",
+    "domain": "ALL_E_m_N",
+    "selfadjoint": true,
+    "parameter_regime": "m>=2_AND_N>=1",
+    "M_lambda_status": "UNDEFINED_PENDING_SELECTOR"
+  },
+  "parity_lock": {
+    "involution": "R_m_N(V_n_m)=V_-n_m",
+    "unitary": true,
+    "selfadjoint": true,
+    "commutation": "R_m_N*Mfin_m_N=Mfin_m_N*R_m_N",
+    "even_dimension": "N+1",
+    "odd_dimension": "N",
+    "sector_restrictions_selfadjoint": true
+  },
+  "spectral_lock": {
+    "full": "nu_j(m,N)",
+    "even": "epsilon_plus_j(m,N)",
+    "odd": "epsilon_minus_j(m,N)",
+    "schur": "theta_j(m,N)",
+    "pilot": "pilotFullEig_j(m,N)",
+    "multiset_union": true,
+    "global_bottom_three_pattern": "NOT_CLAIMED",
+    "strict_even_gap": "NOT_CLAIMED",
+    "theta_nu_identity": "FORBIDDEN_UNLESS_PROVED"
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    }
+  ],
+  "architectural_review": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3G_PRO_REVIEW_DECISION.md",
+    "sha256": "ef5c7fa8b256e59228e6b4068d1dd6280593fa730d0860c3620ca152f226c569",
+    "classification": "ADVISORY_NOT_PROOF_AUTHORITY",
+    "verdict": "CANONICALIZE_WEILOP"
+  },
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3G_CANONICAL_FINITE_WEIL_DETECTOR.md",
+    "sha256": "722236498d9287f94d4aee1018fa4fe563439f0e8c993e4b18e4848a05ef0a34"
+  },
+  "plants": {
+    "gram": "D03G_GRAM_PLANT_FIRES",
+    "matrix_action": "D03G_MATRIX_ACTION_PLANT_FIRES",
+    "parity": "D03G_PARITY_PLANT_FIRES",
+    "commutator": "D03G_COMMUTATOR_PLANT_FIRES",
+    "sector_dimension": "D03G_SECTOR_DIMENSION_PLANT_FIRES",
+    "global_order": "D03G_GLOBAL_ORDER_PLANT_FIRES",
+    "theta_alias": "D03G_THETA_ALIAS_PLANT_FIRES",
+    "m_lambda": "D03G_M_LAMBDA_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_M_LAMBDA",
+    "NO_GLOBAL_BOTTOM_THREE_SECTOR_PATTERN",
+    "NO_STRICT_SECTOR_GAP",
+    "NO_SIMPLE_EVEN_GROUND",
+    "NO_N_LAMBDA_SELECTOR",
+    "NO_FINITE_CONTINUUM_BRIDGE",
+    "NO_ZERO_PRODUCING_CROSSWALK",
+    "NO_THETA_NU_EQUALITY",
+    "NO_H1_H4",
+    "NO_RH"
+  ]
+}

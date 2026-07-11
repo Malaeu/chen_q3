@@ -1,0 +1,39 @@
+{
+  "schema": "route_b_external_source_lock.v1",
+  "locked_at": "2026-07-11T21:55:00+02:00",
+  "node_id": "D0.3f",
+  "source_class": "PRIMARY_RESEARCH_PAPER",
+  "title": "Self-adjoint boundary conditions for the prolate spheroid differential operator",
+  "author": "Victor Katsnelson",
+  "arxiv_id": "1603.07542v1",
+  "submitted": "2016-03-24",
+  "abstract_url": "https://arxiv.org/abs/1603.07542v1",
+  "source_url": "https://export.arxiv.org/e-print/1603.07542v1",
+  "source_member": "For_Heinz_Volume.tex",
+  "source_member_sha256": "6d36ac8201d07c96a981a112f0947a2a6b8b5a10d8ddc11577d75264984f8e33",
+  "exact_labels": {
+    "maximal_domain": "MaxDO/maxdo1",
+    "canonical_boundary_condition": "FBC",
+    "selfadjoint_positivity": "DiSp",
+    "complete_prolate_eigenfamily": "DSOIT",
+    "unique_fourier_commuting_extension": "WECF/DDLI"
+  },
+  "imported_content": {
+    "maximal_domain": "f in L2(-a,a), f_prime locally absolutely continuous, and the formal differential expression in L2",
+    "canonical_boundary": "limits at both endpoints of (1-x^2/a^2)f_prime(x) equal zero",
+    "selfadjointness": "the identity-matrix extension M_I is nonnegative selfadjoint",
+    "prolate_extension": "adding the bounded real multiplication potential x^2 preserves the domain and selfadjointness",
+    "uniqueness": "this boundary realization is the unique selfadjoint extension commuting with the matching truncated Fourier operator"
+  },
+  "project_scaling": {
+    "c": "sqrt(2*pi)",
+    "a": "c*lambda",
+    "unitary": "(U f)(t)=c^(-1/2)f(t/c)",
+    "positive_scalar": "c^2*lambda^2=2*pi*lambda^2",
+    "exact_conjugacy": "PW_lambda=(2*pi*lambda^2)U^(-1)L_(a,I)U",
+    "project_boundary": "limits at x->plus_or_minus_lambda of (lambda^2-x^2)f_prime(x) equal zero",
+    "dimensionless_bandwidth": "c=2*pi*lambda^2"
+  },
+  "wording_rule": "Paraphrase theorem content; do not quote long source passages.",
+  "rh_status": "NOT_RH"
+}

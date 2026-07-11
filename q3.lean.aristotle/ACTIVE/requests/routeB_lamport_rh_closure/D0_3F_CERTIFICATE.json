@@ -1,0 +1,60 @@
+{
+  "schema": "route_b_d0_3f_certificate.v1",
+  "created_at": "2026-07-11T22:00:48+02:00",
+  "node_id": "D0.3f",
+  "name": "ProlateSelfadjointRealization",
+  "proof_status": "PROVED",
+  "progress_class": "REPRESENTATION_PROGRESS",
+  "exit_code": "PROLATE_SELFADJOINT_REALIZATION_LOCKED",
+  "retired_failure_code": "D0_3_PW_SELFADJOINT_DOMAIN_MISSING",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "operator_lock": {
+    "carrier": "Ktime_lambda=L2([-lambda,lambda],dx)",
+    "action": "PW_lambda(f)=-d_dx((lambda^2-x^2)f_prime)+(2*pi*lambda*x)^2*f",
+    "maximal_domain": "f_in_L2_AND_f_prime_locally_AC_AND_PWExpr_f_in_L2",
+    "left_boundary": "lim_x_to_minus_lambda_plus (lambda^2-x^2)f_prime(x)=0",
+    "right_boundary": "lim_x_to_plus_lambda_minus (lambda^2-x^2)f_prime(x)=0",
+    "selfadjoint": true,
+    "positive": true,
+    "spectrum": "SIMPLE_DISCRETE_COMPLETE_PSWF",
+    "truncated_fourier_commutation": "PROVED_BY_EXACT_SOURCE_SCALING_AND_KERNEL_CHECK",
+    "global_L2_R_extension": "DISTINCT_OPERATOR_NOT_ALIASED"
+  },
+  "scaling_lock": {
+    "c": "sqrt(2*pi)",
+    "a": "c*lambda",
+    "unitary": "(U f)(t)=c^(-1/2)f(t/c)",
+    "conjugacy": "PW_lambda=(2*pi*lambda^2)U^(-1)L_(a,I)U",
+    "source_kernel": "exp(i*t*xi)",
+    "project_kernel": "exp(2*pi*i*x*y)",
+    "dimensionless_bandwidth": "2*pi*lambda^2"
+  },
+  "source_lock": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3F_EXTERNAL_SOURCE_LOCK.json",
+    "sha256": "6822e3e5b254bb0280262020ab2cd2d3bcc57b1f0453b560144a13bbae2b7919"
+  },
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3F_PROLATE_SELFADJOINT_REALIZATION.md",
+    "sha256": "82c23e7ce376bf98a7e6c0b22913f56e54bc696b6a97df1e896caa831d8bdff5"
+  },
+  "plants": {
+    "core_is_domain": "D0_3F_CORE_DOMAIN_PLANT_FIRES",
+    "no_boundary": "D0_3F_MAXIMAL_DOMAIN_PLANT_FIRES",
+    "dirichlet_alias": "D0_3F_DIRICHLET_ALIAS_PLANT_FIRES",
+    "one_endpoint": "D0_3F_ONE_ENDPOINT_PLANT_FIRES",
+    "wrong_scaling": "D0_3F_SCALING_PLANT_FIRES",
+    "global_window_alias": "D0_3F_GLOBAL_WINDOW_PLANT_FIRES",
+    "operator_conflation": "D0_3F_OPERATOR_CONFLATION_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_PW_EQUALS_WEIL_OPERATOR",
+    "NO_PW_EQUALS_DLOG",
+    "NO_CANONICAL_DETECTOR_OPERATOR",
+    "NO_GROUND_TRIAL_TRACKING",
+    "NO_H1_H4",
+    "NO_D0_3_ASSEMBLY",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

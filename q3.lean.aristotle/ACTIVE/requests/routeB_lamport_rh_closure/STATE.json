@@ -1,0 +1,865 @@
+{
+  "schema": "route_b_lamport_recursive_compiler.v3",
+  "revision": 8,
+  "updated_at": "2026-07-11T22:44:00+02:00",
+  "honesty": {
+    "route_status": "CHALLENGER_NOT_RH",
+    "rh_status": "OPEN",
+    "d0_status": "BLOCKED_AT_D0_7E_DETECTOR_B_DEFINITION",
+    "public_label": "CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / ROUTE_B_CHALLENGER / NOT_RH",
+    "conditional_export_status": "PROVED_MATHEMATICALLY_NOT_YET_LEAN_PINNED",
+    "forbidden_claims": [
+      "RH_PROVED",
+      "D0_LOCKED",
+      "M_LAMBDA_DEFINED_WITHOUT_SELECTOR",
+      "EXACT_NORMALIZATION_DEFINED"
+    ]
+  },
+  "conditional_export": {
+    "statement": "H1 AND H2 AND H3 AND H4 IMPLIES RH",
+    "method": "local_uniform_convergence_plus_Rouche_zero_exclusion",
+    "proof_status": "CONDITIONAL",
+    "math_implication_proved": true,
+    "project_hypotheses_supplied": false,
+    "lean_interface_pinned": false
+  },
+  "bus": {
+    "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
+    "canonical_lifecycle_status": "CLOSED_001_009_IDLE_OWNER_AUTORUN",
+    "observed_closed_nnns": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008",
+      "009"
+    ],
+    "lowest_unanswered_nnn": null,
+    "next_free_nnn": "010",
+    "codex_may_create_next_goal": false,
+    "latest_transaction": {
+      "nnn": "009",
+      "status": "ANSWER_RECORDED_CONTROL_PLANE_SYNCHRONIZED",
+      "g1": "OVERCLAIM_LIST",
+      "g2": "MYTHOS_REPAIRS_PRESENT",
+      "g3": "OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS",
+      "planted": "PLANT_INERT",
+      "secondary": [
+        "CLASSIFICATION_SCOPE_INCOMPLETE",
+        "EXECUTION_STATE_OUT_OF_SCOPE_STALE_AFTER_009"
+      ]
+    },
+    "reviewer_classification": {
+      "spec_status": "INVALID_SPEC",
+      "route_effect_recommendation": "BUS_BLOCKING_FOR_PO0",
+      "owner_ratified": true,
+      "note": "INVALID_SPEC remains blocking for PO0; owner autorun is a separate scheduler override"
+    },
+    "resolution": "BUS009_SYNCHRONIZED_OWNER_AUTORUN_RELEASED",
+    "blocks_po0": true,
+    "blocks_master_math_by_scheduler": false,
+    "validator": {
+      "command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check",
+      "status": "PASS",
+      "state_errors": [],
+      "pin_errors": []
+    },
+    "release_conditions": [
+      "NO_UNANSWERED_PHYSICAL_BUS_GOAL",
+      "LATEST_PAIR_CLOSED_AND_VALIDATED",
+      "ROUTE_B_STATE_EXECUTION_STATE_LOOP_STATE_SYNCHRONIZED",
+      "ROUTEB_STATUS_CHECK_EXIT_ZERO",
+      "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
+      "NAMED_LEAF_DEPENDENCIES_PROVED"
+    ],
+    "next_actor": "Mythos/owner",
+    "next_action": "Provide the immutable exact detector-b formula, type, normalization identity, dependent nonvanishing/phase data, and non-circular W-prime/ZEO crosswalk specified in D0_7E_OWNER_INPUT_REQUEST.md; do not create Bus 010"
+  },
+  "owner_authorization": {
+    "status": "OWNER_AUTHORIZED_AUTORUN",
+    "authorized_at": "2026-07-11T21:14:20+02:00",
+    "scope": "MASTER_DAG_LEAF_TRANSACTIONS",
+    "physical_bus_preempts": true,
+    "codex_may_create_bus_goal": false,
+    "does_not_close_po0": true,
+    "does_not_prove_any_node": true,
+    "does_not_authorize_commit_or_push": true
+  },
+  "compiler": {
+    "root_node_id": "R0",
+    "active_node_id": "D0.7e",
+    "active_node_count": 1,
+    "active_node_limit": 1,
+    "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
+    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT",
+    "candidate_first_leaf_after_release": "D0.7e",
+    "canonical_mutation_owner": "Codex-root",
+    "worker_tracks": [
+      "D0.7E_EXTERNAL_OWNER_REQUEST_LOCKED"
+    ],
+    "invariants": [
+      "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
+      "CONDITIONAL_NEVER_CLOSES_PARENT",
+      "ACTIVE_NODE_IS_UNIQUE_LEAF",
+      "ACTIVE_PHYSICAL_BUS_IMPLIES_NO_ACTIVE_MASTER_NODE",
+      "OWNER_AUTORUN_DOES_NOT_CLOSE_PO0",
+      "NO_PARENT_CLOSURE_WITHOUT_PROVED_ASSEMBLY",
+      "NO_SIBLING_IN_SAME_BUS_TRANSACTION"
+    ]
+  },
+  "node_schema": {
+    "kind": [
+      "AND",
+      "OR",
+      "LEAF"
+    ],
+    "role": [
+      "GOAL",
+      "DECOMPOSITION_CONTRACT",
+      "ASSEMBLY"
+    ],
+    "proof_status": [
+      "OPEN",
+      "CONDITIONAL",
+      "PROVED",
+      "FALSIFIED",
+      "FATAL_CURRENT_ROUTE",
+      "BLOCKED",
+      "INVALID_SPEC"
+    ],
+    "activity": [
+      "INACTIVE",
+      "ACTIVE"
+    ],
+    "required_fields": [
+      "id",
+      "parent_id",
+      "kind",
+      "role",
+      "statement",
+      "dependencies",
+      "ordered_children",
+      "assembly_theorem_id",
+      "proof_status",
+      "activity",
+      "eligibility",
+      "validation",
+      "failure_codes"
+    ]
+  },
+  "nodes": {
+    "R0": {
+      "id": "R0",
+      "parent_id": null,
+      "kind": "AND",
+      "role": "GOAL",
+      "statement": "Every non-trivial zero rho of zeta satisfies Re(rho)=1/2",
+      "dependencies": [],
+      "ordered_children": ["C0", "D0", "H1", "H2", "H3", "H4", "L0", "L1"],
+      "assembly_theorem_id": "R0.A",
+      "proof_status": "OPEN",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "CHILDREN_AND_ASSEMBLY_OPEN"},
+      "validation": "FINAL_HOLE_AXIOM_CONDITIONAL_IMPORT_CIRCULARITY_AUDIT",
+      "failure_codes": ["RH_CLOSURE_INCOMPLETE", "RH_CIRCULAR", "RH_CONDITIONAL_IMPORT"]
+    },
+    "C0": {
+      "id": "C0",
+      "parent_id": "R0",
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "The exact zeta-xi-Xi interface identifies RH with all Xi zeros in |Im z|<1/2 being real",
+      "dependencies": [],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
+      "proof_status": "CONDITIONAL",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_INTERFACE_UNPINNED"},
+      "validation": "MATH_PROOF_PRESENT_LEAN_INTERFACE_REQUIRED",
+      "failure_codes": ["XI_RH_INTERFACE_MISMATCH", "CLASSICAL_IMPORT_UNPINNED"]
+    },
+    "D0": {
+      "id": "D0",
+      "parent_id": "R0",
+      "kind": "AND",
+      "role": "GOAL",
+      "statement": "One exact source-locked object family supplies all H1-H4 consumers without QW, prolate, D_log, or detector conflation",
+      "dependencies": ["D0.0"],
+      "ordered_children": ["D0.1", "D0.2", "D0.3", "D0.4", "D0.5", "D0.6", "D0.7", "D0.8"],
+      "assembly_theorem_id": "D0.9",
+      "proof_status": "OPEN",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7_D0.8_AND_ASSEMBLY_OPEN"},
+      "validation": "SOURCE_IDENTITY_AND_TYPE_AUDIT",
+      "failure_codes": ["EXACT_OBJECT_FAMILY_MISSING", "OBJECT_CONFLATION", "NORMALIZATION_MISMATCH"]
+    },
+    "D0.0": {
+      "id": "D0.0",
+      "parent_id": "D0",
+      "kind": "LEAF",
+      "role": "DECOMPOSITION_CONTRACT",
+      "statement": "D0 iff D0.1 AND D0.2 AND D0.3 AND D0.4 AND D0.5 AND D0.6 AND D0.7 AND D0.8",
+      "dependencies": [],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "MATH_DEFINITIONAL_EQUIVALENCE_PASS_LEAN_UNPINNED",
+      "failure_codes": ["D0_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "D0.1": {
+      "id": "D0.1",
+      "parent_id": "D0",
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Lock the cofinal parameter/index set, L=2 log lambda, H_lambda=L2([lambda^-1,lambda],du/u), its norm, kappa, V_n, E_(lambda,N), and zero-extension support",
+      "dependencies": ["D0.0"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_1.py;SOURCE_PINS_MATCH;FOUR_PLANTS_FIRE",
+      "failure_codes": ["D0_1_OBJECT_MISMATCH", "D0_1_PARAMETER_SET_UNPINNED", "D0_1_NO_PROGRESS"],
+      "proof_evidence": {
+        "proof": "D0_1_EXACT_HILBERT_SPACE_AND_NORM.md",
+        "certificate": "D0_1_CERTIFICATE.json",
+        "validator": "validate_d0_1.py",
+        "exit_code": "EXACT_HILBERT_SPACE_AND_NORM_LOCKED"
+      }
+    },
+    "D0.2": {
+      "id": "D0.2", "parent_id": "D0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock QW, QW_lambda, and QW^N_lambda on D0.1 with the exact sesquilinear and matrix conventions",
+      "dependencies": ["D0.1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_2.py;SOURCE_PINS_MATCH;SEVEN_PLANTS_FIRE",
+      "failure_codes": ["D0_2_FORM_MISMATCH", "D0_2_DOMAIN_MISMATCH", "D0_2_NO_PROGRESS"],
+      "proof_evidence": {
+        "proof": "D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md",
+        "certificate": "D0_2_CERTIFICATE.json",
+        "validator": "validate_d0_2.py",
+        "exit_code": "EXACT_WEIL_FORM_LOCKED"
+      }
+    },
+    "D0.3": {
+      "id": "D0.3", "parent_id": "D0", "kind": "AND", "role": "GOAL",
+      "statement": "Lock one exact nonconflated registry for the Weil form operator, finite Riesz operator, scaling operators, prolate realization, and detector operator",
+      "dependencies": ["D0.1", "D0.2", "D0.3.0"],
+      "ordered_children": ["D0.3a", "D0.3b", "D0.3c", "D0.3d", "D0.3e", "D0.3f", "D0.3g", "D0.3h"],
+      "assembly_theorem_id": "D0.3i",
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_3.py;ALL_EIGHT_CHILDREN_PROVED;EIGHT_PLANTS_FIRE",
+      "failure_codes": ["D0_3_OPERATOR_TYPE_MISMATCH", "D0_3_OPERATOR_CONFLATION"],
+      "proof_evidence": {
+        "proof": "D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md",
+        "decomposition": "D0_3_DECOMPOSITION_CONTRACT.md",
+        "certificate": "D0_3_CERTIFICATE.json",
+        "validator": "validate_d0_3.py",
+        "exit_code": "EXACT_OPERATOR_TYPES_LOCKED"
+      }
+    },
+    "D0.3.0": {
+      "id": "D0.3.0", "parent_id": "D0.3", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "D0.3 iff D0.3a AND D0.3b AND D0.3c AND D0.3d AND D0.3e AND D0.3f AND D0.3g AND D0.3h",
+      "dependencies": ["D0.1", "D0.2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "D0_3_DECOMPOSITION_LOCKED",
+      "failure_codes": ["D0_3_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "D0.3a": {
+      "id": "D0.3a", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock the closed-form representation operator A_m with its operator domain and standard-H_m selfadjointness",
+      "dependencies": ["D0.2", "D0.3.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "SOURCE_REPRESENTATION_THEOREM_AND_DOMAIN_LOCK",
+      "failure_codes": ["D0_3_FORM_OPERATOR_DOMAIN_MISMATCH"]
+    },
+    "D0.3b": {
+      "id": "D0.3b", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock Dlog_m as the periodic H1 derivative transported by kappa_m",
+      "dependencies": ["D0.1", "D0.3.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PERIODIC_DOMAIN_AND_SPECTRUM_LOCK",
+      "failure_codes": ["D0_3_PERIODIC_DOMAIN_MISMATCH"]
+    },
+    "D0.3c": {
+      "id": "D0.3c", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock the finite Riesz operator WeilOp_m_N without identifying it with a restriction of A_m",
+      "dependencies": ["D0.2", "D0.3.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "FINITE_RIESZ_AND_COMPRESSION_FIREWALL",
+      "failure_codes": ["D0_3_FORM_OPERATOR_COMPRESSION_CONFLATION"]
+    },
+    "D0.3d": {
+      "id": "D0.3d", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Separate the raw xi-indexed rank-one Dlog perturbation from its conditional modified-inner-product selfadjoint realization",
+      "dependencies": ["D0.3b", "D0.3c"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "TYPED_CONDITIONAL_INTERFACE_PROVED_HYPOTHESES_NOT_SUPPLIED"},
+      "validation": "RAW_VS_MODIFIED_CARRIER_AND_INNER_PRODUCT_LOCK",
+      "failure_codes": ["D0_3_PERTURBED_DLOG_REQUIRES_SIMPLE_EVEN", "D0_3_MODIFIED_INNER_PRODUCT_OMITTED"]
+    },
+    "D0.3e": {
+      "id": "D0.3e", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock the exact prolate differential expression on the additive time window",
+      "dependencies": ["D0.1", "D0.3.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "FORMAL_EXPRESSION_ALREADY_PROVED"},
+      "validation": "PROLATE_FORMAL_EXPRESSION_SOURCE_LOCK",
+      "failure_codes": ["D0_3_PW_SPACE_MISMATCH"]
+    },
+    "D0.3f": {
+      "id": "D0.3f", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Pin the exact selfadjoint window realization of the prolate expression, including its endpoint domain",
+      "dependencies": ["D0.3e"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_FROM_VERSIONED_PRIMARY_SOURCE"},
+      "validation": "PASS:validate_d0_3f.py;ARXIV_1603_07542_V1_PINNED;SEVEN_PLANTS_FIRE",
+      "failure_codes": ["D0_3_PW_SELFADJOINT_DOMAIN_MISMATCH"],
+      "proof_evidence": {
+        "proof": "D0_3F_PROLATE_SELFADJOINT_REALIZATION.md",
+        "source_lock": "D0_3F_EXTERNAL_SOURCE_LOCK.json",
+        "certificate": "D0_3F_CERTIFICATE.json",
+        "validator": "validate_d0_3f.py",
+        "exit_code": "PROLATE_SELFADJOINT_REALIZATION_LOCKED",
+        "retired_failure_code": "D0_3_PW_SELFADJOINT_DOMAIN_MISSING"
+      }
+    },
+    "D0.3g": {
+      "id": "D0.3g", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Pin the finite canonical detector Mfin_(m,N)=WeilOp_(m,N), its ON basis and Gram convention, exact full nu and parity-sector epsilon spectral namespaces, while quarantining Schur theta and leaving M_lambda undefined",
+      "dependencies": ["D0.1", "D0.2", "D0.3.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_FINITE_CARRIER_ONLY"},
+      "validation": "PASS:validate_d0_3g.py;PRO_RATIFIED_FINITE_WEILOP_ONLY;EIGHT_PLANTS_FIRE",
+      "failure_codes": ["D0_3G_GRAM_MISMATCH", "D0_3G_THETA_NU_ALIAS", "D0_3G_UNAUTHORIZED_M_LAMBDA"],
+      "proof_evidence": {
+        "decision": "D0_3G_PRO_REVIEW_DECISION.md",
+        "decomposition": "D0_3G_DECOMPOSITION_CONTRACT.md",
+        "proof": "D0_3G_CANONICAL_FINITE_WEIL_DETECTOR.md",
+        "certificate": "D0_3G_CERTIFICATE.json",
+        "validator": "validate_d0_3g.py",
+        "exit_code": "D03G_CANONICAL_WEILOP_LOCKED"
+      }
+    },
+    "D0.3h": {
+      "id": "D0.3h", "parent_id": "D0.3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Enforce named-unitary, domain, intertwiner, and inner-product checks before any operator identity",
+      "dependencies": ["D0.3a", "D0.3b", "D0.3c", "D0.3d", "D0.3e"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "EIGHT_NONCONFLATION_PLANTS_FIRE",
+      "failure_codes": ["D0_3_OPERATOR_CONFLATION", "D0_3_PREMATURE_CROSSWALK"]
+    },
+    "D0.3i": {
+      "id": "D0.3i", "parent_id": "D0.3", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "D0.3a AND D0.3b AND D0.3c AND D0.3d AND D0.3e AND D0.3f AND D0.3g AND D0.3h IMPLIES D0.3",
+      "dependencies": ["D0.3.0", "D0.3a", "D0.3b", "D0.3c", "D0.3d", "D0.3e", "D0.3f", "D0.3g", "D0.3h"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ASSEMBLY_PROVED"},
+      "validation": "PASS:validate_d0_3.py;ALL_CHILDREN_PROVED",
+      "failure_codes": ["D0_3_ASSEMBLY_GAP"]
+    },
+    "D0.4": {
+      "id": "D0.4", "parent_id": "D0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Define gamma V_n=V_-n, inversion, and exact parity sectors without claiming parity cleanliness",
+      "dependencies": ["D0.1", "D0.3"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_4.py;SIX_PLANTS_FIRE",
+      "failure_codes": ["D0_4_PARITY_MISMATCH", "D0_4_CONTAMINATION_CLAIM", "D0_4_NO_PROGRESS"],
+      "proof_evidence": {
+        "proof": "D0_4_EXACT_PARITY_SECTORS.md",
+        "certificate": "D0_4_CERTIFICATE.json",
+        "validator": "validate_d0_4.py",
+        "exit_code": "EXACT_PARITY_SECTORS_LOCKED"
+      }
+    },
+    "D0.5": {
+      "id": "D0.5", "parent_id": "D0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Define the least eigenspace and prolate trial-vector types and roles without assuming simple-even or identifying them",
+      "dependencies": ["D0.2", "D0.4"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_5.py;SEVEN_PLANTS_FIRE",
+      "failure_codes": ["D0_5_GROUND_TRIAL_CONFLATION", "D0_5_SIMPLE_EVEN_SMUGGLED", "D0_5_NO_PROGRESS"],
+      "proof_evidence": {
+        "proof": "D0_5_GROUND_AND_TRIAL_TYPES.md",
+        "certificate": "D0_5_CERTIFICATE.json",
+        "validator": "validate_d0_5.py",
+        "exit_code": "GROUND_TRIAL_TYPES_LOCKED"
+      }
+    },
+    "D0.6": {
+      "id": "D0.6", "parent_id": "D0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock zero extension, multiplicative Fourier-Mellin sign and half-shift, and compact-substrip topology",
+      "dependencies": ["D0.1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "TRANSFORM_SIGN_SHIFT_DOMAIN_TOPOLOGY_AUDIT",
+      "failure_codes": ["D0_6_TRANSFORM_SIGN_MISMATCH", "D0_6_HALF_SHIFT_MISSING", "D0_6_NO_PROGRESS"],
+      "proof_evidence": {
+        "proof": "D0_6_EXACT_TRANSFORM_CONVENTION.md",
+        "certificate": "D0_6_CERTIFICATE.json",
+        "validator": "validate_d0_6.py",
+        "exit_code": "EXACT_TRANSFORM_CONVENTION_LOCKED"
+      }
+    },
+    "D0.7": {
+      "id": "D0.7", "parent_id": "D0", "kind": "AND", "role": "GOAL",
+      "statement": "For lambda=sqrt(m), lock delta_(m,N), dependent boundary/ground/trial normalization, scalar and phase conventions, and the canonical detector b definition without importing uniform bounds or a hidden N(lambda) selector",
+      "dependencies": ["D0.1", "D0.5", "D0.6", "D0.7.0"],
+      "ordered_children": ["D0.7a", "D0.7b", "D0.7c", "D0.7d", "D0.7e"],
+      "assembly_theorem_id": "D0.7f",
+      "proof_status": "BLOCKED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e_DETECTOR_B_DEFINITION_MISSING"},
+      "validation": "PASS_PARTIAL:validate_d0_7.py;FOUR_OF_FIVE_CHILDREN_PROVED;PARENT_BLOCKED",
+      "failure_codes": ["D0_7_NORMALIZATION_MISMATCH", "D0_7_NONZERO_SMUGGLED", "D0_7_DETECTOR_B_DEFINITION_MISSING", "D0_7_NO_PROGRESS"],
+      "proof_evidence": {
+        "decomposition": "D0_7_DECOMPOSITION_CONTRACT.md",
+        "proof": "D0_7_EXACT_NORMALIZATION_REGISTRY.md",
+        "certificate": "D0_7_CERTIFICATE.json",
+        "validator": "validate_d0_7.py",
+        "partial_exit_code": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
+        "stop_code": "D0_7_DETECTOR_B_DEFINITION_MISSING"
+      }
+    },
+    "D0.7.0": {
+      "id": "D0.7.0", "parent_id": "D0.7", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "D0.7 iff D0.7a AND D0.7b AND D0.7c AND D0.7d AND D0.7e",
+      "dependencies": ["D0.1", "D0.5", "D0.6"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "D0_7_DECOMPOSITION_LOCKED",
+      "failure_codes": ["D0_7_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "D0.7a": {
+      "id": "D0.7a", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
+      "statement": "Define deltaVec_(m,N)=L_m^(-1/2) sum V_n and its linear boundary functional with exact finite evaluation and Dom(Dlog) limit",
+      "dependencies": ["D0.1", "D0.6", "D0.7.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_7.py;DIRICHLET_VECTOR_AND_FUNCTIONAL_LOCK",
+      "failure_codes": ["D0_7_DELTA_SCALE_MISMATCH", "D0_7_DELTA_FUNCTIONAL_ORDER_MISMATCH"]
+    },
+    "D0.7b": {
+      "id": "D0.7b", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock the source phase of the prolate trial and its positive scalar normalization on TrialNonzero",
+      "dependencies": ["D0.5", "D0.7.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_7.py;TRIAL_SCALAR_PHASE_LOCK",
+      "failure_codes": ["D0_7_TRIAL_ZERO_DIVISION", "D0_7_TRIAL_PHASE_MISMATCH"]
+    },
+    "D0.7c": {
+      "id": "D0.7c", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
+      "statement": "Define unit phase normalization and delta=1 boundary normalization on the dependent GroundDeltaNonzero locus without supplying simple-even ground",
+      "dependencies": ["D0.5", "D0.7a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "CONDITIONAL_INTERFACE_PROVED_HYPOTHESES_NOT_SUPPLIED"},
+      "validation": "PASS:validate_d0_7.py;DEPENDENT_GROUND_NORMALIZATION_LOCK",
+      "failure_codes": ["D0_7_GROUND_ZERO_DIVISION", "D0_7_PHASE_BOUNDARY_CONFLATION"]
+    },
+    "D0.7d": {
+      "id": "D0.7d", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
+      "statement": "Separate exact Weil matrix b_j, superseded pilot b, Fourier-transform xihat, and the missing detector b namespace",
+      "dependencies": ["D0.2", "D0.5", "D0.7.0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_7.py;B_NAMESPACE_FIREWALL_LOCK",
+      "failure_codes": ["D0_7_BWEIL_ALIAS", "D0_7_BPILOT_ALIAS"]
+    },
+    "D0.7e": {
+      "id": "D0.7e", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
+      "statement": "Define the exact detector b on an indexed carrier and prove that this same scalar is consumed by the exact W-prime identity, without importing later uniform bounds",
+      "dependencies": ["D0.3g", "D0.7d"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "BLOCKED", "activity": "ACTIVE",
+      "eligibility": {"eligible": false, "reason": "EXTERNAL_OWNER_INPUT_REQUIRED"},
+      "validation": "PASS:validate_d0_7e_request.py;SOURCE_DEFINITION_AND_W_PRIME_CROSSWALK_REQUIRED",
+      "failure_codes": ["D0_7_DETECTOR_B_DEFINITION_MISSING", "D0_7_BPILOT_BDET_CROSSWALK_MISSING"],
+      "proof_evidence": {
+        "pro_decision": "D0_7E_PRO_REVIEW_DECISION.md",
+        "owner_request": "D0_7E_OWNER_INPUT_REQUEST.md",
+        "validator": "validate_d0_7e_request.py",
+        "request_exit": "D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED"
+      }
+    },
+    "D0.7f": {
+      "id": "D0.7f", "parent_id": "D0.7", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "D0.7a AND D0.7b AND D0.7c AND D0.7d AND D0.7e IMPLIES D0.7",
+      "dependencies": ["D0.7.0", "D0.7a", "D0.7b", "D0.7c", "D0.7d", "D0.7e"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "BLOCKED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e_BLOCKED"},
+      "validation": "D0_7_ASSEMBLY_TYPECHECK",
+      "failure_codes": ["D0_7_ASSEMBLY_GAP"]
+    },
+    "D0.8": {
+      "id": "D0.8", "parent_id": "D0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove the same-object crosswalk among QW^N, the chosen ground object, D_log, its transform or determinant, and H1-H4 consumers",
+      "dependencies": ["D0.1", "D0.2", "D0.3", "D0.4", "D0.5", "D0.6", "D0.7"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7_OPEN"},
+      "validation": "SAME_OBJECT_CROSSWALK_AND_CIRCULARITY_AUDIT",
+      "failure_codes": ["D0_8_OBJECT_MISMATCH", "D0_8_CIRCULAR", "D0_8_NO_PROGRESS"]
+    },
+    "D0.9": {
+      "id": "D0.9", "parent_id": "D0", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "D0.1 AND D0.2 AND D0.3 AND D0.4 AND D0.5 AND D0.6 AND D0.7 AND D0.8 IMPLIES D0",
+      "dependencies": ["D0.0", "D0.1", "D0.2", "D0.3", "D0.4", "D0.5", "D0.6", "D0.7", "D0.8"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_CHILDREN_OPEN"},
+      "validation": "D0_ASSEMBLY_TYPECHECK_AND_SOURCE_PINS",
+      "failure_codes": ["D0_ASSEMBLY_GAP", "D0_ASSEMBLY_OBJECT_MISMATCH"]
+    },
+    "H1": {
+      "id": "H1", "parent_id": "R0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Every exact normalized approximant F_j is entire",
+      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "validation": "ENTIRE_FUNCTION_PROOF_AND_SAME_FAMILY_AUDIT",
+      "failure_codes": ["H1_OBJECT_MISMATCH", "H1_ENTIRETY_GAP"]
+    },
+    "H2": {
+      "id": "H2", "parent_id": "R0", "kind": "AND", "role": "GOAL",
+      "statement": "Every zero of every exact approximant F_j is real",
+      "dependencies": ["D0"], "ordered_children": ["H2a", "H2b"], "assembly_theorem_id": "H2c",
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_AND_CHILDREN_OPEN"},
+      "validation": "SAME_VECTOR_REAL_ZERO_AUDIT",
+      "failure_codes": ["H2_OBJECT_MISMATCH", "H2_REAL_ZERO_GAP"]
+    },
+    "H2a": {
+      "id": "H2a", "parent_id": "H2", "kind": "LEAF", "role": "GOAL",
+      "statement": "The exact finite operator has the required simple isolated even ground eigenvector",
+      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "validation": "SIMPLE_EVEN_GROUND_THEOREM_AUDIT",
+      "failure_codes": ["SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH"]
+    },
+    "H2b": {
+      "id": "H2b", "parent_id": "H2", "kind": "LEAF", "role": "GOAL",
+      "statement": "The transform of that same normalized ground vector has only real zeros",
+      "dependencies": ["D0", "H2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "CONDITIONAL", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H2a_OPEN"},
+      "validation": "THEOREM_5_10_EXACT_HYPOTHESIS_MATCH",
+      "failure_codes": ["REAL_ZERO_THEOREM_OBJECT_MISMATCH", "THEOREM_5_10_HYPOTHESIS_GAP"]
+    },
+    "H2c": {
+      "id": "H2c", "parent_id": "H2", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H2a AND H2b IMPLIES H2",
+      "dependencies": ["H2a", "H2b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H2_CHILDREN_OPEN"},
+      "validation": "H2_ASSEMBLY_TYPECHECK", "failure_codes": ["H2_ASSEMBLY_GAP"]
+    },
+    "H3": {
+      "id": "H3", "parent_id": "R0", "kind": "AND", "role": "GOAL",
+      "statement": "The same normalized real-zero approximants track Xi uniformly on every compact substrip",
+      "dependencies": ["D0"], "ordered_children": ["H3a", "H3b", "H3c"], "assembly_theorem_id": "H3d",
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_AND_CHILDREN_OPEN"},
+      "validation": "COMPACT_SUBSTRIP_UNIFORMITY_AND_SAME_FAMILY_AUDIT",
+      "failure_codes": ["GROUND_TRIAL_TRACKING_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING"]
+    },
+    "H3a": {
+      "id": "H3a", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
+      "statement": "The exact ground vector and trial vector are scalar-phase aligned with a quantitative rate",
+      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "validation": "GROUND_TRIAL_QUANTITATIVE_AUDIT",
+      "failure_codes": ["GROUND_TRIAL_TRACKING_MISSING", "PHASE_ALIGNMENT_MISSING"]
+    },
+    "H3b": {
+      "id": "H3b", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
+      "statement": "The chosen approximation norm controls transform evaluation uniformly on every compact substrip",
+      "dependencies": ["D0", "H3a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3a_OPEN"},
+      "validation": "COMPACT_STRIP_EVALUATION_BOUND_AUDIT",
+      "failure_codes": ["COMPACT_STRIP_EVALUATION_MISSING", "TOPOLOGY_MISMATCH"]
+    },
+    "H3c": {
+      "id": "H3c", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
+      "statement": "A source-locked joint N-lambda diagonal and normalization converge exactly to Xi",
+      "dependencies": ["D0", "H3a", "H3b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3a_H3b_OPEN"},
+      "validation": "JOINT_QUANTIFIER_NORMALIZATION_XI_IDENTITY_AUDIT",
+      "failure_codes": ["FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING"]
+    },
+    "H3d": {
+      "id": "H3d", "parent_id": "H3", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3a AND H3b AND H3c IMPLIES H3",
+      "dependencies": ["H3a", "H3b", "H3c"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3_CHILDREN_OPEN"},
+      "validation": "H3_ASSEMBLY_TYPECHECK", "failure_codes": ["H3_ASSEMBLY_GAP"]
+    },
+    "H4": {
+      "id": "H4", "parent_id": "R0", "kind": "AND", "role": "GOAL",
+      "statement": "The exact detector quantity W_j tends to zero",
+      "dependencies": ["D0"], "ordered_children": ["H4a", "H4b", "H4c", "H4d"], "assembly_theorem_id": "H4e",
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_AND_CHILDREN_OPEN"},
+      "validation": "DETECTOR_RATE_ASSEMBLY_AND_TRUE_GAP_AUDIT",
+      "failure_codes": ["DETECTOR_DECAY_GAP", "MODEL_GAP_SUBSTITUTION"]
+    },
+    "H4a": {
+      "id": "H4a", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
+      "statement": "Derive the exact non-internal Galerkin or continuum residual identity",
+      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "validation": "AMBIENT_RESIDUAL_IDENTITY_AUDIT", "failure_codes": ["RESIDUAL_IDENTITY_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY"]
+    },
+    "H4b": {
+      "id": "H4b", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove the required uniform residual upper bound",
+      "dependencies": ["D0", "H4a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H4a_OPEN"},
+      "validation": "UNIFORM_RESIDUAL_RATE_AUDIT", "failure_codes": ["RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE"]
+    },
+    "H4c": {
+      "id": "H4c", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove a lower bound for the true complementary spectral distance",
+      "dependencies": ["D0", "H4a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H4a_OPEN"},
+      "validation": "TRUE_COMPLEMENTARY_SPECTRAL_DISTANCE_AUDIT", "failure_codes": ["TRUE_GAP_LOWER_MISSING", "MODEL_GAP_SUBSTITUTION"]
+    },
+    "H4d": {
+      "id": "H4d", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove nonzero normalization and the required uniform upper control",
+      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "validation": "NORMALIZATION_NONZERO_UNIFORM_AUDIT", "failure_codes": ["NORMALIZATION_ZERO", "NORMALIZATION_CONTROL_MISSING"]
+    },
+    "H4e": {
+      "id": "H4e", "parent_id": "H4", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4a AND H4b AND H4c AND H4d IMPLIES W_j tends to zero",
+      "dependencies": ["H4a", "H4b", "H4c", "H4d"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4_CHILDREN_OPEN"},
+      "validation": "EXPLICIT_RATE_BUDGET_ASSEMBLY", "failure_codes": ["H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING"]
+    },
+    "L0": {
+      "id": "L0", "parent_id": "R0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lean proves the exact ZeroEscape implication for the source-locked H1-H4 interfaces",
+      "dependencies": ["C0", "D0", "H1", "H2", "H3", "H4"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "MATH_SUPPLY_OPEN"},
+      "validation": "LAKE_LEAN_ZERO_HOLES", "failure_codes": ["LEAN_EXPORT_INTERFACE_GAP", "ROUCHE_FORMALIZATION_GAP"]
+    },
+    "L1": {
+      "id": "L1", "parent_id": "R0", "kind": "LEAF", "role": "GOAL",
+      "statement": "Final Lean audit has zero holes, unexpected axioms, RH-conditional imports, and circular bridges",
+      "dependencies": ["L0"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "L0_OPEN"},
+      "validation": "PRINT_AXIOMS_HOLE_IMPORT_CIRCULARITY_AUDIT", "failure_codes": ["UNEXPECTED_AXIOM", "PROOF_HOLE", "RH_CONDITIONAL_IMPORT", "CIRCULAR_BRIDGE"]
+    },
+    "R0.A": {
+      "id": "R0.A", "parent_id": "R0", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "C0 AND D0 AND H1 AND H2 AND H3 AND H4 AND L0 AND L1 IMPLIES RH",
+      "dependencies": ["C0", "D0", "H1", "H2", "H3", "H4", "L0", "L1"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ROOT_CHILDREN_OPEN"},
+      "validation": "FINAL_ASSEMBLY_AND_AXIOM_AUDIT", "failure_codes": ["ROOT_ASSEMBLY_GAP", "RH_CIRCULAR", "RH_CONDITIONAL_IMPORT"]
+    }
+  },
+  "progress": {
+    "classes": [
+      "PROOF_PROGRESS",
+      "FALSIFICATION_PROGRESS",
+      "REPRESENTATION_PROGRESS",
+      "NO_PROGRESS"
+    ],
+    "kill_after_consecutive_no_progress": 2,
+    "key": "node_id_plus_strategy_fingerprint",
+    "forced_actions": [
+      "REPRESENTATION_SHIFT",
+      "COUNTEREXAMPLE_HUNT",
+      "DUALIZE",
+      "BOUNDARY_CASE",
+      "UNIT_AUDIT",
+      "MINIMAL_LEMMA",
+      "ABANDON_ROUTE"
+    ],
+    "by_leaf_strategy": {
+      "D0.1/source_lock_direct/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "EXACT_HILBERT_SPACE_AND_NORM_LOCKED"
+      },
+      "D0.2/source_form_polarization/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "EXACT_WEIL_FORM_LOCKED"
+      },
+      "D0.3/operator_registry_source_audit/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "EXACT_OPERATOR_TYPES_LOCKED"
+      },
+      "D0.6/transform_sign_topology/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "EXACT_TRANSFORM_CONVENTION_LOCKED"
+      },
+      "D0.3f/primary_source_domain_search/v1": {
+        "status": "CLOSED",
+        "last_class": "REPRESENTATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "PROLATE_SELFADJOINT_REALIZATION_LOCKED"
+      },
+      "D0.3g/detector_provenance_and_ratification/v1": {
+        "status": "CLOSED_FINITE_SCOPE",
+        "last_class": "REPRESENTATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "D03G_CANONICAL_WEILOP_LOCKED"
+      },
+      "D0.4/exact_inversion_parity_sectors/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "EXACT_PARITY_SECTORS_LOCKED"
+      },
+      "D0.5/ground_trial_dependent_types/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GROUND_TRIAL_TYPES_LOCKED"
+      },
+      "D0.7/exact_normalization_provenance/v1": {
+        "status": "PARTIAL_PARENT_BLOCKED",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "D0_7_PARTIAL_NORMALIZATION_LOCKED"
+      },
+      "D0.7e/detector_b_source_crosswalk/v1": {
+        "status": "PAUSED_EXTERNAL_OWNER_INPUT",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "EXTERNAL_OWNER_INPUT_REQUIRED"
+      }
+    }
+  },
+  "completion_gate": {
+    "required_proved_nodes": ["C0", "D0", "H1", "H2", "H3", "H4", "L0", "L1", "R0.A"],
+    "required_audits": [
+      "ZERO_SORRY_ADMIT_EXACT_QUERY",
+      "ZERO_UNEXPECTED_AXIOMS",
+      "ZERO_RH_CONDITIONAL_IMPORTS",
+      "ZERO_CIRCULAR_BRIDGES"
+    ],
+    "derived_status_now": "NOT_RH",
+    "success_status": "RH_PROVED"
+  },
+  "resume": {
+    "read_first": "MASTER_GOAL.md",
+    "restart_prompt": "START_GOAL.md",
+    "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
+    "current_stop": "D0_7_DETECTOR_B_DEFINITION_MISSING",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT",
+    "current_leaf": "D0.7e",
+    "first_math_leaf_after_release": "D0.1"
+  },
+  "transition_log": [
+    {
+      "at": "2026-07-11T20:56:56+02:00",
+      "event": "PROSHKA_RECURSIVE_COMPILER_REVIEW_INTEGRATED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "AND_OR_LEAF_ASSEMBLY_ZOOM_MULTIWORKER_PROGRESS_KILL_AND_D0_TREE_LOCKED",
+      "honesty": "D0.1_OPEN_INACTIVE_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T21:14:20+02:00",
+      "event": "OWNER_AUTHORIZED_AUTORUN_ACTIVATED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "BUS009_SYNCHRONIZED_ROUTE_STATUS_GREEN_D0_1_ACTIVE",
+      "honesty": "PO0_OPEN_ZEO_OPEN_D0_1_OPEN_ACTIVE_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T21:22:45+02:00",
+      "event": "D0_1_CLOSED_D0_2_ACTIVATED",
+      "progress_class": "PROOF_PROGRESS",
+      "result": "EXACT_HILBERT_SPACE_AND_NORM_LOCKED",
+      "honesty": "D0_OPEN_D0_2_ACTIVE_N_SCHEDULE_OPEN_LEAN_UNPINNED_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T21:31:04+02:00",
+      "event": "D0_2_CLOSED_D0_3_ACTIVATED",
+      "progress_class": "PROOF_PROGRESS",
+      "result": "EXACT_WEIL_FORM_LOCKED",
+      "honesty": "LOWER_BOUNDED_NOT_POSITIVE_D0_OPEN_D0_3_ACTIVE_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T21:51:45+02:00",
+      "event": "D0_6_CLOSED_AFTER_D0_3_PARTIAL_DECOMPOSITION",
+      "progress_class": "PROOF_PROGRESS",
+      "result": "EXACT_TRANSFORM_CONVENTION_LOCKED",
+      "honesty": "FIXED_M_EVALUATION_ONLY_H3_OPEN_D0_3_BLOCKED_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T22:00:48+02:00",
+      "event": "D0_3F_PRIMARY_SOURCE_REPAIR_CLOSED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROLATE_SELFADJOINT_REALIZATION_LOCKED",
+      "honesty": "GLOBAL_EXTENSION_DISTINCT_D0_3G_DETECTOR_MISSING_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T22:05:09+02:00",
+      "event": "D0_3G_WEILOP_CANDIDATE_ESCALATED_TO_PRO",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "D0_3_DETECTOR_CROSSWALK_UNRATIFIED",
+      "honesty": "NO_SCHUR_THETA_MU_ALIAS_D0_3G_ACTIVE_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T22:25:30+02:00",
+      "event": "D0_3G_D0_3_D0_4_D0_5_CLOSED_D0_7_ACTIVATED",
+      "progress_class": "PROOF_PROGRESS",
+      "result": "D03G_CANONICAL_WEILOP_LOCKED;EXACT_OPERATOR_TYPES_LOCKED;EXACT_PARITY_SECTORS_LOCKED;GROUND_TRIAL_TYPES_LOCKED",
+      "honesty": "FINITE_MFIN_ONLY_NO_M_LAMBDA_NO_GLOBAL_RANK_CROSSWALK_NO_SIMPLE_EVEN_NO_TRIAL_NONZERO_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T22:38:00+02:00",
+      "event": "D0_7_PARTIAL_DECOMPOSITION_D0_7E_ACTIVATED",
+      "progress_class": "FALSIFICATION_PROGRESS",
+      "result": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
+      "honesty": "FOUR_OF_FIVE_COMPONENTS_PROVED_DETECTOR_B_DEFINITION_MISSING_EXACT_NORMALIZATION_NOT_ISSUED_NOT_RH"
+    },
+    {
+      "at": "2026-07-11T22:44:00+02:00",
+      "event": "D0_7E_PRO_REVIEW_CONFIRMED_EXTERNAL_OWNER_INPUT",
+      "progress_class": "FALSIFICATION_PROGRESS",
+      "result": "EXTERNAL_OWNER_INPUT_REQUIRED;D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED",
+      "honesty": "BPILOT_NOT_PROMOTABLE_NO_TAUTOLOGICAL_W_PRIME_REDEFINITION_NO_BUS_010_NOT_RH"
+    }
+  ]
+}

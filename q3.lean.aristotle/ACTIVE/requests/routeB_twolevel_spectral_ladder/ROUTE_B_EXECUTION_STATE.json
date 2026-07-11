@@ -1,6 +1,6 @@
 {
-  "schema_version": "route_b_execution_state.v1",
-  "updated_at": "2026-07-10T22:00:36+02:00",
+  "schema_version": "route_b_execution_state.v2",
+  "updated_at": "2026-07-11T22:44:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,26 +10,37 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "RB0_BLOCKED_ZEO_EXPORT_AMBIGUOUS",
+  "operational_status": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_EXTERNAL_OWNER_INPUT",
   "current": {
-    "stage_id": "RB-0",
-    "contract_obligation": "PO-0",
-    "name": "PO0SourceAndZEOProvenanceRepair",
-    "status": "BLOCKED_AFTER_BUS_008",
+    "stage_id": "RB-LAMPORT-D0",
+    "contract_obligation": "D0.7e",
+    "name": "ExactDetectorBDefinitionAndCrosswalk",
+    "status": "PAUSED_EXTERNAL_OWNER_INPUT",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Mythos",
-    "next_action": "Score Bus 008; decide whether to issue a provenance/ZEO repair as immutable 009_*.goal.md. Codex must not create or select it.",
+    "next_required_actor": "Mythos/owner",
+    "next_action": "Provide the exact detector-b definition and non-circular W-prime/ZEO crosswalk required by D0_7E_OWNER_INPUT_REQUEST.md; bPilot is not promotable; do not create Bus 010.",
     "exit_codes": [
       "CONTRACT_V2_LOCKED",
       "STATE_LOOP_SYNCED",
-      "PROVENANCE_LOCKED"
+      "D0_3_PARTIAL_OPERATOR_REGISTRY_LOCKED",
+      "EXACT_TRANSFORM_CONVENTION_LOCKED",
+      "PROLATE_SELFADJOINT_REALIZATION_LOCKED",
+      "D03G_CANONICAL_WEILOP_LOCKED",
+      "EXACT_OPERATOR_TYPES_LOCKED",
+      "EXACT_PARITY_SECTORS_LOCKED",
+      "GROUND_TRIAL_TYPES_LOCKED",
+      "D0_7_PARTIAL_NORMALIZATION_LOCKED",
+      "D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
       "SAFE_RATE_NOT_SUFFICIENT",
       "SOURCE_POINTER_MISSING",
-      "ZEO_EXPORT_AMBIGUOUS"
+      "ZEO_EXPORT_AMBIGUOUS",
+      "D0_7_NORMALIZATION_MISMATCH",
+      "D0_7_NONZERO_SMUGGLED",
+      "D0_7_DETECTOR_B_DEFINITION_MISSING"
     ]
   },
   "bus": {
@@ -42,22 +53,23 @@
       "005",
       "006",
       "007",
-      "008"
+      "008",
+      "009"
     ],
-    "last_contiguous_closed_nnn": "008",
+    "last_contiguous_closed_nnn": "009",
     "lowest_unanswered_nnn": null,
-    "next_expected_nnn": "009",
+    "next_expected_nnn": "010",
     "selected_next_gate": null
   },
   "last_closed": {
-    "nnn": "008",
-    "name": "ContractV2CrosscheckAndStateSync_v1",
-    "goal_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/008_contract_v2_crosscheck_and_state_sync.goal.md",
-    "answer_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/008_contract_v2_crosscheck_and_state_sync.answer.md",
-    "goal_sha256": "e006a5bb685bb6389fcdb8086c1e0ce547269d3faa683188ba9db4b8db879460",
+    "nnn": "009",
+    "name": "ZeoProvenanceHarmonizationVerify_v1",
+    "goal_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/009_zeo_provenance_harmonization_verify.goal.md",
+    "answer_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/009_zeo_provenance_harmonization_verify.answer.md",
+    "goal_sha256": "26f253a89b896fef43d56970edfb18afbe8bea98f65af86a33a0a1bb538f531f",
     "answer_hash_mode": "canonical_payload_omit_hash_lines",
-    "answer_sha256": "47dc93e301845e3dfffc28531f733fc91cc35d21962bb0e892d87fa55137846c",
-    "verdict": "CONTRACT_V2_LOCKED;STATE_LOOP_SYNCED;ZEO_EXPORT_AMBIGUOUS;R13_SOURCE_MISSING;PROVENANCE_PLANT_ABSENT_CONFIRMED",
+    "answer_sha256": "2d307968b6f0b9da346081e5f55dfa1ca8dd1294ffdf2fffd1f8b4ad3cd58388",
+    "verdict": "OVERCLAIM_LIST;MYTHOS_REPAIRS_PRESENT;OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS;PLANT_INERT;CLASSIFICATION_SCOPE_INCOMPLETE",
     "rh_status": "NOT_RH",
     "terminal_status": "STOP"
   },
@@ -65,7 +77,7 @@
     "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
     "version": "v2",
     "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
-    "status": "CONTRACT_LOCKED_PO0_BLOCKED_ON_ZEO_PROVENANCE",
+    "status": "CONTRACT_LOCKED_PO0_BLOCKERS_RETAINED_OWNER_AUTORUN_OBJECT_LOCK",
     "safe_rate_condition": "r_delta - r_alpha > 2*q_b + 1"
   },
   "waiting_reasons": [
@@ -82,10 +94,16 @@
       "detail": "The claimed mu1/(mu3-mu1) approximately 2.66e-8 has no persisted ratio artifact or certified source."
     },
     {
-      "code": "NO_OPEN_BUS_GOAL",
-      "class": "PROTOCOL_WAIT",
-      "owner": "Mythos",
-      "detail": "Bus 008 is closed and no 009_*.goal.md exists; free number 009 is not a selected gate."
+      "code": "OWNER_AUTHORIZED_AUTORUN",
+      "class": "EXECUTION_POLICY",
+      "owner": "Ылша",
+      "detail": "When no physical unanswered goal exists, Codex autonomously executes the first eligible recursive Lamport master leaf."
+    },
+    {
+      "code": "D0_7_DETECTOR_B_DEFINITION_MISSING",
+      "class": "MASTER_DAG_EXTERNAL_DEFINITION_BLOCKER",
+      "owner": "Mythos/Pro architecture review",
+      "detail": "D0.7a-d are proved. Pro verdict is EXTERNAL_OWNER_INPUT_REQUIRED. The later object-lock records detector b as MISSING, and no theorem crosswalks bWeil_j, xihat, or the superseded pilot norm to the W-prime scalar."
     }
   ],
   "guardrails": {
@@ -96,7 +114,18 @@
     "qW_formula_changed": false,
     "packet_definition_changed": false,
     "codex_may_create_next_goal": false,
-    "zero_compute_until_goal_scope_says_otherwise": true
+    "owner_autorun_master_dag": true,
+    "zero_compute_until_goal_scope_says_otherwise": false
+  },
+  "owner_authorization": {
+    "mode": "OWNER_AUTHORIZED_AUTORUN",
+    "authorized_at": "2026-07-11T21:14:20+02:00",
+    "authorized_by": "Ылша",
+    "instruction": "Remove the post-answer STOP, unlock the recursive compiler, start it, and keep iterating.",
+    "physical_bus_precedence": true,
+    "may_create_bus_goal": false,
+    "master_goal_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MASTER_GOAL.md",
+    "master_state_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/STATE.json"
   },
   "pins": {
     "mythos_kernel": {
@@ -109,6 +138,12 @@
     }
   },
   "stages": [
+    {
+      "id": "RB-LAMPORT-D0",
+      "obligations": ["D0.1", "D0.2", "D0.3", "D0.4", "D0.5", "D0.6", "D0.7", "D0.8", "D0.9"],
+      "name": "LamportExactObjectFamily",
+      "status": "PAUSED_D0_7E_EXTERNAL_OWNER_INPUT_D0_7A_D_PROVED"
+    },
     {
       "id": "RB-0",
       "obligations": ["PO-0"],
@@ -184,5 +219,7 @@
     "queue": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus",
     "compatibility_mirror": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/loop_state.json",
     "request_local_plan": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/IMPLEMENTATION_PLAN.md"
+    ,"lamport_master_goal": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MASTER_GOAL.md"
+    ,"lamport_master_state": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/STATE.json"
   }
 }
