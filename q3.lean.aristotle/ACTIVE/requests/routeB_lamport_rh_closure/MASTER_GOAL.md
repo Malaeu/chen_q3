@@ -546,12 +546,12 @@ proof node.
 | `H1.0` | Definitional H1 decomposition contract | `PROVED` | `H1_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H1a` | Finite linear combinations of entire summands remain entire | `PROVED / GENERIC_LEAN` | `LEAN_DIFFERENTIABLE_FINITE_ENTIRE_COMBINATION` |
 | `H1b` | Reflection, exponential phase and nonzero scalar preserve entirety/zeros | `PROVED / GENERIC_LEAN` | `LEAN_ENTIRE_PHASE_REFLECTION_SCALAR_CLOSURE` |
-| `H1c` | AND parent from Proposition-5.9 source formula through exact master-family selection | `OPEN / SOURCE_RHS_ENTIRE / INTEGRAL_AND_MASTER_CROSSWALKS_OPEN` | blocker: `H1_EXACT_APPROXIMANT_SOURCE_UNPINNED` |
+| `H1c` | AND parent from Proposition-5.9 source formula through exact master-family selection | `OPEN / SOURCE_RHS_AND_RAW_INTEGRAL_PROVED / MASTER_CROSSWALK_OPEN` | blocker: `H1_EXACT_APPROXIMANT_SOURCE_UNPINNED` |
 | `H1c.0` | H1c source/crosswalk decomposition contract | `PROVED` | `H1C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H1c1` | Proposition-5.9 removable RHS is entire for every finite vector | `PROVED / SOURCE_FORMULA_LEAN` | `PROPOSITION59_RHS_ENTIRE` |
-| `H1c2` | Exact phase-centered raw integral equals the removable RHS, including lattice values | `OPEN / ELIGIBLE_WORKER` | blocker: `H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING` |
+| `H1c2` | Exact phase-centered raw integral equals the removable RHS, including lattice values | `PROVED / EXACT_LEAN / ALL_Z` | `RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK` |
 | `H1c3` | Select the exact master `F_j` and prove its D0.8 same-family crosswalk | `OPEN / OWNER_ARCHITECTURE_CHOICE_REQUIRED` | blocker: `H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED` |
-| `H1c4` | H1c exact source-family assembly | `OPEN / BLOCKED_BY_H1c2_H1c3` | `H1C_ASSEMBLED` |
+| `H1c4` | H1c exact source-family assembly | `OPEN / BLOCKED_BY_H1c3` | `H1C_ASSEMBLED` |
 | `H1d` | H1 exact-family assembly | `OPEN / BLOCKED_BY_H1c` | `H1_ASSEMBLED` |
 | `H2` | AND parent for same-vector real-zero supply | `OPEN / COMPLETED_TRACKER_GLOBAL_IDENTIFICATION_KILLED` | `REAL_ZERO_APPROXIMANTS_PROVED` |
 | `H2a` | Simple isolated even ground eigenvector for the exact finite operator | `OPEN_CRITICAL` | `SIMPLE_EVEN_GROUND_PROVED` |
@@ -746,13 +746,21 @@ compensating crosswalk is not supplied. H3c and H3e remain OPEN.
 Revision 16 closes two further unconditional Lean cores without choosing an
 exact family.  H1c1 encodes every apparent pole in the H8 Proposition-5.9
 finite formula by a complex `dslope`, proves the finite removable RHS entire,
-and recovers the printed quotient formula off the source lattice.  H1c2 still
-must prove equality with the exact phase-centered raw integral at all points,
-and H1c3 still needs the D0.8/owner master-family choice.  Independently,
+and recovers the printed quotient formula off the source lattice.  Independently,
 H4d1b upgrades the natural-scale exponent lemma to any non-bottom cofinal
 filter: an eventual squared WPrime envelope plus the strict Contract-v2 margin
 forces detector decay.  H4d2 still must supply the exact identity, constants,
 SAFE bounds, and joint filter.  Thus H1c, H1, H4d, H4, and RH remain OPEN.
+
+Revision 17 closes H1c2 constructively.  The exact phase-centered log-window
+integral equals the removable Proposition-5.9 RHS for every complex `z`, both
+off the source lattice and at its finite `L*cos(pi*k)` values.  The same Lean
+artifact separately proves that the finite positive-exponent centered
+integral equals `Raw(-z)`, without assuming coefficient evenness or silently
+flipping the Fourier sign; D0.6 is the separate source lock identifying that
+representative with owner `Fplus`.  H1c3 still needs D0.8 and the owner
+master-family choice; therefore H1c and H1 stay OPEN and no new independent
+worker leaf is currently eligible.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

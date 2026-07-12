@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T12:27:21+02:00",
+  "updated_at": "2026-07-12T14:23:54+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -263,6 +263,18 @@
     "h1c_h4d_generic_cores_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h1c_h4d_generic_cores.py",
       "sha256": "5e135ade2fa8f8f5b36c2c056aac99c19dd22e1426b357c8895eb466647d4d41"
+    },
+    "h1c2_raw_integral_crosswalk_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H1C2_RAW_INTEGRAL_CROSSWALK_CERTIFICATE.json",
+      "sha256": "412ca37660f295e56e1e4b91f5d746613bc38d98878c532ad570f1e5e85a9f2a"
+    },
+    "h1c2_raw_integral_crosswalk_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h1c2_raw_integral_crosswalk.py",
+      "sha256": "3c18d475e6619d07b87b7e695d16020c4209ce486c10eda778da68fa256793f5"
+    },
+    "h1c2_raw_integral_crosswalk_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RawIntegralRhsCrosswalk.lean",
+      "sha256": "01f57424ee2c5b81784f28dfc24cf982b22caaf04bd1a7b4021609a5aa424711"
     }
   },
   "stages": [

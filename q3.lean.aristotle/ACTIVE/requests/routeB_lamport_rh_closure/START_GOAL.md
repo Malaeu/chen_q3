@@ -99,8 +99,13 @@ Current fail-closed address:
 - H3e ExactWPrimeTrackingTheorem is registered OPEN/INACTIVE; H0/A1 and
   PO_XWALK_UNIFORM_EVAL remain OPEN_CRITICAL external obligations;
 - rev16 proves `H1c1 PROPOSITION59_RHS_ENTIRE`: all source-lattice poles are
-  encoded by `dslope` and the finite source RHS is Lean-entire; the exact raw
-  integral equality `H1c2` and master-family choice `H1c3` remain OPEN;
+  encoded by `dslope` and the finite source RHS is Lean-entire;
+- rev17 proves `H1c2 RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK`: the
+  exact phase-centered finite-log integral equals that removable RHS for all
+  complex points, including the source lattice; Lean separately proves the
+  finite positive-exponent centered representative equals `Raw(-z)`, while
+  D0.6 supplies the owner `Fplus` source identification; only master-family
+  choice `H1c3` remains OPEN;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
   SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;

@@ -26,3 +26,9 @@ Single owner decision with maximum unblock power:
 `CLOSED H4d1b/H4d1c: LEAN_SAFE_RATE_COFINAL_SQUARE_CORE; a non-bottom cofinal squared envelope plus strict margin forces WPrime decay.`
 
 `SKIPPED H4d2: H4D_WPRIME_SQUARE_ENVELOPE_MISSING; exact SAFE leaves, constants, WPrime identity, and joint filter are absent; next independent worker leaf is H1c2 RawIntegralRhsCrosswalk.`
+
+`CLOSED H1c2: RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK; the exact phase-centered finite-log integral equals the removable Proposition-5.9 RHS at every complex point, including the source lattice.`
+
+`GUARD H1c2/Fplus: FINITE_FPLUS_CENTERED_INTEGRAL_EQUALS_RAW_AT_NEGATED_ARGUMENT; D0.6 separately supplies the owner source identification, and no coefficient-evenness or sign identification was inferred.`
+
+`SKIPPED H1c3: H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED; D0.8 is open and no exact master F_j has been selected, so H1c/H1 remain OPEN and no independent worker leaf is currently eligible.`

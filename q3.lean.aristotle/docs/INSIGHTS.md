@@ -46703,3 +46703,22 @@ not the raw-D17 factorwise support class.
 - Acceptance remains narrow: this closes only H1c2 if both branches and the
   finite-sum lift compile without holes.  It does not choose a master family,
   prove H1/H2, create Bus 010, or change `NOT_RH`.
+
+### Final result
+
+- `RawIntegralRhsCrosswalk.lean` proves the one-mode identity constructively
+  off the lattice and at its finite `L*cos(pi*k)` value, then lifts it through
+  the exact finite Fourier sum.  The all-`z` theorem is
+  `finiteRawCenteredIntegral_eq_proposition59RawTransform`.
+- The sign audit is now executable: `finiteFplusCenteredIntegral` uses the
+  opposite phase/kernel convention and equals the same raw transform at
+  `-z`.  D0.6 separately supplies the owner source identification; the Lean
+  file does not define owner `T_m/kappa_m`.  No coefficient evenness or
+  conjugation was assumed.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  This closes H1c2 with
+  `RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK`.
+- STATE revision 17 has 92 nodes: 48 PROVED, 36 OPEN, 7 BLOCKED, and
+  1 CONDITIONAL.  H1c3 remains owner/D0.8-blocked, no independent worker leaf
+  is currently eligible, the canonical ACTIVE leaf remains D0.7e.5a, Bus 010
+  is absent, and Route B remains `NOT_RH`.

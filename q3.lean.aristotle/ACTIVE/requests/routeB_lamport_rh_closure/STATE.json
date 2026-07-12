@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 16,
-  "updated_at": "2026-07-12T13:54:56+02:00",
+  "revision": 17,
+  "updated_at": "2026-07-12T14:23:54+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "7dc3ad0563219089504d990d815580ea534cbed7ff1489bb338a06db2e24bc4a",
+    "sprint_log_sha256": "4fa0eaf366b81b6a98f1482538d939b0a2ebae515c6f37a85e4aadae84ed7413",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -262,6 +262,27 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h1c2_raw_integral_crosswalk": {
+    "name": "H1C2_RAW_INTEGRAL_CROSSWALK_REV17",
+    "status": "EXACT_RAW_INTEGRAL_CROSSWALK_PROVED_MASTER_FAMILY_OPEN_NOT_RH",
+    "certificate": "H1C2_RAW_INTEGRAL_CROSSWALK_CERTIFICATE.json",
+    "certificate_sha256": "412ca37660f295e56e1e4b91f5d746613bc38d98878c532ad570f1e5e85a9f2a",
+    "validator": "validate_h1c2_raw_integral_crosswalk.py",
+    "validator_sha256": "3c18d475e6619d07b87b7e695d16020c4209ce486c10eda778da68fa256793f5",
+    "artifact": "H1C2_RAW_INTEGRAL_CROSSWALK_2026-07-12.md",
+    "artifact_sha256": "58f655952c44464327f786cfe43f2bc49ad5787162735bacbc70dd351cecc008",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RawIntegralRhsCrosswalk.lean",
+      "sha256": "01f57424ee2c5b81784f28dfc24cf982b22caaf04bd1a7b4021609a5aa424711"
+    },
+    "proved_nodes": ["H1c2"],
+    "reflection_guard": "FINITE_FPLUS_CENTERED_INTEGRAL_EQUALS_RAW_AT_NEGATED_ARGUMENT_D0_6_SOURCE_IDENTIFIES_OWNER_REPRESENTATIVE",
+    "next_worker_leaf": null,
+    "next_owner_blocked_node": "H1c3",
+    "remaining_stop": "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -331,7 +352,8 @@
       "D0.7E.NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED",
       "C0_L0_H1_FRONTIER_REV14_PARTIAL_LEAN_CLOSURE",
       "H3_H4_CONTRACT_REPAIR_REV15",
-      "H1C_H4D_GENERIC_CORES_REV16"
+      "H1C_H4D_GENERIC_CORES_REV16",
+      "H1C2_RAW_INTEGRAL_CROSSWALK_REV17"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -942,9 +964,9 @@
       "statement": "The Proposition-5.9 removable source formula, exact raw integral, and selected master approximant are one globally entire same-family object",
       "dependencies": ["H1c.0"], "ordered_children": ["H1c1", "H1c2", "H1c3"], "assembly_theorem_id": "H1c4",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "RAW_INTEGRAL_AND_MASTER_FAMILY_CROSSWALKS_OPEN"},
+      "eligibility": {"eligible": false, "reason": "MASTER_FAMILY_CROSSWALK_OPEN"},
       "validation": "H1_EXACT_APPROXIMANT_SOURCE_CROSSWALK_AUDIT",
-      "failure_codes": ["H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING", "H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "H1_OBJECT_MISMATCH", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
+      "failure_codes": ["H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "H1_OBJECT_MISMATCH", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
     },
     "H1c.0": {
       "id": "H1c.0", "parent_id": "H1c", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
@@ -969,9 +991,10 @@
       "id": "H1c2", "parent_id": "H1c", "kind": "LEAF", "role": "GOAL",
       "statement": "The exact phase-centered raw integral of finiteLogFourierTrial equals the removable Proposition-5.9 RHS at every complex point, including the source lattice",
       "dependencies": ["D0.6", "H1c1"], "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": true, "reason": "INDEPENDENT_WORKER_LEAF_SOURCE_AND_D0_6_PROVED"},
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_EXACT_LEAN"},
       "validation": "RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK",
+      "proof_artifact": "Q3/Proofs/RouteB/RawIntegralRhsCrosswalk.lean",
       "failure_codes": ["H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING", "H1C_LATTICE_VALUE_CROSSWALK_MISSING", "H1_TRANSFORM_SIGN_OR_PHASE_MISMATCH"]
     },
     "H1c3": {
@@ -988,7 +1011,7 @@
       "statement": "H1c1 AND H1c2 AND H1c3 IMPLIES the exact source-locked entire approximant crosswalk H1c",
       "dependencies": ["H1c.0", "H1c1", "H1c2", "H1c3"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "H1C2_H1C3_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H1C3_OPEN"},
       "validation": "H1C_EXACT_SOURCE_FAMILY_ASSEMBLY",
       "failure_codes": ["H1C_ASSEMBLY_GAP", "H1_OBJECT_MISMATCH"]
     },
@@ -1494,6 +1517,12 @@
         "no_progress_streak": 0,
         "result": "PROPOSITION59_RHS_ENTIRE;H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING;H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED"
       },
+      "H1c2/raw_integral_rhs_crosswalk/v1": {
+        "status": "EXACT_RAW_INTEGRAL_CROSSWALK_CLOSED_MASTER_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK;FINITE_FPLUS_CENTERED_INTEGRAL_EQUALS_RAW_AT_NEGATED_ARGUMENT;H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED"
+      },
       "H4d1/cofinal_square_envelope_rate_core/v1": {
         "status": "GENERIC_COFINAL_RATE_PACKAGE_CLOSED_EXACT_ENVELOPE_OPEN",
         "last_class": "PROOF_PROGRESS",
@@ -1655,6 +1684,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "PROPOSITION59_RHS_ENTIRE;LEAN_SAFE_RATE_COFINAL_SQUARE_CORE;LEAN_SAFE_RATE_GENERIC_PACKAGE",
       "honesty": "RAW_INTEGRAL_CROSSWALK_OPEN_MASTER_FAMILY_UNSELECTED_EXACT_WPRIME_ENVELOPE_OPEN_H1_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T14:23:54+02:00",
+      "event": "H1C2_EXACT_RAW_INTEGRAL_CROSSWALK_PROVED",
+      "progress_class": "PROOF_AND_EXACT_OBJECT_CROSSWALK",
+      "result": "RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK;FINITE_FPLUS_CENTERED_INTEGRAL_EQUALS_RAW_AT_NEGATED_ARGUMENT",
+      "honesty": "MASTER_FAMILY_UNSELECTED_H1C3_H1C_H1_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }
