@@ -46618,3 +46618,18 @@ not the raw-D17 factorwise support class.
   `PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE`,
   `H3E_IB2_LIMINF_MISIDENTIFICATION`, and `XI_LIMIT_OBJECT_MISMATCH` without
   changing the active D0.7e.5a leaf or claiming RH.
+
+### Final result
+
+- STATE revision 15 now matches final Contract v2: H4 has exactly the four
+  safe children, residual identity/upper/bridge live below SafeAlphaUpper,
+  and exact safe leaves all remain OPEN.
+- The structural contracts `H4.0`, `H4a.0`, and `H4d.0` are PROVED; only the
+  generic exponent-decay node `H4d1` is mathematically Lean-proved.  No exact
+  alpha, gap, b, filter, or witness was inferred.
+- H3c registers `XI_LIMIT_OBJECT_MISMATCH` and double-completion risk; H3e
+  registers the I-b2 liminf error and absolute-to-normalized transfer gap.
+- `SafeBridgeFalsifiers.lean`, the rev15 validator, the rev14/no-stop
+  validators, and `routeb_status.py --check` pass.  STATE has 83 nodes:
+  41 PROVED, 34 OPEN, 7 BLOCKED, 1 CONDITIONAL; active leaf remains
+  `D0.7e.5a`, Bus 010 is absent, and Route B remains `NOT_RH`.

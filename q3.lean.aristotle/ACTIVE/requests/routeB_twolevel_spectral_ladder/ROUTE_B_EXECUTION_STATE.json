@@ -247,6 +247,14 @@
     "c0_l0_h1_frontier_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_c0_l0_h1_frontier.py",
       "sha256": "23a28274186b6dd7899b493cd95dd9f2e1e285012b6e9ae7800909fec82dd880"
+    },
+    "h3_h4_contract_repair_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_CERTIFICATE.json",
+      "sha256": "4790162bd7e22919ccec12623b73e7861be2a5cd395062dbf5f59b1ef6019458"
+    },
+    "h3_h4_contract_repair_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3_h4_contract_repair.py",
+      "sha256": "1e77884396435a05e91db73dbf345b3bfdb2b4ef3ec38c59d98c34ab7abda18e"
     }
   },
   "stages": [

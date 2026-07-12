@@ -135,8 +135,24 @@ def main() -> None:
     require(h3d["dependencies"] == ["H3a", "H3b", "H3c", "H3e"], "D0_7E_H3_ASSEMBLY_OMITS_H3E")
     require(h3e["proof_status"] == "OPEN" and h3e["activity"] == "INACTIVE", "D0_7E_H3E_PREMATURE")
     require(h3e.get("name") == "H3e_ExactWPrimeTrackingTheorem", "D0_7E_H3E_LABEL_DRIFT")
-    require(h3e["dependencies"] == ["D0", "H3a", "H3b", "H3c", "H4c", "H4d"], "D0_7E_H3E_DEPENDENCY_DRIFT")
-    require(h3e["external_requirements"] == ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL"], "D0_7E_H3E_EXTERNAL_REQUIREMENT_DRIFT")
+    if state["revision"] >= 15:
+        require(
+            h3e["dependencies"] == ["D0", "H3a", "H3b", "H3c", "H4b", "H4c"],
+            "D0_7E_H3E_DEPENDENCY_DRIFT",
+        )
+        require(
+            h3e["external_requirements"] ==
+            ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
+            "D0_7E_H3E_EXTERNAL_REQUIREMENT_DRIFT",
+        )
+        require(
+            state["h3_h4_contract_repair"]["status"] ==
+            "CONTRACT_V2_DAG_REPAIRED_THREE_GAPS_REGISTERED_NOT_RH",
+            "D0_7E_H3E_SEMANTIC_REMAP_UNREGISTERED",
+        )
+    else:
+        require(h3e["dependencies"] == ["D0", "H3a", "H3b", "H3c", "H4c", "H4d"], "D0_7E_H3E_DEPENDENCY_DRIFT")
+        require(h3e["external_requirements"] == ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL"], "D0_7E_H3E_EXTERNAL_REQUIREMENT_DRIFT")
     require(h3e["consumes_slot"] == "D0.7e.5", "D0_7E_SLOT_VACUITY")
     require(h3e["consumer_identity_dependency"] == "D0.7e.5c", "D0_7E_SLOT_VACUITY")
 

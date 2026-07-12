@@ -457,11 +457,18 @@ R0 RHClosure [AND]
 |   |-- H3e ExactWPrimeTrackingTheorem
 |   `-- H3d H3Assembly
 |-- H4 DetectorDecay [AND]
-|   |-- H4a ResidualIdentity
-|   |-- H4b ResidualUpperBound
-|   |-- H4c TrueSpectralDistanceLowerBound
-|   |-- H4d NormalizationControl
-|   `-- H4e DetectorDecayAssembly
+|   |-- H4a SafeAlphaUpper [AND]
+|   |   |-- H4a1 AmbientResidualIdentity
+|   |   |-- H4a2 UniformResidualUpper
+|   |   |-- H4a3 ResidualToCanonicalAlphaUpper
+|   |   `-- H4a4 SafeAlphaUpperAssembly
+|   |-- H4b SafeGapLower
+|   |-- H4c SafeSignAndB
+|   |-- H4d SafeRateAssembly [AND]
+|   |   |-- H4d1 GenericSafeRateExponentCore
+|   |   |-- H4d2 ExactSafeRateConstantsAndFilter
+|   |   `-- H4d3 SafeRateAssembly
+|   `-- H4e QuantitativeSafeWitnessAssembly
 |-- L0 LeanZeroEscape [AND]
 |   |-- L0a DetectorBoundConvergenceCore
 |   |-- L0b RealZeroLimitLogic
@@ -495,13 +502,13 @@ constructor and projections remain to be pinned. QED.
 | `D0.4` | Define `gamma V_n=V_(-n)`, inversion, and exact parity sectors; do not claim parity cleanliness | D0.1, D0.3 |
 | `D0.5` | Define the least eigenspace and prolate trial-vector types and keep their roles distinct; do not assume simple-even | D0.2, D0.4 |
 | `D0.6` | Lock zero extension, multiplicative Fourier/Mellin sign and half-shift, and compact-substrip topology | D0.1 |
-| `D0.7` | Lock `delta_(lambda,N)`, boundary normalization, phase/scalar convention, and `b`; uniform nonzero bounds remain H4d | D0.1, D0.5, D0.6 |
+| `D0.7` | Lock `delta_(lambda,N)`, boundary normalization, phase/scalar convention, and `b`; uniform nonzero/two-sided bounds remain H4c SafeSignAndB | D0.1, D0.5, D0.6 |
 | `D0.8` | Prove the same-object crosswalk among `QW^N`, the chosen ground object, `D_log`, its transform/determinant, and all H1-H4 consumers | D0.1-D0.7 |
 | `D0.9` | Apply D0.0 to proved D0.1-D0.8 and produce `EXACT_OBJECT_FAMILY_LOCKED` | D0.1-D0.8 |
 
 After control-plane clearance, the first mathematical leaf is `D0.1`, not
 `ArchFormBoundedOnFixedWindow`. D0.5 does not absorb H2a, D0.7 does not absorb
-H4d, and D0.4 does not claim the parity theorem that belongs to its later
+H4c SafeSignAndB, and D0.4 does not claim the parity theorem that belongs to its later
 proof node.
 
 ## 5. Leaf ledger
@@ -541,15 +548,25 @@ proof node.
 | `H3` | AND parent for same-family strip tracking | `OPEN` | `STRIP_UNIFORM_TRACKING_PROVED` |
 | `H3a` | Ground/trial phase-aligned proximity | `OPEN_CRITICAL` | `GROUND_TRIAL_TRACKING_PROVED` |
 | `H3b` | Bounded evaluation on every compact substrip | `OPEN` | `COMPACT_STRIP_EVALUATION_PROVED` |
-| `H3c` | Normalized limit is exactly `Xi`, with cofinal quantifiers | `OPEN_CRITICAL` | `XI_LIMIT_IDENTIFICATION_PROVED` |
-| `H3e` | Exact migrated WPrime tracking theorem; consumes the D0 slot, H3 inputs, true H4 quantities, H0/A1 and `PO_XWALK_UNIFORM_EVAL` | `OPEN / INACTIVE` | `EXACT_WPRIME_TRACKING_PROVED` |
+| `H3c` | Normalized limit is exactly `Xi`, with cofinal quantifiers and no double completion | `OPEN_CRITICAL / XI_LIMIT_OBJECT_MISMATCH` | `XI_LIMIT_IDENTIFICATION_PROVED` |
+| `H3e` | Exact migrated WPrime tracking theorem; consumes the D0 slot, H3 inputs, true H4 quantities, H0/A1 and `PO_XWALK_UNIFORM_EVAL` | `OPEN / INACTIVE / RELATIVE_NORMALIZATION_GAP` | `EXACT_WPRIME_TRACKING_PROVED` |
 | `H3d` | H3 assembly theorem `H3a AND H3b AND H3c AND H3e -> H3` | `OPEN / BLOCKED_BY_H3_CHILDREN` | `H3_ASSEMBLED` |
-| `H4` | AND parent for detector decay | `OPEN` | `DETECTOR_DECAY_PROVED` |
-| `H4a` | Exact non-internal Galerkin/continuum residual identity | `OPEN` | `RESIDUAL_IDENTITY_PROVED` |
-| `H4b` | Uniform residual upper bound | `OPEN_CRITICAL` | `RESIDUAL_UPPER_PROVED` |
-| `H4c` | True complementary spectral-distance lower bound | `OPEN_CRITICAL` | `TRUE_GAP_LOWER_PROVED` |
-| `H4d` | Nonzero normalization and uniform upper control | `OPEN_CRITICAL` | `NORMALIZATION_CONTROL_PROVED` |
-| `H4e` | Assembly theorem `H4a AND H4b AND H4c AND H4d -> W_j -> 0` | `OPEN / ASSEMBLY` | `DETECTOR_DECAY_PROVED` |
+| `H4` | Contract-v2 AND parent for QuantitativeSafeWitness and detector decay | `OPEN` | `DETECTOR_DECAY_PROVED` |
+| `H4.0` | Contract-v2 decomposition into four safe leaves | `PROVED` | `H4_CONTRACT_V2_DECOMPOSITION_LOCKED` |
+| `H4a` | SafeAlphaUpper for the canonical alpha | `OPEN_CRITICAL` | `SAFE_ALPHA_UPPER_PROVED` |
+| `H4a.0` | Residual-to-alpha decomposition contract | `PROVED` | `H4A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4a1` | Exact non-internal domain-safe residual identity | `OPEN` | `RESIDUAL_IDENTITY_PROVED` |
+| `H4a2` | Uniform upper bound for that exact residual | `OPEN_CRITICAL` | `RESIDUAL_UPPER_PROVED` |
+| `H4a3` | Correct residual-to-canonical-alpha theorem | `OPEN_CRITICAL / REGISTERED FORMULA KILLED` | blocker: `PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE` |
+| `H4a4` | SafeAlphaUpper assembly | `OPEN / BLOCKED_BY_H4a1-a3` | `SAFE_ALPHA_UPPER_PROVED` |
+| `H4b` | SafeGapLower for the true same-parity gap | `OPEN_CRITICAL` | `SAFE_GAP_LOWER_PROVED` |
+| `H4c` | SafeSignAndB: alpha sign, strict gap, exact two-sided b | `OPEN_CRITICAL` | `SAFE_SIGN_AND_B_PROVED` |
+| `H4d` | SafeRateAssembly parent | `OPEN` | `SAFE_RATE_ASSEMBLED` |
+| `H4d.0` | Generic/exact rate decomposition contract | `PROVED` | `H4D_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4d1` | Strict exponent margin gives negative-power decay | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_POLYNOMIAL_CORE` |
+| `H4d2` | Instantiate exact constants, WPrime identity, and cofinal joint filter | `OPEN_CRITICAL` | blocker: `H4_LIMIT_FILTER_UNSELECTED` |
+| `H4d3` | Exact SafeRateAssembly | `OPEN / BLOCKED_BY_H4d2` | `SAFE_RATE_ASSEMBLED` |
+| `H4e` | Four safe leaves imply QuantitativeSafeWitness and `W_j -> 0` | `OPEN / ASSEMBLY` | `DETECTOR_DECAY_PROVED` |
 | `L0` | AND parent for exact Lean ZeroEscape | `OPEN / GENERIC_LOGIC_PROVED / ANALYTIC_TRANSFER_OPEN` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
 | `L0.0` | Definitional L0 decomposition contract | `PROVED` | `L0_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `L0a` | Detector bound plus decay gives error tending to zero | `PROVED / GENERIC_LEAN` | `LEAN_DETECTOR_BOUND_TENDS_TO_ZERO` |
@@ -693,6 +710,22 @@ tracker: `gammaC(1)=0`, hence every such tracker has the fixed non-real zero
 its `F_j`. This kills only that identification. The remaining coherent choices
 are a source-canonical raw transform with global H1/H2 or a separately
 ratified strip-local completed-tracker contract; no choice is inferred here.
+
+Revision 15 repairs H4 to the four leaves required by final Contract v2:
+SafeAlphaUpper, SafeGapLower, SafeSignAndB, and SafeRateAssembly. The former
+residual identity and upper-bound obligations now live strictly below
+SafeAlphaUpper. The historically registered composition
+`sqrt(alpha/DeltaE) <= eta/DeltaE` is falsified by a two-level exact
+counterexample and may not be used; a correct Rayleigh-center spectral-distance
+bridge is now an explicit OPEN obligation. The generic strict-exponent decay
+core of SafeRateAssembly is Lean-proved, but no exact safe leaf closes.
+
+The same audit proves that I-b2's lower bound on `|b|sqrt(lambda)` does not
+give a positive lower bound for `|b|`, so absolute H3e tracking cannot be
+divided into normalized tracking without reciprocal error control. It also
+registers `XI_LIMIT_OBJECT_MISMATCH`: H8 proves raw transform convergence to
+Xi, while the owner tracker applies an additional completion factor whose
+compensating crosswalk is not supplied. H3c and H3e remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

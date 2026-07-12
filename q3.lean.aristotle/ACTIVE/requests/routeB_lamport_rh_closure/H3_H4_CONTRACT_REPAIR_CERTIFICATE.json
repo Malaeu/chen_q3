@@ -1,0 +1,104 @@
+{
+  "schema": "route_b_h3_h4_contract_repair_certificate.v1",
+  "created_at": "2026-07-12T13:32:00+02:00",
+  "revision_target": 15,
+  "authority": {
+    "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+    "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+    "status": "FINAL_TARGET_CONTRACT_SUPERSEDES_V1"
+  },
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
+    "sha256": "7e33e0675b6a2ed2f74b09c5653b8703d27eed0ef615b84341ef3c2ea4a5282c",
+    "proved": [
+      "residual_bridge_direction_counterexample",
+      "lowerProductB_tendsto_zero",
+      "lowerProductB_sqrt_lambda_eq_one",
+      "safe_rate_exponent_neg",
+      "safe_rate_polynomial_core"
+    ]
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "scope": "LEMMA_7_1_AND_7_3_RAW_TRANSFORM_TO_XI"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5D_XWALK_MIGRATION.md",
+      "sha256": "6a269e071d207b1cbb3df9bbcfdf1bfaebbbf6b3e1ecaa2d8313876a61d2677a",
+      "scope": "MIGRATED_HISTORICAL_WORDING_NOT_PROOF"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_PRO_REVIEW_RESPONSE.md",
+      "sha256": "288d50cdcffe25aa7fb8d067b8905b6632507df0f6a6c38536ad63f1f759a0e8",
+      "scope": "BPRIME_REVIEW_AND_H3_TIER_ADDRESS"
+    }
+  ],
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+    "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec"
+  },
+  "falsifiers": {
+    "residual_bridge": {
+      "verdict": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE",
+      "witness": "alpha=1/2,DeltaE=1,eta=1/2",
+      "does_not_invalidate": "D0_7E_5D_MIGRATION_CORRECTNESS_ONLY"
+    },
+    "ib2_liminf": {
+      "verdict": "H3E_IB2_LIMINF_MISIDENTIFICATION",
+      "witness": "b_j=1/(j+1),lambda_j=(j+1)^2",
+      "consequence": "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP"
+    }
+  },
+  "open_limit_object_audit": {
+    "verdict": "XI_LIMIT_OBJECT_MISMATCH",
+    "secondary": "H3C_DOUBLE_COMPLETION_NOT_EXCLUDED",
+    "source_limit": "RAW_E_HLAMBDA_FOURIER_TRANSFORM_TO_XI",
+    "owner_tracker": "gammaC_TIMES_RAW_TRIAL_TRANSFORM",
+    "status": "OPEN_EXACT_COMPENSATING_CROSSWALK_MISSING"
+  },
+  "h4_repair": {
+    "parent": "H4_QUANTITATIVE_SAFE_WITNESS_TO_DETECTOR_DECAY",
+    "children": ["H4a", "H4b", "H4c", "H4d"],
+    "labels": {
+      "H4a": "SafeAlphaUpper",
+      "H4b": "SafeGapLower",
+      "H4c": "SafeSignAndB",
+      "H4d": "SafeRateAssembly"
+    },
+    "proved_nodes": ["H4.0", "H4a.0", "H4d.0", "H4d1"],
+    "exact_h4_status": "OPEN",
+    "expected_node_counts": {
+      "total": 83,
+      "PROVED": 41,
+      "OPEN": 34,
+      "BLOCKED": 7,
+      "CONDITIONAL": 1
+    }
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "h3e_status": "OPEN_INACTIVE",
+    "bus_010_created": false
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_SAFE_ALPHA_UPPER",
+    "NO_SAFE_GAP_LOWER",
+    "NO_SAFE_SIGN_AND_B",
+    "NO_EXACT_SAFE_RATE_ASSEMBLY",
+    "NO_H3E_TRACKING",
+    "NO_XI_LIMIT_IDENTIFICATION",
+    "NO_D0_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

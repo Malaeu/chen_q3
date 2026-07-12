@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 14,
-  "updated_at": "2026-07-12T13:01:56+02:00",
+  "revision": 15,
+  "updated_at": "2026-07-12T13:32:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -214,6 +214,29 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3_h4_contract_repair": {
+    "name": "H3_H4_CONTRACT_REPAIR_REV15",
+    "status": "CONTRACT_V2_DAG_REPAIRED_THREE_GAPS_REGISTERED_NOT_RH",
+    "certificate": "H3_H4_CONTRACT_REPAIR_CERTIFICATE.json",
+    "certificate_sha256": "4790162bd7e22919ccec12623b73e7861be2a5cd395062dbf5f59b1ef6019458",
+    "validator": "validate_h3_h4_contract_repair.py",
+    "validator_sha256": "1e77884396435a05e91db73dbf345b3bfdb2b4ef3ec38c59d98c34ab7abda18e",
+    "artifact": "H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+    "artifact_sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+    "proved_generic_nodes": ["H4.0", "H4a.0", "H4d.0", "H4d1"],
+    "registered_falsifiers": [
+      "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE",
+      "H3E_IB2_LIMINF_MISIDENTIFICATION"
+    ],
+    "registered_open_gaps": [
+      "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP",
+      "XI_LIMIT_OBJECT_MISMATCH",
+      "H3C_DOUBLE_COMPLETION_NOT_EXCLUDED"
+    ],
+    "h4_contract_children": ["SafeAlphaUpper", "SafeGapLower", "SafeSignAndB", "SafeRateAssembly"],
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -229,6 +252,40 @@
       "status": "OPEN_CRITICAL",
       "home": "H3 tier",
       "failure_code": "PO_XWALK_UNIFORM_EVAL",
+      "is_lamport_node": false
+    },
+    "PO_XWALK_RESIDUAL_BRIDGE_REPAIR": {
+      "name": "ResidualToCanonicalSafeAlphaUpper",
+      "authority": "H3_H4_CONTRACT_REPAIR_2026-07-12.md#1",
+      "status": "OPEN_CRITICAL",
+      "home": "H4a3",
+      "failure_code": "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING",
+      "killed_formula": "sqrt(alpha/DeltaE)<=eta/DeltaE",
+      "kill_code": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE",
+      "is_lamport_node": false
+    },
+    "H3E_RELATIVE_NORMALIZATION_TRANSFER": {
+      "name": "AbsoluteTrackingToNormalizedTrackingWithReciprocalControl",
+      "authority": "H3_H4_CONTRACT_REPAIR_2026-07-12.md#2",
+      "status": "OPEN_CRITICAL",
+      "home": "H3e",
+      "failure_code": "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP",
+      "is_lamport_node": false
+    },
+    "H3C_COMPLETION_OBJECT_CROSSWALK": {
+      "name": "RawSourceTrackerToOwnerCompletedTrackerXiLimit",
+      "authority": "H3_H4_CONTRACT_REPAIR_2026-07-12.md#3",
+      "status": "OPEN_CRITICAL",
+      "home": "H3c",
+      "failure_code": "XI_LIMIT_OBJECT_MISMATCH",
+      "is_lamport_node": false
+    },
+    "H4_JOINT_FILTER": {
+      "name": "ExactCofinalJointMNFilterForSafeWitness",
+      "authority": "ROUTE_B_THEOREM_CONTRACT_v2.md#2",
+      "status": "OPEN_CRITICAL",
+      "home": "H4d2",
+      "failure_code": "H4_LIMIT_FILTER_UNSELECTED",
       "is_lamport_node": false
     }
   },
@@ -247,7 +304,8 @@
       "D0.7E.5A_CONSUMER_ORIENTATION_AUDIT",
       "D0.7E.BPRIME_OWNER_R1_R5_RATIFIED",
       "D0.7E.NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED",
-      "C0_L0_H1_FRONTIER_REV14_PARTIAL_LEAN_CLOSURE"
+      "C0_L0_H1_FRONTIER_REV14_PARTIAL_LEAN_CLOSURE",
+      "H3_H4_CONTRACT_REPAIR_REV15"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -697,7 +755,7 @@
     },
     "D0.7e.4": {
       "id": "D0.7e.4", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
-      "statement": "Prove bDet is real with inherited phase and preserve bWeil/xihat/bPilot/sTrial and H4d firewalls",
+      "statement": "Prove bDet is real with inherited phase and preserve bWeil/xihat/bPilot/sTrial and H4c SafeSignAndB firewalls",
       "dependencies": ["D0.7d", "D0.7e.0", "D0.7e.2"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "PROVED", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
@@ -941,7 +999,8 @@
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "D0_H3a_H3b_OPEN"},
       "validation": "JOINT_QUANTIFIER_NORMALIZATION_XI_IDENTITY_AUDIT",
-      "failure_codes": ["FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING"]
+      "external_requirements": ["H3C_COMPLETION_OBJECT_CROSSWALK"],
+      "failure_codes": ["FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_DOUBLE_COMPLETION_NOT_EXCLUDED"]
     },
     "H3d": {
       "id": "H3d", "parent_id": "H3", "kind": "LEAF", "role": "ASSEMBLY",
@@ -955,64 +1014,168 @@
       "id": "H3e", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
       "name": "H3e_ExactWPrimeTrackingTheorem",
       "statement": "Prove the migrated exact WPrime tracking theorem uniformly on compact substrips using the typed D0 slot, the H3 same-family/evaluation/joint-filter inputs, and the true H4 spectral quantities",
-      "dependencies": ["D0", "H3a", "H3b", "H3c", "H4c", "H4d"],
-      "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL"],
+      "dependencies": ["D0", "H3a", "H3b", "H3c", "H4b", "H4c"],
+      "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
       "consumes_slot": "D0.7e.5",
       "consumer_identity_dependency": "D0.7e.5c",
       "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H3ABC_H4CD_AND_EXTERNAL_REQUIREMENTS_OPEN"},
+      "eligibility": {"eligible": false, "reason": "D0_H3ABC_H4BC_AND_EXTERNAL_REQUIREMENTS_OPEN"},
       "validation": "EXACT_WPRIME_TRACKING_AND_ACYCLIC_CONSUMER_AUDIT",
-      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY"]
+      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H3E_IB2_LIMINF_MISIDENTIFICATION", "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP", "H3E_BDET_RECIPROCAL_CONTROL_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY"]
     },
     "H4": {
       "id": "H4", "parent_id": "R0", "kind": "AND", "role": "GOAL",
-      "statement": "The exact detector quantity W_j tends to zero",
-      "dependencies": ["D0"], "ordered_children": ["H4a", "H4b", "H4c", "H4d"], "assembly_theorem_id": "H4e",
+      "statement": "Contract-v2 QuantitativeSafeWitness supplies a cofinal exact detector family W_j tending to zero",
+      "dependencies": ["D0", "H4.0"], "ordered_children": ["H4a", "H4b", "H4c", "H4d"], "assembly_theorem_id": "H4e",
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "D0_AND_CHILDREN_OPEN"},
-      "validation": "DETECTOR_RATE_ASSEMBLY_AND_TRUE_GAP_AUDIT",
-      "failure_codes": ["DETECTOR_DECAY_GAP", "MODEL_GAP_SUBSTITUTION"]
+      "validation": "CONTRACT_V2_QUANTITATIVE_SAFE_WITNESS_AUDIT",
+      "failure_codes": ["DETECTOR_DECAY_GAP", "SAFE_ALPHA_UPPER_MISSING", "SAFE_GAP_LOWER_NO_SOURCE", "SAFE_SIGN_AND_B_MISSING", "SAFE_RATE_ASSEMBLY_GAP", "MODEL_GAP_SUBSTITUTION"]
+    },
+    "H4.0": {
+      "id": "H4.0", "parent_id": "H4", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4 iff SafeAlphaUpper AND SafeGapLower AND SafeSignAndB AND SafeRateAssembly, with H4e as QuantitativeSafeWitness assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_BY_CONTRACT_V2_STRUCTURE"},
+      "validation": "H4_CONTRACT_V2_DECOMPOSITION_LOCKED",
+      "failure_codes": ["H4_CONTRACT_STATE_DECOMPOSITION_DRIFT"]
     },
     "H4a": {
-      "id": "H4a", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
-      "statement": "Derive the exact non-internal Galerkin or continuum residual identity",
+      "id": "H4a", "parent_id": "H4", "kind": "AND", "role": "GOAL",
+      "name": "SafeAlphaUpper",
+      "statement": "Prove the Contract-v2 canonical alpha upper bound 0 <= alpha <= C_alpha lambda^r_alpha exp(-4 pi lambda^2)",
+      "dependencies": ["D0", "H4a.0"], "ordered_children": ["H4a1", "H4a2", "H4a3"], "assembly_theorem_id": "H4a4",
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_AND_H4A_CHILDREN_OPEN"},
+      "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR"],
+      "validation": "SAFE_ALPHA_UPPER_EXACT_CANONICAL_OBJECT_AUDIT",
+      "failure_codes": ["SAFE_ALPHA_UPPER_MISSING", "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE"]
+    },
+    "H4a.0": {
+      "id": "H4a.0", "parent_id": "H4a", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "SafeAlphaUpper iff ambient residual identity AND uniform residual upper AND a correct residual-to-canonical-alpha theorem",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4A_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4A_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4a1": {
+      "id": "H4a1", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
+      "statement": "Derive the exact non-internal Galerkin or continuum residual identity on a domain-safe exact carrier",
       "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "D0_OPEN"},
-      "validation": "AMBIENT_RESIDUAL_IDENTITY_AUDIT", "failure_codes": ["RESIDUAL_IDENTITY_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY"]
+      "validation": "AMBIENT_RESIDUAL_IDENTITY_AUDIT",
+      "failure_codes": ["RESIDUAL_IDENTITY_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION"]
+    },
+    "H4a2": {
+      "id": "H4a2", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove the required uniform upper bound for the exact ambient residual",
+      "dependencies": ["D0", "H4a1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H4A1_OPEN"},
+      "validation": "UNIFORM_RESIDUAL_RATE_AUDIT",
+      "failure_codes": ["RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE", "H4A_TRIAL_RITZ_OBJECT_MISMATCH"]
+    },
+    "H4a3": {
+      "id": "H4a3", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
+      "statement": "Convert the exact residual data to the canonical Contract-v2 SafeAlphaUpper bound using the true Rayleigh-center spectral distance",
+      "dependencies": ["D0", "H4a1", "H4a2"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "CANONICAL_ALPHA_AND_CORRECT_BRIDGE_OPEN"},
+      "validation": "RESIDUAL_TO_CANONICAL_SAFE_ALPHA_UPPER_AUDIT",
+      "failure_codes": ["H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED"]
+    },
+    "H4a4": {
+      "id": "H4a4", "parent_id": "H4a", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4a1 AND H4a2 AND H4a3 IMPLIES the exact Contract-v2 SafeAlphaUpper leaf",
+      "dependencies": ["H4a.0", "H4a1", "H4a2", "H4a3"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4A_CHILDREN_OPEN"},
+      "validation": "SAFE_ALPHA_UPPER_ASSEMBLY",
+      "failure_codes": ["SAFE_ALPHA_UPPER_ASSEMBLY_GAP"]
     },
     "H4b": {
       "id": "H4b", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
-      "statement": "Prove the required uniform residual upper bound",
-      "dependencies": ["D0", "H4a"], "ordered_children": [], "assembly_theorem_id": null,
+      "name": "SafeGapLower",
+      "statement": "Prove the Contract-v2 true same-parity gap lower bound DeltaE >= c_Delta lambda^r_Delta exp(-4 pi lambda^2)",
+      "dependencies": ["D0", "H2a"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H4a_OPEN"},
-      "validation": "UNIFORM_RESIDUAL_RATE_AUDIT", "failure_codes": ["RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE"]
+      "eligibility": {"eligible": false, "reason": "D0_H2A_OPEN"},
+      "validation": "SAFE_GAP_LOWER_TRUE_PARITY_SPECTRAL_DISTANCE_AUDIT",
+      "failure_codes": ["SAFE_GAP_LOWER_NO_SOURCE", "TRUE_GAP_LOWER_MISSING", "MODEL_GAP_SUBSTITUTION", "GROUND_SECTOR_MISMATCH"]
     },
     "H4c": {
       "id": "H4c", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
-      "statement": "Prove a lower bound for the true complementary spectral distance",
-      "dependencies": ["D0", "H4a"], "ordered_children": [], "assembly_theorem_id": null,
+      "name": "SafeSignAndB",
+      "statement": "Prove canonical alpha nonnegativity, strict DeltaE positivity, and the exact Contract-v2 two-sided b bound on the same cofinal carrier",
+      "dependencies": ["D0", "H2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["PO-1/A1"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H4a_OPEN"},
-      "validation": "TRUE_COMPLEMENTARY_SPECTRAL_DISTANCE_AUDIT", "failure_codes": ["TRUE_GAP_LOWER_MISSING", "MODEL_GAP_SUBSTITUTION"]
+      "eligibility": {"eligible": false, "reason": "D0_H2A_AND_H0_A1_OPEN"},
+      "validation": "SAFE_SIGN_AND_B_TWO_SIDED_BOUND_AUDIT",
+      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "NORMALIZATION_ZERO", "NORMALIZATION_CONTROL_MISSING", "H4D_COFINAL_NONZERO_LOCUS_MISSING", "H4D_BDET_RECIPROCAL_CONTROL_MISSING", "H4D_QB_VALUE_UNPROVED"]
     },
     "H4d": {
-      "id": "H4d", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
-      "statement": "Prove nonzero normalization and the required uniform upper control",
-      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H4d", "parent_id": "H4", "kind": "AND", "role": "GOAL",
+      "name": "SafeRateAssembly",
+      "statement": "Assemble the exact Contract-v2 constants, cofinal filter, and strict exponent margin into WPrime tending to zero",
+      "dependencies": ["H4d.0"], "ordered_children": ["H4d1", "H4d2"], "assembly_theorem_id": "H4d3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
-      "validation": "NORMALIZATION_NONZERO_UNIFORM_AUDIT", "failure_codes": ["NORMALIZATION_ZERO", "NORMALIZATION_CONTROL_MISSING"]
+      "eligibility": {"eligible": false, "reason": "H4D2_EXACT_RATE_INPUTS_OPEN"},
+      "external_requirements": ["H4_JOINT_FILTER"],
+      "validation": "SAFE_RATE_ASSEMBLY_EXACT_CONSTANT_FILTER_AUDIT",
+      "failure_codes": ["H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4_LIMIT_FILTER_UNSELECTED"]
+    },
+    "H4d.0": {
+      "id": "H4d.0", "parent_id": "H4d", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "SafeRateAssembly iff the generic exponent-decay core and exact Contract-v2 constants/filter instantiation both hold",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4D_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4D_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4d1": {
+      "id": "H4d1", "parent_id": "H4d", "kind": "LEAF", "role": "GOAL",
+      "statement": "The strict margin r_Delta-r_alpha > 2q_b+1 makes q_b+(1+r_alpha-r_Delta)/2 negative and the natural-scale power tends to zero",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "LEAN_SAFE_RATE_POLYNOMIAL_CORE",
+      "proof_artifact": "Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
+      "failure_codes": ["SAFE_RATE_EXPONENT_ARITHMETIC_GAP"]
+    },
+    "H4d2": {
+      "id": "H4d2", "parent_id": "H4d", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate the exact SafeAlphaUpper, SafeGapLower, b-rate constants, WPrime identity, and one cofinal joint filter in the generic rate core",
+      "dependencies": ["H4a", "H4b", "H4c", "H4d1"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H4_JOINT_FILTER"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4ABC_AND_JOINT_FILTER_OPEN"},
+      "validation": "EXACT_SAFE_RATE_CONSTANTS_AND_FILTER_AUDIT",
+      "failure_codes": ["H4_LIMIT_FILTER_UNSELECTED", "H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4D_QB_VALUE_UNPROVED"]
+    },
+    "H4d3": {
+      "id": "H4d3", "parent_id": "H4d", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4d1 AND H4d2 IMPLIES the exact SafeRateAssembly leaf",
+      "dependencies": ["H4d.0", "H4d1", "H4d2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4D2_OPEN"},
+      "validation": "SAFE_RATE_ASSEMBLY_TYPECHECK",
+      "failure_codes": ["SAFE_RATE_ASSEMBLY_GAP"]
     },
     "H4e": {
       "id": "H4e", "parent_id": "H4", "kind": "LEAF", "role": "ASSEMBLY",
-      "statement": "H4a AND H4b AND H4c AND H4d IMPLIES W_j tends to zero",
-      "dependencies": ["H4a", "H4b", "H4c", "H4d"], "ordered_children": [], "assembly_theorem_id": null,
+      "statement": "SafeAlphaUpper AND SafeGapLower AND SafeSignAndB AND SafeRateAssembly IMPLIES a cofinal QuantitativeSafeWitness with W_j tending to zero",
+      "dependencies": ["H4.0", "H4a", "H4b", "H4c", "H4d"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "H4_CHILDREN_OPEN"},
-      "validation": "EXPLICIT_RATE_BUDGET_ASSEMBLY", "failure_codes": ["H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING"]
+      "validation": "CONTRACT_V2_QUANTITATIVE_SAFE_WITNESS_ASSEMBLY", "failure_codes": ["H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "DETECTOR_DECAY_GAP"]
     },
     "L0": {
       "id": "L0", "parent_id": "R0", "kind": "AND", "role": "GOAL",
@@ -1201,6 +1364,18 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "DETECTOR_BOUND_LIMIT_AND_REAL_ZERO_LIMIT_LOGIC_PROVED;ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING"
+      },
+      "H3e/normalization_and_limit_object_audit/v1": {
+        "status": "TWO_GAPS_AND_ONE_LIMIT_OBJECT_MISMATCH_REGISTERED",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H3E_IB2_LIMINF_MISIDENTIFICATION;H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP;XI_LIMIT_OBJECT_MISMATCH"
+      },
+      "H4/contract_v2_safe_leaf_repair/v1": {
+        "status": "DAG_REPAIRED_EXACT_SAFE_LEAVES_OPEN",
+        "last_class": "REPRESENTATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H4_CONTRACT_V2_DECOMPOSITION_LOCKED;PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE;H4D1_GENERIC_RATE_CORE_PROVED"
       }
     }
   },
@@ -1343,6 +1518,13 @@
       "progress_class": "PROOF_AND_FALSIFICATION_PROGRESS",
       "result": "XI_RH_INTERFACE_LOCKED;H1_GENERIC_ENTIRE_CORE_PROVED;L0_GENERIC_ZERO_ESCAPE_LOGIC_PROVED;H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE",
       "honesty": "H1_H2_H3_H4_L0_OPEN_EXACT_FAMILY_UNSELECTED_ROUCHE_HURWITZ_LEAN_TRANSFER_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T13:32:00+02:00",
+      "event": "H3_H4_CONTRACT_V2_DAG_REPAIR_AND_FALSIFIERS_REGISTERED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE;H3E_IB2_LIMINF_MISIDENTIFICATION;XI_LIMIT_OBJECT_MISMATCH;H4_CONTRACT_V2_DECOMPOSITION_LOCKED;H4D1_GENERIC_RATE_CORE_PROVED",
+      "honesty": "ALL_EXACT_SAFE_LEAVES_OPEN_H3E_OPEN_H3C_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }
