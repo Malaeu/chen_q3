@@ -46679,3 +46679,27 @@ not the raw-D17 factorwise support class.
 - The next independent mathematical worker leaf is `H1c2
   RawIntegralRhsCrosswalk`; the unique canonical ACTIVE leaf remains
   `D0.7e.5a`, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H1c2 raw-integral crosswalk (in progress)
+
+- Exact target: prove that the phase-centered interval transform of
+  `finiteLogFourierTrial` is exactly the removable Proposition-5.9 RHS at
+  every complex `z`, including every source-lattice point `2*pi*k/L`.
+- The locked D0.6 convention fixes the raw transform as
+  `exp(i*z*L/2) * integral_0^L g(x)*exp(-i*z*x) dx`; changing the phase or
+  Fourier sign would be a different object and must fail H1c2.
+- Four local `q3_docs` queries found no existing exact H1c2 implementation
+  (best scores about 0.63--0.70).  Mathlib provides the two needed kernel
+  APIs: `integral_exp_mul_complex` off zero and the `dslope` removable
+  extension through zero.
+- Per Fourier mode, the exponent coefficient is
+  `2*pi*i*k/L-i*z = -i*(z-2*pi*k/L)`.  Off the lattice the centered integral
+  is `2*sin(z*L/2)/(z-2*pi*k/L)`; on the lattice the integral is finite and
+  equals `L*(-1)^k`, matching the derivative value already certified in
+  `proposition59PoleKernel_at_pole`.
+- Lean plan: first prove the all-`z` one-mode identity with an explicit
+  lattice/off-lattice split, then use interval-integral linearity over the
+  finite sum, and finally assemble the exact `finiteRawTransform` equality.
+- Acceptance remains narrow: this closes only H1c2 if both branches and the
+  finite-sum lift compile without holes.  It does not choose a master family,
+  prove H1/H2, create Bus 010, or change `NOT_RH`.
