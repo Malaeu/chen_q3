@@ -46834,3 +46834,14 @@ not the raw-D17 factorwise support class.
 - H8's exact logical boundary is now pinned: Theorem 5.10 assumes simple-even, and Section 8 names it as missing.  The prolate simple-even claim cannot be transferred to the finite Weil operator.
 - STATE revision 20 decomposes H2a into proved generic core `H2a1`, OPEN exact same-family ordering `H2a2`, and assembly `H2a3`.  H2a2 owns both strict sector inequalities and the positive isolation export.
 - Direct Lean validation passes with zero holes and only `propext`, `Classical.choice`, and `Quot.sound`.  The count is 104 nodes: 54 PROVED, 42 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  H2b remains CONDITIONAL, D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3b compact evaluation-rate transfer (in progress)
+
+- Exact target: split the generic implication “uniform compact envelope tending to zero gives compact-strip convergence” from the exact Route B weighted evaluation estimate.
+- Four local `q3_docs` queries found no existing H3b implementation or pinned exact evaluation-rate bridge (best scores about 0.60--0.67); unrelated Q3 compact spectral notes will not be imported.
+- Official Mathlib provides `Metric.tendstoUniformlyOn_iff` for norm-valued uniform convergence and `tendstoLocallyUniformlyOn_iff_forall_isCompact` on open subsets of locally compact domains.
+- Planned generic core: if `‖T_i(e_i)(z)‖ <= C_i‖e_i‖` uniformly on a fixed compact set and `C_i‖e_i‖ -> 0`, then `T_i(e_i)` tends uniformly to zero there.
+- A second wrapper will turn a vanishing envelope on every compact subset of an open set into `TendstoLocallyUniformlyOn`; this is pure topology, not a Route B estimate.
+- Exact H3b instantiation must still establish the weighted compact bound and decay, schematically `C_i(K)=sqrt(L_i)*lambda_i^a` and `C_i(K)‖ground_i-trial_i‖ -> 0`, on the same selected family/filter.
+- D0.6 supplies only fixed-window boundedness and cannot be relabelled as uniform in the growing family; its constant-mode behavior is a guard against that overclaim.
+- Planned DAG split: prove generic H3b1, leave exact weighted instantiation H3b2 and assembly H3b3 OPEN with stop `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING`; preserve `NOT_RH`.
