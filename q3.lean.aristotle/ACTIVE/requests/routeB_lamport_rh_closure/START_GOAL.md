@@ -211,6 +211,13 @@ Current fail-closed address:
   filter; exact ground/trial, evaluation map/envelope, weighted projective rate,
   and one shared joint filter remain OPEN in `H3b2b` with stop
   `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING`;
+- rev33 proves `H4a3b1 GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN`:
+  Temple half-gap plus a squared residual envelope and one-envelope true-gap
+  floor yield the explicit canonical alpha rate, pointwise and on a nonbottom
+  filter; a compiled plant rejects a one-envelope residual bound, while the
+  exact alpha/eigenbasis/residual/half-gap/gap objects and shared filter remain
+  OPEN in `H4a3b2` with stop
+  `H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

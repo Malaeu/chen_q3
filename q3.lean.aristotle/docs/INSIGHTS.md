@@ -47320,3 +47320,16 @@ Final result:
   local Temple core supplies the spectral inequality shape.
 - Planned DAG split: generic H4a3b1 PROVED, exact H4a3b2 and assembly H4a3b3
   OPEN; retire only `H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING`.
+
+Final result:
+
+- `TempleResidualGapEnvelopeTransfer.lean` proves the pointwise and nonbottom-
+  filter alpha-rate transfers with explicit constant/exponent, and the fixed
+  one-envelope insufficiency plant.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; the proof imports the local Temple core.
+- STATE revision 33 nests proved `H4a3b.0` and `H4a3b1` below H4a3b. Exact
+  spectral/rate instantiation `H4a3b2` and assembly `H4a3b3` remain OPEN, while
+  `H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING` is retired.
+- The count is 156 nodes: 80 PROVED, 68 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

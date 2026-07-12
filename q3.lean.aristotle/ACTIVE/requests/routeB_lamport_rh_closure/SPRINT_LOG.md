@@ -104,3 +104,9 @@ Single owner decision with maximum unblock power:
 `CLOSED H3b2a: H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN; H3a1 phase alignment and H3b1 evaluation-rate transfer compose through a nonnegative compact envelope and weighted projective decay on a nonbottom filter.`
 
 `SKIPPED H3b2b: H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING; the exact simple-even ground/trial family, compact evaluation map/envelope, weighted projective rate, same-family joint filter and Lean crosswalk remain open.`
+
+`CLOSED H4a3b1: GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN; Temple half-gap plus residual-square and true-gap envelopes give C_alpha=2*C_eta/c_Delta and r_alpha=r_eta-r_Delta, pointwise and eventually.`
+
+`GUARD H4a3b1: ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA; a fixed Temple-compatible example satisfies etaSq<=envelope and envelope<=gap but violates alpha<=envelope.`
+
+`SKIPPED H4a3b2: H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING; canonical alpha, same-parity eigenbasis, residual variance, half-gap locus, squared residual envelope, true-gap floor and one shared filter remain open.`

@@ -496,7 +496,10 @@ R0 RHClosure [AND]
 |   |   |   `-- H4a2c H4a2Assembly
 |   |   |-- H4a3 ResidualToCanonicalAlphaUpper [AND]
 |   |   |   |-- H4a3a GenericWeightedSpectralTempleCore
-|   |   |   |-- H4a3b ExactRouteBResidualSpectralInstantiation
+|   |   |   |-- H4a3b ExactRouteBResidualSpectralInstantiation [AND]
+|   |   |   |   |-- H4a3b1 GenericTempleResidualGapEnvelopeTransfer
+|   |   |   |   |-- H4a3b2 ExactRouteBSpectralResidualRateInstantiation
+|   |   |   |   `-- H4a3b3 H4a3bAssembly
 |   |   |   `-- H4a3c H4a3Assembly
 |   |   `-- H4a4 SafeAlphaUpperAssembly
 |   |-- H4b SafeGapLower [AND]
@@ -657,7 +660,11 @@ proof node.
 | `H4a3` | AND parent for the corrected weighted-spectral Temple bridge and exact Route B instantiation | `OPEN / GENERIC_CORE_PROVED / EXACT_INSTANTIATION_OPEN` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
 | `H4a3.0` | Definitional H4a3 decomposition contract | `PROVED` | `H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H4a3a` | Weighted spectral variance gives `etaSq >= alpha*(Delta-alpha)` and the correct Temple/half-gap bounds | `PROVED / GENERIC_LEAN` | `WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN` |
-| `H4a3b` | Exact same-parity operator/eigenbasis/residual/half-gap/rate instantiation | `OPEN / INELIGIBLE` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
+| `H4a3b` | AND parent: generic Temple residual/gap envelope rate transfer plus exact same-parity spectral instantiation | `OPEN / GENERIC_CORE_PROVED / FALSIFIER_LIVE` | blocker: `H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING` |
+| `H4a3b.0` | H4a3b decomposition contract | `PROVED` | `H4A3B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4a3b1` | Temple half-gap + residual-square/gap envelopes imply the explicit single-envelope SafeAlphaUpper rate | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN` |
+| `H4a3b2` | Instantiate canonical alpha, spectral weights, residual variance, half-gap, squared residual and true-gap envelopes on one exact family/filter | `OPEN / INELIGIBLE` | blocker: `H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING` |
+| `H4a3b3` | Exact H4a3b assembly | `OPEN / BLOCKED_BY_H4a3b2` | `H4A3B_EXACT_SAFE_ALPHA_RATE_ASSEMBLY` |
 | `H4a3c` | Assemble the generic core with the exact spectral instantiation | `OPEN / BLOCKED_BY_H4a3b` | `H4A3_EXACT_RESIDUAL_TO_ALPHA_ASSEMBLY` |
 | `H4a4` | SafeAlphaUpper assembly | `OPEN / BLOCKED_BY_H4a1-a3` | `SAFE_ALPHA_UPPER_PROVED` |
 | `H4b` | AND parent: generic two-endpoint perturbation budget plus exact same-parity Fuchs-gap instantiation | `OPEN / GENERIC_CORE_PROVED / GUARDS_LIVE` | blocker: `H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING` |
@@ -998,6 +1005,15 @@ H3b1 turns the weighted rate into `TendstoUniformlyOn` of the evaluation error
 on a supplied set and non-bottom filter.  Exact H3b2b still needs the selected
 simple-even ground/trial family, exact evaluation map/envelope, weighted rate,
 and the shared joint filter.  H3b2, H3b, H3, and RH remain OPEN.
+
+Revision 33 closes the universal SafeAlphaUpper rate arithmetic below H4a3b.
+The local Temple half-gap theorem, a residual-square bound carrying two common
+envelope factors, and a true-gap floor carrying one factor yield
+`C_alpha=2*C_eta/c_Delta` and `r_alpha=r_eta-r_Delta`, pointwise and on a
+non-bottom filter.  A fixed Lean counterexample proves that only one residual
+envelope factor is insufficient.  Exact H4a3b2 still needs the canonical
+spectral/residual/gap objects and rates on one family/filter.  H4a3b, H4a3,
+H4a, H4, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

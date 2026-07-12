@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T18:24:47+02:00",
+  "updated_at": "2026-07-12T18:37:09+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -98,6 +98,10 @@
       ,"H3B2_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN"
       ,"H3B2_NONBOTTOM_WEIGHTED_PROJECTIVE_TO_UNIFORM_TRANSFER_LEAN"
+      ,"H4A3B_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN"
+      ,"H4A3B_SAFE_ALPHA_CONSTANT_AND_EXPONENT_EXPLICIT"
+      ,"ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -159,6 +163,8 @@
       ,"H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING"
       ,"H3E_RELATIVE_RESIDUAL_RATE_MISSING"
       ,"H3B2_EXACT_WEIGHTED_PROJECTIVE_INPUTS_MISSING"
+      ,"H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING"
+      ,"H4A_RESIDUAL_ENVELOPE_POWER_MISMATCH"
     ]
   },
   "bus": {
@@ -294,6 +300,12 @@
       "class": "MASTER_DAG_EXACT_WEIGHTED_PROJECTIVE_EVALUATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
       "detail": "The generic H3a1 phase-alignment bound now composes with the H3b1 evaluation-rate receiver on a nonbottom filter, but the exact simple-even ground/trial family, compact evaluation map/envelope, weighted projective rate, same-family joint filter and Lean crosswalk remain open."
+    },
+    {
+      "code": "H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING",
+      "class": "MASTER_DAG_EXACT_SAFE_ALPHA_RATE_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The generic Temple half-gap plus residual-square/true-gap envelope arithmetic is Lean-proved with explicit C_alpha and r_alpha and a live one-envelope falsifier, but the canonical alpha/eigenbasis/residual variance/half-gap/squared residual/gap-floor same-family instantiation remains open."
     }
   ],
   "guardrails": {
@@ -454,7 +466,7 @@
     },
     "h4a3_weighted_spectral_temple_core_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4a3_weighted_spectral_temple_core.py",
-      "sha256": "d0d5c3951da273be7eac62e1e6040d687792152a514ab080bd4170baff448022"
+      "sha256": "077754ad1e2b2db0f71afbbdaff8e5494c1e2728cdc8dfe6a51c38a822c20b47"
     },
     "h4a3_weighted_spectral_temple_core_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean",
@@ -615,6 +627,18 @@
     "h3b2_weighted_projective_evaluation_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedProjectiveEvaluationTransfer.lean",
       "sha256": "b08ec751f7508331acf0edfc63e75a1d9f61c738fab956d042514a51eb31d8ab"
+    },
+    "h4a3b_temple_residual_gap_envelope_transfer_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_CERTIFICATE.json",
+      "sha256": "bc3a656b1dfb6188fd2b481a5053645bb2bf47afe6e82fd0df18adea0e44088e"
+    },
+    "h4a3b_temple_residual_gap_envelope_transfer_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4a3b_temple_residual_gap_envelope_transfer.py",
+      "sha256": "9ff5dee73c1c90236bcb96219c71435cc98cfbf6ef76f44116c4b610d9dfde62"
+    },
+    "h4a3b_temple_residual_gap_envelope_transfer_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean",
+      "sha256": "f21061cbc2009d08cebb44386881af87071861f2eb8f81aa77e870a3a5ccd4c7"
     }
   },
   "stages": [

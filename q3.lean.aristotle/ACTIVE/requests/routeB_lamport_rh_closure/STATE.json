@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 32,
-  "updated_at": "2026-07-12T18:24:47+02:00",
+  "revision": 33,
+  "updated_at": "2026-07-12T18:37:09+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "b170d16a475447c4c3c8a45ee5a4d502629d015670731c17e1517168aef7dc11",
+    "sprint_log_sha256": "905f6ac784b123a7e5ad2f644dd9dbea58c161211097c7c5bbbab0644df57e30",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -311,7 +311,7 @@
     "certificate": "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_CERTIFICATE.json",
     "certificate_sha256": "67194450ec8d8963b3899df9a914077c8e179e58b0ce907ee175949c0a8a4b04",
     "validator": "validate_h4a3_weighted_spectral_temple_core.py",
-    "validator_sha256": "d0d5c3951da273be7eac62e1e6040d687792152a514ab080bd4170baff448022",
+    "validator_sha256": "077754ad1e2b2db0f71afbbdaff8e5494c1e2728cdc8dfe6a51c38a822c20b47",
     "artifact": "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_2026-07-12.md",
     "artifact_sha256": "16d7c5658fefd8d288c3f0b80d485fe9a43de25908f1afb6de7087b6bdb60781",
     "proof_artifact": {
@@ -646,7 +646,34 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4a3b_temple_residual_gap_envelope_transfer": {
+    "name": "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_REV33",
+    "status": "GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_PROVED_EXACT_INPUTS_OPEN_NOT_RH",
+    "certificate": "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_CERTIFICATE.json",
+    "certificate_sha256": "bc3a656b1dfb6188fd2b481a5053645bb2bf47afe6e82fd0df18adea0e44088e",
+    "validator": "validate_h4a3b_temple_residual_gap_envelope_transfer.py",
+    "validator_sha256": "9ff5dee73c1c90236bcb96219c71435cc98cfbf6ef76f44116c4b610d9dfde62",
+    "artifact": "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_2026-07-12.md",
+    "artifact_sha256": "75a935f6daba1dcfa2e9a74a7dd2fed0136db08f2ae69254393cff897e1d4fb0",
+    "proof_artifact": {"path": "q3.lean.aristotle/Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean", "sha256": "f21061cbc2009d08cebb44386881af87071861f2eb8f81aa77e870a3a5ccd4c7"},
+    "proved_nodes": ["H4a3b.0", "H4a3b1"],
+    "generic_verdict": "GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN",
+    "falsifier": "ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA",
+    "next_worker_leaf": null,
+    "next_exact_node": "H4a3b2",
+    "remaining_stop": "H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
+    "H4A3B_EXACT_RESIDUAL_GAP_ENVELOPES": {
+      "name": "ExactSameFamilyResidualSquareAndTrueGapEnvelopes",
+      "authority": "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_2026-07-12.md section 3; ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "status": "OPEN_CRITICAL",
+      "home": "H4a3b2",
+      "failure_code": "H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING",
+      "is_lamport_node": false
+    },
     "H4A2_EXACT_COMPONENT_RATE": {
       "name": "ExactAmbientResidualComponentRatesOnSharedRouteBFamily",
       "authority": "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_2026-07-12.md section 5; H3_H4_CONTRACT_REPAIR_2026-07-12.md section 1",
@@ -771,7 +798,8 @@
       "H2A2_SECTOR_ISOLATION_RADIUS_REV29",
       "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_REV30",
       "H3E_NORMALIZED_TRACKING_RATE_TRANSFER_REV31",
-      "H3B2_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_REV32"
+      "H3B2_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_REV32",
+      "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_REV33"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -2000,14 +2028,52 @@
       "failure_codes": ["H4A_WEIGHTED_SPECTRAL_TEMPLE_CORE_MISSING", "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING"]
     },
     "H4a3b": {
-      "id": "H4a3b", "parent_id": "H4a3", "kind": "LEAF", "role": "GOAL",
-      "statement": "Instantiate H4a3a on the exact same-parity Route B eigenbasis: pin normalized spectral weights, canonical alpha, ambient residual variance, true complementary floor, half-gap locus, and the required SafeAlphaUpper rate",
-      "dependencies": ["D0", "H2a", "H4a1", "H4a2"], "ordered_children": [], "assembly_theorem_id": null,
-      "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR"],
+      "id": "H4a3b", "parent_id": "H4a3", "kind": "AND", "role": "GOAL",
+      "statement": "The generic Temple residual/gap envelope transfer and its exact same-parity Route B spectral/rate instantiation yield the required canonical SafeAlphaUpper rate",
+      "dependencies": ["H4a3b.0"], "ordered_children": ["H4a3b1", "H4a3b2"], "assembly_theorem_id": "H4a3b3",
+      "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR", "H4A3B_EXACT_RESIDUAL_GAP_ENVELOPES"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H2A_H4A1_H4A2_AND_CANONICAL_ALPHA_OPEN"},
-      "validation": "H4A3_EXACT_ROUTE_B_WEIGHTED_SPECTRAL_INSTANTIATION",
-      "failure_codes": ["H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING", "H4A_SAME_PARITY_SPECTRAL_FLOOR_MISSING", "H4A_RESIDUAL_VARIANCE_CROSSWALK_MISSING", "H4A_TEMPLE_HALF_GAP_LOCUS_MISSING", "H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED", "LEAN_EXPORT_INTERFACE_GAP"]
+      "eligibility": {"eligible": false, "reason": "H4A3B2_EXACT_SPECTRAL_RESIDUAL_RATE_INSTANTIATION_OPEN"},
+      "validation": "H4A3B_GENERIC_AND_EXACT_SAFE_ALPHA_RATE_ASSEMBLY",
+      "failure_codes": ["H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING", "H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING", "H4A_SAME_PARITY_SPECTRAL_FLOOR_MISSING", "H4A_RESIDUAL_VARIANCE_CROSSWALK_MISSING", "H4A_TEMPLE_HALF_GAP_LOCUS_MISSING", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED"]
+    },
+    "H4a3b.0": {
+      "id": "H4a3b.0", "parent_id": "H4a3b", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4a3b iff H4a3b1 and H4a3b2 both hold, with H4a3b3 as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4A3B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4A3B_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4a3b1": {
+      "id": "H4a3b1", "parent_id": "H4a3b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Temple half-gap control, a squared common-envelope residual bound, and a one-envelope true-gap floor imply the canonical single-envelope SafeAlphaUpper rate pointwise and on a nonbottom filter",
+      "dependencies": ["H4a3a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean",
+      "failure_codes": ["H4A_GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_MISSING", "H4A_RESIDUAL_ENVELOPE_POWER_MISMATCH", "H4A3B_BOTTOM_FILTER_VACUITY", "H4A3B_SINGLE_ENVELOPE_FALSIFIER_MISSING"]
+    },
+    "H4a3b2": {
+      "id": "H4a3b2", "parent_id": "H4a3b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate the exact same-parity Route B spectral weights, canonical alpha, ambient residual variance, true-gap floor, Temple half-gap locus, squared residual envelope and one-envelope gap floor on one shared filter",
+      "dependencies": ["D0", "H2a", "H4a1", "H4a2", "H4b", "H4a3b1"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR", "H4A3B_EXACT_RESIDUAL_GAP_ENVELOPES"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H2A_H4A1_H4A2_H4B_AND_EXACT_SPECTRAL_RATE_INPUTS_OPEN"},
+      "validation": "H4A3B_EXACT_ROUTE_B_SPECTRAL_RESIDUAL_GAP_ENVELOPE_AUDIT",
+      "failure_codes": ["H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING", "H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING", "H4A_SAME_PARITY_SPECTRAL_FLOOR_MISSING", "H4A_RESIDUAL_VARIANCE_CROSSWALK_MISSING", "H4A_TEMPLE_HALF_GAP_LOCUS_MISSING", "H4A_RESIDUAL_ENVELOPE_POWER_MISMATCH", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4a3b3": {
+      "id": "H4a3b3", "parent_id": "H4a3b", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4a3b.0 AND H4a3b1 AND H4a3b2 IMPLIES the exact same-family SafeAlphaUpper rate required by H4a3",
+      "dependencies": ["H4a3b.0", "H4a3b1", "H4a3b2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4A3B2_OPEN"},
+      "validation": "H4A3B_EXACT_SAFE_ALPHA_RATE_ASSEMBLY",
+      "failure_codes": ["H4A3B_ASSEMBLY_GAP", "H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H4a3c": {
       "id": "H4a3c", "parent_id": "H4a3", "kind": "LEAF", "role": "ASSEMBLY",
@@ -2601,6 +2667,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN;H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING"
+      },
+      "H4a3b/generic_temple_residual_gap_envelope_transfer/v1": {
+        "status": "GENERIC_SAFE_ALPHA_RATE_TRANSFER_CLOSED_EXACT_SPECTRAL_ENVELOPES_OPEN",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN;ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA;H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING"
       }
     }
   },
@@ -2869,6 +2941,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN;H3A1_TO_H3B1_WEIGHTED_BRIDGE;NONBOTTOM_UNIFORM_ON_SET_TRANSFER;H3B2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_SIMPLE_EVEN_GROUND_TRIAL_EVALUATION_OPERATOR_COMPACT_ENVELOPE_WEIGHTED_RATE_AND_JOINT_FILTER_OPEN_H3B2_H3B_H3_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T18:37:09+02:00",
+      "event": "H4A3B_GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_PROVED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN;SAFE_ALPHA_RATE_CONSTANT_AND_EXPONENT_EXPLICIT;NONBOTTOM_FILTER_TRANSFER;ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA;H4A3B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING_RETIRED_EXACT_OPERATOR_EIGENBASIS_CANONICAL_ALPHA_RESIDUAL_VARIANCE_HALF_GAP_RESIDUAL_SQUARE_AND_TRUE_GAP_ENVELOPES_OPEN_H4A3B_H4A3_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

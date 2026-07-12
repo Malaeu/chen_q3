@@ -97,6 +97,20 @@ def main() -> None:
     )
     require(nodes["H4a3b"]["proof_status"] == "OPEN", "H4A3B_FALSE_PASS")
     require(not nodes["H4a3b"]["eligibility"]["eligible"], "H4A3B_FALSE_ELIGIBILITY")
+    if state["revision"] >= 33:
+        h4a3b = nodes["H4a3b"]
+        require(h4a3b["kind"] == "AND", "H4A3B_PARENT_NOT_AND")
+        require(h4a3b["dependencies"] == ["H4a3b.0"], "H4A3B_PARENT_DEPENDENCY_DRIFT")
+        require(h4a3b["ordered_children"] == ["H4a3b1", "H4a3b2"], "H4A3B_CHILD_ORDER_DRIFT")
+        require(h4a3b["assembly_theorem_id"] == "H4a3b3", "H4A3B_ASSEMBLY_ADDRESS_DRIFT")
+        exact_h4a3b = nodes["H4a3b2"]
+        require(exact_h4a3b["proof_status"] == "OPEN", "H4A3B2_FALSE_PASS")
+        require(not exact_h4a3b["eligibility"]["eligible"], "H4A3B2_FALSE_ELIGIBILITY")
+        require(
+            exact_h4a3b["dependencies"] ==
+            ["D0", "H2a", "H4a1", "H4a2", "H4b", "H4a3b1"],
+            "H4A3B2_DEPENDENCY_DRIFT",
+        )
     require(
         "H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING" in nodes["H4a3b"]["failure_codes"],
         "H4A3B_EXACT_INSTANTIATION_STOP_MISSING",
