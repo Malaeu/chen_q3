@@ -459,7 +459,10 @@ R0 RHClosure [AND]
 |   `-- H2c H2Assembly
 |-- H3 StripUniformTracking [AND]
 |   |-- H3a GroundTrialTracking
-|   |-- H3b CompactStripEvaluation
+|   |-- H3b CompactStripEvaluation [AND]
+|   |   |-- H3b1 GenericCompactEvaluationRateTransfer
+|   |   |-- H3b2 ExactWeightedEvaluationInstantiation
+|   |   `-- H3b3 H3bAssembly
 |   |-- H3c XiLimitIdentification
 |   |-- H3e ExactWPrimeTrackingTheorem
 |   `-- H3d H3Assembly
@@ -572,7 +575,11 @@ proof node.
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
 | `H3` | AND parent for same-family strip tracking | `OPEN` | `STRIP_UNIFORM_TRACKING_PROVED` |
 | `H3a` | Ground/trial phase-aligned proximity | `OPEN_CRITICAL` | `GROUND_TRIAL_TRACKING_PROVED` |
-| `H3b` | Bounded evaluation on every compact substrip | `OPEN` | `COMPACT_STRIP_EVALUATION_PROVED` |
+| `H3b` | AND parent: generic compact rate transfer plus exact weighted Route B instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
+| `H3b.0` | H3b decomposition contract | `PROVED` | `H3B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3b1` | Vanishing compact-uniform envelopes imply uniform/compact-open convergence; a fixed bound alone is falsified | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN` |
+| `H3b2` | Instantiate the same-family compact envelope and weighted ground/trial rate on the exact joint filter | `OPEN / INELIGIBLE` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
+| `H3b3` | Exact H3b assembly | `OPEN / BLOCKED_BY_H3b2` | `COMPACT_STRIP_EVALUATION_PROVED` |
 | `H3c` | Normalized limit is exactly `Xi`, with cofinal quantifiers and no double completion | `OPEN_CRITICAL / XI_LIMIT_OBJECT_MISMATCH` | `XI_LIMIT_IDENTIFICATION_PROVED` |
 | `H3e` | Exact migrated WPrime tracking theorem; consumes the D0 slot, H3 inputs, true H4 quantities, H0/A1 and `PO_XWALK_UNIFORM_EVAL` | `OPEN / INACTIVE / RELATIVE_NORMALIZATION_GAP` | `EXACT_WPRIME_TRACKING_PROVED` |
 | `H3d` | H3 assembly theorem `H3a AND H3b AND H3c AND H3e -> H3` | `OPEN / BLOCKED_BY_H3_CHILDREN` | `H3_ASSEMBLED` |
@@ -793,6 +800,17 @@ be odd.  Exact H2a2 therefore still needs, on the selected H1c3/D0.8 family,
 `epsilonPlus1<epsilonPlus2` (or its explicit dimension-one replacement) and
 `epsilonPlus1<epsilonMinus1`.  H8 assumes rather than proves these inputs, so
 H2a, H2, and RH remain OPEN.
+
+Revision 21 separates the generic compact-open topology below H3b from the
+exact weighted Route B estimate.  Lean proves that a compact-uniform envelope
+`C_i||e_i|| -> 0` forces uniform convergence on that compact, and that such an
+envelope on every compact subset of an open locally compact domain forces
+locally uniform convergence.  A constant-one singleton family proves that a
+fixed bound without decay is insufficient.  Exact H3b2 still needs the
+same-family estimate and rate, schematically
+`sqrt(L_i) lambda_i^a ||ground_i-trial_i|| -> 0`, or a source-locked weighted
+cancellation replacement, on the selected joint filter.  D0.6 alone is only
+fixed-window boundedness, so H3b, H3, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

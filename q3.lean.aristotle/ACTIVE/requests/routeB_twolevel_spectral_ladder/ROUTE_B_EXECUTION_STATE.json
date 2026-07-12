@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T15:42:41+02:00",
+  "updated_at": "2026-07-12T15:57:19+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -49,6 +49,9 @@
       ,"H2A_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN"
       ,"COMMUTING_SIMPLE_GROUND_CAN_BE_ODD"
+      ,"H3B_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN"
+      ,"FIXED_BOUND_WITHOUT_VANISHING_RATE_NOT_UNIFORM_ZERO"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -76,6 +79,7 @@
       "ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING"
       ,"H2A_EXACT_SECTOR_ORDERING_MISSING"
       ,"H2A_SAME_FAMILY_SELECTION_MISSING"
+      ,"H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING"
     ]
   },
   "bus": {
@@ -145,6 +149,12 @@
       "class": "MASTER_DAG_EXACT_SELECTED_FAMILY_BLOCKER",
       "owner": "Route B proof compiler",
       "detail": "The generic simple-even sector criterion and odd-ground falsifier are Lean-proved, but the exact H1c3/D0.8 family still lacks epsilonPlus1<epsilonPlus2 (or the explicit dimension-one case), epsilonPlus1<epsilonMinus1, and a positive isolation export."
+    },
+    {
+      "code": "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING",
+      "class": "MASTER_DAG_EXACT_WEIGHTED_EVALUATION_BLOCKER",
+      "owner": "Route B proof compiler",
+      "detail": "The generic compact evaluation-rate and compact-open transfers are Lean-proved, but the exact same-family compact envelope, weighted ground/trial decay, and joint filter remain open under PO_XWALK_UNIFORM_EVAL."
     }
   ],
   "guardrails": {
@@ -322,6 +332,18 @@
     "h2a_simple_even_ground_sector_criterion_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
       "sha256": "a8d61ee0d64f40387263dec9392184d915aeccb2822ac21566dd74fcc2712d5e"
+    },
+    "h3b_compact_evaluation_rate_transfer_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3B_COMPACT_EVALUATION_RATE_TRANSFER_CERTIFICATE.json",
+      "sha256": "9b08e1d879e905715a2e48f64017e7a4697b5f8b28c50af668c17fed66435c70"
+    },
+    "h3b_compact_evaluation_rate_transfer_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3b_compact_evaluation_rate_transfer.py",
+      "sha256": "c319f6290601858274b94969680a48ad03ee1ca5241fa18bf3e06a235db74414"
+    },
+    "h3b_compact_evaluation_rate_transfer_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+      "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c"
     }
   },
   "stages": [

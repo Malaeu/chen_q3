@@ -44,3 +44,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H2a1: GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN; commuting involution gives the exact even/odd eigenvector split, explicit sector ordering gives a simple even global ground, and the commuting simple odd-ground falsifier remains executable.`
 
 `SKIPPED H2a2: H2A_EXACT_SECTOR_ORDERING_MISSING; H8 assumes simple-even, while the exact selected H1c3/D0.8 Route B family still lacks epsilonPlus1<epsilonPlus2 (or the explicit dimension-one case), epsilonPlus1<epsilonMinus1, and the exported positive isolation radius.`
+
+`CLOSED H3b1: GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN; a compact-uniform norm envelope tending to zero yields uniform convergence, compactwise envelopes yield compact-open convergence, and the fixed-bound-without-decay falsifier is executable.`
+
+`SKIPPED H3b2: H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING; D0.6 supplies only fixed-window boundedness, while the exact same-family compact envelope, weighted ground/trial decay, and joint filter remain open under PO_XWALK_UNIFORM_EVAL.`

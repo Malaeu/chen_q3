@@ -46845,3 +46845,11 @@ not the raw-D17 factorwise support class.
 - Exact H3b instantiation must still establish the weighted compact bound and decay, schematically `C_i(K)=sqrt(L_i)*lambda_i^a` and `C_i(K)‖ground_i-trial_i‖ -> 0`, on the same selected family/filter.
 - D0.6 supplies only fixed-window boundedness and cannot be relabelled as uniform in the growing family; its constant-mode behavior is a guard against that overclaim.
 - Planned DAG split: prove generic H3b1, leave exact weighted instantiation H3b2 and assembly H3b3 OPEN with stop `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING`; preserve `NOT_RH`.
+
+### Final result
+
+- `CompactEvaluationRateTransfer.lean` proves `tendstoUniformlyOn_zero_of_evaluation_rate` directly from the compact-uniform norm inequality and a vanishing scalar product.
+- `tendstoLocallyUniformlyOn_zero_of_compact_envelopes` uses Mathlib's compact characterization to lift one vanishing envelope per compact subset to the exact compact-open topology.
+- `fixed_bound_without_vanishing_rate_not_uniform_zero` keeps the crucial guard executable: the constant-one family is uniformly bounded on a singleton but does not converge to zero.
+- STATE revision 21 decomposes H3b into proved generic core `H3b1`, OPEN exact same-family weighted instantiation `H3b2`, and assembly `H3b3`; `PO_XWALK_UNIFORM_EVAL` remains external and active.
+- Direct Lean validation passes with zero holes and only `propext`, `Classical.choice`, and `Quot.sound`.  The count is 108 nodes: 56 PROVED, 44 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 20,
-  "updated_at": "2026-07-12T15:42:41+02:00",
+  "revision": 21,
+  "updated_at": "2026-07-12T15:57:19+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "6c9f59b4bac35bb838f66eb357f1c060f64300b8d15a3b62d840327de3ecc09e",
+    "sprint_log_sha256": "08179e194dd36cce1dd1198024c9b4d68f608c50c26c91eb6767267a09f31d84",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -350,6 +350,28 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3b_compact_evaluation_rate_transfer": {
+    "name": "H3B_COMPACT_EVALUATION_RATE_TRANSFER_REV21",
+    "status": "GENERIC_COMPACT_RATE_TRANSFER_PROVED_EXACT_WEIGHTED_INSTANTIATION_OPEN_NOT_RH",
+    "certificate": "H3B_COMPACT_EVALUATION_RATE_TRANSFER_CERTIFICATE.json",
+    "certificate_sha256": "9b08e1d879e905715a2e48f64017e7a4697b5f8b28c50af668c17fed66435c70",
+    "validator": "validate_h3b_compact_evaluation_rate_transfer.py",
+    "validator_sha256": "c319f6290601858274b94969680a48ad03ee1ca5241fa18bf3e06a235db74414",
+    "artifact": "H3B_COMPACT_EVALUATION_RATE_TRANSFER_2026-07-12.md",
+    "artifact_sha256": "544c4dd4ce4d69732ba994208ab929092502086cb1c1aaad3a3254cba3e58135",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+      "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c"
+    },
+    "proved_nodes": ["H3b.0", "H3b1"],
+    "generic_verdict": "GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN",
+    "falsifier": "FIXED_BOUND_WITHOUT_VANISHING_RATE_NOT_UNIFORM_ZERO",
+    "next_worker_leaf": null,
+    "next_exact_node": "H3b2",
+    "remaining_stop": "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -425,7 +447,8 @@
       "H1C2_RAW_INTEGRAL_CROSSWALK_REV17",
       "L0C_GENERIC_ZERO_TRANSFER_REV18",
       "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19",
-      "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20"
+      "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20",
+      "H3B_COMPACT_EVALUATION_RATE_TRANSFER_REV21"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1188,13 +1211,51 @@
       "failure_codes": ["GROUND_TRIAL_TRACKING_MISSING", "PHASE_ALIGNMENT_MISSING"]
     },
     "H3b": {
-      "id": "H3b", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
-      "statement": "The chosen approximation norm controls transform evaluation uniformly on every compact substrip",
-      "dependencies": ["D0", "H3a"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H3b", "parent_id": "H3", "kind": "AND", "role": "GOAL",
+      "statement": "The generic compact evaluation-rate transfer and the exact weighted Route B instantiation control transform evaluation uniformly on every compact substrip",
+      "dependencies": ["H3b.0"], "ordered_children": ["H3b1", "H3b2"], "assembly_theorem_id": "H3b3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H3a_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H3B2_EXACT_WEIGHTED_RATE_INSTANTIATION_OPEN"},
       "validation": "COMPACT_STRIP_EVALUATION_BOUND_AUDIT",
-      "failure_codes": ["COMPACT_STRIP_EVALUATION_MISSING", "TOPOLOGY_MISMATCH"]
+      "failure_codes": ["COMPACT_STRIP_EVALUATION_MISSING", "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING", "PO_XWALK_UNIFORM_EVAL", "TOPOLOGY_MISMATCH"]
+    },
+    "H3b.0": {
+      "id": "H3b.0", "parent_id": "H3b", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H3b iff the generic compact evaluation-rate transfer AND its exact weighted Route B instantiation",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H3B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H3B_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H3b1": {
+      "id": "H3b1", "parent_id": "H3b", "kind": "LEAF", "role": "GOAL",
+      "statement": "A uniform compact norm envelope tending to zero yields uniform convergence on that compact, and compactwise vanishing envelopes on an open locally compact domain yield locally uniform convergence",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+      "failure_codes": ["H3B_GENERIC_RATE_TRANSFER_MISSING", "H3B_COMPACT_OPEN_TOPOLOGY_TRANSFER_MISSING", "H3B_FIXED_BOUND_FALSIFIER_MISSING"]
+    },
+    "H3b2": {
+      "id": "H3b2", "parent_id": "H3b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H3b1 on the exact same Route B family and joint filter with a compact-uniform weighted evaluation envelope whose product with the phase-aligned ground/trial error tends to zero",
+      "dependencies": ["D0", "H3a", "H3b1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3A_EXACT_ERROR_AND_WEIGHTED_COMPACT_ENVELOPE_OPEN"},
+      "validation": "H3B_EXACT_WEIGHTED_EVALUATION_RATE_INSTANTIATION",
+      "external_requirements": ["PO_XWALK_UNIFORM_EVAL"],
+      "failure_codes": ["H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "H3B_UNIFORM_COMPACT_ENVELOPE_MISSING", "H3B_WEIGHTED_ERROR_RATE_MISSING", "H3B_SAME_FAMILY_FILTER_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "PO_XWALK_UNIFORM_EVAL", "TOPOLOGY_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3b3": {
+      "id": "H3b3", "parent_id": "H3b", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3b1 AND H3b2 IMPLIES the exact selected Route B error transforms converge uniformly on every compact substrip",
+      "dependencies": ["H3b.0", "H3b1", "H3b2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3B2_EXACT_WEIGHTED_RATE_INSTANTIATION_OPEN"},
+      "validation": "H3B_EXACT_COMPACT_EVALUATION_ASSEMBLY",
+      "failure_codes": ["H3B_ASSEMBLY_GAP", "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H3c": {
       "id": "H3c", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
@@ -1695,6 +1756,12 @@
         "no_progress_streak": 0,
         "result": "H3E_IB2_LIMINF_MISIDENTIFICATION;H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP;XI_LIMIT_OBJECT_MISMATCH"
       },
+      "H3b/generic_compact_evaluation_rate_transfer/v1": {
+        "status": "GENERIC_COMPACT_RATE_TRANSFER_CLOSED_EXACT_WEIGHTED_INSTANTIATION_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN;FIXED_BOUND_WITHOUT_VANISHING_RATE_NOT_UNIFORM_ZERO;H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING"
+      },
       "H4/contract_v2_safe_leaf_repair/v1": {
         "status": "DAG_REPAIRED_EXACT_SAFE_LEAVES_OPEN",
         "last_class": "REPRESENTATION_PROGRESS",
@@ -1914,6 +1981,13 @@
       "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
       "result": "GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN;PARITY_DICHOTOMY_EXPLICIT;COMMUTING_SIMPLE_GROUND_CAN_BE_ODD;H2A_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_SELECTED_FAMILY_EVEN_INTERNAL_AND_EVEN_ODD_SECTOR_ORDERING_OPEN_H2A_H2_OPEN_H2B_CONDITIONAL_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T15:57:19+02:00",
+      "event": "H3B_GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_PROVED",
+      "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
+      "result": "GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN;COMPACT_OPEN_ENVELOPE_TRANSFER_LEAN;FIXED_BOUND_WITHOUT_VANISHING_RATE_NOT_UNIFORM_ZERO;H3B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_WEIGHTED_COMPACT_ENVELOPE_GROUND_TRIAL_RATE_AND_JOINT_FILTER_OPEN_H3B_H3_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

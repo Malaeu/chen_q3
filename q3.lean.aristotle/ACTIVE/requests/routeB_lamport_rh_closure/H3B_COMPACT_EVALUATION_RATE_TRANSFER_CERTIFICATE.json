@@ -1,0 +1,125 @@
+{
+  "schema": "route_b_h3b_compact_evaluation_rate_transfer_certificate.v1",
+  "created_at": "2026-07-12T15:57:19+02:00",
+  "revision_target": 21,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_6_EXACT_TRANSFORM_CONVENTION.md",
+      "sha256": "db4b185e9e9ba750936410f9c4e37d90b10586624e06315f1e045d604a0ac3ff",
+      "scope": "FIXED_WINDOW_EVALUATION_BOUND_AND_UNIFORM_IN_M_FIREWALL"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "H3_COMPACT_STRIP_AND_LIMIT_OBJECT_GUARDS"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "EXACT_H3_COMPACT_SUBSTRIP_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/UniformSpace/LocallyUniformConvergence.lean",
+      "sha256": "67445aebe96865a04ba1c793a27644cde8d62d871e5638aff83593c3cdf6f761",
+      "scope": "LOCALLY_UNIFORM_IFF_UNIFORM_ON_COMPACTS"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/MetricSpace/Pseudo/Basic.lean",
+      "sha256": "7bef6791f532acb36d085a2a7825646c1730826b2bb9cbc4dcf8609e8958c75e",
+      "scope": "METRIC_TENDSTO_UNIFORMLY_ON_EPSILON_INTERFACE"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/UniformSpace/LocallyUniformConvergence.html",
+      "scope": "OFFICIAL_COMPACT_OPEN_CONVERGENCE_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/MetricSpace/Pseudo/Basic.html",
+      "scope": "OFFICIAL_METRIC_UNIFORM_CONVERGENCE_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+    "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c",
+    "proved": [
+      "tendstoUniformlyOn_zero_of_evaluation_rate",
+      "tendstoLocallyUniformlyOn_zero_of_compact_envelopes",
+      "fixed_bound_without_vanishing_rate_not_uniform_zero"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3B_COMPACT_EVALUATION_RATE_TRANSFER_2026-07-12.md",
+    "sha256": "544c4dd4ce4d69732ba994208ab929092502086cb1c1aaad3a3254cba3e58135"
+  },
+  "h3b_repair": {
+    "parent": "H3b",
+    "decomposition": "H3b.0",
+    "ordered_children": ["H3b1", "H3b2"],
+    "assembly": "H3b3",
+    "proved": ["H3b.0", "H3b1"],
+    "open": ["H3b", "H3b2", "H3b3", "H3", "H3c", "H3e", "H3d"],
+    "generic_verdict": "GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN",
+    "exact_residual_stop": "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "required_family": "SAME_EXACT_ROUTE_B_FAMILY_AND_JOINT_FILTER",
+    "required_error": "PHASE_ALIGNED_GROUND_MINUS_TRIAL_ERROR",
+    "raw_compact_envelope": "SQRT_L_TIMES_LAMBDA_POW_A_TIMES_ERROR_NORM",
+    "alternative": "SOURCE_LOCKED_WEIGHTED_OR_CANCELLATION_EVALUATION_THEOREM",
+    "open_codes": [
+      "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING",
+      "COMPACT_STRIP_EVALUATION_MISSING",
+      "H3B_UNIFORM_COMPACT_ENVELOPE_MISSING",
+      "H3B_WEIGHTED_ERROR_RATE_MISSING",
+      "H3B_SAME_FAMILY_FILTER_MISSING",
+      "GROUND_TRIAL_TRACKING_MISSING",
+      "PO_XWALK_UNIFORM_EVAL",
+      "TOPOLOGY_MISMATCH",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "mandatory_falsifier": {
+    "theorem": "fixed_bound_without_vanishing_rate_not_uniform_zero",
+    "family": "CONSTANT_ONE_ON_SINGLETON",
+    "bound": "ONE",
+    "limit_claim": "UNIFORM_ZERO",
+    "verdict": "FALSE_WITHOUT_VANISHING_ENVELOPE"
+  },
+  "expected_node_counts": {
+    "total": 108,
+    "PROVED": 56,
+    "OPEN": 44,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_ROUTE_B_EVALUATION_ENVELOPE",
+    "NO_EXACT_GROUND_TRIAL_RATE",
+    "NO_UNIFORM_IN_M_FROM_D0_6",
+    "NO_UNBOUNDED_STRIP_UNIFORMITY",
+    "NO_H3B_PARENT_CLOSURE",
+    "NO_H3_PARENT_CLOSURE",
+    "NO_H4_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

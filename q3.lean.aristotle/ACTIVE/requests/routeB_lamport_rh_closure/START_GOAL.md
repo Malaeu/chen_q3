@@ -126,6 +126,14 @@ Current fail-closed address:
   exact selected-family inequalities `epsilonPlus1<epsilonPlus2` (or the
   explicit dimension-one case) and `epsilonPlus1<epsilonMinus1` remain OPEN
   in `H2a2` with stop `H2A_EXACT_SECTOR_ORDERING_MISSING`;
+- rev21 proves `H3b1 GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN`: a
+  compact-uniform norm envelope tending to zero gives uniform convergence,
+  compactwise envelopes on an open locally compact domain give compact-open
+  convergence, and the constant-one singleton plant proves a fixed bound
+  without decay is insufficient; exact same-family weighted evaluation and
+  ground/trial decay on the joint filter remain OPEN in `H3b2` with stop
+  `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` and external obligation
+  `PO_XWALK_UNIFORM_EVAL`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
   SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;
