@@ -68,3 +68,9 @@ Single owner decision with maximum unblock power:
 `GUARD H2b1: NONHERMITIAN_CHARPOLY_NONREAL_ZERO + VANISHING_UNIT_NONREAL_ZERO; dropping Hermitianity or nonvanishing of the multiplicative unit permits a nonreal zero at i.`
 
 `SKIPPED H2b2: H2B_EXACT_THEOREM510_FACTORIZATION_MISSING; the modified-Hilbert Hermitian matrix, E_N-perp complement, nonvanishing phase, lattice-safe all-z identity and same H1c3/D0.8/H2a raw family remain open, so H2b stays CONDITIONAL.`
+
+`CLOSED H4c1: H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN; a positive-scale two-sided normalized b bound gives b nonzero, the direct polynomial upper, scale-dependent reciprocal, and normalized-error controls pointwise and eventually.`
+
+`GUARD H4c1: NORMALIZED_LOWER_PRODUCT_DOES_NOT_IMPLY_UNIFORM_B_LOWER_BOUND; the certified b_n tends to zero while |b_n| sqrt(lambda_n)=1, so no uniform liminf or unweighted reciprocal was inferred.`
+
+`SKIPPED H4c2: H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING; canonical alpha/sign, true-gap positivity, exact b formula/orientation, full two-sided constants, q_b, and the shared carrier/filter remain open.`

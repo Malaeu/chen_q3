@@ -163,6 +163,13 @@ Current fail-closed address:
   lattice-safe all-z factorization and same raw family remain OPEN in `H2b2`
   with stop `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`, while parent H2b
   remains `CONDITIONAL` and cannot discharge H2;
+- rev26 proves `H4c1 H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN`:
+  the full normalized two-sided b hypothesis yields nonzero, direct upper,
+  scale-dependent reciprocal, and normalized-error bounds pointwise and on a
+  non-bottom filter; the `b_n->0` normalized-product plant remains live, while
+  exact alpha/gap signs, b formula/orientation, two-sided constants, q_b and
+  same carrier/filter remain OPEN in `H4c2` with stop
+  `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

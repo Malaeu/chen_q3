@@ -485,7 +485,10 @@ R0 RHClosure [AND]
 |   |   |   `-- H4a3c H4a3Assembly
 |   |   `-- H4a4 SafeAlphaUpperAssembly
 |   |-- H4b SafeGapLower
-|   |-- H4c SafeSignAndB
+|   |-- H4c SafeSignAndB [AND]
+|   |   |-- H4c1 GenericTwoSidedNormalizedBControl
+|   |   |-- H4c2 ExactSafeSignAndBInstantiation
+|   |   `-- H4c3 H4cAssembly
 |   |-- H4d SafeRateAssembly [AND]
 |   |   |-- H4d1 GenericSafeRateCore [AND]
 |   |   |   |-- H4d1a NaturalScaleExponentCore
@@ -620,7 +623,11 @@ proof node.
 | `H4a3c` | Assemble the generic core with the exact spectral instantiation | `OPEN / BLOCKED_BY_H4a3b` | `H4A3_EXACT_RESIDUAL_TO_ALPHA_ASSEMBLY` |
 | `H4a4` | SafeAlphaUpper assembly | `OPEN / BLOCKED_BY_H4a1-a3` | `SAFE_ALPHA_UPPER_PROVED` |
 | `H4b` | SafeGapLower for the true same-parity gap | `OPEN_CRITICAL` | `SAFE_GAP_LOWER_PROVED` |
-| `H4c` | SafeSignAndB: alpha sign, strict gap, exact two-sided b | `OPEN_CRITICAL` | `SAFE_SIGN_AND_B_PROVED` |
+| `H4c` | AND parent: generic normalized-b consequences plus exact alpha/gap/b/sign/filter instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING` |
+| `H4c.0` | H4c decomposition contract | `PROVED` | `H4C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4c1` | Two-sided normalized b control gives nonzero, direct upper, scale-dependent reciprocal and normalized-error bounds | `PROVED / GENERIC_LEAN / FALSIFIER_RETAINED` | `H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN` |
+| `H4c2` | Define exact alpha/b, prove alpha/gap signs, b orientation, full two-sided bound, q_b and one carrier/filter | `OPEN / INELIGIBLE` | blocker: `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING` |
+| `H4c3` | Exact H4c assembly | `OPEN / BLOCKED_BY_H4c2` | `H4C_EXACT_SAFE_SIGN_AND_B_ASSEMBLY` |
 | `H4d` | SafeRateAssembly parent | `OPEN` | `SAFE_RATE_ASSEMBLED` |
 | `H4d.0` | Generic/exact rate decomposition contract | `PROVED` | `H4D_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H4d1` | Generic exponent and cofinal square-envelope rate package | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_GENERIC_PACKAGE` |
@@ -882,6 +889,16 @@ still needs the `T`-induced quotient metric, Hermitian finite matrix, complement
 determinant, nonvanishing phase, lattice-safe all-`z` factorization, and same
 H1c3/D0.8/H2a raw family.  H2b therefore deliberately remains CONDITIONAL;
 H2 and RH remain OPEN.
+
+Revision 26 extracts the legal consequences of Contract v2's normalized
+two-sided b bound.  Lean proves pointwise and eventually on a non-bottom filter
+that `0<c_b<=|b| scale^(-q_b)<=C_b` implies b is nonzero, the direct upper
+bound `|b|<=C_b scale^q_b`, the scale-dependent reciprocal bound, and the
+corresponding normalized-error inequality.  The existing sequence with
+normalized product one but `b_n->0` remains a live guard against a uniform
+lower-bound overclaim.  Exact H4c2 still must define canonical alpha and b,
+prove alpha/true-gap signs, the full two-sided bound and q_b, and select the
+same carrier/filter as H3e/H4d2.  H4c, H4, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

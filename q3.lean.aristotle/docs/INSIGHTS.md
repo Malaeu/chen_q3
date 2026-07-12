@@ -47047,3 +47047,24 @@ not the raw-D17 factorwise support class.
   H4c2 and assembly H4c3 OPEN with `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING`.
 - Acceptance remains narrow: no exact b source, no q_b, no H4c/H4 closure, no
   uniform reciprocal overclaim, and Route B remains `NOT_RH`.
+
+### Final result
+
+- `TwoSidedNormalizedBControl.lean` proves pointwise and eventual nonzero,
+  direct upper, and scale-dependent reciprocal consequences of the exact
+  normalized two-sided b hypothesis on a positive scale.
+- `normalized_error_le_of_reciprocal_b_control` legally transfers an absolute
+  nonnegative error through the reciprocal bound, creating a generic receiver
+  for H3e without defining or orienting the Route B b object.
+- The filter wrapper requires `[NeBot l]`, so a bottom-filter certificate
+  cannot close the generic node vacuously.
+- `lowerProductB_tendsto_zero` and
+  `lowerProductB_sqrt_lambda_eq_one` remain pinned: normalized lower-product
+  control is compatible with b tending to zero and never implies a uniform
+  positive lower bound.
+- STATE revision 26 decomposes H4c into proved generic core `H4c1`, OPEN exact
+  SafeSignAndB instantiation `H4c2`, and assembly `H4c3`.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 128 nodes: 66 PROVED,
+  54 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

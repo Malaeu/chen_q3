@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 25,
-  "updated_at": "2026-07-12T16:49:17+02:00",
+  "revision": 26,
+  "updated_at": "2026-07-12T17:04:07+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "0d7368c29463db6ef9e35ccb4579e48afdbb2140e4bed23bd07c0750dfe138aa",
+    "sprint_log_sha256": "412af59689e523181141e11e7ca582c3befb92a9d9520d30be046ddd28d8d644",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -472,6 +472,31 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4c_two_sided_normalized_b_control": {
+    "name": "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26",
+    "status": "GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_PROVED_EXACT_SAFE_SIGN_AND_B_OPEN_NOT_RH",
+    "certificate": "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_CERTIFICATE.json",
+    "certificate_sha256": "6ab00f4c888ff4eff9e83adfeab2bc336c7a61f2e4d4dbfc91873ef17bc38a4f",
+    "validator": "validate_h4c_two_sided_normalized_b_control.py",
+    "validator_sha256": "71f98c7385bc74ae522db87dd919acd7151c017d9787298d4f3c152347e3e29c",
+    "artifact": "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_2026-07-12.md",
+    "artifact_sha256": "337ca17a68d90e4e6fe0d949e28ded92a97a265eacbc9c179e166b7cca012f2a",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean",
+      "sha256": "f7ccca3e5f640380964a27ad010d09e9f8225e39087d96a2d9bc1c3ed93013b8"
+    },
+    "proved_nodes": [
+      "H4c.0",
+      "H4c1"
+    ],
+    "generic_verdict": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN",
+    "falsifier": "NORMALIZED_LOWER_PRODUCT_DOES_NOT_IMPLY_UNIFORM_B_LOWER_BOUND",
+    "next_worker_leaf": null,
+    "next_exact_node": "H4c2",
+    "remaining_stop": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -552,7 +577,8 @@
       "H4A1_AMBIENT_RESIDUAL_SPLIT_REV22",
       "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_REV23",
       "H3C_DOUBLE_COMPLETION_STRIP_GUARD_REV24",
-      "H2B_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_REV25"
+      "H2B_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_REV25",
+      "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1628,15 +1654,52 @@
       "failure_codes": ["SAFE_GAP_LOWER_NO_SOURCE", "TRUE_GAP_LOWER_MISSING", "MODEL_GAP_SUBSTITUTION", "GROUND_SECTOR_MISMATCH"]
     },
     "H4c": {
-      "id": "H4c", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
+      "id": "H4c", "parent_id": "H4", "kind": "AND", "role": "GOAL",
       "name": "SafeSignAndB",
-      "statement": "Prove canonical alpha nonnegativity, strict DeltaE positivity, and the exact Contract-v2 two-sided b bound on the same cofinal carrier",
-      "dependencies": ["D0", "H2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "statement": "The generic consequences of a two-sided normalized b bound and the exact canonical alpha/gap/b instantiation establish SafeSignAndB on one cofinal carrier",
+      "dependencies": ["H4c.0"], "ordered_children": ["H4c1", "H4c2"], "assembly_theorem_id": "H4c3",
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4C2_EXACT_SAFE_SIGN_AND_B_OPEN"},
+      "validation": "SAFE_SIGN_AND_B_TWO_SIDED_BOUND_AUDIT",
+      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "NORMALIZATION_ZERO", "NORMALIZATION_CONTROL_MISSING", "H4D_COFINAL_NONZERO_LOCUS_MISSING", "H4D_BDET_RECIPROCAL_CONTROL_MISSING", "H4D_QB_VALUE_UNPROVED", "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING"]
+    },
+    "H4c.0": {
+      "id": "H4c.0", "parent_id": "H4c", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4c iff H4c1 and H4c2 both hold, with H4c3 as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4C_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4C_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4c1": {
+      "id": "H4c1", "parent_id": "H4c", "kind": "LEAF", "role": "GOAL",
+      "statement": "A positive-scale two-sided normalized b bound gives b nonzero, the direct polynomial upper bound, a scale-dependent reciprocal bound, and normalized-error control pointwise and eventually",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean",
+      "failure_codes": ["H4C_GENERIC_NORMALIZED_B_CONTROL_GAP", "H4C_BOTTOM_FILTER_VACUITY", "H4C_UNIFORM_B_LOWER_OVERCLAIM"]
+    },
+    "H4c2": {
+      "id": "H4c2", "parent_id": "H4c", "kind": "LEAF", "role": "GOAL",
+      "statement": "Define canonical alpha and exact b, prove alpha and true-gap signs, the full two-sided normalized b bound with fixed q_b, and same-carrier/filter compatibility with H3e and H4d2",
+      "dependencies": ["D0", "H2a", "H4c1"], "ordered_children": [], "assembly_theorem_id": null,
       "external_requirements": ["PO-1/A1"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H2A_AND_H0_A1_OPEN"},
-      "validation": "SAFE_SIGN_AND_B_TWO_SIDED_BOUND_AUDIT",
-      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "NORMALIZATION_ZERO", "NORMALIZATION_CONTROL_MISSING", "H4D_COFINAL_NONZERO_LOCUS_MISSING", "H4D_BDET_RECIPROCAL_CONTROL_MISSING", "H4D_QB_VALUE_UNPROVED"]
+      "eligibility": {"eligible": false, "reason": "D0_H2A_H0_A1_AND_EXACT_B_BOUND_OPEN"},
+      "validation": "H4C_EXACT_SAFE_SIGN_AND_B_INSTANTIATION_AUDIT",
+      "failure_codes": ["H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "H4C_CANONICAL_ALPHA_NONNEGATIVITY_MISSING", "H4C_TRUE_GAP_POSITIVITY_MISSING", "H4C_EXACT_B_FORMULA_OR_ORIENTATION_MISSING", "H4C_EXACT_TWO_SIDED_B_BOUND_MISSING", "NORMALIZATION_ZERO", "NORMALIZATION_CONTROL_MISSING", "H4D_COFINAL_NONZERO_LOCUS_MISSING", "H4D_BDET_RECIPROCAL_CONTROL_MISSING", "H4D_QB_VALUE_UNPROVED", "H4C_SAME_CARRIER_FILTER_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4c3": {
+      "id": "H4c3", "parent_id": "H4c", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4c.0 AND H4c1 AND H4c2 IMPLIES exact SafeSignAndB",
+      "dependencies": ["H4c.0", "H4c1", "H4c2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4C2_OPEN"},
+      "validation": "H4C_EXACT_SAFE_SIGN_AND_B_ASSEMBLY",
+      "failure_codes": ["H4C_ASSEMBLY_GAP", "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING"]
     },
     "H4d": {
       "id": "H4d", "parent_id": "H4", "kind": "AND", "role": "GOAL",
@@ -2074,6 +2137,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN;NONHERMITIAN_CHARPOLY_NONREAL_ZERO;VANISHING_UNIT_NONREAL_ZERO;H2B_EXACT_THEOREM510_FACTORIZATION_MISSING"
+      },
+      "H4c/generic_two_sided_normalized_b_control/v1": {
+        "status": "GENERIC_NORMALIZED_B_CONTROL_CLOSED_EXACT_SAFE_SIGN_AND_B_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN;SCALE_DEPENDENT_RECIPROCAL_CONTROL;NORMALIZED_LOWER_PRODUCT_UNIFORM_LOWER_FALSIFIER_RETAINED;H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING"
       }
     }
   },
@@ -2293,6 +2362,13 @@
       "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN;PERIODIC_DETERMINANT_REAL_ZEROS_LEAN;NONHERMITIAN_CHARPOLY_NONREAL_ZERO;VANISHING_UNIT_NONREAL_ZERO;H2B_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_MODIFIED_HILBERT_MATRIX_COMPLEMENT_NONVANISHING_PHASE_ALL_Z_FACTORIZATION_AND_SAME_RAW_FAMILY_OPEN_H2B_CONDITIONAL_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T17:04:07+02:00",
+      "event": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_PROVED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN;POINTWISE_AND_EVENTUAL_NONZERO_UPPER_RECIPROCAL_CONTROL;NORMALIZED_ERROR_TRANSFER;H4C_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_ALPHA_SIGN_TRUE_GAP_B_FORMULA_ORIENTATION_TWO_SIDED_BOUND_QB_AND_SAME_FILTER_OPEN_NO_UNIFORM_B_LOWER_OVERCLAIM_H4C_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

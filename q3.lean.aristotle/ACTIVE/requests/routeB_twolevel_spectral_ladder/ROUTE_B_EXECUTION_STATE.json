@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T16:49:17+02:00",
+  "updated_at": "2026-07-12T17:04:07+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -66,6 +66,10 @@
       ,"PERIODIC_DETERMINANT_REAL_ZEROS_LEAN"
       ,"NONHERMITIAN_CHARPOLY_NONREAL_ZERO"
       ,"VANISHING_UNIT_NONREAL_ZERO"
+      ,"H4C_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN"
+      ,"H4C_SCALE_DEPENDENT_RECIPROCAL_CONTROL_LEAN"
+      ,"H4C_NORMALIZED_ERROR_TRANSFER_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -103,6 +107,9 @@
       ,"H2B_EXACT_THEOREM510_FACTORIZATION_MISSING"
       ,"H2B_MODIFIED_HILBERT_HERMITIAN_MATRIX_MISSING"
       ,"H2B_COMPLEMENT_LATTICE_FACTOR_MISSING"
+      ,"H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING"
+      ,"H4C_EXACT_B_FORMULA_OR_ORIENTATION_MISSING"
+      ,"H4C_EXACT_TWO_SIDED_B_BOUND_MISSING"
     ]
   },
   "bus": {
@@ -202,6 +209,12 @@
       "class": "MASTER_DAG_EXACT_REAL_ZERO_FACTORIZATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
       "detail": "The generic periodic and Hermitian determinant real-zero transfers plus non-Hermitian and vanishing-unit falsifiers are Lean-proved, but the exact T-induced metric, Hermitian finite matrix, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization, and same raw family remain open; H2b stays CONDITIONAL."
+    },
+    {
+      "code": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
+      "class": "MASTER_DAG_EXACT_SAFE_SIGN_AND_B_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The generic two-sided normalized b consequences, nonbottom-filter wrapper, and normalized-error transfer are Lean-proved with the vanishing-b falsifier retained, but canonical alpha/sign, true-gap positivity, exact b formula/orientation, full constants, q_b, and the shared carrier/filter remain open."
     }
   ],
   "guardrails": {
@@ -439,6 +452,18 @@
     "h2b_hermitian_determinant_real_zeros_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
       "sha256": "d886f53f2b935980b84727715dd5a162c357047b0e23ddce713c8c83bf8502c2"
+    },
+    "h4c_two_sided_normalized_b_control_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4C_TWO_SIDED_NORMALIZED_B_CONTROL_CERTIFICATE.json",
+      "sha256": "6ab00f4c888ff4eff9e83adfeab2bc336c7a61f2e4d4dbfc91873ef17bc38a4f"
+    },
+    "h4c_two_sided_normalized_b_control_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4c_two_sided_normalized_b_control.py",
+      "sha256": "71f98c7385bc74ae522db87dd919acd7151c017d9787298d4f3c152347e3e29c"
+    },
+    "h4c_two_sided_normalized_b_control_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean",
+      "sha256": "f7ccca3e5f640380964a27ad010d09e9f8225e39087d96a2d9bc1c3ed93013b8"
     }
   },
   "stages": [

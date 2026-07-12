@@ -1,0 +1,131 @@
+{
+  "schema": "route_b_h4c_two_sided_normalized_b_control_certificate.v1",
+  "created_at": "2026-07-12T17:04:07+02:00",
+  "revision_target": 26,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "DIRECT_QB_TWO_SIDED_NORMALIZED_B_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0",
+      "scope": "OWNER_RATIFIED_DIRECT_QB_CONVENTION"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_RATIFICATION_RECOMMENDATION.md",
+      "sha256": "99172dfd4be8db5329e107b2161d669d7fce4716a3f71f29f1b85431415f11a8",
+      "scope": "QB_CONVENTION_AND_TWO_PARAMETER_CARRIER_CROSSWALK"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "H3E_RELATIVE_NORMALIZATION_AND_H4C_EXACT_DUTIES"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
+      "sha256": "7e33e0675b6a2ed2f74b09c5653b8703d27eed0ef615b84341ef3c2ea4a5282c",
+      "scope": "NORMALIZED_LOWER_PRODUCT_WITH_B_TENDING_TO_ZERO_FALSIFIER"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Real.lean",
+      "sha256": "19ee1bc7835b6d6ecc21be878f003cf6ed373c9c4bc4f94c3bfee427052c60bb",
+      "scope": "REAL_RPOW_POSITIVITY_NEGATION_AND_CANCELLATION"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Pow/Real.html",
+      "scope": "OFFICIAL_REAL_RPOW_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean",
+    "sha256": "f7ccca3e5f640380964a27ad010d09e9f8225e39087d96a2d9bc1c3ed93013b8",
+    "proved": [
+      "two_sided_normalized_b_control_pointwise",
+      "two_sided_normalized_b_control_eventually",
+      "normalized_error_le_of_reciprocal_b_control"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4C_TWO_SIDED_NORMALIZED_B_CONTROL_2026-07-12.md",
+    "sha256": "337ca17a68d90e4e6fe0d949e28ded92a97a265eacbc9c179e166b7cca012f2a"
+  },
+  "h4c_repair": {
+    "parent": "H4c",
+    "decomposition": "H4c.0",
+    "ordered_children": ["H4c1", "H4c2"],
+    "assembly": "H4c3",
+    "proved": ["H4c.0", "H4c1"],
+    "open": ["H4c", "H4c2", "H4c3", "H3e", "H4d2", "H4d2b", "H4", "H4e"],
+    "generic_verdict": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN",
+    "residual_stop": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H2a", "H4c1"],
+    "external_requirement": "PO-1/A1",
+    "carrier": "SAME_EXACT_COFINAL_TWO_PARAMETER_CARRIER_AND_FILTER",
+    "bound": "0<c_b<=abs(b)*scale^(-q_b)<=C_b",
+    "open_codes": [
+      "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
+      "H0_A1_ALPHA_DEFINITION_MISSING",
+      "H4C_CANONICAL_ALPHA_NONNEGATIVITY_MISSING",
+      "H4C_TRUE_GAP_POSITIVITY_MISSING",
+      "H4C_EXACT_B_FORMULA_OR_ORIENTATION_MISSING",
+      "H4C_EXACT_TWO_SIDED_B_BOUND_MISSING",
+      "NORMALIZATION_ZERO",
+      "NORMALIZATION_CONTROL_MISSING",
+      "H4D_COFINAL_NONZERO_LOCUS_MISSING",
+      "H4D_BDET_RECIPROCAL_CONTROL_MISSING",
+      "H4D_QB_VALUE_UNPROVED",
+      "H4C_SAME_CARRIER_FILTER_MISSING",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "mandatory_falsifier": {
+    "proof_artifact": "Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
+    "theorems": [
+      "lowerProductB_tendsto_zero",
+      "lowerProductB_sqrt_lambda_eq_one"
+    ],
+    "verdict": "NORMALIZED_LOWER_PRODUCT_DOES_NOT_IMPLY_UNIFORM_B_LOWER_BOUND"
+  },
+  "expected_node_counts": {
+    "total": 128,
+    "PROVED": 66,
+    "OPEN": 54,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_B_DEFINITION_OR_ORIENTATION",
+    "NO_EXACT_TWO_SIDED_B_BOUND",
+    "NO_QB_VALUE",
+    "NO_UNIFORM_POSITIVE_B_LOWER_BOUND",
+    "NO_CANONICAL_ALPHA_SIGN_OR_TRUE_GAP_POSITIVITY",
+    "NO_H4C_PARENT_CLOSURE",
+    "NO_H4_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}
