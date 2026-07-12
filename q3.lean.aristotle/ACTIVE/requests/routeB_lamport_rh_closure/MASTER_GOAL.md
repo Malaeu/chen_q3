@@ -479,7 +479,10 @@ R0 RHClosure [AND]
 |-- L0 LeanZeroEscape [AND]
 |   |-- L0a DetectorBoundConvergenceCore
 |   |-- L0b RealZeroLimitLogic
-|   |-- L0c RoucheHurwitzZeroTransfer
+|   |-- L0c RoucheHurwitzZeroTransfer [AND]
+|   |   |-- L0c1 GenericLocallyUniformZeroTransfer
+|   |   |-- L0c2 ExactRouteBFamilyInstantiation
+|   |   `-- L0c3 L0cAssembly
 |   `-- L0d L0Assembly
 |-- L1 FinalAxiomAudit
 `-- R0.A FinalRHAssembly
@@ -583,11 +586,15 @@ proof node.
 | `H4d2` | Instantiate exact constants, WPrime identity, and cofinal joint filter | `OPEN_CRITICAL` | blocker: `H4_LIMIT_FILTER_UNSELECTED` |
 | `H4d3` | Exact SafeRateAssembly | `OPEN / BLOCKED_BY_H4d2` | `SAFE_RATE_ASSEMBLED` |
 | `H4e` | Four safe leaves imply QuantitativeSafeWitness and `W_j -> 0` | `OPEN / ASSEMBLY` | `DETECTOR_DECAY_PROVED` |
-| `L0` | AND parent for exact Lean ZeroEscape | `OPEN / GENERIC_LOGIC_PROVED / ANALYTIC_TRANSFER_OPEN` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
+| `L0` | AND parent for exact Lean ZeroEscape | `OPEN / GENERIC_ZERO_TRANSFER_PROVED / EXACT_FAMILY_OPEN` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
 | `L0.0` | Definitional L0 decomposition contract | `PROVED` | `L0_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `L0a` | Detector bound plus decay gives error tending to zero | `PROVED / GENERIC_LEAN` | `LEAN_DETECTOR_BOUND_TENDS_TO_ZERO` |
 | `L0b` | Approached limit zeros of real-zero approximants are real | `PROVED / GENERIC_LEAN` | `LEAN_REAL_ZERO_LIMIT_LOGIC` |
-| `L0c` | Exact Rouché/Hurwitz zero transfer for the H1/H3/H4 family | `OPEN / INELIGIBLE` | blocker: `ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING` |
+| `L0c` | AND parent for generic zero transfer and exact H1/H3/H4 instantiation | `OPEN / GENERIC_CORE_PROVED / EXACT_FAMILY_OPEN` | blocker: `L0C_EXACT_FAMILY_INSTANTIATION_MISSING` |
+| `L0c.0` | Definitional L0c decomposition contract | `PROVED` | `L0C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `L0c1` | Entire locally-uniform nonzero limits satisfy full-tail `ZerosApproachOn` | `PROVED / GENERIC_LEAN` | `GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN` |
+| `L0c2` | Instantiate L0c1 with the one exact Route B family and `centeredXi` | `OPEN / INELIGIBLE / H1_H3_H4_OPEN` | blocker: `L0C_EXACT_FAMILY_INSTANTIATION_MISSING` |
+| `L0c3` | Apply the generic theorem to the exact-family inputs | `OPEN / BLOCKED_BY_L0c2` | `L0C_EXACT_ZERO_TRANSFER_ASSEMBLY` |
 | `L0d` | Exact C0/H2/L0a/L0b/L0c assembly | `OPEN / BLOCKED_BY_H2_L0c` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
 | `L1` | Final `#print axioms` and hole audit | `BLOCKED_BY_ALL` | `ZERO_SORRY_ZERO_UNEXPECTED_AXIOMS` |
 | `R0.A` | Final assembly from C0, D0, H1-H4, L0, L1 to RH | `OPEN / BLOCKED_BY_ALL` | `RH_PROVED` |

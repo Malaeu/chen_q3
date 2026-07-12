@@ -46746,3 +46746,24 @@ not the raw-D17 factorwise support class.
 - Acceptance is narrow: a proved generic core may advance L0c but cannot close
   exact L0c/L0/L1/R0 until H1/H3/H4 select and supply the same family.  The
   canonical D0.7e.5a stop, Bus state, and `NOT_RH` must remain unchanged.
+
+### Final result
+
+- `GenericZeroTransfer.lean` proves the generic theorem exactly at the
+  existing `ZerosApproachOn` interface.  It uses the open-mapping disk image
+  theorem in place of a missing named Rouché/Hurwitz API, so zero existence is
+  derived rather than postulated.
+- Isolated zeros and compactness supply a positive boundary modulus; locally
+  uniform convergence supplies the strict disk error.  No simple-zero or
+  multiplicity-one assumption is needed.
+- The `Nat.findGreatest` diagonal selects a root for every sufficiently large
+  original natural index and proves convergence of that full tail.  It does
+  not silently replace the family by a subsequence.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The generic exit is
+  `GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN`.
+- STATE revision 18 decomposes L0c into a proved generic theorem `L0c1`, the
+  open exact-family instantiation `L0c2`, and assembly `L0c3`.  The count is
+  96 nodes: 50 PROVED, 38 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  The exact stop
+  is now `L0C_EXACT_FAMILY_INSTANTIATION_MISSING`; D0.7e.5a remains ACTIVE,
+  Bus 010 is absent, and Route B remains `NOT_RH`.

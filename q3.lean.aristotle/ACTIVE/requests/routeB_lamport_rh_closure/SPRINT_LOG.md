@@ -32,3 +32,7 @@ Single owner decision with maximum unblock power:
 `GUARD H1c2/Fplus: FINITE_FPLUS_CENTERED_INTEGRAL_EQUALS_RAW_AT_NEGATED_ARGUMENT; D0.6 separately supplies the owner source identification, and no coefficient-evenness or sign identification was inferred.`
 
 `SKIPPED H1c3: H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED; D0.8 is open and no exact master F_j has been selected, so H1c/H1 remain OPEN and no independent worker leaf is currently eligible.`
+
+`CLOSED L0c1: GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN; the open-mapping disk lemma, isolated-zero boundary certificate, locally uniform convergence, and Nat.findGreatest diagonal produce ZerosApproachOn for the full original-index tail.`
+
+`SKIPPED L0c2: L0C_EXACT_FAMILY_INSTANTIATION_MISSING; H1/H3/H4 do not yet supply one exact natural-index family converging to centeredXi, and XI_LIMIT_OBJECT_MISMATCH remains open.`

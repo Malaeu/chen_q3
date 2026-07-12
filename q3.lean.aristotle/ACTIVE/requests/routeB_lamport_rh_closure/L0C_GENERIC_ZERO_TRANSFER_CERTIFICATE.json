@@ -1,0 +1,104 @@
+{
+  "schema": "route_b_l0c_generic_zero_transfer_certificate.v1",
+  "created_at": "2026-07-12T14:54:33+02:00",
+  "revision_target": 18,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Complex/OpenMapping.lean",
+      "sha256": "1da42251238d9d0a13353512efda867b3a4d8524acdd544802a8e0aaa8f8bff4",
+      "scope": "DIFFCONTONCL_BALL_SUBSET_IMAGE_CLOSEDBALL"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Analytic/IsolatedZeros.lean",
+      "sha256": "3eab0a054fc13d6bf945f66c499d77fa0555b7a8ceadf026298315edaea9033f",
+      "scope": "ANALYTICAT_ISOLATED_ZERO_DICHOTOMY"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/UniformSpace/LocallyUniformConvergence.lean",
+      "sha256": "67445aebe96865a04ba1c793a27644cde8d62d871e5638aff83593c3cdf6f761",
+      "scope": "LOCAL_UNIFORM_TO_COMPACT_UNIFORM"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Data/Nat/Find.lean",
+      "sha256": "43da78ff162759913c7e37c2a495524b923f392e222943e08b8bf6ac78b7a44a",
+      "scope": "FULL_TAIL_DIAGONAL_FINDGREATEST"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
+      "sha256": "7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573",
+      "scope": "ZEROS_APPROACH_ON_CANONICAL_INTERFACE"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GenericZeroTransfer.lean",
+    "sha256": "7ec141740def3c8b40edb8e1c85f480cd733660909577cba10ad60829820b77b",
+    "proved": [
+      "exists_zero_closedBall_of_uniform_close",
+      "eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn",
+      "exists_tendsto_of_eventually_exists_closedBall",
+      "zerosApproachOn_of_tendstoLocallyUniformlyOn"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/L0C_GENERIC_ZERO_TRANSFER_2026-07-12.md",
+    "sha256": "c97fce636f9e221e55bc03d0a27b44caa767f0da010f15d65617e70428a48f78"
+  },
+  "l0c_repair": {
+    "parent": "L0c",
+    "decomposition": "L0c.0",
+    "ordered_children": ["L0c1", "L0c2"],
+    "assembly": "L0c3",
+    "proved": ["L0c.0", "L0c1"],
+    "open": ["L0c", "L0c2", "L0c3", "L0", "L0d"],
+    "generic_verdict": "GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN",
+    "exact_residual_stop": "L0C_EXACT_FAMILY_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "required_limit": "centeredXi",
+    "required_family": "SAME_EXACT_H1_H3_H4_APPROXIMANT_FAMILY",
+    "required_filter": "SAME_NAT_OR_COFINAL_INDEX_WITHOUT_HIDDEN_SUBSEQUENCE",
+    "open_codes": [
+      "L0C_EXACT_FAMILY_INSTANTIATION_MISSING",
+      "H1_OBJECT_MISMATCH",
+      "XI_LIMIT_OBJECT_MISMATCH",
+      "JOINT_N_LAMBDA_QUANTIFIER_MISSING",
+      "H4_LIMIT_FILTER_UNSELECTED",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 96,
+    "PROVED": 50,
+    "OPEN": 38,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_ROUTE_B_FAMILY_INSTANTIATION",
+    "NO_MASTER_FAMILY_SELECTION",
+    "NO_XI_LIMIT_OBJECT_IDENTIFICATION",
+    "NO_HIDDEN_SUBSEQUENCE",
+    "NO_L0C_PARENT_CLOSURE",
+    "NO_L0_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

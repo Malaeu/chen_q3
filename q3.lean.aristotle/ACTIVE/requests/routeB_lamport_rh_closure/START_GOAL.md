@@ -106,6 +106,12 @@ Current fail-closed address:
   finite positive-exponent centered representative equals `Raw(-z)`, while
   D0.6 supplies the owner `Fplus` source identification; only master-family
   choice `H1c3` remains OPEN;
+- rev18 proves `L0c1 GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN`: isolated
+  zeros, a positive boundary minimum, open mapping, locally uniform
+  convergence, and a `Nat.findGreatest` diagonal produce a zero of every
+  sufficiently large original-index approximant and a full convergent root
+  sequence; exact family instantiation `L0c2` remains OPEN on H1/H3/H4 and
+  `XI_LIMIT_OBJECT_MISMATCH`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
   SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;

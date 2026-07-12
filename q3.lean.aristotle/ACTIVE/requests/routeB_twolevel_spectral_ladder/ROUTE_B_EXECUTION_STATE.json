@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T14:23:54+02:00",
+  "updated_at": "2026-07-12T14:54:33+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -275,6 +275,18 @@
     "h1c2_raw_integral_crosswalk_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RawIntegralRhsCrosswalk.lean",
       "sha256": "01f57424ee2c5b81784f28dfc24cf982b22caaf04bd1a7b4021609a5aa424711"
+    },
+    "l0c_generic_zero_transfer_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/L0C_GENERIC_ZERO_TRANSFER_CERTIFICATE.json",
+      "sha256": "466fccea641c62b7b6a1bd4bc1f9291f2744fd96ae953973532fc9f16e7bee16"
+    },
+    "l0c_generic_zero_transfer_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_l0c_generic_zero_transfer.py",
+      "sha256": "4f7b1d5834f9a2493c15107e4da81570229b4b88d70f9b3b2a9bf7f73afc0bff"
+    },
+    "l0c_generic_zero_transfer_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GenericZeroTransfer.lean",
+      "sha256": "7ec141740def3c8b40edb8e1c85f480cd733660909577cba10ad60829820b77b"
     }
   },
   "stages": [
