@@ -46929,3 +46929,24 @@ not the raw-D17 factorwise support class.
 - Acceptance remains narrow: kill the normalized double completion only; do
   not select the correct family/filter, do not close H3c/H3/L0c2, and retain
   `XI_LIMIT_OBJECT_MISMATCH`, `XI_LIMIT_IDENTIFICATION_MISSING`, and `NOT_RH`.
+
+### Final result
+
+- `DoubleCompletionStripMismatch.lean` proves `gammaC(1/2) != 0`, continuity
+  of the normalized extra-completion candidate at `z=-i/2`, and closure
+  membership of that boundary point from explicit points inside the strip.
+- The exact boundary values are `0` for the double-completed candidate and
+  `1/2` for `centeredXi`; Hausdorff uniqueness of within-strip limits turns
+  any hypothetical `EqOn` into a contradiction.
+- Lean exports both non-equality on the full open strip and an existential
+  mismatch witness inside the strip.  The proof is stronger than a boundary-
+  only warning, though it does not name a fixed interior coordinate.
+- STATE revision 24 decomposes H3c into proved guard `H3c1`, OPEN exact
+  raw-or-compensated limit identification `H3c2`, and assembly `H3c3`.
+- `H3C_DOUBLE_COMPLETION_NOT_EXCLUDED` is retired, but
+  `XI_LIMIT_OBJECT_MISMATCH`, `XI_LIMIT_IDENTIFICATION_MISSING`, and the new
+  exact stop `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` stay live.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 120 nodes: 62 PROVED,
+  50 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

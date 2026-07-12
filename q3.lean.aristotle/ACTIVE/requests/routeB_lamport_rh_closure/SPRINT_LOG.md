@@ -58,3 +58,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H4d2a: GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN; common-envelope SAFE bounds and an independently supplied WPrime square identity imply the exact Contract-v2 squared polynomial envelope, pointwise and eventually.`
 
 `SKIPPED H4d2b: H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING; the source-locked WPrime identity, common-envelope SAFE inputs, fixed constants/signs, q_b, strict margin, nonnegative WPrime branch, cofinal scale/nonzero locus, and one joint filter remain open.`
+
+`CLOSED H3c1: H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN; continuity from z=-i/2 proves the extra-completed candidate and centeredXi are not EqOn the open critical strip, hence an interior mismatch exists.`
+
+`SKIPPED H3c2: H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING; the wrong double completion is excluded, but the exact same-family raw-or-inverse-completion route, finite/continuum bridge, one joint filter and Xi limit proof remain open.`

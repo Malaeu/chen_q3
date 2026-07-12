@@ -1,0 +1,158 @@
+{
+  "schema": "route_b_h3c_double_completion_strip_guard_certificate.v1",
+  "created_at": "2026-07-12T16:38:01+02:00",
+  "revision_target": 24,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompletedTrackerScope.lean",
+      "sha256": "e8d47f20b2addb37023a2c72f6bc0a8fae5ab44a443fb8efbf9b986146676b43",
+      "scope": "GAMMAC_CENTERED_STRIP_AND_BOUNDARY_IDENTITIES"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean",
+      "sha256": "838f8156efe7db74cdece2b333ee223ef7737ea2981c4ae28a672f36dd04e82b",
+      "scope": "CENTERED_XI_ENTIRE_AND_RIEMANN_XI_ONE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "XI_LIMIT_OBJECT_MISMATCH_AND_H3C_GUARD"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
+      "sha256": "524565589a228788039c6853e7919d6bf4f0f916e42493c6119372d637eb9b1d",
+      "scope": "CENTRAL_COMPLETION_NORMALIZATION_SOURCE"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "EXACT_XI_LIMIT_AND_JOINT_FILTER_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Gamma/Deriv.lean",
+      "sha256": "f84810167817d32ce4af64bc8f26acc0118f52018f0603cf275fbe349f71ba49",
+      "scope": "COMPLEX_GAMMA_DIFFERENTIABILITY"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Continuity.lean",
+      "sha256": "f85d1e9aea98697fd2479818411dcaa5afb95f028fcd2ce4c0f0b699f441eb43",
+      "scope": "COMPLEX_CPOW_CONTINUITY"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/MetricSpace/Pseudo/Defs.lean",
+      "sha256": "4e0697fc213bd28e398eb3796fd7304074d64aa5d4eb388da42f0d08980f7a96",
+      "scope": "METRIC_CLOSURE_CHARACTERIZATION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/ClusterPt.lean",
+      "sha256": "5d7b8b47d09bcc3087375b8f7c7d1da04e844fdfb26264c451493d4b4bfdfc4b",
+      "scope": "CLOSURE_NHDS_WITHIN_NONBOTTOM"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/Separation/Hausdorff.lean",
+      "sha256": "14a74ee1878554d95ba6d547813c0ce8fcbadfab739fd6ad9d0da681c8bfa707",
+      "scope": "HAUSDORFF_EVENTUAL_EQUALITY_LIMIT_UNIQUENESS"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Gamma/Basic.html",
+      "scope": "OFFICIAL_COMPLEX_GAMMA_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/Separation/Hausdorff.html",
+      "scope": "OFFICIAL_HAUSDORFF_LIMIT_UNIQUENESS_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/NhdsWithin.html",
+      "scope": "OFFICIAL_WITHIN_NEIGHBORHOOD_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
+    "sha256": "813b549f24b05d011fadf70eb7b5b6f85ecab81e303282418d8a42510e221ad0",
+    "proved": [
+      "gammaC_half_ne_zero",
+      "normalizedDoubleCompletedXi_not_eqOn_centeredCriticalStrip",
+      "exists_normalizedDoubleCompletedXi_mismatch_in_strip"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3C_DOUBLE_COMPLETION_STRIP_GUARD_2026-07-12.md",
+    "sha256": "52a240898be8cca01beacb7599bfad146d0f91467f29d8ef89d0e057047bd4c6"
+  },
+  "h3c_repair": {
+    "parent": "H3c",
+    "decomposition": "H3c.0",
+    "ordered_children": ["H3c1", "H3c2"],
+    "assembly": "H3c3",
+    "proved": ["H3c.0", "H3c1"],
+    "open": ["H3c", "H3c2", "H3c3", "H3", "H3d", "H3e", "L0c2", "L0c3", "L0"],
+    "generic_verdict": "H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN",
+    "residual_stop": "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING"
+  },
+  "boundary_to_interior_guard": {
+    "boundary_witness": "z=-I/2",
+    "membership": "IN_CLOSURE_NOT_IN_OPEN_STRIP",
+    "wrong_candidate_boundary_value": "0",
+    "centered_xi_boundary_value": "1/2",
+    "mechanism": "CONTINUITY_PLUS_EQON_CLOSURE_LIMIT_UNIQUENESS",
+    "strip_verdict": "NOT_EQON_OPEN_CENTERED_CRITICAL_STRIP",
+    "interior_verdict": "EXISTS_INTERIOR_MISMATCH",
+    "witness_kind": "EXISTENTIAL_NOT_NAMED_COORDINATE",
+    "denominator": "GAMMAC_HALF_NONZERO_LEAN"
+  },
+  "exact_instantiation_guard": {
+    "family": "SAME_H1C3_D0_8_SELECTED_EXACT_FAMILY",
+    "object_choice": "RAW_TRANSFORM_OR_EXACT_INVERSE_COMPLETION_CROSSWALK",
+    "filter": "ONE_SOURCE_LOCKED_JOINT_M_N_FILTER",
+    "external_requirement": "H3C_COMPLETION_OBJECT_CROSSWALK",
+    "forbidden": "NORMALIZED_EXTRA_COMPLETION_OF_ALREADY_COMPLETED_XI",
+    "open_codes": [
+      "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING",
+      "H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING",
+      "FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING",
+      "JOINT_N_LAMBDA_QUANTIFIER_MISSING",
+      "XI_LIMIT_IDENTIFICATION_MISSING",
+      "XI_LIMIT_OBJECT_MISMATCH",
+      "H3C_DOUBLE_COMPLETION_REINTRODUCED",
+      "H3C_SAME_FAMILY_SELECTION_MISSING",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 120,
+    "PROVED": 62,
+    "OPEN": 50,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_H3C_PARENT_CLOSURE",
+    "NO_EXACT_XI_LIMIT_IDENTIFICATION",
+    "NO_CORRECT_LIMIT_OBJECT_SELECTION",
+    "NO_JOINT_FILTER_SELECTION",
+    "NO_H3_PARENT_CLOSURE",
+    "NO_L0C2_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

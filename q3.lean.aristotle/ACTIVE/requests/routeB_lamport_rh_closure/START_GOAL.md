@@ -148,6 +148,13 @@ Current fail-closed address:
   constants/signs, common envelope, nonnegative WPrime branch, strict margin,
   cofinal scale/nonzero locus and the joint filter remain OPEN in `H4d2b` with
   stop `H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING`;
+- rev24 proves `H3c1 H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN`:
+  the central-normalized extra completion of the already completed
+  `centeredXi` cannot equal it on the open critical strip, and an interior
+  mismatch point exists by continuity from `z=-i/2`; exact raw-or-inverse-
+  completion family selection, one joint filter and Xi limit identification
+  remain OPEN in `H3c2` with stop
+  `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

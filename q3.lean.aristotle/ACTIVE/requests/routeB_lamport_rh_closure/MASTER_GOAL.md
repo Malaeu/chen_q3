@@ -463,7 +463,10 @@ R0 RHClosure [AND]
 |   |   |-- H3b1 GenericCompactEvaluationRateTransfer
 |   |   |-- H3b2 ExactWeightedEvaluationInstantiation
 |   |   `-- H3b3 H3bAssembly
-|   |-- H3c XiLimitIdentification
+|   |-- H3c XiLimitIdentification [AND]
+|   |   |-- H3c1 NormalizedDoubleCompletionStripGuard
+|   |   |-- H3c2 ExactRawOrCompensatedXiLimitAndFilter
+|   |   `-- H3c3 H3cAssembly
 |   |-- H3e ExactWPrimeTrackingTheorem
 |   `-- H3d H3Assembly
 |-- H4 DetectorDecay [AND]
@@ -586,7 +589,11 @@ proof node.
 | `H3b1` | Vanishing compact-uniform envelopes imply uniform/compact-open convergence; a fixed bound alone is falsified | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN` |
 | `H3b2` | Instantiate the same-family compact envelope and weighted ground/trial rate on the exact joint filter | `OPEN / INELIGIBLE` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
 | `H3b3` | Exact H3b assembly | `OPEN / BLOCKED_BY_H3b2` | `COMPACT_STRIP_EVALUATION_PROVED` |
-| `H3c` | Normalized limit is exactly `Xi`, with cofinal quantifiers and no double completion | `OPEN_CRITICAL / XI_LIMIT_OBJECT_MISMATCH` | `XI_LIMIT_IDENTIFICATION_PROVED` |
+| `H3c` | AND parent: double-completion strip guard plus exact raw-or-compensated same-family Xi limit | `OPEN / WRONG_OBJECT_KILLED / EXACT_LIMIT_OPEN` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
+| `H3c.0` | H3c decomposition contract | `PROVED` | `H3C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3c1` | Central-normalized extra completion of already completed `centeredXi` differs somewhere inside the open critical strip | `PROVED / EXACT_LEAN / FALSIFIER_LIVE` | `H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN` |
+| `H3c2` | Select one exact family/filter and prove raw convergence or an exact inverse-completion crosswalk to `centeredXi` | `OPEN / INELIGIBLE` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
+| `H3c3` | Exact H3c assembly | `OPEN / BLOCKED_BY_H3c2` | `H3C_EXACT_LIMIT_IDENTIFICATION_ASSEMBLY` |
 | `H3e` | Exact migrated WPrime tracking theorem; consumes the D0 slot, H3 inputs, true H4 quantities, H0/A1 and `PO_XWALK_UNIFORM_EVAL` | `OPEN / INACTIVE / RELATIVE_NORMALIZATION_GAP` | `EXACT_WPRIME_TRACKING_PROVED` |
 | `H3d` | H3 assembly theorem `H3a AND H3b AND H3c AND H3e -> H3` | `OPEN / BLOCKED_BY_H3_CHILDREN` | `H3_ASSEMBLED` |
 | `H4` | Contract-v2 AND parent for QuantitativeSafeWitness and detector decay | `OPEN` | `DETECTOR_DECAY_PROVED` |
@@ -846,6 +853,17 @@ non-tautological D0.7e.5c consumer identity, common-envelope SAFE bounds,
 fixed constants and signs, `q_b`, a strict exponent margin, eventual WPrime
 nonnegativity, cofinal scale, nonzero locus, and one selected joint filter.
 Therefore H4d2, H4d, H4, and RH remain OPEN.
+
+Revision 24 turns the H3c double-completion suspicion into an exact Lean kill
+certificate.  At the closure point `z=-i/2`, the central-normalized extra
+completion of already completed `centeredXi` is zero while `centeredXi=1/2`.
+Continuity and uniqueness of the within-strip limit prove that the two
+functions cannot agree throughout the open strip, hence an interior mismatch
+point exists.  This retires only `H3C_DOUBLE_COMPLETION_NOT_EXCLUDED`.
+Exact H3c2 still must select the same Route B family and one joint filter, then
+prove raw convergence or an exact inverse-completion crosswalk to `centeredXi`.
+Thus `XI_LIMIT_OBJECT_MISMATCH`, `XI_LIMIT_IDENTIFICATION_MISSING`, H3c, H3,
+L0c2, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

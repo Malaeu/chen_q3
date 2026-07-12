@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 23,
-  "updated_at": "2026-07-12T16:21:02+02:00",
+  "revision": 24,
+  "updated_at": "2026-07-12T16:38:01+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "49bc82a0437fb35e6ac25adeb85a32f8db34845db04662d15b2d1e6d953e0bda",
+    "sprint_log_sha256": "571e3db8df7b5992aa8f0838b0541210d64c43cff94626f90d1ceecd5252f7e1",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -418,6 +418,31 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3c_double_completion_strip_guard": {
+    "name": "H3C_DOUBLE_COMPLETION_STRIP_GUARD_REV24",
+    "status": "NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_PROVED_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_OPEN_NOT_RH",
+    "certificate": "H3C_DOUBLE_COMPLETION_STRIP_GUARD_CERTIFICATE.json",
+    "certificate_sha256": "c4c9cb00aa4c65b6341c57393841d618d169eb1196869c3ca2edf9aca604033c",
+    "validator": "validate_h3c_double_completion_strip_guard.py",
+    "validator_sha256": "710188cd93659f6755bb18a3f5b956bfcd6b71d3206b948a6916611ca32bcc8e",
+    "artifact": "H3C_DOUBLE_COMPLETION_STRIP_GUARD_2026-07-12.md",
+    "artifact_sha256": "52a240898be8cca01beacb7599bfad146d0f91467f29d8ef89d0e057047bd4c6",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
+      "sha256": "813b549f24b05d011fadf70eb7b5b6f85ecab81e303282418d8a42510e221ad0"
+    },
+    "proved_nodes": [
+      "H3c.0",
+      "H3c1"
+    ],
+    "generic_verdict": "H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN",
+    "interior_verdict": "EXISTS_INTERIOR_MISMATCH",
+    "next_worker_leaf": null,
+    "next_exact_node": "H3c2",
+    "remaining_stop": "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -496,7 +521,8 @@
       "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20",
       "H3B_COMPACT_EVALUATION_RATE_TRANSFER_REV21",
       "H4A1_AMBIENT_RESIDUAL_SPLIT_REV22",
-      "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_REV23"
+      "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_REV23",
+      "H3C_DOUBLE_COMPLETION_STRIP_GUARD_REV24"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1306,14 +1332,51 @@
       "failure_codes": ["H3B_ASSEMBLY_GAP", "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H3c": {
-      "id": "H3c", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
-      "statement": "A source-locked joint N-lambda diagonal and normalization converge exactly to Xi",
-      "dependencies": ["D0", "H3a", "H3b"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H3c", "parent_id": "H3", "kind": "AND", "role": "GOAL",
+      "statement": "The normalized double-completion guard and an exact raw-or-compensated same-family joint-filter limit identification establish the Xi limit without double completion",
+      "dependencies": ["H3c.0"], "ordered_children": ["H3c1", "H3c2"], "assembly_theorem_id": "H3c3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H3a_H3b_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H3C2_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_OPEN"},
       "validation": "JOINT_QUANTIFIER_NORMALIZATION_XI_IDENTITY_AUDIT",
+      "failure_codes": ["FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING", "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING"]
+    },
+    "H3c.0": {
+      "id": "H3c.0", "parent_id": "H3c", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H3c iff H3c1 and H3c2 both hold, with H3c3 as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H3C_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H3C_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H3c1": {
+      "id": "H3c1", "parent_id": "H3c", "kind": "LEAF", "role": "GOAL",
+      "statement": "The central-normalized extra completion of the already completed centeredXi differs from centeredXi somewhere in the open centered critical strip",
+      "dependencies": ["C0", "D0.7e.2", "D0.7e.3"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_EXACT_LEAN"},
+      "validation": "H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
+      "failure_codes": ["H3C_DOUBLE_COMPLETION_GUARD_GAP", "H3C_BOUNDARY_ONLY_GUARD_INSUFFICIENT", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3c2": {
+      "id": "H3c2", "parent_id": "H3c", "kind": "LEAF", "role": "GOAL",
+      "statement": "Select the exact same Route B family and one source-locked joint (m,N) filter, then prove raw-transform convergence to centeredXi or an exact inverse-completion crosswalk before normalization",
+      "dependencies": ["D0", "H3a", "H3b", "H3c1"], "ordered_children": [], "assembly_theorem_id": null,
       "external_requirements": ["H3C_COMPLETION_OBJECT_CROSSWALK"],
-      "failure_codes": ["FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_DOUBLE_COMPLETION_NOT_EXCLUDED"]
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3A_H3B_AND_EXACT_LIMIT_INPUTS_OPEN"},
+      "validation": "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_AUDIT",
+      "failure_codes": ["H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING", "H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING", "FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_DOUBLE_COMPLETION_REINTRODUCED", "H3C_SAME_FAMILY_SELECTION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3c3": {
+      "id": "H3c3", "parent_id": "H3c", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3c.0 AND H3c1 AND H3c2 IMPLIES exact Xi limit identification without double completion",
+      "dependencies": ["H3c.0", "H3c1", "H3c2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3C2_OPEN"},
+      "validation": "H3C_EXACT_LIMIT_IDENTIFICATION_ASSEMBLY",
+      "failure_codes": ["H3C_ASSEMBLY_GAP", "XI_LIMIT_OBJECT_MISMATCH"]
     },
     "H3d": {
       "id": "H3d", "parent_id": "H3", "kind": "LEAF", "role": "ASSEMBLY",
@@ -1932,6 +1995,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN;COMMON_ENVELOPE_CANCELLATION_EXPLICIT;H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING"
+      },
+      "H3c/normalized_double_completion_strip_guard/v1": {
+        "status": "DOUBLE_COMPLETION_KILLED_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_OPEN",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN;EXISTS_INTERIOR_MISMATCH;H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING"
       }
     }
   },
@@ -2137,6 +2206,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN;COMMON_ENVELOPE_CANCELLATION_EXPLICIT;H4D2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_WPRIME_IDENTITY_SAFE_CONSTANTS_COMMON_ENVELOPE_NONNEGATIVE_BRANCH_STRICT_MARGIN_AND_JOINT_FILTER_OPEN_H4D2_H4D_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T16:38:01+02:00",
+      "event": "H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_GUARD_PROVED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN;EXISTS_INTERIOR_MISMATCH;H3C_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "WRONG_DOUBLE_COMPLETION_KILLED_CORRECT_RAW_OR_INVERSE_COMPLETION_LIMIT_OBJECT_AND_JOINT_FILTER_OPEN_H3C_H3_L0C2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }
