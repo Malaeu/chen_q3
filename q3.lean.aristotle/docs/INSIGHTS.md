@@ -47540,3 +47540,24 @@ Final result:
   all-z inputs remain OPEN in `H2b2b2b2`.
 - The count is 180 nodes: 92 PROVED, 80 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2b2b2b2 quotient-radical metric core (in progress)
+
+- Exact target: separate the universal quotient-by-radical metric and
+  weighted-symmetry descent from the missing exact Route B proofs of
+  positivity, `rad(T)=span{xi}`, and source-object identification.
+- Four local `q3_docs` queries found only weak adjacent quotient/PSD material
+  (roughly 0.61--0.66); no current project theorem packages this generic
+  quotient construction.
+- Generic hypotheses are a symmetric positive-semidefinite bilinear form `B`,
+  an exact radical submodule `K`, and an endomorphism `A` symmetric for `B`.
+- They imply `A(K)⊆K`, a well-defined positive-definite form on `V/K`, an
+  induced quotient endomorphism, and symmetry of that induced map.
+- Official Mathlib supplies `Submodule.liftQ`/`mapQ` for quotient maps and the
+  `BilinForm`/bilinear-map API; it does not supply the exact Route B `T`,
+  radical equality, or modified-Hilbert source crosswalk.
+- Planned DAG split: nest generic H2b2b2b2a below H2b2b2b2, leave exact
+  positivity/radical/source metric/removable-factor/complement/phase/all-z
+  instantiation H2b2b2b2b and assembly H2b2b2b2c OPEN.
+- No positivity of the actual Weil matrix, radical identification, Bus 010, or
+  RH conclusion is inferred.
