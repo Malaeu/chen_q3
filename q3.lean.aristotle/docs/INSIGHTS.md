@@ -46555,3 +46555,25 @@ not the raw-D17 factorwise support class.
 - The maximum-unblock owner decision is now singular and explicit: supply and
   ratify a new non-tautological WPrime consumer definition with its exact `b`
   orientation. No selector, filter, alpha, Bus 010, or RH claim was invented.
+
+## Insight (2026-07-12, Route B Lamport compiler) -- C0L0LeanFrontier
+
+- Four local `q3_docs` searches found no existing Lean `ZeroEscape` or
+  Route-B-specific `xi/Xi` export.  The reusable local interface is `Q3.RH` in
+  `Q3/Basic/Defs.lean`; it quantifies exactly over zeros in `0 < re(s) < 1`.
+- Mathlib already supplies `riemannZeta`, the entire pole-removed completion
+  `completedRiemannZeta₀`, its functional equation, and
+  `Gammaℝ_ne_zero_of_re_pos`.  Hence the classical entire function can be
+  defined without an axiom as `1/2 + (1/2)s(s-1)completedRiemannZeta₀(s)`.
+- The identity `completedRiemannZeta = completedRiemannZeta₀ - 1/s - 1/(1-s)`
+  gives the conventional `xi` formula away from `0,1`; in the critical strip
+  its zeros are therefore exactly the `riemannZeta` zeros.
+- The affine maps `s = 1/2 + I*z` and `z = -I*(s-1/2)` convert
+  `0 < re(s) < 1` into `abs(im(z)) < 1/2` and the critical line into
+  `im(z)=0`.  This makes `C0` a direct hole-free Lean target.
+- Current Mathlib exposes isolated-zero and locally-uniform-convergence APIs,
+  but the audited tree has no ready Rouché/Hurwitz zero-transfer theorem.
+  Therefore `L0` must split fail-closed: generic zero-transfer logic can be
+  Lean-proved now, while the analytic transfer remains a named open bridge.
+- No H1--H4 supply theorem, WPrime consumer, selector, alpha, or Bus 010 may be
+  inferred from this interface work.  Route B remains `CHALLENGER / NOT_RH`.
