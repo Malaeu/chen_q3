@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T19:44:00+02:00",
+  "updated_at": "2026-07-12T20:08:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -114,6 +114,9 @@
       ,"H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN"
       ,"H3C2_UNIFORM_DIFFERENCE_PLUS_REFERENCE_TRANSFER_LEAN"
       ,"H3C2_LOCALLY_UNIFORM_OPEN_DOMAIN_TRANSFER_LEAN"
+      ,"H2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H2B2B_GENERIC_RANK_ONE_DETERMINANT_OFF_SPECTRUM_LEAN"
+      ,"H2B2B_MATRIX_DETERMINANT_LEMMA_FACTOR_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -182,6 +185,7 @@
       ,"H3A2_EXACT_SPECTRAL_WEIGHT_CROSSWALK_MISSING"
       ,"H3C2_EXACT_REFERENCE_CONVERGENCE_MISSING"
       ,"H3C2_EXACT_DIFFERENCE_FAMILY_IDENTITY_MISSING"
+      ,"H2B2B_SPECTRAL_POINT_EXTENSION_MISSING"
     ]
   },
   "bus": {
@@ -286,7 +290,7 @@
       "code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
       "class": "MASTER_DAG_EXACT_REAL_ZERO_FACTORIZATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
-      "detail": "The generic periodic/Hermitian determinant real-zero transfers and the rank-one correction kernel/T-weighted-symmetry algebra are Lean-proved, but exact T positivity and radical, quotient descent/self-adjointness, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization, and the same raw family remain open; H2b stays CONDITIONAL."
+      "detail": "The generic periodic/Hermitian real-zero transfers, rank-one kernel/T-weighted symmetry and off-spectrum determinant factorization are Lean-proved. Spectral/lattice-point extension, exact T positivity/radical, quotient descent/self-adjointness, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization and the same raw family remain open; H2b stays CONDITIONAL."
     },
     {
       "code": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
@@ -555,7 +559,7 @@
     },
     "h2b_hermitian_determinant_real_zeros_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b_hermitian_determinant_real_zeros.py",
-      "sha256": "43fe1323547e8c4dc23a565efbf4b161f74eff08d14246a83e2bfa5604bc81e0"
+      "sha256": "ef4fc5db6f826b2b68f39e32dcdd2d2b56e55f12e1b0f9b96bc801df19a10bf1"
     },
     "h2b_hermitian_determinant_real_zeros_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
@@ -663,7 +667,7 @@
     },
     "h2b2_rank_one_correction_weighted_symmetry_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2_rank_one_correction_weighted_symmetry.py",
-      "sha256": "cabfc66c0f825c62435ac17ba030397a6101600370ad09efc11e900b51d73897"
+      "sha256": "99e4ac704d825a31da14bf191a5e6b77cedef465efeb5b1d637332d178e0e5b1"
     },
     "h2b2_rank_one_correction_weighted_symmetry_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
@@ -692,6 +696,18 @@
     "h3c2_uniform_difference_reference_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/UniformDifferenceReferenceTransfer.lean",
       "sha256": "15ba25ce2d08ea47bfd13bc64975220d586ed5dd4691bd80634a007a50515c99"
+    },
+    "h2b2b_rank_one_correction_determinant_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B_RANK_ONE_CORRECTION_DETERMINANT_CERTIFICATE.json",
+      "sha256": "3fc753c2a91bcae24b3ec1c591947f956b64312d7991a6ce86d5dab19c8060b0"
+    },
+    "h2b2b_rank_one_correction_determinant_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b_rank_one_correction_determinant.py",
+      "sha256": "817a8ccdd285998b041aed6b53e2aa2d656bfea1470128e75cf1c1fc5c4d44b7"
+    },
+    "h2b2b_rank_one_correction_determinant_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionDeterminant.lean",
+      "sha256": "b8d530f16f4413e30c9f55d0aa43ca99d972142845617ae81006fc9f4eace8d3"
     }
   },
   "stages": [

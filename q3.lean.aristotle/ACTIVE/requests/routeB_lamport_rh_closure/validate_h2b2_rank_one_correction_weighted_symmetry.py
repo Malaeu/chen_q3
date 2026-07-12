@@ -88,13 +88,29 @@ def main() -> None:
         "H2B2A_PROOF_ARTIFACT_DRIFT",
     )
 
-    exact = nodes["H2b2b"]
-    require(exact["proof_status"] == "OPEN", "H2B2B_FALSE_PASS")
-    require(not exact["eligibility"]["eligible"], "H2B2B_FALSE_ELIGIBILITY")
-    require(
-        exact["dependencies"] == cert["exact_instantiation_guard"]["dependencies"],
-        "H2B2B_DEPENDENCY_DRIFT",
-    )
+    exact_parent = nodes["H2b2b"]
+    require(exact_parent["proof_status"] == "OPEN", "H2B2B_FALSE_PASS")
+    require(not exact_parent["eligibility"]["eligible"], "H2B2B_FALSE_ELIGIBILITY")
+    if state["revision"] >= 37:
+        require(exact_parent["kind"] == "AND", "H2B2B_PARENT_NOT_AND")
+        require(exact_parent["dependencies"] == ["H2b2b.0"], "H2B2B_PARENT_DEPENDENCY_DRIFT")
+        require(exact_parent["ordered_children"] == ["H2b2b1", "H2b2b2"], "H2B2B_CHILD_ORDER_DRIFT")
+        require(exact_parent["assembly_theorem_id"] == "H2b2b3", "H2B2B_ASSEMBLY_ADDRESS_DRIFT")
+        exact = nodes["H2b2b2"]
+        require(exact["proof_status"] == "OPEN", "H2B2B2_FALSE_PASS")
+        require(not exact["eligibility"]["eligible"], "H2B2B2_FALSE_ELIGIBILITY")
+        require(
+            exact["dependencies"] == [
+                "D0.3d", "D0.6", "D0.7", "D0.8", "H1c2", "H1c3", "H2a", "H2b1", "H2b2a", "H2b2b1"
+            ],
+            "H2B2B2_DEPENDENCY_DRIFT",
+        )
+    else:
+        exact = exact_parent
+        require(
+            exact["dependencies"] == cert["exact_instantiation_guard"]["dependencies"],
+            "H2B2B_DEPENDENCY_DRIFT",
+        )
     for code in cert["exact_instantiation_guard"]["open_codes"]:
         require(code in exact["failure_codes"], f"H2B2B_GUARD_MISSING:{code}")
 

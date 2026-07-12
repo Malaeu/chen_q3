@@ -47458,3 +47458,15 @@ Final result:
   `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`.
 - No quotient self-adjointness, same-family identity, Bus 010, or RH conclusion
   is inferred.
+
+Final result:
+
+- `RankOneCorrectionDeterminant.lean` proves the exact off-spectrum matrix
+  determinant factorization for the already-locked rank-one correction.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; `IsUnit det(D-sI)` remains explicit.
+- STATE revision 37 nests proved `H2b2b.0` and `H2b2b1` below H2b2b. Exact
+  spectral-point extension, quotient/complement/phase/all-z inputs remain OPEN
+  in `H2b2b2`.
+- The count is 172 nodes: 88 PROVED, 76 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

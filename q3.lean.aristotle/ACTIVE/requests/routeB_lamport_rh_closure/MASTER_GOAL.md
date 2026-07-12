@@ -462,7 +462,10 @@ R0 RHClosure [AND]
 |   |   |-- H2b1 GenericHermitianDeterminantRealZeros
 |   |   |-- H2b2 ExactTheorem510Factorization [AND]
 |   |   |   |-- H2b2a GenericRankOneCorrectionWeightedSymmetry
-|   |   |   |-- H2b2b ExactModifiedHilbertFactorization
+|   |   |   |-- H2b2b ExactModifiedHilbertFactorization [AND]
+|   |   |   |   |-- H2b2b1 GenericOffSpectrumDeterminantCore
+|   |   |   |   |-- H2b2b2 ExactQuotientLatticeAllZInstantiation
+|   |   |   |   `-- H2b2b3 H2b2bAssembly
 |   |   |   `-- H2b2c H2b2Assembly
 |   |   `-- H2b3 H2bAssembly
 |   `-- H2c H2Assembly
@@ -626,7 +629,11 @@ proof node.
 | `H2b2` | AND parent: generic rank-one kernel/weighted symmetry plus exact modified-Hilbert quotient and factorization | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
 | `H2b2.0` | H2b2 decomposition contract | `PROVED` | `H2B2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2b2a` | Rank-one correction kills the calibration vector and is symmetric for the supplied T-weighted form | `PROVED / GENERIC_LEAN` | `H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN` |
-| `H2b2b` | Exact same-family T positivity/radical, quotient descent, complement, phase and all-z factorization | `OPEN / INELIGIBLE` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2b` | AND parent: generic off-spectrum determinant factor plus exact quotient/lattice/complement/phase/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2b.0` | H2b2b decomposition contract | `PROVED` | `H2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2b2b1` | Matrix determinant lemma factors the rank-one correction whenever `det(D-sI)` is a unit | `PROVED / GENERIC_LEAN` | `H2B2B_GENERIC_RANK_ONE_DETERMINANT_OFF_SPECTRUM_LEAN` |
+| `H2b2b2` | Exact quotient positivity/radical/descent, spectral-point extension, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2b3` | Exact H2b2b assembly | `OPEN / BLOCKED_BY_H2b2b2` | `H2B2B_EXACT_ALL_Z_FACTORIZATION_ASSEMBLY` |
 | `H2b2c` | Exact H2b2 assembly | `OPEN / BLOCKED_BY_H2b2b` | `H2B2_EXACT_FACTORIZATION_ASSEMBLY` |
 | `H2b3` | Exact H2b assembly | `OPEN / BLOCKED_BY_H2b2` | `H2B_EXACT_REAL_ZERO_ASSEMBLY` |
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
@@ -1061,6 +1068,15 @@ still select the raw or inverse-completed family, prove the exact difference
 identity and reference convergence to centeredXi, establish the finite/
 continuum crosswalk, and choose one joint filter.  H3c2, H3c, H3, L0 and RH
 remain OPEN.
+
+Revision 37 extracts the final independent generic H1/H2/L0 frontier found by
+the exhaustive audit.  Lean rewrites the source rank-one correction at
+`D-sI` as a column-row update and applies the matrix determinant lemma whenever
+`det(D-sI)` is a unit.  This proves the exact off-spectrum determinant factor,
+but deliberately does not cover spectral/lattice points.  Exact H2b2b2 still
+needs quotient positivity/radical/descent, the spectral-point cancellation,
+complement determinant, nonvanishing phase, all-z identity and same Route B
+family.  H2b remains CONDITIONAL; H2, L0 and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

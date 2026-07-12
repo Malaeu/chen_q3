@@ -238,6 +238,12 @@ Current fail-closed address:
   inverse-completion crosswalk, centeredXi limit and joint filter remain OPEN
   in `H3c2b` with stop
   `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING`;
+- rev37 proves `H2b2b1 H2B2B_GENERIC_RANK_ONE_DETERMINANT_OFF_SPECTRUM_LEAN`:
+  the matrix determinant lemma factors the source rank-one correction whenever
+  `det(D-sI)` is a unit; spectral/lattice-point extension, quotient positivity
+  and radical, descent/self-adjointness, complement determinant, nonvanishing
+  phase, all-z identity and same-family crosswalk remain OPEN in `H2b2b2` with
+  stop `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

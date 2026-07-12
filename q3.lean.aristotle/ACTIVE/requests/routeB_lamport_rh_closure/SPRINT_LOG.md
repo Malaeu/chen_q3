@@ -122,3 +122,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H3c2a: H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN; (F-G)->0 and G->X imply F->X uniformly on a set and locally uniformly on an open locally compact domain.`
 
 `SKIPPED H3c2b: H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING; exact difference/reference families, raw-or-inverse completion choice, centeredXi reference limit, finite/continuum bridge and one joint filter remain open.`
+
+`CLOSED H2b2b1: H2B2B_GENERIC_RANK_ONE_DETERMINANT_OFF_SPECTRUM_LEAN; when det(D-sI) is a unit, the matrix determinant lemma factors the determinant of D-|D xi><eta|-sI through the one-dimensional resolvent correction.`
+
+`SKIPPED H2b2b2: H2B_EXACT_THEOREM510_FACTORIZATION_MISSING; spectral/lattice-point extension, exact T positivity/radical, quotient descent/self-adjointness, complement determinant, nonvanishing phase, all-z identity and same Route B family remain open.`
