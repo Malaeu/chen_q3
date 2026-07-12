@@ -1,0 +1,65 @@
+{
+  "schema": "route_b_h3b2_weighted_projective_evaluation_transfer_certificate.v1",
+  "created_at": "2026-07-12T18:24:47+02:00",
+  "revision_target": 32,
+  "source_pins": [
+    {"path": "q3.lean.aristotle/Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean", "sha256": "9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f", "scope": "H3A1_PHASE_ALIGNMENT_PROJECTIVE_BOUND"},
+    {"path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean", "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c", "scope": "H3B1_UNIFORM_EVALUATION_RATE_RECEIVER"},
+    {"path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3A_PHASE_ALIGNMENT_RATE_TRANSFER_2026-07-12.md", "sha256": "86bbe7b8ea4d00b122a554597b860de67e848ef9117de9baf226fcbb5ff81e3c", "scope": "H3A1_EXACT_BOUNDARY"},
+    {"path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3A_PHASE_ALIGNMENT_RATE_TRANSFER_CERTIFICATE.json", "sha256": "67905b34225d08908073c1dc411d4a860c2dfe8d851dfb58e6bd0d2bf97b52b5", "scope": "H3A1_VALIDATION_BOUNDARY"},
+    {"path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3B_COMPACT_EVALUATION_RATE_TRANSFER_2026-07-12.md", "sha256": "544c4dd4ce4d69732ba994208ab929092502086cb1c1aaad3a3254cba3e58135", "scope": "H3B1_EXACT_BOUNDARY"},
+    {"path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3B_COMPACT_EVALUATION_RATE_TRANSFER_CERTIFICATE.json", "sha256": "9b08e1d879e905715a2e48f64017e7a4697b5f8b28c50af668c17fed66435c70", "scope": "H3B1_VALIDATION_BOUNDARY"},
+    {"path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md", "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171", "scope": "H3_COMPACT_TRACKING_CONTRACT"},
+    {"path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_GROUND_AND_TRIAL_TYPES.md", "sha256": "9cb7a9e34d0d051fc78c9c7a69e71fc91e7c7722f3d8c9a5713469d4f3bd5547", "scope": "EXACT_GROUND_TRIAL_BOUNDARY"},
+    {"path": "q3.lean.aristotle/lake-manifest.json", "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a", "scope": "MATHLIB_DEPENDENCY_REVISION"},
+    {"path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/Basic.lean", "sha256": "f1ebbf5f60cb9af97601c785ef3472ba676355a883f4c93f15d513b894779d2a", "scope": "INNER_PRODUCT_PROJECTIVE_API"},
+    {"path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/MetricSpace/Pseudo/Basic.lean", "sha256": "7bef6791f532acb36d085a2a7825646c1730826b2bb9cbc4dcf8609e8958c75e", "scope": "METRIC_UNIFORM_CONVERGENCE_API"},
+    {"path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Order/Filter/Defs.lean", "sha256": "e64b66543c9adbfe9029ca2f72ee49dff80bcb4fd6602241bda99d82b3f7630c", "scope": "NONBOTTOM_FILTER_API"}
+  ],
+  "external_source_references": [
+    {"url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/InnerProductSpace/Basic.html", "scope": "OFFICIAL_INNER_PRODUCT_API"},
+    {"url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/UniformSpace/LocallyUniformConvergence.html", "scope": "OFFICIAL_UNIFORM_CONVERGENCE_API"},
+    {"url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/Defs.html", "scope": "OFFICIAL_FILTER_API"}
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedProjectiveEvaluationTransfer.lean",
+    "sha256": "b08ec751f7508331acf0edfc63e75a1d9f61c738fab956d042514a51eb31d8ab",
+    "proved": ["tendstoUniformlyOn_zero_of_weighted_projective_defect"]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3B2_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_2026-07-12.md",
+    "sha256": "d8a9963b14dc723c5cdeaf70e87258647f5a2c4d5be7e7a71eda434a3d3bed68"
+  },
+  "h3b2_repair": {
+    "parent": "H3b2",
+    "decomposition": "H3b2.0",
+    "ordered_children": ["H3b2a", "H3b2b"],
+    "assembly": "H3b2c",
+    "proved": ["H3b2.0", "H3b2a"],
+    "open": ["H3b2", "H3b2b", "H3b2c", "H3b3", "H3b", "H3c2", "H3e2", "H3", "H3d", "L0c2", "L0"],
+    "generic_verdict": "H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN",
+    "residual_stop": "H3B2_EXACT_WEIGHTED_PROJECTIVE_INPUTS_MISSING"
+  },
+  "weighted_projective_interface": {
+    "unit_hypotheses": "EVENTUAL",
+    "envelope_nonnegative": "EVENTUAL",
+    "source_rate": "C_TIMES_SQRT_TWO_PROJECTIVE_DEFECT_TENDS_TO_ZERO",
+    "evaluation_bound": "NORM_T_ERROR_LE_C_TIMES_NORM_ERROR",
+    "topology": "TENDSTO_UNIFORMLY_ON_K",
+    "filter": "NONBOTTOM",
+    "phase_source": "H3a1",
+    "evaluation_source": "H3b1"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H3a", "H3b2a"],
+    "external_requirements": ["PO_XWALK_UNIFORM_EVAL"],
+    "family": "EXACT_SAME_GROUND_TRIAL_EVALUATION_AND_JOINT_FILTER",
+    "open_codes": ["H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING", "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "H3B_UNIFORM_COMPACT_ENVELOPE_MISSING", "H3B_WEIGHTED_ERROR_RATE_MISSING", "H3B_SAME_FAMILY_FILTER_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "PO_XWALK_UNIFORM_EVAL", "TOPOLOGY_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+  },
+  "expected_node_counts": {"total": 152, "PROVED": 78, "OPEN": 66, "BLOCKED": 7, "CONDITIONAL": 1},
+  "lean_audit": {"holes": 0, "unexpected_axioms": [], "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]},
+  "scheduler_firewall": {"active_leaf": "D0.7e.5a", "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING", "bus_010_created": false, "eligible_worker_leaves_after_transaction": []},
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": ["NO_EXACT_GROUND_SELECTOR", "NO_EXACT_TRIAL_NONZERO_LOCUS", "NO_EXACT_PROJECTIVE_DEFECT_RATE", "NO_EXACT_COMPACT_EVALUATION_ENVELOPE", "NO_SAME_FAMILY_FILTER_SELECTION", "NO_H3B2_PARENT_CLOSURE", "NO_H3B_PARENT_CLOSURE", "NO_H3_PARENT_CLOSURE", "NO_BUS_010", "NO_RH"]
+}

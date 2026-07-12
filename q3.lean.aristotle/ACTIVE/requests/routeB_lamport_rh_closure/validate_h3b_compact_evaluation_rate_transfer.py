@@ -92,7 +92,14 @@ def main() -> None:
     h3b2 = nodes["H3b2"]
     require(h3b2["proof_status"] == "OPEN", "H3B2_FALSE_PASS")
     require(not h3b2["eligibility"]["eligible"], "H3B2_FALSE_ELIGIBILITY")
-    require(h3b2["dependencies"] == ["D0", "H3a", "H3b1"], "H3B2_DEPENDENCY_DRIFT")
+    if state["revision"] >= 32:
+        require(h3b2["kind"] == "AND", "H3B2_PARENT_NOT_AND")
+        require(h3b2["dependencies"] == ["H3b2.0"], "H3B2_DEPENDENCY_DRIFT")
+        require(h3b2["ordered_children"] == ["H3b2a", "H3b2b"], "H3B2_CHILD_ORDER_DRIFT")
+        require(h3b2["assembly_theorem_id"] == "H3b2c", "H3B2_ASSEMBLY_ADDRESS_DRIFT")
+        require(nodes["H3b2b"]["dependencies"] == ["D0", "H3a", "H3b2a"], "H3B2B_DEPENDENCY_DRIFT")
+    else:
+        require(h3b2["dependencies"] == ["D0", "H3a", "H3b1"], "H3B2_DEPENDENCY_DRIFT")
     for code in (
         "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING",
         "H3B_UNIFORM_COMPACT_ENVELOPE_MISSING",

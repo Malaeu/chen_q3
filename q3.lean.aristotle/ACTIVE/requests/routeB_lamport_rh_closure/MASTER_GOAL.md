@@ -470,7 +470,10 @@ R0 RHClosure [AND]
 |   |   `-- H3a3 H3aAssembly
 |   |-- H3b CompactStripEvaluation [AND]
 |   |   |-- H3b1 GenericCompactEvaluationRateTransfer
-|   |   |-- H3b2 ExactWeightedEvaluationInstantiation
+|   |   |-- H3b2 ExactWeightedEvaluationInstantiation [AND]
+|   |   |   |-- H3b2a GenericWeightedProjectiveEvaluationCore
+|   |   |   |-- H3b2b ExactWeightedProjectiveInstantiation
+|   |   |   `-- H3b2c H3b2Assembly
 |   |   `-- H3b3 H3bAssembly
 |   |-- H3c XiLimitIdentification [AND]
 |   |   |-- H3c1 NormalizedDoubleCompletionStripGuard
@@ -620,7 +623,11 @@ proof node.
 | `H3b` | AND parent: generic compact rate transfer plus exact weighted Route B instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
 | `H3b.0` | H3b decomposition contract | `PROVED` | `H3B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H3b1` | Vanishing compact-uniform envelopes imply uniform/compact-open convergence; a fixed bound alone is falsified | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN` |
-| `H3b2` | Instantiate the same-family compact envelope and weighted ground/trial rate on the exact joint filter | `OPEN / INELIGIBLE` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
+| `H3b2` | AND parent: generic H3a1-to-H3b1 weighted-projective bridge plus exact same-family instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
+| `H3b2.0` | H3b2 decomposition contract | `PROVED` | `H3B2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3b2a` | A nonnegative compact envelope times the phase-aligned projective defect controls uniform evaluation error on a nonbottom filter | `PROVED / GENERIC_LEAN` | `H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN` |
+| `H3b2b` | Instantiate exact ground/trial, evaluation map/envelope, weighted rate and joint filter | `OPEN / INELIGIBLE` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
+| `H3b2c` | Exact H3b2 assembly | `OPEN / BLOCKED_BY_H3b2b` | `H3B2_EXACT_WEIGHTED_EVALUATION_ASSEMBLY` |
 | `H3b3` | Exact H3b assembly | `OPEN / BLOCKED_BY_H3b2` | `COMPACT_STRIP_EVALUATION_PROVED` |
 | `H3c` | AND parent: double-completion strip guard plus exact raw-or-compensated same-family Xi limit | `OPEN / WRONG_OBJECT_KILLED / EXACT_LIMIT_OPEN` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
 | `H3c.0` | H3c decomposition contract | `PROVED` | `H3C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
@@ -983,6 +990,14 @@ imply the stronger normalized relative-rate margin.  Exact H3e2 must still
 supply the independent WPrime consumer, exact family/Xi/b objects, absolute
 tracking theorem, both relative rates, and one joint filter.  H3e, H3, L0c2,
 and RH remain OPEN.
+
+Revision 32 composes the two generic H3 frontiers below H3b2.  H3a1 bounds the
+phase-aligned vector error by the square-root projective defect; after
+multiplication by a nonnegative compact evaluation envelope and a squeeze,
+H3b1 turns the weighted rate into `TendstoUniformlyOn` of the evaluation error
+on a supplied set and non-bottom filter.  Exact H3b2b still needs the selected
+simple-even ground/trial family, exact evaluation map/envelope, weighted rate,
+and the shared joint filter.  H3b2, H3b, H3, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

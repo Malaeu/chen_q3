@@ -100,3 +100,7 @@ Single owner decision with maximum unblock power:
 `GUARD H3e1: DETECTOR_DECAY_ONLY + SAFE_MARGIN_ONLY; W->0 can become a constant after multiplication by |b|^-1, and the current Contract-v2 margin does not alone imply r_Delta-r_alpha>1.`
 
 `SKIPPED H3e2: H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING; no WPrime was minted, and the independent consumer, exact absolute tracking/b/Xi crosswalks, both relative rates, same-family joint filter, and Lean export remain open.`
+
+`CLOSED H3b2a: H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN; H3a1 phase alignment and H3b1 evaluation-rate transfer compose through a nonnegative compact envelope and weighted projective decay on a nonbottom filter.`
+
+`SKIPPED H3b2b: H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING; the exact simple-even ground/trial family, compact evaluation map/envelope, weighted projective rate, same-family joint filter and Lean crosswalk remain open.`

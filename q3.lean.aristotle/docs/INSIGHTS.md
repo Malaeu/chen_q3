@@ -47283,3 +47283,16 @@ Final result:
 - Planned DAG split: prove a generic bridge below H3b2, leave its exact
   same-family instantiation and assembly OPEN under the existing
   `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` stop.
+
+Final result:
+
+- `WeightedProjectiveEvaluationTransfer.lean` proves the direct H3a1-to-H3b1
+  bridge by nonnegative multiplication, squeeze, and the existing compact
+  evaluation receiver.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; `[NeBot l]` and envelope nonnegativity
+  are explicit hypotheses.
+- STATE revision 32 nests proved `H3b2.0` and `H3b2a` below H3b2, while exact
+  same-family instantiation `H3b2b` and assembly `H3b2c` remain OPEN.
+- The count is 152 nodes: 78 PROVED, 66 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

@@ -205,6 +205,12 @@ Current fail-closed address:
   while the independent WPrime consumer, exact absolute tracking/b/Xi objects,
   both relative rates and one joint filter remain OPEN in `H3e2` with stop
   `H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING`;
+- rev32 proves `H3b2a H3B2_GENERIC_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_LEAN`:
+  H3a1's phase-aligned projective bound and H3b1's evaluation receiver compose
+  through a nonnegative compact envelope and weighted decay on a nonbottom
+  filter; exact ground/trial, evaluation map/envelope, weighted projective rate,
+  and one shared joint filter remain OPEN in `H3b2b` with stop
+  `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,
