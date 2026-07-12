@@ -441,7 +441,11 @@ R0 RHClosure [AND]
 |   |   `-- D0.7f D0.7Assembly
 |   |-- D0.8 QWToZeroProducingOperatorCrosswalk
 |   `-- D0.9 D0Assembly                  [assembly, not analytic sibling]
-|-- H1 EntireApproximants
+|-- H1 EntireApproximants [AND]
+|   |-- H1a FiniteEntireCombinationCore
+|   |-- H1b PhaseReflectionScalarClosure
+|   |-- H1c ExactApproximantSourceCrosswalk
+|   `-- H1d H1Assembly
 |-- H2 RealZeroApproximants [AND]
 |   |-- H2a SimpleEvenGround
 |   |-- H2b SameVectorRealZeros
@@ -458,7 +462,11 @@ R0 RHClosure [AND]
 |   |-- H4c TrueSpectralDistanceLowerBound
 |   |-- H4d NormalizationControl
 |   `-- H4e DetectorDecayAssembly
-|-- L0 LeanZeroEscape
+|-- L0 LeanZeroEscape [AND]
+|   |-- L0a DetectorBoundConvergenceCore
+|   |-- L0b RealZeroLimitLogic
+|   |-- L0c RoucheHurwitzZeroTransfer
+|   `-- L0d L0Assembly
 |-- L1 FinalAxiomAudit
 `-- R0.A FinalRHAssembly
 ```
@@ -500,7 +508,7 @@ proof node.
 
 | ID | Exact obligation | Current status | Honest exit |
 | --- | --- | --- | --- |
-| `C0` | Classical `zeta/xi/Xi` interface and RH equivalence | `MATH_PROVED / LEAN_INTERFACE_UNPINNED` | `XI_RH_INTERFACE_LOCKED` |
+| `C0` | Classical `zeta/xi/Xi` interface and RH equivalence | `PROVED / LEAN_PINNED` | `XI_RH_INTERFACE_LOCKED` |
 | `D0` | AND parent: one exact object family; no QW/prolate/D_log conflation | `OPEN_CRITICAL` | `EXACT_OBJECT_FAMILY_LOCKED` |
 | `D0.0` | Definitional decomposition contract `D0 <-> D0.1 AND ... AND D0.8` | `MATH_PROVED / LEAN_UNPINNED` | `D0_DECOMPOSITION_LOCKED` |
 | `D0.1` | Exact parameter set, Hilbert space, measure, norm, support, basis, and finite subspace | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `EXACT_HILBERT_SPACE_AND_NORM_LOCKED` |
@@ -520,8 +528,13 @@ proof node.
 | `D0.7e.5e` | D0.7e.5 assembly theorem | `BLOCKED_BY_5a_AND_5c` | `D0_7E_5_ASSEMBLED` |
 | `D0.8` | Same-object QW-to-D_log-to-transform crosswalk | `OPEN / BLOCKED_BY_D0.7` | `ZERO_PRODUCING_CROSSWALK_LOCKED` |
 | `D0.9` | D0 assembly application | `OPEN / BLOCKED_BY_D0.7_D0.8` | `EXACT_OBJECT_FAMILY_LOCKED` |
-| `H1` | Entirety of the exact normalized approximants | `OPEN_UNTIL_D0` | `ENTIRE_APPROXIMANTS_PROVED` |
-| `H2` | AND parent for same-vector real-zero supply | `OPEN` | `REAL_ZERO_APPROXIMANTS_PROVED` |
+| `H1` | AND parent for entirety of the exact normalized approximants | `OPEN / GENERIC_CORE_PROVED / EXACT_FAMILY_UNPINNED` | `ENTIRE_APPROXIMANTS_PROVED` |
+| `H1.0` | Definitional H1 decomposition contract | `PROVED` | `H1_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H1a` | Finite linear combinations of entire summands remain entire | `PROVED / GENERIC_LEAN` | `LEAN_DIFFERENTIABLE_FINITE_ENTIRE_COMBINATION` |
+| `H1b` | Reflection, exponential phase and nonzero scalar preserve entirety/zeros | `PROVED / GENERIC_LEAN` | `LEAN_ENTIRE_PHASE_REFLECTION_SCALAR_CLOSURE` |
+| `H1c` | Exact master `F_j` is the same source-locked entire transform | `OPEN / INELIGIBLE_BY_D0.8_AND_ARCHITECTURE_CHOICE` | blocker: `H1_EXACT_APPROXIMANT_SOURCE_UNPINNED` |
+| `H1d` | H1 exact-family assembly | `OPEN / BLOCKED_BY_H1c` | `H1_ASSEMBLED` |
+| `H2` | AND parent for same-vector real-zero supply | `OPEN / COMPLETED_TRACKER_GLOBAL_IDENTIFICATION_KILLED` | `REAL_ZERO_APPROXIMANTS_PROVED` |
 | `H2a` | Simple isolated even ground eigenvector for the exact finite operator | `OPEN_CRITICAL` | `SIMPLE_EVEN_GROUND_PROVED` |
 | `H2b` | Transform of that same vector has only real zeros | `CONDITIONAL_ON_H2a` | `REAL_ZERO_APPROXIMANTS_PROVED` |
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
@@ -537,7 +550,12 @@ proof node.
 | `H4c` | True complementary spectral-distance lower bound | `OPEN_CRITICAL` | `TRUE_GAP_LOWER_PROVED` |
 | `H4d` | Nonzero normalization and uniform upper control | `OPEN_CRITICAL` | `NORMALIZATION_CONTROL_PROVED` |
 | `H4e` | Assembly theorem `H4a AND H4b AND H4c AND H4d -> W_j -> 0` | `OPEN / ASSEMBLY` | `DETECTOR_DECAY_PROVED` |
-| `L0` | Lean statement of Corollary 3.3 | `NOT_STARTED` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
+| `L0` | AND parent for exact Lean ZeroEscape | `OPEN / GENERIC_LOGIC_PROVED / ANALYTIC_TRANSFER_OPEN` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
+| `L0.0` | Definitional L0 decomposition contract | `PROVED` | `L0_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `L0a` | Detector bound plus decay gives error tending to zero | `PROVED / GENERIC_LEAN` | `LEAN_DETECTOR_BOUND_TENDS_TO_ZERO` |
+| `L0b` | Approached limit zeros of real-zero approximants are real | `PROVED / GENERIC_LEAN` | `LEAN_REAL_ZERO_LIMIT_LOGIC` |
+| `L0c` | Exact Rouché/Hurwitz zero transfer for the H1/H3/H4 family | `OPEN / INELIGIBLE` | blocker: `ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING` |
+| `L0d` | Exact C0/H2/L0a/L0b/L0c assembly | `OPEN / BLOCKED_BY_H2_L0c` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
 | `L1` | Final `#print axioms` and hole audit | `BLOCKED_BY_ALL` | `ZERO_SORRY_ZERO_UNEXPECTED_AXIOMS` |
 | `R0.A` | Final assembly from C0, D0, H1-H4, L0, L1 to RH | `OPEN / BLOCKED_BY_ALL` | `RH_PROVED` |
 
@@ -659,6 +677,22 @@ and alpha's definitional home at H0/A1. The owner-ratified no-stop sprint then
 closed 5b only as an uninstantiated type interface and 5d only as preservation
 of wording/address. H0/A1 and `PO_XWALK_UNIFORM_EVAL` remain external
 `OPEN_CRITICAL` obligations; H3e itself remains OPEN.
+
+The independent rev14 frontier closes C0 in Lean using Mathlib's entire
+`completedRiemannZeta0` and an exact affine critical-strip/centered-strip
+crosswalk. It also proves generic Lean cores for finite entire combinations,
+phase/reflection/scalar normalization, detector-bound convergence, and the
+logic that approximated limit zeros of real-zero approximants are real. These
+generic cores do not select or supply the project family. The exact H1
+same-object crosswalk and the exact Rouché/Hurwitz zero-transfer leaf remain
+OPEN/ineligible.
+
+The same rev14 audit gives a compiled scope falsifier for the completed trial
+tracker: `gammaC(1)=0`, hence every such tracker has the fixed non-real zero
+`z=-i/2`. Therefore the current global H2 contract cannot use `Fhat` or `G` as
+its `F_j`. This kills only that identification. The remaining coherent choices
+are a source-canonical raw transform with global H1/H2 or a separately
+ratified strip-local completed-tracker contract; no choice is inferred here.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

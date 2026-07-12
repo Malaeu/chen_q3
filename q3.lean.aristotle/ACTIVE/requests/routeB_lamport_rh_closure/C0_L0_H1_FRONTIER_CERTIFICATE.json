@@ -1,0 +1,96 @@
+{
+  "schema": "route_b_c0_l0_h1_frontier_certificate.v1",
+  "created_at": "2026-07-12T13:01:56+02:00",
+  "revision_target": 14,
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "c0": {
+    "node_id": "C0",
+    "proof_status": "PROVED",
+    "exit_code": "XI_RH_INTERFACE_LOCKED",
+    "theorem": "Q3.RouteB.rh_iff_centeredXi_zeros_real",
+    "lean_file": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean",
+      "sha256": "838f8156efe7db74cdece2b333ee223ef7737ea2981c4ae28a672f36dd04e82b"
+    },
+    "source_pins": [
+      {
+        "path": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+        "sha256": "5fa4bfa381b223dc8683e07507d9d017a4e73bfd47c0321d1add86b05046331c"
+      },
+      {
+        "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/NumberTheory/LSeries/RiemannZeta.lean",
+        "sha256": "66a1786b657a924ca67838c0042c6ef6c33c31bb046e3a20c27919c934cc9368"
+      },
+      {
+        "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Gamma/Deligne.lean",
+        "sha256": "4cc34be7294d6b8d8a4c48b86904b9cc41c35c49a8013ca4d8556a0a97837b1a"
+      }
+    ]
+  },
+  "h1_generic": {
+    "proved_nodes": ["H1.0", "H1a", "H1b"],
+    "exact_h1_status": "OPEN_DEPENDENCY_BLOCKED",
+    "blocked_node": "H1c",
+    "stop_code": "H1_EXACT_APPROXIMANT_SOURCE_UNPINNED",
+    "lean_file": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/EntirePhaseNormalization.lean",
+      "sha256": "ba791e2248332628fa3684766dd017f522fc7836563bced5d5b05aea525bebcf"
+    },
+    "source_pin": {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "source_shape": "PROPOSITION_5_9_RAW_FINITE_TRANSFORM_ENTIRE"
+    }
+  },
+  "l0_generic": {
+    "proved_nodes": ["L0.0", "L0a", "L0b"],
+    "exact_l0_status": "OPEN_DEPENDENCY_BLOCKED",
+    "blocked_node": "L0c",
+    "stop_code": "ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING",
+    "lean_file": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
+      "sha256": "7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573"
+    }
+  },
+  "completed_tracker_falsifier": {
+    "verdict": "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE",
+    "scope": "Fhat_OR_NONZERO_SCALAR_NORMALIZATION_G_ONLY",
+    "witness": "z=-I/2",
+    "theorems": [
+      "Q3.RouteB.completedTrialTracker_neg_I_div_two_zero",
+      "Q3.RouteB.neg_I_div_two_not_real"
+    ],
+    "lean_file": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompletedTrackerScope.lean",
+      "sha256": "e8d47f20b2addb37023a2c72f6bc0a8fae5ab44a443fb8efbf9b986146676b43"
+    },
+    "does_not_falsify": ["RAW_GLOBAL_ARCHITECTURE", "ROUTE_B", "RH"]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/C0_L0_H1_FRONTIER_2026-07-12.md",
+    "sha256": "0f96f4be658fc10762396afbaace60169ba976c49f7d627dbdf76538ce6863ca"
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+    "direct_compile_required": true
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false
+  },
+  "explicit_nonclaims": [
+    "NO_H1_PROOF",
+    "NO_H2_PROOF",
+    "NO_H3_PROOF",
+    "NO_H4_PROOF",
+    "NO_L0_EXACT_ANALYTIC_TRANSFER",
+    "NO_EXACT_FJ_SELECTION",
+    "NO_WPRIME_DEFINITION",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

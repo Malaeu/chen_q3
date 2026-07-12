@@ -238,7 +238,15 @@
     },
     "no_stop_sprint_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_no_stop_sprint.py",
-      "sha256": "4d8ad9eef14fcd3f18dd869f444aa38347013dac041af524b9bacf58219ceffe"
+      "sha256": "8da9221c38307d0fba4560fa913274776999d8df927b8915e4f1ec3468e4fdb1"
+    },
+    "c0_l0_h1_frontier_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/C0_L0_H1_FRONTIER_CERTIFICATE.json",
+      "sha256": "0bdbcd04f1472349ba6374bfb71fcf4f0e03c11bb1ba913bf6901cf9cbb8aa55"
+    },
+    "c0_l0_h1_frontier_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_c0_l0_h1_frontier.py",
+      "sha256": "23a28274186b6dd7899b493cd95dd9f2e1e285012b6e9ae7800909fec82dd880"
     }
   },
   "stages": [

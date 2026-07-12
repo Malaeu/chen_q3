@@ -38,7 +38,7 @@ def main() -> None:
     sprint = state["no_stop_sprint"]
     queue = sprint["queue"]
 
-    require(state["revision"] == 13, "NOSTOP_STATE_REVISION_DRIFT")
+    require(state["revision"] >= 13, "NOSTOP_STATE_REVISION_TOO_OLD")
     require(sprint["status"] == "COMPLETED_FAIL_CLOSED_NOT_RH", "NOSTOP_SPRINT_NOT_COMPLETE")
     require(sprint["rh_status"] == "NOT_RH", "NOSTOP_RH_OVERCLAIM")
     pinned(

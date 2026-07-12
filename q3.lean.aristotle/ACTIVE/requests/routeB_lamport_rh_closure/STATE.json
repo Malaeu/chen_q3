@@ -1,13 +1,13 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 13,
-  "updated_at": "2026-07-12T12:27:21+02:00",
+  "revision": 14,
+  "updated_at": "2026-07-12T13:01:56+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
     "d0_status": "BLOCKED_AT_D0_7E_WPRIME_ZEO_CROSSWALK",
     "public_label": "CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / ROUTE_B_CHALLENGER / NOT_RH",
-    "conditional_export_status": "PROVED_MATHEMATICALLY_NOT_YET_LEAN_PINNED",
+    "conditional_export_status": "PROVED_MATHEMATICALLY_PARTIAL_LEAN_PIN_C0_AND_LOGIC_ZERO_TRANSFER_OPEN",
     "forbidden_claims": [
       "RH_PROVED",
       "D0_LOCKED",
@@ -21,7 +21,13 @@
     "proof_status": "CONDITIONAL",
     "math_implication_proved": true,
     "project_hypotheses_supplied": false,
-    "lean_interface_pinned": false
+    "lean_interface_pinned": false,
+    "lean_progress": {
+      "classical_xi_interface": "PROVED",
+      "detector_bound_to_zero": "PROVED_GENERIC",
+      "real_zero_limit_logic": "PROVED_GENERIC",
+      "rouche_hurwitz_zero_transfer": "BLOCKED"
+    }
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
@@ -120,7 +126,7 @@
     "owner_command": "Выполни CODEX_NOSTOP_SPRINT_2026-07-12.md сверху вниз, режим no-stop, отчёт одним сообщением в конце",
     "status": "COMPLETED_FAIL_CLOSED_NOT_RH",
     "validator": "validate_no_stop_sprint.py",
-    "validator_sha256": "4d8ad9eef14fcd3f18dd869f444aa38347013dac041af524b9bacf58219ceffe",
+    "validator_sha256": "8da9221c38307d0fba4560fa913274776999d8df927b8915e4f1ec3468e4fdb1",
     "queue": {
       "T0": {
         "status": "BLOCKED_SOURCE_ABSENT",
@@ -178,6 +184,36 @@
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
+  "post_sprint_frontier": {
+    "name": "C0_L0_H1_FRONTIER_REV14",
+    "status": "PARTIAL_LEAN_CLOSURE_EXACT_FAMILY_OPEN_NOT_RH",
+    "certificate": "C0_L0_H1_FRONTIER_CERTIFICATE.json",
+    "certificate_sha256": "0bdbcd04f1472349ba6374bfb71fcf4f0e03c11bb1ba913bf6901cf9cbb8aa55",
+    "validator": "validate_c0_l0_h1_frontier.py",
+    "validator_sha256": "23a28274186b6dd7899b493cd95dd9f2e1e285012b6e9ae7800909fec82dd880",
+    "artifact": "C0_L0_H1_FRONTIER_2026-07-12.md",
+    "artifact_sha256": "0f96f4be658fc10762396afbaace60169ba976c49f7d627dbdf76538ce6863ca",
+    "closed": [
+      "C0",
+      "H1.0",
+      "H1a",
+      "H1b",
+      "L0.0",
+      "L0a",
+      "L0b"
+    ],
+    "open_blockers": {
+      "H1c": "H1_EXACT_APPROXIMANT_SOURCE_UNPINNED",
+      "L0c": "ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING"
+    },
+    "falsifier": "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE",
+    "architecture_choice_required_before_h1c_h2c": [
+      "RAW_GLOBAL",
+      "COMPLETED_STRIP"
+    ],
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -210,7 +246,8 @@
       "D0.7E_XWALK_SOURCE_AUDIT",
       "D0.7E.5A_CONSUMER_ORIENTATION_AUDIT",
       "D0.7E.BPRIME_OWNER_R1_R5_RATIFIED",
-      "D0.7E.NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED"
+      "D0.7E.NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED",
+      "C0_L0_H1_FRONTIER_REV14_PARTIAL_LEAN_CLOSURE"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -287,10 +324,12 @@
       "dependencies": [],
       "ordered_children": [],
       "assembly_theorem_id": null,
-      "proof_status": "CONDITIONAL",
+      "proof_status": "PROVED",
       "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "LEAN_INTERFACE_UNPINNED"},
-      "validation": "MATH_PROOF_PRESENT_LEAN_INTERFACE_REQUIRED",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "C0_CLASSICAL_XI_INTERFACE_LEAN_CHECKED",
+      "exit_code": "XI_RH_INTERFACE_LOCKED",
+      "proof_artifact": "Q3/Proofs/RouteB/ClassicalXiInterface.lean",
       "failure_codes": ["XI_RH_INTERFACE_MISMATCH", "CLASSICAL_IMPORT_UNPINNED"]
     },
     "D0": {
@@ -777,13 +816,60 @@
       "failure_codes": ["D0_ASSEMBLY_GAP", "D0_ASSEMBLY_OBJECT_MISMATCH"]
     },
     "H1": {
-      "id": "H1", "parent_id": "R0", "kind": "LEAF", "role": "GOAL",
+      "id": "H1", "parent_id": "R0", "kind": "AND", "role": "GOAL",
       "statement": "Every exact normalized approximant F_j is entire",
-      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "dependencies": ["D0", "H1.0"], "ordered_children": ["H1a", "H1b", "H1c"], "assembly_theorem_id": "H1d",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H1C_EXACT_FAMILY_CROSSWALK_OPEN"},
       "validation": "ENTIRE_FUNCTION_PROOF_AND_SAME_FAMILY_AUDIT",
-      "failure_codes": ["H1_OBJECT_MISMATCH", "H1_ENTIRETY_GAP"]
+      "failure_codes": ["H1_OBJECT_MISMATCH", "H1_ENTIRETY_GAP", "H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
+    },
+    "H1.0": {
+      "id": "H1.0", "parent_id": "H1", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H1 iff H1a AND H1b AND H1c, with H1d as exact same-family assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H1_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H1_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H1a": {
+      "id": "H1a", "parent_id": "H1", "kind": "LEAF", "role": "GOAL",
+      "statement": "Finite linear combinations of already-entire summands are entire",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "LEAN_DIFFERENTIABLE_FINITE_ENTIRE_COMBINATION",
+      "proof_artifact": "Q3/Proofs/RouteB/EntirePhaseNormalization.lean",
+      "failure_codes": ["H1_FINITE_ENTIRE_COMBINATION_GAP"]
+    },
+    "H1b": {
+      "id": "H1b", "parent_id": "H1", "kind": "LEAF", "role": "GOAL",
+      "statement": "Reflection, exponential phase, and nonzero scalar normalization preserve entirety and the reflected zero set",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "LEAN_ENTIRE_PHASE_REFLECTION_SCALAR_CLOSURE",
+      "proof_artifact": "Q3/Proofs/RouteB/EntirePhaseNormalization.lean",
+      "failure_codes": ["H1_PHASE_NORMALIZATION_CLOSURE_GAP"]
+    },
+    "H1c": {
+      "id": "H1c", "parent_id": "H1", "kind": "LEAF", "role": "GOAL",
+      "statement": "The exact master approximant F_j is source-locked to the raw entire transform or another globally entire same-family object",
+      "dependencies": ["D0.8", "H1a", "H1b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_8_AND_ARCHITECTURE_CHOICE_OPEN"},
+      "validation": "H1_EXACT_APPROXIMANT_SOURCE_CROSSWALK_AUDIT",
+      "failure_codes": ["H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_OBJECT_MISMATCH", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
+    },
+    "H1d": {
+      "id": "H1d", "parent_id": "H1", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H1a AND H1b AND H1c IMPLIES H1 for the exact source-locked F_j family",
+      "dependencies": ["H1.0", "H1a", "H1b", "H1c"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H1C_BLOCKED"},
+      "validation": "H1_EXACT_FAMILY_ASSEMBLY_TYPECHECK",
+      "failure_codes": ["H1_ASSEMBLY_GAP", "H1_OBJECT_MISMATCH"]
     },
     "H2": {
       "id": "H2", "parent_id": "R0", "kind": "AND", "role": "GOAL",
@@ -792,7 +878,8 @@
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "D0_AND_CHILDREN_OPEN"},
       "validation": "SAME_VECTOR_REAL_ZERO_AUDIT",
-      "failure_codes": ["H2_OBJECT_MISMATCH", "H2_REAL_ZERO_GAP"]
+      "failure_codes": ["H2_OBJECT_MISMATCH", "H2_REAL_ZERO_GAP", "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE", "H2C_SCOPE_MISMATCH"],
+      "falsification_certificate": "Q3/Proofs/RouteB/CompletedTrackerScope.lean"
     },
     "H2a": {
       "id": "H2a", "parent_id": "H2", "kind": "LEAF", "role": "GOAL",
@@ -810,7 +897,7 @@
       "proof_status": "CONDITIONAL", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "H2a_OPEN"},
       "validation": "THEOREM_5_10_EXACT_HYPOTHESIS_MATCH",
-      "failure_codes": ["REAL_ZERO_THEOREM_OBJECT_MISMATCH", "THEOREM_5_10_HYPOTHESIS_GAP"]
+      "failure_codes": ["REAL_ZERO_THEOREM_OBJECT_MISMATCH", "THEOREM_5_10_HYPOTHESIS_GAP", "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE", "H2B_COMPLETION_SCOPE_GAP"]
     },
     "H2c": {
       "id": "H2c", "parent_id": "H2", "kind": "LEAF", "role": "ASSEMBLY",
@@ -818,7 +905,7 @@
       "dependencies": ["H2a", "H2b"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "H2_CHILDREN_OPEN"},
-      "validation": "H2_ASSEMBLY_TYPECHECK", "failure_codes": ["H2_ASSEMBLY_GAP"]
+      "validation": "H2_ASSEMBLY_TYPECHECK", "failure_codes": ["H2_ASSEMBLY_GAP", "H2C_SCOPE_MISMATCH"]
     },
     "H3": {
       "id": "H3", "parent_id": "R0", "kind": "AND", "role": "GOAL",
@@ -928,12 +1015,59 @@
       "validation": "EXPLICIT_RATE_BUDGET_ASSEMBLY", "failure_codes": ["H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING"]
     },
     "L0": {
-      "id": "L0", "parent_id": "R0", "kind": "LEAF", "role": "GOAL",
+      "id": "L0", "parent_id": "R0", "kind": "AND", "role": "GOAL",
       "statement": "Lean proves the exact ZeroEscape implication for the source-locked H1-H4 interfaces",
-      "dependencies": ["C0", "D0", "H1", "H2", "H3", "H4"], "ordered_children": [], "assembly_theorem_id": null,
+      "dependencies": ["C0", "D0", "H1", "H2", "H3", "H4", "L0.0"], "ordered_children": ["L0a", "L0b", "L0c"], "assembly_theorem_id": "L0d",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "MATH_SUPPLY_OPEN"},
-      "validation": "LAKE_LEAN_ZERO_HOLES", "failure_codes": ["LEAN_EXPORT_INTERFACE_GAP", "ROUCHE_FORMALIZATION_GAP"]
+      "eligibility": {"eligible": false, "reason": "L0C_ANALYTIC_ZERO_TRANSFER_OPEN"},
+      "validation": "LAKE_LEAN_ZERO_HOLES", "failure_codes": ["LEAN_EXPORT_INTERFACE_GAP", "ROUCHE_FORMALIZATION_GAP", "ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING"]
+    },
+    "L0.0": {
+      "id": "L0.0", "parent_id": "L0", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "L0 iff L0a AND L0b AND L0c, with L0d as exact source-interface assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "L0_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["L0_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "L0a": {
+      "id": "L0a", "parent_id": "L0", "kind": "LEAF", "role": "GOAL",
+      "statement": "A nonnegative error bounded by A times the detector plus a vanishing remainder tends to zero when the detector tends to zero",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "LEAN_DETECTOR_BOUND_TENDS_TO_ZERO",
+      "proof_artifact": "Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
+      "failure_codes": ["L0_DETECTOR_BOUND_LIMIT_GAP"]
+    },
+    "L0b": {
+      "id": "L0b", "parent_id": "L0", "kind": "LEAF", "role": "GOAL",
+      "statement": "If every limit zero is approached by zeros of real-zero approximants, then every limit zero in the target set is real",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "LEAN_REAL_ZERO_LIMIT_LOGIC",
+      "proof_artifact": "Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
+      "failure_codes": ["L0_REAL_ZERO_LIMIT_LOGIC_GAP"]
+    },
+    "L0c": {
+      "id": "L0c", "parent_id": "L0", "kind": "LEAF", "role": "GOAL",
+      "statement": "For the exact H1/H3/H4 family, every Xi zero in the strip is approached by approximant zeros via a Lean-pinned Rouche or Hurwitz theorem",
+      "dependencies": ["C0", "H1", "H3", "H4"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "EXACT_FAMILY_OPEN_AND_ROUCHE_HURWITZ_API_UNPINNED"},
+      "validation": "LEAN_ROUCHE_HURWITZ_ZERO_TRANSFER",
+      "failure_codes": ["ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "L0d": {
+      "id": "L0d", "parent_id": "L0", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "C0 AND H2 AND L0a AND L0b AND L0c IMPLIES the exact Lean ZeroEscape export",
+      "dependencies": ["C0", "H2", "L0.0", "L0a", "L0b", "L0c"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H2_AND_L0C_OPEN"},
+      "validation": "L0_EXACT_ZERO_ESCAPE_ASSEMBLY",
+      "failure_codes": ["L0_ASSEMBLY_GAP", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "L1": {
       "id": "L1", "parent_id": "R0", "kind": "LEAF", "role": "GOAL",
@@ -1043,6 +1177,30 @@
         "last_class": "REPRESENTATION_PROGRESS",
         "no_progress_streak": 0,
         "result": "OWNER_RATIFICATION_R1_R5_LOCKED;D0_7E_5_DECOMPOSITION_LOCKED;H3E_ADDRESS_REGISTERED;D0_7E_WPRIME_CONSUMER_MISSING"
+      },
+      "C0/classical_xi_interface_lean/v1": {
+        "status": "CLOSED",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "XI_RH_INTERFACE_LOCKED"
+      },
+      "H1/generic_entire_closure_and_exact_family_audit/v1": {
+        "status": "GENERIC_CORE_CLOSED_EXACT_FAMILY_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H1A_H1B_GENERIC_LEAN_PROVED;H1_EXACT_APPROXIMANT_SOURCE_UNPINNED"
+      },
+      "H2/completed_trial_tracker_global_real_zero/v1": {
+        "status": "KILLED_BY_COUNTEREXAMPLE",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE_AT_NEG_I_DIV_TWO"
+      },
+      "L0/generic_zero_escape_logic/v1": {
+        "status": "GENERIC_LOGIC_CLOSED_ANALYTIC_TRANSFER_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "DETECTOR_BOUND_LIMIT_AND_REAL_ZERO_LIMIT_LOGIC_PROVED;ROUCHE_HURWITZ_LEAN_ZERO_TRANSFER_MISSING"
       }
     }
   },
@@ -1178,6 +1336,13 @@
       "progress_class": "PROOF_AND_FALSIFICATION_PROGRESS",
       "result": "T0_NO_SOURCE;T1_PARTIAL_LAMBDA17_MISSING;T2_INPUT_INCOMPLETE;D0_7E_5B_TYPED_INTERFACE_LOCKED;D0_7E_XWALK_MIGRATION_LOCKED;T5_TWO_LEAN_LEMMAS_PROVED_ONE_ETA_BRIDGE_BLOCKED",
       "honesty": "D0_7E_5A_AND_5C_OPEN_H3E_OPEN_NO_SELECTOR_NO_TAUTOLOGY_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T13:01:56+02:00",
+      "event": "C0_L0_H1_FRONTIER_REV14_PARTIAL_LEAN_CLOSURE",
+      "progress_class": "PROOF_AND_FALSIFICATION_PROGRESS",
+      "result": "XI_RH_INTERFACE_LOCKED;H1_GENERIC_ENTIRE_CORE_PROVED;L0_GENERIC_ZERO_ESCAPE_LOGIC_PROVED;H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE",
+      "honesty": "H1_H2_H3_H4_L0_OPEN_EXACT_FAMILY_UNSELECTED_ROUCHE_HURWITZ_LEAN_TRANSFER_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }
