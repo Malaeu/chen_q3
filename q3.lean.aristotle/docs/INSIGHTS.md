@@ -47333,3 +47333,25 @@ Final result:
   `H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING` is retired.
 - The count is 156 nodes: 80 PROVED, 68 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2b2 rank-one weighted-symmetry core (in progress)
+
+- Exact target: isolate the universal algebra beneath H2b2 from the still
+  missing exact Theorem-5.10 quotient/factorization identification.
+- Four local `q3_docs` queries found only adjacent rank-one, cap-correction,
+  and Weil-weighted self-adjointness material (roughly 0.59--0.68), not a
+  pinned theorem proving the exact Route B factorization.
+- The generic construction subtracts the weighted rank-one outer product
+  determined by a calibration vector `u` and a covector `b`, under the exact
+  orientation `b u = 1`.
+- The Lean core must prove both that the correction kills `u` and that weighted
+  symmetry is preserved when the original matrix is weighted symmetric and
+  `b` is represented by the same diagonal weight.
+- Official Mathlib matrix APIs confirm the pointwise function representation,
+  matrix/vector multiplication, and symmetry interfaces; the H8 source gives
+  only the external rank-one/self-adjointness motivation.
+- Planned DAG split: prove generic H2b2a, leave exact source/family
+  instantiation H2b2b and assembly H2b2c OPEN under
+  `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`.
+- Acceptance stays narrow: no WPrime consumer definition, no exact ZEO
+  quotient identity, no H2b/H2/L0 closure, no Bus 010, and no RH claim.
