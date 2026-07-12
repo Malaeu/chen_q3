@@ -47260,3 +47260,26 @@ Final result:
   residual relative-rate stop codes.
 - The count is 148 nodes: 76 PROVED, 64 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3b2 weighted projective-evaluation transfer (in progress)
+
+- Exact target: connect the already-proved H3a1 phase-alignment estimate to the
+  H3b1 compact evaluation-rate receiver without pretending that either theorem
+  supplies the exact Route B weighted rate.
+- Four local `q3_docs` queries found only weak adjacent material (roughly
+  0.61--0.68); no pinned theorem currently performs this exact bridge.
+- Proposed generic hypothesis: unit ground/trial vectors, a nonnegative compact
+  evaluation envelope `C_i`, an evaluation norm bound on the phase-aligned
+  error, and decay of `C_i*sqrt(2*(1-|<u_i,v_i>|^2))`.
+- H3a1 bounds the phase-aligned norm by the projective square-root; nonnegative
+  multiplication and squeeze yield `C_i*||error_i|| -> 0`; H3b1 then supplies
+  `TendstoUniformlyOn` on the supplied compact set.
+- The filter remains explicitly `[NeBot l]`, and the limit is the zero function;
+  no exact selector, evaluation operator, compact envelope, or joint filter is
+  inferred.
+- Official Mathlib inner-product and uniform-convergence APIs provide the
+  underlying norm/projective and `TendstoUniformlyOn` interfaces, not the Route B
+  rate inputs.
+- Planned DAG split: prove a generic bridge below H3b2, leave its exact
+  same-family instantiation and assembly OPEN under the existing
+  `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` stop.
