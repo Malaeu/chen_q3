@@ -46905,3 +46905,27 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 116 nodes: 60 PROVED,
   48 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3c double-completion strip guard (in progress)
+
+- Exact target: determine whether multiplying the already completed
+  `centeredXi` by another central-normalized `gammaC` factor can be the H3c
+  compact-strip limit object.
+- Four local `q3_docs` queries found no pinned H3c implementation or exact
+  raw/inverse-completion crosswalk (best scores about 0.63--0.67); unrelated
+  Q3 Gamma and compactness results will not be imported.
+- At the closure point `z=-i/2`, the extra-completed candidate is zero because
+  its Gamma factor is `gammaC(1)=0`, whereas `centeredXi(z)=riemannXi(1)=1/2`.
+- Both functions are continuous at that point; equality throughout the open
+  centered strip would therefore force equal boundary limits, a contradiction.
+- Official Mathlib supplies complex Gamma regularity away from nonpositive
+  integers and uniqueness of Hausdorff filter limits under eventual equality;
+  these certify the continuity-to-boundary step, not any Route B convergence.
+- Planned generic guard: prove non-equality on the entire open strip and hence
+  an existential mismatch point inside it, not merely a boundary mismatch.
+- Planned DAG split: prove `H3c1`, leave exact raw-or-inverse-completed family
+  selection, one joint `(m,N)` filter and limit identification in `H3c2`, then
+  assemble only in `H3c3`.
+- Acceptance remains narrow: kill the normalized double completion only; do
+  not select the correct family/filter, do not close H3c/H3/L0c2, and retain
+  `XI_LIMIT_OBJECT_MISMATCH`, `XI_LIMIT_IDENTIFICATION_MISSING`, and `NOT_RH`.
