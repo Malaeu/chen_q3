@@ -47296,3 +47296,27 @@ Final result:
   same-family instantiation `H3b2b` and assembly `H3b2c` remain OPEN.
 - The count is 152 nodes: 78 PROVED, 66 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H4a3b Temple residual-gap envelope transfer (in progress)
+
+- Exact target: separate the universal exponent/constant arithmetic from the
+  missing exact Route B spectral-residual instantiation inside H4a3b.
+- Four local `q3_docs` queries returned only weak adjacent material (roughly
+  0.58--0.62); no pinned module already transfers the residual-square and gap
+  envelopes to the canonical alpha rate.
+- Proposed hypotheses are explicit: the Temple inequality, the half-gap locus,
+  a residual-square bound with `envelope^2`, and a positive true-gap floor with
+  one `envelope` factor.
+- The expected conclusion is
+  `alpha <= (2*C_eta/c_Delta)*scale^(r_eta-r_Delta)*envelope`, so the generic
+  constants are `C_alpha=2*C_eta/c_Delta` and `r_alpha=r_eta-r_Delta`.
+- A mandatory fixed counterexample will show that replacing the residual
+  `envelope^2` hypothesis by only `envelope` does not imply the desired alpha
+  envelope.
+- The eventual wrapper must use one `[NeBot l]` filter. No exact operator,
+  eigenbasis, canonical alpha, residual variance, half-gap locus, or true-gap
+  rate is inferred.
+- Official real-power API supplies the exponent algebra; the already Lean-proved
+  local Temple core supplies the spectral inequality shape.
+- Planned DAG split: generic H4a3b1 PROVED, exact H4a3b2 and assembly H4a3b3
+  OPEN; retire only `H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING`.
