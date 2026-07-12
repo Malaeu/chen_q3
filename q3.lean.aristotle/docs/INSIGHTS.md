@@ -47000,3 +47000,50 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 124 nodes: 64 PROVED,
   52 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3a projective-defect phase alignment (in progress)
+
+- Exact target: separate the universal unit-vector phase-alignment identity
+  from the source-specific claim that the selected Route B ground and trial
+  vectors have vanishing projective defect at the required weighted rate.
+- Four local `q3_docs` queries found no pinned H3a implementation or exact
+  ground/trial rate (best scores about 0.60--0.64); historical phase monitors
+  and unrelated Q3 Rayleigh estimates will not be imported.
+- For complex unit vectors, the canonical phase supplied by their nonzero
+  inner product has unit norm and yields the exact squared distance
+  `2-2*||inner u v||`.
+- A vanishing projective defect `1-||inner u v||^2` forces the inner-product
+  norm to one and hence the phase-aligned norm error to zero; this is generic
+  Hilbert geometry, not a prolate approximation theorem.
+- Official Mathlib fixes conjugate-linearity in the first inner-product slot
+  and supplies the norm/inner identities used in the calculation.
+- Exact H3a must still identify the same H1c3/D0.8 ground and trial vectors,
+  prove unit/nonzero conditions and the source-locked projective-defect rate,
+  and match the H3b weighted compact-evaluation filter.
+- Planned DAG split: prove generic H3a1, leave exact ground/trial rate H3a2
+  and assembly H3a3 OPEN with `H3A_EXACT_PROJECTIVE_DEFECT_RATE_MISSING`.
+- Acceptance remains narrow: no selected family/filter, no H3a/H3 closure,
+  no scalar-multiple assertion for the source vectors, and `NOT_RH` remains.
+
+## 2026-07-12 — Route B H4c normalized two-sided b control (in progress)
+
+- Exact target: extract the universal nonzero, upper-bound, reciprocal, and
+  normalized-error consequences of Contract v2's two-sided normalized b bound.
+- Four local `q3_docs` queries found no pinned H4c implementation or exact b
+  formula/rate (best scores about 0.57--0.68; one exact-token query was empty);
+  generic scalar algebra will not be relabelled as the missing source bound.
+- From `0<c_b<=|b| scale^(-q_b)<=C_b` and `scale>0`, ordered-field and real-
+  power algebra should give `b!=0`, `|b|<=C_b scale^q_b`, and
+  `|b|^-1<=c_b^-1 scale^(-q_b)`.
+- The reciprocal estimate legally transfers `err/|b|` into a weighted error
+  bound and supplies a generic input for H3e/H4d2.
+- The result is scale-dependent and must not be promoted to a uniform positive
+  lower bound for `|b|`; the existing `b_n->0` with normalized product one
+  falsifier remains live.
+- Exact H4c must still define canonical alpha, prove alpha/gap signs, pin b and
+  its orientation, prove the full two-sided bound and q_b, and use the same
+  carrier/filter as H3e/H4d2.
+- Planned DAG split: prove generic H4c1, leave exact SafeSignAndB instantiation
+  H4c2 and assembly H4c3 OPEN with `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING`.
+- Acceptance remains narrow: no exact b source, no q_b, no H4c/H4 closure, no
+  uniform reciprocal overclaim, and Route B remains `NOT_RH`.
