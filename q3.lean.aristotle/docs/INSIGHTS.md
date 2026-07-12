@@ -47437,3 +47437,24 @@ Final result:
   joint filter remain OPEN in `H3c2b`.
 - The count is 168 nodes: 86 PROVED, 74 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2b2b off-spectrum rank-one determinant core (in progress)
+
+- Exact target: extract the remaining universal determinant-lemma algebra from
+  H2b2b while leaving lattice points and the modified-Hilbert quotient exact.
+- Four local `q3_docs` queries found adjacent H8 rank-one and finite-rank
+  material (roughly 0.58--0.66), including the old note that Lemma 5.4 could
+  simplify the matrix bridge, but no existing Lean theorem wired to H2b2b.
+- For `A=D-sI` with unit determinant, the already-proved correction is
+  `A + col(-D xi)*row(eta)`; Mathlib's matrix determinant lemma yields the
+  exact off-spectrum factorization.
+- The invertibility hypothesis is material: this receiver does not cover
+  spectral/lattice values where `det(D-sI)=0`.
+- The primary H8 source motivates the rank-one determinant factorization;
+  official Mathlib `SchurComplement` supplies the finite matrix determinant
+  lemma used by Lean.
+- Planned DAG split: prove generic H2b2b1, leave exact quotient/lattice/
+  complement/phase/all-z instantiation H2b2b2 and assembly H2b2b3 OPEN under
+  `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`.
+- No quotient self-adjointness, same-family identity, Bus 010, or RH conclusion
+  is inferred.
