@@ -1,0 +1,141 @@
+{
+  "schema": "route_b_h4d2_safe_bounds_to_square_envelope_certificate.v1",
+  "created_at": "2026-07-12T16:21:02+02:00",
+  "revision_target": 23,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "SAFE_RATE_EXPONENT_AND_WPRIME_SQUARE_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H1C_H4D_GENERIC_CORES_2026-07-12.md",
+      "sha256": "1409571ed83152a729b1cfffdc235496d4d5aa1b43a2aa204410c31670954c9c",
+      "scope": "H4D1_GENERIC_COFINAL_RATE_RECEIVER"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeRateAssembly.lean",
+      "sha256": "f864eb19263be812cb2bcecc6a4fe64bc67af499f4675ac1a3295b8ed71f50af",
+      "scope": "H4D1_SQUARED_ENVELOPE_CONSUMER"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_2026-07-12.md",
+      "sha256": "16d7c5658fefd8d288c3f0b80d485fe9a43de25908f1afb6de7087b6bdb60781",
+      "scope": "SAFE_ALPHA_UPPER_GENERIC_PREDECESSOR"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_PRO_REVIEW_DECISION.md",
+      "sha256": "28f90346e7712d5cf66599ed336b10528046e645b91ec83f2c94c98ad13829ff",
+      "scope": "INDEPENDENT_WPRIME_IDENTITY_AND_H3_REHOME_FIREWALL"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Real.lean",
+      "sha256": "19ee1bc7835b6d6ecc21be878f003cf6ed373c9c4bc4f94c3bfee427052c60bb",
+      "scope": "REAL_RPOW_SUB_ADD_AND_MULTIPLICATION_IDENTITIES"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Data/Real/Sqrt.lean",
+      "sha256": "1168c3d186bc8a6a1e7c8e27d49d46fa909260c1036b4c3b0ae9e0225163cbc8",
+      "scope": "REAL_SQRT_SQUARE_IDENTITY"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Pow/Real.html",
+      "scope": "OFFICIAL_REAL_RPOW_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Real/Sqrt.html",
+      "scope": "OFFICIAL_REAL_SQRT_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBoundsToSquareEnvelope.lean",
+    "sha256": "bdec0a4d04ea6f21358e965b5de74286503699cbb1a323c650e64f9d91c8ab92",
+    "proved": [
+      "safe_bounds_to_square_envelope_pointwise",
+      "safe_bounds_to_square_envelope_eventually"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_2026-07-12.md",
+    "sha256": "99ad0a32a1edc9ee6ce8f47632c2144e48d65cf92b506d172892369becfe9c51"
+  },
+  "h4d2_repair": {
+    "parent": "H4d2",
+    "decomposition": "H4d2.0",
+    "ordered_children": ["H4d2a", "H4d2b"],
+    "assembly": "H4d2c",
+    "proved": ["H4d2.0", "H4d2a"],
+    "open": ["H4d2", "H4d2b", "H4d2c", "H4d3", "H4d", "H4"],
+    "generic_verdict": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN",
+    "exact_instantiation_stop": "H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING"
+  },
+  "identity_firewall": {
+    "independent_hypothesis": "W^2 = |b|^2 * scale * alpha / gap",
+    "forbidden_reconstruction": "WPRIME_DEFINED_FROM_DESIRED_RHS",
+    "source_node": "D0.7e.5c",
+    "source_status": "OPEN"
+  },
+  "common_envelope_guard": {
+    "required": true,
+    "alpha_upper": "C_alpha * scale^r_alpha * envelope",
+    "gap_lower": "c_Delta * scale^r_Delta * envelope",
+    "mismatch_code": "H4D_COMMON_ENVELOPE_MISMATCH"
+  },
+  "exact_instantiation_guard": {
+    "required_dependencies": ["D0.7e.5c", "H4a", "H4b", "H4c"],
+    "external_requirement": "H4_JOINT_FILTER",
+    "open_codes": [
+      "D0_7E_WPRIME_CONSUMER_MISSING",
+      "H4_LIMIT_FILTER_UNSELECTED",
+      "H4D_EXACT_CONSTANTS_MISSING",
+      "H4D_QB_VALUE_UNPROVED",
+      "STRICT_RATE_MARGIN_MISSING",
+      "H4D_COFINAL_SCALE_MISSING",
+      "H4D_COFINAL_NONZERO_LOCUS_MISSING",
+      "H4D_WPRIME_NONNEGATIVITY_MISSING",
+      "H4D_COMMON_ENVELOPE_MISMATCH",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 116,
+    "PROVED": 60,
+    "OPEN": 48,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_WPRIME_DEFINITION_FROM_TARGET_IDENTITY",
+    "NO_EXACT_SAFE_ALPHA_UPPER",
+    "NO_EXACT_SAFE_GAP_LOWER",
+    "NO_EXACT_B_CONSTANT_OR_QB",
+    "NO_JOINT_FILTER_SELECTION",
+    "NO_WPRIME_NONNEGATIVITY_EXPORT",
+    "NO_COMMON_ENVELOPE_INSTANTIATION",
+    "NO_H4D2_PARENT_CLOSURE",
+    "NO_H4D_PARENT_CLOSURE",
+    "NO_H4_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

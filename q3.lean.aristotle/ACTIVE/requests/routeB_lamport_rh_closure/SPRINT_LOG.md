@@ -54,3 +54,7 @@ Single owner decision with maximum unblock power:
 `GUARD H4a1a: ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL; the idempotent coordinate projection and swap operator give a zero internal Ritz residual with ambient residual (0,1), so internal-residual tautology remains killed.`
 
 `SKIPPED H4a1b: H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING; the exact Route B operator domain, source-locked projection, form/operator realization, trial/Ritz object, and leakage-rate crosswalk remain open.`
+
+`CLOSED H4d2a: GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN; common-envelope SAFE bounds and an independently supplied WPrime square identity imply the exact Contract-v2 squared polynomial envelope, pointwise and eventually.`
+
+`SKIPPED H4d2b: H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING; the source-locked WPrime identity, common-envelope SAFE inputs, fixed constants/signs, q_b, strict margin, nonnegative WPrime branch, cofinal scale/nonzero locus, and one joint filter remain open.`

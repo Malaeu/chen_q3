@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 22,
-  "updated_at": "2026-07-12T16:10:18+02:00",
+  "revision": 23,
+  "updated_at": "2026-07-12T16:21:02+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "3859150e38b68e3d58fef9e2397ca9ff7409587e37ce55ffcc72afe9b9968cf5",
+    "sprint_log_sha256": "49bc82a0437fb35e6ac25adeb85a32f8db34845db04662d15b2d1e6d953e0bda",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -394,6 +394,30 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4d2_safe_bounds_to_square_envelope": {
+    "name": "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_REV23",
+    "status": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_PROVED_EXACT_INPUTS_AND_JOINT_FILTER_OPEN_NOT_RH",
+    "certificate": "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_CERTIFICATE.json",
+    "certificate_sha256": "8fcda7e142751c7ae1a036548bc487fad94a1715ea1107c2f798e3bc42ecbe08",
+    "validator": "validate_h4d2_safe_bounds_to_square_envelope.py",
+    "validator_sha256": "50eed159a3bf8bcd5eb88fc022a98d487903e215f45496ff125e26d7fca2f797",
+    "artifact": "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_2026-07-12.md",
+    "artifact_sha256": "99ad0a32a1edc9ee6ce8f47632c2144e48d65cf92b506d172892369becfe9c51",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBoundsToSquareEnvelope.lean",
+      "sha256": "bdec0a4d04ea6f21358e965b5de74286503699cbb1a323c650e64f9d91c8ab92"
+    },
+    "proved_nodes": [
+      "H4d2.0",
+      "H4d2a"
+    ],
+    "generic_verdict": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN",
+    "next_worker_leaf": null,
+    "next_exact_node": "H4d2b",
+    "remaining_stop": "H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -471,7 +495,8 @@
       "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19",
       "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20",
       "H3B_COMPACT_EVALUATION_RATE_TRANSFER_REV21",
-      "H4A1_AMBIENT_RESIDUAL_SPLIT_REV22"
+      "H4A1_AMBIENT_RESIDUAL_SPLIT_REV22",
+      "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_REV23"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1553,14 +1578,52 @@
       "failure_codes": ["H4D1_GENERIC_ASSEMBLY_GAP"]
     },
     "H4d2": {
-      "id": "H4d2", "parent_id": "H4d", "kind": "LEAF", "role": "GOAL",
-      "statement": "Instantiate the exact SafeAlphaUpper, SafeGapLower, b-rate constants, WPrime identity, and one cofinal joint filter in the generic rate core",
-      "dependencies": ["H4a", "H4b", "H4c", "H4d1"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H4d2", "parent_id": "H4d", "kind": "AND", "role": "GOAL",
+      "statement": "Turn exact common-envelope SAFE bounds and an independent WPrime identity into the squared envelope consumed by H4d1 on one cofinal joint filter",
+      "dependencies": ["H4d2.0"], "ordered_children": ["H4d2a", "H4d2b"], "assembly_theorem_id": "H4d2c",
       "external_requirements": ["H4_JOINT_FILTER"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "H4ABC_AND_JOINT_FILTER_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H4D2B_EXACT_INPUTS_AND_JOINT_FILTER_OPEN"},
       "validation": "EXACT_SAFE_RATE_CONSTANTS_AND_FILTER_AUDIT",
-      "failure_codes": ["H4_LIMIT_FILTER_UNSELECTED", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING", "H4D_EXACT_CONSTANTS_MISSING", "H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4D_QB_VALUE_UNPROVED"]
+      "failure_codes": ["H4_LIMIT_FILTER_UNSELECTED", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING", "H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING", "H4D_EXACT_CONSTANTS_MISSING", "H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4D_QB_VALUE_UNPROVED"]
+    },
+    "H4d2.0": {
+      "id": "H4d2.0", "parent_id": "H4d2", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4d2 iff the generic common-envelope square bound and exact Route B SAFE/filter instantiation both hold, with H4d2c as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4D2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4D2_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4d2a": {
+      "id": "H4d2a", "parent_id": "H4d2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Positive common-envelope SAFE bounds and an independently supplied WPrime square identity imply the exact Contract-v2 polynomial square envelope, pointwise and eventually on one non-bottom filter",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/SafeBoundsToSquareEnvelope.lean",
+      "failure_codes": ["H4D_COMMON_ENVELOPE_MISMATCH", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING"]
+    },
+    "H4d2b": {
+      "id": "H4d2b", "parent_id": "H4d2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate the exact non-tautological WPrime identity, same-envelope alpha and gap bounds, b constants, nonnegative WPrime branch, strict exponent margin, and one non-bottom cofinal joint filter",
+      "dependencies": ["D0.7e.5c", "H4a", "H4b", "H4c"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H4_JOINT_FILTER"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_7E_5C_H4ABC_AND_JOINT_FILTER_OPEN"},
+      "validation": "EXACT_SAFE_SQUARE_ENVELOPE_INSTANTIATION_AUDIT",
+      "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "H4_LIMIT_FILTER_UNSELECTED", "H4D_EXACT_CONSTANTS_MISSING", "H4D_QB_VALUE_UNPROVED", "STRICT_RATE_MARGIN_MISSING", "H4D_COFINAL_SCALE_MISSING", "H4D_COFINAL_NONZERO_LOCUS_MISSING", "H4D_WPRIME_NONNEGATIVITY_MISSING", "H4D_COMMON_ENVELOPE_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4d2c": {
+      "id": "H4d2c", "parent_id": "H4d2", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4d2.0 AND H4d2a AND H4d2b IMPLIES the exact SafeBoundsToSquareEnvelope package",
+      "dependencies": ["H4d2.0", "H4d2a", "H4d2b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4D2B_OPEN"},
+      "validation": "H4D2_EXACT_SQUARE_ENVELOPE_ASSEMBLY_TYPECHECK",
+      "failure_codes": ["H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING"]
     },
     "H4d3": {
       "id": "H4d3", "parent_id": "H4d", "kind": "LEAF", "role": "ASSEMBLY",
@@ -1863,6 +1926,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "LEAN_SAFE_RATE_COFINAL_SQUARE_CORE;LEAN_SAFE_RATE_GENERIC_PACKAGE;H4D_WPRIME_SQUARE_ENVELOPE_MISSING"
+      },
+      "H4d2/generic_safe_bounds_to_square_envelope/v1": {
+        "status": "GENERIC_SQUARE_ENVELOPE_CLOSED_EXACT_SAFE_INPUTS_AND_JOINT_FILTER_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN;COMMON_ENVELOPE_CANCELLATION_EXPLICIT;H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING"
       }
     }
   },
@@ -2061,6 +2130,13 @@
       "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
       "result": "GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN;ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL;H4A1_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_ROUTE_B_OPERATOR_DOMAIN_PROJECTION_FORM_OPERATOR_CROSSWALK_AND_LEAKAGE_RATE_OPEN_H4A1_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T16:21:02+02:00",
+      "event": "H4D2_GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN;COMMON_ENVELOPE_CANCELLATION_EXPLICIT;H4D2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_WPRIME_IDENTITY_SAFE_CONSTANTS_COMMON_ENVELOPE_NONNEGATIVE_BRANCH_STRICT_MARGIN_AND_JOINT_FILTER_OPEN_H4D2_H4D_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

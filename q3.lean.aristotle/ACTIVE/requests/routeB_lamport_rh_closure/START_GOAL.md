@@ -141,9 +141,17 @@ Current fail-closed address:
   residual but nonzero ambient residual `(0,1)`; exact Route B operator
   domain, projection, form/operator crosswalk and leakage rate remain OPEN in
   `H4a1b` with stop `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING`;
+- rev23 proves `H4d2a GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN`:
+  common-envelope SAFE bounds plus an independently supplied WPrime square
+  identity yield the exact Contract-v2 squared polynomial envelope, pointwise
+  and eventually on one non-bottom filter; exact identity provenance,
+  constants/signs, common envelope, nonnegative WPrime branch, strict margin,
+  cofinal scale/nonzero locus and the joint filter remain OPEN in `H4d2b` with
+  stop `H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
-  `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
-  SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;
+  `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
+  exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,
+  constants/signs, WPrime nonnegativity and a selected cofinal joint filter;
 - no H3c/H4 import, no selector invention, and no tautological WPrime
   definition;
 - no bWeil/pilot alias, no H4d bound smuggling, and no conditional parent

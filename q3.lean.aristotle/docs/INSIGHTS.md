@@ -46883,3 +46883,25 @@ not the raw-D17 factorwise support class.
 - Official Mathlib `Real.rpow` and `Real.sqrt` APIs provide the exponent/square identities; the proof must retain positivity before division and square-root rewriting.
 - Planned DAG split: prove generic H4d2a, leave exact same-filter inputs H4d2b and assembly H4d2c OPEN; retain legacy parent stop `H4D_WPRIME_SQUARE_ENVELOPE_MISSING` and add `H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING`.
 - Acceptance remains narrow: `hW` is an input from independent D0.7e.5c, never a definition of WPrime; no envelope mismatch, no H4d2/H4d/H4 closure, and `NOT_RH` remains.
+
+### Final result
+
+- `SafeBoundsToSquareEnvelope.lean` proves the exact pointwise quotient,
+  b-square, square-root, and real-power algebra and exports an eventual wrapper
+  on one non-bottom filter.
+- The common positive envelope is explicit on both the alpha upper and gap
+  lower hypotheses; no cancellation between different exponential factors is
+  permitted.
+- The WPrime square identity remains a hypothesis, never a local definition.
+  The exact consumer/source duty stays in D0.7e.5c, so the active source stop is
+  unchanged.
+- The H4d1 receiver also needs eventual WPrime nonnegativity; revision 23 keeps
+  this separate exact duty live as `H4D_WPRIME_NONNEGATIVITY_MISSING` rather
+  than inferring a sign from a square identity.
+- STATE revision 23 decomposes H4d2 into proved generic core `H4d2a`, OPEN
+  exact SAFE/WPrime/filter instantiation `H4d2b`, and assembly `H4d2c`; the
+  legacy `H4D_WPRIME_SQUARE_ENVELOPE_MISSING` guard remains for compatibility.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 116 nodes: 60 PROVED,
+  48 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

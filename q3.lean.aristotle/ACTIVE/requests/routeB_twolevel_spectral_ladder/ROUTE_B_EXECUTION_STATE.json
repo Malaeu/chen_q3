@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T16:10:18+02:00",
+  "updated_at": "2026-07-12T16:21:02+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -55,6 +55,9 @@
       ,"H4A1_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN"
       ,"ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL"
+      ,"H4D2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN"
+      ,"COMMON_ENVELOPE_CANCELLATION_EXPLICIT"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -84,6 +87,9 @@
       ,"H2A_SAME_FAMILY_SELECTION_MISSING"
       ,"H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING"
       ,"H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING"
+      ,"H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING"
+      ,"H4D_COMMON_ENVELOPE_MISMATCH"
+      ,"H4D_WPRIME_NONNEGATIVITY_MISSING"
     ]
   },
   "bus": {
@@ -165,6 +171,12 @@
       "class": "MASTER_DAG_EXACT_OPERATOR_DOMAIN_BLOCKER",
       "owner": "Route B proof compiler",
       "detail": "The generic ambient/compressed residual split and zero-internal/nonzero-ambient falsifier are Lean-proved, but the exact Route B operator domain, projection, form-to-operator realization, trial/Ritz object, and leakage-rate crosswalk remain open."
+    },
+    {
+      "code": "H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING",
+      "class": "MASTER_DAG_EXACT_SAFE_RATE_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The generic common-envelope SAFE-to-square-envelope theorem is Lean-proved, but the exact non-tautological WPrime identity, common-envelope SAFE constants/signs, q_b, strict margin, nonnegative WPrime branch, cofinal scale/nonzero locus, and one joint filter remain open."
     }
   ],
   "guardrails": {
@@ -366,6 +378,18 @@
     "h4a1_ambient_residual_split_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean",
       "sha256": "d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00"
+    },
+    "h4d2_safe_bounds_to_square_envelope_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_CERTIFICATE.json",
+      "sha256": "8fcda7e142751c7ae1a036548bc487fad94a1715ea1107c2f798e3bc42ecbe08"
+    },
+    "h4d2_safe_bounds_to_square_envelope_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4d2_safe_bounds_to_square_envelope.py",
+      "sha256": "50eed159a3bf8bcd5eb88fc022a98d487903e215f45496ff125e26d7fca2f797"
+    },
+    "h4d2_safe_bounds_to_square_envelope_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBoundsToSquareEnvelope.lean",
+      "sha256": "bdec0a4d04ea6f21358e965b5de74286503699cbb1a323c650e64f9d91c8ab92"
     }
   },
   "stages": [

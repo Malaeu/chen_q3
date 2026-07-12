@@ -485,7 +485,10 @@ R0 RHClosure [AND]
 |   |   |   |-- H4d1a NaturalScaleExponentCore
 |   |   |   |-- H4d1b CofinalSquareEnvelopeCore
 |   |   |   `-- H4d1c GenericSafeRateAssembly
-|   |   |-- H4d2 ExactSafeRateConstantsAndFilter
+|   |   |-- H4d2 ExactSafeRateConstantsAndFilter [AND]
+|   |   |   |-- H4d2a GenericSafeBoundsToSquareEnvelope
+|   |   |   |-- H4d2b ExactSafeInputsAndJointFilter
+|   |   |   `-- H4d2c H4d2Assembly
 |   |   `-- H4d3 SafeRateAssembly
 |   `-- H4e QuantitativeSafeWitnessAssembly
 |-- L0 LeanZeroEscape [AND]
@@ -611,7 +614,11 @@ proof node.
 | `H4d1a` | Strict margin gives negative-power decay on the natural scale | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_POLYNOMIAL_CORE` |
 | `H4d1b` | A non-bottom cofinal scale plus squared envelope forces detector decay | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_COFINAL_SQUARE_CORE` |
 | `H4d1c` | Assemble exponent negativity and cofinal detector convergence | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_GENERIC_PACKAGE` |
-| `H4d2` | Instantiate exact constants, WPrime identity, and cofinal joint filter | `OPEN_CRITICAL` | blocker: `H4_LIMIT_FILTER_UNSELECTED` |
+| `H4d2` | AND parent: generic common-envelope square bound plus exact SAFE/WPrime/filter instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING` |
+| `H4d2.0` | H4d2 decomposition contract | `PROVED` | `H4D2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4d2a` | Common-envelope SAFE bounds and an independent WPrime square identity imply the exact Contract-v2 squared polynomial envelope | `PROVED / GENERIC_LEAN` | `GENERIC_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_LEAN` |
+| `H4d2b` | Instantiate exact WPrime identity, SAFE constants/signs, common envelope, nonnegative branch, strict margin and one cofinal joint filter | `OPEN / INELIGIBLE` | blocker: `H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING` |
+| `H4d2c` | Exact H4d2 assembly | `OPEN / BLOCKED_BY_H4d2b` | `H4D2_EXACT_SQUARE_ENVELOPE_ASSEMBLY` |
 | `H4d3` | Exact SafeRateAssembly | `OPEN / BLOCKED_BY_H4d2` | `SAFE_RATE_ASSEMBLED` |
 | `H4e` | Four safe leaves imply QuantitativeSafeWitness and `W_j -> 0` | `OPEN / ASSEMBLY` | `DETECTOR_DECAY_PROVED` |
 | `L0` | AND parent for exact Lean ZeroEscape | `OPEN / GENERIC_ZERO_TRANSFER_PROVED / EXACT_FAMILY_OPEN` | `LAMPORT_ZERO_ESCAPE_LEAN_PROVED` |
@@ -828,6 +835,17 @@ ambient residual `(0,1)`, so the internal-residual tautology is killed.  Exact
 H4a1b still must pin the domain-safe operator, projection, trial/Ritz object,
 form-to-operator crosswalk, and leakage norm/rate.  Therefore H4a1, H4a, H4,
 and RH remain OPEN.
+
+Revision 23 separates the universal H4d2 square-envelope arithmetic from its
+exact Route B instantiation.  Lean proves, pointwise and eventually on one
+non-bottom filter, that same-envelope alpha/gap bounds, a b upper bound, and
+an independently supplied identity
+`W^2=|b|^2*scale*alpha/gap` imply the exact Contract-v2 squared polynomial
+envelope.  The theorem does not define WPrime.  Exact H4d2b still needs the
+non-tautological D0.7e.5c consumer identity, common-envelope SAFE bounds,
+fixed constants and signs, `q_b`, a strict exponent margin, eventual WPrime
+nonnegativity, cofinal scale, nonzero locus, and one selected joint filter.
+Therefore H4d2, H4d, H4, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`
