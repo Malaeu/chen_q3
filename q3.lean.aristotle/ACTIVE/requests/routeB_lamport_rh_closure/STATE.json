@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 19,
-  "updated_at": "2026-07-12T15:18:37+02:00",
+  "revision": 20,
+  "updated_at": "2026-07-12T15:42:41+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "19d2f9db387703fa71e7014a995fc7516903d77ad729bf66e54634d243d585e8",
+    "sprint_log_sha256": "6c9f59b4bac35bb838f66eb357f1c060f64300b8d15a3b62d840327de3ecc09e",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -328,6 +328,28 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h2a_simple_even_ground_sector_criterion": {
+    "name": "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20",
+    "status": "GENERIC_SECTOR_CRITERION_PROVED_EXACT_SELECTED_FAMILY_ORDERING_OPEN_NOT_RH",
+    "certificate": "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_CERTIFICATE.json",
+    "certificate_sha256": "2eae7eb00a5fa44e62b92a0c74fb5ae2965145fc7e32f701574cf635f1c479cb",
+    "validator": "validate_h2a_simple_even_ground_sector_criterion.py",
+    "validator_sha256": "9732a52093ad4bfdb8752122bda9f2b0e9e97c567e371446d306c3a0d2f69b93",
+    "artifact": "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_2026-07-12.md",
+    "artifact_sha256": "702b58d50019af1d1aa97736e7689976294f66064d68545995636f9c9a617139",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+      "sha256": "a8d61ee0d64f40387263dec9392184d915aeccb2822ac21566dd74fcc2712d5e"
+    },
+    "proved_nodes": ["H2a.0", "H2a1"],
+    "generic_verdict": "GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN",
+    "falsifier": "COMMUTING_SIMPLE_GROUND_CAN_BE_ODD",
+    "next_worker_leaf": null,
+    "next_exact_node": "H2a2",
+    "remaining_stop": "H2A_EXACT_SECTOR_ORDERING_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -402,7 +424,8 @@
       "H1C_H4D_GENERIC_CORES_REV16",
       "H1C2_RAW_INTEGRAL_CROSSWALK_REV17",
       "L0C_GENERIC_ZERO_TRANSFER_REV18",
-      "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19"
+      "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19",
+      "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1084,13 +1107,50 @@
       "falsification_certificate": "Q3/Proofs/RouteB/CompletedTrackerScope.lean"
     },
     "H2a": {
-      "id": "H2a", "parent_id": "H2", "kind": "LEAF", "role": "GOAL",
-      "statement": "The exact finite operator has the required simple isolated even ground eigenvector",
-      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H2a", "parent_id": "H2", "kind": "AND", "role": "GOAL",
+      "statement": "The generic parity-sector criterion and the exact selected-family sector ordering give the required simple isolated even ground eigenvector",
+      "dependencies": ["H2a.0"], "ordered_children": ["H2a1", "H2a2"], "assembly_theorem_id": "H2a3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H2A2_EXACT_SELECTED_FAMILY_SECTOR_ORDERING_OPEN"},
       "validation": "SIMPLE_EVEN_GROUND_THEOREM_AUDIT",
-      "failure_codes": ["SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH"]
+      "failure_codes": ["SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH", "H2A_EXACT_SECTOR_ORDERING_MISSING", "H2A_SAME_FAMILY_SELECTION_MISSING"]
+    },
+    "H2a.0": {
+      "id": "H2a.0", "parent_id": "H2a", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H2a iff the generic simple-even sector criterion AND exact selected-family sector ordering",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H2A_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H2A_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H2a1": {
+      "id": "H2a1", "parent_id": "H2a", "kind": "LEAF", "role": "GOAL",
+      "statement": "For a commuting involution, an even-sector simple bottom together with a strict odd-sector floor gives a simple even global ground; simple ground alone has only a parity dichotomy",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+      "failure_codes": ["H2A_PARITY_DICHOTOMY_GAP", "H2A_GENERIC_SECTOR_CRITERION_MISSING", "H2A_ODD_GROUND_FALSIFIER_MISSING"]
+    },
+    "H2a2": {
+      "id": "H2a2", "parent_id": "H2a", "kind": "LEAF", "role": "GOAL",
+      "statement": "On the exact H1c3/D0.8 selected family prove epsilonPlus1<epsilonPlus2 (or the explicit one-dimensional even case), epsilonPlus1<epsilonMinus1, and export a positive global ground isolation radius",
+      "dependencies": ["D0.4", "D0.5", "D0.8", "H1c3", "H2a1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_8_AND_H1C3_SELECTED_FAMILY_OPEN_EXACT_SECTOR_ORDERING_MISSING"},
+      "validation": "H2A_EXACT_SELECTED_FAMILY_SECTOR_ORDERING",
+      "failure_codes": ["H2A_EXACT_SECTOR_ORDERING_MISSING", "H2A_EVEN_INTERNAL_GAP_MISSING", "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING", "H2A_ISOLATION_RADIUS_MISSING", "H2A_SAME_FAMILY_SELECTION_MISSING", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "D0_8_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H2a3": {
+      "id": "H2a3", "parent_id": "H2a", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H2a1 AND H2a2 IMPLIES the exact selected finite operator has a simple isolated even global ground eigenvector",
+      "dependencies": ["H2a.0", "H2a1", "H2a2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H2A2_EXACT_SECTOR_ORDERING_OPEN"},
+      "validation": "H2A_EXACT_SIMPLE_EVEN_GROUND_ASSEMBLY",
+      "failure_codes": ["H2A_ASSEMBLY_GAP", "H2A_EXACT_SECTOR_ORDERING_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H2b": {
       "id": "H2b", "parent_id": "H2", "kind": "LEAF", "role": "GOAL",
@@ -1617,6 +1677,12 @@
         "no_progress_streak": 0,
         "result": "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE_AT_NEG_I_DIV_TWO"
       },
+      "H2a/generic_simple_even_ground_sector_criterion/v1": {
+        "status": "GENERIC_SECTOR_CRITERION_CLOSED_EXACT_SELECTED_FAMILY_ORDERING_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN;COMMUTING_SIMPLE_GROUND_CAN_BE_ODD;H2A_EXACT_SECTOR_ORDERING_MISSING"
+      },
       "L0/generic_zero_escape_logic/v1": {
         "status": "GENERIC_LOGIC_CLOSED_ANALYTIC_TRANSFER_OPEN",
         "last_class": "PROOF_PROGRESS",
@@ -1841,6 +1907,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN;TRUE_GAP_MINUS_RAYLEIGH_EXCESS_DENOMINATOR;H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_SAME_PARITY_SPECTRAL_INSTANTIATION_HALF_GAP_AND_RATE_OPEN_FALSE_BRIDGE_RETAINED_H4A3_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T15:42:41+02:00",
+      "event": "H2A_GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_PROVED",
+      "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
+      "result": "GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN;PARITY_DICHOTOMY_EXPLICIT;COMMUTING_SIMPLE_GROUND_CAN_BE_ODD;H2A_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_SELECTED_FAMILY_EVEN_INTERNAL_AND_EVEN_ODD_SECTOR_ORDERING_OPEN_H2A_H2_OPEN_H2B_CONDITIONAL_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

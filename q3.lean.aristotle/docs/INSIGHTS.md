@@ -46825,3 +46825,12 @@ not the raw-D17 factorwise support class.
 - Planned generic core: parity dichotomy plus an explicit exclusion of an odd vector at the ground level yields an even ground vector; exact Route B closure still requires `epsilon_plus_1 < epsilon_plus_2` and `epsilon_plus_1 < epsilon_minus_1`.
 - Planned DAG split: prove the decomposition contract and generic Lean core, leave exact selected-family sector ordering and final H2a assembly OPEN with stop `H2A_EXACT_SECTOR_ORDERING_MISSING`.
 - Acceptance remains narrow: zero holes, standard Mathlib axioms only, no inferred global rank alternation, no H2/H4 closure, and Route B remains `NOT_RH`.
+
+### Final result
+
+- `SimpleEvenGroundSectorCriterion.lean` proves the algebraic even/odd projection identities, parity dichotomy for a simple eigenspace, and the non-tautological theorem `simpleEvenGround_of_sector_order`.
+- The theorem consumes an even-sector floor and simplicity plus a strict odd-sector floor; it then proves the global bottom and one-dimensionality by decomposing every eigenvector, rather than assuming the conclusion.
+- `commute_simple_ground_does_not_force_even` formally certifies `A=diag(1,0)`, `J=diag(1,-1)`: the operators commute, `J` is an involution, and the simple global ground `(0,1)` is odd.
+- H8's exact logical boundary is now pinned: Theorem 5.10 assumes simple-even, and Section 8 names it as missing.  The prolate simple-even claim cannot be transferred to the finite Weil operator.
+- STATE revision 20 decomposes H2a into proved generic core `H2a1`, OPEN exact same-family ordering `H2a2`, and assembly `H2a3`.  H2a2 owns both strict sector inequalities and the positive isolation export.
+- Direct Lean validation passes with zero holes and only `propext`, `Classical.choice`, and `Quot.sound`.  The count is 104 nodes: 54 PROVED, 42 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  H2b remains CONDITIONAL, D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

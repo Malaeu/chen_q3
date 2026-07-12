@@ -40,3 +40,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H4a3a: WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN; finite spectral weights prove etaSq >= alpha*(Delta-alpha), the exact Temple denominator Delta-alpha, and the certified half-gap bound alpha <= 2*etaSq/Delta.`
 
 `SKIPPED H4a3b: H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING; the same-parity Route B eigenbasis/residual variance crosswalk, canonical alpha, 2*alpha<=Delta locus, and residual-ratio rate remain open; PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE remains a live plant.`
+
+`CLOSED H2a1: GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN; commuting involution gives the exact even/odd eigenvector split, explicit sector ordering gives a simple even global ground, and the commuting simple odd-ground falsifier remains executable.`
+
+`SKIPPED H2a2: H2A_EXACT_SECTOR_ORDERING_MISSING; H8 assumes simple-even, while the exact selected H1c3/D0.8 Route B family still lacks epsilonPlus1<epsilonPlus2 (or the explicit dimension-one case), epsilonPlus1<epsilonMinus1, and the exported positive isolation radius.`

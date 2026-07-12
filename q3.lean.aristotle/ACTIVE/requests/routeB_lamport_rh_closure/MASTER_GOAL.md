@@ -451,7 +451,10 @@ R0 RHClosure [AND]
 |   |   `-- H1c4 H1cAssembly
 |   `-- H1d H1Assembly
 |-- H2 RealZeroApproximants [AND]
-|   |-- H2a SimpleEvenGround
+|   |-- H2a SimpleEvenGround [AND]
+|   |   |-- H2a1 GenericSimpleEvenGroundSectorCriterion
+|   |   |-- H2a2 ExactSelectedFamilySectorOrdering
+|   |   `-- H2a3 H2aAssembly
 |   |-- H2b SameVectorRealZeros
 |   `-- H2c H2Assembly
 |-- H3 StripUniformTracking [AND]
@@ -560,7 +563,11 @@ proof node.
 | `H1c4` | H1c exact source-family assembly | `OPEN / BLOCKED_BY_H1c3` | `H1C_ASSEMBLED` |
 | `H1d` | H1 exact-family assembly | `OPEN / BLOCKED_BY_H1c` | `H1_ASSEMBLED` |
 | `H2` | AND parent for same-vector real-zero supply | `OPEN / COMPLETED_TRACKER_GLOBAL_IDENTIFICATION_KILLED` | `REAL_ZERO_APPROXIMANTS_PROVED` |
-| `H2a` | Simple isolated even ground eigenvector for the exact finite operator | `OPEN_CRITICAL` | `SIMPLE_EVEN_GROUND_PROVED` |
+| `H2a` | AND parent: generic sector criterion plus exact same-family strict sector ordering | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
+| `H2a.0` | H2a decomposition contract | `PROVED` | `H2A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2a1` | A simple even-sector bottom strictly below every odd eigenvalue is the simple even global ground; simple ground alone has only a parity dichotomy | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN` |
+| `H2a2` | On the exact H1c3/D0.8 family prove `epsilonPlus1<epsilonPlus2` (or the explicit dimension-one case), `epsilonPlus1<epsilonMinus1`, and a positive isolation radius | `OPEN / INELIGIBLE` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
+| `H2a3` | Exact H2a assembly | `OPEN / BLOCKED_BY_H2a2` | `SIMPLE_EVEN_GROUND_PROVED` |
 | `H2b` | Transform of that same vector has only real zeros | `CONDITIONAL_ON_H2a` | `REAL_ZERO_APPROXIMANTS_PROVED` |
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
 | `H3` | AND parent for same-family strip tracking | `OPEN` | `STRIP_UNIFORM_TRACKING_PROVED` |
@@ -775,6 +782,17 @@ flipping the Fourier sign; D0.6 is the separate source lock identifying that
 representative with owner `Fplus`.  H1c3 still needs D0.8 and the owner
 master-family choice; therefore H1c and H1 stay OPEN and no new independent
 worker leaf is currently eligible.
+
+Revision 20 separates the universal H2a parity algebra from the exact Route B
+spectral ordering.  Lean proves that a commuting involution splits every
+eigenvector into even and odd eigenvectors, that a one-dimensional eigenspace
+has parity `+1` or `-1`, and that an even-sector simple bottom strictly below
+the odd sector is the simple even global ground.  The executable model
+`A=diag(1,0)`, `J=diag(1,-1)` retains the mandatory guard: a simple ground can
+be odd.  Exact H2a2 therefore still needs, on the selected H1c3/D0.8 family,
+`epsilonPlus1<epsilonPlus2` (or its explicit dimension-one replacement) and
+`epsilonPlus1<epsilonMinus1`.  H8 assumes rather than proves these inputs, so
+H2a, H2, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

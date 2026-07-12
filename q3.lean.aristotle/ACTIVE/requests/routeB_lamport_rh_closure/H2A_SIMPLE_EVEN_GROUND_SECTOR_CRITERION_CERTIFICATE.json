@@ -1,0 +1,130 @@
+{
+  "schema": "route_b_h2a_simple_even_ground_sector_criterion_certificate.v1",
+  "created_at": "2026-07-12T15:42:41+02:00",
+  "revision_target": 20,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "scope": "THEOREM_5_10_SIMPLE_EVEN_ASSUMPTION_AND_SECTION_8_MISSING_STEP"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_4_EXACT_PARITY_SECTORS.md",
+      "sha256": "18d0fb4c9a016d1635ee4d7b2ef83fcf65f14285312d3ea335cddd92040529a6",
+      "scope": "EXACT_ROUTE_B_PARITY_DECOMPOSITION_WITHOUT_ORDERING"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_GROUND_AND_TRIAL_TYPES.md",
+      "sha256": "9cb7a9e34d0d051fc78c9c7a69e71fc91e7c7722f3d8c9a5713469d4f3bd5547",
+      "scope": "GROUND_SPACE_AND_SECTOR_BOTTOM_TYPES_WITHOUT_SIMPLE_EVEN"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/JointEigenspace.lean",
+      "sha256": "8422bcaa36e23c92464d3dbcc6064287add707d572412c74166cdd3d4c9d2bb0",
+      "scope": "COMMUTING_SYMMETRIC_JOINT_EIGENSPACE_DECOMPOSITION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/LinearAlgebra/Eigenspace/Basic.lean",
+      "sha256": "b320adb24c0ebd12d24073fd8be8e538b5e0422e208ee3ebaddf67099273b3f9",
+      "scope": "EIGENSPACE_AND_EIGENVECTOR_INTERFACE"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/InnerProductSpace/JointEigenspace.html",
+      "scope": "FINITE_DIMENSIONAL_SIMULTANEOUS_EIGENSPACE_DECOMPOSITION"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Eigenspace/Basic.html",
+      "scope": "MATHLIB_EIGENSPACE_DEFINITION"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+    "sha256": "a8d61ee0d64f40387263dec9392184d915aeccb2822ac21566dd74fcc2712d5e",
+    "proved": [
+      "parity_dichotomy_of_simple_eigenspace",
+      "simpleEvenGround_of_sector_order",
+      "commute_simple_ground_does_not_force_even"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_2026-07-12.md",
+    "sha256": "702b58d50019af1d1aa97736e7689976294f66064d68545995636f9c9a617139"
+  },
+  "h2a_repair": {
+    "parent": "H2a",
+    "decomposition": "H2a.0",
+    "ordered_children": ["H2a1", "H2a2"],
+    "assembly": "H2a3",
+    "proved": ["H2a.0", "H2a1"],
+    "open": ["H2a", "H2a2", "H2a3", "H2", "H2c"],
+    "conditional": ["H2b"],
+    "generic_verdict": "GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN",
+    "exact_residual_stop": "H2A_EXACT_SECTOR_ORDERING_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "required_family": "SAME_H1C3_D0_8_SELECTED_EXACT_FAMILY",
+    "required_operator": "D0_3G_CANONICAL_FINITE_WEIL_OPERATOR",
+    "required_even_internal_order": "EPSILON_PLUS_1_LT_EPSILON_PLUS_2_OR_EXPLICIT_DIMENSION_ONE_CASE",
+    "required_cross_sector_order": "EPSILON_PLUS_1_LT_EPSILON_MINUS_1",
+    "required_export": "POSITIVE_GLOBAL_GROUND_ISOLATION_RADIUS",
+    "open_codes": [
+      "H2A_EXACT_SECTOR_ORDERING_MISSING",
+      "H2A_EVEN_INTERNAL_GAP_MISSING",
+      "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING",
+      "H2A_ISOLATION_RADIUS_MISSING",
+      "H2A_SAME_FAMILY_SELECTION_MISSING",
+      "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED",
+      "D0_8_OBJECT_MISMATCH",
+      "SIMPLE_EVEN_GROUND_MISSING",
+      "GROUND_SECTOR_MISMATCH",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "mandatory_falsifier": {
+    "theorem": "commute_simple_ground_does_not_force_even",
+    "operator": "diag(1,0)",
+    "parity": "diag(1,-1)",
+    "ground_vector": "(0,1)",
+    "ground_parity": "ODD",
+    "killed_inference": "COMMUTATION_PLUS_SIMPLE_GROUND_IMPLIES_EVEN"
+  },
+  "expected_node_counts": {
+    "total": 104,
+    "PROVED": 54,
+    "OPEN": 42,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_ROUTE_B_SECTOR_ORDERING",
+    "NO_EVEN_INTERNAL_GAP",
+    "NO_EVEN_ODD_BOTTOM_ORDER",
+    "NO_H1_MASTER_FAMILY_SELECTION",
+    "NO_D0_8_CROSSWALK",
+    "NO_H2A_PARENT_CLOSURE",
+    "NO_H2_PARENT_CLOSURE",
+    "NO_H4_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

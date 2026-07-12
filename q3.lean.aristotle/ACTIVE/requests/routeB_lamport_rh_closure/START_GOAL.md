@@ -118,6 +118,14 @@ Current fail-closed address:
   half-gap bound `alpha<=2*etaSq/Delta`; exact same-parity Route B operator,
   residual, half-gap, and rate instantiation `H4a3b` remains OPEN, while the
   rev15 false-bridge plant stays live;
+- rev20 proves `H2a1 GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN`:
+  commuting involution gives an exact even/odd eigenvector split and a simple
+  eigenspace has parity `+1` or `-1`; explicit even-sector simplicity plus a
+  strict odd-sector floor gives a simple even global ground; the executable
+  `diag(1,0)`/`diag(1,-1)` plant proves that simple ground alone can be odd;
+  exact selected-family inequalities `epsilonPlus1<epsilonPlus2` (or the
+  explicit dimension-one case) and `epsilonPlus1<epsilonMinus1` remain OPEN
+  in `H2a2` with stop `H2A_EXACT_SECTOR_ORDERING_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
   SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;
