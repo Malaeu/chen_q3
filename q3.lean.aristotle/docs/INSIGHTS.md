@@ -47180,3 +47180,27 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 140 nodes: 72 PROVED,
   60 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H4a2 ambient-residual envelope transfer (in progress)
+
+- Exact target: separate the universal norm-envelope transfer from the missing
+  Route B compressed-residual and projection-leakage rate estimates.
+- Four local `q3_docs` queries found no pinned H4a2 implementation or exact
+  component-rate theorem (best scores about 0.53--0.63); older boundary/cap
+  residual diagnostics are not an exact operator-domain crosswalk.
+- H4a1a already proves the vector identity
+  `ambientResidual = compressedResidual + projectionLeakage` and the Ritz
+  specialization, so H4a2's generic core is now a direct norm consequence.
+- Planned Lean outputs: the triangle norm bound, component-envelope and square-
+  envelope transfers, Ritz/leakage specialization, and two `[NeBot l]`
+  eventual wrappers on one filter.
+- The live `compressed_residual_zero_ambient_residual_nonzero` plant prevents
+  deleting the leakage hypothesis or reusing an internal Ritz residual as the
+  ambient error.
+- Official Mathlib's normed-group API supplies `norm_add_le`; filter wrappers
+  remain nonvacuous only with an explicit `NeBot` instance.
+- Planned DAG split: prove generic H4a2a, leave exact component-rate
+  instantiation H4a2b and assembly H4a2c OPEN with
+  `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING`.
+- Acceptance remains narrow: no operator/form crosswalk, projection, leakage
+  rate, SafeAlphaUpper, H4a/H4 closure, or RH claim.
