@@ -46872,3 +46872,14 @@ not the raw-D17 factorwise support class.
 - `compressed_residual_zero_ambient_residual_nonzero` certifies an idempotent coordinate projection with zero compressed residual and nonzero ambient residual `(0,1)`.
 - STATE revision 22 decomposes H4a1 into proved generic core `H4a1a`, OPEN exact Route B carrier/projection crosswalk `H4a1b`, and assembly `H4a1c`; the operator-domain and form/operator guards remain explicit.
 - Direct Lean validation passes with zero holes and only `propext`, `Classical.choice`, and `Quot.sound`.  The count is 112 nodes: 58 PROVED, 46 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H4d2 SAFE bounds to WPrime square envelope (in progress)
+
+- Exact target: assemble the Contract-v2 alpha upper, true gap lower, b upper, and exact WPrime identity into the squared polynomial envelope consumed by the already proved H4d1 cofinal decay theorem.
+- Four local `q3_docs` queries found no pinned implementation of this exact assembly (best scores about 0.60--0.63); unrelated Q3 compact/PSD routes will not be imported.
+- Pointwise inputs use one positive scale and one common positive exponential envelope: `alpha <= C_alpha scale^r_alpha envelope`, `c_Delta scale^r_Delta envelope <= gap`, and `|b| <= C_b scale^q_b`.
+- Together with `W^2=|b|^2 scale alpha/gap`, elementary ordered-field algebra cancels the common envelope and yields the exact square of `C_b sqrt(C_alpha/c_Delta) scale^(q_b+(1+r_alpha-r_Delta)/2)`.
+- A filter wrapper will combine the eventual SAFE inputs on one non-bottom filter; it does not select that filter, constants, exponent, nonzero locus, or WPrime consumer.
+- Official Mathlib `Real.rpow` and `Real.sqrt` APIs provide the exponent/square identities; the proof must retain positivity before division and square-root rewriting.
+- Planned DAG split: prove generic H4d2a, leave exact same-filter inputs H4d2b and assembly H4d2c OPEN; retain legacy parent stop `H4D_WPRIME_SQUARE_ENVELOPE_MISSING` and add `H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING`.
+- Acceptance remains narrow: `hW` is an input from independent D0.7e.5c, never a definition of WPrime; no envelope mismatch, no H4d2/H4d/H4 closure, and `NOT_RH` remains.
