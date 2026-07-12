@@ -47219,3 +47219,28 @@ Final result:
 - The H4a1 zero-compressed/nonzero-ambient plant remains pinned and live. The
   count is 144 nodes: 74 PROVED, 62 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3e normalized-tracking rate transfer (in progress)
+
+- Exact target: isolate the universal implication from an absolute compact-set
+  tracking bound for `F-b•X` to uniform tracking of `b⁻¹•F`, without defining,
+  reconstructing, or aliasing the missing Route B `WPrime` object.
+- Four local `q3_docs` queries returned only weak or unrelated matches
+  (roughly 0.55--0.64); no pinned theorem currently supplies the two relative
+  rates after division by `b`.
+- H4c1 already gives an eventual reciprocal envelope
+  `R=c_b⁻¹*scale^(-q_b)` from the two-sided normalized `b` bound.  The generic
+  receiver should therefore require `R*W -> 0` and `R*eps -> 0` explicitly.
+- The algebraic heart is exact: `b⁻¹•F-X=b⁻¹•(F-b•X)` for `b≠0`; norm scaling
+  converts the absolute error bound to a relative one.
+- Mathlib provides the metric characterization of `TendstoUniformlyOn`, norm
+  scaling/inversion, filter `Tendsto`, and explicit `NeBot` support; the latter
+  keeps the wrapper from closing through the bottom filter.
+- Two mandatory plants will test the missing hypotheses: detector decay alone
+  need not survive reciprocal multiplication, and the current Contract-v2
+  safe margin need not imply the stronger normalized relative-rate margin.
+- Planned DAG split: prove generic H3e1, leave the exact same-family WPrime,
+  absolute tracking, reciprocal-b, Xi-object, two relative-rate, and joint-filter
+  instantiation H3e2 plus assembly H3e3 OPEN.
+- Acceptance remains narrow: no WPrime minting, no exact alpha/gap/b crosswalk,
+  no H3e/H3/L0 closure, no Bus 010, and no RH claim.
