@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 18,
-  "updated_at": "2026-07-12T14:54:33+02:00",
+  "revision": 19,
+  "updated_at": "2026-07-12T15:18:37+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "c25be80c98229cf78cafd445bd4dc8a24b7658ff236a4d389aa732807f302041",
+    "sprint_log_sha256": "19d2f9db387703fa71e7014a995fc7516903d77ad729bf66e54634d243d585e8",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -305,6 +305,29 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4a3_weighted_spectral_temple_core": {
+    "name": "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19",
+    "status": "GENERIC_WEIGHTED_TEMPLE_CORE_PROVED_EXACT_SPECTRAL_INSTANTIATION_OPEN_NOT_RH",
+    "certificate": "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_CERTIFICATE.json",
+    "certificate_sha256": "67194450ec8d8963b3899df9a914077c8e179e58b0ce907ee175949c0a8a4b04",
+    "validator": "validate_h4a3_weighted_spectral_temple_core.py",
+    "validator_sha256": "d0d5c3951da273be7eac62e1e6040d687792152a514ab080bd4170baff448022",
+    "artifact": "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_2026-07-12.md",
+    "artifact_sha256": "16d7c5658fefd8d288c3f0b80d485fe9a43de25908f1afb6de7087b6bdb60781",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean",
+      "sha256": "666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd"
+    },
+    "proved_nodes": ["H4a3.0", "H4a3a"],
+    "generic_verdict": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN",
+    "correct_denominator": "TRUE_GAP_MINUS_RAYLEIGH_EXCESS",
+    "next_worker_leaf": null,
+    "next_exact_node": "H4a3b",
+    "remaining_stop": "H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING",
+    "false_bridge_status": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE_RETAINED",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -330,6 +353,8 @@
       "failure_code": "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING",
       "killed_formula": "sqrt(alpha/DeltaE)<=eta/DeltaE",
       "kill_code": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE",
+      "generic_core_status": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN_PROVED",
+      "exact_residual_stop": "H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING",
       "is_lamport_node": false
     },
     "H3E_RELATIVE_NORMALIZATION_TRANSFER": {
@@ -376,7 +401,8 @@
       "H3_H4_CONTRACT_REPAIR_REV15",
       "H1C_H4D_GENERIC_CORES_REV16",
       "H1C2_RAW_INTEGRAL_CROSSWALK_REV17",
-      "L0C_GENERIC_ZERO_TRANSFER_REV18"
+      "L0C_GENERIC_ZERO_TRANSFER_REV18",
+      "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1166,7 +1192,7 @@
       "statement": "Prove the Contract-v2 canonical alpha upper bound 0 <= alpha <= C_alpha lambda^r_alpha exp(-4 pi lambda^2)",
       "dependencies": ["D0", "H4a.0"], "ordered_children": ["H4a1", "H4a2", "H4a3"], "assembly_theorem_id": "H4a4",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_AND_H4A_CHILDREN_OPEN"},
+      "eligibility": {"eligible": false, "reason": "D0_AND_H4A_EXACT_CHILDREN_OPEN"},
       "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR"],
       "validation": "SAFE_ALPHA_UPPER_EXACT_CANONICAL_OBJECT_AUDIT",
       "failure_codes": ["SAFE_ALPHA_UPPER_MISSING", "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE"]
@@ -1199,14 +1225,52 @@
       "failure_codes": ["RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE", "H4A_TRIAL_RITZ_OBJECT_MISMATCH"]
     },
     "H4a3": {
-      "id": "H4a3", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
-      "statement": "Convert the exact residual data to the canonical Contract-v2 SafeAlphaUpper bound using the true Rayleigh-center spectral distance",
-      "dependencies": ["D0", "H4a1", "H4a2"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H4a3", "parent_id": "H4a", "kind": "AND", "role": "GOAL",
+      "statement": "The weighted spectral Temple core and its exact same-parity Route B residual/eigenbasis instantiation yield the canonical Contract-v2 SafeAlphaUpper bridge",
+      "dependencies": ["H4a3.0"], "ordered_children": ["H4a3a", "H4a3b"], "assembly_theorem_id": "H4a3c",
       "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "CANONICAL_ALPHA_AND_CORRECT_BRIDGE_OPEN"},
-      "validation": "RESIDUAL_TO_CANONICAL_SAFE_ALPHA_UPPER_AUDIT",
-      "failure_codes": ["H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED"]
+      "eligibility": {"eligible": false, "reason": "EXACT_ROUTE_B_RESIDUAL_SPECTRAL_INSTANTIATION_OPEN"},
+      "validation": "H4A3_GENERIC_AND_EXACT_RESIDUAL_TO_ALPHA_ASSEMBLY",
+      "failure_codes": ["H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING", "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED"]
+    },
+    "H4a3.0": {
+      "id": "H4a3.0", "parent_id": "H4a3", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4a3 iff H4a3a AND H4a3b, with H4a3c as exact residual-to-canonical-alpha assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4A3_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4a3a": {
+      "id": "H4a3a", "parent_id": "H4a3", "kind": "LEAF", "role": "GOAL",
+      "statement": "A finite probability-weighted spectrum with a zero ground level and complementary floor Delta satisfies 0<=alpha and etaSq>=alpha*(Delta-alpha), with exact Temple and half-gap corollaries",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean",
+      "failure_codes": ["H4A_WEIGHTED_SPECTRAL_TEMPLE_CORE_MISSING", "H4_RESIDUAL_TO_ALPHA_BRIDGE_MISSING"]
+    },
+    "H4a3b": {
+      "id": "H4a3b", "parent_id": "H4a3", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H4a3a on the exact same-parity Route B eigenbasis: pin normalized spectral weights, canonical alpha, ambient residual variance, true complementary floor, half-gap locus, and the required SafeAlphaUpper rate",
+      "dependencies": ["D0", "H2a", "H4a1", "H4a2"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["PO-1/A1", "PO_XWALK_RESIDUAL_BRIDGE_REPAIR"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H2A_H4A1_H4A2_AND_CANONICAL_ALPHA_OPEN"},
+      "validation": "H4A3_EXACT_ROUTE_B_WEIGHTED_SPECTRAL_INSTANTIATION",
+      "failure_codes": ["H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING", "H4A_SAME_PARITY_SPECTRAL_FLOOR_MISSING", "H4A_RESIDUAL_VARIANCE_CROSSWALK_MISSING", "H4A_TEMPLE_HALF_GAP_LOCUS_MISSING", "H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "PO_XWALK_ERROR_SUBSPACE_UNPINNED", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4a3c": {
+      "id": "H4a3c", "parent_id": "H4a3", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4a3a AND H4a3b IMPLIES the exact residual-to-canonical-SafeAlphaUpper theorem H4a3",
+      "dependencies": ["H4a3.0", "H4a3a", "H4a3b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4A3B_EXACT_INSTANTIATION_OPEN"},
+      "validation": "H4A3_EXACT_RESIDUAL_TO_ALPHA_ASSEMBLY",
+      "failure_codes": ["H4A3_ASSEMBLY_GAP", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H4a4": {
       "id": "H4a4", "parent_id": "H4a", "kind": "LEAF", "role": "ASSEMBLY",
@@ -1571,6 +1635,12 @@
         "no_progress_streak": 0,
         "result": "H4_CONTRACT_V2_DECOMPOSITION_LOCKED;PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE;H4D1_GENERIC_RATE_CORE_PROVED"
       },
+      "H4a3/weighted_spectral_temple_core/v1": {
+        "status": "GENERIC_WEIGHTED_TEMPLE_CORE_CLOSED_EXACT_SPECTRAL_INSTANTIATION_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN;TRUE_GAP_MINUS_RAYLEIGH_EXCESS_DENOMINATOR;H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING"
+      },
       "H1c/proposition59_removable_rhs_entire/v1": {
         "status": "SOURCE_RHS_CORE_CLOSED_RAW_INTEGRAL_AND_MASTER_OPEN",
         "last_class": "PROOF_PROGRESS",
@@ -1764,6 +1834,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN;ORIGINAL_NAT_INDEX_EVENTUAL_ZEROS;L0C_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_ROUTE_B_FAMILY_INSTANTIATION_OPEN_L0C_L0_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T15:18:37+02:00",
+      "event": "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN;TRUE_GAP_MINUS_RAYLEIGH_EXCESS_DENOMINATOR;H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_SAME_PARITY_SPECTRAL_INSTANTIATION_HALF_GAP_AND_RATE_OPEN_FALSE_BRIDGE_RETAINED_H4A3_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

@@ -1,0 +1,128 @@
+{
+  "schema": "route_b_h4a3_weighted_spectral_temple_core_certificate.v1",
+  "created_at": "2026-07-12T15:18:37+02:00",
+  "revision_target": 19,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "SAFE_ALPHA_UPPER_CANONICAL_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "FALSE_BRIDGE_AND_CORRECT_RAYLEIGH_CENTER_DENOMINATOR"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
+      "sha256": "7e33e0675b6a2ed2f74b09c5653b8703d27eed0ef615b84341ef3c2ea4a5282c",
+      "scope": "MANDATORY_TWO_LEVEL_FALSE_DIRECTION_PLANT"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Ring/Finset.lean",
+      "sha256": "b3a005393459cd76113b2ab616455734e64173b054e4b16193d8ac78a8456b05",
+      "scope": "FINITE_WEIGHTED_VARIANCE_SUM_ALGEBRA"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Algebra/Order/BigOperators/Group/Finset.lean",
+      "sha256": "733a2f3f24e82d9bb92e46047f59d6c5a7d9d4eb0b2b8b461b0f62c3d0974867",
+      "scope": "TERM_BY_TERM_WEIGHTED_SUM_INEQUALITY"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://arxiv.org/abs/1207.3240",
+      "scope": "RAYLEIGH_QUOTIENT_RESIDUAL_A_POSTERIORI_FRAMEWORK"
+    },
+    {
+      "url": "https://arxiv.org/abs/1603.06100",
+      "scope": "KATO_TEMPLE_SPECTRAL_SEPARATION_DENOMINATOR_FRAMEWORK"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean",
+    "sha256": "666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd",
+    "proved": [
+      "weighted_rayleigh_excess_nonneg",
+      "weighted_residual_sq_ge_rayleigh_excess_mul_gap_sub",
+      "rayleigh_excess_le_residual_sq_div_gap_sub",
+      "rayleigh_excess_le_two_mul_residual_sq_div_gap"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_2026-07-12.md",
+    "sha256": "16d7c5658fefd8d288c3f0b80d485fe9a43de25908f1afb6de7087b6bdb60781"
+  },
+  "h4a3_repair": {
+    "parent": "H4a3",
+    "decomposition": "H4a3.0",
+    "ordered_children": ["H4a3a", "H4a3b"],
+    "assembly": "H4a3c",
+    "proved": ["H4a3.0", "H4a3a"],
+    "open": ["H4a3", "H4a3b", "H4a3c", "H4a", "H4a4", "H4"],
+    "generic_verdict": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN",
+    "exact_residual_stop": "H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "required_operator": "SAME_DOMAIN_SAFE_SELFADJOINT_ROUTE_B_OPERATOR",
+    "required_trial": "SAME_NORMALIZED_ROUTE_B_TRIAL_VECTOR",
+    "required_alpha": "CONTRACT_V2_CANONICAL_ALPHA",
+    "required_residual": "AMBIENT_OPERATOR_RESIDUAL_NORM_SQUARED",
+    "required_gap": "TRUE_RAYLEIGH_CENTER_COMPLEMENTARY_SPECTRAL_DISTANCE",
+    "open_codes": [
+      "H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING",
+      "H4A_OPERATOR_DOMAIN_GAP",
+      "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION",
+      "H4A_TRIAL_RITZ_OBJECT_MISMATCH",
+      "H4A_SAME_PARITY_SPECTRAL_FLOOR_MISSING",
+      "H4A_RESIDUAL_VARIANCE_CROSSWALK_MISSING",
+      "H4A_TEMPLE_HALF_GAP_LOCUS_MISSING",
+      "H4A_RESIDUAL_RATE_TO_ALPHA_RATE_MISSING",
+      "PO_XWALK_ERROR_SUBSPACE_UNPINNED",
+      "H0_A1_ALPHA_DEFINITION_MISSING",
+      "SIMPLE_EVEN_GROUND_MISSING",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "mandatory_falsifier": {
+    "verdict": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE",
+    "killed_formula": "sqrt(alpha/Delta)<=eta/Delta",
+    "preserved_on_parent": true
+  },
+  "expected_node_counts": {
+    "total": 100,
+    "PROVED": 52,
+    "OPEN": 40,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_ROUTE_B_SPECTRAL_INSTANTIATION",
+    "NO_CANONICAL_ALPHA_DEFINITION",
+    "NO_OPERATOR_DOMAIN_CROSSWALK",
+    "NO_SAFE_ALPHA_UPPER_CLOSURE",
+    "NO_H4A3_PARENT_CLOSURE",
+    "NO_H4_PARENT_CLOSURE",
+    "NO_FALSE_BRIDGE_REVIVAL",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

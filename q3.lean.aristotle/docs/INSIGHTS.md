@@ -46793,3 +46793,24 @@ not the raw-D17 factorwise support class.
 - Acceptance: zero holes, standard Mathlib axioms only, the two-level false
   formula remains a live plant, D0.7e.5a/Bus state stay unchanged, and status
   remains `NOT_RH`.
+
+### Final result
+
+- `WeightedSpectralTempleCore.lean` proves directly from finite nonnegative
+  spectral weights that the Rayleigh excess is nonnegative and
+  `etaSq >= alpha*(Delta-alpha)`.  No abstract spectral theorem or residual
+  inequality is imported as an axiom.
+- The weighted variance identity is explicit in Lean.  Its exact quotient
+  corollary uses the Rayleigh-center distance `Delta-alpha`, and the half-gap
+  corollary gives `alpha <= 2*etaSq/Delta` under `2*alpha<=Delta`.
+- The rev15 counterexample remains valid and registered: the new theorem does
+  not revive `sqrt(alpha/Delta)<=eta/Delta`; it replaces that false direction
+  by a different inequality with the correct denominator.
+- STATE revision 19 decomposes H4a3 into proved generic core `H4a3a`, OPEN
+  exact same-parity spectral/residual/rate instantiation `H4a3b`, and assembly
+  `H4a3c`.  The exact node still owns the operator domain, spectral weights,
+  canonical alpha, residual variance, half-gap locus, and final rate.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 100 nodes: 52 PROVED,
+  40 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

@@ -464,7 +464,10 @@ R0 RHClosure [AND]
 |   |-- H4a SafeAlphaUpper [AND]
 |   |   |-- H4a1 AmbientResidualIdentity
 |   |   |-- H4a2 UniformResidualUpper
-|   |   |-- H4a3 ResidualToCanonicalAlphaUpper
+|   |   |-- H4a3 ResidualToCanonicalAlphaUpper [AND]
+|   |   |   |-- H4a3a GenericWeightedSpectralTempleCore
+|   |   |   |-- H4a3b ExactRouteBResidualSpectralInstantiation
+|   |   |   `-- H4a3c H4a3Assembly
 |   |   `-- H4a4 SafeAlphaUpperAssembly
 |   |-- H4b SafeGapLower
 |   |-- H4c SafeSignAndB
@@ -572,7 +575,11 @@ proof node.
 | `H4a.0` | Residual-to-alpha decomposition contract | `PROVED` | `H4A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H4a1` | Exact non-internal domain-safe residual identity | `OPEN` | `RESIDUAL_IDENTITY_PROVED` |
 | `H4a2` | Uniform upper bound for that exact residual | `OPEN_CRITICAL` | `RESIDUAL_UPPER_PROVED` |
-| `H4a3` | Correct residual-to-canonical-alpha theorem | `OPEN_CRITICAL / REGISTERED FORMULA KILLED` | blocker: `PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE` |
+| `H4a3` | AND parent for the corrected weighted-spectral Temple bridge and exact Route B instantiation | `OPEN / GENERIC_CORE_PROVED / EXACT_INSTANTIATION_OPEN` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
+| `H4a3.0` | Definitional H4a3 decomposition contract | `PROVED` | `H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4a3a` | Weighted spectral variance gives `etaSq >= alpha*(Delta-alpha)` and the correct Temple/half-gap bounds | `PROVED / GENERIC_LEAN` | `WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN` |
+| `H4a3b` | Exact same-parity operator/eigenbasis/residual/half-gap/rate instantiation | `OPEN / INELIGIBLE` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
+| `H4a3c` | Assemble the generic core with the exact spectral instantiation | `OPEN / BLOCKED_BY_H4a3b` | `H4A3_EXACT_RESIDUAL_TO_ALPHA_ASSEMBLY` |
 | `H4a4` | SafeAlphaUpper assembly | `OPEN / BLOCKED_BY_H4a1-a3` | `SAFE_ALPHA_UPPER_PROVED` |
 | `H4b` | SafeGapLower for the true same-parity gap | `OPEN_CRITICAL` | `SAFE_GAP_LOWER_PROVED` |
 | `H4c` | SafeSignAndB: alpha sign, strict gap, exact two-sided b | `OPEN_CRITICAL` | `SAFE_SIGN_AND_B_PROVED` |

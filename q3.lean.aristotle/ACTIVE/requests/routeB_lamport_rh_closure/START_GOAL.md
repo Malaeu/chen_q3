@@ -112,6 +112,12 @@ Current fail-closed address:
   sufficiently large original-index approximant and a full convergent root
   sequence; exact family instantiation `L0c2` remains OPEN on H1/H3/H4 and
   `XI_LIMIT_OBJECT_MISMATCH`;
+- rev19 proves `H4a3a WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN`: a finite
+  probability-weighted spectral expansion gives `0<=alpha`,
+  `etaSq>=alpha*(Delta-alpha)`, the correct `Delta-alpha` denominator, and the
+  half-gap bound `alpha<=2*etaSq/Delta`; exact same-parity Route B operator,
+  residual, half-gap, and rate instantiation `H4a3b` remains OPEN, while the
+  rev15 false-bridge plant stays live;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
   SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;

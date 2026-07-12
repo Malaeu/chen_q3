@@ -36,3 +36,7 @@ Single owner decision with maximum unblock power:
 `CLOSED L0c1: GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN; the open-mapping disk lemma, isolated-zero boundary certificate, locally uniform convergence, and Nat.findGreatest diagonal produce ZerosApproachOn for the full original-index tail.`
 
 `SKIPPED L0c2: L0C_EXACT_FAMILY_INSTANTIATION_MISSING; H1/H3/H4 do not yet supply one exact natural-index family converging to centeredXi, and XI_LIMIT_OBJECT_MISMATCH remains open.`
+
+`CLOSED H4a3a: WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN; finite spectral weights prove etaSq >= alpha*(Delta-alpha), the exact Temple denominator Delta-alpha, and the certified half-gap bound alpha <= 2*etaSq/Delta.`
+
+`SKIPPED H4a3b: H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING; the same-parity Route B eigenbasis/residual variance crosswalk, canonical alpha, 2*alpha<=Delta locus, and residual-ratio rate remain open; PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE remains a live plant.`

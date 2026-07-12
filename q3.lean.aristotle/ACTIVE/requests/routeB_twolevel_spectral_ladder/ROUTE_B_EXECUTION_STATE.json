@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T14:54:33+02:00",
+  "updated_at": "2026-07-12T15:18:37+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -287,6 +287,18 @@
     "l0c_generic_zero_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GenericZeroTransfer.lean",
       "sha256": "7ec141740def3c8b40edb8e1c85f480cd733660909577cba10ad60829820b77b"
+    },
+    "h4a3_weighted_spectral_temple_core_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_CERTIFICATE.json",
+      "sha256": "67194450ec8d8963b3899df9a914077c8e179e58b0ce907ee175949c0a8a4b04"
+    },
+    "h4a3_weighted_spectral_temple_core_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4a3_weighted_spectral_temple_core.py",
+      "sha256": "d0d5c3951da273be7eac62e1e6040d687792152a514ab080bd4170baff448022"
+    },
+    "h4a3_weighted_spectral_temple_core_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean",
+      "sha256": "666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd"
     }
   },
   "stages": [
