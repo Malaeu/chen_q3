@@ -47089,3 +47089,31 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 128 nodes: 66 PROVED,
   54 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H4b perturbative true-gap transfer (in progress)
+
+- Exact target: isolate the universal perturbation-budget implication below
+  `H4b SafeGapLower` from the missing Route B Fuchs-diagonal and same-parity
+  spectral estimates.
+- Four local `q3_docs` queries found no pinned H4b implementation or exact
+  true-gap lower theorem (best scores about 0.60--0.64); the useful hit is the
+  manuscript Hoffman--Wielandt/Ky Fan guard in
+  `full/sections/A3/matrix_guard.tex`, not a Route B instantiation.
+- Official Mathlib exposes ordered Hermitian eigenvalues in
+  `Mathlib.Analysis.Matrix.Spectrum` and Gershgorin localization in
+  `Mathlib.LinearAlgebra.Matrix.Gershgorin`, but no ready same-parity
+  eigenvalue-drift theorem closes the source gap.
+- Planned generic theorem: absolute perturbation bounds on the lower and upper
+  endpoints, plus `floor + errLow + errHigh <= modelHigh-modelLow`, imply
+  `floor <= trueHigh-trueLow`; add a non-bottom eventual wrapper.
+- Planned guard: a positive model gap alone is compatible with a collapsed
+  true gap, so deleting either endpoint-error hypothesis must keep H4b open.
+- Exact H4b must still pin the parity-clean operator/model pair, ordering and
+  multiplicities, prove the two endpoint perturbation estimates, and show the
+  remaining budget has the Contract-v2 Fuchs lower-envelope form.
+- Planned DAG split: prove generic H4b1, leave exact same-parity Fuchs-gap
+  instantiation H4b2 and assembly H4b3 OPEN with
+  `H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING`.
+- Acceptance remains narrow: no model gap is substituted for the true gap, no
+  Davis--Kahan/Weyl premise is claimed from source, H4b/H4 stay OPEN, and
+  Route B remains `NOT_RH`.
