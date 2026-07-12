@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 38,
-  "updated_at": "2026-07-12T20:29:00+02:00",
+  "revision": 39,
+  "updated_at": "2026-07-12T21:18:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "3b5f4b8d1d0c341978a224719e68b3210fd075eaa742bcfee6fa8715a2336739",
+    "sprint_log_sha256": "f4dd8a9a6653d45695f361c1485545ebdbe673e8818f5c1aa421704cf9471656",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -449,7 +449,7 @@
     "certificate": "H2B_HERMITIAN_DETERMINANT_REAL_ZEROS_CERTIFICATE.json",
     "certificate_sha256": "f311fef15e5ee653390279a3c0f56afb7801fccb115f7fee1db7d4d42363b651",
     "validator": "validate_h2b_hermitian_determinant_real_zeros.py",
-    "validator_sha256": "319015d74da9e7c63b011776c10c4798e6b2cfa78ab403299dfe43740f4edfe6",
+    "validator_sha256": "2550d3180143056854a420d3dbc80b4da388c1b52fd4267d6a6da19b0afe1fd4",
     "artifact": "H2B_HERMITIAN_DETERMINANT_REAL_ZEROS_2026-07-12.md",
     "artifact_sha256": "bc67099fae66a3cd8f6a0d4e262de74902856270bfe9355bab402a461915b309",
     "proof_artifact": {
@@ -671,7 +671,7 @@
     "certificate": "H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_CERTIFICATE.json",
     "certificate_sha256": "8d1ebb897c90d22f18da6fa5ee062650c539da1f0e39895abacc2bec112258dd",
     "validator": "validate_h2b2_rank_one_correction_weighted_symmetry.py",
-    "validator_sha256": "02da0dddb1288cb9e4726ca75bb809265053662a45c93afa90052bc6b89d7a97",
+    "validator_sha256": "c8e8f9556f1290d295dd7c7351bde841578a4535b71c73db07fe1908865d0421",
     "artifact": "H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_2026-07-12.md",
     "artifact_sha256": "003a9320ced9cb89b5924f0c27921cb846d6410ecd6ec86f4b7319d357341967",
     "proof_artifact": {
@@ -734,7 +734,7 @@
     "certificate": "H2B2B_RANK_ONE_CORRECTION_DETERMINANT_CERTIFICATE.json",
     "certificate_sha256": "3fc753c2a91bcae24b3ec1c591947f956b64312d7991a6ce86d5dab19c8060b0",
     "validator": "validate_h2b2b_rank_one_correction_determinant.py",
-    "validator_sha256": "03b313837e20815892e552aea188ee32f827975210b8133434932560c2722ec9",
+    "validator_sha256": "ef0ea6df5ee55c44d6e305103eb6c88d3f15059f9ff50414c2157aea65dd6769",
     "artifact": "H2B2B_RANK_ONE_CORRECTION_DETERMINANT_2026-07-12.md",
     "artifact_sha256": "7278795986bc81fe527188e731ab2f6698ebc03dec4b329b28d95b35c051a334",
     "proof_artifact": {
@@ -755,7 +755,7 @@
     "certificate": "H2B2B2_RANK_ONE_QUOTIENT_DESCENT_CERTIFICATE.json",
     "certificate_sha256": "b8d49ba49cc363c86e93ee12bd7a675ffb4500bfcba6b0513bb3494e5e379cb9",
     "validator": "validate_h2b2b2_rank_one_quotient_descent.py",
-    "validator_sha256": "e318447a3e79d1afecc156b3c692de889aaaa4ffaf48c0752ff9419239b040ae",
+    "validator_sha256": "ffa40deb6ee5dc3adeaebe841b0ddb40e072c4c56a0630ef31983c8d9f5c2aed",
     "artifact": "H2B2B2_RANK_ONE_QUOTIENT_DESCENT_2026-07-12.md",
     "artifact_sha256": "d3469f4376e6b285471080238be67ac777993916f0a9802a2cd11b1d8ca35a7d",
     "proof_artifact": {
@@ -770,14 +770,35 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h2b2b2b_all_spectral_point_extension": {
+    "name": "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_REV39",
+    "status": "GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_EXTENSION_PROVED_EXACT_REMOVABLE_FACTOR_AND_ROUTE_CROSSWALK_OPEN_NOT_RH",
+    "certificate": "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_CERTIFICATE.json",
+    "certificate_sha256": "067dac46dc8734c8273bdc1046bca727d168522513a13d0bca4fada8fef816ff",
+    "validator": "validate_h2b2b2b_all_spectral_point_extension.py",
+    "validator_sha256": "56f91b192cd763c50a9ceae4aa1df0a52521505220f1893f01caec0ad527e56d",
+    "artifact": "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_2026-07-12.md",
+    "artifact_sha256": "51326ed29076c25d3c3e506af0ebe2bfb9b28191267210eb46310de3fd18b2a8",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionAllSpectralPoints.lean",
+      "sha256": "f134db9ea9db5ba0de8c9316e337b334b3e2eb490d24c3a813c016ae316f9e66"
+    },
+    "proved_nodes": ["H2b2b2b.0", "H2b2b2b1"],
+    "generic_verdict": "H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN",
+    "next_worker_leaf": null,
+    "next_exact_node": "H2b2b2b2",
+    "remaining_stop": "H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION": {
       "name": "ExactModifiedHilbertQuotientAndTheorem510Factorization",
       "authority": "H8ULBMAL/fulltext.md Lemmas 5.2 and 5.4 and Theorem 5.10; H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_2026-07-12.md",
       "status": "OPEN_CRITICAL",
-      "home": "H2b2b2b",
-      "generic_cores": ["H2b2a", "H2b2b1", "H2b2b2a"],
-      "latest_generic_validation": "H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN",
+      "home": "H2b2b2b2",
+      "generic_cores": ["H2b2a", "H2b2b1", "H2b2b2a", "H2b2b2b1"],
+      "latest_generic_validation": "H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN",
       "failure_code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
       "is_lamport_node": false
     },
@@ -923,7 +944,8 @@
       "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_REV35",
       "H3C2_UNIFORM_DIFFERENCE_REFERENCE_TRANSFER_REV36",
       "H2B2B_RANK_ONE_CORRECTION_DETERMINANT_REV37",
-      "H2B2B2_RANK_ONE_QUOTIENT_DESCENT_REV38"
+      "H2B2B2_RANK_ONE_QUOTIENT_DESCENT_REV38",
+      "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_REV39"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1803,14 +1825,52 @@
       "failure_codes": ["H2B2B2_GENERIC_QUOTIENT_DESCENT_MISSING", "H2B2B2_EXACT_RADICAL_EQUALS_SPAN_NOT_PROVED", "H2B2B2_QUOTIENT_METRIC_NOT_PROVED"]
     },
     "H2b2b2b": {
-      "id": "H2b2b2b", "parent_id": "H2b2b2", "kind": "LEAF", "role": "GOAL",
-      "statement": "Instantiate the exact same Route B correction and quotient: prove T positivity and radical equals span xi, identify the modified Hilbert metric and self-adjoint operator, extend through spectral points, and prove complement, phase and all-z Theorem-5.10 identities",
-      "dependencies": ["D0.3d", "D0.6", "D0.7", "D0.8", "H1c2", "H1c3", "H2a", "H2b1", "H2b2a", "H2b2b1", "H2b2b2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H2b2b2b", "parent_id": "H2b2b2", "kind": "AND", "role": "GOAL",
+      "statement": "The generic all-spectral-point adjugate and finite-exception continuation mechanisms together with the exact Weil radical/metric/removable-factor/complement/phase/all-z Route B instantiation prove H2b2b2b",
+      "dependencies": ["H2b2b2b.0"], "ordered_children": ["H2b2b2b1", "H2b2b2b2"], "assembly_theorem_id": "H2b2b2b3",
       "external_requirements": ["H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_8_H1C3_H2A_AND_EXACT_RADICAL_METRIC_LATTICE_ALL_Z_INPUTS_OPEN"},
-      "validation": "H2B2B2_EXACT_RADICAL_METRIC_LATTICE_ALL_Z_AUDIT",
-      "failure_codes": ["H2B_EXACT_THEOREM510_FACTORIZATION_MISSING", "H2B_MODIFIED_HILBERT_HERMITIAN_MATRIX_MISSING", "H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING", "H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING", "H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING", "H2B2B_SPECTRAL_POINT_EXTENSION_MISSING", "H2B_COMPLEMENT_LATTICE_FACTOR_MISSING", "H2B_BOUNDARY_NORMALIZATION_NONZERO_MISSING", "H2B_ALL_Z_FACTOR_CROSSWALK_MISSING", "REAL_ZERO_THEOREM_OBJECT_MISMATCH", "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE", "H2B_COMPLETION_SCOPE_GAP", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "D0_8_OBJECT_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+      "eligibility": {"eligible": false, "reason": "H2B2B2B2_EXACT_RADICAL_METRIC_REMOVABLE_FACTOR_AND_ALL_Z_INPUTS_OPEN"},
+      "validation": "H2B2B_GENERIC_SPECTRAL_EXTENSION_AND_EXACT_ROUTE_INSTANTIATION_ASSEMBLY",
+      "failure_codes": ["H2B_EXACT_THEOREM510_FACTORIZATION_MISSING", "H2B_MODIFIED_HILBERT_HERMITIAN_MATRIX_MISSING", "H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING", "H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING", "H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING", "H2B2B_SPECTRAL_POINT_EXTENSION_MISSING", "H2B2B_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION_MISSING", "H2B_COMPLEMENT_LATTICE_FACTOR_MISSING", "H2B_BOUNDARY_NORMALIZATION_NONZERO_MISSING", "H2B_ALL_Z_FACTOR_CROSSWALK_MISSING", "REAL_ZERO_THEOREM_OBJECT_MISMATCH", "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE", "H2B_COMPLETION_SCOPE_GAP", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "D0_8_OBJECT_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H2b2b2b.0": {
+      "id": "H2b2b2b.0", "parent_id": "H2b2b2b", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H2b2b2b iff H2b2b2b1 and H2b2b2b2 both hold, with H2b2b2b3 as exact assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H2B2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H2B2B2B_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H2b2b2b1": {
+      "id": "H2b2b2b1", "parent_id": "H2b2b2b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove the adjugate rank-one determinant identity at singular matrices, its Route B correction specialization at every spectral parameter, and finite-exception continuation for continuous complex functions",
+      "dependencies": ["H2b2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/RankOneCorrectionAllSpectralPoints.lean",
+      "failure_codes": ["H2B2B_GENERIC_ALL_SPECTRAL_POINT_EXTENSION_MISSING", "H2B2B_RESOLVENT_INVERTIBILITY_REQUIRED", "H2B2B_SPECTRAL_POINT_EXTENSION_NOT_PROVED"]
+    },
+    "H2b2b2b2": {
+      "id": "H2b2b2b2", "parent_id": "H2b2b2b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate the exact same Route B correction and quotient: prove T positivity and radical equals span xi, identify the modified Hilbert metric and self-adjoint operator, construct the continuous removable all-z factor on the exact exceptional set, and prove complement, phase and Theorem-5.10 crosswalks",
+      "dependencies": ["D0.3d", "D0.6", "D0.7", "D0.8", "H1c2", "H1c3", "H2a", "H2b1", "H2b2a", "H2b2b1", "H2b2b2a", "H2b2b2b1"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_8_H1C3_H2A_AND_EXACT_RADICAL_METRIC_REMOVABLE_FACTOR_ALL_Z_INPUTS_OPEN"},
+      "validation": "H2B2B2B_EXACT_RADICAL_METRIC_REMOVABLE_FACTOR_ALL_Z_AUDIT",
+      "failure_codes": ["H2B_EXACT_THEOREM510_FACTORIZATION_MISSING", "H2B_MODIFIED_HILBERT_HERMITIAN_MATRIX_MISSING", "H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING", "H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING", "H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING", "H2B2B_SPECTRAL_POINT_EXTENSION_MISSING", "H2B2B_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION_MISSING", "H2B_COMPLEMENT_LATTICE_FACTOR_MISSING", "H2B_BOUNDARY_NORMALIZATION_NONZERO_MISSING", "H2B_ALL_Z_FACTOR_CROSSWALK_MISSING", "REAL_ZERO_THEOREM_OBJECT_MISMATCH", "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE", "H2B_COMPLETION_SCOPE_GAP", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "D0_8_OBJECT_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H2b2b2b3": {
+      "id": "H2b2b2b3", "parent_id": "H2b2b2b", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H2b2b2b.0 AND H2b2b2b1 AND H2b2b2b2 IMPLIES the exact radical/metric/removable-factor/complement/phase/all-z Route B instantiation H2b2b2b",
+      "dependencies": ["H2b2b2b.0", "H2b2b2b1", "H2b2b2b2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H2B2B2B2_OPEN"},
+      "validation": "H2B2B2B_EXACT_ALL_SPECTRAL_POINT_ASSEMBLY",
+      "failure_codes": ["H2B2B2B_ASSEMBLY_GAP", "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H2b2b2c": {
       "id": "H2b2b2c", "parent_id": "H2b2b2", "kind": "LEAF", "role": "ASSEMBLY",
@@ -3327,6 +3387,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN;GENERIC_SPAN_SINGLETON_QUOTIENT_ENDOMORPHISM;RANK_ONE_CORRECTION_QUOTIENT_ENDOMORPHISM;H2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "ALGEBRAIC_QUOTIENT_ONLY_NO_EXACT_RADICAL_EQUALS_SPAN_XI_POSITIVITY_MODIFIED_HILBERT_METRIC_SELFADJOINTNESS_SPECTRAL_POINT_COMPLEMENT_PHASE_ALL_Z_OR_SAME_FAMILY_CROSSWALK_H2B_CONDITIONAL_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T21:18:00+02:00",
+      "event": "H2B2B2B_GENERIC_ALL_SPECTRAL_POINT_EXTENSION_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN;ALL_SINGULAR_AND_NONSINGULAR_RANK_ONE_DETERMINANT_IDENTITY;CONTINUOUS_FINITE_EXCEPTION_EXTENSION;H2B2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "GENERIC_SPECTRAL_POINT_MECHANISM_ONLY_NO_EXACT_WEIL_RADICAL_METRIC_CONTINUOUS_REMOVABLE_FACTOR_COMPLEMENT_PHASE_ALL_Z_OR_SAME_FAMILY_CROSSWALK_H2B_CONDITIONAL_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

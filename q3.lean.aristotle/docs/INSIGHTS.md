@@ -47526,3 +47526,17 @@ Final result:
   H2b2b2b3 OPEN.
 - No exact spectral family, quotient positivity, modified-Hilbert
   self-adjointness, nonvanishing phase, Bus 010, or RH conclusion is inferred.
+
+Final result:
+
+- `RankOneCorrectionAllSpectralPoints.lean` proves the general adjugate
+  rank-one determinant identity, its all-s Route B correction specialization,
+  and continuous equality from equality off a finite exceptional set.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; no determinant inverse or `IsUnit`
+  hypothesis appears in the new proof file.
+- STATE revision 39 nests proved `H2b2b2b.0` and `H2b2b2b1` below H2b2b2b.
+  Exact radical/metric/self-adjoint, removable-factor, complement, phase and
+  all-z inputs remain OPEN in `H2b2b2b2`.
+- The count is 180 nodes: 92 PROVED, 80 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

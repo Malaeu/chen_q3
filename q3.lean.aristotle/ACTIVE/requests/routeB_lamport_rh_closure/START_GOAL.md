@@ -251,6 +251,14 @@ Current fail-closed address:
   metric/self-adjointness, spectral-point extension, complement determinant,
   phase and all-z crosswalk remain OPEN in `H2b2b2b` with stop
   `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING`;
+- rev39 proves
+  `H2b2b2b1 H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN`:
+  the adjugate determinant formula is valid without invertibility, its Route B
+  correction specialization holds at every spectral parameter, and continuous
+  functions agreeing off a finite set agree everywhere; the exact exceptional
+  set/removable factor, Weil radical/metric/self-adjointness, complement,
+  phase, all-z and same-family crosswalk remain OPEN in `H2b2b2b2` with stop
+  `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

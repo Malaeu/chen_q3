@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T20:29:00+02:00",
+  "updated_at": "2026-07-12T21:18:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -120,6 +120,10 @@
       ,"H2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN"
       ,"H2B2B2_RANK_ONE_CORRECTION_QUOTIENT_END_LEAN"
+      ,"H2B2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN"
+      ,"H2B2B_ALL_SINGULAR_AND_NONSINGULAR_DETERMINANT_IDENTITY_LEAN"
+      ,"H2B2B_CONTINUOUS_FINITE_EXCEPTION_EXTENSION_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -190,6 +194,7 @@
       ,"H3C2_EXACT_DIFFERENCE_FAMILY_IDENTITY_MISSING"
       ,"H2B2B_SPECTRAL_POINT_EXTENSION_MISSING"
       ,"H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING"
+      ,"H2B2B_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION_MISSING"
     ]
   },
   "bus": {
@@ -294,7 +299,7 @@
       "code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
       "class": "MASTER_DAG_EXACT_REAL_ZERO_FACTORIZATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
-      "detail": "The generic periodic/Hermitian real-zero transfers, rank-one kernel/T-weighted symmetry, off-spectrum determinant factorization and algebraic descent through E/span{xi} are Lean-proved. Exact T positivity, radical=span{xi}, modified-Hilbert quotient metric/self-adjointness, spectral/lattice-point extension, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization and the same raw family remain open; H2b stays CONDITIONAL."
+      "detail": "The generic periodic/Hermitian real-zero transfers, rank-one kernel/T-weighted symmetry, off-spectrum determinant factorization, algebraic descent through E/span{xi}, all-s adjugate determinant identity and finite-exception continuation are Lean-proved. Exact T positivity, radical=span{xi}, modified-Hilbert quotient metric/self-adjointness, source exceptional set and continuous removable factor, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization and the same raw family remain open; H2b stays CONDITIONAL."
     },
     {
       "code": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
@@ -563,7 +568,7 @@
     },
     "h2b_hermitian_determinant_real_zeros_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b_hermitian_determinant_real_zeros.py",
-      "sha256": "319015d74da9e7c63b011776c10c4798e6b2cfa78ab403299dfe43740f4edfe6"
+      "sha256": "2550d3180143056854a420d3dbc80b4da388c1b52fd4267d6a6da19b0afe1fd4"
     },
     "h2b_hermitian_determinant_real_zeros_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
@@ -671,7 +676,7 @@
     },
     "h2b2_rank_one_correction_weighted_symmetry_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2_rank_one_correction_weighted_symmetry.py",
-      "sha256": "02da0dddb1288cb9e4726ca75bb809265053662a45c93afa90052bc6b89d7a97"
+      "sha256": "c8e8f9556f1290d295dd7c7351bde841578a4535b71c73db07fe1908865d0421"
     },
     "h2b2_rank_one_correction_weighted_symmetry_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
@@ -707,7 +712,7 @@
     },
     "h2b2b_rank_one_correction_determinant_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b_rank_one_correction_determinant.py",
-      "sha256": "03b313837e20815892e552aea188ee32f827975210b8133434932560c2722ec9"
+      "sha256": "ef0ea6df5ee55c44d6e305103eb6c88d3f15059f9ff50414c2157aea65dd6769"
     },
     "h2b2b_rank_one_correction_determinant_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionDeterminant.lean",
@@ -719,11 +724,23 @@
     },
     "h2b2b2_rank_one_quotient_descent_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b2_rank_one_quotient_descent.py",
-      "sha256": "e318447a3e79d1afecc156b3c692de889aaaa4ffaf48c0752ff9419239b040ae"
+      "sha256": "ffa40deb6ee5dc3adeaebe841b0ddb40e072c4c56a0630ef31983c8d9f5c2aed"
     },
     "h2b2b2_rank_one_quotient_descent_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientDescent.lean",
       "sha256": "71a45f13aa84520f0db8bd495b6f29d8c416dad05c6a6632125590159dd630a1"
+    },
+    "h2b2b2b_all_spectral_point_extension_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_CERTIFICATE.json",
+      "sha256": "067dac46dc8734c8273bdc1046bca727d168522513a13d0bca4fada8fef816ff"
+    },
+    "h2b2b2b_all_spectral_point_extension_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b2b_all_spectral_point_extension.py",
+      "sha256": "56f91b192cd763c50a9ceae4aa1df0a52521505220f1893f01caec0ad527e56d"
+    },
+    "h2b2b2b_all_spectral_point_extension_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionAllSpectralPoints.lean",
+      "sha256": "f134db9ea9db5ba0de8c9316e337b334b3e2eb490d24c3a813c016ae316f9e66"
     }
   },
   "stages": [

@@ -130,3 +130,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H2b2b2a: H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN; an endomorphism killing xi descends through the quotient by span{xi}, and the normalized source rank-one correction induces that quotient endomorphism.`
 
 `SKIPPED H2b2b2b: H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING; exact Weil positivity, radical=span{xi}, modified-Hilbert metric/self-adjointness, spectral-point extension, complement determinant, nonvanishing phase, all-z identity and the same Route B family remain open.`
+
+`CLOSED H2b2b2b1: H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN; the adjugate rank-one determinant identity holds at singular matrices, the Route B correction identity holds for every spectral parameter, and continuous functions agreeing off a finite set agree everywhere.`
+
+`SKIPPED H2b2b2b2: H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING; the exact Weil positivity/radical, modified-Hilbert metric/self-adjointness, source exceptional set and continuous removable factor, complement determinant, nonvanishing phase, all-z identity and same Route B family remain open.`

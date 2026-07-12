@@ -466,7 +466,10 @@ R0 RHClosure [AND]
 |   |   |   |   |-- H2b2b1 GenericOffSpectrumDeterminantCore
 |   |   |   |   |-- H2b2b2 ExactQuotientLatticeAllZInstantiation [AND]
 |   |   |   |   |   |-- H2b2b2a GenericRankOneQuotientDescent
-|   |   |   |   |   |-- H2b2b2b ExactRadicalMetricLatticeInstantiation
+|   |   |   |   |   |-- H2b2b2b ExactRadicalMetricLatticeInstantiation [AND]
+|   |   |   |   |   |   |-- H2b2b2b1 GenericAllSpectralPointExtension
+|   |   |   |   |   |   |-- H2b2b2b2 ExactRemovableFactorRouteInstantiation
+|   |   |   |   |   |   `-- H2b2b2b3 H2b2b2bAssembly
 |   |   |   |   |   `-- H2b2b2c H2b2b2Assembly
 |   |   |   |   `-- H2b2b3 H2b2bAssembly
 |   |   |   `-- H2b2c H2b2Assembly
@@ -638,7 +641,11 @@ proof node.
 | `H2b2b2` | AND parent: generic descent through the calibration line plus exact radical/metric/lattice/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
 | `H2b2b2.0` | H2b2b2 decomposition contract | `PROVED` | `H2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2b2b2a` | An endomorphism killing `xi` descends to the quotient by `span{xi}`; specialize to the normalized correction | `PROVED / GENERIC_LEAN` | `H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN` |
-| `H2b2b2b` | Exact radical=`span{xi}`, positivity, quotient metric/self-adjointness, spectral-point extension, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING` |
+| `H2b2b2b` | AND parent: generic all-spectral-point adjugate/finite-exception extension plus exact radical/metric/removable-factor/complement/phase/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING` |
+| `H2b2b2b.0` | H2b2b2b decomposition contract | `PROVED` | `H2B2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2b2b2b1` | Adjugate rank-one determinant identity at singular matrices, Route B all-s specialization, and continuous finite-exception extension | `PROVED / GENERIC_LEAN` | `H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN` |
+| `H2b2b2b2` | Exact radical=`span{xi}`, positivity, quotient metric/self-adjointness, continuous removable factor, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING` |
+| `H2b2b2b3` | Exact H2b2b2b assembly | `OPEN / BLOCKED_BY_H2b2b2b2` | `H2B2B2B_ASSEMBLY_GAP` |
 | `H2b2b2c` | Exact H2b2b2 assembly | `OPEN / BLOCKED_BY_H2b2b2b` | `H2B2B2_ASSEMBLY_GAP` |
 | `H2b2b3` | Exact H2b2b assembly | `OPEN / BLOCKED_BY_H2b2b2` | `H2B2B_EXACT_ALL_Z_FACTORIZATION_ASSEMBLY` |
 | `H2b2c` | Exact H2b2 assembly | `OPEN / BLOCKED_BY_H2b2b` | `H2B2_EXACT_FACTORIZATION_ASSEMBLY` |
@@ -1093,6 +1100,16 @@ algebraic descent: exact Weil positivity, `rad(T)=span{xi}`, the modified
 Hilbert metric and quotient self-adjointness, spectral-point continuation,
 complement determinant, nonvanishing phase and the all-z identity remain OPEN
 in H2b2b2b.  H2b remains CONDITIONAL; H2, L0 and RH remain OPEN.
+
+Revision 39 removes the last generic invertibility restriction from the
+rank-one determinant channel.  Lean proves directly over a commutative ring
+that `det(A+uv^T)=det(A)+v^T adj(A)u`, specializes it to the Route B correction
+for every spectral parameter, and proves that continuous complex functions
+agreeing away from a finite exceptional set agree everywhere.  The exact leaf
+must still identify the source exceptional set and a genuinely continuous
+removable factor, together with Weil positivity/radical, quotient metric,
+complement, phase and all-z crosswalks.  H2b remains CONDITIONAL; H2, L0 and RH
+remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`
