@@ -46853,3 +46853,14 @@ not the raw-D17 factorwise support class.
 - `fixed_bound_without_vanishing_rate_not_uniform_zero` keeps the crucial guard executable: the constant-one family is uniformly bounded on a singleton but does not converge to zero.
 - STATE revision 21 decomposes H3b into proved generic core `H3b1`, OPEN exact same-family weighted instantiation `H3b2`, and assembly `H3b3`; `PO_XWALK_UNIFORM_EVAL` remains external and active.
 - Direct Lean validation passes with zero holes and only `propext`, `Classical.choice`, and `Quot.sound`.  The count is 108 nodes: 56 PROVED, 44 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H4a1 ambient/compressed residual split (in progress)
+
+- Exact target: isolate the universal Galerkin residual decomposition from the still-open Route B operator-domain and form-to-operator crosswalk.
+- Four local `q3_docs` queries returned no pinned H4a1 implementation or exact non-internal residual identity; no historical internal Ritz residual will be reused as an ambient estimate.
+- For any linear operator `A`, projection-like map `P`, vector `v`, and scalar `mu`, the ambient residual splits algebraically into compressed residual plus leakage: `A v-mu v = (P(A v)-mu v)+(A v-P(A v))`.
+- If `P(A v)=mu v`, the internal residual is zero but the ambient residual equals the leakage `A v-P(A v)`; this is the exact direction H4a1 needs before any norm bound.
+- Planned falsifier: on two coordinates take `P(x,y)=(x,0)`, `A(x,y)=(0,x)`, `v=(1,0)`, `mu=0`; then the compressed residual vanishes while the ambient residual is `(0,1)`.
+- Official Mathlib projection APIs distinguish projection onto a subspace from the ambient map and supply orthogonal/Pythagorean refinements, but the first generic identity requires only additive linear algebra.
+- Planned DAG split: prove generic residual split and falsifier in H4a1a, leave exact domain-safe Route B instantiation H4a1b and assembly H4a1c OPEN with `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING`.
+- Acceptance remains narrow: no form/operator alias, no internal-residual tautology, no H4a1/H4a/H4 closure, and Route B remains `NOT_RH`.
