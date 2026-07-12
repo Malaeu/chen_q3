@@ -103,10 +103,27 @@ def main() -> None:
     h3c2 = nodes["H3c2"]
     require(h3c2["proof_status"] == "OPEN", "H3C2_FALSE_PASS")
     require(not h3c2["eligibility"]["eligible"], "H3C2_FALSE_ELIGIBILITY")
-    require(h3c2["dependencies"] == ["D0", "H3a", "H3b", "H3c1"], "H3C2_DEPENDENCY_DRIFT")
-    require(h3c2["external_requirements"] == ["H3C_COMPLETION_OBJECT_CROSSWALK"], "H3C2_EXTERNAL_REQUIREMENT_DRIFT")
+    if state["revision"] >= 36:
+        require(h3c2["kind"] == "AND", "H3C2_PARENT_NOT_AND")
+        require(h3c2["dependencies"] == ["H3c2.0"], "H3C2_PARENT_DEPENDENCY_DRIFT")
+        require(h3c2["ordered_children"] == ["H3c2a", "H3c2b"], "H3C2_CHILD_ORDER_DRIFT")
+        require(h3c2["assembly_theorem_id"] == "H3c2c", "H3C2_ASSEMBLY_ADDRESS_DRIFT")
+        exact_h3c2 = nodes["H3c2b"]
+        require(exact_h3c2["proof_status"] == "OPEN", "H3C2B_FALSE_PASS")
+        require(not exact_h3c2["eligibility"]["eligible"], "H3C2B_FALSE_ELIGIBILITY")
+        require(
+            exact_h3c2["dependencies"] == ["D0", "H3a", "H3b", "H3c1", "H3c2a"],
+            "H3C2B_DEPENDENCY_DRIFT",
+        )
+    else:
+        exact_h3c2 = h3c2
+        require(
+            exact_h3c2["dependencies"] == ["D0", "H3a", "H3b", "H3c1"],
+            "H3C2_DEPENDENCY_DRIFT",
+        )
+    require(exact_h3c2["external_requirements"] == ["H3C_COMPLETION_OBJECT_CROSSWALK"], "H3C2_EXTERNAL_REQUIREMENT_DRIFT")
     for code in cert["exact_instantiation_guard"]["open_codes"]:
-        require(code in h3c2["failure_codes"], f"H3C2_GUARD_MISSING:{code}")
+        require(code in exact_h3c2["failure_codes"], f"H3C2_GUARD_MISSING:{code}")
 
     h3c3 = nodes["H3c3"]
     require(h3c3["proof_status"] == "OPEN", "H3C3_FALSE_PASS")

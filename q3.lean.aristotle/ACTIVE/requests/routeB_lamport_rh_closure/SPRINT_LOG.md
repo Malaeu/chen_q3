@@ -118,3 +118,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H3a2a: H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN; normalized nonnegative spectral weights and a complementary gap yield gap*(1-weight_ground)<=alpha and, for positive gap, 1-weight_ground<=alpha/gap.`
 
 `SKIPPED H3a2b: H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING; exact simple-even ground/trial spectral weights, squared-overlap crosswalk, positive gap, weighted decay and same-family joint filter remain open.`
+
+`CLOSED H3c2a: H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN; (F-G)->0 and G->X imply F->X uniformly on a set and locally uniformly on an open locally compact domain.`
+
+`SKIPPED H3c2b: H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING; exact difference/reference families, raw-or-inverse completion choice, centeredXi reference limit, finite/continuum bridge and one joint filter remain open.`

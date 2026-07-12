@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T19:24:00+02:00",
+  "updated_at": "2026-07-12T19:44:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -110,6 +110,10 @@
       ,"H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN"
       ,"H3A2_GAP_TIMES_PROJECTIVE_DEFECT_LE_RAYLEIGH_EXCESS"
       ,"H3A2_POSITIVE_GAP_QUOTIENT_BOUND_LEAN"
+      ,"H3C2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN"
+      ,"H3C2_UNIFORM_DIFFERENCE_PLUS_REFERENCE_TRANSFER_LEAN"
+      ,"H3C2_LOCALLY_UNIFORM_OPEN_DOMAIN_TRANSFER_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -176,6 +180,8 @@
       ,"H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING"
       ,"H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING"
       ,"H3A2_EXACT_SPECTRAL_WEIGHT_CROSSWALK_MISSING"
+      ,"H3C2_EXACT_REFERENCE_CONVERGENCE_MISSING"
+      ,"H3C2_EXACT_DIFFERENCE_FAMILY_IDENTITY_MISSING"
     ]
   },
   "bus": {
@@ -274,7 +280,7 @@
       "code": "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING",
       "class": "MASTER_DAG_EXACT_LIMIT_OBJECT_BLOCKER",
       "owner": "Route B proof compiler / source owner",
-      "detail": "Lean excludes the normalized double completion even on the open strip and proves an interior mismatch exists, but the exact same-family raw-or-inverse-completion route, finite/continuum bridge, one joint (m,N) filter, and Xi limit theorem remain open."
+      "detail": "Lean excludes normalized double completion and proves the generic uniform/locally-uniform difference-plus-reference limit transfer, but the exact same-family difference/reference objects, raw-or-inverse-completion route, centeredXi reference limit, finite/continuum bridge and one joint (m,N) filter remain open."
     },
     {
       "code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
@@ -537,7 +543,7 @@
     },
     "h3c_double_completion_strip_guard_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3c_double_completion_strip_guard.py",
-      "sha256": "710188cd93659f6755bb18a3f5b956bfcd6b71d3206b948a6916611ca32bcc8e"
+      "sha256": "715f0c68cfc7ce7a80b0b549481e891410275309e549ac4969f2a40546e495bc"
     },
     "h3c_double_completion_strip_guard_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
@@ -674,6 +680,18 @@
     "h3a2_weighted_rayleigh_projective_defect_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean",
       "sha256": "67190007a4d5bf5505f49d6cae714805c263928415524d1b2f65cf91bd242efc"
+    },
+    "h3c2_uniform_difference_reference_transfer_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3C2_UNIFORM_DIFFERENCE_REFERENCE_TRANSFER_CERTIFICATE.json",
+      "sha256": "b2350fc03d652dcae28e3d9cd04467345ecb7c4d2b401743bdb55576b43bcdc4"
+    },
+    "h3c2_uniform_difference_reference_transfer_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3c2_uniform_difference_reference_transfer.py",
+      "sha256": "9b21ab8915eeba7c8c6244ee07f939dea4edddb44355f969afe1f71c474368c1"
+    },
+    "h3c2_uniform_difference_reference_transfer_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/UniformDifferenceReferenceTransfer.lean",
+      "sha256": "15ba25ce2d08ea47bfd13bc64975220d586ed5dd4691bd80634a007a50515c99"
     }
   },
   "stages": [

@@ -231,6 +231,13 @@ Current fail-closed address:
   quotient bound; exact simple-even ground/trial spectral weights, overlap
   crosswalk, positive gap, weighted rate and shared filter remain OPEN in
   `H3a2b` with stop `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`;
+- rev36 proves `H3c2a H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN`:
+  uniform convergence of a difference to zero plus reference convergence
+  transfers to the target, both on a fixed set and locally uniformly on an
+  open locally compact domain; exact difference/reference families, raw or
+  inverse-completion crosswalk, centeredXi limit and joint filter remain OPEN
+  in `H3c2b` with stop
+  `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

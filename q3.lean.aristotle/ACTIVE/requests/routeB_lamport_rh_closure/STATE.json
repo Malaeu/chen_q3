@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 35,
-  "updated_at": "2026-07-12T19:24:00+02:00",
+  "revision": 36,
+  "updated_at": "2026-07-12T19:44:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "2f24f3985350fa35e6ec95a0cb47de04730dfeea44bcde3d1b960351e8c73e19",
+    "sprint_log_sha256": "7f0a3957f801929716ca46ce48a232ce645e95f1802bed6f6eeb509c3720c548",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -424,7 +424,7 @@
     "certificate": "H3C_DOUBLE_COMPLETION_STRIP_GUARD_CERTIFICATE.json",
     "certificate_sha256": "c4c9cb00aa4c65b6341c57393841d618d169eb1196869c3ca2edf9aca604033c",
     "validator": "validate_h3c_double_completion_strip_guard.py",
-    "validator_sha256": "710188cd93659f6755bb18a3f5b956bfcd6b71d3206b948a6916611ca32bcc8e",
+    "validator_sha256": "715f0c68cfc7ce7a80b0b549481e891410275309e549ac4969f2a40546e495bc",
     "artifact": "H3C_DOUBLE_COMPLETION_STRIP_GUARD_2026-07-12.md",
     "artifact_sha256": "52a240898be8cca01beacb7599bfad146d0f91467f29d8ef89d0e057047bd4c6",
     "proof_artifact": {
@@ -707,6 +707,27 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3c2_uniform_difference_reference_transfer": {
+    "name": "H3C2_UNIFORM_DIFFERENCE_REFERENCE_TRANSFER_REV36",
+    "status": "GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_PROVED_EXACT_REFERENCE_LIMIT_AND_CROSSWALK_OPEN_NOT_RH",
+    "certificate": "H3C2_UNIFORM_DIFFERENCE_REFERENCE_TRANSFER_CERTIFICATE.json",
+    "certificate_sha256": "b2350fc03d652dcae28e3d9cd04467345ecb7c4d2b401743bdb55576b43bcdc4",
+    "validator": "validate_h3c2_uniform_difference_reference_transfer.py",
+    "validator_sha256": "9b21ab8915eeba7c8c6244ee07f939dea4edddb44355f969afe1f71c474368c1",
+    "artifact": "H3C2_UNIFORM_DIFFERENCE_REFERENCE_TRANSFER_2026-07-12.md",
+    "artifact_sha256": "12eeed04738d6bfde1b36ec7794169c2194e18cab6e1d62714bc55b58b7025c7",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/UniformDifferenceReferenceTransfer.lean",
+      "sha256": "15ba25ce2d08ea47bfd13bc64975220d586ed5dd4691bd80634a007a50515c99"
+    },
+    "proved_nodes": ["H3c2.0", "H3c2a"],
+    "generic_verdict": "H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN",
+    "next_worker_leaf": null,
+    "next_exact_node": "H3c2b",
+    "remaining_stop": "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION": {
       "name": "ExactModifiedHilbertQuotientAndTheorem510Factorization",
@@ -804,7 +825,9 @@
       "name": "RawSourceTrackerToOwnerCompletedTrackerXiLimit",
       "authority": "H3_H4_CONTRACT_REPAIR_2026-07-12.md#3",
       "status": "OPEN_CRITICAL",
-      "home": "H3c",
+      "home": "H3c2b",
+      "generic_core": "H3c2a",
+      "generic_validation": "H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN",
       "failure_code": "XI_LIMIT_OBJECT_MISMATCH",
       "is_lamport_node": false
     },
@@ -853,7 +876,8 @@
       "H3B2_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_REV32",
       "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_REV33",
       "H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_REV34",
-      "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_REV35"
+      "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_REV35",
+      "H3C2_UNIFORM_DIFFERENCE_REFERENCE_TRANSFER_REV36"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1918,14 +1942,52 @@
       "failure_codes": ["H3C_DOUBLE_COMPLETION_GUARD_GAP", "H3C_BOUNDARY_ONLY_GUARD_INSUFFICIENT", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H3c2": {
-      "id": "H3c2", "parent_id": "H3c", "kind": "LEAF", "role": "GOAL",
-      "statement": "Select the exact same Route B family and one source-locked joint (m,N) filter, then prove raw-transform convergence to centeredXi or an exact inverse-completion crosswalk before normalization",
-      "dependencies": ["D0", "H3a", "H3b", "H3c1"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H3c2", "parent_id": "H3c", "kind": "AND", "role": "GOAL",
+      "statement": "The generic difference-reference limit transfer and its exact same-family Route B reference-limit/crosswalk instantiation establish the raw-or-compensated Xi limit",
+      "dependencies": ["H3c2.0"], "ordered_children": ["H3c2a", "H3c2b"], "assembly_theorem_id": "H3c2c",
       "external_requirements": ["H3C_COMPLETION_OBJECT_CROSSWALK"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H3A_H3B_AND_EXACT_LIMIT_INPUTS_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H3C2B_EXACT_REFERENCE_LIMIT_AND_CROSSWALK_OPEN"},
       "validation": "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_AUDIT",
-      "failure_codes": ["H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING", "H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING", "FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_DOUBLE_COMPLETION_REINTRODUCED", "H3C_SAME_FAMILY_SELECTION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+      "failure_codes": ["H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING", "H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING", "H3C2_EXACT_REFERENCE_CONVERGENCE_MISSING", "FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_DOUBLE_COMPLETION_REINTRODUCED", "H3C_SAME_FAMILY_SELECTION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3c2.0": {
+      "id": "H3c2.0", "parent_id": "H3c2", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H3c2 iff H3c2a and H3c2b both hold, with H3c2c as exact assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H3C2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H3C2_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H3c2a": {
+      "id": "H3c2a", "parent_id": "H3c2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Uniform convergence of F minus G to zero together with uniform convergence of G to X implies uniform convergence of F to X, both on a fixed set and locally uniformly on an open domain",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/UniformDifferenceReferenceTransfer.lean",
+      "failure_codes": ["H3C2_GENERIC_DIFFERENCE_REFERENCE_TRANSFER_GAP", "H3C2_DIFFERENCE_LIMIT_MISSING", "H3C2_REFERENCE_LIMIT_MISSING", "H3C2_LOCAL_DOMAIN_GUARD_MISSING"]
+    },
+    "H3c2b": {
+      "id": "H3c2b", "parent_id": "H3c2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H3c2a with the exact Route B difference family, the exact reference family converging to centeredXi, and the source-locked raw-or-inverse completion crosswalk on one joint same-family filter",
+      "dependencies": ["D0", "H3a", "H3b", "H3c1", "H3c2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H3C_COMPLETION_OBJECT_CROSSWALK"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3AB_AND_EXACT_REFERENCE_LIMIT_INPUTS_OPEN"},
+      "validation": "H3C2_EXACT_REFERENCE_XI_LIMIT_AND_CROSSWALK_AUDIT",
+      "failure_codes": ["H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING", "H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING", "H3C2_EXACT_REFERENCE_CONVERGENCE_MISSING", "H3C2_EXACT_DIFFERENCE_FAMILY_IDENTITY_MISSING", "FINITE_TO_CONTINUUM_GROUND_BRIDGE_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "H3C_DOUBLE_COMPLETION_REINTRODUCED", "H3C_SAME_FAMILY_SELECTION_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3c2c": {
+      "id": "H3c2c", "parent_id": "H3c2", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3c2.0 AND H3c2a AND H3c2b IMPLIES the exact raw-or-compensated Xi limit",
+      "dependencies": ["H3c2.0", "H3c2a", "H3c2b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3C2B_OPEN"},
+      "validation": "H3C2_EXACT_LIMIT_TRANSFER_ASSEMBLY",
+      "failure_codes": ["H3C2_ASSEMBLY_GAP", "H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING"]
     },
     "H3c3": {
       "id": "H3c3", "parent_id": "H3c", "kind": "LEAF", "role": "ASSEMBLY",
@@ -2815,6 +2877,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN;GAP_TIMES_PROJECTIVE_DEFECT_LE_RAYLEIGH_EXCESS;H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
+      },
+      "H3c2/generic_difference_reference_limit_transfer/v1": {
+        "status": "GENERIC_DIFFERENCE_REFERENCE_TRANSFER_CLOSED_EXACT_REFERENCE_LIMIT_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN;UNIFORM_AND_LOCALLY_UNIFORM_ADDITIVE_TRANSFER;H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING"
       }
     }
   },
@@ -3104,6 +3172,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN;FINITE_SPECTRAL_WEIGHT_SUM;GAP_TIMES_COMPLEMENT_WEIGHT_LE_RAYLEIGH_EXCESS;POSITIVE_GAP_DIVISION;H3A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "NO_EXACT_SIMPLE_EVEN_GROUND_TRIAL_SPECTRAL_WEIGHT_CROSSWALK_POSITIVE_GAP_PROJECTIVE_RATE_OR_SHARED_FILTER_H3A2_H3A_H3_L0_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T19:44:00+02:00",
+      "event": "H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN;UNIFORM_DIFFERENCE_PLUS_REFERENCE_TRANSFER;LOCALLY_UNIFORM_OPEN_DOMAIN_TRANSFER;H3C2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "NO_RAW_OR_INVERSE_COMPLETION_SELECTION_EXACT_DIFFERENCE_FAMILY_REFERENCE_XI_LIMIT_FINITE_CONTINUUM_BRIDGE_OR_JOINT_FILTER_H3C2_H3C_H3_L0_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

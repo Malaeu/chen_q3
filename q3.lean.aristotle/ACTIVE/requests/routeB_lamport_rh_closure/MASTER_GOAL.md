@@ -483,7 +483,10 @@ R0 RHClosure [AND]
 |   |   `-- H3b3 H3bAssembly
 |   |-- H3c XiLimitIdentification [AND]
 |   |   |-- H3c1 NormalizedDoubleCompletionStripGuard
-|   |   |-- H3c2 ExactRawOrCompensatedXiLimitAndFilter
+|   |   |-- H3c2 ExactRawOrCompensatedXiLimitAndFilter [AND]
+|   |   |   |-- H3c2a GenericDifferenceReferenceLimitTransfer
+|   |   |   |-- H3c2b ExactReferenceXiLimitAndCrosswalk
+|   |   |   `-- H3c2c H3c2Assembly
 |   |   `-- H3c3 H3cAssembly
 |   |-- H3e ExactWPrimeTrackingTheorem [AND]
 |   |   |-- H3e1 GenericNormalizedTrackingRateTransfer
@@ -649,7 +652,11 @@ proof node.
 | `H3c` | AND parent: double-completion strip guard plus exact raw-or-compensated same-family Xi limit | `OPEN / WRONG_OBJECT_KILLED / EXACT_LIMIT_OPEN` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
 | `H3c.0` | H3c decomposition contract | `PROVED` | `H3C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H3c1` | Central-normalized extra completion of already completed `centeredXi` differs somewhere inside the open critical strip | `PROVED / EXACT_LEAN / FALSIFIER_LIVE` | `H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN` |
-| `H3c2` | Select one exact family/filter and prove raw convergence or an exact inverse-completion crosswalk to `centeredXi` | `OPEN / INELIGIBLE` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
+| `H3c2` | AND parent: generic difference/reference transfer plus exact raw-or-inverse family/reference Xi limit | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
+| `H3c2.0` | H3c2 decomposition contract | `PROVED` | `H3C2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3c2a` | Uniform and locally-uniform convergence of a difference to zero plus a reference to Xi transfers to the target family | `PROVED / GENERIC_LEAN` | `H3C2_GENERIC_DIFFERENCE_REFERENCE_LIMIT_TRANSFER_LEAN` |
+| `H3c2b` | Exact difference family, reference Xi limit, raw/inverse completion crosswalk and joint filter | `OPEN / INELIGIBLE` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
+| `H3c2c` | Exact H3c2 assembly | `OPEN / BLOCKED_BY_H3c2b` | `H3C2_EXACT_LIMIT_TRANSFER_ASSEMBLY` |
 | `H3c3` | Exact H3c assembly | `OPEN / BLOCKED_BY_H3c2` | `H3C_EXACT_LIMIT_IDENTIFICATION_ASSEMBLY` |
 | `H3e` | AND parent: generic normalized-tracking rate transfer plus exact same-family WPrime relative-rate instantiation | `OPEN / GENERIC_CORE_PROVED / PLANTS_LIVE` | blocker: `H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING` |
 | `H3e.0` | H3e decomposition contract | `PROVED` | `H3E_DECOMPOSITION_EQUIVALENCE_LOCKED` |
@@ -1045,6 +1052,15 @@ the quotient bound when the gap is positive.  Exact H3a2b must still construct
 the same Route B spectral weights, identify the ground weight with squared
 overlap, prove the positive gap and weighted cofinal rate, and select the joint
 filter.  H3a2, H3a, H3, L0 and RH remain OPEN.
+
+Revision 36 closes the last independent generic H3 limit-composition core.
+Lean proves, on arbitrary filters, that uniform convergence of `F-G` to zero
+and of `G` to `X` implies uniform convergence of `F` to `X`, and proves the
+locally-uniform open-domain version through compact subsets.  Exact H3c2b must
+still select the raw or inverse-completed family, prove the exact difference
+identity and reference convergence to centeredXi, establish the finite/
+continuum crosswalk, and choose one joint filter.  H3c2, H3c, H3, L0 and RH
+remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

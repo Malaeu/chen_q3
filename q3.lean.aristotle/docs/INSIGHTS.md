@@ -47425,3 +47425,15 @@ Final result:
   `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING`.
 - No double completion, target alias, subsequence, selector, Bus 010, or RH
   conclusion is inferred.
+
+Final result:
+
+- `UniformDifferenceReferenceTransfer.lean` proves the uniform-on-set and
+  locally-uniform difference-plus-reference transfers over arbitrary filters.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.
+- STATE revision 36 nests proved `H3c2.0` and `H3c2a` below H3c2. Exact
+  difference/reference families, centeredXi limit, completion crosswalk and
+  joint filter remain OPEN in `H3c2b`.
+- The count is 168 nodes: 86 PROVED, 74 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
