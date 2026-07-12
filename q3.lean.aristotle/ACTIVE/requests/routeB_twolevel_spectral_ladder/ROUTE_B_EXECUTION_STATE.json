@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T09:27:00+02:00",
+  "updated_at": "2026-07-12T12:27:21+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,16 +10,17 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP",
+  "operational_status": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP",
   "current": {
     "stage_id": "RB-LAMPORT-D0",
-    "contract_obligation": "D0.7e.5",
-    "name": "ExactWPrimeZeoCrosswalk",
-    "status": "BLOCKED_THEOREM_SHAPE_ONLY",
+    "contract_obligation": "D0.7e.5a",
+    "name": "WPrimeConsumerAndCalibrationOrientationLock",
+    "status": "BLOCKED_CONSUMER_SOURCE_MISSING_T0_CORPUS_EXHAUSTED",
+    "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Mythos/Pro source owner",
-    "next_action": "Repair PO_D0_7E_XWALK with exact typed alpha, true DeltaE, delta_dict, a joint (m,N) limit, and a uniform compact-strip theorem. The finite bDet definition is locked; do not create Bus 010.",
+    "next_required_actor": "Route owner / Mythos definition owner",
+    "next_action": "Supply and ratify a new non-tautological WPrime/ZEO consumer definition plus exact b orientation; T0 found no independent source candidate and the active standing order therefore cannot close 5a; do not create Bus 010.",
     "exit_codes": [
       "CONTRACT_V2_LOCKED",
       "STATE_LOOP_SYNCED",
@@ -32,7 +33,19 @@
       "GROUND_TRIAL_TYPES_LOCKED",
       "D0_7_PARTIAL_NORMALIZATION_LOCKED",
       "D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED",
-      "D0_7E_CENTRAL_CALIBRATION_LOCKED"
+      "D0_7E_CENTRAL_CALIBRATION_LOCKED",
+      "D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED",
+      "D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED"
+      ,"OWNER_RATIFICATION_R1_R5_LOCKED"
+      ,"D0_7E_5_DECOMPOSITION_LOCKED"
+      ,"H3E_EXACT_WPRIME_TRACKING_ADDRESS_REGISTERED"
+      ,"OWNER_STANDING_ORDER_WPRIME_CANDIDATES_ACTIVE"
+      ,"NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE"
+      ,"D0_7E_5B_TYPED_INTERFACE_LOCKED"
+      ,"D0_7E_XWALK_MIGRATION_LOCKED"
+      ,"T1_AVAILABLE_BDET_JUDGES_PASS_PLANT_LIVE"
+      ,"T5_BDET_REALITY_LEAN_PROVED"
+      ,"T5_FPLUS_CONSTANT_MODE_LEAN_PROVED"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -46,7 +59,18 @@
       "D0_7E_XWALK_LIMIT_QUANTIFIER_MISSING",
       "D0_7E_XWALK_UNIFORM_CONSTANT_GAP",
       "D0_7E_B_BOUND_CONTRACT_MISMATCH",
-      "D0_7E_XWALK_DEPENDENCY_CYCLE"
+      "D0_7E_XWALK_DEPENDENCY_CYCLE",
+      "D0_7E_WPRIME_CONSUMER_MISSING",
+      "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING",
+      "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO",
+      "D0_7E_BCAL_ZERO_OR_UNPROVED",
+      "D0_7E_BCAL_BZEO_ALIAS_CONFLICT",
+      "D0_7E_SOURCE_NORMALIZATION_CONFLICT",
+      "H0_A1_ALPHA_DEFINITION_MISSING",
+      "PO_XWALK_UNIFORM_EVAL",
+      "T1_LAMBDA17_PERSISTED_COEFFICIENT_VECTOR_MISSING",
+      "H3E_T2_PINNED_INPUT_SET_INCOMPLETE",
+      "ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING"
     ]
   },
   "bus": {
@@ -106,10 +130,10 @@
       "detail": "When no physical unanswered goal exists, Codex autonomously executes the first eligible recursive Lamport master leaf."
     },
     {
-      "code": "D0_7E_XWALK_OPEN",
+      "code": "D0_7E_WPRIME_CONSUMER_MISSING",
       "class": "MASTER_DAG_THEOREM_AND_SOURCE_BLOCKER",
       "owner": "Mythos/Pro source owner",
-      "detail": "The finite bDet definition is proved on TrialNonzero, but the owner crosswalk is only a theorem shape. Canonical alpha, true DeltaE, delta_dict, the joint limit, and a uniform compact-strip constant are not supplied; the primary source names trial-ground tracking as missing; importing cited H3c/H4 nodes here would create a D0 dependency cycle."
+      "detail": "The central ratio bCal=bDet is defined, but TrialNonzero does not imply central nonvanishing. On CentralValueNonzero the normalized multiplier is bCal^(-1). The completed T0 corpus scan found no independent FZeo or WPrime consumer, so the historical WPrime b orientation cannot be inferred and the active standing order has no eligible candidate to ratify."
     }
   ],
   "guardrails": {
@@ -131,7 +155,25 @@
     "physical_bus_precedence": true,
     "may_create_bus_goal": false,
     "master_goal_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MASTER_GOAL.md",
-    "master_state_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/STATE.json"
+    "master_state_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/STATE.json",
+    "bprime_ratification": {
+      "status": "OWNER_RATIFICATION_R1_R5_LOCKED",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "canonical_active_leaf": "D0.7e.5a",
+      "math_stop_retained": "D0_7E_WPRIME_CONSUMER_MISSING",
+      "h3e_status": "OPEN_INACTIVE"
+    },
+    "wprime_candidate_standing_order": {
+      "status": "ACTIVE_OWNER_RATIFIED_NO_ELIGIBLE_T0_CANDIDATE",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md",
+      "ratified_order_sha256": "5bf99950fbd6fdca6f1ebae786f98098ac83a0b024e3a04f602b19a24295695b",
+      "activation_file_sha256": "d3ef3cbfe4e1ab4099bb698e46c6728b9f188a6f3bf7d7ded5eaf97931846097"
+    },
+    "no_stop_sprint": {
+      "status": "COMPLETED_FAIL_CLOSED_NOT_RH",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/CODEX_NOSTOP_SPRINT_2026-07-12.md",
+      "sha256": "4e251abcdd771c64d386afbc6397756e7426f38d6f83451beeb02c00d30d7ae6"
+    }
   },
   "pins": {
     "mythos_kernel": {
@@ -145,6 +187,58 @@
     "d0_7e_owner_input": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_OWNER_INPUT.md",
       "sha256": "a0f8ef78ec023aeef34f6ae03769faaf675a94d30d93b85a5da5258cb2f0bfed"
+    },
+    "d0_7e_5_pro_decision": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_PRO_REVIEW_DECISION.md",
+      "sha256": "28f90346e7712d5cf66599ed336b10528046e645b91ec83f2c94c98ad13829ff"
+    },
+    "d0_7e_5a_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CERTIFICATE.json",
+      "sha256": "ab2cb8180663a2a57b0b9dfbb35458464b4eed5ac17e804bfde14e238d161ab7"
+    },
+    "d0_7e_bprime_recommendation": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_RATIFICATION_RECOMMENDATION.md",
+      "sha256": "99172dfd4be8db5329e107b2161d669d7fce4716a3f71f29f1b85431415f11a8"
+    },
+    "d0_7e_bprime_owner_ratification": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0"
+    },
+    "d0_7e_5_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_CERTIFICATE.json",
+      "sha256": "437acceca5dce85837ac081af484d3a98f7af3e485988eaefeb96dfa4665e47a"
+    },
+    "no_stop_sprint": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/CODEX_NOSTOP_SPRINT_2026-07-12.md",
+      "sha256": "4e251abcdd771c64d386afbc6397756e7426f38d6f83451beeb02c00d30d7ae6"
+    },
+    "standing_order_activation": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md",
+      "sha256": "d3ef3cbfe4e1ab4099bb698e46c6728b9f188a6f3bf7d7ded5eaf97931846097"
+    },
+    "t0_source_candidates": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CONSUMER_SOURCE_CANDIDATES.md",
+      "sha256": "5b17347e9bf3287ccf9575878ee4c58b2cad0511a2b6421a651f4cd48fd45430"
+    },
+    "t1_judge_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_JUDGE_CERTIFICATES.json",
+      "sha256": "a74dc58741d6fb6faf1a56ff00747c9cbd2c85d57714108ffabec4332c437800"
+    },
+    "t2_calibration_blocker": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3E_TRACKING_CALIBRATION.md",
+      "sha256": "c1df73dbf1e061783ec9257e69436fbcbde8fbc1a298a00fdfd292a774ecdb3a"
+    },
+    "t5_bdet_reality_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/BDetReality.lean",
+      "sha256": "c91b4756345bc8b95f8ecbf681c522864ec771fa76933158ddd37785b069738d"
+    },
+    "t5_constant_mode_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/FplusConstantMode.lean",
+      "sha256": "cb8b95ecfc782cae6a3daa80f521ab2080645f1ab03d17d4d7495864f921111d"
+    },
+    "no_stop_sprint_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_no_stop_sprint.py",
+      "sha256": "4d8ad9eef14fcd3f18dd869f444aa38347013dac041af524b9bacf58219ceffe"
     }
   },
   "stages": [
@@ -152,7 +246,7 @@
       "id": "RB-LAMPORT-D0",
       "obligations": ["D0.1", "D0.2", "D0.3", "D0.4", "D0.5", "D0.6", "D0.7", "D0.8", "D0.9"],
       "name": "LamportExactObjectFamily",
-      "status": "PAUSED_D0_7E5_XWALK_SOURCE_GAP_BDET_DEFINITION_LOCKED"
+      "status": "PAUSED_D0_7E_5A_T0_NO_SOURCE_5B_5D_PROVED_OWNER_R1_R5_LOCKED"
     },
     {
       "id": "RB-0",

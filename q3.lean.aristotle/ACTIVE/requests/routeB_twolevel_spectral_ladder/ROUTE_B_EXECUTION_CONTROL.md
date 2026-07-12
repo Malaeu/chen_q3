@@ -1,9 +1,9 @@
 # Route B — execution control
 
-Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP / CONTROL_PLANE / NOT_RH / CHALLENGER`
+Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP / CONTROL_PLANE / NOT_RH / CHALLENGER`
 Schema: `route_b_execution_control.v2`
 Canonical repo: `/Users/emalam/GitHub/rh_lean_01_2026`
-Current address: `RB-LAMPORT-D0 / D0.7e.5 / ExactWPrimeZeoCrosswalk`
+Current address: `RB-LAMPORT-D0 / D0.7e.5a / WPrimeConsumerAndCalibrationOrientationLock`
 
 ## Owner autorun override — 2026-07-11
 
@@ -43,14 +43,17 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 ```text
 GLOBAL MAINLINE: T0-pd -> H-bridge -> H4 -> RH
 ROUTE B: challenger / NOT_RH
-CURRENT: RB-LAMPORT-D0 / D0.7e.5 / ExactWPrimeZeoCrosswalk
+CURRENT: RB-LAMPORT-D0 / D0.7e.5a / WPrimeConsumerAndCalibrationOrientationLock
 CONTRACT: v2 locked; PO-0/ZEO blockers retained, not bypassed as facts
 BUS: 001..009 closed; active physical goal NONE; next free number 010
-MODE: OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP
-CODEX: finite bDet central calibration proved on TrialNonzero;
-       D0.7e.5 remains BLOCKED / THEOREM_SHAPE_ONLY;
-MYTHOS/PRO: repair exact alpha/DeltaE/delta_dict/limit/uniform-A_K theorem;
-            do not create 010; no conditional parent closure
+MODE: OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP
+OWNER: R1-R5 locked; D0.7e.5 decomposition canonical; H3e registered OPEN
+CODEX: central nonzero locus and bZeoMul=bCal^(-1) identity proved;
+       T0 found no source; 5b typecheck and 5d migration are PROVED;
+       T1 is partial, T2 input-blocked, two T5 Lean lemmas are proved
+NEXT: owner supplies and ratifies a new non-tautological WPrime/ZEO consumer
+      definition with exact b orientation;
+      do not define WPrime by desired RHS; do not create 010
 ```
 
 The retired D0.3g blockers remain historical warnings, not current stops:
@@ -72,14 +75,39 @@ The audit locks `Fplus(z)=T_m(k1)(-z)`, proves `zeta(1/2)<0` by the eta series,
 and defines `G=Fhat/bDet` only on `BDetNonzero`. The unspecified
 `N(lambda)=ceil(kappa*lambda^2)` schedule is not accepted.
 
-The unresolved address is D0.7e.5. The owner input labels the WPrime/ZEO
-crosswalk a theorem shape to be proved; canonical `alpha`, true `DeltaE`,
-`delta_dict`, the joint limit, and a uniform compact-strip constant are not
-supplied, while the primary source explicitly names quantitative trial/ground
-tracking as missing. Importing the cited H3c/H4 nodes here would cycle through
-D0 (`D0_7E_XWALK_DEPENDENCY_CYCLE`). Autorun is paused at
-`D0_7E_XWALK_OPEN`. The finite
-definition does not supply H4d nonzero/growth estimates, close D0.7, or prove
+The remaining crosswalk is now canonically decomposed by the physically
+ratified R1--R5. Its active D0.7e.5a audit proves that the exact
+dependent locus is
+`CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero`. On that locus
+the central-value normalizing multiplier is
+`bZeoMul=Xi(0)/Fhat(0)=bCal^(-1)`, so `G=bZeoMul*Fhat`. `TrialNonzero` does not
+imply central nonvanishing.
+
+The completed T0 corpus scan found no independent `FZeo` or `WPrime` consumer.
+The historical `W'` row is a target/sketch or diagnostic, while the
+physical Option-B ruling defines the desired right-hand side and cannot serve
+as the independent consumer required by the latest review. The nested subtree
+is canonical, its structural exit is `D0_7E_5_DECOMPOSITION_LOCKED`, and the
+canonical active leaf is `D0.7e.5a`. Operational pause is
+`OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP`, with
+mathematical stop `D0_7E_WPRIME_CONSUMER_MISSING`; the WPrime `b` orientation
+is unpinned. The owner standing order is active, but it cannot ratify an absent
+candidate; its no-new-definition limit is still binding.
+
+The owner-launched no-stop sprint then closed `D0.7e.5b` only as an
+uninstantiated interface typecheck and `D0.7e.5d` only as exact wording/address
+migration. The required `(17,120)` coefficient vector is absent, so T1 is
+partial; T2 is `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`. Lean now proves finite
+`bDet` reality and `Fplus(0)=sqrt(L)c0`; `zeta_half_ne_zero` remains blocked by
+the missing eta-continuation bridge. None of this closes 5a, 5c, H3e, or a
+parent.
+
+R2 registers `H3e ExactWPrimeTrackingTheorem` as OPEN/INACTIVE and leaves PO-10
+unchanged. R3 locks only the Contract-v2 direct `q_b` convention, not the
+FIT_NOT_LAW exponent value. R4 retains independent `(m,N)`. R5 records H0/A1
+as alpha's unique home, but `PO-1/A1` and `PO_XWALK_UNIFORM_EVAL` remain
+OPEN_CRITICAL external obligations. No H3/H4 theorem was imported into D0.
+No H3c/H4 import occurred. The finite calibration does not close D0.7 or prove
 RH.
 
 ## Разделение полномочий

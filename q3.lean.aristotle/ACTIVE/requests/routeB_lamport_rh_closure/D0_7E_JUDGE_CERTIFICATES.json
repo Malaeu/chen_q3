@@ -1,0 +1,223 @@
+{
+  "schema": "route_b_d0_7e_t1_judges.v1",
+  "task": "T1_PRE_REGISTERED_BDET_JUDGES",
+  "overall_status": "PARTIAL_BLOCKED_MISSING_LAMBDA17_PERSISTED_VECTOR",
+  "rh_status": "NOT_RH",
+  "owner_input": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_OWNER_INPUT.md",
+  "owner_input_sha256": "a0f8ef78ec023aeef34f6ae03769faaf675a94d30d93b85a5da5258cb2f0bfed",
+  "arithmetic": {
+    "formula": "bDet=sqrt(log(lambda_sq))*c0/zeta(1/2)",
+    "zeta_half_midpoint_from_owner_input": "-1.46035450880958681",
+    "zeta_half_numerical_input_enclosure": [
+      "-1.46035450880958682",
+      "-1.46035450880958680"
+    ],
+    "interval_honesty": "INPUT_ENCLOSURE_ONLY_NOT_A_PROOF_OF_SOURCE_ROUNDING_OR_QUADRATURE_ERROR"
+  },
+  "cells": [
+    {
+      "lambda_sq": 13,
+      "N": 90,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_90.json",
+      "source_sha256": "ca8f8b083b86da86d0c3716af6614cfc57007c33884d95352710ea2977b5671e",
+      "source_kind": "PortableKChannel_v1_coefficients",
+      "source_logical_vector": "k1",
+      "source_dps": 110,
+      "source_quad_order": 192,
+      "c0": {
+        "re": "-0.5399770007043461125296687687179843831563680344196510913809210507630659",
+        "im_abs": "6.94783699889377059129809530110654938510272166294156063188602860546560016013090052378451663E-110",
+        "persisted_cross_quadrature_radius": "1.08723731385688644574217668131137920793340095004614361912004797981193146484775961878375519E-53",
+        "input_enclosure": [
+          "-0.5399770007043461125296687687179843831563680344196511022532941893319303",
+          "-0.5399770007043461125296687687179843831563680344196510805085479121942014"
+        ],
+        "sign": "NEGATIVE"
+      },
+      "bDet": {
+        "midpoint_value": "0.5921835835971866875464214392356810418194378069748515565330461423038719",
+        "input_enclosure": [
+          "0.5921835835971866834913541249305590257959215843698518041511477019344452",
+          "0.5921835835971866916014887535408031133783365663944859686483209011564830"
+        ],
+        "sign": "POSITIVE",
+        "abs_bDet_sqrt_lambda": "1.124455315736601698734902664622913929317655024737178877151223335314013",
+        "status": "NUMERICAL_INPUT_ENCLOSURE_SIGN_CERTIFIED"
+      },
+      "two_way_evaluation": {
+        "method": "2048-point midpoint quadrature of persisted finite Fourier vector",
+        "samples": 2048,
+        "stored_coefficient_identity": {
+          "re": "-0.8647979663491704",
+          "im": "1.1127280049578778e-109"
+        },
+        "direct_quadrature": {
+          "re": "-0.8647979663491703",
+          "im": "-1.844181568927415e-18"
+        },
+        "absolute_residual": "1.1103761817392105e-16",
+        "relative_residual": "1.2839717771617487e-16",
+        "machine_zero_pass": true
+      },
+      "central_zero_plant": {
+        "shadow_c0": "0",
+        "shadow_bDet": "-0E-82",
+        "guard": "B_CENTRAL_ZERO_CELL",
+        "plant_fires": true
+      }
+    },
+    {
+      "lambda_sq": 13,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_120.json",
+      "source_sha256": "0e5239355c54103859b22d7f753d8cd6765c2c41bcd3ec7f86b20beccc907a88",
+      "source_kind": "PortableKChannel_v1_coefficients",
+      "source_logical_vector": "k1",
+      "source_dps": 110,
+      "source_quad_order": 192,
+      "c0": {
+        "re": "-0.5399770007043461125296687687179843831563680344196510913809201546584143",
+        "im_abs": "5.86357435551818827885894835988656436389601897656691219579686783467005789861600341019070893E-110",
+        "persisted_cross_quadrature_radius": "3.71244087534145961797169210175998131068237807383566686784888600867901004291520464014580001E-36",
+        "input_enclosure": [
+          "-0.5399770007043461125296687687179843868688089097611107093526122564183956",
+          "-0.5399770007043461125296687687179843794439271590781914734092280528984330"
+        ],
+        "sign": "NEGATIVE"
+      },
+      "bDet": {
+        "midpoint_value": "0.5921835835971866875464214392356810418194378069748515565330451595611566",
+        "input_enclosure": [
+          "0.5921835835971866834913541249305590217245508804607445188053041967767035",
+          "0.5921835835971866916014887535408031174497072703035933097528248662682126"
+        ],
+        "sign": "POSITIVE",
+        "abs_bDet_sqrt_lambda": "1.124455315736601698734902664622913929317655024737178877151221469253722",
+        "status": "NUMERICAL_INPUT_ENCLOSURE_SIGN_CERTIFIED"
+      },
+      "two_way_evaluation": {
+        "method": "2048-point midpoint quadrature of persisted finite Fourier vector",
+        "samples": 2048,
+        "stored_coefficient_identity": {
+          "re": "-0.8647979663491704",
+          "im": "-9.390783628885888e-110"
+        },
+        "direct_quadrature": {
+          "re": "-0.8647979663491703",
+          "im": "-1.844181568927415e-18"
+        },
+        "absolute_residual": "1.1103761817392105e-16",
+        "relative_residual": "1.2839717771617487e-16",
+        "machine_zero_pass": true
+      },
+      "central_zero_plant": {
+        "shadow_c0": "0",
+        "shadow_bDet": "-0E-82",
+        "guard": "B_CENTRAL_ZERO_CELL",
+        "plant_fires": true
+      }
+    },
+    {
+      "lambda_sq": 14,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_14_N_120.json",
+      "source_sha256": "f2ecc3e794728dceff933f2ced8b7e91593fc5d956a3a4d4a7522dda892bfecf",
+      "source_kind": "PortableKChannel_v1_coefficients",
+      "source_logical_vector": "k1",
+      "source_dps": 110,
+      "source_quad_order": 192,
+      "c0": {
+        "re": "-0.5329978605277618758056609357441651904910659615057885650322181430523479",
+        "im_abs": "5.40918944991564739322274654285029807914691148336670105342522248502566056594326179738694003E-110",
+        "persisted_cross_quadrature_radius": "4.15330677877688721673807435524067068705659426427850247735432638169449015665285283435626277E-38",
+        "input_enclosure": [
+          "-0.5329978605277618758056609357441651905325990292935574371995988866047546",
+          "-0.5329978605277618758056609357441651904495328937180196928648373994999412"
+        ],
+        "sign": "NEGATIVE"
+      },
+      "bDet": {
+        "midpoint_value": "0.5929138322605349578558013517007108270325298277856670083212984608479999",
+        "input_enclosure": [
+          "0.5929138322605349537957335484119684220434487725175499284120297261776277",
+          "0.5929138322605349619158691549894532876254766402570975961160193306218462"
+        ],
+        "sign": "POSITIVE",
+        "abs_bDet_sqrt_lambda": "1.146894819822028533392660109055664852981443424786594983526857287359675",
+        "status": "NUMERICAL_INPUT_ENCLOSURE_SIGN_CERTIFIED"
+      },
+      "two_way_evaluation": {
+        "method": "2048-point midpoint quadrature of persisted finite Fourier vector",
+        "samples": 2048,
+        "stored_coefficient_identity": {
+          "re": "-0.8658643882772433",
+          "im": "-8.787323291484352e-110"
+        },
+        "direct_quadrature": {
+          "re": "-0.8658643882772433",
+          "im": "-1.1093512820907022e-19"
+        },
+        "absolute_residual": "1.1093512820907022e-19",
+        "relative_residual": "1.2812067306497148e-19",
+        "machine_zero_pass": true
+      },
+      "central_zero_plant": {
+        "shadow_c0": "0",
+        "shadow_bDet": "-0E-82",
+        "guard": "B_CENTRAL_ZERO_CELL",
+        "plant_fires": true
+      }
+    }
+  ],
+  "judges": {
+    "J1_per_cell_value_and_sign": {
+      "status": "PARTIAL_13_14_PASS_17_BLOCKED",
+      "available_signs": [
+        "POSITIVE",
+        "POSITIVE",
+        "POSITIVE"
+      ],
+      "missing": [
+        {
+          "lambda_sq": 17,
+          "N": 120,
+          "expected_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_17_N_120.json",
+          "exists": false,
+          "failure_code": "T1_LAMBDA17_PERSISTED_COEFFICIENT_VECTOR_MISSING"
+        }
+      ]
+    },
+    "J2_N_stability_13_90_vs_120": {
+      "factor": "1.000000000000000000000000000000000000000000000000000000000001659523740",
+      "threshold": "3",
+      "pass": true
+    },
+    "J3_two_way_evaluation": {
+      "status": "AVAILABLE_CELLS_PASS",
+      "all_machine_zero_pass": true
+    },
+    "J4_central_zero_plant": {
+      "status": "B_CENTRAL_ZERO_CELL_FIRES",
+      "all_plants_fire": true
+    },
+    "P3_abs_bDet_sqrt_lambda_factor3": {
+      "classification": "FIT_NOT_LAW",
+      "available_cells": [
+        [13, 120],
+        [14, 120]
+      ],
+      "factor": "1.019955887771962991544191716475285846116763380206691207638799054459993",
+      "partial_pass": true,
+      "score_status": "NOT_FULLY_SCORED_LAMBDA17_MISSING"
+    }
+  },
+  "explicit_nonclaims": [
+    "NO_ASYMPTOTIC_BDET_BOUND",
+    "NO_COFINAL_NONVANISHING",
+    "NO_SELECTOR_OR_FILTER",
+    "NO_ALPHA_OR_DELTAE_OR_WPRIME_DEFINITION",
+    "NO_PROOF_GRADE_INTERVAL_FROM_QUADRATURE_DIFFERENCE",
+    "NO_H3E_TRACKING_RESULT",
+    "NO_RH"
+  ]
+}

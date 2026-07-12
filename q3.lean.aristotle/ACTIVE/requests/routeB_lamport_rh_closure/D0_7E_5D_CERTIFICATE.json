@@ -1,0 +1,55 @@
+{
+  "schema": "route_b_d0_7e_5d_certificate.v1",
+  "created_at": "2026-07-12T12:13:15+02:00",
+  "node_id": "D0.7e.5d",
+  "name": "DownstreamTrackingObligationMigration",
+  "proof_status": "PROVED",
+  "proof_scope": "ADDRESS_AND_WORDING_MIGRATION_ONLY",
+  "exit_code": "D0_7E_XWALK_MIGRATION_LOCKED",
+  "rh_status": "NOT_RH",
+  "source_obligation": {
+    "id": "PO_D0_7E_XWALK",
+    "source_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_OWNER_INPUT.md",
+    "source_lines": "78-98",
+    "wording": "UNCHANGED_VERBATIM",
+    "proof_status": "OPEN"
+  },
+  "new_address": {
+    "node_id": "H3e",
+    "canonical_label": "H3e_ExactWPrimeTrackingTheorem",
+    "dependencies": ["D0", "H3a", "H3b", "H3c", "H4c", "H4d"],
+    "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL"],
+    "tracking_proof_status": "OPEN",
+    "acyclic": true
+  },
+  "dependency_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_OWNER_INPUT.md",
+      "sha256": "a0f8ef78ec023aeef34f6ae03769faaf675a94d30d93b85a5da5258cb2f0bfed"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5D_XWALK_MIGRATION.md",
+      "sha256": "6a269e071d207b1cbb3df9bbcfdf1bfaebbbf6b3e1ecaa2d8313876a61d2677a"
+    }
+  ],
+  "plants": {
+    "wording": "D0_7E_XWALK_WORDING_DRIFT_PLANT_FIRES",
+    "address": "D0_7E_H3E_ADDRESS_MISSING_PLANT_FIRES",
+    "cycle": "D0_7E_D0_DEPENDENCY_CYCLE_PLANT_FIRES",
+    "theorem_smuggle": "D0_7E_H3E_THEOREM_SMUGGLED_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_WPRIME_DEFINITION_ADOPTED_FROM_QUOTED_OBLIGATION",
+    "NO_TRACKING_THEOREM_PROOF",
+    "NO_PO_XWALK_UNIFORM_EVAL_PROOF",
+    "NO_H3_ASSEMBLY",
+    "NO_D0_PARENT_ASSEMBLY",
+    "NO_RH"
+  ]
+}

@@ -1,12 +1,13 @@
 {
   "schema": "route_b_d0_7_certificate.v1",
   "created_at": "2026-07-12T09:27:00+02:00",
+  "updated_at": "2026-07-12T12:13:15+02:00",
   "node_id": "D0.7",
   "name": "ExactNormalization",
   "proof_status": "BLOCKED",
   "progress_class": "REPRESENTATION_PROGRESS",
   "partial_exit_code": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
-  "stop_code": "D0_7E_XWALK_OPEN",
+  "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING",
   "rh_status": "NOT_RH",
   "lean_status": "INTERFACE_UNPINNED",
   "children": {
@@ -14,7 +15,7 @@
     "D0.7b": "PROVED",
     "D0.7c": "PROVED_CONDITIONAL_INTERFACE",
     "D0.7d": "PROVED",
-    "D0.7e": "BLOCKED_XWALK",
+    "D0.7e": "BLOCKED_WPRIME_CONSUMER_SOURCE",
     "D0.7f": "BLOCKED_BY_D0.7e"
   },
   "delta_lock": {
@@ -50,7 +51,7 @@
     "detector_definition": "bDet_m_N=Fhat_m_N(0)/Xi(0)_ON_TrialNonzero",
     "detector_definition_status": "PROVED_FINITE_DEPENDENT",
     "detector_normalization_domain": "BDetNonzero",
-    "detector_crosswalk": "PO_D0_7E_XWALK_BLOCKED_THEOREM_SHAPE_ONLY",
+    "detector_crosswalk": "PO_D0_7E_XWALK_BLOCKED_AT_D0.7e.5a_AFTER_OWNER_R1_R5_LOCK_D0_7E_WPRIME_CONSUMER_MISSING",
     "pilot_crosswalk": "NOT_PROVED",
     "weil_coefficient_crosswalk": "TYPE_MISMATCH",
     "uniform_bounds": "H4D_OPEN"
@@ -94,11 +95,11 @@
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md",
-      "sha256": "c7701d7bb37209fdf83d1c0942e46fc0e5368b3336d3dd38b4a74c7c856a1b2e"
+      "sha256": "1c6df19655216c5c28d5141cf3a0d7a0e3841d991fc1a1c1aab6bc800d595b4f"
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CERTIFICATE.json",
-      "sha256": "9c4397fcf3a48c676e8239a217c29861b52261780f00cf85f3fb6cd50f96bce9"
+      "sha256": "c7f367f7ad49f5fa467cbdf81d0328ea0d782aed3b21600e5063f728c1eacff6"
     }
   ],
   "proof_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md",
@@ -121,6 +122,8 @@
     "NO_ENDPOINT_REPRESENTATIVE_ALIAS",
     "NO_UNCONDITIONAL_BDET_NONZERO",
     "NO_WPRIME_ZEO_CROSSWALK",
+    "NO_INDEPENDENT_WPRIME_CONSUMER_FOUND_IN_AUDITED_SNAPSHOT",
+    "NO_WPRIME_B_ORIENTATION_LOCK",
     "NO_BPILOT_BDET_CROSSWALK",
     "NO_B_BOUNDS",
     "NO_H4D",

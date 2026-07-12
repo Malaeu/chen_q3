@@ -1,0 +1,139 @@
+{
+  "schema": "route_b_d0_7e_5_certificate.v1",
+  "created_at": "2026-07-12T11:34:54+02:00",
+  "updated_at": "2026-07-12T12:13:15+02:00",
+  "node_id": "D0.7e.5",
+  "name": "TypedWPrimeConsumerSlot",
+  "kind": "AND",
+  "proof_status": "BLOCKED",
+  "progress_class": "REPRESENTATION_PROGRESS",
+  "partial_exit_code": "D0_7E_5_DECOMPOSITION_LOCKED",
+  "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING",
+  "rh_status": "NOT_RH",
+  "decomposition": {
+    "node": "D0.7e.5.0",
+    "proof_status": "PROVED_BY_OWNER_RATIFIED_DEFINITION",
+    "children": [
+      "D0.7e.5a",
+      "D0.7e.5b",
+      "D0.7e.5c",
+      "D0.7e.5d"
+    ],
+    "assembly": "D0.7e.5e"
+  },
+  "components": {
+    "D0.7e.5a": "ACTIVE_BLOCKED_CONSUMER_SOURCE_MISSING_PARTIAL_IDENTITIES_LOCKED",
+    "D0.7e.5b": "PROVED_INTERFACE_TYPECHECK_ONLY",
+    "D0.7e.5c": "OPEN_INELIGIBLE_BLOCKED_BY_D0.7e.5a_5b_PROVED",
+    "D0.7e.5d": "PROVED_MIGRATION_CORRECTNESS_ONLY_H3E_OPEN",
+    "D0.7e.5e": "BLOCKED_BY_D0.7e.5a_AND_D0.7e.5c"
+  },
+  "owner_ratification": {
+    "status": "OWNER_RATIFICATION_R1_R5_LOCKED",
+    "R1": "APPROVE_BPRIME_REHOME_TO_H3_TIER_WITH_SLOT_VACUITY_AND_TAUTOLOGY_GUARDS",
+    "R2": "H3e_ExactWPrimeTrackingTheorem",
+    "R3": "CONTRACT_V2_DIRECT_QB_CONVENTION",
+    "R4": "TWO_PARAMETER_m_N_NO_KAPPA_NO_SELECTOR",
+    "R5": "ALPHA_DEFINITION_HOME_H0_A1",
+    "guard": "D0.7e.5_REMAINS_BLOCKED_UNTIL_INDEPENDENT_CONSUMER_AND_ORIENTATION_PASS",
+    "does_not_prove_math_child": true
+  },
+  "typed_slot": {
+    "carrier": "INDEPENDENT_TWO_PARAMETER_m_N",
+    "parameters": [
+      "alpha_m_N>=0_SUPPLIED_DOWNSTREAM",
+      "DeltaE_m_N>0_SUPPLIED_DOWNSTREAM",
+      "delta_dict_m_N>=0_SUPPLIED_DOWNSTREAM",
+      "filter_F_SUPPLIED_DOWNSTREAM"
+    ],
+    "alpha_definition_home": "CONTRACT_V2_H0_A1_OPEN_CRITICAL",
+    "q_b_convention": "0<c_b<=abs(b(lambda))*lambda^(-q_b)<=C_b",
+    "q_b_value": "NOT_PROVED_FIT_NOT_LAW_ONLY",
+    "N_lambda_selector": "FORBIDDEN_UNTIL_SOURCE_BACKED",
+    "consumer_definition": "NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE_T0_CORPUS",
+    "consumer_orientation": "UNPINNED"
+  },
+  "downstream_export": {
+    "address": "H3e",
+    "name": "ExactWPrimeTrackingTheorem",
+    "proof_status": "OPEN",
+    "uniform_obligation": "PO_XWALK_UNIFORM_EVAL_OPEN_CRITICAL",
+    "consumer_definition_policy": "INDEPENDENT_SOURCE_REQUIRED_DESIRED_RHS_FORBIDDEN",
+    "slot_vacuity_link": "H3e_CONSUMES_D0.7e.5_AND_D0.7e.5c",
+    "D0_8_tracking_owner": false,
+    "PO_10_tracking_owner": false
+  },
+  "dependency_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_PRO_REVIEW_RESPONSE.md",
+      "sha256": "288d50cdcffe25aa7fb8d067b8905b6632507df0f6a6c38536ad63f1f759a0e8"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_RATIFICATION_RECOMMENDATION.md",
+      "sha256": "99172dfd4be8db5329e107b2161d669d7fce4716a3f71f29f1b85431415f11a8"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_DECOMPOSITION_CONTRACT.md",
+      "sha256": "407728aca3c6806fb9ed1508b010798e57419a0190a1d6149059c61fcb619c4c"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_WPRIME_CONSUMER_ORIENTATION_AUDIT.md",
+      "sha256": "ccb9b2aa8cdb094c57bdb760b96396066a66cf8c5380b1a5b83ae9cad9a497e9"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CERTIFICATE.json",
+      "sha256": "ab2cb8180663a2a57b0b9dfbb35458464b4eed5ac17e804bfde14e238d161ab7"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CONSUMER_SOURCE_REQUEST.md",
+      "sha256": "7934f564784e508659e11572319b51baa1aa1f26152f905d299c0a8e8362c435"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5B_TYPED_INTERFACE.md",
+      "sha256": "013b2cd81bc64b7b76d6d6ae7e21aa28d94102b873d2debd969e932b7928afce"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5B_CERTIFICATE.json",
+      "sha256": "4dc3b8e3ee52f5f9c5dfab0982fd768d4cd0cf99dade89c3c59c5a7cdc8b322f"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5D_XWALK_MIGRATION.md",
+      "sha256": "6a269e071d207b1cbb3df9bbcfdf1bfaebbbf6b3e1ecaa2d8313876a61d2677a"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5D_CERTIFICATE.json",
+      "sha256": "2e0f1d3404661db2d2580ff883579faeba1ba572aba5101021190ea47c02748d"
+    }
+  ],
+  "plants": {
+    "slot_vacuity": "D0_7E_SLOT_VACUITY_PLANT_FIRES",
+    "tautology": "D0_7E_TAUTOLOGY_PLANT_FIRES",
+    "dependency_cycle": "D0_7E_D0_DEPENDENCY_CYCLE_PLANT_FIRES",
+    "alpha_home": "D0_7E_ALPHA_HOME_PLANT_FIRES",
+    "selector": "D0_7E_SELECTOR_PLANT_FIRES",
+    "assembly": "D0_7E_5_ASSEMBLY_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_INDEPENDENT_WPRIME_CONSUMER_FOUND_IN_AUDITED_SNAPSHOT",
+    "NO_WPRIME_B_ORIENTATION_LOCK",
+    "NO_ALPHA_DEFINITION_IN_D0",
+    "NO_DOWNSTREAM_PARAMETER_INSTANTIATION_IN_D0",
+    "NO_TRUE_GAP_MODEL_SUBSTITUTION",
+    "NO_N_LAMBDA_SELECTOR",
+    "NO_H3C_H4_IMPORT_INTO_D0",
+    "NO_H3E_THEOREM_PROOF",
+    "NO_D0_7E_5_ASSEMBLY",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

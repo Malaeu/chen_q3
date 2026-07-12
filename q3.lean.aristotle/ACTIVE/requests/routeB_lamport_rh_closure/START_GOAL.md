@@ -79,10 +79,27 @@ Current fail-closed address:
 - immutable owner input has been validated: finite `bDet_(m,N)` is locked on
   `TrialNonzero`, with `Fplus(z)=T_m(k1)(-z)` and `zeta(1/2)!=0` proved;
 - `N(lambda)=ceil(kappa*lambda^2)` is unpinned because `kappa` is unspecified;
-- unresolved master leaf = D0.7e.5 ExactWPrimeZeoCrosswalk;
-- current stop = D0_7E_XWALK_OPEN: the input contains a theorem shape, not a
-  proof, and exact alpha/DeltaE/delta_dict/joint-limit/uniform-A_K data are
-  missing;
+- owner R1--R5 is physically ratified; D0.7e.5 is now a canonical AND node
+  with proved definitional decomposition D0.7e.5.0 and children 5a--5d;
+- unresolved canonical master leaf = D0.7e.5a
+  WPrimeConsumerAndCalibrationOrientationLock;
+- no-stop T0 source mining is complete with
+  NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE; the standing order is
+  active but no candidate passed its ratification checklist;
+- D0.7e.5b is PROVED_INTERFACE_TYPECHECK_ONLY and D0.7e.5d is
+  PROVED_MIGRATION_CORRECTNESS_ONLY; neither closes H3e or the parent;
+- partial identities are locked:
+  `CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero` and
+  `bZeoMul=bCal^(-1)` on that locus;
+- current mathematical stop = D0_7E_WPRIME_CONSUMER_MISSING: no independent
+  `FZeo` or `WPrime` consumer was found in the completed T0 corpus scan, and the
+  owner Option-B file defines the desired right-hand side rather than
+  recovering a consumer;
+- exact historical WPrime `b` orientation therefore remains unpinned;
+- H3e ExactWPrimeTrackingTheorem is registered OPEN/INACTIVE; H0/A1 and
+  PO_XWALK_UNIFORM_EVAL remain OPEN_CRITICAL external obligations;
+- no H3c/H4 import, no selector invention, and no tautological WPrime
+  definition;
 - no bWeil/pilot alias, no H4d bound smuggling, and no conditional parent
   closure;
 - owner autorun continues after each validated leaf;

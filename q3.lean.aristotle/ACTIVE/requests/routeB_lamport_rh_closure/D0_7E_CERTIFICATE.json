@@ -1,12 +1,13 @@
 {
   "schema": "route_b_d0_7e_certificate.v1",
   "created_at": "2026-07-12T09:27:00+02:00",
+  "updated_at": "2026-07-12T12:13:15+02:00",
   "node_id": "D0.7e",
   "name": "ExactDetectorBDefinitionAndCrosswalk",
   "proof_status": "BLOCKED",
   "progress_class": "REPRESENTATION_PROGRESS",
   "partial_exit_code": "D0_7E_CENTRAL_CALIBRATION_LOCKED",
-  "stop_code": "D0_7E_XWALK_OPEN",
+  "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING",
   "rh_status": "NOT_RH",
   "lean_status": "INTERFACE_UNPINNED",
   "decomposition": {
@@ -26,18 +27,21 @@
     "D0.7e.2": "PROVED_FINITE_CENTRAL_CALIBRATION_ON_TRIAL_NONZERO",
     "D0.7e.3": "PROVED_DEPENDENT_NORMALIZATION_ON_BDET_NONZERO",
     "D0.7e.4": "PROVED_REALITY_PHASE_NAMESPACE_FIREWALL",
-    "D0.7e.5": "BLOCKED_THEOREM_SHAPE_ONLY",
+    "D0.7e.5": "BLOCKED_DECOMPOSED_5B_5D_PROVED_D0.7e.5a_CONSUMER_SOURCE",
     "D0.7e.6": "BLOCKED_BY_D0.7e.5"
   },
   "owner_lock": {
     "classification": "OWNER_RATIFIED_NEW_DEFINITION_NOT_PROOF_AUTHORITY",
     "immutable": true,
-    "request_fields_present": true
+    "request_fields_present": true,
+    "bprime_ratification": "OWNER_RATIFICATION_R1_R5_LOCKED"
   },
   "domain_lock": {
     "finite_parameter_set": "I_fin={(m,N):m>=2_AND_N>=1}",
     "definition_domain": "TrialNonzero={(m,N)_in_I_fin:norm(P_m_N(g_lambda_m))>0}",
     "normalization_domain": "BDetNonzero={(m,N)_in_TrialNonzero:bDet_m_N!=0}",
+    "central_nonzero_domain": "CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero",
+    "trial_implies_central_nonzero": false,
     "N_lambda_schedule": "UNPINNED_KAPPA_UNSPECIFIED",
     "anchor_N_120": "DIAGNOSTIC_NOT_SELECTOR"
   },
@@ -67,14 +71,31 @@
   "crosswalk": {
     "obligation": "PO_D0_7E_XWALK",
     "proof_status": "BLOCKED",
-    "input_status": "THEOREM_SHAPE_TO_BE_PROVED",
-    "alpha": "UNDEFINED_CANONICALLY",
-    "DeltaE": "UNDEFINED_TRUE_COMPLEMENTARY_DISTANCE",
-    "delta_dict": "UNDEFINED",
-    "limit_quantifier": "MISSING",
-    "uniform_A_K": "UNPROVED",
+    "decomposition": "CANONICAL_BPRIME_OWNER_RATIFICATION_R1_R5_LOCKED",
+    "active_child": "D0.7e.5a",
+    "nested_parent": "D0.7e.5_AND_DECOMPOSITION_LOCKED",
+    "input_status": "BPRIME_OWNER_RATIFIED_T0_NO_INDEPENDENT_CONSUMER_AVAILABLE",
+    "consumer_definition": "NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE_T0_CORPUS",
+    "b_calibration": "bCal=bDet=Fhat(0)/Xi(0)",
+    "normalized_multiplier": "bZeoMul=bCal^(-1)_ON_CentralValueNonzero",
+    "historical_wprime_b_orientation": "UNPINNED",
+    "alpha": "DEFINITIONAL_HOME_LOCKED_H0_A1_OPEN_CRITICAL_UNINSTANTIATED_IN_D0",
+    "DeltaE": "TYPED_DOWNSTREAM_PARAMETER_TRUE_GAP_UNINSTANTIATED_IN_D0",
+    "delta_dict": "TYPED_DOWNSTREAM_PARAMETER_UNINSTANTIATED_IN_D0",
+    "limit_quantifier": "FILTER_TYPED_IN_D0_SELECTION_REHOMED_H3c_OPEN",
+    "uniform_A_K": "PO_XWALK_UNIFORM_EVAL_REHOMED_H3e_OPEN_CRITICAL",
+    "q_b_convention": "CONTRACT_V2_DIRECT_QB_CONVENTION_LOCKED_VALUE_UNPROVED",
+    "carrier": "TWO_PARAMETER_m_N_NO_KAPPA_NO_SELECTOR",
+    "downstream_address": "H3e_ExactWPrimeTrackingTheorem_OPEN_INACTIVE",
+    "typed_interface": "D0.7e.5b_PROVED_INTERFACE_TYPECHECK_ONLY",
+    "migration": "D0.7e.5d_PROVED_ADDRESS_AND_WORDING_ONLY",
     "primary_source_status": "GROUND_TRIAL_TRACKING_EXPLICITLY_MISSING",
     "secondary_codes": [
+      "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING",
+      "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO",
+      "D0_7E_BCAL_ZERO_OR_UNPROVED",
+      "D0_7E_BCAL_BZEO_ALIAS_CONFLICT",
+      "D0_7E_SOURCE_NORMALIZATION_CONFLICT",
       "D0_7E_ALPHA_DELTAE_UNDEFINED",
       "D0_7E_XWALK_LIMIT_QUANTIFIER_MISSING",
       "D0_7E_XWALK_UNIFORM_CONSTANT_GAP",
@@ -111,7 +132,7 @@
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_DECOMPOSITION_CONTRACT.md",
-      "sha256": "5e7e795643a53b9f7a6997284db39962023d4e5336292fa75642115a7a01eaa3"
+      "sha256": "e6e1ab717c3e5a4dc51196fd002ceb22b6bb44e433ad4667ce9f0c297dd4bae1"
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CLASSICAL_SOURCE_LOCK.json",
@@ -120,6 +141,38 @@
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
       "sha256": "524565589a228788039c6853e7919d6bf4f0f916e42493c6119372d637eb9b1d"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_PRO_REVIEW_DECISION.md",
+      "sha256": "28f90346e7712d5cf66599ed336b10528046e645b91ec83f2c94c98ad13829ff"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_PRO_REVIEW_INPUT.md",
+      "sha256": "50ec571a8d7f0ec3e35575cde320c03a89c9949dda92d4f28694268c5247af73"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_DECOMPOSITION_CONTRACT.md",
+      "sha256": "407728aca3c6806fb9ed1508b010798e57419a0190a1d6149059c61fcb619c4c"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_WPRIME_CONSUMER_ORIENTATION_AUDIT.md",
+      "sha256": "ccb9b2aa8cdb094c57bdb760b96396066a66cf8c5380b1a5b83ae9cad9a497e9"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CERTIFICATE.json",
+      "sha256": "ab2cb8180663a2a57b0b9dfbb35458464b4eed5ac17e804bfde14e238d161ab7"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_CERTIFICATE.json",
+      "sha256": "437acceca5dce85837ac081af484d3a98f7af3e485988eaefeb96dfa4665e47a"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CONSUMER_SOURCE_REQUEST.md",
+      "sha256": "7934f564784e508659e11572319b51baa1aa1f26152f905d299c0a8e8362c435"
     }
   ],
   "plants": {
@@ -142,6 +195,9 @@
     "NO_TRUE_COMPLEMENTARY_GAP",
     "NO_DICTIONARY_CONVERGENCE",
     "NO_WPRIME_ZEO_CROSSWALK",
+    "NO_INDEPENDENT_WPRIME_CONSUMER_FOUND_IN_AUDITED_SNAPSHOT",
+    "NO_WPRIME_B_ORIENTATION_LOCK",
+    "NO_BCAL_BZEO_ALIAS",
     "NO_D0_7E_ASSEMBLY",
     "NO_D0_7_ASSEMBLY",
     "NO_D0_ASSEMBLY",

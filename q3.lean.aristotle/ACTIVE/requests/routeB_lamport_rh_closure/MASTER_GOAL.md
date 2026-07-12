@@ -431,7 +431,12 @@ R0 RHClosure [AND]
 |   |   |   |-- D0.7e.2 FiniteCentralMellinCalibration
 |   |   |   |-- D0.7e.3 DependentCentralNormalizationIdentity
 |   |   |   |-- D0.7e.4 RealityPhaseAndNamespaceFirewall
-|   |   |   |-- D0.7e.5 ExactWPrimeZeoCrosswalk
+|   |   |   |-- D0.7e.5 TypedWPrimeConsumerSlot [AND]
+|   |   |   |   |-- D0.7e.5a WPrimeConsumerAndCalibrationOrientationLock
+|   |   |   |   |-- D0.7e.5b ExactFiniteConsumerObjects
+|   |   |   |   |-- D0.7e.5c ExactWPrimeConsumerIdentity
+|   |   |   |   |-- D0.7e.5d DownstreamTrackingObligationMigration
+|   |   |   |   `-- D0.7e.5e D0.7e.5Assembly
 |   |   |   `-- D0.7e.6 D0.7eAssembly
 |   |   `-- D0.7f D0.7Assembly
 |   |-- D0.8 QWToZeroProducingOperatorCrosswalk
@@ -445,6 +450,7 @@ R0 RHClosure [AND]
 |   |-- H3a GroundTrialTracking
 |   |-- H3b CompactStripEvaluation
 |   |-- H3c XiLimitIdentification
+|   |-- H3e ExactWPrimeTrackingTheorem
 |   `-- H3d H3Assembly
 |-- H4 DetectorDecay [AND]
 |   |-- H4a ResidualIdentity
@@ -503,8 +509,15 @@ proof node.
 | `D0.4` | Exact parity involution and sectors, without cleanliness claim | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `EXACT_PARITY_SECTORS_LOCKED` |
 | `D0.5` | Exact ground eigenspace and trial-vector types, without simple-even claim | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `GROUND_TRIAL_TYPES_LOCKED` |
 | `D0.6` | Exact Fourier/Mellin convention and topology | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `EXACT_TRANSFORM_CONVENTION_LOCKED` |
-| `D0.7` | Exact boundary/scalar/phase normalization definitions | `BLOCKED / BDET_DEFINITION_LOCKED / XWALK_OPEN` | blocker: `D0_7E_XWALK_OPEN` |
-| `D0.7e` | Owner-ratified finite central calibration plus exact WPrime/ZEO crosswalk | `BLOCKED / 4_OF_5_SUBCOMPONENTS_PROVED` | partial: `D0_7E_CENTRAL_CALIBRATION_LOCKED`; blocker: `D0_7E_XWALK_OPEN` |
+| `D0.7` | Exact boundary/scalar/phase normalization definitions | `BLOCKED / BDET_DEFINITION_LOCKED / WPRIME_CONSUMER_MISSING` | blocker: `D0_7E_WPRIME_CONSUMER_MISSING` |
+| `D0.7e` | Owner-ratified finite central calibration plus exact WPrime/ZEO crosswalk | `BLOCKED / 4_OF_5_SUBCOMPONENTS_PROVED` | partial: `D0_7E_CENTRAL_CALIBRATION_LOCKED`; blocker: `D0_7E_WPRIME_CONSUMER_MISSING` |
+| `D0.7e.5` | Owner-ratified AND parent for the typed WPrime consumer slot | `BLOCKED / DECOMPOSITION_LOCKED` | partial: `D0_7E_5_DECOMPOSITION_LOCKED`; blocker: `D0_7E_WPRIME_CONSUMER_MISSING` |
+| `D0.7e.5.0` | Definitional contract `5 <-> 5a AND 5b AND 5c AND 5d` | `PROVED / OWNER_RATIFIED` | `D0_7E_5_DECOMPOSITION_LOCKED` |
+| `D0.7e.5a` | Independent WPrime/ZEO consumer and exact b-orientation lock | `ACTIVE / PARTIAL_MATH_PROVED / SOURCE_BLOCKED` | partial: `D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED`, `D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED`; blocker: `D0_7E_WPRIME_CONSUMER_MISSING` |
+| `D0.7e.5b` | Type downstream alpha, true DeltaE, delta_dict and filter on independent `(m,N)` without defining them | `PROVED / INTERFACE_TYPECHECK_ONLY` | `D0_7E_5B_TYPED_INTERFACE_LOCKED` |
+| `D0.7e.5c` | Derive the finite WPrime consumer identity from an independent consumer | `OPEN / BLOCKED_BY_5a` | `D0_7E_WPRIME_CONSUMER_IDENTITY_LOCKED` |
+| `D0.7e.5d` | Readdress the unchanged full tracking obligation to H3e | `PROVED / MIGRATION_CORRECTNESS_ONLY / H3e_OPEN` | `D0_7E_XWALK_MIGRATION_LOCKED` |
+| `D0.7e.5e` | D0.7e.5 assembly theorem | `BLOCKED_BY_5a_AND_5c` | `D0_7E_5_ASSEMBLED` |
 | `D0.8` | Same-object QW-to-D_log-to-transform crosswalk | `OPEN / BLOCKED_BY_D0.7` | `ZERO_PRODUCING_CROSSWALK_LOCKED` |
 | `D0.9` | D0 assembly application | `OPEN / BLOCKED_BY_D0.7_D0.8` | `EXACT_OBJECT_FAMILY_LOCKED` |
 | `H1` | Entirety of the exact normalized approximants | `OPEN_UNTIL_D0` | `ENTIRE_APPROXIMANTS_PROVED` |
@@ -516,7 +529,8 @@ proof node.
 | `H3a` | Ground/trial phase-aligned proximity | `OPEN_CRITICAL` | `GROUND_TRIAL_TRACKING_PROVED` |
 | `H3b` | Bounded evaluation on every compact substrip | `OPEN` | `COMPACT_STRIP_EVALUATION_PROVED` |
 | `H3c` | Normalized limit is exactly `Xi`, with cofinal quantifiers | `OPEN_CRITICAL` | `XI_LIMIT_IDENTIFICATION_PROVED` |
-| `H3d` | H3 assembly theorem | `OPEN / BLOCKED_BY_H3a_H3c` | `H3_ASSEMBLED` |
+| `H3e` | Exact migrated WPrime tracking theorem; consumes the D0 slot, H3 inputs, true H4 quantities, H0/A1 and `PO_XWALK_UNIFORM_EVAL` | `OPEN / INACTIVE` | `EXACT_WPRIME_TRACKING_PROVED` |
+| `H3d` | H3 assembly theorem `H3a AND H3b AND H3c AND H3e -> H3` | `OPEN / BLOCKED_BY_H3_CHILDREN` | `H3_ASSEMBLED` |
 | `H4` | AND parent for detector decay | `OPEN` | `DETECTOR_DECAY_PROVED` |
 | `H4a` | Exact non-internal Galerkin/continuum residual identity | `OPEN` | `RESIDUAL_IDENTITY_PROVED` |
 | `H4b` | Uniform residual upper bound | `OPEN_CRITICAL` | `RESIDUAL_UPPER_PROVED` |
@@ -625,15 +639,35 @@ the exact reflection `Fplus(z)=T_m(k1)(-z)`, an eta-series proof that
 `zeta(1/2)!=0`, and dependent normalization only on `BDetNonzero`.
 
 It did not accept the unspecified `N(lambda)=ceil(kappa lambda^2)` selector or
-the proposed WPrime/ZEO inequality as a proof. The cited D0 draft and
-`docs/EXACT_OBJECT_FAMILY.md` do not exist; canonical `alpha`, true `DeltaE`,
-`delta_dict`, the joint limit, and a uniform compact-strip constant are not
-supplied. The primary paper explicitly calls the required trial-to-ground
-tracking a missing step, and importing the cited H3c/H4 nodes at this point
-would cycle through D0. D0.7e was therefore legally decomposed; D0.7e.1--.4
-are proved and the unique active leaf is `D0.7e.5 ExactWPrimeZeoCrosswalk`,
-blocked at `D0_7E_XWALK_OPEN`. D0.7 and all ancestors remain blocked. No Bus
-010 was created; Route B remains `CHALLENGER / NOT_RH`.
+the proposed WPrime/ZEO inequality as a proof. The latest Pro review then
+forced a consumer-orientation audit before any finite identity. That audit
+proved the exact dependent locus
+`CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero` and the
+identity `bZeoMul=bCal^(-1)`, hence
+`G=Fhat/bCal=bZeoMul*Fhat`. It also proved that `TrialNonzero` alone does not
+give central nonvanishing.
+
+No independent `FZeo` or `WPrime` consumer was found by the completed T0 corpus
+mining pass. The old `W'=|b|sqrt(lambda)sqrt(alpha/DeltaE)` row is explicitly a
+target/sketch or diagnostic, and the physical Option-B owner ruling defines
+that desired right-hand side rather than recovering an independent consumer.
+The owner has now physically ratified recommended R1--R5. This closes only the
+DAG decision layer: `D0.7e.5` is a canonical AND node, its decomposition
+contract `D0.7e.5.0` is proved definitionally, and the full tracking theorem is
+registered only at `H3e`, with Contract-v2 direct `q_b`, independent `(m,N)`,
+and alpha's definitional home at H0/A1. The owner-ratified no-stop sprint then
+closed 5b only as an uninstantiated type interface and 5d only as preservation
+of wording/address. H0/A1 and `PO_XWALK_UNIFORM_EVAL` remain external
+`OPEN_CRITICAL` obligations; H3e itself remains OPEN.
+
+The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
+supply an independent consumer or choose the historical WPrime `b`
+orientation, so the mathematical stop remains
+`D0_7E_WPRIME_CONSUMER_MISSING`. The standing order is active, but T0 produced
+no candidate eligible for its C1--C6/two-review ratification path. H3e is
+`OPEN / INACTIVE`; no H3c/H4 theorem
+was imported into D0, D0.7 and all ancestors remain blocked, no Bus 010 was
+created, and Route B remains `CHALLENGER / NOT_RH`.
 
 ## 9. Completion condition
 
@@ -659,4 +693,6 @@ CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / ROUTE_B_CHALLENGER / NOT_RH
 For a fresh Codex session, use `START_GOAL.md` in this directory. It is a
 paste-ready goal that loads this master file and `STATE.json`, enforces the
 physical-bus transaction boundary, and resumes the unique active leaf recorded
-in state (currently `D0.7e.5`) under the durable owner-authorized scheduler.
+in state (currently canonical `D0.7e.5a`) under the durable owner-authorized
+scheduler. The owner-ratified B-prime subtree is canonical, but its first
+mathematical child is source-blocked.

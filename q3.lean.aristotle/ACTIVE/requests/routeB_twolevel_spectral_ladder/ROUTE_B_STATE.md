@@ -96,15 +96,41 @@ On `TrialNonzero`, the exact object is
 `zeta(1/2)!=0`. The normalization `G=Fhat/bDet` is typed only on
 `BDetNonzero`. No pilot norm or Weil coefficient is aliased.
 
-The owner input's `N(lambda)=ceil(kappa*lambda^2)` is unpinned because `kappa`
-is unspecified. Its WPrime/ZEO inequality is explicitly a theorem shape to be
-proved, and canonical `alpha`, true `DeltaE`, `delta_dict`, the joint limit,
-and a uniform compact-strip constant remain missing. Importing the cited H3c
-and H4 ingredients here would also cycle through D0. The unresolved master
-address is therefore `D0.7e.5 ExactWPrimeZeoCrosswalk`, with exact stop
-`D0_7E_XWALK_OPEN`. D0.7e, D0.7, D0.8, and D0 remain blocked; no conditional
-status closes them. `ProjectedProlateDefectEquation` remains a later physical
-Route B target and is not the current compiler leaf.
+The latest Pro review required the exact ZEO/WPrime consumer and its coefficient
+orientation to exist independently before any desired formula is accepted.
+The D0.7e.5a audit proves
+
+```text
+CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero,
+bCal=bDet=Fhat(0)/Xi(0),
+bZeoMul=Xi(0)/Fhat(0)=bCal^(-1),
+G=Fhat/bCal=bZeoMul*Fhat.
+```
+
+`TrialNonzero` does not imply central nonvanishing. The completed no-stop T0
+corpus scan found no independent `FZeo` or `WPrime` definition. The historical
+`W'=|b|sqrt(lambda)sqrt(alpha/DeltaE)` rows are target/sketch/diagnostic
+sources, while the physical Option-B ruling defines the desired right-hand
+side and therefore cannot serve as the independent consumer requested by
+review.
+
+Owner R1--R5 is now physically locked. `D0.7e.5` is a canonical AND node with
+proved definitional decomposition `D0.7e.5.0`; `H3e
+ExactWPrimeTrackingTheorem` is registered OPEN/INACTIVE, Contract-v2 direct
+`q_b` is the sole convention, `(m,N)` remains independent, and H0/A1 is
+alpha's selected definitional home. These are control-plane facts, not proofs
+of the missing inputs.
+
+The unique active master leaf is now `D0.7e.5a
+WPrimeConsumerAndCalibrationOrientationLock`. The mathematical stop remains
+`D0_7E_WPRIME_CONSUMER_MISSING`. The historical WPrime `b` orientation remains
+unpinned; the active standing order has no eligible candidate to ratify.
+The sprint proved 5b only as a typed interface and 5d only as migration
+correctness. T1 is partial because `(17,120)` is absent, T2 is input-blocked,
+and T5 added two hole-free Lean lemmas while the eta bridge remains missing.
+H0/A1 and `PO_XWALK_UNIFORM_EVAL` are OPEN_CRITICAL; H3c/H4 were not
+imported into D0. D0.7e, D0.7, D0.8, and D0 remain blocked; no conditional
+status closes them. No Bus 010 was created.
 
 The exact two-mode H2 branch is `H2-POLE/CORRECTION`.  The 2026-07-08
 threshold-only `H2_HOLDS` history row is retained as a numerical record but is
@@ -112,7 +138,7 @@ superseded as an exact classification.
 
 ## CURRENT_CODES
 
-`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`, `D0_7E_CENTRAL_CALIBRATION_LOCKED`, `D0_7E_XWALK_OPEN`
+`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`, `D0_7E_CENTRAL_CALIBRATION_LOCKED`, `D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED`, `D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED`, `OWNER_RATIFICATION_R1_R5_LOCKED`, `D0_7E_5_DECOMPOSITION_LOCKED`, `H3E_EXACT_WPRIME_TRACKING_ADDRESS_REGISTERED`, `OWNER_STANDING_ORDER_WPRIME_CANDIDATES_ACTIVE`, `NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE`, `D0_7E_5B_TYPED_INTERFACE_LOCKED`, `D0_7E_XWALK_MIGRATION_LOCKED`, `T1_LAMBDA17_PERSISTED_COEFFICIENT_VECTOR_MISSING`, `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`, `T5_BDET_REALITY_LEAN_PROVED`, `T5_FPLUS_CONSTANT_MODE_LEAN_PROVED`, `ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING`, `D0_7E_WPRIME_CONSUMER_MISSING`
 
 ## History
 
@@ -156,3 +182,8 @@ superseded as an exact classification.
 - 2026-07-11 22:38:00 CEST: Lamport D0.7 `ExactNormalization` legally decomposed -> `D0_7_PARTIAL_NORMALIZATION_LOCKED`; exact `deltaVec_(m,N)=L_m^(-1/2) sum V_n`, its linear boundary functional, finite endpoint identity and Dom(Dlog) limit proved; trial scalar/phase locked on `TrialNonzero`; phase-unit and delta=1 ground normalizations typed only on `GroundDeltaNonzero`; `bWeil_j`, `xihat`, superseded `bPilot`, and detector `b` separated; eight plants fired; D0.7 remains `BLOCKED / 4_OF_5_COMPONENTS_PROVED` by `D0_7_DETECTOR_B_DEFINITION_MISSING`; D0.7e escalated to Pro; NOT_RH.
 - 2026-07-11 22:44:00 CEST: Lamport D0.7e Pro review -> `EXTERNAL_OWNER_INPUT_REQUIRED`; trial normalization and entire-function/ZEO normalization are different object roles, so neither `sTrial` nor superseded `bPilot=||E(g04)||` can be promoted without a theorem crosswalk; inventing an inverse-boundary normalization would reconstruct the target and risk `NORMALIZATION_DEGENERACY`; minimal immutable owner request frozen as `D0_7E_OWNER_INPUT_REQUEST.md` and validator exits `D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED`; autorun paused at exact stop `D0_7_DETECTOR_B_DEFINITION_MISSING`; no Bus 010 created; NOT_RH.
 - 2026-07-12 09:27:00 CEST: Lamport D0.7e immutable owner input audited -> `D0_7E_CENTRAL_CALIBRATION_LOCKED`; finite dependent `bDet_(m,N)=Fhat(0)/Xi(0)=sqrt(L_m)c0/zeta(1/2)` proved on `TrialNonzero`, exact reflection `Fplus=T_m(k1)(-z)` locked, eta-series proves `zeta(1/2)<0`, and `G(0)=Xi(0)` is proved on `BDetNonzero`; proposed `N(lambda)` rejected as unpinned because kappa is unspecified; `PO_D0_7E_XWALK` remains `BLOCKED / THEOREM_SHAPE_ONLY` with undefined canonical alpha/DeltaE/delta_dict, missing limit quantifier, nonuniform compact evaluation gap, unresolved source pointer, and `D0_7E_XWALK_DEPENDENCY_CYCLE` if cited downstream H3c/H4 nodes are imported; active leaf becomes D0.7e.5, stop `D0_7E_XWALK_OPEN`; D0.7 and ancestors stay blocked; no Bus 010 created; NOT_RH.
+- 2026-07-12 10:16:57 CEST: auxiliary Lamport D0.7e.5a Pro/browser review audited -> `D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED`, `D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED`, then mathematical STOP `D0_7E_WPRIME_CONSUMER_MISSING`; `TrialNonzero` does not imply `c0!=0`, while on `CentralValueNonzero=BDetNonzero` the ZEO central normalizing multiplier is `bCal^(-1)` and `G=bCal^(-1)Fhat`; no independent `FZeo`/`WPrime` consumer was found in the audited pinned snapshot; this audit did not canonically retype the leaf, so D0.7e.5 remains active pending owner R1--R5; no H3c/H4 import, no Bus 010, NOT_RH.
+- 2026-07-12 10:35:37 CEST: physical B-prime review recorded -> `OWNER_RATIFICATION_R1_R5_PENDING`; Codex recommendation pins `R2=H3e` (PO-10 already owns DetectorBridge-to-SafeAlphaUpper in canonical v2), `R3=CONTRACT_V2_DIRECT_QB_CONVENTION`, `R4=TWO_PARAMETER_m_N`, `R5=H0_A1`, with guarded R1; no owner decision inferred, canonical D0.7e.5 remains active, mathematical stop unchanged, no Bus 010, NOT_RH.
+- 2026-07-12 11:34:54 CEST: owner explicitly ratified recommended R1--R5 -> `OWNER_RATIFICATION_R1_R5_LOCKED`, `D0_7E_5_DECOMPOSITION_LOCKED`, `H3E_EXACT_WPRIME_TRACKING_ADDRESS_REGISTERED`; D0.7e.5 became a canonical AND node, D0.7e.5.0 closed definitionally, and D0.7e.5a became the unique active leaf; R3 locks the Contract-v2 direct q_b convention but not the FIT_NOT_LAW value, R4 keeps independent `(m,N)`, R5 selects H0/A1 without pretending that alpha is defined; H3e, H0/A1, and PO_XWALK_UNIFORM_EVAL remain open, the mathematical stop stays `D0_7E_WPRIME_CONSUMER_MISSING`, no H3c/H4 import, no Bus 010, NOT_RH.
+- 2026-07-12 12:13:15 CEST: owner ratified `OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md`; exact utterance and pre-activation SHA recorded; scope is T0 candidates only, with C1--C6 and two independent confirmations; no definition-minting and no theorem closure, NOT_RH.
+- 2026-07-12 12:27:21 CEST: owner-launched no-stop sprint T0--T5 completed fail-closed -> T0 found no independent consumer; T1 passed all available bDet judges/plant but lacks `(17,120)`; T2 recorded `NOT_RUN_INPUT_MISSING`; 5b and 5d closed only at interface/migration scope; Lean proved bDet reality and the constant-mode identity, while the eta-continuation bridge remains blocked; 5a/5c/H3e stay open, no Bus 010, NOT_RH.

@@ -94,10 +94,17 @@ Autorun invariants:
 остаётся открыт из-за `ZEO_EXPORT_AMBIGUOUS` и `R13_SOURCE_MISSING`; 010 не
 становится задачей, пока Mythos не создаст физический immutable goal. В режиме
 `OWNER_AUTHORIZED_AUTORUN` принял конечное определение `bDet` из immutable
-owner input, но остановлен на внутреннем master leaf
-`D0.7e.5 ExactWPrimeZeoCrosswalk` с кодом `D0_7E_XWALK_OPEN`: theorem shape
-не закрывает лист, а exact alpha/DeltaE/delta_dict/limit/uniform-A_K ещё не
-запинены. Это не создаёт Bus 010 и не закрывает PO-0/ZEO.
+owner input, но остановлен на каноническом внутреннем master leaf
+`D0.7e.5a WPrimeConsumerAndCalibrationOrientationLock`. Владелец ратифицировал
+R1--R5: декомпозиция родителя `D0.7e.5` стала канонической, а `H3e`
+зарегистрирован открытым downstream-листом. Канонический `5a` запер центральный
+локус и тождество `bZeoMul=bCal^(-1)`, но независимый consumer-источник
+`FZeo`/`WPrime` не найден и полным T0 corpus scan; желаемая правая
+часть не считается независимым определением. Поэтому `5a` остаётся
+заблокированным, не импортирует H3c/H4, не создаёт Bus 010 и не закрывает
+PO-0/ZEO. Standing order ратифицирован, но кандидата для него нет. Внутренний
+no-stop sprint закрыл 5b только как typecheck и 5d только как migration;
+физическая шина по-прежнему пуста и 010 не создан.
 
 Машинная проверка:
 

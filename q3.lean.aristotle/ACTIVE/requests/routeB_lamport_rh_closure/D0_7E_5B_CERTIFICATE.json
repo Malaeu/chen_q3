@@ -1,0 +1,55 @@
+{
+  "schema": "route_b_d0_7e_5b_certificate.v1",
+  "created_at": "2026-07-12T12:13:15+02:00",
+  "node_id": "D0.7e.5b",
+  "name": "ExactFiniteConsumerObjects",
+  "proof_status": "PROVED",
+  "proof_scope": "INTERFACE_TYPECHECK_ONLY",
+  "exit_code": "D0_7E_5B_TYPED_INTERFACE_LOCKED",
+  "rh_status": "NOT_RH",
+  "carrier": {
+    "kind": "INDEPENDENT_TWO_PARAMETER_m_N",
+    "selector": "NONE",
+    "coordinates_related": false
+  },
+  "parameters": {
+    "alpha": "I_two_TO_RealNonnegative_SUPPLIED_DOWNSTREAM",
+    "DeltaE": "I_two_TO_RealStrictlyPositive_SUPPLIED_DOWNSTREAM",
+    "delta_dict": "I_two_TO_RealNonnegative_SUPPLIED_DOWNSTREAM",
+    "FilterSpace": "I_two_TO_Type_SUPPLIED_DOWNSTREAM",
+    "F": "DEPENDENT_PRODUCT_OF_FilterSpace_SUPPLIED_DOWNSTREAM"
+  },
+  "dependency_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5B_TYPED_INTERFACE.md",
+      "sha256": "013b2cd81bc64b7b76d6d6ae7e21aa28d94102b873d2debd969e932b7928afce"
+    }
+  ],
+  "plants": {
+    "assignment": "D0_7E_TYPED_PARAMETER_INSTANTIATED_IN_D0_PLANT_FIRES",
+    "selector": "D0_7E_SELECTOR_INVENTED_PLANT_FIRES",
+    "model_gap": "MODEL_GAP_SUBSTITUTION_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_ALPHA_DEFINITION",
+    "NO_DELTAE_DEFINITION",
+    "NO_FILTER_SELECTION",
+    "NO_COORDINATE_SELECTOR",
+    "NO_MODEL_GAP_SUBSTITUTION",
+    "NO_H3_H4_IMPORT_INTO_D0",
+    "NO_WPRIME_DEFINITION",
+    "NO_EXISTENCE_THEOREM",
+    "NO_PARENT_ASSEMBLY",
+    "NO_RH"
+  ]
+}

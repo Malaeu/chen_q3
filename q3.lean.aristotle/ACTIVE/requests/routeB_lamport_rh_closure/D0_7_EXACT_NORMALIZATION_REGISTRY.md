@@ -6,13 +6,22 @@ Progress class: `REPRESENTATION_PROGRESS`.
 
 Partial exit: `D0_7_PARTIAL_NORMALIZATION_LOCKED`.
 
-Active stop: `D0_7E_XWALK_OPEN`.
+Canonical active leaf: `D0.7e.5a`.
+
+Active stop: `D0_7E_WPRIME_CONSUMER_MISSING`.
+
+No-stop sprint progress inside the nested slot:
+`D0.7e.5b = PROVED_INTERFACE_TYPECHECK_ONLY` and
+`D0.7e.5d = PROVED_MIGRATION_CORRECTNESS_ONLY`; 5a and 5c remain open, so no
+parent closes.
 
 The point of this leaf is to make every scalar, phase, boundary functional,
 and `b` namespace exact before any asymptotic estimate is attempted. The
 owner-ratified central calibration now supplies the finite detector definition.
-Its theorem crosswalk to the exact spectral/ZEO consumers is still open and
-cannot be replaced by a theorem shape or a pilot scalar.
+Its theorem crosswalk to the exact spectral/ZEO consumers is still open. The
+central calibration ratio cannot be silently aliased to the inverse ZEO
+normalizing multiplier, and neither can be connected to `WPrime` before an
+independent consumer definition is pinned.
 
 ## 1. Parameter and scalar convention
 
@@ -204,13 +213,28 @@ The owner file labels the remaining inequality `THEOREM SHAPE to be proved`.
 Its `alpha`, true `DeltaE`, `delta_dict`, limit direction, and uniform compact
 constant are not proved on one exact carrier. The primary source itself names
 sufficiently accurate trial-to-ground tracking as a main missing step.
-Therefore `PO_D0_7E_XWALK` is `BLOCKED / THEOREM_SHAPE_ONLY`.
+The independent D0.7e.5a audit, now canonical under owner-ratified DAG
+authority, further locks
+
+```text
+CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero,
+bCal=bDet,
+bZeoMul=bCal^(-1),
+G=bZeoMul*Fhat.
+```
+
+`TrialNonzero` does not imply the central nonzero locus. No independent
+`FZeo` or `WPrime` consumer was found in the pinned audited tree/history
+snapshot, so the historical WPrime `b` orientation remains unpinned. Therefore
+`PO_D0_7E_XWALK` remains blocked at the canonical leaf `D0.7e.5a`. The nested
+decomposition is owner-ratified and definitionally locked, but its first
+mathematical child still lacks the independent consumer source.
 
 Status: `BLOCKED`.
 
 Partial exit: `D0_7E_CENTRAL_CALIBRATION_LOCKED`.
 
-Stop: `D0_7E_XWALK_OPEN`.
+Stop: `D0_7E_WPRIME_CONSUMER_MISSING`.
 
 ## 7. Lamport proof and zoom-out
 
@@ -224,8 +248,11 @@ Stop: `D0_7E_XWALK_OPEN`.
       the owner-ratified bDet.
 <1>5. D0.7e.1--D0.7e.4 prove the immutable provenance, finite central
       definition, dependent normalization, and reality/firewall components.
-<1>6. D0.7e.5 remains blocked because its theorem shape has no exact typed
-      proof and imports the source's declared ground/trial missing step.
+<1>6. Canonical D0.7e.5a audit evidence proves the central nonzero locus and
+      inverse-normalizer identity. The owner-ratified decomposition is locked,
+      but D0.7e.5a remains blocked because no independent `FZeo`/`WPrime`
+      consumer in the pinned audited snapshot fixes the historical `b`
+      orientation.
 <1>7. D0.7a--D0.7d are PROVED and D0.7e is BLOCKED. By the exact conjunction
       D0.7.0, D0.7 and assembly D0.7f remain BLOCKED.
 ```

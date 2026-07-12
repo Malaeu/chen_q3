@@ -18,6 +18,7 @@ REPO_ROOT = SCRIPT.parents[4]
 BUS_DIR = REQUEST_DIR / "bus"
 STATE_PATH = REQUEST_DIR / "ROUTE_B_EXECUTION_STATE.json"
 LOOP_PATH = REQUEST_DIR / "loop_state.json"
+MASTER_STATE_PATH = REQUEST_DIR.parent / "routeB_lamport_rh_closure" / "STATE.json"
 NAME_RE = re.compile(r"^(\d{3})_([a-z0-9_]+)\.(goal|answer)\.md$")
 
 
@@ -135,6 +136,12 @@ def main() -> int:
         loop = {}
         state_errors.append(f"LOOP_STATE_INVALID:{exc}")
 
+    try:
+        master = load_json(MASTER_STATE_PATH)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        master = {}
+        state_errors.append(f"MASTER_STATE_INVALID:{exc}")
+
     state_bus = state.get("bus", {})
     comparisons = {
         "last_contiguous_closed_nnn": bus["last_closed"],
@@ -183,6 +190,69 @@ def main() -> int:
     if loop.get("next_expected_bus_nnn") != bus["next_expected"]:
         state_errors.append("LOOP_STATE_NEXT_EXPECTED_DRIFT")
 
+    master_compiler = master.get("compiler", {})
+    master_resume = master.get("resume", {})
+    master_nodes = master.get("nodes", {})
+    active_master_nodes = []
+    if isinstance(master_nodes, dict):
+        active_master_nodes = [
+            node.get("id")
+            for node in master_nodes.values()
+            if isinstance(node, dict) and node.get("activity") == "ACTIVE"
+        ]
+    else:
+        state_errors.append("MASTER_STATE_NODES_NOT_OBJECT")
+
+    master_active = master_compiler.get("active_node_id")
+    active_claims = {
+        "master.compiler.active_node_id": master_active,
+        "master.resume.current_leaf": master_resume.get("current_leaf"),
+        "execution.current.contract_obligation": current.get("contract_obligation"),
+        "loop.active_master_leaf": loop.get("active_master_leaf"),
+        "loop.current_contract_obligation": loop.get("current_contract_obligation"),
+    }
+    if len(set(active_claims.values())) != 1:
+        state_errors.append(f"MASTER_ACTIVE_LEAF_DRIFT:{active_claims}")
+    if active_master_nodes != [master_active]:
+        state_errors.append(
+            f"MASTER_ACTIVE_NODE_COUNT_OR_ID_DRIFT:nodes={active_master_nodes!r}:declared={master_active!r}"
+        )
+    if master_compiler.get("active_node_count") != len(active_master_nodes):
+        state_errors.append("MASTER_ACTIVE_NODE_COUNT_FIELD_DRIFT")
+
+    lifecycle_claims = {
+        "master.compiler.lifecycle": master_compiler.get("lifecycle"),
+        "master.resume.mode": master_resume.get("mode"),
+        "execution.operational_status": state.get("operational_status"),
+        "loop.current_execution_status": loop.get("current_execution_status"),
+    }
+    if len(set(lifecycle_claims.values())) != 1:
+        state_errors.append(f"MASTER_LIFECYCLE_DRIFT:{lifecycle_claims}")
+
+    stop_claims = {
+        "master.resume.current_stop": master_resume.get("current_stop"),
+        "execution.current.stop_code": current.get("stop_code"),
+        "loop.current_gate": loop.get("current_gate"),
+    }
+    if len(set(stop_claims.values())) != 1:
+        state_errors.append(f"MASTER_STOP_CODE_DRIFT:{stop_claims}")
+
+    master_bus = master.get("bus", {})
+    if master_bus.get("observed_closed_nnns") != bus["closed"]:
+        state_errors.append("MASTER_BUS_CLOSED_SET_DRIFT")
+    if master_bus.get("lowest_unanswered_nnn") != bus["lowest_unanswered"]:
+        state_errors.append("MASTER_BUS_LOWEST_UNANSWERED_DRIFT")
+    if master_bus.get("next_free_nnn") != bus["next_expected"]:
+        state_errors.append("MASTER_BUS_NEXT_FREE_DRIFT")
+    if master_bus.get("codex_may_create_next_goal") is not False:
+        state_errors.append("MASTER_BUS_CODEX_CREATE_PERMISSION_DRIFT")
+
+    if bus["lowest_unanswered"] is not None and active_master_nodes:
+        state_errors.append("ACTIVE_PHYSICAL_BUS_WITH_ACTIVE_MASTER_NODE")
+    if bus["lowest_unanswered"] is None and master.get("owner_authorization", {}).get("status") == "OWNER_AUTHORIZED_AUTORUN":
+        if len(active_master_nodes) != 1:
+            state_errors.append("IDLE_OWNER_AUTORUN_REQUIRES_ONE_ACTIVE_MASTER_NODE")
+
     contract = state.get("contract", {})
     contract_path = REPO_ROOT / contract.get("path", "")
     if not contract_path.is_file():
@@ -205,6 +275,8 @@ def main() -> int:
         "current_stage": current.get("stage_id"),
         "current_obligation": current.get("contract_obligation"),
         "current_name": current.get("name"),
+        "master_active_node": master_active,
+        "master_stop_code": master_resume.get("current_stop"),
         "closed_nnns": bus["closed"],
         "lowest_unanswered_nnn": bus["lowest_unanswered"],
         "next_expected_nnn": bus["next_expected"],

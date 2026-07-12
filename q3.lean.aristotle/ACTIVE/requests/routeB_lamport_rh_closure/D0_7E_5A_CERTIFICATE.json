@@ -1,0 +1,159 @@
+{
+  "schema": "route_b_d0_7e_5a_certificate.v1",
+  "created_at": "2026-07-12T10:16:57+02:00",
+  "updated_at": "2026-07-12T12:13:15+02:00",
+  "node_id": "D0.7e.5a",
+  "name": "WPrimeConsumerAndCalibrationOrientationLock",
+  "node_role": "CANONICAL_ACTIVE_CHILD_AFTER_OWNER_R1_R5_RATIFICATION",
+  "proof_status": "BLOCKED",
+  "progress_class": "FALSIFICATION_PROGRESS",
+  "partial_exit_codes": [
+    "D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED",
+    "D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED"
+  ],
+  "success_code_not_issued": "D0_7E_B_ORIENTATION_LOCKED",
+  "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "owner_ratification": {
+    "status": "OWNER_RATIFICATION_R1_R5_LOCKED",
+    "authority": "D0_7E_BPRIME_OWNER_RATIFICATION.md",
+    "effect": "DECOMPOSITION_CANONICAL_MATH_CONSUMER_STOP_RETAINED"
+  },
+  "domain_lock": {
+    "base_domain": "TrialNonzero",
+    "central_domain": "CentralValueNonzero={(m,N)_in_TrialNonzero:c0(k1_m_N)!=0}",
+    "equivalent_domains": "CentralValueNonzero=FhatAtZeroNonzero=BCalNonzero=BDetNonzero",
+    "even_inclusion": "CentralValueNonzero_SUBSET_EvenTrialNonzero",
+    "trial_implies_central_nonzero": false
+  },
+  "orientation_lock": {
+    "calibration_ratio": "bCal_m_N=bDet_m_N=Fhat_m_N(0)/Xi(0)",
+    "normalizing_multiplier": "bZeoMul_m_N=Xi(0)/Fhat_m_N(0)=bCal_m_N^(-1)_ON_CentralValueNonzero",
+    "normalized_object": "G_m_N=Fhat_m_N/bCal_m_N=bZeoMul_m_N*Fhat_m_N",
+    "forbidden_alias": "bZeoMul_m_N!=bCal_m_N_WITHOUT_bCal_m_N^2=1",
+    "wprime_amplitude_candidate": "abs(bCal)*sqrt(lambda)*sqrt(alpha/DeltaE)",
+    "wprime_normalizer_candidate": "abs(bZeoMul)*sqrt(lambda)*sqrt(alpha/DeltaE)",
+    "historical_wprime_b_orientation": "UNPINNED"
+  },
+  "consumer_audit": {
+    "scope": "AUDITED_PINNED_SNAPSHOT_2026-07-12T10:16:57+02:00",
+    "history_snapshot_commit": "33101a9221ef692dd44c9f6d79f4fe0b525c5293",
+    "history_exact_name_search": "NO_FZEO_F_ZEO_BCAL_BZEO_COMMITS_REACHABLE_AT_SNAPSHOT",
+    "FZeo_definition": "NOT_FOUND_IN_AUDITED_PINNED_SNAPSHOT",
+    "WPrime_definition": "NO_INDEPENDENT_CONSUMER_FOUND_IN_AUDITED_PINNED_SNAPSHOT",
+    "historical_formula_status": "SKETCH_OPEN_CRITICAL",
+    "owner_option_b_status": "OWNER_RATIFIED_NEW_DEFINITION_NOT_INDEPENDENT_CONSUMER",
+    "primary_source_status": "SUITABLE_CONSTANTS_UNNAMED_AND_TRACKING_MISSING",
+    "contract_v2_status": "TARGET_CONTRACT_NOT_PROOF_OR_CONSUMER_SOURCE",
+    "alpha_demand_status": "NOT_A_DEFINITION_SOURCE_AND_B_MISSING",
+    "ladder_law_status": "DIAGNOSTIC_FIT_NOT_LAW",
+    "t0_corpus_mining_status": "NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE",
+    "standing_order_status": "ACTIVE_BUT_NO_ELIGIBLE_CANDIDATE"
+  },
+  "secondary_codes": [
+    "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING",
+    "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO",
+    "D0_7E_BCAL_ZERO_OR_UNPROVED",
+    "D0_7E_BCAL_BZEO_ALIAS_CONFLICT",
+    "D0_7E_SOURCE_NORMALIZATION_CONFLICT"
+  ],
+  "dependency_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_CERTIFICATE.json",
+      "sha256": "b166078a441544e6aca907bd6c49e57eab5750047863fa97a0c1cc49bcf5ad2b"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_6_CERTIFICATE.json",
+      "sha256": "57e96b1b7fbd4deb8f65c32315a6a9f9f3d0916a8a46e0be3009c3f65c436dc5"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ALPHA_DETECTOR_OBJECT_LOCK.md",
+      "sha256": "e0f91555cc5c33660be62001039c134652970cac543658a1d8d0e385af87add8"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/CODEX_REORIENT_BRIEF_2026-07-10.md",
+      "sha256": "583d587c65149b9ac8c297436dc8fe9329290a491f4318bfa69421769535bd61"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ALPHA_DEMAND_AUDIT.md",
+      "sha256": "18d5323f441cb4bba2efee0608af728930c3a5dc535519bfcef304cff025cdd2"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ladder_law_v1.md",
+      "sha256": "29127a3223a110ae382932af29cba1f14ef163b4efb16b7f84b43827008f79b1"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/ladder_law_v1.json",
+      "sha256": "6f7c07520e4f75cc291addf6c5a58d001fc3c268913dcd9535fa32ba7aa8c3d8"
+    }
+  ],
+  "review_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_PRO_REVIEW_DECISION.md",
+      "sha256": "28f90346e7712d5cf66599ed336b10528046e645b91ec83f2c94c98ad13829ff"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_PRO_REVIEW_RESPONSE.md",
+      "sha256": "288d50cdcffe25aa7fb8d067b8905b6632507df0f6a6c38536ad63f1f759a0e8"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_PRO_REVIEW_INPUT.md",
+      "sha256": "50ec571a8d7f0ec3e35575cde320c03a89c9949dda92d4f28694268c5247af73"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "sha256": "20c1d73fc418099c08c2f25f1548da22127aab750a9644099391d6e7ba48e9c0"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_DECOMPOSITION_CONTRACT.md",
+      "sha256": "407728aca3c6806fb9ed1508b010798e57419a0190a1d6149059c61fcb619c4c"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_WPRIME_CONSUMER_ORIENTATION_AUDIT.md",
+      "sha256": "ccb9b2aa8cdb094c57bdb760b96396066a66cf8c5380b1a5b83ae9cad9a497e9"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CONSUMER_SOURCE_REQUEST.md",
+      "sha256": "7934f564784e508659e11572319b51baa1aa1f26152f905d299c0a8e8362c435"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_CONSUMER_SOURCE_CANDIDATES.md",
+      "sha256": "5b17347e9bf3287ccf9575878ee4c58b2cad0511a2b6421a651f4cd48fd45430"
+    }
+  ],
+  "plants": {
+    "central_zero": "D0_7E_TRIAL_CENTRAL_ZERO_PLANT_FIRES",
+    "inverse_alias": "D0_7E_BCAL_BZEO_ALIAS_PLANT_FIRES",
+    "orientation": "D0_7E_WPRIME_ORIENTATION_PLANT_FIRES",
+    "consumer": "D0_7E_WPRIME_CONSUMER_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_TRIALNONZERO_TO_CENTRALNONZERO",
+    "NO_UNCONDITIONAL_BCAL_INVERSE",
+    "NO_BCAL_BZEO_ALIAS",
+    "NO_INDEPENDENT_FZEO_DEFINITION_FOUND_IN_AUDITED_SNAPSHOT",
+    "NO_INDEPENDENT_WPRIME_DEFINITION_FOUND_IN_AUDITED_SNAPSHOT",
+    "NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE_IN_T0_CORPUS",
+    "NO_WPRIME_B_ORIENTATION_LOCK",
+    "NO_WPRIME_CONSUMER_IDENTITY",
+    "NO_H3C_IMPORT",
+    "NO_H4_IMPORT",
+    "NO_N_LAMBDA_SELECTOR",
+    "NO_BUS_010",
+    "NO_D0_7E_ASSEMBLY",
+    "NO_RH"
+  ]
+}

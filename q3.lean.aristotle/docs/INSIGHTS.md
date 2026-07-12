@@ -46464,3 +46464,94 @@ not the raw-D17 factorwise support class.
   Partial exit is `D0_7E_CENTRAL_CALIBRATION_LOCKED`; exact stop is
   `D0_7E_XWALK_OPEN`. No conditional status closes the parent, no Bus 010 was
   created, and Route B remains `CHALLENGER / NOT_RH`.
+
+## Insight (2026-07-12, Route B Lamport compiler) -- D0_7E5aConsumerOrientationAudit
+
+- Four local `q3_docs` searches, an exact tree scan, and `git log --all -S`
+  searches found no independent project definition of `FZeo`, `WPrime`,
+  `bCal`, or `bZeo` in the audited pinned snapshot. Contract v2 is a target
+  contract, `ALPHA_DEMAND_AUDIT` says `NOT_A_DEFINITION_SOURCE`, and
+  LadderLaw is `FIT_NOT_LAW`; none is promoted to an independent consumer.
+  The primary *Zeta Spectral Triples* paper proves the
+  determinant/transform identity and speaks only of suitable normalizing
+  constants; it does not define these project-local consumers.
+- On `TrialNonzero`, the locked ratio is
+  `bCal=bDet=Fhat(0)/Xi(0)=sqrt(L)c0/zeta(1/2)`. Central nonvanishing is a
+  strictly smaller dependent locus:
+  `CentralValueNonzero=BDetNonzero=FhatAtZeroNonzero=BCalNonzero`.
+  `TrialNonzero` alone cannot imply it; even a unit even vector can have zero
+  `V0` coefficient.
+- On `CentralValueNonzero`, the central-value normalizing multiplier is
+  `bZeoMul=Xi(0)/Fhat(0)=bCal^(-1)`, and
+  `G=Fhat/bCal=bZeoMul*Fhat`. Therefore a calibration amplitude and a
+  normalizing multiplier are inverses, not aliases; confusing them reverses
+  the registered power of the b factor.
+- The historical row `W'=|b|sqrt(lambda)sqrt(alpha/DeltaE)` is explicitly an
+  `OPEN_CRITICAL` sketch. The physical Option-B ruling defines this desired
+  right-hand side and is valid as a proposed new convention, but it is not an
+  independently recovered consumer and cannot discharge the latest Pro
+  review requirement.
+- B-prime proposes a nested decomposition, but the Pro response explicitly
+  requires owner decisions R1--R5. Therefore canonical `D0.7e.5` remains the
+  unique active leaf; `D0.7e.5a` is auxiliary audit evidence only. Partial exits are
+  `D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED` and
+  `D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED`; the exact stop is
+  `D0_7E_WPRIME_CONSUMER_MISSING`. H3c/H4 were not imported, no Bus 010 was
+  created, and Route B remains `CHALLENGER / NOT_RH`.
+
+## Insight (2026-07-12, Route B Lamport compiler) -- BPrimeOwnerR1R5Ratification
+
+- The owner explicitly ratified the recommended R1--R5 block. This is a DAG
+  authority decision, not proof authority. It closes
+  `OWNER_RATIFICATION_R1_R5_PENDING` and locks the definitional decomposition
+  `D0.7e.5 <-> 5a AND 5b AND 5c AND 5d`, but it does not prove any mathematical
+  child.
+- The unique active leaf is now `D0.7e.5a`. Its partial central-locus and
+  inverse-normalizer identities remain valid, while the primary stop remains
+  `D0_7E_WPRIME_CONSUMER_MISSING`: no independent WPrime/ZEO consumer or
+  historical b orientation was supplied by ratification.
+- The previous tentative phrase "D0.8/H3" is corrected fail-closed. D0.8 is
+  inside D0 and would reproduce the dependency cycle. The only ratified full
+  tracking address is `H3e ExactWPrimeTrackingTheorem`; PO-10 keeps its
+  Contract-v2 DetectorBridge-to-SafeAlphaUpper role.
+- H3e is registered as OPEN/INACTIVE, with real Lamport dependencies
+  `D0,H3a,H3b,H3c,H4c,H4d`. The missing H0/A1 alpha definition and
+  `PO_XWALK_UNIFORM_EVAL` are registered as external OPEN_CRITICAL obligations
+  rather than fabricated proved nodes. H3d remains the assembly node and now
+  also depends on H3e.
+- R3 fixes only the Contract-v2 direct exponent convention
+  `0<c_b<=|b(lambda)|lambda^(-q_b)<=C_b`; it does not prove the FIT_NOT_LAW
+  value `q_b=-1/2` and does not decide between `bCal` and `bCal^(-1)`. R4 keeps
+  independent `(m,N)` with no kappa or selector. R5 chooses H0/A1 as alpha's
+  home without defining alpha in D0.
+- `SLOT_VACUITY` and `TAUTOLOGY` remain mandatory guards: H3e explicitly
+  consumes the D0.7e.5 slot and the future 5c identity, while defining WPrime
+  by the desired right-hand side is rejected. No H3/H4 theorem was imported
+  into D0, no Bus 010 was created, and Route B remains
+  `CHALLENGER / NOT_RH`.
+
+## Insight (2026-07-12, Route B Lamport compiler) -- NoStopSprintT0T5
+
+- The owner launched `CODEX_NOSTOP_SPRINT_2026-07-12.md` and separately
+  activated the T0 candidate standing order. T0 exhausted the named corpus and
+  returned `NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE`; therefore the
+  standing order has no eligible candidate and cannot close 5a.
+- T1 is reproducible from persisted coefficient vectors. The available cells
+  `(13,90)`, `(13,120)`, `(14,120)` give positive `bDet`; N-stability and the
+  direct-integral crosscheck pass, and the central-zero plant fires. The
+  pre-registered `(17,120)` vector is absent, so P3 remains FIT_NOT_LAW and is
+  not fully scored.
+- T2 is fail-closed as `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`: the canonical
+  WPrime and delta_dict tables and the `(17,120)` tracker are missing. Reusing
+  historical ladder diagnostics would mint a forbidden replacement object.
+- The DAG can still make permanent independent progress. `D0.7e.5b` is PROVED
+  only as an uninstantiated parameter typecheck; `D0.7e.5d` is PROVED only as
+  exact wording/address migration. H3e, 5a, 5c, and every parent remain open.
+- Two self-contained Lean lemmas now compile hole-free: finite `bDet` reality
+  from conjugate coefficient symmetry, and the exact constant-mode identity
+  `Fplus(0)=sqrt(L)c0` by interval integration. The non-decimal
+  `zeta_half_ne_zero` leaf is not stubbed: it needs an eta-to-riemannZeta
+  continuation theorem at one half plus pairing positivity.
+- The maximum-unblock owner decision is now singular and explicit: supply and
+  ratify a new non-tautological WPrime consumer definition with its exact `b`
+  orientation. No selector, filter, alpha, Bus 010, or RH claim was invented.

@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 9,
-  "updated_at": "2026-07-12T09:27:00+02:00",
+  "revision": 13,
+  "updated_at": "2026-07-12T12:27:21+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -76,7 +76,7 @@
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
     "next_actor": "Mythos/Pro source owner",
-    "next_action": "Repair PO_D0_7E_XWALK with exact typed alpha, true DeltaE, delta_dict, limit quantifier, and a uniform compact-strip estimate; the finite bDet definition is locked; do not create Bus 010"
+    "next_action": "Supply the physical independent WPrime/ZEO consumer and exact b orientation requested by D0_7E_5A_CONSUMER_SOURCE_REQUEST.md; do not define WPrime by the desired RHS and do not create Bus 010"
   },
   "owner_authorization": {
     "status": "OWNER_AUTHORIZED_AUTORUN",
@@ -86,20 +86,131 @@
     "codex_may_create_bus_goal": false,
     "does_not_close_po0": true,
     "does_not_prove_any_node": true,
-    "does_not_authorize_commit_or_push": true
+    "does_not_authorize_commit_or_push": true,
+    "bprime_ratification": {
+      "status": "OWNER_RATIFICATION_R1_R5_LOCKED",
+      "source_review": "D0_7E_PRO_REVIEW_RESPONSE.md",
+      "codex_recommendation": "D0_7E_BPRIME_RATIFICATION_RECOMMENDATION.md",
+      "owner_input": "D0_7E_BPRIME_OWNER_RATIFICATION.md",
+      "decisions": {
+        "R1": "APPROVE_BPRIME_REHOME_TO_H3_TIER_WITH_SLOT_VACUITY_AND_TAUTOLOGY_GUARDS",
+        "R2": "H3e_ExactWPrimeTrackingTheorem",
+        "R3": "CONTRACT_V2_DIRECT_QB_CONVENTION",
+        "R4": "TWO_PARAMETER_m_N_NO_KAPPA_NO_SELECTOR",
+        "R5": "ALPHA_DEFINITION_HOME_H0_A1"
+      },
+      "does_not_close_active_leaf": true
+    },
+    "wprime_candidate_standing_order": {
+      "status": "ACTIVE_OWNER_RATIFIED",
+      "scope": "T0_WPRIME_ZEO_SOURCE_CANDIDATES_ONLY",
+      "authority": "OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md",
+      "owner_utterance": "Ратифицирую OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md — запиши utterance и sha.",
+      "received_at": "2026-07-12T12:13:15+02:00",
+      "ratified_order_sha256": "5bf99950fbd6fdca6f1ebae786f98098ac83a0b024e3a04f602b19a24295695b",
+      "activation_file_sha256": "d3ef3cbfe4e1ab4099bb698e46c6728b9f188a6f3bf7d7ded5eaf97931846097",
+      "requires_two_confirmations": ["PROSHKA_V1", "CLAUDE_PRO_V2"],
+      "does_not_authorize_definition_minting": true,
+      "does_not_prove_any_node": true
+    }
+  },
+  "no_stop_sprint": {
+    "authority": "CODEX_NOSTOP_SPRINT_2026-07-12.md",
+    "authority_sha256": "4e251abcdd771c64d386afbc6397756e7426f38d6f83451beeb02c00d30d7ae6",
+    "owner_command": "Выполни CODEX_NOSTOP_SPRINT_2026-07-12.md сверху вниз, режим no-stop, отчёт одним сообщением в конце",
+    "status": "COMPLETED_FAIL_CLOSED_NOT_RH",
+    "validator": "validate_no_stop_sprint.py",
+    "validator_sha256": "4d8ad9eef14fcd3f18dd869f444aa38347013dac041af524b9bacf58219ceffe",
+    "queue": {
+      "T0": {
+        "status": "BLOCKED_SOURCE_ABSENT",
+        "code": "NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE",
+        "artifact": "D0_7E_5A_CONSUMER_SOURCE_CANDIDATES.md",
+        "sha256": "5b17347e9bf3287ccf9575878ee4c58b2cad0511a2b6421a651f4cd48fd45430"
+      },
+      "T1": {
+        "status": "PARTIAL_BLOCKED_MISSING_LAMBDA17_PERSISTED_VECTOR",
+        "code": "T1_LAMBDA17_PERSISTED_COEFFICIENT_VECTOR_MISSING",
+        "certificate": "D0_7E_JUDGE_CERTIFICATES.json",
+        "certificate_sha256": "a74dc58741d6fb6faf1a56ff00747c9cbd2c85d57714108ffabec4332c437800",
+        "validator": "validate_d0_7e_judges.py",
+        "validator_sha256": "0850be92509d5af4654e5974d590557c69c42255cb026fd489a824cf5529e978",
+        "available_judges": "13_90_13_120_14_120_PASS_PLANT_LIVE"
+      },
+      "T2": {
+        "status": "BLOCKED_NOT_RUN_INPUT_MISSING",
+        "code": "H3E_T2_PINNED_INPUT_SET_INCOMPLETE",
+        "artifact": "H3E_TRACKING_CALIBRATION.md",
+        "sha256": "c1df73dbf1e061783ec9257e69436fbcbde8fbc1a298a00fdfd292a774ecdb3a",
+        "raw": "H3E_TRACKING_CALIBRATION_RAW.csv",
+        "raw_sha256": "03026b8f91737426521cb8657773f461f013e7a9840baeb1379500f060c35215"
+      },
+      "T3": {
+        "status": "CLOSED_PROVED_INTERFACE_TYPECHECK_ONLY",
+        "node": "D0.7e.5b",
+        "code": "D0_7E_5B_TYPED_INTERFACE_LOCKED"
+      },
+      "T4": {
+        "status": "CLOSED_PROVED_MIGRATION_CORRECTNESS_ONLY",
+        "node": "D0.7e.5d",
+        "code": "D0_7E_XWALK_MIGRATION_LOCKED",
+        "h3e_status": "OPEN_INACTIVE"
+      },
+      "T5": {
+        "status": "PARTIAL_TWO_LEAN_LEMMAS_CLOSED_ONE_BLOCKED",
+        "blocked": "ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING",
+        "proved_lean": {
+          "bdet_reality": {
+            "path": "q3.lean.aristotle/Q3/Proofs/RouteB/BDetReality.lean",
+            "sha256": "c91b4756345bc8b95f8ecbf681c522864ec771fa76933158ddd37785b069738d"
+          },
+          "constant_mode": {
+            "path": "q3.lean.aristotle/Q3/Proofs/RouteB/FplusConstantMode.lean",
+            "sha256": "cb8b95ecfc782cae6a3daa80f521ab2080645f1ab03d17d4d7495864f921111d"
+          }
+        },
+        "axioms": ["propext", "Classical.choice", "Quot.sound"],
+        "holes": 0
+      }
+    },
+    "sprint_log": "SPRINT_LOG.md",
+    "sprint_log_sha256": "eb989260a871a2945aa93f30492fcbc588629e6144766efa37fcbce89c95e778",
+    "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
+    "rh_status": "NOT_RH"
+  },
+  "external_obligations": {
+    "PO-1/A1": {
+      "name": "ExactDetectorDictionaryAlpha",
+      "authority": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md#2",
+      "status": "OPEN_CRITICAL",
+      "home": "RouteB H0/A1",
+      "failure_code": "H0_A1_ALPHA_DEFINITION_MISSING",
+      "is_lamport_node": false
+    },
+    "PO_XWALK_UNIFORM_EVAL": {
+      "name": "WeightedOrCancellationEvaluation",
+      "authority": "D0_7E_PRO_REVIEW_RESPONSE.md#5",
+      "status": "OPEN_CRITICAL",
+      "home": "H3 tier",
+      "failure_code": "PO_XWALK_UNIFORM_EVAL",
+      "is_lamport_node": false
+    }
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "D0.7e.5",
+    "active_node_id": "D0.7e.5a",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP",
-    "candidate_first_leaf_after_release": "D0.7e.5",
+    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP",
+    "candidate_first_leaf_after_release": "D0.7e.5a",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
-      "D0.7E_XWALK_SOURCE_AUDIT"
+      "D0.7E_XWALK_SOURCE_AUDIT",
+      "D0.7E.5A_CONSUMER_ORIENTATION_AUDIT",
+      "D0.7E.BPRIME_OWNER_R1_R5_RATIFIED",
+      "D0.7E.NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -425,16 +536,16 @@
       "ordered_children": ["D0.7a", "D0.7b", "D0.7c", "D0.7d", "D0.7e"],
       "assembly_theorem_id": "D0.7f",
       "proof_status": "BLOCKED", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0.7e.5_XWALK_OPEN"},
+      "eligibility": {"eligible": false, "reason": "D0.7e.5a_CONSUMER_SOURCE_BLOCKED"},
       "validation": "PASS_PARTIAL:validate_d0_7.py;FOUR_OF_FIVE_CHILDREN_PROVED;PARENT_BLOCKED",
-      "failure_codes": ["D0_7_NORMALIZATION_MISMATCH", "D0_7_NONZERO_SMUGGLED", "D0_7E_XWALK_OPEN", "D0_7_NO_PROGRESS"],
+      "failure_codes": ["D0_7_NORMALIZATION_MISMATCH", "D0_7_NONZERO_SMUGGLED", "D0_7E_WPRIME_CONSUMER_MISSING", "D0_7_NO_PROGRESS"],
       "proof_evidence": {
         "decomposition": "D0_7_DECOMPOSITION_CONTRACT.md",
         "proof": "D0_7_EXACT_NORMALIZATION_REGISTRY.md",
         "certificate": "D0_7_CERTIFICATE.json",
         "validator": "validate_d0_7.py",
         "partial_exit_code": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
-        "stop_code": "D0_7E_XWALK_OPEN"
+        "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING"
       }
     },
     "D0.7.0": {
@@ -489,17 +600,24 @@
       "ordered_children": ["D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4", "D0.7e.5"],
       "assembly_theorem_id": "D0.7e.6",
       "proof_status": "BLOCKED", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0.7e.5_XWALK_OPEN"},
+      "eligibility": {"eligible": false, "reason": "D0.7e.5a_CONSUMER_SOURCE_BLOCKED"},
       "validation": "PASS_PARTIAL:validate_d0_7e.py;FOUR_OF_FIVE_CHILDREN_PROVED;PARENT_BLOCKED",
-      "failure_codes": ["D0_7E_XWALK_OPEN", "D0_7E_XWALK_UNIFORM_CONSTANT_GAP", "D0_7E_ALPHA_DELTAE_UNDEFINED", "D0_7E_XWALK_DEPENDENCY_CYCLE"],
+      "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING", "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO", "D0_7E_BCAL_BZEO_ALIAS_CONFLICT"],
       "proof_evidence": {
         "owner_input": "D0_7E_OWNER_INPUT.md",
         "decomposition": "D0_7E_DECOMPOSITION_CONTRACT.md",
         "proof": "D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
         "certificate": "D0_7E_CERTIFICATE.json",
         "validator": "validate_d0_7e.py",
+        "nested_decomposition": "D0_7E_5_DECOMPOSITION_CONTRACT.md",
+        "nested_certificate": "D0_7E_5_CERTIFICATE.json",
+        "nested_validator": "validate_d0_7e_5.py",
+        "owner_ratification": "D0_7E_BPRIME_OWNER_RATIFICATION.md",
+        "active_audit": "D0_7E_5A_WPRIME_CONSUMER_ORIENTATION_AUDIT.md",
+        "active_certificate": "D0_7E_5A_CERTIFICATE.json",
+        "active_validator": "validate_d0_7e_5a.py",
         "partial_exit": "D0_7E_CENTRAL_CALIBRATION_LOCKED",
-        "stop_code": "D0_7E_XWALK_OPEN"
+        "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING"
       }
     },
     "D0.7e.0": {
@@ -548,14 +666,75 @@
       "failure_codes": ["D0_7E_REALITY_GAP", "D0_7_BWEIL_ALIAS", "D0_7_BPILOT_ALIAS", "D0_7_H4D_SMUGGLED"]
     },
     "D0.7e.5": {
-      "id": "D0.7e.5", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
-      "statement": "Prove the owner PO_D0_7E_XWALK tracking inequality using exact canonical alpha, true DeltaE, delta_dict, a typed joint limit, and a uniform compact-strip constant without circular imports",
-      "dependencies": ["D0.3g", "D0.7e.0", "D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
+      "id": "D0.7e.5", "parent_id": "D0.7e", "kind": "AND", "role": "GOAL",
+      "statement": "Provide a typed non-circular WPrime consumer slot in D0 and export the full compact-strip and joint-limit tracking obligation only to H3e",
+      "dependencies": ["D0.3g", "D0.7e.0", "D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4", "D0.7e.5.0"],
+      "ordered_children": ["D0.7e.5a", "D0.7e.5b", "D0.7e.5c", "D0.7e.5d"],
+      "assembly_theorem_id": "D0.7e.5e",
+      "proof_status": "BLOCKED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e.5a_CONSUMER_SOURCE_MISSING"},
+      "validation": "PASS_PARTIAL:validate_d0_7e_5.py;DECOMPOSITION_LOCKED;ACTIVE_CHILD_BLOCKED",
+      "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_SLOT_VACUITY", "D0_7E_TAUTOLOGY", "D0_7E_5_ASSEMBLY_GAP"]
+    },
+    "D0.7e.5.0": {
+      "id": "D0.7e.5.0", "parent_id": "D0.7e.5", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "D0.7e.5 iff D0.7e.5a AND D0.7e.5b AND D0.7e.5c AND D0.7e.5d",
+      "dependencies": ["D0.7e.0", "D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_BY_OWNER_RATIFIED_DEFINITION"},
+      "validation": "D0_7E_5_DECOMPOSITION_LOCKED",
+      "failure_codes": ["D0_7E_5_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "D0.7e.5a": {
+      "id": "D0.7e.5a", "parent_id": "D0.7e.5", "kind": "LEAF", "role": "GOAL",
+      "statement": "Locate and pin an independently defined WPrime/ZEO consumer and prove which exact scalar orientation consumes the locked central calibration",
+      "dependencies": ["D0.7e.5.0", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
       "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "BLOCKED", "activity": "ACTIVE",
-      "eligibility": {"eligible": false, "reason": "THEOREM_SHAPE_ONLY_SOURCE_AND_TYPE_GAPS"},
-      "validation": "FAIL_CLOSED:validate_d0_7e.py;XWALK_NOT_PROVED",
-      "failure_codes": ["D0_7E_XWALK_OPEN", "D0_7E_ALPHA_DELTAE_UNDEFINED", "D0_7E_XWALK_LIMIT_QUANTIFIER_MISSING", "D0_7E_XWALK_UNIFORM_CONSTANT_GAP", "D0_7E_B_BOUND_CONTRACT_MISMATCH", "D0_7E_XWALK_DEPENDENCY_CYCLE", "D0_7E_SOURCE_POINTER_UNRESOLVED"]
+      "eligibility": {"eligible": false, "reason": "INDEPENDENT_WPRIME_CONSUMER_SOURCE_NOT_FOUND"},
+      "validation": "STOP:validate_d0_7e_5a.py;PARTIAL_IDENTITIES_LOCKED;SOURCE_REQUIRED",
+      "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING", "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO", "D0_7E_BCAL_ZERO_OR_UNPROVED", "D0_7E_BCAL_BZEO_ALIAS_CONFLICT", "D0_7E_SOURCE_NORMALIZATION_CONFLICT", "D0_7E_SLOT_VACUITY_UNRESOLVED"]
+    },
+    "D0.7e.5b": {
+      "id": "D0.7e.5b", "parent_id": "D0.7e.5", "kind": "LEAF", "role": "GOAL",
+      "statement": "Type alpha>=0, true DeltaE>0, delta_dict>=0 and filter F as downstream parameters on the independent two-parameter carrier (m,N), without defining or selecting them in D0",
+      "dependencies": ["D0.7e.5.0", "D0.1", "D0.3g", "D0.7e.3"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_INTERFACE_TYPECHECK_ONLY"},
+      "validation": "D0_7E_5B_TYPED_INTERFACE_LOCKED",
+      "failure_codes": ["D0_7E_TYPED_PARAMETER_INSTANTIATED_IN_D0", "D0_7E_ALPHA_WRONG_HOME", "D0_7E_SELECTOR_INVENTED", "MODEL_GAP_SUBSTITUTION"]
+    },
+    "D0.7e.5c": {
+      "id": "D0.7e.5c", "parent_id": "D0.7e.5", "kind": "LEAF", "role": "GOAL",
+      "statement": "From the independent consumer and pinned bW orientation prove WPrime^2*DeltaE=abs(bW)^2*lambda*alpha without defining WPrime by this desired identity",
+      "dependencies": ["D0.7e.5.0", "D0.7e.5a", "D0.7e.5b", "D0.7e.2", "D0.7e.4"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e.5a_BLOCKED"},
+      "validation": "INDEPENDENT_CONSUMER_IDENTITY_AND_TAUTOLOGY_AUDIT",
+      "failure_codes": ["D0_7E_CONSUMER_IDENTITY_GAP", "D0_7E_SLOT_VACUITY", "D0_7E_TAUTOLOGY", "D0_7E_BCAL_BZEO_ALIAS_CONFLICT"]
+    },
+    "D0.7e.5d": {
+      "id": "D0.7e.5d", "parent_id": "D0.7e.5", "kind": "LEAF", "role": "GOAL",
+      "statement": "Register the unchanged full PO_D0_7E_XWALK theorem at H3e with PO_XWALK_UNIFORM_EVAL, proving only migration correctness and no tracking theorem",
+      "dependencies": ["D0.7e.5.0"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_MIGRATION_CORRECTNESS_ONLY"},
+      "validation": "D0_7E_XWALK_MIGRATION_LOCKED",
+      "failure_codes": ["D0_7E_H3E_ADDRESS_MISSING", "D0_7E_XWALK_MIGRATION_GAP", "D0_7E_D0_DEPENDENCY_CYCLE", "D0_7E_PO_XWALK_UNIFORM_EVAL_UNREGISTERED"]
+    },
+    "D0.7e.5e": {
+      "id": "D0.7e.5e", "parent_id": "D0.7e.5", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "D0.7e.5a AND D0.7e.5b AND D0.7e.5c AND D0.7e.5d IMPLIES D0.7e.5",
+      "dependencies": ["D0.7e.5.0", "D0.7e.5a", "D0.7e.5b", "D0.7e.5c", "D0.7e.5d"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "BLOCKED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e.5a_AND_D0.7e.5c_OPEN"},
+      "validation": "D0_7E_5_ASSEMBLY_TYPECHECK",
+      "failure_codes": ["D0_7E_5_ASSEMBLY_GAP"]
     },
     "D0.7e.6": {
       "id": "D0.7e.6", "parent_id": "D0.7e", "kind": "LEAF", "role": "ASSEMBLY",
@@ -644,7 +823,7 @@
     "H3": {
       "id": "H3", "parent_id": "R0", "kind": "AND", "role": "GOAL",
       "statement": "The same normalized real-zero approximants track Xi uniformly on every compact substrip",
-      "dependencies": ["D0"], "ordered_children": ["H3a", "H3b", "H3c"], "assembly_theorem_id": "H3d",
+      "dependencies": ["D0"], "ordered_children": ["H3a", "H3b", "H3c", "H3e"], "assembly_theorem_id": "H3d",
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "D0_AND_CHILDREN_OPEN"},
       "validation": "COMPACT_SUBSTRIP_UNIFORMITY_AND_SAME_FAMILY_AUDIT",
@@ -679,11 +858,25 @@
     },
     "H3d": {
       "id": "H3d", "parent_id": "H3", "kind": "LEAF", "role": "ASSEMBLY",
-      "statement": "H3a AND H3b AND H3c IMPLIES H3",
-      "dependencies": ["H3a", "H3b", "H3c"], "ordered_children": [], "assembly_theorem_id": null,
+      "statement": "H3a AND H3b AND H3c AND H3e IMPLIES H3",
+      "dependencies": ["H3a", "H3b", "H3c", "H3e"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "H3_CHILDREN_OPEN"},
       "validation": "H3_ASSEMBLY_TYPECHECK", "failure_codes": ["H3_ASSEMBLY_GAP"]
+    },
+    "H3e": {
+      "id": "H3e", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
+      "name": "H3e_ExactWPrimeTrackingTheorem",
+      "statement": "Prove the migrated exact WPrime tracking theorem uniformly on compact substrips using the typed D0 slot, the H3 same-family/evaluation/joint-filter inputs, and the true H4 spectral quantities",
+      "dependencies": ["D0", "H3a", "H3b", "H3c", "H4c", "H4d"],
+      "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL"],
+      "consumes_slot": "D0.7e.5",
+      "consumer_identity_dependency": "D0.7e.5c",
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3ABC_H4CD_AND_EXTERNAL_REQUIREMENTS_OPEN"},
+      "validation": "EXACT_WPRIME_TRACKING_AND_ACYCLIC_CONSUMER_AUDIT",
+      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY"]
     },
     "H4": {
       "id": "H4", "parent_id": "R0", "kind": "AND", "role": "GOAL",
@@ -835,9 +1028,21 @@
       },
       "D0.7e/detector_b_source_crosswalk/v1": {
         "status": "PARTIAL_DEFINITION_CLOSED_XWALK_BLOCKED",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "D0_7E_CENTRAL_CALIBRATION_LOCKED;D0_7E_WPRIME_CONSUMER_MISSING"
+      },
+      "D0.7e.5a/wprime_consumer_orientation_audit/v1": {
+        "status": "PARTIAL_IDENTITIES_LOCKED_SOURCE_BLOCKED",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED;D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED;D0_7E_WPRIME_CONSUMER_MISSING"
+      },
+      "D0.7e.5/bprime_owner_ratified_decomposition/v1": {
+        "status": "DECOMPOSITION_CLOSED_ACTIVE_CHILD_SOURCE_BLOCKED",
         "last_class": "REPRESENTATION_PROGRESS",
         "no_progress_streak": 0,
-        "result": "D0_7E_CENTRAL_CALIBRATION_LOCKED;D0_7E_XWALK_OPEN"
+        "result": "OWNER_RATIFICATION_R1_R5_LOCKED;D0_7E_5_DECOMPOSITION_LOCKED;H3E_ADDRESS_REGISTERED;D0_7E_WPRIME_CONSUMER_MISSING"
       }
     }
   },
@@ -856,10 +1061,10 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "D0_7E_XWALK_OPEN",
-    "mode": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP",
-    "current_leaf": "D0.7e.5",
-    "first_math_leaf_after_release": "D0.1"
+    "current_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP",
+    "current_leaf": "D0.7e.5a",
+    "first_math_leaf_after_release": "D0.7e.5a"
   },
   "transition_log": [
     {
@@ -938,6 +1143,41 @@
       "progress_class": "REPRESENTATION_PROGRESS",
       "result": "D0_7E_CENTRAL_CALIBRATION_LOCKED;D0_7E_XWALK_OPEN",
       "honesty": "FINITE_BDET_ON_TRIAL_NONZERO_REFLECTED_TRANSFORM_ZETA_HALF_NONZERO_N_SCHEDULE_UNPINNED_XWALK_THEOREM_SHAPE_ONLY_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T10:16:57+02:00",
+      "event": "D0_7E_5A_WPRIME_CONSUMER_ORIENTATION_AUDITED",
+      "progress_class": "FALSIFICATION_PROGRESS",
+      "result": "D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED;D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED;D0_7E_WPRIME_CONSUMER_MISSING",
+      "honesty": "TRIALNONZERO_NOT_CENTRALNONZERO_BCAL_AND_ZEO_NORMALIZER_ARE_INVERSES_INDEPENDENT_WPRIME_CONSUMER_ABSENT_NO_H3C_H4_IMPORT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T10:35:37+02:00",
+      "event": "D0_7E_BPRIME_REVIEW_RECORDED_OWNER_RATIFICATION_REQUESTED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "OWNER_RATIFICATION_R1_R5_PENDING;CODEX_RECOMMENDS_H3e_CONTRACT_V2_QB_TWO_PARAMETER_H0_A1",
+      "honesty": "NO_OWNER_RATIFICATION_INFERRED_ACTIVE_MATH_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T11:34:54+02:00",
+      "event": "D0_7E_BPRIME_OWNER_R1_R5_RATIFIED_CANONICAL_DECOMPOSITION_ACTIVATED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "OWNER_RATIFICATION_R1_R5_LOCKED;D0_7E_5_DECOMPOSITION_LOCKED;H3E_EXACT_WPRIME_TRACKING_REGISTERED;D0_7E_5A_ACTIVE",
+      "honesty": "OWNER_DECISION_LAYER_CLOSED_MATH_CONSUMER_SOURCE_STILL_MISSING_H3E_OPEN_INACTIVE_H0_A1_OPEN_PO_XWALK_UNIFORM_EVAL_OPEN_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T12:13:15+02:00",
+      "event": "OWNER_STANDING_ORDER_WPRIME_CANDIDATE_RATIFICATION_ACTIVATED",
+      "progress_class": "CONTROL_PLANE_PROGRESS",
+      "result": "ACTIVE_OWNER_RATIFIED_SCOPE_T0_CANDIDATES_ONLY",
+      "honesty": "NO_DEFINITION_MINTING_NO_NODE_PROVED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T12:27:21+02:00",
+      "event": "CODEX_NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED",
+      "progress_class": "PROOF_AND_FALSIFICATION_PROGRESS",
+      "result": "T0_NO_SOURCE;T1_PARTIAL_LAMBDA17_MISSING;T2_INPUT_INCOMPLETE;D0_7E_5B_TYPED_INTERFACE_LOCKED;D0_7E_XWALK_MIGRATION_LOCKED;T5_TWO_LEAN_LEMMAS_PROVED_ONE_ETA_BRIDGE_BLOCKED",
+      "honesty": "D0_7E_5A_AND_5C_OPEN_H3E_OPEN_NO_SELECTOR_NO_TAUTOLOGY_NO_BUS_010_NOT_RH"
     }
   ]
 }

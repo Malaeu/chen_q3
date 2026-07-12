@@ -1,7 +1,7 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-07-12 09:27 CEST
-Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP / D0.7e.5_BLOCKED / NOT_RH / CHALLENGER`
+Updated: 2026-07-12 12:27 CEST
+Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP / D0.7e.5a_BLOCKED / NOT_RH / CHALLENGER`
 
 Этот план не переопределяет корневой `IMPLEMENTATION_PLAN.md` и не повышает
 Route B над официальным H-bridge. Полная лестница находится в
@@ -21,7 +21,7 @@ Route B над официальным H-bridge. Полная лестница н
 
 ## ACTIVE
 
-`D0.7e.5 ExactWPrimeZeoCrosswalk — finite bDet definition PROVED on dependent carrier; XWALK THEOREM_SHAPE_ONLY`
+`D0.7e.5a WPrimeConsumerAndCalibrationOrientationLock — canonical ACTIVE leaf BLOCKED; T0 corpus exhausted with no independent consumer; 5b and 5d proved narrowly; owner R1-R5 and the standing order are locked`
 
 Физическая шина: `001..009` закрыты; unanswered goal отсутствует; `010` —
 только свободный номер и не создаётся Codex.
@@ -40,13 +40,32 @@ reflection `Fplus=T_m(k1)(-z)`; `G=Fhat/bDet` is defined only on
 `BDetNonzero`. The input does not supply a legal `N(lambda)` because `kappa` is
 unspecified.
 
-The current leaf is the remaining `PO_D0_7E_XWALK`. It requires exact typed
-`alpha`, true `DeltaE`, `delta_dict`, a joint `(m,N)` limit, and a uniform
-compact-strip bound. The input calls it a theorem shape to be proved, and the
-primary source calls its trial-to-ground ingredient missing. Importing its
-cited H3c/H4 ingredients at D0.7e would create a D0 dependency cycle. D0.7e and D0.7
-remain blocked until this leaf is genuinely `PROVED`; `CONDITIONAL` cannot
-close them. No Bus 010 is created by Codex.
+The current canonical leaf is `D0.7e.5a`. The independent 5a audit, promoted
+to the canonical child by owner-ratified DAG authority, proves that the central calibration
+ratio and the normalizing multiplier are inverses:
+`bCal=bDet=Fhat(0)/Xi(0)` and `bZeoMul=bCal^(-1)` on
+`CentralValueNonzero=BDetNonzero`. `TrialNonzero` alone does not imply this
+nonzero locus.
+
+No independent `FZeo` or `WPrime` consumer was found by the completed T0 corpus scan.
+The historical formula is an `OPEN_CRITICAL` sketch, and the Option-B owner
+file defines the desired right-hand side instead of recovering an independent
+consumer. Owner R1--R5 is now locked, the B-prime nested decomposition is
+canonical, and `H3e` is registered OPEN/INACTIVE. The next legal input is the
+owner-ratified new non-tautological consumer definition requested by
+`D0_7E_5A_CONSUMER_SOURCE_REQUEST.md`, including whether its named `b` is
+`bCal`, `bCal^(-1)`, or another proved crosswalked scalar. H3c/H4 are not
+imported into D0; `CONDITIONAL` cannot close any parent; no Bus 010 is created
+by Codex.
+
+Completed no-stop sprint ledger:
+
+- T0 `BLOCKED`: `NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE`.
+- T1 `PARTIAL`: all available judges pass; `(17,120)` persisted vector missing.
+- T2 `BLOCKED`: `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`.
+- T3 `CLOSED`: `D0_7E_5B_TYPED_INTERFACE_LOCKED`.
+- T4 `CLOSED`: `D0_7E_XWALK_MIGRATION_LOCKED`; H3e remains OPEN.
+- T5 `PARTIAL`: two Lean lemmas proved; eta-continuation bridge missing.
 
 ## Physical Route B candidates — not selected
 

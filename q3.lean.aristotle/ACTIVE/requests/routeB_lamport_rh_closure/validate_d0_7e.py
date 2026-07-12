@@ -29,7 +29,7 @@ def main() -> None:
     require(cert["node_id"] == "D0.7e", "D0_7E_CERT_NODE_MISMATCH")
     require(cert["proof_status"] == "BLOCKED", "D0_7E_PARENT_MUST_BLOCK")
     require(cert["partial_exit_code"] == "D0_7E_CENTRAL_CALIBRATION_LOCKED", "D0_7E_PARTIAL_EXIT_MISMATCH")
-    require(cert["stop_code"] == "D0_7E_XWALK_OPEN", "D0_7E_STOP_MISMATCH")
+    require(cert["stop_code"] == "D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_STOP_MISMATCH")
     require(cert["rh_status"] == "NOT_RH", "D0_7E_RH_FIREWALL_MISSING")
 
     checked: list[str] = []
@@ -44,13 +44,15 @@ def main() -> None:
     require(components["D0.7e.2"].startswith("PROVED_"), "D0_7E2_NOT_PROVED")
     require(components["D0.7e.3"].startswith("PROVED_"), "D0_7E3_NOT_PROVED")
     require(components["D0.7e.4"].startswith("PROVED_"), "D0_7E4_NOT_PROVED")
-    require(components["D0.7e.5"] == "BLOCKED_THEOREM_SHAPE_ONLY", "D0_7E_XWALK_OVERCLAIM")
+    require(components["D0.7e.5"] == "BLOCKED_DECOMPOSED_5B_5D_PROVED_D0.7e.5a_CONSUMER_SOURCE", "D0_7E_XWALK_OVERCLAIM")
     require(components["D0.7e.6"] == "BLOCKED_BY_D0.7e.5", "D0_7E_ASSEMBLY_OVERCLAIM")
 
     domain = cert["domain_lock"]
     require("m,N" in domain["finite_parameter_set"], "D0_7E_FINITE_TYPE_MISMATCH")
     require("TrialNonzero" in domain["definition_domain"], "D0_7E_TRIAL_ZERO_DIVISION")
     require("BDetNonzero" in domain["normalization_domain"], "D0_7E_B_ZERO_DIVISION")
+    require("CentralValueNonzero" in domain["central_nonzero_domain"], "D0_7E_CENTRAL_LOCUS_MISSING")
+    require(domain["trial_implies_central_nonzero"] is False, "D0_7E_TRIALNONZERO_NOT_CENTRALNONZERO")
     require(domain["N_lambda_schedule"] == "UNPINNED_KAPPA_UNSPECIFIED", "D0_7E_N_SELECTOR_SMUGGLED")
 
     transform = cert["transform_lock"]
@@ -65,13 +67,23 @@ def main() -> None:
 
     crosswalk = cert["crosswalk"]
     require(crosswalk["proof_status"] == "BLOCKED", "D0_7E_XWALK_FALSE_PASS")
-    require(crosswalk["input_status"] == "THEOREM_SHAPE_TO_BE_PROVED", "D0_7E_XWALK_SHAPE_MISCLASSIFIED")
-    require(crosswalk["alpha"].startswith("UNDEFINED"), "D0_7E_ALPHA_SMUGGLED")
-    require(crosswalk["DeltaE"].startswith("UNDEFINED"), "D0_7E_DELTAE_SMUGGLED")
-    require(crosswalk["limit_quantifier"] == "MISSING", "D0_7E_LIMIT_QUANTIFIER_SMUGGLED")
-    require(crosswalk["uniform_A_K"] == "UNPROVED", "D0_7E_UNIFORM_CONSTANT_SMUGGLED")
+    require(crosswalk["decomposition"] == "CANONICAL_BPRIME_OWNER_RATIFICATION_R1_R5_LOCKED", "D0_7E_DAG_REVISION_UNRATIFIED")
+    require(crosswalk["active_child"] == "D0.7e.5a", "D0_7E_ACTIVE_CHILD_DRIFT")
+    require(crosswalk["nested_parent"] == "D0.7e.5_AND_DECOMPOSITION_LOCKED", "D0_7E_NESTED_DECOMPOSITION_DRIFT")
+    require(crosswalk["input_status"] == "BPRIME_OWNER_RATIFIED_T0_NO_INDEPENDENT_CONSUMER_AVAILABLE", "D0_7E_XWALK_SHAPE_MISCLASSIFIED")
+    require(crosswalk["consumer_definition"] == "NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE_T0_CORPUS", "D0_7E_WPRIME_CONSUMER_SMUGGLED")
+    require("bCal^(-1)" in crosswalk["normalized_multiplier"], "D0_7E_BCAL_INVERSE_MISSING")
+    require(crosswalk["historical_wprime_b_orientation"] == "UNPINNED", "D0_7E_B_ORIENTATION_SMUGGLED")
+    require(crosswalk["alpha"] == "DEFINITIONAL_HOME_LOCKED_H0_A1_OPEN_CRITICAL_UNINSTANTIATED_IN_D0", "D0_7E_ALPHA_SMUGGLED")
+    require(crosswalk["DeltaE"] == "TYPED_DOWNSTREAM_PARAMETER_TRUE_GAP_UNINSTANTIATED_IN_D0", "D0_7E_DELTAE_SMUGGLED")
+    require(crosswalk["limit_quantifier"] == "FILTER_TYPED_IN_D0_SELECTION_REHOMED_H3c_OPEN", "D0_7E_LIMIT_QUANTIFIER_SMUGGLED")
+    require(crosswalk["uniform_A_K"] == "PO_XWALK_UNIFORM_EVAL_REHOMED_H3e_OPEN_CRITICAL", "D0_7E_UNIFORM_CONSTANT_SMUGGLED")
+    require(crosswalk["q_b_convention"] == "CONTRACT_V2_DIRECT_QB_CONVENTION_LOCKED_VALUE_UNPROVED", "D0_7E_QB_CONVENTION_DRIFT")
+    require(crosswalk["carrier"] == "TWO_PARAMETER_m_N_NO_KAPPA_NO_SELECTOR", "D0_7E_N_SELECTOR_SMUGGLED")
+    require(crosswalk["downstream_address"] == "H3e_ExactWPrimeTrackingTheorem_OPEN_INACTIVE", "D0_7E_H3E_ADDRESS_DRIFT")
 
-    proof = (REPO_ROOT / cert["artifacts"][-1]["path"]).read_text(encoding="utf-8")
+    proof = (REQUEST_DIR / "D0_7E_CENTRAL_MELLIN_CALIBRATION.md").read_text(encoding="utf-8")
+    child_audit = (REQUEST_DIR / "D0_7E_5A_WPRIME_CONSUMER_ORIENTATION_AUDIT.md").read_text(encoding="utf-8")
     for token in (
         "Fplus_(m,N)(z)",
         "= T_m(k1_(m,N))(-z)",
@@ -84,6 +96,16 @@ def main() -> None:
         "NO_RH",
     ):
         require(token in proof, f"D0_7E_PROOF_TOKEN_MISSING:{token}")
+
+    for token in (
+        "D0_7E_WPRIME_CONSUMER_MISSING",
+        "CentralValueNonzero subset EvenTrialNonzero",
+        "bZeoMul_(m,N) = bCal_(m,N)^(-1)",
+        "NOT_FOUND_IN_AUDITED_PINNED_SNAPSHOT",
+        "No H3c/H4 import: CONFIRMED",
+        "No Bus 010: CONFIRMED",
+    ):
+        require(token in child_audit, f"D0_7E_5A_TOKEN_MISSING:{token}")
 
     owner = (REPO_ROOT / cert["artifacts"][0]["path"]).read_text(encoding="utf-8")
     for token in (
@@ -126,7 +148,7 @@ def main() -> None:
         "verdict": "D0_7E_CENTRAL_CALIBRATION_LOCKED",
         "proof_status": "BLOCKED",
         "proved_children": ["D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
-        "active_blocked_child": {"D0.7e.5": "D0_7E_XWALK_OPEN"},
+        "active_blocked_child": {"D0.7e.5a": "D0_7E_WPRIME_CONSUMER_MISSING"},
         "assembly": "BLOCKED_BY_D0.7e.5",
         "pins_checked": checked,
         "plants": list(cert["plants"].values()),
