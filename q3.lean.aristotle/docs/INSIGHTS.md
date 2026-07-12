@@ -46950,3 +46950,31 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 120 nodes: 62 PROVED,
   50 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2b Hermitian determinant real-zero transfer (in progress)
+
+- Exact target: separate the universal real-zero consequences of a Hermitian
+  characteristic polynomial and a periodic exponential determinant from the
+  source-specific all-complex-variable factorization asserted around H8
+  Theorem 5.10.
+- Four local `q3_docs` queries found no pinned exact H2b factorization or
+  modified-Hilbert matrix construction (best scores about 0.59--0.72); generic
+  matrix facts will not be relabelled as the Route B theorem.
+- Official Mathlib identifies characteristic roots with matrix spectrum and
+  identifies a Hermitian matrix spectrum with real eigenvalues; this yields a
+  clean generic real-zero transfer through a nonvanishing unit and a real-zero
+  residual factor.
+- `1-exp(-iLz)` has only real zeros for real nonzero `L`, by
+  `Complex.exp_eq_one_iff`; this is the full periodic determinant, not yet the
+  exact `E_N^perp` complement determinant.
+- Both hypotheses are live: a non-Hermitian one-dimensional matrix has a
+  nonreal characteristic root, while a vanishing would-be unit can inject a
+  nonreal zero even when the Hermitian and residual factors are harmless.
+- Exact H2b2 still needs the modified `T`-induced quotient Hilbert metric,
+  Hermitian finite matrix, complement factor, nonvanishing boundary phase,
+  lattice-safe all-`z` identity, and the same H1c3/D0.8/H2a family.
+- Planned DAG split: prove generic H2b1 and both falsifiers, leave exact
+  Theorem-5.10 factorization H2b2 and assembly H2b3 OPEN; keep the H2b parent
+  `CONDITIONAL` because conditional nodes never discharge dependencies.
+- Acceptance remains narrow: no completed-tracker resurrection, no standard-
+  metric selfadjointness claim, no H2b/H2 closure, and Route B stays `NOT_RH`.
