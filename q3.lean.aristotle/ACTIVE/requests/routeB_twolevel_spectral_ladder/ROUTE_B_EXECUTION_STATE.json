@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T16:38:01+02:00",
+  "updated_at": "2026-07-12T16:49:17+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -61,6 +61,11 @@
       ,"H3C_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN"
       ,"H3C_INTERIOR_MISMATCH_EXISTS"
+      ,"H2B_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN"
+      ,"PERIODIC_DETERMINANT_REAL_ZEROS_LEAN"
+      ,"NONHERMITIAN_CHARPOLY_NONREAL_ZERO"
+      ,"VANISHING_UNIT_NONREAL_ZERO"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -95,6 +100,9 @@
       ,"H4D_WPRIME_NONNEGATIVITY_MISSING"
       ,"H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING"
       ,"H3C_RAW_OR_INVERSE_COMPLETION_SELECTION_MISSING"
+      ,"H2B_EXACT_THEOREM510_FACTORIZATION_MISSING"
+      ,"H2B_MODIFIED_HILBERT_HERMITIAN_MATRIX_MISSING"
+      ,"H2B_COMPLEMENT_LATTICE_FACTOR_MISSING"
     ]
   },
   "bus": {
@@ -188,6 +196,12 @@
       "class": "MASTER_DAG_EXACT_LIMIT_OBJECT_BLOCKER",
       "owner": "Route B proof compiler / source owner",
       "detail": "Lean excludes the normalized double completion even on the open strip and proves an interior mismatch exists, but the exact same-family raw-or-inverse-completion route, finite/continuum bridge, one joint (m,N) filter, and Xi limit theorem remain open."
+    },
+    {
+      "code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
+      "class": "MASTER_DAG_EXACT_REAL_ZERO_FACTORIZATION_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The generic periodic and Hermitian determinant real-zero transfers plus non-Hermitian and vanishing-unit falsifiers are Lean-proved, but the exact T-induced metric, Hermitian finite matrix, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization, and same raw family remain open; H2b stays CONDITIONAL."
     }
   ],
   "guardrails": {
@@ -413,6 +427,18 @@
     "h3c_double_completion_strip_guard_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
       "sha256": "813b549f24b05d011fadf70eb7b5b6f85ecab81e303282418d8a42510e221ad0"
+    },
+    "h2b_hermitian_determinant_real_zeros_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B_HERMITIAN_DETERMINANT_REAL_ZEROS_CERTIFICATE.json",
+      "sha256": "f311fef15e5ee653390279a3c0f56afb7801fccb115f7fee1db7d4d42363b651"
+    },
+    "h2b_hermitian_determinant_real_zeros_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b_hermitian_determinant_real_zeros.py",
+      "sha256": "74815fa84749c38b472697c3ee15145c09504b328e8860f5a70b2e67b9d67157"
+    },
+    "h2b_hermitian_determinant_real_zeros_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
+      "sha256": "d886f53f2b935980b84727715dd5a162c357047b0e23ddce713c8c83bf8502c2"
     }
   },
   "stages": [

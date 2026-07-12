@@ -455,7 +455,10 @@ R0 RHClosure [AND]
 |   |   |-- H2a1 GenericSimpleEvenGroundSectorCriterion
 |   |   |-- H2a2 ExactSelectedFamilySectorOrdering
 |   |   `-- H2a3 H2aAssembly
-|   |-- H2b SameVectorRealZeros
+|   |-- H2b SameVectorRealZeros [AND / CONDITIONAL]
+|   |   |-- H2b1 GenericHermitianDeterminantRealZeros
+|   |   |-- H2b2 ExactTheorem510Factorization
+|   |   `-- H2b3 H2bAssembly
 |   `-- H2c H2Assembly
 |-- H3 StripUniformTracking [AND]
 |   |-- H3a GroundTrialTracking
@@ -580,7 +583,11 @@ proof node.
 | `H2a1` | A simple even-sector bottom strictly below every odd eigenvalue is the simple even global ground; simple ground alone has only a parity dichotomy | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN` |
 | `H2a2` | On the exact H1c3/D0.8 family prove `epsilonPlus1<epsilonPlus2` (or the explicit dimension-one case), `epsilonPlus1<epsilonMinus1`, and a positive isolation radius | `OPEN / INELIGIBLE` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
 | `H2a3` | Exact H2a assembly | `OPEN / BLOCKED_BY_H2a2` | `SIMPLE_EVEN_GROUND_PROVED` |
-| `H2b` | Transform of that same vector has only real zeros | `CONDITIONAL_ON_H2a` | `REAL_ZERO_APPROXIMANTS_PROVED` |
+| `H2b` | AND parent: generic Hermitian determinant transfer plus exact same-family Theorem-5.10 factorization | `CONDITIONAL / GENERIC_CORE_PROVED / EXACT_FACTOR_OPEN` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b.0` | H2b decomposition contract; conditional parent never discharges H2 | `PROVED` | `H2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2b1` | Periodic determinant and Hermitian charpoly/product real-zero transfers, with non-Hermitian and vanishing-unit plants | `PROVED / GENERIC_LEAN / FALSIFIERS_LIVE` | `GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN` |
+| `H2b2` | Exact modified-Hilbert matrix, complement determinant, nonvanishing phase, lattice-safe all-z factorization and same raw family | `OPEN / INELIGIBLE` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b3` | Exact H2b assembly | `OPEN / BLOCKED_BY_H2b2` | `H2B_EXACT_REAL_ZERO_ASSEMBLY` |
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
 | `H3` | AND parent for same-family strip tracking | `OPEN` | `STRIP_UNIFORM_TRACKING_PROVED` |
 | `H3a` | Ground/trial phase-aligned proximity | `OPEN_CRITICAL` | `GROUND_TRIAL_TRACKING_PROVED` |
@@ -864,6 +871,17 @@ Exact H3c2 still must select the same Route B family and one joint filter, then
 prove raw convergence or an exact inverse-completion crosswalk to `centeredXi`.
 Thus `XI_LIMIT_OBJECT_MISMATCH`, `XI_LIMIT_IDENTIFICATION_MISSING`, H3c, H3,
 L0c2, and RH remain OPEN.
+
+Revision 25 separates H2b's universal determinant algebra from the exact H8
+Theorem-5.10 crosswalk.  Lean proves that `1-exp(-iLz)` has only real zeros for
+real nonzero `L`, that right factors inherit the real-zero property from an
+exact product, and that a nonvanishing unit times a Hermitian characteristic
+polynomial times a real-zero factor has only real zeros.  One-dimensional
+plants prove Hermitianity and unit nonvanishing are essential.  Exact H2b2
+still needs the `T`-induced quotient metric, Hermitian finite matrix, complement
+determinant, nonvanishing phase, lattice-safe all-`z` factorization, and same
+H1c3/D0.8/H2a raw family.  H2b therefore deliberately remains CONDITIONAL;
+H2 and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

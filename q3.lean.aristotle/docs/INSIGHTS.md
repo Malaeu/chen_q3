@@ -46978,3 +46978,25 @@ not the raw-D17 factorwise support class.
   `CONDITIONAL` because conditional nodes never discharge dependencies.
 - Acceptance remains narrow: no completed-tracker resurrection, no standard-
   metric selfadjointness claim, no H2b/H2 closure, and Route B stays `NOT_RH`.
+
+### Final result
+
+- `HermitianDeterminantRealZeros.lean` proves all zeros of
+  `1-exp(-iLz)` are real for real nonzero `L`, by the exact integer fibers of
+  the complex exponential.
+- `zerosRealOn_right_factor` records the legal complement transfer, but does
+  not identify the source `E_N^perp` determinant without an exact product
+  identity.
+- `zerosRealOn_of_hermitian_charpoly_mul` uses the exact Mathlib chain
+  charpoly root -> spectrum -> real Hermitian eigenvalue and requires a
+  nonvanishing unit at every complex point.
+- `nonHermitian_charpoly_nonreal_zero` certifies the one-dimensional matrix
+  `[i]`, and `vanishing_unit_nonreal_zero` certifies a Hermitian zero matrix
+  multiplied by `z-i`; both hypotheses are demonstrably necessary.
+- STATE revision 25 decomposes H2b into proved generic core `H2b1`, OPEN exact
+  Theorem-5.10 factorization `H2b2`, and assembly `H2b3`; the H2b parent remains
+  CONDITIONAL and therefore cannot discharge H2.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 124 nodes: 64 PROVED,
+  52 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

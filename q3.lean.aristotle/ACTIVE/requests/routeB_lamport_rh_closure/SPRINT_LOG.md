@@ -62,3 +62,9 @@ Single owner decision with maximum unblock power:
 `CLOSED H3c1: H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN; continuity from z=-i/2 proves the extra-completed candidate and centeredXi are not EqOn the open critical strip, hence an interior mismatch exists.`
 
 `SKIPPED H3c2: H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING; the wrong double completion is excluded, but the exact same-family raw-or-inverse-completion route, finite/continuum bridge, one joint filter and Xi limit proof remain open.`
+
+`CLOSED H2b1: GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN; periodic determinant zeros are real and Hermitian characteristic roots transfer through a nonvanishing unit and real-zero factor.`
+
+`GUARD H2b1: NONHERMITIAN_CHARPOLY_NONREAL_ZERO + VANISHING_UNIT_NONREAL_ZERO; dropping Hermitianity or nonvanishing of the multiplicative unit permits a nonreal zero at i.`
+
+`SKIPPED H2b2: H2B_EXACT_THEOREM510_FACTORIZATION_MISSING; the modified-Hilbert Hermitian matrix, E_N-perp complement, nonvanishing phase, lattice-safe all-z identity and same H1c3/D0.8/H2a raw family remain open, so H2b stays CONDITIONAL.`

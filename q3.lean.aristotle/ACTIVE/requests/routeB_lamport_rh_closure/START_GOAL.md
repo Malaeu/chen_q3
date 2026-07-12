@@ -155,6 +155,14 @@ Current fail-closed address:
   completion family selection, one joint filter and Xi limit identification
   remain OPEN in `H3c2` with stop
   `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING`;
+- rev25 proves `H2b1 GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN`:
+  the periodic determinant has only real zeros and Hermitian characteristic
+  roots transfer through a nonvanishing unit and real-zero factor; executable
+  non-Hermitian and vanishing-unit plants keep both hypotheses live; the exact
+  modified-Hilbert matrix, complement determinant, nonvanishing phase,
+  lattice-safe all-z factorization and same raw family remain OPEN in `H2b2`
+  with stop `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`, while parent H2b
+  remains `CONDITIONAL` and cannot discharge H2;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,
