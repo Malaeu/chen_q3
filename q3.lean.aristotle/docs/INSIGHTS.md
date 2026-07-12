@@ -46814,3 +46814,14 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 100 nodes: 52 PROVED,
   40 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2a simple-even sector criterion (in progress)
+
+- Exact target: separate the universal finite-dimensional parity/sector theorem from the still-open Route B inequalities selecting a simple even global ground state.
+- Five local `q3_docs` queries found no existing exact H2a implementation (best scores about 0.60--0.65); no historical numerical parity claim will be imported.
+- The source paper defines `even-simple` and assumes it in Theorem 5.10; Section 8 explicitly lists proving simplicity and evenness for the truncated Weil form as its first missing step.
+- Mathlib's joint-eigenspace API proves that commuting symmetric finite-dimensional operators decompose into simultaneous eigenspaces; a one-dimensional ground eigenspace therefore has parity `+1` or `-1` under an involution.
+- Commutation plus simplicity does not choose the sign: `A=diag(1,0)` and `J=diag(1,-1)` have a simple odd ground state.  This falsifier must remain executable.
+- Planned generic core: parity dichotomy plus an explicit exclusion of an odd vector at the ground level yields an even ground vector; exact Route B closure still requires `epsilon_plus_1 < epsilon_plus_2` and `epsilon_plus_1 < epsilon_minus_1`.
+- Planned DAG split: prove the decomposition contract and generic Lean core, leave exact selected-family sector ordering and final H2a assembly OPEN with stop `H2A_EXACT_SECTOR_ORDERING_MISSING`.
+- Acceptance remains narrow: zero holes, standard Mathlib axioms only, no inferred global rank alternation, no H2/H4 closure, and Route B remains `NOT_RH`.
