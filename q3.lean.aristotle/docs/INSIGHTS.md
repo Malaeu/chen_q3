@@ -47506,3 +47506,23 @@ Final result:
   inputs remain OPEN in `H2b2b2b`.
 - The count is 176 nodes: 90 PROVED, 78 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2b2b2b all-spectral determinant core (in progress)
+
+- Exact target: remove the `IsUnit det(D-sI)` restriction from the generic
+  rank-one determinant identity without claiming the missing exact Route B
+  radical/metric/complement/all-z crosswalk.
+- Four local `q3_docs` queries found only adjacent rank-one and determinant
+  material (roughly 0.59--0.66); no existing project theorem supplies the
+  singular spectral-point identity.
+- The universal commutative-ring identity is
+  `det(A+uv^T)=det(A)+v^T adj(A)u`; unlike the rev37 inverse formula, it remains
+  valid when `det(A)=0`.
+- Official Mathlib's matrix-determinant-lemma documentation explicitly records
+  this adjugate form as the missing general version; the Adjugate API supplies
+  Cramer and adjugate identities needed for a direct proof.
+- Planned DAG split: nest generic H2b2b2b1 below H2b2b2b, leave the exact Weil
+  radical/metric/complement/phase/all-z instantiation H2b2b2b2 and assembly
+  H2b2b2b3 OPEN.
+- No exact spectral family, quotient positivity, modified-Hilbert
+  self-adjointness, nonvanishing phase, Bus 010, or RH conclusion is inferred.
