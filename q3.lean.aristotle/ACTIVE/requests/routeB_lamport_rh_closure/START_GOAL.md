@@ -225,6 +225,12 @@ Current fail-closed address:
   realization, complement determinant, nonvanishing phase, all-z identity and
   the same Route B family remain OPEN in `H2b2b` with stop
   `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`;
+- rev35 proves `H3a2a H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN`:
+  nonnegative normalized finite spectral weights, a zero ground level and a
+  complementary gap give `gap*(1-weight_ground)<=alpha` and the positive-gap
+  quotient bound; exact simple-even ground/trial spectral weights, overlap
+  crosswalk, positive gap, weighted rate and shared filter remain OPEN in
+  `H3a2b` with stop `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

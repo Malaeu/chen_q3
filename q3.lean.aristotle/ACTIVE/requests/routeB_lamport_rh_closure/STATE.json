@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 34,
-  "updated_at": "2026-07-12T19:01:00+02:00",
+  "revision": 35,
+  "updated_at": "2026-07-12T19:24:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "9434a49b0e3a53a3fda51ccd71180f494f0bfbaac3391ef8bd4889e57542fed6",
+    "sprint_log_sha256": "2f24f3985350fa35e6ec95a0cb47de04730dfeea44bcde3d1b960351e8c73e19",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -503,7 +503,7 @@
     "certificate": "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_CERTIFICATE.json",
     "certificate_sha256": "67905b34225d08908073c1dc411d4a860c2dfe8d851dfb58e6bd0d2bf97b52b5",
     "validator": "validate_h3a_phase_alignment_rate_transfer.py",
-    "validator_sha256": "decd1a52c5ce5ad7e183b7030613ac8434b7daa2f7edef7e70ff7af21f2af8dd",
+    "validator_sha256": "0588a22d6038049288fe7c204486f4b5a427319c98574b255d525249bfcd2722",
     "artifact": "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_2026-07-12.md",
     "artifact_sha256": "86bbe7b8ea4d00b122a554597b860de67e848ef9117de9baf226fcbb5ff81e3c",
     "proof_artifact": {
@@ -686,6 +686,27 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3a2_weighted_rayleigh_projective_defect": {
+    "name": "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_REV35",
+    "status": "GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_PROVED_EXACT_SPECTRAL_PROJECTIVE_RATE_OPEN_NOT_RH",
+    "certificate": "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_CERTIFICATE.json",
+    "certificate_sha256": "64e711e37de6086e719a0e2e30ae9bb2debed00afc50d7e0615c6fb60da7e948",
+    "validator": "validate_h3a2_weighted_rayleigh_projective_defect.py",
+    "validator_sha256": "5fe1d162462dcc6b8eb22503601785e587cca9e06c04356cd16b50a97f67aa7a",
+    "artifact": "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_2026-07-12.md",
+    "artifact_sha256": "3cb903961f597216af03e1dd64bd56ed52da76a0210ebff1bd88182e00b7b26b",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean",
+      "sha256": "67190007a4d5bf5505f49d6cae714805c263928415524d1b2f65cf91bd242efc"
+    },
+    "proved_nodes": ["H3a2.0", "H3a2a"],
+    "generic_verdict": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN",
+    "next_worker_leaf": null,
+    "next_exact_node": "H3a2b",
+    "remaining_stop": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION": {
       "name": "ExactModifiedHilbertQuotientAndTheorem510Factorization",
@@ -731,7 +752,9 @@
       "name": "ExactSameFamilyGroundTrialProjectiveDefectRate",
       "authority": "H8ULBMAL/fulltext.md sections 7 and 8; D0_5_GROUND_AND_TRIAL_TYPES.md",
       "status": "OPEN_CRITICAL",
-      "home": "H3a2",
+      "home": "H3a2b",
+      "generic_core": "H3a2a",
+      "generic_validation": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN",
       "failure_code": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
       "is_lamport_node": false
     },
@@ -829,7 +852,8 @@
       "H3E_NORMALIZED_TRACKING_RATE_TRANSFER_REV31",
       "H3B2_WEIGHTED_PROJECTIVE_EVALUATION_TRANSFER_REV32",
       "H4A3B_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_REV33",
-      "H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_REV34"
+      "H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_REV34",
+      "H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_REV35"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1724,14 +1748,52 @@
       "failure_codes": ["H3A_GENERIC_PHASE_ALIGNMENT_GAP", "H3A_BOTTOM_FILTER_VACUITY"]
     },
     "H3a2": {
-      "id": "H3a2", "parent_id": "H3a", "kind": "LEAF", "role": "GOAL",
-      "statement": "Select the exact normalized simple-even ground and nonzero trial on one cofinal same-family filter and prove their projective defect vanishes at the H3b weighted rate",
-      "dependencies": ["D0", "H3a1"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H3a2", "parent_id": "H3a", "kind": "AND", "role": "GOAL",
+      "statement": "The generic weighted Rayleigh-angle bound and its exact Route B spectral-weight/rate instantiation establish the exact ground-trial projective rate",
+      "dependencies": ["H3a2.0"], "ordered_children": ["H3a2a", "H3a2b"], "assembly_theorem_id": "H3a2c",
       "external_requirements": ["H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE"],
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_AND_EXACT_GROUND_TRIAL_RATE_INPUTS_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H3A2B_EXACT_SPECTRAL_PROJECTIVE_INPUTS_OPEN"},
       "validation": "H3A_EXACT_PROJECTIVE_RATE_AND_FILTER_AUDIT",
-      "failure_codes": ["H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING", "H3A_EXACT_GROUND_SELECTOR_MISSING", "H3A_SIMPLE_EVEN_GROUND_MISSING", "H3A_TRIAL_NONZERO_COFINAL_LOCUS_MISSING", "H3A_PROJECTIVE_DEFECT_RATE_MISSING", "H3A_SAME_FAMILY_FILTER_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+      "failure_codes": ["H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING", "H3A_EXACT_GROUND_SELECTOR_MISSING", "H3A_SIMPLE_EVEN_GROUND_MISSING", "H3A_TRIAL_NONZERO_COFINAL_LOCUS_MISSING", "H3A2_EXACT_SPECTRAL_WEIGHT_CROSSWALK_MISSING", "H3A_PROJECTIVE_DEFECT_RATE_MISSING", "H3A_SAME_FAMILY_FILTER_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3a2.0": {
+      "id": "H3a2.0", "parent_id": "H3a2", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H3a2 iff H3a2a and H3a2b both hold, with H3a2c as exact assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H3A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H3A2_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H3a2a": {
+      "id": "H3a2a", "parent_id": "H3a2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Nonnegative normalized spectral weights, a zero ground level, and a complementary spectral gap imply that the projective defect times the gap is bounded by the weighted Rayleigh excess",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean",
+      "failure_codes": ["H3A2_GENERIC_RAYLEIGH_ANGLE_GAP", "H3A2_WEIGHT_NONNEGATIVITY_DROPPED", "H3A2_WEIGHT_SUM_ONE_DROPPED", "H3A2_GROUND_SHIFT_DROPPED", "H3A2_COMPLEMENT_GAP_DROPPED"]
+    },
+    "H3a2b": {
+      "id": "H3a2b", "parent_id": "H3a2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H3a2a with the exact simple-even ground/trial spectral expansion, identify the ground weight with the squared overlap, and prove the weighted alpha/gap rate on one same-family filter",
+      "dependencies": ["D0", "H3a1", "H3a2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_AND_EXACT_SPECTRAL_PROJECTIVE_RATE_INPUTS_OPEN"},
+      "validation": "H3A2_EXACT_SPECTRAL_PROJECTIVE_RATE_INSTANTIATION_AUDIT",
+      "failure_codes": ["H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING", "H3A_EXACT_GROUND_SELECTOR_MISSING", "H3A_SIMPLE_EVEN_GROUND_MISSING", "H3A_TRIAL_NONZERO_COFINAL_LOCUS_MISSING", "H3A2_EXACT_SPECTRAL_WEIGHT_CROSSWALK_MISSING", "H3A_PROJECTIVE_DEFECT_RATE_MISSING", "H3A_SAME_FAMILY_FILTER_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3a2c": {
+      "id": "H3a2c", "parent_id": "H3a2", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3a2.0 AND H3a2a AND H3a2b IMPLIES the exact ground-trial projective rate",
+      "dependencies": ["H3a2.0", "H3a2a", "H3a2b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3A2B_OPEN"},
+      "validation": "H3A2_EXACT_PROJECTIVE_RATE_ASSEMBLY",
+      "failure_codes": ["H3A2_ASSEMBLY_GAP", "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"]
     },
     "H3a3": {
       "id": "H3a3", "parent_id": "H3a", "kind": "LEAF", "role": "ASSEMBLY",
@@ -2747,6 +2809,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN;KERNEL_AND_WEIGHTED_SYMMETRY_ALGEBRA_PROVED;H2B_EXACT_THEOREM510_FACTORIZATION_MISSING"
+      },
+      "H3a2/generic_weighted_rayleigh_projective_defect/v1": {
+        "status": "GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_CORE_CLOSED_EXACT_SPECTRAL_RATE_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN;GAP_TIMES_PROJECTIVE_DEFECT_LE_RAYLEIGH_EXCESS;H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
       }
     }
   },
@@ -3029,6 +3097,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN;RANK_ONE_CORRECTION_KILLS_CALIBRATION_VECTOR;T_WEIGHTED_SYMMETRY_LEAN;H2B2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "WEIGHTED_SYMMETRY_IS_NOT_QUOTIENT_SELFADJOINTNESS_EXACT_T_POSITIVITY_RADICAL_DESCENT_COMPLEMENT_NONVANISHING_PHASE_ALL_Z_FACTORIZATION_AND_SAME_ROUTE_B_FAMILY_OPEN_H2B_CONDITIONAL_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T19:24:00+02:00",
+      "event": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN;FINITE_SPECTRAL_WEIGHT_SUM;GAP_TIMES_COMPLEMENT_WEIGHT_LE_RAYLEIGH_EXCESS;POSITIVE_GAP_DIVISION;H3A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "NO_EXACT_SIMPLE_EVEN_GROUND_TRIAL_SPECTRAL_WEIGHT_CROSSWALK_POSITIVE_GAP_PROJECTIVE_RATE_OR_SHARED_FILTER_H3A2_H3A_H3_L0_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

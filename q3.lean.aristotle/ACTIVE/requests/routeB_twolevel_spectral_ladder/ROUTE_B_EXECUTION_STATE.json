@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T19:01:00+02:00",
+  "updated_at": "2026-07-12T19:24:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -106,6 +106,10 @@
       ,"H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN"
       ,"H2B2_RANK_ONE_CORRECTION_KILLS_CALIBRATION_VECTOR_LEAN"
       ,"H2B2_T_WEIGHTED_SYMMETRY_LEAN"
+      ,"H3A2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN"
+      ,"H3A2_GAP_TIMES_PROJECTIVE_DEFECT_LE_RAYLEIGH_EXCESS"
+      ,"H3A2_POSITIVE_GAP_QUOTIENT_BOUND_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -171,6 +175,7 @@
       ,"H4A_RESIDUAL_ENVELOPE_POWER_MISMATCH"
       ,"H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING"
       ,"H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING"
+      ,"H3A2_EXACT_SPECTRAL_WEIGHT_CROSSWALK_MISSING"
     ]
   },
   "bus": {
@@ -287,7 +292,7 @@
       "code": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
       "class": "MASTER_DAG_EXACT_GROUND_TRIAL_RATE_BLOCKER",
       "owner": "Route B proof compiler / source owner",
-      "detail": "The canonical phase, exact unit-vector phase-alignment identity, square-root projective-defect bound, and nonbottom-filter rate transfer are Lean-proved, but the exact simple-even ground selector, cofinal nonzero normalized trial, same-family joint filter, and source-level projective-defect rate remain open."
+      "detail": "The phase-alignment core and finite spectral-weight Rayleigh/gap-to-projective inequality are Lean-proved, but the exact simple-even ground/trial spectral expansion, squared-overlap weight crosswalk, positive gap, cofinal weighted rate, and same-family joint filter remain open."
     },
     {
       "code": "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING",
@@ -568,7 +573,7 @@
     },
     "h3a_phase_alignment_rate_transfer_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3a_phase_alignment_rate_transfer.py",
-      "sha256": "decd1a52c5ce5ad7e183b7030613ac8434b7daa2f7edef7e70ff7af21f2af8dd"
+      "sha256": "0588a22d6038049288fe7c204486f4b5a427319c98574b255d525249bfcd2722"
     },
     "h3a_phase_alignment_rate_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean",
@@ -657,6 +662,18 @@
     "h2b2_rank_one_correction_weighted_symmetry_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
       "sha256": "f31875b4dc48e10cb61380400f47cfb47e4af14711cd51a9ce5786e1ac661204"
+    },
+    "h3a2_weighted_rayleigh_projective_defect_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_CERTIFICATE.json",
+      "sha256": "64e711e37de6086e719a0e2e30ae9bb2debed00afc50d7e0615c6fb60da7e948"
+    },
+    "h3a2_weighted_rayleigh_projective_defect_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3a2_weighted_rayleigh_projective_defect.py",
+      "sha256": "5fe1d162462dcc6b8eb22503601785e587cca9e06c04356cd16b50a97f67aa7a"
+    },
+    "h3a2_weighted_rayleigh_projective_defect_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean",
+      "sha256": "67190007a4d5bf5505f49d6cae714805c263928415524d1b2f65cf91bd242efc"
     }
   },
   "stages": [

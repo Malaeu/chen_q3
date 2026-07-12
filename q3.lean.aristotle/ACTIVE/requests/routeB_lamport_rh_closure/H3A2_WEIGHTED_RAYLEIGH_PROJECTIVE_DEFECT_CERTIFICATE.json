@@ -1,0 +1,113 @@
+{
+  "schema": "route_b_h3a2_weighted_rayleigh_projective_defect_certificate.v1",
+  "created_at": "2026-07-12T19:24:00+02:00",
+  "revision_target": 35,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "scope": "H8_GROUND_TRIAL_SPECTRAL_APPROXIMATION_OPEN_OBLIGATION"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_GROUND_AND_TRIAL_TYPES.md",
+      "sha256": "9cb7a9e34d0d051fc78c9c7a69e71fc91e7c7722f3d8c9a5713469d4f3bd5547",
+      "scope": "EXACT_GROUND_TRIAL_TYPE_FIREWALL"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3A_PHASE_ALIGNMENT_RATE_TRANSFER_2026-07-12.md",
+      "sha256": "86bbe7b8ea4d00b122a554597b860de67e848ef9117de9baf226fcbb5ff81e3c",
+      "scope": "H3A2_EXACT_RATE_RESIDUAL_BOUNDARY"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean",
+      "sha256": "9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f",
+      "scope": "H3A1_PROJECTIVE_DEFECT_CONSUMER"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Algebra/BigOperators/Group/Finset/Basic.lean",
+      "sha256": "5df467cbb5500dd6617ddb304f076e2d222392850dfc9991e5a99f07e1a7eb59",
+      "scope": "FINITE_WEIGHT_SUM_AND_ERASE_ALGEBRA"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://arxiv.org/abs/1207.3240",
+      "scope": "PRIMARY_RAYLEIGH_ANGLE_AND_SPECTRAL_ERROR_CONTEXT"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/InnerProductSpace/Basic.html",
+      "scope": "OFFICIAL_INNER_PRODUCT_INTERFACE"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean",
+    "sha256": "67190007a4d5bf5505f49d6cae714805c263928415524d1b2f65cf91bd242efc",
+    "proved": [
+      "weighted_projective_defect_mul_gap_le_rayleigh_excess",
+      "weighted_projective_defect_le_rayleigh_excess_div_gap"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3A2_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_2026-07-12.md",
+    "sha256": "3cb903961f597216af03e1dd64bd56ed52da76a0210ebff1bd88182e00b7b26b"
+  },
+  "h3a2_repair": {
+    "parent": "H3a2",
+    "decomposition": "H3a2.0",
+    "ordered_children": ["H3a2a", "H3a2b"],
+    "assembly": "H3a2c",
+    "proved": ["H3a2.0", "H3a2a"],
+    "open": ["H3a2", "H3a2b", "H3a2c", "H3a3", "H3a", "H3", "L0c2", "L0"],
+    "generic_verdict": "H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN",
+    "residual_stop": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H3a1", "H3a2a"],
+    "external_requirement": "H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE",
+    "open_codes": [
+      "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
+      "H3A_EXACT_GROUND_SELECTOR_MISSING",
+      "H3A_SIMPLE_EVEN_GROUND_MISSING",
+      "H3A_TRIAL_NONZERO_COFINAL_LOCUS_MISSING",
+      "H3A2_EXACT_SPECTRAL_WEIGHT_CROSSWALK_MISSING",
+      "H3A_PROJECTIVE_DEFECT_RATE_MISSING",
+      "H3A_SAME_FAMILY_FILTER_MISSING",
+      "GROUND_TRIAL_TRACKING_MISSING",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 164,
+    "PROVED": 84,
+    "OPEN": 72,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_GROUND_TRIAL_SPECTRAL_EXPANSION",
+    "NO_EXACT_POSITIVE_EIGENGAP",
+    "NO_EXACT_PROJECTIVE_DEFECT_RATE",
+    "NO_H3A_PARENT_CLOSURE",
+    "NO_H3_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

@@ -114,3 +114,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H2b2a: H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN; eta dot xi=1 makes D-|D xi><eta| kill xi, and the source commutator with T(D xi)=-beta proves T-weighted symmetry.`
 
 `SKIPPED H2b2b: H2B_EXACT_THEOREM510_FACTORIZATION_MISSING; exact T positivity and radical, quotient descent/self-adjointness, E_N complement, nonvanishing phase, lattice-safe all-z identity and same H1c3/D0.8/H2a family remain open, so H2b stays CONDITIONAL.`
+
+`CLOSED H3a2a: H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN; normalized nonnegative spectral weights and a complementary gap yield gap*(1-weight_ground)<=alpha and, for positive gap, 1-weight_ground<=alpha/gap.`
+
+`SKIPPED H3a2b: H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING; exact simple-even ground/trial spectral weights, squared-overlap crosswalk, positive gap, weighted decay and same-family joint filter remain open.`

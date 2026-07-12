@@ -469,7 +469,10 @@ R0 RHClosure [AND]
 |-- H3 StripUniformTracking [AND]
 |   |-- H3a GroundTrialTracking [AND]
 |   |   |-- H3a1 GenericComplexPhaseAlignmentCore
-|   |   |-- H3a2 ExactGroundTrialProjectiveRate
+|   |   |-- H3a2 ExactGroundTrialProjectiveRate [AND]
+|   |   |   |-- H3a2a GenericWeightedRayleighProjectiveCore
+|   |   |   |-- H3a2b ExactSpectralProjectiveRateInstantiation
+|   |   |   `-- H3a2c H3a2Assembly
 |   |   `-- H3a3 H3aAssembly
 |   |-- H3b CompactStripEvaluation [AND]
 |   |   |-- H3b1 GenericCompactEvaluationRateTransfer
@@ -628,7 +631,11 @@ proof node.
 | `H3a` | AND parent: generic complex phase/rate transfer plus exact same-family ground/trial projective-defect rate | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING` |
 | `H3a.0` | H3a decomposition contract | `PROVED` | `H3A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H3a1` | Total canonical phase, exact unit-vector norm identity, square-root defect bound and nonbottom-filter rate transfer | `PROVED / GENERIC_LEAN` | `GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN` |
-| `H3a2` | Select exact normalized ground/trial on one family/filter and prove the weighted projective-defect rate | `OPEN / INELIGIBLE` | blocker: `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING` |
+| `H3a2` | AND parent: generic weighted Rayleigh/projective inequality plus exact same-family spectral rate | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING` |
+| `H3a2.0` | H3a2 decomposition contract | `PROVED` | `H3A2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3a2a` | Nonnegative normalized spectral weights and a complementary gap bound projective defect by Rayleigh excess/gap | `PROVED / GENERIC_LEAN` | `H3A2_GENERIC_WEIGHTED_RAYLEIGH_PROJECTIVE_DEFECT_LEAN` |
+| `H3a2b` | Exact simple-even ground/trial spectral weights, overlap crosswalk, positive gap, weighted rate and shared filter | `OPEN / INELIGIBLE` | blocker: `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING` |
+| `H3a2c` | Exact H3a2 assembly | `OPEN / BLOCKED_BY_H3a2b` | `H3A2_EXACT_PROJECTIVE_RATE_ASSEMBLY` |
 | `H3a3` | Exact H3a assembly | `OPEN / BLOCKED_BY_H3a2` | `H3A_EXACT_GROUND_TRIAL_TRACKING_ASSEMBLY` |
 | `H3b` | AND parent: generic compact rate transfer plus exact weighted Route B instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
 | `H3b.0` | H3b decomposition contract | `PROVED` | `H3B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
@@ -1030,6 +1037,14 @@ radical, quotient descent, complex-Hermitian self-adjointness, complement
 determinants, the nonvanishing phase, or the exact all-z identity.  Those stay
 OPEN in H2b2b under `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`; H2b remains
 CONDITIONAL and H2/RH remain OPEN.
+
+Revision 35 isolates the universal spectral-weight arithmetic below H3a2.
+Lean proves that nonnegative weights summing to one, a zero ground level and a
+complementary spectral gap imply `gap*(1-weight_ground) <= alpha`, and derives
+the quotient bound when the gap is positive.  Exact H3a2b must still construct
+the same Route B spectral weights, identify the ground weight with squared
+overlap, prove the positive gap and weighted cofinal rate, and select the joint
+filter.  H3a2, H3a, H3, L0 and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

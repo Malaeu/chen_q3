@@ -93,10 +93,21 @@ def main() -> None:
     h3a2 = nodes["H3a2"]
     require(h3a2["proof_status"] == "OPEN", "H3A2_FALSE_PASS")
     require(not h3a2["eligibility"]["eligible"], "H3A2_FALSE_ELIGIBILITY")
-    require(h3a2["dependencies"] == ["D0", "H3a1"], "H3A2_DEPENDENCY_DRIFT")
-    require(h3a2["external_requirements"] == ["H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE"], "H3A2_EXTERNAL_REQUIREMENT_DRIFT")
+    if state["revision"] >= 35:
+        require(h3a2["kind"] == "AND", "H3A2_PARENT_NOT_AND")
+        require(h3a2["dependencies"] == ["H3a2.0"], "H3A2_PARENT_DEPENDENCY_DRIFT")
+        require(h3a2["ordered_children"] == ["H3a2a", "H3a2b"], "H3A2_CHILD_ORDER_DRIFT")
+        require(h3a2["assembly_theorem_id"] == "H3a2c", "H3A2_ASSEMBLY_ADDRESS_DRIFT")
+        exact_h3a2 = nodes["H3a2b"]
+        require(exact_h3a2["proof_status"] == "OPEN", "H3A2B_FALSE_PASS")
+        require(not exact_h3a2["eligibility"]["eligible"], "H3A2B_FALSE_ELIGIBILITY")
+        require(exact_h3a2["dependencies"] == ["D0", "H3a1", "H3a2a"], "H3A2B_DEPENDENCY_DRIFT")
+    else:
+        exact_h3a2 = h3a2
+        require(exact_h3a2["dependencies"] == ["D0", "H3a1"], "H3A2_DEPENDENCY_DRIFT")
+    require(exact_h3a2["external_requirements"] == ["H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE"], "H3A2_EXTERNAL_REQUIREMENT_DRIFT")
     for code in cert["exact_instantiation_guard"]["open_codes"]:
-        require(code in h3a2["failure_codes"], f"H3A2_GUARD_MISSING:{code}")
+        require(code in exact_h3a2["failure_codes"], f"H3A2_GUARD_MISSING:{code}")
 
     h3a3 = nodes["H3a3"]
     require(h3a3["proof_status"] == "OPEN", "H3A3_FALSE_PASS")

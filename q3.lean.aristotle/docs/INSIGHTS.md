@@ -47390,3 +47390,16 @@ Final result:
   `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`.
 - No ground selector, trial normalization, eigengap, joint filter, WPrime,
   Bus 010, or RH conclusion is inferred.
+
+Final result:
+
+- `WeightedRayleighProjectiveDefect.lean` proves the finite spectral-weight
+  inequality and its positive-gap quotient form without importing Route B
+  objects.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.
+- STATE revision 35 nests proved `H3a2.0` and `H3a2a` below H3a2. Exact
+  spectral weights, overlap identification, positive gap, rate and shared
+  filter remain OPEN in `H3a2b`.
+- The count is 164 nodes: 84 PROVED, 72 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
