@@ -1,0 +1,136 @@
+{
+  "schema": "route_b_h4a2_ambient_residual_envelope_transfer_certificate.v1",
+  "created_at": "2026-07-12T17:56:08+02:00",
+  "revision_target": 30,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "SAFE_ALPHA_UPPER_RESIDUAL_SUPPLY_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "H4A2_UNIFORM_RESIDUAL_UPPER_ADDRESS_AND_FALSE_BRIDGE_FIREWALL"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md",
+      "sha256": "c631554f7aafc8c56dbec744cc43e05ee8c42512025bcfb10f3e9e766d047216",
+      "scope": "EXACT_OPERATOR_TYPE_BOUNDARY"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A1_AMBIENT_RESIDUAL_SPLIT_2026-07-12.md",
+      "sha256": "b93a9593310fa38493a618e5c7f97bea4c3a796c30da2b9d824d95a1bc0187d2",
+      "scope": "AMBIENT_COMPRESSED_LEAKAGE_IDENTITY_AND_FALSIFIER"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean",
+      "sha256": "d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00",
+      "scope": "IMPORTED_RESIDUAL_OBJECTS_IDENTITY_AND_LIVE_PLANT"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean",
+      "sha256": "666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd",
+      "scope": "DOWNSTREAM_SQUARED_RESIDUAL_RECEIVER"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Normed/Group/Basic.lean",
+      "sha256": "f788e74bd26a856d939ec7767698fec8155829809c9c8e03cf6ee2b9b09ccf91",
+      "scope": "NORM_TRIANGLE_AND_SQUARE_TRANSFER"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Order/Filter/Defs.lean",
+      "sha256": "e64b66543c9adbfe9029ca2f72ee49dff80bcb4fd6602241bda99d82b3f7630c",
+      "scope": "NONBOTTOM_FILTER_INTERFACE"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Normed/Group/Basic.html",
+      "scope": "OFFICIAL_NORM_TRIANGLE_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+    "sha256": "bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431",
+    "proved": [
+      "ambient_residual_norm_le_compressed_add_leakage",
+      "ambient_residual_envelope_of_component_envelopes",
+      "ambient_residual_sq_envelope_of_component_envelopes",
+      "ambient_residual_envelope_of_leakage_envelope",
+      "eventually_ambient_residual_envelope_of_components",
+      "eventually_ambient_residual_envelope_of_leakage_envelope"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_2026-07-12.md",
+    "sha256": "33274c06856fe9223b39c03623dd0f32e0c6d77b36b2e32b43422c3da34d8438"
+  },
+  "h4a2_repair": {
+    "parent": "H4a2",
+    "decomposition": "H4a2.0",
+    "ordered_children": ["H4a2a", "H4a2b"],
+    "assembly": "H4a2c",
+    "proved": ["H4a2.0", "H4a2a"],
+    "open": ["H4a2", "H4a2b", "H4a2c", "H4a", "H4a3b", "H4a4", "H4", "H3e", "L0c2", "L0"],
+    "generic_verdict": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN",
+    "falsifier": "ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL",
+    "residual_stop": "H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H4a1", "H4a2a"],
+    "external_requirement": "H4A2_EXACT_COMPONENT_RATE",
+    "family": "SAME_DOMAIN_SAFE_OPERATOR_PROJECTION_TRIAL_AND_H4_FILTER",
+    "open_codes": [
+      "H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING",
+      "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING",
+      "H4A1_LEAKAGE_NORM_RATE_MISSING",
+      "H4A2_COMPRESSED_RESIDUAL_RATE_MISSING",
+      "H4A_OPERATOR_DOMAIN_GAP",
+      "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION",
+      "H4A1_PROJECTION_NOT_SOURCE_LOCKED",
+      "H4A_TRIAL_RITZ_OBJECT_MISMATCH",
+      "RESIDUAL_UPPER_MISSING",
+      "NONUNIFORM_RATE",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 144,
+    "PROVED": 74,
+    "OPEN": 62,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_ROUTE_B_OPERATOR_DOMAIN",
+    "NO_EXACT_ROUTE_B_PROJECTION",
+    "NO_FORM_TO_OPERATOR_CROSSWALK",
+    "NO_EXACT_COMPRESSED_RESIDUAL_RATE",
+    "NO_EXACT_LEAKAGE_RATE",
+    "NO_SAFE_ALPHA_UPPER",
+    "NO_H4A2_PARENT_CLOSURE",
+    "NO_H4A_PARENT_CLOSURE",
+    "NO_H4_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

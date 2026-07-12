@@ -484,7 +484,10 @@ R0 RHClosure [AND]
 |   |   |   |-- H4a1a GenericAmbientCompressedResidualSplit
 |   |   |   |-- H4a1b ExactRouteBAmbientResidualCrosswalk
 |   |   |   `-- H4a1c H4a1Assembly
-|   |   |-- H4a2 UniformResidualUpper
+|   |   |-- H4a2 UniformResidualUpper [AND]
+|   |   |   |-- H4a2a GenericAmbientResidualEnvelopeTransfer
+|   |   |   |-- H4a2b ExactRouteBComponentRateInstantiation
+|   |   |   `-- H4a2c H4a2Assembly
 |   |   |-- H4a3 ResidualToCanonicalAlphaUpper [AND]
 |   |   |   |-- H4a3a GenericWeightedSpectralTempleCore
 |   |   |   |-- H4a3b ExactRouteBResidualSpectralInstantiation
@@ -632,7 +635,11 @@ proof node.
 | `H4a1a` | Ambient residual equals compressed residual plus leakage; zero internal residual need not mean zero ambient residual | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN` |
 | `H4a1b` | Pin the exact domain-safe Route B operator, projection, trial/Ritz object, residual/leakage crosswalk and later norm-rate interface | `OPEN / INELIGIBLE` | blocker: `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING` |
 | `H4a1c` | Exact H4a1 assembly | `OPEN / BLOCKED_BY_H4a1b` | `RESIDUAL_IDENTITY_PROVED` |
-| `H4a2` | Uniform upper bound for that exact residual | `OPEN_CRITICAL` | `RESIDUAL_UPPER_PROVED` |
+| `H4a2` | AND parent: generic ambient/compressed/leakage envelope receiver plus exact same-family component-rate instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING` |
+| `H4a2.0` | H4a2 decomposition contract | `PROVED` | `H4A2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4a2a` | Component bounds imply ambient norm and squared-residual bounds, with Ritz/leakage and nonbottom-filter wrappers | `PROVED / GENERIC_LEAN / FALSIFIER_RETAINED` | `GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN` |
+| `H4a2b` | Instantiate both exact component rates on one domain-safe Route B operator/projection/family/filter | `OPEN / INELIGIBLE` | blocker: `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING` |
+| `H4a2c` | Exact H4a2 assembly | `OPEN / BLOCKED_BY_H4a2b` | `H4A2_EXACT_AMBIENT_RESIDUAL_RATE_ASSEMBLY` |
 | `H4a3` | AND parent for the corrected weighted-spectral Temple bridge and exact Route B instantiation | `OPEN / GENERIC_CORE_PROVED / EXACT_INSTANTIATION_OPEN` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
 | `H4a3.0` | Definitional H4a3 decomposition contract | `PROVED` | `H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H4a3a` | Weighted spectral variance gives `etaSq >= alpha*(Delta-alpha)` and the correct Temple/half-gap bounds | `PROVED / GENERIC_LEAN` | `WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN` |
@@ -949,6 +956,15 @@ paper still assumes the simple-even hypothesis and explicitly lists its proof
 as missing.  Exact H2a2b must therefore select the H1c3/D0.8 family, prove both
 strict sector inequalities with ordering/multiplicity crosswalks, and
 instantiate the radius.  H2a2, H2a, H2, and RH remain OPEN.
+
+Revision 30 constructs the universal residual-envelope receiver nested below
+H4a2.  Lean transfers the exact H4a1 ambient/compressed/leakage identity to
+norm, squared, compressed-Ritz/leakage, and non-bottom-filter bounds.  The live
+H4a1 plant still shows that zero compressed residual does not imply zero
+ambient residual when leakage survives.  Exact H4a2b must now pin one
+domain-safe Route B operator and source-locked projection and prove both the
+compressed-residual and leakage rates on the same family/filter, including the
+squared rate consumed by H4a3.  H4a2, H4a, H4, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

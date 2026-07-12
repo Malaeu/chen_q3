@@ -88,3 +88,9 @@ Single owner decision with maximum unblock power:
 `CLOSED H2a2a: GENERIC_SECTOR_ISOLATION_RADIUS_LEAN; two strict sector gaps construct a positive half-minimum isolation radius below the distance to every level above the next-even or bottom-odd threshold.`
 
 `SKIPPED H2a2b: H2A_EXACT_SECTOR_ORDERING_MISSING; the exact H1c3/D0.8 family, even internal gap, even-versus-odd bottom order, multiplicity/enumeration crosswalk and radius instantiation remain open.`
+
+`CLOSED H4a2a: GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN; the H4a1 ambient/compressed/leakage identity yields norm, squared, compressed-Ritz/leakage and nonbottom-filter envelope receivers.`
+
+`GUARD H4a2a: ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL; the H4a1 leakage plant remains live, so no internal-residual tautology or deletion of the leakage estimate is allowed.`
+
+`SKIPPED H4a2b: H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING; the domain-safe Route B operator, source-locked projection, exact compressed-residual and leakage rates, combined squared rate, and one shared family/filter remain open.`

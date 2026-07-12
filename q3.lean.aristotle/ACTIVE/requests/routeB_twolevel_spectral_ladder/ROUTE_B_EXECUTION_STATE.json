@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T17:42:24+02:00",
+  "updated_at": "2026-07-12T17:56:08+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -83,6 +83,11 @@
       ,"H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"GENERIC_SECTOR_ISOLATION_RADIUS_LEAN"
       ,"H2A2_POSITIVE_HALF_MINIMUM_SECTOR_RADIUS_LEAN"
+      ,"H4A2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN"
+      ,"H4A2_COMPONENT_ENVELOPE_TRANSFER_LEAN"
+      ,"H4A2_SQUARED_RESIDUAL_ENVELOPE_TRANSFER_LEAN"
+      ,"H4A2_NONBOTTOM_FILTER_TRANSFER_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -135,6 +140,9 @@
       ,"H2A_EVEN_INTERNAL_GAP_MISSING"
       ,"H2A_EVEN_ODD_BOTTOM_ORDER_MISSING"
       ,"H2A_EXACT_ISOLATION_RADIUS_INSTANTIATION_MISSING"
+      ,"H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING"
+      ,"H4A1_LEAKAGE_NORM_RATE_MISSING"
+      ,"H4A2_COMPRESSED_RESIDUAL_RATE_MISSING"
     ]
   },
   "bus": {
@@ -216,6 +224,12 @@
       "class": "MASTER_DAG_EXACT_OPERATOR_DOMAIN_BLOCKER",
       "owner": "Route B proof compiler",
       "detail": "The generic ambient/compressed residual split and zero-internal/nonzero-ambient falsifier are Lean-proved, but the exact Route B operator domain, projection, form-to-operator realization, trial/Ritz object, and leakage-rate crosswalk remain open."
+    },
+    {
+      "code": "H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING",
+      "class": "MASTER_DAG_EXACT_RESIDUAL_RATE_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The generic norm, squared, compressed-Ritz/leakage, and nonbottom-filter ambient-residual envelope transfers are Lean-proved with the leakage falsifier retained, but the domain-safe exact operator/projection crosswalk, compressed-residual rate, leakage rate, combined squared rate, and shared family/filter remain open."
     },
     {
       "code": "H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING",
@@ -537,6 +551,18 @@
     "h2a2_sector_isolation_radius_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SectorIsolationRadius.lean",
       "sha256": "67342984d35a0d0ef223186f76a44584e546e3e5c3c5f383fd7128746c1d8c82"
+    },
+    "h4a2_ambient_residual_envelope_transfer_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_CERTIFICATE.json",
+      "sha256": "e1cea1c22a89994143f37150225b0872a58bb3555f41d1f6536a0656de3b2a28"
+    },
+    "h4a2_ambient_residual_envelope_transfer_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4a2_ambient_residual_envelope_transfer.py",
+      "sha256": "b9086c8f83e030a7679b9b7861c432bc8f862dad5fa6a2f6705d64c813c9e67c"
+    },
+    "h4a2_ambient_residual_envelope_transfer_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+      "sha256": "bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431"
     }
   },
   "stages": [

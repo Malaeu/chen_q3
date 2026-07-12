@@ -191,6 +191,13 @@ Current fail-closed address:
   family, both strict inequalities, multiplicity/order crosswalk and radius
   instantiation remain OPEN in `H2a2b` with stop
   `H2A_EXACT_SECTOR_ORDERING_MISSING`;
+- rev30 proves `H4a2a GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN`:
+  the exact H4a1 split yields ambient norm, squared-residual, compressed-Ritz/
+  leakage, and nonbottom-filter envelopes; the zero-compressed/nonzero-ambient
+  leakage plant remains live, while exact operator/projection crosswalks,
+  compressed-residual and leakage rates, and one shared family/filter remain
+  OPEN in `H4a2b` with stop
+  `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

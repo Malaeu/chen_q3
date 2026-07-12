@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 29,
-  "updated_at": "2026-07-12T17:42:24+02:00",
+  "revision": 30,
+  "updated_at": "2026-07-12T17:56:08+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "328fbbc860fd5a686d60113b16335a6ebea82b09cf1e6ae174d4ad867678ea81",
+    "sprint_log_sha256": "5e9f1b987e30ff1e70f7f179d82779b38333c32843589717050cae81ea74d069",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -573,7 +573,40 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4a2_ambient_residual_envelope_transfer": {
+    "name": "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_REV30",
+    "status": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_PROVED_EXACT_COMPONENT_RATE_INSTANTIATION_OPEN_NOT_RH",
+    "certificate": "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_CERTIFICATE.json",
+    "certificate_sha256": "e1cea1c22a89994143f37150225b0872a58bb3555f41d1f6536a0656de3b2a28",
+    "validator": "validate_h4a2_ambient_residual_envelope_transfer.py",
+    "validator_sha256": "b9086c8f83e030a7679b9b7861c432bc8f862dad5fa6a2f6705d64c813c9e67c",
+    "artifact": "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_2026-07-12.md",
+    "artifact_sha256": "33274c06856fe9223b39c03623dd0f32e0c6d77b36b2e32b43422c3da34d8438",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+      "sha256": "bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431"
+    },
+    "proved_nodes": [
+      "H4a2.0",
+      "H4a2a"
+    ],
+    "generic_verdict": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN",
+    "falsifier": "ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL",
+    "next_worker_leaf": null,
+    "next_exact_node": "H4a2b",
+    "remaining_stop": "H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
+    "H4A2_EXACT_COMPONENT_RATE": {
+      "name": "ExactAmbientResidualComponentRatesOnSharedRouteBFamily",
+      "authority": "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_2026-07-12.md section 5; H3_H4_CONTRACT_REPAIR_2026-07-12.md section 1",
+      "status": "OPEN_CRITICAL",
+      "home": "H4a2b",
+      "failure_code": "H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING",
+      "is_lamport_node": false
+    },
     "H2A_EXACT_SELECTED_FAMILY_SECTOR_GAPS": {
       "name": "ExactSelectedFamilyEvenInternalAndEvenOddSectorGaps",
       "authority": "H8ULBMAL/fulltext.md Definition 5.3, Theorem 5.10, and Section 8; D0_4_EXACT_PARITY_SECTORS.md; D0_5_GROUND_AND_TRIAL_TYPES.md",
@@ -681,7 +714,8 @@
       "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26",
       "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27",
       "H4B_PERTURBATIVE_TRUE_GAP_LOWER_REV28",
-      "H2A2_SECTOR_ISOLATION_RADIUS_REV29"
+      "H2A2_SECTOR_ISOLATION_RADIUS_REV29",
+      "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_REV30"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1757,13 +1791,51 @@
       "failure_codes": ["H4A1_ASSEMBLY_GAP", "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H4a2": {
-      "id": "H4a2", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
-      "statement": "Prove the required uniform upper bound for the exact ambient residual",
-      "dependencies": ["D0", "H4a1"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H4a2", "parent_id": "H4a", "kind": "AND", "role": "GOAL",
+      "statement": "The generic ambient-residual envelope receiver and its exact same-family Route B component-rate instantiation prove the required uniform upper bound for the exact ambient residual",
+      "dependencies": ["H4a2.0"], "ordered_children": ["H4a2a", "H4a2b"], "assembly_theorem_id": "H4a2c",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H4A1_OPEN"},
-      "validation": "UNIFORM_RESIDUAL_RATE_AUDIT",
-      "failure_codes": ["RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE", "H4A_TRIAL_RITZ_OBJECT_MISMATCH"]
+      "eligibility": {"eligible": false, "reason": "H4A2B_EXACT_COMPONENT_RATE_INSTANTIATION_OPEN"},
+      "validation": "H4A2_GENERIC_AND_EXACT_COMPONENT_RATE_ASSEMBLY",
+      "failure_codes": ["H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING", "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING", "H4A1_LEAKAGE_NORM_RATE_MISSING", "H4A2_COMPRESSED_RESIDUAL_RATE_MISSING", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE"]
+    },
+    "H4a2.0": {
+      "id": "H4a2.0", "parent_id": "H4a2", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4a2 iff the generic ambient-residual envelope receiver AND its exact same-family Route B component-rate instantiation",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4A2_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4a2a": {
+      "id": "H4a2a", "parent_id": "H4a2", "kind": "LEAF", "role": "GOAL",
+      "statement": "The H4a1 ambient/compressed/leakage identity yields norm, squared, Ritz-specialized, and non-bottom-filter ambient-residual envelope transfers from the two component estimates",
+      "dependencies": ["H4a1a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+      "failure_codes": ["H4A2_GENERIC_ENVELOPE_RECEIVER_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY", "H4A2_BOTTOM_FILTER_VACUITY", "H4A2_LEAKAGE_PLANT_MISSING"]
+    },
+    "H4a2b": {
+      "id": "H4a2b", "parent_id": "H4a2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H4a2a on one exact domain-safe Route B operator, source-locked projection, normalized trial/Ritz vector and shared non-bottom filter, proving both component rates and the combined squared residual rate required downstream",
+      "dependencies": ["D0", "H4a1", "H4a2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H4A2_EXACT_COMPONENT_RATE"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H4A1_EXACT_OPERATOR_PROJECTION_COMPONENT_RATES_AND_SHARED_FILTER_OPEN"},
+      "validation": "H4A2_EXACT_ROUTE_B_COMPONENT_RATE_INSTANTIATION",
+      "failure_codes": ["H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING", "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING", "H4A1_LEAKAGE_NORM_RATE_MISSING", "H4A2_COMPRESSED_RESIDUAL_RATE_MISSING", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A1_PROJECTION_NOT_SOURCE_LOCKED", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "RESIDUAL_UPPER_MISSING", "NONUNIFORM_RATE", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4a2c": {
+      "id": "H4a2c", "parent_id": "H4a2", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4a2.0 AND H4a2a AND H4a2b IMPLIES the exact same-family uniform ambient-residual upper bound required by H4a3",
+      "dependencies": ["H4a2.0", "H4a2a", "H4a2b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4A2B_EXACT_COMPONENT_RATE_INSTANTIATION_OPEN"},
+      "validation": "H4A2_EXACT_AMBIENT_RESIDUAL_RATE_ASSEMBLY",
+      "failure_codes": ["H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING", "H4A2_ASSEMBLY_GAP", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H4a3": {
       "id": "H4a3", "parent_id": "H4a", "kind": "AND", "role": "GOAL",
@@ -2378,6 +2450,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "GENERIC_SECTOR_ISOLATION_RADIUS_LEAN;POSITIVE_HALF_MINIMUM_SECTOR_RADIUS;H2A_EXACT_SECTOR_ORDERING_MISSING"
+      },
+      "H4a2/generic_ambient_residual_envelope_transfer/v1": {
+        "status": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_CLOSED_EXACT_COMPONENT_RATES_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN;ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL;H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING"
       }
     }
   },
@@ -2625,6 +2703,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_SECTOR_ISOLATION_RADIUS_LEAN;POSITIVE_HALF_MINIMUM_SECTOR_RADIUS;EVEN_AND_ODD_THRESHOLD_SEPARATION;H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_H1C3_D0_8_FAMILY_EVEN_INTERNAL_GAP_EVEN_ODD_BOTTOM_ORDER_MULTIPLICITY_CROSSWALK_AND_RADIUS_INSTANTIATION_OPEN_H2A2_H2A_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T17:56:08+02:00",
+      "event": "H4A2_GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_PROVED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN;H4A2_COMPONENT_ENVELOPE_TRANSFER_LEAN;H4A2_SQUARED_RESIDUAL_ENVELOPE_TRANSFER_LEAN;H4A2_NONBOTTOM_FILTER_TRANSFER_LEAN;H4A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL_PLANT_RETAINED_EXACT_OPERATOR_PROJECTION_COMPONENT_RATES_AND_SHARED_FILTER_OPEN_H4A2_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

@@ -47204,3 +47204,18 @@ not the raw-D17 factorwise support class.
   `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING`.
 - Acceptance remains narrow: no operator/form crosswalk, projection, leakage
   rate, SafeAlphaUpper, H4a/H4 closure, or RH claim.
+
+Final result:
+
+- `AmbientResidualEnvelopeTransfer.lean` proves all six planned receivers:
+  pointwise norm and squared envelopes, the compressed-Ritz leakage
+  specialization, and both non-bottom-filter wrappers.
+- The proof consumes the exact H4a1 algebraic split and standard norm/filter
+  APIs only; direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.
+- STATE revision 30 nests proved `H4a2.0` and `H4a2a` below H4a2. Exact
+  same-family component-rate instantiation `H4a2b` and assembly `H4a2c` stay
+  OPEN under `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING`.
+- The H4a1 zero-compressed/nonzero-ambient plant remains pinned and live. The
+  count is 144 nodes: 74 PROVED, 62 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
