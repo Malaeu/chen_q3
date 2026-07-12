@@ -47470,3 +47470,25 @@ Final result:
   in `H2b2b2`.
 - The count is 172 nodes: 88 PROVED, 76 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2b2b2 quotient-descent core (in progress)
+
+- Exact target: separate universal descent through `E / span{xi}` from the
+  missing exact Weil radical, positivity and metric/self-adjoint crosswalk.
+- Four local `q3_docs` queries found only adjacent quotient/span and operator
+  material (roughly 0.59--0.65); no current Route B theorem instantiates this
+  descent for the rank-one correction.
+- Since the proved correction sends `xi` to zero, it sends every scalar
+  multiple of `xi` into `span{xi}` and therefore induces an endomorphism on the
+  quotient by that span.
+- Official Mathlib provides `Submodule.mapQ` and the specialized
+  `liftQSpanSingleton` quotient APIs; the universal descent needs no source
+  family or positivity assumption.
+- The exact boundary remains material: proving `rad(T)=span{xi}`, positivity of
+  `T`, agreement with the modified Hilbert quotient and self-adjointness there
+  is not part of the generic descent.
+- Planned DAG split: prove generic H2b2b2a, leave exact radical/metric/lattice/
+  all-z instantiation H2b2b2b and assembly H2b2b2c OPEN under
+  `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`.
+- No quotient positivity, exact self-adjointness, Bus 010, or RH conclusion is
+  inferred.
