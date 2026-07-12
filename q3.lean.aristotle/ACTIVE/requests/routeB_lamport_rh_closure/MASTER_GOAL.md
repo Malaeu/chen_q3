@@ -464,7 +464,10 @@ R0 RHClosure [AND]
 |   |   |   |-- H2b2a GenericRankOneCorrectionWeightedSymmetry
 |   |   |   |-- H2b2b ExactModifiedHilbertFactorization [AND]
 |   |   |   |   |-- H2b2b1 GenericOffSpectrumDeterminantCore
-|   |   |   |   |-- H2b2b2 ExactQuotientLatticeAllZInstantiation
+|   |   |   |   |-- H2b2b2 ExactQuotientLatticeAllZInstantiation [AND]
+|   |   |   |   |   |-- H2b2b2a GenericRankOneQuotientDescent
+|   |   |   |   |   |-- H2b2b2b ExactRadicalMetricLatticeInstantiation
+|   |   |   |   |   `-- H2b2b2c H2b2b2Assembly
 |   |   |   |   `-- H2b2b3 H2b2bAssembly
 |   |   |   `-- H2b2c H2b2Assembly
 |   |   `-- H2b3 H2bAssembly
@@ -632,7 +635,11 @@ proof node.
 | `H2b2b` | AND parent: generic off-spectrum determinant factor plus exact quotient/lattice/complement/phase/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
 | `H2b2b.0` | H2b2b decomposition contract | `PROVED` | `H2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2b2b1` | Matrix determinant lemma factors the rank-one correction whenever `det(D-sI)` is a unit | `PROVED / GENERIC_LEAN` | `H2B2B_GENERIC_RANK_ONE_DETERMINANT_OFF_SPECTRUM_LEAN` |
-| `H2b2b2` | Exact quotient positivity/radical/descent, spectral-point extension, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2b2` | AND parent: generic descent through the calibration line plus exact radical/metric/lattice/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2b2.0` | H2b2b2 decomposition contract | `PROVED` | `H2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2b2b2a` | An endomorphism killing `xi` descends to the quotient by `span{xi}`; specialize to the normalized correction | `PROVED / GENERIC_LEAN` | `H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN` |
+| `H2b2b2b` | Exact radical=`span{xi}`, positivity, quotient metric/self-adjointness, spectral-point extension, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING` |
+| `H2b2b2c` | Exact H2b2b2 assembly | `OPEN / BLOCKED_BY_H2b2b2b` | `H2B2B2_ASSEMBLY_GAP` |
 | `H2b2b3` | Exact H2b2b assembly | `OPEN / BLOCKED_BY_H2b2b2` | `H2B2B_EXACT_ALL_Z_FACTORIZATION_ASSEMBLY` |
 | `H2b2c` | Exact H2b2 assembly | `OPEN / BLOCKED_BY_H2b2b` | `H2B2_EXACT_FACTORIZATION_ASSEMBLY` |
 | `H2b3` | Exact H2b assembly | `OPEN / BLOCKED_BY_H2b2` | `H2B_EXACT_REAL_ZERO_ASSEMBLY` |
@@ -1077,6 +1084,15 @@ but deliberately does not cover spectral/lattice points.  Exact H2b2b2 still
 needs quotient positivity/radical/descent, the spectral-point cancellation,
 complement determinant, nonvanishing phase, all-z identity and same Route B
 family.  H2b remains CONDITIONAL; H2, L0 and RH remain OPEN.
+
+Revision 38 extracts the remaining universal quotient-descent core nested
+below H2b2b2.  Lean proves that any endomorphism killing `xi` induces an
+endomorphism of the quotient by `span{xi}`, and specializes this construction
+to the normalized source rank-one correction.  This is deliberately only an
+algebraic descent: exact Weil positivity, `rad(T)=span{xi}`, the modified
+Hilbert metric and quotient self-adjointness, spectral-point continuation,
+complement determinant, nonvanishing phase and the all-z identity remain OPEN
+in H2b2b2b.  H2b remains CONDITIONAL; H2, L0 and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

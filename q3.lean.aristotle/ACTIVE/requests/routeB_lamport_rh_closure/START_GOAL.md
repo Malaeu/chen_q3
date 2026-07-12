@@ -244,6 +244,13 @@ Current fail-closed address:
   and radical, descent/self-adjointness, complement determinant, nonvanishing
   phase, all-z identity and same-family crosswalk remain OPEN in `H2b2b2` with
   stop `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`;
+- rev38 proves `H2b2b2a H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN`:
+  any endomorphism killing `xi` descends through `E/span{xi}`, and the
+  normalized source rank-one correction therefore induces a quotient
+  endomorphism; exact Weil positivity, radical=`span{xi}`, modified-Hilbert
+  metric/self-adjointness, spectral-point extension, complement determinant,
+  phase and all-z crosswalk remain OPEN in `H2b2b2b` with stop
+  `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

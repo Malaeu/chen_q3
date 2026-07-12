@@ -47492,3 +47492,17 @@ Final result:
   `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`.
 - No quotient positivity, exact self-adjointness, Bus 010, or RH conclusion is
   inferred.
+
+Final result:
+
+- `RankOneCorrectionQuotientDescent.lean` constructs the induced quotient
+  endomorphism for every linear map killing `xi` and specializes it to the
+  normalized Route B rank-one correction.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; no positivity or metric assertion is
+  imported into the algebraic quotient.
+- STATE revision 38 nests proved `H2b2b2.0` and `H2b2b2a` below H2b2b2. Exact
+  radical/metric/self-adjoint, spectral-point, complement, phase and all-z
+  inputs remain OPEN in `H2b2b2b`.
+- The count is 176 nodes: 90 PROVED, 78 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

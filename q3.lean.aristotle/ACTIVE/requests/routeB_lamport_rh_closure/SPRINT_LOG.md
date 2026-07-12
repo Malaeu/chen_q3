@@ -126,3 +126,7 @@ Single owner decision with maximum unblock power:
 `CLOSED H2b2b1: H2B2B_GENERIC_RANK_ONE_DETERMINANT_OFF_SPECTRUM_LEAN; when det(D-sI) is a unit, the matrix determinant lemma factors the determinant of D-|D xi><eta|-sI through the one-dimensional resolvent correction.`
 
 `SKIPPED H2b2b2: H2B_EXACT_THEOREM510_FACTORIZATION_MISSING; spectral/lattice-point extension, exact T positivity/radical, quotient descent/self-adjointness, complement determinant, nonvanishing phase, all-z identity and same Route B family remain open.`
+
+`CLOSED H2b2b2a: H2B2B2_GENERIC_RANK_ONE_QUOTIENT_DESCENT_LEAN; an endomorphism killing xi descends through the quotient by span{xi}, and the normalized source rank-one correction induces that quotient endomorphism.`
+
+`SKIPPED H2b2b2b: H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING; exact Weil positivity, radical=span{xi}, modified-Hilbert metric/self-adjointness, spectral-point extension, complement determinant, nonvanishing phase, all-z identity and the same Route B family remain open.`
