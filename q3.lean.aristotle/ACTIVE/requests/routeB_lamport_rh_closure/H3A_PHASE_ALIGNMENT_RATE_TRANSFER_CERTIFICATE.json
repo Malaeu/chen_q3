@@ -1,0 +1,122 @@
+{
+  "schema": "route_b_h3a_phase_alignment_rate_transfer_certificate.v1",
+  "created_at": "2026-07-12T17:12:01+02:00",
+  "revision_target": 27,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "scope": "H8_PROLATE_TRIAL_TO_MINIMAL_EIGENVECTOR_OPEN_OBLIGATION"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_GROUND_AND_TRIAL_TYPES.md",
+      "sha256": "9cb7a9e34d0d051fc78c9c7a69e71fc91e7c7722f3d8c9a5713469d4f3bd5547",
+      "scope": "EXACT_GROUND_SPACE_AND_CONDITIONAL_TRIAL_TYPES"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_CERTIFICATE.json",
+      "sha256": "b166078a441544e6aca907bd6c49e57eab5750047863fa97a0c1cc49bcf5ad2b",
+      "scope": "D0_5_NONCLAIMS_SIMPLE_EVEN_SELECTOR_AND_RATE"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/InnerProductSpace/Basic.lean",
+      "sha256": "f1ebbf5f60cb9af97601c785ef3472ba676355a883f4c93f15d513b894779d2a",
+      "scope": "COMPLEX_INNER_PRODUCT_NORM_AND_CAUCHY_SCHWARZ"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/Order/Basic.lean",
+      "sha256": "4a337f891cba3ced97c40003d43dbc343f04f32b24ea55979f3c0b24f424c4b0",
+      "scope": "ORDER_SQUEEZE_TENDSTO_TRANSFER"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Data/Real/Sqrt.lean",
+      "sha256": "1168c3d186bc8a6a1e7c8e27d49d46fa909260c1036b4c3b0ae9e0225163cbc8",
+      "scope": "SQRT_NORM_RATE_TRANSFER"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/InnerProductSpace/Basic.html",
+      "scope": "OFFICIAL_COMPLEX_INNER_PRODUCT_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean",
+    "sha256": "9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f",
+    "proved": [
+      "alignmentPhase_zero",
+      "norm_alignmentPhase",
+      "starRingEnd_alignmentPhase_mul",
+      "phase_alignment_norm_sq",
+      "linear_overlap_defect_le_projective_defect",
+      "phase_alignment_norm_le_sqrt_two_projective_defect",
+      "phase_alignment_tendsto_zero_of_projective_defect"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3A_PHASE_ALIGNMENT_RATE_TRANSFER_2026-07-12.md",
+    "sha256": "86bbe7b8ea4d00b122a554597b860de67e848ef9117de9baf226fcbb5ff81e3c"
+  },
+  "h3a_repair": {
+    "parent": "H3a",
+    "decomposition": "H3a.0",
+    "ordered_children": ["H3a1", "H3a2"],
+    "assembly": "H3a3",
+    "proved": ["H3a.0", "H3a1"],
+    "open": ["H3a", "H3a2", "H3a3", "H3", "H3b2", "H3c2", "H3e", "L0c2", "L0"],
+    "generic_verdict": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN",
+    "residual_stop": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H3a1"],
+    "external_requirement": "H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE",
+    "family": "SAME_H1C3_D0_8_GROUND_TRIAL_FAMILY_AND_FILTER",
+    "rate": "ONE_MINUS_NORM_INNER_SQUARED_TENDS_ZERO_AT_H3B_WEIGHTED_RATE",
+    "open_codes": [
+      "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
+      "H3A_EXACT_GROUND_SELECTOR_MISSING",
+      "H3A_SIMPLE_EVEN_GROUND_MISSING",
+      "H3A_TRIAL_NONZERO_COFINAL_LOCUS_MISSING",
+      "H3A_PROJECTIVE_DEFECT_RATE_MISSING",
+      "H3A_SAME_FAMILY_FILTER_MISSING",
+      "GROUND_TRIAL_TRACKING_MISSING",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 132,
+    "PROVED": 68,
+    "OPEN": 56,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_GROUND_VECTOR_SELECTION",
+    "NO_SIMPLE_EVEN_GROUND",
+    "NO_COFINAL_TRIAL_NONZERO",
+    "NO_EXACT_PROJECTIVE_DEFECT_RATE",
+    "NO_SAME_FAMILY_FILTER_SELECTION",
+    "NO_H3A_PARENT_CLOSURE",
+    "NO_H3_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

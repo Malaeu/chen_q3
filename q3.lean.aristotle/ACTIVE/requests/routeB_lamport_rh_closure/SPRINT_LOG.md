@@ -74,3 +74,7 @@ Single owner decision with maximum unblock power:
 `GUARD H4c1: NORMALIZED_LOWER_PRODUCT_DOES_NOT_IMPLY_UNIFORM_B_LOWER_BOUND; the certified b_n tends to zero while |b_n| sqrt(lambda_n)=1, so no uniform liminf or unweighted reciprocal was inferred.`
 
 `SKIPPED H4c2: H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING; canonical alpha/sign, true-gap positivity, exact b formula/orientation, full two-sided constants, q_b, and the shared carrier/filter remain open.`
+
+`CLOSED H3a1: GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN; a total canonical complex phase gives the exact unit-vector norm-square identity, a square-root projective-defect bound, and nonbottom-filter convergence from vanishing projective defect.`
+
+`SKIPPED H3a2: H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING; the exact simple-even ground selector, cofinal nonzero normalized trial, same-family filter, and source-level projective-defect rate remain open.`

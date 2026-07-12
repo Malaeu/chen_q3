@@ -170,6 +170,13 @@ Current fail-closed address:
   exact alpha/gap signs, b formula/orientation, two-sided constants, q_b and
   same carrier/filter remain OPEN in `H4c2` with stop
   `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING`;
+- rev27 proves `H3a1 GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN`:
+  a total canonical complex phase gives the exact unit-vector norm-square
+  identity, a square-root projective-defect bound and nonbottom-filter
+  projective-defect-to-phase-error convergence; exact simple-even ground
+  selection, trial nonzero locus, projective-defect rate and shared family/
+  filter remain OPEN in `H3a2` with stop
+  `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

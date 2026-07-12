@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 26,
-  "updated_at": "2026-07-12T17:04:07+02:00",
+  "revision": 27,
+  "updated_at": "2026-07-12T17:12:01+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "412af59689e523181141e11e7ca582c3befb92a9d9520d30be046ddd28d8d644",
+    "sprint_log_sha256": "9190770d5b1e667ae61db495cf2effbe4f473829cf25551ebe4d0ae392be0e67",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -497,7 +497,39 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3a_phase_alignment_rate_transfer": {
+    "name": "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27",
+    "status": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_PROVED_EXACT_GROUND_TRIAL_PROJECTIVE_RATE_OPEN_NOT_RH",
+    "certificate": "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_CERTIFICATE.json",
+    "certificate_sha256": "67905b34225d08908073c1dc411d4a860c2dfe8d851dfb58e6bd0d2bf97b52b5",
+    "validator": "validate_h3a_phase_alignment_rate_transfer.py",
+    "validator_sha256": "decd1a52c5ce5ad7e183b7030613ac8434b7daa2f7edef7e70ff7af21f2af8dd",
+    "artifact": "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_2026-07-12.md",
+    "artifact_sha256": "86bbe7b8ea4d00b122a554597b860de67e848ef9117de9baf226fcbb5ff81e3c",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean",
+      "sha256": "9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f"
+    },
+    "proved_nodes": [
+      "H3a.0",
+      "H3a1"
+    ],
+    "generic_verdict": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN",
+    "next_worker_leaf": null,
+    "next_exact_node": "H3a2",
+    "remaining_stop": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
+    "H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE": {
+      "name": "ExactSameFamilyGroundTrialProjectiveDefectRate",
+      "authority": "H8ULBMAL/fulltext.md sections 7 and 8; D0_5_GROUND_AND_TRIAL_TYPES.md",
+      "status": "OPEN_CRITICAL",
+      "home": "H3a2",
+      "failure_code": "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING",
+      "is_lamport_node": false
+    },
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
       "authority": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md#2",
@@ -578,7 +610,8 @@
       "H4D2_SAFE_BOUNDS_TO_SQUARE_ENVELOPE_REV23",
       "H3C_DOUBLE_COMPLETION_STRIP_GUARD_REV24",
       "H2B_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_REV25",
-      "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26"
+      "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26",
+      "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1369,13 +1402,51 @@
       "failure_codes": ["GROUND_TRIAL_TRACKING_MISSING", "XI_LIMIT_IDENTIFICATION_MISSING"]
     },
     "H3a": {
-      "id": "H3a", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
-      "statement": "The exact ground vector and trial vector are scalar-phase aligned with a quantitative rate",
-      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H3a", "parent_id": "H3", "kind": "AND", "role": "GOAL",
+      "statement": "The generic complex phase-alignment rate transfer and exact same-family ground/trial projective-defect estimate establish quantitative GroundTrialTracking",
+      "dependencies": ["H3a.0"], "ordered_children": ["H3a1", "H3a2"], "assembly_theorem_id": "H3a3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H3A2_EXACT_GROUND_TRIAL_PROJECTIVE_RATE_OPEN"},
       "validation": "GROUND_TRIAL_QUANTITATIVE_AUDIT",
-      "failure_codes": ["GROUND_TRIAL_TRACKING_MISSING", "PHASE_ALIGNMENT_MISSING"]
+      "failure_codes": ["GROUND_TRIAL_TRACKING_MISSING", "H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"]
+    },
+    "H3a.0": {
+      "id": "H3a.0", "parent_id": "H3a", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H3a iff H3a1 and H3a2 both hold, with H3a3 as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H3A_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H3A_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H3a1": {
+      "id": "H3a1", "parent_id": "H3a", "kind": "LEAF", "role": "GOAL",
+      "statement": "Canonical total complex phase alignment gives an exact unit-vector norm identity, a square-root projective-defect bound, and nonbottom-filter convergence from vanishing projective defect",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean",
+      "failure_codes": ["H3A_GENERIC_PHASE_ALIGNMENT_GAP", "H3A_BOTTOM_FILTER_VACUITY"]
+    },
+    "H3a2": {
+      "id": "H3a2", "parent_id": "H3a", "kind": "LEAF", "role": "GOAL",
+      "statement": "Select the exact normalized simple-even ground and nonzero trial on one cofinal same-family filter and prove their projective defect vanishes at the H3b weighted rate",
+      "dependencies": ["D0", "H3a1"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_AND_EXACT_GROUND_TRIAL_RATE_INPUTS_OPEN"},
+      "validation": "H3A_EXACT_PROJECTIVE_RATE_AND_FILTER_AUDIT",
+      "failure_codes": ["H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING", "H3A_EXACT_GROUND_SELECTOR_MISSING", "H3A_SIMPLE_EVEN_GROUND_MISSING", "H3A_TRIAL_NONZERO_COFINAL_LOCUS_MISSING", "H3A_PROJECTIVE_DEFECT_RATE_MISSING", "H3A_SAME_FAMILY_FILTER_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3a3": {
+      "id": "H3a3", "parent_id": "H3a", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3a.0 AND H3a1 AND H3a2 IMPLIES exact phase-aligned GroundTrialTracking",
+      "dependencies": ["H3a.0", "H3a1", "H3a2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3A2_OPEN"},
+      "validation": "H3A_EXACT_GROUND_TRIAL_TRACKING_ASSEMBLY",
+      "failure_codes": ["H3A_ASSEMBLY_GAP", "GROUND_TRIAL_TRACKING_MISSING"]
     },
     "H3b": {
       "id": "H3b", "parent_id": "H3", "kind": "AND", "role": "GOAL",
@@ -2143,6 +2214,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN;SCALE_DEPENDENT_RECIPROCAL_CONTROL;NORMALIZED_LOWER_PRODUCT_UNIFORM_LOWER_FALSIFIER_RETAINED;H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING"
+      },
+      "H3a/generic_phase_alignment_rate_transfer/v1": {
+        "status": "GENERIC_PHASE_RATE_TRANSFER_CLOSED_EXACT_GROUND_TRIAL_PROJECTIVE_RATE_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN;POINTWISE_SQRT_PROJECTIVE_DEFECT_BOUND;NONBOTTOM_FILTER_RATE_TRANSFER;H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
       }
     }
   },
@@ -2369,6 +2446,13 @@
       "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
       "result": "H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN;POINTWISE_AND_EVENTUAL_NONZERO_UPPER_RECIPROCAL_CONTROL;NORMALIZED_ERROR_TRANSFER;H4C_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_ALPHA_SIGN_TRUE_GAP_B_FORMULA_ORIENTATION_TWO_SIDED_BOUND_QB_AND_SAME_FILTER_OPEN_NO_UNIFORM_B_LOWER_OVERCLAIM_H4C_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T17:12:01+02:00",
+      "event": "H3A_GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN;CANONICAL_TOTAL_PHASE;EXACT_UNIT_VECTOR_NORM_SQUARE_IDENTITY;POINTWISE_SQRT_PROJECTIVE_DEFECT_BOUND;NONBOTTOM_FILTER_RATE_TRANSFER;H3A_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_SIMPLE_EVEN_GROUND_SELECTOR_TRIAL_NONZERO_COFINAL_LOCUS_PROJECTIVE_DEFECT_RATE_AND_SAME_FILTER_OPEN_H3A_H3_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

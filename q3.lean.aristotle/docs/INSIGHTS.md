@@ -47021,9 +47021,30 @@ not the raw-D17 factorwise support class.
   prove unit/nonzero conditions and the source-locked projective-defect rate,
   and match the H3b weighted compact-evaluation filter.
 - Planned DAG split: prove generic H3a1, leave exact ground/trial rate H3a2
-  and assembly H3a3 OPEN with `H3A_EXACT_PROJECTIVE_DEFECT_RATE_MISSING`.
+  and assembly H3a3 OPEN with `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`.
 - Acceptance remains narrow: no selected family/filter, no H3a/H3 closure,
   no scalar-multiple assertion for the source vectors, and `NOT_RH` remains.
+
+### Final result
+
+- `PhaseAlignmentRateTransfer.lean` defines a total canonical complex phase,
+  proves it has norm one, and proves the exact conjugate-phase multiplication
+  identity without any division-by-zero branch.
+- For unit vectors it proves the exact squared phase-aligned distance
+  `2-2*||inner||` and the quantitative square-root bound by the projective
+  defect `1-||inner||^2`.
+- On a non-bottom filter, eventual unit normalization plus projective defect
+  tending to zero implies phase-aligned norm error tending to zero.
+- The result is pure Hilbert geometry.  D0.5 and H8 still do not supply the
+  exact simple-even ground selector, cofinal trial nonzero locus,
+  projective-defect rate, or one shared family/filter.
+- STATE revision 27 decomposes H3a into proved generic core H3a1, OPEN exact
+  ground/trial rate H3a2, and assembly H3a3; `PHASE_ALIGNMENT_MISSING` is
+  retired while `GROUND_TRIAL_TRACKING_MISSING` remains.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 132 nodes: 68 PROVED,
+  56 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.
 
 ## 2026-07-12 — Route B H4c normalized two-sided b control (in progress)
 

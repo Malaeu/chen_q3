@@ -461,7 +461,10 @@ R0 RHClosure [AND]
 |   |   `-- H2b3 H2bAssembly
 |   `-- H2c H2Assembly
 |-- H3 StripUniformTracking [AND]
-|   |-- H3a GroundTrialTracking
+|   |-- H3a GroundTrialTracking [AND]
+|   |   |-- H3a1 GenericComplexPhaseAlignmentCore
+|   |   |-- H3a2 ExactGroundTrialProjectiveRate
+|   |   `-- H3a3 H3aAssembly
 |   |-- H3b CompactStripEvaluation [AND]
 |   |   |-- H3b1 GenericCompactEvaluationRateTransfer
 |   |   |-- H3b2 ExactWeightedEvaluationInstantiation
@@ -593,7 +596,11 @@ proof node.
 | `H2b3` | Exact H2b assembly | `OPEN / BLOCKED_BY_H2b2` | `H2B_EXACT_REAL_ZERO_ASSEMBLY` |
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
 | `H3` | AND parent for same-family strip tracking | `OPEN` | `STRIP_UNIFORM_TRACKING_PROVED` |
-| `H3a` | Ground/trial phase-aligned proximity | `OPEN_CRITICAL` | `GROUND_TRIAL_TRACKING_PROVED` |
+| `H3a` | AND parent: generic complex phase/rate transfer plus exact same-family ground/trial projective-defect rate | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING` |
+| `H3a.0` | H3a decomposition contract | `PROVED` | `H3A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3a1` | Total canonical phase, exact unit-vector norm identity, square-root defect bound and nonbottom-filter rate transfer | `PROVED / GENERIC_LEAN` | `GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN` |
+| `H3a2` | Select exact normalized ground/trial on one family/filter and prove the weighted projective-defect rate | `OPEN / INELIGIBLE` | blocker: `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING` |
+| `H3a3` | Exact H3a assembly | `OPEN / BLOCKED_BY_H3a2` | `H3A_EXACT_GROUND_TRIAL_TRACKING_ASSEMBLY` |
 | `H3b` | AND parent: generic compact rate transfer plus exact weighted Route B instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` |
 | `H3b.0` | H3b decomposition contract | `PROVED` | `H3B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H3b1` | Vanishing compact-uniform envelopes imply uniform/compact-open convergence; a fixed bound alone is falsified | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN` |
@@ -899,6 +906,16 @@ normalized product one but `b_n->0` remains a live guard against a uniform
 lower-bound overclaim.  Exact H4c2 still must define canonical alpha and b,
 prove alpha/true-gap signs, the full two-sided bound and q_b, and select the
 same carrier/filter as H3e/H4d2.  H4c, H4, and RH remain OPEN.
+
+Revision 27 separates universal complex-Hilbert phase geometry from the exact
+Route B ground/trial approximation.  Lean defines a total canonical phase,
+proves the exact unit-vector squared-distance identity, bounds phase-aligned
+error by the square root of twice the projective defect, and transfers a
+vanishing projective defect to phase-aligned norm convergence on a non-bottom
+filter.  Exact H3a2 still must select the same normalized simple-even ground
+and nonzero trial family and prove the projective-defect rate required by H3b.
+The source identifies precisely that approximation as a main remaining
+obstacle.  H3a, H3, L0c2, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`
