@@ -46633,3 +46633,26 @@ not the raw-D17 factorwise support class.
   validators, and `routeb_status.py --check` pass.  STATE has 83 nodes:
   41 PROVED, 34 OPEN, 7 BLOCKED, 1 CONDITIONAL; active leaf remains
   `D0.7e.5a`, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H1c1 Proposition 5.9 source-entire frontier (in progress)
+
+- Exact target: split `H1c ExactApproximantSourceCrosswalk` into a proved
+  source theorem `H1c1 Proposition59RawEntireTransform` and the still-open
+  same-family/master-selection crosswalk `H1c2`.
+- H8 Proposition 5.9 gives the finite raw Mellin/Fourier transform with
+  apparent poles at `2*pi*k/L`, and explicitly says those poles cancel.  H8
+  Theorem 5.10 supplies the later real-zero statement only under the still-open
+  simple-even ground hypothesis; this transaction therefore touches H1, not
+  H2.
+- Four local `q3_docs` queries returned no Route B implementation of this exact
+  removable-pole formula (best scores 0.64--0.70).  The reusable formal tool is
+  Mathlib's `Complex.differentiableOn_dslope`: `dslope exp 0` is the canonical
+  entire extension of `(exp w - 1)/w` through `w=0`.
+- Lean plan: define the source frequency `w_k(z)=2*pi*i*k-i*L*z`, define each
+  Proposition-5.9 basis transform with `dslope Complex.exp 0 (w_k z)`, prove
+  its non-pole quotient formula and global differentiability, then close the
+  finite-sum transform by `Finset` differentiation.
+- Acceptance is deliberately narrow: source transform entire, removable poles
+  encoded rather than assumed, zero holes, only standard Mathlib axioms.  It
+  does not select `RAW_GLOBAL` as master `F_j`, discharge `D0.8`, prove H1/H2,
+  create Bus 010, or change `NOT_RH`.
