@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T15:57:19+02:00",
+  "updated_at": "2026-07-12T16:10:18+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -52,6 +52,9 @@
       ,"H3B_DECOMPOSITION_EQUIVALENCE_LOCKED"
       ,"GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN"
       ,"FIXED_BOUND_WITHOUT_VANISHING_RATE_NOT_UNIFORM_ZERO"
+      ,"H4A1_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN"
+      ,"ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -80,6 +83,7 @@
       ,"H2A_EXACT_SECTOR_ORDERING_MISSING"
       ,"H2A_SAME_FAMILY_SELECTION_MISSING"
       ,"H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING"
+      ,"H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING"
     ]
   },
   "bus": {
@@ -155,6 +159,12 @@
       "class": "MASTER_DAG_EXACT_WEIGHTED_EVALUATION_BLOCKER",
       "owner": "Route B proof compiler",
       "detail": "The generic compact evaluation-rate and compact-open transfers are Lean-proved, but the exact same-family compact envelope, weighted ground/trial decay, and joint filter remain open under PO_XWALK_UNIFORM_EVAL."
+    },
+    {
+      "code": "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING",
+      "class": "MASTER_DAG_EXACT_OPERATOR_DOMAIN_BLOCKER",
+      "owner": "Route B proof compiler",
+      "detail": "The generic ambient/compressed residual split and zero-internal/nonzero-ambient falsifier are Lean-proved, but the exact Route B operator domain, projection, form-to-operator realization, trial/Ritz object, and leakage-rate crosswalk remain open."
     }
   ],
   "guardrails": {
@@ -344,6 +354,18 @@
     "h3b_compact_evaluation_rate_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
       "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c"
+    },
+    "h4a1_ambient_residual_split_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A1_AMBIENT_RESIDUAL_SPLIT_CERTIFICATE.json",
+      "sha256": "cf695d5a1a9c1e59db379c0ab95ab4847ba2a68e3ad04abf4017424edc4f7738"
+    },
+    "h4a1_ambient_residual_split_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4a1_ambient_residual_split.py",
+      "sha256": "2f222707914af2dbd8fa37d7401cabeb3dabc16d6b133dc0f7e0454f7e86e4ab"
+    },
+    "h4a1_ambient_residual_split_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean",
+      "sha256": "d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00"
     }
   },
   "stages": [

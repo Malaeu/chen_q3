@@ -46864,3 +46864,11 @@ not the raw-D17 factorwise support class.
 - Official Mathlib projection APIs distinguish projection onto a subspace from the ambient map and supply orthogonal/Pythagorean refinements, but the first generic identity requires only additive linear algebra.
 - Planned DAG split: prove generic residual split and falsifier in H4a1a, leave exact domain-safe Route B instantiation H4a1b and assembly H4a1c OPEN with `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING`.
 - Acceptance remains narrow: no form/operator alias, no internal-residual tautology, no H4a1/H4a/H4 closure, and Route B remains `NOT_RH`.
+
+### Final result
+
+- `AmbientResidualSplit.lean` defines separate ambient residual, compressed residual, and projection leakage namespaces and proves their exact additive identity.
+- Under the compressed Ritz equation, Lean proves both vector equality and norm equality between the ambient residual and leakage; the internal residual is not reused as an ambient estimate.
+- `compressed_residual_zero_ambient_residual_nonzero` certifies an idempotent coordinate projection with zero compressed residual and nonzero ambient residual `(0,1)`.
+- STATE revision 22 decomposes H4a1 into proved generic core `H4a1a`, OPEN exact Route B carrier/projection crosswalk `H4a1b`, and assembly `H4a1c`; the operator-domain and form/operator guards remain explicit.
+- Direct Lean validation passes with zero holes and only `propext`, `Classical.choice`, and `Quot.sound`.  The count is 112 nodes: 58 PROVED, 46 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

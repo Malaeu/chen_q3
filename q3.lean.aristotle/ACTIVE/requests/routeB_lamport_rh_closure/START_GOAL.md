@@ -134,6 +134,13 @@ Current fail-closed address:
   ground/trial decay on the joint filter remain OPEN in `H3b2` with stop
   `H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING` and external obligation
   `PO_XWALK_UNIFORM_EVAL`;
+- rev22 proves `H4a1a GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN`:
+  ambient residual equals compressed residual plus projection leakage, and a
+  compressed Ritz equation identifies the ambient residual norm with the
+  leakage norm; the coordinate projection/swap plant has zero internal
+  residual but nonzero ambient residual `(0,1)`; exact Route B operator
+  domain, projection, form/operator crosswalk and leakage rate remain OPEN in
+  `H4a1b` with stop `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
   SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;

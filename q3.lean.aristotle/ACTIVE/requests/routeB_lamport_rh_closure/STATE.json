@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 21,
-  "updated_at": "2026-07-12T15:57:19+02:00",
+  "revision": 22,
+  "updated_at": "2026-07-12T16:10:18+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "08179e194dd36cce1dd1198024c9b4d68f608c50c26c91eb6767267a09f31d84",
+    "sprint_log_sha256": "3859150e38b68e3d58fef9e2397ca9ff7409587e37ce55ffcc72afe9b9968cf5",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -372,6 +372,28 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4a1_ambient_residual_split": {
+    "name": "H4A1_AMBIENT_RESIDUAL_SPLIT_REV22",
+    "status": "GENERIC_AMBIENT_RESIDUAL_SPLIT_PROVED_EXACT_ROUTE_B_CROSSWALK_OPEN_NOT_RH",
+    "certificate": "H4A1_AMBIENT_RESIDUAL_SPLIT_CERTIFICATE.json",
+    "certificate_sha256": "cf695d5a1a9c1e59db379c0ab95ab4847ba2a68e3ad04abf4017424edc4f7738",
+    "validator": "validate_h4a1_ambient_residual_split.py",
+    "validator_sha256": "2f222707914af2dbd8fa37d7401cabeb3dabc16d6b133dc0f7e0454f7e86e4ab",
+    "artifact": "H4A1_AMBIENT_RESIDUAL_SPLIT_2026-07-12.md",
+    "artifact_sha256": "b93a9593310fa38493a618e5c7f97bea4c3a796c30da2b9d824d95a1bc0187d2",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean",
+      "sha256": "d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00"
+    },
+    "proved_nodes": ["H4a1.0", "H4a1a"],
+    "generic_verdict": "GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN",
+    "falsifier": "ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL",
+    "next_worker_leaf": null,
+    "next_exact_node": "H4a1b",
+    "remaining_stop": "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "PO-1/A1": {
       "name": "ExactDetectorDictionaryAlpha",
@@ -448,7 +470,8 @@
       "L0C_GENERIC_ZERO_TRANSFER_REV18",
       "H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_REV19",
       "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_REV20",
-      "H3B_COMPACT_EVALUATION_RATE_TRANSFER_REV21"
+      "H3B_COMPACT_EVALUATION_RATE_TRANSFER_REV21",
+      "H4A1_AMBIENT_RESIDUAL_SPLIT_REV22"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1328,13 +1351,50 @@
       "failure_codes": ["H4A_DECOMPOSITION_NOT_EQUIVALENT"]
     },
     "H4a1": {
-      "id": "H4a1", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
-      "statement": "Derive the exact non-internal Galerkin or continuum residual identity on a domain-safe exact carrier",
-      "dependencies": ["D0"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H4a1", "parent_id": "H4a", "kind": "AND", "role": "GOAL",
+      "statement": "The generic ambient/compressed residual split and its exact domain-safe Route B crosswalk derive the required non-internal residual identity",
+      "dependencies": ["H4a1.0"], "ordered_children": ["H4a1a", "H4a1b"], "assembly_theorem_id": "H4a1c",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H4A1B_EXACT_AMBIENT_RESIDUAL_CROSSWALK_OPEN"},
       "validation": "AMBIENT_RESIDUAL_IDENTITY_AUDIT",
-      "failure_codes": ["RESIDUAL_IDENTITY_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION"]
+      "failure_codes": ["RESIDUAL_IDENTITY_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY", "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION"]
+    },
+    "H4a1.0": {
+      "id": "H4a1.0", "parent_id": "H4a1", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4a1 iff the generic ambient/compressed residual split AND its exact domain-safe Route B crosswalk",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4A1_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4A1_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4a1a": {
+      "id": "H4a1a", "parent_id": "H4a1", "kind": "LEAF", "role": "GOAL",
+      "statement": "The ambient residual equals the compressed residual plus projection leakage; under the compressed Ritz equation the ambient residual equals leakage, and zero internal residual need not mean zero ambient residual",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/AmbientResidualSplit.lean",
+      "failure_codes": ["H4A1_GENERIC_RESIDUAL_SPLIT_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY", "H4A1_AMBIENT_RESIDUAL_FALSIFIER_MISSING"]
+    },
+    "H4a1b": {
+      "id": "H4a1b", "parent_id": "H4a1", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H4a1a on one exact domain-safe Route B operator, source-locked projection, normalized trial/Ritz vector, scalar, ambient residual namespace, and leakage defect with its later norm-rate interface",
+      "dependencies": ["D0", "H4a1a"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_EXACT_OPERATOR_DOMAIN_PROJECTION_AND_LEAKAGE_CROSSWALK_OPEN"},
+      "validation": "H4A1_EXACT_ROUTE_B_AMBIENT_RESIDUAL_CROSSWALK",
+      "failure_codes": ["H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING", "RESIDUAL_IDENTITY_MISSING", "INTERNAL_RESIDUAL_TAUTOLOGY", "H4A_OPERATOR_DOMAIN_GAP", "H4A_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION", "H4A_TRIAL_RITZ_OBJECT_MISMATCH", "H4A1_PROJECTION_NOT_SOURCE_LOCKED", "H4A1_LEAKAGE_NORM_RATE_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4a1c": {
+      "id": "H4a1c", "parent_id": "H4a1", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4a1a AND H4a1b IMPLIES the exact non-internal domain-safe Route B ambient residual identity",
+      "dependencies": ["H4a1.0", "H4a1a", "H4a1b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4A1B_EXACT_AMBIENT_RESIDUAL_CROSSWALK_OPEN"},
+      "validation": "H4A1_EXACT_AMBIENT_RESIDUAL_ASSEMBLY",
+      "failure_codes": ["H4A1_ASSEMBLY_GAP", "H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H4a2": {
       "id": "H4a2", "parent_id": "H4a", "kind": "LEAF", "role": "GOAL",
@@ -1774,6 +1834,12 @@
         "no_progress_streak": 0,
         "result": "WEIGHTED_SPECTRAL_TEMPLE_CORE_LEAN;TRUE_GAP_MINUS_RAYLEIGH_EXCESS_DENOMINATOR;H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING"
       },
+      "H4a1/generic_ambient_compressed_residual_split/v1": {
+        "status": "GENERIC_AMBIENT_RESIDUAL_SPLIT_CLOSED_EXACT_ROUTE_B_CROSSWALK_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN;ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL;H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING"
+      },
       "H1c/proposition59_removable_rhs_entire/v1": {
         "status": "SOURCE_RHS_CORE_CLOSED_RAW_INTEGRAL_AND_MASTER_OPEN",
         "last_class": "PROOF_PROGRESS",
@@ -1988,6 +2054,13 @@
       "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
       "result": "GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN;COMPACT_OPEN_ENVELOPE_TRANSFER_LEAN;FIXED_BOUND_WITHOUT_VANISHING_RATE_NOT_UNIFORM_ZERO;H3B_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_WEIGHTED_COMPACT_ENVELOPE_GROUND_TRIAL_RATE_AND_JOINT_FILTER_OPEN_H3B_H3_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T16:10:18+02:00",
+      "event": "H4A1_GENERIC_AMBIENT_RESIDUAL_SPLIT_PROVED",
+      "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
+      "result": "GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN;ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL;H4A1_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_ROUTE_B_OPERATOR_DOMAIN_PROJECTION_FORM_OPERATOR_CROSSWALK_AND_LEAKAGE_RATE_OPEN_H4A1_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

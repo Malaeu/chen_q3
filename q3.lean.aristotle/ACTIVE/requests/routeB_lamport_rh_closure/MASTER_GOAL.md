@@ -468,7 +468,10 @@ R0 RHClosure [AND]
 |   `-- H3d H3Assembly
 |-- H4 DetectorDecay [AND]
 |   |-- H4a SafeAlphaUpper [AND]
-|   |   |-- H4a1 AmbientResidualIdentity
+|   |   |-- H4a1 AmbientResidualIdentity [AND]
+|   |   |   |-- H4a1a GenericAmbientCompressedResidualSplit
+|   |   |   |-- H4a1b ExactRouteBAmbientResidualCrosswalk
+|   |   |   `-- H4a1c H4a1Assembly
 |   |   |-- H4a2 UniformResidualUpper
 |   |   |-- H4a3 ResidualToCanonicalAlphaUpper [AND]
 |   |   |   |-- H4a3a GenericWeightedSpectralTempleCore
@@ -587,7 +590,11 @@ proof node.
 | `H4.0` | Contract-v2 decomposition into four safe leaves | `PROVED` | `H4_CONTRACT_V2_DECOMPOSITION_LOCKED` |
 | `H4a` | SafeAlphaUpper for the canonical alpha | `OPEN_CRITICAL` | `SAFE_ALPHA_UPPER_PROVED` |
 | `H4a.0` | Residual-to-alpha decomposition contract | `PROVED` | `H4A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
-| `H4a1` | Exact non-internal domain-safe residual identity | `OPEN` | `RESIDUAL_IDENTITY_PROVED` |
+| `H4a1` | AND parent: generic ambient/compressed residual split plus exact Route B carrier crosswalk | `OPEN / GENERIC_CORE_PROVED` | blocker: `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING` |
+| `H4a1.0` | H4a1 decomposition contract | `PROVED` | `H4A1_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4a1a` | Ambient residual equals compressed residual plus leakage; zero internal residual need not mean zero ambient residual | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN` |
+| `H4a1b` | Pin the exact domain-safe Route B operator, projection, trial/Ritz object, residual/leakage crosswalk and later norm-rate interface | `OPEN / INELIGIBLE` | blocker: `H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING` |
+| `H4a1c` | Exact H4a1 assembly | `OPEN / BLOCKED_BY_H4a1b` | `RESIDUAL_IDENTITY_PROVED` |
 | `H4a2` | Uniform upper bound for that exact residual | `OPEN_CRITICAL` | `RESIDUAL_UPPER_PROVED` |
 | `H4a3` | AND parent for the corrected weighted-spectral Temple bridge and exact Route B instantiation | `OPEN / GENERIC_CORE_PROVED / EXACT_INSTANTIATION_OPEN` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
 | `H4a3.0` | Definitional H4a3 decomposition contract | `PROVED` | `H4A3_DECOMPOSITION_EQUIVALENCE_LOCKED` |
@@ -811,6 +818,16 @@ same-family estimate and rate, schematically
 `sqrt(L_i) lambda_i^a ||ground_i-trial_i|| -> 0`, or a source-locked weighted
 cancellation replacement, on the selected joint filter.  D0.6 alone is only
 fixed-window boundedness, so H3b, H3, and RH remain OPEN.
+
+Revision 22 separates the universal H4a1 residual algebra from the exact
+Route B operator realization.  Lean proves
+`ambient = compressed + leakage`; under the compressed Ritz equation, the
+ambient residual and leakage have the same norm.  The executable coordinate
+model has an idempotent projection and a zero compressed residual but nonzero
+ambient residual `(0,1)`, so the internal-residual tautology is killed.  Exact
+H4a1b still must pin the domain-safe operator, projection, trial/Ritz object,
+form-to-operator crosswalk, and leakage norm/rate.  Therefore H4a1, H4a, H4,
+and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

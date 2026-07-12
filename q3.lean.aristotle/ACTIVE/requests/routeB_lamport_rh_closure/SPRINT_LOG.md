@@ -48,3 +48,9 @@ Single owner decision with maximum unblock power:
 `CLOSED H3b1: GENERIC_COMPACT_EVALUATION_RATE_TRANSFER_LEAN; a compact-uniform norm envelope tending to zero yields uniform convergence, compactwise envelopes yield compact-open convergence, and the fixed-bound-without-decay falsifier is executable.`
 
 `SKIPPED H3b2: H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING; D0.6 supplies only fixed-window boundedness, while the exact same-family compact envelope, weighted ground/trial decay, and joint filter remain open under PO_XWALK_UNIFORM_EVAL.`
+
+`CLOSED H4a1a: GENERIC_AMBIENT_COMPRESSED_RESIDUAL_SPLIT_LEAN; ambient residual equals compressed residual plus projection leakage, and under the Ritz equation its norm equals the leakage norm.`
+
+`GUARD H4a1a: ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL; the idempotent coordinate projection and swap operator give a zero internal Ritz residual with ambient residual (0,1), so internal-residual tautology remains killed.`
+
+`SKIPPED H4a1b: H4A1_EXACT_AMBIENT_RESIDUAL_CROSSWALK_MISSING; the exact Route B operator domain, source-locked projection, form/operator realization, trial/Ritz object, and leakage-rate crosswalk remain open.`
