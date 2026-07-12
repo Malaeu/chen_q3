@@ -47403,3 +47403,25 @@ Final result:
   filter remain OPEN in `H3a2b`.
 - The count is 164 nodes: 84 PROVED, 72 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3c2 difference/reference limit transfer (in progress)
+
+- Exact target: isolate the universal additive limit step from H3c2 while
+  leaving the raw-or-inverse completion choice and joint-filter theorem open.
+- Four local `q3_docs` queries found only weak adjacent locally-uniform and
+  completion material (roughly 0.58--0.62); no pinned theorem already performs
+  this exact difference-plus-reference transfer.
+- Generic hypotheses: `F_i - G_i` converges uniformly (or locally uniformly)
+  to zero on the supplied set/filter, and `G_i` converges in the same mode to
+  the target `Xi`.
+- Pointwise identity `F_i = (F_i-G_i)+G_i`, together with the uniform addition
+  API, should yield convergence of `F_i` to `Xi` without selecting any Route B
+  objects.
+- Official Mathlib defines uniform convergence over arbitrary filters and its
+  locally-uniform variant; those APIs do not provide the exact family, target,
+  or finite/continuum crosswalk.
+- Planned DAG split: prove generic H3c2a, leave exact raw/inverse-completion
+  family and filter instantiation H3c2b plus assembly H3c2c OPEN under
+  `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING`.
+- No double completion, target alias, subsequence, selector, Bus 010, or RH
+  conclusion is inferred.
