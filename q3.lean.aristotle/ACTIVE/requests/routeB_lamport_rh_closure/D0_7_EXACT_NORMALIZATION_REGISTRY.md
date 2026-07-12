@@ -1,17 +1,18 @@
 # D0.7 — ExactNormalization registry
 
-Status: `PARTIAL_MATH_PROVED / 4_OF_5_COMPONENTS_SOURCE_LOCKED / BLOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`
+Status: `PARTIAL_MATH_PROVED / BDET_DEFINITION_LOCKED / XWALK_BLOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH`
 
-Progress class: `FALSIFICATION_PROGRESS`.
+Progress class: `REPRESENTATION_PROGRESS`.
 
 Partial exit: `D0_7_PARTIAL_NORMALIZATION_LOCKED`.
 
-Active stop: `D0_7_DETECTOR_B_DEFINITION_MISSING`.
+Active stop: `D0_7E_XWALK_OPEN`.
 
 The point of this leaf is to make every scalar, phase, boundary functional,
-and `b` namespace exact before any asymptotic estimate is attempted. Four
-components are source-lockable. The fifth is absent from the canonical source
-corpus and cannot be reconstructed from a pilot scalar.
+and `b` namespace exact before any asymptotic estimate is attempted. The
+owner-ratified central calibration now supplies the finite detector definition.
+Its theorem crosswalk to the exact spectral/ZEO consumers is still open and
+cannot be replaced by a theorem shape or a pilot scalar.
 
 ## 1. Parameter and scalar convention
 
@@ -175,33 +176,41 @@ crosswalk to the `W'` consumer. Neither the exact identity
 
 Exit: `D0_7D_B_NAMESPACE_FIREWALL_LOCKED`.
 
-## 6. D0.7e — Missing exact detector `b`
+## 6. D0.7e — Central calibration locked; exact crosswalk open
 
-Required statement:
+The immutable owner input defines, on D0.7b's `TrialNonzero` locus,
 
 ```text
-Define bDet on an exact indexed carrier;
-prove that this very scalar is the b used by the exact W' identity;
-only later prove its nonzero and growth bounds in H4d.
+Fplus_m_N(z)=T_m(kTrial_m_N)(-z),
+Fhat_m_N(z)=gammaC(1/2+i*z)Fplus_m_N(z),
+bDet_m_N=Fhat_m_N(0)/Xi(0)
+          =sqrt(L_m)c0(kTrial_m_N)/zeta(1/2).
 ```
 
-Source audit result:
+The reflection is required by D0.6's frozen sign. The alternating eta series
+proves `zeta(1/2)<0`, so the denominator is genuinely nonzero. On the further
+`BDetNonzero` locus, `G=Fhat/bDet` satisfies
+`Fhat=bDet*G` and `G(0)=Xi(0)`. Reality, phase, and all D0.7d namespace
+firewalls are proved. The exact proof, source lock, decomposition, certificate,
+and fail-closed validator are:
 
-- four local `q3_docs` embedding queries returned no relevant definition;
-- the primary source *Zeta Spectral Triples* defines `delta_N`, conditional
-  boundary normalization, the perturbed scaling operator, its transform, and
-  determinant, but does not define the Route B `W'` detector scalar;
-- the canonical `ALPHA_DETECTOR_OBJECT_LOCK.md` records `b_lambda=MISSING`;
-- `ROUTE_B_THEOREM_CONTRACT_v2.md` lists the formula and crosswalk as an open
-  dictionary obligation.
+- `D0_7E_CENTRAL_MELLIN_CALIBRATION.md`;
+- `D0_7E_CLASSICAL_SOURCE_LOCK.json`;
+- `D0_7E_DECOMPOSITION_CONTRACT.md`;
+- `D0_7E_CERTIFICATE.json`;
+- `validate_d0_7e.py`.
 
-Therefore no source-locked definition of `bDet` exists. Promoting `bPilot` or
-`sTrial^(-1)` would be an unsupported object crosswalk and would violate the
-newer canonical audit.
+The owner file labels the remaining inequality `THEOREM SHAPE to be proved`.
+Its `alpha`, true `DeltaE`, `delta_dict`, limit direction, and uniform compact
+constant are not proved on one exact carrier. The primary source itself names
+sufficiently accurate trial-to-ground tracking as a main missing step.
+Therefore `PO_D0_7E_XWALK` is `BLOCKED / THEOREM_SHAPE_ONLY`.
 
 Status: `BLOCKED`.
 
-Stop: `D0_7_DETECTOR_B_DEFINITION_MISSING`.
+Partial exit: `D0_7E_CENTRAL_CALIBRATION_LOCKED`.
+
+Stop: `D0_7E_XWALK_OPEN`.
 
 ## 7. Lamport proof and zoom-out
 
@@ -212,10 +221,12 @@ Stop: `D0_7_DETECTOR_B_DEFINITION_MISSING`.
 <1>3. Elementary complex scaling proves (4.2) on GroundDeltaNonzero; the
       hypotheses are not smuggled into the domain.
 <1>4. Source formulas and provenance order separate bWeil, bPilot, xihat, and
-      the missing bDet.
-<1>5. The object-lock plus failed local/primary-source search proves that the
-      required bDet definition is not presently supplied.
-<1>6. D0.7a--D0.7d are PROVED and D0.7e is BLOCKED. By the exact conjunction
+      the owner-ratified bDet.
+<1>5. D0.7e.1--D0.7e.4 prove the immutable provenance, finite central
+      definition, dependent normalization, and reality/firewall components.
+<1>6. D0.7e.5 remains blocked because its theorem shape has no exact typed
+      proof and imports the source's declared ground/trial missing step.
+<1>7. D0.7a--D0.7d are PROVED and D0.7e is BLOCKED. By the exact conjunction
       D0.7.0, D0.7 and assembly D0.7f remain BLOCKED.
 ```
 
@@ -234,8 +245,8 @@ Conclusion: `D0.7 = BLOCKED / 4_OF_5_COMPONENTS_PROVED`. No
   different norms.
 - `BWEIL_ALIAS`: replace detector `b` by the matrix coefficient `bWeil_j`;
   the index and type disagree.
-- `BPILOT_ALIAS`: set detector `b:=||E(g04)||`; the newer object-lock has no
-  crosswalk and records the slot missing.
+- `BPILOT_ALIAS`: set detector `b:=||E(g04)||`; it disagrees with the locked
+  central calibration and has no crosswalk.
 - `H4D_SMUGGLE`: assert a uniform lower/growth bound from mere dependent
   definability; no such estimate was proved.
 
@@ -248,7 +259,8 @@ NO_UNCONDITIONAL_DELTA_NONZERO
 NO_UNCONDITIONAL_TRIAL_NONZERO
 NO_BOUNDED_EVALUATION_ON_ALL_H
 NO_ENDPOINT_REPRESENTATIVE_ALIAS
-NO_DETECTOR_B_DEFINITION
+NO_UNCONDITIONAL_BDET_NONZERO
+NO_WPRIME_ZEO_CROSSWALK
 NO_BPILOT_BDET_CROSSWALK
 NO_B_BOUNDS
 NO_H4D

@@ -1,0 +1,150 @@
+{
+  "schema": "route_b_d0_7e_certificate.v1",
+  "created_at": "2026-07-12T09:27:00+02:00",
+  "node_id": "D0.7e",
+  "name": "ExactDetectorBDefinitionAndCrosswalk",
+  "proof_status": "BLOCKED",
+  "progress_class": "REPRESENTATION_PROGRESS",
+  "partial_exit_code": "D0_7E_CENTRAL_CALIBRATION_LOCKED",
+  "stop_code": "D0_7E_XWALK_OPEN",
+  "rh_status": "NOT_RH",
+  "lean_status": "INTERFACE_UNPINNED",
+  "decomposition": {
+    "node": "D0.7e.0",
+    "proof_status": "PROVED",
+    "children": [
+      "D0.7e.1",
+      "D0.7e.2",
+      "D0.7e.3",
+      "D0.7e.4",
+      "D0.7e.5"
+    ],
+    "assembly": "D0.7e.6"
+  },
+  "components": {
+    "D0.7e.1": "PROVED_IMMUTABLE_OWNER_DEFINITION_PROVENANCE",
+    "D0.7e.2": "PROVED_FINITE_CENTRAL_CALIBRATION_ON_TRIAL_NONZERO",
+    "D0.7e.3": "PROVED_DEPENDENT_NORMALIZATION_ON_BDET_NONZERO",
+    "D0.7e.4": "PROVED_REALITY_PHASE_NAMESPACE_FIREWALL",
+    "D0.7e.5": "BLOCKED_THEOREM_SHAPE_ONLY",
+    "D0.7e.6": "BLOCKED_BY_D0.7e.5"
+  },
+  "owner_lock": {
+    "classification": "OWNER_RATIFIED_NEW_DEFINITION_NOT_PROOF_AUTHORITY",
+    "immutable": true,
+    "request_fields_present": true
+  },
+  "domain_lock": {
+    "finite_parameter_set": "I_fin={(m,N):m>=2_AND_N>=1}",
+    "definition_domain": "TrialNonzero={(m,N)_in_I_fin:norm(P_m_N(g_lambda_m))>0}",
+    "normalization_domain": "BDetNonzero={(m,N)_in_TrialNonzero:bDet_m_N!=0}",
+    "N_lambda_schedule": "UNPINNED_KAPPA_UNSPECIFIED",
+    "anchor_N_120": "DIAGNOSTIC_NOT_SELECTOR"
+  },
+  "transform_lock": {
+    "canonical": "T_m(f)(z)=integral Z_m(f)(u)*u^(-i*z)*du/u",
+    "owner_tracker": "Fplus_m_N(z)=T_m(k1_m_N)(-z)",
+    "forbidden_alias": "Fplus_m_N(z)!=T_m(k1_m_N)(z)_IN_GENERAL",
+    "completed_tracker": "Fhat_m_N(z)=gammaC(1/2+i*z)*Fplus_m_N(z)",
+    "holomorphy_domain": "Omega={z:abs(Im(z))<5/2}",
+    "gamma_removable_value": "gammaC(0)=-1"
+  },
+  "central_lock": {
+    "zeta_half": "REAL_NEGATIVE_NONZERO_BY_ETA_SERIES",
+    "Xi_zero": "NONZERO_BY_COMPLETED_FACTOR",
+    "coefficient": "c0=<V_0_m,k1_m_N>_ANTILINEAR_FIRST",
+    "central_integral": "Fplus_m_N(0)=sqrt(L_m)*c0",
+    "definition": "bDet_m_N=Fhat_m_N(0)/Xi(0)",
+    "simplification": "bDet_m_N=sqrt(L_m)*c0/zeta(1/2)",
+    "scalar_field": "R"
+  },
+  "normalization_lock": {
+    "definition": "G_m_N=Fhat_m_N/bDet_m_N_ON_BDetNonzero",
+    "factorization": "Fhat_m_N=bDet_m_N*G_m_N",
+    "central_value": "G_m_N(0)=Xi(0)",
+    "cofinal_nonzero": "NOT_CLAIMED"
+  },
+  "crosswalk": {
+    "obligation": "PO_D0_7E_XWALK",
+    "proof_status": "BLOCKED",
+    "input_status": "THEOREM_SHAPE_TO_BE_PROVED",
+    "alpha": "UNDEFINED_CANONICALLY",
+    "DeltaE": "UNDEFINED_TRUE_COMPLEMENTARY_DISTANCE",
+    "delta_dict": "UNDEFINED",
+    "limit_quantifier": "MISSING",
+    "uniform_A_K": "UNPROVED",
+    "primary_source_status": "GROUND_TRIAL_TRACKING_EXPLICITLY_MISSING",
+    "secondary_codes": [
+      "D0_7E_ALPHA_DELTAE_UNDEFINED",
+      "D0_7E_XWALK_LIMIT_QUANTIFIER_MISSING",
+      "D0_7E_XWALK_UNIFORM_CONSTANT_GAP",
+      "D0_7E_B_BOUND_CONTRACT_MISMATCH",
+      "D0_7E_XWALK_DEPENDENCY_CYCLE",
+      "D0_7E_SOURCE_POINTER_UNRESOLVED",
+      "D0_7E_N_SCHEDULE_UNPINNED"
+    ]
+  },
+  "dependency_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_5_CERTIFICATE.json",
+      "sha256": "b166078a441544e6aca907bd6c49e57eab5750047863fa97a0c1cc49bcf5ad2b"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_6_CERTIFICATE.json",
+      "sha256": "57e96b1b7fbd4deb8f65c32315a6a9f9f3d0916a8a46e0be3009c3f65c436dc5"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/PEN_3_3_G04_OBJECT_DICTIONARY.md",
+      "sha256": "010282dda8b76e8a9e0ea184f14a62d34f60b0d4b588f8f0e541b97a959ef71e"
+    },
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_OWNER_INPUT.md",
+      "sha256": "a0f8ef78ec023aeef34f6ae03769faaf675a94d30d93b85a5da5258cb2f0bfed"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_DECOMPOSITION_CONTRACT.md",
+      "sha256": "5e7e795643a53b9f7a6997284db39962023d4e5336292fa75642115a7a01eaa3"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CLASSICAL_SOURCE_LOCK.json",
+      "sha256": "70f38d5c1f5a927f5a6529e09fcb83e4e959893efbbd68d9fd7e10a2ee28335c"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
+      "sha256": "524565589a228788039c6853e7919d6bf4f0f916e42493c6119372d637eb9b1d"
+    }
+  ],
+  "plants": {
+    "sign": "D0_7E_SIGN_PLANT_FIRES",
+    "trial_zero": "D0_7E_TRIAL_ZERO_PLANT_FIRES",
+    "zeta_decimal": "D0_7E_ZETA_DECIMAL_PLANT_FIRES",
+    "c0_scale": "D0_7E_C0_SCALE_PLANT_FIRES",
+    "b_zero": "D0_7E_B_ZERO_PLANT_FIRES",
+    "N_selector": "D0_7E_N_SELECTOR_PLANT_FIRES",
+    "crosswalk_shape": "D0_7E_XWALK_SHAPE_PLANT_FIRES",
+    "source_alias": "D0_7E_SOURCE_ALIAS_PLANT_FIRES"
+  },
+  "explicit_nonclaims": [
+    "NO_N_LAMBDA_SELECTOR",
+    "NO_UNCONDITIONAL_TRIAL_NONZERO",
+    "NO_UNCONDITIONAL_BDET_NONZERO",
+    "NO_COFINAL_BDET_NONZERO_SET",
+    "NO_BDET_TWO_SIDED_BOUNDS",
+    "NO_ALPHA_DEFINITION",
+    "NO_TRUE_COMPLEMENTARY_GAP",
+    "NO_DICTIONARY_CONVERGENCE",
+    "NO_WPRIME_ZEO_CROSSWALK",
+    "NO_D0_7E_ASSEMBLY",
+    "NO_D0_7_ASSEMBLY",
+    "NO_D0_ASSEMBLY",
+    "NO_RH"
+  ]
+}

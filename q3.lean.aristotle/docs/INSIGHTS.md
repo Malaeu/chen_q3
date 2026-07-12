@@ -46428,3 +46428,39 @@ not the raw-D17 factorwise support class.
   dependent nonvanishing/phase convention, source pointer, and a non-circular
   theorem showing the same scalar enters `W'`. The request validator passes as
   `D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED`; no Bus 010 was created.
+
+## Insight (2026-07-12, Route B Lamport compiler) -- D0_7EOwnerInputAudit
+
+- The immutable owner input supplies a legal new finite definition after two
+  type repairs. It lives on D0.7b's `TrialNonzero` locus and retains independent
+  `(m,N)`; the proposed `N(lambda)=ceil(kappa*lambda^2)` is not a selector
+  because `kappa` is unspecified and the cited `F2.4` file is absent.
+- D0.6's sign cannot be silently changed. The owner transform is exactly
+  `Fplus_(m,N)(z)=T_m(k1_(m,N))(-z)`, not `T_m(k1)(z)`. This reflected form is
+  consistent with the project convention `Xi(z)=xi(1/2+i*z)` and is sign-safe
+  at the central point.
+- The central denominator is unconditionally nonzero. DLMF 25.2.3 plus
+  positive paired terms of the eta series gives `zeta(1/2)<0`; DLMF 25.4.4
+  then gives `Xi(0)!=0`. Consequently
+  `bDet=Fhat(0)/Xi(0)=sqrt(L_m)c0/zeta(1/2)` is a real exact scalar. On
+  `BDetNonzero`, `G=Fhat/bDet` satisfies `G(0)=Xi(0)`.
+- Four local `q3_docs` searches found no existing `PO_D0_7E_XWALK` proof or
+  `N(lambda)` selector. The primary source at `H8ULBMAL/fulltext.md:1240-1255`
+  presents determinant/Xi convergence as an outlook, and lines 1293-1297 and
+  1469-1477 explicitly call quantitative trial-to-ground tracking a main
+  missing step.
+- The owner crosswalk remains a theorem shape. Canonical `alpha`, true
+  `DeltaE`, `delta_dict`, the `(m,N)` limit direction, and a uniform compact
+  constant are not supplied. D0.6's available evaluation factor grows like
+  `sqrt(L_m)lambda_m^a`, so the stated lower bound for
+  `|bDet|sqrt(lambda_m)` does not by itself produce a fixed `A_K`.
+- The proposed proof route cites H3c and H4, which depend on D0 while D0 still
+  depends on D0.7e. Importing those downstream nodes here would create
+  `D0.7e -> D0 -> H3/H4 -> D0.7e`; the exact code is
+  `D0_7E_XWALK_DEPENDENCY_CYCLE`. The preferred repair is to keep the finite
+  definition in D0.7e and move the full tracking theorem downstream to D0.8/H3.
+- D0.7e is therefore an AND node with four proved definition/interface
+  children and active blocked child `D0.7e.5 ExactWPrimeZeoCrosswalk`.
+  Partial exit is `D0_7E_CENTRAL_CALIBRATION_LOCKED`; exact stop is
+  `D0_7E_XWALK_OPEN`. No conditional status closes the parent, no Bus 010 was
+  created, and Route B remains `CHALLENGER / NOT_RH`.

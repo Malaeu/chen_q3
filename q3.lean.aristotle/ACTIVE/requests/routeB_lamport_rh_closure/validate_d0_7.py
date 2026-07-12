@@ -28,7 +28,7 @@ def main() -> None:
     require(cert["node_id"] == "D0.7", "D0_7_CERT_NODE_MISMATCH")
     require(cert["proof_status"] == "BLOCKED", "D0_7_CERT_MUST_BLOCK")
     require(cert["partial_exit_code"] == "D0_7_PARTIAL_NORMALIZATION_LOCKED", "D0_7_PARTIAL_EXIT_MISMATCH")
-    require(cert["stop_code"] == "D0_7_DETECTOR_B_DEFINITION_MISSING", "D0_7_STOP_MISMATCH")
+    require(cert["stop_code"] == "D0_7E_XWALK_OPEN", "D0_7_STOP_MISMATCH")
     require(cert["rh_status"] == "NOT_RH", "D0_7_RH_FIREWALL_MISSING")
 
     checked: list[str] = []
@@ -43,7 +43,7 @@ def main() -> None:
     require(children["D0.7b"] == "PROVED", "D0_7B_NOT_PROVED")
     require(children["D0.7c"] == "PROVED_CONDITIONAL_INTERFACE", "D0_7C_NOT_TYPED")
     require(children["D0.7d"] == "PROVED", "D0_7D_NOT_PROVED")
-    require(children["D0.7e"] == "BLOCKED", "D0_7E_MUST_BLOCK")
+    require(children["D0.7e"] == "BLOCKED_XWALK", "D0_7E_MUST_BLOCK")
     require(children["D0.7f"] == "BLOCKED_BY_D0.7e", "D0_7_ASSEMBLY_MUST_BLOCK")
 
     delta = cert["delta_lock"]
@@ -62,7 +62,10 @@ def main() -> None:
     require(trial["scale_positive"] is True, "D0_7_TRIAL_SCALE_SIGN_MISSING")
 
     b_lock = cert["b_lock"]
-    require(b_lock["detector_definition"] == "MISSING", "D0_7_B_INVENTED")
+    require(b_lock["detector_definition"] == "bDet_m_N=Fhat_m_N(0)/Xi(0)_ON_TrialNonzero", "D0_7_B_DEFINITION_DRIFT")
+    require(b_lock["detector_definition_status"] == "PROVED_FINITE_DEPENDENT", "D0_7_B_DEFINITION_UNPROVED")
+    require(b_lock["detector_normalization_domain"] == "BDetNonzero", "D0_7_B_ZERO_DIVISION")
+    require(b_lock["detector_crosswalk"] == "PO_D0_7E_XWALK_BLOCKED_THEOREM_SHAPE_ONLY", "D0_7_B_XWALK_OVERCLAIM")
     require(b_lock["pilot_crosswalk"] == "NOT_PROVED", "D0_7_BPILOT_ALIAS")
     require(b_lock["weil_coefficient_crosswalk"] == "TYPE_MISMATCH", "D0_7_BWEIL_ALIAS")
     require(b_lock["uniform_bounds"] == "H4D_OPEN", "D0_7_H4D_SMUGGLED")
@@ -72,9 +75,10 @@ def main() -> None:
         "deltaVec_m_N := L_m^(-1/2)",
         "GroundDeltaNonzero",
         "D0_7D_B_NAMESPACE_FIREWALL_LOCKED",
-        "D0_7_DETECTOR_B_DEFINITION_MISSING",
+        "D0_7E_CENTRAL_CALIBRATION_LOCKED",
+        "D0_7E_XWALK_OPEN",
         "D0.7 = BLOCKED / 4_OF_5_COMPONENTS_PROVED",
-        "NO_DETECTOR_B_DEFINITION",
+        "NO_WPRIME_ZEO_CROSSWALK",
         "NO_RH",
     ):
         require(token in proof, f"D0_7_PROOF_TOKEN_MISSING:{token}")
@@ -93,13 +97,14 @@ def main() -> None:
     require(b_lock["detector_definition"] != "bWeil_j", "D0_7_BWEIL_PLANT_INERT")
     require(b_lock["pilot_crosswalk"] == "NOT_PROVED", "D0_7_BPILOT_PLANT_INERT")
     require(b_lock["uniform_bounds"] == "H4D_OPEN", "D0_7_H4D_PLANT_INERT")
+    require(b_lock["detector_crosswalk"].endswith("THEOREM_SHAPE_ONLY"), "D0_7_XWALK_SHAPE_PLANT_INERT")
 
     result = {
         "node": "D0.7",
         "verdict": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
         "proof_status": "BLOCKED",
         "proved_children": ["D0.7a", "D0.7b", "D0.7c", "D0.7d"],
-        "blocked_children": {"D0.7e": "D0_7_DETECTOR_B_DEFINITION_MISSING"},
+        "blocked_children": {"D0.7e": "D0_7E_XWALK_OPEN"},
         "assembly": "BLOCKED_BY_D0.7e",
         "pins_checked": checked,
         "plants": list(cert["plants"].values()),

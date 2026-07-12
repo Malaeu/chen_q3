@@ -93,10 +93,11 @@ Autorun invariants:
 отсутствует, следующий свободный номер `010` остаётся несозданным. `PO-0`
 остаётся открыт из-за `ZEO_EXPORT_AMBIGUOUS` и `R13_SOURCE_MISSING`; 010 не
 становится задачей, пока Mythos не создаст физический immutable goal. В режиме
-`OWNER_AUTHORIZED_AUTORUN` остановлен на внутреннем master leaf
-`D0.7e ExactDetectorBDefinitionAndCrosswalk` с кодом
-`EXTERNAL_OWNER_INPUT_REQUIRED`; требования лежат в
-`../../routeB_lamport_rh_closure/D0_7E_OWNER_INPUT_REQUEST.md`.
+`OWNER_AUTHORIZED_AUTORUN` принял конечное определение `bDet` из immutable
+owner input, но остановлен на внутреннем master leaf
+`D0.7e.5 ExactWPrimeZeoCrosswalk` с кодом `D0_7E_XWALK_OPEN`: theorem shape
+не закрывает лист, а exact alpha/DeltaE/delta_dict/limit/uniform-A_K ещё не
+запинены. Это не создаёт Bus 010 и не закрывает PO-0/ZEO.
 
 Машинная проверка:
 

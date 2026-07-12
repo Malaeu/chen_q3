@@ -1,0 +1,29 @@
+{
+  "schema": "route_b_classical_source_lock.v1",
+  "locked_at": "2026-07-12T09:27:00+02:00",
+  "node_id": "D0.7e.2",
+  "source_class": "AUTHORITATIVE_REFERENCE",
+  "publisher": "NIST Digital Library of Mathematical Functions",
+  "version": "1.2.7",
+  "release_date": "2026-06-15",
+  "references": [
+    {
+      "purpose": "alternating-series continuation of zeta on Re(s)>0",
+      "equation": "DLMF 25.2.3",
+      "url": "https://dlmf.nist.gov/25.2.E3"
+    },
+    {
+      "purpose": "completed xi definition",
+      "equation": "DLMF 25.4.4",
+      "url": "https://dlmf.nist.gov/25.4.E4"
+    }
+  ],
+  "derived_use": {
+    "eta_half_positive": "pair the alternating series as sum_k((2k-1)^(-1/2)-(2k)^(-1/2)); every summand is positive",
+    "zeta_half_sign": "eta(1/2)>0 and 1-2^(1/2)<0 imply zeta(1/2)<0",
+    "zeta_half_nonzero": true,
+    "xi_zero_nonzero": "the completed prefactor at s=1/2 is finite and nonzero, hence Xi(0)=xi(1/2) is nonzero"
+  },
+  "wording_rule": "Use the exact equation identifiers and an independent elementary sign proof; do not treat a decimal approximation as nonvanishing evidence.",
+  "rh_status": "NOT_RH"
+}

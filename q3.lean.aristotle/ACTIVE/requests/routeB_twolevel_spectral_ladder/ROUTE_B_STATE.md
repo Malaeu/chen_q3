@@ -88,18 +88,23 @@ Header check:
 
 ## NEXT STEP
 
-The owner-authorized recursive compiler has proved D0.1--D0.6 and four of the
-five D0.7 components. `delta_(m,N)`, dependent boundary/ground/trial
-normalizations, scalar/phase conventions, and the `b` namespace firewall are
-locked. The unresolved master address is
-`D0.7e ExactDetectorBDefinitionAndCrosswalk`: the canonical detector `b`
-consumed by `W'` is absent from the source corpus. Pro review returned
-`EXTERNAL_OWNER_INPUT_REQUIRED` and rejected promotion of `bPilot`. The
-owner-authorized compiler is paused until Mythos/owner supplies the exact
-formula, type, entire-function normalization identity, and non-circular ZEO
-crosswalk frozen in `D0_7E_OWNER_INPUT_REQUEST.md`. No pilot norm, Weil matrix
-coefficient, or uniform H4d bound may fill that slot. `ProjectedProlateDefectEquation`
-remains a later physical Route B target and is not the current compiler leaf.
+The owner-authorized recursive compiler has proved D0.1--D0.6 and accepted the
+finite central detector definition from immutable `D0_7E_OWNER_INPUT.md`.
+On `TrialNonzero`, the exact object is
+`bDet_(m,N)=Fhat_(m,N)(0)/Xi(0)=sqrt(L_m)c0/zeta(1/2)`, with reflected transform
+`Fplus(z)=T_m(k1)(-z)` and a non-decimal eta-series proof that
+`zeta(1/2)!=0`. The normalization `G=Fhat/bDet` is typed only on
+`BDetNonzero`. No pilot norm or Weil coefficient is aliased.
+
+The owner input's `N(lambda)=ceil(kappa*lambda^2)` is unpinned because `kappa`
+is unspecified. Its WPrime/ZEO inequality is explicitly a theorem shape to be
+proved, and canonical `alpha`, true `DeltaE`, `delta_dict`, the joint limit,
+and a uniform compact-strip constant remain missing. Importing the cited H3c
+and H4 ingredients here would also cycle through D0. The unresolved master
+address is therefore `D0.7e.5 ExactWPrimeZeoCrosswalk`, with exact stop
+`D0_7E_XWALK_OPEN`. D0.7e, D0.7, D0.8, and D0 remain blocked; no conditional
+status closes them. `ProjectedProlateDefectEquation` remains a later physical
+Route B target and is not the current compiler leaf.
 
 The exact two-mode H2 branch is `H2-POLE/CORRECTION`.  The 2026-07-08
 threshold-only `H2_HOLDS` history row is retained as a numerical record but is
@@ -107,7 +112,7 @@ superseded as an exact classification.
 
 ## CURRENT_CODES
 
-`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`
+`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`, `D0_7E_CENTRAL_CALIBRATION_LOCKED`, `D0_7E_XWALK_OPEN`
 
 ## History
 
@@ -150,3 +155,4 @@ superseded as an exact classification.
 - 2026-07-11 22:25:30 CEST: Lamport D0.5 `ExactGroundEigenspaceAndTrialVectorTypes` -> `GROUND_TRIAL_TYPES_LOCKED`; the bottom eigenspace is nonempty but set-valued with no simple-even selection; the prolate/starred-sum finite trial is normalized only on `TrialNonzero`; Rayleigh gives `groundValue<=aTrial` without equality; carrier aliases and unconditional nonzero claims rejected; seven plants fired; autorun advanced to D0.7; NOT_RH.
 - 2026-07-11 22:38:00 CEST: Lamport D0.7 `ExactNormalization` legally decomposed -> `D0_7_PARTIAL_NORMALIZATION_LOCKED`; exact `deltaVec_(m,N)=L_m^(-1/2) sum V_n`, its linear boundary functional, finite endpoint identity and Dom(Dlog) limit proved; trial scalar/phase locked on `TrialNonzero`; phase-unit and delta=1 ground normalizations typed only on `GroundDeltaNonzero`; `bWeil_j`, `xihat`, superseded `bPilot`, and detector `b` separated; eight plants fired; D0.7 remains `BLOCKED / 4_OF_5_COMPONENTS_PROVED` by `D0_7_DETECTOR_B_DEFINITION_MISSING`; D0.7e escalated to Pro; NOT_RH.
 - 2026-07-11 22:44:00 CEST: Lamport D0.7e Pro review -> `EXTERNAL_OWNER_INPUT_REQUIRED`; trial normalization and entire-function/ZEO normalization are different object roles, so neither `sTrial` nor superseded `bPilot=||E(g04)||` can be promoted without a theorem crosswalk; inventing an inverse-boundary normalization would reconstruct the target and risk `NORMALIZATION_DEGENERACY`; minimal immutable owner request frozen as `D0_7E_OWNER_INPUT_REQUEST.md` and validator exits `D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED`; autorun paused at exact stop `D0_7_DETECTOR_B_DEFINITION_MISSING`; no Bus 010 created; NOT_RH.
+- 2026-07-12 09:27:00 CEST: Lamport D0.7e immutable owner input audited -> `D0_7E_CENTRAL_CALIBRATION_LOCKED`; finite dependent `bDet_(m,N)=Fhat(0)/Xi(0)=sqrt(L_m)c0/zeta(1/2)` proved on `TrialNonzero`, exact reflection `Fplus=T_m(k1)(-z)` locked, eta-series proves `zeta(1/2)<0`, and `G(0)=Xi(0)` is proved on `BDetNonzero`; proposed `N(lambda)` rejected as unpinned because kappa is unspecified; `PO_D0_7E_XWALK` remains `BLOCKED / THEOREM_SHAPE_ONLY` with undefined canonical alpha/DeltaE/delta_dict, missing limit quantifier, nonuniform compact evaluation gap, unresolved source pointer, and `D0_7E_XWALK_DEPENDENCY_CYCLE` if cited downstream H3c/H4 nodes are imported; active leaf becomes D0.7e.5, stop `D0_7E_XWALK_OPEN`; D0.7 and ancestors stay blocked; no Bus 010 created; NOT_RH.

@@ -1,9 +1,9 @@
 # Route B — execution control
 
-Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT / CONTROL_PLANE / NOT_RH / CHALLENGER`
+Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP / CONTROL_PLANE / NOT_RH / CHALLENGER`
 Schema: `route_b_execution_control.v2`
 Canonical repo: `/Users/emalam/GitHub/rh_lean_01_2026`
-Current address: `RB-LAMPORT-D0 / D0.7e / ExactDetectorBDefinitionAndCrosswalk`
+Current address: `RB-LAMPORT-D0 / D0.7e.5 / ExactWPrimeZeoCrosswalk`
 
 ## Owner autorun override — 2026-07-11
 
@@ -43,13 +43,14 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 ```text
 GLOBAL MAINLINE: T0-pd -> H-bridge -> H4 -> RH
 ROUTE B: challenger / NOT_RH
-CURRENT: RB-LAMPORT-D0 / D0.7e / ExactDetectorBDefinitionAndCrosswalk
+CURRENT: RB-LAMPORT-D0 / D0.7e.5 / ExactWPrimeZeoCrosswalk
 CONTRACT: v2 locked; PO-0/ZEO blockers retained, not bypassed as facts
 BUS: 001..009 closed; active physical goal NONE; next free number 010
-MODE: OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT
-CODEX: D0.1--D0.6 and D0.7a--D0.7d proved; exact detector b is missing;
-MYTHOS/OWNER: supply D0_7E_OWNER_INPUT_REQUEST.md; do not create 010;
-              bPilot/bWeil aliases and H4d bound smuggling are rejected
+MODE: OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP
+CODEX: finite bDet central calibration proved on TrialNonzero;
+       D0.7e.5 remains BLOCKED / THEOREM_SHAPE_ONLY;
+MYTHOS/PRO: repair exact alpha/DeltaE/delta_dict/limit/uniform-A_K theorem;
+            do not create 010; no conditional parent closure
 ```
 
 The retired D0.3g blockers remain historical warnings, not current stops:
@@ -65,12 +66,21 @@ Pro review ratified only `Mfin_(m,N)=WeilOp_(m,N)`. It did not define
 `theta_j` with exact full/sector spectra. With that firewall, D0.3, D0.4, and
 D0.5 are proved. D0.7a--D0.7d now lock `delta_(m,N)`, dependent trial/ground
 normalizations, scalar/phase conventions, and the `b` namespace firewall.
-The unresolved address is D0.7e: the canonical `b` consumed by `W'` is still
-`MISSING` in the later object-lock. Pro review returned the primary verdict
-`EXTERNAL_OWNER_INPUT_REQUIRED` and rejected promotion of `bPilot`. The exact
-minimal source statement is frozen in `D0_7E_OWNER_INPUT_REQUEST.md`. Autorun
-is paused at this external-authority boundary; the uniform nonzero/growth
-estimates remain separate H4d obligations.
+The immutable owner input now supplies a finite dependent definition:
+`bDet_(m,N)=Fhat_(m,N)(0)/Xi(0)=sqrt(L_m)c0/zeta(1/2)` on `TrialNonzero`.
+The audit locks `Fplus(z)=T_m(k1)(-z)`, proves `zeta(1/2)<0` by the eta series,
+and defines `G=Fhat/bDet` only on `BDetNonzero`. The unspecified
+`N(lambda)=ceil(kappa*lambda^2)` schedule is not accepted.
+
+The unresolved address is D0.7e.5. The owner input labels the WPrime/ZEO
+crosswalk a theorem shape to be proved; canonical `alpha`, true `DeltaE`,
+`delta_dict`, the joint limit, and a uniform compact-strip constant are not
+supplied, while the primary source explicitly names quantitative trial/ground
+tracking as missing. Importing the cited H3c/H4 nodes here would cycle through
+D0 (`D0_7E_XWALK_DEPENDENCY_CYCLE`). Autorun is paused at
+`D0_7E_XWALK_OPEN`. The finite
+definition does not supply H4d nonzero/growth estimates, close D0.7, or prove
+RH.
 
 ## Разделение полномочий
 

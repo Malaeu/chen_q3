@@ -1,11 +1,11 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 8,
-  "updated_at": "2026-07-11T22:44:00+02:00",
+  "revision": 9,
+  "updated_at": "2026-07-12T09:27:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
-    "d0_status": "BLOCKED_AT_D0_7E_DETECTOR_B_DEFINITION",
+    "d0_status": "BLOCKED_AT_D0_7E_WPRIME_ZEO_CROSSWALK",
     "public_label": "CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / ROUTE_B_CHALLENGER / NOT_RH",
     "conditional_export_status": "PROVED_MATHEMATICALLY_NOT_YET_LEAN_PINNED",
     "forbidden_claims": [
@@ -75,8 +75,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Mythos/owner",
-    "next_action": "Provide the immutable exact detector-b formula, type, normalization identity, dependent nonvanishing/phase data, and non-circular W-prime/ZEO crosswalk specified in D0_7E_OWNER_INPUT_REQUEST.md; do not create Bus 010"
+    "next_actor": "Mythos/Pro source owner",
+    "next_action": "Repair PO_D0_7E_XWALK with exact typed alpha, true DeltaE, delta_dict, limit quantifier, and a uniform compact-strip estimate; the finite bDet definition is locked; do not create Bus 010"
   },
   "owner_authorization": {
     "status": "OWNER_AUTHORIZED_AUTORUN",
@@ -90,15 +90,16 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "D0.7e",
+    "active_node_id": "D0.7e.5",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT",
-    "candidate_first_leaf_after_release": "D0.7e",
+    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP",
+    "candidate_first_leaf_after_release": "D0.7e.5",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
-      "D0.7E_EXTERNAL_OWNER_REQUEST_LOCKED"
+      "D0.7E_OWNER_INPUT_VALIDATED",
+      "D0.7E_XWALK_SOURCE_AUDIT"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -424,16 +425,16 @@
       "ordered_children": ["D0.7a", "D0.7b", "D0.7c", "D0.7d", "D0.7e"],
       "assembly_theorem_id": "D0.7f",
       "proof_status": "BLOCKED", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0.7e_DETECTOR_B_DEFINITION_MISSING"},
+      "eligibility": {"eligible": false, "reason": "D0.7e.5_XWALK_OPEN"},
       "validation": "PASS_PARTIAL:validate_d0_7.py;FOUR_OF_FIVE_CHILDREN_PROVED;PARENT_BLOCKED",
-      "failure_codes": ["D0_7_NORMALIZATION_MISMATCH", "D0_7_NONZERO_SMUGGLED", "D0_7_DETECTOR_B_DEFINITION_MISSING", "D0_7_NO_PROGRESS"],
+      "failure_codes": ["D0_7_NORMALIZATION_MISMATCH", "D0_7_NONZERO_SMUGGLED", "D0_7E_XWALK_OPEN", "D0_7_NO_PROGRESS"],
       "proof_evidence": {
         "decomposition": "D0_7_DECOMPOSITION_CONTRACT.md",
         "proof": "D0_7_EXACT_NORMALIZATION_REGISTRY.md",
         "certificate": "D0_7_CERTIFICATE.json",
         "validator": "validate_d0_7.py",
         "partial_exit_code": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
-        "stop_code": "D0_7_DETECTOR_B_DEFINITION_MISSING"
+        "stop_code": "D0_7E_XWALK_OPEN"
       }
     },
     "D0.7.0": {
@@ -474,7 +475,7 @@
     },
     "D0.7d": {
       "id": "D0.7d", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
-      "statement": "Separate exact Weil matrix b_j, superseded pilot b, Fourier-transform xihat, and the missing detector b namespace",
+      "statement": "Separate exact Weil matrix b_j, superseded pilot b, Fourier-transform xihat, and the owner-ratified detector b namespace",
       "dependencies": ["D0.2", "D0.5", "D0.7.0"], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "PROVED", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
@@ -482,19 +483,89 @@
       "failure_codes": ["D0_7_BWEIL_ALIAS", "D0_7_BPILOT_ALIAS"]
     },
     "D0.7e": {
-      "id": "D0.7e", "parent_id": "D0.7", "kind": "LEAF", "role": "GOAL",
-      "statement": "Define the exact detector b on an indexed carrier and prove that this same scalar is consumed by the exact W-prime identity, without importing later uniform bounds",
-      "dependencies": ["D0.3g", "D0.7d"], "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "BLOCKED", "activity": "ACTIVE",
-      "eligibility": {"eligible": false, "reason": "EXTERNAL_OWNER_INPUT_REQUIRED"},
-      "validation": "PASS:validate_d0_7e_request.py;SOURCE_DEFINITION_AND_W_PRIME_CROSSWALK_REQUIRED",
-      "failure_codes": ["D0_7_DETECTOR_B_DEFINITION_MISSING", "D0_7_BPILOT_BDET_CROSSWALK_MISSING"],
+      "id": "D0.7e", "parent_id": "D0.7", "kind": "AND", "role": "GOAL",
+      "statement": "Define the exact detector b on a finite dependent carrier and prove that this same scalar is consumed by a non-circular exact W-prime/ZEO crosswalk, without importing later uniform bounds",
+      "dependencies": ["D0.3g", "D0.6", "D0.7d", "D0.7e.0"],
+      "ordered_children": ["D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4", "D0.7e.5"],
+      "assembly_theorem_id": "D0.7e.6",
+      "proof_status": "BLOCKED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e.5_XWALK_OPEN"},
+      "validation": "PASS_PARTIAL:validate_d0_7e.py;FOUR_OF_FIVE_CHILDREN_PROVED;PARENT_BLOCKED",
+      "failure_codes": ["D0_7E_XWALK_OPEN", "D0_7E_XWALK_UNIFORM_CONSTANT_GAP", "D0_7E_ALPHA_DELTAE_UNDEFINED", "D0_7E_XWALK_DEPENDENCY_CYCLE"],
       "proof_evidence": {
-        "pro_decision": "D0_7E_PRO_REVIEW_DECISION.md",
-        "owner_request": "D0_7E_OWNER_INPUT_REQUEST.md",
-        "validator": "validate_d0_7e_request.py",
-        "request_exit": "D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED"
+        "owner_input": "D0_7E_OWNER_INPUT.md",
+        "decomposition": "D0_7E_DECOMPOSITION_CONTRACT.md",
+        "proof": "D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
+        "certificate": "D0_7E_CERTIFICATE.json",
+        "validator": "validate_d0_7e.py",
+        "partial_exit": "D0_7E_CENTRAL_CALIBRATION_LOCKED",
+        "stop_code": "D0_7E_XWALK_OPEN"
       }
+    },
+    "D0.7e.0": {
+      "id": "D0.7e.0", "parent_id": "D0.7e", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "D0.7e iff D0.7e.1 AND D0.7e.2 AND D0.7e.3 AND D0.7e.4 AND D0.7e.5",
+      "dependencies": ["D0.3g", "D0.6", "D0.7d"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "D0_7E_DECOMPOSITION_LOCKED",
+      "failure_codes": ["D0_7E_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "D0.7e.1": {
+      "id": "D0.7e.1", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
+      "statement": "Lock the immutable owner-ratified new-definition provenance without treating it as proof authority",
+      "dependencies": ["D0.7e.0", "D0.7d"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_7e.py;OWNER_SHA_AND_REQUIRED_FIELDS_LOCKED",
+      "failure_codes": ["D0_7E_OWNER_INPUT_DRIFT", "D0_7E_OWNER_AUTHORITY_OVERCLAIM"]
+    },
+    "D0.7e.2": {
+      "id": "D0.7e.2", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
+      "statement": "On TrialNonzero define Fplus=T_m(k1)(-z), its completed tracker, and finite bDet=Fhat(0)/Xi(0)=sqrt(L)c0/zeta(1/2)",
+      "dependencies": ["D0.5", "D0.6", "D0.7e.0", "D0.7e.1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_ON_DEPENDENT_DOMAIN"},
+      "validation": "PASS:validate_d0_7e.py;REFLECTION_ZETA_NONZERO_GAMMA_STRIP_CENTRAL_SCALE_LOCKED",
+      "failure_codes": ["D0_7E_TRANSFORM_REFLECTION_MISSING", "D0_7E_TRIAL_ZERO_DIVISION", "D0_7E_ZETA_HALF_NONZERO_GAP", "D0_7E_N_SCHEDULE_UNPINNED"]
+    },
+    "D0.7e.3": {
+      "id": "D0.7e.3", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
+      "statement": "On BDetNonzero define G=Fhat/bDet and prove Fhat=bDet*G and G(0)=Xi(0)",
+      "dependencies": ["D0.7e.0", "D0.7e.2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "DEPENDENT_INTERFACE_PROVED_NONVANISHING_NOT_SUPPLIED"},
+      "validation": "PASS:validate_d0_7e.py;BDET_NONZERO_DEPENDENT_NORMALIZATION_LOCKED",
+      "failure_codes": ["D0_7E_B_ZERO_DIVISION", "D0_7E_COFINAL_NONVANISHING_OPEN"]
+    },
+    "D0.7e.4": {
+      "id": "D0.7e.4", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove bDet is real with inherited phase and preserve bWeil/xihat/bPilot/sTrial and H4d firewalls",
+      "dependencies": ["D0.7d", "D0.7e.0", "D0.7e.2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED"},
+      "validation": "PASS:validate_d0_7e.py;REALITY_PHASE_NAMESPACE_FIREWALL_LOCKED",
+      "failure_codes": ["D0_7E_REALITY_GAP", "D0_7_BWEIL_ALIAS", "D0_7_BPILOT_ALIAS", "D0_7_H4D_SMUGGLED"]
+    },
+    "D0.7e.5": {
+      "id": "D0.7e.5", "parent_id": "D0.7e", "kind": "LEAF", "role": "GOAL",
+      "statement": "Prove the owner PO_D0_7E_XWALK tracking inequality using exact canonical alpha, true DeltaE, delta_dict, a typed joint limit, and a uniform compact-strip constant without circular imports",
+      "dependencies": ["D0.3g", "D0.7e.0", "D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "BLOCKED", "activity": "ACTIVE",
+      "eligibility": {"eligible": false, "reason": "THEOREM_SHAPE_ONLY_SOURCE_AND_TYPE_GAPS"},
+      "validation": "FAIL_CLOSED:validate_d0_7e.py;XWALK_NOT_PROVED",
+      "failure_codes": ["D0_7E_XWALK_OPEN", "D0_7E_ALPHA_DELTAE_UNDEFINED", "D0_7E_XWALK_LIMIT_QUANTIFIER_MISSING", "D0_7E_XWALK_UNIFORM_CONSTANT_GAP", "D0_7E_B_BOUND_CONTRACT_MISMATCH", "D0_7E_XWALK_DEPENDENCY_CYCLE", "D0_7E_SOURCE_POINTER_UNRESOLVED"]
+    },
+    "D0.7e.6": {
+      "id": "D0.7e.6", "parent_id": "D0.7e", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "D0.7e.1 AND D0.7e.2 AND D0.7e.3 AND D0.7e.4 AND D0.7e.5 IMPLIES D0.7e",
+      "dependencies": ["D0.7e.0", "D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4", "D0.7e.5"],
+      "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "BLOCKED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0.7e.5_BLOCKED"},
+      "validation": "D0_7E_ASSEMBLY_TYPECHECK",
+      "failure_codes": ["D0_7E_ASSEMBLY_GAP"]
     },
     "D0.7f": {
       "id": "D0.7f", "parent_id": "D0.7", "kind": "LEAF", "role": "ASSEMBLY",
@@ -758,15 +829,15 @@
       },
       "D0.7/exact_normalization_provenance/v1": {
         "status": "PARTIAL_PARENT_BLOCKED",
-        "last_class": "FALSIFICATION_PROGRESS",
+        "last_class": "REPRESENTATION_PROGRESS",
         "no_progress_streak": 0,
         "result": "D0_7_PARTIAL_NORMALIZATION_LOCKED"
       },
       "D0.7e/detector_b_source_crosswalk/v1": {
-        "status": "PAUSED_EXTERNAL_OWNER_INPUT",
-        "last_class": "FALSIFICATION_PROGRESS",
+        "status": "PARTIAL_DEFINITION_CLOSED_XWALK_BLOCKED",
+        "last_class": "REPRESENTATION_PROGRESS",
         "no_progress_streak": 0,
-        "result": "EXTERNAL_OWNER_INPUT_REQUIRED"
+        "result": "D0_7E_CENTRAL_CALIBRATION_LOCKED;D0_7E_XWALK_OPEN"
       }
     }
   },
@@ -785,9 +856,9 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "D0_7_DETECTOR_B_DEFINITION_MISSING",
-    "mode": "OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT",
-    "current_leaf": "D0.7e",
+    "current_stop": "D0_7E_XWALK_OPEN",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP",
+    "current_leaf": "D0.7e.5",
     "first_math_leaf_after_release": "D0.1"
   },
   "transition_log": [
@@ -860,6 +931,13 @@
       "progress_class": "FALSIFICATION_PROGRESS",
       "result": "EXTERNAL_OWNER_INPUT_REQUIRED;D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED",
       "honesty": "BPILOT_NOT_PROMOTABLE_NO_TAUTOLOGICAL_W_PRIME_REDEFINITION_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T09:27:00+02:00",
+      "event": "D0_7E_OWNER_INPUT_PARTIALLY_ACCEPTED_XWALK_ACTIVATED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "D0_7E_CENTRAL_CALIBRATION_LOCKED;D0_7E_XWALK_OPEN",
+      "honesty": "FINITE_BDET_ON_TRIAL_NONZERO_REFLECTED_TRANSFORM_ZETA_HALF_NONZERO_N_SCHEDULE_UNPINNED_XWALK_THEOREM_SHAPE_ONLY_NO_BUS_010_NOT_RH"
     }
   ]
 }

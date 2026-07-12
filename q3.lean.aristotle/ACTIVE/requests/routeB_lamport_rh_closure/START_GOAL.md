@@ -76,11 +76,15 @@ Current fail-closed address:
 - Bus 009 PO0/ZEO findings remain open facts;
 - D0.1--D0.6 are proved with direct validators;
 - D0.7a--D0.7d are proved and D0.7 is partially locked;
-- unresolved master leaf = D0.7e ExactDetectorBDefinitionAndCrosswalk;
-- Pro verdict = EXTERNAL_OWNER_INPUT_REQUIRED; autorun is paused until
-  Mythos/owner supplies D0_7E_OWNER_INPUT_REQUEST.md;
-- the input must define canonical detector b and prove its exact crosswalk to
-  the W-prime consumer; no bWeil/pilot alias and no H4d uniform bounds;
+- immutable owner input has been validated: finite `bDet_(m,N)` is locked on
+  `TrialNonzero`, with `Fplus(z)=T_m(k1)(-z)` and `zeta(1/2)!=0` proved;
+- `N(lambda)=ceil(kappa*lambda^2)` is unpinned because `kappa` is unspecified;
+- unresolved master leaf = D0.7e.5 ExactWPrimeZeoCrosswalk;
+- current stop = D0_7E_XWALK_OPEN: the input contains a theorem shape, not a
+  proof, and exact alpha/DeltaE/delta_dict/joint-limit/uniform-A_K data are
+  missing;
+- no bWeil/pilot alias, no H4d bound smuggling, and no conditional parent
+  closure;
 - owner autorun continues after each validated leaf;
 - public status = CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN /
   ROUTE_B_CHALLENGER / NOT_RH.

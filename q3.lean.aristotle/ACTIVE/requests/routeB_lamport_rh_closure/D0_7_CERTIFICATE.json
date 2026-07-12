@@ -1,12 +1,12 @@
 {
   "schema": "route_b_d0_7_certificate.v1",
-  "created_at": "2026-07-11T22:35:00+02:00",
+  "created_at": "2026-07-12T09:27:00+02:00",
   "node_id": "D0.7",
   "name": "ExactNormalization",
   "proof_status": "BLOCKED",
-  "progress_class": "FALSIFICATION_PROGRESS",
+  "progress_class": "REPRESENTATION_PROGRESS",
   "partial_exit_code": "D0_7_PARTIAL_NORMALIZATION_LOCKED",
-  "stop_code": "D0_7_DETECTOR_B_DEFINITION_MISSING",
+  "stop_code": "D0_7E_XWALK_OPEN",
   "rh_status": "NOT_RH",
   "lean_status": "INTERFACE_UNPINNED",
   "children": {
@@ -14,7 +14,7 @@
     "D0.7b": "PROVED",
     "D0.7c": "PROVED_CONDITIONAL_INTERFACE",
     "D0.7d": "PROVED",
-    "D0.7e": "BLOCKED",
+    "D0.7e": "BLOCKED_XWALK",
     "D0.7f": "BLOCKED_BY_D0.7e"
   },
   "delta_lock": {
@@ -47,7 +47,10 @@
   "b_lock": {
     "weil_coefficients": "bWeil_j(m,N)_EXACT_ODD_SEQUENCE",
     "historical_pilot": "bPilot_m_N=norm(E(g04))_SUPERSEDED",
-    "detector_definition": "MISSING",
+    "detector_definition": "bDet_m_N=Fhat_m_N(0)/Xi(0)_ON_TrialNonzero",
+    "detector_definition_status": "PROVED_FINITE_DEPENDENT",
+    "detector_normalization_domain": "BDetNonzero",
+    "detector_crosswalk": "PO_D0_7E_XWALK_BLOCKED_THEOREM_SHAPE_ONLY",
     "pilot_crosswalk": "NOT_PROVED",
     "weil_coefficient_crosswalk": "TYPE_MISMATCH",
     "uniform_bounds": "H4D_OPEN"
@@ -87,11 +90,15 @@
   "artifacts": [
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_DECOMPOSITION_CONTRACT.md",
-      "sha256": "777c64cbe999e84f29132ebddf8ebd0dc2aa2a987a60fdeade4b68a0ece4d378"
+      "sha256": "cbcc04e2a72893b065bcfc55a93cbc49b2f09e6e53c1b35875eded45d399df7f"
     },
     {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md",
-      "sha256": "8145d39fe267e417746aa2f24426183b8f0e2c96cc88fe68d94347ace1397aeb"
+      "sha256": "c7701d7bb37209fdf83d1c0942e46fc0e5368b3336d3dd38b4a74c7c856a1b2e"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CERTIFICATE.json",
+      "sha256": "9c4397fcf3a48c676e8239a217c29861b52261780f00cf85f3fb6cd50f96bce9"
     }
   ],
   "proof_path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md",
@@ -112,7 +119,8 @@
     "NO_UNCONDITIONAL_TRIAL_NONZERO",
     "NO_BOUNDED_EVALUATION_ON_ALL_H",
     "NO_ENDPOINT_REPRESENTATIVE_ALIAS",
-    "NO_DETECTOR_B_DEFINITION",
+    "NO_UNCONDITIONAL_BDET_NONZERO",
+    "NO_WPRIME_ZEO_CROSSWALK",
     "NO_BPILOT_BDET_CROSSWALK",
     "NO_B_BOUNDS",
     "NO_H4D",

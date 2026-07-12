@@ -426,7 +426,13 @@ R0 RHClosure [AND]
 |   |   |-- D0.7b TrialScalarAndPhase
 |   |   |-- D0.7c ConditionalGroundBoundaryNormalization
 |   |   |-- D0.7d BNamespaceFirewall
-|   |   |-- D0.7e ExactDetectorBDefinitionAndCrosswalk
+|   |   |-- D0.7e ExactDetectorBDefinitionAndCrosswalk [AND]
+|   |   |   |-- D0.7e.1 ImmutableOwnerDefinitionProvenance
+|   |   |   |-- D0.7e.2 FiniteCentralMellinCalibration
+|   |   |   |-- D0.7e.3 DependentCentralNormalizationIdentity
+|   |   |   |-- D0.7e.4 RealityPhaseAndNamespaceFirewall
+|   |   |   |-- D0.7e.5 ExactWPrimeZeoCrosswalk
+|   |   |   `-- D0.7e.6 D0.7eAssembly
 |   |   `-- D0.7f D0.7Assembly
 |   |-- D0.8 QWToZeroProducingOperatorCrosswalk
 |   `-- D0.9 D0Assembly                  [assembly, not analytic sibling]
@@ -497,7 +503,8 @@ proof node.
 | `D0.4` | Exact parity involution and sectors, without cleanliness claim | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `EXACT_PARITY_SECTORS_LOCKED` |
 | `D0.5` | Exact ground eigenspace and trial-vector types, without simple-even claim | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `GROUND_TRIAL_TYPES_LOCKED` |
 | `D0.6` | Exact Fourier/Mellin convention and topology | `PROVED / SOURCE_LOCKED / LEAN_UNPINNED` | `EXACT_TRANSFORM_CONVENTION_LOCKED` |
-| `D0.7` | Exact boundary/scalar/phase normalization definitions | `BLOCKED / 4_OF_5_COMPONENTS_PROVED` | blocker: `D0_7_DETECTOR_B_DEFINITION_MISSING` |
+| `D0.7` | Exact boundary/scalar/phase normalization definitions | `BLOCKED / BDET_DEFINITION_LOCKED / XWALK_OPEN` | blocker: `D0_7E_XWALK_OPEN` |
+| `D0.7e` | Owner-ratified finite central calibration plus exact WPrime/ZEO crosswalk | `BLOCKED / 4_OF_5_SUBCOMPONENTS_PROVED` | partial: `D0_7E_CENTRAL_CALIBRATION_LOCKED`; blocker: `D0_7E_XWALK_OPEN` |
 | `D0.8` | Same-object QW-to-D_log-to-transform crosswalk | `OPEN / BLOCKED_BY_D0.7` | `ZERO_PRODUCING_CROSSWALK_LOCKED` |
 | `D0.9` | D0 assembly application | `OPEN / BLOCKED_BY_D0.7_D0.8` | `EXACT_OBJECT_FAMILY_LOCKED` |
 | `H1` | Entirety of the exact normalized approximants | `OPEN_UNTIL_D0` | `ENTIRE_APPROXIMANTS_PROVED` |
@@ -611,12 +618,22 @@ locks the set-valued ground eigenspace plus trial-vector dependent types
 without simple-even or nonzero assumptions. D0.7 was then legally decomposed:
 the exact Dirichlet vector/functional, trial scalar/phase, dependent ground
 boundary normalization, and `b`-namespace firewall are proved. The canonical
-detector `b` used by `W'` remains absent from the source corpus, so D0.7 is
-`BLOCKED / 4_OF_5_COMPONENTS_PROVED`. Pro architecture review returned
-`EXTERNAL_OWNER_INPUT_REQUIRED` and rejected promotion of `bPilot`; the unique
-unresolved leaf is `D0.7e ExactDetectorBDefinitionAndCrosswalk`. Autorun is
-paused until the immutable fields in `D0_7E_OWNER_INPUT_REQUEST.md` are
-supplied by Mythos/owner.
+detector `b` used by `W'` was then supplied by immutable owner input. The audit
+accepted the finite dependent definition
+`bDet_(m,N)=Fhat_(m,N)(0)/Xi(0)=sqrt(L_m)c0/zeta(1/2)` on `TrialNonzero`, with
+the exact reflection `Fplus(z)=T_m(k1)(-z)`, an eta-series proof that
+`zeta(1/2)!=0`, and dependent normalization only on `BDetNonzero`.
+
+It did not accept the unspecified `N(lambda)=ceil(kappa lambda^2)` selector or
+the proposed WPrime/ZEO inequality as a proof. The cited D0 draft and
+`docs/EXACT_OBJECT_FAMILY.md` do not exist; canonical `alpha`, true `DeltaE`,
+`delta_dict`, the joint limit, and a uniform compact-strip constant are not
+supplied. The primary paper explicitly calls the required trial-to-ground
+tracking a missing step, and importing the cited H3c/H4 nodes at this point
+would cycle through D0. D0.7e was therefore legally decomposed; D0.7e.1--.4
+are proved and the unique active leaf is `D0.7e.5 ExactWPrimeZeoCrosswalk`,
+blocked at `D0_7E_XWALK_OPEN`. D0.7 and all ancestors remain blocked. No Bus
+010 was created; Route B remains `CHALLENGER / NOT_RH`.
 
 ## 9. Completion condition
 
@@ -642,4 +659,4 @@ CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / ROUTE_B_CHALLENGER / NOT_RH
 For a fresh Codex session, use `START_GOAL.md` in this directory. It is a
 paste-ready goal that loads this master file and `STATE.json`, enforces the
 physical-bus transaction boundary, and resumes the unique active leaf recorded
-in state (currently `D0.7e`) under the durable owner-authorized scheduler.
+in state (currently `D0.7e.5`) under the durable owner-authorized scheduler.

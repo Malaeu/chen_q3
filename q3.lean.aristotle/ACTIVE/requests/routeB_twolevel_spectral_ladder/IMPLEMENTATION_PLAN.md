@@ -1,7 +1,7 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-07-11 22:25 CEST
-Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_EXTERNAL_OWNER_INPUT / D0.7e_BLOCKED / NOT_RH / CHALLENGER`
+Updated: 2026-07-12 09:27 CEST
+Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP / D0.7e.5_BLOCKED / NOT_RH / CHALLENGER`
 
 Этот план не переопределяет корневой `IMPLEMENTATION_PLAN.md` и не повышает
 Route B над официальным H-bridge. Полная лестница находится в
@@ -21,7 +21,7 @@ Route B над официальным H-bridge. Полная лестница н
 
 ## ACTIVE
 
-`D0.7e ExactDetectorBDefinitionAndCrosswalk — D0.7a..D0.7d PROVED; EXTERNAL_OWNER_INPUT_REQUIRED`
+`D0.7e.5 ExactWPrimeZeoCrosswalk — finite bDet definition PROVED on dependent carrier; XWALK THEOREM_SHAPE_ONLY`
 
 Физическая шина: `001..009` закрыты; unanswered goal отсутствует; `010` —
 только свободный номер и не создаётся Codex.
@@ -34,12 +34,19 @@ Route B над официальным H-bridge. Полная лестница н
 
 `D0.7a..D0.7d` source-lock `delta_(m,N)`, dependent ground/trial and boundary
 normalizations, scalar/phase conventions, and the `b` namespace firewall.
-`D0.7e` must define the exact detector `b` and prove its crosswalk to the
-`W'` consumer. It must not alias `bWeil_j` or superseded `bPilot`, and must not
-import uniform nonzero/growth bounds belonging to H4d. D0.7 assembly remains
-blocked until this exact definition exists. Pro review rejected reconstruction;
-Mythos/owner must supply the immutable fields in
-`../routeB_lamport_rh_closure/D0_7E_OWNER_INPUT_REQUEST.md`.
+Immutable owner input has now passed the finite-definition audit:
+`bDet=Fhat(0)/Xi(0)=sqrt(L)c0/zeta(1/2)` on `TrialNonzero`, with exact
+reflection `Fplus=T_m(k1)(-z)`; `G=Fhat/bDet` is defined only on
+`BDetNonzero`. The input does not supply a legal `N(lambda)` because `kappa` is
+unspecified.
+
+The current leaf is the remaining `PO_D0_7E_XWALK`. It requires exact typed
+`alpha`, true `DeltaE`, `delta_dict`, a joint `(m,N)` limit, and a uniform
+compact-strip bound. The input calls it a theorem shape to be proved, and the
+primary source calls its trial-to-ground ingredient missing. Importing its
+cited H3c/H4 ingredients at D0.7e would create a D0 dependency cycle. D0.7e and D0.7
+remain blocked until this leaf is genuinely `PROVED`; `CONDITIONAL` cannot
+close them. No Bus 010 is created by Codex.
 
 ## Physical Route B candidates — not selected
 

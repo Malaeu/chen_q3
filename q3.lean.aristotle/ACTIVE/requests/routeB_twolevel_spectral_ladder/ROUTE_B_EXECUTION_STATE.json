@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-11T22:44:00+02:00",
+  "updated_at": "2026-07-12T09:27:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,16 +10,16 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_EXTERNAL_OWNER_INPUT",
+  "operational_status": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_XWALK_SOURCE_GAP",
   "current": {
     "stage_id": "RB-LAMPORT-D0",
-    "contract_obligation": "D0.7e",
-    "name": "ExactDetectorBDefinitionAndCrosswalk",
-    "status": "PAUSED_EXTERNAL_OWNER_INPUT",
+    "contract_obligation": "D0.7e.5",
+    "name": "ExactWPrimeZeoCrosswalk",
+    "status": "BLOCKED_THEOREM_SHAPE_ONLY",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Mythos/owner",
-    "next_action": "Provide the exact detector-b definition and non-circular W-prime/ZEO crosswalk required by D0_7E_OWNER_INPUT_REQUEST.md; bPilot is not promotable; do not create Bus 010.",
+    "next_required_actor": "Mythos/Pro source owner",
+    "next_action": "Repair PO_D0_7E_XWALK with exact typed alpha, true DeltaE, delta_dict, a joint (m,N) limit, and a uniform compact-strip theorem. The finite bDet definition is locked; do not create Bus 010.",
     "exit_codes": [
       "CONTRACT_V2_LOCKED",
       "STATE_LOOP_SYNCED",
@@ -31,7 +31,8 @@
       "EXACT_PARITY_SECTORS_LOCKED",
       "GROUND_TRIAL_TYPES_LOCKED",
       "D0_7_PARTIAL_NORMALIZATION_LOCKED",
-      "D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED"
+      "D0_7E_EXTERNAL_OWNER_REQUEST_LOCKED",
+      "D0_7E_CENTRAL_CALIBRATION_LOCKED"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -40,7 +41,12 @@
       "ZEO_EXPORT_AMBIGUOUS",
       "D0_7_NORMALIZATION_MISMATCH",
       "D0_7_NONZERO_SMUGGLED",
-      "D0_7_DETECTOR_B_DEFINITION_MISSING"
+      "D0_7E_XWALK_OPEN",
+      "D0_7E_ALPHA_DELTAE_UNDEFINED",
+      "D0_7E_XWALK_LIMIT_QUANTIFIER_MISSING",
+      "D0_7E_XWALK_UNIFORM_CONSTANT_GAP",
+      "D0_7E_B_BOUND_CONTRACT_MISMATCH",
+      "D0_7E_XWALK_DEPENDENCY_CYCLE"
     ]
   },
   "bus": {
@@ -100,10 +106,10 @@
       "detail": "When no physical unanswered goal exists, Codex autonomously executes the first eligible recursive Lamport master leaf."
     },
     {
-      "code": "D0_7_DETECTOR_B_DEFINITION_MISSING",
-      "class": "MASTER_DAG_EXTERNAL_DEFINITION_BLOCKER",
-      "owner": "Mythos/Pro architecture review",
-      "detail": "D0.7a-d are proved. Pro verdict is EXTERNAL_OWNER_INPUT_REQUIRED. The later object-lock records detector b as MISSING, and no theorem crosswalks bWeil_j, xihat, or the superseded pilot norm to the W-prime scalar."
+      "code": "D0_7E_XWALK_OPEN",
+      "class": "MASTER_DAG_THEOREM_AND_SOURCE_BLOCKER",
+      "owner": "Mythos/Pro source owner",
+      "detail": "The finite bDet definition is proved on TrialNonzero, but the owner crosswalk is only a theorem shape. Canonical alpha, true DeltaE, delta_dict, the joint limit, and a uniform compact-strip constant are not supplied; the primary source names trial-ground tracking as missing; importing cited H3c/H4 nodes here would create a D0 dependency cycle."
     }
   ],
   "guardrails": {
@@ -135,6 +141,10 @@
     "literature_digest": {
       "path": "q3.lean.aristotle/docs/RESEARCH_DIGEST_LITERATURE_2026-07.md",
       "sha256": "8dbcef9f253d10737eedaf231c732d7053a5d6e5b2937e92373c77ba2dce8335"
+    },
+    "d0_7e_owner_input": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_OWNER_INPUT.md",
+      "sha256": "a0f8ef78ec023aeef34f6ae03769faaf675a94d30d93b85a5da5258cb2f0bfed"
     }
   },
   "stages": [
@@ -142,7 +152,7 @@
       "id": "RB-LAMPORT-D0",
       "obligations": ["D0.1", "D0.2", "D0.3", "D0.4", "D0.5", "D0.6", "D0.7", "D0.8", "D0.9"],
       "name": "LamportExactObjectFamily",
-      "status": "PAUSED_D0_7E_EXTERNAL_OWNER_INPUT_D0_7A_D_PROVED"
+      "status": "PAUSED_D0_7E5_XWALK_SOURCE_GAP_BDET_DEFINITION_LOCKED"
     },
     {
       "id": "RB-0",
