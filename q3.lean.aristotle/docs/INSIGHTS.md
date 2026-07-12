@@ -46767,3 +46767,29 @@ not the raw-D17 factorwise support class.
   96 nodes: 50 PROVED, 38 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  The exact stop
   is now `L0C_EXACT_FAMILY_INSTANTIATION_MISSING`; D0.7e.5a remains ACTIVE,
   Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H4a3 weighted spectral Temple core (in progress)
+
+- Exact target: replace the already-falsified denominator direction below
+  `H4a3 ResidualToCanonicalAlphaUpper` by a finite weighted-spectral theorem
+  proving `etaSq >= alpha * (Delta-alpha)`.
+- Five local `q3_docs` queries found no pinned implementation of this theorem;
+  the closest hits are unrelated Rayleigh/compression notes (scores about
+  0.57--0.63), so no old project claim will be imported.
+- The mathematical source check confirms the a-posteriori residual framework:
+  the denominator is separation from the Rayleigh center, not the bare ground
+  gap.  The Lean implementation will derive the inequality directly from a
+  finite probability-weighted spectral expansion.
+- Planned core: nonnegative weights summing to one, one zero ground level, and
+  every other level at least `Delta` imply the variance/residual lower bound;
+  then derive the exact Temple quotient and the half-gap bound
+  `alpha <= 2*etaSq/Delta`.
+- Lean route: `Fintype`/`Finset.univ`, termwise `sum_le_sum`, the weighted
+  variance identity via `Finset.sum_add_distrib` and `Finset.mul_sum`, followed
+  by `nlinarith` and positive-denominator division.
+- DAG plan: split H4a3 into a proved generic core, an OPEN exact Route B
+  eigenbasis/residual instantiation, and assembly.  The generic theorem cannot
+  define canonical alpha, select an error subspace, or close SafeAlphaUpper.
+- Acceptance: zero holes, standard Mathlib axioms only, the two-level false
+  formula remains a live plant, D0.7e.5a/Bus state stay unchanged, and status
+  remains `NOT_RH`.
