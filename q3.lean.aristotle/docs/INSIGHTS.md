@@ -46593,3 +46593,28 @@ not the raw-D17 factorwise support class.
   CONDITIONAL.  The unique active leaf and stop remain `D0.7e.5a` and
   `D0_7E_WPRIME_CONSUMER_MISSING`; both frontier and bus validators pass,
   Bus 010 is absent, and the public status is still `NOT_RH`.
+
+## Insight (2026-07-12, Route B Lamport compiler) -- H3H4ContractDriftAudit
+
+- Contract v2 explicitly replaces H4 by the four safe leaves
+  `SafeAlphaUpper`, `SafeGapLower`, `SafeSignAndB`, and `SafeRateAssembly`, but
+  STATE rev14 still organizes H4 around residual identity/upper/gap/control.
+  The missing residual-to-alpha theorem is therefore a real DAG gap.
+- The registered bridge `sqrt(alpha/DeltaE) <= eta/DeltaE` is false.  The
+  two-level example `A=diag(0,1)`, `u=(e0+e1)/sqrt(2)` has
+  `alpha=eta=1/2`, `DeltaE=1`, so it asserts `1/sqrt(2)<=1/2`.
+- Owner I-b2's lower bound `|b_j|sqrt(lambda_j)>=c` is not a lower bound on
+  `|b_j|`: `b_j=1/(j+1)`, `lambda_j=(j+1)^2` has product one but `b_j->0`.
+  Absolute H3e tracking therefore cannot be divided by b without reciprocal
+  error control.
+- The primary source proves raw `E(h_lambda)` Fourier convergence to `Xi`.
+  Multiplying that raw tracker again by `gammaC` creates a possible
+  double-completion; the exact limit-object crosswalk remains missing.
+- `SafeBridgeFalsifiers.lean` compiles the first two counterexamples and the
+  corrected Contract-v2 exponent arithmetic.  It proves only the generic
+  negative-power decay core, not exact `SafeRateAssembly` or detector decay.
+- Required repair: retype H4 to the four Contract-v2 leaves, keep residual
+  algebra strictly below `SafeAlphaUpper`, and register
+  `PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE`,
+  `H3E_IB2_LIMINF_MISIDENTIFICATION`, and `XI_LIMIT_OBJECT_MISMATCH` without
+  changing the active D0.7e.5a leaf or claiming RH.
