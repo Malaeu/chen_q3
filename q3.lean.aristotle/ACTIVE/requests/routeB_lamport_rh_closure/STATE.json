@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 27,
-  "updated_at": "2026-07-12T17:12:01+02:00",
+  "revision": 28,
+  "updated_at": "2026-07-12T17:32:34+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "9190770d5b1e667ae61db495cf2effbe4f473829cf25551ebe4d0ae392be0e67",
+    "sprint_log_sha256": "a0e95b9f18a8889a75c46973d700fab72f132f739b8a48b56af9171938bb452c",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -521,7 +521,43 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h4b_perturbative_true_gap_lower": {
+    "name": "H4B_PERTURBATIVE_TRUE_GAP_LOWER_REV28",
+    "status": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_PROVED_EXACT_SAME_PARITY_FUCHS_GAP_OPEN_NOT_RH",
+    "certificate": "H4B_PERTURBATIVE_TRUE_GAP_LOWER_CERTIFICATE.json",
+    "certificate_sha256": "356c32cf3ae305f6c2ab1227e79b060408853e6905f09c41f62d863e437f5a12",
+    "validator": "validate_h4b_perturbative_true_gap_lower.py",
+    "validator_sha256": "5ac369d1a90fac4894a3ac098728917119507c3dde5a8a7b1af14a78e81564b9",
+    "artifact": "H4B_PERTURBATIVE_TRUE_GAP_LOWER_2026-07-12.md",
+    "artifact_sha256": "b7e709a1bdef37a9af894b8f013ec82a4bd1fca177163edf55f7fcb403a05656",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean",
+      "sha256": "bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19"
+    },
+    "proved_nodes": [
+      "H4b.0",
+      "H4b1"
+    ],
+    "generic_verdict": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN",
+    "falsifiers": [
+      "POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP",
+      "ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP"
+    ],
+    "next_worker_leaf": null,
+    "next_exact_node": "H4b2",
+    "remaining_stop": "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
+    "H4B_EXACT_SAME_PARITY_FUCHS_GAP": {
+      "name": "ExactSameParityFuchsGapWithEndpointPerturbationBudget",
+      "authority": "ROUTE_B_THEOREM_CONTRACT_v2.md sections 2, 3, and 5; H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "status": "OPEN_CRITICAL",
+      "home": "H4b2",
+      "failure_code": "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING",
+      "is_lamport_node": false
+    },
     "H3A_EXACT_GROUND_TRIAL_PROJECTIVE_RATE": {
       "name": "ExactSameFamilyGroundTrialProjectiveDefectRate",
       "authority": "H8ULBMAL/fulltext.md sections 7 and 8; D0_5_GROUND_AND_TRIAL_TYPES.md",
@@ -611,7 +647,8 @@
       "H3C_DOUBLE_COMPLETION_STRIP_GUARD_REV24",
       "H2B_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_REV25",
       "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26",
-      "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27"
+      "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27",
+      "H4B_PERTURBATIVE_TRUE_GAP_LOWER_REV28"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1715,14 +1752,52 @@
       "failure_codes": ["SAFE_ALPHA_UPPER_ASSEMBLY_GAP"]
     },
     "H4b": {
-      "id": "H4b", "parent_id": "H4", "kind": "LEAF", "role": "GOAL",
+      "id": "H4b", "parent_id": "H4", "kind": "AND", "role": "GOAL",
       "name": "SafeGapLower",
-      "statement": "Prove the Contract-v2 true same-parity gap lower bound DeltaE >= c_Delta lambda^r_Delta exp(-4 pi lambda^2)",
-      "dependencies": ["D0", "H2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "statement": "The generic two-endpoint perturbation budget and its exact same-parity Fuchs-diagonal Route B instantiation prove the Contract-v2 true gap lower bound",
+      "dependencies": ["H4b.0"], "ordered_children": ["H4b1", "H4b2"], "assembly_theorem_id": "H4b3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H2A_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H4B2_EXACT_SAME_PARITY_FUCHS_GAP_OPEN"},
       "validation": "SAFE_GAP_LOWER_TRUE_PARITY_SPECTRAL_DISTANCE_AUDIT",
-      "failure_codes": ["SAFE_GAP_LOWER_NO_SOURCE", "TRUE_GAP_LOWER_MISSING", "MODEL_GAP_SUBSTITUTION", "GROUND_SECTOR_MISMATCH"]
+      "failure_codes": ["SAFE_GAP_LOWER_NO_SOURCE", "TRUE_GAP_LOWER_MISSING", "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING", "MODEL_GAP_SUBSTITUTION", "GROUND_SECTOR_MISMATCH"]
+    },
+    "H4b.0": {
+      "id": "H4b.0", "parent_id": "H4b", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4b iff H4b1 and H4b2 both hold, with H4b3 as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4B_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4b1": {
+      "id": "H4b1", "parent_id": "H4b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Two absolute endpoint perturbation bounds and a positive surviving model-gap budget imply a true-gap lower bound, pointwise and eventually on a nonbottom filter",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean",
+      "failure_codes": ["H4B_GENERIC_PERTURBATIVE_GAP_TRANSFER_MISSING", "H4B_BOTTOM_FILTER_VACUITY", "MODEL_GAP_SUBSTITUTION", "H4B_ERROR_BUDGET_COLLAPSE_PLANT_MISSING"]
+    },
+    "H4b2": {
+      "id": "H4b2", "parent_id": "H4b", "kind": "LEAF", "role": "GOAL",
+      "statement": "Pin the parity-clean Route B operator and Fuchs model, control both ordered endpoint drifts, and prove a strictly positive surviving Contract-v2 true-gap envelope on one shared filter",
+      "dependencies": ["D0", "H2a", "H4b1"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H4B_EXACT_SAME_PARITY_FUCHS_GAP"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H2A_AND_EXACT_FUCHS_PERTURBATION_INPUTS_OPEN"},
+      "validation": "H4B_EXACT_SAME_PARITY_FUCHS_GAP_AUDIT",
+      "failure_codes": ["H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING", "H4B_EXACT_SAME_PARITY_FUCHS_DIAGONAL_MISSING", "H4B_MODEL_TO_TRUE_EIGENVALUE_PERTURBATION_MISSING", "H4B_UNIFORM_PERTURBATION_RATE_MISSING", "H4B_MULTIPLICITY_AND_ORDERING_CROSSWALK_MISSING", "H4B_TRUE_GAP_LOWER_CONSTANT_MISSING", "H4B_SAME_FAMILY_FILTER_MISSING", "SAFE_GAP_LOWER_NO_SOURCE", "TRUE_GAP_LOWER_MISSING", "MODEL_GAP_SUBSTITUTION", "GROUND_SECTOR_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H4b3": {
+      "id": "H4b3", "parent_id": "H4b", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4b.0 AND H4b1 AND H4b2 IMPLIES exact Contract-v2 SafeGapLower",
+      "dependencies": ["H4b.0", "H4b1", "H4b2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H4B2_OPEN"},
+      "validation": "H4B_EXACT_SAFE_GAP_LOWER_ASSEMBLY",
+      "failure_codes": ["H4B_ASSEMBLY_GAP", "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING"]
     },
     "H4c": {
       "id": "H4c", "parent_id": "H4", "kind": "AND", "role": "GOAL",
@@ -2220,6 +2295,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN;POINTWISE_SQRT_PROJECTIVE_DEFECT_BOUND;NONBOTTOM_FILTER_RATE_TRANSFER;H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
+      },
+      "H4b/generic_perturbative_true_gap_lower/v1": {
+        "status": "GENERIC_PERTURBATIVE_GAP_TRANSFER_CLOSED_EXACT_SAME_PARITY_FUCHS_GAP_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN;POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP;ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP;H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING"
       }
     }
   },
@@ -2453,6 +2534,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN;CANONICAL_TOTAL_PHASE;EXACT_UNIT_VECTOR_NORM_SQUARE_IDENTITY;POINTWISE_SQRT_PROJECTIVE_DEFECT_BOUND;NONBOTTOM_FILTER_RATE_TRANSFER;H3A_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_SIMPLE_EVEN_GROUND_SELECTOR_TRIAL_NONZERO_COFINAL_LOCUS_PROJECTIVE_DEFECT_RATE_AND_SAME_FILTER_OPEN_H3A_H3_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T17:32:34+02:00",
+      "event": "H4B_GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_PROVED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN;TWO_ENDPOINT_ABSOLUTE_PERTURBATION_TRANSFER;NONBOTTOM_FILTER_WRAPPER;POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP;ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP;H4B_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_PARITY_CLEAN_OPERATOR_FUCHS_MODEL_ENDPOINT_DRIFT_BOUNDS_POSITIVE_SURVIVING_ENVELOPE_AND_SHARED_FILTER_OPEN_MODEL_GAP_NOT_SUBSTITUTED_H4B_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

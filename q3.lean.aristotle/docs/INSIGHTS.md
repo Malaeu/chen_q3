@@ -47117,3 +47117,23 @@ not the raw-D17 factorwise support class.
 - Acceptance remains narrow: no model gap is substituted for the true gap, no
   Davis--Kahan/Weyl premise is claimed from source, H4b/H4 stay OPEN, and
   Route B remains `NOT_RH`.
+
+### Final result
+
+- `PerturbativeTrueGapLower.lean` proves the one-sided and absolute-endpoint
+  perturbation-budget transfers, strict positivity from a positive surviving
+  floor, and an eventual version on a non-bottom filter.
+- `positive_model_gap_without_endpoint_control_does_not_force_true_gap`
+  exhibits model endpoints `(0,1)` and collapsed true endpoints `(0,0)`;
+  `endpoint_errors_can_consume_entire_model_gap` shows that full-budget error
+  control still leaves no positive floor.
+- The generic core is only a receiver for a future matrix perturbation theorem.
+  It proves neither a Weyl/Hoffman--Wielandt estimate nor a Fuchs separation
+  for the exact Route B operator.
+- STATE revision 28 decomposes H4b into proved generic core H4b1, OPEN exact
+  same-parity Fuchs-gap instantiation H4b2, and assembly H4b3;
+  `MODEL_GAP_SUBSTITUTION` remains an active guard.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 136 nodes: 70 PROVED,
+  58 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

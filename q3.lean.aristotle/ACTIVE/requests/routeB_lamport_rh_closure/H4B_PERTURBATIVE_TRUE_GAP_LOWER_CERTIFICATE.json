@@ -1,0 +1,128 @@
+{
+  "schema": "route_b_h4b_perturbative_true_gap_lower_certificate.v1",
+  "created_at": "2026-07-12T17:32:34+02:00",
+  "revision_target": 28,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "SAFE_GAP_LOWER_AND_FUCHS_PERTURBATION_CANDIDATE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "TRUE_GAP_AND_MODEL_GAP_FIREWALL"
+    },
+    {
+      "path": "full/sections/A3/matrix_guard.tex",
+      "sha256": "eecbbe50c2c812c1741a40c4c202ef2c85dd13599b12261a60f6de694304d286",
+      "scope": "LOCAL_HOFFMAN_WIELANDT_KY_FAN_PERTURBATION_SHAPE"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Matrix/Spectrum.lean",
+      "sha256": "9ba9936a2a6a19ce94edf322b5ad13a26c8c545543fecb6b42f1b0956e91a5b7",
+      "scope": "ORDERED_HERMITIAN_EIGENVALUE_API"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/LinearAlgebra/Matrix/Gershgorin.lean",
+      "sha256": "72ee5caa23b3b8f7ccfd47c630cb6b5927039963bbc6927895df773e27fbe3c6",
+      "scope": "EIGENVALUE_LOCALIZATION_API_AND_BOUNDARY"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Matrix/Spectrum.html",
+      "scope": "OFFICIAL_ORDERED_HERMITIAN_EIGENVALUE_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Matrix/Gershgorin.html",
+      "scope": "OFFICIAL_GERSHGORIN_LOCALIZATION_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean",
+    "sha256": "bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19",
+    "proved": [
+      "true_gap_lower_of_endpoint_perturbation_budget",
+      "true_gap_lower_of_abs_endpoint_perturbations",
+      "true_gap_pos_of_abs_endpoint_perturbations",
+      "eventually_true_gap_lower_of_abs_endpoint_perturbations",
+      "positive_model_gap_without_endpoint_control_does_not_force_true_gap",
+      "endpoint_errors_can_consume_entire_model_gap"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4B_PERTURBATIVE_TRUE_GAP_LOWER_2026-07-12.md",
+    "sha256": "b7e709a1bdef37a9af894b8f013ec82a4bd1fca177163edf55f7fcb403a05656"
+  },
+  "h4b_repair": {
+    "parent": "H4b",
+    "decomposition": "H4b.0",
+    "ordered_children": ["H4b1", "H4b2"],
+    "assembly": "H4b3",
+    "proved": ["H4b.0", "H4b1"],
+    "open": ["H4b", "H4b2", "H4b3", "H4", "H3e", "H4c2", "H4d2b", "L0c2", "L0"],
+    "generic_verdict": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN",
+    "falsifiers": [
+      "POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP",
+      "ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP"
+    ],
+    "residual_stop": "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H2a", "H4b1"],
+    "external_requirement": "H4B_EXACT_SAME_PARITY_FUCHS_GAP",
+    "family": "SAME_PARITY_TRUE_EIGENVALUES_AND_SHARED_H4_FILTER",
+    "rate": "POSITIVE_SURVIVING_FUCHS_ENVELOPE_AFTER_TWO_ENDPOINT_ERRORS",
+    "open_codes": [
+      "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING",
+      "H4B_EXACT_SAME_PARITY_FUCHS_DIAGONAL_MISSING",
+      "H4B_MODEL_TO_TRUE_EIGENVALUE_PERTURBATION_MISSING",
+      "H4B_UNIFORM_PERTURBATION_RATE_MISSING",
+      "H4B_MULTIPLICITY_AND_ORDERING_CROSSWALK_MISSING",
+      "H4B_TRUE_GAP_LOWER_CONSTANT_MISSING",
+      "H4B_SAME_FAMILY_FILTER_MISSING",
+      "SAFE_GAP_LOWER_NO_SOURCE",
+      "TRUE_GAP_LOWER_MISSING",
+      "MODEL_GAP_SUBSTITUTION",
+      "GROUND_SECTOR_MISMATCH",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 136,
+    "PROVED": 70,
+    "OPEN": 58,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_ROUTE_B_OPERATOR",
+    "NO_EXACT_SAME_PARITY_EIGENVALUE_SELECTION",
+    "NO_WEYL_OR_HOFFMAN_WIELANDT_SOURCE_INSTANTIATION",
+    "NO_FUCHS_DIAGONAL_SEPARATION_PROOF",
+    "NO_TRUE_GAP_RATE",
+    "NO_H4B_PARENT_CLOSURE",
+    "NO_H4_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

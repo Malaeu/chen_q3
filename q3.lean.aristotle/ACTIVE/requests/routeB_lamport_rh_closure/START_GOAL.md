@@ -177,6 +177,13 @@ Current fail-closed address:
   selection, trial nonzero locus, projective-defect rate and shared family/
   filter remain OPEN in `H3a2` with stop
   `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`;
+- rev28 proves `H4b1 GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN`:
+  two absolute endpoint-drift bounds plus a surviving model-gap budget imply
+  the true-gap floor pointwise and on a non-bottom filter; executable guards
+  keep model-gap substitution and full error-budget collapse live, while the
+  exact parity-clean operator/Fuchs model, ordering, both endpoint estimates,
+  positive surviving envelope and shared filter remain OPEN in `H4b2` with
+  stop `H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

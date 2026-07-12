@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T17:12:01+02:00",
+  "updated_at": "2026-07-12T17:32:34+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -74,6 +74,12 @@
       ,"GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN"
       ,"H3A_POINTWISE_PROJECTIVE_DEFECT_BOUND_LEAN"
       ,"H3A_NONBOTTOM_FILTER_RATE_TRANSFER_LEAN"
+      ,"H4B_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN"
+      ,"H4B_ABSOLUTE_ENDPOINT_PERTURBATION_TRANSFER_LEAN"
+      ,"H4B_NONBOTTOM_FILTER_GAP_TRANSFER_LEAN"
+      ,"POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP"
+      ,"ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -117,6 +123,12 @@
       ,"H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING"
       ,"H3A_EXACT_GROUND_SELECTOR_MISSING"
       ,"H3A_PROJECTIVE_DEFECT_RATE_MISSING"
+      ,"H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING"
+      ,"H4B_EXACT_SAME_PARITY_FUCHS_DIAGONAL_MISSING"
+      ,"H4B_MODEL_TO_TRUE_EIGENVALUE_PERTURBATION_MISSING"
+      ,"H4B_UNIFORM_PERTURBATION_RATE_MISSING"
+      ,"H4B_MULTIPLICITY_AND_ORDERING_CROSSWALK_MISSING"
+      ,"H4B_TRUE_GAP_LOWER_CONSTANT_MISSING"
     ]
   },
   "bus": {
@@ -228,6 +240,12 @@
       "class": "MASTER_DAG_EXACT_GROUND_TRIAL_RATE_BLOCKER",
       "owner": "Route B proof compiler / source owner",
       "detail": "The canonical phase, exact unit-vector phase-alignment identity, square-root projective-defect bound, and nonbottom-filter rate transfer are Lean-proved, but the exact simple-even ground selector, cofinal nonzero normalized trial, same-family joint filter, and source-level projective-defect rate remain open."
+    },
+    {
+      "code": "H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING",
+      "class": "MASTER_DAG_EXACT_TRUE_GAP_PERTURBATION_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The generic two-endpoint perturbation-budget transfer, strict-positive-floor corollary, nonbottom-filter wrapper, and model-gap/full-error-budget guards are Lean-proved, but the parity-clean Route B operator/Fuchs model, ordering and multiplicities, both endpoint drift bounds, positive surviving Contract-v2 envelope, and shared filter remain open."
     }
   ],
   "guardrails": {
@@ -489,6 +507,18 @@
     "h3a_phase_alignment_rate_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PhaseAlignmentRateTransfer.lean",
       "sha256": "9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f"
+    },
+    "h4b_perturbative_true_gap_lower_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4B_PERTURBATIVE_TRUE_GAP_LOWER_CERTIFICATE.json",
+      "sha256": "356c32cf3ae305f6c2ab1227e79b060408853e6905f09c41f62d863e437f5a12"
+    },
+    "h4b_perturbative_true_gap_lower_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h4b_perturbative_true_gap_lower.py",
+      "sha256": "5ac369d1a90fac4894a3ac098728917119507c3dde5a8a7b1af14a78e81564b9"
+    },
+    "h4b_perturbative_true_gap_lower_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean",
+      "sha256": "bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19"
     }
   },
   "stages": [

@@ -487,7 +487,10 @@ R0 RHClosure [AND]
 |   |   |   |-- H4a3b ExactRouteBResidualSpectralInstantiation
 |   |   |   `-- H4a3c H4a3Assembly
 |   |   `-- H4a4 SafeAlphaUpperAssembly
-|   |-- H4b SafeGapLower
+|   |-- H4b SafeGapLower [AND]
+|   |   |-- H4b1 GenericPerturbativeTrueGapLower
+|   |   |-- H4b2 ExactSameParityFuchsGapInstantiation
+|   |   `-- H4b3 H4bAssembly
 |   |-- H4c SafeSignAndB [AND]
 |   |   |-- H4c1 GenericTwoSidedNormalizedBControl
 |   |   |-- H4c2 ExactSafeSignAndBInstantiation
@@ -629,7 +632,11 @@ proof node.
 | `H4a3b` | Exact same-parity operator/eigenbasis/residual/half-gap/rate instantiation | `OPEN / INELIGIBLE` | blocker: `H4A3_EXACT_SPECTRAL_INSTANTIATION_MISSING` |
 | `H4a3c` | Assemble the generic core with the exact spectral instantiation | `OPEN / BLOCKED_BY_H4a3b` | `H4A3_EXACT_RESIDUAL_TO_ALPHA_ASSEMBLY` |
 | `H4a4` | SafeAlphaUpper assembly | `OPEN / BLOCKED_BY_H4a1-a3` | `SAFE_ALPHA_UPPER_PROVED` |
-| `H4b` | SafeGapLower for the true same-parity gap | `OPEN_CRITICAL` | `SAFE_GAP_LOWER_PROVED` |
+| `H4b` | AND parent: generic two-endpoint perturbation budget plus exact same-parity Fuchs-gap instantiation | `OPEN / GENERIC_CORE_PROVED / GUARDS_LIVE` | blocker: `H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING` |
+| `H4b.0` | H4b decomposition contract | `PROVED` | `H4B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4b1` | Absolute endpoint drift bounds plus a surviving model-gap budget imply the true-gap floor, pointwise and on a nonbottom filter | `PROVED / GENERIC_LEAN / FALSIFIERS_LIVE` | `GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN` |
+| `H4b2` | Pin the parity-clean Route B operator/model, both endpoint perturbations, ordering/multiplicity and positive Fuchs-envelope remainder | `OPEN / INELIGIBLE` | blocker: `H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING` |
+| `H4b3` | Exact H4b assembly | `OPEN / BLOCKED_BY_H4b2` | `H4B_EXACT_SAFE_GAP_LOWER_ASSEMBLY` |
 | `H4c` | AND parent: generic normalized-b consequences plus exact alpha/gap/b/sign/filter instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING` |
 | `H4c.0` | H4c decomposition contract | `PROVED` | `H4C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H4c1` | Two-sided normalized b control gives nonzero, direct upper, scale-dependent reciprocal and normalized-error bounds | `PROVED / GENERIC_LEAN / FALSIFIER_RETAINED` | `H4C_GENERIC_TWO_SIDED_NORMALIZED_B_CONTROL_LEAN` |
@@ -916,6 +923,16 @@ filter.  Exact H3a2 still must select the same normalized simple-even ground
 and nonzero trial family and prove the projective-defect rate required by H3b.
 The source identifies precisely that approximation as a main remaining
 obstacle.  H3a, H3, L0c2, and RH remain OPEN.
+
+Revision 28 separates the universal perturbation-budget arithmetic from the
+missing exact SafeGapLower source.  Lean proves that absolute drift bounds for
+both selected endpoints and a surviving model-gap budget imply the true-gap
+floor, including strict positivity and a non-bottom-filter wrapper.  Two live
+guards show that a positive model gap alone can coexist with a collapsed true
+gap and that endpoint errors can consume the entire separation.  Exact H4b2
+still must pin the parity-clean Route B operator/Fuchs model, order the true
+same-parity endpoints, prove both drift bounds, and leave a positive
+Contract-v2 Fuchs envelope.  H4b, H4, H3e, L0c2, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

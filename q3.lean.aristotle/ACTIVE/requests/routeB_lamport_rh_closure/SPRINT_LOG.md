@@ -78,3 +78,9 @@ Single owner decision with maximum unblock power:
 `CLOSED H3a1: GENERIC_PHASE_ALIGNMENT_RATE_TRANSFER_LEAN; a total canonical complex phase gives the exact unit-vector norm-square identity, a square-root projective-defect bound, and nonbottom-filter convergence from vanishing projective defect.`
 
 `SKIPPED H3a2: H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING; the exact simple-even ground selector, cofinal nonzero normalized trial, same-family filter, and source-level projective-defect rate remain open.`
+
+`CLOSED H4b1: GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN; two absolute endpoint perturbation bounds plus a surviving model-gap budget imply the true-gap floor, including strict positivity and a nonbottom-filter wrapper.`
+
+`GUARD H4b1: POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP; a positive model separation alone coexists with a collapsed true gap, and ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP shows that non-strict full-budget control gives no positive floor.`
+
+`SKIPPED H4b2: H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING; the parity-clean Route B operator/Fuchs model, multiplicity/order crosswalk, both endpoint drift estimates, positive surviving Fuchs envelope and shared filter remain open.`
