@@ -46656,3 +46656,26 @@ not the raw-D17 factorwise support class.
   encoded rather than assumed, zero holes, only standard Mathlib axioms.  It
   does not select `RAW_GLOBAL` as master `F_j`, discharge `D0.8`, prove H1/H2,
   create Bus 010, or change `NOT_RH`.
+
+### Final result
+
+- `Proposition59EntireTransform.lean` proves the removable Proposition-5.9
+  RHS entire for every finite vector, recovers the printed quotient off the
+  lattice, and computes the finite derivative value on the lattice.  The
+  honest exit is `PROPOSITION59_RHS_ENTIRE`, not an integral or master-family
+  crosswalk.
+- `SafeRateAssembly.lean` proves that on any non-bottom filter, a cofinal scale
+  and eventual squared polynomial envelope force detector decay under the
+  strict Contract-v2 margin.  This closes the generic cofinal rate package but
+  does not supply the exact WPrime envelope or joint `(m,N)` filter.
+- STATE revision 16 decomposes H1c into source RHS, raw-integral crosswalk,
+  master-family selection, and assembly; it decomposes H4d1 into natural-scale
+  and cofinal-filter cores.  The count is 92 nodes: 47 PROVED, 37 OPEN,
+  7 BLOCKED, 1 CONDITIONAL.
+- The independent H2 source audit confirms that H8 Theorem 5.10 is a global
+  real-zero theorem for the raw transform of the exact simple-even ground
+  vector, not for the completed trial tracker.  `RAW_GLOBAL` is the coherent
+  recommendation, but no owner architecture choice is inferred.
+- The next independent mathematical worker leaf is `H1c2
+  RawIntegralRhsCrosswalk`; the unique canonical ACTIVE leaf remains
+  `D0.7e.5a`, Bus 010 is absent, and Route B remains `NOT_RH`.

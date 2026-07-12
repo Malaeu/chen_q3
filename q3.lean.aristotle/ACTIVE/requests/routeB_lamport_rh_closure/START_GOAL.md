@@ -98,6 +98,12 @@ Current fail-closed address:
 - exact historical WPrime `b` orientation therefore remains unpinned;
 - H3e ExactWPrimeTrackingTheorem is registered OPEN/INACTIVE; H0/A1 and
   PO_XWALK_UNIFORM_EVAL remain OPEN_CRITICAL external obligations;
+- rev16 proves `H1c1 PROPOSITION59_RHS_ENTIRE`: all source-lattice poles are
+  encoded by `dslope` and the finite source RHS is Lean-entire; the exact raw
+  integral equality `H1c2` and master-family choice `H1c3` remain OPEN;
+- rev16 also proves the non-bottom cofinal square-envelope rate package
+  `H4d1b/H4d1c`; exact H4d2 still lacks the WPrime square envelope, constants,
+  SafeAlphaUpper, SafeGapLower, SafeSignAndB, and a selected joint filter;
 - no H3c/H4 import, no selector invention, and no tautological WPrime
   definition;
 - no bWeil/pilot alias, no H4d bound smuggling, and no conditional parent

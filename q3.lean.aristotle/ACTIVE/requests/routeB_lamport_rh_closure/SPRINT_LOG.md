@@ -1,6 +1,6 @@
 # Route B no-stop sprint log — 2026-07-12
 
-Status: `COMPLETE_FAIL_CLOSED / NOT_RH`
+Status: `COMPLETE_FAIL_CLOSED / POST_SPRINT_WORKERS_ACTIVE / NOT_RH`
 
 `SKIPPED T0: NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE; no candidate passes C1-C6, so the active standing order cannot ratify one and D0.7e.5a stays BLOCKED.`
 
@@ -20,3 +20,9 @@ Status: `COMPLETE_FAIL_CLOSED / NOT_RH`
 
 Single owner decision with maximum unblock power:
 `SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION`.
+
+`CLOSED H1c1: PROPOSITION59_RHS_ENTIRE; every apparent Proposition-5.9 pole is a dslope removable value and the finite source RHS is Lean-entire.`
+
+`CLOSED H4d1b/H4d1c: LEAN_SAFE_RATE_COFINAL_SQUARE_CORE; a non-bottom cofinal squared envelope plus strict margin forces WPrime decay.`
+
+`SKIPPED H4d2: H4D_WPRIME_SQUARE_ENVELOPE_MISSING; exact SAFE leaves, constants, WPrime identity, and joint filter are absent; next independent worker leaf is H1c2 RawIntegralRhsCrosswalk.`

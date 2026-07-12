@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 15,
-  "updated_at": "2026-07-12T13:32:00+02:00",
+  "revision": 16,
+  "updated_at": "2026-07-12T13:54:56+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "eb989260a871a2945aa93f30492fcbc588629e6144766efa37fcbce89c95e778",
+    "sprint_log_sha256": "7dc3ad0563219089504d990d815580ea534cbed7ff1489bb338a06db2e24bc4a",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -220,7 +220,7 @@
     "certificate": "H3_H4_CONTRACT_REPAIR_CERTIFICATE.json",
     "certificate_sha256": "4790162bd7e22919ccec12623b73e7861be2a5cd395062dbf5f59b1ef6019458",
     "validator": "validate_h3_h4_contract_repair.py",
-    "validator_sha256": "1e77884396435a05e91db73dbf345b3bfdb2b4ef3ec38c59d98c34ab7abda18e",
+    "validator_sha256": "938a2ea28aec1256e9928b6b7a375cd0d32c359bc8f1a5f8eb11d7a9b112a280",
     "artifact": "H3_H4_CONTRACT_REPAIR_2026-07-12.md",
     "artifact_sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
     "proved_generic_nodes": ["H4.0", "H4a.0", "H4d.0", "H4d1"],
@@ -234,6 +234,31 @@
       "H3C_DOUBLE_COMPLETION_NOT_EXCLUDED"
     ],
     "h4_contract_children": ["SafeAlphaUpper", "SafeGapLower", "SafeSignAndB", "SafeRateAssembly"],
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
+  "h1c_h4d_generic_cores": {
+    "name": "H1C_H4D_GENERIC_CORES_REV16",
+    "status": "TWO_UNCONDITIONAL_LEAN_CORES_PROVED_EXACT_CROSSWALKS_OPEN_NOT_RH",
+    "certificate": "H1C_H4D_GENERIC_CORES_CERTIFICATE.json",
+    "certificate_sha256": "af0d6a18cd9928e1955ada2905e05bf6ffa5f5865b2c50f0da31a3a8b42a9ed7",
+    "validator": "validate_h1c_h4d_generic_cores.py",
+    "validator_sha256": "5e135ade2fa8f8f5b36c2c056aac99c19dd22e1426b357c8895eb466647d4d41",
+    "artifact": "H1C_H4D_GENERIC_CORES_2026-07-12.md",
+    "artifact_sha256": "1409571ed83152a729b1cfffdc235496d4d5aa1b43a2aa204410c31670954c9c",
+    "proof_artifacts": {
+      "proposition59_entire": {
+        "path": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+        "sha256": "a5a6c7bb08f7d8e75ac583dfcf25a7060eaff1060e755142d1456ea94d73ab9b"
+      },
+      "safe_rate_assembly": {
+        "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeRateAssembly.lean",
+        "sha256": "f864eb19263be812cb2bcecc6a4fe64bc67af499f4675ac1a3295b8ed71f50af"
+      }
+    },
+    "proved_nodes": ["H1c.0", "H1c1", "H4d1.0", "H4d1a", "H4d1b", "H4d1c", "H4d1"],
+    "open_worker_leaf": "H1c2",
+    "open_exact_nodes": ["H1c", "H1c2", "H1c3", "H1c4", "H1", "H4d2", "H4d3", "H4d", "H4"],
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
@@ -305,7 +330,8 @@
       "D0.7E.BPRIME_OWNER_R1_R5_RATIFIED",
       "D0.7E.NOSTOP_SPRINT_T0_T5_COMPLETED_FAIL_CLOSED",
       "C0_L0_H1_FRONTIER_REV14_PARTIAL_LEAN_CLOSURE",
-      "H3_H4_CONTRACT_REPAIR_REV15"
+      "H3_H4_CONTRACT_REPAIR_REV15",
+      "H1C_H4D_GENERIC_CORES_REV16"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -912,13 +938,59 @@
       "failure_codes": ["H1_PHASE_NORMALIZATION_CLOSURE_GAP"]
     },
     "H1c": {
-      "id": "H1c", "parent_id": "H1", "kind": "LEAF", "role": "GOAL",
-      "statement": "The exact master approximant F_j is source-locked to the raw entire transform or another globally entire same-family object",
-      "dependencies": ["D0.8", "H1a", "H1b"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H1c", "parent_id": "H1", "kind": "AND", "role": "GOAL",
+      "statement": "The Proposition-5.9 removable source formula, exact raw integral, and selected master approximant are one globally entire same-family object",
+      "dependencies": ["H1c.0"], "ordered_children": ["H1c1", "H1c2", "H1c3"], "assembly_theorem_id": "H1c4",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_8_AND_ARCHITECTURE_CHOICE_OPEN"},
+      "eligibility": {"eligible": false, "reason": "RAW_INTEGRAL_AND_MASTER_FAMILY_CROSSWALKS_OPEN"},
       "validation": "H1_EXACT_APPROXIMANT_SOURCE_CROSSWALK_AUDIT",
-      "failure_codes": ["H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_OBJECT_MISMATCH", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
+      "failure_codes": ["H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING", "H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "H1_OBJECT_MISMATCH", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
+    },
+    "H1c.0": {
+      "id": "H1c.0", "parent_id": "H1c", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H1c iff the Proposition-5.9 RHS is entire, the exact raw integral equals it, and the exact master family is source-locked, with H1c4 as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H1C_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H1C_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H1c1": {
+      "id": "H1c1", "parent_id": "H1c", "kind": "LEAF", "role": "GOAL",
+      "statement": "For every finite coefficient vector, the removable Proposition-5.9 RHS is globally entire and equals the printed quotient formula off its finite lattice",
+      "dependencies": ["D0.6"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_SOURCE_FORMULA_LEAN"},
+      "validation": "PROPOSITION59_RHS_ENTIRE",
+      "proof_artifact": "Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "failure_codes": ["H1C_PROPOSITION59_POLE_CANCELLATION_GAP", "H1C_PROPOSITION59_ENTIRETY_GAP"]
+    },
+    "H1c2": {
+      "id": "H1c2", "parent_id": "H1c", "kind": "LEAF", "role": "GOAL",
+      "statement": "The exact phase-centered raw integral of finiteLogFourierTrial equals the removable Proposition-5.9 RHS at every complex point, including the source lattice",
+      "dependencies": ["D0.6", "H1c1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": true, "reason": "INDEPENDENT_WORKER_LEAF_SOURCE_AND_D0_6_PROVED"},
+      "validation": "RAW_INTEGRAL_PROPOSITION59_RHS_EXACT_CROSSWALK",
+      "failure_codes": ["H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING", "H1C_LATTICE_VALUE_CROSSWALK_MISSING", "H1_TRANSFORM_SIGN_OR_PHASE_MISMATCH"]
+    },
+    "H1c3": {
+      "id": "H1c3", "parent_id": "H1c", "kind": "LEAF", "role": "GOAL",
+      "statement": "Select the exact master approximant F_j and prove its D0.8 same-object crosswalk to the source-locked raw ground transform or a separately ratified strip-local object",
+      "dependencies": ["D0.8", "H1a", "H1b", "H1c2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_8_AND_OWNER_ARCHITECTURE_CHOICE_OPEN"},
+      "validation": "H1_EXACT_MASTER_FAMILY_SOURCE_CROSSWALK",
+      "failure_codes": ["H1_EXACT_APPROXIMANT_SOURCE_UNPINNED", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "H1_OBJECT_MISMATCH", "H1_COMPLETED_FACTOR_POLE_CANCELLATION_MISSING"]
+    },
+    "H1c4": {
+      "id": "H1c4", "parent_id": "H1c", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H1c1 AND H1c2 AND H1c3 IMPLIES the exact source-locked entire approximant crosswalk H1c",
+      "dependencies": ["H1c.0", "H1c1", "H1c2", "H1c3"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H1C2_H1C3_OPEN"},
+      "validation": "H1C_EXACT_SOURCE_FAMILY_ASSEMBLY",
+      "failure_codes": ["H1C_ASSEMBLY_GAP", "H1_OBJECT_MISMATCH"]
     },
     "H1d": {
       "id": "H1d", "parent_id": "H1", "kind": "LEAF", "role": "ASSEMBLY",
@@ -1141,14 +1213,53 @@
       "failure_codes": ["H4D_DECOMPOSITION_NOT_EQUIVALENT"]
     },
     "H4d1": {
-      "id": "H4d1", "parent_id": "H4d", "kind": "LEAF", "role": "GOAL",
-      "statement": "The strict margin r_Delta-r_alpha > 2q_b+1 makes q_b+(1+r_alpha-r_Delta)/2 negative and the natural-scale power tends to zero",
+      "id": "H4d1", "parent_id": "H4d", "kind": "AND", "role": "GOAL",
+      "statement": "The generic safe-rate package proves exponent negativity and detector decay from a non-bottom cofinal squared envelope",
+      "dependencies": ["H4d1.0"], "ordered_children": ["H4d1a", "H4d1b"], "assembly_theorem_id": "H4d1c",
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN_PACKAGE"},
+      "validation": "LEAN_SAFE_RATE_GENERIC_PACKAGE",
+      "proof_artifact": "Q3/Proofs/RouteB/SafeRateAssembly.lean",
+      "failure_codes": ["SAFE_RATE_EXPONENT_ARITHMETIC_GAP", "H4D_FILTER_BOT_VACUITY", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING"]
+    },
+    "H4d1.0": {
+      "id": "H4d1.0", "parent_id": "H4d1", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H4d1 iff the natural-scale exponent core and non-bottom cofinal square-envelope core hold, with H4d1c as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H4D1_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H4D1_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H4d1a": {
+      "id": "H4d1a", "parent_id": "H4d1", "kind": "LEAF", "role": "GOAL",
+      "statement": "The strict margin makes the Contract-v2 polynomial exponent negative and its natural-scale power tends to zero",
       "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "PROVED", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
       "validation": "LEAN_SAFE_RATE_POLYNOMIAL_CORE",
       "proof_artifact": "Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
       "failure_codes": ["SAFE_RATE_EXPONENT_ARITHMETIC_GAP"]
+    },
+    "H4d1b": {
+      "id": "H4d1b", "parent_id": "H4d1", "kind": "LEAF", "role": "GOAL",
+      "statement": "On any non-bottom filter, a cofinal positive scale, strict margin, nonnegative W, and eventual squared polynomial envelope imply W tends to zero",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "LEAN_SAFE_RATE_COFINAL_SQUARE_CORE",
+      "proof_artifact": "Q3/Proofs/RouteB/SafeRateAssembly.lean",
+      "failure_codes": ["H4D_FILTER_BOT_VACUITY", "H4D_COFINAL_SCALE_MISSING", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING"]
+    },
+    "H4d1c": {
+      "id": "H4d1c", "parent_id": "H4d1", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H4d1a AND H4d1b IMPLIES the generic SafeRate exponent-and-convergence package",
+      "dependencies": ["H4d1.0", "H4d1a", "H4d1b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN_ASSEMBLY"},
+      "validation": "LEAN_SAFE_RATE_GENERIC_PACKAGE",
+      "proof_artifact": "Q3/Proofs/RouteB/SafeRateAssembly.lean",
+      "failure_codes": ["H4D1_GENERIC_ASSEMBLY_GAP"]
     },
     "H4d2": {
       "id": "H4d2", "parent_id": "H4d", "kind": "LEAF", "role": "GOAL",
@@ -1158,7 +1269,7 @@
       "proof_status": "OPEN", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "H4ABC_AND_JOINT_FILTER_OPEN"},
       "validation": "EXACT_SAFE_RATE_CONSTANTS_AND_FILTER_AUDIT",
-      "failure_codes": ["H4_LIMIT_FILTER_UNSELECTED", "H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4D_QB_VALUE_UNPROVED"]
+      "failure_codes": ["H4_LIMIT_FILTER_UNSELECTED", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING", "H4D_EXACT_CONSTANTS_MISSING", "H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4D_QB_VALUE_UNPROVED"]
     },
     "H4d3": {
       "id": "H4d3", "parent_id": "H4d", "kind": "LEAF", "role": "ASSEMBLY",
@@ -1376,6 +1487,18 @@
         "last_class": "REPRESENTATION_PROGRESS",
         "no_progress_streak": 0,
         "result": "H4_CONTRACT_V2_DECOMPOSITION_LOCKED;PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE;H4D1_GENERIC_RATE_CORE_PROVED"
+      },
+      "H1c/proposition59_removable_rhs_entire/v1": {
+        "status": "SOURCE_RHS_CORE_CLOSED_RAW_INTEGRAL_AND_MASTER_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "PROPOSITION59_RHS_ENTIRE;H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING;H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED"
+      },
+      "H4d1/cofinal_square_envelope_rate_core/v1": {
+        "status": "GENERIC_COFINAL_RATE_PACKAGE_CLOSED_EXACT_ENVELOPE_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "LEAN_SAFE_RATE_COFINAL_SQUARE_CORE;LEAN_SAFE_RATE_GENERIC_PACKAGE;H4D_WPRIME_SQUARE_ENVELOPE_MISSING"
       }
     }
   },
@@ -1525,6 +1648,13 @@
       "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
       "result": "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE;H3E_IB2_LIMINF_MISIDENTIFICATION;XI_LIMIT_OBJECT_MISMATCH;H4_CONTRACT_V2_DECOMPOSITION_LOCKED;H4D1_GENERIC_RATE_CORE_PROVED",
       "honesty": "ALL_EXACT_SAFE_LEAVES_OPEN_H3E_OPEN_H3C_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T13:54:56+02:00",
+      "event": "H1C_PROPOSITION59_AND_H4D_COFINAL_GENERIC_CORES_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "PROPOSITION59_RHS_ENTIRE;LEAN_SAFE_RATE_COFINAL_SQUARE_CORE;LEAN_SAFE_RATE_GENERIC_PACKAGE",
+      "honesty": "RAW_INTEGRAL_CROSSWALK_OPEN_MASTER_FAMILY_UNSELECTED_EXACT_WPRIME_ENVELOPE_OPEN_H1_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

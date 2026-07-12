@@ -254,7 +254,15 @@
     },
     "h3_h4_contract_repair_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3_h4_contract_repair.py",
-      "sha256": "1e77884396435a05e91db73dbf345b3bfdb2b4ef3ec38c59d98c34ab7abda18e"
+      "sha256": "938a2ea28aec1256e9928b6b7a375cd0d32c359bc8f1a5f8eb11d7a9b112a280"
+    },
+    "h1c_h4d_generic_cores_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H1C_H4D_GENERIC_CORES_CERTIFICATE.json",
+      "sha256": "af0d6a18cd9928e1955ada2905e05bf6ffa5f5865b2c50f0da31a3a8b42a9ed7"
+    },
+    "h1c_h4d_generic_cores_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h1c_h4d_generic_cores.py",
+      "sha256": "5e135ade2fa8f8f5b36c2c056aac99c19dd22e1426b357c8895eb466647d4d41"
     }
   },
   "stages": [

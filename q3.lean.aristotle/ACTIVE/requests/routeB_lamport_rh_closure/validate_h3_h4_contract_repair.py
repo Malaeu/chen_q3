@@ -113,9 +113,14 @@ def main() -> None:
     for node in nodes.values():
         counts[node["proof_status"]] = counts.get(node["proof_status"], 0) + 1
     expected = cert["h4_repair"]["expected_node_counts"]
-    require(len(nodes) == expected["total"], "H34_NODE_TOTAL_DRIFT")
-    for status in ("PROVED", "OPEN", "BLOCKED", "CONDITIONAL"):
-        require(counts.get(status, 0) == expected[status], f"H34_NODE_COUNT_DRIFT:{status}")
+    if state["revision"] == 15:
+        require(len(nodes) == expected["total"], "H34_NODE_TOTAL_DRIFT")
+        for status in ("PROVED", "OPEN", "BLOCKED", "CONDITIONAL"):
+            require(counts.get(status, 0) == expected[status], f"H34_NODE_COUNT_DRIFT:{status}")
+    else:
+        require(len(nodes) >= expected["total"], "H34_LATER_NODE_TOTAL_REGRESSION")
+        require(counts.get("PROVED", 0) >= expected["PROVED"], "H34_LATER_PROVED_COUNT_REGRESSION")
+        require("h1c_h4d_generic_cores" in state, "H34_LATER_REVISION_NOT_CERTIFIED")
 
     active = [node_id for node_id, node in nodes.items() if node["activity"] == "ACTIVE"]
     require(active == ["D0.7e.5a"], "H34_ACTIVE_LEAF_DRIFT")

@@ -444,7 +444,11 @@ R0 RHClosure [AND]
 |-- H1 EntireApproximants [AND]
 |   |-- H1a FiniteEntireCombinationCore
 |   |-- H1b PhaseReflectionScalarClosure
-|   |-- H1c ExactApproximantSourceCrosswalk
+|   |-- H1c ExactApproximantSourceCrosswalk [AND]
+|   |   |-- H1c1 Proposition59RhsEntire
+|   |   |-- H1c2 RawIntegralRhsCrosswalk
+|   |   |-- H1c3 ExactMasterFamilySelection
+|   |   `-- H1c4 H1cAssembly
 |   `-- H1d H1Assembly
 |-- H2 RealZeroApproximants [AND]
 |   |-- H2a SimpleEvenGround
@@ -465,7 +469,10 @@ R0 RHClosure [AND]
 |   |-- H4b SafeGapLower
 |   |-- H4c SafeSignAndB
 |   |-- H4d SafeRateAssembly [AND]
-|   |   |-- H4d1 GenericSafeRateExponentCore
+|   |   |-- H4d1 GenericSafeRateCore [AND]
+|   |   |   |-- H4d1a NaturalScaleExponentCore
+|   |   |   |-- H4d1b CofinalSquareEnvelopeCore
+|   |   |   `-- H4d1c GenericSafeRateAssembly
 |   |   |-- H4d2 ExactSafeRateConstantsAndFilter
 |   |   `-- H4d3 SafeRateAssembly
 |   `-- H4e QuantitativeSafeWitnessAssembly
@@ -539,7 +546,12 @@ proof node.
 | `H1.0` | Definitional H1 decomposition contract | `PROVED` | `H1_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H1a` | Finite linear combinations of entire summands remain entire | `PROVED / GENERIC_LEAN` | `LEAN_DIFFERENTIABLE_FINITE_ENTIRE_COMBINATION` |
 | `H1b` | Reflection, exponential phase and nonzero scalar preserve entirety/zeros | `PROVED / GENERIC_LEAN` | `LEAN_ENTIRE_PHASE_REFLECTION_SCALAR_CLOSURE` |
-| `H1c` | Exact master `F_j` is the same source-locked entire transform | `OPEN / INELIGIBLE_BY_D0.8_AND_ARCHITECTURE_CHOICE` | blocker: `H1_EXACT_APPROXIMANT_SOURCE_UNPINNED` |
+| `H1c` | AND parent from Proposition-5.9 source formula through exact master-family selection | `OPEN / SOURCE_RHS_ENTIRE / INTEGRAL_AND_MASTER_CROSSWALKS_OPEN` | blocker: `H1_EXACT_APPROXIMANT_SOURCE_UNPINNED` |
+| `H1c.0` | H1c source/crosswalk decomposition contract | `PROVED` | `H1C_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H1c1` | Proposition-5.9 removable RHS is entire for every finite vector | `PROVED / SOURCE_FORMULA_LEAN` | `PROPOSITION59_RHS_ENTIRE` |
+| `H1c2` | Exact phase-centered raw integral equals the removable RHS, including lattice values | `OPEN / ELIGIBLE_WORKER` | blocker: `H1C_RAW_INTEGRAL_RHS_CROSSWALK_MISSING` |
+| `H1c3` | Select the exact master `F_j` and prove its D0.8 same-family crosswalk | `OPEN / OWNER_ARCHITECTURE_CHOICE_REQUIRED` | blocker: `H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED` |
+| `H1c4` | H1c exact source-family assembly | `OPEN / BLOCKED_BY_H1c2_H1c3` | `H1C_ASSEMBLED` |
 | `H1d` | H1 exact-family assembly | `OPEN / BLOCKED_BY_H1c` | `H1_ASSEMBLED` |
 | `H2` | AND parent for same-vector real-zero supply | `OPEN / COMPLETED_TRACKER_GLOBAL_IDENTIFICATION_KILLED` | `REAL_ZERO_APPROXIMANTS_PROVED` |
 | `H2a` | Simple isolated even ground eigenvector for the exact finite operator | `OPEN_CRITICAL` | `SIMPLE_EVEN_GROUND_PROVED` |
@@ -563,7 +575,11 @@ proof node.
 | `H4c` | SafeSignAndB: alpha sign, strict gap, exact two-sided b | `OPEN_CRITICAL` | `SAFE_SIGN_AND_B_PROVED` |
 | `H4d` | SafeRateAssembly parent | `OPEN` | `SAFE_RATE_ASSEMBLED` |
 | `H4d.0` | Generic/exact rate decomposition contract | `PROVED` | `H4D_DECOMPOSITION_EQUIVALENCE_LOCKED` |
-| `H4d1` | Strict exponent margin gives negative-power decay | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_POLYNOMIAL_CORE` |
+| `H4d1` | Generic exponent and cofinal square-envelope rate package | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_GENERIC_PACKAGE` |
+| `H4d1.0` | H4d1 natural/cofinal generic decomposition contract | `PROVED` | `H4D1_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H4d1a` | Strict margin gives negative-power decay on the natural scale | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_POLYNOMIAL_CORE` |
+| `H4d1b` | A non-bottom cofinal scale plus squared envelope forces detector decay | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_COFINAL_SQUARE_CORE` |
+| `H4d1c` | Assemble exponent negativity and cofinal detector convergence | `PROVED / GENERIC_LEAN` | `LEAN_SAFE_RATE_GENERIC_PACKAGE` |
 | `H4d2` | Instantiate exact constants, WPrime identity, and cofinal joint filter | `OPEN_CRITICAL` | blocker: `H4_LIMIT_FILTER_UNSELECTED` |
 | `H4d3` | Exact SafeRateAssembly | `OPEN / BLOCKED_BY_H4d2` | `SAFE_RATE_ASSEMBLED` |
 | `H4e` | Four safe leaves imply QuantitativeSafeWitness and `W_j -> 0` | `OPEN / ASSEMBLY` | `DETECTOR_DECAY_PROVED` |
@@ -726,6 +742,17 @@ divided into normalized tracking without reciprocal error control. It also
 registers `XI_LIMIT_OBJECT_MISMATCH`: H8 proves raw transform convergence to
 Xi, while the owner tracker applies an additional completion factor whose
 compensating crosswalk is not supplied. H3c and H3e remain OPEN.
+
+Revision 16 closes two further unconditional Lean cores without choosing an
+exact family.  H1c1 encodes every apparent pole in the H8 Proposition-5.9
+finite formula by a complex `dslope`, proves the finite removable RHS entire,
+and recovers the printed quotient formula off the source lattice.  H1c2 still
+must prove equality with the exact phase-centered raw integral at all points,
+and H1c3 still needs the D0.8/owner master-family choice.  Independently,
+H4d1b upgrades the natural-scale exponent lemma to any non-bottom cofinal
+filter: an eventual squared WPrime envelope plus the strict Contract-v2 margin
+forces detector decay.  H4d2 still must supply the exact identity, constants,
+SAFE bounds, and joint filter.  Thus H1c, H1, H4d, H4, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`
