@@ -47369,3 +47369,24 @@ Final result:
   all-z factorization remain OPEN in `H2b2b`.
 - The count is 160 nodes: 82 PROVED, 70 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H3a2 weighted Rayleigh/projective transfer (in progress)
+
+- Exact target: isolate the universal eigengap arithmetic that turns a
+  Rayleigh excess into projective overlap control, without asserting the
+  missing exact Route B spectral expansion or rate.
+- Four local `q3_docs` queries found adjacent Rayleigh quotient infrastructure
+  (roughly 0.61--0.66) but no pinned theorem performing this exact H3a2 bridge.
+- The generic hypothesis is the standard spectral decomposition inequality:
+  `rayleighExcess >= gap * projectiveDefect`, with nonnegative defect and a
+  strictly positive gap.
+- The Lean receiver should preserve the multiplication form without division,
+  then derive `projectiveDefect <= rayleighExcess / gap` only under `0 < gap`.
+- Primary Rayleigh-quotient literature supports the angle/gap/error theorem
+  shape; official Mathlib inner-product APIs provide the norm/inner-product
+  interface but not the exact Route B source expansion.
+- Planned DAG split: prove generic H3a2a, leave exact same-family spectral
+  expansion/rate H3a2b and assembly H3a2c OPEN under
+  `H3A_EXACT_PROJECTIVE_RATE_INSTANTIATION_MISSING`.
+- No ground selector, trial normalization, eigengap, joint filter, WPrime,
+  Bus 010, or RH conclusion is inferred.
