@@ -47561,3 +47561,19 @@ Final result:
   instantiation H2b2b2b2b and assembly H2b2b2b2c OPEN.
 - No positivity of the actual Weil matrix, radical identification, Bus 010, or
   RH conclusion is inferred.
+
+Final result:
+
+- `QuotientByRadicalSelfAdjoint.lean` constructs the quotient bilinear form and
+  induced endomorphism, proves nonnegativity and definiteness of the quotient
+  form, radical invariance, representative formulas, and retained
+  self-adjointness.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; no exact Route B matrix or positivity
+  input is fabricated.
+- STATE revision 40 nests proved `H2b2b2b2.0` and `H2b2b2b2a` below
+  H2b2b2b2. Exact Weil positivity/radical, source quotient transport,
+  removable-factor, complement, phase and all-z inputs remain OPEN in
+  `H2b2b2b2b`.
+- The count is 184 nodes: 94 PROVED, 82 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

@@ -259,6 +259,14 @@ Current fail-closed address:
   set/removable factor, Weil radical/metric/self-adjointness, complement,
   phase, all-z and same-family crosswalk remain OPEN in `H2b2b2b2` with stop
   `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING`;
+- rev40 proves
+  `H2b2b2b2a H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN`:
+  a symmetric PSD bilinear form descends to a positive-definite form on the
+  quotient by its radical, and every form-self-adjoint endomorphism preserves
+  that radical, descends, and remains self-adjoint; exact Weil positivity,
+  radical=`span{xi}`, source quotient transport, removable factor, complement,
+  phase, all-z and same-family crosswalk remain OPEN in `H2b2b2b2b` with stop
+  `H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

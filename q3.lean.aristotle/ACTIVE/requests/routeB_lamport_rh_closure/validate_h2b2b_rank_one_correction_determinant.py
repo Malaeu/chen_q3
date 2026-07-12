@@ -104,10 +104,25 @@ def main() -> None:
                 "H2B2B2B_CHILD_ORDER_DRIFT",
             )
             require(exact_parent["assembly_theorem_id"] == "H2b2b2b3", "H2B2B2B_ASSEMBLY_ADDRESS_DRIFT")
-            exact = nodes["H2b2b2b2"]
-            expected_dependencies = (
-                cert["exact_instantiation_guard"]["dependencies"] + ["H2b2b2a", "H2b2b2b1"]
-            )
+            exact_parent = nodes["H2b2b2b2"]
+            if state["revision"] >= 40:
+                require(exact_parent["kind"] == "AND", "H2B2B2B2_PARENT_NOT_AND")
+                require(exact_parent["dependencies"] == ["H2b2b2b2.0"], "H2B2B2B2_PARENT_DEPENDENCY_DRIFT")
+                require(
+                    exact_parent["ordered_children"] == ["H2b2b2b2a", "H2b2b2b2b"],
+                    "H2B2B2B2_CHILD_ORDER_DRIFT",
+                )
+                require(exact_parent["assembly_theorem_id"] == "H2b2b2b2c", "H2B2B2B2_ASSEMBLY_ADDRESS_DRIFT")
+                exact = nodes["H2b2b2b2b"]
+                expected_dependencies = (
+                    cert["exact_instantiation_guard"]["dependencies"]
+                    + ["H2b2b2a", "H2b2b2b1", "H2b2b2b2a"]
+                )
+            else:
+                exact = exact_parent
+                expected_dependencies = (
+                    cert["exact_instantiation_guard"]["dependencies"] + ["H2b2b2a", "H2b2b2b1"]
+                )
         else:
             exact = exact_parent
             expected_dependencies = cert["exact_instantiation_guard"]["dependencies"] + ["H2b2b2a"]

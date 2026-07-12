@@ -468,7 +468,10 @@ R0 RHClosure [AND]
 |   |   |   |   |   |-- H2b2b2a GenericRankOneQuotientDescent
 |   |   |   |   |   |-- H2b2b2b ExactRadicalMetricLatticeInstantiation [AND]
 |   |   |   |   |   |   |-- H2b2b2b1 GenericAllSpectralPointExtension
-|   |   |   |   |   |   |-- H2b2b2b2 ExactRemovableFactorRouteInstantiation
+|   |   |   |   |   |   |-- H2b2b2b2 ExactRemovableFactorRouteInstantiation [AND]
+|   |   |   |   |   |   |   |-- H2b2b2b2a GenericQuotientRadicalMetric
+|   |   |   |   |   |   |   |-- H2b2b2b2b ExactWeilRadicalMetricRouteInstantiation
+|   |   |   |   |   |   |   `-- H2b2b2b2c H2b2b2b2Assembly
 |   |   |   |   |   |   `-- H2b2b2b3 H2b2b2bAssembly
 |   |   |   |   |   `-- H2b2b2c H2b2b2Assembly
 |   |   |   |   `-- H2b2b3 H2b2bAssembly
@@ -644,7 +647,11 @@ proof node.
 | `H2b2b2b` | AND parent: generic all-spectral-point adjugate/finite-exception extension plus exact radical/metric/removable-factor/complement/phase/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING` |
 | `H2b2b2b.0` | H2b2b2b decomposition contract | `PROVED` | `H2B2B2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2b2b2b1` | Adjugate rank-one determinant identity at singular matrices, Route B all-s specialization, and continuous finite-exception extension | `PROVED / GENERIC_LEAN` | `H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN` |
-| `H2b2b2b2` | Exact radical=`span{xi}`, positivity, quotient metric/self-adjointness, continuous removable factor, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING` |
+| `H2b2b2b2` | AND parent: generic quotient-by-radical positive-definite metric/self-adjoint descent plus exact Weil/source/removable-factor/complement/phase/all-z instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING` |
+| `H2b2b2b2.0` | H2b2b2b2 decomposition contract | `PROVED` | `H2B2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2b2b2b2a` | Symmetric PSD form descends to a positive-definite quotient form; form-self-adjoint endomorphism preserves the radical, descends and remains self-adjoint | `PROVED / GENERIC_LEAN` | `H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN` |
+| `H2b2b2b2b` | Exact Weil positivity, radical=`span{xi}`, source quotient transport, continuous removable factor, complement, phase, all-z identity and same family | `OPEN / INELIGIBLE` | blocker: `H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING` |
+| `H2b2b2b2c` | Exact H2b2b2b2 assembly | `OPEN / BLOCKED_BY_H2b2b2b2b` | `H2B2B2B2_ASSEMBLY_GAP` |
 | `H2b2b2b3` | Exact H2b2b2b assembly | `OPEN / BLOCKED_BY_H2b2b2b2` | `H2B2B2B_ASSEMBLY_GAP` |
 | `H2b2b2c` | Exact H2b2b2 assembly | `OPEN / BLOCKED_BY_H2b2b2b` | `H2B2B2_ASSEMBLY_GAP` |
 | `H2b2b3` | Exact H2b2b assembly | `OPEN / BLOCKED_BY_H2b2b2` | `H2B2B_EXACT_ALL_Z_FACTORIZATION_ASSEMBLY` |
@@ -1110,6 +1117,16 @@ must still identify the source exceptional set and a genuinely continuous
 removable factor, together with Weil positivity/radical, quotient metric,
 complement, phase and all-z crosswalks.  H2b remains CONDITIONAL; H2, L0 and RH
 remain OPEN.
+
+Revision 40 isolates the universal modified-Hilbert quotient mechanism.
+Lean builds the quotient form by two `liftQ` steps, proves it nonnegative and
+definite using the positive-semidefinite zero characterization, proves that a
+form-self-adjoint endomorphism preserves the radical, descends it with `mapQ`,
+and retains self-adjointness on the quotient.  The exact leaf still has to
+prove positivity of the actual Weil form, identify its radical with
+`span{xi}`, transport the quotient objects to the source definitions, and
+supply the removable-factor/complement/phase/all-z crosswalks.  H2b remains
+CONDITIONAL; H2, L0 and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

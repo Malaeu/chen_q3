@@ -1,0 +1,165 @@
+{
+  "schema": "route_b_h2b2b2b2_quotient_radical_metric_certificate.v1",
+  "created_at": "2026-07-12T22:02:00+02:00",
+  "revision_target": 40,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "scope": "H8_MODIFIED_HILBERT_QUOTIENT_SOURCE_CONTEXT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_CERTIFICATE.json",
+      "sha256": "067dac46dc8734c8273bdc1046bca727d168522513a13d0bca4fada8fef816ff",
+      "scope": "REV39_EXACT_WEIL_RADICAL_METRIC_REMOVABLE_FACTOR_BOUNDARY"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/LinearAlgebra/BilinearForm/Properties.lean",
+      "sha256": "58faf45c6fbad37afcab5256d265fb4b86df6cba42d2f2e3b013fa8693b80fcb",
+      "scope": "POSITIVE_SEMIDEFINITE_BILINEAR_FORM_ZERO_CHARACTERIZATION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/LinearAlgebra/Quotient/Basic.lean",
+      "sha256": "23feffdfd8388e3e3d0b0beb9e87b7881994687cc9e1f6ea20db820abb1e99f4",
+      "scope": "SUBMODULE_LIFTQ_AND_MAPQ_API"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://arxiv.org/abs/2511.22755",
+      "scope": "PRIMARY_H8_MODIFIED_HILBERT_SOURCE"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Quotient/Basic.html",
+      "scope": "OFFICIAL_QUOTIENT_LINEAR_MAP_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/BilinearForm/Basic.html",
+      "scope": "OFFICIAL_BILINEAR_FORM_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/QuotientByRadicalSelfAdjoint.lean",
+    "sha256": "f89970cc1023f10542e46cfc0107d0589ac21aefc91c1cd9f2152f2245238400",
+    "proved": [
+      "quotientByRadicalForm_mk_mk",
+      "quotientByRadicalForm_nonneg",
+      "quotientByRadicalForm_definite",
+      "maps_ker_of_bilinForm_selfAdjoint",
+      "quotientByRadicalEnd_mk",
+      "quotientByRadicalEnd_isSelfAdjoint"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B2B2_QUOTIENT_RADICAL_METRIC_2026-07-12.md",
+    "sha256": "81db9fd08a535ee2f9ab963fb5aaf0e417330b983daeb06b97c7560e77aeec58"
+  },
+  "h2b2b2b2_repair": {
+    "parent": "H2b2b2b2",
+    "decomposition": "H2b2b2b2.0",
+    "ordered_children": [
+      "H2b2b2b2a",
+      "H2b2b2b2b"
+    ],
+    "assembly": "H2b2b2b2c",
+    "proved": [
+      "H2b2b2b2.0",
+      "H2b2b2b2a"
+    ],
+    "open": [
+      "H2b2b2b2",
+      "H2b2b2b2b",
+      "H2b2b2b2c",
+      "H2b2b2b3",
+      "H2b2b2b",
+      "H2b2b2c",
+      "H2b2b2",
+      "H2b2b3",
+      "H2b2b",
+      "H2b2c",
+      "H2b2",
+      "H2b",
+      "H2"
+    ],
+    "generic_verdict": "H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN",
+    "residual_stop": "H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING"
+  },
+  "exact_instantiation_guard": {
+    "dependencies": [
+      "D0.3d",
+      "D0.6",
+      "D0.7",
+      "D0.8",
+      "H1c2",
+      "H1c3",
+      "H2a",
+      "H2b1",
+      "H2b2a",
+      "H2b2b1",
+      "H2b2b2a",
+      "H2b2b2b1",
+      "H2b2b2b2a"
+    ],
+    "external_requirement": "H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION",
+    "open_codes": [
+      "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
+      "H2B_MODIFIED_HILBERT_HERMITIAN_MATRIX_MISSING",
+      "H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING",
+      "H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING",
+      "H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING",
+      "H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING",
+      "H2B2B2_EXACT_QUOTIENT_OBJECT_TRANSPORT_MISSING",
+      "H2B2B_SPECTRAL_POINT_EXTENSION_MISSING",
+      "H2B2B_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION_MISSING",
+      "H2B_COMPLEMENT_LATTICE_FACTOR_MISSING",
+      "H2B_BOUNDARY_NORMALIZATION_NONZERO_MISSING",
+      "H2B_ALL_Z_FACTOR_CROSSWALK_MISSING",
+      "REAL_ZERO_THEOREM_OBJECT_MISMATCH",
+      "H2_COMPLETED_TRACKER_GLOBAL_REAL_ZERO_FALSE",
+      "H2B_COMPLETION_SCOPE_GAP",
+      "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED",
+      "D0_8_OBJECT_MISMATCH",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 184,
+    "PROVED": 94,
+    "OPEN": 82,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_WEIL_POSITIVITY",
+    "NO_EXACT_RADICAL_EQUALS_SPAN_XI",
+    "NO_EXACT_QUOTIENT_OBJECT_TRANSPORT",
+    "NO_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION",
+    "NO_COMPLEMENT_OR_PHASE_CROSSWALK",
+    "NO_EXACT_THEOREM510_FACTORIZATION",
+    "NO_H2_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

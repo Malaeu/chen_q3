@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T21:18:00+02:00",
+  "updated_at": "2026-07-12T22:02:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -124,6 +124,10 @@
       ,"H2B2B_GENERIC_ADJUGATE_AND_FINITE_EXCEPTION_SPECTRAL_EXTENSION_LEAN"
       ,"H2B2B_ALL_SINGULAR_AND_NONSINGULAR_DETERMINANT_IDENTITY_LEAN"
       ,"H2B2B_CONTINUOUS_FINITE_EXCEPTION_EXTENSION_LEAN"
+      ,"H2B2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN"
+      ,"H2B2B2_QUOTIENT_FORM_POSITIVE_DEFINITE_LEAN"
+      ,"H2B2B2_WEIGHTED_SELFADJOINT_END_DESCENT_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -195,6 +199,8 @@
       ,"H2B2B_SPECTRAL_POINT_EXTENSION_MISSING"
       ,"H2B2B2_EXACT_RADICAL_METRIC_CROSSWALK_MISSING"
       ,"H2B2B_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION_MISSING"
+      ,"H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING"
+      ,"H2B2B2_EXACT_QUOTIENT_OBJECT_TRANSPORT_MISSING"
     ]
   },
   "bus": {
@@ -299,7 +305,7 @@
       "code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
       "class": "MASTER_DAG_EXACT_REAL_ZERO_FACTORIZATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
-      "detail": "The generic periodic/Hermitian real-zero transfers, rank-one kernel/T-weighted symmetry, off-spectrum determinant factorization, algebraic descent through E/span{xi}, all-s adjugate determinant identity and finite-exception continuation are Lean-proved. Exact T positivity, radical=span{xi}, modified-Hilbert quotient metric/self-adjointness, source exceptional set and continuous removable factor, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization and the same raw family remain open; H2b stays CONDITIONAL."
+      "detail": "The generic periodic/Hermitian real-zero transfers, rank-one kernel/T-weighted symmetry, off-spectrum and all-s adjugate determinant identities, finite-exception continuation, algebraic quotient descent, and quotient-by-radical positive-definite metric/self-adjoint operator descent are Lean-proved. Exact T positivity, radical=span{xi}, transport to the source modified-Hilbert quotient objects, source exceptional set and continuous removable factor, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization and the same raw family remain open; H2b stays CONDITIONAL."
     },
     {
       "code": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
@@ -568,7 +574,7 @@
     },
     "h2b_hermitian_determinant_real_zeros_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b_hermitian_determinant_real_zeros.py",
-      "sha256": "2550d3180143056854a420d3dbc80b4da388c1b52fd4267d6a6da19b0afe1fd4"
+      "sha256": "c90bf4737b92d1668e59ea53eea0effa39bcf15a944264154b6bf53dacc81e2f"
     },
     "h2b_hermitian_determinant_real_zeros_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
@@ -676,7 +682,7 @@
     },
     "h2b2_rank_one_correction_weighted_symmetry_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2_rank_one_correction_weighted_symmetry.py",
-      "sha256": "c8e8f9556f1290d295dd7c7351bde841578a4535b71c73db07fe1908865d0421"
+      "sha256": "24bd4260239d93f1f2902dc56127133bad0593d9de848e26d676fdcd24f2e023"
     },
     "h2b2_rank_one_correction_weighted_symmetry_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
@@ -712,7 +718,7 @@
     },
     "h2b2b_rank_one_correction_determinant_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b_rank_one_correction_determinant.py",
-      "sha256": "ef0ea6df5ee55c44d6e305103eb6c88d3f15059f9ff50414c2157aea65dd6769"
+      "sha256": "ece8874a08af19c5e6b8e807d630a085441a129590ff85bfd81b8226b29f7b7c"
     },
     "h2b2b_rank_one_correction_determinant_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionDeterminant.lean",
@@ -724,7 +730,7 @@
     },
     "h2b2b2_rank_one_quotient_descent_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b2_rank_one_quotient_descent.py",
-      "sha256": "ffa40deb6ee5dc3adeaebe841b0ddb40e072c4c56a0630ef31983c8d9f5c2aed"
+      "sha256": "d3cd01cdca90a1bd53375b3cd59c32a5cae7e170845d986091d715ee97cf84e0"
     },
     "h2b2b2_rank_one_quotient_descent_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientDescent.lean",
@@ -736,11 +742,23 @@
     },
     "h2b2b2b_all_spectral_point_extension_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b2b_all_spectral_point_extension.py",
-      "sha256": "56f91b192cd763c50a9ceae4aa1df0a52521505220f1893f01caec0ad527e56d"
+      "sha256": "b59f8a05a2f8b789d360d9ed6896e1a562657cc1bfb54d73635f2ce79ee813a7"
     },
     "h2b2b2b_all_spectral_point_extension_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionAllSpectralPoints.lean",
       "sha256": "f134db9ea9db5ba0de8c9316e337b334b3e2eb490d24c3a813c016ae316f9e66"
+    },
+    "h2b2b2b2_quotient_radical_metric_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B2B2_QUOTIENT_RADICAL_METRIC_CERTIFICATE.json",
+      "sha256": "9eb1b6b49b22ac665ce3aeb738d106ba5b42eaf5c870462fef2109691340da97"
+    },
+    "h2b2b2b2_quotient_radical_metric_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2b2b2_quotient_radical_metric.py",
+      "sha256": "493290003b6d9cfd81cf0761704caf12c4841d2d1b6391bdd5eaa31539f7b46e"
+    },
+    "h2b2b2b2_quotient_radical_metric_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/QuotientByRadicalSelfAdjoint.lean",
+      "sha256": "f89970cc1023f10542e46cfc0107d0589ac21aefc91c1cd9f2152f2245238400"
     }
   },
   "stages": [
