@@ -47137,3 +47137,29 @@ not the raw-D17 factorwise support class.
   `Classical.choice`, and `Quot.sound`.  The count is 136 nodes: 70 PROVED,
   58 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
   absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B H2a exact-sector isolation receiver (in progress)
+
+- Exact target: construct the positive isolation radius consumed by H2a2 once
+  the selected even ground is known to lie strictly below both the next even
+  level and the bottom odd level.
+- Four local `q3_docs` queries found no pinned isolation-radius implementation
+  or exact sector inequalities (best scores about 0.57--0.63); unrelated
+  Rayleigh/RKHS gaps will not be imported.
+- The primary `Zeta Spectral Triples` paper assumes the smallest Weil-form
+  eigenvalue is simple and even in Theorem 5.10 and explicitly lists proving
+  that property as a missing step in Section 8.
+- Planned definition:
+  `sectorIsolationRadius = min(epsilonPlus2-epsilonPlus1,
+  epsilonMinus1-epsilonPlus1)/2`.
+- Planned theorem: the two strict sector inequalities make this radius
+  positive and place it below the distance from the ground to every level
+  above either sector threshold.
+- Official Mathlib's linear-order/min API supplies `lt_min`, `min_le_left`, and
+  `min_le_right`; it does not prove either source-level sector inequality.
+- The generic receiver will live inside H2a2 rather than replacing it: exact
+  family selection, even internal ordering, even-versus-odd ordering and Lean
+  crosswalk remain OPEN under `H2A_EXACT_SECTOR_ORDERING_MISSING`.
+- Acceptance remains narrow: no eigenvalue ordering is inferred from
+  numerics, no simple-even claim is closed, H2a/H2 remain OPEN, and Route B
+  remains `NOT_RH`.
