@@ -46722,3 +46722,27 @@ not the raw-D17 factorwise support class.
   1 CONDITIONAL.  H1c3 remains owner/D0.8-blocked, no independent worker leaf
   is currently eligible, the canonical ACTIVE leaf remains D0.7e.5a, Bus 010
   is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B L0c zero-transfer core (in progress)
+
+- Exact target: separate the generic analytic zero-transfer theorem from its
+  still-blocked exact H1/H3/H4 family instantiation, so L0c does not hide a
+  Mathlib/API gap inside an owner-family gap.
+- Five local `q3_docs` queries found no existing Route B implementation or
+  pinned ready-made Rouché/Hurwitz theorem (best scores about 0.60--0.65).
+- Current Mathlib nevertheless contains the needed constructive primitives:
+  `AnalyticAt.eventually_eq_zero_or_eventually_ne_zero` isolates a nontrivial
+  zero, `DiffContOnCl.ball_subset_image_closedBall` turns a boundary modulus
+  gap into a disk contained in the holomorphic image, and
+  `TendstoLocallyUniformlyOn` supplies uniform approximation on compact balls.
+- Planned decomposition: (1) a boundary-circle root-stability lemma for one
+  entire approximant, (2) eventual existence of approximant zeros in every
+  neighborhood of a nontrivial limit zero, (3) the countable selection step
+  producing `ZerosApproachOn`, and (4) the exact-family instantiation.
+- The key guard is nontriviality of the limit: an identically-zero limit makes
+  the usual Hurwitz conclusion false as a zero-location statement.  Entire
+  approximants must also be prevented from taking the locally-constant branch;
+  their boundary separation plus the global identity theorem supplies this.
+- Acceptance is narrow: a proved generic core may advance L0c but cannot close
+  exact L0c/L0/L1/R0 until H1/H3/H4 select and supply the same family.  The
+  canonical D0.7e.5a stop, Bus state, and `NOT_RH` must remain unchanged.
