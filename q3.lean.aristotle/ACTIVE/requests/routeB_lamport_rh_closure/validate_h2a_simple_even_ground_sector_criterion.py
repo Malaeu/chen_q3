@@ -96,18 +96,36 @@ def main() -> None:
     h2a2 = nodes["H2a2"]
     require(h2a2["proof_status"] == "OPEN", "H2A2_FALSE_PASS")
     require(not h2a2["eligibility"]["eligible"], "H2A2_FALSE_ELIGIBILITY")
-    require(
-        h2a2["dependencies"] == ["D0.4", "D0.5", "D0.8", "H1c3", "H2a1"],
-        "H2A2_SAME_FAMILY_DEPENDENCY_DRIFT",
-    )
-    for code in (
-        "H2A_EXACT_SECTOR_ORDERING_MISSING",
-        "H2A_EVEN_INTERNAL_GAP_MISSING",
-        "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING",
-        "H2A_ISOLATION_RADIUS_MISSING",
-        "H2A_SAME_FAMILY_SELECTION_MISSING",
-    ):
-        require(code in h2a2["failure_codes"], f"H2A2_GUARD_MISSING:{code}")
+    if state["revision"] >= 29:
+        require(h2a2["kind"] == "AND", "H2A2_NESTED_PARENT_NOT_AND")
+        require(h2a2["dependencies"] == ["H2a2.0"], "H2A2_NESTED_DEPENDENCY_DRIFT")
+        require(h2a2["ordered_children"] == ["H2a2a", "H2a2b"], "H2A2_NESTED_CHILD_DRIFT")
+        h2a2b = nodes["H2a2b"]
+        require(
+            h2a2b["dependencies"] == ["D0.4", "D0.5", "D0.8", "H1c3", "H2a1", "H2a2a"],
+            "H2A2_SAME_FAMILY_DEPENDENCY_DRIFT",
+        )
+        for code in (
+            "H2A_EXACT_SECTOR_ORDERING_MISSING",
+            "H2A_EVEN_INTERNAL_GAP_MISSING",
+            "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING",
+            "H2A_EXACT_ISOLATION_RADIUS_INSTANTIATION_MISSING",
+            "H2A_SAME_FAMILY_SELECTION_MISSING",
+        ):
+            require(code in h2a2b["failure_codes"], f"H2A2_GUARD_MISSING:{code}")
+    else:
+        require(
+            h2a2["dependencies"] == ["D0.4", "D0.5", "D0.8", "H1c3", "H2a1"],
+            "H2A2_SAME_FAMILY_DEPENDENCY_DRIFT",
+        )
+        for code in (
+            "H2A_EXACT_SECTOR_ORDERING_MISSING",
+            "H2A_EVEN_INTERNAL_GAP_MISSING",
+            "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING",
+            "H2A_ISOLATION_RADIUS_MISSING",
+            "H2A_SAME_FAMILY_SELECTION_MISSING",
+        ):
+            require(code in h2a2["failure_codes"], f"H2A2_GUARD_MISSING:{code}")
 
     h2a3 = nodes["H2a3"]
     require(h2a3["proof_status"] == "OPEN", "H2A3_FALSE_PASS")

@@ -84,3 +84,7 @@ Single owner decision with maximum unblock power:
 `GUARD H4b1: POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP; a positive model separation alone coexists with a collapsed true gap, and ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP shows that non-strict full-budget control gives no positive floor.`
 
 `SKIPPED H4b2: H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING; the parity-clean Route B operator/Fuchs model, multiplicity/order crosswalk, both endpoint drift estimates, positive surviving Fuchs envelope and shared filter remain open.`
+
+`CLOSED H2a2a: GENERIC_SECTOR_ISOLATION_RADIUS_LEAN; two strict sector gaps construct a positive half-minimum isolation radius below the distance to every level above the next-even or bottom-odd threshold.`
+
+`SKIPPED H2a2b: H2A_EXACT_SECTOR_ORDERING_MISSING; the exact H1c3/D0.8 family, even internal gap, even-versus-odd bottom order, multiplicity/enumeration crosswalk and radius instantiation remain open.`

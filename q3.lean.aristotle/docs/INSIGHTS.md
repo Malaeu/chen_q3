@@ -47163,3 +47163,20 @@ not the raw-D17 factorwise support class.
 - Acceptance remains narrow: no eigenvalue ordering is inferred from
   numerics, no simple-even claim is closed, H2a/H2 remain OPEN, and Route B
   remains `NOT_RH`.
+
+### Final result
+
+- `SectorIsolationRadius.lean` defines half the minimum of the two sector
+  gaps, proves positivity from their strictness, bounds the radius by each
+  full gap, and packages separation from every level above either threshold.
+- The proof consumes `epsilonPlus1<epsilonPlus2` and
+  `epsilonPlus1<epsilonMinus1`; it does not derive either inequality or select
+  the exact eigenvalue family.
+- STATE revision 29 nests a proved generic core H2a2a below H2a2, leaving exact
+  family/order/radius instantiation H2a2b and assembly H2a2c OPEN;
+  `H2A_ISOLATION_RADIUS_MISSING` is replaced by the narrower exact-instantiation
+  stop while `H2A_EXACT_SECTOR_ORDERING_MISSING` remains primary.
+- Direct Lean validation passes with zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.  The count is 140 nodes: 72 PROVED,
+  60 OPEN, 7 BLOCKED, and 1 CONDITIONAL.  D0.7e.5a remains ACTIVE, Bus 010 is
+  absent, and Route B remains `NOT_RH`.

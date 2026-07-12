@@ -453,7 +453,10 @@ R0 RHClosure [AND]
 |-- H2 RealZeroApproximants [AND]
 |   |-- H2a SimpleEvenGround [AND]
 |   |   |-- H2a1 GenericSimpleEvenGroundSectorCriterion
-|   |   |-- H2a2 ExactSelectedFamilySectorOrdering
+|   |   |-- H2a2 ExactSelectedFamilySectorOrdering [AND]
+|   |   |   |-- H2a2a GenericSectorIsolationRadius
+|   |   |   |-- H2a2b ExactSectorOrderingAndRadiusInstantiation
+|   |   |   `-- H2a2c H2a2Assembly
 |   |   `-- H2a3 H2aAssembly
 |   |-- H2b SameVectorRealZeros [AND / CONDITIONAL]
 |   |   |-- H2b1 GenericHermitianDeterminantRealZeros
@@ -590,7 +593,11 @@ proof node.
 | `H2a` | AND parent: generic sector criterion plus exact same-family strict sector ordering | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
 | `H2a.0` | H2a decomposition contract | `PROVED` | `H2A_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2a1` | A simple even-sector bottom strictly below every odd eigenvalue is the simple even global ground; simple ground alone has only a parity dichotomy | `PROVED / GENERIC_LEAN / FALSIFIER_LIVE` | `GENERIC_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_LEAN` |
-| `H2a2` | On the exact H1c3/D0.8 family prove `epsilonPlus1<epsilonPlus2` (or the explicit dimension-one case), `epsilonPlus1<epsilonMinus1`, and a positive isolation radius | `OPEN / INELIGIBLE` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
+| `H2a2` | AND parent: generic half-minimum sector-isolation radius plus exact selected-family strict sector ordering/instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
+| `H2a2.0` | H2a2 decomposition contract | `PROVED` | `H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2a2a` | Two strict sector gaps give a positive isolation radius below every level above the next-even or bottom-odd threshold | `PROVED / GENERIC_LEAN` | `GENERIC_SECTOR_ISOLATION_RADIUS_LEAN` |
+| `H2a2b` | Select the exact H1c3/D0.8 family, prove both strict sector gaps and instantiate the radius with ordering/multiplicity crosswalks | `OPEN / INELIGIBLE` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
+| `H2a2c` | Exact H2a2 assembly | `OPEN / BLOCKED_BY_H2a2b` | `H2A2_EXACT_SECTOR_ISOLATION_ASSEMBLY` |
 | `H2a3` | Exact H2a assembly | `OPEN / BLOCKED_BY_H2a2` | `SIMPLE_EVEN_GROUND_PROVED` |
 | `H2b` | AND parent: generic Hermitian determinant transfer plus exact same-family Theorem-5.10 factorization | `CONDITIONAL / GENERIC_CORE_PROVED / EXACT_FACTOR_OPEN` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
 | `H2b.0` | H2b decomposition contract; conditional parent never discharges H2 | `PROVED` | `H2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
@@ -933,6 +940,15 @@ gap and that endpoint errors can consume the entire separation.  Exact H4b2
 still must pin the parity-clean Route B operator/Fuchs model, order the true
 same-parity endpoints, prove both drift bounds, and leave a positive
 Contract-v2 Fuchs envelope.  H4b, H4, H3e, L0c2, and RH remain OPEN.
+
+Revision 29 constructs the universal isolation receiver nested below H2a2.
+Lean defines half the minimum of the next-even and bottom-odd gaps, proves it
+positive from the two strict inequalities, bounds it by both gaps, and shows
+that it separates every level above either sector threshold.  The primary
+paper still assumes the simple-even hypothesis and explicitly lists its proof
+as missing.  Exact H2a2b must therefore select the H1c3/D0.8 family, prove both
+strict sector inequalities with ordering/multiplicity crosswalks, and
+instantiate the radius.  H2a2, H2a, H2, and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

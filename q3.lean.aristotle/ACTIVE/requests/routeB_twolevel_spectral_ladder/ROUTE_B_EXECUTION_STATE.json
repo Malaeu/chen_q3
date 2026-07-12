@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T17:32:34+02:00",
+  "updated_at": "2026-07-12T17:42:24+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -80,6 +80,9 @@
       ,"H4B_NONBOTTOM_FILTER_GAP_TRANSFER_LEAN"
       ,"POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP"
       ,"ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP"
+      ,"H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"GENERIC_SECTOR_ISOLATION_RADIUS_LEAN"
+      ,"H2A2_POSITIVE_HALF_MINIMUM_SECTOR_RADIUS_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -129,6 +132,9 @@
       ,"H4B_UNIFORM_PERTURBATION_RATE_MISSING"
       ,"H4B_MULTIPLICITY_AND_ORDERING_CROSSWALK_MISSING"
       ,"H4B_TRUE_GAP_LOWER_CONSTANT_MISSING"
+      ,"H2A_EVEN_INTERNAL_GAP_MISSING"
+      ,"H2A_EVEN_ODD_BOTTOM_ORDER_MISSING"
+      ,"H2A_EXACT_ISOLATION_RADIUS_INSTANTIATION_MISSING"
     ]
   },
   "bus": {
@@ -197,7 +203,7 @@
       "code": "H2A_EXACT_SECTOR_ORDERING_MISSING",
       "class": "MASTER_DAG_EXACT_SELECTED_FAMILY_BLOCKER",
       "owner": "Route B proof compiler",
-      "detail": "The generic simple-even sector criterion and odd-ground falsifier are Lean-proved, but the exact H1c3/D0.8 family still lacks epsilonPlus1<epsilonPlus2 (or the explicit dimension-one case), epsilonPlus1<epsilonMinus1, and a positive isolation export."
+      "detail": "The generic simple-even sector criterion, odd-ground falsifier, and positive half-minimum sector-isolation receiver are Lean-proved, but the exact H1c3/D0.8 family still lacks epsilonPlus1<epsilonPlus2, epsilonPlus1<epsilonMinus1, ordering/multiplicity crosswalks, and the exact radius instantiation."
     },
     {
       "code": "H3B_EXACT_WEIGHTED_RATE_INSTANTIATION_MISSING",
@@ -418,7 +424,7 @@
     },
     "h2a_simple_even_ground_sector_criterion_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2a_simple_even_ground_sector_criterion.py",
-      "sha256": "9732a52093ad4bfdb8752122bda9f2b0e9e97c567e371446d306c3a0d2f69b93"
+      "sha256": "d8295fa9da66237a0ef33147cf7fa9727881b04b7d6551023bf835b1601327c0"
     },
     "h2a_simple_even_ground_sector_criterion_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
@@ -519,6 +525,18 @@
     "h4b_perturbative_true_gap_lower_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean",
       "sha256": "bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19"
+    },
+    "h2a2_sector_isolation_radius_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2A2_SECTOR_ISOLATION_RADIUS_CERTIFICATE.json",
+      "sha256": "5b538dc977103d3fcece7136a86a3f6a6971d7e20d7a7065ad80d58713e7a547"
+    },
+    "h2a2_sector_isolation_radius_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2a2_sector_isolation_radius.py",
+      "sha256": "410bd47aef07af60cd0b4f8959dd242cfeafeb36a894abd9ced7b9518a5074c8"
+    },
+    "h2a2_sector_isolation_radius_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SectorIsolationRadius.lean",
+      "sha256": "67342984d35a0d0ef223186f76a44584e546e3e5c3c5f383fd7128746c1d8c82"
     }
   },
   "stages": [

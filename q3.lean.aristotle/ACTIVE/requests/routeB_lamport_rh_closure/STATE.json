@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 28,
-  "updated_at": "2026-07-12T17:32:34+02:00",
+  "revision": 29,
+  "updated_at": "2026-07-12T17:42:24+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "a0e95b9f18a8889a75c46973d700fab72f132f739b8a48b56af9171938bb452c",
+    "sprint_log_sha256": "328fbbc860fd5a686d60113b16335a6ebea82b09cf1e6ae174d4ad867678ea81",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -334,7 +334,7 @@
     "certificate": "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_CERTIFICATE.json",
     "certificate_sha256": "2eae7eb00a5fa44e62b92a0c74fb5ae2965145fc7e32f701574cf635f1c479cb",
     "validator": "validate_h2a_simple_even_ground_sector_criterion.py",
-    "validator_sha256": "9732a52093ad4bfdb8752122bda9f2b0e9e97c567e371446d306c3a0d2f69b93",
+    "validator_sha256": "d8295fa9da66237a0ef33147cf7fa9727881b04b7d6551023bf835b1601327c0",
     "artifact": "H2A_SIMPLE_EVEN_GROUND_SECTOR_CRITERION_2026-07-12.md",
     "artifact_sha256": "702b58d50019af1d1aa97736e7689976294f66064d68545995636f9c9a617139",
     "proof_artifact": {
@@ -549,7 +549,39 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h2a2_sector_isolation_radius": {
+    "name": "H2A2_SECTOR_ISOLATION_RADIUS_REV29",
+    "status": "GENERIC_SECTOR_ISOLATION_RADIUS_PROVED_EXACT_SELECTED_FAMILY_SECTOR_ORDERING_OPEN_NOT_RH",
+    "certificate": "H2A2_SECTOR_ISOLATION_RADIUS_CERTIFICATE.json",
+    "certificate_sha256": "5b538dc977103d3fcece7136a86a3f6a6971d7e20d7a7065ad80d58713e7a547",
+    "validator": "validate_h2a2_sector_isolation_radius.py",
+    "validator_sha256": "410bd47aef07af60cd0b4f8959dd242cfeafeb36a894abd9ced7b9518a5074c8",
+    "artifact": "H2A2_SECTOR_ISOLATION_RADIUS_2026-07-12.md",
+    "artifact_sha256": "108d7678117dc035df7811e5eb80c3583d62531188ffa2977c6f58781e4590b3",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SectorIsolationRadius.lean",
+      "sha256": "67342984d35a0d0ef223186f76a44584e546e3e5c3c5f383fd7128746c1d8c82"
+    },
+    "proved_nodes": [
+      "H2a2.0",
+      "H2a2a"
+    ],
+    "generic_verdict": "GENERIC_SECTOR_ISOLATION_RADIUS_LEAN",
+    "next_worker_leaf": null,
+    "next_exact_node": "H2a2b",
+    "remaining_stop": "H2A_EXACT_SECTOR_ORDERING_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
+    "H2A_EXACT_SELECTED_FAMILY_SECTOR_GAPS": {
+      "name": "ExactSelectedFamilyEvenInternalAndEvenOddSectorGaps",
+      "authority": "H8ULBMAL/fulltext.md Definition 5.3, Theorem 5.10, and Section 8; D0_4_EXACT_PARITY_SECTORS.md; D0_5_GROUND_AND_TRIAL_TYPES.md",
+      "status": "OPEN_CRITICAL",
+      "home": "H2a2b",
+      "failure_code": "H2A_EXACT_SECTOR_ORDERING_MISSING",
+      "is_lamport_node": false
+    },
     "H4B_EXACT_SAME_PARITY_FUCHS_GAP": {
       "name": "ExactSameParityFuchsGapWithEndpointPerturbationBudget",
       "authority": "ROUTE_B_THEOREM_CONTRACT_v2.md sections 2, 3, and 5; H3_H4_CONTRACT_REPAIR_2026-07-12.md",
@@ -648,7 +680,8 @@
       "H2B_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_REV25",
       "H4C_TWO_SIDED_NORMALIZED_B_CONTROL_REV26",
       "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27",
-      "H4B_PERTURBATIVE_TRUE_GAP_LOWER_REV28"
+      "H4B_PERTURBATIVE_TRUE_GAP_LOWER_REV28",
+      "H2A2_SECTOR_ISOLATION_RADIUS_REV29"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1358,13 +1391,51 @@
       "failure_codes": ["H2A_PARITY_DICHOTOMY_GAP", "H2A_GENERIC_SECTOR_CRITERION_MISSING", "H2A_ODD_GROUND_FALSIFIER_MISSING"]
     },
     "H2a2": {
-      "id": "H2a2", "parent_id": "H2a", "kind": "LEAF", "role": "GOAL",
-      "statement": "On the exact H1c3/D0.8 selected family prove epsilonPlus1<epsilonPlus2 (or the explicit one-dimensional even case), epsilonPlus1<epsilonMinus1, and export a positive global ground isolation radius",
-      "dependencies": ["D0.4", "D0.5", "D0.8", "H1c3", "H2a1"], "ordered_children": [], "assembly_theorem_id": null,
+      "id": "H2a2", "parent_id": "H2a", "kind": "AND", "role": "GOAL",
+      "statement": "The generic positive sector-isolation radius and its exact selected-family even/internal and even/odd ordering instantiation establish the isolated simple-even ground input",
+      "dependencies": ["H2a2.0"], "ordered_children": ["H2a2a", "H2a2b"], "assembly_theorem_id": "H2a2c",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_8_AND_H1C3_SELECTED_FAMILY_OPEN_EXACT_SECTOR_ORDERING_MISSING"},
+      "eligibility": {"eligible": false, "reason": "H2A2B_EXACT_SELECTED_FAMILY_SECTOR_GAPS_OPEN"},
       "validation": "H2A_EXACT_SELECTED_FAMILY_SECTOR_ORDERING",
-      "failure_codes": ["H2A_EXACT_SECTOR_ORDERING_MISSING", "H2A_EVEN_INTERNAL_GAP_MISSING", "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING", "H2A_ISOLATION_RADIUS_MISSING", "H2A_SAME_FAMILY_SELECTION_MISSING", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "D0_8_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+      "failure_codes": ["H2A_EXACT_SECTOR_ORDERING_MISSING", "H2A_EXACT_ISOLATION_RADIUS_INSTANTIATION_MISSING", "H2A_SAME_FAMILY_SELECTION_MISSING", "SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH"]
+    },
+    "H2a2.0": {
+      "id": "H2a2.0", "parent_id": "H2a2", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H2a2 iff H2a2a and H2a2b both hold, with H2a2c as assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H2A2_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H2a2a": {
+      "id": "H2a2a", "parent_id": "H2a2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Two strict gaps from the selected even ground to the next even and bottom odd levels construct a positive half-minimum isolation radius separating every level above either threshold",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "GENERIC_SECTOR_ISOLATION_RADIUS_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/SectorIsolationRadius.lean",
+      "failure_codes": ["H2A_GENERIC_ISOLATION_RADIUS_CONSTRUCTION_MISSING"]
+    },
+    "H2a2b": {
+      "id": "H2a2b", "parent_id": "H2a2", "kind": "LEAF", "role": "GOAL",
+      "statement": "Select the exact H1c3/D0.8 parity-clean finite family, prove epsilonPlus1<epsilonPlus2 and epsilonPlus1<epsilonMinus1 with ordering/multiplicity crosswalks, and instantiate the generic isolation radius",
+      "dependencies": ["D0.4", "D0.5", "D0.8", "H1c3", "H2a1", "H2a2a"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["H2A_EXACT_SELECTED_FAMILY_SECTOR_GAPS"],
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_8_H1C3_AND_EXACT_SELECTED_FAMILY_SECTOR_GAPS_OPEN"},
+      "validation": "H2A2_EXACT_SELECTED_FAMILY_SECTOR_GAP_AND_RADIUS_AUDIT",
+      "failure_codes": ["H2A_EXACT_SECTOR_ORDERING_MISSING", "H2A_EVEN_INTERNAL_GAP_MISSING", "H2A_EVEN_ODD_BOTTOM_ORDER_MISSING", "H2A_EXACT_ISOLATION_RADIUS_INSTANTIATION_MISSING", "H2A_SAME_FAMILY_SELECTION_MISSING", "H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED", "D0_8_OBJECT_MISMATCH", "SIMPLE_EVEN_GROUND_MISSING", "GROUND_SECTOR_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H2a2c": {
+      "id": "H2a2c", "parent_id": "H2a2", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H2a2.0 AND H2a2a AND H2a2b IMPLIES the exact selected-family isolated-sector theorem H2a2",
+      "dependencies": ["H2a2.0", "H2a2a", "H2a2b"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H2A2B_OPEN"},
+      "validation": "H2A2_EXACT_SECTOR_ISOLATION_ASSEMBLY",
+      "failure_codes": ["H2A2_ASSEMBLY_GAP", "H2A_EXACT_SECTOR_ORDERING_MISSING"]
     },
     "H2a3": {
       "id": "H2a3", "parent_id": "H2a", "kind": "LEAF", "role": "ASSEMBLY",
@@ -2301,6 +2372,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN;POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP;ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP;H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING"
+      },
+      "H2a2/generic_sector_isolation_radius/v1": {
+        "status": "GENERIC_ISOLATION_RADIUS_CLOSED_EXACT_SELECTED_FAMILY_SECTOR_GAPS_OPEN",
+        "last_class": "PROOF_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "GENERIC_SECTOR_ISOLATION_RADIUS_LEAN;POSITIVE_HALF_MINIMUM_SECTOR_RADIUS;H2A_EXACT_SECTOR_ORDERING_MISSING"
       }
     }
   },
@@ -2541,6 +2618,13 @@
       "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_PERTURBATIVE_TRUE_GAP_LOWER_LEAN;TWO_ENDPOINT_ABSOLUTE_PERTURBATION_TRANSFER;NONBOTTOM_FILTER_WRAPPER;POSITIVE_MODEL_GAP_COLLAPSED_TRUE_GAP;ENDPOINT_ERRORS_CONSUME_ENTIRE_MODEL_GAP;H4B_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "EXACT_PARITY_CLEAN_OPERATOR_FUCHS_MODEL_ENDPOINT_DRIFT_BOUNDS_POSITIVE_SURVIVING_ENVELOPE_AND_SHARED_FILTER_OPEN_MODEL_GAP_NOT_SUBSTITUTED_H4B_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T17:42:24+02:00",
+      "event": "H2A2_GENERIC_SECTOR_ISOLATION_RADIUS_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "GENERIC_SECTOR_ISOLATION_RADIUS_LEAN;POSITIVE_HALF_MINIMUM_SECTOR_RADIUS;EVEN_AND_ODD_THRESHOLD_SEPARATION;H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "EXACT_H1C3_D0_8_FAMILY_EVEN_INTERNAL_GAP_EVEN_ODD_BOTTOM_ORDER_MULTIPLICITY_CROSSWALK_AND_RADIUS_INSTANTIATION_OPEN_H2A2_H2A_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

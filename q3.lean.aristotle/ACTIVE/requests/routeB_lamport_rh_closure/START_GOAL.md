@@ -184,6 +184,13 @@ Current fail-closed address:
   exact parity-clean operator/Fuchs model, ordering, both endpoint estimates,
   positive surviving envelope and shared filter remain OPEN in `H4b2` with
   stop `H4B_EXACT_SAME_PARITY_FUCHS_GAP_INSTANTIATION_MISSING`;
+- rev29 proves `H2a2a GENERIC_SECTOR_ISOLATION_RADIUS_LEAN`:
+  two strict gaps from the selected even ground to the next-even and
+  bottom-odd levels yield a positive half-minimum isolation radius and
+  separation from every level above either threshold; the exact H1c3/D0.8
+  family, both strict inequalities, multiplicity/order crosswalk and radius
+  instantiation remain OPEN in `H2a2b` with stop
+  `H2A_EXACT_SECTOR_ORDERING_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,
