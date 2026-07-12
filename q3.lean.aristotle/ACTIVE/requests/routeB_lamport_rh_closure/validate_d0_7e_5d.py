@@ -79,7 +79,27 @@ def main() -> None:
     require(leaf["validation"] == "D0_7E_XWALK_MIGRATION_LOCKED", "D0_7E_5D_STATE_VALIDATION_DRIFT")
     h3e = nodes["H3e"]
     require(h3e.get("name") == "H3e_ExactWPrimeTrackingTheorem", "D0_7E_H3E_LABEL_DRIFT")
-    if state["revision"] >= 15:
+    if state["revision"] >= 31:
+        require(h3e["kind"] == "AND", "D0_7E_H3E_PARENT_NOT_AND")
+        require(h3e["dependencies"] == ["H3e.0"], "D0_7E_H3E_DEPENDENCY_DRIFT")
+        require(h3e["ordered_children"] == ["H3e1", "H3e2"], "D0_7E_H3E_CHILD_ORDER_DRIFT")
+        require(h3e["assembly_theorem_id"] == "H3e3", "D0_7E_H3E_ASSEMBLY_DRIFT")
+        require(
+            nodes["H3e2"]["dependencies"] ==
+            ["D0", "H3a", "H3b", "H3c", "H4b", "H4c", "H3e1"],
+            "D0_7E_H3E2_DEPENDENCY_DRIFT",
+        )
+        require(
+            h3e["external_requirements"] ==
+            ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
+            "D0_7E_H3E_EXTERNAL_REQUIREMENT_DRIFT",
+        )
+        require(
+            state["h3_h4_contract_repair"]["status"] ==
+            "CONTRACT_V2_DAG_REPAIRED_THREE_GAPS_REGISTERED_NOT_RH",
+            "D0_7E_H3E_SEMANTIC_REMAP_UNREGISTERED",
+        )
+    elif state["revision"] >= 15:
         # Contract-v2 rev15 retyped the old H4c/H4d meanings as
         # H4b SafeGapLower / H4c SafeSignAndB.  The certificate above remains
         # the immutable historical migration snapshot; validate the semantic

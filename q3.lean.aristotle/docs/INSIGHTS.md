@@ -47244,3 +47244,19 @@ Final result:
   instantiation H3e2 plus assembly H3e3 OPEN.
 - Acceptance remains narrow: no WPrime minting, no exact alpha/gap/b crosswalk,
   no H3e/H3/L0 closure, no Bus 010, and no RH claim.
+
+Final result:
+
+- `NormalizedTrackingRateTransfer.lean` proves the exact normalization identity,
+  the pointwise reciprocal-error bound, abstract and H4c1-specialized
+  `TendstoUniformlyOn` receivers, the normalized-exponent equivalence, and two
+  executable insufficiency plants.
+- The proof never defines `WPrime`, `alpha`, or `DeltaE`; `W` remains a supplied
+  majorant. Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`.
+- STATE revision 31 nests proved `H3e.0` and `H3e1` below H3e. Exact
+  same-family instantiation `H3e2` and assembly `H3e3` remain OPEN under
+  `H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING`, with separate WPrime and
+  residual relative-rate stop codes.
+- The count is 148 nodes: 76 PROVED, 64 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

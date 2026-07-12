@@ -1,0 +1,201 @@
+{
+  "schema": "route_b_h3e_normalized_tracking_rate_transfer_certificate.v1",
+  "created_at": "2026-07-12T18:11:03+02:00",
+  "revision_target": 31,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean",
+      "sha256": "f7ccca3e5f640380964a27ad010d09e9f8225e39087d96a2d9bc1c3ed93013b8",
+      "scope": "H4C1_RECIPROCAL_B_ENVELOPE"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean",
+      "sha256": "7e33e0675b6a2ed2f74b09c5653b8703d27eed0ef615b84341ef3c2ea4a5282c",
+      "scope": "NORMALIZED_LOWER_PRODUCT_AND_SAFE_BRIDGE_PLANTS"
+    },
+    {
+      "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
+      "sha256": "7e1d2309d9d157e573319ea4aef4238f276a061efd6f437f235009077abc0171",
+      "scope": "SAFE_MARGIN_AND_H3E_CONSUMER_CONTRACT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3_H4_CONTRACT_REPAIR_2026-07-12.md",
+      "sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
+      "scope": "ABSOLUTE_TO_NORMALIZED_TRACKING_GAP"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5_PRO_REVIEW_DECISION.md",
+      "sha256": "28f90346e7712d5cf66599ed336b10528046e645b91ec83f2c94c98ad13829ff",
+      "scope": "ACYCLIC_H3E_HOME_AND_NO_D0_TRACKING_IMPORT"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3E_TRACKING_CALIBRATION.md",
+      "sha256": "c1df73dbf1e061783ec9257e69436fbcbde8fbc1a298a00fdfd292a774ecdb3a",
+      "scope": "PINNED_CALIBRATION_GAPS_AND_NO_NUMERICAL_OVERCLAIM"
+    },
+    {
+      "path": "q3.lean.aristotle/lake-manifest.json",
+      "sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+      "scope": "MATHLIB_DEPENDENCY_REVISION"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/MetricSpace/Pseudo/Basic.lean",
+      "sha256": "7bef6791f532acb36d085a2a7825646c1730826b2bb9cbc4dcf8609e8958c75e",
+      "scope": "METRIC_TENDSTO_UNIFORMLY_ON_INTERFACE"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Normed/MulAction.lean",
+      "sha256": "07c9d293cdfce8cdf1b3dc8c6ec8390fe75076954ae48bc8e42d26cf0d290fba",
+      "scope": "NORM_SCALAR_AND_INVERSE_TRANSFER"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/SpecialFunctions/Pow/Real.lean",
+      "sha256": "19ee1bc7835b6d6ecc21be878f003cf6ed373c9c4bc4f94c3bfee427052c60bb",
+      "scope": "REAL_RPOW_NONNEGATIVITY"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Order/Filter/Defs.lean",
+      "sha256": "e64b66543c9adbfe9029ca2f72ee49dff80bcb4fd6602241bda99d82b3f7630c",
+      "scope": "NONBOTTOM_FILTER_INTERFACE"
+    },
+    {
+      "path": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Topology/Instances/Real/Lemmas.lean",
+      "sha256": "84533ef038e3a50a46412be0d9acd105942a57283ffb04877621634adcadc32f",
+      "scope": "REAL_LIMIT_UNIQUENESS_FOR_PLANT"
+    }
+  ],
+  "external_source_references": [
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Topology/UniformSpace/LocallyUniformConvergence.html",
+      "scope": "OFFICIAL_UNIFORM_CONVERGENCE_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/Normed/MulAction.html",
+      "scope": "OFFICIAL_NORMED_SCALAR_ACTION_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Analysis/SpecialFunctions/Pow/Real.html",
+      "scope": "OFFICIAL_REAL_RPOW_API"
+    },
+    {
+      "url": "https://leanprover-community.github.io/mathlib4_docs/Mathlib/Order/Filter/Defs.html",
+      "scope": "OFFICIAL_FILTER_AND_NEBOT_API"
+    }
+  ],
+  "proof_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/NormalizedTrackingRateTransfer.lean",
+    "sha256": "5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed",
+    "proved": [
+      "normalize_scalar_error_identity",
+      "norm_normalized_error_eq",
+      "normalized_tracking_error_le",
+      "tendstoUniformlyOn_normalized_tracking_of_relative_rates",
+      "tendstoUniformlyOn_normalized_tracking_of_two_sided_b",
+      "relative_normalized_rate_exponent_neg_iff",
+      "safe_margin_does_not_imply_relative_rate_margin",
+      "lowerProductB_recip_mul_self_eq_one",
+      "detector_decay_does_not_imply_relative_decay"
+    ]
+  },
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3E_NORMALIZED_TRACKING_RATE_TRANSFER_2026-07-12.md",
+    "sha256": "5d3a934e03ca6e20ee8f5914bd2aa77fcb60be02ed0bd6c37da354c30fd28f38"
+  },
+  "h3e_repair": {
+    "parent": "H3e",
+    "decomposition": "H3e.0",
+    "ordered_children": ["H3e1", "H3e2"],
+    "assembly": "H3e3",
+    "proved": ["H3e.0", "H3e1"],
+    "open": ["H3e", "H3e2", "H3e3", "H3", "H3d", "L0c2", "L0c3", "L0"],
+    "generic_verdict": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN",
+    "residual_stop": "H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING"
+  },
+  "normalization_identity": {
+    "normalized_family": "b_inverse_smul_F",
+    "absolute_residual": "F_minus_b_smul_X",
+    "norm_factor": "norm_b_inverse",
+    "detector_policy": "W_IS_SUPPLIED_MAJORANT_NO_WPRIME_MINT"
+  },
+  "relative_rate_guard": {
+    "abstract_reciprocal": "R",
+    "h4c1_specialization": "c_b_inverse_times_scale_rpow_neg_q_b",
+    "required_rates": ["R_TIMES_W_TENDS_TO_ZERO", "R_TIMES_EPS_TENDS_TO_ZERO"],
+    "filter": "NONBOTTOM",
+    "topology": "TENDSTO_UNIFORMLY_ON_SUPPLIED_K"
+  },
+  "contract_margin_guard": {
+    "detector_exponent": "q_b_plus_half_one_plus_r_alpha_minus_r_Delta",
+    "normalized_exponent": "half_one_plus_r_alpha_minus_r_Delta",
+    "exact_negativity_iff": "r_Delta_minus_r_alpha_gt_1",
+    "current_safe_margin_alone": "NOT_SUFFICIENT_WITHOUT_EXTRA_QB_OR_RELATIVE_MECHANISM",
+    "counterexample": {
+      "q_b": -1,
+      "r_alpha": 0,
+      "r_Delta": 0
+    }
+  },
+  "plants": [
+    "DETECTOR_DECAY_ONLY",
+    "SAFE_MARGIN_ONLY",
+    "BOTTOM_FILTER",
+    "WPRIME_MINT"
+  ],
+  "exact_instantiation_guard": {
+    "dependencies": ["D0", "H3a", "H3b", "H3c", "H4b", "H4c", "H3e1"],
+    "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
+    "open_codes": [
+      "D0_7E_WPRIME_CONSUMER_MISSING",
+      "H0_A1_ALPHA_DEFINITION_MISSING",
+      "GROUND_TRIAL_TRACKING_MISSING",
+      "COMPACT_STRIP_EVALUATION_MISSING",
+      "JOINT_N_LAMBDA_QUANTIFIER_MISSING",
+      "TRUE_GAP_LOWER_MISSING",
+      "NORMALIZATION_CONTROL_MISSING",
+      "PO_XWALK_UNIFORM_EVAL",
+      "H3E_EXACT_ABSOLUTE_TRACKING_BOUND_MISSING",
+      "H3E_EXACT_B_TWO_SIDED_INSTANTIATION_MISSING",
+      "H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING",
+      "H3E_RELATIVE_RESIDUAL_RATE_MISSING",
+      "H3E_SAME_FAMILY_FILTER_MISSING",
+      "H3E_BDET_RECIPROCAL_CONTROL_MISSING",
+      "XI_LIMIT_OBJECT_MISMATCH",
+      "MODEL_GAP_SUBSTITUTION",
+      "D0_7E_TAUTOLOGY",
+      "LEAN_EXPORT_INTERFACE_GAP"
+    ]
+  },
+  "expected_node_counts": {
+    "total": 148,
+    "PROVED": 76,
+    "OPEN": 64,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "lean_audit": {
+    "holes": 0,
+    "unexpected_axioms": [],
+    "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "bus_010_created": false,
+    "eligible_worker_leaves_after_transaction": []
+  },
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_WPRIME_DEFINITION_OR_RECONSTRUCTION",
+    "NO_EXACT_ABSOLUTE_TRACKING_BOUND",
+    "NO_EXACT_B_INSTANTIATION",
+    "NO_EXACT_RELATIVE_WPRIME_RATE",
+    "NO_EXACT_RELATIVE_RESIDUAL_RATE",
+    "NO_CURRENT_CONTRACT_MARGIN_IMPLICATION",
+    "NO_H3E_PARENT_CLOSURE",
+    "NO_H3_PARENT_CLOSURE",
+    "NO_L0C2_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

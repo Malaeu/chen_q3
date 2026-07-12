@@ -198,6 +198,13 @@ Current fail-closed address:
   compressed-residual and leakage rates, and one shared family/filter remain
   OPEN in `H4a2b` with stop
   `H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING`;
+- rev31 proves `H3e1 H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN`:
+  reciprocal-b normalization and two relative rates imply uniform-on-set
+  tracking on a nonbottom filter, with an H4c1 specialization; compiled plants
+  show detector decay alone and the current safe margin alone are insufficient,
+  while the independent WPrime consumer, exact absolute tracking/b/Xi objects,
+  both relative rates and one joint filter remain OPEN in `H3e2` with stop
+  `H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

@@ -476,7 +476,10 @@ R0 RHClosure [AND]
 |   |   |-- H3c1 NormalizedDoubleCompletionStripGuard
 |   |   |-- H3c2 ExactRawOrCompensatedXiLimitAndFilter
 |   |   `-- H3c3 H3cAssembly
-|   |-- H3e ExactWPrimeTrackingTheorem
+|   |-- H3e ExactWPrimeTrackingTheorem [AND]
+|   |   |-- H3e1 GenericNormalizedTrackingRateTransfer
+|   |   |-- H3e2 ExactRelativeTrackingInstantiation
+|   |   `-- H3e3 H3eAssembly
 |   `-- H3d H3Assembly
 |-- H4 DetectorDecay [AND]
 |   |-- H4a SafeAlphaUpper [AND]
@@ -624,7 +627,11 @@ proof node.
 | `H3c1` | Central-normalized extra completion of already completed `centeredXi` differs somewhere inside the open critical strip | `PROVED / EXACT_LEAN / FALSIFIER_LIVE` | `H3C_NORMALIZED_DOUBLE_COMPLETION_STRIP_MISMATCH_LEAN` |
 | `H3c2` | Select one exact family/filter and prove raw convergence or an exact inverse-completion crosswalk to `centeredXi` | `OPEN / INELIGIBLE` | blocker: `H3C_EXACT_LIMIT_OBJECT_AND_JOINT_FILTER_MISSING` |
 | `H3c3` | Exact H3c assembly | `OPEN / BLOCKED_BY_H3c2` | `H3C_EXACT_LIMIT_IDENTIFICATION_ASSEMBLY` |
-| `H3e` | Exact migrated WPrime tracking theorem; consumes the D0 slot, H3 inputs, true H4 quantities, H0/A1 and `PO_XWALK_UNIFORM_EVAL` | `OPEN / INACTIVE / RELATIVE_NORMALIZATION_GAP` | `EXACT_WPRIME_TRACKING_PROVED` |
+| `H3e` | AND parent: generic normalized-tracking rate transfer plus exact same-family WPrime relative-rate instantiation | `OPEN / GENERIC_CORE_PROVED / PLANTS_LIVE` | blocker: `H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING` |
+| `H3e.0` | H3e decomposition contract | `PROVED` | `H3E_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H3e1` | Reciprocal-b normalization plus two relative rates imply uniform-on-set tracking; detector-decay-only and safe-margin-only shortcuts are falsified | `PROVED / GENERIC_LEAN / FALSIFIERS_LIVE` | `H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN` |
+| `H3e2` | Instantiate the independent WPrime, absolute tracking, exact b/Xi objects, both relative rates and one joint filter on the same family | `OPEN / INELIGIBLE` | blocker: `H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING` |
+| `H3e3` | Exact H3e assembly | `OPEN / BLOCKED_BY_H3e2` | `H3E_EXACT_NORMALIZED_TRACKING_ASSEMBLY` |
 | `H3d` | H3 assembly theorem `H3a AND H3b AND H3c AND H3e -> H3` | `OPEN / BLOCKED_BY_H3_CHILDREN` | `H3_ASSEMBLED` |
 | `H4` | Contract-v2 AND parent for QuantitativeSafeWitness and detector decay | `OPEN` | `DETECTOR_DECAY_PROVED` |
 | `H4.0` | Contract-v2 decomposition into four safe leaves | `PROVED` | `H4_CONTRACT_V2_DECOMPOSITION_LOCKED` |
@@ -965,6 +972,17 @@ ambient residual when leakage survives.  Exact H4a2b must now pin one
 domain-safe Route B operator and source-locked projection and prove both the
 compressed-residual and leakage rates on the same family/filter, including the
 squared rate consumed by H4a3.  H4a2, H4a, H4, and RH remain OPEN.
+
+Revision 31 constructs the universal normalized-tracking receiver nested below
+H3e.  Lean proves the exact scalar normalization identity and transfers an
+absolute compact-set tracking estimate to `TendstoUniformlyOn` from reciprocal
+control and two explicit relative rates, with an H4c1 specialization on a
+non-bottom filter.  Compiled plants show both that detector decay can be erased
+by division by `b` and that the current Contract-v2 safe margin alone need not
+imply the stronger normalized relative-rate margin.  Exact H3e2 must still
+supply the independent WPrime consumer, exact family/Xi/b objects, absolute
+tracking theorem, both relative rates, and one joint filter.  H3e, H3, L0c2,
+and RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

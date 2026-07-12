@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 30,
-  "updated_at": "2026-07-12T17:56:08+02:00",
+  "revision": 31,
+  "updated_at": "2026-07-12T18:11:03+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "5e9f1b987e30ff1e70f7f179d82779b38333c32843589717050cae81ea74d069",
+    "sprint_log_sha256": "e68e5dcd22cb9bf7b6d88b13fa064d22153f20aec4503a7774278c5f79980eb6",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -220,7 +220,7 @@
     "certificate": "H3_H4_CONTRACT_REPAIR_CERTIFICATE.json",
     "certificate_sha256": "4790162bd7e22919ccec12623b73e7861be2a5cd395062dbf5f59b1ef6019458",
     "validator": "validate_h3_h4_contract_repair.py",
-    "validator_sha256": "938a2ea28aec1256e9928b6b7a375cd0d32c359bc8f1a5f8eb11d7a9b112a280",
+    "validator_sha256": "293a99f44d9061d9f42d951c734bf73eefd3040ad81dc5b5b53d18d2ce094480",
     "artifact": "H3_H4_CONTRACT_REPAIR_2026-07-12.md",
     "artifact_sha256": "561f70fa1c4538b999c418ad6338f97b96b6596400253491bdb264e28f9323ec",
     "proved_generic_nodes": ["H4.0", "H4a.0", "H4d.0", "H4d1"],
@@ -598,6 +598,36 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "h3e_normalized_tracking_rate_transfer": {
+    "name": "H3E_NORMALIZED_TRACKING_RATE_TRANSFER_REV31",
+    "status": "GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_PROVED_EXACT_RELATIVE_TRACKING_INPUTS_OPEN_NOT_RH",
+    "certificate": "H3E_NORMALIZED_TRACKING_RATE_TRANSFER_CERTIFICATE.json",
+    "certificate_sha256": "5f96a8c8e04817bb8b55c9e1c0ed4817bce2d2e39c1ba78476e1cdfa1d6a2a18",
+    "validator": "validate_h3e_normalized_tracking_rate_transfer.py",
+    "validator_sha256": "54fd2d34165129a9fe5110792d44cd80ef8b33b8b2ceb8df44e753b87b8e9e8d",
+    "artifact": "H3E_NORMALIZED_TRACKING_RATE_TRANSFER_2026-07-12.md",
+    "artifact_sha256": "5d3a934e03ca6e20ee8f5914bd2aa77fcb60be02ed0bd6c37da354c30fd28f38",
+    "proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/NormalizedTrackingRateTransfer.lean",
+      "sha256": "5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed"
+    },
+    "proved_nodes": [
+      "H3e.0",
+      "H3e1"
+    ],
+    "generic_verdict": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN",
+    "plants": [
+      "DETECTOR_DECAY_ONLY",
+      "SAFE_MARGIN_ONLY",
+      "BOTTOM_FILTER",
+      "WPRIME_MINT"
+    ],
+    "next_worker_leaf": null,
+    "next_exact_node": "H3e2",
+    "remaining_stop": "H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING",
+    "does_not_change_active_leaf": true,
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "H4A2_EXACT_COMPONENT_RATE": {
       "name": "ExactAmbientResidualComponentRatesOnSharedRouteBFamily",
@@ -662,9 +692,15 @@
     "H3E_RELATIVE_NORMALIZATION_TRANSFER": {
       "name": "AbsoluteTrackingToNormalizedTrackingWithReciprocalControl",
       "authority": "H3_H4_CONTRACT_REPAIR_2026-07-12.md#2",
-      "status": "OPEN_CRITICAL",
-      "home": "H3e",
-      "failure_code": "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP",
+      "status": "GENERIC_CORE_PROVED_EXACT_RELATIVE_RATES_OPEN",
+      "home": "H3e2",
+      "generic_core": "H3e1",
+      "generic_validation": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN",
+      "failure_code": "H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING",
+      "residual_codes": [
+        "H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING",
+        "H3E_RELATIVE_RESIDUAL_RATE_MISSING"
+      ],
       "is_lamport_node": false
     },
     "H3C_COMPLETION_OBJECT_CROSSWALK": {
@@ -715,7 +751,8 @@
       "H3A_PHASE_ALIGNMENT_RATE_TRANSFER_REV27",
       "H4B_PERTURBATIVE_TRUE_GAP_LOWER_REV28",
       "H2A2_SECTOR_ISOLATION_RADIUS_REV29",
-      "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_REV30"
+      "H4A2_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_REV30",
+      "H3E_NORMALIZED_TRACKING_RATE_TRANSFER_REV31"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1693,18 +1730,57 @@
       "validation": "H3_ASSEMBLY_TYPECHECK", "failure_codes": ["H3_ASSEMBLY_GAP"]
     },
     "H3e": {
-      "id": "H3e", "parent_id": "H3", "kind": "LEAF", "role": "GOAL",
+      "id": "H3e", "parent_id": "H3", "kind": "AND", "role": "GOAL",
       "name": "H3e_ExactWPrimeTrackingTheorem",
-      "statement": "Prove the migrated exact WPrime tracking theorem uniformly on compact substrips using the typed D0 slot, the H3 same-family/evaluation/joint-filter inputs, and the true H4 spectral quantities",
-      "dependencies": ["D0", "H3a", "H3b", "H3c", "H4b", "H4c"],
+      "statement": "The generic normalized-tracking rate transfer and the exact same-family WPrime relative-rate instantiation establish uniform compact-substrip tracking",
+      "dependencies": ["H3e.0"],
       "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
       "consumes_slot": "D0.7e.5",
       "consumer_identity_dependency": "D0.7e.5c",
-      "ordered_children": [], "assembly_theorem_id": null,
+      "ordered_children": ["H3e1", "H3e2"], "assembly_theorem_id": "H3e3",
       "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H3ABC_H4BC_AND_EXTERNAL_REQUIREMENTS_OPEN"},
+      "eligibility": {"eligible": false, "reason": "H3E2_EXACT_RELATIVE_TRACKING_INPUTS_OPEN"},
       "validation": "EXACT_WPRIME_TRACKING_AND_ACYCLIC_CONSUMER_AUDIT",
-      "failure_codes": ["H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H3E_IB2_LIMINF_MISIDENTIFICATION", "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP", "H3E_BDET_RECIPROCAL_CONTROL_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY"]
+      "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H3E_IB2_LIMINF_MISIDENTIFICATION", "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP", "H3E_BDET_RECIPROCAL_CONTROL_MISSING", "H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING", "H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING", "H3E_RELATIVE_RESIDUAL_RATE_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY"]
+    },
+    "H3e.0": {
+      "id": "H3e.0", "parent_id": "H3e", "kind": "LEAF", "role": "DECOMPOSITION_CONTRACT",
+      "statement": "H3e iff H3e1 and H3e2 both hold, with H3e3 as exact assembly",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_DEFINITIONALLY"},
+      "validation": "H3E_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "failure_codes": ["H3E_DECOMPOSITION_NOT_EQUIVALENT"]
+    },
+    "H3e1": {
+      "id": "H3e1", "parent_id": "H3e", "kind": "LEAF", "role": "GOAL",
+      "statement": "A nonbottom filter, an absolute tracking bound, and abstract or H4c1 reciprocal control transfer two relative rates to TendstoUniformlyOn for the normalized family, while detector-decay-only and safe-margin-only plants fire",
+      "dependencies": ["H4c1"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "PROVED", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "ALREADY_PROVED_GENERIC_LEAN"},
+      "validation": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN",
+      "proof_artifact": "Q3/Proofs/RouteB/NormalizedTrackingRateTransfer.lean",
+      "failure_codes": ["H3E_GENERIC_NORMALIZED_TRACKING_TRANSFER_GAP", "H3E_BOTTOM_FILTER_VACUITY", "H3E_IB2_LIMINF_MISIDENTIFICATION", "H3E_DETECTOR_DECAY_ONLY_PLANT", "H3E_SAFE_MARGIN_ONLY_PLANT", "H3E_WPRIME_MINTED_IN_GENERIC_CORE"]
+    },
+    "H3e2": {
+      "id": "H3e2", "parent_id": "H3e", "kind": "LEAF", "role": "GOAL",
+      "statement": "Instantiate H3e1 on the exact D0/H3/H4 same family and joint filter, with the independently sourced WPrime, exact absolute compact-strip bound, exact Xi limit object, exact b control, and both relative rates",
+      "dependencies": ["D0", "H3a", "H3b", "H3c", "H4b", "H4c", "H3e1"], "ordered_children": [], "assembly_theorem_id": null,
+      "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
+      "consumes_slot": "D0.7e.5", "consumer_identity_dependency": "D0.7e.5c",
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "D0_H3ABC_H4BC_AND_EXACT_RELATIVE_RATES_OPEN"},
+      "validation": "H3E_EXACT_RELATIVE_TRACKING_INSTANTIATION_AUDIT",
+      "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "H3E_EXACT_ABSOLUTE_TRACKING_BOUND_MISSING", "H3E_EXACT_B_TWO_SIDED_INSTANTIATION_MISSING", "H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING", "H3E_RELATIVE_RESIDUAL_RATE_MISSING", "H3E_SAME_FAMILY_FILTER_MISSING", "H3E_BDET_RECIPROCAL_CONTROL_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY", "LEAN_EXPORT_INTERFACE_GAP"]
+    },
+    "H3e3": {
+      "id": "H3e3", "parent_id": "H3e", "kind": "LEAF", "role": "ASSEMBLY",
+      "statement": "H3e.0 AND H3e1 AND H3e2 IMPLIES the exact normalized compact-substrip tracking theorem",
+      "dependencies": ["H3e.0", "H3e1", "H3e2"], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "OPEN", "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "H3E2_OPEN"},
+      "validation": "H3E_EXACT_NORMALIZED_TRACKING_ASSEMBLY",
+      "failure_codes": ["H3E_ASSEMBLY_GAP"]
     },
     "H4": {
       "id": "H4", "parent_id": "R0", "kind": "AND", "role": "GOAL",
@@ -2456,6 +2532,12 @@
         "last_class": "PROOF_PROGRESS",
         "no_progress_streak": 0,
         "result": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN;ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL;H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING"
+      },
+      "H3e/generic_normalized_tracking_rate_transfer/v1": {
+        "status": "GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_CLOSED_EXACT_RELATIVE_INPUTS_OPEN",
+        "last_class": "FALSIFICATION_PROGRESS",
+        "no_progress_streak": 0,
+        "result": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN;DETECTOR_DECAY_ONLY_PLANT;SAFE_MARGIN_ONLY_PLANT;H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING"
       }
     }
   },
@@ -2710,6 +2792,13 @@
       "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
       "result": "GENERIC_AMBIENT_RESIDUAL_ENVELOPE_TRANSFER_LEAN;H4A2_COMPONENT_ENVELOPE_TRANSFER_LEAN;H4A2_SQUARED_RESIDUAL_ENVELOPE_TRANSFER_LEAN;H4A2_NONBOTTOM_FILTER_TRANSFER_LEAN;H4A2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL_PLANT_RETAINED_EXACT_OPERATOR_PROJECTION_COMPONENT_RATES_AND_SHARED_FILTER_OPEN_H4A2_H4A_H4_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T18:11:03+02:00",
+      "event": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_PROVED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN;EXACT_SCALAR_NORMALIZATION_IDENTITY;NONBOTTOM_UNIFORM_ON_SET_TRANSFER;H4C1_RECIPROCAL_SPECIALIZATION;DETECTOR_DECAY_ONLY_PLANT;SAFE_MARGIN_ONLY_PLANT;H3E_DECOMPOSITION_EQUIVALENCE_LOCKED",
+      "honesty": "NO_WPRIME_MINT_EXACT_ABSOLUTE_TRACKING_B_INSTANTIATION_XI_OBJECT_RELATIVE_WPRIME_AND_RESIDUAL_RATES_AND_SHARED_FILTER_OPEN_H3E_H3_L0C2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
     }
   ]
 }

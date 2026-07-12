@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T17:56:08+02:00",
+  "updated_at": "2026-07-12T18:11:03+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -88,6 +88,13 @@
       ,"H4A2_COMPONENT_ENVELOPE_TRANSFER_LEAN"
       ,"H4A2_SQUARED_RESIDUAL_ENVELOPE_TRANSFER_LEAN"
       ,"H4A2_NONBOTTOM_FILTER_TRANSFER_LEAN"
+      ,"H3E_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN"
+      ,"H3E_EXACT_SCALAR_NORMALIZATION_IDENTITY_LEAN"
+      ,"H3E_NONBOTTOM_UNIFORM_ON_SET_TRANSFER_LEAN"
+      ,"H3E_H4C1_RECIPROCAL_SPECIALIZATION_LEAN"
+      ,"H3E_DETECTOR_DECAY_ONLY_PLANT"
+      ,"H3E_SAFE_MARGIN_ONLY_PLANT"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -143,6 +150,11 @@
       ,"H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING"
       ,"H4A1_LEAKAGE_NORM_RATE_MISSING"
       ,"H4A2_COMPRESSED_RESIDUAL_RATE_MISSING"
+      ,"H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING"
+      ,"H3E_EXACT_ABSOLUTE_TRACKING_BOUND_MISSING"
+      ,"H3E_EXACT_B_TWO_SIDED_INSTANTIATION_MISSING"
+      ,"H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING"
+      ,"H3E_RELATIVE_RESIDUAL_RATE_MISSING"
     ]
   },
   "bus": {
@@ -266,6 +278,12 @@
       "class": "MASTER_DAG_EXACT_TRUE_GAP_PERTURBATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
       "detail": "The generic two-endpoint perturbation-budget transfer, strict-positive-floor corollary, nonbottom-filter wrapper, and model-gap/full-error-budget guards are Lean-proved, but the parity-clean Route B operator/Fuchs model, ordering and multiplicities, both endpoint drift bounds, positive surviving Contract-v2 envelope, and shared filter remain open."
+    },
+    {
+      "code": "H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING",
+      "class": "MASTER_DAG_EXACT_NORMALIZED_TRACKING_BLOCKER",
+      "owner": "Route B proof compiler / source owner",
+      "detail": "The exact scalar normalization identity and abstract/H4c1 reciprocal relative-rate transfers are Lean-proved on a nonbottom filter, while compiled plants show detector decay alone and the current safe margin alone are insufficient; the independent WPrime consumer, exact absolute tracking/b/Xi crosswalks, both relative rates, one same-family joint filter, and Lean export remain open."
     }
   ],
   "guardrails": {
@@ -386,7 +404,7 @@
     },
     "h3_h4_contract_repair_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3_h4_contract_repair.py",
-      "sha256": "938a2ea28aec1256e9928b6b7a375cd0d32c359bc8f1a5f8eb11d7a9b112a280"
+      "sha256": "293a99f44d9061d9f42d951c734bf73eefd3040ad81dc5b5b53d18d2ce094480"
     },
     "h1c_h4d_generic_cores_certificate": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H1C_H4D_GENERIC_CORES_CERTIFICATE.json",
@@ -563,6 +581,18 @@
     "h4a2_ambient_residual_envelope_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
       "sha256": "bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431"
+    },
+    "h3e_normalized_tracking_rate_transfer_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H3E_NORMALIZED_TRACKING_RATE_TRANSFER_CERTIFICATE.json",
+      "sha256": "5f96a8c8e04817bb8b55c9e1c0ed4817bce2d2e39c1ba78476e1cdfa1d6a2a18"
+    },
+    "h3e_normalized_tracking_rate_transfer_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h3e_normalized_tracking_rate_transfer.py",
+      "sha256": "54fd2d34165129a9fe5110792d44cd80ef8b33b8b2ceb8df44e753b87b8e9e8d"
+    },
+    "h3e_normalized_tracking_rate_transfer_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/NormalizedTrackingRateTransfer.lean",
+      "sha256": "5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed"
     }
   },
   "stages": [

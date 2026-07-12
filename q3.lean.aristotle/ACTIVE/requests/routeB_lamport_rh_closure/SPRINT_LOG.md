@@ -94,3 +94,9 @@ Single owner decision with maximum unblock power:
 `GUARD H4a2a: ZERO_COMPRESSED_RESIDUAL_NONZERO_AMBIENT_RESIDUAL; the H4a1 leakage plant remains live, so no internal-residual tautology or deletion of the leakage estimate is allowed.`
 
 `SKIPPED H4a2b: H4A2_EXACT_COMPONENT_RATE_INSTANTIATION_MISSING; the domain-safe Route B operator, source-locked projection, exact compressed-residual and leakage rates, combined squared rate, and one shared family/filter remain open.`
+
+`CLOSED H3e1: H3E_GENERIC_NORMALIZED_TRACKING_RATE_TRANSFER_LEAN; exact scalar normalization plus reciprocal control and two relative rates imply TendstoUniformlyOn on a supplied set and nonbottom filter, including the H4c1 two-sided-b specialization.`
+
+`GUARD H3e1: DETECTOR_DECAY_ONLY + SAFE_MARGIN_ONLY; W->0 can become a constant after multiplication by |b|^-1, and the current Contract-v2 margin does not alone imply r_Delta-r_alpha>1.`
+
+`SKIPPED H3e2: H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING; no WPrime was minted, and the independent consumer, exact absolute tracking/b/Xi crosswalks, both relative rates, same-family joint filter, and Lean export remain open.`

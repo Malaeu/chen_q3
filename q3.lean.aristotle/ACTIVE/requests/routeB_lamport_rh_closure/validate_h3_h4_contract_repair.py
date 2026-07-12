@@ -99,10 +99,18 @@ def main() -> None:
         "H3E_IB2_LIMINF_MISIDENTIFICATION" in nodes["H3e"]["failure_codes"],
         "H3E_IB2_GAP_NOT_REGISTERED",
     )
-    require(
-        nodes["H3e"]["dependencies"] == ["D0", "H3a", "H3b", "H3c", "H4b", "H4c"],
-        "H3E_CONTRACT_V2_SEMANTIC_DEPENDENCY_REMAP_DRIFT",
-    )
+    if state["revision"] >= 31:
+        require(nodes["H3e"]["dependencies"] == ["H3e.0"], "H3E_PARENT_DEPENDENCY_DRIFT")
+        require(
+            nodes["H3e2"]["dependencies"] ==
+            ["D0", "H3a", "H3b", "H3c", "H4b", "H4c", "H3e1"],
+            "H3E_CONTRACT_V2_SEMANTIC_DEPENDENCY_REMAP_DRIFT",
+        )
+    else:
+        require(
+            nodes["H3e"]["dependencies"] == ["D0", "H3a", "H3b", "H3c", "H4b", "H4c"],
+            "H3E_CONTRACT_V2_SEMANTIC_DEPENDENCY_REMAP_DRIFT",
+        )
     require(
         "XI_LIMIT_OBJECT_MISMATCH" in nodes["H3c"]["failure_codes"],
         "H3C_LIMIT_OBJECT_GAP_NOT_REGISTERED",
