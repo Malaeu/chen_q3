@@ -460,7 +460,10 @@ R0 RHClosure [AND]
 |   |   `-- H2a3 H2aAssembly
 |   |-- H2b SameVectorRealZeros [AND / CONDITIONAL]
 |   |   |-- H2b1 GenericHermitianDeterminantRealZeros
-|   |   |-- H2b2 ExactTheorem510Factorization
+|   |   |-- H2b2 ExactTheorem510Factorization [AND]
+|   |   |   |-- H2b2a GenericRankOneCorrectionWeightedSymmetry
+|   |   |   |-- H2b2b ExactModifiedHilbertFactorization
+|   |   |   `-- H2b2c H2b2Assembly
 |   |   `-- H2b3 H2bAssembly
 |   `-- H2c H2Assembly
 |-- H3 StripUniformTracking [AND]
@@ -614,7 +617,11 @@ proof node.
 | `H2b` | AND parent: generic Hermitian determinant transfer plus exact same-family Theorem-5.10 factorization | `CONDITIONAL / GENERIC_CORE_PROVED / EXACT_FACTOR_OPEN` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
 | `H2b.0` | H2b decomposition contract; conditional parent never discharges H2 | `PROVED` | `H2B_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2b1` | Periodic determinant and Hermitian charpoly/product real-zero transfers, with non-Hermitian and vanishing-unit plants | `PROVED / GENERIC_LEAN / FALSIFIERS_LIVE` | `GENERIC_HERMITIAN_DETERMINANT_REAL_ZERO_TRANSFER_LEAN` |
-| `H2b2` | Exact modified-Hilbert matrix, complement determinant, nonvanishing phase, lattice-safe all-z factorization and same raw family | `OPEN / INELIGIBLE` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2` | AND parent: generic rank-one kernel/weighted symmetry plus exact modified-Hilbert quotient and factorization | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2.0` | H2b2 decomposition contract | `PROVED` | `H2B2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
+| `H2b2a` | Rank-one correction kills the calibration vector and is symmetric for the supplied T-weighted form | `PROVED / GENERIC_LEAN` | `H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN` |
+| `H2b2b` | Exact same-family T positivity/radical, quotient descent, complement, phase and all-z factorization | `OPEN / INELIGIBLE` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
+| `H2b2c` | Exact H2b2 assembly | `OPEN / BLOCKED_BY_H2b2b` | `H2B2_EXACT_FACTORIZATION_ASSEMBLY` |
 | `H2b3` | Exact H2b assembly | `OPEN / BLOCKED_BY_H2b2` | `H2B_EXACT_REAL_ZERO_ASSEMBLY` |
 | `H2c` | H2 assembly theorem | `OPEN / BLOCKED_BY_H2a_H2b` | `H2_ASSEMBLED` |
 | `H3` | AND parent for same-family strip tracking | `OPEN` | `STRIP_UNIFORM_TRACKING_PROVED` |
@@ -1014,6 +1021,15 @@ non-bottom filter.  A fixed Lean counterexample proves that only one residual
 envelope factor is insufficient.  Exact H4a3b2 still needs the canonical
 spectral/residual/gap objects and rates on one family/filter.  H4a3b, H4a3,
 H4a, H4, and RH remain OPEN.
+
+Revision 34 isolates the universal algebraic portion of H8 Lemma 5.4 below
+H2b2.  Lean proves that the normalized rank-one correction kills the source
+vector and that the source commutator plus `T(D xi)=-beta` makes it symmetric
+for the `T`-weighted bilinear form.  This does not establish positivity,
+radical, quotient descent, complex-Hermitian self-adjointness, complement
+determinants, the nonvanishing phase, or the exact all-z identity.  Those stay
+OPEN in H2b2b under `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`; H2b remains
+CONDITIONAL and H2/RH remain OPEN.
 
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`

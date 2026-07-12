@@ -47355,3 +47355,17 @@ Final result:
   `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`.
 - Acceptance stays narrow: no WPrime consumer definition, no exact ZEO
   quotient identity, no H2b/H2/L0 closure, no Bus 010, and no RH claim.
+
+Final result:
+
+- `RankOneCorrectionWeightedSymmetry.lean` proves that the normalized source
+  correction kills its calibration vector and satisfies the exact T-weighted
+  symmetry identity from the source commutator data.
+- Direct Lean validation reports zero holes and only `propext`,
+  `Classical.choice`, and `Quot.sound`; weighted symmetry is not promoted to
+  quotient self-adjointness.
+- STATE revision 34 nests proved `H2b2.0` and `H2b2a` below H2b2. Exact T
+  positivity/radical, quotient descent, complement determinant, phase and
+  all-z factorization remain OPEN in `H2b2b`.
+- The count is 160 nodes: 82 PROVED, 70 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
+  D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.

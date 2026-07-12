@@ -218,6 +218,13 @@ Current fail-closed address:
   exact alpha/eigenbasis/residual/half-gap/gap objects and shared filter remain
   OPEN in `H4a3b2` with stop
   `H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING`;
+- rev34 proves `H2b2a H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN`:
+  the normalized source rank-one correction kills its calibration vector and
+  the H8 commutator identities make it symmetric for the supplied T-weighted
+  form; exact T positivity/radical, quotient descent, complex-Hermitian
+  realization, complement determinant, nonvanishing phase, all-z identity and
+  the same Route B family remain OPEN in `H2b2b` with stop
+  `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

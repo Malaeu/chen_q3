@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T18:37:09+02:00",
+  "updated_at": "2026-07-12T19:01:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -102,6 +102,10 @@
       ,"GENERIC_TEMPLE_RESIDUAL_GAP_ENVELOPE_TRANSFER_LEAN"
       ,"H4A3B_SAFE_ALPHA_CONSTANT_AND_EXPONENT_EXPLICIT"
       ,"ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA"
+      ,"H2B2_DECOMPOSITION_EQUIVALENCE_LOCKED"
+      ,"H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN"
+      ,"H2B2_RANK_ONE_CORRECTION_KILLS_CALIBRATION_VECTOR_LEAN"
+      ,"H2B2_T_WEIGHTED_SYMMETRY_LEAN"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -165,6 +169,8 @@
       ,"H3B2_EXACT_WEIGHTED_PROJECTIVE_INPUTS_MISSING"
       ,"H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING"
       ,"H4A_RESIDUAL_ENVELOPE_POWER_MISMATCH"
+      ,"H2B2_EXACT_RANK_ONE_SOURCE_INSTANTIATION_MISSING"
+      ,"H2B2_QUOTIENT_POSITIVITY_RADICAL_DESCENT_MISSING"
     ]
   },
   "bus": {
@@ -269,7 +275,7 @@
       "code": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING",
       "class": "MASTER_DAG_EXACT_REAL_ZERO_FACTORIZATION_BLOCKER",
       "owner": "Route B proof compiler / source owner",
-      "detail": "The generic periodic and Hermitian determinant real-zero transfers plus non-Hermitian and vanishing-unit falsifiers are Lean-proved, but the exact T-induced metric, Hermitian finite matrix, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization, and same raw family remain open; H2b stays CONDITIONAL."
+      "detail": "The generic periodic/Hermitian determinant real-zero transfers and the rank-one correction kernel/T-weighted-symmetry algebra are Lean-proved, but exact T positivity and radical, quotient descent/self-adjointness, E_N-perp complement, nonvanishing phase, lattice-safe all-z factorization, and the same raw family remain open; H2b stays CONDITIONAL."
     },
     {
       "code": "H4C_EXACT_SIGN_AND_B_INSTANTIATION_MISSING",
@@ -538,7 +544,7 @@
     },
     "h2b_hermitian_determinant_real_zeros_validator": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b_hermitian_determinant_real_zeros.py",
-      "sha256": "74815fa84749c38b472697c3ee15145c09504b328e8860f5a70b2e67b9d67157"
+      "sha256": "43fe1323547e8c4dc23a565efbf4b161f74eff08d14246a83e2bfa5604bc81e0"
     },
     "h2b_hermitian_determinant_real_zeros_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
@@ -639,6 +645,18 @@
     "h4a3b_temple_residual_gap_envelope_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean",
       "sha256": "f21061cbc2009d08cebb44386881af87071861f2eb8f81aa77e870a3a5ccd4c7"
+    },
+    "h2b2_rank_one_correction_weighted_symmetry_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_CERTIFICATE.json",
+      "sha256": "8d1ebb897c90d22f18da6fa5ee062650c539da1f0e39895abacc2bec112258dd"
+    },
+    "h2b2_rank_one_correction_weighted_symmetry_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_h2b2_rank_one_correction_weighted_symmetry.py",
+      "sha256": "cabfc66c0f825c62435ac17ba030397a6101600370ad09efc11e900b51d73897"
+    },
+    "h2b2_rank_one_correction_weighted_symmetry_lean": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
+      "sha256": "f31875b4dc48e10cb61380400f47cfb47e4af14711cd51a9ce5786e1ac661204"
     }
   },
   "stages": [

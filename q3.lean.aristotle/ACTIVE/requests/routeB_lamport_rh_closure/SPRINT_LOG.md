@@ -110,3 +110,7 @@ Single owner decision with maximum unblock power:
 `GUARD H4a3b1: ONE_ENVELOPE_RESIDUAL_GAP_BOUNDS_DO_NOT_FORCE_SAFE_ALPHA; a fixed Temple-compatible example satisfies etaSq<=envelope and envelope<=gap but violates alpha<=envelope.`
 
 `SKIPPED H4a3b2: H4A_EXACT_RESIDUAL_SQUARE_AND_GAP_ENVELOPE_MISSING; canonical alpha, same-parity eigenbasis, residual variance, half-gap locus, squared residual envelope, true-gap floor and one shared filter remain open.`
+
+`CLOSED H2b2a: H2B2_GENERIC_RANK_ONE_CORRECTION_WEIGHTED_SYMMETRY_LEAN; eta dot xi=1 makes D-|D xi><eta| kill xi, and the source commutator with T(D xi)=-beta proves T-weighted symmetry.`
+
+`SKIPPED H2b2b: H2B_EXACT_THEOREM510_FACTORIZATION_MISSING; exact T positivity and radical, quotient descent/self-adjointness, E_N complement, nonvanishing phase, lattice-safe all-z identity and same H1c3/D0.8/H2a family remain open, so H2b stays CONDITIONAL.`

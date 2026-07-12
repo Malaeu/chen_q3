@@ -97,12 +97,30 @@ def main() -> None:
     h2b2 = nodes["H2b2"]
     require(h2b2["proof_status"] == "OPEN", "H2B2_FALSE_PASS")
     require(not h2b2["eligibility"]["eligible"], "H2B2_FALSE_ELIGIBILITY")
-    require(
-        h2b2["dependencies"] == ["D0.3d", "D0.6", "D0.7", "D0.8", "H1c2", "H1c3", "H2a", "H2b1"],
-        "H2B2_DEPENDENCY_DRIFT",
-    )
+    if state["revision"] >= 34:
+        require(h2b2["kind"] == "AND", "H2B2_PARENT_NOT_AND")
+        require(h2b2["dependencies"] == ["H2b2.0"], "H2B2_PARENT_DEPENDENCY_DRIFT")
+        require(h2b2["ordered_children"] == ["H2b2a", "H2b2b"], "H2B2_CHILD_ORDER_DRIFT")
+        require(h2b2["assembly_theorem_id"] == "H2b2c", "H2B2_ASSEMBLY_ADDRESS_DRIFT")
+        exact_h2b2 = nodes["H2b2b"]
+        require(exact_h2b2["proof_status"] == "OPEN", "H2B2B_FALSE_PASS")
+        require(not exact_h2b2["eligibility"]["eligible"], "H2B2B_FALSE_ELIGIBILITY")
+        require(
+            exact_h2b2["dependencies"] == [
+                "D0.3d", "D0.6", "D0.7", "D0.8", "H1c2", "H1c3", "H2a", "H2b1", "H2b2a"
+            ],
+            "H2B2B_DEPENDENCY_DRIFT",
+        )
+    else:
+        exact_h2b2 = h2b2
+        require(
+            exact_h2b2["dependencies"] == [
+                "D0.3d", "D0.6", "D0.7", "D0.8", "H1c2", "H1c3", "H2a", "H2b1"
+            ],
+            "H2B2_DEPENDENCY_DRIFT",
+        )
     for code in cert["exact_instantiation_guard"]["open_codes"]:
-        require(code in h2b2["failure_codes"], f"H2B2_GUARD_MISSING:{code}")
+        require(code in exact_h2b2["failure_codes"], f"H2B2_GUARD_MISSING:{code}")
 
     h2b3 = nodes["H2b3"]
     require(h2b3["proof_status"] == "OPEN", "H2B3_FALSE_PASS")
