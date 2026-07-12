@@ -1128,6 +1128,15 @@ prove positivity of the actual Weil form, identify its radical with
 supply the removable-factor/complement/phase/all-z crosswalks.  H2b remains
 CONDITIONAL; H2, L0 and RH remain OPEN.
 
+Revision 41 records the three-sweep generic-frontier exhaustion audit.  Every
+remaining mathematical leaf now requires an exact source, object, family,
+rate, filter, ordering, positivity/radical proof, or owner definition.  The
+last proposed source-free candidate, a block-triangular characteristic-
+polynomial wrapper, was rejected as assembly-only because the exact Route B
+invariant decomposition and complement identification are precisely what is
+missing.  No new node was minted, no parent closed, and Route B remains
+`CHALLENGER / NOT_RH`.
+
 The unique active canonical leaf is now `D0.7e.5a`. Owner ratification did not
 supply an independent consumer or choose the historical WPrime `b`
 orientation, so the mathematical stop remains

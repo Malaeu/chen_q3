@@ -267,6 +267,12 @@ Current fail-closed address:
   radical=`span{xi}`, source quotient transport, removable factor, complement,
   phase, all-z and same-family crosswalk remain OPEN in `H2b2b2b2b` with stop
   `H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING`;
+- rev41 certifies `GENERIC_FRONTIER_EXHAUSTED`: three independent sweeps found
+  no further nontrivial source-free theorem that retires a live stop-code; a
+  block-charpoly wrapper was classified
+  `ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION`, all remaining leaves require
+  exact source/object/family/rate/filter/owner input, and the canonical active
+  stop remains `D0_7E_WPRIME_CONSUMER_MISSING`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

@@ -138,3 +138,5 @@ Single owner decision with maximum unblock power:
 `CLOSED H2b2b2b2a: H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN; a symmetric PSD form descends to a positive-definite quotient form, and a form-self-adjoint endomorphism preserves the radical, descends, and remains self-adjoint.`
 
 `SKIPPED H2b2b2b2b: H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING; exact Weil positivity, radical=span{xi}, source quotient-object transport, continuous removable factor, complement determinant, nonvanishing phase, all-z identity and the same Route B family remain open.`
+
+`AUDIT REV41: GENERIC_FRONTIER_EXHAUSTED; three independent sweeps found only exact source/owner/crosswalk walls. GENERIC_KILLED_LINE_CHARPOLY_FACTOR was rejected as ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION and no new node was registered.`

@@ -47577,3 +47577,19 @@ Final result:
   `H2b2b2b2b`.
 - The count is 184 nodes: 94 PROVED, 82 OPEN, 7 BLOCKED, and 1 CONDITIONAL;
   D0.7e.5a remains ACTIVE, Bus 010 is absent, and Route B remains `NOT_RH`.
+
+## 2026-07-12 — Route B generic-frontier exhaustion audit
+
+- Three independent rev40 sweeps of D0/H1/H2/H3/H4/L0/L1 found no remaining
+  nontrivial source-free theorem that retires a live mathematical stop-code.
+- The sole residual candidate, the block-triangular identity
+  `charpoly(fromBlocks 0 B 0 Q)=X*charpoly(Q)`, is already a direct Mathlib
+  consequence; without the exact Route B invariant decomposition and
+  complement identification it is assembly-only.
+- The candidate was therefore classified
+  `ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION`; no node or false progress was
+  registered.
+- STATE revision 41 keeps the count at 184 nodes: 94 PROVED, 82 OPEN,
+  7 BLOCKED, and 1 CONDITIONAL. There are no eligible worker leaves.
+- The active leaf is still D0.7e.5a under
+  `D0_7E_WPRIME_CONSUMER_MISSING`; Bus 010 is absent and Route B is `NOT_RH`.

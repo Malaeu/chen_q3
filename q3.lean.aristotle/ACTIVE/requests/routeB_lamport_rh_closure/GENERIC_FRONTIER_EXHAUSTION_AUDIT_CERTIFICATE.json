@@ -1,0 +1,89 @@
+{
+  "schema": "route_b_generic_frontier_exhaustion_audit_certificate.v1",
+  "created_at": "2026-07-12T22:24:00+02:00",
+  "revision_target": 41,
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B2B2_QUOTIENT_RADICAL_METRIC_CERTIFICATE.json",
+      "sha256": "9eb1b6b49b22ac665ce3aeb738d106ba5b42eaf5c870462fef2109691340da97",
+      "scope": "LATEST_GENERIC_H2_QUOTIENT_METRIC_CORE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_CERTIFICATE.json",
+      "sha256": "067dac46dc8734c8273bdc1046bca727d168522513a13d0bca4fada8fef816ff",
+      "scope": "LATEST_GENERIC_H2_SPECTRAL_POINT_CORE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/CODEX_NOSTOP_SPRINT_2026-07-12.md",
+      "sha256": "4e251abcdd771c64d386afbc6397756e7426f38d6f83451beeb02c00d30d7ae6",
+      "scope": "OWNER_NOSTOP_AUTHORITY"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md",
+      "sha256": "d3ef3cbfe4e1ab4099bb698e46c6728b9f188a6f3bf7d7ded5eaf97931846097",
+      "scope": "OWNER_RATIFICATION_ACTIVATION"
+    }
+  ],
+  "artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GENERIC_FRONTIER_EXHAUSTION_AUDIT_2026-07-12.md",
+    "sha256": "374adf99d2b88d66ca05568fdfa24754e5b224024a5467821cfa8b7794552b07"
+  },
+  "verdict": "GENERIC_FRONTIER_EXHAUSTED",
+  "audited_tiers": [
+    "D0",
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "L0",
+    "L1"
+  ],
+  "rejected_assembly_only_candidate": {
+    "name": "GENERIC_KILLED_LINE_CHARPOLY_FACTOR",
+    "classification": "ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION",
+    "retired_live_stop_codes": []
+  },
+  "exact_open_leaf_addresses": [
+    "D0.7e.5a",
+    "D0.7e.5c",
+    "D0.8",
+    "H1c3",
+    "H2a2b",
+    "H2b2b2b2b",
+    "H3a2b",
+    "H3b2b",
+    "H3c2b",
+    "H3e2",
+    "H4a1b",
+    "H4a2b",
+    "H4a3b2",
+    "H4b2",
+    "H4c2",
+    "H4d2b",
+    "L0c2",
+    "L1"
+  ],
+  "expected_node_counts": {
+    "total": 184,
+    "PROVED": 94,
+    "OPEN": 82,
+    "BLOCKED": 7,
+    "CONDITIONAL": 1
+  },
+  "scheduler_firewall": {
+    "active_leaf": "D0.7e.5a",
+    "active_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "eligible_worker_leaves": [],
+    "bus_010_created": false
+  },
+  "single_owner_input": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
+  "route_status": "CHALLENGER_NOT_RH",
+  "rh_status": "NOT_RH",
+  "explicit_nonclaims": [
+    "NO_EXACT_SOURCE_OR_OWNER_INPUT_INVENTED",
+    "NO_ASSEMBLY_ONLY_NODE_REGISTERED",
+    "NO_PARENT_CLOSURE",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

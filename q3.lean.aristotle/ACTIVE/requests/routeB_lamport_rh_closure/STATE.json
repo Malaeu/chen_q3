@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 40,
-  "updated_at": "2026-07-12T22:02:00+02:00",
+  "revision": 41,
+  "updated_at": "2026-07-12T22:24:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -180,7 +180,7 @@
       }
     },
     "sprint_log": "SPRINT_LOG.md",
-    "sprint_log_sha256": "6fdd99c55ad7e62a9eb7f1a1ead61ac16555fb8eaaf200b5bd879bc6add624e4",
+    "sprint_log_sha256": "ef182707224650127700bb1289864abd56d0f17fd23592b13e693dd1e3c2264f",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
@@ -812,6 +812,23 @@
     "does_not_change_active_leaf": true,
     "rh_status": "NOT_RH"
   },
+  "generic_frontier_exhaustion_audit": {
+    "name": "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41",
+    "status": "GENERIC_FRONTIER_EXHAUSTED_EXACT_SOURCE_OWNER_INPUTS_ONLY_NOT_RH",
+    "certificate": "GENERIC_FRONTIER_EXHAUSTION_AUDIT_CERTIFICATE.json",
+    "certificate_sha256": "9a869a9e746d9cb8fc3a344938ef0c08cb445dcefd5f8386e30c5a51ddb9bf27",
+    "validator": "validate_generic_frontier_exhaustion_audit.py",
+    "validator_sha256": "8277a2e6e4a804637a18601322d07106caf676419da21618ce637446ac366f25",
+    "artifact": "GENERIC_FRONTIER_EXHAUSTION_AUDIT_2026-07-12.md",
+    "artifact_sha256": "374adf99d2b88d66ca05568fdfa24754e5b224024a5467821cfa8b7794552b07",
+    "verdict": "GENERIC_FRONTIER_EXHAUSTED",
+    "rejected_assembly_only_candidate": "GENERIC_KILLED_LINE_CHARPOLY_FACTOR",
+    "next_worker_leaf": null,
+    "active_leaf_unchanged": "D0.7e.5a",
+    "remaining_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "single_owner_input": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION": {
       "name": "ExactModifiedHilbertQuotientAndTheorem510Factorization",
@@ -967,7 +984,8 @@
       "H2B2B_RANK_ONE_CORRECTION_DETERMINANT_REV37",
       "H2B2B2_RANK_ONE_QUOTIENT_DESCENT_REV38",
       "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_REV39",
-      "H2B2B2B2_QUOTIENT_RADICAL_METRIC_REV40"
+      "H2B2B2B2_QUOTIENT_RADICAL_METRIC_REV40",
+      "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -3461,6 +3479,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN;QUOTIENT_FORM_POSITIVE_DEFINITE;WEIGHTED_SELFADJOINT_END_PRESERVES_RADICAL_AND_DESCENDS;H2B2B2B2_DECOMPOSITION_EQUIVALENCE_LOCKED",
       "honesty": "GENERIC_QUOTIENT_MECHANISM_ONLY_NO_EXACT_WEIL_POSITIVITY_RADICAL_EQUALS_SPAN_XI_SOURCE_QUOTIENT_TRANSPORT_REMOVABLE_FACTOR_COMPLEMENT_PHASE_ALL_Z_OR_SAME_FAMILY_CROSSWALK_H2B_CONDITIONAL_H2_OPEN_D0_7E_5A_ACTIVE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T22:24:00+02:00",
+      "event": "GENERIC_FRONTIER_EXHAUSTION_AUDIT_COMPLETED",
+      "progress_class": "CONTROL_PLANE_AND_BLOCKER_LOCALIZATION_PROGRESS",
+      "result": "GENERIC_FRONTIER_EXHAUSTED;EXACT_SOURCE_OWNER_INPUTS_ONLY;ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION",
+      "honesty": "NO_NEW_ASSEMBLY_WRAPPER_NODE_NO_EXACT_INPUT_INVENTED_D0_7E_5A_ACTIVE_NO_ELIGIBLE_WORKER_NO_BUS_010_NOT_RH"
     }
   ]
 }

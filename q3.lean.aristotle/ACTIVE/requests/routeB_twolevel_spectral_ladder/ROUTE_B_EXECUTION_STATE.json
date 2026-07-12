@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T22:02:00+02:00",
+  "updated_at": "2026-07-12T22:24:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -128,6 +128,8 @@
       ,"H2B2B2_GENERIC_QUOTIENT_RADICAL_METRIC_SELFADJOINT_LEAN"
       ,"H2B2B2_QUOTIENT_FORM_POSITIVE_DEFINITE_LEAN"
       ,"H2B2B2_WEIGHTED_SELFADJOINT_END_DESCENT_LEAN"
+      ,"GENERIC_FRONTIER_EXHAUSTED_REV41"
+      ,"ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION"
     ],
     "kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
@@ -759,6 +761,18 @@
     "h2b2b2b2_quotient_radical_metric_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/QuotientByRadicalSelfAdjoint.lean",
       "sha256": "f89970cc1023f10542e46cfc0107d0589ac21aefc91c1cd9f2152f2245238400"
+    },
+    "generic_frontier_exhaustion_audit_artifact": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GENERIC_FRONTIER_EXHAUSTION_AUDIT_2026-07-12.md",
+      "sha256": "374adf99d2b88d66ca05568fdfa24754e5b224024a5467821cfa8b7794552b07"
+    },
+    "generic_frontier_exhaustion_audit_certificate": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GENERIC_FRONTIER_EXHAUSTION_AUDIT_CERTIFICATE.json",
+      "sha256": "9a869a9e746d9cb8fc3a344938ef0c08cb445dcefd5f8386e30c5a51ddb9bf27"
+    },
+    "generic_frontier_exhaustion_audit_validator": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/validate_generic_frontier_exhaustion_audit.py",
+      "sha256": "8277a2e6e4a804637a18601322d07106caf676419da21618ce637446ac366f25"
     }
   },
   "stages": [
