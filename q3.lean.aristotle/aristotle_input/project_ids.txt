@@ -76,3 +76,5 @@ rho_oneK_tcritical_le_cstar_quarter.md: b644c90d-9934-4c95-a857-221e38620134  20
 2026-06-07 step33a_omega_direct_anchor_v21_first_row.md: 3cd86d8e-6e0b-4a7f-a027-adecacb71b6f
 2026-06-08 step33_shift16_digamma_m6_ball_request.md: 5b903a21-fba1-4f42-949f-470b62c020b1
 2026-06-08 step33_shift16_digamma_m6_ball_request.md status: 5b903a21-fba1-4f42-949f-470b62c020b1 COMPLETE_WITH_ERRORS output downloaded
+2026-07-22 browser-history RHRoute skeleton + H2a penalty/bridge + ACL: 16535289-f016-4f62-bfbd-be83d826b4da
+2026-07-23 routeb_entire_square_root_rigidity_2026_07_22.md sha256=287af18afae811502764cafa2728f2e5acf0daf3aebc98aaa336b63f0d5d040d: 5a62a655-5d8d-4bb4-8a9f-1216c730b5aa COMPLETE SOFT_L2_ENTIRE_SQUARE_ROOT_RIGIDITY_LEAN
