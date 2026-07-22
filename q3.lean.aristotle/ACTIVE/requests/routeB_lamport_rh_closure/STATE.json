@@ -45,6 +45,7 @@
     ],
     "lowest_unanswered_nnn": null,
     "next_free_nnn": "010",
+    "void_marker": "BUS_010_VOID",
     "codex_may_create_next_goal": false,
     "latest_transaction": {
       "nnn": "009",
