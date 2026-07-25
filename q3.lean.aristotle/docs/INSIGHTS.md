@@ -47612,3 +47612,11 @@ Final result:
   `epsilon_plus_1 < epsilon_plus_2` for the selected Layer-B family.
 - Consumer: exact `PencilData` certificates in `ProjectApprox.PenaltyPilotFamily`,
   then `supply_H2a_Pstar_of_penaltyPilot`; Route B remains `NOT_RH`.
+- Final pilot result: all nine registered cells pass with
+  `min_eig_cert > 128*eps64*scale`; the `(12,2)` margin is
+  `3.10649500605e-7`, while the smallest grid margin is
+  `8.17043510339e-13` at `(12,4)`.
+- The `tau=0` plant is negative beyond the same guard in every row.  Verdict:
+  `PSD_ACHIEVABLE_ON_REGISTERED_SMALL_GRID`.
+- `cert.exact` is unchanged: `ExactSectorOrdering` remains open under
+  `H2A_EXACT_SECTOR_ORDERING_MISSING`.

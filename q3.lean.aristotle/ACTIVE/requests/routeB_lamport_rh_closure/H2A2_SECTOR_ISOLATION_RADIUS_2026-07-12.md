@@ -117,13 +117,18 @@ H2a SimpleEvenGround                                  OPEN / AND
 |-- H2a2 ExactSelectedFamilySectorOrdering            OPEN / AND
 |   |-- H2a2.0 H2a2DecompositionContract             PROVED
 |   |-- H2a2a GenericSectorIsolationRadius            PROVED / LEAN
-|   |-- H2a2b ExactSectorOrderingAndRadiusInstantiation OPEN / INELIGIBLE
+|   |-- H2a2b ExactSectorOrdering                      OPEN / INELIGIBLE
 |   `-- H2a2c H2a2Assembly                            OPEN / INELIGIBLE
 `-- H2a3 H2aAssembly                                  OPEN / INELIGIBLE
 ```
 
 The generic radius cannot discharge the exact family-selection or ordering
 dependencies of H2a2.
+
+The binary64 `cert.pilot` is registered separately in
+`H2A_CERT_SPLIT_PILOT_REPORT_2026-07-25.md`.  It does not discharge H2a2b.
+The exact consumer is the Layer-B `PenaltyPilotFamily`/`PencilData`
+certificate feeding `supply_H2a_Pstar_of_penaltyPilot`.
 
 ## 6. Mathlib source boundary
 

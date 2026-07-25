@@ -455,7 +455,7 @@ R0 RHClosure [AND]
 |   |   |-- H2a1 GenericSimpleEvenGroundSectorCriterion
 |   |   |-- H2a2 ExactSelectedFamilySectorOrdering [AND]
 |   |   |   |-- H2a2a GenericSectorIsolationRadius
-|   |   |   |-- H2a2b ExactSectorOrderingAndRadiusInstantiation
+|   |   |   |-- H2a2b ExactSectorOrdering
 |   |   |   `-- H2a2c H2a2Assembly
 |   |   `-- H2a3 H2aAssembly
 |   |-- H2b SameVectorRealZeros [AND / CONDITIONAL]
@@ -629,7 +629,7 @@ proof node.
 | `H2a2` | AND parent: generic half-minimum sector-isolation radius plus exact selected-family strict sector ordering/instantiation | `OPEN / GENERIC_CORE_PROVED` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
 | `H2a2.0` | H2a2 decomposition contract | `PROVED` | `H2A2_DECOMPOSITION_EQUIVALENCE_LOCKED` |
 | `H2a2a` | Two strict sector gaps give a positive isolation radius below every level above the next-even or bottom-odd threshold | `PROVED / GENERIC_LEAN` | `GENERIC_SECTOR_ISOLATION_RADIUS_LEAN` |
-| `H2a2b` | Select the exact H1c3/D0.8 family, prove both strict sector gaps and instantiate the radius with ordering/multiplicity crosswalks | `OPEN / INELIGIBLE` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
+| `H2a2b` | `ExactSectorOrdering`: on the exact H1c3/D0.8 family prove `epsilon_plus_1 < epsilon_minus_1` and `epsilon_plus_1 < epsilon_plus_2`; consumer is the exact Layer-B `PenaltyPilotFamily`/`PencilData` certificate | `OPEN / INELIGIBLE / CERT_PILOT_DIAGNOSTIC_ONLY` | blocker: `H2A_EXACT_SECTOR_ORDERING_MISSING` |
 | `H2a2c` | Exact H2a2 assembly | `OPEN / BLOCKED_BY_H2a2b` | `H2A2_EXACT_SECTOR_ISOLATION_ASSEMBLY` |
 | `H2a3` | Exact H2a assembly | `OPEN / BLOCKED_BY_H2a2` | `SIMPLE_EVEN_GROUND_PROVED` |
 | `H2b` | AND parent: generic Hermitian determinant transfer plus exact same-family Theorem-5.10 factorization | `CONDITIONAL / GENERIC_CORE_PROVED / EXACT_FACTOR_OPEN` | blocker: `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` |
