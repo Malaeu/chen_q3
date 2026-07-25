@@ -47593,3 +47593,22 @@ Final result:
   7 BLOCKED, and 1 CONDITIONAL. There are no eligible worker leaves.
 - The active leaf is still D0.7e.5a under
   `D0_7E_WPRIME_CONSUMER_MISSING`; Bus 010 is absent and Route B is `NOT_RH`.
+
+## 2026-07-25 — H2a certificate split (in progress)
+
+- `H2a.cert` splits into `cert.pilot` (binary64 diagnostic) and
+  `cert.exact` (the exact Layer-B proof input); the former never promotes the
+  latter.
+- The pilot uses the canonical full `Mfin_(m,N)=WeilMat_(m,N)`, not the
+  historical Schur block, with `G=I` and a parity-sector eigensolve.
+- For an even simple numerical ground, set
+  `beta=(lambda1+lambda2)/2` and `tau=lambda2-lambda1`; then the ideal
+  certificate margin is `(lambda2-lambda1)/2`.
+- The registered small grid is `m in {12,13,14}`, `N in {2,3,4}`; larger `N`
+  is excluded from this binary64 pilot because the low gap reaches the
+  roundoff floor.
+- The exact queue leaf is named `ExactSectorOrdering` and must prove
+  `epsilon_plus_1 < epsilon_minus_1` and
+  `epsilon_plus_1 < epsilon_plus_2` for the selected Layer-B family.
+- Consumer: exact `PencilData` certificates in `ProjectApprox.PenaltyPilotFamily`,
+  then `supply_H2a_Pstar_of_penaltyPilot`; Route B remains `NOT_RH`.
