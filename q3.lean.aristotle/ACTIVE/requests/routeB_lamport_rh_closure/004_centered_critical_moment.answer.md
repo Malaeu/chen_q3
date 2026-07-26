@@ -166,3 +166,48 @@ Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean
 lake env lean Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean: exit 0
 lake build Q3.Proofs.RouteB.D0CenteredCriticalMoment: exit 0
 ```
+
+## Numerator measurements
+
+Binary64/complex128; `N=120`; every integer `m=13,...,257`.
+The complete 245-row `R` table is materialized in:
+
+```text
+CENTERED_MOMENT_RATIO_PROBE.md
+CENTERED_MOMENT_RATIO_PROBE.csv
+CENTERED_MOMENT_RATIO_PROBE.json
+```
+
+| m | R(0.10) | R(0.25) | R(0.40) | R(0.45) |
+|---:|---:|---:|---:|---:|
+| 13 | 1.0169705584 | 1.04326528221 | 1.0706111391 | 1.07996902819 |
+| 53 | 1.01741647441 | 1.04442724529 | 1.07254975294 | 1.08218081711 |
+| 257 | 1.01752781631 | 1.04471758393 | 1.07303451553 | 1.08273403228 |
+
+Fit on all 245 rows:
+
+```text
+log R = intercept + beta log m
+```
+
+| σ | beta | SE(beta) | R² | R(257)/R(13) | min R | max R |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.10 | 0.00011958904057 | 3.39369398542e-06 | 0.836337103787 | 1.00054795874 | 1.0169705584 | 1.01752781631 |
+| 0.25 | 0.000303712832102 | 8.61707249224e-06 | 0.836390481924 | 1.00139207327 | 1.04326528221 | 1.04471758393 |
+| 0.40 | 0.000493678723399 | 1.40038204395e-05 | 0.836450013579 | 1.00226354494 | 1.0706111391 | 1.07303451553 |
+| 0.45 | 0.000558329235082 | 1.58364879621e-05 | 0.836471190967 | 1.00256026239 | 1.07996902819 | 1.08273403228 |
+
+`N` sensitivity at `m=53`; each cell is `R / (R at N=120)`:
+
+| N | σ=0.10 | σ=0.25 | σ=0.40 | σ=0.45 |
+|---:|---:|---:|---:|---:|
+| 90 | 1.01741647449 / 1.00000000008 | 1.0444272454 / 1.00000000011 | 1.07254975309 / 1.00000000014 | 1.08218081728 / 1.00000000015 |
+| 150 | 1.01741647443 / 1.00000000002 | 1.04442724533 / 1.00000000004 | 1.07254975301 / 1.00000000007 | 1.0821808172 / 1.00000000008 |
+
+| binary64 check | value |
+|---|---:|
+| max relative delta, FFT 32768 vs 16384 | 1.07256235866e-08 |
+| max coefficient norm error | 2.22044604925e-16 |
+| direct midpoint check at `σ=0.45`, `m=13` | 7.94103006009e-10 relative |
+| direct midpoint check at `σ=0.45`, `m=53` | 1.85589532567e-09 relative |
+| direct midpoint check at `σ=0.45`, `m=257` | 3.60311407067e-09 relative |
