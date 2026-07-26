@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 41,
-  "updated_at": "2026-07-12T22:24:00+02:00",
+  "revision": 46,
+  "updated_at": "2026-07-27T00:30:50+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -183,6 +183,221 @@
     "sprint_log": "SPRINT_LOG.md",
     "sprint_log_sha256": "ef182707224650127700bb1289864abd56d0f17fd23592b13e693dd1e3c2264f",
     "single_owner_decision": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
+    "rh_status": "NOT_RH"
+  },
+  "soft_0_roof_and_s2_typecheck": {
+    "name": "SOFT_0_RoofAndS2Typecheck",
+    "status": "ABSTRACT_CLOSURE_PROVED_FINITE_ROOF_BODY_MISSING_S2_OPEN_NOT_RH",
+    "output_code": "SOFT_SUBSEQUENCE_CLOSURE_TYPED",
+    "artifact": "SOFT_0_ROOF_AND_S2_TYPECHECK_2026-07-12.md",
+    "artifact_sha256": "078309f42aa547f17264b93888e1b996edd2f25f727c5984d8d58ad496f18417",
+    "certificate": "SOFT_0_ROOF_AND_S2_TYPECHECK_CERTIFICATE.json",
+    "certificate_sha256": "ccf0cc8b323013253443dc1894484a4e5b7d201cbfcb72ae2a0874747c2f12fa",
+    "validator": "validate_soft_0_roof_and_s2_typecheck.py",
+    "validator_sha256": "22ccda476618a2262b4f2348298ba313107f8d24ae32d1d38e6ce56a26ac8365",
+    "abstract_theorem": {
+      "name": "SoftSubsequenceZeroEscape",
+      "status": "PROVED_PAPER",
+      "method": "MONTEL_IDENTITY_HURWITZ_ON_TWO_CONNECTED_HALF_STRIPS_ZERO_DIVISOR_TRANSFER",
+      "does_not_supply_project_hypotheses": true
+    },
+    "finite_roof": {
+      "h4_dependency_cycle_found": false,
+      "pass_code_issued": false,
+      "current_code": "SOFT_ROOF_BODY_MISSING",
+      "actual_dependencies": "D0+H1+H2a+H2b",
+      "forbidden_h3_h4_s1_s2_import": "NONE"
+    },
+    "gamma_soft": {
+      "code": "GAMMA_SOURCE_LOCKED_ZERO_FREE",
+      "status": "ANALYTIC_UNIT_LOCKED_OBJECT_ROLE_OPEN",
+      "source_lock": "SOFT_GAMMA_COMPLETION_SOURCE_LOCK.json",
+      "source_lock_sha256": "96b603cf40fa11ff8535dcfb1b73ca67ee84e3f350c28f4d1001a1e0584bd75b",
+      "lean_artifact": "Q3/Proofs/RouteB/GammaSoftZeroFree.lean",
+      "lean_artifact_sha256": "615548873f1c12dfd5f5e047c74135cd1f0fc454614c3fdc9d685472f3934c4b",
+      "s2_identification_proved": false
+    },
+    "probe_recode": {
+      "old_code_retired": "SOFT_ROUTE_ALIVE",
+      "new_code": "OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS",
+      "completion_class_invariant": false,
+      "central_anchor_next": true
+    },
+    "mint_r3": {
+      "code": "MINT_MENU_FALSIFIED",
+      "variant_A": "FALSIFIED_EXACT_EQUALITY_AROUND_1E_MINUS_102",
+      "variant_B": "FALSIFIED_SLOT_VACUITY",
+      "mint_activated": false,
+      "d0_7e_5a_status": "BLOCKED_NON_CRITICAL_PENDING_SOFT_0"
+    },
+    "remaining_wall": "UNCONDITIONAL_CLUSTER_POINT_DIVISOR_IDENTIFICATION_ON_AN_ACCUMULATING_SET",
+    "bus_010_created": false,
+    "rh_status": "NOT_RH"
+  },
+  "soft_1_zero_free_gauge_and_distributional_identification": {
+    "name": "SOFT_1_ZeroFreeGaugeAndDistributionalIdentification",
+    "status": "STOPPED_AT_G4_LINEAR_PRIME_CROSSWALK_MISSING_NOT_RH",
+    "output_code": "SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC",
+    "artifact": "SOFT_1_ZERO_FREE_GAUGE_AND_DISTRIBUTIONAL_IDENTIFICATION_2026-07-13.md",
+    "artifact_sha256": "1f611065b80a0d51a90c19770903f0ae0fcaf29661006bcf214e86fc9fc1d20b",
+    "certificate": "SOFT_1_ZERO_FREE_GAUGE_AND_DISTRIBUTIONAL_IDENTIFICATION_CERTIFICATE.json",
+    "certificate_sha256": "0732eadd0521e90004b556fc1e8c76e6dd90d3a3164c60af1d681a49067c31b4",
+    "validator": "validate_soft_1_gate.py",
+    "validator_sha256": "35c27bc6778453637944c898749f661c21b5d5027f1e74422a577834688999b0",
+    "gauge_corollary": {
+      "name": "GaugeSoftSubsequenceZeroEscape",
+      "status": "TYPED_IMPLICATION",
+      "code": "SOFT_GAUGE_ROOF_TYPED",
+      "physical_roof_or_normality_proved": false
+    },
+    "orientation": {
+      "status": "LOCKED",
+      "formula": "H=gammaC(1/2)*(Fhat/bDet)/gamma=gammaC(1/2)*B/bDet",
+      "bare_transform": "Fhat/gamma=B"
+    },
+    "anchor": {
+      "center": "LOCKED_ON_BDETNONZERO",
+      "quarter_fallback": "SOURCE_LOCKED_CONDITIONAL_ON_REAL_ZERO_ROOF",
+      "quarter_source_lock": "SOFT_ZETA_ONE_QUARTER_SOURCE_LOCK.json",
+      "quarter_source_lock_sha256": "954f70aa21e3de86226d2c6df36db098f50d0158ad6431dcf498c45ccda7fc0d",
+      "uniform_control": "NONREAL_ANCHOR_UNIFORM_CONTROL_OPEN"
+    },
+    "distributional_pairing": {
+      "exact_transform_side_formula": "P_I(Fhat,phi)=sum_abs_n_le_N c_n*A(m,phi,n)",
+      "prime_gamma_linear_crosswalk": "MISSING",
+      "available_prime_gamma_type": "QW(f,g)=Psi(f_star_convolution_g)",
+      "falsifier": "GLOBAL_PHASE_SEPARATES_LINEAR_PAIRING_FROM_DIAGONAL_WEIL_DATA"
+    },
+    "joint_limit": {
+      "status": "POSED_OPEN",
+      "regime": "PRODUCT_TAIL_ON_FIXED_COFINAL_ADMISSIBLE_CARRIER",
+      "selector_invented": false
+    },
+    "rh_import_audit": "PASS_NO_BFM_NO_CRITICAL_LINE_ONLY_SUM_NO_ASSUMED_S2",
+    "backup": "MOVING_GRID_TO_INTERVAL_BRIDGE_REGISTERED_NOT_EXECUTED_MESH_MISSING",
+    "d0_7e_5a_status": "BLOCKED_NON_CRITICAL_PENDING_SOFT_1",
+    "mint_activated": false,
+    "bus_010_created": false,
+    "rh_status": "NOT_RH"
+  },
+  "soft_2_linearity_crosswalk_fork": {
+    "name": "SOFT_2_LinearityCrosswalkFork",
+    "status": "PLANTS_LIVE_PHASE_PROBE_COMPLETE_C2_KILLED_AS_STATED_NOT_RH",
+    "output_code": "C2_PHASE_FREE",
+    "artifact": "SOFT_2_LINEARITY_CROSSWALK_FORK_REPORT_2026-07-13.md",
+    "artifact_sha256": "57d6b3f89077fba392153d770dddfe9f271d740032bae890c2f0cf457ca0fcae",
+    "certificate": "SOFT_2_LINEARITY_CROSSWALK_FORK_CERTIFICATE.json",
+    "certificate_sha256": "a5511103da852206a21327ceffe83662af4df7927426aab1659173b45a3762a8",
+    "validator": "validate_soft_2_linearity_crosswalk_fork.py",
+    "validator_sha256": "7b48c76614d14bb6216baa3c50d8cb8603914778676b75c91b5e8ea58d80f2fb",
+    "plants": {
+      "status": "ALL_PLANTS_LIVE",
+      "A": "SOFT_JOINT_LIMIT_QUANTIFIER_MISSING",
+      "B": "SOFT_CRITICAL_LINE_ZERO_SUM_SMUGGLED",
+      "C": "D06_GRID_ALIASING_FATAL",
+      "positive_controls": "PASS",
+      "certificate": "SOFT_2_PLANTED_FALSIFIERS.json",
+      "certificate_sha256": "d25928106855d9ef192a35059d16c370c90b0fb2ebf72dd04597569b1db18681"
+    },
+    "phase_probe": {
+      "status": "COMPLETED_FLOAT64_DIAGNOSTIC_NOT_THEOREM",
+      "result": "PHASE_STRUCTURE_PROBE.json",
+      "result_sha256": "ac95deb55c3df420de336325cda258ee848a494d34e86562eb4be15bb054760e",
+      "cells": "13_120_14_120_53_120_101_120_ALL_C2_PHASE_FREE",
+      "sd_range": "0.8942447891762959_TO_0.8999096704589257",
+      "systematic_drift": "ALL_FOUR_R2_GT_0_999",
+      "dps_escalation": false
+    },
+    "symmetry": {
+      "status": "KTRIAL_REAL_CONJUGATION_SYMMETRY_ONLY",
+      "artifact": "SOFT_2_KTRIAL_SYMMETRY_AUDIT_2026-07-13.md",
+      "artifact_sha256": "d8a139a46e29f8d9f58941aad922de67a72c5df795363924be91c63081e7380a",
+      "inversion_symmetry_locked": false,
+      "pointwise_reality_locked": false
+    },
+    "fork": {
+      "C1": "REMAINS",
+      "C2": "KILLED_AS_STATED",
+      "C3": "REMAINS",
+      "next_actor": "PROSHKA_ROUND_4"
+    },
+    "d0_7e_5a_status": "BLOCKED_NON_CRITICAL_PENDING_SOFT_2",
+    "mint_activated": false,
+    "bus_010_created": false,
+    "rh_status": "NOT_RH"
+  },
+  "soft_l2_round13_integration": {
+    "name": "SOFT_L2_Round13Integration",
+    "status": "SOFT_L2_ROUND13_INTEGRATION_LOCKED_NOT_RH",
+    "artifact": "SOFT_L2_ROUND13_INTEGRATION_2026-07-14.md",
+    "artifact_sha256": "cf0b1966c434d56706b750c2246abad7a8606f8ff9286d7db2957ff2af8128cc",
+    "certificate": "SOFT_L2_ROUND13_INTEGRATION_CERTIFICATE.json",
+    "certificate_sha256": "866a4a7dd5148e88f911dac1ce01f7fd3748c9fa9b53deb8fda35eb83db4797e",
+    "validator": "validate_soft_l2_round13_integration.py",
+    "validator_sha256": "605fd6810ae9594643a9e83664db9a800801bf9abbcf3912fab073f70bcbf634",
+    "quantifier_guard": {
+      "name": "SOFT_SAME_COFINAL_SUBSEQUENCE",
+      "carrier": "ONE_H2A_COFINAL_S1_PARENT_DIAGONAL_WITH_S2_NESTED_EXTRACTION",
+      "failure_code": "SOFT_COFINAL_SUBSEQUENCE_MISMATCH"
+    },
+    "h2a_derived_corollary": {
+      "status": "LEAN_PROVED_GENERIC",
+      "new_node_created": false,
+      "result": "CANONICAL_PHASE_INDEPENDENT_AUTOCORRELATION"
+    },
+    "l2_2": {
+      "name": "GlobalPositiveDefiniteUniqueness",
+      "status": "TYPED_OPEN_NOT_PROVED",
+      "input_count": 5,
+      "output": "A_EQ_C_MUL_A_PHI_IN_DPRIME_R",
+      "tail_input": false,
+      "edge_mass_input": false
+    },
+    "optional_source_leaf": {
+      "name": "SourceCompactnessToFullAutocorrelation",
+      "status": "OPTIONAL_INACTIVE",
+      "inputs": ["SPATIAL_TIGHTNESS", "UNIFORM_TRANSLATION_CONTINUITY"],
+      "feeds_l2_2": false,
+      "plants": "SOFT_L2_SOURCE_COMPACTNESS_PLANTS_ALL_LIVE"
+    },
+    "tail_check": {
+      "verdict": "TAIL_DOMINATED",
+      "role": "OPTIONAL_SOURCE_COMPACTNESS_SPATIAL_TIGHTNESS_DIAGNOSTIC",
+      "supplies_uniform_translation_continuity": false,
+      "l2_2_input": false
+    },
+    "map_recode": "FALSE_WALL_REMOVED_ROUND13",
+    "d0_7e_5a_status": "UNCHANGED_BLOCKED_CONSUMER_SOURCE_MISSING",
+    "mint_activated": false,
+    "bus_010_created": false,
+    "rh_status": "NOT_RH"
+  },
+  "centered_pstar_strip_refactor": {
+    "status": "CENTERED_PSTAR_STRIP_ROOF_LOCKED_S1_OPEN_NOT_RH",
+    "owner_sign": "PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md",
+    "goal_004": {
+      "verdict": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
+      "lean_artifact": "Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean",
+      "critical_moment_ratio_proved": false,
+      "weighted_projection_lemma_missing": true,
+      "plants": ["CONSTANT_MODE_LIVE", "ENDPOINT_DIRICHLET_WEIGHTED_PROJECTION_LIVE"]
+    },
+    "goal_005": {
+      "verdict": "CENTERED_PSTAR_STRIP_ROOF_LOCKED",
+      "canonical_family": "centeredPstarFamily",
+      "roof": "rh_of_canonical_strip_slots",
+      "convergence_domain": "centeredCriticalStrip",
+      "set_univ_cluster_claim_removed": true,
+      "build_exit": 0,
+      "axioms": ["propext", "Classical.choice", "Quot.sound"]
+    },
+    "open_inputs": [
+      "CENTERED_TRIAL_CRITICAL_MOMENT_RATIO",
+      "ANCHOR_FLOOR",
+      "H2A_EXACT_SECTOR_ORDERING",
+      "PROJECT_SLOT_SUPPLY"
+    ],
+    "bus_010_created": false,
     "rh_status": "NOT_RH"
   },
   "post_sprint_frontier": {
@@ -986,7 +1201,8 @@
       "H2B2B2_RANK_ONE_QUOTIENT_DESCENT_REV38",
       "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_REV39",
       "H2B2B2B2_QUOTIENT_RADICAL_METRIC_REV40",
-      "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41"
+      "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41",
+      "SOFT_0_ROOF_AND_S2_TYPECHECK_REV42"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1470,6 +1686,9 @@
       "dependencies": ["D0.7e.5.0", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
       "ordered_children": [], "assembly_theorem_id": null,
       "proof_status": "BLOCKED", "activity": "ACTIVE",
+      "scheduler_marker": "NON_CRITICAL_PENDING_SOFT_2",
+      "mint_menu_status": "MINT_MENU_FALSIFIED",
+      "mint_activated": false,
       "eligibility": {"eligible": false, "reason": "INDEPENDENT_WPRIME_CONSUMER_SOURCE_NOT_FOUND"},
       "validation": "STOP:validate_d0_7e_5a.py;PARTIAL_IDENTITIES_LOCKED;SOURCE_REQUIRED",
       "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING", "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO", "D0_7E_BCAL_ZERO_OR_UNPROVED", "D0_7E_BCAL_BZEO_ALIAS_CONFLICT", "D0_7E_SOURCE_NORMALIZATION_CONFLICT", "D0_7E_SLOT_VACUITY_UNRESOLVED"]
@@ -3487,6 +3706,41 @@
       "progress_class": "CONTROL_PLANE_AND_BLOCKER_LOCALIZATION_PROGRESS",
       "result": "GENERIC_FRONTIER_EXHAUSTED;EXACT_SOURCE_OWNER_INPUTS_ONLY;ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION",
       "honesty": "NO_NEW_ASSEMBLY_WRAPPER_NODE_NO_EXACT_INPUT_INVENTED_D0_7E_5A_ACTIVE_NO_ELIGIBLE_WORKER_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-12T22:46:19+02:00",
+      "event": "SOFT_0_ROOF_AND_S2_TYPECHECK_COMPLETED",
+      "progress_class": "PROOF_REPRESENTATION_AND_FALSIFICATION_PROGRESS",
+      "result": "SOFT_SUBSEQUENCE_CLOSURE_TYPED;GAMMA_SOURCE_LOCKED_ZERO_FREE;OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS;MINT_MENU_FALSIFIED",
+      "honesty": "FINITE_ROOF_BODY_MISSING_NO_H4_CYCLE_S2_IDENTIFICATION_OPEN_D0_7E_5A_BLOCKED_NON_CRITICAL_PENDING_SOFT_0_NO_MINT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-13T00:49:00+02:00",
+      "event": "SOFT_1_ZERO_FREE_GAUGE_AND_DISTRIBUTIONAL_IDENTIFICATION_STOPPED",
+      "progress_class": "REPRESENTATION_AND_BLOCKER_LOCALIZATION_PROGRESS",
+      "result": "SOFT_GAUGE_ROOF_TYPED;GAUGE_ORIENTATION_LOCKED;ZETA_ONE_QUARTER_SOURCE_LOCKED;EXACT_LINEAR_TRANSFORM_PAIRING_TYPED;SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC",
+      "honesty": "LINEAR_TRACKER_PAIRING_TO_WEIL_EXPLICIT_FORMULA_CROSSWALK_MISSING_LOCAL_NORMALITY_FINITE_ROOF_AND_S2_OPEN_D0_7E_5A_BLOCKED_NON_CRITICAL_PENDING_SOFT_1_NO_MINT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-13T02:05:00+02:00",
+      "event": "SOFT_2_LINEARITY_CROSSWALK_FORK_EXECUTED",
+      "progress_class": "FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "PLANTS_A_B_C_ALL_LIVE;PHASE_STRUCTURE_PROBE_FLOAT64;C2_PHASE_FREE;KTRIAL_REAL_CONJUGATION_SYMMETRY_ONLY",
+      "honesty": "C2_KILLED_AS_STATED_C1_C3_REMAIN_INVERSION_SYMMETRY_NOT_SOURCE_LOCKED_NO_S2_NO_RH_D0_7E_5A_BLOCKED_NON_CRITICAL_PENDING_SOFT_2_NO_MINT_NO_BUS_010"
+    },
+    {
+      "at": "2026-07-14T00:28:48+02:00",
+      "event": "SOFT_L2_ROUND13_INTEGRATION_COMPLETED",
+      "progress_class": "PROOF_REPRESENTATION_FALSIFICATION_AND_MAP_REPAIR_PROGRESS",
+      "result": "SOFT_L2_ROUND13_INTEGRATION_LOCKED;SOFT_SAME_COFINAL_SUBSEQUENCE;CANONICAL_PHASE_INDEPENDENT_AUTOCORRELATION_LEAN;GLOBAL_POSITIVE_DEFINITE_UNIQUENESS_TYPED_OPEN;SOFT_L2_SOURCE_COMPACTNESS_PLANTS_ALL_LIVE;FALSE_WALL_REMOVED_ROUND13",
+      "honesty": "L2_2_NOT_PROVED_OPTIONAL_SOURCE_LEAF_NOT_L2_2_INPUT_TAIL_DIAGNOSTIC_ONLY_D0_7E_5A_UNCHANGED_NO_MINT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-27T00:30:50+02:00",
+      "event": "CENTERED_PSTAR_AND_STRIP_LOCAL_ROOF_INTEGRATED",
+      "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "CENTERED_S1_WEIGHTED_PROJECTION_GAP;CENTERED_PSTAR_STRIP_ROOF_LOCKED;RH_OF_CANONICAL_STRIP_SLOTS_LEAN",
+      "honesty": "S1_CRITICAL_MOMENT_RATIO_OPEN_ANCHOR_FLOOR_OPEN_H2A_ORDERING_OPEN_PROJECT_SLOTS_OPEN_NO_BUS_010_NOT_RH"
     }
   ]
 }

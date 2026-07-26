@@ -50,12 +50,18 @@ silently inferred from `TrialNonzero`. -/
 def CentralIndex (D : CoefficientFamily) :=
   {i : PairIndex // bareTransform D i 0 ≠ 0}
 
-/-- The no-go-safe, phase-correct candidate for `Pstar.family`:
-`Xi(0) B_(m,N)(z) / B_(m,N)(0)`, with neither `gammaC` nor the varying
-centering phase. -/
+/-- Legacy uncentered candidate.  The 2026-07-27 S1 verdict kills this family:
+its factor `exp(i*z*L_m/2)` forces polynomial growth in `m` even inside the
+centered critical strip.  It is retained only as a no-go witness. -/
 def pstarFamily
     (D : CoefficientFamily) (i : CentralIndex D) (z : ℂ) : ℂ :=
   (centeredXi 0 / bareTransform D i.1 0) * bareTransform D i.1 z
+
+/-- The centered canonical D0 family, verbatim from section iii of
+`PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md`. -/
+def centeredPstarFamily
+    (D : CoefficientFamily) (i : CentralIndex D) (z : ℂ) : ℂ :=
+  (centeredXi 0 / rawFplus D i.1 0) * rawFplus D i.1 z
 
 /-- Cofinality means that both independent D0 coordinates tend to infinity. -/
 def PairCofinal {D : CoefficientFamily} (p : ℕ → CentralIndex D) : Prop :=
@@ -75,7 +81,7 @@ structure CanonicalData where
 central-normalized D0 family. -/
 def canonicalApproximation (D : CanonicalData) :
     CanonicalApproximation (CentralIndex D.kTrial) where
-  Pstar := ⟨pstarFamily D.kTrial⟩
+  Pstar := ⟨centeredPstarFamily D.kTrial⟩
   parent := D.parent
   parentCofinal := PairCofinal D.parent
   parentCofinalProof := D.parentCofinal
@@ -131,9 +137,33 @@ theorem differentiable_pstarFamily
     hbare.const_mul _
   exact hscaled
 
-/-- The phase removal and central normalization create no fixed zero: under
-the classical nonvanishing of `Xi(0)`, `Pstar` has exactly the zeros of the
-raw transform. -/
+/-- The central locus defined through `bareTransform` is exactly sufficient
+for the centered denominator because the phase equals one at zero. -/
+theorem rawFplus_zero_ne
+    (D : CoefficientFamily) (i : CentralIndex D) :
+    rawFplus D i.1 0 ≠ 0 := by
+  simpa [bareTransform] using i.property
+
+@[simp] theorem centeredPstarFamily_zero
+    (D : CoefficientFamily) (i : CentralIndex D) :
+    centeredPstarFamily D i 0 = centeredXi 0 := by
+  unfold centeredPstarFamily
+  field_simp [rawFplus_zero_ne D i]
+
+theorem differentiable_centeredPstarFamily
+    (D : CoefficientFamily) (i : CentralIndex D) :
+    Differentiable ℂ (centeredPstarFamily D i) := by
+  exact (differentiable_rawFplus D i.1).const_mul _
+
+/-- Under the classical nonvanishing of `Xi(0)`, the centered canonical
+family has exactly the zeros of the raw transform. -/
+theorem centeredPstarFamily_eq_zero_iff
+    (D : CoefficientFamily) (i : CentralIndex D)
+    (hXi : centeredXi 0 ≠ 0) (z : ℂ) :
+    centeredPstarFamily D i z = 0 ↔ rawFplus D i.1 z = 0 := by
+  simp [centeredPstarFamily, div_eq_mul_inv, hXi, rawFplus_zero_ne D i]
+
+/-- Legacy zero-set statement for the killed uncentered witness. -/
 theorem pstarFamily_eq_zero_iff
     (D : CoefficientFamily) (i : CentralIndex D)
     (hXi : centeredXi 0 ≠ 0) (z : ℂ) :
@@ -147,14 +177,15 @@ theorem pstarFamily_eq_zero_iff
 theorem canonicalApproximation_slotH1 (D : CanonicalData) :
     SlotH1 (canonicalApproximation D) := by
   intro i
-  exact differentiable_pstarFamily D.kTrial i
+  exact differentiable_centeredPstarFamily D.kTrial i
 
 theorem canonicalApproximation_slotAnchor (D : CanonicalData) :
     SlotAnchor (canonicalApproximation D) 0 := by
   intro i
-  exact pstarFamily_zero D.kTrial i
+  exact centeredPstarFamily_zero D.kTrial i
 
 #print axioms rawFplus_eq_D0_integral
+#print axioms centeredPstarFamily_eq_zero_iff
 #print axioms pstarFamily_eq_zero_iff
 #print axioms canonicalApproximation_slotH1
 #print axioms canonicalApproximation_slotAnchor

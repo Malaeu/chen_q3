@@ -84,12 +84,21 @@ def sameCofinalGuard {Index : Type*} (C : CanonicalApproximation Index)
     (sameCofinalGuard C H2aAt S1At hH2a hS1).s2Sequence =
       fun k => C.parent (C.extract k) := rfl
 
-/-- Output of the Montel-plus-anchor gate on the guarded selected family. -/
+/-- The centered critical strip is open. -/
+theorem isOpen_centeredCriticalStrip : IsOpen centeredCriticalStrip := by
+  exact isOpen_lt (continuous_abs.comp Complex.continuous_im) continuous_const
+
+/-- Output of the Montel-plus-anchor gate on the guarded selected family.
+Every analytic and convergence field is restricted to the only domain used by
+the RH transfer.  `limitNonzero` is local nontriviality, the exact form needed
+by isolated-zero theory on that domain. -/
 structure ClusterData {Index : Type*} (C : CanonicalApproximation Index) where
   limit : ℂ → ℂ
-  limitEntire : Differentiable ℂ limit
-  convergence : TendstoLocallyUniformlyOn (selectedFamily C) limit atTop Set.univ
-  limitNonzero : limit ≠ 0
+  limitHolomorphicOn : DifferentiableOn ℂ limit centeredCriticalStrip
+  convergence :
+    TendstoLocallyUniformlyOn (selectedFamily C) limit atTop centeredCriticalStrip
+  limitNonzero :
+    ∀ z ∈ centeredCriticalStrip, ¬ ∀ᶠ w in 𝓝 z, limit w = 0
 
 /-- The exact interface to be proved from `H1 + H2a + ANCHOR + S1`.
 It returns a cluster only on the already-fixed nested sequence. -/
@@ -133,7 +142,7 @@ theorem selectedFamily_realZeros
 /-- Conditional roof assembly for the one canonical family.  All analytic
 gaps occur as named inputs; the proof itself is hole-free and composes the
 checked generic Hurwitz transfer with the classical Xi/RH interface. -/
-theorem rh_of_canonical_slots
+theorem rh_of_canonical_strip_slots
     {Index : Type*} (C : CanonicalApproximation Index)
     (H2aAt S1At : Index → Prop) (anchor : ℂ)
     (hH1 : SlotH1 C)
@@ -149,9 +158,9 @@ theorem rh_of_canonical_slots
     selectedFamily_realZeros C H2aAt hH1 hH2a h510
   have happroach :
       ZerosApproachOn centeredCriticalStrip (selectedFamily C) D.limit :=
-    zerosApproachOn_of_tendstoLocallyUniformlyOn
-      isOpen_univ (Set.subset_univ centeredCriticalStrip)
-      (fun k => hH1 (C.parent (C.extract k))) D.limitEntire
+    zerosApproachOn_of_tendstoLocallyUniformlyOn_local
+      isOpen_centeredCriticalStrip (fun _ hz => hz)
+      (fun k => hH1 (C.parent (C.extract k))) D.limitHolomorphicOn
       D.convergence D.limitNonzero
   have hlimitZeros : ZerosRealOn centeredCriticalStrip D.limit :=
     zerosRealOn_of_zerosApproachOn centeredCriticalStrip
@@ -162,6 +171,22 @@ theorem rh_of_canonical_slots
   apply hlimitZeros z hzstrip
   rw [hidentify z hzstrip, hzXi]
   simp
+
+/-- Compatibility name for older conditional consumers.  The implementation
+is now strip-local; it does not restore a `Set.univ` convergence hypothesis. -/
+theorem rh_of_canonical_slots
+    {Index : Type*} (C : CanonicalApproximation Index)
+    (H2aAt S1At : Index → Prop) (anchor : ℂ)
+    (hH1 : SlotH1 C)
+    (hH2a : SlotH2a C H2aAt)
+    (hanchor : SlotAnchor C anchor)
+    (hS1 : SlotS1 C S1At)
+    (hMontel : MontelAnchorGate C H2aAt S1At anchor)
+    (h510 : Theorem510RealZeroBridge C H2aAt)
+    (hS2 : SlotS2 C) :
+    Q3.RH :=
+  rh_of_canonical_strip_slots C H2aAt S1At anchor hH1 hH2a hanchor hS1
+    hMontel h510 hS2
 
 /-! ## Plant: evenness is not the Theorem-5.10 bridge -/
 
@@ -188,10 +213,12 @@ theorem evenness_alone_does_not_imply_real_zeros :
 
 #check sameCofinalGuard
 #check Theorem510RealZeroBridge
+#check rh_of_canonical_strip_slots
 #check rh_of_canonical_slots
 
 #print axioms sameCofinalGuard_s2Sequence
 #print axioms selectedFamily_realZeros
+#print axioms rh_of_canonical_strip_slots
 #print axioms rh_of_canonical_slots
 #print axioms evenness_alone_does_not_imply_real_zeros
 

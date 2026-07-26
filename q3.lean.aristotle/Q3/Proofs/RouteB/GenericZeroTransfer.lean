@@ -64,27 +64,20 @@ theorem exists_zero_closedBall_of_uniform_close
 /-- A nontrivial entire limit has an approximating zero eventually in every
 prescribed closed disk around each of its zeros, provided the convergence is
 locally uniform on an open set containing that disk. -/
-theorem eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn
+theorem eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn_local
     {U : Set ℂ} {F : ℕ → ℂ → ℂ} {f : ℂ → ℂ} {z₀ : ℂ} {R : ℝ}
     (hU : IsOpen U)
     (hz₀U : z₀ ∈ U)
     (hFentire : ∀ n, Differentiable ℂ (F n))
-    (hfentire : Differentiable ℂ f)
+    (hfholomorphic : DifferentiableOn ℂ f U)
     (hconv : TendstoLocallyUniformlyOn F f atTop U)
-    (hf_nonzero : f ≠ 0)
+    (hf_not_local_zero : ¬ ∀ᶠ z in 𝓝 z₀, f z = 0)
     (hf0 : f z₀ = 0)
     (hR : 0 < R) :
     ∀ᶠ n in atTop, ∃ w ∈ closedBall z₀ R, F n w = 0 := by
-  have hnotlocalzero : ¬ ∀ᶠ z in 𝓝 z₀, f z = 0 := by
-    intro hlocal
-    have heq : f = (fun _ : ℂ => 0) :=
-      (hfentire.differentiableOn.analyticOnNhd isOpen_univ).eq_of_eventuallyEq
-        analyticOnNhd_const hlocal
-    apply hf_nonzero
-    simpa only [Pi.zero_apply] using heq
   have hpunc : ∀ᶠ z in 𝓝[({z₀}ᶜ)] z₀, f z ≠ 0 :=
-    (hfentire.analyticAt z₀).eventually_eq_zero_or_eventually_ne_zero.resolve_left
-      hnotlocalzero
+    (hfholomorphic.analyticAt (hU.mem_nhds hz₀U)).eventually_eq_zero_or_eventually_ne_zero.resolve_left
+      hf_not_local_zero
   rw [eventually_nhdsWithin_iff, Metric.eventually_nhds_iff] at hpunc
   obtain ⟨ρ, hρ, hpunc⟩ := hpunc
   obtain ⟨δ, hδ, hδU⟩ := Metric.mem_nhds_iff.mp (hU.mem_nhds hz₀U)
@@ -109,7 +102,9 @@ theorem eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn
   have hsph_nonempty : (sphere z₀ r).Nonempty :=
     NormedSpace.sphere_nonempty.mpr hr.le
   have hcont : ContinuousOn (fun w => ‖f w‖) (sphere z₀ r) :=
-    continuous_norm.comp_continuousOn hfentire.continuous.continuousOn
+    continuous_norm.comp_continuousOn
+      (hfholomorphic.continuousOn.mono fun w hw =>
+        hballU (sphere_subset_closedBall hw))
   obtain ⟨w₀, hw₀, hw₀min⟩ :=
     (isCompact_sphere z₀ r).exists_isMinOn hsph_nonempty hcont
   let m : ℝ := ‖f w₀‖
@@ -130,6 +125,28 @@ theorem eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn
     exists_zero_closedBall_of_uniform_close (hFentire n) hr hm hf0 hflower hclose
   refine ⟨w, ?_, hFw⟩
   exact mem_closedBall.mpr ((mem_closedBall.mp hw).trans hrR.le)
+
+/-- Whole-plane wrapper retained for existing consumers. -/
+theorem eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn
+    {U : Set ℂ} {F : ℕ → ℂ → ℂ} {f : ℂ → ℂ} {z₀ : ℂ} {R : ℝ}
+    (hU : IsOpen U)
+    (hz₀U : z₀ ∈ U)
+    (hFentire : ∀ n, Differentiable ℂ (F n))
+    (hfentire : Differentiable ℂ f)
+    (hconv : TendstoLocallyUniformlyOn F f atTop U)
+    (hf_nonzero : f ≠ 0)
+    (hf0 : f z₀ = 0)
+    (hR : 0 < R) :
+    ∀ᶠ n in atTop, ∃ w ∈ closedBall z₀ R, F n w = 0 := by
+  have hnotlocalzero : ¬ ∀ᶠ z in 𝓝 z₀, f z = 0 := by
+    intro hlocal
+    have heq : f = (fun _ : ℂ => 0) :=
+      (hfentire.differentiableOn.analyticOnNhd isOpen_univ).eq_of_eventuallyEq
+        analyticOnNhd_const hlocal
+    apply hf_nonzero
+    simpa only [Pi.zero_apply] using heq
+  exact eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn_local
+    hU hz₀U hFentire hfentire.differentiableOn hconv hnotlocalzero hf0 hR
 
 /-- A diagonal choice lemma for root sets.  Fixed-radius eventual existence is
 enough to choose one root at every sufficiently large index, with the chosen
@@ -213,9 +230,32 @@ theorem zerosApproachOn_of_tendstoLocallyUniformlyOn
   exact eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn
     hU (hSU hz₀S) hFentire hfentire hconv hf_nonzero hf0 hR
 
+/-- Strip-local Hurwitz transfer.  Unlike the whole-plane wrapper, this
+version asks only for holomorphy on the open convergence domain.  Nontriviality
+is stated in the exact local form consumed by isolated-zero theory. -/
+theorem zerosApproachOn_of_tendstoLocallyUniformlyOn_local
+    {U S : Set ℂ} {F : ℕ → ℂ → ℂ} {f : ℂ → ℂ}
+    (hU : IsOpen U)
+    (hSU : S ⊆ U)
+    (hFentire : ∀ n, Differentiable ℂ (F n))
+    (hfholomorphic : DifferentiableOn ℂ f U)
+    (hconv : TendstoLocallyUniformlyOn F f atTop U)
+    (hf_not_local_zero :
+      ∀ z ∈ S, ¬ ∀ᶠ w in 𝓝 z, f w = 0) :
+    ZerosApproachOn S F f := by
+  intro z₀ hz₀S hf0
+  apply exists_tendsto_of_eventually_exists_closedBall
+    (P := fun n w => F n w = 0)
+  intro R hR
+  exact eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn_local
+    hU (hSU hz₀S) hFentire hfholomorphic hconv
+      (hf_not_local_zero z₀ hz₀S) hf0 hR
+
 #print axioms exists_zero_closedBall_of_uniform_close
 #print axioms exists_tendsto_of_eventually_exists_closedBall
+#print axioms eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn_local
 #print axioms eventually_exists_zero_closedBall_of_tendstoLocallyUniformlyOn
 #print axioms zerosApproachOn_of_tendstoLocallyUniformlyOn
+#print axioms zerosApproachOn_of_tendstoLocallyUniformlyOn_local
 
 end Q3.RouteB
