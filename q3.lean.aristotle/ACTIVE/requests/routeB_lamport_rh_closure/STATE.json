@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 46,
-  "updated_at": "2026-07-27T00:30:50+02:00",
+  "revision": 47,
+  "updated_at": "2026-07-27T00:42:54+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -376,11 +376,18 @@
     "status": "CENTERED_PSTAR_STRIP_ROOF_LOCKED_S1_OPEN_NOT_RH",
     "owner_sign": "PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md",
     "goal_004": {
-      "verdict": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
+      "verdict": "REPAIRABLE_LEAK",
+      "underlying_open_obligation": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
       "lean_artifact": "Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean",
       "critical_moment_ratio_proved": false,
-      "weighted_projection_lemma_missing": true,
-      "plants": ["CONSTANT_MODE_LIVE", "ENDPOINT_DIRICHLET_WEIGHTED_PROJECTION_LIVE"]
+      "target": "DIRECT_L1_EXP_SIGMA_ABS_T_RATIO_FOR_EACH_SIGMA_LT_HALF",
+      "c_sigma_may_depend_on_sigma": true,
+      "full_weight_l2_projection_route": "RETIRED_NOT_REQUIRED_PROBABLY_FALSE",
+      "leakage_dependence": ["m_WINDOW_AND_WEIGHT", "N_PROJECTED_ROW_ENDPOINT", "sigma_SUBCRITICAL_WEIGHT"],
+      "denominator_identity": "ABS_FPLUS_ZERO_EQ_SQRT_LOG_M_MUL_ABS_C0",
+      "denominator_sample": "0.864797966349_TO_0.878438550145_DIAGNOSTIC_ONLY",
+      "anchor_floor_proved": false,
+      "plants": ["CONSTANT_MODE_LIVE", "ENDPOINT_DIRICHLET_KILLS_ONLY_RETIRED_FULL_WEIGHT_ROUTE"]
     },
     "goal_005": {
       "verdict": "CENTERED_PSTAR_STRIP_ROOF_LOCKED",
@@ -3741,6 +3748,13 @@
       "progress_class": "PROOF_FALSIFICATION_AND_REPRESENTATION_PROGRESS",
       "result": "CENTERED_S1_WEIGHTED_PROJECTION_GAP;CENTERED_PSTAR_STRIP_ROOF_LOCKED;RH_OF_CANONICAL_STRIP_SLOTS_LEAN",
       "honesty": "S1_CRITICAL_MOMENT_RATIO_OPEN_ANCHOR_FLOOR_OPEN_H2A_ORDERING_OPEN_PROJECT_SLOTS_OPEN_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-27T00:42:54+02:00",
+      "event": "CENTERED_CRITICAL_MOMENT_GUARD_APPLIED",
+      "progress_class": "REPRESENTATION_AND_BLOCKER_LOCALIZATION_PROGRESS",
+      "result": "REPAIRABLE_LEAK;DIRECT_L1_SIGMA_TARGET;FULL_WEIGHT_L2_ROUTE_RETIRED;FPLUS_ZERO_DENOMINATOR_IDENTITY_LEAN",
+      "honesty": "NO_COFINAL_L1_BOUND_NO_ANCHOR_FLOOR_FLOAT64_DIAGNOSTIC_ONLY_NO_BUS_010_NOT_RH"
     }
   ]
 }

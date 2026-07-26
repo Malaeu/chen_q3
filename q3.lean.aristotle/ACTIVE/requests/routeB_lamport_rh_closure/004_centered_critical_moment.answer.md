@@ -5,10 +5,11 @@ Date: `2026-07-27`
 Verdict:
 
 ```text
-CENTERED_S1_WEIGHTED_PROJECTION_GAP
+REPAIRABLE_LEAK
 ```
 
 Success code `CENTERED_TRIAL_CRITICAL_MOMENT_RATIO_PROVED` is not issued.
+Underlying open obligation: `CENTERED_S1_WEIGHTED_PROJECTION_GAP`.
 
 ## Exact source formula
 
@@ -57,23 +58,57 @@ It is materialized as:
 Q3.RouteB.D0Pstar.CenteredTrialCriticalMomentRatio
 ```
 
-A stronger sufficient input is materialized as:
+The full-weight `L²(exp(|t|))` projection estimate has been removed from the
+active Lean contract. It is neither required nor proposed as a repair.
+
+## Leakage dependence
+
+The direct quantity is now materialized as
 
 ```text
-Q3.RouteB.D0Pstar.PostGalerkinCriticalExponentialMoment
-
-∃ M ≥ 0, ∀ k,
-  ∫_{-L_mk/2}^{L_mk/2} ‖q_p(k)(t)‖² exp(|t|) dt ≤ M.
+centeredMomentLeakage(D,i,σ)
+  = centeredCriticalMoment(D,i,σ) / ‖rawFplus(D,i,0)‖.
 ```
 
-The current D0 files contain neither estimate.
+- `m` enters through `L_m=log m`, the interval endpoints, Fourier scale, and
+  the maximal weight `exp(σ L_m/2)=m^(σ/2)`.
+- `N` enters through the projected coefficient row and its endpoint leakage.
+- `σ` enters only through `exp(σ|t|)`; a different finite `Cσ` is allowed for
+  every fixed `σ<1/2`.
 
-## Dependence
+The required result is boundedness of this direct ratio on the one fixed
+cofinal path. No uniformity as `σ ↑ 1/2` is claimed.
 
-The required `Cσ` may depend on `σ`; it must be independent of `k`, hence
-independent of both `m_k` and `N_k`.  Ordinary orthogonal-projection
-contraction controls only the unweighted norm.  The missing weighted
-projection constant may depend on `m`, `N`, and `σ`.
+## Denominator behavior
+
+Lean proves the exact identity
+
+```text
+rawFplus(D,i,0) = sqrt(log m) * D.kTrial(i,0).
+```
+
+Thus
+
+```text
+|Fplus_(m,N)(0)| = sqrt(log m) |c_(m,N),0|.
+```
+
+`CentralIndex` gives pointwise nonvanishing, but unit normalization of the
+whole coefficient row gives no uniform positive lower bound for `|c0|`.
+
+Existing binary64 diagnostics, not used as proof:
+
+```text
+sampled cells: (13,90), (13,120), (14,120), (53,120),
+               (101,120), (149,120), (197,120), (257,120)
+min |Fplus(0)| = 0.864797966349
+max |Fplus(0)| = 0.878438550145
+fit exponent in m = 0.00543083895502
+verdict = SAMPLED_INF_GT_DELTA_NO_COMPENSATION_DIAGNOSTIC
+```
+
+The sample is stable and supports repairability, but it is not an anchor-floor
+theorem.
 
 ## Plants
 
@@ -88,22 +123,38 @@ endpoint-Dirichlet:
   and strictly expands the endpoint-weighted square norm.
 ```
 
-Therefore the inference
+Therefore the forbidden inference
 
 ```text
 unweighted L² contraction
 ⇒ uniform L²(exp(|t|)) contraction
 ```
 
-is false.
+is false and the full-weight branch is retired. This does not falsify the
+guarded `L¹(exp(σ|t|))` target.
 
 ## Weakest repair
 
 Add `CenteredTrialCriticalMomentRatio D p` itself as the explicit S1 source
-input.  Alternatively, prove `PostGalerkinCriticalExponentialMoment D p`
-together with a uniform positive lower bound for `‖rawFplus D (p k) 0‖`.
-No `Set.univ`, float64 fit, `bareTransform` family, RH input, or zero-side
-input is used.
+input, or prove a direct bound for `centeredMomentLeakage D (p k) σ` for each
+fixed `σ<1/2`. A separate analytic anchor-floor theorem would remove the
+denominator risk. No full-weight `L²` estimate, `Set.univ`, float64 proof,
+`bareTransform` family, RH input, or zero-side input is used.
+
+## Outcome classification
+
+```text
+GREEN:
+  not issued; no uniform cofinal bound is proved.
+
+REPAIRABLE_LEAK:
+  issued; finite-cell objects and the exact denominator identity are sound,
+  the sampled denominator is stable, and the remaining obligation is the
+  direct cofinal L1 leakage bound plus an analytic anchor floor.
+
+FATAL_PATH:
+  not issued; neither plant contradicts the weakened L1 target.
+```
 
 ## Artifact and validation
 

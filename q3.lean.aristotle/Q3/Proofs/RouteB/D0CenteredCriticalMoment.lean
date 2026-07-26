@@ -12,9 +12,9 @@ namespace Q3.RouteB.D0Pstar
 /-!
 # The centered critical-moment contract
 
-This file materializes the exact post-Galerkin estimate requested by
-`004_centered_critical_moment.goal.md`.  It does not assert that the estimate
-follows from ordinary `L²` orthogonal-projection contraction.
+This file materializes the exact post-Galerkin `L¹` estimate requested by
+`004_centered_critical_moment.goal.md`.  The full-weight
+`L²(exp |t|)` projection branch is explicitly not part of the target.
 
 The source expansion is
 
@@ -48,6 +48,35 @@ def centeredCriticalMoment
   ∫ t in Set.Icc (-(L_m i) / 2) (L_m i / 2),
     ‖centeredTrialDensity D i t‖ * Real.exp (σ * |t|)
 
+/-- The denominator is exactly the zero Fourier coefficient multiplied by
+`sqrt (log m)`.  Unit normalization of the full projected vector gives no
+positive lower bound for this one coefficient. -/
+theorem rawFplus_zero_eq_sqrt_mul_c0
+    (D : CoefficientFamily) (i : PairIndex) :
+    rawFplus D i 0 =
+      (Real.sqrt (L_m i) : ℂ) * D.kTrial i 0 := by
+  rw [← rawFplus_eq_D0_integral]
+  have h0 : (0 : ℤ) ∈ modeSet i := by
+    simp [modeSet]
+  simpa [finiteFplusCenteredIntegral] using
+    Fplus_zero_eq_sqrt_mul_c0
+      (L_m i) (modeSet i) (D.kTrial i) (logLength_pos i) h0
+
+/-- The direct leakage quantity requested by the guard.  Its dependencies are
+exactly `(m,N,σ)` through `i` and `σ`; no full-weight `L²` projection norm is
+introduced. -/
+def centeredMomentLeakage
+    (D : CoefficientFamily) (i : CentralIndex D) (σ : ℝ) : ℝ :=
+  centeredCriticalMoment D i.1 σ / ‖rawFplus D i.1 0‖
+
+theorem centeredCriticalMoment_eq_leakage_mul_denominator
+    (D : CoefficientFamily) (i : CentralIndex D) (σ : ℝ) :
+    centeredCriticalMoment D i.1 σ =
+      centeredMomentLeakage D i σ * ‖rawFplus D i.1 0‖ := by
+  have hden : ‖rawFplus D i.1 0‖ ≠ 0 :=
+    norm_ne_zero_iff.mpr (rawFplus_zero_ne D i)
+  simp [centeredMomentLeakage, hden]
+
 /-- `CENTERED_TRIAL_CRITICAL_MOMENT_RATIO`.
 
 This is the weakest repaired S1 input isolated by the Round-2026-07-27
@@ -62,17 +91,6 @@ def CenteredTrialCriticalMomentRatio
         ∀ k : ℕ,
           centeredCriticalMoment D (p k).1 σ ≤
             Cσ * ‖rawFplus D (p k).1 0‖
-
-/-- The stronger weighted projection estimate which would suffice after a
-uniform anchor floor.  Neither `P_m_N` nor `norm_kTrial_m_N` supplies it:
-the weight depends exponentially on the window coordinate.
--/
-def PostGalerkinCriticalExponentialMoment
-    (D : CoefficientFamily) (p : ℕ → CentralIndex D) : Prop :=
-  ∃ M : ℝ, 0 ≤ M ∧
-    ∀ k : ℕ,
-      (∫ t in Set.Icc (-(L_m (p k).1) / 2) (L_m (p k).1 / 2),
-        ‖centeredTrialDensity D (p k).1 t‖ ^ 2 * Real.exp |t|) ≤ M
 
 /-! ## Planted failures -/
 
@@ -90,9 +108,10 @@ weight. -/
 def endpointWeightedSquare (v : ℝ × ℝ) : ℝ :=
   v.1 ^ 2 + 9 * v.2 ^ 2
 
-/-- The endpoint-Dirichlet plant fires: the same projection contracts the
-ordinary square norm but strictly expands the endpoint-weighted square norm.
-Thus unweighted `L²` contraction cannot discharge the missing estimate. -/
+/-- The endpoint-Dirichlet plant retires the forbidden full-weight `L²`
+projection route: the same projection contracts the ordinary square norm but
+strictly expands the endpoint-weighted square norm.  This plant is a kill
+certificate, not a proposed route to the guarded `L¹` target. -/
 theorem endpointDirichletWeightedProjectionPlant :
     unweightedSquare (endpointDirichletProjection (1, 0)) ≤
         unweightedSquare (1, 0) ∧
