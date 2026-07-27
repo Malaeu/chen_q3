@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 138 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 140 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -42,6 +42,8 @@ Flat Proshka mirror from `rh_lean_01_2026`; 138 mirrored source files plus `CHAN
 | `022_candidate_adjudication.goal.md` | goal | `b7a260388c02fd163fa5f56bbc1c1d5ea6d054c4d112ea8dd7f9496d71cb2561` |
 | `023_g3_interval_fourier_cert.answer.md` | answer | `4ea605c43dbe78fbb9d189d083daa84e9684aef7155f3955ed276d8d942de255` |
 | `023_g3_interval_fourier_cert.goal.md` | goal | `8ecb7e24c98a62f30cda02f3fcbac6f83f3091f70e313567ef51a6cac8092a6c` |
+| `024_ladder_shift_adjudication.answer.md` | answer | `d5b1a88635aa5223498f0e8d3401cd8d5bf4a379c36fcc54d8272da0444f42cb` |
+| `024_ladder_shift_adjudication.goal.md` | goal | `3372f00dd5e5559b92c9d79471928f326f79ace038e5ff4e32e4ebfc92802c4f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
 | `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
@@ -142,6 +144,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 138 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `bc3c26ff6a56796da57955622a29a7a431af72c1ccd8eeb9079dcf68bb0f80c8` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `c97b18bf324dd4344eeb4332d43de7af84e9cd7d93acdfa5a984f8d3a78c3570` |
 
 `MANIFEST.md` is excluded from its own hash table.
