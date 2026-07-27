@@ -1,0 +1,272 @@
+{
+  "arithmetic": {
+    "dps_escalation": false,
+    "dtype": "float64/complex128"
+  },
+  "cells": [
+    {
+      "B_zero": {
+        "abs": 0.8647979663491705,
+        "im": 3.3786221023772976e-49,
+        "re": -0.8647979663491705
+      },
+      "H_zero_float64": {
+        "im": -3.0598275303336816e-65,
+        "re": 0.4971207781883141
+      },
+      "N": 120,
+      "conjugate_coefficient_symmetry_max_abs_error": 1.1727148711036377e-109,
+      "drift": {
+        "max_fitted_excursion_rad": 49.80223571352643,
+        "segments": [
+          {
+            "fitted_excursion_rad": 49.80223571352643,
+            "point_count": 4096,
+            "r2": 0.9999967789815044,
+            "slope_rad_per_x": 1.282386274763765,
+            "x_max": 52.970321477714464,
+            "x_min": 14.134725141734695
+          }
+        ],
+        "strongest_segment": {
+          "fitted_excursion_rad": 49.80223571352643,
+          "point_count": 4096,
+          "r2": 0.9999967789815044,
+          "slope_rad_per_x": 1.282386274763765,
+          "x_max": 52.970321477714464,
+          "x_min": 14.134725141734695
+        },
+        "systematic": true
+      },
+      "expected_half_shift_slope_L_over_2_equals_log_lambda": 1.2824746787307684,
+      "inversion_coefficient_symmetry_diagnostic_max_abs_error": 1.1186817647394499e-30,
+      "lambda_sq": 13,
+      "max_abs_imaginary_coefficient_diagnostic": 5.593408823697249e-31,
+      "phase": {
+        "axial_resultant": 0.00959468772416223,
+        "mean_phase_mod_pi": 0.6183642682568755,
+        "residual_max_abs": 1.570419778891748,
+        "sd_theta_mod_pi": 0.8999096704589257
+      },
+      "phase_slope_minus_log_lambda_diagnostic": -8.840396700326991e-05,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_120.json",
+      "source_sha256": "0e5239355c54103859b22d7f753d8cd6765c2c41bcd3ec7f86b20beccc907a88",
+      "verdict": "C2_PHASE_FREE",
+      "zero_exclusion": {
+        "definition": "abs(B)<=10*eps64*max_grid_abs_B, dilated by one grid neighbor",
+        "dilated_point_count": 0,
+        "kept_point_count": 4096,
+        "raw_point_count": 0,
+        "threshold": 4.536472497748457e-18
+      }
+    },
+    {
+      "B_zero": {
+        "abs": 0.8658643882772434,
+        "im": 8.943557188355313e-49,
+        "re": -0.8658643882772434
+      },
+      "H_zero_float64": {
+        "im": -3.5663737205135905e-66,
+        "re": 0.4971207781883142
+      },
+      "N": 120,
+      "conjugate_coefficient_symmetry_max_abs_error": 1.0818378899831296e-109,
+      "drift": {
+        "max_fitted_excursion_rad": 51.245974829374745,
+        "segments": [
+          {
+            "fitted_excursion_rad": 51.245974829374745,
+            "point_count": 4096,
+            "r2": 0.999999356703249,
+            "slope_rad_per_x": 1.3195619396707243,
+            "x_max": 52.970321477714464,
+            "x_min": 14.134725141734695
+          }
+        ],
+        "strongest_segment": {
+          "fitted_excursion_rad": 51.245974829374745,
+          "point_count": 4096,
+          "r2": 0.999999356703249,
+          "slope_rad_per_x": 1.3195619396707243,
+          "x_max": 52.970321477714464,
+          "x_min": 14.134725141734695
+        },
+        "systematic": true
+      },
+      "expected_half_shift_slope_L_over_2_equals_log_lambda": 1.3195286648076292,
+      "inversion_coefficient_symmetry_diagnostic_max_abs_error": 2.760644363371587e-33,
+      "lambda_sq": 14,
+      "max_abs_imaginary_coefficient_diagnostic": 1.3803221816857935e-33,
+      "phase": {
+        "axial_resultant": 0.015952117463934212,
+        "mean_phase_mod_pi": 0.28844023744580366,
+        "residual_max_abs": 1.570658661818355,
+        "sd_theta_mod_pi": 0.8991586788127333
+      },
+      "phase_slope_minus_log_lambda_diagnostic": 3.327486309512295e-05,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_14_N_120.json",
+      "source_sha256": "f2ecc3e794728dceff933f2ced8b7e91593fc5d956a3a4d4a7522dda892bfecf",
+      "verdict": "C2_PHASE_FREE",
+      "zero_exclusion": {
+        "definition": "abs(B)<=10*eps64*max_grid_abs_B, dilated by one grid neighbor",
+        "dilated_point_count": 0,
+        "kept_point_count": 4096,
+        "raw_point_count": 0,
+        "threshold": 4.416588556731051e-18
+      }
+    },
+    {
+      "B_zero": {
+        "abs": 0.8757315183642588,
+        "im": 2.197799707889303e-33,
+        "re": -0.8757315183642588
+      },
+      "H_zero_float64": {
+        "im": -1.1708052265513444e-49,
+        "re": 0.4971207781883142
+      },
+      "N": 120,
+      "conjugate_coefficient_symmetry_max_abs_error": 2.4299799836327088e-17,
+      "drift": {
+        "max_fitted_excursion_rad": 77.96197839155887,
+        "segments": [
+          {
+            "fitted_excursion_rad": 77.96197839155887,
+            "point_count": 4096,
+            "r2": 0.9993128744517453,
+            "slope_rad_per_x": 2.007487607943075,
+            "x_max": 52.970321477714464,
+            "x_min": 14.134725141734695
+          }
+        ],
+        "strongest_segment": {
+          "fitted_excursion_rad": 77.96197839155887,
+          "point_count": 4096,
+          "r2": 0.9993128744517453,
+          "slope_rad_per_x": 2.007487607943075,
+          "x_max": 52.970321477714464,
+          "x_min": 14.134725141734695
+        },
+        "systematic": true
+      },
+      "expected_half_shift_slope_L_over_2_equals_log_lambda": 1.985145956776061,
+      "inversion_coefficient_symmetry_diagnostic_max_abs_error": 7.126062374540621e-15,
+      "lambda_sq": 53,
+      "max_abs_imaginary_coefficient_diagnostic": 3.563439807846917e-15,
+      "phase": {
+        "axial_resultant": 0.021778403807572465,
+        "mean_phase_mod_pi": 0.03789673695598316,
+        "residual_max_abs": 1.5707828015812972,
+        "sd_theta_mod_pi": 0.8942447891762959
+      },
+      "phase_slope_minus_log_lambda_diagnostic": 0.02234165116701381,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/off_axis_k1_coeffs_lambda_sq_53_N_120_float64.json",
+      "source_sha256": "da8b2b09b0cd50f63edb1914754efe78bfa80681054d935e4a2f4006acff17a5",
+      "verdict": "C2_PHASE_FREE",
+      "zero_exclusion": {
+        "definition": "abs(B)<=10*eps64*max_grid_abs_B, dilated by one grid neighbor",
+        "dilated_point_count": 0,
+        "kept_point_count": 4096,
+        "raw_point_count": 0,
+        "threshold": 3.4366634779441244e-18
+      }
+    },
+    {
+      "B_zero": {
+        "abs": 0.8773575755313314,
+        "im": 1.628540895660799e-33,
+        "re": -0.8773575755313314
+      },
+      "H_zero_float64": {
+        "im": -1.252361100758186e-49,
+        "re": 0.4971207781883142
+      },
+      "N": 120,
+      "conjugate_coefficient_symmetry_max_abs_error": 2.7720978663079302e-17,
+      "drift": {
+        "max_fitted_excursion_rad": 88.9599243903553,
+        "segments": [
+          {
+            "fitted_excursion_rad": 88.9599243903553,
+            "point_count": 4096,
+            "r2": 0.9994863015067821,
+            "slope_rad_per_x": 2.2906800148176725,
+            "x_max": 52.970321477714464,
+            "x_min": 14.134725141734695
+          }
+        ],
+        "strongest_segment": {
+          "fitted_excursion_rad": 88.9599243903553,
+          "point_count": 4096,
+          "r2": 0.9994863015067821,
+          "slope_rad_per_x": 2.2906800148176725,
+          "x_max": 52.970321477714464,
+          "x_min": 14.134725141734695
+        },
+        "systematic": true
+      },
+      "expected_half_shift_slope_L_over_2_equals_log_lambda": 2.30756025842063,
+      "inversion_coefficient_symmetry_diagnostic_max_abs_error": 5.048524725917753e-15,
+      "lambda_sq": 101,
+      "max_abs_imaginary_coefficient_diagnostic": 2.5259456264557946e-15,
+      "phase": {
+        "axial_resultant": 0.014026035647834981,
+        "mean_phase_mod_pi": -0.9926517197174246,
+        "residual_max_abs": 1.5707094417228664,
+        "sd_theta_mod_pi": 0.898724012765614
+      },
+      "phase_slope_minus_log_lambda_diagnostic": -0.016880243602957368,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/off_axis_k1_coeffs_lambda_sq_101_N_120_float64.json",
+      "source_sha256": "982ed566debe856764770f429924b806dba22b3322f05dd92f63235fc707f626",
+      "verdict": "C2_PHASE_FREE",
+      "zero_exclusion": {
+        "definition": "abs(B)<=10*eps64*max_grid_abs_B, dilated by one grid neighbor",
+        "dilated_point_count": 0,
+        "kept_point_count": 4096,
+        "raw_point_count": 0,
+        "threshold": 3.2956472414185755e-18
+      }
+    }
+  ],
+  "interpretation": "NUMERICAL_FALSIFIER_FOR_C2_AS_STATED_NOT_A_SYMMETRY_THEOREM_NOT_RH",
+  "object": {
+    "B_formula": "L^(-1/2)*sum_n c_n*integral_0^L exp(i*(x+2*pi*n/L)*t)dt",
+    "completion_factor_removed": true,
+    "formula": "H_(m,N)(x)=Xi(0)*B_(m,N)(x)/B_(m,N)(0)"
+  },
+  "phase_slope_diagnostic": {
+    "code": "PHASE_SLOPE_EQUALS_LOG_LAMBDA_DIAGNOSTIC",
+    "expected_slope": "L/2=log(lambda)=0.5*log(lambda_sq)",
+    "meaning": "half-shift signature and completion-gauge consistency",
+    "preserves_verdict": "C2_PHASE_FREE",
+    "status": "DIAGNOSTIC_NOT_PARITY_THEOREM_NOT_RH",
+    "use": "diagnostic input for the V1 parity-closure question"
+  },
+  "raw_csv": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PHASE_STRUCTURE_PROBE.csv",
+    "sha256": "dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49"
+  },
+  "registered_judges": {
+    "between": "EXTEND",
+    "free": "sd(theta mod pi)>=0.3 or systematic drift",
+    "rigid": "sd(theta mod pi)<0.05 and no systematic drift",
+    "systematic_drift_operationalization": "fitted phase excursion>=0.3 rad and R^2>=0.9 on a contiguous kept segment"
+  },
+  "report": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PHASE_STRUCTURE_PROBE.md",
+    "sha256": "f508fdd0c07c800c387e0d8b8995038e1032a9321cbb47ff5da05685940a23dd"
+  },
+  "rh_status": "NOT_RH",
+  "schema": "route_b_soft_2_phase_structure_probe_v1",
+  "status": "COMPLETED_FLOAT64_DIAGNOSTIC_NOT_THEOREM",
+  "verdict_code": "C2_PHASE_FREE",
+  "window": {
+    "definition": "[gamma_1,gamma_11]",
+    "gamma_1": 14.134725141734695,
+    "gamma_11": 52.970321477714464,
+    "grid_count": 4096,
+    "zero_source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/anchor_locked_zeros_first_200.json",
+    "zero_source_sha256": "80803a9158014ed97551ff97122cbcd96cea14e58a2f1df9312377fff3aa4ade"
+  }
+}

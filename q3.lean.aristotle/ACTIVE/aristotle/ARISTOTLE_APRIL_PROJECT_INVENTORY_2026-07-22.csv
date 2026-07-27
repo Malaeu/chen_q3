@@ -1,0 +1,301 @@
+created_at,project_id,status,has_input,has_files,description
+2026-04-02T19:54:15.125620,1fdef9ee-b8f5-4ed3-9b0f-06750c1191ae,IDLE,True,True,Prove `PSD-pd` using kernel decomposition and helper lemmas.
+2026-04-02T19:54:15.132397,a5a63aa5-2ce6-4fdb-8f55-4fd8de285fcd,IDLE,True,True,Prove PSD-pd using Herglotz/Bochner theorem.
+2026-04-02T19:54:21.579941,3000e8e6-78f7-4837-96c0-fca12cef65fe,IDLE,True,True,Prove `atom_sum_mem_W_K_of_margin` lemma.
+2026-04-02T19:54:21.744938,bc93302f-965b-4d4e-92a1-56026e3879f4,IDLE,True,True,Prove a Lean lemma about atom sums in `Q3.AtomCone_K_fixed`.
+2026-04-02T19:55:08.841743,744a715b-33c3-4e6d-bdfc-2b9733d0cf75,IDLE,True,True,Prove `prime_heat_bounds_arch_data_target` in Lean.
+2026-04-02T19:55:22.160942,b2b4d50b-a9a0-428a-9b8e-f4d463bb4588,IDLE,True,True,Prove `prime_heat_bounds_arch_data_target` without axioms.
+2026-04-02T19:55:22.203076,0f264f73-4090-4247-b9cc-87001ae4a3aa,IDLE,True,True,Prove `prime_heat_bounds_arch_data_target` theorem.
+2026-04-02T19:55:23.500848,ac7970c3-4a09-4bb6-a7de-1d1b37edabb3,IDLE,True,True,Prove `prime_heat_bounds_arch_data_cert` in Lean.
+2026-04-02T19:55:23.513074,e32b3040-bfa0-4707-bbcd-a880f2ec5467,IDLE,True,True,Prove theorem `prime_heat_bounds_arch_data` without axioms.
+2026-04-02T19:55:52.146248,ee1ad69b-1d19-4fe4-a4fa-3ac674d77939,IDLE,True,True,Prove `prime_heat_bucket_pp_sum_ub_q_le_kernel_target`.
+2026-04-02T19:55:53.231193,118a824d-bfa8-49f1-b7ad-f45b866254b4,IDLE,False,False,32b12981-ce52-4855-afc2-c7d93234cfae
+2026-04-02T19:55:53.272715,d1218e7d-1ca3-4efe-80fd-0847f7e28c1b,IDLE,True,True,Prove `prime_heat_bucket_pp_sum_ub_q_le_kernel_target`.
+2026-04-02T19:56:57.062191,de8d7aa2-7eab-42b7-bb37-039228490ad6,IDLE,True,True,Prove `prime_heat_bucket_pp_sum_ub_q_le_kernel` about sums.
+2026-04-02T19:56:57.068265,1cae3e13-c682-4013-9434-115e2d3a240a,IDLE,False,False,19694116-c934-4154-a52a-fd119e625f78
+2026-04-02T19:57:52.738878,9b6f1f86-7894-479e-984d-eaa86fadecbd,IDLE,True,True,Replace axiom with theorem about `prime_term`.
+2026-04-02T19:57:52.744722,f5935854-3138-448b-b638-92db37734bbb,IDLE,True,True,Prove `Weil_criterion_tau0` from existing axioms.
+2026-04-02T19:57:52.750500,0be994fd-4708-416e-bfe1-efdb1464a165,IDLE,True,True,Prove `prime_cert_margin_from_pathB` theorem.
+2026-04-02T19:57:52.900536,aa912a18-c8a4-427d-bb24-253e9a10cd7c,IDLE,True,True,Prove `prime_cert_margin_from_pathB` theorem.
+2026-04-02T19:57:52.918399,1d1a76d7-10e0-441d-8de3-57989bc518bf,IDLE,True,True,Prove `Weil_criterion_tau0` from existing axioms.
+2026-04-02T19:57:52.924171,dd332f44-80c7-4667-88a4-7c0dbe48f12a,IDLE,True,True,Prove `prime_term_le_at_t_critical_axiom` without axioms.
+2026-04-02T19:59:47.420902,81cba627-7fee-4656-a2b8-53d61fa64432,IDLE,True,True,Prove `prime_b_grid_weight_term_le_pp_i19_all_ub_target`
+2026-04-02T19:59:47.432509,c523e779-e7e1-4b95-bdb8-bc730d11582f,IDLE,True,True,Prove prime_b_grid_weight_term_le_pp_i19_all_ub_target.
+2026-04-02T19:59:47.438243,98d802af-7931-4d52-9423-886c2552fe8a,IDLE,False,False,62aa5a40-2ab6-467d-a712-0dc4899be05b
+2026-04-02T19:59:47.449666,2fa204aa-0e41-4f55-b172-1e1ac4cf0f8d,IDLE,True,True,Prove theorem about prime-power term bound.
+2026-04-02T19:59:47.456322,3b090a3e-d968-4df7-b434-8465b39ce516,IDLE,True,True,Prove `prime_b_grid_weight_term_le_pp_i19_all_ub_target`
+2026-04-02T20:00:11.908411,e57b3cec-1c0d-4eb2-8e88-352b64cc9438,IDLE,True,True,Prove `prime_b_grid_arch_bounds_data_target`
+2026-04-02T20:00:11.914648,e9267af3-8c13-43ec-8d83-d4fe7e9295a8,IDLE,True,True,Prove `prime_b_grid_bucket_bounds_target`.
+2026-04-02T20:00:11.949501,69451792-84eb-44d3-b1fc-75f690023f66,IDLE,True,True,Prove theorem prime_heat_bounds_arch_data_target.
+2026-04-02T20:00:11.955368,57294d4b-3517-431e-a2b4-22d0f0cd2082,IDLE,False,False,90707df8-380c-442a-b482-e14ddd8713f8
+2026-04-02T20:00:11.961395,57bd7a08-bece-4703-b205-53f9e8d09b4b,IDLE,True,True,Prove `prime_heat_bounds_arch_data_target` theorem.
+2026-04-02T20:00:11.997811,daf597ef-4fd0-415c-9c00-5a31e2814841,IDLE,False,False,604dd06d-c33c-44f7-b6ff-76f06d897d88
+2026-04-02T20:00:12.009884,674a005b-d25f-4d10-8197-dfab293405a3,IDLE,True,True,Prove `prime_heat_bounds_arch_data_target`
+2026-04-02T20:00:12.021412,c64892c7-1bdb-4978-804a-7ed730bd7c9b,IDLE,True,True,Prove a heat bounds theorem.
+2026-04-02T20:00:12.033164,6d80e128-65f3-4ef4-8b2b-b214592958dd,IDLE,False,False,1e5fa2ea-24f8-4fed-bfc3-a0cf7d7415d1
+2026-04-02T20:02:41.742054,af3af984-4794-4a16-891e-ebd263c51a1c,IDLE,True,True,Prove integrability of `arch_heat_weight`.
+2026-04-02T20:02:41.872909,348e975a-88a1-45e8-843b-2e10a8d3d95f,IDLE,True,True,"Prove three Lipschitz bounds on `arch_term`, `prime_term`, and `margin_tau0`."
+2026-04-02T20:02:41.924211,28220efc-bc42-4189-83b0-4690c191ecc5,IDLE,True,True,"Prove Lipschitz bounds for `arch_term`, `prime_term` and `margin_tau0`."
+2026-04-02T20:02:41.972513,ea5f34c0-87c6-43e3-8076-f6f638861435,IDLE,True,True,Prove 3 theorems about Lipschitz bounds.
+2026-04-02T20:02:43.060131,bd4fa504-640e-490c-ab35-2670d7c1428a,IDLE,True,True,Prove a lemma about the heat-weighted arch integral.
+2026-04-02T20:02:43.087179,a5630ba9-8de1-4bc4-9109-a32073c521e1,IDLE,True,True,Prove `arch_term_Lipschitz_heat_step1` about `arch_term`.
+2026-04-02T20:02:43.203659,5dc76478-2132-42e3-bf0a-0f1a3adba2e4,IDLE,True,True,Prove 3 Lipschitz lemmas about heat-weighted functions.
+2026-04-02T20:02:43.209996,d666c9f7-dc9f-402b-aff7-d9a7ee751408,IDLE,True,True,Prove three Lipschitz bounds on `prime_cert` functions.
+2026-04-02T20:02:43.216257,72fcc232-ffdb-488f-8e37-a8809ac3b34a,IDLE,True,True,Prove three theorems about Lipschitz bounds.
+2026-04-02T20:02:43.222197,80dfbb95-6285-4d39-80ce-3874a3b145be,IDLE,True,True,Prove 3 Lipschitz lemmas about heat-weighted functions.
+2026-04-02T20:02:43.253581,fbbbb0ba-8c41-4158-bdc0-7bbe63dfcd20,IDLE,True,True,Prove 3 theorems about Lipschitz bounds for `margin_tau0`.
+2026-04-02T20:02:43.300109,3ce75f6a-8bbe-43ab-b872-c364afc24bf2,IDLE,True,True,Prove 3 theorems about Lipschitz bounds.
+2026-04-02T20:02:43.374116,61bcb803-c52d-4e99-b74c-def0cc757b07,IDLE,True,True,Prove 3 theorems about heat Lipschitz properties.
+2026-04-02T20:02:51.980935,44167807-de0e-46f2-8c56-bf4b2c2db537,IDLE,True,True,Prove Q nonnegativity on BaseAtomCone_K.
+2026-04-02T20:02:56.780655,ba9a8cf7-a6c0-4f50-b1fc-bd9f3d2182fa,IDLE,True,True,Prove lemmas about Q functional properties and counterexamples.
+2026-04-02T20:02:56.786595,24fc0c40-4c73-45f6-ac14-a0c71a971fcf,IDLE,True,True,Prove theorems about the Q functional and its parameters.
+2026-04-02T20:02:56.799128,44b5a8e2-af1b-4e0e-b4b5-54602d773948,IDLE,True,True,Prove properties of the Q functional and its parameters.
+2026-04-02T20:02:56.811813,fdcf839c-74e2-4dde-90ac-feae1385a0f7,IDLE,True,True,Prove theorems about Q functional specifications.
+2026-04-02T20:02:56.818133,75275752-8576-45b8-b324-31621ccb5824,IDLE,False,False,b16a6b56-2e01-414e-8959-50fed43f809d
+2026-04-02T20:03:18.106725,abab9c6b-64c3-4362-97e5-a1de937c0c1d,IDLE,True,True,Prove Fejer_heat_atom_eq_phi_shifts.
+2026-04-02T20:03:18.112680,69571f5c-7ea0-4da8-90b7-5f61f343d0ec,IDLE,True,True,Prove a floor bound at t_critical.
+2026-04-02T20:03:19.580544,7183d92e-e0c0-4df6-8d5e-ee1411d57c9a,IDLE,True,True,Prove a specific inequality involving `K` and `Q3.c_star`.
+2026-04-02T20:03:19.586345,b803c0e1-f8ed-4c1e-959d-e9d824a656bf,IDLE,True,True,Prove `rayleigh_basis0_shift_ge_cstar_quarter`.
+2026-04-02T20:03:19.656694,c4ed3299-4a11-4a72-9022-44aacab22ab2,IDLE,True,True,Prove continuity of `P_A_shift` wrt `theta`.
+2026-04-02T20:03:54.232345,8c1f6beb-b3df-4203-bbf0-8f993b0787df,IDLE,True,True,Prove continuity of P_A_shift.
+2026-04-02T20:03:54.239075,a9bf5a93-2d72-4dc3-8479-3b86b2560f6b,IDLE,True,True,Prove `arch_term_phi_shift_ge_canonical` about a shifted periodized symbol.
+2026-04-02T20:04:19.107099,8a285bb6-2cb8-4ad4-a12e-25273c7e3465,IDLE,True,True,"Prove 5 lemmas about `fejer_heat_window`, `phi_shift`, and `prime_term`."
+2026-04-02T20:04:19.112833,c2b9be5b-7b63-43ca-9323-d122fe422764,IDLE,True,True,Prove `arch_term (phi_shift B t τ) ≥ c_star / 2`.
+2026-04-02T20:04:19.191854,b4e28962-5d35-4d86-a370-832a10c2858f,IDLE,True,True,Prove `integral_P_A_shift_eq_arch_term_phi_shift` about integrals and `arch_term`.
+2026-04-02T20:04:19.327488,16e30f94-e78a-4dea-92c0-aaf915b78250,IDLE,True,True,Prove an upper bound for the prime term of a shifted window.
+2026-04-02T20:04:19.339079,85a316fb-a68d-4ae4-908e-9b4f4dfb3b59,IDLE,True,True,Prove `arch_term (phi_shift ... τ) ≥ c_star / 2`.
+2026-04-02T20:04:22.084993,2d9825a3-04ee-4a6c-84b6-4a3f9bc40ae4,IDLE,True,True,Prove `P_A_shift_ge_c_star` about a shifted function.
+2026-04-02T20:04:25.653418,8cf25e13-8a77-4eaf-8458-6fa10cec3d9e,IDLE,True,True,Prove `Fejer_heat_atom_eq_phi_shift` about Fejer-heat atoms.
+2026-04-02T20:04:25.665091,e90f46d6-1a36-4cb7-90e9-1acc7c24131f,IDLE,True,True,Prove linearity of the Q functional.
+2026-04-02T20:04:30.284498,d942746d-9832-40ac-a8f7-82436cce4cd0,IDLE,True,True,Prove that Q(g) is non-negative for g in AtomCone_K.
+2026-04-02T20:04:30.291041,439e5ec3-1fb8-4ec5-8efb-e01df9d8e830,IDLE,True,True,Prove `Q_single_atom_nonneg` about `Q` functional.
+2026-04-02T20:04:30.371574,7fd6f4fe-f879-4037-946f-5e5a8d59067e,IDLE,True,True,Prove linearity of `arch_term` and `prime_term` over finite sums.
+2026-04-02T20:04:34.177915,a3ffba68-0df3-45f4-baa9-20f122278225,IDLE,True,True,Prove Rayleigh lower bound for `basis0` from `A3`.
+2026-04-02T20:04:34.202123,4321406a-44b5-44f2-bec1-70e88e836a1d,IDLE,True,True,Prove prime sum is non-negative.
+2026-04-02T20:04:34.207981,a42f0243-4302-44eb-a119-dd6ff23de998,IDLE,True,True,Prove Q distributes over finite sums with coeffs.
+2026-04-02T20:04:35.468968,5b6ddd08-eb74-413c-abc4-9273a7b8d343,IDLE,True,True,Prove `integral_P_A_eq_arch_term` about periodization.
+2026-04-02T20:04:35.526838,24601b18-f73b-43cf-96af-e4f8b6a96ed6,IDLE,True,True,Prove Q_Lipschitz_on_W_K about Q3.Q.
+2026-04-02T20:04:37.298209,c3e301fe-7b56-4cc7-a90a-0d51695d20fd,IDLE,True,True,Prove `Q_finite_eq_Q_large_K` using sum properties.
+2026-04-02T20:04:37.304409,71ed9dea-dd48-419f-a04f-7b9b07a13304,IDLE,True,True,Prove a theorem about the Toeplitz matrix diagonal.
+2026-04-02T20:04:37.310625,ca7c802c-b2c9-437e-967d-758e382af673,IDLE,True,True,Prove the periodization lemma about integrals.
+2026-04-02T20:04:39.161848,636c8cef-a155-47ff-b162-57ed6782b665,IDLE,True,True,Prove `P_A_continuous` for `P_A B_min t_sym`.
+2026-04-02T20:04:41.986102,b58dd3ea-dacf-4095-ada2-390fa4e8755d,IDLE,True,True,"Prove `prime_sum_bound`, `arch_integral_lower`, and `arch_ge_prime` theorems."
+2026-04-02T20:04:42.046368,54d5e9e6-e9d4-46c0-b8fb-57ddc0178348,IDLE,True,True,Prove theorems about Sobolev embedding and related integrals.
+2026-04-02T20:04:42.052253,8c030179-8e92-461c-99ff-60199ba77262,IDLE,True,True,Prove Carleson measure bound for prime sampling.
+2026-04-02T20:04:42.058177,e967c6b3-67a3-4d8f-9bd1-786a7cc3c86f,IDLE,True,True,Prove three theorems about prime sum and integral bounds.
+2026-04-02T20:04:42.094166,69eb719f-53d8-4be4-badc-b8e6f889d493,IDLE,True,True,Prove theorems about prime gap and Gaussian tail bounds.
+2026-04-02T20:04:42.111885,a45afe30-3e9d-4f07-adf6-16d448c63448,IDLE,True,True,Prove theorems about heat kernel localization dominance.
+2026-04-02T20:04:42.117684,dfd12c5f-f125-45cd-89f6-f4da3e5e0e1b,IDLE,True,True,Prove that `arch_term` dominates `prime_term`.
+2026-04-02T20:04:42.146797,8904f5a3-97fe-4725-913e-91464b21a12a,IDLE,True,True,Prove 2 theorems about `prime_vec_unscaled`.
+2026-04-02T20:04:42.152657,b38712cd-46fc-451e-bb45-e4b40c5fee09,IDLE,True,True,Prove two lemmas about Rayleigh quotients.
+2026-04-02T20:04:42.158367,afe97f21-522a-42f6-b993-ebecdf981856,IDLE,True,True,Prove `inner_prime_vec_eq_eval` and `eval_factor`.
+2026-04-02T20:04:42.176790,2be6fd19-7044-4d2b-af4c-c004f859512a,IDLE,True,True,Prove Archimedean domination theorem about quadratic forms.
+2026-04-02T20:04:42.183305,25f2aad7-f588-4efc-831b-cd6acd2c8156,IDLE,True,True,Prove theorems about the spectral norm of the all-ones matrix.
+2026-04-02T20:04:44.153797,72baf957-2425-4bac-b672-c30a8ca57540,IDLE,True,True,Prove continuity of `P_A`.
+2026-04-02T20:04:45.286232,35026b7a-3dcb-45c5-9942-8fc4f3e65ca5,IDLE,True,True,Prove a theorem about Rayleigh quotients and Toeplitz matrices.
+2026-04-02T20:04:45.292082,03bfc852-9fcf-487a-8da7-9fdbf205b813,IDLE,True,True,Prove theorems about Rayleigh-Q identification.
+2026-04-02T20:04:45.297988,fcf0fe0a-f43a-4771-b559-5b71e35a9c1c,IDLE,True,True,Prove an equality involving `RayleighQuotient` and `Q`.
+2026-04-02T20:04:45.303780,a2a3f996-9996-4d51-a194-0fa187dcff68,IDLE,True,True,Prove 3 theorems about `basis0` and quadratic forms.
+2026-04-02T20:04:45.309679,aa360c65-2e54-4389-ac62-8c1ac2069ee4,IDLE,False,False,c96f3b84-4125-4214-af3d-00753ca31f1e
+2026-04-02T20:04:45.687586,31a8a791-d465-4478-824e-fbca7bf8f3dd,IDLE,True,True,Prove `rayleigh_Q_identification` theorem.
+2026-04-02T20:04:45.718147,553d03c5-9543-4c4b-b48c-e87381fe8387,IDLE,True,True,Prove P_A_continuous (P_A B_min t_sym) is continuous.
+2026-04-02T20:05:17.179575,10ef4c9f-ad23-40a1-a1ee-f500e08a7429,IDLE,True,True,"Prove that `a` has a positive lower bound.
+Prove `a_star` is greater than or equal to `c_star`."
+2026-04-02T20:05:17.186147,6d2e826e-96eb-4896-8657-6e6c2a796143,IDLE,False,False,ff0c81c2-6781-45d6-85e1-59a2e6cbbbde
+2026-04-02T20:05:17.192222,5a51adfb-0faf-48ee-8974-26b23774a972,IDLE,True,True,Analyze options to fix a Lean proof chain.
+2026-04-02T20:05:18.231358,1a92d481-a34b-4932-8233-837dce57608a,IDLE,True,True,Prove Rayleigh lower bound for sampling Toeplitz matrix.
+2026-04-02T20:05:18.238696,741c02a2-3c55-4a7c-8ce2-5c338166f29a,IDLE,True,True,Understand relations between `a_star` and `P_A`.
+2026-04-02T20:05:18.245233,381fd730-451a-45ac-86db-16d4eb45df36,IDLE,True,True,Prove a_star ξ ≥ 11/10 for all ξ.
+2026-04-02T20:05:48.262834,720a0976-4b3e-4b70-bdf9-52e4100ad7fa,IDLE,True,True,Prove bounds for a weight sum in RKHS Cap.
+2026-04-02T20:05:48.268524,f1c5da63-488a-4856-80cf-ee83109f54cb,IDLE,True,True,Prove properties of a weight sum in Lean.
+2026-04-02T20:05:48.274276,d93726c7-7b00-439e-bad9-14f383a4f3f1,IDLE,True,True,Prove 6 theorems about weight sum bounds.
+2026-04-02T20:05:48.298526,86746534-3b19-40ca-aae4-15fb7e621afc,IDLE,True,True,Prove theorems about the sum of prime operator weights.
+2026-04-02T20:05:48.304623,61b5fc66-7960-4948-adf2-88b9384449e1,IDLE,True,True,Prove 6 theorems about weight function bounds.
+2026-04-02T20:05:48.310577,7d3ca5ef-0989-4b5f-9978-00ae5c16c1f3,IDLE,True,True,Prove 6 lemmas and 2 theorems about weight sum bounds.
+2026-04-02T20:05:49.379747,1a57179c-8c23-441c-a57b-3d82977c4c7c,IDLE,True,True,Prove theorems about weight sum bounds.
+2026-04-02T20:05:49.488636,04405bae-b649-46bb-b082-5bc8f5e29d2f,IDLE,True,True,Prove four lemmas and one theorem about Rayleigh quotients.
+2026-04-02T20:05:49.494784,b4ca8819-e466-430b-abf2-bbff0b08ec05,IDLE,True,True,Prove 4 lemmas and 1 theorem about Rayleigh quotients.
+2026-04-02T20:05:49.500855,366977b2-f69a-4aef-aa94-cced1ca5e981,IDLE,True,True,Prove 4 lemmas and 1 theorem about Rayleigh quotients.
+2026-04-02T20:05:49.506615,0f72bbc2-caff-4bb1-882e-9a49d670e528,IDLE,True,True,Prove 4 lemmas and 1 theorem about Rayleigh quotients.
+2026-04-02T20:05:49.512550,c21f31f4-6e55-46d8-8822-097ae0160f52,IDLE,True,True,Prove 4 Lean theorems about Rayleigh quotients.
+2026-04-02T20:05:49.593172,78ab7a8f-a951-4445-be0b-9958ab4f46fe,IDLE,True,True,Prove 3 lemmas & a main theorem about Rayleigh quotients.
+2026-04-02T20:05:49.918366,ee40da97-add2-4b18-8fcd-993c6d6b4160,IDLE,True,True,Prove four Lean4 lemmas about quadratic forms and Rayleigh quotients.
+2026-04-02T20:05:51.048285,57ed5d54-9c22-4f29-a836-ee06817357fd,IDLE,True,True,Prove four Lean theorems about Rayleigh quotients.
+2026-04-02T20:05:51.428432,671df360-f05f-49b7-8612-0024f9523ac2,IDLE,True,True,Prove `A3_bridge_rayleigh_first` theorem.
+2026-04-02T20:05:54.479337,a0df9841-e34a-457f-b896-235f3e89e5b6,IDLE,True,True,Prove a theorem about the RKHS operator norm.
+2026-04-02T20:05:55.892950,54f5612b-acb1-48d1-8387-398aa72639f7,IDLE,True,True,Prove a Rayleigh quotient lower bound for a matrix difference.
+2026-04-02T20:05:56.010060,a09e3386-7814-42ce-9529-8e5872e260d5,IDLE,True,True,Prove `A3_bridge_closure` using Rayleigh lower bound.
+2026-04-02T20:05:56.097113,e52d09b4-7321-4d4d-8fb1-2d307490eec5,IDLE,True,True,Prove the A3 bridge theorem about Rayleigh quotients.
+2026-04-02T20:05:56.345516,34c62197-e4c0-4c03-94ca-f7fa03065468,IDLE,True,True,Prove Rayleigh Lower Bound for Toeplitz matrices.
+2026-04-02T20:05:56.351024,fc3c6f23-e4d5-4e3d-afb3-1d4a4b01134a,IDLE,True,True,Prove 4 theorems about Rayleigh lower bounds.
+2026-04-02T20:05:56.430878,5d2f641a-2ac5-466a-90ec-596dc43f9cc8,IDLE,True,True,"Prove the hat_interpolation_approx theorem about functions on `[-K, K]`."
+2026-04-02T20:05:57.573484,0724837c-fd81-48f9-8dac-d6b38059205a,IDLE,True,True,Prove 3 theorems about basic arithmetic/limits.
+2026-04-02T20:05:57.603235,4f8f4c4d-89d8-4e91-a4b3-7fcf5cf1367c,IDLE,True,True,Prove `W_K_boundary_vanish` and `A1_density_WK_hat`.
+2026-04-02T20:05:57.629047,e9e58253-1567-4c9d-9efb-09a4fc739e17,IDLE,True,True,Prove `W_K_boundary_vanish` and `A1_density_WK_hat`.
+2026-04-02T20:05:57.635102,ac91017b-c4ea-4d6f-bf1d-c8762f8d10e7,IDLE,False,False,4ea0c14a-e948-4c93-b777-0489184d2bda
+2026-04-02T20:05:57.880693,50f9ffdc-75d5-4ab2-86c0-c3e1b259d3d3,IDLE,True,True,Prove `W_K_boundary_vanish` and `A1_density_WK_hat`.
+2026-04-02T20:06:02.738341,fb310570-a7cd-4ce7-8278-84799c7ed00d,IDLE,True,True,Prove hat interpolation approximation and A1 density theorem.
+2026-04-02T20:06:02.756987,88d9ab43-596a-46d9-8985-d78499a8cd14,IDLE,True,True,Prove `hat_interpolation_approx` about approximating a continuous function.
+2026-04-02T20:06:14.223232,083cb887-8099-4225-9f8c-5994db5443f4,IDLE,True,True,Prove a density theorem for A1 atoms.
+2026-04-02T20:06:20.958577,8d007fc9-455a-481b-9dc4-7dd199b86715,IDLE,True,True,Prove `A1_density_WK_thm` by combining approximation lemmas.
+2026-04-02T20:07:50.536845,dcdab6ea-114a-4395-8c00-ec19c62d0664,IDLE,True,True,Prove two theorems about `logGamma` and `digamma` functions.
+2026-04-02T20:07:55.766360,dc7fd8e0-dd6b-4dc0-a2bd-b7ed12a0d72a,IDLE,True,True,Prove `logGamma_stieltjes_N1` and `deriv logGamma = digamma`.
+2026-04-02T20:08:02.345813,9f02b1cb-19cd-49a8-9ffa-aa5ed738bbce,IDLE,True,True,Prove a theorem about Stieltjes differentiation.
+2026-04-02T20:08:02.351770,ba69b06e-3d91-4258-82c8-0c3bed5136b6,IDLE,False,False,613897bd-d34f-442f-8179-f9f2d76f4241
+2026-04-02T20:08:20.594468,719e6f7e-4073-4fb0-a673-3e2e26cf1dbc,IDLE,True,True,Prove `stieltjes_integral_deriv` about complex integrals.
+2026-04-02T20:08:22.117697,37dd3998-9ea3-4351-9c86-0b65367cf70a,IDLE,True,True,Prove a remainder bound for the digamma function.
+2026-04-02T20:08:25.683700,cc8a099d-fb12-4b6f-9783-e9ea44b911e0,IDLE,True,True,Prove theorem `integral_kernel_eq_proof` about an integral.
+2026-04-02T20:08:50.307617,2ce980b5-5c83-44b9-85c0-49fa7f66dc04,IDLE,True,True,Prove a remainder bound for the real part of digamma.
+2026-04-02T20:08:50.795244,48668e61-ae68-4a03-b0f7-36e165baf7f7,IDLE,True,True,Prove a remainder bound for the real part of digamma.
+2026-04-02T20:08:55.397856,f718efaa-91e6-46ba-9564-9b03ad3fb32d,IDLE,True,True,Prove three lower bounds for function `a`.
+2026-04-02T20:08:55.682874,699e1403-6792-42cb-ab6a-3c5b66c2add3,IDLE,True,True,"Prove lower bounds for `a` at 1/2, 3/2, 5/2."
+2026-04-02T20:09:18.454216,758fcb0d-f689-4758-a9f8-9d05edb1b247,IDLE,True,True,Prove `re_digamma_bound_tail_log` in `Q3`.
+2026-04-02T20:09:26.805709,9262d836-0086-4a8d-8882-810dfb34c7b6,IDLE,True,True,Prove `re_digamma_bound_tail_log` in `Q3`.
+2026-04-02T20:09:27.133199,7b5f4111-7d58-4548-875e-d702e98775c9,IDLE,True,True,Prove `re_digamma_bound_tail_log`.
+2026-04-02T20:09:28.531749,f335b4ce-7cc4-4ba8-899c-41d3ff3f7cc7,IDLE,True,True,Prove a real-part log bound for `Q3.digamma`.
+2026-04-02T20:09:28.729121,75f1ffbf-a79a-42f8-ad93-778ff329ad95,IDLE,True,True,Prove `re_digamma_bound_tail_log` about `Q3.digamma`.
+2026-04-02T20:09:37.387672,417e4969-e122-4172-a44e-c86167ed7d24,IDLE,True,True,Prove a log-growth bound for `Q3.a`.
+2026-04-02T20:09:38.721704,74c20e9c-70a0-4866-bc01-1e81c764175a,IDLE,True,True,Prove `a_abs_bound_tail` for `Q3.a xi`.
+2026-04-02T20:09:42.124682,7eff7e69-0935-422e-9810-c88177de8f45,IDLE,True,True,Prove theorems about `w` bounds and Gaussian tail.
+2026-04-02T20:09:42.445729,cd41bb0f-b417-450d-ad49-7abd1cb89484,IDLE,True,True,Prove 7 theorems about numerical bounds.
+2026-04-02T20:09:44.224581,a5c87606-fadd-4b5c-a0c5-0f9841dfd844,IDLE,True,True,Prove 2 theorems about `IntegrableOn` and `Tendsto`
+2026-04-02T20:09:45.888323,f3f646d3-8f88-4a3a-9f53-6acbbaf7f284,IDLE,True,True,Prove `digammaSeq` converges and `deriv digamma = trigamma`.
+2026-04-02T20:09:55.730142,46f55e01-4c02-41d8-a616-3c69922a5236,IDLE,True,True,Prove `digammaSeq_eq_logDeriv_GammaSeq`.
+2026-04-02T20:10:05.850260,673f9f7f-e064-4286-b81d-d26f92e288c9,IDLE,True,True,Prove digammaSeq_eq_logDeriv_GammaSeq.
+2026-04-02T20:10:05.985155,3d957ff7-a489-4629-972f-0e4a6ecd4b90,IDLE,True,True,d1524982-34c6-4719-9c06-700cde3141e6
+2026-04-02T20:10:06.058450,9ec7d133-9fb3-4a3f-bf29-3f74be9d502f,IDLE,True,True,Prove `im_trigamma_neg` about `trigamma z`.
+2026-04-02T20:10:10.812100,6a5f89d3-55ba-4885-ab63-50b15d3bc758,IDLE,True,True,Prove 4 theorems about trigamma and `a`.
+2026-04-02T20:10:15.678630,1b2d3517-dedb-4a9b-a9e3-881c702cfec4,IDLE,True,True,"Prove `deriv_digamma_eq_trigamma`, `deriv_a_neg`, and `strictAntiOn_a`."
+2026-04-02T20:10:15.818654,90b1dead-dcf9-407e-91e3-cec947384e59,IDLE,True,True,Prove two theorems about function `a`: `deriv_a_pos` and `strictMonoOn_a`.
+2026-04-02T20:10:17.392223,3ba81c92-f13b-43ef-8f4e-075251c280b7,IDLE,True,True,"Prove theorems `deriv_digamma_eq_neg_trigamma`, `deriv_a_pos`, and `strictMonoOn_a`."
+2026-04-02T20:10:18.926818,ae40a2c5-0d10-4bda-981c-52836fed95f2,IDLE,True,True,Prove `deriv_a_pos` and `strictMonoOn_a` for `a`.
+2026-04-02T20:10:19.158776,177a072a-330a-4667-a370-6529b3574952,IDLE,True,True,Prove `deriv_a_pos` using `deriv digamma = -trigamma`.
+2026-04-02T20:10:20.921387,7c2738e2-652a-4d2f-80a7-63bca691ad4c,IDLE,True,True,Prove 3 lemmas on monotonicity of `a(x)`.
+2026-04-02T20:10:24.267383,4818b665-0d2a-43c7-8afe-17dfc5ef2320,IDLE,True,True,"Prove `deriv_a_pos`, `strictMonoOn_a`, `deriv_digamma_eq_neg_trigamma`."
+2026-04-02T20:10:25.877437,f6a865a9-cc44-44b2-9a05-e3d71c9d0315,IDLE,True,True,Prove monotonicity of `a(ξ)` and `P_A` lower bound.
+2026-04-02T20:10:27.038148,13ebda13-5d90-4778-be80-e44f0b97f00f,IDLE,True,True,Prove properties of the Archimedean symbol.
+2026-04-02T20:10:28.831508,bbe37b40-1f25-4266-b643-76b1ade67e99,IDLE,True,True,Prove `Main_positivity` for Riemann Hypothesis.
+2026-04-02T20:10:28.837875,2fd528b0-b5ae-45b9-94d0-5ce4efb25c42,IDLE,True,True,Prove the uniform Archimedean floor theorem.
+2026-04-02T20:10:28.862957,0538d884-0b70-4923-a84c-0049d42024d8,IDLE,True,True,Prove theorems about positivity and bounds of functions.
+2026-04-02T20:10:29.137100,35e3a031-ae4e-47bc-9356-0e35dc3d3599,IDLE,True,True,Prove 5 theorems about the periodized Archimedean symbol.
+2026-04-02T20:10:33.630260,b72fff69-bca2-40f2-9d8b-bf41623db144,IDLE,True,True,Summarize lemmas and corollaries about digamma.
+2026-04-02T20:10:33.693099,ea42979f-6bc6-4b39-b3b3-45c814cda2b4,IDLE,True,True,Prove theorems about the uniform Archimedean floor.
+2026-04-02T20:10:33.719573,ac7a5ee1-fa25-4e20-8d54-76abcc3651d6,IDLE,True,True,Prove lower and upper bounds for A_star and L_star.
+2026-04-02T20:10:33.825530,d13784fc-1691-4aee-b890-8eb9cd1c1a8c,IDLE,True,True,Prove theorems about uniform Archimedean floor.
+2026-04-02T20:10:33.831622,f991bf21-d763-4e97-a07b-255438b922b6,IDLE,True,True,Prove theorems about uniform Archimedean floor.
+2026-04-02T20:10:33.837811,bc53e2bc-24e8-4746-bf85-a82898de0333,IDLE,True,True,Prove theorems about uniform constants and bounds.
+2026-04-02T20:10:36.990918,5d107106-d766-4833-a719-caa69396c9f1,IDLE,True,True,Prove `MassLemma` and `Q3_2_rel_implies_Q3_1`.
+2026-04-02T20:10:37.524350,55fcde42-9a11-4c67-9e14-971d07eb8472,IDLE,True,True,Prove that Q3_2 implies Q3_1.
+2026-04-02T20:10:37.530587,b927d777-6f18-42b0-b9a1-7fe183f140c2,IDLE,True,True,Prove 4 theorems relating to the Bridge formalization.
+2026-04-02T20:10:38.693396,e0e2bb33-1fe7-482a-b27e-493043eba29d,IDLE,True,True,Prove Q3_1_of_Q3_2_and_RepN.
+2026-04-02T20:10:38.735664,2b480fd5-a5d4-44a7-8e03-bacace819fa0,IDLE,True,True,Prove `Q3_1_of_Q3_2_and_RepN` and `RepN`.
+2026-04-02T20:10:38.759826,2256490f-60a8-43a7-aa4c-a22ca1e9f42b,IDLE,True,True,Summarize how Q3-2 leads to Q3-1.
+2026-04-02T20:10:38.795883,f10d12d0-267b-4285-a464-2aa266330bf0,IDLE,True,True,Prove 3 theorems about number theory operators.
+2026-04-02T20:10:38.807835,7adbf71a-a676-47f1-b401-3566a2d98fe2,IDLE,True,True,Prove theorems about a twisted prime operator.
+2026-04-02T20:10:42.209481,39063941-7296-4cfa-b9ac-995afff9b8b3,IDLE,True,True,Prove theorems about k-fold cancellation of sums.
+2026-04-02T20:10:42.227995,6d0b898b-3fb8-4bf7-958f-06c8e89c0d11,IDLE,True,True,Prove 4 theorems about prime number properties and operators.
+2026-04-02T20:10:42.264763,3ca63d8c-0529-4e60-914c-3c20c495eed7,IDLE,True,True,Prove the spectral gap for twin primes.
+2026-04-02T20:10:42.294130,337aaeac-4dec-44f1-acd2-c5da4151998b,IDLE,True,True,"Prove Q3_1, Q3_2, and Q3_3 to prove TPC."
+2026-04-02T20:10:42.317865,4cbd5dea-ca0c-4629-b1af-813ae351d3ab,IDLE,True,True,Prove a theorem about the exponential sum of primes.
+2026-04-02T20:10:42.323732,fee5cb7d-fdce-4139-8352-c02ae5bdade8,IDLE,True,True,Prove theorem `Q3_twins_ln6` about twin primes.
+2026-04-02T20:10:42.445072,6b08f7e9-abf1-47cb-aa9f-e383316b10a8,IDLE,True,True,Prove twin\_prime\_mod6.
+2026-04-02T20:10:42.451050,83a02301-f449-4268-90ba-ae3d498810be,IDLE,True,True,Prove the q3_twins theorem.
+2026-04-02T20:11:04.938669,e62d6505-4dfa-4298-b797-d8443d19ad6d,IDLE,True,True,Prove theorem `A1_density_WK`.
+2026-04-02T20:11:04.963777,96f4949c-0601-476b-9cb2-75cb28d43b4f,IDLE,True,True,Prove energy_decreases for Navier-Stokes.
+2026-04-02T20:11:04.969974,d2b6dc34-6856-4e7f-a10d-cfea4f7aebff,IDLE,True,True,Prove a noise upper bound for twin primes.
+2026-04-02T20:11:04.976446,5941da4b-1495-4fbf-ad16-cd96d693f731,IDLE,True,True,Prove a lower bound for the twin prime drift.
+2026-04-02T20:11:21.858914,1c595949-5b12-4622-b5cf-98957d560638,IDLE,True,True,Prove the Master Inequality theorem.
+2026-04-02T20:11:21.920505,04fa7a73-b5ac-4ced-9be7-1892506b5e39,IDLE,True,True,Summarize millennium_theorem in GlobalRegularity.lean
+2026-04-02T20:11:21.926884,71c22ba9-7f07-4d90-9e74-521c3b88223d,IDLE,True,True,Prove Goldbach's Conjecture.
+2026-04-02T20:11:23.040311,a4174b44-82e0-44cd-b1c4-48c2fbcab777,IDLE,True,True,Prove the `noise_bound` theorem about `Noise(X) = o(X)`.
+2026-04-02T20:11:23.046777,270b55f6-16ad-4147-a26d-721fb179b89e,IDLE,True,True,Prove two theorems about the drift symbol's Sobolev properties.
+2026-04-02T20:11:23.053089,2437f398-121c-4521-806a-f0ff75d292fc,IDLE,True,True,Prove the Grid-Lift Error Theorem (sobolev norm).
+2026-04-02T20:11:23.059133,de7ef979-3ad4-4dee-bf49-1f63ab512407,IDLE,True,True,Prove the master inequality for twin primes.
+2026-04-02T20:11:23.071298,55d015ea-d49c-4e90-9df6-92f9c61c9488,IDLE,True,True,Prove the Toeplitz-Integral Bridge Identity.
+2026-04-02T20:11:23.077795,a83a25a2-151b-4cc8-8938-0d8193ab328f,IDLE,True,True,Prove the Sobolev Duality Bound theorem.
+2026-04-02T20:11:23.083741,31c7e9c2-079d-4214-884f-d865ee543883,IDLE,True,True,Prove indicator functions are in H^s iff s < 1/2.
+2026-04-02T20:11:23.089766,0d12f37b-33c2-40e6-923b-7131e33f41bd,IDLE,True,True,Prove Sobolev embedding theorem for s > 1/2.
+2026-04-02T20:11:23.138017,ec56da9e-60eb-48bb-b970-68ee0c4c681a,IDLE,True,True,Prove `A1_density_WK` about density in `AtomCone_K`.
+2026-04-02T20:11:23.164342,0b220215-7928-413f-b5f3-3b1fd13a48ad,IDLE,True,True,Prove convolution_eq_Icc_of_compact_support.
+2026-04-02T20:11:23.189300,007fe2da-e5af-458d-b08b-b20b8a9c7de1,IDLE,True,True,Prove theorem A1_density_WK using existing lemmas.
+2026-04-02T20:11:23.425552,60eb5e67-2c1b-4fb1-a184-715178403ef0,IDLE,True,True,Prove `A1_density_WK` about density in `W_K`.
+2026-04-02T20:11:24.892429,66aeb9b7-f43f-4005-9c59-46a1d6c0414b,IDLE,True,True,Prove the A1 density theorem for `W_K`.
+2026-04-02T20:11:25.067191,5639afda-58d3-4742-9570-2874cd2db879,IDLE,True,True,Prove two theorems about Toeplitz quadratic forms.
+2026-04-02T20:11:25.072888,d8286be6-262b-4dd2-95ec-58f124da13e6,IDLE,True,True,Prove two lemmas about the Toeplitz operator.
+2026-04-02T20:11:25.078851,193a137f-a1f7-4147-bee7-3b02e7f7959e,IDLE,True,True,Prove two theorems about two-scale smoothing.
+2026-04-02T20:11:25.084699,ea2b9ba5-b02b-4442-86f8-ece9e757b058,IDLE,True,True,Prove theorems about global archimedean floor.
+2026-04-02T20:11:25.090547,b3cdd861-c96f-40a7-a366-7115364f7b58,IDLE,True,True,Prove that c_arch_K1 ≥ 1346209/7168000.
+2026-04-02T20:11:25.096541,7a84e7b2-c3d2-4762-a5cb-c362e90b5a91,IDLE,True,True,Prove two lemmas about the Fejér hat.
+2026-04-02T20:11:25.103152,09c6cb80-4102-44dd-8ff7-2fe7f9b2391e,IDLE,True,True,Prove `core_lower_bound` theorem.
+2026-04-02T20:11:25.134104,b0f1f118-a5d1-411a-86d5-4d35deb638be,IDLE,True,True,Prove A1_density theorem about W_K and AtomCone_K.
+2026-04-02T20:11:26.521182,ed05a2eb-0378-482c-b49f-3395745169f1,IDLE,True,True,Prove density of atom cone in test functions.
+2026-04-02T20:11:26.527283,4203a3b1-f920-4081-a763-d5bcfd00a4f1,IDLE,True,True,Prove that Q(g) is non-negative on the AtomCone.
+2026-04-02T20:12:30.953785,b0a4bd51-eea2-471c-8eeb-bc98a5f50cf7,IDLE,True,True,Prove `W_sum_finite` (weight sum is finite).
+2026-04-02T20:12:30.960349,cb2813a1-c7de-4a0b-82d0-d07eb8cba59f,IDLE,True,True,Prove theorem `S_K_small` about `S_K`.
+2026-04-02T20:12:30.966580,2b39d239-9ad8-4293-a05c-db4ffa20f280,IDLE,True,True,Prove `off_diag_exp_sum_bound` theorem.
+2026-04-02T20:12:31.046146,683605c0-eebd-4ea3-92d4-fba545efa2b1,IDLE,True,True,Prove `node_spacing` (node spacing lemma).
+2026-04-02T20:12:31.052679,0c66dd33-a0a7-4317-89a2-de9f2a87e7fb,IDLE,True,True,Prove Q_Lipschitz_on_W_K (Q is Lipschitz on W_K).
+2026-04-02T20:12:35.962701,a8cc099c-b0d7-43af-8ad3-8e00d860baef,IDLE,True,True,Prove a theorem about the T_P matrix row sum bound.
+2026-04-02T20:12:36.010630,12f37c38-3d86-4b9b-9eba-0fdbbc1954d1,IDLE,True,True,Prove that functional `Q` is Lipschitz on `W_K`.
+2026-04-02T20:12:36.016618,8dcd7a0b-88c7-4a93-9dd1-83fdff08bd45,IDLE,True,True,Prove `IsDenseInWK K` for `K > 0`.
+2026-04-02T20:13:59.736919,af272485-1a1a-4f61-825f-8b282763178d,IDLE,True,True,Prove a theorem about Toeplitz operators.
+2026-04-02T20:13:59.743107,acbe71f1-235f-49cd-a761-67b0aaa7976c,IDLE,True,True,Summarize RKHS Contraction Theorem.
+2026-04-02T20:13:59.749407,2af905e8-24dd-4944-bb52-92be264b9f7c,IDLE,True,True,Prove `IsDenseInWK` theorem.
+2026-04-02T20:15:39.209403,2f8415fb-e3fd-4e16-8f75-9252cb13dabf,IDLE,True,True,Formalize A1' Density Theorem in Lean.
+2026-04-02T20:20:09.617603,1dba08b4-4442-48de-ab78-4113ddf133c0,IDLE,True,True,Prove the Riemann Hypothesis using main theorems.
+2026-04-02T20:20:09.623808,e2e3f42b-8506-4a0b-a5ae-827371ea0415,IDLE,True,True,Prove two theorems about quadratic functional Q.
+2026-04-02T20:20:09.629867,7b7c59fb-f20f-4558-8745-bfc4b379f32e,IDLE,True,True,Prove theorems about RKHS prime contraction bounds.
+2026-04-02T20:20:09.636280,789f20e5-d61b-4016-8f6c-8271b7e128cb,IDLE,True,True,"Prove A3.BV-to-Lip, A3.Lip-Floor, A3.bridge-inequality."
+2026-04-02T20:20:09.642209,7adb707e-e553-474e-81c3-bcaf12e5dcd9,IDLE,True,True,Prove Lipschitz continuity and tail estimate for Q functional.
+2026-04-02T20:20:09.648674,78efa471-2c98-4d73-a3f1-1507bef3fb01,IDLE,True,True,Prove A1' density and fixed-t density theorems.
+2026-04-02T20:20:09.654500,f367efb5-ddf0-4de0-a805-5a00060e8add,IDLE,True,True,Prove equivalence of Q functionals for Guinand-Weil.
+2026-04-02T20:20:10.910653,00993ed6-1fc0-46c2-9c7e-6de5c2f2197b,IDLE,True,True,Prove `toeplitz_buffer_suppression` and `tail_finite_of_decay`.
+2026-04-02T20:20:10.975100,c97080d8-c80d-427b-843a-f3a97918e12a,IDLE,True,True,Prove the Fourier-Minor Equivalence theorem.
+2026-04-02T20:20:10.980743,106b2756-032a-42f4-a196-75118bafaf84,IDLE,True,True,Prove `gaussian_prime_sum` theorem.
+2026-04-02T20:20:10.986718,b63d1ffb-e0b4-4e91-bc85-8097f7555efb,IDLE,True,True,Prove theorem `exp_decay_vs_log_sq` and `polynomial_little_o_log_sq`.
+2026-04-02T20:20:10.992587,c08a7bcf-217d-4f9b-8a2d-928b968a5449,IDLE,True,True,Prove `gaussian_minor_suppression` theorem.
+2026-04-02T20:20:11.117756,d85f9ef9-2483-45ae-b5a5-c8e04676edd1,IDLE,True,True,Prove theorems MB_theorem and xi_minor_pseudorandom.
+2026-04-02T20:20:11.123684,e133db11-2001-40ea-a854-f0afff860823,IDLE,True,True,Prove the D3-Lock Repaired theorem.
+2026-04-02T20:20:11.129721,ec633e99-b989-41db-8b11-0b91a156a5f6,IDLE,True,True,Prove the Buffer Suppression Theorem.
+2026-04-02T20:20:11.135838,13c6c06f-d716-401c-96bc-4d315d51f6ad,IDLE,True,True,Prove Fourier decay and buffer suppression.
+2026-04-02T20:20:11.141754,800388b5-1824-41cd-99a8-182771c800eb,IDLE,True,True,Axiomatize Q3 spectral gap and prove a lower bound for H.
+2026-04-02T20:20:12.409488,052bdab8-e1b4-4f5f-97a4-2f5e34d51a4b,IDLE,True,True,Summarize the Q3 to TPC proof chain.
+2026-04-02T20:20:15.696754,63fd3e87-6506-4963-85ed-067aa135ec27,IDLE,True,True,Prove `B_positive_definite` to force `S₂` growth.
+2026-04-02T20:20:15.702682,2be2abad-520c-4c9f-8e87-cf9df1c74559,IDLE,True,True,Prove theorems about prime number properties.
+2026-04-02T20:20:15.732892,94ce1cf1-bda7-47a1-aaad-d3b79edfba9b,IDLE,True,True,Prove theorems about Minor Arc Estimates for F.
+2026-04-02T20:20:15.738932,24d1cca1-229a-4f44-9223-408286dea5fe,IDLE,True,True,"Prove T_split_complete, S2_lower_bound_from_resonance, and TPC_from_circle_method."
+2026-04-02T20:20:15.744873,8d6c03a2-f173-4a92-bcf3-e33f984de406,IDLE,True,True,Prove minor arcs suppression via commutator.
+2026-04-02T20:20:15.918516,e64bd19f-bbd2-43f5-8b2a-3360bb8d1018,IDLE,True,True,Prove theorems about commutator control for operators.
+2026-04-02T20:20:15.948712,d2d5c268-c56a-49db-841c-a90e2707137b,IDLE,True,True,Prove shift operator isometry and stability on sections.
+2026-04-02T20:20:15.954593,f03c26d7-4edb-4a54-8ff2-e194a8580d94,IDLE,True,True,Prove minor arc suppression and its asymptotic vanishing.
+2026-04-02T20:20:15.966724,83e74a63-e14c-4c24-b108-2c5139b4a538,IDLE,True,True,Prove theorems about Toeplitz commutator bounds.
+2026-04-02T20:20:15.972726,573f5735-86ff-4268-8ac7-d66c45eef4a5,IDLE,True,True,Prove `prime_comm_bound` about operator commutators.
+2026-04-02T20:20:15.978613,c90bbc17-8b11-423a-95e2-beecef4d4b0e,IDLE,True,True,Prove theorem `comm_sum_bound` about commutators.
+2026-04-02T20:20:15.990776,a26b0c72-89c4-416c-820e-433f7d5bd9ac,IDLE,True,True,Prove the rank-one commutator bound theorem.
+2026-04-02T20:20:16.031227,404fb0d3-b7c8-4a79-8248-54b2e055d906,IDLE,True,True,Prove a bound for the minor arcs contribution to the twin prime problem.
+2026-04-02T20:20:16.036772,4d5b64cc-f79a-4940-b3e5-8ee5e9005b93,IDLE,True,True,Prove `minor_arcs_bound` for the Twin Prime Conjecture.
+2026-04-02T20:20:16.042586,abdabe2e-8091-4ff5-8481-9c82397a990e,IDLE,True,True,Prove the minor arcs bound and the twin prime conjecture.
+2026-04-02T20:20:16.048382,ee9a39c4-83bc-49ef-963d-24df9397426b,IDLE,True,True,Prove theorems about minor arc bounds using spectral methods.
+2026-04-02T20:20:16.054316,39477bec-1386-48d0-969e-e17958b2094d,IDLE,True,True,Prove theorems about bounds on minor arcs.
+2026-04-02T20:20:16.060234,b5906bb2-6ce3-42f5-9feb-daf6f7c7b5b8,IDLE,True,True,Prove theorems about minor arcs using Vinogradov method.
+2026-04-02T20:20:16.072230,5dae1cf6-de0b-4e03-af56-d9205b97506d,IDLE,True,True,"Prove theorems A, B, and C about twin prime sums."
+2026-04-02T20:20:17.338539,8829beb8-8c75-4868-b8f4-a627ef68d17a,IDLE,True,True,Prove a minor arc bound for χ₄-weighted prime sums.
+2026-04-02T20:20:17.388534,43e0e4fe-c728-4424-a5ec-1c3eb54b840e,IDLE,True,True,Summarizes theorems about twin primes and Bell operators.
+2026-04-02T20:20:17.442065,4e96ab60-47be-4a20-8406-e0a8f70fdc99,IDLE,True,True,Prove 4 theorems about the χ₄ circle method.
+2026-04-02T20:20:17.448080,3344b8b2-b7a6-4e2b-86af-5da335565170,IDLE,True,True,Formalize the AFM structure of χ₄ on twin primes.
+2026-04-02T20:20:17.477418,c516a3f5-d9f3-4c5a-b6dc-a01dfbbc536e,IDLE,True,True,Summarize the relationship between GEH-2 and E_comm.
+2026-04-02T20:20:17.488914,7bdd2a95-b228-4d5d-8f3c-7fcf23e3a40f,IDLE,True,True,Prove theorems about Bell-Modulus Accumulation.
+2026-04-02T20:20:25.273857,29c5aa1c-a761-4d4e-a225-af8d8f01ff76,IDLE,True,True,Prove theorems about S₂ twin prime contributions.
+2026-04-02T20:20:25.279592,76ec0739-80f0-4639-a510-f6b6d6cb8d01,IDLE,True,True,Prove 4 theorems about quadratic forms.
+2026-04-02T20:20:25.665684,3a052ba5-e190-4916-a1b3-773d414893cc,IDLE,True,True,Prove a theorem about the kernel of a commutator matrix.
+2026-04-02T20:20:27.058487,082e79d5-1fee-4620-b739-28980eacaee1,IDLE,True,True,Prove the `diag_lower_bound` theorem about energy bounds.
+2026-04-02T20:20:27.163533,f572b2ef-7b0e-49b8-b6ac-fb461a509320,IDLE,True,True,Prove the character sum criterion for TPC.
+2026-04-02T20:20:27.313305,e73fa65b-dd3f-4444-8931-a9c355fc03e9,IDLE,True,True,Prove theorems about a Fourier-RKHS Bridge.
+2026-04-02T20:20:27.330124,ddf9d46e-18a2-41a4-86ec-d4859011b3a3,IDLE,True,True,Prove lemmas about twin prime gap CV growth.
+2026-04-02T20:20:28.621807,380b5e7b-e0a0-418c-8514-cc738dcc2ba2,IDLE,True,True,Prove the `contradiction_implies_infinite_twins` theorem.
+2026-04-02T20:20:28.639355,edafa258-4d8b-4b3d-a644-74eae6f36724,IDLE,True,True,Prove a theorem bridging Fourier and RKHS for twin primes.
+2026-04-02T20:20:28.724946,4fb45b0a-ce75-478f-9b2b-4bbb773df3dc,IDLE,True,True,Prove a theorem about the growth target for R(1).
+2026-04-02T20:20:28.795732,21e8bd9a-138f-4426-958b-a15e32deb3d4,IDLE,True,True,Prove cone-kernel separation lemma.
+2026-04-11T10:58:10.194731,67d09804-a379-4bcd-9535-3ed1c44068ec,IDLE,True,True,Formalize d2g25_fejer_shrinking_target_2026_04_11.md
+2026-04-13T18:28:00.902057,2f8d588f-bba6-42aa-adc5-7cf1f73837bb,IDLE,True,True,Formalize po3a_4_outer_invariance_minimal_2026_04_13.md
+2026-04-19T07:11:27.901354,d34c1795-0f57-40d4-b4b1-a457a81068e8,IDLE,True,True,Formalize po3a_a0_double_telescoping_2026_04_19.md

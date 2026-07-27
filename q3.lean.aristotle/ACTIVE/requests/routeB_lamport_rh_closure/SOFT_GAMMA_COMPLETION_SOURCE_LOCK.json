@@ -1,0 +1,90 @@
+{
+  "schema": "route_b_soft_gamma_completion_source_lock.v1",
+  "locked_at": "2026-07-12T22:40:32+02:00",
+  "node_id": "SOFT_0.S2.gamma",
+  "status": "ANALYTIC_UNIT_LOCKED_OBJECT_ROLE_OPEN",
+  "exit_code": "GAMMA_SOURCE_LOCKED_ZERO_FREE",
+  "rh_status": "NOT_RH",
+  "domain": {
+    "lambda": "lambda_real_gt_1",
+    "strip": "S={z in C:abs(Im(z))<1/2}",
+    "boundary_excluded": true
+  },
+  "definitions": {
+    "gammaC": "gammaC(s)=(1/2)*s*(s-1)*pi^(-s/2)*Gamma(s/2)",
+    "lambda_phase": "lambda^(-i*z):=Complex.exp((-i*z)*Real.log(lambda))",
+    "gamma_soft": "gamma_soft(lambda,z)=gammaC(1/2+i*z)*Complex.exp((-i*z)*Real.log(lambda))"
+  },
+  "operand_lock": {
+    "uncentered_log_core": "B_m_N(z)=L_m^(-1/2)*sum_n c_n*integral_0^L exp(i*(z+2*pi*n/L)*x)dx",
+    "raw_centered_transform": "Fplus_m_N(z)=lambda_m^(-i*z)*B_m_N(z)",
+    "completed_tracker": "Fhat_m_N(z)=gammaC(1/2+i*z)*Fplus_m_N(z)=gamma_soft(lambda_m,z)*B_m_N(z)",
+    "lambda_phase_occurrences": 1,
+    "rule": "gamma_soft multiplies B only; gammaC alone multiplies Fplus; never multiply Fplus by gamma_soft"
+  },
+  "proved_properties": {
+    "holomorphic_on_open_strip": true,
+    "nowhere_zero_on_open_strip": true,
+    "proof": "For s=1/2+i*z and abs(Im(z))<1/2, 0<Re(s)<1. Thus s and s-1 are nonzero; Gamma(s/2) is holomorphic and zero-free; the pi-cpow and exponential phase are entire and nonzero.",
+    "boundary_falsifier": "z=-i/2 gives s=1 and gammaC(1)=0; no closed-strip or global zero-free claim"
+  },
+  "source_pins": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_6_EXACT_TRANSFORM_CONVENTION.md",
+      "sha256": "db4b185e9e9ba750936410f9c4e37d90b10586624e06315f1e045d604a0ac3ff",
+      "scope": "LAMBDA_GT_ONE_BRANCH_FREE_POWER_AND_CENTERING_PHASE"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
+      "sha256": "524565589a228788039c6853e7919d6bf4f0f916e42493c6119372d637eb9b1d",
+      "scope": "GAMMAC_DEFINITION_AND_COMPLETED_TRACKER"
+    },
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4",
+      "scope": "PROPOSITION_5_9_AND_THEOREM_5_10_PHASE_SHAPE"
+    }
+  ],
+  "external_source_references": [
+    {
+      "publisher": "NIST Digital Library of Mathematical Functions",
+      "version": "1.2.7",
+      "release_date": "2026-06-15",
+      "url": "https://dlmf.nist.gov/5.2",
+      "scope": "GAMMA_MEROMORPHIC_WITH_NO_ZEROS"
+    },
+    {
+      "publisher": "NIST Digital Library of Mathematical Functions",
+      "version": "1.2.7",
+      "release_date": "2026-06-15",
+      "url": "https://dlmf.nist.gov/4.2#iii",
+      "scope": "COMPLEX_EXPONENTIAL_ENTIRE_WITH_NO_ZEROS"
+    }
+  ],
+  "lean_artifact": {
+    "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GammaSoftZeroFree.lean",
+    "sha256": "615548873f1c12dfd5f5e047c74135cd1f0fc454614c3fdc9d685472f3934c4b",
+    "theorems": [
+      "gammaC_centered_ne_zero",
+      "gammaSoft_ne_zero"
+    ],
+    "holes": 0,
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "s2_semantic_role": {
+    "status": "OPEN",
+    "required_next": "Independently prove that one cluster limit equals c*Xi*gamma_soft (or a separately pinned fixed analytic unit) on an accumulating set; do not define gamma as F/(c*Xi)."
+  },
+  "firewalls": [
+    "NO_CLOSED_STRIP_ZERO_FREE",
+    "NO_GLOBAL_ZERO_FREE",
+    "NO_POSTHOC_QUOTIENT",
+    "NO_DOUBLE_COMPLETION",
+    "NO_S2_IDENTIFICATION",
+    "NO_RH"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "soft_l2_autocorrelation_tail_check_v1",
+  "cell": {
+    "lambda_sq": 13,
+    "N": 120,
+    "L": "2.564949357461536736053487441565318604805"
+  },
+  "source_packet": "ground_xi1_m13_N120",
+  "tail_grid": "positive ledger lags t/L in {1/2,2/3,5/6,1}; negative lags duplicate by Hermitian symmetry",
+  "majorant": "|A(t)| <= e_L(L-t) for L/2 <= t <= L",
+  "edge_profile_definition": "e_L(delta)=(integral_{L/2-delta<|u|<=L/2}|q_L(u)|^2 du)^(1/2)",
+  "edge_evaluation": "direct evaluation of the registered edge-profile formula at each ledger delta; no interpolation",
+  "input_sha256": {
+    "lag_ledger_13_120": "9d3d3200e86404a5d16c0d6b4da73a791e68d2dc8d78ab95fa1211668591b7b6",
+    "edge_profile": "f2e1722f53bd5bc4e6989db1e0c445d900aa825651962f3ce68942ed19ddce25",
+    "ground_packet": "cbc556ef7c73c9aefa9f177bb59aeca5867ed6628e3f1cca6edb270bfc13e7f0"
+  },
+  "rows": [
+    {
+      "t_over_L": 0.5,
+      "t": "1.2824746787307683680267437207826593",
+      "delta_over_L": 0.5,
+      "delta": "1.2824746787307683680267437207826593",
+      "abs_A_raw": "0.000013615056055604562699919300700125822",
+      "abs_A_for_judge": "0.000013615056055604562699919300700125822",
+      "edge_majorant_eL": "1.0000000000000000174915963936193633",
+      "majorant_over_abs_A": "73448.10009712413452071799",
+      "margin_orders_log10": "4.8659805662527991802",
+      "endpoint_anchor": "NOT_ENDPOINT",
+      "passed": true
+    },
+    {
+      "t_over_L": 0.6666666666666666,
+      "t": "1.7099662383076911573689916277102124",
+      "delta_over_L": 0.3333333333333333,
+      "delta": "0.8549831191538455786844958138551062",
+      "abs_A_raw": "3.8861058709420777452183994858527279e-11",
+      "abs_A_for_judge": "3.8861058709420777452183994858527279e-11",
+      "edge_majorant_eL": "0.059445732125074693276199948950769977",
+      "majorant_over_abs_A": "1529699243.903093590463988",
+      "margin_orders_log10": "9.1846060520249176834",
+      "endpoint_anchor": "NOT_ENDPOINT",
+      "passed": true
+    },
+    {
+      "t_over_L": 0.8333333333333334,
+      "t": "2.1374577978846139467112395346377655",
+      "delta_over_L": 0.16666666666666666,
+      "delta": "0.4274915595769227893422479069275531",
+      "abs_A_raw": "6.0168504180146551444459556122335699e-22",
+      "abs_A_for_judge": "6.0168504180146551444459556122335699e-22",
+      "edge_majorant_eL": "0.0000024399128873538429432226408071855773",
+      "majorant_over_abs_A": "4055133031143105.421290106",
+      "margin_orders_log10": "15.608005106079528569",
+      "endpoint_anchor": "NOT_ENDPOINT",
+      "passed": true
+    },
+    {
+      "t_over_L": 1.0,
+      "t": "2.5649493574615367360534874415653186",
+      "delta_over_L": 0.0,
+      "delta": "0.0",
+      "abs_A_raw": "1.9179733365290003445546190046693761e-81",
+      "abs_A_for_judge": "0.0",
+      "edge_majorant_eL": "0.0",
+      "majorant_over_abs_A": null,
+      "margin_orders_log10": null,
+      "endpoint_anchor": "EXACT_SUPPORT_ENDPOINT_A_OF_L_EQ_0",
+      "passed": true
+    }
+  ],
+  "verdict": "TAIL_DOMINATED",
+  "round13_role": "OPTIONAL_SOURCE_COMPACTNESS_SPATIAL_TIGHTNESS_DIAGNOSTIC",
+  "l2_2_input": false,
+  "supplies_uniform_translation_continuity": false,
+  "map_recode": "FALSE_WALL_REMOVED_ROUND13",
+  "minimum_margin_orders": "4.8659805662527991802",
+  "minimum_margin_location_t_over_L": 0.5,
+  "guards": {
+    "endpoint_uses_exact_compact_support_anchor": true,
+    "raw_endpoint_residue_is_preserved": true,
+    "finite_grid_is_not_an_asymptotic_theorem": true,
+    "RH": false
+  }
+}

@@ -273,6 +273,40 @@ Current fail-closed address:
   `ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION`, all remaining leaves require
   exact source/object/family/rate/filter/owner input, and the canonical active
   stop remains `D0_7E_WPRIME_CONSUMER_MISSING`;
+- rev42 paper-closes `SoftSubsequenceZeroEscape` as
+  `SOFT_SUBSEQUENCE_CLOSURE_TYPED`, source-locks and Lean-checks
+  `gamma_soft` as a zero-free unit on the open strip, recodes the OffAxis
+  diagnostic to `OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS`, and closes the R3
+  A/B mint menu as `MINT_MENU_FALSIFIED`; the exact finite roof remains
+  `SOFT_ROOF_BODY_MISSING` without an H4 cycle, S2 divisor identification is
+  open, and D0.7e.5a remains BLOCKED/ACTIVE under
+  `NON_CRITICAL_PENDING_SOFT_0` with no mint and no Bus 010;
+- rev43 executes SOFT_1 and types `GaugeSoftSubsequenceZeroEscape`, locks the
+  sole orientation `Fhat/gamma=B`, source-locks `zeta(1/4)!=0`, and writes the
+  exact linear transform-side pairing; the demanded prime/Gamma reduction
+  fails because the locked Weil machinery only supplies
+  `QW(f,g)=Psi(f^**g)`, not a linear tracker-pairing crosswalk, so the exact
+  stop is `SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC`; the product-tail S2 target
+  is posed but open, D0.7e.5a remains BLOCKED/ACTIVE under
+  `NON_CRITICAL_PENDING_SOFT_1`, with no mint and no Bus 010;
+- rev44 executes SOFT_2: planted judges A/B/C all fire their registered codes,
+  the 4096-point float64 `PhaseStructureProbe` gives
+  `sd(theta mod pi)=0.8942..0.8999` and systematic phase drift in all four
+  cells, hence `C2_PHASE_FREE`; D0.1/D0.5 lock only real/conjugation symmetry
+  of `kTrial`, not inversion or pointwise reality, so C2 is killed as stated
+  while C1/C3 remain for Proshka round 4; D0.7e.5a remains BLOCKED/ACTIVE
+  under `NON_CRITICAL_PENDING_SOFT_2`, with no mint and no Bus 010;
+- rev45 integrates ROUND13 as `SOFT_L2_ROUND13_INTEGRATION_LOCKED`: the
+  `SOFT_SAME_COFINAL_SUBSEQUENCE` guard forces H2a-cofinal/S1 onto one parent
+  diagonal and S2 onto a nested extraction (failure
+  `SOFT_COFINAL_SUBSEQUENCE_MISMATCH`); simple ground exports canonical
+  phase-independent autocorrelation as a derived corollary, not a new node;
+  L2.2 is frozen, typed, and still OPEN as
+  `GlobalPositiveDefiniteUniqueness` with exactly five inputs; the stronger
+  source-compactness theorem is an optional side leaf whose three plants are
+  live; TailCheck remains `TAIL_DOMINATED` only as an optional spatial-
+  tightness diagnostic, and the full/local detour is removed under
+  `FALSE_WALL_REMOVED_ROUND13`; no Bus 010, `NOT_RH`;
 - rev16 also proves the non-bottom cofinal square-envelope rate package
   `H4d1b/H4d1c`; rev23 supplies the generic square-envelope arithmetic, while
   exact H4d2 still lacks the source-locked WPrime identity, exact SAFE inputs,

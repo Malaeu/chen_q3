@@ -1,0 +1,119 @@
+{
+  "schema": "soft_l2_round13_source_compactness_plants_v1",
+  "role": "VALIDATORS_FOR_OPTIONAL_SOURCE_COMPACTNESS_LEAF",
+  "plants": [
+    {
+      "id": "P1_SHIFT",
+      "formula": "q_a(u)=q(u-a)",
+      "target": "autocorrelation cannot determine absolute source center",
+      "lags": [
+        -0.7,
+        0.0,
+        0.55
+      ],
+      "base_autocorrelation": [
+        0.5215508939054734,
+        0.9999999999999999,
+        0.6651890209674581
+      ],
+      "shifted_autocorrelation": [
+        0.5215508939054732,
+        1.0,
+        0.6651890209674582
+      ],
+      "max_abs_autocorrelation_difference": 2.220446049250313e-16,
+      "source_center_displacement": 3.0,
+      "nonzero_shift_breaks_even_sector": true,
+      "status": "FIRED",
+      "code": "SOURCE_CENTER_NOT_VISIBLE_TO_AUTOCORRELATION"
+    },
+    {
+      "id": "P2_SCALE",
+      "formula": "q_a(u)=a^(1/2) q(a u)",
+      "target": "edge tightness alone does not imply uniform translation continuity or a nonzero local autocorrelation limit",
+      "rows": [
+        {
+          "a": 1.0,
+          "norm_sq": 0.9999999999999999,
+          "central_mass_radius_0p25": 0.48727702139472084,
+          "A_at_fixed_lag_0p2": 0.9426567457952175,
+          "translation_step_h_eq_1_over_a": 1.0,
+          "translation_defect": 1.221081413462472,
+          "distributional_L1_scaling_factor": 1.0
+        },
+        {
+          "a": 2.0,
+          "norm_sq": 1.0,
+          "central_mass_radius_0p25": 0.8492609689765441,
+          "A_at_fixed_lag_0p2": 0.8005481237885175,
+          "translation_step_h_eq_1_over_a": 0.5,
+          "translation_defect": 1.2210814134624721,
+          "distributional_L1_scaling_factor": 0.5
+        },
+        {
+          "a": 4.0,
+          "norm_sq": 1.0,
+          "central_mass_radius_0p25": 1.0,
+          "A_at_fixed_lag_0p2": 0.4270676299980258,
+          "translation_step_h_eq_1_over_a": 0.25,
+          "translation_defect": 1.221081413462472,
+          "distributional_L1_scaling_factor": 0.25
+        },
+        {
+          "a": 8.0,
+          "norm_sq": 1.0000000000000002,
+          "central_mass_radius_0p25": 1.0000000000000002,
+          "A_at_fixed_lag_0p2": 0.004083084790872012,
+          "translation_step_h_eq_1_over_a": 0.125,
+          "translation_defect": 1.2210814134624721,
+          "distributional_L1_scaling_factor": 0.125
+        },
+        {
+          "a": 16.0,
+          "norm_sq": 1.0,
+          "central_mass_radius_0p25": 0.9999999999999999,
+          "A_at_fixed_lag_0p2": 0.0,
+          "translation_step_h_eq_1_over_a": 0.0625,
+          "translation_defect": 1.2210814134624721,
+          "distributional_L1_scaling_factor": 0.0625
+        }
+      ],
+      "identity": "A_(q_a)(t)=A_q(a*t)",
+      "norms_preserved": true,
+      "central_concentration_observed": true,
+      "fixed_nonzero_lag_collapses": true,
+      "uniform_translation_continuity_fails": true,
+      "status": "FIRED",
+      "code": "EDGE_TIGHTNESS_ALONE_KILLED"
+    },
+    {
+      "id": "P3_OSCILLATOR",
+      "formula": "A_beta(t)=A0(t)*cos(beta*t), A0(t)=exp(-t^2)",
+      "target": "uniform autocorrelation tails alone do not prevent frequency escape or the zero local-distribution limit",
+      "betas": [
+        1.0,
+        2.0,
+        4.0,
+        8.0,
+        16.0
+      ],
+      "test_function": "phi(t)=exp(-t^2)",
+      "exact_pairings": [
+        1.1060458441464132,
+        0.7601734505331403,
+        0.16961762375804412,
+        0.00042044005409122727,
+        1.5872177719983644e-14
+      ],
+      "last_over_first_pairing": 1.435037960133826e-14,
+      "uniform_envelope_ratio": 1.0,
+      "positive_definite_certificate": "half-sum of the two beta-shifts of the positive Gaussian spectral measure",
+      "status": "FIRED",
+      "code": "UNIFORM_TAIL_ALONE_KILLED"
+    }
+  ],
+  "all_plants_live": true,
+  "output_code": "SOFT_L2_SOURCE_COMPACTNESS_PLANTS_ALL_LIVE",
+  "l2_2_evidence": false,
+  "RH": false
+}

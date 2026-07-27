@@ -1,0 +1,450 @@
+{
+  "arithmetic": {
+    "dps_escalation": false,
+    "dtype": "float64/complex128",
+    "numpy": "2.5.1",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.0",
+    "scipy": "1.18.0"
+  },
+  "cells": [
+    {
+      "L_m": 2.5649493574615367,
+      "N": 90,
+      "bDet_float64_nonzero_check": 0.5921835835971866,
+      "c0_float64": {
+        "im": 6.94783699889377e-110,
+        "re": -0.5399770007043461
+      },
+      "denominator": {
+        "log_sup": -13.27475215220383,
+        "x_argmax": 14.92997310137344
+      },
+      "lambda": 3.605551275463989,
+      "lambda_sq": 13,
+      "ratios": {
+        "0.1": {
+          "R": 0.9657545818755461,
+          "log_R": -0.034845533076774515,
+          "numerator_log_sup": -13.309597685280604,
+          "x_argmax": 14.91575108123087
+        },
+        "0.2": {
+          "R": 0.9493981327208673,
+          "log_R": -0.0519270396660243,
+          "numerator_log_sup": -13.326679191869854,
+          "x_argmax": 14.874270189148373
+        },
+        "0.3": {
+          "R": 0.9531790486640997,
+          "log_R": -0.04795251399900913,
+          "numerator_log_sup": -13.322704666202839,
+          "x_argmax": 14.793678741673805
+        },
+        "0.4": {
+          "R": 1.1416419087952114,
+          "log_R": 0.13246749708411798,
+          "numerator_log_sup": -13.142284655119711,
+          "x_argmax": 14.134725141734695
+        }
+      },
+      "source": {
+        "c0_float64": {
+          "im": 6.94783699889377e-110,
+          "re": -0.5399770007043461
+        },
+        "coefficient_norm_float64": 0.9999999999999999,
+        "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_90.json",
+        "source_arithmetic": "persisted_dps_110_cast_once_to_float64",
+        "source_sha256": "ca8f8b083b86da86d0c3716af6614cfc57007c33884d95352710ea2977b5671e"
+      }
+    },
+    {
+      "L_m": 2.5649493574615367,
+      "N": 120,
+      "bDet_float64_nonzero_check": 0.5921835835971866,
+      "c0_float64": {
+        "im": -5.863574355518188e-110,
+        "re": -0.5399770007043461
+      },
+      "denominator": {
+        "log_sup": -13.27475215220383,
+        "x_argmax": 14.92997310137344
+      },
+      "lambda": 3.605551275463989,
+      "lambda_sq": 13,
+      "ratios": {
+        "0.1": {
+          "R": 0.9657545818755461,
+          "log_R": -0.034845533076774515,
+          "numerator_log_sup": -13.309597685280604,
+          "x_argmax": 14.91575108123087
+        },
+        "0.2": {
+          "R": 0.9493981327208673,
+          "log_R": -0.0519270396660243,
+          "numerator_log_sup": -13.326679191869854,
+          "x_argmax": 14.874270189148373
+        },
+        "0.3": {
+          "R": 0.9531790486640997,
+          "log_R": -0.04795251399900913,
+          "numerator_log_sup": -13.322704666202839,
+          "x_argmax": 14.793678741673805
+        },
+        "0.4": {
+          "R": 1.1416419087952114,
+          "log_R": 0.13246749708411798,
+          "numerator_log_sup": -13.142284655119711,
+          "x_argmax": 14.134725141734695
+        }
+      },
+      "source": {
+        "c0_float64": {
+          "im": -5.863574355518188e-110,
+          "re": -0.5399770007043461
+        },
+        "coefficient_norm_float64": 0.9999999999999999,
+        "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_120.json",
+        "source_arithmetic": "persisted_dps_110_cast_once_to_float64",
+        "source_sha256": "0e5239355c54103859b22d7f753d8cd6765c2c41bcd3ec7f86b20beccc907a88"
+      }
+    },
+    {
+      "L_m": 2.6390573296152584,
+      "N": 120,
+      "bDet_float64_nonzero_check": 0.592913832260535,
+      "c0_float64": {
+        "im": -5.409189449915648e-110,
+        "re": -0.5329978605277619
+      },
+      "denominator": {
+        "log_sup": -13.298927815827984,
+        "x_argmax": 14.927602764683012
+      },
+      "lambda": 3.7416573867739413,
+      "lambda_sq": 14,
+      "ratios": {
+        "0.1": {
+          "R": 0.9658023680669919,
+          "log_R": -0.03479605362295146,
+          "numerator_log_sup": -13.333723869450935,
+          "x_argmax": 14.913380744540442
+        },
+        "0.2": {
+          "R": 0.9495817037837103,
+          "log_R": -0.05173370315987924,
+          "numerator_log_sup": -13.350661518987863,
+          "x_argmax": 14.871899852457943
+        },
+        "0.3": {
+          "R": 0.9536293320036847,
+          "log_R": -0.04748022391205531,
+          "numerator_log_sup": -13.346408039740039,
+          "x_argmax": 14.791308404983376
+        },
+        "0.4": {
+          "R": 1.14467532844177,
+          "log_R": 0.13512104085056187,
+          "numerator_log_sup": -13.163806774977422,
+          "x_argmax": 14.134725141734695
+        }
+      },
+      "source": {
+        "c0_float64": {
+          "im": -5.409189449915648e-110,
+          "re": -0.5329978605277619
+        },
+        "coefficient_norm_float64": 1.0,
+        "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_14_N_120.json",
+        "source_arithmetic": "persisted_dps_110_cast_once_to_float64",
+        "source_sha256": "f2ecc3e794728dceff933f2ced8b7e91593fc5d956a3a4d4a7522dda892bfecf"
+      }
+    },
+    {
+      "L_m": 3.970291913552122,
+      "N": 120,
+      "bDet_float64_nonzero_check": 0.5996704999241003,
+      "c0_float64": {
+        "im": 0.0,
+        "re": -0.4395008921948096
+      },
+      "denominator": {
+        "log_sup": -13.526172320335172,
+        "x_argmax": 14.908640071159585
+      },
+      "lambda": 7.280109889280518,
+      "lambda_sq": 53,
+      "ratios": {
+        "0.1": {
+          "R": 0.9662551225796261,
+          "log_R": -0.03432737758912374,
+          "numerator_log_sup": -13.560499697924296,
+          "x_argmax": 14.894418051017015
+        },
+        "0.2": {
+          "R": 0.9513294175383228,
+          "log_R": -0.049894885734421024,
+          "numerator_log_sup": -13.576067206069593,
+          "x_argmax": 14.851751990589301
+        },
+        "0.3": {
+          "R": 0.957945174897472,
+          "log_R": -0.042964731357177044,
+          "numerator_log_sup": -13.56913705169235,
+          "x_argmax": 14.767605038079092
+        },
+        "0.4": {
+          "R": 1.1731699212826103,
+          "log_R": 0.15970941960856244,
+          "numerator_log_sup": -13.36646290072661,
+          "x_argmax": 14.134725141734695
+        }
+      },
+      "source": {
+        "c0_float64": {
+          "im": 0.0,
+          "re": -0.4395008921948096
+        },
+        "coefficient_norm_float64": 0.9999999999999999,
+        "convergence": {
+          "compare_degree": 550,
+          "final_degree": 650,
+          "max_abs_compare_degree_vs_final_degree": 3.59168163342593e-16,
+          "max_abs_q64_vs_q128": 3.862428156794517e-15,
+          "quad_high": 128,
+          "quad_low": 64
+        },
+        "source": "fresh_float64_breakpoint_constructor",
+        "source_arithmetic": "IEEE754_BINARY64_ONLY_NO_DPS_ESCALATION"
+      }
+    },
+    {
+      "L_m": 4.61512051684126,
+      "N": 120,
+      "bDet_float64_nonzero_check": 0.6007839673440064,
+      "c0_float64": {
+        "im": 0.0,
+        "re": -0.4083994110481479
+      },
+      "denominator": {
+        "log_sup": -13.564262289740558,
+        "x_argmax": 14.906269734469156
+      },
+      "lambda": 10.04987562112089,
+      "lambda_sq": 101,
+      "ratios": {
+        "0.1": {
+          "R": 0.9663317199114252,
+          "log_R": -0.03424810836286696,
+          "numerator_log_sup": -13.598510398103425,
+          "x_argmax": 14.89086254598137
+        },
+        "0.2": {
+          "R": 0.9516263732486648,
+          "log_R": -0.04958278630027735,
+          "numerator_log_sup": -13.613845076040835,
+          "x_argmax": 14.84819648555366
+        },
+        "0.3": {
+          "R": 0.9586840421745434,
+          "log_R": -0.04219372431304791,
+          "numerator_log_sup": -13.606456014053606,
+          "x_argmax": 14.76404953304345
+        },
+        "0.4": {
+          "R": 1.17794516726247,
+          "log_R": 0.1637715368306445,
+          "numerator_log_sup": -13.400490752909914,
+          "x_argmax": 14.134725141734695
+        }
+      },
+      "source": {
+        "c0_float64": {
+          "im": 0.0,
+          "re": -0.4083994110481479
+        },
+        "coefficient_norm_float64": 0.9999999999999999,
+        "convergence": {
+          "compare_degree": 900,
+          "final_degree": 1024,
+          "max_abs_compare_degree_vs_final_degree": 8.326672684688674e-16,
+          "max_abs_q64_vs_q128": 3.0128632989081873e-15,
+          "quad_high": 128,
+          "quad_low": 64
+        },
+        "source": "fresh_float64_breakpoint_constructor",
+        "source_arithmetic": "IEEE754_BINARY64_ONLY_NO_DPS_ESCALATION"
+      }
+    }
+  ],
+  "constructor_validation": {
+    "cell": [
+      13,
+      120
+    ],
+    "max_abs_q128_vs_persisted_cast": 6.682346851066746e-15,
+    "max_abs_q64_vs_q128": 1.488537494887304e-11,
+    "q128_metadata": {
+      "N": 120,
+      "c0": {
+        "im": 0.0,
+        "re": -0.5399770007043457
+      },
+      "coefficient_norm": 1.0,
+      "g04_mix": [
+        0.5185880115196544,
+        -0.8550242536373402
+      ],
+      "interval_count": 12,
+      "lambda": 3.605551275463989,
+      "lambda_sq": 13,
+      "last_ten_legendre_mass": 2.581647671841472e-49,
+      "max_degree": 180,
+      "pN_norm_g04": 0.4693475223537306,
+      "prolate_eigenvalues_0_8": [
+        80.92907752347723,
+        404.6216250330684,
+        724.2175529925144,
+        1039.6346151342318,
+        1350.7848282146651
+      ],
+      "quad_order": 128,
+      "raw_norm_g04": 0.4693475223537305
+    }
+  },
+  "control_plane_guards": {
+    "D0.7e.5a_activity": "ACTIVE",
+    "D0.7e.5a_proof_status": "BLOCKED",
+    "bus_010_created": false,
+    "mint_activated": false,
+    "state_mutated": false,
+    "state_revision_observed": 41
+  },
+  "explicit_nonclaims": [
+    "NO_ASYMPTOTIC_LAW",
+    "NO_COMPLETION_CLASS_INVARIANCE",
+    "NO_LOCAL_NORMALITY_FROM_PROBE",
+    "NO_S2_IDENTIFICATION_FROM_PROBE",
+    "NO_H3E_CLOSURE",
+    "NO_WPRIME_MINT",
+    "NO_D0_7E_5A_CLOSURE",
+    "NO_N_OF_LAMBDA_SELECTOR",
+    "NO_BUS_010",
+    "NO_RH"
+  ],
+  "fit": {
+    "cells": [
+      [
+        13,
+        120
+      ],
+      [
+        14,
+        120
+      ],
+      [
+        53,
+        120
+      ],
+      [
+        101,
+        120
+      ]
+    ],
+    "duplicate_m_policy": "use N=120 once; (13,90) is an N-stability probe",
+    "intercept": -0.055202415850626164,
+    "method": "ordinary least squares with intercept",
+    "predictor": "L_m=log(m)",
+    "r_squared": 0.9742164010279534,
+    "registered_thresholds": {
+      "otherwise": "EXTEND_M",
+      "slope_ge_0.10": "SOFT_ROUTE_DEAD_RAW",
+      "slope_le_0.03": "OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS"
+    },
+    "response": "log R(0.3;m)",
+    "slope": 0.0029166181315253155,
+    "slope_standard_error": 0.0003355124373636578
+  },
+  "interpretation_lock": {
+    "classification": "NONDECISIVE_FALSIFIER_ONLY",
+    "completion_class_invariant": false,
+    "does_not_prove": [
+      "LOCAL_NORMALITY",
+      "S2_IDENTIFICATION",
+      "RH"
+    ],
+    "gauge_rule": "multiplication by lambda^(-i*c*z) multiplies R(y;m) by lambda^(c*y) and shifts the L_m slope by c*y/2",
+    "meaning": "registered sampled raw blow-up threshold did not fire",
+    "slope_y_0_3_extra_lambda_phase": 0.1529166181315253,
+    "slope_y_0_3_inverse_lambda_phase": -0.14708338186847467
+  },
+  "next_normalization_policy": {
+    "anchor": "F_j(0)=Xi(0)!=0",
+    "code": "CENTRAL_ANCHOR_NORMALIZATION_LOCKED",
+    "forbidden": "PER_COMPACT_OR_STRIP_SUP_NORMALIZATION",
+    "formula": "F_j(z)=Xi(0)/Ghat_j(0)*Ghat_j(z) on Ghat_j(0)!=0"
+  },
+  "generated_coefficient_artifacts": [
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/off_axis_k1_coeffs_lambda_sq_53_N_120_float64.json",
+      "sha256": "da8b2b09b0cd50f63edb1914754efe78bfa80681054d935e4a2f4006acff17a5"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/off_axis_k1_coeffs_lambda_sq_101_N_120_float64.json",
+      "sha256": "982ed566debe856764770f429924b806dba22b3322f05dd92f63235fc707f626"
+    }
+  ],
+  "new_cell_policy": {
+    "N": 120,
+    "cells": [
+      [
+        53,
+        120
+      ],
+      [
+        101,
+        120
+      ]
+    ],
+    "classification": "FIXED_DIAGNOSTIC_N_NOT_A_SELECTOR_N_OF_LAMBDA",
+    "prime_support": "primes and prime powers <= m recorded in new coefficient payloads"
+  },
+  "object_lock": {
+    "d0_7e_source": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_CENTRAL_MELLIN_CALIBRATION.md",
+    "d0_7e_source_sha256": "524565589a228788039c6853e7919d6bf4f0f916e42493c6119372d637eb9b1d",
+    "formula": "Fhat(z)=gammaC(1/2+i*z)*lambda^(-i*z)/sqrt(L)*sum_n c_n*integral_0^L exp(i*(z+2*pi*n/L)*x) dx",
+    "object": "G_m_N=Fhat_m_N/bDet_m_N on BDetNonzero",
+    "ratio_cancellation": "bDet is independent of x,y and cancels exactly in R"
+  },
+  "raw_csv": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OFF_AXIS_GROWTH_PROBE.csv",
+    "sha256": "99b61c80567e0e0d8c3a5be8e52a22d35376d0a05c4b7051eb70fa0e0fb55c90"
+  },
+  "report": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OFF_AXIS_GROWTH_PROBE.md",
+    "sha256": "264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4"
+  },
+  "rh_status": "NOT_RH",
+  "schema": "route_b_off_axis_growth_probe.v1",
+  "status": "COMPLETE_DIAGNOSTIC_ONLY",
+  "task": "OffAxisGrowthProbe",
+  "verdict_code": "OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS",
+  "window": {
+    "definition": "[gamma_1,gamma_11], exactly ten empirical mean zero spacings",
+    "grid_count": 32769,
+    "grid_step": 0.0011851683452146489,
+    "mean_spacing": 3.883559633597977,
+    "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/anchor_locked_zeros_first_200.json",
+    "source_sha256": "80803a9158014ed97551ff97122cbcd96cea14e58a2f1df9312377fff3aa4ade",
+    "width": 38.83559633597977,
+    "x_max": 52.970321477714464,
+    "x_min": 14.134725141734695,
+    "y_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ]
+  }
+}

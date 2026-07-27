@@ -1,0 +1,80 @@
+{
+  "schema": "route_b_soft_1_gate_certificate_v1",
+  "created_at": "2026-07-13T00:48:00+02:00",
+  "gate": "SOFT_1_ZeroFreeGaugeAndDistributionalIdentification",
+  "status": "STOPPED_AT_G4_NOT_RH",
+  "output_code": "SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC",
+  "authority_pins": {
+    "SOFT_1_GATE_CONTRACT.md": "d7038b265a557e7840065d40d0045c57c11b3f7102f2e60657e39a6c94aba525",
+    "SOFT_1_PRO_VERDICT_PROSHKA_GAUGE_2026-07-12.md": "0e0c8d2650ccc49dcf5429cd751f87944806cb5589bc4426cf95420691b03e66",
+    "SOFT_0_ROOF_AND_S2_TYPECHECK_2026-07-12.md": "078309f42aa547f17264b93888e1b996edd2f25f727c5984d8d58ad496f18417",
+    "D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md": "52c58cee35344edc5baa30f3e2028b402c9a64a0e9a08c4dd093557a5a561308",
+    "D0_6_EXACT_TRANSFORM_CONVENTION.md": "db4b185e9e9ba750936410f9c4e37d90b10586624e06315f1e045d604a0ac3ff",
+    "D0_7E_CENTRAL_MELLIN_CALIBRATION.md": "524565589a228788039c6853e7919d6bf4f0f916e42493c6119372d637eb9b1d",
+    "SOFT_GAMMA_COMPLETION_SOURCE_LOCK.json": "96b603cf40fa11ff8535dcfb1b73ca67ee84e3f350c28f4d1001a1e0584bd75b",
+    "literature/zotero/H8ULBMAL/fulltext.md": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+  },
+  "deliverables": {
+    "paper": {
+      "path": "SOFT_1_ZERO_FREE_GAUGE_AND_DISTRIBUTIONAL_IDENTIFICATION_2026-07-13.md",
+      "sha256": "1f611065b80a0d51a90c19770903f0ae0fcaf29661006bcf214e86fc9fc1d20b"
+    },
+    "zeta_one_quarter_source_lock": {
+      "path": "SOFT_ZETA_ONE_QUARTER_SOURCE_LOCK.json",
+      "sha256": "954f70aa21e3de86226d2c6df36db098f50d0158ad6431dcf498c45ccda7fc0d"
+    }
+  },
+  "obligations": {
+    "G1": {
+      "status": "TYPED_IMPLICATION",
+      "code": "SOFT_GAUGE_ROOF_TYPED",
+      "physical_local_normality_proved": false
+    },
+    "G2": {
+      "status": "PASS",
+      "contract_family": "H=gammaC(1/2)*(Fhat/bDet)/gamma=gammaC(1/2)*B/bDet",
+      "orientation": "Fhat/gamma=B"
+    },
+    "G3": {
+      "status": "PASS_AS_CONDITIONAL_ANCHOR_CONTRACT",
+      "center": "H(0)=Xi(0) on BDetNonzero",
+      "fallback": "Hquarter=Xi(i/4)*B/B(i/4) conditional on finite real-zero roof",
+      "zeta_one_quarter": "SOURCE_LOCKED_NONZERO",
+      "uniform_control": "NONREAL_ANCHOR_UNIFORM_CONTROL_OPEN"
+    },
+    "G4": {
+      "status": "FAIL",
+      "exact_available_formula": "P_I(Fhat,phi)=sum_{abs(n)<=N} c_n*A(m,phi,n)",
+      "side": "TRANSFORM_SIDE",
+      "missing_theorem": "LINEAR_TRACKER_PAIRING_TO_WEIL_EXPLICIT_FORMULA_CROSSWALK",
+      "locked_prime_gamma_input": "QW(f,g)=Psi(f^**g)",
+      "falsifier": "GLOBAL_PHASE_CHANGES_LINEAR_PAIRING_BUT_NOT_DIAGONAL_WEIL_DATA",
+      "code": "SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC"
+    },
+    "G5": {
+      "status": "POSED_OPEN",
+      "quantifier": "PRODUCT_TAIL_ON_FIXED_COFINAL_ADMISSIBLE_CARRIER",
+      "fixed_N_or_hidden_selector_forbidden": true
+    },
+    "G6": {
+      "status": "RH_IMPORT_AUDIT_PASS",
+      "bfm_imported": false,
+      "critical_line_only_sum_imported": false,
+      "assumed_s2_imported": false
+    },
+    "G7": {
+      "status": "REGISTERED_NOT_EXECUTED",
+      "name": "MovingGridToIntervalBridge",
+      "mesh_theorem_present": false
+    }
+  },
+  "scheduler": {
+    "d0_7e_5a_proof_status": "BLOCKED",
+    "d0_7e_5a_activity": "ACTIVE",
+    "d0_7e_5a_marker": "NON_CRITICAL_PENDING_SOFT_1",
+    "mint_activated": false,
+    "bus_010_created": false
+  },
+  "route_status": "CHALLENGER",
+  "rh_status": "NOT_RH"
+}

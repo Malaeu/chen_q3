@@ -1,0 +1,154 @@
+{
+  "schema": "soft_l2_edge_mass_profile_v1",
+  "definition": "e_L(delta)=(integral_{L/2-delta<|u|<=L/2}|q_L(u)|^2 du)^(1/2)",
+  "all_depth_range": "0<delta<=L/2",
+  "summaries": [
+    {
+      "label": "portable_k1_m12_N120",
+      "role": "portable_k1",
+      "lambda_sq": 12,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_12_N_120.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 57.642865679300726,
+      "inward_log_slope_times_L": 143.23714023933087,
+      "r_squared": 0.9682567259660634,
+      "eL_at_0p01L": "5.25396755487677486819146807228249042052838906e-22",
+      "eL_at_0p10L": "0.00000000122390184880813689986313608404143500043907773",
+      "eL_at_0p50L": "1.0"
+    },
+    {
+      "label": "portable_k1_m13_N90",
+      "role": "portable_k1",
+      "lambda_sq": 13,
+      "N": 90,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_90.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 60.98379088377066,
+      "inward_log_slope_times_L": 156.42033524289627,
+      "r_squared": 0.9674667354644575,
+      "eL_at_0p01L": "5.87022378219091712197403278214613895682393245e-24",
+      "eL_at_0p10L": "0.000000000239646547464665239598501777292480023888500255",
+      "eL_at_0p50L": "1.0"
+    },
+    {
+      "label": "portable_k1_m13_N120",
+      "role": "portable_k1",
+      "lambda_sq": 13,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_120.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 60.98379088377066,
+      "inward_log_slope_times_L": 156.42033524289627,
+      "r_squared": 0.9674667354644575,
+      "eL_at_0p01L": "5.87022393670920340154023658299552775525637378e-24",
+      "eL_at_0p10L": "0.000000000239646547464665239598433900967681404382754352",
+      "eL_at_0p50L": "1.0"
+    },
+    {
+      "label": "portable_k1_m14_N120",
+      "role": "portable_k1",
+      "lambda_sq": 14,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_14_N_120.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 64.25215601804612,
+      "inward_log_slope_times_L": 169.56512328300775,
+      "r_squared": 0.9667245621070695,
+      "eL_at_0p01L": "6.60594017036528550489796587613146215475389349e-26",
+      "eL_at_0p10L": "0.0000000000480281953582987486017844934204036129239585144",
+      "eL_at_0p50L": "1.0"
+    },
+    {
+      "label": "float64_k1_diagnostic_m53_N120",
+      "role": "float64_k1_diagnostic",
+      "lambda_sq": 53,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/off_axis_k1_coeffs_lambda_sq_53_N_120_float64.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 4.5942204233151855,
+      "inward_log_slope_times_L": 18.240396195764287,
+      "r_squared": 0.4007725941526691,
+      "eL_at_0p01L": "7.46592553485258614318275875378823554701434791e-16",
+      "eL_at_0p10L": "3.01087640172975640010488664075702633988673092e-15",
+      "eL_at_0p50L": "1.0"
+    },
+    {
+      "label": "float64_k1_diagnostic_m101_N120",
+      "role": "float64_k1_diagnostic",
+      "lambda_sq": 101,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/off_axis_k1_coeffs_lambda_sq_101_N_120_float64.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 1.0436570431383239,
+      "inward_log_slope_times_L": 4.816603032333562,
+      "r_squared": 0.92764335322761,
+      "eL_at_0p01L": "6.00575738533280368659391697667240231105203013e-16",
+      "eL_at_0p10L": "1.95069835340529120723823826646645609556286647e-15",
+      "eL_at_0p50L": "1.0"
+    },
+    {
+      "label": "ground_xi1_m13_N120",
+      "role": "finite_ground_xi1",
+      "lambda_sq": 13,
+      "N": 120,
+      "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/nconv_anchor_lambda_sq_13_N_120.json",
+      "fit_band_delta_over_L": [
+        0.05,
+        0.2
+      ],
+      "inward_log_slope_per_u": 61.102074835500396,
+      "inward_log_slope_times_L": 156.72372758888346,
+      "r_squared": 0.9673124659505642,
+      "eL_at_0p01L": "4.76290768073567410630303650724979852676700999e-24",
+      "eL_at_0p10L": "0.000000000234708327075844411664869976969275246271780884",
+      "eL_at_0p50L": "1.0"
+    }
+  ],
+  "prediction": {
+    "registered": "e_L(delta) is approximately exponential over the outer-depth band and its inward exponent increases with lambda_sq",
+    "comparison_family": [
+      "portable_k1_m12_N120",
+      "portable_k1_m13_N120",
+      "portable_k1_m14_N120",
+      "float64_k1_diagnostic_m53_N120",
+      "float64_k1_diagnostic_m101_N120"
+    ],
+    "high_precision_comparison_family": [
+      "portable_k1_m12_N120",
+      "portable_k1_m13_N120",
+      "portable_k1_m14_N120"
+    ],
+    "high_precision_strictly_increasing_exponent": true,
+    "float64_floor_limited_cells": [
+      "float64_k1_diagnostic_m53_N120",
+      "float64_k1_diagnostic_m101_N120"
+    ],
+    "all_cell_strict_monotonicity_resolved": false,
+    "outcome": "SUPPORTED_M12_TO_M14_HIGH_PRECISION__LARGE_M_FLOAT64_UNRESOLVED",
+    "warning": "profile and fit are numerical diagnostics, not UREL or a smallness theorem"
+  },
+  "claims": {
+    "UREL_proved": false,
+    "smallness_proved": false,
+    "RH": false
+  }
+}

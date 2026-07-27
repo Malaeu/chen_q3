@@ -1,0 +1,25 @@
+{
+  "schema": "soft_2_quadratic_divisor_transfer_plants_v1",
+  "target": "SOFT_2_QuadraticDivisorTransfer",
+  "sharp": "F^sharp(z)=conj(F(conj z))",
+  "plants": {
+    "P1": "P1_PHASE_GAUGE_THEOREM_LIVES",
+    "P2": "P2_REAL_ZERO_HYPOTHESIS_REQUIRED",
+    "P3": "P3_TARGET_LOG_DERIVATIVE_TYPECHECK_REJECTED",
+    "P4": "P4_GAMMA_ZERO_DIVISOR_EQUIVALENCE_KILLED"
+  },
+  "p4_scope": {
+    "divisor_equivalence": "KILLED_WITHOUT_ZERO_FREE_GAMMA",
+    "one_way_Xi_zero_implies_T_zero": "STILL_VALID",
+    "reason": "a holomorphic multiplier zero adds a divisor point but cannot hide an Xi zero"
+  },
+  "lean": {
+    "path": "Q3/Proofs/RouteB/QuadraticDivisorTransfer.lean",
+    "result": "PASS",
+    "sorry": false,
+    "admit": false
+  },
+  "output_code": "SOFT_C2_QUADRATIC_DIVISOR_ROOF_LOCKED",
+  "rh_status": "NOT_RH",
+  "bus_010_created": false
+}

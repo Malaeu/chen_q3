@@ -1,0 +1,84 @@
+{
+  "schema": "route_b_soft_2_linearity_crosswalk_fork_certificate_v1",
+  "created_at": "2026-07-13T02:05:00+02:00",
+  "status": "PLANTS_LIVE_PHASE_PROBE_COMPLETE_C2_KILLED_AS_STATED_NOT_RH",
+  "output_code": "C2_PHASE_FREE",
+  "authority_pins": {
+    "SOFT_2_LINEARITY_CROSSWALK_FORK.md": "babbe0c2e5571d353db885b0463ff039739f2215abc8ff826edf634c780ec5e4",
+    "SOFT_3_PRO_VERDICT_PROSHKA_TAILS_2026-07-13.md": "bd362a92746c76323158344e5bab740e4460ad73f73a72a3938abdd874e9c0cf",
+    "SOFT_1_ZERO_FREE_GAUGE_AND_DISTRIBUTIONAL_IDENTIFICATION_2026-07-13.md": "1f611065b80a0d51a90c19770903f0ae0fcaf29661006bcf214e86fc9fc1d20b",
+    "D0_1_EXACT_HILBERT_SPACE_AND_NORM.md": "72d9bc019e56bfeeddbef4b5ac345cf2d502b334a4d5c3aa23c4270b80ea087b",
+    "D0_5_GROUND_AND_TRIAL_TYPES.md": "9cb7a9e34d0d051fc78c9c7a69e71fc91e7c7722f3d8c9a5713469d4f3bd5547"
+  },
+  "artifacts": {
+    "plants": {
+      "path": "SOFT_2_PLANTED_FALSIFIERS.json",
+      "sha256": "d25928106855d9ef192a35059d16c370c90b0fb2ebf72dd04597569b1db18681"
+    },
+    "phase_result": {
+      "path": "PHASE_STRUCTURE_PROBE.json",
+      "sha256": "ac95deb55c3df420de336325cda258ee848a494d34e86562eb4be15bb054760e"
+    },
+    "phase_csv": {
+      "path": "PHASE_STRUCTURE_PROBE.csv",
+      "sha256": "dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49"
+    },
+    "phase_report": {
+      "path": "PHASE_STRUCTURE_PROBE.md",
+      "sha256": "5b5cb666e0441ebb8302ea6c26a04fdc821ea938893365a333d11d931bbea33b"
+    },
+    "symmetry_audit": {
+      "path": "SOFT_2_KTRIAL_SYMMETRY_AUDIT_2026-07-13.md",
+      "sha256": "d8a139a46e29f8d9f58941aad922de67a72c5df795363924be91c63081e7380a"
+    },
+    "execution_report": {
+      "path": "SOFT_2_LINEARITY_CROSSWALK_FORK_REPORT_2026-07-13.md",
+      "sha256": "57d6b3f89077fba392153d770dddfe9f271d740032bae890c2f0cf457ca0fcae"
+    },
+    "plant_runner": {
+      "path": "soft_2_planted_falsifiers.py",
+      "sha256": "8913bf20aadc7102fee629243f9046aa9d428288a23f8bd77d1eac0a9bad2342"
+    },
+    "phase_runner": {
+      "path": "phase_structure_probe.py",
+      "sha256": "a6fc74d4da2522e41f834d99ab7e1339785b48d73c4effb8ef7a6e838727f8be"
+    }
+  },
+  "plants": {
+    "A": "FIRED_SOFT_JOINT_LIMIT_QUANTIFIER_MISSING",
+    "B": "FIRED_SOFT_CRITICAL_LINE_ZERO_SUM_SMUGGLED",
+    "C": "FIRED_D06_GRID_ALIASING_FATAL",
+    "positive_controls": "PASS"
+  },
+  "phase_probe": {
+    "object": "H=Xi(0)*B/B(0)",
+    "grid_count": 4096,
+    "cells": [[13, 120], [14, 120], [53, 120], [101, 120]],
+    "sd_theta_mod_pi": [
+      0.8999096704589257,
+      0.8991586788127333,
+      0.8942447891762959,
+      0.898724012765614
+    ],
+    "all_cells": "C2_PHASE_FREE",
+    "dps_escalation": false
+  },
+  "symmetry": {
+    "exact": "KTRIAL_REAL_CONJUGATION_SYMMETRY_ONLY",
+    "formula": "H(-conjugate(z))=conjugate(H(z))",
+    "inversion_symmetry_locked": false,
+    "pointwise_reality_locked": false
+  },
+  "fork": {
+    "C1": "REMAINS",
+    "C2": "KILLED_AS_STATED",
+    "C3": "REMAINS",
+    "next_actor": "Proshka_round_4"
+  },
+  "guards": {
+    "d0_7e_5a": "BLOCKED_ACTIVE_NON_CRITICAL_PENDING_SOFT_2",
+    "mint_activated": false,
+    "bus_010_created": false,
+    "rh_status": "NOT_RH"
+  }
+}

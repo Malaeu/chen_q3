@@ -1,0 +1,75 @@
+{
+  "schema": "soft_l2_round13_integration_certificate_v1",
+  "status": "SOFT_L2_ROUND13_INTEGRATION_LOCKED",
+  "authority": {
+    "file": "SOFT_L2_PRO_VERDICT_ROUND13_2026-07-13.md",
+    "sha256": "71f4e1276c774c5a857afea2d511f0c5e45cc31710f4689666b417f75b69b9dd"
+  },
+  "contract": {
+    "file": "SOFT_L2_ROUND13_INTEGRATION_2026-07-14.md",
+    "sha256": "cf0b1966c434d56706b750c2246abad7a8606f8ff9286d7db2957ff2af8128cc"
+  },
+  "quantifier_guard": {
+    "name": "SOFT_SAME_COFINAL_SUBSEQUENCE",
+    "parent": "one cofinal diagonal j_k carrying H2a-cofinal and S1",
+    "s2": "strictly nested extraction j_(kappa(ell))",
+    "failure_code": "SOFT_COFINAL_SUBSEQUENCE_MISMATCH"
+  },
+  "h2a_derived_corollary": {
+    "new_node_created": false,
+    "statement": "simple normalized ground eigenspace -> canonical phase-independent autocorrelation",
+    "lean_theorem": "Q3.RouteB.simpleGround_canonicalPhaseIndependentAutocorrelation"
+  },
+  "l2_2": {
+    "name": "GlobalPositiveDefiniteUniqueness",
+    "status": "TYPED_OPEN_NOT_PROVED",
+    "inputs": [
+      "one diagonal subsequence valid on every compact",
+      "A_(j_k) converges to A in D'(R)",
+      "A is positive-definite",
+      "A satisfies the limiting equation in D'(R)",
+      "c > 0"
+    ],
+    "output": "A = c*A_Phi in D'(R)",
+    "tail_input": false,
+    "edge_mass_input": false
+  },
+  "optional_leaf": {
+    "name": "SourceCompactnessToFullAutocorrelation",
+    "status": "OPTIONAL_INACTIVE_UNLESS_LIMIT_SOURCE_REQUIRED",
+    "inputs": [
+      "spatial tightness",
+      "uniform translation continuity"
+    ],
+    "feeds_l2_2": false,
+    "plants_file": "SOFT_L2_ROUND13_SOURCE_COMPACTNESS_PLANTS.json",
+    "plants_sha256": "68dc06ec468d26b71c3b3f83d922fbf75695f02ee02d8d0025bbcbbd37fbfedd",
+    "plants_output": "SOFT_L2_SOURCE_COMPACTNESS_PLANTS_ALL_LIVE",
+    "plant_codes": [
+      "SOURCE_CENTER_NOT_VISIBLE_TO_AUTOCORRELATION",
+      "EDGE_TIGHTNESS_ALONE_KILLED",
+      "UNIFORM_TAIL_ALONE_KILLED"
+    ]
+  },
+  "lean": {
+    "file": "../../../Q3/Proofs/RouteB/SoftL2Round13Integration.lean",
+    "sha256": "10bb78e28abc8309b2aad50ed87046cb6b4d80405e1c8c8a37eca5fc749aa43b",
+    "holes": 0,
+    "phase_corollary_proved": true,
+    "l2_2_typed_not_proved": true
+  },
+  "tail_check": {
+    "verdict": "TAIL_DOMINATED",
+    "round13_role": "OPTIONAL_SOURCE_COMPACTNESS_SPATIAL_TIGHTNESS_DIAGNOSTIC",
+    "l2_2_input": false,
+    "supplies_uniform_translation_continuity": false,
+    "record": "SOFT_L2_AUTOCORRELATION_TAIL_CHECK_13_120.json",
+    "record_sha256": "3a6c0d7548574d247d0776e3d1b9dba41cf2dc573fdb402db393b35b13872f0e"
+  },
+  "map": {
+    "removed_edge": "D'_loc -> autocorrelation tail hypothesis -> L2.2",
+    "code": "FALSE_WALL_REMOVED_ROUND13"
+  },
+  "bus_010_created": false,
+  "RH": false
+}

@@ -1,0 +1,136 @@
+{
+  "schema": "route_b_soft_0_roof_and_s2_typecheck_certificate.v1",
+  "created_at": "2026-07-12T22:46:19+02:00",
+  "revision_target": 42,
+  "gate": "SOFT_0_RoofAndS2Typecheck",
+  "output_code": "SOFT_SUBSEQUENCE_CLOSURE_TYPED",
+  "allowed_output_codes": [
+    "SOFT_SUBSEQUENCE_CLOSURE_TYPED",
+    "SOFT_ROOF_H4_DEPENDENCY_CYCLE",
+    "SOFT_S2_RH_REPACKAGING",
+    "SOFT_NORMALIZATION_INCOHERENT",
+    "SOFT_EXPLICIT_FORMULA_CONDITIONAL"
+  ],
+  "status": "ABSTRACT_CLOSURE_PROVED_FINITE_ROOF_BODY_MISSING_S2_OPEN_NOT_RH",
+  "rh_status": "NOT_RH",
+  "authority": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_0_PRO_VERDICT_PROSHKA_2026-07-12.md",
+    "sha256": "f86634b2b720bc2f195e57f1cec423576a3356501d5f7b3c67d86607820750a7"
+  },
+  "paper_artifact": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_0_ROOF_AND_S2_TYPECHECK_2026-07-12.md",
+    "sha256": "078309f42aa547f17264b93888e1b996edd2f25f727c5984d8d58ad496f18417"
+  },
+  "abstract_theorem": {
+    "name": "SoftSubsequenceZeroEscape",
+    "proof_status": "PROVED_PAPER",
+    "domain": "S={z:abs(Im(z))<1/2}",
+    "dependencies_only": [
+      "F_j_HOLOMORPHIC_ON_S",
+      "F_j_REAL_ZEROS_ON_CHOSEN_SEQUENCE",
+      "F_j_ZERO_EQUALS_XI_ZERO_NONZERO_CENTRAL_ANCHOR",
+      "INDEPENDENT_LOCAL_BOUNDEDNESS",
+      "INDEPENDENT_CLUSTER_IDENTIFICATION_ON_ACCUMULATING_SET",
+      "SOURCE_LOCKED_GAMMA_HOLOMORPHIC_UNIT",
+      "CLASSICAL_XI_RH_INTERFACE"
+    ],
+    "proof_steps": [
+      "MONTEL_SUBSEQUENCE_EXTRACTION",
+      "CENTRAL_ANCHOR_EXCLUDES_ZERO_LIMIT",
+      "IDENTITY_THEOREM_EXTENDS_ACCUMULATING_SET_EQUALITY",
+      "HURWITZ_ON_CONNECTED_UPPER_HALF_STRIP",
+      "HURWITZ_ON_CONNECTED_LOWER_HALF_STRIP",
+      "ZERO_DIVISOR_TRANSFER_THROUGH_NONZERO_C_AND_GAMMA",
+      "RH_IFF_CENTERED_XI_ZEROS_REAL"
+    ],
+    "quantitative_h4_used": false
+  },
+  "finite_roof_audit": {
+    "requested_signature": "H2a(j)=>F_j_holomorphic_on_S_AND_zeros_real_on_S",
+    "h4_dependency_cycle_found": false,
+    "forbidden_dependencies_found": [],
+    "pass_code_issued": false,
+    "pass_code_withheld": "H2A_TO_REAL_ZERO_APPROXIMANT_POINTWISE",
+    "current_code": "SOFT_ROOF_BODY_MISSING",
+    "reason": "Physical H2a exports only simple-even ground. Exact holomorphy is H1/H1c3 and exact real-zero transfer is H2b/H2c; those same-family bodies remain open.",
+    "actual_upstream_shape": "D0+H1+H2a+H2b=>H2c/H2",
+    "h3_h4_s1_s2_import": "NONE"
+  },
+  "gamma_lock": {
+    "exit_code": "GAMMA_SOURCE_LOCKED_ZERO_FREE",
+    "status": "ANALYTIC_UNIT_LOCKED_OBJECT_ROLE_OPEN",
+    "source_lock": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_GAMMA_COMPLETION_SOURCE_LOCK.json",
+      "sha256": "96b603cf40fa11ff8535dcfb1b73ca67ee84e3f350c28f4d1001a1e0584bd75b"
+    },
+    "lean_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GammaSoftZeroFree.lean",
+      "sha256": "615548873f1c12dfd5f5e047c74135cd1f0fc454614c3fdc9d685472f3934c4b",
+      "holes": 0,
+      "unexpected_axioms": [],
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "s2_identification_proved": false,
+    "posthoc_quotient_allowed": false
+  },
+  "probe_recode": {
+    "old_code_retired": "SOFT_ROUTE_ALIVE",
+    "new_code": "OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS",
+    "completion_class_invariant": false,
+    "central_anchor_next": "F_j(z)=Xi(0)/Ghat_j(0)*Ghat_j(z)",
+    "result": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OFF_AXIS_GROWTH_PROBE.json",
+      "sha256": "8f64af40215bc773ec611956cc7de7bf9209e6978fc9a58dda3e3f3bcffc82dc"
+    },
+    "slope": 0.0029166181315253155,
+    "gauge_shift_y_0_3": 0.15
+  },
+  "mint_r3": {
+    "code": "MINT_MENU_FALSIFIED",
+    "draft": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_OWNER_MINT_DRAFT_WPRIME_CONSUMER.md",
+      "sha256": "1ef06c3050bfd7042af97bb7fd07f5c5c987da9bbbc21f32fee1a36e22722980"
+    },
+    "battery": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_PRE_MINT_FALSIFIER_BATTERY.json",
+      "sha256": "113f15f53660253e8ceff9f8fa72fc755ed7fe31850153140486a5d138698747"
+    },
+    "variant_A": {
+      "status": "FALSIFIED_EXACT_EQUALITY",
+      "closure_ratios": [
+        6.9411616936599094e-102,
+        4.907478950456342e-102,
+        2.50509212816158e-112
+      ]
+    },
+    "variant_B": {
+      "status": "FALSIFIED_SLOT_VACUITY",
+      "plant": "SLOT_VACUITY"
+    },
+    "mint_activated": false,
+    "d0_7e_5a_proof_status": "BLOCKED",
+    "d0_7e_5a_marker": "NON_CRITICAL_PENDING_SOFT_0"
+  },
+  "remaining_wall": "UNCONDITIONAL_CLUSTER_POINT_DIVISOR_IDENTIFICATION_ON_AN_ACCUMULATING_SET",
+  "control_plane_guards": {
+    "active_leaf_unchanged": "D0.7e.5a",
+    "bus_010_created": false,
+    "commit_or_push_authorized": false
+  },
+  "explicit_nonclaims": [
+    "NO_PHYSICAL_H2A_ONLY_FINITE_ROOF",
+    "NO_H1_CLOSURE",
+    "NO_H2_CLOSURE",
+    "NO_S2_IDENTIFICATION",
+    "NO_MINT_ACTIVATION",
+    "NO_D0_7E_5A_CLOSURE",
+    "NO_H3_IMPORT",
+    "NO_H4_IMPORT",
+    "NO_BUS_010",
+    "NO_RH"
+  ]
+}

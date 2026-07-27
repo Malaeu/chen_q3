@@ -1,0 +1,52 @@
+{
+  "schema": "route_b_soft_l2_exact_projection_defect_lag_equation_v1",
+  "created_at": "2026-07-13T22:00:00+02:00",
+  "status": "SOFT_L2_EXACT_PROJECTION_LEDGER_LOCKED_NOT_RH",
+  "output_code": "SOFT_L2_EXACT_PROJECTION_LEDGER_LOCKED",
+  "authority": {
+    "round_9_verbatim": "SOFT_L2_PRO_VERDICT_ROUND9_2026-07-13.md",
+    "round_10_verbatim": "SOFT_L2_PRO_VERDICT_ROUND10_2026-07-13.md",
+    "ledger": "SOFT_L2_EXACT_PROJECTION_DEFECT_LAG_EQUATION_2026-07-13.md",
+    "d0_2": "D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md",
+    "d0_3": "D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md",
+    "d0_6": "D0_6_EXACT_TRANSFORM_CONVENTION.md"
+  },
+  "full_projection": {
+    "formula": "S_(m,N)=Pi_sec Pi_(m,N) P_L",
+    "layers": ["window", "Galerkin", "sector"],
+    "orthogonal": true
+  },
+  "master_identity": {
+    "projection_defect": "E_proj(t)=<((I-S)U_t q),T_full q>",
+    "correction_defect": "E_corr(t)=-<(S U_t q),C_corr q>",
+    "components": [
+      "window_prime",
+      "Galerkin",
+      "sector",
+      "pole_midpoint",
+      "Arch_window"
+    ]
+  },
+  "window": {
+    "D": "D_(a,L)(t)=<(Q_L U_t q),(Q_L U_a q)>",
+    "support_implication": "D_(a,L)(t)!=0 => t*a>0 and |t-a|<L",
+    "scale": "r_L(a)=||Q_L U_a q||_2",
+    "bound": "|D_(a,L)(t)|<=r_L(t)r_L(a)"
+  },
+  "plants": {
+    "fixed_window_relative_shift": "FIRED_WINDOW_COMMUTATOR_VISIBLE",
+    "simultaneous_carrier_shift": "PASS_COVARIANT"
+  },
+  "domain_firewall": {
+    "operator_domain_is_explicit_input": true,
+    "finite_form_domain_promoted_to_operator_domain": false,
+    "Arch_convolution_claimed": false,
+    "Re_xi_over_xi_substitution": false
+  },
+  "claims": {
+    "smallness": false,
+    "Galerkin_compact_support": false,
+    "RH": false,
+    "bus_010_created": false
+  }
+}

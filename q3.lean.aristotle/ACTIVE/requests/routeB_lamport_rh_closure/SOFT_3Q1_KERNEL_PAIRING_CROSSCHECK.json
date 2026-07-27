@@ -1,0 +1,102 @@
+{
+  "schema": "soft_3q1_direct_kernel_pairing_crosscheck_v1",
+  "sharp_lock": {
+    "coordinate_line": "w=i*z from D0.6 Xi(z)=xi(1/2+i*z)",
+    "ZEO_sharp": "F^sharp(z)=conj(F(conj z))",
+    "wrong": "conj(F(-conj z))",
+    "plant": {
+      "basis": "V_1",
+      "x": 0.73,
+      "correct_ZEO_conjugation_product": 0.34201175231325415,
+      "wrong_reflection_product": -0.18496937842031988,
+      "relative_difference": 0.526981130733574,
+      "even_control_difference": 0.0,
+      "verdict": "SOFT_3Q1_SHARP_COORDINATE_MISMATCH_FIRES_ON_V1_XI_CONTROL_SILENT"
+    }
+  },
+  "fubini": {
+    "transform": "F(x)=integral q(u) exp(-i*x*u) du",
+    "test_transform": "hat_phi(y)=integral phi(x) exp(-i*x*y) dx",
+    "coefficient_c_D06": 1,
+    "kernel_argument": "u-v",
+    "cells": [
+      {
+        "lambda_sq": 13,
+        "N": 120,
+        "source": "portable_k_coeffs_lambda_sq_13_N_120.json",
+        "phi": "C_c^inf([-12,12]); complex; real part sign-changing",
+        "lhs_direct_pairing": {
+          "re": -0.25416493982125454,
+          "im": -0.161902559215164
+        },
+        "rhs_fubini_u_minus_v": {
+          "re": -0.25416493982126115,
+          "im": -0.16190255921516827
+        },
+        "relative_error": 7.868106006681869e-15,
+        "wrong_sign_control": {
+          "re": -0.25416493982126115,
+          "im": -0.16190255921516827
+        },
+        "wrong_sign_relative_difference": 7.868106006681869e-15
+      },
+      {
+        "lambda_sq": 53,
+        "N": 120,
+        "source": "off_axis_k1_coeffs_lambda_sq_53_N_120_float64.json",
+        "phi": "C_c^inf([-12,12]); complex; real part sign-changing",
+        "lhs_direct_pairing": {
+          "re": -0.25530731816861535,
+          "im": -0.16427150855740977
+        },
+        "rhs_fubini_u_minus_v": {
+          "re": -0.25530731816862207,
+          "im": -0.1642715085574141
+        },
+        "relative_error": 7.991485278462367e-15,
+        "wrong_sign_control": {
+          "re": -0.25530731816862207,
+          "im": -0.16427150855741413
+        },
+        "wrong_sign_relative_difference": 8.006557523987324e-15
+      }
+    ]
+  },
+  "support_away_plant": {
+    "support": [
+      15.167822316290223,
+      19.988942464216027
+    ],
+    "adjacent_sample_nodes": [
+      14.134725141734695,
+      21.022039638771556
+    ],
+    "sample_nodes_inside_support": 0,
+    "Psi_zero_sampling_value": 0.0,
+    "direct_real_axis_pairing": 1.6869406075010593e-06,
+    "verdict": "SOFT_3Q1_ZERO_PRODUCT_TARGET_MISMATCH"
+  },
+  "kernel_sign_plant": {
+    "kernel": "q(u)=1+0.7i exp(1.3iu)+0.2u on [-1,1]",
+    "correct_u_minus_v": {
+      "re": 1.4031813028352507,
+      "im": -0.07687548454742449
+    },
+    "wrong_v_minus_u": {
+      "re": 0.8174228009084349,
+      "im": -0.07687548454742449
+    },
+    "relative_difference": 0.4168252369727276,
+    "verdict": "D06_U_MINUS_V_SIGN_VISIBLE"
+  },
+  "scoring": {
+    "P1": "PASS_DIRECT_FUBINI",
+    "P2": "FIRED_PSI_SUPPORT_AWAY_MISMATCH",
+    "P3": "PASS_ZEO_SHARP_IS_CONJUGATION",
+    "P4": "PASS_SIGN_CHANGING_PHI_LEGAL",
+    "P5": "OPEN_RANK_ONE_KERNEL_CONVERGENCE_IS_NEXT_WALL"
+  },
+  "output_code": "SOFT_3Q1_DIRECT_HERMITIAN_KERNEL_PAIRING_AND_SHARP_LOCKED",
+  "rh_status": "NOT_RH",
+  "bus_010_created": false
+}

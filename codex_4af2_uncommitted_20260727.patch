@@ -1,0 +1,326 @@
+diff --git a/q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md b/q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+index de7d2b59..2da03b1a 100644
+--- a/q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
++++ b/q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md
+@@ -584,6 +584,8 @@ This H1/PO3 monitor remains `PARKED`; no H-bridge state was resumed or changed.
+ The active PSD monitor closed
+ `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SMOKE_PAYLOAD_LEAN_VALIDATION_GAP`.
+ The next live PSD address is
+-`Step33A.1-A/activeActual-order16/segment0/direct-Horner-range-and-budget-rows`,
++`Step33A.1-A/combined-order16-scaled-remainder/whole-expression-source-data`,
+ tracked in `ACTIVE/PSD_STEP33_MONITOR.md` under exact gap
+-`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`.
++`STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP`.
++The activeActual smoke continuation is stopped by the checked direct-budget
++kill theorem; H1/PO3 remains untouched.
+diff --git a/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md b/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+index 86862549..45abaaa5 100644
+--- a/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
++++ b/q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+@@ -42996,8 +42996,12 @@ Horner range rows, final budget rows, a full segment-family cover, or
+ Step33A.1-A closure.  The existing degree-0 direct-budget kill certificate
+ remains in force.
+ latest_route_level_gap_2026_07_13_after_active_actual_horner_smoke_validation:
+-`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
++`STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP`
++latest_kill_2026_07_13_after_active_actual_horner_smoke_validation:
++`primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`
++keeps the validated smoke row from being extended into a final direct payload;
++payload schema v11 records
++`STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`.
+ latest_next_patch_2026_07_13_after_active_actual_horner_smoke_validation:
+-instantiate the concrete `DirectRange` stage rows and the final
+-`DirectSegment` lower/upper/residual budget rows for the checked segment,
+-without replaying scalar entries row by row.
++return to the same-target whole-expression `CollapsedExpression` source-data
++route.  Do not emit range rows for the budget-killed smoke pilot.
+diff --git a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+index b624cf55..cecd1601 100644
+--- a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
++++ b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md
+@@ -79214,9 +79214,10 @@ large rational nonnegativity side condition.
+ The regenerated payload ledger is schema v11 and reports:
+ 
+ ```text
+-proofStatus = smoke_segment_checked_missing_horner_range_budget_rows
++proofStatus = smoke_segment_checked_direct_payload_route_budget_killed
+ smokeSegmentValidChecked = true
+-currentGap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP
++currentGap = STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD
++nextLiveRouteGap = STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP
+ ```
+ 
+ Closed gate:
+@@ -79229,12 +79230,18 @@ Boundary: this is only the `(0,0)` anti-swamp pilot.  It does not overturn
+ `ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`, does
+ not create `DirectConcretePayload.lean`, and does not close Step33A.1-A.
+ 
++Kill certificate:
++
++```text
++primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat
++```
++
+ Next live node:
+ 
+ ```text
+-Step33A.1-A/activeActual-order16/segment0/direct-Horner-range-and-budget-rows
++Step33A.1-A/combined-order16-scaled-remainder/whole-expression-source-data
+ ```
+ 
+-Next patch: fill the `DirectRange` stage bounds and final `DirectSegment`
+-lower/upper/residual budget rows through the existing aggregate receiver;
+-do not resume manual scalar row replay.
++Next patch: produce the same-target `CollapsedExpression` coefficient and
++remainder source stream.  Do not emit `DirectRange` rows for the budget-killed
++smoke pilot and do not resume manual scalar row replay.
+diff --git a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+index 493c3211..8e899664 100644
+--- a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
++++ b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_degree0_payload.json
+@@ -80,7 +80,7 @@
+   },
+   "firstFailure": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D16_CENTER_D17_UNIFORM_SOURCE_GAP",
+   "firstFileToEdit": "scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py",
+-  "generatedAt": "2026-07-13T21:08:36.109482+00:00",
++  "generatedAt": "2026-07-13T21:11:59.895253+00:00",
+   "order17UniformProofGrade": false,
+   "order17UniformRoute": {
+     "bridge": {
+diff --git a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+index 795c5015..10b41775 100644
+--- a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
++++ b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.json
+@@ -244,7 +244,7 @@
+     "shapeSqThrough18Theorem": "primaryFiniteRow0Parent0Split100Sub0_shapeSqActual_derivative_abs_of_sharp18",
+     "used": true
+   },
+-  "currentGap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP",
++  "currentGap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
+   "degree0Preflight": {
+     "activeScaleAbs": "95492965855137201461330258024/1000000000000000000000000000000",
+     "activeScaleProofGrade": true,
+@@ -302,7 +302,7 @@
+     "degree0ContDiff17SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17",
+     "degree0SourceBridge": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0Source.lean",
+     "degree0SourceTheorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source",
+-    "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP",
++    "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
+     "fullDegree29Specialization": {
+       "coefficientJetOrdersNeeded": "16..45",
+       "firstMissingSubgapIfChosen": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP",
+@@ -322,16 +322,23 @@
+     "Lean payload file before S1/S2 proof-grade inputs exist",
+     "D46 backend as mandatory before the low-degree source is tested"
+   ],
+-  "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP",
+-  "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP",
+-  "generatedAt": "2026-07-13T21:08:36.108537+00:00",
++  "firstConcreteSubgap": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
++  "firstFailureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
++  "generatedAt": "2026-07-13T21:11:59.894101+00:00",
+   "interfaceReady": true,
++  "killCertificate": {
++    "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
++    "meaning": "The checked degree-0 smoke source cannot be spent as the final direct payload budget.",
++    "source": "Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualDegree0CenterBudgetAudit.lean",
++    "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat"
++  },
+   "leanValidationStatus": "passed_smoke_segment_only",
+-  "nextImplementablePatch": "Emit the concrete activeActual Horner segment rows from the checked degree-0 source theorem, then validate the segment/family receiver. Do not reopen D16/D17 unless the row emission mismatches the receiver.",
++  "nextImplementablePatch": "Return to the direct whole-expression CollapsedExpression source-data route and produce the same-target coefficient/remainder stream.  Do not emit activeActual Horner range rows for the budget-killed pilot.",
++  "nextLiveRouteGap": "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP",
+   "outLeanWritten": true,
+   "proofGrade": false,
+   "proofSafeClosedFields": 1,
+-  "proofStatus": "smoke_segment_checked_missing_horner_range_budget_rows",
++  "proofStatus": "smoke_segment_checked_direct_payload_route_budget_killed",
+   "requiredInputs": [
+     {
+       "cellL": "0",
+@@ -435,16 +442,16 @@
+       "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_lowDegree"
+     },
+     {
+-      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP",
++      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
+       "id": "S4_horner_range_rows",
+       "required": "stageLower/stageUpper rows for the converted direct segment",
+-      "status": "missing_after_checked_smoke_segment"
++      "status": "not_pursued_budget_killed"
+     },
+     {
+-      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP",
++      "failureCode": "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD",
+       "id": "S5_budget_rows",
+       "required": "polyLower/polyUpper/lower/upper/residualAbs rows",
+-      "status": "missing_after_checked_smoke_segment"
++      "status": "killed_by_checked_direct_budget_theorem"
+     }
+   ],
+   "route": "active_actual_order16_horner_payload_smoke_segment",
+diff --git a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+index 2099fc89..ad2e6740 100644
+--- a/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
++++ b/q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_active_actual_order16_horner_payload.md
+@@ -5,14 +5,14 @@ route: `active_actual_order16_horner_payload_smoke_segment`
+ 
+ ## Verdict
+ 
+-- proofStatus: `smoke_segment_checked_missing_horner_range_budget_rows`
++- proofStatus: `smoke_segment_checked_direct_payload_route_budget_killed`
+ - proofGrade: `False`
+ - proofSafeClosedFields: `1`
+ - interfaceReady: `True`
+ - outLeanWritten: `True`
+-- currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
+-- firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
+-- firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
++- currentGap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
++- firstFailureCode: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
++- firstConcreteSubgap: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+ - leanValidationStatus: `passed_smoke_segment_only`
+ 
+ ## Target Lean Surface
+@@ -91,7 +91,7 @@ No directory 'Q3' or file 'Q3.olean' in th...am/.codex/worktrees/4af2/rh_lean_01
+ - `degree0ContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_contDiff17`
+ - `degree0CheckedContDiff17SourceTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_source_checked_contDiff17`
+ - `degree0BudgetGeneratedTheorem`: `primaryFiniteRow0Parent0Split100Sub0_activeActual_order16_segment_remainder_of_degree0_budget_generated`
+-- `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
++- `firstConcreteSubgap`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+ - `d17UniformRoute`: `{'selectedRoute': 'B_rawProduct18', 'bridgeSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Payload.lean', 'bridgeReady': True, 'majorantReceiverSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18MajorantReceiver.lean', 'majorantReceiverReady': True, 'uniformSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaACombinedCancellationOrder16ActiveActualRawProduct18Source.lean', 'uniformSourceReady': True, 'failureIfUniformSourceMissing': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_RAW_PRODUCT18_UNIFORM_SOURCE_GAP', 'shapeSqOrder18Source': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAShapeSqOrder18Payload.lean', 'shapeSqOrder18SourceReady': True, 'omegaPrimeOrder17AnalyticSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17Payload.lean', 'omegaPrimeOrder17AnalyticSourceReady': True, 'omegaPrimeOrder17RationalSource': 'Q3/Proofs/PSD_CenteredCoeffRawOmegaAOmegaPrimeDerivativeOrder17RationalPayload.lean', 'omegaPrimeOrder17RationalPayload': 'ACTIVE/requests/step33_bootstrap/step33_a1_sub0_omega_prime_order17_payload.json', 'omegaPrimeOrder17RationalSourceReady': True, 'omegaPrimeOrder17Abs': '1024379792916537436656292891459584/152587890625', 'remainingFactorSources': []}`
+ - `fullDegree29Specialization`: `{'coefficientJetOrdersNeeded': '16..45', 'uniformRemainderDerivativeOrderNeeded': 46, 'firstMissingSubgapIfChosen': 'STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP'}`
+ 
+@@ -202,15 +202,15 @@ No directory 'Q3' or file 'Q3.olean' in th...am/.codex/worktrees/4af2/rh_lean_01
+ 
+ ### S4_horner_range_rows
+ 
+-- `status`: `missing_after_checked_smoke_segment`
++- `status`: `not_pursued_budget_killed`
+ - `required`: `stageLower/stageUpper rows for the converted direct segment`
+-- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
++- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+ 
+ ### S5_budget_rows
+ 
+-- `status`: `missing_after_checked_smoke_segment`
++- `status`: `killed_by_checked_direct_budget_theorem`
+ - `required`: `polyLower/polyUpper/lower/upper/residualAbs rows`
+-- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`
++- `failureCode`: `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`
+ 
+ ## Validation Gates
+ 
+@@ -365,4 +365,4 @@ No directory 'Q3' or file 'Q3.olean' in th...am/.codex/worktrees/4af2/rh_lean_01
+ 
+ ## Next Implementable Patch
+ 
+-Emit the concrete activeActual Horner segment rows from the checked degree-0 source theorem, then validate the segment/family receiver. Do not reopen D16/D17 unless the row emission mismatches the receiver.
++Return to the direct whole-expression CollapsedExpression source-data route and produce the same-target coefficient/remainder stream.  Do not emit activeActual Horner range rows for the budget-killed pilot.
+diff --git a/q3.lean.aristotle/docs/INSIGHTS.md b/q3.lean.aristotle/docs/INSIGHTS.md
+index acde6fdf..5e032a3e 100644
+--- a/q3.lean.aristotle/docs/INSIGHTS.md
++++ b/q3.lean.aristotle/docs/INSIGHTS.md
+@@ -46076,12 +46076,14 @@ not the raw-D17 factorwise support class.
+   true`; this prevents a changed source file from inheriting the validation.
+ - Closed exact gate:
+   `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_SMOKE_PAYLOAD_LEAN_VALIDATION_GAP`.
+-- New exact local gap:
+-  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP`.
+-- The next receiver is already present: provide aggregate `DirectRange`
+-  `stageLower`/`stageUpper` rows plus the `DirectSegment` final
+-  lower/upper/residual budget rows.  Preserve the anti-swamp rule: do not
+-  generate manual entry-by-entry scalar payloads.
+-- This closes validation infrastructure only.  The degree-0 final direct
+-  budget route remains killed, no full cover exists, and Step33A.1-A remains
+-  open.
++- The checked kill theorem
++  `primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat`
++  means the pilot must not be extended with `DirectRange` or final budget rows.
++  Its exact stop code is
++  `STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD`.
++- The live route returns to the whole-expression gap
++  `STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP`:
++  produce one same-target `CollapsedExpression` coefficient/remainder stream,
++  without separate active/nominal budget spending or manual scalar replay.
++- This closes validation infrastructure and records a subroute kill only; no
++  full cover exists, and Step33A.1-A remains open.
+diff --git a/q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py b/q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+index 450f9ee5..16096674 100644
+--- a/q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
++++ b/q3.lean.aristotle/scripts/generate_step33_a1_sub0_active_actual_order16_horner_payload.py
+@@ -121,8 +121,11 @@ REQUIRED_SMOKE_PAYLOAD_SYMBOLS = [
+ ]
+ 
+ ROW_SOURCE_GAP = "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_SEGMENT_REMAINDER_ROW_SOURCE_GAP"
+-HORNER_RANGE_BUDGET_ROWS_GAP = (
+-    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_HORNER_RANGE_BUDGET_ROWS_GAP"
++DIRECT_PAYLOAD_BUDGET_KILL = (
++    "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_DEGREE0_DIRECT_BUDGET_CONSTANT_FAIL_FOR_PAYLOAD"
++)
++NEXT_LIVE_WHOLE_EXPRESSION_GAP = (
++    "STEP33_A1_SUB0_COMBINED_ORDER16_SCALED_REMAINDER_WHOLE_EXPRESSION_PILOT_SOURCE_DATA_GAP"
+ )
+ D46_SOURCE_GAP = "STEP33_A1_SUB0_ACTIVE_ACTUAL_ORDER16_D46_UNIFORM_REMAINDER_SOURCE_GAP"
+ LOW_DEGREE_SOURCE_GAP = (
+@@ -1029,7 +1032,7 @@ def build_ledger() -> dict[str, Any]:
+         all_present(smoke_payload_symbols)
+         and sha256_file(FUTURE_PAYLOAD_LEAN) == VALIDATED_SMOKE_SOURCE_SHA256
+     )
+-    current_gap = HORNER_RANGE_BUDGET_ROWS_GAP if smoke_payload_ready else ROW_SOURCE_GAP
++    current_gap = DIRECT_PAYLOAD_BUDGET_KILL if smoke_payload_ready else ROW_SOURCE_GAP
+     omega_prime_order17_abs = omega_prime_order17_payload.get("order17Abs")
+     interface_ready = segment_ready and family_ready and low_degree_ready and degree0_ready
+     degree0_preflight = build_degree0_preflight(
+@@ -1196,13 +1199,13 @@ def build_ledger() -> dict[str, Any]:
+         },
+         {
+             "id": "S4_horner_range_rows",
+-            "status": "missing_after_checked_smoke_segment" if smoke_payload_ready else "blocked_on_low_degree_source",
++            "status": "not_pursued_budget_killed" if smoke_payload_ready else "blocked_on_low_degree_source",
+             "required": "stageLower/stageUpper rows for the converted direct segment",
+             "failureCode": current_gap,
+         },
+         {
+             "id": "S5_budget_rows",
+-            "status": "missing_after_checked_smoke_segment" if smoke_payload_ready else "blocked_on_low_degree_source",
++            "status": "killed_by_checked_direct_budget_theorem" if smoke_payload_ready else "blocked_on_low_degree_source",
+             "required": "polyLower/polyUpper/lower/upper/residualAbs rows",
+             "failureCode": current_gap,
+         },
+@@ -1213,7 +1216,7 @@ def build_ledger() -> dict[str, Any]:
+         "generatedAt": datetime.now(timezone.utc).isoformat(),
+         "route": "active_actual_order16_horner_payload_smoke_segment",
+         "proofStatus": (
+-            "smoke_segment_checked_missing_horner_range_budget_rows"
++            "smoke_segment_checked_direct_payload_route_budget_killed"
+             if smoke_payload_ready
+             else "blocked_missing_horner_rows_after_degree0_source"
+             if degree0_preflight["proofGrade"]
+@@ -1230,6 +1233,13 @@ def build_ledger() -> dict[str, Any]:
+         "targetLeanFileWhenRowsPass": rel(FUTURE_PAYLOAD_LEAN),
+         "currentGap": current_gap,
+         "firstFailureCode": current_gap,
++        "killCertificate": {
++            "theorem": "primaryFiniteRow0Parent0Split100Sub0_activeActual_degree0_directPayloadBudget_fail_rat",
++            "source": rel(DEGREE0_CENTER_BUDGET_AUDIT_LEAN),
++            "failureCode": DIRECT_PAYLOAD_BUDGET_KILL,
++            "meaning": "The checked degree-0 smoke source cannot be spent as the final direct payload budget.",
++        },
++        "nextLiveRouteGap": NEXT_LIVE_WHOLE_EXPRESSION_GAP,
+         "firstConcreteSubgap": (
+             current_gap
+             if smoke_payload_ready or degree0_preflight["proofGrade"]
+@@ -1593,9 +1603,9 @@ def build_ledger() -> dict[str, Any]:
+             "D46 backend as mandatory before the low-degree source is tested",
+         ],
+         "nextImplementablePatch": (
+-            "Emit the concrete activeActual Horner segment rows from the checked "
+-            "degree-0 source theorem, then validate the segment/family receiver. "
+-            "Do not reopen D16/D17 unless the row emission mismatches the receiver."
++            "Return to the direct whole-expression CollapsedExpression source-data "
++            "route and produce the same-target coefficient/remainder stream.  Do "
++            "not emit activeActual Horner range rows for the budget-killed pilot."
+         ),
+     }
+ 

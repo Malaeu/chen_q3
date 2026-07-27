@@ -1,0 +1,59 @@
+{
+  "plants": {
+    "A": {
+      "expected_code": "SOFT_JOINT_LIMIT_QUANTIFIER_MISSING",
+      "fired": true,
+      "input": {
+        "model": "a[j,n]=1 if n=j else 0",
+        "quantifier_order": "forall_j_exists_R_j",
+        "uniform_combined_tail_proved": false
+      },
+      "observed_code": "SOFT_JOINT_LIMIT_QUANTIFIER_MISSING",
+      "witness": {
+        "fixed_R": 17,
+        "j": 24,
+        "j0": 23,
+        "tail_mass": 1.0
+      }
+    },
+    "B": {
+      "expected_code": "SOFT_CRITICAL_LINE_ZERO_SUM_SMUGGLED",
+      "fired": true,
+      "input": {
+        "complete_multiset": false,
+        "formula": "2*sum_{gamma>0} H(gamma)",
+        "index_kind": "POSITIVE_CRITICAL_LINE_ORDINATES"
+      },
+      "observed_code": "SOFT_CRITICAL_LINE_ZERO_SUM_SMUGGLED",
+      "witness": "critical-line ordinates are not the complete nontrivial-zero multiset"
+    },
+    "C": {
+      "expected_code": "D06_GRID_ALIASING_FATAL",
+      "fired": true,
+      "input": {
+        "J": 64,
+        "derivative_scale": 201.06192982974676,
+        "function": "f_J(x)=sin(pi*J*x)",
+        "h": 0.015625,
+        "sample_error": 2.1558735510086122e-14,
+        "sample_tolerance": 1e-12,
+        "sup_error_witness": 1.0,
+        "uniform_modulus_supplied": false
+      },
+      "observed_code": "D06_GRID_ALIASING_FATAL",
+      "witness": {
+        "derivative_scale": 201.06192982974676,
+        "max_grid_abs": 2.1558735510086122e-14,
+        "max_midpoint_abs": 1.0
+      }
+    }
+  },
+  "positive_controls": {
+    "A_correct_quantifier_and_uniform_tail": "PASS",
+    "B_full_zero_multiset": "PASS",
+    "C_uniform_modulus_present": "PASS"
+  },
+  "rh_status": "NOT_RH",
+  "schema": "route_b_soft_2_planted_falsifiers_v1",
+  "status": "ALL_PLANTS_LIVE"
+}

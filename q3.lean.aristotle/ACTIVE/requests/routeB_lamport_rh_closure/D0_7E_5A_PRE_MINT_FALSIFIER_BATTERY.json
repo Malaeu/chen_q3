@@ -1,0 +1,301 @@
+{
+  "arithmetic": "IEEE754_BINARY64_ONLY_NO_DPS_ESCALATION",
+  "control_plane_guards": {
+    "D0.7e.5a_activity": "ACTIVE",
+    "D0.7e.5a_proof_status": "BLOCKED",
+    "bus_010_created": false,
+    "draft_mutated": false,
+    "mint_activated": false,
+    "state_mutated": false,
+    "state_revision_observed": 41
+  },
+  "draft": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_OWNER_MINT_DRAFT_WPRIME_CONSUMER.md",
+    "sha256": "2ee260e86c4c1252c70ae692292204f68a36f5e4ec8d69b2ac5ff4bb2be88601"
+  },
+  "draft_revision_audit": {
+    "R2_executable_lines": "rVec and P1 now use kTrial correctly",
+    "finding": "R2_PARTIAL_STRIAL_REFERENCE_DRIFT",
+    "historical_R0_misses_acknowledged_in_draft": [
+      "TYPE_ERROR_STRIAL_SCALAR",
+      "P2_ALPHA_PROBE_GAP_INVERSION"
+    ],
+    "kTrial": "kTrial_m_N=sTrial_m_N*gTrial_m_N",
+    "remaining_reference_drift": [
+      "allowed alphabet still names scalar sTrial instead of vector kTrial",
+      "spectral expansion paragraph still writes inner(sTrial,xi_k)"
+    ],
+    "revision": "R2_V2_SELF_CORRECTION",
+    "sTrial": "sTrial_m_N=norm(gTrial_m_N)^(-1)"
+  },
+  "explicit_nonclaims": [
+    "NO_MINT_ACTIVATION",
+    "NO_D0_7E_5A_CLOSURE",
+    "NO_CANONICAL_ALPHA_MINT",
+    "NO_CANONICAL_MFIN_CERT_FROM_S0",
+    "NO_BUS_010",
+    "NO_RH"
+  ],
+  "overall_code": "MINT_MENU_REVISION_REQUIRED",
+  "report": {
+    "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_PRE_MINT_FALSIFIER_BATTERY.md",
+    "sha256": "4c094af2c189a7da60cfa101817e3e17ccbade97945ef78c018a2a00a5d8a8cd"
+  },
+  "rh_status": "NOT_RH",
+  "schema": "route_b_d0_7e_5a_pre_mint_falsifier_battery.v1",
+  "scores": {
+    "P1": {
+      "codes": [
+        "P1_PERSISTED_MFIN_XI_INPUT_INCOMPLETE",
+        "R2_RESIDUAL_EXPANSION_STRIAL_REFERENCE_DRIFT"
+      ],
+      "registered_prediction": "PASS_relative_residual_lt_1e-12",
+      "registered_score": "DIAGNOSTIC_HIT_BUT_CANONICAL_SCORE_FAIL_CLOSED",
+      "shadow_full_eigenpair_cache_13_120": {
+        "abs_inner_kTrial_xi3": 6.8497315968003e-05,
+        "cell": [
+          13,
+          120
+        ],
+        "coefficient_source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_120.json",
+        "coefficient_source_sha256": "0e5239355c54103859b22d7f753d8cd6765c2c41bcd3ec7f86b20beccc907a88",
+        "diagnostic_pass": true,
+        "gap": 1.3118542497296013e-51,
+        "lhs_norm_r_squared": 8.07454913223681e-111,
+        "norm_kTrial": 0.9999999999999999,
+        "norm_projected": 0.9999999999999999,
+        "relative_residual": 1.8295468324637995e-16,
+        "rhs_gap_squared_overlap_squared": 8.074549132236809e-111,
+        "threshold": 1e-12,
+        "warning": "NO_PERSISTED_MFIN_MATVEC; EIGENPAIR_REPRESENTATION_ONLY",
+        "xi_source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/nconv_anchor_lambda_sq_13_N_120.json",
+        "xi_source_sha256": "cbc556ef7c73c9aefa9f177bb59aeca5867ed6628e3f1cca6edb270bfc13e7f0"
+      },
+      "shadow_reduced_S0": {
+        "all_relative_residuals_below_threshold": true,
+        "cells": [
+          {
+            "N": 90,
+            "abs_inner_k1_xi3": 8.007670505122721e-05,
+            "carrier_warning": "S0_IS_DIAGNOSTIC_SCHUR_NOT_CANONICAL_MFIN",
+            "diagnostic_pass": true,
+            "gap": 1.5601719420064534e-51,
+            "lambda_sq": 13,
+            "lhs_norm_r_squared": 1.5608361539086824e-110,
+            "relative_residual": 5.678789186730281e-16,
+            "rhs_gap_squared_overlap_squared": 1.5608361539086815e-110,
+            "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/parity_block_lambda_sq_13_N_90.json",
+            "source_sha256": "883dc39f80fa191826f263730db0721e6cc83abdc17a504763e51de2fd6eaca1",
+            "theta1": 4.1905358555512155e-59,
+            "theta3": 1.560171983911812e-51,
+            "threshold": 1e-12
+          },
+          {
+            "N": 120,
+            "abs_inner_k1_xi3": 6.849731778197732e-05,
+            "carrier_warning": "S0_IS_DIAGNOSTIC_SCHUR_NOT_CANONICAL_MFIN",
+            "diagnostic_pass": true,
+            "gap": 1.3118542998803162e-51,
+            "lambda_sq": 13,
+            "lhs_norm_r_squared": 8.074550177265867e-111,
+            "relative_residual": 1.8295465956791415e-16,
+            "rhs_gap_squared_overlap_squared": 8.074550177265868e-111,
+            "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/parity_block_lambda_sq_13_N_120.json",
+            "source_sha256": "684d8720a13b0db18d53bb3ea26016f3b1f8ba81320d2e91ea1ee3eb4832e3aa",
+            "theta1": 3.4839881993312774e-59,
+            "theta3": 1.3118543347201982e-51,
+            "threshold": 1e-12
+          },
+          {
+            "N": 120,
+            "abs_inner_k1_xi3": 6.210357079122898e-05,
+            "carrier_warning": "S0_IS_DIAGNOSTIC_SCHUR_NOT_CANONICAL_MFIN",
+            "diagnostic_pass": true,
+            "gap": 9.384333762475243e-57,
+            "lambda_sq": 14,
+            "lhs_norm_r_squared": 3.396565814926503e-121,
+            "relative_residual": 3.7974597959639164e-16,
+            "rhs_gap_squared_overlap_squared": 3.3965658149265017e-121,
+            "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/parity_block_lambda_sq_14_N_120.json",
+            "source_sha256": "510aad475b5a9bfb8a7aa9fecac4aa2aa7b46405e29e676f716433b43ba7e722",
+            "theta1": 1.4598129516305609e-64,
+            "theta3": 9.384333908456537e-57,
+            "threshold": 1e-12
+          }
+        ],
+        "status": "DIAGNOSTIC_PASS_NOT_MFIN_CERT"
+      },
+      "status": "FAIL"
+    },
+    "P2": {
+      "cells": [
+        {
+          "N": 90,
+          "a1": 2.8698294771025047e-28,
+          "abs_bCal_fourth": 0.1229774419788426,
+          "bCal": 0.5921835835971867,
+          "bCal_within_factor_ten_of_one": true,
+          "current_R2_alpha_probe_bCal": 4.901257133582584e-78,
+          "current_R2_alpha_probe_bCal_inverse": 6.027440647685405e-79,
+          "current_R2_orientation_ratio_inverse_over_direct": 0.12297744197884257,
+          "current_R2_orientation_ratio_relative_error_vs_bCal_fourth": 2.256964787119581e-16,
+          "eta1_rayleigh_residual": 3.3191271153148705e-14,
+          "full_rVec_norm_squared_float64_proxy": 1.1016604807618414e-27,
+          "gap_mu3_minus_mu1": 1.5601718742908734e-51,
+          "historical_R0_alpha_probe_bCal": 2.013550834944292e+24,
+          "historical_R0_alpha_probe_bCal_inverse": 2.4762133097581174e+23,
+          "historical_R0_over_current_R2_factor": 4.1082334186218944e+101,
+          "lambda_sq": 13,
+          "mu1": 4.1905358555512155e-59,
+          "mu3": 1.560171916196232e-51,
+          "orientation_classification": "ZERO_CONSISTENT_UNDECIDABLE",
+          "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/lambda_sq_13_N_90.json",
+          "source_sha256": "467c64f92c369b5098b28df3a9d4cc75aff34ddc9433a5bc2b7d0cf6dd2a1062",
+          "two_level_rayleigh_alpha_closure_ratio_bCal": 6.9411616936599094e-102,
+          "two_level_rayleigh_alpha_closure_ratio_bCal_inverse": 8.536063094478263e-103
+        },
+        {
+          "N": 120,
+          "a1": 5.993390676653148e-28,
+          "abs_bCal_fourth": 0.1229774419788426,
+          "bCal": 0.5921835835971867,
+          "bCal_within_factor_ten_of_one": true,
+          "current_R2_alpha_probe_bCal": 8.872270425342676e-78,
+          "current_R2_alpha_probe_bCal_inverse": 1.09108912145318e-78,
+          "current_R2_orientation_ratio_inverse_over_direct": 0.12297744197884261,
+          "current_R2_orientation_ratio_relative_error_vs_bCal_fourth": 1.1284823935597906e-16,
+          "eta1_rayleigh_residual": 4.870022366645608e-14,
+          "full_rVec_norm_squared_float64_proxy": 2.371711785162849e-27,
+          "gap_mu3_minus_mu1": 1.3118542497295863e-51,
+          "historical_R0_alpha_probe_bCal": 5.155414604802036e+24,
+          "historical_R0_alpha_probe_bCal_inverse": 6.339997004389202e+23,
+          "historical_R0_over_current_R2_factor": 5.810704991674009e+101,
+          "lambda_sq": 13,
+          "mu1": 3.4839881993312774e-59,
+          "mu3": 1.3118542845694683e-51,
+          "orientation_classification": "ZERO_CONSISTENT_UNDECIDABLE",
+          "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/lambda_sq_13_N_120.json",
+          "source_sha256": "3c18c63faf3eff8ce0665acddb5a9f80d0e0bcd0bd8e38f60a55767a266c70c7",
+          "two_level_rayleigh_alpha_closure_ratio_bCal": 4.907478950456342e-102,
+          "two_level_rayleigh_alpha_closure_ratio_bCal_inverse": 6.035092078921361e-103
+        },
+        {
+          "N": 120,
+          "a1": 8.298465893293588e-28,
+          "abs_bCal_fourth": 0.1235851613689781,
+          "bCal": 0.592913832260535,
+          "bCal_within_factor_ten_of_one": true,
+          "current_R2_alpha_probe_bCal": 8.651428857200917e-83,
+          "current_R2_alpha_probe_bCal_inverse": 1.069188231389409e-83,
+          "current_R2_orientation_ratio_inverse_over_direct": 0.1235851613689781,
+          "current_R2_orientation_ratio_relative_error_vs_bCal_fourth": 0.0,
+          "eta1_rayleigh_residual": 5.692903025334033e-14,
+          "full_rVec_norm_squared_float64_proxy": 3.240914485585739e-27,
+          "gap_mu3_minus_mu1": 9.384333501313012e-57,
+          "historical_R0_alpha_probe_bCal": 9.823833067476016e+29,
+          "historical_R0_alpha_probe_bCal_inverse": 1.2140799949059267e+29,
+          "historical_R0_over_current_R2_factor": 1.1355156737258797e+112,
+          "lambda_sq": 14,
+          "mu1": 1.4598129516305609e-64,
+          "mu3": 9.384333647294307e-57,
+          "orientation_classification": "ZERO_CONSISTENT_UNDECIDABLE",
+          "source": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/lambda_sq_14_N_120.json",
+          "source_sha256": "27ce0daf64816ecfee92aaf7ec186528bc5f9cdaab8777db0942dbd9661ddda6",
+          "two_level_rayleigh_alpha_closure_ratio_bCal": 2.50509212816158e-112,
+          "two_level_rayleigh_alpha_closure_ratio_bCal_inverse": 3.0959221490300564e-113
+        }
+      ],
+      "codes": [
+        "P2_R2_GAP_NUMERATOR_REPAIR_PRESENT",
+        "P2_ORIENTATION_ZERO_CONSISTENT_UNDECIDABLE",
+        "P2_TWO_LEVEL_RAYLEIGH_ALPHA_5C_MISMATCH"
+      ],
+      "derivation": {
+        "current_R2_alpha_probe": "alpha_probe=r^2*gap/abs(b)^2",
+        "current_R2_formula_check": "PASS",
+        "forced_alpha": "alpha=r^2*gap/abs(b)^2",
+        "given": "W_A^2=lambda*r^2 and W_A^2*gap=abs(b)^2*lambda*alpha",
+        "historical_R0_error_factor": "gap^(-2)",
+        "historical_R0_formula": "alpha_probe=r^2/(gap*abs(b)^2)"
+      },
+      "registered_factor_check": "HIT_bCal_fourth_but_nondiscriminating",
+      "registered_score": "HIT_FACTOR_AND_ZERO_CONSISTENT_OUTCOME_BUT_FAILS_RAYLEIGH_ALPHA_CROSSWALK",
+      "status": "FAIL"
+    },
+    "P3": {
+      "Xi_zero_float64": 0.4971207781883142,
+      "cells": [
+        {
+          "N": 90,
+          "abs_detreg_equals_abs_Fplus_zero": 0.8647979663491705,
+          "central_crosswalk_ratio": 0.34041102704133397,
+          "draft_abs_bCal_times_abs_Xi_zero": 0.2943867639081781,
+          "expected_ratio_abs_gammaC_half": 0.3404110270413339,
+          "independent_WPrime_degree_of_freedom": false,
+          "lambda_sq": 13,
+          "plant": "SLOT_VACUITY",
+          "reduced_5c_relation": "abs(bCal)^4*abs(Xi(0))^2*DeltaE=lambda*alpha"
+        },
+        {
+          "N": 120,
+          "abs_detreg_equals_abs_Fplus_zero": 0.8647979663491705,
+          "central_crosswalk_ratio": 0.34041102704133397,
+          "draft_abs_bCal_times_abs_Xi_zero": 0.2943867639081781,
+          "expected_ratio_abs_gammaC_half": 0.3404110270413339,
+          "independent_WPrime_degree_of_freedom": false,
+          "lambda_sq": 13,
+          "plant": "SLOT_VACUITY",
+          "reduced_5c_relation": "abs(bCal)^4*abs(Xi(0))^2*DeltaE=lambda*alpha"
+        },
+        {
+          "N": 120,
+          "abs_detreg_equals_abs_Fplus_zero": 0.8658643882772433,
+          "central_crosswalk_ratio": 0.3404110270413339,
+          "draft_abs_bCal_times_abs_Xi_zero": 0.29474978569197274,
+          "expected_ratio_abs_gammaC_half": 0.3404110270413339,
+          "independent_WPrime_degree_of_freedom": false,
+          "lambda_sq": 14,
+          "plant": "SLOT_VACUITY",
+          "reduced_5c_relation": "abs(bCal)^4*abs(Xi(0))^2*DeltaE=lambda*alpha"
+        }
+      ],
+      "code": "SLOT_VACUITY",
+      "gammaC_half": -0.3404110270413339,
+      "registered_prediction": "SLOT_VACUITY_must_fire",
+      "registered_score": "HIT",
+      "status": "PASS",
+      "symbolic_reduction": "W_B=abs(bCal)*abs(Xi(0)), bW=bCal^(-1) => abs(bCal)^4*abs(Xi(0))^2*DeltaE=lambda*alpha",
+      "warning": "draft also equates abs(detreg)=abs(Fplus(0)) with abs(bCal)*abs(Xi(0)); D0.7e gives an extra abs(gammaC(1/2)) factor"
+    },
+    "P4": {
+      "codes": [
+        "P4_NO_REGISTERED_SLOPE_TOLERANCE",
+        "P4_RAW_SLOPE_CARRIER_AMBIGUITY"
+      ],
+      "correct_identity": "beta_W=beta_r+1/2",
+      "full_float64_residual_proxy_N120": {
+        "WPrime_A_13": 9.247339321138208e-14,
+        "WPrime_A_14": 1.1011989658955619e-13,
+        "beta_W": 4.713360086481283,
+        "beta_W_minus_beta_r": 0.49999999999999645,
+        "beta_r": 4.213360086481287,
+        "r_13": 4.870022366645608e-14,
+        "r_14": 5.692903025334033e-14
+      },
+      "interpretation": "the +1/2 increment passes tautologically; the raw beta_W is neither registered against a numerical band nor stable across the two carriers",
+      "registered_prediction": "slope_consistent_with_sqrt_lambda_prefactor",
+      "registered_score": "MISS_UNSCORABLE_NO_REGISTERED_TOLERANCE",
+      "status": "FAIL",
+      "two_level_S0_N120": {
+        "WPrime_A_13": 1.706259203358005e-55,
+        "WPrime_A_14": 1.1273324962531508e-60,
+        "beta_W": -321.8918092860124,
+        "beta_W_minus_beta_r": 0.5,
+        "beta_r": -322.3918092860124,
+        "r_13": 8.985850086255539e-56,
+        "r_14": 5.828006361464015e-61
+      }
+    }
+  },
+  "status": "INVALID_EXECUTABLE_SPEC_AS_WRITTEN"
+}
