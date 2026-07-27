@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 73 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 120 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -28,9 +28,16 @@ Flat Proshka mirror from `rh_lean_01_2026`; 73 mirrored source files plus `CHANN
 | `015_muntz_cloud_harvest.goal.md` | goal | `dde7b99aed97e57023f8ffb66888568797bb0c0ac086a2a26f4734da0e7a90c0` |
 | `016_prolate_lean_layer.answer.md` | answer | `a81cc177e253e00be74f0d3c08689db52802aeae0854f1246006c6f93e8b4c44` |
 | `016_prolate_lean_layer.goal.md` | goal | `d1b41079d105008628b690107ed8d42fcf4af1f21acf3c4a1e8be88e583c9898` |
+| `017_muntz_port_prep.goal.md` | goal | `442ab909fad4517a52e7321f71448f84dd3f4ef889cbfd1ee4e21074dd78db6d` |
+| `018_estar_full_window_sign.goal.md` | goal | `d5285bdc792c6988b93f24371834bea550865a30b16a790c02cbaf044bc49d45` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
+| `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
+| `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
+| `AmbientResidualSplit.lean` | key Lean artifact | `d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00` |
+| `AutocorrelationSquareRootReconstruction.lean` | key Lean artifact | `dc0d8ece0243baeaf96dfa9748b913c35d88ea9d3c99c419215326e13c598436` |
 | `B0_VALUE_PROBE.csv` | probe data | `723a9d8f7fb93a4c8b8e31df1487b17d7cc7f5df15c59f153f9692bf556a9ba3` |
 | `B0_VALUE_PROBE.md` | probe report | `652d7d5451a31f5d497cfa80afb6692faa1e5829d935374c51f85052f606765c` |
+| `BDetReality.lean` | key Lean artifact | `c91b4756345bc8b95f8ecbf681c522864ec771fa76933158ddd37785b069738d` |
 | `CENTERED_DENSITY_GIBBS_PROBE.md` | probe report | `45a8596c915d3d055d9fdb5ff72858f7120bda0214aae27d9a453547d0d9a23f` |
 | `CENTERED_DENSITY_POSITIVITY_PROBE.csv` | probe data | `9b71f040e3ffbbb8f96e43164079250696e20a69566636646c5ec8f04e280d78` |
 | `CENTERED_DENSITY_POSITIVITY_PROBE.md` | probe report | `e797db66270bacd3fdfc17e7def66ac5ae055a42af3a54b3d46d9f194f5e4fff` |
@@ -39,15 +46,30 @@ Flat Proshka mirror from `rh_lean_01_2026`; 73 mirrored source files plus `CHANN
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
 | `CanonicalRHRouteSkeleton.lean` | key Lean artifact | `2e849d677e0ec771c47a436abdf657690e833e52555af8c8698185e30274536b` |
+| `ClassicalXiInterface.lean` | key Lean artifact | `838f8156efe7db74cdece2b333ee223ef7737ea2981c4ae28a672f36dd04e82b` |
+| `CompactEvaluationRateTransfer.lean` | key Lean artifact | `72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c` |
+| `CompletedTrackerScope.lean` | key Lean artifact | `e8d47f20b2addb37023a2c72f6bc0a8fae5ab44a443fb8efbf9b986146676b43` |
 | `D0AnchorFloor.lean` | key Lean artifact | `13d92f361806bf04d072209945871523efa022e3406a96403a8bb6d6d4030ce0` |
 | `D0CanonicalApproximation.lean` | key Lean artifact | `60409208d26aeae7b4974150bd66ad42da83f09a223f41196dbde7abd3157695` |
+| `D0CenteredCriticalMoment.lean` | key Lean artifact | `9a7f29e4400e60891fa5d8d7d7657909275a6b4d4c17e277da615c785aa68d05` |
+| `D0CenteredDensityFactorizationFailure.lean` | key Lean artifact | `affb8756db8710fda2e4d06d77ba50e669eceed90fc1ea89d28c9568ab3a97dc` |
 | `D0KTrialStage1.lean` | key Lean artifact | `c7dd206ab7979d3390a50969c71919c04582f0c1514dbb142fe1883148ce5b48` |
 | `D0KTrialStage2.lean` | key Lean artifact | `aabaf47cb484f0157fd7b2ac4f30811aec9595116c1193715e41de8b520393cd` |
 | `D0KTrialStage3.lean` | key Lean artifact | `924027a3dd9b95e75c776db552ad37779ed8dd75a7924d744a39cb1a613ebdfa` |
+| `DoubleCompletionStripMismatch.lean` | key Lean artifact | `813b549f24b05d011fadf70eb7b5b6f85ecab81e303282418d8a42510e221ad0` |
 | `EStarWindowedMellinCrosswalk.lean` | key Lean artifact | `b905b5ace98af7de2ac76cac646e34d730c62d60c83274d15240dc332d56f1d5` |
+| `EntirePhaseNormalization.lean` | key Lean artifact | `ba791e2248332628fa3684766dd017f522fc7836563bced5d5b05aea525bebcf` |
+| `EntireSquareRootRigidity.lean` | key Lean artifact | `174930ca4110f21c46ca70c068f26f8f629048fed344f190f7bb30773304a69d` |
+| `EvenRealAutocorrelationRigidity.lean` | key Lean artifact | `af3881dd0be7df726b9bc19975f833d410aeddb2b9740e7d9c0dffd72b67b077` |
+| `FplusConstantMode.lean` | key Lean artifact | `cb8b95ecfc782cae6a3daa80f521ab2080645f1ab03d17d4d7495864f921111d` |
+| `GammaSoftZeroFree.lean` | key Lean artifact | `615548873f1c12dfd5f5e047c74135cd1f0fc454614c3fdc9d685472f3934c4b` |
+| `GenericZeroTransfer.lean` | key Lean artifact | `4385ec71f6af59f1b5432128cd9b708854182e1248efcc0c764dc6dcf71fcc63` |
 | `H2A_CERT_SPLIT_PILOT_REPORT_2026-07-25.md` | measurement report | `942d981c18e53c89c3312fc04312a97f60d5ac62d1b12ea161bb69a1a64193e7` |
+| `H2aPenaltyCoercivity.lean` | key Lean artifact | `4d1d71560040890d673d1fc10cd107a2a06a7c9763f9a8baa6132498dff5d39c` |
+| `HermitianDeterminantRealZeros.lean` | key Lean artifact | `d886f53f2b935980b84727715dd5a162c357047b0e23ddce713c8c83bf8502c2` |
 | `MASS_NORM_AND_PRECISION_REPORT_2026-07-27.md` | measurement report | `7add221b10f3dc58e7d3c849f7c8844a1ba9df2b9b55e6fe653bce6062b7f2c0` |
 | `MontelNormalFamilies.lean` | key Lean artifact | `2da026570c804633022a010d986c6a11e2df27241023413636ee95723fabf2d5` |
+| `NormalizedTrackingRateTransfer.lean` | key Lean artifact | `5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed` |
 | `OFF_AXIS_GROWTH_PROBE.csv` | probe data | `99b61c80567e0e0d8c3a5be8e52a22d35376d0a05c4b7051eb70fa0e0fb55c90` |
 | `OFF_AXIS_GROWTH_PROBE.md` | probe report | `264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4` |
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
@@ -59,9 +81,20 @@ Flat Proshka mirror from `rh_lean_01_2026`; 73 mirrored source files plus `CHANN
 | `PROSHKA_MELLIN_CROSSWALK_2026-07-27.md` | Proshka verdict/source review | `ed2217c1b65cf640b388fc26586f9eeb56340fcee8b7e06402c88f053381b3fa` |
 | `PROSHKA_RATIO_RECEIVER_2026-07-27.md` | Proshka verdict/source review | `bd8c3d0ea16899c385247a69c65fae015731ce3c6b1493d3457d1dd3bf36b668` |
 | `PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | Proshka verdict/source review | `827a1c5bf1e62c434bed0b59aabb459babab484d270d18562ee940841d93ae4e` |
+| `PROSHKA_SIGN_FRONT_2026-07-27.md` | Proshka verdict/source review | `af317ee7e183fee763fa65a870fb129ad0769410dc5bc2cd340283d6f771825a` |
 | `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md` | Proshka verdict/source review | `fa82f900e2096830116fbaeb22bf2001711075874e1cbf59b5c95533d5712a00` |
 | `PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md` | Proshka verdict/source review | `2310171f2f81d1afef8599da23cf9cf8cacd3d1eb9e38972f21f7075f9620d1f` |
+| `PerturbativeTrueGapLower.lean` | key Lean artifact | `bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19` |
+| `PhaseAlignmentRateTransfer.lean` | key Lean artifact | `9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f` |
 | `ProlateLayer.lean` | key Lean artifact | `3c2099c97df6cd0fb45f7b367d24898d11c031ed297fe9031b25ee5b9dc0edf4` |
+| `Proposition59EntireTransform.lean` | key Lean artifact | `a5a6c7bb08f7d8e75ac583dfcf25a7060eaff1060e755142d1456ea94d73ab9b` |
+| `QuadraticDivisorTransfer.lean` | key Lean artifact | `56b022981cd0be545911d8ba52eb9d0ea6a924d55e5de3dfcd1671d3c1f3275a` |
+| `QuotientByRadicalSelfAdjoint.lean` | key Lean artifact | `f89970cc1023f10542e46cfc0107d0589ac21aefc91c1cd9f2152f2245238400` |
+| `RankOneCorrectionAllSpectralPoints.lean` | key Lean artifact | `f134db9ea9db5ba0de8c9316e337b334b3e2eb490d24c3a813c016ae316f9e66` |
+| `RankOneCorrectionDeterminant.lean` | key Lean artifact | `b8d530f16f4413e30c9f55d0aa43ca99d972142845617ae81006fc9f4eace8d3` |
+| `RankOneCorrectionQuotientDescent.lean` | key Lean artifact | `71a45f13aa84520f0db8bd495b6f29d8c416dad05c6a6632125590159dd630a1` |
+| `RankOneCorrectionWeightedSymmetry.lean` | key Lean artifact | `f31875b4dc48e10cb61380400f47cfb47e4af14711cd51a9ce5786e1ac661204` |
+| `RawIntegralRhsCrosswalk.lean` | key Lean artifact | `01f57424ee2c5b81784f28dfc24cf982b22caaf04bd1a7b4021609a5aa424711` |
 | `SOFT_2_LINEARITY_CROSSWALK_FORK_REPORT_2026-07-13.md` | measurement report | `873f817a10d7d660e848cda7e645d864ed8ebeca4abfb52bcda4cea341ec213b` |
 | `SOFT_2_QUADRATIC_DIVISOR_TRANSFER_REPORT_2026-07-13.md` | measurement report | `f168742f3d665f3eed62e536862d1c535f07389c9013f87e8118e01277a646dd` |
 | `SOFT_3Q1_DIRECT_HERMITIAN_KERNEL_PAIRING_REPORT_2026-07-13.md` | measurement report | `2380fdbc4a5348819165930fc905a198492ca4898d065a03b9362dc0c84a4eac` |
@@ -74,9 +107,23 @@ Flat Proshka mirror from `rh_lean_01_2026`; 73 mirrored source files plus `CHANN
 | `SOFT_L2_RIGIDITY_FREEZE_REPORT_2026-07-13.md` | measurement report | `2c43084ad2e7733839a3a3afda50c984e0e6b52d39c3232dd81db061a817c749` |
 | `STRIP_GROWTH_PROBE.csv` | probe data | `8408157a4a897b8a168a04d111db7aa60baf6757b4756e2baab9358af1d824dc` |
 | `STRIP_GROWTH_PROBE.md` | probe report | `1687b411bea4da8a30f1463427ce41c3f65a3cf218bd91dccbcded0ea0487d8a` |
+| `SafeBoundsToSquareEnvelope.lean` | key Lean artifact | `bdec0a4d04ea6f21358e965b5de74286503699cbb1a323c650e64f9d91c8ab92` |
+| `SafeBridgeFalsifiers.lean` | key Lean artifact | `7e33e0675b6a2ed2f74b09c5653b8703d27eed0ef615b84341ef3c2ea4a5282c` |
+| `SafeRateAssembly.lean` | key Lean artifact | `f864eb19263be812cb2bcecc6a4fe64bc67af499f4675ac1a3295b8ed71f50af` |
+| `SectorIsolationRadius.lean` | key Lean artifact | `67342984d35a0d0ef223186f76a44584e546e3e5c3c5f383fd7128746c1d8c82` |
+| `SimpleEvenGroundSectorCriterion.lean` | key Lean artifact | `a8d61ee0d64f40387263dec9392184d915aeccb2822ac21566dd74fcc2712d5e` |
+| `SoftL2Round13Integration.lean` | key Lean artifact | `10bb78e28abc8309b2aad50ed87046cb6b4d80405e1c8c8a37eca5fc749aa43b` |
+| `TempleResidualGapEnvelopeTransfer.lean` | key Lean artifact | `f21061cbc2009d08cebb44386881af87071861f2eb8f81aa77e870a3a5ccd4c7` |
+| `TwoSidedNormalizedBControl.lean` | key Lean artifact | `f7ccca3e5f640380964a27ad010d09e9f8225e39087d96a2d9bc1c3ed93013b8` |
 | `UNPROJECTED_MASS_NORM_PROBE.csv` | probe data | `c1333cb21c1bc338a84d6c7ae27f0c08bad074af0cfc049c14ad51a5e3ed86a5` |
 | `UNPROJECTED_MASS_NORM_PROBE.md` | probe report | `44302a9324bf7acb483aa66484e9fbe3a85796e9a1f005f13bea6843a4512033` |
 | `UPPER_EDGE_SIGN_PROBE.csv` | probe data | `e4312f08573c2e907755d96c97a0cc2abc620c606c92da1fd2fb779582401c3e` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `a609346e427f7cc6875e32cd6062350d4d02aa18c0f11320f55e62022cbd06f9` |
+| `UniformDifferenceReferenceTransfer.lean` | key Lean artifact | `15ba25ce2d08ea47bfd13bc64975220d586ed5dd4691bd80634a007a50515c99` |
+| `WeightedProjectiveEvaluationTransfer.lean` | key Lean artifact | `b08ec751f7508331acf0edfc63e75a1d9f61c738fab956d042514a51eb31d8ab` |
+| `WeightedRayleighProjectiveDefect.lean` | key Lean artifact | `67190007a4d5bf5505f49d6cae714805c263928415524d1b2f65cf91bd242efc` |
+| `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
+| `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
+| `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `f47d5d56678204d78266e1775587072ddbe10f276d4dbc375d0c73eefcc9482a` |
 
 `MANIFEST.md` is excluded from its own hash table.
