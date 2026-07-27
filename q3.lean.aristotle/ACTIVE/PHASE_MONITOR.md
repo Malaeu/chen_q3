@@ -43,10 +43,11 @@ closed.
   certified cells `m in {13,53,257}` by two outward-rounded scalar
   inequalities plus the frozen pen-level Sturm--Wronskian transport.
 - This is not a cofinal-family theorem and changes no H1/PO3 or RH claim.
-- Next live address:
-  `RouteB.028 / FiniteCoreThetaOrderWithTailBudget`; its live route fork is
-  the proof backend for all canonical band/tooth polynomials:
-  Sturm, Bernstein, rational interval subdivision, or exact SOS.
+- The next mathematical dependency is
+  `FiniteCoreThetaOrderWithTailBudget`, but no next numbered bus goal was
+  created.  Its future route fork is the proof backend for all canonical
+  band/tooth polynomials: Sturm, Bernstein, rational interval subdivision,
+  or exact SOS.
 
 ## Startup response contract
 

@@ -48349,20 +48349,21 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `HLAMBDA_LAST_POSITIVE_ZERO_LT_ONE_PROVED` for exactly
   `m in {13,53,257}`.  This is not a cofinal-family theorem.
 - In the raw `a0=1` Legendre normalization, every other basis term has
-  positive degree and zero integral on `[-1,1]`; hence `J0=J4=2`.
-  Independent positive L2 scales cancel exactly from both `phi_j/J_j` and
-  `epsilon_j/J_j`.
+  positive degree and zero integral on `[-1,1]`; hence the physical source
+  integrals are `J_j=2*s_j>0`.  The positive scale cancels algebraically from
+  `phi_j/J_j`, while the certified right-hand side is evaluated
+  conservatively as independent outward intervals `epsilon_upper/J_lower`.
 - The certified point margins after subtracting the nonzero tail allowance
   are approximately `4.39428`, `8.70515`, and `19.07817`; the eigenvalue
   barriers are also strictly positive in all three cells.
 - The result uses one requested point per cell and the frozen pen-level
   Sturm--Wronskian transport.  No sign grid, direct Sturm theorem on the
   mixed packet, terminal-zero tail, `mu:=1`, or theorem weakening is used.
-- The midpoint `x=lambda` remains separately covered by the locked
-  Fourier-eigenvalue phase relation, so the instantiated conclusion is
-  `h_lambda<=0` on `[1,lambda]` for the three cells.
-- Next live address:
-  `RouteB.028 / FiniteCoreThetaOrderWithTailBudget`.  It is a genuine route
-  fork between exact Sturm, Bernstein positivity, rational interval
-  subdivision, and exact SOS certificates for the canonical band/tooth
-  polynomials.
+- The midpoint `x=lambda` is separately covered by the locked midpoint
+  zero-extension, so the instantiated conclusion is `h_lambda<=0` on
+  `[1,lambda]` for the three cells.
+- The next mathematical dependency is
+  `FiniteCoreThetaOrderWithTailBudget`.  No next numbered bus goal was
+  created; a future owner-issued leaf must choose between exact Sturm,
+  Bernstein positivity, rational interval subdivision, and exact SOS
+  certificates for the canonical band/tooth polynomials.

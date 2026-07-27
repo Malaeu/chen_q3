@@ -24,6 +24,7 @@ ROOT = HERE.parents[3]
 GOAL = HERE / "027_hlambda_outer_lobe_gate.goal.md"
 ANSWER_026 = HERE / "026_lambda_bracket_resume.answer.md"
 AUDIT_026 = HERE / "LAMBDA_BRACKET_RESUME_AUDIT.json"
+CERT_026_SCRIPT = HERE / "lambda_bracket_resume_audit.py"
 PEN = HERE / "proshka" / "PROSHKA_PEN_REDUCTIONS_2026-07-27.md"
 SCRIPT = Path(__file__).resolve()
 OUT_JSON = HERE / "HLAMBDA_OUTER_LOBE_GATE_AUDIT.json"
@@ -105,6 +106,34 @@ def raw_core_value(
     return value
 
 
+def normalization_data(
+    case: dict[str, Any], coefficients: list[tuple[int, arb]]
+) -> dict[str, arb]:
+    """Repeat the live 026 finite-plus-tail L2 normalization enclosure."""
+
+    finite_l2_sq = arb(0)
+    for degree, coefficient in coefficients:
+        finite_l2_sq += 2 * coefficient**2 / arb(2 * degree + 1)
+    last = coefficients[-1][1]
+    tail_l2_sq_upper = (
+        2 * last**2 / arb(3 * (2 * int(case["N0"]) + 5))
+    )
+    tail_l2_sq = arb(0).union(tail_l2_sq_upper)
+    scale = 1 / (finite_l2_sq + tail_l2_sq).sqrt()
+    if not scale > 0:
+        raise GateGap(
+            "HLAMBDA_OUTER_POINT_DETERMINANT_GAP",
+            f"m={case['m']}, degree={case['target_degree']}: "
+            "normalizing scale does not exclude zero",
+        )
+    return {
+        "scale": scale,
+        "J": 2 * scale,
+        "epsilon": abs(scale * last),
+        "tail_l2_sq": tail_l2_sq,
+    }
+
+
 def run_cell(
     m: int, degree0: dict[str, Any], degree4: dict[str, Any]
 ) -> dict[str, Any]:
@@ -114,15 +143,24 @@ def run_cell(
     coeff4 = raw_coefficients(degree4)
     phi0 = raw_core_value(degree0, coeff0, t)
     phi4 = raw_core_value(degree4, coeff4, t)
+    norm0 = normalization_data(degree0, coeff0)
+    norm4 = normalization_data(degree4, coeff4)
 
-    # With a_0=1, every other Legendre term has positive degree, hence zero
-    # integral on [-1,1].  Thus J_raw=2 exactly.  The independent positive
-    # L2 scales cancel from phi_j/J_j, including the tail allowance.
-    j0 = arb(2)
-    j4 = arb(2)
-    psi = phi4 / j4 - phi0 / j0
-    eps0_over_j0 = abs(coeff0[-1][1]) / j0
-    eps4_over_j4 = abs(coeff4[-1][1]) / j4
+    # With a_0=1, every other Legendre term has positive degree and integral
+    # zero on [-1,1].  Hence the physical source integral is J_j=2*s_j>0.
+    # The common positive scale cancels algebraically in phi_{j,K}/J_j.
+    # On the requested right-hand side, retain independent outward enclosures
+    # for eps_j and J_j, so interval division consumes eps_upper/J_lower.
+    j0 = norm0["J"]
+    j4 = norm4["J"]
+    if not j0 > 0 or not j4 > 0:
+        raise GateGap(
+            "HLAMBDA_OUTER_POINT_DETERMINANT_GAP",
+            f"m={m}: a source integral does not exclude zero",
+        )
+    psi = phi4 / 2 - phi0 / 2
+    eps0_over_j0 = norm0["epsilon"] / j0
+    eps4_over_j4 = norm4["epsilon"] / j4
     tail_allowance = eps4_over_j4 + eps0_over_j0
     point_margin = psi - tail_allowance
     if not point_margin > 0:
@@ -144,31 +182,43 @@ def run_cell(
         "lambda": f"sqrt({m})",
         "t": f"1/sqrt({m})",
         "theta4_barrier_margin": ball_text(barrier),
-        "raw_integrals": {
-            "J0": "2",
-            "J4": "2",
+        "positive_source_integrals": {
+            "J0": ball_text(j0),
+            "J4": ball_text(j4),
+            "raw_gauge_J0": "2",
+            "raw_gauge_J4": "2",
             "proof": (
-                "a0=1 and every remaining even Legendre polynomial has "
-                "positive degree and integral zero on [-1,1]"
+                "J_j=2*s_j>0: a0=1; every remaining even Legendre "
+                "polynomial has positive degree and integral zero"
             ),
         },
         "finite_core": {
-            "phi0_at_t": ball_text(phi0),
-            "phi4_at_t": ball_text(phi4),
+            "raw_phi0_at_t": ball_text(phi0),
+            "raw_phi4_at_t": ball_text(phi4),
+            "normalized_phi0_at_t": ball_text(norm0["scale"] * phi0),
+            "normalized_phi4_at_t": ball_text(norm4["scale"] * phi4),
             "Psi_at_t": ball_text(psi),
+            "scale_cancellation": (
+                "(s_j*raw_phi_j)/(2*s_j)=raw_phi_j/2, with s_j>0"
+            ),
         },
         "tails": {
+            "eps0": ball_text(norm0["epsilon"]),
+            "eps4": ball_text(norm4["epsilon"]),
             "eps0_over_J0": ball_text(eps0_over_j0),
             "eps4_over_J4": ball_text(eps4_over_j4),
             "consumed_allowance": ball_text(tail_allowance),
-            "consumed_allowance_strictly_positive": bool(tail_allowance > 0),
+            "consumed_in_strict_inequality": bool(
+                tail_allowance > 0 and point_margin < psi
+            ),
         },
         "strict_point_margin": ball_text(point_margin),
         "paper_transport_instantiation": {
             "open_interval": "h_lambda(x)<0 for 1<=x<lambda",
             "midpoint": (
-                "x=lambda is handled separately by the locked positive "
-                "Fourier-eigenvalue phase relation"
+                "x=lambda is handled separately by the locked midpoint "
+                "zero-extension; halving the interior endpoint value "
+                "preserves the nonpositive sign"
             ),
             "closed_interval": "h_lambda(x)<=0 for 1<=x<=lambda",
         },
@@ -176,7 +226,14 @@ def run_cell(
 
 
 def main() -> None:
-    required = (GOAL, ANSWER_026, AUDIT_026, PEN, SCRIPT)
+    required = (
+        GOAL,
+        ANSWER_026,
+        AUDIT_026,
+        CERT_026_SCRIPT,
+        PEN,
+        SCRIPT,
+    )
     for path in required:
         if not path.is_file():
             raise SystemExit(f"missing source: {path}")
@@ -220,9 +277,10 @@ def main() -> None:
             "truncated_mode_promoted_to_exact": False,
             "mu_substituted_by_one": False,
             "tail_interval_consumed": all(
-                cell["tails"]["consumed_allowance_strictly_positive"]
+                cell["tails"]["consumed_in_strict_inequality"]
                 for cell in cells
-            ),
+            )
+            and len(cells) == len(cert026.M_VALUES),
             "state_changed": False,
             "bus_010": "VOID",
         },
@@ -232,6 +290,7 @@ def main() -> None:
     with OUT_CSV.open("w", newline="") as handle:
         writer = csv.DictWriter(
             handle,
+            lineterminator="\n",
             fieldnames=[
                 "m",
                 "theta4_barrier_margin",
