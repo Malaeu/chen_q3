@@ -48291,3 +48291,23 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   significant digits; `mu_j=lambda*J_j/c_j` is retained.
 - Route B remains `CHALLENGER / NOT_RH`; `STATE`, Fejér, residual, G3 and
   `BUS_010_VOID` remain untouched.
+
+## 2026-07-27 — Legendre recessive-tail certificate input gate
+
+- Goal 025 source-locks the order-zero, degree `0/4` DLMF recurrence with
+  `G=gamma^2` and the project crosswalk `Theta=Lambda+G`.
+- Exact algebra verifies `p<=G/3`, `r<=G/4`, `B>=N(N+1)-G/2`; the registered
+  `K0` condition therefore gives the invariant ratio cone `[0,1/2]` and
+  contraction factor `3/16`.
+- The stated `T1`, `Tinf`, `T2`, derivative and Fourier tail budgets follow
+  from the geometric coefficient decay and Legendre bounds; all four
+  validation plants fire symbolically/source-wise.
+- The first missing proof-grade input is an independently certified
+  eigenvalue interval `[Lambda_lower,Lambda_upper]` for degrees `0` and `4`.
+- Existing high-precision finite characteristic values and residual estimates
+  are diagnostics, not outward-rounded enclosures of the infinite mode; no
+  zero-width ball or terminal-tail substitution is permitted.
+- Required next leaf: a source-locked Rayleigh/Temple,
+  Gershgorin-plus-tail-resolvent, or interval-Sturm enclosure feeding `K0`.
+- Route B remains `CHALLENGER / NOT_RH`; `STATE` is unchanged and
+  `BUS_010_VOID` remains preserved.

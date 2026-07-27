@@ -1,0 +1,9 @@
+step,obligation,status,detail
+1,"exact DLMF A_k,B_k,C_k recurrence",SOURCE_LOCKED,"DLMF 30.8.2--30.8.4; p=-A, r=-C, d=B-Lambda; project Theta=Lambda+G"
+2,K0 from certified Lambda interval,BLOCKED,"no source-locked proof-grade [Lambda_lower,Lambda_upper] for degrees 0 and 4 is materialized"
+3,"invariant cone [0,1/2]",EXACT_CONDITIONAL,exact once the K0 hypothesis is supplied
+4,contraction <=3/16,EXACT_CONDITIONAL,exact once the K0 hypothesis is supplied
+5,interval continued fraction,NOT_FORMED,requires a proof-grade Lambda interval
+6,"sup,L2,derivative,Fourier tail",EXACT_CONDITIONAL,formula ledger verified; no numerical tail ball formed
+7,finite core consumes tail-ratio interval,NOT_FORMED,no point tail and no finite=infinite identification used
+8,full finite-plus-tail normalization,NOT_FORMED,finite core and tail interval are not yet available
