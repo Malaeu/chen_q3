@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-12T22:24:00+02:00",
+  "updated_at": "2026-07-27T01:14:12+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -496,7 +496,7 @@
     },
     "l0c_generic_zero_transfer_lean": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GenericZeroTransfer.lean",
-      "sha256": "7ec141740def3c8b40edb8e1c85f480cd733660909577cba10ad60829820b77b"
+      "sha256": "4385ec71f6af59f1b5432128cd9b708854182e1248efcc0c764dc6dcf71fcc63"
     },
     "h4a3_weighted_spectral_temple_core_certificate": {
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/H4A3_WEIGHTED_SPECTRAL_TEMPLE_CORE_CERTIFICATE.json",

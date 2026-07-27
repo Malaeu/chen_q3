@@ -47620,3 +47620,483 @@ Final result:
   `PSD_ACHIEVABLE_ON_REGISTERED_SMALL_GRID`.
 - `cert.exact` is unchanged: `ExactSectorOrdering` remains open under
   `H2A_EXACT_SECTOR_ORDERING_MISSING`.
+
+## 2026-07-12 — Route B OffAxisGrowthProbe (float64 diagnostic)
+
+- Exact object: on `BDetNonzero`, `G=Fhat/bDet` with
+  `Fhat(z)=gammaC(1/2+iz) Fplus(z)` and
+  `Fplus(z)=lambda^(-iz)/sqrt(L) * sum_n c_n * integral_0^L
+  exp(i(z+2*pi*n/L)x) dx`. The scalar `bDet` cancels exactly in the ratio of
+  suprema; the reflection sign is `z+2*pi*n/L`, not the raw-transform minus
+  sign.
+- The x-window is the persisted `[gamma_1,gamma_11]`, exactly ten empirical
+  mean zero spacings. The grid has 32769 points; y is 0.1, 0.2, 0.3, 0.4.
+- Existing cells `(13,90)`, `(13,120)`, `(14,120)` use persisted k1 vectors
+  cast once to complex128. New `(53,120)` and `(101,120)` vectors use the same
+  g04 -> breakpoint E-star -> Fourier pipeline entirely in float64. Fixed
+  `N=120` is diagnostic, not an `N(lambda)` selector.
+- Constructor checks: new-cell quadrature and degree changes are at most
+  `3.87e-15`; rebuilding `(13,120)` differs from the persisted vector by
+  `6.68e-15`. The new vectors remain
+  `DIAGNOSTIC_ONLY_NOT_CANONICAL_SOURCE` and are registered in
+  `ROUTE_B_DATA_MANIFEST.md`.
+- OLS on unique N=120 cells gives
+  `d log R(0.3;m)/d log(m)=0.0029166181315253155`, standard error
+  `0.0003355124373636578`, R2 `0.9742164010`. The original raw threshold label
+  `SOFT_ROUTE_ALIVE` is retired by SOFT_0; the lawful certificate is now
+  `OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS`. This is not H3e tracking and
+  does not resolve local normality, S2, or the uniform-A_K gap.
+- `D0.7e.5a` remains BLOCKED/ACTIVE, mint inactive, Bus 010 absent, `NOT_RH`.
+
+## 2026-07-27 — centered critical-moment guard
+
+- Goal 004 now targets only the direct
+  `L1(exp(σ|t|))` moment ratio for each fixed `σ<1/2`; `Cσ` may depend on
+  `σ`.  Uniform boundedness of the Galerkin projection in
+  `L2(exp(|t|))` is retired and is not a repair obligation.
+- Lean locks
+  `Fplus_(m,N)(0)=sqrt(log m)*c_(m,N),0` and the direct leakage quotient.
+  Dependence is explicit: `m` controls the window and maximal weight
+  `m^(σ/2)`, `N` controls the projected row/endpoint leakage, and `σ`
+  controls only the subcritical exponential weight.
+- Current code is `REPAIRABLE_LEAK`, not `GREEN`: pointwise central
+  nonvanishing does not give a uniform anchor floor.  The existing float64
+  ladder has `|Fplus(0)|` in `0.864797966349..0.878438550145`, but remains
+  diagnostic only.  The endpoint plant kills only the retired full-weight
+  route and does not falsify the guarded L1 target.
+
+## 2026-07-26 — Route B canonical Pstar raw-family lock
+
+- D0.7e's registered `G=Fhat/bDet` is not admissible for the roof's real-zero
+  family: `Fhat=gammaC(1/2+i*z)Fplus` has the fixed nonreal zero `z=-i/2`.
+- `DoubleCompletionStripMismatch.lean` independently forbids absorbing that
+  completion into the Xi target on the centered critical strip.
+- The no-go-safe candidate is therefore the SOFT-1 gauge-removed raw family
+  `Pstar_(m,N)(z)=Xi(0)B_(m,N)(z)/B_(m,N)(0)`, where
+  `B=lambda_m^(i*z)Fplus`, on the exact `B(0)≠0` locus.  It has neither the
+  `gammaC` completion nor the varying centering phase `lambda_m^(-i*z)`.
+- `D0CanonicalApproximation.lean` packages this family into a hole-free
+  `CanonicalApproximation`, proves the D0 raw-integral crosswalk, H1, and the
+  anchor at zero using the existing Proposition-5.9 entire transform.
+- The package deliberately exposes the still-unformalized exact `kTrial`
+  coefficient realization, a cofinal path inside the central-nonzero locus,
+  and its nested extraction; it does not manufacture a schedule, assert that
+  `kTrial` is a ground vector, or infer central nonvanishing from
+  `TrialNonzero`.
+- Remaining roof inputs are H2a, S1, Montel/anchor compactness, the exact
+  Theorem-5.10 H2b bridge, and S2 limit identification.
+- Stop remains `H1_MASTER_ARCHITECTURE_CHOICE_REQUIRED` until the raw
+  coefficient selector is identified with the exact D0 ground family.
+
+## 2026-07-14 — SOFT_L2 Round13Integration
+
+- ROUND13 removes a quantifier ambiguity rather than adding a theorem:
+  H2a-cofinal and S1 live on one parent diagonal `j_k`, while S2 may use only
+  `j_(kappa(ell))` for a strictly increasing extraction.  The physical guard
+  is `SOFT_SAME_COFINAL_SUBSEQUENCE`; mismatch fails closed as
+  `SOFT_COFINAL_SUBSEQUENCE_MISMATCH`.
+- A simple normalized complex ground eigenspace already determines a canonical
+  autocorrelation because any two representatives differ by a unit phase and
+  that phase cancels in `<U_t q,q>`.  Lean now proves the generic corollary
+  `simpleGround_canonicalPhaseIndependentAutocorrelation` without holes.  No
+  separate `GroundEigenspaceToCanonicalAutocorrelation` node is created.
+- L2.2 is frozen as the still-open type `GlobalPositiveDefiniteUniqueness`:
+  one diagonal subsequence on every compact, convergence in `D'(R)`, positive
+  definiteness, the limiting equation, and `c>0` imply `A=c*A_Phi`.  Tail and
+  edge-mass hypotheses are explicitly absent.
+- `SourceCompactnessToFullAutocorrelation` is an optional representation-level
+  leaf with exactly spatial tightness and uniform translation continuity as
+  inputs.  Its shift, scale, and oscillatory validators all fire.  In
+  particular, the scale plant keeps the translation defect at `1.221081...`
+  along `h=1/a`, and the oscillatory test pairing falls by a factor
+  `1.435e-14` under a fixed envelope.
+- The `(13,120)` TailCheck remains `TAIL_DOMINATED`, but is recoded only as
+  `OPTIONAL_SOURCE_COMPACTNESS_SPATIAL_TIGHTNESS_DIAGNOSTIC`; it does not
+  supply uniform translation continuity and cannot enter L2.2.  The former
+  `D'_loc -> tail -> L2.2` detour is deleted as
+  `FALSE_WALL_REMOVED_ROUND13`.
+- D0.7e.5a and Route B's challenger status are unchanged.  No mint, no Bus
+  010, `NOT_RH`.
+
+## 2026-07-13 — SOFT C2 quadratic roof, 3Q1 kernel lock, and L2 projection ledger
+
+- `SOFT_2_QuadraticDivisorTransfer` is Lean-checked from the Hermitian
+  quadratic product and real-zero hypotheses. Unit phases are inert. Removing
+  the real-zero premise admits the planted `z-i`/`z+i` counterexample, while
+  replacing the target by `Xi'/Xi` is a type error. A zero of `gamma_0` kills
+  exact divisor equivalence, although it does not invalidate the one-way
+  implication from real zeros of the product to real zeros of `Xi`.
+- D0.6 fixes `w=i z`, hence the ZEO sharp is
+  `F^sharp_Z(z)=conj(F(conj z))`. The odd packet plant detects the reflected
+  convention and the even-Xi control is silent. The direct Fubini identity has
+  coefficient one and kernel argument `u-v`; `(13,120)` and `(53,120)` agree
+  numerically to about `8e-15`. A support-away test kills the zero-product
+  sampling substitute.
+- The exact SOFT_L2 identity uses the full
+  `S_(m,N)=Pi_sec Pi_(m,N) P_L` and retains window, Galerkin, sector,
+  pole/midpoint, and Arch rows. The window overlap has exact support and
+  same-unit `r_L(t)r_L(a)` bounds, while both fixed-carrier and covariant-shift
+  plants pass. No component is declared small.
+- The edge profile supports an increasing exponential inward slope on the
+  high-precision `m=12,13,14` cells; `m=53,101` are unresolved at the float64
+  edge floor. In the `(13,120)` lag ledger the aggregate non-window remainder
+  reaches about `2.7238` at `|t|=L`; it is not identifiable as pure Galerkin
+  and a finite grid proves no support theorem.
+- `C2_PHASE_FREE` is preserved. The added
+  `PHASE_SLOPE_EQUALS_LOG_LAMBDA_DIAGNOSTIC` records the fitted
+  `L/2=log(lambda)` half-shift signature and completion-gauge consistency only,
+  as input to the V1 parity-closure question. All three leaves are `NOT_RH`;
+  Bus 010 remains absent.
+
+## 2026-07-13 — SOFT_L2 exact projection-defect lag ledger (in progress)
+
+- Target: `SOFT_L2_ExactProjectionDefectLagEquation`, wired only to the
+  Route-B SOFT diagnostic lane; it does not alter the Lamport master state.
+- The complete carrier is the orthogonal projection
+  `S_(m,N)=Pi_sector Pi_N P_L`; omitting `Pi_N` hides a genuine translated
+  Galerkin defect because `U_t q` need not remain in the finite carrier.
+- Use the exact telescope `I-S = Q_L + (P_L-Pi_N P_L) +
+  (Pi_N P_L-S)` before naming components: window, Galerkin, and sector.
+- The prime/window component is governed by
+  `D_(a,L)(t)=<Q_L U_t q,Q_L U_a q>` with exact support implication
+  `D != 0 -> ta>0 and |t-a|<L` and same-unit bound
+  `|D| <= r_L(t) r_L(a)`.
+- Arch and correction terms remain explicit; no convolution rewrite is used
+  without an operator-domain hypothesis, and no component is called small.
+- Local `q3_docs` search found the existing finite-compression and shifted-
+  window infrastructure; the primary-source check confirms that compression
+  and prolate/Toeplitz corrections are structural, not automatically local.
+- Both plants are required: move `q` relative to the fixed window (source must
+  change) and translate `q` together with the whole carrier (covariance).
+- Registered numerical follow-up: all-cell edge profiles plus the `(13,120)`
+  lag ledger, isolating only the exact window part; the remainder is not to be
+  relabelled as compactly supported or small. `NOT_RH`; Bus 010 remains absent.
+
+### Final result
+
+- The abstract operator ledger is locked under its explicit domain input:
+  `Eproj=<((I-S)U_t q),Tfull q>` and five rows (window, Galerkin, sector,
+  Arch-window, pole/midpoint). D0.2 form-domain membership was not promoted
+  to the D0.3 representation-operator domain.
+- Both algebra plants pass: relative motion against a fixed window changes
+  `D_(a,L)`, while joint motion of vector and full carrier is covariant.
+- High-precision edge profiles at `m=12,13,14`, `N=120` have registered-band
+  inward log-slopes `57.64, 60.98, 64.25`; the independent `(13,120)` ground
+  gives `61.10`. The `m=53,101` float64 cells hit an edge cancellation floor
+  around `1e-15`, so they do not decide large-m monotonicity.
+- On the `(13,120)` lag grid, the isolated window row and the aggregate
+  non-window remainder reach `2.7238` with opposite signs at `|t|=L`; the
+  remainder is therefore not numerically small and shows no compact-support
+  signature on this grid. It is not identified as pure Galerkin.
+- The raw functional quadrature cannot resolve the `t=0` cancellation below
+  `5.73e-36`; the saved finite-matrix eigenpair supplies the exact anchor
+  `LHS(0)=mu A(0)=3.4839881993e-59` and residual zero.
+- Validators return `SOFT_L2_EXACT_PROJECTION_LEDGER_LOCKED` and
+  `SOFT_L2_MEASUREMENTS_COMPLETE`; `NOT_RH`, Bus 010 absent.
+
+## 2026-07-22 — Aristotle browser-history recovery
+
+- Recovered Aristotle project `16535289-f016-4f62-bfbd-be83d826b4da` from
+  the signed-in browser session and materialized its archive with SHA-256
+  `2a7657b77a065f4bed293c1f2a8a012d51c9c6f194db3193d5d7df6d1416a927`.
+- Three independently useful files are hole-free: the H2a penalty-coercivity
+  engine, its skeleton bridge with wrong-parity plant, and the abstract
+  coboundary ledger.  The recovered `Main.lean` remains an explicit skeleton
+  with 17 `sorry`s.
+- Local Lean 4.26 accepts the coboundary ledger, the penalty theorem (with a
+  one-million-heartbeat file budget), and the H2a bridge against the recovered
+  skeleton.  The first two are now local Q3 proof modules; the bridge remains
+  archived because its types depend on the independent skeleton.
+- The penalty theorem is conditional on
+  `K-beta*G+tau*(Gq)(Gq)^* >= 0` and `a<beta`.  It does not produce this
+  certificate for the exact `Mfin_(m,N)` family.  q3_docs search found no such
+  source (best score `0.69`), while section 8 of `Zeta Spectral Triples`
+  explicitly keeps exact simple-even ground as a missing step.  Thus
+  `H2A_EXACT_SECTOR_ORDERING_MISSING` remains honest.
+- `Xi_eq_classical` is already covered by the local hole-free classical-Xi
+  interface.  After the Round-13 rigidity freeze, the next non-redundant
+  Aristotle target is `entireSquareRootRigidity`: analyticity must prevent a
+  pointwise square root from switching signs across zeros.  Its exact prompt
+  is frozen pending the mandatory user `OK`.  This side formalization does not
+  change the paused D0.7e.5a leaf, create Bus 010, or prove RH.
+
+## 2026-07-22 — Theorem 5.10 source lock
+
+- Primary source is Connes--Consani--Moscovici, *Zeta Spectral Triples*,
+  arXiv:2511.22755v1, PDF page 23; the downloaded PDF hash is
+  `c98d89f7fc999d038e15e80a9aaaee2af797c17711c4329ca7ce48ad49cb336b`.
+- Theorem 5.10 assumes a simple smallest eigenvalue with even normalized
+  ground vector and proves self-adjointness of the quotient/direct-sum
+  operator together with the regularized-determinant factorization
+  `det_reg(D_log^(lambda,N)-z)=-i lambda^(-iz) xi_hat(z)`.
+- Its conclusion then identifies the real zero divisor of `xi_hat` with the
+  spectrum.  This is the missing content of `H2bTransformLayer`; generic
+  `SpectralData` alone still cannot imply real zeros.
+- Source lock and exact extraction boundary are recorded in
+  `THEOREM_5_10_SOURCE_LOCK_2026-07-22.md`.  The next honest stop remains
+  `H2B_EXACT_THEOREM510_FACTORIZATION_MISSING` until the concrete D0 pencil is
+  identified with that determinant mechanism.
+- Three q3_docs searches found no prior project theorem for global-sign
+  rigidity (best irrelevant score `0.65`).  Mathlib does contain the exact
+  analytic product receiver
+  `AnalyticOnNhd.eq_zero_or_eq_zero_of_mul_eq_zero`; therefore the frozen
+  Aristotle target `entireSquareRootRigidity` is small, nonredundant in Q3,
+  and its exact signature has a local preflight proof with axioms only
+  `[propext, Classical.choice, Quot.sound]`.  The Aristotle run is therefore
+  an independent cloud reproduction, not discovery of the route.  It closes
+  uniqueness only, not existence of the square root.
+
+## 2026-07-23 — Entire square-root rigidity locally notarized
+
+- Authorized frozen prompt SHA-256
+  `287af18afae811502764cafa2728f2e5acf0daf3aebc98aaa336b63f0d5d040d`
+  produced Aristotle project `5a62a655-5d8d-4bb4-8a9f-1216c730b5aa` and
+  task `0e8da32e-1505-4956-92f4-5635bfdbbe0a`.
+- Aristotle independently followed the predicted analytic-product route and
+  returned `SOFT_L2_ENTIRE_SQUARE_ROOT_RIGIDITY_LEAN` with status `COMPLETE`.
+- The returned and integrated theorem is hole-free; local Lean 4.26 accepts
+  `Q3/Proofs/RouteB/EntireSquareRootRigidity.lean`, and its axiom print is
+  exactly `[propext, Classical.choice, Quot.sound]`.
+- This closes the reusable global-sign uniqueness kernel for two entire
+  square roots.  It still does not construct a square root, discharge the
+  Round-12 reconstruction contract, supply `H2bTransformLayer`, or prove RH.
+- The April summary triage read all 288 downloadable projects: only three had
+  nonempty summaries.  Fejer shrinking-target and double telescoping passed
+  local hole/build/axiom checks; PO3a.4 was a summary false positive with two
+  live `exact?` holes.  No April summary identified the ell-one Cauchy-tail
+  series.
+
+## 2026-07-22 — Canonical Route-B roof quantifier repair
+
+- The recovered `supply_H1/H2a/S1/S2 (P : Approx)` shape is rejected: the
+  route must choose one canonical family before any analytic slot is asserted.
+- `CanonicalRHRouteSkeleton.lean` now fixes one `Pstar`, one parent cofinal
+  path, and one nested S2 extraction.  Its same-subsequence equation is
+  definitionally `parent (extract k)`.
+- H2a and H2b are separated by the named `Theorem510RealZeroBridge`; the
+  compiled `z^2+1` plant proves that evenness alone cannot supply real zeros.
+- The conditional assembly through the checked generic Hurwitz theorem and
+  `rh_iff_centeredXi_zeros_real` is hole-free.  The exact H2a family
+  instantiation, Theorem-5.10 factorization, Montel/anchor gate, and S2 remain
+  explicit inputs, so the result is `CONDITIONAL_CANONICAL_ROOF_LEAN_LOCKED`,
+  not RH.
+
+## 2026-07-12 — SOFT_0 RoofAndS2Typecheck
+
+- Four local `q3_docs` queries found no pinned project theorem supplying the
+  requested soft roof directly from H2a. The physical split is sharper: H1
+  owns exact-family holomorphy, H2a owns simple-even ground, H2b owns the
+  Theorem-5.10 real-zero transfer, and H2c assembles H2.
+- The paper theorem `SoftSubsequenceZeroEscape` is now fully typed and proved
+  in Montel form: independent local boundedness extracts a locally uniform
+  cluster point; the central anchor excludes the zero limit; identification
+  on an accumulating set extends by the identity theorem; Hurwitz is applied
+  separately on the connected upper and lower half-strips; the fixed
+  zero-free factor transfers the Xi divisor and the Lean-checked classical
+  interface yields RH conditionally.
+- The finite-roof audit found no H3/H4/S1/S2 dependency cycle, but it also
+  refused the false pass `H2A_TO_REAL_ZERO_APPROXIMANT_POINTWISE`: the exact
+  H1/H2b same-object and boundary-normalization body is still missing. Honest
+  local status: `SOFT_ROOF_BODY_MISSING`.
+- `gamma_soft(lambda,z)=gammaC(1/2+i*z)*exp((-i*z)*log(lambda))` is
+  source-locked for fixed Route-B `lambda>1` as a holomorphic unit on the open
+  strip. `GammaSoftZeroFree.lean` proves zero-freeness without holes; the
+  boundary zero at `z=-i/2` and the exactly-once lambda-phase operand rule are
+  explicit firewalls. This locks the analytic unit only, not the S2 cluster
+  identification.
+- The OffAxis result is recoded from `SOFT_ROUTE_ALIVE` to
+  `OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS`. A zero-free gauge
+  `lambda^(-i*c*z)` shifts the y=0.3 slope by `0.15*c` without moving zeros,
+  so the probe is completion-class dependent. Future theorem-facing
+  normalization is the fixed central anchor, never a sup normalization.
+- Mint revision R3 is `MINT_MENU_FALSIFIED`: Variant A's registered exact
+  closure ratios are about `6.94e-102`, `4.91e-102`, `2.51e-112`, not one;
+  Variant B fires `SLOT_VACUITY`. D0.7e.5a stays BLOCKED/ACTIVE with marker
+  `NON_CRITICAL_PENDING_SOFT_0`; no mint and no Bus 010.
+- STATE revision 42 records the single gate output
+  `SOFT_SUBSEQUENCE_CLOSURE_TYPED`. The remaining mathematical wall is an
+  unconditional cluster-point divisor identification on an accumulating set.
+  Route B remains `CHALLENGER / NOT_RH`.
+
+## 2026-07-13 — SOFT_1 ZeroFreeGaugeAndDistributionalIdentification
+
+- Four local `q3_docs` queries and the pinned D0.2/D0.6/D0.7e/H8 corpus found
+  no linear tracker-pairing theorem on the prime/Gamma side.  The exact
+  orientation is `Fhat=gamma*B`, so the centrally normalized contract family
+  is `H=gammaC(1/2)*(Fhat/bDet)/gamma` and has `H(0)=Xi(0)`.
+- The fallback at `i/4` is source-locked without RH: paired eta terms give
+  `eta(1/4)>0`, the factor `1-2^(3/4)` is negative, hence
+  `zeta(1/4)<0` and `Xi(i/4)!=0`.  The finite real-zero roof is still needed
+  for the approximant denominator, and uniform off-axis anchor control is
+  explicitly open.
+- Fubini/Parseval gives an exact finite coefficient formula
+  `P_I(Fhat,phi)=sum c_n A_(m,phi,n)`.  This is linear in `kTrial` and lives on
+  the transform side.  D0.2/H8 instead lock
+  `QW(f,g)=Psi(f^**g)=W_0_2-W_R-sum_p W_p`.  No source theorem supplies a
+  linear test `h_(m,N,phi)` identifying these two expressions.
+- The phase falsifier makes the type gap structural: multiplying `kTrial` by
+  a global phase changes the linear pairing but leaves the diagonal
+  convolutional Weil data unchanged.  Exact gate stop:
+  `SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC`.
+- S2 is now posed with an explicit product-tail `(m,N)` quantifier on one
+  cofinal admissible carrier.  It is not proved.  The RH firewall passes; the
+  moving-grid backup remains unexecuted because a mesh theorem is absent.
+  D0.7e.5a remains BLOCKED/ACTIVE under
+  `NON_CRITICAL_PENDING_SOFT_1`; no mint, no Bus 010, `NOT_RH`.
+
+## 2026-07-26 — B0 value probe and centered-Xi anchor queue
+
+- The float64 B0 ladder on `(13,90)`, `(13,120)`, `(14,120)`, `(53,120)`,
+  `(101,120)`, `(149,120)`, `(197,120)`, `(257,120)` gives
+  `|B_(m,N)(0)| = 0.864797966349..0.878438550145`.
+- On the unique `N=120` cells,
+  `log |B(0)| = -0.157623068564 + 0.005430838955 log m` with
+  `R^2 = 0.920977570406`; hence the fitted decay exponent is `alpha = 0`.
+  This is `SAMPLED_INF_GT_DELTA_NO_COMPENSATION_DIAGNOSTIC` at diagnostic
+  `delta = 0.85`, not a uniform lower-bound theorem and not S1 closure.
+- `CENTERED_XI_ZERO_NONZERO_CONTRACT_NOTE_2026-07-26.md` queues the exact
+  eta-series route to `centeredXi 0 != 0`.  The elementary paired-series sign
+  is clear, but the local Mathlib tree has no pinned eta-to-`riemannZeta`
+  continuation bridge; stop code
+  `ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING`.
+
+## 2026-07-13 — SOFT_2 LinearityCrosswalkFork
+
+- The Proshka A/B/C falsifiers are executable and live.  The moving-shell
+  model fires `SOFT_JOINT_LIMIT_QUANTIFIER_MISSING`; a positive-critical-line
+  zero sum fires `SOFT_CRITICAL_LINE_ZERO_SUM_SMUGGLED`; the sine grid alias
+  fires `D06_GRID_ALIASING_FATAL`.  Correct structured controls pass.
+- `PhaseStructureProbe` evaluates the SOFT_1 bare, centrally anchored object
+  on 4096 float64 points in `[gamma_1,gamma_11]`.  Projective circular SD is
+  `0.894244789176..0.899909670459`; all four cells also show a coherent
+  linear phase drift with `R^2>0.999`.  Exact verdict: `C2_PHASE_FREE`.
+- The measured slopes are close to `log(lambda_m)`, but D0.1/D0.5 lock only
+  real/conjugation symmetry: `c_-n=conj(c_n)` and
+  `H(-conj z)=conj(H(z))`.  This does not make `H(x)` real.  Multiplicative
+  inversion/log-reflection is not source-locked and is not promoted from the
+  numerical pattern.
+- C2 is killed as stated; C1 frozen-slot polarization and C3 theta/Mellin
+  remain for Proshka round 4.  This is falsification/representation progress,
+  not S2 or RH.  D0.7e.5a remains BLOCKED/ACTIVE under
+  `NON_CRITICAL_PENDING_SOFT_2`; no mint, no Bus 010, `NOT_RH`.
+
+## 2026-07-12 — D0.7e.5a R2 pre-mint P1--P4 battery
+
+- During execution, V2 revised the physical draft from R0 to R2. R2 correctly
+  changes executable `sTrial` occurrences to vector `kTrial` and moves the P2
+  gap to the numerator. Two stale references to scalar `sTrial` remain in the
+  allowed-alphabet and spectral-expansion prose.
+- Literal scores on R2 are `P1 FAIL`, `P2 FAIL`, `P3 PASS`, `P4 FAIL`.
+  P1's reduced 2x2 S0 residuals are `5.68e-16`, `1.83e-16`, `3.80e-16`
+  against the registered `1e-12` threshold, but full persisted Mfin/xi inputs
+  are unavailable for all three cells, so this is only
+  `DIAGNOSTIC_PASS_NOT_MFIN_CERT`.
+- P2 R2's forced-alpha arithmetic is now correct and the inverse/direct ratio
+  agrees with `|bCal|^4` (about 0.123). Every cell is therefore the registered
+  `ZERO_CONSISTENT_UNDECIDABLE` outcome. The check is nondiscriminating; under
+  the already registered two-level Rayleigh-excess alpha, the 5c closure
+  ratios are `6.94e-102`, `4.91e-102`, `2.51e-112`, not one.
+- P3's `SLOT_VACUITY` plant fires. It also exposes a central-crosswalk factor:
+  `|detreg|=|Fplus(0)|` is not `|bCal|*|Xi(0)|`; the latter differs by
+  `|gammaC(1/2)|=0.3404110270413339`.
+- P4 has no registered numerical tolerance and two admissible diagnostic
+  carriers give raw slopes `-321.891809286` and `4.71336008648`. Both obey
+  `beta_W-beta_r=1/2` by definition, so that increment is not an independent
+  falsifier. This requirement is subsequently resolved by R3 as
+  `MINT_MENU_FALSIFIED`, not by a mint.
+- `D0.7e.5a` remains BLOCKED/ACTIVE, mint inactive, Bus 010 absent, `NOT_RH`.
+## 2026-07-27 — centered-density sign orientation diagnostic
+
+The 4001-point float64 probe at `(53,120)` and `(257,120)` finds
+`max |Im q| ≤ 2.02e-16`, but the literal D0 density has `c₀<0` and is nearly
+nonpositive rather than nonnegative.  After multiplying by `sign(c₀)=-1`,
+the negative undershoot relative to the positive maximum is only
+`2.45e-9` and `9.58e-9`.  This supports a possible *phase-aligned* positivity
+lemma; it does not establish positivity of the literal `centeredTrialDensity`
+and remains a numerical diagnostic.
+
+## 2026-07-27 — D0 anchor floor from unprojected central mass
+
+`D0AnchorFloorFromUnprojectedCentralMass` closes the conditional anchor-floor
+transfer without a lower bound on the projected norm: orthogonal projection
+preserves the `V₀` overlap and contracts the same `H_m` norm used by the
+positive `kTrial` normalizer.  Thus source bounds
+`a ≤ sqrt(L_m)‖⟨V₀,gTrial_m⟩‖` and `‖gTrial_m‖≤C`, with `a,C>0`, imply
+projected nonvanishing, a `CentralIndex`, and
+`‖rawFplus(0)‖≥a/C`.  The remaining analytic input is the source bound itself;
+no phase/sign theorem or numerical plateau enters the Lean proof.
+
+## 2026-07-27 — precision, mass/norm, and strip-local pin audit
+
+- Re-summing the 20 worst phase-aligned density points at 50 decimal digits
+  while holding the binary64 coefficient rows fixed leaves all 40 values
+  negative.  The worst magnitudes are `3.88196924578e-9` at `(53,120)` and
+  `1.51362073109e-8` at `(257,120)`, ratio `3.89910541599`.  This rules out
+  binary64 Fourier-summation cancellation, but not error in the upstream
+  binary64 coefficient construction and therefore not an exact sign theorem.
+- On every integer `m=13,...,257` at `N=120`,
+  `sqrt(log m)⟨V₀,gTrial_m⟩<0`.  Its absolute value stays in
+  `[0.405890786544,0.411361991030]`, while `‖gTrial_m‖` stays in
+  `[0.468287319315,0.469347514782]`.  The control quotient is
+  `[0.864797988187,0.878439312925]`, reproducing the earlier anchor probe.
+- The `GenericZeroTransfer.lean` pin drift is the authorized goal-005
+  strip-local refactor in commit `ae5b000f`: it adds the local-domain theorem
+  and retains the old whole-plane theorem as a compatibility wrapper.
+  Classification: `BENIGN_005_STRIP_LOCAL_REFACTOR`; re-pin is owner-signed by
+  `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md`.
+
+## 2026-07-27 — centered-density Gibbs and signed-mass diagnostics
+
+- On the same 4001-point grid, doubling the Galerkin cutoff from `N=120` to
+  `N=240` does not reduce the phase-aligned minimum.  At `m=53` its magnitude
+  grows by `1.29490180784`, and at `m=257` by `1.11637780326`.  Registered
+  verdict: `GIBBS_NOT_CONFIRMED`; no alternative mechanism is inferred.
+- For every integer `m=13,...,257` at `N=120`, the periodic-trapezoid ratio
+  `∫q₋/∫q₊` lies in
+  `[2.73595036520e-11, 1.28487299998e-9]`.  The full-ladder power fit is
+  `4.96071634791e-12 m^0.942629573244`, with `R²=0.825856907792`.
+  The 65536/32768-grid maximum relative difference is
+  `1.91732874225e-5`; no cell crossed the registered `1e-12` threshold for
+  mpmath refinement.  These are numerical budget inputs, not a sign theorem.
+
+## 2026-07-27 — exact centered-density factorization no-go
+
+- The projected density coefficient at lag `n` is the linear coordinate
+  `(-1)^n⟨V_n,kTrial⟩`; a negative amplitude square would instead require the
+  quadratic autocorrelation coefficient
+  `-∑_j a_(j+n)conj(a_j)`.  The first missing identity is already the
+  zero-lag equation `c₀=-∑|a_j|²`.
+- `D0CenteredDensityFactorizationFailure.lean` gives an exact one-mode
+  positive-density counterexample at the current generic
+  `CoefficientFamily` interface, with only the standard axiom trio.  Verdict:
+  `CENTERED_DENSITY_NOT_EXACT_FEJER`.
+- Removing the Galerkin projection does not expose a source-locked square:
+  `gTrial_m=E_star(hTrial_m)` is a signed linear starred sum, and current D0
+  supplies no autocorrelation amplitude or Gram/Toeplitz-PSD certificate.
+  Existence of a square factorization for the specialized unprojected family
+  remains open; the exact conclusion here is a source/interface gap.
+  The weakest repair is an independent
+  `UnprojectedDensityAutocorrelationData` source theorem, followed by a
+  projected-minus-unprojected budget.  `UnprojectedRelativeCriticalTail` was
+  deliberately not started in the same step.
+
+## 2026-07-27 — Montel integration and scale-invariant anchor receiver
+
+- Aristotle project `1803227e-9c5a-4a8e-b20b-6eb7d33871fb` supplied a
+  hole-free standalone Montel theorem for locally bounded entire sequences,
+  its anchored nonzero-limit receiver, and the explicit load-bearing anchor
+  plant.  The integrated `MontelNormalFamilies.lean` builds locally and all
+  three public theorems have exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- `D0AnchorFloorFromUnprojectedMassNormRatio` now turns the single relative
+  bound `δ‖gTrial_m‖ ≤ √L_m |⟨V₀,gTrial_m⟩|`, with positive right-hand side,
+  into projected nonvanishing, `CentralIndex`, and both coefficient/transform
+  floors at `δ`.  Verdict: `ANCHOR_RATIO_RECEIVER_PROVED`; the remaining
+  analytic front is `EStarRelativeSourcePackage`.
+- The exact Stage-1/2 inspection confirms that
+  `E_star(h)(u)=√u∑_{n≥1}h(nu)`, restriction, and Galerkin projection are
+  linear.  They contain no autocorrelation or modulus square and no evaluated
+  closed Mellin values at `0, ±σ`.
+- The next Montel task is only the strip corollary for
+  `rh_of_canonical_strip_slots`; it was registered but not executed.
+  Route B remains `CHALLENGER / NOT_RH`; no Bus 010 was created.

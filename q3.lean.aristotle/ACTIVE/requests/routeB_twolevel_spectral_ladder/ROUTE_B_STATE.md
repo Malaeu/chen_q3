@@ -132,13 +132,127 @@ H0/A1 and `PO_XWALK_UNIFORM_EVAL` are OPEN_CRITICAL; H3c/H4 were not
 imported into D0. D0.7e, D0.7, D0.8, and D0 remain blocked; no conditional
 status closes them. No Bus 010 was created.
 
+SOFT_1 fixes the gauge-removed contract object as
+`H=gammaC(1/2)*(Fhat/bDet)/gamma=gammaC(1/2)*B/bDet`.  Its exact linear
+distribution pairing is a finite coefficient sum on the transform side.
+The locked prime/Gamma ledger has only the different input type
+`QW(f,g)=Psi(f^**g)`; no theorem identifies that ledger with the linear
+tracker pairing.  The SOFT_1 stop is
+`SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC`.  This is representation/blocker
+localization, not S2 or RH.  D0.7e.5a stays BLOCKED/ACTIVE with marker
+`NON_CRITICAL_PENDING_SOFT_1`; mint inactive; Bus 010 absent.
+
+SOFT_2 has executed the crosswalk fork's cheapest falsifier.  Plants A/B/C
+all fire, with clean controls passing.  The four-cell float64 phase probe
+finds `sd(theta mod pi)=0.8942..0.8999` plus near-linear systematic drift in
+every cell, so `C2_PHASE_FREE`.  The exact source audit proves only
+`kTrial` real/conjugation symmetry; it does not prove inversion symmetry or
+pointwise-real `H`.  Therefore C2 is killed as stated, C1/C3 remain for
+Proshka round 4, and the scheduler marker is
+`NON_CRITICAL_PENDING_SOFT_2`.  No mint, no Bus 010, `NOT_RH`.
+
+## R9/R10 ROOF SYNC — 2026-07-22
+
+Disk/chat convergence is now explicit.  `SOFT_L2_PRO_VERDICT_ROUND9` and
+`ROUND10` are registered as auxiliary roof audits, not as a promotion of Route
+B and not as RH evidence.
+
+- R9 rejects the edge-only defect abbreviation and requires the full
+  window/Galerkin/sector/correction/Arch projection ledger.  In the recovered
+  roof skeleton it also falsifies the edge `SpectralData -> RealZerosOn`:
+  simple/even pencil data plus a generic `PencilBridge` do not constrain the
+  transform divisor.  The concrete model `Hfam(z)=z^2+1/16` has nonreal zeros.
+- The missing H2a-to-H2b content is the exact determinant/self-adjoint
+  transform mechanism of *Zeta Spectral Triples*, Theorem 5.10, not parity by
+  itself.  This interface is named `H2bTransformLayer` and remains OPEN.
+- R10/T1 minimization is Lean-checked in `AbstractCoboundaryLedger.lean`:
+  with `S q=q` and the exact eigen-relation, the T1 coboundary identity follows
+  without the locality hypothesis `C=SCS`.  Locality remains load-bearing for
+  T2 after the eigen-relation is removed.
+- `ROOF_INTERFACE_STRICT` is frozen.  It may be weakened only at a named
+  receiver when a proof actually requires the weaker form; no silent
+  quantifier or domain relaxation is permitted.
+- Namespace firewall: `ROOF_*` names belong to the abstract
+  H1/H2a/H2b/ANCHOR/S1/S2 closure; `DEFECT_*` names belong to the projection
+  lag/source ledger.  A result from one namespace enters the other only
+  through an explicit crosswalk theorem.
+
+Recovered `RequestProject/Main.lean` has 17 proof holes with the exact map:
+
+```text
+POISONED / FALSE AS STATED (7)
+  supply_H1, supply_H2a, supply_anchor, supply_S1, supply_S2,
+  realZeroTheorem, RoofGateA
+
+HONEST CONDITIONALS (10)
+  Xi_eq_classical, hurwitz_zero_escape, identity_from_Splus,
+  RH_of_Xi_offcritical_zerofree, GaugeSoftSubsequenceZeroEscape,
+  gauge_preserves_zeros, Xi_anchor_ne, RoofGateB, RoofGateC, RH_of_slots
+```
+
+The five `supply_*` statements become legal only for the forthcoming canonical
+`Pstar` instantiation layer.  `realZeroTheorem` and `RoofGateA` become legal
+only after `H2bTransformLayer` is supplied.  Main remains an abstract
+conditional DAG; it is not replaced by a second route.
+
+## kTrial LEAN INTEGRATION — 2026-07-26
+
+The three staged files `D0KTrialStage1.lean`,
+`D0KTrialStage2.lean`, and `D0KTrialStage3.lean` now source-lock and type the
+exact D0 chain
+
+```text
+H_m / V_(n,m) / E_(m,N) / P_(m,N)
+  -> E_star(hTrial_m) -> gTrial_m -> gTrial_(m,N)
+  -> TrialNonzero -> kTrial_(m,N) -> c_n=<V_(n,m),kTrial_(m,N)>.
+```
+
+All three staged builds exit `0`, their declarations have no holes, and their
+reported axioms are exactly `[propext, Classical.choice, Quot.sound]`.
+`CoefficientFamily.kTrial` is definitionally supplied by the constructed
+coefficient row through the existing record constructor; the former unrelated
+free `coeff` field is retired, and no extra non-glossary object name is minted.
+`TrialNonzero` and the `MemLp` carrier certificate remain explicit constructor
+inputs: no universal projected nonvanishing, ground/trial identity, cofinal
+central-nonzero schedule, or RH consequence is asserted.  Verdict:
+`KTRIAL_LEAN_COEFFICIENT_REALIZATION_LOCKED`.
+
+## MONTEL / DENSITY / ANCHOR-RATIO SYNC — 2026-07-27
+
+The hole-free Aristotle project
+`1803227e-9c5a-4a8e-b20b-6eb7d33871fb` is integrated as
+`Q3/Proofs/RouteB/MontelNormalFamilies.lean`.  Its whole-plane Montel
+subsequence, anchored nonzero-limit receiver, and load-bearing anchor plant
+all build locally with exactly `[propext, Classical.choice, Quot.sound]`.
+Verdict: `MONTEL_STANDALONE_PROVED`.  The strip corollary for
+`rh_of_canonical_strip_slots` is registered as the next step and was not
+executed here.
+
+Goal 007 is recorded fail-closed as
+`CENTERED_DENSITY_NOT_EXACT_FEJER`.  At the current generic
+`CoefficientFamily` interface, projected density coefficients are linear
+coordinates, whereas an exact modulus square requires a quadratic
+autocorrelation row; the exact positive one-mode counterexample is in
+`D0CenteredDensityFactorizationFailure.lean`.  Per the Proshka rule the
+projected pointwise-sign route is `PROJECTED_SIGN_KILLED`; the repair is an
+independent unprojected autocorrelation theorem plus projection leakage, not a
+sign assertion.
+
+Goal 008 is Lean-closed as `ANCHOR_RATIO_RECEIVER_PROVED`.  The theorem
+`D0AnchorFloorFromUnprojectedMassNormRatio` compresses the two source
+constants to one scale-invariant relative-mass floor `δ`; the remaining paper
+front is `EStarRelativeSourcePackage`.  The source-lock inspection confirms
+that `E_star -> gTrial_m -> P_m_N gTrial_m` is linear, not an
+autocorrelation construction, and exposes no closed evaluated Mellin values at
+`0, ±σ`.
+
 The exact two-mode H2 branch is `H2-POLE/CORRECTION`.  The 2026-07-08
 threshold-only `H2_HOLDS` history row is retained as a numerical record but is
 superseded as an exact classification.
 
 ## CURRENT_CODES
 
-`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`, `D0_7E_CENTRAL_CALIBRATION_LOCKED`, `D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED`, `D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED`, `OWNER_RATIFICATION_R1_R5_LOCKED`, `D0_7E_5_DECOMPOSITION_LOCKED`, `H3E_EXACT_WPRIME_TRACKING_ADDRESS_REGISTERED`, `OWNER_STANDING_ORDER_WPRIME_CANDIDATES_ACTIVE`, `NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE`, `D0_7E_5B_TYPED_INTERFACE_LOCKED`, `D0_7E_XWALK_MIGRATION_LOCKED`, `T1_LAMBDA17_PERSISTED_COEFFICIENT_VECTOR_MISSING`, `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`, `T5_BDET_REALITY_LEAN_PROVED`, `T5_FPLUS_CONSTANT_MODE_LEAN_PROVED`, `ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING`, `D0_7E_WPRIME_CONSUMER_MISSING`
+`ANCHOR_REPRODUCED`, `PLANCHEREL_REAL_PASS`, `CROSSOVER_CONFIRMED`, `TAIL_MASS_LEVEL_CONFIRMED`, `TAIL_PROFILE_TROUGH`, `LEDGER_LAMBDA_CLASS_PASS`, `MASS_P_OUT_OF_RANGE_AS_LAW_JUDGE`, `UNIVERSAL_COLLAPSE_CONFIRMED`, `REVIEWED_TAIL_RELABEL_DONE`, `BUS_SYNC_DONE`, `READ_ONLY_IMPORTS_REGISTERED`, `EPISTEMIC_FIREWALL_VISIBLE`, `OBJECT_DICTIONARY_LOCKED`, `H2_POLE_CORRECTION_SELECTED`, `MIDPOINT_CONVENTION_LOCKED`, `NO_FIT_NORMALIZATION_PASS`, `D03G_CANONICAL_WEILOP_LOCKED`, `EXACT_OPERATOR_TYPES_LOCKED`, `EXACT_PARITY_SECTORS_LOCKED`, `GROUND_TRIAL_TYPES_LOCKED`, `D0_7_PARTIAL_NORMALIZATION_LOCKED`, `D0_7E_CENTRAL_CALIBRATION_LOCKED`, `D0_7E_CENTRAL_NONZERO_LOCUS_LOCKED`, `D0_7E_BCAL_INVERSE_NORMALIZER_IDENTITY_LOCKED`, `OWNER_RATIFICATION_R1_R5_LOCKED`, `D0_7E_5_DECOMPOSITION_LOCKED`, `H3E_EXACT_WPRIME_TRACKING_ADDRESS_REGISTERED`, `OWNER_STANDING_ORDER_WPRIME_CANDIDATES_ACTIVE`, `NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE`, `D0_7E_5B_TYPED_INTERFACE_LOCKED`, `D0_7E_XWALK_MIGRATION_LOCKED`, `T1_LAMBDA17_PERSISTED_COEFFICIENT_VECTOR_MISSING`, `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`, `T5_BDET_REALITY_LEAN_PROVED`, `T5_FPLUS_CONSTANT_MODE_LEAN_PROVED`, `ZETA_HALF_ETA_CONTINUATION_BRIDGE_MISSING`, `SOFT_GAUGE_ROOF_TYPED`, `SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC`, `SOFT_L2_R9_R10_SYNCED`, `T1_COBOUNDARY_NO_LOCALITY_LEAN`, `ROOF_INTERFACE_STRICT`, `ROOF_DEFECT_NAMESPACE_FIREWALL`, `POISON_MAP_7_FALSE_10_HONEST`, `H2B_TRANSFORM_LAYER_OPEN`, `KTRIAL_LEAN_COEFFICIENT_REALIZATION_LOCKED`, `MONTEL_STANDALONE_PROVED`, `PROJECTED_SIGN_KILLED`, `CENTERED_DENSITY_NOT_EXACT_FEJER`, `ANCHOR_RATIO_RECEIVER_PROVED`, `D0_7E_WPRIME_CONSUMER_MISSING`
 
 ## History
 
@@ -187,3 +301,10 @@ superseded as an exact classification.
 - 2026-07-12 11:34:54 CEST: owner explicitly ratified recommended R1--R5 -> `OWNER_RATIFICATION_R1_R5_LOCKED`, `D0_7E_5_DECOMPOSITION_LOCKED`, `H3E_EXACT_WPRIME_TRACKING_ADDRESS_REGISTERED`; D0.7e.5 became a canonical AND node, D0.7e.5.0 closed definitionally, and D0.7e.5a became the unique active leaf; R3 locks the Contract-v2 direct q_b convention but not the FIT_NOT_LAW value, R4 keeps independent `(m,N)`, R5 selects H0/A1 without pretending that alpha is defined; H3e, H0/A1, and PO_XWALK_UNIFORM_EVAL remain open, the mathematical stop stays `D0_7E_WPRIME_CONSUMER_MISSING`, no H3c/H4 import, no Bus 010, NOT_RH.
 - 2026-07-12 12:13:15 CEST: owner ratified `OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md`; exact utterance and pre-activation SHA recorded; scope is T0 candidates only, with C1--C6 and two independent confirmations; no definition-minting and no theorem closure, NOT_RH.
 - 2026-07-12 12:27:21 CEST: owner-launched no-stop sprint T0--T5 completed fail-closed -> T0 found no independent consumer; T1 passed all available bDet judges/plant but lacks `(17,120)`; T2 recorded `NOT_RUN_INPUT_MISSING`; 5b and 5d closed only at interface/migration scope; Lean proved bDet reality and the constant-mode identity, while the eta-continuation bridge remains blocked; 5a/5c/H3e stay open, no Bus 010, NOT_RH.
+- 2026-07-12 22:46:19 CEST: auxiliary paper gate `SOFT_0_RoofAndS2Typecheck` -> `SOFT_SUBSEQUENCE_CLOSURE_TYPED`; the abstract Montel/identity/Hurwitz closure is proved, `gamma_soft` is source-locked and Lean-checked zero-free on the open strip, the OffAxis result is recoded `OFF_AXIS_PROBE_NONDECISIVE_FALSIFIER_PASS`, and mint R3 is `MINT_MENU_FALSIFIED`; the physical finite roof remains `SOFT_ROOF_BODY_MISSING` (no H4 cycle), S2 identification stays open, D0.7e.5a stays BLOCKED/ACTIVE with marker `NON_CRITICAL_PENDING_SOFT_0`, no mint, no Bus 010, NOT_RH.
+- 2026-07-13 00:49:00 CEST: auxiliary paper gate SOFT_1 -> `SOFT_EXPLICIT_FORMULA_ONLY_QUADRATIC`; gauge consequence/orientation and the center/i/4 anchors are typed and pinned, the exact transform-side linear pairing is written, but D0.2/H8 expose only the sesquilinear convolutional prime/Gamma functional and no linear pairing crosswalk; product-tail S2 is posed/open, RH-import audit passes, D0.7e.5a stays BLOCKED/ACTIVE with marker `NON_CRITICAL_PENDING_SOFT_1`, no mint, no Bus 010, NOT_RH.
+- 2026-07-13 02:05:00 CEST: SOFT_2 LinearityCrosswalkFork -> `C2_PHASE_FREE`; plants A/B/C all fired their registered stop codes, all four phase cells have projective phase SD above `0.894` and systematic drift, and the exact D0.1/D0.5 audit locks only real/conjugation symmetry; C2 killed as stated, C1/C3 retained, D0.7e.5a BLOCKED/ACTIVE with marker `NON_CRITICAL_PENDING_SOFT_2`, no mint, no Bus 010, NOT_RH.
+- 2026-07-22: R9/R10 roof sync -> `SOFT_L2_R9_R10_SYNCED`, `T1_COBOUNDARY_NO_LOCALITY_LEAN`, `ROOF_INTERFACE_STRICT`, `ROOF_DEFECT_NAMESPACE_FIREWALL`, `POISON_MAP_7_FALSE_10_HONEST`; Main rev-3 guard identifies exactly seven false statements and ten honest conditionals; Theorem-5.10 bridge remains `H2B_TRANSFORM_LAYER_OPEN`; Route B remains CHALLENGER/NOT_RH; no Bus 010.
+- 2026-07-26: staged kTrial Lean realization -> `KTRIAL_LEAN_COEFFICIENT_REALIZATION_LOCKED`; exact D0 carriers, starred-sum/projection chain, dependent nonzero normalization, unit-norm theorem, Fourier coefficient formula, and `CoefficientFamily.kTrial` bind compile hole-free with the standard axiom triple; prolate midpoint representative, `MemLp`, and `TrialNonzero` remain explicit inputs; no ground identity, no cofinal schedule, no Bus 010, NOT_RH.
+- 2026-07-27: centered critical-moment numerator diagnostic (commit `a544a03e`) -> `REPAIRABLE_LEAK` confirmed numerically on every `m=13..257`, `N=120`, `σ∈{0.10,0.25,0.40,0.45}`; 004 ratio fork is closed at float64 diagnostic scope only, with no theorem/RH promotion and no Bus 010, NOT_RH.
+- 2026-07-27: Montel/007/008 state package -> `MONTEL_STANDALONE_PROVED`, `PROJECTED_SIGN_KILLED`, `CENTERED_DENSITY_NOT_EXACT_FEJER`, `ANCHOR_RATIO_RECEIVER_PROVED`; the exact next paper front is `EStarRelativeSourcePackage`, the strip corollary is queued but not executed, no Bus 010, NOT_RH.

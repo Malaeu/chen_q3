@@ -1,6 +1,41 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-01-27",
-  "entries": [],
+  "generated_at": "2026-07-27",
+  "entries": [
+    {
+      "id": "ROUTEB_PSTAR_COMPLETED_FIXED_ZERO",
+      "node_type": "counterexample",
+      "status": "rejected",
+      "candidate": "Fhat_(m,N)(z) / bDet_(m,N)",
+      "failure": "Every completedTrialTracker Fplus vanishes at z = -i/2, which is nonreal.",
+      "lean_decl": "Q3.RouteB.completedTrialTracker_neg_I_div_two_zero",
+      "lean_file": "Q3/Proofs/RouteB/CompletedTrackerScope.lean",
+      "replacement": "Use the SOFT-1 gauge-removed family Xi(0) B(z)/B(0), without gammaC.",
+      "stop_code": "PSTAR_COMPLETED_FIXED_NONREAL_ZERO"
+    },
+    {
+      "id": "ROUTEB_PSTAR_DOUBLE_COMPLETION_MISMATCH",
+      "node_type": "counterexample",
+      "status": "rejected",
+      "candidate": "gammaC(1/2+i*z) * centeredXi(z) / gammaC(1/2)",
+      "failure": "The normalized double-completed Xi is not equal to centeredXi on the centered critical strip.",
+      "lean_decl": "Q3.RouteB.normalizedDoubleCompletedXi_not_eqOn_centeredCriticalStrip",
+      "lean_file": "Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
+      "replacement": "Keep completion out of Pstar and place any zero-free gauge only in SlotS2.",
+      "stop_code": "PSTAR_DOUBLE_COMPLETION_STRIP_MISMATCH"
+    },
+    {
+      "id": "ROUTEB_PROJECTED_DENSITY_EXACT_FEJER",
+      "node_type": "counterexample",
+      "status": "rejected",
+      "candidate": "-centeredTrialDensity = |amplitude|^2 / sqrt(L_m) at the generic CoefficientFamily interface",
+      "failure": "The projected density row is linear in c_n, while a modulus square requires a quadratic autocorrelation row; the one-mode family has strictly positive centered density at t = 0.",
+      "lean_decl": "Q3.RouteB.D0Pstar.centeredTrialDensity_positive_constant_counterexample",
+      "lean_file": "Q3/Proofs/RouteB/D0CenteredDensityFactorizationFailure.lean",
+      "replacement": "Prove independent UnprojectedDensityAutocorrelationData, then budget projected-minus-unprojected leakage.",
+      "stop_code": "CENTERED_DENSITY_NOT_EXACT_FEJER",
+      "route_status": "PROJECTED_SIGN_KILLED"
+    }
+  ],
   "notes": "Each entry records a paper-specific gap/cut-set and its mapped Lean blockers."
 }

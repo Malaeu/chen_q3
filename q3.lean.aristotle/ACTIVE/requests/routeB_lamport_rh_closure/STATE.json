@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 47,
-  "updated_at": "2026-07-27T00:42:54+02:00",
+  "revision": 50,
+  "updated_at": "2026-07-27T08:33:33+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -386,7 +386,8 @@
       "leakage_dependence": ["m_WINDOW_AND_WEIGHT", "N_PROJECTED_ROW_ENDPOINT", "sigma_SUBCRITICAL_WEIGHT"],
       "denominator_identity": "ABS_FPLUS_ZERO_EQ_SQRT_LOG_M_MUL_ABS_C0",
       "denominator_sample": "0.864797966349_TO_0.878438550145_DIAGNOSTIC_ONLY",
-      "anchor_floor_proved": false,
+      "anchor_floor_proved": true,
+      "unprojected_central_mass_source_bounds_supplied": false,
       "plants": ["CONSTANT_MODE_LIVE", "ENDPOINT_DIRICHLET_KILLS_ONLY_RETIRED_FULL_WEIGHT_ROUTE"]
     },
     "goal_005": {
@@ -398,9 +399,52 @@
       "build_exit": 0,
       "axioms": ["propext", "Classical.choice", "Quot.sound"]
     },
+    "goal_006": {
+      "verdict": "ANCHOR_FLOOR_PROVED",
+      "lean_artifact": "Q3/Proofs/RouteB/D0AnchorFloor.lean",
+      "theorem": "D0AnchorFloorFromUnprojectedCentralMass",
+      "source_lock_precondition": "MATCH",
+      "unprojected_central_mass_source_bounds_supplied": false,
+      "positivity_probe_role": "DIAGNOSTIC_INPUT_FOR_FUTURE_A_SIGMA_UNPROJECTED_MOMENT_LEMMA",
+      "build_exit": 0,
+      "axioms": ["propext", "Classical.choice", "Quot.sound"]
+    },
+    "goal_007": {
+      "verdict": "CENTERED_DENSITY_NOT_EXACT_FEJER",
+      "projected_sign_status": "PROJECTED_SIGN_KILLED",
+      "lean_artifact": "Q3/Proofs/RouteB/D0CenteredDensityFactorizationFailure.lean",
+      "theorem": "centeredTrialDensity_positive_constant_counterexample",
+      "failure_atlas_id": "ROUTEB_PROJECTED_DENSITY_EXACT_FEJER",
+      "unprojected_factorization": "OPEN_NOT_SOURCE_LOCKED",
+      "replacement": "UNPROJECTED_AUTOCORRELATION_DATA_PLUS_PROJECTION_LEAKAGE_BUDGET",
+      "build_exit": 0,
+      "axioms": ["propext", "Classical.choice", "Quot.sound"]
+    },
+    "goal_008": {
+      "verdict": "ANCHOR_RATIO_RECEIVER_PROVED",
+      "lean_artifact": "Q3/Proofs/RouteB/D0AnchorFloor.lean",
+      "theorem": "D0AnchorFloorFromUnprojectedMassNormRatio",
+      "paper_front": "EStarRelativeSourcePackage",
+      "source_package_supplied": false,
+      "build_exit": 0,
+      "axioms": ["propext", "Classical.choice", "Quot.sound"]
+    },
+    "montel_normal_families": {
+      "status": "MONTEL_STANDALONE_PROVED",
+      "aristotle_project": "1803227e-9c5a-4a8e-b20b-6eb7d33871fb",
+      "lean_artifact": "Q3/Proofs/RouteB/MontelNormalFamilies.lean",
+      "theorems": [
+        "montel_exists_subseq_tendstoLocallyUniformlyOn",
+        "montel_anchor_nonzero_limit",
+        "anchor_is_load_bearing"
+      ],
+      "build_exit": 0,
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "next_step_not_executed": "STRIP_COROLLARY_FOR_RH_OF_CANONICAL_STRIP_SLOTS"
+    },
     "open_inputs": [
       "CENTERED_TRIAL_CRITICAL_MOMENT_RATIO",
-      "ANCHOR_FLOOR",
+      "E_STAR_RELATIVE_SOURCE_PACKAGE",
       "H2A_EXACT_SECTOR_ORDERING",
       "PROJECT_SLOT_SUPPLY"
     ],
@@ -517,7 +561,16 @@
     "artifact_sha256": "c97fce636f9e221e55bc03d0a27b44caa767f0da010f15d65617e70428a48f78",
     "proof_artifact": {
       "path": "q3.lean.aristotle/Q3/Proofs/RouteB/GenericZeroTransfer.lean",
-      "sha256": "7ec141740def3c8b40edb8e1c85f480cd733660909577cba10ad60829820b77b"
+      "sha256": "4385ec71f6af59f1b5432128cd9b708854182e1248efcc0c764dc6dcf71fcc63"
+    },
+    "repin_2026_07_27": {
+      "classification": "BENIGN_005_STRIP_LOCAL_REFACTOR",
+      "owner_sign": "PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md",
+      "changing_commit": "ae5b000fbf20fa68099f35b42768f19ddea48451",
+      "previous_sha256": "7ec141740def3c8b40edb8e1c85f480cd733660909577cba10ad60829820b77b",
+      "current_sha256": "4385ec71f6af59f1b5432128cd9b708854182e1248efcc0c764dc6dcf71fcc63",
+      "compatibility_wrapper_preserved": true,
+      "audit": "GENERIC_ZERO_TRANSFER_PIN_DRIFT_AUDIT_2026-07-27.md"
     },
     "proved_nodes": ["L0c.0", "L0c1"],
     "generic_verdict": "GENERIC_ROUCHE_HURWITZ_ZERO_TRANSFER_LEAN",
@@ -3755,6 +3808,13 @@
       "progress_class": "REPRESENTATION_AND_BLOCKER_LOCALIZATION_PROGRESS",
       "result": "REPAIRABLE_LEAK;DIRECT_L1_SIGMA_TARGET;FULL_WEIGHT_L2_ROUTE_RETIRED;FPLUS_ZERO_DENOMINATOR_IDENTITY_LEAN",
       "honesty": "NO_COFINAL_L1_BOUND_NO_ANCHOR_FLOOR_FLOAT64_DIAGNOSTIC_ONLY_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-27T08:33:33+02:00",
+      "event": "MONTEL_DENSITY_NOGO_AND_ANCHOR_RATIO_RECEIVER_INTEGRATED",
+      "progress_class": "PROOF_FALSIFICATION_REPRESENTATION_AND_CONTROL_PLANE_PROGRESS",
+      "result": "MONTEL_STANDALONE_PROVED;PROJECTED_SIGN_KILLED;CENTERED_DENSITY_NOT_EXACT_FEJER;ANCHOR_RATIO_RECEIVER_PROVED;E_STAR_RELATIVE_SOURCE_PACKAGE_OPEN",
+      "honesty": "MONTEL_STRIP_COROLLARY_NOT_EXECUTED_UNPROJECTED_FACTOR_OPEN_SOURCE_PACKAGE_NOT_SUPPLIED_NO_BUS_010_NOT_RH"
     }
   ]
 }
