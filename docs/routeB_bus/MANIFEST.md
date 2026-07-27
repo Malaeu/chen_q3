@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 132 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 138 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -38,6 +38,10 @@ Flat Proshka mirror from `rh_lean_01_2026`; 132 mirrored source files plus `CHAN
 | `020_prolate_coordinate_lock.goal.md` | goal | `dbf7f3cca9b5424d1ebd9657a937d02b33ec2324023cd63d4d0ff489cd486f8c` |
 | `021_estar_full_window_canonical.answer.md` | answer | `5dd21c5d048082d8f67b2e3506bf0e7143823332ffb0b6f26a7592bae873cc18` |
 | `021_estar_full_window_canonical.goal.md` | goal | `a8675a52cc97a10e6a3e7d4d72f47e7014d1d9517f581c119c889f116464bfe3` |
+| `022_candidate_adjudication.answer.md` | answer | `c5a700c8ff55313302b6a15b14b1781de87d92694613bd7377618eab509a2278` |
+| `022_candidate_adjudication.goal.md` | goal | `b7a260388c02fd163fa5f56bbc1c1d5ea6d054c4d112ea8dd7f9496d71cb2561` |
+| `023_g3_interval_fourier_cert.answer.md` | answer | `4ea605c43dbe78fbb9d189d083daa84e9684aef7155f3955ed276d8d942de255` |
+| `023_g3_interval_fourier_cert.goal.md` | goal | `8ecb7e24c98a62f30cda02f3fcbac6f83f3091f70e313567ef51a6cac8092a6c` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
 | `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
@@ -82,9 +86,11 @@ Flat Proshka mirror from `rh_lean_01_2026`; 132 mirrored source files plus `CHAN
 | `OFF_AXIS_GROWTH_PROBE.md` | probe report | `264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4` |
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
 | `PHASE_STRUCTURE_PROBE.md` | probe report | `f508fdd0c07c800c387e0d8b8995038e1032a9321cbb47ff5da05685940a23dd` |
+| `PROSHKA_ADJUDICATION_PROTOCOL_2026-07-27.md` | Proshka verdict/source review | `d1dcf8750710c895c490b3755bec848122484748beacfb7c13c73cc6d6f19612` |
 | `PROSHKA_ANCHOR_BRIDGE_2026-07-27.md` | Proshka verdict/source review | `15b278ddb08e432092f6a83ca92ffbf62422ca8b560b66022bc9deaf0c4d7db7` |
 | `PROSHKA_AUDIT011_REMOTE_2026-07-27.md` | Proshka verdict/source review | `fcc8a3f46560ab4c3ce6d4a25cc88eb847f3970eaebd11785cfb9b69755285f6` |
 | `PROSHKA_AUDIT_011_AND_MUNTZ_CONTRACT_2026-07-27.md` | Proshka verdict/source review | `bd1f1db6b3daeec8d2818de60b071ba07f3b7fa916da652d2920fb73fdc00d2b` |
+| `PROSHKA_BRIDGE_ASSEMBLY_2026-07-27.md` | Proshka verdict/source review | `34f4b64f915281fdd25edfb11859184f9e1ef71994cebe512ba5658b5b929d9f` |
 | `PROSHKA_COORDINATE_CROSSWALK_2026-07-27.md` | Proshka verdict/source review | `0e24d183b89fdc2cf197e2c50f868137746a3d64a9eb182e0da3230ce2f10845` |
 | `PROSHKA_COORDINATE_CROSSWALK_2026-07-27_FULL.md` | Proshka verdict/source review | `3023bda9c486af683f69fa3f865b0b0b9c480d1cd31bb16d91a3ff348b38de4d` |
 | `PROSHKA_DENSITY_TAIL_2026-07-27.md` | Proshka verdict/source review | `802ef5495d68f0ef1a08d7aa163a3b0caf54f6074eb766e541283458d2166eec` |
@@ -136,6 +142,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 132 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `a72144a2c25882be29c26eea2ca05e145d504bb8a9fd555366ec985c415c0153` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `bc3c26ff6a56796da57955622a29a7a431af72c1ccd8eeb9079dcf68bb0f80c8` |
 
 `MANIFEST.md` is excluded from its own hash table.
