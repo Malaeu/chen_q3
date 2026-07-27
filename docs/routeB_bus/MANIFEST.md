@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 152 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 156 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -50,6 +50,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 152 mirrored source files plus `CHAN
 | `026_lambda_bracket_resume.goal.md` | goal | `1858ce422a81171073a8ab6f5f35f0f020e81467c84ef4293545bd6233f3dd0e` |
 | `027_hlambda_outer_lobe_gate.answer.md` | answer | `51383fe7308b83959710e9fa4f55fa740cee7ae38630bfdb5c16cb653e3cc83c` |
 | `027_hlambda_outer_lobe_gate.goal.md` | goal | `5aa2d191fbef8e94db18b26d0c22d48131a1eeffc8c067ed1deafa6cb8a96203` |
+| `028_finite_core_theta_order.answer.md` | answer | `c4a6484b577f6fb9650efbdcfb3141608a41ae81dbd96405e9f73e2b1e57017f` |
 | `028_finite_core_theta_order.goal.md` | goal | `ff5d64dc94b243e25f0081d9349a8afbcd2c2fb0d53fe2124494f987ad6d5d5c` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
@@ -82,6 +83,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 152 mirrored source files plus `CHAN
 | `EntirePhaseNormalization.lean` | key Lean artifact | `ba791e2248332628fa3684766dd017f522fc7836563bced5d5b05aea525bebcf` |
 | `EntireSquareRootRigidity.lean` | key Lean artifact | `174930ca4110f21c46ca70c068f26f8f629048fed344f190f7bb30773304a69d` |
 | `EvenRealAutocorrelationRigidity.lean` | key Lean artifact | `af3881dd0be7df726b9bc19975f833d410aeddb2b9740e7d9c0dffd72b67b077` |
+| `FINITE_CORE_THETA_CERT.json` | Route B artifact | `248f1b510a5121fdc9b17ba64d7aabc3a00040d126736d2ad919ace267e8d819` |
 | `FplusConstantMode.lean` | key Lean artifact | `cb8b95ecfc782cae6a3daa80f521ab2080645f1ab03d17d4d7495864f921111d` |
 | `GammaSoftZeroFree.lean` | key Lean artifact | `615548873f1c12dfd5f5e047c74135cd1f0fc454614c3fdc9d685472f3934c4b` |
 | `GenericZeroTransfer.lean` | key Lean artifact | `4385ec71f6af59f1b5432128cd9b708854182e1248efcc0c764dc6dcf71fcc63` |
@@ -156,6 +158,8 @@ Flat Proshka mirror from `rh_lean_01_2026`; 152 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `700d42d7a9d60550b5c06585456ad5dd01187b4d961106a29dc8bcb227069659` |
+| `check_finite_core_theta_certificate.py` | Route B artifact | `0a061c08b4170e3fc47288d51e0e55663b294408d37fcc2e988456c63d841779` |
+| `finite_core_theta_certificate.py` | Route B artifact | `58702543d0586f63565d3b4e6fe9924ff55485387b76c7268250d5e8ef0c9f63` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `bdc9b15f69b9c7e657a9275ce9e250d578af00aa1a3f6ff9468d59acc58b2ae8` |
 
 `MANIFEST.md` is excluded from its own hash table.
