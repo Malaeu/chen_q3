@@ -7,6 +7,13 @@
 исходный Montel-клон `aristotle_output/1803227e-9c5a-4a8e-b20b-6eb7d33871fb/`,
 из которого директива требовала взять remote URL, на диске отсутствует.
 
+`LOCAL_GIT_ARCHIVE_INITIALIZED`
+
+После owner-уточнения скачанный snapshot оформлен как отдельный локальный Git
+repository прямо в существующем каталоге. Это не поддельная реконструкция
+закрытой cloud-истории: remote не назначен, происхождение и SHA архива
+зафиксированы в `PROVENANCE.md`.
+
 ## 1. Получение проекта
 
 - Project UUID: `c746a674-5849-4dfa-9e4c-b7dd5af231b2`.
@@ -265,3 +272,35 @@ intervalIntegral.hasFDerivAt_integral_of_dominated_of_fderiv_le
 завершённом `RESULT.md`; обе пока с `sorry`.
 
 `STATE` не изменялся. `BUS_010_VOID` соблюдён.
+
+## 6. Локальный Git-архив после owner-уточнения
+
+Каталог:
+
+```text
+q3.lean.aristotle/aristotle_output/c746a674-5849-4dfa-9e4c-b7dd5af231b2/
+```
+
+Ветка и коммиты:
+
+```text
+main
+ec48f99 [Local audit] Add axiom inventory
+4dbb115 [Aristotle c746a674] Import downloaded project snapshot
+```
+
+Устройство:
+
+- `4dbb115` хранит скачанный project snapshot, `.gitignore` и
+  `PROVENANCE.md`;
+- `ec48f99` отдельно добавляет локальный `AxiomAudit.lean`;
+- `.lake/` игнорируется;
+- remote отсутствует намеренно: Aristotle API экспортирует result-архив, но
+  не cloud-worker Git URL;
+- `git status --porcelain=v1`: пусто;
+- `lake build`: exit `0`;
+- worktree ровно один — сам каталог repository; дополнительных worktree не
+  создавалось.
+
+Корневой `rh_lean_01_2026` и `chen_q3` также имеют по одному обычному
+worktree. Ничего удалять или размножать не потребовалось.
