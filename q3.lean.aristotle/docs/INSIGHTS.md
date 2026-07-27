@@ -48159,3 +48159,32 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   single-interval ODE certificate after the concrete prolate modes and
   characteristic values are materialized in Lean.
 - Route B remains `CHALLENGER / NOT_RH`; STATE and Bus 010 are untouched.
+
+## 2026-07-27 — Prolate Lean type layer source lock
+
+- Exact target: materialize the differential expression `PW_lambda`, the
+  source-indexed pair `h0 <-> chi0`, `h4 <-> chi2`, and the canonical
+  plus-phase packet as data and hypotheses only.
+- Four `q3_docs` embedding queries found no useful pre-existing Lean prolate
+  layer.  The implementation is therefore locked directly to
+  `D0_5_GROUND_AND_TRIAL_TYPES.md:55-92`,
+  `PEN_3_3_G04_OBJECT_DICTIONARY.md:45-112`, and the Connes full text.
+- `chi0` and `chi2` are real-valued fields, matching the restricted-Fourier
+  phase convention.  No positivity or ordering is encoded.
+- The operator is represented by its formal differential action via `fderiv`;
+  domain, self-adjointness, eigenfunction existence, ODE regularity, and signs
+  are deliberately absent.
+- `ProlatePair` carries evenness, compact support, `L2` normalization, masses,
+  and the center relations `I0 = chi0*h0(0)`, `I4 = chi2*h4(0)` as hypotheses.
+- The combination is total even if its denominator is zero; a future
+  existence/nondegeneracy layer must supply the nonzero certificate before
+  using normalization algebra.
+- D0 mapping is exact: `prolateCombination P` supplies the free
+  `hTrial_m` argument of `D0Pstar.gTrial_m`; the existing `MemLp` certificate
+  and projection then supply the `kTrial` chain.
+- `ProlateLayer.lean` implements this boundary in 125 lines with zero holes.
+  Targeted and full builds pass; all eight printed declarations depend only on
+  `[propext, Classical.choice, Quot.sound]`.
+- This closes the type prerequisite only.  Concrete modes, nonzero
+  normalization, `MemLp`, `TrialNonzero`, spectral ordering, and the
+  interval-ODE/Sturm sign certificate remain future obligations.

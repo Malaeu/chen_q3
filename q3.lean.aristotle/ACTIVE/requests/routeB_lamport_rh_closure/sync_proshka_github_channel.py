@@ -28,6 +28,7 @@ KEY_LEAN = (
     "MontelNormalFamilies.lean",
     "D0CanonicalApproximation.lean",
     "CanonicalRHRouteSkeleton.lean",
+    "ProlateLayer.lean",
 )
 
 
