@@ -48367,3 +48367,27 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   created; a future owner-issued leaf must choose between exact Sturm,
   Bernstein positivity, rational interval subdivision, and exact SOS
   certificates for the canonical band/tooth polynomials.
+
+## 2026-07-27 — Goal 028 exact finite-core sign kill
+
+- The registered first two addresses were checked in order:
+  `(m,r)=(257,256)` and `(257,255)`.
+- Exact rational Bernstein arithmetic consumed both the rationalized
+  coefficient-ball error and the full infinite-tail budget.  The upper target
+  polynomial is strictly negative on both complete canonical bands.
+- A stronger witness holds before tail subtraction: on the strict rational
+  subinterval `[65281/16711680,32641/8355840]` of the `r=255` band, every
+  Bernstein coefficient of the finite-core upper enclosure is negative; its
+  maximum is at most `-1/10^97`.
+- This kills the proposed finite-cell theta-order supplier, not the cofinal
+  family and not RH.  Remaining bands and teeth were not run after the exact
+  fail-fast witness.
+- Reusable method: for a power polynomial on rational `[a,b]`, substitute
+  `a+(b-a)t`, then compute Bernstein coefficients by the exact convolution
+  `b_k = sum_{j<=k} c_j * binom(k,j)/binom(n,j)`.  This avoids grids and gives
+  a compact independently checkable sign certificate.
+- The generated JSON preserves source hashes, coefficient balls, both budgets,
+  exact extrema, coverage termination and all guards; the independent checker
+  reconstructs the rational object without importing Arb or the generator.
+- Route B remains `CHALLENGER / NOT_RH`; `STATE` is unchanged and Bus 010
+  remains absent.

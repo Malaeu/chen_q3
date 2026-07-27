@@ -51,6 +51,24 @@
       "input_verifier": "ARB_INTERVAL",
       "not_lean": true,
       "not_cofinal_family": true
+    },
+    {
+      "transaction": "028_finite_core_theta_order",
+      "claim": "FiniteCoreThetaOrderWithTailBudget",
+      "status": "KILLED",
+      "scope": "FINITE_CELL",
+      "cells": [
+        257
+      ],
+      "verifier": "ARB_INTERVAL",
+      "certificate_backend": "EXACT_RATIONAL_BERNSTEIN",
+      "evidence": [
+        "FINITE_CORE_THETA_CERT.json",
+        "check_finite_core_theta_certificate.py"
+      ],
+      "not_lean": true,
+      "not_cofinal_family": true,
+      "termination": "registered priority band r=255 has an exact strict-interior negative upper certificate"
     }
   ],
   "gates": [
@@ -111,7 +129,7 @@
     {
       "id": "G5",
       "name": "S1_MONTEL_NONZERO_CLUSTER",
-      "status": "OPEN_MONTEL_CORE_PROVED_BOUND_OPEN",
+      "status": "OPEN_MONTEL_CORE_PROVED_SIGN_FRONT_KILLED",
       "scope": "ABSTRACT",
       "verifier": "CONDITIONAL",
       "evidence": [
@@ -119,10 +137,8 @@
         "TWO_SIGN_LEMMAS_VERDICT_2026-07-27.md"
       ],
       "smallest_gap": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
-      "ordered_subgaps": [
-        "HlambdaOuterLobeGate",
-        "FiniteCoreThetaOrderWithTailBudget"
-      ]
+      "closed_subgap": "HlambdaOuterLobeGate",
+      "killed_subgap": "FiniteCoreThetaOrderWithTailBudget"
     },
     {
       "id": "G6",
@@ -160,11 +176,13 @@
     "G7:Hurwitz+Xi->RH"
   ],
   "current_first_open_gate": "G2",
-  "next_queued_transaction": "028_finite_core_theta_order.goal.md",
+  "next_queued_transaction": null,
   "sign_verdicts": {
     "HlambdaLastPositiveZeroLtOne": "PROVED_ON_CELLS_13_53_257",
-    "DualThetaDominance": "REDUCED_TO(FiniteCoreThetaOrderWithTailBudget)",
-    "killed": []
+    "DualThetaDominance": "KILLED_ON_FINITE_CELL_257",
+    "killed": [
+      "FiniteCoreThetaOrderWithTailBudget"
+    ]
   },
   "guards": {
     "route_promoted_to_mainline": false,

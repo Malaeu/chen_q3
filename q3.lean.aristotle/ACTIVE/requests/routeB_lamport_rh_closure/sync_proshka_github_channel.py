@@ -24,6 +24,11 @@ RESYNC_REQUIRED_SOURCES = (
     REQUEST_DIR / "proshka" / "PROSHKA_PEN_REDUCTIONS_2026-07-27.md",
     REQUEST_DIR / "027_hlambda_outer_lobe_gate.answer.md",
 )
+GOAL_028_REQUIRED_SOURCES = (
+    REQUEST_DIR / "FINITE_CORE_THETA_CERT.json",
+    REQUEST_DIR / "finite_core_theta_certificate.py",
+    REQUEST_DIR / "check_finite_core_theta_certificate.py",
+)
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -74,7 +79,7 @@ def selected_sources() -> list[Path]:
         for path in REQUEST_DIR.glob("ARISTOTLE_TASK_*v2_REPAIRED*.md")
         if path.is_file()
     )
-    for path in RESYNC_REQUIRED_SOURCES:
+    for path in RESYNC_REQUIRED_SOURCES + GOAL_028_REQUIRED_SOURCES:
         if not path.is_file():
             raise FileNotFoundError(
                 f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{path}"
