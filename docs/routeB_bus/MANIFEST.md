@@ -22,7 +22,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 69 mirrored source files plus `CHANN
 | `012_estar_windowed_mellin_crosswalk.goal.md` | goal | `a322424d51aad88d4ee2d366220ad6ea2c4cea02c96bc07a6d97f247203b7a97` |
 | `013_upper_edge_sign_or_kill.answer.md` | answer | `6397d1d720886b7c5a89cccb41c1641854fe2dba99baedc7c98c74fabf010247` |
 | `013_upper_edge_sign_or_kill.goal.md` | goal | `2ba3ea81f45a7d17f1a0888d963acffb0512c5052839a3002fc193bebab9425c` |
-| `014_proshka_github_channel.answer.md` | answer | `125960efb9f6481f81435a8209637b5c1927259ff09063aa87461c57e532b7cc` |
+| `014_proshka_github_channel.answer.md` | answer | `f0acf1b5fc49f21a17183e8f5b8b4707c3dd7914f3b0356b1d713994831306a7` |
 | `014_proshka_github_channel.goal.md` | goal | `65af0020fbeea199c539d6dbd0746f29f0de89af64e3e63205c6e0b7215e860e` |
 | `015_muntz_cloud_harvest.goal.md` | goal | `dde7b99aed97e57023f8ffb66888568797bb0c0ac086a2a26f4734da0e7a90c0` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
@@ -73,6 +73,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 69 mirrored source files plus `CHANN
 | `UNPROJECTED_MASS_NORM_PROBE.csv` | probe data | `c1333cb21c1bc338a84d6c7ae27f0c08bad074af0cfc049c14ad51a5e3ed86a5` |
 | `UNPROJECTED_MASS_NORM_PROBE.md` | probe report | `44302a9324bf7acb483aa66484e9fbe3a85796e9a1f005f13bea6843a4512033` |
 | `UPPER_EDGE_SIGN_PROBE.csv` | probe data | `e4312f08573c2e907755d96c97a0cc2abc620c606c92da1fd2fb779582401c3e` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `723ee49fcac99ec8fae3d4b0305f35a63fd1ef75de2c1d2bcac9b5cab72ebb8c` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `e6c71b1565182a7092c85967f122b9b852c83b4e592af7ea1a2e99ff1ae5dc46` |
 
 `MANIFEST.md` is excluded from its own hash table.

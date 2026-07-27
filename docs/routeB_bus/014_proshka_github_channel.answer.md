@@ -10,8 +10,9 @@
 - Visibility: `PUBLIC`
 - Проверка видимости:
   `gh repo view Malaeu/chen_q3 --json url,visibility,defaultBranchRef`
-- Commit активации канала: `PENDING_CHANNEL_ACTIVATION_COMMIT`
-- Число файлов зеркала с метаданными: `PENDING_FILE_COUNT`
+- Commit активации канала:
+  `6eb5444a9dc54274ad863c5ffae8286e0baeee55`
+- Число файлов зеркала с метаданными: `71`
 - Manifest:
   `/Users/emalam/GitHub/chen_q3/docs/routeB_bus/MANIFEST.md`
 
@@ -20,6 +21,8 @@
 - Изменения в `chen_q3` ограничены каталогом `docs/routeB_bus/`.
 - Предсуществующее состояние всех путей вне `docs/routeB_bus/` сохранено
   побайтово по `git status --porcelain=v1 --untracked-files=all`.
+- Commit создан поверх актуального `origin/rh_clean` из изолированного
+  временного Git index; diff коммита содержит только `docs/routeB_bus/`.
 - `ROUTE_B_STATE.md` и `STATE.json` не изменялись.
 - `BUS_010_VOID` соблюдён.
 
@@ -42,4 +45,3 @@
 2. пересобрать `docs/routeB_bus/MANIFEST.md`;
 3. закоммитить только `docs/routeB_bus/`;
 4. push текущей ветки `chen_q3`.
-
