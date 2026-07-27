@@ -126,6 +126,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 122 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `dbde1358fb57e844d9cac69e77941766721b30f8529d6596521e0412699fe18c` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `4a920f7f707c81f51571308226b0add2033a924ac26fc980cc03f199866e5da8` |
 
 `MANIFEST.md` is excluded from its own hash table.
