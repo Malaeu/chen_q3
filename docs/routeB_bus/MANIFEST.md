@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 70 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 73 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -26,6 +26,8 @@ Flat Proshka mirror from `rh_lean_01_2026`; 70 mirrored source files plus `CHANN
 | `014_proshka_github_channel.goal.md` | goal | `65af0020fbeea199c539d6dbd0746f29f0de89af64e3e63205c6e0b7215e860e` |
 | `015_muntz_cloud_harvest.answer.md` | answer | `819bac328dd448f01c6b00e4919c3520c64efc6063d54b9267b7c39aebb00034` |
 | `015_muntz_cloud_harvest.goal.md` | goal | `dde7b99aed97e57023f8ffb66888568797bb0c0ac086a2a26f4734da0e7a90c0` |
+| `016_prolate_lean_layer.answer.md` | answer | `a81cc177e253e00be74f0d3c08689db52802aeae0854f1246006c6f93e8b4c44` |
+| `016_prolate_lean_layer.goal.md` | goal | `d1b41079d105008628b690107ed8d42fcf4af1f21acf3c4a1e8be88e583c9898` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `B0_VALUE_PROBE.csv` | probe data | `723a9d8f7fb93a4c8b8e31df1487b17d7cc7f5df15c59f153f9692bf556a9ba3` |
 | `B0_VALUE_PROBE.md` | probe report | `652d7d5451a31f5d497cfa80afb6692faa1e5829d935374c51f85052f606765c` |
@@ -59,6 +61,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 70 mirrored source files plus `CHANN
 | `PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | Proshka verdict/source review | `827a1c5bf1e62c434bed0b59aabb459babab484d270d18562ee940841d93ae4e` |
 | `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md` | Proshka verdict/source review | `fa82f900e2096830116fbaeb22bf2001711075874e1cbf59b5c95533d5712a00` |
 | `PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md` | Proshka verdict/source review | `2310171f2f81d1afef8599da23cf9cf8cacd3d1eb9e38972f21f7075f9620d1f` |
+| `ProlateLayer.lean` | key Lean artifact | `3c2099c97df6cd0fb45f7b367d24898d11c031ed297fe9031b25ee5b9dc0edf4` |
 | `SOFT_2_LINEARITY_CROSSWALK_FORK_REPORT_2026-07-13.md` | measurement report | `873f817a10d7d660e848cda7e645d864ed8ebeca4abfb52bcda4cea341ec213b` |
 | `SOFT_2_QUADRATIC_DIVISOR_TRANSFER_REPORT_2026-07-13.md` | measurement report | `f168742f3d665f3eed62e536862d1c535f07389c9013f87e8118e01277a646dd` |
 | `SOFT_3Q1_DIRECT_HERMITIAN_KERNEL_PAIRING_REPORT_2026-07-13.md` | measurement report | `2380fdbc4a5348819165930fc905a198492ca4898d065a03b9362dc0c84a4eac` |
@@ -74,6 +77,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 70 mirrored source files plus `CHANN
 | `UNPROJECTED_MASS_NORM_PROBE.csv` | probe data | `c1333cb21c1bc338a84d6c7ae27f0c08bad074af0cfc049c14ad51a5e3ed86a5` |
 | `UNPROJECTED_MASS_NORM_PROBE.md` | probe report | `44302a9324bf7acb483aa66484e9fbe3a85796e9a1f005f13bea6843a4512033` |
 | `UPPER_EDGE_SIGN_PROBE.csv` | probe data | `e4312f08573c2e907755d96c97a0cc2abc620c606c92da1fd2fb779582401c3e` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `ff82944a747715139aa518324dd59a8a5afc8ee20b1444fed481c58824b6e795` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `a609346e427f7cc6875e32cd6062350d4d02aa18c0f11320f55e62022cbd06f9` |
 
 `MANIFEST.md` is excluded from its own hash table.
