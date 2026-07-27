@@ -33,15 +33,20 @@ next_verify: rg -n -e "stable adaptive shifts are a support packet" -e "PO3-squa
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
 
-## Route B automation note (2026-07-27)
+## Route B automation note (2026-07-27, refreshed after goal 027)
 
 - This H1/PO3 phase remains `PARKED`; the user-authorized Route B compiler
   preempts it for the current automation run.
-- Physical address 021 was executed on the canonical packet and stopped
-  fail-closed at `INSTRUMENT_FLOOR_UNRESOLVED`.
-- Kill certificate: `RouteB.021.float64-grid-sign-kill` is dead because the
-  three resolutions disagree at the cancellation floor.
-- Next live address: `RouteB.021.high_precision`; no H1/PO3 claim changed.
+- Goals 022--026 replaced the stale float64 frontier with exact-mode interval
+  enclosures and live Legendre-tail budgets.
+- Goal 027 proves `HLAMBDA_LAST_POSITIVE_ZERO_LT_ONE_PROVED` for the three
+  certified cells `m in {13,53,257}` by two outward-rounded scalar
+  inequalities plus the frozen pen-level Sturm--Wronskian transport.
+- This is not a cofinal-family theorem and changes no H1/PO3 or RH claim.
+- Next live address:
+  `RouteB.028 / FiniteCoreThetaOrderWithTailBudget`; its live route fork is
+  the proof backend for all canonical band/tooth polynomials:
+  Sturm, Bernstein, rational interval subdivision, or exact SOS.
 
 ## Startup response contract
 
