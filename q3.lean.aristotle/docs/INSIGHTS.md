@@ -48269,3 +48269,25 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `tau_dual = 2^-192`; Fejér and residual stages remain untouched.
 - Route B remains `CHALLENGER / NOT_RH`; `STATE` is unchanged and
   `BUS_010_VOID` is preserved.
+
+## 2026-07-27 — Shifted-ladder E-star adjudication
+
+- Goal 024 keeps the 022 sign/margin/error criterion unchanged and moves only
+  the personal precision ladder of its 51 floor records.
+- Recovered `p_fail` values are `223` for six `m=53` records, `323` for one
+  `m=53` record, and `780` for all 44 `m=257` records.
+- Every target required the preregistered doubling ladder and reached the
+  authorized cap `p_fail+800`: at most 1123 digits for `m=53` and 1580 digits
+  for `m=257`.
+- The exact verdict remains `CANDIDATES_STILL_FLOOR_2`: zero positive
+  certificates, zero new negative certificates, and all 51 targets still on
+  the noncontracting Taylor/mode error floor.
+- Two edge records, `(m,r)=(257,255),(257,256)`, also change sign between
+  1180 and 1380 digits and fail the interlevel-drift guard; neither is
+  promoted to a positive certificate.
+- Five deterministic 022-negative controls (seed 6, covering
+  `m=13,53,257`) remain negative with large margin/error separation.
+- All nine nonzero package fingerprints match 022 in sign and the stored 80
+  significant digits; `mu_j=lambda*J_j/c_j` is retained.
+- Route B remains `CHALLENGER / NOT_RH`; `STATE`, Fejér, residual, G3 and
+  `BUS_010_VOID` remain untouched.
