@@ -48311,3 +48311,33 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Gershgorin-plus-tail-resolvent, or interval-Sturm enclosure feeding `K0`.
 - Route B remains `CHALLENGER / NOT_RH`; `STATE` is unchanged and
   `BUS_010_VOID` remains preserved.
+
+## 2026-07-27 — Goal 026 exact modes, sign reductions, and seven-gate resync
+
+- Goal 026 closes the former exact-mode input gap on all six requested
+  `(m,degree)` pairs with verdict
+  `G3_EXACT_MODE_INTERVAL_ENCLOSURE_PROVED`.
+- The certificate uses interval LDL/Sturm counts on the even Legendre Jacobi
+  block plus a strict Schur tail-resolvent enclosure.  Finite characteristic
+  values are search seeds only; no truncated eigenvalue is promoted to a
+  zero-width exact input.
+- Exact even-sector indices `0` and `2` are isolated with a certified neighbor
+  clearance greater than one.  The DLMF recurrence then uses a live
+  `[0,1/2]` terminal cone, strict Krawczyk containment, and a finite-plus-tail
+  normalization enclosure.
+- The two sign statements are not promoted: `HlambdaLastPositiveZeroLtOne`
+  is `REDUCED_TO(HlambdaOuterLobeGate)`, and `DualThetaDominance` is
+  `REDUCED_TO(FiniteCoreThetaOrderWithTailBudget)`.  Neither is killed.
+- For the three sampled `m`, 026 proves the eigenvalue half of the first
+  reduction and supplies exact-mode tail budgets for the second.  The outer
+  point determinant and the band/tooth polynomial positivity certificates
+  remain open; no new sign grid is admissible.
+- `PROOF_COMPILER_RESYNC_2026-07-27.md` restores one cumulative seven-gate
+  Route-B compiler map:
+  `H1 -> H2a -> H2b -> ANCHOR -> S1/Montel -> S2 -> Hurwitz/Xi -> RH`.
+  `H1` and `ANCHOR` are proved, the final roof is proved conditionally,
+  `H2a/H2b/S1` have proved generic cores but exact open binds, and `S2` remains
+  the typed main wall.
+- This resync is a challenger map only.  The public mainline stays
+  `T0-pd -> H-bridge -> H4 -> RH`; Route B remains `NOT_RH`, `STATE` is
+  unchanged, and no Bus 010 exists.

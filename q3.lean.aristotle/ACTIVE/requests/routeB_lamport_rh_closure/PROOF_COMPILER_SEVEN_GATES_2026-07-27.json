@@ -1,0 +1,117 @@
+{
+  "schema": "route_b_proof_compiler_seven_gates.v1",
+  "date": "2026-07-27",
+  "architecture_status": "CHALLENGER_NOT_RH",
+  "public_mainline_unchanged": "T0-pd -> H-bridge -> H4 -> RH",
+  "carrier_guard": {
+    "object": "Q3.RouteB.D0Pstar.canonicalApproximation",
+    "subsequence_guard": "SOFT_SAME_COFINAL_SUBSEQUENCE",
+    "status": "LEAN_PROVED"
+  },
+  "compiler_order_semantics": "cumulative obligations, not pairwise logical implications",
+  "gates": [
+    {
+      "id": "G1",
+      "name": "H1_CANONICAL_HOLOMORPHY",
+      "status": "PROVED",
+      "evidence": [
+        "Q3/Proofs/RouteB/D0CanonicalApproximation.lean:differentiable_centeredPstarFamily",
+        "Q3/Proofs/RouteB/D0CanonicalApproximation.lean:canonicalApproximation_slotH1"
+      ],
+      "smallest_gap": null
+    },
+    {
+      "id": "G2",
+      "name": "H2A_EXACT_SELECTED_GROUND",
+      "status": "OPEN_GENERIC_CORE_AND_SIX_EXACT_MODES_PROVED",
+      "evidence": [
+        "Q3/Proofs/RouteB/SectorIsolationRadius.lean",
+        "026_lambda_bracket_resume.answer.md",
+        "LAMBDA_BRACKET_RESUME_AUDIT.json"
+      ],
+      "smallest_gap": "H2A_EXACT_SECTOR_ORDERING_MISSING",
+      "scope_guard": "026 covers n=0,4 and m=13,53,257; it is not a cofinal selected-family theorem"
+    },
+    {
+      "id": "G3",
+      "name": "H2B_THEOREM510_REAL_ZERO_BRIDGE",
+      "status": "OPEN_GENERIC_CORE_PROVED_EXACT_BIND_OPEN",
+      "evidence": [
+        "Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
+        "Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
+        "Q3/Proofs/RouteB/RankOneCorrectionDeterminant.lean",
+        "Q3/Proofs/RouteB/RankOneCorrectionQuotientDescent.lean"
+      ],
+      "smallest_gap": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING"
+    },
+    {
+      "id": "G4",
+      "name": "ANCHOR_CANONICAL_NONZERO_NORMALIZATION",
+      "status": "PROVED",
+      "evidence": [
+        "Q3/Proofs/RouteB/D0CanonicalApproximation.lean:canonicalApproximation_slotAnchor",
+        "Q3/Proofs/RouteB/D0AnchorFloor.lean",
+        "006_anchor_floor.answer.md",
+        "008_anchor_ratio_receiver.answer.md"
+      ],
+      "smallest_gap": null
+    },
+    {
+      "id": "G5",
+      "name": "S1_MONTEL_NONZERO_CLUSTER",
+      "status": "OPEN_MONTEL_CORE_PROVED_BOUND_OPEN",
+      "evidence": [
+        "Q3/Proofs/RouteB/MontelNormalFamilies.lean",
+        "TWO_SIGN_LEMMAS_VERDICT_2026-07-27.md"
+      ],
+      "smallest_gap": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
+      "ordered_subgaps": [
+        "HlambdaOuterLobeGate",
+        "FiniteCoreThetaOrderWithTailBudget"
+      ]
+    },
+    {
+      "id": "G6",
+      "name": "S2_SAME_SUBSEQUENCE_CLUSTER_IDENTIFICATION",
+      "status": "OPEN_TYPED_ONLY",
+      "evidence": [
+        "Q3/Proofs/RouteB/SoftL2Round13Integration.lean",
+        "Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean:sameCofinalGuard"
+      ],
+      "smallest_gap": "GLOBAL_POSITIVE_DEFINITE_UNIQUENESS_BODY_MISSING",
+      "optional_supplier": "SourceCompactnessToFullAutocorrelation"
+    },
+    {
+      "id": "G7",
+      "name": "HURWITZ_XI_RH_ROOF",
+      "status": "PROVED_CONDITIONAL_ON_G1_TO_G6",
+      "evidence": [
+        "Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean:rh_of_canonical_strip_slots",
+        "Q3/Proofs/RouteB/ClassicalXiInterface.lean"
+      ],
+      "smallest_gap": null
+    }
+  ],
+  "single_compiler_arrow": [
+    "G1:H1",
+    "G2:H2a",
+    "G3:H2b",
+    "G4:ANCHOR",
+    "G5:S1+Montel",
+    "G6:S2",
+    "G7:Hurwitz+Xi->RH"
+  ],
+  "current_first_open_gate": "G2",
+  "next_queued_transaction": "027_hlambda_outer_lobe_gate.goal.md",
+  "sign_verdicts": {
+    "HlambdaLastPositiveZeroLtOne": "REDUCED_TO(HlambdaOuterLobeGate)",
+    "DualThetaDominance": "REDUCED_TO(FiniteCoreThetaOrderWithTailBudget)",
+    "killed": []
+  },
+  "guards": {
+    "route_promoted_to_mainline": false,
+    "unconditional_RH_claimed": false,
+    "STATE_mutated_by_026": false,
+    "BUS_010_created": false
+  }
+}
