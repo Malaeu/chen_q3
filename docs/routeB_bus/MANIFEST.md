@@ -32,7 +32,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 126 mirrored source files plus `CHAN
 | `017_muntz_port_prep.goal.md` | goal | `442ab909fad4517a52e7321f71448f84dd3f4ef889cbfd1ee4e21074dd78db6d` |
 | `018_estar_full_window_sign.answer.md` | answer | `d1d935d6acdeeb9b82aa3e1a98610a77e169d97f2337f8ca5738d56c7e814518` |
 | `018_estar_full_window_sign.goal.md` | goal | `d5285bdc792c6988b93f24371834bea550865a30b16a790c02cbaf044bc49d45` |
-| `019_dual_prolate_residual.answer.md` | answer | `70f7a2164fabe797e955429205473760c79abb938498d1d376ac3e798fe86e02` |
+| `019_dual_prolate_residual.answer.md` | answer | `7f3282f77e5c7bdcc0d655749679b54f58db785b8072297f51ee933b1161c8c4` |
 | `019_dual_prolate_residual.goal.md` | goal | `e8533c58fb64cd6d9f6613ab982bfa75efa4e768ff342a01bddf34188790f640` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
@@ -130,6 +130,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 126 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `e7c8a398d10d4450b12090f1d0f0348f3bcc3cc8c206a51c554678156fed4dfe` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `9e2c41bd56963a47ebe483d43c47361d3f51d003bf1c41bc3d2290a29944c4b1` |
 
 `MANIFEST.md` is excluded from its own hash table.
