@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 120 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 121 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -28,6 +28,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 120 mirrored source files plus `CHAN
 | `015_muntz_cloud_harvest.goal.md` | goal | `dde7b99aed97e57023f8ffb66888568797bb0c0ac086a2a26f4734da0e7a90c0` |
 | `016_prolate_lean_layer.answer.md` | answer | `a81cc177e253e00be74f0d3c08689db52802aeae0854f1246006c6f93e8b4c44` |
 | `016_prolate_lean_layer.goal.md` | goal | `d1b41079d105008628b690107ed8d42fcf4af1f21acf3c4a1e8be88e583c9898` |
+| `017_muntz_port_prep.answer.md` | answer | `37180a42bf45d2254ab48a99b403b48bc25af91e12107d453d29455301492528` |
 | `017_muntz_port_prep.goal.md` | goal | `442ab909fad4517a52e7321f71448f84dd3f4ef889cbfd1ee4e21074dd78db6d` |
 | `018_estar_full_window_sign.goal.md` | goal | `d5285bdc792c6988b93f24371834bea550865a30b16a790c02cbaf044bc49d45` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
@@ -124,6 +125,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 120 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `f47d5d56678204d78266e1775587072ddbe10f276d4dbc375d0c73eefcc9482a` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `dbde1358fb57e844d9cac69e77941766721b30f8529d6596521e0412699fe18c` |
 
 `MANIFEST.md` is excluded from its own hash table.
