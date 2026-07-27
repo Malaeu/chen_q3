@@ -18,6 +18,12 @@ Q3_ROOT = REQUEST_DIR.parents[2]
 LEAN_DIR = Q3_ROOT / "Q3" / "Proofs" / "RouteB"
 CHEN_ROOT = Path("/Users/emalam/GitHub/chen_q3").resolve()
 DESTINATION = (CHEN_ROOT / "docs" / "routeB_bus").resolve()
+RESYNC_REQUIRED_SOURCES = (
+    REQUEST_DIR / "PROOF_COMPILER_RESYNC_2026-07-27.md",
+    REQUEST_DIR / "proshka" / "PROSHKA_RESYNC_AUDIT_2026-07-27.md",
+    REQUEST_DIR / "proshka" / "PROSHKA_PEN_REDUCTIONS_2026-07-27.md",
+    REQUEST_DIR / "027_hlambda_outer_lobe_gate.answer.md",
+)
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -68,6 +74,12 @@ def selected_sources() -> list[Path]:
         for path in REQUEST_DIR.glob("ARISTOTLE_TASK_*v2_REPAIRED*.md")
         if path.is_file()
     )
+    for path in RESYNC_REQUIRED_SOURCES:
+        if not path.is_file():
+            raise FileNotFoundError(
+                f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{path}"
+            )
+        paths.add(path)
     route_b_lean = sorted(LEAN_DIR.glob("*.lean"))
     if not route_b_lean:
         raise FileNotFoundError(
