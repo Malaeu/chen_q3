@@ -48188,3 +48188,28 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - This closes the type prerequisite only.  Concrete modes, nonzero
   normalization, `MemLp`, `TrialNonzero`, spectral ordering, and the
   interval-ODE/Sturm sign certificate remain future obligations.
+
+## 2026-07-27 — Müntz port-preparation adapters
+
+- Goal 017 is preparatory only: do not copy the cloud Müntz file while its
+  continuation/Riemann-sum bridge remains unfinished.
+- Three `q3_docs` searches found no reusable Route-B adapter.  The exact local
+  APIs are instead already in Mathlib:
+  `MeasureTheory.integral_Icc_eq_integral_Ioo` and the definition of `mellin`
+  in `Mathlib.Analysis.MellinTransform`.
+- The endpoint adapter can preserve the requested local-integrability and
+  `0 < A < B` interface while delegating the equality itself to the stronger
+  atomless-volume theorem; endpoint values are irrelevant a.e.
+- For `k : ℝ → ℂ`, Mathlib's integrand is
+  `(u : ℂ) ^ (s - 1) • k u`.  After `smul_eq_mul`, commutativity gives the
+  cloud convention `k u * (u : ℂ) ^ (s - 1)` with no convergence hypothesis.
+- The Proshka channel must no longer use a hand-maintained Lean tuple.
+  Enumerating every file in `Q3/Proofs/RouteB/*.lean` makes newly integrated
+  Route-B artifacts visible automatically while retaining the hard
+  destination boundary `chen_q3/docs/routeB_bus/`.
+- `WindowEndpointBridge.lean` closes both adapters in 39 lines with zero
+  holes; targeted and full builds pass, and both declarations use exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- The mirror glob currently selects all 53 Route-B Lean files.  This does not
+  port the cloud Müntz code or close `RIEMANN_SUM_LIPSCHITZ_GAP`; it only
+  removes endpoint/convention friction and future whitelist drift.

@@ -19,19 +19,6 @@ LEAN_DIR = Q3_ROOT / "Q3" / "Proofs" / "RouteB"
 CHEN_ROOT = Path("/Users/emalam/GitHub/chen_q3").resolve()
 DESTINATION = (CHEN_ROOT / "docs" / "routeB_bus").resolve()
 
-KEY_LEAN = (
-    "EStarWindowedMellinCrosswalk.lean",
-    "D0KTrialStage1.lean",
-    "D0KTrialStage2.lean",
-    "D0KTrialStage3.lean",
-    "D0AnchorFloor.lean",
-    "MontelNormalFamilies.lean",
-    "D0CanonicalApproximation.lean",
-    "CanonicalRHRouteSkeleton.lean",
-    "ProlateLayer.lean",
-)
-
-
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -81,11 +68,12 @@ def selected_sources() -> list[Path]:
         for path in REQUEST_DIR.glob("ARISTOTLE_TASK_*v2_REPAIRED*.md")
         if path.is_file()
     )
-    for filename in KEY_LEAN:
-        path = LEAN_DIR / filename
-        if not path.is_file():
-            raise FileNotFoundError(f"PROSHKA_CHANNEL_KEY_LEAN_MISSING:{path}")
-        paths.add(path)
+    route_b_lean = sorted(LEAN_DIR.glob("*.lean"))
+    if not route_b_lean:
+        raise FileNotFoundError(
+            f"PROSHKA_CHANNEL_ROUTE_B_LEAN_EMPTY:{LEAN_DIR}"
+        )
+    paths.update(path for path in route_b_lean if path.is_file())
     return sorted(paths, key=lambda path: path.name)
 
 
