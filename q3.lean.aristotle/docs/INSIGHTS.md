@@ -48242,3 +48242,30 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - The mirror glob currently selects all 53 Route-B Lean files.  This does not
   port the cloud Müntz code or close `RIEMANN_SUM_LIPSCHITZ_GAP`; it only
   removes endpoint/convention friction and future whitelist drift.
+
+## 2026-07-27 — Canonical E-star adjudication and certified-G3 input gate
+
+- Goal 022 reruns every 021 candidate with Proshka's adaptive ladder
+  `p0 = max(100, ceil(-log10(scale)) + 80)`; the ladders are
+  `114/214/314`, `223/323/423`, and `780/880/980` digits.
+- The canonical packet retains the computed factors
+  `mu_j = lambda * J_j / c_j`; no step substitutes `mu_j = 1`.
+- The strict three-level/error-budget test gives 19 negative certificates,
+  zero positive certificates, and 51 entries still on the representation
+  floor, hence the exact verdict `CANDIDATES_STILL_FLOOR`.
+- At the highest precision all 1190 core samples and all 140 neighboring
+  star-tooth samples are negative, but this diagnostic does not override the
+  registered all-level margin guard.
+- Goal 023 stops before quadrature: the tree contains float/high-precision
+  approximations but no proof-grade interval enclosure of the exact infinite
+  prolate mode, so its verdict is
+  `G3_MODE_INPUT_NOT_INTERVAL_CERTIFIED`.
+- Four local `q3_docs` searches found no reusable exact-mode interval bridge.
+  DLMF §30.8 supplies the Legendre/Ferrers expansion, while Arb supplies
+  certified finite ball-matrix eigenpairs; the missing named bridge is
+  `G3ExactModeIntervalEnclosure`, connecting a finite interval eigenpair to
+  the exact infinite mode with a strict tail bound.
+- The G3 thresholds were preregistered as `tau_G3 = 2^-256` and
+  `tau_dual = 2^-192`; Fejér and residual stages remain untouched.
+- Route B remains `CHALLENGER / NOT_RH`; `STATE` is unchanged and
+  `BUS_010_VOID` is preserved.
