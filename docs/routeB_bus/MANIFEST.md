@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 149 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 152 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -50,6 +50,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 149 mirrored source files plus `CHAN
 | `026_lambda_bracket_resume.goal.md` | goal | `1858ce422a81171073a8ab6f5f35f0f020e81467c84ef4293545bd6233f3dd0e` |
 | `027_hlambda_outer_lobe_gate.answer.md` | answer | `51383fe7308b83959710e9fa4f55fa740cee7ae38630bfdb5c16cb653e3cc83c` |
 | `027_hlambda_outer_lobe_gate.goal.md` | goal | `5aa2d191fbef8e94db18b26d0c22d48131a1eeffc8c067ed1deafa6cb8a96203` |
+| `028_finite_core_theta_order.goal.md` | goal | `ff5d64dc94b243e25f0081d9349a8afbcd2c2fb0d53fe2124494f987ad6d5d5c` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
 | `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
@@ -94,6 +95,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 149 mirrored source files plus `CHAN
 | `OFF_AXIS_GROWTH_PROBE.md` | probe report | `264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4` |
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
 | `PHASE_STRUCTURE_PROBE.md` | probe report | `f508fdd0c07c800c387e0d8b8995038e1032a9321cbb47ff5da05685940a23dd` |
+| `PROOF_COMPILER_RESYNC_2026-07-27.md` | Route B artifact | `24b3870d2787167958a8bd3c9d05c018159217141dfd10af7de98ee75d5e6e89` |
 | `PROSHKA_ADJUDICATION_PROTOCOL_2026-07-27.md` | Proshka verdict/source review | `d1dcf8750710c895c490b3755bec848122484748beacfb7c13c73cc6d6f19612` |
 | `PROSHKA_ANCHOR_BRIDGE_2026-07-27.md` | Proshka verdict/source review | `15b278ddb08e432092f6a83ca92ffbf62422ca8b560b66022bc9deaf0c4d7db7` |
 | `PROSHKA_AUDIT011_REMOTE_2026-07-27.md` | Proshka verdict/source review | `fcc8a3f46560ab4c3ce6d4a25cc88eb847f3970eaebd11785cfb9b69755285f6` |
@@ -109,6 +111,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 149 mirrored source files plus `CHAN
 | `PROSHKA_POST_JUDGE_2026-07-27.md` | Proshka verdict/source review | `f237da77f6ac238ab48d29a743759c49031653cdf189a83ce1b08556e5ce326c` |
 | `PROSHKA_RATIO_RECEIVER_2026-07-27.md` | Proshka verdict/source review | `bd8c3d0ea16899c385247a69c65fae015731ce3c6b1493d3457d1dd3bf36b668` |
 | `PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | Proshka verdict/source review | `827a1c5bf1e62c434bed0b59aabb459babab484d270d18562ee940841d93ae4e` |
+| `PROSHKA_RESYNC_AUDIT_2026-07-27.md` | Proshka verdict/source review | `49b5ec48d48f6390f6a0c6516b7ef186126ec676a8424650f6de04ad95f6714c` |
 | `PROSHKA_SIGN_FRONT_2026-07-27.md` | Proshka verdict/source review | `af317ee7e183fee763fa65a870fb129ad0769410dc5bc2cd340283d6f771825a` |
 | `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md` | Proshka verdict/source review | `fa82f900e2096830116fbaeb22bf2001711075874e1cbf59b5c95533d5712a00` |
 | `PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md` | Proshka verdict/source review | `2310171f2f81d1afef8599da23cf9cf8cacd3d1eb9e38972f21f7075f9620d1f` |
@@ -153,6 +156,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 149 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `3bdf3730e06d3af3ac2e9101a40c41ab26f230b1f0a325bb9faebfde01d0843b` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `700d42d7a9d60550b5c06585456ad5dd01187b4d961106a29dc8bcb227069659` |
 
 `MANIFEST.md` is excluded from its own hash table.
