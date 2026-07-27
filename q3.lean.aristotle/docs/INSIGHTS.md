@@ -48142,3 +48142,20 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Poisson-origin counterterm in place.
 - This is the second registered victim of the Failure Atlas family
   `MATHLIB_CONVENTION_VALUES_AT_POLES`, after the C1/`Lambda₀` mismatch.
+## 2026-07-27 — Route B upper-edge sign diagnostic
+
+- The 011 coefficient row agrees with the canonical Proshka orientation:
+  `hTrial=(I4*h0-I0*h4)/sqrt(I0^2+I4^2)`.
+- A direct Legendre tail evaluation is unusable: the true upper-edge values
+  lie far below its cancellation floor and roundoff creates fake sign flips.
+- A float64 regular-endpoint Frobenius expansion plus dynamically rescaled
+  backward ODE integration and signed-log mixing reports no sign change on
+  2001 points of `(lambda/2,lambda)` for `m=13,53,257`; all values are
+  negative.  This is `UPPER_EDGE_DIAG_SINGLE_SIGN`, explicitly not a proof.
+- Sensitivity runs at two alternate endpoint epsilons and segment lengths
+  preserve the sign count and displayed leading digits.
+- Local Mathlib has ODE existence/uniqueness and Rolle but no ready
+  Sturm–Liouville zero-count theorem.  The recommended exact stage B is a
+  single-interval ODE certificate after the concrete prolate modes and
+  characteristic values are materialized in Lean.
+- Route B remains `CHALLENGER / NOT_RH`; STATE and Bus 010 are untouched.
