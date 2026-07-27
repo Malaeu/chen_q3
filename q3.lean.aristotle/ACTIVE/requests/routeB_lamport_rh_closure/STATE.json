@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 52,
-  "updated_at": "2026-07-27T14:50:41+02:00",
+  "revision": 53,
+  "updated_at": "2026-07-27T15:13:55+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -133,6 +133,27 @@
       "INTERVAL_ODE_OR_STURM_SIGN_CERTIFICATE"
     ],
     "route_effect": "STAGE_B_TYPE_PREREQUISITE_CLOSED_EXISTENCE_AND_SIGNS_OPEN_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
+  },
+  "muntz_port_prep": {
+    "status": "MUNTZ_PORT_PREP_OK",
+    "goal": "017_muntz_port_prep.goal.md",
+    "answer": "017_muntz_port_prep.answer.md",
+    "lean_artifact": "Q3/Proofs/RouteB/WindowEndpointBridge.lean",
+    "proved": [
+      "windowIntegral_Icc_eq_Ioo",
+      "integral_mul_cpow_eq_mellin"
+    ],
+    "holes": 0,
+    "axioms": ["propext", "Classical.choice", "Quot.sound"],
+    "mirror_scope": "ALL_Q3_PROOFS_ROUTEB_LEAN",
+    "mirrored_route_b_lean_files": 53,
+    "code_mirror_commit": "6656e6a01429adea7cd6180053d8026c292762a7",
+    "cloud_muntz_ported": false,
+    "remaining_blockers": [
+      "RIEMANN_SUM_LIPSCHITZ_GAP",
+      "ESTAR_CONTINUATION_LEMMA_MISSING"
+    ],
+    "route_effect": "PORT_CONVENTION_FRICTION_CLOSED_CONTINUATION_BRIDGE_OPEN_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
   },
   "owner_authorization": {
     "status": "OWNER_AUTHORIZED_AUTORUN",
@@ -3878,6 +3899,13 @@
       "progress_class": "REPRESENTATION_AND_TYPE_INFRASTRUCTURE_PROGRESS",
       "result": "PROLATE_LAYER_IMPLEMENTED;FORMAL_PW_ACTION_TYPED;PROLATE_PAIR_HYPOTHESIS_PACKAGE_TYPED;CANONICAL_PLUS_PHASE_COMBINATION_TYPED",
       "honesty": "TYPE_LAYER_ONLY_NO_EXISTENCE_NO_SIGNS_NO_SPECTRAL_THEORY_NO_INTERVAL_CERTIFICATE_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-27T15:13:55+02:00",
+      "event": "MUNTZ_PORT_PREPARATION_COMPLETED",
+      "progress_class": "PROOF_REPRESENTATION_AND_CHANNEL_INFRASTRUCTURE_PROGRESS",
+      "result": "MUNTZ_PORT_PREP_OK;WINDOW_ENDPOINT_AE_BRIDGE_LEAN;MELLIN_CONVENTION_BRIDGE_LEAN;ALL_ROUTE_B_LEAN_MIRRORED",
+      "honesty": "CLOUD_MUNTZ_NOT_PORTED_RIEMANN_SUM_LIPSCHITZ_GAP_OPEN_ESTAR_CONTINUATION_LEMMA_MISSING_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
     }
   ]
 }
