@@ -28,7 +28,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from scipy import linalg, special
+from scipy import integrate, linalg, special
 
 import estar_full_window_sign_probe as e18
 import strip_growth_probe as strip
@@ -75,10 +75,13 @@ def json_safe(value: Any) -> Any:
     return value
 
 
-def canonical_spectral_full(m: int) -> dict[str, Any]:
+def canonical_spectral_full(
+    m: int,
+    level: e18.PrecisionLevel = LEVEL,
+) -> dict[str, Any]:
     """Reproduce the P3 constructor and retain its L2 Legendre coefficients."""
 
-    degree = max(180, 2 * math.ceil(LEVEL.degree_factor * m))
+    degree = max(180, 2 * math.ceil(level.degree_factor * m))
     degrees = np.arange(0, degree + 1, 2, dtype=np.float64)
     c = 2 * math.pi * m
     x2_diag, x2_off = strip.legendre_x2_tridiagonal(degrees)
@@ -156,6 +159,7 @@ def signed_log_weighted_sum(
 def l2_mode_normalization(
     spectral: dict[str, Any],
     column: int,
+    level: e18.PrecisionLevel = LEVEL,
 ) -> ModeNormalization:
     """Recover an L2 normalization independently of the unstable centre sum."""
 
@@ -164,7 +168,7 @@ def l2_mode_normalization(
     weights = raw_weights / 2
     targets = np.concatenate(([0.0], positive_targets))
     signs, logs, metadata = e18.mode_signed_logs(
-        spectral, column, targets, LEVEL
+        spectral, column, targets, level
     )
     raw_signs, raw_logs = undo_constructor_normalization(
         signs, logs, metadata
@@ -215,9 +219,10 @@ def current_mode_values(
     spectral: dict[str, Any],
     column: int,
     targets: np.ndarray,
+    level: e18.PrecisionLevel = LEVEL,
 ) -> np.ndarray:
     signs, logs, _ = e18.mode_signed_logs(
-        spectral, column, targets, LEVEL
+        spectral, column, targets, level
     )
     values = np.zeros(targets.size, dtype=np.float64)
     representable = logs >= math.log(np.nextafter(0.0, 1.0))
@@ -248,10 +253,11 @@ def cosine_quadrature_values(
     spectral: dict[str, Any],
     column: int,
     y_values: np.ndarray,
+    level: e18.PrecisionLevel = LEVEL,
 ) -> np.ndarray:
     targets, weights = composite_gauss_rule(int(spectral["m"]))
     mode_values = current_mode_values(
-        spectral, column, targets
+        spectral, column, targets, level
     )
     phases = (
         2
@@ -265,6 +271,54 @@ def cosine_quadrature_values(
         * spectral["lambda"]
         * ((np.cos(phases) * weights[None, :]) @ mode_values)
     )
+
+
+def outside_simpson_ladder(
+    spectral: dict[str, Any],
+    column: int,
+    y_values: np.ndarray,
+) -> list[dict[str, Any]]:
+    """Independent uniform-grid Simpson ladder for the oscillatory outer rows."""
+
+    output: list[dict[str, Any]] = []
+    for points_per_cycle in (16, 32, 64):
+        point_count = max(
+            8193,
+            int(math.ceil(points_per_cycle * 5 * spectral["m"])) + 1,
+        )
+        if point_count % 2 == 0:
+            point_count += 1
+        right = 1 - LEVEL.endpoint_eps
+        targets = np.linspace(0.0, right, point_count)
+        mode_values = current_mode_values(
+            spectral, column, targets, LEVEL
+        )
+        phases = (
+            2
+            * math.pi
+            * spectral["lambda"]
+            * y_values[:, None]
+            * targets[None, :]
+        )
+        values = [
+            float(
+                2
+                * spectral["lambda"]
+                * integrate.simpson(
+                    mode_values * np.cos(phase),
+                    x=targets,
+                )
+            )
+            for phase in phases
+        ]
+        output.append(
+            {
+                "points_per_cycle": points_per_cycle,
+                "point_count": point_count,
+                "values": values,
+            }
+        )
+    return output
 
 
 def l2_fourier_bessel(
@@ -386,6 +440,47 @@ def run() -> dict[str, Any]:
             column: l2_mode_normalization(spectral, column)
             for column in (0, 2)
         }
+        epsilon0_ladder: list[dict[str, Any]] = []
+        for precision_level in e18.LEVELS:
+            spectral_level = canonical_spectral_full(m, precision_level)
+            i0_level = float(spectral_level["modes"][0]["integral"])
+            i4_level = float(spectral_level["modes"][2]["integral"])
+            d_level = math.hypot(i0_level, i4_level)
+            normalizations_level = {
+                column: l2_mode_normalization(
+                    spectral_level, column, precision_level
+                )
+                for column in (0, 2)
+            }
+            b0_level, _ = backend_b_value(
+                spectral_level,
+                0,
+                normalizations_level[0],
+                0.0,
+            )
+            b4_level, _ = backend_b_value(
+                spectral_level,
+                2,
+                normalizations_level[2],
+                0.0,
+            )
+            term0_level = i4_level * b0_level / d_level
+            term4_level = i0_level * b4_level / d_level
+            hat_level = term0_level - term4_level
+            cancellation_scale = abs(term0_level) + abs(term4_level)
+            epsilon0_ladder.append(
+                {
+                    "level": precision_level.name,
+                    "degree": spectral_level["degree"],
+                    "hat_htrial_B_zero_unforced": hat_level,
+                    "cancellation_scale": cancellation_scale,
+                    "epsilon0": (
+                        abs(hat_level) / cancellation_scale
+                        if cancellation_scale > 0
+                        else math.inf
+                    ),
+                }
+            )
 
         for column, source_name, mapping in (
             (0, "h0", "h0<->mu0=chi0"),
@@ -431,9 +526,17 @@ def run() -> dict[str, Any]:
             )
             for column in (0, 2)
         }
+        outside_y_values = y_values[5:]
+        simpson_by_column = {
+            column: outside_simpson_ladder(
+                spectral, column, outside_y_values
+            )
+            for column in (0, 2)
+        }
         b_by_column: dict[int, list[float]] = {0: [], 2: []}
         phi_by_column: dict[int, list[float]] = {0: [], 2: []}
         m_k1_pass = True
+        g3_all_pass = True
         for column, source_name in ((0, "h0"), (2, "h4")):
             nrm = normalizations[column]
             for point_index, (label, y) in enumerate(points):
@@ -452,6 +555,57 @@ def run() -> dict[str, Any]:
                     + 5e-9 * max(abs(backend_a), abs(backend_b))
                 )
                 m_k1_pass = m_k1_pass and point_pass
+                if point_index >= 5:
+                    outside_index = point_index - 5
+                    simpson_values = [
+                        float(run["values"][outside_index])
+                        for run in simpson_by_column[column]
+                    ]
+                    simpson_last_delta = abs(
+                        simpson_values[-1] - simpson_values[-2]
+                    )
+                    external_scale = max(
+                        abs(backend_a),
+                        *(abs(value) for value in simpson_values),
+                    )
+                    external_independence_pass = (
+                        external_scale >= 1e-14
+                        and simpson_last_delta
+                        <= 1e-7 * external_scale
+                        and abs(simpson_values[-1] - backend_a)
+                        <= 1e-7 * external_scale
+                    )
+                    external_status = (
+                        "PASS"
+                        if external_independence_pass
+                        else (
+                            "FLOOR_UNRESOLVED"
+                            if external_scale < 1e-14
+                            else "LADDER_MISMATCH"
+                        )
+                    )
+                    g3_all_pass = (
+                        g3_all_pass and external_independence_pass
+                    )
+                    simpson_ladder_json = json.dumps(
+                        [
+                            {
+                                "points_per_cycle": run[
+                                    "points_per_cycle"
+                                ],
+                                "point_count": run["point_count"],
+                                "value": run["values"][outside_index],
+                            }
+                            for run in simpson_by_column[column]
+                        ],
+                        separators=(",", ":"),
+                    )
+                else:
+                    simpson_values = []
+                    simpson_last_delta = ""
+                    external_independence_pass = ""
+                    external_status = "NOT_OUTSIDE"
+                    simpson_ladder_json = ""
                 cross_rows.append(
                     {
                         "m": m,
@@ -466,13 +620,33 @@ def run() -> dict[str, Any]:
                         "absolute_error": repr(absolute_error),
                         "relative_error": repr(relative_error),
                         "crosscheck_pass": point_pass,
+                        "backend_A2_simpson_convergence_ladder": (
+                            simpson_ladder_json
+                        ),
+                        "A2_last_step_absolute_delta": (
+                            repr(simpson_last_delta)
+                            if simpson_last_delta != ""
+                            else ""
+                        ),
+                        "G3_external_independence_status": (
+                            external_status
+                        ),
+                        "G3_external_independence_pass": (
+                            external_independence_pass
+                        ),
                     }
                 )
+        m_k1_pass = m_k1_pass and g3_all_pass
 
         a_trial_zero = (
             i4 * float(quad_by_column[0][0])
             - i0 * float(quad_by_column[2][0])
         ) / denominator
+        a_trial_zero_scale = (
+            abs(i4 * float(quad_by_column[0][0]))
+            + abs(i0 * float(quad_by_column[2][0]))
+        ) / denominator
+        a_trial_zero_epsilon = abs(a_trial_zero) / a_trial_zero_scale
         b_trial_zero = (
             i4 * b_by_column[0][0]
             - i0 * b_by_column[2][0]
@@ -586,6 +760,11 @@ def run() -> dict[str, Any]:
                             * htrial_center
                         ),
                         "residual": "",
+                        "component_scale": "",
+                        "epsilon_floor": repr(
+                            np.finfo(np.float64).eps
+                        ),
+                        "scale_free_residual": "",
                     }
                 )
 
@@ -616,8 +795,23 @@ def run() -> dict[str, Any]:
                 "lambda": lam,
                 "D": denominator,
                 "K1_crosscheck_pass": m_k1_pass,
+                "G1_epsilon0_precision_ladder": epsilon0_ladder,
+                "G1_epsilon0_decreases_to_floor": (
+                    all(
+                        epsilon0_ladder[index + 1]["epsilon0"]
+                        <= epsilon0_ladder[index]["epsilon0"]
+                        for index in range(len(epsilon0_ladder) - 1)
+                    )
+                    and epsilon0_ladder[-1]["epsilon0"]
+                    <= 16 * np.finfo(np.float64).eps
+                ),
                 "hat_htrial_A_at_zero_unforced": a_trial_zero,
+                "hat_htrial_A_zero_cancellation_scale": (
+                    a_trial_zero_scale
+                ),
+                "hat_htrial_A_zero_epsilon0": a_trial_zero_epsilon,
                 "hat_htrial_B_at_zero_unforced": b_trial_zero,
+                "G3_external_independence_pass": g3_all_pass,
                 "P1_flip_mu4_hat_htrial_B_at_zero": (
                     b_trial_zero_flip_mu4
                 ),
@@ -684,6 +878,17 @@ def run() -> dict[str, Any]:
                 "the lower-endpoint judge. A failed guard forbids using "
                 "backend B in the residual, so no dual/trapezoid difference "
                 "is manufactured.",
+                "",
+                "G1 is recorded as an `epsilon0` precision ladder relative "
+                "to the two-term cancellation scale in the JSON artifact. "
+                "G2 scale-free residual fields are present in the residual "
+                "CSV and deliberately blank under the K1 guard. G3 uses a "
+                "uniform-grid Simpson convergence ladder independent of the "
+                "composite-Gauss cosine quadrature; all external rows remain "
+                "at the arithmetic floor. G4 therefore selects the instrument "
+                "mismatch branch: no mathematical counterexample is claimed, "
+                "the 018 sign diagnostic remains independent, and 020 stays "
+                "frozen.",
                 "",
                 *lower_sections,
                 "## Plants",

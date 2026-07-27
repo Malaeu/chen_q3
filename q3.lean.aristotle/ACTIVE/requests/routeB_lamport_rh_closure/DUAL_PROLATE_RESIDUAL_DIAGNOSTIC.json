@@ -31,6 +31,31 @@
   "summaries": [
     {
       "D": 1.3892332077622267,
+      "G1_epsilon0_decreases_to_floor": false,
+      "G1_epsilon0_precision_ladder": [
+        {
+          "cancellation_scale": 1.2319868109091037,
+          "degree": 180,
+          "epsilon0": 0.0,
+          "hat_htrial_B_zero_unforced": 0.0,
+          "level": "P1"
+        },
+        {
+          "cancellation_scale": 1.231986810909104,
+          "degree": 208,
+          "epsilon0": 9.011646998119275e-17,
+          "hat_htrial_B_zero_unforced": -1.1102230246251565e-16,
+          "level": "P2"
+        },
+        {
+          "cancellation_scale": 1.2319868109091043,
+          "degree": 260,
+          "epsilon0": 9.011646998119272e-17,
+          "hat_htrial_B_zero_unforced": 1.1102230246251565e-16,
+          "level": "P3"
+        }
+      ],
+      "G3_external_independence_pass": false,
       "K1_crosscheck_pass": false,
       "P1_flip_mu4_hat_htrial_B_at_zero": 1.2319868109091043,
       "P1_material_break": 1.2319868109091043,
@@ -173,6 +198,8 @@
         }
       ],
       "hat_htrial_A_at_zero_unforced": -0.006539113279067084,
+      "hat_htrial_A_zero_cancellation_scale": 0.03817301375456628,
+      "hat_htrial_A_zero_epsilon0": 0.17130199153544357,
       "hat_htrial_B_at_zero_unforced": 7.991624576938389e-17,
       "htrial_constructor_center": -0.006539113279065776,
       "lambda": 3.605551275463989,
@@ -182,6 +209,31 @@
     },
     {
       "D": 1.3932115605121784,
+      "G1_epsilon0_decreases_to_floor": true,
+      "G1_epsilon0_precision_ladder": [
+        {
+          "cancellation_scale": 1.2396803370326064,
+          "degree": 636,
+          "epsilon0": 1.791144041669115e-16,
+          "hat_htrial_B_zero_unforced": 2.220446049250313e-16,
+          "level": "P1"
+        },
+        {
+          "cancellation_scale": 1.2396803370326048,
+          "degree": 848,
+          "epsilon0": 8.955720208345586e-17,
+          "hat_htrial_B_zero_unforced": -1.1102230246251565e-16,
+          "level": "P2"
+        },
+        {
+          "cancellation_scale": 1.2396803370326057,
+          "degree": 1060,
+          "epsilon0": 8.95572020834558e-17,
+          "hat_htrial_B_zero_unforced": 1.1102230246251565e-16,
+          "level": "P3"
+        }
+      ],
+      "G3_external_independence_pass": false,
       "K1_crosscheck_pass": false,
       "P1_flip_mu4_hat_htrial_B_at_zero": 1.239680337032606,
       "P1_material_break": 1.239680337032606,
@@ -324,6 +376,8 @@
         }
       ],
       "hat_htrial_A_at_zero_unforced": -0.0006278440259173906,
+      "hat_htrial_A_zero_cancellation_scale": 0.015892786386609667,
+      "hat_htrial_A_zero_epsilon0": 0.03950496852121384,
       "hat_htrial_B_at_zero_unforced": 7.968804279925811e-17,
       "htrial_constructor_center": -0.0006278440259183581,
       "lambda": 7.280109889280518,
@@ -333,6 +387,31 @@
     },
     {
       "D": 1.3942110017606173,
+      "G1_epsilon0_decreases_to_floor": true,
+      "G1_epsilon0_precision_ladder": [
+        {
+          "cancellation_scale": 1.2415937288044723,
+          "degree": 3084,
+          "epsilon0": 0.0,
+          "hat_htrial_B_zero_unforced": 0.0,
+          "level": "P1"
+        },
+        {
+          "cancellation_scale": 1.2415937288044685,
+          "degree": 4112,
+          "epsilon0": 0.0,
+          "hat_htrial_B_zero_unforced": 0.0,
+          "level": "P2"
+        },
+        {
+          "cancellation_scale": 1.2415937288044696,
+          "degree": 5140,
+          "epsilon0": 0.0,
+          "hat_htrial_B_zero_unforced": 0.0,
+          "level": "P3"
+        }
+      ],
+      "G3_external_independence_pass": false,
       "K1_crosscheck_pass": false,
       "P1_flip_mu4_hat_htrial_B_at_zero": 1.2415937288044696,
       "P1_material_break": 1.2415937288044696,
@@ -454,6 +533,8 @@
         }
       ],
       "hat_htrial_A_at_zero_unforced": -5.578724972559111e-05,
+      "hat_htrial_A_zero_cancellation_scale": 0.006944436112318492,
+      "hat_htrial_A_zero_epsilon0": 0.008033373599136733,
       "hat_htrial_B_at_zero_unforced": 0.0,
       "htrial_constructor_center": -5.578724972669101e-05,
       "lambda": 16.0312195418814,

@@ -6,6 +6,8 @@ Diagnostic only; not a theorem and not RH.
 
 The mandatory K1 Fourier-backend guard is evaluated before the lower-endpoint judge. A failed guard forbids using backend B in the residual, so no dual/trapezoid difference is manufactured.
 
+G1 is recorded as an `epsilon0` precision ladder relative to the two-term cancellation scale in the JSON artifact. G2 scale-free residual fields are present in the residual CSV and deliberately blank under the K1 guard. G3 uses a uniform-grid Simpson convergence ladder independent of the composite-Gauss cosine quadrature; all external rows remain at the arithmetic floor. G4 therefore selects the instrument mismatch branch: no mathematical counterexample is claimed, the 018 sign diagnostic remains independent, and 020 stays frozen.
+
 ## m = 13
 
 - `lambda = 3.605551275463989`
