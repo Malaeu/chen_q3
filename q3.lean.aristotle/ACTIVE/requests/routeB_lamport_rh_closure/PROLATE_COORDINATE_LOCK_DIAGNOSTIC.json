@@ -1,0 +1,172 @@
+{
+  "aggregate": {
+    "canonical_packet_A_B_green": true,
+    "global_continuation_G3_green": false,
+    "global_continuation_floor_seen": true,
+    "old_018_packet_identity_green": false,
+    "same_mode_green": true,
+    "stable_above_floor_K1_green": true
+  },
+  "convention": {
+    "C": "2*pi*lambda^2",
+    "Fourier_x": "integral h(x)*exp(2*pi*i*x*y) dx",
+    "operator_prefactor": "1 for raw t-kernel; mu=lambda*kappa",
+    "sqrt_2pi_prefactor": false,
+    "t_domain": "[-1,1]",
+    "x": "lambda*t",
+    "y": "lambda*s"
+  },
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "3.13.0"
+  },
+  "epistemic_status": "REPORT_ONLY_NUMERICAL_OBJECT_LOCK_NOT_A_THEOREM_NOT_RH",
+  "guards": {
+    "Bus_010_created": false,
+    "Fejer_evaluated": false,
+    "G3_independent_quadrature": "composite Gauss versus uniform-grid Simpson",
+    "STATE_mutated": false,
+    "backend_A_from_raw_t_mode": true,
+    "backend_B_global_not_zero_extended": true,
+    "old_mu_divided_or_repaired": false,
+    "residual_evaluated": false,
+    "same_mode_recomputed": true
+  },
+  "precision": {
+    "Fourier_composite_Gauss_order": 16,
+    "Fourier_panels": "max(1024,20*m)",
+    "G3_Simpson_points_per_cycle": [
+      16,
+      32,
+      64
+    ],
+    "arithmetic_floor": 1e-13,
+    "normalization_Gauss_order": 4096,
+    "spectral_and_ode": {
+      "degree_factor": 10.0,
+      "endpoint_eps": 5e-09,
+      "max_step": 0.001,
+      "name": "P3",
+      "rtol": 3e-13,
+      "segment_length": 0.005
+    }
+  },
+  "primary_verdict": "CANONICAL_PACKET_MISMATCH",
+  "source_locks": {
+    "constructor_018": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/estar_full_window_sign_probe.py",
+    "diagnostic_019": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/dual_prolate_residual_probe.py",
+    "goal": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/020_prolate_coordinate_lock.goal.md",
+    "goal_sha256": "dbf7f3cca9b5424d1ebd9657a937d02b33ec2324023cd63d4d0ff489cd486f8c",
+    "saved_019_centres": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/DUAL_MU_FACTORS.csv"
+  },
+  "summaries": [
+    {
+      "Fejer_or_residual_evaluated": false,
+      "G1_epsilon0_quadrature_ladder": [
+        {
+          "cancellation_scale": 1.231986810909084,
+          "epsilon0": 9.281996408063004e-15,
+          "hat_htrial_zero_unforced": 1.1435297153639112e-14,
+          "level": "Q1",
+          "panels_mode0": 256,
+          "panels_mode4": 256
+        },
+        {
+          "cancellation_scale": 1.2319868109090835,
+          "epsilon0": 9.372112878044201e-15,
+          "hat_htrial_zero_unforced": 1.1546319456101628e-14,
+          "level": "Q2",
+          "panels_mode0": 260,
+          "panels_mode4": 260
+        },
+        {
+          "cancellation_scale": 1.231986810909084,
+          "epsilon0": 9.462229348025392e-15,
+          "hat_htrial_zero_unforced": 1.1657341758564144e-14,
+          "level": "Q3",
+          "panels_mode0": 520,
+          "panels_mode4": 520
+        }
+      ],
+      "G1_final_epsilon0_at_floor": true,
+      "canonical_packet_A_B_green": true,
+      "lambda": 3.605551275463989,
+      "m": 13,
+      "old_018_packet_identity_green": false,
+      "old_018_repeat_320_bands_required": true,
+      "same_mode_green": true
+    },
+    {
+      "Fejer_or_residual_evaluated": false,
+      "G1_epsilon0_quadrature_ladder": [
+        {
+          "cancellation_scale": 1.2396803370324982,
+          "epsilon0": 1.889656963961081e-14,
+          "hat_htrial_zero_unforced": 2.3425705819590803e-14,
+          "level": "Q1",
+          "panels_mode0": 530,
+          "panels_mode4": 530
+        },
+        {
+          "cancellation_scale": 1.2396803370324982,
+          "epsilon0": 1.961302725627852e-14,
+          "hat_htrial_zero_unforced": 2.4313884239290928e-14,
+          "level": "Q2",
+          "panels_mode0": 1060,
+          "panels_mode4": 1060
+        },
+        {
+          "cancellation_scale": 1.2396803370324987,
+          "epsilon0": 1.9165241245861193e-14,
+          "hat_htrial_zero_unforced": 2.375877272697835e-14,
+          "level": "Q3",
+          "panels_mode0": 2120,
+          "panels_mode4": 2120
+        }
+      ],
+      "G1_final_epsilon0_at_floor": true,
+      "canonical_packet_A_B_green": true,
+      "lambda": 7.280109889280518,
+      "m": 53,
+      "old_018_packet_identity_green": false,
+      "old_018_repeat_320_bands_required": true,
+      "same_mode_green": true
+    },
+    {
+      "Fejer_or_residual_evaluated": false,
+      "G1_epsilon0_quadrature_ladder": [
+        {
+          "cancellation_scale": 1.2415937288037833,
+          "epsilon0": 2.342782713086338e-14,
+          "hat_htrial_zero_unforced": 2.90878432451791e-14,
+          "level": "Q1",
+          "panels_mode0": 2570,
+          "panels_mode4": 2570
+        },
+        {
+          "cancellation_scale": 1.2415937288037786,
+          "epsilon0": 2.6557498694146755e-14,
+          "hat_htrial_zero_unforced": 3.297362383136715e-14,
+          "level": "Q2",
+          "panels_mode0": 5140,
+          "panels_mode4": 5140
+        },
+        {
+          "cancellation_scale": 1.2415937288037817,
+          "epsilon0": 2.5126791693788616e-14,
+          "hat_htrial_zero_unforced": 3.11972669919669e-14,
+          "level": "Q3",
+          "panels_mode0": 10280,
+          "panels_mode4": 10280
+        }
+      ],
+      "G1_final_epsilon0_at_floor": true,
+      "canonical_packet_A_B_green": true,
+      "lambda": 16.0312195418814,
+      "m": 257,
+      "old_018_packet_identity_green": false,
+      "old_018_repeat_320_bands_required": true,
+      "same_mode_green": true
+    }
+  ]
+}
