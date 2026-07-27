@@ -35,7 +35,34 @@
       "replacement": "Prove independent UnprojectedDensityAutocorrelationData, then budget projected-minus-unprojected leakage.",
       "stop_code": "CENTERED_DENSITY_NOT_EXACT_FEJER",
       "route_status": "PROJECTED_SIGN_KILLED"
+    },
+    {
+      "id": "ROUTEB_C1_COMPLETED_ZETA0_SPECIAL_VALUE",
+      "node_type": "convention_value_mismatch",
+      "status": "repaired",
+      "candidate": "completedRiemannZeta₀ as a direct zero carrier for centered Xi",
+      "failure": "At a zeta zero rho, Lambda₀(rho) = 1/(rho*(1-rho)) rather than 0; the convention-correct Xi identity needs the polynomial prefactor and additive one-half.",
+      "lean_file": "aristotle_output/16535289-f016-4f62-bfbd-be83d826b4da/RequestProject/Main.lean",
+      "source_lines": "67-69",
+      "replacement": "Use xi(s) = (1/2)*s*(s-1)*completedRiemannZeta₀(s) + 1/2.",
+      "stop_code": "C1_LAMBDA0_SPECIAL_VALUE_MISMATCH",
+      "failure_family": "MATHLIB_CONVENTION_VALUES_AT_POLES",
+      "victim_index": 1
+    },
+    {
+      "id": "ROUTEB_ESTAR_MUNTZ_V1_RAW_ZETA_POLE_VALUE",
+      "node_type": "convention_value_mismatch",
+      "status": "fatal_archived",
+      "candidate": "Raw pointwise riemannZeta(w) * Mellin(h)(w) at w = 1 in EStarMuntzContinuation v1",
+      "failure": "Zero mass cancels the punctured principal part, but the raw Mathlib point value is 0 while the removable value is deriv (Mellin h) 1, which is nonzero for the triangular PL2 plant.",
+      "source_file": "ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md",
+      "archived_contract": "ACTIVE/requests/routeB_lamport_rh_closure/archive/estar_muntz_continuation_v1/ARISTOTLE_TASK_EStarMuntzContinuation_v1.md",
+      "contract_sha256": "99fba49692fb9eec900e45a5f864572b77d7ea974739d1b7beed0f12c57f81d6",
+      "replacement": "Use ZetaMellinReg with pole value deriv (Mellin h) 1 and retain the raw-product corollary only for w != 1.",
+      "stop_code": "ZETA_RAW_POLE_VALUE_MISMATCH",
+      "failure_family": "MATHLIB_CONVENTION_VALUES_AT_POLES",
+      "victim_index": 2
     }
   ],
-  "notes": "Each entry records a paper-specific gap/cut-set and its mapped Lean blockers."
+  "notes": "Each entry records a paper-specific gap/cut-set and its mapped Lean blockers. MATHLIB_CONVENTION_VALUES_AT_POLES now has two registered victims: C1/Lambda₀ and EStarMuntzContinuation v1."
 }

@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 50,
-  "updated_at": "2026-07-27T08:33:33+02:00",
+  "revision": 51,
+  "updated_at": "2026-07-27T12:02:19+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -84,6 +84,26 @@
     ],
     "next_actor": "Mythos/Pro source owner",
     "next_action": "Supply the physical independent WPrime/ZEO consumer and exact b orientation requested by D0_7E_5A_CONSUMER_SOURCE_REQUEST.md; do not define WPrime by the desired RHS and do not create Bus 010"
+  },
+  "estar_muntz_v1_fatal_audit": {
+    "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
+    "stop_code": "ZETA_RAW_POLE_VALUE_MISMATCH",
+    "contract_path": "archive/estar_muntz_continuation_v1/ARISTOTLE_TASK_EStarMuntzContinuation_v1.md",
+    "contract_sha256": "99fba49692fb9eec900e45a5f864572b77d7ea974739d1b7beed0f12c57f81d6",
+    "verdict_path": "proshka/PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md",
+    "false_targets": [
+      "T4_FALSE_AS_STATED",
+      "T5_FALSE_AT_s_EQ_1_OVER_2"
+    ],
+    "replacement_contract": "ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md",
+    "absolute_region_note": "hmass is retained as the future strip-continuation guard but is cleared by the absolute-region algebra",
+    "plant_note": "the 012 indicator is a pole plant outside the T2 regularity class; triangular PL2 remains a v2 obligation",
+    "h2_collision": {
+      "MUNTZ_MASS_ZERO": "PASS",
+      "POISSON_ORIGIN_ZERO": "FAIL",
+      "poisson_origin_counterterm": "REQUIRED"
+    },
+    "route_effect": "FALSIFICATION_ONLY_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
   },
   "owner_authorization": {
     "status": "OWNER_AUTHORIZED_AUTORUN",
@@ -3815,6 +3835,13 @@
       "progress_class": "PROOF_FALSIFICATION_REPRESENTATION_AND_CONTROL_PLANE_PROGRESS",
       "result": "MONTEL_STANDALONE_PROVED;PROJECTED_SIGN_KILLED;CENTERED_DENSITY_NOT_EXACT_FEJER;ANCHOR_RATIO_RECEIVER_PROVED;E_STAR_RELATIVE_SOURCE_PACKAGE_OPEN",
       "honesty": "MONTEL_STRIP_COROLLARY_NOT_EXECUTED_UNPROJECTED_FACTOR_OPEN_SOURCE_PACKAGE_NOT_SUPPLIED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-07-27T12:02:19+02:00",
+      "event": "ESTAR_MUNTZ_V1_FATAL_ARCHIVED_AND_H2_COLLISION_CLOSED",
+      "progress_class": "FALSIFICATION_AND_REPRESENTATION_PROGRESS",
+      "result": "ZETA_RAW_POLE_VALUE_MISMATCH;MUNTZ_MASS_ZERO_PASS;POISSON_ORIGIN_ZERO_FAIL;H2_LABEL_COLLISION_CLOSED",
+      "honesty": "V1_DO_NOT_EXECUTE_ABSOLUTE_IDENTITY_DOES_NOT_USE_MASS_TRIANGULAR_PL2_DEFERRED_TO_V2_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
     }
   ]
 }

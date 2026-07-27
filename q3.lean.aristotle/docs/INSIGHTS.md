@@ -48100,3 +48100,45 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - The next Montel task is only the strip corollary for
   `rh_of_canonical_strip_slots`; it was registered but not executed.
   Route B remains `CHALLENGER / NOT_RH`; no Bus 010 was created.
+
+## 2026-07-27 — finite-window E-star Mellin crosswalk
+
+- `EStarWindowedMellinCrosswalk.lean` proves the exact finite-window identity
+  before any infinite sum/integral interchange.  Its Dirichlet window is a
+  finite sum with the literal constraints `v/λ ≤ n ≤ vλ`, and `h` remains a
+  parameter behind an explicit `WindowFiniteSupport` certificate.
+- In `Re(s+1/2)>1`, explicit absolute-convergence data gives
+  `M(E_star h)(s)=ζ(s+1/2)M(h)(s+1/2)` and hence the exact lower/window/upper
+  decomposition.  The theorem retains the zero-mass guard, but no tail
+  smallness is asserted.
+- The local Q3 index and Mathlib source contain the Mellin scaling and
+  Dirichlet-series ingredients, but no Müntz zero-mass continuation theorem
+  into `|Re s|<1/2`.  The next missing lemma is therefore
+  `EStarMuntzZeroMassContinuation`, not another formal rearrangement in the
+  non-absolutely-convergent strip.
+- The nonzero-mass indicator plant has mass one.  Its exact pole-window ratio
+  is the registered model and has lower bound
+  `λ^σ/(1+2σ)`, so a bounded implementation would have discarded the pole
+  counterterm.  This plant does not enter the zero-mass proof.
+
+## 2026-07-27 — EStarMuntz v1 killed by the raw zeta pole convention
+
+- Proshka's source audit classifies the standalone v1 contract as
+  `FATAL / DO_NOT_EXECUTE`, stop code `ZETA_RAW_POLE_VALUE_MISMATCH`.
+- The zero-mass condition cancels the punctured principal part at `w = 1`,
+  but Mathlib's raw pointwise value
+  `riemannZeta 1 * mellin h 1` is `0`; the removable continuation value is
+  `deriv (mellin h) 1`, which can be nonzero.
+- Therefore v1 T4 and T5 are false at the pole.  The repaired theorem must use
+  an explicit `ZetaMellinReg` value at `w = 1`, and may recover the raw product
+  only off the pole.
+- In `windowedMellin_E_star_zeroMass_decomposition_abs`, `hmass` is unused by
+  the absolute-domain algebra.  It is retained solely as the guard for future
+  continuation into the strip.
+- The 012 indicator is a nonzero-mass pole plant, not a T2 Lipschitz plant.
+  The triangular Lipschitz PL2 remains an explicit v2 debt.
+- The ambiguous H2 label is split permanently:
+  `MUNTZ_MASS_ZERO` passes, while `POISSON_ORIGIN_ZERO` fails and leaves the
+  Poisson-origin counterterm in place.
+- This is the second registered victim of the Failure Atlas family
+  `MATHLIB_CONVENTION_VALUES_AT_POLES`, after the C1/`Lambda₀` mismatch.
