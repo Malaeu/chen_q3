@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 69 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 70 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -24,6 +24,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 69 mirrored source files plus `CHANN
 | `013_upper_edge_sign_or_kill.goal.md` | goal | `2ba3ea81f45a7d17f1a0888d963acffb0512c5052839a3002fc193bebab9425c` |
 | `014_proshka_github_channel.answer.md` | answer | `f0acf1b5fc49f21a17183e8f5b8b4707c3dd7914f3b0356b1d713994831306a7` |
 | `014_proshka_github_channel.goal.md` | goal | `65af0020fbeea199c539d6dbd0746f29f0de89af64e3e63205c6e0b7215e860e` |
+| `015_muntz_cloud_harvest.answer.md` | answer | `9aba2e2d486360d65d7a87a412edca195590c920ae610bb7006b4d4088225fe9` |
 | `015_muntz_cloud_harvest.goal.md` | goal | `dde7b99aed97e57023f8ffb66888568797bb0c0ac086a2a26f4734da0e7a90c0` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `B0_VALUE_PROBE.csv` | probe data | `723a9d8f7fb93a4c8b8e31df1487b17d7cc7f5df15c59f153f9692bf556a9ba3` |
@@ -73,6 +74,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 69 mirrored source files plus `CHANN
 | `UNPROJECTED_MASS_NORM_PROBE.csv` | probe data | `c1333cb21c1bc338a84d6c7ae27f0c08bad074af0cfc049c14ad51a5e3ed86a5` |
 | `UNPROJECTED_MASS_NORM_PROBE.md` | probe report | `44302a9324bf7acb483aa66484e9fbe3a85796e9a1f005f13bea6843a4512033` |
 | `UPPER_EDGE_SIGN_PROBE.csv` | probe data | `e4312f08573c2e907755d96c97a0cc2abc620c606c92da1fd2fb779582401c3e` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `e6c71b1565182a7092c85967f122b9b852c83b4e592af7ea1a2e99ff1ae5dc46` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `590d9c1bbbbefb25f56924daed3d390a1f2e0fbb7fc536548cd9308ed8ac6874` |
 
 `MANIFEST.md` is excluded from its own hash table.
