@@ -48160,6 +48160,35 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   characteristic values are materialized in Lean.
 - Route B remains `CHALLENGER / NOT_RH`; STATE and Bus 010 are untouched.
 
+## 2026-07-27 — canonical full-window E-star reaches cancellation floor
+
+- Address `RouteB.021` repeated all 320 tooth bands at three spectral/ODE
+  resolutions on the raw-t canonical packet locked by 020; the packet L2
+  norms remain within `7e-12` of one and its mass remains at the expected
+  cancellation scale.
+- The result is fail-closed: P1/P2/P3 disagree on signs, `htrial(0)` sometimes
+  becomes an exact float64 zero and the lower-tooth value changes sign. The
+  apparent positive runs have margins down to `1e-15`, so they do not survive
+  an instrument error guard.
+- Exact stop: the float64 grid-sign-kill subroute is dead. The next live
+  address is `RouteB.021.high_precision`, requiring independent
+  arbitrary-precision raw-mode construction and an explicit propagated error
+  budget before either canonical single-sign or sign-kill can be claimed.
+- Local `q3_docs` recall returned no reusable high-precision PSWF/cancellation
+  certificate; its hits were unrelated generic cancellation material.
+- Primary-source check: DLMF §30.16 recommends coefficient recurrences,
+  normalization, continued fractions and large-parameter asymptotics for
+  spheroidal computation. Adelman--Gumerov--Duraiswami provide an
+  arbitrary-precision spheroidal implementation with adaptive coefficient
+  counts, while Bremer's logarithmic/Riccati representation targets stable
+  evaluation of extremely scaled PSWFs. These support the next numerical
+  instrument, not a theorem about the sign:
+  `https://dlmf.nist.gov/30.16`,
+  `https://arxiv.org/abs/1408.0074`,
+  `https://arxiv.org/abs/2111.07509`.
+- Route B remains `CHALLENGER / NOT_RH`; `STATE.json`, Fejér, residual and G3
+  are untouched.
+
 ## 2026-07-27 — Prolate Lean type layer source lock
 
 - Exact target: materialize the differential expression `PW_lambda`, the

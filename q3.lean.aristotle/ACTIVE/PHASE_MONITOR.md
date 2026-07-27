@@ -33,6 +33,16 @@ next_verify: rg -n -e "stable adaptive shifts are a support packet" -e "PO3-squa
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
 
+## Route B automation note (2026-07-27)
+
+- This H1/PO3 phase remains `PARKED`; the user-authorized Route B compiler
+  preempts it for the current automation run.
+- Physical address 021 was executed on the canonical packet and stopped
+  fail-closed at `INSTRUMENT_FLOOR_UNRESOLVED`.
+- Kill certificate: `RouteB.021.float64-grid-sign-kill` is dead because the
+  three resolutions disagree at the cancellation floor.
+- Next live address: `RouteB.021.high_precision`; no H1/PO3 claim changed.
+
 ## Startup response contract
 
 If this file exists and `status: ACTIVE`, the first new-session message should
