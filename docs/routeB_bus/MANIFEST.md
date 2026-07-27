@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 121 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 122 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -30,6 +30,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 121 mirrored source files plus `CHAN
 | `016_prolate_lean_layer.goal.md` | goal | `d1b41079d105008628b690107ed8d42fcf4af1f21acf3c4a1e8be88e583c9898` |
 | `017_muntz_port_prep.answer.md` | answer | `37180a42bf45d2254ab48a99b403b48bc25af91e12107d453d29455301492528` |
 | `017_muntz_port_prep.goal.md` | goal | `442ab909fad4517a52e7321f71448f84dd3f4ef889cbfd1ee4e21074dd78db6d` |
+| `018_estar_full_window_sign.answer.md` | answer | `d1d935d6acdeeb9b82aa3e1a98610a77e169d97f2337f8ca5738d56c7e814518` |
 | `018_estar_full_window_sign.goal.md` | goal | `d5285bdc792c6988b93f24371834bea550865a30b16a790c02cbaf044bc49d45` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
