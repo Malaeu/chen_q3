@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 181 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -57,7 +57,11 @@ Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHAN
 | `029_decisive_k_escalation.goal.md` | goal | `649a065497917438512294f3382e229fe06e048e1e776ce3e5e4866ad2e2eeee` |
 | `030_coupled_full_sum_response.answer.md` | answer | `f76758e4ef6cd9a73f4b52e4b71313174b4756c325797c9e12a2b624a20fed58` |
 | `030_coupled_full_sum_response.goal.md` | goal | `fed134435e39cfc51f46485761b45c356da9ef6c3a155b48286ea8304c25ffdb` |
+| `031_priority_band_positive_part.goal.md` | goal | `4191eb528b65adcc5e222007cffe729ab48bfd5fdd619123109eee6b91c713db` |
+| `032_bridge_reverification.answer.md` | answer | `0b06b71713e9d4951f97eeee41ff1b478e2ab42f61a1c932342e9323f70528e9` |
+| `032_bridge_reverification.goal.md` | goal | `c9d190ae0fd2cd4f8e35c4ed2e93279b1a11afb055a732384701e43d06f2cfcd` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
+| `ARISTOTLE_TASK_RiemannBoundaryCellBridge.md` | active Aristotle contract | `7161d7376c3d9c7142c9a92a89a9ec8434fe73260019837de2d2f7b95749d039` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
 | `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
 | `AmbientResidualSplit.lean` | key Lean artifact | `d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00` |
@@ -98,6 +102,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHAN
 | `H2aPenaltyCoercivity.lean` | key Lean artifact | `4d1d71560040890d673d1fc10cd107a2a06a7c9763f9a8baa6132498dff5d39c` |
 | `HermitianDeterminantRealZeros.lean` | key Lean artifact | `d886f53f2b935980b84727715dd5a162c357047b0e23ddce713c8c83bf8502c2` |
 | `MASS_NORM_AND_PRECISION_REPORT_2026-07-27.md` | measurement report | `7add221b10f3dc58e7d3c849f7c8844a1ba9df2b9b55e6fe653bce6062b7f2c0` |
+| `Main.lean` | key Lean artifact | `929b0bddef0b781f3fb42c7a99f252dc0bda7331f698104f7075e12ff637c52d` |
 | `MontelNormalFamilies.lean` | key Lean artifact | `2da026570c804633022a010d986c6a11e2df27241023413636ee95723fabf2d5` |
 | `NormalizedTrackingRateTransfer.lean` | key Lean artifact | `5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed` |
 | `OFF_AXIS_GROWTH_PROBE.csv` | probe data | `99b61c80567e0e0d8c3a5be8e52a22d35376d0a05c4b7051eb70fa0e0fb55c90` |
@@ -105,9 +110,10 @@ Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHAN
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
 | `PHASE_STRUCTURE_PROBE.md` | probe report | `f508fdd0c07c800c387e0d8b8995038e1032a9321cbb47ff5da05685940a23dd` |
 | `PROOF_COMPILER_RESYNC_2026-07-27.md` | Route B artifact | `24b3870d2787167958a8bd3c9d05c018159217141dfd10af7de98ee75d5e6e89` |
-| `PROOF_COMPILER_SEVEN_GATES_2026-07-27.json` | Route B artifact | `876dbb599b3b7caf623905c6612958e9cc5c8fe96763522160fcdad18baaf700` |
+| `PROOF_COMPILER_SEVEN_GATES_2026-07-27.json` | Route B artifact | `40ebd0d306be8dd1c0c574b189b8b7d1122a259b2ebefa74203a82ebf40f2062` |
 | `PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | Proshka verdict/source review | `a49cf2ec435de7070d661b2274d173462ed8c478a745f52c5858ae4f3457004e` |
 | `PROSHKA_030_DIRECTIVE.md` | Proshka verdict/source review | `fa6588f429dfff69e4cdcfe9064f431469e9d28c1180585446babb4b4b0be709` |
+| `PROSHKA_031_DIRECTIVE.md` | Proshka verdict/source review | `a8fa08e5c8042d4c17268ee35e4be0710d3bd5b96b5a17e26ebc87dcadac7feb` |
 | `PROSHKA_ADJUDICATION_PROTOCOL_2026-07-27.md` | Proshka verdict/source review | `d1dcf8750710c895c490b3755bec848122484748beacfb7c13c73cc6d6f19612` |
 | `PROSHKA_ANCHOR_BRIDGE_2026-07-27.md` | Proshka verdict/source review | `15b278ddb08e432092f6a83ca92ffbf62422ca8b560b66022bc9deaf0c4d7db7` |
 | `PROSHKA_AUDIT011_REMOTE_2026-07-27.md` | Proshka verdict/source review | `fcc8a3f46560ab4c3ce6d4a25cc88eb847f3970eaebd11785cfb9b69755285f6` |
@@ -134,11 +140,13 @@ Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHAN
 | `Proposition59EntireTransform.lean` | key Lean artifact | `a5a6c7bb08f7d8e75ac583dfcf25a7060eaff1060e755142d1456ea94d73ab9b` |
 | `QuadraticDivisorTransfer.lean` | key Lean artifact | `56b022981cd0be545911d8ba52eb9d0ea6a924d55e5de3dfcd1671d3c1f3275a` |
 | `QuotientByRadicalSelfAdjoint.lean` | key Lean artifact | `f89970cc1023f10542e46cfc0107d0589ac21aefc91c1cd9f2152f2245238400` |
+| `RESULT.md` | Route B artifact | `5aac7251369746d8d61c0517930fa6998f3159b6c10dc404843b8a57bd2e76f2` |
 | `RankOneCorrectionAllSpectralPoints.lean` | key Lean artifact | `f134db9ea9db5ba0de8c9316e337b334b3e2eb490d24c3a813c016ae316f9e66` |
 | `RankOneCorrectionDeterminant.lean` | key Lean artifact | `b8d530f16f4413e30c9f55d0aa43ca99d972142845617ae81006fc9f4eace8d3` |
 | `RankOneCorrectionQuotientDescent.lean` | key Lean artifact | `71a45f13aa84520f0db8bd495b6f29d8c416dad05c6a6632125590159dd630a1` |
 | `RankOneCorrectionWeightedSymmetry.lean` | key Lean artifact | `f31875b4dc48e10cb61380400f47cfb47e4af14711cd51a9ce5786e1ac661204` |
 | `RawIntegralRhsCrosswalk.lean` | key Lean artifact | `01f57424ee2c5b81784f28dfc24cf982b22caaf04bd1a7b4021609a5aa424711` |
+| `RiemannBoundaryCellBridge.lean` | key Lean artifact | `d47a0e1d1c3aa81b7f140db6103c64e553085df5542678c87c96c4cbbe19d3c7` |
 | `SOFT_2_LINEARITY_CROSSWALK_FORK_REPORT_2026-07-13.md` | measurement report | `873f817a10d7d660e848cda7e645d864ed8ebeca4abfb52bcda4cea341ec213b` |
 | `SOFT_2_QUADRATIC_DIVISOR_TRANSFER_REPORT_2026-07-13.md` | measurement report | `f168742f3d665f3eed62e536862d1c535f07389c9013f87e8118e01277a646dd` |
 | `SOFT_3Q1_DIRECT_HERMITIAN_KERNEL_PAIRING_REPORT_2026-07-13.md` | measurement report | `2380fdbc4a5348819165930fc905a198492ca4898d065a03b9362dc0c84a4eac` |
@@ -175,6 +183,8 @@ Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHAN
 | `coupled_full_sum_response_certificate.py` | Route B artifact | `bb65351b766042940b83fe9d1261cf7adac0ea762c9f2368b7f20f28d5101242` |
 | `decisive_finite_core_theta_k_escalation.py` | Route B artifact | `b7cdf20f6c614c9af996d209da64d16eedef23c86054a2d7b1bfd66ba0ba7688` |
 | `finite_core_theta_certificate.py` | Route B artifact | `928b16b2a7eb1d677a6d8ee6eefecfe9656462121ec47172552475368098bbae` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `2ebde1c0a0db0c9cb971fcee88b55925cdc36f8da2dc2f6151bedd2ff47a4db4` |
+| `lakefile.toml` | Route B artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
+| `lean-toolchain` | Route B artifact | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `59ba10411eefc9b287dad49062feb8df4201c4afa4a6c3dbff3a344bde38f1a6` |
 
 `MANIFEST.md` is excluded from its own hash table.
