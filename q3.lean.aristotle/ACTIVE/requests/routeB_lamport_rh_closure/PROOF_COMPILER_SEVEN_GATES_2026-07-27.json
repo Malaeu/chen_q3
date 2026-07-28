@@ -55,7 +55,7 @@
     {
       "transaction": "028_finite_core_theta_order",
       "claim": "FiniteCoreThetaOrderWithTailBudget",
-      "status": "KILLED",
+      "status": "FIXED_K_SUFFICIENT_CONTRACT_FAILED",
       "scope": "FINITE_CELL",
       "cells": [
         257
@@ -68,7 +68,34 @@
       ],
       "not_lean": true,
       "not_cofinal_family": true,
-      "termination": "registered priority band r=255 has an exact strict-interior negative upper certificate"
+      "termination": "the locked K truncation fails its sufficient lower-bound contract on r=255; this does not determine the sign of full S_lambda or kill DualThetaDominance"
+    },
+    {
+      "transaction": "029_decisive_k_escalation",
+      "claim": "DecisiveFiniteCoreThetaOrderKEscalation",
+      "status": "K_ESCALATION_INCONCLUSIVE",
+      "scope": "FINITE_CELL",
+      "cells": [
+        257
+      ],
+      "priority_bands": [
+        256,
+        255
+      ],
+      "authorized_extra_K": [
+        20,
+        40
+      ],
+      "verifier": "ARB_INTERVAL",
+      "certificate_backend": "EXACT_RATIONAL_BERNSTEIN",
+      "evidence": [
+        "029_decisive_k_escalation.answer.md",
+        "DECISIVE_FINITE_CORE_THETA_K_ESCALATION.json",
+        "check_decisive_finite_core_theta_k_escalation.py"
+      ],
+      "not_lean": true,
+      "not_cofinal_family": true,
+      "termination": "neither L>=0 nor U<0 is certified at either owner-authorized cut; DualThetaDominance remains open"
     }
   ],
   "gates": [
@@ -129,16 +156,17 @@
     {
       "id": "G5",
       "name": "S1_MONTEL_NONZERO_CLUSTER",
-      "status": "OPEN_MONTEL_CORE_PROVED_SIGN_FRONT_KILLED",
+      "status": "OPEN_MONTEL_CORE_PROVED_SIGN_SUPPLIER_OPEN",
       "scope": "ABSTRACT",
       "verifier": "CONDITIONAL",
       "evidence": [
         "Q3/Proofs/RouteB/MontelNormalFamilies.lean",
-        "TWO_SIGN_LEMMAS_VERDICT_2026-07-27.md"
+        "TWO_SIGN_LEMMAS_VERDICT_2026-07-27.md",
+        "029_decisive_k_escalation.answer.md"
       ],
       "smallest_gap": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
       "closed_subgap": "HlambdaOuterLobeGate",
-      "killed_subgap": "FiniteCoreThetaOrderWithTailBudget"
+      "open_subgap": "DualThetaDominanceRepresentationShiftOrOneSidedTail"
     },
     {
       "id": "G6",
@@ -179,10 +207,8 @@
   "next_queued_transaction": null,
   "sign_verdicts": {
     "HlambdaLastPositiveZeroLtOne": "PROVED_ON_CELLS_13_53_257",
-    "DualThetaDominance": "KILLED_ON_FINITE_CELL_257",
-    "killed": [
-      "FiniteCoreThetaOrderWithTailBudget"
-    ]
+    "DualThetaDominance": "OPEN_K_ESCALATION_INCONCLUSIVE",
+    "killed": []
   },
   "guards": {
     "route_promoted_to_mainline": false,

@@ -33,7 +33,7 @@ next_verify: rg -n -e "stable adaptive shifts are a support packet" -e "PO3-squa
 This file is the operational single source of truth after the Q_zeta sprint is
 closed.
 
-## Route B automation note (2026-07-27, refreshed after goal 027)
+## Route B automation note (2026-07-28, refreshed after goal 029)
 
 - This H1/PO3 phase remains `PARKED`; the user-authorized Route B compiler
   preempts it for the current automation run.
@@ -43,11 +43,18 @@ closed.
   certified cells `m in {13,53,257}` by two outward-rounded scalar
   inequalities plus the frozen pen-level Sturm--Wronskian transport.
 - This is not a cofinal-family theorem and changes no H1/PO3 or RH claim.
-- The next mathematical dependency is
-  `FiniteCoreThetaOrderWithTailBudget`, but no next numbered bus goal was
-  created.  Its future route fork is the proof backend for all canonical
-  band/tooth polynomials: Sturm, Bernstein, rational interval subdivision,
-  or exact SOS.
+- Goal 028's original kill interpretation was retracted: its exact arithmetic
+  proves only `BAND_TAIL_DOMINATED_AT_K026`, not a sign for the full sum and
+  not a kill of `DualThetaDominance`.
+- Goal 029 performed the two owner-authorized cut escalations.  At
+  `extra K=20` and `extra K=40`, exact rational Bernstein lower and upper
+  envelopes still straddle zero, so the exact verdict is
+  `K_ESCALATION_INCONCLUSIVE`.
+- The next live node is a genuine route fork:
+  `RouteB.030 / DecisiveFullSumEnvelope`, supplied either by a direct
+  full-sum representation or by correlated/one-sided tail control.  No third
+  coefficient-cut escalation is live.
+- Route B remains `CHALLENGER / NOT_RH`; `STATE` and Bus 010 are untouched.
 
 ## Startup response contract
 

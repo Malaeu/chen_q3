@@ -48368,7 +48368,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Bernstein positivity, rational interval subdivision, and exact SOS
   certificates for the canonical band/tooth polynomials.
 
-## 2026-07-27 — Goal 028 exact finite-core sign kill
+## 2026-07-27 — Goal 028 fixed-K sufficient-contract failure
 
 - The registered first two addresses were checked in order:
   `(m,r)=(257,256)` and `(257,255)`.
@@ -48379,9 +48379,10 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   subinterval `[65281/16711680,32641/8355840]` of the `r=255` band, every
   Bernstein coefficient of the finite-core upper enclosure is negative; its
   maximum is at most `-1/10^97`.
-- This kills the proposed finite-cell theta-order supplier, not the cofinal
-  family and not RH.  Remaining bands and teeth were not run after the exact
-  fail-fast witness.
+- This disproves the locked fixed-`K` sufficient lower-bound contract.  It
+  does not determine the sign of full `S_lambda`, does not kill
+  `DualThetaDominance`, and says nothing about RH.  Remaining bands and teeth
+  were not run after the exact fail-fast witness.
 - Reusable method: for a power polynomial on rational `[a,b]`, substitute
   `a+(b-a)t`, then compute Bernstein coefficients by the exact convolution
   `b_k = sum_{j<=k} c_j * binom(k,j)/binom(n,j)`.  This avoids grids and gives
@@ -48391,3 +48392,37 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   reconstructs the rational object without importing Arb or the generator.
 - Route B remains `CHALLENGER / NOT_RH`; `STATE` is unchanged and Bus 010
   remains absent.
+
+## 2026-07-27 — Goal 028R normalization and K-quantifier audit
+
+- In the raw `a0=1` gauge, normalization cancels exactly:
+  `phi_(j,K)/J_j = F_(j,K)/2` and
+  `epsilon_(j,K)/J_j = |a_(j,K)|/2`.
+- The revised independent checker derives finite `L2` coefficient-box
+  bounds, the recessive-tail `L2` allowance and outward rational `J0/J4`
+  intervals by exact square comparisons.  It no longer trusts JSON
+  normalization values as inputs to the theta budget.
+- Proshka adjudicated the original 028 kill code as invalid.  The checked
+  expression had `P_center + E_core - tail`; a genuine kill requires
+  `U = P_center + E_core + tail < 0`.  Goal 028 is therefore downgraded to
+  `BAND_TAIL_DOMINATED_AT_K026`; the full sign and
+  `DualThetaDominance` remain open.
+- The owner-authorized escalation is exactly `extra K=20`, followed once by
+  `extra K=40`; a wider brute-force ladder is outside the contract.
+- Lemma A, `STATE`, and Bus 010 are unchanged.
+
+## 2026-07-27 — Goal 029 decisive K escalation
+
+- At `extra K=20` (degrees `914/920`), exact rational Bernstein envelopes on
+  both priority bands and exact tooth sums certify neither `L>=0` nor `U<0`.
+  The old strict witness also has a positive maximum `U` Bernstein
+  coefficient, so it cannot be reused as a true full-sum kill.
+- The one permitted second cut, `extra K=40` (degrees `954/960`), has the same
+  outcome.  The symmetric uncertainty width shrinks from order `1e-102` to
+  `1e-112`, but continues to straddle zero.
+- The independently checkable verdict is `K_ESCALATION_INCONCLUSIVE`.
+  This is not a counterexample and not a proof: the current representation
+  plus symmetric sup-tail budget cannot decide the sign.
+- The next honest supplier must change representation to a direct full-sum
+  identity or prove correlated/one-sided tail control.  No third cut, sign
+  grid, cofinal extrapolation, `STATE` change, or Bus 010 was used.

@@ -25,9 +25,14 @@ RESYNC_REQUIRED_SOURCES = (
     REQUEST_DIR / "027_hlambda_outer_lobe_gate.answer.md",
 )
 GOAL_028_REQUIRED_SOURCES = (
+    REQUEST_DIR / "028R_finite_core_theta_order_audit.answer.md",
     REQUEST_DIR / "FINITE_CORE_THETA_CERT.json",
     REQUEST_DIR / "finite_core_theta_certificate.py",
     REQUEST_DIR / "check_finite_core_theta_certificate.py",
+    REQUEST_DIR / "029_decisive_k_escalation.answer.md",
+    REQUEST_DIR / "DECISIVE_FINITE_CORE_THETA_K_ESCALATION.json",
+    REQUEST_DIR / "decisive_finite_core_theta_k_escalation.py",
+    REQUEST_DIR / "check_decisive_finite_core_theta_k_escalation.py",
 )
 
 def sha256(path: Path) -> str:
