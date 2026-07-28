@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 171 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -55,6 +55,8 @@ Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHAN
 | `028_finite_core_theta_order.goal.md` | goal | `ff5d64dc94b243e25f0081d9349a8afbcd2c2fb0d53fe2124494f987ad6d5d5c` |
 | `029_decisive_k_escalation.answer.md` | answer | `54c15e10dbac6598c637908453763e3b812a5abcf6ea8701c3d25f3448887db9` |
 | `029_decisive_k_escalation.goal.md` | goal | `649a065497917438512294f3382e229fe06e048e1e776ce3e5e4866ad2e2eeee` |
+| `030_coupled_full_sum_response.answer.md` | answer | `f76758e4ef6cd9a73f4b52e4b71313174b4756c325797c9e12a2b624a20fed58` |
+| `030_coupled_full_sum_response.goal.md` | goal | `fed134435e39cfc51f46485761b45c356da9ef6c3a155b48286ea8304c25ffdb` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
 | `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
@@ -70,6 +72,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHAN
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
+| `COUPLED_FULL_SUM_RESPONSE_CERT.json` | Route B artifact | `2e31e67ba9cc9aed78bfed9ed20d052c1917b508958ddff077124e2cf95989da` |
 | `CanonicalRHRouteSkeleton.lean` | key Lean artifact | `2e849d677e0ec771c47a436abdf657690e833e52555af8c8698185e30274536b` |
 | `ClassicalXiInterface.lean` | key Lean artifact | `838f8156efe7db74cdece2b333ee223ef7737ea2981c4ae28a672f36dd04e82b` |
 | `CompactEvaluationRateTransfer.lean` | key Lean artifact | `72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c` |
@@ -101,9 +104,10 @@ Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHAN
 | `OFF_AXIS_GROWTH_PROBE.md` | probe report | `264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4` |
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
 | `PHASE_STRUCTURE_PROBE.md` | probe report | `f508fdd0c07c800c387e0d8b8995038e1032a9321cbb47ff5da05685940a23dd` |
-| `PROOF_COMPILER_SEVEN_GATES_2026-07-27.json` | Route B artifact | `876dbb599b3b7caf623905c6612958e9cc5c8fe96763522160fcdad18baaf700` |
 | `PROOF_COMPILER_RESYNC_2026-07-27.md` | Route B artifact | `24b3870d2787167958a8bd3c9d05c018159217141dfd10af7de98ee75d5e6e89` |
+| `PROOF_COMPILER_SEVEN_GATES_2026-07-27.json` | Route B artifact | `876dbb599b3b7caf623905c6612958e9cc5c8fe96763522160fcdad18baaf700` |
 | `PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | Proshka verdict/source review | `a49cf2ec435de7070d661b2274d173462ed8c478a745f52c5858ae4f3457004e` |
+| `PROSHKA_030_DIRECTIVE.md` | Proshka verdict/source review | `fa6588f429dfff69e4cdcfe9064f431469e9d28c1180585446babb4b4b0be709` |
 | `PROSHKA_ADJUDICATION_PROTOCOL_2026-07-27.md` | Proshka verdict/source review | `d1dcf8750710c895c490b3755bec848122484748beacfb7c13c73cc6d6f19612` |
 | `PROSHKA_ANCHOR_BRIDGE_2026-07-27.md` | Proshka verdict/source review | `15b278ddb08e432092f6a83ca92ffbf62422ca8b560b66022bc9deaf0c4d7db7` |
 | `PROSHKA_AUDIT011_REMOTE_2026-07-27.md` | Proshka verdict/source review | `fcc8a3f46560ab4c3ce6d4a25cc88eb847f3970eaebd11785cfb9b69755285f6` |
@@ -121,6 +125,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHAN
 | `PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | Proshka verdict/source review | `827a1c5bf1e62c434bed0b59aabb459babab484d270d18562ee940841d93ae4e` |
 | `PROSHKA_RESYNC_AUDIT_2026-07-27.md` | Proshka verdict/source review | `49b5ec48d48f6390f6a0c6516b7ef186126ec676a8424650f6de04ad95f6714c` |
 | `PROSHKA_SIGN_FRONT_2026-07-27.md` | Proshka verdict/source review | `af317ee7e183fee763fa65a870fb129ad0769410dc5bc2cd340283d6f771825a` |
+| `PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 | `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md` | Proshka verdict/source review | `fa82f900e2096830116fbaeb22bf2001711075874e1cbf59b5c95533d5712a00` |
 | `PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md` | Proshka verdict/source review | `2310171f2f81d1afef8599da23cf9cf8cacd3d1eb9e38972f21f7075f9620d1f` |
 | `PerturbativeTrueGapLower.lean` | key Lean artifact | `bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19` |
@@ -164,10 +169,12 @@ Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHAN
 | `WeightedSpectralTempleCore.lean` | key Lean artifact | `666651036732272c69c5a45396c8749532cd179c9111c1d8efff99123862f3fd` |
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
+| `check_coupled_full_sum_response_certificate.py` | Route B artifact | `5c2af3249e6f2de5263f93ea1f01277531da13484e43e59b287dfe86e6d7f3f7` |
 | `check_decisive_finite_core_theta_k_escalation.py` | Route B artifact | `3824f56191d2c158b9192d441ac832f5aaa596b0bcb5d538c7332770ccf28acb` |
 | `check_finite_core_theta_certificate.py` | Route B artifact | `40c0987a78541fd5056bdc34aedf3141cc14eb71f1d104518254688b4c2ee981` |
+| `coupled_full_sum_response_certificate.py` | Route B artifact | `bb65351b766042940b83fe9d1261cf7adac0ea762c9f2368b7f20f28d5101242` |
 | `decisive_finite_core_theta_k_escalation.py` | Route B artifact | `b7cdf20f6c614c9af996d209da64d16eedef23c86054a2d7b1bfd66ba0ba7688` |
 | `finite_core_theta_certificate.py` | Route B artifact | `928b16b2a7eb1d677a6d8ee6eefecfe9656462121ec47172552475368098bbae` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `2589e39307e7754ed2406a7897b96db80992025d64baf40234269adfcdf9a13d` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `2ebde1c0a0db0c9cb971fcee88b55925cdc36f8da2dc2f6151bedd2ff47a4db4` |
 
 `MANIFEST.md` is excluded from its own hash table.
