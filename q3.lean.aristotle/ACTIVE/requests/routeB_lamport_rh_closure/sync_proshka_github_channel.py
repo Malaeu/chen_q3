@@ -21,6 +21,7 @@ REPOSITORY_ROOT = Q3_ROOT.parent.resolve()
 DESTINATION = (REPOSITORY_ROOT / "docs" / "routeB_bus").resolve()
 RESYNC_REQUIRED_SOURCES = (
     REQUEST_DIR / "PROOF_COMPILER_RESYNC_2026-07-27.md",
+    REQUEST_DIR / "PROOF_COMPILER_SEVEN_GATES_2026-07-27.json",
     REQUEST_DIR / "proshka" / "PROSHKA_RESYNC_AUDIT_2026-07-27.md",
     REQUEST_DIR / "proshka" / "PROSHKA_PEN_REDUCTIONS_2026-07-27.md",
     REQUEST_DIR / "027_hlambda_outer_lobe_gate.answer.md",
