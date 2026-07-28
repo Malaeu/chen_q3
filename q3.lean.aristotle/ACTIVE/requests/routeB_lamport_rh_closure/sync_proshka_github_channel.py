@@ -35,6 +35,12 @@ GOAL_028_REQUIRED_SOURCES = (
     REQUEST_DIR / "decisive_finite_core_theta_k_escalation.py",
     REQUEST_DIR / "check_decisive_finite_core_theta_k_escalation.py",
 )
+GOAL_030_REQUIRED_SOURCES = (
+    REQUEST_DIR / "030_coupled_full_sum_response.answer.md",
+    REQUEST_DIR / "COUPLED_FULL_SUM_RESPONSE_CERT.json",
+    REQUEST_DIR / "coupled_full_sum_response_certificate.py",
+    REQUEST_DIR / "check_coupled_full_sum_response_certificate.py",
+)
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -85,7 +91,11 @@ def selected_sources() -> list[Path]:
         for path in REQUEST_DIR.glob("ARISTOTLE_TASK_*v2_REPAIRED*.md")
         if path.is_file()
     )
-    for path in RESYNC_REQUIRED_SOURCES + GOAL_028_REQUIRED_SOURCES:
+    for path in (
+        RESYNC_REQUIRED_SOURCES
+        + GOAL_028_REQUIRED_SOURCES
+        + GOAL_030_REQUIRED_SOURCES
+    ):
         if not path.is_file():
             raise FileNotFoundError(
                 f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{path}"
