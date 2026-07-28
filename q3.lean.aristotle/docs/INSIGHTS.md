@@ -48426,3 +48426,28 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - The next honest supplier must change representation to a direct full-sum
   identity or prove correlated/one-sided tail control.  No third cut, sign
   grid, cofinal extrapolation, `STATE` change, or Bus 010 was used.
+
+## 2026-07-28 — RouteB.030 oracle synthesis
+
+- The address-tied `q3_docs` search found no existing theorem packet for a
+  direct full-sum identity or a one-sided/correlated remainder.  Its only
+  relevant hits were the already-frozen 026--029 ledger, so local retrieval
+  does not close either child of `RouteB.030`.
+- DLMF 18.12.11 supplies the exact Legendre generating function
+  `sum P_n(x) z^n = (1-2xz+z^2)^(-1/2)` for `|z|<1`.  This makes the direct
+  full-sum child structurally plausible only if the current normalized
+  coefficient sequence is first crosswalked to an exact generating-function
+  transform; the identity alone does not sum the source-locked coefficients.
+- DLMF 14.15/18.15 gives uniform Legendre asymptotic routes, while DLMF
+  10.17 records first-neglected-term sign control for specific real Bessel
+  expansions.  These are leads for `RouteB.030.correlated-tail`, not a
+  certificate: a rigorous transformation of the actual recessive
+  continued-fraction tail into the covered regime is still missing.
+- Therefore the exact stop code is
+  `ROUTEB_030_SUPPLIER_FORK_NO_CROSSWALK`: choose either
+  `RouteB.030.full-sum / ExactCoefficientGeneratingFunctionCrosswalk` or
+  `RouteB.030.correlated-tail / SignedRecessiveRemainderCrosswalk`.
+  Independent symmetric sup-tail refinement and a third `K` escalation are
+  killed subbranches.
+- This is a route fork, not a failure of `DualThetaDominance`, not a cofinal
+  statement, and not an RH result.  `STATE` and Bus 010 remain untouched.

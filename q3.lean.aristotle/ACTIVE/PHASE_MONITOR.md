@@ -54,6 +54,13 @@ closed.
   `RouteB.030 / DecisiveFullSumEnvelope`, supplied either by a direct
   full-sum representation or by correlated/one-sided tail control.  No third
   coefficient-cut escalation is live.
+- The required address-tied local/external search is now complete.  No local
+  theorem packet closes either child.  The exact stop code is
+  `ROUTEB_030_SUPPLIER_FORK_NO_CROSSWALK`; the two live children are
+  `RouteB.030.full-sum / ExactCoefficientGeneratingFunctionCrosswalk` and
+  `RouteB.030.correlated-tail / SignedRecessiveRemainderCrosswalk`.
+- Kill certificate: independent symmetric sup-tail refinement and any third
+  `K` escalation are dead subbranches at this node.
 - Route B remains `CHALLENGER / NOT_RH`; `STATE` and Bus 010 are untouched.
 
 ## Startup response contract
