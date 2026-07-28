@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Refresh the flat Proshka mirror in chen_q3/docs/routeB_bus.
+"""Refresh the repository-native flat Proshka mirror in docs/routeB_bus.
 
 The destination boundary is deliberately hard-coded and checked.  No path
-outside docs/routeB_bus in chen_q3 is created, removed, or modified.
+outside docs/routeB_bus in the canonical repository is created, removed, or
+modified.
 """
 
 from __future__ import annotations
@@ -16,8 +17,8 @@ from pathlib import Path
 REQUEST_DIR = Path(__file__).resolve().parent
 Q3_ROOT = REQUEST_DIR.parents[2]
 LEAN_DIR = Q3_ROOT / "Q3" / "Proofs" / "RouteB"
-CHEN_ROOT = Path("/Users/emalam/GitHub/chen_q3").resolve()
-DESTINATION = (CHEN_ROOT / "docs" / "routeB_bus").resolve()
+REPOSITORY_ROOT = Q3_ROOT.parent.resolve()
+DESTINATION = (REPOSITORY_ROOT / "docs" / "routeB_bus").resolve()
 RESYNC_REQUIRED_SOURCES = (
     REQUEST_DIR / "PROOF_COMPILER_RESYNC_2026-07-27.md",
     REQUEST_DIR / "proshka" / "PROSHKA_RESYNC_AUDIT_2026-07-27.md",
@@ -108,8 +109,8 @@ def git_output(*args: str) -> str:
 
 
 def main() -> None:
-    expected = (CHEN_ROOT / "docs" / "routeB_bus").resolve()
-    if DESTINATION != expected or CHEN_ROOT not in DESTINATION.parents:
+    expected = (REPOSITORY_ROOT / "docs" / "routeB_bus").resolve()
+    if DESTINATION != expected or REPOSITORY_ROOT not in DESTINATION.parents:
         raise RuntimeError(f"PROSHKA_CHANNEL_DESTINATION_ESCAPE:{DESTINATION}")
 
     sources = selected_sources()
@@ -144,8 +145,8 @@ def main() -> None:
         "This directory is the flat outbound Route B mirror for Proshka.\n\n"
         "Permanent handoff rule: after every closed Route B goal, refresh this "
         "mirror, rebuild `MANIFEST.md`, commit only `docs/routeB_bus/`, and "
-        "push the current `chen_q3` branch. Bus 010 remains void unless the "
-        "owner explicitly creates it.\n\n"
+        "push the current canonical-repository branch. Bus 010 remains void "
+        "unless the owner explicitly creates it.\n\n"
         f"Source repository commit at refresh: `{source_commit}`.\n",
         encoding="utf-8",
     )

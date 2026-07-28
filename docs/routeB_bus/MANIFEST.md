@@ -168,6 +168,6 @@ Flat Proshka mirror from `rh_lean_01_2026`; 164 mirrored source files plus `CHAN
 | `check_finite_core_theta_certificate.py` | Route B artifact | `40c0987a78541fd5056bdc34aedf3141cc14eb71f1d104518254688b4c2ee981` |
 | `decisive_finite_core_theta_k_escalation.py` | Route B artifact | `b7cdf20f6c614c9af996d209da64d16eedef23c86054a2d7b1bfd66ba0ba7688` |
 | `finite_core_theta_certificate.py` | Route B artifact | `928b16b2a7eb1d677a6d8ee6eefecfe9656462121ec47172552475368098bbae` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `6fbbfd9f4829df3522dd1711766e6390bf39e4eaae3d1d3a75b94996dd8e0000` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `2589e39307e7754ed2406a7897b96db80992025d64baf40234269adfcdf9a13d` |
 
 `MANIFEST.md` is excluded from its own hash table.
