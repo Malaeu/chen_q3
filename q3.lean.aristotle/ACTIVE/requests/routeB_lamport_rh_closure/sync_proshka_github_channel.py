@@ -42,6 +42,12 @@ GOAL_030_REQUIRED_SOURCES = (
     REQUEST_DIR / "coupled_full_sum_response_certificate.py",
     REQUEST_DIR / "check_coupled_full_sum_response_certificate.py",
 )
+GOAL_031_REQUIRED_SOURCES = (
+    REQUEST_DIR / "031_priority_band_positive_part.answer.md",
+    REQUEST_DIR / "PRIORITY_BAND_POSITIVE_PART_CERT.json",
+    REQUEST_DIR / "priority_band_positive_part_certificate.py",
+    REQUEST_DIR / "check_priority_band_positive_part_certificate.py",
+)
 GOAL_032_REQUIRED_SOURCES = (
     REQUEST_DIR / "ARISTOTLE_TASK_RiemannBoundaryCellBridge.md",
     REQUEST_DIR / "aristotle_bridge" / "RESULT.md",
@@ -107,6 +113,7 @@ def selected_sources() -> list[Path]:
         RESYNC_REQUIRED_SOURCES
         + GOAL_028_REQUIRED_SOURCES
         + GOAL_030_REQUIRED_SOURCES
+        + GOAL_031_REQUIRED_SOURCES
         + GOAL_032_REQUIRED_SOURCES
     ):
         if not path.is_file():

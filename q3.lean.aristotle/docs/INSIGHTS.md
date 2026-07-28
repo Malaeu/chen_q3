@@ -48451,3 +48451,28 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   killed subbranches.
 - This is a route fork, not a failure of `DualThetaDominance`, not a cofinal
   statement, and not an RH result.  `STATE` and Bus 010 remain untouched.
+
+## 2026-07-28 — Goals 032 and 031: boundary bridge and priority leakage
+
+- The Aristotle boundary-cell package was rebuilt from a clean scratch and
+  semantically matched against contract SHA-256 `7161d737...`: T0--T3 retain
+  the explicit constant `K*b + (‖h 0‖ + K*b) + ‖h b‖`, use
+  `LipschitzOnWith` on `Ico 0 b`, and introduce no existential replacement.
+  All four public theorems use only the standard axiom triple.
+- For RouteB.031, analytic power-series rigidity rules out exact
+  `S_255 ≡ 0` and `S_256 ≡ 0`; this is forced by positivity of every power
+  sum and the certified 027 witness at `1/sqrt(257)`.
+- The phase-correct even Legendre rows share one Jacobi recurrence.
+  Their divided difference satisfies
+  `L_Theta4 delta = ((Theta4-Theta0)/2) b0`; weights
+  `omega_q=1/(4q+1)` give an exact finite Green identity with the terminal
+  boundary term retained.
+- The exact crosswalk is
+  `E_star=-(I0*I4/D)*sqrt(z/lambda)*S_lambda`, with `u=lambda*z` and
+  `du/u=dz/z`.  Exact rational lower envelopes from 030 therefore give a
+  positive-part budget on the two priority bands of order `1e-241` after
+  division by `I0*I4/D`; they do not imply pointwise tooth sign.
+- The independent stdlib-only checker replays both rational envelopes, the
+  Jacobi/Green algebra, the tooth alias, and plants P1--P8.  Scope remains
+  finite cell `m=257`; no cofinal or RH conclusion is made, `STATE` is
+  unchanged, and Bus 010 remains void.
