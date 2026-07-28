@@ -42,6 +42,17 @@ GOAL_030_REQUIRED_SOURCES = (
     REQUEST_DIR / "coupled_full_sum_response_certificate.py",
     REQUEST_DIR / "check_coupled_full_sum_response_certificate.py",
 )
+GOAL_032_REQUIRED_SOURCES = (
+    REQUEST_DIR / "ARISTOTLE_TASK_RiemannBoundaryCellBridge.md",
+    REQUEST_DIR / "aristotle_bridge" / "RESULT.md",
+    REQUEST_DIR / "aristotle_bridge" / "lakefile.toml",
+    REQUEST_DIR / "aristotle_bridge" / "lean-toolchain",
+    REQUEST_DIR / "aristotle_bridge" / "RequestProject" / "Main.lean",
+    REQUEST_DIR
+    / "aristotle_bridge"
+    / "RequestProject"
+    / "RiemannBoundaryCellBridge.lean",
+)
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -96,6 +107,7 @@ def selected_sources() -> list[Path]:
         RESYNC_REQUIRED_SOURCES
         + GOAL_028_REQUIRED_SOURCES
         + GOAL_030_REQUIRED_SOURCES
+        + GOAL_032_REQUIRED_SOURCES
     ):
         if not path.is_file():
             raise FileNotFoundError(

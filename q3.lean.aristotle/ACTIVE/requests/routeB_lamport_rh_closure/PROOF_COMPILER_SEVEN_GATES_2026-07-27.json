@@ -22,6 +22,31 @@
       "CONDITIONAL"
     ]
   },
+  "abstract_lean_certificates": [
+    {
+      "transaction": "032_bridge_reverification",
+      "claim": "RiemannBoundaryCellBridge",
+      "status": "PROVED",
+      "scope": "ABSTRACT",
+      "verifier": "LEAN",
+      "unconditional": true,
+      "theorems": [
+        "riemannBoundaryCellBridge_finiteReduction",
+        "riemannBoundaryCellBridge_main",
+        "riemannBoundaryCellBridge_zeroMass",
+        "riemannBoundaryCellBridge_Estar"
+      ],
+      "contract": "ARISTOTLE_TASK_RiemannBoundaryCellBridge.md",
+      "contract_sha256": "7161d7376c3d9c7142c9a92a89a9ec8434fe73260019837de2d2f7b95749d039",
+      "source": "aristotle_bridge/RequestProject/RiemannBoundaryCellBridge.lean",
+      "source_sha256": "d47a0e1d1c3aa81b7f140db6103c64e553085df5542678c87c96c4cbbe19d3c7",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ],
   "finite_cell_certificates": [
     {
       "transaction": "026_lambda_bracket_resume",
