@@ -4,14 +4,15 @@
 The Arb enclosures from goal 026 are converted to rational coefficient
 intervals.  All subsequent polynomial, budget, and Bernstein operations are
 performed in exact ``fmpq`` arithmetic.  The registered priority cells are
-judged first; an exact negative upper certificate terminates the transaction
-before any lower-priority cell is considered.
+judged first; an exact failure of the locked fixed-K sufficient contract
+terminates the transaction before any lower-priority cell is considered.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
+import math
 import sys
 from fractions import Fraction
 from pathlib import Path
@@ -31,6 +32,9 @@ ANSWER_027 = HERE / "027_hlambda_outer_lobe_gate.answer.md"
 SCRIPT_027 = HERE / "hlambda_outer_lobe_gate_audit.py"
 PEN = HERE / "proshka" / "PROSHKA_PEN_REDUCTIONS_2026-07-27.md"
 RESYNC_AUDIT = HERE / "proshka" / "PROSHKA_RESYNC_AUDIT_2026-07-27.md"
+ADJUDICATION = (
+    HERE / "proshka" / "PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md"
+)
 LEDGER = HERE / "PROOF_COMPILER_SEVEN_GATES_2026-07-27.json"
 GENERATOR = Path(__file__).resolve()
 CHECKER = HERE / "check_finite_core_theta_certificate.py"
@@ -40,7 +44,7 @@ M = 257
 DEGREES = (0, 4)
 COEFFICIENT_DIGITS = 140
 PRIORITY_R = (256, 255)
-FATAL_CODE = "DUAL_THETA_DOMINANCE_KILLED_FINITE_CELL"
+VERDICT_CODE = "BAND_TAIL_DOMINATED_AT_K026"
 
 sys.path.insert(0, str(HERE))
 import hlambda_outer_lobe_gate_audit as cert027  # noqa: E402
@@ -86,6 +90,90 @@ def interval_record(
     lower: Fraction, upper: Fraction
 ) -> dict[str, dict[str, str]]:
     return {"lower": rat(lower), "upper": rat(upper)}
+
+
+def square_interval(lower: Fraction, upper: Fraction) -> tuple[Fraction, Fraction]:
+    if lower <= 0 <= upper:
+        square_lower = Fraction(0)
+    else:
+        square_lower = min(lower * lower, upper * upper)
+    return square_lower, max(lower * lower, upper * upper)
+
+
+def normalization_certificate(
+    enclosures: list[tuple[int, Fraction, Fraction]], digits: int
+) -> dict[str, Any]:
+    """Derive an exact rational J enclosure from raw coefficient boxes.
+
+    In the a₀=1 gauge the full normalized mode is ``s F`` and
+    ``J = ∫ s F = 2s``.  The tail theorem from 025 gives
+
+      0 ≤ tail_L2² ≤ 2 |a_N|² / (3 (2N+5)).
+
+    Rational square comparisons certify the outward decimal enclosure of
+    ``2 / sqrt(total_L2²)``; no stored Arb J interval is trusted.
+    """
+
+    finite_lower = Fraction(0)
+    finite_upper = Fraction(0)
+    for degree, lower, upper in enclosures:
+        square_lower, square_upper = square_interval(lower, upper)
+        weight = Fraction(2, 2 * degree + 1)
+        finite_lower += weight * square_lower
+        finite_upper += weight * square_upper
+    last_degree, last_lower, last_upper = enclosures[-1]
+    _, last_square_upper = square_interval(last_lower, last_upper)
+    tail_upper = Fraction(
+        2 * last_square_upper, 3 * (2 * last_degree + 5)
+    )
+    total_lower = finite_lower
+    total_upper = finite_upper + tail_upper
+    if total_lower <= 0:
+        raise ArithmeticError("normalization lower bound is not positive")
+
+    decimal_scale = 10**digits
+
+    def scaled_sqrt_floor(total: Fraction) -> int:
+        numerator = 4 * decimal_scale**2 * total.denominator
+        denominator = total.numerator
+        return math.isqrt(numerator // denominator)
+
+    lower_integer = scaled_sqrt_floor(total_upper)
+    upper_floor = scaled_sqrt_floor(total_lower)
+    upper_numerator = 4 * decimal_scale**2 * total_lower.denominator
+    upper_denominator = total_lower.numerator
+    upper_integer = upper_floor
+    if upper_floor**2 * upper_denominator < upper_numerator:
+        upper_integer += 1
+    j_lower = Fraction(lower_integer, decimal_scale)
+    j_upper = Fraction(upper_integer, decimal_scale)
+    if not (
+        j_lower > 0
+        and j_lower * j_lower * total_upper <= 4
+        and j_upper * j_upper * total_lower >= 4
+    ):
+        raise ArithmeticError("exact rational J enclosure failed")
+
+    last_abs_upper = max(abs(last_lower), abs(last_upper))
+    last_abs_lower = (
+        Fraction(0)
+        if last_lower <= 0 <= last_upper
+        else min(abs(last_lower), abs(last_upper))
+    )
+    epsilon_lower = j_lower * last_abs_lower / 2
+    epsilon_upper = j_upper * last_abs_upper / 2
+    return {
+        "finite_l2_sq": interval_record(finite_lower, finite_upper),
+        "tail_l2_sq_upper": rat(tail_upper),
+        "total_l2_sq": interval_record(total_lower, total_upper),
+        "J": interval_record(j_lower, j_upper),
+        "epsilon": interval_record(epsilon_lower, epsilon_upper),
+        "raw_last_abs_lower": rat(last_abs_lower),
+        "raw_last_abs_upper": rat(last_abs_upper),
+        "tail_ratio_upper_after_J_cancellation": rat(
+            last_abs_upper / 2
+        ),
+    }
 
 
 def legendre_polynomials(degree: int) -> list[fmpq_poly]:
@@ -241,6 +329,7 @@ def main() -> None:
         SCRIPT_027,
         PEN,
         RESYNC_AUDIT,
+        ADJUDICATION,
         LEDGER,
         GENERATOR,
         CHECKER,
@@ -255,10 +344,6 @@ def main() -> None:
         for case in audit["cases"]
     }
     cases = {degree: by_case[(M, degree)] for degree in DEGREES}
-    raw_arb = {
-        degree: cert027.raw_coefficients(cases[degree])
-        for degree in DEGREES
-    }
     enclosure_records: dict[int, list[dict[str, Any]]] = {}
     enclosures: dict[int, list[tuple[int, Fraction, Fraction]]] = {}
     for degree in DEGREES:
@@ -278,29 +363,39 @@ def main() -> None:
     core_error = (mode_error[0] + mode_error[4]) / 2
 
     normalization = {
-        degree: cert027.normalization_data(cases[degree], raw_arb[degree])
+        degree: normalization_certificate(
+            enclosures[degree], COEFFICIENT_DIGITS
+        )
         for degree in DEGREES
     }
     j_intervals: dict[int, tuple[Fraction, Fraction]] = {}
-    epsilon_intervals: dict[int, tuple[Fraction, Fraction]] = {}
+    tail_ratio_upper: dict[int, Fraction] = {}
     for degree in DEGREES:
-        j_intervals[degree] = rational_hull(
-            normalization[degree]["J"], COEFFICIENT_DIGITS
+        j_intervals[degree] = (
+            Fraction(
+                int(normalization[degree]["J"]["lower"]["numerator"]),
+                int(normalization[degree]["J"]["lower"]["denominator"]),
+            ),
+            Fraction(
+                int(normalization[degree]["J"]["upper"]["numerator"]),
+                int(normalization[degree]["J"]["upper"]["denominator"]),
+            ),
         )
-        epsilon_intervals[degree] = rational_hull(
-            normalization[degree]["epsilon"], COEFFICIENT_DIGITS
+        tail_ratio_upper[degree] = Fraction(
+            int(
+                normalization[degree][
+                    "tail_ratio_upper_after_J_cancellation"
+                ]["numerator"]
+            ),
+            int(
+                normalization[degree][
+                    "tail_ratio_upper_after_J_cancellation"
+                ]["denominator"]
+            ),
         )
         if j_intervals[degree][0] <= 0:
             raise ArithmeticError("source integral lower bound is not positive")
-        if epsilon_intervals[degree][0] < 0:
-            raise ArithmeticError("tail epsilon enclosure crosses zero")
-    tail_upper = sum(
-        (
-            epsilon_intervals[degree][1] / j_intervals[degree][0]
-            for degree in DEGREES
-        ),
-        Fraction(0),
-    )
+    tail_upper = sum(tail_ratio_upper.values(), Fraction(0))
 
     priority_bands: list[dict[str, Any]] = []
     for r in PRIORITY_R:
@@ -308,10 +403,10 @@ def main() -> None:
         upper = Fraction(1, r)
         center = band_polynomial(psi, r)
         lower_target = add_constant(
-            center, -core_error - r * tail_upper
+            center, -r * core_error - r * tail_upper
         )
         upper_target = add_constant(
-            center, core_error - r * tail_upper
+            center, r * core_error - r * tail_upper
         )
         lower_bernstein = bernstein_coefficients(
             lower_target, lower, upper
@@ -330,14 +425,16 @@ def main() -> None:
                 "r": r,
                 "exact_domain": interval_record(lower, upper),
                 "center_polynomial_ref": "object_lock.psi_center_power_coefficients",
-                "coefficient_error": rat(core_error),
+                "coefficient_error": rat(r * core_error),
                 "tail_budget": rat(r * tail_upper),
                 "lower_bernstein_minimum": exact_min_record(
                     lower_bernstein
                 ),
                 "upper_bernstein_maximum": upper_record,
                 "subdivision": [interval_record(lower, upper)],
-                "verdict": "TARGET_UPPER_STRICTLY_NEGATIVE",
+                "verdict": (
+                    "FIXED_K_ADJUSTED_TARGET_UPPER_STRICTLY_NEGATIVE"
+                ),
             }
         )
 
@@ -350,7 +447,7 @@ def main() -> None:
     witness_lower = band_lower + band_width * Fraction(1, 256)
     witness_upper = band_lower + band_width * Fraction(2, 256)
     finite_core_upper = add_constant(
-        band_polynomial(psi, r), core_error
+        band_polynomial(psi, r), r * core_error
     )
     finite_core_bernstein = bernstein_coefficients(
         finite_core_upper, witness_lower, witness_upper
@@ -366,15 +463,21 @@ def main() -> None:
         rat(fraction_of(psi[k])) for k in range(psi.degree() + 1)
     ]
     payload = {
-        "schema": "route_b_finite_core_theta_certificate.v1",
+        "schema": "route_b_finite_core_theta_certificate.v2",
         "status": "CHALLENGER / NOT_RH",
-        "verdict": FATAL_CODE,
+        "verdict": VERDICT_CODE,
         "scope": {
             "kind": "FINITE_CELL",
             "requested_cells": [13, 53, 257],
             "terminated_at_cell": M,
             "not_cofinal_family": True,
+            "fixed_K_sufficient_contract_only": True,
+            "does_not_determine_full_S_lambda_sign": True,
         },
+        "semantic_conclusion": (
+            "the locked fixed-K sufficient lower-bound contract fails; "
+            "DualThetaDominance and the sign of full S_lambda remain open"
+        ),
         "method": (
             "exact rational Bernstein upper certificates from rational "
             "enclosures of the Arb coefficient balls"
@@ -405,10 +508,12 @@ def main() -> None:
                 str(degree): interval_record(*j_intervals[degree])
                 for degree in DEGREES
             },
-            "tail_epsilons": {
-                str(degree): interval_record(
-                    *epsilon_intervals[degree]
-                )
+            "normalization_certificates": {
+                str(degree): normalization[degree]
+                for degree in DEGREES
+            },
+            "tail_ratio_upper_by_mode": {
+                str(degree): rat(tail_ratio_upper[degree])
                 for degree in DEGREES
             },
             "epsilon_psi_upper": rat(tail_upper),
@@ -418,7 +523,7 @@ def main() -> None:
         ],
         "bands": priority_bands,
         "teeth": [],
-        "fatal_witness": {
+        "fixed_K_witness": {
             "m": M,
             "r": r,
             "kind": "FINITE_CORE_UPPER_STRICTLY_NEGATIVE",
@@ -429,7 +534,7 @@ def main() -> None:
             "reported_exact_negative_upper_bound": rat(
                 reported_negative_upper
             ),
-            "coefficient_error_consumed": rat(core_error),
+            "coefficient_error_consumed": rat(r * core_error),
             "tail_effect": (
                 "the finite core is already strictly negative; subtracting "
                 "the required positive tail budget makes the target upper "
@@ -445,8 +550,8 @@ def main() -> None:
             ],
             "complete": False,
             "termination": (
-                "exact fatal certificate on registered priority bands; "
-                "remaining bands and teeth are not admissible work after kill"
+                "the locked K026 sufficient lower-bound contract is "
+                "tail-dominated on the registered priority bands"
             ),
         },
         "guards": {
@@ -456,6 +561,9 @@ def main() -> None:
             "infinite_tail_consumed": True,
             "mu_substituted_by_one": False,
             "cofinal_family_claimed": False,
+            "normalization_J_derived_from_coefficient_boxes": True,
+            "full_S_lambda_sign_claimed": False,
+            "fixed_K_sufficient_contract_only": True,
             "state_changed": False,
             "bus_010_created": False,
         },
@@ -464,7 +572,7 @@ def main() -> None:
         json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
-    print(FATAL_CODE)
+    print(VERDICT_CODE)
     for band in priority_bands:
         maximum = band["upper_bernstein_maximum"]
         print(

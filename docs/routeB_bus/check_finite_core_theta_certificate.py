@@ -5,13 +5,14 @@ This checker imports neither the generator nor Arb.  It reconstructs the
 center polynomial from the stored rational Legendre coefficient intervals,
 recomputes every budget and Bernstein coefficient, verifies the registered
 priority order and canonical inventory, and accepts incomplete coverage only
-after an exact fatal witness.
+after an exact fixed-K supplier witness.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
+import math
 import sys
 from fractions import Fraction
 from pathlib import Path
@@ -25,7 +26,7 @@ sys.set_int_max_str_digits(100_000)
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 CERTIFICATE = HERE / "FINITE_CORE_THETA_CERT.json"
-EXPECTED_VERDICT = "DUAL_THETA_DOMINANCE_KILLED_FINITE_CELL"
+EXPECTED_VERDICT = "BAND_TAIL_DOMINATED_AT_K026"
 
 
 def require(condition: bool, message: str) -> None:
@@ -58,6 +59,81 @@ def read_interval(
     upper = read_rat(record["upper"])
     require(lower <= upper, "reversed rational interval")
     return lower, upper
+
+
+def square_interval(lower: Fraction, upper: Fraction) -> tuple[Fraction, Fraction]:
+    if lower <= 0 <= upper:
+        square_lower = Fraction(0)
+    else:
+        square_lower = min(lower * lower, upper * upper)
+    return square_lower, max(lower * lower, upper * upper)
+
+
+def derive_normalization(
+    records: list[dict[str, Any]], digits: int
+) -> dict[str, Any]:
+    finite_lower = Fraction(0)
+    finite_upper = Fraction(0)
+    for record in records:
+        degree = int(record["legendre_degree"])
+        lower, upper = read_interval(record)
+        square_lower, square_upper = square_interval(lower, upper)
+        weight = Fraction(2, 2 * degree + 1)
+        finite_lower += weight * square_lower
+        finite_upper += weight * square_upper
+    last_degree = int(records[-1]["legendre_degree"])
+    last_lower, last_upper = read_interval(records[-1])
+    _, last_square_upper = square_interval(last_lower, last_upper)
+    tail_upper = Fraction(
+        2 * last_square_upper, 3 * (2 * last_degree + 5)
+    )
+    total_lower = finite_lower
+    total_upper = finite_upper + tail_upper
+    require(total_lower > 0, "normalization lower bound is not positive")
+
+    decimal_scale = 10**digits
+
+    def scaled_sqrt_floor(total: Fraction) -> int:
+        numerator = 4 * decimal_scale**2 * total.denominator
+        denominator = total.numerator
+        return math.isqrt(numerator // denominator)
+
+    lower_integer = scaled_sqrt_floor(total_upper)
+    upper_floor = scaled_sqrt_floor(total_lower)
+    upper_numerator = 4 * decimal_scale**2 * total_lower.denominator
+    upper_denominator = total_lower.numerator
+    upper_integer = upper_floor
+    if upper_floor**2 * upper_denominator < upper_numerator:
+        upper_integer += 1
+    j_lower = Fraction(lower_integer, decimal_scale)
+    j_upper = Fraction(upper_integer, decimal_scale)
+    require(j_lower > 0, "derived J lower bound is not positive")
+    require(
+        j_lower * j_lower * total_upper <= 4,
+        "derived J lower square comparison failed",
+    )
+    require(
+        j_upper * j_upper * total_lower >= 4,
+        "derived J upper square comparison failed",
+    )
+    last_abs_upper = max(abs(last_lower), abs(last_upper))
+    last_abs_lower = (
+        Fraction(0)
+        if last_lower <= 0 <= last_upper
+        else min(abs(last_lower), abs(last_upper))
+    )
+    epsilon_lower = j_lower * last_abs_lower / 2
+    epsilon_upper = j_upper * last_abs_upper / 2
+    return {
+        "finite_l2_sq": (finite_lower, finite_upper),
+        "tail_l2_sq_upper": tail_upper,
+        "total_l2_sq": (total_lower, total_upper),
+        "J": (j_lower, j_upper),
+        "epsilon": (epsilon_lower, epsilon_upper),
+        "raw_last_abs_lower": last_abs_lower,
+        "raw_last_abs_upper": last_abs_upper,
+        "tail_ratio_upper": last_abs_upper / 2,
+    }
 
 
 def legendre_polynomials(degree: int) -> list[fmpq_poly]:
@@ -191,6 +267,14 @@ def main() -> None:
         certificate["scope"]["not_cofinal_family"] is True,
         "cofinal guard missing",
     )
+    require(
+        certificate["scope"]["fixed_K_sufficient_contract_only"] is True,
+        "fixed-K semantic scope missing",
+    )
+    require(
+        certificate["scope"]["does_not_determine_full_S_lambda_sign"] is True,
+        "full-S semantic guard missing",
+    )
 
     for source in certificate["object_lock"]["source_hashes"]:
         path = ROOT / source["path"]
@@ -228,17 +312,71 @@ def main() -> None:
     require(actual_psi == stored_psi, "psi center polynomial mismatch")
     require(psi.degree() == int(object_lock["psi_degree"]), "degree mismatch")
 
+    require(
+        certificate["schema"] == "route_b_finite_core_theta_certificate.v2",
+        "wrong certificate schema",
+    )
     tail_upper = Fraction(0)
+    normalization_records = object_lock["normalization_certificates"]
+    normalization_digits = int(object_lock["coefficient_decimal_digits"])
     for degree in (0, 4):
-        j_lower, _ = read_interval(
-            object_lock["positive_source_integrals"][str(degree)]
+        derived = derive_normalization(
+            coefficient_records[str(degree)], normalization_digits
         )
-        _, epsilon_upper = read_interval(
-            object_lock["tail_epsilons"][str(degree)]
+        stored = normalization_records[str(degree)]
+        require(
+            read_interval(stored["finite_l2_sq"])
+            == derived["finite_l2_sq"],
+            "finite L2 interval mismatch",
         )
-        require(j_lower > 0, "source integral lower bound is not positive")
-        require(epsilon_upper >= 0, "negative epsilon upper bound")
-        tail_upper += epsilon_upper / j_lower
+        require(
+            read_rat(stored["tail_l2_sq_upper"])
+            == derived["tail_l2_sq_upper"],
+            "tail L2 upper mismatch",
+        )
+        require(
+            read_interval(stored["total_l2_sq"])
+            == derived["total_l2_sq"],
+            "total L2 interval mismatch",
+        )
+        require(
+            read_interval(stored["J"]) == derived["J"],
+            "derived normalization J mismatch",
+        )
+        require(
+            read_interval(stored["epsilon"]) == derived["epsilon"],
+            "derived normalization epsilon mismatch",
+        )
+        require(
+            read_interval(
+                object_lock["positive_source_integrals"][str(degree)]
+            )
+            == derived["J"],
+            "public J interval mismatch",
+        )
+        require(
+            read_rat(stored["raw_last_abs_lower"])
+            == derived["raw_last_abs_lower"],
+            "raw last coefficient lower mismatch",
+        )
+        require(
+            read_rat(stored["raw_last_abs_upper"])
+            == derived["raw_last_abs_upper"],
+            "raw last coefficient mismatch",
+        )
+        require(
+            read_rat(stored["tail_ratio_upper_after_J_cancellation"])
+            == derived["tail_ratio_upper"],
+            "normalization-cancelled tail mismatch",
+        )
+        require(
+            read_rat(
+                object_lock["tail_ratio_upper_by_mode"][str(degree)]
+            )
+            == derived["tail_ratio_upper"],
+            "public mode tail ratio mismatch",
+        )
+        tail_upper += derived["tail_ratio_upper"]
     require(
         tail_upper == read_rat(object_lock["epsilon_psi_upper"]),
         "tail ratio budget mismatch",
@@ -262,7 +400,7 @@ def main() -> None:
             "noncanonical band domain",
         )
         require(
-            read_rat(band["coefficient_error"]) == core_error,
+            read_rat(band["coefficient_error"]) == r * core_error,
             "band core error mismatch",
         )
         require(
@@ -271,10 +409,10 @@ def main() -> None:
         )
         center = band_polynomial(psi, r)
         lower_target = add_constant(
-            center, -core_error - r * tail_upper
+            center, -r * core_error - r * tail_upper
         )
         upper_target = add_constant(
-            center, core_error - r * tail_upper
+            center, r * core_error - r * tail_upper
         )
         lower_values = bernstein_coefficients(
             lower_target, lower, upper
@@ -289,14 +427,15 @@ def main() -> None:
             band["upper_bernstein_maximum"], upper_values, maximum=True
         )
         require(
-            band["verdict"] == "TARGET_UPPER_STRICTLY_NEGATIVE",
+            band["verdict"]
+            == "FIXED_K_ADJUSTED_TARGET_UPPER_STRICTLY_NEGATIVE",
             "band verdict mismatch",
         )
 
-    witness = certificate["fatal_witness"]
+    witness = certificate["fixed_K_witness"]
     require(
         (int(witness["m"]), int(witness["r"])) == (257, 255),
-        "fatal witness cell mismatch",
+        "fixed-K witness cell mismatch",
     )
     witness_lower, witness_upper = read_interval(
         witness["strict_interior_interval"]
@@ -305,10 +444,10 @@ def main() -> None:
     band_upper = Fraction(1, 255)
     require(
         band_lower < witness_lower < witness_upper < band_upper,
-        "fatal interval is not strict interior",
+        "fixed-K interval is not strict interior",
     )
     finite_core_upper = add_constant(
-        band_polynomial(psi, 255), core_error
+        band_polynomial(psi, 255), 255 * core_error
     )
     finite_core_values = bernstein_coefficients(
         finite_core_upper, witness_lower, witness_upper
@@ -317,6 +456,11 @@ def main() -> None:
         witness["upper_bernstein_maximum"],
         finite_core_values,
         maximum=True,
+    )
+    require(
+        read_rat(witness["coefficient_error_consumed"])
+        == 255 * core_error,
+        "witness core error mismatch",
     )
     reported_upper = read_rat(
         witness["reported_exact_negative_upper_bound"]
@@ -328,7 +472,7 @@ def main() -> None:
     )
     require(
         witness["kind"] == "FINITE_CORE_UPPER_STRICTLY_NEGATIVE",
-        "fatal witness kind mismatch",
+        "fixed-K witness kind mismatch",
     )
 
     inventory = certificate["coverage"]["canonical_inventory"]
@@ -344,7 +488,10 @@ def main() -> None:
         require(int(row["tooth_r_last"]) == m, "last tooth mismatch")
         require(int(row["tooth_count"]) == m - root, "tooth count mismatch")
     require(certificate["coverage"]["complete"] is False, "false completeness")
-    require(certificate["teeth"] == [], "teeth should not run after fatal")
+    require(
+        certificate["teeth"] == [],
+        "teeth should not run after fixed-K supplier termination",
+    )
 
     guards = certificate["guards"]
     require(guards["sample_or_grid_sign_used"] is False, "grid guard")
@@ -355,6 +502,18 @@ def main() -> None:
     require(guards["coefficient_error_consumed"] is True, "core not consumed")
     require(guards["infinite_tail_consumed"] is True, "tail not consumed")
     require(guards["mu_substituted_by_one"] is False, "mu guard")
+    require(
+        guards["normalization_J_derived_from_coefficient_boxes"] is True,
+        "normalization derivation guard",
+    )
+    require(
+        guards["full_S_lambda_sign_claimed"] is False,
+        "full S_lambda sign overclaim",
+    )
+    require(
+        guards["fixed_K_sufficient_contract_only"] is True,
+        "fixed-K scope guard",
+    )
     require(guards["state_changed"] is False, "state guard")
     require(guards["bus_010_created"] is False, "bus guard")
 

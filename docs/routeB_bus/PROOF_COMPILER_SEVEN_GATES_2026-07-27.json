@@ -1,0 +1,219 @@
+{
+  "schema": "route_b_proof_compiler_seven_gates.v1",
+  "date": "2026-07-27",
+  "architecture_status": "CHALLENGER_NOT_RH",
+  "public_mainline_unchanged": "T0-pd -> H-bridge -> H4 -> RH",
+  "carrier_guard": {
+    "object": "Q3.RouteB.D0Pstar.canonicalApproximation",
+    "subsequence_guard": "SOFT_SAME_COFINAL_SUBSEQUENCE",
+    "status": "LEAN_PROVED"
+  },
+  "compiler_order_semantics": "cumulative obligations, not pairwise logical implications",
+  "ledger_field_contract": {
+    "scope": [
+      "ABSTRACT",
+      "FINITE_CELL",
+      "COFINAL_FAMILY"
+    ],
+    "verifier": [
+      "LEAN",
+      "ARB_INTERVAL",
+      "PAPER",
+      "CONDITIONAL"
+    ]
+  },
+  "finite_cell_certificates": [
+    {
+      "transaction": "026_lambda_bracket_resume",
+      "claim": "G3ExactModeIntervalEnclosure",
+      "status": "PROVED",
+      "scope": "FINITE_CELL",
+      "cells": [
+        13,
+        53,
+        257
+      ],
+      "verifier": "ARB_INTERVAL",
+      "not_lean": true,
+      "not_cofinal_family": true
+    },
+    {
+      "transaction": "027_hlambda_outer_lobe_gate",
+      "claim": "HlambdaLastPositiveZeroLtOne",
+      "status": "PROVED",
+      "scope": "FINITE_CELL",
+      "cells": [
+        13,
+        53,
+        257
+      ],
+      "verifier": "PAPER",
+      "input_verifier": "ARB_INTERVAL",
+      "not_lean": true,
+      "not_cofinal_family": true
+    },
+    {
+      "transaction": "028_finite_core_theta_order",
+      "claim": "FiniteCoreThetaOrderWithTailBudget",
+      "status": "FIXED_K_SUFFICIENT_CONTRACT_FAILED",
+      "scope": "FINITE_CELL",
+      "cells": [
+        257
+      ],
+      "verifier": "ARB_INTERVAL",
+      "certificate_backend": "EXACT_RATIONAL_BERNSTEIN",
+      "evidence": [
+        "FINITE_CORE_THETA_CERT.json",
+        "check_finite_core_theta_certificate.py"
+      ],
+      "not_lean": true,
+      "not_cofinal_family": true,
+      "termination": "the locked K truncation fails its sufficient lower-bound contract on r=255; this does not determine the sign of full S_lambda or kill DualThetaDominance"
+    },
+    {
+      "transaction": "029_decisive_k_escalation",
+      "claim": "DecisiveFiniteCoreThetaOrderKEscalation",
+      "status": "K_ESCALATION_INCONCLUSIVE",
+      "scope": "FINITE_CELL",
+      "cells": [
+        257
+      ],
+      "priority_bands": [
+        256,
+        255
+      ],
+      "authorized_extra_K": [
+        20,
+        40
+      ],
+      "verifier": "ARB_INTERVAL",
+      "certificate_backend": "EXACT_RATIONAL_BERNSTEIN",
+      "evidence": [
+        "029_decisive_k_escalation.answer.md",
+        "DECISIVE_FINITE_CORE_THETA_K_ESCALATION.json",
+        "check_decisive_finite_core_theta_k_escalation.py"
+      ],
+      "not_lean": true,
+      "not_cofinal_family": true,
+      "termination": "neither L>=0 nor U<0 is certified at either owner-authorized cut; DualThetaDominance remains open"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G1",
+      "name": "H1_CANONICAL_HOLOMORPHY",
+      "status": "PROVED",
+      "scope": "COFINAL_FAMILY",
+      "verifier": "LEAN",
+      "evidence": [
+        "Q3/Proofs/RouteB/D0CanonicalApproximation.lean:differentiable_centeredPstarFamily",
+        "Q3/Proofs/RouteB/D0CanonicalApproximation.lean:canonicalApproximation_slotH1"
+      ],
+      "smallest_gap": null
+    },
+    {
+      "id": "G2",
+      "name": "H2A_EXACT_SELECTED_GROUND",
+      "status": "OPEN_GENERIC_CORE_AND_SIX_EXACT_MODES_PROVED",
+      "scope": "ABSTRACT",
+      "verifier": "CONDITIONAL",
+      "evidence": [
+        "Q3/Proofs/RouteB/SectorIsolationRadius.lean",
+        "026_lambda_bracket_resume.answer.md",
+        "LAMBDA_BRACKET_RESUME_AUDIT.json"
+      ],
+      "smallest_gap": "H2A_EXACT_SECTOR_ORDERING_MISSING",
+      "scope_guard": "026 covers n=0,4 and m=13,53,257; it is not a cofinal selected-family theorem"
+    },
+    {
+      "id": "G3",
+      "name": "H2B_THEOREM510_REAL_ZERO_BRIDGE",
+      "status": "OPEN_GENERIC_CORE_PROVED_EXACT_BIND_OPEN",
+      "scope": "ABSTRACT",
+      "verifier": "CONDITIONAL",
+      "evidence": [
+        "Q3/Proofs/RouteB/HermitianDeterminantRealZeros.lean",
+        "Q3/Proofs/RouteB/RankOneCorrectionWeightedSymmetry.lean",
+        "Q3/Proofs/RouteB/RankOneCorrectionDeterminant.lean",
+        "Q3/Proofs/RouteB/RankOneCorrectionQuotientDescent.lean"
+      ],
+      "smallest_gap": "H2B_EXACT_THEOREM510_FACTORIZATION_MISSING"
+    },
+    {
+      "id": "G4",
+      "name": "ANCHOR_CANONICAL_NONZERO_NORMALIZATION",
+      "status": "PROVED",
+      "scope": "ABSTRACT",
+      "verifier": "LEAN",
+      "evidence": [
+        "Q3/Proofs/RouteB/D0CanonicalApproximation.lean:canonicalApproximation_slotAnchor",
+        "Q3/Proofs/RouteB/D0AnchorFloor.lean",
+        "006_anchor_floor.answer.md",
+        "008_anchor_ratio_receiver.answer.md"
+      ],
+      "smallest_gap": null
+    },
+    {
+      "id": "G5",
+      "name": "S1_MONTEL_NONZERO_CLUSTER",
+      "status": "OPEN_MONTEL_CORE_PROVED_SIGN_SUPPLIER_OPEN",
+      "scope": "ABSTRACT",
+      "verifier": "CONDITIONAL",
+      "evidence": [
+        "Q3/Proofs/RouteB/MontelNormalFamilies.lean",
+        "TWO_SIGN_LEMMAS_VERDICT_2026-07-27.md",
+        "029_decisive_k_escalation.answer.md"
+      ],
+      "smallest_gap": "CENTERED_S1_WEIGHTED_PROJECTION_GAP",
+      "closed_subgap": "HlambdaOuterLobeGate",
+      "open_subgap": "DualThetaDominanceRepresentationShiftOrOneSidedTail"
+    },
+    {
+      "id": "G6",
+      "name": "S2_SAME_SUBSEQUENCE_CLUSTER_IDENTIFICATION",
+      "status": "OPEN_TYPED_ONLY",
+      "scope": "ABSTRACT",
+      "verifier": "CONDITIONAL",
+      "evidence": [
+        "Q3/Proofs/RouteB/SoftL2Round13Integration.lean",
+        "Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean:sameCofinalGuard"
+      ],
+      "smallest_gap": "GLOBAL_POSITIVE_DEFINITE_UNIQUENESS_BODY_MISSING",
+      "optional_supplier": "SourceCompactnessToFullAutocorrelation"
+    },
+    {
+      "id": "G7",
+      "name": "HURWITZ_XI_RH_ROOF",
+      "status": "PROVED_CONDITIONAL_ON_G1_TO_G6",
+      "scope": "ABSTRACT",
+      "verifier": "LEAN",
+      "evidence": [
+        "Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean:rh_of_canonical_strip_slots",
+        "Q3/Proofs/RouteB/ClassicalXiInterface.lean"
+      ],
+      "smallest_gap": null
+    }
+  ],
+  "single_compiler_arrow": [
+    "G1:H1",
+    "G2:H2a",
+    "G3:H2b",
+    "G4:ANCHOR",
+    "G5:S1+Montel",
+    "G6:S2",
+    "G7:Hurwitz+Xi->RH"
+  ],
+  "current_first_open_gate": "G2",
+  "next_queued_transaction": null,
+  "sign_verdicts": {
+    "HlambdaLastPositiveZeroLtOne": "PROVED_ON_CELLS_13_53_257",
+    "DualThetaDominance": "OPEN_K_ESCALATION_INCONCLUSIVE",
+    "killed": []
+  },
+  "guards": {
+    "route_promoted_to_mainline": false,
+    "unconditional_RH_claimed": false,
+    "STATE_mutated_by_026": false,
+    "BUS_010_created": false
+  }
+}
