@@ -59,6 +59,16 @@ GOAL_032_REQUIRED_SOURCES = (
     / "RequestProject"
     / "RiemannBoundaryCellBridge.lean",
 )
+GOAL_033_REQUIRED_SOURCES = (
+    REQUEST_DIR / "033_full_window_positive_part.goal.md",
+    REQUEST_DIR / "033_full_window_positive_part.answer.md",
+    REQUEST_DIR / "FULL_WINDOW_POSITIVE_PART_CERT.json",
+    REQUEST_DIR / "full_window_positive_part_certificate.py",
+    REQUEST_DIR / "check_full_window_positive_part_certificate.py",
+    REQUEST_DIR / "FULL_WINDOW_BAND_PROFILE.csv",
+    REQUEST_DIR / "FULL_WINDOW_TOOTH_LEDGER.csv",
+    REQUEST_DIR / "proshka" / "PROSHKA_033_DIRECTIVE_2026-07-29.md",
+)
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -115,6 +125,7 @@ def selected_sources() -> list[Path]:
         + GOAL_030_REQUIRED_SOURCES
         + GOAL_031_REQUIRED_SOURCES
         + GOAL_032_REQUIRED_SOURCES
+        + GOAL_033_REQUIRED_SOURCES
     ):
         if not path.is_file():
             raise FileNotFoundError(
