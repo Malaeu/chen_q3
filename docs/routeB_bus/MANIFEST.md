@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 193 mirrored source files plus `CHANNEL_RULE.md`.
+Flat Proshka mirror from `rh_lean_01_2026`; 194 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -63,6 +63,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 193 mirrored source files plus `CHAN
 | `032_bridge_reverification.goal.md` | goal | `c9d190ae0fd2cd4f8e35c4ed2e93279b1a11afb055a732384701e43d06f2cfcd` |
 | `033_full_window_positive_part.answer.md` | answer | `840725b6abeff52cb5ab362328256bd0c09a5e49c8bcdd4869013b95b0934ccf` |
 | `033_full_window_positive_part.goal.md` | goal | `bc99d32bf7631dd60d8207fcc66a73d2b1aa993e8a5826241e0cedd55411844a` |
+| `034_tooth_sign.goal.md` | goal | `2465d730b6b77cd6cde770dcaa9c779ca2cd47811f6805b0a86571dcd83f8ee2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_RiemannBoundaryCellBridge.md` | active Aristotle contract | `7161d7376c3d9c7142c9a92a89a9ec8434fe73260019837de2d2f7b95749d039` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
