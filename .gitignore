@@ -74,3 +74,6 @@ q3.lean.aristotle/.qmd_cache/
 
 # Local vendor clones for external AI/research artifacts
 archive/subprojects/erdos-minimum-overlap/
+
+# window screenshots taken while calibrating the desktop lane
+orchestrator/state/*.png
