@@ -1,0 +1,25 @@
+══════════ ORCHESTRATION ADDENDUM — читать перед работой над Route B ══════════
+
+Ты работаешь не один: над этой задачей параллельно идут судья (Прошка),
+исполнитель (Codex), Lean-прувер (Aristotle) и кондуктор-транспорт (Claude
+Code). Роли, границы записи, формат выдачи голов и адресация — в отдельном
+файле. Прочитай его ПЕРВЫМ действием.
+
+Три адреса одного и того же файла, побайтово одинаковые. Пробуй по порядку,
+сверху вниз; первый открывшийся — рабочий:
+
+1. macOS:
+/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md
+
+2. Linux:
+/mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md
+
+3. GitHub (ветка rh_clean):
+https://github.com/Malaeu/chen_q3/blob/rh_clean/docs/routeB_bus/MYTHOS_ORCHESTRATION_ADDENDUM.md
+
+Диск пробуй раньше GitHub: он свежее — GitHub отстаёт на всё, что ещё не
+запушено. Расхождение между копиями само по себе является находкой, о нём надо
+сказать, а не разрешать молча.
+
+Это дополнение к твоей роли, а не замена: KERNEL, FAST-PATH и внутренняя
+триада остаются в силе полностью.
