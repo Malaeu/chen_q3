@@ -32,16 +32,27 @@ every harvested file.
 | `lakefile.toml` | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
 | `lean-toolchain` | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
 
-## RESULT.md inventory discrepancy
+## RESULT.md status
+
+```text
+RESULT_MD_STATUS: ABSENT_IN_ARCHIVE
+```
 
 The delivered tar archive contains no `RESULT.md`. The authenticated Aristotle
-code tree for the same project also lists no `RESULT.md`. Therefore Goal 039
-does not fabricate one or relabel another file as source-locked output.
+code tree for the same project also lists no `RESULT.md`. This is an archive
+fact, not a defect. Goal 039 does not fabricate one or relabel another file as
+source-locked output.
 
-The exact final cloud output is preserved verbatim in the delivered
-`ARISTOTLE_SUMMARY.md`; its primary message is
-`MELLIN_DSLOPE_ANALYTICITY_GAP`. That text is a gap report, not a verdict on
-the locally consumed layer.
+The final Aristotle message supplied by the owner is preserved verbatim as:
+
+```text
+muntz_v3/ARISTOTLE_FINAL_MESSAGE.md
+sha256 19561fea34291ef47d0a4283fc021248abfcdb21a3a88aef5e5bc5436ab94f9c
+```
+
+That message is owner-supplied provenance, not a tar member. Neither it nor
+the archive's `ARISTOTLE_SUMMARY.md` is used as the verdict source; the verdict
+is based only on the checked Lean sources.
 
 ## Independent source audit
 
@@ -63,10 +74,11 @@ The following are new local files, not cloud-harvest bytes:
 
 | File | Purpose | SHA-256 |
 |---|---|---|
-| `RequestProject/MellinCompactSupportAnalyticity.lean` | closes exact T4a | `0cf35bb021fbb888b6507e8d0dfbb61dc790d60ec4af7c8e9b5fec3928943c22` |
+| `ARISTOTLE_FINAL_MESSAGE.md` | owner-supplied final-message provenance | `19561fea34291ef47d0a4283fc021248abfcdb21a3a88aef5e5bc5436ab94f9c` |
+| `RequestProject/MellinCompactSupportAnalyticity.lean` | closes exact T4a by the R6 template port | `743e7cecf175a0be8c94d844c334ab66bfa5858696e6269a743b17ce0edfe148` |
 | `RequestProject/MuntzV3Unconditional.lean` | consumes T4a into T5 and its two corollaries | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
 
-Both build against the pinned Lean 4.28.0 / Mathlib v4.28.0 project and use
-exactly `[propext, Classical.choice, Quot.sound]`.
+Both Lean additions build against the pinned Lean 4.28.0 / Mathlib v4.28.0
+project and use exactly `[propext, Classical.choice, Quot.sound]`.
 
 Lane status remains `CHALLENGER / NOT_RH`; Bus 010 remains void.

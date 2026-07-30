@@ -24,6 +24,21 @@ LipschitzOnWith K h (Set.Ico 0 b)
 Goal 039 closes this hypothesis locally in
 `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean`.
 
+## Patch v1.1 — R6 template port
+
+The local proof is the direct T4a port of
+`docs/routeB_bus/muntz_r6/RequestProject/ConcreteAnalyticity.lean`:
+
+| Repair | Checked implementation |
+|---|---|
+| R-i (`hbot`) | `LipschitzOnWith` bounds `‖h u‖` on `Ico 0 b` by `‖h 0‖ + K * |b|`; this is `K * b` on the intended `0 < b` branch and gives exponent `0` via `IsBigO.of_bound`/`isBigO_iff` |
+| R-ii (`hlocal`) | `Measurable h` plus the same a.e. constant bound gives `LocallyIntegrableOn h (Ioi 0)` by `locallyIntegrableOn_const.mono`; the endpoint `u = b` is discarded as a null singleton |
+| R-iii (`htop`) | unchanged compact-support eventual-zero proof at `atTop` |
+| W | Mathlib `mellin` crosswalk uses only `smul_eq_mul` and `mul_comm`; `DifferentiableOn.analyticOnNhd` uses openness of `{s | 0 < s.re}` |
+
+The bridge is 71 lines including import/open/namespace lines, builds without
+holes, and needs no Aristotle iteration.
+
 ## K7 theorem classification
 
 `H_mellin` below means exactly

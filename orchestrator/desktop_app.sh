@@ -91,26 +91,39 @@ focus_composer() {
   sleep 0.5
 }
 
+# Keyboard shortcuts go through osascript, NOT cliclick.
+#
+# `cliclick t:a` means "type the letter a" -- it does not press the A key, so a
+# held Cmd is ignored and the letter lands in the field instead of triggering
+# the command. It appeared to work for a while purely on timing, which is worse
+# than failing: a broken select-all silently appends where it should replace.
+# osascript's `keystroke ... using command down` is a real modified keypress.
+cmd_key() {
+  osascript -e "tell application \"System Events\" to keystroke \"$1\" using command down" >/dev/null 2>&1
+}
+
 # Read by round-tripping through the clipboard: plant a marker, select-all and
 # copy, then see whether the marker survived. AX gives nothing usable here --
 # JXA cannot even return focusedUIElement for these Electron windows.
 read_composer() {
   local mark="__COMPOSER_EMPTY_$$__"
   printf '%s' "$mark" | pbcopy
-  cliclick kd:cmd t:a ku:cmd >/dev/null 2>&1
+  cmd_key a
   sleep 0.4
-  cliclick kd:cmd t:c ku:cmd >/dev/null 2>&1
+  cmd_key c
   sleep 0.6
   local got
   got=$(pbpaste)
   [ "$got" = "$mark" ] && echo "" || printf '%s' "$got"
 }
 
+# Select-all then paste: the paste replaces the selection. Cmd+A followed by
+# Delete does NOT clear these composers -- the text highlights and stays.
 write_composer() {
   printf '%s' "$1" | pbcopy
-  cliclick kd:cmd t:a ku:cmd >/dev/null 2>&1
+  cmd_key a
   sleep 0.4
-  cliclick kd:cmd t:v ku:cmd >/dev/null 2>&1
+  cmd_key v
   sleep 0.6
 }
 

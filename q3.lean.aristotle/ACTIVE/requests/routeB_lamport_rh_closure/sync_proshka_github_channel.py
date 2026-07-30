@@ -127,6 +127,7 @@ MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
 MUNTZ_V3_DIR = REQUEST_DIR / "muntz_v3"
 MUNTZ_V3_REQUIRED_RELATIVE_PATHS = (
     Path("_COVER.md"),
+    Path("ARISTOTLE_FINAL_MESSAGE.md"),
     Path("ARISTOTLE_SUMMARY.md"),
     Path("README.md"),
     Path("RequestProject/.gitkeep"),
@@ -158,6 +159,8 @@ def role(path: Path) -> str:
     if MUNTZ_V3_DIR.name in path.parts:
         if name == "_COVER.md":
             return "Muntz v3 harvest and consumption metadata"
+        if name == "ARISTOTLE_FINAL_MESSAGE.md":
+            return "Muntz v3 owner-supplied Aristotle final message"
         if name in {
             "MellinCompactSupportAnalyticity.lean",
             "MuntzV3Unconditional.lean",

@@ -26,8 +26,13 @@ V3_AUDIT:
   ARCHIVE_SHA256: c69483c0238fe923b2f927458e5fe63855060042e378a662a13321d5c3fd776e
   ARCHIVE_FILES_ACTUALLY_PRESENT: 7
   HARVEST_BYTE_MATCH: true
+  RESULT_MD_STATUS: ABSENT_IN_ARCHIVE
   RESULT_MD_PRESENT_IN_ARCHIVE: false
   RESULT_MD_PRESENT_IN_AUTHENTICATED_WEB_TREE: false
+  RESULT_MD_ABSENCE_IS_DEFECT: false
+  ARISTOTLE_FINAL_MESSAGE_PATH: muntz_v3/ARISTOTLE_FINAL_MESSAGE.md
+  ARISTOTLE_FINAL_MESSAGE_SHA256: 19561fea34291ef47d0a4283fc021248abfcdb21a3a88aef5e5bc5436ab94f9c
+  VERDICT_SOURCE: LEAN_SOURCES_ONLY
   MAIN_LEAN_LINES: 239
   LAKE_BUILD: PASS
   TAINT_MATCHES: 0
@@ -37,6 +42,8 @@ V3_AUDIT:
 T4A:
   LOCAL_BRIDGE: PASS
   THEOREM: mellin_compactSupport_analyticOnNhd
+  R6_TEMPLATE: docs/routeB_bus/muntz_r6/RequestProject/ConcreteAnalyticity.lean
+  BRIDGE_FILE_LINES: 71
   PINNED_LEAN: 4.28.0
   PINNED_MATHLIB: v4.28.0
   AXIOMS: [propext, Classical.choice, Quot.sound]
@@ -61,7 +68,7 @@ STOP_CODES:
 
 PREDICTIONS:
   P039_M1: CONFIRMED
-  P039_M2: PARTIAL_LOCAL_CLOSURE_CONFIRMED_LINE_BUDGET_MISSED
+  P039_M2: CONFIRMED_R6_TEMPLATE_PORT_71_LINES
   P039_M3: PARTIAL_T5_WRAPPERS_PASS_PL1_PL3_ABSENT_FROM_SOURCE
 ```
 
@@ -80,7 +87,9 @@ AnalyticOnNhd ℂ
 from `Measurable h`, support in `Icc 0 b`, and
 `LipschitzOnWith K h (Ico 0 b)`.
 
-The proof uses the pinned Mathlib theorem
+The proof is the direct T4a port of the pre-existing R6 template
+`docs/routeB_bus/muntz_r6/RequestProject/ConcreteAnalyticity.lean` and uses
+the pinned Mathlib theorem
 `mellin_differentiableAt_of_isBigO_rpow`: the Lipschitz estimate gives a
 constant big-O at `0+`, compact support gives eventual zero at `∞`, and a
 measurable a.e.-constant bound gives local integrability on `Ioi 0`.
@@ -92,6 +101,20 @@ The existing conditional T5 and both T5 corollaries are then instantiated
 without an `H_mellin` hypothesis. Their retained `hG`, `hRm`, `hRp`, and
 absolute-region identity inputs remain explicit; Goal 039 does not pretend
 those separate contract layers vanished.
+
+The three template repairs are exactly:
+
+- R-i: replace the old “zero near `0`” argument by the
+  `‖h 0‖ + K * |b|` bound on `Ico 0 b` (equal to `‖h 0‖ + K * b` on the
+  intended `0 < b` branch), preserving exponent `0`;
+- R-ii: combine measurability with the a.e. constant bound; the sole endpoint
+  `u = b` is discarded as a null singleton;
+- R-iii: retain the compact-support eventual-zero proof at `atTop`;
+- W: cross to Mathlib `mellin` using only `smul_eq_mul` and `mul_comm`, then
+  apply `DifferentiableOn.analyticOnNhd` on the open right half-plane.
+
+The checked bridge is 71 lines including its import and namespace wrapper.
+No Aristotle iteration was emitted.
 
 The exact K7 classification is in
 `MUNTZ_V3_CONSUMPTION_LEDGER.md`.
@@ -135,16 +158,20 @@ Goal 039 local additions:
 
 | File | SHA-256 |
 |---|---|
-| `muntz_v3/_COVER.md` | `2b29c146ea83293671f1883e0acdaa19fdbd0e977d5fc41888ff3c1a464f3dd8` |
-| `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean` | `0cf35bb021fbb888b6507e8d0dfbb61dc790d60ec4af7c8e9b5fec3928943c22` |
+| `muntz_v3/_COVER.md` | `a8b47544a353b1f1ac9123076c4638232bb7a6843333240c555b63baf6fcfa6d` |
+| `muntz_v3/ARISTOTLE_FINAL_MESSAGE.md` | `19561fea34291ef47d0a4283fc021248abfcdb21a3a88aef5e5bc5436ab94f9c` |
+| `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean` | `743e7cecf175a0be8c94d844c334ab66bfa5858696e6269a743b17ce0edfe148` |
 | `muntz_v3/RequestProject/MuntzV3Unconditional.lean` | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
-| `MUNTZ_V3_CONSUMPTION_LEDGER.md` | `b47bd8f9b73bf48377b79395cfa716f77d235e5feccefac14c70d14c45dda389` |
+| `MUNTZ_V3_CONSUMPTION_LEDGER.md` | `fac4ab51ac7cbeb7ed793fde43f987cd7dd2f65623830c17ec8f47cbbdc6a155` |
 | `039_muntz_v3_consumption.goal.md` | `fd96aec7e963841d0715377b19794213305fb4b2213ad4ae7eecf603d6f1f12b` |
 
 The `_COVER.md` and this answer are local metadata, not cloud-harvest bytes.
 `RESULT.md` is absent from both the tar listing and the authenticated project
-tree; no synthetic file was created. The exact cloud output supplied by the
-owner is already present verbatim in `ARISTOTLE_SUMMARY.md`.
+tree; `RESULT_MD_STATUS: ABSENT_IN_ARCHIVE` is an archive fact, not a defect,
+and no synthetic `RESULT.md` was created. The exact final Aristotle message
+supplied by the owner is preserved verbatim in
+`muntz_v3/ARISTOTLE_FINAL_MESSAGE.md` with the SHA-256 above. The verdict is
+derived only from Lean sources.
 
 ## Commit coordination
 
@@ -167,6 +194,7 @@ lake exe cache get                              PASS
 lake build (harvest only)                       PASS
 lake build (harvest + Goal 039 files)            PASS
 Main.lean line count                            239
+T4a bridge line count                            71
 harvest taint scan                              0
 all Goal 039 Lean taint scan                    0
 18 harvested main declarations axiom audit      standard triple
@@ -185,9 +213,8 @@ Standard triple means exactly:
 
 - `P039-M1`: **CONFIRMED** — clean build, zero taint, exact standard axiom
   triple.
-- `P039-M2`: **PARTIAL** — T4a closed locally using the predicted Mathlib
-  API, but the readable bridge file is 97 lines rather than the forecast
-  `≤ ~60`.
+- `P039-M2`: **CONFIRMED** — T4a is the direct R6-template port, uses the
+  predicted Mathlib API, and the complete bridge file is 71 lines.
 - `P039-M3`: **PARTIAL / SOURCE MISS** — T5 and both corollaries instantiate
   mechanically; PL1–PL3 cannot, because the delivered v3 contains no such
   declarations.
@@ -221,6 +248,11 @@ Standard triple means exactly:
 24. Ran final taint, Lean, route-status, diff, and git checks.           DONE
 25. Detected concurrent conductor commits 8e1a9f92/cb5dff91.            RECORDED
 26. Committed remaining canon and mirror together; no history rewrite.  DONE
+27. Applied dispatcher patch v1.1 after reading the R6 template.          DONE
+28. Stored owner-supplied final message verbatim with SHA-256.            DONE
+29. Classified RESULT.md absence as archive fact, not defect.            DONE
+30. Reduced the checked T4a bridge from 97 to 71 lines.                   PASS
+31. Re-ran Lean, taint, axiom, canon/mirror, and route checks.             PASS
 ```
 
 ## MYTHOS_PROSHKA_HANDOFF
@@ -231,7 +263,9 @@ SECONDARY: T4A_CLOSED_LOCALLY
 T4A: Lean-proved, zero holes, standard axiom triple
 T5: H_mellin discharged; main + punctured + pole-value wrappers build
 PL1-PL3: absent from delivered v3 source; not claimed
-RESULT.md: absent from actual archive/web tree; no synthetic byte source
+RESULT.md: ABSENT_IN_ARCHIVE (fact, not defect); no synthetic byte source
+ARISTOTLE_FINAL_MESSAGE.md: owner-supplied verbatim provenance, SHA-locked
+VERDICT: Lean sources only
 ROUTE: CHALLENGER / NOT_RH
 BUS_010: VOID
 NEXT: if explicit triangular PL1-PL3 remain required, issue a separate
