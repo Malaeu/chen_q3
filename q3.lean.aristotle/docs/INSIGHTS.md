@@ -48500,3 +48500,24 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - All P038-1..11 fire.  The honest primary result remains
   `SCALED_OUTER_SIGN_BARRIER_FOUR_THIRDS_INCONCLUSIVE` with stop
   `SCALED_JACOBI_COFINAL_LIFT_GAP`; no sign estimate or Lean phase was run.
+
+## 2026-07-30 — Goal 039 T4a Mellin bridge (in progress)
+
+- Exact target: `AnalyticOnNhd ℂ (Mellin h) {s | 0 < s.re}` under
+  measurability, support in `Icc 0 b`, and `LipschitzOnWith K h (Ico 0 b)`;
+  this is the unique open hypothesis consumed by the v3 pole-subtracted layer.
+- Four address-tied `q3_docs` searches returned no relevant packet.
+- Mathlib's direct entry point is
+  `mellin_differentiableAt_of_isBigO_rpow`: local integrability on `Ioi 0`,
+  `O(x^0)` at zero and eventual zero at infinity suffice for `Re s > 0`.
+- The zero-end bound can be based at `0 ∈ Ico 0 b`:
+  `‖h u‖ ≤ ‖h 0‖ + K*u` for `0 < u < min b 1`, hence a constant big-O.
+- Compact support makes the infinity estimate literally eventual equality to
+  zero; no asymptotic estimate or new Mellin definition is needed.
+- The remaining implementation risk is API assembly for
+  `LocallyIntegrableOn h (Ioi 0)` across the endpoint `b`; measurable
+  boundedness plus finite-measure compact intervals is the preferred route.
+- Convention crosswalk is only `smul_eq_mul` and `mul_comm`, followed by
+  `DifferentiableOn.analyticOnNhd` on the open half-plane.
+- Route B remains `CHALLENGER / NOT_RH`; T4a closure, if achieved, only
+  discharges the Müntz lane's explicit conditional hypothesis.
