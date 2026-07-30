@@ -106,6 +106,16 @@ GOAL_039_REQUIRED_SOURCES = (
     REQUEST_DIR / "039_muntz_v3_consumption.answer.md",
     REQUEST_DIR / "MUNTZ_V3_CONSUMPTION_LEDGER.md",
 )
+GOAL_040_REQUIRED_SOURCES = (
+    REQUEST_DIR / "040_muntz_v3_pl2_raw_pole_mismatch.goal.md",
+    REQUEST_DIR / "040_muntz_v3_pl2_raw_pole_mismatch.answer.md",
+    REQUEST_DIR / "038A_muntz_v3_semantic_audit.answer.md",
+    REQUEST_DIR / "ARISTOTLE_USAGE_PROTOCOL.md",
+    REQUEST_DIR / "ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md",
+    REQUEST_DIR / "proshka" / "PROSHKA_VERDICT_ARISTOTLE_MICROSCOPE_2026-07-30.md",
+    REQUEST_DIR / "proshka" / "PROSHKA_VERDICT_T4A_SUPERSEDED_PL2_2026-07-30.md",
+    REQUEST_DIR / "proshka" / "ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md",
+)
 MUNTZ_R6_DIR = REQUEST_DIR / "muntz_r6"
 MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
     Path("_COVER.md"),
@@ -133,6 +143,7 @@ MUNTZ_V3_REQUIRED_RELATIVE_PATHS = (
     Path("RequestProject/.gitkeep"),
     Path("RequestProject/Main.lean"),
     Path("RequestProject/MellinCompactSupportAnalyticity.lean"),
+    Path("RequestProject/MuntzV3PL2RawPoleMismatch.lean"),
     Path("RequestProject/MuntzV3Unconditional.lean"),
     Path("lake-manifest.json"),
     Path("lakefile.toml"),
@@ -166,6 +177,8 @@ def role(path: Path) -> str:
             "MuntzV3Unconditional.lean",
         }:
             return "Muntz v3 local Goal 039 Lean artifact"
+        if name == "MuntzV3PL2RawPoleMismatch.lean":
+            return "Muntz v3 local Goal 040 PL2 Lean artifact"
         return "Muntz v3 harvested artifact"
     if name.endswith(".goal.md"):
         return "goal"
@@ -225,6 +238,7 @@ def selected_sources() -> list[Path]:
         + GOAL_037_REQUIRED_SOURCES
         + GOAL_038_REQUIRED_SOURCES
         + GOAL_039_REQUIRED_SOURCES
+        + GOAL_040_REQUIRED_SOURCES
     ):
         if not path.is_file():
             raise FileNotFoundError(

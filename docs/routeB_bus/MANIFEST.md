@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 261 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -76,6 +76,11 @@ Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_R
 | `038_scaled_outer_sign_barrier.goal.md` | goal | `ecae3afd01b1d9667dfae5304cfe5a310b3ecc52c575978b61acb42e035b0364` |
 | `039_muntz_v3_consumption.answer.md` | answer | `9fddc1a9c6c7cdfbfe43bbfd11c8a0cfbaa4dd49808f2c6815afea262ff37124` |
 | `039_muntz_v3_consumption.goal.md` | goal | `fd96aec7e963841d0715377b19794213305fb4b2213ad4ae7eecf603d6f1f12b` |
+| `040_muntz_v3_pl2_raw_pole_mismatch.answer.md` | answer | `e91dbdfe460513ced5133f9b7c7b1fe611e943175b1e69d4efea23d51686b86a` |
+| `040_muntz_v3_pl2_raw_pole_mismatch.goal.md` | goal | `48172cdbc16f527b2cc4b3c1c28772b4cbaf7f036b57326001e4e69046989300` |
+| `041_conductor_handover_and_mirror_sync.answer.md` | answer | `80976e272f0b3a510e57d6549d5590ec8569b620d7f62c7ac4a6f2ea096cd543` |
+| `041_conductor_handover_and_mirror_sync.goal.md` | goal | `1ee885c50c92e4cad5f108bd51c855ea0df893caf147f2c12bb2a3d6588c8083` |
+| `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
 | `ARISTOTLE_TASK_EdgeSliverMomentReduction.md` | active Aristotle contract | `5b9a7fba98626aca3ab6d0bf1443bcd15b829bab2426c1f08a04ffac6ff1ac7d` |
@@ -96,7 +101,7 @@ Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `3208d0e6d1456804b08b265339e313606474d8bc4447f9ddc106e620be0db03c` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `51dc90f3c58843c8acc966095c4afe430911142ca638f5845297aaa1dd7812f1` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_038_RUN.log` | Route B artifact | `3a1d9d7417bbfc87138623cc452dcf6a2584f47ad102cfca0fed0db93015197f` |
@@ -137,6 +142,7 @@ Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_R
 | `NormalizedTrackingRateTransfer.lean` | key Lean artifact | `5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed` |
 | `OFF_AXIS_GROWTH_PROBE.csv` | probe data | `99b61c80567e0e0d8c3a5be8e52a22d35376d0a05c4b7051eb70fa0e0fb55c90` |
 | `OFF_AXIS_GROWTH_PROBE.md` | probe report | `264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4` |
+| `ORG_UPDATE_CONDUCTOR_RETIRED_2026-07-30.md` | Proshka verdict/source review | `3daf3bc4d672d1fe23c174365c73d8050899f318bd89c4740da39b886964ef8d` |
 | `P038_PLANT_LOG.md` | Route B artifact | `24d211ec2a2379614659ae0763b51423e5fb994fd740838f8206b08ca8aa3390` |
 | `P1_RADIUS_MUTATION.csv` | probe data | `8155f9bb3be025a2fe5ded4d3ada788d3e8251175321b0e35a7eecb0379fabb2` |
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
@@ -170,7 +176,9 @@ Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_R
 | `PROSHKA_RESYNC_AUDIT_2026-07-27.md` | Proshka verdict/source review | `49b5ec48d48f6390f6a0c6516b7ef186126ec676a8424650f6de04ad95f6714c` |
 | `PROSHKA_SIGN_FRONT_2026-07-27.md` | Proshka verdict/source review | `af317ee7e183fee763fa65a870fb129ad0769410dc5bc2cd340283d6f771825a` |
 | `PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
+| `PROSHKA_VERDICT_ARISTOTLE_MICROSCOPE_2026-07-30.md` | Proshka verdict/source review | `4f31efe4f0ccdd7933851496848fb2701bc2588e94dd60c9dd2348aaded1de30` |
 | `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md` | Proshka verdict/source review | `fa82f900e2096830116fbaeb22bf2001711075874e1cbf59b5c95533d5712a00` |
+| `PROSHKA_VERDICT_T4A_SUPERSEDED_PL2_2026-07-30.md` | Proshka verdict/source review | `053f872aab3504837d01758d7ea30ce6545e82d7122b21e5308d46bc97f3b8a9` |
 | `PROSHKA_ZIP_AUDIT_FOLLOWUP_2026-07-27.md` | Proshka verdict/source review | `2310171f2f81d1afef8599da23cf9cf8cacd3d1eb9e38972f21f7075f9620d1f` |
 | `PerturbativeTrueGapLower.lean` | key Lean artifact | `bc16c18363618728b323d03fc7ebda0132aa93ba04cce22a6bc1464e9148fd19` |
 | `PhaseAlignmentRateTransfer.lean` | key Lean artifact | `9f946bc3671454e4f1eda790542329a46219406c392083db167fedb2b8c9fa4f` |
@@ -250,6 +258,7 @@ Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/.gitkeep` | Muntz v3 harvested artifact | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `muntz_v3/RequestProject/Main.lean` | Muntz v3 harvested artifact | `0b2e52db207610f0e63c3dac3e61c5d14f26d0119ccd11756cdbeeab80f3b888` |
 | `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean` | Muntz v3 local Goal 039 Lean artifact | `743e7cecf175a0be8c94d844c334ab66bfa5858696e6269a743b17ce0edfe148` |
+| `muntz_v3/RequestProject/MuntzV3PL2RawPoleMismatch.lean` | Muntz v3 local Goal 040 PL2 Lean artifact | `82ddccccefdc2b8bcd547d9bfbed4ff23d4dd6a0756f553ff6d01b40c7def339` |
 | `muntz_v3/RequestProject/MuntzV3Unconditional.lean` | Muntz v3 local Goal 039 Lean artifact | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
 | `muntz_v3/_COVER.md` | Muntz v3 harvest and consumption metadata | `a8b47544a353b1f1ac9123076c4638232bb7a6843333240c555b63baf6fcfa6d` |
 | `muntz_v3/lake-manifest.json` | Muntz v3 harvested artifact | `116c6ef00aa899fb38c08c5e4c92c0e434d0e7f9d574fcb5d4d42cc90ffb07cb` |

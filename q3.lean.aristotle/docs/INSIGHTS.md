@@ -48521,3 +48521,23 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `DifferentiableOn.analyticOnNhd` on the open half-plane.
 - Route B remains `CHALLENGER / NOT_RH`; T4a closure, if achieved, only
   discharges the Müntz lane's explicit conditional hypothesis.
+
+## 2026-07-30 — Goal 040 PL2 raw-pole mismatch (in progress)
+
+- Exact target: one compactly supported measurable `h`, Lipschitz only on
+  `Ico 0 b`, with zero mass and `deriv (Mellin h) 1 ≠ 0`, forcing the raw
+  function `w ↦ riemannZeta w * Mellin h w` to be discontinuous at `1`.
+- Four address-tied `q3_docs` searches returned no indexed theorem packet.
+- The R6 source already contains the complete generic residue-times-slope
+  lemma `zeta_product_not_continuousAt_of_simple_zero`; its proof is a direct
+  reuse of `riemannZeta_residue_one`, `hasDerivAt_iff_tendsto_slope`, and
+  `tendsto_nhds_unique`.
+- Pinned Mathlib supplies `hasMellin_cpow_Ioc`, which gives a cheaper exact
+  witness than a hand-integrated tent: a compact quadratic combination on
+  `Ioc 0 1` has zero Mellin value at `1` and derivative `-1/12`.
+- The only live implementation checks are the `LipschitzOnWith` bound on
+  `Ico 0 1`, the project/Mathlib Mellin convention crosswalk, and local
+  derivative transport from the rational Mellin formula.
+- `Main.lean` and the Goal 039 bridge remain frozen; Goal 040 adds exactly one
+  new Lean file and does not authorize any Aristotle submission or route
+  promotion.
