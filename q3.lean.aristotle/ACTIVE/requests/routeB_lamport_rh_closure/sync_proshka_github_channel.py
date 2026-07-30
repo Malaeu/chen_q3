@@ -101,6 +101,11 @@ GOAL_038_REQUIRED_SOURCES = (
     REQUEST_DIR / "CHECK_038_RUN.log",
     REQUEST_DIR / "check_038_scaled_outer_sign_barrier.py",
 )
+GOAL_039_REQUIRED_SOURCES = (
+    REQUEST_DIR / "039_muntz_v3_consumption.goal.md",
+    REQUEST_DIR / "039_muntz_v3_consumption.answer.md",
+    REQUEST_DIR / "MUNTZ_V3_CONSUMPTION_LEDGER.md",
+)
 MUNTZ_R6_DIR = REQUEST_DIR / "muntz_r6"
 MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
     Path("_COVER.md"),
@@ -115,6 +120,19 @@ MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
     Path("RequestProject/RiemannBoundaryCellBridge.lean"),
     Path("RequestProject/TailAnalyticity.lean"),
     Path("RequestProject/WindowAnalyticity.lean"),
+    Path("lake-manifest.json"),
+    Path("lakefile.toml"),
+    Path("lean-toolchain"),
+)
+MUNTZ_V3_DIR = REQUEST_DIR / "muntz_v3"
+MUNTZ_V3_REQUIRED_RELATIVE_PATHS = (
+    Path("_COVER.md"),
+    Path("ARISTOTLE_SUMMARY.md"),
+    Path("README.md"),
+    Path("RequestProject/.gitkeep"),
+    Path("RequestProject/Main.lean"),
+    Path("RequestProject/MellinCompactSupportAnalyticity.lean"),
+    Path("RequestProject/MuntzV3Unconditional.lean"),
     Path("lake-manifest.json"),
     Path("lakefile.toml"),
     Path("lean-toolchain"),
@@ -137,6 +155,15 @@ def role(path: Path) -> str:
         if name == "_COVER.md":
             return "Muntz R6 harvest metadata"
         return "Muntz R6 harvested artifact"
+    if MUNTZ_V3_DIR.name in path.parts:
+        if name == "_COVER.md":
+            return "Muntz v3 harvest and consumption metadata"
+        if name in {
+            "MellinCompactSupportAnalyticity.lean",
+            "MuntzV3Unconditional.lean",
+        }:
+            return "Muntz v3 local Goal 039 Lean artifact"
+        return "Muntz v3 harvested artifact"
     if name.endswith(".goal.md"):
         return "goal"
     if name.endswith(".answer.md"):
@@ -187,6 +214,7 @@ def selected_sources() -> list[Path]:
         + GOAL_035_REQUIRED_SOURCES
         + GOAL_037_REQUIRED_SOURCES
         + GOAL_038_REQUIRED_SOURCES
+        + GOAL_039_REQUIRED_SOURCES
     ):
         if not path.is_file():
             raise FileNotFoundError(
@@ -210,7 +238,14 @@ def selected_nested_sources() -> dict[Path, Path]:
             raise FileNotFoundError(
                 f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{source}"
             )
-        paths[relative] = source
+        paths[Path(MUNTZ_R6_DIR.name) / relative] = source
+    for relative in MUNTZ_V3_REQUIRED_RELATIVE_PATHS:
+        source = MUNTZ_V3_DIR / relative
+        if not source.is_file():
+            raise FileNotFoundError(
+                f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{source}"
+            )
+        paths[Path(MUNTZ_V3_DIR.name) / relative] = source
     return paths
 
 
@@ -246,17 +281,19 @@ def main() -> None:
     DESTINATION.mkdir(parents=True, exist_ok=True)
     channel_rule = DESTINATION / "CHANNEL_RULE.md"
     manifest = DESTINATION / "MANIFEST.md"
-    nested_destination = DESTINATION / MUNTZ_R6_DIR.name
+    nested_destinations = tuple(
+        DESTINATION / name
+        for name in (MUNTZ_R6_DIR.name, MUNTZ_V3_DIR.name)
+    )
     proshka_destination = DESTINATION / "proshka"
     allowed_names = set(by_name) | {
         channel_rule.name,
         manifest.name,
-        nested_destination.name,
         proshka_destination.name,
-    }
+    } | {path.name for path in nested_destinations}
     for existing in DESTINATION.iterdir():
         if (
-            existing in (nested_destination, proshka_destination)
+            existing in (*nested_destinations, proshka_destination)
             and existing.is_dir()
         ):
             continue
@@ -270,26 +307,31 @@ def main() -> None:
     for name, source in by_name.items():
         shutil.copy2(source, DESTINATION / name)
 
-    nested_destination.mkdir(parents=True, exist_ok=True)
-    allowed_nested = set(nested_sources)
-    for existing in nested_destination.rglob("*"):
-        if existing.is_symlink():
-            raise RuntimeError(
-                f"PROSHKA_CHANNEL_NESTED_SYMLINK_FORBIDDEN:{existing}"
-            )
-        if existing.is_file():
-            relative = existing.relative_to(nested_destination)
-            if relative not in allowed_nested:
-                existing.unlink()
-    for existing in sorted(
-        (path for path in nested_destination.rglob("*") if path.is_dir()),
-        key=lambda path: len(path.parts),
-        reverse=True,
-    ):
-        if not any(existing.iterdir()):
-            existing.rmdir()
+    for nested_destination in nested_destinations:
+        nested_destination.mkdir(parents=True, exist_ok=True)
+        allowed_nested = {
+            relative.relative_to(nested_destination.name)
+            for relative in nested_sources
+            if relative.parts[0] == nested_destination.name
+        }
+        for existing in nested_destination.rglob("*"):
+            if existing.is_symlink():
+                raise RuntimeError(
+                    f"PROSHKA_CHANNEL_NESTED_SYMLINK_FORBIDDEN:{existing}"
+                )
+            if existing.is_file():
+                relative = existing.relative_to(nested_destination)
+                if relative not in allowed_nested:
+                    existing.unlink()
+        for existing in sorted(
+            (path for path in nested_destination.rglob("*") if path.is_dir()),
+            key=lambda path: len(path.parts),
+            reverse=True,
+        ):
+            if not any(existing.iterdir()):
+                existing.rmdir()
     for relative, source in nested_sources.items():
-        destination = nested_destination / relative
+        destination = DESTINATION / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, destination)
 
@@ -339,7 +381,7 @@ def main() -> None:
         key=lambda path: path.name,
     )
     nested_mirrored = [
-        nested_destination / relative for relative in sorted(nested_sources)
+        DESTINATION / relative for relative in sorted(nested_sources)
     ] + [prompt_destination]
     listed = sorted(
         mirrored + nested_mirrored + [channel_rule],
@@ -350,7 +392,7 @@ def main() -> None:
     }
     source_by_destination.update(
         {
-            nested_destination / relative: source
+            DESTINATION / relative: source
             for relative, source in nested_sources.items()
         }
     )
