@@ -94,7 +94,21 @@ Claude Desktop показывает страницу проекта, а не к�
 
 ---
 
-## Открываешь новый чат с Mythos — первым делом bootstrap
+## Открываешь новый чат — первым делом bootstrap
+
+Оба решающих агента получают обстановку первым сообщением, не в системном
+промпте:
+
+```bash
+./orchestrator/desktop_app.sh claude send "$(cat orchestrator/state/mythos_bootstrap.txt)"
+# Прошке — вставкой в браузерный композер:
+cat orchestrator/state/proshka_bootstrap.txt
+```
+
+Их дополнения лежат в `proshka/` и зеркалятся автоматически:
+`MYTHOS_ORCHESTRATION_ADDENDUM.md`, `PROSHKA_ORCHESTRATION_ADDENDUM.md`.
+
+### Почему не в системном промпте
 
 **Оркестрационное дополнение НЕ живёт в его системном промпте.** Системный
 промпт читается при каждом его сообщении — там должен быть только его характер
