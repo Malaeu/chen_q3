@@ -94,7 +94,7 @@ Proshka mirror from `rh_lean_01_2026`; 250 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `dac5259f66010ae600664bc188debecded6b9c347cf51e723a5efbf02d36deee` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `bafd9c5fc684b512f36a5910f6579ca328362552371557b97449709a986c669b` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_038_RUN.log` | Route B artifact | `3a1d9d7417bbfc87138623cc452dcf6a2584f47ad102cfca0fed0db93015197f` |
