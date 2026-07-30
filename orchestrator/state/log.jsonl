@@ -28,3 +28,11 @@
 {"ts": "2026-07-30T17:40:32.256530+00:00", "event": "route_block", "lane": "YLSHA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/ylsha/mythos_036_1.md", "chars": 490}
 {"ts": "2026-07-30T17:43:42.614949+00:00", "event": "codex_dispatch", "prompt": "orchestrator/state/queue/codex/037_dispatch.md", "chars": 3876}
 {"ts": "2026-07-30T17:56:04.208629+00:00", "event": "codex_exit", "code": 0}
+{"ts": "2026-07-30T18:53:49.474715+00:00", "event": "route_preamble", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/mythos_038_preamble.md", "chars": 1231}
+{"ts": "2026-07-30T18:53:49.475363+00:00", "event": "route_block", "lane": "CODEX", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/codex/mythos_038_1.md", "chars": 353}
+{"ts": "2026-07-30T18:53:49.475594+00:00", "event": "route_block", "lane": "PROSHKA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/proshka/mythos_038_1.md", "chars": 298}
+{"ts": "2026-07-30T18:53:49.475759+00:00", "event": "route_block", "lane": "ARISTOTLE", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/aristotle/mythos_038_1.md", "chars": 355}
+{"ts": "2026-07-30T18:53:49.475904+00:00", "event": "route_block", "lane": "YLSHA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/ylsha/mythos_038_1.md", "chars": 809}
+{"ts": "2026-07-30T18:54:52.981914+00:00", "event": "bus_file", "source": "/Users/emalam/Downloads/038_scaled_outer_sign_barrier.goal.md", "dest": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/038_scaled_outer_sign_barrier.goal.md"}
+{"ts": "2026-07-30T18:55:32.656450+00:00", "event": "codex_dispatch", "prompt": "orchestrator/state/queue/codex/038_dispatch.md", "chars": 3156}
+{"ts": "2026-07-30T19:10:08.126720+00:00", "event": "codex_exit", "code": 0}

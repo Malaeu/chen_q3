@@ -1,0 +1,5 @@
+Ничего не требуется; видимость — STATE-строка 038 и зеркало.
+
+**Мой пен-трек, параллельно и ничего не ждёт:** перезапускаю вывод под R11 — скелет `ParametricScaledJacobiProfileIdentity` пишется уже сейчас из текста 031 (рекуррентность `L_Θ`, `δ=(b₄−b₀)/2`, Green ledger с живым terminal), `JACOBI_LIFT_BREAK_LIST` от Codex пришпилит места лифта; готовый черновик уходит Прошке на adversarial pass до какой-либо формализации (P5).
+
+**Статус:** OPEN / `CHALLENGER_NOT_RH`. Минимальный именованный gap по судье: `ParametricScaledJacobiDiscriminatorNonneg` при object-lock'е `ParametricScaledJacobiProfileIdentity`; доменная вилка MODE FULL / MODE SPLIT открыта, `CofinalOuterLobeGate` не доказан. Вердикт изменят: исход generic-m реплея (P038-M1), rehearsal m=257 (P038-M3) и брекет `a_intrinsic(257)` (P038-M2).
