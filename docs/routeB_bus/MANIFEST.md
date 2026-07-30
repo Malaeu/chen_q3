@@ -94,7 +94,7 @@ Proshka mirror from `rh_lean_01_2026`; 249 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `f4c02d421d19ce48cf3be0d28e71b5bc84f57d48de1f1b6e181a0d7fbc90c31f` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `1bf73ede5dbd4f3bff4cbe916a5797d784f3b67bec5be43e37ce5215bbb0834a` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_038_RUN.log` | Route B artifact | `3a1d9d7417bbfc87138623cc452dcf6a2584f47ad102cfca0fed0db93015197f` |
@@ -129,7 +129,7 @@ Proshka mirror from `rh_lean_01_2026`; 249 mirrored source files plus `CHANNEL_R
 | `JACOBI_LIFT_BREAK_LIST.md` | Route B artifact | `b5aa665691777399e0251ce2e5269646920cd6676667e60292df18f1f7fd47c2` |
 | `MASS_NORM_AND_PRECISION_REPORT_2026-07-27.md` | measurement report | `7add221b10f3dc58e7d3c849f7c8844a1ba9df2b9b55e6fe653bce6062b7f2c0` |
 | `MUNTZ_V3_CONSUMPTION_LEDGER.md` | Route B artifact | `fac4ab51ac7cbeb7ed793fde43f987cd7dd2f65623830c17ec8f47cbbdc6a155` |
-| `MYTHOS_ORCHESTRATION_ADDENDUM.md` | Proshka verdict/source review | `789bd896bac153131d77e1693837b108a1271fdad2f8cb1300eb541ca538a9f7` |
+| `MYTHOS_ORCHESTRATION_ADDENDUM.md` | Proshka verdict/source review | `5abb6e23f9b06cc051865b4cf63b12adaf323555c949b09993e6744602642f9e` |
 | `Main.lean` | key Lean artifact | `929b0bddef0b781f3fb42c7a99f252dc0bda7331f698104f7075e12ff637c52d` |
 | `MontelNormalFamilies.lean` | key Lean artifact | `2da026570c804633022a010d986c6a11e2df27241023413636ee95723fabf2d5` |
 | `NormalizedTrackingRateTransfer.lean` | key Lean artifact | `5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed` |

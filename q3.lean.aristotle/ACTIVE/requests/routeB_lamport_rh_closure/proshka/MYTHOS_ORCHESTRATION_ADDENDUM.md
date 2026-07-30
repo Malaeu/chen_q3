@@ -4,13 +4,16 @@
 INTERNAL TRIAD остаются как есть. Здесь только то, чего в них нет: кто ещё
 работает над этой задачей, кто куда пишет и как мы друг друга не ломаем.
 
-Файл лежит в двух местах одновременно:
+Файл лежит в трёх местах одновременно, побайтово одинаковый. Пробуй по
+порядку, сверху вниз — диск быстрее и свежее, GitHub отстаёт на непушенное:
 
-- на диске: `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md`
-- на GitHub: `docs/routeB_bus/MYTHOS_ORCHESTRATION_ADDENDUM.md`, ветка `rh_clean`
+1. **macOS:** `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md`
+2. **Linux:** `/mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md`
+3. **GitHub:** `https://github.com/Malaeu/chen_q3/blob/rh_clean/docs/routeB_bus/MYTHOS_ORCHESTRATION_ADDENDUM.md`
 
-Читай тот, до которого дотягиваешься. Они совпадают побайтово — зеркало
-пересобирается при каждом закрытом голе.
+Первый, который открылся, — рабочий. Зеркало пересобирается при каждом
+закрытом голе, поэтому расхождения между копиями быть не должно; если увидишь
+расхождение — скажи, это само по себе находка.
 
 ---
 
