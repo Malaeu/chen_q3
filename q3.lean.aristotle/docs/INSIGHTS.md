@@ -48476,3 +48476,27 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Jacobi/Green algebra, the tooth alias, and plants P1--P8.  Scope remains
   finite cell `m=257`; no cofinal or RH conclusion is made, `STATE` is
   unchanged, and Bus 010 remains void.
+
+## 2026-07-30 — Goal 038 generic-m Jacobi replay
+
+- Four address-tied `q3_docs` searches returned no indexed theorem supplying
+  the missing generic coefficient family, adjoint receiver, or terminal
+  limit; the current answer must therefore come from the source-locked
+  030/031 files themselves.
+- The scaled crosswalk is exact:
+  `z=a/m=a/lambda^2` gives
+  `sqrt(z/lambda)=sqrt(a)/lambda^(3/2)`.
+- The common recurrence, divided difference, symmetrizing weights and full
+  finite-`Q` Green ledger replay parametrically with a live terminal term.
+- The complete profile lift stops at five named interfaces: the Ψ/δ backend
+  is hard-coded to `m=257`; `Y` is only a conditional adjoint receiver;
+  `D_m` is not materialized; no `Q→∞` terminal control exists; and the
+  cofinal spectral gap is not source-locked.
+- DLMF's tridiagonal Jacobi-matrix and three-term-recurrence forms support
+  R1 (continuant/transfer matrix), while the Legendre generating-function
+  form supports R2 only after an exact crosswalk for the actual δ sequence.
+- The finite rehearsal passes with 179 nonnegative controls, 62
+  zero-compatible teeth, no KILL, and live sign-flip/terminal-drop plants.
+- All P038-1..11 fire.  The honest primary result remains
+  `SCALED_OUTER_SIGN_BARRIER_FOUR_THIRDS_INCONCLUSIVE` with stop
+  `SCALED_JACOBI_COFINAL_LIFT_GAP`; no sign estimate or Lean phase was run.

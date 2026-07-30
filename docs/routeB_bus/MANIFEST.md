@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 234 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -68,9 +68,11 @@ Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_R
 | `034_edge_sliver_REGISTRATION.md` | Route B artifact | `00ad87dac777367e5954ac105c1434aa72f70f59d68185c8b8c5d85cef4e596b` |
 | `035_edge_sliver_materialization.answer.md` | answer | `82db42b3070842b4323dca3f9d50968193c1530a2b4797722334346feb7c7ab8` |
 | `035_edge_sliver_materialization.goal.md` | goal | `5bf64cbb34d19dab7524fc930e211be152ccb995ba668d846f3f042a2c6fe1db` |
-| `036_tooth_sign.goal.md` | goal | `6ccab1afbf0e17d75032a90895304468692ed239590921866e96c74e3577eebd` |
+| `036_tooth_sign.goal.md` | goal | `dc8cda77b90e935b266325a3ae58bff5a25e175614df17302d3904c1f7be739a` |
 | `037_muntz_r6_harvest.answer.md` | answer | `3982ace30ef441d80feca9da377dde801cf207932ee43998f4003db485d79105` |
 | `037_muntz_r6_harvest.goal.md` | goal | `516b6924c2b48cd3825faf3b7266fbcf6a68faffecbe89e2e63213f806a1ca9e` |
+| `038_scaled_outer_sign_barrier.answer.md` | answer | `783422be43474eec747c3e05a61c6e2191e35987f2e6027fb198ce4594c3bbb8` |
+| `038_scaled_outer_sign_barrier.goal.md` | goal | `ecae3afd01b1d9667dfae5304cfe5a310b3ecc52c575978b61acb42e035b0364` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `90af30037ec0340bca1ea7d530a37aca3f48342d856d02bd5717cc6d3c627c95` |
 | `ARISTOTLE_TASK_EdgeSliverMomentReduction.md` | active Aristotle contract | `5b9a7fba98626aca3ab6d0bf1443bcd15b829bab2426c1f08a04ffac6ff1ac7d` |
@@ -90,9 +92,10 @@ Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `710f3ba180cdb6236f4bbf04162a6c14113d483279cfec15fd6591fea615960d` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `07c03b20b2c2962351288f0bed1048c27d58ee321fa79e10b2bf0d67d2393c73` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
+| `CHECK_038_RUN.log` | Route B artifact | `3a1d9d7417bbfc87138623cc452dcf6a2584f47ad102cfca0fed0db93015197f` |
 | `COUPLED_FULL_SUM_RESPONSE_CERT.json` | Route B artifact | `2e31e67ba9cc9aed78bfed9ed20d052c1917b508958ddff077124e2cf95989da` |
 | `CanonicalRHRouteSkeleton.lean` | key Lean artifact | `2e849d677e0ec771c47a436abdf657690e833e52555af8c8698185e30274536b` |
 | `ClassicalXiInterface.lean` | key Lean artifact | `838f8156efe7db74cdece2b333ee223ef7737ea2981c4ae28a672f36dd04e82b` |
@@ -121,12 +124,14 @@ Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_R
 | `H2A_CERT_SPLIT_PILOT_REPORT_2026-07-25.md` | measurement report | `942d981c18e53c89c3312fc04312a97f60d5ac62d1b12ea161bb69a1a64193e7` |
 | `H2aPenaltyCoercivity.lean` | key Lean artifact | `4d1d71560040890d673d1fc10cd107a2a06a7c9763f9a8baa6132498dff5d39c` |
 | `HermitianDeterminantRealZeros.lean` | key Lean artifact | `d886f53f2b935980b84727715dd5a162c357047b0e23ddce713c8c83bf8502c2` |
+| `JACOBI_LIFT_BREAK_LIST.md` | Route B artifact | `b5aa665691777399e0251ce2e5269646920cd6676667e60292df18f1f7fd47c2` |
 | `MASS_NORM_AND_PRECISION_REPORT_2026-07-27.md` | measurement report | `7add221b10f3dc58e7d3c849f7c8844a1ba9df2b9b55e6fe653bce6062b7f2c0` |
 | `Main.lean` | key Lean artifact | `929b0bddef0b781f3fb42c7a99f252dc0bda7331f698104f7075e12ff637c52d` |
 | `MontelNormalFamilies.lean` | key Lean artifact | `2da026570c804633022a010d986c6a11e2df27241023413636ee95723fabf2d5` |
 | `NormalizedTrackingRateTransfer.lean` | key Lean artifact | `5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed` |
 | `OFF_AXIS_GROWTH_PROBE.csv` | probe data | `99b61c80567e0e0d8c3a5be8e52a22d35376d0a05c4b7051eb70fa0e0fb55c90` |
 | `OFF_AXIS_GROWTH_PROBE.md` | probe report | `264effe493630cce3f2119f7b7b82e090fb84d6bb34b4b9bcb0e3ceae0b332c4` |
+| `P038_PLANT_LOG.md` | Route B artifact | `24d211ec2a2379614659ae0763b51423e5fb994fd740838f8206b08ca8aa3390` |
 | `P1_RADIUS_MUTATION.csv` | probe data | `8155f9bb3be025a2fe5ded4d3ada788d3e8251175321b0e35a7eecb0379fabb2` |
 | `PHASE_STRUCTURE_PROBE.csv` | probe data | `dc7a35967742ad77009d8c9e4ed3f577d50de0a7378ff5eeeb2f554f91e71a49` |
 | `PHASE_STRUCTURE_PROBE.md` | probe report | `f508fdd0c07c800c387e0d8b8995038e1032a9321cbb47ff5da05685940a23dd` |
@@ -185,6 +190,7 @@ Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_R
 | `SOFT_L2_RIGIDITY_FREEZE_REPORT_2026-07-13.md` | measurement report | `2c43084ad2e7733839a3a3afda50c984e0e6b52d39c3232dd81db061a817c749` |
 | `STRIP_GROWTH_PROBE.csv` | probe data | `8408157a4a897b8a168a04d111db7aa60baf6757b4756e2baab9358af1d824dc` |
 | `STRIP_GROWTH_PROBE.md` | probe report | `1687b411bea4da8a30f1463427ce41c3f65a3cf218bd91dccbcded0ea0487d8a` |
+| `SUPPLIER_A_REHEARSAL_M257.md` | Route B artifact | `a819d14acaf28f4fe2b6140512e34a3d6f7bac23b79fae2112e3efd3a052d5b2` |
 | `SafeBoundsToSquareEnvelope.lean` | key Lean artifact | `bdec0a4d04ea6f21358e965b5de74286503699cbb1a323c650e64f9d91c8ab92` |
 | `SafeBridgeFalsifiers.lean` | key Lean artifact | `7e33e0675b6a2ed2f74b09c5653b8703d27eed0ef615b84341ef3c2ea4a5282c` |
 | `SafeRateAssembly.lean` | key Lean artifact | `f864eb19263be812cb2bcecc6a4fe64bc67af499f4675ac1a3295b8ed71f50af` |
@@ -204,6 +210,7 @@ Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_R
 | `WindowEndpointBridge.lean` | key Lean artifact | `e3a021173e66f61389ac218ceaf6c898d64bb9854babea50f435b131ae21c44a` |
 | `ZeroEscapeLogic.lean` | key Lean artifact | `7993b952764bd78aaf5e5d0684b77ef25da15a3fbda4458bc2d702dc0d884573` |
 | `check_034_edge_sliver_reduction.py` | Route B artifact | `8fba7657164fd16411e6356f018cf661e2cc843b7f01777353a3ddacd5f3f79b` |
+| `check_038_scaled_outer_sign_barrier.py` | Route B artifact | `7b9c1b530a475eb3cff35561d9c1cb979e5925409212fdc82aefe41403a11716` |
 | `check_coupled_full_sum_response_certificate.py` | Route B artifact | `5c2af3249e6f2de5263f93ea1f01277531da13484e43e59b287dfe86e6d7f3f7` |
 | `check_decisive_finite_core_theta_k_escalation.py` | Route B artifact | `3824f56191d2c158b9192d441ac832f5aaa596b0bcb5d538c7332770ccf28acb` |
 | `check_finite_core_theta_certificate.py` | Route B artifact | `40c0987a78541fd5056bdc34aedf3141cc14eb71f1d104518254688b4c2ee981` |
@@ -231,5 +238,6 @@ Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_R
 | `muntz_r6/lakefile.toml` | Muntz R6 harvested artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
 | `muntz_r6/lean-toolchain` | Muntz R6 harvested artifact | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
 | `priority_band_positive_part_certificate.py` | Route B artifact | `b9fe448ea3af25d932c2beca6390ca56aa4cfbef0bb3996bcbc0c96ebd4fea41` |
+| `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 
 `MANIFEST.md` is excluded from its own hash table.

@@ -7,6 +7,14 @@
 > Зубья не входят в лебеговский бюджет (034: TOOTH_LEDGER_IRRELEVANT_TO_
 > LEBESGUE_CONSUMER, plant P6).
 
+> Решение судьи по директиве 038:
+> `ABSORB_AS_FINITE_SUPPLIER_A_REHEARSAL`;
+> `standalone_critical_path_goal=false`;
+> `may_be_used_as_cofinal_premise=false`;
+> `execute_existing_goal_as_written=false`.
+> SHA-256 директивы:
+> `bbd599fbca17e752fa5c2b5b8b4ac667d84cb6bc6799c40a2568b04b07c16aac`.
+
 # ГОЛ 034 — EXACT FULL-WINDOW TOOTH SIGN CERTIFICATE
 
 От: диспетчер. Формулировка собрана Codex по входам 031 и 033, судьёй не

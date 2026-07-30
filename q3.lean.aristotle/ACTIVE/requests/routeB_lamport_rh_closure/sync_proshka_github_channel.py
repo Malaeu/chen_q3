@@ -92,6 +92,15 @@ GOAL_037_REQUIRED_SOURCES = (
     REQUEST_DIR / "037_muntz_r6_harvest.goal.md",
     REQUEST_DIR / "037_muntz_r6_harvest.answer.md",
 )
+GOAL_038_REQUIRED_SOURCES = (
+    REQUEST_DIR / "038_scaled_outer_sign_barrier.goal.md",
+    REQUEST_DIR / "038_scaled_outer_sign_barrier.answer.md",
+    REQUEST_DIR / "JACOBI_LIFT_BREAK_LIST.md",
+    REQUEST_DIR / "SUPPLIER_A_REHEARSAL_M257.md",
+    REQUEST_DIR / "P038_PLANT_LOG.md",
+    REQUEST_DIR / "CHECK_038_RUN.log",
+    REQUEST_DIR / "check_038_scaled_outer_sign_barrier.py",
+)
 MUNTZ_R6_DIR = REQUEST_DIR / "muntz_r6"
 MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
     Path("_COVER.md"),
@@ -109,6 +118,9 @@ MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
     Path("lake-manifest.json"),
     Path("lakefile.toml"),
     Path("lean-toolchain"),
+)
+PROSHKA_SYSTEM_PROMPT = (
+    REQUEST_DIR / "proshka" / "PROSHKA_SYSTEM_PROMPT_v2.md"
 )
 
 def sha256(path: Path) -> str:
@@ -174,6 +186,7 @@ def selected_sources() -> list[Path]:
         + GOAL_034_REQUIRED_SOURCES
         + GOAL_035_REQUIRED_SOURCES
         + GOAL_037_REQUIRED_SOURCES
+        + GOAL_038_REQUIRED_SOURCES
     ):
         if not path.is_file():
             raise FileNotFoundError(
@@ -216,6 +229,10 @@ def main() -> None:
 
     sources = selected_sources()
     nested_sources = selected_nested_sources()
+    if not PROSHKA_SYSTEM_PROMPT.is_file():
+        raise FileNotFoundError(
+            f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{PROSHKA_SYSTEM_PROMPT}"
+        )
     by_name: dict[str, Path] = {}
     for source in sources:
         previous = by_name.get(source.name)
@@ -230,13 +247,18 @@ def main() -> None:
     channel_rule = DESTINATION / "CHANNEL_RULE.md"
     manifest = DESTINATION / "MANIFEST.md"
     nested_destination = DESTINATION / MUNTZ_R6_DIR.name
+    proshka_destination = DESTINATION / "proshka"
     allowed_names = set(by_name) | {
         channel_rule.name,
         manifest.name,
         nested_destination.name,
+        proshka_destination.name,
     }
     for existing in DESTINATION.iterdir():
-        if existing == nested_destination and existing.is_dir():
+        if (
+            existing in (nested_destination, proshka_destination)
+            and existing.is_dir()
+        ):
             continue
         if not existing.is_file():
             raise RuntimeError(
@@ -271,6 +293,21 @@ def main() -> None:
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, destination)
 
+    proshka_destination.mkdir(parents=True, exist_ok=True)
+    prompt_destination = (
+        proshka_destination / PROSHKA_SYSTEM_PROMPT.name
+    )
+    for existing in proshka_destination.iterdir():
+        if existing == prompt_destination and existing.is_file():
+            continue
+        if existing.is_file():
+            existing.unlink()
+            continue
+        raise RuntimeError(
+            f"PROSHKA_CHANNEL_NESTED_NONFILE:{existing}"
+        )
+    shutil.copy2(PROSHKA_SYSTEM_PROMPT, prompt_destination)
+
     source_commit = git_output("rev-parse", "HEAD")
     channel_rule.write_text(
         "# Proshka GitHub channel\n\n"
@@ -303,7 +340,7 @@ def main() -> None:
     )
     nested_mirrored = [
         nested_destination / relative for relative in sorted(nested_sources)
-    ]
+    ] + [prompt_destination]
     listed = sorted(
         mirrored + nested_mirrored + [channel_rule],
         key=lambda path: path.relative_to(DESTINATION).as_posix(),
@@ -317,6 +354,7 @@ def main() -> None:
             for relative, source in nested_sources.items()
         }
     )
+    source_by_destination[prompt_destination] = PROSHKA_SYSTEM_PROMPT
     lines = [
         "# Route B bus mirror manifest",
         "",
