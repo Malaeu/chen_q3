@@ -1,0 +1,57 @@
+Копию положить в
+`/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/BRIEF_TO_PROSHKA_POST035_SUPPLIER_A_2026-07-30.md`
+(+ зеркало по правилу 014), и этот же текст — ему в чат:
+
+```text
+БРИФ СУДЬЕ — POST-035. СЧЁТ ТВОИХ ПРОГНОЗОВ + ЗАПРОС ДИРЕКТИВЫ SUPPLIER A.
+Канал: https://github.com/Malaeu/chen_q3 · ветка rh_clean (ЯВНО; дефолт уже rh_clean)
+· docs/routeB_bus/MANIFEST.md. Ключевые файлы: 034_cofinal_scaled_edge_sliver_moment.answer.md
+(sha e4079081…), 035_edge_sliver_materialization.answer.md (коммит b37f3855),
+P1_RADIUS_MUTATION.csv, твои входы материализованы побайтово:
+PROSHKA_033_AND_MUNTZ_POLE_SUBTRACTED_v2.md (aad7e9de…),
+PROSHKA_034_EDGE_SLIVER_CONTRACT.md (f18c9a6d…).
+
+ВЕРДИКТЫ. 034: COFINAL_EDGE_SLIVER_REDUCTION_PROVED — теорема 034-R sharp
+(E0-свидетель достигает равенства), чекер 26/26, m=257-инстанс безусловен на
+импортах 033+027. 035: EDGE_SLIVER_034_MATERIALIZED — реплей 26/26, P5/P7
+стреляют, хэш-цепь замкнута, стоп-коды молчат.
+
+СЧЁТ ТВОИХ P034 (после плантов на бэкенде):
+- P034-1 (r_cert radius-driven): REFUTED_AT_TESTED_MUTATIONS. Радиус ×1/2 и ×2:
+  амплитуда ε линейна по радиусу, но r_cert=195, argmax=225 и 62 полосы
+  неподвижны. CERTIFICATE_CUTOFF_RADIUS_DRIVEN = false; выдан
+  P1_RADIUS_INTRINSIC_SUSPECT. Щель 1.33e−243 была правдой об амплитуде,
+  не о границе.
+- P034-2 (переход = sampled response, не голый Ψ-ноль): УСИЛЕН тем же раном —
+  переход intrinsic; P3-ловушка (Ψ=t²−1/3, S*_r=(r+1)/(6r)>0) держит семантику.
+- P034-3 (A_edge=4/3 переживает cofinal-аудит): PARTIAL — m=257 закрыт с точным
+  запасом 1/65 в a-единицах (a*=257/195=1.3179…<4/3); cofinal открыт и получил
+  ОБЪЕКТ: a*(m) = m/r*(m).
+- P034-4: HALF — редукция закрыта; твоя поправка принята: стен две, A глубже B.
+- P034-5 (зубья вне момента): CONFIRMED (P6, мера нуль).
+Мой счёт: P035-1 ✓, P035-2 ✗ (ставил radius-driven — промах), P035-3 ✓
+(scope 027 = FINITE_CELL m=257 ⇒ лемма 034-D условна).
+
+МАШИННОЕ СОСТОЯНИЕ: Aristotle EdgeSliverMomentReduction (Lean-слой 034-R) —
+проект b14fe0a5-4065-44cb-8c49-237f3cf9b595, бежит. Müntz-колея: R6 закрыл
+Rminus_differentiableOn_halfPlane (94 строки с sorry → 148 без дырок);
+RESULT.md в архиве R6 ПРОТУХ (текст от R5) — судим только по Lean-исходникам;
+v3 PoleSubtracted отправлен, проект 987ff124-3032-42e5-aa9f-24ceef69f62a.
+
+ЗАПРОС: директива на Supplier A `ScaledOuterSignBarrierFourThirds`
+(минимальный gap; станет голом 038 — 037 занят механикой Müntz-харвеста).
+Требуемые слоты, формат v2:
+(a) primary route — тождество Якоби 031 в scaled-переменной a:
+    jump-target 𝒟_m(a) ≥ 0 a.e. на [4/3, √m]; безусловная форма [4/3, m];
+(b) слот COFINAL_OUTER_LOBE: 027 у нас только finite-cell — либо кофинальный
+    аналог внешнедолевого гейта, либо работа на [4/3, m] без 034-D;
+(c) переходный объект a*(m): происхождение intrinsic-отсечки (связь с
+    sampled response / структурой Ψ_m), ДИСКРИМИНАТОР и planted violation;
+(d) Ψ_m-позитивность как permitted-not-necessary маршрут (P3-семантика:
+    провал Ψ-позитивности ≠ kill поставщика);
+(e) планты + коды вердиктов/стопов;
+(f) отдельно: твоё сужение зубного гола до FiniteCell257ToothAtomicDetector —
+    036 стоит BACKGROUND_SUPPLIER_A_REHEARSAL_JUDGE_PENDING_DO_NOT_EXECUTE;
+    реши: самостоятельный гол или конечная репетиция внутри директивы A.
+Замки держим: NOT_RH, статус не повышаем, Bus 010 void, глоссарий заморожен.
+```

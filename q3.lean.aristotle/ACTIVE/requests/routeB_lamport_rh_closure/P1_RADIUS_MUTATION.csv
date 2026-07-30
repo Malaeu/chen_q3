@@ -1,0 +1,4 @@
+radius_multiplier,radius,radius_scientific,r_cert,max_epsilon_scientific,argmax_r,positive_epsilon_band_count,radius_source
+1/2,rho_033/2,1.120931113419121885278691E-237,195,1.120932447588121551789275E-237,225,62,frozen_backend.response_weighted_coefficient_uncertainty+frozen_backend.infinite_response_remainder
+1,rho_033,2.241862226838243770557382E-237,195,2.241863561007243437067966E-237,225,62,frozen_backend.response_weighted_coefficient_uncertainty+frozen_backend.infinite_response_remainder
+2,2*rho_033,4.483724453676487541114765E-237,195,4.483725787845487207625349E-237,225,62,frozen_backend.response_weighted_coefficient_uncertainty+frozen_backend.infinite_response_remainder

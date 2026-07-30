@@ -1,0 +1,85 @@
+{
+  "cycle": 4,
+  "sensedAt": "2026-07-30T19:55:00+02:00",
+  "bus": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure",
+  "defaultBranch": "rh_clean",
+
+  "_RESUME_AFTER_RESTART": {
+    "why": "session restarted 2026-07-30 to pick up the Accessibility grant for Ghostty",
+    "step1_verify_a11y": "osascript -l JavaScript -e 'const se=Application(\"System Events\"); try{ JSON.stringify({a11y:true, wins: se.processes[\"ChatGPT\"].windows().length}); }catch(e){ JSON.stringify({a11y:false}); }'",
+    "step2_restart_aristotle_watch": "Monitor on scratchpad/watch_aristotle.py with ARISTOTLE_API_KEY set; it polls b14fe0a5 and 987ff124 every 180s and exits when both are terminal",
+    "step3_check_proshka": "chrome tab chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13/c/6a6b3f44-1ba4-83eb-8cb4-d146963e6b8c - the post-035 Supplier A brief was sent, verdict pending (hours)",
+    "step4_carry_037_to_mythos": "037 answer is closed and NOT yet reported to Mythos - deliver it plus the canon-commit question",
+    "harvest_note": "harvest via /api/organizations -> org uuid -> chat_conversations/<id>?tree=True&rendering_mode=messages. Do NOT rely on performance.getEntriesByType - the buffer rolls over and returns an empty conversation."
+  },
+
+  "protocol": {
+    "addressing": "[->CODEX] / [->PROSHKA] / [->ARISTOTLE] / [->WAIT] / [->YLSHA]",
+    "announcedTo": ["mythos"],
+    "pendingAnnounce": ["proshka"],
+    "rule": "route off the marker only; an unmarked message is reported, never guessed at"
+  },
+
+  "aristotleAccount": {
+    "key": "owner's key (Claude_07_2026) now in ~/.zshrc",
+    "note": "the previously configured key belonged to a different account - 403 on every real project ID",
+    "todo": "revoke and reissue once the campaign settles; the key was pasted into a chat"
+  },
+
+  "inflight": [
+    {
+      "lane": "aristotle",
+      "target": "EdgeSliverMomentReduction",
+      "projectId": "b14fe0a5-4065-44cb-8c49-237f3cf9b595",
+      "lastSeen": "RUNNING 12%",
+      "serverSide": true
+    },
+    {
+      "lane": "aristotle",
+      "target": "EStarMuntzContinuation_v3_PoleSubtracted",
+      "projectId": "987ff124-3032-42e5-aa9f-24ceef69f62a",
+      "lastSeen": "RUNNING 13%",
+      "serverSide": true
+    },
+    {
+      "lane": "proshka",
+      "target": "Supplier A directive -> becomes goal 038",
+      "sentAt": "2026-07-30T19:45:00+02:00",
+      "brief": "proshka/BRIEF_TO_PROSHKA_POST035_SUPPLIER_A_2026-07-30.md",
+      "serverSide": true
+    }
+  ],
+
+  "goals": {
+    "035_edge_sliver_materialization": {
+      "phase": "CLOSED",
+      "verdict": "EDGE_SLIVER_034_MATERIALIZED",
+      "commit": "b37f3855"
+    },
+    "036_tooth_sign": {
+      "phase": "JUDGE_PENDING",
+      "state": "BACKGROUND_SUPPLIER_A_REHEARSAL_DO_NOT_EXECUTE"
+    },
+    "037_muntz_r6_harvest": {
+      "phase": "CLOSED_NOT_YET_REPORTED",
+      "verdict": "MUNTZ_R6_MATERIALIZED",
+      "taintMatches": 0,
+      "canonSync": "13 files verified, 0 hash mismatches, _INBOX gone",
+      "predictions": {
+        "P037_1_TAINT_SCAN_ZERO": "CONFIRMED",
+        "P037_2_CANON_SYNC_ZERO_HASH_MISMATCH": "CONFIRMED"
+      },
+      "leanStatus": "HARVESTED_NOT_BUILT"
+    },
+    "038": "RESERVED for the Supplier A directive - do not occupy"
+  },
+
+  "blockedOnOwner": [
+    "COMMIT THE CANON: everything outside docs/routeB_bus/ is done on disk but uncommitted, because CHANNEL_RULE limits Codex to the mirror. Mythos reads GitHub and therefore sees only half the picture. Needs an explicit go, since it is a push outside the mirror."
+  ],
+
+  "standingRules": {
+    "staleResultMd": "on multi-round Aristotle projects RESULT.md may lag a round; a lone RESULT.md is never the verdict - judge by the Lean sources. Made a permanent bus rule by Mythos this cycle.",
+    "aristotleGate": "one contract per hole, not one at a time; crossing the gate requires relay.py --despite '<reason>' and lands in log.jsonl"
+  }
+}

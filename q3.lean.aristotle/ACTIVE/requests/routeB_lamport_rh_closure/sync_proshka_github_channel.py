@@ -69,6 +69,47 @@ GOAL_033_REQUIRED_SOURCES = (
     REQUEST_DIR / "FULL_WINDOW_TOOTH_LEDGER.csv",
     REQUEST_DIR / "proshka" / "PROSHKA_033_DIRECTIVE_2026-07-29.md",
 )
+GOAL_034_REQUIRED_SOURCES = (
+    REQUEST_DIR / "034_cofinal_scaled_edge_sliver_moment.answer.md",
+    REQUEST_DIR / "034_edge_sliver_REGISTRATION.md",
+    REQUEST_DIR / "034_edge_sliver_INBOX_COVER.md",
+    REQUEST_DIR / "check_034_edge_sliver_reduction.py",
+    REQUEST_DIR / "CHECK_034_RUN.log",
+    REQUEST_DIR / "ARISTOTLE_TASK_EdgeSliverMomentReduction.md",
+    REQUEST_DIR
+    / "ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md",
+    REQUEST_DIR / "proshka" / "PROSHKA_033_AND_MUNTZ_POLE_SUBTRACTED_v2.md",
+    REQUEST_DIR / "proshka" / "PROSHKA_034_EDGE_SLIVER_CONTRACT.md",
+)
+GOAL_035_REQUIRED_SOURCES = (
+    REQUEST_DIR / "035_edge_sliver_materialization.goal.md",
+    REQUEST_DIR / "035_edge_sliver_materialization.answer.md",
+    REQUEST_DIR / "036_tooth_sign.goal.md",
+    REQUEST_DIR / "CHECK_035_REPLAY.log",
+    REQUEST_DIR / "P1_RADIUS_MUTATION.csv",
+)
+GOAL_037_REQUIRED_SOURCES = (
+    REQUEST_DIR / "037_muntz_r6_harvest.goal.md",
+    REQUEST_DIR / "037_muntz_r6_harvest.answer.md",
+)
+MUNTZ_R6_DIR = REQUEST_DIR / "muntz_r6"
+MUNTZ_R6_REQUIRED_RELATIVE_PATHS = (
+    Path("_COVER.md"),
+    Path("ARISTOTLE_SUMMARY.md"),
+    Path("README.md"),
+    Path("RESULT.md"),
+    Path("RequestProject/.gitkeep"),
+    Path("RequestProject/ConcreteAnalyticity.lean"),
+    Path("RequestProject/IntegralAnalyticity.lean"),
+    Path("RequestProject/Main.lean"),
+    Path("RequestProject/PoleSubtracted.lean"),
+    Path("RequestProject/RiemannBoundaryCellBridge.lean"),
+    Path("RequestProject/TailAnalyticity.lean"),
+    Path("RequestProject/WindowAnalyticity.lean"),
+    Path("lake-manifest.json"),
+    Path("lakefile.toml"),
+    Path("lean-toolchain"),
+)
 
 def sha256(path: Path) -> str:
     digest = hashlib.sha256()
@@ -80,6 +121,10 @@ def sha256(path: Path) -> str:
 
 def role(path: Path) -> str:
     name = path.name
+    if MUNTZ_R6_DIR.name in path.parts:
+        if name == "_COVER.md":
+            return "Muntz R6 harvest metadata"
+        return "Muntz R6 harvested artifact"
     if name.endswith(".goal.md"):
         return "goal"
     if name.endswith(".answer.md"):
@@ -126,6 +171,9 @@ def selected_sources() -> list[Path]:
         + GOAL_031_REQUIRED_SOURCES
         + GOAL_032_REQUIRED_SOURCES
         + GOAL_033_REQUIRED_SOURCES
+        + GOAL_034_REQUIRED_SOURCES
+        + GOAL_035_REQUIRED_SOURCES
+        + GOAL_037_REQUIRED_SOURCES
     ):
         if not path.is_file():
             raise FileNotFoundError(
@@ -139,6 +187,18 @@ def selected_sources() -> list[Path]:
         )
     paths.update(path for path in route_b_lean if path.is_file())
     return sorted(paths, key=lambda path: path.name)
+
+
+def selected_nested_sources() -> dict[Path, Path]:
+    paths: dict[Path, Path] = {}
+    for relative in MUNTZ_R6_REQUIRED_RELATIVE_PATHS:
+        source = MUNTZ_R6_DIR / relative
+        if not source.is_file():
+            raise FileNotFoundError(
+                f"PROSHKA_CHANNEL_RESYNC_SOURCE_MISSING:{source}"
+            )
+        paths[relative] = source
+    return paths
 
 
 def git_output(*args: str) -> str:
@@ -155,6 +215,7 @@ def main() -> None:
         raise RuntimeError(f"PROSHKA_CHANNEL_DESTINATION_ESCAPE:{DESTINATION}")
 
     sources = selected_sources()
+    nested_sources = selected_nested_sources()
     by_name: dict[str, Path] = {}
     for source in sources:
         previous = by_name.get(source.name)
@@ -168,8 +229,15 @@ def main() -> None:
     DESTINATION.mkdir(parents=True, exist_ok=True)
     channel_rule = DESTINATION / "CHANNEL_RULE.md"
     manifest = DESTINATION / "MANIFEST.md"
-    allowed_names = set(by_name) | {channel_rule.name, manifest.name}
+    nested_destination = DESTINATION / MUNTZ_R6_DIR.name
+    allowed_names = set(by_name) | {
+        channel_rule.name,
+        manifest.name,
+        nested_destination.name,
+    }
     for existing in DESTINATION.iterdir():
+        if existing == nested_destination and existing.is_dir():
+            continue
         if not existing.is_file():
             raise RuntimeError(
                 f"PROSHKA_CHANNEL_NONFLAT_DESTINATION:{existing}"
@@ -180,14 +248,42 @@ def main() -> None:
     for name, source in by_name.items():
         shutil.copy2(source, DESTINATION / name)
 
+    nested_destination.mkdir(parents=True, exist_ok=True)
+    allowed_nested = set(nested_sources)
+    for existing in nested_destination.rglob("*"):
+        if existing.is_symlink():
+            raise RuntimeError(
+                f"PROSHKA_CHANNEL_NESTED_SYMLINK_FORBIDDEN:{existing}"
+            )
+        if existing.is_file():
+            relative = existing.relative_to(nested_destination)
+            if relative not in allowed_nested:
+                existing.unlink()
+    for existing in sorted(
+        (path for path in nested_destination.rglob("*") if path.is_dir()),
+        key=lambda path: len(path.parts),
+        reverse=True,
+    ):
+        if not any(existing.iterdir()):
+            existing.rmdir()
+    for relative, source in nested_sources.items():
+        destination = nested_destination / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, destination)
+
     source_commit = git_output("rev-parse", "HEAD")
     channel_rule.write_text(
         "# Proshka GitHub channel\n\n"
-        "This directory is the flat outbound Route B mirror for Proshka.\n\n"
+        "This directory is the outbound Route B mirror for Proshka. Top-level "
+        "artifacts are flat; source-locked subtrees are preserved only when an "
+        "explicit goal requires their relative paths.\n\n"
         "Permanent handoff rule: after every closed Route B goal, refresh this "
         "mirror, rebuild `MANIFEST.md`, commit only `docs/routeB_bus/`, and "
         "push the current canonical-repository branch. Bus 010 remains void "
         "unless the owner explicitly creates it.\n\n"
+        "Каждый бриф внешнему агенту называет ветку явно: branch `rh_clean`; "
+        "ссылки полные: "
+        "https://github.com/Malaeu/chen_q3/tree/rh_clean/docs/routeB_bus.\n\n"
         f"Source repository commit at refresh: `{source_commit}`.\n",
         encoding="utf-8",
     )
@@ -196,13 +292,29 @@ def main() -> None:
         (DESTINATION / name for name in by_name),
         key=lambda path: path.name,
     )
-    listed = mirrored + [channel_rule]
+    nested_mirrored = [
+        nested_destination / relative for relative in sorted(nested_sources)
+    ]
+    listed = sorted(
+        mirrored + nested_mirrored + [channel_rule],
+        key=lambda path: path.relative_to(DESTINATION).as_posix(),
+    )
+    source_by_destination = {
+        DESTINATION / name: source for name, source in by_name.items()
+    }
+    source_by_destination.update(
+        {
+            nested_destination / relative: source
+            for relative, source in nested_sources.items()
+        }
+    )
     lines = [
         "# Route B bus mirror manifest",
         "",
         (
-            f"Flat Proshka mirror from `rh_lean_01_2026`; "
-            f"{len(mirrored)} mirrored source files plus `CHANNEL_RULE.md`."
+            f"Proshka mirror from `rh_lean_01_2026`; "
+            f"{len(mirrored) + len(nested_mirrored)} mirrored source files "
+            "plus `CHANNEL_RULE.md`."
         ),
         "",
         "| File | Description | SHA-256 |",
@@ -212,9 +324,12 @@ def main() -> None:
         description = (
             "channel handoff discipline"
             if path == channel_rule
-            else role(by_name[path.name])
+            else role(source_by_destination[path])
         )
-        lines.append(f"| `{path.name}` | {description} | `{sha256(path)}` |")
+        display_path = path.relative_to(DESTINATION).as_posix()
+        lines.append(
+            f"| `{display_path}` | {description} | `{sha256(path)}` |"
+        )
     lines.extend(
         [
             "",
@@ -224,7 +339,10 @@ def main() -> None:
     )
     manifest.write_text("\n".join(lines), encoding="utf-8")
 
-    print(f"PROSHKA_CHANNEL_MIRRORED_SOURCES={len(mirrored)}")
+    print(
+        "PROSHKA_CHANNEL_MIRRORED_SOURCES="
+        f"{len(mirrored) + len(nested_mirrored)}"
+    )
     print(f"PROSHKA_CHANNEL_FILES_WITH_METADATA={len(listed) + 1}")
     print(f"PROSHKA_CHANNEL_MANIFEST={manifest}")
 

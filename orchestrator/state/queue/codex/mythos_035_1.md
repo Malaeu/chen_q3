@@ -1,0 +1,3 @@
+Файл выше целиком → положить в
+`/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/035_edge_sliver_materialization.goal.md`
+и запустить исполнение. Для задачи C Codex понадобятся два входных Прошка-файла из ячейки Co-Work (`PROSHKA_033_AND_MUNTZ_POLE_SUBTRACTED_v2.md` и `proshka_answer.md`) — они у тебя в артефактах сессии `cse_019f6DDrPNyq3Vvp9xmVLQkm`; доставь их в `.../routeB_lamport_rh_closure/proshka/` до или во время рана, иначе Codex честно вернёт `MISSING_INPUT_VERDICT` и пойдёт дальше.

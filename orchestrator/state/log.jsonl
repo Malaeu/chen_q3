@@ -1,0 +1,30 @@
+{"ts": "2026-07-30T17:11:43.791659+00:00", "event": "route_block", "lane": "CODEX", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/codex/mythos_035_1.md", "chars": 545}
+{"ts": "2026-07-30T17:11:43.792178+00:00", "event": "route_block", "lane": "ARISTOTLE", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/aristotle/mythos_035_1.md", "chars": 890}
+{"ts": "2026-07-30T17:11:43.792358+00:00", "event": "route_block", "lane": "PROSHKA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/proshka/mythos_035_1.md", "chars": 282}
+{"ts": "2026-07-30T17:11:43.792506+00:00", "event": "route_block", "lane": "YLSHA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/ylsha/mythos_035_1.md", "chars": 403}
+{"ts": "2026-07-30T17:12:16.622280+00:00", "event": "route_preamble", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/mythos_035_preamble.md", "chars": 14}
+{"ts": "2026-07-30T17:12:16.622771+00:00", "event": "route_block", "lane": "CODEX", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/codex/mythos_035_1.md", "chars": 545}
+{"ts": "2026-07-30T17:12:16.622920+00:00", "event": "route_block", "lane": "ARISTOTLE", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/aristotle/mythos_035_1.md", "chars": 890}
+{"ts": "2026-07-30T17:12:16.623051+00:00", "event": "route_block", "lane": "PROSHKA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/proshka/mythos_035_1.md", "chars": 282}
+{"ts": "2026-07-30T17:12:16.623166+00:00", "event": "route_block", "lane": "YLSHA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/ylsha/mythos_035_1.md", "chars": 403}
+{"ts": "2026-07-30T17:14:42.558514+00:00", "event": "bus_file", "source": "/Users/emalam/Downloads/035_edge_sliver_materialization.goal.md", "dest": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/035_edge_sliver_materialization.goal.md"}
+{"ts": "2026-07-30T17:15:11.090506+00:00", "event": "aristotle_dispatch", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/_INBOX_cowork_034edge_2026-07-29/ARISTOTLE_TASK_EdgeSliverMomentReduction.md", "chars": 5278}
+{"ts": "2026-07-30T17:15:11.200393+00:00", "event": "aristotle_exit", "code": 1, "project_id": null}
+{"ts": "2026-07-30T17:15:28.416843+00:00", "event": "aristotle_dispatch", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/_INBOX_cowork_034edge_2026-07-29/ARISTOTLE_TASK_EdgeSliverMomentReduction.md", "chars": 5278}
+{"ts": "2026-07-30T17:15:28.522322+00:00", "event": "aristotle_exit", "code": 1, "project_id": null}
+{"ts": "2026-07-30T17:16:00.868975+00:00", "event": "aristotle_dispatch", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/_INBOX_cowork_034edge_2026-07-29/ARISTOTLE_TASK_EdgeSliverMomentReduction.md", "chars": 5278}
+{"ts": "2026-07-30T17:16:01.500642+00:00", "event": "aristotle_submitted", "project_id": "28119a84-af74-434d-8fb7-b1896c521185", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/_INBOX_cowork_034edge_2026-07-29/ARISTOTLE_TASK_EdgeSliverMomentReduction.md"}
+{"ts": "2026-07-30T17:16:43.919196+00:00", "event": "codex_dispatch", "prompt": "orchestrator/state/queue/codex/035_dispatch.md", "chars": 2558}
+{"ts": "2026-07-30T17:30:48.220017+00:00", "event": "aristotle_dispatch", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ARISTOTLE_TASK_EdgeSliverMomentReduction.md", "chars": 5278}
+{"ts": "2026-07-30T17:30:48.672769+00:00", "event": "aristotle_submitted", "project_id": "b14fe0a5-4065-44cb-8c49-237f3cf9b595", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ARISTOTLE_TASK_EdgeSliverMomentReduction.md"}
+{"ts": "2026-07-30T17:31:48.255241+00:00", "event": "aristotle_gate_crossed", "inflight": 1, "reason": "different hole: v3.1 R6 closed Rminus_differentiableOn_halfPlane (COMPLETE, verified hole-free); this contract addresses the false raw-product T4 in the stale v1. EdgeSliver in flight is a third, unrelated hole."}
+{"ts": "2026-07-30T17:31:48.325218+00:00", "event": "aristotle_dispatch", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md", "chars": 9148}
+{"ts": "2026-07-30T17:31:48.790465+00:00", "event": "aristotle_submitted", "project_id": "987ff124-3032-42e5-aa9f-24ceef69f62a", "task": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md"}
+{"ts": "2026-07-30T17:32:08.237275+00:00", "event": "codex_exit", "code": 0}
+{"ts": "2026-07-30T17:40:32.255559+00:00", "event": "route_preamble", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/mythos_036_preamble.md", "chars": 1254}
+{"ts": "2026-07-30T17:40:32.256117+00:00", "event": "route_block", "lane": "PROSHKA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/proshka/mythos_036_1.md", "chars": 3403}
+{"ts": "2026-07-30T17:40:32.256273+00:00", "event": "route_block", "lane": "CODEX", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/codex/mythos_036_1.md", "chars": 3170}
+{"ts": "2026-07-30T17:40:32.256407+00:00", "event": "route_block", "lane": "ARISTOTLE", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/aristotle/mythos_036_1.md", "chars": 375}
+{"ts": "2026-07-30T17:40:32.256530+00:00", "event": "route_block", "lane": "YLSHA", "path": "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/state/queue/ylsha/mythos_036_1.md", "chars": 490}
+{"ts": "2026-07-30T17:43:42.614949+00:00", "event": "codex_dispatch", "prompt": "orchestrator/state/queue/codex/037_dispatch.md", "chars": 3876}
+{"ts": "2026-07-30T17:56:04.208629+00:00", "event": "codex_exit", "code": 0}
