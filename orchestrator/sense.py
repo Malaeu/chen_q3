@@ -43,8 +43,19 @@ LEGACY_TOKEN_RE = re.compile(r"`([A-Z][A-Z0-9_]{5,})`")
 LEGACY_STATUS_RE = re.compile(r"^Status:\s*(.+?)\s*$", re.MULTILINE)
 
 # Verdict tokens the bus grammar uses (CONDUCTOR.md state machine).
-DECISIVE = ("PROVED", "KILL", "ACCEPT", "LIVE", "CLOSED")
-NONDECISIVE = ("OPEN", "INCONCLUSIVE", "CONDITIONAL", "REPAIR", "FATAL")
+# MATERIALIZED/RATIFIED are decisive too: goals 035 and 037 close on them, and
+# without them a closed goal reads back as UNPARSABLE and blocks the front.
+DECISIVE = (
+    "PROVED",
+    "KILL",
+    "ACCEPT",
+    "LIVE",
+    "CLOSED",
+    "MATERIALIZED",
+    "RATIFIED",
+    "REFUTED",
+)
+NONDECISIVE = ("OPEN", "INCONCLUSIVE", "CONDITIONAL", "REPAIR", "FATAL", "PENDING")
 
 
 def log(msg: str) -> None:
