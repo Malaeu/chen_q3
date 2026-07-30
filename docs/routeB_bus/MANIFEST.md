@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 225 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 226 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -90,7 +90,7 @@ Proshka mirror from `rh_lean_01_2026`; 225 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `6983ed91706ca2cfc18be89bcf810b5dd05ccc203385d17ec1606520ef5a4ec9` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `710f3ba180cdb6236f4bbf04162a6c14113d483279cfec15fd6591fea615960d` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `COUPLED_FULL_SUM_RESPONSE_CERT.json` | Route B artifact | `2e31e67ba9cc9aed78bfed9ed20d052c1917b508958ddff077124e2cf95989da` |
@@ -139,6 +139,7 @@ Proshka mirror from `rh_lean_01_2026`; 225 mirrored source files plus `CHANNEL_R
 | `PROSHKA_033_AND_MUNTZ_POLE_SUBTRACTED_v2.md` | Proshka verdict/source review | `aad7e9de123c42d989a53ed6b10d4bd2f66fc6915e46e0e1d4c46a72087dfcf2` |
 | `PROSHKA_033_DIRECTIVE_2026-07-29.md` | Proshka verdict/source review | `e1a799bc07579952c47a7f8eb499f8e0d67d8b673741cd0ea6301b919cacacc5` |
 | `PROSHKA_034_EDGE_SLIVER_CONTRACT.md` | Proshka verdict/source review | `f18c9a6d3b712fa7cea07bd19b31858fc99d82ae61143cdecd34ffa8c51d0362` |
+| `PROSHKA_038_SUPPLIER_A_DIRECTIVE_2026-07-30.md` | Proshka verdict/source review | `bbd599fbca17e752fa5c2b5b8b4ac667d84cb6bc6799c40a2568b04b07c16aac` |
 | `PROSHKA_ADJUDICATION_PROTOCOL_2026-07-27.md` | Proshka verdict/source review | `d1dcf8750710c895c490b3755bec848122484748beacfb7c13c73cc6d6f19612` |
 | `PROSHKA_ANCHOR_BRIDGE_2026-07-27.md` | Proshka verdict/source review | `15b278ddb08e432092f6a83ca92ffbf62422ca8b560b66022bc9deaf0c4d7db7` |
 | `PROSHKA_AUDIT011_REMOTE_2026-07-27.md` | Proshka verdict/source review | `fcc8a3f46560ab4c3ce6d4a25cc88eb847f3970eaebd11785cfb9b69755285f6` |
