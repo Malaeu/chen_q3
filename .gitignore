@@ -41,7 +41,13 @@ Codex_session_*
 *.tmp
 
 # Local/agent artifacts
-.claude/
+# Note: .claude/* not .claude/ -- git will not descend into an excluded
+# directory, so a later negation inside it never applies. Excluding the
+# contents instead leaves the directory walkable.
+.claude/*
+# Skills are project knowledge, not local scratch: they must survive a clone
+# and a session restart, so they are versioned with the repo.
+!.claude/skills/
 multiagent/
 full/q3.lean.aristotle/docs/cc_15_01_26.md
 
