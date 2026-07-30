@@ -67,8 +67,13 @@ Derived from the live bus + `list_pages` + harvested inbox. Phases:
 
 - **Red line**: conductor never decides/drafts math. Judge = Proška; brain = Mythos;
   Codex/Aristotle implement. No weaker-than-Pro model invents proof architecture.
-- **Push scope**: auto-push limited to `docs/routeB_bus/` mirror per CHANNEL_RULE. Any
-  other push (Lean, working dir) needs explicit Ylsha go. No force-push, no merge into `main`.
+- **Push scope**: on a closed goal, push the mirror **and the canonical bus together**
+  (owner decision 2026-07-30, CHANNEL_RULE updated). The old "mirror only" form was
+  obeyed literally and left canon uncommitted; Mythos reads GitHub at dispatch time,
+  diagnosed off a stale repo and issued goal 037 task B for work already done. Pushing
+  both on the same trigger keeps them from drifting. Lean sources and anything that
+  would raise Route B status still need an explicit Ylsha go. No force-push, no merge
+  into `main`.
 - **Adversarial gate** before any `PROVED`/`ACCEPT` is trusted (validation gate + plants).
 - **Fail-closed**: unclear phase, unparsable verdict, or uncertain hole-freeness →
   escalate to Ylsha, don't guess.

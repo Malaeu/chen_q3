@@ -90,7 +90,7 @@ Proshka mirror from `rh_lean_01_2026`; 225 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `fe077d045fdd3861b870086dd8f3af9a262c73cca03142a3b277c5c2a17b7440` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `6983ed91706ca2cfc18be89bcf810b5dd05ccc203385d17ec1606520ef5a4ec9` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `COUPLED_FULL_SUM_RESPONSE_CERT.json` | Route B artifact | `2e31e67ba9cc9aed78bfed9ed20d052c1917b508958ddff077124e2cf95989da` |
