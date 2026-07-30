@@ -41,6 +41,23 @@
 
 set -uo pipefail
 
+# NEVER use cliclick kd:/ku: for modifiers. `kd:cmd` holds the key down system
+# wide until an explicit `ku:cmd` releases it, so an interrupted command leaves
+# Cmd stuck for every application at once -- clicks become Cmd+clicks and typing
+# becomes shortcuts. Restarting the app does not help, because it is not the app
+# that is holding the key. That happened here and locked the owner out of his
+# own composer.
+#
+# Release anything a previous run may have left held, then never hold again:
+# modifiers go through osascript, which presses and releases atomically.
+release_modifiers() {
+  for m in cmd alt ctrl shift fn; do
+    cliclick "ku:$m" >/dev/null 2>&1
+  done
+}
+release_modifiers
+trap release_modifiers EXIT INT TERM
+
 APP="${1:-}"
 shift || true
 
@@ -53,9 +70,11 @@ case "$APP" in
     ;;
   claude)
     PROC="Claude"
-    # Claude Desktop has no right pane; the composer is centred in the main
-    # column, right of the sidebar.
-    XFRAC=0.55
+    # Measured off a screenshot, not guessed: the composer sits in the main
+    # column between the sidebar and the artifact pane, well left of the window
+    # centre. An earlier guess of 0.55 landed in the artifact pane instead and
+    # silently typed into whatever was there.
+    XFRAC=0.375
     ;;
   *)
     echo "usage: $0 {codex|claude} {probe|read|write|send|file} [arg]"
@@ -63,7 +82,12 @@ case "$APP" in
     ;;
 esac
 
-YFRAC=0.92
+YFRAC=0.915
+
+# When a click lands somewhere unexpected, do not guess coordinates -- look:
+#   screencapture -x -o /tmp/win.png
+# and read the image. Screen Recording permission is granted. Guessing cost
+# several rounds of typing into the wrong pane.
 
 geometry() {
   osascript -l JavaScript -e "
