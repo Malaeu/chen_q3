@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Flat Proshka mirror from `rh_lean_01_2026`; 207 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 225 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -69,6 +69,8 @@ Flat Proshka mirror from `rh_lean_01_2026`; 207 mirrored source files plus `CHAN
 | `035_edge_sliver_materialization.answer.md` | answer | `82db42b3070842b4323dca3f9d50968193c1530a2b4797722334346feb7c7ab8` |
 | `035_edge_sliver_materialization.goal.md` | goal | `5bf64cbb34d19dab7524fc930e211be152ccb995ba668d846f3f042a2c6fe1db` |
 | `036_tooth_sign.goal.md` | goal | `6ccab1afbf0e17d75032a90895304468692ed239590921866e96c74e3577eebd` |
+| `037_muntz_r6_harvest.answer.md` | answer | `3982ace30ef441d80feca9da377dde801cf207932ee43998f4003db485d79105` |
+| `037_muntz_r6_harvest.goal.md` | goal | `516b6924c2b48cd3825faf3b7266fbcf6a68faffecbe89e2e63213f806a1ca9e` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `90af30037ec0340bca1ea7d530a37aca3f48342d856d02bd5717cc6d3c627c95` |
 | `ARISTOTLE_TASK_EdgeSliverMomentReduction.md` | active Aristotle contract | `5b9a7fba98626aca3ab6d0bf1443bcd15b829bab2426c1f08a04ffac6ff1ac7d` |
@@ -80,6 +82,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 207 mirrored source files plus `CHAN
 | `B0_VALUE_PROBE.csv` | probe data | `723a9d8f7fb93a4c8b8e31df1487b17d7cc7f5df15c59f153f9692bf556a9ba3` |
 | `B0_VALUE_PROBE.md` | probe report | `652d7d5451a31f5d497cfa80afb6692faa1e5829d935374c51f85052f606765c` |
 | `BDetReality.lean` | key Lean artifact | `c91b4756345bc8b95f8ecbf681c522864ec771fa76933158ddd37785b069738d` |
+| `BRIEF_TO_PROSHKA_POST035_SUPPLIER_A_2026-07-30.md` | Proshka verdict/source review | `ac7be481a5f8bc6c2413f9c45a623254a9dbcd6d641033983ad049d1299d5911` |
 | `CENTERED_DENSITY_GIBBS_PROBE.md` | probe report | `45a8596c915d3d055d9fdb5ff72858f7120bda0214aae27d9a453547d0d9a23f` |
 | `CENTERED_DENSITY_POSITIVITY_PROBE.csv` | probe data | `9b71f040e3ffbbb8f96e43164079250696e20a69566636646c5ec8f04e280d78` |
 | `CENTERED_DENSITY_POSITIVITY_PROBE.md` | probe report | `e797db66270bacd3fdfc17e7def66ac5ae055a42af3a54b3d46d9f194f5e4fff` |
@@ -87,6 +90,7 @@ Flat Proshka mirror from `rh_lean_01_2026`; 207 mirrored source files plus `CHAN
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `fe077d045fdd3861b870086dd8f3af9a262c73cca03142a3b277c5c2a17b7440` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `COUPLED_FULL_SUM_RESPONSE_CERT.json` | Route B artifact | `2e31e67ba9cc9aed78bfed9ed20d052c1917b508958ddff077124e2cf95989da` |
@@ -210,7 +214,21 @@ Flat Proshka mirror from `rh_lean_01_2026`; 207 mirrored source files plus `CHAN
 | `full_window_positive_part_certificate.py` | Route B artifact | `53da243d64242ebe49390be8a3d66536ebd827cdc98d4587d64326cbabc9c627` |
 | `lakefile.toml` | Route B artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
 | `lean-toolchain` | Route B artifact | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
+| `muntz_r6/ARISTOTLE_SUMMARY.md` | Muntz R6 harvested artifact | `f068f2c344ec9c3459400916195d54675538eba8d985e29e473a3914c4aa2168` |
+| `muntz_r6/README.md` | Muntz R6 harvested artifact | `39ec8cd0459306d9f50cf0c0da2aaf858aeaba5affa9ae26c3dbaee9f872f0ab` |
+| `muntz_r6/RESULT.md` | Muntz R6 harvested artifact | `4b6e85f27132bda091913a7f3b910ca82a44f74414bf780156a9a0bb7a143a69` |
+| `muntz_r6/RequestProject/.gitkeep` | Muntz R6 harvested artifact | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `muntz_r6/RequestProject/ConcreteAnalyticity.lean` | Muntz R6 harvested artifact | `e660b739969b17fda26845b12f1d5798eac0b27c4e5b452a6e3d1d6cdf4ff3c9` |
+| `muntz_r6/RequestProject/IntegralAnalyticity.lean` | Muntz R6 harvested artifact | `3b547341b44b3d31b2c07f9912e0c904a54502aa6db79db5fde32dfffd243ed3` |
+| `muntz_r6/RequestProject/Main.lean` | Muntz R6 harvested artifact | `58f5f30907c64494416301539414270f64e51864d2b4570ed70bd471446efb92` |
+| `muntz_r6/RequestProject/PoleSubtracted.lean` | Muntz R6 harvested artifact | `4b20c3d9b505a40ff7c1472798697e36ce34cd4a716c3a9dbbb76d11181aed8d` |
+| `muntz_r6/RequestProject/RiemannBoundaryCellBridge.lean` | Muntz R6 harvested artifact | `5d324b16934b6bf6da5487f0006d1e0b29389ceb8eb048894c9f3274bcd525a0` |
+| `muntz_r6/RequestProject/TailAnalyticity.lean` | Muntz R6 harvested artifact | `88ba75b8b28df9a6b826f339a002c6e9af6c2263ccc4f79f022b0c2b99b87fc5` |
+| `muntz_r6/RequestProject/WindowAnalyticity.lean` | Muntz R6 harvested artifact | `e427a3d579a03d9369c35eaa042bf3ac18d4429f6799ecf9ca22ebd4fa86ea71` |
+| `muntz_r6/_COVER.md` | Muntz R6 harvest metadata | `7ebe13c011d8eac5a3433c4432327c0dc5e5a2d2746c7407885220ff5ef7de74` |
+| `muntz_r6/lake-manifest.json` | Muntz R6 harvested artifact | `116c6ef00aa899fb38c08c5e4c92c0e434d0e7f9d574fcb5d4d42cc90ffb07cb` |
+| `muntz_r6/lakefile.toml` | Muntz R6 harvested artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
+| `muntz_r6/lean-toolchain` | Muntz R6 harvested artifact | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
 | `priority_band_positive_part_certificate.py` | Route B artifact | `b9fe448ea3af25d932c2beca6390ca56aa4cfbef0bb3996bcbc0c96ebd4fea41` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `f041e3958276b1779ac4a47c20de15cd0f90174ce86a75de129daea3a46fa71a` |
 
 `MANIFEST.md` is excluded from its own hash table.
