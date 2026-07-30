@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 250 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 252 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -71,14 +71,16 @@ Proshka mirror from `rh_lean_01_2026`; 250 mirrored source files plus `CHANNEL_R
 | `036_tooth_sign.goal.md` | goal | `dc8cda77b90e935b266325a3ae58bff5a25e175614df17302d3904c1f7be739a` |
 | `037_muntz_r6_harvest.answer.md` | answer | `3982ace30ef441d80feca9da377dde801cf207932ee43998f4003db485d79105` |
 | `037_muntz_r6_harvest.goal.md` | goal | `516b6924c2b48cd3825faf3b7266fbcf6a68faffecbe89e2e63213f806a1ca9e` |
+| `038A_muntz_v3_semantic_audit.answer.md` | answer | `9ed7b3e0c296d35a2690fc7885c7ca3ba007c56b45303158ed0c75e1179b1d5f` |
 | `038_scaled_outer_sign_barrier.answer.md` | answer | `783422be43474eec747c3e05a61c6e2191e35987f2e6027fb198ce4594c3bbb8` |
 | `038_scaled_outer_sign_barrier.goal.md` | goal | `ecae3afd01b1d9667dfae5304cfe5a310b3ecc52c575978b61acb42e035b0364` |
 | `039_muntz_v3_consumption.answer.md` | answer | `9fddc1a9c6c7cdfbfe43bbfd11c8a0cfbaa4dd49808f2c6815afea262ff37124` |
 | `039_muntz_v3_consumption.goal.md` | goal | `fd96aec7e963841d0715377b19794213305fb4b2213ad4ae7eecf603d6f1f12b` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
-| `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `90af30037ec0340bca1ea7d530a37aca3f48342d856d02bd5717cc6d3c627c95` |
+| `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
 | `ARISTOTLE_TASK_EdgeSliverMomentReduction.md` | active Aristotle contract | `5b9a7fba98626aca3ab6d0bf1443bcd15b829bab2426c1f08a04ffac6ff1ac7d` |
 | `ARISTOTLE_TASK_RiemannBoundaryCellBridge.md` | active Aristotle contract | `7161d7376c3d9c7142c9a92a89a9ec8434fe73260019837de2d2f7b95749d039` |
+| `ARISTOTLE_USAGE_PROTOCOL.md` | Route B artifact | `c5e47a7ca9af8e1b8d0db175bfbaefc4d95043635fe29cee4f390cc5c40f80a2` |
 | `AbstractCoboundaryLedger.lean` | key Lean artifact | `02deccc50829b35a57ddb69231b39b1f505585012ea029dabaa505ba93003f9a` |
 | `AmbientResidualEnvelopeTransfer.lean` | key Lean artifact | `bb569fb2b16e59475440b5151b0655f410437c5ea0a7475f9b61868ffd635431` |
 | `AmbientResidualSplit.lean` | key Lean artifact | `d27ad8939a767871cf2906b113732555d8850b0b91888a02e7f6354c2ec25f00` |
@@ -94,7 +96,7 @@ Proshka mirror from `rh_lean_01_2026`; 250 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `bafd9c5fc684b512f36a5910f6579ca328362552371557b97449709a986c669b` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `3208d0e6d1456804b08b265339e313606474d8bc4447f9ddc106e620be0db03c` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_038_RUN.log` | Route B artifact | `3a1d9d7417bbfc87138623cc452dcf6a2584f47ad102cfca0fed0db93015197f` |

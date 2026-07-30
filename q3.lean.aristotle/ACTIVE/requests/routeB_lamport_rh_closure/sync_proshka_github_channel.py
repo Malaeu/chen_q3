@@ -191,9 +191,16 @@ def selected_sources() -> list[Path]:
     for pattern in (
         "[0-9][0-9][0-9]_*.goal.md",
         "[0-9][0-9][0-9]_*.answer.md",
+        "[0-9][0-9][0-9][A-Z]_*.goal.md",
+        "[0-9][0-9][0-9][A-Z]_*.answer.md",
         "*_PROBE.md",
         "*_PROBE.csv",
         "*_REPORT_*.md",
+        # Protocols the judge ratifies live at the top level and must reach the
+        # mirror: she reads GitHub only, so a protocol that is not mirrored is
+        # a protocol she cannot cite. ARISTOTLE_USAGE_PROTOCOL.md 404'd in
+        # rh_clean for exactly this reason -- it matched none of the patterns.
+        "*_PROTOCOL.md",
     ):
         paths.update(path for path in REQUEST_DIR.glob(pattern) if path.is_file())
     paths.update(

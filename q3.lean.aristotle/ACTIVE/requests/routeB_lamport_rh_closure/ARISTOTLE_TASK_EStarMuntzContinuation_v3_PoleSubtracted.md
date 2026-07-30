@@ -1,3 +1,11 @@
+STATUS: SUPERSEDED_BY_039_LOCAL_PROOF / DO_NOT_SUBMIT
+Superseded 2026-07-30 by goal 039 (MUNTZ_V3_CONSUMED). T4a — the sole
+remaining supplier this contract was waiting on — is closed locally in Lean:
+muntz_r6/RequestProject/MellinCompactSupportAnalyticity.lean, 71 lines,
+taint-free, axioms exactly [propext, Classical.choice, Quot.sound]. Submitting
+this contract again would spend a run re-proving what is already proved.
+File retained for provenance; do not delete, do not send to Aristotle.
+
 TASK:
 EStarMuntzZeroMassContinuation_Standalone_v3_PoleSubtracted
 
