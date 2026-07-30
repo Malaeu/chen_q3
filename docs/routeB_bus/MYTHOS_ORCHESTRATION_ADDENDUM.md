@@ -4,16 +4,22 @@
 INTERNAL TRIAD остаются как есть. Здесь только то, чего в них нет: кто ещё
 работает над этой задачей, кто куда пишет и как мы друг друга не ломаем.
 
-Файл лежит в трёх местах одновременно, побайтово одинаковый. Пробуй по
-порядку, сверху вниз — диск быстрее и свежее, GitHub отстаёт на непушенное:
+Файл лежит в трёх местах, побайтово одинаковый. Какой доступен — зависит от
+того, откуда ты запущен, а не от порядка попыток:
 
-1. **macOS:** `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md`
-2. **Linux:** `/mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md`
-3. **GitHub:** `https://github.com/Malaeu/chen_q3/blob/rh_clean/docs/routeB_bus/MYTHOS_ORCHESTRATION_ADDENDUM.md`
+| Откуда работаешь | Адрес |
+|---|---|
+| Filesystem-мост на **Mac** | `/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md` |
+| Filesystem-мост на **Linux** (рабочая машина владельца) | `/mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/MYTHOS_ORCHESTRATION_ADDENDUM.md` |
+| Браузер, моста нет | `https://github.com/Malaeu/chen_q3/blob/rh_clean/docs/routeB_bus/MYTHOS_ORCHESTRATION_ADDENDUM.md` |
 
-Первый, который открылся, — рабочий. Зеркало пересобирается при каждом
-закрытом голе, поэтому расхождения между копиями быть не должно; если увидишь
-расхождение — скажи, это само по себе находка.
+Мост привязан к машине: с Mac-сессии Linux-путь не просто пуст, а **невидим в
+принципе**. Так что это не «пробуй по очереди», а «возьми свой».
+
+Диск свежее GitHub на всё незапушенное. Зеркало пересобирается при каждом
+закрытом голе, поэтому расхождений быть не должно — но **вердикт о совпадении
+копий выноси только если реально сверил обе**. Не сверял — так и скажи, это
+честнее «расхождений нет».
 
 ---
 
