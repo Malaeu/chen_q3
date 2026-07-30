@@ -73,7 +73,7 @@ Proshka mirror from `rh_lean_01_2026`; 248 mirrored source files plus `CHANNEL_R
 | `037_muntz_r6_harvest.goal.md` | goal | `516b6924c2b48cd3825faf3b7266fbcf6a68faffecbe89e2e63213f806a1ca9e` |
 | `038_scaled_outer_sign_barrier.answer.md` | answer | `783422be43474eec747c3e05a61c6e2191e35987f2e6027fb198ce4594c3bbb8` |
 | `038_scaled_outer_sign_barrier.goal.md` | goal | `ecae3afd01b1d9667dfae5304cfe5a310b3ecc52c575978b61acb42e035b0364` |
-| `039_muntz_v3_consumption.answer.md` | answer | `cbe1ca1a6397a5064d6db3e252188c025efda1bff9c64b7cc2c8f6decbc30192` |
+| `039_muntz_v3_consumption.answer.md` | answer | `9fddc1a9c6c7cdfbfe43bbfd11c8a0cfbaa4dd49808f2c6815afea262ff37124` |
 | `039_muntz_v3_consumption.goal.md` | goal | `fd96aec7e963841d0715377b19794213305fb4b2213ad4ae7eecf603d6f1f12b` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `90af30037ec0340bca1ea7d530a37aca3f48342d856d02bd5717cc6d3c627c95` |
@@ -94,7 +94,7 @@ Proshka mirror from `rh_lean_01_2026`; 248 mirrored source files plus `CHANNEL_R
 | `CENTERED_DENSITY_PRECISION_PROBE.md` | probe report | `b448ad04804b681128c4a9b4adb0b09f94d5f73deedc515c6d3e33d6b3c6a68d` |
 | `CENTERED_MOMENT_RATIO_PROBE.csv` | probe data | `03c9d2c2804662bf078b85cc656c9c8dab1248a6fef5bde8ec0a22690853b51e` |
 | `CENTERED_MOMENT_RATIO_PROBE.md` | probe report | `e74c2305d8d6367ef7e3f0ad2bfc5222e748d455512e37911c681dc597502a86` |
-| `CHANNEL_RULE.md` | channel handoff discipline | `e1e0c8b198e0eaad019024126d2c88afd963dd67f80488a7a68498875ef63c64` |
+| `CHANNEL_RULE.md` | channel handoff discipline | `d537ea14cea54ed0bc60dc666726ff80dbf67b254564831784aecb4c85320795` |
 | `CHECK_034_RUN.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_035_REPLAY.log` | Route B artifact | `49a965798b1be4a802ddc144ae51bd2e9c287c9c323b68dea7ec2221ba277969` |
 | `CHECK_038_RUN.log` | Route B artifact | `3a1d9d7417bbfc87138623cc452dcf6a2584f47ad102cfca0fed0db93015197f` |

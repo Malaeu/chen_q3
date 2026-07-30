@@ -10,4 +10,4 @@ Still forbidden: force-push, merging `rh_clean` into `main`, any push that raise
 
 Каждый бриф внешнему агенту называет ветку явно: branch `rh_clean`; ссылки полные: https://github.com/Malaeu/chen_q3/tree/rh_clean/docs/routeB_bus.
 
-Source repository commit at refresh: `92916384fb3871894943c311d79ebbc7276bf62b`.
+Source repository commit at refresh: `9b8f55d52848922e658a5e2eb4c0726a6beb9b8e`.
