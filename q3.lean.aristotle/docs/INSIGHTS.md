@@ -48566,3 +48566,26 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   has zero taint and exactly `[propext, Classical.choice, Quot.sound]`.
 - Scope stays `CHALLENGER / NOT_RH`; frozen files, bus numbering, and route
   state remain unchanged.
+
+## 2026-07-31 — Goal 043 hRm supplier consumption (fail-closed)
+
+- Exact target: export `AnalyticOnNhd ℂ (Rminus h Λ) shiftedHalfPlane` by
+  consuming the harvested R6 theorem `Rminus_differentiableOn_halfPlane`.
+- The `Estar` and `Rminus` definition blocks in R6 and v3 are byte-identical;
+  the four-line extracted blocks have the same SHA-256 `470385c4...a540ba7`.
+- The half-planes are propositionally equal but not definitionally equal:
+  `shiftedHalfPlane` uses `-(1/2)`, while R6 uses `(-1)/2`; a tested lemma
+  `shiftedHalfPlane_eq_r6HalfPlane` closes this with `ext; norm_num`.
+- The exact analytic API is `DifferentiableOn.analyticOnNhd`, with openness
+  supplied by `isOpen_lt continuous_const Complex.continuous_re`.
+- The honest wrapper interface must retain all R6 inputs: `0<a`, `a≤b`,
+  support in `Icc a b`, global `LipschitzWith`, zero mass, and `1≤Λ`; the
+  weaker v3 local `LipschitzOnWith` class does not derive these inputs.
+- All four address-tied `q3_docs` queries timed out; the pinned source trees,
+  direct Lean checks, and official module/API documentation are authoritative.
+- Integration stops at a module collision: both archives own the import name
+  `RequestProject.Main`.  The v3 `RequestProject.+` resolver shadows R6
+  `TailAnalyticity`; prioritizing R6 instead removes v3 `shiftedHalfPlane`.
+- Per the source-locked instruction to report rather than repair divergence,
+  no R6 proof was copied or reproved.  The exact primary stop is
+  `LEAN_BUILD_FAIL`; Route B remains `CHALLENGER / NOT_RH` and Bus 010 void.
