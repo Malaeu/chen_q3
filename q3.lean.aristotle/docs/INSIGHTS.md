@@ -48676,3 +48676,35 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Frozen sources, Goal 044, both R6 trees, and the sealed R6Export certificate
   remain untouched; canon and mirror are byte-identical. Verdict:
   `HRP_SUPPLIER_DISCHARGED_FOR_V3_CLASS`.
+
+## 2026-07-31 — Goal 048 habs T2 import inventory (PHASE 0 closed)
+
+- The transitive Q3 dependency closure of
+  `windowedMellin_E_star_zeroMass_decomposition_abs`, excluding its root
+  module, is exactly 12 files / 1946 LOC; the full export payload including
+  the 730-line root is 13 files / 2676 LOC.
+- No closure node imports `Q3.Main`.  A complete source scan finds no project
+  `axiom`/`opaque` declaration and no `Weil_criterion`, `PrimeCert`, or
+  `prime_term_le_at_t_critical_axiom` family.  The locked 012 post-audit gives
+  the standard axiom triple for the source theorem.
+- P048-1 misses literally: 012 `E_star` and v3 `Estar` have different source
+  bytes, as do Mathlib `mellin` and v3 `Mellin`.  The first difference is
+  naming/coercion spelling; the second is scalar multiplication versus the
+  commuted complex product, a bridge pattern already checked in v3.
+- The substantive window bridge is `Icc Λ⁻¹ Λ` versus `Ioo Λ⁻¹ Λ`; the two
+  endpoint singletons are null, so the indicators agree almost everywhere.
+- `MellinConvergent (E_star h) s` splits into the queued zero-edge estimate
+  `EstarBoundedBySqrtOfZeroMass_IccZero_IcoLipschitz`, local measurability,
+  and T1 vanishing for `u>b`.
+- `EStarMellinAbsolute h (s+1/2)` is a separate standard wrapper: per-dilate
+  measurability plus the 046 Ico bound/endpoint-null technique, scaling, and
+  summability of the positive-integer Dirichlet series for real part greater
+  than one.  It must not be silently conflated with the aggregate E-star
+  bound.
+- Four local `q3_docs` queries timed out; pinned source files and the official
+  Mathlib `MellinConvergent`/`integral_tsum` APIs determine the inventory.
+- The source project uses Lean 4.26 while v3 uses Lean 4.28, so a later export
+  must revalidate copied proof bodies under v3.  No branch was executed and no
+  Lean file was created or modified in Goal 048.
+- Verdict: `HABS_EXPORT_VIABLE`; Route B remains `CHALLENGER / NOT_RH` and
+  Bus 010 remains void.
