@@ -4,8 +4,7 @@ Generated: 2026-07-31 by `orchestrator/spine.py`. DO NOT EDIT (regenerate instea
 Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Staleness warnings
-- COGNITIVE_GOVERNOR.md is 36 days old (2026-06-25) and references a possibly retired front — regenerate.
-- FAILED_STRATEGIES.yaml last updated 2026-06-25 (36 days) — bus iteration blocks after that date are NOT merged.
+- none detected
 
 ## Source freshness
 | Source | Last commit |
@@ -36,6 +35,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | direct_concrete_payload_before_whole_expression_pilot | CertificateShift | active |
 | whole_expression_pilot_without_complete_source_stream | CertificateShift | active |
 | trackb_scalar_pointwise_edge_majorant | RepresentationShift | avoided |
+| radius_driven_certificate_cutoff_and_tooth_aligned_transition | RepresentationShift | active |
+| full_packet_search_with_multiple_independent_fronts | ReceiverMinimize | superseded |
+| resubmit_already_closed_supplier_to_cloud | MemoryConsolidation | avoided |
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |

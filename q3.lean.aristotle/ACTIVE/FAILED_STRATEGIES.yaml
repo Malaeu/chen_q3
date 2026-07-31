@@ -1,6 +1,6 @@
 schema: q3_failed_strategies_v1
 status: active
-updated: 2026-06-25
+updated: 2026-07-31
 
 entries:
   - name: manual_row_by_row_scalar_replay
@@ -104,4 +104,79 @@ entries:
       failure_codes:
         - KERNEL_MISMATCH
         - TRACKB_E5P_EDGE_PROJECTED_PSD_CERT_GAP
+    status: avoided
+
+  - name: radius_driven_certificate_cutoff_and_tooth_aligned_transition
+    context: Route B / Supplier A / ScaledOuterSignBarrierFourThirds
+    symptom: the finite m=257 Jacobi rehearsal and finite outer-lobe evidence
+      do not supply the cofinal identity, domain coverage, or live terminal
+      boundary needed by the sign theorem
+    cause: cofinal sign requires a parametric identity with complete domain
+      coverage and a live terminal boundary
+    failed_strategy: infer the cofinal transition from a radius-driven cutoff
+      or tooth-aligned finite-cell transition
+    escape_operator: RepresentationShift
+    cognitive_operator_used: MINIMAL_LEMMA
+    new_gap_name: ParametricScaledJacobiDiscriminatorNonneg
+    invariant_learned: cofinal sign requires parametric identity, complete
+      domain coverage, and live terminal boundary
+    forbidden_future_move: promote m257 Jacobi or finite 027 to a cofinal
+      theorem
+    next_action: replay the exact 031 identity at generic m with the live
+      terminal term before attempting any sign estimate
+    evidence:
+      files:
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_038_SUPPLIER_A_DIRECTIVE_2026-07-30.md
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/038_scaled_outer_sign_barrier.answer.md
+      failure_codes:
+        - SCALED_JACOBI_COFINAL_LIFT_GAP
+    status: active
+
+  - name: full_packet_search_with_multiple_independent_fronts
+    context: Route B / pole-subtracted Muntz v3 continuation
+    symptom: searching T4a, the downstream T5 shell, and PL1-PL3 together
+      obscures the single open supplier and permits semantic-sign drift
+    cause: the useful conditional shell becomes actionable only after an exact
+      source-level semantic diff isolates the smallest missing interface
+    failed_strategy: search the full Muntz packet across multiple independent
+      fronts instead of isolating the T4a supplier
+    escape_operator: ReceiverMinimize
+    cognitive_operator_used: MINIMAL_LEMMA
+    new_gap_name: MellinDifferentiableOnRightHalfPlane_Icc0_IcoLipschitz
+    invariant_learned: conditional shells are useful only after exact semantic
+      diff
+    forbidden_future_move: promote an Aristotle-proposed premise to an axiom
+    next_action: retain the local T4a bridge closed by Goal 039 and treat each
+      remaining plant as a separate explicit contract
+    evidence:
+      files:
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_ARISTOTLE_MICROSCOPE_2026-07-30.md
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/038A_muntz_v3_semantic_audit.answer.md
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/039_muntz_v3_consumption.answer.md
+      failure_codes:
+        - MellinDifferentiableOnRightHalfPlane_Icc0_IcoLipschitz
+    status: superseded
+
+  - name: resubmit_already_closed_supplier_to_cloud
+    context: Route B / T4a to PL2 handoff
+    symptom: a prepared Aristotle supplier duplicates the exact local T4a
+      theorem while the distinct PL1-PL3 plant declarations are absent
+    cause: cloud search no longer reduces the proof gap once the exact local
+      theorem closes the interface
+    failed_strategy: resubmit the already-closed T4a supplier to Aristotle
+    escape_operator: MemoryConsolidation
+    cognitive_operator_used: MINIMAL_LEMMA
+    new_gap_name: PL2_RawPoleMismatchExplicitWitness
+    invariant_learned: cloud search stops when an exact local theorem already
+      closes the interface
+    forbidden_future_move: count absent plants as mechanically instantiated
+    next_action: keep the T4a contract quarantined; reuse the Goal 040 PL2
+      witness and require a separate explicit contract for any PL1 or PL3 work
+    evidence:
+      files:
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_T4A_SUPERSEDED_PL2_2026-07-30.md
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/039_muntz_v3_consumption.answer.md
+        - q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/040_muntz_v3_pl2_raw_pole_mismatch.answer.md
+      failure_codes:
+        - DO_NOT_SUBMIT_DUPLICATE_T4A_ARISTOTLE_RUN
     status: avoided
