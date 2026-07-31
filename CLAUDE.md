@@ -363,7 +363,9 @@ lake env lean -c 'import Q3.Main; #print axioms Q3.Main.RH_of_Weil_and_Q3'
 **Quick start:**
 ```bash
 Linux:
-source /mnt/hdd01/Soft/GitHub/chen_q3/sandboxes/projekt_2/.venv/bin/activate
+cd /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
+source .venv/bin/activate && source ~/.api_keys
+# (venv в корне репо, Python 3.13, aristotlelib; создан 2026-07-31)
 
 macOS:
 cd /Users/emalam/GitHub/rh_lean_01_2026
