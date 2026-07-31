@@ -48743,3 +48743,25 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Verdict: `HG_SUPPLIER_DISCHARGED_FOR_V3_CLASS`.  This closes hG for both
   columns and makes the canonical supplier ledger 2/4 together with Goal 046;
   canonical hRm and habs remain open.  Route B stays `CHALLENGER / NOT_RH`.
+
+## 2026-07-31 — Goal 049 explicit E-star bound (fail-closed statement audit)
+
+- The sealed `riemannBoundaryCellBridge_Estar` is indeed already at the exact
+  measurable/Icc-zero/Ico-Lipschitz v3 class, and a direct positive-`b` wrapper
+  compiles with exactly `[propext, Classical.choice, Quot.sound]`.
+- The issued theorem nevertheless quantifies over every `b : ℝ` while its
+  explicit constant contains signed terms `K*b`.  The proposed assertion that
+  the right-hand side is nonnegative for `b≤0` is false.
+- Kernel-checked counterexample: `h≡0`, `b=-1`, `K=1`, `u=1/4`.  Every
+  hypothesis holds, `Estar h u=0`, the packed constant is `-2`, and the target
+  conclusion is `0≤-1`.
+- The `b=0` subcase is genuinely trivial; the exact failure is `b<0`.  The
+  smallest compatible repair is an added hypothesis `0≤b`, after which one
+  splits equality and calls the sealed bridge on `0<b`.
+- No repair or production theorem was added because the goal explicitly says
+  to report, not repair, a divergence.  Frozen sources, sealed R6Export, and
+  both muntz_r6 trees remain untouched; the full live v3 build still passes
+  all 8044 jobs.
+- Verdict: `ESTAR_BOUND_BLE0_BRANCH_GAP`.  This exposes a packaging sign bug,
+  not missing Riemann-sum analysis; canonical hRm/habs remain open and Route B
+  remains `CHALLENGER / NOT_RH`.
