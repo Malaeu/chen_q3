@@ -48619,3 +48619,26 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - All seven normalized source/export comparisons are byte-identical, both
   mirrors agree, and neither frozen v3 content nor either `muntz_r6/` tree was
   modified. Verdict: `HRM_SUPPLIER_DISCHARGED_UNDER_R6_HYPOTHESES`.
+
+## 2026-07-31 — Goal 045 hRp supplier consumption (closed locally)
+
+- Exact target: consume the sealed Goal 044 supplier
+  `R6Export.Rplus_differentiable` into
+  `AnalyticOnNhd ℂ (Rplus h Λ) shiftedHalfPlane` without editing the export.
+- The supplier conclusion is global `Differentiable ℂ (Rplus h Λ)` and its
+  exact inputs are `0<a`, `a≤b`, support in `Icc a b`, global
+  `LipschitzWith`, and `1≤Λ`; in particular there is no mass hypothesis.
+- Pinned Mathlib has no `Differentiable.analyticOnNhd` declaration.  The exact
+  passage is `.differentiableOn` followed by
+  `DifferentiableOn.analyticOnNhd` on the open shifted half-plane.
+- The new wrapper is 21 lines and needs no half-plane equality bridge because
+  the supplier is entire; definitional equality transports the byte-identical
+  exported and v3 `Rplus` definitions.
+- Direct Lean and the full 8040-job v3 build pass; taint is zero and the theorem
+  depends exactly on `[propext, Classical.choice, Quot.sound]`.
+- All seven sealed `R6Export` hashes are unchanged, canon and mirror agree, and
+  frozen/v3/R6 source content is untouched.
+- `WITNESS_CLASS_VS_R6_HYPOTHESES_GAP` remains OPEN: the v3 witness class still
+  does not provide support away from zero or global `LipschitzWith`.
+- Verdict: `HRP_SUPPLIER_DISCHARGED_UNDER_R6_HYPOTHESES`; Route B remains
+  `CHALLENGER / NOT_RH`, with no Aristotle submission or promotion.
