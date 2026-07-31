@@ -48642,3 +48642,37 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   does not provide support away from zero or global `LipschitzWith`.
 - Verdict: `HRP_SUPPLIER_DISCHARGED_UNDER_R6_HYPOTHESES`; Route B remains
   `CHALLENGER / NOT_RH`, with no Aristotle submission or promotion.
+
+## 2026-07-31 — Goal 046 hRp on the exact v3 class (closed locally)
+
+- Exact target removes all R6-only inputs: no `0<a`, no global
+  `LipschitzWith`, and no mass hypothesis; only the measurable/Icc-zero/Ico
+  Lipschitz v3 class and `1≤Λ` are available.
+- On `u>Λ≥1`, one fixed positive-natural cutoff `N=ceil(b)+1` makes the
+  dilation `tsum` equal a finite sum; terms beyond `N` have `n*u>b` and vanish.
+- This finite representation makes the compact-window indicator measurable
+  directly from `hmeas`; global continuity of `h` or `Estar` is unnecessary.
+- The T4a bound `C=‖h 0‖+K|b|` controls `h` on `Ico 0 b`.  For every finite
+  dilation index, the sole missing endpoint is `u=b/n`; finite
+  `Finset.eventually_all` plus singleton-nullity gives the required a.e. bound.
+- The bounded indicator is locally integrable by
+  `locallyIntegrableOn_const.mono`; this bypasses the R6 continuity-based
+  `Estar_locallyIntegrableOn_Ioi` theorem entirely.
+- The remaining R6 template is reusable verbatim in shape: zero big-O at
+  infinity and zero near the origin, equality with `mellin f`, and
+  `mellin_differentiableAt_of_isBigO_rpow`.
+- The mandatory PL1 plant can reuse its existing `hmeas`, `hsupp`, and
+  `LipschitzOnWith 1` certificates; its endpoint jump and nonzero mass must not
+  appear in the dependency graph of the primary theorem.
+- Two of four local semantic queries timed out and the other two were weak;
+  pinned T4a/R6 sources and exact Mathlib finite-filter/measure APIs are the
+  implementation authority. Route B remains `CHALLENGER / NOT_RH`.
+- The 187-line primary theorem and 39-line PL1 plant both pass direct Lean;
+  the full v3 build passes 8042 jobs and both declarations have zero taint and
+  exactly `[propext, Classical.choice, Quot.sound]`.
+- The primary source/declaration contains no `hmass`, `0<a`, global
+  `LipschitzWith`, R6Export import, or R6 supplier invocation.  The PL1 plant
+  accepts the actual endpoint-jump/nonzero-mass `pl1Witness` at `b=K=Λ=1`.
+- Frozen sources, Goal 044, both R6 trees, and the sealed R6Export certificate
+  remain untouched; canon and mirror are byte-identical. Verdict:
+  `HRP_SUPPLIER_DISCHARGED_FOR_V3_CLASS`.

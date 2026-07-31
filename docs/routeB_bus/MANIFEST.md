@@ -88,6 +88,8 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `044_muntz_v3_r6_export_hrm_wrapper.goal.md` | goal | `425b54615a7cf142105fa1bb060cb2ef5a2c815efcfe5776b8071aedbfcd79a1` |
 | `045_muntz_v3_supplier_hrp.answer.md` | answer | `e6d1730994714ef9005bf9a9149beb4dd9e06e746c4cbde666675821a2f78f93` |
 | `045_muntz_v3_supplier_hrp.goal.md` | goal | `90413b99281a29e0bd3fc734b9640b10973113ad0e6d8b4ee4babc717a5eb30c` |
+| `046_muntz_v3_hrp_exact_class.answer.md` | answer | `8de3c3bd4e54e50bdc560504dee823bc03bc3e1a44c98a2080270fc4764ea3a3` |
+| `046_muntz_v3_hrp_exact_class.goal.md` | goal | `ee0440c7783e7c11a411273255d48b55692b615f0727ebb901260fbbfeaaeee5` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
@@ -271,6 +273,8 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/MuntzV3Unconditional.lean` | Muntz v3 local Goal 039 Lean artifact | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
 | `muntz_v3/RequestProject/MuntzV3R6HrmWrapper.lean` | Muntz v3 local Goal 044 hRm wrapper | `b91b723b00fa2f1f7e36ace2ba138307e045d48ef159e64665f8379f6d6379b5` |
 | `muntz_v3/RequestProject/MuntzV3R6HrpWrapper.lean` | Muntz v3 local Goal 045 hRp wrapper | `49283d50602d5f792b91bf3f84c2c523575d5ba9ace1f9400e69b4cf2062d17e` |
+| `muntz_v3/RequestProject/MuntzV3RplusExactClass.lean` | Muntz v3 local Goal 046 exact-class hRp supplier | `e97f34aae6e851dc81a619587f3925c1e05a215fba90fe4d9f469441e6ee8144` |
+| `muntz_v3/RequestProject/MuntzV3RplusExactClassPL1Plant.lean` | Muntz v3 local Goal 046 PL1 acceptance plant | `8f6f67310941f9e4c26880c519b00d13b9a7317ae88865adc5dc930a09e7ef7b` |
 | `muntz_v3/RequestProject/R6Export/ConcreteAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `6e765f8ea67aabd13e22d2e832a00dd0283dd483f93fa136fbeba3fb07ba9554` |
 | `muntz_v3/RequestProject/R6Export/IntegralAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `d64d5de884a597785a358d400d04de70246593c75155f4f480963d86369374ce` |
 | `muntz_v3/RequestProject/R6Export/Main.lean` | Muntz v3 Goal 044 collision-free R6 export | `2a4beee999d0613eb2ae0e2ecbf67986ed5c3f4415e2dc1d42e2da979baca29d` |
