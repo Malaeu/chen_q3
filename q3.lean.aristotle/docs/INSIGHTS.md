@@ -48589,3 +48589,27 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Per the source-locked instruction to report rather than repair divergence,
   no R6 proof was copied or reproved.  The exact primary stop is
   `LEAN_BUILD_FAIL`; Route B remains `CHALLENGER / NOT_RH` and Bus 010 void.
+
+## 2026-07-31 — Goal 044 collision-free R6 hRm export (in progress)
+
+- Exact target: place the harvested R6 supplier under the unique module path
+  `RequestProject.R6Export.*`, then prove the v3 consumer theorem through the
+  tested half-plane equality and `DifferentiableOn.analyticOnNhd`.
+- The full transitive source closure has seven files, not the predicted three:
+  `TailAnalyticity -> WindowAnalyticity -> IntegralAnalyticity ->
+  ConcreteAnalyticity -> PoleSubtracted -> Main -> RiemannBoundaryCellBridge`.
+- Six files share namespace `EStarMuntzZeroMassContinuation`; their exported
+  declarations will live in its nested `R6Export` namespace.  The boundary-cell
+  bridge stays at root because the preserved R6 proof explicitly uses
+  `_root_.Estar`.
+- Every proof body remains byte-preserved.  Allowed mechanical differences are
+  provenance headers, renamed internal imports, and namespace open/end lines.
+- The wrapper will retain exactly the R6 inputs: `0<a`, `a≤b`, support in
+  `Icc a b`, global `LipschitzWith`, zero mass, and `1≤Λ`.
+- The separate `WITNESS_CLASS_VS_R6_HYPOTHESES_GAP` remains open: the v3
+  witness class has support touching zero and only local `LipschitzOnWith`.
+- Two of four local semantic queries returned weak background hits and two
+  timed out; the pinned Lean sources and official module/namespace semantics
+  are authoritative for this packaging repair.
+- Route B remains `CHALLENGER / NOT_RH`; this goal supplies only hRm under R6
+  hypotheses and does not promote or repair the witness-class interface.
