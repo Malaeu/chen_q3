@@ -1,0 +1,31 @@
+noncomputable section
+
+namespace Q3.Main
+
+/-- Current top-level broad-cone positivity export.
+
+This export reflects the active compiled route and its live axiom profile; it
+should not be read as the frozen public RH contract after the target-cone audit
+or after the 2026-06-25 Weil-square audit. -/
+theorem Q_nonneg_on_Weil_cone :
+    ∀ Φ ∈ Q3.Weil_cone, Q3.Q Φ ≥ 0 :=
+  Q3.Q_nonneg_on_Weil_cone_current_atom_route
+
+/-- Current top-level RH wrapper for the compiled broad-cone route.
+
+Its present meaning is structural: it records the active route and axiom profile
+used by `Q3.Main`, while the scalar closure gate is still unresolved and the
+public target cone has already been narrowed in the paper/control-doc layer.
+This wrapper must not be used as the corrected Weil-square RH export. -/
+theorem RH_of_Weil_and_Q3 : Q3.RH :=
+  Q3.RH_of_shifted_atom_route
+
+-- Check what axioms the proof depends on.
+#check RH_of_Weil_and_Q3
+-- Axiom dependencies (run `#print axioms RH_of_Weil_and_Q3`):
+-- Standard: propext, Classical.choice, Quot.sound
+-- Tier-1: Q3.Weil_criterion
+-- Tier-2 in main theorem: `Q3.prime_term_le_at_t_critical_axiom`
+
+end Q3.Main
+
