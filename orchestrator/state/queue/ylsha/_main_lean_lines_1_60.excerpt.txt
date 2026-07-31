@@ -1,0 +1,59 @@
+import Mathlib
+
+open scoped BigOperators Real Nat Classical Pointwise
+open Set Filter MeasureTheory Complex
+
+set_option maxHeartbeats 8000000
+set_option maxRecDepth 4000
+set_option synthInstance.maxHeartbeats 20000
+set_option synthInstance.maxSize 128
+set_option relaxedAutoImplicit false
+set_option autoImplicit false
+
+namespace EStarMuntzZeroMassContinuation
+
+noncomputable def Estar (h : ℝ → ℂ) (u : ℝ) : ℂ :=
+  Real.sqrt u * ∑' n : ℕ+, h (n * u)
+
+noncomputable def Mellin (k : ℝ → ℂ) (s : ℂ) : ℂ :=
+  ∫ u in Set.Ioi (0 : ℝ), k u * (u : ℂ) ^ (s - 1)
+
+noncomputable def Gwin (h : ℝ → ℂ) (Λ : ℝ) (s : ℂ) : ℂ :=
+  ∫ u in Set.Ioo (Λ⁻¹) Λ, Estar h u * (u : ℂ) ^ (s - 1)
+
+noncomputable def Rminus (h : ℝ → ℂ) (Λ : ℝ) (s : ℂ) : ℂ :=
+  ∫ u in Set.Ioo (0 : ℝ) (Λ⁻¹), Estar h u * (u : ℂ) ^ (s - 1)
+
+noncomputable def Rplus (h : ℝ → ℂ) (Λ : ℝ) (s : ℂ) : ℂ :=
+  ∫ u in Set.Ioi Λ, Estar h u * (u : ℂ) ^ (s - 1)
+
+def H : Set ℂ := {w : ℂ | 0 < w.re}
+
+noncomputable def MellinDivOne (h : ℝ → ℂ) (w : ℂ) : ℂ :=
+  dslope (Mellin h) 1 w
+
+noncomputable def ZetaResidueFactor : ℂ → ℂ :=
+  Function.update (fun z => (z - 1) * riemannZeta z) 1 1
+
+noncomputable def ZetaMellinPoleSub (h : ℝ → ℂ) (w : ℂ) : ℂ :=
+  ZetaResidueFactor w * MellinDivOne h w
+
+lemma one_mem_H : (1 : ℂ) ∈ H := by simp [H]
+
+/-- At `s = 1`, the Mellin kernel is one, so zero mass gives a zero. -/
+theorem mellin_one_eq_zero (h : ℝ → ℂ)
+    (hmass : ∫ v in Set.Ioi (0 : ℝ), h v = 0) : Mellin h 1 = 0 := by
+  simpa [Mellin] using hmass
+
+lemma mellinDivOne_value_one (h : ℝ → ℂ) :
+    MellinDivOne h 1 = deriv (Mellin h) 1 := by
+  simp [MellinDivOne, dslope_same]
+
+lemma mellinDivOne_of_ne (h : ℝ → ℂ) {w : ℂ} (hw : w ≠ 1) :
+    MellinDivOne h w = (Mellin h w - Mellin h 1) / (w - 1) := by
+  rw [MellinDivOne, dslope_of_ne (Mellin h) hw]
+  simp [slope, div_eq_inv_mul, mul_comm]
+
+lemma mellinDivOne_of_ne_of_zero (h : ℝ → ℂ) (hz : Mellin h 1 = 0)
+    {w : ℂ} (hw : w ≠ 1) : MellinDivOne h w = Mellin h w / (w - 1) := by
+  rw [mellinDivOne_of_ne h hw, hz, sub_zero]
