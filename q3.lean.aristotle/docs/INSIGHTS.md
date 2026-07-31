@@ -48708,3 +48708,38 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Lean file was created or modified in Goal 048.
 - Verdict: `HABS_EXPORT_VIABLE`; Route B remains `CHALLENGER / NOT_RH` and
   Bus 010 remains void.
+
+## 2026-07-31 — Goal 047 hG exact-class supplier (closed locally)
+
+- Target: prove `Differentiable ℂ (Gwin h Λ)` from exactly measurable support
+  in `Icc 0 b`, `LipschitzOnWith K` on `Ico 0 b`, and `1≤Λ`, then restrict it
+  to `shiftedHalfPlane` for the consumer.
+- On `Ioo Λ⁻¹ Λ`, choose the fixed positive-natural cutoff
+  `N=ceil(|b|*Λ)+1`.  If `n>N`, positivity of `Λ` and `Λ*u>1` force `n*u>b`,
+  so the `Estar` tsum is one measurable finite sum throughout the window.
+- Reuse the 046 bound `C=‖h 0‖+K|b|` on `Ico 0 b`; for each of the finitely
+  many indices, the only missing support endpoint is `u=b/n`, a null
+  singleton.  This yields an a.e. constant bound for the window indicator.
+- A measurable function bounded by a constant is locally integrable on
+  `Ioi 0`; because the indicator vanishes below `Λ⁻¹` and above `Λ`, its
+  Mellin transform is differentiable at every complex exponent.
+- The expected proof uses only `MellinCompactSupportAnalyticity` and the 046
+  endpoint technique, with no mass, positive lower support, global
+  `LipschitzWith`, or R6 import.
+- Two of four local semantic queries timed out and the returned hit was weak;
+  pinned 046/R6 template sources plus official Mathlib Mellin and singleton-
+  null APIs are the implementation authority.
+- The primary file is 190 lines and the PL1 plant is 42 lines.  Direct Lean,
+  the isolated 8028-job target build, and the full 8044-job v3 build pass.
+  Both supplier declarations and the plant have exactly
+  `[propext, Classical.choice, Quot.sound]` and zero taint.
+- The actual PL1 endpoint-jump/nonzero-mass witness is accepted at
+  `b=K=Λ=1`; the primary and plant files contain no mass hypothesis, positive
+  lower support, global `LipschitzWith`, R6 import, or R6 supplier call.
+- The R6 column follows by restriction, not by another analytic theorem:
+  global Lipschitz supplies measurability and `LipschitzOnWith`, while support
+  in `Icc a b` with `0<a` implies the required zero extension outside
+  `Icc 0 b`.
+- Verdict: `HG_SUPPLIER_DISCHARGED_FOR_V3_CLASS`.  This closes hG for both
+  columns and makes the canonical supplier ledger 2/4 together with Goal 046;
+  canonical hRm and habs remain open.  Route B stays `CHALLENGER / NOT_RH`.
