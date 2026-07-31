@@ -84,6 +84,8 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `042_muntz_v3_pl1_mass_blowup_witness.goal.md` | goal | `9a2375c271f24c4b6cb94d87998811724570f2c8bfb0468b347d0bc0b6d078c9` |
 | `043_muntz_v3_supplier_hrm.answer.md` | answer | `da5ec23ff29d13862d466b662d68ff81efd6f97a264ce659564eab1e5796fd4d` |
 | `043_muntz_v3_supplier_hrm.goal.md` | goal | `5531ef30cf15d1372bb3174a421695c8816d7719b0bf1eef06a0afe762c5e786` |
+| `044_muntz_v3_r6_export_hrm_wrapper.answer.md` | answer | `425d36a0d1d0b2a9ff00304644f8d092285e3979ab913d572a508591815c6ee8` |
+| `044_muntz_v3_r6_export_hrm_wrapper.goal.md` | goal | `425b54615a7cf142105fa1bb060cb2ef5a2c815efcfe5776b8071aedbfcd79a1` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
@@ -265,6 +267,14 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/MuntzV3PL1MassBlowupWitness.lean` | Muntz v3 local Goal 042 PL1 Lean artifact | `1d1e8689a083867f68c3e5ec56f06bd5a271f4af68b632cc084b450f10bbb943` |
 | `muntz_v3/RequestProject/MuntzV3PL2RawPoleMismatch.lean` | Muntz v3 local Goal 040 PL2 Lean artifact | `82ddccccefdc2b8bcd547d9bfbed4ff23d4dd6a0756f553ff6d01b40c7def339` |
 | `muntz_v3/RequestProject/MuntzV3Unconditional.lean` | Muntz v3 local Goal 039 Lean artifact | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
+| `muntz_v3/RequestProject/MuntzV3R6HrmWrapper.lean` | Muntz v3 local Goal 044 hRm wrapper | `b91b723b00fa2f1f7e36ace2ba138307e045d48ef159e64665f8379f6d6379b5` |
+| `muntz_v3/RequestProject/R6Export/ConcreteAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `6e765f8ea67aabd13e22d2e832a00dd0283dd483f93fa136fbeba3fb07ba9554` |
+| `muntz_v3/RequestProject/R6Export/IntegralAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `d64d5de884a597785a358d400d04de70246593c75155f4f480963d86369374ce` |
+| `muntz_v3/RequestProject/R6Export/Main.lean` | Muntz v3 Goal 044 collision-free R6 export | `2a4beee999d0613eb2ae0e2ecbf67986ed5c3f4415e2dc1d42e2da979baca29d` |
+| `muntz_v3/RequestProject/R6Export/PoleSubtracted.lean` | Muntz v3 Goal 044 collision-free R6 export | `7daace344032ba7eb130146394a7d23b97c910896901bd3e75367bcba0151eca` |
+| `muntz_v3/RequestProject/R6Export/RiemannBoundaryCellBridge.lean` | Muntz v3 Goal 044 collision-free R6 export | `b0c3a16db5627f4b3fbbc785ac7dc446d84a20975aa19b6296a4c25ccef65ce6` |
+| `muntz_v3/RequestProject/R6Export/TailAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `18d7e0cafb3cae5001367dbe741919e89be3b594ad2040f05fbd2c93ca97507a` |
+| `muntz_v3/RequestProject/R6Export/WindowAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `ce279d4214569b0767b54e1ae0b8aa63544f7a481c7c04e749b4e4d4c7eb04b9` |
 | `muntz_v3/_COVER.md` | Muntz v3 harvest and consumption metadata | `a8b47544a353b1f1ac9123076c4638232bb7a6843333240c555b63baf6fcfa6d` |
 | `muntz_v3/lake-manifest.json` | Muntz v3 harvested artifact | `116c6ef00aa899fb38c08c5e4c92c0e434d0e7f9d574fcb5d4d42cc90ffb07cb` |
 | `muntz_v3/lakefile.toml` | Muntz v3 harvested artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
