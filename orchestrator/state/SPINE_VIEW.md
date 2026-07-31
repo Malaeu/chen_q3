@@ -10,13 +10,13 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | Source | Last commit |
 |---|---|
 | `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 2026-07-27 |
-| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 2026-06-25 |
+| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 2026-07-31 |
 | `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 2026-01-29 |
 | `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-06-13 |
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-06-12 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-06-13 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-07-30 |
-| `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-06-25 |
+| `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1. Object-level kills (FAILURE_ATLAS.json)
 | id | stop_code | replacement |
