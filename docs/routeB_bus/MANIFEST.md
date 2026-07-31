@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 261 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -268,3 +268,8 @@ Proshka mirror from `rh_lean_01_2026`; 261 mirrored source files plus `CHANNEL_R
 | `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 
 `MANIFEST.md` is excluded from its own hash table.
+| `proshka/RULE_NAMING_DISAMBIGUATION_2026-07-31.md` | control-plane rule disambiguation (Rule A/B) | `36dc61d2d756a8c94214eb210ddc698d9dee70017f62e66e4713e92b563bc5aa` |
+| `proshka/PROSHKA_VERDICT_GOAL040_RATIFIED_PENDING_PIN_2026-07-31.md` | Proshka verdict/source review | `cd08c7ba22622f9846b2355c87f05ddf75c9bf8b22734c51019fa39c8b6c2542` |
+| `proshka/PROSHKA_VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026-07-31.md` | Proshka verdict/source review | `220071ec09623cd210dbb553b3a54feff5ee6507067b968e2a3e00e05769b96f` |
+| `proshka/PROSHKA_VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026-07-31.md` | Proshka verdict/source review | `546f820b2f10e1287aed2511aea2cafd12ab4708b4baef5b8dc403d5f2a8b83e` |
+| `041_goal040_postclose_requirements_audit.md` | Goal 040 post-close reviewer guards (non-normative) | `7ca84c88c6528a872613d97e57e6160c0e448d59cabce1982e92ea8d20a223f7` |
