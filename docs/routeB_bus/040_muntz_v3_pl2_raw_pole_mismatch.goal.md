@@ -153,31 +153,3 @@ P040-M3 (Mythos): log-moment strictness closes by the constant-bound route (R3),
 P040-M1..M3; one Route B state-history row (status not promoted); ROUTE_B_STATE update as
 the last step; canon + mirror in one transaction; report — do not repair — any divergence,
 including the currently pending remote materialization of ARISTOTLE_USAGE_PROTOCOL.md.
-
-## AMENDMENT A1 (2026-07-31, Mythos; per Proshka verdict GOAL_040_CORRECTIONS_RATIFIED_PENDING_PIN)
-
-Original text above unchanged; this section adds binding requirements.
-
-A1.1 STRICTNESS PRECONDITIONS (explicit named fields; deleting either must break the
-strict sign of the log-moment):
-  bump_mass > 0                              (m = ∫ tent)
-  right_support_lower > left_support_upper   (c2 - r > c1 + r; touching supports yield only <=0)
-
-A1.2 NO-SKIP CLAUSE: no arrow of the chain
-  translated equal-mass bumps => ∫h = 0 => ∫ h·log u du < 0
-  => deriv (Mellin h) 1 ≠ 0 => ¬ContinuousAt (fun w => riemannZeta w * Mellin h w) 1
-may be replaced by numerical integration or by an unproven "differentiation under the
-integral sign". ∫ h·log u du < 0 alone is NOT PL2: without the proved identification
-deriv (Mellin h) 1 = ∫_{Ioi 0} h u * Real.log u du the run returns
-PL2_DERIV_IDENTIFICATION_API_GAP, not success.
-
-A1.3 Additional registered prediction:
-P040-PL2 (Proshka): the generic simple-zero => raw-product discontinuity closes by
-reuse of the existing residue/slope theorem; the dominant Lean friction is the exact
-derivative identification, not the final discontinuity proof.
-
-A1.4 The answer states which goal version it consumed (pre-A1 / post-A1) by SHA-256.
-
-NOTE (branching rule applied): the 040 answer was produced PRE-A1 (goal closed
-2026-07-30, Mac session); per the Mythos branching rule the answer is NOT
-retro-edited — A1 executes as a FOLLOW-UP GATE on any future PL2-consuming step.
