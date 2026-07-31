@@ -90,6 +90,8 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `045_muntz_v3_supplier_hrp.goal.md` | goal | `90413b99281a29e0bd3fc734b9640b10973113ad0e6d8b4ee4babc717a5eb30c` |
 | `046_muntz_v3_hrp_exact_class.answer.md` | answer | `8de3c3bd4e54e50bdc560504dee823bc03bc3e1a44c98a2080270fc4764ea3a3` |
 | `046_muntz_v3_hrp_exact_class.goal.md` | goal | `ee0440c7783e7c11a411273255d48b55692b615f0727ebb901260fbbfeaaeee5` |
+| `047_muntz_v3_supplier_hg_gwin_entire.answer.md` | answer | `2809505b7c2d65a54b37cf09d1d7cd72a05b739055c5fdf0dc4f405e4d405857` |
+| `047_muntz_v3_supplier_hg_gwin_entire.goal.md` | goal | `da6e15e37307b65af85abdcd4eb45834c0a0284aea917fc9199cd5e12fde56b9` |
 | `048_habs_t2_inventory.answer.md` | answer | `78f04ce3ba6300a7d310b058c5a8e61aece0f89b6a647b21ab8dec042fbc954d` |
 | `048_habs_t2_inventory.goal.md` | goal | `d694edcee28081775d627ceed4f432d7dd0c982c226de962e2e21d5c890fb12c` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
@@ -270,6 +272,8 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/.gitkeep` | Muntz v3 harvested artifact | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `muntz_v3/RequestProject/Main.lean` | Muntz v3 harvested artifact | `0b2e52db207610f0e63c3dac3e61c5d14f26d0119ccd11756cdbeeab80f3b888` |
 | `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean` | Muntz v3 local Goal 039 Lean artifact | `743e7cecf175a0be8c94d844c334ab66bfa5858696e6269a743b17ce0edfe148` |
+| `muntz_v3/RequestProject/MuntzV3GwinExactClass.lean` | Muntz v3 local Goal 047 exact-class hG supplier | `a433b05d9e798b98a45839b7510dab7199655110cc4de9a764568e2c3e13490c` |
+| `muntz_v3/RequestProject/MuntzV3GwinExactClassPL1Plant.lean` | Muntz v3 local Goal 047 PL1 acceptance plant | `72183fd2c44fd9004351517a79560a8ce0127712d339f514ce64ee3ebe8ba474` |
 | `muntz_v3/RequestProject/MuntzV3PL1MassBlowupWitness.lean` | Muntz v3 local Goal 042 PL1 Lean artifact | `1d1e8689a083867f68c3e5ec56f06bd5a271f4af68b632cc084b450f10bbb943` |
 | `muntz_v3/RequestProject/MuntzV3PL2RawPoleMismatch.lean` | Muntz v3 local Goal 040 PL2 Lean artifact | `82ddccccefdc2b8bcd547d9bfbed4ff23d4dd6a0756f553ff6d01b40c7def339` |
 | `muntz_v3/RequestProject/MuntzV3Unconditional.lean` | Muntz v3 local Goal 039 Lean artifact | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
