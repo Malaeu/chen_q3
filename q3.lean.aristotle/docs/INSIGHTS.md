@@ -48541,3 +48541,28 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - `Main.lean` and the Goal 039 bridge remain frozen; Goal 040 adds exactly one
   new Lean file and does not authorize any Aristotle submission or route
   promotion.
+
+## 2026-07-31 — Goal 042 PL1 nonzero-mass blowup (closed locally)
+
+- Exact target: `exists_rawZetaMellin_norm_blowup_at_one`, witnessed by
+  `h(u) = 1_(0,1] * u`, whose Mellin transform is `1 / (s + 1)` and whose
+  mass is exactly `1/2`.
+- The local semantic index stalled while computing the first of four
+  address-tied queries; the source audit therefore uses the pinned Mathlib
+  checkout and the already checked Goal 039/040 files as authorities.
+- The generic pole lemma factors the target norm into the norm of
+  `(w - 1) * riemannZeta w * M w`, tending to `‖m‖ > 0`, times the inverse
+  distance to `1`, tending to `atTop` on the punctured neighborhood.
+- Pinned APIs `Filter.Tendsto.pos_mul_atTop`,
+  `Filter.Tendsto.inv_tendsto_nhdsGT_zero`, and
+  `tendsto_norm_nhdsNE_zero` supply the filter bookkeeping locally.
+- `hasMellin_cpow_Ioc` supplies the exact transform, while the Goal 039
+  compact-support bridge supplies `ContinuousAt (Mellin h) 1`.
+- The witness reuses the Goal 040 indicator measurability/support pattern;
+  on `Ico 0 1` it is the identity map, so Lipschitz constant `1` suffices.
+- This is the intended PL1 contrast only: nonzero mass makes the zeta pole
+  load-bearing, whereas Goal 040's zero mass leaves a finite raw mismatch.
+- The isolated Lean check and full 8031-job build pass; the exported theorem
+  has zero taint and exactly `[propext, Classical.choice, Quot.sound]`.
+- Scope stays `CHALLENGER / NOT_RH`; frozen files, bus numbering, and route
+  state remain unchanged.

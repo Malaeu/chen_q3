@@ -80,6 +80,8 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `040_muntz_v3_pl2_raw_pole_mismatch.goal.md` | goal | `48172cdbc16f527b2cc4b3c1c28772b4cbaf7f036b57326001e4e69046989300` |
 | `041_conductor_handover_and_mirror_sync.answer.md` | answer | `80976e272f0b3a510e57d6549d5590ec8569b620d7f62c7ac4a6f2ea096cd543` |
 | `041_conductor_handover_and_mirror_sync.goal.md` | goal | `1ee885c50c92e4cad5f108bd51c855ea0df893caf147f2c12bb2a3d6588c8083` |
+| `042_muntz_v3_pl1_mass_blowup_witness.answer.md` | answer | `421f2dc35d6c4327f59d5fb40fc918fb3e3014fcf41c49b99f6eac5c9d767619` |
+| `042_muntz_v3_pl1_mass_blowup_witness.goal.md` | goal | `9a2375c271f24c4b6cb94d87998811724570f2c8bfb0468b347d0bc0b6d078c9` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
@@ -258,6 +260,7 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/.gitkeep` | Muntz v3 harvested artifact | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `muntz_v3/RequestProject/Main.lean` | Muntz v3 harvested artifact | `0b2e52db207610f0e63c3dac3e61c5d14f26d0119ccd11756cdbeeab80f3b888` |
 | `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean` | Muntz v3 local Goal 039 Lean artifact | `743e7cecf175a0be8c94d844c334ab66bfa5858696e6269a743b17ce0edfe148` |
+| `muntz_v3/RequestProject/MuntzV3PL1MassBlowupWitness.lean` | Muntz v3 local Goal 042 PL1 Lean artifact | `1d1e8689a083867f68c3e5ec56f06bd5a271f4af68b632cc084b450f10bbb943` |
 | `muntz_v3/RequestProject/MuntzV3PL2RawPoleMismatch.lean` | Muntz v3 local Goal 040 PL2 Lean artifact | `82ddccccefdc2b8bcd547d9bfbed4ff23d4dd6a0756f553ff6d01b40c7def339` |
 | `muntz_v3/RequestProject/MuntzV3Unconditional.lean` | Muntz v3 local Goal 039 Lean artifact | `7bc8e8dbec15ff87a067462a8e7e4cf5a6804c737d067fc046a5d4db3739bef2` |
 | `muntz_v3/_COVER.md` | Muntz v3 harvest and consumption metadata | `a8b47544a353b1f1ac9123076c4638232bb7a6843333240c555b63baf6fcfa6d` |
