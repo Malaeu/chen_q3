@@ -81,3 +81,40 @@ Nearest candidate sources from the bibliography:
 K7 status UNCHANGED: UNVERIFIED_IMPORT until the exact theorem statement is
 extracted from [5] or [9]. Next acquisition step: fetch arXiv:2310.18423 and
 locate the simple-even theorem verbatim.
+
+## ADDENDUM 2 (2026-07-31, PW simple-even acquisition — fetch of arXiv:2310.18423)
+
+Fetched: [5] Connes–Consani–Moscovici, "Zeta Zeros and Prolate Wave Operators —
+Semilocal Adelic Operators", arXiv:2310.18423v2 (PDF on the bus:
+imports/2310.18423.pdf). RESULT OF THE SEARCH:
+
+1. arXiv:2310.18423 does NOT contain an explicit "simple-even for PW_λ" theorem
+   (the phrase "admits a simple expression" at its p.3 is about the formula
+   Wλ = −S² + 2πλ²(4N+1) − 1/4, not the spectrum). Candidate [5] ELIMINATED as
+   the direct source.
+2. The actual source trail runs through [9] Meixner–Schäfke 1954: the main paper
+   (2511.22755, §7) cites "[9], Satz 9, page 243, Section 3.2 ('Die
+   Sphäroidfunktionen')" for uniform eigenfunction estimates; simplicity of the
+   m=0 prolate eigenvalues and the parity of eigenfunctions (ps_n has parity
+   (−1)^n, so the ground state ps_0 is EVEN) is classical Sturm–Liouville theory
+   in that book. K7 status: source CLASS located (M–S 1954, §3.2 around Satz 9);
+   exact Satz with the simplicity statement still needs the book itself (not
+   freely fetchable) → import remains UNVERIFIED at theorem-statement level,
+   but the acquisition target is now precise: Meixner–Schäfke, §3.2.
+
+## CROSS-LINK FIND (same fetch, bigger than the citation)
+
+2511.22755 §7 (p.29, around Lemma 7.2) states verbatim: "h_λ is, up to a
+multiplicative scalar, the ONLY linear combination of h_{0,λ}, h_{4,λ} with
+vanishing integral", with uniform estimates (Satz-9-based)
+  max_{[−λ,λ]} |h_{n,λ} − h_n| ≤ c λ^{−2}   (n = 0, 4)
+  max_{[−λ,λ]} |h_λ − h| ≤ c λ^{−2}
+and: "Justifying rigorously this step is the main remaining obstacle to our
+approach to RH."
+
+This h_λ is EXACTLY the object class of our source-locked hTrial_m (normalized
+combination of prolate modes h0,λ/h4,λ, zero mass — cf. 011 source-lock). I.e.
+the CCM paper's k_λ ≈ ξ_λ obstacle and our bridge Hfam ↔ G_m (Gate C3) touch
+THE SAME concrete function family, with published λ^{−2} approximation rates
+for it. Candidate import for the bridge card: Lemma 7.2 (i)/(ii)
+[ABSTRACT][PAPER, proof via M–S Satz 9].
