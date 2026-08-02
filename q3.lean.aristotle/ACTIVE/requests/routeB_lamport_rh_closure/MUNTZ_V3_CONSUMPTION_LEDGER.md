@@ -124,3 +124,24 @@ Verdict: `HABS_SUPPLIER_DISCHARGED_FOR_V3_CLASS /
 MUNTZ_V3_EXACT_CLASS_CONTINUATION_ASSEMBLED`.  This is not tail smallness,
 cofinal convergence, detector closure, or RH.  Route B remains
 `CHALLENGER / NOT_RH`; physical Bus 010 remains void.
+
+## 2026-08-02 addendum — symmetric source-trial bridge
+
+`MuntzV3SymmetricTrialCrosswalk.lean` closes the next representation-only
+boundary.  For a measurable trial supported in `Icc (-b) b`, Lipschitz on its
+positive half, and with zero positive-half mass, it proves
+`continued_window_identity_symmetricTrial_v3Class` for the original symmetric
+function.
+
+The proof uses `(Ici 0).indicator h` internally and separately proves
+invariance of `Estar`, `Mellin`, `Gwin`, `Rminus`, `Rplus`, and
+`ZetaMellinPoleSub` on their positive domains.  It then consumes the already
+closed exact-class receiver; no T2 argument is repeated.
+
+Direct Lean, the 8038-job target build, and the full 8051-job v3 build pass.
+The production hole scan is empty and the theorem depends only on
+`[propext, Classical.choice, Quot.sound]`.
+
+Verdict: `MUNTZ_V3_SYMMETRIC_TRIAL_CROSSWALK_PROVED`.  Concrete prolate-trial
+regularity, finite projection/ground equality, cofinal tail control, S1/S2,
+and RH remain open; Route B stays `CHALLENGER / NOT_RH` and Bus 010 stays void.

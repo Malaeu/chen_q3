@@ -48842,7 +48842,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   front only; it does not prove tail decay, cofinal convergence, the route's
   detector obligations, or RH.
 
-## 2026-08-02 — Post-Goal-052 symmetric-trial crosswalk (in progress)
+## 2026-08-02 — Post-Goal-052 symmetric-trial crosswalk (closed locally)
 
 - Exact target: `continued_window_identity_symmetricTrial_v3Class` in
   `muntz_v3/RequestProject/MuntzV3SymmetricTrialCrosswalk.lean`.
@@ -48861,3 +48861,16 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   and exactly `[propext, Classical.choice, Quot.sound]`.
 - Route boundary: no T2 reproof, no tail-smallness, no S1/S2 promotion, no
   Bus 010, and Route B remains `CHALLENGER / NOT_RH`.
+- `MuntzV3SymmetricTrialCrosswalk.lean` now exports the positive-half
+  representative and explicit invariance theorems for `Estar`, `Mellin`,
+  `Gwin`, `Rminus`, `Rplus`, and `ZetaMellinPoleSub`.
+- `continued_window_identity_symmetricTrial_v3Class` accepts the original
+  symmetric support in `Icc (-b) b`, restricts only inside the proof, and
+  returns the continued identity for the original `h`.
+- Direct Lean, the 8038-job target build, and the full 8051-job v3 build pass;
+  the production hole scan is empty and the public theorem has exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- Eight declarations were re-imported into the proof DB as `proven`.
+  Verdict: `MUNTZ_V3_SYMMETRIC_TRIAL_CROSSWALK_PROVED`.
+- The next wall is unchanged and genuinely larger: concrete prolate-trial
+  regularity plus the finite ground/trial/cofinal same-family identification.
