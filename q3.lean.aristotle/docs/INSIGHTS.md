@@ -48808,7 +48808,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   wrapper remains, Route B stays `CHALLENGER / NOT_RH`, and no Bus 010 is
   created.
 
-## 2026-08-02 — Goal 052 native v3 habs assembly plan (in progress)
+## 2026-08-02 — Goal 052 native v3 habs assembly (closed locally)
 
 - Exact target: discharge the `habs` hypothesis consumed by
   `continued_window_identity_of_analytic` for the same measurable/Icc-zero/
@@ -48826,3 +48826,18 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   direct Lean + full v3 build + clean hole scan + standard axiom triple.
 - Route effect is limited to the canonical `habs` supplier.  Route B remains
   `CHALLENGER / NOT_RH`; physical Bus 010 remains void.
+- `MuntzV3HabsExactClass.lean` now proves
+  `habs_of_IccZero_IcoLipschitz`.  The proof exports explicit bridges for the
+  E-star core, Mathlib/project Mellin conventions, the closed/open window, and
+  both indicator tails; no definitional rewrite hides the transport.
+- `MuntzV3ExactClassClosure.lean` consumes the four proved suppliers and
+  exports the continued identity, raw off-pole corollary, and pole-value
+  corollary with no remaining `hG`/`hRm`/`hRp`/`habs` arguments.
+- Direct Lean and the full 8050-job v3 build pass.  The two-file production
+  hole scan is empty, all four public declarations have exactly
+  `[propext, Classical.choice, Quot.sound]`, and 16 parsed declarations are
+  recorded as `proven` in the proof DB.
+- Verdict: `HABS_SUPPLIER_DISCHARGED_FOR_V3_CLASS` and
+  `MUNTZ_V3_EXACT_CLASS_CONTINUATION_ASSEMBLED`.  This closes the supplier
+  front only; it does not prove tail decay, cofinal convergence, the route's
+  detector obligations, or RH.

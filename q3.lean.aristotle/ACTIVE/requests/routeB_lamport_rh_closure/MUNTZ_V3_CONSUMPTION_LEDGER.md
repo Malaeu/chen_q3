@@ -95,3 +95,32 @@ be supplied by a separate theorem contract if the owner still requires it.
 `T4A_CLOSED_LOCALLY`; Müntz v3 T5 consumption is Lean-checked; explicit
 PL1–PL3 source declarations are absent; Route B remains
 `CHALLENGER / NOT_RH`; Bus 010 remains void.
+
+## 2026-08-02 addendum — exact-class supplier front assembled
+
+The later exact-class execution has now discharged the four retained analytic
+suppliers for the same measurable/Icc-zero/Ico-Lipschitz function class:
+
+| Supplier | Checked declaration |
+|---|---|
+| `hG` | `gwin_analyticOnNhd_shiftedHalfPlane_v3Class` |
+| `hRm` | `rminus_analyticOnNhd_shiftedHalfPlane_v3Class` |
+| `hRp` | `rplus_analyticOnNhd_shiftedHalfPlane_v3Class` |
+| `habs` | `habs_of_IccZero_IcoLipschitz` |
+
+`MuntzV3ExactClassClosure.lean` consumes all four and exports:
+
+- `continued_window_identity_v3Class`;
+- `continued_window_identity_raw_off_pole_v3Class`;
+- `continued_window_identity_pole_value_v3Class`.
+
+The native v3 `habs` proof makes the semantic transport explicit: E-star core,
+Mathlib/project Mellin conventions, `Icc`/`Ioo` null endpoints, and both tail
+indicators.  The full standalone project builds 8050 jobs, the new production
+files have no holes, and the four public declarations depend only on
+`[propext, Classical.choice, Quot.sound]`.
+
+Verdict: `HABS_SUPPLIER_DISCHARGED_FOR_V3_CLASS /
+MUNTZ_V3_EXACT_CLASS_CONTINUATION_ASSEMBLED`.  This is not tail smallness,
+cofinal convergence, detector closure, or RH.  Route B remains
+`CHALLENGER / NOT_RH`; physical Bus 010 remains void.
