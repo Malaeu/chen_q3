@@ -48874,3 +48874,25 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Verdict: `MUNTZ_V3_SYMMETRIC_TRIAL_CROSSWALK_PROVED`.
 - The next wall is unchanged and genuinely larger: concrete prolate-trial
   regularity plus the finite ground/trial/cofinal same-family identification.
+
+## 2026-08-02 — Prolate-combination Müntz regularity (in progress)
+
+- Exact target: `prolateCombination_muntzRegularity_of_modes` in
+  `Q3/Proofs/RouteB/ProlateCombinationMuntzRegularity.lean`.
+- Five `q3_docs` queries returned no matches; the implementation authorities
+  are `ProlateLayer.lean`, the source-lock D0.5/011 files, and the checked
+  post-`192180a9` Proshka consumer audit.
+- From `ProlatePair` alone derive evenness, symmetric support, integrability,
+  total-integral cancellation, and hence zero positive-half mass.
+- Take mode measurability and positive-half `LipschitzOnWith` as explicit
+  inputs, then propagate them through the fixed two-mode scalar combination.
+- The primary source confirms that even prolate modes are supported in
+  `[-lambda,lambda]` and that `h_lambda` is the zero-integral combination;
+  it does not supply this repository's missing Lean construction certificates.
+- Denominator nonvanishing is not load-bearing for this conditional analytic
+  identity, but remains open for nontriviality, L2 normalization, and the
+  literal source packet.
+- Do not import Q3/4.26 directly into the standalone Müntz v3/4.28 project;
+  first prove and export the source theorem, then revalidate exported bytes.
+- Forbidden promotion: no mode existence, midpoint lock, `MemLp`,
+  `TrialNonzero`, ground/trial/cofinal identification, Bus 010, or RH claim.
