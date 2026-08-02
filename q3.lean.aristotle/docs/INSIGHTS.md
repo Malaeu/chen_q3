@@ -48800,8 +48800,11 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - `MuntzV3EStarMellinAbsolutePayload.lean` passes direct Lean, an isolated
   8028-job build, and a clean hole scan; its public theorem has exactly
   `[propext, Classical.choice, Quot.sound]`.  Aristotle project
-  `135207d2-0241-4eca-a0f3-6f980121554c` remains a redundant running review;
-  its intermediate archive contained three `sorry`s and is not accepted.
+  `135207d2-0241-4eca-a0f3-6f980121554c` completed with the same theorem
+  interface; its final production `Main.lean` is hole-free, independently
+  Lean-checked under the pinned v4.28 toolchain, and has the same axiom triple.
+  It is a valid redundant review and is not integrated; the earlier
+  intermediate archive with three `sorry`s remains rejected.
 - Verdict: `HRM_SUPPLIER_DISCHARGED_FOR_V3_CLASS` and
   `ESTAR_MELLIN_ABSOLUTE_PAYLOAD_DISCHARGED_LOCALLY`; aggregate E-star Mellin
   convergence is also locally discharged.  Only the later 012 name-transport
@@ -48875,7 +48878,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - The next wall is unchanged and genuinely larger: concrete prolate-trial
   regularity plus the finite ground/trial/cofinal same-family identification.
 
-## 2026-08-02 — Prolate-combination Müntz regularity (in progress)
+## 2026-08-02 — Prolate-combination Müntz regularity (closed locally)
 
 - Exact target: `prolateCombination_muntzRegularity_of_modes` in
   `Q3/Proofs/RouteB/ProlateCombinationMuntzRegularity.lean`.
@@ -48896,3 +48899,16 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   first prove and export the source theorem, then revalidate exported bytes.
 - Forbidden promotion: no mode existence, midpoint lock, `MemLp`,
   `TrialNonzero`, ground/trial/cofinal identification, Bus 010, or RH claim.
+- `ProlateCombinationMuntzRegularity.lean` now exports five supporting
+  certificates and `prolateCombination_muntzRegularity_of_modes`; all seven
+  parsed declarations are recorded as `proven` in the proof DB.
+- The positive-half mass proof splits the full integral into `Iic 0` and
+  `Ioi 0`, transports the left half by `x -> -x`, and consumes the exact
+  full-integral cancellation of the two-mode numerator.
+- Direct Lean, the 7744-job target build, `q3_check`, and the full 7817-job Q3
+  build pass.  Production taint scan is empty and every exported theorem has
+  exactly `[propext, Classical.choice, Quot.sound]`.
+- Verdict: `PROLATE_COMBINATION_MUNTZ_REGULARITY_REPRESENTED`.  The next
+  executable step is a provenance-locked 4.26-to-4.28 export plus thin v3
+  receiver; the genuine mode-construction, midpoint, normalization, `MemLp`,
+  and finite/cofinal inputs remain open.
