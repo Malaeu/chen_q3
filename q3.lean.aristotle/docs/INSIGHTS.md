@@ -48955,7 +48955,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   opened; the next gate is no longer transport but concrete prolate-mode
   existence/selection and actual mode regularity supply.
 
-## 2026-08-02 — Prolate positive-half measurability elimination (in progress)
+## 2026-08-02 — Prolate positive-half measurability elimination (closed locally)
 
 - Exact target: `measurable_of_even_support_positiveHalfLipschitz` in
   `Q3/Proofs/RouteB/ProlateModeRegularity.lean`.
@@ -48977,3 +48977,15 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   or select the actual PSWF modes and supply their positive-half Lipschitz
   bounds.  No denominator, midpoint, `MemLp`, `TrialNonzero`, ground/cofinal,
   Bus 010, Aristotle request, or RH claim enters this leaf.
+- `ProlateModeRegularity.lean` now proves the target for every real `lambda`,
+  including the degenerate negative-window case where support forces the
+  function to be zero.  For nonnegative windows it reflects through `abs`,
+  obtains Lipschitz continuity on the open interior, proves continuity off the
+  closed support, and isolates the two endpoints as a finite exceptional set.
+- Direct Lean and the 7744-job target build pass; the full Q3 build passes
+  7817/7817 and `q3_check` reports `ok`.  The production taint scan is empty,
+  and the theorem uses exactly `[propext, Classical.choice, Quot.sound]`.
+- The proof DB records its sole declaration as `proven`.  Verdict:
+  `PROLATE_MODE_MEASURABILITY_ELIMINATED`.  The next honest gate is the
+  source-locked construction/selection and positive-half Lipschitz certificate
+  for the actual even PSWF modes; this local lemma does not claim that supply.
