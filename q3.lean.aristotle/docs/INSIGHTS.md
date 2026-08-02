@@ -48989,3 +48989,33 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `PROLATE_MODE_MEASURABILITY_ELIMINATED`.  The next honest gate is the
   source-locked construction/selection and positive-half Lipschitz certificate
   for the actual even PSWF modes; this local lemma does not claim that supply.
+
+## 2026-08-02 — Prolate measurability elimination v3 propagation (in progress)
+
+- Source pin: commit `298701cb0a98e82da29b24e89281239eb6c67b5a`,
+  file `Q3/Proofs/RouteB/ProlateModeRegularity.lean`, Git blob
+  `a203ce11b0c8dd21bd4b5c24d01f6293277ce1eb`, SHA-256
+  `d09f80b47386afcddec890de959060e00961c57e19ca9db73a8bdcf507a06177`.
+- Export that file verbatim to
+  `RequestProject/ProlateExport/ProlateModeRegularity.lean`; the sole allowed
+  source edit is renaming the import to the existing provenance-locked
+  `RequestProject.ProlateExport.ProlateLayer`.
+- Add a thin v3 corollary
+  `continued_window_identity_prolateCombination_v3Class_of_modeLipschitz`.
+  It derives both mode measurability facts from evenness, symmetric support,
+  and the supplied positive-half Lipschitz bounds, then invokes the existing
+  receiver without changing its type.
+- This is the final justified transport cycle: it removes measurability as an
+  independent source obligation and leaves exactly the two mode Lipschitz
+  inputs.  Further wrappers without actual mode constructors are forbidden.
+- Acceptance: mechanical source diff empty modulo the import, direct Lean for
+  export and receiver, target/full v3 builds, clean production taint scan, and
+  exactly `[propext, Classical.choice, Quot.sound]` for the new corollary.
+- No Aristotle request: the subsequent real blocker is
+  `SOURCE_LOCKED_PROLATE_MODE_CONSTRUCTION_AND_POSITIVE_HALF_LIPSCHITZ`, but
+  the repository currently has only `prolateWaveExpression`,
+  `ProlateOperatorData`, and the hypothesis-carrying `ProlatePair`; it has no
+  source-defined PSWF mode constructors or existence theorem.
+- Forbidden: duplicate `ProlatePair`/`prolateCombination`, proof-body drift,
+  new mode definitions, denominator, midpoint, `MemLp`, `TrialNonzero`,
+  ground/cofinal claims, Aristotle submission, Bus 010, or RH promotion.
