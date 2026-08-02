@@ -48807,3 +48807,22 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   convergence is also locally discharged.  Only the later 012 name-transport
   wrapper remains, Route B stays `CHALLENGER / NOT_RH`, and no Bus 010 is
   created.
+
+## 2026-08-02 — Goal 052 native v3 habs assembly plan (in progress)
+
+- Exact target: discharge the `habs` hypothesis consumed by
+  `continued_window_identity_of_analytic` for the same measurable/Icc-zero/
+  Ico-Lipschitz v3 class used by the three closed supplier lanes.
+- Local `q3_docs` search returned no additional matches; the locked Goal 048
+  inventory and the checked 012 theorem remain the source map.
+- Rebuild only the T2 absolute-region algebra inside the v3 Lake project;
+  do not copy the unrelated 13-file Q3 closure merely to resolve source names.
+- Consume the existing exact predicate-body payload and aggregate
+  `MellinConvergent (Estar h) s` theorem instead of reproving measure theory.
+- Use Mathlib's Mellin scaling/Dirichlet-series API, then transport
+  `mellin` to project `Mellin`, `Icc` to `Ioo` modulo null endpoints, and the
+  lower/upper indicator tails to `Rminus`/`Rplus`.
+- Planned artifact: `RequestProject/MuntzV3HabsExactClass.lean`; acceptance is
+  direct Lean + full v3 build + clean hole scan + standard axiom triple.
+- Route effect is limited to the canonical `habs` supplier.  Route B remains
+  `CHALLENGER / NOT_RH`; physical Bus 010 remains void.
