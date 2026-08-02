@@ -48765,3 +48765,45 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Verdict: `ESTAR_BOUND_BLE0_BRANCH_GAP`.  This exposes a packaging sign bug,
   not missing Riemann-sum analysis; canonical hRm/habs remain open and Route B
   remains `CHALLENGER / NOT_RH`.
+
+## 2026-08-02 — A051/A052 hybrid exact-class execution
+
+- The reviewed three-target decomposition was kept, but duplicate work was
+  removed: A051 and the generic A052B consumer were proved locally, while only
+  the independent absolute-dilate payload A052A was sent to Aristotle.
+- `Estar_measurable_v3Class` uses measurable finite partial sums multiplied by
+  `sqrt u`.  They converge to `Estar h` for `u>0`; for `u≤0` the support kills
+  every negative dilation and the square-root factor handles `u=0`.  No
+  continuity at the endpoint `b` is assumed.
+- `Estar_locallyIntegrableOn_Ioi_v3Class` uses the compact-subset
+  characterization.  On a compact `k⊆Ioi 0`, the identity has a positive
+  minimum `c`, hence one cutoff `N=ceil(b/c)+1` makes the dilation sum finite.
+  The separate bound `max (‖h 0‖+K*b) ‖h b‖` handles the allowed endpoint jump.
+- `Estar_eq_zero_of_gt_v3Class` is pointwise: if `u>b`, positivity of every
+  `n:ℕ+` gives `n*u>b`, so every summand vanishes.
+- The canonical `rminus_analyticOnNhd_shiftedHalfPlane_v3Class` now follows
+  from the Goal 050 square-root estimate, the exact-class local-integrability
+  helper, the compact left-tail indicator, and
+  `mellin_differentiableAt_of_isBigO_rpow`.
+- Generic A052B is exported as
+  `mellinConvergent_of_sqrtBound_eventuallyZero`; the thin exact-class assembly
+  is `mellinConvergent_Estar_of_zeroMass_IccZero_IcoLipschitz`.
+- Direct Lean, the isolated 8030-job target build, and the hole scan pass.  All
+  five A051/assembly declarations and A052B have exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- A052A is isolated as an explicit predicate-body theorem because the
+  `EStarMellinAbsolute` name is not yet exported into v3.  Its local proof first
+  obtains `MellinConvergent h p` from compact support and the Ico bound, then
+  uses `MellinConvergent.comp_mul_left` for each positive dilation.  A real
+  change of variables gives the exact norm-integral factor `n^(-Re p)`, and
+  the positive-integer p-series closes the outer `tsum`.
+- `MuntzV3EStarMellinAbsolutePayload.lean` passes direct Lean, an isolated
+  8028-job build, and a clean hole scan; its public theorem has exactly
+  `[propext, Classical.choice, Quot.sound]`.  Aristotle project
+  `135207d2-0241-4eca-a0f3-6f980121554c` remains a redundant running review;
+  its intermediate archive contained three `sorry`s and is not accepted.
+- Verdict: `HRM_SUPPLIER_DISCHARGED_FOR_V3_CLASS` and
+  `ESTAR_MELLIN_ABSOLUTE_PAYLOAD_DISCHARGED_LOCALLY`; aggregate E-star Mellin
+  convergence is also locally discharged.  Only the later 012 name-transport
+  wrapper remains, Route B stays `CHALLENGER / NOT_RH`, and no Bus 010 is
+  created.
