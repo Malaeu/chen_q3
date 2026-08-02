@@ -48954,3 +48954,26 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   Verdict: `PROLATE_EXPORT_PROVENANCE_LOCKED`.  No Aristotle request was
   opened; the next gate is no longer transport but concrete prolate-mode
   existence/selection and actual mode regularity supply.
+
+## 2026-08-02 — Prolate positive-half measurability elimination (in progress)
+
+- Exact target: `measurable_of_even_support_positiveHalfLipschitz` in
+  `Q3/Proofs/RouteB/ProlateModeRegularity.lean`.
+- Five `q3_docs` queries for prolate existence, selection, spectral
+  realization, differentiability, and Lipschitz regularity returned no hits.
+- The primary source defines `h_(n,lambda)` through prolate spheroidal wave
+  functions, states symmetric compact support and evenness for even modes, and
+  records the simple ordered spectrum/Fourier eigenrelations; it does not
+  provide a Lean constructor or a repository-ready regularity certificate.
+- Local leaf: an even function supported in `Icc (-lambda) lambda` and
+  `LipschitzOnWith` on `Ico 0 lambda` is measurable.  Reflect the Lipschitz
+  control to the negative half, handle the two endpoints as a finite measurable
+  set, and use support to identify the function with zero off the interval.
+- This removes redundant `Measurable` inputs from the later prolate receiver;
+  it is representation-only and must not be labeled source-mode construction.
+- Acceptance: direct Lean, target/full Q3 build, `q3_check`, clean taint scan,
+  and only `[propext, Classical.choice, Quot.sound]` if any axioms are used.
+- The genuine next wall remains `SourceLockedProlateModeRegularity`: construct
+  or select the actual PSWF modes and supply their positive-half Lipschitz
+  bounds.  No denominator, midpoint, `MemLp`, `TrialNonzero`, ground/cofinal,
+  Bus 010, Aristotle request, or RH claim enters this leaf.
