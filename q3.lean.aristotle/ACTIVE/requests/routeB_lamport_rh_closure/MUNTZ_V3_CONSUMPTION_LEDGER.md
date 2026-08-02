@@ -171,3 +171,31 @@ source prolate modes or supply their regularity, denominator nonvanishing,
 midpoint representative, `MemLp`, `TrialNonzero`, finite ground/trial tracking,
 cofinal control, S1/S2, or RH.  Route B remains `CHALLENGER / NOT_RH`; physical
 Bus 010 remains void.
+
+## 2026-08-02 addendum — prolate mode measurability removed from the v3 contract
+
+The Q3 theorem `measurable_of_even_support_positiveHalfLipschitz` is exported
+from source commit `298701cb` into
+`RequestProject/ProlateExport/ProlateModeRegularity.lean`.  Its proof body is
+byte-faithful; the only change is the recorded import rename to the existing
+provenance-locked `ProlateLayer`.
+
+`MuntzV3ProlateCombinationReceiver.lean` preserves its original theorem and
+adds `continued_window_identity_prolateCombination_v3Class_of_modeLipschitz`.
+The new corollary obtains measurability of both stored modes from their
+`ProlatePair` evenness/support fields and the two supplied positive-half
+Lipschitz bounds, then invokes the original receiver.  Thus measurability is no
+longer an independent source-side input.
+
+The reverse-import SHA-256 equals the pinned source digest.  Direct Lean passes,
+the target build passes 8042/8042, the full standalone build passes 8055/8055,
+the production taint scan is empty, and the new declarations depend only on
+`[propext, Classical.choice, Quot.sound]`.
+
+Verdict: `PROLATE_MODE_MEASURABILITY_ELIMINATION_PROPAGATED_TO_V3`.  No further
+transport wrapper is authorized without actual source-mode definitions.  The
+next genuine wall is
+`SOURCE_LOCKED_PROLATE_MODE_CONSTRUCTION_AND_POSITIVE_HALF_LIPSCHITZ`: the
+repository has no Lean PSWF constructor or mode-existence theorem, so this is
+not yet a self-contained Aristotle request.  Route B remains
+`CHALLENGER / NOT_RH`; physical Bus 010 remains void.

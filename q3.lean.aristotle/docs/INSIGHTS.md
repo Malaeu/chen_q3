@@ -48990,7 +48990,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   source-locked construction/selection and positive-half Lipschitz certificate
   for the actual even PSWF modes; this local lemma does not claim that supply.
 
-## 2026-08-02 — Prolate measurability elimination v3 propagation (in progress)
+## 2026-08-02 — Prolate measurability elimination v3 propagation (closed locally)
 
 - Source pin: commit `298701cb0a98e82da29b24e89281239eb6c67b5a`,
   file `Q3/Proofs/RouteB/ProlateModeRegularity.lean`, Git blob
@@ -49019,3 +49019,22 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Forbidden: duplicate `ProlatePair`/`prolateCombination`, proof-body drift,
   new mode definitions, denominator, midpoint, `MemLp`, `TrialNonzero`,
   ground/cofinal claims, Aristotle submission, Bus 010, or RH promotion.
+- `ProlateModeRegularity.lean` is now exported with an empty mechanical diff
+  modulo its one recorded import rename.  Restoring the source import produces
+  the pinned SHA-256 exactly, and the standalone project still contains only
+  one `ProlatePair` and one `prolateCombination` declaration.
+- `continued_window_identity_prolateCombination_v3Class_of_modeLipschitz`
+  derives `Measurable P.h0` and `Measurable P.h4` and delegates to the preserved
+  receiver.  The old theorem and its public type remain unchanged.
+- Direct Lean passes for both files, the receiver target build passes
+  8042/8042, and the full v3 build passes 8055/8055.  The production taint scan
+  is empty; both the export and new receiver use exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- The proof DB records the exported lemma and both receiver declarations as
+  `proven`.  Verdict:
+  `PROLATE_MODE_MEASURABILITY_ELIMINATION_PROPAGATED_TO_V3`.
+- Transport now stops.  Exact open wall:
+  `SOURCE_LOCKED_PROLATE_MODE_CONSTRUCTION_AND_POSITIVE_HALF_LIPSCHITZ`.
+  It is not an Aristotle-ready theorem because no actual PSWF constructor or
+  source-mode existence theorem exists in Lean; inventing one in a cloud run
+  would change the object contract rather than prove the missing result.

@@ -12,6 +12,13 @@
   - Export rule: verbatim except the first import is renamed from
     `Q3.Proofs.RouteB.ProlateLayer` to
     `RequestProject.ProlateExport.ProlateLayer`.
+- Source commit: `298701cb0a98e82da29b24e89281239eb6c67b5a`
+- Source file: `q3.lean.aristotle/Q3/Proofs/RouteB/ProlateModeRegularity.lean`
+  - Git blob: `a203ce11b0c8dd21bd4b5c24d01f6293277ce1eb`
+  - SHA-256: `d09f80b47386afcddec890de959060e00961c57e19ca9db73a8bdcf507a06177`
+  - Export rule: verbatim except the first import is renamed from
+    `Q3.Proofs.RouteB.ProlateLayer` to
+    `RequestProject.ProlateExport.ProlateLayer`.
 
 The namespace `Q3.RouteB.D0Pstar` is preserved.  The receiver must import these
 exports and must not redeclare `ProlatePair` or `prolateCombination`.
