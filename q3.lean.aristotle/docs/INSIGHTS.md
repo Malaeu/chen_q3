@@ -48912,3 +48912,29 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   executable step is a provenance-locked 4.26-to-4.28 export plus thin v3
   receiver; the genuine mode-construction, midpoint, normalization, `MemLp`,
   and finite/cofinal inputs remain open.
+
+## 2026-08-02 — Prolate 4.26-to-4.28 provenance export and v3 receiver (in progress)
+
+- Exact target: `continued_window_identity_prolateCombination_v3Class` in
+  `muntz_v3/RequestProject/MuntzV3ProlateCombinationReceiver.lean`.
+- Export the source files pinned at commit
+  `6e78e4e54fe972fc756cc1843a96d6ae8d94f9d5` into
+  `RequestProject/ProlateExport/`, preserving namespace
+  `Q3.RouteB.D0Pstar` and every declaration/theorem body verbatim.
+- The only source edit permitted in the regularity export is replacing
+  `import Q3.Proofs.RouteB.ProlateLayer` with
+  `import RequestProject.ProlateExport.ProlateLayer`; provenance records the
+  source commit, Git blob IDs, SHA-256 digests, and that import-only rewrite.
+- The receiver must import the exported regularity theorem plus
+  `MuntzV3SymmetricTrialCrosswalk`, extract the supplied regularity package,
+  and invoke `continued_window_identity_symmetricTrial_v3Class` directly.
+- Forbidden: a second `ProlatePair`, a second `prolateCombination`, altered
+  theorem bodies, new Mellin/T2 algebra, mode-existence claims, midpoint or
+  normalization promotion, `MemLp`, `TrialNonzero`, cofinal/S1/S2 claims,
+  Aristotle submission, Bus 010, or RH promotion.
+- Acceptance: byte/provenance audit modulo the one import line, direct Lean for
+  all three files, target and full v3 builds, clean production taint scan, and
+  exactly `[propext, Classical.choice, Quot.sound]` for the receiver theorem.
+- Route verdict remains `CHALLENGER / NOT_RH`; after this transport gate the
+  first mathematical wall is concrete source-locked prolate-mode existence,
+  selection, and regularity supply.
