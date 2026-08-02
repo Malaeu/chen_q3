@@ -48841,3 +48841,23 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `MUNTZ_V3_EXACT_CLASS_CONTINUATION_ASSEMBLED`.  This closes the supplier
   front only; it does not prove tail decay, cofinal convergence, the route's
   detector obligations, or RH.
+
+## 2026-08-02 — Post-Goal-052 symmetric-trial crosswalk (in progress)
+
+- Exact target: `continued_window_identity_symmetricTrial_v3Class` in
+  `muntz_v3/RequestProject/MuntzV3SymmetricTrialCrosswalk.lean`.
+- The closed v3 receiver assumes zero extension outside `Icc 0 b`, whereas
+  the source prolate trial is symmetric with support in `Icc (-b) b`.
+- Define the positive-half representative as `(Set.Ici 0).indicator h`; all
+  five Muntz objects only inspect positive arguments, so prove explicit
+  `Estar`/`Mellin`/`Gwin`/`Rminus`/`Rplus` invariance before reusing the receiver.
+- Five local `q3_docs` queries returned no matches; the exact v3 definitions,
+  `D0KTrialStage2.lean`, and the Proshka post-`79d80630` consumer audit are the
+  implementation authority.
+- The primary-source check confirms that the trial transform convergence is
+  separate from the still-open simple/even and ground-to-trial approximation
+  steps; this bridge must not claim finite/cofinal family identification.
+- Acceptance: direct Lean, target/full v3 build, clean production hole scan,
+  and exactly `[propext, Classical.choice, Quot.sound]`.
+- Route boundary: no T2 reproof, no tail-smallness, no S1/S2 promotion, no
+  Bus 010, and Route B remains `CHALLENGER / NOT_RH`.
