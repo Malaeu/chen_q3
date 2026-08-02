@@ -48913,7 +48913,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   receiver; the genuine mode-construction, midpoint, normalization, `MemLp`,
   and finite/cofinal inputs remain open.
 
-## 2026-08-02 — Prolate 4.26-to-4.28 provenance export and v3 receiver (in progress)
+## 2026-08-02 — Prolate 4.26-to-4.28 provenance export and v3 receiver (closed locally)
 
 - Exact target: `continued_window_identity_prolateCombination_v3Class` in
   `muntz_v3/RequestProject/MuntzV3ProlateCombinationReceiver.lean`.
@@ -48938,3 +48938,19 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Route verdict remains `CHALLENGER / NOT_RH`; after this transport gate the
   first mathematical wall is concrete source-locked prolate-mode existence,
   selection, and regularity supply.
+- `RequestProject/ProlateExport/ProlateLayer.lean` and
+  `ProlateCombinationMuntzRegularity.lean` now preserve the source namespace
+  and declaration bodies; mechanical diffs against commit `6e78e4e5` are
+  empty after removing the provenance header and the one allowed import line.
+- `MuntzV3ProlateCombinationReceiver.lean` exports
+  `continued_window_identity_prolateCombination_v3Class`.  Its proof only
+  extracts the regularity package and applies the symmetric-trial receiver.
+- Direct Lean passes for all three files, the target build passes 8041/8041,
+  and the full standalone v3 build passes 8054/8054.  Production taint scan is
+  empty; the receiver has exactly `[propext, Classical.choice, Quot.sound]`.
+  The repository `q3_check` also passes after rebuilding its missing local PSD
+  cache targets; no PSD source file was changed.
+- Ten exported declarations are recorded as `proven` in the proof DB.
+  Verdict: `PROLATE_EXPORT_PROVENANCE_LOCKED`.  No Aristotle request was
+  opened; the next gate is no longer transport but concrete prolate-mode
+  existence/selection and actual mode regularity supply.

@@ -145,3 +145,29 @@ The production hole scan is empty and the theorem depends only on
 Verdict: `MUNTZ_V3_SYMMETRIC_TRIAL_CROSSWALK_PROVED`.  Concrete prolate-trial
 regularity, finite projection/ground equality, cofinal tail control, S1/S2,
 and RH remain open; Route B stays `CHALLENGER / NOT_RH` and Bus 010 stays void.
+
+## 2026-08-02 addendum — provenance-locked prolate receiver
+
+The Q3/Mathlib-4.26 declarations `Q3.RouteB.D0Pstar.ProlatePair`,
+`prolateCombination`, and `prolateCombination_muntzRegularity_of_modes` are
+exported into the standalone Mathlib-4.28 project under
+`RequestProject/ProlateExport/`.  The export pins source commit `6e78e4e5`,
+both Git blob IDs and SHA-256 digests, preserves the original namespace, and
+changes only the regularity file's import path.
+
+`MuntzV3ProlateCombinationReceiver.lean` consumes that exact exported object
+and the symmetric-trial bridge.  It exports
+`continued_window_identity_prolateCombination_v3Class`, conditional on the
+two supplied modes being measurable and Lipschitz on `Ico 0 P.pw.lambda`.
+
+Mechanical provenance diffs are empty modulo the recorded header/import
+rewrite.  Direct Lean passes for all three files, the target build passes
+8041/8041, the full project passes 8054/8054, the production taint scan is
+empty, and the receiver depends only on
+`[propext, Classical.choice, Quot.sound]`.
+
+Verdict: `PROLATE_EXPORT_PROVENANCE_LOCKED`.  This does not construct the
+source prolate modes or supply their regularity, denominator nonvanishing,
+midpoint representative, `MemLp`, `TrialNonzero`, finite ground/trial tracking,
+cofinal control, S1/S2, or RH.  Route B remains `CHALLENGER / NOT_RH`; physical
+Bus 010 remains void.
