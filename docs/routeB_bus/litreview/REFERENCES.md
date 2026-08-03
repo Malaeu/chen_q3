@@ -26,13 +26,23 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
 | SIMON-MOMENT-1998 | Simon, "The classical moment problem as a self-adjoint finite difference operator", Adv. Math. 137 (1998) 82–203 | doi:10.1006/aima.1998.1728 | — | PAYWALL 🔴 | Jacobi-matrix self-adjointness (whole-line prolate realization) |
 | MATHLIB-2019 | The mathlib Community, "The Lean mathematical library", CPP 2020 | arXiv:1910.09336 | — | OA (cite-only) | Lean/Mathlib API for every formalized theorem (T4a, PL1/PL2, suppliers) |
 
+| CVS-QFRZ-2025 | Connes, van Suijlekom, "Quadratic Forms, Real Zeros and Echoes of the Spectral Action", Commun. Math. Phys. 406:12 (2025) | arXiv:2511.23257 | `pdfs/2511.23257.pdf` | HAVE ✓ | **THE H2b ENGINE (Theorem 6.1 / its main theorem)**: simple+even lowest eigenvalue ⇒ all zeros of the Fourier transform of ξ lie on the real (critical) line. PROOF via **Carathéodory–Fejér 1911 Toeplitz structure theorem** (Hermitian PSD Toeplitz rank n−1 + kernel vector ⇒ polynomial zeros on unit circle) — DIRECTLY Q3's Toeplitz/MatrixBridge/Szegő-Böttcher infrastructure. Both Connes-2026 and Groskin CITE this for H2b; neither reproves it. Candidate for FORMALIZATION. |
+
 ## Deep usage cards (per-theorem, verbatim, sub-agent extracted)
 
 - `CCM_ZST_USAGE_CARDS.md` — CCM-ZST-2025 (2511.22755): Thm 5.10, Thm 3.6, Lemma 7.2,
-  Lemma 7.3, §8 missing steps, prolate operator W_λ + trial k_λ — all 6 verbatim with
-  K7 tags and Q3-gap mapping. KEY: the paper itself (§8) marks BOTH `SIMPLE_EVEN(QW_λ)`
-  (H2a) AND `k_λ ≈ ξ_λ` (C3-B) as UNPROVEN for the Weil form; Thm 5.10's real-zero
-  conclusion is conditional on simple+even, proven only for the prolate PW_λ, never QW_λ.
+  Lemma 7.3, §8 missing steps, prolate operator W_λ + trial k_λ — all 6 verbatim.
+- `CONNES_RH2026_USAGE_CARDS.md` — CONNES-RH-2026 (2602.04022): 6 cards. NET (two-agent
+  convergent): **H2a `SIMPLE_EVEN(QW_λ)` = OPEN** (Connes' "remaining step" §6.6 p.30;
+  proved only for prolate PW_λ, Fact 6.3); **H2b = PROVED CONDITIONALLY** (Theorem 6.1
+  via CVS-QFRZ-2025, conditional on H2a); **C3-B convergence c→∞ = OPEN** (Connes p.25
+  "not proved"; only trial k_λ→Ξ proved, Fact 6.4; 2.6e-55 numerics = evidence only).
+- `GROSKIN_TWF_USAGE_CARDS.md` — GROSKIN-TWF-2026 (2605.20224): 6 cards. Groskin proves
+  NOTHING himself (§10) — experimental math; every theorem cited from CVS [9] or CCM.
+  Truncated Weil form §2.1 eq(1)-(2) on L²([0,L]), L=log c, D=D_∞+D_pole+D_prime;
+  exact archimedean multiplier h_+(τ) = −log π + Re Ψ(1/4+iτ/2) (useful for STEP34/A_arch);
+  H2b cited from CVS Thm 6.1; C3-B open conjecture (numerics two-way ambiguous);
+  STEP34 P_prime ⪯ A_arch NOT FOUND (only the arch+pole+prime decomposition).
 
 ## Newly acquired (2026-08-03 pass)
 
