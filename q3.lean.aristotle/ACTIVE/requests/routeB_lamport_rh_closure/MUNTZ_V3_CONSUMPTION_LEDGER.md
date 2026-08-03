@@ -230,8 +230,7 @@ existence/selection target is not self-contained in the current Lean library.
 
 ### B0 a.e. eigenrepresentative closure
 
-Proshka selected the finite-Fourier/integral-operator route as the
-source-facing contract and named the a.e. eigenrepresentative as the first
+An initial Proshka review named the a.e. eigenrepresentative as the first
 self-contained B0 gate.  That gate is now closed locally in
 `Q3/Proofs/RouteB/ProlateFiniteFourierRegularity.lean`.
 
@@ -249,9 +248,13 @@ The target build passes 7745 jobs, the full Q3 build passes 7817 jobs,
 `[propext, Classical.choice, Quot.sound]`.  Aristotle was not needed.
 
 Verdict: `FINITE_FOURIER_EIGENFUNCTION_LIPSCHITZ_REPRESENTATIVE_PROVED`.
-The construction wall is reduced to
-`SOURCE_LOCKED_PSWF_EIGENPAIR_EXISTENCE_AND_INDEX_SELECTION_MISSING`.  Neither
-the ODE nor compact-operator spectral existence backend is yet present in
-Mathlib/project source; no interface-only replacement counts as closure.  The
-independent D0.7e.5a pause remains open, Route B remains
+After inspection of the published kernel theorem, Proshka selected the
+source-defined Sturm--Liouville degrees as the canonical construction backend;
+finite Fourier remains a derived characterization/regularity layer.  The next
+self-contained gate is exact finite-Fourier/prolate-expression commutation;
+the deeper construction wall is
+`SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+Neither the self-adjoint Sturm--Liouville existence/selection backend nor an
+equivalent source theorem is present in Lean; no interface-only replacement
+counts as closure.  The independent D0.7e.5a pause remains open, Route B remains
 `CHALLENGER / NOT_RH`, and physical Bus 010 remains void.

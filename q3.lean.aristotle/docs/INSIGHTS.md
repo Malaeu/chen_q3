@@ -49077,10 +49077,12 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Route firewall remains unchanged: `CHALLENGER / NOT_RH`, physical Bus
   `001..009` closed, Bus 010 void, and the independent D0.7e.5a WPrime source
   pause is not discharged by PSWF work.
-- Proshka selected the finite-Fourier/integral-operator route as the
-  source-facing contract.  The Sturm--Liouville route remains a possible
-  existence backend but is not the first formal node; an interface-only record
-  is rejected as closure.
+- The first route review selected a finite-Fourier eigenrepresentative as the
+  immediate B0 gate.  After inspecting the published kernel-to-Lipschitz proof,
+  Proshka selected the source-defined Sturm--Liouville degrees 0 and 4 as the
+  canonical existence/selection backend.  Finite Fourier remains the derived
+  characterization and regularity-transfer layer; an interface-only record is
+  rejected as closure.
 - `Q3/Proofs/RouteB/ProlateSourceRegularity.lean` now materializes the exact
   plus-sign finite-Fourier kernel and its interval action under the repository
   convention.  The zero-frequency eigenrelation recovers the existing
@@ -49125,3 +49127,35 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   construct/select the exact even `h0 <-> chi0` and `h4 <-> chi2` eigenpairs,
   including nonzero eigenvalues, normalization, phase, integrability, and the
   stored support data.
+
+## 2026-08-03 — Prolate Sturm--Liouville / finite-Fourier commutation (in progress)
+
+- Proshka ratified commit `b1d22a10` with verdict
+  `FOURIER_EIGENRELATION_TO_POSITIVE_HALF_LIPSCHITZ` and selected the
+  Sturm--Liouville backend as source-canonical.  The exact first gate is
+  `finiteFourierAction_intertwines_prolateWaveExpression` in
+  `Q3/Proofs/RouteB/ProlateSourceCommutation.lean`.
+- Four `q3_docs` embedding queries for the commutation theorem, kernel
+  differential identity, zero-flux boundary, and integration-by-parts route
+  returned no hits.
+- The original Slepian--Pollak line and later primary/authoritative references
+  confirm that the finite Fourier/time-band operator commutes with a
+  second-order prolate differential operator and that the common eigenfunctions
+  are PSWFs.  The project source already pins the scaled operator and plus-sign
+  Fourier convention.
+- Direct algebra gives the reusable kernel identity: applying
+  `prolateWaveExpression` to `exp(+2*pi*i*x*y)` in `x` produces the symmetric
+  expression
+  `4*pi*i*x*y + 4*pi^2*lambda^2*(x^2+y^2) - 4*pi^2*x^2*y^2`, hence the same
+  result when the roles of `x` and `y` are exchanged.
+- The remaining Lean friction is analytic rather than algebraic: two
+  differentiations under the Bochner set integral and two interval
+  integration-by-parts steps.  Both boundary terms contain
+  `lambda^2-y^2` and vanish at `y = ±lambda`.
+- Exact Aristotle request:
+  `aristotle_input/prolate_source_commutation_2026_08_03.md`.  It asks only for
+  this self-contained commutation theorem, preserves all source locks, and
+  forbids PSWF placeholders, record strengthening, Bus 010, and RH claims.
+- Expected success code:
+  `PROLATE_STURM_LIOUVILLE_FINITE_FOURIER_INTERTWINING_PROVED`.  Deeper wall:
+  `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
