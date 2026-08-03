@@ -49206,7 +49206,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   This closes only conditional eigenspace preservation; the deeper
   source-mode construction/selection wall is unchanged.
 
-## 2026-08-03 — Finite-Fourier nonvanishing (in progress)
+## 2026-08-03 — Finite-Fourier nonvanishing closure
 
 - Proshka ratified commit `df243cd2a7c60513b6ef4d500fd9e2f532162abb`
   with verdict
@@ -49230,3 +49230,20 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - This removes only a future nonzero-Fourier-action obligation; it does not
   construct/select modes, prove simplicity, or manufacture a scalar
   eigenrelation.  D0.7e.5a, `CHALLENGER / NOT_RH`, and Bus 010 remain unchanged.
+- `Q3/Proofs/RouteB/ProlateFiniteFourierNonvanishing.lean` now proves the exact
+  requested theorem.  Its private bridge identifies the project's plus-phase
+  action with Mathlib's Fourier transform of the interval indicator at the
+  negative frequency; inversion then contradicts an identically zero action
+  at the supplied continuous nonzero interior point.
+- Direct Lean and the dedicated module build pass; the target build is
+  7745/7745, the full Q3 build remains 7817/7817, and `q3_check` is `ok`.  The
+  production hole scan is empty, the public theorem uses exactly
+  `[propext, Classical.choice, Quot.sound]`, and both declarations in the file
+  are recorded as `proven` in the proof DB.
+- Verdict: `PROLATE_FINITE_FOURIER_NONVANISHING_FROM_INTERIOR_MODE_PROVED`.
+  This proves only that some finite-Fourier frequency is nonzero from supplied
+  local source data.  It neither constructs the required Sturm--Liouville modes
+  nor identifies a scalar eigenvalue.  The deeper wall remains
+  `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+  Aristotle project `07a1765f-0457-4577-8247-5c13c64dc9bb` remains a running
+  background alternative and was not used.

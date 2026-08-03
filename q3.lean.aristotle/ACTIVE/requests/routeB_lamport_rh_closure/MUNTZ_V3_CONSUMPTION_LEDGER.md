@@ -312,3 +312,33 @@ remains
 `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
 The independent D0.7e.5a pause remains open, Route B remains
 `CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
+
+### Finite-Fourier action nonvanishing closure
+
+Proshka ratified the published eigenrelation-transport commit
+`df243cd2a7c60513b6ef4d500fd9e2f532162abb` and selected the exact next
+self-contained local leaf.  The new file
+`Q3/Proofs/RouteB/ProlateFiniteFourierNonvanishing.lean` proves
+`finiteFourierAction_ne_zero_of_integrableOn_continuousAt`.
+
+For an interval-integrable complex function with a continuous nonzero value at
+an interior point, the theorem proves that its finite-Fourier action is nonzero
+at some frequency.  The proof source-locks the plus-phase project convention by
+identifying it with Mathlib's negative-frequency Fourier transform of the zero
+extension, then applies pointwise Fourier inversion.  It does not assume or
+construct a prolate mode.
+
+Direct Lean, the dedicated module build, the full Q3 build, and `q3_check`
+pass.  The production hole scan is empty, the public theorem depends only on
+`[propext, Classical.choice, Quot.sound]`, and both declarations are recorded as
+`proven` in the proof DB.  Aristotle remained a running background alternative
+and was not used.
+
+Verdict: `PROLATE_FINITE_FOURIER_NONVANISHING_FROM_INTERIOR_MODE_PROVED`.  This
+closes only nonvanishing of the action from supplied local source data; it does
+not construct the self-adjoint realization, prove simplicity, identify the
+Fourier scalar, or select the source modes `h0 <-> chi0` and `h4 <-> chi2`.
+The deeper wall remains
+`SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+The independent D0.7e.5a pause remains open, Route B remains
+`CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
