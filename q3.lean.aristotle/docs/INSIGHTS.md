@@ -49205,3 +49205,28 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `PROLATE_FINITE_FOURIER_PRESERVES_STURM_LIOUVILLE_EIGENRELATION_PROVED`.
   This closes only conditional eigenspace preservation; the deeper
   source-mode construction/selection wall is unchanged.
+
+## 2026-08-03 — Finite-Fourier nonvanishing (in progress)
+
+- Proshka ratified commit `df243cd2a7c60513b6ef4d500fd9e2f532162abb`
+  with verdict
+  `PROLATE_FINITE_FOURIER_PRESERVES_STURM_LIOUVILLE_EIGENRELATION_PROVED`.
+- Exact next leaf:
+  `finiteFourierAction_ne_zero_of_integrableOn_continuousAt` in
+  `Q3/Proofs/RouteB/ProlateFiniteFourierNonvanishing.lean`.
+- Three `q3_docs` searches for finite-Fourier nonvanishing, inversion, and the
+  plus-phase convention bridge returned no hits.
+- The existing project action uses `exp(+2*pi*i*x*y)`, while Mathlib's
+  `𝓕` uses the negative phase; the exact bridge is therefore the Fourier
+  transform of the interval indicator evaluated at `-x`.
+- Pinned Mathlib 4.26 provides
+  `MeasureTheory.Integrable.fourierInv_fourier_eq`: integrability of a function
+  and its Fourier transform plus continuity at one point recovers its value at
+  that point.
+- Planned proof: form the `Icc` indicator, derive its integrability and local
+  continuity at the supplied interior point, assume the project action
+  vanishes identically, convert the Mathlib transform to zero, and contradict
+  the nonzero point value by inversion.
+- This removes only a future nonzero-Fourier-action obligation; it does not
+  construct/select modes, prove simplicity, or manufacture a scalar
+  eigenrelation.  D0.7e.5a, `CHALLENGER / NOT_RH`, and Bus 010 remain unchanged.
