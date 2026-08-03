@@ -48766,6 +48766,21 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   not missing Riemann-sum analysis; canonical hRm/habs remain open and Route B
   remains `CHALLENGER / NOT_RH`.
 
+## 2026-07-31 — Goal 050 E-star bound with owner-authorized `0≤b` repair
+
+- The owner explicitly authorized exactly the minimal guard `hb : 0≤b`; the
+  explicit packed constant and all original v3-class hypotheses are unchanged.
+- `MuntzV3EstarBoundExactClass.lean` closes `b=0` by killing every positive
+  dilation summand and closes `0<b` by the sole permitted direct call to
+  `riemannBoundaryCellBridge_Estar`.  No Riemann-sum estimate is reproved.
+- Direct canonical and mirror Lean, the isolated 8028-job build, and the full
+  8045-job v3 build pass.  The theorem has zero taint and exactly
+  `[propext, Classical.choice, Quot.sound]`; forbidden dependencies are absent,
+  and sealed/frozen trees remain untouched.
+- Verdict: `ESTAR_BOUND_V3CLASS_DISCHARGED`.  The feeder now unblocks the hRm
+  and habs consumers, but those cells remain open until wiring; canonical
+  supplier count stays 2/4 and Route B remains `CHALLENGER / NOT_RH`.
+
 ## 2026-08-02 — A051/A052 hybrid exact-class execution
 
 - The reviewed three-target decomposition was kept, but duplicate work was

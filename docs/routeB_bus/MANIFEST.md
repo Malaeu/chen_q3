@@ -94,8 +94,10 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `047_muntz_v3_supplier_hg_gwin_entire.goal.md` | goal | `da6e15e37307b65af85abdcd4eb45834c0a0284aea917fc9199cd5e12fde56b9` |
 | `048_habs_t2_inventory.answer.md` | answer | `78f04ce3ba6300a7d310b058c5a8e61aece0f89b6a647b21ab8dec042fbc954d` |
 | `048_habs_t2_inventory.goal.md` | goal | `d694edcee28081775d627ceed4f432d7dd0c982c226de962e2e21d5c890fb12c` |
-| `049_estar_bounded_sqrt_zeromass_v3class.answer.md` | answer | `2a757f9d26d32ddf35adcd91ff314a06983131dc5fae016650724704fb29705a` |
+| `049_estar_bounded_sqrt_zeromass_v3class.answer.md` | answer | `ebff09effe6482d1efbb6da219d3522aeaca93b48829ac7a9fcdf0991147024e` |
 | `049_estar_bounded_sqrt_zeromass_v3class.goal.md` | goal | `056f2f037094c438c2509bed5e7ad619e9e1dc242cdc87eb300f82ac798d5207` |
+| `050_estar_bound_repaired_0leb.answer.md` | answer | `92485e1b75ed47597725ff0efff71c5ca2b56eafb5294adabec8c4601b2a0b1c` |
+| `050_estar_bound_repaired_0leb.goal.md` | goal | `7d08b4bd42c79f387d2e7d135ba1c21dda4fdaa8ae33fb0b14d9428a615a0423` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
@@ -274,6 +276,7 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/.gitkeep` | Muntz v3 harvested artifact | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
 | `muntz_v3/RequestProject/Main.lean` | Muntz v3 harvested artifact | `0b2e52db207610f0e63c3dac3e61c5d14f26d0119ccd11756cdbeeab80f3b888` |
 | `muntz_v3/RequestProject/MellinCompactSupportAnalyticity.lean` | Muntz v3 local Goal 039 Lean artifact | `743e7cecf175a0be8c94d844c334ab66bfa5858696e6269a743b17ce0edfe148` |
+| `muntz_v3/RequestProject/MuntzV3EstarBoundExactClass.lean` | Muntz v3 Goal 050 owner-repaired exact-class E-star bound | `073497faa31264e8a769ccce148a9d3f54353ee3fe340e7004877cf479db769a` |
 | `muntz_v3/RequestProject/MuntzV3GwinExactClass.lean` | Muntz v3 local Goal 047 exact-class hG supplier | `a433b05d9e798b98a45839b7510dab7199655110cc4de9a764568e2c3e13490c` |
 | `muntz_v3/RequestProject/MuntzV3GwinExactClassPL1Plant.lean` | Muntz v3 local Goal 047 PL1 acceptance plant | `72183fd2c44fd9004351517a79560a8ce0127712d339f514ce64ee3ebe8ba474` |
 | `muntz_v3/RequestProject/MuntzV3PL1MassBlowupWitness.lean` | Muntz v3 local Goal 042 PL1 Lean artifact | `1d1e8689a083867f68c3e5ec56f06bd5a271f4af68b632cc084b450f10bbb943` |
