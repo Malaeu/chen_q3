@@ -155,15 +155,21 @@ Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in
 | POLYMATH-DBN-2019 | Polymath, "Effective approximation of heat flow evolution of the Riemann ξ…", Res. Math. Sci. 6 (2019) 31 | doi:10.1007/s40687-019-0193-1 | — | OA (owner) | heat-flow ξ approximation — heat layer |
 | GUTH-MAYNARD-2024 | Guth, Maynard, "New large value estimates for Dirichlet polynomials", Ann. Math. 2024 | arXiv:2405.20552 | `pdfs/2405.20552.pdf` | HAVE ✓ | Dirichlet large values — RH_TRICK_ATLAS card 3 |
 
-## Part 4 — collected book PDFs (2026-08-03) + attached to Zotero
+## Part 4 — collected book PDFs, HAVE + attached to Zotero (2026-08-03)
 
-| Key | Bibliographic identity | Local PDF | In Zotero | USED FOR |
-|---|---|---|---|---|
-| HORN-JOHNSON-2013 | Horn, Johnson, "Matrix analysis", 2nd ed., CUP 2013 | `pdfs/horn_johnson_matrix_analysis_2013.pdf` | attached (4BVIQ9IL) | **M1** matrix-determinant lemma, Hermitian spectrum |
-| CONNES-MARCOLLI-2008 | Connes, Marcolli, "Noncommutative geometry, quantum fields and motives", AMS 2008 | `pdfs/connes_marcolli_ncg.pdf` | attached (4JEG5BAC) | NCG/zeta background |
-| TITCHMARSH-1986 | Titchmarsh (Heath-Brown), "The theory of the Riemann zeta-function", 2nd ed. | `pdfs/titchmarsh_zeta.pdf` | attached (XLAGXGTZ) | ξ/zeros — ClassicalXiInterface |
-| MATHLIB-PDF | mathlib, "The Lean mathematical library" | `pdfs/1910.09336.pdf` | attached (P7BC5LDN) | Lean/Mathlib API |
-| TOEPLITZ-1911-PDF | Toeplitz, "Zur Theorie der quadratischen und bilinearen Formen…", 1911 | `pdfs/toeplitz_1911.pdf` | in Zotero (MS8BZUH5) | **M1/H2b** Toeplitz-forms foundation |
-| BOTTCHER-SILBERMANN-PDF | Böttcher, Silbermann, "Large truncated Toeplitz matrices", 1999 | `pdfs/bottcher_silbermann_1999.pdf` | in Zotero (NNPBIU32) | **C_SB** / truncated Toeplitz — STEP34/H2b |
-| ARONSZAJN-1950-PDF | Aronszajn, "Theory of reproducing kernels", 1950 | `pdfs/aronszajn_1950.pdf` | in Zotero (PMKIIXRV) | RKHS foundation |
-| BERLINET-2004-PDF | Berlinet, Thomas-Agnan, "RKHS in probability and statistics", 2004 | `pdfs/berlinet_thomas_agnan_2004.pdf` | in Zotero (QEZAGXJ6) | RKHS |
+| Key | Bibliographic identity | Zotero | Local PDF | Access | USED FOR |
+|---|---|---|---|---|---|
+| HORN-JOHNSON-2013 | Horn, Johnson, Matrix analysis 2nd ed. 2013 | zot:4BVIQ9IL | `pdfs/horn_johnson_matrix_analysis_2013.pdf` | HAVE ✓ | M1 matrix-det lemma, Hermitian spectrum |
+| CONNES-MARCOLLI-2008 | Connes, Marcolli, NCG quantum fields and motives 2008 | zot:4JEG5BAC | `pdfs/connes_marcolli_ncg.pdf` | HAVE ✓ | NCG/zeta background |
+| TITCHMARSH-1986 | Titchmarsh (Heath-Brown), Theory of the Riemann zeta-function | zot:XLAGXGTZ | `pdfs/titchmarsh_zeta.pdf` | HAVE ✓ | xi/zeros ClassicalXiInterface |
+| MATHLIB-PDF | mathlib, The Lean mathematical library | zot:P7BC5LDN | `pdfs/1910.09336.pdf` | HAVE ✓ | Lean/Mathlib API |
+| TOEPLITZ-1911-PDF | Toeplitz 1911, quadratische und bilineare Formen | zot:MS8BZUH5 | `pdfs/toeplitz_1911.pdf` | HAVE ✓ | M1/H2b Toeplitz foundation |
+| BOTTCHER-SILBERMANN-PDF | Böttcher, Silbermann, Large truncated Toeplitz 1999 | zot:NNPBIU32 | `pdfs/bottcher_silbermann_1999.pdf` | HAVE ✓ | C_SB truncated Toeplitz STEP34/H2b |
+| ARONSZAJN-1950-PDF | Aronszajn, Theory of reproducing kernels 1950 | zot:PMKIIXRV | `pdfs/aronszajn_1950.pdf` | HAVE ✓ | RKHS foundation |
+| BERLINET-2004-PDF | Berlinet, Thomas-Agnan, RKHS 2004 | zot:QEZAGXJ6 | `pdfs/berlinet_thomas_agnan_2004.pdf` | HAVE ✓ | RKHS |
+| EDWARDS-1974 | Edwards, Riemann's Zeta Function 1974 | zot:74A9V2Z7 | `pdfs/edwards_1974.pdf` | HAVE ✓ | classic zeta reference |
+| MONTGOMERY-VAUGHAN-2007 | Montgomery, Vaughan, Multiplicative NT I 2007 | zot:A22KDNUS | `pdfs/montgomery_vaughan_2007.pdf` | HAVE ✓ | classic analytic NT |
+| VARGA-2004 | Varga, Gershgorin and his circles 2004 | zot:ENW9WZ8G | `pdfs/varga_2004.pdf` | HAVE ✓ | eigenvalue localization |
+| INGHAM-1932 | Ingham, Distribution of Prime Numbers 1932 | zot:PAECCAFH | `pdfs/ingham_1932.pdf` | HAVE ✓ | classic prime distribution |
+| IWANIEC-KOWALSKI-2004 | Iwaniec, Kowalski, Analytic Number Theory 2004 | zot:9LDLY24L | `pdfs/iwaniec_kowalski_2004.pdf` | HAVE ✓ | analytic NT reference |
+| SZEGO-OP-1939 | Szegő, Orthogonal Polynomials AMS Coll.23 | zot:NAP5SMQF | `pdfs/szego_orthogonal_polynomials_1939.pdf` | HAVE ✓ | M1/M3 OPUC/Lagrange |
