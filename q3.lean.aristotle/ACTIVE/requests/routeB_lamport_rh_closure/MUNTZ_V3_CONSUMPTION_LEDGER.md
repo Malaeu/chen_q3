@@ -258,3 +258,28 @@ Neither the self-adjoint Sturm--Liouville existence/selection backend nor an
 equivalent source theorem is present in Lean; no interface-only replacement
 counts as closure.  The independent D0.7e.5a pause remains open, Route B remains
 `CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
+
+### Prolate differential-expression / finite-Fourier intertwining closure
+
+`Q3/Proofs/RouteB/ProlateSourceCommutation.lean` now proves the exact
+source-layer commutation theorem
+`finiteFourierAction_intertwines_prolateWaveExpression` for `0 < lambda` and
+globally `C^2` complex test functions.  The proof is not a renamed hypothesis:
+it establishes the symmetric differential identity for the plus-sign kernel,
+differentiates under the compact Bochner integral, and uses two zero-flux
+integration-by-parts identities whose endpoint factors are
+`lambda^2-y^2 = 0`.
+
+Direct Lean passes, the target build passes 7745/7745, the full Q3 build passes
+7817/7817, `q3_check` is `ok`, the production hole scan is empty, and the two
+public theorems depend only on `[propext, Classical.choice, Quot.sound]`.  The
+proof DB records all declarations in the file as proven.
+
+Verdict: `PROLATE_STURM_LIOUVILLE_FINITE_FOURIER_INTERTWINING_PROVED`.  This
+removes commutation as a source-construction obligation but does not construct
+a Sturm--Liouville realization, prove simple spectrum, supply a nonzero
+finite-Fourier scalar, or select the exact source degrees `h0 <-> chi0` and
+`h4 <-> chi2`.  The remaining wall is
+`SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+The independent D0.7e.5a pause remains open, Route B remains
+`CHALLENGER / NOT_RH`, and physical Bus 010 remains void.

@@ -49128,7 +49128,7 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   including nonzero eigenvalues, normalization, phase, integrability, and the
   stored support data.
 
-## 2026-08-03 — Prolate Sturm--Liouville / finite-Fourier commutation (in progress)
+## 2026-08-03 — Prolate Sturm--Liouville / finite-Fourier commutation
 
 - Proshka ratified commit `b1d22a10` with verdict
   `FOURIER_EIGENRELATION_TO_POSITIVE_HALF_LIPSCHITZ` and selected the
@@ -49148,14 +49148,27 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   expression
   `4*pi*i*x*y + 4*pi^2*lambda^2*(x^2+y^2) - 4*pi^2*x^2*y^2`, hence the same
   result when the roles of `x` and `y` are exchanged.
-- The remaining Lean friction is analytic rather than algebraic: two
-  differentiations under the Bochner set integral and two interval
+- The analytic step is now closed in Lean.  The proof differentiates twice
+  under the compact Bochner set integral using dominated derivative bounds,
+  proves the symmetric kernel differential identity, and applies two interval
   integration-by-parts steps.  Both boundary terms contain
   `lambda^2-y^2` and vanish at `y = ±lambda`.
 - Exact Aristotle request:
   `aristotle_input/prolate_source_commutation_2026_08_03.md`.  It asks only for
   this self-contained commutation theorem, preserves all source locks, and
   forbids PSWF placeholders, record strengthening, Bus 010, and RH claims.
-- Expected success code:
-  `PROLATE_STURM_LIOUVILLE_FINITE_FOURIER_INTERTWINING_PROVED`.  Deeper wall:
+  Project `07a1765f-0457-4577-8247-5c13c64dc9bb` was submitted as a background
+  alternative; the locally proved theorem is already kernel-checked.
+- `Q3/Proofs/RouteB/ProlateSourceCommutation.lean` now proves
+  `prolateWaveExpression_finiteFourierKernel_swap` and the requested public
+  `finiteFourierAction_intertwines_prolateWaveExpression`.  Direct Lean passes;
+  the target build passes 7745/7745, the full Q3 build passes 7817/7817,
+  `q3_check` is `ok`, the production hole scan is empty, and both public
+  theorems use exactly `[propext, Classical.choice, Quot.sound]`.  All 13
+  declarations in the file are recorded as `proven` in the proof DB.
+- Verdict:
+  `PROLATE_STURM_LIOUVILLE_FINITE_FOURIER_INTERTWINING_PROVED`.  This proves
+  only conditional commutation for globally `C^2` test functions; it does not
+  assert a self-adjoint realization, simplicity, a nonzero Fourier eigenvalue,
+  or construction/selection of source modes.  Deeper wall:
   `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
