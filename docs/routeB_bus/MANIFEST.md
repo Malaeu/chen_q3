@@ -300,6 +300,7 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/lakefile.toml` | Muntz v3 harvested artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
 | `muntz_v3/lean-toolchain` | Muntz v3 harvested artifact | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
 | `priority_band_positive_part_certificate.py` | Route B artifact | `b9fe448ea3af25d932c2beca6390ca56aa4cfbef0bb3996bcbc0c96ebd4fea41` |
+| `maps/cvs_h2b_ladder_verification_map.svg` | Route B artifact — 051→H2b→H2a ladder verification map | `60af2952232beabc50e40adff9cf3fbb92802b053315cab706e696bd50961ec3` |
 | `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 
 `MANIFEST.md` is excluded from its own hash table.
