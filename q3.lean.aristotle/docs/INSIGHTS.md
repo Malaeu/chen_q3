@@ -49194,3 +49194,14 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   mode selection.
 - Route firewall remains `CHALLENGER / NOT_RH`; D0.7e.5a stays open and Bus 010
   remains void.
+- `Q3/Proofs/RouteB/ProlateSourceEigenTransport.lean` now closes the exact
+  theorem with the predicted short proof: published intertwining, restricted
+  a.e. integral congruence, and `integral_const_mul`.
+- Direct Lean and the dedicated module build pass; the full Q3 build remains
+  7817/7817 and `q3_check` is `ok`.  The production hole scan is empty, the
+  public theorem uses exactly `[propext, Classical.choice, Quot.sound]`, and
+  the proof DB records it as `proven`.
+- Verdict:
+  `PROLATE_FINITE_FOURIER_PRESERVES_STURM_LIOUVILLE_EIGENRELATION_PROVED`.
+  This closes only conditional eigenspace preservation; the deeper
+  source-mode construction/selection wall is unchanged.

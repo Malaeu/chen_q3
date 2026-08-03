@@ -283,3 +283,32 @@ finite-Fourier scalar, or select the exact source degrees `h0 <-> chi0` and
 `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
 The independent D0.7e.5a pause remains open, Route B remains
 `CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
+
+### Prolate eigenrelation transport closure
+
+Proshka ratified the published intertwining commit
+`13f71c622814a52ed9af9d1f069764fdca45f84e` and selected the exact next
+self-contained backend-A corollary.  The new file
+`Q3/Proofs/RouteB/ProlateSourceEigenTransport.lean` proves
+`finiteFourierAction_preserves_prolateWaveEigenrelation`.
+
+For a globally `C^2` complex function satisfying the pointwise prolate-wave
+eigenrelation on `Icc (-lambda) lambda`, the theorem combines the closed
+intertwining identity with set-integral congruence and complex scalar
+linearity.  It follows that the finite Fourier action satisfies the same
+eigenrelation everywhere.  No new analytic construction is hidden in the
+proof.
+
+Direct Lean, the dedicated module build, the full Q3 build, and `q3_check`
+pass.  The production hole scan is empty, the declaration depends only on
+`[propext, Classical.choice, Quot.sound]`, and the proof DB records it as
+`proven`.
+
+Verdict: `PROLATE_FINITE_FOURIER_PRESERVES_STURM_LIOUVILLE_EIGENRELATION_PROVED`.
+This preserves a supplied formal eigenspace; it does not construct the
+self-adjoint realization, prove simplicity, show a Fourier scalar is nonzero,
+or select the source modes `h0 <-> chi0` and `h4 <-> chi2`.  The deeper wall
+remains
+`SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+The independent D0.7e.5a pause remains open, Route B remains
+`CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
