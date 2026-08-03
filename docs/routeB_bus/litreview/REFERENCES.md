@@ -174,3 +174,5 @@ Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in
 | IWANIEC-KOWALSKI-2004 | Iwaniec, Kowalski, Analytic Number Theory 2004 | zot:9LDLY24L | `pdfs/iwaniec_kowalski_2004.pdf` | HAVE ✓ | analytic NT reference |
 | SZEGO-OP-1939 | Szegő, Orthogonal Polynomials AMS Coll.23 | zot:NAP5SMQF | `pdfs/szego_orthogonal_polynomials_1939.pdf` | HAVE ✓ | M1/M3 OPUC/Lagrange |
 | PAULSEN-RAGHU-2016 | Paulsen, Raghupathi, Intro to the theory of RKHS 2016 | zot | `pdfs/paulsen_raghupathi_2016.pdf` | HAVE ✓ | RKHS cap |
+| GRENANDER-SZEGO-1958 | Grenander, Szegő, Toeplitz Forms and Their Applications 1958 | zot | `pdfs/grenander_szego_1958.pdf` | HAVE ✓ | M1/H2b Toeplitz forms monograph |
+| MALAM-FEJERHEAT-2025 | Malamutmann, Fejér–heat generators and Lipschitz control for the Weil quadratic functional, Dec 2025 | owner | `pdfs/malamutmann_fejer_heat_2025.pdf` | HAVE ✓ | **OWNER paper**: analytic properties of the Weil functional Q = A1'/A2/α-Gate |
