@@ -37,6 +37,18 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
   proved only for prolate PW_λ, Fact 6.3); **H2b = PROVED CONDITIONALLY** (Theorem 6.1
   via CVS-QFRZ-2025, conditional on H2a); **C3-B convergence c→∞ = OPEN** (Connes p.25
   "not proved"; only trial k_λ→Ξ proved, Fact 6.4; 2.6e-55 numerics = evidence only).
+- `CVS_H2B_FORMALIZATION_BRIDGE.md` — CVS-QFRZ-2025 (2511.23257) → Q3 Lean bridge.
+  KEY: CvS proves the CF corollary TWO ways — C*-algebraic (§2) and FINITE real-spectral
+  (§5); **Q3 mirrors the §5 route, bypassing the C*-algebra**. Bridge tally over ~9 steps:
+  HAVE=5 (rankOneCorrection_weightedSymmetric, _kills_vector, det_rankOneCorrection_* ×2,
+  negative controls), PARTIAL=5, MISSING=5. **Keystone gap M1**: "self-adjoint w.r.t. a
+  PosDef form Q ⇒ real spectrum" (congruence Q=SᵀS) — welds `weightedSymmetric` to
+  `HermitianDeterminantRealZeros`. Then M2 (degenerate quotient + induced PosDef metric,
+  where H2a is consumed), M3 (Lagrange/eq-18), M4 (Fourier/Hurwitz, infinite-dim Thm 6.1).
+  Carathéodory–Fejér NOT in Mathlib, but NOT needed (§5 route); all primitives present
+  (Matrix.PosDef, IsHermitian.spectrum, matrix-determinant lemma, Vandermonde, Lagrange).
+  VERDICT: H2b finite-matrix layer FORMALIZABLE by extending the existing scaffold
+  (M1→M2→M3, M4 separate); stays conditional on H2a (OPEN).
 - `GROSKIN_TWF_USAGE_CARDS.md` — GROSKIN-TWF-2026 (2605.20224): 6 cards. Groskin proves
   NOTHING himself (§10) — experimental math; every theorem cited from CVS [9] or CCM.
   Truncated Weil form §2.1 eq(1)-(2) on L²([0,L]), L=log c, D=D_∞+D_pole+D_prime;
