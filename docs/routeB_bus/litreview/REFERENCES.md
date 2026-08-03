@@ -129,3 +129,28 @@ prior pass → HAVE (row CVS-QFRZ-2025 above), not MISSING. Kulikov = Aleksei Ku
   tool: Lemma 1.8 (paper 2)** — scale-uniform singular-value decay σ_n ≤ C e^{−τn},
   constant independent of scale r → cleanest W_j→0. Maps: edge-tail → C3/two-level-ladder;
   λ_n≥1−δ^c + Lemma 1.8 → H4-DetectorDecay.
+
+## Part 3 — promoted from Zotero master (2026-08-03)
+
+Full owner Zotero library (55) recorded in `ZOTERO_MASTER.md`. Promoted here = maps to a
+Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in Zotero).
+
+| Key | Bibliographic identity | ID | Local PDF | Access | USED FOR |
+|---|---|---|---|---|---|
+| MALAM-TWIN-2025 | Malamutmann, "Spectral positivity and twin prime coherence via Weil's criterion" | doi:10.5281/zenodo.17541763 | — | OWNER-Zotero | **TARGET manuscript** (owner's own claim set) |
+| MALAM-OPGEOM-2025a | Malamutmann, "Operator–Geometric Proof of RH via Positivity of the Weil Functional" | doi:10.5281/zenodo.17538227 | — | OWNER-Zotero | **TARGET manuscript** |
+| MALAM-OPGEOM-2025b | Malamutmann, "Operator–Geometric Proof of RH via Positivity of the Weil Functional" | doi:10.5281/zenodo.17527099 | — | OWNER-Zotero | **TARGET manuscript** |
+| TOEPLITZ-1911 | O. Toeplitz, "Zur Theorie der quadratischen und bilinearen Formen…", Math. Ann. 70 (1911) 351–376 | doi:10.1007/BF01564502 | — | owner-fetch | Toeplitz-forms foundation — **M1/H2b** (CvS Carathéodory–Fejér lives here) |
+| GRENANDER-SZEGO-1958 | Grenander, Szegő, "Toeplitz forms and their applications", UC Press 1958 | — | — | BOOK | Toeplitz/Szegő limit theory — **H2b / Szegő–Böttcher** |
+| SZEGO-OP-1952 | Szegő, "Orthogonal polynomials", 2nd ed., AMS Colloq. 23, 1952 | — | — | BOOK | OPUC/Lagrange/Vandermonde — **M1/M3** primitives |
+| BOTTCHER-SILBERMANN-1999 | Böttcher, Silbermann, "Introduction to large truncated Toeplitz matrices", Springer 1999 | doi:10.1007/978-1-4612-1426-7 | — | BOOK | our Szegő–Böttcher `C_SB`; truncated-Toeplitz spectra — **STEP34 / H2b** |
+| HORN-JOHNSON-2013 | Horn, Johnson, "Matrix analysis", 2nd ed., CUP 2013 | — | — | BOOK | matrix-determinant lemma, Hermitian spectrum — **M1** primitives |
+| GUINAND-1948 | Guinand, "A summation formula in the theory of prime numbers", Proc. LMS 50 (1948) 107–119 | doi:10.1112/plms/s2-50.2.107 | — | PAYWALL | Guinand summation = Guinand–Weil dictionary (Groskin) — **STEP34** |
+| LI-CRITERION-1997 | Li, "The positivity of a sequence of numbers and the RH", JNT 65 (1997) 325–333 | doi:10.1006/jnth.1997.2137 | — | PAYWALL | Li's positivity criterion — **α-Gate family** |
+| BOMBIERI-MILLENNIUM-2000 | Bombieri, "Problems of the Millennium: The Riemann Hypothesis", Clay 2000 | claymath.org | — | OA (owner) | RH criterion/survey — α-Gate context |
+| GORZ-JENSEN-2019 | Griffin, Ono, Rolen, Zagier, "Jensen polynomials for the Riemann zeta function…", PNAS 116 (2019) | doi:10.1073/pnas.1902572116 | — | OA (owner) | hyperbolicity/Jensen criterion |
+| ARONSZAJN-1950 | Aronszajn, "Theory of reproducing kernels", TAMS 68 (1950) 337–404 | doi:10.1090/S0002-9947-1950-0051437-7 | — | owner-fetch | RKHS foundation — **RKHS cap** |
+| PAULSEN-RAGHU-2016 | Paulsen, Raghupathi, "Intro to the theory of RKHS", CUP 2016 | doi:10.1017/CBO9781316219232 | — | BOOK | RKHS reference — RKHS cap |
+| RODGERS-TAO-DBN-2021 | Rodgers, Tao, "The de Bruijn–Newman constant is non-negative", Forum Math. Pi 8 (2020) e6 | arXiv:1801.05914 | `pdfs/1801.05914.pdf` | HAVE ✓ | heat-flow / ξ evolution — Q3 heat-kernel layer (A1' density) |
+| POLYMATH-DBN-2019 | Polymath, "Effective approximation of heat flow evolution of the Riemann ξ…", Res. Math. Sci. 6 (2019) 31 | doi:10.1007/s40687-019-0193-1 | — | OA (owner) | heat-flow ξ approximation — heat layer |
+| GUTH-MAYNARD-2024 | Guth, Maynard, "New large value estimates for Dirichlet polynomials", Ann. Math. 2024 | arXiv:2405.20552 | `pdfs/2405.20552.pdf` | HAVE ✓ | Dirichlet large values — RH_TRICK_ATLAS card 3 |
