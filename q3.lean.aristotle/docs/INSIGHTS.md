@@ -49038,3 +49038,45 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   It is not an Aristotle-ready theorem because no actual PSWF constructor or
   source-mode existence theorem exists in Lean; inventing one in a cloud run
   would change the object contract rather than prove the missing result.
+
+## 2026-08-03 — Source-locked PSWF construction attack (in progress)
+
+- Exact target: construct/select the source modes
+  `h_(0,lambda) <-> chi_0(lambda)` and
+  `h_(4,lambda) <-> chi_2(lambda)`, then prove positive-half
+  `LipschitzOnWith` for those exact functions before invoking the closed v3
+  receiver.
+- The local source fixes
+  `h_(n,lambda)(x) = PS_(n,0)(2*pi*lambda^2,x/lambda)` on the open window,
+  followed by zero extension, L2 normalization, positive-integral phase, and
+  the restricted finite-Fourier eigenrelation; `ProlatePair` currently records
+  none of the eigen-equations or existence/selection facts.
+- Five `q3_docs` searches for PSWF construction, compact finite-Fourier/sinc
+  operators, infinite-dimensional spectral theory, and kernel regularity
+  returned no hits.
+- Slepian--Pollak I and DLMF Chapter 30 confirm the analytic source family,
+  normalization, parity, and eigenfunction viewpoint, but do not supply a Lean
+  implementation.
+- Pinned Mathlib's `Analysis.InnerProductSpace.Spectrum` explicitly lists
+  compact self-adjoint spectral theory as a TODO; its implemented
+  diagonalization is finite-dimensional only.  Therefore an integral-operator
+  existence proof cannot be closed by a single library theorem.
+- Honest architecture fork: formalize the singular prolate Sturm--Liouville
+  realization (source-faithful indexing), or build the compact finite-Fourier/
+  sinc operator plus existence, parity, ordering, and continuous
+  representatives.  A strengthened record with existence left as a field is
+  not closure.
+- Smallest independent analytic leaf under review:
+  `positiveHalfLipschitz_of_finiteFourier_eigenrelation`; from the exact
+  restricted Fourier eigen-equation, `chi != 0`, and interval integrability,
+  bound kernel differences using
+  `Complex.norm_exp_I_mul_ofReal_sub_one_le` and then the Bochner integral norm.
+- Intended file: `Q3/Proofs/RouteB/ProlateSourceRegularity.lean`; this leaf may
+  eliminate the two remaining Lipschitz hypotheses once actual modes exist,
+  but it must not be called a PSWF constructor or an existence theorem.
+- Route firewall remains unchanged: `CHALLENGER / NOT_RH`, physical Bus
+  `001..009` closed, Bus 010 void, and the independent D0.7e.5a WPrime source
+  pause is not discharged by PSWF work.
+- Proshka review is pending on the ODE-versus-integral-operator route and the
+  exact first theorem shape; no Aristotle request is authorized until that
+  shape is self-contained.
