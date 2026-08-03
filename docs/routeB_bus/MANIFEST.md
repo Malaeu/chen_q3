@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `MAP.md` | Route B project navigator (LIVE — updated each move, SHA advisory) | `d6464beba93147a90169aab08def630d2ae0dc339219a39c96963fa591862ee6` |
 | `001_ktrial_stage1.answer.md` | answer | `6714aab6f34bc419e32e20a68c59a7f9f685669496f3dffe7c1c9e55f37658b5` |
 | `002_ktrial_stage2.answer.md` | answer | `eafbf7d6c059ac4021d79818d51085a6d25227482d21eeedb7d5e90d4d9dd613` |
 | `003_ktrial_stage3.answer.md` | answer | `a02e03342d8f1f1163083d031b48d36f0b34ffe9f7c85819c02121699574257b` |
