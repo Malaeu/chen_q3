@@ -49247,3 +49247,14 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
   Aristotle project `07a1765f-0457-4577-8247-5c13c64dc9bb` remains a running
   background alternative and was not used.
+- Proshka ratified published commit
+  `12a5095cde4b52faa65fe35c7e47c19f6cdfb3e5` with the same verdict and issued
+  `B_TERMINAL_STOP` for backend A.  There is no next honest self-contained
+  transport theorem: another simplicity/scalar wrapper would only restate the
+  missing source object contract.
+- Stop code:
+  `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+  Resume backend A only after Lean materializes the exact zero-flux
+  self-adjoint realization, actual degree-0 and degree-4 modes, and their
+  source-locked index/selection contract; strengthening `ProlatePair` with
+  these facts as assumptions does not release the stop.

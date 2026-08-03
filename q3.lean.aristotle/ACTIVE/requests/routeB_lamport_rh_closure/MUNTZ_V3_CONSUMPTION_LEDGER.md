@@ -342,3 +342,26 @@ The deeper wall remains
 `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
 The independent D0.7e.5a pause remains open, Route B remains
 `CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
+
+### Backend-A ratification and terminal stop
+
+Proshka ratified published commit
+`12a5095cde4b52faa65fe35c7e47c19f6cdfb3e5` with verdict
+`PROLATE_FINITE_FOURIER_NONVANISHING_FROM_INTERIOR_MODE_PROVED` and selected
+`B_TERMINAL_STOP`.  Backend A has no further honest self-contained transport
+leaf in the current Lean object model.
+
+Stop code:
+`SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+Release requires an exact zero-flux self-adjoint Sturm--Liouville realization,
+actual source degree-0 and degree-4 modes, and proved index/selection.  A new
+record that merely assumes existence, simplicity, or the scalar eigenrelation
+does not satisfy this release condition.
+
+Aristotle project `07a1765f-0457-4577-8247-5c13c64dc9bb` remains a running
+background alternative and is not authorized for integration unless its final
+output is hole-scanned, locally compiled, axiom-audited, source-object
+identical, and strictly stronger than the published local theorem.
+
+The independent D0.7e.5a pause remains open, Route B remains
+`CHALLENGER / NOT_RH`, and physical Bus 010 remains void.  No RH claim is made.
