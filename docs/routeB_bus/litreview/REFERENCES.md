@@ -173,3 +173,4 @@ Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in
 | INGHAM-1932 | Ingham, Distribution of Prime Numbers 1932 | zot:PAECCAFH | `pdfs/ingham_1932.pdf` | HAVE ✓ | classic prime distribution |
 | IWANIEC-KOWALSKI-2004 | Iwaniec, Kowalski, Analytic Number Theory 2004 | zot:9LDLY24L | `pdfs/iwaniec_kowalski_2004.pdf` | HAVE ✓ | analytic NT reference |
 | SZEGO-OP-1939 | Szegő, Orthogonal Polynomials AMS Coll.23 | zot:NAP5SMQF | `pdfs/szego_orthogonal_polynomials_1939.pdf` | HAVE ✓ | M1/M3 OPUC/Lagrange |
+| PAULSEN-RAGHU-2016 | Paulsen, Raghupathi, Intro to the theory of RKHS 2016 | zot | `pdfs/paulsen_raghupathi_2016.pdf` | HAVE ✓ | RKHS cap |
