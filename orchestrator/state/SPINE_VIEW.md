@@ -1,6 +1,6 @@
 # SPINE VIEW — unified negative-knowledge / memory ledger
 
-Generated: 2026-07-31 by `orchestrator/spine.py`. DO NOT EDIT (regenerate instead).
+Generated: 2026-08-03 by `orchestrator/spine.py`. DO NOT EDIT (regenerate instead).
 Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Staleness warnings
@@ -15,7 +15,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-06-13 |
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-06-12 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-06-13 |
-| `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-07-31 |
+| `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-03 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1. Object-level kills (FAILURE_ATLAS.json)
