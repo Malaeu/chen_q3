@@ -19,22 +19,23 @@ Route B = **CHALLENGER / NOT_RH**, Bus 010 VOID. RH официально НЕ з
                                 │
      G7 компилятор (G1..G6 ⟹ RH) ✅ ─── склеивает всё ниже
                                 │
-   ┌────────────┬──────────────┼───────────────┬────────────────┐
-  G1 H1 ✅     G4 anchor ✅   G5 S1 🔓        G2→G3 (H2a→H2b)    G6 S2 🔓
- (голоморфн.) (нормировка)  (Montel+знак)   ВЕТКА «СПЕКТР»      ВЕТКА «МЮНЦ»
-                              знак-supplier   движок нулей       коробка T5
-                              открыт           🔓                 4 винта ✅ 4/4
-                                                │                  но стыковка
-                                          H2a 🔓 → H2b ⏳          к S2 🔓
-                                                │
-                                          M1(гол 051)⏳→M2→M3→M4 (+M0)
+   ┌────────────┬──────────────┼──────────────────┬────────────────┐
+  G1 H1 ✅     G4 anchor ✅   G5 S1 🔓           G2→G3 (H2a→H2b)    G6 S2 🔓
+ (голоморфн.) (z=0 equality; (concrete supply)  ВЕТКА «СПЕКТР»      ВЕТКА «МЮНЦ»
+               floor*)        boundedness +      selected theorem  коробка T5
+                              nonzero cluster +  ✅ conditional;    4 винта ✅ 4/4
+                              знак 🔓             h510 supplier 🔓   полная S2-стена 🔓
+                                                   │
+                                             M0 + M1⏳→M2→M3→[M4]
 ```
 
-**Где мы сейчас (одной строкой):** закрыты G1, G4, G7 и все 4 винта Мюнца; открыты **4 фронта** — G2 (H2a), G3 (H2b, туда идёт M1), G5 (S1-знак), G6 (стыковка Мюнц→S2). Следующий ход: дать OK Codex'у на Lean-файл M1 (гол 051).
+\* Для G4 Lean доказывает `SlotAnchor ... 0` и central/raw floor под явными гипотезами. Отдельный факт `centeredXi 0 ≠ 0` не доказан; требуемое производство ненулевого cluster остаётся внутри G5, не образуя пятый фронт.
+
+**Где мы сейчас (одной строкой):** закрыты G1, условная крыша G7, G4 в точном объёме equality-at-zero/floor и все 4 винта Мюнца; открыты **ровно 4 фронта** — G2 (H2a), G3 (concrete H2b supplier, куда входит M1), G5 (полный concrete S1/Montel supply), G6 (полная S2-стена Мюнц→S2). M1 — только один keystone G3, не закрытие H2b.
 
 **Две ветки простыми словами:**
-- **Спектр (H2-ветка):** движок «почему нули вещественны». Упирается в H2a (простое+чётное нижнее собств. значение) → выдаёт H2b. Кирпичи — M1..M4.
-- **Мюнц:** коробка `T5` даёт аналитическое продолжение окна. 4 входа-винта **все закручены (4/4)**. Осталось формально вставить её результат в слот S2 крыши.
+- **Спектр (H2-ветка):** `selectedFamily_realZeros` уже является условной Lean-теоремой из H1 + H2a + `h510`; открытым остаётся concrete supplier `Theorem510RealZeroBridge`. Его движок требует M0–M3 и, для полного Fourier/Hurwitz corollary, M4.
+- **Мюнц:** коробка `T5` даёт аналитическое продолжение окна. 4 входа-винта **все закручены (4/4)**, но это ещё не S2: для каждого ненулевого cluster нужны same-family, cofinal, normalization и locally-uniform tail control при фиксированном zero-free gauge.
 
 ---
 
@@ -57,20 +58,20 @@ Route B = **CHALLENGER / NOT_RH**, Bus 010 VOID. RH официально НЕ з
 ## 3. Дерево целей со статусами
 
 ```
-T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1..G6)
+T-Roof  rh_of_canonical_strip_slots  ✅ (условная Lean-теорема на G1..G6)
 │
 ├─ GATE-G1  SLOT-H1   голоморфность семейства на полосе            ✅
-├─ GATE-G4  SLOT-anchor  нормировка Hⱼ(i/4)=Ξ(i/4)≠0               ✅
+├─ GATE-G4  SLOT-anchor  equality в z=0; floor под гипотезами       ✅  (`centeredXi 0 ≠ 0` отдельно 🔓)
 ├─ GATE-G7  компилятор G1..G6 ⟹ RH (Hurwitz)                      ✅ (conditional)
 │
-├─ GATE-G5  SLOT-S1   локальная ограниченность (вход Монтеля)      🔓  ядро Montel ✅, знак-supplier открыт
+├─ GATE-G5  SLOT-S1   локальная ограниченность (вход Монтеля)      🔓  ядро Montel ✅; concrete boundedness, ненулевой cluster и знак-supplier открыты
 │
 ├─ ВЕТКА СПЕКТР ────────────────────────────────────────────────
 │   ├─ GATE-G2  SLOT-H2a  нижнее собств. значение простое+чётное   🔓  (открыто и у Connes)
-│   └─ GATE-G3  SLOT-H2b  у каждого Hⱼ только вещественные нули     ⏳  условно на H2a
-│        └─ мост Theorem510RealZeroBridge (H2B_TRANSFORM_LAYER)    🔓  ← сюда входит движок M1..M4
+│   └─ GATE-G3  selectedFamily_realZeros                            ✅  условная Lean-теорема из H1 + H2a + h510
+│        └─ concrete Theorem510RealZeroBridge supplier              🔓  H2B_TRANSFORM_LAYER_OPEN
 │             ├─ L-M0  инстанцировать форму Q(11), вывести β1/β2/β3 🔓
-│             ├─ L-M1  PosDef-самосопр. ⇒ вещ. спектр (гол 051)     ⏳  Прошка kill-pass, Lean не написан
+│             ├─ L-M1  weighted self-adjoint → Hermitian (гол 051)  ⏳  Прошка kill-pass, Lean не написан
 │             ├─ L-M2  вырожденная форма → фактор с PosDef-метрикой 🔓  частичный scaffold есть
 │             ├─ L-M3  определитель → форма Лагранжа → вещ. корни   🔓
 │             └─ L-M4  Фурье + сокращение полюсов + Гурвиц (опция)  🔓
@@ -81,11 +82,11 @@ T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1
               ├─ IN-hG   окно Gwin аналитично                       ✅ (гол 047)
               ├─ IN-hRp  правый хвост Rplus аналитичен              ✅ (гол 046)
               ├─ IN-hRm  левый хвост Rminus аналитичен              ✅ (2 авг, MacOS)
-              ├─ IN-habs абсолютная сходимость / тождество Меллина   ✅ (гол 052, 3 авг, MacOS)
-              └─ мост Мюнц→SLOT-S2 (промоушен, «C3»)                🔓 K8: контракт не написан
+              ├─ IN-habs абсолютная сходимость / тождество Меллина   ✅ (commit-labeled Goal 052, 3 авг, MacOS; bus-card отсутствует)
+              └─ мост Мюнц→SLOT-S2 (промоушен, «C3»)                🔓 полноценная S2-стена: same-family, cofinal, normalization и locally-uniform tail control
 ```
 
-**Открытые фронты (ровно 4):** G2 (H2a) · G3/движок (M0,M1,M2,M3,M4) · G5 (S1-знак) · G6 (стыковка Мюнц→S2).
+**Открытые фронты (ровно 4):** G2 (H2a) · G3/движок (M0,M1,M2,M3,M4) · G5 (S1 concrete supply) · G6 (полная S2-стена Мюнц→S2).
 
 ---
 
@@ -95,13 +96,13 @@ T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1
 
 | Имя (старое) | ID | Человеческим языком | Статус | Где |
 |---|---|---|---|---|
-| `rh_of_canonical_strip_slots` | T-Roof | Итоговая крыша: из слотов+мостов собирает RH на полосе | ⏳ | `Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean:145` |
+| `rh_of_canonical_strip_slots` | T-Roof | Итоговая крыша: из слотов+мостов собирает RH на полосе | ✅ условная Lean-теорема | `Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean:145` |
 | SlotH1 | SLOT-H1 / GATE-G1 | Голоморфность нормированного семейства | ✅ | `D0CanonicalApproximation.lean` |
 | SlotH2a | SLOT-H2a / GATE-G2 | Нижнее собств. значение простое, изолированное, чётное (ВХОД, не теорема) | 🔓 | `SectorIsolationRadius.lean`; slot `CanonicalRHRouteSkeleton.lean:52` |
-| SlotH2b | SLOT-H2b / GATE-G3 | У каждого Hⱼ только вещественные нули на полосе | ⏳ (на H2a) | slot `CanonicalRHRouteSkeleton.lean:130` |
-| Theorem510RealZeroBridge | (мост H2b) | Точный мост Th.5.10: детерминант/самосопряжённость → вещ. нули | 🔓 `H2B_TRANSFORM_LAYER_OPEN` | `CanonicalRHRouteSkeleton.lean:114` |
-| SlotAnchor | SLOT-anchor / GATE-G4 | Нормировка семейства в i/4 (защита от коллапса лимита) | ✅ | `D0AnchorFloor.lean` |
-| SlotS1 | SLOT-S1 / GATE-G5 | Локальная ограниченность (вход Монтеля); знак-supplier открыт | 🔓 | `MontelNormalFamilies.lean` |
+| selectedFamily_realZeros | часть SLOT-H2b / GATE-G3 | У выбранного семейства вещественные нули из H1 + H2a + `h510` | ✅ условная Lean-теорема | `CanonicalRHRouteSkeleton.lean:130` |
+| Theorem510RealZeroBridge | (concrete supplier H2b) | Точный мост Th.5.10: детерминант/самосопряжённость → вещ. нули | 🔓 `H2B_TRANSFORM_LAYER_OPEN` | `CanonicalRHRouteSkeleton.lean:114` |
+| SlotAnchor | SLOT-anchor / GATE-G4 | Равенство anchor в z=0; central/raw anchor floor — под гипотезами | ✅ equality at z=0; `centeredXi 0 ≠ 0` 🔓 | `D0AnchorFloor.lean` |
+| SlotS1 | SLOT-S1 / GATE-G5 | Локальная ограниченность (вход Монтеля); generic machinery есть, concrete boundedness, ненулевой cluster и знак-supplier открыты | 🔓 | `MontelNormalFamilies.lean` |
 | SlotS2 | SLOT-S2 / GATE-G6 | Опознание ненулевого кластера как c·Ξ·γ₀ («главная стена») | 🔓 typed only | slot `CanonicalRHRouteSkeleton.lean:122` |
 | G7 HURWITZ_XI_RH_ROOF | GATE-G7 | Компилятор: G1..G6 ⟹ RH | ✅ (conditional) | `CanonicalRHRouteSkeleton.lean:145` |
 | `selfAdjointCharDetRealZeros` | — | Ядро: нули charполинома эрмитовой матрицы вещественны | ✅ | `RequestProject/Main.lean:311` |
@@ -109,6 +110,8 @@ T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1
 | POISON_MAP_7_FALSE_10_HONEST | — | Карта: 7 ложных-как-сформулировано + 10 честных условных holes в legacy-скелете | ☠️ активна | `ROUTE_B_STATE.md:180` |
 
 > Два кодирования крыши: канон `CanonicalRHRouteSkeleton.lean` (hole-free условный DAG, аксиомы чистые) и legacy design-α `RequestProject/Main.lean` (весь sorry, к нему poison map). Рабочий — канон.
+
+> **Граница G4:** equality в `z=0` доказано; central/raw anchor floor доказан под гипотезами; `centeredXi 0 ≠ 0` открыт; nonzero-cluster supply остаётся частью G5.
 
 ### 4b. Ветка Мюнц — коробка T5 и 4 винта
 
@@ -118,14 +121,14 @@ T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1
 | `gwin_analyticOnNhd_…v3Class` | IN-hG | Центральное окно Gwin аналитично | ✅ гол 047 | `MuntzV3GwinExactClass.lean` |
 | `rplus_analyticOnNhd_…v3Class` | IN-hRp | Правый (верхний) хвост Rplus аналитичен | ✅ гол 046 | `MuntzV3RplusExactClass.lean` |
 | `rminus_analyticOnNhd_…v3Class` | IN-hRm | Левый (нижний) хвост Rminus аналитичен | ✅ 2 авг | `MuntzV3RminusExactClass.lean:178` |
-| `habs_of_IccZero_IcoLipschitz` | IN-habs | Абсолютная сходимость / тождество Меллина при Re s>1/2 | ✅ гол 052 | `MuntzV3HabsExactClass.lean:259` |
-| `continued_window_identity_v3Class` | (мост) | Финал: разряжает все 4 входа, выдаёт тождество | ✅ гол 052 | `MuntzV3ExactClassClosure.lean:13` |
+| `habs_of_IccZero_IcoLipschitz` | IN-habs | Абсолютная сходимость / тождество Меллина при Re s>1/2 | ✅ commit-labeled Goal 052 (bus-card отсутствует) | `MuntzV3HabsExactClass.lean:259` |
+| `continued_window_identity_v3Class` | (мост) | Финал: разряжает все 4 входа, выдаёт тождество | ✅ commit-labeled Goal 052 (bus-card отсутствует) | `MuntzV3ExactClassClosure.lean:13` |
 | PL1 mass-blowup | plant | Фальсификатор: ненулевая масса ⇒ ‖ζ·Mellin‖→∞; ветка держит настоящий witness | ✅ гол 042 | `MuntzV3PL1MassBlowupWitness.lean` |
 | PL2 raw-pole | plant | Сырое ζ·Mellin разрывно в 1 (deriv −1/12) ⇒ нужна pole-subtracted версия | ✅ гол 040 | `MuntzV3PL2RawPoleMismatch.lean:13` |
 | PL3 triangular Lipschitz | plant | Третий контрактный плант | 🔓 не локализован (Lean-файла нет) | goal 039 текст |
 | R6Export | certificate | Запечатанный 7-файловый R6-экспорт (исходный поставщик wrapper-ов, потом обойдён v3-классом) | ✅ sealed | `muntz_v3/RequestProject/R6Export/` |
 | v3 class | (класс) | Точный класс носителя: Measurable + supp⊂Icc 0 b + Lipschitz на Ico 0 b + zero-mass + 0≤b | ✅ locked | `MuntzV3ExactClassClosure.lean:13` |
-| мост Мюнц→SLOT-S2 | (промоушен) | Формальная вставка window-identity в слот S2 крыши | 🔓 K8: контракт не написан | — |
+| мост Мюнц→SLOT-S2 | (промоушен) | Полная S2-стена: каждый ненулевой cluster = c·Ξ·γ₀ с fixed zero-free gauge; нужны same-family, cofinal, normalization и locally-uniform tail control | 🔓 K8: контракт не написан | — |
 
 > **Ветка независима от спектральной.** Мюнц даёт аналитическое продолжение (слот S2); H2b даёт спектральную положительность (слот H2b). Разные слоты, разные файлы.
 
@@ -144,18 +147,18 @@ T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1
 | β3 | — | QDξ=−β | 🧩 принят как `hTDxi` | там же :35 |
 | β4 | L-β4 | D′ самосопряжён относительно формы Q (T·D′=D′ᵀ·T) | ✅ | `rankOneCorrection_weightedSymmetric:27` |
 | β5a | — | Нормировка ⟨η,ξ⟩=1 ⇒ D′ξ=0 | ✅ | `rankOneCorrection_kills_vector:15` |
-| β5b | — | D′ спускается на фактор по ℝ∙ξ (без метрики) | ⏳ частичный | `RankOneCorrectionQuotientDescent.lean:29` |
+| β5b | — | D′ спускается на фактор по ℝ∙ξ (без метрики) | ✅ | `RankOneCorrectionQuotientDescent.lean:29` |
 | β5c | — | radical(Q)=ℝ∙ξ (одномерно ⇐ простота) | 🔓 | часть M2 |
 | β6 | — | D″ самосопряжён на евклидовом E ⇒ вещ. собств. значения | 🔓 | часть M2 (примитив Mathlib есть) |
 | β7 | — | Треугольный Det(D′−s) = −s·∏(λⱼ−s) | 🔓 | часть M3 |
 | β8a/β8b | — | Matrix-det лемма (резольвентная + adjugate форма) | ✅ | `RankOneCorrectionDeterminant.lean:11`, `…AllSpectralPoints.lean:82` |
 | β8c | — | Свести к Σξⱼ/(s−j)=0, отождествить с P(s) | 🔓 | часть M3 |
-| β8d | — | Вещ. собств. значения ⇒ вещ. нули charpoly (для эрмитовой M) | ⏳ нужен мост M1 | `zerosRealOn_of_hermitian_charpoly_mul` `HermitianDeterminantRealZeros.lean:31` |
+| β8d | — | Вещ. собств. значения ⇒ вещ. нули charpoly (для эрмитовой M) | ✅ | `zerosRealOn_of_hermitian_charpoly_mul` `HermitianDeterminantRealZeros.lean:31` |
 | β9 | — | Нули Фурье ξ̂ вещественны + предел Гурвица | ⏳ частичный | `periodicScalingDet_zerosRealOn:12` |
 | α4 controls | — | Негативные контроли: без эрмитовости/unit вещественность ломается | ✅ falsifiers | `HermitianDeterminantRealZeros.lean:60,77` |
-| гол 051 | G-051 = L-M1 | Формализовать M1 ТОЛЬКО (β6/β8d); M0/M2/M3/M4 остаются | ⏳ | `051_*.goal.md`+`.answer.md` |
+| гол 051 | G-051 = L-M1 | Формализовать M1 ТОЛЬКО: мост weighted self-adjoint → Hermitian; M0/M2/M3/M4 остаются | ⏳ | `051_*.goal.md`+`.answer.md` |
 
-> **M1 = только β6/β8d.** Гол 051 не закрывает H2b (нужны ещё M0, M2, M3). H2b условен на H2a — открыто и у Connes. Целевой Lean-файл `Q3/Proofs/RouteB/PosDefSelfAdjointRealSpectrum.lean` ещё НЕ создан.
+> **M1 = только мост weighted self-adjoint → Hermitian, питающий β6.** β8d уже доказан для эрмитовой матрицы. Гол 051 не закрывает H2b (нужны ещё M0, M2, M3). H2b условен на H2a — открыто и у Connes. Целевой Lean-файл `Q3/Proofs/RouteB/PosDefSelfAdjointRealSpectrum.lean` ещё НЕ создан.
 
 ### 4d. Кто есть кто + законы
 
@@ -216,17 +219,15 @@ T-Roof  rh_of_canonical_strip_slots  ⏳ (собрана, условна на G1
 | 049 | E* bounded sqrt — fail-closed (b≤0 gap, Lean контрпример) | spec |
 | 050 | E* bound repaired (0≤b guard) ✅ | spec |
 | **051** | **M1** PosDef-самосопр.⇒вещ.спектр — Прошка kill-pass, Codex authorized ⏳ | spec |
-| **052** | **habs** supplier ✅ + **hRm** closed (2 авг) ⇒ Мюнц 4/4 ✅ | Müntz |
+| **052** | **habs** supplier ✅ + **hRm** closed (2 авг) ⇒ Мюнц 4/4 ✅; commit-labeled, отдельная bus-card отсутствует | Müntz |
 
 Пропуски: гол 009 не локализован; гол 010 = намеренно void bus-slot.
 
 ---
 
-## 6. Рассинхрон журнала (важно)
+## 6. Pinned-валидация Müntz и статус журнала
 
-На **диске (HEAD)** Мюнц-ветка = **4/4** (hRm 2 авг, habs гол 052 3 авг, коммиты [MacOS]). Но `ROUTE_B_STATE.md` goal-log **обрывается на 051** — строки hRm-close и гол 052 в него ещё не внесены. То есть **математика на диске впереди журнала**. Полная сборка (`lake build`) в этой сессии не перепроверялась — на диске чисто (sorry/axiom = 0), но зелёный билд стоит подтвердить перед любым промоушеном.
-
-**TODO журнала:** внести в `ROUTE_B_STATE.md` строки для hRm-close и гола 052 (с проверкой билда).
+По pinned-source + committed-validation-ledger audit Müntz-ветка = **4/4**: `hRm` закрыт commit-ом `d3ca3c9e`, а `habs` и exact-class assembly — commit-ом `79d80630` (commit-labeled Goal 052; отдельной пары `052_*.goal.md` / `052_*.answer.md` в `MANIFEST.md` нет). На точке закрытия зафиксирован full standalone v3 build на **8050 jobs**, production hole scan пуст, project axioms отсутствуют; четыре public declaration зависят только от стандартных `propext`, `Classical.choice`, `Quot.sound`. Иными словами: `sorry`/`admit`-free — YES; project-axiom-free — YES; literally axiom-free — NO; standard Lean axioms only — YES. Локальный `lake build` в этой сессии не перезапускался. Журнал впоследствии догнан Linux-коммитом.
 
 **Верификация Мифоса (2026-08-03, @807341e7):** независимо прочитал MAP.md против репо, грепнул
 `sorry/axiom` в Lean-файлах hRm/habs → **Müntz 4/4 подтверждён вторым каналом**; line-refs словаря
@@ -240,9 +241,9 @@ FLAG-зеркало устранён: `docs/routeB_bus/muntz_v3/RequestProject` 
 
 | Фронт | Что закрыть | Готовность |
 |---|---|---|
-| **G3 / движок H2b** | L-M1 (гол 051) → Lean-файл | ⏳ вооружён: Прошка одобрила, директива Codex готова, ждёт OK |
+| **G3 / concrete H2b supplier** | M0 + M1 + M2 + M3 и при необходимости M4 → `Theorem510RealZeroBridge` | 🔓 `selectedFamily_realZeros` уже ✅ conditional; M1 (гол 051) только kill-pass keystone, Lean-файла нет и H2b отдельно не закрывает |
 | **G2 / H2a** | Простое+чётное нижнее собств. значение (SIMPLE_EVEN) | 🔓 настоящая открытая математика (открыто и у Connes); дозье собрано |
-| **G6 / стыковка Мюнц→S2** | Формальный мост window-identity → SlotS2 | 🔓 supplier готов 4/4, контракт промоушена не написан (K8) |
-| **G5 / S1-знак** | Знак-supplier для Монтеля | 🔓 ядро Montel ✅, знак открыт |
+| **G6 / полная S2-стена Мюнц→S2** | Каждый ненулевой cluster = c·Ξ·γ₀: same-family, cofinal, normalization, locally-uniform tail control, fixed zero-free gauge | 🔓 analytic supplier готов 4/4, но S2-контракт/доказательство не материализованы (K8) |
+| **G5 / concrete S1/Montel supply** | Concrete local boundedness + производство ненулевого cluster + знак-supplier | 🔓 generic Montel machinery ✅; concrete family supply открыт |
 
-*Ближайший конкретный ход: OK Codex'у на Lean M1 (гол 051), целевой файл `Q3/Proofs/RouteB/PosDefSelfAdjointRealSpectrum.lean`.*
+*Граница Goal 051: целевой `Q3/Proofs/RouteB/PosDefSelfAdjointRealSpectrum.lean` материализует только M1 (weighted-self-adjoint → Hermitian bridge); это не закрытие CvS §5, H2b, H2a, Route B или RH.*
