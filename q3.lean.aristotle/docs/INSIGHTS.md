@@ -49172,3 +49172,25 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   assert a self-adjoint realization, simplicity, a nonzero Fourier eigenvalue,
   or construction/selection of source modes.  Deeper wall:
   `SOURCE_LOCKED_STURM_LIOUVILLE_MODES_0_4_EXISTENCE_AND_SELECTION_MISSING`.
+
+## 2026-08-03 — Prolate eigenrelation transport (in progress)
+
+- Proshka ratified commit `13f71c622814a52ed9af9d1f069764fdca45f84e`
+  with verdict
+  `PROLATE_STURM_LIOUVILLE_FINITE_FOURIER_INTERTWINING_PROVED`.
+- Exact next leaf:
+  `finiteFourierAction_preserves_prolateWaveEigenrelation` in
+  `Q3/Proofs/RouteB/ProlateSourceEigenTransport.lean`.
+- Three `q3_docs` embedding queries for the exact theorem, the commutation
+  declaration, and eigenspace transport returned no hits.
+- The local proof route is only the published intertwining identity followed by
+  set-integral congruence on `Icc (-lambda) lambda` and extraction of the real
+  eigenvalue cast as a complex scalar.
+- Mathlib's official set-integral documentation confirms that a set integral is
+  an ordinary Bochner integral against a restricted measure, so the standard
+  integral congruence and scalar-linearity API applies directly.
+- The theorem assumes the interval eigenrelation and does not add existence,
+  simplicity, ordering, normalization, nonzero Fourier eigenvalues, or source
+  mode selection.
+- Route firewall remains `CHALLENGER / NOT_RH`; D0.7e.5a stays open and Bus 010
+  remains void.
