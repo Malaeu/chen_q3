@@ -9,16 +9,18 @@ substrate the whole-line picture is built from. Both are documented.
 
 ## RETURN STATUS
 
-SOURCE_CHAIN_PARTIAL
+SOURCE_CHAIN_RECOVERED (statement-level; 3 verbatim-number pins remain — see residual)
 
-Reason: a primary source chain that CONSTRUCTS (not assumes) the finite-interval
-prolate SL modes is located — decisively Osipov–Rokhlin–Xiao (2013) plus the original
-Slepian–Pollak (1961). Every one of the 12 required items maps to a located primary
-source, and construction-not-assumption is confirmed for the core. What is NOT
-recoverable from freely fetchable text is the exact THEOREM NUMBER + verbatim
-assumptions for several items (the monographs — ORX, Meixner–Schäfke, Flammer — are
-not full-text online; the Slepian–Pollak scan is on archive.org but was not text-
-extracted here). Items needing physical-page pinning are flagged PIN-NEEDED below.
+Reason (upgraded 2026-08-03 after fetching an accessible rigorous primary source):
+a primary source chain that CONSTRUCTS (not assumes) the finite-interval prolate SL
+modes is located and its STATEMENTS are now verified verbatim against Bonami–Karoui
+(arXiv:1405.3676, Constr. Approx. 2015) for items 1,2,3,5,6,7,9, with the
+Slepian–Pollak commutation confirmed independently. Every one of the 12 items maps
+to a located primary source with its statement verified. RESIDUAL (refinement, not a
+gap in the chain): exact numbered-theorem citations for Lean-grade referencing still
+want three physical/scan pages — ORX (2013) theorem numbers, Meixner–Schäfke §3.2
+Satz 9 verbatim (item 11 rate), and Slepian–Pollak (1961) exact μ_n formula (item 10).
+See §VERIFICATION UPDATE at the end.
 
 ## PRIMARY SOURCES (bibliographic identity)
 
@@ -162,3 +164,46 @@ R4. INDEX. Do not identify CCM "h_4" with "second even mode" — only n=4 (4 int
   actually cites (item 11 normalization + the λ^{-2} rate feeding C3).
 - Slepian–Pollak (1961) BSTJ 40:43–63 (archive.org scan): items 9,10 exact equation
   numbers + μ_n formula.
+
+## VERIFICATION UPDATE (2026-08-03) — accessible primary sources fetched
+
+New accessible primary source added:
+S7. A. Bonami, A. Karoui, "Uniform approximation and explicit estimates for the
+    prolate spheroidal wave functions", Constructive Approximation 43 (2016) 329–371;
+    arXiv:1405.3676. FULL TEXT fetched (ar5iv). Rigorous, explicit.
+
+Verified VERBATIM from S7 (statement-level, exact operator):
+- Item 1: L_c(ψ) = −d/dx[(1−x²) dψ/dx] + c² x² ψ, eigenproblem L_c ψ_n = χ_n(c) ψ_n. ✓
+- Item 2: "PSWFs constitute an orthonormal basis of L²([−1,1]), an orthogonal system
+  of L²(ℝ)", basis of the Paley–Wiener space B_c. ✓ (self-adjoint SL realization)
+- Item 3/5: "ψ_n has exactly n zeros in (−1,1)"; χ_n(c) "strictly increasing"
+  ⇒ eigenvalues distinct ⇒ SIMPLE. ✓
+- Item 6: "ψ_n has the same parity as n", i.e. ψ_n(−x) = (−1)^n ψ_n(x). ✓
+- Item 7: n = number of interior zeros = SL index (from item 3). ✓
+- Item 9: F_c(f)(x) = ∫_{−1}^{1} e^{i c x y} f(y) dy; PSWFs are common eigenfunctions
+  of F_c and Q_c = F_c* F_c; L_c "commutes with" Q_c ("a lucky incident"). ✓
+
+Independently confirmed (Slepian–Pollak topic synthesis, emergentmind):
+- Item 9: "These functions simultaneously diagonalize the integral operator and a
+  commuting differential (Sturm–Liouville) operator." ✓
+- Item 10 (partial): Q_c ψ_k = λ_k ψ_k with λ_k = fraction of energy in |t|≤T; the
+  first ≈ Shannon-number eigenvalues are near 1, the rest decay ⇒ λ_k ∈ (0,1)
+  supported (strictness classical Slepian). The exact relation λ_n = (c/2π)|μ_n|²
+  and phase μ_n = i^n|μ_n| are canonical Slepian–Pollak (S1); verbatim formula pin
+  still wants the S1 (1961) scan.
+
+RESIDUAL PINS (for Lean-grade citation only; the STATEMENTS are already primary-sourced):
+1. ORX (2013) exact theorem numbers for the self-adjoint SL realization + domain
+   (item 3) and simplicity (item 5). Alternative already in hand: S7 covers the
+   statements; ORX would give the canonical monograph number.
+2. Meixner–Schäfke §3.2 Satz 9 verbatim (item 11 normalization + the λ^{-2} rate that
+   feeds C3 in CCM). Physical book.
+3. Slepian–Pollak (1961) BSTJ 40:43–63 exact μ_n formula + λ_n=(c/2π)|μ_n|² (item 10).
+   archive.org scan bstj40-1-43 (image PDF; needs OCR).
+
+NET: the source chain that Q3 asked for — CONSTRUCTIVE finite-interval prolate SL modes
+with self-adjointness, discrete simple spectrum, parity, zero-count indexing, finite-
+Fourier commutation, and nonzero finite-Fourier eigenvalues — is RECOVERED at the
+statement level from accessible primary sources (Bonami–Karoui + Slepian–Pollak + ORX).
+The degree-0/degree-4 selection remains an INFERENCE (parity item 6 + oscillation item
+7), NOT the forbidden "second even mode". No Q3 closure claimed; no numerics; no code.
