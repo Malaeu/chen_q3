@@ -1,34 +1,40 @@
 # Route B — execution control
 
-Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP / CONTROL_PLANE / NOT_RH / CHALLENGER`
+Status: `IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET / CONTROL_PLANE / NOT_RH / CHALLENGER`
 Schema: `route_b_execution_control.v2`
 Canonical repo: `/Users/emalam/GitHub/rh_lean_01_2026`
-Current address: `RB-LAMPORT-D0 / D0.7e.5a / WPrimeConsumerAndCalibrationOrientationLock`
+Current address: `RB-IDLE / RB-IDLE-CONTROL / NoSelectedMathematicalTarget`
 
-## Owner autorun override — 2026-07-11
+## Post-D0 closeout control — 2026-08-03
 
-Ылша explicitly authorized Codex to remove the unconditional post-answer
-STOP and drive the recursive Lamport compiler autonomously. The authoritative
-master is:
+Proshka, under the human owner's direct delegation, authorized exactly one
+docs/control-plane transaction. It terminally closed the exhausted source-locked
+D0.7e.5a branch, preserved the independent finite facts and generic Lean
+receivers, and repointed the non-mint CCM package to conditional G3/H2b
+evidence with classification:
 
 ```text
-../routeB_lamport_rh_closure/MASTER_GOAL.md
-../routeB_lamport_rh_closure/STATE.json
+SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY
 ```
 
-Scheduling rule:
+The route is now idle. `RB-IDLE-CONTROL` is a validator sentinel only; it is
+not a theorem or selected mathematical front. The next action requires a
+separate Proshka decision selecting exactly one of G2, G3, G5, or G6. G3 is
+the strongest candidate after closeout but is not selected here. Goal 051/M1
+is not implicitly authorized.
+
+Current scheduling rule:
 
 ```text
 physical unanswered bus goal exists -> execute the smallest NNN first
-no physical unanswered goal          -> execute the first eligible master leaf
-leaf closes                          -> validate, assemble/zoom out, continue
-real mathematical blocker            -> record exact fatal code and pause
+no physical unanswered goal          -> remain RB-IDLE-CONTROL
+separate Proshka target arrives       -> execute only that bounded target
+no separate target                    -> do not begin mathematics
 ```
 
-This is an execution-policy override, not a mathematical override. Bus 009's
-`OVERCLAIM_LIST`, ZEO ambiguity, and missing rGap13 provenance remain open.
-Route B stays `CHALLENGER / NOT_RH`, and D0 object locking does not count as
-closing `PO-0` or ZEO.
+Bus 009's historical verdict, ZEO ambiguity, and missing rGap13 provenance
+remain historical/open facts. The closeout does not close H2b, G3, PO-0, S1,
+or S2. Route B stays `CHALLENGER / NOT_RH`.
 
 Этот файл отвечает на вопрос «как мы идём». Текущий машинный ответ на вопрос
 «где мы сейчас» хранится в `ROUTE_B_EXECUTION_STATE.json` и проверяется
@@ -43,18 +49,29 @@ python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb
 ```text
 GLOBAL MAINLINE: T0-pd -> H-bridge -> H4 -> RH
 ROUTE B: challenger / NOT_RH
-CURRENT: RB-LAMPORT-D0 / D0.7e.5a / WPrimeConsumerAndCalibrationOrientationLock
-CONTRACT: v2 locked; PO-0/ZEO blockers retained, not bypassed as facts
+CURRENT: RB-IDLE / RB-IDLE-CONTROL / NoSelectedMathematicalTarget
+CONTRACT: v2 historical candidate; no mathematical front selected
 BUS: 001..009 closed; active physical goal NONE; next free number 010
-MODE: OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP
-OWNER: R1-R5 locked; D0.7e.5 decomposition canonical; H3e registered OPEN
-CODEX: central nonzero locus and bZeoMul=bCal^(-1) identity proved;
-       T0 found no source; 5b typecheck and 5d migration are PROVED;
-       T1 is partial, T2 input-blocked, two T5 Lean lemmas are proved
-NEXT: owner supplies and ratifies a new non-tautological WPrime/ZEO consumer
-      definition with exact b orientation;
-      do not define WPrime by desired RHS; do not create 010
+MODE: IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET
+D0: terminal historical; D0_7E_WPRIME_CONSUMER_MISSING retained only as history
+CCM: SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY -> G3/H2b conditional evidence
+NEXT: Proshka selects exactly one of G2/G3/G5/G6 in a separate transaction
+GUARDS: Goal 051 not implicitly authorized; Bus 010 VOID; no promotion; NOT_RH
 ```
+
+## Active direct protocol
+
+1. Proshka selects exactly one bounded mathematical target.
+2. Codex checks the source/interface prerequisites for that target.
+3. Codex executes and validates only the authorized target.
+4. No Mythos handoff is required in this direct loop.
+5. No Bus 010, route promotion, or RH claim follows from selection or closure.
+
+## Terminal history — former D0/WPrime control (non-executable)
+
+Everything below this heading is retained for provenance and historical
+architecture only. It must not be read as the current address, next action,
+live dependency, or selected consumer.
 
 The retired D0.3g blockers remain historical warnings, not current stops:
 

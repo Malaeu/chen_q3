@@ -1,6 +1,4 @@
-# Route B Loop Pointer
-
-Superseded by `ROUTE_B_STATE.md` on 2026-07-07.
+# Route B loop pointer
 
 Canonical repo path:
 `/Users/emalam/GitHub/rh_lean_01_2026`
@@ -8,20 +6,23 @@ Canonical repo path:
 Current operational source:
 `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
 
-Method and proof-compiler DAG:
-`q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`
-
-Verified facts/history:
-`q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md`
-
-The old FullLowEigenvectorBlockLedgerAudit loop text is archived at:
-`q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/LOOP_ARCHIVED_dust_era.md`
-
 Current status:
-`RB-0 / PO-0 / RB0_BLOCKED_ZEO_EXPORT_AMBIGUOUS`; physical pairs `001..008`
-closed; no active bus goal; `R13_SOURCE_MISSING`; `NOT_RH / CHALLENGER`.
 
-Hard stop:
-Do not resume any stale gate from the archived loop or `node.md`. The next free
-number `009` is not a selected gate. Only Mythos may create its physical goal;
-until then Codex returns `NO_OPEN_BUS_GOAL / STOP`.
+```text
+IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET
+RB-IDLE / RB-IDLE-CONTROL / NoSelectedMathematicalTarget
+CHALLENGER / NOT_RH
+BUS_010: VOID
+```
+
+`RB-IDLE-CONTROL` is a validator sentinel, not a mathematical goal. No G2,
+G3, G5, or G6 front is selected. Proshka must choose exactly one in a separate
+authorized transaction. Goal 051/M1 is not authorized implicitly.
+
+The former D0.7e.5a source-locked branch is terminal historical with reason
+`D0_7E_WPRIME_CONSUMER_MISSING`; it is not the current machine address. CCM is
+classified `SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY` under conditional
+G3/H2b evidence.
+
+Hard stop: do not resume `node.md`, create Bus 010, begin a mathematical front,
+promote Route B, or claim RH without the separate Proshka target selection.

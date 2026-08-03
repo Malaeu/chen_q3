@@ -1,11 +1,11 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 53,
-  "updated_at": "2026-07-27T15:13:55+02:00",
+  "revision": 54,
+  "updated_at": "2026-08-03T23:57:14+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
-    "d0_status": "BLOCKED_AT_D0_7E_WPRIME_ZEO_CROSSWALK",
+    "d0_status": "LEGACY_D0_7E_5A_BRANCH_TERMINAL_FINITE_FACTS_PRESERVED",
     "public_label": "CONDITIONAL_CLOSURE_PROVED / WITNESS_SUPPLY_OPEN / ROUTE_B_CHALLENGER / NOT_RH",
     "conditional_export_status": "PROVED_MATHEMATICALLY_PARTIAL_LEAN_PIN_C0_GENERIC_ZERO_TRANSFER_PROVED_EXACT_FAMILY_OPEN",
     "forbidden_claims": [
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_IDLE_OWNER_AUTORUN",
+    "canonical_lifecycle_status": "CLOSED_001_009_IDLE_AWAITING_EXPLICIT_PROSHKA_TARGET",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Mythos/Pro source owner",
-    "next_action": "Supply the physical independent WPrime/ZEO consumer and exact b orientation requested by D0_7E_5A_CONSUMER_SOURCE_REQUEST.md; do not define WPrime by the desired RHS and do not create Bus 010"
+    "next_actor": "Proshka route judge",
+    "next_action": "Select exactly one of G2, G3, G5, or G6 in a separate authorized transaction; do not create Bus 010 and do not authorize Goal 051 implicitly"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -156,7 +156,7 @@
     "route_effect": "PORT_CONVENTION_FRICTION_CLOSED_CONTINUATION_BRIDGE_OPEN_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
   },
   "owner_authorization": {
-    "status": "OWNER_AUTHORIZED_AUTORUN",
+    "status": "OWNER_AUTHORIZED_AUTORUN_IDLE_PENDING_EXPLICIT_PROSHKA_TARGET",
     "authorized_at": "2026-07-11T21:14:20+02:00",
     "scope": "MASTER_DAG_LEAF_TRANSACTIONS",
     "physical_bus_preempts": true,
@@ -179,7 +179,7 @@
       "does_not_close_active_leaf": true
     },
     "wprime_candidate_standing_order": {
-      "status": "ACTIVE_OWNER_RATIFIED",
+      "status": "TERMINAL_HISTORICAL_NO_ELIGIBLE_T0_CANDIDATE",
       "scope": "T0_WPRIME_ZEO_SOURCE_CANDIDATES_ONLY",
       "authority": "OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md",
       "owner_utterance": "Ратифицирую OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md — запиши utterance и sha.",
@@ -190,6 +190,20 @@
       "does_not_authorize_definition_minting": true,
       "does_not_prove_any_node": true
     }
+  },
+  "d0_7e_5a_terminal_closeout": {
+    "status": "D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
+    "base_pin": "6af9170d15a38e451a76f8dbf2ad8725d62b6f5f",
+    "historical_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "canonical_artifact": "D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md",
+    "mirror_artifact": "../../../docs/routeB_bus/D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md",
+    "ccm_classification": "SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY",
+    "ccm_repoint": "G3_H2B_CONDITIONAL_EVIDENCE_ONLY",
+    "h2b_closed": false,
+    "route_promotion": false,
+    "rh_claimed": false,
+    "bus_010": "VOID",
+    "goal_051_authorized": false
   },
   "no_stop_sprint": {
     "authority": "CODEX_NOSTOP_SPRINT_2026-07-12.md",
@@ -1291,12 +1305,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "D0.7e.5a",
+    "active_node_id": "RB-IDLE-CONTROL",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP",
-    "candidate_first_leaf_after_release": "D0.7e.5a",
+    "lifecycle": "IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
+    "candidate_first_leaf_after_release": null,
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1337,7 +1351,8 @@
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
       "CONDITIONAL_NEVER_CLOSES_PARENT",
-      "ACTIVE_NODE_IS_UNIQUE_LEAF",
+      "ACTIVE_NODE_IS_UNIQUE_LEAF_WHEN_SELECTED",
+      "IDLE_STATE_HAS_ONLY_CONTROL_SENTINEL_ACTIVE",
       "ACTIVE_PHYSICAL_BUS_IMPLIES_NO_ACTIVE_MASTER_NODE",
       "OWNER_AUTORUN_DOES_NOT_CLOSE_PO0",
       "NO_PARENT_CLOSURE_WITHOUT_PROVED_ASSEMBLY",
@@ -1385,6 +1400,15 @@
     ]
   },
   "nodes": {
+    "RB-IDLE-CONTROL": {
+      "id": "RB-IDLE-CONTROL", "parent_id": null, "kind": "LEAF", "role": "CONTROL_SENTINEL",
+      "statement": "No mathematical front is selected; await a separate explicit Proshka choice of exactly one of G2, G3, G5, or G6",
+      "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
+      "proof_status": "CONTROL_IDLE", "activity": "ACTIVE",
+      "eligibility": {"eligible": false, "reason": "NOT_A_MATHEMATICAL_GOAL"},
+      "validation": "D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
+      "failure_codes": []
+    },
     "R0": {
       "id": "R0",
       "parent_id": null,
@@ -1795,9 +1819,9 @@
       "dependencies": ["D0.3g", "D0.7e.0", "D0.7e.1", "D0.7e.2", "D0.7e.3", "D0.7e.4", "D0.7e.5.0"],
       "ordered_children": ["D0.7e.5a", "D0.7e.5b", "D0.7e.5c", "D0.7e.5d"],
       "assembly_theorem_id": "D0.7e.5e",
-      "proof_status": "BLOCKED", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0.7e.5a_CONSUMER_SOURCE_MISSING"},
-      "validation": "PASS_PARTIAL:validate_d0_7e_5.py;DECOMPOSITION_LOCKED;ACTIVE_CHILD_BLOCKED",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "TERMINAL_SOURCE_LOCKED_BRANCH_EXHAUSTED"},
+      "validation": "TERMINAL_HISTORY:D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
       "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_SLOT_VACUITY", "D0_7E_TAUTOLOGY", "D0_7E_5_ASSEMBLY_GAP"]
     },
     "D0.7e.5.0": {
@@ -1815,12 +1839,12 @@
       "statement": "Locate and pin an independently defined WPrime/ZEO consumer and prove which exact scalar orientation consumes the locked central calibration",
       "dependencies": ["D0.7e.5.0", "D0.7e.2", "D0.7e.3", "D0.7e.4"],
       "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "BLOCKED", "activity": "ACTIVE",
-      "scheduler_marker": "NON_CRITICAL_PENDING_SOFT_2",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "scheduler_marker": "TERMINAL_HISTORY_NOT_SCHEDULABLE",
       "mint_menu_status": "MINT_MENU_FALSIFIED",
       "mint_activated": false,
-      "eligibility": {"eligible": false, "reason": "INDEPENDENT_WPRIME_CONSUMER_SOURCE_NOT_FOUND"},
-      "validation": "STOP:validate_d0_7e_5a.py;PARTIAL_IDENTITIES_LOCKED;SOURCE_REQUIRED",
+      "eligibility": {"eligible": false, "reason": "TERMINAL_SOURCE_LOCKED_BRANCH_EXHAUSTED"},
+      "validation": "TERMINAL_HISTORY:D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
       "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "D0_7E_ZEO_NORMALIZATION_ORIENTATION_MISSING", "D0_7E_TRIALNONZERO_NOT_CENTRAL_NONZERO", "D0_7E_BCAL_ZERO_OR_UNPROVED", "D0_7E_BCAL_BZEO_ALIAS_CONFLICT", "D0_7E_SOURCE_NORMALIZATION_CONFLICT", "D0_7E_SLOT_VACUITY_UNRESOLVED"]
     },
     "D0.7e.5b": {
@@ -1838,9 +1862,9 @@
       "statement": "From the independent consumer and pinned bW orientation prove WPrime^2*DeltaE=abs(bW)^2*lambda*alpha without defining WPrime by this desired identity",
       "dependencies": ["D0.7e.5.0", "D0.7e.5a", "D0.7e.5b", "D0.7e.2", "D0.7e.4"],
       "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0.7e.5a_BLOCKED"},
-      "validation": "INDEPENDENT_CONSUMER_IDENTITY_AND_TAUTOLOGY_AUDIT",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "TERMINAL_WITH_D0_7E_5A"},
+      "validation": "TERMINAL_HISTORY:INDEPENDENT_CONSUMER_IDENTITY_NOT_RECOVERED",
       "failure_codes": ["D0_7E_CONSUMER_IDENTITY_GAP", "D0_7E_SLOT_VACUITY", "D0_7E_TAUTOLOGY", "D0_7E_BCAL_BZEO_ALIAS_CONFLICT"]
     },
     "D0.7e.5d": {
@@ -1858,9 +1882,9 @@
       "statement": "D0.7e.5a AND D0.7e.5b AND D0.7e.5c AND D0.7e.5d IMPLIES D0.7e.5",
       "dependencies": ["D0.7e.5.0", "D0.7e.5a", "D0.7e.5b", "D0.7e.5c", "D0.7e.5d"],
       "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "BLOCKED", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0.7e.5a_AND_D0.7e.5c_OPEN"},
-      "validation": "D0_7E_5_ASSEMBLY_TYPECHECK",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "TERMINAL_CHILDREN_NOT_PROVED"},
+      "validation": "TERMINAL_HISTORY:D0_7E_5_ASSEMBLY_NOT_PROVED",
       "failure_codes": ["D0_7E_5_ASSEMBLY_GAP"]
     },
     "D0.7e.6": {
@@ -2625,9 +2649,9 @@
       "consumes_slot": "D0.7e.5",
       "consumer_identity_dependency": "D0.7e.5c",
       "ordered_children": ["H3e1", "H3e2"], "assembly_theorem_id": "H3e3",
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "H3E2_EXACT_RELATIVE_TRACKING_INPUTS_OPEN"},
-      "validation": "EXACT_WPRIME_TRACKING_AND_ACYCLIC_CONSUMER_AUDIT",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "WPRIME_SPECIFIC_EDGE_TERMINATED_WITH_D0"},
+      "validation": "TERMINAL_HISTORY:WPRIME_SPECIFIC_H3E_EDGE_REMOVED_FROM_ACTIVE_DAG",
       "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "PO_XWALK_RESIDUAL_BRIDGE_DIRECTION_FALSE", "H3E_IB2_LIMINF_MISIDENTIFICATION", "H3E_ABSOLUTE_TO_NORMALIZED_ERROR_GAP", "H3E_BDET_RECIPROCAL_CONTROL_MISSING", "H3E_EXACT_RELATIVE_TRACKING_INPUTS_MISSING", "H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING", "H3E_RELATIVE_RESIDUAL_RATE_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY"]
     },
     "H3e.0": {
@@ -2655,18 +2679,18 @@
       "dependencies": ["D0", "H3a", "H3b", "H3c", "H4b", "H4c", "H3e1"], "ordered_children": [], "assembly_theorem_id": null,
       "external_requirements": ["PO-1/A1", "PO_XWALK_UNIFORM_EVAL", "H3E_RELATIVE_NORMALIZATION_TRANSFER"],
       "consumes_slot": "D0.7e.5", "consumer_identity_dependency": "D0.7e.5c",
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_H3ABC_H4BC_AND_EXACT_RELATIVE_RATES_OPEN"},
-      "validation": "H3E_EXACT_RELATIVE_TRACKING_INSTANTIATION_AUDIT",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "WPRIME_SPECIFIC_EDGE_TERMINATED_WITH_D0"},
+      "validation": "TERMINAL_HISTORY:WPRIME_SPECIFIC_H3E_INSTANTIATION_REMOVED_FROM_ACTIVE_DAG",
       "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "H0_A1_ALPHA_DEFINITION_MISSING", "GROUND_TRIAL_TRACKING_MISSING", "COMPACT_STRIP_EVALUATION_MISSING", "JOINT_N_LAMBDA_QUANTIFIER_MISSING", "TRUE_GAP_LOWER_MISSING", "NORMALIZATION_CONTROL_MISSING", "PO_XWALK_UNIFORM_EVAL", "H3E_EXACT_ABSOLUTE_TRACKING_BOUND_MISSING", "H3E_EXACT_B_TWO_SIDED_INSTANTIATION_MISSING", "H3E_RELATIVE_WPRIME_RATE_MARGIN_MISSING", "H3E_RELATIVE_RESIDUAL_RATE_MISSING", "H3E_SAME_FAMILY_FILTER_MISSING", "H3E_BDET_RECIPROCAL_CONTROL_MISSING", "XI_LIMIT_OBJECT_MISMATCH", "MODEL_GAP_SUBSTITUTION", "D0_7E_TAUTOLOGY", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H3e3": {
       "id": "H3e3", "parent_id": "H3e", "kind": "LEAF", "role": "ASSEMBLY",
       "statement": "H3e.0 AND H3e1 AND H3e2 IMPLIES the exact normalized compact-substrip tracking theorem",
       "dependencies": ["H3e.0", "H3e1", "H3e2"], "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "H3E2_OPEN"},
-      "validation": "H3E_EXACT_NORMALIZED_TRACKING_ASSEMBLY",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "WPRIME_SPECIFIC_EDGE_TERMINATED_WITH_D0"},
+      "validation": "TERMINAL_HISTORY:WPRIME_SPECIFIC_H3E_ASSEMBLY_REMOVED_FROM_ACTIVE_DAG",
       "failure_codes": ["H3E_ASSEMBLY_GAP"]
     },
     "H4": {
@@ -3065,9 +3089,9 @@
       "statement": "Turn exact common-envelope SAFE bounds and an independent WPrime identity into the squared envelope consumed by H4d1 on one cofinal joint filter",
       "dependencies": ["H4d2.0"], "ordered_children": ["H4d2a", "H4d2b"], "assembly_theorem_id": "H4d2c",
       "external_requirements": ["H4_JOINT_FILTER"],
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "H4D2B_EXACT_INPUTS_AND_JOINT_FILTER_OPEN"},
-      "validation": "EXACT_SAFE_RATE_CONSTANTS_AND_FILTER_AUDIT",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "WPRIME_SPECIFIC_EDGE_TERMINATED_WITH_D0"},
+      "validation": "TERMINAL_HISTORY:WPRIME_SPECIFIC_H4D2_EDGE_REMOVED_FROM_ACTIVE_DAG",
       "failure_codes": ["H4_LIMIT_FILTER_UNSELECTED", "H4D_WPRIME_SQUARE_ENVELOPE_MISSING", "H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING", "H4D_EXACT_CONSTANTS_MISSING", "H4_RATE_ASSEMBLY_GAP", "STRICT_RATE_MARGIN_MISSING", "H4D_QB_VALUE_UNPROVED"]
     },
     "H4d2.0": {
@@ -3094,18 +3118,18 @@
       "statement": "Instantiate the exact non-tautological WPrime identity, same-envelope alpha and gap bounds, b constants, nonnegative WPrime branch, strict exponent margin, and one non-bottom cofinal joint filter",
       "dependencies": ["D0.7e.5c", "H4a", "H4b", "H4c"], "ordered_children": [], "assembly_theorem_id": null,
       "external_requirements": ["H4_JOINT_FILTER"],
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "D0_7E_5C_H4ABC_AND_JOINT_FILTER_OPEN"},
-      "validation": "EXACT_SAFE_SQUARE_ENVELOPE_INSTANTIATION_AUDIT",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "WPRIME_SPECIFIC_EDGE_TERMINATED_WITH_D0"},
+      "validation": "TERMINAL_HISTORY:CONCRETE_WPRIME_H4D2_INSTANTIATION_REMOVED_FROM_ACTIVE_DAG",
       "failure_codes": ["D0_7E_WPRIME_CONSUMER_MISSING", "H4_LIMIT_FILTER_UNSELECTED", "H4D_EXACT_CONSTANTS_MISSING", "H4D_QB_VALUE_UNPROVED", "STRICT_RATE_MARGIN_MISSING", "H4D_COFINAL_SCALE_MISSING", "H4D_COFINAL_NONZERO_LOCUS_MISSING", "H4D_WPRIME_NONNEGATIVITY_MISSING", "H4D_COMMON_ENVELOPE_MISMATCH", "LEAN_EXPORT_INTERFACE_GAP"]
     },
     "H4d2c": {
       "id": "H4d2c", "parent_id": "H4d2", "kind": "LEAF", "role": "ASSEMBLY",
       "statement": "H4d2.0 AND H4d2a AND H4d2b IMPLIES the exact SafeBoundsToSquareEnvelope package",
       "dependencies": ["H4d2.0", "H4d2a", "H4d2b"], "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "OPEN", "activity": "INACTIVE",
-      "eligibility": {"eligible": false, "reason": "H4D2B_OPEN"},
-      "validation": "H4D2_EXACT_SQUARE_ENVELOPE_ASSEMBLY_TYPECHECK",
+      "proof_status": "TERMINAL_CLOSED_UNPROVED", "activity": "TERMINAL_HISTORY",
+      "eligibility": {"eligible": false, "reason": "WPRIME_SPECIFIC_EDGE_TERMINATED_WITH_D0"},
+      "validation": "TERMINAL_HISTORY:WPRIME_SPECIFIC_H4D2_ASSEMBLY_REMOVED_FROM_ACTIVE_DAG",
       "failure_codes": ["H4D_EXACT_SQUARE_ENVELOPE_INSTANTIATION_MISSING"]
     },
     "H4d3": {
@@ -3523,12 +3547,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
-    "mode": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP",
-    "current_leaf": "D0.7e.5a",
-    "first_math_leaf_after_release": "D0.7e.5a"
+    "current_stop": "AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
+    "mode": "IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
+    "current_leaf": "RB-IDLE-CONTROL",
+    "first_math_leaf_after_release": null
   },
   "transition_log": [
+    {
+      "at": "2026-08-03T23:57:14+02:00",
+      "event": "D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
+      "progress_class": "CONTROL_PLANE_REPRESENTATION_PROGRESS",
+      "result": "D0_SOURCE_LOCKED_BRANCH_TERMINAL;CCM_SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY_REPOINTED_TO_G3_H2B_EVIDENCE;ROUTE_IDLE_AWAITING_PROSHKA_TARGET",
+      "honesty": "FINITE_FACTS_AND_GENERIC_RECEIVERS_PRESERVED_H2B_OPEN_NO_GOAL051_NO_BUS010_NO_ROUTE_PROMOTION_NOT_RH"
+    },
     {
       "at": "2026-07-11T20:56:56+02:00",
       "event": "PROSHKA_RECURSIVE_COMPILER_REVIEW_INTEGRATED",

@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-07-27T01:14:12+02:00",
+  "updated_at": "2026-08-03T23:57:14+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,18 +10,27 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP",
+  "operational_status": "IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
   "current": {
-    "stage_id": "RB-LAMPORT-D0",
-    "contract_obligation": "D0.7e.5a",
-    "name": "WPrimeConsumerAndCalibrationOrientationLock",
-    "status": "BLOCKED_CONSUMER_SOURCE_MISSING_T0_CORPUS_EXHAUSTED",
-    "stop_code": "D0_7E_WPRIME_CONSUMER_MISSING",
+    "stage_id": "RB-IDLE",
+    "contract_obligation": "RB-IDLE-CONTROL",
+    "name": "NoSelectedMathematicalTarget",
+    "status": "IDLE_NO_MATHEMATICAL_TARGET_SELECTED",
+    "stop_code": "AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Route owner / Mythos definition owner",
-    "next_action": "Supply and ratify a new non-tautological WPrime/ZEO consumer definition plus exact b orientation; T0 found no independent source candidate and the active standing order therefore cannot close 5a; do not create Bus 010.",
-    "exit_codes": [
+    "next_required_actor": "Proshka route judge",
+    "next_action": "Select exactly one of G2, G3, G5, or G6 in a separate authorized transaction; G3 is the strongest post-closeout candidate but is not selected; do not create Bus 010 or authorize Goal 051 implicitly.",
+    "ccm_classification": "SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY",
+    "ccm_repoint": "G3_H2B_CONDITIONAL_EVIDENCE_ONLY",
+    "h2b_closed": false,
+    "goal_051_authorized": false,
+    "route_promotion": false,
+    "rh_claimed": false
+  },
+  "terminal_history": {
+    "d0_7e_5a": {
+      "historical_exit_codes": [
       "CONTRACT_V2_LOCKED",
       "STATE_LOOP_SYNCED",
       "D0_3_PARTIAL_OPERATOR_REGISTRY_LOCKED",
@@ -131,7 +140,7 @@
       ,"GENERIC_FRONTIER_EXHAUSTED_REV41"
       ,"ASSEMBLY_ONLY_NO_EXACT_BLOCK_DECOMPOSITION"
     ],
-    "kill_codes": [
+      "historical_kill_codes": [
       "CONTRACT_DEPENDENCY_GAP",
       "SAFE_RATE_NOT_SUFFICIENT",
       "SOURCE_POINTER_MISSING",
@@ -203,7 +212,8 @@
       ,"H2B2B_EXACT_CONTINUOUS_REMOVABLE_FACTOR_INSTANTIATION_MISSING"
       ,"H2B2B2_EXACT_WEIL_POSITIVITY_AND_RADICAL_INSTANTIATION_MISSING"
       ,"H2B2B2_EXACT_QUOTIENT_OBJECT_TRANSPORT_MISSING"
-    ]
+      ]
+    }
   },
   "bus": {
     "status": "IDLE_WAITING_FOR_GOAL",
@@ -242,7 +252,7 @@
     "status": "CONTRACT_LOCKED_PO0_BLOCKERS_RETAINED_OWNER_AUTORUN_OBJECT_LOCK",
     "safe_rate_condition": "r_delta - r_alpha > 2*q_b + 1"
   },
-  "waiting_reasons": [
+  "historical_waiting_reasons": [
     {
       "code": "ZEO_EXPORT_AMBIGUOUS",
       "class": "PO0_PROVENANCE_BLOCKER",
@@ -346,6 +356,14 @@
       "detail": "The generic Temple half-gap plus residual-square/true-gap envelope arithmetic is Lean-proved with explicit C_alpha and r_alpha and a live one-envelope falsifier, but the canonical alpha/eigenbasis/residual variance/half-gap/squared residual/gap-floor same-family instantiation remains open."
     }
   ],
+  "waiting_reasons": [
+    {
+      "code": "AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
+      "class": "CONTROL_PLANE_IDLE",
+      "owner": "Proshka route judge",
+      "detail": "The D0.7e.5a source-locked branch is terminal historical. A separate decision must select exactly one of G2, G3, G5, or G6. No front, Goal 051, or Bus 010 is selected."
+    }
+  ],
   "guardrails": {
     "not_rh": true,
     "phase2_allowed": false,
@@ -354,11 +372,11 @@
     "qW_formula_changed": false,
     "packet_definition_changed": false,
     "codex_may_create_next_goal": false,
-    "owner_autorun_master_dag": true,
-    "zero_compute_until_goal_scope_says_otherwise": false
+    "owner_autorun_master_dag": false,
+    "zero_compute_until_goal_scope_says_otherwise": true
   },
   "owner_authorization": {
-    "mode": "OWNER_AUTHORIZED_AUTORUN",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_IDLE_PENDING_EXPLICIT_PROSHKA_TARGET",
     "authorized_at": "2026-07-11T21:14:20+02:00",
     "authorized_by": "Ылша",
     "instruction": "Remove the post-answer STOP, unlock the recursive compiler, start it, and keep iterating.",
@@ -369,12 +387,12 @@
     "bprime_ratification": {
       "status": "OWNER_RATIFICATION_R1_R5_LOCKED",
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_BPRIME_OWNER_RATIFICATION.md",
-      "canonical_active_leaf": "D0.7e.5a",
-      "math_stop_retained": "D0_7E_WPRIME_CONSUMER_MISSING",
-      "h3e_status": "OPEN_INACTIVE"
+      "canonical_active_leaf": null,
+      "terminal_historical_stop": "D0_7E_WPRIME_CONSUMER_MISSING",
+      "h3e_status": "WPRIME_SPECIFIC_EDGE_TERMINAL_HISTORY_GENERIC_RECEIVER_PRESERVED"
     },
     "wprime_candidate_standing_order": {
-      "status": "ACTIVE_OWNER_RATIFIED_NO_ELIGIBLE_T0_CANDIDATE",
+      "status": "TERMINAL_HISTORICAL_NO_ELIGIBLE_T0_CANDIDATE",
       "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/OWNER_STANDING_ORDER_RATIFICATION_2026-07-12.md",
       "ratified_order_sha256": "5bf99950fbd6fdca6f1ebae786f98098ac83a0b024e3a04f602b19a24295695b",
       "activation_file_sha256": "d3ef3cbfe4e1ab4099bb698e46c6728b9f188a6f3bf7d7ded5eaf97931846097"

@@ -14,6 +14,26 @@ facts/history. `loop_state.json` is a compatibility mirror only. The stale twin
 path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this
 request state.
 
+## CURRENT OPERATIONAL STATUS — 2026-08-03
+
+```text
+IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET
+RB-IDLE / RB-IDLE-CONTROL / NoSelectedMathematicalTarget
+CHALLENGER / NOT_RH
+BUS_010: VOID
+```
+
+`RB-IDLE-CONTROL` is a non-mathematical validator sentinel. No G2, G3, G5, or
+G6 front is selected. Proshka is the next route judge and must choose exactly
+one front in a separate transaction. Goal 051/M1 is not implicitly authorized.
+
+The former source-locked D0.7e.5a branch is terminal historical at base pin
+`6af9170d15a38e451a76f8dbf2ad8725d62b6f5f`; its historical reason is
+`D0_7E_WPRIME_CONSUMER_MISSING`, not the current machine address. The CCM
+operator/determinant/real-zero package is classified exactly
+`SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY` and repointed only to conditional
+G3/H2b evidence. H2b, G3, and `Theorem510RealZeroBridge` remain open.
+
 ## LOCAL DIAGNOSTIC SUPPORT
 
 - Previous PortableKChannel_v1 Plancherel is voided as `VOID_TAUTOLOGICAL_JUDGE`.
@@ -86,7 +106,10 @@ Header check:
   guard for future gates: RH-conditional imports never enter the concluding
   chain.
 
-## NEXT STEP
+## TERMINAL HISTORY — FORMER D0.7e.5a NEXT STEP (NON-EXECUTABLE)
+
+The following section is preserved as historical evidence. It is not the
+current leaf, next action, live dependency, or selected consumer.
 
 The owner-authorized recursive compiler has proved D0.1--D0.6 and accepted the
 finite central detector definition from immutable `D0_7E_OWNER_INPUT.md`.

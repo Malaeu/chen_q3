@@ -1,81 +1,64 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-07-12 12:27 CEST
-Status: `OWNER_AUTHORIZED_AUTORUN_PAUSED_D0_7E_5A_WPRIME_CONSUMER_SOURCE_GAP / D0.7e.5a_BLOCKED / NOT_RH / CHALLENGER`
+Updated: 2026-08-03 23:57 CEST
 
-Этот план не переопределяет корневой `IMPLEMENTATION_PLAN.md` и не повышает
-Route B над официальным H-bridge. Полная лестница находится в
-`ROUTE_B_EXECUTION_CONTROL.md`; текущий машинный адрес — в
-`ROUTE_B_EXECUTION_STATE.json`.
+Status: `IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET / RB-IDLE-CONTROL / NOT_RH / CHALLENGER`
 
-## Queue rules
+This request-local plan does not override the root `IMPLEMENTATION_PLAN.md` or
+promote Route B above the H-bridge mainline.
 
-- Ровно один физический bus goal может быть `ACTIVE`.
-- Если goal без answer нет, в `MANUAL_BUS` Codex ждёт; в текущем
-  `OWNER_AUTHORIZED_AUTORUN` он выбирает первый допустимый master leaf.
-- Codex берёт только наименьший `NNN` без matching answer.
-- Одна физическая bus-транзакция закрывает ровно один goal. После валидации
-  `MANUAL_BUS` останавливается, а owner autorun возвращается к master DAG.
-- `plan-only`, `read-only`, `ZERO compute` запрещают исполнение и новые данные.
-- Новый goal создаёт только Mythos.
+## Current action
 
-## ACTIVE
+No mathematical front is selected. `RB-IDLE-CONTROL` is a non-mathematical
+sentinel required by the existing state validator; it carries no theorem or
+proof obligation.
 
-`D0.7e.5a WPrimeConsumerAndCalibrationOrientationLock — canonical ACTIVE leaf BLOCKED; T0 corpus exhausted with no independent consumer; 5b and 5d proved narrowly; owner R1-R5 and the standing order are locked`
+The next authorized actor is the Proshka route judge. A separate transaction
+must select exactly one of:
 
-Физическая шина: `001..009` закрыты; unanswered goal отсутствует; `010` —
-только свободный номер и не создаётся Codex.
+1. `G2` — H2a / `SimpleEvenLowestQWGround`.
+2. `G3` — concrete `Theorem510RealZeroBridge` supplier.
+3. `G5` — concrete S1/Montel family supply.
+4. `G6` — full S2 identification wall.
 
-## WAITING
+G3 is the strongest candidate after the closeout, but it is not selected by
+this document. Goal 051/M1 is not implicitly authorized.
 
-`RB-0 | obligation=PO-0 | status=OPEN_AFTER_NEGATIVE_BUS009 | owner=Mythos_then_Codex | physical_goal=ABSENT | next_free_nnn=010 | current=CONTRACT_V2_LOCKED + STATE_LOOP_SYNCED + OVERCLAIM_LIST + OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS + R13_SOURCE_MISSING | verify=python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check | done_when=PROVENANCE_LOCKED and PO-0 closed | scheduler_effect=does_not_block_independent_owner-authorized master leaves`
+## Physical bus
 
-## Current master transaction
+- `001..009` are closed.
+- No unanswered physical goal exists.
+- `010` is only the next free number.
+- `BUS_010: VOID`.
+- Codex may not create a bus goal.
 
-`D0.7a..D0.7d` source-lock `delta_(m,N)`, dependent ground/trial and boundary
-normalizations, scalar/phase conventions, and the `b` namespace firewall.
-Immutable owner input has now passed the finite-definition audit:
-`bDet=Fhat(0)/Xi(0)=sqrt(L)c0/zeta(1/2)` on `TrialNonzero`, with exact
-reflection `Fplus=T_m(k1)(-z)`; `G=Fhat/bDet` is defined only on
-`BDetNonzero`. The input does not supply a legal `N(lambda)` because `kappa` is
-unspecified.
+## D0 terminal closeout
 
-The current canonical leaf is `D0.7e.5a`. The independent 5a audit, promoted
-to the canonical child by owner-ratified DAG authority, proves that the central calibration
-ratio and the normalizing multiplier are inverses:
-`bCal=bDet=Fhat(0)/Xi(0)` and `bZeoMul=bCal^(-1)` on
-`CentralValueNonzero=BDetNonzero`. `TrialNonzero` alone does not imply this
-nonzero locus.
+The source-locked D0.7e.5a branch is terminal historical at base pin
+`6af9170d15a38e451a76f8dbf2ad8725d62b6f5f`.
 
-No independent `FZeo` or `WPrime` consumer was found by the completed T0 corpus scan.
-The historical formula is an `OPEN_CRITICAL` sketch, and the Option-B owner
-file defines the desired right-hand side instead of recovering an independent
-consumer. Owner R1--R5 is now locked, the B-prime nested decomposition is
-canonical, and `H3e` is registered OPEN/INACTIVE. The next legal input is the
-owner-ratified new non-tautological consumer definition requested by
-`D0_7E_5A_CONSUMER_SOURCE_REQUEST.md`, including whether its named `b` is
-`bCal`, `bCal^(-1)`, or another proved crosswalked scalar. H3c/H4 are not
-imported into D0; `CONDITIONAL` cannot close any parent; no Bus 010 is created
-by Codex.
+```text
+historical stop: D0_7E_WPRIME_CONSUMER_MISSING
+materialization: D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED
+CCM classification: SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY
+CCM destination: G3/H2b conditional evidence only
+```
 
-Completed no-stop sprint ledger:
+The historical D0/WPrime/FZeo/equation-5c edge is not a live dependency.
+Finite calibration facts and the generic `NormalizedTrackingRateTransfer` and
+`SafeBoundsToSquareEnvelope` Lean receivers remain preserved.
 
-- T0 `BLOCKED`: `NO_INDEPENDENT_WPRIME_CONSUMER_SOURCE_AVAILABLE`.
-- T1 `PARTIAL`: all available judges pass; `(17,120)` persisted vector missing.
-- T2 `BLOCKED`: `H3E_T2_PINNED_INPUT_SET_INCOMPLETE`.
-- T3 `CLOSED`: `D0_7E_5B_TYPED_INTERFACE_LOCKED`.
-- T4 `CLOSED`: `D0_7E_XWALK_MIGRATION_LOCKED`; H3e remains OPEN.
-- T5 `PARTIAL`: two Lean lemmas proved; eta-continuation bridge missing.
+## Execution rule
 
-## Physical Route B candidates — not selected
+1. Physical unanswered bus goal, if one ever appears, has precedence.
+2. Otherwise remain idle until Proshka explicitly selects one mathematical
+   front in a separate authorized transaction.
+3. Execute only that bounded target and validate it independently.
+4. Do not create Bus 010, authorize Goal 051 implicitly, promote Route B, or
+   claim RH.
 
-Эти строки — только dependency view. Ни одна из них не становится физической
-задачей без immutable goal от Mythos.
+Validation:
 
-1. `RB-1 / PO-1 / ExactDetectorDictionary`
-2. `RB-2 / PO-2 / ParityInstrumentLock`
-3. `RB-3 / PO-11 / ZEOExportSoundness`
-4. `RB-4 / PO-12a / SafeFeasibility`
-
-Порядок внутри уровня 1 выбирается после результата `RB-0`; дальнейшие стадии
-`RB-5..RB-10` перечислены только в execution control.
+```bash
+python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
+```

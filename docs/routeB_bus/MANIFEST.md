@@ -1,10 +1,11 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 267 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
-| `MAP.md` | Route B project navigator (LIVE — updated each move, SHA advisory) | `8064def22bb8c25b3c4665454260b4654e2dac0c237728a3c6a09c018e5f8442` |
+| `MAP.md` | Route B project navigator (LIVE — byte-unchanged by D0 closeout; SHA advisory refreshed) | `e47fc9f44ea13a77bb0653a533a6da3ace2d51bf093f6115054fd09a983e658a` |
+| `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md` | D0 terminal closeout mirror and conditional G3/H2b repoint ledger | `b6aecd0565a7c08627317b4c2973023298d3b4a9d3fe1dc272ecf3e058e35784` |
 | `001_ktrial_stage1.answer.md` | answer | `6714aab6f34bc419e32e20a68c59a7f9f685669496f3dffe7c1c9e55f37658b5` |
 | `002_ktrial_stage2.answer.md` | answer | `eafbf7d6c059ac4021d79818d51085a6d25227482d21eeedb7d5e90d4d9dd613` |
 | `003_ktrial_stage3.answer.md` | answer | `a02e03342d8f1f1163083d031b48d36f0b34ffe9f7c85819c02121699574257b` |
@@ -321,6 +322,24 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 
 `MANIFEST.md` is excluded from its own hash table.
+
+## D0 terminal closeout control-plane hashes
+
+Paths below are repository-root relative. They are the complete non-manifest
+write set for `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED`.
+
+| Repository path | SHA-256 |
+|---|---|
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md` | `b6aecd0565a7c08627317b4c2973023298d3b4a9d3fe1dc272ecf3e058e35784` |
+| `docs/routeB_bus/D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md` | `b6aecd0565a7c08627317b4c2973023298d3b4a9d3fe1dc272ecf3e058e35784` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/STATE.json` | `97f1bdb252f6fd9c88f02d68934d76380906a0e4c576f829e7a006a8aa012ee7` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json` | `469ac707ab643e113b90ad8bdc59aff361935acae8add0cc874a53f2e42c06df` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/loop_state.json` | `4145d4f1161b22242add484ae9d28d27ccbfb3a416e3e77677da02b44d1cbda1` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | `df29d3b2c5a181b118c90338ba2f813093551850c5d8f785db53e445fcf94fde` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/IMPLEMENTATION_PLAN.md` | `69255e202bb32defb0e646cf1ec83af9ae0543c04713de2b245de55c2db251b6` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md` | `abe7e3efc8b1473d58c344df15c904948e1bcf6d2a17972006ed72ddfb2ddbfb` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/LOOP.md` | `51642e628fe872d776f4d87b1dae8738e338f1c732f6848e907e1c7e29b95285` |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/node.md` | `affe0af129024f80b400690974f853ad25ab07613832496692d456a712f2a5a1` |
 | `proshka/RULE_NAMING_DISAMBIGUATION_2026-07-31.md` | control-plane rule disambiguation (Rule A/B) | `36dc61d2d756a8c94214eb210ddc698d9dee70017f62e66e4713e92b563bc5aa` |
 | `proshka/PROSHKA_VERDICT_GOAL040_RATIFIED_PENDING_PIN_2026-07-31.md` | Proshka verdict/source review | `cd08c7ba22622f9846b2355c87f05ddf75c9bf8b22734c51019fa39c8b6c2542` |
 | `proshka/PROSHKA_VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026-07-31.md` | Proshka verdict/source review | `220071ec09623cd210dbb553b3a54feff5ee6507067b968e2a3e00e05769b96f` |

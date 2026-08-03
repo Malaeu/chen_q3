@@ -9,8 +9,23 @@
 - `ROUTE_B_EXECUTION_CONTROL.md`;
 - физический минимальный `bus/NNN_*.goal.md` без matching answer.
 
-Если такого goal нет, вернуть `NO_OPEN_BUS_GOAL / STOP`. Codex не создаёт и не
-выбирает следующий goal. Ниже сохранён архивный spec только для provenance.
+Текущий машинный статус:
+
+```text
+IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET
+RB-IDLE / RB-IDLE-CONTROL / NoSelectedMathematicalTarget
+BUS_010: VOID
+```
+
+Если физического goal нет, оставаться в `RB-IDLE-CONTROL` до отдельного
+решения Proshka, выбирающего ровно один из G2/G3/G5/G6. `RB-IDLE-CONTROL` —
+не математический goal. Codex не создаёт Bus 010, не авторизует Goal 051
+неявно и не возобновляет старый spec ниже.
+
+Бывшая ветка D0.7e.5a закрыта терминально с исторической причиной
+`D0_7E_WPRIME_CONSUMER_MISSING`. CCM-класс —
+`SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY`, только conditional G3/H2b
+evidence. Ниже сохранён архивный spec только для provenance.
 
 ---
 
