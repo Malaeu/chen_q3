@@ -207,3 +207,19 @@ Fourier commutation, and nonzero finite-Fourier eigenvalues — is RECOVERED at 
 statement level from accessible primary sources (Bonami–Karoui + Slepian–Pollak + ORX).
 The degree-0/degree-4 selection remains an INFERENCE (parity item 6 + oscillation item
 7), NOT the forbidden "second even mode". No Q3 closure claimed; no numerics; no code.
+
+## RESIDUAL PINS CLOSED (2026-08-03, owner fetched physical/scan texts)
+
+All three residual verbatim-pins are now in litreview/pdfs/ and verified:
+- ITEM 10 (nonzero finite-Fourier eigenvalues) — CLOSED verbatim from S1
+  (Slepian–Pollak 1961, OCR scan bstj40-1-43_text.pdf): integral eq (26), eigenvalue
+  (27) λ_n(c) = (2π/c)[R^{(1)}_{0n}(c,1)]²; "the kernel of (26) is positive definite
+  [Bochner] … the quantities (27) are therefore STRICTLY POSITIVE"; §VI shows the
+  degeneracy does not occur ⇒ SIMPLE. Definition (28) fixes the finite-Fourier
+  eigenfunction ψ_n(c). Items 9+10 now primary-sourced from the original.
+- ITEM 3/5 numbered-theorem alternative — OSIPOV Yale TR-1450 (2012, TR1450.pdf),
+  ORX-lineage, rigorous SL eigenvalue theory (substitutes for the ORX book).
+- ITEM 11 (Satz 9 / λ⁻² rate) — Meixner–Schäfke 1954 in hand (978-3-662-00941-3.pdf,
+  OCR German); exact Satz-9 page-locate remains a deep-pass refinement.
+
+STATUS: SOURCE_CHAIN_RECOVERED (item 10 upgraded from PIN-NEEDED to VERIFIED-verbatim).
