@@ -154,3 +154,16 @@ Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in
 | RODGERS-TAO-DBN-2021 | Rodgers, Tao, "The de Bruijn–Newman constant is non-negative", Forum Math. Pi 8 (2020) e6 | arXiv:1801.05914 | `pdfs/1801.05914.pdf` | HAVE ✓ | heat-flow / ξ evolution — Q3 heat-kernel layer (A1' density) |
 | POLYMATH-DBN-2019 | Polymath, "Effective approximation of heat flow evolution of the Riemann ξ…", Res. Math. Sci. 6 (2019) 31 | doi:10.1007/s40687-019-0193-1 | — | OA (owner) | heat-flow ξ approximation — heat layer |
 | GUTH-MAYNARD-2024 | Guth, Maynard, "New large value estimates for Dirichlet polynomials", Ann. Math. 2024 | arXiv:2405.20552 | `pdfs/2405.20552.pdf` | HAVE ✓ | Dirichlet large values — RH_TRICK_ATLAS card 3 |
+
+## Part 4 — collected book PDFs (2026-08-03) + attached to Zotero
+
+| Key | Bibliographic identity | Local PDF | In Zotero | USED FOR |
+|---|---|---|---|---|
+| HORN-JOHNSON-2013 | Horn, Johnson, "Matrix analysis", 2nd ed., CUP 2013 | `pdfs/horn_johnson_matrix_analysis_2013.pdf` | attached (4BVIQ9IL) | **M1** matrix-determinant lemma, Hermitian spectrum |
+| CONNES-MARCOLLI-2008 | Connes, Marcolli, "Noncommutative geometry, quantum fields and motives", AMS 2008 | `pdfs/connes_marcolli_ncg.pdf` | attached (4JEG5BAC) | NCG/zeta background |
+| TITCHMARSH-1986 | Titchmarsh (Heath-Brown), "The theory of the Riemann zeta-function", 2nd ed. | `pdfs/titchmarsh_zeta.pdf` | attached (XLAGXGTZ) | ξ/zeros — ClassicalXiInterface |
+| MATHLIB-PDF | mathlib, "The Lean mathematical library" | `pdfs/1910.09336.pdf` | attached (P7BC5LDN) | Lean/Mathlib API |
+| TOEPLITZ-1911-PDF | Toeplitz, "Zur Theorie der quadratischen und bilinearen Formen…", 1911 | `pdfs/toeplitz_1911.pdf` | in Zotero (MS8BZUH5) | **M1/H2b** Toeplitz-forms foundation |
+| BOTTCHER-SILBERMANN-PDF | Böttcher, Silbermann, "Large truncated Toeplitz matrices", 1999 | `pdfs/bottcher_silbermann_1999.pdf` | in Zotero (NNPBIU32) | **C_SB** / truncated Toeplitz — STEP34/H2b |
+| ARONSZAJN-1950-PDF | Aronszajn, "Theory of reproducing kernels", 1950 | `pdfs/aronszajn_1950.pdf` | in Zotero (PMKIIXRV) | RKHS foundation |
+| BERLINET-2004-PDF | Berlinet, Thomas-Agnan, "RKHS in probability and statistics", 2004 | `pdfs/berlinet_thomas_agnan_2004.pdf` | in Zotero (QEZAGXJ6) | RKHS |

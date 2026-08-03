@@ -7,7 +7,11 @@ Started with 13 Riemann items lacking a PDF. Fetched from OA / author / universi
 - [2008] Connes, Marcolli, "Noncommutative geometry, quantum fields and motives" — author page (Caltech/Marcolli, coll-55.pdf) → pdfs/connes_marcolli_ncg.pdf
 - [1986] Titchmarsh (Heath-Brown), "The theory of the Riemann zeta-function" — Rutgers .edu (Zeilberger course) → pdfs/titchmarsh_zeta.pdf
 
-## 🔗 REMAINING 9 books — direct legit links (owner: fetch via Uni proxy / library / archive.org borrow)
+## ✓ ATTACHED to Zotero this pass
+- Horn-Johnson Matrix Analysis (4BVIQ9IL), Connes-Marcolli NCG (4JEG5BAC), Titchmarsh (XLAGXGTZ), mathlib (P7BC5LDN) — PDFs attached via web API + in repo pdfs/.
+- Toeplitz 1911, Böttcher-Silbermann, Aronszajn, Berlinet — already in your Zotero + now copied to repo pdfs/.
+
+## 🔗 STILL MISSING — 8 books (owner: Uni proxy / library / archive.org) — direct legit links (owner: fetch via Uni proxy / library / archive.org borrow)
 Piracy mirrors (scribd/booksfree/vdoc/epdf) deliberately NOT listed.
 
 | Book | Best legit source | Note |
