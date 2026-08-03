@@ -25,6 +25,38 @@ HermitianDeterminantRealZeros.lean:31) but it demands a GENUINELY Hermitian matr
 (`hM : M.IsHermitian`). CvS's D is NOT Hermitian in the standard inner product — it is
 self-adjoint w.r.t. Q. M1 bridges that gap.
 
+## SCOPE BOUNDARY — what closing 051 does NOT do (Mythos-audited 2026-08-03)
+
+Two corrections pinned by the Mythos verification channel; the ladder must NOT overclaim:
+
+- **051 = M1 only** (welds β4⊗β8d). The abstract CONDITIONAL H2b-lemma = M1→M2→M3
+  (bridge §6 verdict), NOT M1 alone. And even M1→M2→M3→M4 does NOT instantiate on the
+  real CvS matrix: an extra **M0 layer** is required — build Q of form (11), DERIVE the
+  commutator β2 (`DQ−QD=|β⟩⟨η|−|η⟩⟨β|`) and β3 (`QDξ=−β`) instead of assuming them as
+  hypotheses (`hcomm`, `hTDxi`), and construct the γ-involution β1 (currently MISSING,
+  attached to NO M-group). Honest chain: M0 (instantiate) → M1→M2→M3 (abstract conditional
+  lemma) → [M4 for the full Fourier/Hurwitz corollary Thm 6.1].
+- **Closing H2b narrows the H2-BRANCH, not all of RH.** The roof Main is an abstract DAG
+  with five supply nodes (supply_H1, supply_H2a, supply_anchor, supply_S1, supply_S2), all
+  POISONED to the Pstar layer; `realZeroTheorem`/`RoofGateA` legal only after
+  `H2bTransformLayer`; the α-Gate stays the RH-equivalent core; route = CHALLENGER/NOT_RH,
+  Bus 010 VOID. H2b (once built) discharges the H2-branch down to H2a; H2a (SIMPLE_EVEN)
+  + C3-B remain the open frontier (open for Connes too).
+
+## PRE-VERIFICATION (Mythos channel, 2026-08-03) — Proshka builds on top, not from scratch
+
+This goal already survived one adversarial channel before reaching Proshka:
+- **Step-3 Hermitian algebra CONFIRMED**: S²D=DᴴS² ⇒ SDS⁻¹=(SDS⁻¹)ᴴ (uses Sᴴ=S, S inv).
+- **K1 numeric falsifier PASS**: Q PosDef + D Q-self-adjoint ⇒ max|Im λ|=1.4e-17, H=SDS⁻¹
+  Hermitian to 2.6e-15, spectra match to 7.2e-16. Planted violation: Q indefinite (inertia
+  +1/−6) at same Q-self-adjointness ⇒ |Im λ| up to 0.29, seen 5/5 seeds. PosDef is the
+  load-bearing hypothesis — cannot be weakened.
+- **R9 killed the parity-only shortcut**: Hfam(z)=z²+1/16 has simple/even data but non-real
+  zeros ⇒ the determinant mechanism M1 rides is the correct cornerstone (parity alone is
+  provably insufficient).
+Proshka: your kill-pass (questions 1–5 below) starts from these as GIVEN; attack the
+M2/M3/M0 coupling and the exact self-adjointness convention, not the already-burned Step-3.
+
 ## TARGET THEOREM (to formalize; Proshka may sharpen the statement)
 
 ```lean
