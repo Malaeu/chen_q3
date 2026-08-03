@@ -49077,9 +49077,10 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Route firewall remains unchanged: `CHALLENGER / NOT_RH`, physical Bus
   `001..009` closed, Bus 010 void, and the independent D0.7e.5a WPrime source
   pause is not discharged by PSWF work.
-- Proshka review is pending on the ODE-versus-integral-operator route and the
-  exact first theorem shape; no Aristotle request is authorized until that
-  shape is self-contained.
+- Proshka selected the finite-Fourier/integral-operator route as the
+  source-facing contract.  The Sturm--Liouville route remains a possible
+  existence backend but is not the first formal node; an interface-only record
+  is rejected as closure.
 - `Q3/Proofs/RouteB/ProlateSourceRegularity.lean` now materializes the exact
   plus-sign finite-Fourier kernel and its interval action under the repository
   convention.  The zero-frequency eigenrelation recovers the existing
@@ -49102,3 +49103,25 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `LIPSCHITZ` leaf.  It does not construct or select PSWF modes, prove their
   eigenrelations/nonzero eigenvalues, discharge D0.7e.5a, promote Route B, or
   authorize Bus 010.
+- The Proshka-selected B0 follow-up is now also closed locally in
+  `Q3/Proofs/RouteB/ProlateFiniteFourierRegularity.lean`.
+  `finiteFourierEigenRepresentative` canonically chooses
+  `chi^-1 * finiteFourierAction`, and
+  `finiteFourier_aeEigenfunction_lipschitzRepresentative` proves that it is
+  Lipschitz on the full source interval and agrees a.e. there with any
+  interval-integrable a.e. eigenfunction for a nonzero real eigenvalue.
+- This representative theorem is stronger at the future spectral interface
+  than the pointwise leaf: an L2 eigenclass need only supply its a.e.
+  eigenrelation.  No pointwise representative is smuggled into the existence
+  theorem.
+- Direct Lean and the 7745-job target build pass; the full Q3 build remains
+  7817/7817, `q3_check` is `ok`, the taint scan is empty, and both new
+  declarations use exactly `[propext, Classical.choice, Quot.sound]`.  Both
+  declarations are recorded as `proven` in the proof DB; Aristotle was not
+  needed because the existing kernel estimate made the proof immediate.
+- Verdict: `FINITE_FOURIER_EIGENFUNCTION_LIPSCHITZ_REPRESENTATIVE_PROVED`.
+  The remaining exact wall is now
+  `SOURCE_LOCKED_PSWF_EIGENPAIR_EXISTENCE_AND_INDEX_SELECTION_MISSING`:
+  construct/select the exact even `h0 <-> chi0` and `h4 <-> chi2` eigenpairs,
+  including nonzero eigenvalues, normalization, phase, integrability, and the
+  stored support data.

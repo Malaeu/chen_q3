@@ -227,3 +227,31 @@ discharge the independent D0.7e.5a WPrime source pause, and makes no concrete
 trial, RH, or Bus 010 claim.  Route B remains `CHALLENGER / NOT_RH`; physical
 Bus 010 remains void.  No Aristotle request is opened because the remaining
 existence/selection target is not self-contained in the current Lean library.
+
+### B0 a.e. eigenrepresentative closure
+
+Proshka selected the finite-Fourier/integral-operator route as the
+source-facing contract and named the a.e. eigenrepresentative as the first
+self-contained B0 gate.  That gate is now closed locally in
+`Q3/Proofs/RouteB/ProlateFiniteFourierRegularity.lean`.
+
+`finiteFourierEigenRepresentative` defines the canonical representative
+`chi^-1 * finiteFourierAction`.  Under `0 <= lambda`, `chi != 0`, interval
+integrability, and an a.e. finite-Fourier eigenrelation on the source interval,
+`finiteFourier_aeEigenfunction_lipschitzRepresentative` proves both:
+
+- `LipschitzOnWith` for that representative on `Icc (-lambda) lambda`;
+- a.e. equality of the representative with the supplied eigenfunction on the
+  restricted volume measure.
+
+The target build passes 7745 jobs, the full Q3 build passes 7817 jobs,
+`q3_check` is `ok`, the taint scan is empty, and both declarations use only
+`[propext, Classical.choice, Quot.sound]`.  Aristotle was not needed.
+
+Verdict: `FINITE_FOURIER_EIGENFUNCTION_LIPSCHITZ_REPRESENTATIVE_PROVED`.
+The construction wall is reduced to
+`SOURCE_LOCKED_PSWF_EIGENPAIR_EXISTENCE_AND_INDEX_SELECTION_MISSING`.  Neither
+the ODE nor compact-operator spectral existence backend is yet present in
+Mathlib/project source; no interface-only replacement counts as closure.  The
+independent D0.7e.5a pause remains open, Route B remains
+`CHALLENGER / NOT_RH`, and physical Bus 010 remains void.
