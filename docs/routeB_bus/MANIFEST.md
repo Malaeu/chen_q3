@@ -4,7 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
-| `MAP.md` | Route B project navigator (LIVE — updated each move, SHA advisory) | `d6464beba93147a90169aab08def630d2ae0dc339219a39c96963fa591862ee6` |
+| `MAP.md` | Route B project navigator (LIVE — updated each move, SHA advisory) | `8064def22bb8c25b3c4665454260b4654e2dac0c237728a3c6a09c018e5f8442` |
 | `001_ktrial_stage1.answer.md` | answer | `6714aab6f34bc419e32e20a68c59a7f9f685669496f3dffe7c1c9e55f37658b5` |
 | `002_ktrial_stage2.answer.md` | answer | `eafbf7d6c059ac4021d79818d51085a6d25227482d21eeedb7d5e90d4d9dd613` |
 | `003_ktrial_stage3.answer.md` | answer | `a02e03342d8f1f1163083d031b48d36f0b34ffe9f7c85819c02121699574257b` |
@@ -296,12 +296,28 @@ Proshka mirror from `rh_lean_01_2026`; 266 mirrored source files plus `CHANNEL_R
 | `muntz_v3/RequestProject/R6Export/RiemannBoundaryCellBridge.lean` | Muntz v3 Goal 044 collision-free R6 export | `b0c3a16db5627f4b3fbbc785ac7dc446d84a20975aa19b6296a4c25ccef65ce6` |
 | `muntz_v3/RequestProject/R6Export/TailAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `18d7e0cafb3cae5001367dbe741919e89be3b594ad2040f05fbd2c93ca97507a` |
 | `muntz_v3/RequestProject/R6Export/WindowAnalyticity.lean` | Muntz v3 Goal 044 collision-free R6 export | `ce279d4214569b0767b54e1ae0b8aa63544f7a481c7c04e749b4e4d4c7eb04b9` |
+| `muntz_v3/RequestProject/MellinConvergentSqrtTail.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `dc91214ad1b7b09a37e0c90eae8891ddf8d1d743550d70380ad77cc6e31c9b04` |
+| `muntz_v3/RequestProject/MuntzV3EStarMellinAbsolutePayload.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `1f460d77a2404cbec83b739a188092e175cc73545fd8b31f5c493f62fafa6d89` |
+| `muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `f4ea12e1497b37a809c27db35f95035111d0d126942ea8c7557ec435b0e3ebfd` |
+| `muntz_v3/RequestProject/MuntzV3HabsExactClass.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `60fd35f3c755c2a79c0c290f71e7a7a8e1c8e0d541a025e3a508eefc7496b9b7` |
+| `muntz_v3/RequestProject/MuntzV3ProlateCombinationReceiver.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `ab12e82fbf3993318b9e9a1dae850f20a81f944b4a71e0c9460a7d2e78212d84` |
+| `muntz_v3/RequestProject/MuntzV3RminusExactClass.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `c8a7d583ce60cbe6c75135ded8338a625466c6fb05e004135ddf2da990886847` |
+| `muntz_v3/RequestProject/MuntzV3SymmetricTrialCrosswalk.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `ebede2df7ff55b811bafd1dcbbb55baea064658b406611bbec4e093fd94c6f9b` |
+| `muntz_v3/RequestProject/ProlateExport/ProlateCombinationMuntzRegularity.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `315326bb975988eb0563fc1d852c763d392c0ac40e6eb491d1397ecab234eac5` |
+| `muntz_v3/RequestProject/ProlateExport/ProlateLayer.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `f910db340cab06f71e04ba5efb44b5c50075fe60f9d24cf031ba91b89419a7af` |
+| `muntz_v3/RequestProject/ProlateExport/ProlateModeRegularity.lean` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `3dc9f09b49d4cfdff37cd6a44a917412e467ada3a5f38e1372d4dec8ab3e9415` |
+| `muntz_v3/RequestProject/ProlateExport/PROVENANCE.md` | Muntz v3 mirror sync 2026-08-03 (Proshka 4/4 visibility) | `a7f5532447b0bc24dc48aa0cd9fdd0ef01268da22a7bccedf8e1caafb8139482` |
 | `muntz_v3/_COVER.md` | Muntz v3 harvest and consumption metadata | `a8b47544a353b1f1ac9123076c4638232bb7a6843333240c555b63baf6fcfa6d` |
 | `muntz_v3/lake-manifest.json` | Muntz v3 harvested artifact | `116c6ef00aa899fb38c08c5e4c92c0e434d0e7f9d574fcb5d4d42cc90ffb07cb` |
 | `muntz_v3/lakefile.toml` | Muntz v3 harvested artifact | `b1481968ce2912f2b85288fc18aa05fb22750e4083f9e03f49f59a8814ba268a` |
 | `muntz_v3/lean-toolchain` | Muntz v3 harvested artifact | `db7bb24b756d745bbde83fe92718b51bd3625dae3701ba0f598d0eedcd3f3028` |
 | `priority_band_positive_part_certificate.py` | Route B artifact | `b9fe448ea3af25d932c2beca6390ca56aa4cfbef0bb3996bcbc0c96ebd4fea41` |
-| `maps/cvs_h2b_ladder_verification_map.svg` | Route B artifact — 051→H2b→H2a ladder verification map | `60af2952232beabc50e40adff9cf3fbb92802b053315cab706e696bd50961ec3` |
+| `maps/2026-08-03_cvs_h2b_ladder_verification_map.svg` | Route B artifact — 051→H2b→H2a ladder verification map | `60af2952232beabc50e40adff9cf3fbb92802b053315cab706e696bd50961ec3` |
+| `maps/2026-08-03_master_roof_seven_gates.svg` | Route B map (Mythos) — 7 gates G1..G7 ↔ slots, current status | `ef20f8b81031c618915d94db3d07c16b488553e14cc5eb88766cae5317bf9fcf` |
+| `maps/2026-08-03_two_branch_feeds.svg` | Route B map (Mythos) — spectral vs Müntz branches → slots | `9dea5a1284bef64f084d787afb11dab8a40a3eafd27ce9f2e354477c619a9e6b` |
+| `maps/2026-08-03_spectral_engine_beta_rows.svg` | Route B map (Mythos) — M0..M4 + β1..β9 detail | `2c74812eabff626eb1889e8ae1b9d141d1fb14a8dd23c0f4041ad4217b045aaf` |
+| `maps/2026-08-03_four_open_fronts.svg` | Route B map (Mythos) — G2/G3/G5/G6 open fronts + readiness | `793777f20de6d96c33e7ce3563ef2d8b5e5bd18cdfc31f9a3b8f1a9ad8239490` |
+| `maps/2026-07-31_rh_canvas_v3_seven_gates.svg` | Route B map — SUPERSEDED by 2026-08-03_master_roof_seven_gates.svg (kept, not deleted) | SUPERSEDED |
 | `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 
 `MANIFEST.md` is excluded from its own hash table.

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="600" viewBox="0 0 680 600" font-family="Helvetica,Arial,sans-serif">
+<!-- generated 2026-08-03 by Mythos · repo Malaeu/chen_q3 rh_clean HEAD 807341e7 · terminology: docs/routeB_bus/MAP.md · SUPERSEDES 2026-07-31_rh_canvas_v3_seven_gates.svg -->
+<title>Master roof: T-Roof rh_of_canonical_strip_slots, 7 ворот G1–G7</title>
+<rect x="0" y="0" width="680" height="600" fill="#FFFFFF"/>
+<text x="340" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#2C2C2A">Крыша T-Roof · rh_of_canonical_strip_slots — 7 ворот G1–G7</text>
+<text x="340" y="44" text-anchor="middle" font-size="10" fill="#5F5E5A">2026-08-03 · HEAD 807341e7 · CHALLENGER / NOT_RH · Bus 010 VOID · RH не заявлена · заменяет 2026-07-31_rh_canvas_v3_seven_gates.svg</text>
+
+<rect x="290" y="58" width="100" height="34" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="79" text-anchor="middle" font-size="13" font-weight="bold" fill="#2C2C2A">RH (цель)</text>
+<line x1="340" y1="112" x2="340" y2="94" stroke="#5F5E5A" stroke-width="1.2"/>
+<polygon points="340,94 336,102 344,102" fill="#5F5E5A"/>
+
+<rect x="170" y="112" width="340" height="50" rx="8" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="340" y="132" text-anchor="middle" font-size="13" font-weight="bold" fill="#633806">КРЫША T-Roof ⏳ условно</text>
+<text x="340" y="150" text-anchor="middle" font-size="11" fill="#854F0B">собрана · hole-free · условна на G1..G6 · CanonicalRHRouteSkeleton.lean:145</text>
+<line x1="340" y1="186" x2="340" y2="164" stroke="#5F5E5A" stroke-width="1.2"/>
+<polygon points="340,166 336,174 344,174" fill="#5F5E5A"/>
+
+<rect x="170" y="186" width="340" height="46" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="340" y="204" text-anchor="middle" font-size="13" font-weight="bold" fill="#085041">GATE-G7 · компилятор ✅ (conditional) · доказано</text>
+<text x="340" y="222" text-anchor="middle" font-size="11" fill="#0F6E56">G1..G6 ⟹ RH · Hurwitz-склейка всех слотов</text>
+
+<line x1="130" y1="252" x2="550" y2="252" stroke="#B4B2A9" stroke-width="1"/>
+<line x1="340" y1="232" x2="340" y2="252" stroke="#B4B2A9" stroke-width="1"/>
+<line x1="130" y1="252" x2="130" y2="272" stroke="#B4B2A9" stroke-width="1"/>
+<line x1="340" y1="252" x2="340" y2="272" stroke="#B4B2A9" stroke-width="1"/>
+<line x1="550" y1="252" x2="550" y2="272" stroke="#B4B2A9" stroke-width="1"/>
+
+<rect x="30" y="272" width="200" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="130" y="292" text-anchor="middle" font-size="13" font-weight="bold" fill="#085041">GATE-G1 · SLOT-H1 ✅</text>
+<text x="130" y="309" text-anchor="middle" font-size="11" fill="#0F6E56">доказано · голоморфность</text>
+<text x="130" y="324" text-anchor="middle" font-size="11" fill="#0F6E56">семейства на полосе</text>
+
+<rect x="240" y="272" width="200" height="64" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="340" y="292" text-anchor="middle" font-size="13" font-weight="bold" fill="#712B13">GATE-G2 · SLOT-H2a 🔓</text>
+<text x="340" y="309" text-anchor="middle" font-size="11" fill="#993C1D">открыто · простое+чётное нижнее</text>
+<text x="340" y="324" text-anchor="middle" font-size="11" fill="#993C1D">собств. значение (и у Connes)</text>
+
+<rect x="450" y="272" width="200" height="64" rx="8" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="550" y="292" text-anchor="middle" font-size="13" font-weight="bold" fill="#633806">GATE-G3 · SLOT-H2b ⏳</text>
+<text x="550" y="309" text-anchor="middle" font-size="11" fill="#854F0B">условно на H2a · мост</text>
+<text x="550" y="324" text-anchor="middle" font-size="11" fill="#854F0B">Theorem510RealZeroBridge 🔓</text>
+
+<rect x="30" y="354" width="200" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="130" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#085041">GATE-G4 · SLOT-anchor ✅</text>
+<text x="130" y="391" text-anchor="middle" font-size="11" fill="#0F6E56">доказано · нормировка</text>
+<text x="130" y="406" text-anchor="middle" font-size="11" fill="#0F6E56">Hⱼ(i/4)=Ξ(i/4)≠0</text>
+
+<rect x="240" y="354" width="200" height="64" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="340" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#712B13">GATE-G5 · SLOT-S1 🔓</text>
+<text x="340" y="391" text-anchor="middle" font-size="11" fill="#993C1D">открыто · ядро Montel ✅,</text>
+<text x="340" y="406" text-anchor="middle" font-size="11" fill="#993C1D">знак-supplier открыт</text>
+
+<rect x="450" y="354" width="200" height="64" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="550" y="374" text-anchor="middle" font-size="13" font-weight="bold" fill="#712B13">GATE-G6 · SLOT-S2 🔓</text>
+<text x="550" y="391" text-anchor="middle" font-size="11" fill="#993C1D">открыто · Мюнц 4/4 ✅, мост</text>
+<text x="550" y="406" text-anchor="middle" font-size="11" fill="#993C1D">промоушена не написан (K8)</text>
+
+<rect x="30" y="440" width="620" height="52" rx="8" fill="#FFFFFF" stroke="#D3D1C7"/>
+<text x="340" y="460" text-anchor="middle" font-size="11" fill="#2C2C2A">Легенда: ✅ доказано (Lean) · ⏳ условно/kill-pass · 🔓 открыто · ☠️ poisoned · 🧩 принято как гипотеза</text>
+<text x="340" y="478" text-anchor="middle" font-size="11" fill="#712B13">Открытые фронты (ровно 4): G2 (H2a) · G3-движок (M0·M1·M2·M3·M4) · G5 (S1-знак) · G6 (стыковка Мюнц→S2)</text>
+
+<rect x="30" y="504" width="620" height="52" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="524" text-anchor="middle" font-size="11" fill="#2C2C2A">☠️ Legacy RequestProject/Main.lean: POISON_MAP — 7 false / 10 honest holes; supply_* легальны только после Pstar-слоя.</text>
+<text x="340" y="542" text-anchor="middle" font-size="11" fill="#5F5E5A">Рабочий канон крыши — Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean (hole-free условный DAG, standard axiom triple).</text>
+
+<text x="340" y="582" text-anchor="middle" font-size="10" fill="#888780">Источник терминов: docs/routeB_bus/MAP.md · вёрстка Mythos · без промоушена</text>
+</svg>

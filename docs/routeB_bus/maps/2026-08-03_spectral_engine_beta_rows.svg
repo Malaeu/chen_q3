@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="668" viewBox="0 0 680 668" font-family="Helvetica,Arial,sans-serif">
+<!-- generated 2026-08-03 by Mythos · repo Malaeu/chen_q3 rh_clean HEAD 807341e7 · terminology: docs/routeB_bus/MAP.md · EXTENDS maps/cvs_h2b_ladder_verification_map.svg · β-rows per litreview/CVS_H2B_FORMALIZATION_BRIDGE.md -->
+<title>Спектральный движок H2b: леммы M0–M4 и β-строки, G-051 = L-M1</title>
+<rect x="0" y="0" width="680" height="668" fill="#FFFFFF"/>
+<text x="340" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#2C2C2A">Движок H2b: L-M0…L-M4 и β-строки CvS §5</text>
+<text x="340" y="44" text-anchor="middle" font-size="10" fill="#5F5E5A">2026-08-03 · HEAD 807341e7 · G-051 = L-M1 (только β6/β8d) · CHALLENGER / NOT_RH · расширяет cvs_h2b_ladder_verification_map.svg</text>
+
+<rect x="24" y="58" width="400" height="470" rx="12" fill="none" stroke="#993C1D" stroke-dasharray="6 4"/>
+<text x="224" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#712B13">Недостающие леммы (порядок: M1 → M2 → M3, M4 опция)</text>
+
+<rect x="40" y="94" width="368" height="72" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="52" y="113" font-size="12" font-weight="bold" fill="#712B13">L-M0 🔓 открыто · инстанцирование формы Q(11)</text>
+<rect x="52" y="124" width="96" height="30" rx="6" fill="#FFFFFF" stroke="#993C1D"/>
+<text x="100" y="143" text-anchor="middle" font-size="10" fill="#712B13">β1 🔓 нет γ</text>
+<rect x="156" y="124" width="116" height="30" rx="6" fill="#FFFFFF" stroke="#854F0B"/>
+<text x="214" y="143" text-anchor="middle" font-size="10" fill="#633806">β2 🧩 hcomm (:32)</text>
+<rect x="280" y="124" width="116" height="30" rx="6" fill="#FFFFFF" stroke="#854F0B"/>
+<text x="338" y="143" text-anchor="middle" font-size="10" fill="#633806">β3 🧩 hTDxi (:35)</text>
+
+<rect x="40" y="178" width="368" height="86" rx="8" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="52" y="197" font-size="12" font-weight="bold" fill="#633806">L-M1 = G-051 ⏳ условно · PosDef-самосопр. ⇒ вещ. спектр</text>
+<rect x="52" y="208" width="150" height="30" rx="6" fill="#FFFFFF" stroke="#993C1D"/>
+<text x="127" y="227" text-anchor="middle" font-size="10" fill="#712B13">β6 🔓 перенос на эрмитову</text>
+<rect x="210" y="208" width="186" height="30" rx="6" fill="#FFFFFF" stroke="#854F0B"/>
+<text x="303" y="227" text-anchor="middle" font-size="10" fill="#633806">β8d ⏳ zerosRealOn_of_hermitian (:31)</text>
+<text x="52" y="256" font-size="10" fill="#854F0B">Прошка kill-pass ✅ · конвенция Q·D = Dᴴ·Q · Mathlib pin 2df2f015 · файл PosDefSelfAdjointRealSpectrum.lean НЕ создан</text>
+
+<rect x="40" y="276" width="368" height="72" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="52" y="295" font-size="12" font-weight="bold" fill="#712B13">L-M2 🔓 открыто · фактор по radical(Q) · ← сюда входит H2a</text>
+<rect x="52" y="306" width="150" height="30" rx="6" fill="#FFFFFF" stroke="#854F0B"/>
+<text x="127" y="325" text-anchor="middle" font-size="10" fill="#633806">β5b ⏳ спуск без метрики (:29)</text>
+<rect x="210" y="306" width="150" height="30" rx="6" fill="#FFFFFF" stroke="#993C1D"/>
+<text x="285" y="325" text-anchor="middle" font-size="10" fill="#712B13">β5c 🔓 radical = ℝ∙ξ</text>
+<text x="52" y="343" font-size="10" fill="#993C1D">частичный scaffold: QuotientByRadicalSelfAdjoint.lean</text>
+
+<rect x="40" y="360" width="368" height="72" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="52" y="379" font-size="12" font-weight="bold" fill="#712B13">L-M3 🔓 открыто · определитель → форма Лагранжа</text>
+<rect x="52" y="390" width="150" height="30" rx="6" fill="#FFFFFF" stroke="#993C1D"/>
+<text x="127" y="409" text-anchor="middle" font-size="10" fill="#712B13">β7 🔓 треугольный Det</text>
+<rect x="210" y="390" width="150" height="30" rx="6" fill="#FFFFFF" stroke="#993C1D"/>
+<text x="285" y="409" text-anchor="middle" font-size="10" fill="#712B13">β8c 🔓 Σξⱼ/(s−j)=0 ≡ P(s)</text>
+<text x="52" y="427" font-size="10" fill="#993C1D">Mathlib: Lagrange.lean · Vandermonde.lean — примитивы есть</text>
+
+<rect x="40" y="444" width="368" height="66" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="52" y="463" font-size="12" font-weight="bold" fill="#712B13">L-M4 🔓 открыто (опция для полного Thm 6.1)</text>
+<rect x="52" y="474" width="180" height="28" rx="6" fill="#FFFFFF" stroke="#854F0B"/>
+<text x="142" y="492" text-anchor="middle" font-size="10" fill="#633806">β9 ⏳ Фурье+Гурвиц частично (:12)</text>
+<text x="244" y="492" font-size="10" fill="#993C1D">рекомендация: скоуп H2b = финитный слой</text>
+
+<rect x="444" y="58" width="212" height="304" rx="12" fill="none" stroke="#0F6E56" stroke-dasharray="6 4"/>
+<text x="550" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#085041">Уже доказано ✅ (HAVE)</text>
+<rect x="458" y="94" width="184" height="44" rx="6" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="550" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041">β4 ✅ D′ Q-самосопряжён</text>
+<text x="550" y="128" text-anchor="middle" font-size="10" fill="#0F6E56">rankOneCorrection_weightedSymmetric:27</text>
+<rect x="458" y="146" width="184" height="44" rx="6" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="550" y="164" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041">β5a ✅ D′ξ = 0</text>
+<text x="550" y="180" text-anchor="middle" font-size="10" fill="#0F6E56">rankOneCorrection_kills_vector:15</text>
+<rect x="458" y="198" width="184" height="44" rx="6" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="550" y="216" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041">β8a ✅ det-лемма (резольв.)</text>
+<text x="550" y="232" text-anchor="middle" font-size="10" fill="#0F6E56">RankOneCorrectionDeterminant:11</text>
+<rect x="458" y="250" width="184" height="44" rx="6" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="550" y="268" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041">β8b ✅ det-лемма (adjugate)</text>
+<text x="550" y="284" text-anchor="middle" font-size="10" fill="#0F6E56">…AllSpectralPoints:82</text>
+<rect x="458" y="302" width="184" height="44" rx="6" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="550" y="320" text-anchor="middle" font-size="11" font-weight="bold" fill="#085041">α4 ✅ негативные контроли</text>
+<text x="550" y="336" text-anchor="middle" font-size="10" fill="#0F6E56">HermitianDeterminantRealZeros:60,77</text>
+
+<line x1="550" y1="362" x2="550" y2="392" stroke="#5F5E5A" stroke-width="1.1"/>
+<line x1="224" y1="528" x2="224" y2="548" stroke="#993C1D" stroke-width="1.1"/>
+<line x1="224" y1="548" x2="430" y2="548" stroke="#993C1D" stroke-width="1.1"/>
+<line x1="550" y1="392" x2="550" y2="420" stroke="#5F5E5A" stroke-width="1.1"/>
+<line x1="550" y1="420" x2="550" y2="548" stroke="#5F5E5A" stroke-width="1.1"/>
+<line x1="550" y1="548" x2="450" y2="548" stroke="#5F5E5A" stroke-width="1.1"/>
+<rect x="430" y="526" width="1" height="1" fill="none"/>
+<polygon points="440,548 432,544 432,552" fill="#993C1D"/>
+<rect x="240" y="560" width="400" height="0" fill="none"/>
+
+<rect x="190" y="560" width="300" height="46" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="340" y="578" text-anchor="middle" font-size="12" font-weight="bold" fill="#712B13">Theorem510RealZeroBridge 🔓 → SLOT-H2b ⏳ (GATE-G3)</text>
+<text x="340" y="596" text-anchor="middle" font-size="10" fill="#993C1D">M1 НЕ закрывает H2b · H2b условен на H2a 🔓 (GATE-G2)</text>
+<line x1="340" y1="548" x2="340" y2="560" stroke="#993C1D" stroke-width="1.1"/><polygon points="340,560 336,553 344,553" fill="#993C1D"/>
+
+<text x="340" y="630" text-anchor="middle" font-size="11" fill="#2C2C2A">Счёт β-строк (мост CvS): HAVE 5 · PARTIAL 5 (⏳/🧩) · MISSING 5 (🔓) — M-группы: M0{β1·β2·β3} · M1{β6·β8d} · M2{β5b·β5c} · M3{β7·β8c} · M4{β9}</text>
+<text x="340" y="652" text-anchor="middle" font-size="10" fill="#888780">Источник: litreview/CVS_H2B_FORMALIZATION_BRIDGE.md + MAP.md §4c · вёрстка Mythos · без промоушена</text>
+</svg>

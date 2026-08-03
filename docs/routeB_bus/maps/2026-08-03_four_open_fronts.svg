@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="470" viewBox="0 0 680 470" font-family="Helvetica,Arial,sans-serif">
+<!-- generated 2026-08-03 by Mythos · repo Malaeu/chen_q3 rh_clean HEAD 807341e7 · terminology: docs/routeB_bus/MAP.md §7 -->
+<title>Четыре открытых фронта Route B: G2, G3, G5, G6</title>
+<rect x="0" y="0" width="680" height="470" fill="#FFFFFF"/>
+<text x="340" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#2C2C2A">Четыре открытых фронта (и только они)</text>
+<text x="340" y="44" text-anchor="middle" font-size="10" fill="#5F5E5A">2026-08-03 · HEAD 807341e7 · CHALLENGER / NOT_RH · Bus 010 VOID · закрыты: G1 · G4 · G7 · Мюнц-винты 4/4</text>
+
+<rect x="30" y="62" width="300" height="150" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.4"/>
+<text x="180" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#633806">GATE-G3 · движок H2b ⏳ вооружён</text>
+<text x="46" y="110" font-size="11" fill="#633806">• L-M1 (G-051): Прошка kill-pass ✅, Codex authorized</text>
+<text x="46" y="128" font-size="11" fill="#854F0B">• целевой файл PosDefSelfAdjointRealSpectrum.lean — НЕ создан</text>
+<text x="46" y="146" font-size="11" fill="#854F0B">• конвенция Q·D=Dᴴ·Q · Mathlib pin 2df2f015</text>
+<text x="46" y="164" font-size="11" fill="#854F0B">• дальше: L-M0 · L-M2 · L-M3 (· L-M4 опция)</text>
+<text x="46" y="190" font-size="11" font-weight="bold" fill="#633806">Готовность: ход №1 — OK Codex'у на Lean M1</text>
+
+<rect x="350" y="62" width="300" height="150" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.4"/>
+<text x="500" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#712B13">GATE-G2 · SLOT-H2a 🔓 открыто</text>
+<text x="366" y="110" font-size="11" fill="#993C1D">• простое + изолированное + чётное нижнее собств. значение</text>
+<text x="366" y="128" font-size="11" fill="#993C1D">• настоящая открытая математика — открыто и у Connes</text>
+<text x="366" y="146" font-size="11" fill="#993C1D">• у CvS Thm 6.1 это Assume (вход), не результат</text>
+<text x="366" y="164" font-size="11" fill="#993C1D">• дозье собрано: PSWF Штурм–Лиувилль · CCM §8 · C3-split</text>
+<text x="366" y="190" font-size="11" font-weight="bold" fill="#712B13">Готовность: исследовательский фронт, не Lean-очередь</text>
+
+<rect x="30" y="232" width="300" height="150" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.4"/>
+<text x="180" y="256" text-anchor="middle" font-size="14" font-weight="bold" fill="#712B13">GATE-G6 · Мюнц→SLOT-S2 🔓 открыто</text>
+<text x="46" y="280" font-size="11" fill="#085041">• supplier готов 4/4 ✅: IN-hG · IN-hRp · IN-hRm · IN-habs</text>
+<text x="46" y="298" font-size="11" fill="#085041">• continued_window_identity_v3Class ✅ (Closure:13)</text>
+<text x="46" y="316" font-size="11" fill="#993C1D">• контракт промоушена window-identity → SlotS2 не написан</text>
+<text x="46" y="334" font-size="11" fill="#993C1D">• K8: назвать минимальную недостающую стыковку</text>
+<text x="46" y="360" font-size="11" font-weight="bold" fill="#712B13">Готовность: supplier ✅ · мост 🔓 — следующий контракт</text>
+
+<rect x="350" y="232" width="300" height="150" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.4"/>
+<text x="500" y="256" text-anchor="middle" font-size="14" font-weight="bold" fill="#712B13">GATE-G5 · SLOT-S1 знак 🔓 открыто</text>
+<text x="366" y="280" font-size="11" fill="#085041">• ядро Montel ✅ (MontelNormalFamilies.lean)</text>
+<text x="366" y="298" font-size="11" fill="#993C1D">• знак-supplier (локальная ограниченность) открыт</text>
+<text x="366" y="316" font-size="11" fill="#993C1D">• исторический контекст: sign-фронт убит фазой (018–021)</text>
+<text x="366" y="334" font-size="11" fill="#993C1D">• кандидатов в очереди нет</text>
+<text x="366" y="360" font-size="11" font-weight="bold" fill="#712B13">Готовность: не вооружён — нужен новый заход</text>
+
+<rect x="30" y="398" width="620" height="40" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="416" text-anchor="middle" font-size="11" fill="#2C2C2A">Порядок по kill-power/cost (K2): G3-M1 (вооружён, дешёв) → G6-контракт (supplier готов) → G2 (исследование) → G5 (новый заход)</text>
+<text x="340" y="432" text-anchor="middle" font-size="10" fill="#5F5E5A">никакой из фронтов не выдаёт RH по отдельности — все четыре нужны крыше G7</text>
+
+<text x="340" y="458" text-anchor="middle" font-size="10" fill="#888780">Источник: MAP.md §7 · глифы ✅⏳🔓☠️🧩 · вёрстка Mythos · без промоушена</text>
+</svg>
