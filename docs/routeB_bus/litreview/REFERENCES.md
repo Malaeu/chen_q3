@@ -176,3 +176,6 @@ Q3 gap. ★-books/paywall/Zenodo → owner drops PDF in pdfs/ (owner HAS them in
 | PAULSEN-RAGHU-2016 | Paulsen, Raghupathi, Intro to the theory of RKHS 2016 | zot | `pdfs/paulsen_raghupathi_2016.pdf` | HAVE ✓ | RKHS cap |
 | GRENANDER-SZEGO-1958 | Grenander, Szegő, Toeplitz Forms and Their Applications 1958 | zot | `pdfs/grenander_szego_1958.pdf` | HAVE ✓ | M1/H2b Toeplitz forms monograph |
 | MALAM-FEJERHEAT-2025 | Malamutmann, Fejér–heat generators and Lipschitz control for the Weil quadratic functional, Dec 2025 | owner | `pdfs/malamutmann_fejer_heat_2025.pdf` | HAVE ✓ | **OWNER paper**: analytic properties of the Weil functional Q = A1'/A2/α-Gate |
+
+## M1 formalization formula cards (2026-08-03)
+- `M1_MATRIX_FORMULA_CARDS.md` — Horn-Johnson (6/6): Sylvester inertia Thm 4.5.8 p.282; matrix-det lemma eq(0.8.5.11) p.26 (adjugate, no invertibility side-cond); Hermitian=>real Thm 4.1.3(b); similarity Thm 1.3.3/Cor 1.3.4; Cholesky Cor 7.2.9 + symmetric sqrt Thm 7.2.6. **Complete 6-step M1 Lean chain** (S=Q^{1/2} => symmetric conjugation => real eigenvalues => transfer), Mathlib names attached (Matrix.PosSemidef.sqrt, IsHermitian.eigenvalues, mul_adjugate); prefer symmetric-sqrt over triangular Cholesky in Lean.
