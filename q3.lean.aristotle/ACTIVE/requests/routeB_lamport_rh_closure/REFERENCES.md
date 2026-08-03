@@ -111,3 +111,21 @@ prior pass → HAVE (row CVS-QFRZ-2025 above), not MISSING. Kulikov = Aleksei Ku
 - Gonek 1993, Contemp. Math. (VERIFY vol/year before .bib) — Landau explicit formula.
 - Lean4 CADE-28 (de Moura, Ullrich) DOI 10.1007/978-3-030-79876-5_37 — cite-only (B).
 - Mathlib modules MellinTransform / RiemannZeta / Gamma — cite-only, no PDF (B).
+
+## Deep usage cards — Part 2 (roof / tail, 2026-08-03)
+
+- `SUZUKI_SCREW_USAGE_CARDS.md` — SUZUKI-SCREW-2026 (2606.09096): 6/6 verbatim.
+  Unification of Yoshida/Bombieri/CC/CCM = a PROGRAM (re-derivation framework), NOT one
+  proved theorem; apex a→∞ limit (Cor 1.6) is CONJECTURAL. **ROOF ASSET: Theorem 1.5 —
+  entire approximants W(a,θ;z) have ALL ZEROS REAL, proved UNCONDITIONALLY** (= spectrum
+  of a self-adjoint extension). **Thm 1.4: λ_a positive/simple/even proved for SMALL a**
+  (H2a analogue, but small-a only). α-Gate: Weil criterion cited [15]; Yoshida localized
+  positivity re-proved unconditionally (Thm 1.3). C3/roof a→∞ convergence = OPEN (Cor 1.6
+  sufficient-condition only). de Branges realization cited [14], used only in §7 heuristic.
+- `KULIKOV_PLUNGE_USAGE_CARDS.md` — KULIKOV-PLUNGE-2026 (2603.07407) + LARSEN (2603.23832)
+  + PREPLUNGE (2306.12430): all targets verbatim, ALL UNCONDITIONAL (pure harmonic
+  analysis, no RH/Q3 content — TAIL/LADDER TOOLS only). **Sharpest:**
+  −log(1−λ_n(c)) ≍ (c−n)/log(2c/(c−n)) (Thm 1.6+1.7, two-sided). **Best H4-DetectorDecay
+  tool: Lemma 1.8 (paper 2)** — scale-uniform singular-value decay σ_n ≤ C e^{−τn},
+  constant independent of scale r → cleanest W_j→0. Maps: edge-tail → C3/two-level-ladder;
+  λ_n≥1−δ^c + Lemma 1.8 → H4-DetectorDecay.
