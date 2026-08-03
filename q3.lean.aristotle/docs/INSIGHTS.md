@@ -49080,3 +49080,25 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - Proshka review is pending on the ODE-versus-integral-operator route and the
   exact first theorem shape; no Aristotle request is authorized until that
   shape is self-contained.
+- `Q3/Proofs/RouteB/ProlateSourceRegularity.lean` now materializes the exact
+  plus-sign finite-Fourier kernel and its interval action under the repository
+  convention.  The zero-frequency eigenrelation recovers the existing
+  `ProlatePair` center identity from symmetric support rather than assuming it
+  as an unrelated analytic field.
+- `finiteFourierAction_lipschitzWith` proves global Lipschitz regularity of the
+  finite-Fourier action for every interval-integrable mode on a nonnegative
+  window.  The proof uses the pointwise kernel estimate
+  `2*pi*|y|*dist x z` and the Bochner integral norm bound.
+- `positiveHalfLipschitz_of_finiteFourier_eigenrelation` then transfers this
+  regularity through any nonzero eigenvalue.  Thus the two positive-half
+  Lipschitz inputs left by the v3 receiver will follow automatically once the
+  exact `h0 <-> chi0` and `h4 <-> chi2` modes, their integrability, nonzero
+  eigenvalues, and restricted eigenrelations are constructed.
+- Direct Lean, the 7744-job target build, and the 7817-job full Q3 build pass;
+  `q3_check` reports `ok`, the production taint scan is empty, and every public
+  declaration uses exactly `[propext, Classical.choice, Quot.sound]`.  Eight
+  declarations are recorded as `proven` in the proof DB.
+- This closes only the reusable `FOURIER_EIGENRELATION_TO_POSITIVE_HALF_`
+  `LIPSCHITZ` leaf.  It does not construct or select PSWF modes, prove their
+  eigenrelations/nonzero eigenvalues, discharge D0.7e.5a, promote Route B, or
+  authorize Bus 010.

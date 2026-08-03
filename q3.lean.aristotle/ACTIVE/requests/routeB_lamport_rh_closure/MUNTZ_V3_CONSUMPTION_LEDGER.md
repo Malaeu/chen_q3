@@ -199,3 +199,31 @@ next genuine wall is
 repository has no Lean PSWF constructor or mode-existence theorem, so this is
 not yet a self-contained Aristotle request.  Route B remains
 `CHALLENGER / NOT_RH`; physical Bus 010 remains void.
+
+## 2026-08-03 addendum — finite-Fourier eigenrelation regularity leaf
+
+`Q3/Proofs/RouteB/ProlateSourceRegularity.lean` materializes the source-locked
+finite-Fourier kernel with the repository's plus-sign convention
+`exp(+2*pi*i*x*y)` and its action on `Icc (-lambda) lambda`.
+
+The file proves three supplier reductions:
+
+- the zero-frequency eigenrelation plus symmetric support implies the existing
+  full-integral/center identity;
+- interval integrability makes the finite-Fourier action globally Lipschitz;
+- an exact restricted eigenrelation with `chi != 0` transfers that bound to
+  `LipschitzOnWith` for the mode on `Ico 0 lambda`.
+
+Consequently positive-half Lipschitz is no longer an independent analytic
+obligation after actual source modes and their nonzero eigenrelations have been
+constructed.  The exact remaining wall is source-level existence and canonical
+selection of `h0 <-> chi0` and `h4 <-> chi2`, together with integrability,
+nonzero eigenvalues, and the restricted finite-Fourier eigenrelations for those
+constructed modes.
+
+Direct Lean, target/full Q3 builds, `q3_check`, the production taint scan, and
+the standard-axiom audit pass.  This result is not a PSWF constructor, does not
+discharge the independent D0.7e.5a WPrime source pause, and makes no concrete
+trial, RH, or Bus 010 claim.  Route B remains `CHALLENGER / NOT_RH`; physical
+Bus 010 remains void.  No Aristotle request is opened because the remaining
+existence/selection target is not self-contained in the current Lean library.
