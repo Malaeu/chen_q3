@@ -25,6 +25,14 @@ owner fetches and drops the PDF in `pdfs/`, then we flip it to HAVE; SCAN = imag
 | SIMON-MOMENT-1998 | Simon, "The classical moment problem as a self-adjoint finite difference operator", Adv. Math. 137 (1998) 82–203 | doi:10.1006/aima.1998.1728 | — | PAYWALL 🔴 | Jacobi-matrix self-adjointness (whole-line prolate realization) |
 | MATHLIB-2019 | The mathlib Community, "The Lean mathematical library", CPP 2020 | arXiv:1910.09336 | — | OA (cite-only) | Lean/Mathlib API for every formalized theorem (T4a, PL1/PL2, suppliers) |
 
+## Deep usage cards (per-theorem, verbatim, sub-agent extracted)
+
+- `CCM_ZST_USAGE_CARDS.md` — CCM-ZST-2025 (2511.22755): Thm 5.10, Thm 3.6, Lemma 7.2,
+  Lemma 7.3, §8 missing steps, prolate operator W_λ + trial k_λ — all 6 verbatim with
+  K7 tags and Q3-gap mapping. KEY: the paper itself (§8) marks BOTH `SIMPLE_EVEN(QW_λ)`
+  (H2a) AND `k_λ ≈ ξ_λ` (C3-B) as UNPROVEN for the Weil form; Thm 5.10's real-zero
+  conclusion is conditional on simple+even, proven only for the prolate PW_λ, never QW_λ.
+
 ## Candidate sources named but not yet acquired (Astra Block A / Cohn–Elkies)
 
 | Key | Bibliographic identity | DOI / URL | Access | USED FOR |
