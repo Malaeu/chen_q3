@@ -49273,3 +49273,27 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   self-adjoint realization, actual degree-0 and degree-4 modes, and their
   source-locked index/selection contract; strengthening `ProlatePair` with
   these facts as assumptions does not release the stop.
+
+## 2026-08-03 — Aristotle prolate-commutation adjudication
+
+- Project `07a1765f-0457-4577-8247-5c13c64dc9bb` transitioned to `IDLE` and
+  was downloaded to the UUID-scoped directory under `aristotle_output/`;
+  archive SHA-256 is
+  `979ffd092f56f100cf9a782945abbdce5b21b9f16b2f8b7942881c8f786690ce`.
+- Its three Lean files have no `sorry`, `admit`, `exact?`, `axiom`, or
+  `native_decide`.  The standalone Mathlib 4.28 project builds 8028/8028, and
+  the requested theorem depends only on
+  `[propext, Classical.choice, Quot.sound]`.
+- The 1166-line generated `ProlateSourceCommutation.lean` also compiles under
+  the production Mathlib 4.26 environment against the real repository
+  `ProlateSourceRegularity`, so the main theorem is source-object compatible.
+- It is not strictly stronger than published commit
+  `13f71c622814a52ed9af9d1f069764fdca45f84e`: Aristotle exposes only
+  `finiteFourierAction_intertwines_prolateWaveExpression`, whereas the
+  549-line production module also exposes
+  `prolateWaveExpression_finiteFourierKernel_swap`.  The standalone archive
+  additionally replaces the production regularity API with a 25-line shim.
+- Verdict:
+  `ARISTOTLE_PROLATE_COMMUTATION_VALID_BUT_NOT_STRICTLY_STRONGER_NOT_INTEGRATED`.
+  No generated Lean file is integrated; backend A remains at the ratified
+  construction/selection stop.

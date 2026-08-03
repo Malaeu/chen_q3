@@ -365,3 +365,28 @@ identical, and strictly stronger than the published local theorem.
 
 The independent D0.7e.5a pause remains open, Route B remains
 `CHALLENGER / NOT_RH`, and physical Bus 010 remains void.  No RH claim is made.
+
+### Aristotle commutation output adjudication
+
+Aristotle project `07a1765f-0457-4577-8247-5c13c64dc9bb` reached `IDLE` and
+its UUID-scoped archive was downloaded and inspected.  Archive SHA-256 is
+`979ffd092f56f100cf9a782945abbdce5b21b9f16b2f8b7942881c8f786690ce`.  The
+Lean-source scan is empty for `sorry`, `admit`, `exact?`, `axiom`, and
+`native_decide`.  Its standalone Mathlib 4.28 build passes 8028/8028, and the
+requested theorem uses exactly `[propext, Classical.choice, Quot.sound]`.
+
+The 1166-line candidate also compiles under the production Mathlib 4.26
+environment against the real repository `ProlateSourceRegularity`.  It proves
+the same public intertwining theorem as published commit
+`13f71c622814a52ed9af9d1f069764fdca45f84e`, but does not expose the
+production theorem `prolateWaveExpression_finiteFourierKernel_swap`; its
+standalone project also substitutes a 25-line definitions-only shim for the
+full production regularity module.
+
+Verdict:
+`ARISTOTLE_PROLATE_COMMUTATION_VALID_BUT_NOT_STRICTLY_STRONGER_NOT_INTEGRATED`.
+No Aristotle-generated Lean source is integrated.  The backend-A terminal stop
+and release condition are unchanged.
+
+The independent D0.7e.5a pause remains open, Route B remains
+`CHALLENGER / NOT_RH`, and physical Bus 010 remains void.  No RH claim is made.
