@@ -102,6 +102,8 @@ Proshka mirror from `rh_lean_01_2026`; 267 mirrored source files plus `CHANNEL_R
 | `050_estar_bound_repaired_0leb.goal.md` | goal | `7d08b4bd42c79f387d2e7d135ba1c21dda4fdaa8ae33fb0b14d9428a615a0423` |
 | `051_m1_posdef_selfadjoint_real_spectrum.goal.md` | goal | `9a2a1bd2919a27e31cec90b937006a850556bc21a371ca4847ac023efeee16a9` |
 | `051_m1_posdef_selfadjoint_real_spectrum.answer.md` | answer | `b415a5827f7a84bc2d5b5d822c4b58302075a4ba8961ebb9384c639bd783e29c` |
+| `053_arsenal_materialization.goal.md` | goal | `df73d77277c1e9c68efad8b865d2dff9da05589b0791448bd822df915871ecc9` |
+| `053_arsenal_materialization.answer.md` | answer | `18126b3d58b303170a28a537f7c141a6ebb7b8d4549360ae7e6e1eca0689fe1c` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
