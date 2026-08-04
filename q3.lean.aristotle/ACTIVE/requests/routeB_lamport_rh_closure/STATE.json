@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 62,
-  "updated_at": "2026-08-05T01:02:11+02:00",
+  "revision": 63,
+  "updated_at": "2026-08-05T01:24:41+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,8 +1190,8 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV62",
-    "status": "CANONICAL_SPLIT_K_EQ_4M_PROVED_BONAMI_KAROUI_SEPARATOR_FOUND_PROSHKA_ADJUDICATION_IN_PROGRESS_CROSSWALK_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV63",
+    "status": "CANONICAL_SPLIT_K_EQ_4M_PROVED_BONAMI_KAROUI_SEPARATOR_FOUND_FIRST_PROSHKA_VERDICT_COMPLETE_FOLLOWUP_IN_PROGRESS_CROSSWALK_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
@@ -1253,7 +1253,23 @@
         "LAMBDA_LOWER_EQ_NEG_G_PLUS_8_SQRT_G",
         "LAMBDA_UPPER_EQ_NEG_G_PLUS_10_SQRT_G"
       ],
-      "pro_review_request": "MESSAGE_5C6C157B_DIRECT_ENDPOINT_SIGNS_SENT_2026_08_05T00_41_58_PLUS_02_00"
+      "pro_review_request": "MESSAGE_5C6C157B_DIRECT_ENDPOINT_SIGNS_COMPLETE_MESSAGE_0EDD239B;FOLLOWUP_MESSAGE_14DBB40E_K4M_BONAMI_KAROUI_SENT_2026_08_05T01_24_41_PLUS_02_00",
+      "first_proshka_verdict": {
+        "status": "ENDPOINT_SIGNS_REDUCED",
+        "primary": "G5_MODE4_R1A_DIRECT_DETERMINANT_SIGNS_REDUCED_TO_EXPLICIT_FINITE_LEFT_ENVELOPES",
+        "assistant_message_id": "0edd239b-90e9-4990-8f7e-5968f1ba2ffd",
+        "exact_ui_reasoning_duration": "37m29s",
+        "observed_wall_seconds": 2326,
+        "answer_now_clicked": false,
+        "superseded_fact": "PROPOSED_K_EQ_5M_REPLACED_BY_LEAN_PROVED_K_EQ_4M",
+        "accepted_progress": "EXACT_FINITE_LEFT_DETERMINANT_ENVELOPE_THEOREM_SHAPE"
+      },
+      "followup_adjudication": {
+        "request_message_id": "14dbb40e-e9de-44fb-bac7-300cef9d2bdc",
+        "sent_at": "2026-08-05T01:24:41.545+02:00",
+        "status": "IN_PROGRESS",
+        "answer_now_clicked": false
+      }
     },
     "validation": {
       "direct_lean": "PASS",
@@ -1263,7 +1279,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "IN_PROGRESS_FRESH_PROJECT_CHAT_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "FIRST_VERDICT_COMPLETE_FOLLOWUP_IN_PROGRESS_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4053,6 +4069,13 @@
       "progress_class": "PROOF_AND_INTERFACE_SPECIALIZATION_PROGRESS",
       "result": "TAIL_SEPARATION_AT_FOUR_TIMES_MPROJECT;CANONICAL_SPLIT_DIRECT_DETERMINANT_SIGN_ROOT_RECEIVER;TARGET_7750_FULL_7817_Q3_CHECK_PASS",
       "honesty": "TWO_ENDPOINT_DETERMINANT_SIGNS_OPEN_PSWF_TO_EXACT_SCHUR_COUNT_CROSSWALK_OPEN_PROSHKA_STILL_THINKING_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T01:24:41+02:00",
+      "event": "G5_MODE4_FIRST_PROSHKA_VERDICT_RECORDED_AND_K4M_BONAMI_KAROUI_FOLLOWUP_STARTED",
+      "progress_class": "EXTERNAL_REVIEW_TIMING_AND_THEOREM_SHAPE_ADJUDICATION_PROGRESS",
+      "result": "FIRST_VERDICT_ENDPOINT_SIGNS_REDUCED_TO_EXPLICIT_FINITE_LEFT_ENVELOPES;EXACT_UI_REASONING_37M29S;OBSERVED_WALL_2326S;FOLLOWUP_MESSAGE_14DBB40E_SENT",
+      "honesty": "FIRST_VERDICT_K5M_SUPERSEDED_BY_LEAN_K4M_BONAMI_KAROUI_CROSSWALK_NOT_YET_ADJUDICATED_TWO_ENDPOINT_SIGNS_OPEN_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
     }
   ]
 }
