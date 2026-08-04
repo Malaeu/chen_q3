@@ -11,6 +11,64 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-05, in progress) -- G5 source-locked endpoint count fork
+
+- Exact remaining target after the committed determinant, inertia, and
+  same-determinant Hermitian suppliers: for one source-locked cofinal pair
+  `ΛLower ≤ ΛUpper ≤ 20` and an admissible split `K`, prove that the two
+  Hermitian Schur matrices are nonsingular and have respectively `2` and `3`
+  negative eigenvalues.
+- Five targeted `q3_docs` searches for mode-four spheroidal eigenvalue
+  localization, the third even branch, Jacobi Sturm counts, and explicit
+  cofinal brackets returned no indexed candidates.
+- Primary-source inventory: DLMF §30.3 gives strict eigenvalue ordering,
+  analyticity in the squared spheroidal parameter, and the value at parameter
+  zero; DLMF §30.8 gives the exact three-term coefficient recurrence; DLMF
+  §30.9 gives the large-positive-parameter asymptotic with
+  `q = 2 (n - m) + 1`; DLMF §30.16 gives convergent finite tridiagonal
+  approximants.  None of those pages, as inspected, supplies the explicit
+  finite cofinal threshold and endpoint inequalities required by the current
+  Lean receiver.
+- A high-precision diagnostic of the committed recurrence places successive
+  crossings near `-G + c * sqrt G` with `c = 1, 5, 9, 13`; consequently the
+  pair `c = 8, 10` is a plausible bracket for the third even branch.  This is
+  deliberately **not** a source lock, theorem, or authorized project
+  definition, and it has not been materialized in Lean or route state.
+- Proshka's earlier verdict is recorded locally only by message id and a
+  timing-ledger summary: it recovered a cofinal spectral-localization sublemma
+  but stopped at the then-missing residual-orientation bridge and selected the
+  parameterized Jacobi/Schur/Sturm fork.  Commits `a777cb49`, `0bca583c`, and
+  `d4361675` now close that bridge through the exact same scalar root function.
+- Browser transport is still unavailable to Codex: the controllable browser
+  profile is unauthenticated and the signed-in in-app tab is not exposed by
+  the current browser tools.  Therefore no new Proshka request is claimed as
+  sent, and no response time is invented.
+
+## PRO_REVIEW_REQUEST
+
+Route: Route B challenger, G5/S1
+Current step: G5_MODE4_R1A source-locked cofinal root bracket
+Current theorem: `exists_mode4RootFunction_eq_zero_of_hermitianSchur_counts_two_three`
+File: `Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean`
+Lean error / blocker: none; the receiver compiles, but its four endpoint facts
+are not source-locked.
+Options:
+A. Recover the exact theorem statement from Proshka message
+`ddb6364a-2d9b-4162-84b3-fa6ea6f0176a` and instantiate its cofinal
+localization after auditing commits `a777cb49`, `0bca583c`, and `d4361675`.
+B. Supply a new explicit source/Sturm proof of nonsingularity and negative
+counts `2`/`3`, including endpoint formulas, split `K`, and all cofinal
+quantifiers.
+C. If neither is source-admissible, stop with the exact smallest missing
+endpoint-localization theorem instead of minting `-G + 8 sqrt G` and
+`-G + 10 sqrt G` as project definitions.
+Codex recommendation: A first; the previously missing determinant/residual
+orientation is now Lean-proved, so re-adjudication may turn the recovered
+localization into the four exact endpoint facts without a new analytic route.
+Question for Louise: Do the three committed bridges discharge the only blocker
+in the recovered cofinal localization, and if so what are the verbatim
+endpoint formulas, split rule, cofinal threshold, and theorem interface?
+
 ## Synthesis (2026-08-05, closed node) -- G5 same-determinant Hermitian Schur supplier
 
 - Target: discharge the abstract same-determinant Hermitian-matrix input of the

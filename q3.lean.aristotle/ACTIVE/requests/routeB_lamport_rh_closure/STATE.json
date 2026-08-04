@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 55,
-  "updated_at": "2026-08-05T00:04:30+02:00",
+  "revision": 56,
+  "updated_at": "2026-08-05T00:24:09+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,8 +1190,8 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV55",
-    "status": "SAME_DETERMINANT_HERMITIAN_SCHUR_SUPPLIER_LEAN_PROVED_ENDPOINT_COUNTS_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV56",
+    "status": "ENDPOINT_SOURCE_REVIEW_READY_EXACT_PRIOR_VERDICT_TRANSPORT_BLOCKED_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
@@ -1214,6 +1214,22 @@
       "LOWER_ENDPOINT_NEGATIVE_EIGENVALUE_COUNT_TWO",
       "UPPER_ENDPOINT_NEGATIVE_EIGENVALUE_COUNT_THREE"
     ],
+    "source_review": {
+      "q3_docs_queries": 5,
+      "q3_docs_candidates": 0,
+      "primary_sources": [
+        "DLMF_30_3_EIGENVALUE_ORDERING_AND_PARAMETER_ANALYTICITY",
+        "DLMF_30_8_THREE_TERM_COEFFICIENT_RECURRENCE",
+        "DLMF_30_9_LARGE_POSITIVE_PARAMETER_ASYMPTOTICS",
+        "DLMF_30_16_FINITE_TRIDIAGONAL_APPROXIMANTS"
+      ],
+      "explicit_finite_cofinal_threshold_found": false,
+      "diagnostic_candidate_not_authorized": [
+        "LAMBDA_LOWER_EQ_NEG_G_PLUS_8_SQRT_G",
+        "LAMBDA_UPPER_EQ_NEG_G_PLUS_10_SQRT_G"
+      ],
+      "pro_review_request": "RECOVER_MESSAGE_DDB6364A_AND_REAUDIT_A777CB49_0BCA583C_D4361675"
+    },
     "validation": {
       "direct_lean": "PASS",
       "target_build_jobs": 7750,
@@ -1222,7 +1238,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "PENDING_TRANSPORT",
+    "external_proshka_ratification": "PENDING_TRANSPORT_EXACT_PRIOR_VERDICT_NOT_PERSISTED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -1386,7 +1402,7 @@
       "H2B2B2B2_QUOTIENT_RADICAL_METRIC_REV40",
       "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41",
       "SOFT_0_ROOF_AND_S2_TYPECHECK_REV42",
-      "G5_MODE4_R1A_ROOT_BRACKET_REV55"
+      "G5_MODE4_R1A_ROOT_BRACKET_REV56"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -3984,6 +4000,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "EXPLICIT_HERMITIAN_SCHUR_MATRIX;EXACT_DETERMINANT_CROSSWALK;INERTIA_TO_ROOT_SIGN_RECEIVER;CONDITIONAL_IVT_ROOT_BRACKET",
       "honesty": "ENDPOINT_NONSINGULARITY_AND_NEGATIVE_EIGENVALUE_COUNTS_TWO_THREE_OPEN_EXTERNAL_PROSHKA_RATIFICATION_PENDING_ACTIVE_CONTROL_SENTINEL_UNCHANGED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T00:24:09+02:00",
+      "event": "G5_MODE4_ENDPOINT_SOURCE_REVIEW_REQUEST_REGISTERED",
+      "progress_class": "SOURCE_AND_BLOCKER_LOCALIZATION_PROGRESS",
+      "result": "Q3_DOCS_EMPTY;DLMF_30_3_30_8_30_9_30_16_INVENTORIED;EXPLICIT_FINITE_THRESHOLD_NOT_FOUND;PROSHKA_REAUDIT_PACKET_READY",
+      "honesty": "NUMERICAL_CANDIDATE_ENDPOINTS_NOT_AUTHORIZED_EXACT_PRIOR_PROSHKA_VERDICT_NOT_PERSISTED_TRANSPORT_BLOCKED_ACTIVE_CONTROL_SENTINEL_UNCHANGED_NO_BUS_010_NOT_RH"
     }
   ]
 }
