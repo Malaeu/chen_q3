@@ -49432,3 +49432,34 @@ noise + float64 floor: eps_p1 ~ 1e-16 machine-epsilon on N=4/large m). DIRECTION
 not alpha-class safe; Mythos prediction K6 (poly, low confidence) CONFIRMED on the clean N. For an
 iron SAFE/ENGINEERING verdict an Arb high-precision rerun on N=3 is needed (binary64 floor).
 No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the Lean proof tree.
+
+## 2026-08-04 — G5 mode-4 source-projection band discriminator (in progress)
+
+- Five targeted `q3_docs` searches found no production packet defining a
+  generic mode-4 Legendre coefficient family, its response scalar, or a Lean
+  constructor for the corresponding prolate eigenfunction.
+- The paper-level source object is nevertheless identifiable: for
+  `λ = √m`, the selected mode is `h₄,λ(x) = PS₄,₀(2πm, x/λ)`, with the
+  dimensionless spheroidal parameter `γ = 2πm` and `G = γ² = 4π²m²`.
+- DLMF §30.8 supplies the Legendre expansion and recurrence.  Under the project
+  index `q ≥ 0`, the natural coefficient is
+  `b4_m(q) = (-1)^q a⁰_{4,q-2}((2πm)²)`; the phase agrees because
+  `(-1)^(q-2) = (-1)^q`.
+- The same source gives factorial-type coefficient decay, sufficient at the
+  mathematical level for absolute and compact-uniform convergence on
+  `|t| < 1`; the finite sum over `n ≤ r` may therefore be interchanged with
+  the Legendre series.
+- The response `Aresponse r q z = ∑ n in Finset.Icc 1 r, P_(2q)(n*z)` is a
+  project definition.  Its intended crosswalk is
+  `∑' q, b4_m(q) * Aresponse r q z = ∑ n in Finset.Icc 1 r, phi4_m(n*z)`.
+- Existing band rigidity then rules out identically-zero projection on the
+  open tooth band once `phi4_m` is supplied as a nonzero analytic mode.
+- Production Lean currently has neither orthogonal Legendre polynomials nor a
+  source-locked constructor/selection theorem for `PS₄,₀`; `ProlatePair` is
+  only a hypothesis-bearing wrapper.  Merely minting these facts as structure
+  fields would not discharge the source-construction obligation.
+- Provisional stop is `G5_JACOBI_SOURCE_MODE4_OBJECT_LOCK_GAP`; no Lean source
+  file is authorized until the reviewer decides whether a conditional
+  source-data interface is a legal intermediate theorem or an assumption mint.
+- This audit does not close G5/S1, alter H2a or H2b, promote Route B, claim RH,
+  or create Bus 010.
