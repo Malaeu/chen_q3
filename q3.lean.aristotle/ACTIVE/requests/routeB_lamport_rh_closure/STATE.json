@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 59,
-  "updated_at": "2026-08-05T00:52:28+02:00",
+  "revision": 60,
+  "updated_at": "2026-08-05T00:55:07+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,7 +1190,7 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV59",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV60",
     "status": "BONAMI_KAROUI_EXPLICIT_SEPARATOR_FOUND_PROSHKA_ADJUDICATION_IN_PROGRESS_CROSSWALK_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
@@ -1235,7 +1235,8 @@
         "eprint_sha256": "a1276543c9ba5c0672f34e027bff8fe04b2fbe26711bd106e16e7994cbd7e30d",
         "lower_endpoint": "C_SQUARED_TIMES_TILDE_PHI_3PI_OVER_2C_SQUARED_MINUS_G",
         "upper_endpoint": "C_SQUARED_TIMES_TILDE_PHI_3PI_OVER_C_SQUARED_MINUS_G",
-        "strict_order": "CHI_2_LT_LOWER_PLUS_G_LT_CHI_4_LT_UPPER_PLUS_G_LT_CHI_6",
+        "strict_order": "SL_CHI_2_LT_LOWER_PLUS_G_LT_SL_CHI_4_LT_UPPER_PLUS_G_LT_SL_CHI_6",
+        "index_guard": "SL_CHI_N_ARE_DIFFERENTIAL_EIGENVALUES_NOT_PROLATEPAIR_CHI2_FINITE_FOURIER_SCALAR",
         "remaining_formal_crosswalk": "ORDERED_PSWF_SPECTRUM_TO_EXACT_INFINITE_TAIL_SCHUR_NEGATIVE_COUNT_OR_DETERMINANT_SIGN",
         "mathlib_complete_elliptic_integral_receiver": "NOT_FOUND"
       },

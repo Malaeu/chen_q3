@@ -53,6 +53,12 @@
   `LambdaLower = c^2 * tildePhi (3*pi/(2*c))^2 - G` and
   `LambdaUpper = c^2 * tildePhi (3*pi/c)^2 - G`:
   `chi_2 < LambdaLower + G < chi_4 < LambdaUpper + G < chi_6`.
+- Here every `chi_n` is Bonami--Karoui's ordered **differential**
+  Sturm--Liouville eigenvalue.  It is not the repository field
+  `ProlatePair.chi2`, which denotes the finite-Fourier scalar attached to the
+  degree-4 time mode (`h4 <-> chi2` in the separate even-sector Fourier
+  indexing).  Thus using differential indices `2,4,6` here preserves, rather
+  than violates, the locked degree-4 object dictionary.
 - This is a materially stronger source lock than the Dunster fixed-mode
   asymptotic `Lambda_4 = -G + 9*sqrt G + O(1)`: no unknown remainder
   constant or finite threshold occurs in the Bonami--Karoui statement.
