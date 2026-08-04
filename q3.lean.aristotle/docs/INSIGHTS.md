@@ -49376,3 +49376,20 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - The first transaction proves only the conditional bridge from those two
   concrete analytic inputs plus `centeredXi 0 ≠ 0`; it does not supply `SlotS1`,
   close G5, promote Route B, claim H2b, or create Bus 010.
+
+## 2026-08-04 — G5 critical-moment to post-anchor substrip bound (in progress)
+
+- Four targeted `q3_docs` searches returned no additional source packet; the
+  production definitions in `D0CanonicalApproximation.lean` and
+  `D0CenteredCriticalMoment.lean` are the exact executable contract.
+- The next honest compactness input is boundedness of the normalized selected
+  family on each closed substrip `|Im z| ≤ σ < 1/2`, not whole-plane local
+  boundedness of the unnormalized `rawFplus` family.
+- The required analytic crosswalk is the centered finite-window identity for
+  `rawFplus`, followed by `‖exp (i z t)‖ ≤ exp (σ |t|)` on that substrip.
+- `CenteredTrialCriticalMomentRatio` then cancels the same nonzero denominator
+  used by `centeredPstarFamily`, yielding the uniform candidate bound
+  `‖centeredXi 0‖ * Cσ` on the exact carrier `D.parent (D.extract k)`.
+- This transaction must retain the strict boundary `σ < 1/2` and must not claim
+  `SelectedRawLocallyBounded`, a nonzero cluster, `SlotS1`, G5 closure, route
+  promotion, RH, or a Bus 010 goal.
