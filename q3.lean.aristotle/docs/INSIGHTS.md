@@ -11,6 +11,31 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-05, closed node) -- G5 same-determinant Hermitian Schur supplier
+
+- Target: discharge the abstract same-determinant Hermitian-matrix input of the
+  committed G5 inertia receiver without changing the scalar root function.
+- Implemented `D0Mode4SchurHermitianSymmetrization.lean`.  Its explicit
+  off-diagonal is `-sqrt (L_(q+1) * U_q)`; nonnegativity of every lower
+  coefficient and positivity of every upper coefficient make this real.
+- `mode4HermitianSchurMatrix_isHermitian` proves the matrix is Hermitian by
+  entrywise symmetry.  The determinant recurrence uses
+  `sqrt (L_(q+1) * U_q)^2 = L_(q+1) * U_q`, hence
+  `det_mode4HermitianSchurMatrix_eq_mode4SchurMatrix_det` is an exact equality,
+  not a sign-only comparison or an assumed similarity.
+- The specialized root-bracket receiver now discharges Hermitianity and the
+  determinant crosswalk internally.  Its only remaining endpoint inputs are
+  two determinant-nonzero facts and the negative-eigenvalue counts `2` and
+  `3`; continuity and determinant-to-root orientation are already supplied.
+- Direct Lean validation passes and every printed public theorem has only
+  `[propext, Classical.choice, Quot.sound]`.  No `sorry`, `admit`, declared
+  project axiom, or `native_decide` is used.
+- Boundary: this node does not assert the concrete endpoint counts.  The next
+  live G5 task is their source/Sturm materialization together with endpoint
+  nonsingularity.  Lamport `STATE.json` is synchronized at revision 55 while
+  preserving its idle control sentinel; external Proshka ratification remains
+  pending and no Bus 010 or route promotion was created.
+
 ## Synthesis (2026-08-05, closed node) -- G5 Hermitian inertia-to-root-sign receiver
 
 - Target: turn a source/Sturm negative-eigenvalue count for a Hermitian matrix

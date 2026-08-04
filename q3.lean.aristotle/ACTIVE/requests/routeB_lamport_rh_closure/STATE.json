@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 54,
-  "updated_at": "2026-08-03T23:57:14+02:00",
+  "revision": 55,
+  "updated_at": "2026-08-05T00:04:30+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1189,6 +1189,45 @@
     "single_owner_input": "SUPPLY_AND_RATIFY_A_NEW_NONTAUTOLOGICAL_WPRIME_CONSUMER_DEFINITION_WITH_EXACT_B_ORIENTATION",
     "rh_status": "NOT_RH"
   },
+  "g5_mode4_root_bracket": {
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV55",
+    "status": "SAME_DETERMINANT_HERMITIAN_SCHUR_SUPPLIER_LEAN_PROVED_ENDPOINT_COUNTS_OPEN_NOT_RH",
+    "proof_artifacts": [
+      "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
+      "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
+      "Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean"
+    ],
+    "latest_proof_artifact": {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
+      "sha256": "258805a26baac882b0e88e1e9c986787ab97ccbce0446da6bdb1a921bf233138"
+    },
+    "proved": [
+      "SCHUR_DETERMINANT_EQUALS_POSITIVE_UPPER_PRODUCT_TIMES_ROOT_FUNCTION",
+      "HERMITIAN_DETERMINANT_SIGN_EQUALS_NEGATIVE_EIGENVALUE_PARITY",
+      "EXPLICIT_HERMITIAN_SCHUR_MATRIX",
+      "HERMITIAN_SCHUR_DETERMINANT_EQUALS_ORIGINAL_SCHUR_DETERMINANT",
+      "CONDITIONAL_ROOT_BRACKET_FROM_ENDPOINT_COUNTS_TWO_AND_THREE"
+    ],
+    "remaining_inputs": [
+      "LOWER_ENDPOINT_DETERMINANT_NONZERO",
+      "UPPER_ENDPOINT_DETERMINANT_NONZERO",
+      "LOWER_ENDPOINT_NEGATIVE_EIGENVALUE_COUNT_TWO",
+      "UPPER_ENDPOINT_NEGATIVE_EIGENVALUE_COUNT_THREE"
+    ],
+    "validation": {
+      "direct_lean": "PASS",
+      "target_build_jobs": 7750,
+      "full_build_jobs": 7817,
+      "q3_check": "PASS",
+      "axioms": ["propext", "Classical.choice", "Quot.sound"],
+      "holes": 0
+    },
+    "external_proshka_ratification": "PENDING_TRANSPORT",
+    "does_not_change_active_leaf": true,
+    "bus_010": "VOID",
+    "route_status": "CHALLENGER",
+    "rh_status": "NOT_RH"
+  },
   "external_obligations": {
     "H2B2_EXACT_MODIFIED_HILBERT_FACTORIZATION": {
       "name": "ExactModifiedHilbertQuotientAndTheorem510Factorization",
@@ -1346,7 +1385,8 @@
       "H2B2B2B_ALL_SPECTRAL_POINT_EXTENSION_REV39",
       "H2B2B2B2_QUOTIENT_RADICAL_METRIC_REV40",
       "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41",
-      "SOFT_0_ROOF_AND_S2_TYPECHECK_REV42"
+      "SOFT_0_ROOF_AND_S2_TYPECHECK_REV42",
+      "G5_MODE4_R1A_ROOT_BRACKET_REV55"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -3937,6 +3977,13 @@
       "progress_class": "PROOF_REPRESENTATION_AND_CHANNEL_INFRASTRUCTURE_PROGRESS",
       "result": "MUNTZ_PORT_PREP_OK;WINDOW_ENDPOINT_AE_BRIDGE_LEAN;MELLIN_CONVENTION_BRIDGE_LEAN;ALL_ROUTE_B_LEAN_MIRRORED",
       "honesty": "CLOUD_MUNTZ_NOT_PORTED_RIEMANN_SUM_LIPSCHITZ_GAP_OPEN_ESTAR_CONTINUATION_LEMMA_MISSING_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T00:04:30+02:00",
+      "event": "G5_MODE4_SAME_DETERMINANT_HERMITIAN_SCHUR_SUPPLIER_PROVED",
+      "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
+      "result": "EXPLICIT_HERMITIAN_SCHUR_MATRIX;EXACT_DETERMINANT_CROSSWALK;INERTIA_TO_ROOT_SIGN_RECEIVER;CONDITIONAL_IVT_ROOT_BRACKET",
+      "honesty": "ENDPOINT_NONSINGULARITY_AND_NEGATIVE_EIGENVALUE_COUNTS_TWO_THREE_OPEN_EXTERNAL_PROSHKA_RATIFICATION_PENDING_ACTIVE_CONTROL_SENTINEL_UNCHANGED_NO_BUS_010_NOT_RH"
     }
   ]
 }
