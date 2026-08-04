@@ -49325,3 +49325,33 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `G3_THEOREM510_SHIFTED_WEIL_SOURCE_OBJECT_CROSSWALK_MISSING`.
 - H2a/simple-even, concrete Theorem510RealZeroBridge supply, H2b, route state,
   `CHALLENGER / NOT_RH`, and Bus 010 VOID are unchanged.
+
+## 2026-08-04 — Literal CCM `N=1` full-source entry packet (in progress)
+
+- Four targeted `q3_docs` queries for the complete CCM finite Weil entry and
+  its `N=1` constructor returned no hit; the authoritative object is therefore
+  being transcribed directly from arXiv:2511.22755v1.
+- CCM equations (2.9)--(2.10) give the closed piecewise formula for
+  `q(U_n,U_m)(x)`; (4.1) identifies each matrix entry with
+  `Ψ♯(q(U_n,U_m) ∘ log)`.
+- The exact sign ledger is equations (3.13)--(3.16):
+  `Ψ♯ = W₀,₂♯ - Wℝ♯ - ∑ₚ Wₚ♯`, including the load-bearing factor `1/2` in
+  the archimedean term.
+- Equation (4.2) is the closed pole-term entry; equation (4.3) is the finite
+  von-Mangoldt sum `∑_{1<k≤exp L} Λ(k) k⁻¹ᐟ² q(log k)`; equation (4.4) is the
+  exact archimedean entry as an integral, so no hypergeometric expansion is
+  required to define the source matrix.
+- Under the project crosswalk `λ = √m`, one has `L = 2 log λ = log m` and
+  `exp L = m`; the non-archimedean entry is consequently a genuinely finite
+  sum over `2 ≤ k ≤ m`, with no prime/distribution placeholder.
+- For the literal release test, the carrier is the ordered three-mode type
+  `(-1,0,1)` and all nine entries are evaluations of the same closed
+  `τ(m,n)` definition; free `τ`, `a`, `b`, `BW`, or matrix parameters are
+  forbidden.
+- The archimedean integral may be represented on `Ioc 0 L`; this is the same
+  Lebesgue integral as the source's `[0,L]` formula and avoids assigning a
+  spurious value to its removable endpoint quotient.
+- The target release theorem is only exact-source construction plus symmetry,
+  centrosymmetry, the structured commutator, and the `δ = L⁻¹ᐟ² η`
+  coordinate identity.  Positivity, simple/even ground supply, H2b, route
+  promotion, RH, and Bus 010 remain outside this packet.
