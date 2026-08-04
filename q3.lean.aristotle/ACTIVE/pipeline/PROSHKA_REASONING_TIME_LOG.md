@@ -59,3 +59,29 @@ notes: >-
   owner fork B (parameterized symbolic Jacobi/Schur/Sturm), pending explicit
   owner authorization. No Lean or route-state write was authorized.
 ```
+
+### 2026-08-05 — G5 direct endpoint determinant-sign adjudication
+
+```yaml
+proof_address: G5_MODE4_R1A
+front: G5/S1
+transaction: G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS
+request_message_id: 5c6c157b-51c7-442c-b794-cfa1708b00e1
+sent_at: 2026-08-05T00:41:58.824+02:00
+completed_at: pending
+wall_seconds: pending
+wall_human: pending
+answer_now_shown: false
+answer_now_clicked: false
+primary: pending
+status: IN_PROGRESS
+result_pointer: pending_new_RH_Maerz_2026_project_chat
+notes: >-
+  Fresh project chat. The 276937-byte context pack at SHA-256
+  8861088583d68b3aedb54a13c3bd9b6d1befda501500c0d279bbb2ace3064bbd
+  pins HEAD 7f4ef457 and the determinant-sign interface. The prompt also records
+  Dunster arXiv:1601.00699v3 equations (106)-(107): the mode-four coefficient
+  9 is source-supported asymptotically, but no explicit finite remainder
+  constant or threshold was found. Proshka was observed in Pro reasoning
+  immediately after send. Never click Answer now.
+```
