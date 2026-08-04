@@ -11,6 +11,26 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-05, closed node) -- G5 Hermitian inertia-to-root-sign receiver
+
+- Target: turn a source/Sturm negative-eigenvalue count for a Hermitian matrix
+  with the same determinant as `mode4SchurMatrix` into the two strict signs of
+  `mode4RootFunction`.
+- Five `q3_docs` queries for Hermitian determinant signs, inertia, Sturm
+  sequences, and Jacobi symmetrization returned no candidates.
+- Mathlib's `Mathlib.Analysis.Matrix.Spectrum` supplies the exact kernel fact
+  `Matrix.IsHermitian.det_eq_prod_eigenvalues`; no ready theorem packaging the
+  parity of the negative-eigenvalue count into a determinant sign was found.
+- Implemented `D0Mode4SchurInertiaOrientation.lean`: the finite negative count,
+  `sign(det A)=(-1)^count` for nonsingular Hermitian `A`, strict positive and
+  negative residual signs for counts `2` and `3`, and the complete conditional
+  intermediate-value root-bracket receiver.
+- Targeted 7749-job build and `q3_check` pass.  Every printed theorem has only
+  `[propext, Classical.choice, Quot.sound]`; no holes or project axioms occur.
+- Boundary: the receiver does not invent the same-determinant Hermitian
+  symmetrization, endpoint nonsingularity, or source/Sturm counts.  Those are
+  now the exact remaining concrete inputs to the G5 bracket.
+
 ## Synthesis (2026-08-04, closed node) -- G5 mode-4 Schur/continuant orientation
 
 - Target: `det_mode4SchurMatrix_eq_upperProd_mul_rootFunction` in
