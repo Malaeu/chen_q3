@@ -49355,3 +49355,24 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   centrosymmetry, the structured commutator, and the `δ = L⁻¹ᐟ² η`
   coordinate identity.  Positivity, simple/even ground supply, H2b, route
   promotion, RH, and Bus 010 remain outside this packet.
+
+## 2026-08-04 — G5 exact post-anchor Montel gate (in progress)
+
+- Four targeted `q3_docs` searches returned no additional source packet for
+  the exact D0 selected-family Montel bridge; the production Lean interfaces
+  are therefore the authoritative contract for this structural transaction.
+- The carrier is fixed definitionally as
+  `D.parent (D.extract k)` through `selectedFamily (canonicalApproximation D)`;
+  no independent subsequence or diagonal is permitted.
+- `MontelNormalFamilies.montel_anchor_nonzero_limit` already supplies an entire
+  nonzero locally-uniform cluster from whole-plane local boundedness and the
+  fixed value at zero.
+- The missing normalization estimate splits exactly into a compact raw-family
+  bound and a uniform positive floor for `‖rawFplus ... 0‖`; the resulting bound
+  is `M * (‖centeredXi 0‖ / δ)` up to harmless reassociation.
+- Mathlib exposes both restriction of `TendstoLocallyUniformlyOn` by `.mono`
+  and the analytic identity theorem needed to convert global `L ≠ 0` into the
+  strip-local `ClusterData.limitNonzero` field.
+- The first transaction proves only the conditional bridge from those two
+  concrete analytic inputs plus `centeredXi 0 ≠ 0`; it does not supply `SlotS1`,
+  close G5, promote Route B, claim H2b, or create Bus 010.
