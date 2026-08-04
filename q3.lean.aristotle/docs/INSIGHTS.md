@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-05, in progress) -- G5 direct determinant-sign endpoint receiver
+## Synthesis (2026-08-05, closed node) -- G5 direct determinant-sign endpoint receiver
 
 - Target: bypass the unnecessary general Sturm-inertia formalization at the
   public interface and derive the cofinal root bracket directly from strict
@@ -25,9 +25,15 @@
   `mode4SchurMatrix_det_sign_eq_rootFunction_sign`.  Therefore strict positive
   and negative determinant endpoints transfer exactly to strict positive and
   negative values of the same scalar root function.
-- Planned public theorem: a conditional IVT receiver whose only concrete
-  endpoint payload is `0 < det ALower` and `det AUpper < 0`; Hermitianity,
-  determinant crosswalk, continuity, and orientation are internal.
+- Implemented
+  `exists_mode4RootFunction_eq_zero_of_hermitianSchur_det_pos_neg`; its only
+  concrete endpoint payload is `0 < det ALower` and `det AUpper < 0`.
+  Hermitianity, determinant crosswalk, continuity, and orientation are
+  internal.  The two one-sided transfer lemmas are public separately.
+- Direct Lean, targeted 7750-job build, full 7817-job build, and `q3_check`
+  pass.  All three new public theorems have only
+  `[propext, Classical.choice, Quot.sound]`; no holes, project axioms, or
+  `native_decide` occur.
 - Boundary: this receiver will not assert either endpoint sign, choose endpoint
   formulas, prove a cofinal threshold, close G5/S1, or change the route/bus
   state.  Counts `2`/`3` remain a sufficient optional supplier, not the public

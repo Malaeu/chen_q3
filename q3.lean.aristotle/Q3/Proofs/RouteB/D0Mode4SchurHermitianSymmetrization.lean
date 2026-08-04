@@ -412,6 +412,72 @@ theorem det_mode4HermitianSchurMatrix_eq_mode4SchurMatrix_det
       mProject K Λ hm hK,
     det_mode4SchurMatrix_eq_schurContinuant mProject K Λ hm hK]
 
+/-! ## Direct determinant-sign receivers -/
+
+/-- Strict positivity of the explicit Hermitian Schur determinant has exactly the same
+orientation as strict positivity of the scalar root function. -/
+theorem mode4RootFunction_pos_of_hermitianSchur_det_pos
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject) (hK : 1 ≤ K)
+    (hdet : 0 < (mode4HermitianSchurMatrix mProject Λ K).det) :
+    0 < mode4RootFunction mProject K Λ := by
+  apply sign_eq_one_iff.mp
+  rw [← mode4SchurMatrix_det_sign_eq_rootFunction_sign mProject K Λ hm hK]
+  rw [← det_mode4HermitianSchurMatrix_eq_mode4SchurMatrix_det
+    mProject K Λ hm hK]
+  exact sign_eq_one_iff.mpr hdet
+
+/-- Strict negativity of the explicit Hermitian Schur determinant has exactly the same
+orientation as strict negativity of the scalar root function. -/
+theorem mode4RootFunction_neg_of_hermitianSchur_det_neg
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject) (hK : 1 ≤ K)
+    (hdet : (mode4HermitianSchurMatrix mProject Λ K).det < 0) :
+    mode4RootFunction mProject K Λ < 0 := by
+  apply sign_eq_neg_one_iff.mp
+  rw [← mode4SchurMatrix_det_sign_eq_rootFunction_sign mProject K Λ hm hK]
+  rw [← det_mode4HermitianSchurMatrix_eq_mode4SchurMatrix_det
+    mProject K Λ hm hK]
+  exact sign_eq_neg_one_iff.mpr hdet
+
+/-- Minimal conditional endpoint receiver.  The matrix construction, Hermitianity,
+determinant crosswalk, sign orientation, and continuity are internal; only the two strict
+endpoint determinant inequalities remain concrete. -/
+theorem exists_mode4RootFunction_eq_zero_of_hermitianSchur_det_pos_neg
+    (mProject K : ℕ) (ΛLower ΛUpper : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hLowerUpper : ΛLower ≤ ΛUpper)
+    (hUpper20 : ΛUpper ≤ 20)
+    (hLowerPos :
+      0 < (mode4HermitianSchurMatrix mProject ΛLower K).det)
+    (hUpperNeg :
+      (mode4HermitianSchurMatrix mProject ΛUpper K).det < 0) :
+    ∃ Λ ∈ Set.Icc ΛLower ΛUpper,
+      mode4RootFunction mProject K Λ = 0 := by
+  have hK1 : 1 ≤ K := le_trans (by decide : 1 ≤ 3) hK
+  have hpos : 0 < mode4RootFunction mProject K ΛLower :=
+    mode4RootFunction_pos_of_hermitianSchur_det_pos
+      mProject K ΛLower hm hK1 hLowerPos
+  have hneg : mode4RootFunction mProject K ΛUpper < 0 :=
+    mode4RootFunction_neg_of_hermitianSchur_det_neg
+      mProject K ΛUpper hm hK1 hUpperNeg
+  have hcont : ContinuousOn (mode4RootFunction mProject K)
+      (Set.Icc ΛLower ΛUpper) :=
+    (mode4RootFunction_continuousOn_lambda mProject K hm hK hsep).mono
+      (fun x hx => hx.2.trans hUpper20)
+  have hz : (0 : ℝ) ∈ Set.Icc
+      (mode4RootFunction mProject K ΛUpper)
+      (mode4RootFunction mProject K ΛLower) :=
+    ⟨hneg.le, hpos.le⟩
+  obtain ⟨Λ, hΛ, hroot⟩ :=
+    intermediate_value_Icc' hLowerUpper hcont hz
+  exact ⟨Λ, hΛ, hroot⟩
+
 /-! ## Specialized inertia receivers -/
 
 theorem mode4RootFunction_pos_of_hermitianSchur_count_two
@@ -488,6 +554,9 @@ theorem exists_mode4RootFunction_eq_zero_of_hermitianSchur_counts_two_three
 #print axioms mode4HermitianLeftContinuantMatrix_det_eq_scaledLeftContinuant
 #print axioms mode4HermitianSchurMatrix_isHermitian
 #print axioms det_mode4HermitianSchurMatrix_eq_mode4SchurMatrix_det
+#print axioms mode4RootFunction_pos_of_hermitianSchur_det_pos
+#print axioms mode4RootFunction_neg_of_hermitianSchur_det_neg
+#print axioms exists_mode4RootFunction_eq_zero_of_hermitianSchur_det_pos_neg
 #print axioms mode4RootFunction_pos_of_hermitianSchur_count_two
 #print axioms mode4RootFunction_neg_of_hermitianSchur_count_three
 #print axioms exists_mode4RootFunction_eq_zero_of_hermitianSchur_counts_two_three
