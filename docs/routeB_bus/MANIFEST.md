@@ -321,7 +321,9 @@ Proshka mirror from `rh_lean_01_2026`; 267 mirrored source files plus `CHANNEL_R
 | `maps/2026-08-03_spectral_engine_beta_rows.svg` | Route B map (Mythos) — M0..M4 + β1..β9 detail | `2c74812eabff626eb1889e8ae1b9d141d1fb14a8dd23c0f4041ad4217b045aaf` |
 | `maps/2026-08-03_four_open_fronts.svg` | Route B map (Mythos) — G2/G3/G5/G6 open fronts + readiness | `793777f20de6d96c33e7ce3563ef2d8b5e5bd18cdfc31f9a3b8f1a9ad8239490` |
 | `maps/2026-07-31_rh_canvas_v3_seven_gates.svg` | Route B map — SUPERSEDED by 2026-08-03_master_roof_seven_gates.svg (kept, not deleted) | SUPERSEDED |
-| `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
+| `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `663b3875f99881c24826c88cd7de06415a9ecad40d924105df1ce72338a65543` |
+| `proshka/ARSENAL_MANDATE_2026-08-04.md` | Proshka Ф3 arsenal mandate (5 duals) | `2167a1f530fecb71c0af2af96ae7414f7b98ee36afedefd8f176cee605d38f4a` |
+| `proshka/_backups/PROSHKA_SYSTEM_PROMPT_v2_working_2026-08-04_pre-arsenal.md` | Proshka prompt backup (pre-arsenal, rollback ca9243ea) | `ca9243ea7fdca2393992327a2eec34fd2e6d736c73e4aa39c8b062a28971ba3d` |
 
 `MANIFEST.md` is excluded from its own hash table.
 
