@@ -49297,3 +49297,31 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
   `ARISTOTLE_PROLATE_COMMUTATION_VALID_BUT_NOT_STRICTLY_STRONGER_NOT_INTEGRATED`.
   No generated Lean file is integrated; backend A remains at the ratified
   construction/selection stop.
+
+## 2026-08-04 — Theorem 5.10 shifted-Weil positivity source acquisition (in progress)
+
+- Four targeted `q3_docs` queries returned no hit for the exact Theorem 5.10
+  positivity supplier, carrier, basis, or project crosswalk.
+- The official arXiv v1 e-prints are source-locked at SHA-256
+  `96c88486…81f3bf4a` (CCM, 2511.22755) and `d78c6f23…d65d5f7`
+  (CvS, 2511.23257); no later arXiv version was found.
+- CCM `mc2arXiv.tex` lines 1085--1091 explicitly applies Lemma `key` to
+  `T := QW_λ^N - ε_N id`, with `ε_N` the simple smallest eigenvalue of
+  `QW_λ^N`; therefore this exact shifted form is positive semidefinite and has
+  radical `ℂ ξ` under the stated simplicity hypothesis.
+- The exact finite carrier is `E_N = span {V_n | |n| ≤ N}` with the `V_n`
+  orthonormal; `δ_N = L⁻¹ᐟ² ∑ V_n`, and CCM records the normalization change
+  `δ_N(ξ)=1` versus `⟨ξ',η⟩=1` as `ξ' = L⁻¹ᐟ² ξ` (lines 984, 1104).
+- CvS `Araki-final-oct25.tex` Lemma `key` (line 1176), Theorem `finmain`
+  (line 1273), and Proposition `prop:finmain` (line 1356) independently consume
+  a real symmetric positive matrix with one-dimensional even kernel.
+- Route contracts already reserve `WeilMat_(m,N)` and
+  `ShiftedWeilMat_(m,N) = QW^N - ε I` in
+  `D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md`, and the quotient carrier/metric in
+  `D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md`.
+- Production Route B Lean contains the generic M1/M2/M3 consumer chain but no
+  constructor or exact-source crosswalk for those concrete matrices; the
+  revised live blocker is
+  `G3_THEOREM510_SHIFTED_WEIL_SOURCE_OBJECT_CROSSWALK_MISSING`.
+- H2a/simple-even, concrete Theorem510RealZeroBridge supply, H2b, route state,
+  `CHALLENGER / NOT_RH`, and Bus 010 VOID are unchanged.
