@@ -39,6 +39,24 @@
   state.  Counts `2`/`3` remain a sufficient optional supplier, not the public
   minimum.
 
+## Synthesis (2026-08-05, closed node) -- canonical mode-4 tail split
+
+- The elementary choice `K = 4 * mProject` now discharges the quantitative
+  tail-separation premise for every `mProject >= 2`.  The proof uses only the
+  exact project definitions, `Real.pi_lt_d2`, and ordered-ring arithmetic.
+- Implemented `mode4Jacobi_tail_separated_at_four_mul` and the specialized
+  direct receiver
+  `exists_mode4RootFunction_eq_zero_at_four_mul_of_hermitianSchur_det_pos_neg`.
+  The latter fixes the split and internalizes both `3 <= K` and the universal
+  tail inequality.
+- Consequently the canonical-split root bracket now needs only the endpoint
+  order, `LambdaUpper <= 20`, and the two strict determinants at
+  `K = 4 * mProject`.  It does not assert those signs or any spheroidal
+  eigenvalue.
+- Direct Lean passes for both edited files; the target build passes 7750 jobs,
+  the full build passes 7817 jobs, and `q3_check` is `ok`.  Both new public
+  theorems use exactly `[propext, Classical.choice, Quot.sound]`.
+
 ## Synthesis (2026-08-05, source theorem found) -- explicit PSWF eigenvalue separator
 
 - Primary source: Bonami--Karoui, arXiv:1405.3676v2, Theorem

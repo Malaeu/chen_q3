@@ -478,6 +478,31 @@ theorem exists_mode4RootFunction_eq_zero_of_hermitianSchur_det_pos_neg
     intermediate_value_Icc' hLowerUpper hcont hz
   exact ⟨Λ, hΛ, hroot⟩
 
+/-- Canonical-split form of the direct endpoint receiver.  Choosing
+`K = 4 * mProject` discharges both the minimum split size and the quantitative
+tail-separation premise; only the two concrete determinant signs and the
+endpoint order remain. -/
+theorem exists_mode4RootFunction_eq_zero_at_four_mul_of_hermitianSchur_det_pos_neg
+    (mProject : ℕ) (ΛLower ΛUpper : ℝ)
+    (hm : 2 ≤ mProject)
+    (hLowerUpper : ΛLower ≤ ΛUpper)
+    (hUpper20 : ΛUpper ≤ 20)
+    (hLowerPos :
+      0 < (mode4HermitianSchurMatrix mProject ΛLower (4 * mProject)).det)
+    (hUpperNeg :
+      (mode4HermitianSchurMatrix mProject ΛUpper (4 * mProject)).det < 0) :
+    ∃ Λ ∈ Set.Icc ΛLower ΛUpper,
+      mode4RootFunction mProject (4 * mProject) Λ = 0 := by
+  have hK : 3 ≤ 4 * mProject := by omega
+  have hsep :
+      ∀ q ≥ 4 * mProject,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20 :=
+    fun q hq => mode4Jacobi_tail_separated_at_four_mul mProject q hm hq
+  exact exists_mode4RootFunction_eq_zero_of_hermitianSchur_det_pos_neg
+    mProject (4 * mProject) ΛLower ΛUpper hm hK hsep hLowerUpper
+    hUpper20 hLowerPos hUpperNeg
+
 /-! ## Specialized inertia receivers -/
 
 theorem mode4RootFunction_pos_of_hermitianSchur_count_two
@@ -557,6 +582,7 @@ theorem exists_mode4RootFunction_eq_zero_of_hermitianSchur_counts_two_three
 #print axioms mode4RootFunction_pos_of_hermitianSchur_det_pos
 #print axioms mode4RootFunction_neg_of_hermitianSchur_det_neg
 #print axioms exists_mode4RootFunction_eq_zero_of_hermitianSchur_det_pos_neg
+#print axioms exists_mode4RootFunction_eq_zero_at_four_mul_of_hermitianSchur_det_pos_neg
 #print axioms mode4RootFunction_pos_of_hermitianSchur_count_two
 #print axioms mode4RootFunction_neg_of_hermitianSchur_count_three
 #print axioms exists_mode4RootFunction_eq_zero_of_hermitianSchur_counts_two_three

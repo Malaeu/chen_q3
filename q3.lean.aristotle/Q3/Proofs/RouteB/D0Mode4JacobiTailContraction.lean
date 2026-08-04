@@ -36,6 +36,34 @@ noncomputable def mode4JacobiCenter
       ((2 * N - 1) * (2 * N + 3)) -
     Λ
 
+/-- The canonical split `K = 4 * mProject` satisfies the quantitative tail
+separation used by the mode-four contraction on the whole cofinal range
+`mProject ≥ 2`.  This is an elementary consequence of `π < 3.15`; it does
+not use or assert a spheroidal eigenvalue. -/
+theorem mode4Jacobi_tail_separated_at_four_mul
+    (mProject q : ℕ)
+    (hm : 2 ≤ mProject)
+    (hq : 4 * mProject ≤ q) :
+    (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+      mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20 := by
+  have hmR : (2 : ℝ) ≤ (mProject : ℝ) := by exact_mod_cast hm
+  have hqR : (4 : ℝ) * (mProject : ℝ) ≤ (q : ℝ) := by
+    exact_mod_cast hq
+  have hpi : Real.pi < (3.15 : ℝ) := Real.pi_lt_d2
+  have hpi0 : 0 ≤ Real.pi := Real.pi_pos.le
+  have hpiSq : Real.pi ^ 2 < (3.15 : ℝ) ^ 2 := by
+    nlinarith
+  have hdiff : 0 ≤ (q : ℝ) - 4 * (mProject : ℝ) := by
+    linarith
+  have hsum : 0 ≤ (q : ℝ) + 4 * (mProject : ℝ) := by
+    positivity
+  have hsq : 0 ≤
+      ((q : ℝ) - 4 * (mProject : ℝ)) *
+        ((q : ℝ) + 4 * (mProject : ℝ)) :=
+    mul_nonneg hdiff hsum
+  unfold mode4JacobiG mode4JacobiIndex
+  nlinarith [sq_nonneg ((mProject : ℝ) - 2)]
+
 noncomputable def mode4TailMap
     (G Λ : ℝ) (q : ℕ) (x : ℝ) : ℝ :=
   mode4JacobiLower G q /
@@ -233,5 +261,6 @@ theorem mode4TailMap_mapsTo_and_contracts
     rw [abs_of_nonneg hratioNonneg]
     exact mul_le_mul_of_nonneg_right hratio (abs_nonneg _)
 
+#print axioms mode4Jacobi_tail_separated_at_four_mul
 #print axioms exists_mode4TailStart
 #print axioms mode4TailMap_mapsTo_and_contracts
