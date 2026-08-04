@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-04, in progress) -- G5 mode-4 Schur/continuant orientation
+## Synthesis (2026-08-04, closed node) -- G5 mode-4 Schur/continuant orientation
 
 - Target: `det_mode4SchurMatrix_eq_upperProd_mul_rootFunction` in
   `Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean`.
@@ -19,14 +19,26 @@
   returned no candidates.
 - Mathlib supplies generic determinant expansion and determinant-preserving
   row/column operations, but no ready tridiagonal continuant theorem was found.
-- Cheapest rigorous route: define a scalar continuant recurrence matching
-  `mode4LeftPair`, prove its product normalization by induction, and connect a
-  separately defined Schur characteristic to `mode4RootFunction`.
-- Do not claim a literal `Matrix.det` identity until the tridiagonal matrix
-  indexing/orientation is proved; the scalar theorem is the admissible first
-  receiver and the exact remaining matrix gap must stay named.
-- Required trust profile: no holes, no project axioms, and only the standard
-  Lean axiom triple (or a strict subset).
+- Implemented the rigorous route: `mode4LeftContinuantMatrix` reverses the
+  finite Jacobi index order so first-row Laplace expansion exactly matches the
+  denominator-cleared left recurrence; `mode4SchurMatrix` replaces its newest
+  diagonal by `C_(K-1) - U_(K-1) R_K`.
+- `det_mode4SchurMatrix_eq_schurContinuant` proves the literal matrix
+  determinant identity.  The composed theorem
+  `det_mode4SchurMatrix_eq_upperProd_mul_rootFunction` fixes the orientation as
+  `det = (prod_{q<K} U_q) * mode4RootFunction`, and
+  `mode4SchurMatrix_det_sign_eq_rootFunction_sign` uses positivity of every
+  upper factor to transfer the sign exactly.
+- Direct Lean validation, the targeted 7748-job build, `q3_check`, and the
+  full 7817-job project build pass with no holes or project axioms; every
+  printed public theorem has exactly the standard axiom profile
+  `[propext, Classical.choice, Quot.sound]`.
+- Boundary preserved: this closes the determinant/root-function crosswalk.  It
+  does not itself supply a source-locked spectral count or the two strict
+  endpoint signs needed for the cofinal root bracket.
+- External Proshka ratification is still pending because the controllable
+  ChatGPT browser session was unauthenticated; Route B state therefore remains
+  unchanged (`CHALLENGER / NOT_RH`, no Bus 010).
 
 ## Insight (2026-07-07, Route B state hygiene) -- TroughRelabel_and_BusSync_v1
 
