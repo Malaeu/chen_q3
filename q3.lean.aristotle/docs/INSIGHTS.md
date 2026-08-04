@@ -39,6 +39,37 @@
   state.  Counts `2`/`3` remain a sufficient optional supplier, not the public
   minimum.
 
+## Synthesis (2026-08-05, source theorem found) -- explicit PSWF eigenvalue separator
+
+- Primary source: Bonami--Karoui, arXiv:1405.3676v2, Theorem
+  `chi-between2` / equation `boundschi2`.  For every `c > 0` and `n >= 2`,
+  it proves the strict enclosure
+  `c * tildePhi (pi*n/(2*c)) < sqrt (chi_n c) <
+  c * tildePhi (pi*(n+1)/(2*c))`; `tildePhi` is strictly increasing and
+  the width between adjacent endpoints is less than `1`.
+- With the project convention `G = c^2` and shifted spectral parameter
+  `Lambda = chi - G`, the source therefore separates the even indices
+  `n = 2, 4, 6` by the explicit candidates
+  `LambdaLower = c^2 * tildePhi (3*pi/(2*c))^2 - G` and
+  `LambdaUpper = c^2 * tildePhi (3*pi/c)^2 - G`:
+  `chi_2 < LambdaLower + G < chi_4 < LambdaUpper + G < chi_6`.
+- This is a materially stronger source lock than the Dunster fixed-mode
+  asymptotic `Lambda_4 = -G + 9*sqrt G + O(1)`: no unknown remainder
+  constant or finite threshold occurs in the Bonami--Karoui statement.
+- It is not yet a Lean endpoint-sign supplier.  The current exact
+  `mode4HermitianSchurMatrix` contains the infinite recessive tail through a
+  Schur complement.  A formal receiver must still identify its negative
+  eigenvalue count (or determinant sign) with the ordered PSWF spectrum below
+  the chosen endpoint.  The repository source dossier establishes this
+  ordering and parity at statement level, but no Lean `chi_n` spectral family
+  or Schur-complement/infinite-Jacobi count crosswalk exists yet.
+- Mathlib has no ready complete-elliptic-integral implementation for
+  `tildePhi`.  Consequently a direct formalization of the displayed endpoint
+  formulas is substantial; the preferred next node is the smallest abstract
+  source-spectrum-to-Schur-count receiver that keeps the Bonami--Karoui
+  inequalities as explicit future inputs.  No diagnostic `8/10` asymptotic
+  endpoint is authorized.
+
 ## Synthesis (2026-08-05, in progress) -- G5 source-locked endpoint count fork
 
 - Exact remaining target after the committed determinant, inertia, and
