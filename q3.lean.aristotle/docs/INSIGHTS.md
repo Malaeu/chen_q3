@@ -49723,5 +49723,11 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   source-locked endpoint/crosswalk order under follow-up adjudication: formal
   Bonami--Karoui `tildePhi`, differential-spectrum-to-exact-Schur inertia, or
   direct finite-left envelope signs.
+- The canonical assembly theorem
+  `exists_mode4RootFunction_eq_zero_at_four_mul_of_finiteLeft_envelopes`
+  additionally fixes `K = 4m`, discharges tail separation and both determinant
+  signs, and feeds the existing continuity/IVT receiver.  Its public concrete
+  inputs are now exactly the endpoint order, the upper-domain bound, and the
+  two strict finite-left envelope inequalities.
 - G5/S1 remains OPEN.  Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains
   VOID; no route promotion or RH claim follows.

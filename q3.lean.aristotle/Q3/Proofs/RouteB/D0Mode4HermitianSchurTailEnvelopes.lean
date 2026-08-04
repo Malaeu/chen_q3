@@ -148,7 +148,50 @@ theorem mode4HermitianSchur_det_neg_of_finiteLeft_upperEnvelope_neg
     (mode4HermitianSchur_det_le_finiteLeft_upperEnvelope
       mProject K Λ hm hK hsep hΛ) henv
 
+/-- Canonical `K = 4m` assembly.  The infinite tail, determinant signs, continuity, and split
+separation are all discharged internally; only the two strict finite-left envelope inequalities
+at the chosen endpoints remain. -/
+theorem exists_mode4RootFunction_eq_zero_at_four_mul_of_finiteLeft_envelopes
+    (mProject : ℕ) (ΛLower ΛUpper : ℝ)
+    (hm : 2 ≤ mProject)
+    (hLowerUpper : ΛLower ≤ ΛUpper)
+    (hUpper20 : ΛUpper ≤ 20)
+    (hLowerEnvelope : 0 <
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) ΛLower (4 * mProject) -
+        (1 / 2 : ℝ) *
+            mode4JacobiUpper (mode4JacobiG mProject) (4 * mProject - 1) *
+          max (mode4ScaledLeftContinuant
+            (mode4JacobiG mProject) ΛLower (4 * mProject - 1)) 0)
+    (hUpperEnvelope :
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) ΛUpper (4 * mProject) +
+          (1 / 2 : ℝ) *
+              mode4JacobiUpper (mode4JacobiG mProject) (4 * mProject - 1) *
+            max (-mode4ScaledLeftContinuant
+              (mode4JacobiG mProject) ΛUpper (4 * mProject - 1)) 0 < 0) :
+    ∃ Λ ∈ Set.Icc ΛLower ΛUpper,
+      mode4RootFunction mProject (4 * mProject) Λ = 0 := by
+  have hK : 3 ≤ 4 * mProject := by omega
+  have hsep :
+      ∀ q ≥ 4 * mProject,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20 :=
+    fun q hq => mode4Jacobi_tail_separated_at_four_mul mProject q hm hq
+  have hLower20 : ΛLower ≤ 20 := hLowerUpper.trans hUpper20
+  have hLowerDet :
+      0 < (mode4HermitianSchurMatrix
+        mProject ΛLower (4 * mProject)).det :=
+    mode4HermitianSchur_det_pos_of_finiteLeft_lowerEnvelope_pos
+      mProject (4 * mProject) ΛLower hm hK hsep hLower20 hLowerEnvelope
+  have hUpperDet :
+      (mode4HermitianSchurMatrix
+        mProject ΛUpper (4 * mProject)).det < 0 :=
+    mode4HermitianSchur_det_neg_of_finiteLeft_upperEnvelope_neg
+      mProject (4 * mProject) ΛUpper hm hK hsep hUpper20 hUpperEnvelope
+  exact exists_mode4RootFunction_eq_zero_at_four_mul_of_hermitianSchur_det_pos_neg
+    mProject ΛLower ΛUpper hm hLowerUpper hUpper20 hLowerDet hUpperDet
+
 #print axioms mode4HermitianSchur_det_ge_finiteLeft_lowerEnvelope
 #print axioms mode4HermitianSchur_det_le_finiteLeft_upperEnvelope
 #print axioms mode4HermitianSchur_det_pos_of_finiteLeft_lowerEnvelope_pos
 #print axioms mode4HermitianSchur_det_neg_of_finiteLeft_upperEnvelope_neg
+#print axioms exists_mode4RootFunction_eq_zero_at_four_mul_of_finiteLeft_envelopes
