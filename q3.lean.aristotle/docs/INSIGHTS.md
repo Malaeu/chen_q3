@@ -49393,3 +49393,24 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - This transaction must retain the strict boundary `σ < 1/2` and must not claim
   `SelectedRawLocallyBounded`, a nonzero cluster, `SlotS1`, G5 closure, route
   promotion, RH, or a Bus 010 goal.
+
+## 2026-08-04 — G5 centered-critical-strip Montel core (in progress)
+
+- Four targeted `q3_docs` searches returned no packet for a domain-local
+  Montel theorem; the implementation must therefore use the checked production
+  interfaces and Mathlib's compact-open Arzelà–Ascoli API directly.
+- `MontelNormalFamilies.lean` already contains the reusable compact-open proof
+  pattern, but its public theorem assumes entire functions and whole-plane
+  compact bounds; applying that theorem to strip-only bounds is invalid.
+- The correct carrier is the subtype
+  `{z : ℂ // z ∈ centeredCriticalStrip}`.  Compact subsets of that subtype map
+  to compact subsets of the ambient strip, so the supplied bound remains exact.
+- Equicontinuity must be obtained locally: openness of the strip gives an
+  ambient closed ball around each point, the common compact bound controls its
+  boundary, and Cauchy's estimate controls derivatives on a smaller ball.
+- Arzelà–Ascoli is then applied to continuous maps on the strip subtype with
+  the compact-set uniformity; the extracted strict subsequence is converted
+  back to ambient `TendstoLocallyUniformlyOn` on the same open strip.
+- The anchor theorem may add pointwise limit uniqueness and the analytic
+  identity theorem, but it may not construct a D0 cluster wrapper, `SlotS1`,
+  close G5, promote Route B, claim RH, or create Bus 010.
