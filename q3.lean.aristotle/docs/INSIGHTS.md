@@ -11,6 +11,23 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-04, in progress) -- G5 mode-4 Schur/continuant orientation
+
+- Target: `det_mode4SchurMatrix_eq_upperProd_mul_rootFunction` in
+  `Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean`.
+- Five `q3_docs` queries for tridiagonal/continuant/Schur determinant reuse
+  returned no candidates.
+- Mathlib supplies generic determinant expansion and determinant-preserving
+  row/column operations, but no ready tridiagonal continuant theorem was found.
+- Cheapest rigorous route: define a scalar continuant recurrence matching
+  `mode4LeftPair`, prove its product normalization by induction, and connect a
+  separately defined Schur characteristic to `mode4RootFunction`.
+- Do not claim a literal `Matrix.det` identity until the tridiagonal matrix
+  indexing/orientation is proved; the scalar theorem is the admissible first
+  receiver and the exact remaining matrix gap must stay named.
+- Required trust profile: no holes, no project axioms, and only the standard
+  Lean axiom triple (or a strict subset).
+
 ## Insight (2026-07-07, Route B state hygiene) -- TroughRelabel_and_BusSync_v1
 
 - Route B request state had a two-copy split: `/Users/emalam/GitHub/rh_lean_01_2026`
