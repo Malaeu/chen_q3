@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 60,
-  "updated_at": "2026-08-05T00:55:07+02:00",
+  "revision": 61,
+  "updated_at": "2026-08-05T00:55:53+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,7 +1190,7 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV60",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV61",
     "status": "BONAMI_KAROUI_EXPLICIT_SEPARATOR_FOUND_PROSHKA_ADJUDICATION_IN_PROGRESS_CROSSWALK_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
@@ -1228,7 +1228,8 @@
         "DUNSTER_ARXIV_1601_00699V3_EQ_106_107_FIXED_MODE_ASYMPTOTIC",
         "BONAMI_KAROUI_ARXIV_1405_3676V2_THEOREM_CHI_BETWEEN2_EQ_BOUNDSCHI2"
       ],
-      "explicit_finite_cofinal_threshold_found": true,
+      "explicit_finite_cofinal_threshold_found": false,
+      "explicit_source_spectral_separator_found": true,
       "dunster_boundary": "LAMBDA_4_0_GAMMA_SQUARED_EQ_NEG_GAMMA_SQUARED_PLUS_9_GAMMA_PLUS_BIG_O_ONE_WITHOUT_EXPLICIT_REMAINDER_OR_THRESHOLD",
       "bonami_karoui_separator": {
         "source_tex_sha256": "1f157984e50e4b09670cb1b59a1fd279f4f353a8b299dbd0f4b1284fb47928f0",
