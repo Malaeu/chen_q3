@@ -100,20 +100,27 @@ front: G5/S1
 transaction: G5_MODE4_R1A_K4M_BONAMI_KAROUI_FOLLOWUP
 request_message_id: 14dbb40e-e9de-44fb-bac7-300cef9d2bdc
 sent_at: 2026-08-05T01:24:41.545+02:00
-completed_at: pending
-wall_seconds: pending
-wall_human: pending
-answer_now_shown: false
+completed_at: 2026-08-05T01:36:22.679+02:00
+wall_seconds: 701
+wall_human: "11m41s observed wall; 11m24s exact UI reasoning duration"
+answer_now_shown: true
 answer_now_clicked: false
-primary: pending
-status: IN_PROGRESS
-result_pointer: "same fresh RH Marz 2026 project chat"
+primary: BONAMI_KAROUI_ENDPOINTS_SOURCE_LOCKED_SCHUR_SIGN_CROSSWALK_OPEN
+status: COMPLETE_ACCEPTED_WITH_SUBSEQUENT_NODE_MATERIALIZED
+result_pointer: "Proshka assistant message 92f35a12-3947-4453-95c5-f48d7f52b514"
 notes: >-
   Follow-up pins HEAD/origin 6710ecdc, the Lean-checked K=4m tail split and
   direct determinant-sign receiver, and Bonami--Karoui arXiv:1405.3676v2
   theorem chi-between2/boundschi2 with source/e-print hashes. It explicitly
   guards the ordered Sturm--Liouville chi_n symbols from the unrelated project
   ProlatePair.chi2 scalar and asks for exactly one next executable theorem
-  package. No diagnostic 8/10 endpoint, Bus 010, route promotion, or RH claim
-  is authorized. Never click Answer now.
+  package. The observed send-to-completion wall includes polling lag; the UI
+  reports exact model reasoning of 11m24s. Proshka ratified the source endpoint
+  formulas but kept the exact differential-spectrum-to-infinite-tail-Schur
+  sign crosswalk open. Its immediate envelope package had already been proved
+  more strongly at HEAD 16af794f, so Codex executed the named subsequent
+  shifted-diagonal/three-coefficient Legendre recurrence crosswalk instead.
+  No diagnostic 8/10 endpoint, Bus 010, route promotion, or RH claim is
+  authorized. Answer now appeared while generation was active and was never
+  clicked.
 ```

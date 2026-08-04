@@ -49731,3 +49731,40 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   two strict finite-left envelope inequalities.
 - G5/S1 remains OPEN.  Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains
   VOID; no route promotion or RH claim follows.
+
+## 2026-08-05 — G5 even-Legendre recurrence crosswalk (proved)
+
+- Proshka follow-up message `92f35a12-3947-4453-95c5-f48d7f52b514`
+  ratified the Bonami--Karoui `chi-between2` / `boundschi2` endpoints as
+  source-defined spectral separators, while retaining the exact
+  differential-spectrum-to-infinite-tail-Schur sign crosswalk as the
+  load-bearing gap.  Exact UI reasoning time was `11m24s`; observed wall time
+  was `11m41s`; `Answer now` was never clicked.
+- Its immediate finite-left-envelope directive was already superseded at
+  receipt by the stronger generic envelope theorems and canonical `K = 4m`
+  root assembly in `D0Mode4HermitianSchurTailEnvelopes.lean`.
+- Five fresh `q3_docs` queries for the shifted even-Legendre recurrence and
+  Weyl--Schur crosswalk returned no candidates.  Primary-source recheck:
+  DLMF 30.8.3 gives the exact `A_q`, `B_q`, `C_q` coefficients and 30.8.4
+  gives their three-term recurrence.
+- `D0Mode4PSWFLegendreRecurrenceCrosswalk.lean` now materializes those three
+  source coefficients after the exact even-sector reindexing `N = 2q` and
+  proves their algebraic agreement with `mode4JacobiLower`,
+  `mode4JacobiCenter`, and `mode4JacobiUpper`.
+- The decisive shifted-diagonal theorem is
+  `mode4JacobiCenter_eq_pswfLegendreDiagonal_shift`; it proves that the
+  positive Sturm--Liouville spectral energy is exactly `E = Lambda + G`.
+  The combined theorem
+  `mode4JacobiCoefficients_eq_pswfLegendre_evenCrosswalk` closes all three
+  coefficient identities and detects a coefficient/sign/index mismatch before
+  any Sturm or elliptic-integral formalization.
+- Validation passed: direct Lean; `q3_check`; target build `7752/7752`; full
+  build `7817/7817`; zero `sorry`/`admit`/`native_decide`/declared axioms; all
+  four exported theorems depend only on `propext`, `Classical.choice`, and
+  `Quot.sound`.
+- This is representation progress only.  Still open are the construction and
+  ordering of the differential spectrum, the even-Legendre transform/domain
+  theorem, identification of the contracting tail with the Weyl/recessive
+  tail, exact infinite-tail Schur-complement inertia, and the two endpoint
+  determinant signs.  G5/S1 remains OPEN; Route B remains
+  `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
