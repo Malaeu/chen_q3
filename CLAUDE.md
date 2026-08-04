@@ -37,6 +37,13 @@ and `ROUTE_B_EXECUTION_CONTROL.md`, then run `routeb_status.py --check`.
 The physical bus selects work; no open goal means `NO_OPEN_BUS_GOAL / STOP`.
 This challenger does not replace the H-bridge mainline.
 
+**Executor arsenal discipline (Route B):** when I act as the executor body on Linux
+(the same role Codex plays on Mac), follow `docs/EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md`
+— card-ID in answers (`ARSENAL_USED: Cxx`), AUTOPSY line on INCONCLUSIVE/WALL/KILLED (K8 v3),
+object PRE-COMMIT in the goal (K6 v3), `ARSENAL:` ledger line in `ROUTE_B_STATE.md` (last-step).
+Fetch deck/kernel/mandate from repo, never inline. Kernel v3 =
+`q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md`.
+
 Compat: `full/q3.lean.aristotle` is a symlink to `q3.lean.aristotle` for legacy docs.
 
 ---

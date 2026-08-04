@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 267 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `../EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md` | executor arsenal discipline (both bodies: Codex/Claude Code) | `9b63764178217315b32bc7f6ac2dfc6960a0cbe4e1915910aff54b25f060e07e` |
 | `MAP.md` | Route B project navigator (LIVE — byte-unchanged by D0 closeout; SHA advisory refreshed) | `e47fc9f44ea13a77bb0653a533a6da3ace2d51bf093f6115054fd09a983e658a` |
 | `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md` | D0 terminal closeout mirror and conditional G3/H2b repoint ledger | `b6aecd0565a7c08627317b4c2973023298d3b4a9d3fe1dc272ecf3e058e35784` |
 | `001_ktrial_stage1.answer.md` | answer | `6714aab6f34bc419e32e20a68c59a7f9f685669496f3dffe7c1c9e55f37658b5` |
