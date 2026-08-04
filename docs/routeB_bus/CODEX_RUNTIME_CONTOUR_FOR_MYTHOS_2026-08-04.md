@@ -4,17 +4,20 @@ Date: 2026-08-04 (Europe/Berlin)
 
 ## Verdict
 
-`HYPOTHESIS_CONFIRMED_WITH_SCOPE_REPAIR`
+`HISTORICAL_HYPOTHESIS_CONFIRMED_THEN_MATERIALIZED`
 
-The exact long-running standing goal is not present anywhere in the Git
-worktree.  Exact-string and key-fragment searches returned no matches.  It is
-stored in Codex's task runtime, not in a repository file.
+At the start of this audit, the exact long-running standing goal was not
+present anywhere in the Git worktree.  Exact-string and key-fragment searches
+returned no matches; it existed only in Codex's task runtime.  This file then
+materialized its verbatim text in Git, so that statement is historical, not a
+current recovery limitation.
 
-This is the only substantial **standing control objective** outside Git.  It is
-not literally the only artifact outside Git: the current execution plan,
-commentary/tool state, an in-flight Proshka answer, and Codex local memory are
-also runtime/external state.  None of those is Lean proof authority or Route B
-state authority.
+At the audit timestamp this was the only substantial **standing control
+objective** outside Git.  The current execution plan, commentary/tool state,
+an in-flight Proshka answer, and Codex local memory also remain
+runtime/external state.  None of those is Lean proof authority or Route B state
+authority.  The complete reproducible bootstrap map now lives in
+`docs/routeB_bus/CODEX_SESSION_BOOTSTRAP_CONTOUR_FOR_MYTHOS_2026-08-04.md`.
 
 ## Exact standing goal
 
@@ -49,7 +52,7 @@ roof supplier, create a bus goal, or establish a Lean theorem.
 | Master DAG and request reports | `ACTIVE/requests/routeB_lamport_rh_closure/` | yes | authorized non-bus work graph and evidence |
 | Workflow rules | `q3.lean.aristotle/PROJECT_WORKFLOW.md` | yes | operational protocol |
 | Proshka timing ledger | `ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md` | yes | performance metadata only |
-| Standing Codex goal | Codex task runtime | **no** | persistence/coordination only |
+| Standing Codex goal | Codex task runtime; verbatim recovery copy in this file | runtime control: no; recovery text: yes | persistence/coordination only |
 | Current Codex plan and progress cursor | Codex task runtime | no | ephemeral execution aid |
 | Proshka chat and in-flight answer | ChatGPT project UI | no | advisory evidence until reviewed/materialized |
 | Codex local memories | `~/.codex/memories/` | no | local continuity hints, never project authority |
