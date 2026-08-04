@@ -124,3 +124,32 @@ notes: >-
   authorized. Answer now appeared while generation was active and was never
   clicked.
 ```
+
+### 2026-08-05 — G5 post-recurrence B0/B1 theorem-shape adjudication
+
+```yaml
+proof_address: G5_MODE4_R1A_B0_B1
+front: G5/S1
+transaction: G5_MODE4_POST_RECURRENCE_OPERATOR_WEYL_SCHUR_NEXT_NODE
+request_message_id: f090f129-4f44-447e-9968-ce35b5904206
+sent_at: 2026-08-05T01:51:44.268+02:00
+completed_at: pending
+wall_seconds: pending
+wall_human: pending
+answer_now_shown: false
+answer_now_clicked: false
+primary: pending
+status: IN_PROGRESS
+result_pointer: "fresh RH Marz 2026 project chat created after commit 157f93c0"
+notes: >-
+  The pasted-document context pack has SHA-256
+  855e0db1cca5b35b3f04c3eb5dcb239888a29478b8014d86ca7e3d7a0705f058
+  and pins the already-proved finite-left envelope package and exact three-
+  coefficient DLMF even-Legendre recurrence crosswalk. The request asks for
+  exactly one smallest executable node downstream of the coefficient identity,
+  choosing among a finite-support operator action, the Hilbert-space/domain
+  crosswalk, the Weyl/recessive-tail characterization, or a source-neutral
+  abstract Schur-inertia theorem. It forbids reassigning closed work, minting
+  a spectral theorem as a structure field, tildePhi unless selected, Bus 010,
+  route promotion, and an RH claim. Never click Answer now.
+```

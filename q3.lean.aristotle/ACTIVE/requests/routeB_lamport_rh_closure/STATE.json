@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 66,
-  "updated_at": "2026-08-05T01:43:56+02:00",
+  "revision": 67,
+  "updated_at": "2026-08-05T01:51:44+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,8 +1190,8 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV66",
-    "status": "EVEN_LEGENDRE_THREE_COEFFICIENT_CROSSWALK_PROVED_BONAMI_KAROUI_ENDPOINTS_RATIFIED_SPECTRUM_TO_WEYL_SCHUR_SIGN_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV67",
+    "status": "EVEN_LEGENDRE_CROSSWALK_PROVED_POST_RECURRENCE_B0_B1_NEXT_NODE_ADJUDICATION_IN_PROGRESS_SPECTRUM_TO_WEYL_SCHUR_SIGN_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
@@ -1298,6 +1298,16 @@
         "observed_wall_seconds": 701,
         "answer_now_shown": true,
         "answer_now_clicked": false
+      },
+      "post_recurrence_adjudication": {
+        "request_message_id": "f090f129-4f44-447e-9968-ce35b5904206",
+        "sent_at": "2026-08-05T01:51:44.268+02:00",
+        "context_pack_sha256": "855e0db1cca5b35b3f04c3eb5dcb239888a29478b8014d86ca7e3d7a0705f058",
+        "pinned_head": "157f93c0",
+        "status": "IN_PROGRESS",
+        "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_B0_OR_B1_NODE_AFTER_THREE_COEFFICIENT_CROSSWALK",
+        "answer_now_shown": false,
+        "answer_now_clicked": false
       }
     },
     "validation": {
@@ -1308,7 +1318,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "BONAMI_KAROUI_ENDPOINTS_RATIFIED_SPECTRUM_TO_WEYL_SCHUR_SIGN_CROSSWALK_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "BONAMI_KAROUI_ENDPOINTS_RATIFIED_POST_RECURRENCE_B0_B1_ADJUDICATION_IN_PROGRESS_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4133,6 +4143,13 @@
       "progress_class": "PROOF_AND_REPRESENTATION_PROGRESS",
       "result": "DLMF_30_8_3_LOWER_DIAGONAL_UPPER_COEFFICIENTS_MATCHED;ENERGY_SHIFT_E_EQ_LAMBDA_PLUS_G_PROVED;TARGET_7752_FULL_7817_Q3_CHECK_PASS",
       "honesty": "ALGEBRAIC_RECURRENCE_CROSSWALK_ONLY_NO_OPERATOR_DOMAIN_NO_ORDERED_SPECTRUM_NO_WEYL_TAIL_NO_SCHUR_INERTIA_NO_ENDPOINT_SIGN_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T01:51:44+02:00",
+      "event": "G5_MODE4_POST_RECURRENCE_B0_B1_PROSHKA_ADJUDICATION_STARTED",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "FRESH_PROJECT_CHAT;PIN_157F93C0;CONTEXT_PACK_SHA256_855E0DB1;REQUEST_MESSAGE_F090F129",
+      "honesty": "CLOSED_ENVELOPE_AND_RECURRENCE_NODES_NOT_REASSIGNED_ONE_SMALLEST_B0_OR_B1_NODE_REQUESTED_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
     }
   ]
 }
