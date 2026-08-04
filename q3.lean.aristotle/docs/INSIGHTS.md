@@ -11,6 +11,28 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-05, in progress) -- G5 direct determinant-sign endpoint receiver
+
+- Target: bypass the unnecessary general Sturm-inertia formalization at the
+  public interface and derive the cofinal root bracket directly from strict
+  signs of the committed Hermitian Schur determinant.
+- Five targeted `q3_docs` searches for a Lean Sturm-count/principal-minor law,
+  Sylvester inertia, and general Hermitian `LDL` machinery returned no
+  candidates.  Mathlib's `Analysis.Matrix.LDL` is specialized to positive
+  definite matrices and is not a ready indefinite-inertia receiver.
+- The needed route is already available locally:
+  `det_mode4HermitianSchurMatrix_eq_mode4SchurMatrix_det` followed by
+  `mode4SchurMatrix_det_sign_eq_rootFunction_sign`.  Therefore strict positive
+  and negative determinant endpoints transfer exactly to strict positive and
+  negative values of the same scalar root function.
+- Planned public theorem: a conditional IVT receiver whose only concrete
+  endpoint payload is `0 < det ALower` and `det AUpper < 0`; Hermitianity,
+  determinant crosswalk, continuity, and orientation are internal.
+- Boundary: this receiver will not assert either endpoint sign, choose endpoint
+  formulas, prove a cofinal threshold, close G5/S1, or change the route/bus
+  state.  Counts `2`/`3` remain a sufficient optional supplier, not the public
+  minimum.
+
 ## Synthesis (2026-08-05, in progress) -- G5 source-locked endpoint count fork
 
 - Exact remaining target after the committed determinant, inertia, and
