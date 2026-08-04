@@ -49463,3 +49463,26 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   source-data interface is a legal intermediate theorem or an assumption mint.
 - This audit does not close G5/S1, alter H2a or H2b, promote Route B, claim RH,
   or create Bus 010.
+
+## 2026-08-04 — G5 mode-4 finite-left/root-function source lock (in progress)
+
+- Four targeted `q3_docs` searches returned no indexed theorem packet for the
+  finite-left fraction or its match with the materialized right-tail limit.
+- DLMF §30.3(iii), equation 30.3.5, is the primary source for the exact split:
+  a finite continued fraction descending to the parity boundary equals the
+  infinite continued fraction ascending from the chosen split index.
+- DLMF §30.8, equations 30.8.3--30.8.4, supplies the same three-term Legendre
+  coefficient recurrence used by `mode4JacobiLower`, `mode4JacobiCenter`, and
+  `mode4JacobiUpper`; its boundary coefficient vanishes at the left endpoint.
+- The pole-safe Lean representation should propagate a normalized finite core
+  by the recurrence and define the matching residual by cross multiplication,
+  rather than divide by a possibly zero finite-core coefficient.
+- `D0Mode4JacobiRightTailContinuity.lean` already supplies the continuous right
+  tail on `Set.Iic 20`; a finite recurrence supplies the other continuous
+  factor, so residual continuity is structural and needs no spectral input.
+- This layer may define and prove continuity/recurrence for the residual.  It
+  may not assert existence, uniqueness, ordering, or selection of the third
+  even root without a separate bracket/count theorem.
+- The exact public theorem contract and owned file remain pending Proshka
+  adjudication.  G5/S1 stays OPEN; Route B stays `CHALLENGER / NOT_RH`; H2b is
+  false and Bus 010 remains VOID.
