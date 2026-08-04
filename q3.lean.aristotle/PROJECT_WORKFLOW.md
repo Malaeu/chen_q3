@@ -311,6 +311,33 @@ Proshka/Louise remains advisory.  Accepted output must be translated into a
 local theorem shape, certificate target, route-kill statement, or monitor/report
 update before implementation.
 
+### Proshka reasoning-time ledger
+
+Every substantive Proshka request must be timed and appended to
+`ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md`.  Record:
+
+- proof address / front and exact transaction code;
+- request message id when available;
+- local send and completion timestamps with timezone;
+- wall-clock duration in seconds and a human-readable duration;
+- whether `Answer now` was shown and confirm that it was not clicked;
+- final `PRIMARY` / status or stop code;
+- resulting artifact, commit, or owner fork.
+
+Start the timer immediately before sending.  Stop it only after Proshka has
+finished generating the answer.  Never shorten the run merely to obtain a
+smaller timing value.  If an older run was already in progress when timing was
+introduced, record a conservative lower bound instead of inventing an exact
+start time.
+
+For each new proof transaction, use a fresh Proshka chat inside the same Q3
+project and seed it with a high-recall context pack.  Before typing or sending
+anything, inspect the target chat and confirm that no response is currently
+generating.  Never add a prompt to a busy chat, interrupt an active response,
+or reuse a long-running chat merely to save setup time.  A user-created branch
+or side conversation is independent context unless the user explicitly hands
+its result back to the Q3 pipeline.
+
 ## Route-kill protocol
 
 Если активная доказательная ветка упирается не во временный technical blocker,
