@@ -49414,3 +49414,21 @@ no phase/sign theorem or numerical plateau enters the Lean proof.
 - The anchor theorem may add pointwise limit uniqueness and the analytic
   identity theorem, but it may not construct a D0 cluster wrapper, `SlotS1`,
   close G5, promote Route B, claim RH, or create Bus 010.
+
+## 2026-08-04 · H2a Layer-3 gap-scan discriminator (FIT_NOT_LAW, binary64, K7 not-proof-tree)
+
+Tool `scripts/ccm_h2a_gap_scan.py` reuses the certified (13,2) Arb entry builders (SHA-guarded
+== 01464c9b...), generalized to grid m in {5,6,7,9,11,12,13,16,17,19,21,23,24}, N in {1..4}; gaps
+via scipy.linalg.eigh(K,G) on ball-midpoint float64 matrices. Gates all passed: source SHA,
+prime-range micro-plant (support(5)={2,3,4,5} + lcm identity), Prime-sign-flip plant, and the
+(13,2) judge CERTIFIED (eps_p1=2.97e-9<1e-7, eps_p2=8.35e-5>4e-7, eps_m1=7.74e-7>4e-7).
+Registered observation (FIX-1, NOT certified): eps_p1>0 on (13,2) — Weil-form positivity on the
+cell. Ordering held on all ~50 cells (no delta<=0 finding).
+
+Result: leading gap delta_plus fits the POLYNOMIAL law m^(-p/2) better than exp(-c*m) on the clean
+N=3,4 series (R2_poly 0.938/0.928 vs R2_exp 0.866/0.831; exponent p grows 1.0->4.4->8.9->12.3 with N);
+N=1,2 noisy (R2~0.55, tie). Formal verdict conservative AMBIGUOUS (N-consistency required; N=1,2
+noise + float64 floor: eps_p1 ~ 1e-16 machine-epsilon on N=4/large m). DIRECTION = ENGINEERING,
+not alpha-class safe; Mythos prediction K6 (poly, low confidence) CONFIRMED on the clean N. For an
+iron SAFE/ENGINEERING verdict an Arb high-precision rerun on N=3 is needed (binary64 floor).
+No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the Lean proof tree.
