@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 63,
-  "updated_at": "2026-08-05T01:24:41+02:00",
+  "revision": 64,
+  "updated_at": "2026-08-05T01:29:28+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,16 +1190,17 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV63",
-    "status": "CANONICAL_SPLIT_K_EQ_4M_PROVED_BONAMI_KAROUI_SEPARATOR_FOUND_FIRST_PROSHKA_VERDICT_COMPLETE_FOLLOWUP_IN_PROGRESS_CROSSWALK_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV64",
+    "status": "FINITE_LEFT_TAIL_ENVELOPES_PROVED_CANONICAL_SPLIT_K_EQ_4M_BONAMI_KAROUI_SEPARATOR_FOUND_FOLLOWUP_IN_PROGRESS_CROSSWALK_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
-      "Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean"
+      "Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
+      "Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean"
     ],
     "latest_proof_artifact": {
-      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
-      "sha256": "005425818e203c18803fda0fa429fd4a2f0f204627738015176362b70e1387ed"
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean",
+      "sha256": "da7093cadcf026ae8e07c1196bb7041df3899daae19eb998353f1c798ec24e59"
     },
     "proved": [
       "SCHUR_DETERMINANT_EQUALS_POSITIVE_UPPER_PRODUCT_TIMES_ROOT_FUNCTION",
@@ -1209,11 +1210,15 @@
       "CONDITIONAL_ROOT_BRACKET_FROM_ENDPOINT_COUNTS_TWO_AND_THREE",
       "DIRECT_ROOT_BRACKET_FROM_POSITIVE_LOWER_AND_NEGATIVE_UPPER_HERMITIAN_SCHUR_DETERMINANTS",
       "CANONICAL_SPLIT_K_EQ_4M_TAIL_SEPARATION",
-      "CANONICAL_SPLIT_DIRECT_ROOT_BRACKET_FROM_TWO_ENDPOINT_DETERMINANT_SIGNS"
+      "CANONICAL_SPLIT_DIRECT_ROOT_BRACKET_FROM_TWO_ENDPOINT_DETERMINANT_SIGNS",
+      "HERMITIAN_SCHUR_DETERMINANT_LOWER_FINITE_LEFT_ENVELOPE",
+      "HERMITIAN_SCHUR_DETERMINANT_UPPER_FINITE_LEFT_ENVELOPE",
+      "POSITIVE_FINITE_LEFT_LOWER_ENVELOPE_IMPLIES_POSITIVE_DETERMINANT",
+      "NEGATIVE_FINITE_LEFT_UPPER_ENVELOPE_IMPLIES_NEGATIVE_DETERMINANT"
     ],
     "remaining_inputs": [
-      "LOWER_ENDPOINT_HERMITIAN_SCHUR_DETERMINANT_POSITIVE_AT_K_EQ_4M",
-      "UPPER_ENDPOINT_HERMITIAN_SCHUR_DETERMINANT_NEGATIVE_AT_K_EQ_4M"
+      "LOWER_ENDPOINT_FINITE_LEFT_LOWER_ENVELOPE_POSITIVE_AT_K_EQ_4M",
+      "UPPER_ENDPOINT_FINITE_LEFT_UPPER_ENVELOPE_NEGATIVE_AT_K_EQ_4M"
     ],
     "canonical_split": {
       "K": "4_TIMES_MPROJECT",
@@ -1262,7 +1267,8 @@
         "observed_wall_seconds": 2326,
         "answer_now_clicked": false,
         "superseded_fact": "PROPOSED_K_EQ_5M_REPLACED_BY_LEAN_PROVED_K_EQ_4M",
-        "accepted_progress": "EXACT_FINITE_LEFT_DETERMINANT_ENVELOPE_THEOREM_SHAPE"
+        "accepted_progress": "EXACT_FINITE_LEFT_DETERMINANT_ENVELOPE_THEOREM_SHAPE",
+        "materialized_node": "D0Mode4HermitianSchurTailEnvelopes.lean"
       },
       "followup_adjudication": {
         "request_message_id": "14dbb40e-e9de-44fb-bac7-300cef9d2bdc",
@@ -1273,7 +1279,7 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 7750,
+      "target_build_jobs": 7751,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
@@ -4076,6 +4082,13 @@
       "progress_class": "EXTERNAL_REVIEW_TIMING_AND_THEOREM_SHAPE_ADJUDICATION_PROGRESS",
       "result": "FIRST_VERDICT_ENDPOINT_SIGNS_REDUCED_TO_EXPLICIT_FINITE_LEFT_ENVELOPES;EXACT_UI_REASONING_37M29S;OBSERVED_WALL_2326S;FOLLOWUP_MESSAGE_14DBB40E_SENT",
       "honesty": "FIRST_VERDICT_K5M_SUPERSEDED_BY_LEAN_K4M_BONAMI_KAROUI_CROSSWALK_NOT_YET_ADJUDICATED_TWO_ENDPOINT_SIGNS_OPEN_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T01:29:28+02:00",
+      "event": "G5_MODE4_FINITE_LEFT_HERMITIAN_SCHUR_TAIL_ENVELOPES_PROVED",
+      "progress_class": "PROOF_AND_INFINITE_TAIL_ELIMINATION_PROGRESS",
+      "result": "SHARP_LOWER_AND_UPPER_FINITE_LEFT_DETERMINANT_ENVELOPES;STRICT_SIGN_COROLLARIES;TARGET_7751_FULL_7817_Q3_CHECK_PASS",
+      "honesty": "SOURCE_NEUTRAL_ALGEBRA_ONLY_NO_ENDPOINT_DEFINITION_NO_ENDPOINT_SIGN_NO_THRESHOLD_NO_SPECTRAL_CROSSWALK_FOLLOWUP_STILL_IN_PROGRESS_NO_BUS_010_NOT_RH"
     }
   ]
 }

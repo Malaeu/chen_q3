@@ -49701,3 +49701,27 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The exact public theorem contract and owned file remain pending Proshka
   adjudication.  G5/S1 stays OPEN; Route B stays `CHALLENGER / NOT_RH`; H2b is
   false and Bus 010 remains VOID.
+
+## 2026-08-05 — G5 mode-4 finite-left determinant envelopes (proved)
+
+- Proshka's first endpoint-sign adjudication identified a source-neutral
+  reduction that survives the later `K = 4m` improvement: write the exact
+  Hermitian Schur determinant as `P_K - R_K * U_(K-1) * P_(K-1)` and use only
+  the already proved tail enclosure `R_K ∈ [0, 1/2]`.
+- `D0Mode4HermitianSchurTailEnvelopes.lean` now proves the sharp lower and
+  upper finite-left envelopes by splitting on the sign of `P_(K-1)`, plus
+  strict-sign corollaries that feed the direct root-bracket receiver.
+- The new node is algebraic and source-neutral: it introduces no endpoint
+  definition, numerical threshold, spectral count, PSWF crosswalk, project
+  axiom, or numerical proof.  In particular it does not authorize the old
+  diagnostic `8/10` endpoints.
+- Validation passed: direct Lean; `q3_check`; target build `7751/7751`; full
+  build `7817/7817`; zero `sorry`/`admit`/`native_decide`; all four exported
+  theorems depend only on `propext`, `Classical.choice`, and `Quot.sound`.
+- The two concrete determinant-sign inputs are therefore reduced to two
+  finite recurrence inequalities.  The remaining mathematical issue is the
+  source-locked endpoint/crosswalk order under follow-up adjudication: formal
+  Bonami--Karoui `tildePhi`, differential-spectrum-to-exact-Schur inertia, or
+  direct finite-left envelope signs.
+- G5/S1 remains OPEN.  Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains
+  VOID; no route promotion or RH claim follows.
