@@ -44,6 +44,13 @@ Route B, detector, alpha/SAFE, ZEO, or the two-level spectral ladder):
 - Route B remains `CHALLENGER / NOT_RH` and does not override the H-bridge
   mainline or root `IMPLEMENTATION_PLAN.md`.
 
+Arsenal discipline (Route B, applies to whichever executor body is active — Codex here,
+or Claude Code on Linux):
+- Follow `docs/EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md`: card-ID in answers (`ARSENAL_USED: Cxx`),
+  AUTOPSY line on INCONCLUSIVE/WALL/KILLED (K8 v3), object PRE-COMMIT in the goal (K6 v3),
+  `ARSENAL:` ledger line in `ROUTE_B_STATE.md` (last-step). Fetch deck/kernel/mandate from repo,
+  never inline into goals. Kernel v3 = `q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md`.
+
 Aristotle integration rules (project workflow):
 - Activate venv before any Aristotle command: `source .venv/bin/activate`.
 - Submit via `aristotle prove-from-file` and check/download via the Python API snippets in the Aristotle skill.
