@@ -98,3 +98,96 @@ Answers/Verdicts, canon+mirror).
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` (+ STANDING FETCHES; Backup ca9243ea)
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/ARSENAL_MANDATE_2026-08-04.md`
 - `/mnt/hdd01/Soft/GitHub/p_vs_np/NOTES.md` (P-vs-NP-Lernjournal)
+
+---
+
+# TEIL 2 — Abend 2026-08-05 (Fortsetzung)
+
+Session-Ende-HEAD: `ac8e6e78` (alles gepusht, Baum sauber). Spannweite `af3ca317` → `ac8e6e78`.
+
+## Ausgangslage (Teil 2)
+Frage des Owners: „wo stehen wir mathematisch?" — daraus wurde ein Tag, der zur Hälfte Mathematik
+und zur Hälfte Speicher-Infrastruktur war, weil die Mathematik zweimal an derselben Krankheit
+hängenblieb: **wir wussten nicht, was wir schon besitzen.**
+
+## Erledigt (Mathematik)
+- **G6/SlotS2-Front eröffnet.** `Q3/Proofs/RouteB/S2GaugeNonvanishing.lean` — 6 Theoreme,
+  `lake build` PASS (7746 Jobs), Axiome exakt `[propext, Classical.choice, Quot.sound]`, 0 sorry:
+  `xiGauge` über Mathlibs `Gammaℝ`, `riemannXi = xiGauge · riemannZeta`, zentrierte Formen,
+  `limit_eq_anchor` + `limit_at_zero_ne_zero`. **Ohne Aristotle** — lokal kompiliert.
+- **S2-L2b-Diskriminator** exakt-symbolisch gerechnet (nicht float64): 1468 v3-Fenster,
+  **1 innerer Mellin-Nullpunkt** (Exponenten (2,3,5), Zähler `(w−1)(3w−2)`, Nullstelle `w = 2/3`).
+  Strukturbefund: zero-mass ⇔ `M(1)=0` **immer**, und `w=1 ⇔ z=−i/2` liegt auf dem Streifenrand,
+  also stets harmlos; alle 28 zweigliedrigen Fenster sind strukturell innen-nullstellenfrei.
+  Report: `docs/routeB_bus/S2_L2B_MELLIN_ZERO_SCAN_REPORT_2026-08-05.md`.
+- **Proshka-Verdikt: FATAL** für die vorgeschlagene Substitution —
+  `KILL_FIXED_WINDOW_MUNTZ_AS_CANONICAL_PSTAR_SURROGATE`. `Pstar` ist bereits source-locked auf
+  `centeredPstarFamily D.kTrial`; der abstrakte `C`-Parameter ist **Interface-Polymorphie, kein
+  Vererbungsmechanismus**. C10 + C09 Kills, C04-Warnung. Neuer minimaler Gap:
+  `G6_S2_D0_SELECTED_FAMILY_MUNTZ_SAME_FAMILY_CROSSWALK`. Mythos akzeptierte ohne Contest.
+  **Überlebt hat alles Generische**: die 6 Theoreme, der Scan als
+  `FIXED_WINDOW_S2_NONVANISHING_OBSTRUCTION_NOT_UNIVERSAL`, PL2 als ratifizierter Falsifikator.
+
+## Erledigt (Werkzeug + Speicher)
+- **Linux kompiliert jetzt Lean.** Mathlib-Cache geholt (7727 Dateien). Pflicht auf dieser Maschine:
+  `env -u LD_LIBRARY_PATH lake …` — das System-`libLLVM.so.19.1` verdeckt sonst das des Toolchains.
+  In `CLAUDE.md` § Quick Commands festgeschrieben.
+- **`aristotle_proofs.db` aufgefüllt**: 94→208 Docs, 1410→2232 Lemmas, **RouteB 124/124 Dateien
+  (vorher 31 %)**, 926 RouteB-Lemmas → Mythos' R9 bestätigt. Die Morgen-Abfragen
+  `riemannXi` / `centeredXi` / `completedRiemannZeta` gingen von 0 Treffern auf Treffer.
+  Ehrliche Attribution `source='backfill'` (114) neben `'aristotle'` (92).
+- **Werkzeugkarte generiert statt geschrieben**: `orchestrator/tools_census.py` → `docs/TOOLS.md`.
+  22 lebende Werkzeuge (18 in **keiner** Regeldatei), 159 Einweg-Proben, 121 Journale
+  (6 lebend / 19 eingefroren), 1 Waise (`orchestrator/sense.py`).
+- **`knowledge.db` Welle 1**: Kill-Familie vereinigt — 38 Records aus 5 Dateien, 6 dateiübergreifende
+  Aliase, 70 Evidence-Refs, Census-Drift 0, Abfrage in 41 ms. `L = Mplus*F_v` von 4 Kopien auf
+  1 Record; Step33-Wall mit seinem Strategie-Zwilling verknüpft. CLI `orchestrator/kb.py`
+  (search/show/list/add/census/export). Fünf Quellen mit Bannern eingefroren.
+- **`spine.py` liest jetzt SQL** — zeigt endlich die Walls, die es seit L32–33 importierte, aber nie
+  renderte (vorher 13 von 38 Records sichtbar).
+- **`ROUTE_KILL_REGISTRY.md` wiederbelebt** — nicht durch Beschluss, sondern weil der heutige Kill
+  formatgerecht hineingehörte (Route | Status | Grund | Rollback | nächster Zweig).
+- **Erster Kartografen-Durchlauf** auf Mythos' Karte: 9 Aussagen bestätigt, 4 veraltet
+  (die Karte entstand vor dem Proshka-Verdikt). `docs/routeB_bus/maps/2026-08-05_g6_s2_status_and_infra.{svg,md}`.
+
+## Geprüft
+- Alle 6 neuen Theoreme: Standard-Axiom-Triple, kein `sorryAx`, `lake build` grün.
+- Scan-Ergebnis symbolisch verifiziert (`M(2/3)=0` exakt, kein numerisches Rauschen).
+- `knowledge.db` **auf origin** gelesen: 38 Zeilen, 6 Aliase — nicht nur Datei-Existenz geprüft.
+- JSON/YAML nach dem Einfrieren weiterhin parsebar; Migration reproduzierbar.
+- Eigene Metriken korrigiert: `docs/TOOLS.md` fütterte sich selbst mit Referenzen (Waisen-Signal
+  gelöscht); Symlink-Datierung; Atlanten ohne Datumszeilen waren unsichtbar; stilles `[:40]`-Abschneiden.
+
+## Offen — nächste Schritte
+1. **Mythos wartet auf „Release"** für (a) Papier-Kontrakt des Crosswalks (9 Proshka-Bedingungen →
+   `G6·S2-XW.1…9`) und/oder (b) Spezifikation des entscheidenden Zahlentests auf einer `(m,N)`-Zelle.
+2. **G2 CCM owner fork** unverändert: sieben WR-Integral-Enclosures, Daten vom Owner, Codex wartet.
+3. **Kartograf als Code** — ratifiziert, heute nur von Hand ausgeführt.
+4. **knowledge.db Welle 2** — Schema entworfen (`move` / `journal_entry` / `dossier` / `postmortem`
+   + `link`), NICHT ausgeführt. Wichtig: `RH_TRICK_ATLAS` und `ARSENAL_CARDS` sind **keine Dubletten**.
+5. **MAP.md lügt weiter absichtlich** (2 Stellen) — Abnahmetest für den Kartografen.
+
+## Wichtige Fakten (Teil 2)
+- **Interface-Polymorphie ≠ Vererbung** — der Quantor, den Codex und Mythos beide verloren hatten.
+- **Lokaler Linux-Compile ist ab jetzt der Default** für kleine Lemmas; Aristotle ist Reserve.
+- **Die Krankheit hat drei Projektionen**: MAP (Wahrhaftigkeit), Atlanten (Verwaisung),
+  DB (Abdeckungsdrift). Ein Heilmittel: automatisches Laden am bestehenden Gate + ein Richter,
+  der das Organ überführen kann.
+- Route bleibt CHALLENGER / NOT_RH; Bus 010 VOID; Goal 055 held; keine RH-Behauptung.
+
+## Dateien (Teil 2, absolute Pfade)
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/S2GaugeNonvanishing.lean`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/S2_L2B_MELLIN_ZERO_SCAN_REPORT_2026-08-05.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_REQUEST_G6_S2_IDENTIFICATION_2026-08-05.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/MYTHOS_BRIEF_2026-08-05_G6_S2_AND_CARTOGRAPHER.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/maps/2026-08-05_g6_s2_status_and_infra.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge.db`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge_schema.sql`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_kills.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/tools_census.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/backfill_db.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/TOOLS.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/KILLS.md`
+- `/home/chirurgie/.claude/plans/nea-produmaem-kak-my-glowing-whistle.md` (Plan Welle 1+2)
