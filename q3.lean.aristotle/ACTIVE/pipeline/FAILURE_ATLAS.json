@@ -1,5 +1,6 @@
 {
   "schema_version": "1.0",
+  "frozen": "2026-08-05 — migrated to q3.lean.aristotle/aristotle_db/knowledge.db (table kill, unit_type='object'). Query: ./orchestrator/kb.py search <term>. Add new object kills with ./orchestrator/kb.py add, not by editing this file.",
   "generated_at": "2026-07-27",
   "entries": [
     {

@@ -1,3 +1,8 @@
+# FROZEN 2026-08-05 — migrated to q3.lean.aristotle/aristotle_db/knowledge.db
+# All 8 entries live in table `kill` with unit_type='strategy'. The fields without a column
+# of their own (invariant_learned, cognitive_operator_used, new_gap_name) are preserved as
+# rows in `kill_evidence`. Query: ./orchestrator/kb.py list --unit-type strategy
+# Record new failed strategies with ./orchestrator/kb.py add, not by editing this file.
 schema: q3_failed_strategies_v1
 status: active
 updated: 2026-07-31

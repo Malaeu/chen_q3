@@ -1,5 +1,12 @@
 # Route Kill Registry
 
+> **FROZEN 2026-08-05 — migrated to `knowledge.db`.**
+> All 15 table rows and the live `PO3-square.2d3` criterion now live in
+> `q3.lean.aristotle/aristotle_db/knowledge.db` (table `kill`, `unit_type` in
+> `route`/`criterion`). Query with `./orchestrator/kb.py search <term>`;
+> record new kills with `./orchestrator/kb.py add`, **not** by editing this file.
+> Kept read-only for provenance; `./orchestrator/kb.py census` compares it against the DB.
+
 Manual companion to the auto proof graph.
 
 Purpose:

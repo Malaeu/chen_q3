@@ -1,5 +1,13 @@
 # Q3 Obstruction Atlas
 
+> **FROZEN 2026-08-05 — migrated to `knowledge.db`.**
+> All 8 walls now live in `q3.lean.aristotle/aristotle_db/knowledge.db`
+> (table `kill`, `unit_type='wall'`, `status='standing'`). Query with
+> `./orchestrator/kb.py list --unit-type wall`; add new walls with
+> `./orchestrator/kb.py add --unit-type wall`, **not** by editing this file.
+> Note the content itself says "As of 2026-05-26" while `AGENTS.md` still cites this
+> atlas as current — that drift is exactly why the walls were moved into a queryable table.
+
 This atlas is repo-level guidance for the Q3 PSD-pd Step32 proof loop. It is
 not a proof of RH and must not be used to bypass Lean validation.
 

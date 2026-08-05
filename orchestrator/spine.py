@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import datetime as _dt
 import json
+import sqlite3
 import re
 import subprocess
 import sys
@@ -24,6 +25,7 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "orchestrator" / "state" / "SPINE_VIEW.md"
+KNOWLEDGE_DB = REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge.db"
 
 SOURCES = {
     "failure_atlas": REPO / "q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json",
@@ -59,34 +61,36 @@ def _freshness_table() -> list[str]:
     return lines
 
 
-def _object_kills() -> list[str]:
-    path = SOURCES["failure_atlas"]
-    if not path.exists():
-        return ["(FAILURE_ATLAS.json missing)"]
-    data = json.loads(path.read_text(encoding="utf-8"))
-    lines = ["| id | stop_code | replacement |", "|---|---|---|"]
-    for e in data.get("entries", []):
-        repl = (e.get("replacement") or "").strip()
-        if len(repl) > 90:
-            repl = repl[:87] + "..."
-        lines.append(f"| {e.get('id', '?')} | `{e.get('stop_code', '?')}` | {repl} |")
-    return lines
+def _kills_from_db() -> list[str]:
+    """All kills from knowledge.db, grouped by unit type.
 
-
-def _strategy_kills() -> list[str]:
-    path = SOURCES["failed_strategies"]
-    if not path.exists():
-        return ["(FAILED_STRATEGIES.yaml missing)"]
-    text = path.read_text(encoding="utf-8")
-    entries = re.split(r"\n  - name: ", text)
-    lines = ["| strategy | escape_operator | status |", "|---|---|---|"]
-    for chunk in entries[1:]:
-        name = chunk.splitlines()[0].strip()
-        op = re.search(r"escape_operator:\s*(\S+)", chunk)
-        st = re.search(r"\n    status:\s*(\S+)", chunk)
-        lines.append(
-            f"| {name} | {op.group(1) if op else '?'} | {st.group(1) if st else '?'} |"
-        )
+    Replaces the former `_object_kills()` (JSON) and `_strategy_kills()` (hand-rolled YAML
+    regex). Those two rendered 13 of the family's 38 records; the walls of
+    Q3_OBSTRUCTION_ATLAS.md and the S5 lift were imported in SOURCES but never displayed.
+    """
+    if not KNOWLEDGE_DB.exists():
+        return ["(knowledge.db missing — run ./orchestrator/kb.py init && "
+                "./orchestrator/kb_migrate_kills.py)"]
+    conn = sqlite3.connect(f"file:{KNOWLEDGE_DB}?mode=ro", uri=True)
+    conn.row_factory = sqlite3.Row
+    lines: list[str] = []
+    for (unit,) in conn.execute(
+            "SELECT DISTINCT unit_type FROM kill ORDER BY unit_type"):
+        rows = conn.execute(
+            "SELECT id, subject, status, replacement, rollback_target, stop_code "
+            "FROM kill WHERE unit_type=? ORDER BY id", (unit,)).fetchall()
+        lines += [f"", f"**{unit}** ({len(rows)})", "",
+                  "| id | subject | status | next / rollback |", "|---|---|---|---|"]
+        for r in rows:
+            nxt = r["replacement"] or r["rollback_target"] or ""
+            nxt = (nxt[:87] + "...") if len(nxt) > 90 else nxt
+            subj = (r["subject"] or "")[:70].replace("|", "\\|")
+            lines.append(f"| {r['id']} | {subj} | {r['status']} | {nxt.replace('|', chr(92)+'|')} |")
+    n = conn.execute("SELECT COUNT(*) FROM kill").fetchone()[0]
+    a = conn.execute("SELECT COUNT(*) FROM kill_alias").fetchone()[0]
+    conn.close()
+    lines += ["", f"_{n} records, {a} cross-file aliases. Query: "
+                  "`./orchestrator/kb.py search <term>`._"]
     return lines
 
 
@@ -196,11 +200,8 @@ def build() -> str:
         "## Source freshness",
         *_freshness_table(),
         "",
-        "## 1. Object-level kills (FAILURE_ATLAS.json)",
-        *_object_kills(),
-        "",
-        "## 2. Strategy-level kills (FAILED_STRATEGIES.yaml)",
-        *_strategy_kills(),
+        "## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)",
+        *_kills_from_db(),
         "",
         "## 3. Bus strategy memory (M3 iteration blocks in verdicts)",
         *_bus_iteration_blocks(),

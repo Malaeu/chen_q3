@@ -6,23 +6,24 @@
 
 ## Summary
 
-- **Permanent tools:** 368 (touched since 2026-07-01: 23)
+- **Permanent tools:** 370 (touched since 2026-07-01: 25)
 - **One-shot probes** (goal-local experiment log, not tooling): 159
-- **Databases:** 1
-- **Ledgers** (accumulating journals, any format): 121
+- **Databases:** 2
+- **Ledgers** (accumulating journals, any format): 122
 - **State files** (json/yaml/csv > 2 KB, not journals): 473
 - Alive tools referenced by nothing (**orphans**): 2
-- Alive tools not mentioned in any rule file: 19
+- Alive tools not mentioned in any rule file: 21
 
 ## Databases
 
 | Path | Last commit | Refs | In rules |
 |---|---|---|---|
-| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-05 | 21 | yes |
+| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-05 | 22 | yes |
+| `q3.lean.aristotle/aristotle_db/knowledge.db` | untracked | 19 | NO |
 
 ## Ledgers — accumulating journals ("have we already tried this?")
 
-121 journals, **53 alive** / 68 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
+122 journals, **55 alive** / 67 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
 
 ### Alive
 
@@ -50,13 +51,15 @@
 | `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-07-31 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/phase_trace_and_ledger_filter_v1.json` | 78 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-04 | yes |
-| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 55 | 2026-07-27 | yes |
+| `orchestrator/state/SPINE_VIEW.md` | 69 | 2026-08-03 | yes |
+| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 56 | 2026-07-27 | yes |
+| `docs/KILLS.md` | 47 | untracked | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ROUTE_B_DATA_MANIFEST.md` | 45 | 2026-07-27 | **NO** |
 | `docs/routeB_bus/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-05.md` | 38 | 2026-08-05 | **NO** |
+| `q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` | 36 | 2026-08-05 | yes |
 | `docs/routeB_bus/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 31 | 2026-07-30 | **NO** |
-| `orchestrator/state/SPINE_VIEW.md` | 31 | 2026-08-03 | yes |
 | `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` | 30 | 2026-07-28 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/trough_relabel_and_bus_sync_v1_actions_log.md` | 25 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/phase_trace_and_ledger_filter_v1.md` | 24 | 2026-07-10 | **NO** |
@@ -115,7 +118,6 @@
 | `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-06-12 |
 | `.agents/skills/q3-step32-lean/SKILL.md` | 3 | 2026-05-27 |
 | `q3.lean.aristotle/ACTIVE/insights_index.md` | 166 | 2026-05-03 |
-| `q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` | 36 | 2026-04-27 |
 | `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_tail_2_decay_kill.md` | 19 | 2026-04-19 |
 | `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_shell_2_tag_based_shell_interface_bundled_first_zeta_kill_layer_raw_packet_family_theorem_cases.md` | 19 | 2026-04-19 |
 | `q3.lean.aristotle/docs/incoming_notes/archive/20260411_145346_7dac003e_0ac0_4246_a498_0ff7230530f2_aristotle_tar/extracted/7dac003e_0ac0_4246_a498_0ff7230530f2_aristotle_tar/7dac003e-0ac0-4246-a498-0ff7230530f2_aristotle/lake-manifest.json` | 85 | 2026-04-11 |
@@ -159,6 +161,8 @@
 
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
+| `orchestrator/kb.py` | untracked | 25 | **NO** | kb — the single entry point to knowledge.db ("have we already tried / killed this?"). |
+| `orchestrator/kb_migrate_kills.py` | untracked | 1 | **NO** | One-shot migration of the kill family into knowledge.db (wave 1). |
 | `orchestrator/backfill_db.py` | 2026-08-05 | 0 | **NO** | Bulk-backfill aristotle_proofs.db with the RouteB / muntz_v3 files it never indexed. |
 | `orchestrator/tools_census.py` | 2026-08-05 | 2 | **NO** | Machine census of every tool, database and state file in the repo. |
 | `q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py` | 2026-08-05 | 1 | **NO** | S2-L2b discriminator: do v3-class windows have Mellin zeros INSIDE the open strip? |
@@ -195,7 +199,7 @@
 | `q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_cancellation_interval_certificate.py` | 2026-06-25 | 31 | **NO** | Fail-closed combined cancellation high-order certificate ledger. |
 | `q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_certificate.py` | 2026-06-25 | 66 | **NO** | Fail-closed preflight for the direct scaled-remainder certificate. |
 | `q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_direct_payload.py` | 2026-06-25 | 108 | **NO** | Fail-closed ledger for the direct nonzero-model scaled-remainder payload. |
-| `q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py` | 2026-06-25 | 12 | **NO** | Fail-closed source-data gate for the Step33A.1-A whole-expression pilot. |
+| `q3.lean.aristotle/scripts/generate_step33_a1_sub0_combined_order16_scaled_remainder_whole_expression_pilot.py` | 2026-06-25 | 13 | **NO** | Fail-closed source-data gate for the Step33A.1-A whole-expression pilot. |
 | `q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_remainder_payload.py` | 2026-06-25 | 2 | **NO** | Fail-closed Step33A.1-A sub0 component Taylor remainder ledger. |
 | `q3.lean.aristotle/scripts/generate_step33_a1_sub0_component_taylor_residual_payload.py` | 2026-06-25 | 44 | **NO** | Fail-closed component Taylor residual payload for Step33A.1-A sub0. |
 | `q3.lean.aristotle/scripts/generate_step33_a1_sub0_raw_d17_sharp_local_center_jets18.py` | 2026-06-25 | 8 | **NO** | Fail-closed audit for sharp raw-D17 local center-jet rows. |
@@ -382,7 +386,7 @@
 | `scripts/prime_brange_pilot_points.py` | 2026-01-30 | 1 | **NO** | Extract pilot points (B=3.0 and B=4.9) from the existing B-range certificate. |
 | `scripts/prime_brange_to_lean.py` | 2026-01-30 | 2 | **NO** | Convert prime_cert_brange output into a Lean grid table. |
 | `bellman_bmo.py` | 2026-01-29 | 3 | **NO** | BMO Optimization via Bellman Functions |
-| `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-01-29 | 81 | yes | Lean 4 Parser for Aristotle Proofs Database |
+| `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-01-29 | 82 | yes | Lean 4 Parser for Aristotle Proofs Database |
 | `q3.lean.aristotle/monitor_server.py` | 2026-01-29 | 5 | yes | Simple monitoring server for Aristotle projects. |
 | `q3.lean.aristotle/scripts/aristotle_dag_loop.py` | 2026-01-29 | 7 | yes | Generate a lightweight Aristotle queue from open axioms + sorries. |
 | `q3.lean.aristotle/scripts/build_docs.sh` | 2026-01-29 | 3 | **NO** | Build Q3 documentation with doc-gen4 |
