@@ -401,3 +401,36 @@ notes: >-
   Aristotle submission, Goal 055 materialization, Bus 010, route promotion,
   H2a closure, G2 closure, or RH claim is authorized.
 ```
+
+### 2026-08-05 — G2 CCM 054.1 next cancellation-preserving split adjudication
+
+```yaml
+proof_address: RouteB.G2.CCM.054_1.NextSplit
+front: G2/H2a
+transaction: G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION
+conversation_id: 6a72d69f-da34-83eb-a372-ed00bf6287e9
+request_message_id: 2598b7e8-664d-4338-b1be-14f19efc9e75
+sent_at: 2026-08-05T08:22:19.215+02:00
+completed_at: null
+wall_seconds: null
+wall_human: "IN PROGRESS"
+answer_now_shown: true
+answer_now_clicked: false
+primary: PENDING
+status: PROSHKA_THINKING
+result_pointer: null
+notes: >-
+  Fresh chat in project RH_Marz_2026 pinned to commit 80488965. The standalone
+  prompt SHA-256 is
+  21b40af3d7cf6433999158754d8f8c77a22dd83b21c20cd0d893a5bb431af2fe;
+  the high-recall context pack SHA-256 is
+  39008c85a464924d36d0d4f80f556080144872f8ad90b997d013a2c9a6660839.
+  It asks whether the proved antipodal theorem fully materializes the
+  seven-class source wall and requires exactly one smallest next node among a
+  finite layout consumer, finite von-Mangoldt normalization, exact
+  W02/prime-kernel normal form, WR constant supplier, first integral receiver,
+  or cancellation-ledger interface. Goal 055 remains held, Aristotle is not
+  authorized, and independent W02/WR/Prime endpoint balls remain forbidden.
+  The UI displayed Answer now after reasoning began; it was deliberately not
+  clicked.
+```
