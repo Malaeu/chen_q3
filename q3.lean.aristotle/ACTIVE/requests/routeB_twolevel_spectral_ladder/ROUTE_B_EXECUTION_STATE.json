@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T10:14:54.766+02:00",
+  "updated_at": "2026-08-05T11:08:35.787+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+  "operational_status": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
-    "name": "CCMCell13N2PostW02NextSplitAdjudication",
-    "status": "ACTIVE_POST_W02_PROSHKA_THEOREM_SHAPE_ADJUDICATION",
-    "stop_code": "G2_CCM_054_1_POST_W02_NEXT_NODE_UNSELECTED",
+    "contract_obligation": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
+    "name": "CCMCell13N2SevenRepresentativePrimeKernelExactNormalForm",
+    "status": "ACTIVE_OWNER_RELEASED_LEAN_IMPLEMENTATION",
+    "stop_code": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_MISSING",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Proshka route architect/reviewer via fresh project chat",
-    "next_action": "Wait for Proshka's full post-W02 verdict without clicking Answer now; archive it, record exact reasoning time, and execute only one selected node under standing owner release; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "W02_SEVEN_CLASS_EXACT_NORMAL_FORM_PROVED_POST_W02_NEXT_SPLIT_ADJUDICATION_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "next_required_actor": "Codex local Lean worker under standing owner release",
+    "next_action": "Preflight P-PRIME-1..4 privately, then prove the exact one-public-theorem seven-representative prime-kernel normal form without ccmQKernel/composite prime-power/boundary residue in the conclusion; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "POST_W02_ADJUDICATION_COMPLETE_PRIME_KERNEL_SEVEN_REPRESENTATIVE_NORMAL_FORM_SELECTED_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -108,6 +108,15 @@
       ,"post_w02_proshka_prompt_sha256": "ac3fe3fcf0ec5747ce398dee5c01d35707ffd0aca9e7bec9add92ef05cce5133"
       ,"post_w02_proshka_context_sha256": "ee5177ecfdf7c0421c496ab29741dcbf25acd26be78950e6187727827ea0d950"
       ,"post_w02_answer_now_clicked": false
+      ,"post_w02_proshka_completed_at": "2026-08-05T11:08:35.787+02:00"
+      ,"post_w02_proshka_ui_reasoning": "22m43s"
+      ,"post_w02_proshka_observed_wall_seconds": 3221
+      ,"post_w02_proshka_response_message_id": "b8120679-5586-4645-bf52-db1ae4886b7d"
+      ,"post_w02_proshka_preview_sha256": "8f24a4332f72b19df9bb987d6f00aeec7ec56d26dcd0e22b675e2f35204eb196"
+      ,"post_w02_proshka_document_sha256": "a4285fb1fb379e9a322397e1017ff4689ce4ff38bf693ca0ad5bccd8de314d7c"
+      ,"post_w02_runner_up_fate": "REQUIRED_AND_EXECUTABLE"
+      ,"post_w02_selected_node": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM"
+      ,"next_node_after_post_w02_adjudication": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

@@ -552,14 +552,14 @@ transaction: G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION
 conversation_id: 6a72f0ff-1990-83ed-b9ba-169d67d9c942
 request_message_id: 6b426341-0140-4418-9963-e4f4930df0d0
 sent_at: 2026-08-05T10:14:54.766+02:00
-completed_at: null
-wall_seconds: null
-wall_human: "RUNNING"
-answer_now_shown: false
+completed_at: 2026-08-05T11:08:35.787+02:00
+wall_seconds: 3221
+wall_human: "53m41s observed wall; 22m43s exact UI reasoning duration"
+answer_now_shown: true
 answer_now_clicked: false
-primary: G2_CCM_054_1_POST_W02_NEXT_NODE_UNSELECTED
-status: RUNNING_FULL_REASONING
-result_pointer: null
+primary: SELECT_A_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE
+result_pointer: "Proshka assistant message b8120679-5586-4645-bf52-db1ae4886b7d plus attached Markdown verdict"
 notes: >-
   Fresh chat in project RH_Marz_2026 pinned to commit
   c237cbe44d3e86e5b968d62a1ccc34dba4ec0dbe. The high-recall context pack
@@ -576,5 +576,18 @@ notes: >-
   fork. Independent component balls, bundled analytic walls, Goal 055
   materialization, Aristotle, Bus 010, route promotion, and RH claims remain
   forbidden. At dispatch the UI showed the normal Stop responding control and
-  did not show Answer now; no early-answer control was clicked.
+  did not show Answer now. The early Answer-now control appeared at
+  2026-08-05T10:17:29.606+02:00 and was deliberately not clicked. Proshka
+  completed with exact UI reasoning time 22m43s; the observed
+  send-to-extraction wall was 53m41s. The 635-character assistant preview has
+  SHA-256 8f24a4332f72b19df9bb987d6f00aeec7ec56d26dcd0e22b675e2f35204eb196.
+  The attached 28230-byte Markdown verdict is the authoritative full response,
+  has SHA-256
+  a4285fb1fb379e9a322397e1017ff4689ce4ff38bf693ca0ad5bccd8de314d7c,
+  and contains exactly one CODEX DIRECTIVE. Proshka classified the named
+  prime-kernel runner-up as REQUIRED_AND_EXECUTABLE and selected exactly one
+  seven-representative exact normal-form theorem with four private plants. The
+  standing owner release authorizes that local Lean implementation only;
+  Goal 055 remains held, Aristotle remains unauthorized, Bus 010 remains void,
+  and no route or RH promotion is licensed.
 ```
