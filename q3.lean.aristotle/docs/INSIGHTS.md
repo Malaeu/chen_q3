@@ -49889,7 +49889,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   next obligation.  G5/S1 remains OPEN; Route B remains
   `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
 
-## 2026-08-05 — G5 regular PSWF coefficient-row source gate (receiver selected)
+## 2026-08-05 — G5 regular PSWF coefficient-row source gate (weight receiver proved)
 
 - Exact target: turn the regular even PSWF Ferrers/Legendre coefficient row
   into a nonzero square-summable solution of the already committed symmetric
@@ -49919,6 +49919,15 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `D0Mode4PSWFLegendreWeightedHermitianTail.lean`, containing only the exact
   pointwise weight identity and the conditional 30.8.5 receiver.  The next
   consumer is `mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical`.
+- Both public theorems are Lean-proved.  Validation passed: direct Lean,
+  target build `7756/7756`, full build `7817/7817`, `q3_check`, zero holes or
+  forbidden declarations, and standard axioms only (`propext`,
+  `Classical.choice`, `Quot.sound`).  The proof DB records both declarations
+  as proven.
+- All five required falsifiers fire: source shift `K-1+n -> K+n`, source
+  denominator `4*k+1 -> 4*k-3`, scale index `n -> n+1`, normalization sum
+  `1 -> 0`, and the invalid strengthening to raw unweighted square
+  summability.
 - Source supply remains open: the receiver accepts an anonymous sequence and
   does not construct or identify a regular first-kind PSWF coefficient row.
 - No full Sturm--Liouville construction, PSWF existence claim, Weyl label,
