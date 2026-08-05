@@ -247,14 +247,14 @@ transaction: G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE
 conversation_id: 6a729e95-3e7c-83eb-bf3e-fb98bd88d8a6
 request_message_id: ee57009d-4e65-4e81-8a9c-5d9af18c4705
 sent_at: 2026-08-05T04:23:16.941+02:00
-completed_at: null
-wall_seconds: null
-wall_human: null
+completed_at: 2026-08-05T04:48:55.607+02:00
+wall_seconds: 1538
+wall_human: 25m38s observed including extraction lag; 24m19s exact UI reasoning duration
 answer_now_shown: true
 answer_now_clicked: false
-primary: null
-status: RUNNING
-result_pointer: null
+primary: G5_MODE4_SELECT_REPAIRED_B_ROOT_TO_NORMALIZED_RECURRENCE_ROW
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: Proshka message 6b1b82c5-9a52-4c12-8b0e-82ff8210a010
 notes: >-
   Fresh project chat in RH_Marz_2026 pinned to cf0cc3c5. The context pack has
   SHA-256 d90d3140248e851152bd2d309d31e01451331fae5e6c315db081b5925fc2b71d;
@@ -270,5 +270,12 @@ notes: >-
   existence, full-operator overreach, Bus 010, promotion, and RH claims.
   At 2026-08-05T04:27:54+02:00 the Answer-now action appeared while Proshka
   was still generating under the UI status Abgrenzen der Quelle; it was
-  deliberately not clicked.
+  deliberately not clicked. Proshka completed with exact UI reasoning time
+  24m19s and selected repaired Candidate B-prime: build the global raw row
+  from the existing forward left solution, splice it to the committed
+  canonical tail exactly at source indices K-1/K, prove raw and weighted
+  summability, and normalize by the positive weighted total. The selected
+  node is Lean-only and must not be named regular PSWF, first kind,
+  eigenfunction, ordered mode, Weyl, or resolvent. After it succeeds, the
+  genuine named gap is G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION.
 ```

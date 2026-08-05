@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 84,
-  "updated_at": "2026-08-05T04:27:54+02:00",
+  "revision": 85,
+  "updated_at": "2026-08-05T04:48:55.607+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1353,7 +1353,7 @@
         "answer_now_clicked": false
       },
       "regular_pswf_coefficient_row_source_gate": {
-        "status": "DLMF_CONDITIONAL_BOUNDARY_FLUX_PROVED_GENUINE_SOURCE_OBJECT_OPEN",
+        "status": "ROOT_TO_NORMALIZED_RECURRENCE_ROW_SELECTED_AWAITING_IMPLEMENTATION_FERRERS_SOURCE_OPEN",
         "pinned_head": "9e462d94",
         "q3_docs_queries": 4,
         "q3_docs_candidates": 0,
@@ -1417,7 +1417,17 @@
           "prompt_sha256": "d591de7de6ac873e702601a727dad8ddbec94d6bc3fb6fae59494a8719facd64",
           "context_pack_sha256": "d90d3140248e851152bd2d309d31e01451331fae5e6c315db081b5925fc2b71d",
           "full_request_sha256": "d9d1c767544acfb16c963421ad7307ce56127b85ee8995ad21fc2feda688b32f",
-          "status": "RUNNING_ANSWER_NOW_SHOWN_NOT_CLICKED",
+          "completed_at_observed": "2026-08-05T04:48:55.607+02:00",
+          "assistant_message_id": "6b1b82c5-9a52-4c12-8b0e-82ff8210a010",
+          "exact_ui_reasoning_duration": "24m19s",
+          "observed_wall_seconds": 1538,
+          "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+          "primary": "G5_MODE4_SELECT_REPAIRED_B_ROOT_TO_NORMALIZED_RECURRENCE_ROW",
+          "selected_node": "G5_MODE4_ROOT_TO_NORMALIZED_GLOBAL_RECURRENCE_ROW",
+          "selected_candidate": "B_PRIME",
+          "owned_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiMatchedNormalizedCoefficientRow.lean",
+          "public_theorem": "exists_mode4MatchedNormalizedRecurrenceRow_of_root",
+          "next_named_gap_after_success": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "answer_now_shown": true,
           "answer_now_clicked": false,
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
@@ -1432,7 +1442,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "DLMF_WEIGHT_IDENTIFICATION_AND_BOUNDARY_FLUX_CONDITIONAL_CHAIN_MATERIALIZED_GENUINE_REGULAR_FIRST_KIND_SOURCE_OBJECT_NEXT_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "REPAIRED_B_PRIME_ROOT_TO_NORMALIZED_RECURRENCE_ROW_SELECTED_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4390,6 +4400,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;STOP_RESPONSE_STILL_PRESENT;STATUS_ABGRENZEN_DER_QUELLE;NO_ASSISTANT_VERDICT_YET",
       "honesty": "FULL_REASONING_TIME_PRESERVED_NO_EARLY_ANSWER_NO_SECOND_PROMPT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T04:48:55.607+02:00",
+      "event": "G5_MODE4_REPAIRED_B_PRIME_ROOT_TO_NORMALIZED_RECURRENCE_ROW_SELECTED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROSHKA_MESSAGE_6B1B82C5;EXACT_UI_REASONING_24M19S;OBSERVED_WALL_1538S;ROOT_TO_GLOBAL_NORMALIZED_ROW_SELECTED;EXACT_SPLICE_K_MINUS_1_K;CANDIDATE_D_KILLED_BY_C04",
+      "honesty": "LEAN_ONLY_RECURRENCE_ROW_NODE_NOT_REGULAR_PSWF_NOT_FIRST_KIND_NOT_ORDERED_MODE_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
     }
   ]
 }
