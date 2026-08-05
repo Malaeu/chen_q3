@@ -50042,3 +50042,36 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   smallest executable node before implementation.
 - No Ferrers function, endpoint regularity, first-kind/PSWF name, ordered
   spectral label, route promotion, Bus 010, or RH claim is made at this gate.
+
+## 2026-08-05 — G5 ordinary Legendre affine kernel (proved)
+
+- Proshka message `60478a3b-b5e3-4015-8352-65ea711fa7dd` completed after
+  exact UI reasoning `25m27s` (`26m07s` observed wall).  `Answer now` was
+  displayed and never clicked.  Its 26972-character response has SHA-256
+  `6a274e2f1b90160f8bd681f38ffaaf7c43a6ba5eb68222b4c99aadd0db004161`
+  and contains exactly one `CODEX DIRECTIVE`.
+- The verdict split the overlarge F0 node and selected only F0a:
+  `G5_MODE4_ORDINARY_LEGENDRE_AFFINE_KERNEL`.  F1 remains a genuine
+  source-bound task, F2 remains overlarge, and F3 remains operator overreach.
+- `D0Mode4OrdinaryLegendreAffineKernel.lean` has no Q3 imports.  The two
+  requested polynomial imports do not themselves introduce the real type, so
+  the only support import added is `Mathlib.Data.Real.Basic`.
+- The file defines the exact affine polynomial `C (1/2) * (1-X)`, the mapped
+  ordinary polynomial and its evaluation.  It proves the exact shifted
+  evaluation crosswalk, `P0=1`, the load-bearing orientation `P1=X`, degree,
+  parity, even/odd specialization, and both endpoint values.
+- Three private planted falsifiers compile in the same file: the wrong affine
+  `(1+X)/2` gives `P1=-X`, that mutant is not `X`, and degree one changes sign
+  between the endpoints.  No recurrence, differential equation, `x^2`
+  action, analytic bound, orthogonality, Ferrers series, or PSWF provenance is
+  present.
+- Validation passed: direct Lean; target `1302/1302`; full `7817/7817`;
+  `q3_check`; zero holes or forbidden declarations; all 12 public theorems
+  depend only on `propext`, `Classical.choice`, and `Quot.sound`; proof DB
+  `18/18 proven`.  File SHA-256 is
+  `e6c4b906e20b51e7a637e6edb5084e4c6e96c79b41468a4b4a0c02bcfa243215`.
+- The next exact gap is
+  `G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_KERNEL`: choose between direct
+  coefficient extensionality and a recursive auxiliary basis plus equality
+  crosswalk.  G5/S1 remains OPEN, Route B remains `CHALLENGER / NOT_RH`, and
+  Bus 010 remains VOID.
