@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 67,
-  "updated_at": "2026-08-05T01:51:44+02:00",
+  "revision": 68,
+  "updated_at": "2026-08-05T02:06:13+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1306,7 +1306,7 @@
         "pinned_head": "157f93c0",
         "status": "IN_PROGRESS",
         "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_B0_OR_B1_NODE_AFTER_THREE_COEFFICIENT_CROSSWALK",
-        "answer_now_shown": false,
+        "answer_now_shown": true,
         "answer_now_clicked": false
       }
     },
@@ -4150,6 +4150,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "FRESH_PROJECT_CHAT;PIN_157F93C0;CONTEXT_PACK_SHA256_855E0DB1;REQUEST_MESSAGE_F090F129",
       "honesty": "CLOSED_ENVELOPE_AND_RECURRENCE_NODES_NOT_REASSIGNED_ONE_SMALLEST_B0_OR_B1_NODE_REQUESTED_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T02:06:13+02:00",
+      "event": "G5_MODE4_POST_RECURRENCE_B0_B1_PROSHKA_ADJUDICATION_STILL_RUNNING",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;NO_ASSISTANT_TEXT_YET;LOCAL_COHERENT_CONE_UNIQUENESS_SMOKE_PASS_STANDARD_AXIOMS_ONLY",
+      "honesty": "SMOKE_TEST_OUTSIDE_REPO_NOT_ACCEPTED_NODE_NO_EARLY_ANSWER_NO_BUS_010_NOT_RH"
     }
   ]
 }

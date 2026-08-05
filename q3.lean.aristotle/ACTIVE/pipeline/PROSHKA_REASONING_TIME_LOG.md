@@ -136,7 +136,7 @@ sent_at: 2026-08-05T01:51:44.268+02:00
 completed_at: pending
 wall_seconds: pending
 wall_human: pending
-answer_now_shown: false
+answer_now_shown: true
 answer_now_clicked: false
 primary: pending
 status: IN_PROGRESS
@@ -151,5 +151,6 @@ notes: >-
   crosswalk, the Weyl/recessive-tail characterization, or a source-neutral
   abstract Schur-inertia theorem. It forbids reassigning closed work, minting
   a spectral theorem as a structure field, tildePhi unless selected, Bus 010,
-  route promotion, and an RH claim. Never click Answer now.
+  route promotion, and an RH claim. Answer now appeared during generation and
+  was not clicked.
 ```
