@@ -50280,3 +50280,29 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `0742f31a45714def1965773e833efd9fef30ab6daa5dce0f8613e22706fc8fc3`.
 - Goal 055 remains held; `054.1-v2`, H2a, and G2 remain open.  No Aristotle
   submission, Bus 010, route promotion, or RH claim is authorized.
+
+# 2026-08-05 — CCM cell 13/2 W02 seven-class exact normal form (in progress)
+
+- Exact target: `Q3.RouteB.ccmW02Entry_13_seven_class_normal_form`, one public
+  theorem in a new file importing only the proved finite von-Mangoldt module.
+- Proshka killed the public direct `ccmPrimeEntryN1 13` wrapper as redundant:
+  the generic functional already supplies that proposition by a local
+  one-line specialization.  It selected the seven W02 equalities as the next
+  smallest complete component rewrite.
+- Four `q3_docs` embedding queries returned no indexed theorem or paper result.
+  The source lock is therefore the literal production definition of
+  `ccmW02Entry` plus `ccmL_pos`; no external numerical certificate is used.
+- The exact proof keeps `Real.pi`, `Real.sinh (ccmL 13 / 4)`, and `ccmL 13`
+  symbolic.  Fixed integer casts/products normalize with `norm_num`; positive
+  denominators are discharged with `positivity`; `field_simp` and `ring`
+  perform only exact field/ring normalization.
+- The three load-bearing checks are: the sign of the mixed mode product, the
+  distinction between the mode-one and mode-two squared denominators, and the
+  single central cancellation of `ccmL 13`.
+- Direct Lean already passes with exactly the standard axiom triple.  Target
+  and full builds, `q3_check`, taint/public-surface scans, and three separate
+  mutants remain required before the node can be called proved.
+- This is representation progress only.  It supplies no rational bound for
+  W02, WR, a prime kernel, an integral, or a final entry; Goal 055 remains held,
+  Aristotle remains unauthorized, Bus 010 remains void, and the route remains
+  challenger / not RH.
