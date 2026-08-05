@@ -49830,3 +49830,36 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   followed by Hermitian similarity/boundary self-energy and Schur inertia.
   G5/S1 remains OPEN; Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains
   VOID.
+
+## 2026-08-05 — G5 canonical Hermitian tail row and boundary flux (proved)
+
+- Proshka message `41a82262-f418-42c8-bade-a1b1f9fef1b9` selected the
+  exact row-level diagonal similarity before discrete-Wronskian uniqueness.
+  Exact UI reasoning was `23m07s`; observed wall time was `23m50s`;
+  `Answer now` was shown and never clicked.
+- `D0Mode4JacobiHermitianTailRow.lean` defines the explicit positive scale
+  `s_(K,n) = sqrt ((4K-3)/(4(K+n)-3))` and the symmetric-coordinate row
+  `v_n = s_(K,n) u_n`.  The scale is normalized at zero, positive, and at
+  most one.
+- The exact detailed-balance identities conjugate the raw lower/upper
+  recurrence to the already committed symmetric off-diagonals
+  `mode4JacobiSymmetricOff`.  Thus `v` satisfies the precise symmetric Jacobi
+  recurrence consumed by the Hermitian Schur matrices.
+- Comparison `v_n^2 <= u_n^2` consumes the previously proved
+  `mode4TailCoefficientRow_sq_summable` and proves the transformed row is
+  square-summable.  The boundary identity proves
+  `beta_(K-1) * (v_1/v_0) = U_(K-1) * R_K`, exactly the scalar correction in
+  `mode4HermitianSchurMatrix`.
+- All required mutants fail: reciprocal scale, both off-diagonal index
+  shifts, lower/upper balance swap, alternating phase, lower-for-upper
+  boundary coefficient, shifted tail ratio, zero normalization, and removal
+  of the input L2 dependency.
+- Validation passed: direct Lean; target build `7755/7755`; full build
+  `7817/7817`; `q3_check`; zero holes or forbidden declarations; all five
+  public theorems depend only on `propext`, `Classical.choice`, and
+  `Quot.sound`; the proof DB records all 14 declarations as proved.
+- This is an abstract coordinate theorem, not a source PSWF, Weyl solution,
+  infinite operator, or resolvent.  The next source-neutral node is
+  `D0Mode4JacobiHermitianTailUniqueness.lean`, using the discrete Wronskian;
+  source regular-row identification remains downstream.  G5/S1 remains
+  OPEN; Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains VOID.

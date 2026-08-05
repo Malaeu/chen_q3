@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 73,
-  "updated_at": "2026-08-05T02:49:56+02:00",
+  "revision": 74,
+  "updated_at": "2026-08-05T03:01:30+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,8 +1190,8 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV70",
-    "status": "CANONICAL_POSITIVE_SQUARE_SUMMABLE_TAIL_ROW_AND_SOURCE_RECURRENCE_PROVED_SOURCE_REGULAR_ROW_IDENTIFICATION_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV74",
+    "status": "CANONICAL_HERMITIAN_SQUARE_SUMMABLE_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX_PROVED_L2_UNIQUENESS_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
@@ -1199,11 +1199,12 @@
       "Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean",
       "Q3/Proofs/RouteB/D0Mode4PSWFLegendreRecurrenceCrosswalk.lean",
       "Q3/Proofs/RouteB/D0Mode4PSWFRiccatiOrbitUniqueness.lean",
-      "Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean"
+      "Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean",
+      "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean"
     ],
     "latest_proof_artifact": {
-      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean",
-      "sha256": "a9b819fc6eb220ea3f0a0fd756f93b47a4f9ddb58b5722e8c95e0ac404491b4a"
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
+      "sha256": "150d07a776a6e165d0a98b4e330030adbea60001389c6e513d90ffe4f199ea1c"
     },
     "proved": [
       "SCHUR_DETERMINANT_EQUALS_POSITIVE_UPPER_PRODUCT_TIMES_ROOT_FUNCTION",
@@ -1231,7 +1232,11 @@
       "MODE4_CANONICAL_TAIL_COEFFICIENT_ROW_SQUARE_SUMMABLE",
       "MODE4_CANONICAL_TAIL_COEFFICIENT_RATIO_EQUALS_RIGHT_TAIL_LIMIT",
       "MODE4_CANONICAL_TAIL_COEFFICIENT_PROJECT_JACOBI_RECURRENCE",
-      "MODE4_CANONICAL_TAIL_COEFFICIENT_DLMF_RECURRENCE"
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_DLMF_RECURRENCE",
+      "MODE4_EXPLICIT_POSITIVE_DIAGONAL_HERMITIAN_SCALE",
+      "MODE4_CANONICAL_HERMITIAN_TAIL_ROW_POSITIVE_AND_SQUARE_SUMMABLE",
+      "MODE4_CANONICAL_HERMITIAN_TAIL_ROW_SYMMETRIC_RECURRENCE",
+      "MODE4_HERMITIAN_TAIL_BOUNDARY_FLUX_EQUALS_SCHUR_CORRECTION"
     ],
     "remaining_inputs": [
       "LOWER_ENDPOINT_FINITE_LEFT_LOWER_ENVELOPE_POSITIVE_AT_K_EQ_4M",
@@ -1243,10 +1248,11 @@
       "proved_first_brick": "mode4JacobiCoefficients_eq_pswfLegendre_evenCrosswalk",
       "proved_second_brick": "mode4RightTailLimit_eq_of_invariantCone_riccatiOrbit_AND_mode4RightTailLimit_eq_ratio_of_pswfLegendre_invariantCone_solution",
       "proved_third_brick": "mode4TailCoefficientRow_sq_summable_AND_projectJacobi_recurrence_AND_pswfLegendre_recurrence",
+      "proved_fourth_brick": "mode4HermitianTailCoefficientRow_sq_summable_AND_recurrence_AND_boundaryFlux_eq_schurCorrection",
       "remaining": [
         "EVEN_LEGENDRE_TRANSFORM_AND_DIFFERENTIAL_OPERATOR_DOMAIN_CROSSWALK",
+        "MODE4_HERMITIAN_SQUARE_SUMMABLE_SOLUTION_UNIQUE_UP_TO_SCALE",
         "PSWF_REGULAR_COEFFICIENT_ROW_EQUALS_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW",
-        "MODE4_HERMITIAN_SIMILARITY_AND_BOUNDARY_SELF_ENERGY",
         "EXACT_INFINITE_TAIL_SCHUR_COMPLEMENT_INERTIA",
         "ORDERED_EVEN_DIFFERENTIAL_SPECTRUM_INTERVAL_TO_DETERMINANT_SIGNS"
       ]
@@ -1289,7 +1295,7 @@
         "LAMBDA_LOWER_EQ_NEG_G_PLUS_8_SQRT_G",
         "LAMBDA_UPPER_EQ_NEG_G_PLUS_10_SQRT_G"
       ],
-      "pro_review_request": "MESSAGE_5C6C157B_DIRECT_ENDPOINT_SIGNS_COMPLETE_MESSAGE_0EDD239B;FOLLOWUP_MESSAGE_14DBB40E_COMPLETE_MESSAGE_92F35A12;POST_RECURRENCE_MESSAGE_F090F129_COMPLETE_MESSAGE_3A5AE850",
+      "pro_review_request": "MESSAGE_5C6C157B_DIRECT_ENDPOINT_SIGNS_COMPLETE_MESSAGE_0EDD239B;FOLLOWUP_MESSAGE_14DBB40E_COMPLETE_MESSAGE_92F35A12;POST_RECURRENCE_MESSAGE_F090F129_COMPLETE_MESSAGE_3A5AE850;POST_L2_MESSAGE_58D40B6F_COMPLETE_MESSAGE_41A82262",
       "first_proshka_verdict": {
         "status": "ENDPOINT_SIGNS_REDUCED",
         "primary": "G5_MODE4_R1A_DIRECT_DETERMINANT_SIGNS_REDUCED_TO_EXPLICIT_FINITE_LEFT_ENVELOPES",
@@ -1335,7 +1341,7 @@
         "pinned_head": "b0ca7f3b",
         "completed_at": "2026-08-05T02:49:56.200+02:00",
         "assistant_message_id": "41a82262-f418-42c8-bade-a1b1f9fef1b9",
-        "status": "COMPLETE_ACCEPTED_PENDING_MATERIALIZATION",
+        "status": "COMPLETE_ACCEPTED_AND_MATERIALIZED",
         "primary": "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX",
         "selected_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
         "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_NODE_AFTER_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW",
@@ -1347,13 +1353,13 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 7754,
+      "target_build_jobs": 7755,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "POST_L2_HERMITIAN_TAIL_ROW_AND_BOUNDARY_FLUX_SELECTED_PENDING_LEAN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "POST_L2_HERMITIAN_TAIL_ROW_AND_BOUNDARY_FLUX_MATERIALIZED_WRONSKIAN_UNIQUENESS_NEXT_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4234,6 +4240,13 @@
       "progress_class": "THEOREM_SHAPE_ADJUDICATION_PROGRESS",
       "result": "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX_SELECTED;EXACT_UI_REASONING_23M07S;OBSERVED_WALL_1430S;MESSAGE_41A82262",
       "honesty": "ROW_LEVEL_ABSTRACT_DIAGONAL_SIMILARITY_ONLY_WRONSKIAN_NEXT_NO_SOURCE_OBJECT_NO_WEYL_NO_OPERATOR_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T03:01:30+02:00",
+      "event": "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX_PROVED",
+      "progress_class": "PROOF_AND_BOUNDARY_ORIENTATION_PROGRESS",
+      "result": "EXPLICIT_POSITIVE_TELESCOPING_SCALE;SQUARE_SUMMABLE_SYMMETRIC_ROW;EXACT_SYMMETRIC_RECURRENCE;BOUNDARY_FLUX_EQUALS_SCHUR_CORRECTION;TARGET_7755_FULL_7817_Q3_CHECK_PASS;ALL_MUTANTS_FIRE",
+      "honesty": "ABSTRACT_ROW_COORDINATES_ONLY_L2_WRONSKIAN_UNIQUENESS_NEXT_NO_SOURCE_PSWF_NO_WEYL_NO_OPERATOR_NO_RESOLVENT_NO_BUS_010_NOT_RH"
     }
   ]
 }
