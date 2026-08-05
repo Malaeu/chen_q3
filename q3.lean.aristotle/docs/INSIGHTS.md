@@ -50169,3 +50169,25 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   needs a theorem-shape and representation decision before implementation.
 - G5/S1 remains open; no ODE, analytic series, regular PSWF, Bus 010, route
   promotion, or RH claim is made.
+
+# 2026-08-05 — CCM cell 13N2 Aristotle surrogate rejection and real receiver v2 prep
+
+- Aristotle project `36061787-afe1-4d64-bb55-905fce1411a6` reconstructed the
+  entire CCM object family because the submitted project lacked the production
+  imports; its `Defs`/`ClosedForm`/`Cell13N2` proof is therefore a
+  `SURROGATE_OBJECT` and cannot enter the Route B proof graph.
+- The result's `Constants.lean` is separable: after replacing its only import
+  by `Mathlib`, its body builds in the pinned Q3 project and all 19 exported
+  log/sqrt lemmas have exactly `[propext, Classical.choice, Quot.sound]`.
+- That independent body is staged as
+  `Q3/Proofs/RouteB/CCMFiniteWeilLogBounds.lean` for Proshka adjudication; it
+  claims no CCM entry enclosure.
+- The real `054.1-v2` skeleton imports
+  `Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix`, contains the exact 14 audited
+  endpoint rationals (automatic 14/14 equality check), and has one hole only:
+  the cancellation-preserving `ccmCell13N2_wr_enclosures`.
+- Its `ccmCell13N2_entry_enclosures` corollary already elaborates by unfolding
+  the source matrix and `linarith`; no additional analysis is hidden there.
+- Goal 055 remains a draft outside the bus until the v2 hole is closed and the
+  standard-triple gate passes.  The absent verbatim `P-LEAN-1..5` payload must
+  be copied from the authoritative Proshka directive, never reconstructed.
