@@ -50103,3 +50103,32 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   audit, requesting exactly one owned Lean file and one executable public
   theorem shape.  No recurrence, ODE, `x^2` action, Ferrers function, PSWF
   name, route promotion, Bus 010, or RH claim is made yet.
+
+## 2026-08-05 — G5 ordinary Legendre three-term recurrence (proved)
+
+- Proshka selected direct coefficient extensionality in the existing shifted
+  representation, followed by transport through the committed affine map; a
+  second recursive Legendre representation was rejected as unnecessary.
+- `D0Mode4OrdinaryLegendreRecurrence.lean` proves the exact finite binomial
+  coefficient identity over `ℕ`, the shifted recurrence over `ℤ[X]`, and the
+  affine transport to the ordinary real convention.
+- The file exports exactly one theorem,
+  `mode4OrdinaryLegendrePolynomial_three_term_succ`; it introduces no public
+  definitions and deliberately contains no `X` action, `X ^ 2` action, ODE,
+  analytic bound, Ferrers series, or PSWF provenance claim.
+- Six independent private falsifiers reject a wrong leading coefficient,
+  wrong middle coefficient, flipped middle sign, wrong trailing coefficient,
+  shifted trailing polynomial index, and reversed affine coordinate.  They use
+  only the already proved endpoint/orientation facts, not the public recurrence.
+- Validation passed: direct Lean; target build `1303/1303`; full build
+  `7817/7817`; `q3_check`; zero holes or forbidden declarations; proof DB
+  `10/10 proven`; standard axioms only (`propext`, `Classical.choice`,
+  `Quot.sound`).  File SHA-256 is
+  `6697ab356283831bab450c79baf08f1a2bc5e78813cd5497ef0ac42a03a50488`.
+- The control-plane idle drift was repaired at this semantic gate:
+  `STATE.json`, `ROUTE_B_EXECUTION_STATE.json`, and `loop_state.json` now all
+  select the unique active leaf `G5.MODE4.F0C.X_ACTION`; `routeb_status.py
+  --check` passes.
+- The next exact gap is
+  `G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL`.  G5/S1 remains open, Route B
+  remains `CHALLENGER / NOT_RH`, and Bus 010 remains VOID.

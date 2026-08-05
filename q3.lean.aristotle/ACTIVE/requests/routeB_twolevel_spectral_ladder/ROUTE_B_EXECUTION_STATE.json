@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-03T23:57:14+02:00",
+  "updated_at": "2026-08-05T06:44:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,17 +10,17 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
+  "operational_status": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X_ACTION",
   "current": {
-    "stage_id": "RB-IDLE",
-    "contract_obligation": "RB-IDLE-CONTROL",
-    "name": "NoSelectedMathematicalTarget",
-    "status": "IDLE_NO_MATHEMATICAL_TARGET_SELECTED",
-    "stop_code": "AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
+    "stage_id": "RB-LAMPORT-G5",
+    "contract_obligation": "G5.MODE4.F0C.X_ACTION",
+    "name": "Mode4OrdinaryLegendreXActionKernel",
+    "status": "ACTIVE_LEAN_IMPLEMENTATION",
+    "stop_code": "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Proshka route judge",
-    "next_action": "Select exactly one of G2, G3, G5, or G6 in a separate authorized transaction; G3 is the strongest post-closeout candidate but is not selected; do not create Bus 010 or authorize Goal 051 implicitly.",
+    "next_required_actor": "Codex local Lean worker",
+    "next_action": "Implement and validate the exact ordinary-Legendre X-multiplication action from the proved recurrence; then synchronize the next X-squared gate. Do not create Bus 010.",
     "ccm_classification": "SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY",
     "ccm_repoint": "G3_H2B_CONDITIONAL_EVIDENCE_ONLY",
     "h2b_closed": false,
@@ -356,14 +356,7 @@
       "detail": "The generic Temple half-gap plus residual-square/true-gap envelope arithmetic is Lean-proved with explicit C_alpha and r_alpha and a live one-envelope falsifier, but the canonical alpha/eigenbasis/residual variance/half-gap/squared residual/gap-floor same-family instantiation remains open."
     }
   ],
-  "waiting_reasons": [
-    {
-      "code": "AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
-      "class": "CONTROL_PLANE_IDLE",
-      "owner": "Proshka route judge",
-      "detail": "The D0.7e.5a source-locked branch is terminal historical. A separate decision must select exactly one of G2, G3, G5, or G6. No front, Goal 051, or Bus 010 is selected."
-    }
-  ],
+  "waiting_reasons": [],
   "guardrails": {
     "not_rh": true,
     "phase2_allowed": false,
@@ -372,11 +365,11 @@
     "qW_formula_changed": false,
     "packet_definition_changed": false,
     "codex_may_create_next_goal": false,
-    "owner_autorun_master_dag": false,
-    "zero_compute_until_goal_scope_says_otherwise": true
+    "owner_autorun_master_dag": true,
+    "zero_compute_until_goal_scope_says_otherwise": false
   },
   "owner_authorization": {
-    "mode": "OWNER_AUTHORIZED_AUTORUN_IDLE_PENDING_EXPLICIT_PROSHKA_TARGET",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X_ACTION",
     "authorized_at": "2026-07-11T21:14:20+02:00",
     "authorized_by": "Ылша",
     "instruction": "Remove the post-answer STOP, unlock the recursive compiler, start it, and keep iterating.",

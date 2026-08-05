@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 94,
-  "updated_at": "2026-08-05T06:29:39+02:00",
+  "revision": 95,
+  "updated_at": "2026-08-05T06:44:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_IDLE_AWAITING_EXPLICIT_PROSHKA_TARGET",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G5_X_ACTION_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Proshka route judge",
-    "next_action": "Select exactly one of G2, G3, G5, or G6 in a separate authorized transaction; do not create Bus 010 and do not authorize Goal 051 implicitly"
+    "next_actor": "Codex local Lean worker",
+    "next_action": "Implement and validate G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL; do not create Bus 010 and do not promote Route B"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -156,7 +156,7 @@
     "route_effect": "PORT_CONVENTION_FRICTION_CLOSED_CONTINUATION_BRIDGE_OPEN_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
   },
   "owner_authorization": {
-    "status": "OWNER_AUTHORIZED_AUTORUN_IDLE_PENDING_EXPLICIT_PROSHKA_TARGET",
+    "status": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X_ACTION",
     "authorized_at": "2026-07-11T21:14:20+02:00",
     "scope": "MASTER_DAG_LEAF_TRANSACTIONS",
     "physical_bus_preempts": true,
@@ -1190,8 +1190,8 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV75",
-    "status": "HERMITIAN_SQUARE_SUMMABLE_TAIL_SOLUTION_UNIQUENESS_PROVED_SOURCE_REGULAR_ROW_IDENTIFICATION_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV95",
+    "status": "ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE_PROVED_X_ACTION_ACTIVE_FERRERS_REGULAR_SOLUTION_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
@@ -1201,11 +1201,13 @@
       "Q3/Proofs/RouteB/D0Mode4PSWFRiccatiOrbitUniqueness.lean",
       "Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean",
       "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
-      "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean"
+      "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean",
+      "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
+      "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreRecurrence.lean"
     ],
     "latest_proof_artifact": {
-      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean",
-      "sha256": "97595597b3d75cc34d169795f16bc7620a92d1c0a2feda62c6697395d10d52a8"
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreRecurrence.lean",
+      "sha256": "6697ab356283831bab450c79baf08f1a2bc5e78813cd5497ef0ac42a03a50488"
     },
     "proved": [
       "SCHUR_DETERMINANT_EQUALS_POSITIVE_UPPER_PRODUCT_TIMES_ROOT_FUNCTION",
@@ -1238,11 +1240,17 @@
       "MODE4_CANONICAL_HERMITIAN_TAIL_ROW_POSITIVE_AND_SQUARE_SUMMABLE",
       "MODE4_CANONICAL_HERMITIAN_TAIL_ROW_SYMMETRIC_RECURRENCE",
       "MODE4_HERMITIAN_TAIL_BOUNDARY_FLUX_EQUALS_SCHUR_CORRECTION",
-      "MODE4_HERMITIAN_SQUARE_SUMMABLE_SOLUTION_UNIQUE_UP_TO_SCALE"
+      "MODE4_HERMITIAN_SQUARE_SUMMABLE_SOLUTION_UNIQUE_UP_TO_SCALE",
+      "MODE4_ORDINARY_LEGENDRE_AFFINE_KERNEL",
+      "MODE4_ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE"
     ],
     "remaining_inputs": [
       "LOWER_ENDPOINT_FINITE_LEFT_LOWER_ENVELOPE_POSITIVE_AT_K_EQ_4M",
-      "UPPER_ENDPOINT_FINITE_LEFT_UPPER_ENVELOPE_NEGATIVE_AT_K_EQ_4M"
+      "UPPER_ENDPOINT_FINITE_LEFT_UPPER_ENVELOPE_NEGATIVE_AT_K_EQ_4M",
+      "MODE4_ORDINARY_LEGENDRE_X_ACTION",
+      "MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION",
+      "MODE4_ORDINARY_LEGENDRE_DIFFERENTIAL_IDENTITY",
+      "MODE4_FERRERS_SERIES_REGULAR_SOLUTION"
     ],
     "load_bearing_crosswalk": {
       "status": "OPEN",
@@ -1441,7 +1449,7 @@
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         },
         "ferrers_regular_solution_gate": {
-          "status": "F0B_THREE_TERM_RECURRENCE_SELECTED_FOR_IMPLEMENTATION",
+          "status": "F0B_THREE_TERM_RECURRENCE_PROVED_F0C_X_ACTION_ACTIVE",
           "pinned_head": "a637ad11",
           "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
@@ -1499,10 +1507,10 @@
             "mutant_wrong_affine_p1_ne_x": "PASS",
             "mutant_odd_index_endpoint_sign_change": "PASS"
           },
-          "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_KERNEL",
-          "next_action": "ASK_PROSHKA_TO_SELECT_ONE_SMALLEST_F0B_NODE_AND_EXACT_CROSSWALK_REPRESENTATION",
+          "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL",
+          "next_action": "IMPLEMENT_G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL_FROM_PROVED_RECURRENCE",
           "f0b_theorem_shape_audit": {
-            "status": "RECURRENCE_CROSSWALK_SELECTED_SCRATCH_PROVED_PRODUCTION_MATERIALIZATION_PENDING",
+            "status": "RECURRENCE_CROSSWALK_PRODUCTION_PROVED_X_ACTION_NEXT",
             "pinned_head": "8dd39af9",
             "q3_docs_queries": 5,
             "q3_docs_candidates": 0,
@@ -1536,7 +1544,24 @@
               "x2_diag": "(n+1)^2/((2n+1)(2n+3))+n^2/((2n+1)(2n-1))",
               "x2_down": "n(n-1)/((2n+1)(2n-1))"
             },
-            "honesty": "SOURCE_FORMULAS_PINNED_BUT_NO_LEAN_PROOF_YET_NO_RECURRENCE_NO_ODE_NO_X2_NO_FERRERS_FUNCTION_NO_PSWF_NAME_NO_BUS_010_NOT_RH",
+            "honesty": "RECURRENCE_LEAN_PROVED_X_ACTION_X2_ODE_AND_FERRERS_REGULAR_SOLUTION_STILL_OPEN_NO_PSWF_NAME_NO_BUS_010_NOT_RH",
+            "production_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreRecurrence.lean",
+            "production_file_sha256": "6697ab356283831bab450c79baf08f1a2bc5e78813cd5497ef0ac42a03a50488",
+            "production_file_lines": 334,
+            "public_theorem_count": 1,
+            "public_theorem": "mode4OrdinaryLegendrePolynomial_three_term_succ",
+            "private_mutant_count": 6,
+            "validation": {
+              "direct_lean": "PASS",
+              "target_build_jobs": 1303,
+              "full_build_jobs": 7817,
+              "q3_check": "PASS",
+              "holes_or_forbidden_declarations": 0,
+              "axioms": ["propext", "Classical.choice", "Quot.sound"],
+              "proof_db_declarations_proven": 10,
+              "proof_db_declarations_total": 10,
+              "mutants_rejected": 6
+            },
             "proshka_adjudication": {
               "transaction": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_NEXT_NODE",
               "proof_address": "RouteB.G5.Mode4.OrdinaryLegendreFiniteAction",
@@ -1599,14 +1624,17 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 1302,
+      "target_build_jobs": 1303,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
-      "holes": 0
+      "holes": 0,
+      "proof_db_declarations_proven": 10,
+      "proof_db_declarations_total": 10,
+      "mutants_rejected": 6
     },
-    "external_proshka_ratification": "F0A_ORDINARY_LEGENDRE_AFFINE_KERNEL_MATERIALIZED_F0B_FINITE_ACTION_NEXT_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
-    "does_not_change_active_leaf": true,
+    "external_proshka_ratification": "F0B_DIRECT_SHIFTED_COEFFICIENT_EXT_RECURRENCE_MATERIALIZED_F0C_X_ACTION_ACTIVE_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "does_not_change_active_leaf": false,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
     "rh_status": "NOT_RH"
@@ -1727,12 +1755,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "RB-IDLE-CONTROL",
+    "active_node_id": "G5.MODE4.F0C.X_ACTION",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
-    "candidate_first_leaf_after_release": null,
+    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X_ACTION",
+    "candidate_first_leaf_after_release": "G5.MODE4.F0C.X_ACTION",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1769,7 +1797,8 @@
       "H2B2B2B2_QUOTIENT_RADICAL_METRIC_REV40",
       "GENERIC_FRONTIER_EXHAUSTION_AUDIT_REV41",
       "SOFT_0_ROOF_AND_S2_TYPECHECK_REV42",
-      "G5_MODE4_R1A_ROOT_BRACKET_REV57"
+      "G5_MODE4_R1A_ROOT_BRACKET_REV57",
+      "G5_MODE4_ORDINARY_LEGENDRE_RECURRENCE_REV95"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1827,9 +1856,39 @@
       "id": "RB-IDLE-CONTROL", "parent_id": null, "kind": "LEAF", "role": "CONTROL_SENTINEL",
       "statement": "No mathematical front is selected; await a separate explicit Proshka choice of exactly one of G2, G3, G5, or G6",
       "dependencies": [], "ordered_children": [], "assembly_theorem_id": null,
-      "proof_status": "CONTROL_IDLE", "activity": "ACTIVE",
+      "proof_status": "CONTROL_RELEASED_G5_SELECTED", "activity": "INACTIVE",
       "eligibility": {"eligible": false, "reason": "NOT_A_MATHEMATICAL_GOAL"},
       "validation": "D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
+      "failure_codes": []
+    },
+    "G5.MODE4.F0C.X_ACTION": {
+      "id": "G5.MODE4.F0C.X_ACTION",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Derive the exact ordinary-Legendre X-multiplication action from the proved three-term recurrence in a separate source-neutral Lean node",
+      "dependencies": ["G5.MODE4.F0B.RECURRENCE"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
+      "proof_status": "OPEN",
+      "activity": "ACTIVE",
+      "eligibility": {"eligible": true, "reason": "F0B_RECURRENCE_PROVED_AND_PROSHKA_NAMED_THIS_AS_THE_NEXT_GAP"},
+      "validation": "DIRECT_LEAN_TARGET_FULL_Q3_CHECK_HOLE_AXIOM_AND_MUTANT_AUDIT",
+      "failure_codes": ["G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL_OPEN"]
+    },
+    "G5.MODE4.F0B.RECURRENCE": {
+      "id": "G5.MODE4.F0B.RECURRENCE",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Prove the exact ordinary-Legendre polynomial three-term recurrence by shifted-coefficient extensionality and affine transport",
+      "dependencies": [],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_PROVED_AND_VALIDATED"},
+      "validation": "DIRECT_LEAN_PASS;TARGET_1303;FULL_7817;Q3_CHECK_PASS;SIX_OF_SIX_MUTANTS_REJECTED;DB_TEN_OF_TEN_PROVEN;STANDARD_AXIOMS_ONLY",
       "failure_codes": []
     },
     "R0": {
@@ -3970,12 +4029,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
-    "mode": "IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET",
-    "current_leaf": "RB-IDLE-CONTROL",
-    "first_math_leaf_after_release": null
+    "current_stop": "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X_ACTION",
+    "current_leaf": "G5.MODE4.F0C.X_ACTION",
+    "first_math_leaf_after_release": "G5.MODE4.F0C.X_ACTION"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T06:44:00+02:00",
+      "event": "G5_MODE4_ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE_PROVED_AND_CONTROL_PLANE_SYNCHRONIZED",
+      "progress_class": "REPRESENTATION_AND_PROOF_PROGRESS",
+      "result": "SHIFTED_BINOMIAL_COEFFICIENT_IDENTITY;SHIFTED_POLYNOMIAL_RECURRENCE;AFFINE_TRANSPORT;ONE_PUBLIC_THEOREM;SIX_MUTANTS_REJECTED;TARGET_1303_FULL_7817_Q3_CHECK_PASS;DB_TEN_OF_TEN_PROVEN;NEXT_X_ACTION_ACTIVE",
+      "honesty": "RECURRENCE_ONLY_NO_X_ACTION_YET_NO_X2_NO_ODE_NO_FERRERS_FUNCTION_NO_PSWF_NAME_BUS_010_VOID_ROUTE_CHALLENGER_NOT_RH"
+    },
     {
       "at": "2026-08-03T23:57:14+02:00",
       "event": "D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED",
