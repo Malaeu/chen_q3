@@ -123,6 +123,13 @@ Current asymmetry:
 - **Codex ❌ — NO single control file.** Behavior split across `AGENTS.md` (3 eras stacked) + reorient-brief
   + ORG_UPDATE + Mac-local `~/.codex/config.toml` (out of repo, invisible to the Linux body).
 
+**Codex cycle reconstructed** (3-agent sweep) → `docs/CODEX_CYCLE_RECONSTRUCTION_2026-08-05.md`: full runtime
+config (Linux slice) + 5-stage loop + measured cadence (~2-4 commits/node; the Proshka fresh-chat-per-node
+antipattern CONFIRMED — 14 verdicts = 14 fresh chats + full context re-uploads, ~21min reasoning each) + 9
+emergent off-git behaviors (22h standing-goal-in-UI, SITE-BATON Mac⇄Linux, disk-wins reflex, Aristotle
+surrogate hazard, reasoning-time ledger…) + a Mac-only GAPS list for Codex to fill at home. This is the
+INPUT for the P9 control file.
+
 FIX (P9, part of the unified contour): create ONE `docs/CODEX_CONTROL.md` (or a clean single AGENTS body)
 = the source-of-truth for Codex behavior, consolidating the fragmented layers; `AGENTS.md` becomes a THIN
 pointer to it (same thin-pointer/fat-control pattern as Fable/Proshka). Then behavior is switched by editing
