@@ -159,3 +159,32 @@ notes: >-
   PSWF regular-row eventual cone membership or L2 uniqueness as the next
   source-side obligation.
 ```
+
+### 2026-08-05 — G5 post-square-summable-row next-node adjudication
+
+```yaml
+proof_address: G5_MODE4_R1A_POST_L2
+front: G5/S1
+transaction: G5_MODE4_POST_SQUARE_SUMMABLE_ROW_NEXT_NODE
+request_message_id: 58d40b6f-eab6-42b9-a261-2d72cd7a2adb
+sent_at: 2026-08-05T02:26:05.694+02:00
+completed_at: pending
+wall_seconds: pending
+wall_human: pending
+answer_now_shown: false
+answer_now_clicked: false
+primary: pending
+status: IN_PROGRESS
+result_pointer: "fresh RH Marz 2026 project chat created after commit b0ca7f3b"
+notes: >-
+  The pasted-document context pack has SHA-256
+  cf8df355de22195f2473226a04a377d2d32de72e94cb77aa9af77509bb86db46
+  and pins the proved recurrence crosswalk, invariant-cone Riccati uniqueness,
+  source-shaped ratio receiver, and canonical positive square-summable tail
+  row with exact project and DLMF recurrences. The request asks for exactly one
+  next theorem-sized node among diagonal Hermitian scaling, L2 Wronskian
+  uniqueness, finite Green/self-energy, or the honest source regular-row
+  identification gate. It forbids reassigning closed work, minting the missing
+  source theorem as a field, Weyl terminology without the boundary identity,
+  Bus 010, route promotion, and an RH claim. Never click Answer now.
+```

@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 70,
-  "updated_at": "2026-08-05T02:21:43+02:00",
+  "revision": 71,
+  "updated_at": "2026-08-05T02:26:05+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1327,6 +1327,16 @@
         "observed_wall_seconds": 927,
         "answer_now_shown": true,
         "answer_now_clicked": false
+      },
+      "post_square_summable_row_adjudication": {
+        "request_message_id": "58d40b6f-eab6-42b9-a261-2d72cd7a2adb",
+        "sent_at": "2026-08-05T02:26:05.694+02:00",
+        "context_pack_sha256": "cf8df355de22195f2473226a04a377d2d32de72e94cb77aa9af77509bb86db46",
+        "pinned_head": "b0ca7f3b",
+        "status": "IN_PROGRESS",
+        "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_NODE_AFTER_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW",
+        "answer_now_shown": false,
+        "answer_now_clicked": false
       }
     },
     "validation": {
@@ -1337,7 +1347,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "RICCATI_ORBIT_UNIQUENESS_AND_DIRECT_NEXT_SQUARE_SUMMABLE_TAIL_ROW_MATERIALIZED_SOURCE_REGULAR_ROW_IDENTIFICATION_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "RICCATI_ORBIT_AND_SQUARE_SUMMABLE_ROW_MATERIALIZED_POST_L2_NEXT_NODE_ADJUDICATION_IN_PROGRESS_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4197,6 +4207,13 @@
       "progress_class": "PROOF_AND_RECESSIVE_ROW_CONSTRUCTION_PROGRESS",
       "result": "POSITIVE_NORMALIZED_ROW;HALF_POWER_DECAY;SQUARE_SUMMABLE;RATIO_EQUALS_TAIL;PROJECT_AND_DLMF_RECURRENCES;TARGET_7754_FULL_7817_Q3_CHECK_PASS;NORMALIZATION_PHASE_INDEX_MUTANTS_FIRE",
       "honesty": "ABSTRACT_CANONICAL_ROW_ONLY_NOT_IDENTIFIED_WITH_REGULAR_PSWF_NO_WEYL_LABEL_NO_OPERATOR_NO_SCHUR_INERTIA_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T02:26:05+02:00",
+      "event": "G5_MODE4_POST_SQUARE_SUMMABLE_ROW_PROSHKA_ADJUDICATION_STARTED",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "FRESH_PROJECT_CHAT;PIN_B0CA7F3B;CONTEXT_PACK_SHA256_CF8DF355;REQUEST_MESSAGE_58D40B6F",
+      "honesty": "ONE_SMALLEST_POST_L2_NODE_REQUESTED_CLOSED_WORK_NOT_REASSIGNED_NO_WEYL_LABEL_NO_BUS_010_NOT_RH"
     }
   ]
 }
