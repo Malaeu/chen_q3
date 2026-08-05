@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T08:54:08+02:00",
+  "updated_at": "2026-08-05T09:03:27.365+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -67,6 +67,13 @@
       ,"seven_class_layout_status": "DIRECT_TARGET_7746_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_ALL_THREE_PLANTS_FIRED"
       ,"seven_class_layout_sha256": "734d65982687768421730bb0277fa9add357d5c520672dbd2224e36dc2592b0f"
       ,"next_node_after_seven_class_layout": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION"
+      ,"finite_vonmangoldt_proshka_conversation_id": "6a72e03f-efec-83eb-9a24-df6890d24d07"
+      ,"finite_vonmangoldt_proshka_request_message_id": "038db1fa-c4f9-4f43-839e-aeb8560cd9b9"
+      ,"finite_vonmangoldt_proshka_sent_at": "2026-08-05T09:03:27.365+02:00"
+      ,"finite_vonmangoldt_proshka_prompt_sha256": "c386a8287445b42c2700c3a83e82cbc157454ed9aaa5b7622aaac63732cf1d1b"
+      ,"finite_vonmangoldt_proshka_context_sha256": "327425c5b29ee6b8d34c70fa75961d4bde72f1e90d5d0cb9fc4f8b76ff81edde"
+      ,"finite_vonmangoldt_scratch_preflight_sha256": "e2ea1169ab23ebd306fc1c12db825d765937d05cdbfff018e4e67254e97efde9"
+      ,"finite_vonmangoldt_answer_now_clicked": false
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

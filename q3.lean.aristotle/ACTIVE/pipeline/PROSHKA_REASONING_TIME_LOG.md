@@ -443,3 +443,41 @@ notes: >-
   The next finite von-Mangoldt node remains downstream. Goal 055 stays held,
   Aristotle stays unauthorized, and no route/RH promotion is licensed.
 ```
+
+### 2026-08-05 — G2 CCM 054.1 finite von-Mangoldt theorem-shape adjudication
+
+```yaml
+proof_address: RouteB.G2.CCM.054_1.FiniteVonMangoldt
+front: G2/H2a
+transaction: G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION
+conversation_id: 6a72e03f-efec-83eb-9a24-df6890d24d07
+request_message_id: 038db1fa-c4f9-4f43-839e-aeb8560cd9b9
+sent_at: 2026-08-05T09:03:27.365+02:00
+completed_at: null
+wall_seconds: null
+wall_human: "RUNNING"
+answer_now_shown: false
+answer_now_clicked: false
+primary: G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_UNSELECTED
+status: RUNNING_FULL_REASONING
+result_pointer: null
+notes: >-
+  Fresh chat in project RH_Marz_2026 pinned to commit
+  d3d939bfc02947933d2e0588eb4c335b13b22706. The high-recall context pack
+  SHA-256 is
+  327425c5b29ee6b8d34c70fa75961d4bde72f1e90d5d0cb9fc4f8b76ff81edde;
+  the standalone source prompt SHA-256 is
+  c386a8287445b42c2700c3a83e82cbc157454ed9aaa5b7622aaac63732cf1d1b;
+  and the DOM-visible sent request SHA-256 is
+  9e3079c44d59ce2c246000b5919f7c844ea03fc5d11aa82cfb9c26d0aee513dd.
+  It asks Proshka to select exactly one smallest production theorem among a
+  pointwise Icc 2 13 value table, a generic weighted-sum normal form, and a
+  direct ccmPrimeEntryN1 13 normal form. The source-only boundary forbids
+  kernel numerics, component intervals, surrogate definitions, Aristotle,
+  Goal 055 materialization, Bus 010, route promotion, and RH claims. Local
+  uncommitted scratch SHA-256
+  e2ea1169ab23ebd306fc1c12db825d765937d05cdbfff018e4e67254e97efde9
+  already compiles all twelve exact von-Mangoldt values. At dispatch the UI
+  showed the normal Stop responding control and did not show Answer now; no
+  early-answer control was clicked.
+```
