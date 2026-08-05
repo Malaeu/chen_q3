@@ -279,3 +279,38 @@ notes: >-
   eigenfunction, ordered mode, Weyl, or resolvent. After it succeeds, the
   genuine named gap is G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION.
 ```
+
+### 2026-08-05 — G5 Ferrers regular-solution next-node adjudication
+
+```yaml
+proof_address: RouteB.G5.Mode4.FerrersRegularSolution
+front: G5/S1
+transaction: G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE
+conversation_id: 6a72ab09-916c-83eb-91b7-237ea93f1389
+request_message_id: ff8a0f6e-be7a-4df5-bedc-ac97b9b7c7c3
+sent_at: 2026-08-05T05:16:25.256+02:00
+completed_at: null
+wall_seconds: null
+wall_human: RUNNING
+answer_now_shown: true
+answer_now_clicked: false
+primary: PENDING
+status: RUNNING_FULL_REASONING
+result_pointer: pending
+notes: >-
+  Fresh chat in project RH_Marz_2026. The exact context pack has SHA-256
+  43c6a9a9f5a098a23eb440df366812b7001ebb8b2b199aba0021cf3da6577b27;
+  the standalone prompt has SHA-256
+  5e3f376dd81404de3b15012e70fab157c52cb3ce79c96bd140813760726d2ea1;
+  and the complete sent request has SHA-256
+  920cd4c2e4069f8fef379231581d92db6d903b786338f812afc7946285a28f55.
+  It asks for a fail-closed selection of the smallest executable node among
+  the ordinary-Legendre algebraic kernel F0, the uniform value/derivative
+  receiver F1, the full geometric-coefficient Ferrers regular-solution theorem
+  F2, and the overlarge finite-operator route F3. The request pins the
+  committed root-spliced normalized recurrence row, the exact DLMF index and
+  phase conventions, the observed Mathlib gaps, and mandatory endpoint,
+  differentiation, recurrence, nonzero, and naming attacks. Respond in English
+  only appears at both ends. The UI displayed Answer now immediately after
+  generation began; it was deliberately not clicked.
+```

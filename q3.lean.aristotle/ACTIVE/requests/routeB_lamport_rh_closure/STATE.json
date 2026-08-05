@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 87,
-  "updated_at": "2026-08-05T05:07:20+02:00",
+  "revision": 88,
+  "updated_at": "2026-08-05T05:16:25.256+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1441,7 +1441,7 @@
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         },
         "ferrers_regular_solution_gate": {
-          "status": "OPEN_THEOREM_SHAPE_AUDIT",
+          "status": "PROSHKA_ADJUDICATION_RUNNING",
           "pinned_head": "a637ad11",
           "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
@@ -1473,8 +1473,22 @@
           "candidate_F0": "ORDINARY_LEGENDRE_ALGEBRAIC_LIBRARY_PARITY_RECURRENCE_ODE_X2_ACTION",
           "candidate_F1": "SOURCE_LOCKED_UNIFORM_VALUE_AND_FIRST_SECOND_DERIVATIVE_BOUNDS",
           "candidate_F2": "FULL_GEOMETRIC_COEFFICIENT_FERRERS_SERIES_REGULAR_SOLUTION",
-          "next_action": "PROSHKA_SELECT_SMALLEST_EXECUTABLE_FERRERS_NODE",
-          "honesty": "NO_FERRERS_FUNCTION_NO_REGULAR_ENDPOINT_NO_FIRST_KIND_NAME_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
+          "next_action": "WAIT_FOR_FULL_PROSHKA_F0_F1_F2_F3_ADJUDICATION_WITHOUT_ANSWER_NOW",
+          "proshka_adjudication": {
+            "transaction": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
+            "proof_address": "RouteB.G5.Mode4.FerrersRegularSolution",
+            "conversation_id": "6a72ab09-916c-83eb-91b7-237ea93f1389",
+            "request_message_id": "ff8a0f6e-be7a-4df5-bedc-ac97b9b7c7c3",
+            "sent_at": "2026-08-05T05:16:25.256+02:00",
+            "context_pack_sha256": "43c6a9a9f5a098a23eb440df366812b7001ebb8b2b199aba0021cf3da6577b27",
+            "prompt_sha256": "5e3f376dd81404de3b15012e70fab157c52cb3ce79c96bd140813760726d2ea1",
+            "full_request_sha256": "920cd4c2e4069f8fef379231581d92db6d903b786338f812afc7946285a28f55",
+            "language": "ENGLISH_ONLY",
+            "status": "RUNNING",
+            "answer_now_shown": true,
+            "answer_now_clicked": false
+          },
+          "honesty": "FULL_REASONING_TIME_PRESERVED_NO_EARLY_ANSWER_NO_SECOND_PROMPT_NO_FERRERS_FUNCTION_NO_REGULAR_ENDPOINT_NO_FIRST_KIND_NAME_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
         }
       }
     },
@@ -4465,6 +4479,13 @@
       "progress_class": "SOURCE_RESEARCH_AND_REPRESENTATION_AUDIT_IN_PROGRESS",
       "result": "FIVE_Q3_DOCS_QUERIES_EMPTY;MATHLIB_SHIFTED_LEGENDRE_BASIC_API_AND_GENERIC_SMOOTH_SERIES_FOUND;DLMF_VALUE_BOUND_RECURRENCE_DERIVATIVE_ORTHOGONALITY_AND_FERRERS_EXPANSION_PINNED;F0_F1_F2_FORK_NEXT",
       "honesty": "NO_READY_ORDINARY_LEGENDRE_OR_UNIFORM_DERIVATIVE_RECEIVER_IN_MATHLIB_NO_FERRERS_FUNCTION_NO_REGULAR_PSWF_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T05:16:25.256+02:00",
+      "event": "G5_MODE4_FERRERS_REGULAR_SOLUTION_PROSHKA_ADJUDICATION_STARTED",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "FRESH_PROJECT_CHAT_6A72AB09;PIN_A637AD11;CONTEXT_SHA256_43C6A9A9;PROMPT_SHA256_5E3F376D;FULL_REQUEST_SHA256_920CD4C2;REQUEST_MESSAGE_FF8A0F6E",
+      "honesty": "F0_F1_F2_F3_FAIL_CLOSED_ADJUDICATION_REQUESTED_FULL_REASONING_TIME_PRESERVED_ANSWER_NOW_NOT_CLICKED_NO_SECOND_PROMPT_NO_BUS_010_NOT_RH"
     }
   ]
 }
