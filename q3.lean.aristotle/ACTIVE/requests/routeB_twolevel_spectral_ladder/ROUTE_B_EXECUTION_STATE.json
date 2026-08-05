@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T11:08:35.787+02:00",
+  "updated_at": "2026-08-05T11:32:16+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_ACTIVE",
+  "operational_status": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
-    "name": "CCMCell13N2SevenRepresentativePrimeKernelExactNormalForm",
-    "status": "ACTIVE_OWNER_RELEASED_LEAN_IMPLEMENTATION",
-    "stop_code": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_MISSING",
+    "contract_obligation": "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "name": "CCMCell13N2PostPrimeKernelNextSplitProshkaAdjudication",
+    "status": "ACTIVE_FRESH_PROSHKA_ADJUDICATION_REQUIRED",
+    "stop_code": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_ADJUDICATION_REQUIRED",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Codex local Lean worker under standing owner release",
-    "next_action": "Preflight P-PRIME-1..4 privately, then prove the exact one-public-theorem seven-representative prime-kernel normal form without ccmQKernel/composite prime-power/boundary residue in the conclusion; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "POST_W02_ADJUDICATION_COMPLETE_PRIME_KERNEL_SEVEN_REPRESENTATIVE_NORMAL_FORM_SELECTED_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
+    "next_required_actor": "Proshka route architect/reviewer via fresh project chat",
+    "next_action": "Audit the proved prime-kernel seven-class theorem and select exactly one smallest next cancellation-preserving node; test the named nonintegral WR constant normal form against smaller complete consumers and genuine analytic forks. Respond in English only; preserve full reasoning time; never click Answer now.",
+    "ccm_classification": "PRIME_KERNEL_SEVEN_REPRESENTATIVE_NORMAL_FORM_PROVED_POST_PRIME_NEXT_SPLIT_ADJUDICATION_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -117,6 +117,9 @@
       ,"post_w02_runner_up_fate": "REQUIRED_AND_EXECUTABLE"
       ,"post_w02_selected_node": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM"
       ,"next_node_after_post_w02_adjudication": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM"
+      ,"prime_kernel_seven_class_status": "DIRECT_TARGET_7749_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_ALL_FOUR_PLANTS_FIRED_ALL_SEVEN_BOUNDARY_ZEROS"
+      ,"prime_kernel_seven_class_sha256": "bf255954eeecbd5a6e112110f80efc9076b42ecf2789eb042ac7cd50c43f866d"
+      ,"next_node_after_prime_kernel": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

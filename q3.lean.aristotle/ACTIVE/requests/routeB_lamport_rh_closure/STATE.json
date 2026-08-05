@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 113,
-  "updated_at": "2026-08-05T11:08:35.787+02:00",
+  "revision": 114,
+  "updated_at": "2026-08-05T11:32:16+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_ACTIVE",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
+    "active_node_id": "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_ACTIVE",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
+    "lifecycle": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -2086,11 +2086,26 @@
       "dependencies": ["G2.CCM.054_1.POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_PROVED_AND_VALIDATED"},
+      "validation": "SHA256_BF255954;DIRECT_PASS;TARGET_7749;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;P_PRIME_1_2_3_4_ALL_FIRED;ALL_SEVEN_BOUNDARY_ZEROS;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS",
+      "failure_codes": []
+    },
+    "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION": {
+      "id": "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Audit the proved Prime seven-class exact normal form and select exactly one smallest next cancellation-preserving source-only node, testing the named nonintegral WR constant normal form runner-up against smaller complete consumers and genuine analytic owner forks",
+      "dependencies": ["G2.CCM.054_1.SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "SELECTED_BY_PROSHKA_AND_RELEASED_BY_STANDING_OWNER_ROOF_LOOP_AUTHORITY"},
-      "validation": "PENDING_PRIVATE_P_PRIME_1_2_3_4_PREFLIGHT_THEN_DIRECT_TARGET_FULL_Q3CHECK_TAINT_PUBLIC_SURFACE_AXIOMS",
-      "failure_codes": ["G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_MISSING"]
+      "eligibility": {"eligible": true, "reason": "PRIME_KERNEL_NODE_PROVED_AND_STANDING_OWNER_ROOF_LOOP_REQUIRES_FRESH_PROSHKA_ADJUDICATION"},
+      "validation": "PENDING_FRESH_PROJECT_CHAT_ENGLISH_ONLY_FULL_REASONING_TIME_NO_ANSWER_NOW",
+      "failure_codes": ["G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_ADJUDICATION_REQUIRED"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4260,12 +4275,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_MISSING",
-    "mode": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_ACTIVE",
-    "current_leaf": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM",
+    "current_stop": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_ADJUDICATION_REQUIRED",
+    "mode": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "current_leaf": "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T11:32:16+02:00",
+      "event": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_PROVED",
+      "progress_class": "REPRESENTATION_AND_PROOF_PROGRESS",
+      "result": "SHA256_BF255954;DIRECT_PASS;TARGET_7749;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS;P_PRIME_1_2_3_4_ALL_FIRED;ALL_SEVEN_BOUNDARY_ZEROS;NEXT_POST_PRIME_KERNEL_PROSHKA_ADJUDICATION",
+      "honesty": "EXACT_SYMBOLIC_PRIME_COMPONENT_ONLY_NO_WR_CONSTANT_OR_INTEGRAL_ENCLOSURE_NO_054_1_V2_CLOSURE_GOAL_055_HELD_OUTSIDE_BUS_NO_ARISTOTLE_SUBMISSION_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T11:08:35.787+02:00",
       "event": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_COMPLETED",

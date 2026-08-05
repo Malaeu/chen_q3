@@ -50309,3 +50309,24 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   W02, WR, a prime kernel, an integral, or a final entry; Goal 055 remains held,
   Aristotle remains unauthorized, Bus 010 remains void, and the route remains
   challenger / not RH.
+# 2026-08-05 — CCM cell 13/2 Prime seven-class exact normal form (proved)
+
+- Exact target: `Q3.RouteB.ccmPrimeEntryN1_13_seven_class_exact_normal_form`,
+  one public theorem in a new file importing only the proved W02 module.
+- The theorem eliminates the generic q-kernel, the composite prime-power
+  logarithms and square roots, and the `k = 13` residue from all seven
+  representatives while keeping the remaining trigonometric values symbolic.
+- The proof reuses the public finite von-Mangoldt functional through a private
+  literal consumer; all log/sqrt, branch, and boundary helpers remain private.
+- All seven boundary zeros are proved exactly at `x = ccmL 13`; the missing
+  `log 13` summand is a theorem consequence, not an edited coefficient table.
+- P-PRIME-1..4 all fire on the intended independent facts: `k = 8` weight,
+  asymmetric denominator/orientation, diagonal frequency, and endpoint
+  deletion.
+- Final validation passes: direct Lean; target `7749`; full `7817`;
+  `q3_check`; no taint; one public theorem and no public definition; standard
+  axiom triple only. File SHA-256 is
+  `bf255954eeecbd5a6e112110f80efc9076b42ecf2789eb042ac7cd50c43f866d`.
+- This is exact representation/proof progress only. WR constant and integral
+  walls remain open; Goal 055 remains a held draft outside the bus; no
+  Aristotle submission, Bus 010, route promotion, H2a/G2 closure, or RH claim.
