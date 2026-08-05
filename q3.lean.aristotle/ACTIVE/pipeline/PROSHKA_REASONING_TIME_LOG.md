@@ -494,3 +494,39 @@ notes: >-
   authorizes the local implementation but does not authorize Goal 055,
   Aristotle, Bus 010, route promotion, or an RH claim.
 ```
+
+### 2026-08-05 — G2 CCM 054.1 post-weighted-sum next-split adjudication
+
+```yaml
+proof_address: RouteB.G2.CCM.054_1.PostWeightedSumNextSplit
+front: G2/H2a
+transaction: G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: b5722313-1bc3-46d1-b1d8-3e6191f04faa
+sent_at: 2026-08-05T09:33:36.473+02:00
+completed_at: null
+wall_seconds: null
+wall_human: "RUNNING"
+answer_now_shown: false
+answer_now_clicked: false
+primary: G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_NODE_UNSELECTED
+status: RUNNING_FULL_REASONING
+result_pointer: null
+notes: >-
+  Fresh chat in project RH_Marz_2026 pinned to commit
+  1be1704545bebc2f567e8b9939edc9868a62936f. The high-recall context pack
+  SHA-256 is
+  63169e455b788e12b18460027e8729eadae0ca0e86edab72526b698a7f924de5;
+  the standalone source prompt SHA-256 is
+  1d339f9feac1e60540286bc5c398b738f78c5694fd80bf8466d24e504005a30e;
+  and the DOM-visible sent request SHA-256 is
+  949a7bb881b7964436b8334588e5d0eea1d8da957fecb13fd2beb4fbee977cb7.
+  The request first requires a fail-closed REQUIRED versus
+  REDUNDANT_AND_KILLED verdict for a public ccmPrimeEntryN1 13 normal form
+  after the proved generic functional and private literal specialization
+  check. It then requires exactly one smallest next source-only wall or a
+  genuine owner fork. Independent component balls, bundled analytic walls,
+  Goal 055 materialization, Aristotle, Bus 010, route promotion, and RH claims
+  remain forbidden. At dispatch the UI showed the normal Stop responding
+  control and did not show Answer now; no early-answer control was clicked.
+```

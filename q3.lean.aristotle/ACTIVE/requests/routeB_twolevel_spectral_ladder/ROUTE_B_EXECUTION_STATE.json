@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T09:28:41+02:00",
+  "updated_at": "2026-08-05T09:33:36.473+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -84,6 +84,12 @@
       ,"finite_vonmangoldt_weighted_sum_status": "DIRECT_TARGET_7747_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_ALL_THREE_PLANTS_FIRED_PRIVATE_LITERAL_SPECIALIZATION_PASS"
       ,"finite_vonmangoldt_weighted_sum_sha256": "0742f31a45714def1965773e833efd9fef30ab6daa5dce0f8613e22706fc8fc3"
       ,"next_node_after_weighted_sum": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION"
+      ,"post_weighted_proshka_conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b"
+      ,"post_weighted_proshka_request_message_id": "b5722313-1bc3-46d1-b1d8-3e6191f04faa"
+      ,"post_weighted_proshka_sent_at": "2026-08-05T09:33:36.473+02:00"
+      ,"post_weighted_proshka_prompt_sha256": "1d339f9feac1e60540286bc5c398b738f78c5694fd80bf8466d24e504005a30e"
+      ,"post_weighted_proshka_context_sha256": "63169e455b788e12b18460027e8729eadae0ca0e86edab72526b698a7f924de5"
+      ,"post_weighted_answer_now_clicked": false
     },
     "d0_7e_5a": {
       "historical_exit_codes": [
