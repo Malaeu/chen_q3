@@ -5,6 +5,7 @@ Proshka mirror from `rh_lean_01_2026`; 267 mirrored source files plus `CHANNEL_R
 | File | Description | SHA-256 |
 |---|---|---|
 | `proshka/PROSHKA_VERDICT_UNIFIED_MEMORY_CONTOUR_2026-08-05.md` | Proshka architecture verdict — unified one-Spine memory contour (RATIFIED, impl open) | `0bb8c1b9f608daa649cc9a0276458ca2461f729103c86ea4d0d56d56afd860ea` |
+| `proshka/PROSHKA_VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026-08-05.md` | Proshka SECOND verdict — unified memory+behavior-control contour, P9 CODEX_CONTROL + batch-per-PHASE (RATIFIED, impl open, amends first) | `cd7784a2b1d703685f1c874aa34bc2a2fdb8f25a9b508777975fc4ca87f6ae31` |
 | `../EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md` | executor arsenal discipline (both bodies: Codex/Claude Code) | `9b63764178217315b32bc7f6ac2dfc6960a0cbe4e1915910aff54b25f060e07e` |
 | `MAP.md` | Route B project navigator (LIVE — byte-unchanged by D0 closeout; SHA advisory refreshed) | `e47fc9f44ea13a77bb0653a533a6da3ace2d51bf093f6115054fd09a983e658a` |
 | `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md` | D0 terminal closeout mirror and conditional G3/H2b repoint ledger | `b6aecd0565a7c08627317b4c2973023298d3b4a9d3fe1dc272ecf3e058e35784` |
