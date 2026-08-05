@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 107,
-  "updated_at": "2026-08-05T09:19:40.992+02:00",
+  "revision": 108,
+  "updated_at": "2026-08-05T09:28:41+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_ACTIVE",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Codex local Lean worker",
-    "next_action": "Materialize exactly one public theorem ccmVonMangoldt_sum_Icc_2_13 with private exact-value helpers and a private literal ccmPrimeEntryN1 specialization check; fire P-VM-1..3 and run full validation; do not submit Aristotle, materialize Goal 055, create Bus 010, or promote Route B"
+    "next_actor": "Proshka route architect/reviewer",
+    "next_action": "Audit whether the public direct ccmPrimeEntryN1 13 normal form is still necessary after the proved generic functional and private literal specialization check; kill it if redundant, then select exactly one smallest next source-only wall without kernel numerics; keep Goal 055 held and do not create Bus 010 or submit Aristotle"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1.FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
+    "active_node_id": "G2.CCM.054_1.POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_ACTIVE",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1.FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
+    "lifecycle": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -2026,11 +2026,26 @@
       "dependencies": ["G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_PROVED_AND_VALIDATED"},
+      "validation": "SHA256_0742F31A;DIRECT_PASS;TARGET_7747;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;P_VM_1_2_3_ALL_FIRED;PRIVATE_LITERAL_CCMPRIMEENTRYN1_SPECIALIZATION_PASS;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS",
+      "failure_codes": []
+    },
+    "G2.CCM.054_1.POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION": {
+      "id": "G2.CCM.054_1.POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Decide whether a public ccmPrimeEntryN1 13 exact normal form remains necessary after the generic weighted functional and private literal specialization check, and select exactly one smallest next cancellation-preserving source-only wall",
+      "dependencies": ["G2.CCM.054_1.FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "PROSHKA_SELECTED_AND_STANDING_OWNER_ROOF_LOOP_RELEASE_APPLIES"},
-      "validation": "DIRECT_LEAN;TARGET_BUILD;FULL_BUILD;Q3_CHECK;TAINT;PUBLIC_SURFACE_ONE_THEOREM_ZERO_DEFINITIONS;STANDARD_AXIOM_TRIPLE;P_VM_1_2_3_ALL_FIRE;PRIVATE_LITERAL_CCMPRIMEENTRYN1_SPECIALIZATION_CHECK",
-      "failure_codes": ["G2_CCM_054_1_FINITE_VON_MANGOLDT_SUPPORT_VALUE_MISMATCH", "G2_CCM_054_1_FINITE_VON_MANGOLDT_GROUPING_MISMATCH", "G2_CCM_054_1_FINITE_VON_MANGOLDT_LITERAL_WIRING_MISMATCH", "G2_CCM_054_1_FINITE_VON_MANGOLDT_PLANT_INERT", "LEAN_BUILD_FAIL"]
+      "eligibility": {"eligible": true, "reason": "PROSHKA_NAMED_DIRECT_PRIME_NORMAL_FORM_AS_SOLE_RUNNER_UP_BUT_ALLOWED_REDUNDANCY_KILL_AFTER_PRIVATE_SPECIALIZATION"},
+      "validation": "FRESH_PROJECT_CHAT;ENGLISH_ONLY;EXACT_ONE_NODE;PUBLIC_DIRECT_PRIME_NORMAL_FORM_NECESSITY_AUDIT;NO_KERNEL_NUMERICS;NO_ARISTOTLE_SUBMISSION;ANSWER_NOW_NEVER_CLICKED",
+      "failure_codes": ["G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_NODE_UNSELECTED"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4200,12 +4215,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_MISSING",
-    "mode": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_ACTIVE",
-    "current_leaf": "G2.CCM.054_1.FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
+    "current_stop": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_NODE_UNSELECTED",
+    "mode": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "current_leaf": "G2.CCM.054_1.POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T09:28:41+02:00",
+      "event": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_PROVED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "LEAN_SHA256_0742F31A;DIRECT_PASS;TARGET_7747;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;P_VM_1_2_3_ALL_FIRED;PRIVATE_LITERAL_CCMPRIMEENTRYN1_SPECIALIZATION_PASS;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS;NEXT_POST_WEIGHTED_SUM_ADJUDICATION",
+      "honesty": "DISCRETE_SUPPORT_VALUE_WALL_ONLY_NO_KERNEL_NUMERICS_NO_W02_OR_WR_OR_INTEGRAL_OR_FINAL_ENCLOSURE_NO_054_1_V2_CLOSURE_NO_GOAL_055_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T09:19:40.992+02:00",
       "event": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION_COMPLETED",

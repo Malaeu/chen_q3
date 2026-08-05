@@ -50253,3 +50253,30 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   Hidden wall 1 is now zero as a reusable Lean consumer; finite von-Mangoldt
   normalization is the runner-up next wall but still needs a minimal theorem
   surface adjudication.
+
+# 2026-08-05 — CCM cell 13/2 finite von-Mangoldt weighted normal form (proved)
+
+- Proshka selected the generic scalar functional rather than a public
+  pointwise table or a kernel-specific public theorem:
+  `Q3.RouteB.ccmVonMangoldt_sum_Icc_2_13` reduces the literal weighted sum on
+  `Finset.Icc 2 13` to the six exact logarithmic coefficient classes.
+- Twelve exact values are private implementation helpers.  Primes use
+  `vonMangoldt_apply_prime`; `4`, `8`, and `9` use
+  `vonMangoldt_apply_pow`; `6`, `10`, and `12` are excluded with
+  `isPrimePow_nat_iff_bounded_log_minFac` and finite exponent cases.
+- Four local `q3_docs` embedding queries returned no indexed result.  The
+  authoritative inputs are the production `ccmPrimeEntryN1` definition and
+  current Mathlib's von-Mangoldt and bounded prime-power APIs.
+- A private specialization compiles the theorem against the literal
+  `ccmPrimeEntryN1 13` without unfolding `ccmQKernel`.  The theorem therefore
+  closes the discrete support/value enumeration while leaving every kernel,
+  trigonometric, W02, WR, integral, and rational-enclosure wall open.
+- `P-VM-1`, `P-VM-2`, and `P-VM-3` all fire: deleting the `8` evaluation,
+  adding a false `6` coefficient, and exponent-weighting the `9 = 3^2`
+  coefficient each produce a substantive Lean type mismatch.
+- Validation passed: direct Lean; target `7747`; full `7817`; `q3_check`;
+  no taint; one public theorem and no public definition; standard axiom triple
+  only.  File SHA-256 is
+  `0742f31a45714def1965773e833efd9fef30ab6daa5dce0f8613e22706fc8fc3`.
+- Goal 055 remains held; `054.1-v2`, H2a, and G2 remain open.  No Aristotle
+  submission, Bus 010, route promotion, or RH claim is authorized.

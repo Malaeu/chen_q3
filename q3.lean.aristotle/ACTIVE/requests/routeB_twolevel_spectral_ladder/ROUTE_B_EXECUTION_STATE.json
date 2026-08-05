@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T09:19:40.992+02:00",
+  "updated_at": "2026-08-05T09:28:41+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_ACTIVE",
+  "operational_status": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
-    "name": "CCMCell13N2FiniteVonMangoldtWeightedSumNormalForm",
-    "status": "ACTIVE_ONE_THEOREM_SOURCE_NORMAL_FORM",
-    "stop_code": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_MISSING",
+    "contract_obligation": "G2.CCM.054_1.POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "name": "CCMCell13N2PostWeightedSumNextSplitAdjudication",
+    "status": "ACTIVE_POST_WEIGHTED_SUM_PROSHKA_THEOREM_SHAPE_ADJUDICATION",
+    "stop_code": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_NODE_UNSELECTED",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Codex local Lean worker",
-    "next_action": "Prove only ccmVonMangoldt_sum_Icc_2_13 in the owned file with private exact-value helpers, literal prime specialization check, P-VM-1..3, and full validation; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "SEVEN_CLASS_LAYOUT_CONSUMER_PROVED_WEIGHTED_VON_MANGOLDT_NORMAL_FORM_SELECTED_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
+    "next_required_actor": "Proshka route architect/reviewer",
+    "next_action": "Decide whether the public direct ccmPrimeEntryN1 13 normal form is still needed after the proved generic theorem and private specialization check; kill it if redundant and select one next source-only wall; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "WEIGHTED_VON_MANGOLDT_NORMAL_FORM_PROVED_POST_WEIGHTED_SUM_NEXT_SPLIT_ADJUDICATION_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -81,6 +81,9 @@
       ,"finite_vonmangoldt_proshka_visible_response_sha256": "14855082d647327f0de113dc1ac94280692457234097dc0b0e1f1097daeb1dc1"
       ,"finite_vonmangoldt_proshka_archive_sha256": "db08bcbec0ab2b25f1c8d8439f3f05e8cd9886ef366ca42146f8e482e4431659"
       ,"finite_vonmangoldt_selected_node": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM"
+      ,"finite_vonmangoldt_weighted_sum_status": "DIRECT_TARGET_7747_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_ALL_THREE_PLANTS_FIRED_PRIVATE_LITERAL_SPECIALIZATION_PASS"
+      ,"finite_vonmangoldt_weighted_sum_sha256": "0742f31a45714def1965773e833efd9fef30ab6daa5dce0f8613e22706fc8fc3"
+      ,"next_node_after_weighted_sum": "G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [
