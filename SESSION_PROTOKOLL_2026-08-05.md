@@ -1,7 +1,14 @@
 # SESSION_PROTOKOLL 2026-08-05 — Q3 Route B: Arsenal-Integration + Memory-Contour-Architektur
 
-Repo: Malaeu/chen_q3, Branch `rh_clean`. Session-Ende-HEAD: `d91bb443`.
+Repo: Malaeu/chen_q3, Branch `rh_clean`. Session-Ende-HEAD: `af3ca317` (alles gepusht, Baum sauber).
 (Session spannt 2026-08-04 → 2026-08-05; Datumsangaben absolut.)
+
+**NACHTRAG (Session-Ende):** Zweiter Proshka-Verdict eingetroffen + materialisiert (batch-per-PHASE,
+goal-close-Auto-Call KILLED, P9 CODEX_CONTROL, EXECUTOR_ARSENAL_ADDENDUM superseded, BEHAVIOR_CONTROL_
+SYMMETRY) → `docs/routeB_bus/proshka/PROSHKA_VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026-08-05.md` (3a12607f).
+Mythos-Maps + Protokoll (3a98b715), Owner→Codex(Mac)-Handoff `docs/CODEX_HOME_HANDOFF_2026-08-05.md`
+(cf828709), zwei Owner-Transkripte (af3ca317) gepusht. **Nächster Zug ist bei Codex (Mac) zuhause:
+Task 1 = 5 Mac-only GAPS aus Fakt füllen, dann Task 2 = P9. Kein P9-Start durch mich (owner-relay-gated).**
 
 ## Kontext
 Q3 Riemann-Hypothese Lean-Formalisierung, Route B (CHALLENGER / NOT_RH). Kanäle: Codex (Executor, Mac +
