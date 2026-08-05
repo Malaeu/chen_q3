@@ -50204,3 +50204,22 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - This is representation progress only; `054.1-v2`, H2a, G2, Goal 055, route promotion, Bus 010, and RH all remain open/held.
 - Final result: direct/target/full/q3-check pass; file SHA-256 `e8417922c3b7df7ea17d2e0b859b647a82e4a911f330e8aa0c713da04e55b02f`; axioms are exactly the standard triple.
 - Plant audit: P-054-ANTI-1/2 fire; the proposed global denominator-orientation P-054-ANTI-3 is inert because it preserves the equality, while a pointwise `L=1,r=2,x=1/8` replacement control distinguishes the source orientation.
+
+# 2026-08-05 — CCM cell 13/2 log supplier interface (repaired)
+
+- Proshka accepted the independent `CCMFiniteWeilLogBounds.lean` mathematics
+  only after a zero-mathematics interface repair: the original module comment
+  overclaimed cell-enclosure scope, and twelve internal helpers were public.
+- The repaired contract now claims only rational bounds for `log p`, `sqrt p`,
+  and their products for `p in {2,3,5,7,11,13}`; it explicitly disclaims all
+  kernel, prime, archimedean, tau, and matrix enclosure conclusions.
+- Exactly 19 supplier lemmas remain public and 12 Mercator/linear-relation
+  helpers are private.  The diff changes no theorem statement, proof, or
+  rational endpoint.
+- Validation passed: direct Lean; target `7743`; full `7817`; `q3_check`; no
+  taint; every public theorem has exactly the standard axiom triple.  The
+  repaired file SHA-256 is
+  `81343e834eabd8df1285bd251fb647b49d7212e75f1687ee874ba07c259feb0b`.
+- This closes only the 054.1b supplier-interface gate.  The WR receiver and
+  cancellation ledger remain open, Goal 055 remains held outside the bus,
+  H2a/G2 remain open, Route B remains challenger, and Bus 010 remains void.

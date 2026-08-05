@@ -15,16 +15,14 @@ Provenance:
 -/
 
 /-!
-# Rational enclosures for the constants entering the CCM cell `(13, 2)`
+# Rational scalar bounds used in the CCM cell `(13, 2)`
 
-Every entry of the cell is an exact rational combination of `1`, `√13`, and of
-`log p`, `log p * √p` for `p ∈ {2,3,5,7,11,13}`.  This file provides rational
-enclosures of these constants of width `< 10⁻⁹⁷`.
+This file proves rational enclosures for `Real.log p`, `Real.sqrt p`, and
+`Real.log p * Real.sqrt p` for `p ∈ {2,3,5,7,11,13}`.
 
-The logarithms are enclosed through the Mercator series
-(`Real.abs_log_sub_add_sum_range_le`) at the arguments `1 - 1/k` for
-`k ∈ {9, 16, 25, 49, 121, 169}` (all of which satisfy `1/k ≤ 1/9`), followed by the
-exact linear relations expressing each `log p` in terms of these six values.
+These are coefficient suppliers only. This file does not enclose
+`ccmQKernel`, `ccmW02Entry`, `ccmPrimeEntryN1`, `ccmWREntry`,
+`ccmWeilTauN1`, or `ccmWeilMatFinite`, and it makes no cell-enclosure claim.
 -/
 
 open scoped BigOperators
@@ -46,7 +44,7 @@ lemma ccm_log_series_bound (k : ℕ) (hk : 2 ≤ k) (n : ℕ) :
 
 set_option maxHeartbeats 4000000 in
 /-- Enclosure of `log (8/9)`, from the Mercator series with 102 terms at `x = 1/9`. -/
-lemma ccm_log_frac_9 :
+private lemma ccm_log_frac_9 :
     (-1177830356563834545387941094705217050684807125647331411073486387948077205281337869296415286382081249/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) ≤ Real.log (8/9 : ℝ) ∧
       Real.log (8/9 : ℝ) ≤ (-147228794570479318173492636838152131335600890705916426384185798493509650660167233662051910797760131/1250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) := by
   have h := ccm_log_series_bound 9 (by norm_num) 102
@@ -64,7 +62,7 @@ lemma ccm_log_frac_9 :
 
 set_option maxHeartbeats 4000000 in
 /-- Enclosure of `log (15/16)`, from the Mercator series with 82 terms at `x = 1/16`. -/
-lemma ccm_log_frac_16 :
+private lemma ccm_log_frac_16 :
     (-161346302843927929182309789209982320322271563374384607088444532154753017381280327299259187696907629/2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) ≤ Real.log (15/16 : ℝ) ∧
       Real.log (15/16 : ℝ) ≤ (-129077042275142343345847831367985856257817250699507685670755625723802413905024261839407350157526099/2000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) := by
   have h := ccm_log_series_bound 16 (by norm_num) 82
@@ -82,7 +80,7 @@ lemma ccm_log_frac_16 :
 
 set_option maxHeartbeats 4000000 in
 /-- Enclosure of `log (24/25)`, from the Mercator series with 70 terms at `x = 1/25`. -/
-lemma ccm_log_frac_25 :
+private lemma ccm_log_frac_25 :
     (-51027493150318911943221331444149837721514684541900287160701776038353520359528019461327525479213839/1250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) ≤ Real.log (24/25 : ℝ) ∧
       Real.log (24/25 : ℝ) ≤ (-408219945202551295545770651553198701772117476335202297285614208306828162876224155690620203833710691/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) := by
   have h := ccm_log_series_bound 25 (by norm_num) 70
@@ -100,7 +98,7 @@ lemma ccm_log_frac_25 :
 
 set_option maxHeartbeats 4000000 in
 /-- Enclosure of `log (48/49)`, from the Mercator series with 58 terms at `x = 1/49`. -/
-lemma ccm_log_frac_49 :
+private lemma ccm_log_frac_49 :
     (-206192872027356811465317641311274823246783638999519087013659282640909444067507062782479343763362161/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) ≤ Real.log (48/49 : ℝ) ∧
       Real.log (48/49 : ℝ) ≤ (-10309643601367840573265882065563741162339181949975954350682964132045472203375353139123967188168107/500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) := by
   have h := ccm_log_series_bound 49 (by norm_num) 58
@@ -118,7 +116,7 @@ lemma ccm_log_frac_49 :
 
 set_option maxHeartbeats 4000000 in
 /-- Enclosure of `log (120/121)`, from the Mercator series with 47 terms at `x = 1/121`. -/
-lemma ccm_log_frac_121 :
+private lemma ccm_log_frac_121 :
     (-82988028146950938761862214070155512438213927028014144277531646692931009911225478287698021091018217/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) ≤ Real.log (120/121 : ℝ) ∧
       Real.log (120/121 : ℝ) ≤ (-20747007036737734690465553517538878109553481757003536069382911673232752477806369571924505272754549/2500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) := by
   have h := ccm_log_series_bound 121 (by norm_num) 47
@@ -136,7 +134,7 @@ lemma ccm_log_frac_121 :
 
 set_option maxHeartbeats 4000000 in
 /-- Enclosure of `log (168/169)`, from the Mercator series with 44 terms at `x = 1/169`. -/
-lemma ccm_log_frac_169 :
+private lemma ccm_log_frac_169 :
     (-59347355198145473546805383904020710994601990350378302819665092716743127690579773202850924901192993/10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) ≤ Real.log (168/169 : ℝ) ∧
       Real.log (168/169 : ℝ) ≤ (-5934735519814547354680538390402071099460199035037830281966509271674312769057977320285092490119299/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 : ℝ) := by
   have h := ccm_log_series_bound 169 (by norm_num) 44
@@ -152,32 +150,32 @@ lemma ccm_log_frac_169 :
     norm_num
   exact ⟨by linarith, by linarith⟩
 
-lemma ccm_log_frac_eq_9 : Real.log (8/9 : ℝ) = 3 * Real.log 2 - 2 * Real.log 3 := by
+private lemma ccm_log_frac_eq_9 : Real.log (8/9 : ℝ) = 3 * Real.log 2 - 2 * Real.log 3 := by
   rw [show ((8/9 : ℝ)) = (2^3 : ℝ)/(3^2 : ℝ) by norm_num,
     Real.log_div (by norm_num) (by norm_num)]
   simp [Real.log_pow]
 
-lemma ccm_log_frac_eq_16 : Real.log (15/16 : ℝ) = Real.log 3 + Real.log 5 - 4 * Real.log 2 := by
+private lemma ccm_log_frac_eq_16 : Real.log (15/16 : ℝ) = Real.log 3 + Real.log 5 - 4 * Real.log 2 := by
   rw [show ((15/16 : ℝ)) = (3 * 5 : ℝ)/(2^4 : ℝ) by norm_num,
     Real.log_div (by norm_num) (by norm_num)]
   simp [Real.log_mul, Real.log_pow]
 
-lemma ccm_log_frac_eq_25 : Real.log (24/25 : ℝ) = 3 * Real.log 2 + Real.log 3 - 2 * Real.log 5 := by
+private lemma ccm_log_frac_eq_25 : Real.log (24/25 : ℝ) = 3 * Real.log 2 + Real.log 3 - 2 * Real.log 5 := by
   rw [show ((24/25 : ℝ)) = (2^3 * 3 : ℝ)/(5^2 : ℝ) by norm_num,
     Real.log_div (by norm_num) (by norm_num)]
   simp [Real.log_mul, Real.log_pow]
 
-lemma ccm_log_frac_eq_49 : Real.log (48/49 : ℝ) = 4 * Real.log 2 + Real.log 3 - 2 * Real.log 7 := by
+private lemma ccm_log_frac_eq_49 : Real.log (48/49 : ℝ) = 4 * Real.log 2 + Real.log 3 - 2 * Real.log 7 := by
   rw [show ((48/49 : ℝ)) = (2^4 * 3 : ℝ)/(7^2 : ℝ) by norm_num,
     Real.log_div (by norm_num) (by norm_num)]
   simp [Real.log_mul, Real.log_pow]
 
-lemma ccm_log_frac_eq_121 : Real.log (120/121 : ℝ) = 3 * Real.log 2 + Real.log 3 + Real.log 5 - 2 * Real.log 11 := by
+private lemma ccm_log_frac_eq_121 : Real.log (120/121 : ℝ) = 3 * Real.log 2 + Real.log 3 + Real.log 5 - 2 * Real.log 11 := by
   rw [show ((120/121 : ℝ)) = (2^3 * 3 * 5 : ℝ)/(11^2 : ℝ) by norm_num,
     Real.log_div (by norm_num) (by norm_num)]
   simp [Real.log_mul, Real.log_pow]
 
-lemma ccm_log_frac_eq_169 : Real.log (168/169 : ℝ) = 3 * Real.log 2 + Real.log 3 + Real.log 7 - 2 * Real.log 13 := by
+private lemma ccm_log_frac_eq_169 : Real.log (168/169 : ℝ) = 3 * Real.log 2 + Real.log 3 + Real.log 7 - 2 * Real.log 13 := by
   rw [show ((168/169 : ℝ)) = (2^3 * 3 * 7 : ℝ)/(13^2 : ℝ) by norm_num,
     Real.log_div (by norm_num) (by norm_num)]
   simp [Real.log_mul, Real.log_pow]

@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 101,
-  "updated_at": "2026-08-05T08:06:16+02:00",
+  "revision": 102,
+  "updated_at": "2026-08-05T08:14:11+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G5_ODE_THEOREM_SHAPE_AUDIT_ACTIVE",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Codex local Lean worker",
-    "next_action": "Audit and adjudicate the smallest exact ordinary-Legendre differential-identity node; do not create Bus 010 and do not promote Route B"
+    "next_actor": "Proshka route architect/reviewer",
+    "next_action": "Select exactly one smallest cancellation-preserving source-only Lean leaf after the proved antipodal crosswalk and repaired log supplier; do not submit Aristotle, materialize Goal 055, create Bus 010, or promote Route B"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1B.LOG_SUPPLIER_INTERFACE_REPAIR",
+    "active_node_id": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1B_INTERFACE_SCOPE_REPAIR_ACTIVE",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1B.LOG_SUPPLIER_INTERFACE_REPAIR",
+    "lifecycle": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1833,7 +1833,8 @@
       "G5_MODE4_ORDINARY_LEGENDRE_RECURRENCE_REV95",
       "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_REV96",
       "G5_MODE4_ORDINARY_LEGENDRE_X2_ACTION_REV97",
-      "G2_CCM_054_1_SURROGATE_REJECT_AND_V2_PREP_REV98"
+      "G2_CCM_054_1_SURROGATE_REJECT_AND_V2_PREP_REV98",
+      "G2_CCM_054_1B_LOG_SUPPLIER_INTERFACE_REPAIR_REV102"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1965,11 +1966,26 @@
       "dependencies": ["G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "INTERFACE_REPAIR_PROVED_AND_VALIDATED"},
+      "validation": "SHA256_81343E83;DIRECT_PASS;TARGET_7743;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;EXACT_19_PUBLIC_12_PRIVATE;STANDARD_AXIOM_TRIPLE;NO_THEOREM_OR_ENDPOINT_CHANGE",
+      "failure_codes": []
+    },
+    "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION": {
+      "id": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Select exactly one smallest cancellation-preserving source-only Lean leaf after the proved antipodal class crosswalk and repaired log supplier, without combining the finite von-Mangoldt, W02/prime normal-form, WR constant/integral, and cancellation-ledger walls",
+      "dependencies": ["G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK", "G2.CCM.054_1B.LOG_SUPPLIER_INTERFACE_REPAIR"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "PROSHKA_ACCEPT_054_1B_ONLY_AFTER_ZERO_MATHEMATICS_INTERFACE_REPAIR"},
-      "validation": "DIRECT_LEAN;TARGET_BUILD;FULL_BUILD;Q3_CHECK;TAINT;EXACT_19_PUBLIC_THEOREMS;STANDARD_AXIOM_TRIPLE;NO_ENDPOINT_CHANGE",
-      "failure_codes": ["G2_CCM_054_1B_INTERFACE_SCOPE_REPAIR_REQUIRED"]
+      "eligibility": {"eligible": true, "reason": "PROSHKA_SPLIT_REQUIRED_AFTER_TWO_VALIDATED_REPRESENTATION_GATES"},
+      "validation": "FRESH_PROJECT_CHAT;ENGLISH_ONLY;EXACT_ONE_NODE;NO_ARISTOTLE_SUBMISSION;ANSWER_NOW_NEVER_CLICKED",
+      "failure_codes": ["G2_CCM_054_1_NEXT_CANCELLATION_PRESERVING_SPLIT_UNSELECTED"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4139,12 +4155,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1B_INTERFACE_SCOPE_REPAIR_REQUIRED",
-    "mode": "G2_CCM_054_1B_INTERFACE_SCOPE_REPAIR_ACTIVE",
-    "current_leaf": "G2.CCM.054_1B.LOG_SUPPLIER_INTERFACE_REPAIR",
+    "current_stop": "G2_CCM_054_1_NEXT_CANCELLATION_PRESERVING_SPLIT_UNSELECTED",
+    "mode": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "current_leaf": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T08:14:11+02:00",
+      "event": "G2_CCM_054_1B_LOG_SUPPLIER_INTERFACE_REPAIR_PROVED",
+      "progress_class": "INTERFACE_REPAIR",
+      "result": "LEAN_SHA256_81343E83;DIRECT_PASS;TARGET_7743;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;19_PUBLIC_12_PRIVATE;STANDARD_AXIOM_TRIPLE;NO_THEOREM_OR_ENDPOINT_CHANGE;NEXT_SPLIT_PROSHKA_ADJUDICATION",
+      "honesty": "COEFFICIENT_SUPPLIER_ONLY_NO_WR_OR_CELL_ENCLOSURE_NO_054_1_V2_CLOSURE_NO_H2A_OR_G2_CLOSURE_NO_GOAL_055_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T08:06:16+02:00",
       "event": "G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK_PROVED",

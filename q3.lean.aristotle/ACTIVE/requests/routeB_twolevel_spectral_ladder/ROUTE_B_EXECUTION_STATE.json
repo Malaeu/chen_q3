@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T08:06:16+02:00",
+  "updated_at": "2026-08-05T08:14:11+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1B_INTERFACE_SCOPE_REPAIR_ACTIVE",
+  "operational_status": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1B.LOG_SUPPLIER_INTERFACE_REPAIR",
-    "name": "CCMCell13N2LogSupplierInterfaceRepair",
-    "status": "ACTIVE_ZERO_MATHEMATICS_INTERFACE_REPAIR",
-    "stop_code": "G2_CCM_054_1B_INTERFACE_SCOPE_REPAIR_REQUIRED",
+    "contract_obligation": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "name": "CCMCell13N2NextCancellationPreservingSplitAdjudication",
+    "status": "ACTIVE_PROSHKA_THEOREM_SHAPE_ADJUDICATION",
+    "stop_code": "G2_CCM_054_1_NEXT_CANCELLATION_PRESERVING_SPLIT_UNSELECTED",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Codex local Lean worker",
-    "next_action": "Repair only the truthful module contract and public/private surface of CCMFiniteWeilLogBounds.lean; change no theorem statement or rational endpoint; rerun direct/target/full/q3_check/taint/axioms. Do not submit Aristotle, materialize Goal 055, or create Bus 010.",
-    "ccm_classification": "ANTIPODAL_CLASS_CROSSWALK_PROVED_054_1B_INTERFACE_REPAIR_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1B_LOG_SUPPLIER_INTERFACE_REPAIR",
+    "next_required_actor": "Proshka route architect/reviewer",
+    "next_action": "Choose exactly one smallest cancellation-preserving source-only Lean leaf after the proved antipodal crosswalk and accepted 054.1b supplier. Keep Goal 055 held; do not submit Aristotle or create Bus 010.",
+    "ccm_classification": "ANTIPODAL_CLASS_CROSSWALK_AND_LOG_SUPPLIER_PROVED_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -33,7 +33,9 @@
       "classification": "SURROGATE_REJECTED_REAL_SOURCE_SKELETON_READY",
       "aristotle_project_id": "36061787-afe1-4d64-bb55-905fce1411a6",
       "archive_sha256": "96cf54311849458752416672e87dce83083dfdc9290ec7d756bfa09ddb29cd98",
-      "log_supplier_status": "ACCEPT_054_1B_ONLY_AFTER_INTERFACE_REPAIR_NO_MATH_CHANGE",
+      "log_supplier_status": "ACCEPT_054_1B_PRODUCTION_COEFFICIENT_SUPPLIER_INTERFACE_REPAIRED",
+      "log_supplier_sha256": "81343e834eabd8df1285bd251fb647b49d7212e75f1687ee874ba07c259feb0b",
+      "log_supplier_validation": "DIRECT_TARGET_7743_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_19_PUBLIC_12_PRIVATE_NO_ENDPOINT_CHANGE",
       "v2_status": "DO_NOT_SUBMIT_054_1_V2_SPLIT_REQUIRED",
       "goal_055_status": "HOLD_055_RATIFIED_DRAFT_OUTSIDE_BUS",
       "proshka_conversation_id": "6a72c9d4-ea88-83eb-a06f-99bc5364f647",
@@ -47,7 +49,8 @@
       ,"antipodal_crosswalk_status": "DIRECT_TARGET_FULL_Q3CHECK_PASS_STANDARD_TRIPLE"
       ,"antipodal_crosswalk_sha256": "e8417922c3b7df7ea17d2e0b859b647a82e4a911f330e8aa0c713da04e55b02f"
       ,"antipodal_plant_fate": "P1_FIRED_P2_FIRED_P3_INERT_AS_STATED_P3R_POINTWISE_FIRED"
-      ,"next_node_after_crosswalk": "G2_CCM_054_1B_LOG_SUPPLIER_INTERFACE_REPAIR"
+      ,"next_node_after_crosswalk": "G2_CCM_054_1B_LOG_SUPPLIER_INTERFACE_REPAIR_PROVED"
+      ,"next_node_after_log_supplier": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [
