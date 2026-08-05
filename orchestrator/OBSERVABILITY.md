@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_OBSERVABILITY_ADAPTER
-STATUS: LIVE_ADAPTER_NUMERIC_ZERO_COVERAGE
+STATUS: LIVE_ADAPTER_DEPENDENCY_AWARE_NUMERIC_ZERO_COVERAGE
 TRIGGER_OWNER: Codex
 EXISTING_GATES:
   - MANUAL_OBSERVABILITY_REBUILD
@@ -48,3 +48,9 @@ The complete source contract and table mapping are in
 degraded as `ZERO_COVERAGE` because its configuration contains no diagnostics.
 A fresh empty report is never PASS. AUTOPSY observations are derived and never
 auto-promote a wall or arsenal card.
+
+The source layer keeps the complete 3316-file import graph while avoiding full
+reads of heavy non-root `PrimeCert` payloads. Root closures and the explicit
+live-supplier allowlist are always scanned transitively. Every omitted payload
+is stored as `CONTENT_SCAN_SKIPPED_GENERATED_NONROOT`, never as green proof
+evidence; policy drift fails the refresh before the database is replaced.

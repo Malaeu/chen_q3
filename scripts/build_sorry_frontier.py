@@ -9,9 +9,21 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 try:
-    from scripts.q3_sensor_scan import dependency_closure, scan_import_graph, scan_sorry_sites
+    from scripts.q3_sensor_scan import (
+        HEAVY_GENERATED_FAMILY,
+        build_content_scan_plan,
+        dependency_closure,
+        scan_import_graph,
+        scan_sorry_sites,
+    )
 except ModuleNotFoundError:  # direct execution from scripts/
-    from q3_sensor_scan import dependency_closure, scan_import_graph, scan_sorry_sites
+    from q3_sensor_scan import (
+        HEAVY_GENERATED_FAMILY,
+        build_content_scan_plan,
+        dependency_closure,
+        scan_import_graph,
+        scan_sorry_sites,
+    )
 
 
 ROOT = (Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle").resolve()
@@ -29,8 +41,13 @@ def now_utc() -> str:
 
 
 def build_payload(q3_dir: Path = Q3_DIR, *, generated_at: str | None = None) -> dict[str, object]:
-    sorry_files = scan_sorry_sites(q3_dir)
     graph, unresolved = scan_import_graph(q3_dir)
+    scan_plan = build_content_scan_plan(
+        q3_dir,
+        graph,
+        root_entries=ROOT_ENTRIES.values(),
+    )
+    sorry_files = scan_sorry_sites(q3_dir, scan_plan.content_scanned_file_ids)
     closures: list[dict[str, object]] = []
     root_sets: dict[str, set[str]] = {}
     for root_id, entry_file in ROOT_ENTRIES.items():
@@ -67,6 +84,19 @@ def build_payload(q3_dir: Path = Q3_DIR, *, generated_at: str | None = None) -> 
             "included_files": len(graph),
             "excluded_directories": ["Q3/Clean", "Q3/Archive"],
             "unresolved_internal_imports": unresolved,
+            "content_scan": {
+                "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
+                "heavy_generated_family": "/".join(HEAVY_GENERATED_FAMILY),
+                "heavy_threshold_bytes": scan_plan.threshold_bytes,
+                "content_scanned_files": len(scan_plan.content_scanned_file_ids),
+                "content_scanned_bytes": scan_plan.content_scanned_bytes,
+                "skipped_generated_files": len(scan_plan.skipped_generated_file_ids),
+                "skipped_generated_bytes": scan_plan.skipped_generated_bytes,
+                "skipped_file_ids": sorted(scan_plan.skipped_generated_file_ids),
+                "root_protected_files": len(scan_plan.root_closure_file_ids),
+                "allowlist_entries": list(scan_plan.allowlist_entries),
+                "allowlist_closure_files": len(scan_plan.allowlist_closure_file_ids),
+            },
         },
         "total_sorries": sum(int(item["count"]) for item in sorry_files),
         "root_impacted_sorries": impacted,
@@ -77,12 +107,20 @@ def build_payload(q3_dir: Path = Q3_DIR, *, generated_at: str | None = None) -> 
 
 def render_markdown(data: dict[str, object]) -> str:
     scope = data["scope"]
+    content_scan = scope["content_scan"]
     lines = [
         f"# Sorry Frontier (auto) — {data['generated_at']}",
         "",
         "**Purpose:** Exact active `sorry` sites plus their membership in configured root closures.",
-        "**Method:** ripgrep candidate selection, then comment/string-aware verification.",
+        "**Method:** header-only import DAG, dependency/allowlist protection, then exact content scan.",
         f"**Scope:** {scope['included_files']} Lean files; excludes `Q3/Clean` and `Q3/Archive`.",
+        (
+            "**Content scan:** "
+            f"{content_scan['content_scanned_files']} files; "
+            f"{content_scan['skipped_generated_files']} heavy non-root generated files "
+            "explicitly marked not scanned."
+        ),
+        f"**Bytes avoided:** {content_scan['skipped_generated_bytes']:,}.",
         f"**Total active sorries:** {data['total_sorries']}",
         f"**Root-impacting sorries:** {data['root_impacted_sorries']}",
         "",
@@ -92,6 +130,18 @@ def render_markdown(data: dict[str, object]) -> str:
         lines.append(
             f"- `{closure['root_id']}` via `{closure['entry_file']}`: {closure['file_count']} files"
         )
+    lines += ["", "## Content-scan protection"]
+    lines.append(
+        "Skipped files are `CONTENT_SCAN_SKIPPED_GENERATED_NONROOT`, never green/PASS."
+    )
+    lines.append(
+        f"- Heavy family: `{content_scan['heavy_generated_family']}` at "
+        f"{content_scan['heavy_threshold_bytes']:,} bytes or larger"
+    )
+    lines.append(f"- Root-protected closure: {content_scan['root_protected_files']} files")
+    lines.append(f"- Allowlist closure: {content_scan['allowlist_closure_files']} files")
+    for entry in content_scan["allowlist_entries"]:
+        lines.append(f"  - `{entry}`")
     lines += ["", "## Active sites"]
     if not data["files"]:
         lines.append("_No active sorries found._")

@@ -12,7 +12,7 @@ GOAL_055: HOLD
 RH_CLAIM: false
 ARISTOTLE_SUBMISSION: NONE
 TRACKED_LEAN_DIFF: NONE
-COMMIT_OR_PUSH: NONE
+BASE_CONTOUR_COMMIT: 7e319bdc911d8af7ee6a2ba6de18cbb02dac352b PUSHED
 ```
 
 ## Materialized contour
@@ -103,3 +103,28 @@ tracked Lean diff                                    -> NONE
 
 The remaining G2 certificate-data stop is operational/source-data work, not a
 mathematical owner-choice boundary. The physical route state remains untouched.
+
+## Post-closeout sensor performance closure
+
+The former blind full-content pass over generated `PrimeCert` payloads is now
+dependency-aware. The sensor first builds the complete import DAG from Lean
+headers, then protects every configured root closure and the transitive closure
+of an explicit live-supplier allowlist. Only heavy generated non-root payloads
+at or above 1,000,000 bytes are omitted from content scans.
+
+Live strict refresh result:
+
+```text
+import graph: 3316 files / 5544 edges (unchanged)
+content scanned: 2013 files / 93,863,287 bytes
+generated non-root skipped: 1303 files / 4,312,275,592 bytes
+root or allowlist files skipped: 0
+skipped nodes falsely marked NO_OBSERVED_ISSUE: 0
+unit/semantic plants: 67 tests / OK
+strict refresh: P9_STRICT_PASS
+observability: 8 sources / 0 stale / 1 deliberate ZERO_COVERAGE
+```
+
+Skipped payloads remain visible as
+`CONTENT_SCAN_SKIPPED_GENERATED_NONROOT`; this is explicit missing content
+coverage, not PASS, proof truth, taint, promotion, or route authority.

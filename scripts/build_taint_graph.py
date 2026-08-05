@@ -57,6 +57,27 @@ def build_payloads(
 ) -> tuple[dict[str, object], dict[str, object]]:
     generated_at = generated_at or now_utc()
     graph, unresolved = scan_import_graph(q3_dir)
+    content_scan = sorry_data.get("scope", {}).get("content_scan", {})
+    skipped_content = {
+        str(file_name) for file_name in content_scan.get("skipped_file_ids", [])
+    }
+    unknown_skips = skipped_content - set(graph)
+    if unknown_skips:
+        raise ValueError(
+            "content-scan skip list contains files outside import graph: "
+            + str(sorted(unknown_skips)[:20])
+        )
+    root_members = {
+        str(item["file"])
+        for closure in sorry_data.get("root_closures", [])
+        for item in closure.get("files", [])
+    }
+    skipped_roots = skipped_content & root_members
+    if skipped_roots:
+        raise ValueError(
+            "content scan skipped live root dependencies: "
+            + str(sorted(skipped_roots)[:20])
+        )
     sorry_by_file = {
         str(item["file"]): [int(line) for line in item.get("lines", [])]
         for item in sorry_data.get("files", []) if item.get("file")
@@ -93,6 +114,8 @@ def build_payloads(
         elif boundaries:
             direct_status[owner] = "IMPORT_BOUNDARY"
             sources.update(f"IMPORT::{row['module']}" for row in boundaries)
+        elif owner in skipped_content:
+            direct_status[owner] = "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT"
         else:
             direct_status[owner] = "CLEAR"
 
@@ -102,6 +125,8 @@ def build_payloads(
             status[owner] = "IMPORT_BOUNDARY"
         elif sources:
             status[owner] = "TRANSITIVE_TAINT"
+        elif owner in skipped_content:
+            status[owner] = "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT"
         else:
             status[owner] = "NO_OBSERVED_ISSUE"
         taint_sources[owner] = sources
@@ -145,6 +170,9 @@ def build_payloads(
             "dependencies": node["dependencies"],
             "sorries": sorry_by_file.get(owner, []),
             "numeric_check": numeric_status,
+            "content_scan_status": (
+                "SKIPPED_GENERATED_NONROOT" if owner in skipped_content else "SCANNED"
+            ),
             "direct_status": direct_status[owner],
             "propagation_status": status[owner],
             "integrity_status": status[owner],
@@ -179,6 +207,7 @@ def build_payloads(
             "excluded_directories": ["Q3/Clean", "Q3/Archive"],
             "unresolved_internal_imports": unresolved,
             "import_cycles": cyclic,
+            "content_scan": content_scan,
         },
         "root_status": root_status,
         "nodes": nodes,
@@ -191,6 +220,7 @@ def build_payloads(
         "boundary_dirty": sorted(
             {f"IMPORT::{row['module']}" for row in unresolved}
         ),
+        "content_scan_skipped": sorted(skipped_content),
         "roots_by_file": {
             owner: sorted(taint_sources[owner]) for owner in sorted(taint_sources)
         },
@@ -210,6 +240,10 @@ def render_taint_markdown(data: dict[str, object]) -> str:
         "",
         "**Boundary:** source-hole/import-boundary observability; not proof truth.",
         "**Numeric checks:** evidence only, never propagated and never DOOMED.",
+        (
+            "**Content scan:** heavy generated non-root skips remain explicit unknowns, "
+            "never `NO_OBSERVED_ISSUE`."
+        ),
         "**Counts:** " + ", ".join(f"{key}={value}" for key, value in sorted(counts.items())),
         "",
         "## Root status",
@@ -222,7 +256,7 @@ def render_taint_markdown(data: dict[str, object]) -> str:
     lines += ["", "## Direct problems"]
     direct = [
         node for node in data["nodes"]
-        if node["direct_status"] != "CLEAR"
+        if node["direct_status"] in {"SORRY", "IMPORT_BOUNDARY", "IMPORT_CYCLE"}
     ]
     if not direct:
         lines.append("_None._")

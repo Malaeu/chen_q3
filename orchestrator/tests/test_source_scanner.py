@@ -47,6 +47,81 @@ class SourceScannerTests(unittest.TestCase):
             self.assertEqual(graph["Q3/Live.lean"]["dependencies"], [])
             self.assertEqual(unresolved[0]["status"], "EXCLUDED_TARGET")
 
+    def test_import_scan_stops_at_header_and_masks_comments(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            q3 = Path(tmp) / "Q3"
+            q3.mkdir()
+            path = q3 / "Root.lean"
+            path.write_text(
+                "/- import Q3.Fake -/\n"
+                "import Q3.Real Mathlib\n"
+                "def payload := \"import Q3.StringFake\"\n"
+                "import Q3.TooLate\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(q3_sensor_scan.read_import_modules(path), ["Q3.Real", "Mathlib"])
+
+    def test_dependency_aware_plan_protects_roots_and_allowlist(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            q3 = Path(tmp) / "Q3"
+            prime = q3 / "Proofs" / "PrimeCert"
+            prime.mkdir(parents=True)
+            (q3 / "Root.lean").write_text("import Q3.Proofs.PrimeCert.Required\n")
+            (prime / "Required.lean").write_text(
+                "theorem required : True := by sorry\n" + "-- generated\n" * 20
+            )
+            (prime / "Allow.lean").write_text(
+                "import Q3.Proofs.PrimeCert.AllowDependency\n"
+                "theorem allow : True := by sorry\n" + "-- generated\n" * 20
+            )
+            (prime / "AllowDependency.lean").write_text(
+                "theorem supplier : True := by trivial\n" + "-- generated\n" * 20
+            )
+            (prime / "Museum.lean").write_text(
+                "theorem museum : True := by sorry\n" + "-- generated\n" * 20
+            )
+            graph, _unresolved = q3_sensor_scan.scan_import_graph(q3)
+            plan = q3_sensor_scan.build_content_scan_plan(
+                q3,
+                graph,
+                root_entries=["Q3/Root.lean"],
+                allowlist_entries=["Q3/Proofs/PrimeCert/Allow.lean"],
+                threshold_bytes=100,
+            )
+            self.assertIn("Q3/Proofs/PrimeCert/Required.lean", plan.content_scanned_file_ids)
+            self.assertIn("Q3/Proofs/PrimeCert/Allow.lean", plan.content_scanned_file_ids)
+            self.assertIn(
+                "Q3/Proofs/PrimeCert/AllowDependency.lean",
+                plan.content_scanned_file_ids,
+            )
+            self.assertEqual(
+                plan.skipped_generated_file_ids,
+                frozenset({"Q3/Proofs/PrimeCert/Museum.lean"}),
+            )
+            rows = q3_sensor_scan.scan_sorry_sites(q3, plan.content_scanned_file_ids)
+            self.assertEqual(
+                {str(row["file"]) for row in rows},
+                {
+                    "Q3/Proofs/PrimeCert/Allow.lean",
+                    "Q3/Proofs/PrimeCert/Required.lean",
+                },
+            )
+
+    def test_missing_allowlist_entry_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            q3 = Path(tmp) / "Q3"
+            q3.mkdir()
+            (q3 / "Root.lean").write_text("theorem ok : True := by trivial\n")
+            graph, _unresolved = q3_sensor_scan.scan_import_graph(q3)
+            with self.assertRaisesRegex(ValueError, "allowlist entry missing"):
+                q3_sensor_scan.build_content_scan_plan(
+                    q3,
+                    graph,
+                    root_entries=["Q3/Root.lean"],
+                    allowlist_entries=["Q3/Missing.lean"],
+                    threshold_bytes=100,
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

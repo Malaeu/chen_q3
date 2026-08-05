@@ -43,6 +43,54 @@ class SensorBundleTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "root identity mismatch"):
                 sensors.validate_bundle(root)
 
+    def test_content_scan_accounting_mismatch_fails_before_publish(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            content_scan = {
+                "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
+                "content_scanned_files": 1,
+                "skipped_generated_files": 1,
+                "skipped_generated_bytes": 100,
+                "skipped_file_ids": ["Q3/Museum.lean"],
+                "allowlist_entries": ["Q3/A.lean"],
+            }
+            self.write(root, "DEPS_TREE_MAIN.json", {
+                "roots": [{"id": "A", "deps": []}],
+                "source_scan": content_scan,
+            })
+            self.write(root, "SORRY_FRONTIER.json", {
+                "total_sorries": 0,
+                "scope": {"included_files": 1, "content_scan": content_scan},
+                "root_closures": [{
+                    "root_id": "A",
+                    "files": [{"file": "Q3/A.lean", "depth": 0}],
+                }],
+            })
+            self.write(root, "NUMERIC_CHECKS_REPORT.json", {
+                "coverage_status": "EMPTY_CONFIG",
+                "boundary": {"not_taint_input": True},
+            })
+            self.write(root, "TAINT_GRAPH.json", {
+                "nodes": [{"id": "Q3/A.lean", "content_scan_status": "SCANNED"}],
+                "root_status": [{"root_id": "A"}],
+                "scope": {"content_scan": content_scan},
+                "semantics": {"numeric_checks": "EVIDENCE_ONLY_NOT_PROPAGATED"},
+            })
+            self.write(root, "TAINT_SOURCES.json", {
+                "roots_by_file": {"Q3/A.lean": []},
+                "content_scan_skipped": ["Q3/Museum.lean"],
+            })
+            self.write(root, "PROOF_GRAPH.json", {
+                "roots": [{"id": "A"}], "boundary": {"not_proof_verdict": True},
+            })
+            self.write(root, "AUTOPSY_MAP.json", {
+                "schema": "q3_autopsy_map.v1",
+                "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+                "events": [], "walls": [], "namewatch_candidates": [],
+            })
+            with self.assertRaisesRegex(ValueError, "content-scan coverage mismatch"):
+                sensors.validate_bundle(root)
+
 
 if __name__ == "__main__":
     unittest.main()

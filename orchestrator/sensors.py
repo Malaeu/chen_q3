@@ -71,6 +71,61 @@ def validate_bundle(work: Path) -> dict[str, Any]:
             f"file coverage mismatch: sorry={included} taint={taint_nodes} "
             f"taint_sources={source_files}"
         )
+    content_scan = sorry.get("scope", {}).get("content_scan")
+    if not isinstance(content_scan, dict):
+        raise ValueError("sorry frontier lost dependency-aware content-scan policy")
+    if content_scan.get("policy") != "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST":
+        raise ValueError(f"invalid content-scan policy: {content_scan.get('policy')}")
+    dependency_scan = deps.get("source_scan")
+    shared_policy_keys = {
+        "policy",
+        "heavy_generated_family",
+        "heavy_threshold_bytes",
+        "content_scanned_files",
+        "content_scanned_bytes",
+        "skipped_generated_files",
+        "skipped_generated_bytes",
+        "allowlist_entries",
+    }
+    if not isinstance(dependency_scan, dict) or any(
+        dependency_scan.get(key) != content_scan.get(key)
+        for key in shared_policy_keys
+    ):
+        raise ValueError("dependency/sorry content-scan policies drifted")
+    scanned_count = int(content_scan.get("content_scanned_files", -1))
+    skipped_count = int(content_scan.get("skipped_generated_files", -1))
+    skipped_ids = [str(item) for item in content_scan.get("skipped_file_ids", [])]
+    if len(skipped_ids) != len(set(skipped_ids)) or len(skipped_ids) != skipped_count:
+        raise ValueError("content-scan skip list/count mismatch")
+    if scanned_count < 0 or skipped_count < 0 or scanned_count + skipped_count != included:
+        raise ValueError(
+            f"content-scan coverage mismatch: scanned={scanned_count} "
+            f"skipped={skipped_count} included={included}"
+        )
+    skipped = set(skipped_ids)
+    root_members = {
+        str(item["file"])
+        for closure in sorry.get("root_closures", [])
+        for item in closure.get("files", [])
+    }
+    if skipped & root_members:
+        raise ValueError("content scan skipped a live root dependency")
+    allowlist = {str(item) for item in content_scan.get("allowlist_entries", [])}
+    if not allowlist or allowlist & skipped:
+        raise ValueError("content scan lost or skipped a live supplier allowlist entry")
+    if taint.get("scope", {}).get("content_scan") != content_scan:
+        raise ValueError("taint graph content-scan policy drift")
+    taint_by_id = {str(node["id"]): node for node in taint.get("nodes", [])}
+    if set(taint_by_id) != set(sources.get("roots_by_file", {})):
+        raise ValueError("taint graph/source projection file identities drifted")
+    for owner, node in taint_by_id.items():
+        expected = "SKIPPED_GENERATED_NONROOT" if owner in skipped else "SCANNED"
+        if node.get("content_scan_status") != expected:
+            raise ValueError(f"content-scan status mismatch for {owner}")
+        if owner in skipped and node.get("propagation_status") == "NO_OBSERVED_ISSUE":
+            raise ValueError(f"skipped generated file was falsely marked green: {owner}")
+    if set(sources.get("content_scan_skipped", [])) != skipped:
+        raise ValueError("taint source projection lost content-scan skip identities")
     if numeric.get("coverage_status") not in {"CONFIGURED", "EMPTY_CONFIG"}:
         raise ValueError(f"invalid numeric coverage: {numeric.get('coverage_status')}")
     if not numeric.get("boundary", {}).get("not_taint_input"):
@@ -87,6 +142,9 @@ def validate_bundle(work: Path) -> dict[str, Any]:
     return {
         "roots": len(dependency_roots),
         "files": taint_nodes,
+        "content_scanned_files": scanned_count,
+        "skipped_generated_files": skipped_count,
+        "skipped_generated_bytes": int(content_scan.get("skipped_generated_bytes", 0)),
         "axiom_rows": sum(len(root.get("deps", [])) for root in deps["roots"]),
         "sorry_sites": int(sorry.get("total_sorries", 0)),
         "numeric_coverage": numeric["coverage_status"],

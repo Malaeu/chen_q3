@@ -41,6 +41,65 @@ class TaintSensorTests(unittest.TestCase):
             self.assertFalse(by_id["Q3/Root.lean"]["is_doomed"])
             self.assertEqual(sources["roots_by_file"]["Q3/Root.lean"], ["Q3/Leaf.lean"])
 
+    def test_skipped_generated_nonroot_is_explicit_unknown_not_green(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            q3 = Path(tmp) / "Q3"
+            q3.mkdir()
+            (q3 / "Root.lean").write_text("theorem root : True := by trivial\n")
+            (q3 / "Museum.lean").write_text("theorem old : True := by sorry\n")
+            sorry = {
+                "files": [],
+                "scope": {"content_scan": {"skipped_file_ids": ["Q3/Museum.lean"]}},
+                "root_closures": [{
+                    "root_id": "ROOT",
+                    "entry_file": "Q3/Root.lean",
+                    "files": [{"file": "Q3/Root.lean", "depth": 0}],
+                }],
+            }
+            taint, sources = build_taint_graph.build_payloads(
+                q3_dir=q3,
+                sorry_data=sorry,
+                numeric_data={"checks": []},
+                generated_at="2026-08-06T00:00:00+00:00",
+            )
+            by_id = {node["id"]: node for node in taint["nodes"]}
+            self.assertEqual(
+                by_id["Q3/Museum.lean"]["propagation_status"],
+                "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT",
+            )
+            self.assertEqual(
+                by_id["Q3/Museum.lean"]["content_scan_status"],
+                "SKIPPED_GENERATED_NONROOT",
+            )
+            self.assertEqual(by_id["Q3/Root.lean"]["propagation_status"], "NO_OBSERVED_ISSUE")
+            self.assertEqual(sources["content_scan_skipped"], ["Q3/Museum.lean"])
+
+    def test_skipping_a_root_dependency_fails_closed(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            q3 = Path(tmp) / "Q3"
+            q3.mkdir()
+            (q3 / "Root.lean").write_text("import Q3.Required\n")
+            (q3 / "Required.lean").write_text("theorem hole : True := by sorry\n")
+            sorry = {
+                "files": [],
+                "scope": {"content_scan": {"skipped_file_ids": ["Q3/Required.lean"]}},
+                "root_closures": [{
+                    "root_id": "ROOT",
+                    "entry_file": "Q3/Root.lean",
+                    "files": [
+                        {"file": "Q3/Root.lean", "depth": 0},
+                        {"file": "Q3/Required.lean", "depth": 1},
+                    ],
+                }],
+            }
+            with self.assertRaisesRegex(ValueError, "skipped live root dependencies"):
+                build_taint_graph.build_payloads(
+                    q3_dir=q3,
+                    sorry_data=sorry,
+                    numeric_data={"checks": []},
+                    generated_at="2026-08-06T00:00:00+00:00",
+                )
+
 
 if __name__ == "__main__":
     unittest.main()
