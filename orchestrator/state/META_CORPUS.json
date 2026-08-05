@@ -1,0 +1,43 @@
+{
+  "authority": "DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE",
+  "schema": "q3_meta_corpus.v1",
+  "separation_rule": "PROJECT_DATABASES_MUST_NOT_BE_MERGED",
+  "surfaces": [
+    {
+      "authority": "CANONICAL_PROJECT_SEMANTIC_MEMORY",
+      "id": "SEMANTIC_PROJECT_MEMORY",
+      "kind": "sqlite",
+      "path": "q3.lean.aristotle/aristotle_db/knowledge.db"
+    },
+    {
+      "authority": "METADATA_NOT_LEAN_TRUTH",
+      "id": "PROOF_ARTIFACT_REGISTRY",
+      "kind": "sqlite",
+      "path": "q3.lean.aristotle/aristotle_db/aristotle_proofs.db"
+    },
+    {
+      "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+      "id": "OBSERVABILITY_PROJECTION",
+      "kind": "sqlite",
+      "path": "q3.lean.aristotle/aristotle_db/observability.db"
+    },
+    {
+      "authority": "RETRIEVAL_ONLY",
+      "id": "Q3_DOCS_SEMANTIC_INDEX",
+      "kind": "qmd_collection",
+      "path": "qmd://q3_docs/"
+    },
+    {
+      "authority": "SOURCE_EVIDENCE_ONLY",
+      "id": "LITREVIEW_CORPUS",
+      "kind": "documents_and_bibliography",
+      "path": "docs/routeB_bus/litreview"
+    },
+    {
+      "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+      "id": "AUTOPSY_WALL_MAP",
+      "kind": "derived_json",
+      "path": "q3.lean.aristotle/ACTIVE/graphs/AUTOPSY_MAP.json"
+    }
+  ]
+}

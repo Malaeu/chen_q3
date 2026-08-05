@@ -75,6 +75,18 @@ CODE_RE = re.compile(r"^\s*([A-Z][A-Z0-9_ -]{1,63}):\s*(\S.*)?$")
 URL_RE = re.compile(r"https?://\S+")
 MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\(https?://[^)]+\)")
 SCREAMING_RE = re.compile(r"^[A-Z][A-Z0-9_]{5,}$")
+NEGATIVE_CLOSE_RE = re.compile(r"(?:INCONCLUSIVE|WALL|KILLED)", re.IGNORECASE)
+AUTOPSY_LINE_RE = re.compile(
+    r"^AUTOPSY:\s*dropped=([A-Z][A-Z0-9_]*);\s*note=(\S.*)$", re.MULTILINE,
+)
+ANY_AUTOPSY_RE = re.compile(r"^AUTOPSY:", re.MULTILINE)
+AUTOPSY_TAGS_V1 = {
+    "SOURCE_IDENTITY", "OBJECT_IDENTITY", "DOMAIN", "QUANTIFIER",
+    "NORMALIZATION", "ORIENTATION", "LOCALIZATION", "SIGN", "PARITY",
+    "MULTIPLICITY", "BOUNDEDNESS", "COUPLING", "ENDPOINT", "REGULARITY",
+    "COMPACTNESS", "MEASURE_VS_ALGEBRA", "SPECTRAL_ORDERING",
+    "CANCELLATION", "DEPENDENCY", "TRUST",
+}
 
 
 class PacketError(RuntimeError):
@@ -155,6 +167,10 @@ def _fresh_spine_text() -> str:
 
 def _regenerate_spine() -> None:
     module = _load_spine_module()
+    write_outputs = getattr(module, "write_outputs", None)
+    if callable(write_outputs):
+        write_outputs()
+        return
     build = getattr(module, "build", None)
     out = getattr(module, "OUT", SPINE_PATH)
     if not callable(build):
@@ -538,6 +554,19 @@ def parse_reply(text: str, explicit_head: str | None = None) -> ParsedReply:
     )
 
 
+def validate_autopsy_close_gate(text: str, verdict_label: str | None) -> str:
+    matches = list(AUTOPSY_LINE_RE.finditer(text))
+    any_lines = list(ANY_AUTOPSY_RE.finditer(text))
+    if any_lines and len(any_lines) != len(matches):
+        raise PacketError("AUTOPSY_SCHEMA_INVALID: malformed or legacy AUTOPSY line in new payload")
+    for match in matches:
+        if match.group(1) not in AUTOPSY_TAGS_V1:
+            raise PacketError(f"AUTOPSY_SCHEMA_INVALID: unknown tag {match.group(1)}")
+    if verdict_label and NEGATIVE_CLOSE_RE.search(verdict_label) and not matches:
+        raise PacketError("AUTOPSY_REQUIRED_MISSING: negative close has no structured AUTOPSY line")
+    return "AUTOPSY_CLOSE_GATE_PASS"
+
+
 def _commit_files(
     files: dict[Path, bytes], *, replace_generated: bool = False
 ) -> dict[Path, bool]:
@@ -628,6 +657,7 @@ def ingest_reply(path: Path, explicit_head: str | None = None) -> dict[str, obje
             if key in {"PRIMARY", "PRIMARY_VERDICT", "PRIMARY_STATUS", "STATUS"}:
                 verdict_label = value
                 break
+    validate_autopsy_close_gate(text, verdict_label)
     bus_name = (
         f"CLIPBOARD_{parsed.head}_{_slug(verdict_label or 'ROUTED_REPLY')}_"
         f"{short_sha}.md"

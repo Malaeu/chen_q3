@@ -1,6 +1,8 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-01-27",
+  "schema_version": "2.0",
+  "reviewed_at": "2026-08-05",
+  "authority": "NUMERIC_EVIDENCE_ONLY_NOT_LEAN_AUTHORITY",
+  "coverage_status": "EMPTY_CONFIG",
   "checks": [],
-  "notes": "Each check targets a node id or file path. Use numeric_sanity_check.py to produce a report."
+  "notes": "Zero configured diagnostics is zero coverage, not PASS. Add only reproducible project-local commands with an explicit target and expected exit code."
 }

@@ -1,6 +1,7 @@
 # Sprint Monitor
 
-status: DONE
+status: DONE_CLOSED
+selector_effect: INACTIVE_HISTORICAL_SNAPSHOT
 sprint: Q_zeta_core_short_circuit
 started: 2026-03-15
 mode: two-lane

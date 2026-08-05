@@ -29,6 +29,14 @@ TODAY = "2026-08-05"
 
 # (klass, reason, check_done, revisit_if)
 RULES = [
+    (re.compile(r"PROSHKA_REASONING_TIME_LOG", re.I), (
+        "observability",
+        "Operational timing ledger projected into observability.db. Raw durations describe "
+        "channel behaviour; they are not semantic project knowledge.",
+        "2026-08-05: reviewed all 15 entries; the observability importer validates unique "
+        "transactions and publishes count/total/mean/median/slowest plus Answer-now usage.",
+        "Promote only a reviewed belief-changing conclusion with provenance; rebuild "
+        "observability.db for raw timing metrics.")),
     (re.compile(r"step33|PSD_STEP33", re.I), (
         "step33",
         "Completed PSD Step33 line — an execution log of a campaign that ended in June, not "

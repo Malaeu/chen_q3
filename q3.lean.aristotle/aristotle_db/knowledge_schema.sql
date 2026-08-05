@@ -211,7 +211,7 @@ CREATE VIRTUAL TABLE IF NOT EXISTS dossier_fts USING fts5(
 
 CREATE TABLE IF NOT EXISTS excluded_source (
     path        TEXT PRIMARY KEY,
-    klass       TEXT NOT NULL,   -- step33 | build_artifact | protocol | numeric | symlink | index | state | pending_read
+    klass       TEXT NOT NULL,   -- step33 | build_artifact | protocol | numeric | observability | symlink | index | state | pending_read
     reason      TEXT NOT NULL,   -- why it is not knowledge (or not yet migrated)
     check_done  TEXT,            -- what was actually verified, in words
     revisit_if  TEXT,            -- the condition that would make this worth re-opening

@@ -1,0 +1,22 @@
+{
+  "card_coverage": {
+    "BOUNDEDNESS": "C12",
+    "LOCALIZATION": "C01",
+    "MEASURE_VS_ALGEBRA": "C05",
+    "OBJECT_IDENTITY": "C10",
+    "PARITY": "C08",
+    "SOURCE_IDENTITY": "C10"
+  },
+  "schema": "q3_wall_registry.v1",
+  "walls": [
+    {
+      "coverage_tags": [
+        "SOURCE_IDENTITY",
+        "OBJECT_IDENTITY"
+      ],
+      "dropped_structure": "source-faithful identification or transport between the constructed object and the literal consumer",
+      "id": "W_SOURCE_FAITHFUL_TRANSPORT",
+      "status": "UNTESTED_SPLIT_REQUIRED"
+    }
+  ]
+}

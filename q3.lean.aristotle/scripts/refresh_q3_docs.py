@@ -15,11 +15,17 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 Q3_ROOT = REPO_ROOT / "q3.lean.aristotle"
 CACHE_ROOT = Q3_ROOT / ".qmd_cache"
+STABLE_STAGE_ROOT = CACHE_ROOT / "q3_docs_current"
 COLLECTION = "q3_docs"
+MAX_SEMANTIC_LEAN_BYTES = 20_000
 
 DIRECT_FILES = [
     "SESSION_ENTRY.md",
     "IMPLEMENTATION_PLAN.md",
+    "docs/CODEX_CONTROL.md",
+    "orchestrator/KNOWLEDGE_SPINE.md",
+    "orchestrator/AUTOPSY_SCHEMA.md",
+    "orchestrator/SENSOR_CONTRACTS.md",
     "q3.lean.aristotle/CLAUDE.md",
     "q3.lean.aristotle/FORMALIZATION_STATS.md",
     "q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md",
@@ -38,6 +44,7 @@ DIRECT_FILES = [
 ]
 
 GLOB_PATTERNS = [
+    "docs/routeB_bus/**/*.md",
     "q3.lean.aristotle/docs/insights/**/*.md",
     "q3.lean.aristotle/docs/reviewed_notes/**/*.md",
     "q3.lean.aristotle/ACTIVE/**/*.md",
@@ -58,7 +65,8 @@ EXCLUDE_PATTERNS = [
     "q3.lean.aristotle/ACTIVE/aristotle/queue/**",
     "q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/**",
     "q3.lean.aristotle/ACTIVE/refs/legacy_two_scale_index.md",
-    "q3.lean.aristotle/ACTIVE/requests/**",
+    "q3.lean.aristotle/ACTIVE/requests/**/_backups/**",
+    "q3.lean.aristotle/ACTIVE/requests/**/raw/**",
     "q3.lean.aristotle/Q3/Archive/**",
     "q3.lean.aristotle/Q3/Clean/**",
     "q3.lean.aristotle/Q3/Proofs/PrimeCert/**",
@@ -118,6 +126,8 @@ def collect_sources() -> list[Path]:
             rel = str(path.relative_to(REPO_ROOT))
             if rel in seen or matches_any(rel, EXCLUDE_PATTERNS) or not reviewed_note_is_safe(path, rel):
                 continue
+            if path.suffix == ".lean" and path.stat().st_size > MAX_SEMANTIC_LEAN_BYTES:
+                continue
             seen.add(rel)
             files.append(path)
 
@@ -149,13 +159,15 @@ def build_stage(stage_root: Path, files: list[Path]) -> Counter:
         f"Generated: {datetime.now().astimezone().isoformat(timespec='seconds')}",
         f"Collection: `{COLLECTION}`",
         f"Repo root: `{REPO_ROOT}`",
-        f"Stage root: `{stage_root}`",
+        f"Stage root: `{STABLE_STAGE_ROOT}`",
         "",
         "Curated scope:",
         "",
         "- current control and workflow docs,",
+        "- current Route B bus and canonical active request markdown,",
         "- active manuscript TeX,",
         "- live Q3 Lean files excluding `Archive`, `Clean`, and heavy `PrimeCert` shards,",
+        f"- compact Lean sources up to {MAX_SEMANTIC_LEAN_BYTES} bytes; larger generated payloads stay in exact `rg` search,",
         "- only reviewed notes marked `safe for embeddings: yes` are promoted from `docs/reviewed_notes/`,",
         "- raw inbox notes, extracted zip payloads, and archived sources under `docs/incoming_notes/` are excluded until distilled,",
         "- no transcript dumps or old queue artifacts.",
@@ -170,9 +182,9 @@ def build_stage(stage_root: Path, files: list[Path]) -> Counter:
     return counts
 
 
-def run(cmd: list[str], cwd: Path | None = None) -> str:
+def run(cmd: list[str], cwd: Path | None = None, *, timeout_s: float = 90.0) -> str:
     try:
-        return run_qmd(cmd, cwd=cwd)
+        return run_qmd(cmd, cwd=cwd, timeout_s=timeout_s)
     except RuntimeError as exc:
         raise SystemExit(str(exc)) from exc
 
@@ -185,8 +197,15 @@ def rebuild_collection(qmd: str, stage_root: Path, embed: bool) -> None:
 
         run([qmd, "collection", "add", str(stage_root), "--name", COLLECTION, "--mask", "**/*"])
         if embed:
-            run([qmd, "embed", "-f"])
+            run([qmd, "embed"], timeout_s=1800.0)
         run([qmd, "cleanup"])
+
+
+def promote_stage(pending: Path) -> Path:
+    if STABLE_STAGE_ROOT.exists():
+        shutil.rmtree(STABLE_STAGE_ROOT)
+    os.replace(pending, STABLE_STAGE_ROOT)
+    return STABLE_STAGE_ROOT
 
 
 def main() -> int:
@@ -212,7 +231,8 @@ def main() -> int:
             f"Prepared {len(files)} files for {COLLECTION}: "
             f"{counts['.md']} md, {counts['.tex']} tex, {counts['.lean']} lean"
         )
-        rebuild_collection(qmd=qmd, stage_root=stage_root, embed=not args.no_embed)
+        stable_stage = promote_stage(stage_root)
+        rebuild_collection(qmd=qmd, stage_root=stable_stage, embed=not args.no_embed)
         with qmd_lock("refresh_q3_docs_status"):
             print(run([qmd, "status"]).strip())
     finally:

@@ -203,19 +203,21 @@ Aristotle читает **английский скетч** только из **�
 
 ---
 
-## FRI‑style taint propagation (ERROR bubble‑up)
+## Source-hole and import-boundary observability
 
-**Цель:** если в листьях есть `sorry` или контрпример, автоматически “портить”
-все зависимые узлы, чтобы не тратить ресурсы на верхний слой.
+**Цель:** находить активные `sorry`, разрывы import-графа и их распространение
+до настроенных корней, не превращая наблюдение в доказательный вердикт.
 
 **Команды:**
 ```bash
-./scripts/numeric_sanity_check.py --write-back   # optional: mark BROKEN on FAIL
-./scripts/build_taint_graph.py                   # propagate SORRY/TAINTED/BROKEN
-./scripts/build_proof_graph.py                   # reflect statuses in main graph
+python3 orchestrator/sensors.py refresh --dry-run
+python3 orchestrator/sensors.py refresh
+python3 orchestrator/sensors.py status
 ```
 
-**Правило планировщика:** работать **только** с нижними `SORRY` (без SORRY‑deps).
+`NUMERIC_CHECKS` — только конечное evidence: FAIL/TIMEOUT не становится Lean
+ошибкой, taint, `DOOMED` или route kill. `NO_OBSERVED_ISSUE` также не означает
+«доказано». Точные контракты: `orchestrator/SENSOR_CONTRACTS.md`.
 
 ---
 

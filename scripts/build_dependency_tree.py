@@ -1,174 +1,251 @@
 #!/usr/bin/env python3
+"""Build the Lean-checked axiom dependency inventory for the live Q3 roots.
+
+Despite the historical filename, this is not the file-import DAG.  It records
+every ``#print axioms`` result emitted by Q3/CheckAxioms.lean.  The JSON keeps a
+backward-compatible primary ``root``/``deps`` pair and a lossless ``roots``
+array so two theorem roots can never be silently conflated again.
+"""
+
+from __future__ import annotations
+
 import argparse
+import hashlib
 import json
-import os
 import re
 import subprocess
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
+
+ROOT = (Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle").resolve()
 Q3_DIR = ROOT / "Q3"
 ACTIVE_DIR = ROOT / "ACTIVE"
 
 AXIOM_RE = re.compile(r"^\s*axiom\s+(?P<name>[A-Za-z0-9_'.]+)")
 SORRY_RE = re.compile(r"\bsorry\b")
-IMPORT_RE = re.compile(r"^\s*import\s+(?P<mod>[A-Za-z0-9_.]+)")
+DEPENDENCY_BLOCK_RE = re.compile(
+    r"'(?P<root>[^']+)'\s+depends on axioms:\s*\[(?P<axioms>.*?)\]",
+    re.DOTALL,
+)
+STANDARD_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 
-def run_lean_check_axioms() -> list[str]:
-    """Run Q3/CheckAxioms.lean and parse the axiom dependency list."""
-    cmd = ["lake", "env", "lean", "Q3/CheckAxioms.lean"]
-    proc = subprocess.run(cmd, cwd=str(ROOT), capture_output=True, text=True)
+def now_utc() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def parse_axiom_dependency_output(output: str) -> list[dict[str, object]]:
+    """Parse all Lean ``#print axioms`` blocks without choosing a last line."""
+    roots: list[dict[str, object]] = []
+    seen: set[str] = set()
+    for match in DEPENDENCY_BLOCK_RE.finditer(output):
+        root = match.group("root").strip()
+        if root in seen:
+            raise ValueError(f"duplicate #print axioms root: {root}")
+        seen.add(root)
+        axioms = [item.strip() for item in match.group("axioms").split(",") if item.strip()]
+        roots.append({"id": root, "axioms": axioms})
+    if not roots:
+        raise ValueError("no #print axioms dependency blocks found")
+    return roots
+
+
+def run_lean_check_axioms(check_file: str = "Q3/CheckAxioms.lean") -> tuple[list[dict[str, object]], str]:
+    cmd = ["lake", "env", "lean", check_file]
+    proc = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
     if proc.returncode != 0:
         raise RuntimeError(proc.stderr.strip() or proc.stdout.strip())
-    # The last line has: "'Q3.Main.RH_of_Weil_and_Q3' depends on axioms: [..]"
-    text = proc.stdout.strip().splitlines()
-    dep_line = None
-    for line in reversed(text):
-        if "depends on axioms:" in line:
-            dep_line = line
-            break
-    if dep_line is None:
-        raise RuntimeError("Could not find dependency list in CheckAxioms output")
-    # extract list inside brackets (may span multiple lines)
-    idx = text.index(dep_line)
-    tail = " ".join(text[idx:])  # flatten remaining lines
-    start = tail.find("depends on axioms:")
-    if start < 0:
-        raise RuntimeError(f"Malformed dependency list line: {dep_line}")
-    lb = tail.find("[", start)
-    rb = tail.rfind("]")
-    if lb < 0 or rb < 0 or rb <= lb:
-        raise RuntimeError(f"Malformed dependency list line: {dep_line}")
-    raw = tail[lb + 1 : rb]
-    # split by commas, strip spaces/newlines
-    deps = [x.strip() for x in raw.split(",") if x.strip()]
-    return deps
+    return parse_axiom_dependency_output(proc.stdout), proc.stderr
 
 
-def collect_axioms() -> dict[str, Path]:
-    """Map axiom name -> file path where declared (first hit)."""
-    ax_map: dict[str, Path] = {}
-    for path in Q3_DIR.rglob("*.lean"):
+def collect_axiom_candidates() -> dict[str, list[Path]]:
+    """Index declaration sites with ripgrep; never read the 4.1 GiB tree in Python."""
+    proc = subprocess.run(
+        [
+            "rg", "-n", "--no-heading", "--glob", "*.lean",
+            "--glob", "!**/Clean/**", "--glob", "!**/Archive/**",
+            r"^\s*axiom\s+[A-Za-z0-9_'.]+", str(Q3_DIR),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if proc.returncode not in (0, 1):
+        raise RuntimeError(proc.stderr.strip() or "ripgrep axiom scan failed")
+    candidates: dict[str, set[Path]] = defaultdict(set)
+    for raw in proc.stdout.splitlines():
         try:
-            text = path.read_text(encoding="utf-8")
-        except Exception:
+            path_text, _line, source = raw.split(":", 2)
+        except ValueError:
             continue
-        for line in text.splitlines():
-            m = AXIOM_RE.match(line)
-            if not m:
+        match = AXIOM_RE.match(source)
+        if not match:
+            continue
+        name = match.group("name")
+        path = Path(path_text).resolve()
+        candidates[name].add(path)
+        candidates[name.split(".")[-1]].add(path)
+    return {name: sorted(paths) for name, paths in candidates.items()}
+
+
+def strip_comments(lines: list[str]) -> list[str]:
+    """Remove Lean comments while preserving line numbers."""
+    out_lines: list[str] = []
+    depth = 0
+    for line in lines:
+        i = 0
+        out: list[str] = []
+        while i < len(line):
+            if depth == 0 and line[i:i + 2] == "--":
+                break
+            if line[i:i + 2] == "/-":
+                depth += 1
+                i += 2
                 continue
-            name = m.group("name")
-            if name not in ax_map:
-                ax_map[name] = path
-    return ax_map
+            if depth > 0 and line[i:i + 2] == "-/":
+                depth -= 1
+                i += 2
+                continue
+            if depth == 0:
+                out.append(line[i])
+            i += 1
+        out_lines.append("".join(out))
+    return out_lines
 
 
-def scan_file_for_sorries(path: Path) -> list[int]:
-    """Return line numbers containing `sorry`."""
-    try:
-        text = path.read_text(encoding="utf-8")
-    except Exception:
-        return []
-    lines = []
-    for i, line in enumerate(text.splitlines(), start=1):
+def scan_file(path: Path) -> tuple[list[list[object]], list[int]]:
+    text = path.read_text(encoding="utf-8")
+    cleaned = strip_comments(text.splitlines())
+    axioms: list[list[object]] = []
+    sorries: list[int] = []
+    for line_no, line in enumerate(cleaned, start=1):
+        match = AXIOM_RE.match(line)
+        if match:
+            axioms.append([line_no, match.group("name")])
         if SORRY_RE.search(line):
-            lines.append(i)
-    return lines
+            sorries.append(line_no)
+    return axioms, sorries
 
 
-def scan_file_for_axioms(path: Path) -> list[tuple[int, str]]:
-    """Return (line, name) for axioms in file."""
-    try:
-        text = path.read_text(encoding="utf-8")
-    except Exception:
-        return []
-    out = []
-    for i, line in enumerate(text.splitlines(), start=1):
-        m = AXIOM_RE.match(line)
-        if m:
-            out.append((i, m.group("name")))
-    return out
+def resolve_axiom(name: str, index: dict[str, list[Path]]) -> dict[str, object]:
+    if name in STANDARD_AXIOMS:
+        return {
+            "name": name,
+            "classification": "STANDARD_LEAN_AXIOM",
+            "mapping_status": "STANDARD",
+            "file": None,
+            "source_candidates": [],
+            "axioms_in_file": [],
+            "sorries_in_file": [],
+        }
 
+    lookup_keys = [name, name.removeprefix("Q3."), name.split(".")[-1]]
+    paths: set[Path] = set()
+    for key in lookup_keys:
+        paths.update(index.get(key, []))
+    candidates = [str(path.relative_to(ROOT)) for path in sorted(paths)]
+    if len(paths) != 1:
+        return {
+            "name": name,
+            "classification": "PROJECT_AXIOM",
+            "mapping_status": "NOT_FOUND" if not paths else "AMBIGUOUS",
+            "file": None,
+            "source_candidates": candidates,
+            "axioms_in_file": [],
+            "sorries_in_file": [],
+        }
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.md"))
-    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.json"))
-    args = ap.parse_args()
-
-    deps = run_lean_check_axioms()
-    ax_map = collect_axioms()
-
-    data = {
-        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "root": "Q3.Main.RH_of_Weil_and_Q3",
-        "deps": [],
+    path = next(iter(paths))
+    axioms, sorries = scan_file(path)
+    return {
+        "name": name,
+        "classification": "PROJECT_AXIOM",
+        "mapping_status": "FOUND",
+        "file": str(path.relative_to(ROOT)),
+        "source_candidates": candidates,
+        "axioms_in_file": axioms,
+        "sorries_in_file": sorries,
     }
 
-    md_lines = []
-    md_lines.append(f"# Main Dependency Tree (auto) — {data['generated_at']}")
-    md_lines.append("")
-    md_lines.append(
-        "**Purpose:** Full chain of *actual* axioms used by `Q3.Main.RH_of_Weil_and_Q3`, with file locations and local sub-axioms/sorries."
-    )
-    md_lines.append("**Source:** `lake env lean Q3/CheckAxioms.lean`")
-    md_lines.append("")
 
-    for dep in deps:
-        item = {"name": dep, "file": None, "axioms_in_file": [], "sorries_in_file": []}
-        # Normalize possible fully-qualified names from #print axioms
-        lookup = dep
-        if lookup.startswith("Q3."):
-            lookup = lookup[len("Q3.") :]
-        candidates = [lookup]
-        if lookup.endswith("_axiom"):
-            candidates.append(lookup.replace("_axiom", ""))
-        if "." in lookup:
-            candidates.append(lookup.split(".")[-1])
-        # special mapping for legacy margin axiom (lives in BrangeCert_2046.lean)
-        if lookup == "prime_cert_margin_on_Brange_axiom":
-            candidates.append("prime_b_grid_val_le_margin")
-        path = None
-        for cand in candidates:
-            if cand in ax_map:
-                lookup = cand
-                path = ax_map[cand]
-                break
-        if path is None:
-            path = ax_map.get(lookup)
-        if path:
-            item["file"] = str(path.relative_to(ROOT))
-            item["axioms_in_file"] = scan_file_for_axioms(path)
-            item["sorries_in_file"] = scan_file_for_sorries(path)
-        data["deps"].append(item)
+def build_payload(
+    parsed_roots: list[dict[str, object]],
+    *,
+    generated_at: str,
+    check_stderr: str,
+) -> dict[str, object]:
+    index = collect_axiom_candidates()
+    roots: list[dict[str, object]] = []
+    for parsed in parsed_roots:
+        root_id = str(parsed["id"])
+        deps = [resolve_axiom(str(name), index) for name in parsed["axioms"]]
+        roots.append({"id": root_id, "axiom_count": len(deps), "deps": deps})
 
-        md_lines.append(f"## {dep}")
-        if path:
-            rel = path.relative_to(ROOT)
-            md_lines.append(f"- File: `{rel}`")
-            axioms_in_file = scan_file_for_axioms(path)
-            sorries_in_file = scan_file_for_sorries(path)
-            md_lines.append(f"- Axioms in file: {len(axioms_in_file)}")
-            if axioms_in_file:
-                md_lines.append(
-                    "  - " + ", ".join([f"{name}@L{line}" for line, name in axioms_in_file])
-                )
-            md_lines.append(f"- Sorries in file: {len(sorries_in_file)}")
-            if sorries_in_file:
-                md_lines.append("  - " + ", ".join([f"L{ln}" for ln in sorries_in_file]))
-        else:
-            md_lines.append("- File: **not found** in Q3/ (maybe Mathlib)")
-        md_lines.append("")
+    primary = roots[0]
+    return {
+        "schema_version": "2.0",
+        "sensor_kind": "LEAN_PRINT_AXIOMS",
+        "generated_at": generated_at,
+        "check_file": "Q3/CheckAxioms.lean",
+        "check_stderr_sha256": sha256_text(check_stderr),
+        "root": primary["id"],
+        "deps": primary["deps"],
+        "roots": roots,
+    }
 
-    # Write outputs
+
+def render_markdown(data: dict[str, object]) -> str:
+    lines = [
+        f"# Lean Axiom Dependencies (auto) — {data['generated_at']}",
+        "",
+        "**Authority:** successful `lake env lean Q3/CheckAxioms.lean` output.",
+        "**Boundary:** this is an axiom inventory, not the file-import DAG and not a proof verdict.",
+        "",
+    ]
+    for root in data["roots"]:
+        lines += [f"## {root['id']}", f"- Axiom dependencies: {root['axiom_count']}"]
+        for dep in root["deps"]:
+            label = f"`{dep['name']}` — {dep['classification']} / {dep['mapping_status']}"
+            if dep.get("file"):
+                label += f" — `{dep['file']}`"
+            lines.append(f"  - {label}")
+            if dep.get("source_candidates") and dep["mapping_status"] != "FOUND":
+                lines.append("    - Candidates: " + ", ".join(dep["source_candidates"]))
+        lines.append("")
+    return "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.md"))
+    parser.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "DEPS_TREE_MAIN.json"))
+    args = parser.parse_args()
+
+    parsed, stderr = run_lean_check_axioms()
+    data = build_payload(parsed, generated_at=now_utc(), check_stderr=stderr)
+    unresolved = [
+        (root["id"], dep["name"], dep["mapping_status"])
+        for root in data["roots"]
+        for dep in root["deps"]
+        if dep["mapping_status"] not in {"FOUND", "STANDARD"}
+    ]
+    if unresolved:
+        raise RuntimeError(f"unresolved project axiom declarations: {unresolved}")
+
     out_path = Path(args.out)
-    out_path.write_text("\n".join(md_lines) + "\n", encoding="utf-8")
-    Path(args.json).write_text(json.dumps(data, indent=2), encoding="utf-8")
-
-    print(f"Wrote {out_path} and {args.json}")
+    json_path = Path(args.json)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(render_markdown(data), encoding="utf-8")
+    json_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {out_path} and {json_path}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

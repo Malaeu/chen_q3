@@ -1,6 +1,7 @@
 # Phase Monitor
 
-status: PARKED
+status: PARKED_CLOSED
+selector_effect: INACTIVE_UNLESS_EXPLICIT_H1_PO3_H_BRIDGE_REQUEST
 phase: H1_real_proof_attack
 parked_reason: PSD_STEP33_BOOTSTRAP_ACTIVE
 parked_at: 2026-05-27

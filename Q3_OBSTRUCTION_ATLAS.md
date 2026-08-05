@@ -1,6 +1,6 @@
 # Q3 Obstruction Atlas
 
-> **FROZEN 2026-08-05 — migrated to `knowledge.db`.**
+> **STATUS: SNAPSHOT_FROZEN (source cutoff 2026-06-12; migrated 2026-08-05).**
 > All 8 walls now live in `q3.lean.aristotle/aristotle_db/knowledge.db`
 > (table `kill`, `unit_type='wall'`, `status='standing'`). Query with
 > `./orchestrator/kb.py list --unit-type wall`; add new walls with

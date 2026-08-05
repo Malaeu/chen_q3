@@ -1,0 +1,372 @@
+{
+  "artifact_identities": [
+    {
+      "authority": "CANONICAL_READ_ONLY_SOURCE",
+      "id": "MUNTZ_V3_EXACT_CLASS_CLOSURE",
+      "mirror_path": "docs/routeB_bus/muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean",
+      "sha256": "f4ea12e1497b37a809c27db35f95035111d0d126942ea8c7557ec435b0e3ebfd",
+      "status": "CANONICAL_SOURCE"
+    },
+    {
+      "authority": "DELEGATED_CODEX_PROSHKA_SELECTION",
+      "id": "Q3_ROOF_SKELETON",
+      "path": "q3.lean.aristotle/aristotle_output/output-final_aristotle/RequestProject/Main.lean",
+      "selection_basis": "Proshka default candidate confirmed live: later and longer skeleton, 15 literal sorry tokens versus 18; only PX_RH_CLAIM remains an owner boundary",
+      "sha256": "d7fe57b57ae0d08bd474de6f283565168bac9e33dd55d6719289466c7065e90f",
+      "status": "SELECTED_FOR_ROOF_WORK_NOT_PROOF_NOT_PROMOTED",
+      "supersedes_candidate": "q3.lean.aristotle/aristotle_output/16535289-f016-4f62-bfbd-be83d826b4da/RequestProject/Main.lean"
+    }
+  ],
+  "authority": "DERIVED_NONCANONICAL_OPERATIONAL_VIEW",
+  "autopsy": {
+    "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+    "event_count": 3,
+    "namewatch_candidates": [],
+    "schema": "q3_autopsy_map.v1",
+    "structured_count": 0,
+    "walls": [
+      {
+        "candidate_card": null,
+        "coverage_tags": [
+          "OBJECT_IDENTITY",
+          "SOURCE_IDENTITY"
+        ],
+        "dropped_structure": "source-faithful identification or transport between the constructed object and the literal consumer",
+        "event_count": 0,
+        "fronts": [],
+        "goals": [],
+        "id": "W_SOURCE_FAITHFUL_TRANSPORT",
+        "status": "UNTESTED_SPLIT_REQUIRED",
+        "tag": "OBJECT_IDENTITY+SOURCE_IDENTITY"
+      }
+    ]
+  },
+  "behavior_controls": [
+    {
+      "body": "EXECUTOR",
+      "control_id": "Q3_EXECUTOR_CONTROL",
+      "existing_entry_gate": "SESSION_START",
+      "path": "docs/CODEX_CONTROL.md",
+      "sha256": "15415d5fff12c4514c9a534fa7e0eca3da4ab970da4287efe785d1b30a3e1a14",
+      "spine_wiring": "behavior_controls.executor",
+      "status": "ACTIVE",
+      "trigger_owner": "Codex"
+    },
+    {
+      "body": "FABLE_MYTHOS",
+      "control_id": "Q3_FABLE_MYTHOS_KERNEL",
+      "existing_entry_gate": "NONTRIVIAL_REASONING_TASK",
+      "path": "q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md",
+      "sha256": "a13dfbe1affa60ac1405a990df2ef96eec7ecdf6e8d03e32c766d39afe996811",
+      "spine_wiring": "behavior_controls.fable_mythos",
+      "status": "ACTIVE",
+      "trigger_owner": "Fable/Mythos"
+    },
+    {
+      "body": "PROSHKA",
+      "control_id": "Q3_PROSHKA_SYSTEM_PROMPT",
+      "existing_entry_gate": "DELEGATED_STRATEGIC_REVIEW",
+      "path": "docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md",
+      "sha256": "663b3875f99881c24826c88cd7de06415a9ecad40d924105df1ce72338a65543",
+      "spine_wiring": "behavior_controls.proshka",
+      "status": "ACTIVE",
+      "trigger_owner": "Codex"
+    }
+  ],
+  "invariants": {
+    "bus_010": "VOID",
+    "database_separation": "PROJECT_DATABASES_MUST_NOT_BE_MERGED",
+    "ordinary_goal_close_proshka_calls": 0,
+    "route_honesty": "CHALLENGER_NOT_RH",
+    "single_owner_boundary": "PX_RH_CLAIM"
+  },
+  "knowledge": {
+    "dossier": 171,
+    "excluded_source": 113,
+    "journal_entry": 1784,
+    "kill": 59,
+    "move": 26,
+    "postmortem": 1,
+    "status": "READY"
+  },
+  "meta_corpus": {
+    "authority": "DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE",
+    "schema": "q3_meta_corpus.v1",
+    "separation_rule": "PROJECT_DATABASES_MUST_NOT_BE_MERGED",
+    "surfaces": [
+      {
+        "authority": "CANONICAL_PROJECT_SEMANTIC_MEMORY",
+        "id": "SEMANTIC_PROJECT_MEMORY",
+        "kind": "sqlite",
+        "path": "q3.lean.aristotle/aristotle_db/knowledge.db"
+      },
+      {
+        "authority": "METADATA_NOT_LEAN_TRUTH",
+        "id": "PROOF_ARTIFACT_REGISTRY",
+        "kind": "sqlite",
+        "path": "q3.lean.aristotle/aristotle_db/aristotle_proofs.db"
+      },
+      {
+        "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+        "id": "OBSERVABILITY_PROJECTION",
+        "kind": "sqlite",
+        "path": "q3.lean.aristotle/aristotle_db/observability.db"
+      },
+      {
+        "authority": "RETRIEVAL_ONLY",
+        "id": "Q3_DOCS_SEMANTIC_INDEX",
+        "kind": "qmd_collection",
+        "path": "qmd://q3_docs/"
+      },
+      {
+        "authority": "SOURCE_EVIDENCE_ONLY",
+        "id": "LITREVIEW_CORPUS",
+        "kind": "documents_and_bibliography",
+        "path": "docs/routeB_bus/litreview"
+      },
+      {
+        "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+        "id": "AUTOPSY_WALL_MAP",
+        "kind": "derived_json",
+        "path": "q3.lean.aristotle/ACTIVE/graphs/AUTOPSY_MAP.json"
+      }
+    ]
+  },
+  "observability": {
+    "answer_now_clicked": 0,
+    "autopsy_events": 3,
+    "axiom_dependencies": 10,
+    "degraded_sources": 1,
+    "doomed_files": 0,
+    "file_states": 3316,
+    "import_edges": 5544,
+    "namewatch_candidates": 0,
+    "numeric": {},
+    "numeric_checks": 0,
+    "proof_nodes": 10,
+    "proof_roots": 2,
+    "proshka_lower_bounds": 1,
+    "proshka_runs": 15,
+    "proshka_seconds_mean": 1453.2,
+    "proshka_seconds_median": 1287,
+    "proshka_seconds_total": 21798,
+    "root_memberships": 131,
+    "slowest_runs": [
+      {
+        "front": "G2/H2a",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE",
+        "transaction_id": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 3221
+      },
+      {
+        "front": "G5/S1",
+        "status": "FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP",
+        "transaction_id": "G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 2326
+      },
+      {
+        "front": "G5/S1",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 1708
+      },
+      {
+        "front": "G5/S1",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 1567
+      },
+      {
+        "front": "G5/S1",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 1538
+      }
+    ],
+    "snapshot": {
+      "generated_at": "2026-08-05T22:19:48+00:00",
+      "id": "OBS_d8c060482f1a12e348d1",
+      "schema_version": 6,
+      "source_commit": "d3e8ac14bfe3a13193cb6528d553db3a0c24fd0c",
+      "status": "COMPLETE"
+    },
+    "sorry_files": 0,
+    "sorry_sites": 0,
+    "sources": [
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 3,
+        "source_generated_at": "2026-08-05T21:45:30+00:00",
+        "source_id": "autopsy_map",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 10,
+        "source_generated_at": "2026-08-05 22:19 UTC",
+        "source_id": "dependency_tree",
+        "stale": 0
+      },
+      {
+        "health_status": "ZERO_COVERAGE",
+        "parse_status": "PARSED",
+        "record_count": 0,
+        "source_generated_at": "2026-08-05 22:19 UTC",
+        "source_id": "numeric_checks",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 10,
+        "source_generated_at": "2026-08-05 22:19 UTC",
+        "source_id": "proof_graph",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 15,
+        "source_generated_at": "2026-08-05T12:00:18.143+02:00",
+        "source_id": "proshka_timing",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 0,
+        "source_generated_at": "2026-08-05 22:19 UTC",
+        "source_id": "sorry_frontier",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 3316,
+        "source_generated_at": "2026-08-05 22:19 UTC",
+        "source_id": "taint_graph",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 3316,
+        "source_generated_at": "2026-08-05 22:19 UTC",
+        "source_id": "taint_sources",
+        "stale": 0
+      }
+    ],
+    "stale_sources": 0,
+    "structured_autopsies": 0,
+    "taint": {
+      "IMPORT_BOUNDARY": 1,
+      "NO_OBSERVED_ISSUE": 3315
+    },
+    "wall_states": 1
+  },
+  "runtime": {
+    "active_exploration": null,
+    "active_proshka_phase": {
+      "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+      "full_context_uploads": 1,
+      "last_adjudicated_pin": "982c3bd467f13ff6d4b35b9202241fb4536f7e7e",
+      "last_boundary_id": "P9_UNIFIED_CONTROL_MATERIALIZED",
+      "opened_at": "2026-08-05T09:33:36+02:00",
+      "opening_pin": "982c3bd467f13ff6d4b35b9202241fb4536f7e7e",
+      "owner_boundary_count": 0,
+      "phase_id": "PHASE_UNIFIED_MEMORY_BEHAVIOR_2026_08_05",
+      "phase_key": {
+        "convention_lock_id": "P9_V1",
+        "front_id": "UNIFIED_MEMORY_BEHAVIOR",
+        "honesty_state": "INFRASTRUCTURE_NOT_PROOF",
+        "route_id": "Q3_CONTROL_PLANE",
+        "source_object_family_id": "EXECUTOR_CONTROL_AND_SPINE",
+        "terminal_consumer_id": "UNIFIED_MEMORY_CONTOUR_P1A_P7"
+      },
+      "proshka_calls": 2,
+      "status": "ACTIVE"
+    },
+    "control_status": "ACTIVE",
+    "last_exploration_close": null,
+    "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
+    "meter": {
+      "delegated_strategic_review_calls": 2,
+      "exploration_review_calls": 0,
+      "fanout_violations": 0,
+      "forced_rollovers": 0,
+      "fresh_chats_opened": 1,
+      "mathematical_owner_deferral_violations": 0,
+      "ordinary_goal_close_calls": 0,
+      "phases_opened": 1,
+      "px_rh_claim_requests": 0
+    },
+    "operational_action_pending": null,
+    "px_rh_claim_state": "NOT_READY",
+    "schema": "q3_channel_runtime.v1"
+  },
+  "schema": "q3_spine_state.v1",
+  "semantic_index": {
+    "authority": "RETRIEVAL_VALIDATION_NOT_PROOF",
+    "collection": "q3_docs",
+    "mode": "search_plus_vsearch",
+    "plants": [
+      {
+        "id": "POST_JUNE_IDENTIFICATION",
+        "lexical_count": 0,
+        "matched_paths": [
+          "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+          "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-2q-pro-verdict-proshka-quadratic-2026-07-13.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-1-gate-contract.md"
+        ],
+        "query": "IdentificationAt",
+        "result_count": 30,
+        "status": "PASS",
+        "vector_count": 30
+      },
+      {
+        "id": "POST_JUNE_EDGE_SLIVER",
+        "lexical_count": 18,
+        "matched_paths": [
+          "qmd://q3-docs/docs/routeb-bus/aristotle-task-edgeslivermomentreduction.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/aristotle-task-edgeslivermomentreduction.md",
+          "qmd://q3-docs/docs/routeb-bus/034-edge-sliver-inbox-cover.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/034-edge-sliver-inbox-cover.md",
+          "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
+        ],
+        "query": "edge-sliver",
+        "result_count": 42,
+        "status": "PASS",
+        "vector_count": 30
+      },
+      {
+        "id": "PRE_SWITCH_STEP33",
+        "lexical_count": 16,
+        "matched_paths": [
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
+          "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+        ],
+        "query": "ActiveCenteredCoeffEntryHboxCert",
+        "result_count": 34,
+        "status": "PASS",
+        "vector_count": 27
+      }
+    ],
+    "schema": "q3_semantic_index_status.v1",
+    "source_commit": "d3e8ac14bfe3a13193cb6528d553db3a0c24fd0c",
+    "status": "PASS"
+  },
+  "source_commit": "d3e8ac14bfe3a13193cb6528d553db3a0c24fd0c"
+}

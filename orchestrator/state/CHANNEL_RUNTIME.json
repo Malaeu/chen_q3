@@ -1,0 +1,40 @@
+{
+  "active_exploration": null,
+  "active_proshka_phase": {
+    "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+    "full_context_uploads": 1,
+    "last_adjudicated_pin": "982c3bd467f13ff6d4b35b9202241fb4536f7e7e",
+    "last_boundary_id": "P9_UNIFIED_CONTROL_MATERIALIZED",
+    "opened_at": "2026-08-05T09:33:36+02:00",
+    "opening_pin": "982c3bd467f13ff6d4b35b9202241fb4536f7e7e",
+    "owner_boundary_count": 0,
+    "phase_id": "PHASE_UNIFIED_MEMORY_BEHAVIOR_2026_08_05",
+    "phase_key": {
+      "convention_lock_id": "P9_V1",
+      "front_id": "UNIFIED_MEMORY_BEHAVIOR",
+      "honesty_state": "INFRASTRUCTURE_NOT_PROOF",
+      "route_id": "Q3_CONTROL_PLANE",
+      "source_object_family_id": "EXECUTOR_CONTROL_AND_SPINE",
+      "terminal_consumer_id": "UNIFIED_MEMORY_CONTOUR_P1A_P7"
+    },
+    "proshka_calls": 2,
+    "status": "ACTIVE"
+  },
+  "control_status": "ACTIVE",
+  "last_exploration_close": null,
+  "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
+  "meter": {
+    "delegated_strategic_review_calls": 2,
+    "exploration_review_calls": 0,
+    "fanout_violations": 0,
+    "forced_rollovers": 0,
+    "fresh_chats_opened": 1,
+    "mathematical_owner_deferral_violations": 0,
+    "ordinary_goal_close_calls": 0,
+    "phases_opened": 1,
+    "px_rh_claim_requests": 0
+  },
+  "operational_action_pending": null,
+  "px_rh_claim_state": "NOT_READY",
+  "schema": "q3_channel_runtime.v1"
+}

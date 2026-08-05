@@ -1,6 +1,7 @@
 # Track B S5 Failure Atlas Entry
 
-> **FROZEN 2026-08-05 — migrated to `knowledge.db`** as
+> **STATUS: SNAPSHOT_FROZEN (source cutoff 2026-06-13; migrated 2026-08-05).**
+> Content was migrated to `knowledge.db` as
 > `TRACKB_S5_ZERO_SIDE_PSD_LIFT`, together with the three other copies of this same kill
 > (`S5_NEGATIVE_MASS_LEDGER.md`, `TRACKB_PRICE_TABLE.md`, `S4_ZERO_SIDE_ELIGIBILITY.md`),
 > which are now recorded as evidence on one row instead of four independent records.

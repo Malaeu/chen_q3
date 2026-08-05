@@ -1,298 +1,288 @@
 #!/usr/bin/env python3
+"""Build source-hole/import-boundary propagation for the active Q3 tree.
+
+Numeric checks are attached as evidence only.  They never turn a Lean file into
+BROKEN/DOOMED and never establish proof truth or a route kill.
+"""
+
+from __future__ import annotations
+
 import argparse
 import json
-import re
+import os
+import tempfile
+from collections import defaultdict, deque
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
+try:
+    from scripts.q3_sensor_scan import scan_import_graph
+except ModuleNotFoundError:  # direct execution from scripts/
+    from q3_sensor_scan import scan_import_graph
+
+
+ROOT = (Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle").resolve()
 Q3_DIR = ROOT / "Q3"
 ACTIVE_DIR = ROOT / "ACTIVE"
-RISK_MODEL_JSON = ACTIVE_DIR / "pipeline" / "RISK_MODEL.json"
-
-IMPORT_RE = re.compile(r"^\s*import\s+(?P<mods>.+)$")
-SORRY_RE = re.compile(r"\bsorry\b")
-
-
-def strip_comments(lines: list[str]) -> list[str]:
-    """Remove line/block comments while preserving line structure."""
-    out_lines: list[str] = []
-    depth = 0
-    for line in lines:
-        i = 0
-        out = []
-        while i < len(line):
-            if depth == 0 and line[i : i + 2] == "--":
-                break
-            if line[i : i + 2] == "/-":
-                depth += 1
-                i += 2
-                continue
-            if depth > 0 and line[i : i + 2] == "-/":
-                depth -= 1
-                i += 2
-                continue
-            if depth == 0:
-                out.append(line[i])
-            i += 1
-        out_lines.append("".join(out))
-    return out_lines
 
 
 def now_utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 
-def load_json(path: Path, default):
-    if not path.exists():
-        return default
-    return json.loads(path.read_text(encoding="utf-8"))
+def load_json(path: Path) -> dict[str, object]:
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"expected JSON object: {path}")
+    return data
 
 
-def module_name_for(path: Path) -> str:
-    rel = path.relative_to(ROOT).with_suffix("")
-    return ".".join(rel.parts)
+def _numeric_map(report: dict[str, object]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for check in report.get("checks", []):
+        check_id = check.get("id")
+        if check_id:
+            result[str(check_id)] = str(check.get("status") or "UNKNOWN").upper()
+    return result
 
 
-def build_module_map(exclude_paths: list[tuple[str, ...]]) -> dict[str, str]:
-    mod_map = {}
-    for p in Q3_DIR.rglob("*.lean"):
-        if should_skip(p, exclude_paths):
-            continue
-        mod_map[module_name_for(p)] = str(p.relative_to(ROOT))
-    return mod_map
-
-
-def scan_imports(path: Path) -> list[str]:
-    try:
-        text = path.read_text(encoding="utf-8")
-    except Exception:
-        return []
-    mods = []
-    for line in text.splitlines():
-        m = IMPORT_RE.match(line)
-        if not m:
-            continue
-        # split by whitespace; Lean allows multiple modules per line
-        mods.extend(m.group("mods").split())
-    return mods
-
-
-def scan_sorries(path: Path) -> list[int]:
-    try:
-        text = path.read_text(encoding="utf-8")
-    except Exception:
-        return []
-    lines = []
-    cleaned = strip_comments(text.splitlines())
-    for i, line in enumerate(cleaned, start=1):
-        if SORRY_RE.search(line):
-            lines.append(i)
-    return lines
-
-
-def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
-    rel_parts = path.relative_to(ROOT).parts
-    for ex in exclude_paths:
-        if not ex:
-            continue
-        for i in range(0, len(rel_parts) - len(ex) + 1):
-            if tuple(rel_parts[i : i + len(ex)]) == ex:
-                return True
-    return False
-
-
-def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.md"))
-    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.json"))
-    ap.add_argument("--numeric", default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS_REPORT.json"))
-    ap.add_argument("--risk", default=str(RISK_MODEL_JSON))
-    ap.add_argument(
-        "--exclude",
-        action="append",
-        default=["Q3/Clean", "Q3/Archive"],
-        help="exclude subpaths (relative to repo root), can repeat",
-    )
-    args = ap.parse_args()
-
-    exclude_paths = [Path(item).parts for item in args.exclude]
-
-    mod_map = build_module_map(exclude_paths)
-
-    numeric_report = load_json(Path(args.numeric), {})
-    numeric_map = {c.get("id"): c for c in numeric_report.get("checks", [])}
-
-    risk_model = load_json(Path(args.risk), {})
-    risk_threshold = float(risk_model.get("risk_threshold", 1.0))
-    kill_switch = bool(risk_model.get("kill_switch_on_risk", True))
-    weights = risk_model.get("weights", {})
-    per_sorry = float(weights.get("per_sorry", 0.5))
-    numeric_fail = float(weights.get("numeric_fail", 5.0))
-    speculative_weight = float(weights.get("speculative", 0.2))
-    speculative_files = set(risk_model.get("speculative_files", []))
-    intrinsic_overrides = risk_model.get("intrinsic_overrides", {})
-
-    nodes = {}
-    for path in sorted(Q3_DIR.rglob("*.lean")):
-        if should_skip(path, exclude_paths):
-            continue
-        rel = path.relative_to(ROOT)
-        file_id = str(rel)
-        module = module_name_for(path)
-        imports = []
-        for mod in scan_imports(path):
-            if mod in mod_map:
-                imports.append(mod_map[mod])
-
-        sorries = scan_sorries(path)
-        numeric = numeric_map.get(file_id) or numeric_map.get(module) or {}
-        numeric_status = numeric.get("status", "UNKNOWN")
-
-        direct_status = "VERIFIED"
-        if numeric_status == "FAIL":
-            direct_status = "BROKEN"
-        elif sorries:
-            direct_status = "SORRY"
-
-        override = intrinsic_overrides.get(file_id)
-        if override is None:
-            intrinsic_risk = per_sorry * len(sorries)
-            if numeric_status == "FAIL":
-                intrinsic_risk += numeric_fail
-            if file_id in speculative_files:
-                intrinsic_risk += speculative_weight
-        else:
-            intrinsic_risk = float(override)
-
-        nodes[file_id] = {
-            "id": file_id,
-            "module": module,
-            "dependencies": sorted(set(imports)),
-            "sorries": sorries,
-            "numeric_check": numeric_status,
-            "direct_status": direct_status,
-            "intrinsic_risk": intrinsic_risk,
-            "propagation_status": None,
-            "integrity_status": None,
-            "taint_source": [],
-            "risk_score": None,
-            "risk_threshold": risk_threshold,
-            "risk_status": None,
-            "risk_exceeds": None,
-            "is_doomed": None,
-        }
-
-    # propagate statuses
-    visiting = set()
-    memo = {}
-
-    def propagate(fid: str) -> dict:
-        if fid in memo:
-            return memo[fid]
-        if fid in visiting:
-            # cycle should not happen; mark as TAINTED to be safe
-            node = nodes[fid]
-            node["propagation_status"] = "TAINTED"
-            node["integrity_status"] = "TAINTED"
-            node["risk_score"] = node["intrinsic_risk"]
-            node["risk_exceeds"] = node["risk_score"] > risk_threshold
-            node["risk_status"] = "EXCESSIVE" if node["risk_exceeds"] else "OK"
-            node["is_doomed"] = (node["direct_status"] == "BROKEN") or (
-                kill_switch and node["risk_exceeds"]
-            )
-            memo[fid] = node
-            return node
-        visiting.add(fid)
-        node = nodes[fid]
-        dep_nodes = [propagate(dep) for dep in node["dependencies"]]
-
-        # compute risk
-        risk_score = node["intrinsic_risk"] + sum(d["risk_score"] for d in dep_nodes)
-
-        # compute propagation status
-        direct = node["direct_status"]
-        if direct in ("BROKEN", "SORRY"):
-            status = direct
-            taint_sources = []
-        else:
-            taint_sources = []
-            status = "VERIFIED"
-            for dep_node in dep_nodes:
-                dep_status = dep_node["propagation_status"]
-                if dep_status == "BROKEN":
-                    status = "BROKEN"
-                    taint_sources.append(dep_node["id"])
-                    break
-                if dep_status in ("SORRY", "TAINTED"):
-                    status = "TAINTED"
-                    taint_sources.append(dep_node["id"])
-
-        risk_exceeds = risk_score > risk_threshold
-        dep_doomed = any(d.get("is_doomed") for d in dep_nodes)
-        is_doomed = (status == "BROKEN") or (kill_switch and (risk_exceeds or dep_doomed))
-
-        node["propagation_status"] = status
-        node["integrity_status"] = status
-        node["taint_source"] = taint_sources
-        node["risk_score"] = round(risk_score, 6)
-        node["risk_exceeds"] = risk_exceeds
-        node["risk_status"] = "EXCESSIVE" if risk_exceeds else "OK"
-        node["is_doomed"] = is_doomed
-
-        memo[fid] = node
-        visiting.remove(fid)
-        return node
-
-    # drop dependencies that were excluded from the node set
-    for node in nodes.values():
-        node["dependencies"] = [d for d in node["dependencies"] if d in nodes]
-
-    for fid in list(nodes.keys()):
-        propagate(fid)
-
-    data = {
-        "generated_at": now_utc(),
-        "root": "Q3/",
-        "nodes": list(nodes.values()),
+def build_payloads(
+    *,
+    q3_dir: Path = Q3_DIR,
+    sorry_data: dict[str, object],
+    numeric_data: dict[str, object],
+    generated_at: str | None = None,
+) -> tuple[dict[str, object], dict[str, object]]:
+    generated_at = generated_at or now_utc()
+    graph, unresolved = scan_import_graph(q3_dir)
+    sorry_by_file = {
+        str(item["file"]): [int(line) for line in item.get("lines", [])]
+        for item in sorry_data.get("files", []) if item.get("file")
     }
+    numeric = _numeric_map(numeric_data)
+    unresolved_by_file: dict[str, list[dict[str, str]]] = defaultdict(list)
+    for row in unresolved:
+        unresolved_by_file[row["file"]].append(row)
 
-    # markdown summary
-    counts = {"VERIFIED": 0, "TAINTED": 0, "SORRY": 0, "BROKEN": 0}
-    doomed_count = 0
-    for n in nodes.values():
-        counts[n["propagation_status"]] = counts.get(n["propagation_status"], 0) + 1
-        if n.get("is_doomed"):
-            doomed_count += 1
+    reverse: dict[str, list[str]] = defaultdict(list)
+    remaining: dict[str, int] = {}
+    for owner, node in graph.items():
+        dependencies = list(node["dependencies"])
+        remaining[owner] = len(dependencies)
+        for dependency in dependencies:
+            reverse[dependency].append(owner)
 
-    md = []
-    md.append(f"# Taint Graph (auto) — {data['generated_at']}")
-    md.append("")
-    md.append("**Purpose:** Propagate `sorry`/BROKEN status upward across file import graph.")
-    md.append("**Source:** Q3 file imports + numeric checks report")
-    md.append("")
-    md.append("**Counts:** " + ", ".join([f"{k}={v}" for k, v in counts.items()]))
-    md.append(f"**Doomed:** {doomed_count}")
-    md.append("")
+    taint_sources: dict[str, set[str]] = {}
+    status: dict[str, str] = {}
+    direct_status: dict[str, str] = {}
+    queue: deque[str] = deque(sorted(owner for owner, count in remaining.items() if count == 0))
+    processed: set[str] = set()
+    while queue:
+        owner = queue.popleft()
+        processed.add(owner)
+        direct_holes = sorry_by_file.get(owner, [])
+        boundaries = unresolved_by_file.get(owner, [])
+        sources: set[str] = set()
+        for dependency in graph[owner]["dependencies"]:
+            sources.update(taint_sources[dependency])
+        if direct_holes:
+            direct_status[owner] = "SORRY"
+            sources.add(owner)
+        elif boundaries:
+            direct_status[owner] = "IMPORT_BOUNDARY"
+            sources.update(f"IMPORT::{row['module']}" for row in boundaries)
+        else:
+            direct_status[owner] = "CLEAR"
 
-    md.append("## DOOMED")
-    for n in sorted(nodes.values(), key=lambda x: x["id"]):
-        if n.get("is_doomed"):
-            md.append(f"- `{n['id']}`")
-    md.append("")
+        if direct_holes:
+            status[owner] = "DIRECT_SORRY"
+        elif boundaries:
+            status[owner] = "IMPORT_BOUNDARY"
+        elif sources:
+            status[owner] = "TRANSITIVE_TAINT"
+        else:
+            status[owner] = "NO_OBSERVED_ISSUE"
+        taint_sources[owner] = sources
+        for dependent in reverse.get(owner, []):
+            remaining[dependent] -= 1
+            if remaining[dependent] == 0:
+                queue.append(dependent)
 
-    for status in ("BROKEN", "SORRY", "TAINTED", "VERIFIED"):
-        md.append(f"## {status}")
-        for n in sorted(nodes.values(), key=lambda x: x["id"]):
-            if n["propagation_status"] != status:
-                continue
-            md.append(f"- `{n['id']}`")
-        md.append("")
+    cyclic = sorted(set(graph) - processed)
+    for owner in cyclic:
+        direct_status[owner] = "IMPORT_CYCLE"
+        status[owner] = "IMPORT_CYCLE"
+        taint_sources[owner] = {"IMPORT_CYCLE"}
 
-    Path(args.out).write_text("\n".join(md) + "\n", encoding="utf-8")
-    Path(args.json).write_text(json.dumps(data, indent=2), encoding="utf-8")
-    print(f"Wrote {args.out} and {args.json}")
+    root_memberships: dict[str, list[str]] = defaultdict(list)
+    root_status: list[dict[str, object]] = []
+    for closure in sorry_data.get("root_closures", []):
+        root_id = str(closure["root_id"])
+        members = [str(item["file"]) for item in closure.get("files", [])]
+        for member in members:
+            root_memberships[member].append(root_id)
+        infected = sorted({source for member in members for source in taint_sources.get(member, set())})
+        tainted_files = sum(1 for member in members if taint_sources.get(member))
+        root_status.append({
+            "root_id": root_id,
+            "entry_file": closure.get("entry_file"),
+            "closure_files": len(members),
+            "tainted_files": tainted_files,
+            "status": "TAINTED" if infected else "NO_OBSERVED_ISSUE",
+            "taint_sources": infected,
+        })
+
+    nodes: list[dict[str, object]] = []
+    for owner, node in sorted(graph.items()):
+        numeric_status = numeric.get(owner) or numeric.get(str(node["module"])) or "NOT_CONFIGURED"
+        boundaries = unresolved_by_file.get(owner, [])
+        sources = sorted(taint_sources[owner])
+        nodes.append({
+            "id": owner,
+            "module": node["module"],
+            "dependencies": node["dependencies"],
+            "sorries": sorry_by_file.get(owner, []),
+            "numeric_check": numeric_status,
+            "direct_status": direct_status[owner],
+            "propagation_status": status[owner],
+            "integrity_status": status[owner],
+            "taint_sources": sources,
+            "taint_predecessors": [
+                dependency for dependency in node["dependencies"]
+                if taint_sources.get(dependency)
+            ],
+            "taint_origin_count": len(sources),
+            "root_ids": sorted(root_memberships.get(owner, [])),
+            "unresolved_imports": boundaries,
+            "intrinsic_risk": None,
+            "risk_score": None,
+            "risk_threshold": None,
+            "risk_status": "NOT_APPLICABLE",
+            "risk_exceeds": None,
+            "is_doomed": False,
+        })
+
+    taint = {
+        "schema_version": "2.0",
+        "sensor_kind": "SOURCE_HOLE_AND_IMPORT_BOUNDARY_PROPAGATION",
+        "generated_at": generated_at,
+        "root": "Q3/",
+        "semantics": {
+            "numeric_checks": "EVIDENCE_ONLY_NOT_PROPAGATED",
+            "no_observed_issue": "NOT_A_PROOF_VERDICT",
+            "doomed": "DISABLED",
+        },
+        "scope": {
+            "included_files": len(graph),
+            "excluded_directories": ["Q3/Clean", "Q3/Archive"],
+            "unresolved_internal_imports": unresolved,
+            "import_cycles": cyclic,
+        },
+        "root_status": root_status,
+        "nodes": nodes,
+    }
+    sources = {
+        "schema_version": "2.0",
+        "sensor_kind": "TAINT_ORIGIN_PROJECTION",
+        "generated_at": generated_at,
+        "root_dirty": sorted(sorry_by_file),
+        "boundary_dirty": sorted(
+            {f"IMPORT::{row['module']}" for row in unresolved}
+        ),
+        "roots_by_file": {
+            owner: sorted(taint_sources[owner]) for owner in sorted(taint_sources)
+        },
+        "root_impacts": {
+            row["root_id"]: row["taint_sources"] for row in root_status
+        },
+    }
+    return taint, sources
+
+
+def render_taint_markdown(data: dict[str, object]) -> str:
+    counts: dict[str, int] = defaultdict(int)
+    for node in data["nodes"]:
+        counts[node["propagation_status"]] += 1
+    lines = [
+        f"# Taint Graph (auto) — {data['generated_at']}",
+        "",
+        "**Boundary:** source-hole/import-boundary observability; not proof truth.",
+        "**Numeric checks:** evidence only, never propagated and never DOOMED.",
+        "**Counts:** " + ", ".join(f"{key}={value}" for key, value in sorted(counts.items())),
+        "",
+        "## Root status",
+    ]
+    for root in data["root_status"]:
+        lines.append(
+            f"- `{root['root_id']}`: `{root['status']}`; "
+            f"closure={root['closure_files']}; tainted_files={root['tainted_files']}"
+        )
+    lines += ["", "## Direct problems"]
+    direct = [
+        node for node in data["nodes"]
+        if node["direct_status"] != "CLEAR"
+    ]
+    if not direct:
+        lines.append("_None._")
+    for node in direct:
+        lines.append(f"- `{node['id']}`: `{node['direct_status']}`")
+    return "\n".join(lines) + "\n"
+
+
+def render_sources_markdown(data: dict[str, object]) -> str:
+    dirty = [(file_name, roots) for file_name, roots in data["roots_by_file"].items() if roots]
+    lines = [
+        f"# Taint Sources (auto) — {data['generated_at']}",
+        "",
+        "**Purpose:** Transitive origin set for every file with observed contamination.",
+        f"**Direct sorry files:** {len(data['root_dirty'])}",
+        f"**Import boundaries:** {len(data['boundary_dirty'])}",
+        f"**Affected files:** {len(dirty)}",
+        "",
+    ]
+    for file_name, roots in dirty[:200]:
+        lines.append(f"- `{file_name}` <- " + ", ".join(f"`{root}`" for root in roots))
+    return "\n".join(lines) + "\n"
+
+
+def atomic_write(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    descriptor, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    os.close(descriptor)
+    temp_path = Path(temp_name)
+    try:
+        temp_path.write_text(content, encoding="utf-8")
+        os.chmod(temp_path, 0o644)
+        os.replace(temp_path, path)
+    except Exception:
+        temp_path.unlink(missing_ok=True)
+        raise
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.md"))
+    parser.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "TAINT_GRAPH.json"))
+    parser.add_argument("--sources-out", default=str(ACTIVE_DIR / "graphs" / "TAINT_SOURCES.md"))
+    parser.add_argument("--sources-json", default=str(ACTIVE_DIR / "graphs" / "TAINT_SOURCES.json"))
+    parser.add_argument("--sorry", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.json"))
+    parser.add_argument("--numeric", default=str(ACTIVE_DIR / "graphs" / "NUMERIC_CHECKS_REPORT.json"))
+    args = parser.parse_args()
+
+    sorry_data = load_json(Path(args.sorry))
+    numeric_data = load_json(Path(args.numeric))
+    taint, sources = build_payloads(sorry_data=sorry_data, numeric_data=numeric_data)
+    atomic_write(Path(args.out), render_taint_markdown(taint))
+    atomic_write(Path(args.json), json.dumps(taint, indent=2) + "\n")
+    atomic_write(Path(args.sources_out), render_sources_markdown(sources))
+    atomic_write(Path(args.sources_json), json.dumps(sources, indent=2) + "\n")
+    print(
+        f"Wrote {args.out}, {args.json}, {args.sources_out}, and {args.sources_json}"
+    )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

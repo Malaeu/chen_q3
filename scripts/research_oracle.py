@@ -10,7 +10,7 @@ from pathlib import Path
 
 from qmd_ops import qmd_lock, run_qmd
 
-ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
+ROOT = Path(__file__).resolve().parents[1] / "q3.lean.aristotle"
 ACTIVE_DIR = ROOT / "ACTIVE"
 PIPELINE_DIR = ACTIVE_DIR / "pipeline"
 DEFAULT_CONFIG = PIPELINE_DIR / "RESEARCH_ORACLE.json"

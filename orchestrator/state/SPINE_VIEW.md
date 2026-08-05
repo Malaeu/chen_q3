@@ -1,10 +1,97 @@
 # SPINE VIEW — unified negative-knowledge / memory ledger
 
-Generated: 2026-08-05 by `orchestrator/spine.py`. DO NOT EDIT (regenerate instead).
+Generated deterministically by `orchestrator/spine.py`. DO NOT EDIT.
 Adapter over existing sources; sources stay canonical, this file is a read view.
 
+## Behavior controls (P9 active)
+| Body | Active control | Trigger owner | Entry gate | Spine wiring |
+|---|---|---|---|---|
+| `EXECUTOR` | `docs/CODEX_CONTROL.md` | Codex | `SESSION_START` | `behavior_controls.executor` |
+| `FABLE_MYTHOS` | `q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md` | Fable/Mythos | `NONTRIVIAL_REASONING_TASK` | `behavior_controls.fable_mythos` |
+| `PROSHKA` | `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Codex | `DELEGATED_STRATEGIC_REVIEW` | `behavior_controls.proshka` |
+
+## Phase chat and bounded exploration
+- validation: `VALID`
+- control status: `ACTIVE`
+- mathematical authority: `CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM`
+- PX/RH claim state: `NOT_READY`
+- active exploration: `NONE`
+- operational action pending: `NONE`
+
+| Meter | Count |
+|---|---:|
+| `delegated_strategic_review_calls` | 2 |
+| `exploration_review_calls` | 0 |
+| `fanout_violations` | 0 |
+| `forced_rollovers` | 0 |
+| `fresh_chats_opened` | 1 |
+| `mathematical_owner_deferral_violations` | 0 |
+| `ordinary_goal_close_calls` | 0 |
+| `phases_opened` | 1 |
+| `px_rh_claim_requests` | 0 |
+
+### Latest durable exploration closeouts
+
+- none
+
+## AUTOPSY wall map and namewatch
+- events / structured: `3` / `0`
+- walls / NEW_FLAG candidates: `1` / `0`
+- legacy free text remains visible but namewatch-ineligible; auto-promotion is forbidden.
+
+## Canonical artifact identities
+| Artifact | Selected path | SHA-256 | Status |
+|---|---|---|---|
+| `MUNTZ_V3_EXACT_CLASS_CLOSURE` | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean` | `f4ea12e1497b37a8…` | `CANONICAL_SOURCE` |
+| `Q3_ROOF_SKELETON` | `q3.lean.aristotle/aristotle_output/output-final_aristotle/RequestProject/Main.lean` | `d7fe57b57ae0d08b…` | `SELECTED_FOR_ROOF_WORK_NOT_PROOF_NOT_PROMOTED` |
+
+## Semantic index plants
+- collection: `q3_docs`
+- mode / status: `search_plus_vsearch` / `PASS`
+- `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `42`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
+
+## Meta-corpus registry
+- derived surfaces: `6`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
+
+## Observability snapshot (derived, non-authoritative)
+- authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
+- snapshot: `OBS_d8c060482f1a12e348d1` at `2026-08-05T22:19:48+00:00` from `d3e8ac14bfe3`
+- sources: `8`; stale: `0`; degraded: `1`
+- sorry sites/files: `0` / `0`
+- proof roots/root memberships: `2` / `131`
+- file states/import edges: `3316` / `5544`
+- taint status: `{"IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 3315}`; doomed: `0`
+- axiom dependencies / proof nodes: `10` / `10`
+- numeric checks: `0` `{}`
+- Proshka runs: `15`; observed seconds total/mean/median: `21798` / `1453.2` / `1287`; lower bounds: `1`
+- Answer-now clicks: `0`
+- AUTOPSY events/structured: `3` / `0`; walls/namewatch flags: `1` / `0`
+
+| Source | Records | Generated | Stale | Parse | Health |
+|---|---:|---|---|---|---|
+| `autopsy_map` | 3 | 2026-08-05T21:45:30+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-05 22:19 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+| `proshka_timing` | 15 | 2026-08-05T12:00:18.143+02:00 | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+| `taint_graph` | 3316 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+| `taint_sources` | 3316 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+
+### Slowest recorded Proshka runs
+
+| Transaction | Front | Seconds | Bound | Status |
+|---|---|---:|---|---|
+| `G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION` | G2/H2a | 3221 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE |
+| `G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS` | G5/S1 | 2326 | observed | FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP |
+| `G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE` | G5/S1 | 1708 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
+| `G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE` | G5/S1 | 1567 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
+| `G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE` | G5/S1 | 1538 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
+
 ## Staleness warnings
-- none detected
+- observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
 | Source | Last commit |
@@ -110,6 +197,8 @@ _59 records, 10 cross-file aliases. Query: `./orchestrator/kb.py search <term>`.
 | verdict file | target | forbidden_future_move | new_gap |
 |---|---|---|---|
 | 051_m1_posdef_selfadjoint_real_spectrum.answer.md | Goal_051_M1_weighted_selfadjoint_real_spectrum | apply_M1_directly_to_the_degenerate_CvS_form | M2_DEGENERATE_Q_SEPARATED_QUOTIENT_POSDEF |
+| D0_7E_5A_OWNER_INPUT_PACKET.md | D0.7e.5a_owner_input_packet | define_WPrime_from_5c_or_rename_bCal | SOURCE_DEFINED_WPRIME_CONSUMER_AND_B_HOMOGENEITY |
+| D0_7E_5A_PROSHKA_SOURCE_AUDIT_VERDICT.md | D0.7e.5a external source acquisition | treat_outlook_normalization_or_determinant_modulus_as_source_recovery | SourceWPrimeDefinitionAndSemanticCrosswalk |
 | PROSHKA_038_SUPPLIER_A_DIRECTIVE_2026-07-30.md | ScaledOuterSignBarrierFourThirds | promote m257 Jacobi or finite 027 to a cofinal theorem | ParametricScaledJacobiDiscriminatorNonneg |
 | PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05.md | CCM_cell_13_2_real_receiver_v2 | invent independent W02_WR_Prime endpoint tables | G2_CCM_CELL13N2_ANTIPODAL_SOURCE_IDENTITY_GAP |
 | PROSHKA_054_1_FINITE_VON_MANGOLDT_ADJUDICATION_2026-08-05.md | finite_von_Mangoldt_normalization_for_CCM_cell_13_2 | inline_the_twelve_cases_into_ccmCell13N2_wr_enclosures | G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_MISSING |

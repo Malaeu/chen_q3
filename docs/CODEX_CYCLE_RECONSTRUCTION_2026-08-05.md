@@ -78,19 +78,103 @@ Behaviors invented live and only partially written down — these are the "off-g
 Data hygiene note: the 054 verdict + the H2b export carry benign zero-width spaces (ZWSP) in the math
 notation — OCR/paste artifacts, not injection.
 
-## 5. Mac-only GAPS — for the owner to have Codex write at home
+## 5. Mac-only GAPS — resolved from the primary Mac body (2026-08-05)
 
-The Linux body is a slice; the Mac (primary) body is not visible here. Codex should fill:
-- The full Mac `~/.codex/config.toml`: model/effort/approval/sandbox/projects/plugins/**notify** (Mac may
-  have a native-notification hook Linux lacks); whether `chrome-devtools` MCP is present or replaced by the
-  Codex.app embedded authenticated browser.
-- Desktop-app driving stack (`osascript`/`cliclick`/Ghostty Accessibility; Codex.app + Claude Desktop as
-  GUI, clipboard-paste) — how the Mac actually drives the heads.
-- Auth pathway (Mac embedded logged-in session vs Linux token) — for Aristotle + ChatGPT.
-- The **standing-goal / session-bootstrap contour** as Codex actually runs it (the 22h off-git artifact) —
-  the authoritative version, not the owner-surfaced snapshot.
-- The **exact chat open/continue trigger** Codex uses today (so CODEX_CONTROL codifies reality, then
-  corrects it to one-living-chat-per-phase).
+This is a machine-local capability snapshot, not semantic project policy. It contains no credentials,
+tokens, cookies or browser-session material.
+
+### GAP 1 — Mac `~/.codex/config.toml`
+
+- Model/runtime: `gpt-5.6-sol`, reasoning effort `xhigh`, tool-output limit `25000`, personality
+  `pragmatic`, service tier `default`.
+- Host authority: `sandbox_mode = "danger-full-access"`, `approval_policy = "never"`; trusted project
+  roots are `/Users/emalam`, `/Users/emalam/GitHub`, `/private/tmp`, and the canonical Q3 checkout.
+- Native completion notification is present. `notify` invokes the bundled Sky Computer Use client with
+  event `turn-ended`; this is the Mac push-notification path that the Linux slice lacks.
+- MCP/runtime surfaces: `chrome-devtools` is enabled against `127.0.0.1:9222`; Playwright and the bundled
+  `node_repl` are configured; RepoPrompt and the standalone `computer-use` MCP stanza are disabled. This
+  does **not** mean the app lacks browser/desktop control: Codex.app also exposes its authenticated in-app
+  browser plus the installed Browser, Chrome and Computer Use plugins. The real Mac therefore has both
+  `chrome-devtools` and the embedded authenticated browser; one did not replace the other.
+- Enabled connector/artifact plugins at this snapshot: Google Calendar, Gmail, GitHub, Google Drive,
+  Documents, Spreadsheets, Presentations, PDF, Chrome, Template Creator, Computer Use, Visualize, Sites,
+  and Browser.
+- Native features: goals, memories and Chronicle are enabled; idle sleep prevention is enabled; desktop
+  follow-ups use `steer`; links default to the in-app browser and repo paths open in Ghostty.
+
+### GAP 2 — desktop-driving stack
+
+The canonical local adapter is `orchestrator/desktop_app.sh` (`codex` and `claude` lanes), with the older
+`orchestrator/codex_app.sh` retained as the Codex-only predecessor:
+
+1. `osascript` activates the `ChatGPT` or `Claude` process, reads window geometry, and performs atomic
+   Cmd-key shortcuts.
+2. `cliclick` clicks a composer coordinate derived from current window geometry and presses Return only
+   after verification. It is not used to type text or to hold modifier keys.
+3. `pbcopy`/`pbpaste` carry the complete payload, including Cyrillic, independently of keyboard layout.
+4. Every mutation is `focus -> read existing composer -> paste replacement -> read back exact bytes ->
+   send`. A nonempty or ambiguous owner draft means hands off, not overwrite.
+5. Ghostty must have Accessibility permission **and be relaunched after the permission change**; screen
+   recording is used for visual diagnosis when coordinates are uncertain.
+
+The current Codex.app can additionally drive its in-app browser and desktop apps through bundled plugins,
+but those capabilities do not weaken the read-before-write and read-back-verification rule.
+
+### GAP 3 — authentication pathway
+
+- ChatGPT/Codex/Proshka use the owner's signed-in Codex.app and embedded/in-app browser session. The app
+  keeps its OAuth material in machine-local Codex state; no ChatGPT token or cookie belongs in the repo.
+- The production Aristotle path is the CLI/API workflow from the project venv, authenticated by the
+  machine environment variable `ARISTOTLE_API_KEY`. The app/browser lane may inspect a separately
+  signed-in Aristotle web session, but it is not the canonical submit/download path.
+- `OPENAI_API_KEY` is also machine-local environment state. Neither key value nor local auth files are
+  copied into Git, the Spine, context packs or reports.
+
+### GAP 4 — standing goal and session bootstrap
+
+The standing goal is a native Codex task-runtime object, not a Markdown monitor. On this Mac it is stored
+outside Git in `~/.codex/goals_1.sqlite` and keyed to a Codex thread. While its status is `active`, Codex
+continues the same objective across turns and automatic continuations; it stops only on the native terminal
+states such as `complete`, `blocked`, `paused`, or a resource limit. The current plan, cursor and in-flight
+tool state remain more ephemeral than the standing objective.
+
+The exact long-running objective created at `2026-08-04T00:15:14+02:00` was:
+
+```text
+Drive the Q3 canonical-roof closure loop directly with Proshka: finish and
+ratify the materialized D0.7e.5a closeout, then repeatedly select, implement,
+Lean/source-validate, document, and return the smallest executable
+source-locked nodes across G2/H2a, G3/H2b, G5/S1, and G6/S2, preserving
+CHALLENGER / NOT_RH and Bus 010 VOID, until every roof supplier is discharged
+and the canonical roof theorem is instantiated, or a genuine
+theorem-shape/source blocker requires the owner's decision.
+```
+
+The local runtime recorded `20,786,139` tokens and `128,469` seconds before that goal moved to `blocked`
+at `2026-08-05T12:24:29+02:00`. This objective is only a persistence envelope: every continuation first
+re-enters through `AGENTS.md -> SESSION_ENTRY.md`, reconciles the live checkout, scoped selector, physical
+bus and current stop code, and lets disk authority override stale runtime intent. The recovery copy is
+`docs/routeB_bus/CODEX_RUNTIME_CONTOUR_FOR_MYTHOS_2026-08-04.md`; the full reproducible entry map is
+`docs/routeB_bus/CODEX_SESSION_BOOTSTRAP_CONTOUR_FOR_MYTHOS_2026-08-04.md`.
+
+### GAP 5 — exact chat open/continue trigger observed before P9
+
+The behavior actually observed earlier on 2026-08-05 was:
+
+```text
+substantive Proshka proof transaction requiring a theorem-shape verdict
+  -> open a fresh idle chat in the same Q3 project
+  -> upload a new source-locked high-recall context pack
+  -> keep that conversation only while its one answer is generating and harvested
+  -> the next substantive transaction opens another fresh chat
+```
+
+A commit, elapsed time, or bus number was not by itself the trigger; dispatch of a new substantive
+Proshka adjudication was. Busy chats were never reused for a second send, and `Answer now` was never
+clicked. This paragraph records historical reality so the reconstruction is honest. It is **not active
+policy**: the later ratified P9 behavior kernel supersedes it with one living chat per precommitted phase,
+continued across ordinary goals, commits, session restarts and Mac/Linux batons; a fresh chat is legal
+only after a materialized phase change.
 
 ## 6. Feeds P9 (CODEX_CONTROL.md)
 

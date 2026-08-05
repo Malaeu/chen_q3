@@ -38,12 +38,11 @@ It uses symlinks so existing paths keep working.
 ## Stats update
 
 - Run `./scripts/update_formalization_stats.sh` to refresh `FORMALIZATION_STATS.md`.
-- Run `./scripts/build_dependency_tree.py` to refresh `ACTIVE/graphs/DEPS_TREE_MAIN.md`.
+- Run `python3 orchestrator/sensors.py refresh` from the repository root to
+  refresh the checked sensor bundle, observability database, and Spine.
 
 ## Proof-graph tools
 
-- `./scripts/build_dependency_tree.py` → updates `ACTIVE/graphs/DEPS_TREE_MAIN.md`
-- `./scripts/build_proof_graph.py` → updates `ACTIVE/graphs/PROOF_GRAPH.md`
-- `./scripts/build_sorry_frontier.py` → updates `ACTIVE/graphs/SORRY_FRONTIER.md`
-- `./scripts/build_taint_graph.py` → updates `ACTIVE/graphs/TAINT_GRAPH.md`
-- `./scripts/numeric_sanity_check.py` → updates `ACTIVE/graphs/NUMERIC_CHECKS_REPORT.md`
+- `python3 orchestrator/sensors.py refresh --dry-run` → build and validate without publication
+- `python3 orchestrator/sensors.py refresh` → publish the full checked bundle
+- `python3 orchestrator/sensors.py status` → read the current database projection

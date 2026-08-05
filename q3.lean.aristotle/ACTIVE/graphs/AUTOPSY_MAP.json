@@ -1,0 +1,86 @@
+{
+  "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
+  "closed_tags": [
+    "SOURCE_IDENTITY",
+    "OBJECT_IDENTITY",
+    "DOMAIN",
+    "QUANTIFIER",
+    "NORMALIZATION",
+    "ORIENTATION",
+    "LOCALIZATION",
+    "SIGN",
+    "PARITY",
+    "MULTIPLICITY",
+    "BOUNDEDNESS",
+    "COUPLING",
+    "ENDPOINT",
+    "REGULARITY",
+    "COMPACTNESS",
+    "MEASURE_VS_ALGEBRA",
+    "SPECTRAL_ORDERING",
+    "CANCELLATION",
+    "DEPENDENCY",
+    "TRUST"
+  ],
+  "events": [
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "054",
+      "id": "AUT_f32265ba361e5a112528",
+      "namewatch_eligible": false,
+      "note": "The Arb certificate proves final balls externally, while every admissible Lean receiver starts after the concrete analytic inequalities; the missing verified bridge is the cancellation-preserving `ccmWREntry` enclosure above.",
+      "raw_sha256": "1a7eb10e9581f43784636c6d97bac6cb0eb2b33e9c47d8ea13bd9abe853caec3",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/054_sectorcell13n2_phase0_inventory.answer.md",
+      "source_line": 224,
+      "structured": false,
+      "tag": "LEGACY_UNCLASSIFIED"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05",
+      "id": "AUT_4b6de3506c5d3ce92b4c",
+      "namewatch_eligible": false,
+      "note": "054.1-v2 is source-correct but submission-invalid at this granularity: one syntactic sorry hides multiple independent analytic suppliers, and its advertised seven-class reduction is missing the exact antipodal (−2,2)=(−2,0) source identity.",
+      "raw_sha256": "ff5bc5e523fd2d0a23a6db69db46038d27036c0eaca5f56036a0dc987dadfbfc",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05.md",
+      "source_line": 606,
+      "structured": false,
+      "tag": "LEGACY_UNCLASSIFIED"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "PROSHKA_054_1_NEXT_SPLIT_ADJUDICATION_2026-08-05",
+      "id": "AUT_e33cfd294eb7c21f04b5",
+      "namewatch_eligible": false,
+      "note": "P-054-ANTI-3 was incorrectly registered as a global denominator-orientation discriminator; the mutant preserves the antipodal equality, so only the replacement pointwise production-versus-reversed kernel control is valid.",
+      "raw_sha256": "9a3302e715b8db7a50a319d63bf218683db05856c540cc04f6616a27fc3c2d98",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PROSHKA_054_1_NEXT_SPLIT_ADJUDICATION_2026-08-05.md",
+      "source_line": 298,
+      "structured": false,
+      "tag": "LEGACY_UNCLASSIFIED"
+    }
+  ],
+  "generated_at": "2026-08-05T21:45:30+00:00",
+  "namewatch_candidates": [],
+  "schema": "q3_autopsy_map.v1",
+  "source_commit": "d3e8ac14bfe3a13193cb6528d553db3a0c24fd0c",
+  "walls": [
+    {
+      "candidate_card": null,
+      "coverage_tags": [
+        "OBJECT_IDENTITY",
+        "SOURCE_IDENTITY"
+      ],
+      "dropped_structure": "source-faithful identification or transport between the constructed object and the literal consumer",
+      "event_count": 0,
+      "fronts": [],
+      "goals": [],
+      "id": "W_SOURCE_FAITHFUL_TRANSPORT",
+      "status": "UNTESTED_SPLIT_REQUIRED",
+      "tag": "OBJECT_IDENTITY+SOURCE_IDENTITY"
+    }
+  ]
+}

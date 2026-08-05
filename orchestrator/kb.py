@@ -17,6 +17,7 @@ transaction instead of one per row.
 """
 
 import argparse
+import os
 import re
 import sqlite3
 import sys
@@ -25,7 +26,10 @@ from datetime import date
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-DB_PATH = REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge.db"
+DB_PATH = Path(os.environ.get(
+    "Q3_KNOWLEDGE_DB_PATH",
+    str(REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge.db"),
+)).resolve()
 SCHEMA = REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge_schema.sql"
 VIEW_OUT = REPO / "docs" / "KILLS.md"
 
@@ -35,6 +39,17 @@ STATUSES = ("killed", "live", "repaired", "superseded", "standing")
 KILL_COLUMNS = ("id", "unit_type", "subject", "status", "reason", "scope_negation",
                 "rollback_target", "replacement", "forbidden_future_move", "stop_code",
                 "track", "recorded_at", "source_file")
+EXPLORATION_CLOSE_STATES = ("selected", "killed", "terminal_stall")
+EXPLORATION_LINK_RELATIONS = (
+    "cites", "applies_move", "autopsy_of", "same_source", "supersedes",
+)
+LINK_TARGET_TABLES = {
+    "kill": ("kill", "id"),
+    "move": ("move", "id"),
+    "journal_entry": ("journal_entry", "id"),
+    "dossier": ("dossier", "slug"),
+    "postmortem": ("postmortem", "id"),
+}
 
 
 def connect(create: bool = False) -> sqlite3.Connection:
@@ -80,6 +95,124 @@ def insert_kills(conn, rows, evidence=(), aliases=()) -> int:
             list(aliases))
     conn.commit()
     return len(rows)
+
+
+def _parse_exploration_link(value: str) -> tuple[str, str, str, str | None]:
+    parts = value.split(":", 3)
+    if len(parts) < 3:
+        raise ValueError("link must be TO_TYPE:TO_ID:RELATION[:NOTE]")
+    to_type, to_id, relation = parts[:3]
+    note = parts[3] if len(parts) == 4 else None
+    if to_type not in LINK_TARGET_TABLES:
+        raise ValueError(f"unsupported link target type: {to_type}")
+    if relation not in EXPLORATION_LINK_RELATIONS:
+        raise ValueError(f"unsupported exploration relation: {relation}")
+    if not to_id:
+        raise ValueError("link target id must be nonempty")
+    return to_type, to_id, relation, note
+
+
+def record_exploration_close(
+    conn: sqlite3.Connection,
+    *,
+    entry_id: str,
+    recorded_date: str,
+    state: str,
+    title: str,
+    target: str,
+    validation: str,
+    artifact_sha: str,
+    next_target: str,
+    body: str,
+    source_file: str,
+    links: tuple[tuple[str, str, str, str | None], ...] = (),
+) -> None:
+    """Write one durable exploration closeout plus links in one transaction.
+
+    This is deliberately not an event stream. It cannot overwrite a journal
+    row, create kills/moves/walls, or persist speculative cycles.
+    """
+    if state not in EXPLORATION_CLOSE_STATES:
+        raise ValueError(f"invalid exploration close state: {state}")
+    if not re.fullmatch(r"[0-9a-f]{64}", artifact_sha):
+        raise ValueError("artifact_sha must be a lowercase SHA-256")
+    required_text = {
+        "entry_id": entry_id,
+        "recorded_date": recorded_date,
+        "title": title,
+        "target": target,
+        "validation": validation,
+        "next_target": next_target,
+        "body": body,
+        "source_file": source_file,
+    }
+    empty = [name for name, value in required_text.items() if not value.strip()]
+    if empty:
+        raise ValueError(f"empty exploration close fields: {', '.join(empty)}")
+
+    try:
+        conn.execute("BEGIN IMMEDIATE")
+        for to_type, to_id, relation, _note in links:
+            if to_type not in LINK_TARGET_TABLES or relation not in EXPLORATION_LINK_RELATIONS:
+                raise ValueError("invalid exploration close link")
+            table, key = LINK_TARGET_TABLES[to_type]
+            if conn.execute(
+                    f"SELECT 1 FROM {table} WHERE {key}=?", (to_id,)).fetchone() is None:
+                raise ValueError(f"link target does not exist: {to_type}:{to_id}")
+        cursor = conn.execute(
+            "INSERT INTO journal_entry "
+            "(id,date,kind,title,workstream,state,channel,target,validation,artifact_sha,"
+            "boundary,next_target,body,source_file) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (
+                entry_id, recorded_date, "exploration_close", title,
+                "Q3 behavior control", state, "control-plane", target, validation,
+                artifact_sha, "EXPERIMENTAL_NOT_PROMOTED", next_target, body, source_file,
+            ),
+        )
+        conn.execute(
+            "INSERT INTO journal_fts(rowid, title, body, target, boundary) "
+            "VALUES (?,?,?,?,?)",
+            (cursor.lastrowid, title, body, target, "EXPERIMENTAL_NOT_PROMOTED"),
+        )
+        conn.executemany(
+            "INSERT INTO link (from_type,from_id,to_type,to_id,relation,note) "
+            "VALUES ('journal_entry',?,?,?,?,?)",
+            [(entry_id, to_type, to_id, relation, note)
+             for to_type, to_id, relation, note in links],
+        )
+        conn.commit()
+    except Exception:
+        conn.rollback()
+        raise
+
+
+def cmd_record_exploration_close(args) -> int:
+    conn: sqlite3.Connection | None = None
+    try:
+        links = tuple(_parse_exploration_link(value) for value in args.link)
+        conn = connect()
+        record_exploration_close(
+            conn,
+            entry_id=args.id,
+            recorded_date=args.date or date.today().isoformat(),
+            state=args.state,
+            title=args.title,
+            target=args.target,
+            validation=args.validation,
+            artifact_sha=args.artifact_sha,
+            next_target=args.next_target,
+            body=args.body,
+            source_file=args.source_file,
+            links=links,
+        )
+    except (sqlite3.Error, ValueError) as exc:
+        print(f"EXPLORATION_CLOSE_ERROR: {exc}", file=sys.stderr)
+        return 2
+    finally:
+        if conn is not None:
+            conn.close()
+    print(f"recorded exploration close {args.id} with {len(links)} link(s)")
+    return 0
 
 
 def cmd_add(args) -> int:
@@ -405,6 +538,27 @@ def main() -> int:
     s = sub.add_parser("excluded", help="what was NOT migrated and why")
     s.add_argument("--klass")
     s.set_defaults(fn=cmd_excluded)
+
+    s = sub.add_parser(
+        "record-exploration-close",
+        help="transactionally write one validated exploration closeout and durable links",
+    )
+    s.add_argument("--id", required=True)
+    s.add_argument("--date")
+    s.add_argument("--state", required=True, choices=EXPLORATION_CLOSE_STATES)
+    s.add_argument("--title", required=True)
+    s.add_argument("--target", required=True, help="closed blocker id")
+    s.add_argument("--validation", required=True,
+                   help="validated progress-delta ids and verifiers")
+    s.add_argument("--artifact-sha", required=True)
+    s.add_argument("--next-target", required=True,
+                   help="selected route or rollback target")
+    s.add_argument("--body", required=True,
+                   help="compact owner notice and operative result; no raw brainstorm")
+    s.add_argument("--source-file", required=True)
+    s.add_argument("--link", action="append", default=[],
+                   metavar="TO_TYPE:TO_ID:RELATION[:NOTE]")
+    s.set_defaults(fn=cmd_record_exploration_close)
 
     sub.add_parser("census", help="compare frozen sources against the DB").set_defaults(
         fn=cmd_census)

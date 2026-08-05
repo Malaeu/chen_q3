@@ -1,6 +1,564 @@
 {
-  "generated_at": "2026-03-06 23:19 UTC",
+  "schema_version": "2.0",
+  "sensor_kind": "LEAN_SORRY_FRONTIER",
+  "generated_at": "2026-08-05 22:19 UTC",
   "root": "Q3/",
+  "scope": {
+    "included_files": 3316,
+    "excluded_directories": [
+      "Q3/Clean",
+      "Q3/Archive"
+    ],
+    "unresolved_internal_imports": [
+      {
+        "file": "Q3/Proofs/Q_Lipschitz_Bridge.lean",
+        "module": "Q3.Clean.AxiomsTier1",
+        "status": "EXCLUDED_TARGET",
+        "root_ids": []
+      }
+    ]
+  },
   "total_sorries": 0,
-  "files": []
+  "root_impacted_sorries": 0,
+  "files": [],
+  "root_closures": [
+    {
+      "root_id": "Q3.Main.RH_of_Weil_and_Q3",
+      "entry_file": "Q3/Main.lean",
+      "file_count": 66,
+      "files": [
+        {
+          "file": "Q3/Atoms_Positive.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Axioms.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/AxiomsTheorems.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Basic/Defs.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/DigammaRemainder.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/DigammaSeries.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Main.lean",
+          "depth": 0
+        },
+        {
+          "file": "Q3/Proofs/A1_density.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A1prime/A1_density_fixed_t0.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A1prime/HatInterpBounded.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A1prime/HeatError.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Bounds.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Critical_Goal.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Main.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Monotonicity.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/A3_bridge_rayleigh_first.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A_Star_Properties.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Bridge.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/C1_Embedding.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/C1_Embedding_Bridge.lean",
+          "depth": 7
+        },
+        {
+          "file": "Q3/Proofs/C1_T_P_comp_bridge.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/C1_T_P_comp_dictEmbedding.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/CompatibilityReduction.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Digamma_Aristotle.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/Digamma_One_Fourth.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/FloorCert/Defs.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/FloorCert/Grid_2219.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/FloorCert/Lipschitz_2219.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/HatInterpolation.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/HeatKernelParams.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/P_A_Toeplitz_bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/PaperMainlineAtomRoute.lean",
+          "depth": 1
+        },
+        {
+          "file": "Q3/Proofs/Params_Critical.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/Defs.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/PrimeCert_Margin_Gate.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/PrimeCert_Margin_PathB.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/PrimeCert_Margin_Spec.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/PrimeTerm_t_bridge.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/Q_Lipschitz.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_Lipschitz_arch_bridge.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Q_Lipschitz_prime_bridge.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_atoms_closure.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_atoms_helpers.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_lemmas.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_t_critical_tau0_bridge.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/RKHS_Interface_C1.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/RKHS_PrimeCap_Analytic.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/RKHS_cap_rayleigh.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/RKHS_contraction.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_Fourier.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_Q_identification.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_basis0.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_basis0_of_A3.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_utils.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/S_K_Small_Bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Schur_Test.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/ShiftedWindows.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/SingleScale_Assumptions.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/T_P_comp_utils.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/W_Sum_Finite_Bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/node_spacing_bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/node_spacing_integrated.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/off_diag_exp_sum_integrated.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/T5_Transfer.lean",
+          "depth": 3
+        }
+      ]
+    },
+    {
+      "root_id": "Q3.RH_of_shifted_atom_route",
+      "entry_file": "Q3/Proofs/PaperMainlineAtomRoute.lean",
+      "file_count": 65,
+      "files": [
+        {
+          "file": "Q3/Atoms_Positive.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Axioms.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/AxiomsTheorems.lean",
+          "depth": 1
+        },
+        {
+          "file": "Q3/Basic/Defs.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/DigammaRemainder.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/DigammaSeries.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A1_density.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/A1prime/A1_density_fixed_t0.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/A1prime/HatInterpBounded.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A1prime/HeatError.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Bounds.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Critical_Goal.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Main.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A3_Floor_Monotonicity.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/A3_bridge_rayleigh_first.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/A_Star_Properties.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Bridge.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/C1_Embedding.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/C1_Embedding_Bridge.lean",
+          "depth": 6
+        },
+        {
+          "file": "Q3/Proofs/C1_T_P_comp_bridge.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/C1_T_P_comp_dictEmbedding.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/CompatibilityReduction.lean",
+          "depth": 1
+        },
+        {
+          "file": "Q3/Proofs/Digamma_Aristotle.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Digamma_One_Fourth.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/FloorCert/Defs.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/FloorCert/Grid_2219.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/FloorCert/Lipschitz_2219.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/HatInterpolation.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/HeatKernelParams.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/P_A_Toeplitz_bridge.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/PaperMainlineAtomRoute.lean",
+          "depth": 0
+        },
+        {
+          "file": "Q3/Proofs/Params_Critical.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/Defs.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/PrimeCert_Margin_Gate.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/PrimeCert_Margin_PathB.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/PrimeCert/PrimeCert_Margin_Spec.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/PrimeTerm_t_bridge.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Q_Lipschitz.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Q_Lipschitz_arch_bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_Lipschitz_prime_bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_atoms_closure.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_atoms_helpers.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_lemmas.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_on_atoms_fourier_axiom.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Q_nonneg_t_critical_tau0_bridge.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/RKHS_Interface_C1.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/RKHS_PrimeCap_Analytic.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/RKHS_cap_rayleigh.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/RKHS_contraction.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_Fourier.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_Q_identification.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_basis0.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_basis0_of_A3.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/Rayleigh_utils.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/S_K_Small_Bridge.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/Schur_Test.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/ShiftedWindows.lean",
+          "depth": 3
+        },
+        {
+          "file": "Q3/Proofs/SingleScale_Assumptions.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/T_P_comp_utils.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/Proofs/W_Sum_Finite_Bridge.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/node_spacing_bridge.lean",
+          "depth": 2
+        },
+        {
+          "file": "Q3/Proofs/node_spacing_integrated.lean",
+          "depth": 5
+        },
+        {
+          "file": "Q3/Proofs/off_diag_exp_sum_integrated.lean",
+          "depth": 4
+        },
+        {
+          "file": "Q3/T5_Transfer.lean",
+          "depth": 2
+        }
+      ]
+    }
+  ]
 }

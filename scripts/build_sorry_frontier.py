@@ -1,122 +1,143 @@
 #!/usr/bin/env python3
+"""Build the lightweight, root-aware Q3 sorry frontier."""
+
+from __future__ import annotations
+
 import argparse
 import json
-import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle"
+try:
+    from scripts.q3_sensor_scan import dependency_closure, scan_import_graph, scan_sorry_sites
+except ModuleNotFoundError:  # direct execution from scripts/
+    from q3_sensor_scan import dependency_closure, scan_import_graph, scan_sorry_sites
+
+
+ROOT = (Path(__file__).resolve().parents[1] / "full" / "q3.lean.aristotle").resolve()
 Q3_DIR = ROOT / "Q3"
 ACTIVE_DIR = ROOT / "ACTIVE"
 
-SORRY_RE = re.compile(r"\bsorry\b")
+ROOT_ENTRIES = {
+    "Q3.Main.RH_of_Weil_and_Q3": "Q3/Main.lean",
+    "Q3.RH_of_shifted_atom_route": "Q3/Proofs/PaperMainlineAtomRoute.lean",
+}
 
 
-def strip_comments(lines: list[str]) -> list[str]:
-    """Remove line/block comments while preserving line structure."""
-    out_lines: list[str] = []
-    depth = 0
-    for line in lines:
-        i = 0
-        out = []
-        while i < len(line):
-            if depth == 0 and line[i : i + 2] == "--":
-                break
-            if line[i : i + 2] == "/-":
-                depth += 1
-                i += 2
-                continue
-            if depth > 0 and line[i : i + 2] == "-/":
-                depth -= 1
-                i += 2
-                continue
-            if depth == 0:
-                out.append(line[i])
-            i += 1
-        out_lines.append("".join(out))
-    return out_lines
+def now_utc() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
 
-def scan_file(path: Path) -> list[int]:
-    try:
-        text = path.read_text(encoding="utf-8")
-    except Exception:
-        return []
-    lines = []
-    cleaned = strip_comments(text.splitlines())
-    for i, line in enumerate(cleaned, start=1):
-        if SORRY_RE.search(line):
-            lines.append(i)
-    return lines
+def build_payload(q3_dir: Path = Q3_DIR, *, generated_at: str | None = None) -> dict[str, object]:
+    sorry_files = scan_sorry_sites(q3_dir)
+    graph, unresolved = scan_import_graph(q3_dir)
+    closures: list[dict[str, object]] = []
+    root_sets: dict[str, set[str]] = {}
+    for root_id, entry_file in ROOT_ENTRIES.items():
+        distances = dependency_closure(graph, entry_file)
+        root_sets[root_id] = set(distances)
+        closures.append({
+            "root_id": root_id,
+            "entry_file": entry_file,
+            "file_count": len(distances),
+            "files": [
+                {"file": file_name, "depth": depth}
+                for file_name, depth in sorted(distances.items())
+            ],
+        })
 
+    for row in unresolved:
+        row["root_ids"] = [
+            root_id for root_id, members in root_sets.items() if row["file"] in members
+        ]
 
-def should_skip(path: Path, exclude_paths: list[tuple[str, ...]]) -> bool:
-    rel_parts = path.relative_to(ROOT).parts
-    for ex in exclude_paths:
-        if not ex:
-            continue
-        for i in range(0, len(rel_parts) - len(ex) + 1):
-            if tuple(rel_parts[i : i + len(ex)]) == ex:
-                return True
-    return False
+    impacted = 0
+    for item in sorry_files:
+        roots = [root_id for root_id, members in root_sets.items() if item["file"] in members]
+        item["root_ids"] = roots
+        if roots:
+            impacted += int(item["count"])
 
-
-def main() -> None:
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.md"))
-    ap.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.json"))
-    ap.add_argument(
-        "--exclude",
-        action="append",
-        default=["Q3/Clean", "Q3/Archive"],
-        help="exclude subpaths (relative to repo root), can repeat",
-    )
-    args = ap.parse_args()
-
-    exclude_paths = [Path(item).parts for item in args.exclude]
-
-    files = []
-    total = 0
-    for path in sorted(Q3_DIR.rglob("*.lean")):
-        if should_skip(path, exclude_paths):
-            continue
-        rel = path.relative_to(ROOT)
-        lines = scan_file(path)
-        if not lines:
-            continue
-        total += len(lines)
-        files.append({"file": str(rel), "lines": lines, "count": len(lines)})
-
-    generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    data = {
-        "generated_at": generated_at,
+    return {
+        "schema_version": "2.0",
+        "sensor_kind": "LEAN_SORRY_FRONTIER",
+        "generated_at": generated_at or now_utc(),
         "root": "Q3/",
-        "total_sorries": total,
-        "files": files,
+        "scope": {
+            "included_files": len(graph),
+            "excluded_directories": ["Q3/Clean", "Q3/Archive"],
+            "unresolved_internal_imports": unresolved,
+        },
+        "total_sorries": sum(int(item["count"]) for item in sorry_files),
+        "root_impacted_sorries": impacted,
+        "files": sorry_files,
+        "root_closures": closures,
     }
 
-    md_lines = []
-    md_lines.append(f"# Sorry Frontier (auto) — {generated_at}")
-    md_lines.append("")
-    md_lines.append("**Purpose:** List every `sorry` occurrence in `Q3/` with file + line numbers.")
-    md_lines.append("**Source:** regex scan of `Q3/**/*.lean`")
-    md_lines.append("")
-    md_lines.append(f"**Total sorries:** {total}")
-    md_lines.append("")
 
-    if not files:
-        md_lines.append("_No sorries found._")
-    else:
-        for item in files:
-            md_lines.append(f"## {item['file']}")
-            md_lines.append(f"- Count: {item['count']}")
-            md_lines.append("- Lines: " + ", ".join([f"L{ln}" for ln in item["lines"]]))
-            md_lines.append("")
+def render_markdown(data: dict[str, object]) -> str:
+    scope = data["scope"]
+    lines = [
+        f"# Sorry Frontier (auto) — {data['generated_at']}",
+        "",
+        "**Purpose:** Exact active `sorry` sites plus their membership in configured root closures.",
+        "**Method:** ripgrep candidate selection, then comment/string-aware verification.",
+        f"**Scope:** {scope['included_files']} Lean files; excludes `Q3/Clean` and `Q3/Archive`.",
+        f"**Total active sorries:** {data['total_sorries']}",
+        f"**Root-impacting sorries:** {data['root_impacted_sorries']}",
+        "",
+        "## Root closures",
+    ]
+    for closure in data["root_closures"]:
+        lines.append(
+            f"- `{closure['root_id']}` via `{closure['entry_file']}`: {closure['file_count']} files"
+        )
+    lines += ["", "## Active sites"]
+    if not data["files"]:
+        lines.append("_No active sorries found._")
+    for item in data["files"]:
+        roots = ", ".join(f"`{root}`" for root in item["root_ids"]) or "none"
+        lines += [
+            f"### {item['file']}",
+            f"- Count: {item['count']}",
+            "- Lines: " + ", ".join(f"L{line}" for line in item["lines"]),
+            f"- Root impact: {roots}",
+            "",
+        ]
+    unresolved = scope["unresolved_internal_imports"]
+    lines += ["", "## Scanner diagnostics"]
+    lines.append(f"- Unresolved internal imports: {len(unresolved)}")
+    for row in unresolved[:20]:
+        roots = ", ".join(row.get("root_ids", [])) or "none"
+        lines.append(
+            f"  - `{row['file']}` -> `{row['module']}`: {row['status']}; roots={roots}"
+        )
+    return "\n".join(lines) + "\n"
 
-    Path(args.out).write_text("\n".join(md_lines) + "\n", encoding="utf-8")
-    Path(args.json).write_text(json.dumps(data, indent=2), encoding="utf-8")
-    print(f"Wrote {args.out} and {args.json}")
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--out", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.md"))
+    parser.add_argument("--json", default=str(ACTIVE_DIR / "graphs" / "SORRY_FRONTIER.json"))
+    args = parser.parse_args()
+    data = build_payload()
+    blocking = [
+        row for row in data["scope"]["unresolved_internal_imports"]
+        if row.get("root_ids")
+    ]
+    if blocking:
+        raise RuntimeError(
+            "unresolved Q3 imports inside a live root closure: " + str(blocking[:20])
+        )
+    out_path = Path(args.out)
+    json_path = Path(args.json)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(render_markdown(data), encoding="utf-8")
+    json_path.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {out_path} and {json_path}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

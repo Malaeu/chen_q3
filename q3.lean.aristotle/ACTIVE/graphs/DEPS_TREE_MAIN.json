@@ -1,157 +1,501 @@
 {
-  "generated_at": "2026-02-02 06:53 UTC",
+  "schema_version": "2.0",
+  "sensor_kind": "LEAN_PRINT_AXIOMS",
+  "generated_at": "2026-08-05 22:19 UTC",
+  "check_file": "Q3/CheckAxioms.lean",
+  "check_stderr_sha256": "21d490443f9947b35732a96388db21561b6395ab676c320eb46630122a748851",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "deps": [
     {
       "name": "propext",
+      "classification": "STANDARD_LEAN_AXIOM",
+      "mapping_status": "STANDARD",
       "file": null,
+      "source_candidates": [],
       "axioms_in_file": [],
       "sorries_in_file": []
     },
     {
       "name": "Classical.choice",
+      "classification": "STANDARD_LEAN_AXIOM",
+      "mapping_status": "STANDARD",
       "file": null,
+      "source_candidates": [],
       "axioms_in_file": [],
       "sorries_in_file": []
     },
     {
-      "name": "Q3.Weil_criterion_tau0",
+      "name": "Q3.Weil_criterion",
+      "classification": "PROJECT_AXIOM",
+      "mapping_status": "FOUND",
       "file": "Q3/Axioms.lean",
+      "source_candidates": [
+        "Q3/Axioms.lean"
+      ],
       "axioms_in_file": [
         [
-          51,
+          64,
           "Weil_criterion"
         ],
         [
-          60,
+          73,
           "explicit_formula"
         ],
         [
-          179,
+          192,
           "a_star_linear_growth"
         ],
         [
-          194,
+          207,
           "w_Q_heat_weight_summable"
         ],
         [
-          212,
+          225,
           "Szego_Bottcher_eigenvalue_bound"
         ],
         [
-          218,
+          231,
           "Szego_Bottcher_convergence"
         ],
         [
-          244,
+          257,
           "Szego_Rayleigh_lower_bound"
         ],
         [
-          256,
+          269,
           "Schur_test"
         ],
         [
-          274,
+          287,
           "c_arch_pos"
         ],
         [
-          311,
+          324,
           "c_star_le_c_arch"
         ],
         [
-          322,
+          335,
           "eigenvalue_le_norm"
         ],
         [
-          439,
+          452,
           "Weil_criterion_tau0"
         ],
         [
-          459,
+          472,
           "A1_density_WK_axiom"
         ],
         [
-          472,
+          485,
           "A1_density_axiom"
         ],
         [
-          493,
+          506,
           "W_sum_finite_axiom"
         ],
         [
-          503,
+          516,
           "Q_Lipschitz_on_W_K"
         ],
         [
-          515,
+          528,
           "RKHS_contraction_axiom"
         ],
         [
-          531,
+          544,
           "T_P_row_sum_bound_axiom"
         ],
         [
-          545,
+          558,
           "S_K_small_axiom"
         ],
         [
-          556,
+          569,
           "node_spacing_axiom"
         ],
         [
-          568,
+          581,
           "off_diag_exp_sum_axiom"
         ],
         [
-          583,
+          596,
           "A3_bridge_axiom"
         ],
         [
-          601,
+          614,
           "A3_bridge_uniform"
         ],
         [
-          614,
+          627,
           "A3_bridge_rayleigh_axiom"
         ],
         [
-          685,
+          698,
           "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
         ],
         [
-          697,
+          710,
           "Q_nonneg_on_atoms_uniform"
         ]
       ],
       "sorries_in_file": []
     },
     {
+      "name": "Q3.prime_term_le_at_t_critical_axiom",
+      "classification": "PROJECT_AXIOM",
+      "mapping_status": "FOUND",
+      "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+      "source_candidates": [
+        "Q3/Proofs/Q_nonneg_t_critical.lean"
+      ],
+      "axioms_in_file": [
+        [
+          328,
+          "prime_term_le_at_t_critical_axiom"
+        ]
+      ],
+      "sorries_in_file": []
+    },
+    {
       "name": "Quot.sound",
+      "classification": "STANDARD_LEAN_AXIOM",
+      "mapping_status": "STANDARD",
       "file": null,
+      "source_candidates": [],
       "axioms_in_file": [],
       "sorries_in_file": []
+    }
+  ],
+  "roots": [
+    {
+      "id": "Q3.Main.RH_of_Weil_and_Q3",
+      "axiom_count": 5,
+      "deps": [
+        {
+          "name": "propext",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "file": null,
+          "source_candidates": [],
+          "axioms_in_file": [],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Classical.choice",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "file": null,
+          "source_candidates": [],
+          "axioms_in_file": [],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Q3.Weil_criterion",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "file": "Q3/Axioms.lean",
+          "source_candidates": [
+            "Q3/Axioms.lean"
+          ],
+          "axioms_in_file": [
+            [
+              64,
+              "Weil_criterion"
+            ],
+            [
+              73,
+              "explicit_formula"
+            ],
+            [
+              192,
+              "a_star_linear_growth"
+            ],
+            [
+              207,
+              "w_Q_heat_weight_summable"
+            ],
+            [
+              225,
+              "Szego_Bottcher_eigenvalue_bound"
+            ],
+            [
+              231,
+              "Szego_Bottcher_convergence"
+            ],
+            [
+              257,
+              "Szego_Rayleigh_lower_bound"
+            ],
+            [
+              269,
+              "Schur_test"
+            ],
+            [
+              287,
+              "c_arch_pos"
+            ],
+            [
+              324,
+              "c_star_le_c_arch"
+            ],
+            [
+              335,
+              "eigenvalue_le_norm"
+            ],
+            [
+              452,
+              "Weil_criterion_tau0"
+            ],
+            [
+              472,
+              "A1_density_WK_axiom"
+            ],
+            [
+              485,
+              "A1_density_axiom"
+            ],
+            [
+              506,
+              "W_sum_finite_axiom"
+            ],
+            [
+              516,
+              "Q_Lipschitz_on_W_K"
+            ],
+            [
+              528,
+              "RKHS_contraction_axiom"
+            ],
+            [
+              544,
+              "T_P_row_sum_bound_axiom"
+            ],
+            [
+              558,
+              "S_K_small_axiom"
+            ],
+            [
+              569,
+              "node_spacing_axiom"
+            ],
+            [
+              581,
+              "off_diag_exp_sum_axiom"
+            ],
+            [
+              596,
+              "A3_bridge_axiom"
+            ],
+            [
+              614,
+              "A3_bridge_uniform"
+            ],
+            [
+              627,
+              "A3_bridge_rayleigh_axiom"
+            ],
+            [
+              698,
+              "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
+            ],
+            [
+              710,
+              "Q_nonneg_on_atoms_uniform"
+            ]
+          ],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Q3.prime_term_le_at_t_critical_axiom",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+          "source_candidates": [
+            "Q3/Proofs/Q_nonneg_t_critical.lean"
+          ],
+          "axioms_in_file": [
+            [
+              328,
+              "prime_term_le_at_t_critical_axiom"
+            ]
+          ],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Quot.sound",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "file": null,
+          "source_candidates": [],
+          "axioms_in_file": [],
+          "sorries_in_file": []
+        }
+      ]
     },
     {
-      "name": "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data",
-      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
-      "axioms_in_file": [
-        [
-          32,
-          "prime_b_grid_bounds_data"
-        ]
-      ],
-      "sorries_in_file": []
-    },
-    {
-      "name": "Q3.Proofs.PrimeCert.prime_heat_bounds_data",
-      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
-      "axioms_in_file": [
-        [
-          60,
-          "prime_heat_bounds_data"
-        ]
-      ],
-      "sorries_in_file": []
+      "id": "Q3.RH_of_shifted_atom_route",
+      "axiom_count": 5,
+      "deps": [
+        {
+          "name": "propext",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "file": null,
+          "source_candidates": [],
+          "axioms_in_file": [],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Classical.choice",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "file": null,
+          "source_candidates": [],
+          "axioms_in_file": [],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Q3.Weil_criterion",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "file": "Q3/Axioms.lean",
+          "source_candidates": [
+            "Q3/Axioms.lean"
+          ],
+          "axioms_in_file": [
+            [
+              64,
+              "Weil_criterion"
+            ],
+            [
+              73,
+              "explicit_formula"
+            ],
+            [
+              192,
+              "a_star_linear_growth"
+            ],
+            [
+              207,
+              "w_Q_heat_weight_summable"
+            ],
+            [
+              225,
+              "Szego_Bottcher_eigenvalue_bound"
+            ],
+            [
+              231,
+              "Szego_Bottcher_convergence"
+            ],
+            [
+              257,
+              "Szego_Rayleigh_lower_bound"
+            ],
+            [
+              269,
+              "Schur_test"
+            ],
+            [
+              287,
+              "c_arch_pos"
+            ],
+            [
+              324,
+              "c_star_le_c_arch"
+            ],
+            [
+              335,
+              "eigenvalue_le_norm"
+            ],
+            [
+              452,
+              "Weil_criterion_tau0"
+            ],
+            [
+              472,
+              "A1_density_WK_axiom"
+            ],
+            [
+              485,
+              "A1_density_axiom"
+            ],
+            [
+              506,
+              "W_sum_finite_axiom"
+            ],
+            [
+              516,
+              "Q_Lipschitz_on_W_K"
+            ],
+            [
+              528,
+              "RKHS_contraction_axiom"
+            ],
+            [
+              544,
+              "T_P_row_sum_bound_axiom"
+            ],
+            [
+              558,
+              "S_K_small_axiom"
+            ],
+            [
+              569,
+              "node_spacing_axiom"
+            ],
+            [
+              581,
+              "off_diag_exp_sum_axiom"
+            ],
+            [
+              596,
+              "A3_bridge_axiom"
+            ],
+            [
+              614,
+              "A3_bridge_uniform"
+            ],
+            [
+              627,
+              "A3_bridge_rayleigh_axiom"
+            ],
+            [
+              698,
+              "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
+            ],
+            [
+              710,
+              "Q_nonneg_on_atoms_uniform"
+            ]
+          ],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Q3.prime_term_le_at_t_critical_axiom",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+          "source_candidates": [
+            "Q3/Proofs/Q_nonneg_t_critical.lean"
+          ],
+          "axioms_in_file": [
+            [
+              328,
+              "prime_term_le_at_t_critical_axiom"
+            ]
+          ],
+          "sorries_in_file": []
+        },
+        {
+          "name": "Quot.sound",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "file": null,
+          "source_candidates": [],
+          "axioms_in_file": [],
+          "sorries_in_file": []
+        }
+      ]
     }
   ]
 }

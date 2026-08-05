@@ -1,36 +1,12 @@
-# Q3 Codex Bootstrap
+# Q3 executor setup
 
-This repo contains a Codex Step32 workflow bootstrap:
+The durable entry chain is:
 
-- `AGENTS.md` for durable repo guidance.
-- `Q3_OBSTRUCTION_ATLAS.md` for the current Step32 threat model.
-- `.agents/skills/q3-step32-lean/SKILL.md` for reusable Step32 execution.
-- `q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md` for the active
-  request.
-- `scripts/q3_check.sh` for direct Lean and hole-marker validation.
-- `codex_prompts/q3_step32_goal.md` for a reusable goal prompt.
+1. `docs/CODEX_CONTROL.md` — active executor behavior kernel;
+2. `SESSION_ENTRY.md` — scope router;
+3. the live scoped monitor/request selected by that router.
 
-The active request lives under `q3.lean.aristotle/ACTIVE/requests`, matching the
-current project layout. Root-level `ACTIVE/requests` is not used for this
-bootstrap.
-
-## Run The Current Gate
-
-Use the skill explicitly:
-
-```text
-$q3-step32-lean Execute q3.lean.aristotle/ACTIVE/requests/step32_next_gate/node.md
-```
-
-Or use the prompt in `codex_prompts/q3_step32_goal.md`.
-
-## Validate
-
-From the repo root:
-
-```bash
-scripts/q3_check.sh Q3/Proofs/PSD_CenteredCoeffEntryHboxImport.lean
-```
-
-The current live gate is `ActiveCenteredCoeffEntryHboxCert`, not the older
-`centeredBSplineArchIntegrand_translatedPacketSum_integrable` target.
+The current PSD compatibility entry is
+`.agents/skills/q3-psdpd-step33-bootstrap/SKILL.md`; the old Step32 skill and
+prompt redirect there. `Q3_OBSTRUCTION_ATLAS.md` is a frozen snapshot, not a
+current selector. Run `scripts/q3_check.sh` for direct Lean/hole validation.

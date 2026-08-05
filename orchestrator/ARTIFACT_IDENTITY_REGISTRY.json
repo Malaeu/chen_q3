@@ -1,0 +1,22 @@
+{
+  "artifacts": [
+    {
+      "authority": "CANONICAL_READ_ONLY_SOURCE",
+      "id": "MUNTZ_V3_EXACT_CLASS_CLOSURE",
+      "mirror_path": "docs/routeB_bus/muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean",
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/RequestProject/MuntzV3ExactClassClosure.lean",
+      "sha256": "f4ea12e1497b37a809c27db35f95035111d0d126942ea8c7557ec435b0e3ebfd",
+      "status": "CANONICAL_SOURCE"
+    },
+    {
+      "authority": "DELEGATED_CODEX_PROSHKA_SELECTION",
+      "id": "Q3_ROOF_SKELETON",
+      "path": "q3.lean.aristotle/aristotle_output/output-final_aristotle/RequestProject/Main.lean",
+      "sha256": "d7fe57b57ae0d08bd474de6f283565168bac9e33dd55d6719289466c7065e90f",
+      "status": "SELECTED_FOR_ROOF_WORK_NOT_PROOF_NOT_PROMOTED",
+      "supersedes_candidate": "q3.lean.aristotle/aristotle_output/16535289-f016-4f62-bfbd-be83d826b4da/RequestProject/Main.lean",
+      "selection_basis": "Proshka default candidate confirmed live: later and longer skeleton, 15 literal sorry tokens versus 18; only PX_RH_CLAIM remains an owner boundary"
+    }
+  ],
+  "schema": "q3_artifact_identity_registry.v1"
+}

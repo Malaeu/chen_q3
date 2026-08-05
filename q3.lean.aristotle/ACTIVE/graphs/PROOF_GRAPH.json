@@ -1,223 +1,332 @@
 {
-  "generated_at": "2026-02-02 06:53 UTC",
+  "schema_version": "2.0",
+  "sensor_kind": "ROOT_AXIOM_PROJECTION",
+  "generated_at": "2026-08-05 22:19 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "nodes": [
     {
       "id": "propext",
-      "status": "classical",
+      "classification": "STANDARD_LEAN_AXIOM",
+      "mapping_status": "STANDARD",
+      "status": "STANDARD_LEAN_AXIOM",
       "file": null,
-      "axioms_in_file": [],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
+      "root_reachable": null,
+      "direct_status": "NOT_APPLICABLE",
+      "propagation_status": "NOT_APPLICABLE",
+      "integrity_status": "NOT_APPLICABLE",
+      "numeric_check": "NOT_APPLICABLE",
       "risk_score": null,
-      "risk_status": null,
+      "risk_status": "NOT_APPLICABLE",
       "risk_exceeds": null,
-      "is_doomed": null
+      "is_doomed": false,
+      "alternatives": []
     },
     {
       "id": "Classical.choice",
-      "status": "classical",
+      "classification": "STANDARD_LEAN_AXIOM",
+      "mapping_status": "STANDARD",
+      "status": "STANDARD_LEAN_AXIOM",
       "file": null,
-      "axioms_in_file": [],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
+      "root_reachable": null,
+      "direct_status": "NOT_APPLICABLE",
+      "propagation_status": "NOT_APPLICABLE",
+      "integrity_status": "NOT_APPLICABLE",
+      "numeric_check": "NOT_APPLICABLE",
       "risk_score": null,
-      "risk_status": null,
+      "risk_status": "NOT_APPLICABLE",
       "risk_exceeds": null,
-      "is_doomed": null
+      "is_doomed": false,
+      "alternatives": []
     },
     {
-      "id": "Q3.Weil_criterion_tau0",
-      "status": "axiom",
+      "id": "Q3.Weil_criterion",
+      "classification": "PROJECT_AXIOM",
+      "mapping_status": "FOUND",
+      "status": "PROJECT_AXIOM",
       "file": "Q3/Axioms.lean",
-      "axioms_in_file": [
-        [
-          51,
-          "Weil_criterion"
-        ],
-        [
-          60,
-          "explicit_formula"
-        ],
-        [
-          179,
-          "a_star_linear_growth"
-        ],
-        [
-          194,
-          "w_Q_heat_weight_summable"
-        ],
-        [
-          212,
-          "Szego_Bottcher_eigenvalue_bound"
-        ],
-        [
-          218,
-          "Szego_Bottcher_convergence"
-        ],
-        [
-          244,
-          "Szego_Rayleigh_lower_bound"
-        ],
-        [
-          256,
-          "Schur_test"
-        ],
-        [
-          274,
-          "c_arch_pos"
-        ],
-        [
-          311,
-          "c_star_le_c_arch"
-        ],
-        [
-          322,
-          "eigenvalue_le_norm"
-        ],
-        [
-          439,
-          "Weil_criterion_tau0"
-        ],
-        [
-          459,
-          "A1_density_WK_axiom"
-        ],
-        [
-          472,
-          "A1_density_axiom"
-        ],
-        [
-          493,
-          "W_sum_finite_axiom"
-        ],
-        [
-          503,
-          "Q_Lipschitz_on_W_K"
-        ],
-        [
-          515,
-          "RKHS_contraction_axiom"
-        ],
-        [
-          531,
-          "T_P_row_sum_bound_axiom"
-        ],
-        [
-          545,
-          "S_K_small_axiom"
-        ],
-        [
-          556,
-          "node_spacing_axiom"
-        ],
-        [
-          568,
-          "off_diag_exp_sum_axiom"
-        ],
-        [
-          583,
-          "A3_bridge_axiom"
-        ],
-        [
-          601,
-          "A3_bridge_uniform"
-        ],
-        [
-          614,
-          "A3_bridge_rayleigh_axiom"
-        ],
-        [
-          685,
-          "Q_nonneg_on_atoms_of_A3_RKHS_axiom"
-        ],
-        [
-          697,
-          "Q_nonneg_on_atoms_uniform"
-        ]
-      ],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
-      "risk_score": 0.0,
-      "risk_status": "OK",
-      "risk_exceeds": false,
-      "is_doomed": false
+      "root_reachable": true,
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "numeric_check": "NOT_CONFIGURED",
+      "risk_score": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false,
+      "alternatives": []
+    },
+    {
+      "id": "Q3.prime_term_le_at_t_critical_axiom",
+      "classification": "PROJECT_AXIOM",
+      "mapping_status": "FOUND",
+      "status": "PROJECT_AXIOM",
+      "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+      "root_reachable": true,
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "numeric_check": "NOT_CONFIGURED",
+      "risk_score": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false,
+      "alternatives": [
+        {
+          "id": "alt_brange_split",
+          "title": "Split: B in [B_min, B_max] via margin + outside via generic axiom",
+          "status": "active",
+          "notes": "Current proof uses brange certificate + fallback; close fallback with certs."
+        },
+        {
+          "id": "alt_direct_cert",
+          "title": "Direct numeric certificate at t_critical",
+          "status": "idea",
+          "notes": "Grid on \u03be with modulus bound to show arch >= prime for all \u03c4,B."
+        }
+      ]
     },
     {
       "id": "Quot.sound",
-      "status": "classical",
+      "classification": "STANDARD_LEAN_AXIOM",
+      "mapping_status": "STANDARD",
+      "status": "STANDARD_LEAN_AXIOM",
       "file": null,
-      "axioms_in_file": [],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
+      "root_reachable": null,
+      "direct_status": "NOT_APPLICABLE",
+      "propagation_status": "NOT_APPLICABLE",
+      "integrity_status": "NOT_APPLICABLE",
+      "numeric_check": "NOT_APPLICABLE",
       "risk_score": null,
-      "risk_status": null,
+      "risk_status": "NOT_APPLICABLE",
       "risk_exceeds": null,
-      "is_doomed": null
-    },
-    {
-      "id": "Q3.Proofs.PrimeCert.prime_b_grid_bounds_data",
-      "status": "axiom",
-      "file": "Q3/Proofs/PrimeCert/BrangeCert_2046.lean",
-      "axioms_in_file": [
-        [
-          32,
-          "prime_b_grid_bounds_data"
-        ]
-      ],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
-      "risk_score": 0.0,
-      "risk_status": "OK",
-      "risk_exceeds": false,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3.Proofs.PrimeCert.prime_heat_bounds_data",
-      "status": "axiom",
-      "file": "Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28.lean",
-      "axioms_in_file": [
-        [
-          60,
-          "prime_heat_bounds_data"
-        ]
-      ],
-      "sorries_in_file": [],
-      "alternatives": [],
-      "direct_status": "VERIFIED",
-      "propagation_status": "VERIFIED",
-      "integrity_status": "VERIFIED",
-      "taint_source": [],
-      "numeric_check": "UNKNOWN",
-      "risk_score": 0.0,
-      "risk_status": "OK",
-      "risk_exceeds": false,
-      "is_doomed": false
+      "is_doomed": false,
+      "alternatives": []
     }
-  ]
+  ],
+  "roots": [
+    {
+      "id": "Q3.Main.RH_of_Weil_and_Q3",
+      "status": "PROJECT_AXIOMS_PRESENT",
+      "axiom_count": 5,
+      "project_axiom_count": 2,
+      "observed_problem_count": 0,
+      "nodes": [
+        {
+          "id": "propext",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "status": "STANDARD_LEAN_AXIOM",
+          "file": null,
+          "root_reachable": null,
+          "direct_status": "NOT_APPLICABLE",
+          "propagation_status": "NOT_APPLICABLE",
+          "integrity_status": "NOT_APPLICABLE",
+          "numeric_check": "NOT_APPLICABLE",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        },
+        {
+          "id": "Classical.choice",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "status": "STANDARD_LEAN_AXIOM",
+          "file": null,
+          "root_reachable": null,
+          "direct_status": "NOT_APPLICABLE",
+          "propagation_status": "NOT_APPLICABLE",
+          "integrity_status": "NOT_APPLICABLE",
+          "numeric_check": "NOT_APPLICABLE",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        },
+        {
+          "id": "Q3.Weil_criterion",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "status": "PROJECT_AXIOM",
+          "file": "Q3/Axioms.lean",
+          "root_reachable": true,
+          "direct_status": "CLEAR",
+          "propagation_status": "NO_OBSERVED_ISSUE",
+          "integrity_status": "NO_OBSERVED_ISSUE",
+          "numeric_check": "NOT_CONFIGURED",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        },
+        {
+          "id": "Q3.prime_term_le_at_t_critical_axiom",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "status": "PROJECT_AXIOM",
+          "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+          "root_reachable": true,
+          "direct_status": "CLEAR",
+          "propagation_status": "NO_OBSERVED_ISSUE",
+          "integrity_status": "NO_OBSERVED_ISSUE",
+          "numeric_check": "NOT_CONFIGURED",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": [
+            {
+              "id": "alt_brange_split",
+              "title": "Split: B in [B_min, B_max] via margin + outside via generic axiom",
+              "status": "active",
+              "notes": "Current proof uses brange certificate + fallback; close fallback with certs."
+            },
+            {
+              "id": "alt_direct_cert",
+              "title": "Direct numeric certificate at t_critical",
+              "status": "idea",
+              "notes": "Grid on \u03be with modulus bound to show arch >= prime for all \u03c4,B."
+            }
+          ]
+        },
+        {
+          "id": "Quot.sound",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "status": "STANDARD_LEAN_AXIOM",
+          "file": null,
+          "root_reachable": null,
+          "direct_status": "NOT_APPLICABLE",
+          "propagation_status": "NOT_APPLICABLE",
+          "integrity_status": "NOT_APPLICABLE",
+          "numeric_check": "NOT_APPLICABLE",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        }
+      ]
+    },
+    {
+      "id": "Q3.RH_of_shifted_atom_route",
+      "status": "PROJECT_AXIOMS_PRESENT",
+      "axiom_count": 5,
+      "project_axiom_count": 2,
+      "observed_problem_count": 0,
+      "nodes": [
+        {
+          "id": "propext",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "status": "STANDARD_LEAN_AXIOM",
+          "file": null,
+          "root_reachable": null,
+          "direct_status": "NOT_APPLICABLE",
+          "propagation_status": "NOT_APPLICABLE",
+          "integrity_status": "NOT_APPLICABLE",
+          "numeric_check": "NOT_APPLICABLE",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        },
+        {
+          "id": "Classical.choice",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "status": "STANDARD_LEAN_AXIOM",
+          "file": null,
+          "root_reachable": null,
+          "direct_status": "NOT_APPLICABLE",
+          "propagation_status": "NOT_APPLICABLE",
+          "integrity_status": "NOT_APPLICABLE",
+          "numeric_check": "NOT_APPLICABLE",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        },
+        {
+          "id": "Q3.Weil_criterion",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "status": "PROJECT_AXIOM",
+          "file": "Q3/Axioms.lean",
+          "root_reachable": true,
+          "direct_status": "CLEAR",
+          "propagation_status": "NO_OBSERVED_ISSUE",
+          "integrity_status": "NO_OBSERVED_ISSUE",
+          "numeric_check": "NOT_CONFIGURED",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        },
+        {
+          "id": "Q3.prime_term_le_at_t_critical_axiom",
+          "classification": "PROJECT_AXIOM",
+          "mapping_status": "FOUND",
+          "status": "PROJECT_AXIOM",
+          "file": "Q3/Proofs/Q_nonneg_t_critical.lean",
+          "root_reachable": true,
+          "direct_status": "CLEAR",
+          "propagation_status": "NO_OBSERVED_ISSUE",
+          "integrity_status": "NO_OBSERVED_ISSUE",
+          "numeric_check": "NOT_CONFIGURED",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": [
+            {
+              "id": "alt_brange_split",
+              "title": "Split: B in [B_min, B_max] via margin + outside via generic axiom",
+              "status": "active",
+              "notes": "Current proof uses brange certificate + fallback; close fallback with certs."
+            },
+            {
+              "id": "alt_direct_cert",
+              "title": "Direct numeric certificate at t_critical",
+              "status": "idea",
+              "notes": "Grid on \u03be with modulus bound to show arch >= prime for all \u03c4,B."
+            }
+          ]
+        },
+        {
+          "id": "Quot.sound",
+          "classification": "STANDARD_LEAN_AXIOM",
+          "mapping_status": "STANDARD",
+          "status": "STANDARD_LEAN_AXIOM",
+          "file": null,
+          "root_reachable": null,
+          "direct_status": "NOT_APPLICABLE",
+          "propagation_status": "NOT_APPLICABLE",
+          "integrity_status": "NOT_APPLICABLE",
+          "numeric_check": "NOT_APPLICABLE",
+          "risk_score": null,
+          "risk_status": "NOT_APPLICABLE",
+          "risk_exceeds": null,
+          "is_doomed": false,
+          "alternatives": []
+        }
+      ]
+    }
+  ],
+  "inputs": {
+    "dependency_tree": "acee3ff1b818e5667756a216716e43d72187c717e439813b6a85cdb2ed2cfed7",
+    "taint_graph": "27f71d19789a3cf24e0453912725864c32187dd9a2f5a077f258f7e9cf087488",
+    "alternative_paths": "75d44409e3869ae421e493484aca7f9226b62842200dcf8bbe89db28bbaeedd7"
+  },
+  "boundary": {
+    "not_file_import_dag": true,
+    "not_proof_verdict": true,
+    "numeric_evidence_only": true
+  }
 }

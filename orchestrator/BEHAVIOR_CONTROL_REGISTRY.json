@@ -1,0 +1,33 @@
+{
+  "controls": [
+    {
+      "body": "FABLE_MYTHOS",
+      "control_id": "Q3_FABLE_MYTHOS_KERNEL",
+      "existing_entry_gate": "NONTRIVIAL_REASONING_TASK",
+      "path": "q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md",
+      "spine_wiring": "behavior_controls.fable_mythos",
+      "status": "ACTIVE",
+      "trigger_owner": "Fable/Mythos"
+    },
+    {
+      "body": "PROSHKA",
+      "control_id": "Q3_PROSHKA_SYSTEM_PROMPT",
+      "existing_entry_gate": "DELEGATED_STRATEGIC_REVIEW",
+      "mirror_path": "docs/routeB_bus/PROSHKA_SYSTEM_PROMPT_v2.md",
+      "path": "docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md",
+      "spine_wiring": "behavior_controls.proshka",
+      "status": "ACTIVE",
+      "trigger_owner": "Codex"
+    },
+    {
+      "body": "EXECUTOR",
+      "control_id": "Q3_EXECUTOR_CONTROL",
+      "existing_entry_gate": "SESSION_START",
+      "path": "docs/CODEX_CONTROL.md",
+      "spine_wiring": "behavior_controls.executor",
+      "status": "ACTIVE",
+      "trigger_owner": "Codex"
+    }
+  ],
+  "schema": "q3_behavior_control_registry.v1"
+}

@@ -1,5 +1,19 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-01-29 13:21 UTC",
+  "schema_version": "2.0",
+  "sensor_kind": "NUMERIC_EVIDENCE_COMMAND_RUNNER",
+  "generated_at": "2026-08-05 22:19 UTC",
+  "coverage_status": "EMPTY_CONFIG",
+  "boundary": {
+    "evidence_only": true,
+    "not_lean_authority": true,
+    "not_route_kill": true,
+    "not_taint_input": true
+  },
+  "summary": {
+    "configured": 0,
+    "PASS": 0,
+    "FAIL": 0,
+    "TIMEOUT": 0
+  },
   "checks": []
 }
