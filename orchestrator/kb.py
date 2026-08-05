@@ -300,6 +300,40 @@ def cmd_census(args) -> int:
     return 1 if bad else 0
 
 
+def cmd_excluded(args) -> int:
+    """What was deliberately NOT migrated, and on what grounds.
+
+    Exists so nobody repeats the archaeology: every excluded file carries the check that was
+    actually run and the condition that would make it worth re-opening.
+    """
+    conn = connect()
+    sql = "SELECT * FROM excluded_source"
+    params = []
+    if args.klass:
+        sql += " WHERE klass=?"
+        params.append(args.klass)
+    sql += " ORDER BY klass, records DESC"
+    rows = conn.execute(sql, params).fetchall()
+    if not args.klass:
+        print("classes:")
+        for r in conn.execute("SELECT klass, COUNT(*), SUM(records) FROM excluded_source "
+                              "GROUP BY klass ORDER BY 2 DESC"):
+            print(f"  {r[0]:18s} {r[1]:4d} files  {r[2] or 0:8d} records")
+        print(f"\n{len(rows)} excluded sources total. "
+              f"Use --klass <name> for detail.\n")
+        print("classes needing a human: " + ", ".join(
+            k[0] for k in conn.execute(
+                "SELECT DISTINCT klass FROM excluded_source "
+                "WHERE klass IN ('unreviewed','pending_read')")))
+        return 0
+    for r in rows:
+        print(f"  {r['path']}")
+        print(f"     why      : {r['reason'][:150]}")
+        print(f"     checked  : {(r['check_done'] or '')[:150]}")
+        print(f"     revisit  : {(r['revisit_if'] or '')[:120]}")
+    return 0
+
+
 def cmd_export(_args) -> int:
     conn = connect()
     out = ["# KILLS.md — generated view of knowledge.db\n",
@@ -367,6 +401,10 @@ def main() -> int:
     s.add_argument("--evidence", action="append", default=[], metavar="KIND=REF")
     s.add_argument("--alias", action="append", default=[])
     s.set_defaults(fn=cmd_add)
+
+    s = sub.add_parser("excluded", help="what was NOT migrated and why")
+    s.add_argument("--klass")
+    s.set_defaults(fn=cmd_excluded)
 
     sub.add_parser("census", help="compare frozen sources against the DB").set_defaults(
         fn=cmd_census)

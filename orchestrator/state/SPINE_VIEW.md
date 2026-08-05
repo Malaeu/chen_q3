@@ -88,20 +88,23 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | pin A1_as_canonical_and_A2_as_corollary |
 | WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayloa | standing | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coeffici... |
 
-**wall** (8)
+**wall** (11)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
 | BOUNDARY_LEAKAGE_WALL | Boundary leakage wall | standing |  |
 | COORDINATE_WALL | Coordinate wall | standing |  |
+| DE_BRANGES_POSITIVITY_CERTIFICATE_FOR_RH_FAILS | A natural de Branges-type positivity certificate as a route to RH | standing | Carneiro–Littmann–Vaaler extremal functions — the most directly transferable unconditio... |
 | FINITE_CERTIFICATE_WALL | Finite-certificate wall | standing |  |
 | FINITE_TO_GLOBAL_WALL | Finite-to-global wall | standing |  |
 | MATRIX_IDENTIFICATION_WALL | Matrix-identification wall | standing |  |
+| NO_COHN_ELKIES_DUAL_CERTIFICATE_FOR_ZERO_LOCATION | A Cohn–Elkies-style single dual certificate for zero location / RH | standing |  |
 | P0_ENCLOSURE_WALL | P0 enclosure wall | standing |  |
+| PRIME_COMB_NOT_A_FOURIER_QUASICRYSTAL | Transplanting Fourier-quasicrystal / Lee-Yang crystalline-measure mach | standing | Closest genuine structural analogue is the Connes–Consani–Moscovici prolate/Sonin/Toepl... |
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_56 records, 9 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_59 records, 10 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |

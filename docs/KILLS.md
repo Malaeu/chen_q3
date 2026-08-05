@@ -67,16 +67,19 @@
 | VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | TARGET: RULE_A_B_EXACT_TEXT_AND_VERSION_SAFE_POSTCLOSE_PIN \| FAILED: treat_preflight_protocol_as_equivalent_to_one_stop_condition \| INVARIANT: quoted historical formulations may be related asymmetrically |  | pin A1_as_canonical_and_A2_as_corollary |
 | WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayload.lean before source-interval or DirectHorner rows exist | standing | SYMPTOM: a pilot entrypoint exists, but no accepted pilot verdict can be produced because the complete same-target coefficient/remainder stream is absent \| CAUSE: repository evidence is only a partial nominal polynomial bridge; the direct payload ledger reports PARTIAL_NOMINAL_POLY_BRIDGE_PRESENT_C |  | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coefficient stream plus source-interval rows, or a concrete DirectHorner valid payload, then rerun the pilot gate |
 
-## wall (8)
+## wall (11)
 
 | id | subject | status | reason | rollback | next |
 |---|---|---|---|---|---|
 | BOUNDARY_LEAKAGE_WALL | Boundary leakage wall | standing | Boundary-null claims replaced by informal endpoint arguments do not hold. |  |  |
 | COORDINATE_WALL | Coordinate wall | standing | Proving PSD directly in raw coordinates ignores a required Gram correction. |  |  |
+| DE_BRANGES_POSITIVITY_CERTIFICATE_FOR_RH_FAILS | A natural de Branges-type positivity certificate as a route to RH | standing | Conrey–Li (arXiv:math/9812166) proved the natural de Branges positivity condition actually FAILS. Recorded here because the card also corrects a common misattribution: this result is Conrey–Li, not Sarnak. |  | Carneiro–Littmann–Vaaler extremal functions — the most directly transferable unconditional toolkit for edge-strip defects. |
 | FINITE_CERTIFICATE_WALL | Finite-certificate wall | standing | Fake axioms, trusted payload shortcuts and generated declarations with holes are not admissible. |  |  |
 | FINITE_TO_GLOBAL_WALL | Finite-to-global wall | standing | Step32 closes a finite certified block; it does not by itself claim or prove global RH. |  |  |
 | MATRIX_IDENTIFICATION_WALL | Matrix-identification wall | standing | Matrices A, P, Q must be identified as analytic Weil-form matrices on the centered B-spline packet basis; numerical tables alone are not enough. |  |  |
+| NO_COHN_ELKIES_DUAL_CERTIFICATE_FOR_ZERO_LOCATION | A Cohn–Elkies-style single dual certificate for zero location / RH | standing | No such certificate has ever been built. The literature has dual certificates only for proportions of zeros, prime gaps and first-zero heights — never for zero location itself. |  |  |
 | P0_ENCLOSURE_WALL | P0 enclosure wall | standing | P0 hbox fields cannot be filled by weakening the theorem statement or by asserting table equality without bounds. |  |  |
+| PRIME_COMB_NOT_A_FOURIER_QUASICRYSTAL | Transplanting Fourier-quasicrystal / Lee-Yang crystalline-measure machinery to the prime side of the explicit formula | standing | THEOREM (Kurasov–Sarnak 2020): the prime/zero explicit-formula measure is provably NOT a Fourier quasicrystal — and this holds even under RH. The crystalline-measure toolkit therefore cannot be transplanted directly. |  | Closest genuine structural analogue is the Connes–Consani–Moscovici prolate/Sonin/Toeplitz line (Carathéodory–Fejér mechanism), which natively encodes two-sided positivity-plus-sign constraints. |
 | PRIME_SIDE_WALL | Prime-side wall | standing | A positive table or scalar mirror is not a proof of the imported prime form. |  |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing | Closing Step33A.1 by manually sweeping entries or scalar summands one by one does not converge; the (0,0) direct-profile support-zero certificate is only a pilot. |  |  |
 

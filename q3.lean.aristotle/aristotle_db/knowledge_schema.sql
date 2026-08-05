@@ -200,3 +200,23 @@ CREATE VIRTUAL TABLE IF NOT EXISTS journal_fts USING fts5(
 CREATE VIRTUAL TABLE IF NOT EXISTS dossier_fts USING fts5(
     title, status_token, verdict, body_md,
     content='dossier', content_rowid='rowid');
+
+-- ============================================================================
+-- WAVE 3 addendum (2026-08-05): what was deliberately NOT migrated, and why.
+--
+-- Owner's point: record it, or in a month someone re-runs the same archaeology and maybe
+-- concludes differently. This table is the memory of a decision, not of a file — each row
+-- says what was checked, what the check found, and what would make it worth revisiting.
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS excluded_source (
+    path        TEXT PRIMARY KEY,
+    klass       TEXT NOT NULL,   -- step33 | build_artifact | protocol | numeric | symlink | index | state | pending_read
+    reason      TEXT NOT NULL,   -- why it is not knowledge (or not yet migrated)
+    check_done  TEXT,            -- what was actually verified, in words
+    revisit_if  TEXT,            -- the condition that would make this worth re-opening
+    verified_at TEXT NOT NULL,
+    records     INTEGER          -- how many "records" the census counted in it
+);
+
+CREATE INDEX IF NOT EXISTS idx_excluded_klass ON excluded_source(klass);
