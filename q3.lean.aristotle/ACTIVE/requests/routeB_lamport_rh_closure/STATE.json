@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 69,
-  "updated_at": "2026-08-05T02:13:38+02:00",
+  "revision": 70,
+  "updated_at": "2026-08-05T02:21:43+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1190,19 +1190,20 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV69",
-    "status": "RICCATI_ORBIT_UNIQUENESS_AND_PSWF_RATIO_RECEIVER_PROVED_SOURCE_COEFFICIENT_CONE_OR_L2_UNIQUENESS_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV70",
+    "status": "CANONICAL_POSITIVE_SQUARE_SUMMABLE_TAIL_ROW_AND_SOURCE_RECURRENCE_PROVED_SOURCE_REGULAR_ROW_IDENTIFICATION_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
       "Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean",
       "Q3/Proofs/RouteB/D0Mode4PSWFLegendreRecurrenceCrosswalk.lean",
-      "Q3/Proofs/RouteB/D0Mode4PSWFRiccatiOrbitUniqueness.lean"
+      "Q3/Proofs/RouteB/D0Mode4PSWFRiccatiOrbitUniqueness.lean",
+      "Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean"
     ],
     "latest_proof_artifact": {
-      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFRiccatiOrbitUniqueness.lean",
-      "sha256": "9a0ad3f86f3f470d2d4bdf36b93b73f53e694506fe1bc4c525cab6fee6b0ab4e"
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean",
+      "sha256": "a9b819fc6eb220ea3f0a0fd756f93b47a4f9ddb58b5722e8c95e0ac404491b4a"
     },
     "proved": [
       "SCHUR_DETERMINANT_EQUALS_POSITIVE_UPPER_PRODUCT_TIMES_ROOT_FUNCTION",
@@ -1223,7 +1224,14 @@
       "DLMF_EVEN_LEGENDRE_UPPER_COEFFICIENT_EQUALS_NEG_MODE4_JACOBI_UPPER",
       "COMPLETE_THREE_COEFFICIENT_EVEN_LEGENDRE_RECURRENCE_CROSSWALK",
       "G5_MODE4_RICCATI_INVARIANT_CONE_ORBIT_UNIQUENESS_PROVED",
-      "G5_MODE4_PSWF_INVARIANT_CONE_RATIO_RECEIVER_PROVED"
+      "G5_MODE4_PSWF_INVARIANT_CONE_RATIO_RECEIVER_PROVED",
+      "MODE4_RIGHT_TAIL_STRICTLY_POSITIVE",
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_ROW_POSITIVE",
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_ROW_LE_HALF_POW",
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_ROW_SQUARE_SUMMABLE",
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_RATIO_EQUALS_RIGHT_TAIL_LIMIT",
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_PROJECT_JACOBI_RECURRENCE",
+      "MODE4_CANONICAL_TAIL_COEFFICIENT_DLMF_RECURRENCE"
     ],
     "remaining_inputs": [
       "LOWER_ENDPOINT_FINITE_LEFT_LOWER_ENVELOPE_POSITIVE_AT_K_EQ_4M",
@@ -1234,10 +1242,11 @@
       "name": "ORDERED_PSWF_DIFFERENTIAL_SPECTRUM_TO_EXACT_INFINITE_TAIL_HERMITIAN_SCHUR_SIGN",
       "proved_first_brick": "mode4JacobiCoefficients_eq_pswfLegendre_evenCrosswalk",
       "proved_second_brick": "mode4RightTailLimit_eq_of_invariantCone_riccatiOrbit_AND_mode4RightTailLimit_eq_ratio_of_pswfLegendre_invariantCone_solution",
+      "proved_third_brick": "mode4TailCoefficientRow_sq_summable_AND_projectJacobi_recurrence_AND_pswfLegendre_recurrence",
       "remaining": [
         "EVEN_LEGENDRE_TRANSFORM_AND_DIFFERENTIAL_OPERATOR_DOMAIN_CROSSWALK",
-        "PSWF_REGULAR_COEFFICIENT_EVENTUAL_INVARIANT_CONE_OR_L2_UNIQUENESS",
-        "MODE4_RIGHT_TAIL_SQUARE_SUMMABLE_ROW_AND_WEYL_SELF_ENERGY",
+        "PSWF_REGULAR_COEFFICIENT_ROW_EQUALS_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW",
+        "MODE4_HERMITIAN_SIMILARITY_AND_BOUNDARY_SELF_ENERGY",
         "EXACT_INFINITE_TAIL_SCHUR_COMPLEMENT_INERTIA",
         "ORDERED_EVEN_DIFFERENTIAL_SPECTRUM_INTERVAL_TO_DETERMINANT_SIGNS"
       ]
@@ -1322,13 +1331,13 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 7753,
+      "target_build_jobs": 7754,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "RICCATI_ORBIT_UNIQUENESS_AUTHORIZED_AND_LEAN_PROVED_PSWF_RATIO_RECEIVER_PROVED_SOURCE_CONE_MEMBERSHIP_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "RICCATI_ORBIT_UNIQUENESS_AND_DIRECT_NEXT_SQUARE_SUMMABLE_TAIL_ROW_MATERIALIZED_SOURCE_REGULAR_ROW_IDENTIFICATION_OPEN_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4181,6 +4190,13 @@
       "progress_class": "PROOF_AND_BOUNDARY_ORIENTATION_PROGRESS",
       "result": "ALL_INDEX_COHERENT_CONE_ORBIT_EQUALS_TERMINAL_INDEPENDENT_TAIL;SOURCE_RECURRENCE_RATIO_RECEIVER;TARGET_7753_FULL_7817_Q3_CHECK_PASS;ALL_MUTANTS_FIRE",
       "honesty": "NO_PSWF_EXISTENCE_NO_SOURCE_CONE_MEMBERSHIP_NO_WEYL_LABEL_NO_OPERATOR_NO_SCHUR_INERTIA_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T02:21:43+02:00",
+      "event": "G5_MODE4_CANONICAL_SQUARE_SUMMABLE_TAIL_COEFFICIENT_ROW_PROVED",
+      "progress_class": "PROOF_AND_RECESSIVE_ROW_CONSTRUCTION_PROGRESS",
+      "result": "POSITIVE_NORMALIZED_ROW;HALF_POWER_DECAY;SQUARE_SUMMABLE;RATIO_EQUALS_TAIL;PROJECT_AND_DLMF_RECURRENCES;TARGET_7754_FULL_7817_Q3_CHECK_PASS;NORMALIZATION_PHASE_INDEX_MUTANTS_FIRE",
+      "honesty": "ABSTRACT_CANONICAL_ROW_ONLY_NOT_IDENTIFIED_WITH_REGULAR_PSWF_NO_WEYL_LABEL_NO_OPERATOR_NO_SCHUR_INERTIA_NO_BUS_010_NOT_RH"
     }
   ]
 }

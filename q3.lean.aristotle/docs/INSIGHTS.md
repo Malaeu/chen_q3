@@ -49804,3 +49804,29 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   the next Lean construction candidate
   `D0Mode4PSWFTailCoefficientSquareSummable.lean`.  G5/S1 remains OPEN;
   Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
+
+## 2026-08-05 — G5 canonical square-summable tail row (proved)
+
+- `D0Mode4PSWFTailCoefficientSquareSummable.lean` executes Proshka's named
+  next node after Riccati-orbit uniqueness.  It defines the normalized row
+  `u 0 = 1`, `u (n+1) = R_(K+n) * u n` without introducing a spectral object.
+- The committed tail is strictly positive in the certified cone regime.  The
+  row therefore satisfies `u n > 0`, so every ratio is legal and exactly
+  `u (n+1) / u n = mode4RightTailLimit ... (K+n)`.
+- The cone upper endpoint gives `u n <= (1/2)^n`; comparison with the
+  geometric series `(1/4)^n` proves `Summable (fun n => (u n)^2)`.
+- The all-index tail equation yields the exact project Jacobi recurrence.
+  The completed three-coefficient crosswalk then yields the exact DLMF
+  even-Legendre recurrence with the source signs and energy shift unchanged.
+- Normalization-zero, phased-negative-row, and source-index-shift mutants all
+  fail.  The restored file passes direct Lean, `q3_check`, target build
+  `7754/7754`, and full build `7817/7817`; hole/forbidden-declaration scan is
+  empty and all seven public theorems use only `propext`,
+  `Classical.choice`, and `Quot.sound`.
+- This constructs an abstract square-summable recurrence row; it does not yet
+  prove that the source-regular PSWF coefficient row is this row.  The precise
+  remaining identification is
+  `PSWF_REGULAR_COEFFICIENT_ROW_EQUALS_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW`,
+  followed by Hermitian similarity/boundary self-energy and Schur inertia.
+  G5/S1 remains OPEN; Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains
+  VOID.
