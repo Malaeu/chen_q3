@@ -49863,3 +49863,28 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `D0Mode4JacobiHermitianTailUniqueness.lean`, using the discrete Wronskian;
   source regular-row identification remains downstream.  G5/S1 remains
   OPEN; Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
+
+## 2026-08-05 — G5 Hermitian square-summable tail uniqueness (proved)
+
+- `D0Mode4JacobiHermitianTailUniqueness.lean` proves that any two
+  square-summable solutions of the exact symmetric mode-four Jacobi tail
+  recurrence are proportional, provided the reference solution has nonzero
+  initial coefficient.
+- The proof uses the weighted discrete Wronskian.  The recurrence makes its
+  Jacobi flux constant; square summability makes both rows tend to zero; the
+  symmetric off-diagonal is positive and bounded above by `G`, so the constant
+  flux is zero.  Initial proportionality then propagates by the two-step
+  recurrence.
+- Seven semantic falsifiers fire: wrong left or right off-diagonal index,
+  flipped center sign, shifted Wronskian weight, removal of the nonzero initial
+  coefficient, removal of the first L2 hypothesis, and replacement of the
+  second L2 hypothesis by a redundant first-row hypothesis.
+- Validation passed: direct Lean; target build `7756/7756`; full build
+  `7817/7817`; `q3_check`; zero holes or forbidden declarations.  The public
+  theorem depends only on `propext`, `Classical.choice`, and `Quot.sound`; the
+  proof DB imported all four declarations.
+- This is still source-neutral.  It does not construct a regular PSWF or show
+  that its scaled even-Legendre coefficients form a nonzero square-summable
+  solution of this exact recurrence.  That source-locked identification is the
+  next obligation.  G5/S1 remains OPEN; Route B remains
+  `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
