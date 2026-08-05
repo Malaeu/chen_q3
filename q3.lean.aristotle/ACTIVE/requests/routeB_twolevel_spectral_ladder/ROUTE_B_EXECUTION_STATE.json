@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T07:31:06+02:00",
+  "updated_at": "2026-08-05T07:54:27+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_PROSHKA_ADJUDICATION_IN_PROGRESS",
+  "operational_status": "G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.V2_OWNER_REVIEW",
-    "name": "CCMSectorCell13N2RealReceiverV2OwnerReview",
-    "status": "PROSHKA_ADJUDICATION_IN_PROGRESS_BEFORE_OWNER_SUBMISSION_DECISION",
-    "stop_code": "G2_CCM_054_1_PROSHKA_ADJUDICATION_IN_PROGRESS",
+    "contract_obligation": "G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK",
+    "name": "CCMCell13N2AntipodalClassCrosswalk",
+    "status": "ACTIVE_ONE_THEOREM_SOURCE_IDENTITY",
+    "stop_code": "G2_CCM_CELL13N2_ANTIPODAL_SOURCE_IDENTITY_GAP",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Proshka adjudication, then owner file review",
-    "next_action": "Wait for the complete Proshka 054.1b/v2 adjudication without clicking Answer now; record exact UI and wall time; then audit the verdict. Aristotle submission still requires explicit owner approval. Keep Goal 055 as a draft outside the bus and do not create Bus 010.",
-    "ccm_classification": "054_1_SURROGATE_REJECTED_LOG_SUPPLIER_STANDARD_TRIPLE_V2_ONE_SORRY",
-    "ccm_repoint": "G2_H2A_SECTOR_CELL_13_2_OWNER_REVIEW_PENDING",
+    "next_required_actor": "Codex local Lean worker",
+    "next_action": "Implement exactly one source-only theorem ccmWeilTauN1_neg_self_eq_neg_zero in CCMFiniteWeilCell13N2ClassCrosswalk.lean; validate direct/target/full/q3_check/taint/axioms/plants. Do not submit Aristotle, materialize Goal 055, or create Bus 010.",
+    "ccm_classification": "054_1B_REPAIR_REQUIRED_V2_SPLIT_REQUIRED_HOLD_055_RATIFIED",
+    "ccm_repoint": "G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -33,12 +33,17 @@
       "classification": "SURROGATE_REJECTED_REAL_SOURCE_SKELETON_READY",
       "aristotle_project_id": "36061787-afe1-4d64-bb55-905fce1411a6",
       "archive_sha256": "96cf54311849458752416672e87dce83083dfdc9290ec7d756bfa09ddb29cd98",
-      "log_supplier_status": "MATHLIB_ONLY_DIRECT_LEAN_PASS_STANDARD_AXIOM_TRIPLE_PROSHKA_ADJUDICATION_IN_PROGRESS",
-      "v2_status": "DIRECT_LEAN_PASS_EXACTLY_ONE_SORRY_PROSHKA_ADJUDICATION_IN_PROGRESS_OWNER_SUBMISSION_APPROVAL_PENDING",
+      "log_supplier_status": "ACCEPT_054_1B_ONLY_AFTER_INTERFACE_REPAIR_NO_MATH_CHANGE",
+      "v2_status": "DO_NOT_SUBMIT_054_1_V2_SPLIT_REQUIRED",
+      "goal_055_status": "HOLD_055_RATIFIED_DRAFT_OUTSIDE_BUS",
       "proshka_conversation_id": "6a72c9d4-ea88-83eb-a06f-99bc5364f647",
       "proshka_sent_at": "2026-08-05T07:27:48.554+02:00",
+      "proshka_completed_at": "2026-08-05T07:51:54.909+02:00",
+      "proshka_ui_reasoning": "23m10s",
+      "proshka_observed_wall_seconds": 1446,
+      "proshka_response_sha256": "81226e3d85bcd432a17687f7873d05e4103e31e5b7aa47694ef7ca7ea02894e3",
       "answer_now_clicked": false,
-      "goal_055_status": "DRAFT_OUTSIDE_BUS_HOLD"
+      "next_node": "G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 99,
-  "updated_at": "2026-08-05T07:31:06+02:00",
+  "revision": 100,
+  "updated_at": "2026-08-05T07:54:27+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1.V2_OWNER_REVIEW",
+    "active_node_id": "G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_PROSHKA_ADJUDICATION_IN_PROGRESS",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1.V2_OWNER_REVIEW",
+    "lifecycle": "G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK_ACTIVE",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1936,10 +1936,25 @@
       "ordered_children": [],
       "assembly_theorem_id": null,
       "proof_status": "OPEN",
-      "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "OWNER_DIRECTED_PREEMPTION;ARISTOTLE_SUBMISSION_REQUIRES_EXPLICIT_OWNER_FILE_REVIEW"},
-      "validation": "SURROGATE_ARCHIVE_SHA;MATHLIB_ONLY_CONSTANTS_DIRECT_LEAN_AND_AXIOM_AUDIT;V2_ONE_SORRY_SKELETON_DIRECT_LEAN;PROSHKA_CONVERSATION_6A72C9D4_IN_PROGRESS;ANSWER_NOW_NOT_CLICKED;OWNER_REVIEW_AFTER_VERDICT",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "PROSHKA_DO_NOT_SUBMIT_054_1_V2_SPLIT_REQUIRED;OWNER_APPROVAL_GATE_NOT_REACHED"},
+      "validation": "PROSHKA_RESPONSE_80197A13;UI_REASONING_23M10S;RESPONSE_SHA256_81226E3D;ANSWER_NOW_NOT_CLICKED;HOLD_055_RATIFIED",
       "failure_codes": ["G2_CCM_SECTOR_CELL_13_2_ARB_TO_LEAN_ENCLOSURE_GAP"]
+    },
+    "G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK": {
+      "id": "G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Prove the exact source identity ccmWeilTauN1 mProject (-r) r = ccmWeilTauN1 mProject (-r) 0, supplying the missing r=2 class crosswalk without numerical endpoints",
+      "dependencies": [],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
+      "proof_status": "OPEN",
+      "activity": "ACTIVE",
+      "eligibility": {"eligible": true, "reason": "PROSHKA_SELECTED_SMALLEST_SOURCE_ONLY_SPLIT;NO_ARISTOTLE_OR_NUMERIC_CERTIFICATE_REQUIRED"},
+      "validation": "DIRECT_LEAN;TARGET_BUILD;FULL_BUILD;Q3_CHECK;SECTORCELL_TAINT;STANDARD_AXIOM_TRIPLE;THREE_ANTIPODAL_PLANTS",
+      "failure_codes": ["G2_CCM_CELL13N2_ANTIPODAL_SOURCE_IDENTITY_GAP"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4109,12 +4124,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1_PROSHKA_ADJUDICATION_IN_PROGRESS",
-    "mode": "G2_CCM_054_1_PROSHKA_ADJUDICATION_IN_PROGRESS",
-    "current_leaf": "G2.CCM.054_1.V2_OWNER_REVIEW",
+    "current_stop": "G2_CCM_CELL13N2_ANTIPODAL_SOURCE_IDENTITY_GAP",
+    "mode": "G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK_ACTIVE",
+    "current_leaf": "G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T07:51:54.909+02:00",
+      "event": "G2_CCM_054_1_PROSHKA_ADJUDICATION_COMPLETED_AND_SPLIT_SELECTED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROSHKA_MESSAGE_80197A13;EXACT_UI_REASONING_23M10S;OBSERVED_WALL_1446S;RESPONSE_SHA256_81226E3D;054_1B_REPAIR_REQUIRED;054_1_V2_DO_NOT_SUBMIT_SPLIT_REQUIRED;HOLD_055_RATIFIED;ANTIPODAL_CLASS_CROSSWALK_SELECTED",
+      "honesty": "JUDGE_DID_NOT_RERUN_LEAN_NO_ARISTOTLE_SUBMISSION_NO_G2_OR_H2A_CLOSURE_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T07:27:48.554+02:00",
       "event": "G2_CCM_054_1_LOG_SUPPLIER_AND_REAL_V2_PROSHKA_ADJUDICATION_STARTED",

@@ -369,3 +369,35 @@ notes: >-
   and affine-transport barriers with standard axioms only; production still
   must materialize only the authorized recurrence theorem.
 ```
+
+### 2026-08-05 — G2 CCM Goal 054.1b / real 054.1-v2 adjudication
+
+```yaml
+proof_address: RouteB.G2.CCM.054_1
+front: G2/H2a
+transaction: G2_CCM_054_1B_V2_ADJUDICATION
+conversation_id: 6a72c9d4-ea88-83eb-a06f-99bc5364f647
+request_message_id: cf0ec589-2b55-4940-8339-13889804ec4a
+sent_at: 2026-08-05T07:27:48.554+02:00
+completed_at: 2026-08-05T07:51:54.909+02:00
+wall_seconds: 1446
+wall_human: "24m06s observed wall; 23m10s exact UI reasoning duration"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G2_CCM_CELL13N2_ANTIPODAL_CLASS_CROSSWALK
+status: COMPLETE_SPLIT_REQUIRED
+result_pointer: "Proshka assistant message 80197a13-a587-4171-951c-9cae3078a0e5"
+notes: >-
+  Fresh project chat in RH_Marz_2026. The context pack SHA-256 is
+  e14b5e13aeb1c9f72516b2767b877dd6d309e8cce85905990f604950d37c903b;
+  the standalone prompt SHA-256 is
+  6f52adb5abefa579f5370f0f5180cc4f3088540d491799a3667278ba10732f1d.
+  Proshka classified 054.1b as ACCEPT_054_1B_ONLY_AFTER_REPAIR, classified
+  054.1-v2 as DO_NOT_SUBMIT_054_1_V2_SPLIT_REQUIRED, and ratified HOLD_055.
+  The 25023-character visible response has SHA-256
+  81226e3d85bcd432a17687f7873d05e4103e31e5b7aa47694ef7ca7ea02894e3
+  and exactly one CODEX DIRECTIVE. The next source-only node is the missing
+  exact antipodal class crosswalk ccmWeilTauN1_neg_self_eq_neg_zero. No
+  Aristotle submission, Goal 055 materialization, Bus 010, route promotion,
+  H2a closure, G2 closure, or RH claim is authorized.
+```

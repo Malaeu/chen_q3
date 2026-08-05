@@ -50191,3 +50191,14 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Goal 055 remains a draft outside the bus until the v2 hole is closed and the
   standard-triple gate passes.  The absent verbatim `P-LEAN-1..5` payload must
   be copied from the authoritative Proshka directive, never reconstructed.
+# 2026-08-05 — G2 CCM cell 13/2 antipodal class crosswalk (in progress)
+
+- Target: `Q3.RouteB.ccmWeilTauN1_neg_self_eq_neg_zero`; it supplies the missing exact `(-2,2)=(-2,0)` crosswalk behind the seven A–G endpoint classes.
+- Production source: `Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean`; the existing `r=1` chain already proves the same identity componentwise.
+- The four `q3_docs` embedding queries returned no hits, so no indexed paper theorem or earlier project lemma closes the general case.
+- For `r ≠ 0`, both kernel calls are off-diagonal and reduce by `Real.sin_neg`, nonzero integer casts, `field_simp`, and `ring`.
+- `ccmPrimeEntryN1` follows by `Finset.sum_congr`; `ccmWRIntegrand` and `ccmWREntry` follow by exact kernel rewriting and `setIntegral_congr_fun`.
+- `ccmW02Entry` needs a separate `L = 0` branch; the nonzero branch is exact rational field normalization with `Real.pi_ne_zero`.
+- The final `ccmWeilTauN1` theorem is source-only: no Arb artifact, endpoint, log supplier, numerical bound, or Aristotle result enters its proof.
+- Validation gate: direct Lean, target build, full build, `q3_check`, broad SectorCell taint scan, three mutants, and standard axiom triple only.
+- This is representation progress only; `054.1-v2`, H2a, G2, Goal 055, route promotion, Bus 010, and RH all remain open/held.
