@@ -50281,7 +50281,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Goal 055 remains held; `054.1-v2`, H2a, and G2 remain open.  No Aristotle
   submission, Bus 010, route promotion, or RH claim is authorized.
 
-# 2026-08-05 — CCM cell 13/2 W02 seven-class exact normal form (in progress)
+# 2026-08-05 — CCM cell 13/2 W02 seven-class exact normal form (proved)
 
 - Exact target: `Q3.RouteB.ccmW02Entry_13_seven_class_normal_form`, one public
   theorem in a new file importing only the proved finite von-Mangoldt module.
@@ -50299,9 +50299,12 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The three load-bearing checks are: the sign of the mixed mode product, the
   distinction between the mode-one and mode-two squared denominators, and the
   single central cancellation of `ccmL 13`.
-- Direct Lean already passes with exactly the standard axiom triple.  Target
-  and full builds, `q3_check`, taint/public-surface scans, and three separate
-  mutants remain required before the node can be called proved.
+- Final validation passes: direct Lean; target `7748`; full `7817`;
+  `q3_check`; no taint; one public theorem and no public definition; standard
+  axiom triple only.  File SHA-256 is
+  `79cfceeb52d7996bbb7a92256b580c4fb7302911166e65613e7eff9fbad49768`.
+- All three separate mutants fire on the intended facts: mixed-product sign,
+  mode-one versus mode-two denominator, and the central `1/L` cancellation.
 - This is representation progress only.  It supplies no rational bound for
   W02, WR, a prime kernel, an integral, or a final entry; Goal 055 remains held,
   Aristotle remains unauthorized, Bus 010 remains void, and the route remains
