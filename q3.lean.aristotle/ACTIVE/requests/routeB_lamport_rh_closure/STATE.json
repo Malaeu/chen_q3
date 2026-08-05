@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 116,
-  "updated_at": "2026-08-05T12:00:18.143+02:00",
+  "revision": 117,
+  "updated_at": "2026-08-05T12:16:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_ACTIVE",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK_AWAITING_AUTHORIZATION",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Codex local Lean worker under standing owner release",
-    "next_action": "Prove exactly one public seven-representative ccmWeilTauN1 13 nonintegral-constant normal form with five private plants and no independent component intervals; keep Goal 055 held and do not create Bus 010 or submit Aristotle"
+    "next_actor": "Owner",
+    "next_action": "Authorize and supply a source-locked removable-endpoint plus rational quadrature/error certificate, or a direct kernel-checkable whole-expression verifier, for the seven relative WR integral inequalities; keep Goal 055 held and do not create Bus 010 or submit Aristotle"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
+    "active_node_id": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_ACTIVE",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
+    "lifecycle": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK_AWAITING_AUTHORIZATION",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -2116,11 +2116,26 @@
       "dependencies": ["G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_PROVED_AND_VALIDATED"},
+      "validation": "SHA256_8D5992F1;DIRECT_PASS;TARGET_7750;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS;P_NIC_1_2_3_4_5_ALL_FIRED;SEVEN_LITERAL_INTEGRALS_RETAINED;NO_COMPONENT_INTERVALS",
+      "failure_codes": []
+    },
+    "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK": {
+      "id": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "OWNER_FORK",
+      "statement": "Supply and authorize a source-locked rational verifier for the seven literal relative WR integral inequalities after exact cancellation-preserving normalization",
+      "dependencies": ["G2.CCM.054_1.SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM"],
+      "ordered_children": [],
+      "assembly_theorem_id": "Q3.RouteB.ccmCell13N2_wr_enclosures",
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "SELECTED_BY_PROSHKA_AND_RELEASED_BY_STANDING_OWNER_ROOF_LOOP_AUTHORITY"},
-      "validation": "PENDING_PRIVATE_P_NIC_1_2_3_4_5_PREFLIGHT_THEN_DIRECT_TARGET_FULL_Q3CHECK_TAINT_PUBLIC_SURFACE_AXIOMS",
-      "failure_codes": ["G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_MISSING"]
+      "eligibility": {"eligible": false, "reason": "OWNER_AUTHORIZATION_AND_SOURCE_LOCKED_ANALYTIC_CERTIFICATE_DATA_REQUIRED"},
+      "validation": "REQUIRE_REMOVABLE_ENDPOINT_CERTIFICATE;COMPLETE_PARTITION_OR_DIRECT_WHOLE_EXPRESSION_VERIFIER;DIRECTED_ROUNDING_AND_ERROR_LEDGER;SOURCE_AND_CERTIFICATE_HASHES;INDEPENDENT_COMPONENT_INTERVALS_FORBIDDEN",
+      "failure_codes": ["G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_DATA_REQUIRED"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4290,12 +4305,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_MISSING",
-    "mode": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_ACTIVE",
-    "current_leaf": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
+    "current_stop": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_DATA_REQUIRED",
+    "mode": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK_AWAITING_AUTHORIZATION",
+    "current_leaf": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T12:16:00+02:00",
+      "event": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_PROVED",
+      "progress_class": "REPRESENTATION_AND_PROOF_PROGRESS",
+      "result": "SHA256_8D5992F1;DIRECT_PASS;TARGET_7750;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS;P_NIC_1_2_3_4_5_ALL_FIRED;SEVEN_LITERAL_INTEGRALS_RETAINED;NO_COMPONENT_INTERVALS;NEXT_OWNER_FORK_RELATIVE_WR_INTEGRAL_ENCLOSURES",
+      "honesty": "NO_INTEGRAL_ENCLOSURE_NO_CCMCELL13N2_WR_ENCLOSURES_NO_054_1_V2_INTEGRATION_GOAL_055_HELD_OUTSIDE_BUS_OWNER_FORK_NOT_AUTHORIZED_NO_ARISTOTLE_SUBMISSION_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T12:00:18.143+02:00",
       "event": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION_COMPLETED",

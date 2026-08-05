@@ -50330,3 +50330,27 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - This is exact representation/proof progress only. WR constant and integral
   walls remain open; Goal 055 remains a held draft outside the bus; no
   Aristotle submission, Bus 010, route promotion, H2a/G2 closure, or RH claim.
+
+# 2026-08-05 — CCM cell 13/2 nonintegral-constant exact normal form (proved)
+
+- Exact target:
+  \`Q3.RouteB.ccmWeilTauN1_13_seven_class_nonintegral_constant_normal_form\`,
+  one public theorem in a new file importing only the proved Prime module.
+- The theorem assembles each literal final scalar as \`W02 - WR - Prime\`,
+  normalizes the WR constant exactly to Euler gamma plus \`log (24*pi/7)\`
+  on the three diagonal representatives, and retains every literal WR
+  integral. No independent component interval or outward rounding is used.
+- All seven q-kernel values at zero are exact: diagonal classes have value two
+  and off-diagonal classes zero. The source factor \`q(0)/2\` therefore gives
+  exactly one diagonal constant and no off-diagonal constant.
+- P-NIC-1..5 all fire substantively on selector, source logarithm argument,
+  half factor, subtraction orientation, and asymmetric label integrity.
+- Final validation passes: direct Lean; target \`7750\`; full \`7817\`;
+  \`q3_check\`; no taint; one public theorem and no public definition; standard
+  axiom triple only. File SHA-256 is
+  \`8d5992f1ee4bd6d6f6f915ceb1339889621f8e3d4f0bbc259e7de5725302f9fe\`.
+- No further exact-normal-form theorem is warranted. The next gate is the
+  genuine owner fork for seven source-locked relative WR integral enclosures,
+  requiring a removable-endpoint/quadrature/error certificate or a direct
+  whole-expression verifier. Goal 055 remains held; no Aristotle submission,
+  Bus 010, route promotion, H2a/G2 closure, or RH claim is authorized.

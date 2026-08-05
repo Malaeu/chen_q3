@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T12:00:18.143+02:00",
+  "updated_at": "2026-08-05T12:16:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_ACTIVE",
+  "operational_status": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK_AWAITING_AUTHORIZATION",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
-    "name": "CCMCell13N2SevenRepresentativeNonintegralConstantExactNormalForm",
-    "status": "ACTIVE_OWNER_RELEASED_LEAN_IMPLEMENTATION",
-    "stop_code": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_MISSING",
+    "contract_obligation": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK",
+    "name": "CCMCell13N2SevenRepresentativeRelativeWRIntegralEnclosuresOwnerFork",
+    "status": "OWNER_FORK_AWAITING_AUTHORIZATION_AND_SOURCE_LOCKED_CERTIFICATE_DATA",
+    "stop_code": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_DATA_REQUIRED",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Codex local Lean worker under standing owner release",
-    "next_action": "Preflight P-NIC-1..5 privately, then prove exactly one public ccmWeilTauN1 13 seven-representative nonintegral-constant normal form retaining all literal integrals; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "POST_PRIME_ADJUDICATION_COMPLETE_NONINTEGRAL_CONSTANT_SEVEN_REPRESENTATIVE_NORMAL_FORM_SELECTED_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
+    "next_required_actor": "Owner",
+    "next_action": "Authorize and supply source-locked removable-endpoint and rational quadrature/error data, or a direct kernel-checkable whole-expression verifier, for seven relative WR integral inequalities; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "NONINTEGRAL_CONSTANT_SEVEN_REPRESENTATIVE_NORMAL_FORM_PROVED_ANALYTIC_RELATIVE_WR_INTEGRAL_OWNER_FORK_OPEN_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "OWNER_FORK_G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -137,6 +137,11 @@
       ,"post_prime_prompt_report_sha_metadata_status": "PRE_FINAL_LF_STALE_CONTEXT_AND_PINNED_CONTENT_EXACT"
       ,"post_prime_selected_node": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM"
       ,"next_node_after_post_prime_adjudication": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM"
+      ,"nonintegral_constant_status": "DIRECT_TARGET_7750_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_ALL_FIVE_PLANTS_FIRED_SEVEN_LITERAL_INTEGRALS_RETAINED_NO_COMPONENT_INTERVALS"
+      ,"nonintegral_constant_sha256": "8d5992f1ee4bd6d6f6f915ceb1339889621f8e3d4f0bbc259e7de5725302f9fe"
+      ,"nonintegral_constant_report_sha256": "9fb47b953ab9e07ef9c32931a3fbb25392c3a5feb1c04f5e36e382058f0e26cc"
+      ,"next_node_after_nonintegral_constant": "OWNER_FORK_G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES"
+      ,"relative_wr_integral_owner_fork_authorized": false
     },
     "d0_7e_5a": {
       "historical_exit_codes": [
