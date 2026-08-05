@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 86,
-  "updated_at": "2026-08-05T05:04:35+02:00",
+  "revision": 87,
+  "updated_at": "2026-08-05T05:07:20+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1353,7 +1353,7 @@
         "answer_now_clicked": false
       },
       "regular_pswf_coefficient_row_source_gate": {
-        "status": "ROOT_TO_NORMALIZED_RECURRENCE_ROW_PROVED_FERRERS_REGULAR_SOLUTION_OPEN",
+        "status": "ROOT_TO_NORMALIZED_RECURRENCE_ROW_PROVED_FERRERS_REGULAR_SOLUTION_THEOREM_SHAPE_AUDIT_OPEN",
         "pinned_head": "9e462d94",
         "q3_docs_queries": 4,
         "q3_docs_candidates": 0,
@@ -1439,6 +1439,42 @@
           "answer_now_shown": true,
           "answer_now_clicked": false,
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
+        },
+        "ferrers_regular_solution_gate": {
+          "status": "OPEN_THEOREM_SHAPE_AUDIT",
+          "pinned_head": "a637ad11",
+          "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
+          "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
+          "q3_docs_queries": 5,
+          "q3_docs_candidates": 0,
+          "mathlib_available": [
+            "Polynomial.shiftedLegendre",
+            "Polynomial.factorial_mul_shiftedLegendre_eq",
+            "Polynomial.degree_shiftedLegendre",
+            "Polynomial.shiftedLegendre_eval_symm",
+            "hasDerivAt_tsum",
+            "contDiff_tsum"
+          ],
+          "mathlib_gaps": [
+            "ORDINARY_LEGENDRE_POLYNOMIAL_API_ON_MINUS_ONE_ONE",
+            "LEGENDRE_ORTHOGONALITY_AND_EXACT_NORM",
+            "LEGENDRE_THREE_BAND_X_SQUARED_ACTION",
+            "LEGENDRE_DIFFERENTIAL_EXPRESSION_IDENTITY",
+            "UNIFORM_FIRST_SECOND_DERIVATIVE_BOUNDS"
+          ],
+          "primary_source": [
+            "DLMF_18_14_1_JACOBI_BOUND_SPECIALIZES_TO_ABS_LEGENDRE_LE_ONE",
+            "DLMF_14_10_3_LEGENDRE_THREE_TERM_RECURRENCE",
+            "DLMF_14_10_4_14_10_5_DERIVATIVE_RELATIONS",
+            "DLMF_14_17_7_ORTHOGONALITY",
+            "DLMF_30_8_1_FERRERS_EXPANSION_WITH_EXTERNAL_PHASE",
+            "DLMF_30_8_3_30_8_4_COEFFICIENT_RECURRENCE"
+          ],
+          "candidate_F0": "ORDINARY_LEGENDRE_ALGEBRAIC_LIBRARY_PARITY_RECURRENCE_ODE_X2_ACTION",
+          "candidate_F1": "SOURCE_LOCKED_UNIFORM_VALUE_AND_FIRST_SECOND_DERIVATIVE_BOUNDS",
+          "candidate_F2": "FULL_GEOMETRIC_COEFFICIENT_FERRERS_SERIES_REGULAR_SOLUTION",
+          "next_action": "PROSHKA_SELECT_SMALLEST_EXECUTABLE_FERRERS_NODE",
+          "honesty": "NO_FERRERS_FUNCTION_NO_REGULAR_ENDPOINT_NO_FIRST_KIND_NAME_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
         }
       }
     },
@@ -4422,6 +4458,13 @@
       "progress_class": "REPRESENTATION_AND_PROOF_PROGRESS",
       "result": "RAW_LEFT_ROW_ALL_INDEX_RECURRENCE;NONZERO_K_MINUS_1;EXACT_CANONICAL_TAIL_SPLICE;GLOBAL_RAW_L2;FINITE_POSITIVE_WEIGHTED_TOTAL;NORMALIZATION_ONE;BOUNDARY_FLUX_CONSUMER_INSTANTIATED;TARGET_7760_FULL_7817_Q3_CHECK_PASS;SEVEN_OF_SEVEN_MUTANTS_REJECTED;DB_SEVEN_OF_SEVEN_PROVEN",
       "honesty": "LEAN_ONLY_RECURRENCE_ROW_NO_FERRERS_SERIES_NO_ENDPOINT_REGULARITY_NO_REGULAR_PSWF_NO_FIRST_KIND_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T05:07:20+02:00",
+      "event": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION_THEOREM_SHAPE_AUDIT_OPENED",
+      "progress_class": "SOURCE_RESEARCH_AND_REPRESENTATION_AUDIT_IN_PROGRESS",
+      "result": "FIVE_Q3_DOCS_QUERIES_EMPTY;MATHLIB_SHIFTED_LEGENDRE_BASIC_API_AND_GENERIC_SMOOTH_SERIES_FOUND;DLMF_VALUE_BOUND_RECURRENCE_DERIVATIVE_ORTHOGONALITY_AND_FERRERS_EXPANSION_PINNED;F0_F1_F2_FORK_NEXT",
+      "honesty": "NO_READY_ORDINARY_LEGENDRE_OR_UNIFORM_DERIVATIVE_RECEIVER_IN_MATHLIB_NO_FERRERS_FUNCTION_NO_REGULAR_PSWF_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
     }
   ]
 }

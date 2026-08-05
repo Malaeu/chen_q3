@@ -50013,3 +50013,32 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   branch.  The next exact gap is
   `G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION`; G5/S1 remains OPEN, Route B
   remains `CHALLENGER / NOT_RH`, and Bus 010 remains VOID.
+
+## 2026-08-05 — G5 Ferrers-series regular-solution gate (in progress)
+
+- Exact target: from the proved matched normalized unphased row `a`, define
+  `ψ(x) = Σ q, (-1)^q * a q * P_(2q)(x)` and prove a nonzero even regular
+  solution of the prolate differential equation, including the endpoint flux
+  limit.  Ordered degree-zero branch identification remains a later theorem.
+- Five `q3_docs` embedding queries returned no candidate.  The pinned Mathlib
+  has `Polynomial.shiftedLegendre`, its Rodrigues identity, degree, and parity,
+  plus generic `hasDerivAt_tsum` and `contDiff_tsum` series APIs.
+- Mathlib does not provide the required ordinary-Legendre package on
+  `[-1,1]`: exact orthogonality/norm, the `x²` three-band action, the Legendre
+  differential-expression identity, or uniform first/second derivative
+  bounds suitable for the coefficient series.
+- Primary-source anchors are DLMF 18.14.1 (`|P_n(x)| ≤ 1` as the
+  `α=β=0` Jacobi case), 14.10.3--14.10.5 (recurrence and derivative
+  relations), 14.17.7 (orthogonality), and 30.8.1--30.8.4 (external
+  `(-1)^q` Ferrers phase and coefficient recurrence).
+- The proved exact canonical splice gives geometric coefficient decay after
+  the finite prefix.  Therefore any polynomial-in-degree derivative bound is
+  analytically sufficient for uniform convergence of the value, first, and
+  second derivative series; DLMF 30.8.7 is still unnecessary.
+- Current theorem-shape fork: F0 first build a source-neutral ordinary
+  Legendre algebraic library (parity, recurrence, ODE, `x²` action); F1 first
+  prove the source-locked uniform value/derivative bounds; or F2 attempt the
+  full Ferrers regular-solution theorem in one node.  Proshka must select the
+  smallest executable node before implementation.
+- No Ferrers function, endpoint regularity, first-kind/PSWF name, ordered
+  spectral label, route promotion, Bus 010, or RH claim is made at this gate.
