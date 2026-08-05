@@ -49889,7 +49889,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   next obligation.  G5/S1 remains OPEN; Route B remains
   `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
 
-## 2026-08-05 — G5 regular PSWF coefficient-row source gate (in progress)
+## 2026-08-05 — G5 regular PSWF coefficient-row source gate (receiver selected)
 
 - Exact target: turn the regular even PSWF Ferrers/Legendre coefficient row
   into a nonzero square-summable solution of the already committed symmetric
@@ -49904,9 +49904,22 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   integral, three-term recurrence, and nonzero weighted normalization.  DLMF
   30.8.7 gives the ratio asymptotic of order `gamma^2/(16 k^2)`, while
   30.16(ii) identifies these coefficients as the recessive solution.
-- Candidate A is the narrow receiver `DLMF asymptotic + normalization ->
-  source row square-summable and nonzero`.  Candidate B consumes an already
-  supplied source row and proves equality up to a nonzero scalar with the
-  canonical Hermitian tail.  Proshka must select the smallest executable one.
+- Proshka message `4dc98809-eb18-4cb6-abb7-5283956b1d05` completed after
+  exact UI reasoning `27m23s` (`28m28s` observed wall including polling lag);
+  `Answer now` was shown and never clicked.  It rejected Candidate A as an
+  over-strong raw-L2/ratio-asymptotic route and Candidate B as a premature
+  conditional wrapper.
+- The selected smaller receiver uses the exact identity
+  `4 * (K - 1 + n) + 1 = 4 * (K + n) - 3`: the DLMF 30.8.5 weight is exactly
+  the square of the committed Hermitian scale, up to the fixed factor
+  `4*K-3`.  Thus 30.8.5 directly supplies the shifted Hermitian-row L2 input
+  consumed by Wronskian uniqueness; 30.8.7, coefficient division, eventual
+  nonvanishing, and raw unweighted L2 are not prerequisites for this consumer.
+- The chosen file is
+  `D0Mode4PSWFLegendreWeightedHermitianTail.lean`, containing only the exact
+  pointwise weight identity and the conditional 30.8.5 receiver.  The next
+  consumer is `mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical`.
+- Source supply remains open: the receiver accepts an anonymous sequence and
+  does not construct or identify a regular first-kind PSWF coefficient row.
 - No full Sturm--Liouville construction, PSWF existence claim, Weyl label,
   operator/resolvent assertion, route promotion, Bus 010, or RH claim is made.

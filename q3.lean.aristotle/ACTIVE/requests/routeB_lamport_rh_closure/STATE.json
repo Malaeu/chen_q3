@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 78,
-  "updated_at": "2026-08-05T03:31:21+02:00",
+  "revision": 79,
+  "updated_at": "2026-08-05T03:57:01.589+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1353,7 +1353,7 @@
         "answer_now_clicked": false
       },
       "regular_pswf_coefficient_row_source_gate": {
-        "status": "PROSHKA_THEOREM_SHAPE_ADJUDICATION_RUNNING",
+        "status": "DLMF3085_WEIGHT_MATCH_RECEIVER_SELECTED_NOT_YET_MATERIALIZED",
         "pinned_head": "9e462d94",
         "q3_docs_queries": 4,
         "q3_docs_candidates": 0,
@@ -1368,8 +1368,14 @@
           "DLMF_30_8_7_RECESSIVE_RATIO_ASYMPTOTIC",
           "DLMF_30_16_II_RECESSIVE_SOLUTION_AND_NORMALIZATION"
         ],
-        "candidate_A": "DLMF_RECESSIVE_RATIO_AND_NORMALIZATION_TO_SOURCE_COEFFICIENT_L2_AND_NONZERO",
-        "candidate_B": "SOURCE_SQUARE_SUMMABLE_RECURRENCE_ROW_TO_CANONICAL_HERMITIAN_TAIL_UP_TO_NONZERO_SCALE",
+        "candidate_A": "NOT_SELECTED_OVERSTRONG_RAW_L2_AND_RATIO_ASYMPTOTIC",
+        "candidate_B": "NOT_SELECTED_AS_STATED_UNUSED_CONDITIONAL_WRAPPER",
+        "selected_candidate_C": "DLMF_30_8_5_WEIGHTED_NORMALIZATION_MATCHES_SHIFTED_HERMITIAN_SCALE_EXACTLY",
+        "selected_theorem": "mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable",
+        "selected_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreWeightedHermitianTail.lean",
+        "next_consumer": "mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical",
+        "source_supplier_status": "OPEN",
+        "regular_pswf_row_identification_status": "OPEN",
         "forbidden_overreach": "NO_FULL_STURM_LIOUVILLE_OPERATOR_BUILD_WITHOUT_ADJUDICATION",
         "proshka_review": {
           "conversation_id": "6a7291c1-3ba4-83eb-bbcb-2396b4979290",
@@ -1377,7 +1383,12 @@
           "sent_at": "2026-08-05T03:28:33.025+02:00",
           "context_pack_sha256": "3468c3b26097b6795bf86112aa0a566eafeefbf4aced3adf96e8fd9b6169e74f",
           "full_prompt_sha256": "d222c8e566586c142c98b2bb7fd3f25577caeca2ccae9f443db619f4b8207e8e",
-          "status": "RUNNING",
+          "completed_at_observed": "2026-08-05T03:57:01.589+02:00",
+          "assistant_message_id": "4dc98809-eb18-4cb6-abb7-5283956b1d05",
+          "exact_ui_reasoning_duration": "27m23s",
+          "observed_wall_seconds": 1708,
+          "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+          "primary": "G5_MODE4_SELECT_DLMF3085_WEIGHT_MATCH_RECEIVER",
           "answer_now_shown": true,
           "answer_now_clicked": false
         }
@@ -4307,6 +4318,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;STOP_RESPONSE_STILL_PRESENT;NO_ASSISTANT_VERDICT_YET",
       "honesty": "NO_EARLY_ANSWER_NO_SECOND_PROMPT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T03:57:01.589+02:00",
+      "event": "G5_MODE4_DLMF3085_WEIGHT_MATCH_RECEIVER_SELECTED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROSHKA_MESSAGE_4DC98809;EXACT_UI_REASONING_27M23S;OBSERVED_WALL_1708S;CANDIDATES_A_B_REJECTED;STRICTLY_SMALLER_WEIGHT_MATCH_RECEIVER_SELECTED",
+      "honesty": "CONDITIONAL_RECEIVER_ONLY_SOURCE_OBJECT_AND_REGULAR_PSWF_ROW_IDENTIFICATION_REMAIN_OPEN_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
     }
   ]
 }

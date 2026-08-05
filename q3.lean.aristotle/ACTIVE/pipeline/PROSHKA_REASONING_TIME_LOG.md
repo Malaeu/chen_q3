@@ -206,14 +206,14 @@ transaction: G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE
 conversation_id: 6a7291c1-3ba4-83eb-bbcb-2396b4979290
 request_message_id: d1756a06-cf60-45e1-b4f3-161ba90b395a
 sent_at: 2026-08-05T03:28:33.025+02:00
-completed_at: null
-wall_seconds: null
-wall_human: null
+completed_at: 2026-08-05T03:57:01.589+02:00
+wall_seconds: 1708
+wall_human: 28m28s observed including polling lag
 answer_now_shown: true
 answer_now_clicked: false
-primary: null
-status: RUNNING
-result_pointer: null
+primary: G5_MODE4_SELECT_DLMF3085_WEIGHT_MATCH_RECEIVER
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: Proshka message 4dc98809-eb18-4cb6-abb7-5283956b1d05
 notes: >-
   Fresh chat in project RH_März_2026. The exact context pack has SHA-256
   3468c3b26097b6795bf86112aa0a566eafeefbf4aced3adf96e8fd9b6169e74f;
@@ -228,5 +228,12 @@ notes: >-
   zero denominators, phase/index drift, zero proportionality, conditional-as-
   source wrappers, and full-operator overreach. Generation is running; the UI
   showed Pro-Denkvorgang and Stop response. At 03:31:21+02:00 the early
-  Answer-now action appeared; it was deliberately not clicked.
+  Answer-now action appeared; it was deliberately not clicked. Proshka then
+  completed with exact UI reasoning time 27m23s and selected a strictly
+  smaller Candidate C: DLMF 30.8.5 weighted normalization matches the
+  committed shifted Hermitian scale pointwise, so the immediate receiver can
+  prove precisely the Hermitian-row square summability required by the
+  Wronskian theorem without 30.8.7, coefficient quotients, eventual
+  nonvanishing, or raw unweighted L2. The selected node remains conditional:
+  it does not construct or identify a regular PSWF coefficient sequence.
 ```
