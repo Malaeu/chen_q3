@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T11:43:37.540+02:00",
+  "updated_at": "2026-08-05T12:00:18.143+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+  "operational_status": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
-    "name": "CCMCell13N2PostPrimeKernelNextSplitProshkaAdjudication",
-    "status": "PROSHKA_ADJUDICATION_IN_PROGRESS_FULL_REASONING_TIME_PRESERVED",
-    "stop_code": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_ADJUDICATION_REQUIRED",
+    "contract_obligation": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
+    "name": "CCMCell13N2SevenRepresentativeNonintegralConstantExactNormalForm",
+    "status": "ACTIVE_OWNER_RELEASED_LEAN_IMPLEMENTATION",
+    "stop_code": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_MISSING",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Proshka route architect/reviewer via fresh project chat",
-    "next_action": "Wait for Proshka conversation 6a73059e-6974-83eb-864e-8d60b9446735 to finish naturally; never click Answer now; then archive, audit, select exactly one next node, and sync the gate.",
-    "ccm_classification": "PRIME_KERNEL_SEVEN_REPRESENTATIVE_NORMAL_FORM_PROVED_POST_PRIME_NEXT_SPLIT_ADJUDICATION_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "next_required_actor": "Codex local Lean worker under standing owner release",
+    "next_action": "Preflight P-NIC-1..5 privately, then prove exactly one public ccmWeilTauN1 13 seven-representative nonintegral-constant normal form retaining all literal integrals; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "POST_PRIME_ADJUDICATION_COMPLETE_NONINTEGRAL_CONSTANT_SEVEN_REPRESENTATIVE_NORMAL_FORM_SELECTED_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -128,6 +128,15 @@
       ,"post_prime_proshka_context_sha256": "0d769f95c31595ce4dbd0396294c36cdf4548c4763c7de770c1c9e1c9d4a395a"
       ,"post_prime_answer_now_first_seen_at": "2026-08-05T11:43:37.540+02:00"
       ,"post_prime_answer_now_clicked": false
+      ,"post_prime_proshka_completed_at": "2026-08-05T12:00:18.143+02:00"
+      ,"post_prime_proshka_ui_reasoning": "16m37s"
+      ,"post_prime_proshka_observed_wall_seconds": 1044
+      ,"post_prime_proshka_response_message_id": "d215eff5-673b-4609-aee6-cec727306146"
+      ,"post_prime_proshka_visible_response_sha256": "2f1b349b245d87bfa4ec0e18ed614d9ce6809a723b0dad2835cd16fcda1d6f9b"
+      ,"post_prime_proshka_archive_sha256": "c3eacf70c8f386aa6f8159594e4617dc938bd18e8a574bb820fbe13ecd6ebad8"
+      ,"post_prime_prompt_report_sha_metadata_status": "PRE_FINAL_LF_STALE_CONTEXT_AND_PINNED_CONTENT_EXACT"
+      ,"post_prime_selected_node": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM"
+      ,"next_node_after_post_prime_adjudication": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

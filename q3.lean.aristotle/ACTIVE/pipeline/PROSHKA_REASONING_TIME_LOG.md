@@ -591,3 +591,48 @@ notes: >-
   Goal 055 remains held, Aristotle remains unauthorized, Bus 010 remains void,
   and no route or RH promotion is licensed.
 ```
+
+### 2026-08-05 — G2 CCM 054.1 post-prime-kernel next-split adjudication
+
+```yaml
+proof_address: RouteB.G2.CCM.054_1.PostPrimeKernelNextSplit
+front: G2/H2a
+transaction: G2_CCM_054_1_POST_PRIME_KERNEL_NEXT_SPLIT_PROSHKA_ADJUDICATION
+conversation_id: 6a73059e-6974-83eb-864e-8d60b9446735
+request_message_id: 3ba350fd-a294-4437-a90a-53328b4bfcdf
+response_message_id: d215eff5-673b-4609-aee6-cec727306146
+sent_at: 2026-08-05T11:42:54.060+02:00
+completed_at: 2026-08-05T12:00:18.143+02:00
+wall_seconds: 1044
+wall_human: "17m24s observed wall; 16m37s exact UI reasoning duration"
+answer_now_shown: true
+answer_now_clicked: false
+primary: SELECT_A_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE
+result_pointer: "Proshka assistant message d215eff5-673b-4609-aee6-cec727306146"
+notes: >-
+  Fresh chat in project RH_Marz_2026 adjudicated production pin
+  b41b4735cd6a2c6b597dcf081dd698882a8203eb. The high-recall context pack
+  SHA-256 is
+  0d769f95c31595ce4dbd0396294c36cdf4548c4763c7de770c1c9e1c9d4a395a;
+  the standalone source prompt SHA-256 is
+  ca63d42b25e48e167c50dc0178903447e4653843cd30c374c66c7f5fd37076a1;
+  and the DOM-visible sent request SHA-256 is
+  532091930a1f4b257ce703e33420a87ee2eca17588782bea6476e94f98bc993f.
+  The prompt embedded the prime report SHA from before a final one-LF cleanup;
+  the attached context pack and pinned production source were current and
+  exact, so the mismatch is metadata-only and is recorded fail-closed here.
+  Answer now first appeared at 2026-08-05T11:43:37.540+02:00 and was
+  deliberately not clicked. Proshka completed with exact UI reasoning time
+  16m37s; the observed send-to-extraction wall was 17m24s. The
+  30636-character, 30908-byte visible response has SHA-256
+  2f1b349b245d87bfa4ec0e18ed614d9ce6809a723b0dad2835cd16fcda1d6f9b;
+  the canon/mirror archive adds one terminal LF and has SHA-256
+  c3eacf70c8f386aa6f8159594e4617dc938bd18e8a574bb820fbe13ecd6ebad8.
+  Proshka ratified the Prime gate and selected exactly one public seven-class
+  ccmWeilTauN1 normal form that keeps every literal WR integral and spends no
+  independent component interval budget. The standing owner release
+  authorizes that local Lean implementation only; Goal 055 remains held,
+  Aristotle remains unauthorized, Bus 010 remains void, and no route or RH
+  promotion is licensed.
+```
