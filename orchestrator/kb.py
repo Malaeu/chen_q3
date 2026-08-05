@@ -161,6 +161,81 @@ def cmd_search(args) -> int:
     return 0
 
 
+def _search_table(conn, table, fts, cols, q, label):
+    """Search one wave-2 table via its FTS index, with a LIKE fallback."""
+    out, seen = [], set()
+    try:
+        for r in conn.execute(
+                f"SELECT t.* FROM {fts} f JOIN {table} t ON t.rowid=f.rowid "
+                f"WHERE {fts} MATCH ? ORDER BY rank LIMIT 12", (q,)):
+            key = r[0]
+            if key not in seen:
+                seen.add(key)
+                out.append(r)
+    except sqlite3.OperationalError:
+        pass
+    if not out:
+        like = f"%{q}%"
+        where = " OR ".join(f"{c} LIKE ?" for c in cols)
+        out = conn.execute(f"SELECT * FROM {table} WHERE {where} LIMIT 12",
+                           [like] * len(cols)).fetchall()
+    return out
+
+
+def cmd_search_all(args) -> int:
+    """Search every layer of knowledge at once: kills, moves, journal, dossiers."""
+    conn = connect()
+    q = " ".join(args.terms)
+    total = 0
+
+    kills = conn.execute(
+        "SELECT k.* FROM kill k LEFT JOIN kill_alias a ON a.kill_id=k.id "
+        "WHERE k.subject LIKE ? OR k.reason LIKE ? OR k.id LIKE ? OR a.alias LIKE ? "
+        "GROUP BY k.id LIMIT 12", [f"%{q}%"] * 4).fetchall()
+    if kills:
+        print(f"── KILLS ({len(kills)}) " + "─" * 40)
+        for r in kills:
+            print(f"  [{r['unit_type']}/{r['status']}] {r['id']}\n      {r['subject'][:100]}")
+        total += len(kills)
+
+    moves = _search_table(conn, "move", "move_fts",
+                          ("name", "mechanism", "signature", "route_projection"), q, "MOVES")
+    if moves:
+        print(f"\n── MOVES ({len(moves)}) " + "─" * 40)
+        for r in moves:
+            print(f"  [{r['provenance_layer']}/{r['status']}] {r['id']}  {r['name'][:70]}")
+            if r["signature"]:
+                print(f"      when: {r['signature'][:110]}")
+        total += len(moves)
+
+    js = _search_table(conn, "journal_entry", "journal_fts",
+                       ("title", "target", "boundary"), q, "JOURNAL")
+    if js:
+        print(f"\n── JOURNAL ({len(js)}) " + "─" * 38)
+        for r in js:
+            ws = f" [{r['workstream']}]" if r["workstream"] else ""
+            print(f"  {r['date']} {r['kind']}{ws}  {r['title'][:80]}")
+            if r["boundary"]:
+                print(f"      boundary: {r['boundary'][:100]}")
+        total += len(js)
+
+    ds = _search_table(conn, "dossier", "dossier_fts",
+                       ("title", "status_token", "verdict"), q, "DOSSIERS")
+    if ds:
+        print(f"\n── DOSSIERS ({len(ds)}) " + "─" * 37)
+        for r in ds:
+            print(f"  [{r['subtype']}] {r['slug'][:70]}")
+            if r["status_token"]:
+                print(f"      status: {r['status_token'][:100]}")
+        total += len(ds)
+
+    if not total:
+        print(f"no hits for {q!r} in any layer")
+        return 1
+    print(f"\n{total} hit(s) across layers for {q!r}")
+    return 0
+
+
 def cmd_show(args) -> int:
     conn = connect()
     rows = conn.execute("SELECT * FROM kill WHERE id=?", (args.id,)).fetchall()
@@ -203,12 +278,20 @@ def cmd_census(args) -> int:
     print("-" * 96)
     bad = 0
     for r in conn.execute("SELECT * FROM source_ledger ORDER BY source_file"):
-        actual = conn.execute("SELECT COUNT(*) FROM kill WHERE source_file=?",
-                              (r["source_file"],)).fetchone()[0]
+        # A source may have landed in any layer — count them all, or the judge cries drift
+        # over a perfectly migrated file just because it was not a kill.
+        actual = sum(
+            conn.execute(f"SELECT COUNT(*) FROM {t} WHERE source_file=?",
+                         (r["source_file"],)).fetchone()[0]
+            for t in ("kill", "move", "journal_entry", "dossier", "postmortem"))
         ok = actual == r["expected_rows"]
         bad += 0 if ok else 1
         print(f"{r['source_file'][:62]:62s} {r['expected_rows']:9d} {actual:7d}  "
               f"{'OK' if ok else 'DRIFT'}")
+    print()
+    for t in ("kill", "move", "journal_entry", "dossier", "postmortem", "link"):
+        print(f"  {t:15s} {conn.execute(f'SELECT COUNT(*) FROM {t}').fetchone()[0]:6d}")
+    print()
     total = conn.execute("SELECT COUNT(*) FROM kill").fetchone()[0]
     aliases = conn.execute("SELECT COUNT(*) FROM kill_alias").fetchone()[0]
     ev = conn.execute("SELECT COUNT(*) FROM kill_evidence").fetchone()[0]
@@ -251,6 +334,10 @@ def main() -> int:
     s = sub.add_parser("search", help="full-text search over kills and aliases")
     s.add_argument("terms", nargs="+")
     s.set_defaults(fn=cmd_search)
+
+    s = sub.add_parser("ask", help="search ALL layers: kills, moves, journal, dossiers")
+    s.add_argument("terms", nargs="+")
+    s.set_defaults(fn=cmd_search_all)
 
     s = sub.add_parser("show", help="one record in full")
     s.add_argument("id")

@@ -1,5 +1,9 @@
 # Tricks Library - Q3 Lean Formalization
 
+> **FROZEN 2026-08-05 — migrated to `knowledge.db`** (table `move` / `postmortem`).
+> Query with `./orchestrator/kb.py ask <term>`; add new records via `kb.py`, not here.
+> Kept read-only for provenance; `./orchestrator/kb.py census` checks it against the DB.
+
 Knowledge base of tactics, patterns, workarounds, and insights discovered during axiom closure.
 
 ## Tags

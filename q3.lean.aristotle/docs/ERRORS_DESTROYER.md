@@ -1,5 +1,9 @@
 # ERRORS DESTROYER — Работа над ошибками
 
+> **FROZEN 2026-08-05 — migrated to `knowledge.db`** (table `move` / `postmortem`).
+> Query with `./orchestrator/kb.py ask <term>`; add new records via `kb.py`, not here.
+> Kept read-only for provenance; `./orchestrator/kb.py census` checks it against the DB.
+
 **Цель файла:** Записывать разборы ошибок чтобы НЕ повторять их в будущем.
 
 ---

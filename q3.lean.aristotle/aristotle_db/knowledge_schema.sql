@@ -95,3 +95,108 @@ CREATE TABLE IF NOT EXISTS source_ledger (
     migrated_at   TEXT NOT NULL,
     note          TEXT
 );
+
+-- ============================================================================
+-- WAVE 2 (2026-08-05): positive knowledge — moves, journal, dossiers, postmortems.
+--
+-- Split by UNIT, not by file. Critical finding of the audit: RH_TRICK_ATLAS.md and
+-- ARSENAL_CARDS_v1.md look like duplicates but are not — the succession is declared in
+-- SYSTEM_SPEC L100 and never executed, only 2 of 23 cards overlap thematically, and those
+-- two extract DIFFERENT things from the same source (the atlas transplants the theorem, the
+-- arsenal abstracts a field-free heuristic). They share one table but keep `provenance_layer`,
+-- and their kinship is recorded in `link`, not by collapsing rows.
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS move (
+    id                  TEXT PRIMARY KEY,   -- C01… for arsenal, ATLAS_nn, TRICKLIB_nn
+    name                TEXT NOT NULL,
+    mechanism           TEXT,               -- what the move actually does
+    signature           TEXT,               -- the scan key: when does this apply
+    route_projection    TEXT,               -- ROUTE_B translation / RH-Q3 analogue / use-case
+    transfer_invariants TEXT,               -- K3: what must survive the import, what is dropped
+    dual_question       TEXT,               -- adversarial question for the reviewer
+    failure_mode        TEXT,
+    next_experiment     TEXT,
+    status              TEXT,               -- untested|candidate|hot|applied|parked|killed
+    status_evidence     TEXT,               -- goal-NNN or autopsy line
+    origin_scheme       TEXT,               -- external_theorem | corpus_chapter | lean_tactic
+    provenance_layer    TEXT NOT NULL,      -- atlas | arsenal | tricks_library
+    source_ref          TEXT,               -- DOI/arXiv/chapter
+    source_file         TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS journal_entry (
+    id            TEXT PRIMARY KEY,
+    date          TEXT,
+    kind          TEXT,          -- insight|synthesis|result|in_progress|final|decision|…
+    title         TEXT,
+    -- The source file crams workstream, status and channel into ONE parenthesised tag.
+    -- Split here or the column stays unqueryable.
+    workstream    TEXT,          -- Step33A.1-A | Track B B2b | Route B Lamport | …
+    state         TEXT,          -- checked | in progress | OK | blocker | closed node
+    channel       TEXT,          -- lean | generator | control-plane | diagnostic
+    target        TEXT,
+    validation    TEXT,          -- build job counts, q3_check, axiom triple
+    artifact_sha  TEXT,
+    boundary      TEXT,          -- the explicit non-claim — the most valuable line of an entry
+    next_target   TEXT,
+    body          TEXT,
+    source_file   TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS dossier (
+    slug         TEXT PRIMARY KEY,
+    title        TEXT,
+    date         TEXT,
+    status_token TEXT,           -- free-text status line, e.g. validated_import_plan_not_proof
+    verdict      TEXT,
+    subtype      TEXT,           -- dossier | playbook | reference | template
+    tags         TEXT,           -- from the KB frontmatter where it existed
+    priority     TEXT,
+    body_md      TEXT,
+    source_file  TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS postmortem (
+    id             TEXT PRIMARY KEY,
+    date           TEXT,
+    context        TEXT,         -- PR / file / task
+    found_by       TEXT,
+    what_happened  TEXT,
+    root_cause     TEXT,
+    rule           TEXT,         -- the preventive rule this leaves behind
+    checklist      TEXT,
+    correct_path   TEXT,
+    source_file    TEXT NOT NULL
+);
+
+-- The cross-cutting edge table. This is what makes the merge worth doing: it records the
+-- arsenal→atlas succession that no file encodes, pairs C01 with atlas card 1 WITHOUT
+-- destroying either extraction, and replaces the 195 fragile string paths inside INSIGHTS.md.
+CREATE TABLE IF NOT EXISTS link (
+    from_type TEXT NOT NULL,     -- kill | move | journal_entry | dossier | postmortem
+    from_id   TEXT NOT NULL,
+    to_type   TEXT NOT NULL,
+    to_id     TEXT NOT NULL,
+    relation  TEXT NOT NULL,     -- cites|supersedes|same_source|applies_move|autopsy_of
+    note      TEXT,
+    PRIMARY KEY (from_type, from_id, to_type, to_id, relation)
+);
+
+CREATE INDEX IF NOT EXISTS idx_move_status      ON move(status);
+CREATE INDEX IF NOT EXISTS idx_move_layer       ON move(provenance_layer);
+CREATE INDEX IF NOT EXISTS idx_journal_date     ON journal_entry(date);
+CREATE INDEX IF NOT EXISTS idx_journal_work     ON journal_entry(workstream);
+CREATE INDEX IF NOT EXISTS idx_journal_state    ON journal_entry(state);
+CREATE INDEX IF NOT EXISTS idx_dossier_subtype  ON dossier(subtype);
+CREATE INDEX IF NOT EXISTS idx_link_to          ON link(to_type, to_id);
+
+CREATE VIRTUAL TABLE IF NOT EXISTS move_fts USING fts5(
+    name, mechanism, signature, route_projection, failure_mode,
+    content='move', content_rowid='rowid');
+CREATE VIRTUAL TABLE IF NOT EXISTS journal_fts USING fts5(
+    title, body, target, boundary,
+    content='journal_entry', content_rowid='rowid');
+CREATE VIRTUAL TABLE IF NOT EXISTS dossier_fts USING fts5(
+    title, status_token, verdict, body_md,
+    content='dossier', content_rowid='rowid');
