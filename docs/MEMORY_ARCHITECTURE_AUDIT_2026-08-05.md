@@ -182,3 +182,29 @@ not a rebuild.
 `ARSENAL_CARDS_v1.md`, `EXECUTOR_ARSENAL_ADDENDUM`, the frozen atlases (Obstruction/Trick/S5), the dead
 pipeline decision-cycle (`ACTIVE/pipeline/{codex_agent_loop_notes,ALTERNATIVE_PATHS,RESEARCH_ORACLE}`).
 Flow: Mythos verifies the plan against these → then Proshka architects the unified memory contour.
+
+---
+
+## THE ROOT DISEASE (owner, 2026-08-05) — contour loss on every line-switch
+
+Not isolated orphans — a PATTERN. Every switch to a new line / rule-change silently orphans the contour
+we just built (Jan decision-cycle, Apr embedding, June atlases, and now litreview at risk). We keep
+assembling a contour that "fits the architecture," then *bah* — new line, and it becomes a sibling orphan.
+The current switch (to the CARD-FILE / arsenal) fits the dependency DAG beautifully — so this is the
+moment to **census the WHOLE system**: every cycle/pipeline/databank/rule-contour we ever built, when it
+was last live, alive-vs-orphaned, what it does, and **whether we still need it or have already outgrown /
+evolved past it.** Deliverable: a `SYSTEM_SPEC` — one map of "where everything lives, what it is, how it
+assembles, and whether it is current." Then hand it to Mythos + Proshka to architect the unified contour.
+(This audit doc is the memory-slice of that spec; SYSTEM_SPEC is the whole-repo version.)
+
+## HARD CONSTRAINT — Proshka query budget (owner, 2026-08-05)
+
+Proshka calls are LIMITED and EXPENSIVE (owner budget ~200 EUR/month). Maximize value PER query; do NOT
+burn queries on per-step checks. **Design law: BATCH-PER-GOAL, not per-step.** Model on Codex's current
+pipe: when a goal is ready to close → a LOCAL cycle runs first over the whole goal (scan cards by
+signature, check the filled sensor-chain: atlas walls + references + insights + autopsy), assembles ONE
+self-contained package → Proshka gives ONE verdict over the batch → only THEN Codex closes the goal.
+This is exactly the ERA-1 decision-hook revived (P6), but **batched at goal-boundary for budget**. So P6
+becomes: local consult/scan is CHEAP and runs every decision (executor, no Proshka); the EXPENSIVE
+Proshka verdict fires ONCE per goal-close over the assembled batch. Never fan multiple Proshka calls
+inside one goal. This constraint outranks convenience and must shape the whole contour.
