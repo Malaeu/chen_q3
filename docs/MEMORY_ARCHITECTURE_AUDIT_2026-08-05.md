@@ -165,6 +165,19 @@ inside ERA-3's structure — one line, no new infra.
 it: cluster flags by shared signature, draw the bridge-grammar graph, surface generalizations. This is a
 downstream deliverable, not a blocker for P1–P6.
 
+**P8 — Auto reference-list (owner's ask, 2026-08-05).** Same disease as the atlases: the litreview system
+IS built but NOT wired. State: `docs/routeB_bus/litreview/{REFERENCES.md,references.bib,litreview_check.py,
+zotero_pull.py}` all Aug 3; 46 PDFs; `REFERENCES.md` already maps source→lemma/gap (Chain-of-Evidence);
+`litreview_check.py` validates; `zotero_pull.py` two-way Zotero sync. But grep shows it is referenced in
+ZERO live discipline files (AGENTS.md/CLAUDE.md/executor addendum/Spine/Proshka) → orphaning risk. Wire it:
+add a discipline rule "whenever a goal/answer/verdict CITES a publication → (a) executor or a launched
+agent finds it, (b) Proshka verifies the citation (real source, right claim, per Chain-of-Evidence + the
+person-name verification gate for any human name), (c) OA PDF auto-downloaded to `pdfs/`, paywalled marked
+owner-fetch, (d) row auto-appended to REFERENCES.md + references.bib." Then the reference list of every
+publication used in the proof is ALWAYS current — one artifact ready for the paper, and the Spine can pull
+it too. Infra exists (validator, Zotero sync, source→lemma format); this is a wiring + auto-append task,
+not a rebuild.
+
 **Missing files to hand Mythos for plan-check:** this audit doc, `KNOWLEDGE_SPINE.md`, `SPINE_VIEW.md`,
 `ARSENAL_CARDS_v1.md`, `EXECUTOR_ARSENAL_ADDENDUM`, the frozen atlases (Obstruction/Trick/S5), the dead
 pipeline decision-cycle (`ACTIVE/pipeline/{codex_agent_loop_notes,ALTERNATIVE_PATHS,RESEARCH_ORACLE}`).
