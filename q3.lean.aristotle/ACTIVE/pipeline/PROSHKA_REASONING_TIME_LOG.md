@@ -542,3 +542,39 @@ notes: >-
   Goal 055 remains held, Aristotle remains unauthorized, Bus 010 remains void,
   and no route or RH promotion is licensed.
 ```
+
+### 2026-08-05 — G2 CCM 054.1 post-W02 next-split adjudication
+
+```yaml
+proof_address: RouteB.G2.CCM.054_1.PostW02NextSplit
+front: G2/H2a
+transaction: G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION
+conversation_id: 6a72f0ff-1990-83ed-b9ba-169d67d9c942
+request_message_id: 6b426341-0140-4418-9963-e4f4930df0d0
+sent_at: 2026-08-05T10:14:54.766+02:00
+completed_at: null
+wall_seconds: null
+wall_human: "RUNNING"
+answer_now_shown: false
+answer_now_clicked: false
+primary: G2_CCM_054_1_POST_W02_NEXT_NODE_UNSELECTED
+status: RUNNING_FULL_REASONING
+result_pointer: null
+notes: >-
+  Fresh chat in project RH_Marz_2026 pinned to commit
+  c237cbe44d3e86e5b968d62a1ccc34dba4ec0dbe. The high-recall context pack
+  SHA-256 is
+  ee5177ecfdf7c0421c496ab29741dcbf25acd26be78950e6187727827ea0d950;
+  the standalone source prompt SHA-256 is
+  ac3fe3fcf0ec5747ce398dee5c01d35707ffd0aca9e7bec9add92ef05cce5133;
+  and the DOM-visible sent request SHA-256 is
+  d83f6cd22bb91ea267860804d36529c9853923593d77de24791b50aecfaad37b.
+  The request first audits whether the named seven-representative prime-kernel
+  normal form is required, too large, or redundant after the generic
+  von-Mangoldt theorem and proved W02 component. It then requires exactly one
+  smallest cancellation-preserving source-only node or one genuine owner
+  fork. Independent component balls, bundled analytic walls, Goal 055
+  materialization, Aristotle, Bus 010, route promotion, and RH claims remain
+  forbidden. At dispatch the UI showed the normal Stop responding control and
+  did not show Answer now; no early-answer control was clicked.
+```

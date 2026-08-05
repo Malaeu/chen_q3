@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 111,
-  "updated_at": "2026-08-05T10:04:27+02:00",
+  "revision": 112,
+  "updated_at": "2026-08-05T10:14:54.766+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_PENDING",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -1791,7 +1791,7 @@
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_PENDING",
+    "lifecycle": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "candidate_first_leaf_after_release": "G2.CCM.054_1.POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
@@ -2074,7 +2074,7 @@
       "proof_status": "OPEN",
       "activity": "ACTIVE",
       "eligibility": {"eligible": true, "reason": "W02_NODE_PROVED_NEXT_NODE_REQUIRES_FRESH_FAIL_CLOSED_THEOREM_SHAPE_ADJUDICATION"},
-      "validation": "PENDING_FRESH_PROJECT_CHAT_ENGLISH_ONLY_EXACT_ONE_NODE_NO_ARISTOTLE_NO_GOAL_055",
+      "validation": "RUNNING;PROSHKA_CONVERSATION_6A72F0FF;REQUEST_MESSAGE_6B426341;PIN_C237CBE4;PROMPT_SHA256_AC3FE3FC;CONTEXT_SHA256_EE5177EC;FRESH_PROJECT_CHAT;ENGLISH_ONLY;EXACT_ONE_NODE;PRIME_KERNEL_RUNNER_UP_NECESSITY_AUDIT;NO_INDEPENDENT_COMPONENT_BALLS;NO_ARISTOTLE_SUBMISSION;ANSWER_NOW_NOT_SHOWN_NOT_CLICKED",
       "failure_codes": ["G2_CCM_054_1_POST_W02_NEXT_NODE_UNSELECTED"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
@@ -4246,11 +4246,18 @@
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
     "current_stop": "G2_CCM_054_1_POST_W02_NEXT_NODE_UNSELECTED",
-    "mode": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_PENDING",
+    "mode": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "current_leaf": "G2.CCM.054_1.POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T10:14:54.766+02:00",
+      "event": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION_STARTED",
+      "progress_class": "REVIEW_IN_PROGRESS",
+      "result": "PROSHKA_CONVERSATION_6A72F0FF_1990_83ED_B9BA_169D67D9C942;REQUEST_MESSAGE_6B426341;PIN_C237CBE4;PROMPT_SHA256_AC3FE3FC;CONTEXT_SHA256_EE5177EC;FRESH_PROJECT_CHAT;ENGLISH_ONLY;ANSWER_NOW_NOT_SHOWN_NOT_CLICKED",
+      "honesty": "PROSHKA_STILL_THINKING_PRIME_KERNEL_RUNNER_UP_FATE_UNDECIDED_NO_NEXT_NODE_SELECTED_NO_ARISTOTLE_SUBMISSION_NO_054_1_V2_CLOSURE_NO_GOAL_055_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T10:04:27+02:00",
       "event": "G2_CCM_054_1_W02_SEVEN_CLASS_EXACT_NORMAL_FORM_PROVED",
