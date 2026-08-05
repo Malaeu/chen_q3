@@ -50075,3 +50075,31 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   coefficient extensionality and a recursive auxiliary basis plus equality
   crosswalk.  G5/S1 remains OPEN, Route B remains `CHALLENGER / NOT_RH`, and
   Bus 010 remains VOID.
+
+## 2026-08-05 — G5 ordinary Legendre finite-action theorem-shape audit (in progress)
+
+- Exact F0b target: polynomial three-term recurrence, Legendre differential
+  identity, and the exact `x`/`x^2` finite-band action needed by the future
+  Ferrers residual telescope; no analytic series claim belongs in this node.
+- Five `q3_docs` embedding queries returned no candidate.  Pinned Mathlib has
+  `coeff_shiftedLegendre`, the Rodrigues identity, and generic polynomial
+  derivative/extension APIs, but no shifted or ordinary Legendre recurrence,
+  ODE, or multiplication action theorem.
+- Primary-source anchors are DLMF 14.10.3 for the three-term recurrence,
+  14.10.4--14.10.5 for derivative relations, and DLMF 18.9/18.2.8 for the
+  standard orthogonal-polynomial recurrence framework.
+- The recurrence gives
+  `x P_n = ((n+1)/(2n+1)) P_(n+1) + (n/(2n+1)) P_(n-1)`; applying it twice
+  yields the exact three-band `x^2 P_n` coefficients recorded in `STATE.json`.
+- Direct coefficient extensionality has one finite binomial-arithmetic barrier
+  but preserves the already committed affine representation.  A recursive
+  auxiliary basis makes finite action cheap but still owes a nontrivial
+  equality crosswalk back to `shiftedLegendre`.
+- Local recommendation: select the smallest theorem that closes the affine
+  recurrence crosswalk first, then derive the ODE and `x^2` action in separate
+  consumers; do not mint a second permanent Legendre representation unless
+  Proshka can make its crosswalk strictly smaller.
+- Next gate: fresh English-only Proshka adjudication, pinned to the committed
+  audit, requesting exactly one owned Lean file and one executable public
+  theorem shape.  No recurrence, ODE, `x^2` action, Ferrers function, PSWF
+  name, route promotion, Bus 010, or RH claim is made yet.

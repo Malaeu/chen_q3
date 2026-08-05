@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 90,
-  "updated_at": "2026-08-05T05:54:37+02:00",
+  "revision": 91,
+  "updated_at": "2026-08-05T05:59:07+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1441,7 +1441,7 @@
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         },
         "ferrers_regular_solution_gate": {
-          "status": "F0A_AFFINE_KERNEL_PROVED",
+          "status": "F0B_FINITE_ACTION_THEOREM_SHAPE_AUDIT_READY_FOR_PROSHKA",
           "pinned_head": "a637ad11",
           "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
@@ -1500,7 +1500,44 @@
             "mutant_odd_index_endpoint_sign_change": "PASS"
           },
           "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_KERNEL",
-          "next_action": "OPEN_F0B_FINITE_ACTION_THEOREM_SHAPE_AUDIT_THEN_SELECT_COEFFICIENT_EXT_OR_RECURSIVE_CROSSWALK",
+          "next_action": "ASK_PROSHKA_TO_SELECT_ONE_SMALLEST_F0B_NODE_AND_EXACT_CROSSWALK_REPRESENTATION",
+          "f0b_theorem_shape_audit": {
+            "status": "READY_FOR_EXTERNAL_ADJUDICATION",
+            "pinned_head": "8dd39af9",
+            "q3_docs_queries": 5,
+            "q3_docs_candidates": 0,
+            "mathlib_recurrence_or_ode_receiver": "NONE_IN_PINNED_SHIFTED_LEGENDRE_API",
+            "mathlib_available": [
+              "Polynomial.coeff_shiftedLegendre",
+              "Polynomial.factorial_mul_shiftedLegendre_eq",
+              "Polynomial.derivative_comp",
+              "Polynomial.derivative_eval2_C",
+              "GENERIC_POLYNOMIAL_EXT_AND_COEFFICIENT_APIS"
+            ],
+            "primary_source": [
+              "DLMF_14_10_3_ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE",
+              "DLMF_14_10_4_14_10_5_DERIVATIVE_RELATIONS",
+              "DLMF_18_9_RECURRENCES_AND_DERIVATIVES",
+              "DLMF_18_2_8_GENERIC_ORTHOGONAL_POLYNOMIAL_RECURRENCE"
+            ],
+            "required_kernel": [
+              "THREE_TERM_RECURRENCE",
+              "LEGENDRE_POLYNOMIAL_DIFFERENTIAL_IDENTITY",
+              "X_MUL_ACTION",
+              "X_SQUARED_THREE_BAND_ACTION_ON_EVEN_INDICES"
+            ],
+            "candidate_coefficient_extensionality": "PROVE_MAPPED_SHIFTED_LEGENDRE_RECURRENCE_DIRECTLY_FROM_COEFF_SHIFTEDLEGENDRE_THEN_DERIVE_ODE_AND_ACTION",
+            "candidate_recursive_auxiliary_crosswalk": "DEFINE_RECURRENCE_BASIS_PROVE_FINITE_ACTION_INDUCTION_THEN_PROVE_EQUALITY_TO_AFFINE_SHIFTEDLEGENDRE",
+            "local_assessment": "COEFFICIENT_EXT_HAS_ONE_COMBINATORIAL_BARRIER_BUT_NO_SECOND_REPRESENTATION;RECURSIVE_AUX_MAKES_ACTION_CHEAP_BUT_DEFERS_THE_SAME_NONTRIVIAL_CROSSWALK",
+            "exact_source_formulas": {
+              "recurrence": "(n+1)P_(n+1)=(2n+1)xP_n-nP_(n-1)",
+              "x_action": "xP_n=((n+1)/(2n+1))P_(n+1)+(n/(2n+1))P_(n-1)",
+              "x2_up": "(n+1)(n+2)/((2n+1)(2n+3))",
+              "x2_diag": "(n+1)^2/((2n+1)(2n+3))+n^2/((2n+1)(2n-1))",
+              "x2_down": "n(n-1)/((2n+1)(2n-1))"
+            },
+            "honesty": "SOURCE_FORMULAS_PINNED_BUT_NO_LEAN_PROOF_YET_NO_RECURRENCE_NO_ODE_NO_X2_NO_FERRERS_FUNCTION_NO_PSWF_NAME_NO_BUS_010_NOT_RH"
+          },
           "proshka_adjudication": {
             "transaction": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
             "proof_address": "RouteB.G5.Mode4.FerrersRegularSolution",
@@ -4537,6 +4574,13 @@
       "progress_class": "REPRESENTATION_AND_PROOF_PROGRESS",
       "result": "EXACT_AFFINE_ONE_MINUS_X_OVER_TWO;P0_P1_ORIENTATION;DEGREE;PARITY;EVEN_ODD;ENDPOINT_VALUES;THREE_ORIENTATION_MUTANTS_PASS;TARGET_1302_FULL_7817_Q3_CHECK_PASS;DB_18_OF_18_PROVEN;FILE_SHA256_E6C4B906",
       "honesty": "LEAN_ONLY_NO_Q3_IMPORTS_DATA_REAL_BASIC_NEEDED_TO_INTRODUCE_REAL_TYPE_NO_RECURRENCE_NO_ODE_NO_X2_NO_ANALYTIC_BOUND_NO_ORTHOGONALITY_NO_FERRERS_SERIES_NO_PSWF_NAME_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T05:59:07+02:00",
+      "event": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_THEOREM_SHAPE_AUDIT_READY",
+      "progress_class": "SOURCE_RESEARCH_AND_REPRESENTATION_AUDIT_COMPLETE",
+      "result": "FIVE_Q3_DOCS_QUERIES_EMPTY;PINNED_MATHLIB_HAS_COEFF_AND_POLYNOMIAL_DERIVATIVE_APIS_BUT_NO_LEGENDRE_RECURRENCE_OR_ODE;DLMF_14_10_3_TO_5_AND_18_9_PINNED;COEFFICIENT_EXT_VS_RECURSIVE_AUX_CROSSWALK_FORK_READY",
+      "honesty": "NO_LEAN_RECURRENCE_OR_ODE_OR_X2_ACTION_PROVED_YET_NO_FERRERS_FUNCTION_NO_PSWF_NAME_NO_BUS_010_NOT_RH"
     }
   ]
 }
