@@ -49932,3 +49932,27 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   does not construct or identify a regular first-kind PSWF coefficient row.
 - No full Sturm--Liouville construction, PSWF existence claim, Weyl label,
   operator/resolvent assertion, route promotion, Bus 010, or RH claim is made.
+
+## 2026-08-05 — G5 conditional DLMF tail identification (proved)
+
+- `D0Mode4PSWFLegendreCanonicalIdentification.lean` consumes an anonymous
+  coefficient sequence with exact all-index DLMF 30.8.4 recurrence and exact
+  DLMF 30.8.5 weighted normalization.
+- The source recurrence is shifted by `K-1+n` and conjugated by the committed
+  Hermitian scale to the exact symmetric Jacobi recurrence.  The previously
+  proved weight receiver supplies square summability, and discrete-Wronskian
+  uniqueness yields equality with the canonical Hermitian tail up to a scalar.
+- The scalar is proved nonzero without assuming a retained source coefficient:
+  if it vanished, the shifted tail would vanish; the all-index recurrence and
+  nonzero subdiagonal then propagate zero downward through every coefficient,
+  contradicting the 30.8.5 normalization.
+- Five semantic falsifiers fire: wrong center index, wrong left off-diagonal
+  index, source row used as the Wronskian reference, tail-only instead of
+  all-index recurrence, and the phased center-sign plant.
+- Validation passed: direct Lean; target `7758/7758`; full `7817/7817`;
+  `q3_check`; zero holes or forbidden declarations; standard axioms only.
+  The proof DB records all six declarations as proven.
+- This is still a conditional receiver over an anonymous sequence.  A genuine
+  regular first-kind PSWF/Ferrers coefficient object and its instantiation of
+  30.8.4/30.8.5 remain open.  Route B remains `CHALLENGER / NOT_RH`; Bus 010
+  remains VOID.

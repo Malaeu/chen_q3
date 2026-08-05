@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 80,
-  "updated_at": "2026-08-05T04:03:00+02:00",
+  "revision": 81,
+  "updated_at": "2026-08-05T04:13:16+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1353,7 +1353,7 @@
         "answer_now_clicked": false
       },
       "regular_pswf_coefficient_row_source_gate": {
-        "status": "DLMF3085_WEIGHT_MATCH_RECEIVER_PROVED_SOURCE_OBJECT_OPEN",
+        "status": "DLMF3084_3085_CONDITIONAL_CANONICAL_IDENTIFICATION_PROVED_SOURCE_OBJECT_OPEN",
         "pinned_head": "9e462d94",
         "q3_docs_queries": 4,
         "q3_docs_candidates": 0,
@@ -1379,7 +1379,11 @@
           "mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable"
         ],
         "validation": "DIRECT_LEAN_PASS;TARGET_7756;FULL_7817;Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_TWO_OF_TWO_PROVEN;STANDARD_AXIOMS_ONLY",
-        "next_consumer": "mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical",
+        "identification_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreCanonicalIdentification.lean",
+        "identification_file_sha256": "b6d984bcf6c4fda0b70d74c91c1c5c8a1497deb8aee18fda7c27f4c82f86ee37",
+        "identification_theorem": "mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical",
+        "identification_validation": "DIRECT_LEAN_PASS;TARGET_7758;FULL_7817;Q3_CHECK_PASS;FIVE_OF_FIVE_SEMANTIC_MUTANTS_FIRE;DB_SIX_OF_SIX_PROVEN;STANDARD_AXIOMS_ONLY",
+        "next_consumer": "MODE4_DLMF3084_3085_SOURCE_BOUNDARY_RATIO_AND_FLUX_COROLLARY",
         "source_supplier_status": "OPEN",
         "regular_pswf_row_identification_status": "OPEN",
         "forbidden_overreach": "NO_FULL_STURM_LIOUVILLE_OPERATOR_BUILD_WITHOUT_ADJUDICATION",
@@ -1402,13 +1406,13 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 7756,
+      "target_build_jobs": 7758,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "DLMF3085_WEIGHT_MATCH_RECEIVER_MATERIALIZED_SOURCE_OBJECT_AND_REGULAR_ROW_IDENTIFICATION_STILL_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "DLMF3085_WEIGHT_RECEIVER_AND_DLMF3084_3085_CONDITIONAL_CANONICAL_IDENTIFICATION_MATERIALIZED_GENUINE_SOURCE_OBJECT_STILL_OPEN_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4338,6 +4342,13 @@
       "progress_class": "REPRESENTATION_AND_PROOF_PROGRESS",
       "result": "EXACT_WEIGHT_IDENTITY;GLOBAL_NONZERO;SHIFTED_HERMITIAN_TAIL_L2;TARGET_7756_FULL_7817_Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_TWO_OF_TWO_PROVEN",
       "honesty": "CONDITIONAL_RECEIVER_ONLY_NO_REGULAR_PSWF_SOURCE_OBJECT_NO_RECURRENCE_CONSUMER_NO_UNIQUENESS_INVOCATION_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T04:13:16+02:00",
+      "event": "G5_MODE4_DLMF3084_3085_CONDITIONAL_CANONICAL_IDENTIFICATION_PROVED",
+      "progress_class": "RECURRENCE_IDENTIFICATION_AND_NONZERO_SCALE_PROGRESS",
+      "result": "SOURCE_RECURRENCE_TO_SYMMETRIC_TAIL;WRONSKIAN_UNIQUENESS;ALL_INDEX_DOWNWARD_NONZERO_PROPAGATION;NONZERO_SCALAR;TARGET_7758_FULL_7817_Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_SIX_OF_SIX_PROVEN",
+      "honesty": "ANONYMOUS_SEQUENCE_CONDITIONAL_RECEIVER_ONLY_GENUINE_REGULAR_PSWF_SOURCE_OBJECT_STILL_OPEN_NO_BUS_010_NOT_RH"
     }
   ]
 }

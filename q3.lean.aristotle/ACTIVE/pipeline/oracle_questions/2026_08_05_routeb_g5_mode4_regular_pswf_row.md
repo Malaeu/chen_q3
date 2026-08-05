@@ -28,7 +28,10 @@ neighbor_addresses: []
 - четыре локальных запроса завершены с пустым результатом;
 - source-locked путь найден в DLMF §30.8;
 - Proshka выбрал exact 30.8.5 weight-match receiver;
-- receiver Lean-proved, genuine regular-PSWF source object остаётся открыт.
+- weight receiver Lean-proved;
+- conditional 30.8.4+30.8.5 identification with the canonical Hermitian tail
+  Lean-proved up to a nonzero scalar;
+- genuine regular-PSWF source object остаётся открыт.
 
 ## Точный блокер
 
@@ -83,9 +86,8 @@ neighbor_addresses: []
 ## Следующий адресный шаг
 
 - использовать доказанный
-  `mode4DLMF3085_nonzero_and_shiftedHermitian_sqSummable` в следующем
-  conditional consumer-е
-  `mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical`;
+  `mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical` для exact
+  source-boundary ratio/flux corollary;
 - отдельно сохранить открытым genuine source-object supplier для regular
   first-kind PSWF/Ferrers coefficients;
 - не строить полный Sturm--Liouville operator без отдельного решения.
