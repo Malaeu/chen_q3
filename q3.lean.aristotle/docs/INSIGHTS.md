@@ -50132,3 +50132,22 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The next exact gap is
   `G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL`.  G5/S1 remains open, Route B
   remains `CHALLENGER / NOT_RH`, and Bus 010 remains VOID.
+
+## 2026-08-05 — G5 ordinary Legendre X action (proved)
+
+- `D0Mode4OrdinaryLegendreXAction.lean` derives the exact two-band formula
+  for `X * P_(n+1)` directly from the committed three-term recurrence.  It
+  introduces no new representation, definition, or source claim.
+- Five private falsifiers reject the denominator mutation, deletion of the
+  lower band, its sign flip, an input-index shift, and a swap of the upper and
+  lower coefficients.  The only low-degree helper is derived from the source
+  recurrence rather than the theorem under test.
+- Validation passed: direct Lean; target `1304/1304`; full `7817/7817`;
+  `q3_check`; zero holes or forbidden declarations; proof DB `7/7 proven`;
+  standard axioms only.  File SHA-256 is
+  `c26d47b749b7f775e6754081505de82b9727598a717762adf70bf3ff77d80fc4`.
+- The synchronized unique active leaf is now
+  `G5.MODE4.F0D.X2_ACTION`, whose proof is the direct two-step consumer of the
+  X action.  No new Proshka theorem-shape fork is present.
+- G5/S1 remains open; no ODE, Ferrers regular solution, PSWF provenance,
+  route promotion, Bus 010, or RH claim is made.
