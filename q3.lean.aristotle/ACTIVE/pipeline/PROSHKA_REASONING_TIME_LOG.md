@@ -209,7 +209,7 @@ sent_at: 2026-08-05T03:28:33.025+02:00
 completed_at: null
 wall_seconds: null
 wall_human: null
-answer_now_shown: false
+answer_now_shown: true
 answer_now_clicked: false
 primary: null
 status: RUNNING
@@ -227,5 +227,6 @@ notes: >-
   legal theorem. The prompt explicitly attacks weighted-vs-unweighted L2,
   zero denominators, phase/index drift, zero proportionality, conditional-as-
   source wrappers, and full-operator overreach. Generation is running; the UI
-  showed Pro-Denkvorgang and Stop response, not an early-answer action.
+  showed Pro-Denkvorgang and Stop response. At 03:31:21+02:00 the early
+  Answer-now action appeared; it was deliberately not clicked.
 ```
