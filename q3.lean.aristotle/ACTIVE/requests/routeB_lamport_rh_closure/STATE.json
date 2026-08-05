@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 92,
-  "updated_at": "2026-08-05T06:08:26+02:00",
+  "revision": 93,
+  "updated_at": "2026-08-05T06:19:40+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1551,7 +1551,8 @@
               "language": "ENGLISH_ONLY",
               "status": "RUNNING",
               "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_F0B_NODE_AND_COEFFICIENT_EXT_OR_RECURSIVE_CROSSWALK_REPRESENTATION",
-              "answer_now_shown": false,
+              "answer_now_shown": true,
+              "answer_now_first_observed_at": "2026-08-05T06:19:40+02:00",
               "answer_now_clicked": false
             }
           },
@@ -4605,6 +4606,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "FRESH_PROJECT_CHAT_6A72B708;PIN_7AB8B7D2;CONTEXT_SHA256_EAC04C8A;PROMPT_SHA256_3AC5347C;FULL_REQUEST_SHA256_366B2BAE;REQUEST_MESSAGE_310F08AE",
       "honesty": "COEFFICIENT_EXT_VS_RECURSIVE_AUX_CROSSWALK_FAIL_CLOSED_SELECTION_REQUESTED_FULL_REASONING_TIME_PRESERVED_NO_EARLY_ANSWER_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T06:19:40+02:00",
+      "event": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_PROSHKA_ADJUDICATION_STILL_RUNNING",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;STOP_RESPONSE_PRESENT;NO_ASSISTANT_VERDICT_YET;RECURSIVE_SCRATCH_RECURRENCE_X_AND_X2_ACTION_STANDARD_AXIOMS_ONLY;EQUALITY_CROSSWALK_REMAINS_LOAD_BEARING",
+      "honesty": "FULL_REASONING_TIME_PRESERVED_NO_EARLY_ANSWER_NO_SECOND_PROMPT_NO_LEAN_CROSSWALK_CLAIM_NO_BUS_010_NOT_RH"
     }
   ]
 }

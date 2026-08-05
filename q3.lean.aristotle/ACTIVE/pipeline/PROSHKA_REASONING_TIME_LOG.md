@@ -336,7 +336,7 @@ sent_at: 2026-08-05T06:07:36.343+02:00
 completed_at: null
 wall_seconds: null
 wall_human: running
-answer_now_shown: false
+answer_now_shown: true
 answer_now_clicked: false
 primary: null
 status: RUNNING
@@ -355,6 +355,7 @@ notes: >-
   recursive auxiliary basis with a mandatory equality crosswalk. It pins the
   DLMF recurrence, derivative identities, and x-squared three-band
   coefficients, rejects disconnected shadow mathematics, and forbids any
-  analytic Ferrers/PSWF overreach. Generation is running; full reasoning time
-  is preserved and Answer now will not be clicked.
+  analytic Ferrers/PSWF overreach. At 2026-08-05T06:19:40+02:00 the early
+  Answer-now action appeared while generation was still running; it was
+  deliberately not clicked. Full reasoning time remains preserved.
 ```
