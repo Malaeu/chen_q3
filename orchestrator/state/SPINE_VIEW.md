@@ -9,12 +9,12 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 ## Source freshness
 | Source | Last commit |
 |---|---|
-| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 2026-07-27 |
-| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 2026-07-31 |
-| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 2026-01-29 |
-| `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-06-13 |
-| `Q3_OBSTRUCTION_ATLAS.md` | 2026-06-12 |
-| `docs/RH_TRICK_ATLAS.md` | 2026-06-13 |
+| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 2026-08-05 |
+| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 2026-08-05 |
+| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 2026-08-05 |
+| `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-08-05 |
+| `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-05 |
+| `docs/RH_TRICK_ATLAS.md` | 2026-08-05 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-05 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
@@ -26,18 +26,21 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 |---|---|---|---|
 | PO3_SQUARE_2D3_ABSOLUTE_ROW_MASS_CONTROL | `PO3-square.2d3.absolute-row-mass-control` as an unconditional consequ | live |  |
 
-**object** (6)
+**object** (9)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
+| 031_DIRECTIVE | BAND_ZERO_CANDIDATE | killed |  |
+| INSTRUMENT_GUARDS_2026_07_27 | GLOBAL_SELF_FOURIER_CLAIM | killed |  |
 | ROUTEB_C1_COMPLETED_ZETA0_SPECIAL_VALUE | completedRiemannZeta₀ as a direct zero carrier for centered Xi | repaired | Use xi(s) = (1/2)*s*(s-1)*completedRiemannZeta₀(s) + 1/2. |
 | ROUTEB_ESTAR_MUNTZ_V1_RAW_ZETA_POLE_VALUE | Raw pointwise riemannZeta(w) * Mellin(h)(w) at w = 1 in EStarMuntzCont | killed | Use ZetaMellinReg with pole value deriv (Mellin h) 1 and retain the raw-product corolla... |
 | ROUTEB_PROJECTED_DENSITY_EXACT_FEJER | -centeredTrialDensity = \|amplitude\|^2 / sqrt(L_m) at the generic Coeff | killed | Prove independent UnprojectedDensityAutocorrelationData, then budget projected-minus-un... |
 | ROUTEB_PSTAR_COMPLETED_FIXED_ZERO | Fhat_(m,N)(z) / bDet_(m,N) | killed | Use the SOFT-1 gauge-removed family Xi(0) B(z)/B(0), without gammaC. |
 | ROUTEB_PSTAR_DOUBLE_COMPLETION_MISMATCH | gammaC(1/2+i*z) * centeredXi(z) / gammaC(1/2) | killed | Keep completion out of Pstar and place any zero-free gauge only in SlotS2. |
 | TRACKB_S5_ZERO_SIDE_PSD_LIFT | L = Mplus * F_v as the zero-side PSD lift | killed | hat(L_proj)=max(hat(L),0) repairs Fourier-side PSD but may destroy physical edge-contro... |
+| VERDICT_S1_ANCHOR_2026_07_27 | PHASE_SUBSEQUENCE | killed |  |
 
-**route** (15)
+**route** (16)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -56,18 +59,33 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | SHARED_RANK_BASIS_HUNT_FOR_FILTERED_DEFECT | shared rank/basis hunt for filtered defect | killed | `PO2` mixed-block attack |
 | SINGLE_GAMMA_ROTATED_TRANSPORT_H_A_Z_GAMMA_1_IZ_K | single-Gamma rotated transport H_a(z)\Gamma(1-iz)^{-k} | killed | remaining `PO2` wall: `Y_a`-specific no-counterexample lemma or a genuinely two-sided t... |
 | S_PD_COMPACT_SCALAR_ROUTE | S-pd compact scalar route | killed | `H-bridge` primary route |
+| ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed |  |
 
-**strategy** (8)
+**strategy** (22)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
+| 054_1B_V2_ADJUDICATION_2026_08_05 | one_broad_fill_sorry_after_surrogate_rejection | standing | ccmWeilTauN1_neg_self_eq_neg_zero |
+| 054_1_FINITE_VON_MANGOLDT_ADJUDICATION_2026_08_05 | expose_pointwise_table_before_scalar_functional | standing | compile_weighted_sum_theorem_and_fire_three_semantic_mutants |
+| 054_1_NEXT_SPLIT_ADJUDICATION_2026_08_05 | treat_scalar_orbit_implication_as_reusable_finite_consumer | standing | compile_exact_5x5_seven_class_matrix_equality_with_three_layout_plants |
+| 054_1_POST_PRIME_KERNEL_NEXT_NODE_ADJUDICATION_2026_08_05 | publish_subcomponent_helpers_before_the_exact_final_functional | standing | compile the exact seven-equation tau normal form and fire P-NIC-1..5 |
+| 054_1_POST_W02_NEXT_NODE_ADJUDICATION_2026_08_05 | publish_direct_prime_specialization_without_kernel_normalization | standing | prove four private prime normalization plants from the sole import |
+| 054_1_POST_WEIGHTED_SUM_ADJUDICATION_2026_08_05 | public_source_specific_corollary_after_generic_functional | standing | compile seven W02 forms and fire three semantic mutants |
 | DIRECT_CONCRETE_PAYLOAD_BEFORE_WHOLE_EXPRESSION_PILOT | create or hand-fill DirectConcretePayload.lean before a whole-expressi | standing | ESCAPE: CertificateShift \| implement scripts/generate_step33_a1_sub0_combined_order16_s... |
 | FACTORWISE_RAW_D17_TWO_SEGMENT_BUDGET_SPEND | keep sharpening the same factorwise raw-D17 two-segment class after th | killed | ESCAPE: RepresentationShift \| preserve cancellation and build direct whole-expression C... |
 | FULL_PACKET_SEARCH_WITH_MULTIPLE_INDEPENDENT_FRONTS | search the full Muntz packet across multiple independent fronts instea | superseded | ESCAPE: ReceiverMinimize \| retain the local T4a bridge closed by Goal 039 and treat eac... |
 | MANUAL_ROW_BY_ROW_SCALAR_REPLAY | continue manual row-by-row or entry-by-entry scalar replay | standing | ESCAPE: CertificateShift \| use compressed direct whole-expression row certificates with... |
 | RADIUS_DRIVEN_CERTIFICATE_CUTOFF_AND_TOOTH_ALIGNED_TRANSITIO | infer the cofinal transition from a radius-driven cutoff or tooth-alig | standing | ESCAPE: RepresentationShift \| replay the exact 031 identity at generic m with the live ... |
 | RESUBMIT_ALREADY_CLOSED_SUPPLIER_TO_CLOUD | resubmit the already-closed T4a supplier to Aristotle | standing | ESCAPE: MemoryConsolidation \| keep the T4a contract quarantined; reuse the Goal 040 PL2... |
+| SYSTEM_PROMPT_V2_WORKING_2026_08_04_PRE_ARSENAL | <if any> | standing | <cheapest belief-changing test> |
 | TRACKB_SCALAR_POINTWISE_EDGE_MAJORANT | tune scalar Psi_K or spend tiny-B c_arch without same-unit operator br | standing | ESCAPE: RepresentationShift \| replace the scalar route by a direct interval/rational pr... |
+| VERDICT_044_R6_LIBRARY_ONLY_CANONICAL_HRM_OPEN_2026_07_31 | count_stronger_class_supplier_as_canonical_consumption | standing | prove hRp on the exact v3 class and plant it on PL1 |
+| VERDICT_046_RATIFIED_FIRST_CANONICAL_2026_07_31 | stronger_R6_class_wrapper_as_canonical_supplier | standing | endpoint_complete_zero_mass_Riemann_sum_bound |
+| VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026_08_05 | fresh_chat_per_goal_with_full_context_reupload | standing | phase_key_comparator_and_duplicate_control_plants |
+| VERDICT_CCM_IMPORT_C3_SPLIT_2026_07_31 | treat_trial_limit_and_real_zero_family_as_the_same_sequence | standing | exact_projective_ground_to_trial_residual_on_one_control_cell |
+| VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026_07_31 | retroactive_goal_amendment | standing | compare original_goal_040_sha_across_sync |
+| VERDICT_GOAL040_RATIFIED_PENDING_PIN_2026_07_31 | implicit_derivative_identification_and_duplicate_T4a_cloud_run | standing | pinned_goal_040_and_rule0_exact_text_audit |
+| VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | pin A1_as_canonical_and_A2_as_corollary |
 | WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayloa | standing | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coeffici... |
 
 **wall** (8)
@@ -83,7 +101,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_38 records, 6 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_56 records, 9 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |
