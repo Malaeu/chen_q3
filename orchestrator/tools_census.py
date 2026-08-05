@@ -40,6 +40,26 @@ DB_EXT = {".db", ".sqlite", ".sqlite3"}
 STATE_EXT = {".json", ".yaml", ".yml", ".tsv", ".csv"}
 ALIVE_SINCE = "2026-07-01"
 
+# A LEDGER is any accumulating journal, regardless of format: the thing you consult to ask
+# "have we already tried / solved / killed this?".  Owner correction 2026-08-05: the first
+# version of this census counted only .db files as databases, so INSIGHTS.md (1802 dated
+# entries), FAILURE_ATLAS.json and ROUTE_KILL_REGISTRY.md were invisible.
+LEDGER_EXT = {".md", ".json", ".yaml", ".yml", ".csv"}
+LEDGER_NAME = re.compile(
+    r"INSIGHTS|ATLAS|REGISTRY|LEDGER|_LOG|LOG_|FAILED|FAILURE|MANIFEST|CHANGELOG|"
+    r"MONITOR|PROTOKOLL|KILL|ERRORS_DESTROYER|SPINE|CHECKPOINTS|Progress_Log", re.I)
+# Bus goal/answer cards are records, not journals — they are indexed by MANIFEST instead.
+LEDGER_SKIP = re.compile(r"\.goal\.md$|\.answer\.md$|\.report\.md$|/litreview/|/insights/")
+ENTRY_PATTERNS = [
+    re.compile(r"^#{1,4}\s*\d{4}-\d{2}-\d{2}", re.M),      # ## 2026-08-05 — ...
+    re.compile(r"^#{1,4}\s*.*\(\d{4}-\d{2}-\d{2}", re.M),  # ## Synthesis (2026-08-05, ...)
+    re.compile(r"^\s*[-*]\s*\d{4}-\d{2}-\d{2}", re.M),     # - 2026-08-05 ...
+    re.compile(r'^\s*"?date"?\s*[:=]', re.M),              # date: / "date":
+    re.compile(r"^\s*\|\s*\d{4}-\d{2}-\d{2}", re.M),       # | 2026-08-05 | table rows
+]
+MIN_ENTRIES = 8
+MAX_LEDGER_BYTES = 20 * 1024 * 1024
+
 
 def walk():
     for root, dirs, files in os.walk(REPO):
@@ -80,18 +100,45 @@ def classify(rel):
     return "TOOL"
 
 
+def count_entries(path):
+    """How many appended records does this journal hold? 0 means 'not a journal'."""
+    try:
+        if path.stat().st_size > MAX_LEDGER_BYTES:
+            return 0
+        txt = path.read_text(errors="ignore")
+    except Exception:
+        return 0
+    return max(len(pat.findall(txt)) for pat in ENTRY_PATTERNS)
+
+
+def is_ledger(rel, path):
+    if LEDGER_SKIP.search(str(rel)):
+        return 0
+    n = count_entries(path)
+    if LEDGER_NAME.search(rel.name) and n >= 2:
+        return n
+    return n if n >= MIN_ENTRIES else 0
+
+
 def collect():
-    tools, probes, dbs, states = [], [], [], []
+    tools, probes, dbs, states, ledgers = [], [], [], [], []
     for p in walk():
         rel = p.relative_to(REPO)
         ext = p.suffix.lower()
         if ext in TOOL_EXT:
             (probes if classify(rel) == "PROBE" else tools).append(rel)
-        elif ext in DB_EXT:
+            continue
+        if ext in DB_EXT:
             dbs.append(rel)
-        elif ext in STATE_EXT and p.stat().st_size > 2000:
+            continue
+        if ext in LEDGER_EXT:
+            n = is_ledger(rel, p)
+            if n:
+                ledgers.append((rel, n))
+                continue
+        if ext in STATE_EXT and p.stat().st_size > 2000:
             states.append(rel)
-    return tools, probes, dbs, states
+    return tools, probes, dbs, states, ledgers
 
 
 def reference_counts(names):
@@ -100,8 +147,11 @@ def reference_counts(names):
         return refs
     pat = "|".join(re.escape(n) for n in names)
     try:
+        # Exclude our own generated output: docs/TOOLS.md lists every tool by name, so
+        # counting it would give each tool a phantom reference and erase the orphan signal.
         out = subprocess.run(["rg", "--no-filename", "-o", "-e", pat,
                               "--glob", "!.git", "--glob", "!.lake", "--glob", "!*.olean",
+                              "--glob", "!docs/TOOLS.md",
                               str(REPO)], capture_output=True, text=True, timeout=600).stdout
         for line in out.splitlines():
             refs[line.strip()] += 1
@@ -120,7 +170,7 @@ def rule_mentions():
 
 
 def build_rows():
-    tools, probes, dbs, states = collect()
+    tools, probes, dbs, states, ledgers = collect()
     refs = reference_counts([p.name for p in tools + dbs])
     rules = rule_mentions()
     rows = []
@@ -136,6 +186,12 @@ def build_rows():
         rows.append({
             "kind": "DB", "path": str(rel), "last": git_last(rel),
             "refs": max(refs.get(rel.name, 0) - 1, 0),
+            "in_rules": rel.name in rules, "purpose": "",
+        })
+    for rel, n in sorted(ledgers, key=lambda x: -x[1]):
+        rows.append({
+            "kind": "LEDGER", "path": str(rel), "last": git_last(rel),
+            "refs": n,                      # for ledgers this column holds the entry count
             "in_rules": rel.name in rules, "purpose": "",
         })
     return rows, probes, states
@@ -158,7 +214,9 @@ def markdown(rows, probes, states):
     out.append(f"- **Permanent tools:** {len(tools)} (touched since {ALIVE_SINCE}: {len(alive)})")
     out.append(f"- **One-shot probes** (goal-local experiment log, not tooling): {len(probes)}")
     out.append(f"- **Databases:** {len(dbs)}")
-    out.append(f"- **State files** (json/yaml/csv > 2 KB): {len(states)}")
+    out.append(f"- **Ledgers** (accumulating journals, any format): "
+               f"{sum(1 for r in rows if r['kind']=='LEDGER')}")
+    out.append(f"- **State files** (json/yaml/csv > 2 KB, not journals): {len(states)}")
     out.append(f"- Alive tools referenced by nothing (**orphans**): {len(orphans)}")
     out.append(f"- Alive tools not mentioned in any rule file: {len(unruled)}\n")
 
@@ -167,6 +225,26 @@ def markdown(rows, probes, states):
     out.append("|---|---|---|---|")
     for r in dbs:
         out.append(f"| `{r['path']}` | {r['last']} | {r['refs']} | {'yes' if r['in_rules'] else 'NO'} |")
+    out.append("")
+
+    ledgers = [r for r in rows if r["kind"] == "LEDGER"]
+    led_alive = [r for r in ledgers if r["last"] >= ALIVE_SINCE]
+    led_dead = [r for r in ledgers if r["last"] < ALIVE_SINCE]
+    out.append("## Ledgers — accumulating journals (\"have we already tried this?\")\n")
+    out.append(f"{len(ledgers)} journals, **{len(led_alive)} alive** / {len(led_dead)} frozen. "
+               "A frozen ledger that is still cited as current is the project's recurring "
+               "failure mode: it does not lie, it just stops answering.\n")
+    out.append("### Alive\n")
+    out.append("| Ledger | Entries | Last commit | In rules |")
+    out.append("|---|---|---|---|")
+    for r in sorted(led_alive, key=lambda x: -int(x["refs"])):
+        out.append(f"| `{r['path']}` | {r['refs']} | {r['last']} | "
+                   f"{'yes' if r['in_rules'] else '**NO**'} |")
+    out.append("\n### Frozen (still on disk, often still cited)\n")
+    out.append("| Ledger | Entries | Last commit |")
+    out.append("|---|---|---|")
+    for r in sorted(led_dead, key=lambda x: x["last"], reverse=True)[:40]:
+        out.append(f"| `{r['path']}` | {r['refs']} | {r['last']} |")
     out.append("")
 
     out.append("## Permanent tools, most recently touched first\n")
@@ -204,8 +282,10 @@ def main():
         print(f"{r['kind']}\t{r['path']}\t{r['last']}\t{r['refs']}\t{r['in_rules']}\t{r['purpose']}")
     tools = [r for r in rows if r["kind"] == "TOOL"]
     alive = [r for r in tools if r["last"] >= ALIVE_SINCE]
+    led = [r for r in rows if r['kind'] == 'LEDGER']
     print(f"\n== tools {len(tools)} (alive {len(alive)}) | probes {len(probes)} | "
-          f"dbs {sum(1 for r in rows if r['kind']=='DB')} | states {len(states)}",
+          f"dbs {sum(1 for r in rows if r['kind']=='DB')} | ledgers {len(led)} "
+          f"(alive {sum(1 for r in led if r['last'] >= ALIVE_SINCE)}) | states {len(states)}",
           file=sys.stderr)
     return 0
 

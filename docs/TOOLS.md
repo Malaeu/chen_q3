@@ -9,7 +9,8 @@
 - **Permanent tools:** 367 (touched since 2026-07-01: 22)
 - **One-shot probes** (goal-local experiment log, not tooling): 159
 - **Databases:** 1
-- **State files** (json/yaml/csv > 2 KB): 513
+- **Ledgers** (accumulating journals, any format): 25
+- **State files** (json/yaml/csv > 2 KB, not journals): 511
 - Alive tools referenced by nothing (**orphans**): 1
 - Alive tools not mentioned in any rule file: 18
 
@@ -19,11 +20,50 @@
 |---|---|---|---|
 | `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-05 | 18 | yes |
 
+## Ledgers — accumulating journals ("have we already tried this?")
+
+25 journals, **6 alive** / 19 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
+
+### Alive
+
+| Ledger | Entries | Last commit | In rules |
+|---|---|---|---|
+| `q3.lean.aristotle/docs/INSIGHTS.md` | 1673 | 2026-08-05 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-04 | yes |
+| `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` | 30 | 2026-07-28 | yes |
+| `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 23 | 2026-07-10 | yes |
+| `q3.lean.aristotle/ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md` | 15 | 2026-08-05 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
+
+### Frozen (still on disk, often still cited)
+
+| Ledger | Entries | Last commit |
+|---|---|---|
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md` | 865 | 2026-06-25 |
+| `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` | 817 | 2026-06-25 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md` | 434 | 2026-06-24 |
+| `docs/trackB/CHECKPOINTS.md` | 23 | 2026-06-14 |
+| `docs/Progress_Log.md` | 2 | 2026-03-07 |
+| `session_exports/chat_latest.md` | 769 | 2026-02-12 |
+| `q3.lean.aristotle/KB/archive/orchestrator_legacy_snapshot_2026-02-08.md` | 27 | 2026-02-08 |
+| `q3.lean.aristotle/ACTIVE/insights.md` | 1673 | 2026-01-29 |
+| `docs/links/quillen_working_papers.json` | 491 | 2026-01-29 |
+| `docs/mac_24_01_2026_13_22.md` | 216 | 2026-01-29 |
+| `docs/links/quillen_working_papers_1999_2003.json` | 87 | 2026-01-29 |
+| `q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md` | 27 | 2026-01-29 |
+| `q3.lean.aristotle/aristotle_output/proshka_context_floor_tcritical.md` | 27 | 2026-01-29 |
+| `q3.lean.aristotle/aristotle_output/proshka_floor_tcritical_bundle_2026_01_24.md` | 27 | 2026-01-29 |
+| `q3.lean.aristotle/aristotle_output/proshka_floor_cert_tcritical_bundle_2026_01_25.md` | 27 | 2026-01-29 |
+| `q3.lean.aristotle/ACTIVE/aristotle/proshka_context_single_scale.md` | 27 | 2026-01-29 |
+| `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 23 | 2026-01-29 |
+| `q3.lean.aristotle/ACTIVE/orchestrator.md` | 23 | 2026-01-29 |
+| `docs/CHANGELOG_AUTO.md` | 10 | 2026-01-20 |
+
 ## Permanent tools, most recently touched first
 
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
-| `orchestrator/tools_census.py` | untracked | 2 | **NO** | Machine census of every tool, database and state file in the repo. |
+| `orchestrator/tools_census.py` | 2026-08-05 | 2 | **NO** | Machine census of every tool, database and state file in the repo. |
 | `q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py` | 2026-08-05 | 1 | **NO** | S2-L2b discriminator: do v3-class windows have Mellin zeros INSIDE the open strip? |
 | `q3.lean.aristotle/scripts/ccm_h2a_gap_scan.py` | 2026-08-04 | 1 | **NO** | CCM H2a Layer-3 gap-scan discriminator (FIT_NOT_LAW, binary64, NOT proof tree). |
 | `q3.lean.aristotle/scripts/ccm_h2a_sector_cell_13_2_arb.py` | 2026-08-04 | 5 | **NO** | Rigorous Arb certificate for the CCM H2a sector cell ``(13, 2)``. |
