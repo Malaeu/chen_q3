@@ -49888,3 +49888,25 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   solution of this exact recurrence.  That source-locked identification is the
   next obligation.  G5/S1 remains OPEN; Route B remains
   `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
+
+## 2026-08-05 — G5 regular PSWF coefficient-row source gate (in progress)
+
+- Exact target: turn the regular even PSWF Ferrers/Legendre coefficient row
+  into a nonzero square-summable solution of the already committed symmetric
+  mode-four tail recurrence, then use discrete-Wronskian uniqueness.
+- Four sequential `q3_docs` queries returned no candidate.  A refresh prepared
+  1555 files but its `qmd embed -f` exceeded the 90-second wrapper timeout, so
+  the queries used the last published collection; this recall is explicitly
+  incomplete rather than a proof of absence.
+- Current Mathlib supplies generic `HilbertBasis -> l2` machinery, but no
+  Legendre Hilbert basis on `[-1,1]` and no spheroidal/PSWF constructor.
+- DLMF 30.8.1--30.8.5 supplies the exact Ferrers expansion, coefficient
+  integral, three-term recurrence, and nonzero weighted normalization.  DLMF
+  30.8.7 gives the ratio asymptotic of order `gamma^2/(16 k^2)`, while
+  30.16(ii) identifies these coefficients as the recessive solution.
+- Candidate A is the narrow receiver `DLMF asymptotic + normalization ->
+  source row square-summable and nonzero`.  Candidate B consumes an already
+  supplied source row and proves equality up to a nonzero scalar with the
+  canonical Hermitian tail.  Proshka must select the smallest executable one.
+- No full Sturm--Liouville construction, PSWF existence claim, Weyl label,
+  operator/resolvent assertion, route promotion, Bus 010, or RH claim is made.
