@@ -323,3 +323,38 @@ notes: >-
   x-squared action, bound, Ferrers series, PSWF name, Bus 010, promotion, or
   RH claim is licensed by this verdict.
 ```
+
+### 2026-08-05 — G5 ordinary Legendre finite-action next-node adjudication
+
+```yaml
+proof_address: RouteB.G5.Mode4.OrdinaryLegendreFiniteAction
+front: G5/S1
+transaction: G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_NEXT_NODE
+conversation_id: 6a72b708-9fb4-83eb-b416-00ba1da88fd0
+request_message_id: 310f08ae-b91d-417d-846e-93101e7a7b3d
+sent_at: 2026-08-05T06:07:36.343+02:00
+completed_at: null
+wall_seconds: null
+wall_human: running
+answer_now_shown: false
+answer_now_clicked: false
+primary: null
+status: RUNNING
+result_pointer: null
+notes: >-
+  Fresh chat in project RH_Marz_2026 pinned to 7ab8b7d2. The exact context
+  pack has SHA-256
+  eac04c8a84056162189a9f9eaa13a5481f919df637cd85ae60ba691b0cfffbac;
+  the standalone prompt has SHA-256
+  3ac5347c08e3717f0c4896904ddfe35507a71137d25a65430d70c5e496a2d340;
+  and the complete sent request has SHA-256
+  366b2bae8e0124334dc504448a9dee5c4ffffce9344e8423406b1847cb3231af.
+  It asks Proshka to choose exactly one smallest executable F0b node and to
+  decide the load-bearing representation fork: direct coefficient
+  extensionality for the committed affine shifted-Legendre object versus a
+  recursive auxiliary basis with a mandatory equality crosswalk. It pins the
+  DLMF recurrence, derivative identities, and x-squared three-band
+  coefficients, rejects disconnected shadow mathematics, and forbids any
+  analytic Ferrers/PSWF overreach. Generation is running; full reasoning time
+  is preserved and Answer now will not be clicked.
+```
