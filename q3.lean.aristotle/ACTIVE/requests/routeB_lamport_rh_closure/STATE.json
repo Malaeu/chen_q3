@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 82,
-  "updated_at": "2026-08-05T04:17:02+02:00",
+  "revision": 83,
+  "updated_at": "2026-08-05T04:23:16.941+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1408,6 +1408,19 @@
           "primary": "G5_MODE4_SELECT_DLMF3085_WEIGHT_MATCH_RECEIVER",
           "answer_now_shown": true,
           "answer_now_clicked": false
+        },
+        "source_object_proshka_review": {
+          "conversation_id": "6a729e95-3e7c-83eb-bf3e-fb98bd88d8a6",
+          "request_message_id": "ee57009d-4e65-4e81-8a9c-5d9af18c4705",
+          "sent_at": "2026-08-05T04:23:16.941+02:00",
+          "pinned_head": "cf0cc3c5",
+          "prompt_sha256": "d591de7de6ac873e702601a727dad8ddbec94d6bc3fb6fae59494a8719facd64",
+          "context_pack_sha256": "d90d3140248e851152bd2d309d31e01451331fae5e6c315db081b5925fc2b71d",
+          "full_request_sha256": "d9d1c767544acfb16c963421ad7307ce56127b85ee8995ad21fc2feda688b32f",
+          "status": "RUNNING",
+          "answer_now_shown": false,
+          "answer_now_clicked": false,
+          "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         }
       }
     },
@@ -4363,6 +4376,13 @@
       "progress_class": "CONDITIONAL_SOURCE_TO_SCHUR_BOUNDARY_WIRING_PROGRESS",
       "result": "NONZERO_SCALE_CANCELLATION;SHIFTED_SOURCE_RATIO_EQUALS_CANONICAL_RATIO;SOURCE_BOUNDARY_FLUX_EQUALS_SCHUR_CORRECTION;TARGET_7759_FULL_7817_Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_TWO_OF_TWO_PROVEN",
       "honesty": "CONDITIONAL_ANONYMOUS_SEQUENCE_ONLY_GENUINE_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_IS_NEXT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T04:23:16.941+02:00",
+      "event": "G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_PROSHKA_ADJUDICATION_STARTED",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "FRESH_PROJECT_CHAT_6A729E95;PIN_CF0CC3C5;CONTEXT_SHA256_D90D3140;PROMPT_SHA256_D591DE7D;FULL_REQUEST_SHA256_D9D1C767;REQUEST_MESSAGE_EE57009D",
+      "honesty": "SMALLEST_HONEST_SOURCE_OBJECT_NODE_REQUESTED_NO_ANONYMOUS_SEQUENCE_NAMED_AS_PSWF_NO_EARLY_ANSWER_NO_BUS_010_NOT_RH"
     }
   ]
 }

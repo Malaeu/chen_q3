@@ -237,3 +237,35 @@ notes: >-
   nonvanishing, or raw unweighted L2. The selected node remains conditional:
   it does not construct or identify a regular PSWF coefficient sequence.
 ```
+
+### 2026-08-05 — G5 genuine regular first-kind PSWF source-object adjudication
+
+```yaml
+proof_address: RouteB.G5.Mode4.RegularSourceObject
+front: G5/S1
+transaction: G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE
+conversation_id: 6a729e95-3e7c-83eb-bf3e-fb98bd88d8a6
+request_message_id: ee57009d-4e65-4e81-8a9c-5d9af18c4705
+sent_at: 2026-08-05T04:23:16.941+02:00
+completed_at: null
+wall_seconds: null
+wall_human: null
+answer_now_shown: false
+answer_now_clicked: false
+primary: null
+status: RUNNING
+result_pointer: null
+notes: >-
+  Fresh project chat in RH_Marz_2026 pinned to cf0cc3c5. The context pack has
+  SHA-256 d90d3140248e851152bd2d309d31e01451331fae5e6c315db081b5925fc2b71d;
+  the standalone prompt has SHA-256
+  d591de7de6ac873e702601a727dad8ddbec94d6bc3fb6fae59494a8719facd64;
+  and the complete sent request has SHA-256
+  d9d1c767544acfb16c963421ad7307ce56127b85ee8995ad21fc2feda688b32f.
+  It asks Proshka to choose exactly one smallest honest theorem-sized source
+  object node after the completed anonymous DLMF recurrence, normalization,
+  canonical-tail, and Schur-boundary-flux wiring. It explicitly attacks fake
+  PSWF naming, recurrence-at-q-zero drift, index and phase drift, weighted
+  versus raw L2, zero or infinite normalization, choose-from-unproved
+  existence, full-operator overreach, Bus 010, promotion, and RH claims.
+```
