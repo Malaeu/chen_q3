@@ -250,7 +250,7 @@ sent_at: 2026-08-05T04:23:16.941+02:00
 completed_at: null
 wall_seconds: null
 wall_human: null
-answer_now_shown: false
+answer_now_shown: true
 answer_now_clicked: false
 primary: null
 status: RUNNING
@@ -268,4 +268,7 @@ notes: >-
   PSWF naming, recurrence-at-q-zero drift, index and phase drift, weighted
   versus raw L2, zero or infinite normalization, choose-from-unproved
   existence, full-operator overreach, Bus 010, promotion, and RH claims.
+  At 2026-08-05T04:27:54+02:00 the Answer-now action appeared while Proshka
+  was still generating under the UI status Abgrenzen der Quelle; it was
+  deliberately not clicked.
 ```
