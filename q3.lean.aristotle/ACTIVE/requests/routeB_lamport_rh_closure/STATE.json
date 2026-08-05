@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 76,
-  "updated_at": "2026-08-05T03:22:03+02:00",
+  "revision": 77,
+  "updated_at": "2026-08-05T03:29:12+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1353,8 +1353,8 @@
         "answer_now_clicked": false
       },
       "regular_pswf_coefficient_row_source_gate": {
-        "status": "IN_PROGRESS_PROSHKA_THEOREM_SHAPE_ADJUDICATION_NEXT",
-        "pinned_head": "c5ff17f9",
+        "status": "PROSHKA_THEOREM_SHAPE_ADJUDICATION_RUNNING",
+        "pinned_head": "9e462d94",
         "q3_docs_queries": 4,
         "q3_docs_candidates": 0,
         "q3_docs_refresh": "PREPARED_1555_FILES_BUT_QMD_EMBED_TIMEOUT_90S_EXISTING_PUBLISHED_COLLECTION_QUERIED",
@@ -1370,7 +1370,16 @@
         ],
         "candidate_A": "DLMF_RECESSIVE_RATIO_AND_NORMALIZATION_TO_SOURCE_COEFFICIENT_L2_AND_NONZERO",
         "candidate_B": "SOURCE_SQUARE_SUMMABLE_RECURRENCE_ROW_TO_CANONICAL_HERMITIAN_TAIL_UP_TO_NONZERO_SCALE",
-        "forbidden_overreach": "NO_FULL_STURM_LIOUVILLE_OPERATOR_BUILD_WITHOUT_ADJUDICATION"
+        "forbidden_overreach": "NO_FULL_STURM_LIOUVILLE_OPERATOR_BUILD_WITHOUT_ADJUDICATION",
+        "proshka_review": {
+          "conversation_id": "6a7291c1-3ba4-83eb-bbcb-2396b4979290",
+          "request_message_id": "d1756a06-cf60-45e1-b4f3-161ba90b395a",
+          "sent_at": "2026-08-05T03:28:33.025+02:00",
+          "context_pack_sha256": "3468c3b26097b6795bf86112aa0a566eafeefbf4aced3adf96e8fd9b6169e74f",
+          "full_prompt_sha256": "d222c8e566586c142c98b2bb7fd3f25577caeca2ccae9f443db619f4b8207e8e",
+          "status": "RUNNING",
+          "answer_now_clicked": false
+        }
       }
     },
     "validation": {
@@ -4283,6 +4292,13 @@
       "progress_class": "SOURCE_RESEARCH_AND_THEOREM_SHAPE_PROGRESS",
       "result": "FOUR_Q3_DOCS_QUERIES_EMPTY;DLMF_30_8_1_TO_8_7_AND_30_16_II_PIN_FERRERS_RECURRENCE_NORMALIZATION_RECESSIVE_TAIL;PROSHKA_A_OR_B_ADJUDICATION_NEXT",
       "honesty": "Q3_DOCS_REFRESH_EMBED_TIMEOUT_EXISTING_COLLECTION_USED_NO_SOURCE_OBJECT_IN_LEAN_NO_REGULAR_ROW_IDENTIFICATION_NO_FULL_STURM_LIOUVILLE_BUILD_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T03:28:33.025+02:00",
+      "event": "G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_PROSHKA_ADJUDICATION_STARTED",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "FRESH_PROJECT_CHAT_6A7291C1;PIN_9E462D94;CONTEXT_SHA256_3468C3B2;PROMPT_SHA256_D222C8E5;REQUEST_MESSAGE_D1756A06",
+      "honesty": "CANDIDATE_A_OR_B_OR_STRICTLY_SMALLER_NODE_REQUESTED_NO_CLOSED_WORK_REASSIGNED_NO_EARLY_ANSWER_NO_BUS_010_NOT_RH"
     }
   ]
 }

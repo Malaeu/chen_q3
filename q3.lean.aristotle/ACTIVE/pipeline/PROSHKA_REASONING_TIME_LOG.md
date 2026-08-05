@@ -196,3 +196,36 @@ notes: >-
   promotion, and RH claims. The UI reports exact model reasoning of 23m07s;
   the observed wall includes polling lag.
 ```
+
+### 2026-08-05 — G5 regular PSWF coefficient-row source-gate adjudication
+
+```yaml
+proof_address: RouteB.G5.Mode4.RegularRow
+front: G5/S1
+transaction: G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE
+conversation_id: 6a7291c1-3ba4-83eb-bbcb-2396b4979290
+request_message_id: d1756a06-cf60-45e1-b4f3-161ba90b395a
+sent_at: 2026-08-05T03:28:33.025+02:00
+completed_at: null
+wall_seconds: null
+wall_human: null
+answer_now_shown: false
+answer_now_clicked: false
+primary: null
+status: RUNNING
+result_pointer: null
+notes: >-
+  Fresh chat in project RH_März_2026. The exact context pack has SHA-256
+  3468c3b26097b6795bf86112aa0a566eafeefbf4aced3adf96e8fd9b6169e74f;
+  the complete sent prompt has SHA-256
+  d222c8e566586c142c98b2bb7fd3f25577caeca2ccae9f443db619f4b8207e8e.
+  It pins HEAD/origin 9e462d94, the completed canonical Hermitian tail row
+  and L2 Wronskian uniqueness, four empty q3_docs queries, the failed 90-second
+  qmd refresh, and DLMF 30.8.1--30.8.7 plus 30.16(ii). Proshka must select
+  exactly one smallest executable node between the DLMF asymptotic-to-L2
+  receiver, the source-row-to-canonical-tail consumer, or a strictly smaller
+  legal theorem. The prompt explicitly attacks weighted-vs-unweighted L2,
+  zero denominators, phase/index drift, zero proportionality, conditional-as-
+  source wrappers, and full-operator overreach. Generation is running; the UI
+  showed Pro-Denkvorgang and Stop response, not an early-answer action.
+```
