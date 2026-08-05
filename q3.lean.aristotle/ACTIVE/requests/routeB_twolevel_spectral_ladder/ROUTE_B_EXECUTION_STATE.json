@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T06:53:00+02:00",
+  "updated_at": "2026-08-05T06:59:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,17 +10,17 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X2_ACTION",
+  "operational_status": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_ODE_THEOREM_SHAPE_AUDIT",
   "current": {
     "stage_id": "RB-LAMPORT-G5",
-    "contract_obligation": "G5.MODE4.F0D.X2_ACTION",
-    "name": "Mode4OrdinaryLegendreXSquaredActionKernel",
-    "status": "ACTIVE_LEAN_IMPLEMENTATION",
-    "stop_code": "G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_KERNEL",
+    "contract_obligation": "G5.MODE4.F0E.ODE_AUDIT",
+    "name": "Mode4OrdinaryLegendreDifferentialIdentityAudit",
+    "status": "ACTIVE_THEOREM_SHAPE_AUDIT",
+    "stop_code": "G5_MODE4_ORDINARY_LEGENDRE_DIFFERENTIAL_IDENTITY_THEOREM_SHAPE_AUDIT",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Codex local Lean worker",
-    "next_action": "Implement and validate the exact ordinary-Legendre X-squared three-band action from the proved X action; then synchronize the differential-identity gate. Do not create Bus 010.",
+    "next_required_actor": "Codex research worker then Proshka route judge",
+    "next_action": "Audit q3_docs, pinned Mathlib derivative APIs, and primary Legendre identities; then ask Proshka to select exactly one smallest executable ODE node and proof representation. Do not create Bus 010.",
     "ccm_classification": "SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY",
     "ccm_repoint": "G3_H2B_CONDITIONAL_EVIDENCE_ONLY",
     "h2b_closed": false,
@@ -369,7 +369,7 @@
     "zero_compute_until_goal_scope_says_otherwise": false
   },
   "owner_authorization": {
-    "mode": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X2_ACTION",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_ODE_THEOREM_SHAPE_AUDIT",
     "authorized_at": "2026-07-11T21:14:20+02:00",
     "authorized_by": "Ылша",
     "instruction": "Remove the post-answer STOP, unlock the recursive compiler, start it, and keep iterating.",

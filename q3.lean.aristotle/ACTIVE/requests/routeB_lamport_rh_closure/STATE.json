@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 96,
-  "updated_at": "2026-08-05T06:53:00+02:00",
+  "revision": 97,
+  "updated_at": "2026-08-05T06:59:00+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G5_X2_ACTION_ACTIVE",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G5_ODE_THEOREM_SHAPE_AUDIT_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -83,7 +83,7 @@
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
     "next_actor": "Codex local Lean worker",
-    "next_action": "Implement and validate G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_KERNEL; do not create Bus 010 and do not promote Route B"
+    "next_action": "Audit and adjudicate the smallest exact ordinary-Legendre differential-identity node; do not create Bus 010 and do not promote Route B"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -156,7 +156,7 @@
     "route_effect": "PORT_CONVENTION_FRICTION_CLOSED_CONTINUATION_BRIDGE_OPEN_CURRENT_D0_7E_5A_STOP_UNCHANGED_NO_BUS_010_NOT_RH"
   },
   "owner_authorization": {
-    "status": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X2_ACTION",
+    "status": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_ODE_THEOREM_SHAPE_AUDIT",
     "authorized_at": "2026-07-11T21:14:20+02:00",
     "scope": "MASTER_DAG_LEAF_TRANSACTIONS",
     "physical_bus_preempts": true,
@@ -1190,8 +1190,8 @@
     "rh_status": "NOT_RH"
   },
   "g5_mode4_root_bracket": {
-    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV96",
-    "status": "ORDINARY_LEGENDRE_X_ACTION_PROVED_X2_ACTION_ACTIVE_FERRERS_REGULAR_SOLUTION_OPEN_NOT_RH",
+    "name": "G5_MODE4_R1A_ROOT_BRACKET_REV97",
+    "status": "ORDINARY_LEGENDRE_X2_ACTION_PROVED_ODE_THEOREM_SHAPE_AUDIT_ACTIVE_FERRERS_REGULAR_SOLUTION_OPEN_NOT_RH",
     "proof_artifacts": [
       "Q3/Proofs/RouteB/D0Mode4JacobiSchurContinuant.lean",
       "Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
@@ -1204,11 +1204,12 @@
       "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean",
       "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
       "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreRecurrence.lean",
-      "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXAction.lean"
+      "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXAction.lean",
+      "Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXSquaredAction.lean"
     ],
     "latest_proof_artifact": {
-      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXAction.lean",
-      "sha256": "c26d47b749b7f775e6754081505de82b9727598a717762adf70bf3ff77d80fc4"
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXSquaredAction.lean",
+      "sha256": "86880b54815a0ac5acd15dbe262bd8bcd47944a19e0615a861cae86ebd9d52e4"
     },
     "proved": [
       "SCHUR_DETERMINANT_EQUALS_POSITIVE_UPPER_PRODUCT_TIMES_ROOT_FUNCTION",
@@ -1244,12 +1245,12 @@
       "MODE4_HERMITIAN_SQUARE_SUMMABLE_SOLUTION_UNIQUE_UP_TO_SCALE",
       "MODE4_ORDINARY_LEGENDRE_AFFINE_KERNEL",
       "MODE4_ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE",
-      "MODE4_ORDINARY_LEGENDRE_X_ACTION"
+      "MODE4_ORDINARY_LEGENDRE_X_ACTION",
+      "MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION"
     ],
     "remaining_inputs": [
       "LOWER_ENDPOINT_FINITE_LEFT_LOWER_ENVELOPE_POSITIVE_AT_K_EQ_4M",
       "UPPER_ENDPOINT_FINITE_LEFT_UPPER_ENVELOPE_NEGATIVE_AT_K_EQ_4M",
-      "MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION",
       "MODE4_ORDINARY_LEGENDRE_DIFFERENTIAL_IDENTITY",
       "MODE4_FERRERS_SERIES_REGULAR_SOLUTION"
     ],
@@ -1450,7 +1451,7 @@
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         },
         "ferrers_regular_solution_gate": {
-          "status": "F0C_X_ACTION_PROVED_F0D_X2_ACTION_ACTIVE",
+          "status": "F0D_X2_ACTION_PROVED_F0E_ODE_THEOREM_SHAPE_AUDIT_ACTIVE",
           "pinned_head": "a637ad11",
           "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
@@ -1508,8 +1509,8 @@
             "mutant_wrong_affine_p1_ne_x": "PASS",
             "mutant_odd_index_endpoint_sign_change": "PASS"
           },
-          "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_KERNEL",
-          "next_action": "IMPLEMENT_G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_KERNEL_FROM_PROVED_X_ACTION",
+          "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_DIFFERENTIAL_IDENTITY",
+          "next_action": "AUDIT_DIRECT_POLYNOMIAL_DERIVATIVE_VS_SHIFTED_RODRIGUES_TRANSPORT_AND_ASK_PROSHKA_FOR_ONE_SMALLEST_NODE",
           "f0b_theorem_shape_audit": {
             "status": "RECURRENCE_CROSSWALK_PRODUCTION_PROVED_X_ACTION_NEXT",
             "pinned_head": "8dd39af9",
@@ -1578,6 +1579,21 @@
               "proof_db_declarations_total": 7,
               "mutants_rejected": 5
             },
+            "x_squared_action_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreXSquaredAction.lean",
+            "x_squared_action_file_sha256": "86880b54815a0ac5acd15dbe262bd8bcd47944a19e0615a861cae86ebd9d52e4",
+            "x_squared_action_file_lines": 125,
+            "x_squared_action_public_theorem": "mode4OrdinaryLegendrePolynomial_X_sq_mul",
+            "x_squared_action_validation": {
+              "direct_lean": "PASS",
+              "target_build_jobs": 1305,
+              "full_build_jobs": 7817,
+              "q3_check": "PASS",
+              "holes_or_forbidden_declarations": 0,
+              "axioms": ["propext", "Classical.choice", "Quot.sound"],
+              "proof_db_declarations_proven": 6,
+              "proof_db_declarations_total": 6,
+              "mutants_rejected": 5
+            },
             "proshka_adjudication": {
               "transaction": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_NEXT_NODE",
               "proof_address": "RouteB.G5.Mode4.OrdinaryLegendreFiniteAction",
@@ -1640,16 +1656,16 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 1304,
+      "target_build_jobs": 1305,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0,
-      "proof_db_declarations_proven": 7,
-      "proof_db_declarations_total": 7,
+      "proof_db_declarations_proven": 6,
+      "proof_db_declarations_total": 6,
       "mutants_rejected": 5
     },
-    "external_proshka_ratification": "F0B_RECURRENCE_MATERIALIZED_F0C_X_ACTION_PROVED_F0D_X2_ACTION_ACTIVE_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "F0B_RECURRENCE_F0C_X_ACTION_F0D_X2_ACTION_PROVED_F0E_ODE_THEOREM_SHAPE_AUDIT_ACTIVE_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": false,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -1771,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G5.MODE4.F0D.X2_ACTION",
+    "active_node_id": "G5.MODE4.F0E.ODE_AUDIT",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X2_ACTION",
-    "candidate_first_leaf_after_release": "G5.MODE4.F0D.X2_ACTION",
+    "lifecycle": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_ODE_THEOREM_SHAPE_AUDIT",
+    "candidate_first_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1815,7 +1831,8 @@
       "SOFT_0_ROOF_AND_S2_TYPECHECK_REV42",
       "G5_MODE4_R1A_ROOT_BRACKET_REV57",
       "G5_MODE4_ORDINARY_LEGENDRE_RECURRENCE_REV95",
-      "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_REV96"
+      "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_REV96",
+      "G5_MODE4_ORDINARY_LEGENDRE_X2_ACTION_REV97"
     ],
     "invariants": [
       "ONLY_PROVED_DISCHARGES_DEPENDENCIES",
@@ -1902,11 +1919,26 @@
       "dependencies": ["G5.MODE4.F0C.X_ACTION"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_PROVED_AND_VALIDATED"},
+      "validation": "DIRECT_LEAN_PASS;TARGET_1305;FULL_7817;Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_REJECTED;DB_SIX_OF_SIX_PROVEN;STANDARD_AXIOMS_ONLY",
+      "failure_codes": []
+    },
+    "G5.MODE4.F0E.ODE_AUDIT": {
+      "id": "G5.MODE4.F0E.ODE_AUDIT",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Select the smallest exact ordinary-Legendre polynomial differential-identity theorem shape and proof representation needed by the Ferrers residual telescope",
+      "dependencies": ["G5.MODE4.F0B.RECURRENCE"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "F0C_X_ACTION_PROVED_AND_THIS_IS_THE_NEXT_DIRECT_FERRERS_RESIDUAL_CONSUMER"},
-      "validation": "DIRECT_LEAN_TARGET_FULL_Q3_CHECK_HOLE_AXIOM_AND_MUTANT_AUDIT",
-      "failure_codes": ["G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_KERNEL_OPEN"]
+      "eligibility": {"eligible": true, "reason": "ALGEBRAIC_FINITE_ACTION_KERNEL_PROVED_BUT_ODE_REPRESENTATION_REQUIRES_SOURCE_AND_THEOREM_SHAPE_AUDIT"},
+      "validation": "Q3_DOCS_PRIMARY_SOURCE_MATHLIB_API_AND_PROSHKA_ADJUDICATION",
+      "failure_codes": ["G5_MODE4_ORDINARY_LEGENDRE_DIFFERENTIAL_IDENTITY_OPEN"]
     },
     "G5.MODE4.F0B.RECURRENCE": {
       "id": "G5.MODE4.F0B.RECURRENCE",
@@ -4061,12 +4093,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_KERNEL",
-    "mode": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_X2_ACTION",
-    "current_leaf": "G5.MODE4.F0D.X2_ACTION",
-    "first_math_leaf_after_release": "G5.MODE4.F0D.X2_ACTION"
+    "current_stop": "G5_MODE4_ORDINARY_LEGENDRE_DIFFERENTIAL_IDENTITY_THEOREM_SHAPE_AUDIT",
+    "mode": "OWNER_AUTHORIZED_AUTORUN_ACTIVE_G5_MODE4_ODE_THEOREM_SHAPE_AUDIT",
+    "current_leaf": "G5.MODE4.F0E.ODE_AUDIT",
+    "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T06:59:00+02:00",
+      "event": "G5_MODE4_ORDINARY_LEGENDRE_X_SQUARED_ACTION_PROVED",
+      "progress_class": "FINITE_ACTION_PROOF_PROGRESS",
+      "result": "X_SQUARED_TIMES_P_N_PLUS_2_THREE_BAND_ACTION_FROM_TWO_X_ACTIONS;ONE_PUBLIC_THEOREM;FIVE_MUTANTS_REJECTED;TARGET_1305_FULL_7817_Q3_CHECK_PASS;DB_SIX_OF_SIX_PROVEN;ODE_THEOREM_SHAPE_AUDIT_ACTIVE",
+      "honesty": "FINITE_ACTION_KERNEL_ONLY_NO_ODE_YET_NO_FERRERS_FUNCTION_NO_PSWF_NAME_BUS_010_VOID_ROUTE_CHALLENGER_NOT_RH"
+    },
     {
       "at": "2026-08-05T06:53:00+02:00",
       "event": "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_PROVED",

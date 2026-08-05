@@ -50151,3 +50151,21 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   X action.  No new Proshka theorem-shape fork is present.
 - G5/S1 remains open; no ODE, Ferrers regular solution, PSWF provenance,
   route promotion, Bus 010, or RH claim is made.
+
+## 2026-08-05 — G5 ordinary Legendre X-squared action (proved)
+
+- `D0Mode4OrdinaryLegendreXSquaredAction.lean` applies the committed X action
+  twice and collects the exact `P_(n+4)`, `P_(n+2)`, and `P_n` coefficients.
+  The file exports one theorem and adds no definition or source-layer name.
+- Five endpoint falsifiers reject deletion of either off-diagonal band, a
+  flipped diagonal sign, an input-index shift, and a changed upper numerator.
+- Validation passed: direct Lean; target `1305/1305`; full `7817/7817`;
+  `q3_check`; zero holes or forbidden declarations; proof DB `6/6 proven`;
+  standard axioms only.  File SHA-256 is
+  `86880b54815a0ac5acd15dbe262bd8bcd47944a19e0615a861cae86ebd9d52e4`.
+- The algebraic finite-action subkernel is now complete through `X ^ 2`.
+  The synchronized active leaf is
+  `G5.MODE4.F0E.ODE_AUDIT`: the exact polynomial differential identity still
+  needs a theorem-shape and representation decision before implementation.
+- G5/S1 remains open; no ODE, analytic series, regular PSWF, Bus 010, route
+  promotion, or RH claim is made.
