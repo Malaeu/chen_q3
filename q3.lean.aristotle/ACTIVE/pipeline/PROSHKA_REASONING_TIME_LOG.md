@@ -504,14 +504,14 @@ transaction: G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_SPLIT_PROSHKA_ADJUDICATION
 conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
 request_message_id: b5722313-1bc3-46d1-b1d8-3e6191f04faa
 sent_at: 2026-08-05T09:33:36.473+02:00
-completed_at: null
-wall_seconds: null
-wall_human: "RUNNING"
-answer_now_shown: false
+completed_at: 2026-08-05T09:54:41.638+02:00
+wall_seconds: 1265
+wall_human: "21m05s observed wall; 20m17s exact UI reasoning duration"
+answer_now_shown: true
 answer_now_clicked: false
-primary: G2_CCM_054_1_POST_WEIGHTED_SUM_NEXT_NODE_UNSELECTED
-status: RUNNING_FULL_REASONING
-result_pointer: null
+primary: SELECT_B_W02_SEVEN_CLASS_EXACT_NORMAL_FORM
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE
+result_pointer: "Proshka assistant message c313d44f-666c-4257-abbb-7c6d36a81278"
 notes: >-
   Fresh chat in project RH_Marz_2026 pinned to commit
   1be1704545bebc2f567e8b9939edc9868a62936f. The high-recall context pack
@@ -528,5 +528,17 @@ notes: >-
   genuine owner fork. Independent component balls, bundled analytic walls,
   Goal 055 materialization, Aristotle, Bus 010, route promotion, and RH claims
   remain forbidden. At dispatch the UI showed the normal Stop responding
-  control and did not show Answer now; no early-answer control was clicked.
+  control and did not show Answer now. The early Answer-now control appeared
+  at 2026-08-05T09:35:43.592+02:00 and was deliberately not clicked. Proshka
+  completed with exact UI reasoning time 20m17s; the observed
+  send-to-extraction wall was 21m05s. The 25161-character visible response has
+  SHA-256 4856d6f2e9ca3cd87de2dc28de6729bbfecba7f96009440aa964d16de63cc857
+  and exactly one CODEX DIRECTIVE. The canon/mirror archive adds one terminal
+  LF and has SHA-256
+  345457bb9036ee5fe2e3ca86f76b29502e789ddb29f360ca8f840cb8603af69d.
+  Proshka killed the public direct ccmPrimeEntryN1 wrapper as redundant and
+  selected exactly one W02 seven-class exact symbolic normal-form theorem.
+  The standing owner release authorizes that local Lean implementation only;
+  Goal 055 remains held, Aristotle remains unauthorized, Bus 010 remains void,
+  and no route or RH promotion is licensed.
 ```
