@@ -49956,3 +49956,23 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   regular first-kind PSWF/Ferrers coefficient object and its instantiation of
   30.8.4/30.8.5 remain open.  Route B remains `CHALLENGER / NOT_RH`; Bus 010
   remains VOID.
+
+## 2026-08-05 — G5 conditional source boundary ratio and flux (proved)
+
+- `D0Mode4PSWFLegendreBoundaryFluxIdentification.lean` consumes the nonzero
+  scalar identification and proves that it cancels in the first shifted
+  Hermitian source ratio.
+- The shifted source ratio therefore equals the canonical tail ratio, and its
+  symmetric boundary flux equals the exact scalar correction already present
+  in `mode4HermitianSchurMatrix`.
+- Five semantic falsifiers fire: numerator source shift, denominator source
+  shift, Hermitian-scale shift, boundary off-diagonal shift, and inversion of
+  the canonical ratio.
+- Validation passed: direct Lean; target `7759/7759`; full `7817/7817`;
+  `q3_check`; zero holes or forbidden declarations; standard axioms only;
+  proof DB 2/2 declarations proven.
+- The conditional algebraic/recurrence/normalization-to-boundary chain is now
+  complete.  The honest remaining G5 source-layer gate is a genuine regular
+  first-kind PSWF/Ferrers coefficient object instantiating 30.8.4 and 30.8.5;
+  no such object is claimed here.  Route B remains `CHALLENGER / NOT_RH` and
+  Bus 010 remains VOID.

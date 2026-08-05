@@ -31,6 +31,8 @@ neighbor_addresses: []
 - weight receiver Lean-proved;
 - conditional 30.8.4+30.8.5 identification with the canonical Hermitian tail
   Lean-proved up to a nonzero scalar;
+- conditional shifted source boundary ratio and Schur boundary-flux
+  identification Lean-proved;
 - genuine regular-PSWF source object остаётся открыт.
 
 ## Точный блокер
@@ -85,9 +87,7 @@ neighbor_addresses: []
 
 ## Следующий адресный шаг
 
-- использовать доказанный
-  `mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical` для exact
-  source-boundary ratio/flux corollary;
-- отдельно сохранить открытым genuine source-object supplier для regular
-  first-kind PSWF/Ferrers coefficients;
+- выбрать и материализовать genuine source-object supplier для regular
+  first-kind PSWF/Ferrers coefficients, который инстанцирует доказанный
+  conditional 30.8.4/30.8.5 chain;
 - не строить полный Sturm--Liouville operator без отдельного решения.

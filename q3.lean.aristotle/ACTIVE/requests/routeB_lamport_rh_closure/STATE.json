@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 81,
-  "updated_at": "2026-08-05T04:13:16+02:00",
+  "revision": 82,
+  "updated_at": "2026-08-05T04:17:02+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1353,7 +1353,7 @@
         "answer_now_clicked": false
       },
       "regular_pswf_coefficient_row_source_gate": {
-        "status": "DLMF3084_3085_CONDITIONAL_CANONICAL_IDENTIFICATION_PROVED_SOURCE_OBJECT_OPEN",
+        "status": "DLMF_CONDITIONAL_BOUNDARY_FLUX_PROVED_GENUINE_SOURCE_OBJECT_OPEN",
         "pinned_head": "9e462d94",
         "q3_docs_queries": 4,
         "q3_docs_candidates": 0,
@@ -1383,7 +1383,14 @@
         "identification_file_sha256": "b6d984bcf6c4fda0b70d74c91c1c5c8a1497deb8aee18fda7c27f4c82f86ee37",
         "identification_theorem": "mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical",
         "identification_validation": "DIRECT_LEAN_PASS;TARGET_7758;FULL_7817;Q3_CHECK_PASS;FIVE_OF_FIVE_SEMANTIC_MUTANTS_FIRE;DB_SIX_OF_SIX_PROVEN;STANDARD_AXIOMS_ONLY",
-        "next_consumer": "MODE4_DLMF3084_3085_SOURCE_BOUNDARY_RATIO_AND_FLUX_COROLLARY",
+        "boundary_flux_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreBoundaryFluxIdentification.lean",
+        "boundary_flux_file_sha256": "f1c1499b0b45b3ef0e8171800f0a8b443e4e054a12f150011420cf22d48c5465",
+        "boundary_flux_theorems": [
+          "mode4DLMF3084_3085_shiftedBoundaryRatio_eq_canonical",
+          "mode4DLMF3084_3085_sourceBoundaryFlux_eq_schurCorrection"
+        ],
+        "boundary_flux_validation": "DIRECT_LEAN_PASS;TARGET_7759;FULL_7817;Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_TWO_OF_TWO_PROVEN;STANDARD_AXIOMS_ONLY",
+        "next_consumer": "G5_MODE4_REGULAR_FIRST_KIND_PSWF_FERRERS_COEFFICIENT_SOURCE_SUPPLIER",
         "source_supplier_status": "OPEN",
         "regular_pswf_row_identification_status": "OPEN",
         "forbidden_overreach": "NO_FULL_STURM_LIOUVILLE_OPERATOR_BUILD_WITHOUT_ADJUDICATION",
@@ -1406,13 +1413,13 @@
     },
     "validation": {
       "direct_lean": "PASS",
-      "target_build_jobs": 7758,
+      "target_build_jobs": 7759,
       "full_build_jobs": 7817,
       "q3_check": "PASS",
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "DLMF3085_WEIGHT_RECEIVER_AND_DLMF3084_3085_CONDITIONAL_CANONICAL_IDENTIFICATION_MATERIALIZED_GENUINE_SOURCE_OBJECT_STILL_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "DLMF_WEIGHT_IDENTIFICATION_AND_BOUNDARY_FLUX_CONDITIONAL_CHAIN_MATERIALIZED_GENUINE_REGULAR_FIRST_KIND_SOURCE_OBJECT_NEXT_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4349,6 +4356,13 @@
       "progress_class": "RECURRENCE_IDENTIFICATION_AND_NONZERO_SCALE_PROGRESS",
       "result": "SOURCE_RECURRENCE_TO_SYMMETRIC_TAIL;WRONSKIAN_UNIQUENESS;ALL_INDEX_DOWNWARD_NONZERO_PROPAGATION;NONZERO_SCALAR;TARGET_7758_FULL_7817_Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_SIX_OF_SIX_PROVEN",
       "honesty": "ANONYMOUS_SEQUENCE_CONDITIONAL_RECEIVER_ONLY_GENUINE_REGULAR_PSWF_SOURCE_OBJECT_STILL_OPEN_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T04:17:02+02:00",
+      "event": "G5_MODE4_DLMF3084_3085_SOURCE_BOUNDARY_FLUX_IDENTIFICATION_PROVED",
+      "progress_class": "CONDITIONAL_SOURCE_TO_SCHUR_BOUNDARY_WIRING_PROGRESS",
+      "result": "NONZERO_SCALE_CANCELLATION;SHIFTED_SOURCE_RATIO_EQUALS_CANONICAL_RATIO;SOURCE_BOUNDARY_FLUX_EQUALS_SCHUR_CORRECTION;TARGET_7759_FULL_7817_Q3_CHECK_PASS;FIVE_OF_FIVE_MUTANTS_FIRE;DB_TWO_OF_TWO_PROVEN",
+      "honesty": "CONDITIONAL_ANONYMOUS_SEQUENCE_ONLY_GENUINE_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_IS_NEXT_NO_BUS_010_NOT_RH"
     }
   ]
 }
