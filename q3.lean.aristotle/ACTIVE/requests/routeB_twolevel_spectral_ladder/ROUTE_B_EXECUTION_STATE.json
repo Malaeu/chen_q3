@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T08:40:21.163+02:00",
+  "updated_at": "2026-08-05T08:54:08+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
+  "operational_status": "G2_CCM_054_1_POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
-    "name": "CCMCell13N2SevenClassLayoutConsumer",
-    "status": "ACTIVE_ONE_THEOREM_SOURCE_LAYOUT",
-    "stop_code": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING",
+    "contract_obligation": "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "name": "CCMCell13N2FiniteVonMangoldtTheoremShapeAdjudication",
+    "status": "ACTIVE_POST_LAYOUT_PROSHKA_THEOREM_SHAPE_ADJUDICATION",
+    "stop_code": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_UNSELECTED",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Codex local Lean worker",
-    "next_action": "Create only CCMFiniteWeilCell13N2SevenClassLayout.lean with one exact matrix equality; validate three layout plants and direct/target/full/q3_check/taint/axioms; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "ORBIT_MATHEMATICS_CLOSED_REUSABLE_FIN5_LAYOUT_CONSUMER_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER",
+    "next_required_actor": "Proshka route architect/reviewer",
+    "next_action": "Choose exactly one minimal production theorem for finite von-Mangoldt normalization after the proved layout consumer; separate value/support normalization from q-kernel and numerical enclosure work; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "SEVEN_CLASS_LAYOUT_CONSUMER_PROVED_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -64,6 +64,9 @@
       ,"next_split_proshka_visible_response_sha256": "15f5e6868c988cd180bfe7d4e6aab8c54bd8b7e0bb7d18f09f7311f2aa9309ac"
       ,"next_split_proshka_archive_sha256": "14eb3ffa547a037dd59668d916b3aea10fbacdcf1576b89448e6ae775a65200e"
       ,"next_split_selected_node": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER"
+      ,"seven_class_layout_status": "DIRECT_TARGET_7746_FULL_7817_Q3CHECK_TAINT_PASS_STANDARD_TRIPLE_ALL_THREE_PLANTS_FIRED"
+      ,"seven_class_layout_sha256": "734d65982687768421730bb0277fa9add357d5c520672dbd2224e36dc2592b0f"
+      ,"next_node_after_seven_class_layout": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

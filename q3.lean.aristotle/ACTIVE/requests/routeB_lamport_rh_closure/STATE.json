@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 104,
-  "updated_at": "2026-08-05T08:40:21.163+02:00",
+  "revision": 105,
+  "updated_at": "2026-08-05T08:54:08+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Codex local Lean worker",
-    "next_action": "Implement exactly one typed Fin 5 x Fin 5 seven-class matrix-layout theorem from the literal source symmetries and antipodal identities; run three layout plants and full validation; do not touch numeric endpoints, submit Aristotle, materialize Goal 055, create Bus 010, or promote Route B"
+    "next_actor": "Proshka route architect/reviewer",
+    "next_action": "Select the smallest exact finite von-Mangoldt normalization theorem surface after the proved seven-class layout, choosing between a value table and a finite-sum normal form without mixing kernel numerics; do not submit Aristotle, materialize Goal 055, create Bus 010, or promote Route B"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
+    "active_node_id": "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
+    "lifecycle": "G2_CCM_054_1_POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1996,11 +1996,26 @@
       "dependencies": ["G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK", "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "LEAN_PROVED_AND_VALIDATED"},
+      "validation": "SHA256_734D6598;DIRECT_PASS;TARGET_7746;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;P7CLASS_1_2_3_ALL_FIRED;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS",
+      "failure_codes": []
+    },
+    "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION": {
+      "id": "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Select exactly one smallest finite von-Mangoldt production theorem after the seven-class layout, deciding whether the reusable surface is the exact values on 2 through 13, the reduced support sum, or another strictly smaller source-only normal form",
+      "dependencies": ["G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "PROSHKA_SELECTED_SMALLEST_REUSABLE_FINITE_LAYOUT_CONSUMER"},
-      "validation": "DIRECT_LEAN;TARGET_BUILD;FULL_BUILD;Q3_CHECK;TAINT;STANDARD_AXIOM_TRIPLE;THREE_LAYOUT_PLANTS;ONE_PUBLIC_THEOREM;NO_NEW_PUBLIC_DEFINITIONS",
-      "failure_codes": ["G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING", "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_ORIENTATION_MISMATCH", "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_PLANT_INERT", "LEAN_BUILD_FAIL"]
+      "eligibility": {"eligible": true, "reason": "PROSHKA_NAMED_FINITE_VON_MANGOLDT_NORMALIZATION_AS_RUNNER_UP_AFTER_LAYOUT"},
+      "validation": "FRESH_PROJECT_CHAT;ENGLISH_ONLY;EXACT_ONE_NODE;VALUE_TABLE_VS_FINITE_SUM_NORMAL_FORM_FORK;NO_KERNEL_NUMERICS;NO_ARISTOTLE_SUBMISSION;ANSWER_NOW_NEVER_CLICKED",
+      "failure_codes": ["G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_UNSELECTED"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4170,12 +4185,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING",
-    "mode": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
-    "current_leaf": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
+    "current_stop": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_UNSELECTED",
+    "mode": "G2_CCM_054_1_POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+    "current_leaf": "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T08:54:08+02:00",
+      "event": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_PROVED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "LEAN_SHA256_734D6598;DIRECT_PASS;TARGET_7746;FULL_7817;Q3_CHECK_PASS;TAINT_NONE;STANDARD_AXIOM_TRIPLE;P7CLASS_1_2_3_ALL_FIRED;ONE_PUBLIC_THEOREM;NO_PUBLIC_DEFINITIONS;NEXT_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION",
+      "honesty": "HIDDEN_WALL_1_ONLY_NO_FINITE_VON_MANGOLDT_NORMAL_FORM_NO_NUMERIC_ENCLOSURE_NO_054_1_V2_CLOSURE_NO_GOAL_055_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T08:40:21.163+02:00",
       "event": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_COMPLETED",

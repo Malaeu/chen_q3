@@ -50224,7 +50224,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   cancellation ledger remain open, Goal 055 remains held outside the bus,
   H2a/G2 remain open, Route B remains challenger, and Bus 010 remains void.
 
-# 2026-08-05 — CCM cell 13/2 seven-class layout consumer (in progress)
+# 2026-08-05 — CCM cell 13/2 seven-class layout consumer (proved)
 
 - Proshka accepts the general antipodal theorem and classifies its inert third
   denominator plant as a falsifier defect with no route effect.
@@ -50245,3 +50245,11 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - No W02/WR/Prime unfolding, numerical endpoint, log supplier, integral bound,
   Aristotle submission, Goal 055 materialization, Bus 010, or RH claim belongs
   in this node.
+- Final validation passed: direct Lean; target `7746`; full `7817`;
+  `q3_check`; no taint; one public theorem and no public definition; standard
+  axiom triple only.  File SHA-256 is
+  `734d65982687768421730bb0277fa9add357d5c520672dbd2224e36dc2592b0f`.
+- All three source-layout plants fire independently on the literal q-kernel.
+  Hidden wall 1 is now zero as a reusable Lean consumer; finite von-Mangoldt
+  normalization is the runner-up next wall but still needs a minimal theorem
+  surface adjudication.
