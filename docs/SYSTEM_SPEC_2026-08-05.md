@@ -112,6 +112,32 @@ Verdict: `docs/MYTHOS_PLAN_REVIEW_MEMORY_CONTOUR_v2_2026-08-05.md`. Both docs ap
   at owner-decision boundaries (mint/promotion/front-change/FATAL), ≤1 Proshka call each; (c) meter Proshka
   calls in STATE ledger (~30-90/mo at 1-3 goal-closes/day; owner verifies vs ~200 EUR/mo).
 
+## CHANNEL BEHAVIOR-CONTROL SYMMETRY (owner, 2026-08-05) — the missing symmetric layer
+
+Owner's principle: EVERY channel must have ONE clean behavior-control file in the repo — a single source
+of truth we can edit to switch behavior WITHOUT rebuilding the whole system, and re-verify at a glance.
+Current asymmetry:
+- Fable   ✅ `q3.lean.aristotle/docs/PROJECT_INSTRUCTIONS_v3_arsenal.md` (kernel v3, UI bootstrap fetch)
+- Proshka ✅ `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` (+ STANDING FETCHES, UI bootstrap fetch)
+- Claude Code (me) ~ project `CLAUDE.md` + `EXECUTOR_ARSENAL_ADDENDUM` (partial)
+- **Codex ❌ — NO single control file.** Behavior split across `AGENTS.md` (3 eras stacked) + reorient-brief
+  + ORG_UPDATE + Mac-local `~/.codex/config.toml` (out of repo, invisible to the Linux body).
+
+FIX (P9, part of the unified contour): create ONE `docs/CODEX_CONTROL.md` (or a clean single AGENTS body)
+= the source-of-truth for Codex behavior, consolidating the fragmented layers; `AGENTS.md` becomes a THIN
+pointer to it (same thin-pointer/fat-control pattern as Fable/Proshka). Then behavior is switched by editing
+ONE file, the system does not break on rebuild, and all four channels are symmetric. Since Codex + Claude
+Code are ONE executor role in two bodies, the control file can be shared (both read it: Codex via AGENTS.md,
+Claude Code via project CLAUDE.md). This ALSO satisfies the anti-orphan clause: the control file names its
+own trigger-owner and wiring, so it can never silently fragment across an era-switch again.
+
+Includes the PROSHKA CHAT MODEL (owner, budget-critical): Codex's "new-chat-per-goal" (observed: ~15-20
+one-message chats) is an antipattern (burns queries + loses context). Correct model = ONE living Proshka
+chat per PHASE (~5h block / N related goals), context accumulates; Codex CONTINUES the chat, does not open a
+new one; Proshka verdicts at owner-boundaries (mint/promotion/front-change/FATAL — Mythos Q4b), not per goal;
+a new chat opens ONLY on phase-change. This refines Mythos-Q4 from batch-per-goal to
+batch-per-PHASE-in-one-living-chat. The chat-open/continue rule lives in CODEX_CONTROL.md (named trigger).
+
 ## Deliverable status & flow
 This SPEC + the memory audit doc = the whole-system map the owner asked for. Flow (budget-aware):
 Mythos verified BOTH docs in one pass (APPROVED_WITH_REPAIRS) → NEXT: Proshka architects the unified
