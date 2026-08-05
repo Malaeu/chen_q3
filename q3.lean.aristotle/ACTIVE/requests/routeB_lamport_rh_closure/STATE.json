@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 93,
-  "updated_at": "2026-08-05T06:19:40+02:00",
+  "revision": 94,
+  "updated_at": "2026-08-05T06:29:39+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1441,7 +1441,7 @@
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         },
         "ferrers_regular_solution_gate": {
-          "status": "F0B_FINITE_ACTION_PROSHKA_ADJUDICATION_RUNNING",
+          "status": "F0B_THREE_TERM_RECURRENCE_SELECTED_FOR_IMPLEMENTATION",
           "pinned_head": "a637ad11",
           "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
@@ -1502,7 +1502,7 @@
           "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_KERNEL",
           "next_action": "ASK_PROSHKA_TO_SELECT_ONE_SMALLEST_F0B_NODE_AND_EXACT_CROSSWALK_REPRESENTATION",
           "f0b_theorem_shape_audit": {
-            "status": "READY_FOR_EXTERNAL_ADJUDICATION",
+            "status": "RECURRENCE_CROSSWALK_SELECTED_SCRATCH_PROVED_PRODUCTION_MATERIALIZATION_PENDING",
             "pinned_head": "8dd39af9",
             "q3_docs_queries": 5,
             "q3_docs_candidates": 0,
@@ -1549,8 +1549,21 @@
               "visible_message_sha256": "fe9665dddd66e0eb33a5446fde27bddcdf42959a3e7cb9f5c21ac27d2ff9392d",
               "full_request_sha256": "366b2bae8e0124334dc504448a9dee5c4ffffce9344e8423406b1847cb3231af",
               "language": "ENGLISH_ONLY",
-              "status": "RUNNING",
+              "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
               "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_F0B_NODE_AND_COEFFICIENT_EXT_OR_RECURSIVE_CROSSWALK_REPRESENTATION",
+              "completed_at_observed": "2026-08-05T06:29:03.266+02:00",
+              "exact_ui_reasoning_duration": "15m54s",
+              "observed_wall_seconds": 1287,
+              "assistant_message_id": "19550418-990a-44b5-8aae-a94aae19abe6",
+              "response_chars": 19841,
+              "response_sha256": "32d59346bc753aa86e89f7aca49fd76dd02ecd7029b066452a8c04f680a1eac4",
+              "code_directive_count": 1,
+              "primary": "SELECT_A_DIRECT_COEFFICIENT_EXT_WITH_SHIFTED_COORDINATE_TRANSPORT",
+              "selected_node": "G5_MODE4_ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE_CROSSWALK",
+              "selected_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreRecurrence.lean",
+              "public_theorem": "mode4OrdinaryLegendrePolynomial_three_term_succ",
+              "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_X_ACTION_KERNEL",
+              "scratch_result": "SHIFTED_CHOOSE_RECURRENCE;SHIFTED_POLYNOMIAL_RECURRENCE;AFFINE_TRANSPORT;X_ACTION;X2_ACTION_ALL_DIRECT_LEAN_PASS_STANDARD_AXIOMS_ONLY_BUT_ONLY_RECURRENCE_AUTHORIZED_FOR_PRODUCTION",
               "answer_now_shown": true,
               "answer_now_first_observed_at": "2026-08-05T06:19:40+02:00",
               "answer_now_clicked": false
@@ -4613,6 +4626,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;STOP_RESPONSE_PRESENT;NO_ASSISTANT_VERDICT_YET;RECURSIVE_SCRATCH_RECURRENCE_X_AND_X2_ACTION_STANDARD_AXIOMS_ONLY;EQUALITY_CROSSWALK_REMAINS_LOAD_BEARING",
       "honesty": "FULL_REASONING_TIME_PRESERVED_NO_EARLY_ANSWER_NO_SECOND_PROMPT_NO_LEAN_CROSSWALK_CLAIM_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T06:29:03.266+02:00",
+      "event": "G5_MODE4_ORDINARY_LEGENDRE_THREE_TERM_RECURRENCE_SELECTED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROSHKA_MESSAGE_19550418;EXACT_UI_REASONING_15M54S;OBSERVED_WALL_1287S;RESPONSE_SHA256_32D59346;ONE_CODEX_DIRECTIVE;CANDIDATE_A_SHIFTED_COEFFICIENT_EXT_AND_AFFINE_TRANSPORT_SELECTED;LOCAL_SCRATCH_ALREADY_PROVES_ARITHMETIC_AND_TRANSPORT",
+      "honesty": "ONLY_RECURRENCE_AUTHORIZED_FOR_PRODUCTION_NO_X_ACTION_NO_X2_NO_ODE_NO_FERRERS_FUNCTION_NO_PSWF_NAME_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
     }
   ]
 }

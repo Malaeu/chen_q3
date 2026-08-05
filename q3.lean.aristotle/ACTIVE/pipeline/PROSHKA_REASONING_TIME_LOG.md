@@ -333,14 +333,14 @@ transaction: G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_NEXT_NODE
 conversation_id: 6a72b708-9fb4-83eb-b416-00ba1da88fd0
 request_message_id: 310f08ae-b91d-417d-846e-93101e7a7b3d
 sent_at: 2026-08-05T06:07:36.343+02:00
-completed_at: null
-wall_seconds: null
-wall_human: running
+completed_at: 2026-08-05T06:29:03.266+02:00
+wall_seconds: 1287
+wall_human: "21m27s observed wall; 15m54s exact UI reasoning duration"
 answer_now_shown: true
 answer_now_clicked: false
-primary: null
-status: RUNNING
-result_pointer: null
+primary: SELECT_A_DIRECT_COEFFICIENT_EXT_WITH_SHIFTED_COORDINATE_TRANSPORT
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "Proshka assistant message 19550418-990a-44b5-8aae-a94aae19abe6"
 notes: >-
   Fresh chat in project RH_Marz_2026 pinned to 7ab8b7d2. The exact context
   pack has SHA-256
@@ -357,5 +357,15 @@ notes: >-
   coefficients, rejects disconnected shadow mathematics, and forbids any
   analytic Ferrers/PSWF overreach. At 2026-08-05T06:19:40+02:00 the early
   Answer-now action appeared while generation was still running; it was
-  deliberately not clicked. Full reasoning time remains preserved.
+  deliberately not clicked. Proshka completed with exact UI reasoning time
+  15m54s; the observed send-to-extraction wall was 21m27s. The
+  19841-character response has SHA-256
+  32d59346bc753aa86e89f7aca49fd76dd02ecd7029b066452a8c04f680a1eac4
+  and exactly one CODEX DIRECTIVE. It selected Candidate A: prove one private
+  shifted-coordinate coefficient recurrence over integers and transport it
+  through the committed affine map. It forbids a recursive auxiliary basis
+  and keeps x-action, x-squared action, and the ODE as later nodes. Codex's
+  independent scratch proof already closes the predicted choose-arithmetic
+  and affine-transport barriers with standard axioms only; production still
+  must materialize only the authorized recurrence theorem.
 ```
