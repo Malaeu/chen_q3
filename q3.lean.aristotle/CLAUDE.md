@@ -255,7 +255,7 @@ Only then proceed with the full dossier structure.
 |----------|-------|---------|
 | B_min | 3 | Bandwidth threshold |
 | t_sym | 3/50 | Symbol heat parameter |
-| c_* | **1.5** | Archimedean floor |
+| c_* | **11/10** (float alias 1.1) | Archimedean floor — canon exact rational; provenance `full/sections/A3/symbol_floor.tex` / `Q3/Proofs/A3_Floor_Main.lean` (`def c_* := 11/10`). Do NOT tighten to the observed min 1.66 (outcome-fitting); this is a derived convention. Prior `1.5` was an ERA≤4 residue. |
 | C_SB | 4 | Szegő-Böttcher constant |
 
 ---

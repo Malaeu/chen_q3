@@ -89,8 +89,32 @@ The audit's P1–P8 stand, refined by this census:
 - **P6** decision-consult = the batch-per-goal budget law (Proshka once per goal-close, local scans free).
 - Everything routes through the one Knowledge Spine, re-triggered at goal-close.
 
+## Mythos v2 verdict (2026-08-05) — APPROVED_WITH_REPAIRS, applied deltas
+Verdict: `docs/MYTHOS_PLAN_REVIEW_MEMORY_CONTOUR_v2_2026-08-05.md`. Both docs approved by live grep. Deltas:
+- **c_* DECIDED (P1a, done):** drift is TWO values not three — `11/10 ≡ 1.1`; canon `c_* := 11/10` EXACT
+  RATIONAL, provenance `A3/symbol_floor.tex` / `A3_Floor_Main.lean`; outlier was one line
+  `q3.lean.aristotle/CLAUDE.md:258` `1.5` (ERA≤4 residue) — FIXED. FORBIDDEN: averaging, or tightening to
+  the observed min 1.66 (outcome-fitting; floor is a derived convention, NOT the sought α). Owner's
+  "freeze as unknown" intuition OVERRULED by grep: the floor is a fixed convention, not an open constant.
+- **Pointer #12 (census blind spot):** `KNOWLEDGE_SPINE.md` roles table sends NEW cards to the frozen
+  `RH_TRICK_ATLAS.md` — repoint write-zone to `ARSENAL_CARDS_v1.md`. (11 pointers → 12.)
+- **oracle split:** archive the DOCTRINE docs (EXTERNAL_PIPELINE/RESEARCH_ORACLE) but KEEP+FIX the SCRIPTS
+  (`research_oracle.py` + `refresh_q3_docs.py` = the P5 engine; fix root script's dead `full/` path).
+- **ANTI-ORPHAN CLAUSE (cure for the root disease, one line of law):** every NEW contour piece must
+  declare AT BIRTH (i) trigger-owner (who runs it, at which existing gate) + (ii) its Spine wiring line. A
+  contour without a named trigger-owner is born orphaned — the 8-era pattern in one sentence. → executor addendum.
+- **Final order:** P1a bugs (c_* ✓ · tag zombie monitors · Rule-A/B vs Route-A/B disambiguation) → P1b
+  snapshots+12 pointers → P6+P8 one addendum diff (consult line + batch-budget + litreview cite→verify-in-
+  batch→auto-REFERENCES) → P2a autopsy-format-freeze → P2 wall-map → P4 one-Spine + re-anchor trigger to
+  goal-close (Codex) + sensor-tier owner-decision-list → P5 index rebuild + K1 plant-harness → P3 namewatch
+  as COGNITIVE_GOVERNOR extension (+ tag-comparator plant) → P7 meta-corpus.
+- **Budget law refined:** (a) FATAL escalates immediately, never waits for batch; (b) long ~20h goals batch
+  at owner-decision boundaries (mint/promotion/front-change/FATAL), ≤1 Proshka call each; (c) meter Proshka
+  calls in STATE ledger (~30-90/mo at 1-3 goal-closes/day; owner verifies vs ~200 EUR/mo).
+
 ## Deliverable status & flow
 This SPEC + the memory audit doc = the whole-system map the owner asked for. Flow (budget-aware):
-Mythos verifies BOTH docs (plan + spec) in one pass → then Proshka architects the unified contour in ONE
-batch verdict (never fan multiple Proshka calls). No mechanism is deleted here; classification only.
+Mythos verified BOTH docs in one pass (APPROVED_WITH_REPAIRS) → NEXT: Proshka architects the unified
+contour in ONE batch verdict (never fan multiple Proshka calls), hard constraints = v1 R1-R4 + Q2 canon +
+P1a/P1b split + anti-orphan clause + Q4(a-c). No mechanism is deleted here; classification only.
 CHALLENGER / NOT_RH, Bus 010 VOID, no route promotion.
