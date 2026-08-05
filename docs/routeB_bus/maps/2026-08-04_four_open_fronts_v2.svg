@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="500" viewBox="0 0 680 500" font-family="Helvetica,Arial,sans-serif">
+<!-- generated 2026-08-04 by Mythos · repo Malaeu/chen_q3 rh_clean · pin 1c8aeb14 (verified at 2efe7f7a) · terminology MAP.md · SUPERSEDES 2026-08-03_four_open_fronts.svg -->
+<title>Четыре открытых фронта после ночной материализации; маршрут RB-IDLE</title>
+<rect x="0" y="0" width="680" height="500" fill="#FFFFFF"/>
+<text x="340" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#2C2C2A">Четыре открытых фронта · маршрут RB-IDLE — Прошка выбирает ровно один</text>
+<text x="340" y="44" text-anchor="middle" font-size="10" fill="#5F5E5A">2026-08-04 · pin 1c8aeb14 · CHALLENGER / NOT_RH · Bus 010 VOID · гол 051 НЕ авторизован имплицитно (но его код уже материализован)</text>
+
+<rect x="30" y="62" width="300" height="160" rx="10" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.4"/>
+<text x="180" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#633806">GATE-G3 · движок H2b — вооружён до зубов</text>
+<text x="46" y="110" font-size="11" fill="#085041">• M0+M1+M2+M3 ✅ доказаны: 21 файл, 0 sorry, чистая тройка</text>
+<text x="46" y="128" font-size="11" fill="#085041">• сварка кирпичей ✅ одной теоремой (…_of_radical_nonneg)</text>
+<text x="46" y="146" font-size="11" fill="#854F0B">• официально: SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY</text>
+<text x="46" y="164" font-size="11" fill="#993C1D">• supplier h510 НЕ приварен: затык = IdentificationAt</text>
+<text x="46" y="182" font-size="11" fill="#993C1D">• (family i ↔ −i·λ^(−iz)·Lagrange) + H2a-упаковка гипотез</text>
+<text x="46" y="204" font-size="11" font-weight="bold" fill="#633806">Готовность: 1 сварочный контракт до «G3 условно на H2a»</text>
+
+<rect x="350" y="62" width="300" height="160" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.4"/>
+<text x="500" y="86" text-anchor="middle" font-size="14" font-weight="bold" fill="#712B13">GATE-G2 · SLOT-H2a 🔓 открыто</text>
+<text x="366" y="110" font-size="11" fill="#993C1D">• простое + чётное нижнее собств. значение (SIMPLE_EVEN)</text>
+<text x="366" y="128" font-size="11" fill="#993C1D">• теперь ЕДИНСТВЕННАЯ математика на пути движка:</text>
+<text x="366" y="146" font-size="11" fill="#993C1D">  сварка потребляет её как hpos·hker1·hxiEven·hnorm</text>
+<text x="366" y="164" font-size="11" fill="#993C1D">• у CvS — Assume · у CCM — numerically verified</text>
+<text x="366" y="182" font-size="11" fill="#993C1D">• дозье: PSWF Штурм–Лиувилль · CCM §8 · C3-split</text>
+<text x="366" y="204" font-size="11" font-weight="bold" fill="#712B13">Готовность: исследовательский фронт (не Lean-очередь)</text>
+
+<rect x="30" y="242" width="300" height="140" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.4"/>
+<text x="180" y="266" text-anchor="middle" font-size="14" font-weight="bold" fill="#712B13">GATE-G6 · Мюнц→SLOT-S2 🔓 открыто</text>
+<text x="46" y="290" font-size="11" fill="#085041">• supplier 4/4 ✅ · lake build 8055 jobs · чистая тройка</text>
+<text x="46" y="308" font-size="11" fill="#993C1D">• контракт промоушена window-identity → SlotS2 не написан</text>
+<text x="46" y="326" font-size="11" fill="#993C1D">• полная S2-идентификация (c·Ξ·γ₀) — «главная стена»</text>
+<text x="46" y="344" font-size="11" fill="#993C1D">• связана с M4/пределом, не с конечным движком</text>
+<text x="46" y="366" font-size="11" font-weight="bold" fill="#712B13">Готовность: supplier ✅ · мост 🔓 · стена 🔓</text>
+
+<rect x="350" y="242" width="300" height="140" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="1.4"/>
+<text x="500" y="266" text-anchor="middle" font-size="14" font-weight="bold" fill="#712B13">GATE-G5 · SLOT-S1 знак 🔓 открыто</text>
+<text x="366" y="290" font-size="11" fill="#085041">• ядро Montel ✅ (MontelNormalFamilies.lean)</text>
+<text x="366" y="308" font-size="11" fill="#993C1D">• конкретная S1/Montel-поставка семейства открыта</text>
+<text x="366" y="326" font-size="11" fill="#993C1D">• кандидатов в очереди нет</text>
+<text x="366" y="366" font-size="11" font-weight="bold" fill="#712B13">Готовность: не вооружён — нужен новый заход</text>
+
+<rect x="30" y="398" width="620" height="42" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="416" text-anchor="middle" font-size="11" fill="#2C2C2A">K2-порядок (kill-power/cost): G3-сварка (вся математика уже в Lean) → G2 (единственная математика движка) → G6 → G5</text>
+<text x="340" y="432" text-anchor="middle" font-size="10" fill="#5F5E5A">рекомендация Mythos Прошке: выбрать G3-weld — см. блокер-анализ</text>
+
+<text x="340" y="470" text-anchor="middle" font-size="10" fill="#888780">Источники: ROUTE_B_STATE.md (RB-IDLE) · D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md · MAP.md §7 · вёрстка Mythos</text>
+</svg>

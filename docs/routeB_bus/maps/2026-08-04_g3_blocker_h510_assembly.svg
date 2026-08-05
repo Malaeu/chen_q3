@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="760" viewBox="0 0 680 760" font-family="Helvetica,Arial,sans-serif">
+<!-- generated 2026-08-04 by Mythos · repo Malaeu/chen_q3 rh_clean · pin 1c8aeb14 (verified at 2efe7f7a) · NEW map: G3 blocker / h510 assembly -->
+<title>Блокер G3: сборка h510 из доказанных M-кирпичей; недостающие сварки подсвечены</title>
+<rect x="0" y="0" width="680" height="760" fill="#FFFFFF"/>
+<text x="340" y="26" text-anchor="middle" font-size="16" font-weight="bold" fill="#2C2C2A">G3-блокер: путь кирпичей к h510 = Theorem510RealZeroBridge</text>
+<text x="340" y="44" text-anchor="middle" font-size="10" fill="#5F5E5A">2026-08-04 · pin 1c8aeb14 · тип h510: ∀ i, H2aAt i → Differentiable ℂ (family i) → ZerosRealOn Set.univ (family i)</text>
+
+<rect x="40" y="60" width="290" height="70" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="185" y="80" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041">CCM literal source ✅ (M0)</text>
+<text x="185" y="98" text-anchor="middle" font-size="10" fill="#0F6E56">W = ccmWeilMatFinite(m,N) · γ = ccmNeg</text>
+<text x="185" y="114" text-anchor="middle" font-size="10" fill="#0F6E56">β2 hcomm ✅ · β3 hTDxi ✅ (доказаны)</text>
+
+<rect x="350" y="60" width="290" height="70" rx="8" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="495" y="80" text-anchor="middle" font-size="12" font-weight="bold" fill="#633806">H2a-пакет 🧩 (гипотезы слота)</text>
+<text x="495" y="98" text-anchor="middle" font-size="10" fill="#854F0B">heig: Wξ = εξ · hxiEven · hnorm η·ξ=1</text>
+<text x="495" y="114" text-anchor="middle" font-size="10" fill="#854F0B">hpos: ε=min · hker1: простота (dim=1)</text>
+
+<line x1="185" y1="130" x2="185" y2="152" stroke="#0F6E56" stroke-width="1.1"/><polygon points="185,152 181,145 189,145" fill="#0F6E56"/>
+<line x1="495" y1="130" x2="495" y2="152" stroke="#854F0B" stroke-width="1.1"/><polygon points="495,152 491,145 499,145" fill="#854F0B"/>
+
+<rect x="40" y="152" width="600" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="340" y="172" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041">Сдвинутая матрица T = W − ε·G ✅ (ShiftedRankOne): Tᵀ=T ✅ · [T,Λ]-структура ✅ · Tξ=0 ✅ · TΛξ=−β ✅</text>
+<text x="340" y="192" text-anchor="middle" font-size="10" fill="#0F6E56">ccmShiftedWeilMatFinite_transpose_eq / _commutator / _kills_eigenvector / _mulVec_modeDiag_eq_neg_beta</text>
+
+<line x1="340" y1="208" x2="340" y2="230" stroke="#0F6E56" stroke-width="1.1"/><polygon points="340,230 336,223 344,223" fill="#0F6E56"/>
+
+<rect x="40" y="230" width="600" height="64" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="340" y="250" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041">ЕДИНАЯ СВАРКА КИРПИЧЕЙ ✅ : sourceLagrangePolynomial_complex_zerosRealOn_of_radical_nonneg</text>
+<text x="340" y="268" text-anchor="middle" font-size="10" fill="#0F6E56">внутри: M2-фактор (radical=span ξ, PosDef) → M1 (Hermitian, вещ. спектр) → M3 (charpoly = Лагранж)</text>
+<text x="340" y="284" text-anchor="middle" font-size="10" fill="#0F6E56">вывод: ZerosRealOn Set.univ (комплексификация P(z) = sourceLagrangePolynomial lam ξ)</text>
+
+<line x1="340" y1="294" x2="340" y2="316" stroke="#0F6E56" stroke-width="1.1"/><polygon points="340,316 336,309 344,309" fill="#0F6E56"/>
+
+<rect x="40" y="316" width="600" height="46" rx="8" fill="#F1EFE8" stroke="#5F5E5A"/>
+<text x="340" y="334" text-anchor="middle" font-size="12" font-weight="bold" fill="#2C2C2A">Префактор-мостик 🔓 (мелкая инженерия): нули P(z) = нули −i·λ^(−iz)·P(z), т.к. −i·λ^(−iz) ≠ 0 всюду</text>
+<text x="340" y="352" text-anchor="middle" font-size="10" fill="#5F5E5A">одна лемма про умножение на нигде-не-нулевую целую функцию</text>
+
+<line x1="340" y1="362" x2="340" y2="384" stroke="#993C1D" stroke-width="1.6"/><polygon points="340,384 335,376 345,376" fill="#993C1D"/>
+
+<rect x="40" y="384" width="600" height="96" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="2"/>
+<text x="340" y="406" text-anchor="middle" font-size="13" font-weight="bold" fill="#712B13">ЗАТЫК (единственный): IdentificationAt 🔓 — сварка НЕ написана</text>
+<text x="340" y="426" text-anchor="middle" font-size="11" fill="#993C1D">нужно: C.Pstar.family i  =  fun z ↦ −i·λᵢ^(−iz) · ((sourceLagrangePolynomial lamᵢ ξᵢ).map ℝ→ℂ).eval z</text>
+<text x="340" y="444" text-anchor="middle" font-size="11" fill="#993C1D">т.е. отождествление НАШЕГО семейства Pstar с CCM-детерминантом (бумажный det_reg-словарь Thm 5.10)</text>
+<text x="340" y="462" text-anchor="middle" font-size="10" fill="#993C1D">именно поэтому официальный ярлык: SOURCE_PARTIAL_NEIGHBORING_DETERMINANT_ONLY — детерминант «соседний», не наш family</text>
+
+<line x1="340" y1="480" x2="340" y2="502" stroke="#993C1D" stroke-width="1.1"/><polygon points="340,502 336,495 344,495" fill="#993C1D"/>
+
+<rect x="40" y="502" width="600" height="64" rx="8" fill="#FAECE7" stroke="#993C1D"/>
+<text x="340" y="522" text-anchor="middle" font-size="12" font-weight="bold" fill="#712B13">h510 : Theorem510RealZeroBridge C H2aAt 🔓 (скелет :114)</text>
+<text x="340" y="540" text-anchor="middle" font-size="10" fill="#993C1D">def: ∀ i, H2aAt i → Differentiable ℂ (C.Pstar.family i) → ZerosRealOn Set.univ (C.Pstar.family i)</text>
+<text x="340" y="556" text-anchor="middle" font-size="10" fill="#993C1D">supplier = IdentificationAt + H2a-упаковка + префактор-мостик + сварка кирпичей (✅)</text>
+
+<line x1="340" y1="566" x2="340" y2="588" stroke="#5F5E5A" stroke-width="1.1"/><polygon points="340,588 336,581 344,581" fill="#5F5E5A"/>
+
+<rect x="40" y="588" width="600" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56"/>
+<text x="340" y="608" text-anchor="middle" font-size="12" font-weight="bold" fill="#085041">selectedFamily_realZeros ✅ УЖЕ ДОКАЗАНА условно (скелет :131) — принимает h510 гипотезой</text>
+<text x="340" y="626" text-anchor="middle" font-size="10" fill="#0F6E56">закрытие G3 = поставка h510; дальше крыша ждёт G5-S1, G6-S2 и Montel-гейт как прежде</text>
+
+<rect x="40" y="654" width="600" height="52" rx="8" fill="#FAEEDA" stroke="#854F0B"/>
+<text x="340" y="674" text-anchor="middle" font-size="11" font-weight="bold" fill="#633806">Разделение: ИНЖЕНЕРИЯ = префактор + H2a-упаковка + вызов сварки · ОТКРЫТАЯ МАТЕМАТИКА = IdentificationAt + H2a (G2)</text>
+<text x="340" y="694" text-anchor="middle" font-size="10" fill="#854F0B">M4 (Фурье/Гурвиц) для G3 НЕ нужен — только для полного CvS-королария и S2-предела</text>
+
+<text x="340" y="736" text-anchor="middle" font-size="10" fill="#888780">Источники: CanonicalRHRouteSkeleton.lean:114,131 · RankOneCorrectionLagrangeRealZeros.lean:41 · CCMFiniteWeilShiftedRankOne.lean:159 · вёрстка Mythos</text>
+</svg>

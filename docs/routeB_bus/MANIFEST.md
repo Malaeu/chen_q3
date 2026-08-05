@@ -323,6 +323,9 @@ Proshka mirror from `rh_lean_01_2026`; 267 mirrored source files plus `CHANNEL_R
 | `maps/2026-08-03_two_branch_feeds.svg` | Route B map (Mythos) — spectral vs Müntz branches → slots | `9dea5a1284bef64f084d787afb11dab8a40a3eafd27ce9f2e354477c619a9e6b` |
 | `maps/2026-08-03_spectral_engine_beta_rows.svg` | Route B map (Mythos) — M0..M4 + β1..β9 detail | `2c74812eabff626eb1889e8ae1b9d141d1fb14a8dd23c0f4041ad4217b045aaf` |
 | `maps/2026-08-03_four_open_fronts.svg` | Route B map (Mythos) — G2/G3/G5/G6 open fronts + readiness | `793777f20de6d96c33e7ce3563ef2d8b5e5bd18cdfc31f9a3b8f1a9ad8239490` |
+| `maps/2026-08-04_four_open_fronts_v2.svg` | Route B map (Mythos) — four open fronts v2 | `a228a301bd88441f68c2ce639877a9c94107c0a72d684aceaaf86b841a2f8f3a` |
+| `maps/2026-08-04_g3_blocker_h510_assembly.svg` | Route B map (Mythos) — G3 blocker H510 assembly | `51d853f5425a1a91724b55cd81852553d03188c56c4c0553fdc6d91f50b6aecf` |
+| `maps/2026-08-04_spectral_engine_proved_bricks.svg` | Route B map (Mythos) — spectral engine proved bricks | `84ed4f4224b06931679637932cb94f13c03fe7c62234ecfaa6bd7b8349396eba` |
 | `maps/2026-07-31_rh_canvas_v3_seven_gates.svg` | Route B map — SUPERSEDED by 2026-08-03_master_roof_seven_gates.svg (kept, not deleted) | SUPERSEDED |
 | `proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Proshka verdict/source review | `663b3875f99881c24826c88cd7de06415a9ecad40d924105df1ce72338a65543` |
 | `proshka/ARSENAL_MANDATE_2026-08-04.md` | Proshka Ф3 arsenal mandate (5 duals) | `2167a1f530fecb71c0af2af96ae7414f7b98ee36afedefd8f176cee605d38f4a` |
