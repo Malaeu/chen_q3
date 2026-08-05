@@ -133,14 +133,14 @@ front: G5/S1
 transaction: G5_MODE4_POST_RECURRENCE_OPERATOR_WEYL_SCHUR_NEXT_NODE
 request_message_id: f090f129-4f44-447e-9968-ce35b5904206
 sent_at: 2026-08-05T01:51:44.268+02:00
-completed_at: pending
-wall_seconds: pending
-wall_human: pending
+completed_at: 2026-08-05T02:07:11+02:00
+wall_seconds: 927
+wall_human: 15m27s observed
 answer_now_shown: true
 answer_now_clicked: false
-primary: pending
-status: IN_PROGRESS
-result_pointer: "fresh RH Marz 2026 project chat created after commit 157f93c0"
+primary: AUTHORIZE_G5_MODE4_RICCATI_ORBIT_UNIQUENESS
+status: COMPLETE_ACCEPTED
+result_pointer: "Proshka assistant message 3a5ae850-e6a4-4178-b665-4870fda8f69a"
 notes: >-
   The pasted-document context pack has SHA-256
   855e0db1cca5b35b3f04c3eb5dcb239888a29478b8014d86ca7e3d7a0705f058
@@ -152,5 +152,10 @@ notes: >-
   abstract Schur-inertia theorem. It forbids reassigning closed work, minting
   a spectral theorem as a structure field, tildePhi unless selected, Bus 010,
   route promotion, and an RH claim. Answer now appeared during generation and
-  was not clicked.
+  was not clicked. The UI reports exact model reasoning of 14m59s; the
+  observed wall includes polling lag. Proshka selected the all-index invariant-
+  cone Riccati-orbit uniqueness theorem and the source-shaped nonvanishing
+  coefficient-ratio consumer. It explicitly withheld the Weyl label and left
+  PSWF regular-row eventual cone membership or L2 uniqueness as the next
+  source-side obligation.
 ```

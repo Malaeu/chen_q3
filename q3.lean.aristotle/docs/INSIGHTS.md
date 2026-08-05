@@ -49768,3 +49768,39 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   tail, exact infinite-tail Schur-complement inertia, and the two endpoint
   determinant signs.  G5/S1 remains OPEN; Route B remains
   `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
+
+## 2026-08-05 — G5 invariant-cone Riccati orbit uniqueness (proved)
+
+- Proshka message `3a5ae850-e6a4-4178-b665-4870fda8f69a` selected the
+  smallest legal B1 gate after the coefficient crosswalk.  Exact UI reasoning
+  was `14m59s`; observed wall time was `15m27s`; `Answer now` was never
+  clicked.
+- Five targeted `q3_docs` queries for nonautonomous continued-fraction orbit
+  uniqueness, a PSWF coefficient-ratio receiver, Pincherle/minimal-solution
+  precedents, and square-summable tails returned no candidates.
+- Primary-source recheck: DLMF 30.8.4 supplies the exact three-term
+  coefficient recurrence, while DLMF 30.8.7 gives the source coefficient
+  ratio asymptotic that makes eventual invariant-cone membership the precise
+  next source-side obligation.  DLMF 30.3.5 confirms the finite/infinite
+  continued-fraction eigenvalue equation.
+- `D0Mode4PSWFRiccatiOrbitUniqueness.lean` proves that an all-index coherent
+  orbit in `[0, 1/2]` is uniquely the terminal-independent
+  `mode4RightTailLimit`.  Its variable-terminal estimate is
+  `(1/2) * (3/16)^N`, so a one-step scalar fixed point cannot masquerade as a
+  boundary law at infinity.
+- The source-shaped theorem rewrites the exact DLMF coefficient row through
+  `mode4JacobiCoefficients_eq_pswfLegendre_evenCrosswalk`, derives the project
+  Riccati equation with a strictly positive denominator, and identifies every
+  nonvanishing invariant-cone ratio with the committed tail.
+- All mandatory mutants fired: one-step recurrence, phased negative ratio,
+  index shift, off-diagonal sign flip, missing lower cone boundary, and
+  missing upper cone boundary.  The restored file passes direct Lean,
+  `q3_check`, target build `7753/7753`, full build `7817/7817`, and has no
+  holes or forbidden declarations; both public theorems use only
+  `propext`, `Classical.choice`, and `Quot.sound`.
+- This does not authorize the terms Weyl tail or recessive PSWF tail.  The
+  next exact gap is
+  `PSWF_REGULAR_COEFFICIENT_EVENTUAL_INVARIANT_CONE_OR_L2_UNIQUENESS`, with
+  the next Lean construction candidate
+  `D0Mode4PSWFTailCoefficientSquareSummable.lean`.  G5/S1 remains OPEN;
+  Route B remains `CHALLENGER / NOT_RH`; Bus 010 remains VOID.
