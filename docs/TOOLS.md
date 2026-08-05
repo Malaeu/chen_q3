@@ -6,34 +6,81 @@
 
 ## Summary
 
-- **Permanent tools:** 367 (touched since 2026-07-01: 22)
+- **Permanent tools:** 368 (touched since 2026-07-01: 23)
 - **One-shot probes** (goal-local experiment log, not tooling): 159
 - **Databases:** 1
-- **Ledgers** (accumulating journals, any format): 25
-- **State files** (json/yaml/csv > 2 KB, not journals): 511
-- Alive tools referenced by nothing (**orphans**): 1
-- Alive tools not mentioned in any rule file: 18
+- **Ledgers** (accumulating journals, any format): 121
+- **State files** (json/yaml/csv > 2 KB, not journals): 473
+- Alive tools referenced by nothing (**orphans**): 2
+- Alive tools not mentioned in any rule file: 19
 
 ## Databases
 
 | Path | Last commit | Refs | In rules |
 |---|---|---|---|
-| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-05 | 18 | yes |
+| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-05 | 21 | yes |
 
 ## Ledgers — accumulating journals ("have we already tried this?")
 
-25 journals, **6 alive** / 19 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
+121 journals, **53 alive** / 68 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
 
 ### Alive
 
 | Ledger | Entries | Last commit | In rules |
 |---|---|---|---|
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 1673 | 2026-08-05 | yes |
+| `q3.lean.aristotle/ACTIVE/insights.md` | 1673 | 2026-08-05 | **NO** |
+| `docs/routeB_bus/MANIFEST.md` | 344 | 2026-08-05 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_14_120.json` | 228 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_120.json` | 228 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_13_120.json` | 222 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/ledger_audit_v2_preflight.json` | 204 | 2026-07-10 | **NO** |
+| `docs/routeB_bus/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `docs/routeB_bus/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/aristotle_output/987ff124_MUNTZ_V3_POLESUBTRACTED_2026-07-30/472e126c-759f-4c69-8816-fa013ff740b2_aristotle/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/aristotle_output/c746a674-5849-4dfa-9e4c-b7dd5af231b2/lake-manifest.json` | 85 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/aristotle_output/5a62a655-5d8d-4bb4-8a9f-1216c730b5aa/routeb_entire_square_root_rigidity_2026_07_22_aristotle/lake-manifest.json` | 85 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/aristotle_output/output-final_aristotle/lake-manifest.json` | 85 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/aristotle_output/67d09804-a379-4bcd-9535-3ed1c44068ec/d2g25_fejer_shrinking_target_2026_04_11_aristotle/lake-manifest.json` | 85 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/aristotle_output/c746a674_R6_RMINUS_HALFPLANE_2026-07-30/output-final_aristotle/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/aristotle_output/c746a674-5849-4dfa-9e4c-b7dd5af231b2_R5_BROWSER_RECOVERY_2026-07-29/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/aristotle_output/16535289-f016-4f62-bfbd-be83d826b4da/lake-manifest.json` | 85 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-07-31 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/phase_trace_and_ledger_filter_v1.json` | 78 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-04 | yes |
+| `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 55 | 2026-07-27 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ROUTE_B_DATA_MANIFEST.md` | 45 | 2026-07-27 | **NO** |
+| `docs/routeB_bus/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
+| `SESSION_PROTOKOLL_2026-08-05.md` | 38 | 2026-08-05 | **NO** |
+| `docs/routeB_bus/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 31 | 2026-07-30 | **NO** |
+| `orchestrator/state/SPINE_VIEW.md` | 31 | 2026-08-03 | yes |
 | `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` | 30 | 2026-07-28 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/trough_relabel_and_bus_sync_v1_actions_log.md` | 25 | 2026-07-10 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/phase_trace_and_ledger_filter_v1.md` | 24 | 2026-07-10 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_k_channel_v1_actions_log.md` | 24 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 23 | 2026-07-10 | yes |
+| `q3.lean.aristotle/ACTIVE/orchestrator.md` | 23 | 2026-07-10 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ledger_audit_v2.md` | 20 | 2026-07-10 | **NO** |
+| `docs/routeB_bus/SESSION_PROTOKOLL_2026-07-31.md` | 19 | 2026-07-31 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/register_read_only_docs_v1_actions_log.md` | 17 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md` | 15 | 2026-08-05 | **NO** |
+| `.claude/skills/routeb-conductor/SKILL.md` | 15 | 2026-07-30 | yes |
+| `q3.lean.aristotle/docs/PEN_3_3_POISSON_RESIDUAL_LEDGER.md` | 14 | 2026-07-10 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md` | 14 | 2026-07-11 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md` | 13 | 2026-07-12 | **NO** |
+| `docs/routeB_bus/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_extraction_v1_actions_log.md` | 11 | 2026-07-10 | **NO** |
+| `orchestrator/KNOWLEDGE_SPINE.md` | 8 | 2026-07-31 | yes |
+| `docs/routeB_bus/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260308_120347_2026_03_08_conversations/extracted/2026_03_08_conversations/_manifest.md` | 4 | 2026-07-10 | **NO** |
+| `docs/routeB_bus/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
 
 ### Frozen (still on disk, often still cited)
 
@@ -41,28 +88,78 @@
 |---|---|---|
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md` | 865 | 2026-06-25 |
 | `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` | 817 | 2026-06-25 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.md` | 236 | 2026-06-25 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/step33_a1_sub0_component_assembly_stream_ledger.json` | 178 | 2026-06-25 |
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md` | 434 | 2026-06-24 |
+| `docs/trackB/b2b_finite_chebyshev_ledger_probe.md` | 23 | 2026-06-14 |
 | `docs/trackB/CHECKPOINTS.md` | 23 | 2026-06-14 |
+| `docs/RH_TRICK_ATLAS.md` | 147 | 2026-06-13 |
+| `docs/trackB/S5_NEGATIVE_MASS_LEDGER.md` | 43 | 2026-06-13 |
+| `docs/trackB/S5_FAILURE_ATLAS.md` | 4 | 2026-06-13 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_margin_ledger.json` | 70475 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed_inventory.md` | 191 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed.json` | 135 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed_lean_emitter.md` | 130 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed_inventory.json` | 109 | 2026-06-12 |
+| `q3.lean.aristotle/aristotle_output/0c792ee5-45ce-49bc-8f27-2ba6435a2639/q3_step33_endpoint_v18_first_row_context_aristotle/lake-manifest.json` | 85 | 2026-06-12 |
+| `q3.lean.aristotle/aristotle_output/5b903a21-fba1-4f42-949f-470b62c020b1/step33_shift16_digamma_m6_ball_request_aristotle/lake-manifest.json` | 85 | 2026-06-12 |
+| `q3.lean.aristotle/aristotle_output/3cd86d8e-6e0b-4a7f-a027-adecacb71b6f/step33a_omega_direct_anchor_v21_first_row_aristotle/lake-manifest.json` | 85 | 2026-06-12 |
+| `q3.lean.aristotle/aristotle_output/1924e0b3-1fbe-4406-b9c2-53750d26e852/po3a_a0_double_telescoping_2026_04_19_aristotle/lake-manifest.json` | 85 | 2026-06-12 |
+| `q3.lean.aristotle/aristotle_output/3adae61c-af4a-42ed-8766-3461ae802d2d/po3a_4_outer_invariance_minimal_2026_04_13_aristotle/lake-manifest.json` | 85 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed_lean_emitter.json` | 66 | 2026-06-12 |
+| `docs/PRIME_COMB_MODULARITY_ATLAS_CARD_01.md` | 60 | 2026-06-12 |
+| `.agents/skills/q3-psdpd-step33-bootstrap/SKILL.md` | 30 | 2026-06-12 |
+| `.agents/skills/q3-step32-lean/SKILL 2.md` | 23 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_margin_ledger.md` | 20 | 2026-06-12 |
+| `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed.md` | 17 | 2026-06-12 |
+| `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-06-12 |
+| `.agents/skills/q3-step32-lean/SKILL.md` | 3 | 2026-05-27 |
+| `q3.lean.aristotle/ACTIVE/insights_index.md` | 166 | 2026-05-03 |
+| `q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` | 36 | 2026-04-27 |
+| `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_tail_2_decay_kill.md` | 19 | 2026-04-19 |
+| `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_shell_2_tag_based_shell_interface_bundled_first_zeta_kill_layer_raw_packet_family_theorem_cases.md` | 19 | 2026-04-19 |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260411_145346_7dac003e_0ac0_4246_a498_0ff7230530f2_aristotle_tar/extracted/7dac003e_0ac0_4246_a498_0ff7230530f2_aristotle_tar/7dac003e-0ac0-4246-a498-0ff7230530f2_aristotle/lake-manifest.json` | 85 | 2026-04-11 |
+| `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` | 30 | 2026-03-16 |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260307_191355_2026_03_07_conversations/extracted/2026_03_07_conversations/_manifest.md` | 4 | 2026-03-07 |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260307_192100_2026_03_07_target_cone_reset/extracted/2026_03_07_target_cone_reset/_manifest.md` | 4 | 2026-03-07 |
 | `docs/Progress_Log.md` | 2 | 2026-03-07 |
+| `q3.lean.aristotle/lake-manifest.json` | 121 | 2026-02-23 |
 | `session_exports/chat_latest.md` | 769 | 2026-02-12 |
+| `skills/x-insider/SKILL.md` | 12 | 2026-02-12 |
+| `q3.lean.aristotle/KB/axioms/AXIOM_REGISTRY.md` | 14 | 2026-02-09 |
 | `q3.lean.aristotle/KB/archive/orchestrator_legacy_snapshot_2026-02-08.md` | 27 | 2026-02-08 |
-| `q3.lean.aristotle/ACTIVE/insights.md` | 1673 | 2026-01-29 |
+| `q3.lean.aristotle/KB/ERRORS_DESTROYER.md` | 13 | 2026-02-08 |
+| `docs/Aristotle_models_training/Claude Code Skills- Документация.md` | 34 | 2026-01-30 |
+| `docs/Aristotle_models_training/claude_code_skills.md` | 34 | 2026-01-30 |
+| `docs/Aristotle_models_training/SKILL.md` | 20 | 2026-01-30 |
 | `docs/links/quillen_working_papers.json` | 491 | 2026-01-29 |
 | `docs/mac_24_01_2026_13_22.md` | 216 | 2026-01-29 |
+| `q3.lean.aristotle/archive/untracked_misc_2026-01-20/full/q3.lean.aristotle/archive/untracked_2_2026-01-20/full/q3.lean.aristotle/docbuild/lake-manifest 2.json` | 127 | 2026-01-29 |
+| `q3.lean.aristotle/docbuild/lake-manifest.json` | 127 | 2026-01-29 |
 | `docs/links/quillen_working_papers_1999_2003.json` | 87 | 2026-01-29 |
 | `q3.lean.aristotle/PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md` | 27 | 2026-01-29 |
+| `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/docs/INSIGHTS.md` | 27 | 2026-01-29 |
 | `q3.lean.aristotle/aristotle_output/proshka_context_floor_tcritical.md` | 27 | 2026-01-29 |
 | `q3.lean.aristotle/aristotle_output/proshka_floor_tcritical_bundle_2026_01_24.md` | 27 | 2026-01-29 |
 | `q3.lean.aristotle/aristotle_output/proshka_floor_cert_tcritical_bundle_2026_01_25.md` | 27 | 2026-01-29 |
 | `q3.lean.aristotle/ACTIVE/aristotle/proshka_context_single_scale.md` | 27 | 2026-01-29 |
+| `full/archive_latex_2026_01_29/paper3_rh_synthesis/figures/graphical_abstract_review_log.json` | 23 | 2026-01-29 |
 | `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 23 | 2026-01-29 |
-| `q3.lean.aristotle/ACTIVE/orchestrator.md` | 23 | 2026-01-29 |
+| `full/archive_latex_2026_01_29/paper1_fejer_heat/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
+| `full/archive_latex_2026_01_29/paper2_toeplitz_rkhs/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
+| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-01-29 |
+| `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-01-29 |
 | `docs/CHANGELOG_AUTO.md` | 10 | 2026-01-20 |
+| `sandbox_tasks/REGISTRY 2.md` | 6 | 2026-01-20 |
+| `research_swarm/REGISTRY 2.md` | 5 | 2026-01-20 |
+| `full/figures/trilogy_graphical_abstract_review_log.json` | 23 | 2026-01-17 |
+| `archive/subprojects/spectral_twin_primes/lean_aristotle/TwinPrimeProject/lake-manifest.json` | 85 | 2026-01-01 |
 
 ## Permanent tools, most recently touched first
 
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
+| `orchestrator/backfill_db.py` | 2026-08-05 | 0 | **NO** | Bulk-backfill aristotle_proofs.db with the RouteB / muntz_v3 files it never indexed. |
 | `orchestrator/tools_census.py` | 2026-08-05 | 2 | **NO** | Machine census of every tool, database and state file in the repo. |
 | `q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py` | 2026-08-05 | 1 | **NO** | S2-L2b discriminator: do v3-class windows have Mellin zeros INSIDE the open strip? |
 | `q3.lean.aristotle/scripts/ccm_h2a_gap_scan.py` | 2026-08-04 | 1 | **NO** | CCM H2a Layer-3 gap-scan discriminator (FIT_NOT_LAW, binary64, NOT proof tree). |
@@ -285,7 +382,7 @@
 | `scripts/prime_brange_pilot_points.py` | 2026-01-30 | 1 | **NO** | Extract pilot points (B=3.0 and B=4.9) from the existing B-range certificate. |
 | `scripts/prime_brange_to_lean.py` | 2026-01-30 | 2 | **NO** | Convert prime_cert_brange output into a Lean grid table. |
 | `bellman_bmo.py` | 2026-01-29 | 3 | **NO** | BMO Optimization via Bellman Functions |
-| `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-01-29 | 80 | yes | Lean 4 Parser for Aristotle Proofs Database |
+| `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-01-29 | 81 | yes | Lean 4 Parser for Aristotle Proofs Database |
 | `q3.lean.aristotle/monitor_server.py` | 2026-01-29 | 5 | yes | Simple monitoring server for Aristotle projects. |
 | `q3.lean.aristotle/scripts/aristotle_dag_loop.py` | 2026-01-29 | 7 | yes | Generate a lightweight Aristotle queue from open axioms + sorries. |
 | `q3.lean.aristotle/scripts/build_docs.sh` | 2026-01-29 | 3 | **NO** | Build Q3 documentation with doc-gen4 |
@@ -435,6 +532,7 @@
 
 Either wire them into a contour or archive them; a tool nobody calls is a tool nobody will find when it is needed.
 
+- `orchestrator/backfill_db.py` (last 2026-08-05) — Bulk-backfill aristotle_proofs.db with the RouteB / muntz_v3 files it never indexed.
 - `orchestrator/sense.py` (last 2026-07-30) — SENSE lane — read-only phase detection for the Route B conductor.
 
 ## Note on probes

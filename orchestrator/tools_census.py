@@ -57,6 +57,19 @@ ENTRY_PATTERNS = [
     re.compile(r'^\s*"?date"?\s*[:=]', re.M),              # date: / "date":
     re.compile(r"^\s*\|\s*\d{4}-\d{2}-\d{2}", re.M),       # | 2026-08-05 | table rows
 ]
+# Atlases and kill registries are tables WITHOUT dates, so the dated patterns miss them.
+# Table rows only count for files that are NAMED as a journal — otherwise every ordinary doc
+# containing a table would be misread as a ledger (that mistake gave 438 false ledgers).
+TABLE_ROW = re.compile(r"^\s*\|(?![\s:-]*\|[\s:-]*$).+\|\s*$", re.M)
+# Last resort for a file that is NAMED as a journal but holds neither dates nor tables:
+# atlases are organised by headings (RH_TRICK_ATLAS: "## 3. Guth-Maynard ..."), and
+# FAILURE_ATLAS.json / FAILED_STRATEGIES.yaml by array records.
+NAMED_FALLBACK = [
+    re.compile(r"^#{2,4}\s+\S", re.M),                 # ## card / ## obstruction
+    re.compile(r"^\s*[-*]\s+\S", re.M),                # - record
+    re.compile(r'^\s{0,6}"[\w_]+"\s*:', re.M),          # "id": ...   (json)
+    re.compile(r"^\s{0,4}[\w_]+:\s", re.M),            # id: ...     (yaml)
+]
 MIN_ENTRIES = 8
 MAX_LEDGER_BYTES = 20 * 1024 * 1024
 
@@ -70,6 +83,13 @@ def walk():
 
 
 def git_last(rel):
+    # A symlink carries the commit date of the link itself; date the target instead.
+    p = REPO / rel
+    if p.is_symlink():
+        try:
+            rel = p.resolve().relative_to(REPO)
+        except Exception:
+            pass
     try:
         out = subprocess.run(["git", "log", "-1", "--format=%ad", "--date=short", "--", str(rel)],
                              cwd=REPO, capture_output=True, text=True, timeout=20).stdout.strip()
@@ -115,8 +135,15 @@ def is_ledger(rel, path):
     if LEDGER_SKIP.search(str(rel)):
         return 0
     n = count_entries(path)
-    if LEDGER_NAME.search(rel.name) and n >= 2:
-        return n
+    if LEDGER_NAME.search(rel.name):
+        if n < 2:                       # named like a journal: table rows also count
+            try:
+                txt = path.read_text(errors="ignore")
+                n = max([len(TABLE_ROW.findall(txt)) - 1]
+                        + [len(pat.findall(txt)) for pat in NAMED_FALLBACK])
+            except Exception:
+                n = 0
+        return n if n >= 2 else 0
     return n if n >= MIN_ENTRIES else 0
 
 
@@ -243,7 +270,8 @@ def markdown(rows, probes, states):
     out.append("\n### Frozen (still on disk, often still cited)\n")
     out.append("| Ledger | Entries | Last commit |")
     out.append("|---|---|---|")
-    for r in sorted(led_dead, key=lambda x: x["last"], reverse=True)[:40]:
+    # No silent truncation: a map that quietly drops rows reads as "this is everything".
+    for r in sorted(led_dead, key=lambda x: x["last"], reverse=True):
         out.append(f"| `{r['path']}` | {r['refs']} | {r['last']} |")
     out.append("")
 
