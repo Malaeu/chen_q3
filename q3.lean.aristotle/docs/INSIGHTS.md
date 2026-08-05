@@ -49976,3 +49976,40 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   first-kind PSWF/Ferrers coefficient object instantiating 30.8.4 and 30.8.5;
   no such object is claimed here.  Route B remains `CHALLENGER / NOT_RH` and
   Bus 010 remains VOID.
+
+## 2026-08-05 — G5 root-spliced normalized recurrence row (proved)
+
+- Proshka message `6b1b82c5-9a52-4c12-8b0e-82ff8210a010` selected repaired
+  Candidate B-prime after exact UI reasoning `24m19s` (`25m38s` observed wall
+  including extraction lag).  `Answer now` appeared and was never clicked.
+- `D0Mode4JacobiMatchedNormalizedCoefficientRow.lean` uses the existing
+  forward left solution rather than rebuilding a backward prefix.  The root
+  equation joins the exact pair of source indices `K-1,K` to the canonical
+  positive tail.
+- The private splice theorem proves `r (K-1) ≠ 0` by downward propagation of
+  consecutive zeroes to the contradiction `r 0 = 1`; a two-step recurrence
+  induction then proves the exact identity
+  `r (K-1+n) = r (K-1) * mode4TailCoefficientRow ... n` for every `n`.
+- The public theorem
+  `exists_mode4MatchedNormalizedRecurrenceRow_of_root` proves the all-index
+  unphased DLMF-shaped recurrence, raw square summability, exact weighted
+  `HasSum ... 1`, nonzero splice coefficient, and the load-bearing canonical
+  tail identity.  The weighted total is derived as finite and at least one
+  before normalization; it is not supplied as an assumption.
+- The corollary
+  `exists_mode4MatchedNormalizedRecurrenceRow_boundaryFlux_of_root` applies
+  the already committed boundary-flux consumer with no additional premise.
+- Validation passed: direct Lean; target `7760/7760`; full `7817/7817`;
+  `q3_check`; zero holes or forbidden declarations; proof DB `7/7 proven`;
+  both public theorems depend only on `propext`, `Classical.choice`, and
+  `Quot.sound`.
+- All seven mandatory mutants were rejected: deletion of the `q=0` branch,
+  splice shift `K-1+n -> K+n`, phased coefficients, zero splice coefficient,
+  assumed normalization positivity via a new axiom, deletion of the exact
+  tail identity, and the forbidden `regularPSWF` provenance name.
+- This closes only the recurrence-row existence node.  It does not construct
+  a Ferrers series, prove termwise differential identities or endpoint
+  regularity, license a first-kind PSWF name, or identify an ordered spectral
+  branch.  The next exact gap is
+  `G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION`; G5/S1 remains OPEN, Route B
+  remains `CHALLENGER / NOT_RH`, and Bus 010 remains VOID.
