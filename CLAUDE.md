@@ -289,6 +289,27 @@ Project (3):  Weil_criterion_tau0,
 
 ## Quick Commands
 
+### ⚠️ Linux: ALWAYS strip `LD_LIBRARY_PATH` before any `lake` / `lean` call
+
+On this Linux box `LD_LIBRARY_PATH` contains `/usr/lib/x86_64-linux-gnu/`, which holds a
+**system** `libLLVM.so.19.1` that shadows the toolchain's own copy. The elan `clang` then dies
+with `undefined symbol: _ZN4llvm3sys2fs17getMainExecutableEPKcPv, version LLVM_19.1` and any
+`lake exe cache get` / `lake build` fails at the C-compile step.
+
+```bash
+# WRONG (fails on this machine)
+lake build Q3.Main
+
+# RIGHT — prefix every lake/lean invocation:
+env -u LD_LIBRARY_PATH lake build Q3.Main
+env -u LD_LIBRARY_PATH lake exe cache get
+env -u LD_LIBRARY_PATH lake env lean SomeFile.lean
+```
+
+Mathlib cache was fetched this way on 2026-08-05 (7727 files, 7382 oleans), so the **Linux
+body can now compile Lean locally** — small lemmas no longer need Aristotle or the Mac.
+macOS is unaffected; do not add the prefix there.
+
 ```bash
 Linux:
 cd /mnt/hdd01/Soft/GitHub/chen_q3/q3.lean.aristotle

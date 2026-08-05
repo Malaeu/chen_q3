@@ -1,5 +1,16 @@
 # S2-L2 — the ζ→Ξ gauge is zero-free on the open critical strip
 
+> ## ⛔ SUPERSEDED — DO NOT SUBMIT (2026-08-05, same day)
+> Closed locally on the Linux body instead, once the Mathlib cache was in place.
+> Production file: `Q3/Proofs/RouteB/S2GaugeNonvanishing.lean`
+> (`xiGauge_ne_zero_of_mem_strip`, plus the stronger `riemannXi_eq_xiGauge_mul_riemannZeta`
+> and the centered forms). `lake build` PASS, axioms exactly
+> `[propext, Classical.choice, Quot.sound]`, no sorry.
+> The production version is **better than this brief**: it defines the gauge through
+> Mathlib's `Gammaℝ` and reuses the project's existing `riemannXi_eq_completedRiemannZeta`
+> and `completedRiemannZeta_eq_Gamma_mul_riemannZeta` instead of re-deriving
+> `π ^ (-s/2) * Γ (s/2)` by hand. Kept for the record only.
+
 > **TRANSPORT ARMOUR (lesson of 054.1).** This file is an Aristotle *input*, not a
 > production artifact. The returned proof is materialized into the project ONLY via the
 > Codex fill-sorries pipeline, into a real project file with real project imports, and

@@ -1,5 +1,13 @@
 # S2-L4′ — an anchored locally-uniform limit keeps the anchor value
 
+> ## ⛔ SUPERSEDED — DO NOT SUBMIT (2026-08-05, same day)
+> Closed locally on the Linux body instead, once the Mathlib cache was in place.
+> Production file: `Q3/Proofs/RouteB/S2GaugeNonvanishing.lean` — generic `limit_eq_anchor`
+> plus the consumer form `limit_at_zero_ne_zero`, which already discharges
+> `D.limit 0 ≠ 0` against the proved `centeredXi_zero_ne_zero`.
+> `lake build` PASS, axioms exactly `[propext, Classical.choice, Quot.sound]`, no sorry.
+> Kept for the record only.
+
 > **TRANSPORT ARMOUR (lesson of 054.1).** Aristotle *input*, not a production artifact.
 > Materialization into the project goes ONLY through the Codex fill-sorries pipeline, into a
 > real project file with real project imports, after owner per-action OK. A proof that
