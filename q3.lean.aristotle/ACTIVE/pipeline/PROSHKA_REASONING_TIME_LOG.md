@@ -453,14 +453,14 @@ transaction: G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION
 conversation_id: 6a72e03f-efec-83eb-9a24-df6890d24d07
 request_message_id: 038db1fa-c4f9-4f43-839e-aeb8560cd9b9
 sent_at: 2026-08-05T09:03:27.365+02:00
-completed_at: null
-wall_seconds: null
-wall_human: "RUNNING"
-answer_now_shown: false
+completed_at: 2026-08-05T09:19:40.992+02:00
+wall_seconds: 974
+wall_human: "16m14s observed wall; 15m16s exact UI reasoning duration"
+answer_now_shown: true
 answer_now_clicked: false
-primary: G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_UNSELECTED
-status: RUNNING_FULL_REASONING
-result_pointer: null
+primary: SELECT_B_EXACT_WEIGHTED_SUM_NORMAL_FORM
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE
+result_pointer: "Proshka assistant message d7ddeacd-1ea9-4025-a0ab-381a0dc4c44c"
 notes: >-
   Fresh chat in project RH_Marz_2026 pinned to commit
   d3d939bfc02947933d2e0588eb4c335b13b22706. The high-recall context pack
@@ -477,7 +477,20 @@ notes: >-
   Goal 055 materialization, Bus 010, route promotion, and RH claims. Local
   uncommitted scratch SHA-256
   e2ea1169ab23ebd306fc1c12db825d765937d05cdbfff018e4e67254e97efde9
-  already compiles all twelve exact von-Mangoldt values. At dispatch the UI
-  showed the normal Stop responding control and did not show Answer now; no
-  early-answer control was clicked.
+  already compiled all twelve exact von-Mangoldt values. At dispatch the UI
+  showed the normal Stop responding control and did not show Answer now. The
+  early Answer-now control appeared at 2026-08-05T09:08:00.588+02:00 and was
+  deliberately not clicked. Proshka completed with exact UI reasoning time
+  15m16s; the observed send-to-extraction wall was 16m14s. The
+  22976-character visible response has SHA-256
+  14855082d647327f0de113dc1ac94280692457234097dc0b0e1f1097daeb1dc1
+  and exactly one CODEX DIRECTIVE. The canon/mirror archive adds one terminal
+  LF and has SHA-256
+  db08bcbec0ab2b25f1c8d8439f3f05e8cd9886ef366ca42146f8e482e4431659.
+  Proshka selected one public generic weighted-sum theorem,
+  ccmVonMangoldt_sum_Icc_2_13, with private exact-value helpers and a private
+  literal ccmPrimeEntryN1 specialization compile check. The directive is
+  staged/owner-gated; the standing owner release for the canonical-roof loop
+  authorizes the local implementation but does not authorize Goal 055,
+  Aristotle, Bus 010, route promotion, or an RH claim.
 ```

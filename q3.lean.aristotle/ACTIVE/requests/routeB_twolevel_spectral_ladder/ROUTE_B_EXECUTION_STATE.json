@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T09:03:27.365+02:00",
+  "updated_at": "2026-08-05T09:19:40.992+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION_ACTIVE",
+  "operational_status": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.POST_LAYOUT_NEXT_SPLIT_PROSHKA_ADJUDICATION",
-    "name": "CCMCell13N2FiniteVonMangoldtTheoremShapeAdjudication",
-    "status": "ACTIVE_POST_LAYOUT_PROSHKA_THEOREM_SHAPE_ADJUDICATION",
-    "stop_code": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_UNSELECTED",
+    "contract_obligation": "G2.CCM.054_1.FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
+    "name": "CCMCell13N2FiniteVonMangoldtWeightedSumNormalForm",
+    "status": "ACTIVE_ONE_THEOREM_SOURCE_NORMAL_FORM",
+    "stop_code": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_MISSING",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Proshka route architect/reviewer",
-    "next_action": "Choose exactly one minimal production theorem for finite von-Mangoldt normalization after the proved layout consumer; separate value/support normalization from q-kernel and numerical enclosure work; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "SEVEN_CLASS_LAYOUT_CONSUMER_PROVED_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_FINITE_VON_MANGOLDT_THEOREM_SHAPE_ADJUDICATION",
+    "next_required_actor": "Codex local Lean worker",
+    "next_action": "Prove only ccmVonMangoldt_sum_Icc_2_13 in the owned file with private exact-value helpers, literal prime specialization check, P-VM-1..3, and full validation; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "SEVEN_CLASS_LAYOUT_CONSUMER_PROVED_WEIGHTED_VON_MANGOLDT_NORMAL_FORM_SELECTED_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -74,6 +74,13 @@
       ,"finite_vonmangoldt_proshka_context_sha256": "327425c5b29ee6b8d34c70fa75961d4bde72f1e90d5d0cb9fc4f8b76ff81edde"
       ,"finite_vonmangoldt_scratch_preflight_sha256": "e2ea1169ab23ebd306fc1c12db825d765937d05cdbfff018e4e67254e97efde9"
       ,"finite_vonmangoldt_answer_now_clicked": false
+      ,"finite_vonmangoldt_proshka_completed_at": "2026-08-05T09:19:40.992+02:00"
+      ,"finite_vonmangoldt_proshka_ui_reasoning": "15m16s"
+      ,"finite_vonmangoldt_proshka_observed_wall_seconds": 974
+      ,"finite_vonmangoldt_proshka_response_message_id": "d7ddeacd-1ea9-4025-a0ab-381a0dc4c44c"
+      ,"finite_vonmangoldt_proshka_visible_response_sha256": "14855082d647327f0de113dc1ac94280692457234097dc0b0e1f1097daeb1dc1"
+      ,"finite_vonmangoldt_proshka_archive_sha256": "db08bcbec0ab2b25f1c8d8439f3f05e8cd9886ef366ca42146f8e482e4431659"
+      ,"finite_vonmangoldt_selected_node": "G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [
