@@ -50191,7 +50191,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Goal 055 remains a draft outside the bus until the v2 hole is closed and the
   standard-triple gate passes.  The absent verbatim `P-LEAN-1..5` payload must
   be copied from the authoritative Proshka directive, never reconstructed.
-# 2026-08-05 — G2 CCM cell 13/2 antipodal class crosswalk (in progress)
+# 2026-08-05 — G2 CCM cell 13/2 antipodal class crosswalk (closed)
 
 - Target: `Q3.RouteB.ccmWeilTauN1_neg_self_eq_neg_zero`; it supplies the missing exact `(-2,2)=(-2,0)` crosswalk behind the seven A–G endpoint classes.
 - Production source: `Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean`; the existing `r=1` chain already proves the same identity componentwise.
@@ -50202,3 +50202,5 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The final `ccmWeilTauN1` theorem is source-only: no Arb artifact, endpoint, log supplier, numerical bound, or Aristotle result enters its proof.
 - Validation gate: direct Lean, target build, full build, `q3_check`, broad SectorCell taint scan, three mutants, and standard axiom triple only.
 - This is representation progress only; `054.1-v2`, H2a, G2, Goal 055, route promotion, Bus 010, and RH all remain open/held.
+- Final result: direct/target/full/q3-check pass; file SHA-256 `e8417922c3b7df7ea17d2e0b859b647a82e4a911f330e8aa0c713da04e55b02f`; axioms are exactly the standard triple.
+- Plant audit: P-054-ANTI-1/2 fire; the proposed global denominator-orientation P-054-ANTI-3 is inert because it preserves the equality, while a pointwise `L=1,r=2,x=1/8` replacement control distinguishes the source orientation.
