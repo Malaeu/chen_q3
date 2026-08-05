@@ -171,7 +171,7 @@ sent_at: 2026-08-05T02:26:05.694+02:00
 completed_at: pending
 wall_seconds: pending
 wall_human: pending
-answer_now_shown: false
+answer_now_shown: true
 answer_now_clicked: false
 primary: pending
 status: IN_PROGRESS
@@ -186,5 +186,6 @@ notes: >-
   uniqueness, finite Green/self-energy, or the honest source regular-row
   identification gate. It forbids reassigning closed work, minting the missing
   source theorem as a field, Weyl terminology without the boundary identity,
-  Bus 010, route promotion, and an RH claim. Never click Answer now.
+  Bus 010, route promotion, and an RH claim. Answer now appeared during
+  generation and was not clicked.
 ```

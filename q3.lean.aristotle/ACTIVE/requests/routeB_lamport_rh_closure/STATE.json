@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 71,
-  "updated_at": "2026-08-05T02:26:05+02:00",
+  "revision": 72,
+  "updated_at": "2026-08-05T02:28:07+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1335,7 +1335,7 @@
         "pinned_head": "b0ca7f3b",
         "status": "IN_PROGRESS",
         "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_NODE_AFTER_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW",
-        "answer_now_shown": false,
+        "answer_now_shown": true,
         "answer_now_clicked": false
       }
     },
@@ -4214,6 +4214,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "FRESH_PROJECT_CHAT;PIN_B0CA7F3B;CONTEXT_PACK_SHA256_CF8DF355;REQUEST_MESSAGE_58D40B6F",
       "honesty": "ONE_SMALLEST_POST_L2_NODE_REQUESTED_CLOSED_WORK_NOT_REASSIGNED_NO_WEYL_LABEL_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T02:28:07+02:00",
+      "event": "G5_MODE4_POST_SQUARE_SUMMABLE_ROW_PROSHKA_ADJUDICATION_STILL_RUNNING",
+      "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
+      "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;NO_ASSISTANT_TEXT_YET",
+      "honesty": "NO_EARLY_ANSWER_NO_BUS_010_NOT_RH"
     }
   ]
 }
