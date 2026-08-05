@@ -168,14 +168,14 @@ front: G5/S1
 transaction: G5_MODE4_POST_SQUARE_SUMMABLE_ROW_NEXT_NODE
 request_message_id: 58d40b6f-eab6-42b9-a261-2d72cd7a2adb
 sent_at: 2026-08-05T02:26:05.694+02:00
-completed_at: pending
-wall_seconds: pending
-wall_human: pending
+completed_at: 2026-08-05T02:49:56.200+02:00
+wall_seconds: 1430
+wall_human: "23m50s observed wall; 23m07s exact UI reasoning duration"
 answer_now_shown: true
 answer_now_clicked: false
-primary: pending
-status: IN_PROGRESS
-result_pointer: "fresh RH Marz 2026 project chat created after commit b0ca7f3b"
+primary: G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX
+status: COMPLETE_ACCEPTED
+result_pointer: "Proshka assistant message 41a82262-f418-42c8-bade-a1b1f9fef1b9"
 notes: >-
   The pasted-document context pack has SHA-256
   cf8df355de22195f2473226a04a377d2d32de72e94cb77aa9af77509bb86db46
@@ -187,5 +187,12 @@ notes: >-
   identification gate. It forbids reassigning closed work, minting the missing
   source theorem as a field, Weyl terminology without the boundary identity,
   Bus 010, route promotion, and an RH claim. Answer now appeared during
-  generation and was not clicked.
+  generation and was not clicked. Proshka selected the exact row-level
+  diagonal similarity: an explicit positive telescoping scale, the resulting
+  symmetric Jacobi recurrence, preservation of square summability, and the
+  boundary-flux identity matching the already committed Schur correction. It
+  kept the discrete-Wronskian uniqueness theorem as the next source-neutral
+  node and explicitly forbade source, Weyl, resolvent, operator, Bus 010,
+  promotion, and RH claims. The UI reports exact model reasoning of 23m07s;
+  the observed wall includes polling lag.
 ```

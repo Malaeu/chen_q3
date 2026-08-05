@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 72,
-  "updated_at": "2026-08-05T02:28:07+02:00",
+  "revision": 73,
+  "updated_at": "2026-08-05T02:49:56+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1333,8 +1333,14 @@
         "sent_at": "2026-08-05T02:26:05.694+02:00",
         "context_pack_sha256": "cf8df355de22195f2473226a04a377d2d32de72e94cb77aa9af77509bb86db46",
         "pinned_head": "b0ca7f3b",
-        "status": "IN_PROGRESS",
+        "completed_at": "2026-08-05T02:49:56.200+02:00",
+        "assistant_message_id": "41a82262-f418-42c8-bade-a1b1f9fef1b9",
+        "status": "COMPLETE_ACCEPTED_PENDING_MATERIALIZATION",
+        "primary": "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX",
+        "selected_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean",
         "question": "SELECT_EXACTLY_ONE_SMALLEST_EXECUTABLE_NODE_AFTER_CANONICAL_SQUARE_SUMMABLE_TAIL_ROW",
+        "exact_ui_reasoning_duration": "23m07s",
+        "observed_wall_seconds": 1430,
         "answer_now_shown": true,
         "answer_now_clicked": false
       }
@@ -1347,7 +1353,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "RICCATI_ORBIT_AND_SQUARE_SUMMABLE_ROW_MATERIALIZED_POST_L2_NEXT_NODE_ADJUDICATION_IN_PROGRESS_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "POST_L2_HERMITIAN_TAIL_ROW_AND_BOUNDARY_FLUX_SELECTED_PENDING_LEAN_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4221,6 +4227,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "ANSWER_NOW_SHOWN;NOT_CLICKED;NO_ASSISTANT_TEXT_YET",
       "honesty": "NO_EARLY_ANSWER_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T02:49:56+02:00",
+      "event": "G5_MODE4_POST_SQUARE_SUMMABLE_ROW_PROSHKA_ADJUDICATION_COMPLETED",
+      "progress_class": "THEOREM_SHAPE_ADJUDICATION_PROGRESS",
+      "result": "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX_SELECTED;EXACT_UI_REASONING_23M07S;OBSERVED_WALL_1430S;MESSAGE_41A82262",
+      "honesty": "ROW_LEVEL_ABSTRACT_DIAGONAL_SIMILARITY_ONLY_WRONSKIAN_NEXT_NO_SOURCE_OBJECT_NO_WEYL_NO_OPERATOR_NO_BUS_010_NOT_RH"
     }
   ]
 }
