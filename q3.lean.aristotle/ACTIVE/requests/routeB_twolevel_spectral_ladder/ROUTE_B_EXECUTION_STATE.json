@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T08:22:19.215+02:00",
+  "updated_at": "2026-08-05T08:40:21.163+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,19 +10,19 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_THINKING",
+  "operational_status": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
   "current": {
     "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
-    "name": "CCMCell13N2NextCancellationPreservingSplitAdjudication",
-    "status": "PROSHKA_THINKING_FRESH_PROJECT_CHAT",
-    "stop_code": "G2_CCM_054_1_NEXT_CANCELLATION_PRESERVING_SPLIT_UNSELECTED",
+    "contract_obligation": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
+    "name": "CCMCell13N2SevenClassLayoutConsumer",
+    "status": "ACTIVE_ONE_THEOREM_SOURCE_LAYOUT",
+    "stop_code": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING",
     "selected_bus_goal_nnn": null,
     "selected_bus_goal_path": null,
-    "next_required_actor": "Proshka route architect/reviewer",
-    "next_action": "Allow Proshka to finish the fresh-chat fail-closed adjudication without clicking Answer now; then audit exactly one selected source-only or cancellation-preserving Lean leaf.",
-    "ccm_classification": "ANTIPODAL_CLASS_CROSSWALK_AND_LOG_SUPPLIER_PROVED_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "next_required_actor": "Codex local Lean worker",
+    "next_action": "Create only CCMFiniteWeilCell13N2SevenClassLayout.lean with one exact matrix equality; validate three layout plants and direct/target/full/q3_check/taint/axioms; keep Goal 055 held and do not submit Aristotle.",
+    "ccm_classification": "ORBIT_MATHEMATICS_CLOSED_REUSABLE_FIN5_LAYOUT_CONSUMER_ACTIVE_V2_SPLIT_REQUIRED_HOLD_055",
+    "ccm_repoint": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER",
     "h2b_closed": false,
     "goal_051_authorized": false,
     "route_promotion": false,
@@ -57,6 +57,13 @@
       ,"next_split_proshka_prompt_sha256": "21b40af3d7cf6433999158754d8f8c77a22dd83b21c20cd0d893a5bb431af2fe"
       ,"next_split_proshka_context_sha256": "39008c85a464924d36d0d4f80f556080144872f8ad90b997d013a2c9a6660839"
       ,"next_split_answer_now_clicked": false
+      ,"next_split_proshka_completed_at": "2026-08-05T08:40:21.163+02:00"
+      ,"next_split_proshka_ui_reasoning": "16m51s"
+      ,"next_split_proshka_observed_wall_seconds": 1082
+      ,"next_split_proshka_response_message_id": "cfa110ce-fd44-4c15-8c4c-2fdae210ffae"
+      ,"next_split_proshka_visible_response_sha256": "15f5e6868c988cd180bfe7d4e6aab8c54bd8b7e0bb7d18f09f7311f2aa9309ac"
+      ,"next_split_proshka_archive_sha256": "14eb3ffa547a037dd59668d916b3aea10fbacdcf1576b89448e6ae775a65200e"
+      ,"next_split_selected_node": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER"
     },
     "d0_7e_5a": {
       "historical_exit_codes": [

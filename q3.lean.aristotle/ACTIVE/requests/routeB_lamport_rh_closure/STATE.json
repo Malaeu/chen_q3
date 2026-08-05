@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 103,
-  "updated_at": "2026-08-05T08:22:19.215+02:00",
+  "revision": 104,
+  "updated_at": "2026-08-05T08:40:21.163+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -31,7 +31,7 @@
   },
   "bus": {
     "canonical_protocol": "../routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md",
-    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_NEXT_SPLIT_PROSHKA_THINKING",
+    "canonical_lifecycle_status": "CLOSED_001_009_OWNER_AUTORUN_G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
     "observed_closed_nnns": [
       "001",
       "002",
@@ -82,8 +82,8 @@
       "OWNER_AUTHORIZED_AUTORUN_OR_PHYSICAL_MASTER_GOAL",
       "NAMED_LEAF_DEPENDENCIES_PROVED"
     ],
-    "next_actor": "Proshka route architect/reviewer",
-    "next_action": "Select exactly one smallest cancellation-preserving source-only Lean leaf after the proved antipodal crosswalk and repaired log supplier; do not submit Aristotle, materialize Goal 055, create Bus 010, or promote Route B"
+    "next_actor": "Codex local Lean worker",
+    "next_action": "Implement exactly one typed Fin 5 x Fin 5 seven-class matrix-layout theorem from the literal source symmetries and antipodal identities; run three layout plants and full validation; do not touch numeric endpoints, submit Aristotle, materialize Goal 055, create Bus 010, or promote Route B"
   },
   "estar_muntz_v1_fatal_audit": {
     "status": "FATAL_ARCHIVED_DO_NOT_EXECUTE",
@@ -1787,12 +1787,12 @@
   },
   "compiler": {
     "root_node_id": "R0",
-    "active_node_id": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "active_node_id": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
     "active_node_count": 1,
     "active_node_limit": 1,
     "traversal": "ORDERED_DEPTH_FIRST_LOWEST_ELIGIBLE",
-    "lifecycle": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_THINKING",
-    "candidate_first_leaf_after_release": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "lifecycle": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
+    "candidate_first_leaf_after_release": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
     "canonical_mutation_owner": "Codex-root",
     "worker_tracks": [
       "D0.7E_OWNER_INPUT_VALIDATED",
@@ -1981,11 +1981,26 @@
       "dependencies": ["G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK", "G2.CCM.054_1B.LOG_SUPPLIER_INTERFACE_REPAIR"],
       "ordered_children": [],
       "assembly_theorem_id": null,
+      "proof_status": "PROVED",
+      "activity": "INACTIVE",
+      "eligibility": {"eligible": false, "reason": "PROSHKA_ADJUDICATION_COMPLETED_AND_EXACTLY_ONE_NODE_SELECTED"},
+      "validation": "PROSHKA_CONVERSATION_6A72D69F;REQUEST_MESSAGE_2598B7E8;RESPONSE_MESSAGE_CFA110CE;UI_REASONING_16M51S;OBSERVED_WALL_1082S;PROMPT_SHA256_21B40AF3;CONTEXT_SHA256_39008C85;VISIBLE_RESPONSE_SHA256_15F5E686;ONE_CODEX_DIRECTIVE;ANSWER_NOW_NOT_CLICKED;HOLD_055_RATIFIED",
+      "failure_codes": []
+    },
+    "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER": {
+      "id": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
+      "parent_id": null,
+      "kind": "LEAF",
+      "role": "GOAL",
+      "statement": "Prove the exact typed CCM (13,2) Fin 5 x Fin 5 matrix equality to the fixed seven-class A-G ccmWeilTauN1 layout using only source symmetries and the r=1/r=2 antipodal identities",
+      "dependencies": ["G2.CCM.054_1.ANTIPODAL_CLASS_CROSSWALK", "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION"],
+      "ordered_children": [],
+      "assembly_theorem_id": null,
       "proof_status": "OPEN",
       "activity": "ACTIVE",
-      "eligibility": {"eligible": true, "reason": "PROSHKA_SPLIT_REQUIRED_AFTER_TWO_VALIDATED_REPRESENTATION_GATES"},
-      "validation": "PROSHKA_CONVERSATION_6A72D69F;REQUEST_MESSAGE_2598B7E8;SENT_2026_08_05_08_22_19_CEST;PROMPT_SHA256_21B40AF3;CONTEXT_SHA256_39008C85;FRESH_PROJECT_CHAT;ENGLISH_ONLY;EXACT_ONE_NODE;NO_ARISTOTLE_SUBMISSION;ANSWER_NOW_SHOWN_NOT_CLICKED",
-      "failure_codes": ["G2_CCM_054_1_NEXT_CANCELLATION_PRESERVING_SPLIT_UNSELECTED"]
+      "eligibility": {"eligible": true, "reason": "PROSHKA_SELECTED_SMALLEST_REUSABLE_FINITE_LAYOUT_CONSUMER"},
+      "validation": "DIRECT_LEAN;TARGET_BUILD;FULL_BUILD;Q3_CHECK;TAINT;STANDARD_AXIOM_TRIPLE;THREE_LAYOUT_PLANTS;ONE_PUBLIC_THEOREM;NO_NEW_PUBLIC_DEFINITIONS",
+      "failure_codes": ["G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING", "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_ORIENTATION_MISMATCH", "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_PLANT_INERT", "LEAN_BUILD_FAIL"]
     },
     "G5.MODE4.F0E.ODE_AUDIT": {
       "id": "G5.MODE4.F0E.ODE_AUDIT",
@@ -4155,12 +4170,19 @@
     "read_first": "MASTER_GOAL.md",
     "restart_prompt": "START_GOAL.md",
     "status_command": "python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --json",
-    "current_stop": "G2_CCM_054_1_NEXT_CANCELLATION_PRESERVING_SPLIT_UNSELECTED",
-    "mode": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_THINKING",
-    "current_leaf": "G2.CCM.054_1.NEXT_SPLIT_PROSHKA_ADJUDICATION",
+    "current_stop": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_MISSING",
+    "mode": "G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER_ACTIVE",
+    "current_leaf": "G2.CCM.054_1.SEVEN_CLASS_LAYOUT_CONSUMER",
     "first_math_leaf_after_release": "G5.MODE4.F0E.ODE_AUDIT"
   },
   "transition_log": [
+    {
+      "at": "2026-08-05T08:40:21.163+02:00",
+      "event": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_COMPLETED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROSHKA_MESSAGE_CFA110CE;EXACT_UI_REASONING_16M51S;OBSERVED_WALL_1082S;VISIBLE_RESPONSE_SHA256_15F5E686;ONE_CODEX_DIRECTIVE;ORBIT_MATHEMATICS_CLOSED;REUSABLE_FIN5_LAYOUT_CONSUMER_MISSING;NEXT_SEVEN_CLASS_LAYOUT_CONSUMER",
+      "honesty": "JUDGE_DID_NOT_RERUN_LEAN_P3_INERT_NO_ROUTE_EFFECT_NO_FINITE_LAYOUT_THEOREM_YET_NO_ARISTOTLE_SUBMISSION_NO_GOAL_055_NO_BUS_010_NOT_RH"
+    },
     {
       "at": "2026-08-05T08:22:19.215+02:00",
       "event": "G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION_STARTED",

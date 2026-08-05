@@ -411,14 +411,14 @@ transaction: G2_CCM_054_1_NEXT_SPLIT_PROSHKA_ADJUDICATION
 conversation_id: 6a72d69f-da34-83eb-a372-ed00bf6287e9
 request_message_id: 2598b7e8-664d-4338-b1be-14f19efc9e75
 sent_at: 2026-08-05T08:22:19.215+02:00
-completed_at: null
-wall_seconds: null
-wall_human: "IN PROGRESS"
+completed_at: 2026-08-05T08:40:21.163+02:00
+wall_seconds: 1082
+wall_human: "18m02s observed wall; 16m51s exact UI reasoning duration"
 answer_now_shown: true
 answer_now_clicked: false
-primary: PENDING
-status: PROSHKA_THINKING
-result_pointer: null
+primary: G2_CCM_054_1_SEVEN_CLASS_LAYOUT_CONSUMER
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "Proshka assistant message cfa110ce-fd44-4c15-8c4c-2fdae210ffae"
 notes: >-
   Fresh chat in project RH_Marz_2026 pinned to commit 80488965. The standalone
   prompt SHA-256 is
@@ -432,5 +432,14 @@ notes: >-
   or cancellation-ledger interface. Goal 055 remains held, Aristotle is not
   authorized, and independent W02/WR/Prime endpoint balls remain forbidden.
   The UI displayed Answer now after reasoning began; it was deliberately not
-  clicked.
+  clicked. Proshka completed with exact UI reasoning time 16m51s; the observed
+  send-to-extraction wall was 18m02s. The 19883-character visible response has
+  SHA-256 15f5e6868c988cd180bfe7d4e6aab8c54bd8b7e0bb7d18f09f7311f2aa9309ac
+  and exactly one CODEX DIRECTIVE. It classifies the seven-class orbit
+  mathematics as closed but the reusable typed Fin 5 x Fin 5 consumer as
+  missing, then authorizes exactly one matrix-equality Lean file. The
+  repository archive adds a terminal LF and therefore has SHA-256
+  14eb3ffa547a037dd59668d916b3aea10fbacdcf1576b89448e6ae775a65200e.
+  The next finite von-Mangoldt node remains downstream. Goal 055 stays held,
+  Aristotle stays unauthorized, and no route/RH promotion is licensed.
 ```
