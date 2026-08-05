@@ -289,14 +289,14 @@ transaction: G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE
 conversation_id: 6a72ab09-916c-83eb-91b7-237ea93f1389
 request_message_id: ff8a0f6e-be7a-4df5-bedc-ac97b9b7c7c3
 sent_at: 2026-08-05T05:16:25.256+02:00
-completed_at: null
-wall_seconds: null
-wall_human: RUNNING
+completed_at: 2026-08-05T05:42:32.663+02:00
+wall_seconds: 1567
+wall_human: "26m07s observed wall; 25m27s exact UI reasoning duration"
 answer_now_shown: true
 answer_now_clicked: false
-primary: PENDING
-status: RUNNING_FULL_REASONING
-result_pointer: pending
+primary: G5_MODE4_F0A_ORDINARY_LEGENDRE_AFFINE_KERNEL_SELECTED
+status: COMPLETE_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "Proshka assistant message 60478a3b-b5e3-4015-8352-65ea711fa7dd"
 notes: >-
   Fresh chat in project RH_Marz_2026. The exact context pack has SHA-256
   43c6a9a9f5a098a23eb440df366812b7001ebb8b2b199aba0021cf3da6577b27;
@@ -312,5 +312,14 @@ notes: >-
   phase conventions, the observed Mathlib gaps, and mandatory endpoint,
   differentiation, recurrence, nonzero, and naming attacks. Respond in English
   only appears at both ends. The UI displayed Answer now immediately after
-  generation began; it was deliberately not clicked.
+  generation began; it was deliberately not clicked. Proshka completed with
+  exact UI reasoning time 25m27s; the observed send-to-extraction wall was
+  26m07s. The 26972-character response has SHA-256
+  6a274e2f1b90160f8bd681f38ffaaf7c43a6ba5eb68222b4c99aadd0db004161
+  and contains exactly one CODEX DIRECTIVE. It split F0 into the immediately
+  executable Lean-only affine orientation/parity/degree kernel F0a and the
+  later finite-action kernel F0b. F1 remains a genuine source-bound task, F2
+  remains overlarge, and F3 remains operator overreach. No recurrence, ODE,
+  x-squared action, bound, Ferrers series, PSWF name, Bus 010, promotion, or
+  RH claim is licensed by this verdict.
 ```

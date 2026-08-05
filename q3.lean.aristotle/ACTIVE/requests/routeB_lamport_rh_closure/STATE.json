@@ -1,7 +1,7 @@
 {
   "schema": "route_b_lamport_recursive_compiler.v3",
-  "revision": 88,
-  "updated_at": "2026-08-05T05:16:25.256+02:00",
+  "revision": 89,
+  "updated_at": "2026-08-05T05:42:32.663+02:00",
   "honesty": {
     "route_status": "CHALLENGER_NOT_RH",
     "rh_status": "OPEN",
@@ -1441,7 +1441,7 @@
           "question": "SELECT_SMALLEST_HONEST_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NODE"
         },
         "ferrers_regular_solution_gate": {
-          "status": "PROSHKA_ADJUDICATION_RUNNING",
+          "status": "F0A_AFFINE_KERNEL_SELECTED_FOR_IMPLEMENTATION",
           "pinned_head": "a637ad11",
           "exact_target": "G5_MODE4_FERRERS_SERIES_REGULAR_SOLUTION",
           "provisional_public_theorem": "mode4MatchedFerrersSeries_is_regular_even_prolateSolution",
@@ -1473,7 +1473,11 @@
           "candidate_F0": "ORDINARY_LEGENDRE_ALGEBRAIC_LIBRARY_PARITY_RECURRENCE_ODE_X2_ACTION",
           "candidate_F1": "SOURCE_LOCKED_UNIFORM_VALUE_AND_FIRST_SECOND_DERIVATIVE_BOUNDS",
           "candidate_F2": "FULL_GEOMETRIC_COEFFICIENT_FERRERS_SERIES_REGULAR_SOLUTION",
-          "next_action": "WAIT_FOR_FULL_PROSHKA_F0_F1_F2_F3_ADJUDICATION_WITHOUT_ANSWER_NOW",
+          "selected_node": "G5_MODE4_ORDINARY_LEGENDRE_AFFINE_KERNEL",
+          "selected_classification": "LEAN_ONLY_ABSTRACT",
+          "selected_owned_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreAffineKernel.lean",
+          "next_named_gap_after_success": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_KERNEL",
+          "next_action": "IMPLEMENT_AND_VALIDATE_EXACT_F0A_PUBLIC_API_AND_TWO_ORIENTATION_MUTANTS",
           "proshka_adjudication": {
             "transaction": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
             "proof_address": "RouteB.G5.Mode4.FerrersRegularSolution",
@@ -1484,11 +1488,21 @@
             "prompt_sha256": "5e3f376dd81404de3b15012e70fab157c52cb3ce79c96bd140813760726d2ea1",
             "full_request_sha256": "920cd4c2e4069f8fef379231581d92db6d903b786338f812afc7946285a28f55",
             "language": "ENGLISH_ONLY",
-            "status": "RUNNING",
+            "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+            "completed_at_observed": "2026-08-05T05:42:32.663+02:00",
+            "exact_ui_reasoning_duration": "25m27s",
+            "observed_wall_seconds": 1567,
+            "assistant_message_id": "60478a3b-b5e3-4015-8352-65ea711fa7dd",
+            "response_chars": 26972,
+            "response_sha256": "6a274e2f1b90160f8bd681f38ffaaf7c43a6ba5eb68222b4c99aadd0db004161",
+            "code_directive_count": 1,
+            "primary": "G5_MODE4_F0A_ORDINARY_LEGENDRE_AFFINE_KERNEL_SELECTED",
+            "selected_node": "G5_MODE4_ORDINARY_LEGENDRE_AFFINE_KERNEL",
+            "direct_consumer": "G5_MODE4_ORDINARY_LEGENDRE_FINITE_ACTION_KERNEL",
             "answer_now_shown": true,
             "answer_now_clicked": false
           },
-          "honesty": "FULL_REASONING_TIME_PRESERVED_NO_EARLY_ANSWER_NO_SECOND_PROMPT_NO_FERRERS_FUNCTION_NO_REGULAR_ENDPOINT_NO_FIRST_KIND_NAME_NO_ORDERED_MODE_NO_BUS_010_NOT_RH"
+          "honesty": "FULL_REASONING_TIME_PRESERVED_F0_SPLIT_TO_F0A_NO_RECURRENCE_NO_ODE_NO_X2_NO_SOURCE_BOUND_NO_FERRERS_FUNCTION_NO_REGULAR_ENDPOINT_NO_FIRST_KIND_NAME_NO_ORDERED_MODE_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
         }
       }
     },
@@ -1500,7 +1514,7 @@
       "axioms": ["propext", "Classical.choice", "Quot.sound"],
       "holes": 0
     },
-    "external_proshka_ratification": "REPAIRED_B_PRIME_ROOT_TO_NORMALIZED_RECURRENCE_ROW_MATERIALIZED_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
+    "external_proshka_ratification": "F0A_ORDINARY_LEGENDRE_AFFINE_KERNEL_SELECTED_FOR_IMPLEMENTATION_F0B_FINITE_ACTION_NEXT_FERRERS_REGULAR_SOLUTION_REMAINS_OPEN_ANSWER_NOW_NOT_CLICKED",
     "does_not_change_active_leaf": true,
     "bus_010": "VOID",
     "route_status": "CHALLENGER",
@@ -4486,6 +4500,13 @@
       "progress_class": "EXTERNAL_THEOREM_SHAPE_REVIEW_IN_PROGRESS",
       "result": "FRESH_PROJECT_CHAT_6A72AB09;PIN_A637AD11;CONTEXT_SHA256_43C6A9A9;PROMPT_SHA256_5E3F376D;FULL_REQUEST_SHA256_920CD4C2;REQUEST_MESSAGE_FF8A0F6E",
       "honesty": "F0_F1_F2_F3_FAIL_CLOSED_ADJUDICATION_REQUESTED_FULL_REASONING_TIME_PRESERVED_ANSWER_NOW_NOT_CLICKED_NO_SECOND_PROMPT_NO_BUS_010_NOT_RH"
+    },
+    {
+      "at": "2026-08-05T05:42:32.663+02:00",
+      "event": "G5_MODE4_F0A_ORDINARY_LEGENDRE_AFFINE_KERNEL_SELECTED",
+      "progress_class": "REPRESENTATION_PROGRESS",
+      "result": "PROSHKA_MESSAGE_60478A3B;EXACT_UI_REASONING_25M27S;OBSERVED_WALL_1567S;RESPONSE_SHA256_6A274E2F;F0_SPLIT_F0A_THEN_F0B;AFFINE_ORIENTATION_PARITY_DEGREE_KERNEL_SELECTED;ONE_CODEX_DIRECTIVE",
+      "honesty": "LEAN_ONLY_AFFINE_KERNEL_NO_RECURRENCE_NO_ODE_NO_X2_NO_VALUE_BOUND_NO_ORTHOGONALITY_NO_FERRERS_SERIES_NO_PSWF_NAME_ANSWER_NOW_NOT_CLICKED_NO_BUS_010_NOT_RH"
     }
   ]
 }
