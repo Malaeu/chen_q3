@@ -57,28 +57,28 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_8c3d34bf2b928e8656da` at `2026-08-06T12:04:28+00:00` from `e7995ac93fcf`
+- snapshot: `OBS_473db0106563b1d0eb1a` at `2026-08-06T12:55:16+00:00` from `e7b0c16334e3`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3334` / `5570`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2030}`; doomed: `0`
+- file states/import edges: `3335` / `5571`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2031}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
-- Proshka runs: `18`; observed seconds total/mean/median: `24730` / `1373.9` / `1273.5`; lower bounds: `1`
+- Proshka runs: `19`; observed seconds total/mean/median: `25956` / `1366.1` / `1265`; lower bounds: `1`
 - Answer-now clicks: `0`
 - AUTOPSY events/structured: `8` / `5`; walls/namewatch flags: `5` / `0`
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 8 | 2026-08-06T12:03:18+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-06 12:04 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-06 12:04 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-06 12:04 UTC | no | PARSED | READY |
-| `proshka_timing` | 18 | 2026-08-06T13:30:22+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-06 12:04 UTC | no | PARSED | READY |
-| `taint_graph` | 3334 | 2026-08-06 12:04 UTC | no | PARSED | READY |
-| `taint_sources` | 3334 | 2026-08-06 12:04 UTC | no | PARSED | READY |
+| `autopsy_map` | 8 | 2026-08-06T12:33:41+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-06 12:55 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-06 12:55 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-06 12:55 UTC | no | PARSED | READY |
+| `proshka_timing` | 19 | 2026-08-06T14:30:02+02:00 | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-06 12:55 UTC | no | PARSED | READY |
+| `taint_graph` | 3335 | 2026-08-06 12:55 UTC | no | PARSED | READY |
+| `taint_sources` | 3335 | 2026-08-06 12:55 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 

@@ -137,6 +137,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `056l_d0_log_window_measure_transport.goal.md` | standing-root Phase-4C log-window measure transport and mode orthonormality goal | `93ff95641b43f897cbe8ffe75c266198a70479a3926e1c599f8d689ad2c7870f` |
 | `056l_d0_log_window_measure_transport.answer.md` | standing-root Phase-4C log-window measure transport and mode orthonormality answer | `b1fac0e47f9874b7ec99e5527c7bd11d558fdb8e0469a02cb0bbc95320cca557` |
 | `056m_d0_finite_projection_reconstruction.goal.md` | standing-root Phase-4D finite orthogonal-projection reconstruction goal | `aa740c56ab4530b854a47877eaf025d5a4c4765bf4b1bb86302562918740fbbb` |
+| `056m_d0_finite_projection_reconstruction.answer.md` | standing-root Phase-4D finite orthogonal-projection reconstruction answer | `d45c17f86623646cb3801cdd3c6cadb14f2916c786b369dbc558bbf089a6f2dc` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |

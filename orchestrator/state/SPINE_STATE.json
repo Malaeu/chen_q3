@@ -211,18 +211,18 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3334,
-    "import_edges": 5570,
+    "file_states": 3335,
+    "import_edges": 5571,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
     "proof_nodes": 10,
     "proof_roots": 2,
     "proshka_lower_bounds": 1,
-    "proshka_runs": 18,
-    "proshka_seconds_mean": 1373.9,
-    "proshka_seconds_median": 1273.5,
-    "proshka_seconds_total": 24730,
+    "proshka_runs": 19,
+    "proshka_seconds_mean": 1366.1,
+    "proshka_seconds_median": 1265,
+    "proshka_seconds_total": 25956,
     "root_memberships": 131,
     "slowest_runs": [
       {
@@ -262,10 +262,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T12:04:28+00:00",
-      "id": "OBS_8c3d34bf2b928e8656da",
+      "generated_at": "2026-08-06T12:55:16+00:00",
+      "id": "OBS_473db0106563b1d0eb1a",
       "schema_version": 6,
-      "source_commit": "e7995ac93fcfc75d629204bca8adbf8ad927a50b",
+      "source_commit": "e7b0c16334e38cfc0398302cae66e22818075dd0",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -275,7 +275,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 8,
-        "source_generated_at": "2026-08-06T12:03:18+00:00",
+        "source_generated_at": "2026-08-06T12:33:41+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 12:04 UTC",
+        "source_generated_at": "2026-08-06 12:55 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 12:04 UTC",
+        "source_generated_at": "2026-08-06 12:55 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,15 +299,15 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 12:04 UTC",
+        "source_generated_at": "2026-08-06 12:55 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 18,
-        "source_generated_at": "2026-08-06T13:30:22+02:00",
+        "record_count": 19,
+        "source_generated_at": "2026-08-06T14:30:02+02:00",
         "source_id": "proshka_timing",
         "stale": 0
       },
@@ -315,23 +315,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 12:04 UTC",
+        "source_generated_at": "2026-08-06 12:55 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3334,
-        "source_generated_at": "2026-08-06 12:04 UTC",
+        "record_count": 3335,
+        "source_generated_at": "2026-08-06 12:55 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3334,
-        "source_generated_at": "2026-08-06 12:04 UTC",
+        "record_count": 3335,
+        "source_generated_at": "2026-08-06 12:55 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -341,7 +341,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2030
+      "NO_OBSERVED_ISSUE": 2031
     },
     "wall_states": 5
   },
@@ -441,5 +441,5 @@
     "source_commit": "6abd631c8cda015c092bf6cd6e91e54ab077935b",
     "status": "PASS"
   },
-  "source_commit": "a04753e0c435006768fde50fd546acdccf1ee0cf"
+  "source_commit": "e7b0c16334e38cfc0398302cae66e22818075dd0"
 }

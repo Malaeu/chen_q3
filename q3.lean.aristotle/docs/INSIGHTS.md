@@ -50764,3 +50764,28 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate` is not
   authorized in this batch. Raw/Gwin, the Phase-4B contract, decay, and strict
   `SlotS2` remain outside the leaf.
+
+## Materialized result
+
+- `D0FiniteProjectionReconstruction.lean` proves the exact ambient equality
+  between `P_m_N i f` and the finite `modeSet i` Fourier sum with coefficient
+  orientation `inner ℂ (V_n_m i n) f`.
+- The finite-image span is identified with literal `E_m_N i` through
+  `Finset.coe_image` and `LinearIsometryEquiv.ofEq`; the transported
+  `OrthonormalBasis.span` is consumed by exactly one
+  `orthogonalProjection_eq_sum` call.
+- The source SHA is
+  `4f19de8c695450691266171ce05b7343c5cbe16213eb71f3b40d2b119bdcaa8d`;
+  the public surface is one theorem and zero definitions, with only the
+  standard axiom triple.
+- All five K6 plants fire independently: coefficient orientation, positive
+  endpoint, literal carrier, exact basis normalization, and projection versus
+  identity.
+- Direct Lean, the 7755-job target build, the 7817-job full build, `q3_check`,
+  67 orchestration tests, one proven proof-DB declaration, strict Spine, and
+  all three SQLite integrity checks pass.
+- Exact result:
+  `G6_S2_P_M_N_FINITE_FOURIER_RECONSTRUCTION_PROVED`.
+- Next: a new delegated strategic batch for the sole projected-Mellin to
+  raw-transform coordinate consumer. The Phase-4B contract, raw/Gwin bridge,
+  compact-open decay, and strict `SlotS2` remain separate and open.
