@@ -50426,7 +50426,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Exact audit result:
   `G6_S2_MUNTZ_V3_PRODUCTION_EXPORT_CLOSURE_AUDITED_PORT_OPEN`.
 
-# 2026-08-06 — Goal 056 Phase 3A Müntz-v3 production core Batch A (in progress)
+# 2026-08-06 — Goal 056 Phase 3A Müntz-v3 production core Batch A (materialized)
 
 - Exact target: copy the two independent roots of the audited closure into
   `Q3.Proofs.RouteB.MuntzV3`: Core (request `Main.lean`) and the R6
@@ -50437,3 +50437,15 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   request-project module and is the cheapest Lean-4.26 portability test.
 - The decisive plants are normalized body equality, forbidden-import absence,
   direct production compilation, and standard-triple-only axiom output.
+
+- Both production files are byte-identical to their request sources after
+  removing the seven-line outer provenance block; no import or namespace
+  rewrite was needed.
+- Direct Lean 4.26, target build `7744`, full build `7817`, both
+  `q3_check` runs, normalized comparison, forbidden-import scan, and six
+  public axiom checks pass.
+- The proof DB records `MuntzV3Core` with 28 declarations and
+  `MuntzV3R6BoundaryCellBridge` with 9; both are `proven`.
+- All three plants fire. Exact result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_CORE_BATCH_A_MATERIALIZED`.
+- Next: four direct Batch-A consumers in `MuntzV3ProductionSupplierBatchB`.
