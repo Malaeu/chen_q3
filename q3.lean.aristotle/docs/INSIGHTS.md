@@ -50789,3 +50789,38 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: a new delegated strategic batch for the sole projected-Mellin to
   raw-transform coordinate consumer. The Phase-4B contract, raw/Gwin bridge,
   compact-open decay, and strict `SlotS2` remain separate and open.
+
+# 2026-08-06 — Goal 056 Phase 4E projected Mellin-coordinate research (in progress)
+
+- Exact target named by the Phase-4D verdict:
+  `selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate`, at
+  the same `selectedPairIndex S k` and normalized projected trial.
+- Knowledge preflight is genuinely empty: `kb.py flags` has no record for
+  `RouteB.G6.S2 projected Mellin coordinate`, `Fourier Mellin projection raw
+  transform`, or `G6 S2`; `kb.py ask` also has no matching prior object.
+- Four `q3_docs` queries (scores 0.62--0.70) recover the exact live chain:
+  `D0KTrialStage3.lean`, `D0_6_EXACT_TRANSFORM_CONVENTION.md`, Phase-4A's
+  centered-coordinate lock, and Phase-4B's named residual contract. No
+  alternative already-proved projected-coordinate theorem appears.
+- Phase 4D removes the projection algebra: applying its reconstruction to the
+  normalized projected trial gives the literal coefficient row `c_n`; the
+  remaining proof is a representative/coordinate transport, not another
+  orthogonal-projection argument.
+- The load-bearing seams are now explicit: `MemLp.coeFn_toLp` for the `Lp`
+  representative, positivity on `I_m`, `Complex.cpow_def_of_ne_zero` and
+  `Complex.ofReal_log` for `u^(-i*z)`, Phase-4C
+  `integral_comp_logWindow_dStar`, the centered factor
+  `exp(i*z*L_m/2)`, and the double reflection inside
+  `selectedRawTransformCoordinate`/`rawFplus`.
+- Mathlib's official L2 documentation confirms that `Lp ℂ 2 μ` inner products
+  are Bochner integrals and exposes the a.e.-representative API; the local
+  source also supplies `integral_congr_ae` and finite-sum integration.
+- Candidate split A: first prove an additive log-coordinate identity for the
+  reconstructed finite trial, then one multiplicative-Mellin wrapper.
+  Candidate B: prove the named selected theorem directly through the existing
+  arbitrary-integrand log-window transport. A is easier to plant and reuse;
+  B minimizes public surface but bundles more normalization seams.
+- Strategic review must select the minimal transaction, exact public
+  definition/theorem surface, sign/reflection convention, plants, and whether
+  only this projected-coordinate identity is authorized. Raw/Gwin equality,
+  the Phase-4B contract, residual decay, and strict `SlotS2` remain outside.

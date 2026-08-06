@@ -14,6 +14,12 @@ GOAL_055: HOLD
 PROSHKA_CALLS_THIS_PHASE: 4
 ARISTOTLE_SUBMISSION: NONE
 PX_RH_CLAIM: NOT_MADE
+SEARCH_FLAGS:
+  address: RouteB.G6.S2.FiniteProjectionReconstruction
+  strong: [OrthonormalBasis.span, orthogonalProjection_eq_sum, Finset.sum_attach]
+  empty: []
+  false_friend: [dependent_rw_inside_OrthonormalBasis_carrier]
+  opens_branch: [selected_projected_Mellin_coordinate_identity]
 ```
 
 ## Delegated decision and exact object
