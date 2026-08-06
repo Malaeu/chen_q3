@@ -50542,3 +50542,15 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Exact result:
   `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_E_MATERIALIZED`.
 - Next: `MuntzV3SymmetricTrialCrosswalk` in Batch F.
+
+# 2026-08-06 — Goal 056 Phase 3F Müntz-v3 symmetric crosswalk Batch F (in progress)
+
+- Exact target: port the 135-line positive-half symmetric crosswalk with one
+  production import substitution and an outer provenance block.
+- It transports every positive-argument Müntz object back to a symmetric
+  source trial without identifying the functions globally.
+- Load-bearing invariants are the `Ici 0` indicator, symmetric support
+  `Icc (-b) b`, and the explicit no-finite-family/no-cofinal-limit boundary.
+- The batch closes only after normalized body equality, Lean-4.26 direct and
+  target builds, taint/forbidden-import zero, standard-triple axiom checks, and
+  proof-DB reimport.
