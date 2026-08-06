@@ -50872,3 +50872,40 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: a new delegated strategic batch for the sole full-object/Gwin
   coordinate bridge. The Phase-4B crosswalk contract, residual decay,
   compact-open convergence, and strict `SlotS2` remain separate and open.
++
+# 2026-08-06 — Goal 056 Phase 4F full Mellin/Gwin crosswalk (in progress)
+
+- Exact target named by the Phase-4E verdict:
+  `selectedFullMellinCoordinate_eq_selectedGwinTransformCoordinate`, on the
+  same `selectedPairIndex S k`, source trial, window, and transform variable.
+- Knowledge preflight is genuinely empty: all three `kb.py flags` queries and
+  the exact `kb.py ask` return no recorded prior bridge. Five `q3_docs`
+  queries score 0.60--0.72 and recover the live supplier chain but no existing
+  selected full-coordinate theorem.
+- The literal full object is `gTrial_m i h hLp`, whose representative is
+  `E_star h` only almost everywhere; `MemLp.coeFn_toLp` is therefore the
+  first load-bearing seam, exactly as in Phase 4E.
+- The D0 coordinate integrates `E_star h u * u^(-i*z)` against
+  `dStar = volume.withDensity (ofReal u⁻¹)` on `Icc Λ⁻¹ Λ`. Mathlib's
+  `setIntegral_withDensity_eq_setIntegral_toReal_smul` exposes the literal
+  factor `u⁻¹`.
+- Müntz `Gwin h Λ (-i*z)` integrates the same `Estar h u` against
+  `u^((-i*z)-1)` on `Ioo Λ⁻¹ Λ`. Positivity on the selected window plus
+  `Complex.cpow_sub` and `Complex.cpow_one` converts this to the D0 kernel;
+  `integral_Icc_eq_integral_Ioo` removes only two atomless endpoints.
+- The local `E_star` and ported Müntz `Estar` formulas are syntactically the
+  same starred sum up to coercion spelling. The proof must expose that
+  crosswalk directly; defining the full coordinate from `Gwin` is forbidden.
+- Official API pointers:
+  `Mathlib/MeasureTheory/Measure/WithDensity.html`,
+  `Mathlib/MeasureTheory/Integral/Bochner/ContinuousLinearMap.html`, and
+  `Mathlib/Analysis/SpecialFunctions/Pow/Complex.html`.
+- Proposed bounded leaf: one literal full-coordinate definition and one exact
+  equality to `selectedGwinTransformCoordinate`. Normalizer distribution,
+  Phase-4B contract discharge, residual algebra/decay, compact-open
+  convergence, and strict `SlotS2` remain separate unless Proshka explicitly
+  selects a larger single transaction.
+- Strategic review must pin whether the public scalar is normalized or
+  unnormalized, the exact definition/theorem surface, the `Icc/Ioo` and
+  `du/u` plants, and whether the immediate algebraic crosswalk consumer is
+  authorized in the same batch.
