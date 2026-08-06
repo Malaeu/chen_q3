@@ -50697,3 +50697,24 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Success is proof progress but not residual closure: the sole next consumer is
   finite orthogonal-projection reconstruction. Raw/Gwin coordinate equality,
   the Phase-4B contract, compact-open decay, and strict `SlotS2` remain open.
+
+## Materialized result
+
+- `D0LogWindowMeasureTransport.lean` proves the exact scalar
+  `dStar.restrict (I_m i)` to `Icc 0 (L_m i)` logarithmic transport for an
+  arbitrary complex integrand, including the non-integrable branch.
+- Its sole public consumer proves `V_n_m_orthonormal` for the literal
+  production modes; there are two public theorems, zero public definitions,
+  and only the standard axiom triple.
+- The source SHA is
+  `59c6d9a3a3a3c77427997665216e3ff797b9e2dc925cb63e5e9e6df0df64905b`.
+  All five measure/orientation/endpoint/normalization/conjugation plants fire.
+- Direct Lean, the 7754-job target build, the 7817-job full build, `q3_check`,
+  67 orchestration tests, proof-DB import of 10 proven declarations, strict
+  Spine, and all three SQLite integrity checks pass.
+- Exact result:
+  `G6_S2_D0_LOG_WINDOW_TRANSPORT_AND_V_MODES_ORTHONORMAL_PROVED`.
+- Next: a delegated strategic boundary for the sole finite orthogonal-
+  projection reconstruction consumer
+  `coe_P_m_N_apply_eq_sum_inner_V_n_m_smul`. The raw/Gwin crosswalk, decay,
+  and strict `SlotS2` remain separate and open.

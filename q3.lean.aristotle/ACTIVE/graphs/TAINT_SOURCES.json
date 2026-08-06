@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-06 11:12 UTC",
+  "generated_at": "2026-08-06 12:04 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4520,6 +4520,7 @@
     "Q3/Proofs/RouteB/D0KTrialStage1.lean": [],
     "Q3/Proofs/RouteB/D0KTrialStage2.lean": [],
     "Q3/Proofs/RouteB/D0KTrialStage3.lean": [],
+    "Q3/Proofs/RouteB/D0LogWindowMeasureTransport.lean": [],
     "Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean": [],
     "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean": [],
     "Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean": [],
