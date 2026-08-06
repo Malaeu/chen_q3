@@ -51038,3 +51038,40 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_D0_SELECTED_NORMALIZED_GALERKIN_RESIDUAL_L2_DECAY`. Compact-open
   convergence and strict `SlotS2` remain later walls; no route, PX, or RH
   promotion occurred.
+
+# 2026-08-06 — Goal 056 Phase 4H selected residual L2 decay research (in progress)
+
+- Exact target: `Tendsto (fun k => ‖selectedNormalizedGalerkinResidual S k‖)
+  atTop (𝓝 0)` on the existing `parent ∘ extract` path; no scalar-coordinate
+  surrogate is admissible.
+- Knowledge preflight is empty: three exact `kb.py flags` queries and one
+  `kb.py ask` find no stored residual-decay supplier; five `q3_docs` queries
+  recover only the finite projection, the conditional residual interface, and
+  older finite/cofinal warnings.
+- Mathlib proves `Submodule.starProjection_tendsto_self` for a fixed vector in
+  a fixed Hilbert space and `HilbertBasis.finite_spans_dense`; its AddCircle
+  Fourier basis also has `hasSum_fourier_series_L2`.
+- Those theorems do not directly apply to the selected family: `m`, the
+  carrier `H_m`, the source vector, `N`, and the trial normalizer all vary with
+  `k`.
+- `CanonicalData.parentCofinal` supplies only independent `m_k → ∞` and
+  `N_k → ∞`; `ProlateCanonicalSourceData` contains no uniform Fourier-tail
+  rate, no lower bound for `‖gTrial_m_N‖`, and no coupling between the two.
+- The source paper's fixed-`λ` core statement supports finite Fourier
+  approximation, but its Outlook explicitly leaves the prolate-to-minimal-
+  eigenvector approximation as a principal unresolved step; it supplies no
+  joint selected-family residual rate.
+- A standalone Lean scratch proves the exact norm factorization into
+  `‖selectedTrialNormalizer‖ * unnormalizedProjectionError` and proves decay
+  from two named hypotheses: bounded selected normalizers plus vanishing
+  unnormalized selected projection tails.
+- Candidate A: materialize only that minimal two-premise conditional receiver,
+  keeping both analytic obligations visible. Candidate B: add a stronger
+  single weighted-tail contract; it is shorter but hides which factor fails.
+- Candidate C: attempt an unconditional theorem from current source data. It
+  is rejected unless strategic review identifies a missing source-locked
+  uniform estimate; fixed-space Fourier density alone cannot justify it.
+- Next action: one same-chat delegated Proshka batch must choose the public
+  contract surface and exact stop code, then K6 plants must pin varying-carrier,
+  bounded-normalizer, cofinal-coupling, object-identity, and subtraction-order
+  seams before any production edit.
