@@ -50355,7 +50355,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   whole-expression verifier. Goal 055 remains held; no Aristotle submission,
   Bus 010, route promotion, H2a/G2 closure, or RH claim is authorized.
 
-# 2026-08-06 — Goal 056 XW.8 prolate-to-kTrial provenance contract (in progress)
+# 2026-08-06 — Goal 056 XW.8 prolate-to-kTrial provenance contract (materialized)
 
 - Exact target: make the existing D0 chain source-faithful at the type level by
   defining `CoefficientFamily.kTrial` from `c_n` applied to the same
@@ -50369,16 +50369,25 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The primary source itself presents the prolate packet as an educated guess
   for the lowest Weil eigenvector and names rigorous approximation/convergence
   as a missing step: https://arxiv.org/abs/2511.22755.
-- Plan: add one data-only production module importing `ProlateLayer` and
-  `D0KTrialStage3`; require the exact lambda lock, `MemLp`, and `TrialNonzero`;
-  then define the coefficient family and canonical data by `rfl`-transparent
-  constructors.
-- The public surface must prove only definitional provenance and the exact
-  selected-family expansion.  It must not assert mode existence, ground-state
-  identity, cofinal-path existence, tail decay, SlotS2, or RH.
-- Plants will remove the lambda lock, replace `prolateCombination` by an
-  arbitrary function, and attempt an independent canonical coefficient row;
-  each mutation must fail the intended contract or lose definitional equality.
-- If direct Lean, taint, axioms, and consumer checks pass, XW.8 becomes
-  `PROVENANCE_CONTRACT_MATERIALIZED / EXISTENCE_SUPPLIERS_OPEN`; only then is a
-  production promotion of the exact Muntz receiver worth attempting.
+- `D0ProlateKTrialSource.lean` now requires the exact lambda lock, `MemLp`, and
+  `TrialNonzero`, defines the coefficient family from `c_n` of the same
+  `prolateCombination`, and makes equality with production
+  `CanonicalData.kTrial` a mandatory field.
+- The final wrapper stores the already-dependent `CanonicalData` once instead
+  of repeating `CentralIndex source.coefficientFamily`; this preserves the
+  invariant while avoiding a pathological `.olean` normalization hotspot.
+- The three public theorems expose the source coefficient row, the equal
+  production row, and the literal `parent (extract k)` selected family.  All
+  use only `[propext, Classical.choice, Quot.sound]`.
+- P056A-1..3 all fire on the intended facts: missing lambda lock, arbitrary
+  `hTrial_m`, and an independent coefficient selector.
+- Validation passed: direct Lean, target build `7757`, full build `7817`,
+  `q3_check`, zero taint, 67/67 orchestrator tests, Route-B check, and proof-DB
+  reimport.  File SHA-256 is
+  `3004f7551bcf187bb21d0de19a1e6c90f9836c749d00836ed8543389e54423b1`.
+- Exact result:
+  `G6_S2_XW8_PROVENANCE_CONTRACT_MATERIALIZED_EXISTENCE_OPEN`.  No mode,
+  carrier, nonzero, cofinal, tail, SlotS2, or RH existence claim was added.
+- Next: inventory and smoke-port the exact Müntz-v3 receiver dependency closure
+  into production, then execute XW.6's centered `Gwin` / `rawFplus ... (-z)`
+  coordinate lock before any locally-uniform tail proof.

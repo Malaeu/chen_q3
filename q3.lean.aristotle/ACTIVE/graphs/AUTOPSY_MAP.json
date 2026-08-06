@@ -38,6 +38,71 @@
     },
     {
       "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "056",
+      "id": "AUT_acc7309c95a8770fbba0",
+      "namewatch_eligible": false,
+      "note": "the supplied prolateCombination is not identified with the canonical centeredPstar selected family",
+      "raw_sha256": "81fedfb867f90e368611d46c5d1810169707e739118aa2674cdd6beab8a2f6d8",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/056_k8_muntz_v3_slot_s2_bridge.answer.md",
+      "source_line": 100,
+      "structured": true,
+      "tag": "OBJECT_IDENTITY"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "056",
+      "id": "AUT_e4912d659d498b8ed11a",
+      "namewatch_eligible": false,
+      "note": "one exact source-window identity does not classify every production ClusterData limit",
+      "raw_sha256": "c1045ca3dad2cce47bdb96128ea4d62bd4c30ae452c49bb515be4ca790675b68",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/056_k8_muntz_v3_slot_s2_bridge.answer.md",
+      "source_line": 101,
+      "structured": true,
+      "tag": "QUANTIFIER"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "056",
+      "id": "AUT_0813fb08a0d047702316",
+      "namewatch_eligible": false,
+      "note": "no theorem carries the same parent and extract through the finite-Galerkin residual and both tails",
+      "raw_sha256": "081da936eac7e95fd18ca60e75d2eb9e4a4aca6a970ee8e83ac53774178c7d05",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/056_k8_muntz_v3_slot_s2_bridge.answer.md",
+      "source_line": 102,
+      "structured": true,
+      "tag": "COUPLING"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "056",
+      "id": "AUT_d92e0f5751cce599ef10",
+      "namewatch_eligible": false,
+      "note": "no theorem locks the source Gwin coordinate to the production rawFplus minus-z centered orientation",
+      "raw_sha256": "c970d2fae4f9beb34cffcf7d7870dcf19daab63a0a145babea51a81b2f7402bc",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/056_k8_muntz_v3_slot_s2_bridge.answer.md",
+      "source_line": 103,
+      "structured": true,
+      "tag": "ORIENTATION"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "056",
+      "id": "AUT_68b8199a1cec049dd2ce",
+      "namewatch_eligible": false,
+      "note": "analyticity of the tail terms does not supply compact-by-compact defect convergence to zero",
+      "raw_sha256": "56b7d976c97b87531ac5feea404d156b35a98f2bc752e3c4512a38a18c6a1138",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/056_k8_muntz_v3_slot_s2_bridge.answer.md",
+      "source_line": 104,
+      "structured": true,
+      "tag": "COMPACTNESS"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
       "goal_id": "PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05",
       "id": "AUT_4b6de3506c5d3ce92b4c",
       "namewatch_eligible": false,
@@ -63,10 +128,10 @@
       "tag": "LEGACY_UNCLASSIFIED"
     }
   ],
-  "generated_at": "2026-08-05T21:45:30+00:00",
+  "generated_at": "2026-08-06T07:06:42+00:00",
   "namewatch_candidates": [],
   "schema": "q3_autopsy_map.v1",
-  "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b",
+  "source_commit": "8c51900ed65e70cc1b2518ce93477ea9723f0e02",
   "walls": [
     {
       "candidate_card": null,
@@ -75,12 +140,84 @@
         "SOURCE_IDENTITY"
       ],
       "dropped_structure": "source-faithful identification or transport between the constructed object and the literal consumer",
-      "event_count": 0,
-      "fronts": [],
-      "goals": [],
+      "event_count": 1,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "056"
+      ],
       "id": "W_SOURCE_FAITHFUL_TRANSPORT",
       "status": "UNTESTED_SPLIT_REQUIRED",
       "tag": "OBJECT_IDENTITY+SOURCE_IDENTITY"
+    },
+    {
+      "candidate_card": null,
+      "coverage_tags": [
+        "COMPACTNESS"
+      ],
+      "dropped_structure": "compactness",
+      "event_count": 1,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "056"
+      ],
+      "id": "W_DROPPED_COMPACTNESS",
+      "status": "OBSERVED_UNRATIFIED",
+      "tag": "COMPACTNESS"
+    },
+    {
+      "candidate_card": null,
+      "coverage_tags": [
+        "COUPLING"
+      ],
+      "dropped_structure": "coupling",
+      "event_count": 1,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "056"
+      ],
+      "id": "W_DROPPED_COUPLING",
+      "status": "OBSERVED_UNRATIFIED",
+      "tag": "COUPLING"
+    },
+    {
+      "candidate_card": null,
+      "coverage_tags": [
+        "ORIENTATION"
+      ],
+      "dropped_structure": "orientation",
+      "event_count": 1,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "056"
+      ],
+      "id": "W_DROPPED_ORIENTATION",
+      "status": "OBSERVED_UNRATIFIED",
+      "tag": "ORIENTATION"
+    },
+    {
+      "candidate_card": null,
+      "coverage_tags": [
+        "QUANTIFIER"
+      ],
+      "dropped_structure": "quantifier",
+      "event_count": 1,
+      "fronts": [
+        "UNCLASSIFIED_FRONT"
+      ],
+      "goals": [
+        "056"
+      ],
+      "id": "W_DROPPED_QUANTIFIER",
+      "status": "OBSERVED_UNRATIFIED",
+      "tag": "QUANTIFIER"
     }
   ]
 }

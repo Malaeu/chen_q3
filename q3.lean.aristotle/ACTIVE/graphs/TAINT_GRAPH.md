@@ -1,9 +1,9 @@
-# Taint Graph (auto) — 2026-08-05 23:08 UTC
+# Taint Graph (auto) — 2026-08-06 07:07 UTC
 
 **Boundary:** source-hole/import-boundary observability; not proof truth.
 **Numeric checks:** evidence only, never propagated and never DOOMED.
 **Content scan:** heavy generated non-root skips remain explicit unknowns, never `NO_OBSERVED_ISSUE`.
-**Counts:** CONTENT_SCAN_SKIPPED_GENERATED_NONROOT=1303, IMPORT_BOUNDARY=1, NO_OBSERVED_ISSUE=2012
+**Counts:** CONTENT_SCAN_SKIPPED_GENERATED_NONROOT=1303, IMPORT_BOUNDARY=1, NO_OBSERVED_ISSUE=2013
 
 ## Root status
 - `Q3.Main.RH_of_Weil_and_Q3`: `NO_OBSERVED_ISSUE`; closure=66; tainted_files=0

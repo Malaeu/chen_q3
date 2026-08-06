@@ -21,10 +21,10 @@
   "authority": "DERIVED_NONCANONICAL_OPERATIONAL_VIEW",
   "autopsy": {
     "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
-    "event_count": 3,
+    "event_count": 8,
     "namewatch_candidates": [],
     "schema": "q3_autopsy_map.v1",
-    "structured_count": 0,
+    "structured_count": 5,
     "walls": [
       {
         "candidate_card": null,
@@ -33,12 +33,84 @@
           "SOURCE_IDENTITY"
         ],
         "dropped_structure": "source-faithful identification or transport between the constructed object and the literal consumer",
-        "event_count": 0,
-        "fronts": [],
-        "goals": [],
+        "event_count": 1,
+        "fronts": [
+          "UNCLASSIFIED_FRONT"
+        ],
+        "goals": [
+          "056"
+        ],
         "id": "W_SOURCE_FAITHFUL_TRANSPORT",
         "status": "UNTESTED_SPLIT_REQUIRED",
         "tag": "OBJECT_IDENTITY+SOURCE_IDENTITY"
+      },
+      {
+        "candidate_card": null,
+        "coverage_tags": [
+          "COMPACTNESS"
+        ],
+        "dropped_structure": "compactness",
+        "event_count": 1,
+        "fronts": [
+          "UNCLASSIFIED_FRONT"
+        ],
+        "goals": [
+          "056"
+        ],
+        "id": "W_DROPPED_COMPACTNESS",
+        "status": "OBSERVED_UNRATIFIED",
+        "tag": "COMPACTNESS"
+      },
+      {
+        "candidate_card": null,
+        "coverage_tags": [
+          "COUPLING"
+        ],
+        "dropped_structure": "coupling",
+        "event_count": 1,
+        "fronts": [
+          "UNCLASSIFIED_FRONT"
+        ],
+        "goals": [
+          "056"
+        ],
+        "id": "W_DROPPED_COUPLING",
+        "status": "OBSERVED_UNRATIFIED",
+        "tag": "COUPLING"
+      },
+      {
+        "candidate_card": null,
+        "coverage_tags": [
+          "ORIENTATION"
+        ],
+        "dropped_structure": "orientation",
+        "event_count": 1,
+        "fronts": [
+          "UNCLASSIFIED_FRONT"
+        ],
+        "goals": [
+          "056"
+        ],
+        "id": "W_DROPPED_ORIENTATION",
+        "status": "OBSERVED_UNRATIFIED",
+        "tag": "ORIENTATION"
+      },
+      {
+        "candidate_card": null,
+        "coverage_tags": [
+          "QUANTIFIER"
+        ],
+        "dropped_structure": "quantifier",
+        "event_count": 1,
+        "fronts": [
+          "UNCLASSIFIED_FRONT"
+        ],
+        "goals": [
+          "056"
+        ],
+        "id": "W_DROPPED_QUANTIFIER",
+        "status": "OBSERVED_UNRATIFIED",
+        "tag": "QUANTIFIER"
       }
     ]
   },
@@ -48,7 +120,7 @@
       "control_id": "Q3_EXECUTOR_CONTROL",
       "existing_entry_gate": "SESSION_START",
       "path": "docs/CODEX_CONTROL.md",
-      "sha256": "5b2aa847ccd9fe2f75b39e29d592f4cdd9069a6a39df77bc10e59b58d599e862",
+      "sha256": "fc77ff8d7483c87744f07e8aea3d59b08f9b5340541d3bf414885f239dfafc4e",
       "spine_wiring": "behavior_controls.executor",
       "status": "ACTIVE",
       "trigger_owner": "Codex"
@@ -135,12 +207,12 @@
   },
   "observability": {
     "answer_now_clicked": 0,
-    "autopsy_events": 3,
+    "autopsy_events": 8,
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3316,
-    "import_edges": 5544,
+    "file_states": 3317,
+    "import_edges": 5546,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
@@ -190,10 +262,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T06:31:21+00:00",
-      "id": "OBS_d2ca29cc5fe17b15858e",
+      "generated_at": "2026-08-06T07:07:22+00:00",
+      "id": "OBS_c43dc3bd2ff293e1bed5",
       "schema_version": 6,
-      "source_commit": "c2f0fa97b67a56c49105c3fb3b8df8e4fe84fdee",
+      "source_commit": "8c51900ed65e70cc1b2518ce93477ea9723f0e02",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -202,8 +274,8 @@
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3,
-        "source_generated_at": "2026-08-05T21:45:30+00:00",
+        "record_count": 8,
+        "source_generated_at": "2026-08-06T07:06:42+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -211,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_generated_at": "2026-08-06 07:07 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -219,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_generated_at": "2026-08-06 07:07 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -227,7 +299,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_generated_at": "2026-08-06 07:07 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
@@ -243,35 +315,35 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_generated_at": "2026-08-06 07:07 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3316,
-        "source_generated_at": "2026-08-05 23:08 UTC",
+        "record_count": 3317,
+        "source_generated_at": "2026-08-06 07:07 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3316,
-        "source_generated_at": "2026-08-05 23:08 UTC",
+        "record_count": 3317,
+        "source_generated_at": "2026-08-06 07:07 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
     ],
     "stale_sources": 0,
-    "structured_autopsies": 0,
+    "structured_autopsies": 5,
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2012
+      "NO_OBSERVED_ISSUE": 2013
     },
-    "wall_states": 1
+    "wall_states": 5
   },
   "runtime": {
     "active_exploration": null,
@@ -326,8 +398,8 @@
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
-          "qmd://q3-docs/docs/routeb-bus/proshka-ratio-receiver-2026-07-27.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-ratio-receiver-2026-07-27.md"
+          "qmd://q3-docs/docs/routeb-bus/054-sectorcell13n2-phase0-inventory-answer.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/054-sectorcell13n2-phase0-inventory-answer.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -345,7 +417,7 @@
           "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 40,
+        "result_count": 39,
         "status": "PASS",
         "vector_count": 30
       },
@@ -357,17 +429,17 @@
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffprimedictionaryboundsimport.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 32,
+        "result_count": 34,
         "status": "PASS",
-        "vector_count": 25
+        "vector_count": 27
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b",
+    "source_commit": "8c51900ed65e70cc1b2518ce93477ea9723f0e02",
     "status": "PASS"
   },
-  "source_commit": "c2f0fa97b67a56c49105c3fb3b8df8e4fe84fdee"
+  "source_commit": "8c51900ed65e70cc1b2518ce93477ea9723f0e02"
 }

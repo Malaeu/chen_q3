@@ -35,8 +35,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - none
 
 ## AUTOPSY wall map and namewatch
-- events / structured: `3` / `0`
-- walls / NEW_FLAG candidates: `1` / `0`
+- events / structured: `8` / `5`
+- walls / NEW_FLAG candidates: `5` / `0`
 - legacy free text remains visible but namewatch-ineligible; auto-promotion is forbidden.
 
 ## Canonical artifact identities
@@ -49,36 +49,36 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `40`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `32`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
 
 ## Meta-corpus registry
 - derived surfaces: `6`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_d2ca29cc5fe17b15858e` at `2026-08-06T06:31:21+00:00` from `c2f0fa97b67a`
+- snapshot: `OBS_c43dc3bd2ff293e1bed5` at `2026-08-06T07:07:22+00:00` from `8c51900ed65e`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3316` / `5544`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2012}`; doomed: `0`
+- file states/import edges: `3317` / `5546`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2013}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `16`; observed seconds total/mean/median: `22880` / `1430` / `1284.5`; lower bounds: `1`
 - Answer-now clicks: `0`
-- AUTOPSY events/structured: `3` / `0`; walls/namewatch flags: `1` / `0`
+- AUTOPSY events/structured: `8` / `5`; walls/namewatch flags: `5` / `0`
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 3 | 2026-08-05T21:45:30+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-05 23:08 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-05 23:08 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `autopsy_map` | 8 | 2026-08-06T07:06:42+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-06 07:07 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-06 07:07 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-06 07:07 UTC | no | PARSED | READY |
 | `proshka_timing` | 16 | 2026-08-06T07:35:47.171+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-05 23:08 UTC | no | PARSED | READY |
-| `taint_graph` | 3316 | 2026-08-05 23:08 UTC | no | PARSED | READY |
-| `taint_sources` | 3316 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-06 07:07 UTC | no | PARSED | READY |
+| `taint_graph` | 3317 | 2026-08-06 07:07 UTC | no | PARSED | READY |
+| `taint_sources` | 3317 | 2026-08-06 07:07 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -198,6 +198,8 @@ _60 records, 13 cross-file aliases. Query: `./orchestrator/kb.py search <term>`.
 | verdict file | target | forbidden_future_move | new_gap |
 |---|---|---|---|
 | 051_m1_posdef_selfadjoint_real_spectrum.answer.md | Goal_051_M1_weighted_selfadjoint_real_spectrum | apply_M1_directly_to_the_degenerate_CvS_form | M2_DEGENERATE_Q_SEPARATED_QUOTIENT_POSDEF |
+| D0_7E_5A_OWNER_INPUT_PACKET.md | D0.7e.5a_owner_input_packet | define_WPrime_from_5c_or_rename_bCal | SOURCE_DEFINED_WPRIME_CONSUMER_AND_B_HOMOGENEITY |
+| D0_7E_5A_PROSHKA_SOURCE_AUDIT_VERDICT.md | D0.7e.5a external source acquisition | treat_outlook_normalization_or_determinant_modulus_as_source_recovery | SourceWPrimeDefinitionAndSemanticCrosswalk |
 | PROSHKA_038_SUPPLIER_A_DIRECTIVE_2026-07-30.md | ScaledOuterSignBarrierFourThirds | promote m257 Jacobi or finite 027 to a cofinal theorem | ParametricScaledJacobiDiscriminatorNonneg |
 | PROSHKA_054_1B_V2_ADJUDICATION_2026-08-05.md | CCM_cell_13_2_real_receiver_v2 | invent independent W02_WR_Prime endpoint tables | G2_CCM_CELL13N2_ANTIPODAL_SOURCE_IDENTITY_GAP |
 | PROSHKA_054_1_FINITE_VON_MANGOLDT_ADJUDICATION_2026-08-05.md | finite_von_Mangoldt_normalization_for_CCM_cell_13_2 | inline_the_twelve_cases_into_ccmCell13N2_wr_enclosures | G2_CCM_054_1_FINITE_VON_MANGOLDT_WEIGHTED_SUM_NORMAL_FORM_MISSING |

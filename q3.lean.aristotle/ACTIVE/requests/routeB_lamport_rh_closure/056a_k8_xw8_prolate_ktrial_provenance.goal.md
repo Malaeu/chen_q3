@@ -36,9 +36,9 @@ K6_OBJECT_PRECOMMIT:
     Q3.RouteB.CanonicalRHRoute.selectedFamily
       (Q3.RouteB.D0Pstar.canonicalApproximation D)
   relation_under_test: >-
-    the coefficient row consumed by centeredPstarFamily is definitionally
+    the coefficient row consumed by centeredPstarFamily is equal to the row
     constructed from c_n of the same prolateCombination, at the same PairIndex,
-    with P.pw.lambda = lambda_m i and no independent coefficient selector
+    with P.pw.lambda = lambda_m i and no unproved independent selector
   invariant_cargo:
     - exact PairIndex m/N
     - lambda_m lock
@@ -62,10 +62,11 @@ suppliers needed by the existing constructors; it must not manufacture them.
 2. `ProlateKTrialSourceData.coefficientFamily`, using exactly `c_n` of
    `prolateCombination`.
 3. A definitional theorem exposing the exact coefficient row.
-4. `ProlateCanonicalSourceData`, carrying the same coefficient family,
-   `parent`, and `extract`.
-5. `ProlateCanonicalSourceData.canonicalData` and a definitional theorem
-   exposing the exact selected family at `parent (extract k)`.
+4. `ProlateCanonicalSourceData`, carrying the source bundle, one production
+   `CanonicalData`, and the mandatory equality of its coefficient family with
+   the source-derived family.
+5. An exact canonical-row theorem plus a definitional theorem exposing the
+   selected family at the production `parent (extract k)`.
 
 ## Plants
 
@@ -99,4 +100,3 @@ No exact Müntz receiver promotion, mode existence theorem, ground-family
 identity, cofinal-path existence, tail-smallness result, SlotS2 proof,
 Aristotle submission, physical Bus 010, Goal-055 change, route promotion, or
 PX/RH claim is authorized by this phase.
-
