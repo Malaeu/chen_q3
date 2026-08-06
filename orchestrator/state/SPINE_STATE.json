@@ -48,7 +48,7 @@
       "control_id": "Q3_EXECUTOR_CONTROL",
       "existing_entry_gate": "SESSION_START",
       "path": "docs/CODEX_CONTROL.md",
-      "sha256": "d6b9cf4765f9256e883cf2e5dc90495302f2c21bce483e454be878e3c1c4b87b",
+      "sha256": "5b2aa847ccd9fe2f75b39e29d592f4cdd9069a6a39df77bc10e59b58d599e862",
       "spine_wiring": "behavior_controls.executor",
       "status": "ACTIVE",
       "trigger_owner": "Codex"
@@ -134,7 +134,144 @@
     ]
   },
   "observability": {
-    "status": "MISSING"
+    "answer_now_clicked": 0,
+    "autopsy_events": 3,
+    "axiom_dependencies": 10,
+    "degraded_sources": 1,
+    "doomed_files": 0,
+    "file_states": 3316,
+    "import_edges": 5544,
+    "namewatch_candidates": 0,
+    "numeric": {},
+    "numeric_checks": 0,
+    "proof_nodes": 10,
+    "proof_roots": 2,
+    "proshka_lower_bounds": 1,
+    "proshka_runs": 16,
+    "proshka_seconds_mean": 1430,
+    "proshka_seconds_median": 1284.5,
+    "proshka_seconds_total": 22880,
+    "root_memberships": 131,
+    "slowest_runs": [
+      {
+        "front": "G2/H2a",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE",
+        "transaction_id": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 3221
+      },
+      {
+        "front": "G5/S1",
+        "status": "FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP",
+        "transaction_id": "G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 2326
+      },
+      {
+        "front": "G5/S1",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 1708
+      },
+      {
+        "front": "G5/S1",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 1567
+      },
+      {
+        "front": "G5/S1",
+        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE",
+        "wall_is_lower_bound": 0,
+        "wall_seconds": 1538
+      }
+    ],
+    "snapshot": {
+      "generated_at": "2026-08-06T06:31:21+00:00",
+      "id": "OBS_d2ca29cc5fe17b15858e",
+      "schema_version": 6,
+      "source_commit": "c2f0fa97b67a56c49105c3fb3b8df8e4fe84fdee",
+      "status": "COMPLETE"
+    },
+    "sorry_files": 0,
+    "sorry_sites": 0,
+    "sources": [
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 3,
+        "source_generated_at": "2026-08-05T21:45:30+00:00",
+        "source_id": "autopsy_map",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 10,
+        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_id": "dependency_tree",
+        "stale": 0
+      },
+      {
+        "health_status": "ZERO_COVERAGE",
+        "parse_status": "PARSED",
+        "record_count": 0,
+        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_id": "numeric_checks",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 10,
+        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_id": "proof_graph",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 16,
+        "source_generated_at": "2026-08-06T07:35:47.171+02:00",
+        "source_id": "proshka_timing",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 0,
+        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_id": "sorry_frontier",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 3316,
+        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_id": "taint_graph",
+        "stale": 0
+      },
+      {
+        "health_status": "READY",
+        "parse_status": "PARSED",
+        "record_count": 3316,
+        "source_generated_at": "2026-08-05 23:08 UTC",
+        "source_id": "taint_sources",
+        "stale": 0
+      }
+    ],
+    "stale_sources": 0,
+    "structured_autopsies": 0,
+    "taint": {
+      "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
+      "IMPORT_BOUNDARY": 1,
+      "NO_OBSERVED_ISSUE": 2012
+    },
+    "wall_states": 1
   },
   "runtime": {
     "active_exploration": null,
@@ -232,5 +369,5 @@
     "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b",
     "status": "PASS"
   },
-  "source_commit": "d64564c2c61fbfe269f0dfe433bd639818cb7bbb"
+  "source_commit": "c2f0fa97b67a56c49105c3fb3b8df8e4fe84fdee"
 }

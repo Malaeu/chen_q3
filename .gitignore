@@ -77,3 +77,9 @@ archive/subprojects/erdos-minimum-overlap/
 
 # window screenshots taken while calibrating the desktop lane
 orchestrator/state/*.png
+
+# Machine-local, regenerable sensor state — rebuild with
+#   python3 orchestrator/observability.py rebuild
+# (schema and generator ARE tracked; the database is not).
+# aristotle_proofs.db and knowledge.db stay tracked on purpose.
+q3.lean.aristotle/aristotle_db/observability.db

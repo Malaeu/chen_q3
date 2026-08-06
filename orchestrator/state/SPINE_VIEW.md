@@ -56,10 +56,42 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - derived surfaces: `6`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
-- observability database missing: `q3.lean.aristotle/aristotle_db/observability.db`
+- authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
+- snapshot: `OBS_d2ca29cc5fe17b15858e` at `2026-08-06T06:31:21+00:00` from `c2f0fa97b67a`
+- sources: `8`; stale: `0`; degraded: `1`
+- sorry sites/files: `0` / `0`
+- proof roots/root memberships: `2` / `131`
+- file states/import edges: `3316` / `5544`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2012}`; doomed: `0`
+- axiom dependencies / proof nodes: `10` / `10`
+- numeric checks: `0` `{}`
+- Proshka runs: `16`; observed seconds total/mean/median: `22880` / `1430` / `1284.5`; lower bounds: `1`
+- Answer-now clicks: `0`
+- AUTOPSY events/structured: `3` / `0`; walls/namewatch flags: `1` / `0`
+
+| Source | Records | Generated | Stale | Parse | Health |
+|---|---:|---|---|---|---|
+| `autopsy_map` | 3 | 2026-08-05T21:45:30+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-05 23:08 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `proshka_timing` | 16 | 2026-08-06T07:35:47.171+02:00 | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `taint_graph` | 3316 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `taint_sources` | 3316 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+
+### Slowest recorded Proshka runs
+
+| Transaction | Front | Seconds | Bound | Status |
+|---|---|---:|---|---|
+| `G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION` | G2/H2a | 3221 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE |
+| `G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS` | G5/S1 | 2326 | observed | FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP |
+| `G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE` | G5/S1 | 1708 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
+| `G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE` | G5/S1 | 1567 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
+| `G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE` | G5/S1 | 1538 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
 
 ## Staleness warnings
-- observability.db is missing — rebuild before trusting sensor state.
+- observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
 | Source | Last commit |
@@ -70,7 +102,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-08-06 |
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
-| `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-05 |
+| `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-06 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)

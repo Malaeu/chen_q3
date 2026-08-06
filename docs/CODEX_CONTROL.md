@@ -590,16 +590,25 @@ and runs `routeb_status.py --check`; no open bus goal means `NO_OPEN_BUS_GOAL / 
 
 ### 16.7 Local databases that are not in git
 
-`q3.lean.aristotle/aristotle_db/observability.db` is expected by `orchestrator/spine.py`
-(L46, L508, L779) and referenced by `scripts/q3_sensor_scan.py`,
-`scripts/build_taint_graph.py`, `scripts/build_proof_graph.py`. It is **not committed**, and
-`spine.py` already degrades gracefully: "observability.db is missing — rebuild before trusting
-sensor state."
+`q3.lean.aristotle/aristotle_db/observability.db` is **machine-local and regenerable** — it is
+not committed, and a fresh checkout starts without it. `orchestrator/spine.py` degrades
+gracefully and says so: "observability.db is missing — rebuild before trusting sensor state."
 
-**OPEN QUESTION for the Mac body (do not guess):** no script in this repository contains a
-`CREATE TABLE` for it — searched 2026-08-06 across `scripts/` and `orchestrator/`. So the
-generator that builds the schema is either machine-local on the Mac or unversioned. Until that
-is answered, a fresh checkout has permanently degraded sensors with no documented way to
-rebuild them. Codex: name the generator, or commit it.
+**Rebuild it after every fresh clone, and whenever sensor state is about to be trusted:**
 
-By contrast `aristotle_proofs.db` and `knowledge.db` **are** tracked and must stay tracked.
+```bash
+python3 orchestrator/observability.py rebuild     # writes the db from observability_schema.sql
+python3 orchestrator/observability.py summary     # snapshot id, sources, stale/degraded counts
+python3 orchestrator/observability.py sources      # per-source health
+```
+
+Generator: `orchestrator/observability.py` (schema at
+`q3.lean.aristotle/aristotle_db/observability_schema.sql`, both tracked); `--db` overrides the
+path. Verified on Linux 2026-08-06: `sources=8 stale=0 degraded=1 proshka_runs=16`. The one
+degraded source is deliberate numeric zero-coverage, not a hidden failure.
+
+Readers: `spine.py`, `scripts/q3_sensor_scan.py`, `scripts/build_taint_graph.py`,
+`scripts/build_proof_graph.py`, `orchestrator/sensors.py`.
+
+Do not commit this file; do not read sensor output as green before a rebuild. By contrast
+`aristotle_proofs.db` and `knowledge.db` **are** tracked and must stay tracked.
