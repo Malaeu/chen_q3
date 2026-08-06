@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-06 18:08 UTC",
+  "generated_at": "2026-08-06 19:01 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4518,6 +4518,7 @@
     "Q3/Proofs/RouteB/D0CriticalMomentStripBound.lean": [],
     "Q3/Proofs/RouteB/D0CriticalStripCompactBound.lean": [],
     "Q3/Proofs/RouteB/D0FiniteProjectionReconstruction.lean": [],
+    "Q3/Proofs/RouteB/D0HilbertBasisWeightedTail.lean": [],
     "Q3/Proofs/RouteB/D0KTrialStage1.lean": [],
     "Q3/Proofs/RouteB/D0KTrialStage2.lean": [],
     "Q3/Proofs/RouteB/D0KTrialStage3.lean": [],

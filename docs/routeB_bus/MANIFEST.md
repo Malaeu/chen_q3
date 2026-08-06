@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `056s_d0_generic_hilbert_basis_weighted_tail.answer.md` | standing-root Phase-4J generic Hilbert-basis Parseval and weighted-tail production answer | `b8cc4880f041b087f91907b1966d5b811c3adebfaf0d4f62e9b1a2046e9036d4` |
 | `056s_d0_generic_hilbert_basis_weighted_tail.goal.md` | standing-root Phase-4J generic Hilbert-basis Parseval and weighted-tail precommit goal | `4efa248560d0ed00cdce076259f461c25c3b60a7fdbda6d20f7de615c4f2cfd3` |
 | `proshka/PROSHKA_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026-08-06.md` | Goal 056 Phase-4J delegated verdict — generic Hilbert-basis receiver selected; modeSet specialization forbidden | `f0609ecd4e804bd09c2aa839fe0096c2dd1ac70d06ade0f6aab18da406dfcbfe` |
 | `056r_d0_prolate_source_n_coherence_repair.answer.md` | standing-root Phase-4I same-m prolate source coherence repair answer | `8b3df3aa447e32bda199ed17fbef2aeabbfa909a728af764dddf7ba98f3d58ef` |

@@ -51207,3 +51207,21 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Recommendation: ratify Candidate A as the next exact infrastructure lock,
   name completeness and uniform physical energy as the two remaining analytic
   suppliers, and forbid Aristotle until the source-specific bridge is fixed.
+- Delegated review batch 10 ratified Candidate A with exact operative class
+  `TRY_G6_S2_D0_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL`. It forbids a `modeSet`
+  or physical-frequency specialization in this transaction and keeps the
+  missing `V_n_m` completeness theorem visible instead of adding it as source
+  data.
+- Production is complete in
+  `Q3/Proofs/RouteB/D0HilbertBasisWeightedTail.lean` at SHA-256
+  `24956f668098ea0a940ba50ebdd4087d7645114c8c0919a5587f35f10135643c`.
+  The exact result is
+  `G6_S2_D0_GENERIC_HILBERT_BASIS_PARSEVAL_AND_WEIGHTED_TAIL_PROVED`: direct
+  Lean, target/full builds, `q3_check`, 8/8 plants, standard-triple axioms,
+  three proven DB declarations, 67/67 tests, strict Spine, 8/0 observability,
+  and all three SQLite integrity checks pass.
+- The sole next node is
+  `G6_S2_D0_LOG_WINDOW_V_N_M_COMPLETENESS_BRIDGE`, owned by
+  `D0LogWindowVNMCompletenessBridge.lean`. It must construct the literal
+  `V_n_m` Hilbert basis rather than postulate completeness. Physical weighted
+  energy remains a later supplier even if this bridge closes.
