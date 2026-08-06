@@ -191,3 +191,126 @@ hängenblieb: **wir wussten nicht, was wir schon besitzen.**
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/TOOLS.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/KILLS.md`
 - `/home/chirurgie/.claude/plans/nea-produmaem-kak-my-glowing-whistle.md` (Plan Welle 1+2)
+
+---
+
+# TEIL 3 — Spätabend 2026-08-05 (Fortsetzung; Session-Ende-HEAD `d3e8ac14`)
+
+Spannweite `ac8e6e78` → `d3e8ac14`, alle Commits 17:08–17:57 des 2026-08-05.
+
+## Ausgangslage (Teil 3)
+Nach Welle 1 stand die Frage des Owners: „wie viele Wellen waren es überhaupt, und was liegt in
+den ~19 eingefrorenen Atlanten?" Daraus wurden zwei weitere Migrationswellen und — wichtiger —
+die Erkenntnis, dass der Rest **nicht** pauschal Müll ist.
+
+## Erledigt (Wissensbasis)
+- **Welle 2** (`ebe86fff`): Tabellen `move` / `journal_entry` / `dossier` / `postmortem` / `link`.
+  26 Moves (Atlas 11 + Arsenal 12 + TricksLibrary 3), 1784 Journaleinträge, 168 Dossiers,
+  1 Postmortem. **Atlas und Arsenal NICHT verschmolzen** — die Nachfolge ist in
+  `SYSTEM_SPEC` L100 deklariert, aber nie vollzogen; nur 2 von 23 Karten überlappen thematisch
+  und extrahieren Verschiedenes. Verwandtschaft als 5 `same_source`-Kanten + 1 `supersedes`-Kante.
+  Der verschmutzte Journal-Tag wurde in `workstream` / `state` / `channel` aufgetrennt.
+- **Welle 3** (`f4a3fd12`): Proshka-Verdikte. Von 109 `PROSHKA_*.md` sind nur **61 distinkt**
+  (47 Namen sind canon+mirror, 43 byte-identisch). 14 M3-Strategieblöcke + 4 strukturierte Kills
+  migriert, 3 an bestehende Zeilen als Evidence gehängt. Kills 38→56, Evidence 70→176.
+- **`excluded_source`** (`be0c7d24`): **113 nicht-migrierte Dateien**, jede mit der tatsächlich
+  durchgeführten Prüfung und der Bedingung für ein Wiederaufgreifen. Klassen: step33 17
+  (73 958 „Records", 0 Überschneidung mit lebenden Fronten), build_artifact 24, **unreviewed 33**,
+  protocol 13, numeric 6, state 5, index 3, external_docs 3, literature 2, **pending_read 2**,
+  config_pack 2, symlink 1, chat_export 1, already_evidence 1. **35 Dateien brauchen einen
+  Menschen** — `./orchestrator/kb.py excluded` benennt sie.
+- **PRIME_COMB-Familie aus dem Rest gerettet** (3 Dateien, eingefroren 2026-06-12): daraus
+  **3 stehende Wände** — Kurasov–Sarnak (der Primkamm ist beweisbar **kein** Fourier-Quasikristall,
+  selbst unter RH ⇒ Crystalline-Measure/Lee-Yang-Transplantat ist per Theorem tot),
+  Conrey–Li (de-Branges-Positivitätszertifikat scheitert; Alias hält die verbreitete
+  Fehlzuschreibung an Sarnak fest), sowie „kein Cohn–Elkies-Dualzertifikat für Nulllage"
+  (Stand der Kunst, kein Unmöglichkeitssatz) — plus 3 Dossiers.
+- Endstand Basis: **2041 Records** (kill 59 · move 26 · journal 1784 · dossier 168 · postmortem 1),
+  113 registrierte Ausschlüsse, `integrity ok`, Census 0 Drift.
+
+## Erledigt (Kanäle & Aufträge)
+- **Proshka-Systemprompt entzweit gefunden und geheilt** (`5d85dabf`): die Bus-Kopie war die
+  **Vor-Arsenal-Version ohne `STANDING REPO FETCHES`** — sie hätte `ARSENAL_CARDS_v1.md` und das
+  Mandat nie geholt. Geprüft: 0 Zeilen nur in der alten Fassung, die neue ist strikte Obermenge.
+  Alle drei Arbeitskopien jetzt byte-identisch (`663b3875`); der alte Text lebt nur noch als
+  `_backups/PROSHKA_SYSTEM_PROMPT_v2_working_2026-08-04_pre-arsenal.md`.
+  ENTRYPOINT/POLICY unterscheiden sich nur um YAML-Frontmatter — harmlos.
+- **`docs/CODEX_TASK_2026-08-05_EVENING.md`** (`48d77990`): vier Aufträge für den Mac-Körper —
+  (1) die fünf Mac-only GAPS füllen, (2) die Zertifikatsdaten für den G2-owner-fork erzeugen,
+  (3) `knowledge.db` benutzen (mit frozen-vs-MIRROR-Liste, damit sein Loop nicht bricht),
+  (4) optional den `unreviewed`-Rest lesen.
+- **`docs/Codex/`** (`3eacd85e`, `a9c53c9e`): Startprompt + `README.md` mit Namenskonvention und
+  der Regel *Prompt ist Zeiger, nicht Nutzlast*.
+
+## Erledigt (Mathematik-Front, ohne Materialisierung)
+- Mythos lieferte auf „го (а)" den **Papier-Kontrakt** `G6·S2-XW` (v1 → v1.1 → v1.2), der
+  Proshkas neun Bedingungen 1:1 trägt. **Zwei owner-seitige Pre-flight-Prüfungen korrigierten ihn:**
+  1. `XW.0` war **kein** neues Gate: `MuntzV3ProlateCombinationReceiver.lean:49` beweist die
+     Müntz-Identität für `prolateCombination` über die v3-Klasse bereits sorry-frei; Nullmasse auf
+     der positiven Halbachse und Lipschitz der Kombination liegen ebenfalls vor. Beide Dateien
+     fehlen in Proshkas MANDATORY_INPUTS.
+  2. `Λ = P.pw.lambda` ist **kein Fakt, sondern ein freies Feld**. `ProlateOperatorData` hält
+     `lambda : ℝ` frei; `ProlatePair` sagt selbst: „All analytic facts are fields (hypotheses),
+     not existence theorems". Eine Bindung an `λ_m = √m` existiert **nirgends** im Baum.
+     Mythos' AUTOPSY: dieselbe Interface-Polymorphie-Klasse, die Proshka bei PL2 getötet hat.
+- Daraus v1.2 mit `XW.0a` (konkreter Modenkonstruktor) / `XW.0b` (Lipschitz mit expliziter
+  m-Abhängigkeit) und `XW.5` als **fehlende Instantiierung** statt Einzeiler-Check.
+- **Maßstab von `XW.0a` gemessen:** Mathlib enthält **null** `prolate`/`spheroidal` und
+  **null** Sturm–Liouville-Dateien; nur der generische Hilbertraum-Rahmen existiert.
+  `prolateWaveExpression` ist der singuläre Sturm–Liouville-Ausdruck. `XW.0a` bedeutet also
+  Spektraltheorie eines singulären ODE von null an — keine Objektkonstruktion in bestehender Theorie.
+- **Zweite Proshka-Anfrage gestellt** (`d3e8ac14`, gebatcht wie von ihr verlangt): ist der
+  PSWF-Konstruktor für source-faithfulness zwingend, oder genügen source-locked Moden mit
+  zertifizierten Schranken? Und: läuft `XW.8` (Provenienz, ihr stärkstes Gate, Audit **bestehender**
+  Objekte) **vor** `XW.0a`, damit ein Provenienz-Kill die ganze PSWF-Programmatik erspart?
+
+## Geprüft
+- `knowledge.db` **auf origin** gelesen (nicht nur Dateiexistenz): `integrity ok`, 2041 Records.
+- Migrationen nach dem Einfrieren reproduzierbar; JSON/YAML weiterhin parsebar.
+- Eigene Fehler gefunden und behoben: FTS5-Falle (`DELETE` auf external-content ⇒
+  „disk image is malformed"; korrekt ist `INSERT INTO x_fts(x_fts) VALUES('delete-all')`),
+  `Müntz`→`M_NTZ` in IDs (Diakritika-Faltung), Census zählte nur die kill-Schicht,
+  stilles `[:40]`-Abschneiden im Ledger-Report.
+- Audit-Korrekturen von Hand: `TRICKS_LIBRARY` hat 3 Records (nicht 2), `docs/insights` 165
+  Dateien (nicht 194), Verdikte 61 distinkt (nicht 109).
+
+## Versendet (relayed, nicht auto)
+- An Mythos: „го (а)", danach zwei Korrekturen (Receiver existiert; fields-vs-theorems) und die
+  Mathlib-Messung mit Vorschlag `XW.8` vor `XW.0a`.
+- An Proshka: zweite Adjudikationsanfrage (Link auf `d3e8ac14`).
+- An Codex: noch **nichts** — der Startprompt liegt bereit in `docs/Codex/`.
+
+## Offen — nächste Schritte
+1. **Proshka-Antwort** auf die Konstruktor-Frage abwarten; danach entscheidet sich, ob G6 ein
+   Mehrmonats-Formalisierungsprogramm ist oder ein Zertifikatspfad.
+2. **Kontrakt v1.2 materialisieren** — erst nach ihrer Antwort (Q3 prüft die Dekomposition).
+3. **Codex zuhause:** `docs/Codex/PROMPT_2026-08-05_evening.md` einwerfen; Task 1 (fünf GAPS)
+   zuerst — die Datei ist seit ihrer Erstellung unverändert, P9 würde sonst Vermutungen kodifizieren.
+4. **G2 owner fork** unverändert: sieben WR-Integral-Enclosures, Daten vom Owner.
+5. **35 Dateien brauchen einen Menschen** (`kb.py excluded`): 33 `unreviewed`, 2 `pending_read`.
+6. Kartograf als Code weiterhin offen; MAP.md lügt weiter absichtlich (Abnahmetest).
+
+## Wichtige Fakten (Teil 3)
+- **Pre-flight hat zweimal hintereinander gerettet**, was Verdikt und Kontrakt beide übersahen.
+  Beide Male 30 Sekunden `kb.py ask` + zwei greps. Das Organ arbeitet.
+- **Der G6-Front ist nicht an einem Lemma hängen geblieben, sondern an einer Objektkonstruktion.**
+- **Interface-Polymorphie ≠ Vererbung** — zweimal an einem Tag dieselbe Klasse Fehler
+  (Proshka bei PL2, Mythos bei `λ`).
+- RISIKO: `knowledge.db` ist ein 8,3-MB-Binary in git; jede Neumigration legt einen vollen Blob ab.
+- Route bleibt CHALLENGER / NOT_RH; Bus 010 VOID; Goal 055 held; keine RH-Behauptung.
+
+## Dateien (Teil 3, absolute Pfade)
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge.db`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/aristotle_db/knowledge_schema.sql`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_moves.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_dossiers.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_journal.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_verdicts.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_primecomb.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_register_excluded.py`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/KILLS.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/CODEX_TASK_2026-08-05_EVENING.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/PROMPT_2026-08-05_evening.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/README.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_REQUEST_G6_S2_XW_CONSTRUCTOR_2026-08-05.md`
