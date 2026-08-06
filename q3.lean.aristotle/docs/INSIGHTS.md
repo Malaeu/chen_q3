@@ -51259,3 +51259,24 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   specialization of the already-proved generic residual identity. It must not
   claim the weighted physical-energy supplier, arbitrary selected-family tail
   decay, compact-open convergence, strict `SlotS2`, or RH.
+- Delegated review batch 11 selected the repaired exact-unitary route and
+  explicitly killed direct unscaled normalized-Haar transport. The controlling
+  distinction is `volume = L_m • haarAddCircle`: the literal production mode
+  needs exactly one `L_m^(-1/2)` factor.
+- Production closes in
+  `Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean` at SHA-256
+  `1001bd3c39dcf70ae4d7c31bbc8c0f188d1f9917331b22bb5b0f981cc832e949`.
+  It proves the two-sided log-window `L²` equivalence, its a.e. representative
+  law, the literal `V_n_m_hilbertBasis`, exact basis values, and the immediate
+  unweighted `modeSet`-complement Parseval identity.
+- The exact result is
+  `G6_S2_D0_LOG_WINDOW_V_N_M_HILBERT_BASIS_AND_COMPLEMENT_PARSEVAL_PROVED`:
+  direct Lean, 7757/7757 target build, 7817/7817 full build, `q3_check`, 8/8
+  plants, exact standard-triple axioms, proof DB 8/8 proven, 67/67 tests,
+  strict Spine, observability `OBS_1659a73449854c9d9012` with 8/0 sources,
+  and all three SQLite integrity checks pass.
+- The next analytic node is
+  `G6_S2_D0_SELECTED_PHYSICAL_FOURIER_ENERGY_CONTROL`. It remains separate:
+  completeness supplies exact coefficient accounting but no physical
+  `2*pi*n/L_m` energy bound, selected schedule law, residual decay, `SlotS2`,
+  route promotion, PX claim, or RH claim.

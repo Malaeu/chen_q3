@@ -4,6 +4,9 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `056t_d0_log_window_v_n_m_completeness_bridge.answer.md` | standing-root Phase-4K literal V_n_m Hilbert-basis and complement-Parseval production answer | `202c91c4b6d85545c0c1a8cf7fe4eaac07401d82c458901628b8270ce6b65aec` |
+| `056t_d0_log_window_v_n_m_completeness_bridge.goal.md` | standing-root Phase-4K log-window unitary and literal V_n_m completeness precommit goal | `c0ec4fbc1821644c7dff16a08e9ccaf90ab8367f83405f2c7c27927b55657347` |
+| `proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | Goal 056 Phase-4K delegated verdict — repaired log-window unitary plus literal V_n_m completeness selected | `a4f346b0e040af61810f80027479aff9f9ae9689d14bd9c6ce04d57fdbcdacb6` |
 | `056s_d0_generic_hilbert_basis_weighted_tail.answer.md` | standing-root Phase-4J generic Hilbert-basis Parseval and weighted-tail production answer | `b8cc4880f041b087f91907b1966d5b811c3adebfaf0d4f62e9b1a2046e9036d4` |
 | `056s_d0_generic_hilbert_basis_weighted_tail.goal.md` | standing-root Phase-4J generic Hilbert-basis Parseval and weighted-tail precommit goal | `4efa248560d0ed00cdce076259f461c25c3b60a7fdbda6d20f7de615c4f2cfd3` |
 | `proshka/PROSHKA_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026-08-06.md` | Goal 056 Phase-4J delegated verdict — generic Hilbert-basis receiver selected; modeSet specialization forbidden | `f0609ecd4e804bd09c2aa839fe0096c2dd1ac70d06ade0f6aab18da406dfcbfe` |
