@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-06 13:04 UTC",
+  "generated_at": "2026-08-06 13:57 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4547,6 +4547,7 @@
     "Q3/Proofs/RouteB/D0ProlateKTrialSource.lean": [],
     "Q3/Proofs/RouteB/D0PstarMuntzCenteredCoordinateLock.lean": [],
     "Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualContract.lean": [],
+    "Q3/Proofs/RouteB/D0PstarProjectedMellinCoordinate.lean": [],
     "Q3/Proofs/RouteB/D0ScaledJacobiForcedReceiver.lean": [],
     "Q3/Proofs/RouteB/D0ScaledJacobiReceiverCompatibility.lean": [],
     "Q3/Proofs/RouteB/D0SelectedCentralFloor.lean": [],

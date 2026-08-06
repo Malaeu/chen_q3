@@ -50849,3 +50849,26 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_SELECTED_PROJECTED_MELLIN_COORDINATE_EQ_RAW_TRANSFORM_PROVED`.
   The full-object/Gwin coordinate, Phase-4B contract, decay, and strict
   `SlotS2` remain separate and unauthorized.
+
+## Materialized result
+
+- `D0PstarProjectedMellinCoordinate.lean` now defines the literal selected
+  normalized projected Mellin coordinate, proves its exact finite logarithmic
+  Fourier representative almost everywhere, and identifies the coordinate
+  with the source-locked reflected raw transform.
+- The source SHA is
+  `8f0c764615873a6a3e677d13d86ba6686cc5f4b31354749e4cf171f36fed139e`;
+  the public surface is one definition and two theorems, with zero private
+  declarations and only the standard axiom triple.
+- All seven K6 plants fire independently: projected-vs-full object,
+  normalization, coefficient conjugation, positive mode endpoint,
+  `dStar`/window, centered phase, and raw reflection.
+- Direct Lean, the 7777-job target build, the 7817-job full build, `q3_check`,
+  67 orchestration tests, proof-DB import of three proven declarations, fresh
+  sensors with 8 sources / 0 stale, strict Spine, and all three SQLite
+  integrity checks pass.
+- Exact result:
+  `G6_S2_SELECTED_PROJECTED_MELLIN_COORDINATE_EQ_RAW_TRANSFORM_PROVED`.
+- Next: a new delegated strategic batch for the sole full-object/Gwin
+  coordinate bridge. The Phase-4B crosswalk contract, residual decay,
+  compact-open convergence, and strict `SlotS2` remain separate and open.

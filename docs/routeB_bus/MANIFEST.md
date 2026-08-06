@@ -140,6 +140,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `056m_d0_finite_projection_reconstruction.goal.md` | standing-root Phase-4D finite orthogonal-projection reconstruction goal | `aa740c56ab4530b854a47877eaf025d5a4c4765bf4b1bb86302562918740fbbb` |
 | `056m_d0_finite_projection_reconstruction.answer.md` | standing-root Phase-4D finite orthogonal-projection reconstruction answer | `3b118c4e58c6f7c5e3c0c271f5dd2af72f726ac8a50a483426d17c87cfcf355f` |
 | `056n_d0_selected_projected_mellin_coordinate.goal.md` | standing-root Phase-4E additive-first projected Mellin coordinate goal | `40b0cc1f59eed317df25e07779fe31564c5afdc8a9ccec2f7c039992809055c8` |
+| `056n_d0_selected_projected_mellin_coordinate.answer.md` | standing-root Phase-4E selected projected Mellin coordinate answer | `f1fa4cd2b95120b3b7ca1805bd0221ddea26c292aa29c7926fbfdd6622cc25f1` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
