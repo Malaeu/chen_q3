@@ -50474,7 +50474,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: four named analytic suppliers in
   `MuntzV3ProductionSupplierBatchC`.
 
-# 2026-08-06 — Goal 056 Phase 3C Müntz-v3 production supplier Batch C (in progress)
+# 2026-08-06 — Goal 056 Phase 3C Müntz-v3 production supplier Batch C (materialized)
 
 - Exact target: port `GwinExactClass`, `RplusExactClass`, `Unconditional`, and
   `RminusExactClass` with only three pinned production import substitutions and
@@ -50487,3 +50487,14 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The batch closes only after normalized body equality, four Lean-4.26 builds,
   taint/forbidden-import zero, standard-triple axiom checks, and proof-DB
   reimport.
+
+- All four production bodies normalize byte-for-byte to their pinned request
+  sources after reversing only the declared Batch-B import substitutions.
+- Direct Lean 4.26, target build `7751`, full build `7817`, four
+  `q3_check` runs, 67/67 system tests, taint/forbidden-import zero, and the
+  standard axiom triple all pass.
+- The proof DB records 11 declarations across the four proven documents.
+- All three plants fire. Exact result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_C_MATERIALIZED`.
+- Next: `MuntzV3HabsExactClass` in
+  `MuntzV3ProductionSupplierBatchD`.
