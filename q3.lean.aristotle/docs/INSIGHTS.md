@@ -50718,3 +50718,29 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   projection reconstruction consumer
   `coe_P_m_N_apply_eq_sum_inner_V_n_m_smul`. The raw/Gwin crosswalk, decay,
   and strict `SlotS2` remain separate and open.
+
+# 2026-08-06 — Goal 056 Phase 4D finite projection reconstruction (in progress)
+
+- Exact target: reconstruct the literal coercion of `P_m_N i f` as the finite
+  sum `∑ n ∈ modeSet i, inner ℂ (V_n_m i n) f • V_n_m i n`.
+- `D0KTrialStage1.lean` defines `E_m_N i` as exactly the span of that finite
+  image and `P_m_N i` as its orthogonal projection; no source-object change is
+  needed.
+- Phase 4C now supplies `V_n_m_orthonormal i`, so Mathlib's
+  `OrthonormalBasis.span` can turn `modeSet i` into the exact orthonormal basis
+  of `E_m_N i`.
+- Mathlib's `OrthonormalBasis.orthogonalProjection_eq_sum` then gives the
+  desired reconstruction directly; the only expected work is subtype/span
+  normalization, not new analysis.
+- Local semantic search found `D0AnchorFloor.lean` as the closest existing
+  consumer: it already uses the same finite-dimensional/complete instances and
+  projection inner-product API, but only for the zero mode.
+- Official API pointers:
+  `Mathlib/Analysis/InnerProductSpace/PiL2.lean:516,660-680` and
+  `Mathlib/Analysis/InnerProductSpace/Projection/Basic.lean:213`.
+- Proposed bounded leaf: one production theorem in a new module importing
+  `D0LogWindowMeasureTransport`; no raw/Gwin coordinate, residual crosswalk,
+  decay, or `SlotS2` theorem enters this transaction.
+- Strategic review must pin the exact public statement, coercion orientation,
+  K6 plants, and whether the downstream coefficient consumer is authorized in
+  the same batch or remains a later boundary.
