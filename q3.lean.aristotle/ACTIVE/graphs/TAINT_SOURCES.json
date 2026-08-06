@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-06 07:45 UTC",
+  "generated_at": "2026-08-06 08:07 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4562,6 +4562,10 @@
     "Q3/Proofs/RouteB/MontelCenteredCriticalStrip.lean": [],
     "Q3/Proofs/RouteB/MontelNormalFamilies.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/Core.lean": [],
+    "Q3/Proofs/RouteB/MuntzV3/EStarMellinAbsolutePayload.lean": [],
+    "Q3/Proofs/RouteB/MuntzV3/EstarBoundExactClass.lean": [],
+    "Q3/Proofs/RouteB/MuntzV3/MellinCompactSupportAnalyticity.lean": [],
+    "Q3/Proofs/RouteB/MuntzV3/MellinConvergentSqrtTail.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/R6BoundaryCellBridge.lean": [],
     "Q3/Proofs/RouteB/NormalizedTrackingRateTransfer.lean": [],
     "Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean": [],

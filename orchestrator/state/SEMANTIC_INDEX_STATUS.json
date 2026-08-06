@@ -9,9 +9,9 @@
       "matched_paths": [
         "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/d0-7e-owner-input.md",
         "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
-        "qmd://q3-docs/docs/routeb-bus/056-k8-muntz-v3-slot-s2-bridge-goal.md"
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/master-goal.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka-audit-011-and-muntz-contract-2026-07-27.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -29,7 +29,7 @@
         "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
       ],
       "query": "edge-sliver",
-      "result_count": 40,
+      "result_count": 39,
       "status": "PASS",
       "vector_count": 30
     },
@@ -44,12 +44,12 @@
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 31,
+      "result_count": 35,
       "status": "PASS",
-      "vector_count": 25
+      "vector_count": 28
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "93dfe120916dd830fc35640420bc7479b1f2a8cf",
+  "source_commit": "e7076efcca47013ad1ec7839df3f977302d89548",
   "status": "PASS"
 }

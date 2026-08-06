@@ -50450,7 +50450,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_MUNTZ_V3_PRODUCTION_CORE_BATCH_A_MATERIALIZED`.
 - Next: four direct Batch-A consumers in `MuntzV3ProductionSupplierBatchB`.
 
-# 2026-08-06 — Goal 056 Phase 3B Müntz-v3 production supplier Batch B (in progress)
+# 2026-08-06 — Goal 056 Phase 3B Müntz-v3 production supplier Batch B (materialized)
 
 - Exact target: port four direct Batch-A consumers with only production import
   rewrites and an outer provenance block.
@@ -50462,3 +50462,14 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The batch closes only after normalized body equality, four Lean-4.26 builds,
   taint/forbidden-import zero, standard-triple axiom checks, and proof-DB
   reimport.
+
+- All four production bodies normalize byte-for-byte to their pinned request
+  sources after reversing only the declared Batch-A import substitutions.
+- Direct Lean 4.26, target build `7748`, full build `7817`, four
+  `q3_check` runs, 67/67 system tests, taint/forbidden-import zero, and the
+  standard axiom triple all pass.
+- The proof DB records 9 declarations across the four proven documents.
+- All three plants fire. Exact result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_B_MATERIALIZED`.
+- Next: four named analytic suppliers in
+  `MuntzV3ProductionSupplierBatchC`.

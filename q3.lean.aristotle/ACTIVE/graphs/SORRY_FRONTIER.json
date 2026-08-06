@@ -1,10 +1,10 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "LEAN_SORRY_FRONTIER",
-  "generated_at": "2026-08-06 07:45 UTC",
+  "generated_at": "2026-08-06 08:07 UTC",
   "root": "Q3/",
   "scope": {
-    "included_files": 3319,
+    "included_files": 3323,
     "excluded_directories": [
       "Q3/Clean",
       "Q3/Archive"
@@ -21,8 +21,8 @@
       "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
       "heavy_generated_family": "Q3/Proofs/PrimeCert",
       "heavy_threshold_bytes": 1000000,
-      "content_scanned_files": 2016,
-      "content_scanned_bytes": 93894207,
+      "content_scanned_files": 2020,
+      "content_scanned_bytes": 93911284,
       "skipped_generated_files": 1303,
       "skipped_generated_bytes": 4312275592,
       "skipped_file_ids": [
