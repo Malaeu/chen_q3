@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `proshka/PROSHKA_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026-08-06.md` | Goal 056 Phase-4D delegated verdict — direct orthonormal-basis projection reconstruction selected | `7390e4ea3722a06e0e42ca7d9412bad814b22566915bde49e88851a63816ef50` |
 | `proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | Goal 056 Phase-4C delegated verdict — log-window transport and mode orthonormality selected | `ffc7b22755762ded7c5c657c5f0ee3d40c6804f62491d502d0c8aa116b2d68de` |
 | `proshka/PROSHKA_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026-08-06.md` | Goal 056 Phase-4B delegated verdict — named object-first residual crosswalk contract selected | `39c9bee87243396a2fb713485b80bdad81fdc29dd899c5c736db5aa310e5e6c4` |
 | `proshka/PROSHKA_VERDICT_UNIFIED_MEMORY_CONTOUR_2026-08-05.md` | Proshka architecture verdict — unified one-Spine memory contour (RATIFIED, impl open) | `0bb8c1b9f608daa649cc9a0276458ca2461f729103c86ea4d0d56d56afd860ea` |
@@ -135,6 +136,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `056k_d0pstar_muntz_galerkin_residual_contract.answer.md` | standing-root Phase-4B named object-first residual contract answer | `2bf9914411783bb1122e38143193576ff7d369b94d2bacd21d36c0133d58b659` |
 | `056l_d0_log_window_measure_transport.goal.md` | standing-root Phase-4C log-window measure transport and mode orthonormality goal | `93ff95641b43f897cbe8ffe75c266198a70479a3926e1c599f8d689ad2c7870f` |
 | `056l_d0_log_window_measure_transport.answer.md` | standing-root Phase-4C log-window measure transport and mode orthonormality answer | `b1fac0e47f9874b7ec99e5527c7bd11d558fdb8e0469a02cb0bbc95320cca557` |
+| `056m_d0_finite_projection_reconstruction.goal.md` | standing-root Phase-4D finite orthogonal-projection reconstruction goal | `aa740c56ab4530b854a47877eaf025d5a4c4765bf4b1bb86302562918740fbbb` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |

@@ -735,3 +735,38 @@ notes: >-
   Answer now appeared during generation and was never clicked. No Aristotle
   submission, Bus 010, route promotion, PX claim, or RH claim occurred.
 ```
+
+### 2026-08-06 — Goal 056 Phase 4D finite projection reconstruction
+
+```yaml
+proof_address: RouteB.G6.S2.K8.FiniteProjectionReconstruction
+front: G6/S2
+transaction: G6_S2_D0_FINITE_ORTHOGONAL_PROJECTION_RECONSTRUCTION
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: bf485760-00e4-4ffc-9087-dfc3dfb58940
+response_message_id: 7202c851-e224-41e2-8d81-fb90db5cd938
+sent_at: 2026-08-06T14:09:36+02:00
+completed_at: 2026-08-06T14:30:02+02:00
+wall_seconds: 1226
+wall_human: "20m26s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_P_M_N_FINITE_FOURIER_RECONSTRUCTION_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026-08-06.md"
+notes: >-
+  Fourth same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin a04753e0c435006768fde50fd546acdccf1ee0cf. The
+  request was 5337 bytes with SHA-256
+  24ec7313bdd4a47d22c586860ddd687e5f265b8d1d0837894effd3063fafb10a.
+  The exact 25576-byte verdict has SHA-256
+  7390e4ea3722a06e0e42ca7d9412bad814b22566915bde49e88851a63816ef50.
+  Proshka selected Route A without weakening: construct the exact
+  OrthonormalBasis.span on modeSet, invoke orthogonalProjection_eq_sum once,
+  and expose one unconditional ambient H_m reconstruction theorem. Five
+  independent plants pin coefficient orientation, mode boundary, literal
+  carrier, basis normalization, and projection semantics. The projected
+  Mellin/raw-transform consumer remains unauthorized. Answer now appeared
+  during generation and was never clicked. No Aristotle submission, Bus 010,
+  route promotion, PX claim, or RH claim occurred.
+```

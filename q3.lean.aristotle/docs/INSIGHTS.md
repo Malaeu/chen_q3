@@ -50744,3 +50744,23 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Strategic review must pin the exact public statement, coercion orientation,
   K6 plants, and whether the downstream coefficient consumer is authorized in
   the same batch or remains a later boundary.
+
+## Delegated strategic decision
+
+- Proshka selected
+  `TRY_G6_S2_D0_FINITE_ORTHOGONAL_PROJECTION_RECONSTRUCTION` with no theorem
+  weakening and exact success
+  `G6_S2_P_M_N_FINITE_FOURIER_RECONSTRUCTION_PROVED`.
+- Route A is mandatory: build the exact `OrthonormalBasis.span` on
+  `modeSet i`, apply `orthogonalProjection_eq_sum` exactly once, normalize the
+  subtype carrier to literal `E_m_N i`, and return the equality in ambient
+  `H_m i`.
+- The production surface is one theorem and no public definitions or private
+  production declarations. The coefficient remains `inner ℂ (V_n_m i n) f`.
+- Five K6 plants independently pin conjugation orientation, the positive mode
+  endpoint, the literal carrier, exact basis normalization, and projection
+  rather than identity.
+- The sole next consumer
+  `selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate` is not
+  authorized in this batch. Raw/Gwin, the Phase-4B contract, decay, and strict
+  `SlotS2` remain outside the leaf.
