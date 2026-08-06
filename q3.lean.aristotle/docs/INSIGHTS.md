@@ -50391,3 +50391,25 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: inventory and smoke-port the exact Müntz-v3 receiver dependency closure
   into production, then execute XW.6's centered `Gwin` / `rawFplus ... (-z)`
   coordinate lock before any locally-uniform tail proof.
+
+# 2026-08-06 — Goal 056 Phase 2 Müntz-v3 production export audit (in progress)
+
+- Exact target: compute the literal import closure of
+  `RequestProject.MuntzV3ProlateCombinationReceiver` and split it into existing
+  production suppliers versus modules that require a Lean-4.26 port.
+- Four local `q3_docs` queries scored 0.62--0.70 and recovered the Goal
+  039--050 supplier chain, the seven-file R6 export, and the Phase-0 warning
+  that the receiver currently exists only in the isolated Lean-4.28 package.
+- The first graph traversal reaches 17 local modules.  Three prolate modules
+  already have production counterparts; the remaining candidate export set is
+  14 modules, so the receiver leaf must not be copied first.
+- The production toolchain is Lean 4.26 while the request project is Lean 4.28.
+  Lean's official release policy does not guarantee minor-version backwards
+  compatibility, so hashes and source comparison are provenance evidence, not
+  a portability verdict.
+- The production port will preserve the exact `Gwin = ZetaMellinPoleSub -
+  Rminus - Rplus` convention and forbid imports of `RequestProject.Main` or
+  either roof.  Direct Lean-4.26 compilation is the decisive test.
+- Plan: close the inventory with exact hashes and topological batches, then
+  port the 14 new modules bottom-up; reuse the production `ProlateLayer`,
+  `ProlateModeRegularity`, and `ProlateCombinationMuntzRegularity`.
