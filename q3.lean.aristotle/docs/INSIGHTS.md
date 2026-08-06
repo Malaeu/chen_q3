@@ -50662,3 +50662,20 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Registered prediction: the conditional receiver should compile locally;
   the later full bridge should first meet the weighted logarithmic
   orthonormality or measure-change wall; compact-open decay remains independent.
+
+## Materialized result
+
+- `D0PstarMuntzGalerkinResidualContract.lean` materializes the exact selected
+  projection-minus-full residual, the `dStar` Mellin coordinate, the explicit
+  crosswalk `Prop`, and one direct conditional selected-family receiver.
+- The source SHA is
+  `1f9b0f16210271fc699107f991a244421d98bbdafd695d5a585dae4aca4f73ff`;
+  all four public declarations have only the standard axiom triple.
+- All four K6 semantic plants fired.  Direct Lean, the 7775-job target build,
+  the 7817-job full build, `q3_check`, 67 orchestration tests, proof-DB import,
+  and all three SQLite integrity checks pass.
+- Exact result:
+  `G6_S2_NAMED_OBJECT_RESIDUAL_CONDITIONAL_RECEIVER_MATERIALIZED`.
+- The contract is still a hypothesis.  The first honest theorem of the next
+  full bridge is `V_n_m_orthonormal_on_modeSet`; compact-open decay and strict
+  `SlotS2` remain separate and open.

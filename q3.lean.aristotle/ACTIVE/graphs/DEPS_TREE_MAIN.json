@@ -1,15 +1,15 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "LEAN_PRINT_AXIOMS",
-  "generated_at": "2026-08-06 10:31 UTC",
+  "generated_at": "2026-08-06 11:12 UTC",
   "check_file": "Q3/CheckAxioms.lean",
   "check_stderr_sha256": "21d490443f9947b35732a96388db21561b6395ab676c320eb46630122a748851",
   "source_scan": {
     "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
     "heavy_generated_family": "Q3/Proofs/PrimeCert",
     "heavy_threshold_bytes": 1000000,
-    "content_scanned_files": 2029,
-    "content_scanned_bytes": 93974831,
+    "content_scanned_files": 2030,
+    "content_scanned_bytes": 93978037,
     "skipped_generated_files": 1303,
     "skipped_generated_bytes": 4312275592,
     "allowlist_entries": [
