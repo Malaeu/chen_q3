@@ -51015,3 +51015,26 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   normalized object-residual `L²` decay; it is not authorized by this batch.
 - Aristotle is forbidden. Residual decay, compact-open convergence, strict
   `SlotS2`, route promotion, PX, and RH remain open and outside Phase 4G.
+
+## Materialized result
+
+- `D0PstarMuntzGalerkinResidualCrosswalk.lean` now proves the literal-object
+  Mellin subtraction identity and discharges the pre-existing Phase-4B
+  `D0PstarMuntzGalerkinResidualCrosswalkContract` unconditionally.
+- The source SHA is
+  `73fabe1675476e47228730c3bb4bce07a11c8d351d679c9937f51ef3e3fc9723`;
+  the public surface is zero definitions and two theorems, backed by one
+  private integrability helper and only the standard axiom triple.
+- The proof preserves the actual normalized `H_m` residual, `Lp`
+  almost-everywhere representative algebra, the finite restricted `dStar`
+  measure, the positive-window complex-power branch, the selected trial
+  normalizer, and both Phase-4E/4F coordinate orientations.
+- All nine K6 plants fire independently. Direct Lean, the 7780-job target
+  build, the 7817-job full build, `q3_check`, 67 orchestration tests, and the
+  proof-DB import of three proven declarations pass.
+- Exact result:
+  `G6_S2_D0_RESIDUAL_MELLIN_CROSSWALK_CONTRACT_PROVED`.
+- Sole next node:
+  `G6_S2_D0_SELECTED_NORMALIZED_GALERKIN_RESIDUAL_L2_DECAY`. Compact-open
+  convergence and strict `SlotS2` remain later walls; no route, PX, or RH
+  promotion occurred.
