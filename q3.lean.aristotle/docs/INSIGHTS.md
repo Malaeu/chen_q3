@@ -50543,7 +50543,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_E_MATERIALIZED`.
 - Next: `MuntzV3SymmetricTrialCrosswalk` in Batch F.
 
-# 2026-08-06 — Goal 056 Phase 3F Müntz-v3 symmetric crosswalk Batch F (in progress)
+# 2026-08-06 — Goal 056 Phase 3F Müntz-v3 symmetric crosswalk Batch F (materialized)
 
 - Exact target: port the 135-line positive-half symmetric crosswalk with one
   production import substitution and an outer provenance block.
@@ -50554,3 +50554,12 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The batch closes only after normalized body equality, Lean-4.26 direct and
   target builds, taint/forbidden-import zero, standard-triple axiom checks, and
   proof-DB reimport.
+
+- The production body normalizes byte-for-byte to the pinned source after the
+  sole import substitution is reversed.
+- Direct Lean 4.26, target build `7755`, full build `7817`, `q3_check`, 67/67
+  system tests, taint/forbidden-import zero, and standard-triple axioms pass.
+- The proof DB records 8 declarations as proven. All three plants fire.
+- Exact result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_F_MATERIALIZED`.
+- Next: final archive module `MuntzV3ProlateCombinationReceiver` in Batch G.
