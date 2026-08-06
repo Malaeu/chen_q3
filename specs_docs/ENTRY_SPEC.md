@@ -15,7 +15,7 @@
 |---|---|---|---|---|---|
 | 1 | `AGENTS.md` | 2026-08-06 | Codex | ручной | тонкий указатель на (2) |
 | 2 | `docs/CODEX_CONTROL.md` | 2026-08-06 | оба | ручной | **живой**, канонический кернел |
-| 3 | `SESSION_ENTRY.md` | **2026-01-29** | — | ручной | ⚠️ **мёртв 6 месяцев**, 34 КБ |
+| 3 | `SESSION_ENTRY.md` | **2026-07-10** | Codex | ручной | ⚠️ протух на 27 дней, 34 КБ — см. ниже |
 | 4 | task-specific state | см. §2 | Codex | — | зависит от ветки |
 | 5.1 | `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 2026-07-10 | Codex | ручной | подстыл |
 | 5.2 | `IMPLEMENTATION_PLAN.md` | **2026-04-27** | — | ручной | ⚠️ мёртв |
@@ -24,6 +24,13 @@
 | 6 | `orchestrator/state/SPINE_VIEW.md` | 2026-08-06 | `spine.py` | **генерируется** | живой |
 | 7 | `python3 orchestrator/spine.py --strict --reason session-start --stdout` | — | — | проверка | без записи |
 | 8 | `orchestrator/state/CHANNEL_RUNTIME.json` + `git branch` / `git status` | 2026-08-06 | Codex | ручной | живой |
+
+> **Поправка 2026-08-06.** Строка 3 раньше читалась «2026-01-29, мёртв 6 месяцев». Это была
+> дата **симлинка** `SESSION_ENTRY.md` → `q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md`
+> (единственный коммит симлинка, `9034a86d`). Настоящий файл правился **2026-07-10 `99acf3ff`**,
+> тем же коммитом, что и `PROJECT_ORCHESTRATOR.md`. Не мёртв — протух и врёт по содержанию:
+> 21 macOS-путь, два противоречащих «текущих фронтира», указатель на замороженную шину.
+> Полный разбор: `specs_docs/SESSION_START_AUDIT_2026-08-06.md` §1.3.
 
 ## 2. Условные ветки
 
