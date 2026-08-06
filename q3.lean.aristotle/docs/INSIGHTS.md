@@ -51225,3 +51225,37 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `D0LogWindowVNMCompletenessBridge.lean`. It must construct the literal
   `V_n_m` Hilbert basis rather than postulate completeness. Physical weighted
   energy remains a later supplier even if this bridge closes.
+
+# 2026-08-06 — Goal 056 Phase 4K literal `V_n_m` completeness research (in progress)
+
+- Exact target: construct `b_i : HilbertBasis ℤ ℂ (H_m i)` for every
+  `i : PairIndex` and prove `∀ n, b_i n = V_n_m i n`. This is the first and
+  only authorized importer of `D0HilbertBasisWeightedTail.lean`.
+- Four local `q3_docs` searches reached at most `0.70` and found the existing
+  scalar log-window transport plus orthonormality, but no hidden completeness,
+  dense-span, or unitary implementation for the literal `H_m` carrier.
+- Mathlib already supplies `fourierBasis` and dense Fourier span on
+  `AddCircle T`, `HilbertBasis.mk`, composition on `Lp` by a
+  measure-preserving map, and the interval Parseval theorem
+  `hasSum_sq_fourierCoeffOn`.
+- A direct Lean scratch proves the decisive measure identity with
+  `map_withDensity_abs_det_fderiv_eq_addHaar`:
+  `map (u ↦ log (lambda_m i * u)) (dStar.restrict (I_m i)) =
+  volume.restrict (Icc 0 (L_m i))`.
+- Therefore the source-locked D0.1 logarithmic unitary is executable without
+  adding a source field, analytic axiom, or Aristotle result. Its inverse is
+  `x ↦ exp x / lambda_m i`, with both compositions equal a.e. on the
+  restricted measures.
+- Candidate A: materialize that `Lp` linear-isometry equivalence, build the
+  normalized interval/circle Fourier Hilbert basis, and transport it to
+  `H_m`. This exposes the reusable source theorem and is the recommendation.
+- Candidate B: avoid publishing the unitary and prove only triviality of the
+  orthogonal complement from `hasSum_sq_fourierCoeffOn`. It may be shorter on
+  public surface but requires comparable representative and coefficient
+  plumbing and hides the D0.1 structural bridge.
+- Candidate C: add `V_n_m` completeness as a field of source data. Reject:
+  this is exactly the C09/C10 surrogate prohibited by Phase 4J.
+- The transaction must stop after the literal basis and optional immediate
+  specialization of the already-proved generic residual identity. It must not
+  claim the weighted physical-energy supplier, arbitrary selected-family tail
+  decay, compact-open convergence, strict `SlotS2`, or RH.
