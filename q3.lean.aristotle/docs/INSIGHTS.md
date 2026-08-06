@@ -50679,3 +50679,21 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The contract is still a hypothesis.  The first honest theorem of the next
   full bridge is `V_n_m_orthonormal_on_modeSet`; compact-open decay and strict
   `SlotS2` remain separate and open.
+
+# 2026-08-06 — Goal 056 Phase 4C log-window transport (in progress)
+
+- The first honest proof layer below the Phase-4B crosswalk is the canonical
+  logarithmic coordinate `x = log (lambda_m i * u)` on
+  `I_m i = Icc (lambda_m i)^-1 (lambda_m i)`.
+- Under `dStar = volume.withDensity (ofReal u^-1)`, the Jacobian cancels
+  exactly and the target interval is `Icc 0 (L_m i)`. This convention must be
+  shared by both Fourier orthonormality and the later Gwin coordinate bridge.
+- Proshka rejected both a hidden one-off calculation and an over-broad abstract
+  Lp isometry. The bounded transaction exposes one scalar transport theorem
+  and consumes it once in `V_n_m_orthonormal`.
+- The inner product is conjugate-linear in its first argument, so the private
+  pointwise phase is literally `r - n`; the final Kronecker-delta theorem alone
+  would not detect this sign reversal, hence it has its own K6 plant.
+- Success is proof progress but not residual closure: the sole next consumer is
+  finite orthogonal-projection reconstruction. Raw/Gwin coordinate equality,
+  the Phase-4B contract, compact-open decay, and strict `SlotS2` remain open.

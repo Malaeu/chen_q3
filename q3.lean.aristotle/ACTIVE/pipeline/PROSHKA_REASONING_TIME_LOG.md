@@ -701,3 +701,37 @@ notes: >-
   Answer now appeared during generation and was never clicked.  No Aristotle
   submission, Bus 010, route promotion, PX claim, or RH claim occurred.
 ```
+
+### 2026-08-06 — Goal 056 Phase 4C logarithmic transport and orthonormality
+
+```yaml
+proof_address: RouteB.G6.S2.K8.LogWindowTransport
+front: G6/S2
+transaction: G6_S2_D0_LOG_WINDOW_MEASURE_TRANSPORT_AND_ORTHONORMALITY
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: afd66e63-25fd-4b8d-afc4-ef4bbb49c8fc
+response_message_id: 44d6b4d6-5bee-4930-9eca-1fbc9226c63e
+sent_at: 2026-08-06T13:16:40+02:00
+completed_at: 2026-08-06T13:30:22+02:00
+wall_seconds: 822
+wall_human: "13m42s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_D0_LOG_WINDOW_MEASURE_TRANSPORT_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md"
+notes: >-
+  Third same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin 1553624ae27944b93ef3adce265dc8e8e5c21b33. The
+  request was 4137 bytes with SHA-256
+  35525f330ed1dc1077b79e7911250777c70d0b40b7c2e82c96872277e280e6b9.
+  The exact 26706-byte verdict has SHA-256
+  ffc7b22755762ded7c5c657c5f0ee3d40c6804f62491d502d0c8aa116b2d68de.
+  Proshka selected Path B: one exact scalar dStar/log-window transport theorem
+  and literal full-Z V_n_m orthonormality as its sole first consumer. The
+  transaction is proof progress and introduces zero public definitions,
+  hypotheses, or axioms. Projection reconstruction, raw/Gwin coordinates,
+  the Phase-4B crosswalk, compact-open decay, and SlotS2 remain excluded.
+  Answer now appeared during generation and was never clicked. No Aristotle
+  submission, Bus 010, route promotion, PX claim, or RH claim occurred.
+```
