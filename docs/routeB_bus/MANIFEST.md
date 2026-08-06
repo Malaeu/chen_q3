@@ -4,6 +4,8 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `056s_d0_generic_hilbert_basis_weighted_tail.goal.md` | standing-root Phase-4J generic Hilbert-basis Parseval and weighted-tail precommit goal | `4efa248560d0ed00cdce076259f461c25c3b60a7fdbda6d20f7de615c4f2cfd3` |
+| `proshka/PROSHKA_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026-08-06.md` | Goal 056 Phase-4J delegated verdict — generic Hilbert-basis receiver selected; modeSet specialization forbidden | `f0609ecd4e804bd09c2aa839fe0096c2dd1ac70d06ade0f6aab18da406dfcbfe` |
 | `056r_d0_prolate_source_n_coherence_repair.answer.md` | standing-root Phase-4I same-m prolate source coherence repair answer | `8b3df3aa447e32bda199ed17fbef2aeabbfa909a728af764dddf7ba98f3d58ef` |
 | `056r_d0_prolate_source_n_coherence_repair.goal.md` | standing-root Phase-4I same-m prolate source coherence repair goal | `7152d7f4ebe56aa7484af56511ba29bee530a91ef973e7a9bcc706160ba05da8` |
 | `proshka/PROSHKA_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026-08-06.md` | Goal 056 Phase-4I delegated verdict — current universal tail shape killed; minimal same-m source repair selected | `0e954f41389df08204693a79a49c89a0f3c517d8d7172781b54c7934a1a6c714` |

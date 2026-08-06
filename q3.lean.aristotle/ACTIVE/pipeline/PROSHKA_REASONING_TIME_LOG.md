@@ -31,6 +31,42 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-06 — Goal 056 Phase 4J generic Hilbert-basis weighted tail
+
+```yaml
+proof_address: RouteB.G6.S2.K8.GenericHilbertBasisWeightedTail
+front: G6/S2
+transaction: G6_S2_D0_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: ca7f2db5-f50b-43b4-89b3-b44451209a9f
+response_message_id: 10a3d374-e0d1-4a3a-961f-e046cc014ed6
+sent_at: 2026-08-06T20:23:58+02:00
+completed_at: "2026-08-06T20:44+02:00 (minute-resolution observation)"
+wall_seconds: "~1200"
+wall_human: "~20m observed wall; UI reports 19m07s reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_D0_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026-08-06.md"
+notes: >-
+  Tenth same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin 0dea3fc20e0b0af45ed8aad50eed578a1a485b54.
+  The 8,315-character request has SHA-256
+  c9cec3a2f38ad4033684613bc4a93fc113f1dfd3dd702992fd9fe08558386f9a.
+  The exact 32,894-character, 33,274-byte clipboard/archive payload has
+  SHA-256 f0609ecd4e804bd09c2aa839fe0096c2dd1ac70d06ade0f6aab18da406dfcbfe.
+  Proshka selected Candidate A: two generic HilbertBasis theorems, zero public
+  definitions, and one private coordinate-cancellation helper. The transaction
+  forbids a modeSet/n-squared corollary, any current production importer,
+  V_n_m completeness, physical energy control, and selected tail decay. Eight
+  plants pin completeness, complex coefficient orientation, complement
+  polarity, summability, weight nonnegativity, outside-band membership,
+  exponent two, and rejection of source-specific smuggling. Answer now
+  appeared and was never clicked. No Aristotle submission, Bus 010,
+  Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-06 — Goal 056 Phase 4I prolate source N-coherence repair
 
 ```yaml
