@@ -770,3 +770,38 @@ notes: >-
   during generation and was never clicked. No Aristotle submission, Bus 010,
   route promotion, PX claim, or RH claim occurred.
 ```
+
+### 2026-08-06 — Goal 056 Phase 4E selected projected Mellin coordinate
+
+```yaml
+proof_address: RouteB.G6.S2.K8.SelectedProjectedMellinCoordinate
+front: G6/S2
+transaction: G6_S2_D0_SELECTED_PROJECTED_MELLIN_COORDINATE_RAW_TRANSFORM
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 94ea5af8-7372-4139-91fe-95c33a66ec5c
+response_message_id: e11c001d-ee73-4c27-8c57-6c83538d9804
+sent_at: 2026-08-06T15:13:18+02:00
+completed_at: 2026-08-06T15:31:58+02:00
+wall_seconds: 1120
+wall_human: "18m40s until captured; UI reports 13m26s reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_SELECTED_PROJECTED_MELLIN_COORDINATE_BRIDGE_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026-08-06.md"
+notes: >-
+  Fifth same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin 9a8fb23054ab1f80209eb9f8920fc692d393977f. The
+  request was 5803 bytes with SHA-256
+  d9c3d174b78f5ac970c57ba2464b49407d2482666f113c6b21b2ec0107aa2484.
+  The exact 29836-byte verdict has SHA-256
+  1cb03b92fde9a3f9983e4e80facce236e9d5cad3911490fdfd224dca65b2137d.
+  Proshka selected additive-first: one literal projected Mellin-coordinate
+  definition, one a.e. finite-log representative theorem, and one exact
+  projected-coordinate/raw-transform theorem. Seven independent plants pin
+  projected-vs-full identity, normalization, conjugation, the positive mode
+  boundary, dStar/window, centered phase, and raw reflection. Answer now
+  appeared during generation and was never clicked. The full-object/Gwin
+  node remains unauthorized. No Aristotle submission, Bus 010, route
+  promotion, PX claim, or RH claim occurred.
+```

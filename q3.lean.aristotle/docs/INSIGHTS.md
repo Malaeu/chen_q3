@@ -50824,3 +50824,28 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   definition/theorem surface, sign/reflection convention, plants, and whether
   only this projected-coordinate identity is authorized. Raw/Gwin equality,
   the Phase-4B contract, residual decay, and strict `SlotS2` remain outside.
+
+## Delegated strategic decision
+
+- Proshka selected additive-first at pin
+  `9a8fb23054ab1f80209eb9f8920fc692d393977f`: one literal projected
+  Mellin-coordinate definition, one public a.e. representative theorem, and
+  one public exact selected-coordinate theorem in
+  `D0PstarProjectedMellinCoordinate.lean`.
+- The new scalar is defined only from normalized `kTrial_m_N`, its `Lp`
+  representative, `dStar.restrict (I_m i)`, and the kernel `u^(-i*z)`; it is
+  forbidden to define it from `rawFplus` or a coefficient polynomial.
+- The additive helper must preserve the exact full `modeSet`, coefficient
+  orientation `inner(V_n,kTrial)`, and a.e. representative semantics.
+- The wrapper must prove positivity on the restricted window before rewriting
+  `Complex.cpow`, derive `log(lambda_m)=L_m/2`, preserve the
+  `exp(+i*z*L_m/2)` phase, and close the existing double reflection at
+  `rawFplus ... (-z)`.
+- Seven plants independently pin projected-vs-full object, normalization,
+  conjugation, positive endpoint, dStar/window, centered phase, and raw
+  reflection. Exact operative class:
+  `TRY_G6_S2_D0_ADDITIVE_FIRST_PROJECTED_MELLIN_COORDINATE`.
+- Success is
+  `G6_S2_SELECTED_PROJECTED_MELLIN_COORDINATE_EQ_RAW_TRANSFORM_PROVED`.
+  The full-object/Gwin coordinate, Phase-4B contract, decay, and strict
+  `SlotS2` remain separate and unauthorized.
