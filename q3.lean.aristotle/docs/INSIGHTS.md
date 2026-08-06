@@ -50959,3 +50959,35 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: a delegated strategic batch for the genuine residual-Mellin
   integrability/linearity theorem and Phase-4B contract discharge. Residual
   decay, compact-open convergence, and strict `SlotS2` remain separate.
+
+# 2026-08-06 — Goal 056 Phase 4G residual Mellin linearity research (in progress)
+
+- Exact target: prove the literal-object identity
+  `selectedGalerkinResidualMellinCoordinate_eq_projected_sub_scaledFull`, then
+  discharge `D0PstarMuntzGalerkinResidualCrosswalkContract`; defining the
+  residual coordinate from a scalar difference remains forbidden.
+- Knowledge preflight is genuinely empty: three exact `kb.py flags` queries
+  and `kb.py ask` return no prior bridge. Five `q3_docs` queries recover the
+  Phase-4B contract and its Phase-4E/4F suppliers but no ready-made theorem.
+- The residual is already a genuine element of
+  `H_m i = Lp ℂ 2 (dStar.restrict (I_m i))`. The restricted `du/u` measure is
+  finite because `u⁻¹` is continuous on the positive compact window.
+- Mathlib's `MemLp.integrable` therefore sends every selected `L²`
+  representative to `L¹`; the Mellin kernel `u^(-i*z)` is continuous and
+  bounded on the same compact window, so `Integrable.mul_bdd` proves the
+  literal product integrable for arbitrary complex `z`.
+- `Lp.coeFn_sub` and `Lp.coeFn_smul` preserve quotient semantics almost
+  everywhere. Only after that representative crosswalk do `integral_sub` and
+  `integral_const_mul` yield projected minus scaled-full coordinates.
+- A standalone Lean scratch proves both the exact jump theorem and the full
+  Phase-4B contract with no new hypothesis. The contract then closes by the
+  proved Phase-4E raw-coordinate and Phase-4F full-Gwin equalities.
+- Candidate A: keep the bounded-kernel integrability lemma private and expose
+  only the jump theorem plus unconditional contract theorem. Candidate B:
+  publish a reusable continuous linear Mellin functional first. A is the
+  smallest already Lean-validated transaction; B adds surface not required by
+  the sole current consumer.
+- Strategic review must ratify the public surface, exact representative and
+  compactness plants, contract theorem name, and whether Phase 4G stops at
+  contract discharge. Residual decay, compact-open convergence, and strict
+  `SlotS2` remain later nodes.
