@@ -27,15 +27,21 @@ identification, no convergence theorem, and no `SlotS2` statement.
 -/
 
 /-- Exact source data needed to construct the D0 coefficient row from the
-canonical two-mode prolate packet at every independent `(m,N)` index.
+canonical two-mode prolate packet.  The consumed source trial is determined
+by `m`; `N` enters only through the finite projection and its certificates.
 
 The equality `lambda_eq` prevents the free bandwidth stored in `ProlatePair`
 from drifting away from the production convention `lambda_m i = sqrt i.m`.
 The remaining fields are precisely the existing carrier and nonzero
-certificates required by `c_n`; they are not synthesized here.
+certificates required by `c_n`; they are not synthesized here.  This contract
+proves no projection-tail or regularity theorem.
 -/
 structure ProlateKTrialSourceData where
   pair : PairIndex → ProlatePair
+  prolateCombination_eq_of_same_m :
+    ∀ i j : PairIndex, i.m = j.m →
+      prolateCombination (pair i) =
+        prolateCombination (pair j)
   lambda_eq : ∀ i, (pair i).pw.lambda = lambda_m i
   eStar_memLp :
     ∀ i,
@@ -44,6 +50,17 @@ structure ProlateKTrialSourceData where
   trialNonzero :
     ∀ i,
       TrialNonzero i (prolateCombination (pair i)) (eStar_memLp i)
+
+/-- Applying `E_star` preserves the exact same-`m` source identity.  The
+projection certificates remain allowed to depend on the full pair index.
+-/
+@[simp] theorem ProlateKTrialSourceData.E_star_eq_of_same_m
+    (S : ProlateKTrialSourceData)
+    (i j : PairIndex)
+    (hm : i.m = j.m) :
+    E_star (prolateCombination (S.pair i)) =
+      E_star (prolateCombination (S.pair j)) := by
+  rw [S.prolateCombination_eq_of_same_m i j hm]
 
 namespace ProlateKTrialSourceData
 
@@ -109,6 +126,7 @@ type-level path from the source packet to the production family.
 end ProlateCanonicalSourceData
 
 #print axioms ProlateKTrialSourceData.coefficientFamily_kTrial
+#print axioms ProlateKTrialSourceData.E_star_eq_of_same_m
 #print axioms ProlateCanonicalSourceData.canonical_kTrial
 #print axioms ProlateCanonicalSourceData.selectedFamily_apply
 

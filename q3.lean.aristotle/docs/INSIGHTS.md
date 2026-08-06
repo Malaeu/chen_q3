@@ -51166,3 +51166,10 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_D0_SELECTED_LOG_WINDOW_FOURIER_TAIL_RATE`. Its future interface must
   separate the generic weighted Fourier-tail inequality, a physical-bandwidth
   law, and source-specific uniform energy control. None is claimed here.
+- Production validation closed the source seam at
+  `D0ProlateKTrialSource.lean@7597910a8cf2160c4ab9786144d25595a6c519395f64fc0846d84a249a96c016`.
+  The exact result is
+  `G6_S2_D0_PROLATE_SOURCE_SAME_M_TRIAL_COHERENCE_LOCKED`: 6/6 plants, the
+  standard axiom triple, target/full builds, `q3_check`, proof-DB indexing,
+  67/67 tests, strict Spine, 8/0 observability, and three SQLite integrity
+  checks pass. Phase-4H remains byte-unchanged and analytically conditional.

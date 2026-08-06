@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "LEAN_SORRY_FRONTIER",
-  "generated_at": "2026-08-06 16:19 UTC",
+  "generated_at": "2026-08-06 18:08 UTC",
   "root": "Q3/",
   "scope": {
     "included_files": 3339,
@@ -22,7 +22,7 @@
       "heavy_generated_family": "Q3/Proofs/PrimeCert",
       "heavy_threshold_bytes": 1000000,
       "content_scanned_files": 2036,
-      "content_scanned_bytes": 94019072,
+      "content_scanned_bytes": 94019856,
       "skipped_generated_files": 1303,
       "skipped_generated_bytes": 4312275592,
       "skipped_file_ids": [

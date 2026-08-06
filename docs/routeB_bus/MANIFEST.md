@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `056r_d0_prolate_source_n_coherence_repair.answer.md` | standing-root Phase-4I same-m prolate source coherence repair answer | `8b3df3aa447e32bda199ed17fbef2aeabbfa909a728af764dddf7ba98f3d58ef` |
 | `056r_d0_prolate_source_n_coherence_repair.goal.md` | standing-root Phase-4I same-m prolate source coherence repair goal | `7152d7f4ebe56aa7484af56511ba29bee530a91ef973e7a9bcc706160ba05da8` |
 | `proshka/PROSHKA_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026-08-06.md` | Goal 056 Phase-4I delegated verdict — current universal tail shape killed; minimal same-m source repair selected | `0e954f41389df08204693a79a49c89a0f3c517d8d7172781b54c7934a1a6c714` |
 | `proshka/PROSHKA_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026-08-06.md` | Goal 056 Phase-4H delegated verdict — repaired two-premise conditional residual-decay receiver selected; unconditional decay remains open | `40adc75f94c0918f59702f8ad218777d601d0d0fe045c0a93e07c4504a87e2e6` |

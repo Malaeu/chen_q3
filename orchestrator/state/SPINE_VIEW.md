@@ -20,7 +20,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Meter | Count |
 |---|---:|
-| `delegated_strategic_review_calls` | 10 |
+| `delegated_strategic_review_calls` | 11 |
 | `exploration_review_calls` | 0 |
 | `fanout_violations` | 0 |
 | `forced_rollovers` | 0 |
@@ -57,7 +57,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_32de993945d11570186e` at `2026-08-06T16:19:56+00:00` from `d6ed119efc86`
+- snapshot: `OBS_53ecac440b1664686256` at `2026-08-06T18:08:20+00:00` from `f7cf21aeb16f`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
@@ -65,20 +65,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2035}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
-- Proshka runs: `23`; observed seconds total/mean/median: `29901` / `1300.0` / `1120`; lower bounds: `1`
+- Proshka runs: `24`; observed seconds total/mean/median: `31821` / `1325.9` / `1173.0`; lower bounds: `1`
 - Answer-now clicks: `0`
 - AUTOPSY events/structured: `8` / `5`; walls/namewatch flags: `5` / `0`
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 8 | 2026-08-06T16:14:18+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-06 16:19 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-06 16:19 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-06 16:19 UTC | no | PARSED | READY |
-| `proshka_timing` | 23 | 2026-08-06T18:06:45+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-06 16:19 UTC | no | PARSED | READY |
-| `taint_graph` | 3339 | 2026-08-06 16:19 UTC | no | PARSED | READY |
-| `taint_sources` | 3339 | 2026-08-06 16:19 UTC | no | PARSED | READY |
+| `autopsy_map` | 8 | 2026-08-06T17:12:06+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-06 18:08 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-06 18:08 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-06 18:08 UTC | no | PARSED | READY |
+| `proshka_timing` | 24 | 2026-08-06T19:05+02:00 (minute-resolution observation) | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-06 18:08 UTC | no | PARSED | READY |
+| `taint_graph` | 3339 | 2026-08-06 18:08 UTC | no | PARSED | READY |
+| `taint_sources` | 3339 | 2026-08-06 18:08 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -86,9 +86,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 |---|---|---:|---|---|
 | `G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION` | G2/H2a | 3221 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE |
 | `G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS` | G5/S1 | 2326 | observed | FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP |
+| `G6_S2_D0_PROLATE_SOURCE_N_COHERENCE_REPAIR` | G6/S2 | 1920 | observed | OPEN_ACCEPTED_FOR_IMPLEMENTATION |
 | `G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE` | G5/S1 | 1708 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
 | `G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE` | G5/S1 | 1567 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
-| `G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE` | G5/S1 | 1538 | observed | COMPLETE_ACCEPTED_FOR_IMPLEMENTATION |
 
 ## Staleness warnings
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
@@ -149,7 +149,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | S_PD_COMPACT_SCALAR_ROUTE | S-pd compact scalar route | killed | `H-bridge` primary route |
 | ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed |  |
 
-**strategy** (22)
+**strategy** (27)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -173,6 +173,11 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_CCM_IMPORT_C3_SPLIT_2026_07_31 | treat_trial_limit_and_real_zero_family_as_the_same_sequence | standing | exact_projective_ground_to_trial_residual_on_one_control_cell |
 | VERDICT_DRAFT041_HOLD_VERSIONED_REPAIR_2026_07_31 | retroactive_goal_amendment | standing | compare original_goal_040_sha_across_sync |
 | VERDICT_GOAL040_RATIFIED_PENDING_PIN_2026_07_31 | implicit_derivative_identification_and_duplicate_T4a_cloud_run | standing | pinned_goal_040_and_rule0_exact_text_audit |
+| VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06 | custom_projection_uniqueness_before_using_exact_orthonormal_basis_API | standing | direct Lean compilation of the one-theorem basis proof with all five plants |
+| VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06 | bundle_coordinate_of_difference_with_two_scalar_coordinate_equalities | standing | direct_Lean_compile_of_the_unnormalized_full_coordinate_theorem_with_all_seven_plants |
+| VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06 | prove_orthonormality_while_hiding_the_source_measure_transport | standing | coe_P_m_N_apply_eq_sum_inner_V_n_m_smul |
+| VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06 | consume_raw_minus_Gwin_as_if_it_were_an_object_residual | standing | V_n_m_orthonormal_on_modeSet |
+| VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06 | direct_wrapper_bundling_representative_phase_and_reflection_seams | standing | direct_Lean_compile_of_the_additive_ae_helper_with_all_seven_plants |
 | VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | pin A1_as_canonical_and_A2_as_corollary |
 | WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayloa | standing | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coeffici... |
 
@@ -192,7 +197,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_60 records, 13 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_65 records, 13 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |
