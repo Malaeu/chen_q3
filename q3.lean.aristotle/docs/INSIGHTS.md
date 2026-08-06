@@ -50354,3 +50354,31 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   requiring a removable-endpoint/quadrature/error certificate or a direct
   whole-expression verifier. Goal 055 remains held; no Aristotle submission,
   Bus 010, route promotion, H2a/G2 closure, or RH claim is authorized.
+
+# 2026-08-06 — Goal 056 XW.8 prolate-to-kTrial provenance contract (in progress)
+
+- Exact target: make the existing D0 chain source-faithful at the type level by
+  defining `CoefficientFamily.kTrial` from `c_n` applied to the same
+  `prolateCombination P` that enters `E_star`, with `P.pw.lambda = lambda_m i`.
+- The production gap is structural: `CanonicalData.kTrial` is currently a free
+  field, while `D0KTrialStage3.lean` contains only a local example showing how
+  an arbitrary supplied `hTrial_m` could populate it.
+- Four local `q3_docs` queries scored only 0.58--0.65 but consistently pointed
+  to `D0PostAnchorMontel.lean`, `D0StripMontelRefinement.lean`,
+  `CanonicalRHRouteSkeleton.lean`, and the existing G6/S2 Proshka audits.
+- The primary source itself presents the prolate packet as an educated guess
+  for the lowest Weil eigenvector and names rigorous approximation/convergence
+  as a missing step: https://arxiv.org/abs/2511.22755.
+- Plan: add one data-only production module importing `ProlateLayer` and
+  `D0KTrialStage3`; require the exact lambda lock, `MemLp`, and `TrialNonzero`;
+  then define the coefficient family and canonical data by `rfl`-transparent
+  constructors.
+- The public surface must prove only definitional provenance and the exact
+  selected-family expansion.  It must not assert mode existence, ground-state
+  identity, cofinal-path existence, tail decay, SlotS2, or RH.
+- Plants will remove the lambda lock, replace `prolateCombination` by an
+  arbitrary function, and attempt an independent canonical coefficient row;
+  each mutation must fail the intended contract or lose definitional equality.
+- If direct Lean, taint, axioms, and consumer checks pass, XW.8 becomes
+  `PROVENANCE_CONTRACT_MATERIALIZED / EXISTENCE_SUPPLIERS_OPEN`; only then is a
+  production promotion of the exact Muntz receiver worth attempting.
