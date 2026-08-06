@@ -805,3 +805,45 @@ notes: >-
   node remains unauthorized. No Aristotle submission, Bus 010, route
   promotion, PX claim, or RH claim occurred.
 ```
+
+### 2026-08-06 — Goal 056 Phase 4F full Mellin/Gwin crosswalk
+
+```yaml
+proof_address: RouteB.G6.S2.K8.SelectedFullMellinGwinCrosswalk
+front: G6/S2
+transaction: G6_S2_D0_SELECTED_FULL_MELLIN_GWIN_CROSSWALK
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: d174961e-9958-44d9-875c-3211e902c6ee
+correction_message_id: 8024d996-44cd-46cb-9c24-6fe5dcea63da
+response_message_id: 8d589448-4652-49da-9ff4-51ef6673b249
+sent_at: 2026-08-06T16:13:28+02:00
+correction_sent_at: 2026-08-06T16:17:36+02:00
+completed_at: 2026-08-06T16:31:43+02:00
+wall_seconds: 1095
+wall_human: "18m15s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_SELECTED_FULL_MELLIN_GWIN_CROSSWALK_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026-08-06.md"
+notes: >-
+  Sixth same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned corrected HEAD/origin
+  952d0760a2741ddc2766976295b684cddb26baa4. The 7,791-character request has
+  SHA-256 daa1131c5839c2dffbfabb7dcafd7d79c0e991ffec0ff34a77afa6ca046bbdd4;
+  the same-batch 1,003-character pin correction has SHA-256
+  ea9204553d72502b78d1b3ef8e96176e7d59eaac2cae566959bb786a76bf69c4.
+  The exact 29,951-byte verdict has SHA-256
+  0e1363fdc611341a3036a3a19297ded593c93a04b5fd1205116b0d648fa18f5d.
+  Proshka selected Candidate A_REPAIRED: one literal unnormalized full
+  gTrial_m coordinate, its exact equality to selected Gwin, and one
+  definitionally algebraic scaled corollary. Candidate B was rejected for
+  this transaction because residual-integral subtraction still needs a real
+  bounded-kernel Lp-to-L1 linearity bridge. Seven independent plants pin the
+  full object, a.e. representative, dStar density, endpoint atomlessness,
+  positive complex-power branch, E_star/Estar source, and scale level.
+  Answer now appeared during generation and was never clicked. The pin
+  correction remained inside the same batch and was not counted as another
+  review call. No Aristotle submission, Bus 010, route promotion, PX claim,
+  or RH claim occurred.
+```

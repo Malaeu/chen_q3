@@ -350,8 +350,8 @@
     "active_proshka_phase": {
       "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
       "full_context_uploads": 0,
-      "last_adjudicated_pin": "9a8fb23054ab1f80209eb9f8920fc692d393977f",
-      "last_boundary_id": "GOAL_056_PHASE4E_SELECTED_PROJECTED_MELLIN_COORDINATE",
+      "last_adjudicated_pin": "952d0760a2741ddc2766976295b684cddb26baa4",
+      "last_boundary_id": "GOAL_056_PHASE4F_FULL_MELLIN_GWIN_CROSSWALK",
       "opened_at": "2026-08-06T08:06:39+02:00",
       "opening_pin": "1efda3f80580eb036680f5fd272d3f5112b59283",
       "owner_boundary_count": 0,
@@ -364,14 +364,14 @@
         "source_object_family_id": "D0_CENTERED_PSTAR_WITH_SOURCE_PROLATE_MUNTZ_CROSSWALK",
         "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.SlotS2"
       },
-      "proshka_calls": 5,
+      "proshka_calls": 6,
       "status": "ACTIVE"
     },
     "control_status": "ACTIVE",
     "last_exploration_close": null,
     "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
     "meter": {
-      "delegated_strategic_review_calls": 7,
+      "delegated_strategic_review_calls": 8,
       "exploration_review_calls": 0,
       "fanout_violations": 0,
       "forced_rollovers": 0,
@@ -441,5 +441,5 @@
     "source_commit": "6abd631c8cda015c092bf6cd6e91e54ab077935b",
     "status": "PASS"
   },
-  "source_commit": "437634cf803553a405be43d1f5ff597ec6496b0f"
+  "source_commit": "952d0760a2741ddc2766976295b684cddb26baa4"
 }

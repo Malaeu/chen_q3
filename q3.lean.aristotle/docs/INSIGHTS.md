@@ -50872,7 +50872,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: a new delegated strategic batch for the sole full-object/Gwin
   coordinate bridge. The Phase-4B crosswalk contract, residual decay,
   compact-open convergence, and strict `SlotS2` remain separate and open.
-+
+
 # 2026-08-06 — Goal 056 Phase 4F full Mellin/Gwin crosswalk (in progress)
 
 - Exact target named by the Phase-4E verdict:
@@ -50909,3 +50909,27 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   unnormalized, the exact definition/theorem surface, the `Icc/Ioo` and
   `du/u` plants, and whether the immediate algebraic crosswalk consumer is
   authorized in the same batch.
+
+## Delegated strategic decision
+
+- Proshka selected
+  `TRY_G6_S2_D0_SELECTED_FULL_MELLIN_GWIN_CROSSWALK` at corrected pin
+  `952d0760a2741ddc2766976295b684cddb26baa4`, with Candidate `A_REPAIRED`.
+- The bounded surface is one literal unnormalized `gTrial_m` coordinate, one
+  equality to `selectedGwinTransformCoordinate`, and one one-line scaled
+  corollary. There are no private production declarations.
+- The proof must use the `Lp` representative only almost everywhere, expand
+  the exact `dStar` density, derive positivity on `I_m` before rewriting
+  complex powers, identify the two starred sums, and remove `Icc` endpoints
+  only by atomlessness of volume.
+- Seven plants independently pin full versus projected object, quotient
+  semantics, `du/u`, endpoint atomlessness, the `(-i*z)-1` branch,
+  `E_star = Estar`, and unscaled versus scaled coordinate level.
+- Candidate B is explicitly deferred: equality of two scalar coordinates does
+  not license subtraction under the literal residual integral. The sole next
+  transaction must build bounded-kernel `Lp -> L1` integrability/linearity or
+  an exact continuous linear Mellin functional before discharging the Phase-4B
+  contract.
+- Aristotle is forbidden. The exact success code is
+  `G6_S2_SELECTED_FULL_MELLIN_AND_SCALED_GWIN_CROSSWALK_PROVED`; compact-open
+  decay and strict `SlotS2` remain later walls.
