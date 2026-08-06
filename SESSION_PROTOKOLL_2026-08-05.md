@@ -280,15 +280,47 @@ die Erkenntnis, dass der Rest **nicht** pauschal Müll ist.
 - An Proshka: zweite Adjudikationsanfrage (Link auf `d3e8ac14`).
 - An Codex: noch **nichts** — der Startprompt liegt bereit in `docs/Codex/`.
 
+## NACHTRAG beim Protokollschluss — Codex hat über Nacht P9 vollzogen
+
+Beim letzten `git pull --rebase` kamen drei Mac-Commits herein, entstanden **während** dieser
+Session (2026-08-06, 00:34 / 01:09 / 06:57). Der Mac-Körper hat eigenständig gearbeitet:
+
+- **`7e319bdc` „Implement unified memory control spine"** — P9 materialisiert:
+  `docs/CODEX_CONTROL.md` (509 Zeilen, EIN Verhaltens-Kern für beide Körper) neu;
+  `CLAUDE.md` von 541 Zeilen auf einen **dünnen Zeiger** reduziert, ebenso `AGENTS.md`,
+  `README_SETUP.md`, `codex_prompts/`. Dazu `orchestrator/AUTOPSY_SCHEMA.md`,
+  `BEHAVIOR_CONTROL_REGISTRY.json`, `ARTIFACT_IDENTITY_REGISTRY.json`,
+  `docs/P1_POINTER_CENSUS_2026-08-05.md`,
+  `docs/…MEMORY_CONTOUR_IMPLEMENTATION_REPORT_2026-08-06.md`.
+- **Die fünf Mac-only GAPS sind GEFÜLLT** (`CODEX_CYCLE_RECONSTRUCTION` §5, jetzt „resolved from
+  the primary Mac body"): `gpt-5.6-sol` / effort `xhigh`, `sandbox_mode = danger-full-access`,
+  `approval_policy = never`, native `notify` über den Sky-Computer-Use-Client (der Pfad, den der
+  Linux-Slice nicht hat), `chrome-devtools` auf `127.0.0.1:9222` **zusätzlich** zum eingebetteten
+  authentifizierten Browser (das eine hat das andere nicht ersetzt), Plugin-/Connector-Liste,
+  Ghostty für Repo-Pfade. Damit kodifiziert P9 Fakten statt unserer Vermutungen.
+- **Er hat unsere heutige Arbeit gelesen und integriert:** `CODEX_CONTROL.md` nennt
+  `knowledge.db` / `kb.py` viermal; unsere Frozen-Banner in `Q3_OBSTRUCTION_ATLAS.md`,
+  `S5_FAILURE_ATLAS.md` und `RH_TRICK_ATLAS.md` hat er zu
+  `STATUS: SNAPSHOT_FROZEN (source cutoff …; migrated …)` präzisiert.
+- Zusätzlich `c9669b94` (dependency-aware generated scan) und `1efda3f8`
+  (Sensors: snapshot + PrimeCert route kill).
+
+**Damit sind Punkt 3 der Offen-Liste (GAPS) und die P9-Materialisierung erledigt — nicht von uns.**
+Beide Konturen sind zusammengelaufen: er schreibt in dieselbe Basis-Disziplin, die hier heute
+gebaut wurde. Der Sitzungsschluss ist deshalb ein Übergabepunkt, kein Stillstand.
+
 ## Offen — nächste Schritte
 1. **Proshka-Antwort** auf die Konstruktor-Frage abwarten; danach entscheidet sich, ob G6 ein
    Mehrmonats-Formalisierungsprogramm ist oder ein Zertifikatspfad.
 2. **Kontrakt v1.2 materialisieren** — erst nach ihrer Antwort (Q3 prüft die Dekomposition).
-3. **Codex zuhause:** `docs/Codex/PROMPT_2026-08-05_evening.md` einwerfen; Task 1 (fünf GAPS)
-   zuerst — die Datei ist seit ihrer Erstellung unverändert, P9 würde sonst Vermutungen kodifizieren.
+3. ~~Codex: fünf GAPS~~ → **ERLEDIGT über Nacht** (siehe Nachtrag). Offen bleibt aus
+   `docs/CODEX_TASK_2026-08-05_EVENING.md` nur Task 2 (G2-Zertifikatsdaten) und Task 4 (optional).
 4. **G2 owner fork** unverändert: sieben WR-Integral-Enclosures, Daten vom Owner.
 5. **35 Dateien brauchen einen Menschen** (`kb.py excluded`): 33 `unreviewed`, 2 `pending_read`.
 6. Kartograf als Code weiterhin offen; MAP.md lügt weiter absichtlich (Abnahmetest).
+7. **NEU: `docs/CODEX_CONTROL.md` (509 Zeilen) ist ab sofort der kanonische Verhaltens-Kern
+   auch für den Linux-Körper** — beim nächsten Sessionstart zuerst lesen; `CLAUDE.md` ist nur
+   noch Zeiger. Noch nicht von uns gegengelesen.
 
 ## Wichtige Fakten (Teil 3)
 - **Pre-flight hat zweimal hintereinander gerettet**, was Verdikt und Kontrakt beide übersahen.
