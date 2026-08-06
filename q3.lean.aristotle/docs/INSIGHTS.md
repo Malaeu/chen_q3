@@ -50991,3 +50991,27 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   compactness plants, contract theorem name, and whether Phase 4G stops at
   contract discharge. Residual decay, compact-open convergence, and strict
   `SlotS2` remain later nodes.
+
+## Delegated strategic decision
+
+- Proshka selected
+  `TRY_G6_S2_D0_RESIDUAL_MELLIN_LINEARITY_AND_CONTRACT_DISCHARGE` at pin
+  `1b1f36629b1236909c027891d4a8f68748c6134c`, ratifying Candidate
+  `A_MINIMAL_PRIVATE_HELPER` exactly as Lean-tested.
+- The production surface is zero public definitions, two public theorems, and
+  one private generic `H_m`-times-Mellin-kernel integrability helper. Publishing
+  a continuous-linear Mellin functional is rejected for this transaction.
+- The jump theorem must stay object-first: literal normalized residual,
+  almost-everywhere `Lp` representative algebra, both integrability witnesses,
+  then and only then Bochner subtraction and constant linearity.
+- Phase-4E/4F transform identities are forbidden inside the jump proof. They
+  are consumed only afterward to prove the Phase-4B named contract
+  unconditionally without editing its original definition.
+- Nine independent plants pin scalar-surrogate rejection, finite `dStar`
+  measure, positive cpow branch, quotient semantics, linearity order,
+  normalizer placement, both coordinate orientations, and residual order.
+- Exact success is
+  `G6_S2_D0_RESIDUAL_MELLIN_CROSSWALK_CONTRACT_PROVED`. The sole next node is
+  normalized object-residual `L²` decay; it is not authorized by this batch.
+- Aristotle is forbidden. Residual decay, compact-open convergence, strict
+  `SlotS2`, route promotion, PX, and RH remain open and outside Phase 4G.

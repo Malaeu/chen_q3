@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `proshka/PROSHKA_VERDICT_GOAL056_RESIDUAL_MELLIN_LINEARITY_CONTRACT_2026-08-06.md` | Goal 056 Phase-4G delegated verdict — minimal object-first residual Mellin linearity and unconditional contract discharge selected | `451152dc6f8adc54a7e35b6169bcfeb3c130d2e97121d7f6254955deda59495f` |
 | `proshka/PROSHKA_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026-08-06.md` | Goal 056 Phase-4F delegated verdict — unnormalized full Mellin/Gwin crosswalk selected; residual contract deferred | `0e1363fdc611341a3036a3a19297ded593c93a04b5fd1205116b0d648fa18f5d` |
 | `proshka/PROSHKA_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026-08-06.md` | Goal 056 Phase-4E delegated verdict — additive-first projected Mellin coordinate bridge selected | `1cb03b92fde9a3f9983e4e80facce236e9d5cad3911490fdfd224dca65b2137d` |
 | `proshka/PROSHKA_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026-08-06.md` | Goal 056 Phase-4D delegated verdict — direct orthonormal-basis projection reconstruction selected | `7390e4ea3722a06e0e42ca7d9412bad814b22566915bde49e88851a63816ef50` |
@@ -143,6 +144,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `056n_d0_selected_projected_mellin_coordinate.goal.md` | standing-root Phase-4E additive-first projected Mellin coordinate goal | `40b0cc1f59eed317df25e07779fe31564c5afdc8a9ccec2f7c039992809055c8` |
 | `056n_d0_selected_projected_mellin_coordinate.answer.md` | standing-root Phase-4E selected projected Mellin coordinate answer | `f1fa4cd2b95120b3b7ca1805bd0221ddea26c292aa29c7926fbfdd6622cc25f1` |
 | `056o_d0_full_mellin_gwin_crosswalk.goal.md` | standing-root Phase-4F unnormalized full Mellin/Gwin crosswalk goal | `6a1a05a17eb3f7e8716e695402778458b5cb5d7b4676efc124706baddf062e93` |
+| `056p_d0_residual_mellin_linearity_contract.goal.md` | standing-root Phase-4G literal residual Mellin linearity and unconditional contract-discharge goal | `4fbe9793bc5f028b3854b3e3e4df18b75963c2710564972a62e94e314af1ab8f` |
 | `056o_d0_full_mellin_gwin_crosswalk.answer.md` | standing-root Phase-4F full Mellin/Gwin crosswalk answer | `97584d4bb0ed4066ddbdd1bd94d4a6bd7d530cbeaaf4c870fc6c16e4d096f3db` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |

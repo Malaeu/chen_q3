@@ -847,3 +847,40 @@ notes: >-
   review call. No Aristotle submission, Bus 010, route promotion, PX claim,
   or RH claim occurred.
 ```
+
+### 2026-08-06 — Goal 056 Phase 4G residual Mellin linearity and contract discharge
+
+```yaml
+proof_address: RouteB.G6.S2.K8.ResidualMellinLinearityContract
+front: G6/S2
+transaction: G6_S2_D0_RESIDUAL_MELLIN_LINEARITY_AND_CONTRACT_DISCHARGE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 88d2fc64-ebf0-4f44-a794-835c725bddc6
+response_message_id: 3259e7a1-554c-4fd5-a6fb-80b620ce9f35
+sent_at: 2026-08-06T17:05:35+02:00
+completed_at: 2026-08-06T17:20:36+02:00
+wall_seconds: 901
+wall_human: "15m01s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_D0_RESIDUAL_MELLIN_LINEARITY_AND_CONTRACT_DISCHARGE_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_RESIDUAL_MELLIN_LINEARITY_CONTRACT_2026-08-06.md"
+notes: >-
+  Seventh same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin 1b1f36629b1236909c027891d4a8f68748c6134c. The
+  5,739-byte request has SHA-256
+  6718cab94103829eed500f102e79e6eaff10db606fe8d4713375ae3c2cec6808.
+  The exact 7,185-byte clipboard payload has SHA-256
+  d51c7a6a91561743f4d4ee108de67dc0b55d215902e68993b976b857f89a7895;
+  the newline-normalized archive has SHA-256
+  451152dc6f8adc54a7e35b6169bcfeb3c130d2e97121d7f6254955deda59495f.
+  Proshka ratified Candidate A_MINIMAL_PRIVATE_HELPER: one private bounded-
+  kernel H_m integrability theorem, one literal residual-coordinate jump
+  theorem, and one unconditional proof of the Phase-4B named contract. Nine
+  plants pin object identity, finite measure, positive cpow branch, Lp quotient
+  semantics, linearity order, normalizer placement, Phase-4E/4F orientations,
+  and projection-minus-full order. Aristotle is forbidden. Answer now appeared
+  during generation and was never clicked. No Bus 010, Goal-055 release, route
+  promotion, PX claim, or RH claim occurred.
+```
