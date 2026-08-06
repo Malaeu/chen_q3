@@ -31,6 +31,45 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-06 — Goal 056 Phase 4H selected residual L² decay receiver
+
+```yaml
+proof_address: RouteB.G6.S2.K8.SelectedResidualL2DecayReceiver
+front: G6/S2
+transaction: G6_S2_D0_SELECTED_RESIDUAL_L2_DECAY_TWO_PREMISE_RECEIVER
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_id: cd057737-0f19-4897-9d54-fd3d37e46fd1
+request_message_id: d5ec360f-7c1d-44c4-b183-11b60c0565c7
+response_message_id: b1ee8d8c-3be2-4cce-b6ad-3ce3d82e4749
+sent_at: 2026-08-06T17:52:56+02:00
+completed_at: 2026-08-06T18:06:45+02:00
+wall_seconds: 829
+wall_human: "13m49s until captured; UI reports 12m01s reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_D0_SELECTED_RESIDUAL_L2_DECAY_TWO_PREMISE_RECEIVER
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026-08-06.md"
+notes: >-
+  Eighth same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin c9447e28beff8dc18d525b8ea991781f67f81733. The
+  6,850-byte request has SHA-256
+  805a9aaa9743e4a74ffa9a9e4c42d845fcb202eda2629e69a078a5ac3e4ea0ba.
+  The exact 27,373-byte clipboard payload has SHA-256
+  40adc75f94c0918f59702f8ad218777d601d0d0fe045c0a93e07c4504a87e2e6;
+  the exact single-newline canon/mirror archive has the same SHA-256
+  40adc75f94c0918f59702f8ad218777d601d0d0fe045c0a93e07c4504a87e2e6.
+  Proshka ratified Candidate A with the explicit logical repair that projection
+  tail decay plus bounded inverse normalizer are sufficient, not necessary.
+  Bare cofinality, fixed-space projection convergence, TrialNonzero as a
+  uniform bound, scalar-coordinate surrogates, and reselection were rejected.
+  Seven plants pin the varying carrier, cofinality countermodel, normalizer,
+  parent/extract path, literal object, signed residual order, and rejection of
+  a weighted-tail restatement. Answer now appeared and was never clicked.
+  No Aristotle submission, Bus 010, Goal-055 release, route promotion, PX
+  claim, or RH claim occurred.
+```
+
 ### 2026-08-04 — G5 cofinal third-even root bracket source audit
 
 ```yaml

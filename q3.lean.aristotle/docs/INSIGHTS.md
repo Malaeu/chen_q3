@@ -51075,3 +51075,32 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   contract surface and exact stop code, then K6 plants must pin varying-carrier,
   bounded-normalizer, cofinal-coupling, object-identity, and subtraction-order
   seams before any production edit.
+
+# 2026-08-06 — Goal 056 Phase 4H selected residual L² decay decision
+
+- The eighth batch in the same living Proshka phase chat returned
+  `TRY_G6_S2_D0_SELECTED_RESIDUAL_L2_DECAY_TWO_PREMISE_RECEIVER` at pinned
+  HEAD/origin `c9447e28beff8dc18d525b8ea991781f67f81733`; `Answer now` appeared and
+  was not clicked. Aristotle remains forbidden.
+- The unconditional target is not derivable from current registered source
+  data. The exact analytic stop is
+  `G6_S2_SELECTED_RESIDUAL_L2_DECAY_ANALYTIC_SUPPLIERS_MISSING`, not a route
+  kill: the selected carrier, vector, projection, and inverse normalizer vary
+  together, while current cofinality has no uniform rate or norm floor.
+- Candidate A was ratified with a logical repair: `SelectedProjectionTailDecay`
+  and `SelectedTrialNormalizerBounded` are sufficient but not necessary. If
+  bounded normalization fails, faster relative tail decay may still prove the
+  original target.
+- Phase 4H therefore publishes only the literal unnormalized projection-error
+  norm, the two supplier Props, the exact norm factorization, and the
+  bounded-times-zero receiver. Neither Prop becomes a source-data field,
+  axiom, or claimed theorem.
+- Seven plants pin fixed-space API misuse, the moving-vector cofinality
+  countermodel, pointwise-nonzero versus bounded normalization, the exact
+  parent/extract path, the literal `H_m` object, signed subtraction order via
+  Phase 4G, and rejection of a weighted-tail restatement.
+- On successful production validation the result is
+  `G6_S2_SELECTED_RESIDUAL_L2_DECAY_TWO_PREMISE_RECEIVER_PROVED`; unconditional
+  decay remains open. The sole next analytic node is
+  `G6_S2_D0_SELECTED_PROJECTION_TAIL_DECAY_SUPPLIER`, which must supply a
+  uniform selected-family estimate rather than invoke fixed-`m` density.

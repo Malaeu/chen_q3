@@ -4,6 +4,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `proshka/PROSHKA_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026-08-06.md` | Goal 056 Phase-4H delegated verdict — repaired two-premise conditional residual-decay receiver selected; unconditional decay remains open | `40adc75f94c0918f59702f8ad218777d601d0d0fe045c0a93e07c4504a87e2e6` |
 | `proshka/PROSHKA_VERDICT_GOAL056_RESIDUAL_MELLIN_LINEARITY_CONTRACT_2026-08-06.md` | Goal 056 Phase-4G delegated verdict — minimal object-first residual Mellin linearity and unconditional contract discharge selected | `451152dc6f8adc54a7e35b6169bcfeb3c130d2e97121d7f6254955deda59495f` |
 | `proshka/PROSHKA_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026-08-06.md` | Goal 056 Phase-4F delegated verdict — unnormalized full Mellin/Gwin crosswalk selected; residual contract deferred | `0e1363fdc611341a3036a3a19297ded593c93a04b5fd1205116b0d648fa18f5d` |
 | `proshka/PROSHKA_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026-08-06.md` | Goal 056 Phase-4E delegated verdict — additive-first projected Mellin coordinate bridge selected | `1cb03b92fde9a3f9983e4e80facce236e9d5cad3911490fdfd224dca65b2137d` |
@@ -147,6 +148,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `056p_d0_residual_mellin_linearity_contract.goal.md` | standing-root Phase-4G literal residual Mellin linearity and unconditional contract-discharge goal | `4fbe9793bc5f028b3854b3e3e4df18b75963c2710564972a62e94e314af1ab8f` |
 | `056o_d0_full_mellin_gwin_crosswalk.answer.md` | standing-root Phase-4F full Mellin/Gwin crosswalk answer | `97584d4bb0ed4066ddbdd1bd94d4a6bd7d530cbeaaf4c870fc6c16e4d096f3db` |
 | `056p_d0_residual_mellin_linearity_contract.answer.md` | standing-root Phase-4G literal residual Mellin linearity and unconditional contract-discharge answer | `118d29406d56e567c52033b4212b26b5ab585834372ced0c9be7baef6d6261f7` |
+| `056q_d0_selected_residual_l2_decay_receiver.goal.md` | standing-root Phase-4H selected residual L² decay two-premise receiver goal | `340b3eef1785a9d20e0d0c1f172a4aa7a8e437fff978289327516eb7e7bd730b` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
