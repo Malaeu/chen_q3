@@ -211,18 +211,18 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3336,
-    "import_edges": 5573,
+    "file_states": 3337,
+    "import_edges": 5574,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
     "proof_nodes": 10,
     "proof_roots": 2,
     "proshka_lower_bounds": 1,
-    "proshka_runs": 20,
-    "proshka_seconds_mean": 1353.8,
-    "proshka_seconds_median": 1245.5,
-    "proshka_seconds_total": 27076,
+    "proshka_runs": 21,
+    "proshka_seconds_mean": 1341.5,
+    "proshka_seconds_median": 1226,
+    "proshka_seconds_total": 28171,
     "root_memberships": 131,
     "slowest_runs": [
       {
@@ -262,10 +262,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T13:57:07+00:00",
-      "id": "OBS_52c61a48ec857324cee8",
+      "generated_at": "2026-08-06T14:51:40+00:00",
+      "id": "OBS_422c7bb60d7d700f482b",
       "schema_version": 6,
-      "source_commit": "437634cf803553a405be43d1f5ff597ec6496b0f",
+      "source_commit": "c776c191a7fc71ff80e2588c481d9bfd494703e4",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -275,7 +275,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 8,
-        "source_generated_at": "2026-08-06T13:35:46+00:00",
+        "source_generated_at": "2026-08-06T14:37:51+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 13:56 UTC",
+        "source_generated_at": "2026-08-06 14:51 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 13:57 UTC",
+        "source_generated_at": "2026-08-06 14:51 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,15 +299,15 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 13:57 UTC",
+        "source_generated_at": "2026-08-06 14:51 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 20,
-        "source_generated_at": "2026-08-06T15:31:58+02:00",
+        "record_count": 21,
+        "source_generated_at": "2026-08-06T16:31:43+02:00",
         "source_id": "proshka_timing",
         "stale": 0
       },
@@ -315,23 +315,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 13:57 UTC",
+        "source_generated_at": "2026-08-06 14:51 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3336,
-        "source_generated_at": "2026-08-06 13:57 UTC",
+        "record_count": 3337,
+        "source_generated_at": "2026-08-06 14:51 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3336,
-        "source_generated_at": "2026-08-06 13:57 UTC",
+        "record_count": 3337,
+        "source_generated_at": "2026-08-06 14:51 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -341,7 +341,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2032
+      "NO_OBSERVED_ISSUE": 2033
     },
     "wall_states": 5
   },
@@ -441,5 +441,5 @@
     "source_commit": "6abd631c8cda015c092bf6cd6e91e54ab077935b",
     "status": "PASS"
   },
-  "source_commit": "952d0760a2741ddc2766976295b684cddb26baa4"
+  "source_commit": "c776c191a7fc71ff80e2588c481d9bfd494703e4"
 }

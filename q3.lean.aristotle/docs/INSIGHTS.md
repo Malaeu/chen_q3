@@ -50933,3 +50933,29 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Aristotle is forbidden. The exact success code is
   `G6_S2_SELECTED_FULL_MELLIN_AND_SCALED_GWIN_CROSSWALK_PROVED`; compact-open
   decay and strict `SlotS2` remain later walls.
+
+## Materialized result
+
+- `D0PstarFullMellinGwinCrosswalk.lean` now defines the literal unnormalized
+  full `gTrial_m` coordinate, proves its exact equality to the selected Müntz
+  `Gwin` coordinate at `-i*z`, and exposes the definitionally scaled
+  corollary.
+- The source SHA is
+  `62cfcbdcc209a3da7fbb7d2dd3a58b24937209f1dde416a721d539e414769818`;
+  the public surface is one definition and two theorems, with zero private
+  declarations and only the standard axiom triple.
+- The proof preserves the `Lp` quotient seam, exact `du/u` density,
+  positive-real complex-power branch, the literal `E_star = Estar` starred
+  sum, and atomless `Icc -> Ioo` endpoint conversion.
+- All seven K6 plants fire independently: full versus projected object,
+  a.e. versus pointwise representative, `dStar` density, endpoint atom,
+  exponent/branch, starred source, and scale level.
+- Direct Lean, the 7778-job target build, the 7817-job full build, `q3_check`,
+  67 orchestration tests, proof-DB import of three proven declarations, fresh
+  sensors with 8 sources / 0 stale, strict Spine, and all three SQLite
+  integrity checks pass.
+- Exact result:
+  `G6_S2_SELECTED_FULL_MELLIN_AND_SCALED_GWIN_CROSSWALK_PROVED`.
+- Next: a delegated strategic batch for the genuine residual-Mellin
+  integrability/linearity theorem and Phase-4B contract discharge. Residual
+  decay, compact-open convergence, and strict `SlotS2` remain separate.
