@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 282 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 283 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -122,6 +122,7 @@ Proshka mirror from `rh_lean_01_2026`; 282 mirrored source files plus `CHANNEL_R
 | `056f_muntz_v3_production_supplier_batch_d.goal.md` | standing-root Phase-3D goal | `93eec7ab952fed84d6c503e15a976121c291bc75dd64f4534d9a24a7c5dc8806` |
 | `056f_muntz_v3_production_supplier_batch_d.answer.md` | standing-root Phase-3D answer | `e05b847b0160b08c7ac1a8483ef27d87f646ae114a8350016abb8fbb4c599afc` |
 | `056g_muntz_v3_production_supplier_batch_e.goal.md` | standing-root Phase-3E goal | `d478eed6d76247ad9266204ab0e1aa4687b9fb4cd347829715978da3ffb68d9a` |
+| `056g_muntz_v3_production_supplier_batch_e.answer.md` | standing-root Phase-3E answer | `a612b607bafcfb9b61e6886073af5bb5e5825141b228b2145263a58f47366761` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |
