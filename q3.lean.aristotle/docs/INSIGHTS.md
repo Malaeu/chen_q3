@@ -50616,3 +50616,29 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   mutation plants fail in Lean as intended.
 - Next: `D0PstarMuntzGalerkinResidualCrosswalk`, object-first projection
   residual identification and compact-open decay on the same selected path.
+
+# 2026-08-06 — Goal 056 Phase 4B Galerkin residual research synthesis (in progress)
+
+- Exact target: identify `selectedGalerkinCoordinateDefect S k z` with the
+  transform coordinate of the normalized object-first residual
+  `P_m_N i (gTrial_m i h hLp) - gTrial_m i h hLp` at
+  `i = (S.canonical.parent (S.canonical.extract k)).1`.
+- Repository search finds the projection object and its norm contraction in
+  `D0KTrialStage1.lean`/`D0AnchorFloor.lean`, but no theorem reconstructing an
+  arbitrary `E_m_N` vector from the `V_n_m` coefficients.
+- `rawFplus` is currently connected to the finite Fourier polynomial by
+  `rawFplus_eq_D0_integral`; `Gwin` is a Lebesgue integral of `Estar`, while
+  `gTrial_m` lives in `Lp` for the restricted `du/u` measure.
+- Therefore the missing load-bearing bridge is not algebra: it is the exact
+  `L²(du/u)` Fourier orthonormality/reconstruction theorem plus the conversion
+  of its bounded Mellin coordinate to the `Gwin` integral.
+- Mathlib supplies the `Lp ℂ 2 μ` inner-product integral and orthogonal-
+  projection API, so a direct formal route is structurally available; no
+  project-local theorem currently packages the required Mellin kernel.
+- The forbidden shortcut is to define the residual coordinate as
+  `rawFplus - scaledGwin`; that would rename the Phase-4A difference without
+  proving that it comes from `gTrial_m - P_m_N gTrial_m`.
+- Strategic review question: materialize the full L²/Fourier/Mellin bridge
+  now, or ratify a named weakening whose hypothesis is exactly that missing
+  bridge and continue only conditionally. No SlotS2 or decay claim is made
+  before that choice is resolved.
