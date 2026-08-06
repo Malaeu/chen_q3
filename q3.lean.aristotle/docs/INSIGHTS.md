@@ -50392,7 +50392,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   into production, then execute XW.6's centered `Gwin` / `rawFplus ... (-z)`
   coordinate lock before any locally-uniform tail proof.
 
-# 2026-08-06 — Goal 056 Phase 2 Müntz-v3 production export audit (in progress)
+# 2026-08-06 — Goal 056 Phase 2 Müntz-v3 production export audit (audited)
 
 - Exact target: compute the literal import closure of
   `RequestProject.MuntzV3ProlateCombinationReceiver` and split it into existing
@@ -50413,3 +50413,15 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Plan: close the inventory with exact hashes and topological batches, then
   port the 14 new modules bottom-up; reuse the production `ProlateLayer`,
   `ProlateModeRegularity`, and `ProlateCombinationMuntzRegularity`.
+
+- The completed traversal confirms 17 local modules and 24 literal internal
+  import edges.  Three prolate exports normalize to their existing production
+  bodies; exactly 14 new modules and 2282 source lines remain.
+- The export is partitioned into seven topological batches A--G.  Batch A is
+  `MuntzV3.Core` plus the independent R6 boundary bridge; the prolate
+  receiver is Batch G and cannot be copied honestly before its suppliers.
+- The isolated Lean-4.28 receiver compiles and exposes only
+  `[propext, Classical.choice, Quot.sound]`.  Production portability remains
+  open until each batch passes Lean 4.26.
+- Exact audit result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_EXPORT_CLOSURE_AUDITED_PORT_OPEN`.

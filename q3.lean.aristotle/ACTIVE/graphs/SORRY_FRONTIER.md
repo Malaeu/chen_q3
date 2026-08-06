@@ -1,4 +1,4 @@
-# Sorry Frontier (auto) — 2026-08-06 07:07 UTC
+# Sorry Frontier (auto) — 2026-08-06 07:32 UTC
 
 **Purpose:** Exact active `sorry` sites plus their membership in configured root closures.
 **Method:** header-only import DAG, dependency/allowlist protection, then exact content scan.
