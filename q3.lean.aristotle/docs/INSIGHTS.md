@@ -51115,3 +51115,44 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   Exact remaining analytic stop:
   `G6_S2_SELECTED_RESIDUAL_L2_DECAY_SUPPLIERS_OPEN`. Phase-4B remains proved
   unconditionally; compact-open convergence and strict `SlotS2` remain open.
+
+# 2026-08-06 — Goal 056 Phase 4I projection-tail supplier audit (in progress)
+
+- Exact requested target is still
+  `∀ S : ProlateCanonicalSourceData, SelectedProjectionTailDecay S`; the audit
+  tests that quantifier before attempting a Lean proof.
+- `ProlateKTrialSourceData.pair : PairIndex → ProlatePair` lets the source
+  packet vary with both `m` and `N`.  The source-locked object is instead
+  `hTrial_m = h_{sqrt m}` and is independent of the Galerkin cutoff `N`.
+- This is a real provenance mismatch: fixed-vector Fourier completeness cannot
+  apply while the vector itself may change whenever `N` changes.  A same-`m`
+  source-coherence repair is necessary before any density argument.
+- That repair alone is insufficient.  Under the logarithmic transport the
+  interval length is `L_m = log m`, while the largest retained physical
+  frequency is proportional to `N / L_m`; independent `m→∞` and `N→∞` does
+  not imply that this bandwidth tends to infinity.
+- Mathlib's `fourierBasis` and `hasSum_fourier_series_L2` prove convergence for
+  one fixed circle length and one fixed `L²` vector.  They do not supply a
+  uniform theorem for changing lengths, vectors, and cutoffs.
+- The primary paper makes the same order visible: its finite Fourier/core
+  statement is for fixed `λ` as `N→∞`; its Outlook then treats `λ→∞`
+  separately, and explicitly says that rigorous joint convergence remains a
+  missing step.
+- Current `ProlatePair` stores neither the prolate eigen-equation nor a uniform
+  Sobolev/Fourier-energy bound.  The conditional mode-Lipschitz lemma also
+  supplies no constants uniform in `m`, and `E_star` introduces an additional
+  summation estimate that is not registered.
+- Candidate A: first repair source provenance to make the prolate packet
+  `N`-independent, then stop; this is necessary but does not prove the tail.
+- Candidate B: replace the overstrong arbitrary-cofinal target by a named
+  coupled schedule plus a genuine uniform Fourier/Sobolev tail estimate, for
+  example a condition controlling `L_m/(N+1)` times the transported regularity
+  norm.  This is mathematically meaningful but needs a new source theorem.
+- Candidate C: construct the canonical parent/extraction by diagonal choice
+  from fixed-`m` Fourier density.  This gives existence of a good schedule, not
+  the current theorem for every already-supplied schedule, so it is a named
+  weakening and cannot be smuggled in as the original target.
+- Recommendation for delegated review: reject the unconditional theorem at
+  the present type, ratify the `N`-coherence repair, and choose explicitly
+  between the coupled-rate interface (B) and the constructive diagonal
+  schedule (C).  Aristotle is not useful until that theorem shape is fixed.
