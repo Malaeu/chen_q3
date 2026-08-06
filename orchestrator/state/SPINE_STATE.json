@@ -120,7 +120,7 @@
       "control_id": "Q3_EXECUTOR_CONTROL",
       "existing_entry_gate": "SESSION_START",
       "path": "docs/CODEX_CONTROL.md",
-      "sha256": "fc77ff8d7483c87744f07e8aea3d59b08f9b5340541d3bf414885f239dfafc4e",
+      "sha256": "2eea62b6fb42242bab4e8cc9386cf46bed47f7d9b88266eccfd324d87af6f9d9",
       "spine_wiring": "behavior_controls.executor",
       "status": "ACTIVE",
       "trigger_owner": "Codex"
@@ -262,10 +262,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T12:55:16+00:00",
-      "id": "OBS_473db0106563b1d0eb1a",
+      "generated_at": "2026-08-06T13:04:32+00:00",
+      "id": "OBS_d3ae9036e1a62304b764",
       "schema_version": 6,
-      "source_commit": "e7b0c16334e38cfc0398302cae66e22818075dd0",
+      "source_commit": "8d1028136f44b301ee44d61b001d24de84569ea7",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -275,7 +275,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 8,
-        "source_generated_at": "2026-08-06T12:33:41+00:00",
+        "source_generated_at": "2026-08-06T13:03:34+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 12:55 UTC",
+        "source_generated_at": "2026-08-06 13:04 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 12:55 UTC",
+        "source_generated_at": "2026-08-06 13:04 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,7 +299,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 12:55 UTC",
+        "source_generated_at": "2026-08-06 13:04 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
@@ -315,7 +315,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 12:55 UTC",
+        "source_generated_at": "2026-08-06 13:04 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
@@ -323,7 +323,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 3335,
-        "source_generated_at": "2026-08-06 12:55 UTC",
+        "source_generated_at": "2026-08-06 13:04 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
@@ -331,7 +331,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 3335,
-        "source_generated_at": "2026-08-06 12:55 UTC",
+        "source_generated_at": "2026-08-06 13:04 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -441,5 +441,5 @@
     "source_commit": "6abd631c8cda015c092bf6cd6e91e54ab077935b",
     "status": "PASS"
   },
-  "source_commit": "e7b0c16334e38cfc0398302cae66e22818075dd0"
+  "source_commit": "8d1028136f44b301ee44d61b001d24de84569ea7"
 }
