@@ -51104,3 +51104,14 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   decay remains open. The sole next analytic node is
   `G6_S2_D0_SELECTED_PROJECTION_TAIL_DECAY_SUPPLIER`, which must supply a
   uniform selected-family estimate rather than invoke fixed-`m` density.
+- Production validation is now complete in
+  `Q3/Proofs/RouteB/D0PstarGalerkinResidualDecay.lean` at SHA-256
+  `8fe089afef9e6a43f7b6c7b7b737bc0709e7e35d41ae73a34ab94c49f1f62f63`:
+  direct Lean, 7781-job target build, 7817-job full build, `q3_check`, 7/7
+  plants, standard-triple axioms, five proven DB declarations, 67/67 tests,
+  strict Spine, 8/0 observability, and all three SQLite integrity checks pass.
+- Exact result:
+  `G6_S2_SELECTED_RESIDUAL_L2_DECAY_TWO_PREMISE_RECEIVER_PROVED`.
+  Exact remaining analytic stop:
+  `G6_S2_SELECTED_RESIDUAL_L2_DECAY_SUPPLIERS_OPEN`. Phase-4B remains proved
+  unconditionally; compact-open convergence and strict `SlotS2` remain open.

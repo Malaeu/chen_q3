@@ -149,6 +149,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `056o_d0_full_mellin_gwin_crosswalk.answer.md` | standing-root Phase-4F full Mellin/Gwin crosswalk answer | `97584d4bb0ed4066ddbdd1bd94d4a6bd7d530cbeaaf4c870fc6c16e4d096f3db` |
 | `056p_d0_residual_mellin_linearity_contract.answer.md` | standing-root Phase-4G literal residual Mellin linearity and unconditional contract-discharge answer | `118d29406d56e567c52033b4212b26b5ab585834372ced0c9be7baef6d6261f7` |
 | `056q_d0_selected_residual_l2_decay_receiver.goal.md` | standing-root Phase-4H selected residual L² decay two-premise receiver goal | `340b3eef1785a9d20e0d0c1f172a4aa7a8e437fff978289327516eb7e7bd730b` |
+| `056q_d0_selected_residual_l2_decay_receiver.answer.md` | standing-root Phase-4H selected residual L² decay two-premise receiver answer | `f9ca6365957c11b11a1359b63ec55f263ee04025d02ed2e537cda3fc11052c13` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |

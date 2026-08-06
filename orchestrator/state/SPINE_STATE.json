@@ -211,18 +211,18 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3338,
-    "import_edges": 5576,
+    "file_states": 3339,
+    "import_edges": 5577,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
     "proof_nodes": 10,
     "proof_roots": 2,
     "proshka_lower_bounds": 1,
-    "proshka_runs": 22,
-    "proshka_seconds_mean": 1321.5,
-    "proshka_seconds_median": 1173.0,
-    "proshka_seconds_total": 29072,
+    "proshka_runs": 23,
+    "proshka_seconds_mean": 1300.0,
+    "proshka_seconds_median": 1120,
+    "proshka_seconds_total": 29901,
     "root_memberships": 131,
     "slowest_runs": [
       {
@@ -262,10 +262,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T15:37:11+00:00",
-      "id": "OBS_c3d68aba1f7f386dd2ac",
+      "generated_at": "2026-08-06T16:19:56+00:00",
+      "id": "OBS_32de993945d11570186e",
       "schema_version": 6,
-      "source_commit": "470c02c43030bb3bfd9f99940a3f41abc8a08670",
+      "source_commit": "d6ed119efc86db199a09c17674cc41c44268e1f4",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -275,7 +275,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 8,
-        "source_generated_at": "2026-08-06T15:26:11+00:00",
+        "source_generated_at": "2026-08-06T16:14:18+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 15:37 UTC",
+        "source_generated_at": "2026-08-06 16:19 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 15:37 UTC",
+        "source_generated_at": "2026-08-06 16:19 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,15 +299,15 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 15:37 UTC",
+        "source_generated_at": "2026-08-06 16:19 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 22,
-        "source_generated_at": "2026-08-06T17:20:36+02:00",
+        "record_count": 23,
+        "source_generated_at": "2026-08-06T18:06:45+02:00",
         "source_id": "proshka_timing",
         "stale": 0
       },
@@ -315,23 +315,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 15:37 UTC",
+        "source_generated_at": "2026-08-06 16:19 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3338,
-        "source_generated_at": "2026-08-06 15:37 UTC",
+        "record_count": 3339,
+        "source_generated_at": "2026-08-06 16:19 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3338,
-        "source_generated_at": "2026-08-06 15:37 UTC",
+        "record_count": 3339,
+        "source_generated_at": "2026-08-06 16:19 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -341,7 +341,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2034
+      "NO_OBSERVED_ISSUE": 2035
     },
     "wall_states": 5
   },
@@ -350,8 +350,8 @@
     "active_proshka_phase": {
       "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
       "full_context_uploads": 0,
-      "last_adjudicated_pin": "1b1f36629b1236909c027891d4a8f68748c6134c",
-      "last_boundary_id": "GOAL_056_PHASE4G_RESIDUAL_MELLIN_LINEARITY_CONTRACT",
+      "last_adjudicated_pin": "c9447e28beff8dc18d525b8ea991781f67f81733",
+      "last_boundary_id": "GOAL_056_PHASE4H_SELECTED_RESIDUAL_L2_DECAY_RECEIVER",
       "opened_at": "2026-08-06T08:06:39+02:00",
       "opening_pin": "1efda3f80580eb036680f5fd272d3f5112b59283",
       "owner_boundary_count": 0,
@@ -364,14 +364,14 @@
         "source_object_family_id": "D0_CENTERED_PSTAR_WITH_SOURCE_PROLATE_MUNTZ_CROSSWALK",
         "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.SlotS2"
       },
-      "proshka_calls": 7,
+      "proshka_calls": 8,
       "status": "ACTIVE"
     },
     "control_status": "ACTIVE",
     "last_exploration_close": null,
     "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
     "meter": {
-      "delegated_strategic_review_calls": 9,
+      "delegated_strategic_review_calls": 10,
       "exploration_review_calls": 0,
       "fanout_violations": 0,
       "forced_rollovers": 0,
@@ -441,5 +441,5 @@
     "source_commit": "6abd631c8cda015c092bf6cd6e91e54ab077935b",
     "status": "PASS"
   },
-  "source_commit": "470c02c43030bb3bfd9f99940a3f41abc8a08670"
+  "source_commit": "d6ed119efc86db199a09c17674cc41c44268e1f4"
 }

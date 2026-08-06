@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-06 15:37 UTC",
+  "generated_at": "2026-08-06 16:19 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4546,6 +4546,7 @@
     "Q3/Proofs/RouteB/D0PostAnchorMontel.lean": [],
     "Q3/Proofs/RouteB/D0ProlateKTrialSource.lean": [],
     "Q3/Proofs/RouteB/D0PstarFullMellinGwinCrosswalk.lean": [],
+    "Q3/Proofs/RouteB/D0PstarGalerkinResidualDecay.lean": [],
     "Q3/Proofs/RouteB/D0PstarMuntzCenteredCoordinateLock.lean": [],
     "Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualContract.lean": [],
     "Q3/Proofs/RouteB/D0PstarMuntzGalerkinResidualCrosswalk.lean": [],
