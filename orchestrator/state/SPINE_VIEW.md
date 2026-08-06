@@ -49,20 +49,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `44`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `30`.
 
 ## Meta-corpus registry
 - derived surfaces: `6`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_2cbb020fec9134f7e69f` at `2026-08-06T09:13:56+00:00` from `5a50826dd30f`
+- snapshot: `OBS_f816ea1821b056a7095d` at `2026-08-06T09:28:02+00:00` from `2c59020177a7`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3330` / `5563`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2026}`; doomed: `0`
+- file states/import edges: `3331` / `5566`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2027}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `16`; observed seconds total/mean/median: `22880` / `1430` / `1284.5`; lower bounds: `1`
@@ -71,14 +71,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 8 | 2026-08-06T09:12:48+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-06 09:13 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-06 09:13 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-06 09:13 UTC | no | PARSED | READY |
+| `autopsy_map` | 8 | 2026-08-06T09:27:05+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-06 09:27 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-06 09:27 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-06 09:28 UTC | no | PARSED | READY |
 | `proshka_timing` | 16 | 2026-08-06T07:35:47.171+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-06 09:13 UTC | no | PARSED | READY |
-| `taint_graph` | 3330 | 2026-08-06 09:13 UTC | no | PARSED | READY |
-| `taint_sources` | 3330 | 2026-08-06 09:13 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-06 09:27 UTC | no | PARSED | READY |
+| `taint_graph` | 3331 | 2026-08-06 09:27 UTC | no | PARSED | READY |
+| `taint_sources` | 3331 | 2026-08-06 09:27 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 

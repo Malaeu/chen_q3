@@ -211,8 +211,8 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3330,
-    "import_edges": 5563,
+    "file_states": 3331,
+    "import_edges": 5566,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
@@ -262,10 +262,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T09:13:56+00:00",
-      "id": "OBS_2cbb020fec9134f7e69f",
+      "generated_at": "2026-08-06T09:28:02+00:00",
+      "id": "OBS_f816ea1821b056a7095d",
       "schema_version": 6,
-      "source_commit": "5a50826dd30f31fbb082c52e067543f5b925fbe7",
+      "source_commit": "2c59020177a7f39bc77b8241f88b7833d8aa3070",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -275,7 +275,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 8,
-        "source_generated_at": "2026-08-06T09:12:48+00:00",
+        "source_generated_at": "2026-08-06T09:27:05+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 09:13 UTC",
+        "source_generated_at": "2026-08-06 09:27 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 09:13 UTC",
+        "source_generated_at": "2026-08-06 09:27 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,7 +299,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 09:13 UTC",
+        "source_generated_at": "2026-08-06 09:28 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
@@ -315,23 +315,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 09:13 UTC",
+        "source_generated_at": "2026-08-06 09:27 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3330,
-        "source_generated_at": "2026-08-06 09:13 UTC",
+        "record_count": 3331,
+        "source_generated_at": "2026-08-06 09:27 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3330,
-        "source_generated_at": "2026-08-06 09:13 UTC",
+        "record_count": 3331,
+        "source_generated_at": "2026-08-06 09:27 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -341,7 +341,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2026
+      "NO_OBSERVED_ISSUE": 2027
     },
     "wall_states": 5
   },
@@ -397,9 +397,9 @@
         "matched_paths": [
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/proshka-zip-audit-followup-2026-07-27.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-zip-audit-followup-2026-07-27.md",
-          "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md"
+          "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
+          "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-behavior-control-contour-2026-08-05.md",
+          "qmd://q3-docs/docs/routeb-bus/proshka/rule-naming-disambiguation-2026-07-31.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -417,7 +417,7 @@
           "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 39,
+        "result_count": 44,
         "status": "PASS",
         "vector_count": 30
       },
@@ -432,14 +432,14 @@
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 34,
+        "result_count": 30,
         "status": "PASS",
-        "vector_count": 27
+        "vector_count": 23
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "5a50826dd30f31fbb082c52e067543f5b925fbe7",
+    "source_commit": "2c59020177a7f39bc77b8241f88b7833d8aa3070",
     "status": "PASS"
   },
-  "source_commit": "135869583fcd7192439941c1c8b4d5427298ed90"
+  "source_commit": "2c59020177a7f39bc77b8241f88b7833d8aa3070"
 }

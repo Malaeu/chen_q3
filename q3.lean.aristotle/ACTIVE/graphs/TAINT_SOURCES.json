@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-06 09:13 UTC",
+  "generated_at": "2026-08-06 09:27 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4569,6 +4569,7 @@
     "Q3/Proofs/RouteB/MuntzV3/HabsExactClass.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/MellinCompactSupportAnalyticity.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/MellinConvergentSqrtTail.lean": [],
+    "Q3/Proofs/RouteB/MuntzV3/ProlateCombinationReceiver.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/R6BoundaryCellBridge.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/RminusExactClass.lean": [],
     "Q3/Proofs/RouteB/MuntzV3/RplusExactClass.lean": [],

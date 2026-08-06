@@ -50564,7 +50564,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_F_MATERIALIZED`.
 - Next: final archive module `MuntzV3ProlateCombinationReceiver` in Batch G.
 
-# 2026-08-06 — Goal 056 Phase 3G Müntz-v3 production receiver Batch G (in progress)
+# 2026-08-06 — Goal 056 Phase 3G Müntz-v3 production receiver Batch G (materialized)
 
 - Exact target: port the 75-line prolate-combination receiver with three pinned
   production import substitutions and an outer provenance block.
@@ -50576,3 +50576,14 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The batch closes only after normalized body equality, Lean-4.26 direct and
   target builds, taint/forbidden-import zero, standard-triple axiom checks, and
   proof-DB reimport.
+
+- The receiver normalizes byte-for-byte to the pinned source after the three
+  declared production import substitutions are reversed.
+- Direct Lean 4.26, target build `7759`, full build `7817`, `q3_check`, 67/67
+  system tests, taint/forbidden-import zero, and standard-triple axioms pass.
+- The proof DB records both receiver theorems as proven. All three plants fire.
+- All 14 audited new modules are now materialized alongside the three reused
+  production prolate suppliers. Exact result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_EXPORT_CLOSURE_MATERIALIZED_XW6_OPEN`.
+- Next: `D0PstarMuntzCenteredCoordinateLock` (XW.6), then finite residual and
+  locally-uniform tail control.
