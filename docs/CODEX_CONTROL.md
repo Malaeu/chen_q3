@@ -577,16 +577,19 @@ Past-error checklist before any PR: `q3.lean.aristotle/docs/ERRORS_DESTROYER.md`
 Route B additionally reads `ROUTE_B_EXECUTION_STATE.json` + `ROUTE_B_EXECUTION_CONTROL.md`
 and runs `routeb_status.py --check`; no open bus goal means `NO_OPEN_BUS_GOAL / STOP`.
 
-### 16.6 Search discipline — do not guess names
+### 16.6 Search discipline — policy only
 
-1. **Before creating any object** (Lean file, Aristotle input, goal, brief) query the
-   knowledge base: `./orchestrator/kb.py ask "<terms>"`. This is the pre-flight receipt rule;
-   it caught two duplications on 2026-08-05 that both a verdict and a contract had missed.
-2. Mathlib and project lemma names are never guessed. Use the `Explore` sub-agent or `rg`
-   against `.lake/packages/mathlib/` and `Q3/`; `exact?` times out on hard goals and is not a
-   discovery tool.
-3. Prefer `rg` over `grep` everywhere.
-4. Semantic recall over project docs: `./scripts/research_oracle.py query "<kw>" -c q3_docs`.
+**Commands, triggers and the tool catalogue: `specs_docs/TOOLS_SPEC.md` part II.**
+This kernel carries obligations, not a runbook.
+
+1. Before creating any object (Lean file, Aristotle input, goal, brief) — pre-flight query of
+   the knowledge base; the receipt goes into the artifact.
+2. Names are never guessed, neither Mathlib nor project lemmas. `exact?` is not a discovery tool.
+3. After a failed first attempt — check recorded search flags before the second.
+4. Before spending a Proshka call — check whether the address was already searched.
+
+Search records are written into the artifact produced anyway (closing `answer.md` header,
+verdict `iteration:` block), never as a separate "remember to log it" step.
 
 ### 16.7 Local databases that are not in git
 
