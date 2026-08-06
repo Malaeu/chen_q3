@@ -467,6 +467,87 @@ def cmd_excluded(args) -> int:
     return 0
 
 
+def cmd_flags(args) -> int:
+    """Flags on the map: where we have already searched, with which words, at what cost.
+
+    Migrated from the 60 oracle cards (wave 4). The point is not the answer but the record
+    of the search: which terms were strong, which returned nothing, which looked right and
+    led astray. Query by proof-tree address or by term.
+    """
+    conn = connect()
+    q = " ".join(args.query) if args.query else None
+
+    if args.vocab:
+        print("VOCABULARY across all sessions\n")
+        for verdict, label in (("strong", "СИЛЬНЫЕ (сработали)"),
+                               ("opens_branch", "ОТКРЫВАЮТ ВЕТКУ"),
+                               ("false_friend", "ЛОЖНЫЕ ДРУЗЬЯ (уводят)"),
+                               ("empty", "ПУСТЫЕ (ничего не дали)")):
+            rows = conn.execute(
+                "SELECT term, COUNT(*) n FROM search_term WHERE verdict=? "
+                "GROUP BY term ORDER BY n DESC, term LIMIT ?", (verdict, args.limit)).fetchall()
+            if not rows:
+                continue
+            print(f"── {label} ({len(rows)} показано)")
+            for r in rows:
+                mark = f" ×{r['n']}" if r["n"] > 1 else ""
+                print(f"     {r['term'][:104]}{mark}")
+            print()
+        return 0
+
+    if not q:
+        rows = conn.execute(
+            "SELECT main_address, COUNT(*) n FROM search_session "
+            "GROUP BY main_address ORDER BY n DESC, main_address").fetchall()
+        print(f"{len(rows)} адресов с записанным поиском "
+              f"(всего сессий {conn.execute('SELECT COUNT(*) FROM search_session').fetchone()[0]}):\n")
+        for r in rows:
+            print(f"  {r['main_address']:<44} {r['n']} сессий")
+        print("\nkb.py flags <адрес|термин>   ·   kb.py flags --vocab")
+        return 0
+
+    like = f"%{q}%"
+    ids = [r[0] for r in conn.execute(
+        "SELECT DISTINCT s.id FROM search_session s "
+        "LEFT JOIN search_address a ON a.session_id = s.id "
+        "LEFT JOIN search_term t ON t.session_id = s.id "
+        "WHERE s.main_address LIKE ? OR a.address LIKE ? OR t.term LIKE ? "
+        "   OR s.blocker LIKE ? OR s.id LIKE ?",
+        (like, like, like, like, like))]
+    if not ids:
+        print(f"нет записанного поиска по {q!r} — территория не хожена")
+        return 1
+
+    print(f"{len(ids)} сессий по {q!r}\n")
+    for sid in ids:
+        s_row = conn.execute("SELECT * FROM search_session WHERE id=?", (sid,)).fetchone()
+        print(f"══ {s_row['main_address']}   [{s_row['status']}/{s_row['address_status']}]"
+              f"   {s_row['date']}")
+        if s_row["blocker"]:
+            print(f"   блокер : {' '.join(s_row['blocker'].split())[:200]}")
+        if s_row["collections"]:
+            print(f"   искали в: {s_row['collections']}")
+        for verdict, label in (("strong", "сильные "), ("opens_branch", "открыли "),
+                               ("false_friend", "ЛОЖНЫЕ "), ("empty", "пусто   ")):
+            terms = [r[0] for r in conn.execute(
+                "SELECT term FROM search_term WHERE session_id=? AND verdict=?",
+                (sid, verdict))]
+            for t in terms:
+                print(f"   {label}: {t[:110]}")
+        nb = [r[0] for r in conn.execute(
+            "SELECT DISTINCT address FROM search_address WHERE session_id=? AND role='neighbor'",
+            (sid,))]
+        if nb:
+            print(f"   соседи : {', '.join(nb[:8])}")
+        links = conn.execute(
+            "SELECT kind, ref FROM search_link WHERE session_id=?", (sid,)).fetchall()
+        for l in links:
+            print(f"   {l['kind']:<7}: {l['ref']}")
+        print(f"   карточка: {s_row['source_file']}")
+        print()
+    return 0
+
+
 def cmd_export(_args) -> int:
     conn = connect()
     out = ["# KILLS.md — generated view of knowledge.db\n",
@@ -559,6 +640,13 @@ def main() -> int:
     s.add_argument("--link", action="append", default=[],
                    metavar="TO_TYPE:TO_ID:RELATION[:NOTE]")
     s.set_defaults(fn=cmd_record_exploration_close)
+
+    s = sub.add_parser(
+        "flags", help="where we already searched: addresses, strong/false-friend terms")
+    s.add_argument("query", nargs="*", help="адрес или термин; пусто = список адресов")
+    s.add_argument("--vocab", action="store_true", help="весь накопленный словарь поиска")
+    s.add_argument("--limit", type=int, default=25)
+    s.set_defaults(fn=cmd_flags)
 
     sub.add_parser("census", help="compare frozen sources against the DB").set_defaults(
         fn=cmd_census)
