@@ -50587,3 +50587,26 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `G6_S2_MUNTZ_V3_PRODUCTION_EXPORT_CLOSURE_MATERIALIZED_XW6_OPEN`.
 - Next: `D0PstarMuntzCenteredCoordinateLock` (XW.6), then finite residual and
   locally-uniform tail control.
+
+# 2026-08-06 — Goal 056 Phase 4A XW.6 centered coordinate synthesis (in progress)
+
+- Exact consumer: strict `SlotS2` needs the literal
+  `selectedFamily (canonicalApproximation S.canonical)` on the stored
+  `S.canonical.parent (S.canonical.extract k)` sequence.
+- XW.8 already makes that selected row the normalized Galerkin projection of
+  the same `prolateCombination (S.source.pair i_k)`; no surrogate family is
+  needed or allowed.
+- The source convention fixes `rawFplus D i (-z)` as the multiplicative
+  transform coordinate, while the Müntz window uses the same exponent at
+  `Gwin h (lambda_m i) (-Complex.I * z)`.
+- These two values are not definitionally equal: `kTrial_m_N` contains both
+  `P_m_N` and `sTrial_m_N`, so the honest bridge has a finite Galerkin
+  coordinate defect.
+- Phase 4A therefore types the exact same-index raw side, Gwin side, scaling,
+  and defect, and proves only their definitional/algebraic reconstruction.
+- Phase 4B must identify that defect with an object-first projection residual
+  and prove compact-open decay; only then may `Rminus` and `Rplus` tail limits
+  be composed into the every-`ClusterData` SlotS2 argument.
+- Primary production pointers: `D0ProlateKTrialSource.lean`,
+  `D0CanonicalApproximation.lean`, `D0KTrialStage3.lean`, and
+  `MuntzV3/ProlateCombinationReceiver.lean`.
