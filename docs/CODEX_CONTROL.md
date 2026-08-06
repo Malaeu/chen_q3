@@ -659,3 +659,51 @@ owner **in Polish**; that is the failure this section exists to prevent.
 127.0.0.1:9222, Codex.app with an embedded authenticated browser). None of that describes this
 Linux host. **Do not overwrite §5 with Linux reality** — it was reconstructed once, at cost.
 If a Linux capability snapshot is needed, add it as a separate, clearly labelled section.
+
+## 18. Co-located bodies — single-writer rule (declared 2026-08-06)
+
+When both executor bodies run on the **same host and the same worktree**, exactly one body
+writes and the other only reads. Section 2 says the two bodies may not produce two semantic
+policies; this section says they may not produce two concurrent writers either.
+
+### 18.1 Current assignment
+
+```yaml
+WRITE_LOCK:
+  holder: CODEX            # writes files, commits, pushes
+  reader: CLAUDE_CODE      # read-only until the owner reassigns
+  declared_by: OWNER
+  declared_at: 2026-08-06
+  scope: shared Linux host, worktree /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
+```
+
+Reassignment happens **only** on an explicit owner instruction, never by either body deciding
+it is more convenient.
+
+### 18.2 What the reader may still do
+
+Read files, run `rg` and `git` queries, execute read-only tooling
+(`kb.py ask|show|list|census|excluded`, `routeb_status.py --check`, `observability.py summary`),
+compute and verify, and write scratch output **outside** the repository. It reports findings to
+the owner and proposes edits, but does not apply them.
+
+### 18.3 What the reader must not do
+
+Edit tracked files, create files inside the repository, commit, push, or run generators that
+rewrite shared state: `spine.py`, `tools_census.py --markdown`, `kb.py export`,
+`kb_migrate_*.py`, `observability.py rebuild`.
+
+Exception: a specific write explicitly requested by the owner for that action.
+
+### 18.4 Why this exists
+
+On 2026-08-06 strict validation reported that `orchestrator/state/SPINE_STATE.json` had
+"unexpectedly changed". It had not misbehaved: the two changed fields were the `sha256` of
+`docs/CODEX_CONTROL.md` and `source_commit`, both moving because the other body had committed
+a control-file edit minutes earlier. The generator is deterministic — two consecutive runs
+produce byte-identical output. The cost was a false alarm; the next collision on a shared
+regenerated file (`SPINE_STATE.json`, `SPINE_VIEW.md`, `META_CORPUS.json`, `TOOLS.md`,
+`KILLS.md`, `knowledge.db`) would have been a silently overwritten edit.
+
+Before any write, the holder still runs `git pull --rebase`; a clean tree is not proof that the
+other body has been idle.
