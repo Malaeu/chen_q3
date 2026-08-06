@@ -671,3 +671,33 @@ notes: >-
   submission, physical Bus 010, production Lean edit, route promotion, or
   PX/RH claim occurred.
 ```
+
+### 2026-08-06 — Goal 056 Phase 4B named object-first residual crosswalk
+
+```yaml
+proof_address: RouteB.G6.S2.K8.ResidualCrosswalk
+front: G6/S2
+transaction: G6_S2_D0PSTAR_MUNTZ_NAMED_RESIDUAL_CROSSWALK_CONTRACT
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 19b29ded-8e0b-42bf-a359-1081977ea8e2
+response_message_id: adf2b6ae-5226-45de-9aaa-289dcca2727a
+sent_at: 2026-08-06T12:38:23+02:00
+completed_at: 2026-08-06T12:55:31+02:00
+wall_seconds: 1028
+wall_human: "17m08s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_NAMED_OBJECT_FIRST_RESIDUAL_CONTRACT_SELECTED
+status: CONDITIONAL
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026-08-06.md"
+notes: >-
+  One same-chat DELEGATED_STRATEGIC_REVIEW batch pinned HEAD/origin
+  8487d4dc3557b8bfe4d57f61c3b67508d7d19f23.  Proshka selected exactly one
+  operative class, TRY_NAMED_RESIDUAL_CROSSWALK_CONTRACT, and Path B: a named
+  explicit Prop contract plus one hole-free downstream receiver.  The answer
+  names the exact projection-minus-full residual, parent/extract index,
+  dStar-restricted Mellin coordinate, normalizer, four semantic plants, and
+  keeps the full L2/Fourier/Mellin bridge unauthorized for this transaction.
+  Answer now appeared during generation and was never clicked.  No Aristotle
+  submission, Bus 010, route promotion, PX claim, or RH claim occurred.
+```

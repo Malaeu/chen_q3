@@ -50642,3 +50642,23 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   now, or ratify a named weakening whose hypothesis is exactly that missing
   bridge and continue only conditionally. No SlotS2 or decay claim is made
   before that choice is resolved.
+
+## Delegated strategic decision
+
+- Proshka selected Path B with exact result
+  `G6_S2_NAMED_OBJECT_FIRST_RESIDUAL_CONTRACT_SELECTED` and operative class
+  `TRY_NAMED_RESIDUAL_CROSSWALK_CONTRACT`.
+- The bounded transaction defines the literal normalized object residual,
+  its `dStar.restrict (I_m i)` Mellin coordinate, one explicit `Prop`
+  crosswalk hypothesis, and one direct selected-family receiver.
+- This is representation progress only.  The contract is neither an axiom nor
+  a proved theorem; weighted Fourier orthonormality, projection
+  reconstruction, measure conversion, compact-open decay, and `SlotS2` remain
+  outside the leaf.
+- Three local Lean probes already confirmed that the literal residual is
+  well-typed, `E_star` is definitionally the production continuation, and the
+  exact `dStar` Mellin kernel can be built in `H_m`.  The unresolved content is
+  the reconstruction/calibration theorem, not the existence of the objects.
+- Registered prediction: the conditional receiver should compile locally;
+  the later full bridge should first meet the weighted logarithmic
+  orthonormality or measure-change wall; compact-open decay remains independent.

@@ -1,9 +1,10 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 289 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 291 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `proshka/PROSHKA_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026-08-06.md` | Goal 056 Phase-4B delegated verdict — named object-first residual crosswalk contract selected | `39c9bee87243396a2fb713485b80bdad81fdc29dd899c5c736db5aa310e5e6c4` |
 | `proshka/PROSHKA_VERDICT_UNIFIED_MEMORY_CONTOUR_2026-08-05.md` | Proshka architecture verdict — unified one-Spine memory contour (RATIFIED, impl open) | `0bb8c1b9f608daa649cc9a0276458ca2461f729103c86ea4d0d56d56afd860ea` |
 | `proshka/PROSHKA_VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026-08-05.md` | Proshka SECOND verdict — unified memory+behavior-control contour, P9 CODEX_CONTROL + batch-per-PHASE (RATIFIED, impl open, amends first) | `cd7784a2b1d703685f1c874aa34bc2a2fdb8f25a9b508777975fc4ca87f6ae31` |
 | `../EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md` | executor arsenal discipline (both bodies: Codex/Claude Code) | `9b63764178217315b32bc7f6ac2dfc6960a0cbe4e1915910aff54b25f060e07e` |
@@ -129,6 +130,7 @@ Proshka mirror from `rh_lean_01_2026`; 289 mirrored source files plus `CHANNEL_R
 | `056i_muntz_v3_production_receiver_batch_g.answer.md` | standing-root Phase-3G answer | `e2960fbe5368a62b48541700b6509501444c502b1e8a23659b1888131dc7e9f8` |
 | `056j_d0pstar_muntz_centered_coordinate_lock.goal.md` | standing-root Phase-4A XW.6 goal | `7ae242eaa4ccec88d65381f20753fcb846102cc1a3a054dd0fa7e0996fb03324` |
 | `056j_d0pstar_muntz_centered_coordinate_lock.answer.md` | standing-root Phase-4A XW.6 answer | `322deb89933e6fac467714377dda92434f1ddddba8b1c80aaf8d2f127963d005` |
+| `056k_d0pstar_muntz_galerkin_residual_contract.goal.md` | standing-root Phase-4B named object-first residual contract goal | `f89f7f4937fdc2695b40c3afb5355d1f5789a54361921f1fbcc14f53f7d66ff7` |
 | `ARISTOTLE_PROTOCOL_MYTHOS_RATIFICATION.md` | Proshka verdict/source review | `1a969add070390407d0edfc37f42efc9ca9f6473802133f73576cd54a8577ec2` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v2_REPAIRED.md` | active Aristotle contract | `4974257ecc713e430db1fa0c6bcd1aa4780f3059d9403dc57c2f80513769a37f` |
 | `ARISTOTLE_TASK_EStarMuntzContinuation_v3_PoleSubtracted.md` | active Aristotle contract | `ae782b36312f3c81c08a479658abc8c6d8318ddbc26d5339f01552b028b55e25` |

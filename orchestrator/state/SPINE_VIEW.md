@@ -20,7 +20,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Meter | Count |
 |---|---:|
-| `delegated_strategic_review_calls` | 3 |
+| `delegated_strategic_review_calls` | 4 |
 | `exploration_review_calls` | 0 |
 | `fanout_violations` | 0 |
 | `forced_rollovers` | 0 |
