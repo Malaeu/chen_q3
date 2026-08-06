@@ -49,20 +49,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `42`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `40`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `32`.
 
 ## Meta-corpus registry
 - derived surfaces: `6`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_d8c060482f1a12e348d1` at `2026-08-05T22:19:48+00:00` from `d3e8ac14bfe3`
+- snapshot: `OBS_1f21f1c419c0cf755e26` at `2026-08-05T23:08:15+00:00` from `7e319bdc911d`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
 - file states/import edges: `3316` / `5544`
-- taint status: `{"IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 3315}`; doomed: `0`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2012}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `15`; observed seconds total/mean/median: `21798` / `1453.2` / `1287`; lower bounds: `1`
@@ -72,13 +72,13 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
 | `autopsy_map` | 3 | 2026-08-05T21:45:30+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-05 22:19 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-05 22:19 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-05 23:08 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-05 23:08 UTC | no | PARSED | READY |
 | `proshka_timing` | 15 | 2026-08-05T12:00:18.143+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-05 22:19 UTC | no | PARSED | READY |
-| `taint_graph` | 3316 | 2026-08-05 22:19 UTC | no | PARSED | READY |
-| `taint_sources` | 3316 | 2026-08-05 22:19 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `taint_graph` | 3316 | 2026-08-05 23:08 UTC | no | PARSED | READY |
+| `taint_sources` | 3316 | 2026-08-05 23:08 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -98,10 +98,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 |---|---|
 | `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 2026-08-05 |
 | `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 2026-08-05 |
-| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 2026-08-05 |
-| `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-08-05 |
-| `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-05 |
-| `docs/RH_TRICK_ATLAS.md` | 2026-08-05 |
+| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 2026-08-06 |
+| `docs/trackB/S5_FAILURE_ATLAS.md` | 2026-08-06 |
+| `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
+| `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-05 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
@@ -127,7 +127,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | TRACKB_S5_ZERO_SIDE_PSD_LIFT | L = Mplus * F_v as the zero-side PSD lift | killed | hat(L_proj)=max(hat(L),0) repairs Fourier-side PSD but may destroy physical edge-contro... |
 | VERDICT_S1_ANCHOR_2026_07_27 | PHASE_SUBSEQUENCE | killed |  |
 
-**route** (16)
+**route** (17)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -140,6 +140,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | GENERIC_BRIDGE_ELL_1_CAUCHY_TAIL_VANISHING_RIGHTARROW_TAIL_M | generic bridge \ell^1-Cauchy-tail vanishing \Rightarrow tail moments | killed | remaining first wall: prove a `Y_a`-specific no-counterexample lemma |
 | GENERIC_SHORT_INTERVAL_S_T_LITERATURE_AS_A_CLOSURE_TOOL_FOR_ | generic short-interval S(T) literature as a closure tool for D2g30d | killed | next live branch: `D2g31` structural reduction to compressed-gap cascade (`D2f3`) or bo... |
 | H_BRIDGE_FILTERED_ROUTE_THROUGH_PO2_PO3_H4 | H-bridge filtered route through PO2 -> PO3 -> ... -> H4 | live | active in `PHASE_MONITOR.md` |
+| JANUARY_PRIMECERT_CERTIFICATE_ROAD_AS_CURRENT_MAINLINE | Treat the January tau=0 PrimeCert certificate road as the current Q3/R | killed | Select work only from the current monitor/control plane; reuse a named PrimeCert lemma ... |
 | NAIVE_DIRECT_DE_MICHELI_VIANO_APPLICATION_AFTER_TRANSLATING_ | naive direct De Micheli--Viano application after translating the tail  | killed | next live branch: either prove an infinite-pole extension for the `\ell^1` simple-Cauch... |
 | RAW_IDENTITY_W_RS_A_KAPPA_A_Q_RS | raw identity w_{rs}(a)=\kappa(a)q_{rs} | killed | `PO2` mixed-block attack |
 | SF_PD_SAME_FAMILY_RAYLEIGH_BRIDGE | SF-pd same-family Rayleigh bridge | killed | `H-bridge` primary route |
@@ -191,7 +192,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_59 records, 10 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_60 records, 13 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |

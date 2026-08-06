@@ -10,8 +10,8 @@
         "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-2q-pro-verdict-proshka-quadratic-2026-07-13.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-1-gate-contract.md"
+        "qmd://q3-docs/docs/routeb-bus/proshka-ratio-receiver-2026-07-27.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-ratio-receiver-2026-07-27.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -29,7 +29,7 @@
         "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
       ],
       "query": "edge-sliver",
-      "result_count": 42,
+      "result_count": 40,
       "status": "PASS",
       "vector_count": 30
     },
@@ -41,15 +41,15 @@
         "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffprimedictionaryboundsimport.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 34,
+      "result_count": 32,
       "status": "PASS",
-      "vector_count": 27
+      "vector_count": 25
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "d3e8ac14bfe3a13193cb6528d553db3a0c24fd0c",
+  "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b",
   "status": "PASS"
 }

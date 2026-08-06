@@ -1,7 +1,8 @@
-# Lean Axiom Dependencies (auto) — 2026-08-05 22:19 UTC
+# Lean Axiom Dependencies (auto) — 2026-08-05 23:08 UTC
 
 **Authority:** successful `lake env lean Q3/CheckAxioms.lean` output.
 **Boundary:** this is an axiom inventory, not the file-import DAG and not a proof verdict.
+**Source scan:** dependency-aware; 1303 heavy generated non-root files were not content-scanned.
 
 ## Q3.Main.RH_of_Weil_and_Q3
 - Axiom dependencies: 5

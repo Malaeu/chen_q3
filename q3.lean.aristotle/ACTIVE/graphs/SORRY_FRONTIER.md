@@ -1,14 +1,26 @@
-# Sorry Frontier (auto) — 2026-08-05 22:19 UTC
+# Sorry Frontier (auto) — 2026-08-05 23:08 UTC
 
 **Purpose:** Exact active `sorry` sites plus their membership in configured root closures.
-**Method:** ripgrep candidate selection, then comment/string-aware verification.
+**Method:** header-only import DAG, dependency/allowlist protection, then exact content scan.
 **Scope:** 3316 Lean files; excludes `Q3/Clean` and `Q3/Archive`.
+**Content scan:** 2013 files; 1303 heavy non-root generated files explicitly marked not scanned.
+**Bytes avoided:** 4,312,275,592.
 **Total active sorries:** 0
 **Root-impacting sorries:** 0
 
 ## Root closures
 - `Q3.Main.RH_of_Weil_and_Q3` via `Q3/Main.lean`: 66 files
 - `Q3.RH_of_shifted_atom_route` via `Q3/Proofs/PaperMainlineAtomRoute.lean`: 65 files
+
+## Content-scan protection
+Skipped files are `CONTENT_SCAN_SKIPPED_GENERATED_NONROOT`, never green/PASS.
+- Heavy family: `Q3/Proofs/PrimeCert` at 1,000,000 bytes or larger
+- Root-protected closure: 66 files
+- Allowlist closure: 514 files
+  - `Q3/Proofs/PrimeCert/Defs.lean`
+  - `Q3/Proofs/PrimeCert/IntervalLemmas.lean`
+  - `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowBucket0Auto_0_249.lean`
+  - `Q3/Proofs/PrimeCert/BrangeHeatCert_2026_01_28_PrimePowBucket0Auto_250_499.lean`
 
 ## Active sites
 _No active sorries found._

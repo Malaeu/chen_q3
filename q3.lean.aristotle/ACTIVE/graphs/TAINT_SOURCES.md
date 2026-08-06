@@ -1,18 +1,8 @@
-# Taint Sources Report (auto) — 2026-01-29 14:09 UTC
+# Taint Sources (auto) — 2026-08-05 23:08 UTC
 
-**Purpose:** Explain which files are dirty (direct sorries) and which files are tainted via imports.
+**Purpose:** Transitive origin set for every file with observed contamination.
+**Direct sorry files:** 0
+**Import boundaries:** 1
+**Affected files:** 1
 
-**Source:** ACTIVE/graphs/TAINT_GRAPH.json + SORRY_FRONTIER.json
-
-## Root dirty files (direct SORRY/BROKEN)
-
-_None_
-
-## DOOMED files (critical propagation)
-
-_None_
-
-## TAINTED files (no direct sorries, but import dirty deps)
-
-_None_
-
+- `Q3/Proofs/Q_Lipschitz_Bridge.lean` <- `IMPORT::Q3.Clean.AxiomsTier1`
