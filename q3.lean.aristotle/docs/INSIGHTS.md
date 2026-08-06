@@ -50449,3 +50449,16 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - All three plants fire. Exact result:
   `G6_S2_MUNTZ_V3_PRODUCTION_CORE_BATCH_A_MATERIALIZED`.
 - Next: four direct Batch-A consumers in `MuntzV3ProductionSupplierBatchB`.
+
+# 2026-08-06 — Goal 056 Phase 3B Müntz-v3 production supplier Batch B (in progress)
+
+- Exact target: port four direct Batch-A consumers with only production import
+  rewrites and an outer provenance block.
+- The source set is 373 lines and depends only on request `Main` plus the R6
+  boundary bridge, both now materialized as production Batch A.
+- Load-bearing invariants are the Mellin exponent/half-plane, the exact
+  E-star square-root constant, `hb : 0 ≤ b`, and the explicit distinction
+  between namespaced `Estar` and root `_root_.Estar`.
+- The batch closes only after normalized body equality, four Lean-4.26 builds,
+  taint/forbidden-import zero, standard-triple axiom checks, and proof-DB
+  reimport.
