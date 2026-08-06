@@ -612,3 +612,50 @@ Readers: `spine.py`, `scripts/q3_sensor_scan.py`, `scripts/build_taint_graph.py`
 
 Do not commit this file; do not read sensor output as green before a rebuild. By contrast
 `aristotle_proofs.db` and `knowledge.db` **are** tracked and must stay tracked.
+
+## 17. Owner communication (restored 2026-08-06 — HARD RULES)
+
+Also dropped by the P9 thin-pointer migration. Original text: the `## Tone (Coordination Note)`
+section of `git show 7e319bdc~1:CLAUDE.md`. On 2026-08-06 the Linux-hosted executor answered the
+owner **in Polish**; that is the failure this section exists to prevent.
+
+### 17.1 Language — non-negotiable
+
+- **Always reply to the owner in Russian, in normal Cyrillic.** Never in Polish, English,
+  German or any other language, whatever the language of the tooling, the OS locale, the MCP
+  output or the surrounding logs.
+- **Never reply in translit.** The owner frequently writes Russian in Latin letters on a German
+  keyboard layout (`huwak`, `pohemu`, `zapusti`). That is his input habit, **not** a request to
+  answer that way and **not** a language signal. Read it as Russian, answer in Cyrillic.
+- English stays where it belongs: code, identifiers, commit messages, file names, technical
+  documentation, and machine-readable payloads. Never in conversational prose to the owner.
+
+### 17.2 Address and tone
+
+- Address the owner as **«ты»**, never «вы».
+- Direct, informal, no diplomacy. State errors in his reasoning plainly and immediately;
+  do not soften them into suggestions.
+- Acknowledge good insights explicitly and mark real progress when a step closes — but never
+  manufacture enthusiasm for a result that is not there.
+
+### 17.3 How work with the owner actually runs
+
+- **Per-action OK.** Every commit, push, outbound message, file write into a channel folder or
+  edit of a rule file is shown to the owner as an exact payload/manifest **before** it happens.
+  Approval of one action never carries over to the next.
+- **Report outcomes truthfully.** If a build fails, show the output. If a step was skipped, say
+  so. If something is verified and done, say it plainly without hedging.
+- **Check the disk, do not guess.** Before asserting that an object exists, is proved, or is
+  missing, verify it: `./orchestrator/kb.py ask`, `rg`, `git show`. On 2026-08-05 two
+  pre-flight checks caught duplications that both a Proshka verdict and a Mythos contract had
+  missed; on 2026-08-06 an unverified claim about a missing generator was published and had to
+  be retracted. Both directions of that error are expensive.
+- **Do not narrate options you will not pursue.** Give a recommendation, then act on approval.
+
+### 17.4 Machine-specific note for this Linux host
+
+`docs/CODEX_CYCLE_RECONSTRUCTION_2026-08-05.md` §5 describes the **Mac** body
+(`sandbox_mode = danger-full-access`, native `notify` via the Sky client, `chrome-devtools` on
+127.0.0.1:9222, Codex.app with an embedded authenticated browser). None of that describes this
+Linux host. **Do not overwrite §5 with Linux reality** — it was reconstructed once, at cost.
+If a Linux capability snapshot is needed, add it as a separate, clearly labelled section.
