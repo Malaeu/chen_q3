@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-06 — Goal 056 Phase 4I prolate source N-coherence repair
+
+```yaml
+proof_address: RouteB.G6.S2.K8.ProlateSourceNCoherenceRepair
+front: G6/S2
+transaction: G6_S2_D0_PROLATE_SOURCE_N_COHERENCE_REPAIR
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 79fc81d0-c340-48c4-9e25-8778dd8a8240
+response_message_id: 570a6689-ee16-44a5-ad8c-53f3740ab3b1
+sent_at: "2026-08-06T18:33+02:00 (minute-resolution observation)"
+completed_at: "2026-08-06T19:05+02:00 (minute-resolution observation)"
+wall_seconds: "~1920"
+wall_human: "~32m observed wall; UI reports 31m38s reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: G6_S2_D0_PROLATE_SOURCE_N_COHERENCE_REPAIR_SELECTED
+status: OPEN_ACCEPTED_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026-08-06.md"
+notes: >-
+  Ninth same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field
+  phase pinned HEAD/origin e2ef5f0741c15b644514eade8332d35ed5629666.
+  The exact 30,705-byte verdict has SHA-256
+  0e954f41389df08204693a79a49c89a0f3c517d8d7172781b54c7934a1a6c714.
+  Proshka killed the universal selectedProjectionTailDecay theorem as a
+  currently source-unsupported shape without claiming its negation, and
+  selected one exact same-m prolateCombination coherence field plus one
+  derived E_star theorem. Independent PairCofinal was rejected as physical
+  bandwidth control, and fixed-space Fourier density was rejected for the
+  varying carrier family. Six plants pin source identity, allowed certificate
+  dependence, carrier mismatch, bandwidth scaling, parent/extract identity,
+  and rejection of a tail restatement. Answer now appeared and was never
+  clicked. No Aristotle submission, Bus 010, Goal-055 release, route
+  promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-06 — Goal 056 Phase 4H selected residual L² decay receiver
 
 ```yaml

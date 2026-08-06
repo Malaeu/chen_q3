@@ -51156,3 +51156,13 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   the present type, ratify the `N`-coherence repair, and choose explicitly
   between the coupled-rate interface (B) and the constructive diagonal
   schedule (C).  Aristotle is not useful until that theorem shape is fixed.
+- Delegated review batch 9 selected Candidate A as the only current
+  transaction. The universal tail target is
+  `KILLED_AS_CURRENT_SOURCE_UNSUPPORTED_THEOREM_SHAPE`, not mathematically
+  refuted. The exact repair is one
+  `prolateCombination_eq_of_same_m` structure field and one derived
+  `E_star_eq_of_same_m` theorem; certificates remain free to depend on `N`.
+- The post-repair analytic wall is now named rather than blurred:
+  `G6_S2_D0_SELECTED_LOG_WINDOW_FOURIER_TAIL_RATE`. Its future interface must
+  separate the generic weighted Fourier-tail inequality, a physical-bandwidth
+  law, and source-specific uniform energy control. None is claimed here.
