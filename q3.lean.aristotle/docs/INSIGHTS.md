@@ -50425,3 +50425,15 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   open until each batch passes Lean 4.26.
 - Exact audit result:
   `G6_S2_MUNTZ_V3_PRODUCTION_EXPORT_CLOSURE_AUDITED_PORT_OPEN`.
+
+# 2026-08-06 — Goal 056 Phase 3A Müntz-v3 production core Batch A (in progress)
+
+- Exact target: copy the two independent roots of the audited closure into
+  `Q3.Proofs.RouteB.MuntzV3`: Core (request `Main.lean`) and the R6
+  boundary-cell bridge.
+- Source SHAs are `0b2e52db...b888` and `b0c3a16d...5ce6`; only an outer
+  provenance header and production module path are permitted to differ.
+- Both sources import only Mathlib, so Batch A has no dependency on any other
+  request-project module and is the cheapest Lean-4.26 portability test.
+- The decisive plants are normalized body equality, forbidden-import absence,
+  direct production compilation, and standard-triple-only axiom output.
