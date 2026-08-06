@@ -51173,3 +51173,37 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   standard axiom triple, target/full builds, `q3_check`, proof-DB indexing,
   67/67 tests, strict Spine, 8/0 observability, and three SQLite integrity
   checks pass. Phase-4H remains byte-unchanged and analytically conditional.
+
+# 2026-08-06 — Goal 056 Phase 4J log-window Fourier-tail research (in progress)
+
+- Exact node: `G6_S2_D0_SELECTED_LOG_WINDOW_FOURIER_TAIL_RATE`; it must not
+  silently reinstate the Phase-4I-killed universal arbitrary-schedule theorem.
+- Four local `q3_docs` searches recover orthonormality, finite projection, and
+  source regularity, but no completeness theorem or uniform Fourier-energy
+  supplier for the literal changing spaces `H_m i`.
+- `V_n_m_orthonormal` is therefore insufficient by itself: Mathlib Bessel
+  inequality applies to an orthonormal family, while exact residual tails need
+  a `HilbertBasis` or an independently proved dense-span/completeness bridge.
+- Mathlib's fixed-circle Fourier basis has Parseval and physical derivative
+  frequency `2 * pi * n / T`; this confirms the required log-window scale
+  `L_m / (2 * pi * (N + 1))`, but it does not transport automatically to the
+  current `H_m i` quotient-valued modes.
+- A standalone Lean scratch now proves, for any `HilbertBasis ℤ ℂ E`, the exact
+  squared residual as the `tsum` outside a finite mode set and a generic
+  weighted-tail inequality from a summable nonnegative energy and a pointwise
+  outside-band weight lower bound.
+- Thus the generic receiver is immediately executable and requires no new
+  analytic axiom. Instantiating it at `V_n_m` still requires a source-faithful
+  log-window Hilbert-basis/completeness theorem.
+- Turning coefficient weight `n^2` into the physical factor additionally
+  requires a derivative/regularity energy identity or bound with constants
+  controlled along the selected changing source family; current Lipschitz
+  existence supplies no such uniform constant.
+- Candidate A: first materialize only the generic Hilbert-basis Parseval and
+  weighted-tail receiver. Candidate B: also postulate a concrete `V_n_m`
+  Hilbert basis in source data; rejected as premature unless provenance is
+  supplied. Candidate C: build the full log-window unitary/completeness bridge
+  now; mathematically direct but substantially broader than one transaction.
+- Recommendation: ratify Candidate A as the next exact infrastructure lock,
+  name completeness and uniform physical energy as the two remaining analytic
+  suppliers, and forbid Aristotle until the source-specific bridge is fixed.
