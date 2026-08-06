@@ -50499,7 +50499,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: `MuntzV3HabsExactClass` in
   `MuntzV3ProductionSupplierBatchD`.
 
-# 2026-08-06 — Goal 056 Phase 3D Müntz-v3 production supplier Batch D (in progress)
+# 2026-08-06 — Goal 056 Phase 3D Müntz-v3 production supplier Batch D (materialized)
 
 - Exact target: port `MuntzV3HabsExactClass` with only two pinned production
   import substitutions and an outer provenance block.
@@ -50511,3 +50511,13 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - The batch closes only after normalized body equality, Lean-4.26 direct and
   target builds, taint/forbidden-import zero, standard-triple axiom checks, and
   proof-DB reimport.
+
+- The production body normalizes byte-for-byte to the pinned source after
+  reversing only the two declared import substitutions.
+- Direct Lean 4.26, target build `7749`, full build `7817`, `q3_check`, 67/67
+  system tests, taint/forbidden-import zero, and the standard axiom triple pass.
+- The proof DB records 13 declarations as proven. All three plants fire.
+- Exact result:
+  `G6_S2_MUNTZ_V3_PRODUCTION_SUPPLIER_BATCH_D_MATERIALIZED`.
+- Next: `MuntzV3ExactClassClosure` in
+  `MuntzV3ProductionSupplierBatchE`.
