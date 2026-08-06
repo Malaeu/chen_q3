@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "SOURCE_HOLE_AND_IMPORT_BOUNDARY_PROPAGATION",
-  "generated_at": "2026-08-06 09:27 UTC",
+  "generated_at": "2026-08-06 10:31 UTC",
   "root": "Q3/",
   "semantics": {
     "numeric_checks": "EVIDENCE_ONLY_NOT_PROPAGATED",
@@ -9,7 +9,7 @@
     "doomed": "DISABLED"
   },
   "scope": {
-    "included_files": 3331,
+    "included_files": 3332,
     "excluded_directories": [
       "Q3/Clean",
       "Q3/Archive"
@@ -26,8 +26,8 @@
       "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
       "heavy_generated_family": "Q3/Proofs/PrimeCert",
       "heavy_threshold_bytes": 1000000,
-      "content_scanned_files": 2028,
-      "content_scanned_bytes": 93967126,
+      "content_scanned_files": 2029,
+      "content_scanned_bytes": 93974831,
       "skipped_generated_files": 1303,
       "skipped_generated_bytes": 4312275592,
       "skipped_file_ids": [
@@ -81209,6 +81209,31 @@
       "dependencies": [
         "Q3/Proofs/RouteB/D0KTrialStage3.lean",
         "Q3/Proofs/RouteB/ProlateLayer.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
+      "id": "Q3/Proofs/RouteB/D0PstarMuntzCenteredCoordinateLock.lean",
+      "module": "Q3.Proofs.RouteB.D0PstarMuntzCenteredCoordinateLock",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0ProlateKTrialSource.lean",
+        "Q3/Proofs/RouteB/MuntzV3/ProlateCombinationReceiver.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",

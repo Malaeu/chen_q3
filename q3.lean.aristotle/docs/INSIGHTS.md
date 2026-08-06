@@ -50588,7 +50588,7 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Next: `D0PstarMuntzCenteredCoordinateLock` (XW.6), then finite residual and
   locally-uniform tail control.
 
-# 2026-08-06 — Goal 056 Phase 4A XW.6 centered coordinate synthesis (in progress)
+# 2026-08-06 — Goal 056 Phase 4A XW.6 centered coordinate synthesis (materialized)
 
 - Exact consumer: strict `SlotS2` needs the literal
   `selectedFamily (canonicalApproximation S.canonical)` on the stored
@@ -50610,3 +50610,9 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
 - Primary production pointers: `D0ProlateKTrialSource.lean`,
   `D0CanonicalApproximation.lean`, `D0KTrialStage3.lean`, and
   `MuntzV3/ProlateCombinationReceiver.lean`.
+- Materialized result: one 195-line production module, 16 proven DB
+  declarations, exact `Gwin(-i*z) <-> rawFplus(-z)` typing, and an explicit
+  nonzero-unclaimed Galerkin coordinate defect. Both parent/extract and sign
+  mutation plants fail in Lean as intended.
+- Next: `D0PstarMuntzGalerkinResidualCrosswalk`, object-first projection
+  residual identification and compact-open decay on the same selected path.
