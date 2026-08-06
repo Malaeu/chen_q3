@@ -235,7 +235,7 @@ die Erkenntnis, dass der Rest **nicht** pauschal Müll ist.
   Alle drei Arbeitskopien jetzt byte-identisch (`663b3875`); der alte Text lebt nur noch als
   `_backups/PROSHKA_SYSTEM_PROMPT_v2_working_2026-08-04_pre-arsenal.md`.
   ENTRYPOINT/POLICY unterscheiden sich nur um YAML-Frontmatter — harmlos.
-- **`docs/CODEX_TASK_2026-08-05_EVENING.md`** (`48d77990`): vier Aufträge für den Mac-Körper —
+- **`docs/Codex/TASK_2026-08-05_EVENING.md`** (`48d77990`): vier Aufträge für den Mac-Körper —
   (1) die fünf Mac-only GAPS füllen, (2) die Zertifikatsdaten für den G2-owner-fork erzeugen,
   (3) `knowledge.db` benutzen (mit frozen-vs-MIRROR-Liste, damit sein Loop nicht bricht),
   (4) optional den `unreviewed`-Rest lesen.
@@ -314,7 +314,7 @@ gebaut wurde. Der Sitzungsschluss ist deshalb ein Übergabepunkt, kein Stillstan
    Mehrmonats-Formalisierungsprogramm ist oder ein Zertifikatspfad.
 2. **Kontrakt v1.2 materialisieren** — erst nach ihrer Antwort (Q3 prüft die Dekomposition).
 3. ~~Codex: fünf GAPS~~ → **ERLEDIGT über Nacht** (siehe Nachtrag). Offen bleibt aus
-   `docs/CODEX_TASK_2026-08-05_EVENING.md` nur Task 2 (G2-Zertifikatsdaten) und Task 4 (optional).
+   `docs/Codex/TASK_2026-08-05_EVENING.md` nur Task 2 (G2-Zertifikatsdaten) und Task 4 (optional).
 4. **G2 owner fork** unverändert: sieben WR-Integral-Enclosures, Daten vom Owner.
 5. **35 Dateien brauchen einen Menschen** (`kb.py excluded`): 33 `unreviewed`, 2 `pending_read`.
 6. Kartograf als Code weiterhin offen; MAP.md lügt weiter absichtlich (Abnahmetest).
@@ -342,7 +342,7 @@ gebaut wurde. Der Sitzungsschluss ist deshalb ein Übergabepunkt, kein Stillstan
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_migrate_primecomb.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/kb_register_excluded.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/KILLS.md`
-- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/CODEX_TASK_2026-08-05_EVENING.md`
+- `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/TASK_2026-08-05_EVENING.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/PROMPT_2026-08-05_evening.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/README.md`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/PROSHKA_REQUEST_G6_S2_XW_CONSTRUCTOR_2026-08-05.md`

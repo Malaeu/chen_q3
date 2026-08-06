@@ -20,13 +20,13 @@ into a `%D0%9F%D1%80…` URL.
 
 A prompt is a **pointer**, not the work order:
 
-- one line naming the task file to read (`docs/CODEX_TASK_<date>*.md`);
+- one line naming the task file to read (`docs/Codex/TASK_<date>_<slot>.md`);
 - which task to start with, and why that one first;
 - a reminder that the standing constraints still apply;
 - the per-action rule: show the owner what will be written before writing it.
 
 The actual assignments — the numbered tasks, the prohibitions, the deliverables — live in
-`docs/CODEX_TASK_<date>*.md`. Keeping them apart means the long text can be revised without
+`docs/Codex/TASK_<date>_<slot>.md`. Keeping them apart means the long text can be revised without
 re-copying anything into the chat, and the chat message stays short enough to read.
 
 ## Why a pointer rather than the full text
@@ -38,7 +38,7 @@ pasted (thin UI, fat repo).
 
 ## Related
 
-- `docs/CODEX_TASK_*.md` — the assignments themselves
+- `docs/Codex/TASK_*.md` — the assignments themselves
 - `docs/CODEX_HOME_HANDOFF_2026-08-05.md` — the earlier owner→Codex handoff
 - `docs/CODEX_CYCLE_RECONSTRUCTION_2026-08-05.md` — how the Codex loop actually runs
   (§5 still holds the five Mac-only GAPS)
