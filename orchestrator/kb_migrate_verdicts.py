@@ -185,7 +185,11 @@ def main() -> int:
     conn.executemany(
         "INSERT OR REPLACE INTO source_ledger (source_file, expected_rows, migrated_at, note) "
         "VALUES (?,?,?,?)",
-        [(r["source_file"], 1, "2026-08-05", "wave 3 verdicts") for r in rows])
+        # count per file, not a hard 1: a verdict that carries both an M3 strategy
+        # row and a verdict-kill row contributes two, and a hard 1 made the census
+        # report every such file as DRIFT.
+        [(src, n, "2026-08-05", "wave 3 verdicts")
+         for src, n in collections.Counter(r["source_file"] for r in rows).items()])
     conn.commit()
     print("migrated into", kb.DB_PATH)
     return 0

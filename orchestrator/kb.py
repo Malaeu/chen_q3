@@ -321,10 +321,29 @@ def cmd_search_all(args) -> int:
     q = " ".join(args.terms)
     total = 0
 
-    kills = conn.execute(
-        "SELECT k.* FROM kill k LEFT JOIN kill_alias a ON a.kill_id=k.id "
-        "WHERE k.subject LIKE ? OR k.reason LIKE ? OR k.id LIKE ? OR a.alias LIKE ? "
-        "GROUP BY k.id LIMIT 12", [f"%{q}%"] * 4).fetchall()
+    # kill goes through its FTS index like every other layer.  It used to be the
+    # one layer searched by LIKE '%<whole phrase>%', which meant a query whose
+    # words were spread across a slug ("..._source_measure_transport") never
+    # matched — the exact case this layer exists for.  Aliases and ids have no
+    # FTS index, so they stay on LIKE and are merged in.
+    kills, seen_kill = [], set()
+    try:
+        for r in conn.execute(
+                "SELECT k.* FROM kill_fts f JOIN kill k ON k.rowid=f.rowid "
+                "WHERE kill_fts MATCH ? ORDER BY rank LIMIT 12", (q,)):
+            if r["id"] not in seen_kill:
+                seen_kill.add(r["id"])
+                kills.append(r)
+    except sqlite3.OperationalError:
+        pass
+    for r in conn.execute(
+            "SELECT k.* FROM kill k LEFT JOIN kill_alias a ON a.kill_id=k.id "
+            "WHERE k.id LIKE ? OR a.alias LIKE ? GROUP BY k.id LIMIT 12",
+            [f"%{q}%"] * 2):
+        if r["id"] not in seen_kill:
+            seen_kill.add(r["id"])
+            kills.append(r)
+    kills = kills[:12]
     if kills:
         print(f"── KILLS ({len(kills)}) " + "─" * 40)
         for r in kills:
