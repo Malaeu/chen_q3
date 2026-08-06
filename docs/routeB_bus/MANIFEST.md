@@ -4,6 +4,9 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `056u_d0_selected_physical_fourier_energy_receiver.answer.md` | standing-root Phase-4L physical Fourier-energy and bandwidth conditional receiver answer | `00a0a0957ae540ae4b5275af051e3a63ac1f0507b241b97125fa242e8772bbd9` |
+| `056u_d0_selected_physical_fourier_energy_receiver.goal.md` | standing-root Phase-4L sharp physical-frequency tail and selected two-supplier precommit goal | `6cd2d76bf68fbba71fc06b34ffc93405a08fc0b04b8c5e3bcf8730f0c0ce530d` |
+| `proshka/PROSHKA_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026-08-06.md` | Goal 056 Phase-4L delegated verdict — repaired two-supplier physical Fourier receiver selected | `fbbd82c2f1d4f96e8c09fd316e1c29126fb2b3325e3b7bac9ae64fa5b70c139f` |
 | `056t_d0_log_window_v_n_m_completeness_bridge.answer.md` | standing-root Phase-4K literal V_n_m Hilbert-basis and complement-Parseval production answer | `202c91c4b6d85545c0c1a8cf7fe4eaac07401d82c458901628b8270ce6b65aec` |
 | `056t_d0_log_window_v_n_m_completeness_bridge.goal.md` | standing-root Phase-4K log-window unitary and literal V_n_m completeness precommit goal | `c0ec4fbc1821644c7dff16a08e9ccaf90ab8367f83405f2c7c27927b55657347` |
 | `proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | Goal 056 Phase-4K delegated verdict — repaired log-window unitary plus literal V_n_m completeness selected | `a4f346b0e040af61810f80027479aff9f9ae9689d14bd9c6ce04d57fdbcdacb6` |

@@ -211,18 +211,18 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3341,
-    "import_edges": 5579,
+    "file_states": 3342,
+    "import_edges": 5581,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
     "proof_nodes": 10,
     "proof_roots": 2,
     "proshka_lower_bounds": 1,
-    "proshka_runs": 26,
-    "proshka_seconds_mean": 1312.3,
-    "proshka_seconds_median": 1160.0,
-    "proshka_seconds_total": 34121,
+    "proshka_runs": 27,
+    "proshka_seconds_mean": 1323.6,
+    "proshka_seconds_median": 1200,
+    "proshka_seconds_total": 35738,
     "root_memberships": 131,
     "slowest_runs": [
       {
@@ -254,18 +254,18 @@
         "wall_seconds": 1708
       },
       {
-        "front": "G5/S1",
-        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
-        "transaction_id": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
+        "front": "G6/S2",
+        "status": "OPEN_ACCEPTED_FOR_IMPLEMENTATION",
+        "transaction_id": "G6_S2_D0_SELECTED_PHYSICAL_FOURIER_ENERGY_RECEIVER",
         "wall_is_lower_bound": 0,
-        "wall_seconds": 1567
+        "wall_seconds": 1617
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T20:09:07+00:00",
-      "id": "OBS_1659a73449854c9d9012",
+      "generated_at": "2026-08-06T21:12:36+00:00",
+      "id": "OBS_8ea01a9b8e06bfea6254",
       "schema_version": 6,
-      "source_commit": "6d4dd030a0fe9724065b7f74f7da8e2cfadf331e",
+      "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -275,7 +275,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 8,
-        "source_generated_at": "2026-08-06T19:39:02+00:00",
+        "source_generated_at": "2026-08-06T21:11:54+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +283,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 20:09 UTC",
+        "source_generated_at": "2026-08-06 21:12 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +291,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 20:09 UTC",
+        "source_generated_at": "2026-08-06 21:12 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,15 +299,15 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 20:09 UTC",
+        "source_generated_at": "2026-08-06 21:12 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 26,
-        "source_generated_at": "2026-08-06T21:36+02:00 (minute-resolution observation)",
+        "record_count": 27,
+        "source_generated_at": "2026-08-06T22:54:30.579+02:00",
         "source_id": "proshka_timing",
         "stale": 0
       },
@@ -315,23 +315,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 20:09 UTC",
+        "source_generated_at": "2026-08-06 21:12 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3341,
-        "source_generated_at": "2026-08-06 20:09 UTC",
+        "record_count": 3342,
+        "source_generated_at": "2026-08-06 21:12 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3341,
-        "source_generated_at": "2026-08-06 20:09 UTC",
+        "record_count": 3342,
+        "source_generated_at": "2026-08-06 21:12 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -341,7 +341,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2037
+      "NO_OBSERVED_ISSUE": 2038
     },
     "wall_states": 5
   },
@@ -397,9 +397,9 @@
         "matched_paths": [
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
-          "qmd://q3-docs/docs/routeb-bus/proshka/rule-naming-disambiguation-2026-07-31.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/rule-naming-disambiguation-2026-07-31.md"
+          "qmd://q3-docs/docs/routeb-bus/056-k8-muntz-v3-slot-s2-bridge-goal.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/056-k8-muntz-v3-slot-s2-bridge-goal.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-2q-pro-verdict-proshka-quadratic-2026-07-13.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -417,7 +417,7 @@
           "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 41,
+        "result_count": 39,
         "status": "PASS",
         "vector_count": 30
       },
@@ -429,17 +429,17 @@
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffprimedictionaryboundsimport.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 32,
+        "result_count": 37,
         "status": "PASS",
-        "vector_count": 25
+        "vector_count": 30
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "6d4dd030a0fe9724065b7f74f7da8e2cfadf331e",
+    "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
     "status": "PASS"
   },
-  "source_commit": "6d4dd030a0fe9724065b7f74f7da8e2cfadf331e"
+  "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277"
 }

@@ -51299,3 +51299,23 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   every selected physical energy is summable, and those energies are bounded
   together imply `SelectedProjectionTailDecay` on the frozen parent/extract
   path. No source field, post-hoc reselection, `SlotS2`, or RH claim is added.
+- Delegated review batch 12 selected exactly that repaired two-supplier
+  receiver. The alternative unconditional theorem was killed as unsupported
+  by the current source interface; a coupled-rate premise remains a legal
+  fallback if bounded energy later fails.
+- Production closes in
+  `Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean` at SHA-256
+  `f95ae0fc3358f9c42eb049ede3f3bc771ef9815eab8202c6006575c3377c74b5`.
+  It defines the literal `2*pi*n/L_m` coefficient energy, proves the sharp
+  `(2*pi*(N+1)/L_m)^(-2)` fixed-index tail bound, and proves the conditional
+  selected-path receiver from bounded energy plus bandwidth cofinality.
+- Exact result:
+  `G6_S2_D0_PHYSICAL_FOURIER_ENERGY_AND_BANDWIDTH_TO_PROJECTION_TAIL_PROVED`.
+  Direct Lean, dedicated build 7784/7784, full build 7817/7817, `q3_check`,
+  9/9 plants, exact 8-definition/2-theorem/3-private surface, standard-triple
+  axioms, proof DB 13/13 declarations with 5/5 theorems, and 67/67
+  orchestration tests pass.
+- The result is a receiver, not a source theorem: it proves neither selected
+  energy summability/boundedness nor physical-bandwidth cofinality. The sole
+  next source node is
+  `G6_S2_D0_SELECTED_PROLATE_PHYSICAL_FOURIER_ENERGY_SOURCE_SUPPLIER`.
