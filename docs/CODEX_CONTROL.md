@@ -507,3 +507,99 @@ INVALID_OWNER_AUTHORITY_REQUIRED_CLASS
 Changing semantic behavior requires a control-version increment, strict
 validation, plants, and one edit to this active kernel. No wrapper or local
 configuration may duplicate the changed policy.
+
+## 16. Operational rules (restored 2026-08-06)
+
+These are project operating rules, not behavior policy. They lived in `CLAUDE.md` until the
+P9 thin-pointer migration (`7e319bdc`) dropped `CLAUDE.md` from 537 lines to 8 and did not
+carry them across. Verified missing repo-wide on 2026-08-06 before restoring: brand ban,
+commit format, `uname -s`, Linux linker workaround, axiom discipline, entry points, search
+discipline. Source of truth for the original text: `git show 7e319bdc~1:CLAUDE.md`.
+
+### 16.1 No assistant branding in git history
+
+Never add to a commit message or PR body:
+
+```
+Co-Authored-By: Claude …
+🤖 Generated with Claude Code
+```
+
+Applies to every body and every branch, without exception.
+
+### 16.2 Commit protocol
+
+Before each commit, determine OS and branch — do not assume:
+
+```bash
+uname -s                      # Linux | Darwin
+git rev-parse --abbrev-ref HEAD
+```
+
+Message format, mandatory:
+
+- Linux: `[Linux][<branch>] Message`
+- macOS: `[MacOS][<branch>] Message`
+- optional workflow tag after the OS+branch prefix: `[Linux][<branch>][Docs] …`
+
+The second tag is always the git branch, never a sandbox name. When the axiom count changes,
+state it: `(7->6 axioms)`. After committing: `git pull --rebase`, then `git push`.
+
+### 16.3 Linux: strip `LD_LIBRARY_PATH` before any lake/lean call
+
+On the Linux box `LD_LIBRARY_PATH` contains `/usr/lib/x86_64-linux-gnu/`, whose system
+`libLLVM.so.19.1` shadows the toolchain's own copy; elan's `clang` then dies with
+`undefined symbol: _ZN4llvm3sys2fs17getMainExecutableEPKcPv, version LLVM_19.1`.
+
+```bash
+env -u LD_LIBRARY_PATH lake build <target>
+env -u LD_LIBRARY_PATH lake exe cache get
+env -u LD_LIBRARY_PATH lake env lean <file>.lean
+```
+
+macOS is unaffected; do not add the prefix there. The Mathlib cache was fetched this way on
+2026-08-05, so the Linux body can compile Lean locally — small lemmas need neither the Mac
+nor Aristotle.
+
+### 16.4 Proof-philosophy compliance (check before every commit)
+
+- axiom count unchanged or DECREASED;
+- no new `axiom` without a citation;
+- no `sorry` in the main proof chain.
+
+Verification: `lake build Q3.Main`, `./scripts/check_axioms.sh`,
+`#print axioms Q3.Main.RH_of_Weil_and_Q3`. Reference: `q3.lean.aristotle/PHILOSOPHY_OF_PROOF.md`.
+
+### 16.5 Entry points
+
+Project status: `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`. Session: `SESSION_ENTRY.md`.
+Past-error checklist before any PR: `q3.lean.aristotle/docs/ERRORS_DESTROYER.md`.
+Route B additionally reads `ROUTE_B_EXECUTION_STATE.json` + `ROUTE_B_EXECUTION_CONTROL.md`
+and runs `routeb_status.py --check`; no open bus goal means `NO_OPEN_BUS_GOAL / STOP`.
+
+### 16.6 Search discipline — do not guess names
+
+1. **Before creating any object** (Lean file, Aristotle input, goal, brief) query the
+   knowledge base: `./orchestrator/kb.py ask "<terms>"`. This is the pre-flight receipt rule;
+   it caught two duplications on 2026-08-05 that both a verdict and a contract had missed.
+2. Mathlib and project lemma names are never guessed. Use the `Explore` sub-agent or `rg`
+   against `.lake/packages/mathlib/` and `Q3/`; `exact?` times out on hard goals and is not a
+   discovery tool.
+3. Prefer `rg` over `grep` everywhere.
+4. Semantic recall over project docs: `./scripts/research_oracle.py query "<kw>" -c q3_docs`.
+
+### 16.7 Local databases that are not in git
+
+`q3.lean.aristotle/aristotle_db/observability.db` is expected by `orchestrator/spine.py`
+(L46, L508, L779) and referenced by `scripts/q3_sensor_scan.py`,
+`scripts/build_taint_graph.py`, `scripts/build_proof_graph.py`. It is **not committed**, and
+`spine.py` already degrades gracefully: "observability.db is missing — rebuild before trusting
+sensor state."
+
+**OPEN QUESTION for the Mac body (do not guess):** no script in this repository contains a
+`CREATE TABLE` for it — searched 2026-08-06 across `scripts/` and `orchestrator/`. So the
+generator that builds the schema is either machine-local on the Mac or unversioned. Until that
+is answered, a fresh checkout has permanently degraded sensors with no documented way to
+rebuild them. Codex: name the generator, or commit it.
+
+By contrast `aristotle_proofs.db` and `knowledge.db` **are** tracked and must stay tracked.

@@ -48,7 +48,7 @@
       "control_id": "Q3_EXECUTOR_CONTROL",
       "existing_entry_gate": "SESSION_START",
       "path": "docs/CODEX_CONTROL.md",
-      "sha256": "15415d5fff12c4514c9a534fa7e0eca3da4ab970da4287efe785d1b30a3e1a14",
+      "sha256": "d6b9cf4765f9256e883cf2e5dc90495302f2c21bce483e454be878e3c1c4b87b",
       "spine_wiring": "behavior_controls.executor",
       "status": "ACTIVE",
       "trigger_owner": "Codex"
@@ -134,179 +134,42 @@
     ]
   },
   "observability": {
-    "answer_now_clicked": 0,
-    "autopsy_events": 3,
-    "axiom_dependencies": 10,
-    "degraded_sources": 1,
-    "doomed_files": 0,
-    "file_states": 3316,
-    "import_edges": 5544,
-    "namewatch_candidates": 0,
-    "numeric": {},
-    "numeric_checks": 0,
-    "proof_nodes": 10,
-    "proof_roots": 2,
-    "proshka_lower_bounds": 1,
-    "proshka_runs": 15,
-    "proshka_seconds_mean": 1453.2,
-    "proshka_seconds_median": 1287,
-    "proshka_seconds_total": 21798,
-    "root_memberships": 131,
-    "slowest_runs": [
-      {
-        "front": "G2/H2a",
-        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION_BY_STANDING_OWNER_RELEASE",
-        "transaction_id": "G2_CCM_054_1_POST_W02_NEXT_SPLIT_PROSHKA_ADJUDICATION",
-        "wall_is_lower_bound": 0,
-        "wall_seconds": 3221
-      },
-      {
-        "front": "G5/S1",
-        "status": "FIRST_VERDICT_COMPLETE_SUPERSEDED_PENDING_FOLLOWUP",
-        "transaction_id": "G5_MODE4_R1A_DIRECT_ENDPOINT_DETERMINANT_SIGNS",
-        "wall_is_lower_bound": 0,
-        "wall_seconds": 2326
-      },
-      {
-        "front": "G5/S1",
-        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
-        "transaction_id": "G5_MODE4_REGULAR_PSWF_COEFFICIENT_ROW_NEXT_NODE",
-        "wall_is_lower_bound": 0,
-        "wall_seconds": 1708
-      },
-      {
-        "front": "G5/S1",
-        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
-        "transaction_id": "G5_MODE4_FERRERS_REGULAR_SOLUTION_NEXT_NODE",
-        "wall_is_lower_bound": 0,
-        "wall_seconds": 1567
-      },
-      {
-        "front": "G5/S1",
-        "status": "COMPLETE_ACCEPTED_FOR_IMPLEMENTATION",
-        "transaction_id": "G5_MODE4_REGULAR_FIRST_KIND_PSWF_SOURCE_OBJECT_NEXT_NODE",
-        "wall_is_lower_bound": 0,
-        "wall_seconds": 1538
-      }
-    ],
-    "snapshot": {
-      "generated_at": "2026-08-05T23:08:15+00:00",
-      "id": "OBS_1f21f1c419c0cf755e26",
-      "schema_version": 6,
-      "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b",
-      "status": "COMPLETE"
-    },
-    "sorry_files": 0,
-    "sorry_sites": 0,
-    "sources": [
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 3,
-        "source_generated_at": "2026-08-05T21:45:30+00:00",
-        "source_id": "autopsy_map",
-        "stale": 0
-      },
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 10,
-        "source_generated_at": "2026-08-05 23:08 UTC",
-        "source_id": "dependency_tree",
-        "stale": 0
-      },
-      {
-        "health_status": "ZERO_COVERAGE",
-        "parse_status": "PARSED",
-        "record_count": 0,
-        "source_generated_at": "2026-08-05 23:08 UTC",
-        "source_id": "numeric_checks",
-        "stale": 0
-      },
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 10,
-        "source_generated_at": "2026-08-05 23:08 UTC",
-        "source_id": "proof_graph",
-        "stale": 0
-      },
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 15,
-        "source_generated_at": "2026-08-05T12:00:18.143+02:00",
-        "source_id": "proshka_timing",
-        "stale": 0
-      },
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 0,
-        "source_generated_at": "2026-08-05 23:08 UTC",
-        "source_id": "sorry_frontier",
-        "stale": 0
-      },
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 3316,
-        "source_generated_at": "2026-08-05 23:08 UTC",
-        "source_id": "taint_graph",
-        "stale": 0
-      },
-      {
-        "health_status": "READY",
-        "parse_status": "PARSED",
-        "record_count": 3316,
-        "source_generated_at": "2026-08-05 23:08 UTC",
-        "source_id": "taint_sources",
-        "stale": 0
-      }
-    ],
-    "stale_sources": 0,
-    "structured_autopsies": 0,
-    "taint": {
-      "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
-      "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2012
-    },
-    "wall_states": 1
+    "status": "MISSING"
   },
   "runtime": {
     "active_exploration": null,
     "active_proshka_phase": {
       "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
-      "full_context_uploads": 1,
-      "last_adjudicated_pin": "982c3bd467f13ff6d4b35b9202241fb4536f7e7e",
-      "last_boundary_id": "P9_UNIFIED_CONTROL_MATERIALIZED",
-      "opened_at": "2026-08-05T09:33:36+02:00",
-      "opening_pin": "982c3bd467f13ff6d4b35b9202241fb4536f7e7e",
+      "full_context_uploads": 0,
+      "last_adjudicated_pin": "1efda3f80580eb036680f5fd272d3f5112b59283",
+      "last_boundary_id": "GOAL_056_K8_MUNTZ_V3_TO_STRICT_SLOT_S2_BRIDGE_MINT",
+      "opened_at": "2026-08-06T08:06:39+02:00",
+      "opening_pin": "1efda3f80580eb036680f5fd272d3f5112b59283",
       "owner_boundary_count": 0,
-      "phase_id": "PHASE_UNIFIED_MEMORY_BEHAVIOR_2026_08_05",
+      "phase_id": "PHASE_ROUTEB_G6_S2_K8_BRIDGE_2026_08_06",
       "phase_key": {
-        "convention_lock_id": "P9_V1",
-        "front_id": "UNIFIED_MEMORY_BEHAVIOR",
-        "honesty_state": "INFRASTRUCTURE_NOT_PROOF",
-        "route_id": "Q3_CONTROL_PLANE",
-        "source_object_family_id": "EXECUTOR_CONTROL_AND_SPINE",
-        "terminal_consumer_id": "UNIFIED_MEMORY_CONTOUR_P1A_P7"
+        "convention_lock_id": "GOAL056_CANON_ROOF_D7FE57B5_MUNTZ_V3_EXACT_CLASS",
+        "front_id": "G6_S2_K8_SOURCE_FAITHFUL_BRIDGE",
+        "honesty_state": "CHALLENGER_NOT_RH",
+        "route_id": "RouteB_TwoLevelSpectralLadder",
+        "source_object_family_id": "D0_CENTERED_PSTAR_WITH_SOURCE_PROLATE_MUNTZ_CROSSWALK",
+        "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.SlotS2"
       },
-      "proshka_calls": 2,
+      "proshka_calls": 1,
       "status": "ACTIVE"
     },
     "control_status": "ACTIVE",
     "last_exploration_close": null,
     "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
     "meter": {
-      "delegated_strategic_review_calls": 2,
+      "delegated_strategic_review_calls": 3,
       "exploration_review_calls": 0,
       "fanout_violations": 0,
       "forced_rollovers": 0,
       "fresh_chats_opened": 1,
       "mathematical_owner_deferral_violations": 0,
       "ordinary_goal_close_calls": 0,
-      "phases_opened": 1,
+      "phases_opened": 2,
       "px_rh_claim_requests": 0
     },
     "operational_action_pending": null,
@@ -369,5 +232,5 @@
     "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b",
     "status": "PASS"
   },
-  "source_commit": "7e319bdc911d8af7ee6a2ba6de18cbb02dac352b"
+  "source_commit": "d64564c2c61fbfe269f0dfe433bd639818cb7bbb"
 }
