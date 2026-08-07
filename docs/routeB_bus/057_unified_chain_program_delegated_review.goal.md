@@ -441,3 +441,76 @@ The named eventuality plant is now executable and fired.  It protects only the
 finite-to-`atTop` inference boundary.  The existing cell `(13,2)` plants remain the
 source-locked static-layout anchors for the future complex-residual mapping and are not
 substituted for this judge-integrity plant.
+
+## A8 — autonomous ten-checkpoint closure loop (2026-08-08)
+
+```yaml
+A8_STATUS: OPERATIVE
+PARENT_GOAL: 057
+PARENT_STATUS: OPEN
+OPERATIVE_CLASS: RUN_GOAL057_TEN_CHECKPOINT_AUTONOMOUS_CLOSURE_LOOP
+OWNER_GATE: PX_RH_CLAIM_ONLY
+
+COMPLETED_CHILD:
+  transaction: GOAL057_SOURCE_COMPLEX_FINITE_RESIDUAL_PRODUCTION_BIND
+  verdict: GOAL057_SOURCE_COMPLEX_FINITE_RESIDUAL_PRODUCTION_BIND_PROVED
+  lean_sha256: c11fe72d9df1e7a81d73cdcb1beebfc016be82cb1d0bcc8ffc371fc748cfb497
+  closeout_sha256: 366f7254ee7d2033deb14fba36b7dbb7904bab8e0fe6464aac0394dac0e2d83f
+  coarse_checkpoints_closed: 0
+  coarse_checkpoints_advanced: 1
+
+DELEGATED_MATHEMATICAL_CHECKPOINTS:
+  - ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+  - PROLATE_CANONICAL_SOURCE_WITNESS
+  - FINITE_QW_REAL_ZERO_SAME_FAMILY
+  - DETREG_ZERO_FREE_GAUGE_NORMALIZATION_LOCK
+  - JOINT_FINITE_TO_CONTINUUM_GROUND_TRANSFORM
+  - TRUE_WEIL_GAP_OR_CLUSTER_DISCRIMINATOR
+  - WEIGHTED_GROUND_TO_TRIAL_COMPACT_OPEN_TRANSFER
+  - CCM_TRIAL_TO_XI_PROJECT_CROSSWALK
+  - SELECTED_TRIAL_NORMALIZER_BOUNDED
+  - SAME_FAMILY_ASSEMBLY_EXPORT
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CURRENT_ATOM: SOURCE_COMPLEX_COMPRESSED_WEIL_ACTION_CROSSWALK
+CURRENT_REQUIRED_EQUALITY: hCompressedAction
+CURRENT_STOP: SOURCE_COMPLEX_AMBIENT_ACTION_CROSSWALK_MISSING
+
+LOOP:
+  - source_lock_exact_next_atom
+  - one_same_chat_Proshka_batch_for_the_real_fork
+  - register_K6_object_precommit_and_executable_plants
+  - implement_the_smallest_authorized_production_child
+  - run_direct_target_full_q3check_tests_spine_db_and_integrity_gates
+  - write_honest_child_closeout_and_update_state_last
+  - commit_and_push_only_the_closed_child_packet
+  - select_the_next_atom_by_dependency_and_fanout_not_by_flat_mention_count
+
+STOP_ONLY_ON:
+  - FATAL_SOURCE_CONTRADICTION
+  - UNRECOVERABLE_TOOLCHAIN_FAILURE
+  - PX_RH_CLAIM
+
+FORBIDDEN:
+  - create_next_numbered_bus_goal
+  - claim_a_coarse_checkpoint_from_a_strictly_advancing_child
+  - call_the_finite_CCM_residual_the_continuum_numerator_without_hCompressedAction
+  - skip_a_load_bearing_premise_or_plant
+  - use_Answer_now
+  - submit_Aristotle_without_a_later_explicit_authorization
+  - promote_the_route_or_claim_RH
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The loop is autonomous at every non-owner decision boundary.  Codex and Proshka may
+change the local theorem shape, kill an infeasible atom, or choose the next dependency-
+aware child, but every transition must preserve exact source identity and record what
+was actually closed.  The parent Goal 057 closes only when all ten delegated
+mathematical checkpoints are Lean-checked or honestly killed with a replacement route;
+the final `PX_RH_CLAIM` remains the sole owner decision.

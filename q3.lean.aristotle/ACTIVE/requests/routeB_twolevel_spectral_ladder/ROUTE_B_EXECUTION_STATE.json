@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-08T00:53:00+02:00",
+  "updated_at": "2026-08-08T00:57:51+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -615,7 +615,7 @@
     },
     "goal_057_a5": {
       "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
-      "sha256": "2c76ab98fef19429092ab3b2391f577818e077df31d480362645b3914b7d9019"
+      "sha256": "fe964e12619a3ba3c0832387ec07eda8f52ab2c3a12d673e18879c6af04c1e65"
     },
     "goal_057_p057_7_script": {
       "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",
