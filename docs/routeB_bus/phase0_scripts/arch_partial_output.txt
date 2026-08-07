@@ -1,0 +1,6 @@
+archimedean block — ψ_arch(x) for x = 0..N, head+parts tail
+  x=0   ψ=                     0.0   rem_bound=0.0
+  x=1   ψ=   0.2495519771820306204   rem_bound=3.341e-8
+  x=2   ψ=  0.24850340676267235661   rem_bound=6.689e-8
+  x=3   ψ=  0.24885805565508054838   rem_bound=1.005e-7
+  x=4   ψ=   0.2491060349170467696   rem_bound=1.344e-7
