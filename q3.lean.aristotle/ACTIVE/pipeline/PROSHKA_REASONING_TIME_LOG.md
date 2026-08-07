@@ -31,6 +31,142 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-07 — Goal 057 A8 maximum-fanout next-front selection
+
+```yaml
+proof_address: RouteB.Goal057.SourceComplexResidualBindPreflight
+front: GOAL057/P057_7
+transaction: GOAL057_A8_MAX_FANOUT_NEXT_FRONT
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: e287b146-cacd-4b96-8764-30e4a361797c
+response_message_id: b05293a5-2777-40d7-91d4-6dd391fd7e52
+sent_at: 2026-08-07T23:36:52.269+02:00
+completed_at: 2026-08-07T23:53:48.377+02:00
+wall_seconds: 1016.108
+wall_human: "16m56.108s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT_SELECTED
+operative_class: RUN_GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT
+status: OPEN
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_A8_MAX_FANOUT_NEXT_FRONT_2026-08-07.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW batch in the unchanged six-field phase.
+  Both canonical request mirrors are 9,183 bytes with SHA-256
+  017804023e7b21327ad529bdcf4f78c0e90a6af362a4f36cabd3c2dddf1bad4f;
+  the attached 298,796-byte context pack has SHA-256
+  42f67feb84acf70aa37286727bfb78ee968a0898023666df36b849d8a4b6bbbd.
+  The exact 24,187-byte verdict has SHA-256
+  895388154c316a5dff6c1cde88a655565ba3ef5f66144d9bc11e3a9076bfc126.
+  Proshka repaired the current coarse count from ten to eleven checkpoints:
+  ten delegated mathematical checkpoints plus the sole owner boundary
+  PX_RH_CLAIM. This is not a theorem-count or time estimate. Proshka selected
+  a read-only source-complex residual carrier/action preflight with the bounded
+  outcomes SOURCE_COMPLEX_FINITE_RESIDUAL_BIND_READY,
+  SOURCE_COMPLEX_ROW_NORMALIZATION_GAP, SOURCE_COMPLEX_MODE_ORDER_MISMATCH,
+  SOURCE_COMPLEX_MATRIX_ACTION_CROSSWALK_OPEN, and
+  SOURCE_COMPLEX_CARRIER_MISMATCH. Answer now appeared during generation and
+  was never clicked. No child execution, Lean edit, Aristotle submission,
+  Bus 010, Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
+### 2026-08-07 — Goal 057 A5 deferred R1/R4/actual-numerator review, source-lock stop
+
+```yaml
+proof_address: RouteB.Goal057.A5.DeferredR1R4ActualNumeratorReview
+front: RouteB/Goal057
+transaction: GOAL_057_A5_DEFERRED_R1_R4_ACTUAL_NUMERATOR_REVIEW
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+sent_at: 2026-08-07T22:14:00+02:00
+completed_at_observed: 2026-08-07T22:35:59+02:00
+reasoning_time_displayed: "19m15s"
+wall_seconds_displayed: 1155
+answer_now_shown: true
+answer_now_clicked: false
+primary: BLOCKED_SOURCE_LOCK
+stop: UNIFIED_CHAIN_DEFERRED_REVIEW_SOURCE_LOCK_INCOMPLETE
+status: FATAL_INPUT_REPAIRABLE_SAME_BATCH
+request_sha256: 8546ea7827cd668e0e81ede3455b2a9cfe4e6c60f12924752b8833c8103f5b0f
+context_pack_sha256: cf3c4d6d0438003b617c31eb82e05de8f1e5273393574e87dd60e225bfbdba28
+response_sha256: 6180e4c368bc5bbb250858fe1b2209ec0fc7119a093a260812b460d172a2fae5
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_A5_SOURCE_LOCK_2026-08-07.md"
+notes: >-
+  Same living-chat deferred review rehashed the request, whole context pack,
+  and eight embedded object snapshots. It stopped before R1/R4/RNUM merits
+  adjudication because the exact Phase-3 Python executable and JSON result
+  bytes were absent from the context pack; their hashes appeared only inside
+  the report. Required same-batch repair: attach both exact files, verify their
+  pinned hashes, and run the P057_6 executable/result byte-lock plant. No new
+  chat, Aristotle submission, Bus 010, Goal-055 release, route promotion,
+  PX claim, or RH claim occurred.
+```
+
+### 2026-08-07 — Goal 057 A5 same-batch source-lock repair and final ruling
+
+```yaml
+proof_address: RouteB.Goal057.A5.DeferredR1R4ActualNumeratorReview
+front: RouteB/Goal057
+transaction: GOAL_057_A5_DEFERRED_R1_R4_ACTUAL_NUMERATOR_REVIEW_SAME_BATCH_REPAIR
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+sent_at: "2026-08-07T22:36+02:00 (minute-resolution observation)"
+completed_at: "2026-08-07T22:55+02:00 (minute-resolution observation)"
+wall_seconds: "~1140"
+wall_human: "~19m observed wall"
+answer_now_shown: false
+answer_now_clicked: false
+primary: RUN_NUMERATOR_SOURCE_AUDIT_FIRST
+status: SOURCE_LOCK_REPAIRED_CONDITIONAL_CHAIN_REPAIRED_ACTUAL_NUMERATOR_AUDIT_SELECTED
+same_batch_continuation: true
+phase3_script_sha256: 60ea1dab2d1d62aa386d69cb3885da4158ac727d2cfb76e2ce0c9e77bd7e1c29
+phase3_result_sha256: dd60446849839256b08f8dd4cf78968987c501d7f196cdafffdd4b2f9640cb71
+response_sha256: e2dac3f6b90a0277d3105a0feb1d20140c0df6d88befd3f9bb7044d37f06ab71
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_A5_DEFERRED_REVIEW_REPAIRED_2026-08-07.md"
+selected_first_child: GOAL057_ACTUAL_NUMERATOR_SOURCE_TARGET_AUDIT
+notes: >-
+  The exact Phase-3 Python executable and JSON result were attached in the
+  same living chat and rehashed to their pinned values. P057_6 fired for both
+  the executable sign mutation and retained-result endpoint mutation. Proshka
+  ruled TRY_CHAIN_REPAIRED, accepted the finite judge with the separately
+  queued P057_7 plant, left the rate prediction unscored because its
+  preconditions were unmet, and selected the bounded actual-numerator
+  source-target audit before any wider N ladder. No new chat, Answer-now
+  shortcut, Aristotle submission, Bus 010, Goal-055 release, route promotion,
+  PX claim, or RH claim occurred.
+```
+
+### 2026-08-06 — Cognitive operator vocabulary adjudication
+
+```yaml
+proof_address: ControlPlane.CognitiveOperatorRegistry
+front: CONTROL/CognitiveOperators
+transaction: COGNITIVE_OPERATOR_VOCABULARY_ADJUDICATION
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: ebce99b2-3c0e-4dec-805d-77156534ad43
+response_message_id: 9639f26f-21b7-4d93-82ee-8b5d8193e148
+sent_at: 2026-08-06T23:47:00+02:00
+completed_at: 2026-08-06T23:55:57+02:00
+wall_seconds: 537
+wall_human: "8m57s until captured; UI reports 5m29s reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: RATIFY_M2_CANONICAL_WITH_LOSSLESS_LEGACY_CROSSWALK
+status: COGNITIVE_OPERATOR_VOCABULARY_RATIFIED_IMPLEMENTATION_OPEN
+result_pointer: "docs/routeB_bus/proshka/PROSHKA_VERDICT_COGNITIVE_OPERATOR_VOCABULARY_2026-08-06.md"
+notes: >-
+  Same-chat control-plane adjudication at HEAD/origin
+  7dbfb4317f2b07b0b82066d2f358ec6e6a5ce441. The 1,474-character request has
+  SHA-256 ce520c9eb3552baf59cb829f212a36171a04c8e3c7409fc18c37e907c00650d4;
+  the exact 11,867-character verdict has SHA-256
+  853395902d8439ddbc3e8e714dd10e0a1e964090f0292cffa93097ee5cdd858a.
+  Proshka ratified the eight-token M2 vocabulary as the sole canonical
+  cognitive_operator_used enum and reclassified the nine CamelCase values as
+  frozen LEGACY_CONTROL_ACTION provenance. Only two pairs are direct aliases;
+  two are related but non-equivalent and five remain legacy-only. Silent or
+  source-rewriting normalization is forbidden. Answer now appeared and was
+  never clicked. No Aristotle submission, Bus 010, Goal-055 release, route
+  promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-06 — Goal 056 Phase 4L physical Fourier-energy receiver
 
 ```yaml

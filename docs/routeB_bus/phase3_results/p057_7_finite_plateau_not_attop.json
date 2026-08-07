@@ -1,0 +1,121 @@
+{
+  "boundary": {
+    "lean_modified": false,
+    "new_goal_minted": false,
+    "phase3_result_modified": false,
+    "phase3_script_modified": false,
+    "rh_claimed": false,
+    "route_promotion": false
+  },
+  "canonical_judge": {
+    "continuum_gap_claim": false,
+    "eventually_atTop_claim": false,
+    "operator_gap_receiver_invoked": false
+  },
+  "finite_plateau_gate": {
+    "N_pair": [
+      90,
+      120
+    ],
+    "pass": true,
+    "relative_midpoint_drift": "0",
+    "scope": "FINITE_DIAGNOSTIC_ONLY",
+    "threshold": "[0.0100000000000000 +/- 3.27e-18]"
+  },
+  "inference_precedents": {
+    "normalization_firewall": {
+      "classification": "CONDITIONAL_NORMALIZATION_PRECEDENT",
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/NormalizedTrackingRateTransfer.lean",
+      "sha256": "5505f05169caf670fb587c7b4f81d2b2d9bda1e2f3874c837afc392dcc5512ed",
+      "theorem": "detector_decay_does_not_imply_relative_decay",
+      "transfer": "NOT_LOAD_BEARING_FOR_CURRENT_RAW_GAP_PROFILE"
+    },
+    "primary": {
+      "classification": "PRIMARY_ERROR_CLASS_PRECEDENT_NOT_LITERAL_REUSE",
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+      "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c",
+      "theorem": "fixed_bound_without_vanishing_rate_not_uniform_zero",
+      "transfer": "PASS"
+    }
+  },
+  "mutant": {
+    "mutated_claim": true,
+    "name": "mutant_promote_finite_plateau_to_eventually_atTop",
+    "plant_fires": true
+  },
+  "plant": "P057_7_FINITE_PLATEAU_NOT_ATTOP",
+  "schema": "P057_7FinitePlateauNotAtTop.v1",
+  "source_lock": {
+    "expected_sha256": "60ea1dab2d1d62aa386d69cb3885da4158ac727d2cfb76e2ce0c9e77bd7e1c29",
+    "observed_sha256": "60ea1dab2d1d62aa386d69cb3885da4158ac727d2cfb76e2ce0c9e77bd7e1c29",
+    "pass": true,
+    "phase3_script": "docs/routeB_bus/phase3_scripts/ccm_delta_rate_profile.py"
+  },
+  "static_cell_plant_transfer": {
+    "classification": "NOT_A_SUBSTITUTE_FOR_P057_7",
+    "future_mapping_reference": [
+      "ccmPrime_plant_offdiag_orientation",
+      "ccmNIC_plant_subtraction_orientation",
+      "ccmNIC_plant_representative_label_integrity"
+    ],
+    "reason": "Cell-(13,2) orientation and representative-label plants pin a single finite layout; P057_7 protects a finite-to-atTop implication."
+  },
+  "status": "PASS",
+  "synthetic_sequence": {
+    "Delta_120": "1/1",
+    "Delta_90": "1/1",
+    "definition": "Delta_N=1 for N<=120; Delta_N=120/N for N>120",
+    "floor_witnesses": [
+      {
+        "Delta_N": "120/241",
+        "floor": "1/2",
+        "strictly_below_floor": true,
+        "strictly_positive": true,
+        "witness_N": 241
+      },
+      {
+        "Delta_N": "120/1201",
+        "floor": "1/10",
+        "strictly_below_floor": true,
+        "strictly_positive": true,
+        "witness_N": 1201
+      },
+      {
+        "Delta_N": "120/120001",
+        "floor": "1/1000",
+        "strictly_below_floor": true,
+        "strictly_positive": true,
+        "witness_N": 120001
+      },
+      {
+        "Delta_N": "120/120000001",
+        "floor": "1/1000000",
+        "strictly_below_floor": true,
+        "strictly_positive": true,
+        "witness_N": 120000001
+      }
+    ],
+    "limit_atTop": "0",
+    "positive_for_all_N": true,
+    "sampled_tail": [
+      {
+        "Delta_N": "1/2",
+        "N": 240
+      },
+      {
+        "Delta_N": "1/4",
+        "N": 480
+      },
+      {
+        "Delta_N": "1/8",
+        "N": 960
+      },
+      {
+        "Delta_N": "1/16",
+        "N": 1920
+      }
+    ],
+    "sampled_tail_strictly_decreasing": true
+  },
+  "verdict": "P057_7_FINITE_PLATEAU_NOT_ATTOP_FIRED"
+}

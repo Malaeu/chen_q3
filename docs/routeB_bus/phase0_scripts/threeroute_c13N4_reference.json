@@ -1,0 +1,23 @@
+{
+  "source": {
+    "record": "https://zenodo.org/records/21146461",
+    "package": "guinand_weil_dictionary_tail_order_package.zip",
+    "package_md5": "71e7890a609c6db38f1324ce8225b840",
+    "member": "threeroute_c13N4_package.json",
+    "member_sha256": "b6382ce9fc80c7ffa557e2e003b33f6f836eac01ec289b898458f798876b58d4",
+    "verifier": "verify_dictionary_threeroute.py",
+    "verifier_sha256": "345df0765c9ca9538bab71de12b2a90ea83ea08fb68abb7114b7e8d7f2812bdd"
+  },
+  "c": 13,
+  "N": 4,
+  "dps": 40,
+  "v": [
+    "-0.085945207183342880048",
+    "1.4749860011829195752",
+    "0.7071067811865475244",
+    "0.0",
+    "-2.1213203435596425732"
+  ],
+  "route2_arch": "0.047697482652328006439872417749",
+  "route2_tail_rem_bound": "2.94838e-12"
+}

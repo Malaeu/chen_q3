@@ -309,3 +309,60 @@ x=4   ψ = 0.24910603491704677      rem_bound 1.3e-7
 ---
 
 *Следующий цикл: дождаться суммы, сверить с `route2_arch`, закрыть или переписать схему.*
+
+---
+
+## R6 · Архимедов блок воспроизведён — PASS; Phase 0 CLOSED
+
+### Source lock
+
+| Объект | Пин |
+|---|---|
+| Zenodo record | `https://zenodo.org/records/21146461` |
+| `guinand_weil_dictionary_tail_order_package.zip` | md5 `71e7890a609c6db38f1324ce8225b840` |
+| `threeroute_c13N4_package.json` | SHA-256 `b6382ce9fc80c7ffa557e2e003b33f6f836eac01ec289b898458f798876b58d4` |
+| `verify_dictionary_threeroute.py` | SHA-256 `345df0765c9ca9538bab71de12b2a90ea83ea08fb68abb7114b7e8d7f2812bdd` |
+| local `arch_block.py` | SHA-256 `aec72fc9d48912085d64a26fe3d2786cf566a7a1c3efdde62f9e47ffa23b6a70` |
+| local source-lock JSON | SHA-256 `4fe34815564f212d641c7ae32e27a16ae21ccdac8cba7dc0c1500e5bd55391d3` |
+
+### Что исправлено после R5
+
+Матричный путь с девятью численными производными убран. Диагональ теперь задаётся
+аналитически, включая `x = 0`:
+
+```text
+dS/dx = 2ρ sin²(Lr/2) (r² + (ρx)²) / (r² - (ρx)²)².
+```
+
+Связь матричного множителя `1/π²` с source-side множителем `1/π` больше не принимается
+на веру: на четырёх предзафиксированных точках проверено
+
+```text
+Σ_m,n u_m u_n q_mn(r) / π = g_v(r).
+```
+
+### Воспроизведение
+
+```bash
+.venv/bin/python -u docs/routeB_bus/phase0_scripts/arch_block.py
+```
+
+```text
+dps=30  arch=0.047697482652328006355282994966607099
+dps=40  arch=0.04769748265232800635528299496674133
+precision_delta=1.342314243e-31
+target_delta=8.458942278e-20
+published_tail_bound=2.94838e-12
+PHASE0_ARCH_BLOCK=PASS
+```
+
+Pointwise bridge maximum: `2.2187e-30` at 30 dps and `8.8966e-41` at 40 dps.
+Опубликованный эталон `route2_arch = 0.047697482652328006439872417749` воспроизведён с запасом
+по ошибке более чем на семь порядков внутри опубликованного tail budget.
+
+### Phase 0 closeout
+
+Все восемь требований `PHASE_0_SOURCE_LOCK` закрыты. Общий transaction
+`CCM_PENALTY_SOURCE_LOCK_AND_RATE_PROFILE` остаётся `OPEN` и переходит к уже
+разрешённой Phase 1. Нового вызова Прошки, Lean-изменения, промоушена или
+заявления RH здесь нет.
