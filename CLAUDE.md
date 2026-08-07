@@ -7,6 +7,35 @@ pointer only and contains no independent executor policy. If the canonical
 control is unavailable, ambiguous, non-`ACTIVE`, or fails strict Spine
 validation, stop with `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`.
 
+## Phase, then batch — how the four of us divide the work
+
+We enter a phase and grind it ourselves. Whatever hits a dead end or cannot be checked from
+here is **not sent off one at a time** — it accumulates in `docs/routeB_bus/PROSHKA_QUEUE.md`
+until two to four questions have gathered that genuinely block progress. Then one batch goes.
+
+Proshka spends twenty minutes or more on a batch and answers with an adjudication rather than
+a reply. Four related questions in one batch produce a verdict that moves the front; four
+separate batches produce four answers we then have to stitch together ourselves.
+
+Who gets what:
+
+| Channel | What it is for | What it costs |
+|---|---|---|
+| **us** | disk checks, the base, literature retrieval, numerical probes, mechanics, bugs | seconds — so anything answerable here must never be delegated |
+| **Proshka** | adjudication, kills, reading primary sources we do not have, architectural forks, kill-passes on our own construction | 20+ min per batch — hence cumulative |
+| **Mythos** | reconnaissance, idea generation, zoomed maps | real money — spend on breadth, not on lookups |
+| **Codex** | Lean | one live transaction at a time |
+
+**Claims about a primary source get checked first** — `./ask.sh`, the literature review, a
+search. Only what survives as genuinely unverifiable is written into an artifact marked
+`relay, не верифицировано`, is **never used as a premise of an inference**, and goes into the
+queue as a candidate for the next batch.
+
+That last rule exists because on 7 August two relayed claims were repeated by me as premises
+and both turned out false — that `δ_N(ξ)=1` is an L² normalization, and that the numerator
+carries the prolate deficit's rate. Disk checks I ran and they held; claims about a paper we
+cannot read I could not run, and I did not mark them hard enough.
+
 ## A bug found is a bug fixed first
 
 When a defect surfaces during other work — a tool that lies, a check that cannot pass, a
