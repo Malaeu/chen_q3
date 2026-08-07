@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цепь A∧B∧C ⇒ RH · условная логика · 2026-08-06</title>
+<style>
+  :root{
+    --bg:#0c1116; --panel:#121a21; --teal:#2dd4bf; --teal-dim:rgba(45,212,191,.12);
+    --coral:#ff7a6b; --coral-dim:rgba(255,122,107,.10);
+    --gray:#8b98a5; --line:#1f2c36; --text:#e8eef2; --mut:#9fb0bc;
+    --mono:ui-monospace,'JetBrains Mono',SFMono-Regular,Menlo,monospace;
+    --sans:-apple-system,'SF Pro Text',Segoe UI,Roboto,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.45;padding:14px 12px 40px}
+  .wrap{max-width:700px;margin:0 auto}
+  header{font-family:var(--mono);font-size:12.5px;color:var(--mut);border:1px solid var(--line);
+    background:var(--panel);border-radius:10px;padding:10px 14px;margin-bottom:6px}
+  header .q{color:var(--text);font-size:14px;margin-top:4px}
+  header .a{color:var(--teal);font-weight:700}
+  .node{border:1px solid var(--line);border-radius:10px;background:var(--panel);
+    padding:11px 14px;position:relative}
+  .node.open{border-left:4px solid var(--coral)}
+  .node.done{border-left:4px solid var(--teal)}
+  .node.ref{border-left:4px solid var(--gray);border-style:dashed;background:transparent}
+  .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .open .lbl{color:var(--coral)} .done .lbl{color:var(--teal)} .ref .lbl{color:var(--gray)}
+  .nm{font-weight:700;margin-top:2px}
+  .st{font-size:12.5px;color:var(--mut);margin-top:3px}
+  .f{font-family:var(--mono);font-size:12.5px;color:var(--text);background:rgba(255,255,255,.03);
+    border-radius:6px;padding:4px 8px;margin-top:6px;display:inline-block}
+  /* провода */
+  .wire{width:3px;height:22px;background:var(--line);margin:0 auto}
+  .wire.hot{background:var(--teal)}
+  .gate{font-family:var(--mono);text-align:center;margin:0 auto;width:120px;
+    border:2px solid var(--coral);color:var(--coral);border-radius:999px;
+    padding:6px 0;font-size:15px;font-weight:700;background:var(--coral-dim)}
+  .three{display:grid;grid-template-columns:1fr;gap:8px}
+  @media(min-width:560px){.three{grid-template-columns:1fr 1fr 1fr}}
+  .conv{display:flex;justify-content:center;gap:0;margin:2px 0}
+  .conv i{display:block;width:3px;height:16px;background:var(--coral);margin:0 26px;border-radius:2px}
+  .traps{margin:14px 0;border:1px dashed var(--line);border-radius:10px;padding:10px 14px}
+  .traps .lbl{color:var(--gray)}
+  .traps ul{margin:6px 0 0 16px;font-size:12.5px;color:var(--mut)}
+  .score{font-family:var(--mono);font-size:12.5px;display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--mut)}
+  .chip b{color:var(--teal)} .chip s{color:var(--coral);text-decoration:none;font-weight:700}
+  footer{font-family:var(--mono);font-size:11px;color:var(--gray);border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+  .sp{height:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  ЦЕПЬ · условная теорема · live tip 6d4dd03 · CHALLENGER / NOT_RH
+  <div class="q">Вопрос: «чисто теоретически вся цепочка закрывается?» — <span class="a">ДА</span>: каждая стрелка ниже — напечатанная теорема. Не хватает только трёх входов.</div>
+</header>
+
+<div class="sp"></div>
+
+<!-- ТРИ ВХОДА -->
+<div class="three">
+  <div class="node open">
+    <span class="lbl">ВХОД A · открыто</span>
+    <div class="nm">просто + чётно при ВСЕХ λ</div>
+    <div class="f">dim E_min(QW_λ)=1, ξ_λ чётен</div>
+    <div class="st">есть: Судзуки Thm 1.4 — только малые окна (до λ²=2), через positivity improving. Дальше — каждый простой бьёт по знаку ядра. Удар 2.</div>
+  </div>
+  <div class="node open">
+    <span class="lbl">ВХОД B · открыто</span>
+    <div class="nm">пролатная догадка ≈ арифм. вектор</div>
+    <div class="f">‖k_λ − c_λ·ξ_λ‖ = o(λ^(−η)) ∀η&lt;½</div>
+    <div class="st">quasimode ‖r‖/Δ; зазор Δ_λ — целина. Риск: кластерное дно (P-Δ, p≈0.6) → цель переформулируется, не умирает. Удар 1 = зонд.</div>
+  </div>
+  <div class="node open">
+    <span class="lbl">ВХОД C · открыто · НАШ</span>
+    <div class="nm">галёркинский пролёт: N→∞ при фикс. λ</div>
+    <div class="f">(ε_N, ξ_N) → (ε_λ, ξ_λ)</div>
+    <div class="st">строится конвейером: 056s Парсеваль-дополнение · V_n_m полнота (пуш в пути) · 056q двухпосылочный ресивер. Ближе всех к закрытию.</div>
+  </div>
+</div>
+
+<div class="conv"><i></i><i></i><i></i></div>
+<div class="gate">A ∧ B ∧ C</div>
+<div class="wire hot"></div>
+
+<!-- ДОКАЗАННЫЕ МОСТЫ -->
+<div class="node done">
+  <span class="lbl">мост 1 · доказано</span>
+  <div class="nm">конечная вещественность — даром</div>
+  <div class="st">самосопряжённость ⇒ спектр вещественный: CCM Thm 1.1 (нужно A на усечении) ЛИБО Судзуки Thm 1.5 — безусловно, при всех a. Нули ξ̂_{N,λ} лежат на прямой.</div>
+</div>
+<div class="wire hot"></div>
+
+<div class="node ref">
+  <span class="lbl">узел-следствие · включается входами</span>
+  <div class="nm">ξ̂_{N,λ} → Ξ локально равномерно, |Im z| &lt; ½</div>
+  <div class="st">B даёт k̂_λ→Ξ уже ДОКАЗАННО (hermfact1, O(λ^(−½−α))); A+B пересаживают это на ξ̂_λ; C поднимает с усечения на окно. Ровно здесь тратятся все три входа.</div>
+</div>
+<div class="wire hot"></div>
+
+<div class="node done">
+  <span class="lbl">мост 2 · доказано</span>
+  <div class="nm">Гурвиц + свободные от нулей края</div>
+  <div class="st">нули равномерного предела ⊂ замыкание нулей приближений (Гурвиц); границы полосы Re s = 0, 1 без нулей (Адамар–де ла Валле Пуссен) ⇒ подполос |Im z|&lt;½ достаточно.</div>
+</div>
+<div class="wire hot"></div>
+
+<div class="node done">
+  <span class="lbl">мост 3 · доказано (классика)</span>
+  <div class="nm">Ξ с вещественными нулями ⟺ RH</div>
+  <div class="st">Ξ(z) = ξ(½ + iz); вещественность нулей Ξ = все нетривиальные нули ζ на критической прямой.</div>
+</div>
+<div class="wire"></div>
+
+<div class="node ref">
+  <span class="lbl">выход · не заявляется</span>
+  <div class="nm">RH</div>
+  <div class="st">статус: CHALLENGER / NOT_RH · Bus 010 VOID · клейм — только владелец (PX_RH_CLAIM). Проводка проверена; тока (доказательств входов) нет.</div>
+</div>
+
+<div class="traps">
+  <span class="lbl">ловушки R1 · где входы обязаны быть сформулированы точно</span>
+  <ul>
+    <li>порядок пределов N→∞ и λ→∞ — нужна ли равномерность по N;</li>
+    <li>чётность u↦u⁻¹ против нашей центрированной координаты (транспорт 056l);</li>
+    <li>цена веса λ^η — темп o(λ^(−η)) обязателен, «просто →0» не включает Гурвица;</li>
+    <li>кластерное дно (~2λ² почти вырожденных) — цель B переопределяется;</li>
+    <li>пороги простых в A — бесконечная лестница, двойка лишь первая ступень.</li>
+  </ul>
+</div>
+
+<div class="score">
+  <span class="chip">мостов доказано: <b>4/4</b></span>
+  <span class="chip">входов доказано: <s>0/3</s></span>
+  <span class="chip">ближайший вход: <b>C (наш)</b></span>
+  <span class="chip">первый ход: <b>зонд Δ_λ</b></span>
+</div>
+
+<footer>условная теорема: (A ∀λ) ∧ (B с темпом, в верном мире зазора) ∧ (C фикс. λ) ⇒ RH · источники: CCM 2511.22755 (Thm 1.1, hermfact1, §8) · Suzuki 2606.09096 (Thm 1.1/1.4/1.5, 4.10) · MS Satz 9 · Fuchs 1964 · RS IV §XIII.2 · карта: Mythos 2026-08-06</footer>
+
+</div>
+</body>
+</html>
