@@ -36,6 +36,24 @@ and both turned out false — that `δ_N(ξ)=1` is an L² normalization, and tha
 carries the prolate deficit's rate. Disk checks I ran and they held; claims about a paper we
 cannot read I could not run, and I did not mark them hard enough.
 
+## Anything that looks odd gets written down before it is explained
+
+A number that sits where you did not expect it, a function that is flatter than it should
+be, a check that passes for the wrong-looking reason — **write it into the working journal
+at the moment you notice it**, with what you think it might mean and what would settle it.
+Not after the run finishes, not once you understand it.
+
+Two reasons. An observation held only in conversation is lost at the next context boundary,
+and the one thing worse than a wrong explanation is a forgotten symptom. And writing it down
+forces the question "what outcome would distinguish my two readings of this?" — which is
+usually cheaper to answer than the thing being computed.
+
+Phase 0 produced three of these: the removable 0/0 at r = B that silently poisoned every
+early run, the "conditional convergence" claim that the exact kernel later refuted, and
+psi_arch coming out nearly constant. The first two were noticed, not written, and cost a
+rerun each. The third was written immediately — see PHASE0_RESULTS_2026-08-07.md R5 — with
+both readings and the discriminating outcome stated before the number arrived.
+
 ## A bug found is a bug fixed first
 
 When a defect surfaces during other work — a tool that lies, a check that cannot pass, a
