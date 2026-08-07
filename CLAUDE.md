@@ -10,7 +10,7 @@ validation, stop with `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`.
 Linux-body hand-off and repository-map references:
 
 - `docs/Codex/README.md`
-- `docs/Codex/TASK_2026-08-06_EVENING.md`
+- `docs/Codex/TASK_2026-08-06_07.md`
 - `specs_docs/ENTRY_SPEC.md`
 - `specs_docs/TOOLS_SPEC.md`
 
