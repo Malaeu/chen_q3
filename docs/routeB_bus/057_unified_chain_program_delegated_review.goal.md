@@ -514,3 +514,59 @@ aware child, but every transition must preserve exact source identity and record
 was actually closed.  The parent Goal 057 closes only when all ten delegated
 mathematical checkpoints are Lean-checked or honestly killed with a replacement route;
 the final `PX_RH_CLAIM` remains the sole owner decision.
+
+## A9 — B2 compressed Weil-action source audit (2026-08-08)
+
+```yaml
+A9_STATUS: OPERATIVE_SOURCE_AUDIT_CLOSED
+PRIMARY: KILL_GOAL057_B2_DIRECT_CROSSWALK_SOURCE_UNAVAILABLE
+DIRECT_TARGET: hCompressedAction
+DIRECT_TARGET_STATUS: KILLED_AS_CURRENT_PRODUCTION_TARGET_NOT_MATHEMATICALLY_NEGATED
+REASON:
+  - ambient_source_Weil_operator_is_domain_restricted_not_Module_End
+  - selected_kTrial_operator_domain_membership_is_unproved
+  - finite_form_Riesz_operator_is_not_automatically_ambient_operator_compression
+  - actual_projection_codomain_is_a_subspace_not_an_ambient_endomorphism
+  - no_source_theorem_supplies_the_displayed_equality
+
+SELECTED_PREREQUISITE_ATOM: GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND
+OWNED_LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean
+SOLE_IMPORT: Q3.Proofs.RouteB.D0PstarCCMFiniteSourceResidual
+PUBLIC_SURFACE:
+  definitions:
+    - ccmFiniteSynthesisEquiv
+    - sourceCCMFiniteRieszOperator
+  theorem:
+    - sourceCCMFiniteRieszOperator_apply_sourceTrial
+SUCCESS: GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_PROVED
+STOP: GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_MISSING
+NEXT_GAP_AFTER_SUCCESS: SELECTED_KTRIAL_ASSOCIATED_WEIL_OPERATOR_DOMAIN_AND_COMPRESSION
+
+MANDATORY_PLANTS:
+  - P057_B2_1_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION
+  - P057_B2_2_OPERATOR_DOMAIN_ERASURE
+  - P057_B2_3_PROJECTION_CODOMAIN_MISMATCH
+  - P057_B2_4_COEFFICIENT_SUBSPACE_CARRIER_ALIAS
+  - P057_B2_5_MODE_ORDER_INTERTWINER
+
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+PROGRESS_CLASS: FALSIFICATION_PROGRESS
+NEXT_REQUIRED_ACTION: one_same_chat_Proshka_operational_release_batch_then_smallest_authorized_Lean_materialization
+LEAN_EDITS_IN_THIS_TRANSACTION: NONE
+ARISTOTLE_SUBMISSION: NONE
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+PX_RH_CLAIM: NOT_MADE
+```
+
+The direct ambient compression equality was the wrong next production target: the
+repository has a finite Hermitian form and coefficient operator, but it does not yet
+have the domain-safe ambient Weil operator or the selected trial's membership in its
+domain.  The next atom therefore constructs only the exact finite Riesz operator on
+`E_m_N`, with source order and carrier identity pinned.  It does not call that operator
+`A_m`, does not claim an ambient compression, and does not decrement the ten-checkpoint
+ledger.

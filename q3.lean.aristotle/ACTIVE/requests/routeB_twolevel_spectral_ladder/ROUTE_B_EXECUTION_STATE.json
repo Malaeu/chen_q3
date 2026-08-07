@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-08T00:57:51+02:00",
+  "updated_at": "2026-08-08T01:31:08+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,21 +10,47 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_057_FINITE_SOURCE_RESIDUAL_PROVED_COMPRESSED_WEIL_ACTION_OPEN",
+  "operational_status": "GOAL_057_DIRECT_COMPRESSED_ACTION_KILLED_FINITE_RIESZ_BIND_AWAITING_RELEASE",
   "current": {
-    "stage_id": "RB-GOAL-057-B1-FINITE-SOURCE-RESIDUAL-CLOSED",
-    "contract_obligation": "GOAL057_SOURCE_COMPLEX_COMPRESSED_WEIL_ACTION_CROSSWALK",
-    "name": "SourceComplexCompressedWeilActionCrosswalk",
-    "status": "OPEN",
-    "stop_code": "SOURCE_COMPLEX_AMBIENT_ACTION_CROSSWALK_MISSING",
+    "stage_id": "RB-GOAL-057-B2-SOURCE-AUDIT-CLOSED",
+    "contract_obligation": "GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND",
+    "name": "FiniteRieszOperatorSourceBind",
+    "status": "DELEGATED_STRATEGIC_RELEASE_REQUIRED",
+    "stop_code": "GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_MISSING",
     "selected_bus_goal_nnn": "057",
     "selected_bus_goal_path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
     "next_required_actor": "Codex+Proshka",
-    "next_action": "Source-audit and materialize the exact hCompressedAction equality binding sourceCCMFiniteOperator to the compressed ambient Weil action; do not execute the wider-N ladder, continuum numerator, H4a1b, promotion, or RH claim.",
+    "next_action": "Use one new batch in the same living Proshka chat to release or kill the exact finite Riesz source-bind child; if released, materialize only D0PstarCCMFiniteRieszOperator.lean. Do not claim an ambient Weil compression, execute the wider-N ladder, invoke H4a1b, promote the route, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_057_b2_compressed_weil_action_source_audit": {
+      "classification": "KILL_GOAL057_B2_DIRECT_CROSSWALK_SOURCE_UNAVAILABLE",
+      "status": "SOURCE_AUDIT_CLOSED_PREREQUISITE_SELECTED",
+      "direct_target": "hCompressedAction",
+      "direct_target_status": "KILLED_AS_CURRENT_PRODUCTION_TARGET_NOT_MATHEMATICALLY_NEGATED",
+      "first_missing_ambient_fact": "SELECTED_KTRIAL_ASSOCIATED_WEIL_OPERATOR_DOMAIN",
+      "selected_prerequisite_atom": "GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND",
+      "owned_lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean",
+      "success_code": "GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_PROVED",
+      "stop_code": "GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_MISSING",
+      "next_gap_after_success": "SELECTED_KTRIAL_ASSOCIATED_WEIL_OPERATOR_DOMAIN_AND_COMPRESSION",
+      "mandatory_plants": [
+        "P057_B2_1_FORM_COMPRESSION_NOT_OPERATOR_COMPRESSION",
+        "P057_B2_2_OPERATOR_DOMAIN_ERASURE",
+        "P057_B2_3_PROJECTION_CODOMAIN_MISMATCH",
+        "P057_B2_4_COEFFICIENT_SUBSPACE_CARRIER_ALIAS",
+        "P057_B2_5_MODE_ORDER_INTERTWINER"
+      ],
+      "coarse_checkpoints_closed": 0,
+      "coarse_checkpoints_remaining": 10,
+      "progress_class": "FALSIFICATION_PROGRESS",
+      "request_sha256": "130d2683c2f7466c389acc48d0bef67b01ebb4b5ba6eb18e8d6be8dbfd4ac457",
+      "visible_verdict_sha256": "c2648716adbffcfe4a5b9a14fe9468a612b50a87604cfa7b3f1fd8cf7439cc6d",
+      "newline_normalized_archive_sha256": "8595536473ce4640b11025b92290773931df912cfd1715510a3238f7895ea834",
+      "semantic_boundary": "FINITE_RIESZ_FORM_REPRESENTATION_ONLY_NO_AMBIENT_OPERATOR_COMPRESSION_NO_CHECKPOINT_CLOSURE_NOT_RH"
+    },
     "goal_057_source_complex_finite_residual_production_bind": {
       "classification": "GOAL057_SOURCE_COMPLEX_FINITE_RESIDUAL_PRODUCTION_BIND_PROVED",
       "status": "PASS",
@@ -615,7 +641,7 @@
     },
     "goal_057_a5": {
       "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
-      "sha256": "fe964e12619a3ba3c0832387ec07eda8f52ab2c3a12d673e18879c6af04c1e65"
+      "sha256": "97c464af22326f150d4da6d844950c99170f4b55448fe55cc7798ef8c13b7410"
     },
     "goal_057_p057_7_script": {
       "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",
