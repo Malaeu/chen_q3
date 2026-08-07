@@ -1,6 +1,6 @@
 {
-  "schema_version": "route_b_execution_state.v2",
-  "updated_at": "2026-08-05T12:16:00+02:00",
+  "schema_version": "route_b_execution_state.v3_live_bus",
+  "updated_at": "2026-08-08T00:53:00+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,25 +10,125 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK_AWAITING_AUTHORIZATION",
+  "operational_status": "GOAL_057_FINITE_SOURCE_RESIDUAL_PROVED_COMPRESSED_WEIL_ACTION_OPEN",
   "current": {
-    "stage_id": "RB-LAMPORT-G2",
-    "contract_obligation": "G2.CCM.054_1.SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_FORK",
-    "name": "CCMCell13N2SevenRepresentativeRelativeWRIntegralEnclosuresOwnerFork",
-    "status": "OWNER_FORK_AWAITING_AUTHORIZATION_AND_SOURCE_LOCKED_CERTIFICATE_DATA",
-    "stop_code": "G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES_OWNER_DATA_REQUIRED",
-    "selected_bus_goal_nnn": null,
-    "selected_bus_goal_path": null,
-    "next_required_actor": "Owner",
-    "next_action": "Authorize and supply source-locked removable-endpoint and rational quadrature/error data, or a direct kernel-checkable whole-expression verifier, for seven relative WR integral inequalities; keep Goal 055 held and do not submit Aristotle.",
-    "ccm_classification": "NONINTEGRAL_CONSTANT_SEVEN_REPRESENTATIVE_NORMAL_FORM_PROVED_ANALYTIC_RELATIVE_WR_INTEGRAL_OWNER_FORK_OPEN_V2_SPLIT_REQUIRED_HOLD_055",
-    "ccm_repoint": "OWNER_FORK_G2_CCM_054_1_SEVEN_REPRESENTATIVE_RELATIVE_WR_INTEGRAL_ENCLOSURES",
-    "h2b_closed": false,
-    "goal_051_authorized": false,
+    "stage_id": "RB-GOAL-057-B1-FINITE-SOURCE-RESIDUAL-CLOSED",
+    "contract_obligation": "GOAL057_SOURCE_COMPLEX_COMPRESSED_WEIL_ACTION_CROSSWALK",
+    "name": "SourceComplexCompressedWeilActionCrosswalk",
+    "status": "OPEN",
+    "stop_code": "SOURCE_COMPLEX_AMBIENT_ACTION_CROSSWALK_MISSING",
+    "selected_bus_goal_nnn": "057",
+    "selected_bus_goal_path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
+    "next_required_actor": "Codex+Proshka",
+    "next_action": "Source-audit and materialize the exact hCompressedAction equality binding sourceCCMFiniteOperator to the compressed ambient Weil action; do not execute the wider-N ladder, continuum numerator, H4a1b, promotion, or RH claim.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_057_source_complex_finite_residual_production_bind": {
+      "classification": "GOAL057_SOURCE_COMPLEX_FINITE_RESIDUAL_PRODUCTION_BIND_PROVED",
+      "status": "PASS",
+      "lean_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean",
+      "lean_sha256": "c11fe72d9df1e7a81d73cdcb1beebfc016be82cb1d0bcc8ffc371fc748cfb497",
+      "public_surface": "6_DEFINITIONS_6_THEOREMS_4_PRIVATE_HELPERS",
+      "proof_db": "16_OF_16_DECLARATIONS_PROVEN",
+      "source_row_unit": true,
+      "finite_matrix_hermitian": true,
+      "source_residual_orthogonality": true,
+      "plants_fired": "6_OF_6",
+      "hCompressedAction": false,
+      "h4a1b_closed": false,
+      "coarse_checkpoints_closed": 0,
+      "coarse_checkpoints_advanced": 1,
+      "remaining_delegated_mathematical_checkpoints": 10,
+      "owner_gate_remaining": "PX_RH_CLAIM",
+      "next_gap": "SOURCE_COMPLEX_COMPRESSED_WEIL_ACTION_CROSSWALK",
+      "request_sha256": "2afa4512efe5c051c95791665f261673ea07ac6cd72742433f320cdf0c88dafd",
+      "visible_verdict_archive_sha256": "20fa172fbec462bc0b5695fa2b63421360b1c1b92d95a59ac655b64f7f07b0b3",
+      "closeout_sha256": "366f7254ee7d2033deb14fba36b7dbb7904bab8e0fe6464aac0394dac0e2d83f",
+      "semantic_boundary": "FINITE_CCM_SOURCE_MATRIX_RESIDUAL_ONLY_NO_COMPRESSED_AMBIENT_ACTION_NO_CONTINUUM_NUMERATOR_NOT_H4A1B_NOT_RH"
+    },
+    "goal_057_p057_7_finite_plateau_not_attop": {
+      "classification": "P057_7_FINITE_PLATEAU_NOT_ATTOP_FIRED",
+      "status": "PASS",
+      "synthetic_sequence": "DELTA_N_1_FOR_N_LE_120_THEN_120_OVER_N",
+      "finite_plateau_pair": [90, 120],
+      "finite_plateau_relative_midpoint_drift": "0",
+      "finite_plateau_gate": "PASS",
+      "mutant": "PROMOTE_FINITE_PLATEAU_TO_EVENTUALLY_ATTOP_REJECTED",
+      "eventually_atTop_claim": false,
+      "continuum_gap_claim": false,
+      "operator_gap_receiver_invoked": false,
+      "primary_inference_precedent": "fixed_bound_without_vanishing_rate_not_uniform_zero",
+      "normalization_precedent": "detector_decay_does_not_imply_relative_decay_CONDITIONAL_ONLY",
+      "cell_13_2_static_layout_plants": "FUTURE_COMPLEX_RESIDUAL_BIND_REFERENCE_NOT_P057_7_SUBSTITUTE",
+      "script_sha256": "303ce8db0afc1f96868a5ca5088e964106a5b9299d20fd664ecdd0db8b836167",
+      "result_sha256": "c067ebae9d3570e2e72b8ab489e0d4b4b15c374a79fa3a4c4ad428bdecf42e19",
+      "phase3_script_sha256_unchanged": "60ea1dab2d1d62aa386d69cb3885da4158ac727d2cfb76e2ce0c9e77bd7e1c29",
+      "phase3_result_sha256_unchanged": "dd60446849839256b08f8dd4cf78968987c501d7f196cdafffdd4b2f9640cb71",
+      "semantic_boundary": "FINITE_PLATEAU_NOT_ATTOP_NO_OPERATOR_GAP_CLAIM_NOT_RH"
+    },
+    "goal_057_actual_numerator_source_target_audit": {
+      "classification": "PROBE_NOT_SOURCE_TRIAL",
+      "source_lock_status": "DEFERRED_SINGLE_BATCH_CLOSED_REPAIRED",
+      "r1_ruling": "TRY_CHAIN_REPAIRED",
+      "r4_ruling": "RUN_JUDGE_INTEGRITY_ACCEPT_WITH_NAMED_NEXT_PLANT",
+      "rnum_ruling": "RUN_NUMERATOR_SOURCE_AUDIT_FIRST",
+      "source_trial_identity": "FAIL_EXACT_OBJECT_IDENTITY",
+      "phase1_probe_role": "DIAGNOSTIC_ONLY_NOT_INPUT_B_NUMERATOR",
+      "source_vector": "NORMALIZED_COMPLEX_COEFFICIENT_ROW_OF_P_LAMBDA_N_K_LAMBDA",
+      "phase1_probe": "RENORMALIZED_EXACT_J_EVEN_PROJECTION_OF_REAL_PART",
+      "diagnostic_l2_distance": "1.7192005754351258523132869949542982877061018316069195018790615611845e-30",
+      "finite_matrix_identity": "PARTIAL_SOURCE_MATRIX_LOCK_NO_END_TO_END_PRODUCTION_BIND",
+      "existing_residual_receiver": "ABSTRACT_OR_PROJECTION_TAIL_NOT_SOURCE_INSTANTIATED",
+      "continuum_numerator_bridge": "OPEN",
+      "proshka_final_verdict_sha256": "e2dac3f6b90a0277d3105a0feb1d20140c0df6d88befd3f9bb7044d37f06ab71",
+      "audit_report_sha256": "e6ec8d231b3afb018043643e51547aa9695a85fb642531391868318733f96875",
+      "goal_a6_sha256": "6defed93aeb247f0d9b28197876b149eb530850329b37cc7f78eda2eb9d19c6d",
+      "p057_7_finite_plateau_not_attop": "FIRED_PASS",
+      "semantic_boundary": "NO_INPUT_B_NUMERATOR_CLAIM_NO_WIDER_N_LADDER_NO_CONTINUUM_TRANSFER_NOT_RH"
+    },
+    "goal_057_phase3_delta_rate": {
+      "classification": "CCM_DELTA_RATE_PROFILE_FINITE_INTERVAL_PASS_RATE_UNRESOLVED",
+      "rate_class": "DELTA_RATE_UNRESOLVED",
+      "lambda_squared_grid": [12, 13, 14],
+      "N_ladder": [60, 90, 120],
+      "precision_dps": [120, 240],
+      "stabilized_m_values": [],
+      "controlling_sector": "ODD_GROUND_AT_ALL_NINE_CELLS",
+      "interval_cells": "18/18_PASS",
+      "independent_rump_cells": "3/3_PASS",
+      "report_sha256": "4d85f32fd5837d2298c072afc75e4ec22b6638865356ac7c312288b8df895b2d",
+      "script_sha256": "60ea1dab2d1d62aa386d69cb3885da4158ac727d2cfb76e2ce0c9e77bd7e1c29",
+      "result_sha256": "dd60446849839256b08f8dd4cf78968987c501d7f196cdafffdd4b2f9640cb71",
+      "goal_a5_sha256": "66d95c90e31f474e79486cc0eea7d0156c7e792a9033171cd9fa20d55bcb5bfa",
+      "actual_trial_numerator": "UNAVAILABLE_SOURCE_TARGET_BRIDGE_OPEN",
+      "semantic_boundary": "FINITE_SECTIONAL_GAP_PROFILE_ONLY_NO_EVENTUALLY_ATTOP_NO_CONTINUUM_TRANSFER_NOT_SLOTH2A_NOT_RH"
+    },
+    "goal_057_phase2_fixed_q_beta_n": {
+      "classification": "CCM_FIXED_Q_BETA_N_INTERVAL_PROFILE_PASS",
+      "finite_profile_class": "FIXED_Q_PROFILE_FINITE_POSITIVE_NOT_STABILIZED",
+      "lambda": "sqrt(13)",
+      "N_ladder": [120, 160, 200, 240],
+      "precision_dps": [180, 360],
+      "controlling_sector": "ODD_SECTOR_AT_ALL_FOUR_POINTS",
+      "report_sha256": "40b645862ccc4173377f3718296458ce3aa594d0698a945ce2cc9167d33f347e",
+      "script_sha256": "851db5963b4ad012cc3746b2827931b1beedad0b931676d2b40f4cb9ca774f72",
+      "result_sha256": "204e441ee807938335a3826257e1b77cb186fb9aa5416eec66b46cd54b69ff4b",
+      "capability_receiver_audit_sha256": "837117c64323cfeb72119a16449922dcc6ed2574dfdff6ad919732f2cbd8e3cd",
+      "semantic_boundary": "FINITE_FIXED_Q_PROFILE_ONLY_NO_CONTINUUM_TRANSFER_NOT_SLOTH2A_NOT_RH"
+    },
+    "goal_057_phase1_control_cell": {
+      "classification": "CCM_CONTROL_CELL_CERT_INTERVAL_PASS",
+      "control_cell": "m=13,N=120,dimension=241",
+      "beta": "1e-56",
+      "tau": "1",
+      "precision_dps": [120, 240],
+      "report_sha256": "5776807be33117f4d3fbb98e1a8a9b08cfd85932733fd8d0c9101253db1a1eae",
+      "script_sha256": "1be57db69683652ed4f6d56dba6fc3b70c186f429fbb7f5bef978cd84f08ed0d",
+      "result_sha256": "8da8757f106f90e67f217226ce657869f398e62a23ab06bd096aba847e4d8512",
+      "semantic_boundary": "FINITE_CCM_CELL_ONLY_NOT_SLOTH2A_NOT_UNIFORM_GAP_NOT_RH"
+    },
     "g2_ccm_054_1_receiver_v2_preparation": {
       "classification": "SURROGATE_REJECTED_REAL_SOURCE_SKELETON_READY",
       "aristotle_project_id": "36061787-afe1-4d64-bb55-905fce1411a6",
@@ -330,34 +430,24 @@
     }
   },
   "bus": {
-    "status": "IDLE_WAITING_FOR_GOAL",
-    "closed_nnns": [
-      "001",
-      "002",
-      "003",
-      "004",
-      "005",
-      "006",
-      "007",
-      "008",
-      "009"
-    ],
-    "last_contiguous_closed_nnn": "009",
-    "lowest_unanswered_nnn": null,
-    "next_expected_nnn": "010",
-    "selected_next_gate": null
+    "status": "ACTIVE_GOAL_PRESENT",
+    "closed_nnns": [],
+    "last_contiguous_closed_nnn": null,
+    "lowest_unanswered_nnn": "057",
+    "next_expected_nnn": "058",
+    "selected_next_gate": "057"
   },
   "last_closed": {
-    "nnn": "009",
-    "name": "ZeoProvenanceHarmonizationVerify_v1",
-    "goal_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/009_zeo_provenance_harmonization_verify.goal.md",
-    "answer_path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/009_zeo_provenance_harmonization_verify.answer.md",
-    "goal_sha256": "26f253a89b896fef43d56970edfb18afbe8bea98f65af86a33a0a1bb538f531f",
-    "answer_hash_mode": "canonical_payload_omit_hash_lines",
-    "answer_sha256": "2d307968b6f0b9da346081e5f55dfa1ca8dd1294ffdf2fffd1f8b4ad3cd58388",
-    "verdict": "OVERCLAIM_LIST;MYTHOS_REPAIRS_PRESENT;OPEN_CRITICAL_ZEO_EXPORT_AMBIGUOUS;PLANT_INERT;CLASSIFICATION_SCOPE_INCOMPLETE",
+    "nnn": "056u",
+    "name": "D0PstarPhysicalFourierEnergyControl",
+    "goal_path": "docs/routeB_bus/056u_d0_selected_physical_fourier_energy_receiver.goal.md",
+    "answer_path": "docs/routeB_bus/056u_d0_selected_physical_fourier_energy_receiver.answer.md",
+    "goal_sha256": "6cd2d76bf68fbba71fc06b34ffc93405a08fc0b04b8c5e3bcf8730f0c0ce530d",
+    "answer_hash_mode": "ordinary_sha256",
+    "answer_sha256": "00a0a0957ae540ae4b5275af051e3a63ac1f0507b241b97125fa242e8772bbd9",
+    "verdict": "G6_S2_D0_PHYSICAL_FOURIER_ENERGY_AND_BANDWIDTH_TO_PROJECTION_TAIL_PROVED",
     "rh_status": "NOT_RH",
-    "terminal_status": "STOP"
+    "terminal_status": "CLOSED"
   },
   "contract": {
     "path": "q3.lean.aristotle/docs/ROUTE_B_THEOREM_CONTRACT_v2.md",
@@ -511,6 +601,30 @@
     }
   },
   "pins": {
+    "goal_057_phase3_report": {
+      "path": "docs/routeB_bus/PHASE3_RESULTS_2026-08-07.md",
+      "sha256": "4d85f32fd5837d2298c072afc75e4ec22b6638865356ac7c312288b8df895b2d"
+    },
+    "goal_057_phase3_script": {
+      "path": "docs/routeB_bus/phase3_scripts/ccm_delta_rate_profile.py",
+      "sha256": "60ea1dab2d1d62aa386d69cb3885da4158ac727d2cfb76e2ce0c9e77bd7e1c29"
+    },
+    "goal_057_phase3_result": {
+      "path": "docs/routeB_bus/phase3_results/ccm_delta_rate_profile.json",
+      "sha256": "dd60446849839256b08f8dd4cf78968987c501d7f196cdafffdd4b2f9640cb71"
+    },
+    "goal_057_a5": {
+      "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
+      "sha256": "2c76ab98fef19429092ab3b2391f577818e077df31d480362645b3914b7d9019"
+    },
+    "goal_057_p057_7_script": {
+      "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",
+      "sha256": "303ce8db0afc1f96868a5ca5088e964106a5b9299d20fd664ecdd0db8b836167"
+    },
+    "goal_057_p057_7_result": {
+      "path": "docs/routeB_bus/phase3_results/p057_7_finite_plateau_not_attop.json",
+      "sha256": "c067ebae9d3570e2e72b8ab489e0d4b4b15c374a79fa3a4c4ad428bdecf42e19"
+    },
     "mythos_kernel": {
       "path": "q3.lean.aristotle/docs/MYTHOS_KERNEL_PROTOCOL.md",
       "sha256": "0bb4d6613e74c65f5fa0f436904319b8da9208ced26c7eb66e32de0d3d47ec49"
