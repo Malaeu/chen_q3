@@ -26,7 +26,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `proshka/PROSHKA_VERDICT_UNIFIED_MEMORY_CONTOUR_2026-08-05.md` | Proshka architecture verdict — unified one-Spine memory contour (RATIFIED, impl open) | `0bb8c1b9f608daa649cc9a0276458ca2461f729103c86ea4d0d56d56afd860ea` |
 | `proshka/PROSHKA_VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026-08-05.md` | Proshka SECOND verdict — unified memory+behavior-control contour, P9 CODEX_CONTROL + batch-per-PHASE (RATIFIED, impl open, amends first) | `cd7784a2b1d703685f1c874aa34bc2a2fdb8f25a9b508777975fc4ca87f6ae31` |
 | `../EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md` | executor arsenal discipline (both bodies: Codex/Claude Code) | `9b63764178217315b32bc7f6ac2dfc6960a0cbe4e1915910aff54b25f060e07e` |
-| `MAP.md` | Route B project navigator (LIVE — byte-unchanged by D0 closeout; SHA advisory refreshed) | `e47fc9f44ea13a77bb0653a533a6da3ace2d51bf093f6115054fd09a983e658a` |
+| `MAP.md` | Route B project navigator (LIVE — recartographed 2026-08-07: 056 registry, kill ledger, G6/S2 chain, H2a penalty engine, authority mode; SHA advisory refreshed) | `41cd36ff6eeda9eaddd11b956a5377afbf10d145d91ddc5547d0e8bf2942befd` |
 | `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT.md` | D0 terminal closeout mirror and conditional G3/H2b repoint ledger | `b6aecd0565a7c08627317b4c2973023298d3b4a9d3fe1dc272ecf3e058e35784` |
 | `001_ktrial_stage1.answer.md` | answer | `6714aab6f34bc419e32e20a68c59a7f9f685669496f3dffe7c1c9e55f37658b5` |
 | `002_ktrial_stage2.answer.md` | answer | `eafbf7d6c059ac4021d79818d51085a6d25227482d21eeedb7d5e90d4d9dd613` |
