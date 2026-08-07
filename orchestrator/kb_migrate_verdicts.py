@@ -99,7 +99,7 @@ def main() -> int:
 
     rows, evidence, aliases, links = [], [], [], []
     manual = []   # prose-only KILL mentions: reported, never invented into rows
-    n_iter = n_kill = n_reused = 0
+    n_iter = n_kill = n_reused = n_already = 0
 
     for name, paths in sorted(by_name.items()):
         canon = paths[0]
@@ -129,6 +129,17 @@ def main() -> int:
                 continue
 
         kid = kb.slugify(name.replace("PROSHKA_", "").replace(".md", ""), 60)
+        # Idempotence.  This script is meant to run at every goal close, so a verdict it has
+        # already ingested must be skipped, not re-minted.  Before the fix, a second run hit
+        # `kid in known_ids` for every previously migrated file and gave each one a `__V`
+        # twin; 2026-08-06 produced 18 such pairs, all with an exact twin lacking the suffix.
+        # The suffix now means only what it was meant to mean: a slug collision between two
+        # *different* files inside one run.
+        if conn.execute(
+                "SELECT 1 FROM kill WHERE id IN (?, ?) AND source_file = ? LIMIT 1",
+                (kid, f"{kid}__V", rel_canon)).fetchone():
+            n_already += 1
+            continue
         if kid in known_ids:
             kid = f"{kid}__V"
         known_ids.add(kid)
@@ -172,6 +183,7 @@ def main() -> int:
     print(f"  new strategy rows (M3)  : {n_iter}")
     print(f"  new verdict-kill rows   : {n_kill}")
     print(f"  reused existing strategy: {n_reused} (evidence attached, no duplicate row)")
+    print(f"  already migrated, skipped: {n_already}")
     print(f"  evidence refs           : {len(evidence)}   aliases: {len(aliases)}")
     print(f"  prose-only KILL mentions: {len(manual)} — NOT migrated, need a human read:")
     for n, pth in manual[:12]:
