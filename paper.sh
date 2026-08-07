@@ -28,12 +28,13 @@ ZOT_COLLECTION="8RF2S7TI"   # Q3_frontier_2026
 [ $# -ge 1 ] || { echo "usage: ./paper.sh <arxiv-id | doi | url> [--id KEY] [--title T] [--author A]"; exit 2; }
 
 SRC="$1"; shift
-KEY=""; TITLE=""; AUTHOR=""; YEAR=""
+KEY=""; TITLE=""; AUTHOR=""; YEAR=""; HAVE_PDF=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --id) KEY="$2"; shift 2;;
     --title) TITLE="$2"; shift 2;;
     --author) AUTHOR="$2"; shift 2;;
+    --pdf) HAVE_PDF="$2"; shift 2;;   # уже скачанный файл — не качать заново
     *) shift;;
   esac
 done
@@ -139,7 +140,17 @@ else
 fi
 
 mkdir -p "$PDFS"
-if [ -f "$PDFS/$FNAME" ]; then
+if [ -n "$HAVE_PDF" ]; then
+  # Файл уже на диске под своим именем — берём его, ничего не качаем.
+  FNAME="$(basename "$HAVE_PDF")"
+  if [ -f "$PDFS/$FNAME" ]; then
+    echo "PDF взят как есть: $PDFS/$FNAME"
+  elif [ -f "$HAVE_PDF" ]; then
+    cp "$HAVE_PDF" "$PDFS/$FNAME"; echo "PDF скопирован: $PDFS/$FNAME"
+  else
+    echo "⚠ --pdf указан, но файла нет: $HAVE_PDF"; FNAME=""
+  fi
+elif [ -f "$PDFS/$FNAME" ]; then
   echo "PDF уже есть: $PDFS/$FNAME"
 elif [ -n "$DL" ]; then
   if curl -sL --max-time 120 -o "$PDFS/$FNAME" "$DL" && [ "$(file -b --mime-type "$PDFS/$FNAME")" = "application/pdf" ]; then
@@ -194,6 +205,38 @@ for a in author.split(" and "):
     else:
         parts = a.split(); f, g = parts[-1], " ".join(parts[:-1])
     creators.append({"creatorType": "author", "firstName": g, "lastName": f})
+
+# Дедупликация: повторный прогон не должен плодить вторую запись о той же работе.
+# Ищем по DOI и по archiveID среди верхнеуровневых элементов библиотеки.
+def already_there():
+    needle = (doi or "").lower()
+    aid = (f"arxiv:{arxiv}").lower() if arxiv else ""
+    start = 0
+    while True:
+        u = (f"https://api.zotero.org/{typ}s/{lib}/items/top"
+             f"?limit=100&start={start}&format=json")
+        req = urllib.request.Request(u, headers={"Zotero-API-Key": key,
+                                                 "Zotero-API-Version": "3"})
+        try:
+            batch = json.loads(urllib.request.urlopen(req, timeout=30).read().decode())
+        except Exception:
+            return None
+        if not batch:
+            return None
+        for it in batch:
+            d = it.get("data", {})
+            if needle and (d.get("DOI", "") or "").lower() == needle:
+                return d.get("key")
+            if aid and (d.get("archiveID", "") or "").lower() == aid:
+                return d.get("key")
+        if len(batch) < 100:
+            return None
+        start += 100
+
+dup = already_there()
+if dup:
+    print("dup:" + dup); raise SystemExit
+
 item = {"itemType": "preprint", "title": title, "creators": creators,
         "date": year, "DOI": doi, "repository": "arXiv" if arxiv else "",
         "archiveID": f"arXiv:{arxiv}" if arxiv else "",
@@ -213,7 +256,96 @@ except Exception as e:
 PY
 )"
   case "$ZRES" in
-    ok:*)   echo "✓ Zotero: item ${ZRES#ok:} в коллекции Q3_frontier_2026";;
+    dup:*|ok:*)
+      if [ "${ZRES%%:*}" = "dup" ]; then
+        ZKEY="${ZRES#dup:}"; echo "Zotero: запись уже есть — item $ZKEY"
+      else
+        ZKEY="${ZRES#ok:}"; echo "✓ Zotero: item $ZKEY в коллекции Q3_frontier_2026"
+      fi
+      # Прикрепить сам PDF.  Отдельная точка отказа: если сорвётся, запись с метаданными
+      # уже создана, а файл лежит в репозитории — поэтому только предупреждение.
+      if [ -n "$FNAME" ] && [ -f "$PDFS/$FNAME" ]; then
+        ARES="$(python3 - "$ZKEY" "$PDFS/$FNAME" "$TITLE" <<'PY'
+import hashlib, json, os, sys, time, urllib.parse, urllib.request
+parent, path, title = sys.argv[1], sys.argv[2], sys.argv[3]
+key, lib, typ = (os.environ.get(k, "") for k in
+                 ("ZOTERO_API_KEY", "ZOTERO_LIBRARY_ID", "ZOTERO_LIBRARY_TYPE"))
+BASE = f"https://api.zotero.org/{typ}s/{lib}"
+H = {"Zotero-API-Key": key, "Zotero-API-Version": "3"}
+
+def call(url, data=None, headers=None, method=None, raw=False):
+    req = urllib.request.Request(url, data=data,
+                                 headers={**H, **(headers or {})}, method=method)
+    with urllib.request.urlopen(req, timeout=60) as r:
+        b = r.read()
+    return b if raw else json.loads(b.decode())
+
+try:
+    blob = open(path, "rb").read()
+    md5 = hashlib.md5(blob).hexdigest()
+    fname = os.path.basename(path)
+    mtime = int(os.path.getmtime(path) * 1000)
+
+    # 1. attachment-заготовка под родителем
+    att = [{"itemType": "attachment", "linkMode": "imported_file",
+            "parentItem": parent, "title": fname, "filename": fname,
+            "contentType": "application/pdf", "charset": ""}]
+    r = call(f"{BASE}/items", json.dumps(att).encode(),
+             {"Content-Type": "application/json"}, "POST")
+    ok = r.get("successful", {})
+    if not ok:
+        print("fail:create:" + json.dumps(r.get("failed", {}))[:100]); raise SystemExit
+    akey = list(ok.values())[0]["key"]
+
+    # 2. авторизация загрузки
+    body = urllib.parse.urlencode({"md5": md5, "filename": fname,
+                                   "filesize": len(blob), "mtime": mtime,
+                                   "params": 1}).encode()
+    auth = call(f"{BASE}/items/{akey}/file", body,
+                {"Content-Type": "application/x-www-form-urlencoded",
+                 "If-None-Match": "*"}, "POST")
+    if auth.get("exists"):
+        print("ok:exists:" + akey); raise SystemExit
+
+    # 3. загрузка в хранилище.  Zotero отдаёт ОДИН из двух форматов авторизации:
+    #    старый — prefix/suffix/contentType (склеить в один поток);
+    #    текущий — url/params (multipart/form-data POST в S3, файл последним полем).
+    if "prefix" in auth:
+        payload = auth["prefix"].encode() + blob + auth["suffix"].encode()
+        call(auth["url"], payload, {"Content-Type": auth["contentType"]}, "POST", raw=True)
+    else:
+        params = auth["params"]
+        if isinstance(params, str):
+            params = dict(urllib.parse.parse_qsl(params))
+        boundary = "----zoteroupload" + hashlib.md5(str(mtime).encode()).hexdigest()[:16]
+        parts = []
+        for k, v in params.items():          # порядок важен: S3 требует поля до файла
+            parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"{k}\"\r\n\r\n{v}\r\n".encode())
+        parts.append(
+            f"--{boundary}\r\nContent-Disposition: form-data; name=\"file\"; "
+            f"filename=\"{fname}\"\r\nContent-Type: application/pdf\r\n\r\n".encode())
+        parts.append(blob)
+        parts.append(f"\r\n--{boundary}--\r\n".encode())
+        call(auth["url"], b"".join(parts),
+             {"Content-Type": f"multipart/form-data; boundary={boundary}"}, "POST", raw=True)
+
+    # 4. регистрация загрузки
+    call(f"{BASE}/items/{akey}/file",
+         urllib.parse.urlencode({"upload": auth["uploadKey"]}).encode(),
+         {"Content-Type": "application/x-www-form-urlencoded",
+          "If-None-Match": "*"}, "POST", raw=True)
+    print("ok:" + akey)
+except Exception as e:
+    print("fail:" + repr(e)[:140])
+PY
+)"
+        case "$ARES" in
+          ok:exists:*) echo "✓ Zotero: PDF уже был прикреплён";;
+          ok:*)        echo "✓ Zotero: PDF прикреплён (${ARES#ok:})";;
+          *)           echo "⚠ Zotero: PDF не прикреплён — $ARES (запись и файл в репо на месте)";;
+        esac
+      fi
+      ;;
     no-key) echo "⚠ Zotero: ключа нет — пропущено";;
     *)      echo "⚠ Zotero: не создано — $ZRES";;
   esac
@@ -222,12 +354,31 @@ else
 fi
 
 # ── реестр со статусом NEEDS_CARDS ────────────────────────────────────────────
-if ! grep -q "$KEY" "$REG" 2>/dev/null; then
-  printf '| %s | %s | %s | %s | **NEEDS_CARDS** | затянуто paper.sh %s — карточка не написана |\n' \
+# Карточка может уже существовать — например, работу разобрали руками до появления paper.sh.
+# Тогда ставить NEEDS_CARDS было бы ложным долгом: счётчик в поясе врал бы каждый старт.
+CARDFILE=""
+for c in "$LIT"/*_CARDS.md; do
+  [ -f "$c" ] || continue
+  if { [ -n "$ARXIV" ] && grep -qF "$ARXIV" "$c"; } || \
+     { [ -n "$DOI" ]   && grep -qF "$DOI" "$c"; } || \
+     { [ -n "$FNAME" ] && grep -qF "$FNAME" "$c"; }; then
+    CARDFILE="$(basename "$c")"; break
+  fi
+done
+
+if grep -q "$KEY" "$REG" 2>/dev/null; then
+  echo "реестр: $KEY уже есть"
+else
+  if [ -n "$CARDFILE" ]; then
+    STATUS="HAVE ✓"; NOTE="карточка: \`$CARDFILE\`"
+  else
+    STATUS="**NEEDS_CARDS**"; NOTE="затянуто paper.sh $(date +%F) — карточка не написана"
+  fi
+  printf '| %s | %s | %s | %s | %s | %s |\n' \
     "$KEY" "$(printf '%s' "$AUTHOR" | cut -d' ' -f1-4), \"$TITLE\"" \
     "${ARXIV:+arXiv:$ARXIV}${DOI:+ doi:$DOI}" \
-    "${FNAME:+\`pdfs/$FNAME\`}" "$(date +%F)" >> "$REG"
-  echo "✓ реестр: строка со статусом NEEDS_CARDS"
+    "${FNAME:+\`pdfs/$FNAME\`}" "$STATUS" "$NOTE" >> "$REG"
+  echo "✓ реестр: строка со статусом ${STATUS//\*/}"
 fi
 
 cat <<EOF
