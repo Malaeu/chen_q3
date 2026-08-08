@@ -620,3 +620,79 @@ literal `-N,…,N` Euclidean coefficient basis to an operator on `E_m_N`.  This 
 the finite carrier ambiguity and nothing more.  The source still lacks the selected
 trial's domain membership for the associated ambient Weil operator and the domain-safe
 projected action equality, so all ten delegated mathematical checkpoints remain open.
+
+## A11 — B3.0A exact zero-extended mode Fourier formula (2026-08-08)
+
+```yaml
+A11_STATUS: CLOSED_CHILD_PARENT_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA
+SUCCESS: GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA_PROVED
+
+PARENT_B3_0:
+  primary: WALL_GOAL057_B3_0_SOURCE_FORM_REPRESENTATION_API_MISSING
+  status: RETAINED_NOT_REOPENED
+  six_declaration_operator_graph: NOT_AUTHORIZED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeFourierFormula.lean
+LEAN_SHA256: a7cf28980344c70d22c6bd428fb4ab7537a35f9bbff1f403023a2076f67719f0
+PUBLIC_SURFACE:
+  definitions:
+    - logWindowZeroExtendedMode
+  theorems:
+    - fourier_logWindowZeroExtendedMode
+  private_theorems:
+    - fourier_logWindowZeroExtendedMode_integral
+PROOF_DB: 3_OF_3_DECLARATIONS_PROVEN
+PLANTS: 4_OF_4_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7755_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: 8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: EXACT_POINTWISE_MODE_FOURIER_FORMULA_ONLY
+NO_L2_PLANCHEREL_CARRIER: true
+NO_ARCH_SYMBOL_WEIGHTED_L2: true
+NO_SOURCE_WEIL_FORM: true
+NO_ASSOCIATED_OPERATOR_GRAPH: true
+NO_OPERATOR_DOMAIN_MEMBERSHIP: true
+NO_COMPRESSION_IDENTITY: true
+NO_CONTINUUM_NUMERATOR: true
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 98cfaba7d84611f3e4a3225b2de74e3966ba901e9d8e2d5157e2d24c5c4a7064
+PROSHKA_VERDICT_ARCHIVE_SHA256: 57d7c82f5f98b80b5a2986cbaf2b46a96345f9329709b2258abdb5da14fadbc1
+CLOSEOUT_SHA256: d4998beab3488b6643b5c6780d2ef84ea87448777fcf6b44dc711dc2456f5002
+
+REVIEW_RUNTIME:
+  phase_calls: 21
+  global_delegated_calls: 23
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_CERTIFICATE
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: one_same_chat_operational_release_before_any_B3_0B_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The literal source log-window mode now has one exact production theorem for its
+continuous Mathlib Fourier transform, with the negative Fourier sign, uncentered
+`[0,L_m]` window, `du/u -> dx` transport, resonance `t=n/L_m`, and
+`sqrt(L_m)` value pinned. This is a convention-locking representation result,
+not a Plancherel, weighted-L², form-domain, operator-domain, compression,
+continuum-numerator, H4a1b, promotion, PX, or RH result.

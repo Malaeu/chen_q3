@@ -31,6 +31,42 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0A exact mode Fourier formula release
+
+```yaml
+proof_address: RouteB.Goal057.ExactModeFourierFormulaRelease
+front: GOAL057/P057_B3_0A
+transaction: GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 7b163627-5d45-4b17-9ca2-f3588d126ef5
+response_message_id: dcf98b52-6894-41e7-a983-8fa1a6be840f
+sent_at: 2026-08-08T03:14:32.340+02:00
+completed_at: 2026-08-08T03:23:26.250+02:00
+wall_seconds: 533.910
+wall_human: "8m53.910s observed wall; UI reports 8m29s reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA
+status: OPEN_RELEASED_FOR_EXACT_ONE_CHILD_MATERIALIZATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA_RELEASE_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW accepted the byte-pinned direct Lean
+  preflight and released exactly one two-declaration production child. The
+  7,952-byte request has SHA-256
+  98cfaba7d84611f3e4a3225b2de74e3966ba901e9d8e2d5157e2d24c5c4a7064;
+  the 4,881-byte preflight has SHA-256
+  a7cf28980344c70d22c6bd428fb4ab7537a35f9bbff1f403023a2076f67719f0.
+  The complete 19,840-byte visible verdict has SHA-256
+  665312fabe820cda0f2836f27326ab8650c150667b89cff6c5397c64a35f138d;
+  the newline-normalized archive has 19,841 bytes and SHA-256
+  57d7c82f5f98b80b5a2986cbaf2b46a96345f9329709b2258abdb5da14fadbc1.
+  Proshka fixed the negative Mathlib Fourier sign, source window, du/u-to-dx
+  transport, resonance at n/L_m, and sqrt(L_m) value. B3.0B and the associated
+  operator graph remain unauthorized; the ten-checkpoint ledger stays 0/10.
+  Answer now appeared and was never clicked. No Aristotle submission, Bus 010,
+  Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0 associated-operator graph release audit
 
 ```yaml
