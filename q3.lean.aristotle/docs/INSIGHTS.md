@@ -11,6 +11,40 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
+
+- Target: identify the proved B3.0D cycles-frequency pairing with the literal
+  CCM archimedean matrix entry, without guessing its sign, `2*pi` scale, slot
+  orientation, or real/complex coercion.
+- The primary CCM source fixes the angular transform and
+  `W_R = -W_infinity`, while the full Weil form contains `-W_R`; its frequency
+  contribution is `integral |Fhat(s)|^2 * 2*theta'(s)/(2*pi) ds`.
+- The production multiplier satisfies
+  `sourceArchimedeanMultiplier(t) = -log pi + Re digamma(1/4+i*pi*t)
+  = 2*theta'(2*pi*t)`.  Under `s = 2*pi*t`, Mathlib's cycles-frequency
+  transform absorbs the Jacobian and introduces no residual `2*pi` factor.
+- Therefore the source audit predicts the exact ordered crosswalk
+  `sourceArchimedeanModePairing i n r =
+  -(ccmWREntry (L_m i) n r : C)`: first index antilinear, second linear,
+  no transpose and no extra conjugation.  This remains an audited target, not
+  a Lean theorem.
+- Four local semantic queries and exact identifier search found no existing
+  theorem connecting `sourceArchimedeanMultiplier` or the B3.0D pairing to
+  `ccmWREntry`.  Mathlib supplies Fourier integrals and sesquilinear exchange,
+  but no ready theorem equating the digamma multiplier integral to CCM's
+  regularized one-sided `W_R` formula.
+- The existing `Q3.DigammaRemainder` proves a Stieltjes representation, but it
+  is not the hyperbolic-kernel representation needed by CCM equation (4.4).
+  A direct one-shot equality would therefore hide a substantial analytic
+  Fubini/distribution bridge.
+- Recommended next atom for delegated review: preflight the smallest source
+  theorem converting the digamma multiplier to the one-sided CCM kernel,
+  with explicit integrability/Fubini obligations; only then wrap the fixed
+  modes into the displayed negative-`ccmWREntry` identity.
+- Boundary: no crosswalk, CCM sign theorem, full Weil decomposition, operator
+  graph, uniform/cofinal control, coarse-checkpoint closure, promotion, PX, or
+  RH is claimed until the bridge compiles in Lean.
+
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0D source mode-pairing Hermitianity
 
 - Target: define the fixed-mode archimedean pairing integral from B3.0C and
