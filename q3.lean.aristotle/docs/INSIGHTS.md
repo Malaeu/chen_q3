@@ -11,6 +11,16 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0F finite archimedean sesquilinear matrix lift
+
+- Exact target: lift the closed all-mode E4C identity coefficientwise over the literal carrier `CCMModeFinite i.N`, with `star (c j)` in the first slot and `d k` linear in the second.
+- The official CCM source fixes this convention: the Hilbert pairing is antilinear in the first argument, the Weil form is obtained by polarization, and its finite restriction is represented by the source matrix on `V_n`.
+- Local semantic search finds no missing analytic supplier: `D0PstarSourceArchAllModeCCMWRCrosswalk.lean` is the sole entrywise parent; `D0PstarCCMFiniteSourceResidual.lean` confirms the exact carrier and mode order.
+- The proof must rewrite every matrix entry by E4C and pull the common minus through the finite double sum. It must not use Hermitian symmetry to swap indices or coefficients.
+- The discriminator preserves the exact map `ccmModeFinite i.N j = j - N`, conjugates only the first coefficient, and introduces no real-part projection.
+- Plants must detect a missing first-slot star, a moved star, the wrong global sign, a changed finite carrier, a symmetry-based slot swap, and a surrogate all-form premise.
+- Boundary: this is only the archimedean finite matrix-form lift. It does not add `W02`, prime terms, the complete Weil form, an operator identity, positivity, a gap, promotion, PX, or RH.
+
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4C all-mode CCM-WR case assembly
 
 - Exact target: prove
