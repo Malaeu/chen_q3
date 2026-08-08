@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B2 finite Riesz operator source-bind release
+
+```yaml
+proof_address: RouteB.Goal057.FiniteRieszOperatorSourceBind
+front: GOAL057/P057_B2
+transaction: GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: c462f6fc-be15-426a-b53e-84eec9453fe7
+response_message_id: c329bd8e-a4bb-467f-b814-33a2c31b4f7c
+sent_at: 2026-08-08T01:40:31.037+02:00
+completed_at: 2026-08-08T01:51:08.032+02:00
+wall_seconds: 636.995
+wall_human: "10m36.995s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_REPAIRED
+status: OPEN_ACCEPTED_REPAIRED_CHILD_FOR_IMPLEMENTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_RELEASE_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW rejected the proposed plain-Pi
+  LinearIsometryEquiv because the ordinary finite function carrier has the
+  sup norm while the required Hilbert coefficient carrier is
+  EuclideanSpace, i.e. PiLp 2. Proshka released the repaired child with the
+  same three public names and an explicit WithLp transport. The request was
+  4,314 bytes with SHA-256
+  f2263e4584726eccb173cd8fda68e90995196cc09ae4d26f48dd91171045bd0b;
+  the 21,498-byte visible transcript had SHA-256
+  5e2113c8d039d02f78aa5b1b87a7ceea1051e77538147f14334ff6eeb68fae6d,
+  and the newline-normalized two-mirror archive has 21,499 bytes with
+  SHA-256
+  3e66197522a73c8d655df022526c03ce577e7fbdfcae09d32522d1730b3be431.
+  Answer now appeared and was never clicked. No Aristotle submission, Bus
+  010, Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B2 compressed Weil-action source audit
 
 ```yaml

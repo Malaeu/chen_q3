@@ -570,3 +570,53 @@ domain.  The next atom therefore constructs only the exact finite Riesz operator
 `E_m_N`, with source order and carrier identity pinned.  It does not call that operator
 `A_m`, does not claim an ambient compression, and does not decrement the ten-checkpoint
 ledger.
+
+## A10 — B2 repaired finite Riesz operator source bind (2026-08-08)
+
+```yaml
+A10_STATUS: CLOSED_CHILD_PARENT_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_REPAIRED
+KILLED_PROPOSAL: PLAIN_PI_LINEAR_ISOMETRY_EQUIV
+KILL_CODE: GOAL057_B2_PLAIN_PI_ISOMETRY_CARRIER_MISMATCH
+REPAIR: EUCLIDEANSPACE_WITHLP_2_COEFFICIENT_CARRIER
+
+SUCCESS: GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_PROVED
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean
+LEAN_SHA256: bf72d6f84c33f6ddd0f6e0c76563c8d6cf4416124f1b8c8e8dc988dc4ad58e59
+PUBLIC_SURFACE:
+  definitions:
+    - ccmFiniteSynthesisEquiv
+    - sourceCCMFiniteRieszOperator
+  theorem:
+    - sourceCCMFiniteRieszOperator_apply_sourceTrial
+PRIVATE_HELPERS: 6
+PROOF_DB: 7_OF_7_DECLARATIONS_PROVEN
+PLANTS: 6_OF_6_FIRED
+STANDARD_AXIOMS_ONLY: true
+
+SEMANTIC_CLASS: FINITE_RIESZ_CARRIER_BIND_ONLY
+NO_LEAN_FORM_CHARACTERIZATION: true
+NO_Dom_A_m_MEMBERSHIP: true
+NO_AMBIENT_OPERATOR_COMPRESSION: true
+NO_CONTINUUM_NUMERATOR: true
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+NEXT_GAP: SELECTED_KTRIAL_ASSOCIATED_WEIL_OPERATOR_DOMAIN_AND_COMPRESSION
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The production theorem now transports the exact coefficient CCM action through the
+literal `-N,…,N` Euclidean coefficient basis to an operator on `E_m_N`.  This removes
+the finite carrier ambiguity and nothing more.  The source still lacks the selected
+trial's domain membership for the associated ambient Weil operator and the domain-safe
+projected action equality, so all ten delegated mathematical checkpoints remain open.
