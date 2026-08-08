@@ -11,6 +11,36 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E3 source cosine-correlation preflight
+
+- Exact target: for `0 <= x`, identify twice the conjugate-first Fourier-mode
+  cosine pairing with `ccmQKernel (L_m i) n r x` on `x <= L_m i`, and with
+  zero outside the log window.
+- The primary CCM source fixes the compact-support zero extension, the
+  antilinear-first pairing, and equations (2.7)--(2.10); these determine the
+  diagonal factor `2`, the off-diagonal sine order, and the right-endpoint
+  value without a convention choice.
+- Mathlib's direct sesquilinear Fubini theorem is not applicable here:
+  `cos * 𝓕(logWindowZeroExtendedMode i r)` need not be integrable.  Treating
+  that factor as `L1` would hide the actual analytic step.
+- The viable route is correlation first: express the two compactly supported
+  zero-extended modes as a convolution/correlation, prove that its Fourier
+  transform is the conjugate-first mode product, and use pointwise Fourier
+  inversion.  The already-proved resonance-safe mode bounds supply the
+  required `L1` product carrier.
+- The source-side overlap integral is then elementary and source-locked:
+  diagonal gives `2 * (L-x)/L * cos(2*pi*n*x/L)`; off-diagonal gives the
+  ordered sine difference divided by `pi*(n-r)`.
+- Five mandatory controls are preserved as separate checks: central diagonal,
+  central off-diagonal, interior off-diagonal sign/order, right boundary, and
+  outside-window zero.
+- Planned dependencies are `D0PstarVModeFourierFormula.lean`,
+  `D0PstarSourceArchKernelModeProductL1.lean`, Mathlib Fourier inversion and
+  convolution, and `CCMFiniteWeilSourceMatrixN1.lean`.  If the convolution
+  transform or continuity-at-evaluation carrier cannot be closed without a
+  new imported theorem, the preflight must stop at that exact wall rather
+  than replace the source identity by a numeric or formal surrogate.
+
 ## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E2 joint kernel-mode Fubini preflight
 
 - Exact target: for fixed `i : PairIndex` and `n r : ℤ`, prove joint
