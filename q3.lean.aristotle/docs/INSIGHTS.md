@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4B2 diagonal archimedean / CCM-WR crosswalk
+## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B2 diagonal archimedean / CCM-WR crosswalk
 
 - Exact target: prove the missing diagonal case
   `sourceArchimedeanModePairing i n n =
@@ -32,9 +32,18 @@
 - Mandatory controls are `n = 0`, `n = 1`, support boundary `x = L_m i`, and
   one outside-support point.  Any sign, factor-two, coercion, or endpoint-scale
   mismatch stops the node rather than changing the source convention.
-- Boundary: this entry authorizes only one untracked no-`sorry` scratch
-  preflight.  It changes no production Lean, route state, checkpoint count,
-  promotion status, `PX_RH_CLAIM`, or RH status.
+- Production theorem
+  `sourceArchimedeanModePairing_eq_neg_ccmWREntry_diag` is now Lean-checked,
+  sorry-free and recorded as 19/19 proved declarations with the standard
+  axiom triple.  The exact harness proof was retained; only four controls and
+  the final axiom-print command were omitted from production.
+- Proshka accepted the theorem and proof unchanged, but correctly expanded
+  the audit from eight to twelve plants: joint-Fubini consumption, E4B1
+  consumption, explicit real/complex coercion and generated-backend
+  injection are independent proof edges.  All 12/12 mutations fired.
+- Boundary: B3.0E4B2 is closed.  B3.0E remains open for one all-mode case
+  assembly; the source Weil form, associated operator graph, all 10 coarse
+  checkpoints, H4a1b, promotion, PX and RH remain open.
 
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B1 diagonal endpoint ledger
 

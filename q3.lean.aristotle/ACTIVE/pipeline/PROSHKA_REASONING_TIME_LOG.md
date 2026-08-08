@@ -31,6 +31,42 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E4B2 diagonal source archimedean / negative CCM-WR release
+
+```yaml
+proof_address: RouteB.Goal057.DiagonalSourceArchimedeanPairingNegativeCCMWR
+front: GOAL057/P057_B3_0E4B2
+transaction: GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 824f9c19-e9cb-43da-8f28-e04585933794
+response_message_id: 43571398-e8c9-4f5a-a41a-140a797db1f9
+sent_at: 2026-08-08T15:16:20.176+02:00
+completed_at: 2026-08-08T15:37:50+02:00
+wall_seconds: 1290
+wall_human: "21m30s observed UI send-to-byte-faithful-archive wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+status: COMPLETE_SAME_CHAT_PRODUCTION_RELEASE
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE_2026-08-08.md
+notes: >-
+  Byte-identical request mirrors are 9,565 bytes with SHA-256
+  c28d0950191b10686a8425ec8c7acff316566bcf5250c93f4cd3ef29214a3803.
+  The compiling untracked harness is 19,477 bytes with SHA-256
+  02dfe2fcc0166c833ff04104fcafe64db513d8f8a4219117c1665ab20fe367d4,
+  has zero forbidden tokens, one public theorem, five private definitions,
+  thirteen private theorems, four controls and exactly the standard axiom
+  triple. The byte-faithful archived verdict is 30,433 bytes with SHA-256
+  b1ad53eddb0746555cb010eea4c96ca0fdbd75f202067b2613de7c7ed2863e37.
+  Proshka authorized exactly one B3.0E4B2 production child, accepted the
+  theorem, proof and two-import surface unchanged, and repaired the plant
+  suite from eight to twelve by adding independent joint-Fubini,
+  E4B1-consumption, real/complex-coercion and generated-dependency attacks.
+  B3.0E4C and all ten coarse checkpoints remain open.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E4B1 diagonal regularizer endpoint-ledger release
 
 ```yaml

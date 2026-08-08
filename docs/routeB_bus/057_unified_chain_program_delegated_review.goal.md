@@ -1625,3 +1625,116 @@ source `4π` endpoint logarithm for every `L > 0`. This closes B3.0E4B1
 only. The mode-dependent diagonal pairing, all-mode crosswalk, source Weil
 form and associated operator remain open, so B3.0E, B3.0, the current coarse
 checkpoint, H4a1b, promotion, PX, and RH remain open.
++
+
+## A22 — B3.0E4B2 diagonal source-archimedean / negative CCM-WR crosswalk (2026-08-08)
+
+```yaml
+A22_STATUS: CLOSED_CHILD_PARENT_B3_0E_OPEN_PENDING_ALL_MODE_ASSEMBLY
+RELEASE_PRIMARY: TRY_GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+SUCCESS: GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY_PROVED
+
+PARENT_B3_0E4A:
+  status: CLOSED
+PARENT_B3_0E4B1:
+  status: CLOSED
+PARENT_B3_0E4B2:
+  status: CLOSED
+PARENT_B3_0E:
+  status: OPEN_PENDING_ALL_MODE_CASE_ASSEMBLY
+  joint_kernel_mode_product_l1_carrier: PROVED
+  zero_extended_mode_correlation_ccm_qkernel: PROVED
+  offdiagonal_source_arch_pairing_neg_ccm_wr: PROVED
+  diagonal_scalar_endpoint_ledger: PROVED
+  diagonal_mode_pairing_crosswalk: PROVED
+  all_mode_crosswalk: NOT_PROVED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchDiagonalCCMWRCrosswalk.lean
+LEAN_SHA256: d255b9fcdd68461095d4d8250eb5159ce969eea7ae4fea5bf436b46b29621d0c
+PUBLIC_SURFACE:
+  definitions: []
+  theorems:
+    - sourceArchimedeanModePairing_eq_neg_ccmWREntry_diag
+PRIVATE_SUPPORT:
+  definitions: 5
+  theorems: 13
+  total: 18
+PROOF_DB: 19_OF_19_DECLARATIONS_PROVEN
+PLANTS: 12_OF_12_FIRED
+PLANT_REPAIR: JOINT_FUBINI_E4B1_CONSUMPTION_REAL_COMPLEX_COERCION_AND_GENERATED_DEPENDENCY_ADDED
+STANDARD_AXIOMS: propext_Classical.choice_Quot.sound
+TARGET_BUILD: 7771_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_71c2a8e1bc750e324cb1_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SEMANTIC_INDEX: 2401_FILES_12633_VECTORS_PASS
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: DIAGONAL_SOURCE_ARCHIMEDEAN_PAIRING_EQ_NEGATIVE_CCM_WR_ENTRY_ONLY
+EXACT_DIAGONAL_MODE_MASS_ONE_RETAINED: true
+EXACT_JOINT_FUBINI_CARRIER_CONSUMED: true
+EXACT_FINITE_FIBER_REGULARIZER_SIGN_RETAINED: true
+EXACT_NEGATIVE_TAIL_FIBER_RETAINED: true
+EXACT_FACTOR_TWO_LEDGER_RETAINED: true
+EXACT_SPLIT_BOUNDARY_RETAINED: true
+EXACT_EULER_GAMMA_RETAINED: true
+EXACT_E4B1_ENDPOINT_LEDGER_CONSUMED: true
+EXACT_REAL_COMPLEX_COERCION_RETAINED: true
+EXACT_FINAL_NEGATIVE_CCM_WR_SIGN_RETAINED: true
+ALL_MODE_CROSSWALK: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  direct_imports:
+    - Q3.Proofs.RouteB.D0PstarSourceArchOffDiagonalCCMWRCrosswalk
+    - Q3.Proofs.RouteB.D0PstarSourceArchDiagonalRegularizerEndpointLedger
+  new_generated_backend: false
+  inherited_tracked_hole_free_aristotle_output: aristotle_output.d1524982_aristotle
+  inherited_via_closed_E4A_parent: true
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: c28d0950191b10686a8425ec8c7acff316566bcf5250c93f4cd3ef29214a3803
+PROSHKA_VERDICT_ARCHIVE_SHA256: b1ad53eddb0746555cb010eea4c96ca0fdbd75f202067b2613de7c7ed2863e37
+CLOSEOUT_SHA256: 6ba7ce5ce13d799a93268d9e91f105dddbde7eb22cdafe806394ad6d1cb58203
+
+REVIEW_RUNTIME:
+  phase_calls: 33
+  global_delegated_calls: 35
+  fanout_violations: 0
+  same_living_chat: true
+  answer_now_clicked: false
+
+NEXT_GAP: GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+NEXT_DISCRIMINATOR: B3_0E4C_ALL_MODE_TWO_CASE_ASSEMBLY_NO_SORRY_PREFLIGHT
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: execute_one_untracked_B3_0E4C_two_case_preflight_importing_only_the_closed_offdiagonal_and_diagonal_crosswalks
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact diagonal source archimedean pairing now equals negative
+`ccmWREntry` for every source window and integer mode. This closes
+B3.0E4B2 only. B3.0E still needs one all-mode case assembly; the complete
+source Weil form and associated operator graph remain open, so the current
+coarse checkpoint, H4a1b, promotion, PX, and RH remain open.
