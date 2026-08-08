@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-08T07:19:16+02:00",
+  "updated_at": "2026-08-08T10:20:18+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,21 +10,53 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY_PROVED_B3_0E_SOURCE_AUDIT_PENDING",
+  "operational_status": "GOAL_057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_PROVED_B3_0E2_PREFLIGHT_PENDING",
   "current": {
-    "stage_id": "RB-GOAL-057-B3-0D-CLOSED",
-    "contract_obligation": "GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK",
-    "name": "SourceArchimedeanPairingCCMWRSignNormalizationCrosswalk",
-    "status": "OPEN_SOURCE_AUDIT_REQUIRED",
-    "stop_code": "GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK_MISSING",
+    "stage_id": "RB-GOAL-057-B3-0E1-CLOSED",
+    "contract_obligation": "GOAL057_B3_0E2_WEIGHTED_FUBINI_MODE_CORRELATION_CARRIER",
+    "name": "WeightedFubiniModeCorrelationCarrier",
+    "status": "OPEN_PREFLIGHT_REQUIRED",
+    "stop_code": "GOAL057_B3_0E2_WEIGHTED_FUBINI_MODE_CORRELATION_CARRIER_MISSING",
     "selected_bus_goal_nnn": "057",
     "selected_bus_goal_path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
     "next_required_actor": "Codex+Proshka",
-    "next_action": "Source-audit whether the exact fixed-mode source archimedean pairing entries match the CCM w_rs convention, including index order, conjugation, normalization, subtraction orientation, and sign. Then use the same living Proshka chat for one operational-release review of B3.0E. Do not edit B3.0E before release, claim an explicit integral value or diagonal sign, define the full source Weil form or associated operator graph, assert a uniform cofinal mode bound, import generated Step33 suppliers, decrement the ten-checkpoint ledger, execute the wider-N ladder, invoke H4a1b, promote the route, or claim RH.",
+    "next_action": "Run exactly one untracked B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_NO_SORRY_PREFLIGHT. If it passes, return the exact harness to the same living Proshka chat for one production-release review; if no cancellation-preserving product majorant exists, retain the B3.0E wall and shift to the source-distribution-action representation. Do not implement B3.0E2 before release, infer the final ccmWREntry crosswalk from the scalar identity alone, define the full source Weil form or associated operator graph, decrement the ten-checkpoint ledger, execute the wider-N ladder, invoke H4a1b, promote the route, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_057_b3_0e1_source_arch_multiplier_regularized_hyperbolic_kernel": {
+      "classification": "GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_PROVED",
+      "status": "PASS_CHILD_CLOSED_PARENT_B3_0E_OPEN",
+      "release_primary": "TRY_GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL",
+      "lean_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHyperbolicKernel.lean",
+      "lean_sha256": "4fb022d88ded0d0afecbab8767f0b07642c7a0a97e1108736682687198e7a25d",
+      "public_surface": "1_DEFINITION_2_THEOREMS",
+      "private_surface": "7_DEFINITIONS_26_THEOREMS_33_TOTAL",
+      "proof_db": "36_OF_36_DECLARATIONS_PROVEN",
+      "plants_fired": "6_OF_6",
+      "target_build": "7761_JOBS_PASS",
+      "full_build": "7817_JOBS_PASS",
+      "q3_check": "PASS",
+      "unit_tests": "80_OF_80_PASS",
+      "strict_spine": "P9_STRICT_PASS",
+      "observability": "OBS_b70b00d9a25dbbfb6ac9_8_SOURCES_0_STALE_1_ZERO_COVERAGE",
+      "parent_b3_0e1": "CLOSED",
+      "parent_b3_0e": "OPEN",
+      "parent_b3_0": "OPEN",
+      "coarse_checkpoints_closed": 0,
+      "coarse_checkpoints_remaining": 10,
+      "current_checkpoint_effect": "ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE_STRICTLY_ADVANCED_NOT_CLOSED",
+      "request_sha256": "2964606d9955cec6a24b9c81e3f4d8f341c50867e8e9b87bcd94927090f417d0",
+      "visible_verdict_archive_sha256": "96452e937b56305e71491ad07908eef6b0136c59003ff8291bd4866ff6808f73",
+      "goal_a17_sha256": "6e77955f5c8385c9eba22b876f056f927b5c36e883e766781c3acf5db5bc1c29",
+      "closeout_sha256": "a18d258931d428980d1031acd7c587721335632d9b25e7446c17b43eb2bcdc45",
+      "review_runtime": "PHASE_28_GLOBAL_30_FANOUT_0",
+      "next_gap": "GOAL057_B3_0E2_WEIGHTED_FUBINI_MODE_CORRELATION_CARRIER",
+      "next_discriminator": "B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_NO_SORRY_PREFLIGHT",
+      "next_gap_status": "NAMED_NOT_AUTHORIZED",
+      "semantic_boundary": "SOURCE_ARCH_SCALAR_REGULARIZED_HYPERBOLIC_IDENTITY_PROVED_PAIRED_ZERO_ENDPOINT_CANCELLATION_RETAINED_EXACT_U_EQUALS_TWO_X_MINUS_AND_JACOBIAN_RETAINED_NO_WEIGHTED_MODE_FUBINI_CARRIER_NO_MODE_CORRELATION_CCM_QKERNEL_CROSSWALK_NO_ONE_SIDED_HALF_FACTOR_ASSEMBLY_NO_CCM_WR_ENTRY_CROSSWALK_NO_SOURCE_WEIL_FORM_NO_ASSOCIATED_OPERATOR_GRAPH_NO_FORM_OR_OPERATOR_DOMAIN_NO_COMPRESSION_NO_CONTINUUM_NUMERATOR_NOT_H4A1B_NOT_RH"
+    },
     "goal_057_b3_0d_source_archimedean_mode_pairing_kernel_hermitianity": {
       "classification": "GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY_PROVED",
       "status": "PASS_CHILD_CLOSED_PARENT_B3_0_OPEN",
@@ -855,7 +887,7 @@
     },
     "goal_057_a5": {
       "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
-      "sha256": "811a9eb6a9be6d36f6b9c68883569aee55c61310d677599d2428cf07f473d2ff"
+      "sha256": "6e77955f5c8385c9eba22b876f056f927b5c36e883e766781c3acf5db5bc1c29"
     },
     "goal_057_p057_7_script": {
       "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",

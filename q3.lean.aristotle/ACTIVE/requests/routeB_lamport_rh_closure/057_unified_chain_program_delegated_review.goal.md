@@ -1100,3 +1100,97 @@ This closes B3.0D only.  It does not evaluate the integral, prove a diagonal
 sign, identify the entries with the CCM `w_{rs}` convention, define the full
 source Weil form, or construct an associated operator graph.  Thus B3.0, the
 current coarse checkpoint, H4a1b, promotion, PX, and RH remain open.
+
+
+## A17 — B3.0E1 source archimedean scalar regularized-hyperbolic identity (2026-08-08)
+
+```yaml
+A17_STATUS: CLOSED_CHILD_PARENT_B3_0E_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL
+SUCCESS: GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_PROVED
+
+PARENT_B3_0E1:
+  status: CLOSED
+PARENT_B3_0E:
+  status: OPEN
+  weighted_mode_fubini_carrier: NOT_PROVED
+  mode_correlation_ccm_qkernel: NOT_PROVED
+  one_sided_half_factor_assembly: NOT_PROVED
+  ccm_wr_entry_crosswalk: NOT_PROVED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHyperbolicKernel.lean
+LEAN_SHA256: 4fb022d88ded0d0afecbab8767f0b07642c7a0a97e1108736682687198e7a25d
+PUBLIC_SURFACE:
+  definitions:
+    - sourceArchimedeanRegularizedKernel
+  theorems:
+    - sourceArchimedeanRegularizedKernel_integrableOn
+    - sourceArchimedeanMultiplier_eq_regularizedHyperbolicIntegral
+PRIVATE_SUPPORT:
+  definitions: 7
+  theorems: 26
+  total: 33
+PROOF_DB: 36_OF_36_DECLARATIONS_PROVEN
+PLANTS: 6_OF_6_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7761_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_b70b00d9a25dbbfb6ac9_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: SOURCE_ARCH_SCALAR_REGULARIZED_HYPERBOLIC_IDENTITY_PROVED
+PAIRED_ZERO_ENDPOINT_CANCELLATION_RETAINED: true
+EXACT_U_EQUALS_TWO_X_MINUS_AND_JACOBIAN_RETAINED: true
+WEIGHTED_MODE_FUBINI_CARRIER: NOT_PROVED
+MODE_CORRELATION_CCM_QKERNEL_CROSSWALK: NOT_PROVED
+ONE_SIDED_HALF_FACTOR_ASSEMBLY: NOT_PROVED
+CCM_WR_ENTRY_CROSSWALK: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 2964606d9955cec6a24b9c81e3f4d8f341c50867e8e9b87bcd94927090f417d0
+PROSHKA_VERDICT_ARCHIVE_SHA256: 96452e937b56305e71491ad07908eef6b0136c59003ff8291bd4866ff6808f73
+CLOSEOUT_SHA256: a18d258931d428980d1031acd7c587721335632d9b25e7446c17b43eb2bcdc45
+
+REVIEW_RUNTIME:
+  phase_calls: 28
+  global_delegated_calls: 30
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0E2_WEIGHTED_FUBINI_MODE_CORRELATION_CARRIER
+NEXT_DISCRIMINATOR: B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_NO_SORRY_PREFLIGHT
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: execute_untracked_discriminator_then_one_same_chat_release_before_any_B3_0E2_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact scalar digamma-to-regularized-hyperbolic identity is now proved in
+production with the paired endpoint cancellation and the exact `u = 2*x`
+sign/Jacobian ledger retained.  This closes B3.0E1 only.  It does not justify
+joint weighted Fubini, identify the mode correlation with `ccmQKernel`,
+assemble the one-sided endpoint factor, or prove the final negative
+`ccmWREntry` crosswalk.  Thus B3.0E, B3.0, the current coarse checkpoint,
+H4a1b, promotion, PX, and RH remain open.

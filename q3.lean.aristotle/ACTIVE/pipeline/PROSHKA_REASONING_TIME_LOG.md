@@ -31,6 +31,45 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E1 scalar hyperbolic identity release
+
+```yaml
+proof_address: RouteB.Goal057.SourceArchMultiplierRegularizedHyperbolicKernel
+front: GOAL057/P057_B3_0E1
+transaction: GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: c3168e2d-166b-4e44-ae6f-a6905dfce616
+response_message_id: 6de1275f-1401-4fc5-902a-8478ccaaff92
+sent_at: 2026-08-08T09:47:35.140+02:00
+completed_at: 2026-08-08T09:57:51.842+02:00
+wall_seconds: 617
+wall_human: "10m17s observed UI send-to-verdict wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL
+status: OPEN_PRODUCTION_RELEASED
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_RELEASE_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW byte-locked the 5,521-byte request
+  with SHA-256 2964606d9955cec6a24b9c81e3f4d8f341c50867e8e9b87bcd94927090f417d0
+  and the 23,556-byte compiling harness with SHA-256
+  49425edef5c5b972d93f4f1c9f84877b4f9c23063fe736b06856cc0bae16af47
+  at live HEAD=origin/rh_clean
+  7d1638d0d7cd538ed82baca15a11a7efb62be988. The complete visible verdict
+  has 24,869 bytes and SHA-256
+  d99c5fed227dd29c719f171ada3abe39ca8b1fc63b6f634ab738f854df14d753;
+  the newline-normalized archive has 24,870 bytes and SHA-256
+  96452e937b56305e71491ad07908eef6b0136c59003ff8291bd4866ff6808f73.
+  Proshka released exactly one production child with the same three public
+  declarations and repaired the private-support ceiling from the provisional
+  12 to the observed 33. The release preserves paired endpoint cancellation,
+  the exact u=2x minus sign and Jacobian, and the dominated Fubini carrier.
+  B3.0E1 is not closed until production validation; B3.0E and all ten coarse
+  checkpoints remain open. Answer now appeared and was never clicked. No
+  B3.0E2 implementation, Aristotle submission, Bus 010, Goal-055 release,
+  route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E CCM-WR sign/normalization source audit
 
 ```yaml

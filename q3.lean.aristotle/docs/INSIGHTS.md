@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, source-audit wall) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
+## Synthesis (2026-08-08, source-audit wall; B3.0E1 closed) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
 
 - Target: identify the proved B3.0D cycles-frequency pairing with the literal
   CCM archimedean matrix entry, without guessing its sign, `2*pi` scale, slot
@@ -79,6 +79,21 @@
   preflight, not production authority: the exact harness is returned to the
   same Proshka chat for one operational release before creating the proposed
   production file.  The coarse ledger remains 0/10.
+- Proshka released exactly that harness with no mathematical proof change.
+  Production `D0PstarSourceArchHyperbolicKernel.lean` has SHA-256
+  `4fb022d88ded0d0afecbab8767f0b07642c7a0a97e1108736682687198e7a25d`;
+  direct Lean, target 7,761-job build, full 7,817-job build, `q3_check`,
+  80/80 tests, 36/36 proof-DB declarations, 6/6 plants, strict Spine, and all
+  three SQLite integrity checks pass.
+- Exact closed class: scalar source multiplier equals `-log pi - gamma` minus
+  twice the integral of the paired regularized hyperbolic kernel.  The paired
+  zero-endpoint cancellation, dominated integral/series exchange, and exact
+  `u = 2*x` minus/Jacobian are load-bearing and retained.
+- B3.0E1 is closed, but B3.0E remains open.  The next missing carrier is joint
+  absolute integrability of the regularized kernel times the fixed mode
+  product, followed by mode correlation and one-sided endpoint assembly.
+  Therefore no `ccmWREntry` crosswalk, source Weil form, operator graph,
+  checkpoint closure, H4a1b, promotion, PX, or RH follows.  Ledger stays 0/10.
 
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0D source mode-pairing Hermitianity
 
