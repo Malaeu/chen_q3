@@ -31,6 +31,40 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0B3 exact arch-symbol weighted-mode L2 release
+
+```yaml
+proof_address: RouteB.Goal057.ExactArchSymbolWeightedModeL2Release
+front: GOAL057/P057_B3_0B3
+transaction: GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: e038c7c4-9a6e-4ec5-b33d-8cc6badb43af
+response_message_id: 1d932333-ac1e-48f6-ba08-35bb48fa28ad
+sent_at: 2026-08-08T05:23:02.559+02:00
+completed_at: 2026-08-08T05:34:01.915+02:00
+wall_seconds: 659
+wall_human: "10m59s observed UI send-to-verdict wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_TRANSFER
+status: OPEN_RELEASED_EXACT_ONE_CHILD
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_TRANSFER_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW source-locked the 9,405-byte request
+  with SHA-256 1ba6201e45844e87cf6e11c4f74cdd3b905b67cb935744a527bf8548f43b1c84
+  at package HEAD=origin/rh_clean
+  9431ecc8b36b4b895fcc820fe916e34ccb20e001. The complete visible verdict
+  has 24,810 bytes and SHA-256
+  ebe83baf0be40881c5ede2055139c4db36c10763854973aa33f73c35a25a610c;
+  the newline-normalized archive has 24,811 bytes and SHA-256
+  4540ee5a751c26e04c090825bddb5ed864d5d75e8445a9390697ef739d750230.
+  Proshka selected the exact fixed-mode MemLp transfer, allowed the existing
+  sorry-free A_Star_Properties continuity supplier, closed parent B3.0B, and
+  named B3.0C cross-mode pairing integrability next. The coarse ledger stays
+  0/10. Answer now appeared and was never clicked. No Aristotle submission,
+  Bus 010, Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0B2 exact arch-symbol domination release
 
 ```yaml

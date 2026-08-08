@@ -850,3 +850,83 @@ the production mode transform and is globally dominated by the explicit
 log-growth envelope.  This closes B3.0B2 only.  The exact-symbol product is not
 yet proved to lie in `L²`; consequently B3.0B, the operator graph, the current
 coarse checkpoint, H4a1b, promotion, PX, and RH all remain open.
+
+
+## A14 — B3.0B3 exact archimedean-symbol weighted-mode L2 transfer (2026-08-08)
+
+```yaml
+A14_STATUS: CLOSED_CHILD_PARENT_B3_0B_CLOSED
+RELEASE_PRIMARY: TRY_GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_TRANSFER
+SUCCESS: GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_TRANSFER_PROVED
+
+PARENT_B3_0B:
+  status: CLOSED
+PARENT_B3_0:
+  status: OPEN
+  source_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolWeightedModeL2.lean
+LEAN_SHA256: 99b7ad19089b17a0cde4492a239c4b5b8a5b8e8ea8c6b6aa2cc348c8324200d7
+PUBLIC_SURFACE:
+  definitions: []
+  theorems:
+    - sourceArchimedeanMultiplier_mul_fourier_logWindowZeroExtendedMode_memLp
+  private_theorems:
+    - sourceArchimedeanMultiplier_continuous
+    - logWindowZeroExtendedMode_integrable_for_exactArch
+PROOF_DB: 3_OF_3_DECLARATIONS_PROVEN
+PLANTS: 8_OF_8_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7762_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_35aa4bac8a4ea9c43b4a_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: EXACT_SOURCE_ARCH_SYMBOL_WEIGHTED_FIXED_MODE_L2_PROVED
+PARENT_B3_0B_CLOSED: true
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+ARBITRARY_HM_PLANCHEREL_CARRIER: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 1ba6201e45844e87cf6e11c4f74cdd3b905b67cb935744a527bf8548f43b1c84
+PROSHKA_VERDICT_ARCHIVE_SHA256: 4540ee5a751c26e04c090825bddb5ed864d5d75e8445a9390697ef739d750230
+CLOSEOUT_SHA256: 996df9da06c8b0d695ee7402742411e5fc5a39f0cba53d052575745ad4f39f99
+
+REVIEW_RUNTIME:
+  phase_calls: 24
+  global_delegated_calls: 26
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: one_same_chat_operational_release_before_any_B3_0C_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact source archimedean multiplier times every fixed production
+zero-extended log-window Fourier mode is now proved to lie in `L²`.  This
+closes the released B3.0B3 child and its parent B3.0B.  It does not yet provide
+the conjugated mode-pairing `L¹` carrier, the source form, an associated
+operator graph, a uniform cofinal estimate, or a compression identity.  Thus
+B3.0, the current coarse checkpoint, H4a1b, promotion, PX, and RH remain open.
