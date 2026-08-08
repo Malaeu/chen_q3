@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3 associated Weil operator-domain source audit
+
+```yaml
+proof_address: RouteB.Goal057.AssociatedWeilOperatorDomainSourceAudit
+front: GOAL057/P057_B3
+transaction: GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AUDIT
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 7e74313b-2b3b-4e25-9cb9-a93a16acd359
+response_message_id: 0ea60357-f7d5-4964-9e80-7b41ee6846f4
+sent_at: 2026-08-08T02:18:30.328+02:00
+completed_at: 2026-08-08T02:35:53.885+02:00
+wall_seconds: 1043.557
+wall_human: "17m23.557s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_SELECTED_KTRIAL_OPERATOR_DOMAIN_FROM_PIECEWISE_SMOOTH_CORE
+status: OPEN_SELECTED_SOURCE_SPECIFIC_MULTIPLIER_GRAPH_PREREQUISITE
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AUDIT_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW selected Candidate A with the mandatory
+  repair EXPLICIT_FOURIER_MULTIPLIER_GRAPH_FIRST. The 7,527-byte request has
+  SHA-256 2a718853a29819607482737319907f9e985c6d4f2dc9772c7108187bad999f44.
+  The full visible verdict has 25,340 bytes and SHA-256
+  83dc1cd777bad2376e309653983d8b96de418ff8c9d0cb83c783b96e500ad06a;
+  the newline-normalized two-mirror archive has 25,341 bytes and SHA-256
+  5071da78f2a521f002487178547e2a005c4e44587a7521f4dca0f003033da10a.
+  Proshka rejected the form-dual replacement because it would move the defect
+  into the dual of the form domain while the consumer needs an H_m-valued
+  residual. The first later operational child is
+  GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH; it requires a separate
+  explicit operational release before any Lean edit. Answer now appeared and
+  was never clicked. No Lean edit, Aristotle submission, Bus 010, Goal-055
+  release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B2 finite Riesz operator source-bind release
 
 ```yaml
