@@ -11,6 +11,27 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0G source W02 mode pairing
+
+- The primary source defines `W_0,2`, its one-sided distribution `W_0,2#`,
+  and the exact ordered mode entry in equations (3.11), (3.14), and (4.2).
+- Source Lemma 4.1 identifies that entry as a rank-two matrix; its displayed
+  formula matches production `ccmW02Entry` literally and with positive sign.
+- Production already fixes `L = log m = 2 log sqrt(m)`, the normalized modes,
+  the literal integer mode order, and the source-correlation/`ccmQKernel`
+  crosswalk.
+- Exact declaration search finds no production `W02` functional,
+  `W02#`, endpoint moment, or independent `sourceW02ModePairing` object.
+- The honest audit result is therefore a missing Lean source object, not a
+  missing theorem in the paper: `SOURCE_W02_FUNCTIONAL_PRODUCTION_OBJECT_MISSING`.
+- A direct alias to `ccmW02Entry` would be C10 surrogate-by-formula and is
+  forbidden even though it makes the desired equality definitionally true.
+- Cheapest candidate is the one-sided source integral with weight
+  `exp(x/2)+exp(-x/2)` if it consumes the existing source-correlation parent;
+  the more structural alternative materializes the two endpoint moments.
+- B3.0G remains audit-only pending one decision in the same living Proshka
+  chat.  B3.0, all ten coarse checkpoints, H4a1b, promotion, PX and RH stay open.
+
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0F finite archimedean sesquilinear matrix lift
 
 - Production lifts the closed all-mode E4C identity coefficientwise over the
