@@ -11,6 +11,31 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4B2 diagonal archimedean / CCM-WR crosswalk
+
+- Exact target: prove the missing diagonal case
+  `sourceArchimedeanModePairing i n n =
+  -(Q3.RouteB.ccmWREntry (L_m i) n n : ℂ)` for every source mode.
+- No new source analysis is needed.  On `0 < x <= L_m i`, twice the diagonal
+  kernel-mode fiber is `ccmWRIntegrand` plus
+  `2 * (1 - exp (-x)) / (exp x - exp (-x))`; beyond the support it is the
+  negative tail `-2 * exp (-x) / (exp x - exp (-x))`.
+- `sourceModeCosineCorrelation_control_diag_zero` fixes the bare-mode mass to
+  one, while `two_mul_sourceModeCosineCorrelation_eq_ccmQKernel_or_zero`
+  supplies the full diagonal compact-support profile.
+- Joint absolute integrability from B3.0E2 is the sole Fubini carrier.  The
+  E4A private proof helpers may be reproduced locally, but no parent module is
+  refactored during the discriminator.
+- The already-closed B3.0E4B1 endpoint ledger combines the finite regularizer
+  and tail with `-log pi`; the remaining `-EulerGamma` and CCM-WR integral then
+  give exactly the negative diagonal `ccmWREntry`.
+- Mandatory controls are `n = 0`, `n = 1`, support boundary `x = L_m i`, and
+  one outside-support point.  Any sign, factor-two, coercion, or endpoint-scale
+  mismatch stops the node rather than changing the source convention.
+- Boundary: this entry authorizes only one untracked no-`sorry` scratch
+  preflight.  It changes no production Lean, route state, checkpoint count,
+  promotion status, `PX_RH_CLAIM`, or RH status.
+
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B1 diagonal endpoint ledger
 
 - Exact target: for `0 < L`, prove the scalar identity equating the paired
