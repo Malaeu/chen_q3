@@ -11,6 +11,33 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0D source mode-pairing Hermitianity
+
+- Target: define the fixed-mode archimedean pairing integral from B3.0C and
+  prove `pairing i r n = conj (pairing i n r)` with the established
+  antilinear-first orientation.
+- Wiring: B3.0C supplies `Integrable` for every fixed `(n,r)`; B3.0D is the
+  next child of open B3.0 and still advances, but does not close, the first of
+  ten coarse Goal-057 checkpoints.
+- Four `q3_docs` queries returned B3.0C and its verdict as the exact local
+  predecessors; no stronger pre-existing source-pairing theorem was found.
+- The source multiplier is definitionally real-valued
+  (`sourceArchimedeanMultiplier : ℝ → ℝ`), so complex conjugation fixes its
+  coerced value pointwise.
+- Mathlib's official `integral_conj` theorem commutes conjugation with the
+  Bochner integral:
+  https://leanprover-community.github.io/mathlib4_docs/Mathlib/MeasureTheory/Integral/Bochner/ContinuousLinearMap.html#integral_conj.
+- A source-exact scratch with one definition and one theorem compiles: unfold
+  the pairing, rewrite by `← integral_conj`, simplify conjugated products, and
+  finish the commutative scalar identity by `ring`.
+- Minimal production candidate: one import of B3.0C, one noncomputable
+  definition, one Hermitian-symmetry theorem; no new analytic premise and no
+  generated PSD/Step33 supplier.
+- Boundary: fixed-mode archimedean kernel and Hermitianity only; no source
+  Weil-form decomposition, prime/pole side, operator graph/domain, uniform
+  cofinal bound, compression, continuum numerator, H4a1b, promotion, PX, or RH.
+  Production remains forbidden until one same-chat Proshka release.
+
 ## Synthesis (2026-08-05, closed node) -- G5 direct determinant-sign endpoint receiver
 
 - Target: bypass the unnecessary general Sturm-inertia formalization at the
