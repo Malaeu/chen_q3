@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0C source archimedean mode-pairing release
+
+```yaml
+proof_address: RouteB.Goal057.SourceArchModePairingIntegrabilityRelease
+front: GOAL057/P057_B3_0C
+transaction: GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 906a704a-7268-494c-ba26-a2b3f117b71f
+response_message_id: 00ac7aad-f7e2-43cd-b0e9-4134ff20eefc
+sent_at: 2026-08-08T05:59:46.133+02:00
+completed_at: 2026-08-08T06:08:54.152+02:00
+wall_seconds: 548
+wall_human: "9m08s observed UI send-to-verdict wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY
+status: OPEN_RELEASED_EXACT_ONE_CHILD
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW byte-locked the 9,016-byte request
+  with SHA-256 a785431306d21aa8de7f617b7b9c137ad957102f6bacf33d0e3e85b4087541c6
+  at live package HEAD=origin/rh_clean
+  81f51e58d3203ac0fa87c778afdf1b6097b9c057. The complete visible verdict
+  has 23,523 bytes and SHA-256
+  20902b966a85ff5720b4bfdaab564ed37c5337468a5b675e39ceacc446891d50;
+  the newline-normalized archive has 23,524 bytes and SHA-256
+  928eb70a922c25e8ee2ed037cfb77973bb20c898cc690ff5396549ab72b13a5b.
+  Proshka released the conjugate-first fixed-mode L2-times-L2-to-L1 pairing,
+  added a ninth diagonal-reality source-fingerprint plant, and named B3.0D
+  pairing-kernel Hermitianity next without authorizing it. The coarse ledger
+  stays 0/10. Answer now appeared and was never clicked. No Aristotle
+  submission, Bus 010, Goal-055 release, route promotion, PX claim, or RH
+  claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0B3 exact arch-symbol weighted-mode L2 release
 
 ```yaml

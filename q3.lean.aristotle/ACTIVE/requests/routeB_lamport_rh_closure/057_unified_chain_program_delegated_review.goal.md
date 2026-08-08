@@ -930,3 +930,87 @@ closes the released B3.0B3 child and its parent B3.0B.  It does not yet provide
 the conjugated mode-pairing `L¹` carrier, the source form, an associated
 operator graph, a uniform cofinal estimate, or a compression identity.  Thus
 B3.0, the current coarse checkpoint, H4a1b, promotion, PX, and RH remain open.
+
+## A15 — B3.0C source archimedean mode-pairing integrability (2026-08-08)
+
+```yaml
+A15_STATUS: CLOSED_CHILD_PARENT_B3_0_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY
+SUCCESS: GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY_PROVED
+
+PARENT_B3_0C:
+  status: CLOSED
+PARENT_B3_0:
+  status: OPEN
+  pairing_kernel: NOT_PROVED
+  source_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchModePairingIntegrable.lean
+LEAN_SHA256: cdad33d4e428dc541501d24b3254e72b3f01b3aae36bb482d5d59476bb16f27a
+PUBLIC_SURFACE:
+  definitions: []
+  theorems:
+    - sourceArchimedeanModePairing_integrable
+  private_theorems:
+    - logWindowZeroExtendedMode_integrable_for_pairing
+    - fourier_logWindowZeroExtendedMode_memLp_two
+    - conj_fourier_logWindowZeroExtendedMode_memLp_two
+PROOF_DB: 4_OF_4_DECLARATIONS_PROVEN
+PLANTS: 9_OF_9_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7763_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_e9e3e48c56f4cd87844d_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: SOURCE_ARCHIMEDEAN_CROSS_MODE_INTEGRABILITY_ONLY
+FIRST_SLOT_CONJUGATED: true
+SECOND_SLOT_LINEAR: true
+INTEGRAL_VALUE_OR_PAIRING_KERNEL: NOT_PROVED
+HERMITIANITY: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+PRIME_OR_POLE_SIDE: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: a785431306d21aa8de7f617b7b9c137ad957102f6bacf33d0e3e85b4087541c6
+PROSHKA_VERDICT_ARCHIVE_SHA256: 928eb70a922c25e8ee2ed037cfb77973bb20c898cc690ff5396549ab72b13a5b
+CLOSEOUT_SHA256: 44f6ae88dad05116c63e47a8b73000351abc3081394e973dd8989b3b46b299e8
+
+REVIEW_RUNTIME:
+  phase_calls: 25
+  global_delegated_calls: 27
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: source_audit_then_one_same_chat_release_before_any_B3_0D_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The conjugate-first exact archimedean cross-mode integrand is now proved
+integrable for every fixed production mode pair.  This closes B3.0C only.  It
+does not yet define the pairing kernel or prove its Hermitian symmetry, and it
+does not supply the source Weil form, associated operator graph, uniform
+cofinal estimate, compression identity, or continuum numerator.  Thus B3.0,
+the current coarse checkpoint, H4a1b, promotion, PX, and RH remain open.
