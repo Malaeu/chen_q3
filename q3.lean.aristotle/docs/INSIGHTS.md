@@ -11,6 +11,30 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4A off-diagonal archimedean / CCM-WR crosswalk
+
+- Exact target: for `n ≠ r`, prove
+  `sourceArchimedeanModePairing i n r =
+  -(Q3.RouteB.ccmWREntry (L_m i) n r : ℂ)` without touching the postponed
+  diagonal endpoint constant.
+- Source wiring is literal: CCM equations (2.7)--(2.10) fix the
+  antilinear-first off-diagonal sine order, while equation (4.4) defines the
+  archimedean entry as its endpoint constant plus the integral on `[0,L]`.
+- `hnr` gives `ccmQKernel (L_m i) n r 0 = 0`; the same orthogonality kills
+  the constant part of `sourceArchimedeanMultiplier` and the `exp (-x)`
+  regularizer term after integration over the Fourier coordinate.
+- `D0PstarSourceArchKernelModeProductL1` is the load-bearing Fubini carrier;
+  a fiberwise-only exchange is forbidden.
+- `D0PstarSourceModeCosineCCMQKernel` supplies twice the cosine correlation:
+  it is `ccmQKernel` on `0 ≤ x ≤ L_m i` and zero for `x > L_m i`.
+- Consequently the outer `-2` in the exact hyperbolic multiplier cancels the
+  correlation factor `1/2`, leaving exactly the negative CCM-WR integral.
+- Mandatory ordered controls are `(n,r)=(0,1)` and `(1,0)`; a sign, Fubini,
+  coercion, support, or orientation mismatch stops E4A without changing the
+  source object.
+- Boundary: B3.0E4B, the full source Weil form, the associated operator,
+  every coarse checkpoint, H4a1b, promotion, PX and RH remain open.
+
 ## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E3 source cosine-correlation preflight
 
 - Exact target: for `0 <= x`, identify twice the conjugate-first Fourier-mode
