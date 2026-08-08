@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0G source W02 mode-pairing audit
+
+```yaml
+proof_address: RouteB.Goal057.SourceW02ModePairingCCMW02Entry
+front: GOAL057/P057_B3_0G
+transaction: GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: ebae4c78-688f-4521-adae-f156ee6922ce
+response_message_id: 349bb365-670f-4ee7-b49c-1f200ffbf092
+sent_at: 2026-08-08T18:12:31+02:00
+completed_at: 2026-08-08T18:40:13+02:00
+wall_seconds: 1662
+wall_human: "27m42s request-file to verdict-archive upper bracket"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0G_ONE_SIDED_W02_MODE_PAIRING_PREFLIGHT
+status: OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT_2026-08-08.md
+notes: >-
+  The exact 12,226-byte source-audit request has SHA-256
+  ed423bcd1d364bcf71ab35139d01002fafcb69f261f1bb89a3349c69a9435f50.
+  The byte-faithful 19,227-byte verdict has SHA-256
+  1876d306cda9510cf2e37925c126af79037a051377cf24ab204aa282b586e8c5.
+  Proshka selected repaired Candidate A: one-sided q-kernel integral, an
+  E3-backed source-mode representation, a conjugate-first rank-two endpoint
+  witness and an explicit complex ccmW02Entry crosswalk. Direct formula alias
+  was killed under C10. Production remained forbidden until the exact
+  no-sorry harness and all twelve plant fates returned to this same chat.
+  Answer now was displayed and never clicked. No prime pairing, complete Weil
+  form, operator wrapper, checkpoint decrement, H4a1b, Bus 010, Goal 055,
+  G2/CCM, Aristotle, promotion, PX or RH boundary changed.
+```
+
 ### 2026-08-08 — Goal 057 B3.0F finite-form production release
 
 ```yaml
