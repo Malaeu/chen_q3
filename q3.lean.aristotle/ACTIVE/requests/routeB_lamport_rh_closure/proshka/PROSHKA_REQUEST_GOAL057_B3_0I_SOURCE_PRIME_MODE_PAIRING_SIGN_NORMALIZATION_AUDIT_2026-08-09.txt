@@ -1,0 +1,385 @@
+# PROSHKA REQUEST — Goal 057 B3.0I source-prime mode-pairing sign/normalization audit
+
+## 0. Requested decision
+
+Run exactly one read-only, source-locked audit:
+
+```text
+GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_SIGN_NORMALIZATION_AUDIT
+```
+
+Fix, independently of the already-frozen scalar `ccmPrimeEntryN1`:
+
+1. the source-side prime pairing object;
+2. the exact von-Mangoldt support and cutoff;
+3. the ordered coefficient convention;
+4. the location of the prime minus sign;
+5. the factor-of-two and square-root normalization;
+6. the smallest exact production child to request next.
+
+Return exactly one `TRY_`, `KILL_`, or `WALL_` primary code. If the candidate below is source-faithful and the direct crosswalk is mathematically legitimate, return the exact candidate statement/body (or a corrected exact candidate) and name the separate production-release transaction required next. If not, give the first precise stop.
+
+This transaction is audit only. It does not authorize production. It is one `DELEGATED_STRATEGIC_REVIEW` in the same living Goal-057 phase and chat. It is not an owner boundary.
+
+## 1. Immutable control state
+
+```yaml
+repo: /Users/emalam/GitHub/rh_lean_01_2026
+branch: rh_clean
+head: 2dfda1456501f3d027a4e1cfcfc42a93a64b9e91
+origin_rh_clean: 2dfda1456501f3d027a4e1cfcfc42a93a64b9e91
+active_goal: 057
+route: CHALLENGER_NOT_RH
+bus_010: VOID
+goal_055: HOLD
+g2_ccm: FROZEN
+aristotle_submission: NONE
+route_promotion: false
+px_rh_claim: NOT_MADE
+owner_gate: PX_RH_CLAIM_ONLY
+coarse_checkpoints_closed: 0
+coarse_checkpoints_remaining: 10
+current_checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+parent_transaction: GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT
+parent_success: GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT_PROVED
+parent_commit: 2dfda1456501f3d027a4e1cfcfc42a93a64b9e91
+parent_production_sha256: efc6e3e6060b3e6e6dc9e0726c649a025d79a1c5b2bbc164e94ce5878d8fe83c
+```
+
+Do not implement B3.0I production, define the complete source Weil form, add a matrix/operator wrapper or associated graph, infer form/operator-domain membership, edit `D0PstarCCMCompressedWeilAction`, mutate the frozen parent/extract schedule, invoke or close H4a1b, decrement the ten-checkpoint ledger, create Bus 010, release Goal 055, unfreeze G2/CCM, submit Aristotle, promote Route B, or claim PX/RH.
+
+## 2. Primary-source lock
+
+Primary source:
+
+Connes--Consani--Moscovici, *Zeta Spectral Triples*,
+arXiv:2511.22755v1.
+
+Local PDF:
+
+```text
+docs/routeB_bus/litreview/pdfs/2511.22755.pdf
+SHA-256 c98d89f7fc999d038e15e80a9aaaee2af797c17711c4329ca7ce48ad49cb336b
+```
+
+The production source header records the pinned e-print SHA-256:
+
+```text
+96c884864b0bc49da6e41fcd0b235fc970af3fe2c4e6a5276f191b0e81f3bf4a
+```
+
+### 2.1 Positive prime distribution and full-form sign
+
+Equation (3.7), after the source half-density convention, defines the positive prime distribution:
+
+```text
+W_p(F) = (log p) sum_(a>=1) p^(-a/2) [F(p^a) + F(p^(-a))].
+```
+
+Equations (3.10), (3.13), and (3.16) fix:
+
+```text
+QW(f,g) = Psi(f* * g)
+Psi(F) = W_0,2(F) - W_R(F) - sum_p W_p(F)
+
+Psi# = W_0,2# - W_R# - sum_p W_p#
+W_p#(F) = (log p) sum_(a>=1) p^(-a/2) F(p^a).
+```
+
+Thus `W_p#` itself is positive-side notation. The minus sign belongs to `Psi#`; it is not part of `W_p#`.
+
+### 2.2 Ordered mode consumer
+
+Proposition 3.2 / equation (3.18) and equation (4.1) use:
+
+```text
+QW(kappa(f), kappa(g)) = Psi#(F),
+F(u) = q(f,g)(log u).
+
+QW_lambda(V_n,V_m) = Psi#(F),
+F(x) = q(U_n,U_m)(log x).
+```
+
+The source states that the associated sesquilinear form is antilinear in the first variable. Therefore the ordered mode convention is first mode conjugated, second mode linear.
+
+### 2.3 Literal prime matrix entry
+
+Equation (4.3) is:
+
+```text
+sum_p W_p(V_n,V_m)
+  = sum_(1 < k <= exp(L)) Lambda(k) k^(-1/2)
+      q(U_n,U_m)(log k).
+```
+
+For this production family:
+
+```text
+L = L_m i = log(i.m)
+exp(L) = i.m
+```
+
+so the exact finite support is `Finset.Icc 2 i.m`.
+
+The single `k`-sum is over all natural integers in the cutoff; `vonMangoldt k` makes precisely prime powers nonzero. It is not a sum over primes only. At a prime power `k=p^a`, `vonMangoldt k = log p`; the exponent `a` is not a coefficient multiplier.
+
+There is no doubled weight. The one-sided distribution already retains one evaluation, and the source correlation `q(U_n,U_m)(x)` is reconstructed by the proved identity with a factor `2` multiplying the cosine integral.
+
+## 3. Existing production facts
+
+### 3.1 Literal target scalar
+
+`Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean`:
+
+```lean
+noncomputable def ccmPrimeEntryN1 (mProject : ℕ) (n m : ℤ) : ℝ :=
+  ∑ k ∈ Finset.Icc 2 mProject,
+    ArithmeticFunction.vonMangoldt k *
+      (Real.sqrt (k : ℝ))⁻¹ *
+      ccmQKernel (ccmL mProject) n m (Real.log (k : ℝ))
+```
+
+Its full ledger is independently fixed:
+
+```lean
+noncomputable def ccmWeilTauN1 (mProject : ℕ) (n m : ℤ) : ℝ :=
+  ccmW02Entry (ccmL mProject) n m -
+    ccmWREntry (ccmL mProject) n m -
+    ccmPrimeEntryN1 mProject n m
+```
+
+File SHA-256:
+
+```text
+f2f9d248a6f2ad703428c624ccbaf5a75b340655e4b4ebbbe3f1d77355523815
+```
+
+### 3.2 Independent source correlation
+
+`Q3/Proofs/RouteB/D0PstarSourceModeCosineCCMQKernel.lean` proves:
+
+```lean
+theorem two_mul_sourceModeCosineCorrelation_eq_ccmQKernel_or_zero
+    (i : PairIndex) (n r : ℤ) (x : ℝ) (hx : 0 ≤ x) :
+    2 * ∫ t : ℝ,
+        conj (𝓕 (logWindowZeroExtendedMode i n) t) *
+          (Real.cos (2 * Real.pi * t * x) : ℂ) *
+          𝓕 (logWindowZeroExtendedMode i r) t
+      =
+        if x ≤ L_m i then
+          (Q3.RouteB.ccmQKernel (L_m i) n r x : ℂ)
+        else
+          0
+```
+
+This theorem is derived from the zero-extended production modes and Fourier correlation, not from `ccmPrimeEntryN1`.
+
+File SHA-256:
+
+```text
+1c39c60492931150d98e25e87e1e4762d4509edd725bd68b68c64c8504cc56a4
+```
+
+### 3.3 Existing exact support theorem
+
+`Q3/Proofs/RouteB/CCMFiniteWeilCell13N2VonMangoldtNormalForm.lean` proves the exact `2..13` von-Mangoldt support, including:
+
+```text
+2,4,8 carry log 2;
+3,9 carry log 3;
+5,7,11,13 carry their prime logarithms;
+6,10,12 vanish.
+```
+
+File SHA-256:
+
+```text
+0742f31a45714def1965773e833efd9fef30ab6daa5dce0f8613e22706fc8fc3
+```
+
+This is a support/value control only. It is not the missing all-`i.m` source pairing.
+
+### 3.4 Already-closed signs of the other components
+
+`sourceArchimedeanModePairing_eq_neg_ccmWREntry` stores the already-negative archimedean contribution:
+
+```lean
+sourceArchimedeanModePairing i n r =
+  -(Q3.RouteB.ccmWREntry (L_m i) n r : ℂ)
+```
+
+`sourceW02ModePairing_eq_ccmW02Entry` stores the positive W02 component.
+
+Therefore the eventual complete source form must combine:
+
+```text
+positive sourceW02ModePairing
++ already-negative sourceArchimedeanModePairing
+- positive sourcePrimeModePairing
+```
+
+Do not subtract the archimedean source pairing a second time, and do not hide the prime minus sign inside the positive `W_p#` source object.
+
+## 4. Exact compiled audit candidate
+
+The following scratch candidate was compiled directly against current production:
+
+```text
+/tmp/Goal057B3_0I_PrimePairingAudit.lean
+SHA-256 ca3281f52f6752f537f97910104fe9e26bf4f2a2f2046d1f2bcaf1e84f67ac34
+bytes 1782
+lines 49
+direct Lean: PASS
+axioms: [propext, Classical.choice, Quot.sound]
+```
+
+Exact content:
+
+```lean
+import Q3.Proofs.RouteB.D0PstarSourceModeCosineCCMQKernel
+
+set_option linter.mathlibStandardSet false
+
+open Complex MeasureTheory Set
+open scoped BigOperators FourierTransform ComplexConjugate
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+/-- Positive one-sided source prime pairing.  The complete Weil ledger
+subtracts this object; the minus sign is not stored here. -/
+noncomputable def sourcePrimeModePairing
+    (i : PairIndex) (n r : ℤ) : ℂ :=
+  ∑ k ∈ Finset.Icc 2 i.m,
+    ((ArithmeticFunction.vonMangoldt k *
+        (Real.sqrt (k : ℝ))⁻¹ : ℝ) : ℂ) *
+      (2 * ∫ t : ℝ,
+        conj (𝓕 (logWindowZeroExtendedMode i n) t) *
+          (Real.cos (2 * Real.pi * t * Real.log (k : ℝ)) : ℂ) *
+          𝓕 (logWindowZeroExtendedMode i r) t)
+
+theorem sourcePrimeModePairing_eq_ccmPrimeEntryN1
+    (i : PairIndex) (n r : ℤ) :
+    sourcePrimeModePairing i n r =
+      (Q3.RouteB.ccmPrimeEntryN1 i.m n r : ℂ) := by
+  classical
+  unfold sourcePrimeModePairing Q3.RouteB.ccmPrimeEntryN1
+  rw [Complex.ofReal_sum]
+  apply Finset.sum_congr rfl
+  intro k hk
+  have hkBounds := Finset.mem_Icc.mp hk
+  have hkOne : (1 : ℝ) ≤ k := by
+    exact_mod_cast (show 1 ≤ k by omega)
+  have hkPos : (0 : ℝ) < k := lt_of_lt_of_le zero_lt_one hkOne
+  have hlogNonneg : 0 ≤ Real.log (k : ℝ) := Real.log_nonneg hkOne
+  have hlogLe : Real.log (k : ℝ) ≤ L_m i := by
+    change Real.log (k : ℝ) ≤ Real.log (i.m : ℝ)
+    exact Real.log_le_log hkPos (by exact_mod_cast hkBounds.2)
+  rw [two_mul_sourceModeCosineCorrelation_eq_ccmQKernel_or_zero
+    i n r (Real.log (k : ℝ)) hlogNonneg, if_pos hlogLe]
+  simp only [Q3.RouteB.ccmL, L_m, logLength]
+  push_cast
+  ring
+
+#print axioms sourcePrimeModePairing_eq_ccmPrimeEntryN1
+
+end Q3.RouteB.D0Pstar
+```
+
+Compilation proves only that the proposed identity is accepted by Lean from the existing correlation theorem. It does not by itself judge the source convention. That source judgment is the purpose of this audit.
+
+## 5. Required source decisions
+
+Return explicit rulings for all of these:
+
+1. `SOURCE_OBJECT`: positive one-sided `W_p#` pairing, or already-negative contribution?
+2. `FULL_LEDGER_SIGN`: where exactly is the minus sign stored?
+3. `SUPPORT`: why `Finset.Icc 2 i.m` is exact.
+4. `PRIME_POWERS`: why `vonMangoldt`, not a prime-only filter.
+5. `WEIGHT`: exact `Lambda(k) * sqrt(k)^(-1)`, not `w_Q` and not doubled.
+6. `CORRELATION_FACTOR`: why the factor `2` belongs inside the cosine-correlation reconstruction.
+7. `LOG_ARGUMENT`: exact `Real.log k`, not `xi_n k` or a `2*pi`-rescaled node.
+8. `SLOTS`: first mode conjugated, second mode linear.
+9. `CUTOFF_OWNER`: `i.m`, not `i.N`.
+10. `TARGET`: exact equality to positive `ccmPrimeEntryN1`, not its negative.
+11. Whether this definition is genuinely independent of the target scalar and avoids C10 surrogate-by-formula.
+12. The exact smallest separate production-release request after this audit.
+
+## 6. Mandatory independent controls / plants
+
+Judge each independently; do not infer semantics from a symmetric final scalar.
+
+| ID | Mutation | Required fate |
+|---|---|---|
+| P-PRIME-1 | define the source object as `-sourcePrimeModePairing` but still call it `W_p#` | reject: sign stored at wrong layer |
+| P-PRIME-2 | change full ledger from `- Prime` to `+ Prime` | reject |
+| P-PRIME-3 | replace `vonMangoldt` by a prime-only filter | reject: loses 4, 8, 9, ... |
+| P-PRIME-4 | replace `vonMangoldt k` at `p^a` by `a * log p` | reject |
+| P-PRIME-5 | replace the weight by `2 * Lambda(k) / sqrt(k)` or `Q3.w_Q k` | reject: doubles the one-sided entry |
+| P-PRIME-6 | remove the factor `2` from the cosine correlation | reject: produces half the source `q` |
+| P-PRIME-7 | use `sqrt(k)` instead of its inverse | reject |
+| P-PRIME-8 | use `Real.log k / (2*pi)` in the cosine argument | reject |
+| P-PRIME-9 | cutoff at `i.N` | reject |
+| P-PRIME-10 | reverse the conjugate-linear/linear source slots | reject as ordered-source mutation even if the real symmetric target hides it |
+| P-PRIME-11 | define the source pairing directly as `ccmPrimeEntryN1` | reject by C10 surrogate-by-formula |
+| P-PRIME-12 | count only ordinary primes and claim prime powers are absorbed by multiplicity | reject |
+
+At minimum, require exact source/static controls for P-PRIME-1/2/5/6/8/9/10/11 and the existing compiled `2..13` support controls for P-PRIME-3/4/12. Do not claim that generic compilation alone detects coherent convention mutations.
+
+## 7. Requested verdict format
+
+Return:
+
+1. primary `TRY_`, `KILL_`, or `WALL_` code;
+2. source-object and sign ruling;
+3. normalization/support/slot rulings;
+4. audit of the exact candidate;
+5. exact smallest next production child;
+6. exact candidate production path, imports, declarations, statement, proof body, and allowed axioms if released in a later transaction;
+7. plant/control matrix;
+8. what remains open after that future child;
+9. exact stop/success codes;
+10. machine-readable `CODEX DIRECTIVE`.
+
+The directive must say:
+
+```yaml
+MODE: AUDIT_ONLY_NO_PRODUCTION
+phase_key_change: false
+reuse_same_living_chat: true
+```
+
+and must not authorize any repository production edit in this transaction.
+
+## 8. Required boundary
+
+```text
+B3_0H_CLOSED
+B3_0I_AUDIT_ONLY
+B3_0_OPEN
+
+NO_PRIME_SOURCE_PAIRING_PRODUCTION
+NO_COMPLETE_SOURCE_WEIL_FORM
+NO_MATRIX_OR_OPERATOR_WRAPPER
+NO_ASSOCIATED_OPERATOR_GRAPH
+NO_FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP
+NO_COMPRESSION_IDENTITY
+NO_CONTINUUM_NUMERATOR
+H4A1B_OPEN
+
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE_ADVANCED_NOT_CLOSED
+CHECKPOINTS_CLOSED_0
+CHECKPOINTS_REMAINING_10
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+STOP if the positive source object, support, sign, slot order, or normalization cannot be fixed independently of `ccmPrimeEntryN1`.
+
+

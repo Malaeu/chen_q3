@@ -1,0 +1,412 @@
+# PROSHKA REQUEST — Goal 057 B3.0I source-prime mode-pairing production release
+
+## 0. Requested decision
+
+Release or stop exactly one production child:
+
+```text
+GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_PRODUCTION_RELEASE
+```
+
+The preceding audit is ratified. This is a separate production-release transaction in the same living Goal-057 phase and chat.
+
+Return exactly one primary code:
+
+```text
+TRY_GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING
+```
+
+or
+
+```text
+KILL_GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING
+```
+
+or
+
+```text
+WALL_GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING
+```
+
+If released, authorize copying only the exact attached 1,782-byte candidate into exactly one owned production path. Do not authorize the finite prime form lift or any later child in this transaction.
+
+## 1. Immutable source/control lock
+
+```yaml
+repo: /Users/emalam/GitHub/rh_lean_01_2026
+github_repo: Malaeu/chen_q3
+branch: rh_clean
+head: 2dfda1456501f3d027a4e1cfcfc42a93a64b9e91
+origin_rh_clean: 2dfda1456501f3d027a4e1cfcfc42a93a64b9e91
+
+active_goal: 057
+route: CHALLENGER_NOT_RH
+bus_010: VOID
+goal_055: HOLD
+g2_ccm: FROZEN
+h4a1b: OPEN
+aristotle_submission: NONE
+route_promotion: false
+px_rh_claim: NOT_MADE
+owner_gate: PX_RH_CLAIM_ONLY
+
+current_checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+coarse_checkpoints_closed: 0
+coarse_checkpoints_remaining: 10
+
+parent_closed: GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT
+audit_ratified: GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_AUDIT_RATIFIED
+```
+
+The user's pre-existing staged patch remains untouched:
+
+```text
+git diff --cached SHA-256
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+```
+
+## 2. Exact audit transaction
+
+Attached audit request:
+
+```text
+PROSHKA_REQUEST_GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_SIGN_NORMALIZATION_AUDIT_2026-08-09.txt
+SHA-256 e36973a24a426bff2cd82745948a0bee0e7be2812e318b3d152506bac53364a7
+bytes 13186
+lines 385
+```
+
+Exact byte-faithful verdict archived at:
+
+```text
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+PROSHKA_VERDICT_GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_SIGN_NORMALIZATION_AUDIT_2026-08-09.md
+SHA-256 3a04b4bb35773a9a9aab633b0db9442621be353d180b6714bd839fdb6b74e88a
+bytes 21687
+newline_count 640
+```
+
+The verdict fixes:
+
+```yaml
+source_object: POSITIVE_SIDE_W_P_SHARP_COMPONENT
+full_ledger_prime_sign: EXTERNAL_MINUS
+support: Finset.Icc_2_i.m
+coefficient: vonMangoldt_k_times_inverse_sqrt_k
+correlation: TWO_TIMES_CONJUGATE_FIRST_COSINE_INTEGRAL
+log_coordinate: Real.log_k
+cutoff_owner: i.m
+target: POSITIVE_ccmPrimeEntryN1
+C10_source_independence: PASS
+C04_order_visibility: REQUIRES_PRESYMMETRY_CONTROL
+```
+
+## 3. Exact attached candidate
+
+Attached filename:
+
+```text
+GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_CANDIDATE_2026-08-09.txt
+SHA-256 ca3281f52f6752f537f97910104fe9e26bf4f2a2f2046d1f2bcaf1e84f67ac34
+bytes 1782
+lines 49
+```
+
+Required production path:
+
+```text
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean
+```
+
+Exact public surface:
+
+```yaml
+imports: 1
+public_definitions: 1
+public_theorems: 1
+private_declarations: 0
+definition: sourcePrimeModePairing
+theorem: sourcePrimeModePairing_eq_ccmPrimeEntryN1
+```
+
+Exact import:
+
+```lean
+import Q3.Proofs.RouteB.D0PstarSourceModeCosineCCMQKernel
+```
+
+Expected exact production SHA-256 after byte-for-byte copy:
+
+```text
+ca3281f52f6752f537f97910104fe9e26bf4f2a2f2046d1f2bcaf1e84f67ac34
+```
+
+No docstring or whitespace amendment is requested. If any candidate byte must change, stop and return a corrected exact candidate for a new release transaction; do not silently normalize it.
+
+## 4. Direct Lean preflight
+
+Command:
+
+```text
+cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
+lake env lean /tmp/Goal057B3_0I_PrimePairingAudit.lean
+```
+
+Result:
+
+```text
+exit 0
+warning: UnicodeBasic ... has local changes
+'Q3.RouteB.D0Pstar.sourcePrimeModePairing_eq_ccmPrimeEntryN1'
+depends on axioms: [propext, Classical.choice, Quot.sound]
+```
+
+The UnicodeBasic warning is pre-existing dependency state and not a candidate failure.
+
+Candidate body fingerprint:
+
+```text
+lines 14..22 SHA-256
+a60d4159fd0907203f70a742a82d532914e8b4b33181248e5043f08e2f53bc07
+```
+
+Parent theorem statement/body slice fingerprint:
+
+```text
+D0PstarSourceModeCosineCCMQKernel.lean lines 979..1006 SHA-256
+6711e87a4004f89a49a674acb27a16f474dda4cad13f9a0cc1920f1db585a19e
+```
+
+Parent file:
+
+```text
+D0PstarSourceModeCosineCCMQKernel.lean
+SHA-256 1c39c60492931150d98e25e87e1e4762d4509edd725bd68b68c64c8504cc56a4
+```
+
+Exact support file:
+
+```text
+CCMFiniteWeilCell13N2VonMangoldtNormalForm.lean
+SHA-256 0742f31a45714def1965773e833efd9fef30ab6daa5dce0f8613e22706fc8fc3
+```
+
+## 5. Independent release controls
+
+Control harness:
+
+```text
+/tmp/Goal057B3_0I_ReleaseControls.lean
+SHA-256 c1e3594f2382736d8933a8cd61c4e2e162ae18b6ef6d0d1ec4ad9340104ca569
+bytes 1476
+lines 41
+direct Lean: exit 0
+```
+
+It proves four controls:
+
+```lean
+theorem sourcePrime_conjugateFirst_nonsymmetric_control :
+    conj ((1 : ℂ) + Complex.I) * (1 : ℂ) ≠
+      conj (1 : ℂ) * ((1 : ℂ) + Complex.I)
+
+theorem sourcePrime_upperEndpoint_mem_Icc_control :
+    13 ∈ Finset.Icc 2 13
+
+theorem sourcePrime_upperEndpoint_not_mem_Ico_control :
+    13 ∉ Finset.Ico 2 13
+
+theorem sourcePrime_upperEndpoint_logThirteen_control :
+    ∑ k ∈ Finset.Icc 2 13,
+        ArithmeticFunction.vonMangoldt k *
+          (if k = 13 then 1 else 0 : ℝ) = Real.log 13
+```
+
+All four print only:
+
+```text
+[propext, Classical.choice, Quot.sound]
+```
+
+The nonsymmetric complex control makes a conjugate-first slot reversal observably different before the real-symmetric target can hide it.
+
+The endpoint controls make the added `Icc -> Ico` mutation observable.
+
+## 6. Exact static firewall results
+
+The 49-line candidate has:
+
+```text
+import count                              1
+public noncomputable def count            1
+public theorem count                      1
+private declaration count                 0
+
+ccmPrimeEntryN1 occurrences in def body   0
+vonMangoldt occurrences in def body       1
+Finset.Icc 2 i.m occurrences              1
+conj(first source mode) occurrences        1
+unconjugated second source mode           1
+2 * integral occurrences                  1
+inverse sqrt occurrences                  1
+Real.log(k) occurrences                   1
+
+native_decide                             0
+of_decide_eq_true                         0
+Float                                     0
+declared axiom                            0
+sorry/admit/exact?                        0
+```
+
+The target name appears only in the theorem statement/proof, never in the public definition.
+
+## 7. Repaired 13-plant matrix
+
+Do not call a coherent semantic mutation “fired” merely because the final symmetric equality compiles or fails. Use the specified judge.
+
+| ID | Mutation | Release result/judge |
+|---|---|---|
+| P-PRIME-1 | negative object called `W_p#` | REJECTED by positive definition-body/sign fingerprint |
+| P-PRIME-2 | downstream complete ledger uses `+ Prime` | DEFERRED_OUTSIDE_CHILD; explicitly NOT_CLAIMED_FIRED; future complete-form ledger gate |
+| P-PRIME-3 | prime-only filter | REJECTED by exact `vonMangoldt` fingerprint and 4/8/9 support theorem |
+| P-PRIME-4 | `a * log p` at `p^a` | REJECTED by equal 3/9 coefficient control |
+| P-PRIME-5 | doubled outer weight or `w_Q` | REJECTED by exact coefficient fingerprint; no outer 2 |
+| P-PRIME-6 | remove cosine factor 2 | REJECTED by exact body and E3 parent dependency fingerprint |
+| P-PRIME-7 | use `sqrt(k)` | REJECTED by inverse-square-root fingerprint |
+| P-PRIME-8 | use `log k/(2*pi)` | REJECTED by exact cosine-argument fingerprint |
+| P-PRIME-9 | cutoff at `i.N` | REJECTED by exact `Finset.Icc 2 i.m` fingerprint |
+| P-PRIME-10 | reverse source slots | REJECTED by conjugate-first fingerprint plus compiled nonsymmetric complex control |
+| P-PRIME-11 | direct `ccmPrimeEntryN1` alias | REJECTED by definition-body firewall |
+| P-PRIME-12 | ordinary primes with multiplicity | REJECTED by exact 4/8/9 and 6/10/12 support controls |
+| P-PRIME-13 | omit upper endpoint using `Ico` | REJECTED by compiled Icc/Ico endpoint controls and log-13 control |
+
+Required adjudication:
+
+- accept P-PRIME-2 only as honestly deferred outside this production child;
+- require the complete-form child to fire the `+ Prime` plant later;
+- do not use target symmetry as evidence for P-PRIME-10;
+- do not request any candidate change if the above source/static controls suffice.
+
+## 8. Exact production action requested after release
+
+If and only if released:
+
+1. copy the exact attached candidate bytes to:
+   `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean`;
+2. verify exact SHA-256 `ca3281...`;
+3. direct Lean;
+4. target build;
+5. full `lake build`;
+6. `scripts/q3_check.sh`;
+7. unit tests;
+8. strict Spine and SQLite;
+9. proof DB import twice for idempotence;
+10. the repaired plant/static/control matrix;
+11. `routeb_status.py --check`;
+12. preserve the user's staged patch SHA;
+13. update the Goal-057 control/state files only after all release gates pass;
+14. commit exactly the owned production/control artifacts and push `rh_clean`.
+
+Production closeout must record exact build job counts and validation outputs. No finite prime form lift may be implemented in this transaction.
+
+## 9. Required release boundary
+
+After successful production validation:
+
+```text
+SOURCE_PRIME_MODE_PAIRING_EQ_CCM_PRIME_ENTRY_N1_PROVED
+POSITIVE_ONE_SIDED_W_P_SHARP_OBJECT_RETAINED
+EXTERNAL_FULL_LEDGER_PRIME_MINUS_RETAINED
+EXACT_VON_MANGOLDT_PRIME_POWER_SUPPORT_RETAINED
+EXACT_I_M_INCLUSIVE_CUTOFF_RETAINED
+EXACT_INVERSE_SQRT_WEIGHT_RETAINED
+EXACT_CORRELATION_FACTOR_TWO_RETAINED
+EXACT_REAL_LOG_K_COORDINATE_RETAINED
+EXACT_CONJUGATE_FIRST_SLOT_RETAINED
+C10_SOURCE_OBJECT_INDEPENDENCE_RETAINED
+C04_PRESYMMETRY_SLOT_CONTROL_RETAINED
+
+B3_0I_PRODUCTION_CLOSED
+B3_0_OPEN
+
+NO_FINITE_PRIME_FORM_LIFT
+NO_COMPLETE_SOURCE_WEIL_FORM
+NO_MATRIX_OR_OPERATOR_WRAPPER
+NO_ASSOCIATED_OPERATOR_GRAPH
+NO_FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP
+NO_COMPRESSION_IDENTITY
+NO_CONTINUUM_NUMERATOR
+H4A1B_OPEN
+
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE_ADVANCED_NOT_CLOSED
+CHECKPOINTS_CLOSED_0
+CHECKPOINTS_REMAINING_10
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+Reserved stop:
+
+```text
+GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_EQ_CCM_PRIME_ENTRY_N1_MISSING
+```
+
+Reserved success:
+
+```text
+GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_EQ_CCM_PRIME_ENTRY_N1_PROVED
+```
+
+Next named gap after successful production:
+
+```text
+GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT
+```
+
+The next gap is named only. It is not authorized in this transaction.
+
+## 10. Requested CODEX DIRECTIVE
+
+If released, return machine-readable:
+
+```yaml
+MODE: IMPLEMENT_EXACTLY_ONE_PRODUCTION_CHILD
+CREATE_ONLY:
+  - q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean
+EXACT_MATERIALIZATION_SHA256:
+  ca3281f52f6752f537f97910104fe9e26bf4f2a2f2046d1f2bcaf1e84f67ac34
+phase_key_change: false
+reuse_same_living_chat: true
+open_fresh_chat: false
+owner_action_required: false
+```
+
+Not authorized:
+
+```text
+implement_finite_prime_form_lift
+define_complete_source_Weil_form
+hide_prime_minus_inside_sourcePrimeModePairing
+use_prime_only_support
+use_i.N_cutoff
+change_factor_two_or_log_coordinate
+use_target_symmetry_as_slot_evidence
+add_matrix_or_operator_wrapper
+define_associated_operator_graph
+infer_form_or_operator_domain_membership
+edit_D0PstarCCMCompressedWeilAction
+invoke_or_close_H4A1B
+decrement_the_ten_checkpoint_ledger
+create_Bus_010
+release_Goal_055
+unfreeze_G2_CCM
+submit_Aristotle
+promote_Route_B
+make_PX_or_RH_claim
+open_fresh_chat
+```
