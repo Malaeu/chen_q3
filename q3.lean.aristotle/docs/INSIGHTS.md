@@ -52,6 +52,23 @@
   `Quot.sound`.  This is a successful untracked preflight, not production
   authority: the exact harness returns to the unchanged Proshka chat for one
   release before any B3.0E2 production or state mutation.
+- Proshka released exactly one child, and production
+  `D0PstarSourceArchKernelModeProductL1.lean` now proves the exact joint
+  carrier. Direct Lean, target 7,762-job build, full 7,817-job build,
+  `q3_check`, 80/80 tests, 24/24 proof-DB declarations, 7/7 plants, strict
+  Spine and all three SQLite checks pass.
+- The production theorem remains fixed-mode and carrier-only: it proves no
+  public swapped-integral equality, `ccmQKernel` correlation, one-sided
+  half-factor, `ccmWREntry` crosswalk, source Weil form or operator graph.
+  B3.0E and the ten coarse checkpoints therefore remain open.
+- Recursive provenance corrects one overstrong preflight sentence: the new
+  module adds no generated backend, but inherits the tracked and hole-free
+  `aristotle_output.d1524982_aristotle` through the already-closed B3.0E1
+  digamma chain. No new Step33/hbox/payload/Aristotle dependency was added.
+- The exact next atom is
+  `GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_EQ_CCM_QKERNEL`;
+  only its untracked no-`sorry` discriminator is authorized before the next
+  same-chat release.
 
 ## Synthesis (2026-08-08, source-audit wall; B3.0E1 closed) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
 

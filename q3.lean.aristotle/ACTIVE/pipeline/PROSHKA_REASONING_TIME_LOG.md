@@ -31,6 +31,46 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E2 joint kernel-mode L1/Fubini carrier release
+
+```yaml
+proof_address: RouteB.Goal057.SourceArchKernelModeProductL1
+front: GOAL057/P057_B3_0E2
+transaction: GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 5e2a6a41-a1db-4afc-8914-e9f66844206a
+response_message_id: efd108f8-7c62-4910-986b-477a8f3053e3
+sent_at: 2026-08-08T10:50:56.636+02:00
+completed_at: 2026-08-08T11:15:29.982+02:00
+wall_seconds: 1473
+wall_human: "24m33s observed UI send-to-verdict wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI
+status: OPEN_PRODUCTION_RELEASED
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_RELEASE_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW byte-locked the 6,711-byte request
+  with SHA-256 737d65801a9ecbeef6aa7c4312aecef7a72be46b2a427191c88537a3a2d15c6f
+  and the 27,927-byte compiling harness with SHA-256
+  1ff1ef467028a6a62a9d2722c2b96e0ec6aff94366645e32bab91ff5f82f7bde
+  at live HEAD=origin/rh_clean
+  3c3681f1a93d1115d26002ff2105fc0b6c0023d1. The complete visible verdict
+  has 29,062 bytes and SHA-256
+  d8e24abbd4a5dd42c5db839914d3d72c7795387f5af3631c2e161dbbd5bb84e1;
+  the newline-normalized archive has 29,063 bytes and SHA-256
+  3761805986f3cb7435d5fa0e90a470bf0e9c529c872371c99b714cad71405dd7.
+  Proshka released exactly one production child with the same two public
+  declarations and the observed ceiling of 4 private definitions plus 18
+  private theorems. The release preserves antilinear-first orientation,
+  paired endpoint cancellation, the square-root endpoint carrier, both
+  fixed-mode frequency decays, and the literal positive-x product measure.
+  B3.0E2 is not closed until production validation; B3.0E and all ten coarse
+  checkpoints remain open. Answer now appeared and was never clicked. No
+  B3.0E3 implementation, Aristotle submission, Bus 010, Goal-055 release,
+  route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E1 scalar hyperbolic identity release
 
 ```yaml

@@ -1194,3 +1194,108 @@ joint weighted Fubini, identify the mode correlation with `ccmQKernel`,
 assemble the one-sided endpoint factor, or prove the final negative
 `ccmWREntry` crosswalk.  Thus B3.0E, B3.0, the current coarse checkpoint,
 H4a1b, promotion, PX, and RH remain open.
+
+
+## A18 — B3.0E2 joint arch kernel-mode product L1/Fubini carrier (2026-08-08)
+
+```yaml
+A18_STATUS: CLOSED_CHILD_PARENT_B3_0E_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI
+SUCCESS: GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_CARRIER_PROVED
+
+PARENT_B3_0E1:
+  status: CLOSED
+PARENT_B3_0E2:
+  status: CLOSED
+PARENT_B3_0E:
+  status: OPEN
+  joint_kernel_mode_product_l1_carrier: PROVED
+  public_swapped_integral_identity: NOT_PROVED
+  mode_correlation_ccm_qkernel: NOT_PROVED
+  one_sided_half_factor_assembly: NOT_PROVED
+  ccm_wr_entry_crosswalk: NOT_PROVED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchKernelModeProductL1.lean
+LEAN_SHA256: 8d7b5eafd4cbeffe576c285c9792c6991f696f8c9da39a9a7bc918fe00aefc0c
+PUBLIC_SURFACE:
+  definitions:
+    - sourceArchimedeanKernelModeIntegrand
+  theorems:
+    - sourceArchimedeanKernelModeIntegrand_integrable
+PRIVATE_SUPPORT:
+  definitions: 4
+  theorems: 18
+  total: 22
+PROOF_DB: 24_OF_24_DECLARATIONS_PROVEN
+PLANTS: 7_OF_7_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7762_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_c7f9506085991dbda30d_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: SOURCE_ARCH_JOINT_KERNEL_MODE_PRODUCT_L1_FUBINI_CARRIER_ONLY
+EXACT_ANTILINEAR_FIRST_ORIENTATION_RETAINED: true
+PAIRED_ENDPOINT_CANCELLATION_RETAINED: true
+EXACT_POSITIVE_X_PRODUCT_MEASURE_RETAINED: true
+PUBLIC_SWAPPED_INTEGRAL_IDENTITY: NOT_PROVED
+MODE_CORRELATION_CCM_QKERNEL_CROSSWALK: NOT_PROVED
+ONE_SIDED_HALF_FACTOR_ASSEMBLY: NOT_PROVED
+CCM_WR_ENTRY_CROSSWALK: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  new_generated_backend: false
+  direct_imports_match_release: true
+  inherited_tracked_hole_free_aristotle_output: aristotle_output.d1524982_aristotle
+  inherited_via_closed_parent_b3_0e1: true
+  stronger_no_transitive_aristotle_preflight_prose_corrected: true
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 737d65801a9ecbeef6aa7c4312aecef7a72be46b2a427191c88537a3a2d15c6f
+PROSHKA_VERDICT_ARCHIVE_SHA256: 3761805986f3cb7435d5fa0e90a470bf0e9c529c872371c99b714cad71405dd7
+CLOSEOUT_SHA256: daff181b7058cdec0137c6fcb6f26e024393ce694e69b0339f875e97df080181
+
+REVIEW_RUNTIME:
+  phase_calls: 29
+  global_delegated_calls: 31
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_EQ_CCM_QKERNEL
+NEXT_DISCRIMINATOR: B3_0E3_MODE_COSINE_CORRELATION_CCM_QKERNEL_NO_SORRY_PREFLIGHT
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: execute_untracked_discriminator_then_one_same_chat_release_before_any_B3_0E3_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The literal conjugate-first source kernel-mode product is now jointly
+absolutely integrable on the exact positive-`x` product measure. This closes
+B3.0E2 only and makes Fubini legally available for this integrand; it does not
+state the swapped integral, identify the zero-extended cosine correlation with
+`ccmQKernel`, assemble the one-sided half-factor, or prove the final negative
+`ccmWREntry` crosswalk. Thus B3.0E, B3.0, the current coarse checkpoint,
+H4a1b, promotion, PX, and RH remain open.
