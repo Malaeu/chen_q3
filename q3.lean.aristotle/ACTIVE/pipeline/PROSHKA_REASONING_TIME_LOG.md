@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0B1 log-growth envelope weighted-L2 release
+
+```yaml
+proof_address: RouteB.Goal057.LogGrowthEnvelopeWeightedL2Release
+front: GOAL057/P057_B3_0B1
+transaction: GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 47d32cc3-bde5-410d-9e7e-b51061cb392e
+response_message_id: 0f0db8ee-e22c-4e08-aa76-1d58aaeb8cf7
+sent_at: 2026-08-08T03:43:44+02:00
+completed_at: 2026-08-08T03:58:43+02:00
+wall_seconds: 899
+wall_human: "14m59s local request-materialization to verdict-archive wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2
+status: OPEN_RELEASED_AND_IMPLEMENTED_EXACT_ONE_CHILD
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW source-locked the 10,955-byte request
+  with SHA-256 b83b7a57f97385df4b2eb7ad3bc09af3fdcc63a297a41620ba6cf2d7b54af52b.
+  The complete visible verdict has 24,668 bytes and SHA-256
+  ca4e0138c53a177dcc28d39b96251ff0f317b080c28c126fabf7a70c9ae8f6ac;
+  the newline-normalized archive has 24,669 bytes and SHA-256
+  386be23678218545149cc41c145749251e0ebf40d0db9e12822761533bcae778.
+  Proshka confirmed the totalized-reciprocal resonance counterexample,
+  selected the elementary log-envelope split, and killed the premise-only
+  source-symbol wrapper. B3.0B1 was implemented with one public definition,
+  two public theorems, six private helpers, standard axioms, and 6/6 plants.
+  B3.0B2 exact global digamma-symbol domination remains open; the coarse
+  ledger stays 0/10. Answer now appeared and was never clicked. No Aristotle
+  submission, Bus 010, Goal-055 release, route promotion, PX claim, or RH
+  claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0A exact mode Fourier formula release
 
 ```yaml

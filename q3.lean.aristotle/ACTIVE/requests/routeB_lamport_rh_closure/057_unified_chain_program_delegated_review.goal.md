@@ -696,3 +696,79 @@ continuous Mathlib Fourier transform, with the negative Fourier sign, uncentered
 `sqrt(L_m)` value pinned. This is a convention-locking representation result,
 not a Plancherel, weighted-L², form-domain, operator-domain, compression,
 continuum-numerator, H4a1b, promotion, PX, or RH result.
+
+## A12 — B3.0B1 log-growth envelope weighted-L² certificate (2026-08-08)
+
+```yaml
+A12_STATUS: CLOSED_CHILD_PARENT_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2
+SUCCESS: GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_PROVED
+
+PARENT_B3_0B:
+  status: OPEN
+  exact_arch_symbol_domination: NOT_PROVED
+  associated_operator_graph: NOT_AUTHORIZED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean
+LEAN_SHA256: beb6f951a5b3db4a0b234137a61e9968696f77ba53393419fabdeed239262c87
+PUBLIC_SURFACE:
+  definitions:
+    - vModeLogGrowthEnvelope
+  theorems:
+    - norm_fourier_logWindowZeroExtendedMode_le_resonanceSafe
+    - vModeLogGrowthEnvelope_mul_fourier_logWindowZeroExtendedMode_memLp
+  private_theorems: 6
+PROOF_DB: 9_OF_9_DECLARATIONS_PROVEN
+PLANTS: 6_OF_6_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7756_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: 8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: LOG_GROWTH_ENVELOPE_WEIGHTED_MODE_L2_ONLY
+ENVELOPE_IS_NOT_EXACT_ARCH_SYMBOL: true
+NO_EXACT_DIGAMMA_DOMINATION: true
+NO_SOURCE_WEIL_FORM: true
+NO_ASSOCIATED_OPERATOR_GRAPH: true
+NO_OPERATOR_DOMAIN_MEMBERSHIP: true
+NO_COMPRESSION_IDENTITY: true
+NO_CONTINUUM_NUMERATOR: true
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: b83b7a57f97385df4b2eb7ad3bc09af3fdcc63a297a41620ba6cf2d7b54af52b
+PROSHKA_VERDICT_ARCHIVE_SHA256: 386be23678218545149cc41c145749251e0ebf40d0db9e12822761533bcae778
+CLOSEOUT_SHA256: adf3c5a5974e0e206d86629996a54f5bc75ff7829ad769dddebc9f53972609f8
+
+REVIEW_RUNTIME:
+  phase_calls: 22
+  global_delegated_calls: 24
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_BY_LOG_GROWTH_ENVELOPE
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: one_same_chat_operational_release_before_any_B3_0B2_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact zero-extended mode Fourier value is now dominated by a totalized
+resonance-safe envelope, and that envelope times the mode transform is proved
+to lie in `L²`.  This closes the released B3.0B1 child only.  The envelope is
+not the source archimedean symbol, and no theorem yet dominates the exact
+digamma/Gamma expression by it.  Hence B3.0B, the operator graph, the current
+coarse checkpoint, H4a1b, promotion, PX, and RH all remain open.
