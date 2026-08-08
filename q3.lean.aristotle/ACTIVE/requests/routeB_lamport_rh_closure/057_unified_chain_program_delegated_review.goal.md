@@ -1014,3 +1014,89 @@ does not yet define the pairing kernel or prove its Hermitian symmetry, and it
 does not supply the source Weil form, associated operator graph, uniform
 cofinal estimate, compression identity, or continuum numerator.  Thus B3.0,
 the current coarse checkpoint, H4a1b, promotion, PX, and RH remain open.
+
+
+## A16 — B3.0D source archimedean mode-pairing kernel Hermitianity (2026-08-08)
+
+```yaml
+A16_STATUS: CLOSED_CHILD_PARENT_B3_0_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY
+SUCCESS: GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY_PROVED
+
+PARENT_B3_0D:
+  status: CLOSED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  ccm_wr_crosswalk: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchModePairingKernel.lean
+LEAN_SHA256: 02a382679fd1f401141d1e5c1ba6b3967fe5a10271281a4bc7b86daf3d620974
+PUBLIC_SURFACE:
+  definitions:
+    - sourceArchimedeanModePairing
+  theorems:
+    - sourceArchimedeanModePairing_conj_symm
+  private_declarations: []
+PROOF_DB: 2_OF_2_DECLARATIONS_PROVEN
+PLANTS: 10_OF_10_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7764_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_7665530e1aa9edb821fb_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: SOURCE_ARCHIMEDEAN_FIXED_MODE_PAIRING_KERNEL_HERMITIANITY_ONLY
+FIXED_MODE_PAIRING_KERNEL_DEFINED: true
+FIRST_SLOT_CONJUGATED: true
+SECOND_SLOT_LINEAR: true
+HERMITIANITY: PROVED
+INTEGRAL_VALUE_FORMULA: NOT_PROVED
+DIAGONAL_SIGN_OR_POSITIVITY: NOT_PROVED
+CCM_WR_ENTRY_CROSSWALK: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+PRIME_OR_POLE_SIDE: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 9fdcb73782a7cf589be92056ea67cfa6aba2be7a11b74e143781cf247fe2ce60
+PROSHKA_VERDICT_ARCHIVE_SHA256: 6c93458147faf329aa04602e5eb6f5e19cfaf566d8f8f830c12dc8c401a65949
+CLOSEOUT_SHA256: 6dc51602bd1cb2cb5fcf79d40c99e92259dea7606583fb95cc547eb2a685e9e2
+
+REVIEW_RUNTIME:
+  phase_calls: 26
+  global_delegated_calls: 28
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: source_audit_then_one_same_chat_release_before_any_B3_0E_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact fixed-mode source archimedean pairing kernel is now defined with the
+locked antilinear-first orientation, and its conjugate symmetry is proved.
+This closes B3.0D only.  It does not evaluate the integral, prove a diagonal
+sign, identify the entries with the CCM `w_{rs}` convention, define the full
+source Weil form, or construct an associated operator graph.  Thus B3.0, the
+current coarse checkpoint, H4a1b, promotion, PX, and RH remain open.

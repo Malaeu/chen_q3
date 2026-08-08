@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0D source mode-pairing Hermitianity
+## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0D source mode-pairing Hermitianity
 
 - Target: define the fixed-mode archimedean pairing integral from B3.0C and
   prove `pairing i r n = conj (pairing i n r)` with the established
@@ -36,7 +36,21 @@
 - Boundary: fixed-mode archimedean kernel and Hermitianity only; no source
   Weil-form decomposition, prime/pole side, operator graph/domain, uniform
   cofinal bound, compression, continuum numerator, H4a1b, promotion, PX, or RH.
-  Production remains forbidden until one same-chat Proshka release.
+  Production was forbidden until one same-chat Proshka release.
+- Proshka released exactly one noncomputable pairing definition and one
+  conjugate-symmetry theorem.  Production
+  `D0PstarSourceArchModePairingKernel.lean` has SHA-256
+  `02a382679fd1f401141d1e5c1ba6b3967fe5a10271281a4bc7b86daf3d620974`;
+  direct Lean, target 7,764-job build, full 7,817-job build, `q3_check`,
+  80/80 unit tests, 2/2 proof-DB declarations, and 10/10 plants pass.
+- Exact closed class: fixed-mode source pairing kernel with antilinear-first
+  Hermitianity.  No integral evaluation, diagonal sign, CCM-WR entry
+  crosswalk, source Weil form, operator graph/domain, compression, uniform
+  cofinal estimate, continuum numerator, H4a1b, promotion, PX, or RH follows.
+- Next gap is
+  `GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK`;
+  it is named but not authorized and requires a fresh source audit before the
+  next same-chat delegated review.
 
 ## Synthesis (2026-08-05, closed node) -- G5 direct determinant-sign endpoint receiver
 
