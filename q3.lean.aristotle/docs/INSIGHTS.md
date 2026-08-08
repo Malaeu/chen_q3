@@ -11,6 +11,33 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4B1 diagonal endpoint ledger
+
+- Exact target: for `0 < L`, prove the scalar identity equating the paired
+  finite-region regularizer plus the convergent `Ioi L` tail with
+  `-Real.log (4 * Real.pi * ((Real.exp L - 1) / (Real.exp L + 1)))`.
+- The source lock is CCM arXiv:2511.22755v1, equation (4.4): this is the
+  diagonal endpoint constant only, not the later mode-dependent diagonal
+  pairing or an all-entry `ccmWREntry` theorem.
+- Preserve the cancellation-bearing finite integrand.  On `Ioc 0 L`, rewrite
+  `2 * (1 - exp (-x)) / (exp x - exp (-x))` as `2 / (exp x + 1)`; never split
+  its two numerator terms near zero.
+- Use the global antiderivative
+  `F x = 2 * x - 2 * Real.log (Real.exp x + 1)` and the interval FTC after
+  converting the `Ioc` set integral to the oriented interval integral.
+- For the tail, use
+  `G x = Real.log (1 - Real.exp (-2 * x))`; on `Ici L`, `G'` is exactly
+  `2 * exp (-x) / (exp x - exp (-x))`, is nonnegative, and `G -> 0` at `atTop`.
+- Mathlib's `integral_Ioi_of_hasDerivAt_of_nonneg'` closes the improper tail
+  without separately postulating integrability; positivity follows from
+  `hL`, monotonicity of `exp`, and `exp (-2*x) < 1`.
+- Final algebra must use only proved positivity/nonzero facts for every
+  `Real.log_mul` and `Real.log_div`; plants mutate the tail sign, factor two,
+  finite/tail boundary, log ratio orientation, and the cancellation pairing.
+- Boundary: run one untracked no-`sorry` discriminator only.  B3.0E4B2, the
+  all-mode crosswalk, source Weil form/operator, all 10 coarse checkpoints,
+  H4a1b, promotion, PX and RH remain open.
+
 ## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4A off-diagonal archimedean / CCM-WR crosswalk
 
 - Exact target: for `n ≠ r`, prove
