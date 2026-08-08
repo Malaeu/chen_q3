@@ -11,15 +11,32 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0F finite archimedean sesquilinear matrix lift
+## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0F finite archimedean sesquilinear matrix lift
 
-- Exact target: lift the closed all-mode E4C identity coefficientwise over the literal carrier `CCMModeFinite i.N`, with `star (c j)` in the first slot and `d k` linear in the second.
-- The official CCM source fixes this convention: the Hilbert pairing is antilinear in the first argument, the Weil form is obtained by polarization, and its finite restriction is represented by the source matrix on `V_n`.
-- Local semantic search finds no missing analytic supplier: `D0PstarSourceArchAllModeCCMWRCrosswalk.lean` is the sole entrywise parent; `D0PstarCCMFiniteSourceResidual.lean` confirms the exact carrier and mode order.
-- The proof must rewrite every matrix entry by E4C and pull the common minus through the finite double sum. It must not use Hermitian symmetry to swap indices or coefficients.
-- The discriminator preserves the exact map `ccmModeFinite i.N j = j - N`, conjugates only the first coefficient, and introduces no real-part projection.
-- Plants must detect a missing first-slot star, a moved star, the wrong global sign, a changed finite carrier, a symmetry-based slot swap, and a surrogate all-form premise.
-- Boundary: this is only the archimedean finite matrix-form lift. It does not add `W02`, prime terms, the complete Weil form, an operator identity, positivity, a gap, promotion, PX, or RH.
+- Production lifts the closed all-mode E4C identity coefficientwise over the
+  literal carrier `CCMModeFinite i.N`, with `star (c j)` in the first slot and
+  `d k` linear in the second.
+- The official CCM source fixes this convention: the Hilbert pairing is
+  antilinear in the first argument, the Weil form is obtained by polarization,
+  and its finite restriction is represented by the source matrix on `V_n`.
+- The one public theorem rewrites every ordered `(j,k)` entry by E4C and pulls
+  the common negative sign through the finite double sum.  No matrix symmetry,
+  real projection, helper definition or surrogate form premise is used.
+- Exact harness-to-production materialization removed only five controls and
+  the final axiom print.  Direct Lean, target/full builds, q3-check, proof DB
+  1/1, 80/80 tests, strict Spine and all three SQLite checks pass.
+- Nine independent plants fire under the repaired contract.  The premise-only
+  and generated-PSD mutations compile but are rejected by the C10 provenance
+  gate and the static dependency gate; the nonsymmetric `Fin 2` harness pins
+  entry orientation.
+- The global `j/k` swap is killed and not counted: dummy reindexing plus
+  `ccmWREntry` symmetry makes that mutation non-discriminating.
+- Boundary: B3.0F is closed but B3.0 remains open.  There is still no source
+  `W02` pairing, prime pairing, complete Weil form, associated operator graph,
+  checkpoint closure, H4a1b invocation, promotion, PX or RH claim.
+- Next atom is audit-only:
+  `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_EQ_CCM_W02_ENTRY` with discriminator
+  `B3_0G_W02_SOURCE_MODE_PAIRING_SOURCE_AUDIT`; production is not authorized.
 
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4C all-mode CCM-WR case assembly
 

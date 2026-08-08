@@ -31,6 +31,72 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0F finite-form production release
+
+```yaml
+proof_address: RouteB.Goal057.FiniteArchimedeanSesquilinearFormMatrixLift
+front: GOAL057/P057_B3_0F
+transaction: GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 8464971c-d8ae-4a1f-b737-93e9312412ad
+response_message_id: 386b621a-8fcb-474f-af65-79d05b47623f
+sent_at: 2026-08-08T17:30:22+02:00
+completed_at: 2026-08-08T17:42:37+02:00
+wall_seconds: 735
+wall_human: "12m15s request-to-verdict-archive upper bracket"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT
+status: COMPLETE_SAME_CHAT_PRODUCTION_RELEASE
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_RELEASE_2026-08-08.md
+notes: >-
+  Same-chat return attached the exact 3,043-byte harness at SHA-256
+  7b4e075e82dc90c173098c459813a69e312d15ff10a616023def740a671779b7
+  and the 8,387-byte repaired-preflight return at SHA-256
+  6631a3ce49dbe648db8ca9987b58a2d55b5544001f9bdee884515f0d1108fec8.
+  The byte-faithful 26,134-byte release verdict has SHA-256
+  39f194dd0bd6873c0b6013a569d49152325359c4bbd84ade82e1d834e63bd68c.
+  Proshka authorized exactly one production file, retained two imports and one
+  theorem, required all nine repaired plants, and left B3.0G audit-only. Answer
+  now was displayed and never clicked. No checkpoint, H4a1b, Bus 010, Goal 055,
+  G2/CCM, Aristotle, promotion, PX or RH boundary changed.
+```
+
+### 2026-08-08 — Goal 057 B3.0F repaired preflight source lock
+
+```yaml
+proof_address: RouteB.Goal057.FiniteArchimedeanSesquilinearFormMatrixLift.RepairedPreflight
+front: GOAL057/P057_B3_0F
+transaction: GOAL057_B3_0F_REPAIRED_PREFLIGHT_SOURCE_LOCK
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: afb7cd77-0ce5-4f95-b089-3acfa603cfb7
+response_message_id: 3fcc78aa-bf0c-43de-a349-095d19cb1647
+sent_at: 2026-08-08T17:00:22+02:00
+completed_at: 2026-08-08T17:20:03+02:00
+wall_seconds: 1181
+wall_human: "19m41s observed upper bracket"
+answer_now_shown: true
+answer_now_clicked: false
+primary: RUN_GOAL057_B3_0F_REPAIRED_PREFLIGHT
+status: OPEN_REPAIRED_PREFLIGHT_REQUIRED
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_REPAIRED_PREFLIGHT_2026-08-08.md
+notes: >-
+  The 9,035-byte request at SHA-256
+  81c2e4198356b3a4811ad4edc42f2b1ca1d90d2a36f0aa684419ab75817d75c4
+  reached Proshka without the claimed untracked harness attachment. Proshka
+  failed closed, accepted the theorem shape, rejected the blind global j/k
+  swap, and required exact harness bytes, five immutable controls and nine
+  repaired plants before release. The byte-faithful 25,909-byte repair verdict
+  has SHA-256
+  6b4cff1c1b9a96443050de689324012a028e97b7922fadd64a00d75e288ed4a2.
+  Answer now was displayed and never clicked; no production edit was authorized
+  by this leg.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E4C all-mode source archimedean / negative CCM-WR release
 
 ```yaml
