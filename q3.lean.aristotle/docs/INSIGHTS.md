@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
+## Synthesis (2026-08-08, source-audit wall) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
 
 - Target: identify the proved B3.0D cycles-frequency pairing with the literal
   CCM archimedean matrix entry, without guessing its sign, `2*pi` scale, slot
@@ -44,6 +44,41 @@
 - Boundary: no crosswalk, CCM sign theorem, full Weil decomposition, operator
   graph, uniform/cofinal control, coarse-checkpoint closure, promotion, PX, or
   RH is claimed until the bridge compiles in Lean.
+- Proshka independently confirmed the final minus sign, cancellation of the
+  angular/cycles `2*pi` scale, and the source `n,r` slot orientation, but
+  returned
+  `WALL_GOAL057_B3_0E_SOURCE_ARCH_CCM_WR_BRIDGE_MISSING`: the requested
+  final equality is not yet a Lean theorem and no production child is
+  released.
+- The first missing formal theorem is now exact:
+  `sourceArchimedeanMultiplier` equals `-log pi - gamma` minus twice the
+  integral of the paired regularized hyperbolic kernel on `Ioi 0`.
+  Splitting its two numerator terms near `x=0` is forbidden because each
+  separate term has a nonintegrable `1/x` singularity.
+- The preferred repair route starts from the already formalized digamma
+  series, converts paired reciprocal differences to Laplace integrals, and
+  sums the geometric series without destroying cancellation.  The stronger
+  distribution-action route remains the fallback if the cancellation-aware
+  scalar proof fails.
+- Next and only authorized discriminator:
+  `B3_0E1_SCALAR_HYPERBOLIC_IDENTITY_NO_SORRY_PREFLIGHT`, performed in one
+  untracked harness.  Pass returns to the same chat for one release; failure
+  retains the wall.  The coarse ledger remains exactly 0/10.
+- The discriminator now passes.  `/tmp/Goal057B3_0E1_Scratch.lean` has
+  23,556 bytes, 597 lines, SHA-256
+  `49425edef5c5b972d93f4f1c9f84877b4f9c23063fe736b06856cc0bae16af47`,
+  zero hole tokens, and direct Lean exit `0` with the sole explicit import
+  `D0PstarExactArchSymbolLogDomination`.
+- The harness proves the exact proposed kernel, its `IntegrableOn (Ioi 0)`
+  certificate, and the multiplier identity.  The integral/tsum exchange uses
+  `hasSum_integral_of_dominated_convergence`; the norm series sums exactly to
+  the norm of the paired quotient already proved integrable, so endpoint
+  cancellation is never split.
+- `#print axioms` for all three public objects reports only `propext`,
+  `Classical.choice`, and `Quot.sound`.  This is a successful untracked
+  preflight, not production authority: the exact harness is returned to the
+  same Proshka chat for one operational release before creating the proposed
+  production file.  The coarse ledger remains 0/10.
 
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0D source mode-pairing Hermitianity
 

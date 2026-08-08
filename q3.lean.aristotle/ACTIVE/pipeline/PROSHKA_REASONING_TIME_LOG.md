@@ -31,6 +31,43 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E CCM-WR sign/normalization source audit
+
+```yaml
+proof_address: RouteB.Goal057.SourceArchPairingCCMWRSignNormalizationCrosswalk
+front: GOAL057/P057_B3_0E
+transaction: GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 38957815-94c9-4272-96e9-7b428890f41e
+response_message_id: e91ff764-2bed-4c4e-8488-d08593fe4f91
+sent_at: 2026-08-08T07:49:05.963+02:00
+completed_at: 2026-08-08T08:07:17.904+02:00
+wall_seconds: 1092
+wall_human: "18m12s observed UI send-to-verdict wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: WALL_GOAL057_B3_0E_SOURCE_ARCH_CCM_WR_BRIDGE_MISSING
+status: OPEN_FAIL_CLOSED_NO_REPOSITORY_MUTATION
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW byte-locked the 9,290-byte request
+  with SHA-256 f7464c394cb394419308ba5cfba7857d12eec271a12db32cdae40d90ee97db4e
+  at live HEAD=origin/rh_clean
+  01e1a07a52b8596ff4ea15e1800297862ad1de79. The complete visible verdict
+  has 25,917 bytes and SHA-256
+  46d1adbf7ce7a2c19d4ec112648cded2d0f65aca081029797d95d851173e5259;
+  the newline-normalized archive has 25,918 bytes and SHA-256
+  73ff248b3658f02958575831c6bbf827088283750697ab5eba140c50007a7095.
+  Proshka confirmed the final minus sign, the cancellation of the angular
+  2*pi Jacobian, and the antilinear-first n,r orientation, but selected
+  Candidate 3 because the scalar digamma-to-regularized-hyperbolic identity
+  is absent from both Mathlib and Q3. No production child was released. The
+  sole next discriminator is an untracked no-sorry B3.0E1 scalar harness
+  preserving the paired x=0 cancellation; ledger remains 0/10. Answer now
+  appeared and was never clicked. No Aristotle submission, Bus 010,
+  Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0D source archimedean mode-pairing kernel release
 
 ```yaml
