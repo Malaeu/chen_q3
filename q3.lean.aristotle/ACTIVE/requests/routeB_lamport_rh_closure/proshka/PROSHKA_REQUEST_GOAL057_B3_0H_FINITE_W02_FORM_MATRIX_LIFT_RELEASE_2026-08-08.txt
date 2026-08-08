@@ -1,0 +1,231 @@
+CODEX -> PROSHKA — GOAL 057 B3.0H PRODUCTION-RELEASE ADJUDICATION
+
+Continue the same living Goal 057 phase chat. Read this attached text file and
+the attached Lean harness byte-for-byte. Take the full reasoning time needed.
+Do not use Answer now. Return exactly one operative primary and no second
+directive.
+
+ROUTE BOUNDARY
+
+repo: Malaeu/chen_q3
+branch: rh_clean
+HEAD = origin/rh_clean = 38f1172dfc6deea6ccd669dea15ce99a381798dc
+route: CHALLENGER / NOT_RH
+active bus goal: 057
+Bus 010: VOID
+Goal 055: HOLD
+G2 CCM: FROZEN
+Aristotle submission: NONE
+PX/RH claim: NOT_MADE
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+CURRENT CANONICAL STATE
+
+B3.0G is production closed:
+GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_EQ_CCM_W02_ENTRY_PROVED
+
+Current named gap:
+GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT
+
+Current discriminator:
+B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT_NO_SORRY_PREFLIGHT
+
+The controlling execution state authorizes one source-locked B3.0H no-sorry
+preflight, followed by return of the exact candidate or stop to this same chat.
+It does not authorize production before this separate ruling.
+
+SOURCE LOCK
+
+Parent 1:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02ModePairing.lean
+SHA-256: 61f5cce15c84db747edc7375d02aaf63d46bce0956d0e2ad156de00feeb01d3c
+bytes: 47444
+lines: 1150
+
+Parent 2:
+q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean
+SHA-256: 282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89
+bytes: 9582
+lines: 283
+
+Attached authoritative preflight:
+q3.lean.aristotle/Goal057B3_0H_Scratch.lean
+SHA-256: aaaa51a5da430bb19c4645b34939d5d53fbb02bbc199bf8b43b0579bdb0307f8
+bytes: 1023
+lines: 35
+
+The first one-import attempt correctly failed because CCMModeFinite and
+ccmModeFinite are owned by CCMFiniteWeilSourceMatrix. The repaired exact
+preflight therefore has exactly two imports and no generated backend.
+
+DIRECT LEAN RESULT
+
+Command:
+cd q3.lean.aristotle && lake env lean Goal057B3_0H_Scratch.lean
+
+Exit status: 0
+Reported axioms exactly:
+[propext, Classical.choice, Quot.sound]
+
+No sorry, admit, axiom, native_decide, generated certificate import, numerical
+evaluation, real-part projection, matrix wrapper, operator wrapper, or new
+source definition is present.
+
+EXACT CANDIDATE
+
+namespace: Q3.RouteB.D0Pstar
+
+proposed owned file:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean
+
+exact imports:
+1. Q3.Proofs.RouteB.D0PstarSourceW02ModePairing
+2. Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix
+
+public definitions: 0
+public theorems: 1
+private declarations: 0
+
+Exact intended theorem; only removal of the _preflight suffix is proposed:
+
+theorem sourceW02FiniteForm_eq_ccmW02MatrixForm
+    (i : PairIndex)
+    (c d : CCMModeFinite i.N -> Complex) :
+    (sum j, sum k,
+      star (c j) *
+        sourceW02ModePairing i
+          (ccmModeFinite i.N j)
+          (ccmModeFinite i.N k) *
+        d k) =
+      sum j, sum k,
+        star (c j) *
+          (Q3.RouteB.ccmW02Entry
+            (L_m i)
+            (ccmModeFinite i.N j)
+            (ccmModeFinite i.N k) : Complex) *
+          d k
+
+The attached Lean file is authoritative for exact Unicode and syntax.
+
+Proof route:
+
+by
+  classical
+  simp only [sourceW02ModePairing_eq_ccmW02Entry]
+
+This is a finite-form lift of the substantive entrywise B3.0G theorem. It is
+not a new source construction and must directly consume the public B3.0G
+crosswalk.
+
+MANDATORY PLANTS
+
+P057_B3_0H_1_EXACT_FINITE_CARRIER
+Mutation: replace CCMModeFinite i.N by an unrelated Fin or function carrier.
+Required stop: B3_0H_FINITE_CARRIER_MISMATCH
+
+P057_B3_0H_2_LITERAL_MODE_MAP
+Mutation: replace ccmModeFinite i.N by a shifted, negated, or reordered map.
+Required stop: B3_0H_MODE_ORDER_MISMATCH
+
+P057_B3_0H_3_ANTILINEAR_FIRST_SLOT
+Mutation: remove star from c j or move it to d k.
+Required stop: B3_0H_CONJUGATE_SLOT_MISMATCH
+
+P057_B3_0H_4_LINEAR_SECOND_SLOT
+Mutation: conjugate d k.
+Required stop: B3_0H_SECOND_SLOT_LINEARITY_MISMATCH
+
+P057_B3_0H_5_W02_SIGN
+Mutation: add the global minus used by the independent CCM-WR crosswalk.
+Required stop: B3_0H_W02_WR_SIGN_CROSSCONTAMINATION
+
+P057_B3_0H_6_EXACT_LOG_LENGTH
+Mutation: replace L_m i by L_m i / 2, 2 * L_m i, or an independent L.
+Required stop: B3_0H_LOG_LENGTH_NORMALIZATION_MISMATCH
+
+P057_B3_0H_7_COMPLEX_NOT_REAL_PART
+Mutation: project either side through Complex.re or coerce through a real row.
+Required stop: B3_0H_COMPLEX_CARRIER_COLLAPSE
+
+P057_B3_0H_8_ENTRYWISE_PARENT_LOAD_BEARING
+Mutation: prove the result from ccmW02Entry symmetry or reflexivity without
+consuming sourceW02ModePairing_eq_ccmW02Entry.
+Required stop: B3_0H_SOURCE_PARENT_ERASED
+
+P057_B3_0H_9_EXACT_DOUBLE_SUM
+Mutation: diagonalize, collapse to one sum, swap one coefficient index, or use
+a symmetry-blind quadratic specialization c=d as the public theorem.
+Required stop: B3_0H_SESQUILINEAR_FORM_SHAPE_MISMATCH
+
+P057_B3_0H_10_SCOPE_FIREWALL
+Mutation: add prime pairing, full Weil form, matrix/operator wrapper,
+positivity, associated operator, domain, compression, continuum numerator,
+H4a1b, or a coarse-checkpoint decrement.
+Required stop: B3_0H_SCOPE_SMUGGLE
+
+REQUIRED RULING
+
+Choose exactly one:
+
+A. TRY_GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT
+   Release production materialization of exactly the one theorem/file above.
+
+B. STOP_GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT
+   Give one exact mathematical, typing, dependency, or source-provenance wall.
+
+If A is selected, fix:
+- exact theorem statement;
+- exact owned file and imports;
+- public/private surface;
+- exact validation gates;
+- exact STOP and SUCCESS codes;
+- closeout language;
+- exact next smallest atom after B3.0H;
+- honest effect on ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE and the 0/10
+  coarse ledger.
+
+Required validation gates:
+- direct Lean on production file;
+- target build;
+- full build;
+- q3_check;
+- forbidden-token scan;
+- taint scan;
+- public-surface count;
+- #print axioms exactly [propext, Classical.choice, Quot.sound];
+- plant report;
+- orchestration tests;
+- strict Spine;
+- proof DB import and repeat-idempotence;
+- SQLite integrity checks;
+- git diff --check;
+- exact git status report.
+
+SUCCESS code proposed:
+GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT_PROVED
+
+STOP code proposed:
+GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT_MISSING
+
+NOT AUTHORIZED BY THIS REQUEST
+
+- production implementation before your release;
+- prime source pairing;
+- complete source Weil form;
+- matrix or operator wrapper;
+- associated operator graph;
+- form-domain or operator-domain membership;
+- compression identity;
+- continuum numerator;
+- H4a1b closure;
+- decrement of the ten-checkpoint ledger;
+- Bus 010;
+- Goal 055 release;
+- Aristotle submission;
+- route promotion;
+- PX or RH claim;
+- fresh chat.
+
+End with exactly one CODEX DIRECTIVE block.

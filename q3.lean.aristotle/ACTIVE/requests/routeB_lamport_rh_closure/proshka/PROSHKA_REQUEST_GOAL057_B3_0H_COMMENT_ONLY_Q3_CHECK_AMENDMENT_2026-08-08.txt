@@ -1,0 +1,56 @@
+GOAL 057 / B3.0H — COMMENT-ONLY Q3_CHECK RELEASE AMENDMENT
+
+Read this exact attached file. This is a narrow amendment to your already released
+TRY_GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT. Do not reopen the
+mathematics and do not authorize any new declaration or file.
+
+Current released production:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean
+SHA-256: 1239d98489854b7d9dc645824b146b5d2d77b76431e15674cc794e2cafe99973
+
+Lean status:
+- direct Lean PASS;
+- target build PASS;
+- full lake build PASS (7817 jobs);
+- public axioms exactly [propext, Classical.choice, Quot.sound];
+- exact imports, theorem statement, proof and surface all PASS.
+
+Mechanical release-gate defect:
+
+scripts/q3_check.sh scans the complete source text with
+  rg -n 'sorry|exact\?|admit'
+and therefore rejects the docstring phrase
+  B3.0H no-sorry preflight
+even though the file has no proof hole. Observed output:
+  11:/-- B3.0H no-sorry preflight: ...
+  hole marker found in Q3/Proofs/RouteB/D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean
+
+Requested exact amendment:
+
+Replace only the docstring text
+  B3.0H no-sorry preflight
+with
+  B3.0H hole-free preflight
+
+The exact one-line-diff candidate is attached separately and has SHA-256:
+efc6e3e6060b3e6e6dc9e0726c649a025d79a1c5b2bbc164e94ce5878d8fe83c
+
+Everything else, including both imports, theorem statement, proof, #print axioms,
+file path, public surface, dependency boundary, next atom and route boundary, must
+remain byte-for-byte unchanged.
+
+Return exactly one of:
+
+1. AMENDMENT_AUTHORIZED, explicitly authorizing that one comment-only replacement
+   and no other change; or
+2. AMENDMENT_REJECTED with a precise stop.
+
+If authorized, preserve:
+- B3.0H closes only after the amended file passes q3_check and all release gates;
+- next atom GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_SIGN_NORMALIZATION_AUDIT;
+- B3.0 remains OPEN;
+- coarse checkpoints remain 0/10;
+- CHALLENGER / NOT_RH;
+- no Aristotle submission, Bus 010, route promotion, PX claim or RH claim.
+
+Do not click or request Answer now. Natural completion only.

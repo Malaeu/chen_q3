@@ -1,0 +1,67 @@
+Codex. Карта ветки B из нашей базы. Собрана генератором codex_specs/cartographer/brief.py (вне репы), HEAD 38f1172d.
+  Всё проверено чтением файлов. NO_FILE_CREATION соблюдён, правки только в таблицах базы.
+
+  Поздравляю с B3.0G — проверил: 0 sorry, sourceW02ModePairing_eq_ccmW02Entry:640, коммит 22:54. Интеграл равен
+  элементу матрицы, ccmW02Entry перестал быть постулатом.
+
+  Цепочка целиком: 17 шагов, 12 закрыто, 5 нет
+
+  Твои четыре следующих куска — это шаг 12 и его поддерево. Но между ними и целью лежит структура, которой в твоём
+  списке нет:
+
+  ЦЕЛЬ 12  CONTINUUM_NUMERATOR_BRIDGE
+     │
+     │  аппарат утечки СОБРАН, 0 sorry:
+     │    projectionLeakage            AmbientResidualSplit.lean:22
+     │    ambient = compressed + leakage           :30
+     │    оценки                       AmbientResidualEnvelopeTransfer
+     │    условное убывание            D0PstarGalerkinResidualDecay:58
+     │
+     │  порода — ЧЕК: теорема есть, посылок нет. Посылок ДВЕ:
+     │
+     ├─ 14  SelectedProjectionTailDecay          поставщик ЕСТЬ (PFE:179)
+     │   │  но он импликация и требует:
+     │   ├─ 15  SelectedPhysicalFourierEnergyControl   ⛔ поставщика нет
+     │   └─ 16  SelectedPhysicalBandwidthCofinal       ⛔ поставщика нет
+     │
+     └─ 13  SelectedTrialNormalizerBounded              ⛔ поставщика нет
+
+  Закрыв 15 и 16, получаешь 14 бесплатно. Плюс 13 отдельно. Три мишени, не четыре.
+
+  Три предиката, точные формулировки
+
+  13 — равномерная нижняя оценка нормы пробной функции
+
+  sTrial_m_N = ‖gTrial_m_N‖⁻¹ (D0KTrialStage3.lean:39). TrialNonzero даёт поточечно ∀k, 0 < ‖gTrial(k)‖. Нужно
+  равномерно:
+
+  ∃ c > 0, ∀ k, c ≤ ‖gTrial_m_N (selectedPairIndex S k)‖
+
+  Разница — квантор. Твой докстринг это фиксирует: «Pointwise TrialNonzero alone does not prove it». Равномерной
+  нижней оценки в проекте нет: поиск по le_norm|norm_le|bddBelow|iInf|lower|uniform пуст.
+
+  15 — суммируемость и ограниченность энергий, PFE:66. Конъюнкция: (а) ряд суммируем для каждого k; (б) IsBoundedUnder
+  (·≤·) atTop (norm ∘ selectedPhysicalFourierEnergy S) — снова равномерность по k.
+
+  16 — полоса уходит в бесконечность, PFE:81. Tendsto (fun k => physicalFourierBandwidth (selectedPairIndex S k))
+  atTop atTop. Это утверждение о конструкции выбора selectedPairIndex, а не о математике — вероятный кандидат на
+  дешёвое закрытие. Проверял бы первым.
+
+  Наблюдение поперёк веток
+
+  Пункты 13 и 15(б) — одна ошибка: поточечное свойство выдаётся за равномерное. Та же болезнь в ветке вещественности
+  нулей: hpos/hker1 доказаны для ячейки (13,2), а Гурвицу нужно ∀n. Ветки не делят ни одного внешнего атома, но делят
+  эту подмену квантора. Если найдётся приём для одной — стоит немедленно примерить ко второй.
+
+  Вопрос
+
+  tau = W02 − WR − Prime (PSD_CERTIFICATE:2). Ты вывел W02 и планируешь Prime. WR-части в твоём списке нет — она уже
+  выведена или ещё не дошла очередь? Без неё троица не соберётся.
+
+  Route: CHALLENGER / NOT_RH. RH_CLAIM: NOT_MADE.
+
+  ---
+  СДЕЛАНО      brief.py написан, прогнан, в TOOLS.yaml, YAML валиден
+  ПРОВЕРЕНО    B3.0G реально закрыт — файл, 0 sorry, коммит
+  СОБРАНО      карта ветки B: 3 мишени вместо 4, дерево зависимостей
+  НЕ ОТПРАВЛЕНО пакет показан, отправляешь ты
