@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4C all-mode CCM-WR case assembly
+## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4C all-mode CCM-WR case assembly
 
 - Exact target: prove
   `sourceArchimedeanModePairing i n r =
@@ -25,11 +25,19 @@
 - Preflight imports only the closed off-diagonal and diagonal crosswalk
   modules, introduces exactly one public theorem, no definition and no
   private helper, and proves the branches only by `subst`/the two parents.
-- Mandatory controls instantiate one diagonal pair and both ordered
-  off-diagonal directions.  They are smoke checks, not new source evidence.
-- Boundary: this synthesis authorizes one untracked no-`sorry` preflight
-  only.  It does not authorize production, the complete source Weil form,
-  associated operator graph, checkpoint decrement, H4a1b, promotion, PX or RH.
+- Production now contains exactly one theorem and the two-parent `by_cases`
+  proof. Direct Lean, target/full build, q3-check, the standard axiom triple,
+  proof DB 1/1, 80/80 tests, strict Spine and all three SQLite checks pass.
+- Six independent plants fire. The proposed mode-order plant is correctly
+  killed and not counted: `ccmWREntry_symm` makes the swapped RHS
+  extensionally identical, so it cannot detect orientation loss.
+- The independent C10 provenance plant is load-bearing: an all-mode premise
+  can make Lean green while bypassing both source-constructed parents, and is
+  therefore rejected semantically rather than reported as a proof success.
+- Boundary: B3.0E4C and parent B3.0E are closed. B3.0 remains open for the
+  finite coefficient-form lift, W02/prime source pairings, complete source
+  Weil form and associated operator. All ten coarse checkpoints, H4a1b,
+  promotion, PX and RH remain open.
 
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B2 diagonal archimedean / CCM-WR crosswalk
 

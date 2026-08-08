@@ -31,6 +31,42 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E4C all-mode source archimedean / negative CCM-WR release
+
+```yaml
+proof_address: RouteB.Goal057.AllModeSourceArchimedeanPairingNegativeCCMWR
+front: GOAL057/P057_B3_0E4C
+transaction: GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 24bc37f3-7226-4bc4-95af-07597cd7ed52
+response_message_id: 920fb3d7-c7b8-4a8b-9c90-05b1835307a1
+sent_at: 2026-08-08T16:05:26+02:00
+completed_at: 2026-08-08T16:26:16+02:00
+wall_seconds: UNKNOWN_AFTER_CONTEXT_COMPACTION
+wall_human: "exact generation wall not preserved; request-file to verdict-archive upper bracket <=20m50s"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+status: COMPLETE_SAME_CHAT_PRODUCTION_RELEASE
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE_2026-08-08.md
+notes: >-
+  Byte-identical request mirrors are 7,312 bytes with SHA-256
+  bc4c9546e7b7f573758eb4082d73e0760583572cd2d7094b04481302ff5e1307.
+  The compiling untracked harness is 1,278 bytes with SHA-256
+  10c6238544c172d7f9f90851eca28b8dee86271de36bb84eccebb8e8d60dfd66,
+  has zero forbidden tokens, one public theorem, no private support, three
+  smoke controls and exactly the standard axiom triple. The byte-faithful
+  archived verdict is 32,244 bytes with SHA-256
+  c4aa9d3450dae0516ef73d32b9610c334d671ed703329a7a8aec84e393c12984.
+  Proshka authorized exactly one B3.0E4C production child and retained the
+  two-parent by-cases proof. The proposed mode-order plant was killed because
+  ccmWREntry_symm makes it extensionally blind; provenance and case-split
+  attacks replaced it, yielding six independent plants. B3.0E closes after
+  this child, while B3.0, all ten coarse checkpoints and H4a1b remain open.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E4B2 diagonal source archimedean / negative CCM-WR release
 
 ```yaml
