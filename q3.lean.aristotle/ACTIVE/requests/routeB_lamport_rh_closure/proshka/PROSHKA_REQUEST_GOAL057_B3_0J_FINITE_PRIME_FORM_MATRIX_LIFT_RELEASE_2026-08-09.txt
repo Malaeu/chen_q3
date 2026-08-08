@@ -1,0 +1,392 @@
+CODEX -> PROSHKA — GOAL 057 B3.0J FINITE PRIME FORM MATRIX LIFT RELEASE
+
+Continue the same living Goal 057 phase chat. Read this attached request file and
+the separately attached exact Lean candidate byte-for-byte. Take the full
+reasoning time needed. Do not use Answer now. Return exactly one operative
+primary and no second directive.
+
+1. REQUESTED DECISION
+
+Adjudicate exactly one natural next candidate which was not selected or
+authorized by the B3.0I verdict:
+
+GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT
+
+Choose exactly one primary:
+
+A. TRY_GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT
+   Release byte-for-byte production materialization of the attached candidate
+   into exactly one owned production file.
+
+B. STOP_GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT
+   Give one exact mathematical, typing, dependency, source-provenance, or
+   plant-observability wall.
+
+This transaction is the separate post-B3.0I release boundary. Production has
+not been created and remains forbidden unless A is returned.
+
+2. ROUTE AND CONTROL LOCK
+
+repo: /Users/emalam/GitHub/rh_lean_01_2026
+github_repo: Malaeu/chen_q3
+branch: rh_clean
+HEAD = origin/rh_clean = f0413ad72ce6bcb9c29edadfd42708fb80202f2f
+route: CHALLENGER / NOT_RH
+active bus goal: 057
+Bus 010: VOID
+Goal 055: HOLD
+G2 CCM: FROZEN
+H4a1b: OPEN
+Aristotle submission: NONE
+route promotion: false
+PX/RH claim: NOT_MADE
+owner gate: PX_RH_CLAIM_ONLY
+
+current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+checkpoint effect: STRICTLY_ADVANCED_NOT_CLOSED
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+
+current stage:
+RB-GOAL-057-B3-0I-CLOSED
+
+current contract:
+GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT_PREFLIGHT
+
+routeb_status.py --check:
+CHECK: OK
+
+Unrelated user-staged patch, untouched:
+SHA-256 291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+Same living conversation:
+6a72e750-dc60-83eb-946b-61d2073c232b
+
+Answer now clicks:
+0
+
+3. CLOSED PARENT AND EXACT MATHEMATICAL BOUNDARY
+
+B3.0I is production closed and pushed at f0413ad7:
+
+GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_EQ_CCM_PRIME_ENTRY_N1_PROVED
+
+Parent production:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean
+SHA-256 ca3281f52f6752f537f97910104fe9e26bf4f2a2f2046d1f2bcaf1e84f67ac34
+bytes 1782
+lines 49
+
+Public parent theorem:
+
+theorem sourcePrimeModePairing_eq_ccmPrimeEntryN1
+    (i : PairIndex) (n r : Int) :
+    sourcePrimeModePairing i n r =
+      (Q3.RouteB.ccmPrimeEntryN1 i.m n r : Complex)
+
+The parent object is the positive one-sided W_p# component. The complete
+three-component source Weil ledger must later subtract it. B3.0J is only a
+positive-component finite sesquilinear-form lift; it must not internalize the
+later global minus.
+
+B3.0I exact source semantics already proved and locked:
+
+- inclusive support Finset.Icc 2 i.m;
+- cutoff owner i.m, not i.N;
+- von-Mangoldt prime-power policy;
+- inverse-square-root arithmetic weight;
+- no outer prime factor two;
+- exact correlation factor two;
+- Real.log k coordinate;
+- conjugate-first source order;
+- linear second source slot;
+- positive target ccmPrimeEntryN1.
+
+P-PRIME-2, the future complete-ledger plus-Prime mutation, remains explicitly
+deferred to the complete-form boundary. It must not be claimed fired here.
+
+4. REQUIRED FINITE CARRIER
+
+Carrier owner:
+q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean
+SHA-256 282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89
+bytes 9582
+lines 283
+
+Exact carrier:
+CCMModeFinite i.N
+
+Exact literal map:
+ccmModeFinite i.N
+
+The public theorem ccmModeFinite_two_values proves that N=2 is literally
+-2,-1,0,1,2 in that order.
+
+Closed structural analogue:
+q3.lean.aristotle/Q3/Proofs/RouteB/
+D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean
+SHA-256 efc6e3e6060b3e6e6dc9e0726c649a025d79a1c5b2bbc164e94ce5878d8fe83c
+bytes 1004
+lines 35
+
+The analogue is cited only as the already-ratified finite-form shape. B3.0J
+must consume the substantive B3.0I prime entrywise parent, not alias W02, WR,
+or a complete Weil entry.
+
+5. KNOWLEDGE-BASE PREFLIGHT
+
+Command:
+
+./orchestrator/kb.py ask
+"Goal 057 B3.0J finite prime sesquilinear form matrix lift
+ sourcePrimeModePairing ccmPrimeEntryN1 CCMModeFinite"
+
+Result:
+no hits in any layer
+
+Whole RouteB source search found the B3.0I parent, CCM carrier, exact prime
+entry definitions and closed W02/WR finite-form analogues, but no existing
+sourcePrime finite-form theorem or production supplier.
+
+This packet therefore does not duplicate a known indexed object.
+
+6. EXACT ATTACHED CANDIDATE
+
+Attached authoritative filename:
+
+GOAL057_B3_0J_FINITE_PRIME_FORM_MATRIX_LIFT_CANDIDATE_2026-08-09.txt
+
+SHA-256:
+ff5798119b52d74e30e65a534f85081f72e10e0e0237f08acdf5a7bf7c61e212
+
+bytes:
+1123
+
+lines:
+36
+
+Proposed owned production path:
+
+q3.lean.aristotle/Q3/Proofs/RouteB/
+D0PstarSourcePrimeFiniteFormCCMPrimeCrosswalk.lean
+
+Exact imports:
+1. Q3.Proofs.RouteB.D0PstarSourcePrimeModePairing
+2. Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix
+
+Exact public surface:
+definitions: 0
+theorems: 1
+private declarations: 0
+
+Exact public theorem:
+sourcePrimeFiniteForm_eq_ccmPrimeMatrixForm
+
+The attached candidate is authoritative for exact Unicode, whitespace,
+docstring, statement and proof. No byte change is authorized by this request.
+If any byte must change, return STOP plus a corrected exact candidate for a
+new release transaction.
+
+The theorem retains:
+
+- two independent complex coefficient rows c and d;
+- exact carrier CCMModeFinite i.N;
+- literal ccmModeFinite i.N map in both ordered indices;
+- star (c j) in the first coefficient slot;
+- unconjugated d k in the second coefficient slot;
+- positive sourcePrimeModePairing on the left;
+- positive ccmPrimeEntryN1 i.m on the right;
+- exact ordered modes (j,k);
+- equality in Complex;
+- the full double sum.
+
+Exact proof route:
+
+by
+  classical
+  simp only [sourcePrimeModePairing_eq_ccmPrimeEntryN1]
+
+7. DIRECT LEAN PREFLIGHT
+
+Exact scratch:
+tmp/Goal057B3_0J_Preflight.lean
+SHA-256 ff5798119b52d74e30e65a534f85081f72e10e0e0237f08acdf5a7bf7c61e212
+bytes 1123
+lines 36
+
+It is byte-identical to the attached candidate.
+
+Command:
+cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
+lake env lean /tmp/Goal057B3_0J_Preflight.lean
+
+Result:
+exit 0
+
+Reported public axioms exactly:
+[propext, Classical.choice, Quot.sound]
+
+The pre-existing UnicodeBasic local-change warning is not a candidate failure.
+
+No hole marker, declared axiom, native_decide, generated backend, numerical
+evaluation, matrix wrapper, operator wrapper, new source object, real-part
+projection, positivity claim, domain claim, compression claim, continuum claim,
+or RH claim occurs.
+
+8. INDEPENDENT CONTROLS
+
+Control harness:
+/tmp/Goal057B3_0J_Controls.lean
+SHA-256 7f4fc74feb72d26005c0f2e8c657cf334b24782c03f86e6e73ed41a19ccbeca6
+bytes 863
+lines 25
+direct Lean: exit 0
+
+It proves:
+
+A. A nonsymmetric complex conjugate-first control distinguishing
+   conj(1+i) * 2 from (1+i) * conj(2).
+
+B. The literal N=2 carrier order -2,-1,0,1,2 via
+   ccmModeFinite_two_values.
+
+The first control reports only
+[propext, Classical.choice, Quot.sound].
+The carrier-order control reports only [propext].
+
+A first temp-only harness attempt omitted the ComplexConjugate scoped notation,
+so Lean treated conj as a free identifier and correctly exposed sorryAx. The
+harness was repaired before this packet by opening the scope; the final exact
+harness above compiles with no sorryAx. The candidate itself compiled before
+and after this harness repair and was never changed.
+
+9. MANDATORY PLANTS
+
+P057_B3_0J_1_EXACT_FINITE_CARRIER
+Mutation: replace CCMModeFinite i.N by an unrelated Fin or function carrier.
+Required stop: B3_0J_FINITE_CARRIER_MISMATCH
+
+P057_B3_0J_2_LITERAL_MODE_MAP
+Mutation: shift, negate, reorder, or replace ccmModeFinite i.N.
+Required stop: B3_0J_MODE_ORDER_MISMATCH
+Judge: exact fingerprint plus compiled ccmModeFinite_two_values control.
+
+P057_B3_0J_3_ANTILINEAR_FIRST_SLOT
+Mutation: remove star from c j or move it to d k.
+Required stop: B3_0J_CONJUGATE_SLOT_MISMATCH
+Judge: statement fingerprint plus compiled nonsymmetric complex control.
+
+P057_B3_0J_4_LINEAR_SECOND_SLOT
+Mutation: conjugate d k.
+Required stop: B3_0J_SECOND_SLOT_LINEARITY_MISMATCH
+Judge: statement fingerprint plus compiled nonsymmetric complex control.
+
+P057_B3_0J_5_POSITIVE_PRIME_COMPONENT_SIGN
+Mutation: add the later complete-ledger minus to either side.
+Required stop: B3_0J_PRIME_COMPONENT_SIGN_CROSSCONTAMINATION
+
+P057_B3_0J_6_EXACT_PROJECT_CUTOFF
+Mutation: replace ccmPrimeEntryN1 i.m by ccmPrimeEntryN1 i.N or another cutoff.
+Required stop: B3_0J_PRIME_CUTOFF_MISMATCH
+
+P057_B3_0J_7_COMPLEX_NOT_REAL_PART
+Mutation: project through Complex.re or replace the complex coefficient rows
+with real rows.
+Required stop: B3_0J_COMPLEX_CARRIER_COLLAPSE
+
+P057_B3_0J_8_ENTRYWISE_PARENT_LOAD_BEARING
+Mutation: erase sourcePrimeModePairing_eq_ccmPrimeEntryN1 and prove only from
+target symmetry, reflexivity, or a target alias.
+Required stop: B3_0J_SOURCE_PARENT_ERASED
+
+P057_B3_0J_9_EXACT_DOUBLE_SUM
+Mutation: diagonalize, collapse to one sum, swap only one index, or expose only
+the quadratic specialization c=d.
+Required stop: B3_0J_SESQUILINEAR_FORM_SHAPE_MISMATCH
+
+P057_B3_0J_10_COMPONENT_IDENTITY
+Mutation: substitute ccmW02Entry, ccmWREntry, ccmWeilTauN1, or an already
+assembled matrix entry.
+Required stop: B3_0J_COMPONENT_CROSSCONTAMINATION
+
+P057_B3_0J_11_DEFERRED_COMPLETE_LEDGER_SIGN
+Mutation: claim P-PRIME-2 fired here or infer the future W02-WR-Prime assembly.
+Required stop: B3_0J_COMPLETE_LEDGER_SCOPE_VIOLATION
+
+P057_B3_0J_12_SCOPE_FIREWALL
+Mutation: add complete source Weil form, matrix/operator wrapper, associated
+operator graph, form/operator domain, compression, continuum numerator,
+H4a1b closure, coarse-checkpoint decrement, route promotion, or PX/RH.
+Required stop: B3_0J_SCOPE_SMUGGLE
+
+Do not count a symmetry-blind global index-swap test as an independent plant.
+The ordered source/target indices, two independent rows, and nonsymmetric
+complex control are the operative order evidence.
+
+10. REQUIRED RULING IF RELEASED
+
+If A is selected, fix all of:
+
+- exact attached candidate bytes and SHA;
+- exact owned production path;
+- exact two-import allowlist;
+- exact 0-definition / 1-theorem / 0-private surface;
+- exact plant fate language;
+- proof DB declaration count;
+- exact STOP and SUCCESS codes;
+- exact semantic boundary;
+- honest effect on the current checkpoint and 0/10 coarse ledger;
+- whether any subsequent child is selected or authorized.
+
+Proposed SUCCESS:
+GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT_PROVED
+
+Proposed STOP:
+GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT_MISSING
+
+Required validation after release:
+
+- exact candidate-to-production byte comparison;
+- direct production Lean;
+- target build;
+- full lake build;
+- scripts/q3_check.sh;
+- exact import and public/private surface audit;
+- forbidden-token, taint and generated-import scan;
+- #print axioms exactly [propext, Classical.choice, Quot.sound];
+- all valid child-local plant/control judges;
+- no mutation artifacts;
+- proof DB import and repeat idempotence;
+- 80/80 orchestration tests;
+- strict Spine and semantic-index validation;
+- three SQLite integrity checks;
+- routeb_status.py --check after state synchronization;
+- git diff --check;
+- exact git status report;
+- path-scoped commit and push preserving the unrelated staged-patch SHA.
+
+11. NOT AUTHORIZED BY THIS REQUEST
+
+- production before a TRY release;
+- any candidate-byte normalization;
+- any new source-prime definition;
+- internal complete-ledger minus;
+- complete three-component source Weil form;
+- complete matrix or operator wrapper;
+- associated operator graph;
+- form-domain or operator-domain membership;
+- compression identity;
+- continuum numerator;
+- H4a1b closure;
+- any decrement of the ten-checkpoint ledger;
+- mutation of the frozen parent/extract schedule;
+- Bus 010;
+- Goal 055 release;
+- G2 CCM unfreeze;
+- Aristotle submission;
+- route promotion;
+- PX or RH claim;
+- a fresh chat;
+- clicking Answer now.
+
+Return exactly one primary and end with exactly one CODEX DIRECTIVE block.
