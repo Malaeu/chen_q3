@@ -11,6 +11,26 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4C all-mode CCM-WR case assembly
+
+- Exact target: prove
+  `sourceArchimedeanModePairing i n r =
+  -(Q3.RouteB.ccmWREntry (L_m i) n r : ℂ)` for arbitrary integer modes.
+- Local semantic search confirms that the two required source-locked branches
+  already exist as production theorems: the off-diagonal `_of_ne` result and
+  the diagonal `_diag` result.  No third analytic supplier is missing.
+- The official source itself separates `n ≠ r` and `n = r` in equations
+  (2.9)--(2.10), while equation (4.4) supplies the common archimedean entry;
+  therefore a literal `by_cases h : n = r` is source-faithful packaging.
+- Preflight imports only the closed off-diagonal and diagonal crosswalk
+  modules, introduces exactly one public theorem, no definition and no
+  private helper, and proves the branches only by `subst`/the two parents.
+- Mandatory controls instantiate one diagonal pair and both ordered
+  off-diagonal directions.  They are smoke checks, not new source evidence.
+- Boundary: this synthesis authorizes one untracked no-`sorry` preflight
+  only.  It does not authorize production, the complete source Weil form,
+  associated operator graph, checkpoint decrement, H4a1b, promotion, PX or RH.
+
 ## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B2 diagonal archimedean / CCM-WR crosswalk
 
 - Exact target: prove the missing diagonal case
