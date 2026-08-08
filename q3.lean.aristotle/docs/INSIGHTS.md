@@ -35,6 +35,23 @@
 - Boundary: this entry authorizes only one untracked no-`sorry` preflight.
   It changes no production Lean, B3.0E crosswalk, route state, coarse ledger,
   promotion status, `PX_RH_CLAIM`, or RH status.
+- The discriminator now passes without needing the provisional sharp
+  logarithmic kernel-norm estimate.  The checked near bound costs only
+  `sqrt |t| / sqrt x`; `x^(-1/2)` is locally integrable and the two public
+  resonance-safe fixed-mode decays turn the frequency majorant into
+  `(1+|t|)^(-3/2)`.
+- `/tmp/Goal057B3_0E2_Scratch.lean` has 27,927 bytes, 696 lines, SHA-256
+  `1ff1ef467028a6a62a9d2722c2b96e0ec6aff94366645e32bab91ff5f82f7bde`,
+  zero hole tokens, and direct Lean exit `0`.
+- The exact conclusion is joint `Integrable` for the conjugate-first
+  kernel-mode product under
+  `volume.prod (volume.restrict (Ioi 0))`.  Near and exponential-tail product
+  carriers are proved separately and united without relabelling the positive
+  `x` measure.
+- Both public objects print only `propext`, `Classical.choice`, and
+  `Quot.sound`.  This is a successful untracked preflight, not production
+  authority: the exact harness returns to the unchanged Proshka chat for one
+  release before any B3.0E2 production or state mutation.
 
 ## Synthesis (2026-08-08, source-audit wall; B3.0E1 closed) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
 
