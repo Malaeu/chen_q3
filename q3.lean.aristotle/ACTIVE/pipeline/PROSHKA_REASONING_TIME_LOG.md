@@ -31,6 +31,39 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E4A off-diagonal source archimedean / negative CCM-WR release
+
+```yaml
+proof_address: RouteB.Goal057.OffdiagonalSourceArchimedeanPairingNegativeCCMWR
+front: GOAL057/P057_B3_0E4A
+transaction: GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 38affb58-c374-4d83-8070-c1de08d51743
+response_message_id: 4de0d32d-821f-40c5-93c7-99a872295bcb
+sent_at: 2026-08-08T13:15:01.618+02:00
+completed_at: 2026-08-08T13:31:05.328+02:00
+wall_seconds: 964
+wall_human: 16m04s
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+status: COMPLETE_SAME_CHAT_PRODUCTION_RELEASE
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE_2026-08-08.md
+notes: >-
+  Byte-identical request mirrors are 5,772 bytes with SHA-256
+  3c01e6440d318d87b270f13c8388f6bfe72a16ab1507703af71391d9fe5f6b6a.
+  The compiling untracked harness is 12,483 bytes with SHA-256
+  4a9910f66a31400d244b240514b69dd8eb3f414401bc3226f503fd95385ce79e,
+  has zero forbidden tokens, one public theorem, two private definitions,
+  eleven private theorems, both ordered controls, and exactly the standard
+  axiom triple. The byte-faithful archived verdict is 26,596 bytes with SHA-256
+  731bee1fcafe89195f7f70e60dc8509df37257d88b6b5f16e2b909edda7b1ef7.
+  Proshka authorized exactly one B3.0E4A production child, repaired the index
+  orientation plant, and kept B3.0E4B and all ten coarse checkpoints open.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E3 zero-extended mode correlation / CCM Q-kernel release
 
 ```yaml

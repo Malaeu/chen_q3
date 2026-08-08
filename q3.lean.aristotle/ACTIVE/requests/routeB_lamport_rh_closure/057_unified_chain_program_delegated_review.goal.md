@@ -1408,3 +1408,109 @@ not yet identify the source archimedean pairing with negative `ccmWREntry`,
 settle the diagonal endpoint constant, or construct the source Weil form and
 associated operator. Thus B3.0E, B3.0, the current coarse checkpoint, H4a1b,
 promotion, PX, and RH remain open.
+## A20 — B3.0E4A off-diagonal source archimedean / negative CCM-WR crosswalk (2026-08-08)
+
+```yaml
+A20_STATUS: CLOSED_CHILD_PARENT_B3_0E_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+SUCCESS: GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY_PROVED
+
+PARENT_B3_0E3:
+  status: CLOSED
+PARENT_B3_0E4A:
+  status: CLOSED
+PARENT_B3_0E:
+  status: OPEN
+  joint_kernel_mode_product_l1_carrier: PROVED
+  zero_extended_mode_correlation_ccm_qkernel: PROVED
+  offdiagonal_source_arch_pairing_neg_ccm_wr: PROVED
+  diagonal_endpoint_constant: NOT_PROVED
+  one_sided_half_factor_assembly: NOT_PROVED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean
+LEAN_SHA256: ae96473ac1419ec9d243be1fe3add228a578b3a46e074b575bb1d82203842c82
+PUBLIC_SURFACE:
+  definitions: []
+  theorems:
+    - sourceArchimedeanModePairing_eq_neg_ccmWREntry_of_ne
+PRIVATE_SUPPORT:
+  definitions: 2
+  theorems: 11
+  total: 13
+PROOF_DB: 14_OF_14_DECLARATIONS_PROVEN
+PLANTS: 9_OF_9_FIRED
+PLANT_REPAIR: ORDERED_REAL_PAIR_SMOKE_ONLY_REPLACED_BY_BARE_MODE_PRODUCT_FINGERPRINT_PLUS_NONREAL_COMPLEX_CONTROL
+STANDARD_AXIOMS: propext_Classical.choice_Quot.sound
+TARGET_BUILD: 7769_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_7f51758d4cd8607907e4_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SEMANTIC_INDEX: 2394_FILES_12559_VECTORS_PASS
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: OFFDIAGONAL_SOURCE_ARCHIMEDEAN_PAIRING_EQ_NEGATIVE_CCM_WR_ENTRY_ONLY
+EXACT_E2_JOINT_L1_CARRIER_CONSUMED: true
+EXACT_E3_CORRELATION_CONSUMED: true
+EXACT_OFFDIAGONAL_ZERO_CONSTANT_CONSUMED: true
+EXACT_FACTOR_TWO_RETAINED: true
+EXACT_ANTILINEAR_FIRST_ORIENTATION_RETAINED: true
+EXACT_MATHLIB_FOURIER_COORDINATE_RETAINED: true
+EXACT_ZERO_EXTENDED_SUPPORT_RETAINED: true
+EXACT_CCM_WR_SIGN_RETAINED: true
+DIAGONAL_ENDPOINT_CONSTANT: NOT_PROVED
+ONE_SIDED_HALF_FACTOR_ASSEMBLY: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  new_generated_backend: false
+  direct_imports_match_release: true
+  inherited_tracked_hole_free_aristotle_output: aristotle_output.d1524982_aristotle
+  inherited_via_closed_parent_chain: true
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 3c01e6440d318d87b270f13c8388f6bfe72a16ab1507703af71391d9fe5f6b6a
+PROSHKA_VERDICT_ARCHIVE_SHA256: 731bee1fcafe89195f7f70e60dc8509df37257d88b6b5f16e2b909edda7b1ef7
+CLOSEOUT_SHA256: 7bcf1d0ca3b8850b26f8f6a6458fb8a1f9f7863e31f5a3f62a2f512d6cdc1204
+
+REVIEW_RUNTIME:
+  phase_calls: 31
+  global_delegated_calls: 33
+  fanout_violations: 0
+  same_living_chat: true
+  answer_now_clicked: false
+
+NEXT_GAP: GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER
+NEXT_DISCRIMINATOR: B3_0E4B1_DIAGONAL_ENDPOINT_LEDGER_NO_SORRY_PREFLIGHT
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: execute_one_untracked_B3_0E4B1_discriminator_before_any_diagonal_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact off-diagonal source archimedean pairing is now identified with
+negative `ccmWREntry` by consuming the already-proved joint L1 carrier, the
+zero-extended mode correlation theorem, and the off-diagonal vanishing of the
+endpoint constant. This closes B3.0E4A only. The diagonal endpoint ledger and
+the one-sided assembly are still missing, so B3.0E, B3.0, the current coarse
+checkpoint, H4a1b, promotion, PX, and RH remain open.

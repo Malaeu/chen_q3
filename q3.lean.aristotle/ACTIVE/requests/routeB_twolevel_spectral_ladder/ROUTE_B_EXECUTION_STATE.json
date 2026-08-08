@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-08T12:53:52+02:00",
+  "updated_at": "2026-08-08T13:50:13+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,21 +10,56 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_PROVED_B3_0E4A_PREFLIGHT_PENDING",
+  "operational_status": "GOAL_057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY_PROVED_B3_0E4B1_PREFLIGHT_PENDING",
   "current": {
-    "stage_id": "RB-GOAL-057-B3-0E3-CLOSED",
-    "contract_obligation": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY",
-    "name": "OffdiagonalSourceArchPairingNegativeCCMWREntry",
+    "stage_id": "RB-GOAL-057-B3-0E4A-CLOSED",
+    "contract_obligation": "GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER",
+    "name": "DiagonalRegularizerEndpointLedger",
     "status": "OPEN_PREFLIGHT_REQUIRED",
-    "stop_code": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY_MISSING",
+    "stop_code": "GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_MISSING",
     "selected_bus_goal_nnn": "057",
     "selected_bus_goal_path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
     "next_required_actor": "Codex+Proshka",
-    "next_action": "Run exactly one untracked B3_0E4A_OFFDIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT for the off-diagonal source archimedean pairing identity against negative ccmWREntry. Preserve the proved factor two, conjugate-first orientation, Mathlib Fourier convention, off-diagonal index/sign orientation, and literal support. Do not merge the postponed B3.0E4B diagonal endpoint constant, implement B3.0E4A production before a separate release if a real strategic fork appears, define the full source Weil form or associated operator graph, decrement the ten-checkpoint ledger, invoke H4a1b, promote the route, or claim RH.",
+    "next_action": "Run exactly one untracked B3_0E4B1_DIAGONAL_ENDPOINT_LEDGER_NO_SORRY_PREFLIGHT for the scalar source-locked diagonal regularizer endpoint identity. Preserve the exact endpoint constant, signs, domains, and Mathlib integrals; do not merge the postponed one-sided assembly B3.0E4B2, implement production before a separate same-chat release if a real strategic fork appears, define the full source Weil form or associated operator graph, decrement the ten-checkpoint ledger, invoke H4a1b, promote the route, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_057_b3_0e4a_offdiagonal_source_arch_pairing_neg_ccm_wr": {
+      "classification": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY_PROVED",
+      "status": "PASS_CHILD_CLOSED_PARENT_B3_0E_OPEN",
+      "release_primary": "TRY_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY",
+      "lean_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean",
+      "lean_sha256": "ae96473ac1419ec9d243be1fe3add228a578b3a46e074b575bb1d82203842c82",
+      "public_surface": "0_DEFINITIONS_1_THEOREM",
+      "private_surface": "2_DEFINITIONS_11_THEOREMS_13_TOTAL",
+      "proof_db": "14_OF_14_DECLARATIONS_PROVEN",
+      "plants_fired": "9_OF_9_REPAIRED_INDEX_ORIENTATION_CONTROL",
+      "target_build": "7769_JOBS_PASS",
+      "full_build": "7817_JOBS_PASS",
+      "q3_check": "PASS",
+      "unit_tests": "80_OF_80_PASS",
+      "strict_spine": "P9_STRICT_PASS",
+      "observability": "OBS_7f51758d4cd8607907e4_8_SOURCES_0_STALE_1_ZERO_COVERAGE",
+      "semantic_index": "2394_FILES_12559_VECTORS_PASS",
+      "parent_b3_0e3": "CLOSED",
+      "parent_b3_0e4a": "CLOSED",
+      "parent_b3_0e": "OPEN",
+      "parent_b3_0": "OPEN",
+      "coarse_checkpoints_closed": 0,
+      "coarse_checkpoints_remaining": 10,
+      "current_checkpoint_effect": "ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE_STRICTLY_ADVANCED_NOT_CLOSED",
+      "request_sha256": "3c01e6440d318d87b270f13c8388f6bfe72a16ab1507703af71391d9fe5f6b6a",
+      "visible_verdict_archive_sha256": "731bee1fcafe89195f7f70e60dc8509df37257d88b6b5f16e2b909edda7b1ef7",
+      "goal_a20_sha256": "30e7a963f4abdb7b9aa07d922bda13e07bb1073d8b778a980fe2c2e234589876",
+      "closeout_sha256": "7bcf1d0ca3b8850b26f8f6a6458fb8a1f9f7863e31f5a3f62a2f512d6cdc1204",
+      "review_runtime": "PHASE_31_GLOBAL_33_FANOUT_0",
+      "next_gap": "GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER",
+      "next_discriminator": "B3_0E4B1_DIAGONAL_ENDPOINT_LEDGER_NO_SORRY_PREFLIGHT",
+      "next_gap_status": "NAMED_NOT_AUTHORIZED",
+      "dependency_provenance": "NO_NEW_GENERATED_BACKEND_INHERITED_TRACKED_HOLE_FREE_ARISTOTLE_OUTPUT_D1524982_VIA_CLOSED_PARENT_CHAIN",
+      "semantic_boundary": "OFFDIAGONAL_SOURCE_ARCHIMEDEAN_PAIRING_EQ_NEGATIVE_CCM_WR_ENTRY_PROVED_BY_E2_L1_E3_CORRELATION_AND_OFFDIAGONAL_ZERO_CONSTANT_EXACT_FACTOR_TWO_ANTILINEAR_FIRST_MATHLIB_FOURIER_COORDINATE_LITERAL_ZERO_EXTENSION_CCM_WR_SIGN_NO_DIAGONAL_ENDPOINT_LEDGER_NO_ONE_SIDED_ASSEMBLY_NO_SOURCE_WEIL_FORM_NO_ASSOCIATED_OPERATOR_GRAPH_NO_FORM_OR_OPERATOR_DOMAIN_NO_COMPRESSION_NO_CONTINUUM_NUMERATOR_NO_UNIFORM_COFINAL_MODE_BOUND_NOT_H4A1B_NOT_RH"
+    },
     "goal_057_b3_0e3_zero_extended_mode_cosine_correlation_ccm_qkernel": {
       "classification": "GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_PROVED",
       "status": "PASS_CHILD_CLOSED_PARENT_B3_0E_OPEN",
@@ -955,7 +990,7 @@
     },
     "goal_057_a5": {
       "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
-      "sha256": "6ff13723f34abf6530557898cd36d53ba4d48412b6bc12fc9ca7aec821a67542"
+      "sha256": "30e7a963f4abdb7b9aa07d922bda13e07bb1073d8b778a980fe2c2e234589876"
     },
     "goal_057_p057_7_script": {
       "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",
