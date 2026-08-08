@@ -31,6 +31,40 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0B2 exact arch-symbol domination release
+
+```yaml
+proof_address: RouteB.Goal057.ExactArchSymbolLogDominationRelease
+front: GOAL057/P057_B3_0B2
+transaction: GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 845acf8e-79c7-4602-8206-99039850e0d6
+response_message_id: ab4c595c-da7f-478f-ae95-1e6eeb7c7dc1
+sent_at: 2026-08-08T04:35:50+02:00
+completed_at: 2026-08-08T04:53:29+02:00
+wall_seconds: 1059
+wall_human: "17m39s lower-bound request-package-publication to verdict-archive wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_REPAIRED
+status: OPEN_RELEASED_EXACT_ONE_REPAIRED_CHILD
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_REPAIRED_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW source-locked the 10,501-byte request
+  with SHA-256 4b4ea792a8040b7cca92b81bed5edde9ec096c529a4c71c46b2aa7803e1d6876.
+  The complete visible verdict has 24,851 bytes and SHA-256
+  2992171921a59d8124f5181ae480ff4a6e36d91e8834f8a635a2f2e4c5db9cdb;
+  the newline-normalized archive has 24,852 bytes and SHA-256
+  9a4fd4b622988b738595d796b0066caeb7f3a4aa04f828080389e94a35c662df.
+  The UI send timestamp was not captured; sent_at is the earlier immutable
+  request-package commit timestamp and the wall is therefore an explicit
+  upper bound on actual model runtime. Proshka selected Candidate A after
+  repairing the coordinate to hPlus(2*pi*t), killed the Step33 dependency,
+  and deferred exact-symbol MemLp transfer to B3.0B3. The coarse ledger stays
+  0/10. Answer now appeared and was never clicked. No Aristotle submission,
+  Bus 010, Goal-055 release, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0B1 log-growth envelope weighted-L2 release
 
 ```yaml

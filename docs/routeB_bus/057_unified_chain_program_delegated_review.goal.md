@@ -772,3 +772,81 @@ to lie in `L²`.  This closes the released B3.0B1 child only.  The envelope is
 not the source archimedean symbol, and no theorem yet dominates the exact
 digamma/Gamma expression by it.  Hence B3.0B, the operator graph, the current
 coarse checkpoint, H4a1b, promotion, PX, and RH all remain open.
+
+
+## A13 — B3.0B2 exact archimedean-symbol domination (2026-08-08)
+
+```yaml
+A13_STATUS: CLOSED_CHILD_PARENT_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_REPAIRED
+SUCCESS: GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_PROVED
+
+PARENT_B3_0B:
+  status: OPEN
+  exact_symbol_weighted_mode_L2_transfer: NOT_PROVED
+  associated_operator_graph: NOT_AUTHORIZED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLogDomination.lean
+LEAN_SHA256: 197daeed0b975bbed63cf59d2f0cfa939ed345661935d258f7e79387815344da
+PUBLIC_SURFACE:
+  definitions:
+    - sourceArchimedeanMultiplier
+  theorems:
+    - sourceArchimedeanMultiplier_eq_neg_aStar_scaled
+    - abs_sourceArchimedeanMultiplier_le_logGrowthEnvelope
+  private_lemmas: 6
+PROOF_DB: 9_OF_9_DECLARATIONS_PROVEN
+PLANTS: 8_OF_8_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: 7760_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: 8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: EXACT_SOURCE_ARCH_SYMBOL_GLOBAL_DOMINATION_ONLY
+MATHLIB_FOURIER_FREQUENCY_COORDINATE: true
+SOURCE_ANGULAR_FREQUENCY_EQUALS_TWO_PI_TIMES_MATHLIB_FREQUENCY: true
+NO_IMMEDIATE_EXACT_SYMBOL_MEMLP: true
+NO_PLANCHEREL_CARRIER: true
+NO_SOURCE_WEIL_FORM: true
+NO_ASSOCIATED_OPERATOR_GRAPH: true
+NO_FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: true
+NO_COMPRESSION_IDENTITY: true
+NO_CONTINUUM_NUMERATOR: true
+H4A1B: OPEN
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 4b4ea792a8040b7cca92b81bed5edde9ec096c529a4c71c46b2aa7803e1d6876
+PROSHKA_VERDICT_ARCHIVE_SHA256: 9a4fd4b622988b738595d796b0066caeb7f3a4aa04f828080389e94a35c662df
+CLOSEOUT_SHA256: 0326991a973f0f91e71f28241eb103d509d67f2c3d33575da1732aab75828675
+
+REVIEW_RUNTIME:
+  phase_calls: 23
+  global_delegated_calls: 25
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_TRANSFER
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: one_same_chat_operational_release_before_any_B3_0B3_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact source multiplier is now normalized in the same Fourier coordinate as
+the production mode transform and is globally dominated by the explicit
+log-growth envelope.  This closes B3.0B2 only.  The exact-symbol product is not
+yet proved to lie in `L²`; consequently B3.0B, the operator graph, the current
+coarse checkpoint, H4a1b, promotion, PX, and RH all remain open.
