@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E4B1 diagonal regularizer endpoint-ledger release
+
+```yaml
+proof_address: RouteB.Goal057.DiagonalRegularizerEndpointLedger
+front: GOAL057/P057_B3_0E4B1
+transaction: GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 136f5c1e-0af2-494a-8dc4-98e05468b3ce
+response_message_id: cb1d5bad-dd13-46a2-8abd-9fe9ae25db42
+sent_at: 2026-08-08T14:13:59.088+02:00
+completed_at: 2026-08-08T14:31:22.608+02:00
+wall_seconds: 1044
+wall_human: 17m24s
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER
+status: COMPLETE_SAME_CHAT_PRODUCTION_RELEASE
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+  PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md
+notes: >-
+  Byte-identical request mirrors are 7,435 bytes with SHA-256
+  01f2ce1e8b690b5870e447e30b10384b4f63a91e0bd2b2bc060924c858bb11cf.
+  The compiling untracked harness is 6,852 bytes with SHA-256
+  a7bdb27c58288d64b239d877b14de291719b394c8688850d5ad493755aea0a4c,
+  has zero forbidden tokens, one public theorem, two private definitions,
+  five private theorems, and exactly the standard axiom triple. The
+  byte-faithful archived verdict is 28,975 bytes with SHA-256
+  27b4098bc998069569c38ca98fa9610e75bfb3eaa0851908e95f8e4ace42641e.
+  Proshka authorized exactly one B3.0E4B1 production child, accepted the
+  theorem and proof unchanged, extended the plant suite from seven to nine
+  with independent finite-region sign and factor-two falsifiers, and kept
+  B3.0E4B2 and all ten coarse checkpoints open.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E4A off-diagonal source archimedean / negative CCM-WR release
 
 ```yaml

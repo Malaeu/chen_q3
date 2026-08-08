@@ -29,7 +29,7 @@ INCOMPLETE_PATTERN = re.compile(r'\b(sorry|admit)\b')
 #          noncomputable def qux : T := ...
 #          private lemma helper : T := by
 DECL_PATTERN = re.compile(
-    r'^(?:noncomputable\s+|private\s+|protected\s+)?(lemma|theorem|def|abbrev)\s+(\w+)\s*([\{\[\(].*?)?(?::\s*(.+?))?\s*:=',
+    r'^(?:(?:noncomputable|private|protected)\s+)*(lemma|theorem|def|abbrev)\s+(\w+)\s*([\{\[\(].*?)?(?::\s*(.+?))?\s*:=',
     re.MULTILINE | re.DOTALL
 )
 

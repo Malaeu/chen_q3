@@ -11,7 +11,7 @@
 
 ## Навигация (кратко)
 
-## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4B1 diagonal endpoint ledger
+## Synthesis (2026-08-08, closed node) -- Goal 057 B3.0E4B1 diagonal endpoint ledger
 
 - Exact target: for `0 < L`, prove the scalar identity equating the paired
   finite-region regularizer plus the convergent `Ioi L` tail with
@@ -31,12 +31,19 @@
 - Mathlib's `integral_Ioi_of_hasDerivAt_of_nonneg'` closes the improper tail
   without separately postulating integrability; positivity follows from
   `hL`, monotonicity of `exp`, and `exp (-2*x) < 1`.
-- Final algebra must use only proved positivity/nonzero facts for every
-  `Real.log_mul` and `Real.log_div`; plants mutate the tail sign, factor two,
-  finite/tail boundary, log ratio orientation, and the cancellation pairing.
-- Boundary: run one untracked no-`sorry` discriminator only.  B3.0E4B2, the
-  all-mode crosswalk, source Weil form/operator, all 10 coarse checkpoints,
-  H4a1b, promotion, PX and RH remain open.
+- Final algebra uses only proved positivity/nonzero facts for every
+  `Real.log_mul` and `Real.log_div`.  The production theorem is
+  `sourceArchimedeanDiagonalRegularizer_endpointLedger`, with exactly the
+  standard axiom triple and one foundational Mathlib import.
+- The final falsifier set has nine independent plants: finite and tail signs,
+  both factors two, paired cancellation, common split boundary, log-ratio
+  orientation, endpoint scale `4π`, and the positive-length domain.
+- Reusable tooling lesson: Lean declarations may begin with several modifiers
+  (`private noncomputable def`); the proof-DB parser must accept a modifier
+  sequence or it silently undercounts a valid public/private surface.
+- Boundary: B3.0E4B1 is closed.  B3.0E4B2, the all-mode crosswalk, source Weil
+  form/operator, all 10 coarse checkpoints, H4a1b, promotion, PX and RH remain
+  open.
 
 ## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E4A off-diagonal archimedean / CCM-WR crosswalk
 

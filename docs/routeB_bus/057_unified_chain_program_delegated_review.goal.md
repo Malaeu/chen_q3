@@ -1514,3 +1514,114 @@ zero-extended mode correlation theorem, and the off-diagonal vanishing of the
 endpoint constant. This closes B3.0E4A only. The diagonal endpoint ledger and
 the one-sided assembly are still missing, so B3.0E, B3.0, the current coarse
 checkpoint, H4a1b, promotion, PX, and RH remain open.
+
+
+## A21 — B3.0E4B1 diagonal regularizer endpoint ledger (2026-08-08)
+
+```yaml
+A21_STATUS: CLOSED_CHILD_PARENT_B3_0E_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER
+SUCCESS: GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_PROVED
+
+PARENT_B3_0E4A:
+  status: CLOSED
+PARENT_B3_0E4B1:
+  status: CLOSED
+PARENT_B3_0E4B2:
+  status: OPEN
+PARENT_B3_0E:
+  status: OPEN
+  joint_kernel_mode_product_l1_carrier: PROVED
+  zero_extended_mode_correlation_ccm_qkernel: PROVED
+  offdiagonal_source_arch_pairing_neg_ccm_wr: PROVED
+  diagonal_scalar_endpoint_ledger: PROVED
+  diagonal_mode_pairing_crosswalk: NOT_PROVED
+  all_mode_crosswalk: NOT_PROVED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean
+LEAN_SHA256: 40248c5779c9da3fea249602c54a5b41047bd3592bf28198a2b269242a190d8c
+PUBLIC_SURFACE:
+  definitions: []
+  theorems:
+    - sourceArchimedeanDiagonalRegularizer_endpointLedger
+PRIVATE_SUPPORT:
+  definitions: 2
+  theorems: 5
+  total: 7
+PROOF_DB: 8_OF_8_DECLARATIONS_PROVEN
+PROOF_DB_PARSER_REPAIR: REPEATED_PRIVATE_NONCOMPUTABLE_MODIFIERS_RECOGNIZED
+PLANTS: 9_OF_9_FIRED
+PLANT_REPAIR: FINITE_REGION_SIGN_AND_FACTOR_TWO_ADDED_AS_INDEPENDENT_FALSIFIERS
+STANDARD_AXIOMS: propext_Classical.choice_Quot.sound
+TARGET_BUILD: 2691_JOBS_PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_3b6dec240ffe59002b82_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SEMANTIC_INDEX: 2395_FILES_12590_VECTORS_PASS
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: SOURCE_ARCH_DIAGONAL_SCALAR_REGULARIZER_ENDPOINT_LEDGER_ONLY
+EXACT_FINITE_REGION_PAIRED_CANCELLATION_RETAINED: true
+EXACT_FINITE_REGION_MINUS_SIGN_RETAINED: true
+EXACT_FINITE_REGION_FACTOR_TWO_RETAINED: true
+EXACT_TAIL_PLUS_SIGN_RETAINED: true
+EXACT_TAIL_FACTOR_TWO_RETAINED: true
+EXACT_COMMON_SPLIT_BOUNDARY_RETAINED: true
+EXACT_LOG_RATIO_ORIENTATION_RETAINED: true
+EXACT_FOUR_PI_ENDPOINT_SCALE_RETAINED: true
+DIAGONAL_MODE_PAIRING_CROSSWALK: NOT_PROVED
+ALL_MODE_CROSSWALK: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  direct_import: Mathlib.MeasureTheory.Integral.IntegralEqImproper
+  route_b_parent_import: false
+  generated_backend: false
+  aristotle_output_import: false
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: 01f2ce1e8b690b5870e447e30b10384b4f63a91e0bd2b2bc060924c858bb11cf
+PROSHKA_VERDICT_ARCHIVE_SHA256: 27b4098bc998069569c38ca98fa9610e75bfb3eaa0851908e95f8e4ace42641e
+CLOSEOUT_SHA256: 8e93f02f212bd95f66e018ced8cbd2978007dfdc19576abfaa58a1063a97a8df
+
+REVIEW_RUNTIME:
+  phase_calls: 32
+  global_delegated_calls: 34
+  fanout_violations: 0
+  same_living_chat: true
+  answer_now_clicked: false
+
+NEXT_GAP: GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+NEXT_DISCRIMINATOR: B3_0E4B2_DIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: execute_one_untracked_B3_0E4B2_discriminator_consuming_E1_E2_E3_E4B1_before_any_diagonal_production_edit
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact scalar diagonal regularizer/tail cancellation now closes to the
+source `4π` endpoint logarithm for every `L > 0`. This closes B3.0E4B1
+only. The mode-dependent diagonal pairing, all-mode crosswalk, source Weil
+form and associated operator remain open, so B3.0E, B3.0, the current coarse
+checkpoint, H4a1b, promotion, PX, and RH remain open.
