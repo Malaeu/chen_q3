@@ -11,6 +11,31 @@
 
 ## Навигация (кратко)
 
+## Synthesis (2026-08-08, in progress) -- Goal 057 B3.0E2 joint kernel-mode Fubini preflight
+
+- Exact target: for fixed `i : PairIndex` and `n r : ℤ`, prove joint
+  `Integrable` on `ℝ_t × (0,∞)_x` for the conjugate-first Fourier-mode product
+  multiplied by `sourceArchimedeanRegularizedKernel t x`.
+- Wiring: B3.0E1 proves every fixed-`t` kernel section is integrable on
+  `Ioi 0`; B3.0B1 proves the logarithmically weighted Fourier modes belong to
+  `L²`.  Mathlib's `integrable_prod_iff` reduces the new carrier to strong
+  measurability, almost-everywhere section integrability, and integrability of
+  the inner norm integral.
+- The missing analytic atom is a cancellation-preserving estimate of the form
+  `∫ x in Ioi 0, ‖sourceArchimedeanRegularizedKernel t x‖ ≤
+  C * vModeLogGrowthEnvelope t`, with an absolute constant `C`.
+- Planned source proof splits the paired `u = 2*x` kernel at reciprocal
+  frequency and at `u = 1`: Taylor cancellation on the first interval,
+  the honest `1/u` logarithm in the middle, and the existing exponential tail
+  beyond one.  Splitting the two singular numerator terms is forbidden.
+- If Lean yields only a polynomial-in-`t` majorant, the discriminator fails:
+  the available resonance-safe mode decay does not pay that cost, and the
+  route must move to a source distribution-action representation instead of
+  asserting Fubini.
+- Boundary: this entry authorizes only one untracked no-`sorry` preflight.
+  It changes no production Lean, B3.0E crosswalk, route state, coarse ledger,
+  promotion status, `PX_RH_CLAIM`, or RH status.
+
 ## Synthesis (2026-08-08, source-audit wall; B3.0E1 closed) -- Goal 057 B3.0E CCM-WR sign/normalization crosswalk
 
 - Target: identify the proved B3.0D cycles-frequency pairing with the literal
