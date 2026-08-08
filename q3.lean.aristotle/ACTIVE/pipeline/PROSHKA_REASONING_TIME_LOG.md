@@ -31,6 +31,47 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0 associated-operator graph release audit
+
+```yaml
+proof_address: RouteB.Goal057.SourceWeilAssociatedOperatorGraphRelease
+front: GOAL057/P057_B3_0
+transaction: GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 8067f54f-5e8a-4cdb-8bfb-2f048152fefd
+correction_message_ids:
+  - 515e030c-b1ea-46d1-b548-635b85b140f3
+  - a88e1c17-cc8f-4b7f-8646-c20b043cedca
+response_message_id: 04418653-498f-477c-a36a-7ef18a57e57c
+sent_at: 2026-08-08T02:42:25.445+02:00
+completed_at: 2026-08-08T02:58:22.321+02:00
+wall_seconds: 956.876
+wall_human: "15m56.876s observed wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: WALL_GOAL057_B3_0_SOURCE_FORM_REPRESENTATION_API_MISSING
+status: CLOSED_RELEASE_AUDIT_SELECTED_SMALLER_PREREQUISITE
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_RELEASE_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW did not release the six-declaration
+  associated-operator graph. The 7,669-byte attached request has SHA-256
+  db9b7fa10d49180d39d8a1506e5ba9cdc11c2c825b522b423917f335cbd3775e.
+  Two same-batch corrections repaired the exact finite-projection and primary-
+  source paths without changing the phase or mathematical request. Their
+  exact visible texts, message IDs, timestamps, byte counts, and hashes are in
+  PROSHKA_CORRECTIONS_GOAL057_B3_0_SOURCE_PINS_2026-08-08.md. The complete
+  25,191-byte visible verdict has SHA-256
+  0ba5df96429a90a4248a71731f5328c2202884ddee7a27cc1661cc4d6cc5d0a9;
+  the newline-normalized archive has 25,192 bytes and SHA-256
+  7106b3629538eeed897914bd930a4f0c35f7c669a95880c969aa594f38acb58c.
+  The follow-up correction responses displayed Internal Server Error, but the
+  primary response completed separately and fully. The selected next release
+  candidate is GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA with one definition
+  and one theorem; it is not operationally released by this verdict. No Lean
+  edit, Aristotle submission, Bus 010, Goal-055 release, route promotion, PX
+  claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3 associated Weil operator-domain source audit
 
 ```yaml
