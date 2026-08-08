@@ -31,6 +31,44 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-08 — Goal 057 B3.0E3 zero-extended mode correlation / CCM Q-kernel release
+
+```yaml
+proof_address: RouteB.Goal057.ZeroExtendedModeCosineCorrelationCCMQKernel
+front: GOAL057/P057_B3_0E3
+transaction: GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_RELEASE
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+request_message_id: 00e9bb29-2a36-4e6f-aec6-2073d7536d60
+response_message_id: 2b46d779-1819-4a23-91dc-c9e06a062325
+sent_at: 2026-08-08T12:22:01.992+02:00
+completed_at: 2026-08-08T12:37:25.559+02:00
+wall_seconds: 924
+wall_human: "15m24s observed UI send-to-verdict wall"
+answer_now_shown: true
+answer_now_clicked: false
+primary: TRY_GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL
+status: OPEN_PRODUCTION_RELEASED
+result_pointer: "proshka/PROSHKA_VERDICT_GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_RELEASE_2026-08-08.md"
+notes: >-
+  Same-chat DELEGATED_STRATEGIC_REVIEW received the byte-identical request
+  mirrors, each 7,218 bytes with SHA-256
+  eb6a054802ee88db2f7c302f34504a8e5041eb640ab9824326fdd229964060cd,
+  and the 42,746-byte compiling harness with SHA-256
+  1d2ef3dbc00954e853d140a5ddc92455a093f320ff1f147e8102fe17aa6e5a4f.
+  The direct Lean run passed, the forbidden-token scan was empty, and both
+  attached file tiles plus the exact send text were observed after delivery.
+  The complete visible verdict has 32,099 bytes and SHA-256
+  d3e854bad95fa8d0f817640108ba47ae8906191c45ce438b60baeee8bd6e8b21;
+  the newline-normalized archive has 32,100 bytes and SHA-256
+  8b47564ecccf88b627b1dade43253dea22c46e63f23c9a5dcfe7fd5821d4c8ca.
+  Proshka released exactly one production file with the same six public
+  theorems and the observed ceiling of 9 private definitions plus 32 private
+  theorems. B3.0E3 is not closed until production validation; B3.0E and all
+  ten coarse checkpoints remain open. Answer now appeared and was never
+  clicked. No B3.0E4A implementation, checkpoint decrement, Aristotle
+  submission, Bus 010, route promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0E2 joint kernel-mode L1/Fubini carrier release
 
 ```yaml

@@ -1196,6 +1196,7 @@ assemble the one-sided endpoint factor, or prove the final negative
 H4a1b, promotion, PX, and RH remain open.
 
 
+
 ## A18 — B3.0E2 joint arch kernel-mode product L1/Fubini carrier (2026-08-08)
 
 ```yaml
@@ -1299,3 +1300,111 @@ state the swapped integral, identify the zero-extended cosine correlation with
 `ccmQKernel`, assemble the one-sided half-factor, or prove the final negative
 `ccmWREntry` crosswalk. Thus B3.0E, B3.0, the current coarse checkpoint,
 H4a1b, promotion, PX, and RH remain open.
+## A19 — B3.0E3 zero-extended mode cosine correlation / CCM Q-kernel (2026-08-08)
+
+```yaml
+A19_STATUS: CLOSED_CHILD_PARENT_B3_0E_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL
+SUCCESS: GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_PROVED
+
+PARENT_B3_0E2:
+  status: CLOSED
+PARENT_B3_0E3:
+  status: CLOSED
+PARENT_B3_0E:
+  status: OPEN
+  joint_kernel_mode_product_l1_carrier: PROVED
+  zero_extended_mode_correlation_ccm_qkernel: PROVED
+  offdiagonal_source_arch_pairing_neg_ccm_wr: NOT_PROVED
+  diagonal_endpoint_constant: NOT_PROVED
+  one_sided_half_factor_assembly: NOT_PROVED
+PARENT_B3_0:
+  status: OPEN
+  source_weil_form: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceModeCosineCCMQKernel.lean
+LEAN_SHA256: 1c39c60492931150d98e25e87e1e4762d4509edd725bd68b68c64c8504cc56a4
+PUBLIC_SURFACE:
+  definitions: []
+  theorems:
+    - two_mul_sourceModeCosineCorrelation_eq_ccmQKernel_or_zero
+    - sourceModeCosineCorrelation_control_diag_zero
+    - sourceModeCosineCorrelation_control_offdiag_zero
+    - sourceModeCosineCorrelation_control_offdiag_inside
+    - sourceModeCosineCorrelation_control_right_boundary
+    - sourceModeCosineCorrelation_control_outside_zero
+PRIVATE_SUPPORT:
+  definitions: 9
+  theorems: 32
+  total: 41
+PROOF_DB: 47_OF_47_DECLARATIONS_PROVEN
+PLANTS: 7_OF_7_FIRED
+STANDARD_AXIOMS_ONLY: true
+TARGET_BUILD: PASS
+FULL_BUILD: 7817_JOBS_PASS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS
+OBSERVABILITY: OBS_22c692847ca1a083da8a_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: SOURCE_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_ONLY
+EXACT_FACTOR_TWO_RETAINED: true
+EXACT_ANTILINEAR_FIRST_ORIENTATION_RETAINED: true
+EXACT_MATHLIB_FOURIER_COORDINATE_RETAINED: true
+EXACT_ZERO_EXTENDED_SUPPORT_RETAINED: true
+EXACT_RIGHT_BOUNDARY_ZERO_RETAINED: true
+EXACT_OUTSIDE_WINDOW_ZERO_RETAINED: true
+OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_CROSSWALK: NOT_PROVED
+DIAGONAL_ENDPOINT_CONSTANT: NOT_PROVED
+ONE_SIDED_HALF_FACTOR_ASSEMBLY: NOT_PROVED
+SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+FORM_OR_OPERATOR_DOMAIN_MEMBERSHIP: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+UNIFORM_COFINAL_MODE_BOUND: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  new_generated_backend: false
+  direct_imports_match_release: true
+  inherited_tracked_hole_free_aristotle_output: aristotle_output.d1524982_aristotle
+  inherited_via_closed_parent_chain: true
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_REQUEST_SHA256: eb6a054802ee88db2f7c302f34504a8e5041eb640ab9824326fdd229964060cd
+PROSHKA_VERDICT_ARCHIVE_SHA256: 8b47564ecccf88b627b1dade43253dea22c46e63f23c9a5dcfe7fd5821d4c8ca
+CLOSEOUT_SHA256: 21272ff86122076dc997ce32a1b7461f58677134a4018a5c292b407814827e2d
+
+REVIEW_RUNTIME:
+  phase_calls: 30
+  global_delegated_calls: 32
+  fanout_violations: 0
+  same_living_chat: true
+
+NEXT_GAP: GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY
+NEXT_DISCRIMINATOR: B3_0E4A_OFFDIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT
+NEXT_GAP_STATUS: NAMED_NOT_AUTHORIZED
+NEXT_REQUIRED_ACTION: execute_one_untracked_B3_0E4A_discriminator_without_merging_postponed_diagonal_B3_0E4B
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact zero-extended cosine correlation is now identified with the CCM
+Q-kernel, including the factor two, source orientation, Fourier convention,
+right boundary and exterior zero behavior. This closes B3.0E3 only. It does
+not yet identify the source archimedean pairing with negative `ccmWREntry`,
+settle the diagonal endpoint constant, or construct the source Weil form and
+associated operator. Thus B3.0E, B3.0, the current coarse checkpoint, H4a1b,
+promotion, PX, and RH remain open.

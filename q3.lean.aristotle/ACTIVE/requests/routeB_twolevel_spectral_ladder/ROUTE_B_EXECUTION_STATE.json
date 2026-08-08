@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-08T11:32:30+02:00",
+  "updated_at": "2026-08-08T12:53:52+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -10,21 +10,55 @@
     "route_b_rh_status": "NOT_RH",
     "root_implementation_plan_overridden": false
   },
-  "operational_status": "GOAL_057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_CARRIER_PROVED_B3_0E3_PREFLIGHT_PENDING",
+  "operational_status": "GOAL_057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_PROVED_B3_0E4A_PREFLIGHT_PENDING",
   "current": {
-    "stage_id": "RB-GOAL-057-B3-0E2-CLOSED",
-    "contract_obligation": "GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_EQ_CCM_QKERNEL",
-    "name": "ZeroExtendedModeCosineCorrelationCCMQKernel",
+    "stage_id": "RB-GOAL-057-B3-0E3-CLOSED",
+    "contract_obligation": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY",
+    "name": "OffdiagonalSourceArchPairingNegativeCCMWREntry",
     "status": "OPEN_PREFLIGHT_REQUIRED",
-    "stop_code": "GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_EQ_CCM_QKERNEL_MISSING",
+    "stop_code": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY_MISSING",
     "selected_bus_goal_nnn": "057",
     "selected_bus_goal_path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
     "next_required_actor": "Codex+Proshka",
-    "next_action": "Run exactly one untracked B3_0E3_MODE_COSINE_CORRELATION_CCM_QKERNEL_NO_SORRY_PREFLIGHT for the piecewise theorem two_mul_sourceModeCosineCorrelation_eq_ccmQKernel_or_zero, including central diagonal, central off-diagonal, interior off-diagonal, right-boundary, and outside-window controls. If it passes, return the exact harness to the same living Proshka chat for one production-release review; if factor, sign, translation, support, or index orientation fails, retain B3.0E and repair the representation. Do not implement B3.0E3 before release, perform one-sided endpoint assembly, infer the final ccmWREntry crosswalk, define the full source Weil form or associated operator graph, decrement the ten-checkpoint ledger, invoke H4a1b, promote the route, or claim RH.",
+    "next_action": "Run exactly one untracked B3_0E4A_OFFDIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT for the off-diagonal source archimedean pairing identity against negative ccmWREntry. Preserve the proved factor two, conjugate-first orientation, Mathlib Fourier convention, off-diagonal index/sign orientation, and literal support. Do not merge the postponed B3.0E4B diagonal endpoint constant, implement B3.0E4A production before a separate release if a real strategic fork appears, define the full source Weil form or associated operator graph, decrement the ten-checkpoint ledger, invoke H4a1b, promote the route, or claim RH.",
     "route_promotion": false,
     "rh_claimed": false
   },
   "terminal_history": {
+    "goal_057_b3_0e3_zero_extended_mode_cosine_correlation_ccm_qkernel": {
+      "classification": "GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_PROVED",
+      "status": "PASS_CHILD_CLOSED_PARENT_B3_0E_OPEN",
+      "release_primary": "TRY_GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL",
+      "lean_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceModeCosineCCMQKernel.lean",
+      "lean_sha256": "1c39c60492931150d98e25e87e1e4762d4509edd725bd68b68c64c8504cc56a4",
+      "public_surface": "0_DEFINITIONS_6_THEOREMS",
+      "private_surface": "9_DEFINITIONS_32_THEOREMS_41_TOTAL",
+      "proof_db": "47_OF_47_DECLARATIONS_PROVEN",
+      "plants_fired": "7_OF_7",
+      "target_build": "PASS",
+      "full_build": "7817_JOBS_PASS",
+      "q3_check": "PASS",
+      "unit_tests": "80_OF_80_PASS",
+      "strict_spine": "P9_STRICT_PASS",
+      "observability": "OBS_22c692847ca1a083da8a_8_SOURCES_0_STALE_1_ZERO_COVERAGE",
+      "parent_b3_0e2": "CLOSED",
+      "parent_b3_0e3": "CLOSED",
+      "parent_b3_0e": "OPEN",
+      "parent_b3_0": "OPEN",
+      "coarse_checkpoints_closed": 0,
+      "coarse_checkpoints_remaining": 10,
+      "current_checkpoint_effect": "ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE_STRICTLY_ADVANCED_NOT_CLOSED",
+      "request_sha256": "eb6a054802ee88db2f7c302f34504a8e5041eb640ab9824326fdd229964060cd",
+      "visible_verdict_archive_sha256": "8b47564ecccf88b627b1dade43253dea22c46e63f23c9a5dcfe7fd5821d4c8ca",
+      "goal_a19_sha256": "6ff13723f34abf6530557898cd36d53ba4d48412b6bc12fc9ca7aec821a67542",
+      "closeout_sha256": "21272ff86122076dc997ce32a1b7461f58677134a4018a5c292b407814827e2d",
+      "review_runtime": "PHASE_30_GLOBAL_32_FANOUT_0",
+      "next_gap": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY",
+      "next_discriminator": "B3_0E4A_OFFDIAGONAL_NEG_CCM_WR_CROSSWALK_NO_SORRY_PREFLIGHT",
+      "next_gap_status": "NAMED_NOT_AUTHORIZED",
+      "dependency_provenance": "NO_NEW_GENERATED_BACKEND_INHERITED_TRACKED_HOLE_FREE_ARISTOTLE_OUTPUT_D1524982_VIA_CLOSED_PARENT_CHAIN",
+      "semantic_boundary": "SOURCE_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_PROVED_EXACT_FACTOR_TWO_ANTILINEAR_FIRST_MATHLIB_FOURIER_COORDINATE_LITERAL_ZERO_EXTENSION_RIGHT_BOUNDARY_ZERO_OUTSIDE_ZERO_NO_SOURCE_ARCH_PAIRING_NEG_CCM_WR_CROSSWALK_NO_DIAGONAL_ENDPOINT_CONSTANT_NO_ONE_SIDED_HALF_FACTOR_NO_SOURCE_WEIL_FORM_NO_ASSOCIATED_OPERATOR_GRAPH_NO_FORM_OR_OPERATOR_DOMAIN_NO_COMPRESSION_NO_CONTINUUM_NUMERATOR_NO_UNIFORM_COFINAL_MODE_BOUND_NOT_H4A1B_NOT_RH"
+    },
     "goal_057_b3_0e2_joint_arch_kernel_mode_product_l1_fubini": {
       "classification": "GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_CARRIER_PROVED",
       "status": "PASS_CHILD_CLOSED_PARENT_B3_0E_OPEN",
@@ -921,7 +955,7 @@
     },
     "goal_057_a5": {
       "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
-      "sha256": "4da4127310c3b572f4d95750f42fb79a04fb5dbd06624f5b14181d6ee7ff1553"
+      "sha256": "6ff13723f34abf6530557898cd36d53ba4d48412b6bc12fc9ca7aec821a67542"
     },
     "goal_057_p057_7_script": {
       "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",
