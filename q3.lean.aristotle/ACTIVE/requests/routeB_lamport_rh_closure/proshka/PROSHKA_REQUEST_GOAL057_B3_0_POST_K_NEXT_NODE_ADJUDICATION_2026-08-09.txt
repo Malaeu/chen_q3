@@ -1,0 +1,413 @@
+PROSHKA REQUEST — GOAL 057 B3.0 POST-K NEXT-NODE ADJUDICATION
+
+Date: 2026-08-09
+Route: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+Mode: same living phase chat, next-node adjudication and no-sorry preflight
+Conversation: 6a72e750-dc60-83eb-946b-61d2073c232b
+Owner action required: no
+Sole owner gate: PX/RH claim
+
+Read this attached .txt as the exact controlling request. Do not reconstruct
+it from the visible composer, earlier summaries, headings, or memory. Natural
+completion only. Do not ask Codex to click Answer now.
+
+## 1. Source lock
+
+Repository: Malaeu/chen_q3
+Branch: rh_clean
+HEAD: f5b46e5bc724238f64f85dbf085241d4f4a79a90
+origin/rh_clean: f5b46e5bc724238f64f85dbf085241d4f4a79a90
+Require equality: yes
+
+Current execution state:
+  SHA-256 1e34e00757de4af823a0b8e5ac883b493cd149ae6b055c71472c9260e90ca9b7
+Current Goal-057 ledger:
+  SHA-256 94ec626d8011a593181c2b5509e9306f6fb4b59eb7211b1e2936250ba00af40d
+Unrelated staged patch to preserve:
+  SHA-256 291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+Mandatory knowledge-base query before this packet:
+  ./orchestrator/kb.py ask
+    "Goal 057 B3.0K complete three component source Weil form next ambient form operator graph associated operator domain compression continuum numerator bridge"
+Result:
+  no hits in any layer
+
+## 2. Controlling earlier B3 source audit
+
+Earlier exact request:
+  PROSHKA_REQUEST_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AUDIT_2026-08-08.md
+  SHA-256 2a718853a29819607482737319907f9e985c6d4f2dc9772c7108187bad999f44
+
+Earlier exact verdict:
+  PROSHKA_VERDICT_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AUDIT_2026-08-08.md
+  SHA-256 5071da78f2a521f002487178547e2a005c4e44587a7521f4dca0f003033da10a
+
+That verdict selected:
+
+  TRY_GOAL057_B3_SELECTED_KTRIAL_OPERATOR_DOMAIN_FROM_PIECEWISE_SMOOTH_CORE
+
+with the repaired sequence:
+
+  exact source form
+  -> source-specific Fourier multiplier graph
+  -> weighted L2 certificate for every finite mode
+  -> selected kTrial operator-domain membership
+  -> projected action = finite Riesz action.
+
+It explicitly rejected:
+
+  form-domain membership as operator-domain membership;
+  A_m : Module.End ℂ (H_m i);
+  a bounded finite-rank lift masquerading as A_m;
+  form compression as automatic restriction or invariance;
+  form-dual residual as a free replacement for the H_m-valued residual.
+
+Its then-smallest decisive gap was:
+
+  V_N_M_ARCH_SYMBOL_WEIGHTED_FOURIER_L2
+
+and its first named design transaction was:
+
+  GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH
+
+The old verdict was design-only and authorized no Lean edit. Re-adjudicate on
+the current source lock; do not silently treat the old proposed six-declaration
+surface as already released or necessarily minimal.
+
+## 3. The old decisive analytic gap is now closed
+
+B3.0A exact zero-extended production-mode Fourier formula:
+
+  file:
+    q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeFourierFormula.lean
+  SHA-256:
+    a7cf28980344c70d22c6bd428fb4ab7537a35f9bbff1f403023a2076f67719f0
+  public definition:
+    logWindowZeroExtendedMode
+  public theorem:
+    fourier_logWindowZeroExtendedMode
+
+B3.0B1 resonance-safe logarithmic envelope weighted-L2 certificate:
+
+  file:
+    q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean
+  SHA-256:
+    beb6f951a5b3db4a0b234137a61e9968696f77ba53393419fabdeed239262c87
+
+B3.0B2 exact source archimedean multiplier and domination:
+
+  file:
+    q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLogDomination.lean
+  SHA-256:
+    197daeed0b975bbed63cf59d2f0cfa939ed345661935d258f7e79387815344da
+
+  def sourceArchimedeanMultiplier (t : ℝ) : ℝ :=
+    -Real.log Real.pi +
+      (Q3.digamma
+        ((1 / 4 : ℂ) +
+          Complex.I * ((Real.pi * t : ℝ) : ℂ))).re
+
+  theorem sourceArchimedeanMultiplier_eq_neg_aStar_scaled
+      (t : ℝ) :
+      sourceArchimedeanMultiplier t =
+        -Q3.a_star t / (2 * Real.pi)
+
+  theorem abs_sourceArchimedeanMultiplier_le_logGrowthEnvelope
+      (t : ℝ) :
+      |sourceArchimedeanMultiplier t| ≤
+        (|Real.log Real.pi| + Real.log 4 + 7) *
+          vModeLogGrowthEnvelope t
+
+B3.0B3 exact-symbol weighted fixed-mode L2 transfer:
+
+  file:
+    q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolWeightedModeL2.lean
+  SHA-256:
+    99b7ad19089b17a0cde4492a239c4b5b8a5b8e8ea8c6b6aa2cc348c8324200d7
+
+  theorem sourceArchimedeanMultiplier_mul_fourier_logWindowZeroExtendedMode_memLp
+      (i : PairIndex) (n : ℤ) :
+      MemLp
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            𝓕 (logWindowZeroExtendedMode i n) t)
+        2 volume
+
+All four artifacts are production, 0-sorry, direct-Lean/build/q3_check green.
+The fixed-mode exact multiplier-domain certificate demanded by the old audit
+therefore exists. No uniform-in-n, N, or m estimate is claimed.
+
+## 4. Exact source-form finite frontier is now closed
+
+Since the old B3 audit, B3.0C through B3.0K closed the exact source pairings,
+their matrix-form lifts, and the literal three-component finite ledger.
+
+Current terminal child B3.0K:
+
+  file:
+    q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean
+  SHA-256:
+    fdec61999f5bd109f3d912911136e3130c4cabae3fd464a541949a10d0b8d3db
+  theorem:
+
+theorem sourceWeilFiniteForm_eq_ccmWeilMatrixForm
+    (i : PairIndex)
+    (c d : CCMModeFinite i.N → ℂ) :
+    ((∑ j, ∑ k,
+        star (c j) *
+          sourceW02ModePairing i
+            (ccmModeFinite i.N j)
+            (ccmModeFinite i.N k) *
+          d k) +
+      (∑ j, ∑ k,
+        star (c j) *
+          sourceArchimedeanModePairing i
+            (ccmModeFinite i.N j)
+            (ccmModeFinite i.N k) *
+          d k) -
+      (∑ j, ∑ k,
+        star (c j) *
+          sourcePrimeModePairing i
+            (ccmModeFinite i.N j)
+            (ccmModeFinite i.N k) *
+          d k)) =
+      ∑ j, ∑ k,
+        star (c j) *
+          (Q3.RouteB.ccmWeilMatFinite i.m i.N j k : ℂ) *
+          d k
+
+Exact sign ledger retained:
+
+  + source W02
+  + source archimedean, already equal to negative CCM-WR
+  - positive source prime exactly once.
+
+B3.0K is 0-sorry, production/build/q3_check green, committed and pushed at:
+
+  f5b46e5bc724238f64f85dbf085241d4f4a79a90
+
+It deliberately minted no named ambient source form, no form domain, no
+associated operator graph, and no operator domain.
+
+## 5. Existing exact finite Riesz receiver
+
+File:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean
+SHA-256:
+  bf72d6f84c33f6ddd0f6e0c76563c8d6cf4416124f1b8c8e8dc988dc4ad58e59
+
+Public surface already in production:
+
+  ccmFiniteSynthesisEquiv
+      (i : PairIndex) :
+      EuclideanSpace ℂ (CCMModeFinite i.N) ≃ₗᵢ[ℂ] E_m_N i
+
+  sourceCCMFiniteRieszOperator
+      (i : PairIndex) :
+      Module.End ℂ (E_m_N i)
+
+  sourceCCMFiniteRieszOperator_apply_sourceTrial
+
+This is FINITE_RIESZ_CARRIER_BIND_ONLY. It is not the ambient source operator,
+does not prove operator-domain membership, and does not prove compression.
+
+## 6. Source locks and still-absent declarations
+
+Pinned project source artifacts remain:
+
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+    D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md
+
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+    D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md
+
+  q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md
+
+The earlier audit found:
+
+  D0.2 gives E_m_N ⊆ Dom(BW_m) at paper level;
+  D0.3 leaves E_m_N ⊆ Dom(A_m), invariance, restriction, and compression
+  unproved;
+  the primary paper explicitly gives form-domain membership for
+  piecewise-smooth compact support, but not operator-domain membership;
+  the operator-domain upgrade must use the explicit multiplier-weighted L2
+  graph certificate, not the form-core sentence.
+
+Current exhaustive source scan still finds no production Lean declaration for:
+
+  SourceWeilFormDomain
+  SourceWeilAssociatedGraph
+  SourceWeilOperatorDomain
+  sourceWeilAssociatedOperator
+  sourceWeilAssociatedOperator_graph
+  V_n_m_mem_sourceWeilOperatorDomain
+
+and the previously proposed owned file remains absent:
+
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarWeilAssociatedOperatorGraph.lean
+
+## 7. Decision requested
+
+Adjudicate exactly one smallest lawful next node after B3.0K.
+
+Primary family to evaluate:
+
+  GOAL057_B3_0L_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH
+
+But do not accept that name or scope by inertia. Decide among:
+
+A. a smaller source-Weil form/domain representation child must precede any
+   operator graph;
+
+B. the source-specific form, domain-subtype operator, exact graph identity,
+   and fixed-mode domain theorem genuinely form one minimum coherent child;
+
+C. an even smaller representation or convention-locking theorem is still
+   missing;
+
+D. stop with one precise source/API blocker.
+
+Do not skip directly to selected-kTrial domain membership or compression if
+the ambient graph object itself is not yet production-safe.
+
+Do not build a general library of closed semibounded forms. The required object
+must be source-specific and use the exact already-proved source conventions.
+
+## 8. Mandatory discriminator: object coherence
+
+The earlier design proposed at most:
+
+  definitions:
+    SourceWeilFormDomain
+    SourceWeilAssociatedGraph
+    SourceWeilOperatorDomain
+    sourceWeilAssociatedOperator
+
+  theorems:
+    sourceWeilAssociatedOperator_graph
+    V_n_m_mem_sourceWeilOperatorDomain
+
+However its displayed graph theorem referred to
+`sourceWeilSesquilinearForm`, which was not included in that public-definition
+list and still does not exist in production. Resolve this explicitly.
+
+Either:
+
+  identify an exact existing production form object and import it;
+
+or:
+
+  include the smallest exact source form object in the child surface;
+
+or:
+
+  split a smaller form/domain child first.
+
+Do not hide the missing form behind an unproved premise or an opaque axiom.
+
+## 9. Required response
+
+Return exactly one primary TRY verdict or one precise STOP code.
+
+If TRY, provide all of:
+
+1. exact node id and exact semantic contract;
+2. why it is the smallest coherent successor after B3.0K;
+3. exact create-only production path;
+4. exact imports, each already present on the source lock;
+5. exact complete Lean candidate bytes in one fenced block, including
+   `#print axioms` for every public theorem;
+6. exact public/private surface and why every public declaration is necessary;
+7. exact type of the form domain and operator domain;
+8. exact type of the associated operator, which must be domain-subtype to
+   `H_m i`, never `Module.End ℂ (H_m i)`;
+9. exact graph identity with the project's antilinear-first convention;
+10. how B3.0B3 is consumed to prove fixed-mode operator-domain membership;
+11. how the exact W02, already-negative Arch, and positive Prime source pieces
+    enter the graph, with the prime subtracted once;
+12. K6 object precommit;
+13. compile/static/dependency/semantic plant table;
+14. exact success and stop codes;
+15. exact post-success boundary and next wall;
+16. whether this verdict is preflight-only or authorizes exact-byte production.
+
+Prefer preflight-only with a later exact-byte production release unless this
+review can validate the candidate against the pinned Lean API. Do not authorize
+production merely because the mathematical design is plausible.
+
+## 10. Mandatory plants
+
+At minimum adjudicate and classify:
+
+P057_B3_1_FORM_DOMAIN_NOT_OPERATOR_DOMAIN
+  A form-domain witness must not be accepted as operator-domain membership.
+
+P057_B3_2_ASSOCIATED_OPERATOR_BOUNDEDNESS_ERASURE
+  Replacing the domain-subtype operator by `Module.End ℂ (H_m i)` must fail.
+
+P057_B3_3_PROJECTION_CODOMAIN_MISMATCH
+  `P_m_N i : H_m i →L[ℂ] E_m_N i` must not become an ambient endomorphism.
+
+P057_B3_4_FORM_COMPRESSION_NOT_OPERATOR_RESTRICTION
+  Finite form coordinates must not imply invariance of `E_m_N i`.
+
+P057_B3_5_BOUNDED_LIFT_SURROGATE_REJECTED
+  `inclusion ∘ sourceCCMFiniteRieszOperator ∘ P_m_N` is not the source
+  associated operator.
+
+Add exact child-local plants for:
+
+  missing or mismatched source form object;
+  Fourier convention / `2π` normalization mismatch;
+  prime sign mismatch;
+  antilinear-first slot mismatch;
+  fixed-mode L2 theorem not consumed;
+  premise-only graph surrogate;
+  generated Route-B PSD dependency leakage;
+  operator/graph/domain/compression/numerator scope smuggling.
+
+If any plant is symmetry-blind or does not reach the selected child boundary,
+kill it explicitly and do not run or count it.
+
+## 11. Standing boundary
+
+Current coarse checkpoint:
+  ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+Current effect:
+  strictly advanced, not closed
+
+Ledger:
+  0 closed / 10 remaining
+
+Even a successful source-associated operator graph does not by itself prove:
+
+  selected kTrial operator-domain membership;
+  projected action equals finite Riesz action;
+  finite-subspace invariance;
+  ambient residual smallness;
+  projection-leakage decay;
+  continuum numerator bridge;
+  H4a1b;
+  any checkpoint decrement.
+
+Route:
+  CHALLENGER_NOT_RH
+
+BUS_010:
+  VOID
+
+GOAL_055:
+  HOLD
+
+G2_CCM:
+  FROZEN
+
+Aristotle submission:
+  NONE
+
+PX_RH_CLAIM:
+  NOT_MADE
+
+Reuse this same living chat. Do not open a fresh chat.

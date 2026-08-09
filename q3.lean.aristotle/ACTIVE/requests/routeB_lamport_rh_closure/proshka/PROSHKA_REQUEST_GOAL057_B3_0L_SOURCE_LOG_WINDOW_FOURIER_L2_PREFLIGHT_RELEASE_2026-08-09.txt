@@ -1,0 +1,344 @@
+# PROSHKA REQUEST — GOAL 057 B3.0L SOURCE LOG-WINDOW FOURIER L2 PREFLIGHT RELEASE ADJUDICATION — 2026-08-09
+
+Read this exact attached text file in full as the controlling request.
+
+Return exactly one binary verdict:
+
+- `TRY_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY`, with one exact no-sorry production candidate and exact production validation contract; or
+- one precise `STOP_...` naming the first remaining mathematical/API/category defect.
+
+This is the same living Goal-057 phase chat. Natural completion only. Do not request a fresh chat and do not authorize Aristotle.
+
+## Immutable boundary
+
+```yaml
+ROUTE: CHALLENGER_NOT_RH
+ACTIVE_BUS_GOAL: 057
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+PX_RH_CLAIM: NOT_MADE
+ROUTE_PROMOTION: false
+```
+
+No ambient source Weil form, form domain, associated operator graph, operator domain, compression identity, continuum numerator, H4a1b, or checkpoint closure may be claimed here.
+
+## Source lock
+
+```yaml
+repo: Malaeu/chen_q3
+branch: rh_clean
+HEAD: f5b46e5bc724238f64f85dbf085241d4f4a79a90
+origin_rh_clean: f5b46e5bc724238f64f85dbf085241d4f4a79a90
+staged_patch_sha256: 291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+post_K_request:
+  sha256: be25d48cece8eb998fd78da7c07ba4148779946b4c6653bb8a233f36d57ebc4d
+  bytes: 13196
+  lines: 413
+post_K_verdict:
+  sha256: ea382fb176c745c9c67a87f5193a79755fcc45837d51125ad207907252b73c8d
+  bytes: 26618
+  wc_lines: 772
+current_stage: RB-GOAL-057-B3-0K-CLOSED
+current_obligation: GOAL057_B3_0_POST_K_NEXT_NODE_ADJUDICATION
+routeb_status_check: PASS
+kb_query: no_hits
+```
+
+## Prior verdict and discriminator
+
+Your immediately preceding exact verdict selected:
+
+```text
+STOP_GOAL057_B3_0L_SOURCE_WEIL_FORM_AND_L2_FOURIER_CARRIER_MISSING
+```
+
+It named the exact next decisive test:
+
+```lean
+example (i : PairIndex) :
+    ∃ Φ :
+        H_m i →ₗᵢ[ℂ] MeasureTheory.Lp ℂ 2 volume,
+      ∀ n : ℤ,
+        ((Φ (V_n_m i n) :
+            MeasureTheory.Lp ℂ 2 volume) : ℝ → ℂ)
+          =ᵐ[volume]
+        (fun t : ℝ =>
+          𝓕 (logWindowZeroExtendedMode i n) t) := by
+  ...
+```
+
+The pinned Mathlib audit found no ready-made all-`Lp` Plancherel linear isometry. It has Plancherel only for Schwartz maps. However, the project already exposes a smaller exact completion route:
+
+1. `V_n_m_hilbertBasis` is a complete Hilbert basis of `H_m i`.
+2. The weighted-mode theorem supplies `MemLp` for each pointwise Fourier image.
+3. The public source-mode correlation controls at `x = 0` prove the exact diagonal/off-diagonal inner products of those Fourier images:
+   - `sourceModeCosineCorrelation_control_diag_zero`;
+   - `sourceModeCosineCorrelation_control_offdiag_zero`.
+4. Therefore the Fourier images form an orthonormal family in whole-line `Lp ℂ 2 volume`.
+5. `Orthonormal.orthogonalFamily.linearIsometry` synthesizes an isometric embedding from the coefficient `lp` space.
+6. Composing with `(V_n_m_hilbertBasis i).repr.toLinearIsometry` yields the requested whole-line linear isometry on every `H_m i).
+7. The literal mode-image equality follows from the basis-singleton law and `MemLp.coeFn_toLp`.
+
+This is not a finite Riesz lift, not an ambient source form, not an associated operator, and not a premise surrogate. It constructs exactly the requested representation object and nothing downstream.
+
+## Exact preflight result
+
+```yaml
+outcome: GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_PREFLIGHT_PROVED
+harness: q3.lean.aristotle/Goal057B3_0L_Scratch.lean
+tracked: false
+sha256: d7351abafce845efde05b05502061a9067e967d7e0c87987ef7e4cf1c81e28af
+bytes: 4904
+wc_lines: 122
+final_LF: true
+direct_Lean_exit: 0
+direct_Lean_warning_only:
+  - UnicodeBasic_dependency_has_preexisting_local_changes
+direct_imports:
+  - Q3.Proofs.RouteB.D0LogWindowVNMCompletenessBridge
+  - Q3.Proofs.RouteB.D0PstarSourceModeCosineCCMQKernel
+axioms:
+  - propext
+  - Classical.choice
+  - Quot.sound
+sorry: 0
+admit: 0
+unsafe: 0
+native_decide: 0
+project_axiom: 0
+generated_backend_import: 0
+aristotle_output_import: 0
+production_authorized_from_preflight_alone: false
+```
+
+Direct Lean stdout:
+
+```text
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
+'_private.Goal057B3_0L_Scratch.0.Q3.RouteB.D0Pstar.fourierLogWindowModeLp_orthonormal' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Q3.RouteB.D0Pstar.sourceLogWindowFourierL2Isometry_apply_mode' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Q3.RouteB.D0Pstar.coeFn_sourceLogWindowFourierL2Isometry_apply_mode' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+```
+
+## Mandatory plant results
+
+All five mutants were separate temporary Lean files, all compiled against the exact scratch object, and all failed with exit 1 for the intended reason. All five source files were then removed.
+
+```yaml
+P057_B3_0L_1_RESTRICTED_MEASURE_NOT_WHOLE_LINE:
+  fate: FIRED
+  observed: whole-line Lp linear isometry cannot inhabit restricted-volume Lp codomain
+  required_stop: SOURCE_LOG_WINDOW_ZERO_EXTENSION_CARRIER_MISSING
+
+P057_B3_0L_2_FOURIER_SIGN:
+  fate: FIRED
+  mutation: replace 𝓕 by 𝓕⁻
+  observed: exact mode-image theorem has forward Fourier target, not inverse Fourier target
+  required_stop: SOURCE_LOG_WINDOW_FOURIER_SIGN_MISMATCH
+
+P057_B3_0L_3_TWO_PI:
+  fate: FIRED
+  mutation: replace t by 2*t
+  observed: exact mode-image theorem does not prove the rescaled target
+  required_stop: SOURCE_LOG_WINDOW_FOURIER_SCALE_MISMATCH
+
+P057_B3_0L_4_ISOMETRY:
+  fate: FIRED
+  mutation: erase LinearIsometry to LinearMap
+  observed: LinearMap cannot inhabit the required LinearIsometry type
+  required_stop: SOURCE_LOG_WINDOW_PLANCHEREL_ISOMETRY_MISSING
+
+P057_B3_0L_5_MODE_FAMILY:
+  fate: FIRED
+  mutation: replace mode n by mode n+1
+  observed: exact theorem retains the literal n-indexed family
+  required_stop: SOURCE_LOG_WINDOW_LITERAL_V_N_M_IMAGE_MISMATCH
+  card: C04
+```
+
+No mutation source remains. No tracked production file was changed by the discriminator.
+
+## Exact tested harness
+
+The following is the complete byte-exact tested harness. Its SHA/bytes/lines are locked above.
+
+```lean
+import Q3.Proofs.RouteB.D0LogWindowVNMCompletenessBridge
+import Q3.Proofs.RouteB.D0PstarSourceModeCosineCCMQKernel
+
+set_option linter.mathlibStandardSet false
+
+open Complex MeasureTheory Set
+open scoped ENNReal NNReal FourierTransform RealInnerProductSpace ComplexConjugate
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+private theorem fourierLogWindowMode_memLp
+    (i : PairIndex) (n : ℤ) :
+    MemLp (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t) 2 volume := by
+  have hweighted :=
+    vModeLogGrowthEnvelope_mul_fourier_logWindowZeroExtendedMode_memLp i n
+  refine hweighted.of_le ?_ ?_
+  · have hfi : Integrable (logWindowZeroExtendedMode i n) := by
+      apply IntegrableOn.integrable_indicator
+      · apply Continuous.integrableOn_Icc
+        fun_prop
+      · exact measurableSet_Icc
+    exact (VectorFourier.fourierIntegral_continuous
+      Real.continuous_fourierChar (by fun_prop) hfi).aestronglyMeasurable
+  · filter_upwards [] with t
+    have henv : 1 ≤ vModeLogGrowthEnvelope t := by
+      unfold vModeLogGrowthEnvelope
+      have hlog : 0 ≤ Real.log (2 + |t|) :=
+        Real.log_nonneg (by linarith [abs_nonneg t])
+      linarith
+    rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_nonneg (le_trans (by norm_num) henv)]
+    nlinarith [norm_nonneg (𝓕 (logWindowZeroExtendedMode i n) t)]
+
+private noncomputable def fourierLogWindowModeLp
+    (i : PairIndex) (n : ℤ) :
+    MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) :=
+  (fourierLogWindowMode_memLp i n).toLp
+    (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t)
+
+private theorem coeFn_fourierLogWindowModeLp
+    (i : PairIndex) (n : ℤ) :
+    (fourierLogWindowModeLp i n : ℝ → ℂ) =ᵐ[(volume : Measure ℝ)]
+      (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t) := by
+  exact MemLp.coeFn_toLp (fourierLogWindowMode_memLp i n)
+
+private theorem fourierLogWindowModeLp_orthonormal
+    (i : PairIndex) :
+    Orthonormal ℂ (fourierLogWindowModeLp i) := by
+  rw [orthonormal_iff_ite]
+  intro n r
+  rw [MeasureTheory.L2.inner_def]
+  have hn := coeFn_fourierLogWindowModeLp i n
+  have hr := coeFn_fourierLogWindowModeLp i r
+  calc
+    _ = ∫ t : ℝ,
+          conj (𝓕 (logWindowZeroExtendedMode i n) t) *
+            𝓕 (logWindowZeroExtendedMode i r) t := by
+      apply integral_congr_ae
+      filter_upwards [hn, hr] with t hnt hrt
+      rw [hnt, hrt]
+      simp only [RCLike.inner_apply']
+    _ = if n = r then 1 else 0 := by
+      by_cases hnr : n = r
+      · subst r
+        rw [if_pos rfl]
+        have h := sourceModeCosineCorrelation_control_diag_zero i n
+        simp only [mul_zero, Real.cos_zero,
+          Complex.ofReal_one, mul_one] at h
+        exact mul_left_cancel₀ (by norm_num : (2 : ℂ) ≠ 0) (by simpa using h)
+      · rw [if_neg hnr]
+        have h := sourceModeCosineCorrelation_control_offdiag_zero i hnr
+        simp only [mul_zero, Real.cos_zero,
+          Complex.ofReal_one, mul_one] at h
+        exact mul_left_cancel₀ (by norm_num : (2 : ℂ) ≠ 0) (by simpa using h)
+
+noncomputable def sourceLogWindowFourierL2Isometry
+    (i : PairIndex) :
+    H_m i →ₗᵢ[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) :=
+  (fourierLogWindowModeLp_orthonormal i).orthogonalFamily.linearIsometry.comp
+    (V_n_m_hilbertBasis i).repr.toLinearIsometry
+
+theorem sourceLogWindowFourierL2Isometry_apply_mode
+    (i : PairIndex) (n : ℤ) :
+    sourceLogWindowFourierL2Isometry i (V_n_m i n) =
+      fourierLogWindowModeLp i n := by
+  change
+    (fourierLogWindowModeLp_orthonormal i).orthogonalFamily.linearIsometry
+        ((V_n_m_hilbertBasis i).repr (V_n_m i n)) =
+      fourierLogWindowModeLp i n
+  rw [← V_n_m_hilbertBasis_apply]
+  rw [(V_n_m_hilbertBasis i).repr_self]
+  rw [OrthogonalFamily.linearIsometry_apply_single]
+  rw [LinearIsometry.toSpanSingleton_apply]
+  simp
+
+theorem coeFn_sourceLogWindowFourierL2Isometry_apply_mode
+    (i : PairIndex) (n : ℤ) :
+    ((sourceLogWindowFourierL2Isometry i (V_n_m i n) :
+        MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ)
+      =ᵐ[(volume : Measure ℝ)]
+        (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t) := by
+  rw [sourceLogWindowFourierL2Isometry_apply_mode]
+  exact coeFn_fourierLogWindowModeLp i n
+
+example (i : PairIndex) :
+    ∃ Φ :
+        H_m i →ₗᵢ[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ),
+      ∀ n : ℤ,
+        ((Φ (V_n_m i n) :
+            MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ)
+          =ᵐ[(volume : Measure ℝ)]
+        (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t) := by
+  exact ⟨sourceLogWindowFourierL2Isometry i,
+    coeFn_sourceLogWindowFourierL2Isometry_apply_mode i⟩
+
+#print axioms fourierLogWindowModeLp_orthonormal
+#print axioms sourceLogWindowFourierL2Isometry_apply_mode
+#print axioms coeFn_sourceLogWindowFourierL2Isometry_apply_mode
+
+end Q3.RouteB.D0Pstar
+```
+
+## Required adjudication
+
+Attack the construction at its strongest point:
+
+> The map is synthesized from the exact source Fourier-mode orthonormal family rather than from a general pinned-Mathlib Plancherel completion. Does it nevertheless satisfy the exact identity you requested, without smuggling an ambient form/operator or weakening the category?
+
+Check especially:
+
+1. Whole-line carrier is exactly `MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)`, never the restricted interval measure.
+2. The result is a complex `LinearIsometry`, not merely a linear map.
+3. The input is all of `H_m i`, via the complete `V_n_m_hilbertBasis`.
+4. Each literal `V_n_m i n` maps a.e. to the existing forward Fourier transform `𝓕 (logWindowZeroExtendedMode i n)`.
+5. The proof of target orthonormality directly consumes the existing public source-mode correlation controls and their exact `2π` convention.
+6. No statement claims that the arbitrary-vector image equals the classical integral Fourier transform of a separately defined zero extension. The current identity requires only the exact all-vector linear isometry plus literal mode-image law.
+7. No associated graph/domain/compression/numerator claim is present.
+8. The helper declarations may be private in production if lawful.
+9. If TRY, choose exactly one production path, exact imports, exact public/private surface, exact byte candidate, exact axiom contract, and production-only plants.
+10. If you require a stronger arbitrary-vector classical-Fourier theorem before this node counts, return one precise STOP and state the smallest extra theorem; do not silently strengthen the tested statement.
+
+Preferred production path if accepted:
+
+```text
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierL2Isometry.lean
+```
+
+## Binary boundary
+
+```yaml
+TRY_success_code: GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_PROVED
+STOP_code_if_exact_test_still_insufficient: GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_STILL_MISSING
+B3_0K: CLOSED
+B3_0L: PREFLIGHT_ONLY
+B3_0: OPEN
+AMBIENT_SOURCE_WEIL_FORM: OPEN
+ASSOCIATED_OPERATOR_GRAPH: OPEN
+FORM_DOMAIN: OPEN
+OPERATOR_DOMAIN: OPEN
+COMPRESSION_IDENTITY: OPEN
+CONTINUUM_NUMERATOR: OPEN
+H4A1B: OPEN
+CHECKPOINTS_CLOSED: 0
+CHECKPOINTS_REMAINING: 10
+ROUTE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+```
