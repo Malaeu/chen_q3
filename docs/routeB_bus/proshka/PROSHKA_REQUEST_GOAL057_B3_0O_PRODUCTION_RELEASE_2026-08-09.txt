@@ -1,0 +1,383 @@
+# Goal 057 B3.0O — shifted archimedean square-root weight production-release adjudication
+
+Read this attached `.txt` byte-for-byte in the same living Goal 057 phase chat.
+Return exactly one Markdown verdict after natural completion.
+
+Adjudicate exactly one binary question:
+
+May Codex materialize the exact already-preflighted 2116-byte B3.0O scratch
+candidate byte-for-byte as the single production file
+
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSqrtWeight.lean
+
+then rerun the full production validation, update the canonical/mirror Goal 057
+control artifacts, close only B3.0O, commit only owned paths, push rh_clean, and
+leave B3.0P unselected and unauthorized?
+
+This request does not authorize B3.0P, a form domain, D0.2 equality, an ambient
+form/operator, W02/Prime extensions, compression, the continuum numerator,
+H4a1b, or any decrement of the ten-checkpoint ledger.
+
+## 1. Source lock
+
+repo: Malaeu/chen_q3
+branch: rh_clean
+
+HEAD:
+745c00672781a01ce0d0878f95ebe91ca1bbc7e3
+
+origin/rh_clean:
+745c00672781a01ce0d0878f95ebe91ca1bbc7e3
+
+unrelated staged patch SHA256:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+canonical execution state SHA256:
+4af6818c347d971c56ce3d7c837db351fc6dea0c62962e5354f465194c58f567
+
+canonical route state SHA256:
+bf72ee2e04157e946aaf34aa124c13d5ad9038992cd43a4e4d431989e54e5974
+
+current state:
+GOAL_057_B3_0N_ARCH_SYMBOL_EXPLICIT_GLOBAL_LOWER_BOUND_PROVED_NEXT_NODE_ADJUDICATION_PENDING
+
+current stage:
+RB-GOAL-057-B3-0N-CLOSED
+
+current obligation:
+GOAL057_B3_0_POST_N_NEXT_NODE_ADJUDICATION
+
+current checkpoint:
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+
+## 2. Controlling post-N transaction
+
+request:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0_POST_N_NEXT_NODE_ADJUDICATION_2026-08-09.txt
+
+request SHA256:
+6166f58c224bcfd7e3e311918b503276816ed235e4c6aab9900ff7fb603d31ef
+
+request bytes: 9598
+request wc-lines: 273
+request final LF: true
+
+verdict:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_N_NEXT_NODE_ADJUDICATION_2026-08-09.md
+
+verdict SHA256:
+176f51fef761271f21317de5dc83ca25e7c02752dadffd41e8bd7844a468bcba
+
+verdict bytes: 33060
+verdict wc-lines: 1001
+verdict final LF: true
+
+operative ruling from that verdict:
+TRY_GOAL057_B3_0O_SHIFTED_ARCH_SQRT_WEIGHT_PREFLIGHT
+
+production authorized there: false
+tracked repository mutation authorized there: false
+
+## 3. Exact scratch candidate and preflight
+
+scratch file:
+q3.lean.aristotle/Goal057B3_0O_ShiftedSqrtMultiplier_Scratch.lean
+
+SHA256:
+b1641e36554b66131bb04b14b606b94557a8f004a686fad73b51378e72360bba
+
+bytes: 2116
+wc-lines: 59
+final LF: true
+
+direct command:
+cd q3.lean.aristotle
+lake env lean Goal057B3_0O_ShiftedSqrtMultiplier_Scratch.lean
+
+direct Lean exit: 0
+
+direct axiom output:
+- sourceArchimedeanShiftedSqrtWeight:
+  [propext, Classical.choice, Quot.sound]
+- sourceArchimedeanShiftedSqrtWeight_continuous:
+  [propext, Classical.choice, Quot.sound]
+- sourceArchimedeanShiftedSqrtWeight_measurable:
+  [propext, Classical.choice, Quot.sound]
+- sourceArchimedeanShiftedSqrtWeight_nonneg:
+  [propext, Classical.choice, Quot.sound]
+- sourceArchimedeanShiftedSqrtWeight_sq:
+  [propext, Classical.choice, Quot.sound]
+
+check output fingerprint SHA256:
+3216b600411a462841207e5c87fc7092c1446f4db09cb7a8e7f3cc456e4a2510
+
+public square theorem type fingerprint SHA256:
+3aeda0d18a5d21ced5d98bbae0f3e3ad99c2688ebb900cbe6efde679941abcd0
+
+exact public square theorem type:
+Q3.RouteB.D0Pstar.sourceArchimedeanShiftedSqrtWeight_sq (t : ℝ) :
+  Q3.RouteB.D0Pstar.sourceArchimedeanShiftedSqrtWeight t ^ 2 =
+    Q3.RouteB.D0Pstar.sourceArchimedeanMultiplier t +
+      (|Real.log π| + Real.log 4 + 6)
+
+direct B3.0N dependency fingerprint SHA256:
+923f9a7f0cbb6a8f28be13b0101944a9a8a183324c9391b4f58d90533b11edf7
+
+dependency source:
+  exact Real.sq_sqrt
+    (sourceArchimedeanMultiplier_add_explicitShift_nonneg t)
+
+exact imports: 2
+- Q3.Proofs.RouteB.D0PstarExactArchSymbolLowerBound
+- Q3.Proofs.A_Star_Properties
+
+public surface:
+- definitions: 1
+  - sourceArchimedeanShiftedSqrtWeight
+- theorems: 4
+  - sourceArchimedeanShiftedSqrtWeight_continuous
+  - sourceArchimedeanShiftedSqrtWeight_measurable
+  - sourceArchimedeanShiftedSqrtWeight_nonneg
+  - sourceArchimedeanShiftedSqrtWeight_sq
+
+private surface:
+- definitions: 0
+- theorems: 1
+  - sourceArchimedeanMultiplier_continuous_for_shiftedSqrt
+
+forbidden-token matches: 0
+
+## 4. Exact candidate bytes
+
+```lean
+import Q3.Proofs.RouteB.D0PstarExactArchSymbolLowerBound
+import Q3.Proofs.A_Star_Properties
+
+noncomputable section
+
+open scoped Real
+
+namespace Q3.RouteB.D0Pstar
+
+private theorem sourceArchimedeanMultiplier_continuous_for_shiftedSqrt :
+    Continuous sourceArchimedeanMultiplier := by
+  have hrepr :
+      sourceArchimedeanMultiplier =
+        fun t : ℝ => -Q3.a_star t / (2 * Real.pi) := by
+    funext t
+    exact sourceArchimedeanMultiplier_eq_neg_aStar_scaled t
+  rw [hrepr]
+  exact Q3.a_star_continuous_thm.neg.div_const (2 * Real.pi)
+
+/-- The nonnegative square-root weight attached to the exact finite shift of
+B3.0N.  This is form-domain data only; it is not an ambient source form or an
+associated operator. -/
+noncomputable def sourceArchimedeanShiftedSqrtWeight (t : ℝ) : ℝ :=
+  Real.sqrt
+    (sourceArchimedeanMultiplier t +
+      (|Real.log Real.pi| + Real.log 4 + 6))
+
+theorem sourceArchimedeanShiftedSqrtWeight_continuous :
+    Continuous sourceArchimedeanShiftedSqrtWeight := by
+  simpa [sourceArchimedeanShiftedSqrtWeight] using
+    Real.continuous_sqrt.comp
+      (sourceArchimedeanMultiplier_continuous_for_shiftedSqrt.add
+        continuous_const)
+
+theorem sourceArchimedeanShiftedSqrtWeight_measurable :
+    Measurable sourceArchimedeanShiftedSqrtWeight :=
+  sourceArchimedeanShiftedSqrtWeight_continuous.measurable
+
+theorem sourceArchimedeanShiftedSqrtWeight_nonneg
+    (t : ℝ) :
+    0 ≤ sourceArchimedeanShiftedSqrtWeight t := by
+  exact Real.sqrt_nonneg _
+
+theorem sourceArchimedeanShiftedSqrtWeight_sq
+    (t : ℝ) :
+    sourceArchimedeanShiftedSqrtWeight t ^ 2 =
+      sourceArchimedeanMultiplier t +
+        (|Real.log Real.pi| + Real.log 4 + 6) := by
+  unfold sourceArchimedeanShiftedSqrtWeight
+  exact Real.sq_sqrt
+    (sourceArchimedeanMultiplier_add_explicitShift_nonneg t)
+
+#print axioms sourceArchimedeanShiftedSqrtWeight
+#print axioms sourceArchimedeanShiftedSqrtWeight_continuous
+#print axioms sourceArchimedeanShiftedSqrtWeight_measurable
+#print axioms sourceArchimedeanShiftedSqrtWeight_nonneg
+#print axioms sourceArchimedeanShiftedSqrtWeight_sq
+
+end Q3.RouteB.D0Pstar
+```
+
+The fenced content above is the exact 2116-byte candidate with final LF.
+
+## 5. Nine mandatory judges
+
+P057_B3_0O_1_EXACT_SHIFT:
+mutant changed +6 to +7 in the weight while retaining the exact public square target.
+result: LEAN_REJECTED with type mismatch.
+stop: B3_0O_EXACT_SHIFT_MISMATCH.
+
+P057_B3_0O_2_TOTALIZED_SQRT:
+independent negative input control proved sqrt(-1)^2 = 0 and sqrt(-1)^2 != -1;
+mutant replaced Real.sq_sqrt hnonneg with unconditional Real.sq_sqrt'.
+result: LEAN_REJECTED; result type was equality to max radicand 0.
+stop: B3_0O_TOTALIZED_SQRT_TRUNCATION.
+
+P057_B3_0O_3_ASTAR_SIGN:
+mutant changed -Q3.a_star/(2*pi) to +Q3.a_star/(2*pi).
+result: LEAN_REJECTED by exact normalization theorem.
+stop: B3_0O_ASTAR_SIGN_ORIENTATION_MISMATCH.
+
+P057_B3_0O_4_FORM_VS_OPERATOR_WEIGHT:
+mutant replaced the square-root weight by the full shifted symbol.
+result: LEAN_REJECTED; square target remained unsolved.
+stop: B3_0O_FORM_OPERATOR_WEIGHT_COLLAPSE.
+
+P057_B3_0O_5_ABS_SURROGATE:
+mutant replaced the radicand by abs(sourceArchimedeanMultiplier).
+result: LEAN_REJECTED; exact shifted target remained unsolved.
+stop: B3_0O_ABS_OR_MAX_SURROGATE.
+
+P057_B3_0O_6_GLOBAL_QUANTIFIER:
+internally valid mutant restricted the weight and square theorem to n : Nat.
+result: semantic signature judge REJECTED.
+stop: B3_0O_GLOBAL_QUANTIFIER_LOST.
+
+P057_B3_0O_7_PREMISE_SURROGATE:
+internally valid mutant added hdesired instead of consuming B3.0N.
+result: dependency judge REJECTED; direct B3.0N theorem use count was zero.
+stop: SURROGATE_BY_PREMISE_NOT_SOURCE_CONSTRUCTION.
+
+P057_B3_0O_8_DEPENDENCY:
+mutant added a Q3.Proofs.PrimeCert generated import.
+result: dependency judge REJECTED before Lean invocation.
+stop: ROUTEB_GENERATED_PSD_DEPENDENCY_LEAK.
+
+P057_B3_0O_9_SCOPE:
+internally valid mutant added SourceWeilFormDomain.
+result: scope judge REJECTED.
+stop: B3_0O_SCOPE_SMUGGLE.
+
+ALL_NINE_JUDGES: PASS
+MUTATION_ARTIFACTS_REMAINING: 0
+
+## 6. Hygiene
+
+routeb_status.py --check: PASS
+git diff --check: PASS
+tracked production mutation: NONE
+route state mutation: NONE
+unrelated staged patch SHA256: UNCHANGED
+
+knowledge query before the production object:
+"Goal057 B3.0O shifted archimedean square root weight Real.sqrt exact square form domain primitive"
+result: no hits in any layer.
+
+The only untracked scratch candidate is the exact locked 2116-byte file.
+The post-N request and verdict are archived canonical+mirror.
+
+## 7. Requested binary production ruling
+
+If valid, authorize exactly:
+
+OPERATIVE_CLASS:
+TRY_GOAL057_B3_0O_SHIFTED_ARCH_SQRT_WEIGHT_PRODUCTION
+
+MODE:
+IMPLEMENT_EXACTLY_ONE_PRODUCTION_CHILD
+
+CREATE_ONLY:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSqrtWeight.lean
+
+MATERIALIZE:
+byte-for-byte from the exact scratch candidate.
+
+After materialization require:
+- exact SHA256 b1641e36554b66131bb04b14b606b94557a8f004a686fad73b51378e72360bba;
+- 2116 bytes, 59 wc-lines, final LF;
+- direct Lean;
+- target lake build;
+- full lake build;
+- bash scripts/q3_check.sh;
+- exact import/public/private surface and forbidden-token audits;
+- exact square theorem type and B3.0N dependency fingerprints;
+- exact axiom gates for all five public declarations;
+- all nine production judges and zero remaining mutants;
+- proof DB import and repeat-import idempotence;
+- all current orchestration tests;
+- strict Spine PASS;
+- semantic index PASS;
+- knowledge.db, aristotle_proofs.db, observability.db integrity checks;
+- routeb_status.py --check PASS;
+- git diff --check PASS;
+- staged patch SHA unchanged;
+- route state updated last;
+- canonical/mirror request, verdict, Goal 057 closeout, execution state, and route state;
+- owned-path-only commit and push to origin/rh_clean.
+
+Close only:
+GOAL057_B3_0O_SHIFTED_ARCH_SQRT_WEIGHT_PROVED
+
+Leave open:
+- B3.0;
+- H4a1b;
+- current coarse checkpoint ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE;
+- coarse checkpoint ledger at 0/10.
+
+After a green production closeout, set the next obligation only to a fresh
+post-O next-node adjudication. Do not select or authorize B3.0P in this verdict.
+
+If invalid, return the first exact defect and:
+
+GOAL057_B3_0O_SHIFTED_ARCH_SQRT_WEIGHT_PRODUCTION_RELEASE_BLOCKED
+
+## 8. Hard boundaries
+
+NOT AUTHORIZED:
+- change any candidate byte;
+- create more than the one production file;
+- select or authorize B3.0P;
+- define a shifted form domain;
+- define sourceWeilSesquilinearForm;
+- define SourceWeilFormDomain;
+- define SourceWeilAssociatedGraph;
+- define SourceWeilOperatorDomain;
+- define sourceWeilAssociatedOperator;
+- use the full shift as the form-domain weight;
+- infer all-H_m weighted membership from modewise results;
+- assert equality with D0.2;
+- construct whole-space W02 or Prime extensions;
+- substitute the finite Riesz operator for an ambient operator;
+- assert selected-kTrial operator-domain membership;
+- assert compression or invariance;
+- claim the continuum numerator;
+- invoke or close H4a1b;
+- decrement the ten-checkpoint ledger;
+- touch frozen parent-extract schedules;
+- create Bus 010;
+- release Goal 055;
+- unfreeze G2_CCM;
+- submit Aristotle;
+- promote Route B;
+- make a PX or RH claim;
+- open a fresh chat.
+
+FINAL BOUNDARY:
+route: CHALLENGER / NOT_RH
+active bus goal: 057
+Bus 010: VOID
+Goal 055: HOLD
+G2_CCM: FROZEN
+current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+H4a1b: OPEN
+Aristotle submission: NONE
+route promotion: false
+PX/RH claim: NOT_MADE
