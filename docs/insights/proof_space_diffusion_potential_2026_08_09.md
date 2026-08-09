@@ -315,29 +315,86 @@ surrogate without theorem power»), с точным кодом
    `chi0`/`chi4`, диапазон суммирования `E*`), одинаково повторённая в обоих
    моих путях, прошла бы все текущие гейты.
 
-Различитель (дешёвый, не выполнен): независимая вторая численная реализация
-PSWF (например, shooting-метод по ОДУ вместо диагонализации в базисе
-Лежандра) на маленькой ячейке `(m=3, N=4)` — если `a` там тоже аномально
-мало относительно спектра своего блока B, это говорит в пользу (1); если
-нет — в пользу (2). Не запускал: протокол директивы — один прогон, без
-дотюнивания после результата, и различитель уже относится к следующему
-шагу, а не к текущему preflight.
-
 ```text
 AUTOPSY: dropped=COUPLING; note=cross-block operator norm epsilon exceeds spectral gap delta (rho=1.41>1); graph min-conductance cut is not a Schur-safe decomposition here
 AUTOPSY: dropped=SPECTRAL_ORDERING; note=conductance-optimal cut and gap-optimal cut disagree; low graph conductance (0.031) coexists with rho>1
 ```
 
+### 7.3.1 Различитель выполнен — GOAL057_SOURCE_TRIAL_RAYLEIGH_RESIDUAL_SAME_CELL_CHECK
+
+По вердикту Прошки (2026-08-09) собран и прогнан `same_cell_check.py` на той
+же клетке (13,60), том же замороженном `S={0..27}` — без нового Fiedler,
+без нового N. Инструмент: `proof_geometry/spectral_cut/same_cell_check.py`,
+пины в `PRECOMMIT.md`, коммиты `bfd0bce` → фикс `9c63b82` (гейтинг Phase C
+был привязан к `a_zero`, из-за чего независимая проверка не запускалась
+даже для простой ратификации kill — R1 у Прошки явно требует «both trial
+reconstructions»; починка проводки, не смена порогов) → финал `631ca90`.
+
+```text
+Phase 0 (dps=30, уже существующие объекты):
+  a=2.889e-32  r_full=5.299e-30  nu=1.051e-30
+
+Phase A/B (лестница точности, тот же замороженный S):
+  dps=60: a=1.13612e-58  r_full/nu стабильны  rho=1.40803582301147
+  dps=90: a=1.13437e-58  r_full/nu совпадают с dps=60 до 12 значащих цифр
+  ledger: a_W02=1.512  a_WR=1.451  a_Prime=0.061
+          (a_WR+a_Prime=1.51195 ≈ a_W02 — сокращение большого с большим,
+          не «все три куска сами по себе малы»)
+
+Phase C (независимая реконструкция, Чебышёв-коллокация в s=t²,
+без импорта Лежандр-эйгенвекторов, отдельная квадратура):
+  projective overlap gap = 3.39e-43   (порог 1e-8, прошло на 35 порядков)
+  a_ind  = 1.13617e-58   (совпадает с dps=60/90 до 4-5 значащих цифр)
+  nu_ind = 4.5545389301e-31   (совпадает с dps=60/90 до 12 значащих цифр)
+  rho_ind = 1.40803582301147  (совпадает с оригинальной реализацией ДО
+                                ВСЕХ показанных цифр)
+
+TERMINAL: GOAL057_SPECTRAL_CUT_KILL_RATIFIED_AFTER_INDEPENDENT_CHECK
+kill_ratified: true
+elapsed: 2029s
+```
+
+**Вывод.** `rho≥1` подтверждён теперь не одной реализацией на одном уровне
+точности, а двумя полностью независимыми численными методами (диагонализация
+в базисе Лежандра vs Чебышёв-коллокация, разные квадратуры) на двух уровнях
+точности — совпадение `rho_ind` с оригиналом до всех показанных цифр и
+`nu`/остатка до 12 значащих цифр закрывает вопрос «это баг моей единственной
+реализации?» отрицательно. R1 (`rho≥1 at both precision levels and both
+trial reconstructions`, ровно формулировка Прошки) выполнен буквально.
+Kill спектрального разреза на (13,60) теперь на существенно более твёрдой
+основе, чем после первого прогона.
+
+Отдельно — про сам феномен `a≈0`: он тоже подтверждён независимо (`nu_ind`
+совпадает с `nu` до 12 цифр), то есть это не артефакт одной численной цепочки.
+Но строгая буква протокола для ярлыка «near-kernel dossier» (R2) требовала,
+чтобы `a` именно *убывало* с ростом точности (проверка `|a|≤10⁻⁽ᵈᵖˢ⁻¹⁰⁾`) — а
+оно вместо этого стабилизировалось на фиксированном крошечном значении между
+dps=60 и dps=90 и дальше не падало. Это третье поведение, не предусмотренное
+precommit-формулой (которая предполагала «либо шум точности, либо не мало
+вовсе»), поэтому R2/R3 формально не адъюдицированы этим прогоном — вопрос
+«структурный null-vector или просто устойчивое крошечное число» остаётся
+**открытым**, не решённым, несмотря на двойную независимую проверку остатка.
+Не превращаю это в премису ни для чего дальше.
+
+```text
+AUTOPSY: dropped=NORMALIZATION; note=precommitted zero-consistency rule |a|<=10^-(dps-10) assumed a either shrinks with precision (floating-point noise) or stays O(1) (not small); observed third behavior — a stabilizes at a fixed tiny value (~1.13e-58) across dps 60->90 — was not anticipated by the rule, so R2/R3 remain unadjudicated despite independently-confirmed tiny residual
+```
+
 ### 7.4 Кандидат-запись для knowledge.db (не внесена — см. §5 про write-lock)
 
 `subject=GOAL057 even-sector Fiedler spectral cut at (13,60);
-status=KILLED_AT_PREFLIGHT;
-stop_code=GOAL057_SPECTRAL_CUT_LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER;
+status=KILLED_RATIFIED_AFTER_INDEPENDENT_CHECK;
+stop_code=GOAL057_SPECTRAL_CUT_LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER,
+GOAL057_SPECTRAL_CUT_KILL_RATIFIED_AFTER_INDEPENDENT_CHECK;
 forbidden_future_move=trust graph conductance alone as a Schur-decomposition
 signal without checking rho=epsilon/delta<=0.25 on the actual signed block
 operator; scope=cell (13,60), even sector only, N=90/120 not reached;
-evidence=proof_geometry/spectral_cut/results_spectral_cut.json@<commit>;
-open_question=a_N near-zero anomaly, see §7.3, unresolved`.
+evidence=proof_geometry/spectral_cut/results_same_cell_check.json@631ca90;
+open_question=a_N stabilizes at ~1.13e-58 across dps 60->90 instead of
+shrinking with precision, independently confirmed by a second PSWF solver
+(overlap gap 3.4e-43, nu agrees to 12 sig figs) but the precommitted
+zero-consistency rule does not classify this behavior; near-kernel-vs-
+cancellation (R2 vs R3) left open, see §7.3.1, not a premise for anything`.
 
 ### 7.5 Что дальше не делаю без решения владельца
 
