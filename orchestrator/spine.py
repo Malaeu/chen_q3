@@ -9,9 +9,13 @@ the conductor zone (orchestrator/) and only reads elsewhere.
 
 Usage:
     ./orchestrator/spine.py            # write SPINE_STATE.json + SPINE_VIEW.md
-    ./orchestrator/spine.py --refresh  # refresh sensors, DB projection and Spine
-    ./orchestrator/spine.py --stdout   # print instead of writing
-    ./orchestrator/spine.py --strict --reason session-start
+    ./orchestrator/spine.py --refresh  # write upstream refreshes before validation
+    ./orchestrator/spine.py --stdout   # read-only unless combined with --refresh
+    ./orchestrator/spine.py --strict --stdout --reason session-start
+
+P9 control/runtime/operator validation is unconditional in every mode.
+``--strict`` adds the semantic-index plant gate and a receipt; it does not turn
+otherwise absent P9 validation on.
 """
 
 from __future__ import annotations
@@ -20,16 +24,22 @@ import argparse
 import datetime as _dt
 import hashlib
 import json
+import os
 import sqlite3
 import re
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
+
+import yaml
 
 try:
     from orchestrator import observability as _observability
+    from orchestrator import kb as _kb
 except ModuleNotFoundError:  # direct `python3 orchestrator/spine.py`
     import observability as _observability
+    import kb as _kb
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "orchestrator" / "state" / "SPINE_VIEW.md"
@@ -45,6 +55,9 @@ SEMANTIC_INDEX_STATUS = REPO / "orchestrator" / "state" / "SEMANTIC_INDEX_STATUS
 OBSERVABILITY_DB = (
     REPO / "q3.lean.aristotle" / "aristotle_db" / "observability.db"
 )
+COGNITIVE_OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.md"
+TOOL_MANIFEST = REPO / "docs" / "cartographer" / "TOOLS.yaml"
+TOOL_MANIFEST_MIRROR = Path("/Users/emalam/GitHub/codex_specs/TOOLS.yaml")
 
 PHASE_KEY_FIELDS = (
     "route_id",
@@ -405,6 +418,83 @@ def _read_runtime() -> dict[str, object]:
         _fail("EXPLORATION_RUNTIME_MISSING", f"invalid JSON: {exc}")
 
 
+def record_delegated_review(
+    runtime: dict[str, object], event: dict[str, object],
+) -> tuple[dict[str, object], bool]:
+    """Record one review boundary without hand-editing CHANNEL_RUNTIME.
+
+    The caller supplies both the phase-local and global meter indices.  This
+    makes missing or reordered events fail closed instead of silently
+    normalizing whichever counter happened to be edited last.
+    """
+    validate_runtime(runtime)
+    required = {
+        "request_message_id", "conversation_id", "boundary_id",
+        "adjudicated_pin", "phase_call_index", "meter_call_index",
+    }
+    if set(event) != required:
+        _fail("EXPLORATION_RUNTIME_MISSING", "review event fields are incomplete")
+    for field in ("request_message_id", "conversation_id", "boundary_id", "adjudicated_pin"):
+        if not isinstance(event[field], str) or not str(event[field]).strip():
+            _fail("EXPLORATION_RUNTIME_MISSING", f"review event {field} is empty")
+    for field in ("phase_call_index", "meter_call_index"):
+        if not isinstance(event[field], int) or int(event[field]) <= 0:
+            _fail("EXPLORATION_RUNTIME_MISSING", f"review event {field} is invalid")
+
+    updated = json.loads(json.dumps(runtime))
+    ledger = updated.setdefault("recorded_review_events", [])
+    if not isinstance(ledger, list):
+        _fail("EXPLORATION_RUNTIME_MISSING", "recorded_review_events is not a list")
+    request_id = str(event["request_message_id"])
+    for existing in ledger:
+        if not isinstance(existing, dict):
+            _fail("EXPLORATION_RUNTIME_MISSING", "recorded review event is not an object")
+        if existing.get("request_message_id") == request_id:
+            if existing != event:
+                _fail("EXPLORATION_REVIEW_DUPLICATE", request_id)
+            return updated, False
+
+    phase = updated.get("active_proshka_phase")
+    meter = updated.get("meter")
+    if not isinstance(phase, dict) or phase.get("status") != "ACTIVE":
+        _fail("EXPLORATION_RUNTIME_MISSING", "no active Proshka phase")
+    if event["conversation_id"] != phase.get("conversation_id"):
+        _fail("EXPLORATION_CHAT_FANOUT", str(event["conversation_id"]))
+    expected_phase = int(phase.get("proshka_calls", 0)) + 1
+    expected_meter = int(meter.get("delegated_strategic_review_calls", 0)) + 1
+    if event["phase_call_index"] != expected_phase or event["meter_call_index"] != expected_meter:
+        _fail(
+            "EXPLORATION_RUNTIME_MISSING",
+            f"review meter drift: expected phase={expected_phase},meter={expected_meter}",
+        )
+
+    phase["proshka_calls"] = event["phase_call_index"]
+    phase["last_boundary_id"] = event["boundary_id"]
+    phase["last_adjudicated_pin"] = event["adjudicated_pin"]
+    meter["delegated_strategic_review_calls"] = event["meter_call_index"]
+    ledger.append(dict(event))
+    validate_runtime(updated)
+    return updated, True
+
+
+def write_runtime_atomic(runtime: dict[str, object], path: Path = CHANNEL_RUNTIME) -> None:
+    """Validate and atomically replace one canonical runtime JSON file."""
+    validate_runtime(runtime)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(runtime, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    with tempfile.NamedTemporaryFile(
+        "w", encoding="utf-8", dir=path.parent, prefix=f".{path.name}.", delete=False,
+    ) as handle:
+        pending = Path(handle.name)
+        handle.write(payload)
+        handle.flush()
+        os.fsync(handle.fileno())
+    try:
+        os.replace(pending, path)
+    finally:
+        pending.unlink(missing_ok=True)
+
+
 def _sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -429,7 +519,7 @@ def validate_behavior_registry(
     if not isinstance(rows, list):
         _fail("BEHAVIOR_CONTROL_MISSING", "controls is not a list")
     active = [row for row in rows if isinstance(row, dict) and row.get("status") == "ACTIVE"]
-    expected = {"FABLE_MYTHOS", "PROSHKA", "EXECUTOR"}
+    expected = {"FABLE_MYTHOS", "PROSHKA", "CODEX_EXECUTOR"}
     for body in expected:
         matches = [row for row in active if row.get("body") == body]
         if not matches:
@@ -465,10 +555,7 @@ def validate_behavior_registry(
             "existing_entry_gate": str(row["existing_entry_gate"]),
             "spine_wiring": str(row["spine_wiring"]), "status": "ACTIVE",
         })
-    pointer_paths = (repo / "AGENTS.md", repo / "CLAUDE.md", repo / "q3.lean.aristotle/CLAUDE.md")
-    for pointer in pointer_paths:
-        text = pointer.read_text(encoding="utf-8") if pointer.is_file() else ""
-        validate_thin_pointer_text(text, str(pointer.relative_to(repo)))
+    validate_codex_bootstrap(repo=repo)
     addendum = repo / "docs/EXECUTOR_ARSENAL_ADDENDUM_2026-08-04.md"
     addendum_text = addendum.read_text(encoding="utf-8") if addendum.is_file() else ""
     if "STATUS: SUPERSEDED_BY_CODEX_CONTROL" not in addendum_text or "ACTIVE_POLICY: false" not in addendum_text:
@@ -490,6 +577,18 @@ def validate_thin_pointer_text(text: str, label: str = "pointer") -> str:
     return "THIN_POINTER_VALID"
 
 
+def validate_codex_bootstrap(*, repo: Path = REPO) -> str:
+    """Validate only the bootstrap that Codex actually reads.
+
+    Claude Code is an independent observer/administrator with its own CLAUDE.md
+    policy. Its files are deliberately outside Codex startup validation.
+    """
+    pointer = repo / "AGENTS.md"
+    text = pointer.read_text(encoding="utf-8") if pointer.is_file() else ""
+    validate_thin_pointer_text(text, str(pointer.relative_to(repo)))
+    return "CODEX_BOOTSTRAP_VALID"
+
+
 def _validate_active_control() -> None:
     if not CONTROL.is_file():
         _fail("EXPLORATION_CONTOUR_ORPHANED", "docs/CODEX_CONTROL.md is missing")
@@ -497,6 +596,9 @@ def _validate_active_control() -> None:
     required = (
         "CONTROL_ID: Q3_EXECUTOR_CONTROL",
         "STATUS: ACTIVE",
+        "ROLE: CODEX_EXECUTOR",
+        "BODIES:\n  - CODEX_MAC",
+        "CLAUDE_CODE_INDEPENDENT_OBSERVER",
         "TRIGGER_OWNER: Codex",
         "behavior_control_and_bounded_exploration",
         "There is exactly one mathematical owner boundary",
@@ -516,6 +618,12 @@ def _validate_active_control() -> None:
     missing = [token for token in required if token not in text]
     if missing:
         _fail("EXPLORATION_CONTOUR_ORPHANED", f"missing control tokens: {missing}")
+    try:
+        control_header = text.split("```yaml", 1)[1].split("```", 1)[0]
+    except IndexError:
+        _fail("EXPLORATION_CONTOUR_ORPHANED", "missing control YAML header")
+    if "CLAUDE.md" in control_header or "CLAUDE_CODE_LINUX" in control_header:
+        _fail("BEHAVIOR_BODY_MULTIROLE", "Claude bootstrap leaked into Codex control")
     owner_classes = set(re.findall(
         r"^OWNER_AUTHORITY_REQUIRED_[A-Z0-9_]+$", text, re.MULTILINE))
     if owner_classes != {"OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM"}:
@@ -524,15 +632,173 @@ def _validate_active_control() -> None:
         _fail("MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH", "removed failure code remains")
 
 
+def _live_cognitive_operator_tokens() -> list[str]:
+    tokens: list[str] = []
+    proshka_dir = REPO / "docs" / "routeB_bus" / "proshka"
+    if not proshka_dir.is_dir():
+        return tokens
+    pattern = re.compile(
+        r"^(?:cognitive_operator_used|COGNITIVE_OPERATOR):\s*([A-Z][A-Z0-9_]*)\s*$",
+        re.MULTILINE,
+    )
+    for path in sorted(proshka_dir.glob("*.md")):
+        tokens.extend(pattern.findall(path.read_text(encoding="utf-8", errors="replace")))
+    return tokens
+
+
+def validate_cognitive_operator_tokens(tokens: list[str], canonical: set[str]) -> None:
+    unknown = sorted(set(tokens) - canonical)
+    if unknown:
+        _fail("COGNITIVE_OPERATOR_REGISTRY_UNAVAILABLE_OR_INVALID",
+              f"unknown live cognitive operators: {unknown}")
+
+
+def validate_cognitive_operator_registry(
+    *, registry_path: Path = COGNITIVE_OPERATOR_REGISTRY,
+    db_path: Path = KNOWLEDGE_DB,
+    live_tokens: list[str] | None = None,
+) -> dict[str, object]:
+    try:
+        payload = _kb.load_operator_registry(registry_path)
+        canonical = {row["token"] for row in payload["canonical_enum"]["operators"]}
+        legacy = {row["token"] for row in payload["legacy_enum"]["operators"]}
+        expected_crosswalk = {
+            (row["legacy_token"], row["relation"], row["canonical_token"], row["note"])
+            for row in payload["crosswalk"]
+        }
+        if not db_path.is_file():
+            raise ValueError(f"knowledge database missing: {db_path}")
+        conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True)
+        try:
+            db_canonical = {row[0] for row in conn.execute(
+                "SELECT token FROM cognitive_operator_registry WHERE vocabulary='PROSHKA_M2'")}
+            db_legacy = {row[0] for row in conn.execute(
+                "SELECT token FROM cognitive_operator_registry "
+                "WHERE vocabulary='LEGACY_CONTROL_ACTION'")}
+            db_crosswalk = set(conn.execute(
+                "SELECT legacy_token,relation,canonical_token,note "
+                "FROM cognitive_operator_crosswalk"))
+        finally:
+            conn.close()
+        if db_canonical != canonical or db_legacy != legacy or db_crosswalk != expected_crosswalk:
+            raise ValueError("operator registry file/database drift")
+        validate_cognitive_operator_tokens(
+            _live_cognitive_operator_tokens() if live_tokens is None else live_tokens,
+            canonical,
+        )
+        return {"schema": payload["schema"], "canonical": 8, "legacy": 9, "crosswalk": 9}
+    except (OSError, ValueError, sqlite3.DatabaseError, KeyError, TypeError) as exc:
+        _fail("COGNITIVE_OPERATOR_REGISTRY_UNAVAILABLE_OR_INVALID", str(exc))
+
+
+def validate_tool_manifest() -> dict[str, object]:
+    """Validate the live tool contract and its byte-identical external mirror."""
+    if not TOOL_MANIFEST.is_file() or not TOOL_MANIFEST_MIRROR.is_file():
+        _fail("TOOL_MANIFEST_INVALID", "canonical tool manifest or mirror is missing")
+    canonical = TOOL_MANIFEST.read_bytes()
+    mirror = TOOL_MANIFEST_MIRROR.read_bytes()
+    if canonical != mirror:
+        _fail("TOOL_MANIFEST_INVALID", "canonical tool manifest and mirror differ")
+    try:
+        data = yaml.safe_load(canonical.decode("utf-8"))
+    except (UnicodeDecodeError, yaml.YAMLError) as exc:
+        _fail("TOOL_MANIFEST_INVALID", f"TOOLS.yaml cannot be parsed: {exc}")
+    required_sections = {
+        "schema",
+        "meta",
+        "tool_contract",
+        "startup_contract",
+        "memory_event_routes",
+        "data_surfaces",
+        "tool_families",
+        "dynamic_queries",
+        "tool_lifecycle",
+        "known_hazards",
+    }
+    if not isinstance(data, dict) or data.get("schema") != "q3_tool_manifest.v2":
+        _fail("TOOL_MANIFEST_INVALID", "unsupported or missing tool manifest schema")
+    missing_sections = sorted(required_sections - set(data))
+    if missing_sections:
+        _fail("TOOL_MANIFEST_INVALID", f"missing sections: {', '.join(missing_sections)}")
+    families = data.get("tool_families")
+    if not isinstance(families, dict) or not families:
+        _fail("TOOL_MANIFEST_INVALID", "tool_families must be a nonempty mapping")
+    statuses = set(data.get("status_semantics", {}).get("values", []))
+    modes = set(data.get("mode_semantics", {}).get("values", []))
+    audiences = {"CODEX", "CLAUDE_CODE", "HUMAN"}
+    required_fields = {
+        "id", "status", "audience", "mode", "trigger", "writes",
+        "approval", "authority", "records_to", "last_verified",
+    }
+    seen: set[str] = set()
+    tool_count = 0
+    writer_count = 0
+    for family_id, family in families.items():
+        if not isinstance(family, dict) or not isinstance(family.get("tools"), list):
+            _fail("TOOL_MANIFEST_INVALID", f"family {family_id} has no tools list")
+        for tool in family["tools"]:
+            tool_count += 1
+            if not isinstance(tool, dict):
+                _fail("TOOL_MANIFEST_INVALID", f"family {family_id} contains a non-mapping tool")
+            missing = sorted(required_fields - set(tool))
+            if missing:
+                _fail(
+                    "TOOL_MANIFEST_INVALID",
+                    f"tool {tool.get('id', '<missing>')} lacks: {', '.join(missing)}",
+                )
+            tool_id = str(tool["id"])
+            if tool_id in seen:
+                _fail("TOOL_MANIFEST_INVALID", f"duplicate tool id: {tool_id}")
+            seen.add(tool_id)
+            if tool["status"] not in statuses or tool["mode"] not in modes:
+                _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} has unknown status or mode")
+            declared_audience = tool["audience"]
+            if (
+                not isinstance(declared_audience, list)
+                or not declared_audience
+                or any(item not in audiences for item in declared_audience)
+            ):
+                _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} has invalid audience")
+            if "path" not in tool and "paths" not in tool:
+                _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} has no path or paths")
+            if not any(key in tool for key in ("invoke", "read_invoke", "write_invoke")):
+                _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} has no invocation")
+            writes = tool["writes"]
+            if not isinstance(writes, bool):
+                _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} writes must be boolean")
+            if tool["mode"] == "READ_ONLY" and writes:
+                _fail("TOOL_MANIFEST_INVALID", f"read-only tool {tool_id} declares writes")
+            if writes and tool["approval"] == "NONE":
+                _fail("TOOL_MANIFEST_INVALID", f"writer {tool_id} has no approval gate")
+            writer_count += int(writes)
+    for event_id, route in data["memory_event_routes"].items():
+        if not isinstance(route, dict):
+            _fail("TOOL_MANIFEST_INVALID", f"memory route {event_id} is not a mapping")
+        run_ids = route.get("run", [])
+        if not isinstance(run_ids, list) or any(item not in seen for item in run_ids):
+            _fail("TOOL_MANIFEST_INVALID", f"memory route {event_id} names an unknown tool")
+    return {
+        "schema": data["schema"],
+        "family_count": len(families),
+        "tool_count": tool_count,
+        "writer_count": writer_count,
+        "sha256": hashlib.sha256(canonical).hexdigest(),
+    }
+
+
 def validate_p9a() -> dict[str, object]:
     _validate_active_control()
     controls = validate_behavior_registry()
     runtime = _read_runtime()
+    cognitive_operators = validate_cognitive_operator_registry()
+    tool_manifest = validate_tool_manifest()
     return {
         "control": "ACTIVE",
         "authority": runtime["mathematical_authority_mode"],
         "runtime": "VALID",
         "behavior_controls": controls,
+        "cognitive_operators": cognitive_operators,
+        "tool_manifest": tool_manifest,
     }
 
 SOURCES = {
@@ -543,6 +809,10 @@ SOURCES = {
     "obstruction_atlas": REPO / "Q3_OBSTRUCTION_ATLAS.md",
     "trick_atlas": REPO / "docs/RH_TRICK_ATLAS.md",
     "insights": REPO / "q3.lean.aristotle/docs/INSIGHTS.md",
+    "progress_log": REPO / "docs/Progress_Log.md",
+    "genealogy": REPO / "docs/GENEALOGY.md",
+    "recording_rules": REPO / "docs/RECORDING_RULES.md",
+    "tool_manifest": TOOL_MANIFEST,
     "cognitive_governor": REPO / "q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md",
     "bus_dir": REPO / "docs/routeB_bus",
 }
@@ -668,6 +938,18 @@ def _recent_insights(n: int = 8) -> list[str]:
     return [f"- {h}" for h in heads]
 
 
+def _recent_branch_decisions(n: int = 6) -> list[str]:
+    path = SOURCES["progress_log"]
+    if not path.exists():
+        return ["(Progress_Log.md missing)"]
+    heads = re.findall(
+        r"^##\s+(\d{4}-\d{2}-\d{2}(?:\s*→\s*\d{4}-\d{2}-\d{2})?\s+—\s+.+)$",
+        path.read_text(encoding="utf-8"),
+        re.MULTILINE,
+    )
+    return [f"- {head}" for head in heads[:n]] or ["(no branch decisions found)"]
+
+
 def _latest_exploration_closeouts(n: int = 5) -> list[sqlite3.Row]:
     if not KNOWLEDGE_DB.exists():
         return []
@@ -784,6 +1066,21 @@ def build_meta_corpus() -> dict[str, object]:
             "path": "qmd://q3_docs/", "authority": "RETRIEVAL_ONLY",
         },
         {
+            "id": "BRANCH_RATIONALE_JOURNAL", "kind": "reviewed_markdown",
+            "path": "docs/Progress_Log.md",
+            "authority": "CANONICAL_BRANCH_RATIONALE",
+        },
+        {
+            "id": "PROJECT_GENEALOGY", "kind": "reviewed_markdown",
+            "path": "docs/GENEALOGY.md",
+            "authority": "REVIEWED_HISTORICAL_TOPOLOGY",
+        },
+        {
+            "id": "TOOL_MANIFEST", "kind": "yaml_manifest",
+            "path": "docs/cartographer/TOOLS.yaml",
+            "authority": "CANONICAL_OPERATIONAL_TOOL_CATALOGUE",
+        },
+        {
             "id": "LITREVIEW_CORPUS", "kind": "documents_and_bibliography",
             "path": "docs/routeB_bus/litreview",
             "authority": "SOURCE_EVIDENCE_ONLY",
@@ -859,6 +1156,7 @@ def build_state() -> dict[str, object]:
             ["git", "rev-parse", "HEAD"], cwd=REPO, capture_output=True, text=True,
         ).stdout.strip() or "UNKNOWN",
         "behavior_controls": validation["behavior_controls"],
+        "tool_manifest": validation["tool_manifest"],
         "artifact_identities": validate_artifact_identities(),
         "runtime": runtime,
         "knowledge": _knowledge_counts(),
@@ -950,6 +1248,25 @@ def _semantic_index_view(state: dict[str, object]) -> list[str]:
 
 def _staleness_warnings() -> list[str]:
     warns = []
+    runtime = _read_runtime()
+    phase = runtime.get("active_proshka_phase")
+    if isinstance(phase, dict) and phase.get("status") == "ACTIVE":
+        opened_at = phase.get("opened_at")
+        try:
+            opened = _dt.datetime.fromisoformat(str(opened_at))
+            now = _dt.datetime.now(tz=opened.tzinfo)
+            age_hours = max(0, int((now - opened).total_seconds() // 3600))
+            if age_hours >= 24:
+                warns.append(
+                    f"- CHANNEL_RUNTIME active phase record is {age_hours} hours old "
+                    f"({opened_at}); revalidate the existing chat handle and six-field "
+                    "phase key. Age alone never authorizes a fresh chat."
+                )
+        except (TypeError, ValueError):
+            warns.append(
+                "- CHANNEL_RUNTIME active phase has no parseable opened_at; revalidate "
+                "the existing chat handle and phase key without opening a fresh chat."
+            )
     if OBSERVABILITY_DB.is_file():
         data = _observability.summary_data(OBSERVABILITY_DB)
         stale = [row["source_id"] for row in data["sources"] if row["stale"]]
@@ -1007,6 +1324,13 @@ def build(state: dict[str, object] | None = None) -> str:
         "## Behavior controls (P9 active)",
         *_behavior_control_view(validation["behavior_controls"]),
         "",
+        "## Operational tool manifest",
+        f"- schema / mirror: `{validation['tool_manifest']['schema']}` / `BYTE_IDENTICAL`",
+        f"- families / tools / writers: `{validation['tool_manifest']['family_count']}` / "
+        f"`{validation['tool_manifest']['tool_count']}` / "
+        f"`{validation['tool_manifest']['writer_count']}`",
+        f"- SHA-256: `{validation['tool_manifest']['sha256']}`",
+        "",
         "## Phase chat and bounded exploration",
         f"- validation: `{validation['runtime']}`",
         *_bounded_exploration_view(runtime),
@@ -1045,7 +1369,10 @@ def build(state: dict[str, object] | None = None) -> str:
         "## 5. Trick arsenal index (RH_TRICK_ATLAS, K9)",
         *_trick_cards(),
         "",
-        "## 6. Recent insights (INSIGHTS.md head)",
+        "## 6. Recent branch decisions (Progress_Log.md)",
+        *_recent_branch_decisions(),
+        "",
+        "## 7. Recent insights (INSIGHTS.md head)",
         *_recent_insights(),
         "",
     ]
@@ -1070,16 +1397,56 @@ def write_outputs() -> dict[str, object]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stdout", action="store_true")
+    ap.add_argument(
+        "--stdout", action="store_true",
+        help="print instead of writing Spine outputs; read-only unless combined with --refresh",
+    )
     ap.add_argument("--strict", action="store_true",
-                    help="fail closed if active control/runtime validation fails")
+                    help="add semantic-index validation and a receipt; base P9 validation is unconditional")
     ap.add_argument("--refresh", action="store_true",
-                    help="refresh the complete sensor bundle before writing Spine")
+                    help="write the complete sensor/index refresh before validation and Spine rendering")
     ap.add_argument("--reason", default="manual",
                     help="audit label only; not written into the deterministic view")
+    ap.add_argument(
+        "--record-review", action="append", default=[], metavar="JSON",
+        help="atomically record one delegated-review event; repeat for ordered backfill",
+    )
     args = ap.parse_args()
     try:
+        if args.record_review:
+            if args.stdout or args.strict or args.refresh:
+                _fail("EXPLORATION_RUNTIME_MISSING", "record-review cannot be combined with render flags")
+            runtime = _read_runtime()
+            changed = 0
+            for raw_event in args.record_review:
+                try:
+                    event = json.loads(raw_event)
+                except json.JSONDecodeError as exc:
+                    _fail("EXPLORATION_RUNTIME_MISSING", f"invalid review JSON: {exc}")
+                if not isinstance(event, dict):
+                    _fail("EXPLORATION_RUNTIME_MISSING", "review event is not an object")
+                runtime, did_change = record_delegated_review(runtime, event)
+                changed += int(did_change)
+            if changed:
+                write_runtime_atomic(runtime)
+            print(f"CHANNEL_RUNTIME_REVIEW_EVENTS_RECORDED={changed}")
+            return 0
         if args.refresh:
+            if args.reason == "goal-close":
+                migrate_progress_log = subprocess.run(
+                    [sys.executable, "orchestrator/kb_migrate_progress_log.py"],
+                    cwd=REPO, text=True,
+                )
+                if migrate_progress_log.returncode != 0:
+                    _fail("BRANCH_DECISION_MIGRATION_FAILED",
+                          "kb_migrate_progress_log.py failed at goal close")
+                migrate_verdicts = subprocess.run(
+                    [sys.executable, "orchestrator/kb_migrate_verdicts.py"],
+                    cwd=REPO, text=True,
+                )
+                if migrate_verdicts.returncode != 0:
+                    _fail("VERDICT_KNOWLEDGE_MIGRATION_FAILED",
+                          "kb_migrate_verdicts.py failed at goal close")
             try:
                 from orchestrator import sensors as _sensors
             except ModuleNotFoundError:
@@ -1111,7 +1478,10 @@ def main() -> int:
         write_outputs()
         print(f"wrote {STATE_OUT}, {OUT}, {META_CORPUS_OUT}")
     if args.strict:
-        print(f"P9_STRICT_PASS reason={args.reason} authority={validation['authority']}")
+        print(
+            f"P9_STRICT_PASS reason={args.reason} base_control=PASS "
+            f"semantic_index=PASS tool_manifest=PASS authority={validation['authority']}"
+        )
     return 0
 
 

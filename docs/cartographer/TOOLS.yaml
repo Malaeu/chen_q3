@@ -1,309 +1,640 @@
-# Реестр инструментов Q3/RH
-#
-# Один файл — полная картина: что включено, что нет, почему.
-# Правило: инструмент без записи здесь считается НЕ СУЩЕСТВУЮЩИМ.
-# Проверено фактически 2026-08-08 (ls, запуск, регистрация в Claude Code).
-#
-# status: ENABLED     работает и подключён, можно звать прямо сейчас
-#         AVAILABLE   работает, но не в нашем контуре — звать осознанно
-#         RETIRED     снят намеренно, файл переименован в RETIRED*
-#         BROKEN      существует, но не работает — указана поломка
-#         PLANNED     решено сделать, ещё не сделано
+# Q3/RH operational tool manifest.
+# Policy lives in docs/CODEX_CONTROL.md. This file answers what exists,
+# when it is used, what it writes, and where its result becomes durable.
+
+schema: q3_tool_manifest.v2
 
 meta:
-  updated: 2026-08-08
-  owner: Ылша
+  updated: 2026-08-09
+  owner: OWNER
+  canonical: docs/cartographer/TOOLS.yaml
+  mirror: /Users/emalam/GitHub/codex_specs/TOOLS.yaml
+  mirror_rule: BYTE_IDENTICAL
   repo: /Users/emalam/GitHub/rh_lean_01_2026
-  write_lock: "holder=CODEX, reader=CLAUDE_CODE — файлы в репе не создавать"
-  db: q3.lean.aristotle/aristotle_db/knowledge.db
-  db_access: "всегда ?mode=ro при чтении — Codex пишет параллельно"
-  docs: /Users/emalam/GitHub/codex_specs/HOWTO.md
+  canonical_branch: rh_clean
+  policy: docs/CODEX_CONTROL.md
+  session_router: q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
+  generated_inventory: docs/TOOLS.md
+  rule: An instrument absent from this manifest or its registered family is not routable.
 
-# ─────────────────────────────────────────────────────────────
-# ГЛАВНЫЙ ИНСТРУМЕНТ
-# ─────────────────────────────────────────────────────────────
+status_semantics:
+  values: [ENABLED, AVAILABLE, DEGRADED, DISCONNECTED, RETIRED, BROKEN, PLANNED]
+  enabled: Verified and callable for the declared audience and mode.
+  available: Callable, but outside the automatic Q3 contour.
+  degraded: Callable with a named semantic or operational limitation.
+  disconnected: Present on disk but not wired into the declared runtime.
+  retired: Historical mechanism; never a live entry point.
+  broken: Known reproducer fails; do not route.
+  planned: Design only; no callable implementation exists.
 
-navigator:
-  - name: atomic-theorem-navigator
-    status: ENABLED
-    kind: claude-skill
-    path: ~/.claude/skills/atomic-theorem-navigator/SKILL.md
-    call: "/atomic-theorem-navigator"
-    registered: true          # проверено: система показывает его в списке скиллов
-    what: >
-      Спуск по свойствам вместо имён. Отвечает на «что нужно, чтобы доказать X»
-      и «что откроется, если докажу Y». Содержит детектор чеков и защиту от
-      суррогата по форме.
-    created: 2026-08-08
-    why: >
-      За один вечер схлопнул карту вчетверо (четыре обрыва -> два входа) и дважды
-      поймал фальшивый READY в цепочке.
+mode_semantics:
+  values: [READ_ONLY, WRITES_DERIVED, WRITES_CANONICAL, NETWORK_WRITE, EXTERNAL]
+  read_only: May be used without a write authorization.
+  writes_derived: Rebuilds non-authoritative projections or generated outputs.
+  writes_canonical: Mutates tracked source, canonical project memory, or task state.
+  network_write: Sends, publishes, downloads, or changes remote state.
+  external: Belongs to another executor or runtime and is not a Codex startup input.
 
-# ─────────────────────────────────────────────────────────────
-# СКРИПТЫ КАРТОГРАФА — вне репы, воспроизводимые, без агентов
-# ─────────────────────────────────────────────────────────────
+tool_contract:
+  required_fields: [id, status, audience, mode, path_or_paths, invocation, trigger, writes, approval, authority, records_to, last_verified]
+  validation: last_verified is accepted only after the declared invocation or a task-specific plant succeeds.
+  family_rule: Family coverage permits discovery only; it never inherits ENABLED status into an uninspected script.
 
-cartographer:
-  - name: inventory.py
-    status: ENABLED
-    path: codex_specs/cartographer/inventory.py
-    call: "python3 inventory.py --scope RouteB"
-    out: inventory_RouteB.json
-    what: "1174 объекта RouteB с сигнатурами, детерминированно, агентов не запускает"
-    note: >
-      Регулярка правилась 07.08 — раньше не видела private/protected/noncomputable
-      и атрибуты @[...], давала 618 вместо 1174.
+startup_contract:
+  order:
+    - docs/CODEX_CONTROL.md
+    - q3.lean.aristotle/COGNITIVE_OPERATORS.md
+    - q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
+    - docs/cartographer/TOOLS.yaml
+    - task_local_physical_state
+    - python3 orchestrator/spine.py --strict --stdout --reason session-start
+  manifest_read:
+    always: [meta, tool_contract, startup_contract, memory_event_routes, data_surfaces, known_hazards]
+    on_task_match: [tool_families]
+  validation:
+    command: bash specs_docs/session_start.sh
+    checks: [schema, required_sections, tool_contract_fields, mirror_sha256]
+    writes: false
+  prohibition:
+    - CLAUDE.md is not a Codex startup input.
+    - A generated view never overrides physical task state.
+    - An ENABLED label without audience, trigger, mode, and write contract is invalid.
 
-  - name: atoms.py
-    status: ENABLED
-    path: codex_specs/cartographer/atoms.py
-    call: "python3 atoms.py atoms.json"
-    out: atoms_RouteB.json
-    runtime: "~10 сек, печатает прогресс"
-    what: >
-      Внешние атомы: леммы, которые вызываются в доказательствах, но определены
-      НЕ в проекте. 1899 атомов на 08.08 (было 1513 днём — ночная работа дала +386).
+memory_event_routes:
+  SESSION_START:
+    read: [startup_contract, data_surfaces, known_hazards]
+    run: [codex-session-start]
+    record: NONE
 
-  - name: cheap.py
-    status: ENABLED
-    path: codex_specs/cartographer/cheap.py
-    call: "python3 cheap.py"
-    out: "очередь незакрытых шагов по цене + списки объявлений Mathlib"
-    created: 2026-08-08
-    what: >
-      cheap-closure-finder: сортирует незакрытые шаги assembly по ЦЕНЕ закрытия,
-      а не по номеру. Шесть пород: ПОТЕРЯННОЕ ИМЯ / СВОЙ ФАКТ / ПЕРЕХОДНИК /
-      ПЕРЕНОС МАШИНЫ / ПОДЪЁМ ИЗМЕРЕНИЯ / НЕНАЙДЕННЫЙ. Для дешёвых печатает ВСЕ
-      объявления релевантного файла Mathlib — поиск по имени промахивается.
-    accuracy: "2026-08-08: 8 из 10 строго совпали с ручным разбором, 2 уточнены в пользу скрипта"
-    input: "требует поля assembly.objects — список Lean-имён, которые шаг затрагивает,\n      ВКЛЮЧАЯ требуемые, но несуществующие. Без него порода не определяется."
-    limits: >
-      Шагов не закрывает. Кандидат становится закрытием только после прогона Lean.
-      Отсев ложных совпадений по слову (genEigenspace != пучок K,G) не
-      автоматизирован — печатает предупреждение, читает человек.
-      Существование в Mathlib проверяется rg по диску, НЕ по таблице atom:
-      atom знает лишь уже используемое, новая лемма выглядела бы несуществующей.
+  ABSENCE_OR_NEW_OBJECT:
+    condition: Before claiming absence, searching externally, or creating a replacement.
+    run: [ask-shelf, kb-query]
+    record: SEARCH_FLAGS in the artifact being produced anyway.
 
-  - name: brief.py
-    status: ENABLED
-    path: codex_specs/cartographer/brief.py
-    call: "python3 brief.py [ПРЕФИКС_ЦЕПОЧКИ] [--out файл.md]"
-    created: 2026-08-08
-    what: >
-      Source-locked пакет из базы для Прошки/Codex: сводка цепочек, закрытые шаги
-      со ссылками file:line, незакрытые с породой/объектами/последней заметкой,
-      несущие атомы, команда самопроверки.
-    output: "все цепочки — 16 КБ / 145 строк (09.08); одна цепочка — ~7 КБ"
-    fixed: >
-      2026-08-09: парсер --out брал значение флага как позиционный аргумент,
-      генератор искал цепочку с именем-путём. Теперь флаг и значение вырезаются
-      вместе: argv[:i] + argv[i+2:].
-    vs_proshka_brief: >
-      Их proshka-brief собирает ЧТО ИЗМЕНИЛОСЬ (коммиты, диффы за период).
-      Наш brief.py — ЧТО СУЩЕСТВУЕТ И НА ЧЁМ СТОИТ (граф состояния).
-      Не заменяют друг друга.
+  THEOREM_SHAPE_FORK:
+    condition: Branch selection, return to an old route, bisection, or strategy pivot.
+    read: [docs/GENEALOGY.md, docs/Progress_Log.md, docs/RECORDING_RULES.md]
+    run: [property-descent]
+    record: One eight-field Progress_Log entry at selection time.
+    durable_projection: journal_entry.kind=branch_decision at goal-close.
 
-  - name: load_capability.py
-    status: ENABLED
-    path: codex_specs/cartographer/load_capability.py
-    what: "линзы L1..L8 из L*.md в таблицу capability, идемпотентно"
+  EXTERNAL_VERDICT:
+    condition: A route decision arrived from Proshka, Mythos, Claude, Aristotle, or another reviewer.
+    record: Actor plus verbatim argument; a choice letter alone is invalid.
 
-  - name: load_switches.py
-    status: ENABLED
-    path: codex_specs/cartographer/load_switches.py
-    what: "not_proves + fails_if — отрицательные переключатели"
+  ODDITY:
+    condition: Unexpected numerical, structural, migration, startup, database, or tool observation.
+    record: Observation, plausible readings, and the outcome that distinguishes them before explanation.
 
-  - name: load_assembly.py
-    status: ENABLED
-    path: codex_specs/cartographer/load_assembly.py
-    what: "цепочки сборки: требование -> откуда взять -> статус"
+  NEGATIVE_CLOSE:
+    condition: INCONCLUSIVE, WALL, or KILLED.
+    record: Structured AUTOPSY lines and a kill row when the killed unit is reusable knowledge.
 
-# ─────────────────────────────────────────────────────────────
-# ЯЩИКИ БАЗЫ — спрашиваются через sqlite3, рецепты в SKILL.md
-# ─────────────────────────────────────────────────────────────
+  EXPLORATION_CLOSE:
+    run: [kb-canonical-write]
+    record: One compact reviewed closeout; raw speculative cycles stay out of durable memory.
 
-boxes:
-  - name: capability
-    status: ENABLED
-    rows: 1157
-    what: "нужда -> чем делается; 9 линз, provides/requires/strength/not_proves/fails_if"
+  GOAL_CLOSE:
+    run: [knowledge-spine-goal-close]
+    record:
+      - SEARCH_FLAGS and AUTOPSY from task artifacts.
+      - Progress_Log branch decisions into knowledge.db.
+      - Verdict lessons, sensors, semantic index, and derived Spine views.
+    ordering: Route state is updated last.
 
-  - name: assembly
-    status: ENABLED
-    rows: 43
-    queue: "очередь по цене: python3 cartographer/cheap.py"
-    chains:
-      - GOAL057_CONTINUUM_NUMERATOR_BRIDGE:  "13 шагов, 2 незакрыто — ночная ветка Codex"
-      - PSD_CERTIFICATE_FOR_CCM_CELL:        "15 шагов, 3 незакрыто (все NUMERIC на одном JSON); шаг 6 закрыт 08.08 через Matrix.PosDef.one"
-      - SIMPLE_EVEN_GROUND_TO_REAL_ZEROS:    "15 шагов, 5 незакрыто; шаги 9,10 — чеки (READY у теоремы, вход не обеспечен)"
+  TOOL_BIRTH:
+    condition: Before a new helper, generator, skill, hook, or database writer becomes routable.
+    require: [audience, trigger, mode, invocation, writes, approval, authority, validation, records_to]
 
-  - name: contract2
-    status: ENABLED
-    rows: 282
-    what: "контракт определения -> чего НЕ даёт; 24 SLOT, 66 с not_guaranteed"
+  TOOL_FAILURE:
+    condition: A registered invocation has a reproducible failure.
+    record: Mark BROKEN or DEGRADED immediately with reproducer and replacement; file existence is not ENABLED.
 
-  - name: counterexample
-    status: ENABLED
-    rows: 59
-    what: "гипотеза -> чем прибита; error_class: STATIC_LAYOUT / PROVENANCE / INFERENCE"
-
-  - name: atom + atom_use
-    status: ENABLED
-    rows: "1899 + ~3500"
-    what: "на чём стоит проект; обратный индекс «что откроется, если докажу X»"
-    created: 2026-08-08
-
-  - name: lemmas
-    status: ENABLED
-    rows: 1920
-    what: "старый ящик: имя -> где лежит. Отвечает только если знаешь имя."
-
-# ─────────────────────────────────────────────────────────────
-# СТИЛЬ И ПРАВИЛА
-# ─────────────────────────────────────────────────────────────
-
-idea_git:
-  what: >
-    «git для отката идей и находки развилок» (формулировка владельца) — связка из
-    четырёх частей, каждая отвечает на свой вопрос. Собрана 2026-08-09.
-  parts:
-    - {file: docs/GENEALOGY.md,      answers: "ОТКУДА пришли — развилки с причинами, хронология линий"}
-    - {file: docs/Progress_Log.md,   answers: "КУДА свернули — судовой журнал, 8 граф"}
-    - {file: docs/cartographer/,     answers: "ЧТО есть — TOOLS.yaml + brief/cheap/atoms/inventory"}
-    - {file: docs/GLOSSARY.md,       answers: "ЧТО значит знак — словарь для не-математика"}
-    - {file: docs/RECORDING_RULES.md, answers: "КАК писать — правила для Codex и Claude"}
-  historical_layer: q3.lean.aristotle/docs/INSIGHTS.md
-  historical_note: >
-    INSIGHTS начинался как лог, потом стал журналом «иголок» — что привело к прорыву
-    и что привело к блокировке. Вёлся одним файлом сознательно. Причины там ЕСТЬ
-    (92% развилок с числами), но найти их нельзя: 51763 строки без указателя.
-    Урок: запись без указателя равна отсутствию записи.
-  audit_2026_08_09:
-    lines_scanned: 51763
-    forks_found: 48
-    reason_recorded: 44
-    reason_lost: 4
-    all_losses_were: "внешние вердикты, записанные одной буквой CHOSEN без аргумента"
-
-journal:
-  - name: Progress_Log
-    status: ENABLED
-    kind: ship-log
+data_surfaces:
+  branch_journal:
     path: docs/Progress_Log.md
-    created: 2026-02-28, воскрешён 2026-08-09
-    what: >
-      Судовой журнал РАЗВИЛОК, не событий. Семь граф на запись: развилка ·
-      выбрали · почему · что отвергли и почему · техника · следующий ход · адреса.
-    rule: >
-      Писать В МОМЕНТ ВЫБОРА, не постфактум. Через неделю причина не восстановима —
-      проверено археологией июня 2026. Пустая графа «что отвергли и почему» —
-      главный источник будущих раскопок.
-    why: >
-      Событий пишется много (INSIGHTS.md 51763 строки, 30 closeout, 49 report,
-      69 goal, 75 answer), развилок — не пишется. Из-за этого летом 2026
-      потерялось видение проекта и восстанавливалось агентами по косвенным следам.
-    read_by: [CLAUDE_CODE, CODEX]
-    columns: 8
-    column_8: "чей вердикт и аргумент — обязательна для решений извне"
+    authority: CANONICAL_BRANCH_RATIONALE
+    contains: Eight-field decisions, including rejected alternatives and external arguments.
+    retrieval: [ask.sh, q3_docs, Spine recent decisions, knowledge.db branch_decision projection]
 
-  - name: RECORDING_RULES
-    status: ENABLED
-    kind: rules
+  genealogy:
+    path: docs/GENEALOGY.md
+    authority: REVIEWED_HISTORICAL_TOPOLOGY
+    trigger: Branch choice, route return, bisection, or archaeology.
+
+  recording_rules:
     path: docs/RECORDING_RULES.md
-    what: "четыре правила записи: в момент выбора · восемь граф · closeout≠развилка · пустая графа явно"
-    read_by: [CLAUDE_CODE, CODEX]
+    authority: CANONICAL_RECORDING_FORMAT
 
-style:
-  - name: svante
-    status: ENABLED
-    kind: output-style
-    path: ~/.claude/output-styles/svante.md
-    call: "/output-style -> Svante"
-    what: >
-      Выводи механизм, не пересказывай результат. Образ из щупанного домена.
-      Изоморфизм-чек со строкой «врёт: да». Четыре статуса знания раздельно.
-    spinoff: ~/GitHub/prowka-bot/Projects/structured-discovery-exposition-protocol/
+  historical_stream:
+    path: q3.lean.aristotle/docs/INSIGHTS.md
+    authority: HISTORICAL_EVENT_STREAM
+    rule: Never read wholesale at startup; enter through an exact address or retrieval result.
 
-rules_path: ~/.claude/projects/-Users-emalam-GitHub-rh-lean-01-2026/memory/
+  semantic_project_memory:
+    path: q3.lean.aristotle/aristotle_db/knowledge.db
+    authority: CANONICAL_PROJECT_SEMANTIC_MEMORY
+    read_uri: file:q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro
+    owns: [kills, moves, reviewed_journal, branch_decisions, dossiers, search_flags]
 
-rules:
-  - name: property-descent
-    status: ENABLED
-    what: "три показания по числу атомов + MISMATCH≠GAP + искать пачку перед счётом обрывов"
-  - name: z2-symmetry-fixed-point
-    status: ENABLED
-    what: "симметрия порядка два: два класса + неподвижное множество; RH = нули на нём"
-  - name: toolkit-entrypoint
-    status: ENABLED
-    what: "указатель на HOWTO.md — точка входа в новой сессии"
-  - name: error-rate-counter
-    status: ENABLED
-    what: "перед рекомендацией открыть file:line; замер брака 18%/10%"
-  - name: five-next-steps
-    status: ENABLED
-    what: "пять пронумерованных опций в «Что дальше?»"
-  - name: never-suggest-rest
-    status: ENABLED
-  - name: branch-ledger
-    status: ENABLED
-  - name: show-dont-send
-    status: ENABLED
-    what: "тексты для агентов показывать в чате, владелец копирует сам"
-  - name: compressed-context-block
-    status: ENABLED
-  - name: thought-detector-verify-first
-    status: ENABLED
-    what: "ярлык «оборвано» только со своим рассуждением — хук ошибается"
-  - name: automation-stop-switch
-    status: ENABLED
+  proof_artifact_registry:
+    path: q3.lean.aristotle/aristotle_db/aristotle_proofs.db
+    authority: METADATA_NOT_LEAN_TRUTH
+    owns: [documents, lemmas, specifications, Aristotle provenance]
 
-# ─────────────────────────────────────────────────────────────
-# СИСТЕМА CODEX — его контур, мы туда не лезем без нужды
-# ─────────────────────────────────────────────────────────────
+  observability_projection:
+    path: q3.lean.aristotle/aristotle_db/observability.db
+    authority: DERIVED_REGENERABLE_NOT_CANONICAL
 
-codex_system:
-  path: ~/.codex/
-  size: "~4 ГБ, вне git, бэкап ~/Backups/2026-08-05/"
-  skills:
-    - {name: aristotle,             status: AVAILABLE}
-    - {name: proshka-brief,         status: AVAILABLE}
-    - {name: q3-note-ingest,        status: AVAILABLE}
-    - {name: oracle,                status: AVAILABLE}
-    - {name: x-sync_mac,            status: AVAILABLE, note: "переписан 05.08: убран git add -A, whitelist"}
-    - {name: chronicle,             status: AVAILABLE}
-    - {name: codex-primary-runtime, status: BROKEN, why: "пустая директория, содержимое утрачено"}
-    - {name: x-ralph-loop,          status: RETIRED, when: 2026-08-05, why: "отжил своё, SKILL.md -> RETIRED*"}
-    - {name: x-rh-compiler,         status: RETIRED, when: 2026-08-05, why: "отжил своё, SKILL.md -> RETIRED*"}
-  automations:
-    - name: q3-proof-loop
-      status: BROKEN
-      why: "status=PAUSED + cwds указывал на несуществующий ~/Documents/GitHub/ (починен 05.08) + промпт вёл на зомби-монитор"
-    - name: update-agents-md
-      status: BROKEN
-      why: "тот же мёртвый cwd, путь исправлен 05.08, работоспособность не проверялась"
+  semantic_index:
+    path: qmd://q3_docs/
+    authority: RETRIEVAL_ONLY
 
-# ─────────────────────────────────────────────────────────────
-# ЧУЖИЕ СКИЛЛЫ CLAUDE — не наш контур, звать осознанно
-# ─────────────────────────────────────────────────────────────
+tool_families:
+  startup_and_control:
+    summary: Read-only orientation and physical-state selection.
+    coverage: [specs_docs/session_start.sh, orchestrator/spine.py, "**/routeb_status.py"]
+    tools:
+      - id: codex-session-start
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: specs_docs/session_start.sh
+        invoke: bash specs_docs/session_start.sh
+        trigger: Every Codex session in Q3.
+        writes: false
+        approval: NONE
+        authority: ORIENTATION_AND_CONSISTENCY_CHECK
+        records_to: NONE
+        last_verified: 2026-08-09
 
-other_claude_skills:
-  path: ~/.claude/skills/
-  status: AVAILABLE
-  list: [aristotle, x-lean-tdd, x-axiom-loop, x-research-swarm, x-insight,
-         x-iddqd, x-sandbox, x-sandbox-work, x-transcribe, x-yt, illustrations,
-         pliny-tv, presentation-creator, reading-sync, shownotes-publisher,
-         vault-clarification, vault-ingress, vault-profile]
-  note: "к Q3/RH прямого отношения не имеют, кроме aristotle / x-lean-tdd / x-axiom-loop"
+      - id: knowledge-spine-strict
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/spine.py
+        invoke: python3 orchestrator/spine.py --strict --stdout --reason session-start
+        trigger: Every Codex session; also called by codex-session-start.
+        writes: false
+        approval: NONE
+        authority: DERIVED_CONTROL_AND_MEMORY_VIEW
+        records_to: stdout
+        last_verified: 2026-08-09
 
-# ─────────────────────────────────────────────────────────────
-# ЗАПЛАНИРОВАНО
-# ─────────────────────────────────────────────────────────────
+      - id: knowledge-spine-goal-close
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        path: orchestrator/spine.py
+        invoke: python3 orchestrator/spine.py --refresh --reason goal-close
+        trigger: Closed goal after exact artifact validation.
+        writes: true
+        approval: TASK_SCOPE_MUST_ALREADY_AUTHORIZE_GOAL_CLOSE_WRITES
+        authority: DERIVED_VIEW_AND_REGISTERED_MIGRATIONS
+        records_to: [knowledge.db, observability.db, q3_docs, SPINE_STATE.json, SPINE_VIEW.md, META_CORPUS.json]
+        last_verified: 2026-08-09
 
-planned:
-  - name: check-detector
-    status: PLANNED
-    what: "автоматический прогон по assembly: найти READY без обеспеченной посылки"
-    why: "вручную поймано дважды за вечер; PSD_CERTIFICATE 15/15 не проверен"
-  - name: inputs-audit
-    status: PLANNED
-    what: "сверить счёт «4 моста / 3 входа» по документам, а не по памяти"
+      - id: routeb-status
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py
+        invoke: python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
+        trigger: Every Route B task.
+        writes: false
+        approval: NONE
+        authority: OPERATIONAL_ADDRESS_CHECK_NOT_PROOF
+        records_to: stdout
+        last_verified: 2026-08-09
+
+  retrieval_and_memory:
+    summary: Search accumulated knowledge before external search or object creation.
+    coverage: [ask.sh, orchestrator/kb.py, scripts/research_oracle.py, orchestrator/kb_migrate_*.py]
+    tools:
+      - id: ask-shelf
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: ask.sh
+        invoke: ./ask.sh "<terms>"
+        trigger: ABSENCE_OR_NEW_OBJECT and before external review/search.
+        writes: false
+        approval: NONE
+        authority: MULTI_SURFACE_RETRIEVAL
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: kb-query
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/kb.py
+        invoke: ./orchestrator/kb.py ask "<terms>"
+        alternatives: [flags, search, show, list, census, excluded]
+        trigger: Exact project-memory query.
+        writes: false
+        approval: NONE
+        authority: CANONICAL_PROJECT_SEMANTIC_MEMORY_READER
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: kb-canonical-write
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/kb.py
+        invoke: ./orchestrator/kb.py add ...
+        alternatives: [record-exploration-close]
+        trigger: Approved reusable kill or compact exploration close.
+        writes: true
+        approval: EXACT_WRITE_SCOPE
+        authority: CANONICAL_PROJECT_SEMANTIC_MEMORY_WRITER
+        records_to: q3.lean.aristotle/aristotle_db/knowledge.db
+        last_verified: 2026-08-09
+
+      - id: progress-log-migrator
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/kb_migrate_progress_log.py
+        read_invoke: python3 orchestrator/kb_migrate_progress_log.py --dry-run
+        write_invoke: python3 orchestrator/kb_migrate_progress_log.py
+        trigger: GOAL_CLOSE through Spine; manual write only with exact approval.
+        writes: true
+        approval: GOAL_CLOSE_OR_EXACT_WRITE_SCOPE
+        authority: IDEMPOTENT_BRANCH_DECISION_PROJECTION
+        records_to: knowledge.db journal_entry
+        last_verified: 2026-08-09
+
+      - id: research-oracle
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: scripts/research_oracle.py
+        invoke: python3 scripts/research_oracle.py query "<terms>" -c q3_docs
+        trigger: Three to five semantic queries after exact target and consumer are named.
+        writes: false
+        write_variants: [ingest, add-speculative]
+        approval: NONE_FOR_QUERY_EXACT_SCOPE_FOR_WRITE_VARIANTS
+        authority: RETRIEVAL_ONLY
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: q3-docs-refresh
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        path: q3.lean.aristotle/scripts/refresh_q3_docs.py
+        invoke: python3 q3.lean.aristotle/scripts/refresh_q3_docs.py
+        trigger: GOAL_CLOSE or explicit semantic-index refresh.
+        writes: true
+        approval: GOAL_CLOSE_OR_EXACT_WRITE_SCOPE
+        authority: RETRIEVAL_INDEX_BUILDER
+        records_to: qmd://q3_docs/
+        last_verified: 2026-08-09
+
+  cartography_and_property_descent:
+    summary: Find capabilities by mathematical need, then descend suppliers to exact gaps.
+    coverage:
+      - /Users/emalam/GitHub/codex_specs/cartographer/*
+      - docs/cartographer/*
+      - q3.lean.aristotle/aristotle_db/knowledge.db tables capability|assembly|contract2|counterexample|atom|atom_use
+    workflow:
+      - Name the exact target and terminal consumer.
+      - Find candidate capability rows by provides/requires, not filename alone.
+      - Descend every premise until READY, GAP, MISMATCH, OWNER_DATA, or NUMERIC.
+      - Search bundle theorems before counting separate gaps.
+      - Distinguish theorem existence from supplied hypotheses and object identity.
+      - Record the selected branch and rejected alternatives in Progress_Log.
+    tools:
+      - id: property-descent
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: /Users/emalam/GitHub/codex_specs/HOWTO.md
+        invoke: Read HOWTO procedure, then query capability and assembly with sqlite mode=ro.
+        trigger: Theorem-shape fork, forgotten mechanism, or supplier audit.
+        writes: false
+        approval: NONE
+        authority: REVIEWED_CARTOGRAPHY_WORKFLOW
+        records_to: stdout and Progress_Log when a route is selected
+        note: Claude atomic-theorem-navigator is an external UI wrapper; Codex uses this registered workflow directly.
+        last_verified: 2026-08-09
+
+      - id: routeb-inventory
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: /Users/emalam/GitHub/codex_specs/cartographer/inventory.py
+        invoke: python3 inventory.py --scope RouteB
+        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        trigger: Explicit inventory refresh after source changes.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: DETERMINISTIC_SOURCE_INVENTORY
+        records_to: inventory_RouteB.json
+        last_verified: 2026-08-09
+
+      - id: atom-index
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: /Users/emalam/GitHub/codex_specs/cartographer/atoms.py
+        invoke: python3 atoms.py atoms_RouteB.json
+        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        trigger: Explicit atom refresh after inventory changes.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: DETERMINISTIC_EXTERNAL_ATOM_INDEX
+        records_to: atoms_RouteB.json
+        last_verified: 2026-08-09
+
+      - id: cheap-closure-finder
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: /Users/emalam/GitHub/codex_specs/cartographer/cheap.py
+        invoke: python3 cheap.py
+        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        trigger: Prioritize non-READY assembly steps by closure cost.
+        writes: false
+        approval: NONE
+        authority: HEURISTIC_QUEUE_NOT_PROOF
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: cartographer-brief
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: /Users/emalam/GitHub/codex_specs/cartographer/brief.py
+        invoke: python3 brief.py "<chain-prefix>"
+        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        trigger: Source-addressed state packet for local or external review.
+        writes: false
+        write_variant: --out writes the named packet and requires exact output approval.
+        approval: NONE_FOR_STDOUT_EXACT_OUTPUT_SCOPE_FOR_OUT
+        authority: DATABASE_DERIVED_BRIEF_NOT_PROOF
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: cartographer-loaders
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        paths:
+          - /Users/emalam/GitHub/codex_specs/cartographer/load_capability.py
+          - /Users/emalam/GitHub/codex_specs/cartographer/load_switches.py
+          - /Users/emalam/GitHub/codex_specs/cartographer/load_assembly.py
+        invoke: Run the selected loader from /Users/emalam/GitHub/codex_specs/cartographer.
+        trigger: Approved import of reviewed lenses, switches, or assembly rows.
+        writes: true
+        approval: EXACT_DB_WRITE_SCOPE
+        authority: CANONICAL_KNOWLEDGE_DB_IMPORTER
+        records_to: q3.lean.aristotle/aristotle_db/knowledge.db
+        last_verified: 2026-08-09
+
+  observability_and_graphs:
+    summary: Derived current-state projections; never proof or route authority.
+    coverage: [orchestrator/observability.py, orchestrator/sensors.py, scripts/q3_sensor_scan.py, scripts/build_*graph.py, scripts/build_autopsy_map.py]
+    tools:
+      - id: observability-summary
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        paths: [orchestrator/observability.py, orchestrator/sensors.py]
+        invoke: python3 orchestrator/observability.py summary
+        alternatives: [sources, "python3 orchestrator/sensors.py status"]
+        trigger: Before trusting sensor state.
+        writes: false
+        approval: NONE
+        authority: DERIVED_OBSERVABILITY
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: observability-refresh
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        paths: [orchestrator/observability.py, orchestrator/sensors.py]
+        invoke: python3 orchestrator/observability.py rebuild
+        alternatives: ["python3 orchestrator/sensors.py refresh"]
+        trigger: Fresh clone, stale sensors, or GOAL_CLOSE.
+        writes: true
+        approval: TASK_SCOPE_MUST_AUTHORIZE_REFRESH
+        authority: REGENERABLE_PROJECTION
+        records_to: [observability.db, ACTIVE/graphs, orchestrator/state]
+        last_verified: 2026-08-09
+
+      - id: tool-census
+        status: AVAILABLE
+        audience: [CODEX, HUMAN]
+        mode: WRITES_DERIVED
+        path: orchestrator/tools_census.py
+        invoke: python3 orchestrator/tools_census.py --markdown
+        trigger: Explicit whole-repo tool inventory refresh.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: GENERATED_FILE_CENSUS
+        records_to: docs/TOOLS.md
+        last_verified: 2026-08-09
+
+  proof_and_source:
+    summary: Lean truth, source audit, and external proof drafting remain separate authorities.
+    coverage: [lake, lean, scripts/check_axioms.sh, q3.lean.aristotle/ACTIVE/aristotle, paper.sh]
+    tools:
+      - id: lean-validation
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        path: q3.lean.aristotle
+        invoke: lake env lean "<file.lean>"
+        alternatives: ["lake build <target>", "./scripts/check_axioms.sh"]
+        trigger: Every Lean change and proof admission.
+        writes: true
+        approval: TASK_SCOPE_MUST_AUTHORIZE_BUILD_VALIDATION
+        authority: LEAN_KERNEL_OR_BUILD_EVIDENCE
+        records_to: stdout and task closeout
+        note: On Linux prefix lake/lean with env -u LD_LIBRARY_PATH; macOS is unaffected.
+        last_verified: 2026-08-09
+
+      - id: aristotle
+        status: AVAILABLE
+        audience: [CODEX]
+        mode: NETWORK_WRITE
+        path: q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md
+        invoke: Use the runtime-registered aristotle skill after reading the workflow.
+        trigger: Exact approved Aristotle submission boundary.
+        writes: true
+        approval: EXACT_SUBMISSION_PAYLOAD
+        authority: DRAFT_GENERATOR_NOT_PROOF_AUTHORITY
+        records_to: aristotle input, project id, downloaded result, validation closeout
+        last_verified: 2026-08-09
+
+      - id: paper-ingest
+        status: AVAILABLE
+        audience: [CODEX, HUMAN]
+        mode: NETWORK_WRITE
+        path: paper.sh
+        invoke: ./paper.sh "<arxiv-or-doi>"
+        trigger: Explicit source acquisition task.
+        writes: true
+        approval: EXACT_SOURCE_AND_DESTINATION
+        authority: SOURCE_ACQUISITION_NOT_PROOF
+        records_to: docs/routeB_bus/litreview
+        last_verified: 2026-08-09
+
+  external_review_and_transport:
+    summary: Expensive advisory channels; local-first and byte-exact transport apply.
+    coverage: [scripts/build_proshka_brief.py, orchestrator/packet.py, ~/.codex/skills/proshka-brief, ~/.codex/skills/oracle]
+    tools:
+      - id: proshka-context-pack
+        status: DEGRADED
+        audience: [CODEX]
+        mode: READ_ONLY
+        path: scripts/build_proshka_brief.py
+        invoke: python3 scripts/build_proshka_brief.py --mode tight
+        trigger: Approved phase-open or delta packet preparation.
+        writes: false
+        approval: NONE_FOR_STDOUT
+        authority: CONTEXT_ASSEMBLY_ONLY
+        records_to: stdout
+        failure_mode: Default include set contains legacy mirror paths; current Route B paths must be explicit.
+        last_verified: 2026-08-09
+
+      - id: packet-build
+        status: AVAILABLE
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/packet.py
+        invoke: python3 orchestrator/packet.py build mythos|proshka|codex
+        trigger: Explicit transport-packet request.
+        writes: false
+        approval: NONE
+        authority: TRANSPORT_ASSEMBLY_ONLY
+        records_to: stdout
+        last_verified: 2026-08-09
+
+      - id: packet-ingest
+        status: AVAILABLE
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/packet.py
+        invoke: python3 orchestrator/packet.py ingest "<reply.md>"
+        trigger: Explicit approved reply ingestion.
+        writes: true
+        approval: EXACT_INPUT_AND_DESTINATION
+        authority: TRANSPORT_INGEST_NOT_MATHEMATICAL_AUTHORITY
+        records_to: task-local repository artifacts
+        last_verified: 2026-08-09
+
+  generator_and_skill_discovery:
+    summary: Family registration covers task-specific helpers without pretending every historical generator is live.
+    coverage: [orchestrator/**/*.py, scripts/**/*.py, q3.lean.aristotle/scripts/**/*.py, specs_docs/**/*.sh, .agents/skills/**/SKILL.md, ~/.codex/skills/**/SKILL.md]
+    selection_rule: A family match permits inspection, not execution. Read the task-local source, --help, write paths, and applicable skill before calling it.
+    inventory_command: rg --files orchestrator scripts q3.lean.aristotle/scripts specs_docs .agents/skills
+    codex_skills: Runtime skill registry is authoritative for availability; this manifest records only Q3 routing and hazards.
+    tools:
+      - id: task-specific-generators
+        status: AVAILABLE
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        paths: [scripts, q3.lean.aristotle/scripts]
+        invoke: Inspect the selected script and its task-local monitor before invocation.
+        trigger: Named task explicitly requires the generator output.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: SCRIPT_SPECIFIC_NEVER_INFERRED_FROM_FAMILY
+        records_to: selected task-local output
+        last_verified: 2026-08-09
+
+dynamic_queries:
+  knowledge_counts: >-
+    sqlite3 -readonly q3.lean.aristotle/aristotle_db/knowledge.db
+    "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;"
+  assembly_status: >-
+    sqlite3 -readonly q3.lean.aristotle/aristotle_db/knowledge.db
+    "SELECT chain,status,count(*) FROM assembly GROUP BY chain,status ORDER BY chain,status;"
+  tool_file_census: >-
+    find orchestrator scripts q3.lean.aristotle/scripts specs_docs .agents/skills -type f
+    \( -name '*.py' -o -name '*.sh' -o -name 'SKILL.md' \)
+  routeb_state: >-
+    python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
+  git_state: git branch --show-current && git status --short -uall
+
+tool_lifecycle:
+  birth: No tool is ENABLED until audience, trigger, mode, invocation, writes, approval, authority, validation, and records_to are present.
+  use: last_verified changes only after the declared invocation actually runs.
+  mutation: A reader never runs write variants; every canonical or network write follows the active owner-approval rule.
+  failure: Mark BROKEN or DEGRADED on the first reproducible failure and name the replacement or stop condition.
+  retirement: Historical files remain searchable but cannot route a task.
+  mirror: Every approved canonical edit is copied byte-for-byte to the external mirror and verified by SHA-256.
+
+known_hazards:
+  - id: tools-spec-stale
+    status: DEGRADED
+    audience: [CODEX, CLAUDE_CODE, HUMAN]
+    mode: READ_ONLY
+    path: specs_docs/TOOLS_SPEC.md
+    trigger: Historical archaeology only.
+    writes: false
+    approval: NONE
+    authority: HISTORICAL_SNAPSHOT_NOT_RUNBOOK
+    failure_mode: Contains obsolete SESSION_ENTRY, INSIGHTS, research-oracle, and entry-audit routing.
+
+  - id: legacy-entry-audit
+    status: BROKEN
+    audience: [CODEX, CLAUDE_CODE, HUMAN]
+    mode: READ_ONLY
+    path: specs_docs/entry_audit.sh
+    trigger: NEVER
+    writes: false
+    approval: NONE
+    authority: NONE
+    failure_mode: Misdates SESSION_ENTRY and searches the retired bus/BUS_PROTOCOL.md path.
+
+  - id: claude-control-surfaces
+    status: DISCONNECTED
+    audience: [CLAUDE_CODE]
+    mode: EXTERNAL
+    paths: [CLAUDE.md, q3.lean.aristotle/CLAUDE.md, ~/.claude]
+    trigger: Controlled only by the independent Claude Code observer.
+    writes: false
+    approval: OWNER_CONTROLS_CLAUDE_SEPARATELY
+    authority: NOT_CODEX_INPUT
+    failure_mode: Importing these rules into Codex recreates a hidden second policy layer.
+
+  - id: stale-step32-step33-skills
+    status: BROKEN
+    audience: [CODEX]
+    mode: READ_ONLY
+    paths: [.agents/skills/q3-step32-lean/SKILL.md, .agents/skills/q3-psdpd-step33-bootstrap/SKILL.md]
+    trigger: NEVER_FOR_ROUTE_B
+    writes: false
+    approval: NONE
+    authority: NONE
+    failure_mode: Route into the dormant June Step33 contour and its stale monitor.
+
+  - id: zero-byte-sqlite-decoys
+    status: BROKEN
+    audience: [CODEX, CLAUDE_CODE, HUMAN]
+    mode: READ_ONLY
+    paths: [knowledge.db, orchestrator/knowledge.db, orchestrator/observability.db, orchestrator/state/observability.db, q3.lean.aristotle/aristotle_db/proofs.db]
+    trigger: NEVER
+    writes: false
+    approval: NONE
+    authority: NONE
+    failure_mode: Empty files mimic canonical database names and falsely report that project memory is empty.
+    canonical_knowledge_db: q3.lean.aristotle/aristotle_db/knowledge.db
+    canonical_proof_db: q3.lean.aristotle/aristotle_db/aristotle_proofs.db
+
+  - id: primecert-museum
+    status: RETIRED
+    audience: [CODEX, CLAUDE_CODE, HUMAN]
+    mode: READ_ONLY
+    path: q3.lean.aristotle/Q3/Proofs/PrimeCert
+    trigger: Exact mechanism archaeology only; exclude from broad scans and builds.
+    writes: false
+    approval: NONE
+    authority: READ_ONLY_MECHANISM_LIBRARY
+    failure_mode: About 1.5 GB of generated certificates makes direct scans and verification operationally infeasible.

@@ -1,728 +1,174 @@
-# Session Entry (2026-03-08)
+# Codex Session Entry
 
-Это главный session-entry файл для Q3. Начинать новую сессию надо с чтения
-именно его.
+Updated: 2026-08-09
 
-## Кто мы и что делаем
+Этот файл — короткий маршрутизатор новой Q3-сессии. Он не хранит датированный
+математический frontier и не заменяет физическое состояние задачи.
 
-Мы ведём один проект:
+`AUDIENCE: CODEX`. Claude Code — независимый наблюдатель/администратор со своим
+`CLAUDE.md`; его bootstrap и политика сюда не входят.
 
-- `/Users/emalam/GitHub/rh_lean_01_2026`
+## Неподвижная граница
 
-Цель сейчас не “заявить доказательство RH”, а максимально быстро двигать
-вперёд **правдоподобный и математически честный route** внутри Q3:
-текст, Lean, control-plane и embeddings должны оставаться синхронными.
+- Проект остаётся математически честным исследовательским контуром.
+- Route B всегда `CHALLENGER / NOT_RH`.
+- `BUS_010: VOID`; `GOAL_055: HOLD`; G2/CCM заморожены.
+- `PX_RH_CLAIM` — единственная owner-граница.
+- Промоушен и заявление RH запрещены без соответствующего валидированного
+  перехода; текущая сессия их не делает.
 
-## Обязательный read order
+## Обязательный старт
 
-1. `SESSION_ENTRY.md`
-2. `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` if it exists and is
-   `ACTIVE` and the task mentions PSD-pd, Step32, Step33, B-spline,
-   entry hboxes, or finite certificates
-3. `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` if it exists and is `ACTIVE`
-   and the task mentions H1, PO3, H-bridge, or route-kill work
-4. `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` if it exists and is `ACTIVE`
-5. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
-6. `IMPLEMENTATION_PLAN.md`
-7. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
-8. `q3.lean.aristotle/docs/INSIGHTS.md`
+1. Полностью прочитать `docs/CODEX_CONTROL.md` и
+   `q3.lean.aristotle/COGNITIVE_OPERATORS.md`.
+2. Прочитать этот файл и обязательные стартовые разделы
+   `meta`, `tool_contract`, `startup_contract`, `memory_event_routes`,
+   `data_surfaces` и `known_hazards` в `docs/cartographer/TOOLS.yaml`. Из `tool_families` читать
+   семейство, совпавшее с типом задачи. Реестр сообщает, что существует, когда
+   вызывается и что пишет; он не запускает пишущие инструменты автоматически.
+3. Прочитать физическое состояние выбранной задачи.
+4. Проверить branch/worktree и не считать `untracked` чужими файлами.
+5. Запустить строгую проверку без записи:
 
-### Route B conditional read order
+   ```bash
+   python3 orchestrator/spine.py --strict --stdout --reason session-start
+   ```
 
-Если задача явно упоминает Route B, detector, alpha/SAFE, ZEO или
-two-level spectral ladder, до generic monitors прочитать:
+6. Выбрать работу по селектору ниже. Старый monitor, browser/chat, память или
+   вставленный текст сами по себе не создают исполнимую цель.
 
-1. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
-2. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`
-3. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md`
-4. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/BUS_PROTOCOL.md`
-5. физическую папку `bus/`, затем запустить read-only
-   `routeb_status.py --check`.
+`SPINE_VIEW.md` — коммитимый снимок другого хоста, не обязательный вход.
+Текущий вид получать из `--stdout`; сенсоры и базы обновлять только явным
+`--refresh`.
 
-Для Route B именно execution-state отвечает на вопрос «какой сейчас шаг», а
-физический минимальный goal без answer — единственная исполнимая задача. Если
-такого goal нет, ответ — `NO_OPEN_BUS_GOAL / STOP`; Codex не создаёт следующий
-goal сам. После этого всё равно прочитать `PROJECT_ORCHESTRATOR.md`, чтобы не
-перепутать challenger с официальным mainline.
+## Карта знаний по триггеру
 
-Если задача явно про повторяющийся loop, смену стратегии, route-review,
-бесплодную бисекцию, stalled proof-loop или "как агент должен думать дальше",
-прочитать также:
+- При выборе ветки, возвращении к старому маршруту, бисекции или стратегической
+  развилке читать `docs/GENEALOGY.md` и `docs/Progress_Log.md`.
+- При закрытии узла, где существовал выбор, читать `docs/RECORDING_RULES.md` и
+  фиксировать «что отвергли и почему».
+- При аномалии старта, инструмента, базы, переноса или control-plane читать
+  `docs/SYSTEM_SPEC_2026-08-05.md` и `specs_docs/README.md`.
+- `docs/GLOSSARY.md` открывать, когда непонятны обозначения или роль объекта.
+- `q3.lean.aristotle/docs/INSIGHTS.md` — исторический поток, не startup-файл;
+  читать только по точному адресу из карты, журнала, базы или физической задачи.
 
-9. `q3.lean.aristotle/COGNITIVE_KERNEL.md`
-10. `q3.lean.aristotle/COGNITIVE_OPERATORS.md`
-11. `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md`
+## Четыре уровня истины
 
-Если работаешь с embeddings / incoming notes, потом ещё:
+При конфликте действует такой порядок:
 
-9. `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
+1. `docs/CODEX_CONTROL.md`, platform safety и явная операционная инструкция.
+2. Физическое task-local состояние: goal/answer, execution JSON, live bus,
+   active monitor и проверяемый исходный код.
+3. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` и paper theorem map.
+4. Generated views, `docs/INSIGHTS.md`, архивы и память: полезные свидетельства,
+   но не источник текущего gate.
 
-Если работаешь именно с oracle-search / embeddings по новому blocker, потом ещё:
+`IMPLEMENTATION_PLAN.md` — замороженный исторический снимок и в старт не входит.
 
-9. `q3.lean.aristotle/ACTIVE/pipeline/RESEARCH_ORACLE.md`
-10. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/INDEX.md`
-11. `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/BY_ADDRESS.md`
-12. `q3.lean.aristotle/docs/insights/h1_po3_route_ladder_2026_04_19.md`
+### Scoped precedence Route B
 
-Если работаешь с Aristotle:
-
-9. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`
-10. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`
-
-## Текущий public mainline
-
-Текущий публичный маршрут проекта:
-
-`T0-pd -> H-bridge -> H4 -> RH`
-
-Где
-
-- `H-bridge` = Suzuki/Yoshida generalized form-pair bridge
-  `H1^f -> H2^f -> H3^f -> H4^f`;
-- `H1^f` = filtered bulk bridge on the symmetric two-sided tail package, so
-  that the strongest finite Q3 block is compared not to raw `Q_M`, but to the
-  filtered tail section `\widetilde Q_{M,N}`; the exact identity is treated as
-  the zero-defect special case, while the current honest global working
-  theorem-shape is filtered intertwining modulo explicit boundary/cap
-  correction; a shared rank-`3` joint cap defect survives only as a local
-  `M=4` mid-`a` phenomenon and is now false-for-now as a global theorem-shape;
-- preferred first-pass candidate for `H1^f`:
-  two-sided filtered Volterra bridge with
-  `J_a=(I_0^{(a)})^*I_0^{(a)}`,
-  tail model space `\mathcal P_{M,N}`,
-  symmetric filtered shift `\Delta_{M,N}`,
-  packet states `\phi_n^\pm[a]`,
-  synthesis `S_{a,M,N}`,
-  exact pullback metric
-  `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
-  and preferred filtered bridge-object
-  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
-- semilocal cyclic/Jacobi machinery stays useful, but only as a secondary
-  finite-prime basis/Gram supplier for `H1^f`, not as a new RH endgame.
-
-Точный theorem stack, который сейчас заморожен как primary live route:
-
-- `H1^f` filtered intertwining modulo explicit boundary/cap correction
-- `H2^f` Suzuki tail/cap reduction
-- `H3^f` filtered gap transfer
-- `H4^f` RH via Suzuki Theorem 1.4
-
-Что сейчас не является public mainline:
-
-- `S1/S2/S3/S4` — правильный, но diagnostic-only compact-truncation package;
-- `PSD-pd` — честный fallback Weil-side route, если `H1` stalled.
-- `Q_\zeta`-core — не третья RH-ветка, а координационный слой над уже живыми
-  `H-bridge` и `PSD-pd`.
-
-## Текущий практический next step
-
-Если задача явно Route B, этот раздел не выбирает её шаг. Использовать только
-request-local `ROUTE_B_EXECUTION_STATE.json` + физическую шину; generic
-PSD/PHASE/SPRINT monitors не переопределяют Route B. Не копировать сюда
-датированный адрес: живой JSON и bus всегда проверяются заново.
-
-Если `ACTIVE/PSD_STEP33_MONITOR.md` существует, имеет `status: ACTIVE`, и
-текущая задача явно про PSD-pd / Step33 / B-spline finite certificate backend,
-то он является оперативным single source of truth для этой задачи:
-
-- продолжать ровно `current_step_id`;
-- читать `request` / `report` из `PSD_STEP33_MONITOR.md`;
-- не переключаться на `ACTIVE/PHASE_MONITOR.md`, если пользователь явно не
-  просит H1 / PO3 / H-bridge / route-kill;
-- не пересобирать frontier заново;
-- обновлять сперва PSD monitor/request/report, потом `INSIGHTS`.
-
-Если `ACTIVE/PHASE_MONITOR.md` существует и имеет `status: ACTIVE`, то он
-является оперативным post-sprint single source of truth:
-
-- продолжать ровно `current_step_id`;
-- открывать только `current_artifact`, если он указан;
-- для второго агента использовать
-  `ACTIVE/AGENT_PROTOCOL.md` + `worker_request` / `worker_report` из
-  `PHASE_MONITOR.md`;
-- не пересобирать frontier заново;
-- обновлять сперва `PHASE_MONITOR.md`, потом уже `INSIGHTS/PLAN` при нужде.
-
-Если `ACTIVE/PHASE_MONITOR.md` неактивен, а `ACTIVE/SPRINT_MONITOR.md`
-существует и имеет `status: ACTIVE`, то он является оперативным sprint single
-source of truth:
-
-- продолжать ровно `current_step_id`;
-- открывать только `current_artifact`, если он указан;
-- для второго агента использовать
-  `ACTIVE/AGENT_PROTOCOL.md` + `worker_request` / `worker_report` из
-  `SPRINT_MONITOR.md`;
-- не пересобирать frontier заново;
-- обновлять сперва `SPRINT_MONITOR.md`, потом уже `INSIGHTS/PLAN` при нужде.
-
-Если нет нового user redirect, текущий честный frontier такой:
-
-- thin project-level coordination layer:
-  `Q_\zeta`-core = canonical explicit-form / Weil quadratic-operator layer;
-  immediate backends only:
-  `H-bridge` as the primary operator backend and `PSD-pd` as the explicit
-  finite-shadow / certificate backend;
-  this layer is not a new RH route and does not replace the public mainline,
-  but it is now the right capital object for deciding whether a new idea
-  improves the canonical operator layer, improves a translation into it, or
-  produces a kill certificate;
-- oracle-search discipline:
-  every new search series must be attached to one proof-tree address through
-  `ACTIVE/pipeline/oracle_questions/`; keep both the literal working notation
-  (`raw_address_notation`) and the expanded explicit list
-  (`normalized_addresses`), so semantic recall can move up and down the local
-  tree instead of only “по теме вообще”;
-- current execution mode:
-  post-sprint direct theorem/certificate phase;
-  lane A starts from the frozen `H1` lemma ladder and attacks
-  `PO1 -> PO3`, beginning with the tail-defect definition note
-  `docs/insights/h1_po1_tail_defect_attack_2026_03_16.md`;
-  lane B keeps the canonical smallest-block certificate alive through
-  `J_{\min}=\{0,1\}`, `K=0.2`, `\Delta=0.15`,
-  and the degree-1 finite symbol
-  `S_{J_{\min}}(\theta)=(\alpha_0-\beta_0)+2(\alpha_1-\beta_1)\cos\theta`;
-  Proshka remains structural support only, not control-plane;
-- symmetric two-sided filtered H-bridge:
-  `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
-  `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
-  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
-- next live blocker:
-  operator-level defect calculus for the filtered bridge:
-  define
-  `D_{a,M,N}=S_{a,M,N}^*G_g[a]S_{a,M,N}
-   -\kappa(a)\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
-  then separate exact bulk from boundary/cap/compression terms;
-  the new theorem ladder is
-  `H1^\infty -> H1^\partial -> H1^f`,
-  where the first live subquestions are:
-  does `(+,-)` admit an exact filtered reformulation,
-  and what same-sign boundary / Toeplitz-Hankel / commutator term survives in
-  `(++ )`?
-  The old rank/basis stories stay only as diagnostics,
-  where on the Section 8 side
-  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
-  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
-  and
-  `q_{rs}=\langle Q_M^{raw} e_s,e_r\rangle
-   =A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
-  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
-  with `\kappa_{A3}=1`,
-  and
-  `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})` on the Suzuki side;
-- raw diagnostic layer:
-  the raw identity `w_{rs}(a)=\kappa(a)q_{rs}` is rejected as an exact theorem
-  shape, because the raw Q3 matrix is Toeplitz with constant diagonal while the
-  Suzuki raw Weil matrix in the `\chi_n[a]` basis has diagonal growth of order
-  `\log|n|`;
-- derived filtered consequence:
-  the remaining filtered blocks `M^{-+}, M^{--}` are obtained from
-  `M^{++}, M^{+-}` by conjugation/self-adjoint symmetry;
-- current numerical classifier verdict:
-  filtered mismatch is compatible with small-rank structure but not with a
-  purely low-mode-supported defect; in the canonical case
-  `a=1.25, M=4, zeros=20`, the `++` residual has rank-2 relative residual
-  `~6.32e-3` and the `+-` residual has rank-2 relative residual `~1.99e-3`,
-  while low-mode union-mask residuals stay large
-  (`++`: `~7.81e-1`, `~5.96e-1`, `~4.04e-1`;
-   `+-`: `~9.97e-1`, `~9.85e-1`, `~9.32e-1`
-   for unions of the first `1/2/3` rows-columns);
-  the stronger reduced sweep on the rank-`3` joint-basis candidate now gives a
-  sharper and more honest verdict:
-  the shared rank-`3` cap-defect is real on a local `M=4` mid-`a` window
-  (`a=1.0,1.25`), stable in `zeros`, and still much better than any low-mode
-  story;
-  but it does **not** survive as a global theorem-shape:
-  `a=0.8, M=4` is stably bad
-  (`proj_rel_resid(++) ~8.24e-1`, `proj_rel_resid(+-) ~2.04e-3` at both
-   `zeros=20,40`),
-  `a=1.5, M=4` is stably good
-  (`~3.7e-3`, `~1.1e-3`),
-  and the `M:4 -> 5` step breaks the shared-basis geometry even in the core
-  band:
-  for `a=1.0`, `proj_rel_resid(++) ~8.32e-1`, `proj_rel_resid(+-) ~2.42e-3`;
-  for `a=1.25`, `proj_rel_resid(++) ~1.51e-1`, `proj_rel_resid(+-) ~3.31e-3`,
-  with third `M_step` angles around `79°`;
-  so the honest live global freeze is now:
-  `structured finite-rank correction yes`, but `shared rank-3 joint cap defect`
-  is `false-for-now` beyond the local `M=4` window, and the immediate split is
-  `(++ ) classifier` versus `(+-) classifier`;
-  the first fixed-scale split-classifier run now sharpens this further:
-  freezing `zeros=40` and fitting one pooled `\kappa_{+-}(a)` across
-  `M=4,5,6` for each fixed `a in {1.0,1.25}` keeps `(+,-)` stable and shows
-  that low-mode is decisively dead, joint-Gram is much better but still weaker
-  than the optimal family-specific basis, and `(++ )` is still compatible with
-  a family-specific small-rank defect, but not with naive `M`-stable basis
-  transfer;
-  nontrivially, `rank=4` already works well at `M=5`,
-  and `rank=5` works well at `M=6`,
-  while the explicit `M -> M+1` transfer residuals for both family-specific
-  and joint-Gram bases stay around `~4.5e-1` to `~5.6e-1`;
-  so the live object is now best thought of as `H1^{split}`:
-  one common `\kappa(a)` and separate defect structures for `(++ )` and
-  `(+,-)`, with the current classifier verdict equal to case `B`
-  (family-dependent finite-rank defect plausible), and with the whole
-  remaining risk concentrated in finding a better `(++ )` basis / Gram
-  projection across `M`;
-  the next pooled attempt `family-gram-a`, built jointly across the tested
-  `M`-grid for fixed `(a, zeros, rank)`, is the first strong in-sample common
-  basis signal for `(++ )`: on the live window `a in {1.0,1.25}`,
-  `zeros=40`, `rank in {4,5}`, it gives projected residuals around
-  `~1.08e-2 .. 7.53e-2`;
-  but the honest holdout `family-gram-prefix`, where the target `M` only sees
-  a basis pooled from smaller `M` values, stays bad on `M=5,6,7`:
-  direct projected residuals remain around `~4.35e-1 .. 5.46e-1`, and the
-  `M -> M+1` transfer residuals sit around `~6.10e-1 .. 6.75e-1`;
-  so Branch A stays alive only in split case `B`, but there is still no
-  theorem-grade prefix-stable common `(++ )` basis visible on the tested grid;
-  the 2026-03-14 reset therefore demotes the whole rank/basis ladder to
-  diagnostic-only status and replaces the live question by an operator one:
-  classify
-  `D_{a,M,N}=S_{a,M,N}^*G_g[a]S_{a,M,N}-\kappa(a)\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`
-  as the shadow of an explicit boundary/cap correction.
-  Best current guess:
-  `D_{a,M,N}` is not a genuine bulk mismatch and not one fixed shared
-  low-rank cap-space, but an explicit boundary/cap term whose finite-matrix
-  shadow looks like a moving Toeplitz-Hankel / commutator / near-edge defect;
-  the immediate next task is therefore:
-  prove or disprove an exact filtered reformulation for the `(+,-)` block,
-  and derive the surviving same-sign boundary term in the `(++ )` block,
-  before any further basis hunt or cap positivity;
-- after the filtered bulk match:
-  separate finite-dimensional Suzuki cap positivity;
-- semilocal-assisted refinement after that:
-  finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
-  `\Gamma_{a,M}^{(S)}`, and normalized synthesis
-  `\widetilde S_{a,M}^{(S)}` only as engineering support for the same `H1^f`.
-
-## Самые важные правила мышления
-
-1. Не чинить то, что уже переведено в background-only.
-2. Не возвращать broad-cone `W_K / W` как публичный RH-contract.
-3. Не притворяться, что проект уже замкнут.
-4. Не открывать новый архитектурный pivot без явного theorem memo и sync в control docs.
-5. Самый быстрый путь — тот, который:
-   - математически честен,
-   - повторно использует уже доказанные модули,
-   - не плодит новые необязательные слои.
-6. Если 3–5 итераций подряд не дают theorem/certificate/gap-shrink/
-   counterexample/route-kill, включить Cognitive Kernel:
-   классифицировать gap, записать failed strategy, выбрать cognitive operator,
-   и только потом продолжать локальное дробление.
-
-## Что сейчас source of truth
-
-При конфликте файлов порядок такой:
-
-1. `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
-2. `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
-3. `IMPLEMENTATION_PLAN.md`
-4. `q3.lean.aristotle/docs/INSIGHTS.md`
-
-Коротко:
-
-- orchestrator решает frontier и gate-state;
-- tracker решает paper typing / theorem map;
-- implementation plan решает ровно текущую очередь;
-- insights ничего не переопределяет.
-
-Для Route B действует scoped precedence, не меняющий порядок global mainline:
-
-1. `PROJECT_ORCHESTRATOR.md` решает только архитектурный ранг маршрута.
-2. Физическая шина решает наличие исполнимого goal.
-3. `ROUTE_B_EXECUTION_STATE.json` решает текущий operational address.
+1. `PROJECT_ORCHESTRATOR.md` фиксирует только ранг `CHALLENGER / NOT_RH`.
+2. `docs/routeB_bus/` решает, существует ли исполнимый goal.
+3. `ROUTE_B_EXECUTION_STATE.json` задаёт текущий operational address.
 4. `ROUTE_B_THEOREM_CONTRACT_v2.md` и `ROUTE_B_EXECUTION_CONTROL.md` задают DAG.
 5. `ROUTE_B_STATE.md` хранит проверенные факты и историю.
-6. `loop_state.json` — compatibility mirror; `INSIGHTS` — non-normative memory.
-
-## Как работать по сессии
-
-### Если задача математическая / theorem-level
-
-1. Прочитать `PROJECT_ORCHESTRATOR.md`.
-2. Найти active gate в `IMPLEMENTATION_PLAN.md`.
-3. Проверить, не решён ли уже этот кусок в `docs/INSIGHTS.md` или `docs/insights/`.
-4. Только потом писать новый theorem note / manuscript patch / Lean patch.
-5. После значимого шага:
-   - `lake env lean Q3/Main.lean`
-   - `#print axioms Q3.Main.RH_of_Weil_and_Q3`
-   - если менялся paper: `latexmk -pdf full/RH_Q3.tex`
-
-### Если задача про incoming notes / embeddings
-
-Сначала проверь статус inbox:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
-./scripts/ingest_incoming_notes.py status
-```
-
-Если inbox пуст:
-- ничего не инжестить;
-- это значит, что raw inbox уже разобран или заархивирован;
-- ждём новый материал.
-
-Если inbox не пуст, canonical loop такой:
-
-```bash
-./scripts/ingest_incoming_notes.py prepare docs/incoming_notes/<file-or-zip>
-python3 -u ./scripts/refresh_q3_docs.py
-python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
-```
-
-Но важно:
-
-- raw никогда не идёт в embeddings напрямую;
-- только reviewed note с
-  - `review status: reviewed`
-  - `safe for embeddings: yes`
-- после review raw уходит в archive, не удаляется.
-
-Для этого есть локальный skill:
-
-- `/Users/emalam/.codex/skills/q3-note-ingest/SKILL.md`
-
-## Правило для Прошки
-
-Если готовим пакет для Прошки, не рассчитываем, что он будет читать наши
-локальные `.tex` или произвольные text files как source of truth.
-
-Если в текущей Codex Desktop сессии справа открыт in-app browser с Proshka /
-Louise, это можно и нужно использовать как Computer Use route-review при
-loop-trap, theorem-shape fork или payload ambiguity.  Ответ Прошки остаётся
-advisory: он выбирает следующий route/operator, но не является доказательством.
-Если браузер недоступен, использовать обычный `PRO_REVIEW_REQUEST`.
-
-Правильный формат по умолчанию:
-
-- один короткий self-contained markdown/prompt;
-- все ключевые формулы, константы и target identity вписаны прямо внутрь;
-- архивы с source files можно давать только как secondary attachment, не как
-  основной carrier смысла.
-- имена таких пакетов делать с понятным topic-prefix и точным timestamp suffix,
-  например
-  `proshka_q3_rh_route_state_YYYY_MM_DD_HHMM.md`
-  и
-  `proshka_q3_rh_route_state_YYYY_MM_DD_HHMM.tar.gz`,
-  чтобы новые пакеты не перетирали старые и их было легко различать глазами.
-
-Для H1 это означает:
-
-- в prompt напрямую вставлять `Q_M^{raw}`, `\Pi_M`, exact `q_{rs}`,
-  `\kappa_{A3}=1`, raw mismatch diagnostic, и direct filtered target on
-  `(++),(+-)`;
-- не ожидать, что Прошка сам восстановит normalization из старых A3 файлов.
-- для локального быстрого check использовать:
-  ```bash
-  cd /Users/emalam/GitHub/rh_lean_01_2026
-  source .venv/bin/activate
-  python src/h1_raw_bulk_match.py --a 1.0 --M 3 --B 0.2 --t 0.15 --zeros 50
-  ```
-- для текущего live bulk-frontier использовать уже filtered checker:
-  ```bash
-  cd /Users/emalam/GitHub/rh_lean_01_2026
-  source .venv/bin/activate
-  python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
-  ```
-- для первого diagnostic sweep:
-  ```bash
-  cd /Users/emalam/GitHub/rh_lean_01_2026
-  source .venv/bin/activate
-  python -u src/h1_filtered_bulk_match.py --sweep --B 0.2 --t 0.15
-  ```
-  Скрипт теперь печатает не только bucket-статистики, но и SVD-based
-  classifier signal:
-  `rank-1 rel residual`, `rank-2 rel residual`,
-  `sv1 share`, `sv1+sv2 share`,
-  а также low-mode support signal:
-  `union<=1/2/3 rel resid` и `share`,
-  чтобы быстро отличать low-rank structured correction от genuinely
-  low-mode-supported defect.
-- для cap-defect classifier на canonical case:
-  ```bash
-  cd /Users/emalam/GitHub/rh_lean_01_2026
-  source .venv/bin/activate
-  python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 2
-  ```
-  Здесь уже смотрим не только `rank-2 residual`, но и
-  cross-family defect-basis report:
-  `col_align`, `row_align`, `transfer_rel_resid`,
-  чтобы понять, похож ли найденный small-rank defect на один и тот же
-  конечномерный cap-space для `++` и `+-`.
-- для joint shared-cap candidate на rank `3`:
-  ```bash
-  cd /Users/emalam/GitHub/rh_lean_01_2026
-  source .venv/bin/activate
-  python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
-  ```
-  Здесь смотрим уже блок `[shared cap-defect candidate]` и сравниваем
-  `proj_rel_resid` между `++` и `+-`: если обе семьи хорошо сидят на одном
-  joint projector, значит theorem shape “filtered intertwining modulo
-  finite-rank cap defect” реально становится живым.
-
-## Python / src rule
-
-Если пишем executable sanity-check или numerical bridge probe, код кладём в
-`/Users/emalam/GitHub/rh_lean_01_2026/src/`, а запуск в новых сессиях
-делаем из корня repo после активации `.venv`. CSV и прочие одноразовые
-diagnostic outputs по умолчанию писать в
-`/Users/emalam/GitHub/rh_lean_01_2026/tmp/`, не в tracked docs.
-
-## Repo map (только живой минимум)
-
-### Control plane
-
-- `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md`
-- `IMPLEMENTATION_PLAN.md`
-- `q3.lean.aristotle/docs/PAPER_MAINLINE_TRACKER.md`
-- `q3.lean.aristotle/docs/INSIGHTS.md`
-- Route B challenger only:
-  `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`
-- Route B method/DAG:
-  `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`
-
-### Manuscript
-
-- `full/RH_Q3.tex`
-- `full/sections/Main_closure.tex`
-- `full/sections/Weil_pack.tex`
-- `full/sections/Weil_linkage.tex`
-- `full/sections/Notation/qstar_contract.tex`
-- `full/sections/A1prime.tex`
-
-### Lean entry
-
-- `q3.lean.aristotle/Q3/Main.lean`
-
-### Active pipeline / KB
-
-- `q3.lean.aristotle/ACTIVE/KNOWLEDGE_BASE.md`
-- `q3.lean.aristotle/docs/EMBEDDING_INGEST_WORKFLOW.md`
-- `q3.lean.aristotle/scripts/ingest_incoming_notes.py`
-- `q3.lean.aristotle/scripts/refresh_q3_docs.py`
-- `q3.lean.aristotle/scripts/research_oracle.py`
-
-## Проверки, которые надо помнить
-
-### Lean
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
-lake env lean Q3/Main.lean
-printf 'import Q3.Main\n#print axioms Q3.Main.RH_of_Weil_and_Q3\n' | lake env lean --stdin
-```
-
-Ожидаемый current profile:
-
-- `propext`
-- `Classical.choice`
-- `Quot.sound`
-- `Q3.Weil_criterion`
-- `Q3.prime_term_le_at_t_critical_axiom`
-
-### TeX
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026/full
-latexmk -pdf RH_Q3.tex
-```
-
-### Embeddings
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle
-./scripts/ingest_incoming_notes.py status
-python3 -u ./scripts/refresh_q3_docs.py
-python3 -u ./scripts/research_oracle.py query "<query>" -c q3_docs -n 5
-```
-
-### Python sanity / code location
-
-Новый Python-код для быстрых sanity-check / numerical audit по Q3 держим в:
-
-- `/Users/emalam/GitHub/rh_lean_01_2026/src`
-
-Запускать такие проверки надо от repo-root и через локальную `.venv`:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python src/h1_raw_operator_sanity.py
-```
-
-Для текущего H1 bulk-normalization brick canonical script такой:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python src/h1_raw_operator_sanity.py --M 4 --M-big 7 --B 0.2 --t 0.15
-```
-
-Этот скрипт проверяет three-in-one:
-
-- scaling identity `\Pi_M=(2M+1)T_P^{Ray}(t,M)`;
-- raw entry formula for `Q_M^{raw}`;
-- stability of the raw entries under `M -> M_big`.
-
-Для текущего live `H1^f` brick canonical filtered checker такой:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python -u src/h1_filtered_bulk_match.py --a 1.0 --M 2 --B 0.2 --t 0.15 --zeros 10
-```
-
-Для локального mid-`a` probe, где joint rank-`3` выглядит лучше всего, теперь
-такой canonical case:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python -u src/h1_filtered_bulk_match.py --a 1.25 --M 4 --B 0.2 --t 0.15 --zeros 20 --defect-rank 3
-```
-
-A для честного Gate A stability harness полный command-line target такой:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python -u src/h1_filtered_bulk_match.py \
-  --sweep \
-  --sweep-a-values 0.8,1.0,1.25,1.5 \
-  --sweep-M-values 4,5,6,7 \
-  --sweep-zero-values 20,40,80 \
-  --defect-rank 3
-```
-
-Но practically на этой машине такой full sweep уже тяжёлый; рабочий reduced
-Gate A verdict лучше получать двумя урезанными прогонами:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python -u src/h1_filtered_bulk_match.py \
-  --sweep \
-  --sweep-a-values 1.0,1.25 \
-  --sweep-M-values 4,5 \
-  --sweep-zero-values 20,40 \
-  --defect-rank 3
-python -u src/h1_filtered_bulk_match.py \
-  --sweep \
-  --sweep-a-values 0.8,1.5 \
-  --sweep-M-values 4 \
-  --sweep-zero-values 20,40 \
-  --defect-rank 3
-```
-
-Здесь уже надо смотреть не только `rank-k residual`, но и:
-
-- `sigma_next/sigma_rank` как rank-stability proxy;
-- principal angles в cross-family/shared-basis comparisons;
-- `[shared cap-defect candidate]` для same-space test;
-- `embedded-shared-basis transfer` для `M -> M+1` consistency.
-
-Сейчас честный reduced-sweep verdict такой:
-
-- `zeros`-stability очень сильная, значит это не zero-count artifact;
-- `+-` семья ведёт себя стабильно хорошо почти на всей reduced grid;
-- `++` семья ломает глобальный shared rank-`3` shape:
-  на `a=0.8, M=4` получаем `proj_rel_resid(++) ~8.24e-1`,
-  а на `M:4 -> 5` в core-band residual резко растёт
-  (`a=1.0`: `~8.32e-1`, `a=1.25`: `~1.51e-1`);
-- third principal angles for `M_step` сидят около `79°`, так что общий
-  rank-`3` defect-space не переносится честно по `M`.
-
-Итог: глобальная theorem-shape
-`shared rank-3 joint cap defect after the right joint basis / Gram projection`
-сейчас `false-for-now`; живым остаётся более слабый и честный freeze:
-`filtered intertwining with structured finite-rank correction`,
-а immediate next step — split `(++ ) classifier` versus `(+-) classifier`,
-не augmented cap positivity.
-
-Для первого fixed-scale split-classifier run использовать:
-
-```bash
-cd /Users/emalam/GitHub/rh_lean_01_2026
-source .venv/bin/activate
-python -u src/h1_filtered_bulk_match.py \
-  --split-classifier \
-  --classifier-family ++ \
-  --fit-kappa-from-family +- \
-  --fit-kappa-scope a-grid \
-  --sweep-a-values 1.0,1.25 \
-  --sweep-M-values 4,5,6 \
-  --sweep-zero-values 40 \
-  --rank-sweep-values 3,4,5,6 \
-  --basis-choice all
-```
-
-Здесь ключевой decision rule уже такой:
-
-- `(+,-)` должен оставаться стабильным при одном и том же `\kappa_{+-}(a)`;
-- для `(++ )` nontrivial evidence сидит в `rank < M`,
-  то есть особенно в `rank=4` на `M=5,6` и `rank=5` на `M=6`;
-- если low-mode остаётся плохим, joint-Gram остаётся промежуточным, а
-  family-specific residual остаётся малым при `rank=4,5`,
-  но `M -> M+1` transfer всё ещё ломается, следующий ход — не cap positivity,
-  а поиск лучшего `(++ )` family-specific basis / Gram projection.
-
-Этот скрипт уже не проверяет убитый raw-target `w_{rs}(a)=\kappa(a)q_{rs}`, а
-сравнивает именно live filtered families `(++),(+-)`:
-
-- `M_{mn}^{++}(a)` vs `\kappa(a)\widetilde q_{mn}^{++}`;
-- `M_{mn}^{+-}(a)` vs `\kappa(a)\widetilde q_{mn}^{+-}`.
-
-## Что не делать
-
-- Не опираться на старый broad-cone route как на public RH contract.
-- Не возвращать в mainline T5/Acceptance/legacy status narratives.
-- Не засовывать raw chats или zip extracts напрямую в `q3_docs`.
-- Не создавать новый архитектурный pivot без sync в manuscript + control plane.
-- Не коммитить skill-файлы из `~/.codex/skills` в repo.
-
-## Текущий практический next step
-
-Route B exception: если пользователь спрашивает про detector/alpha/SAFE/ZEO,
-не брать нижеследующий H-bridge frontier как ответ. Читать request-local
-execution state и физическую шину. При отсутствии goal вернуть
-`NO_OPEN_BUS_GOAL / STOP`.
-
-Если нет нового user redirect, текущий честный frontier такой:
-
-- symmetric two-sided filtered H-bridge:
-  `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
-  `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
-  `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
-- Proshka-facing raw operator hack:
-  use
-  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
-  `\Pi_M=(2M+1)T_P^{Ray}(t,M)`,
-  with
-  `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle`;
-- next live blocker:
-  defect-aware filtered bulk bridge
-  `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}+F_a^{++}` and
-  `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}+F_a^{+-}`,
-  with one joint finite-rank cap defect as the honest target and exact
-  equality retained only as the zero-defect special case;
-- raw diagnostic layer:
-  `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
-  `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
-  `\kappa_{A3}=1`,
-  and `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`
-  remain frozen only as normalization/reference data;
-- rejected theorem shape:
-  `w_{rs}(a)=\kappa(a)q_{rs}` cannot be the exact bulk bridge because the raw
-  Q3 matrix is Toeplitz with constant diagonal while the raw Suzuki matrix has
-  diagonal growth of order `\log|n|`;
-- derived filtered consequence:
-  the remaining filtered blocks follow from `(++),(+-)` by
-  conjugation/self-adjoint symmetry;
-- after the bulk match:
-  separate finite-dimensional Suzuki cap positivity;
-- semilocal-assisted refinement after that:
-  finite-prime packet states `\eta_m^{(S,a)}`, Gram matrix
-  `\Gamma_{a,M}^{(S)}`, and normalized synthesis
-  `\widetilde S_{a,M}^{(S)}` only as engineering support for the same `H1^f`;
-- packet route держать как fallback verification layer;
-- compact scalar package держать только как diagnostic reduction;
-- incoming notes прогонять через `q3-note-ingest` и не путать historical memos с live source of truth.
+6. `loop_state.json`, generated views и `INSIGHTS` ничего не выбирают.
+
+## Селектор задачи
+
+### Route B
+
+Если запрос явно упоминает Route B, detector, alpha/SAFE, ZEO, two-level
+spectral ladder или Unified Chain, до generic monitors прочитать:
+
+1. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
+2. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`;
+3. `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md`;
+4. `docs/routeB_bus/BUS_PROTOCOL.md`;
+5. физическую папку `docs/routeB_bus/` и вывод:
+
+   ```bash
+   python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
+   ```
+
+Исполнять только активную цель новейшего корневого семейства. Следующий корень
+не следует из номера: для него нужен standing direction или delegated strategic
+review. После выбора прочитать `PROJECT_ORCHESTRATOR.md`, чтобы не перепутать
+challenger с public mainline.
+
+### PSD / Step33
+
+Только если запрос явно про PSD-pd, Step32/33, B-spline, entry hboxes или
+finite certificates, прочитать `ACTIVE/PSD_STEP33_MONITOR.md`. Исполнять его
+только при активном статусе; `DORMANT_*` ничего не выбирает.
+
+### H1 / PO3 / H-bridge
+
+Только если запрос явно про H1, PO3, H-bridge или route-kill, прочитать
+`ACTIVE/PHASE_MONITOR.md`. Исполнять только активный `current_step_id`.
+`PARKED_*` — исторический снимок.
+
+### Sprint
+
+Только если `ACTIVE/SPRINT_MONITOR.md` имеет `status: ACTIVE`:
+
+1. открыть `SESSION_ENTRY.md`;
+2. открыть `ACTIVE/SPRINT_MONITOR.md`;
+3. открыть только `current_artifact`;
+4. не читать широкие control docs заново, пока artifact не дал blocker;
+5. продолжать ровно `current_step_id`;
+6. не переизобретать frontier до `DONE`, `BLOCKED` или `ABORTED`.
+
+Первый ответ на активный sprint кратко называет sprint, step, artifact и
+добиваемый exact output. При `DONE_CLOSED` этот раздел ничего не активирует.
+
+### Cognitive loop / theorem-shape fork
+
+Если задача про повторяющийся loop, смену стратегии, route-review, бесплодную
+бисекцию или theorem-shape fork, дополнительно прочитать:
+
+1. `q3.lean.aristotle/COGNITIVE_KERNEL.md`;
+2. `q3.lean.aristotle/COGNITIVE_OPERATORS.md`;
+3. `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md`.
+
+Единственный stall-counter и переходы `SOFT_STALL` / `HARD_STALL` /
+`TERMINAL_STALL` заданы `docs/CODEX_CONTROL.md` §10.
+
+### Embeddings, search и incoming notes
+
+- Incoming notes: читать `docs/EMBEDDING_INGEST_WORKFLOW.md` и использовать
+  `q3-note-ingest`.
+- Новый blocker: сначала определить точный target lemma и consumer, затем
+  выполнить 3–5 запросов через `scripts/research_oracle.py`; перед повторным
+  поиском проверить `./orchestrator/kb.py flags <адрес|термин>`.
+- Oracle-карточки: читать `ACTIVE/pipeline/RESEARCH_ORACLE.md` и generated
+  `INDEX.md` / `BY_ADDRESS.md` только по этому типу задачи.
+
+### Aristotle
+
+Если работа требует Aristotle, читать:
+
+1. `q3.lean.aristotle/ACTIVE/aristotle/ARISTOTLE_WORKFLOW.md`;
+2. `q3.lean.aristotle/aristotle_input/ARISTOTLE_PROMPT_GUIDELINES.md`.
+
+Сначала `source .venv/bin/activate`; скачанный Lean всегда сканировать на
+`sorry|exact?|admit`, затем проверять production toolchain.
+
+## Закрытие шага
+
+1. Проверить точный artifact и применимые тесты/build.
+2. В Route B answer записать `SEARCH_FLAGS`, честный verdict/stop-code и
+   `ARSENAL_USED`; на `INCONCLUSIVE/WALL/KILLED` добавить `AUTOPSY`.
+3. Если в ходе goal выбиралась ветка, до закрытия добавить восьмиполевую запись
+   в `docs/Progress_Log.md`; внешний вердикт хранится вместе с дословным
+   аргументом, а не одной буквой выбора.
+4. Закрытие goal проводить через
+   `python3 orchestrator/spine.py --refresh --reason goal-close`, чтобы verdict
+   lessons, развилки, сенсоры и индекс доехали в базы.
+5. Route state обновлять последним.
+6. Коммитить только явно разрешённый scope; promotion и RH claim не выводить
+   из зелёного build, dashboard или numeric probe.
+
+Историческая мартовская H-bridge формулировка перенесена в
+`q3.lean.aristotle/docs/archive/SESSION_ENTRY_H_BRIDGE_SNAPSHOT_2026-03-08.md`.

@@ -90,12 +90,14 @@ if [ -n "$OUT" ]; then
   HITS=$((HITS + 1))
 fi
 
-# ── 5. Спеки, карты, задания ─────────────────────────────────────────────────
-SEARCHED+=("specs_docs/ · docs/routeB_bus/maps/ · docs/Codex/")
+# ── 5. Спеки, карты и память развилок ─────────────────────────────────────────
+SEARCHED+=("specs/maps + GENEALOGY/Progress_Log/RECORDING_RULES/GLOSSARY/TOOLS")
 OUT="$(rg -l -i "$Q" specs_docs/ docs/routeB_bus/maps/ docs/Codex/ docs/CHAT_DIGESTS.md \
-       docs/routeB_bus/MAP.md 2>/dev/null | head -8)"
+       docs/routeB_bus/MAP.md docs/GENEALOGY.md docs/Progress_Log.md \
+       docs/RECORDING_RULES.md docs/GLOSSARY.md docs/cartographer/TOOLS.yaml \
+       2>/dev/null | head -12)"
 if [ -n "$OUT" ]; then
-  hdr "СПЕКИ И КАРТЫ"
+  hdr "СПЕКИ, КАРТЫ И ПАМЯТЬ РАЗВИЛОК"
   printf '%s\n' "$OUT" | sed 's/^/  /'
   HITS=$((HITS + 1))
 fi

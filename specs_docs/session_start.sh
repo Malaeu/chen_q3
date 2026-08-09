@@ -34,7 +34,7 @@ hr
 echo "ПЛОЩАДКА"
 echo "  repo    : $REPO"
 echo "  branch  : $(git branch --show-current 2>/dev/null || echo '?')"
-dirty="$(git status --porcelain 2>/dev/null | wc -l)"
+dirty="$(git status --porcelain=v1 -uall 2>/dev/null | wc -l)"
 echo "  worktree: $([ "$dirty" -eq 0 ] && echo 'чисто' || echo "$dirty изменённых файлов")"
 echo "  HEAD    : $(git log -1 --format='%h %ad %s' --date=short 2>/dev/null | cut -c1-90)"
 ahead="$(git rev-list --count '@{u}..HEAD' 2>/dev/null || echo '?')"
@@ -169,7 +169,30 @@ else
   note "knowledge.db отсутствует — поиск по накопленному знанию недоступен"
 fi
 
-# ── 6. Строгая валидация контроля ──────────────────────────────────────────────
+# ── 6. Манифест инструментов ───────────────────────────────────────────────────
+hr
+echo "МАНИФЕСТ ИНСТРУМЕНТОВ"
+manifest_out="$(python3 - <<'PY' 2>&1
+from orchestrator import spine
+
+data = spine.validate_tool_manifest()
+print(
+    f"  schema {data['schema']} · families {data['family_count']} · "
+    f"tools {data['tool_count']} · writers {data['writer_count']}"
+)
+print(f"  mirror  : BYTE_IDENTICAL · sha256 {data['sha256']}")
+PY
+)"
+manifest_rc=$?
+if [ "$manifest_rc" -eq 0 ]; then
+  printf '%s\n' "$manifest_out"
+else
+  echo "  ПРОВАЛ (код $manifest_rc):"
+  printf '%s\n' "$manifest_out" | tail -5 | sed 's/^/    /'
+  note "TOOLS.yaml не прошёл schema/contract/mirror validation"
+fi
+
+# ── 7. Строгая валидация контроля ──────────────────────────────────────────────
 hr
 echo "ВАЛИДАЦИЯ КОНТРОЛЯ"
 if [ -f orchestrator/spine.py ]; then
@@ -187,7 +210,7 @@ else
   note "orchestrator/spine.py не найден"
 fi
 
-# ── 7. Расхождения ─────────────────────────────────────────────────────────────
+# ── 8. Расхождения ─────────────────────────────────────────────────────────────
 hr
 if [ ${#DIVERGENCE[@]} -eq 0 ]; then
   echo "РАСХОЖДЕНИЙ НЕТ — источники согласованы."

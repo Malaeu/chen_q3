@@ -2,12 +2,11 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 1
+CONTROL_VERSION: 4
 STATUS: ACTIVE
-ROLE: EXECUTOR
+ROLE: CODEX_EXECUTOR
 BODIES:
   - CODEX_MAC
-  - CLAUDE_CODE_LINUX
 
 TRIGGER_OWNER: Codex
 TRIGGER_EVENTS:
@@ -20,8 +19,7 @@ TRIGGER_EVENTS:
 
 BOOTSTRAP_POINTERS:
   - AGENTS.md
-  - CLAUDE.md
-  - q3.lean.aristotle/CLAUDE.md
+  - q3.lean.aristotle/COGNITIVE_OPERATORS.md
 
 SPINE_WIRING:
   - behavior_controls.executor
@@ -40,9 +38,10 @@ ANTI_ORPHAN:
   fail_closed_code: EXPLORATION_CONTOUR_ORPHANED
 ```
 
-> **Active kernel.** This is the single semantic behavior control for both
-> executor bodies. `AGENTS.md`, both `CLAUDE.md` entry files, and the former
-> executor addendum are thin pointers and contain no independent active policy.
+> **Active kernel.** This is the single semantic behavior control for Codex.
+> `AGENTS.md` is its thin bootstrap pointer. `CLAUDE.md` files belong to the
+> independent Claude Code observer/administrator and are neither Codex inputs
+> nor Codex startup-validation targets.
 
 ## 1. Authority and precedence
 
@@ -91,23 +90,26 @@ stays selected if commit/push, publication, paid API use, or an irreversible
 external action still needs an explicit operational command. The state becomes
 `OPERATIONAL_ACTION_PENDING`; it does not reopen mathematical route selection.
 
-## 2. Executor role and two bodies
+## 2. Codex executor and independent Claude observer
 
-`CODEX_MAC` and `CLAUDE_CODE_LINUX` are two physical bodies of one `EXECUTOR`
-role. OS, authentication, GUI, notification, model, sandbox, and plugin
-differences are runtime adapters only. They may not produce two semantic
-policies. A body may act only after resolving the same active control.
+`CODEX_MAC` is the only executor body governed by this file.
+`CLAUDE_CODE_INDEPENDENT_OBSERVER` is an owner-facing observer and administrative
+instrument governed by its own `CLAUDE.md`; its rules do not flow into Codex,
+and Codex never reads or validates them at session start. Both bodies share
+repository facts, Git state, and write-lock coordination, not behavior policy.
 
 ## 3. Session bootstrap and disk-wins selection
 
 At session start:
 
-1. Read the active executor control completely.
+1. Read the active executor control and the versioned cognitive-operator
+   registry completely.
 2. Read `SESSION_ENTRY.md`, the task-specific physical state, and the current
    generated Spine view.
 3. Run strict control/runtime validation.
-4. Inspect Git branch, worktree, and site baton without treating `untracked` as
-   foreign.
+4. Inspect Git branch and worktree without treating `untracked` as foreign.
+   Read a task-local handoff only when the physical goal/state explicitly names
+   one; do not search for a generic baton file.
 5. Select work from physical on-disk state. Pasted text, browser state, a stale
    monitor, or a remembered goal never creates an executable goal.
 
@@ -141,6 +143,36 @@ The conversation handle lives only in
 packet is followed only by delta packets. Ordinary goal close opens no chat,
 uploads no full context, and causes zero Proshka calls.
 
+### 4.1 Byte-exact Proshka transport — HARD RULE
+
+Every substantive Q3 request to the living Proshka chat is transported as one
+canonical UTF-8 `.txt` attachment. The attachment is the authoritative request.
+
+Direct delivery of the controlling request body through the ChatGPT
+`contenteditable` composer is forbidden. Paste, `fill`, `innerText`, Markdown
+conversion, and rich-text rendering are not byte-faithful transport.
+
+Before upload, Codex must verify the approved source against the attachment by
+exact byte comparison and record its final-newline convention, byte count, line
+count, and full SHA-256.
+
+The composer contains only this short non-authoritative instruction:
+
+```text
+Read the attached controlling request in full. Treat the .txt attachment as the
+authoritative byte-exact payload. Follow its required response schema and return
+exactly the requested verdict. Same living phase chat. Do not use Answer now.
+```
+
+Before send, Codex shows the owner the exact attachment manifest and exact short
+instruction under the per-action OK rule. Delivery is complete only after the
+same living chat, exact single file tile, sent message, and natural reasoning
+start are observed.
+
+Any upload, attachment, session, or delivery ambiguity fails closed as
+`PROSHKA_BYTE_EXACT_ATTACHMENT_DELIVERY_UNVERIFIED`. Never click `Answer now` or
+an equivalent shortcut.
+
 ## 5. Proshka call taxonomy and operative classes
 
 Allowed call classes are:
@@ -166,6 +198,33 @@ OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM
 Every other `OWNER_AUTHORITY_REQUIRED_*`, `OWNER_FORK`, or owner-choice result
 is invalid. `RUN` includes a precommitted outcome map so interpreting the test
 does not require a second review.
+
+### Cognitive-operator registry
+
+`q3.lean.aristotle/COGNITIVE_OPERATORS.md` is the versioned registry. The sole
+live enum for `cognitive_operator_used` is Proshka M2:
+
+```text
+REPRESENTATION_SHIFT
+COUNTEREXAMPLE_HUNT
+DUALIZE
+BOUNDARY_CASE
+UNIT_AUDIT
+MINIMAL_LEMMA
+LITERATURE_BRIDGE
+ABANDON_ROUTE
+```
+
+The nine CamelCase values are frozen `LEGACY_CONTROL_ACTION` provenance, not a
+second reasoning enum. A historical record may carry both fields; neither may
+be derived from or overwrite the other. Only `DIRECT_ALIAS` is query-groupable
+and only on explicit request. `RELATED_NOT_EQUIVALENT` and `LEGACY_ONLY` are
+never normalized. Missing registry data, count drift, or an unknown live token
+fails closed with:
+
+```text
+COGNITIVE_OPERATOR_REGISTRY_UNAVAILABLE_OR_INVALID
+```
 
 ## 6. BOUNDED_EXPLORATION_PHASE
 
@@ -400,7 +459,7 @@ litreview corpus (or marks `OWNER_FETCH_REQUIRED`), updates both
 litreview validator. A citation has no proof authority merely because it is
 listed.
 
-## 14. Memory, goal close, site baton, and budget
+## 14. Memory, goal close, site-baton event, and budget
 
 Active exploration state lives in `CHANNEL_RUNTIME.json`: at most five
 candidates, twelve cycle summaries, one compact prior close, and one validated
@@ -408,6 +467,14 @@ latest delta. On close, raw candidate prose and logs are removed. Exactly one
 compact `exploration_close` journal row is durable; links connect it to existing
 objects. Speculative exhaust, repeated builds, and raw chat transcripts are
 not durable memory.
+
+Ordinary branch decisions are a separate durable unit. At selection time the
+executor writes one eight-field entry to `docs/Progress_Log.md`, including the
+rejected alternative and its reason; an external verdict also carries the actor
+and verbatim argument. At `GOAL_CLOSE`, the registered idempotent migrator
+projects these entries into `knowledge.db` as `journal_entry.kind =
+branch_decision`. The Markdown journal remains canonical for branch rationale;
+the database row is its retrieval projection, not a second decision source.
 
 ### Database role boundary
 
@@ -447,7 +514,8 @@ cross-database foreign-key graph is part of the architecture. Spine reads
 project databases through explicit read-only adapters and renders a view,
 never a replacement source of truth.
 
-At ordinary goal close, refresh local sensors and Spine, materialize only the
+`SITE_BATON` is a control event class, not a filename or required repository
+artifact. At ordinary goal close, refresh local sensors and Spine, materialize only the
 authorized answer/certificates/state/mirror/manifest duties, and make zero
 Proshka calls. Commit, push, publication, or handoff occurs only when the
 concrete operational action is authorized. A site baton never changes policy,
@@ -502,6 +570,8 @@ MATHEMATICAL_OWNER_DEFERRAL_OUTSIDE_PX_RH
 PX_RH_CLAIM_WITHOUT_OWNER_AUTHORIZATION
 OPERATIONAL_GATE_MISUSED_AS_MATHEMATICAL_DEFERRAL
 INVALID_OWNER_AUTHORITY_REQUIRED_CLASS
+TOOL_MANIFEST_INVALID
+BRANCH_DECISION_MIGRATION_FAILED
 ```
 
 Changing semantic behavior requires a control-version increment, strict
@@ -579,7 +649,9 @@ and runs `routeb_status.py --check`; no open bus goal means `NO_OPEN_BUS_GOAL / 
 
 ### 16.6 Search discipline — policy only
 
-**Commands, triggers and the tool catalogue: `specs_docs/TOOLS_SPEC.md` part II.**
+**Commands, triggers and the live tool catalogue: `docs/cartographer/TOOLS.yaml`.**
+`specs_docs/TOOLS_SPEC.md` is a historical pipeline snapshot and cannot route a
+current invocation.
 This kernel carries obligations, not a runbook.
 
 1. Before creating any object (Lean file, Aristotle input, goal, brief) — pre-flight query of
@@ -615,6 +687,28 @@ Readers: `spine.py`, `scripts/q3_sensor_scan.py`, `scripts/build_taint_graph.py`
 
 Do not commit this file; do not read sensor output as green before a rebuild. By contrast
 `aristotle_proofs.db` and `knowledge.db` **are** tracked and must stay tracked.
+
+### 16.8 Phase discipline and first-response reflexes
+
+These four operational reflexes are part of the Codex executor control and must not be
+duplicated in a bootstrap pointer.
+
+1. **`PHASE_THEN_BATCH`.** Work a locally executable phase to its real boundary before asking
+   for review. Accumulate two to four related blocking questions in
+   `docs/routeB_bus/PROSHKA_QUEUE.md`, then send one same-chat Proshka batch. A question that
+   can be answered from disk, `./ask.sh`, a local computation, or a primary source already in
+   the corpus is not eligible for that batch.
+2. **`WRITE_ODDITY_BEFORE_EXPLAINING`.** Record every unexpected numerical or structural
+   observation in the active journal immediately, with the plausible readings and the result
+   that would distinguish them. Explanation and cleanup come after the observation is durable.
+3. **`BUG_FOUND_FIX_FIRST`.** A reproducible tool, status, gate, or validation defect blocks
+   return to mathematics until the defect is repaired and its reproducer is green. If the
+   current body lacks the write lock, materialize the reproducer and exact proposed patch for
+   the writer instead of silently working around it.
+4. **`ASK_SHELF_FIRST`.** Before saying an object is absent, searching externally, or creating
+   a replacement, run `./ask.sh <term>`. Claims about a primary source must be checked against
+   the source or marked `relay, unverified`; an unverified relay is never a premise of an
+   inference.
 
 ## 17. Owner communication (restored 2026-08-06 — HARD RULES)
 
@@ -663,11 +757,11 @@ owner **in Polish**; that is the failure this section exists to prevent.
 Linux host. **Do not overwrite §5 with Linux reality** — it was reconstructed once, at cost.
 If a Linux capability snapshot is needed, add it as a separate, clearly labelled section.
 
-## 18. Co-located bodies — single-writer rule (declared 2026-08-06)
+## 18. Co-located tools — single-writer rule (declared 2026-08-06)
 
-When both executor bodies run on the **same host and the same worktree**, exactly one body
-writes and the other only reads. Section 2 says the two bodies may not produce two semantic
-policies; this section says they may not produce two concurrent writers either.
+When Codex and the independent Claude Code observer run on the **same host and the same
+worktree**, exactly one body writes and the other only reads. Their behavior policies remain
+independent; this section coordinates only repository mutation.
 
 ### 18.1 Current assignment
 
@@ -677,7 +771,7 @@ WRITE_LOCK:
   reader: CLAUDE_CODE      # read-only until the owner reassigns
   declared_by: OWNER
   declared_at: 2026-08-06
-  scope: shared Linux host, worktree /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
+  scope: shared Mac host, worktree /Users/emalam/GitHub/rh_lean_01_2026
 ```
 
 Reassignment happens **only** on an explicit owner instruction, never by either body deciding

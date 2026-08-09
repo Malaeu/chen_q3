@@ -12,6 +12,7 @@ import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from orchestrator import kb, spine
 
@@ -282,7 +283,9 @@ class RuntimeAndSpineTests(unittest.TestCase):
 
     def test_BCS_P1_duplicate_active_executor_control_fails(self) -> None:
         data = json.loads(spine.BEHAVIOR_REGISTRY.read_text(encoding="utf-8"))
-        duplicate = dict(next(row for row in data["controls"] if row["body"] == "EXECUTOR"))
+        duplicate = dict(next(
+            row for row in data["controls"] if row["body"] == "CODEX_EXECUTOR"
+        ))
         duplicate["control_id"] = "DUPLICATE_EXECUTOR"
         data["controls"].append(duplicate)
         with self.assertRaises(spine.ControlViolation) as caught:
@@ -291,7 +294,9 @@ class RuntimeAndSpineTests(unittest.TestCase):
 
     def test_BCS_P2_trigger_owner_missing_fails(self) -> None:
         data = json.loads(spine.BEHAVIOR_REGISTRY.read_text(encoding="utf-8"))
-        executor = next(row for row in data["controls"] if row["body"] == "EXECUTOR")
+        executor = next(
+            row for row in data["controls"] if row["body"] == "CODEX_EXECUTOR"
+        )
         executor["trigger_owner"] = ""
         with self.assertRaises(spine.ControlViolation) as caught:
             spine.validate_behavior_registry(data)
@@ -303,9 +308,23 @@ class RuntimeAndSpineTests(unittest.TestCase):
             spine.validate_thin_pointer_text(text, "mutated AGENTS.md")
         self.assertEqual(caught.exception.code, "THIN_POINTER_CONTAINS_POLICY")
 
-    def test_SWITCH_P1_executor_bodies_resolve_one_control(self) -> None:
+    def test_BCS_P4_codex_bootstrap_ignores_claude_policy(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            repo.joinpath("AGENTS.md").write_text(
+                "Canonical: docs/CODEX_CONTROL.md\n", encoding="utf-8"
+            )
+            repo.joinpath("CLAUDE.md").write_text(
+                "Independent Claude policy.\n" * 100, encoding="utf-8"
+            )
+            self.assertEqual(
+                spine.validate_codex_bootstrap(repo=repo),
+                "CODEX_BOOTSTRAP_VALID",
+            )
+
+    def test_SWITCH_P1_codex_resolves_one_control(self) -> None:
         controls = spine.validate_behavior_registry()
-        executor = [row for row in controls if row["body"] == "EXECUTOR"]
+        executor = [row for row in controls if row["body"] == "CODEX_EXECUTOR"]
         self.assertEqual(len(executor), 1)
         self.assertEqual(executor[0]["path"], "docs/CODEX_CONTROL.md")
 
@@ -317,6 +336,19 @@ class RuntimeAndSpineTests(unittest.TestCase):
                 spine.decide_phase_chat(runtime, phase, event=event),
                 "CONTINUE_EXISTING_CHAT",
             )
+
+    def test_old_runtime_record_warns_but_does_not_open_a_fresh_chat(self) -> None:
+        runtime = json.loads(spine.CHANNEL_RUNTIME.read_text(encoding="utf-8"))
+        runtime["active_proshka_phase"]["opened_at"] = "2020-01-01T00:00:00+00:00"
+        phase = runtime["active_proshka_phase"]["phase_key"]
+        self.assertEqual(
+            spine.decide_phase_chat(runtime, phase, event="SESSION_RESTART"),
+            "CONTINUE_EXISTING_CHAT",
+        )
+        with mock.patch.object(spine, "_read_runtime", return_value=runtime):
+            warnings = spine._staleness_warnings()
+        self.assertTrue(any("Age alone never authorizes a fresh chat" in row
+                            for row in warnings))
 
     def test_chat_plant_changed_front_opens_after_close(self) -> None:
         runtime = json.loads(spine.CHANNEL_RUNTIME.read_text(encoding="utf-8"))
