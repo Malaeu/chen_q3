@@ -349,18 +349,31 @@ def main():
     report["a_zero_consistent"] = bool(a_zero)
     report["rho_ge_1_both_levels"] = bool(rho_ge_1_both)
 
-    # Phase C — only on confirmed zero-consistency
+    # Phase C — runs whenever the precision ladder itself is stable.
+    #
+    # Bug fix (2026-08-09, caught before reporting a verdict): this used to
+    # be gated on `a_zero and stable`. The directive's own registered
+    # outcome R1 ("stable Schur failure") requires rho>=1 at both precision
+    # levels *and* both trial reconstructions -- so the independent solver
+    # is required evidence for the plain kill-ratify path too, not only for
+    # the near-kernel dossier claim. Gating it behind `a_zero` silently
+    # skipped the required independent check whenever `a` failed that
+    # specific (disclosed, precommitted) zero-consistency formula, which is
+    # exactly what happened on this run: `a` stabilized at a fixed tiny
+    # value (~1.13e-58) between dps 60 and 90 instead of continuing to
+    # shrink toward the precision floor, so it does not satisfy
+    # |a| <= 10^-(dps-10) at dps=90 even though it is by no means unstable.
+    # No threshold changed here -- only when Phase C fires.
     phaseC = None
-    if a_zero and stable:
+    j_ind = None
+    gap = None
+    if stable:
         print("== phase C: independent same-cell trial reconstruction")
         phaseC = independent_row(CHECK_PIN["dps_independent"])
         mp.mp.dps = CHECK_PIN["dps_ladder"][0]
-        qL = {}
         _, Kp60, crow60, q60, _ = build_objects(CHECK_PIN["dps_ladder"][0])
-        for n, z in crow60.items():
-            qL[n] = z
-        ov = abs(mp.fsum(mp.conj(qL[n]) * phaseC["row"][n]
-                         for n in qL))
+        ov = abs(mp.fsum(mp.conj(crow60[n]) * phaseC["row"][n]
+                         for n in crow60))
         gap = 1 - ov
         q_ind_even, _ = trial_even_row(phaseC["row"], CELL_N)
         j_ind = frozen_judges(Kp60, q_ind_even)
@@ -373,26 +386,53 @@ def main():
             "nu_independent": j_ind["nu"], "rho_independent": j_ind["rho"],
         })
         print(f"   overlap gap={jstr(gap)}  a_ind={jstr(j_ind['a'])}  "
-              f"nu_ind={jstr(j_ind['nu'])}")
+              f"nu_ind={jstr(j_ind['nu'])}  rho_ind={jstr(j_ind['rho'])}")
         agree = gap <= mp.mpf(CHECK_PIN["overlap_gap_max"])
         report["independent_agrees"] = bool(agree)
     else:
         report["independent_agrees"] = None
 
-    # Terminal code, priority pinned in CHECK_PIN
+    # Terminal code. Priority: instrument mismatch first (invalidates
+    # everything below); then the two a_zero-gated readings the directive
+    # names explicitly (R2 near-kernel, R3 cancellation-only); otherwise
+    # plain kill-ratify (R1), which additionally requires the independent
+    # solver to also see rho>=1 -- not just the original implementation.
     nu_top = ladder[d2]["judges"]["nu"]
-    if not stable or (phaseC is not None and not report["independent_agrees"]):
+    solver_ok = phaseC is not None and phaseC["solver_pairs_found"] >= 2
+    if not stable:
         code = "GOAL057_SPECTRAL_CUT_INSTRUMENT_MISMATCH"
-    elif a_zero and phaseC is not None and report["independent_agrees"] and \
-            nu_top <= mp.mpf(CHECK_PIN["nu_near_kernel_max"]):
+        report["instrument_mismatch_reason"] = "precision ladder unstable"
+    elif phaseC is None or not solver_ok or not report["independent_agrees"]:
+        code = "GOAL057_SPECTRAL_CUT_INSTRUMENT_MISMATCH"
+        report["instrument_mismatch_reason"] = (
+            "phase C did not run" if phaseC is None else
+            "independent PSWF solver self-check failed" if not solver_ok else
+            f"projective overlap gap {jstr(gap)} exceeds "
+            f"{CHECK_PIN['overlap_gap_max']}")
+    elif a_zero and nu_top <= mp.mpf(CHECK_PIN["nu_near_kernel_max"]) and \
+            j_ind["nu"] <= mp.mpf(CHECK_PIN["nu_near_kernel_max"]):
         code = "GOAL057_SOURCE_TRIAL_NEAR_KERNEL_FINITE_CELL_DOSSIER"
-    elif nu_top >= mp.mpf(CHECK_PIN["nu_cancellation_min"]):
+    elif a_zero and nu_top >= mp.mpf(CHECK_PIN["nu_cancellation_min"]):
         code = "GOAL057_SMALL_RAYLEIGH_NOT_SMALL_RESIDUAL"
-    else:
+    elif j_ind["rho"] >= 1 and rho_ge_1_both:
         code = "GOAL057_SPECTRAL_CUT_KILL_RATIFIED_AFTER_INDEPENDENT_CHECK"
-        report["nu_band"] = "ZERO_CONSISTENT_UNRESOLVED (1e-8 < nu < 1e-4)"
-    if code != "GOAL057_SPECTRAL_CUT_INSTRUMENT_MISMATCH":
-        report["kill_ratified"] = bool(rho_ge_1_both)
+        if not a_zero:
+            report["classification_note"] = (
+                "rho>=1 confirmed at both precision levels and by the "
+                "independent trial reconstruction, so the cut is ratified "
+                "as failed either way. But `a` stabilized at a fixed tiny "
+                "value instead of shrinking with precision, so it did not "
+                "satisfy the precommitted zero-consistency rule -- the "
+                "near-kernel-vs-cancellation question (R2 vs R3) is left "
+                "OPEN, not resolved, by this run.")
+    else:
+        code = "GOAL057_SPECTRAL_CUT_INSTRUMENT_MISMATCH"
+        report["instrument_mismatch_reason"] = (
+            "no registered outcome matched: rho unstable across "
+            "implementations despite a passing overlap/solver checks")
+    report["kill_ratified"] = bool(
+        code not in ("GOAL057_SPECTRAL_CUT_INSTRUMENT_MISMATCH",) and
+        rho_ge_1_both and (j_ind is None or j_ind["rho"] >= 1))
     report["terminal_code"] = code
     report["elapsed_sec"] = round(time.time() - t0, 1)
     RESULTS.write_text(json.dumps(report, indent=2))
