@@ -1,0 +1,119 @@
+{
+  "target": "GOAL057_SOURCE_TRIAL_RAYLEIGH_RESIDUAL_SAME_CELL_CHECK",
+  "mode": "READ_ONLY_EXPERIMENTAL",
+  "cell": [
+    13,
+    60
+  ],
+  "frozen_S": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "no_new_fiedler": true,
+  "check_pin": {
+    "dps_quick": 30,
+    "dps_ladder": [
+      60,
+      90
+    ],
+    "dps_independent": 40,
+    "panels_scale_rule": "4 * dps / 30",
+    "stability_rel_tol": "1e-8",
+    "a_zero_consistent_rule": "|a| <= 10^-(dps-10) at every ladder level",
+    "nu_near_kernel_max": "1e-8",
+    "nu_cancellation_min": "1e-4",
+    "overlap_gap_max": "1e-8",
+    "terminal_priority": [
+      "INSTRUMENT_MISMATCH if ladder unstable, or independent row disagrees, or independent solver self-checks fail",
+      "NEAR_KERNEL_DOSSIER if nu<=1e-8 at top precision and independent reconstruction agrees",
+      "SMALL_RAYLEIGH_NOT_SMALL_RESIDUAL if nu>=1e-4",
+      "KILL_RATIFIED otherwise (includes ZERO_CONSISTENT_UNRESOLVED nu band, marked as such, with rho>=1 stable)"
+    ],
+    "colloc_nodes": 96,
+    "colloc_chi_window": "0 < chi < 20c, |Im|<=1e-15 rel, tail small",
+    "phaseC_zero_counts": {
+      "psi0": 0,
+      "psi4": 2
+    }
+  },
+  "environment": {
+    "command": "python3 same_cell_check.py",
+    "python": "3.11.15",
+    "mpmath": "1.4.1",
+    "platform": "Linux-6.18.5-fc-v20-x86_64-with-glibc2.39"
+  },
+  "source_hashes": {
+    "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean": "f2f9d248a6f2ad703428c624ccbaf5a75b340655e4b4ebbbe3f1d77355523815",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean": "282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean": "3c2099c97df6cd0fb45f7b367d24898d11c031ed297fe9031b25ee5b9dc0edf4",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage1.lean": "c7dd206ab7979d3390a50969c71919c04582f0c1514dbb142fe1883148ce5b48",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage2.lean": "aabaf47cb484f0157fd7b2ac4f30811aec9595116c1193715e41de8b520393cd",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage3.lean": "924027a3dd9b95e75c776db552ad37779ed8dd75a7924d744a39cb1a613ebdfa",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFourierLedger.lean": "27cc612c2de2e2da9c7e30e21e9663e96abba7c80a2bc5286d04e02b7c9274a6",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean": "bf72d6f84c33f6ddd0f6e0c76563c8d6cf4416124f1b8c8e8dc988dc4ad58e59"
+  },
+  "phases": {
+    "quick_dps30": {
+      "a": "2.88935162454324e-32",
+      "epsilon": "0.695536371722311",
+      "delta": "0.49397633238813",
+      "rho": "1.40803582301147",
+      "schur_s": "0.979340127592439",
+      "specB_min": "0.49397633238813",
+      "specB_max": "5.01947743281951",
+      "r_full": "5.29892697858452e-30",
+      "r_T": "5.22886254938287e-30",
+      "K_op": "5.04028990276811",
+      "nu": "1.0513139285251e-30",
+      "mu_S": "1.0"
+    },
+    "ladder_dps60": {
+      "judges": {
+        "a": "1.1361196022845e-58",
+        "epsilon": "0.695536371722311",
+        "delta": "0.49397633238813",
+        "rho": "1.40803582301147",
+        "schur_s": "0.979340127592439",
+        "specB_min": "0.49397633238813",
+        "specB_max": "5.01947743281951",
+        "r_full": "2.29561965811518e-30",
+        "r_T": "2.26734515868445e-30",
+        "K_op": "5.04028990276811",
+        "nu": "4.55453893010088e-31",
+        "mu_S": "1.0"
+      },
+      "ledger": {
+        "a_w02": "1.51194604189973",
+        "a_wr": "1.45056048910577",
+        "a_prime": "0.061385552793961",
+        "ledger_identity_residual": "1.0170318674708e-61"
+      }
+    }
+  }
+}
