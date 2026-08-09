@@ -1,0 +1,1340 @@
+{
+  "schema": "Q3_PROOF_GEOMETRY_CORRIDOR_V0",
+  "corridor": "GOAL056_S2_WALL__GOAL057_B3_0_LADDER",
+  "target": "B3_0_TARGET",
+  "corpus": "CORPUS",
+  "nodes": [
+    {
+      "id": "CORPUS",
+      "kind": "corpus",
+      "status": "LEAN_PROVED",
+      "verifier": "LEAN"
+    },
+    {
+      "id": "B3_0_TARGET",
+      "kind": "goal",
+      "status": "OPEN",
+      "verifier": "PLANNED"
+    },
+    {
+      "id": "A",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeFourierFormula.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "bd8692c",
+      "close_time": "2026-08-08T03:39:46+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0A mode Fourier formula",
+      "close_index": 0
+    },
+    {
+      "id": "B1",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "c3885e0",
+      "close_time": "2026-08-08T04:27:35+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0B1 weighted mode L2",
+      "close_index": 1
+    },
+    {
+      "id": "B2",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLogDomination.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "cb77ae4",
+      "close_time": "2026-08-08T05:09:08+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0B2 source symbol",
+      "close_index": 2
+    },
+    {
+      "id": "B3",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolWeightedModeL2.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "17e0ffc",
+      "close_time": "2026-08-08T05:51:36+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0B3 exact symbol L2",
+      "close_index": 3
+    },
+    {
+      "id": "C",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchModePairingIntegrable.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "a97fc22",
+      "close_time": "2026-08-08T06:30:05+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0C source pairing",
+      "close_index": 4
+    },
+    {
+      "id": "D",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchModePairingKernel.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "46977cd",
+      "close_time": "2026-08-08T07:28:04+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0D pairing kernel",
+      "close_index": 5
+    },
+    {
+      "id": "E1",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHyperbolicKernel.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "5ac33ba",
+      "close_time": "2026-08-08T10:22:19+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0E1 scalar source identity",
+      "close_index": 6
+    },
+    {
+      "id": "E2",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchKernelModeProductL1.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "3a4f582",
+      "close_time": "2026-08-08T11:33:45+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0E2 Fubini carrier",
+      "close_index": 7
+    },
+    {
+      "id": "E3",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceModeCosineCCMQKernel.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "3df702e",
+      "close_time": "2026-08-08T12:57:18+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0E3 CCM correlation",
+      "close_index": 8
+    },
+    {
+      "id": "E4A",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "d69de38",
+      "close_time": "2026-08-08T13:53:45+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0E4A off-diagonal CCM-WR crosswalk",
+      "close_index": 9
+    },
+    {
+      "id": "E4B1",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "7833cc5",
+      "close_time": "2026-08-08T14:50:57+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0E4B1 diagonal endpoint ledger",
+      "close_index": 10
+    },
+    {
+      "id": "E4B2",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "311ab67",
+      "close_time": "2026-08-08T15:58:15+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Prove Goal 057 B3.0E4B2 diagonal CCM-WR crosswalk",
+      "close_index": 11
+    },
+    {
+      "id": "E4C",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_NEG_CCM_WR_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchAllModeCCMWRCrosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "219f854",
+      "close_time": "2026-08-08T16:47:43+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0E4C all-mode CCM-WR crosswalk",
+      "close_index": 12
+    },
+    {
+      "id": "F",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchFiniteFormCCMWRCrosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "dc2968c",
+      "close_time": "2026-08-08T18:03:37+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0F finite CCM-WR form lift",
+      "close_index": 13
+    },
+    {
+      "id": "G",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02ModePairing.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "38f1172",
+      "close_time": "2026-08-08T22:54:42+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0G source W02 pairing",
+      "close_index": 14
+    },
+    {
+      "id": "H",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0H_FINITE_W02_SESQUILINEAR_FORM_MATRIX_LIFT_CLOSEOUT_2026-08-08.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "2dfda14",
+      "close_time": "2026-08-09T00:02:00+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0H finite W02 form lift",
+      "close_index": 15
+    },
+    {
+      "id": "I",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0I_SOURCE_PRIME_MODE_PAIRING_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "f0413ad",
+      "close_time": "2026-08-09T00:58:22+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0I source prime pairing",
+      "close_index": 16
+    },
+    {
+      "id": "J",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0J_FINITE_PRIME_SESQUILINEAR_FORM_MATRIX_LIFT_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourcePrimeFiniteFormCCMPrimeCrosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "de9b8a1",
+      "close_time": "2026-08-09T01:27:32+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0J finite prime form lift",
+      "close_index": 17
+    },
+    {
+      "id": "K",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0K_COMPLETE_THREE_COMPONENT_SOURCE_WEIL_FORM_ASSEMBLY_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "f5b46e5",
+      "close_time": "2026-08-09T02:31:08+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0K finite source Weil form assembly",
+      "close_index": 18
+    },
+    {
+      "id": "L",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierL2Isometry.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "5455b02",
+      "close_time": "2026-08-09T03:54:40+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0L Fourier L2 isometry",
+      "close_index": 19
+    },
+    {
+      "id": "M",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFourierLedger.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "21334ef",
+      "close_time": "2026-08-09T05:08:00+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0M finite Fourier ledger",
+      "close_index": 20
+    },
+    {
+      "id": "N",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0N_ARCH_SYMBOL_EXPLICIT_GLOBAL_LOWER_BOUND_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLowerBound.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "745c006",
+      "close_time": "2026-08-09T06:10:47+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0N arch symbol lower bound",
+      "close_index": 21
+    },
+    {
+      "id": "O",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0O_SHIFTED_ARCH_SQRT_WEIGHT_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSqrtWeight.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "ce02a74",
+      "close_time": "2026-08-09T07:20:16+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0O shifted arch sqrt weight",
+      "close_index": 22
+    },
+    {
+      "id": "P",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0P_SHIFTED_ARCH_FORM_DOMAIN_SUBMODULE_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFormDomain.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "7b63520",
+      "close_time": "2026-08-09T08:42:06+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0P shifted arch form domain",
+      "close_index": 23
+    },
+    {
+      "id": "Q",
+      "kind": "theorem",
+      "closeout": "docs/routeB_bus/GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_CLOSEOUT_2026-08-09.md",
+      "lean_file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean",
+      "status": "LEAN_PROVED",
+      "scope": "FINITE_CELL",
+      "verifier": "LEAN",
+      "close_commit": "44cf70b",
+      "close_time": "2026-08-09T10:08:28+02:00",
+      "close_subject": "[MacOS][rh_clean][RouteB] Close Goal 057 B3.0Q literal mode form domain",
+      "close_index": 24
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "custom_projection_uniqueness_before_using_exact_orthonormal_basis_API",
+      "kill_reason": "TARGET: finite_P_m_N_projection_reconstruction | FAILED: custom_projection_uniqueness_before_using_exact_orthonormal_basis_API | INVARIANT: literal E_m_N carrier and inner_V_n_f orientation must survive subtype normalization",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "bundle_coordinate_of_difference_with_two_scalar_coordinate_equalities",
+      "kill_reason": "TARGET: selected_full_Mellin_to_Gwin | FAILED: bundle_coordinate_of_difference_with_two_scalar_coordinate_equalities | INVARIANT: the full unprojected object, du_over_u density, positive cpow branch, and open-window Gwin exponent must remain literal",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026_08_",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "use_orthonormality_as_if_it_were_complete_Parseval",
+      "kill_reason": "TARGET: selected_log_window_Fourier_tail_rate | FAILED: use_orthonormality_as_if_it_were_complete_Parseval | INVARIANT: completeness_coefficient_orientation_and_outside_band_summability_are_load_bearing",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "prove_orthonormality_while_hiding_the_source_measure_transport",
+      "kill_reason": "TARGET: G6_S2_FULL_L2_FOURIER_MELLIN_RESIDUAL_BRIDGE | FAILED: prove_orthonormality_while_hiding_the_source_measure_transport | INVARIANT: the same du_over_u logarithmic coordinate must drive Fourier orthonormality and the later Gwin residual coordinate",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "direct_transport_of_normalized_Haar_fourierBasis_to_unnormalized_interval",
+      "kill_reason": "TARGET: literal_V_n_m_completeness | FAILED: direct_transport_of_normalized_Haar_fourierBasis_to_unnormalized_interval | INVARIANT: measure_normalization_endpoint_null_sets_and_literal_basis_values_must_survive_transport",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "consume_raw_minus_Gwin_as_if_it_were_an_object_residual",
+      "kill_reason": "TARGET: D0PstarMuntzGalerkinResidualCrosswalk | FAILED: consume_raw_minus_Gwin_as_if_it_were_an_object_residual | INVARIANT: scalar coordinate equality must be derived from the literal normalized projection residual on the same parent_extract index",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "infer_physical_tail_from_completeness_or_independent_cofinality",
+      "kill_reason": "TARGET: selected_physical_Fourier_energy_control | FAILED: infer_physical_tail_from_completeness_or_independent_cofinality | INVARIANT: physical_scale_summability_bounded_energy_and_frozen_schedule_are_independent",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "direct_wrapper_bundling_representative_phase_and_reflection_seams",
+      "kill_reason": "TARGET: selected_projected_Mellin_coordinate | FAILED: direct_wrapper_bundling_representative_phase_and_reflection_seams | INVARIANT: the exact normalized projection and raw coefficient transform agree only after an a.e. log-window and centered-phase transport",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "fixed_space_Fourier_density_on_an_N_dependent_varying_carrier_source",
+      "kill_reason": "TARGET: selected_projection_tail_decay | FAILED: fixed_space_Fourier_density_on_an_N_dependent_varying_carrier_source | INVARIANT: the consumed prolate trial is determined by m while projection certificates may depend on N",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026-08-06.md"
+    },
+    {
+      "id": "KILL_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026_08_06",
+      "kind": "theorem",
+      "status": "KILLED",
+      "scope": "ABSTRACT",
+      "verifier": "KILLED",
+      "kill_subject": "infer_selected_joint_decay_from_fixed_space_projection_density",
+      "kill_reason": "TARGET: selected_normalized_Galerkin_residual_L2_decay | FAILED: infer_selected_joint_decay_from_fixed_space_projection_density | INVARIANT: projection carrier, source vector, parent_extract path, and inverse normalizer must remain explicit",
+      "kill_recorded_at": "2026-08-06",
+      "source_file": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026-08-06.md"
+    },
+    {
+      "id": "PLANT_FAKE_SHORTCUT",
+      "kind": "theorem",
+      "status": "OPEN",
+      "scope": "ABSTRACT",
+      "verifier": "CONDITIONAL",
+      "synthetic_plant": true
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "INF_A",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "A",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.D0LogWindowMeasureTransport"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_B1",
+      "inputs": [
+        "A"
+      ],
+      "output": "B1",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_B2",
+      "inputs": [
+        "B1",
+        "CORPUS"
+      ],
+      "output": "B2",
+      "corpus_imports": [
+        "Q3.DigammaRemainder"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_B3",
+      "inputs": [
+        "B2",
+        "CORPUS"
+      ],
+      "output": "B3",
+      "corpus_imports": [
+        "Q3.Proofs.A_Star_Properties"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_C",
+      "inputs": [
+        "B3"
+      ],
+      "output": "C",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_D",
+      "inputs": [
+        "C"
+      ],
+      "output": "D",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E1",
+      "inputs": [
+        "B2"
+      ],
+      "output": "E1",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E2",
+      "inputs": [
+        "B1",
+        "E1"
+      ],
+      "output": "E2",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E3",
+      "inputs": [
+        "E2",
+        "CORPUS"
+      ],
+      "output": "E3",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrixN1"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E4A",
+      "inputs": [
+        "D",
+        "E2",
+        "E3"
+      ],
+      "output": "E4A",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E4B1",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "E4B1",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E4B2",
+      "inputs": [
+        "E4A",
+        "E4B1"
+      ],
+      "output": "E4B2",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_E4C",
+      "inputs": [
+        "E4A",
+        "E4B2"
+      ],
+      "output": "E4C",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_F",
+      "inputs": [
+        "E4C",
+        "CORPUS"
+      ],
+      "output": "F",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_G",
+      "inputs": [
+        "E3"
+      ],
+      "output": "G",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_H",
+      "inputs": [
+        "G",
+        "CORPUS"
+      ],
+      "output": "H",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_I",
+      "inputs": [
+        "E3"
+      ],
+      "output": "I",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_J",
+      "inputs": [
+        "I",
+        "CORPUS"
+      ],
+      "output": "J",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_K",
+      "inputs": [
+        "F",
+        "H",
+        "J",
+        "CORPUS"
+      ],
+      "output": "K",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_L",
+      "inputs": [
+        "E3",
+        "CORPUS"
+      ],
+      "output": "L",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.D0LogWindowVNMCompletenessBridge"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_M",
+      "inputs": [
+        "K",
+        "L",
+        "CORPUS"
+      ],
+      "output": "M",
+      "corpus_imports": [
+        "Q3.Proofs.RouteB.D0PstarCCMFiniteSourceResidual"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_N",
+      "inputs": [
+        "B2"
+      ],
+      "output": "N",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_O",
+      "inputs": [
+        "N",
+        "CORPUS"
+      ],
+      "output": "O",
+      "corpus_imports": [
+        "Q3.Proofs.A_Star_Properties"
+      ],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_P",
+      "inputs": [
+        "L",
+        "O"
+      ],
+      "output": "P",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_Q",
+      "inputs": [
+        "B3",
+        "P"
+      ],
+      "output": "Q",
+      "corpus_imports": [],
+      "verifier": "LEAN",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_ROOF",
+      "inputs": [
+        "M",
+        "Q"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "PLANNED",
+      "killed": false,
+      "risk_flags": [],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_FULL_MELLIN_GWIN_CROSSWALK_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026_08__SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026_08_",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026_08__BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL_2026_08_"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_OBJECT_FIRST_RESIDUAL_CONTRACT_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_PROJECTED_MELLIN_COORDINATE_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_PROLATE_SOURCE_N_COHERENCE_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026_08_06_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "KILL_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026_08_06",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_KILL_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026_08_06_BRIDGE",
+      "inputs": [
+        "KILL_VERDICT_GOAL056_SELECTED_RESIDUAL_L2_DECAY_2026_08_06"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "KILLED",
+      "killed": true,
+      "risk_flags": [
+        "killed_branch"
+      ],
+      "unverified_imports": 0,
+      "cost": 1.0
+    },
+    {
+      "id": "INF_PLANT_SUPPLY",
+      "inputs": [
+        "CORPUS"
+      ],
+      "output": "PLANT_FAKE_SHORTCUT",
+      "corpus_imports": [],
+      "verifier": "CONDITIONAL",
+      "killed": false,
+      "risk_flags": [
+        "wrong_object"
+      ],
+      "unverified_imports": 1,
+      "cost": 1.0,
+      "synthetic_plant": true
+    },
+    {
+      "id": "INF_PLANT_BRIDGE",
+      "inputs": [
+        "PLANT_FAKE_SHORTCUT"
+      ],
+      "output": "B3_0_TARGET",
+      "corpus_imports": [],
+      "verifier": "CONDITIONAL",
+      "killed": false,
+      "risk_flags": [
+        "wrong_object"
+      ],
+      "unverified_imports": 1,
+      "cost": 1.0,
+      "synthetic_plant": true
+    }
+  ],
+  "checkpoints": [
+    {
+      "index": 0,
+      "after": null,
+      "time": "2026-08-08T03:00:16+02:00",
+      "historical_next": "A"
+    },
+    {
+      "index": 1,
+      "after": "A",
+      "time": "2026-08-08T03:39:46+02:00",
+      "historical_next": "B1"
+    },
+    {
+      "index": 2,
+      "after": "B1",
+      "time": "2026-08-08T04:27:35+02:00",
+      "historical_next": "B2"
+    },
+    {
+      "index": 3,
+      "after": "B2",
+      "time": "2026-08-08T05:09:08+02:00",
+      "historical_next": "B3"
+    },
+    {
+      "index": 4,
+      "after": "B3",
+      "time": "2026-08-08T05:51:36+02:00",
+      "historical_next": "C"
+    },
+    {
+      "index": 5,
+      "after": "C",
+      "time": "2026-08-08T06:30:05+02:00",
+      "historical_next": "D"
+    },
+    {
+      "index": 6,
+      "after": "D",
+      "time": "2026-08-08T07:28:04+02:00",
+      "historical_next": "E1"
+    },
+    {
+      "index": 7,
+      "after": "E1",
+      "time": "2026-08-08T10:22:19+02:00",
+      "historical_next": "E2"
+    },
+    {
+      "index": 8,
+      "after": "E2",
+      "time": "2026-08-08T11:33:45+02:00",
+      "historical_next": "E3"
+    },
+    {
+      "index": 9,
+      "after": "E3",
+      "time": "2026-08-08T12:57:18+02:00",
+      "historical_next": "E4A"
+    },
+    {
+      "index": 10,
+      "after": "E4A",
+      "time": "2026-08-08T13:53:45+02:00",
+      "historical_next": "E4B1"
+    },
+    {
+      "index": 11,
+      "after": "E4B1",
+      "time": "2026-08-08T14:50:57+02:00",
+      "historical_next": "E4B2"
+    },
+    {
+      "index": 12,
+      "after": "E4B2",
+      "time": "2026-08-08T15:58:15+02:00",
+      "historical_next": "E4C"
+    },
+    {
+      "index": 13,
+      "after": "E4C",
+      "time": "2026-08-08T16:47:43+02:00",
+      "historical_next": "F"
+    },
+    {
+      "index": 14,
+      "after": "F",
+      "time": "2026-08-08T18:03:37+02:00",
+      "historical_next": "G"
+    },
+    {
+      "index": 15,
+      "after": "G",
+      "time": "2026-08-08T22:54:42+02:00",
+      "historical_next": "H"
+    },
+    {
+      "index": 16,
+      "after": "H",
+      "time": "2026-08-09T00:02:00+02:00",
+      "historical_next": "I"
+    },
+    {
+      "index": 17,
+      "after": "I",
+      "time": "2026-08-09T00:58:22+02:00",
+      "historical_next": "J"
+    },
+    {
+      "index": 18,
+      "after": "J",
+      "time": "2026-08-09T01:27:32+02:00",
+      "historical_next": "K"
+    },
+    {
+      "index": 19,
+      "after": "K",
+      "time": "2026-08-09T02:31:08+02:00",
+      "historical_next": "L"
+    },
+    {
+      "index": 20,
+      "after": "L",
+      "time": "2026-08-09T03:54:40+02:00",
+      "historical_next": "M"
+    },
+    {
+      "index": 21,
+      "after": "M",
+      "time": "2026-08-09T05:08:00+02:00",
+      "historical_next": "N"
+    },
+    {
+      "index": 22,
+      "after": "N",
+      "time": "2026-08-09T06:10:47+02:00",
+      "historical_next": "O"
+    },
+    {
+      "index": 23,
+      "after": "O",
+      "time": "2026-08-09T07:20:16+02:00",
+      "historical_next": "P"
+    },
+    {
+      "index": 24,
+      "after": "P",
+      "time": "2026-08-09T08:42:06+02:00",
+      "historical_next": "Q"
+    }
+  ],
+  "sink_children": [
+    "M",
+    "Q"
+  ],
+  "provenance": {
+    "closeouts": 25,
+    "kill_rows": 10,
+    "wall_commit": "eb1c5d8",
+    "note": "structure from Lean imports + closeouts + knowledge.db; chronology from git; plant synthetic per directive"
+  }
+}
