@@ -1,0 +1,427 @@
+# Goal 057 B3.0P — quotient-safe shifted archimedean form-domain Submodule production-release adjudication
+
+Read this attached `.txt` byte-for-byte in the same living Goal 057 phase chat.
+Return exactly one Markdown verdict after natural completion.
+
+Adjudicate exactly one binary question:
+
+May Codex materialize the exact already-preflighted 2845-byte B3.0P scratch
+candidate byte-for-byte as the single production file
+
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFormDomain.lean
+
+then rerun the full production validation, update the canonical/mirror Goal 057
+control artifacts, close only B3.0P, commit only owned paths, push rh_clean, and
+leave B3.0Q unselected and unauthorized?
+
+This request does not authorize literal-mode membership, finite-span inclusion,
+density, a shifted form, closedness, D0.2 equality, an associated operator,
+W02/Prime ambient extensions, compression, the continuum numerator, H4a1b, or
+any decrement of the ten-checkpoint ledger.
+
+## 1. Source lock
+
+repo: Malaeu/chen_q3
+branch: rh_clean
+
+HEAD:
+ce02a74715282a46ae95ff6fc22de7e578ee7bd1
+
+origin/rh_clean:
+ce02a74715282a46ae95ff6fc22de7e578ee7bd1
+
+unrelated staged patch SHA256:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+canonical execution state SHA256:
+d2621774f121c35534dd4df4c1af1222598c3851cd0a869d7e6dd29ccf3293ee
+
+canonical route state SHA256:
+eb029b01e52eb1b7dc9381039c1ee1525f7025b0834242836a5367469984e05e
+
+current state:
+GOAL_057_B3_0O_SHIFTED_ARCH_SQRT_WEIGHT_PROVED_NEXT_NODE_ADJUDICATION_PENDING
+
+current stage:
+RB-GOAL-057-B3-0O-CLOSED
+
+current obligation:
+GOAL057_B3_0_POST_O_NEXT_NODE_ADJUDICATION
+
+current checkpoint:
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+
+## 2. Controlling post-O transaction
+
+request:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0_POST_O_NEXT_NODE_ADJUDICATION_2026-08-09.txt
+
+request SHA256:
+393c877b44ba5e0e8cc87ad1a86878a8d641313ef4d4d0eabcf309705595e59e
+
+request bytes: 12664
+request wc-lines: 343
+request final LF: true
+
+verdict:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_O_NEXT_NODE_ADJUDICATION_2026-08-09.md
+
+verdict SHA256:
+67fabebc911d0e8c53096d5dd0edff9d6142eefba78be748c7882ef4f86cca98
+
+verdict bytes: 34178
+verdict wc-lines: 974
+verdict final LF: true
+
+operative ruling from that verdict:
+TRY_GOAL057_B3_0P_SHIFTED_ARCH_FORM_DOMAIN_SUBMODULE_PREFLIGHT
+
+production authorized there: false
+tracked repository mutation authorized there: false
+
+## 3. Exact scratch candidate and preflight
+
+scratch file:
+q3.lean.aristotle/Goal057B3_0P_ShiftedArchFormDomain_Scratch.lean
+
+SHA256:
+d2fc68954ae6604d1573bbe37b83e08577f60f4d39f5b9b9f3548821ce866a50
+
+bytes: 2845
+wc-lines: 78
+final LF: true
+
+direct command:
+cd q3.lean.aristotle
+lake env lean Goal057B3_0P_ShiftedArchFormDomain_Scratch.lean
+
+direct Lean exit: 0
+
+direct Lean diagnostics:
+- one non-fatal linter warning: the `ht` simp argument in `zero_mem'` is unused;
+- no errors.
+
+direct axiom output:
+- sourceArchimedeanShiftedFormDomain:
+  [propext, Classical.choice, Quot.sound]
+- mem_sourceArchimedeanShiftedFormDomain_iff:
+  [propext, Classical.choice, Quot.sound]
+
+exact imports: 2
+- Q3.Proofs.RouteB.D0PstarShiftedArchSqrtWeight
+- Q3.Proofs.RouteB.D0PstarSourceLogWindowFourierL2Isometry
+
+public surface:
+- definitions: 1
+  - sourceArchimedeanShiftedFormDomain
+- theorems: 1
+  - mem_sourceArchimedeanShiftedFormDomain_iff
+
+private surface:
+- definitions: 1
+  - sourceArchimedeanShiftedWeightedImage
+- theorems: 0
+
+forbidden-token matches: 0
+
+exact B3.0O production-file fingerprint SHA256:
+b1641e36554b66131bb04b14b606b94557a8f004a686fad73b51378e72360bba
+
+exact B3.0O definition-block fingerprint SHA256, lines 23-27:
+aac9edfd270facd8d0623667874353eed5dd3d51d9a4f10ffa6f54f87e6aa618
+
+exact B3.0L production-file fingerprint SHA256:
+f67325b9b853fcc1d10bc9769152cf11e7afc59a57b1648256027c6cffa946d8
+
+exact B3.0L isometry definition-block fingerprint SHA256, lines 83-94:
+77806973fb4a6d96face54cc4d34f9d2699a2b5e3a1d734bd7317553c7d3f9c7
+
+The candidate directly names both
+`sourceArchimedeanShiftedSqrtWeight` and
+`sourceLogWindowFourierL2Isometry` in its carrier and public membership theorem.
+
+## 4. Exact candidate bytes
+
+```lean
+import Q3.Proofs.RouteB.D0PstarShiftedArchSqrtWeight
+import Q3.Proofs.RouteB.D0PstarSourceLogWindowFourierL2Isometry
+
+noncomputable section
+
+open Complex MeasureTheory
+open scoped ENNReal
+
+namespace Q3.RouteB.D0Pstar
+
+private noncomputable def sourceArchimedeanShiftedWeightedImage
+    (i : PairIndex) (x : H_m i) : ℝ → ℂ :=
+  fun t : ℝ =>
+    (sourceArchimedeanShiftedSqrtWeight t : ℂ) *
+      ((sourceLogWindowFourierL2Isometry i x :
+          MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t
+
+/-- The exact shifted archimedean form domain pulled back to `H_m i` through
+B3.0L.  Membership means square-root-weighted whole-line `L²` integrability.
+This is not the full-multiplier operator domain and is not identified here with
+D0.2's source form domain. -/
+noncomputable def sourceArchimedeanShiftedFormDomain
+    (i : PairIndex) : Submodule ℂ (H_m i) where
+  carrier :=
+    {x | MemLp (sourceArchimedeanShiftedWeightedImage i x) 2 volume}
+  zero_mem' := by
+    have hEq :
+        (0 : ℝ → ℂ) =ᵐ[volume]
+          sourceArchimedeanShiftedWeightedImage i 0 := by
+      filter_upwards
+        [MeasureTheory.Lp.coeFn_zero ℂ 2 (volume : Measure ℝ)] with t ht
+      simp [sourceArchimedeanShiftedWeightedImage, ht]
+    exact MemLp.ae_eq hEq MemLp.zero
+  add_mem' := by
+    intro x y hx hy
+    have hEq :
+        sourceArchimedeanShiftedWeightedImage i x +
+            sourceArchimedeanShiftedWeightedImage i y
+          =ᵐ[volume]
+        sourceArchimedeanShiftedWeightedImage i (x + y) := by
+      filter_upwards
+        [MeasureTheory.Lp.coeFn_add
+          (sourceLogWindowFourierL2Isometry i x)
+          (sourceLogWindowFourierL2Isometry i y)] with t ht
+      simp only [sourceArchimedeanShiftedWeightedImage, Pi.add_apply,
+        map_add, ht]
+      ring
+    exact MemLp.ae_eq hEq (hx.add hy)
+  smul_mem' := by
+    intro c x hx
+    have hEq :
+        c • sourceArchimedeanShiftedWeightedImage i x
+          =ᵐ[volume]
+        sourceArchimedeanShiftedWeightedImage i (c • x) := by
+      filter_upwards
+        [MeasureTheory.Lp.coeFn_smul c
+          (sourceLogWindowFourierL2Isometry i x)] with t ht
+      simp only [sourceArchimedeanShiftedWeightedImage, Pi.smul_apply,
+        smul_eq_mul, map_smul, ht]
+      ring
+    exact MemLp.ae_eq hEq (hx.const_smul c)
+
+@[simp]
+theorem mem_sourceArchimedeanShiftedFormDomain_iff
+    (i : PairIndex) (x : H_m i) :
+    x ∈ sourceArchimedeanShiftedFormDomain i ↔
+      MemLp
+        (fun t : ℝ =>
+          (sourceArchimedeanShiftedSqrtWeight t : ℂ) *
+            ((sourceLogWindowFourierL2Isometry i x :
+                MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t)
+        2 volume := by
+  rfl
+
+#print axioms sourceArchimedeanShiftedFormDomain
+#print axioms mem_sourceArchimedeanShiftedFormDomain_iff
+
+end Q3.RouteB.D0Pstar
+```
+
+The fenced content above is the exact 2845-byte candidate with final LF.
+
+## 5. Nine mandatory judges
+
+P057_B3_0P_1_LP_REPRESENTATIVE_AE:
+mutant asserted pointwise equality of the B3.0L images of `x + y` and the
+pointwise sum, then tried `rfl` instead of `Lp.coeFn_add` plus `MemLp.ae_eq`.
+result: LEAN_REJECTED; the two coerced functions are not definitionally equal.
+stop: B3_0P_LP_QUOTIENT_REPRESENTATIVE_DEPENDENCE.
+
+P057_B3_0P_2_FORM_OPERATOR_WEIGHT:
+mutant defined the carrier with the full shifted symbol instead of the B3.0O
+square-root weight.
+result: LEAN_COMPILED; semantic signature judge REJECTED.
+stop: B3_0P_FORM_OPERATOR_WEIGHT_COLLAPSE.
+
+P057_B3_0P_3_ARBITRARY_VECTOR_QUANTIFIER:
+mutant returned `∀ x : H_m i, x ∈ domain` only from the same statement as an
+explicit premise.
+result: LEAN_COMPILED; quantifier/dependency judge REJECTED.
+stop: B3_0P_ARBITRARY_VECTOR_WEIGHTED_DOMAIN_OVERCLAIM.
+
+P057_B3_0P_4_PREMISE_SURROGATE:
+mutant accepted an arbitrary Submodule and an assumed exact carrier equivalence.
+result: LEAN_COMPILED; construction/dependency judge REJECTED.
+stop: SURROGATE_BY_PREMISE_NOT_SOURCE_CONSTRUCTION.
+
+P057_B3_0P_5_FINITE_RIESZ:
+mutant added D0PstarCCMFiniteRieszOperator and consumed
+`sourceCCMFiniteRieszOperator : Module.End ℂ (E_m_N i)`.
+result: LEAN_COMPILED; ambient-carrier semantic judge REJECTED.
+stop: B3_0P_FINITE_RIESZ_SUBSTITUTED_FOR_AMBIENT_FORM_DOMAIN.
+
+P057_B3_0P_6_EXACT_CARRIER:
+mutant built the weighted carrier directly in whole-line `Lp`, not in `H_m i`
+through B3.0L.
+result: LEAN_COMPILED; exact-source-carrier judge REJECTED.
+stop: B3_0P_SOURCE_CARRIER_MISMATCH.
+
+P057_B3_0P_7_AE_LINEAR_CLOSURE:
+mutant asserted pointwise equality for scalar multiplication and tried `rfl`
+instead of `Lp.coeFn_smul` plus `MemLp.ae_eq`.
+result: LEAN_REJECTED; the coerced functions are not definitionally equal.
+stop: B3_0P_LP_LINEAR_CLOSURE_AE_BRIDGE_MISSING.
+
+P057_B3_0P_8_DEPENDENCY:
+mutant added Q3.Proofs.PSD_BSplineFormulaContract.
+result: LEAN_COMPILED; forbidden-dependency judge REJECTED.
+stop: ROUTEB_GENERATED_PSD_DEPENDENCY_LEAK.
+
+P057_B3_0P_9_SCOPE:
+mutant added literal-mode membership only by taking that membership as a
+premise.
+result: LEAN_COMPILED; scope/premise judge REJECTED.
+stop: B3_0P_SCOPE_SMUGGLE.
+
+ALL_NINE_JUDGES: PASS
+MUTATION_ARTIFACTS_REMAINING: 0
+
+## 6. Independent controls and hygiene
+
+Null-set representative control:
+a separate Lean control proved that `f =ᵐ[volume] g` transfers weighted
+`MemLp` from `f` to `g` by a weighted a.e. equality and `MemLp.ae_eq`.
+result: LEAN_COMPILED, exit 0.
+
+Form/operator-domain control:
+for the diagonal operator `A e_n = n e_n` on `ℓ²`, the sequence
+`x_n = n^(-3/2)` is in `ℓ²` and in the square-root form domain because
+`sum n * |x_n|^2 = sum 1/n^2` converges, but it is not in the full operator
+domain because `sum n^2 * |x_n|^2 = sum 1/n` diverges.
+result: the two domains are mathematically distinct; full-weight mutant rejected.
+
+Basis/all-vector control:
+every basis vector lies in the weighted domain, while `x_n = 1/n` lies in `ℓ²`
+but not in the square-root weighted domain because `sum n * |x_n|^2` is the
+harmonic series.
+result: fixed-mode membership cannot imply all-vector membership.
+
+Dependency controls:
+- B3.0O exact file and definition-block fingerprints match section 3;
+- B3.0L exact file and isometry-block fingerprints match section 3;
+- both exact names occur in the carrier and public membership theorem.
+
+routeb_status.py --check: PASS
+git diff --check: PASS
+tracked production mutation: NONE
+route state mutation: NONE
+unrelated staged patch SHA256: UNCHANGED
+
+knowledge query before the production request:
+"Goal057 B3.0P shifted archimedean form domain Submodule quotient safe MemLp Lp coeFn production release"
+result: no hits in any layer.
+
+The only untracked scratch candidate is the exact locked 2845-byte file.
+The post-O request and verdict are archived canonical+mirror.
+
+## 7. Requested binary production ruling
+
+If valid, authorize exactly:
+
+OPERATIVE_CLASS:
+TRY_GOAL057_B3_0P_SHIFTED_ARCH_FORM_DOMAIN_SUBMODULE_PRODUCTION
+
+MODE:
+IMPLEMENT_EXACTLY_ONE_PRODUCTION_CHILD
+
+CREATE_ONLY:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFormDomain.lean
+
+MATERIALIZE:
+byte-for-byte from the exact scratch candidate.
+
+After materialization require:
+- exact SHA256 d2fc68954ae6604d1573bbe37b83e08577f60f4d39f5b9b9f3548821ce866a50;
+- 2845 bytes, 78 wc-lines, final LF;
+- direct Lean;
+- target lake build;
+- full lake build;
+- bash scripts/q3_check.sh;
+- exact import/public/private surface and forbidden-token audits;
+- exact B3.0O and B3.0L dependency fingerprints;
+- exact axiom gates for both public declarations;
+- all nine production judges and all independent controls;
+- zero remaining mutants;
+- proof DB import and repeat-import idempotence;
+- all current orchestration tests;
+- strict Spine PASS;
+- semantic index PASS;
+- knowledge.db, aristotle_proofs.db, observability.db integrity checks;
+- routeb_status.py --check PASS;
+- git diff --check PASS;
+- staged patch SHA unchanged;
+- route state updated last;
+- canonical/mirror request, verdict, Goal 057 closeout, execution state, and route state;
+- owned-path-only commit and push to origin/rh_clean.
+
+Close only:
+GOAL057_B3_0P_SHIFTED_ARCH_FORM_DOMAIN_SUBMODULE_PROVED
+
+Leave open:
+- B3.0;
+- H4a1b;
+- current coarse checkpoint ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE;
+- coarse checkpoint ledger at 0/10.
+
+After a green production closeout, set the next obligation only to a fresh
+post-P next-node adjudication. Do not select or authorize B3.0Q in this verdict.
+
+If invalid, return the first exact defect and:
+
+GOAL057_B3_0P_SHIFTED_ARCH_FORM_DOMAIN_SUBMODULE_PRODUCTION_RELEASE_BLOCKED
+
+## 8. Hard boundaries
+
+NOT AUTHORIZED:
+- change any candidate byte;
+- create more than the one production file;
+- select or authorize B3.0Q;
+- prove literal-mode membership;
+- prove E_m_N or finite-synthesis inclusion;
+- prove density;
+- define the shifted archimedean form;
+- prove closedness or lower-semicontinuity;
+- identify the carrier or form with D0.2;
+- define SourceWeilAssociatedGraph;
+- define SourceWeilOperatorDomain;
+- define sourceWeilAssociatedOperator;
+- use the full shift as the form-domain weight;
+- infer all-H_m weighted membership from modewise results;
+- construct whole-space W02 or Prime extensions;
+- substitute the finite Riesz operator for an ambient operator;
+- assert selected-kTrial operator-domain membership;
+- assert compression or invariance;
+- claim the continuum numerator;
+- invoke or close H4a1b;
+- decrement the ten-checkpoint ledger;
+- touch frozen parent-extract schedules;
+- create Bus 010;
+- release Goal 055;
+- unfreeze G2_CCM;
+- submit Aristotle;
+- promote Route B;
+- make a PX or RH claim;
+- open a fresh chat.
+
+FINAL BOUNDARY:
+route: CHALLENGER / NOT_RH
+active bus goal: 057
+Bus 010: VOID
+Goal 055: HOLD
+G2_CCM: FROZEN
+current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+H4a1b: OPEN
+Aristotle submission: NONE
+route promotion: false
+PX/RH claim: NOT_MADE
