@@ -114,6 +114,36 @@
         "a_prime": "0.061385552793961",
         "ledger_identity_residual": "1.0170318674708e-61"
       }
+    },
+    "ladder_dps90": {
+      "judges": {
+        "a": "1.1343738965559e-58",
+        "epsilon": "0.695536371722311",
+        "delta": "0.49397633238813",
+        "rho": "1.40803582301147",
+        "schur_s": "0.979340127592439",
+        "specB_min": "0.49397633238813",
+        "specB_max": "5.01947743281951",
+        "r_full": "2.29561965811505e-30",
+        "r_T": "2.26734515868432e-30",
+        "K_op": "5.04028990276811",
+        "nu": "4.55453893010063e-31",
+        "mu_S": "1.0"
+      },
+      "ledger": {
+        "a_w02": "1.51194604189973",
+        "a_wr": "1.45056048910577",
+        "a_prime": "0.061385552793961",
+        "ledger_identity_residual": "6.77092926131672e-92"
+      }
     }
-  }
+  },
+  "ladder_stable": true,
+  "a_zero_consistent": false,
+  "rho_ge_1_both_levels": true,
+  "independent_agrees": null,
+  "nu_band": "ZERO_CONSISTENT_UNRESOLVED (1e-8 < nu < 1e-4)",
+  "kill_ratified": true,
+  "terminal_code": "GOAL057_SPECTRAL_CUT_KILL_RATIFIED_AFTER_INDEPENDENT_CHECK",
+  "elapsed_sec": 818.8
 }
