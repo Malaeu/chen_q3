@@ -162,6 +162,29 @@ boxes:
 # СТИЛЬ И ПРАВИЛА
 # ─────────────────────────────────────────────────────────────
 
+idea_git:
+  what: >
+    «git для отката идей и находки развилок» (формулировка владельца) — связка из
+    четырёх частей, каждая отвечает на свой вопрос. Собрана 2026-08-09.
+  parts:
+    - {file: docs/GENEALOGY.md,      answers: "ОТКУДА пришли — развилки с причинами, хронология линий"}
+    - {file: docs/Progress_Log.md,   answers: "КУДА свернули — судовой журнал, 8 граф"}
+    - {file: docs/cartographer/,     answers: "ЧТО есть — TOOLS.yaml + brief/cheap/atoms/inventory"}
+    - {file: docs/GLOSSARY.md,       answers: "ЧТО значит знак — словарь для не-математика"}
+    - {file: docs/RECORDING_RULES.md, answers: "КАК писать — правила для Codex и Claude"}
+  historical_layer: q3.lean.aristotle/docs/INSIGHTS.md
+  historical_note: >
+    INSIGHTS начинался как лог, потом стал журналом «иголок» — что привело к прорыву
+    и что привело к блокировке. Вёлся одним файлом сознательно. Причины там ЕСТЬ
+    (92% развилок с числами), но найти их нельзя: 51763 строки без указателя.
+    Урок: запись без указателя равна отсутствию записи.
+  audit_2026_08_09:
+    lines_scanned: 51763
+    forks_found: 48
+    reason_recorded: 44
+    reason_lost: 4
+    all_losses_were: "внешние вердикты, записанные одной буквой CHOSEN без аргумента"
+
 journal:
   - name: Progress_Log
     status: ENABLED
@@ -179,6 +202,15 @@ journal:
       Событий пишется много (INSIGHTS.md 51763 строки, 30 closeout, 49 report,
       69 goal, 75 answer), развилок — не пишется. Из-за этого летом 2026
       потерялось видение проекта и восстанавливалось агентами по косвенным следам.
+    read_by: [CLAUDE_CODE, CODEX]
+    columns: 8
+    column_8: "чей вердикт и аргумент — обязательна для решений извне"
+
+  - name: RECORDING_RULES
+    status: ENABLED
+    kind: rules
+    path: docs/RECORDING_RULES.md
+    what: "четыре правила записи: в момент выбора · восемь граф · closeout≠развилка · пустая графа явно"
     read_by: [CLAUDE_CODE, CODEX]
 
 style:
