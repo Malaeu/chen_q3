@@ -1,0 +1,363 @@
+GOAL057 B3.0 POST-L NEXT-NODE ADJUDICATION
+Date: 2026-08-09
+Route: CHALLENGER / NOT_RH
+Mode: READ-ONLY ADJUDICATION IN THE SAME LIVING PHASE CHAT
+Repository writes by Proshka: FORBIDDEN
+Production creation by Codex before this verdict: FORBIDDEN
+Aristotle submission: NONE
+Answer now / Jetzt antworten: MUST NOT BE CLICKED
+
+Read this attached file byte-for-byte. Use the accumulated context of this same
+living Goal 057 phase chat. Return one exact Markdown verdict after natural
+completion. Do not ask for a fresh chat and do not authorize more than one
+theorem-sized next child.
+
+## 1. Exact source lock
+
+repo: Malaeu/chen_q3
+branch: rh_clean
+HEAD:
+  5455b023d83553c19bc04c1ce5f8c8333580b13e
+origin/rh_clean:
+  5455b023d83553c19bc04c1ce5f8c8333580b13e
+HEAD_EQUALS_ORIGIN: true
+
+Unrelated staged patch is owner material and must remain byte-identical:
+  SHA-256 291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+Current execution state:
+  stage: RB-GOAL-057-B3-0L-CLOSED
+  obligation: GOAL057_B3_0_POST_L_NEXT_NODE_ADJUDICATION
+  parent B3.0L: CLOSED
+  parent B3.0: OPEN
+  current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+  coarse checkpoints closed: 0
+  coarse checkpoints remaining: 10
+  H4a1b: OPEN
+  BUS_010: VOID
+  GOAL_055: HOLD
+  G2_CCM: FROZEN
+  Aristotle submission: NONE
+  route promotion: false
+  PX_RH_CLAIM: NOT_MADE
+
+Current exact control artifacts:
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+    057_unified_chain_program_delegated_review.goal.md
+      SHA-256 c2b5a21093075003c590e61b9ea42630a38a245ea73a42fe55998742342ece58
+
+  q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/
+    ROUTE_B_EXECUTION_STATE.json
+      SHA-256 494ac18fec5e9379f8db6caf34876c250ebb4f8598f77955d29735216db1182c
+
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+    GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md
+      SHA-256 18174778b29ea7c5ea0840e27083f2a29c806b0e7f6e2556db6207867812ef0c
+
+routeb_status.py --check:
+  PASS
+
+## 2. Newly closed exact child B3.0L
+
+Production:
+  q3.lean.aristotle/Q3/Proofs/RouteB/
+    D0PstarSourceLogWindowFourierL2Isometry.lean
+
+SHA-256:
+  f67325b9b853fcc1d10bc9769152cf11e7afc59a57b1648256027c6cffa946d8
+
+Exact imports:
+  Q3.Proofs.RouteB.D0LogWindowVNMCompletenessBridge
+  Q3.Proofs.RouteB.D0PstarSourceModeCosineCCMQKernel
+
+Exact public surface:
+
+  noncomputable def sourceLogWindowFourierL2Isometry
+      (i : PairIndex) :
+      H_m i →ₗᵢ[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)
+
+  theorem coeFn_sourceLogWindowFourierL2Isometry_apply_mode
+      (i : PairIndex) (n : ℤ) :
+      ((sourceLogWindowFourierL2Isometry i (V_n_m i n) :
+          MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ)
+        =ᵐ[(volume : Measure ℝ)]
+          (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t)
+
+Exact semantic boundary:
+  WHOLE_LINE_L2_CARRIER_PROVED
+  COMPLEX_LINEAR_ISOMETRY_PROVED
+  ALL_H_M_DOMAIN_PROVED
+  COMPLETE_LITERAL_V_N_M_BASIS_CONSUMED
+  EXACT_FORWARD_FOURIER_MODE_IMAGE_PROVED
+  EXACT_2PI_CONVENTION_RETAINED
+  NO_SURJECTIVITY_CLAIM
+  NO_ARBITRARY_VECTOR_POINTWISE_FOURIER_CLAIM
+  NO_AMBIENT_SOURCE_WEIL_FORM
+  NO_FORM_DOMAIN
+  NO_ASSOCIATED_OPERATOR_GRAPH
+  NO_OPERATOR_DOMAIN
+  NO_SELECTED_KTRIAL_DOMAIN
+  NO_COMPRESSION_IDENTITY
+  NO_CONTINUUM_NUMERATOR
+
+Validation:
+  direct Lean: PASS
+  target build: PASS, 7768 jobs
+  full build: PASS, 7817 jobs
+  q3_check: PASS
+  public axioms: exactly [propext, Classical.choice, Quot.sound]
+  mandatory production judges: 8/8 PASS
+  proof DB: 7/7 proven, repeat import idempotent
+  orchestration tests: 80/80 PASS
+  strict Spine: P9_STRICT_PASS
+  semantic index: PASS, 2462 Q3 documents / 12927 vectors
+  SQLite integrity: 3/3 ok
+  no mutation artifact remains
+
+## 3. Previously closed finite source-form assembly B3.0K
+
+Production:
+  q3.lean.aristotle/Q3/Proofs/RouteB/
+    D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean
+
+SHA-256:
+  fdec61999f5bd109f3d912911136e3130c4cabae3fd464a541949a10d0b8d3db
+
+Exact public theorem:
+
+  theorem sourceWeilFiniteForm_eq_ccmWeilMatrixForm
+      (i : PairIndex)
+      (c d : CCMModeFinite i.N → ℂ) :
+      (∑ j, ∑ k,
+          star (c j) *
+            sourceW02ModePairing i
+              (ccmModeFinite i.N j) (ccmModeFinite i.N k) *
+            d k)
+        + (∑ j, ∑ k,
+            star (c j) *
+              sourceArchimedeanModePairing i
+                (ccmModeFinite i.N j) (ccmModeFinite i.N k) *
+              d k)
+        - (∑ j, ∑ k,
+            star (c j) *
+              sourcePrimeModePairing i
+                (ccmModeFinite i.N j) (ccmModeFinite i.N k) *
+              d k)
+        =
+      ∑ j, ∑ k,
+        star (c j) *
+          Q3.RouteB.ccmWeilMatFinite i.m i.N j k *
+          d k
+
+This proves the exact finite three-component source ledger
+  +W02 + already-negative Arch - positive Prime
+on the literal finite carrier. It does not define an ambient form or operator.
+
+## 4. Source contracts that remain Lean-unpinned
+
+D0.2:
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+    D0_2_EXACT_WEIL_SESQUILINEAR_FORM.md
+  SHA-256 52c58cee35344edc5baa30f3e2028b402c9a64a0e9a08c4dd093557a5a561308
+  10621 bytes / 373 lines
+  status:
+    MATH_PROVED / PRIMARY_SOURCE_LOCKED / LEAN_INTERFACE_UNPINNED / NOT_RH
+
+Its source contract says:
+  qW_m : H_m → ℝ ∪ {+∞}
+  Dom(qW_m) = {f : H_m | qW_m f < +∞}
+  BW_m is Hermitian, antilinear first, linear second
+  every E_m_N lies in the form domain
+  restriction to E_m_N has the exact Weil matrix
+  no positivity claim
+  no associated-operator identification in D0.2
+
+D0.3:
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+    D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md
+  SHA-256 c631554f7aafc8c56dbec744cc43e05ee8c42512025bcfb10f3e9e766d047216
+  11418 bytes / 366 lines
+  status:
+    MATH_PROVED / ALL_EIGHT_COMPONENTS_LOCKED / NOT_RH
+  parent status:
+    PROVED / LEAN_INTERFACE_UNPINNED
+
+Its exact D0.3a representation contract is:
+  Dom(A_m) =
+    {f ∈ Dom(BW_m) |
+      ∃ h ∈ H_m, ∀ g ∈ Dom(BW_m), BW_m(f,g)=⟪h,g⟫}
+  A_m f is the unique representing vector.
+It explicitly forbids identifying the finite Riesz operator with
+P_m_N A_m P_m_N without domain and invariance proofs.
+
+## 5. Prior wall and its now-resolved prerequisite
+
+Prior same-phase verdict:
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+    PROSHKA_VERDICT_GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_RELEASE_2026-08-08.md
+  SHA-256 7106b3629538eeed897914bd930a4f0c35f7c669a95880c969aa594f38acb58c
+  25192 bytes / 1043 lines
+
+That verdict said:
+
+  Do not define SourceWeilAssociatedOperator before the exact Fourier carrier
+  and source-form decomposition exist.
+
+It ranked:
+  R1 exact modewise L1 Fourier formula;
+  R2 full logarithmic Lp isometry + zero extension + Plancherel layer;
+and rejected:
+  a finite-core operator renamed as the ambient source operator.
+
+B3.0A through B3.0L have now supplied the exact literal mode formula, weighted
+mode estimates, all finite source components and assembly, complete literal
+basis, and the source-specific whole-line Fourier L2 isometry. Thus the carrier
+prerequisite is closed. The source-form decomposition itself is not.
+
+## 6. Live absence audit
+
+Whole-repository and Q3/RouteB declaration search, excluding the PrimeCert
+museum, finds no production declarations named:
+
+  sourceWeilSesquilinearForm
+  SourceWeilFormDomain
+  SourceWeilAssociatedGraph
+  SourceWeilOperatorDomain
+  sourceWeilAssociatedOperator
+  sourceWeilAssociatedOperator_graph
+  V_n_m_mem_sourceWeilOperatorDomain
+
+The only production declaration containing sourceWeil is the finite theorem
+sourceWeilFiniteForm_eq_ccmWeilMatrixForm.
+
+Therefore do not treat the source form, its domain, its associated graph or
+operator as already constructed.
+
+## 7. Adjudication question
+
+Select the smallest lawful theorem-sized next child after B3.0L.
+
+The named wall from the B3.0L release is:
+
+  SOURCE_WEIL_FORM_FOURIER_MULTIPLIER_DECOMPOSITION_MISSING
+
+But do not merely repeat that broad wall. Decide the exact first object needed
+to reduce it.
+
+Compare at least these three possibilities:
+
+A. First define a source-faithful ambient sesquilinear form and its exact form
+   domain from the D0.2 primary-source contract.
+
+B. First prove a Fourier-multiplier decomposition on a source-locked dense
+   core, then close/represent the form later.
+
+C. First prove only a literal-mode or finite-linear-combination decomposition
+   as a discriminator before any ambient form/domain definition.
+
+Reject any option that:
+  - defines the desired form identity as a premise;
+  - defines the graph from a chosen operator and calls it source-faithful;
+  - renames the finite CCM Riesz operator as the ambient operator;
+  - uses a convenient weighted L2 majorant domain without proving the required
+    source-domain relation;
+  - infers arbitrary-vector pointwise Fourier from the B3.0L mode law;
+  - hides multiple missing mathematical layers behind private definitions;
+  - jumps to selected-kTrial membership, compression or continuum numerator.
+
+## 8. Required verdict
+
+Return exactly one primary code:
+
+  TRY_GOAL057_B3_0M_<EXACT_THEOREM_SIZED_CHILD>
+or
+  STOP_GOAL057_B3_0M_<EXACT_FIRST_MISSING_INPUT>
+
+The verdict must include:
+
+1. first line:
+   # STATUS: OPEN — <precise status>
+
+2. one binary ruling:
+   NEXT_CHILD_SELECTED: true|false
+   NEXT_CHILD_AUTHORIZED: true|false
+
+3. the exact mathematical object and Lean-shaped signature for the smallest
+   next child, or the precise missing input that prevents even a preflight;
+
+4. a dependency table showing exactly what B3.0K and B3.0L supply and what they
+   do not supply;
+
+5. a source-faithfulness audit against D0.2 and D0.3;
+
+6. at least two competing re-representations ranked by kill power and cost;
+
+7. mandatory semantic plants, including:
+   - form-as-premise surrogate;
+   - finite-Riesz-as-ambient substitution;
+   - arbitrary-vector pointwise-Fourier overclaim;
+   - form-domain/operator-domain collapse;
+   - Fourier sign or 2π drift;
+   - prime-sign ledger drift;
+   - generated PSD / Step33 dependency leak;
+
+8. the cheapest decisive scratch discriminator, if one is needed;
+
+9. an exact production release candidate only if it is already Lean-preflighted
+   from the supplied evidence. Otherwise authorize preflight only and forbid
+   production;
+
+10. CODEX DIRECTIVE with exact:
+    MODE
+    CREATE_ONLY or DO_NOT_CREATE
+    SOURCE_LOCK
+    mandatory validations
+    STOP
+    SUCCESS
+    NEXT_GAP_NOT_AUTHORIZED
+    NOT_AUTHORIZED
+    FINAL_BOUNDARY
+
+11. meta closeout:
+    what became smaller;
+    what was killed;
+    what must not be tried again;
+    current smallest named gap;
+    next cheapest decisive test;
+    prediction fate.
+
+## 9. Hard boundaries
+
+No new production object is authorized by this request itself.
+
+Do not:
+  define an ambient form/domain/graph/operator unless the verdict supplies a
+  source-faithful exact construction;
+  infer arbitrary-vector pointwise Fourier;
+  assert selected-kTrial operator-domain membership;
+  assert P_m_N A_m P_m_N equals the finite Riesz operator;
+  assert E_m_N invariance;
+  claim compression or continuum numerator;
+  invoke or close H4a1b;
+  decrement the ten-checkpoint ledger;
+  create Bus 010;
+  release Goal 055;
+  unfreeze G2_CCM;
+  submit Aristotle;
+  promote Route B;
+  make a PX or RH claim;
+  open a fresh chat.
+
+Final boundary:
+  route: CHALLENGER_NOT_RH
+  active bus goal: 057
+  bus_010: VOID
+  goal_055: HOLD
+  g2_ccm: FROZEN
+  current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+  coarse checkpoints closed: 0
+  coarse checkpoints remaining: 10
+  H4a1b: OPEN
+  Aristotle submission: NONE
+  route promotion: false
+  px_rh_claim: NOT_MADE
