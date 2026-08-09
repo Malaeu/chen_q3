@@ -136,14 +136,27 @@
         "a_prime": "0.061385552793961",
         "ledger_identity_residual": "6.77092926131672e-92"
       }
+    },
+    "independent": {
+      "chi0": "80.9290775234758",
+      "chi4": "724.217552992516",
+      "I0": "1.18782808659511",
+      "I4": "0.720439686750484",
+      "solver_pairs_found": 5,
+      "projective_overlap": "1.0",
+      "overlap_gap": "3.39093861810984e-43",
+      "a_independent": "1.13617324665803e-58",
+      "r_full_independent": "2.29561965812513e-30",
+      "nu_independent": "4.55453893012063e-31",
+      "rho_independent": "1.40803582301147"
     }
   },
   "ladder_stable": true,
   "a_zero_consistent": false,
   "rho_ge_1_both_levels": true,
-  "independent_agrees": null,
-  "nu_band": "ZERO_CONSISTENT_UNRESOLVED (1e-8 < nu < 1e-4)",
+  "independent_agrees": true,
+  "classification_note": "rho>=1 confirmed at both precision levels and by the independent trial reconstruction, so the cut is ratified as failed either way. But `a` stabilized at a fixed tiny value instead of shrinking with precision, so it did not satisfy the precommitted zero-consistency rule -- the near-kernel-vs-cancellation question (R2 vs R3) is left OPEN, not resolved, by this run.",
   "kill_ratified": true,
   "terminal_code": "GOAL057_SPECTRAL_CUT_KILL_RATIFIED_AFTER_INDEPENDENT_CHECK",
-  "elapsed_sec": 818.8
+  "elapsed_sec": 2029.1
 }
