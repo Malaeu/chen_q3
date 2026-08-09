@@ -2121,6 +2121,7 @@ CCM-W02 matrix-entry form. This closes B3.0H only. B3.0 remains open for the
 prime source pairing, complete source Weil form and associated operator graph;
 no coarse checkpoint is decremented.
 
+
 ## A27 — B3.0I source prime mode pairing (2026-08-09)
 
 ```yaml
@@ -2998,3 +2999,129 @@ Submodule of `H_m i`, with zero/add/smul closure proved through official a.e.
 span inclusion, density, a shifted form, D0.2 equality, ambient perturbations,
 the associated graph, compression and the continuum numerator remain open;
 no coarse checkpoint is decremented.
+
+## A35 — B3.0Q literal mode in shifted archimedean form domain (2026-08-09)
+
+```yaml
+A35_STATUS: CLOSED_CHILD_PARENT_B3_0_OPEN
+RELEASE_PRIMARY: TRY_GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PRODUCTION
+SUCCESS: GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PROVED
+
+PARENT_B3_0P: CLOSED
+PARENT_B3_0Q: CLOSED
+PARENT_B3_0:
+  status: OPEN
+  shifted_arch_form_domain_submodule: CLOSED
+  literal_mode_membership: CLOSED
+  finite_mode_span_inclusion: NOT_PROVED
+  arbitrary_vector_membership: NOT_PROVED
+  density: NOT_PROVED
+  shifted_archimedean_form: NOT_PROVED
+  closedness_or_lower_semicontinuity: NOT_PROVED
+  D0_2_equality: NOT_PROVED
+  ambient_source_weil_form: NOT_PROVED
+  whole_space_W02_extension: NOT_PROVED
+  whole_space_Prime_extension: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+  operator_domain: NOT_PROVED
+  selected_kTrial_operator_domain: NOT_PROVED
+  compression_identity: NOT_PROVED
+  continuum_numerator: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean
+LEAN_SHA256: d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+PUBLIC_SURFACE: 0_DEFINITIONS_1_THEOREM
+PRIVATE_SURFACE: 0_DEFINITIONS_0_THEOREMS
+TOTAL_NAMED_DECLARATIONS: 1
+PROOF_DB: 1_OF_1_DECLARATIONS_PROVEN_REPEAT_IMPORT_IDEMPOTENT
+PLANTS: 10_OF_10_MANDATORY_JUDGES_PASS
+INDEPENDENT_CONTROLS: AE_TRANSPORT_SQRT_COMPARISON_AND_FORM_OPERATOR_DIAGONAL_PASS
+STANDARD_AXIOMS: propext_Classical.choice_Quot.sound
+CHECK_OUTPUT_FINGERPRINT_SHA256: 875282a1ba9c825823531e08c5893655bb38ba7dfd35b7531f7e6f3dd55819c0
+THEOREM_SOURCE_FINGERPRINT_SHA256: 22a0b384846ca98f57d06c5bbb43793729eb145810bf2af3eb0cfe46f8bf349c
+B3_0P_DEPENDENCY_FINGERPRINT_SHA256: d2fc68954ae6604d1573bbe37b83e08577f60f4d39f5b9b9f3548821ce866a50
+B3_0B3_DEPENDENCY_FINGERPRINT_SHA256: 99b7ad19089b17a0cde4492a239c4b5b8a5b8e8ea8c6b6aa2cc348c8324200d7
+B3_0L_DEPENDENCY_FINGERPRINT_SHA256: f67325b9b853fcc1d10bc9769152cf11e7afc59a57b1648256027c6cffa946d8
+B3_0O_DEPENDENCY_FINGERPRINT_SHA256: b1641e36554b66131bb04b14b606b94557a8f004a686fad73b51378e72360bba
+TARGET_BUILD: PASS_7774_JOBS
+FULL_BUILD: PASS_7817_JOBS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS_SENSOR_REFRESH_AND_GOAL_CLOSE
+OBSERVABILITY: OBS_361769d283562de69606_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SEMANTIC_INDEX: 2497_Q3_DOCUMENTS_13139_VECTORS_PASS
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: EXACT_LITERAL_PRODUCTION_MODE_FIXED_INDEX_FORM_DOMAIN_MEMBERSHIP_ONLY
+EXACT_LITERAL_V_N_M_FIXED_MODE_MEMBERSHIP: true
+EXACT_B3_0P_QUOTIENT_SAFE_FORM_DOMAIN_CONSUMED: true
+EXACT_B3_0L_WHOLE_LINE_L2_ISOMETRY_AND_AE_MODE_IMAGE_CONSUMED: true
+EXACT_B3_0B3_FULL_ARCH_MULTIPLIER_WEIGHTED_MODE_L2_CONSUMED: true
+EXACT_B3_0O_SQUARE_ROOT_SHIFTED_WEIGHT_CONSUMED: true
+EXACT_MEMLP_2_VOLUME_MEMBERSHIP_RETAINED: true
+ARBITRARY_VECTOR_MEMBERSHIP: NOT_PROVED
+FINITE_MODE_SPAN_INCLUSION: NOT_PROVED
+DENSITY: NOT_PROVED
+SHIFTED_MULTIPLICATION_FORM: NOT_PROVED
+CLOSEDNESS_OR_LOWER_SEMICONTINUITY: NOT_PROVED
+D0_2_EQUALITY: NOT_PROVED
+AMBIENT_SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+OPERATOR_DOMAIN: NOT_PROVED
+SELECTED_KTRIAL_OPERATOR_DOMAIN: NOT_PROVED
+WHOLE_SPACE_W02_EXTENSION: NOT_PROVED
+WHOLE_SPACE_PRIME_EXTENSION: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  direct_imports:
+    - Q3.Proofs.RouteB.D0PstarShiftedArchFormDomain
+    - Q3.Proofs.RouteB.D0PstarExactArchSymbolWeightedModeL2
+  consumed_APIs:
+    - sourceLogWindowFourierL2Isometry
+    - coeFn_sourceLogWindowFourierL2Isometry_apply_mode
+    - sourceArchimedeanMultiplier_mul_fourier_logWindowZeroExtendedMode_memLp
+    - sourceArchimedeanShiftedSqrtWeight_sq
+    - mem_sourceArchimedeanShiftedFormDomain_iff
+  generated_PSD_dependency: false
+  finite_matrix_or_Riesz_input: false
+  inherited_closed_parent_chain: true
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_POST_P_REQUEST_SHA256: 920b6e22c1b5c720f0cf2c08a27092bda83f74407603787e1248da956c635088
+PROSHKA_POST_P_VERDICT_SHA256: 25eea3795f16c1a539678a678bad19b28f9c12baaf6d7666754e7ba1edc9e998
+PROSHKA_RELEASE_REQUEST_SHA256: 69ecefb861a8415cd9752856eee799cd6e0081fa07e96ab189072a7ba953ff2a
+CANDIDATE_SHA256: d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+PROSHKA_RELEASE_VERDICT_SHA256: 83f5eab591d76f7b9d3eea4e58e739024f49cb0b650a3de7fceaf0da982de441
+CLOSEOUT_SHA256: ea2b941cedac05f4dd7af0199d37c56eefa1e9edbdfbfcebe2e0f9515438524d
+
+REVIEW_RUNTIME:
+  phase_calls: 58
+  global_delegated_calls: 60
+  fanout_violations: 0
+  same_living_chat: true
+  answer_now_clicked: false
+
+NEXT_TRANSACTION: SAME_CHAT_POST_Q_NEXT_NODE_ADJUDICATION_ONLY
+NEXT_GAP_STATUS: POST_B3_0Q_SUCCESSOR_NOT_ADJUDICATED
+NEXT_GAP_NOT_AUTHORIZED: GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_DOMAIN
+NEXT_REQUIRED_ACTION: ask_the_same_living_Proshka_chat_to_select_the_smallest_lawful_successor_before_any_new_production
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+Every literal `V_n_m i n` is now proved to lie in the exact B3.0P shifted
+archimedean form domain.  This closes B3.0Q only.  It does not bundle finite
+linear combinations, prove density, construct the form or operator, or close
+the ambient source-target bridge; no coarse checkpoint is decremented.

@@ -1,0 +1,470 @@
+# Goal 057 B3.0Q — literal-mode shifted archimedean form-domain production-release adjudication
+
+Read this attached .txt byte-for-byte in the same living Goal 057 phase chat.
+Return exactly one Markdown verdict after natural completion.
+
+Adjudicate exactly one binary question:
+
+May Codex materialize the exact already-preflighted 4036-byte B3.0Q scratch
+candidate byte-for-byte as the single production file
+
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean
+
+then rerun the full production validation, update the canonical/mirror Goal 057
+control artifacts, close only B3.0Q, commit only owned paths, push rh_clean, and
+leave B3.0R unselected and unauthorized?
+
+This request does not authorize finite synthesis or E_m_N inclusion, density,
+a shifted form, closedness, D0.2 equality, an associated graph or operator,
+operator-domain membership, W02/Prime ambient extensions, compression, the
+continuum numerator, H4a1b, or any decrement of the ten-checkpoint ledger.
+
+## 1. Source lock
+
+repo: Malaeu/chen_q3
+branch: rh_clean
+
+HEAD:
+7b635202dcd55be6adae58eb2d1a67983205a9bf
+
+origin/rh_clean:
+7b635202dcd55be6adae58eb2d1a67983205a9bf
+
+unrelated staged patch SHA256:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+canonical execution state SHA256:
+5ad24603d0245ccabaa873f8e1d6221c2a744c32499242955fecd0f9748dc81e
+
+canonical route state SHA256:
+5e842a199e41c859cc0b70a9dba76b4f85b05128e369aa624835046b081aeedf
+
+current state:
+GOAL_057_B3_0P_SHIFTED_ARCH_FORM_DOMAIN_SUBMODULE_PROVED_NEXT_NODE_ADJUDICATION_PENDING
+
+current stage:
+RB-GOAL-057-B3-0P-CLOSED
+
+current obligation:
+GOAL057_B3_0_POST_P_NEXT_NODE_ADJUDICATION
+
+current checkpoint:
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+
+## 2. Controlling post-P transaction
+
+request:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0_POST_P_NEXT_NODE_ADJUDICATION_2026-08-09.txt
+
+request SHA256:
+920b6e22c1b5c720f0cf2c08a27092bda83f74407603787e1248da956c635088
+
+request bytes: 10375
+request wc-lines: 297
+request final LF: true
+
+verdict:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_P_NEXT_NODE_ADJUDICATION_2026-08-09.md
+
+verdict SHA256:
+25eea3795f16c1a539678a678bad19b28f9c12baaf6d7666754e7ba1edc9e998
+
+verdict bytes: 30044
+verdict wc-lines: 913
+verdict final LF: true
+
+operative ruling:
+TRY_GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PREFLIGHT
+
+production authorized there: false
+tracked repository mutation authorized there: false
+
+The assistant-provided downloadable artifact, not the rendered code block, was
+used as the byte authority. Its exact lock matched the verdict:
+
+artifact:
+GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PREFLIGHT_CANDIDATE_2026-08-09.lean
+
+SHA256:
+d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+
+bytes: 4036
+wc-lines: 109
+final LF: true
+
+## 3. Exact scratch candidate and direct preflight
+
+scratch file:
+q3.lean.aristotle/Goal057B3_0Q_LiteralModeInShiftedArchFormDomain_Scratch.lean
+
+SHA256:
+d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+
+bytes: 4036
+wc-lines: 109
+final LF: true
+byte-for-byte equal to downloadable artifact: PASS
+
+direct command:
+cd q3.lean.aristotle
+lake env lean Goal057B3_0Q_LiteralModeInShiftedArchFormDomain_Scratch.lean
+
+direct Lean exit: 0
+direct Lean errors: 0
+nonfatal warning:
+UnicodeBasic package has pre-existing local changes.
+
+direct axiom output:
+Q3.RouteB.D0Pstar.V_n_m_mem_sourceArchimedeanShiftedFormDomain
+[propext, Classical.choice, Quot.sound]
+
+exact imports: 2, exact order:
+1. Q3.Proofs.RouteB.D0PstarShiftedArchFormDomain
+2. Q3.Proofs.RouteB.D0PstarExactArchSymbolWeightedModeL2
+
+public definitions: 0
+public theorems: 1
+- V_n_m_mem_sourceArchimedeanShiftedFormDomain
+
+private declarations: 0
+forbidden-token matches: 0
+
+## 4. Exact candidate bytes
+
+~~~lean
+import Q3.Proofs.RouteB.D0PstarShiftedArchFormDomain
+import Q3.Proofs.RouteB.D0PstarExactArchSymbolWeightedModeL2
+
+noncomputable section
+
+open Complex MeasureTheory
+open scoped ENNReal FourierTransform
+
+namespace Q3.RouteB.D0Pstar
+
+/-- Every literal production mode belongs to the exact shifted archimedean
+form-domain carrier.  This is fixed-mode membership only; it is not a claim
+about every vector of `H_m i`, finite-span inclusion, density, D0.2, or an
+associated operator domain. -/
+theorem V_n_m_mem_sourceArchimedeanShiftedFormDomain
+    (i : PairIndex) (n : ℤ) :
+    V_n_m i n ∈ sourceArchimedeanShiftedFormDomain i := by
+  rw [mem_sourceArchimedeanShiftedFormDomain_iff]
+  let phiLp : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) :=
+    sourceLogWindowFourierL2Isometry i (V_n_m i n)
+  change MemLp
+    (fun t : ℝ =>
+      (sourceArchimedeanShiftedSqrtWeight t : ℂ) *
+        (phiLp : ℝ → ℂ) t)
+    2 volume
+  have hPhi : MemLp (phiLp : ℝ → ℂ) 2 volume :=
+    MeasureTheory.Lp.memLp phiLp
+  have hPhiEq :
+      (phiLp : ℝ → ℂ) =ᵐ[volume]
+        (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t) := by
+    simpa [phiLp] using
+      coeFn_sourceLogWindowFourierL2Isometry_apply_mode i n
+  have hArchLiteral :=
+    sourceArchimedeanMultiplier_mul_fourier_logWindowZeroExtendedMode_memLp i n
+  have hArchPhi :
+      MemLp
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            (phiLp : ℝ → ℂ) t)
+        2 volume := by
+    have hEq :
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            𝓕 (logWindowZeroExtendedMode i n) t)
+          =ᵐ[volume]
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            (phiLp : ℝ → ℂ) t) := by
+      filter_upwards [hPhiEq] with t ht
+      rw [ht]
+    exact MemLp.ae_eq hEq hArchLiteral
+  let C : ℝ := |Real.log Real.pi| + Real.log 4 + 7
+  have hMajor :
+      MemLp
+        (fun t : ℝ =>
+          ‖(sourceArchimedeanMultiplier t : ℂ) *
+              (phiLp : ℝ → ℂ) t‖ +
+            C * ‖(phiLp : ℝ → ℂ) t‖)
+        2 volume := by
+    simpa only [Pi.add_apply, Pi.smul_apply, smul_eq_mul] using
+      hArchPhi.norm.add (hPhi.norm.const_smul C)
+  refine hMajor.mono' ?_ ?_
+  · have hWeight :
+        AEStronglyMeasurable
+          (fun t : ℝ =>
+            (sourceArchimedeanShiftedSqrtWeight t : ℂ)) volume :=
+      (Complex.continuous_ofReal.comp
+        sourceArchimedeanShiftedSqrtWeight_continuous).aestronglyMeasurable
+    exact hWeight.mul hPhi.1
+  · filter_upwards [] with t
+    have hWeightNonneg :=
+      sourceArchimedeanShiftedSqrtWeight_nonneg t
+    have hWeightSq :=
+      sourceArchimedeanShiftedSqrtWeight_sq t
+    have hMultiplierLeAbs :
+        sourceArchimedeanMultiplier t ≤
+          |sourceArchimedeanMultiplier t| :=
+      le_abs_self _
+    have hSquareNonneg :
+        0 ≤ (sourceArchimedeanShiftedSqrtWeight t - 1) ^ 2 :=
+      sq_nonneg _
+    have hWeightLe :
+        sourceArchimedeanShiftedSqrtWeight t ≤
+          |sourceArchimedeanMultiplier t| + C := by
+      dsimp [C]
+      nlinarith
+    have hPhiNormNonneg :
+        0 ≤ ‖(phiLp : ℝ → ℂ) t‖ :=
+      norm_nonneg _
+    have hMul :=
+      mul_le_mul_of_nonneg_right hWeightLe hPhiNormNonneg
+    calc
+      ‖(sourceArchimedeanShiftedSqrtWeight t : ℂ) *
+          (phiLp : ℝ → ℂ) t‖ =
+          sourceArchimedeanShiftedSqrtWeight t *
+            ‖(phiLp : ℝ → ℂ) t‖ := by
+              rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+                abs_of_nonneg hWeightNonneg]
+      _ ≤ (|sourceArchimedeanMultiplier t| + C) *
+            ‖(phiLp : ℝ → ℂ) t‖ := hMul
+      _ = ‖(sourceArchimedeanMultiplier t : ℂ) *
+              (phiLp : ℝ → ℂ) t‖ +
+            C * ‖(phiLp : ℝ → ℂ) t‖ := by
+              rw [norm_mul, Complex.norm_real, Real.norm_eq_abs]
+              ring
+
+#print axioms V_n_m_mem_sourceArchimedeanShiftedFormDomain
+
+end Q3.RouteB.D0Pstar
+~~~
+
+The fenced content above is the exact 4036-byte candidate with final LF.
+No byte may be changed during production materialization.
+
+## 5. Parent fingerprints and exact load-bearing names
+
+B3.0P production file:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFormDomain.lean
+SHA256:
+d2fc68954ae6604d1573bbe37b83e08577f60f4d39f5b9b9f3548821ce866a50
+load-bearing theorem:
+mem_sourceArchimedeanShiftedFormDomain_iff
+
+B3.0B3 production file:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolWeightedModeL2.lean
+SHA256:
+99b7ad19089b17a0cde4492a239c4b5b8a5b8e8ea8c6b6aa2cc348c8324200d7
+load-bearing theorem:
+sourceArchimedeanMultiplier_mul_fourier_logWindowZeroExtendedMode_memLp
+
+B3.0L production file:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierL2Isometry.lean
+SHA256:
+f67325b9b853fcc1d10bc9769152cf11e7afc59a57b1648256027c6cffa946d8
+load-bearing theorem:
+coeFn_sourceLogWindowFourierL2Isometry_apply_mode
+
+B3.0O production file:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSqrtWeight.lean
+SHA256:
+b1641e36554b66131bb04b14b606b94557a8f004a686fad73b51378e72360bba
+load-bearing theorems:
+sourceArchimedeanShiftedSqrtWeight_nonneg
+sourceArchimedeanShiftedSqrtWeight_sq
+
+All four exact names occur in the proof or its rewritten target.
+
+## 6. Ten mandatory judge fates
+
+P057_B3_0Q_1_AE_MODE_TRANSFER:
+mutation replaced the B3.0L a.e. proof by pointwise rfl.
+result: LEAN_REJECTED at line 31 because the Lp representative is not
+definitionally equal to the literal Fourier mode.
+stop: B3_0Q_LP_REPRESENTATIVE_POINTWISE_COLLAPSE.
+
+P057_B3_0Q_2_EXACT_FORM_WEIGHT:
+mutation replaced the exact B3.0O square-root weight in the changed target by
+sourceArchimedeanMultiplier.
+result: LEAN_REJECTED because the mutated MemLp pattern is not definitionally
+equal to the exact B3.0P membership target.
+stop: B3_0Q_FORM_OPERATOR_WEIGHT_OR_SURROGATE_MISMATCH.
+
+P057_B3_0Q_3_WEIGHTED_MODE_PARENT:
+mutation replaced the direct B3.0B3 supplier by an explicit
+hArchLiteralInput premise.
+result: LEAN_COMPILED; dependency/signature judge REJECTED because the theorem
+no longer constructs the weighted fixed-mode input from B3.0B3.
+stop: B3_0Q_EXACT_WEIGHTED_MODE_PARENT_MISSING.
+
+P057_B3_0Q_4_SQRT_PLUS_ONE:
+mutation changed Real.log 4 + 7 to Real.log 4 + 6, deleting the required +1.
+result: LEAN_REJECTED at hWeightLe; nlinarith cannot prove the false global
+tightening.
+stop: B3_0Q_SQRT_DOMINATION_PLUS_ONE_MISSING.
+
+P057_B3_0Q_5_LITERAL_MODE_INDEX:
+mutation called the B3.0B3 supplier at n + 1.
+result: LEAN_REJECTED because the MemLp input for mode n + 1 does not match
+the a.e. transferred mode n.
+stop: B3_0Q_LITERAL_MODE_INDEX_MISMATCH.
+
+P057_B3_0Q_6_ARBITRARY_VECTOR:
+mutation added a theorem quantified over every x : H_m i, accepted from an
+hAll premise.
+result: LEAN_COMPILED; quantifier/public-surface judge REJECTED.
+stop: B3_0Q_ARBITRARY_VECTOR_QUANTIFIER_DRIFT.
+
+P057_B3_0Q_7_PREMISE_SURROGATE:
+mutation added the desired target membership as hTarget and returned it.
+result: LEAN_COMPILED; construction/dependency judge REJECTED.
+stop: SURROGATE_BY_PREMISE_NOT_SOURCE_CONSTRUCTION.
+
+P057_B3_0Q_8_FINITE_SPAN_BUNDLE:
+mutation added D0PstarCCMFiniteSourceResidual and a ccmFiniteSynthesis domain
+theorem accepted from a premise.
+result: LEAN_COMPILED; scope/import/surface judge REJECTED.
+stop: B3_0Q_FINITE_SPAN_OR_DENSITY_SCOPE_SMUGGLE.
+
+P057_B3_0Q_9_DEPENDENCY:
+mutation added Q3.Proofs.PSD_BSplineFormulaContract.
+result: LEAN_COMPILED; forbidden-dependency judge REJECTED.
+stop: ROUTEB_GENERATED_PSD_DEPENDENCY_LEAK.
+
+P057_B3_0Q_10_OPERATOR_SCOPE:
+mutation added a public SourceWeilOperatorDomainMutant definition.
+result: LEAN_COMPILED; scope/public-surface judge REJECTED.
+stop: B3_0Q_SCOPE_SMUGGLE.
+
+ALL_TEN_JUDGES: PASS
+MUTATION_ARTIFACTS_REMAINING: 0
+Mutation directory was moved to the macOS Trash and no mutation file remains
+in the repository or active temporary path.
+
+## 7. Independent controls and hygiene
+
+Representative/null-set control:
+a separate Lean control proved that f =ᵐ[volume] g transfers weighted MemLp
+from w*f to w*g through a weighted a.e. equality and MemLp.ae_eq.
+result: LEAN_COMPILED, exit 0.
+
+Scalar plus-one control:
+separate Lean examples proved
+Real.sqrt (1/4 : R) <= 1/4 + 1
+and
+not (Real.sqrt (1/4 : R) <= 1/4).
+result: LEAN_COMPILED, exit 0.
+
+Form/operator control:
+the standard diagonal l2 example x_n = n^(-3/2) belongs to the square-root
+form domain but not the full operator domain.
+result: exact form weight and operator weight remain distinct.
+
+Basis/all-vector control:
+every basis vector can lie in an unbounded weighted domain while x_n = 1/n
+lies in l2 and fails the square-root weighted domain.
+result: fixed-mode membership does not imply all-H_m membership.
+
+Dependency controls:
+all four parent file fingerprints and exact load-bearing names match section 5.
+
+routeb_status.py --check: PASS
+git diff --check: PASS
+git diff --cached --check: PASS
+HEAD equals origin/rh_clean: PASS
+unrelated staged patch SHA256 unchanged: PASS
+tracked B3.0Q production mutation: NONE
+route state mutation: NONE
+
+Knowledge query before this production request:
+Goal057 B3.0Q literal mode shifted archimedean form domain V_n_m MemLp production release
+result: no hits in any layer.
+
+The only untracked scratch candidate is the exact locked 4036-byte file.
+The post-P request and verdict are archived canonical plus mirror.
+
+## 8. Requested binary production ruling
+
+If valid, authorize exactly:
+
+OPERATIVE_CLASS:
+RELEASE_GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_TO_PRODUCTION
+
+PRODUCTION_AUTHORIZED: true
+
+materialize only:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean
+
+method:
+byte-for-byte copy of the exact candidate in section 4
+
+exact production lock:
+SHA256 d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+bytes 4036
+wc-lines 109
+final LF true
+
+Then require:
+- direct lake env lean on the production file;
+- lake build Q3.Proofs.RouteB.D0PstarShiftedArchModeDomain;
+- full lake build;
+- bash scripts/q3_check.sh;
+- exact two-import order and exact one-theorem public surface;
+- exact axiom triple on the public theorem;
+- forbidden and taint scan;
+- all ten production judges;
+- all independent controls;
+- proof database update and repeat-import idempotence;
+- all current orchestration tests;
+- strict Spine;
+- semantic index refresh/check;
+- SQLite integrity for knowledge, proof, and observability databases;
+- routeb_status.py --check;
+- git diff --check and git diff --cached --check;
+- unchanged unrelated staged-patch SHA;
+- production closeout and canonical plus mirror request/verdict archives;
+- update execution state and route state last;
+- commit only owned paths;
+- push rh_clean;
+- verify HEAD equals origin/rh_clean after push.
+
+Close only:
+GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN
+
+Do not close:
+B3.0, ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE, H4a1b, or any coarse
+checkpoint.
+
+After a valid B3.0Q production commit, the next action is a separate post-Q
+next-node adjudication in this same living phase chat. B3.0R remains only a
+named, unauthorized candidate.
+
+If invalid, return exactly one blocking stop:
+GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PRODUCTION_RELEASE_BLOCKED
+
+and the first exact defect. Do not silently modify candidate bytes, weaken the
+theorem, add premises, or select B3.0R.
+
+## 9. Boundary
+
+Route: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+Bus 010: VOID
+Goal 055: HOLD
+G2_CCM: FROZEN
+current checkpoint:
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+coarse checkpoints closed: 0
+coarse checkpoints remaining: 10
+H4a1b: OPEN
+Aristotle submission: NONE
+route promotion: false
+PX/RH claim: NOT_MADE
+same living chat: required
