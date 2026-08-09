@@ -3246,3 +3246,134 @@ The existing finite Galerkin carrier `E_m_N i` is now proved to lie in the
 exact B3.0P shifted archimedean form domain.  This closes B3.0R only.  It does
 not prove arbitrary-vector membership, density, a form, an operator domain,
 compression or the continuum numerator; no coarse checkpoint is decremented.
+
+## A37 — B3.0S shifted archimedean form-domain density (2026-08-09)
+
+```yaml
+A37_STATUS: CLOSED_CHILD_PARENT_B3_0_OPEN
+STRATEGIC_PRIMARY: TRY_GOAL057_B3_0S_SHIFTED_ARCH_FORM_DOMAIN_DENSITY_PREFLIGHT
+SUCCESS: GOAL057_B3_0S_SHIFTED_ARCH_FORM_DOMAIN_DENSITY_PROVED
+
+PARENT_B3_0Q: CLOSED
+PARENT_B3_0R: CLOSED
+PARENT_B3_0S: CLOSED
+PARENT_B3_0:
+  status: OPEN
+  shifted_arch_form_domain_submodule: CLOSED
+  literal_mode_membership: CLOSED
+  finite_mode_span_inclusion: CLOSED
+  Hilbert_norm_density: CLOSED
+  arbitrary_vector_membership: NOT_PROVED
+  form_norm_core_density: NOT_PROVED
+  shifted_archimedean_sesquilinear_form: NOT_PROVED
+  closedness_or_lower_semicontinuity: NOT_PROVED
+  D0_2_domain_or_form_equality: NOT_PROVED
+  ambient_source_weil_form: NOT_PROVED
+  whole_space_W02_extension: NOT_PROVED
+  whole_space_Prime_extension: NOT_PROVED
+  associated_operator_graph: NOT_PROVED
+  operator_domain: NOT_PROVED
+  selected_kTrial_operator_domain: NOT_PROVED
+  compression_identity: NOT_PROVED
+  projection_leakage_decay: NOT_PROVED
+  continuum_numerator: NOT_PROVED
+
+LEAN_FILE: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFormDomainDensity.lean
+LEAN_SHA256: 3addebc1c00c0aa56bd63566f92b22422ef1e9dda1474a17a510ccdb15f4cdee
+PUBLIC_SURFACE: 0_DEFINITIONS_1_THEOREM
+PRIVATE_SURFACE: 0_DEFINITIONS_0_THEOREMS
+TOTAL_NAMED_DECLARATIONS: 1
+PROOF_DB: 1_OF_1_DECLARATIONS_PROVEN_REPEAT_IMPORT_IDEMPOTENT
+PLANTS: 2_POSITIVE_AND_10_NEGATIVE_SEMANTIC_JUDGES_PASS
+STANDARD_AXIOMS: propext_Classical.choice_Quot.sound
+CHECK_OUTPUT_FINGERPRINT_SHA256: b294c819bf0ec8137e94f8a0bf90688b9e2fa35bfac5d64150dab6b0b683d841
+THEOREM_SOURCE_FINGERPRINT_SHA256: 09882b028b30c6fa10774c9a68d2e309bbd66b9db9c865280799cc8e7dc03ac8
+B3_0Q_DEPENDENCY_FINGERPRINT_SHA256: d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+COMPLETENESS_BRIDGE_FINGERPRINT_SHA256: 1001bd3c39dcf70ae4d7c31bbc8c0f188d1f9917331b22bb5b0f981cc832e949
+TARGET_BUILD: PASS_7775_JOBS
+FULL_BUILD: PASS_7817_JOBS
+Q3_CHECK: PASS
+UNIT_TESTS: 80_OF_80_PASS
+STRICT_SPINE: P9_STRICT_PASS_GOAL_CLOSE
+OBSERVABILITY: OBS_4988543540cb6865f2f4_8_SOURCES_0_STALE_1_ZERO_COVERAGE
+SEMANTIC_INDEX: 2509_Q3_DOCUMENTS_13207_VECTORS_PASS
+SQLITE_INTEGRITY: 3_OF_3_OK
+
+SEMANTIC_CLASS: EXACT_SHIFTED_ARCH_FORM_DOMAIN_HILBERT_NORM_DENSITY_ONLY
+EXACT_SOURCE_ARCHIMEDEAN_SHIFTED_FORM_DOMAIN_RETAINED: true
+EXACT_LITERAL_V_N_M_HILBERT_BASIS_RETAINED: true
+DIRECT_B3_0Q_ALL_INTEGER_MODE_PARENT_CONSUMED: true
+HILBERT_BASIS_DENSE_SPAN_CONSUMED: true
+TOPOLOGICAL_CLOSURE_MONOTONICITY_CONSUMED: true
+HILBERT_NORM_DENSITY: PROVED
+TOPOLOGICAL_CLOSURE_EQ_TOP: PROVED
+ALL_H_M_MEMBERSHIP: NOT_PROVED
+FORM_NORM_CORE_DENSITY: NOT_PROVED
+D0_2_DOMAIN_OR_FORM_EQUALITY: NOT_PROVED
+SHIFTED_ARCHIMEDEAN_SESQUILINEAR_FORM: NOT_PROVED
+CLOSEDNESS_OR_LOWER_SEMICONTINUITY: NOT_PROVED
+AMBIENT_SOURCE_WEIL_FORM: NOT_PROVED
+ASSOCIATED_OPERATOR_GRAPH: NOT_PROVED
+OPERATOR_DOMAIN: NOT_PROVED
+SELECTED_KTRIAL_OPERATOR_DOMAIN: NOT_PROVED
+WHOLE_SPACE_W02_EXTENSION: NOT_PROVED
+WHOLE_SPACE_PRIME_EXTENSION: NOT_PROVED
+COMPRESSION_IDENTITY: NOT_PROVED
+PROJECTION_LEAKAGE_DECAY: NOT_PROVED
+CONTINUUM_NUMERATOR: NOT_PROVED
+H4A1B: OPEN
+
+DEPENDENCY_AUDIT:
+  direct_imports:
+    - Q3.Proofs.RouteB.D0PstarShiftedArchModeDomain
+    - Q3.Proofs.RouteB.D0LogWindowVNMCompletenessBridge
+  consumed_APIs:
+    - V_n_m_hilbertBasis
+    - V_n_m_hilbertBasis_apply
+    - HilbertBasis.dense_span
+    - Submodule.topologicalClosure_mono
+    - Submodule.span_le
+    - V_n_m_mem_sourceArchimedeanShiftedFormDomain
+  generated_PSD_dependency: false
+  added_premise: false
+  inherited_closed_parent_chain: true
+
+CURRENT_CHECKPOINT: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+CHECKPOINT_EFFECT: STRICTLY_ADVANCED_NOT_CLOSED
+COARSE_CHECKPOINTS_CLOSED: 0
+COARSE_CHECKPOINTS_REMAINING: 10
+
+PROSHKA_POST_R_REQUEST_SHA256: b7c686144903f6c5a7401848d4cd5339daf7ed761307f798e8b24b5a17c1882a
+PROSHKA_POST_R_STRATEGIC_VERDICT_SHA256: 33f0c2b3134f946e0ac8ef721d88e09f5dd7d1ec38dcf0c35c593f1e0d8f0d20
+CANDIDATE_SHA256: 3addebc1c00c0aa56bd63566f92b22422ef1e9dda1474a17a510ccdb15f4cdee
+SEPARATE_PRODUCTION_RELEASE_CALL: NONE_BY_PHASE_THEN_BATCH
+CLOSEOUT_SHA256: d7c144af604542183ef947b1e5f517d58992fa02e7fc977d8881a970ce1934d4
+
+REVIEW_RUNTIME:
+  phase_calls: 61
+  global_delegated_calls: 63
+  ordinary_goal_close_calls: 0
+  fanout_violations: 0
+  same_living_chat: true
+  answer_now_clicked: false
+
+NEXT_EXECUTION_MODE: PHASE_THEN_BATCH_LOCAL_CONTINUATION
+NEXT_LOCAL_CARTOGRAPHY_CANDIDATE: GOAL057_B3_0T_SHIFTED_ARCH_SESQUILINEAR_FORM_WELLDEFINEDNESS
+NEXT_LOCAL_CANDIDATE_PRODUCTION_AUTHORIZED: false
+NEXT_PROSHKA_ELIGIBILITY: REAL_MINT_PROMOTION_FRONT_CHANGE_BATCHED_AMBIGUITY_OR_HARD_STALL_ONLY
+NEXT_REQUIRED_ACTION: continue_locally_to_the_real_phase_boundary_and_batch_two_to_four_genuine_blockers
+
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+ARISTOTLE_SUBMISSION: NONE
+PX_RH_CLAIM: NOT_MADE
+```
+
+The exact shifted archimedean form-domain carrier is now proved dense in the
+Hilbert norm by the complete literal `V_n_m` basis.  This closes B3.0S only.
+It does not prove membership of every vector, form-norm core density, D0.2
+identification, a form or operator, compression or the continuum numerator;
+no coarse checkpoint is decremented.  Following `PHASE_THEN_BATCH`, ordinary
+local children now proceed without per-goal Proshka calls.
