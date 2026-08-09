@@ -17,6 +17,7 @@ transaction instead of one per row.
 """
 
 import argparse
+import json
 import os
 import re
 import sqlite3
@@ -32,6 +33,8 @@ DB_PATH = Path(os.environ.get(
 )).resolve()
 SCHEMA = REPO / "q3.lean.aristotle" / "aristotle_db" / "knowledge_schema.sql"
 VIEW_OUT = REPO / "docs" / "KILLS.md"
+OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.md"
+OPERATOR_SCHEMA_VERSION = "q3_cognitive_operator_registry.v1"
 
 UNIT_TYPES = ("route", "object", "strategy", "wall", "criterion")
 STATUSES = ("killed", "live", "repaired", "superseded", "standing")
@@ -61,14 +64,169 @@ def connect(create: bool = False) -> sqlite3.Connection:
     return conn
 
 
+def load_operator_registry(path: Path = OPERATOR_REGISTRY) -> dict[str, object]:
+    """Load and validate the single machine-readable operator registry block."""
+    if not path.is_file():
+        raise ValueError(f"operator registry missing: {path}")
+    match = re.search(
+        r"```json cognitive_operator_registry\n(.*?)\n```",
+        path.read_text(encoding="utf-8"),
+        re.DOTALL,
+    )
+    if not match:
+        raise ValueError("operator registry machine block missing")
+    try:
+        payload = json.loads(match.group(1))
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"operator registry JSON invalid: {exc}") from exc
+    return validate_operator_registry_payload(payload)
+
+
+def validate_operator_registry_payload(payload: object) -> dict[str, object]:
+    if not isinstance(payload, dict) or payload.get("schema") != OPERATOR_SCHEMA_VERSION:
+        raise ValueError("unsupported operator registry schema")
+    canonical = payload.get("canonical_enum")
+    legacy = payload.get("legacy_enum")
+    crosswalk = payload.get("crosswalk")
+    if not isinstance(canonical, dict) or not isinstance(legacy, dict) or not isinstance(crosswalk, list):
+        raise ValueError("operator registry sections missing")
+    if canonical.get("name") != "PROSHKA_M2" or canonical.get("field") != "cognitive_operator_used":
+        raise ValueError("canonical operator vocabulary drift")
+    if legacy.get("name") != "LEGACY_CONTROL_ACTION" or legacy.get("field") != "legacy_control_action":
+        raise ValueError("legacy control-action vocabulary drift")
+    canonical_rows = canonical.get("operators")
+    legacy_rows = legacy.get("operators")
+    if not isinstance(canonical_rows, list) or not isinstance(legacy_rows, list):
+        raise ValueError("operator rows missing")
+    canonical_tokens = {str(row.get("token")) for row in canonical_rows if isinstance(row, dict)}
+    legacy_tokens = {str(row.get("token")) for row in legacy_rows if isinstance(row, dict)}
+    if len(canonical_rows) != 8 or len(canonical_tokens) != 8:
+        raise ValueError("canonical operator count must be exactly 8")
+    if len(legacy_rows) != 9 or len(legacy_tokens) != 9:
+        raise ValueError("legacy control-action count must be exactly 9")
+    if canonical_tokens & legacy_tokens:
+        raise ValueError("canonical and legacy tokens must remain disjoint")
+    if any(not isinstance(row, dict) or not str(row.get("description") or "").strip()
+           for row in canonical_rows + legacy_rows):
+        raise ValueError("operator description missing")
+    if len(crosswalk) != 9:
+        raise ValueError("crosswalk count must be exactly 9")
+    relations = {"DIRECT_ALIAS", "RELATED_NOT_EQUIVALENT", "LEGACY_ONLY"}
+    seen_legacy: set[str] = set()
+    counts = {relation: 0 for relation in relations}
+    for row in crosswalk:
+        if not isinstance(row, dict):
+            raise ValueError("crosswalk row invalid")
+        legacy_token = str(row.get("legacy_token") or "")
+        relation = str(row.get("relation") or "")
+        canonical_token = row.get("canonical_token")
+        if legacy_token not in legacy_tokens or legacy_token in seen_legacy:
+            raise ValueError("crosswalk legacy token invalid or duplicated")
+        if relation not in relations:
+            raise ValueError("crosswalk relation invalid")
+        if relation == "LEGACY_ONLY":
+            if canonical_token is not None:
+                raise ValueError("LEGACY_ONLY must not name a canonical token")
+        elif canonical_token not in canonical_tokens:
+            raise ValueError("crosswalk canonical token invalid")
+        if not str(row.get("note") or "").strip():
+            raise ValueError("crosswalk note missing")
+        seen_legacy.add(legacy_token)
+        counts[relation] += 1
+    if seen_legacy != legacy_tokens or counts != {
+        "DIRECT_ALIAS": 2, "RELATED_NOT_EQUIVALENT": 2, "LEGACY_ONLY": 5,
+    }:
+        raise ValueError("crosswalk coverage or class counts invalid")
+    return payload
+
+
+def materialize_operator_registry(
+    conn: sqlite3.Connection, path: Path = OPERATOR_REGISTRY,
+) -> dict[str, object]:
+    """Replace only the two derived registry tables from the versioned source."""
+    payload = load_operator_registry(path)
+    source_file = path.relative_to(REPO).as_posix() if path.is_relative_to(REPO) else str(path)
+    conn.execute("DELETE FROM cognitive_operator_crosswalk")
+    conn.execute("DELETE FROM cognitive_operator_registry")
+    rows = []
+    for key in ("canonical_enum", "legacy_enum"):
+        group = payload[key]
+        rows.extend(
+            (row["token"], group["name"], row["description"], source_file,
+             OPERATOR_SCHEMA_VERSION)
+            for row in group["operators"]
+        )
+    conn.executemany(
+        "INSERT INTO cognitive_operator_registry "
+        "(token,vocabulary,description,source_file,schema_version) VALUES (?,?,?,?,?)",
+        rows,
+    )
+    conn.executemany(
+        "INSERT INTO cognitive_operator_crosswalk "
+        "(legacy_token,relation,canonical_token,note) VALUES (?,?,?,?)",
+        [(row["legacy_token"], row["relation"], row["canonical_token"], row["note"])
+         for row in payload["crosswalk"]],
+    )
+    return payload
+
+
 def cmd_init(_args) -> int:
     conn = connect(create=True)
     conn.executescript(SCHEMA.read_text())
+    materialize_operator_registry(conn)
     conn.commit()
     tables = [r[0] for r in conn.execute(
         "SELECT name FROM sqlite_master WHERE type IN ('table','view') ORDER BY name")]
     print(f"initialised {DB_PATH}")
     print("tables:", ", ".join(tables))
+    return 0
+
+
+def cmd_operators(args) -> int:
+    """Inspect canonical operators and lossless legacy relations without rewriting them."""
+    conn = connect()
+    if not args.token:
+        for vocabulary in ("PROSHKA_M2", "LEGACY_CONTROL_ACTION"):
+            rows = conn.execute(
+                "SELECT token,description FROM cognitive_operator_registry "
+                "WHERE vocabulary=? ORDER BY token", (vocabulary,),
+            ).fetchall()
+            print(f"{vocabulary} ({len(rows)})")
+            for row in rows:
+                print(f"  {row['token']:<28} {row['description']}")
+            print()
+        return 0
+    token = args.token
+    row = conn.execute(
+        "SELECT * FROM cognitive_operator_registry WHERE token=?", (token,),
+    ).fetchone()
+    if row is None:
+        print(f"unknown operator token: {token}", file=sys.stderr)
+        return 1
+    print(f"{row['token']} [{row['vocabulary']}]\n  {row['description']}")
+    if row["vocabulary"] == "LEGACY_CONTROL_ACTION":
+        link = conn.execute(
+            "SELECT * FROM cognitive_operator_crosswalk WHERE legacy_token=?", (token,),
+        ).fetchone()
+        print(f"  relation: {link['relation']}")
+        if link["canonical_token"]:
+            label = "direct alias" if link["relation"] == "DIRECT_ALIAS" else "related, not equivalent"
+            print(f"  {label}: {link['canonical_token']}")
+            if args.include_direct_aliases and link["relation"] == "DIRECT_ALIAS":
+                canonical = conn.execute(
+                    "SELECT description FROM cognitive_operator_registry WHERE token=?",
+                    (link["canonical_token"],),
+                ).fetchone()
+                print(f"  canonical description: {canonical['description']}")
+        print(f"  note: {link['note']}")
+    elif args.include_direct_aliases:
+        aliases = conn.execute(
+            "SELECT legacy_token FROM cognitive_operator_crosswalk "
+            "WHERE relation='DIRECT_ALIAS' AND canonical_token=? ORDER BY legacy_token",
+            (token,),
+        ).fetchall()
+        if aliases:
+            print("  direct legacy aliases: " + ", ".join(r[0] for r in aliases))
     return 0
 
 
@@ -433,15 +591,20 @@ def cmd_census(args) -> int:
         # A source may have landed in any layer — count them all, or the judge cries drift
         # over a perfectly migrated file just because it was not a kill.
         actual = sum(
-            conn.execute(f"SELECT COUNT(*) FROM {t} WHERE source_file=?",
-                         (r["source_file"],)).fetchone()[0]
-            for t in ("kill", "move", "journal_entry", "dossier", "postmortem"))
+            conn.execute(
+                f"SELECT COUNT(*) FROM {t} "
+                "WHERE source_file=? OR source_file LIKE ?",
+                (r["source_file"], f"{r['source_file']}/%"),
+            ).fetchone()[0]
+            for t in ("kill", "move", "journal_entry", "dossier", "postmortem",
+                      "search_session"))
         ok = actual == r["expected_rows"]
         bad += 0 if ok else 1
         print(f"{r['source_file'][:62]:62s} {r['expected_rows']:9d} {actual:7d}  "
               f"{'OK' if ok else 'DRIFT'}")
     print()
-    for t in ("kill", "move", "journal_entry", "dossier", "postmortem", "link"):
+    for t in ("kill", "move", "journal_entry", "dossier", "postmortem",
+              "search_session", "link"):
         print(f"  {t:15s} {conn.execute(f'SELECT COUNT(*) FROM {t}').fetchone()[0]:6d}")
     print()
     total = conn.execute("SELECT COUNT(*) FROM kill").fetchone()[0]
@@ -666,6 +829,12 @@ def main() -> int:
     s.add_argument("--vocab", action="store_true", help="весь накопленный словарь поиска")
     s.add_argument("--limit", type=int, default=25)
     s.set_defaults(fn=cmd_flags)
+
+    s = sub.add_parser(
+        "operators", help="canonical M2 operators and frozen legacy control actions")
+    s.add_argument("token", nargs="?")
+    s.add_argument("--include-direct-aliases", action="store_true")
+    s.set_defaults(fn=cmd_operators)
 
     sub.add_parser("census", help="compare frozen sources against the DB").set_defaults(
         fn=cmd_census)

@@ -220,3 +220,40 @@ CREATE TABLE IF NOT EXISTS excluded_source (
 );
 
 CREATE INDEX IF NOT EXISTS idx_excluded_klass ON excluded_source(klass);
+
+-- ============================================================================
+-- WAVE 5 (2026-08-06): cognitive operator registry.
+--
+-- M2 reasoning operators and frozen executor control actions are different
+-- semantic fields.  Keeping them in dedicated tables prevents the Arsenal
+-- `move` table or one-column normalization from erasing that distinction.
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS cognitive_operator_registry (
+    token          TEXT PRIMARY KEY,
+    vocabulary     TEXT NOT NULL CHECK (vocabulary IN ('PROSHKA_M2', 'LEGACY_CONTROL_ACTION')),
+    description    TEXT NOT NULL,
+    source_file    TEXT NOT NULL,
+    schema_version TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS cognitive_operator_crosswalk (
+    legacy_token   TEXT PRIMARY KEY,
+    relation       TEXT NOT NULL CHECK (
+        relation IN ('DIRECT_ALIAS', 'RELATED_NOT_EQUIVALENT', 'LEGACY_ONLY')
+    ),
+    canonical_token TEXT,
+    note           TEXT NOT NULL,
+    FOREIGN KEY (legacy_token) REFERENCES cognitive_operator_registry(token),
+    FOREIGN KEY (canonical_token) REFERENCES cognitive_operator_registry(token),
+    CHECK (
+        (relation = 'LEGACY_ONLY' AND canonical_token IS NULL)
+        OR
+        (relation IN ('DIRECT_ALIAS', 'RELATED_NOT_EQUIVALENT') AND canonical_token IS NOT NULL)
+    )
+);
+
+CREATE INDEX IF NOT EXISTS idx_cognitive_operator_vocabulary
+    ON cognitive_operator_registry(vocabulary);
+CREATE INDEX IF NOT EXISTS idx_cognitive_operator_relation
+    ON cognitive_operator_crosswalk(relation);

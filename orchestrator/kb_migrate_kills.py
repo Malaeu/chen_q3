@@ -111,6 +111,8 @@ def from_yaml():
             "source_file": rel(SRC_YAML), "scope_negation": None, "rollback_target": None,
         })
         ev.append((kid, "yaml_name", e["name"]))
+        if e.get("escape_operator"):
+            ev.append((kid, "legacy_control_action", e["escape_operator"]))
         for f in (e.get("evidence") or {}).get("files") or []:
             ev.append((kid, "md", f))
         for c in codes[1:]:
