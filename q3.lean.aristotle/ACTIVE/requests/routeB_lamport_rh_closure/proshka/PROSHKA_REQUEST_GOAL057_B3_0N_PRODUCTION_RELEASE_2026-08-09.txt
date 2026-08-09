@@ -1,0 +1,368 @@
+# GOAL057 B3.0N — PRODUCTION RELEASE ADJUDICATION REQUEST
+
+DATE: 2026-08-09
+OPERATIVE_CLASS: RELEASE_GOAL057_B3_0N_ARCH_SYMBOL_EXPLICIT_GLOBAL_LOWER_BOUND
+MODE: PROSHKA_PRODUCTION_RELEASE_ADJUDICATION_ONLY
+PHASE_CHAT: SAME_LIVING_CHAT
+OWNER_ACTION_REQUIRED: false
+NO_NEXT_CHILD_SELECTION_IN_THIS_VERDICT: true
+
+## 1. Source lock
+
+REPO: Malaeu/chen_q3
+CANONICAL_ROOT: /Users/emalam/GitHub/rh_lean_01_2026
+BRANCH: rh_clean
+HEAD: 21334efd24c05050ee482426af6dcd8e8f43842c
+origin/rh_clean: 21334efd24c05050ee482426af6dcd8e8f43842c
+HEAD_EQUALS_ORIGIN: PASS
+
+PRESERVE_UNRELATED_STAGED_PATCH_SHA256:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+CONTROLLING_POST_M_REQUEST:
+path: q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0_POST_M_NEXT_NODE_ADJUDICATION_2026-08-09.txt
+sha256: f2cdd45f4efe36c27b6546b0e37ca1b674dfe6861e8e12d778b6d05fc51d86c2
+bytes: 15069
+wc_lines: 418
+final_LF: true
+
+CONTROLLING_POST_M_VERDICT:
+canonical_path: q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_M_NEXT_NODE_ADJUDICATION_2026-08-09.md
+mirror_path: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_M_NEXT_NODE_ADJUDICATION_2026-08-09.md
+sha256: e97d6d5ec4dc02fcd9e5ba7d5eb0abef2fe2649d6865537ee6f9618b3fa70db9
+bytes: 32784
+wc_lines: 1027
+final_LF: true
+canonical_mirror_cmp: EXACT
+
+CLOSED_PARENT:
+B3.0M production commit: 21334efd24c05050ee482426af6dcd8e8f43842c
+B3.0M theorem: sourceWeilFiniteFourierLedger_eq_ccmWeilMatrixForm
+B3.0 remains OPEN.
+Coarse ledger remains 0/10.
+
+## 2. Selected scratch-only child
+
+ID:
+GOAL057_B3_0N_ARCH_SYMBOL_EXPLICIT_GLOBAL_LOWER_BOUND_PREFLIGHT
+
+SCRATCH_PATH:
+q3.lean.aristotle/Goal057B3_0N_ArchSymbolLowerBound_Scratch.lean
+
+FUTURE_PRODUCTION_PATH_IF_AND_ONLY_IF_RELEASED:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLowerBound.lean
+
+EXACT_SCRATCH:
+sha256: ecefe92d6fc0056f92562326944ca040f2eff6a417e59335580925004f0d06e9
+bytes: 4488
+wc_lines: 125
+final_LF: true
+forbidden_token_matches: 0
+git_diff_check: PASS
+
+EXACT_IMPORTS:
+- Q3.Proofs.RouteB.D0PstarExactArchSymbolLogDomination
+
+PUBLIC_SURFACE:
+definitions: 0
+theorems: 1
+- sourceArchimedeanMultiplier_add_explicitShift_nonneg
+
+PRIVATE_SURFACE:
+definitions: 0
+theorems: 3
+- b3_0n_one_fourth_le_norm_sourceArchimedeanArgument
+- b3_0n_sourceArchimedeanStieltjesCorrection_le
+- b3_0n_sourceArchimedeanStieltjesRemainder_le
+
+## 3. Direct pinned Lean result
+
+COMMAND:
+cd q3.lean.aristotle
+lake env lean Goal057B3_0N_ArchSymbolLowerBound_Scratch.lean
+
+EXIT: 0
+
+OUTPUT:
+warning: UnicodeBasic repository has pre-existing local changes
+'Q3.RouteB.D0Pstar.sourceArchimedeanMultiplier_add_explicitShift_nonneg' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+
+AXIOMS_EXACT:
+- propext
+- Classical.choice
+- Quot.sound
+
+NO sorry.
+NO admit.
+NO exact?.
+NO unsafe.
+NO native_decide.
+NO opaque.
+NO project axiom.
+NO Float.
+NO generated PSD/Step33/hbox/payload/PrimeCert import.
+NO Aristotle-output import.
+
+## 4. Exact fingerprints
+
+PARENT_FILE:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLogDomination.lean
+sha256: 197daeed0b975bbed63cf59d2f0cfa939ed345661935d258f7e79387815344da
+
+CHECK_OUTPUT_FINGERPRINT_SHA256:
+f3d95b69b1b1075f3d8c197b2ab1de628dde2686f374c992fd1a7df55304575e
+
+EXACT_CHECKS:
+Q3.re_digamma_remainder_bound_stieltjes (z : ℂ) (hz : 0 < z.re) :
+  |(Q3.digamma z).re - Real.log ‖z‖ + z.re / (2 * ‖z‖ ^ 2)| ≤ 1 / (4 * ‖z‖ ^ 2)
+
+Q3.RouteB.D0Pstar.sourceArchimedeanMultiplier_eq_neg_aStar_scaled (t : ℝ) :
+  Q3.RouteB.D0Pstar.sourceArchimedeanMultiplier t = -Q3.a_star t / (2 * π)
+
+Q3.RouteB.D0Pstar.sourceArchimedeanMultiplier_add_explicitShift_nonneg (t : ℝ) :
+  0 ≤ Q3.RouteB.D0Pstar.sourceArchimedeanMultiplier t + (|Real.log π| + Real.log 4 + 6)
+
+## 5. Nine mandatory judges
+
+P057_B3_0N_1_EXACT_SYMBOL:
+mutant changed 1/4 to 1/5.
+result: REJECTED.
+
+P057_B3_0N_2_ASTAR_SIGN:
+mutant attempted sourceArchimedeanMultiplier = +a_star/(2*pi) using the exact normalization parent.
+result: LEAN_REJECTED.
+
+P057_B3_0N_3_FINITE_SHIFT:
+mutant replaced the constant +6 by |t|.
+result: REJECTED.
+
+P057_B3_0N_4_STIELTJES_PARENT:
+mutant removed direct Q3.re_digamma_remainder_bound_stieltjes use.
+result: REJECTED.
+
+P057_B3_0N_5_PREMISE_SURROGATE:
+mutant injected a desired-lower-bound surrogate marker/hypothesis.
+result: REJECTED.
+
+P057_B3_0N_6_FINITE_ONLY_ALIAS:
+mutant replaced the public theorem's global real t quantifier by a natural/sample quantifier.
+result: REJECTED.
+
+P057_B3_0N_7_FINITE_RIESZ:
+mutant injected sourceCCMFiniteRieszOperator / finite-eigenvalue support.
+result: REJECTED.
+
+P057_B3_0N_8_DEPENDENCY:
+mutant added a generated PrimeCert import.
+result: REJECTED.
+
+P057_B3_0N_9_SCOPE:
+mutant added SourceWeilFormDomain.
+result: REJECTED.
+
+ALL_NINE_JUDGES: PASS
+MUTATION_ARTIFACTS_REMAINING: 0
+
+## 6. Hygiene and control-plane checks
+
+routeb_status.py --check: PASS
+
+Reported current state:
+stage: RB-GOAL-057-B3-0M-CLOSED
+obligation: GOAL057_B3_0_POST_M_NEXT_NODE_ADJUDICATION
+route: NOT_RH
+alpha route remains CHALLENGER
+
+ROUTE_B_EXECUTION_STATE.json sha256:
+cfec3c73a54c4f18444788c4c66a5c19757088972794403fed551a6c93461b0e
+
+PRODUCTION_FILE_EXISTS:
+false
+
+TRACKED_SCOPE_DIFF:
+empty for the future B3.0N production path and ROUTE_B_EXECUTION_STATE.json
+
+RELEVANT_UNTRACKED_STATUS_ONLY:
+- post-M request
+- canonical post-M verdict
+- mirror post-M verdict
+- B3.0N scratch
+
+STAGED_PATCH_SHA256_AFTER_PREFLIGHT:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+## 7. Exact candidate bytes
+
+BEGIN_EXACT_B3_0N_CANDIDATE
+import Q3.Proofs.RouteB.D0PstarExactArchSymbolLogDomination
+
+noncomputable section
+
+open scoped Real
+
+namespace Q3.RouteB.D0Pstar
+
+private lemma b3_0n_one_fourth_le_norm_sourceArchimedeanArgument
+    (t : ℝ) :
+    (1 / 4 : ℝ) ≤
+      ‖(1 / 4 : ℂ) +
+        Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ := by
+  let z : ℂ :=
+    (1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)
+  have hre : |z.re| ≤ ‖z‖ := by
+    simpa using (RCLike.abs_re_le_norm z)
+  simpa [z, abs_of_nonneg (by norm_num : (0 : ℝ) ≤ 1 / 4)] using hre
+
+private lemma b3_0n_sourceArchimedeanStieltjesCorrection_le
+    (t : ℝ) :
+    |(((1 / 4 : ℂ) +
+        Complex.I * ((Real.pi * t : ℝ) : ℂ))).re /
+        (2 * ‖(1 / 4 : ℂ) +
+          Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ ^ 2)| ≤ 2 := by
+  let z : ℂ :=
+    (1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)
+  have hlower : (1 / 4 : ℝ) ≤ ‖z‖ := by
+    simpa [z] using
+      b3_0n_one_fourth_le_norm_sourceArchimedeanArgument t
+  have hnorm_pos : 0 < ‖z‖ :=
+    lt_of_lt_of_le (by norm_num) hlower
+  have hsq : (1 / 16 : ℝ) ≤ ‖z‖ ^ 2 := by
+    nlinarith [sq_nonneg (‖z‖ - 1 / 4)]
+  have hden_pos : 0 < 2 * ‖z‖ ^ 2 := by
+    positivity
+  have hnonneg : 0 ≤ z.re / (2 * ‖z‖ ^ 2) := by
+    rw [show z.re = (1 / 4 : ℝ) by simp [z]]
+    positivity
+  rw [show (((1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ))).re = z.re by rfl]
+  rw [show ‖(1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ = ‖z‖ by rfl]
+  rw [abs_of_nonneg hnonneg,
+    show z.re = (1 / 4 : ℝ) by simp [z]]
+  apply (div_le_iff₀ hden_pos).2
+  nlinarith
+
+private lemma b3_0n_sourceArchimedeanStieltjesRemainder_le
+    (t : ℝ) :
+    1 / (4 * ‖(1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ ^ 2) ≤ 4 := by
+  let z : ℂ :=
+    (1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)
+  have hlower : (1 / 4 : ℝ) ≤ ‖z‖ := by
+    simpa [z] using
+      b3_0n_one_fourth_le_norm_sourceArchimedeanArgument t
+  have hnorm_pos : 0 < ‖z‖ :=
+    lt_of_lt_of_le (by norm_num) hlower
+  have hsq : (1 / 16 : ℝ) ≤ ‖z‖ ^ 2 := by
+    nlinarith [sq_nonneg (‖z‖ - 1 / 4)]
+  have hden_pos : 0 < 4 * ‖z‖ ^ 2 := by
+    positivity
+  rw [show ‖(1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ = ‖z‖ by rfl]
+  apply (div_le_iff₀ hden_pos).2
+  nlinarith
+
+/-- The exact source archimedean multiplier has a source-derived uniform
+lower bound.  Equivalently, the displayed finite constant shift makes the
+multiplier pointwise nonnegative. -/
+theorem sourceArchimedeanMultiplier_add_explicitShift_nonneg
+    (t : ℝ) :
+    0 ≤ sourceArchimedeanMultiplier t +
+      (|Real.log Real.pi| + Real.log 4 + 6) := by
+  let z : ℂ :=
+    (1 / 4 : ℂ) +
+      Complex.I * ((Real.pi * t : ℝ) : ℂ)
+  have hz : 0 < z.re := by
+    simp [z]
+  have hrem := Q3.re_digamma_remainder_bound_stieltjes z hz
+  let E : ℝ :=
+    (Q3.digamma z).re - Real.log ‖z‖ +
+      z.re / (2 * ‖z‖ ^ 2)
+  have hE : |E| ≤ 1 / (4 * ‖z‖ ^ 2) := by
+    simpa [E] using hrem
+  have hlower : (1 / 4 : ℝ) ≤ ‖z‖ := by
+    simpa [z] using
+      b3_0n_one_fourth_le_norm_sourceArchimedeanArgument t
+  have hlog_quarter :
+      Real.log (1 / 4 : ℝ) ≤ Real.log ‖z‖ :=
+    Real.log_le_log (by norm_num) hlower
+  have hlog_lower : -Real.log 4 ≤ Real.log ‖z‖ := by
+    have hlog_inv : Real.log (1 / 4 : ℝ) = -Real.log 4 := by
+      rw [show (1 / 4 : ℝ) = (4 : ℝ)⁻¹ by norm_num, Real.log_inv]
+    rw [hlog_inv] at hlog_quarter
+    exact hlog_quarter
+  have hcorr : |z.re / (2 * ‖z‖ ^ 2)| ≤ 2 := by
+    simpa [z] using
+      b3_0n_sourceArchimedeanStieltjesCorrection_le t
+  have hrem4 :
+      1 / (4 * ‖z‖ ^ 2) ≤ 4 := by
+    simpa [z] using
+      b3_0n_sourceArchimedeanStieltjesRemainder_le t
+  have hE4 : |E| ≤ 4 := hE.trans hrem4
+  have hdecomp :
+      sourceArchimedeanMultiplier t =
+        -Real.log Real.pi + Real.log ‖z‖ -
+          z.re / (2 * ‖z‖ ^ 2) + E := by
+    simp only [sourceArchimedeanMultiplier, z, E]
+    ring
+  have hpi : -|Real.log Real.pi| ≤ -Real.log Real.pi := by
+    exact neg_le_neg (le_abs_self (Real.log Real.pi))
+  have hcorr_upper : z.re / (2 * ‖z‖ ^ 2) ≤ 2 :=
+    (abs_le.mp hcorr).2
+  have hE_lower : -4 ≤ E := (abs_le.mp hE4).1
+  rw [hdecomp]
+  nlinarith
+
+#print axioms sourceArchimedeanMultiplier_add_explicitShift_nonneg
+
+end Q3.RouteB.D0Pstar
+END_EXACT_B3_0N_CANDIDATE
+
+Candidate block between the markers is exactly 4488 bytes, 125 wc lines,
+has final LF, and SHA-256
+ecefe92d6fc0056f92562326944ca040f2eff6a417e59335580925004f0d06e9.
+
+## 8. Requested ruling
+
+Adjudicate exactly one binary production-release decision for B3.0N.
+
+If the evidence and exact candidate are valid, authorize:
+- exactly one production child at
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExactArchSymbolLowerBound.lean;
+- byte-for-byte materialization of the exact 4488-byte candidate;
+- direct Lean, target build, full build, q3_check, exact surface/import/axiom
+  audits, all nine judges, proof DB import/idempotence, orchestration tests,
+  strict Spine, semantic index, SQLite integrity, routeb_status, git hygiene,
+  state updated last, owned-path-only commit and push;
+- close only B3.0N and leave B3.0 open and the coarse ledger at 0/10.
+
+If not valid, return the first exact defect and:
+GOAL057_B3_0N_ARCH_SYMBOL_EXPLICIT_GLOBAL_LOWER_BOUND_PRODUCTION_RELEASE_BLOCKED
+
+Do not authorize or select B3.0O in this verdict.
+Do not define any form domain, graph, operator, W02 extension, Prime extension,
+compression, continuum numerator, or H4a1b theorem.
+Do not decrement the 10-checkpoint ledger.
+Do not create Bus 010, release Goal 055, unfreeze G2_CCM, submit Aristotle,
+promote Route B, or make a PX/RH claim.
+
+Return one exact Markdown verdict after natural completion.
+
+FINAL_BOUNDARY:
+route: CHALLENGER_NOT_RH
+active_bus_goal: 057
+bus_010: VOID
+goal_055: HOLD
+g2_ccm: FROZEN
+current_checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+coarse_checkpoints_closed: 0
+coarse_checkpoints_remaining: 10
+H4a1b: OPEN
+Aristotle_submission: NONE
+route_promotion: false
+px_rh_claim: NOT_MADE
