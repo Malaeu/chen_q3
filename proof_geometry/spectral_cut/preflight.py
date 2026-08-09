@@ -463,6 +463,17 @@ def main():
     crit = report["cells"][0]["criteria"]
     print("   criteria:", crit)
     if not all(crit.values()):
+        # Instrument-defect fix (2026-08-09, Proshka postmortem): the
+        # precommitted precision-doubling gate must run on the failure path
+        # too, not only on success — a stop code reported at a single
+        # precision level is not a validated stop code. The original
+        # (13,60) run predates this fix; its doubling was executed
+        # separately by same_cell_check.py.
+        print("== precision doubling on failure path, dps", PIN["dps_double"])
+        mp.mp.dps = PIN["dps_double"]
+        src._GAUSS_CACHE.clear()
+        report["doubling_on_failure"] = eval_cell(13, 60)
+        mp.mp.dps = PIN["dps_base"]
         code = ("GOAL057_SPECTRAL_CUT_NO_STABLE_LOW_CONDUCTANCE_CUT"
                 if not crit["phi_meaningful"] else
                 "GOAL057_SPECTRAL_CUT_LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER")
