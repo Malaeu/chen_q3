@@ -1,0 +1,299 @@
+# Goal 057 B3.0R — exact finite Galerkin-span form-domain production-release adjudication
+
+DATE: 2026-08-09
+OPERATIVE_CLASS: ADJUDICATE_GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_DOMAIN_PRODUCTION_RELEASE
+MODE: PROSHKA_PRODUCTION_RELEASE_ADJUDICATION_ONLY
+PHASE_CHAT: SAME_LIVING_CHAT
+OWNER_ACTION_REQUIRED: false
+CANDIDATE_EDIT_AUTHORIZED: false
+POST_R_SUCCESSOR_SELECTION_AUTHORIZED: false
+
+## 1. Exact source lock
+
+REPO: Malaeu/chen_q3
+CANONICAL_ROOT: /Users/emalam/GitHub/rh_lean_01_2026
+BRANCH: rh_clean
+HEAD: 44cf70b572e99efa39f39394d1d66678938b9180
+origin/rh_clean: 44cf70b572e99efa39f39394d1d66678938b9180
+HEAD_EQUALS_ORIGIN: true
+
+PRESERVE_UNRELATED_STAGED_PATCH_SHA256:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+CURRENT_EXECUTION_STATE:
+stage: RB-GOAL-057-B3-0Q-CLOSED
+obligation: GOAL057_B3_0_POST_Q_NEXT_NODE_ADJUDICATION
+status: OPEN_ADJUDICATION_REQUIRED_NO_SUCCESSOR_AUTHORIZED
+execution_state_sha256:
+97e6389521c2ca44f2c68c24ccb81af18b4243995692e389a2a75b595df66e48
+route_state_sha256:
+62493a998c3b4afe7c0895ac513d8022ab6d1d95baa5cf32aa6dd10dbac14bcb
+
+CURRENT_CHECKPOINT:
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+COARSE_LEDGER:
+closed: 0
+remaining: 10
+
+ROUTE_BOUNDARY:
+CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+H4A1B: OPEN
+ARISTOTLE_SUBMISSION: NONE
+ROUTE_PROMOTION: false
+PX_RH_CLAIM: NOT_MADE
+
+## 2. Controlling post-Q verdict
+
+FILE:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_Q_NEXT_NODE_ADJUDICATION_2026-08-09.md
+
+SHA256:
+5e1dfe41564c0d4d54c3c5b05109cdad2e7f1a6f7ccb098dd2765337a248e706
+
+It selected exactly:
+GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_DOMAIN
+
+It authorized only an untracked exact Lean preflight and explicitly reserved a
+separate production-release transaction after a green preflight. It selected
+and authorized no post-B3.0R successor.
+
+RESERVED_PRODUCTION_PATH:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFiniteModeDomain.lean
+
+RESERVED_THEOREM:
+E_m_N_le_sourceArchimedeanShiftedFormDomain
+
+## 3. Exact closed parent and carrier owner
+
+B3.0Q PRODUCTION:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean
+
+B3.0Q SHA256:
+d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+
+B3.0Q EXACT PARENT THEOREM:
+
+```lean
+theorem V_n_m_mem_sourceArchimedeanShiftedFormDomain
+    (i : PairIndex) (n : ℤ) :
+    V_n_m i n ∈ sourceArchimedeanShiftedFormDomain i
+```
+
+EXISTING CARRIER OWNER:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage1.lean
+
+CARRIER OWNER SHA256:
+c7dd206ab7979d3390a50969c71919c04582f0c1514dbb142fe1883148ce5b48
+
+EXACT EXISTING CARRIER:
+
+```lean
+def E_m_N (i : PairIndex) : Submodule ℂ (H_m i) :=
+  Submodule.span ℂ (V_n_m i '' (modeSet i : Set ℤ))
+```
+
+## 4. Exact scratch candidate and direct Lean result
+
+SCRATCH_PATH:
+q3.lean.aristotle/Goal057B3_0R_FiniteModeSpanInShiftedArchFormDomain_Scratch.lean
+
+SCRATCH_SHA256:
+071e973665df61aa5d7ce01abb2390a9ab31dddf7e312ab8dedede47a812e66d
+
+SCRATCH_BYTES: 676
+SCRATCH_WC_LINES: 20
+SCRATCH_FINAL_LF: true
+
+EXACT COMPLETE CANDIDATE SOURCE:
+
+```lean
+import Q3.Proofs.RouteB.D0PstarShiftedArchModeDomain
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+/-- Every vector in the exact finite Galerkin carrier belongs to the shifted
+archimedean form-domain Submodule.  This is finite-span inclusion only; it is
+not density, equality with D0.2, or operator-domain membership. -/
+theorem E_m_N_le_sourceArchimedeanShiftedFormDomain
+    (i : PairIndex) :
+    E_m_N i ≤ sourceArchimedeanShiftedFormDomain i := by
+  unfold E_m_N
+  refine Submodule.span_le.2 ?_
+  rintro x ⟨n, _hn, rfl⟩
+  exact V_n_m_mem_sourceArchimedeanShiftedFormDomain i n
+
+#print axioms E_m_N_le_sourceArchimedeanShiftedFormDomain
+
+end Q3.RouteB.D0Pstar
+```
+
+DIRECT COMMAND:
+cd q3.lean.aristotle && lake env lean Goal057B3_0R_FiniteModeSpanInShiftedArchFormDomain_Scratch.lean
+
+DIRECT EXIT: 0
+
+DIRECT AXIOM OUTPUT:
+
+```text
+'Q3.RouteB.D0Pstar.E_m_N_le_sourceArchimedeanShiftedFormDomain' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+```
+
+DIRECT CHECK OUTPUT SHA256:
+ad4876eb6a473723098c4134d1a7f23e4df79d5564e22d7d1584093460336121
+
+THEOREM SOURCE SHA256:
+2d24181dfc4f8910e105cdeae7addac3620fc8cce54e5767c165a0ba9d521416
+
+## 5. Positive controls
+
+P057_B3_0R_POS_1_EXACT_SUBTYPE_CONSUMER: PASS
+
+The exact downstream shape compiled:
+
+```lean
+(E_m_N_le_sourceArchimedeanShiftedFormDomain i) xE.property
+```
+
+P057_B3_0R_POS_2_EXACT_GENERATOR_CONSUMER: PASS
+
+The existing exact generator membership through `Submodule.subset_span`
+compiled against the project-owned `E_m_N`.
+
+## 6. Nine mandatory negative and semantic judges
+
+All judges were run in temporary copies. Every mutation artifact was removed.
+
+1. P057_B3_0R_1_EXACT_CARRIER
+   Mutant replaced the exact `modeSet` carrier by an all-integer span.
+   Lean compiled; semantic fate:
+   B3_0R_EXACT_E_M_N_CARRIER_MISMATCH
+
+2. P057_B3_0R_2_EXACT_GENERATOR_SET
+   Mutant shifted the generator to `V_n_m i (n + 1)`.
+   Lean compiled; semantic fate:
+   B3_0R_MODESET_OR_LITERAL_MODE_GENERATOR_MISMATCH
+
+3. P057_B3_0R_3_DIRECT_PARENT
+   Mutant removed direct consumption of B3.0Q.
+   Lean rejected the unsolved exact generator-domain goal; fate:
+   B3_0R_B3_0Q_PARENT_NOT_CONSUMED
+
+4. P057_B3_0R_4_PREMISE_SURROGATE
+   Mutant accepted the desired inclusion as a premise.
+   Lean compiled; semantic fate:
+   SURROGATE_BY_PREMISE_NOT_SOURCE_CONSTRUCTION
+
+5. P057_B3_0R_5_DUPLICATE_CARRIER
+   Mutant defined a second finite carrier.
+   Lean compiled; semantic fate:
+   B3_0R_DUPLICATE_FINITE_CARRIER
+
+6. P057_B3_0R_6_ALL_VECTOR_OR_DENSITY
+   Mutant promoted the result to all vectors from an added premise.
+   Lean compiled; semantic fate:
+   B3_0R_ALL_VECTOR_OR_DENSITY_SCOPE_SMUGGLE
+
+7. P057_B3_0R_7_FORM_OPERATOR_COLLAPSE
+   Mutant asserted arbitrary operator-domain inclusion from a premise.
+   Lean compiled; semantic fate:
+   B3_0R_FORM_OPERATOR_DOMAIN_COLLAPSE
+
+8. P057_B3_0R_8_DEPENDENCY
+   Mutant imported `Q3.Proofs.PSD_CenteredCoeffEntryHboxImport`.
+   Lean compiled; dependency fate:
+   ROUTEB_GENERATED_PSD_DEPENDENCY_LEAK
+
+9. P057_B3_0R_9_ROUTE_SCOPE
+   Mutant added an extra public checkpoint-level claim.
+   Lean compiled; semantic fate:
+   B3_0R_SCOPE_SMUGGLE
+
+## 7. Repository and control checks after preflight
+
+canonical knowledge-base query:
+`Goal057 B3.0R finite mode span shifted arch form domain production release E_m_N inclusion`
+result: no hit
+
+HEAD_EQUALS_ORIGIN_RH_CLEAN: true
+UNRELATED_STAGED_PATCH_SHA256_UNCHANGED: true
+SCRATCH_ONLY_UNTRACKED: true
+PRODUCTION_FILE_ABSENT: true
+ROUTE_STATE_MUTATION: NONE
+EXECUTION_STATE_MUTATION: NONE
+MUTATION_ARTIFACTS_ACTIVE: 0
+
+routeb_status.py --check: PASS
+git diff --check: PASS
+
+The candidate has exactly one import, zero definitions, one public theorem,
+zero private declarations, and the exact standard axiom triple.
+
+## 8. Binary adjudication requested
+
+Read this attached `.txt` byte-for-byte. Independently audit the source lock,
+quantifiers, exact candidate bytes, direct Lean result, positive controls and
+all nine judge fates.
+
+Return exactly one binary ruling.
+
+PASS ruling:
+
+```text
+GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_DOMAIN_PRODUCTION_AUTHORIZED
+```
+
+The PASS may authorize only byte-for-byte creation of:
+
+```text
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchFiniteModeDomain.lean
+```
+
+with SHA256
+`071e973665df61aa5d7ce01abb2390a9ab31dddf7e312ab8dedede47a812e66d`,
+676 bytes, 20 lines, final LF, and no edit to any candidate byte.
+
+FAIL ruling:
+
+```text
+GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_DOMAIN_PRODUCTION_FORBIDDEN
+```
+
+On FAIL, name the first exact source-lock, Lean, dependency, quantifier,
+surface, or semantic defect. Do not silently repair or weaken the theorem.
+
+In either ruling:
+- do not select, name as operative, or authorize any post-B3.0R child;
+- do not decrement the ten-checkpoint ledger;
+- do not authorize any claim about density, all vectors, D0.2, an associated
+  operator domain, compression, continuum numerator, H4a1b, Route B, PX, or RH;
+- do not authorize Aristotle submission;
+- preserve the same living phase chat.
+
+## 9. Boundary if production is authorized
+
+B3.0R production validation must still include direct Lean, target build, full
+build, q3_check, both positive controls, all nine production judges, proof-DB
+import and repeat idempotence, orchestration tests, strict Spine refresh/check,
+observability rebuild, canonical SQLite checks, routeb_status, exact closeout,
+state updates with ROUTE_B_STATE.md last, scoped commit, and push.
+
+Until those post-authorization production checks pass:
+
+B3.0R: PREFLIGHT_PROVED_NOT_PRODUCTION_CLOSED
+B3.0: OPEN
+current checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+coarse checkpoints: 0 closed / 10 remaining
+Route: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+
+The post-B3.0R successor remains UNSELECTED_AND_UNAUTHORIZED even after a PASS
+on this request. It requires a separate adjudication after the production
+closeout is committed and pushed.

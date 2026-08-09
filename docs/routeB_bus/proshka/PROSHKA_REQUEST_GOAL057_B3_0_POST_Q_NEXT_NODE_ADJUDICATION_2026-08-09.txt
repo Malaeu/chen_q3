@@ -1,0 +1,330 @@
+# GOAL057 B3.0 — POST-B3.0Q NEXT-NODE ADJUDICATION
+
+DATE: 2026-08-09
+OPERATIVE_CLASS: ADJUDICATE_GOAL057_B3_0_POST_Q_NEXT_NODE
+MODE: PROSHKA_NEXT_NODE_ADJUDICATION_ONLY
+PHASE_CHAT: SAME_LIVING_CHAT
+OWNER_ACTION_REQUIRED: false
+NO_PRODUCTION_AUTHORIZATION_IN_THIS_VERDICT: true
+
+## 1. Exact source lock
+
+REPO: Malaeu/chen_q3
+CANONICAL_ROOT: /Users/emalam/GitHub/rh_lean_01_2026
+BRANCH: rh_clean
+HEAD: 44cf70b572e99efa39f39394d1d66678938b9180
+origin/rh_clean: 44cf70b572e99efa39f39394d1d66678938b9180
+HEAD_EQUALS_ORIGIN: true
+
+RECENT_EXACT_CHAIN:
+- 5455b023 B3.0L whole-line Fourier L2 isometry
+- 21334efd B3.0M finite Fourier ledger
+- 745c0067 B3.0N global exact arch-symbol lower bound
+- ce02a747 B3.0O shifted archimedean square-root weight
+- 7b635202 B3.0P shifted archimedean form-domain Submodule
+- 44cf70b5 B3.0Q literal-mode shifted form-domain membership
+
+PRESERVE_UNRELATED_STAGED_PATCH_SHA256:
+291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+CURRENT_EXECUTION_STATE:
+stage: RB-GOAL-057-B3-0Q-CLOSED
+obligation: GOAL057_B3_0_POST_Q_NEXT_NODE_ADJUDICATION
+name: Goal057B30PostQNextNodeAdjudication
+status: GOAL_057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PROVED_NEXT_NODE_ADJUDICATION_PENDING
+execution_state_sha256:
+97e6389521c2ca44f2c68c24ccb81af18b4243995692e389a2a75b595df66e48
+route_state_sha256:
+62493a998c3b4afe7c0895ac513d8022ab6d1d95baa5cf32aa6dd10dbac14bcb
+
+CURRENT_CHECKPOINT:
+ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+
+COARSE_LEDGER:
+closed: 0
+remaining: 10
+
+ROUTE_BOUNDARY:
+CHALLENGER_NOT_RH
+BUS_010: VOID
+GOAL_055: HOLD
+G2_CCM: FROZEN
+H4A1B: OPEN
+ARISTOTLE_SUBMISSION: NONE
+ROUTE_PROMOTION: false
+PX_RH_CLAIM: NOT_MADE
+
+The canonical knowledge-base query for this post-Q successor returned no hit.
+
+## 2. Newly closed parent B3.0Q
+
+PRODUCTION:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean
+
+SHA256:
+d961186606e32eaa8c12734d68fa40c394b889c53ca9def0f6cd253c94711fc8
+
+EXACT COMPLETE PRODUCTION SOURCE:
+
+```lean
+import Q3.Proofs.RouteB.D0PstarShiftedArchFormDomain
+import Q3.Proofs.RouteB.D0PstarExactArchSymbolWeightedModeL2
+
+noncomputable section
+
+open Complex MeasureTheory
+open scoped ENNReal FourierTransform
+
+namespace Q3.RouteB.D0Pstar
+
+/-- Every literal production mode belongs to the exact shifted archimedean
+form-domain carrier.  This is fixed-mode membership only; it is not a claim
+about every vector of `H_m i`, finite-span inclusion, density, D0.2, or an
+associated operator domain. -/
+theorem V_n_m_mem_sourceArchimedeanShiftedFormDomain
+    (i : PairIndex) (n : ℤ) :
+    V_n_m i n ∈ sourceArchimedeanShiftedFormDomain i := by
+  rw [mem_sourceArchimedeanShiftedFormDomain_iff]
+  let phiLp : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) :=
+    sourceLogWindowFourierL2Isometry i (V_n_m i n)
+  change MemLp
+    (fun t : ℝ =>
+      (sourceArchimedeanShiftedSqrtWeight t : ℂ) *
+        (phiLp : ℝ → ℂ) t)
+    2 volume
+  have hPhi : MemLp (phiLp : ℝ → ℂ) 2 volume :=
+    MeasureTheory.Lp.memLp phiLp
+  have hPhiEq :
+      (phiLp : ℝ → ℂ) =ᵐ[volume]
+        (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t) := by
+    simpa [phiLp] using
+      coeFn_sourceLogWindowFourierL2Isometry_apply_mode i n
+  have hArchLiteral :=
+    sourceArchimedeanMultiplier_mul_fourier_logWindowZeroExtendedMode_memLp i n
+  have hArchPhi :
+      MemLp
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            (phiLp : ℝ → ℂ) t)
+        2 volume := by
+    have hEq :
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            𝓕 (logWindowZeroExtendedMode i n) t)
+          =ᵐ[volume]
+        (fun t : ℝ =>
+          (sourceArchimedeanMultiplier t : ℂ) *
+            (phiLp : ℝ → ℂ) t) := by
+      filter_upwards [hPhiEq] with t ht
+      rw [ht]
+    exact MemLp.ae_eq hEq hArchLiteral
+  let C : ℝ := |Real.log Real.pi| + Real.log 4 + 7
+  have hMajor :
+      MemLp
+        (fun t : ℝ =>
+          ‖(sourceArchimedeanMultiplier t : ℂ) *
+              (phiLp : ℝ → ℂ) t‖ +
+            C * ‖(phiLp : ℝ → ℂ) t‖)
+        2 volume := by
+    simpa only [Pi.add_apply, Pi.smul_apply, smul_eq_mul] using
+      hArchPhi.norm.add (hPhi.norm.const_smul C)
+  refine hMajor.mono' ?_ ?_
+  · have hWeight :
+        AEStronglyMeasurable
+          (fun t : ℝ =>
+            (sourceArchimedeanShiftedSqrtWeight t : ℂ)) volume :=
+      (Complex.continuous_ofReal.comp
+        sourceArchimedeanShiftedSqrtWeight_continuous).aestronglyMeasurable
+    exact hWeight.mul hPhi.1
+  · filter_upwards [] with t
+    have hWeightNonneg :=
+      sourceArchimedeanShiftedSqrtWeight_nonneg t
+    have hWeightSq :=
+      sourceArchimedeanShiftedSqrtWeight_sq t
+    have hMultiplierLeAbs :
+        sourceArchimedeanMultiplier t ≤
+          |sourceArchimedeanMultiplier t| :=
+      le_abs_self _
+    have hSquareNonneg :
+        0 ≤ (sourceArchimedeanShiftedSqrtWeight t - 1) ^ 2 :=
+      sq_nonneg _
+    have hWeightLe :
+        sourceArchimedeanShiftedSqrtWeight t ≤
+          |sourceArchimedeanMultiplier t| + C := by
+      dsimp [C]
+      nlinarith
+    have hPhiNormNonneg :
+        0 ≤ ‖(phiLp : ℝ → ℂ) t‖ :=
+      norm_nonneg _
+    have hMul :=
+      mul_le_mul_of_nonneg_right hWeightLe hPhiNormNonneg
+    calc
+      ‖(sourceArchimedeanShiftedSqrtWeight t : ℂ) *
+          (phiLp : ℝ → ℂ) t‖ =
+          sourceArchimedeanShiftedSqrtWeight t *
+            ‖(phiLp : ℝ → ℂ) t‖ := by
+              rw [norm_mul, Complex.norm_real, Real.norm_eq_abs,
+                abs_of_nonneg hWeightNonneg]
+      _ ≤ (|sourceArchimedeanMultiplier t| + C) *
+            ‖(phiLp : ℝ → ℂ) t‖ := hMul
+      _ = ‖(sourceArchimedeanMultiplier t : ℂ) *
+              (phiLp : ℝ → ℂ) t‖ +
+            C * ‖(phiLp : ℝ → ℂ) t‖ := by
+              rw [norm_mul, Complex.norm_real, Real.norm_eq_abs]
+              ring
+
+#print axioms V_n_m_mem_sourceArchimedeanShiftedFormDomain
+
+end Q3.RouteB.D0Pstar
+```
+
+EXACT PUBLIC SURFACE:
+- theorem V_n_m_mem_sourceArchimedeanShiftedFormDomain
+- no new definition
+
+EXACT SEMANTICS:
+- for every PairIndex i and every integer n, the literal vector V_n_m i n
+  belongs to sourceArchimedeanShiftedFormDomain i;
+- exact fixed-mode membership only;
+- no arbitrary-vector or finite-span theorem is contained in B3.0Q.
+
+VALIDATION:
+- direct Lean PASS;
+- target build PASS 7774 jobs;
+- full build PASS 7817 jobs;
+- q3_check PASS;
+- 10/10 preflight and production judges PASS;
+- a.e., scalar comparison and diagonal form/operator controls PASS;
+- axiom set exactly [propext, Classical.choice, Quot.sound];
+- proof DB 1/1 proven and repeat-idempotent;
+- 80/80 orchestration tests PASS;
+- strict Spine P9_STRICT_PASS;
+- routeb_status.py --check PASS;
+- commit 44cf70b572e99efa39f39394d1d66678938b9180 pushed to origin/rh_clean.
+
+B3.0Q RELEASE VERDICT:
+PROSHKA_VERDICT_GOAL057_B3_0Q_LITERAL_MODE_IN_SHIFTED_ARCH_FORM_DOMAIN_PRODUCTION_RELEASE_2026-08-09.md
+SHA256:
+83f5eab591d76f7b9d3eea4e58e739024f49cb0b650a3de7fceaf0da982de441
+The release explicitly selected and authorized no successor.
+
+## 3. Retained exact finite source carrier
+
+The existing exact D0.1 Galerkin carrier is already:
+
+FILE:
+q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage1.lean
+
+EXACT DEFINITION:
+
+```lean
+def E_m_N (i : PairIndex) : Submodule ℂ (H_m i) :=
+  Submodule.span ℂ (V_n_m i '' (modeSet i : Set ℤ))
+```
+
+The finite carrier therefore uses the exact literal `V_n_m`, the exact
+`modeSet i`, and complex Submodule span.  Do not create a duplicate carrier.
+
+The elementary expected closure route, to be checked against actual Lean API,
+is `Submodule.span_le.2`: every generator in the image is a literal mode and
+therefore belongs to the B3.0P domain by the B3.0Q theorem.  This is advisory,
+not an authorization or a claim that the statement has compiled.
+
+## 4. Named candidate only
+
+NAMED CANDIDATE, CURRENTLY UNSELECTED AND UNAUTHORIZED:
+GOAL057_B3_0R_FINITE_MODE_SPAN_IN_SHIFTED_ARCH_FORM_DOMAIN
+
+Possible smallest exact public statement:
+
+```lean
+theorem E_m_N_le_sourceArchimedeanShiftedFormDomain
+    (i : PairIndex) :
+    E_m_N i ≤ sourceArchimedeanShiftedFormDomain i
+```
+
+This statement means only finite Galerkin carrier inclusion.  It must not be
+recast as all-vector membership, density, a topological closure theorem, a
+form definition, a form/operator domain equality, D0.2, or an ambient
+associated operator.
+
+If an even smaller required API child exists, select that exact child instead.
+If the named theorem is merely a one-line consequence and source/API preflight
+compiles it, return the complete exact scratch file.  Do not bypass the
+adjudication boundary by calling it production-ready.
+
+## 5. Mandatory adjudication
+
+Return exactly one outcome:
+
+A. SELECT_EXACTLY_ONE_SMALLEST_CHILD.
+Select one exact child after B3.0Q, preferably B3.0R only if it is genuinely
+the smallest source-locked object and compiles in scratch.
+
+B. STOP_WITH_PRECISE_MISSING_INPUT.
+Name the exact absent theorem/API/estimate and explain why no smaller lawful
+child can be closed now.
+
+If outcome A:
+1. state the exact child identifier and semantic boundary;
+2. state exact imports and dependency SHAs;
+3. give the exact proposed public declaration(s);
+4. give a complete scratch Lean file byte-for-byte, including imports,
+   namespace and `#print axioms` lines;
+5. give the exact scratch path, outside production:
+   q3.lean.aristotle/Goal057B3_0R_FiniteModeSpanInShiftedArchFormDomain_Scratch.lean
+   unless you select a different smaller child;
+6. state mandatory positive and negative judges;
+7. require exact scratch compilation before any later production release;
+8. explicitly keep production unauthorized in this verdict.
+
+If a complete scratch file cannot be responsibly supplied, return outcome B.
+Do not return pseudo-code as if it were a compiled proof.
+
+## 6. Mandatory semantic rejects
+
+Reject every candidate that:
+- creates a duplicate finite carrier instead of using exact `E_m_N i`;
+- changes `V_n_m i '' (modeSet i : Set ℤ)` or the complex span;
+- proves inclusion only from an added premise;
+- assumes finite dimensionality implies membership in an unrelated Submodule;
+- promotes finite-span inclusion to all `x : H_m i`;
+- claims density or topological-closure equality;
+- defines or identifies a shifted form, closed form, D0.2 or operator domain;
+- introduces an ambient source form, associated graph/operator, compression,
+  continuum numerator, W02 whole-space extension or Prime whole-space extension;
+- imports generated PSD/Step33 or `aristotle_output` material;
+- decrements the ten-checkpoint ledger;
+- invokes H4a1b, creates Bus 010, promotes the route or claims PX/RH.
+
+## 7. Required verdict schema
+
+Start with:
+
+BINARY_RULING: SELECT_EXACTLY_ONE_SMALLEST_CHILD | STOP_WITH_PRECISE_MISSING_INPUT
+SELECTED_CHILD: <exact identifier or NONE>
+PRODUCTION_AUTHORIZED: false
+SCRATCH_REQUIRED: true | false
+SCRATCH_PATH: <exact path or NONE>
+
+Then provide:
+1. SOURCE_LOCK_CHECK
+2. DEPENDENCY_AND_QUANTIFIER_AUDIT
+3. SMALLEST_CHILD_RATIONALE
+4. EXACT_PUBLIC_SURFACE
+5. COMPLETE_SCRATCH_LEAN_FILE_OR_STOP
+6. MANDATORY_JUDGES
+7. PROHIBITED_INFERENCES
+8. NEXT_CONTROL_ACTION
+9. FINAL_BOUNDARY
+
+End with:
+
+Route: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+checkpoints_closed: 0
+checkpoints_remaining: 10
+H4a1b: OPEN
+Aristotle_submission: NONE
+route_promotion: false
+px_rh_claim: NOT_MADE
