@@ -160,6 +160,57 @@ python3 scripts/proof_potential.py --json     # машиночитаемый д�
 Строго read-only; ничего не пишет в tracked-состояние; не входит ни в какой
 route и не меняет mainline.
 
+## 5.1 Q3_PROOF_GEOMETRY_V0_BACKTEST — вердикт (2026-08-09, той же сессией)
+
+По директиве владельца построен V0 heat-navigator и прогнан **слепой
+исторический бэктест** на коридоре `GOAL056_S2_WALL__GOAL057_B3_0_LADDER`
+(25 узлов B3.0A…Q, AND-входы из Lean-импортов, 10 убитых веток GOAL056,
+синтетический plant; веса заморожены в `flow.PRECOMMIT` и закоммичены до
+прогона — `cad078e`). Один прогон, без тюнинга. Результат:
+
+```text
+top-3 rate: flow 0.240 | shortest_path 0.120 | pagerank 0.240 |
+            topo_depth 0.400 | random 0.080
+plant: выше правильного узла на 15/25 чекпоинтов, в top-3 на cp23,24
+SUCCESS: False
+FAILURE_CODE: Q3_PROOF_GEOMETRY_NO_PREDICTIVE_GAIN
+FAILURE_CODE: Q3_PROOF_GEOMETRY_FAKE_SHORTCUT_ACCEPTED
+```
+
+Механизм провала виден в таблице по чекпоинтам (`results_057.json`):
+потенциал ранжирует кандидатов по близости к крыше (`M,Q,B3,L` — соседи
+target'а), а исторический процесс строил **снизу вверх** — правильный
+следующий узел почти всегда глубокий, только что ставший готовым. Поле
+ориентировано к цели, а строительство идёт от пола: для вопроса «что строить
+дальше» нужен объект типа расстояния-от-пола / PN-readiness
+(eikonal-семейство), не harmonic-потенциал близости к цели. Это ровно
+KEY_CORRECTION из адъюдикации владельца, теперь с числом. И plant показал
+второе: мультипликативный штраф проводимости `0.55·e^{-3}≈0.027` не
+выдерживает экспоненциального спада потенциала с глубиной — глубокие честные
+узлы имеют `u~10^{-2..-3}`, и сосед цели с крошечной проводимостью всё равно
+выигрывает. Доверие должно быть hard gate, не soft penalty.
+
+```text
+AUTOPSY: dropped=ORIENTATION; note=goal-ward harmonic field ranks roof-adjacent nodes while construction is floor-ward; correct object is distance-from-floor / PN-readiness
+AUTOPSY: dropped=TRUST; note=multiplicative conductance penalty exp(-beta*risk) loses to exponential depth-decay of u; conditional shortcut must be hard-gated
+AUTOPSY: dropped=NORMALIZATION; note=score c*(u(out)-mean u(in)) not depth-normalized; potential magnitude dominates readiness signal
+```
+
+Положительное: убитые ветки легли на дно (kill в top-3 только на вырожденном
+cp24, где живых кандидатов два), AND-структура сохранена (factor-graph guard
+не сработал), и `topo_depth=0.40` подтверждает, что порядок строительства —
+основной сигнал. Коридор 057 как held-out **сожжён** (данные просмотрены):
+любая V0.1 (PN-семантика min/sum, readiness-gate, eikonal-поле) — это новый
+прекоммит на свежем коридоре (кандидаты: 040→046 Müntz-цепь, Step32).
+
+Кандидат-запись для knowledge.db (не вносил — canonical store под
+write-lock Mac-тела; поля готовы к `kb.py add`):
+`subject=V0 goal-ward harmonic potential as next-lemma ranker;
+status=KILLED; stop_code=Q3_PROOF_GEOMETRY_NO_PREDICTIVE_GAIN+FAKE_SHORTCUT_ACCEPTED;
+forbidden_future_move=rank construction frontier by goal-adjacent harmonic
+potential or soft-penalize conditional shortcuts; scope=corridor_057 backtest;
+evidence=proof_geometry/results_057.json@<commit>`.
+
 ## 6. Побочное наблюдение (записано в момент обнаружения)
 
 `q3.lean.aristotle/ACTIVE/graphs/` и `full/q3.lean.aristotle/ACTIVE/graphs/` —

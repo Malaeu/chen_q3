@@ -1,0 +1,745 @@
+{
+  "schema": "Q3_PROOF_GEOMETRY_V0_BACKTEST_RESULT",
+  "corridor": "GOAL056_S2_WALL__GOAL057_B3_0_LADDER",
+  "checkpoints": 25,
+  "top3_rate": {
+    "flow": 0.24,
+    "shortest_path": 0.12,
+    "pagerank": 0.24,
+    "topo_depth": 0.4,
+    "random": 0.08
+  },
+  "plant_in_flow_top3_at": [
+    23,
+    24
+  ],
+  "plant_not_below_next_at": [
+    0,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16,
+    17,
+    21
+  ],
+  "success": false,
+  "failure_codes": [
+    "Q3_PROOF_GEOMETRY_NO_PREDICTIVE_GAIN",
+    "Q3_PROOF_GEOMETRY_FAKE_SHORTCUT_ACCEPTED"
+  ],
+  "precommit": {
+    "alpha": 1.0,
+    "beta": 2.0,
+    "gamma": 1.0,
+    "killed_conductance": 0.0,
+    "maturity": {
+      "LEAN": 1.0,
+      "ARB_INTERVAL": 0.95,
+      "PAPER": 0.85,
+      "PLANNED": 1.0,
+      "CONDITIONAL": 0.55,
+      "HEURISTIC": 0.2,
+      "KILLED": 0.0
+    },
+    "score": "max over producing edges of c_e * (u(out) - mean u(inputs)) / cost",
+    "solver_tol": 1e-12,
+    "solver_max_iter": 200000,
+    "top_k": 3,
+    "tie_break": "lexicographic node id",
+    "pagerank_damping": 0.85,
+    "pagerank_iters": 200,
+    "random_seed": 57,
+    "baseline_orders": {
+      "shortest_path": "ascending logical-step distance to target",
+      "pagerank": "descending PageRank mass on the consumption digraph",
+      "topo_depth": "ascending longest-path depth from CORPUS",
+      "random": "seeded shuffle per checkpoint"
+    },
+    "beats": "strict > on top-3 hit rate against every baseline"
+  },
+  "per_checkpoint": [
+    {
+      "checkpoint": 0,
+      "after": null,
+      "historical_next": "A",
+      "n_candidates": 36,
+      "positions": {
+        "flow": 16,
+        "shortest_path": 20,
+        "pagerank": 24,
+        "topo_depth": 1,
+        "random": 25
+      },
+      "plant_positions": {
+        "flow": 10,
+        "shortest_path": 2,
+        "pagerank": 26,
+        "topo_depth": 3,
+        "random": 24
+      },
+      "flow_score_next": 0.009837810197439966,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "M",
+        "Q",
+        "B3"
+      ]
+    },
+    {
+      "checkpoint": 1,
+      "after": "A",
+      "historical_next": "B1",
+      "n_candidates": 35,
+      "positions": {
+        "flow": 9,
+        "shortest_path": 14,
+        "pagerank": 15,
+        "topo_depth": 3,
+        "random": 18
+      },
+      "plant_positions": {
+        "flow": 11,
+        "shortest_path": 2,
+        "pagerank": 25,
+        "topo_depth": 2,
+        "random": 22
+      },
+      "flow_score_next": 0.01632690253918956,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "M",
+        "Q",
+        "B3"
+      ]
+    },
+    {
+      "checkpoint": 2,
+      "after": "B1",
+      "historical_next": "B2",
+      "n_candidates": 34,
+      "positions": {
+        "flow": 8,
+        "shortest_path": 8,
+        "pagerank": 15,
+        "topo_depth": 3,
+        "random": 31
+      },
+      "plant_positions": {
+        "flow": 10,
+        "shortest_path": 2,
+        "pagerank": 24,
+        "topo_depth": 2,
+        "random": 17
+      },
+      "flow_score_next": 0.03287193293209642,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "M",
+        "Q",
+        "B3"
+      ]
+    },
+    {
+      "checkpoint": 3,
+      "after": "B2",
+      "historical_next": "B3",
+      "n_candidates": 33,
+      "positions": {
+        "flow": 3,
+        "shortest_path": 4,
+        "pagerank": 16,
+        "topo_depth": 3,
+        "random": 16
+      },
+      "plant_positions": {
+        "flow": 10,
+        "shortest_path": 2,
+        "pagerank": 23,
+        "topo_depth": 2,
+        "random": 31
+      },
+      "flow_score_next": 0.13479768901415845,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "M",
+        "Q",
+        "B3"
+      ]
+    },
+    {
+      "checkpoint": 4,
+      "after": "B3",
+      "historical_next": "C",
+      "n_candidates": 32,
+      "positions": {
+        "flow": 16,
+        "shortest_path": 22,
+        "pagerank": 15,
+        "topo_depth": 5,
+        "random": 23
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 22,
+        "topo_depth": 2,
+        "random": 14
+      },
+      "flow_score_next": 0.003612989314939964,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 5,
+      "after": "C",
+      "historical_next": "D",
+      "n_candidates": 31,
+      "positions": {
+        "flow": 13,
+        "shortest_path": 20,
+        "pagerank": 10,
+        "topo_depth": 7,
+        "random": 17
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 21,
+        "topo_depth": 2,
+        "random": 31
+      },
+      "flow_score_next": 0.0055610939550182065,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 6,
+      "after": "D",
+      "historical_next": "E1",
+      "n_candidates": 30,
+      "positions": {
+        "flow": 16,
+        "shortest_path": 17,
+        "pagerank": 15,
+        "topo_depth": 3,
+        "random": 9
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 20,
+        "topo_depth": 2,
+        "random": 11
+      },
+      "flow_score_next": 0.001360365118836569,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 7,
+      "after": "E1",
+      "historical_next": "E2",
+      "n_candidates": 29,
+      "positions": {
+        "flow": 13,
+        "shortest_path": 12,
+        "pagerank": 9,
+        "topo_depth": 4,
+        "random": 22
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 19,
+        "topo_depth": 2,
+        "random": 14
+      },
+      "flow_score_next": 0.004519153231078547,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 8,
+      "after": "E2",
+      "historical_next": "E3",
+      "n_candidates": 28,
+      "positions": {
+        "flow": 10,
+        "shortest_path": 7,
+        "pagerank": 9,
+        "topo_depth": 5,
+        "random": 9
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 18,
+        "topo_depth": 2,
+        "random": 26
+      },
+      "flow_score_next": 0.012655280659062379,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 9,
+      "after": "E3",
+      "historical_next": "E4A",
+      "n_candidates": 27,
+      "positions": {
+        "flow": 15,
+        "shortest_path": 15,
+        "pagerank": 5,
+        "topo_depth": 5,
+        "random": 4
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 17,
+        "topo_depth": 2,
+        "random": 22
+      },
+      "flow_score_next": 0.0017537717681376588,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 10,
+      "after": "E4A",
+      "historical_next": "E4B1",
+      "n_candidates": 26,
+      "positions": {
+        "flow": 16,
+        "shortest_path": 16,
+        "pagerank": 15,
+        "topo_depth": 1,
+        "random": 14
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 16,
+        "topo_depth": 2,
+        "random": 4
+      },
+      "flow_score_next": 0.00031806158614770786,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 11,
+      "after": "E4B1",
+      "historical_next": "E4B2",
+      "n_candidates": 25,
+      "positions": {
+        "flow": 15,
+        "shortest_path": 15,
+        "pagerank": 6,
+        "topo_depth": 7,
+        "random": 5
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 15,
+        "topo_depth": 1,
+        "random": 25
+      },
+      "flow_score_next": 0.0010280243979585034,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 12,
+      "after": "E4B2",
+      "historical_next": "E4C",
+      "n_candidates": 24,
+      "positions": {
+        "flow": 14,
+        "shortest_path": 11,
+        "pagerank": 4,
+        "topo_depth": 10,
+        "random": 4
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 14,
+        "topo_depth": 1,
+        "random": 7
+      },
+      "flow_score_next": 0.0038381340802773403,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 13,
+      "after": "E4C",
+      "historical_next": "F",
+      "n_candidates": 23,
+      "positions": {
+        "flow": 8,
+        "shortest_path": 7,
+        "pagerank": 3,
+        "topo_depth": 11,
+        "random": 5
+      },
+      "plant_positions": {
+        "flow": 9,
+        "shortest_path": 2,
+        "pagerank": 13,
+        "topo_depth": 1,
+        "random": 12
+      },
+      "flow_score_next": 0.014402266384742816,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 14,
+      "after": "F",
+      "historical_next": "G",
+      "n_candidates": 22,
+      "positions": {
+        "flow": 11,
+        "shortest_path": 10,
+        "pagerank": 10,
+        "topo_depth": 4,
+        "random": 19
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 12,
+        "topo_depth": 1,
+        "random": 15
+      },
+      "flow_score_next": 0.0035254945483853303,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 15,
+      "after": "G",
+      "historical_next": "H",
+      "n_candidates": 21,
+      "positions": {
+        "flow": 9,
+        "shortest_path": 7,
+        "pagerank": 6,
+        "topo_depth": 6,
+        "random": 5
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 11,
+        "topo_depth": 1,
+        "random": 20
+      },
+      "flow_score_next": 0.011500171527539677,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 16,
+      "after": "H",
+      "historical_next": "I",
+      "n_candidates": 20,
+      "positions": {
+        "flow": 10,
+        "shortest_path": 9,
+        "pagerank": 9,
+        "topo_depth": 4,
+        "random": 6
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 10,
+        "topo_depth": 1,
+        "random": 8
+      },
+      "flow_score_next": 0.002928516788935458,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 17,
+      "after": "I",
+      "historical_next": "J",
+      "n_candidates": 19,
+      "positions": {
+        "flow": 9,
+        "shortest_path": 7,
+        "pagerank": 6,
+        "topo_depth": 5,
+        "random": 1
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 9,
+        "topo_depth": 1,
+        "random": 16
+      },
+      "flow_score_next": 0.009571490764229234,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 18,
+      "after": "J",
+      "historical_next": "K",
+      "n_candidates": 18,
+      "positions": {
+        "flow": 4,
+        "shortest_path": 4,
+        "pagerank": 2,
+        "topo_depth": 7,
+        "random": 15
+      },
+      "plant_positions": {
+        "flow": 8,
+        "shortest_path": 2,
+        "pagerank": 8,
+        "topo_depth": 1,
+        "random": 7
+      },
+      "flow_score_next": 0.06887200279197872,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "M",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 19,
+      "after": "K",
+      "historical_next": "L",
+      "n_candidates": 17,
+      "positions": {
+        "flow": 3,
+        "shortest_path": 4,
+        "pagerank": 5,
+        "topo_depth": 4,
+        "random": 7
+      },
+      "plant_positions": {
+        "flow": 7,
+        "shortest_path": 2,
+        "pagerank": 7,
+        "topo_depth": 1,
+        "random": 11
+      },
+      "flow_score_next": 0.06722525331156698,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "M",
+        "Q",
+        "L"
+      ]
+    },
+    {
+      "checkpoint": 20,
+      "after": "L",
+      "historical_next": "M",
+      "n_candidates": 16,
+      "positions": {
+        "flow": 1,
+        "shortest_path": 1,
+        "pagerank": 1,
+        "topo_depth": 6,
+        "random": 7
+      },
+      "plant_positions": {
+        "flow": 5,
+        "shortest_path": 2,
+        "pagerank": 6,
+        "topo_depth": 1,
+        "random": 5
+      },
+      "flow_score_next": 0.31841831425544165,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "M",
+        "Q",
+        "P"
+      ]
+    },
+    {
+      "checkpoint": 21,
+      "after": "M",
+      "historical_next": "N",
+      "n_candidates": 15,
+      "positions": {
+        "flow": 5,
+        "shortest_path": 5,
+        "pagerank": 4,
+        "topo_depth": 2,
+        "random": 11
+      },
+      "plant_positions": {
+        "flow": 4,
+        "shortest_path": 1,
+        "pagerank": 5,
+        "topo_depth": 1,
+        "random": 15
+      },
+      "flow_score_next": 0.005524861877477121,
+      "flow_score_plant": 0.013691443801162582,
+      "flow_top3": [
+        "Q",
+        "P",
+        "O"
+      ]
+    },
+    {
+      "checkpoint": 22,
+      "after": "N",
+      "historical_next": "O",
+      "n_candidates": 14,
+      "positions": {
+        "flow": 3,
+        "shortest_path": 4,
+        "pagerank": 3,
+        "topo_depth": 2,
+        "random": 1
+      },
+      "plant_positions": {
+        "flow": 4,
+        "shortest_path": 1,
+        "pagerank": 4,
+        "topo_depth": 1,
+        "random": 5
+      },
+      "flow_score_next": 0.017857142856216836,
+      "flow_score_plant": 0.013691443801162193,
+      "flow_top3": [
+        "Q",
+        "P",
+        "O"
+      ]
+    },
+    {
+      "checkpoint": 23,
+      "after": "O",
+      "historical_next": "P",
+      "n_candidates": 13,
+      "positions": {
+        "flow": 2,
+        "shortest_path": 3,
+        "pagerank": 2,
+        "topo_depth": 2,
+        "random": 8
+      },
+      "plant_positions": {
+        "flow": 3,
+        "shortest_path": 1,
+        "pagerank": 3,
+        "topo_depth": 1,
+        "random": 10
+      },
+      "flow_score_next": 0.0666666666663635,
+      "flow_score_plant": 0.013691443801137678,
+      "flow_top3": [
+        "Q",
+        "P",
+        "PLANT_FAKE_SHORTCUT"
+      ]
+    },
+    {
+      "checkpoint": 24,
+      "after": "P",
+      "historical_next": "Q",
+      "n_candidates": 12,
+      "positions": {
+        "flow": 1,
+        "shortest_path": 2,
+        "pagerank": 1,
+        "topo_depth": 2,
+        "random": 9
+      },
+      "plant_positions": {
+        "flow": 2,
+        "shortest_path": 1,
+        "pagerank": 2,
+        "topo_depth": 1,
+        "random": 3
+      },
+      "flow_score_next": 0.25,
+      "flow_score_plant": 0.013691443801137678,
+      "flow_top3": [
+        "Q",
+        "PLANT_FAKE_SHORTCUT",
+        "KILL_VERDICT_GOAL056_FINITE_PROJECTION_RECONSTRUCTION_2026_08_06"
+      ]
+    }
+  ]
+}
