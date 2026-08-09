@@ -1,0 +1,303 @@
+GOAL 057 / B3.0K — EXACT PREFLIGHT PASS RETURN AND PRODUCTION-RELEASE REQUEST
+
+Read this attached .txt byte-for-byte. Also read the separately attached exact candidate .txt.
+Continue the same living Goal 057 conversation. Do not open a new chat.
+Do not answer from the composer summary alone.
+
+ROUTE: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+OWNER_ACTION_REQUIRED: false
+SOLE_OWNER_GATE: PX_RH_CLAIM
+ARISTOTLE_SUBMISSION: NONE
+
+OPERATIVE_CLASS:
+  TRY_GOAL057_B3_0K_COMPLETE_THREE_COMPONENT_SOURCE_WEIL_FORM_ASSEMBLY
+
+REQUESTED_RULING:
+  Issue exactly one binary production ruling for the already-selected theorem-only B3.0K candidate.
+  If the evidence below is sufficient, authorize byte-for-byte production materialization at the owned path.
+  Otherwise return exactly one corrected candidate or one precise stop.
+  Select and authorize no next child in this transaction.
+
+SOURCE_LOCK:
+  repo: Malaeu/chen_q3
+  branch: rh_clean
+  HEAD: de9b8a18bc04e8511d9c2c62851cf5743614c8ff
+  origin/rh_clean: de9b8a18bc04e8511d9c2c62851cf5743614c8ff
+  controlling_adjudication_request_sha256: 82f29dd2e0817f06542a8f5c97e6b1d954d5e9cb5b8852985e0835a45adf4569
+  controlling_adjudication_request_bytes: 8772
+  controlling_adjudication_request_lines: 292
+  natural_completion_verdict_sha256: 39e82c6f98a0b40f63ed78155f442c8f6cd76a640ce701bef6557f630ea668ac
+  natural_completion_verdict_bytes: 31425
+  natural_completion_verdict_lines: 915
+  Answer_now_clicked: false
+  staged_patch_sha256_before: 291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+  staged_patch_sha256_after: 291e2387203c579f3f56bd5994daa7225c575c06a37fb3144b13e04e6d1b4f7b
+
+KB_PREFLIGHT:
+  command: ./orchestrator/kb.py ask "Goal 057 B3.0K exact assembly preflight source Weil finite form production release"
+  result: NO_HITS
+
+EXACT_CANDIDATE_ATTACHMENT:
+  filename: GOAL057_B3_0K_COMPLETE_THREE_COMPONENT_SOURCE_WEIL_FORM_ASSEMBLY_CANDIDATE_2026-08-09.txt
+  sha256: fdec61999f5bd109f3d912911136e3130c4cabae3fd464a541949a10d0b8d3db
+  bytes: 1831
+  lines: 55
+  final_LF: true
+  source: byte-for-byte copy of the verdict fenced Lean block
+  byte_change: false
+
+AUTHORIZED_PREFLIGHT_SCRATCH:
+  path: q3.lean.aristotle/Goal057B3_0K_Scratch.lean
+  tracked: false
+  sha256: fdec61999f5bd109f3d912911136e3130c4cabae3fd464a541949a10d0b8d3db
+  bytes: 1831
+  lines: 55
+  byte_identical_to_candidate_attachment: true
+
+DIRECT_LEAN:
+  command: cd q3.lean.aristotle && lake env lean Goal057B3_0K_Scratch.lean
+  exit: 0
+  stdout_stderr_sha256: 5528d7b35eb3397bd0269f29ce2d2f49a8f53792f0027242c99e7a871225067c
+  stdout_stderr_bytes: 258
+  stdout_stderr_lines: 2
+  exact_stdout_stderr: |
+    warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
+    'Q3.RouteB.D0Pstar.sourceWeilFiniteForm_eq_ccmWeilMatrixForm' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+AXIOM_AUDIT:
+  exact_public_axioms:
+    - propext
+    - Classical.choice
+    - Quot.sound
+  extra_axioms: []
+  status: PASS
+
+FORBIDDEN_TOKEN_SCAN:
+  pattern: sorry|exact?|admit|unsafe|native_decide|opaque|axiom |Float
+  matches: 0
+  status: PASS
+
+EXACT_IMPORTS:
+  count: 4
+  ordered_sha256: 50bbbd32491330fbb1d0e696a3fb3e4b4034f1513dbd515e7c5db8d9e9515e81
+  list:
+    - Q3.Proofs.RouteB.D0PstarSourceW02FiniteFormCCMW02Crosswalk
+    - Q3.Proofs.RouteB.D0PstarSourceArchFiniteFormCCMWRCrosswalk
+    - Q3.Proofs.RouteB.D0PstarSourcePrimeFiniteFormCCMPrimeCrosswalk
+    - Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix
+  forbidden_generated_PSD_Step33_hbox_payload_or_aristotle_output_imports: 0
+  status: PASS
+
+SURFACE_AUDIT:
+  public_definitions: 0
+  public_theorems: 1
+  theorem: sourceWeilFiniteForm_eq_ccmWeilMatrixForm
+  private_declarations: 0
+  status: PASS
+
+STATIC_AND_DEPENDENCY_FINGERPRINT:
+  exact_CCMModeFinite_i_N_row_declaration: true
+  exact_ccmModeFinite_i_N_occurrences: 6
+  exact_star_c_j_occurrences: 4
+  exact_d_k_occurrences: 4
+  real_projection_occurrences: 0
+  premise_surrogate: false
+  named_sourceWeilFiniteForm_definition: false
+  literal_target: Q3.RouteB.ccmWeilMatFinite i.m i.N j k
+  exact_L_crosswalk: L_m i = Q3.RouteB.ccmL i.m
+  direct_parent_calls:
+    - sourceW02FiniteForm_eq_ccmW02MatrixForm
+    - sourceArchimedeanFiniteForm_eq_neg_ccmWRMatrixForm
+    - sourcePrimeFiniteForm_eq_ccmPrimeMatrixForm
+  forbidden_operator_graph_domain_compression_numerator_H4A1B_PX_RH_scope: 0
+  status: PASS
+
+INDEPENDENT_CONTROLS:
+  path: /tmp/Goal057B3_0K_Controls.lean
+  sha256: a013df25a268225b89d66330f7ac0ab088b340e6d23716b890ffdb8c7a094ab7
+  bytes: 1879
+  lines: 47
+  Lean_exit: 0
+  stdout_stderr_sha256: 1692102c977faacbecbb6797376c6a7c8d1e6736541379e3a688b498e7195db9
+  controls:
+    - exact scalar ledger 7 + (-3) - 2 = 2
+    - mutant 7 - (-3) - 2 differs from 2
+    - mutant 7 + (-3) + 2 differs from 2
+    - first-slot versus second-slot conjugation distinction
+    - nonsymmetric 2-by-2 complex ordered-slot distinction with independent coefficient rows
+    - ccmModeFinite 2 endpoint order -2 then 2 via ccmModeFinite_two_values
+  status: PASS
+
+COMPILE_MUTATION_GATES:
+  - id: P057_K_4_ANTILINEAR_FIRST_SLOT
+    mutation: remove first star(c j)
+    mutant_sha256: be212755dbc529b59a4f45a29a049b0714ce35542c4eba74558562c6aa368e1a
+    Lean_exit: 1
+    first_failure: rewrite failed; parent antlinear pattern absent
+    required_stop: B3_0K_CONJUGATE_FIRST_SLOT_MISMATCH
+    fate: FIRED
+  - id: P057_K_5_LINEAR_SECOND_SLOT
+    mutation: conjugate first d k
+    mutant_sha256: 539f81eebc04340ef80a5d022ad221bd66e962f9490428c87cd061b011c7dc3f
+    Lean_exit: 1
+    first_failure: unsolved goals
+    required_stop: B3_0K_SECOND_SLOT_LINEARITY_MISMATCH
+    fate: FIRED
+  - id: P057_K_6_W02_SIGN
+    mutation: negate source-W02 finite sum
+    mutant_sha256: a205dcc413daa8531825460497716ae5ff99e7a4035ed6e5c7c80630702abffe
+    Lean_exit: 1
+    first_failure: unsolved goals
+    required_stop: B3_0K_W02_SIGN_MISMATCH
+    fate: FIRED
+  - id: P057_K_7_ARCH_ALREADY_NEGATIVE
+    mutation: subtract the already-negative source archimedean sum
+    mutant_sha256: 212763d32f29db10e7722ccf9f123cdd42c5672417ac93c62888050f77183b7a
+    Lean_exit: 1
+    first_failure: unsolved goals
+    required_stop: B3_0K_ARCHIMEDEAN_DOUBLE_SUBTRACTION
+    fate: FIRED
+  - id: P057_K_8_COMPLETE_LEDGER_PRIME_SIGN
+    mutation: complete-ledger prime minus to plus
+    mutant_sha256: 0a8f24b26442490ce0c3def9f50cb0887bedb7cdaae73ad508fe8513372c7aff
+    Lean_exit: 1
+    first_failure: unsolved goals
+    required_stop: B3_0K_COMPLETE_LEDGER_PRIME_SIGN_MISMATCH
+    fate: FIRED
+  - id: P057_K_9_LOG_LENGTH_NORMALIZATION
+    mutation: L_m i = 2 * ccmL i.m
+    mutant_sha256: 13df399122b1e634ac3c57104c1ea406139237d92a6185f9102b6a7f83f4d146
+    Lean_exit: 1
+    first_failure: type mismatch at rfl
+    required_stop: B3_0K_LOG_LENGTH_NORMALIZATION_MISMATCH
+    fate: FIRED
+  - id: P057_K_10_PROJECT_PARAMETER
+    mutation: ccmWeilMatFinite i.N i.N
+    mutant_sha256: e877ce327df6105a1112f27f9bf05e7c0763a9d2b577fc971739fd8673cd42cd
+    Lean_exit: 1
+    first_failure: unsolved goals
+    required_stop: B3_0K_PRIME_CUTOFF_MISMATCH
+    fate: FIRED
+
+ALL_SIXTEEN_JUDGE_FATES:
+  P057_K_1_EXACT_FINITE_CARRIER: PASS_STATIC_EXACT_TYPE_GATE
+  P057_K_2_LITERAL_MODE_ORDER: PASS_STATIC_PLUS_ccmModeFinite_two_values_CONTROL
+  P057_K_3_INDEPENDENT_ROWS: PASS_STATIC_EXACT_TYPE_GATE
+  P057_K_4_ANTILINEAR_FIRST_SLOT: FIRED_COMPILE_MUTATION_PLUS_CONTROL
+  P057_K_5_LINEAR_SECOND_SLOT: FIRED_COMPILE_MUTATION_PLUS_CONTROL
+  P057_K_6_W02_SIGN: FIRED_COMPILE_MUTATION
+  P057_K_7_ARCH_ALREADY_NEGATIVE: FIRED_COMPILE_MUTATION_PLUS_SCALAR_CONTROL
+  P057_K_8_COMPLETE_LEDGER_PRIME_SIGN: FIRED_COMPILE_MUTATION_PLUS_SCALAR_CONTROL
+  P057_K_9_LOG_LENGTH_NORMALIZATION: FIRED_EXACT_EQUALITY_MUTATION
+  P057_K_10_PROJECT_PARAMETER: FIRED_TARGET_PARAMETER_MUTATION
+  P057_K_11_LITERAL_MATRIX_TARGET: PASS_EXACT_AST_TARGET_GATE
+  P057_K_12_THREE_PARENT_PROVENANCE: PASS_EXACT_DEPENDENCY_FINGERPRINT
+  P057_K_13_PREMISE_SURROGATE: PASS_NO_PREMISE_SURROGATE
+  P057_K_14_COMPLEX_FULL_SESQUILINEAR: PASS_COMPLEX_INDEPENDENT_ROWS_NO_REAL_PROJECTION
+  P057_K_15_DEPENDENCY: PASS_EXACT_IMPORT_ALLOWLIST
+  P057_K_16_SCOPE_FIREWALL: PASS_NO_SCOPE_SMUGGLE
+  valid_judges_run: 16
+  valid_judges_passed: 16
+  status: PASS
+
+P_PRIME_2:
+  previously_deferred: true
+  activated_at_B3_0K: true
+  mutation: final_prime_minus_to_plus
+  required_stop: B3_0K_COMPLETE_LEDGER_PRIME_SIGN_MISMATCH
+  fired_in_preflight: true
+  output_sha256: 91d6287cf5d2062dfc77c732d23b6911c8813bf288e0a503ecc2e2a8bfedc9c9
+  close_as_fired_after_production_rerun: pending_release
+
+KILLED_JUDGE:
+  mutation: global_j_k_swap
+  run: false
+  count: false
+  reason: dummy reindexing and symmetric target make it nondiscriminating
+
+MUTATION_ARTIFACTS:
+  repository_artifacts_remaining: 0
+  tmp_mutant_files_remaining: 0
+  status: PASS
+
+CONTROL_PLANE:
+  routeb_status_check: PASS
+  reported_stage: RB-GOAL-057-B3-0J-CLOSED
+  reported_obligation: GOAL057_B3_0_POST_J_NEXT_NODE_ADJUDICATION
+  scratch_tracked: false
+  tracked_repository_mutation_by_this_preflight: false
+  git_diff_check: PASS
+  git_status_sha256: da465b02b7ed7e0d519ec8c7fd84df38e3bf9470d7011ca331e3261a723de874
+  unrelated_staged_patch_preserved: true
+
+PREFLIGHT_RESULT:
+  GOAL057_B3_0K_EXACT_ASSEMBLY_PREFLIGHT_SOURCE_LOCKED
+
+REQUEST_EXACT_PRODUCTION_RULING:
+  If PASS, return:
+    - PRODUCTION_AUTHORIZED: true
+    - exact candidate SHA/bytes/lines
+    - exact owned production path
+    - exact production validation checklist
+    - P_PRIME_2 production-rerun fate
+    - exact production stop and success codes
+    - explicit NO_NEXT_CHILD selected=false authorized=false
+  If FAIL, return:
+    - GOAL057_B3_0K_EXACT_ASSEMBLY_PREFLIGHT_FAILED
+    - first exact defect
+    - corrected exact candidate bytes if repair is lawful
+
+FUTURE_OWNED_PRODUCTION_PATH:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean
+
+PRODUCTION_STOP_RESERVED:
+  GOAL057_B3_0K_COMPLETE_THREE_COMPONENT_SOURCE_WEIL_FORM_ASSEMBLY_MISSING
+
+PRODUCTION_SUCCESS_RESERVED:
+  GOAL057_B3_0K_COMPLETE_THREE_COMPONENT_SOURCE_WEIL_FORM_ASSEMBLY_PROVED
+
+POST_SUCCESS_BOUNDARY_TO_PRESERVE:
+  B3_0K: CLOSED
+  FINITE_THREE_COMPONENT_SOURCE_FORM_ASSEMBLY: CLOSED
+  B3_0: OPEN
+  ASSOCIATED_OPERATOR_GRAPH: OPEN
+  FORM_DOMAIN: OPEN
+  OPERATOR_DOMAIN: OPEN
+  COMPRESSION_IDENTITY: OPEN
+  CONTINUUM_NUMERATOR: OPEN
+  H4A1B: OPEN
+  ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE: STRICTLY_ADVANCED_NOT_CLOSED
+  coarse_checkpoints_closed: 0
+  coarse_checkpoints_remaining: 10
+  NEXT_AUDIT_CANDIDATE_NOT_AUTHORIZED: GOAL057_B3_0L_AMBIENT_SOURCE_WEIL_FORM_AND_ASSOCIATED_GRAPH_AUDIT
+
+NOT_AUTHORIZED_IN_THIS_RULING:
+  - select_or_authorize_any_next_child
+  - define_a_named_finite_source_Weil_form
+  - change_any_candidate_byte
+  - subtract_source_archimedean_again
+  - replace_prime_subtraction_by_addition
+  - add_operator_graph_domain_compression_or_numerator_claims
+  - invoke_or_close_H4A1B
+  - decrement_the_ten_checkpoint_ledger
+  - create_Bus_010
+  - release_Goal_055
+  - unfreeze_G2_CCM
+  - submit_Aristotle
+  - promote_Route_B
+  - make_PX_or_RH_claim
+  - open_fresh_chat
+
+FINAL_BOUNDARY:
+  route: CHALLENGER_NOT_RH
+  active_bus_goal: 057
+  bus_010: VOID
+  goal_055: HOLD
+  g2_ccm: FROZEN
+  current_checkpoint: ACTUAL_TRIAL_NUMERATOR_SOURCE_TARGET_BRIDGE
+  coarse_checkpoints_closed: 0
+  coarse_checkpoints_remaining: 10
+  Aristotle_submission: NONE
+  route_promotion: false
+  px_rh_claim: NOT_MADE
