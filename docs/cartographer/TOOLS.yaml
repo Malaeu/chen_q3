@@ -1,0 +1,258 @@
+# Реестр инструментов Q3/RH
+#
+# Один файл — полная картина: что включено, что нет, почему.
+# Правило: инструмент без записи здесь считается НЕ СУЩЕСТВУЮЩИМ.
+# Проверено фактически 2026-08-08 (ls, запуск, регистрация в Claude Code).
+#
+# status: ENABLED     работает и подключён, можно звать прямо сейчас
+#         AVAILABLE   работает, но не в нашем контуре — звать осознанно
+#         RETIRED     снят намеренно, файл переименован в RETIRED*
+#         BROKEN      существует, но не работает — указана поломка
+#         PLANNED     решено сделать, ещё не сделано
+
+meta:
+  updated: 2026-08-08
+  owner: Ылша
+  repo: /Users/emalam/GitHub/rh_lean_01_2026
+  write_lock: "holder=CODEX, reader=CLAUDE_CODE — файлы в репе не создавать"
+  db: q3.lean.aristotle/aristotle_db/knowledge.db
+  db_access: "всегда ?mode=ro при чтении — Codex пишет параллельно"
+  docs: /Users/emalam/GitHub/codex_specs/HOWTO.md
+
+# ─────────────────────────────────────────────────────────────
+# ГЛАВНЫЙ ИНСТРУМЕНТ
+# ─────────────────────────────────────────────────────────────
+
+navigator:
+  - name: atomic-theorem-navigator
+    status: ENABLED
+    kind: claude-skill
+    path: ~/.claude/skills/atomic-theorem-navigator/SKILL.md
+    call: "/atomic-theorem-navigator"
+    registered: true          # проверено: система показывает его в списке скиллов
+    what: >
+      Спуск по свойствам вместо имён. Отвечает на «что нужно, чтобы доказать X»
+      и «что откроется, если докажу Y». Содержит детектор чеков и защиту от
+      суррогата по форме.
+    created: 2026-08-08
+    why: >
+      За один вечер схлопнул карту вчетверо (четыре обрыва -> два входа) и дважды
+      поймал фальшивый READY в цепочке.
+
+# ─────────────────────────────────────────────────────────────
+# СКРИПТЫ КАРТОГРАФА — вне репы, воспроизводимые, без агентов
+# ─────────────────────────────────────────────────────────────
+
+cartographer:
+  - name: inventory.py
+    status: ENABLED
+    path: codex_specs/cartographer/inventory.py
+    call: "python3 inventory.py --scope RouteB"
+    out: inventory_RouteB.json
+    what: "1174 объекта RouteB с сигнатурами, детерминированно, агентов не запускает"
+    note: >
+      Регулярка правилась 07.08 — раньше не видела private/protected/noncomputable
+      и атрибуты @[...], давала 618 вместо 1174.
+
+  - name: atoms.py
+    status: ENABLED
+    path: codex_specs/cartographer/atoms.py
+    call: "python3 atoms.py atoms.json"
+    out: atoms_RouteB.json
+    runtime: "~10 сек, печатает прогресс"
+    what: >
+      Внешние атомы: леммы, которые вызываются в доказательствах, но определены
+      НЕ в проекте. 1899 атомов на 08.08 (было 1513 днём — ночная работа дала +386).
+
+  - name: cheap.py
+    status: ENABLED
+    path: codex_specs/cartographer/cheap.py
+    call: "python3 cheap.py"
+    out: "очередь незакрытых шагов по цене + списки объявлений Mathlib"
+    created: 2026-08-08
+    what: >
+      cheap-closure-finder: сортирует незакрытые шаги assembly по ЦЕНЕ закрытия,
+      а не по номеру. Шесть пород: ПОТЕРЯННОЕ ИМЯ / СВОЙ ФАКТ / ПЕРЕХОДНИК /
+      ПЕРЕНОС МАШИНЫ / ПОДЪЁМ ИЗМЕРЕНИЯ / НЕНАЙДЕННЫЙ. Для дешёвых печатает ВСЕ
+      объявления релевантного файла Mathlib — поиск по имени промахивается.
+    accuracy: "2026-08-08: 8 из 10 строго совпали с ручным разбором, 2 уточнены в пользу скрипта"
+    input: "требует поля assembly.objects — список Lean-имён, которые шаг затрагивает,\n      ВКЛЮЧАЯ требуемые, но несуществующие. Без него порода не определяется."
+    limits: >
+      Шагов не закрывает. Кандидат становится закрытием только после прогона Lean.
+      Отсев ложных совпадений по слову (genEigenspace != пучок K,G) не
+      автоматизирован — печатает предупреждение, читает человек.
+      Существование в Mathlib проверяется rg по диску, НЕ по таблице atom:
+      atom знает лишь уже используемое, новая лемма выглядела бы несуществующей.
+
+  - name: brief.py
+    status: ENABLED
+    path: codex_specs/cartographer/brief.py
+    call: "python3 brief.py [ПРЕФИКС_ЦЕПОЧКИ] [--out файл.md]"
+    created: 2026-08-08
+    what: >
+      Source-locked пакет из базы для Прошки/Codex: сводка цепочек, закрытые шаги
+      со ссылками file:line, незакрытые с породой/объектами/последней заметкой,
+      несущие атомы, команда самопроверки.
+    output: "все цепочки — 16 КБ / 145 строк (09.08); одна цепочка — ~7 КБ"
+    fixed: >
+      2026-08-09: парсер --out брал значение флага как позиционный аргумент,
+      генератор искал цепочку с именем-путём. Теперь флаг и значение вырезаются
+      вместе: argv[:i] + argv[i+2:].
+    vs_proshka_brief: >
+      Их proshka-brief собирает ЧТО ИЗМЕНИЛОСЬ (коммиты, диффы за период).
+      Наш brief.py — ЧТО СУЩЕСТВУЕТ И НА ЧЁМ СТОИТ (граф состояния).
+      Не заменяют друг друга.
+
+  - name: load_capability.py
+    status: ENABLED
+    path: codex_specs/cartographer/load_capability.py
+    what: "линзы L1..L8 из L*.md в таблицу capability, идемпотентно"
+
+  - name: load_switches.py
+    status: ENABLED
+    path: codex_specs/cartographer/load_switches.py
+    what: "not_proves + fails_if — отрицательные переключатели"
+
+  - name: load_assembly.py
+    status: ENABLED
+    path: codex_specs/cartographer/load_assembly.py
+    what: "цепочки сборки: требование -> откуда взять -> статус"
+
+# ─────────────────────────────────────────────────────────────
+# ЯЩИКИ БАЗЫ — спрашиваются через sqlite3, рецепты в SKILL.md
+# ─────────────────────────────────────────────────────────────
+
+boxes:
+  - name: capability
+    status: ENABLED
+    rows: 1157
+    what: "нужда -> чем делается; 9 линз, provides/requires/strength/not_proves/fails_if"
+
+  - name: assembly
+    status: ENABLED
+    rows: 43
+    queue: "очередь по цене: python3 cartographer/cheap.py"
+    chains:
+      - GOAL057_CONTINUUM_NUMERATOR_BRIDGE:  "13 шагов, 2 незакрыто — ночная ветка Codex"
+      - PSD_CERTIFICATE_FOR_CCM_CELL:        "15 шагов, 3 незакрыто (все NUMERIC на одном JSON); шаг 6 закрыт 08.08 через Matrix.PosDef.one"
+      - SIMPLE_EVEN_GROUND_TO_REAL_ZEROS:    "15 шагов, 5 незакрыто; шаги 9,10 — чеки (READY у теоремы, вход не обеспечен)"
+
+  - name: contract2
+    status: ENABLED
+    rows: 282
+    what: "контракт определения -> чего НЕ даёт; 24 SLOT, 66 с not_guaranteed"
+
+  - name: counterexample
+    status: ENABLED
+    rows: 59
+    what: "гипотеза -> чем прибита; error_class: STATIC_LAYOUT / PROVENANCE / INFERENCE"
+
+  - name: atom + atom_use
+    status: ENABLED
+    rows: "1899 + ~3500"
+    what: "на чём стоит проект; обратный индекс «что откроется, если докажу X»"
+    created: 2026-08-08
+
+  - name: lemmas
+    status: ENABLED
+    rows: 1920
+    what: "старый ящик: имя -> где лежит. Отвечает только если знаешь имя."
+
+# ─────────────────────────────────────────────────────────────
+# СТИЛЬ И ПРАВИЛА
+# ─────────────────────────────────────────────────────────────
+
+style:
+  - name: svante
+    status: ENABLED
+    kind: output-style
+    path: ~/.claude/output-styles/svante.md
+    call: "/output-style -> Svante"
+    what: >
+      Выводи механизм, не пересказывай результат. Образ из щупанного домена.
+      Изоморфизм-чек со строкой «врёт: да». Четыре статуса знания раздельно.
+    spinoff: ~/GitHub/prowka-bot/Projects/structured-discovery-exposition-protocol/
+
+rules_path: ~/.claude/projects/-Users-emalam-GitHub-rh-lean-01-2026/memory/
+
+rules:
+  - name: property-descent
+    status: ENABLED
+    what: "три показания по числу атомов + MISMATCH≠GAP + искать пачку перед счётом обрывов"
+  - name: z2-symmetry-fixed-point
+    status: ENABLED
+    what: "симметрия порядка два: два класса + неподвижное множество; RH = нули на нём"
+  - name: toolkit-entrypoint
+    status: ENABLED
+    what: "указатель на HOWTO.md — точка входа в новой сессии"
+  - name: error-rate-counter
+    status: ENABLED
+    what: "перед рекомендацией открыть file:line; замер брака 18%/10%"
+  - name: five-next-steps
+    status: ENABLED
+    what: "пять пронумерованных опций в «Что дальше?»"
+  - name: never-suggest-rest
+    status: ENABLED
+  - name: branch-ledger
+    status: ENABLED
+  - name: show-dont-send
+    status: ENABLED
+    what: "тексты для агентов показывать в чате, владелец копирует сам"
+  - name: compressed-context-block
+    status: ENABLED
+  - name: thought-detector-verify-first
+    status: ENABLED
+    what: "ярлык «оборвано» только со своим рассуждением — хук ошибается"
+  - name: automation-stop-switch
+    status: ENABLED
+
+# ─────────────────────────────────────────────────────────────
+# СИСТЕМА CODEX — его контур, мы туда не лезем без нужды
+# ─────────────────────────────────────────────────────────────
+
+codex_system:
+  path: ~/.codex/
+  size: "~4 ГБ, вне git, бэкап ~/Backups/2026-08-05/"
+  skills:
+    - {name: aristotle,             status: AVAILABLE}
+    - {name: proshka-brief,         status: AVAILABLE}
+    - {name: q3-note-ingest,        status: AVAILABLE}
+    - {name: oracle,                status: AVAILABLE}
+    - {name: x-sync_mac,            status: AVAILABLE, note: "переписан 05.08: убран git add -A, whitelist"}
+    - {name: chronicle,             status: AVAILABLE}
+    - {name: codex-primary-runtime, status: BROKEN, why: "пустая директория, содержимое утрачено"}
+    - {name: x-ralph-loop,          status: RETIRED, when: 2026-08-05, why: "отжил своё, SKILL.md -> RETIRED*"}
+    - {name: x-rh-compiler,         status: RETIRED, when: 2026-08-05, why: "отжил своё, SKILL.md -> RETIRED*"}
+  automations:
+    - name: q3-proof-loop
+      status: BROKEN
+      why: "status=PAUSED + cwds указывал на несуществующий ~/Documents/GitHub/ (починен 05.08) + промпт вёл на зомби-монитор"
+    - name: update-agents-md
+      status: BROKEN
+      why: "тот же мёртвый cwd, путь исправлен 05.08, работоспособность не проверялась"
+
+# ─────────────────────────────────────────────────────────────
+# ЧУЖИЕ СКИЛЛЫ CLAUDE — не наш контур, звать осознанно
+# ─────────────────────────────────────────────────────────────
+
+other_claude_skills:
+  path: ~/.claude/skills/
+  status: AVAILABLE
+  list: [aristotle, x-lean-tdd, x-axiom-loop, x-research-swarm, x-insight,
+         x-iddqd, x-sandbox, x-sandbox-work, x-transcribe, x-yt, illustrations,
+         pliny-tv, presentation-creator, reading-sync, shownotes-publisher,
+         vault-clarification, vault-ingress, vault-profile]
+  note: "к Q3/RH прямого отношения не имеют, кроме aristotle / x-lean-tdd / x-axiom-loop"
+
+# ─────────────────────────────────────────────────────────────
+# ЗАПЛАНИРОВАНО
+# ─────────────────────────────────────────────────────────────
+
+planned:
+  - name: check-detector
+    status: PLANNED
+    what: "автоматический прогон по assembly: найти READY без обеспеченной посылки"
+    why: "вручную поймано дважды за вечер; PSD_CERTIFICATE 15/15 не проверен"
+  - name: inputs-audit
+    status: PLANNED
+    what: "сверить счёт «4 моста / 3 входа» по документам, а не по памяти"
