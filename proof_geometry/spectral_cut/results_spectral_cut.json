@@ -1,0 +1,278 @@
+{
+  "target": "GOAL057_SOURCE_WEIL_EVEN_SECTOR_SPECTRAL_CUT_PREFLIGHT",
+  "mode": "READ_ONLY_EXPERIMENTAL",
+  "thresholds": {
+    "mass_min": "0.95",
+    "rho_max": "0.25",
+    "schur_improvement_min": "2.0",
+    "jaccard_min": "0.80",
+    "cells": [
+      [
+        13,
+        60
+      ],
+      [
+        13,
+        90
+      ],
+      [
+        13,
+        120
+      ]
+    ]
+  },
+  "pins": {
+    "dps_base": 30,
+    "dps_double": 60,
+    "floor_exponent_offset": 15,
+    "lowhigh_threshold": 10,
+    "candidate_rule": "min-conductance Fiedler sweep cut",
+    "retained_side": "side holding >=0.5 of even-sector trial mass",
+    "schur_direction": "smaller s is better",
+    "doubling_rel_tol": "1e-6",
+    "conductance_meaningful_max": "0.25",
+    "pswf_K_full": 240,
+    "panels_scale": 4,
+    "seed": 57,
+    "literal_spot_pairs": 12,
+    "ode_residual_max": "1e-6"
+  },
+  "plants": {
+    "block_diagonal": {
+      "pass": true,
+      "phi": "0.0"
+    },
+    "one_bridge": {
+      "pass": true,
+      "phi": "0.00152428053598"
+    },
+    "prime_sign_mutation": {
+      "pass": true
+    },
+    "label_permutation": {
+      "pass": true
+    },
+    "sign_conjugation": {
+      "pass": true
+    }
+  },
+  "cells": [
+    {
+      "cell": [
+        13,
+        60
+      ],
+      "dps": 30,
+      "gates": {
+        "repository_pin": {
+          "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean": "f2f9d248a6f2ad703428c624ccbaf5a75b340655e4b4ebbbe3f1d77355523815",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean": "282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean": "3c2099c97df6cd0fb45f7b367d24898d11c031ed297fe9031b25ee5b9dc0edf4",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage1.lean": "c7dd206ab7979d3390a50969c71919c04582f0c1514dbb142fe1883148ce5b48",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage2.lean": "aabaf47cb484f0157fd7b2ac4f30811aec9595116c1193715e41de8b520393cd",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage3.lean": "924027a3dd9b95e75c776db552ad37779ed8dd75a7924d744a39cb1a613ebdfa",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFourierLedger.lean": "27cc612c2de2e2da9c7e30e21e9663e96abba7c80a2bc5286d04e02b7c9274a6",
+          "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean": "bf72d6f84c33f6ddd0f6e0c76563c8d6cf4416124f1b8c8e8dc988dc4ad58e59"
+        },
+        "carrier_mode_order": true,
+        "symmetry_residual": {
+          "max": "0.0",
+          "pass": true
+        },
+        "J_commutation_residual": {
+          "max": "0.0",
+          "pass": true
+        },
+        "literal_formula_spot_check": {
+          "max_rel": "5.9716248976e-33",
+          "pass": true
+        },
+        "pswf_ode_residual": {
+          "psi0": "5.13007483281e-13",
+          "psi4": "5.30389857919e-14",
+          "pass": true
+        },
+        "pswf_orthogonality": {
+          "inner": "-9.91798452264e-33",
+          "pass": true
+        },
+        "hTrial_vanishing_integral": {
+          "e0": "0.0",
+          "pass": true
+        },
+        "trial_unit_normalization": {
+          "norm": "1.0",
+          "raw_gTrial_norm": "0.469347522354",
+          "pass": true
+        },
+        "orientation_W02_minus_WR_minus_Prime": {
+          "note": "checked by literal_formula_spot_check against the Lean formula tau = W02 - WR - Prime; mutation plant flips it",
+          "pass": true
+        },
+        "all_pass": true
+      },
+      "even_sector": {
+        "dim": 61,
+        "trial_even_mass_fraction": "1.0",
+        "parity_cross_max": "0.0",
+        "parity_control_note": "exact J-symmetry; parity split is control only"
+      },
+      "candidate": {
+        "phi": "0.0312936686573",
+        "S": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ],
+        "T_size": 33,
+        "mu": "1.0",
+        "a": "2.88935162454e-32",
+        "epsilon": "0.695536371722",
+        "delta": "0.493976332388",
+        "rho": "1.40803582301",
+        "s": "0.979340127592",
+        "specB_min": "0.493976332388",
+        "specB_max": "5.01947743282",
+        "retained_labels": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27
+        ]
+      },
+      "frozen_baselines": {
+        "contiguous_half": {
+          "S": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ],
+          "T_size": 30,
+          "mu": "1.0",
+          "a": "2.88935162454e-32",
+          "epsilon": "0.822005056277",
+          "delta": "0.503697588314",
+          "rho": "1.63194161606",
+          "s": "1.34146425995",
+          "specB_min": "0.503697588314",
+          "specB_max": "5.01626844599"
+        },
+        "lowhigh_split": {
+          "S": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "T_size": 50,
+          "mu": "0.999999999992",
+          "a": "2.88935162454e-32",
+          "epsilon": "1.02568744318",
+          "delta": "4.93013799862e-7",
+          "rho": "2080443.67818",
+          "s": "2133884.95696",
+          "specB_min": "4.93013799862e-7",
+          "specB_max": "5.03377758695"
+        }
+      },
+      "criteria": {
+        "not_parity_only": true,
+        "mass": true,
+        "rho": false,
+        "schur_2x": false,
+        "phi_meaningful": true
+      },
+      "best_elementary_s": "1.34146425995",
+      "elapsed_sec": 122.5
+    }
+  ],
+  "failure_codes": [
+    "GOAL057_SPECTRAL_CUT_LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER"
+  ],
+  "success": false,
+  "stop_rule": "failed at (13,60); N=90,120 not evaluated"
+}

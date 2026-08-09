@@ -219,3 +219,130 @@ evidence=proof_geometry/results_057.json@<commit>`.
 (а) намеренное зеркало manuscript-дерева; (б) случайная дупликация, которая
 разойдётся при первом же несинхронном пересборе. Различитель: один пересбор
 генераторов и diff обоих деревьев. Здесь не решаю — probe читает верхний.
+
+## 7. GOAL057_SOURCE_WEIL_EVEN_SECTOR_SPECTRAL_CUT_PREFLIGHT — вердикт
+
+```yaml
+status: FAILED at (13,60), stop-rule fired, N=90/120 not evaluated
+mode: READ_ONLY_EXPERIMENTAL — не proof-source, не route-selection
+directive_source: owner Proshka-format verdict 2026-08-09 (V0 FATAL; RUN selected)
+instrument: proof_geometry/spectral_cut/{ccm_source,preflight}.py
+precommit: proof_geometry/spectral_cut/PRECOMMIT.md, коммит 22a4575 —
+  ДО первого запуска на реальной матрице (проверяемо git-историей)
+result_file: proof_geometry/spectral_cut/results_spectral_cut.json
+```
+
+```text
+SEARCH_FLAGS (ask.sh, 2026-08-09):
+  sourceCCMFiniteRayleigh          -> 1 хит: определение в Lean, не значение
+  ccmWeilMatFinite null vector     -> НЕ НАЙДЕНО НИГДЕ
+  trial nullity kernel spectral    -> НЕ НАЙДЕНО НИГДЕ
+```
+
+### 7.1 Протокол выполнен буквально
+
+Все планты прошли **до** интерпретации реальной матрицы: block-diagonal
+recovery, one-bridge control, prime-sign mutation (гейт отверг мутацию),
+label permutation и ±1 diagonal conjugation на самой K⁺(13,60) — все PASS.
+Фаза-0 hard gates — все PASS: sha256-пин восьми Lean-файлов, порядок мод
+−N..N, симметрия и `JK=KJ` на полу 10⁻¹⁵, литеральный spot-check
+`τ = W02 − WR − Prime` против формулы Lean (12 пар, rel diff ~6e-33),
+PSWF-ODE-невязка ψ₀/ψ₄ ~5e-13/5e-14, ортогональность ψ₀⊥ψ₄ ~1e-32,
+`∫hTrial=0` точно, `‖kTrial‖=1` точно.
+
+### 7.2 Результат на (13,60)
+
+```text
+candidate (Fiedler min-conductance sweep, even sector, dim=61):
+  phi (conductance)  = 0.03129     (<= 0.25 порог "meaningful": PASS)
+  mu (retained mass) = 1.0         (>= 0.95: PASS)
+  epsilon = ||E||_op  = 0.6955
+  delta = dist(a,specB) = 0.4940
+  rho = epsilon/delta = 1.408      (<= 0.25 required: FAIL, превышение ~5.6x)
+  s = epsilon^2/delta  = 0.9793
+
+frozen baselines:
+  contiguous_half:  s = 1.3415
+  lowhigh_split:    s = 2,133,885  (delta~4.9e-7 — вырожденный разрез)
+
+criteria: not_parity_only=T, mass=T, rho=F, schur_2x=F, phi_meaningful=T
+STOP: GOAL057_SPECTRAL_CUT_LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER
+```
+
+Fiedler-кандидат направленно бьёт обе замороженные базовые линии
+(`s=0.979` против `1.342` и против вырожденных `2·10⁶`), но не дотягивает
+до требуемого 2× барьера (нужно `s ≤ 0.671`, получили `0.979`). Важнее:
+`rho=1.41 > 1` — перекрёстная связь блоков **превышает** спектральный
+зазор, то есть даже пертурбативный/Schur-ряд первого порядка здесь не
+гарантированно сходится. Это ровно тот failure mode, который директива
+предсказала заранее как наиболее вероятный («graph conductance is a
+surrogate without theorem power»), с точным кодом
+`LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER`, а не `NO_STABLE_LOW_CONDUCTANCE_CUT`:
+граф нашёл структурно осмысленный (низкая проводимость, не голая чётность)
+разрез, но оператор его не подтвердил. Registered prediction сбылась
+буквально.
+
+Стоп-правило исполнено: N=90,120 не считались.
+
+### 7.3 Замеченное и не объяснённое — записано в момент обнаружения
+
+`a = <q_even, K⁺ q_even> = 2.89·10⁻³²` — Rayleigh-значение source-trial
+относительно полного even-sector оператора K⁺ численно **ноль** (на полу
+точности dps=30), при том что спектр дополнительного блока B лежит
+целиком в `[0.494, 5.019]` — нигде рядом с нулём. Для юнит-вектора это
+нетипично: если бы `a` было generic Rayleigh-значением, ожидался бы
+порядок величины спектра (~1), а не 32 нуля после запятой. Именно эта
+близость к нулю и делает `delta = dist(a, specB) = specB_min` маленьким
+относительно `epsilon`, то есть управляет провалом `rho`.
+
+Два прочтения, оба открыты:
+
+1. **Структурное.** Каноническая комбинация `hTrial = (I4·h0 − I0·h4)/‖·‖`
+   построена как *единственная* (с точностью до скаляра) комбинация с
+   нулевым интегралом (`docs/PEN_3_3_G04_OBJECT_DICTIONARY.md`) — если это
+   обнуление транспортируется через `E*`/проекцию в почти-точную
+   ортогональность к ведущей моде K⁺, тогда trial-вектор *по конструкции*
+   близок к null-вектору конечного CCM-оператора. Если так, это не баг, а
+   потенциально полезный факт о самом источнике.
+2. **Инструментальное.** Вся числовая цепочка (PSWF через диагонализацию
+   в базисе Лежандра, `E*`-суммирование, координаты Фурье) — независимая
+   Python-транскрипция, не экспортирована из Lean. Структурные гейты
+   (симметрия, `J`-коммутация, ODE-невязка, ортогональность ψ₀/ψ₄,
+   `∫hTrial=0`, литеральный spot-check τ) — все необходимые условия
+   корректности, ни одно не достаточное: они ловят рассинхрон между двумя
+   моими путями кода, но не сверяют результат с независимым вторым
+   источником. Систематическая ошибка в самой формуле (знак, порядок пары
+   `chi0`/`chi4`, диапазон суммирования `E*`), одинаково повторённая в обоих
+   моих путях, прошла бы все текущие гейты.
+
+Различитель (дешёвый, не выполнен): независимая вторая численная реализация
+PSWF (например, shooting-метод по ОДУ вместо диагонализации в базисе
+Лежандра) на маленькой ячейке `(m=3, N=4)` — если `a` там тоже аномально
+мало относительно спектра своего блока B, это говорит в пользу (1); если
+нет — в пользу (2). Не запускал: протокол директивы — один прогон, без
+дотюнивания после результата, и различитель уже относится к следующему
+шагу, а не к текущему preflight.
+
+```text
+AUTOPSY: dropped=COUPLING; note=cross-block operator norm epsilon exceeds spectral gap delta (rho=1.41>1); graph min-conductance cut is not a Schur-safe decomposition here
+AUTOPSY: dropped=SPECTRAL_ORDERING; note=conductance-optimal cut and gap-optimal cut disagree; low graph conductance (0.031) coexists with rho>1
+```
+
+### 7.4 Кандидат-запись для knowledge.db (не внесена — см. §5 про write-lock)
+
+`subject=GOAL057 even-sector Fiedler spectral cut at (13,60);
+status=KILLED_AT_PREFLIGHT;
+stop_code=GOAL057_SPECTRAL_CUT_LOW_CONDUCTANCE_WITHOUT_SCHUR_POWER;
+forbidden_future_move=trust graph conductance alone as a Schur-decomposition
+signal without checking rho=epsilon/delta<=0.25 on the actual signed block
+operator; scope=cell (13,60), even sector only, N=90/120 not reached;
+evidence=proof_geometry/spectral_cut/results_spectral_cut.json@<commit>;
+open_question=a_N near-zero anomaly, see §7.3, unresolved`.
+
+### 7.5 Что дальше не делаю без решения владельца
+
+Директива запрещает: тюнинг порогов после просмотра результата (не делал —
+все пороги и пины в `PRECOMMIT.md`, закоммичены в `22a4575` до прогона),
+работу над V0.1, finite-to-global или H4a1b заявления, продвижение маршрута.
+Это честно read-only experimental result: конечная ячейка, even sector,
+один разрез, без claim про continuum decomposition.
