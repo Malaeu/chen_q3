@@ -1,40 +1,142 @@
-# Progress Log — Formal_RH_2026
+# Судовой журнал Q3 — развилки, а не события
 
-## 2026-02-28 (Post-sync, no Lean run)
+**Зачем.** Событий у нас пишется много: `INSIGHTS.md` — 51 763 строки, 30 closeout,
+49 report, 69 goal, 75 answer. Не пишется другое — **почему свернули**. Из-за этого
+летом 2026 потерялось видение проекта, и восстанавливать пришлось агентами по
+косвенным следам: `git log`, даты, чужие цитаты.
 
-- Задача: сверить документальный слой с рабочей цепью τ=0 и зафиксировать мост:
-  `prime_cert_margin_from_rkhs`.
-- Исправлены офлайн-описания в статусных файлах: `CHAIN_STATUS.md`,
-  `PROJECT_ORCHESTRATOR.md`, `ACTIVE/MAIN_CHAIN_DEPS.md`, `FORMALIZATION_STATS.md`,
-  `Q3/CheckAxioms.lean`.
-- Критическая техника: не запускать `lake env lean` автоматически из‑за проблемы с
-  памятью; проверки продолжать только точечными и короткими командами после контроля.
-- Следующий минимальный шаг: внедрить чистый `PrimeTerm_tau0_brange_pure` мост через
-  без-цикловый адаптер и повторить `#print axioms Q3.Main.RH_of_Weil_and_Q3`.
+Журнал ≠ лог. Лог — поток событий, чтобы ничего не потерять. **Журнал — записи
+для того, кто вернётся.** Судовой журнал против чёрного ящика: в журнале «взяли
+курс на север, потому что шторм с запада»; в ящике — все показания посекундно.
 
-## 2026-02-28 (Europe/Berlin)
+**Правило записи: в момент выбора, не постфактум.** Свернул с пути — одна запись
+сразу. Через неделю причина уже не восстановима, проверено.
 
-### Context (last chat excerpt summary)
-- Mainline was intentionally de‑entangled from the heavy PrimeCert “checker” chain; RH pipeline currently reduces to a small set of remaining trusted contracts (e.g. Weil criterion equivalence + one prime-term bound at t_critical).  
-- Work proceeded on *kernel‑safe* analytic replacements for “data axioms”, including the unified Gaussian tail kernel and removal of at least one redundant grid data axiom.
-- The next critical-path blocker identified: a **clean τ=0, B-range bridge** for the prime-term margin that does **not** depend on `Brange_2046` / legacy PathB.
+---
 
-### Current objective
-Build a **pure τ=0 B-range module** producing the prime-term vs arch-term margin on `B ∈ [B_min, prime_cert_B_max]` and wire it into `Q_nonneg_t_critical` via `prime_cert_margin_from_rkhs`, removing the legacy PathB proxy.
+## Формат записи
 
-### Plan (structured)
-1. Add `Q3/Proofs/PrimeTerm_tau0_brange_pure.lean`:
-   - prove `arch_term_ge_cstar_on_brange` (τ=0).
-   - prove `prime_term_le_cstar_quarter_on_brange` via RKHS cap `rho 1` and `rho_one_lt_one_over_twentyfive`.
-   - deduce `prime_term_le_arch_term_tau0_brange_pure` and/or package into `PrimeCertMarginOnBrange`.
-   - allow temporary assumptions only as *explicit TODO gaps* (no legacy imports).
-2. Refactor wiring:
-   - avoid import cycles: keep `RKHS_PrimeCap_Analytic` as “rho + cap lemmas” layer; put `prime_cert_margin_from_rkhs` wrapper in a separate adapter module if needed.
-3. Patch `Q_nonneg_t_critical.lean` minimally to consume the same `PrimeCertMarginOnBrange` API.
-4. Verification:
-   - `lake env lean` on new module, then the RKHS adapter, then `Q_nonneg_t_critical`, then `Q3/Main.lean`.
-   - `rg -n "sorry|admit|exact\?"` in the active chain.
-   - `#print axioms` on the top theorem to confirm no new trust.
+```
+## YYYY-MM-DD — короткое имя развилки
 
-### Main risk
-Potential **import cycle** if `PrimeTerm_tau0_brange_pure` imports `RKHS_PrimeCap_Analytic` while that same file is modified to import the new module. Mitigation: split definitions vs adapters or move the wrapper out.
+**Развилка:** что выбирали, между чем и чем
+**Выбрали:** что именно
+**Почему:** причина в одну-две фразы, проверяемая
+**Что отвергли и почему:** вторая ветка и её цена
+**Техника:** приём/инструмент, который сработал или подвёл
+**Следующий ход:** минимальный шаг после этой записи
+**Адреса:** file:line, коммит, вердикт — что можно открыть и проверить
+```
+
+Заполнять все семь граф. Пустая графа «почему отвергли» — главный источник
+будущей археологии.
+
+---
+
+## 2026-08-09 — вернуться к публикации или продолжать обход
+
+**Развилка:** продолжать Route B (обход, найденный в июле вне статьи) или
+вернуться к маршрутам, которые публикация сама называет живыми.
+
+**Выбрали:** не выбирать до измерения. Заказана сравнительная оценка объёма
+у Прошки и Mythos.
+
+**Почему:** маршрут (ii) — мост Судзуки — статья называет «primary live route»,
+а в Lean по нему **ноль файлов**. Сравнивать было не с чем.
+
+**Что отвергли и почему:** спрашивать «что нам лучше делать» — такой вопрос
+возвращает мнение. Переформулировали в «оцените (ii) против Route B по объёму».
+
+**Техника:** спуск по атомам (`cartographer/cheap.py`), четыре агента на разбор,
+чтение публикации до конца вместо пересказа.
+
+**Следующий ход:** Test B (2–5 файлов) — самый дешёвый из трёх калибровочных
+тестов Прошки.
+
+**Адреса:** `docs/GENEALOGY.md` · `docs/PROSHKA_ROUTE_COMPARISON_EFFORT_ESTIMATE_2026-08-09.md`
+· `full/sections/Main_closure.tex:1374` · коммит `e3e920de`
+
+---
+
+## 2026-08-09 — «поля добавляются даром» убито
+
+**Развилка:** считать три `OWNER_DATA`-поля Route B бесплатными (конструкторов
+ноль, значит поле дорисовывается без правок) или нет.
+
+**Выбрали:** признать счёт неверным после kill Прошки.
+
+**Почему:** поле `energyBound` дорисовать легко — это доказывает лишь «если
+поле подано, потребитель компилируется». Обеспечить его для канонической семьи —
+отдельная теорема. Для `physicalBandwidthCofinal` она построила **контрпример**:
+`m_k = 2^((k+1)²)`, `N_k = k+1` — обе координаты кофинальны, а `N_k/log m_k → 0`.
+Это доказанная невыводимость, не оценка сложности.
+
+**Что отвергли и почему:** прежний счёт «пять шагов» — он корректен только как
+interface count, не как end-to-end.
+
+**Техника:** двухрежимный сплит Прошки — считать отдельно interface-only и
+source-faithful. Без него Route B выглядит искусственно дешёвым.
+
+**Следующий ход:** везде, где считаем «шаги до цели», указывать режим счёта.
+
+**Адреса:** вердикт стр. 163–228 · правило `pointwise-vs-uniform` в памяти
+
+---
+
+## 2026-08-09 — прибор найден повторно и записан
+
+**Развилка:** оставить прибор жить в чатах или зафиксировать в репозитории.
+
+**Выбрали:** зафиксировать — `GENEALOGY.md §8` плюс уже существовавший
+`MAP.md:192-218`.
+
+**Почему:** прибор терялся один раз: «Инструмент не упомянут в MAP.md ни разу.
+Мы его забыли, нашли случайно — четырёхагентной картографией, запущенной по
+другому поводу». Второй потери быть не должно.
+
+**Что отвергли и почему:** держать в `codex_specs/` вне репозитория — судьи
+и Codex туда не смотрят, файлов на GitHub проекта не было вовсе.
+
+**Техника:** `git commit -o путь` — коммит только своих файлов, не трогая чужой
+staged-патч из 19 переименований.
+
+**Следующий ход:** сварить головку с образцом — `SIEG_of_penalty`,
+названа в `H2aPenaltyCoercivity.lean:428-443`, не написана.
+
+**Адреса:** `docs/GENEALOGY.md §8` · `docs/routeB_bus/MAP.md:198` · коммит `e3e920de`
+
+---
+
+## 2026-06-25 → 2026-07-12 — как встала PSD-линия (восстановлено задним числом)
+
+**Развилка:** её не было. Это главное открытие.
+
+**Выбрали:** ничего. Работа встала на плановом «следующем патче».
+
+**Почему:** `decisionRule` требовал вердикта пилота; пилот fail-closed и вердикта
+не выдал, потому что не было данных; правило записи решения не запустилось.
+Последняя попытка 10.07 упала на **сборке** — 7876-модульный bootstrap и
+отсутствующий `olean`. «infrastructure validation gap, NOT a counterexample».
+
+**Что отвергли и почему:** ничего сознательно. `DORMANT_2026-06-25` — ярлык,
+приклеенный аудитом 06.08 по признаку «0 коммитов за 30 дней». В git до сих пор
+`status: ACTIVE`.
+
+**Техника, которая подвела:** журнал решений, завязанный на вердикт автомата.
+Автомат честно молчал — журнал молчал вместе с ним.
+
+**Следующий ход:** правило — если механизм записи зависит от чужого вердикта,
+дублировать запись вручную.
+
+**Адреса:** `ACTIVE/PSD_STEP33_MONITOR.md:42941-42947` ·
+`specs_docs/SESSION_START_AUDIT_2026-08-06.md:665-673` · `GENEALOGY.md §9`
+
+---
+
+## До 2026-03-07 — старые записи
+
+Прежний формат журнала (дата · задача · что сделано · критическая техника ·
+следующий шаг) вёлся до 07.03.2026 и оборвался за три дня до публикации.
+Сорок строк. Дальше писался только `INSIGHTS.md`.
+
+Архив прежних записей: `git log -- docs/Progress_Log.md`
