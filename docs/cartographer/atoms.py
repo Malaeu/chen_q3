@@ -6,8 +6,8 @@
 """
 import json, re, sys, collections, pathlib
 
-ROOT = pathlib.Path("/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle")
-INV = pathlib.Path("/Users/emalam/GitHub/codex_specs/cartographer/inventory_RouteB.json")
+ROOT = pathlib.Path(__file__).resolve().parents[2] / "q3.lean.aristotle"
+INV = pathlib.Path(__file__).resolve().parent / "inventory_RouteB.json"
 FILES = sorted((ROOT / "Q3/Proofs/RouteB").glob("*.lean"))
 
 # свои объекты — из инвентаря картографа

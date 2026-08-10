@@ -15,10 +15,10 @@
 """
 import json, re, sqlite3, pathlib, collections, subprocess, functools, difflib
 
-ROOT = pathlib.Path("/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle")
+ROOT = pathlib.Path(__file__).resolve().parents[2] / "q3.lean.aristotle"
 DB   = f"file:{ROOT}/aristotle_db/knowledge.db?mode=ro"
 MLIB = ROOT / ".lake/packages/mathlib/Mathlib"
-INV  = pathlib.Path("/Users/emalam/GitHub/codex_specs/cartographer/inventory_RouteB.json")
+INV  = pathlib.Path(__file__).resolve().parent / "inventory_RouteB.json"
 
 COST = {"ПОТЕРЯННОЕ ИМЯ": 1, "СВОЙ ФАКТ": 2, "ПЕРЕХОДНИК": 3, "СБОРКА": 4,
         "ПЕРЕНОС МАШИНЫ": 4, "НУЖНА ТЕОРЕМА": 5, "ПОДЪЁМ ИЗМЕРЕНИЯ": 5,

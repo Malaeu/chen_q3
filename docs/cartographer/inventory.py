@@ -17,7 +17,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
-REPO = Path("/Users/emalam/GitHub/rh_lean_01_2026")
+REPO = Path(__file__).resolve().parents[2]
 OUT_DIR = Path(__file__).resolve().parent
 MUSEUM = "PrimeCert"          # январская генерёнка — read-only музей
 

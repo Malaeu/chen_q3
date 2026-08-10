@@ -249,7 +249,33 @@ if [ -f docs/CODEX_CONTROL.md ] && \
 fi
 [ "$leak" -eq 0 ] && echo "  чисто: AGENTS.md ↛ CLAUDE.md, CLAUDE.md ↛ вход Codex"
 
-# ── 10. Расхождения ────────────────────────────────────────────────────────────
+# ── 10. Картограф: не протух ли инвентарь относительно дерева ──────────────────
+# inventory_RouteB.json порождён из .lean в RouteB, но связи между ними git не хранит:
+# файл не менялся — дерево чистое, и молчание ничего не доказывает.  Спрашиваем прямо:
+# когда инвентарь обновляли и что случилось с деревом после.  Даты файлов для этого
+# не годятся — git не хранит mtime, после клона он у всех файлов одинаковый.
+hr
+echo "КАРТОГРАФ"
+INVJ="docs/cartographer/inventory_RouteB.json"
+LEAN_DIR="q3.lean.aristotle/Q3/Proofs/RouteB"
+if [ ! -f "$INVJ" ]; then
+  echo "  инвентарь не построен — python3 docs/cartographer/inventory.py"
+else
+  inv_at="$(git log -1 --format=%h -- "$INVJ" 2>/dev/null)"
+  if [ -z "$inv_at" ]; then
+    echo "  инвентарь есть, но не в git — точки отсчёта нет, протухание не вычисляется"
+  elif git diff --quiet "$inv_at" HEAD -- "$LEAN_DIR" 2>/dev/null; then
+    echo "  актуален: .lean в RouteB не менялись с $inv_at"
+  else
+    n="$(git diff --name-only "$inv_at" HEAD -- "$LEAN_DIR" 2>/dev/null | wc -l)"
+    note "инвентарь картографа протух (.lean изменилось: $n с $inv_at) — python3 docs/cartographer/inventory.py"
+  fi
+  # Незакоммиченные .lean HEAD не видит — картограф уже врёт, хотя история чиста.
+  dirty="$(git status --porcelain -- "$LEAN_DIR" 2>/dev/null | wc -l)"
+  [ "$dirty" -gt 0 ] && echo "  плюс незакоммиченных .lean в дереве: $dirty"
+fi
+
+# ── 11. Расхождения ────────────────────────────────────────────────────────────
 hr
 if [ ${#DIVERGENCE[@]} -eq 0 ]; then
   echo "РАСХОЖДЕНИЙ НЕТ — источники согласованы."

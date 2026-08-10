@@ -11,7 +11,7 @@
 """
 import sqlite3, sys, pathlib, datetime, subprocess
 
-ROOT = pathlib.Path("/Users/emalam/GitHub/rh_lean_01_2026")
+ROOT = pathlib.Path(__file__).resolve().parents[2]
 DB = f"file:{ROOT}/q3.lean.aristotle/aristotle_db/knowledge.db?mode=ro"
 
 COST = {"ПОТЕРЯННОЕ ИМЯ": 1, "СВОЙ ФАКТ": 2, "ПЕРЕХОДНИК": 3, "СБОРКА": 4,
