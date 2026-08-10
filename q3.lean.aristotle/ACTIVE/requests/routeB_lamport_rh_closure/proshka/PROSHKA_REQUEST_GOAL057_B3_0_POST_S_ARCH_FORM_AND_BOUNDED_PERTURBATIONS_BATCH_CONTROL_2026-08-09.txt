@@ -1,0 +1,218 @@
+PROSHKA STRATEGIC BATCH CONTROL
+
+STATUS: PREPARED_NOT_SENT_OWNER_OK_REQUIRED
+DATE: 2026-08-09
+ROUTE: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+PHASE: GOAL057_B3_0_AMBIENT_SOURCE_WEIL_FORM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SAME_LIVING_PHASE_CHAT_REQUIRED: true
+ANSWER_NOW_FORBIDDEN: true
+LOCAL_CLOSEDNESS_BOUNDARY_REACHED: true
+
+This is one batched strategic review at the real canonical-mint boundary.
+Local work has already eliminated the separate Prime-design,
+lower-boundedness, closedness, and lower-semicontinuity questions. Do not merely
+summarize the pack. Independently kill-check the seven exact Lean candidates,
+the one remaining W02 visibility decision, and return one machine-operative
+route class.
+
+CURRENT VERIFIED STATE
+
+- Canonical repository: /Users/emalam/GitHub/rh_lean_01_2026
+- Branch: rh_clean
+- Source HEAD: b3ff7edbadcc635c9d009070223aa6c4774864ac
+- B3.0S is closed; B3.0 remains open; all ten coarse checkpoints remain open.
+- Arch candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearFormScratch.lean
+- Arch SHA256/shape:
+  2ed13c5895e4d7a21ae6f3ad133c0f0de29fe7705e33a8558a48748dba8e50a0
+  16733 bytes, 394 lines, final LF.
+- Prime candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearFormScratch.lean
+- Prime SHA256/shape:
+  e681cce09b058cf51b7d92f8a686d7102ab3da0f5db677a1b4946f2e1f9fff0a
+  11835 bytes, 310 lines, final LF.
+- Arch-minus-Prime candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearFormScratch.lean
+- Arch-minus-Prime SHA256/shape:
+  6bc10a84dc5a392d0b87a094ce4d821d69b2c31415caf2a80dab4c473e134dee
+  5975 bytes, 151 lines, final LF.
+- W02 endpoint-functional candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionalsScratch.lean
+- W02 endpoint-functional SHA256/shape:
+  447c27d285184ffc38a9b542203971ff015dcaab0f451b067470a25b182c1034
+  15733 bytes, 403 lines, final LF.
+- Generic W02 rank-two candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoFormScratch.lean
+- Generic W02 rank-two SHA256/shape:
+  94721612a3f9f2cc094f0389ca3e336fbd65b80f2f9602af8e6c9214c2e297fb
+  6231 bytes, 151 lines, final LF.
+- W02 ambient plus complete source-Weil candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientAndSourceWeilFormScratch.lean
+- W02 ambient/source-Weil SHA256/shape:
+  60bdb4c37898d14a94467744137540d7fea22723ad8a7398af52abf41471e976
+  12505 bytes, 300 lines, final LF.
+- Closed/lower-semicontinuous full-form candidate:
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedFormScratch.lean
+- Closed/lower-semicontinuous full-form SHA256/shape:
+  9a6b68ef153dbc6212c84ad40f113a4613fb468fa8439eda8a83b05a1437f1fd
+  16598 bytes, 372 lines, final LF.
+- All seven direct Lean compiles: PASS, zero sorry, standard axioms only.
+- The exact one-theorem public W02 wrapper was also inserted temporarily in
+  D0PstarSourceW02ModePairing.lean, compiled directly, and removed. The
+  production source file was restored with no retained diff.
+- No production mint, Aristotle submission, route promotion, PX claim, or RH claim.
+
+THE LOCAL CANDIDATE ALREADY PROVES
+
+1. A linear map for the shifted weighted archimedean multiplier.
+2. The associated shifted sesquilinear form and its exact application formula.
+3. Hermitian symmetry and nonnegative real diagonal.
+4. The exact shifted multiplier integral.
+5. Unshifted archimedean form equals shifted form minus the explicit B3.0N
+   constant times the inner product.
+6. Exact literal source-multiplier integral and literal-mode value.
+7. Exact finite coefficient expansion on CCM finite synthesis vectors.
+8. Exact finite restriction equal to the negative CCM-WR matrix form.
+9. A continuous bounded ambient Prime sesquilinear map on all of H_m, built
+   before its finite restriction.
+10. Hermitian symmetry, real diagonal, exact literal-mode values, and exact
+    finite CCM-Prime restriction for that ambient Prime form.
+11. The exact dense-domain partial ledger Arch - Prime, Hermitian, with finite
+    restriction -WR - Prime.
+12. A generic bounded continuous Hermitian rank-two endpoint form with an
+    explicit norm bound.
+13. Two constructions of the bounded endpoint functionals: through the
+    logarithmic-window L2 inverse, and directly as physical H_m vectors.
+14. The physical endpoint functionals have exact source-mode values by the
+    already-public scalar change-of-variables theorem. No public inverse-mode
+    representative theorem is needed.
+15. The full dense-domain Hermitian source-Weil form W02 + Arch - Prime.
+16. Its exact finite CCM-Weil restriction, conditional on exactly one source
+    supplier fact: the already-proved private rank-two pairing identity.
+17. Explicit operator-norm bounds for the bounded W02 and Prime perturbations.
+18. An explicit nonnegative lower-bound constant and the uniform lower bound
+    for the complete source-Weil diagonal on the exact shifted form domain.
+19. The exact maximal shifted square-root multiplication operator as a closed
+    `LinearPMap`.
+20. An extended nonnegative shifted quadratic form on all of H_m, finite
+    exactly on the locked shifted form domain.
+21. Lower semicontinuity of both its root energy and its squared quadratic form.
+22. Exact agreement of that extended shifted form with the real diagonal of
+    the shifted sesquilinear form on its finite domain.
+23. A continuous whole-domain bounded diagonal perturbation equal to
+    W02 - Prime - the explicit archimedean shift.
+24. The complete extended-real source-Weil quadratic form, lower
+    semicontinuous and finite exactly on the locked shifted form domain.
+25. Exact agreement there with the assembled source-Weil sesquilinear
+    diagonal and the explicit global lower bound; no positivity claim.
+
+THREE RELATED DECISIONS
+
+Q1. CANONICAL ARCHIMEDEAN FORM MINT
+
+Choose or kill the production split:
+
+A. One production file containing the full candidate surface.
+B. Three narrowly layered files:
+   - T: weighted linear map plus shifted form;
+   - U: integral realization plus unshifted/shifted decomposition;
+   - V: literal-mode values plus finite CCM-WR restriction.
+C. A smaller lawful split that you specify exactly.
+
+Return exact file paths, imports, public declarations, private helpers, and the
+first child to mint. Reject every statement that exceeds what the candidate
+literally proves.
+
+Q2. W02 AMBIENT SUPPLIER VISIBILITY
+
+The source contains private endpoint moments and a private theorem expressing
+sourceW02ModePairing as their rank-two form. The supplied physical-H_m
+construction now proves both endpoint mode values without any private API.
+The generic ambient form and exact finite restriction therefore have exactly
+one remaining hypothesis, matching that private rank-two theorem. Choose or
+kill:
+
+A. Keep every helper private and add one direct public theorem whose statement
+   is sourceW02ModePairing equals the rank-two combination of the two literal
+   endpoint integrals. Its proof is a one-line wrapper around the existing
+   private theorem inside D0PstarSourceW02ModePairing.lean.
+B. Make the existing private endpoint definitions and private rank-two theorem
+   public, a wider surface than the consumer requires.
+C. Make no source edit and duplicate the long rank-two algebra in a new module.
+
+The exact locally compiled option-A declaration is:
+
+```lean
+theorem sourceW02ModePairing_eq_rankTwoLiteralEndpointIntegrals
+    (i : PairIndex) (n r : ℤ) :
+    sourceW02ModePairing i n r =
+      conj (∫ x in Set.Icc 0 (L_m i),
+          logWindowZeroExtendedMode i n x *
+            (Real.exp (-x / 2) : ℂ)) *
+          (∫ x in Set.Icc 0 (L_m i),
+            logWindowZeroExtendedMode i r x *
+              (Real.exp (x / 2) : ℂ)) +
+        conj (∫ x in Set.Icc 0 (L_m i),
+          logWindowZeroExtendedMode i n x *
+            (Real.exp (x / 2) : ℂ)) *
+          (∫ x in Set.Icc 0 (L_m i),
+            logWindowZeroExtendedMode i r x *
+              (Real.exp (-x / 2) : ℂ)) := by
+  simpa only [sourceW02LogEndpointPlus, sourceW02LogEndpointMinus] using
+    sourceW02ModePairing_eq_rankTwoLogEndpointMoments i n r
+```
+
+Kill any plan that treats the CCM matrix alias or a finite restriction as an
+ambient extension. Kill any request for a public inverse-mode theorem: the
+physical construction has eliminated that dependency. Prefer one narrow
+wrapper over exposing helpers or duplicating the long W02 calculation. Do not
+request another endpoint, rank-two, ambient W02, or source-Weil construction:
+all of those candidates already compile.
+
+Q3. POST-ARCHIMEDEAN PRODUCTION ORDER
+
+Prime is no longer a speculative leaf: its exact continuous ambient candidate
+and the Arch - Prime partial ledger both compile. Select or kill this production
+order:
+
+1. Mint the Arch, continuous Prime, and Arch-minus-Prime surfaces from the
+   supplied candidates, preserving a narrow public API.
+2. Expose exactly the one rank-two W02 supplier theorem still consumed.
+3. Mint the supplied endpoint, rank-two, ambient W02 and complete source-Weil
+   candidates; the exact finite restriction is already present.
+4. Mint the supplied closed/lower-semicontinuous extended-real shifted and
+   complete source-Weil form contract; this work is already proved locally.
+5. Construct the associated operator only after that form contract is minted.
+
+Decide whether Arch and Prime should be minted as two production children or
+one narrow batch, and whether closedness should be established before or after
+the W02 addition. Kill any needlessly duplicated Prime construction.
+
+MANDATORY ADVERSARIAL CHECKS
+
+- Check complex slot orientation and every conjugation.
+- Check that the shift constant is introduced exactly once.
+- Check the ledger Psi = W02 + Arch - Prime and Arch|finite = -WR.
+- Density is not form-core density.
+- Form-domain membership is not operator-domain membership.
+- A finite matrix identity is not an ambient extension theorem.
+- Check private/public visibility of every proposed W02 supplier.
+- No generated PrimeCert/PSD scan, native_decide trust step, or Aristotle call.
+- No checkpoint, H4, continuum-numerator, PX, route, or RH overclaim.
+
+REQUIRED RESPONSE
+
+Return exactly one operative class with prefix TRY_, KILL_, or RUN_. Include:
+
+1. Selected route and explicitly killed alternatives.
+2. Exact production split and declaration surface for the archimedean form.
+3. Exact W02 source edit, or a proof that no edit is required.
+4. Exact post-archimedean construction order.
+5. Exact first production child among the seven supplied candidates unless all
+   are killed.
+6. At least two positive tests and at least ten semantic/adversarial judges.
+7. Explicit stop codes.
+8. Explicit statement that B3.0 and all ten coarse checkpoints remain open
+   unless literal closure evidence is supplied.
