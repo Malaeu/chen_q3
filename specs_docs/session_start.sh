@@ -210,7 +210,46 @@ else
   note "orchestrator/spine.py не найден"
 fi
 
-# ── 8. Расхождения ─────────────────────────────────────────────────────────────
+# ── 8. Границы, которые нельзя нарушать ────────────────────────────────────────
+# Не пересказ чужого кернела, а вычисление из состояния: инварианты берутся с диска,
+# поэтому не могут протухнуть в прозе.
+hr
+echo "ГРАНИЦЫ"
+newest_ans="$(ls -t "$LIVE_BUS"/*.answer.md 2>/dev/null | head -1)"
+if [ -n "$newest_ans" ]; then
+  for k in ROUTE BUS_010 GOAL_055 ARISTOTLE_SUBMISSION ROUTE_PROMOTION PX_RH_CLAIM; do
+    v="$(grep -m1 "^$k:" "$newest_ans" 2>/dev/null | sed "s/^$k:[[:space:]]*//")"
+    [ -n "$v" ] && printf '  %-22s %s\n' "$k" "$v"
+  done
+  echo "  (из $(basename "$newest_ans"))"
+else
+  note "не удалось прочитать границы — нет ни одного answer.md в живой шине"
+fi
+
+# ── 9. Разделение цепей: Codex ↔ AGENTS.md, я ↔ CLAUDE.md ──────────────────────
+# 2026-08-10 цепи разведены: Codex стартует через AGENTS.md, наблюдатель — через
+# CLAUDE.md, и ни один не читает файл другого.  Слипание обратно ловится здесь:
+# spine.py проверяет только свою сторону (validate_codex_bootstrap + защёлка
+# BEHAVIOR_BODY_MULTIROLE на YAML-шапке контроля), нашу сторону не проверяет никто.
+hr
+echo "РАЗДЕЛЕНИЕ ЦЕПЕЙ"
+leak=0
+if grep -q "CLAUDE\.md" AGENTS.md 2>/dev/null; then
+  note "AGENTS.md ссылается на CLAUDE.md — цепи слиплись"; leak=1
+fi
+# Ищем ВХОД, а не упоминание: вход стоял бы в шапке.  Ниже файл вправе называть чужую
+# цепь как предмет наблюдения — первая версия проверки этого не различала и ругалась на
+# собственный раздел «чего в этом файле нет».
+if head -20 CLAUDE.md 2>/dev/null | grep -qE "enter through|CODEX_CONTROL_UNAVAILABLE|Read it completely"; then
+  note "в шапке CLAUDE.md стоит вход Codex — цепи слиплись"; leak=1
+fi
+if [ -f docs/CODEX_CONTROL.md ] && \
+   sed -n '/^```yaml/,/^```/p' docs/CODEX_CONTROL.md | grep -q "CLAUDE\.md"; then
+  note "CLAUDE.md просочился в YAML-шапку CODEX_CONTROL — spine это тоже поймает"; leak=1
+fi
+[ "$leak" -eq 0 ] && echo "  чисто: AGENTS.md ↛ CLAUDE.md, CLAUDE.md ↛ вход Codex"
+
+# ── 10. Расхождения ────────────────────────────────────────────────────────────
 hr
 if [ ${#DIVERGENCE[@]} -eq 0 ]; then
   echo "РАСХОЖДЕНИЙ НЕТ — источники согласованы."

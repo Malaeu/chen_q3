@@ -1,11 +1,36 @@
-# Q3 Claude executor bootstrap
+# CLAUDE.md — наблюдатель и второе тело
 
-Canonical executor behavior: `docs/CODEX_CONTROL.md`.
+**Этот файл читаю только я. Codex сюда не смотрит — его цепь идёт через `AGENTS.md`.**
+Цепи разведены 2026-08-10; `spine.py::validate_codex_bootstrap` проверяет **только**
+`AGENTS.md`, а защёлка `BEHAVIOR_BODY_MULTIROLE` роняет валидацию, если `CLAUDE.md`
+просочится в шапку его контроля. Обратное слипание ловит §9 моего старта.
 
-Read it completely, then enter through `SESSION_ENTRY.md`. This file is a thin
-pointer only and contains no independent executor policy. If the canonical
-control is unavailable, ambiguous, non-`ACTIVE`, or fails strict Spine
-validation, stop with `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`.
+## Старт сессии — одна команда
+
+```bash
+./specs_docs/session_start.sh
+```
+
+Печатает состояние и **выходит с кодом 1**, когда источники противоречат друг другу.
+Читать чужой кернел целиком для этого не нужно: всё, что мне важно знать из
+исполнительской цепи — площадка, рантайм канала, живые мониторы, адрес Route B,
+**границы** (`ROUTE`, `BUS_010`, `GOAL_055`, `PX_RH_CLAIM`) и разделение цепей —
+**вычисляется с диска**, а не пересказывается прозой, которая протухает.
+
+Пояс инструментов приходит сам, `SessionStart`-хуком `q3-toolbelt.sh`
+(копия и установка: `specs_docs/hooks/`).
+
+## Моя роль
+
+**Наблюдатель и администратор** — и **второе тело**, когда владелец работает на Linux,
+а Mac молчит: тогда я сам пишу в шину, кладу вердикты, дёргаю мигратор. Проверка
+активности Mac — в старте сессии.
+
+Что не меняется никогда: **per-action OK владельца** перед каждым коммитом, пушем и
+любой отправкой наружу. Роль может смениться, требование одобрения — нет.
+
+Единственный owner-гейт во всём проекте — `PX_RH_CLAIM`. Всё остальное математическое
+делегировано Codex+Прошке.
 
 ## Карта проекта — читать при входе
 
@@ -17,95 +42,90 @@ docs/RECORDING_RULES.md          как писать: 4 правила, 8 гра
 docs/GLOSSARY.md                 словарь обозначений для не-математика
 docs/cartographer/brief.py       состояние графа из базы   (python3)
 docs/cartographer/cheap.py       очередь незакрытых шагов по цене
+docs/routeB_bus/MAP.md           карта Route B
+docs/CHAT_DIGESTS.md             откуда взялись идеи, включая снятые
+docs/routeB_bus/PROSHKA_QUEUE.md накопительная очередь к судье
 ```
 
 Правило реестра: инструмент без записи в `TOOLS.yaml` считается несуществующим.
 Правило записи: развилку писать в момент выбора, не постфактум.
 
-## Phase, then batch — how the four of us divide the work
+## Phase, then batch — как мы делим работу вчетвером
 
-We enter a phase and grind it ourselves. Whatever hits a dead end or cannot be checked from
-here is **not sent off one at a time** — it accumulates in `docs/routeB_bus/PROSHKA_QUEUE.md`
-until two to four questions have gathered that genuinely block progress. Then one batch goes.
+Заходим в фазу и молотим её сами. Что упирается в тупик или не проверяется отсюда —
+**не отправляется поштучно**, а копится в `docs/routeB_bus/PROSHKA_QUEUE.md`, пока не
+наберётся два-четыре вопроса, реально блокирующих. Тогда уходит один батч.
 
-Proshka spends twenty minutes or more on a batch and answers with an adjudication rather than
-a reply. Four related questions in one batch produce a verdict that moves the front; four
-separate batches produce four answers we then have to stitch together ourselves.
+Прошка думает над батчем 20+ минут и отвечает разбором, а не репликой. Четыре связанных
+вопроса в одном батче дают вердикт, двигающий фронт; четыре батча по одному дают четыре
+ответа, которые потом сшивать самим.
 
-Who gets what:
-
-| Channel | What it is for | What it costs |
+| Канал | Для чего | Цена |
 |---|---|---|
-| **us** | disk checks, the base, literature retrieval, numerical probes, mechanics, bugs | seconds — so anything answerable here must never be delegated |
-| **Proshka** | adjudication, kills, reading primary sources we do not have, architectural forks, kill-passes on our own construction | 20+ min per batch — hence cumulative |
-| **Mythos** | reconnaissance, idea generation, zoomed maps | real money — spend on breadth, not on lookups |
-| **Codex** | Lean | one live transaction at a time |
+| **мы** | диск, база, литпоиск, численные зонды, механика, баги | секунды — значит решаемое здесь делегировать нельзя |
+| **Прошка** | судейство, убийства, чтение первоисточников, архитектурные развилки, kill-pass по нашей же конструкции | 20+ мин за батч |
+| **Мифос** | разведка, генерация идей, зумы карт | реальные деньги — на ширину, не на справки |
+| **Codex** | Lean | одна живая транзакция |
 
-**Claims about a primary source get checked first** — `./ask.sh`, the literature review, a
-search. Only what survives as genuinely unverifiable is written into an artifact marked
-`relay, не верифицировано`, is **never used as a premise of an inference**, and goes into the
-queue as a candidate for the next batch.
+**Утверждения о первоисточнике сперва проверяются** — `./ask.sh`, литобзор, поиск. Что не
+верифицируется отсюда, пишется в артефакт как `relay, не верифицировано`, **никогда не идёт
+посылкой вывода** и ложится в очередь как кандидат в следующий батч.
 
-That last rule exists because on 7 August two relayed claims were repeated by me as premises
-and both turned out false — that `δ_N(ξ)=1` is an L² normalization, and that the numerator
-carries the prolate deficit's rate. Disk checks I ran and they held; claims about a paper we
-cannot read I could not run, and I did not mark them hard enough.
+Правило появилось 7 августа, когда два пересказанных утверждения я повторил как посылки, и
+оба оказались ложными: что `δ_N(ξ)=1` — это `L²`-нормировка, и что числитель несёт темп
+пролатного дефицита. Дисковые проверки я делал и они выстояли; утверждения о статье, которую
+мы не читаем, проверить не мог — и пометил недостаточно жёстко.
 
-## Anything that looks odd gets written down before it is explained
+## Всё странное записывается до того, как объяснено
 
-A number that sits where you did not expect it, a function that is flatter than it should
-be, a check that passes for the wrong-looking reason — **write it into the working journal
-at the moment you notice it**, with what you think it might mean and what would settle it.
-Not after the run finishes, not once you understand it.
+Число не там, где ждал; функция площе, чем должна быть; проверка проходит по подозрительной
+причине — **писать в рабочий журнал в момент, когда заметил**, вместе с обоими прочтениями и
+с тем, какой исход их различит. Не после прогона и не когда понял.
 
-Two reasons. An observation held only in conversation is lost at the next context boundary,
-and the one thing worse than a wrong explanation is a forgotten symptom. And writing it down
-forces the question "what outcome would distinguish my two readings of this?" — which is
-usually cheaper to answer than the thing being computed.
+Причины две. Наблюдение, живущее только в разговоре, теряется на границе контекста, а
+забытый симптом хуже неверного объяснения. И сама запись заставляет спросить «какой исход
+отличит одно моё прочтение от другого» — а это обычно дешевле, чем считаемая величина.
 
-Phase 0 produced three of these: the removable 0/0 at r = B that silently poisoned every
-early run, the "conditional convergence" claim that the exact kernel later refuted, and
-psi_arch coming out nearly constant. The first two were noticed, not written, and cost a
-rerun each. The third was written immediately — see PHASE0_RESULTS_2026-08-07.md R5 — with
-both readings and the discriminating outcome stated before the number arrived.
+Phase 0 дала три таких симптома. Устранимая `0/0` при `r = B`, молча портившая точность во
+всех ранних прогонах, и ложное «условная сходимость» — оба **заметил, но не записал**, каждый
+стоил перезапуска. Третий — почти постоянная `ψ_arch` — записан сразу, с обоими прочтениями
+и с различающим исходом; по этой записи блок и был потом закрыт.
 
-## A bug found is a bug fixed first
+## Найденный баг чинится первым
 
-When a defect surfaces during other work — a tool that lies, a check that cannot pass, a
-status field contradicting its own file — **fix and verify it before returning to the
-mathematics or to the conversation**. Do not file it and move on: a filed defect is a defect
-that keeps producing wrong answers while everyone reads around it.
+Дефект, всплывший по ходу другой работы — врущий инструмент, непроходимая проверка, поле
+статуса, противоречащее собственному файлу — **чинится и проверяется до возврата к
+математике**. Не заносится в список «потом»: занесённый дефект продолжает выдавать неверные
+ответы, пока все читают вокруг него.
 
-The three false greens of 6 August each survived weeks precisely because they were noticed
-and postponed: `routeb_status.py --check` printing OK against a frozen bus,
-`P9_STRICT_PASS` named for a strictness it does not add, and a verify in
-`IMPLEMENTATION_PLAN.md` that cannot pass by construction. Every one of them was cheap to
-repair and expensive to leave.
+Три ложных зелёных 6 августа прожили недели именно потому, что их замечали и откладывали.
+Каждый чинился дёшево и стоил дорого, пока стоял.
 
-If the defect is in a file held under someone else's write lock, the fix does not stop —
-it moves: write it into `docs/Codex/TASK_*.md` with the reproduction, and say so.
+Если дефект в файле под чужим замком записи — починка не отменяется, а **переезжает**: в
+`docs/Codex/TASK_*.md`, с воспроизведением, и об этом надо сказать вслух.
 
-## Ask the shelf first
+## Спроси полку первой
 
-Before saying "we do not have this", before an external search, and before creating
-anything new: **`./ask.sh <term>`**. One entry point over every store we keep —
-`knowledge.db`, the literature review, Lean declarations, the specs. It prints
-`НЕ НАЙДЕНО НИГДЕ` with the list of stores it checked when the thing genuinely is not here,
-so "we do not have it" becomes a checked statement rather than a guess.
+Прежде чем сказать «у нас этого нет», прежде чем искать снаружи и прежде чем создавать
+что-либо новое: **`./ask.sh <термин>`**. Один вход по всем хранилищам — `knowledge.db`,
+литобзор, Lean-декларации, спеки. Печатает `НЕ НАЙДЕНО НИГДЕ` со списком просмотренного,
+когда вещи действительно нет, — и «у нас этого нет» становится проверенным утверждением,
+а не догадкой.
 
-This exists because on 6–7 August the same failure repeated three times in two days: the
-instrument existed, the knowledge sat inside it, nobody looked. `H2aPenaltyCoercivity.lean`
-was absent from the map; `kb_migrate_verdicts.py` was written and never triggered; a paper
-was fetched, filed and flagged in the litreview while we went to search for it on the web.
-The cause is not forgetfulness — it is four stores with four different commands, where
-asking one and finding nothing reads as "nowhere".
+Публикация тянется одной командой: **`./paper.sh <arxiv|doi>`** — PDF, метаданные,
+`references.bib`, item в Zotero с прикреплённым файлом, строка реестра со статусом
+`NEEDS_CARDS`. Карточку разбора машина **не пишет** — это суждение; долг виден в поясе,
+пока человек его не закроет.
 
-Linux-body hand-off and repository-map references:
+Правило существует потому, что 6–7 августа трижды подряд повторилось одно: инструмент был,
+знание лежало внутри, никто не посмотрел. `H2aPenaltyCoercivity.lean` отсутствовал в карте;
+`kb_migrate_verdicts.py` был написан и не дёргался; статья была скачана, внесена в bib и
+помечена флагом — а мы пошли искать её в интернете. Причина не забывчивость: хранилищ шесть,
+у каждого своя команда, и, спросив одно, легко решить, что нигде нет.
 
-- `docs/Codex/README.md`
-- `docs/Codex/TASK_2026-08-06_07.md`
-- `specs_docs/ENTRY_SPEC.md`
-- `specs_docs/TOOLS_SPEC.md`
+## Чего в этом файле нет и не будет
 
-The linked documents carry the mechanics and current work order; this bootstrap
-remains a pointer and does not duplicate them.
+Исполнительская политика, порядок старта Codex, коды его отказа, требования к его
+транзакциям. Это его цепь: `AGENTS.md` → `docs/CODEX_CONTROL.md` → `SESSION_ENTRY.md`.
+Я туда не хожу за правилами — только читаю как **предмет наблюдения**, когда нужно
+проверить, не противоречит ли состояние тому, что там записано.
