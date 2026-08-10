@@ -1,4 +1,4 @@
-# Taint Sources (auto) — 2026-08-10 19:01 UTC
+# Taint Sources (auto) — 2026-08-10 21:40 UTC
 
 **Purpose:** Transitive origin set for every file with observed contamination.
 **Direct sorry files:** 0

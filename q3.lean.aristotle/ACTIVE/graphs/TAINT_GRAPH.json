@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "SOURCE_HOLE_AND_IMPORT_BOUNDARY_PROPAGATION",
-  "generated_at": "2026-08-10 19:01 UTC",
+  "generated_at": "2026-08-10 21:40 UTC",
   "root": "Q3/",
   "semantics": {
     "numeric_checks": "EVIDENCE_ONLY_NOT_PROPAGATED",
@@ -9,7 +9,7 @@
     "doomed": "DISABLED"
   },
   "scope": {
-    "included_files": 3393,
+    "included_files": 3387,
     "excluded_directories": [
       "Q3/Clean",
       "Q3/Archive"
@@ -26,8 +26,8 @@
       "policy": "ROOT_CLOSURE_PLUS_LIVE_SUPPLIER_ALLOWLIST",
       "heavy_generated_family": "Q3/Proofs/PrimeCert",
       "heavy_threshold_bytes": 1000000,
-      "content_scanned_files": 2090,
-      "content_scanned_bytes": 94523984,
+      "content_scanned_files": 2084,
+      "content_scanned_bytes": 94460881,
       "skipped_generated_files": 1303,
       "skipped_generated_bytes": 4312275592,
       "skipped_file_ids": [
@@ -81349,31 +81349,6 @@
       "is_doomed": false
     },
     {
-      "id": "Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearFormScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarArchPrimeSesquilinearFormScratch",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearFormScratch.lean",
-        "Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearFormScratch.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
       "id": "Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
       "module": "Q3.Proofs.RouteB.D0PstarArchSesquilinearFormFiniteRestriction",
       "dependencies": [
@@ -81773,33 +81748,6 @@
       "is_doomed": false
     },
     {
-      "id": "Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearFormScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarPrimeAmbientSesquilinearFormScratch",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean",
-        "Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierL2Isometry.lean",
-        "Q3/Proofs/RouteB/D0PstarSourcePrimeFiniteFormCCMPrimeCrosswalk.lean",
-        "Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
       "id": "Q3/Proofs/RouteB/D0PstarProjectedMellinCoordinate.lean",
       "module": "Q3.Proofs.RouteB.D0PstarProjectedMellinCoordinate",
       "dependencies": [
@@ -81829,30 +81777,6 @@
       "module": "Q3.Proofs.RouteB.D0PstarShiftedArchClosedForm",
       "dependencies": [
         "Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3/Proofs/RouteB/D0PstarShiftedArchClosedFormScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarShiftedArchClosedFormScratch",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0PstarW02AmbientAndSourceWeilFormScratch.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -81976,33 +81900,6 @@
       "module": "Q3.Proofs.RouteB.D0PstarShiftedArchSesquilinearForm",
       "dependencies": [
         "Q3/Proofs/RouteB/D0PstarShiftedArchFormDomain.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearFormScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarShiftedArchSesquilinearFormScratch",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean",
-        "Q3/Proofs/RouteB/D0PstarShiftedArchFormDomainDensity.lean",
-        "Q3/Proofs/RouteB/D0PstarSourceArchFiniteFormCCMWRCrosswalk.lean",
-        "Q3/Proofs/RouteB/D0PstarSourceArchModePairingKernel.lean"
       ],
       "sorries": [],
       "numeric_check": "NOT_CONFIGURED",
@@ -82544,6 +82441,31 @@
       "is_doomed": false
     },
     {
+      "id": "Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "module": "Q3.Proofs.RouteB.D0PstarSourceWeilOddTailGraphOperator",
+      "dependencies": [
+        "Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+        "Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean"
+      ],
+      "sorries": [],
+      "numeric_check": "NOT_CONFIGURED",
+      "content_scan_status": "SCANNED",
+      "direct_status": "CLEAR",
+      "propagation_status": "NO_OBSERVED_ISSUE",
+      "integrity_status": "NO_OBSERVED_ISSUE",
+      "taint_sources": [],
+      "taint_predecessors": [],
+      "taint_origin_count": 0,
+      "root_ids": [],
+      "unresolved_imports": [],
+      "intrinsic_risk": null,
+      "risk_score": null,
+      "risk_threshold": null,
+      "risk_status": "NOT_APPLICABLE",
+      "risk_exceeds": null,
+      "is_doomed": false
+    },
+    {
       "id": "Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
       "module": "Q3.Proofs.RouteB.D0PstarSourceWeilSesquilinearForm",
       "dependencies": [
@@ -82618,33 +82540,6 @@
       "is_doomed": false
     },
     {
-      "id": "Q3/Proofs/RouteB/D0PstarW02AmbientAndSourceWeilFormScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarW02AmbientAndSourceWeilFormScratch",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearFormScratch.lean",
-        "Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean",
-        "Q3/Proofs/RouteB/D0PstarW02EndpointFunctionalsScratch.lean",
-        "Q3/Proofs/RouteB/D0PstarW02RankTwoFormScratch.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
       "id": "Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
       "module": "Q3.Proofs.RouteB.D0PstarW02AmbientContinuousForm",
       "dependencies": [
@@ -82695,58 +82590,8 @@
       "is_doomed": false
     },
     {
-      "id": "Q3/Proofs/RouteB/D0PstarW02EndpointFunctionalsScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarW02EndpointFunctionalsScratch",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0LogWindowVNMCompletenessBridge.lean",
-        "Q3/Proofs/RouteB/D0PstarSourceW02ModePairing.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
       "id": "Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
       "module": "Q3.Proofs.RouteB.D0PstarW02RankTwoForm",
-      "dependencies": [
-        "Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean",
-        "Q3/Proofs/RouteB/D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean"
-      ],
-      "sorries": [],
-      "numeric_check": "NOT_CONFIGURED",
-      "content_scan_status": "SCANNED",
-      "direct_status": "CLEAR",
-      "propagation_status": "NO_OBSERVED_ISSUE",
-      "integrity_status": "NO_OBSERVED_ISSUE",
-      "taint_sources": [],
-      "taint_predecessors": [],
-      "taint_origin_count": 0,
-      "root_ids": [],
-      "unresolved_imports": [],
-      "intrinsic_risk": null,
-      "risk_score": null,
-      "risk_threshold": null,
-      "risk_status": "NOT_APPLICABLE",
-      "risk_exceeds": null,
-      "is_doomed": false
-    },
-    {
-      "id": "Q3/Proofs/RouteB/D0PstarW02RankTwoFormScratch.lean",
-      "module": "Q3.Proofs.RouteB.D0PstarW02RankTwoFormScratch",
       "dependencies": [
         "Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean",
         "Q3/Proofs/RouteB/D0PstarSourceW02FiniteFormCCMW02Crosswalk.lean"

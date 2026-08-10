@@ -121,7 +121,7 @@
       "control_id": "Q3_EXECUTOR_CONTROL",
       "existing_entry_gate": "SESSION_START",
       "path": "docs/CODEX_CONTROL.md",
-      "sha256": "b6366bad3d5fecb0e5156eaede7dd79ff4bca4937984612242a678184298f8e7",
+      "sha256": "dd95342d807aff8d4d0532e2da15b8d98ed470af8fbb3f2561db5cada99da8cf",
       "spine_wiring": "behavior_controls.executor",
       "status": "ACTIVE",
       "trigger_owner": "Codex"
@@ -157,7 +157,7 @@
   "knowledge": {
     "dossier": 171,
     "excluded_source": 113,
-    "journal_entry": 1808,
+    "journal_entry": 1811,
     "kill": 121,
     "move": 26,
     "postmortem": 1,
@@ -230,8 +230,8 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3393,
-    "import_edges": 5683,
+    "file_states": 3387,
+    "import_edges": 5666,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
@@ -281,10 +281,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-10T19:01:38+00:00",
-      "id": "OBS_bf6f8a0d93a782b85e67",
+      "generated_at": "2026-08-10T21:40:30+00:00",
+      "id": "OBS_5845f0805cfb6010b421",
       "schema_version": 6,
-      "source_commit": "9fe82c8633b676da8fd20fc34965ec10ec83e8cb",
+      "source_commit": "15b8d78a296999e602fa279f955b6963d3e9e297",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -294,7 +294,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 9,
-        "source_generated_at": "2026-08-10T18:56:47+00:00",
+        "source_generated_at": "2026-08-10T21:31:52+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -302,7 +302,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-10 19:01 UTC",
+        "source_generated_at": "2026-08-10 21:40 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -310,7 +310,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-10 19:01 UTC",
+        "source_generated_at": "2026-08-10 21:40 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -318,7 +318,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-10 19:01 UTC",
+        "source_generated_at": "2026-08-10 21:40 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
@@ -334,23 +334,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-10 19:01 UTC",
+        "source_generated_at": "2026-08-10 21:40 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3393,
-        "source_generated_at": "2026-08-10 19:01 UTC",
+        "record_count": 3387,
+        "source_generated_at": "2026-08-10 21:40 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3393,
-        "source_generated_at": "2026-08-10 19:01 UTC",
+        "record_count": 3387,
+        "source_generated_at": "2026-08-10 21:40 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -360,7 +360,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2089
+      "NO_OBSERVED_ISSUE": 2083
     },
     "wall_states": 5
   },
@@ -632,11 +632,11 @@
         "id": "POST_JUNE_IDENTIFICATION",
         "lexical_count": 0,
         "matched_paths": [
-          "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0e3-zero-extended-mode-cosine-correlation-ccm-qkernel-release-2026-08-08.md"
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-twolevel-spectral-ladder/archive/routeb-bus-legacy-001-009-2026-07-12/008-contract-v2-crosscheck-and-state-sync-answer.md",
+          "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -654,7 +654,7 @@
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 41,
+        "result_count": 38,
         "status": "PASS",
         "vector_count": 30
       },
@@ -666,7 +666,7 @@
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaashapesqderivmajorantreceiver.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
         "result_count": 34,
@@ -675,14 +675,14 @@
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "4c99096fb9ae91918a4af89dc44fef139225f130",
+    "source_commit": "15b8d78a296999e602fa279f955b6963d3e9e297",
     "status": "PASS"
   },
-  "source_commit": "4c99096fb9ae91918a4af89dc44fef139225f130",
+  "source_commit": "15b8d78a296999e602fa279f955b6963d3e9e297",
   "tool_manifest": {
     "family_count": 7,
     "schema": "q3_tool_manifest.v2",
-    "sha256": "0a6233297fa68cc55e9c3e95b622ed08114185e42deeadf230bab73502fdae9d",
+    "sha256": "2d03e0e894a03fdba78efeaa883e14841e8374a241c981396aada3428c9fe599",
     "tool_count": 26,
     "writer_count": 14
   }

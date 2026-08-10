@@ -81,6 +81,45 @@ strict startup и генераторные size/diff gates. Census дополн�
 
 ---
 
+## 2026-08-10 — literal odd-tail outer block in the graph Hilbert norm
+
+**Развилка:** represent the infinite source outer block on the plain
+ambient/product space, reuse a finite Schur floor, or build the actual closed
+graph Hilbert carrier and leave the source coercivity theorem visible.
+
+**Выбрали:** B3.0AJ: `WithLp 2` closed graph, literal normalized closed
+odd span, exact compressed shifted source-Weil Riesz operator, and the explicit
+`SourceWeilOddTailAmbientCoercive` seam.
+
+**Почему:** the graph carrier simultaneously controls the ambient and
+square-root-weighted coordinates. The source ambient lower bound and the
+already-proved weighted bound therefore combine to a strict graph-norm bound,
+which is exactly what continuous invertibility requires.
+
+**Что отвергли и почему:** the plain product was rejected because its max
+norm is wrong; the raw span because completeness is unavailable; identity or
+`d⁻¹ I` because it erases the actual source block; N=960 because finite evidence
+cannot prove the infinite supplier.
+
+**Техника:** closed `LinearPMap.graph` transport, `WithLp` product inner
+geometry, Riesz representation, positive orthogonal compression, two-component
+coercivity with constant `min mu 1 / 2`, and Mathlib's strict inner-bound
+criterion for a unit/continuous equivalence.
+
+**Следующий ход:** source-lock the Yoshida/Suzuki statement and prove an
+explicit cutoff/constant instance of `SourceWeilOddTailAmbientCoercive`; keep
+the literal residual supplier separate.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean`
+· `docs/routeB_bus/GOAL057_B3_0AJ_SOURCE_WEIL_ODD_TAIL_GRAPH_OPERATOR_CLOSEOUT_2026-08-10.md`
+· Goal 057 A54.
+
+**Чей вердикт и аргумент:** local Codex proof; no external verdict was
+consumed. The exact argument is the two-coordinate graph estimate above.
+
+---
+
 ## 2026-08-10 — actual outer inverse kept visible in the Schur correction
 
 **Развилка:** either formalize the generic inverse-weighted correction with

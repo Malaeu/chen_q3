@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 194,
-  "declarations": 1583,
-  "in_docs": 660,
-  "in_lemma_db": 1583,
+  "files_scanned": 195,
+  "declarations": 1626,
+  "in_docs": 661,
+  "in_lemma_db": 1626,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -10706,6 +10706,436 @@
       "line": 178,
       "signature": "theorem sourceWeilOddFormPullback13 (N : ℕ) (a b : EuclideanSpace ℂ (Fin N)) : sourceWeilSesquilinearForm ⟨13, N, by norm_num⟩ (sourceWeilOddSynthesis13 N a) (sourceWeilOddSynthesis13 N b) = ∑ j, ∑ k, star ((ccmOddCoefficientIsometry N a) j) * (Q3.RouteB.ccmWeilMatFinite 13 N j k : ℂ) * (ccmOddCoefficientIsometry N b) k",
       "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphSubmodule",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 32,
+      "signature": "noncomputable def sourceWeilGraphSubmodule (i : PairIndex) : Submodule ℂ (WithLp 2 (H_m i × MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "abbrev",
+      "name": "SourceWeilGraphCarrier",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 40,
+      "signature": "abbrev SourceWeilGraphCarrier (i : PairIndex)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphSubmodule_isClosed",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 43,
+      "signature": "theorem sourceWeilGraphSubmodule_isClosed (i : PairIndex) : IsClosed (sourceWeilGraphSubmodule i : Set (WithLp 2 (H_m i × MeasureTheory.Lp ℂ 2 (volume : Measure ℝ))))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphCarrierCompleteSpace",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 51,
+      "signature": "noncomputable instance sourceWeilGraphCarrierCompleteSpace (i : PairIndex) : CompleteSpace (SourceWeilGraphCarrier i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphAmbient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 55,
+      "signature": "noncomputable def sourceWeilGraphAmbient (i : PairIndex) : SourceWeilGraphCarrier i →L[ℂ] H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphWeighted",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 61,
+      "signature": "noncomputable def sourceWeilGraphWeighted (i : PairIndex) : SourceWeilGraphCarrier i →L[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 68,
+      "signature": "@[simp] theorem sourceWeilGraphAmbient_apply (i : PairIndex) (x : SourceWeilGraphCarrier i) : sourceWeilGraphAmbient i x = x.1.fst",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphWeighted_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 73,
+      "signature": "@[simp] theorem sourceWeilGraphWeighted_apply (i : PairIndex) (x : SourceWeilGraphCarrier i) : sourceWeilGraphWeighted i x = x.1.snd",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraph_pair_mem",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 78,
+      "signature": "theorem sourceWeilGraph_pair_mem (i : PairIndex) (x : SourceWeilGraphCarrier i) : (sourceWeilGraphAmbient i x, sourceWeilGraphWeighted i x) ∈ (sourceArchimedeanShiftedWeightedLpPMap i).graph",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_mem_domain",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 84,
+      "signature": "theorem sourceWeilGraphAmbient_mem_domain (i : PairIndex) (x : SourceWeilGraphCarrier i) : sourceWeilGraphAmbient i x ∈ (sourceArchimedeanShiftedWeightedLpPMap i).domain",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphDomain",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 97,
+      "signature": "noncomputable def sourceWeilGraphDomain (i : PairIndex) (x : SourceWeilGraphCarrier i) : sourceArchimedeanShiftedFormDomain i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphDomain_coe",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 102,
+      "signature": "@[simp] theorem sourceWeilGraphDomain_coe (i : PairIndex) (x : SourceWeilGraphCarrier i) : (sourceWeilGraphDomain i x : H_m i) = sourceWeilGraphAmbient i x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphWeighted_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 106,
+      "signature": "theorem sourceWeilGraphWeighted_eq (i : PairIndex) (x : SourceWeilGraphCarrier i) : sourceWeilGraphWeighted i x = sourceArchimedeanShiftedWeightedLpLinearMap i (sourceWeilGraphDomain i x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02AmbientRieszOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 124,
+      "signature": "noncomputable def sourceW02AmbientRieszOperator (i : PairIndex) : H_m i →L[ℂ] H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourcePrimeAmbientRieszOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 129,
+      "signature": "noncomputable def sourcePrimeAmbientRieszOperator (i : PairIndex) : H_m i →L[ℂ] H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilBoundedShiftRieszOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 134,
+      "signature": "noncomputable def sourceWeilBoundedShiftRieszOperator (i : PairIndex) : H_m i →L[ℂ] H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilShiftedGraphOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 143,
+      "signature": "noncomputable def sourceWeilShiftedGraphOperator (i : PairIndex) : SourceWeilGraphCarrier i →L[ℂ] SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilShiftedGraphOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 152,
+      "signature": "theorem inner_sourceWeilShiftedGraphOperator (i : PairIndex) (x y : SourceWeilGraphCarrier i) : inner ℂ (sourceWeilShiftedGraphOperator i x) y = inner ℂ (sourceWeilGraphWeighted i x) (sourceWeilGraphWeighted i y) + sourceW02AmbientContinuousSesquilinearForm i (sourceWeilGraphAmbient i x) (sourceWeilGraphAmbient i y) - sourcePrimeContinuousSesquilinearForm i (sourceWeilGraphAmbient i x) (sourceWeilGraphAmbient i y) + ((‖sourceW02AmbientContinuousSesquilinearForm i‖ + ‖sourcePrimeContinuousSesquilinearForm i‖ : ℝ) : ℂ) * inner ℂ (sourceWeilGraphAmbient i x) (sourceWeilGraphAmbient i y)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilShiftedGraphOperator_eq_source",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 182,
+      "signature": "theorem inner_sourceWeilShiftedGraphOperator_eq_source (i : PairIndex) (x y : SourceWeilGraphCarrier i) : inner ℂ (sourceWeilShiftedGraphOperator i x) y = sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i y) + (sourceWeilLowerBoundConstant i : ℂ) * inner ℂ (sourceWeilGraphAmbient i x) (sourceWeilGraphAmbient i y)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilShiftedGraphOperator_self_eq_energy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 208,
+      "signature": "theorem inner_sourceWeilShiftedGraphOperator_self_eq_energy (i : PairIndex) (x : SourceWeilGraphCarrier i) : inner ℂ (sourceWeilShiftedGraphOperator i x) x = ((sourceWeilShiftedExtendedQuadraticForm i (sourceWeilGraphAmbient i x)).toReal : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedGraphOperator_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 236,
+      "signature": "theorem sourceWeilShiftedGraphOperator_isPositive (i : PairIndex) : (sourceWeilShiftedGraphOperator i).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphLift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 247,
+      "signature": "noncomputable def sourceWeilGraphLift (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_lift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 254,
+      "signature": "@[simp] theorem sourceWeilGraphAmbient_lift (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : sourceWeilGraphAmbient i (sourceWeilGraphLift i x) = x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphWeighted_lift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 259,
+      "signature": "@[simp] theorem sourceWeilGraphWeighted_lift (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : sourceWeilGraphWeighted i (sourceWeilGraphLift i x) = sourceArchimedeanShiftedWeightedLpLinearMap i x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphOddMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 267,
+      "signature": "noncomputable def sourceWeilGraphOddMode (i : PairIndex) (n : ℕ) : SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphOddTail",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 277,
+      "signature": "noncomputable def sourceWeilGraphOddTail (i : PairIndex) (R : ℕ) : Submodule ℂ (SourceWeilGraphCarrier i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "abbrev",
+      "name": "SourceWeilGraphOddTailCarrier",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 282,
+      "signature": "abbrev SourceWeilGraphOddTailCarrier (i : PairIndex) (R : ℕ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphOddTailCompleteSpace",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 285,
+      "signature": "noncomputable instance sourceWeilGraphOddTailCompleteSpace (i : PairIndex) (R : ℕ) : CompleteSpace (SourceWeilGraphOddTailCarrier i R)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphOddTailInnerProductSpace",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 292,
+      "signature": "instance sourceWeilGraphOddTailInnerProductSpace (i : PairIndex) (R : ℕ) : InnerProductSpace ℂ (SourceWeilGraphOddTailCarrier i R)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "instance",
+      "name": "sourceWeilGraphOddTailHasOrthogonalProjection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 297,
+      "signature": "noncomputable instance sourceWeilGraphOddTailHasOrthogonalProjection (i : PairIndex) (R : ℕ) : (sourceWeilGraphOddTail i R).HasOrthogonalProjection",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilShiftedOddTailOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 305,
+      "signature": "noncomputable def sourceWeilShiftedOddTailOperator (i : PairIndex) (R : ℕ) : SourceWeilGraphOddTailCarrier i R →L[ℂ] SourceWeilGraphOddTailCarrier i R",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilShiftedOddTailOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 314,
+      "signature": "theorem inner_sourceWeilShiftedOddTailOperator (i : PairIndex) (R : ℕ) (x y : SourceWeilGraphOddTailCarrier i R) : inner ℂ (sourceWeilShiftedOddTailOperator i R x) y = inner ℂ (sourceWeilShiftedGraphOperator i (x : SourceWeilGraphCarrier i)) (y : SourceWeilGraphCarrier i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddTailOperator_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 324,
+      "signature": "theorem sourceWeilShiftedOddTailOperator_isPositive (i : PairIndex) (R : ℕ) : ContinuousLinearMap.IsPositive (𝕜",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "SourceWeilOddTailAmbientCoercive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 335,
+      "signature": "def SourceWeilOddTailAmbientCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraph_norm_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 345,
+      "signature": "theorem sourceWeilGraph_norm_sq (i : PairIndex) (x : SourceWeilGraphCarrier i) : ‖x‖ ^ 2 = ‖sourceWeilGraphAmbient i x‖ ^ 2 + ‖sourceWeilGraphWeighted i x‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddTailOperator_ambient_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 353,
+      "signature": "theorem sourceWeilShiftedOddTailOperator_ambient_lower (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (x : SourceWeilGraphOddTailCarrier i R) : mu * ‖sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)‖ ^ 2 ≤ (inner ℂ (sourceWeilShiftedOddTailOperator i R x) x).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddTailOperator_weighted_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 378,
+      "signature": "theorem sourceWeilShiftedOddTailOperator_weighted_lower (i : PairIndex) (R : ℕ) (x : SourceWeilGraphOddTailCarrier i R) : ‖sourceWeilGraphWeighted i (x : SourceWeilGraphCarrier i)‖ ^ 2 ≤ (inner ℂ (sourceWeilShiftedOddTailOperator i R x) x).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddTailOperator_graph_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 404,
+      "signature": "theorem sourceWeilShiftedOddTailOperator_graph_lower (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (x : SourceWeilGraphOddTailCarrier i R) : (min mu 1 / 2) * ‖x‖ ^ 2 ≤ (inner ℂ (sourceWeilShiftedOddTailOperator i R x) x).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddTailOperator_isUnit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 436,
+      "signature": "theorem sourceWeilShiftedOddTailOperator_isUnit (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) : IsUnit (sourceWeilShiftedOddTailOperator i R)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddTailOperator_isInvertible",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 464,
+      "signature": "theorem sourceWeilShiftedOddTailOperator_isInvertible (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) : (sourceWeilShiftedOddTailOperator i R).IsInvertible",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailInverseWeightedData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 475,
+      "signature": "noncomputable def sourceWeilOddTailInverseWeightedData {Head : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (residual : Head →L[ℂ] SourceWeilGraphOddTailCarrier i R) : OddTailInverseWeightedData Head (SourceWeilGraphOddTailCarrier i R) where",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailInverseWeightedData_outerBlock",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 488,
+      "signature": "@[simp] theorem sourceWeilOddTailInverseWeightedData_outerBlock {Head : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (residual : Head →L[ℂ] SourceWeilGraphOddTailCarrier i R) : (sourceWeilOddTailInverseWeightedData i R mu hcoercive residual).outerBlock = sourceWeilShiftedOddTailOperator i R",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailInverseWeightedData_residual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+      "line": 497,
+      "signature": "@[simp] theorem sourceWeilOddTailInverseWeightedData_residual {Head : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (residual : Head →L[ℂ] SourceWeilGraphOddTailCarrier i R) : (sourceWeilOddTailInverseWeightedData i R mu hcoercive residual).residual = residual",
+      "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
     },

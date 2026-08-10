@@ -141,10 +141,10 @@
       "tag": "LEGACY_UNCLASSIFIED"
     }
   ],
-  "generated_at": "2026-08-10T18:56:47+00:00",
+  "generated_at": "2026-08-10T21:31:52+00:00",
   "namewatch_candidates": [],
   "schema": "q3_autopsy_map.v1",
-  "source_commit": "9fe82c8633b676da8fd20fc34965ec10ec83e8cb",
+  "source_commit": "15b8d78a296999e602fa279f955b6963d3e9e297",
   "walls": [
     {
       "candidate_card": null,

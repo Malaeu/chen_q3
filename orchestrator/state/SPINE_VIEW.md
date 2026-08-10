@@ -11,9 +11,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `PROSHKA` | `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` | Codex | `DELEGATED_STRATEGIC_REVIEW` | `behavior_controls.proshka` |
 
 ## Operational tool manifest
-- schema / mirror: `q3_tool_manifest.v2` / `BYTE_IDENTICAL`
+- schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
 - families / tools / writers: `7` / `26` / `14`
-- SHA-256: `0a6233297fa68cc55e9c3e95b622ed08114185e42deeadf230bab73502fdae9d`
+- SHA-256: `2d03e0e894a03fdba78efeaa883e14841e8374a241c981396aada3428c9fe599`
+- Codex current task: `EMPTY`
 
 ## Phase chat and bounded exploration
 - validation: `VALID`
@@ -37,7 +38,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ### Latest durable exploration closeouts
 
-- none
+| id | date | state | target | boundary | next |
+|---|---|---|---|---|---|
+| EXP-G057-B3-0AJ-20260810 | 2026-08-10 | selected | SOURCE_ODD_OUTER_BLOCK_POSITIVE_INVERTIBLE_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING |
 
 ## AUTOPSY wall map and namewatch
 - events / structured: `9` / `6`
@@ -54,7 +57,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `41`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `38`.
 - `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
 
 ## Meta-corpus registry
@@ -62,12 +65,12 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_bf6f8a0d93a782b85e67` at `2026-08-10T19:01:38+00:00` from `9fe82c8633b6`
+- snapshot: `OBS_5845f0805cfb6010b421` at `2026-08-10T21:40:30+00:00` from `15b8d78a2969`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3393` / `5683`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2089}`; doomed: `0`
+- file states/import edges: `3387` / `5666`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2083}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `53`; observed seconds total/mean/median: `58689` / `1150.8` / `1082`; lower bounds: `1`
@@ -76,14 +79,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 9 | 2026-08-10T18:56:47+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-10 19:01 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-10 19:01 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-10 19:01 UTC | no | PARSED | READY |
+| `autopsy_map` | 9 | 2026-08-10T21:31:52+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-10 21:40 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-10 21:40 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-10 21:40 UTC | no | PARSED | READY |
 | `proshka_timing` | 53 | 2026-08-08T18:40:13+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-10 19:01 UTC | no | PARSED | READY |
-| `taint_graph` | 3393 | 2026-08-10 19:01 UTC | no | PARSED | READY |
-| `taint_sources` | 3393 | 2026-08-10 19:01 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-10 21:40 UTC | no | PARSED | READY |
+| `taint_graph` | 3387 | 2026-08-10 21:40 UTC | no | PARSED | READY |
+| `taint_sources` | 3387 | 2026-08-10 21:40 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -96,7 +99,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
-- CHANNEL_RUNTIME active phase record is 108 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
+- CHANNEL_RUNTIME active phase record is 111 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
@@ -112,7 +115,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `docs/Progress_Log.md` | 2026-08-10 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
 | `docs/RECORDING_RULES.md` | 2026-08-09 |
-| `docs/cartographer/TOOLS.yaml` | 2026-08-09 |
+| `docs/cartographer/TOOLS.yaml` | 2026-08-10 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)
@@ -308,12 +311,12 @@ _121 records, 87 cross-file aliases. Query: `./orchestrator/kb.py search <term>`
 - [applied] 11. Sign-Uncertainty Surcharge
 
 ## 6. Recent branch decisions (Progress_Log.md)
+- 2026-08-10 — STARTUP_V5: goal-scoped delivery and one Codex tool authority
+- 2026-08-10 — literal odd-tail outer block in the graph Hilbert norm
 - 2026-08-10 — actual outer inverse kept visible in the Schur correction
 - 2026-08-10 — odd source cancellation before the resolvent norm
 - 2026-08-10 — topology lemma retained, but resolvent theorem took priority
 - 2026-08-10 — пути картографа: считать от себя, а не держать вторую копию
-- 2026-08-10 — генерёнку инвентаря коммитить, а не игнорировать
-- 2026-08-10 — маршрут получил сторону PASS
 - 2026-08-09 — манифест соединён с обратным поиском
 
 ## 7. Recent insights (INSIGHTS.md head)
