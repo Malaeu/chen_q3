@@ -120,22 +120,33 @@ def main() -> int:
     pm4 = (best_dim is not None and best_dim <= 6 and best_gap >= mpf("0.1"))
     print(f"  P-M4 (dim ≤ 6 и θ ≥ 0.1): {'ПОДТВЕРЖДЕНА' if pm4 else 'ОПРОВЕРГНУТА'}")
 
-    dim = best_dim if best_dim else 1
     print()
-    print(f"  проектор P на низкий кластер dim={dim}; считаю ‖P·G·P‖ …", flush=True)
-    pgp = mpf(0)
-    for a_ in range(dim):
+    print("  проецированная невязка по размерностям кластера:")
+    print(f"    {'dim':>4}  {'λ[dim-1]':>14}  {'‖P·G·P‖':>14}  {'отношение к λ':>14}")
+    Gv = []
+    for b_ in range(args.cluster_max + 1):
+        vb = [vecs[i, ev[b_]] for i in range(R)]
+        Gv.append([sum(Gm[i, j] * vb[j] for j in range(R)) for i in range(R)])
+    quad = {}
+    for a_ in range(args.cluster_max + 1):
         va = [vecs[i, ev[a_]] for i in range(R)]
-        for b_ in range(dim):
-            vb = [vecs[i, ev[b_]] for i in range(R)]
-            acc = mpf(0)
-            for i in range(R):
-                s = mpf(0)
-                for j in range(R):
-                    s += Gm[i, j] * vb[j]
-                acc += va[i] * s
-            if abs(acc) > pgp: pgp = abs(acc)
-    print(f"    ‖P·G·P‖ (макс. элемент в собств. базисе) = {mp.nstr(pgp, 8)}")
+        for b_ in range(args.cluster_max + 1):
+            quad[(a_, b_)] = sum(va[i] * Gv[b_][i] for i in range(R))
+    pgp_by_dim = {}
+    for dim_ in range(1, args.cluster_max + 1):
+        m_ = mpf(0)
+        for a_ in range(dim_):
+            for b_ in range(dim_):
+                if abs(quad[(a_, b_)]) > m_: m_ = abs(quad[(a_, b_)])
+        pgp_by_dim[dim_] = m_
+        lam = vals[ev[dim_ - 1]]
+        ratio = m_ / lam if lam > 0 else mpf('inf')
+        print(f"    {dim_:>4}  {mp.nstr(lam, 6):>14}  {mp.nstr(m_, 6):>14}  {mp.nstr(ratio, 6):>14}")
+    dim = best_dim if best_dim else 1
+    pgp = pgp_by_dim[1]
+    print()
+    print(f"  ключевое: на ОДНОМ нижнем направлении ‖P·G·P‖ = {mp.nstr(pgp, 8)}")
+    print(f"            против λ[0] = {mp.nstr(vals[ev[0]], 8)}")
     trG = sum(Gm[i, i] for i in range(R))
     print(f"    для сравнения: след полного Грама = {mp.nstr(trG, 8)}")
     pm5 = pgp <= mpf("1e-50")
