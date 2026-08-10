@@ -1145,6 +1145,32 @@ private theorem sourceW02ModePairing_eq_rankTwoLogEndpointMoments
     (2 * ((L_m i : ℂ) ^ 2 -
       16 * Real.pi ^ 2 * (r : ℂ) * (n : ℂ))) * hExpProduct4
 
+/-- Public source seam for the ambient rank-two W02 construction.  The
+endpoint values remain literal compact-interval moments, while the long
+closed-form calculation stays private in this module. -/
+theorem sourceW02ModePairing_eq_rankTwoEndpointIntegrals
+    (i : PairIndex) (n r : ℤ) :
+    sourceW02ModePairing i n r =
+      star
+          (∫ x in Set.Icc 0 (L_m i),
+            logWindowZeroExtendedMode i n x *
+              (Real.exp (-x / 2) : ℂ)) *
+          (∫ x in Set.Icc 0 (L_m i),
+            logWindowZeroExtendedMode i r x *
+              (Real.exp (x / 2) : ℂ)) +
+        star
+          (∫ x in Set.Icc 0 (L_m i),
+            logWindowZeroExtendedMode i n x *
+              (Real.exp (x / 2) : ℂ)) *
+          (∫ x in Set.Icc 0 (L_m i),
+            logWindowZeroExtendedMode i r x *
+              (Real.exp (-x / 2) : ℂ)) := by
+  simpa only [sourceW02LogEndpointMinus, sourceW02LogEndpointPlus,
+    starRingEnd_apply] using
+    sourceW02ModePairing_eq_rankTwoLogEndpointMoments i n r
+
+#print axioms sourceW02ModePairing_eq_rankTwoEndpointIntegrals
+
 
 
 end Q3.RouteB.D0Pstar

@@ -40,6 +40,130 @@
 
 ---
 
+## 2026-08-10 — actual outer inverse kept visible in the Schur correction
+
+**Развилка:** either formalize the generic inverse-weighted correction with
+the real outer inverse, or jump directly to a source theorem while leaving the
+operator hypotheses and orientation implicit.
+
+**Выбрали:** B3.0AI: an exact dimension-neutral interface with a positive,
+continuously invertible outer block and the actual correction `R† C⁻¹ R`.
+
+**Почему:** B3.0AH preserves the odd source cancellation, but the repository
+had no reusable theorem ensuring that the real continuous inverse is positive
+and that the Schur correction has the correct adjoint orientation. Closing the
+generic seam makes the remaining source supplier explicit and testable.
+
+**Что отвергли и почему:** `d⁻¹ R†R` was rejected because it erases the outer
+spectral stiffness; finite-dimensional diagonalization and N=960 were rejected
+because they cannot supply an infinite theorem; the PSWF Jacobi Schur API was
+rejected because it describes a different recurrence operator.
+
+**Техника:** prove positivity of `ContinuousLinearMap.inverse` directly from
+the positive symmetric operator and its actual inverse equation, then use
+`IsPositive.adjoint_conj` to obtain the exact positive correction and its
+operator/quadratic Schur decomposition.
+
+**Следующий ход:** construct the literal source odd-tail Hilbert carrier and
+outer block, and prove the source block positive plus continuously invertible;
+only then instantiate the generic correction and attack the graded bound.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean`
+· `docs/routeB_bus/GOAL057_B3_0AI_ODD_TAIL_INVERSE_WEIGHTED_CORRECTION_CLOSEOUT_2026-08-10.md`
+· Goal 057 A53.
+
+**Чей вердикт и аргумент:** local Codex implementation; no external verdict
+was consumed. The local source audit found no existing infinite source CCM
+outer-block supplier, so the generic interface was closed without pretending
+that the source positivity/invertibility obligation had disappeared.
+
+---
+
+## 2026-08-10 — odd source cancellation before the resolvent norm
+
+**Развилка:** either start an abstract infinite Schur-complement interface
+immediately, or first expose the exact odd source-beta cancellation that the
+interface must preserve.
+
+**Выбрали:** B3.0AH: the exact odd divided-difference identity at `m = 13`
+plus its finite corrected-row module sum.
+
+**Почему:** the generic commutator theorem existed, but no public theorem
+turned it into the odd residual formula. Without that seam the next proof
+could silently take entrywise absolute values and recreate the killed raw
+residual estimate.
+
+**Что отвергли и почему:** entrywise bounds before cancellation were rejected
+because they destroy `n*beta(k) - k*beta(n)`; the mode-four Jacobi Schur API
+was rejected because it belongs to the PSWF recurrence, not the source-Weil
+odd matrix; finite N=960 was again rejected as an infinite supplier.
+
+**Техника:** reuse the exact source commutator, prove beta oddness, clear the
+two nonzero tail denominators under `0 < n < k`, then distribute the scalar
+identity through an arbitrary real module sum before any norm.
+
+**Следующий ход:** define the infinite odd outer-block domain and the weakest
+positive/invertible operator interface that makes
+`R_out* C_out⁻¹ R_out` lawful; keep summability and the actual graded bound as
+separate obligations.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean`
+· `docs/routeB_bus/GOAL057_B3_0AH_ODD_TAIL_DIVIDED_DIFFERENCE13_CLOSEOUT_2026-08-10.md`
+· Goal 057 A52.
+
+**Чей вердикт и аргумент:** local Codex implementation under the archived
+Proshka Phase-4 constraint: preserve the transformed divided-difference
+cancellation before taking norms; no new Proshka call was made.
+
+---
+
+## 2026-08-10 — topology lemma retained, but resolvent theorem took priority
+
+**Развилка:** after proving the source-Weil form/graph topology reduction and
+pulling 29 Linux commits, either continue immediately to a generic odd
+form-core theorem or adopt the later Phase-4 audit's source-faithful
+resolvent-weighted target.
+
+**Выбрали:** close B3.0AG as exact supporting infrastructure and make
+`OddTailGradedResolventBound13` the next proof object.
+
+**Почему:** B3.0AG proves that the bounded W02/Prime diagonal adds no new core
+topology, while the later audit shows that the actual obstruction is the
+infinite outer correction `R_out* C_out⁻¹ R_out`. The finite `480 -> 960`
+nested identity passes, but deliberately leaves all modes above 960 open.
+
+**Что отвергли и почему:** ordinary Hilbert density was rejected because it
+does not control the weighted graph norm; the killed surrogate
+`d⁻¹ R_out* R_out` was rejected because it loses the outer spectral
+stiffness; the finite N=960 PASS was rejected as an infinite theorem because
+its quantifier stops at mode 960.
+
+**Техника:** exact energy decomposition plus continuity of the bounded
+diagonal, two-sided tendsto reduction on ambient-null sequences, three
+negative mutants, and post-pull source-locked comparison with the Phase-4
+code audit and nested-Schur report.
+
+**Следующий ход:** formulate the smallest Lean-facing
+`OddTailGradedResolventBound13` interface, with the exact odd
+divided-difference source identity, infinite outer-block domain, and
+inverse-weighted Gram bound explicit; do not reintroduce the constant-floor
+surrogate.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean`
+· `docs/routeB_bus/GOAL057_B3_0AG_SOURCE_WEIL_FORM_CORE_TOPOLOGY_CLOSEOUT_2026-08-10.md`
+· `docs/routeB_bus/proshka/PROSHKA_VERDICT_PHASE4_CODE_AUDIT_2026-08-10.md`
+· `docs/routeB_bus/REPORT_NESTED_SCHUR_AUDIT_2026-08-10.md`.
+
+**Чей вердикт и аргумент:** local Codex closed only the topology lemma;
+Proshka selected the resolvent-weighted representation because replacing
+`C_out⁻¹` by `d⁻¹I` destroys the spectral stiffness and kills only the
+surrogate, not the floor target.
+
+---
+
 ## 2026-08-10 — пути картографа: считать от себя, а не держать вторую копию
 
 **Развилка:** картограф не работал на Linux из-за путей Мака. Либо вывести пути из
@@ -152,7 +276,384 @@ mtime не хранится и после клона одинаков у все�
 · `PROSHKA_QUEUE.md` Q5 помечен `СНЯТ`.
 
 **Чей вердикт и аргумент:** наш; вилка — из ответа Мифоса от 10.08, `docs/GLOWER_ODD_FLOOR_10_08_2026/docs/Mythos/`.
+## 2026-08-10 — G-LOWER turned from operator-first to exact odd form pullback
 
+**Развилка:** require an associated source-Weil operator before any G-LOWER
+work, or first restrict the already-constructed source form to the exact
+normalized odd finite carrier.
+
+**Выбрали:** the three-declaration form-level child
+`ccmOddCoefficientIsometry`, `sourceWeilOddSynthesis13`, and
+`sourceWeilOddFormPullback13`.
+
+**Почему:** the source form and its exact finite CCM restriction already exist;
+the immediate G-LOWER consumer is a quadratic-form lower bound, not an
+`H_m`-valued residual identity.
+
+**Что отвергли и почему:** operator-first work, generic Kato infrastructure,
+source acquisition, and N=480 were rejected as the current action because they
+do not supply the missing finite odd form restriction.  During implementation,
+literal reuse of `ccmFiniteSynthesisEquiv` was also rejected because its apply
+bridge is private; widening the upstream API was unnecessary.
+
+**Техника:** normalized antisymmetric CCM basis vectors
+`(-a_r/sqrt 2, 0, +a_r/sqrt 2)`, orthonormal-sum isometry, private exact
+finite shifted-domain synthesis, and the existing source-Weil finite-form
+crosswalk; N=1 positive control plus sign, normalization, and raw/shift mutants.
+
+**Следующий ход:** `GLOWER_ODD_FORM_CORE_OR_DIRECT_TAIL_DOMAIN_MISSING` — prove
+either an actual odd form core or a direct tail theorem on the full odd form
+domain; Hilbert-norm density alone is insufficient.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean` ·
+`docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0_POST_AE_REPRESENTATION_RERANK_2026-08-10.md` ·
+`docs/routeB_bus/GOAL057_B3_0AF_SOURCE_WEIL_ODD_FORM_PULLBACK13_CLOSEOUT_2026-08-10.md`
+· Goal 057 A50.
+
+**Чей вердикт и аргумент:** Proshka, post-AE rerank:
+“The operator-versus-form fork is resolved for G-LOWER. The immediate wall is
+no longer ‘construct an associated operator.’ It is the exact normalized odd
+pullback of an already-constructed form.”  Owner's standing direction
+authorized immediate adoption of the archived G-LOWER rerank.
+
+---
+
+## 2026-08-10 — B3.0AE closed the energy layer, not the operator layer
+
+**Развилка:** stop after B3.0AD's lower-bounded dense form, package the bounded
+perturbations into an extended lower-semicontinuous energy, or jump directly to
+an associated operator by inventing missing infrastructure.
+
+**Выбрали:** the narrow extended source-Weil energy with exact finiteness domain
+and exact shifted diagonal identity.
+
+**Почему:** the bounded W02/Prime correction is continuous and can be added to
+B3.0W's lower-semicontinuous extended Arch energy locally; this proves the
+closed-form energy facts that the current library can actually state.
+
+**Что отвергли и почему:** direct operator construction and a hand-rolled Kato
+representation theorem were rejected because the pinned Mathlib surface has no
+project-ready unbounded self-adjoint/closed-form representation API, and the
+selected operator domain would still require a separate proof.
+
+**Техника:** add a norm-shifted continuous nonnegative diagonal correction in
+`ENNReal`, transfer lower semicontinuity by addition, and use finiteness plus
+`toReal` identities to pin the exact domain and source Weil diagonal.
+
+**Следующий ход:** treat associated-operator representation as a strategic
+boundary; identify a lawful supplier or scope generic infrastructure before
+any selected-mode graph/domain claim.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0AE_SOURCE_WEIL_SHIFTED_CLOSED_FORM_CLOSEOUT_2026-08-10.md`
+· Goal 057 A49.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0AD stopped at the form-to-operator boundary
+
+**Развилка:** assemble the exact source Weil form from the independently closed
+W02 and Arch-Prime layers, or copy the monolithic scratch and continue directly
+to an associated operator claim.
+
+**Выбрали:** a narrow dense-domain source Weil form with exact finite CCM
+restriction and explicit lower bound, stopping before closed extension or
+operator representation.
+
+**Почему:** the public B3.0Z/AA seam removes the scratch `hpair` premise, so the
+form identity is unconditional; closedness of the bounded perturbation and the
+representation theorem are still separate obligations.
+
+**Что отвергли и почему:** the monolithic scratch/operator bundle was rejected
+because a lower-bounded Hermitian form on a dense domain does not by itself
+prove the full form closed or define the associated operator graph/domain.
+
+**Техника:** exact W02 + Arch - Prime form addition, the existing finite
+source-Weil/CCM crosswalk, and norm estimates for the two bounded perturbations.
+
+**Следующий ход:** audit the precise closed-form bounded-perturbation theorem
+and then the self-adjoint representation theorem as two explicit seams.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0AD_SOURCE_WEIL_FORM_LOWER_BOUND_CLOSEOUT_2026-08-10.md`
+· Goal 057 A48.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0AC replaced a false scratch dependency with V plus AB
+
+**Развилка:** retain the scratch-shaped T-only import, depend on the actual
+finite-carrier supplier B3.0V, or hide all dependencies behind the monolithic
+scratch module.
+
+**Выбрали:** the exact production pair B3.0V + B3.0AB and only the shifted
+Arch-minus-Prime ledger.
+
+**Почему:** Lean showed that the finite shifted synthesis API is supplied by V,
+not T; naming that dependency preserves the real carrier and proof provenance.
+
+**Что отвергли и почему:** the T-only import was rejected because it did not
+compile once the accidental scratch umbrella disappeared; the umbrella and W02
+imports were rejected because they conceal provenance and prematurely assemble
+the full source Weil form.
+
+**Техника:** restrict the bounded Prime form to the shifted Arch domain, reuse
+V's canonical inclusion/synthesis, and prove both mode-ledger and `-WR - Prime`
+finite formulas.
+
+**Следующий ход:** assemble W02 only through AA's unconditional public API.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md`
+· Goal 057 A47.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0AB promoted Prime without assembling Weil
+
+**Развилка:** promote the already compiling Prime scratch by itself or combine
+it immediately with Arch/W02 in one production module.
+
+**Выбрали:** byte-identical production of the self-contained ambient Prime form.
+
+**Почему:** its literal-mode and finite `ccmPrimeEntryN1` contracts are already
+complete and independently testable; this makes later signs and dependencies
+auditable.
+
+**Что отвергли и почему:** immediate Arch/W02 assembly was rejected because it
+would hide whether the Prime source pairing and finite carrier were proved or
+merely inherited through a broad scratch import.
+
+**Техника:** bounded cosine multiplier on the Fourier-side L2 model, Hermitian
+sesquilinear packaging, exact source-mode identity, and canonical finite
+synthesis expansion.
+
+**Следующий ход:** restrict Prime to the shifted Arch form domain and close the
+exact finite `-WR - Prime` ledger.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0AB_PRIME_AMBIENT_SESQUILINEAR_FORM_CLOSEOUT_2026-08-10.md`
+· Goal 057 A46.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0AA bound W02 only after every source leg was public
+
+**Развилка:** promote the whole ambient-W02/source-Weil scratch, or instantiate
+only the concrete ambient W02 form after X, Y, and Z were independently closed.
+
+**Выбрали:** a narrow ambient W02 module with unconditional mode and finite
+`ccmW02Entry` crosswalks.
+
+**Почему:** the generic form, physical endpoint functionals, and exact source
+identity now meet through public APIs, so no `hpair` premise or finite-to-ambient
+inference is hidden.
+
+**Что отвергли и почему:** the full scratch was rejected because it imports
+scratch Prime/Arch modules and immediately combines W02 into a source Weil
+form and lower bound; those are separate dependency and proof obligations.
+
+**Техника:** continuous rank-two form instantiation, literal endpoint mode
+values, exact public source pairing seam, and the canonical finite synthesis.
+
+**Следующий ход:** audit the ambient Prime scratch as an independent production
+dependency before combining any source Weil form.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0AA_W02_AMBIENT_CONTINUOUS_FORM_CLOSEOUT_2026-08-10.md`
+· Goal 057 A45.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0Z opened one seam and kept the long proof private
+
+**Развилка:** expose all private W02 endpoint machinery, duplicate the source
+algebra in a new module, or publish one literal-integral wrapper theorem.
+
+**Выбрали:** one public wrapper around the already proved private rank-two
+identity.
+
+**Почему:** downstream code needs the equality, not the implementation names;
+the literal-integral statement is stable and exactly matches Y's mode values.
+
+**Что отвергли и почему:** exposing private helpers was rejected as unnecessary
+API growth; copying the long closed-form proof was rejected because two source
+proofs could drift while claiming the same identity.
+
+**Техника:** same-module public wrapper with `simpa` over private endpoint
+definitions, followed by an external importing consumer.
+
+**Следующий ход:** instantiate X and Y into the concrete ambient W02 form with
+no theorem parameter.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02ModePairing.lean:1148` ·
+`docs/routeB_bus/GOAL057_B3_0Z_SOURCE_W02_PUBLIC_RANK_TWO_SEAM_CLOSEOUT_2026-08-10.md`
+· Goal 057 A44.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0Y exposed the endpoint supplier without hiding pairing
+
+**Развилка:** bind the physical endpoints directly into an ambient W02 form,
+or publish the source endpoint functionals and their mode values first while
+leaving the rank-two pairing identity visible.
+
+**Выбрали:** byte-identical production of the endpoint supplier only.
+
+**Почему:** the two continuous maps and their exact mode integrals are fully
+proved, while the equality identifying their rank-two combination with
+`sourceW02ModePairing` is a separate source fact consumed by X.
+
+**Что отвергли и почему:** defining the concrete W02 form in the same module
+was rejected because it would hide whether the pairing identity was proved,
+assumed, or merely passed as a theorem parameter.
+
+**Техника:** exact log-window `L2` equivalence, bounded exponential weights,
+continuous integral functionals, Fourier-isometry transport, and literal-mode
+integral evaluation.
+
+**Следующий ход:** locate and source-lock the rank-two pairing identity, then
+instantiate X with the Y functionals.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean` ·
+`docs/routeB_bus/GOAL057_B3_0Y_W02_PHYSICAL_ENDPOINT_FUNCTIONALS_CLOSEOUT_2026-08-10.md`
+· Goal 057 A43.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0X separated the W02 machine from its source
+
+**Развилка:** publish one concrete ambient W02 package, or first isolate the
+generic rank-two form machine with explicit hypotheses for endpoint mode
+values and the source pairing identity.
+
+**Выбрали:** the generic continuous rank-two form plus conditional literal-mode
+and finite `ccmW02Entry` crosswalks.
+
+**Почему:** this makes the remaining source obligation visible: concrete
+physical endpoint functionals must still be constructed and evaluated. The
+mechanism itself is already exact and independent of that construction.
+
+**Что отвергли и почему:** a concrete W02 wrapper at this step was rejected
+because it would make supplied endpoint facts look definitional; treating the
+conditional hypotheses as already proved was rejected as mechanism/source
+conflation.
+
+**Техника:** bounded `ContinuousLinearMap` rank-two construction, explicit
+Hermitian symmetry, literal-mode expansion, and the existing exact finite W02
+crosswalk.
+
+**Следующий ход:** materialize the physical plus/minus endpoint functionals and
+their exact values on every `V_n_m`, then instantiate the X machine.
+
+**Адреса:** `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0X_W02_RANK_TWO_FORM_MACHINE_CLOSEOUT_2026-08-10.md`
+· Goal 057 A42.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0W separated closed form from the Weil operator
+
+**Развилка:** materialize the 372-line scratch as one closed-form/Weil bundle,
+or split the intrinsic archimedean closedness layer from later W02/Prime
+bounded perturbations and the associated-operator graph.
+
+**Выбрали:** a narrow B3.0W child containing only the maximal square-root
+multiplier, its closed graph, and the lower-semicontinuous extended quadratic
+form.
+
+**Почему:** every theorem in this layer follows from B3.0T plus generic
+measure/topology APIs; importing the full source Weil scratch would invert the
+dependency and hide which analytic property has actually been proved.
+
+**Что отвергли и почему:** the monolithic scratch was rejected because W02,
+Prime, full Weil lower bounds, and operator questions have different proof
+obligations. Calling the partial multiplier the associated Weil operator was
+also rejected because the representation graph is still absent.
+
+**Техника:** `LinearPMap.IsClosed`, `L2` convergence in measure, diagonal
+almost-everywhere subsequences, `eLpNorm` Fatou lower semicontinuity, and exact
+agreement with the shifted form diagonal.
+
+**Следующий ход:** audit the bounded W02 and Prime ambient forms, then mint the
+smallest child that supplies the continuous perturbation without defining the
+associated operator.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean` ·
+`docs/routeB_bus/GOAL057_B3_0W_SHIFTED_ARCH_CLOSED_FORM_CLOSEOUT_2026-08-10.md`
+· Goal 057 A41.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
+
+---
+
+## 2026-08-10 — B3.0V reused the canonical finite carrier
+
+**Развилка:** lift the existing `ccmFiniteSynthesis` through the closed B3.0R
+domain inclusion, or reproduce the scratch proof with a separately written
+subtype sum and continue directly into ambient W02/Prime machinery.
+
+**Выбрали:** the exact B3.0R-backed lift, followed only by literal-mode
+evaluation and the finite `-WR` restriction of the B3.0U form.
+
+**Почему:** the coercion of the lifted synthesis is definitionally the existing
+`ccmFiniteSynthesis`, so the locked carrier, coefficient order, and source
+crosswalk are preserved rather than re-created.
+
+**Что отвергли и почему:** a duplicate scratch-style finite carrier was rejected
+because it creates avoidable membership/order drift; bundling ambient W02,
+Prime, the full Weil form, or an operator was rejected because none is consumed
+by the finite `-WR` theorem and each changes the semantic boundary.
+
+**Техника:** exact submodule inclusion
+`E_m_N_le_sourceArchimedeanShiftedFormDomain`, subtype extensionality, finite
+sesquilinear expansion, and the already proved source-to-`ccmWREntry` crosswalk.
+
+**Следующий ход:** run post-V local cartography and select the smallest lawful
+closedness/operator or bounded-perturbation successor; do not call Proshka until
+a real phase boundary or hard stall.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean`
+· `docs/routeB_bus/GOAL057_B3_0V_ARCH_FORM_FINITE_NEG_WR_RESTRICTION_CLOSEOUT_2026-08-10.md`
+· Goal 057 A40.
+
+**Чей вердикт и аргумент:** local Codex proof decision under the owner's
+`local-first` direction; no external verdict was requested or consumed.
 ---
 
 ## 2026-08-09 — манифест соединён с обратным поиском
