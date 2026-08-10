@@ -57,6 +57,11 @@ output.lean
 sandboxes/
 .venv/
 
+# Raw Aristotle transactions are a local intake/quarantine area.  Historical
+# files already tracked by Git remain tracked; new jobs must be promoted to a
+# canonical source/record path before they are committed.
+/q3.lean.aristotle/aristotle_output/
+
 # Python
 __pycache__/
 venv_djo/
@@ -81,5 +86,16 @@ orchestrator/state/*.png
 # Machine-local, regenerable sensor state — rebuild with
 #   python3 orchestrator/observability.py rebuild
 # (schema and generator ARE tracked; the database is not).
-# aristotle_proofs.db and knowledge.db stay tracked on purpose.
+# The one canonical project database stays tracked at
+# q3.lean.aristotle/aristotle_db/knowledge.db.  The exact paths below are
+# zero-byte SQLite decoys created by local tooling and must never masquerade as
+# the canonical database.
 q3.lean.aristotle/aristotle_db/observability.db
+/knowledge.db
+/orchestrator/knowledge.db
+/orchestrator/observability.db
+/orchestrator/state/observability.db
+/q3.lean.aristotle/aristotle_db/proofs.db
+
+# браузерные сессии MCP — рабочий мусор, в репу не нужен
+.playwright-mcp/
