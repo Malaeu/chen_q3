@@ -632,11 +632,11 @@
         "id": "POST_JUNE_IDENTIFICATION",
         "lexical_count": 0,
         "matched_paths": [
+          "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/proshka-zip-audit-followup-2026-07-27.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-zip-audit-followup-2026-07-27.md",
-          "qmd://q3-docs/docs/routeb-bus/manifest.md"
+          "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0e3-zero-extended-mode-cosine-correlation-ccm-qkernel-release-2026-08-08.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -654,7 +654,7 @@
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 39,
+        "result_count": 41,
         "status": "PASS",
         "vector_count": 30
       },
@@ -666,19 +666,19 @@
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaashapesqderivmajorantreceiver.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 31,
+        "result_count": 34,
         "status": "PASS",
-        "vector_count": 25
+        "vector_count": 27
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "d9f1ae71fcff3c8e49eb3a42732e43cb8ad57a02",
+    "source_commit": "4c99096fb9ae91918a4af89dc44fef139225f130",
     "status": "PASS"
   },
-  "source_commit": "9fe82c8633b676da8fd20fc34965ec10ec83e8cb",
+  "source_commit": "4c99096fb9ae91918a4af89dc44fef139225f130",
   "tool_manifest": {
     "family_count": 7,
     "schema": "q3_tool_manifest.v2",
