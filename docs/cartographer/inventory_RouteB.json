@@ -4,70 +4,10 @@
   "files_scanned": 194,
   "declarations": 1583,
   "in_docs": 660,
-  "in_lemma_db": 1487,
-  "orphans": 68,
-  "orphan_files_top": [
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
-      8
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean",
-      5
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMuntzCenteredCoordinateLock.lean",
-      4
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/MuntzV3/HabsExactClass.lean",
-      4
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean",
-      4
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/SoftL2Round13Integration.lean",
-      4
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
-      3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilShiftedRankOne.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/CompletedTrackerScope.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFTailCoefficientSquareSummable.lean",
-      2
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/DoubleCompletionStripMismatch.lean",
-      2
-    ]
-  ],
+  "in_lemma_db": 1583,
+  "orphans": 0,
+  "uncatalogued": 0,
+  "orphan_files_top": [],
   "items": [
     {
       "kind": "def",
@@ -546,8 +486,8 @@
       "line": 65,
       "signature": "@[simp] theorem coordinateProjection2_apply (x : ℝ × ℝ) : coordinateProjection2 x = (x.1, 0)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -556,8 +496,8 @@
       "line": 69,
       "signature": "@[simp] theorem swapOperator2_apply (x : ℝ × ℝ) : swapOperator2 x = (x.2, x.1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -596,8 +536,8 @@
       "line": 28,
       "signature": "structure EntireZeroMultiplicityCertificate (H : ℂ → ℂ) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "structure",
@@ -606,7 +546,7 @@
       "line": 42,
       "signature": "structure AutocorrelationSquareRootReconstructionInput where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -616,8 +556,8 @@
       "line": 58,
       "signature": "structure AutocorrelationSquareRootCandidate (Fourier : (ℝ → ℝ) →+ (ℂ → ℂ)) (C : AutocorrelationSquareRootReconstructionInput) (q : ℝ → ℝ) : Prop where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -1616,8 +1556,8 @@
       "line": 34,
       "signature": "@[simp] theorem ccmReflectionEndFinite_apply (N : ℕ) (x : CCMModeFinite N → ℝ) (i : CCMModeFinite N) : ccmReflectionEndFinite N x i = x (ccmNegFinite N i)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -1726,8 +1666,8 @@
       "line": 35,
       "signature": "@[simp] theorem ccmNegFinite_center (N : ℕ) : ccmNegFinite N (ccmCenterFinite N) = ccmCenterFinite N",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -1736,8 +1676,8 @@
       "line": 41,
       "signature": "@[simp] theorem ccmNegFinite_involutive (N : ℕ) (i : CCMModeFinite N) : ccmNegFinite N (ccmNegFinite N i) = i",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -1836,8 +1776,8 @@
       "line": 30,
       "signature": "@[simp] theorem ccmModeFinite_center (N : ℕ) : ccmModeFinite N (ccmCenterFinite N) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -1956,8 +1896,8 @@
       "line": 343,
       "signature": "@[simp] theorem ccmBetaFinite_center (mProject N : ℕ) : ccmBetaFinite mProject N (ccmCenterFinite N) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -2116,8 +2056,8 @@
       "line": 98,
       "signature": "private noncomputable def ccmWRFiniteNumerator (L : ℝ) (n m : ℤ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2126,7 +2066,7 @@
       "line": 102,
       "signature": "private noncomputable def ccmWRFiniteDenominator (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -2136,8 +2076,8 @@
       "line": 105,
       "signature": "private noncomputable def ccmWRFiniteNumeratorSlope (L : ℝ) (n m : ℤ) : ℝ → ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2146,7 +2086,7 @@
       "line": 113,
       "signature": "private noncomputable def ccmWRFiniteDenominatorSlope : ℝ → ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -2156,7 +2096,7 @@
       "line": 119,
       "signature": "private noncomputable def ccmWRFiniteExtendedIntegrand (L : ℝ) (n m : ℤ) (x : ℝ) : ℝ",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -2266,7 +2206,7 @@
       "line": 230,
       "signature": "@[simp] theorem ccmWeilMatFinite_apply (mProject N : ℕ) (i j : CCMModeFinite N) : ccmWeilMatFinite mProject N i j = ccmWeilTauN1 mProject (ccmModeFinite N i) (ccmModeFinite N j)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -2326,8 +2266,8 @@
       "line": 25,
       "signature": "def ccmModeN1 (i : CCMModeN1) : ℤ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2416,8 +2356,8 @@
       "line": 67,
       "signature": "private noncomputable def ccmWRNumerator (L : ℝ) (n m : ℤ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2426,8 +2366,8 @@
       "line": 70,
       "signature": "private noncomputable def ccmWRDenominator (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2436,8 +2376,8 @@
       "line": 74,
       "signature": "private noncomputable def ccmWRNumeratorSlope (L : ℝ) (n m : ℤ) : ℝ → ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2446,8 +2386,8 @@
       "line": 80,
       "signature": "private noncomputable def ccmWRDenominatorSlope : ℝ → ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2456,8 +2396,8 @@
       "line": 86,
       "signature": "private noncomputable def ccmWRExtendedIntegrand (L : ℝ) (n m : ℤ) (x : ℝ) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -2896,8 +2836,8 @@
       "line": 393,
       "signature": "@[simp] theorem ccmWeilMatN1_apply (mProject : ℕ) (i j : CCMModeN1) : ccmWeilMatN1 mProject i j = ccmW02Entry (ccmL mProject) (ccmModeN1 i) (ccmModeN1 j) - ccmWREntry (ccmL mProject) (ccmModeN1 i) (ccmModeN1 j) - ccmPrimeEntryN1 mProject (ccmModeN1 i) (ccmModeN1 j)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -2986,8 +2926,8 @@
       "line": 509,
       "signature": "@[simp] theorem ccmDeltaN1_apply (mProject : ℕ) (i : CCMModeN1) : ccmDeltaN1 mProject i = (Real.sqrt (ccmL mProject))⁻¹",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3006,8 +2946,8 @@
       "line": 29,
       "signature": "structure ApproximationFamily (Index : Type*) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "structure",
@@ -3016,7 +2956,7 @@
       "line": 34,
       "signature": "structure CanonicalApproximation (Index : Type*) where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3086,8 +3026,8 @@
       "line": 80,
       "signature": "@[simp] theorem sameCofinalGuard_s2Sequence {Index : Type*} (C : CanonicalApproximation Index) (H2aAt S1At : Index → Prop) (hH2a : SlotH2a C H2aAt) (hS1 : SlotS1 C S1At) : (sameCofinalGuard C H2aAt S1At hH2a hS1).s2Sequence = fun k => C.parent (C.extract k)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3096,8 +3036,8 @@
       "line": 88,
       "signature": "theorem isOpen_centeredCriticalStrip : IsOpen centeredCriticalStrip",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "structure",
@@ -3106,7 +3046,7 @@
       "line": 95,
       "signature": "structure ClusterData {Index : Type*} (C : CanonicalApproximation Index) where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3156,7 +3096,7 @@
       "line": 145,
       "signature": "theorem rh_of_canonical_strip_slots {Index : Type*} (C : CanonicalApproximation Index) (H2aAt S1At : Index → Prop) (anchor : ℂ) (hH1 : SlotH1 C) (hH2a : SlotH2a C H2aAt) (hanchor : SlotAnchor C anchor) (hS1 : SlotS1 C S1At) (hMontel : MontelAnchorGate C H2aAt S1At anchor) (h510 : Theorem510RealZeroBridge C H2aAt) (hS2 : SlotS2 C) : Q3.RH",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3286,8 +3226,8 @@
       "line": 152,
       "signature": "private noncomputable def expHalfTerm (s : ℂ) (n : ℕ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -3486,8 +3426,8 @@
       "line": 39,
       "signature": "@[simp] theorem riemannXi_zero : riemannXi 0 = 1 / 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3496,8 +3436,8 @@
       "line": 42,
       "signature": "@[simp] theorem riemannXi_one : riemannXi 1 = 1 / 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3536,8 +3476,8 @@
       "line": 87,
       "signature": "@[simp] theorem centered_argument_re (z : ℂ) : ((1 / 2 : ℂ) + Complex.I * z).re = 1 / 2 - z.im",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -3556,8 +3496,8 @@
       "line": 96,
       "signature": "@[simp] theorem centeredCoordinate_im (s : ℂ) : (centeredCoordinate s).im = 1 / 2 - s.re",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3566,8 +3506,8 @@
       "line": 100,
       "signature": "@[simp] theorem centered_argument_centeredCoordinate (s : ℂ) : (1 / 2 : ℂ) + Complex.I * centeredCoordinate s = s",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3636,8 +3576,8 @@
       "line": 19,
       "signature": "@[simp] theorem gammaC_one : gammaC 1 = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3646,8 +3586,8 @@
       "line": 22,
       "signature": "@[simp] theorem centered_argument_neg_I_div_two : (1 / 2 : ℂ) + Complex.I * (-Complex.I / 2) = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3736,7 +3676,7 @@
       "line": 17,
       "signature": "structure PairIndex where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3766,7 +3706,7 @@
       "line": 34,
       "signature": "structure CoefficientFamily where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3836,7 +3776,7 @@
       "line": 73,
       "signature": "structure CanonicalData where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -3896,8 +3836,8 @@
       "line": 123,
       "signature": "@[simp] theorem pstarFamily_zero (D : CoefficientFamily) (i : CentralIndex D) : pstarFamily D i 0 = centeredXi 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -3926,7 +3866,7 @@
       "line": 147,
       "signature": "@[simp] theorem centeredPstarFamily_zero (D : CoefficientFamily) (i : CentralIndex D) : centeredPstarFamily D i 0 = centeredXi 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -4096,8 +4036,8 @@
       "line": 128,
       "signature": "@[simp] theorem constantModeNormalizedTransform_zero (L : ℝ) : constantModeNormalizedTransform L 0 = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -5016,8 +4956,8 @@
       "line": 25,
       "signature": "theorem mode4BackwardTail_mapsTo_and_lipschitz (mProject K n : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Set.MapsTo (mode4BackwardTail mProject Λ K n) (Set.Icc 0 (1 / 2)) (Set.Icc 0 (1 / 2)) ∧ LipschitzOnWith ((3 / 16 : NNReal) ^ n) (mode4BackwardTail mProject Λ K n) (Set.Icc 0 (1 / 2))",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -5286,8 +5226,8 @@
       "line": 167,
       "signature": "private theorem mode4LeftContinuantMatrix_minor_zero (G Λ : ℝ) (n : ℕ) : Matrix.submatrix (mode4LeftContinuantMatrix G Λ (n + 1)) Fin.succ (Fin.succAbove 0) = mode4LeftContinuantMatrix G Λ n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -5716,8 +5656,8 @@
       "line": 142,
       "signature": "private noncomputable def mode4WrongOrdinaryLegendreAffine : ℝ[X]",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6206,8 +6146,8 @@
       "line": 65,
       "signature": "@[simp] theorem mode4TailCoefficientRow_zero (mProject K : ℕ) (Λ : ℝ) : mode4TailCoefficientRow mProject Λ K 0 = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6216,8 +6156,8 @@
       "line": 69,
       "signature": "@[simp] theorem mode4TailCoefficientRow_succ (mProject K n : ℕ) (Λ : ℝ) : mode4TailCoefficientRow mProject Λ K (n + 1) = mode4RightTailLimit mProject Λ (K + n) * mode4TailCoefficientRow mProject Λ K n",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6316,8 +6256,8 @@
       "line": 56,
       "signature": "theorem mode4HermitianLeftContinuantMatrix_isHermitian (G Λ : ℝ) (K : ℕ) : (mode4HermitianLeftContinuantMatrix G Λ K).IsHermitian",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6676,8 +6616,8 @@
       "line": 58,
       "signature": "@[simp] theorem selectedFamily_montelRefinement_apply (D : CanonicalData) (e : ℕ → ℕ) (he : StrictMono e) (k : ℕ) (z : ℂ) : selectedFamily (canonicalApproximation (montelRefinement D e he)) k z = selectedFamily (canonicalApproximation D) (e k) z",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -6716,7 +6656,7 @@
       "line": 39,
       "signature": "structure ProlateKTrialSourceData where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6746,7 +6686,7 @@
       "line": 79,
       "signature": "@[simp] theorem coefficientFamily_kTrial (S : ProlateKTrialSourceData) (i : PairIndex) (n : ℤ) : S.coefficientFamily.kTrial i n = c_n i (prolateCombination (S.pair i)) (S.eStar_memLp i) (S.trialNonzero i) n",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6756,7 +6696,7 @@
       "line": 96,
       "signature": "structure ProlateCanonicalSourceData where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6766,7 +6706,7 @@
       "line": 107,
       "signature": "@[simp] theorem canonical_kTrial (S : ProlateCanonicalSourceData) (i : PairIndex) (n : ℤ) : S.canonical.kTrial.kTrial i n = c_n i (prolateCombination (S.source.pair i)) (S.source.eStar_memLp i) (S.source.trialNonzero i) n",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -6776,7 +6716,7 @@
       "line": 119,
       "signature": "@[simp] theorem selectedFamily_apply (S : ProlateCanonicalSourceData) (k : ℕ) : selectedFamily (canonicalApproximation S.canonical) k = centeredPstarFamily S.canonical.kTrial (S.canonical.parent (S.canonical.extract k))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7016,7 +6956,7 @@
       "line": 54,
       "signature": "private noncomputable def ccmFiniteModeOrthonormalBasis (i : PairIndex) : OrthonormalBasis (CCMModeFinite i.N) ℂ (E_m_N i)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7056,7 +6996,7 @@
       "line": 100,
       "signature": "private noncomputable def sourceCCMFiniteOperatorEuclidean (i : PairIndex) : Module.End ℂ (EuclideanSpace ℂ (CCMModeFinite i.N))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7606,8 +7546,8 @@
       "line": 107,
       "signature": "@[simp] theorem selectedCentralIndex_eq (S : ProlateCanonicalSourceData) (k : ℕ) : selectedCentralIndex S k = S.canonical.parent (S.canonical.extract k)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7616,8 +7556,8 @@
       "line": 113,
       "signature": "@[simp] theorem selectedPairIndex_eq (S : ProlateCanonicalSourceData) (k : ℕ) : selectedPairIndex S k = (S.canonical.parent (S.canonical.extract k)).1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7626,8 +7566,8 @@
       "line": 119,
       "signature": "@[simp] theorem selectedProlatePair_eq (S : ProlateCanonicalSourceData) (k : ℕ) : selectedProlatePair S k = S.source.pair (S.canonical.parent (S.canonical.extract k)).1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7636,8 +7576,8 @@
       "line": 126,
       "signature": "@[simp] theorem selectedProlateTrial_eq (S : ProlateCanonicalSourceData) (k : ℕ) : selectedProlateTrial S k = prolateCombination (S.source.pair (S.canonical.parent (S.canonical.extract k)).1)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -7656,7 +7596,7 @@
       "line": 145,
       "signature": "@[simp] theorem selectedCanonical_kTrial (S : ProlateCanonicalSourceData) (k : ℕ) (n : ℤ) : S.canonical.kTrial.kTrial (selectedPairIndex S k) n = c_n (selectedPairIndex S k) (selectedProlateTrial S k) (S.source.eStar_memLp (selectedPairIndex S k)) (S.source.trialNonzero (selectedPairIndex S k)) n",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -7836,8 +7776,8 @@
       "line": 72,
       "signature": "structure OddTailInverseWeightedData (Head Tail : Type*) [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail] where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -11526,7 +11466,7 @@
       "line": 16,
       "signature": "structure SelectedAnchorRatioData (D : CanonicalData) where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -11626,8 +11566,8 @@
       "line": 72,
       "signature": "@[simp] theorem normalizedDoubleCompletedXi_boundary_zero : normalizedDoubleCompletedXi (-Complex.I / 2) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -11636,8 +11576,8 @@
       "line": 78,
       "signature": "@[simp] theorem centeredXi_boundary_eq_half : centeredXi (-Complex.I / 2) = 1 / 2",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -12026,8 +11966,8 @@
       "line": 491,
       "signature": "theorem MellinConvergent.indicator_source {f : ℝ → ℂ} {s : ℂ} (hf : MellinConvergent f s) (A : Set ℝ) (hA : MeasurableSet A) : MellinConvergent (A.indicator f) s",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -12176,8 +12116,8 @@
       "line": 16,
       "signature": "structure EvenRealFullAutocorrelationModel (Q A : Type*) [AddCommGroup Q] [CommRing A] where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -12626,8 +12566,8 @@
       "line": 29,
       "signature": "@[simp] theorem matrixBilinRadicalQuotEquivSpan_mk {n : Type*} [Fintype n] [DecidableEq n] (Q : Matrix n n ℝ) (xi x : n → ℝ) (hQ : Q.transpose = Q) (hxi : Matrix.mulVec Q xi = 0) (hxi0 : xi ≠ 0) (hker1 : Module.finrank ℝ (LinearMap.ker Q.mulVecLin) = 1) : matrixBilinRadicalQuotEquivSpan Q xi hQ hxi hxi0 hker1 (Submodule.Quotient.mk x) = (Submodule.Quotient.mk x : (n → ℝ) ⧸ ℝ ∙ xi)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -12656,8 +12596,8 @@
       "line": 32,
       "signature": "private lemma centeredStrip_locallyBounded_eventually_deriv_bound (f : ℕ → ℂ → ℂ) (hf : ∀ n, DifferentiableOn ℂ (f n) centeredCriticalStrip) (hbdd : ∀ K : Set ℂ, IsCompact K → K ⊆ centeredCriticalStrip → ∃ M : ℝ, ∀ n : ℕ, ∀ z ∈ K, ‖f n z‖ ≤ M) (x : CenteredStripPoint) : ∃ r : ℝ, 0 < r ∧ Metric.ball (x : ℂ) r ⊆ centeredCriticalStrip ∧ ∃ C : ℝ≥0, ∀ n, ∀ y ∈ Metric.ball (x : ℂ) r, ‖deriv (f n) y‖₊ ≤ C",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -13176,8 +13116,8 @@
       "line": 16,
       "signature": "private noncomputable def eStarCoreV3 (h : ℝ → ℂ) (u : ℝ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -13196,8 +13136,8 @@
       "line": 22,
       "signature": "private noncomputable def windowedMellinV3 (Λ : ℝ) (f : ℝ → ℂ) (s : ℂ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -13206,8 +13146,8 @@
       "line": 26,
       "signature": "private noncomputable def lowerMellinTailV3 (Λ : ℝ) (f : ℝ → ℂ) (s : ℂ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -13216,8 +13156,8 @@
       "line": 30,
       "signature": "private noncomputable def upperMellinTailV3 (Λ : ℝ) (f : ℝ → ℂ) (s : ℂ) : ℂ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13546,8 +13486,8 @@
       "line": 27,
       "signature": "@[simp] theorem positiveHalf_eq_of_nonneg (h : ℝ → ℂ) {u : ℝ} (hu : 0 ≤ u) : positiveHalf h u = h u",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13556,8 +13496,8 @@
       "line": 32,
       "signature": "@[simp] theorem positiveHalf_eq_zero_of_neg (h : ℝ → ℂ) {u : ℝ} (hu : u < 0) : positiveHalf h u = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -13826,8 +13766,8 @@
       "line": 15,
       "signature": "@[simp] theorem alignmentPhase_zero : alignmentPhase 0 = 1",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -14066,7 +14006,7 @@
       "line": 39,
       "signature": "structure ProlateOperatorData where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -14076,7 +14016,7 @@
       "line": 54,
       "signature": "structure ProlatePair where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -14086,8 +14026,8 @@
       "line": 81,
       "signature": "def ProlatePair.normalizingDenominator (P : ProlatePair) : ℝ",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -14106,8 +14046,8 @@
       "line": 99,
       "signature": "@[simp] theorem ProlateOperatorData.action_apply (P : ProlateOperatorData) (f : ℝ → ℂ) (x : ℝ) : P.action f x = prolateWaveExpression P.lambda f x",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -14116,8 +14056,8 @@
       "line": 104,
       "signature": "@[simp] theorem ProlatePair.normalizingDenominator_eq (P : ProlatePair) : P.normalizingDenominator = Real.sqrt (P.I0 ^ 2 + P.I4 ^ 2)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -14126,8 +14066,8 @@
       "line": 109,
       "signature": "@[simp] theorem prolateCombination_apply (P : ProlatePair) (x : ℝ) : prolateCombination P x = ((P.I4 : ℂ) * P.h0 x - (P.I0 : ℂ) * P.h4 x) / (P.normalizingDenominator : ℂ)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -14556,7 +14496,7 @@
       "line": 43,
       "signature": "@[simp] theorem quotientByRadicalForm_mk_mk (B : LinearMap.BilinForm ℝ V) (hB : B.IsSymm) (x y : V) : quotientByRadicalForm B hB (Submodule.Quotient.mk x) (Submodule.Quotient.mk y) = B x y",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -14606,7 +14546,7 @@
       "line": 90,
       "signature": "@[simp] theorem quotientByRadicalEnd_mk (B : LinearMap.BilinForm ℝ V) (A : Module.End ℝ V) (hself : LinearMap.IsSelfAdjoint B A) (x : V) : quotientByRadicalEnd B A hself (Submodule.Quotient.mk x) = Submodule.Quotient.mk (A x)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -14746,8 +14686,8 @@
       "line": 18,
       "signature": "@[simp] theorem sourceLagrangePolynomial_eval {n : Type*} [Fintype n] [DecidableEq n] (lam xi : n → ℝ) (s : ℝ) : (sourceLagrangePolynomial lam xi).eval s = ∑ k, xi k * ∏ j ∈ Finset.univ.erase k, (lam j - s)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -14876,7 +14816,7 @@
       "line": 20,
       "signature": "@[simp] theorem quotientSpanSingletonEnd_mk (f : V →ₗ[R] V) (x : V) (hx : f x = 0) (y : V) : quotientSpanSingletonEnd f x hx (Submodule.Quotient.mk y) = Submodule.Quotient.mk (f y)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -14896,7 +14836,7 @@
       "line": 37,
       "signature": "@[simp] theorem rankOneCorrectionQuotientEnd_mk {n : Type*} [Fintype n] (D : Matrix n n ℝ) (xi eta : n → ℝ) (hnormalized : eta ⬝ᵥ xi = 1) (y : n → ℝ) : rankOneCorrectionQuotientEnd D xi eta hnormalized (Submodule.Quotient.mk y) = Submodule.Quotient.mk (Matrix.mulVec (rankOneCorrection D xi eta) y)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -15506,8 +15446,8 @@
       "line": 179,
       "signature": "@[simp] theorem parityInvolution2_apply (x : ℂ × ℂ) : parityInvolution2 x = (x.1, -x.2)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -15516,8 +15456,8 @@
       "line": 183,
       "signature": "@[simp] theorem oddGroundOperator2_apply (x : ℂ × ℂ) : oddGroundOperator2 x = (x.1, 0)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -15596,7 +15536,7 @@
       "line": 14,
       "signature": "structure SoftSameCofinalSubsequence (Index : Type*) (H2a S1 : Index → Prop) where",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -15606,8 +15546,8 @@
       "line": 24,
       "signature": "def SoftSameCofinalSubsequence.s2Sequence {Index : Type*} {H2a S1 : Index → Prop} (G : SoftSameCofinalSubsequence Index H2a S1) : ℕ → Index",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -15646,8 +15586,8 @@
       "line": 64,
       "signature": "structure GlobalPositiveDefiniteUniquenessInputs (Index Dist : Type*) [SMul ℝ Dist] (A APhi : Dist) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",
@@ -15666,8 +15606,8 @@
       "line": 87,
       "signature": "structure SourceCompactnessInputs (Source : Type*) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "structure",
@@ -15676,8 +15616,8 @@
       "line": 93,
       "signature": "structure SourceCompactnessOutput (Source : Type*) where",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "def",

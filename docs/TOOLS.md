@@ -2,24 +2,25 @@
 > **GENERATED FILE — do not edit by hand.** Regenerate with `./orchestrator/tools_census.py --markdown`.
 > Written because hand-maintained maps rot: MAP.md drifted two days, the frozen atlases two months, and `aristotle_proofs.db` covered 31% of RouteB.
 ## Summary
-- **Permanent tools:** 421 (touched since 2026-07-01: 84)
-- **One-shot probes** (goal-local experiment log, not tooling): 167
-- **Databases:** 8
+- **Operational contours:** 7; registered tool contracts: 26 (AVAILABLE 6, DEGRADED 1, ENABLED 19)
+- **Contour front doors:** `codex-session-start`, `ask-shelf`, `property-descent`, `observability-summary`, `lean-validation`, `proshka-context-pack`, `task-specific-generators`
+- **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check
+- **Executable implementation files:** 383 (touched since 2026-07-01: 47)
+- **One-shot probes** (goal-local experiment log, not tooling): 181
+- **Verification tests** (not tooling): 16
+- **Completed migration scripts** (provenance, not tooling): 8
+- **Databases:** 3
+- **Zero-byte database decoys:** 0
 - **Ledgers** (accumulating journals, any format): 145
-- **State files** (json/yaml/csv > 2 KB, not journals): 515
-- Alive tools referenced by nothing (**orphans**): 19
-- Alive tools not mentioned in any rule file: 72
+- **State files** (json/yaml/csv > 2 KB, not journals): 516
+- Alive tools referenced by nothing (**orphans**): 0
+- `In rules` below means a direct policy/startup mention; implementation helpers may be covered by a registered family.
 ## Databases
 | Path | Last commit | Refs | In rules |
 |---|---|---|---|
-| `knowledge.db` | untracked | 254 | yes |
-| `orchestrator/knowledge.db` | untracked | 254 | yes |
-| `orchestrator/observability.db` | untracked | 140 | NO |
-| `orchestrator/state/observability.db` | untracked | 140 | NO |
-| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-10 | 139 | yes |
-| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-08-10 | 254 | yes |
-| `q3.lean.aristotle/aristotle_db/observability.db` | untracked | 140 | NO |
-| `q3.lean.aristotle/aristotle_db/proofs.db` | untracked | 0 | yes |
+| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-10 | 140 | yes |
+| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-08-10 | 244 | yes |
+| `q3.lean.aristotle/aristotle_db/observability.db` | untracked | 136 | yes |
 
 ## Ledgers — accumulating journals ("have we already tried this?")
 145 journals, **93 alive** / 52 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
@@ -46,7 +47,7 @@
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
-| `orchestrator/state/SPINE_STATE.json` | 149 | 2026-08-10 | **NO** |
+| `orchestrator/state/SPINE_STATE.json` | 149 | 2026-08-10 | yes |
 | `docs/RH_TRICK_ATLAS.md` | 147 | 2026-08-06 | yes |
 | `SESSION_PROTOKOLL_2026-08-05.md` | 114 | 2026-08-06 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
@@ -58,7 +59,7 @@
 | `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-08-05 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/phase_trace_and_ledger_filter_v1.json` | 78 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-10 | yes |
-| `docs/KILLS.md` | 68 | 2026-08-05 | **NO** |
+| `docs/KILLS.md` | 68 | 2026-08-05 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
@@ -96,15 +97,15 @@
 | `docs/routeB_bus/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/register_read_only_docs_v1_actions_log.md` | 17 | 2026-07-10 | **NO** |
 | `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-08-06 | yes |
-| `.claude/skills/routeb-conductor/SKILL.md` | 15 | 2026-07-30 | **NO** |
+| `.claude/skills/routeb-conductor/SKILL.md` | 15 | 2026-07-30 | yes |
 | `tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md` | 15 | untracked | **NO** |
 | `orchestrator/ARTIFACT_IDENTITY_REGISTRY.json` | 15 | 2026-08-06 | **NO** |
 | `q3.lean.aristotle/docs/PEN_3_3_POISSON_RESIDUAL_LEDGER.md` | 14 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md` | 14 | 2026-07-11 | **NO** |
-| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-08-06 | **NO** |
+| `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-08-06 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md` | 13 | 2026-07-12 | **NO** |
 | `orchestrator/WALL_REGISTRY.json` | 13 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 12 | 2026-08-10 | **NO** |
+| `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 12 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/orchestrator.md` | 12 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
 | `docs/routeB_bus/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
@@ -179,72 +180,35 @@
 ## Permanent tools, most recently touched first
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
-| `orchestrator/tests/test_codex_current_task.py` | untracked | 0 | **NO** | Plants for the repository-visible Codex task pointer. |
-| `docs/cartographer/atoms.py` | 2026-08-10 | 12 | **NO** | Property Descent: вытащить атомы (внешние Mathlib-леммы) из доказательств RouteB. |
-| `docs/cartographer/brief.py` | 2026-08-10 | 20 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
-| `docs/cartographer/cheap.py` | 2026-08-10 | 19 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
-| `docs/cartographer/inventory.py` | 2026-08-10 | 15 | **NO** | Картограф, фаза 1 — детерминированный инвентарь. |
-| `docs/routeB_bus/phase4_scripts/glower_beta_cocycle_check.py` | 2026-08-10 | 0 | **NO** | Проверка source identity вердикта: tau(k,n) = (beta_k - beta_n)/(k-n)? |
-| `docs/routeB_bus/phase4_scripts/glower_corrected_head.py` | 2026-08-10 | 12 | **NO** | GLOWER Вход 2: corrected-head сертификат B_c − d⁻¹R_c*R_c ⪰ 0 на конечном срезе. |
-| `docs/routeB_bus/phase4_scripts/glower_full_residual_prefix.py` | 2026-08-10 | 3 | **NO** | Крюк Lock B, шаги 1–2–4 директивы: конечный префикс полной невязки r_k при k > 480. |
-| `docs/routeB_bus/phase4_scripts/glower_gram_form_check.py` | 2026-08-10 | 3 | **NO** | P-M2 Мифоса: Грам-форма B_480 − d⁻¹·Σ_k r_k r_kᵀ вместо скаляра B_480 − p·I. |
-| `docs/routeB_bus/phase4_scripts/glower_head_drift_ledger.py` | 2026-08-10 | 5 | **NO** | GLOWER ledger: колоночный профиль дрейфа головы + строгая табличная мажоранта. |
-| `docs/routeB_bus/phase4_scripts/glower_low_spectrum_preflight.py` | 2026-08-10 | 3 | **NO** | Префлайт Мифоса: низкий спектр B_480 и проецированная невязка ‖P·G·P‖. |
-| `docs/routeB_bus/phase4_scripts/glower_nested_schur_resolvent_audit.py` | 2026-08-10 | 5 | **NO** | GLOWER_NESTED_SCHUR_RESOLVENT_LOSS_AUDIT_480_960 — директива вердикта 2026-08-10. |
-| `docs/routeB_bus/phase4_scripts/glower_relative_form_check.py` | 2026-08-10 | 1 | **NO** | Относительная форма: G ⪯ μ·B ? То есть max eig(B^-1 G) против d = 1−c₀. |
-| `docs/routeB_bus/phase4_scripts/yoshida_analytic_N.py` | 2026-08-10 | 3 | **NO** | Аналитическая оценка N из Yoshida [33, Lemma 3] для нашей ячейки, против измеренного R. |
-| `orchestrator/kb_migrate_verdicts.py` | 2026-08-10 | 10 | yes | Wave 3: migrate Proshka verdicts — the kill knowledge that never reached any atlas. |
-| `orchestrator/spine.py` | 2026-08-10 | 138 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
-| `orchestrator/tests/test_kb_migrate_verdicts.py` | 2026-08-10 | 0 | **NO** |  |
+| `docs/cartographer/atoms.py` | 2026-08-10 | 13 | yes | Property Descent: вытащить атомы (внешние Mathlib-леммы) из доказательств RouteB. |
+| `docs/cartographer/brief.py` | 2026-08-10 | 19 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
+| `docs/cartographer/cheap.py` | 2026-08-10 | 18 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
+| `docs/cartographer/inventory.py` | 2026-08-10 | 18 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
+| `orchestrator/spine.py` | 2026-08-10 | 135 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
+| `orchestrator/tools_census.py` | 2026-08-10 | 14 | yes | Machine census of every tool, database and state file in the repo. |
+| `scripts/build_proshka_brief.py` | 2026-08-10 | 10 | yes | Build a Proshka context pack from the Q3 repo. |
 | `specs_docs/session_start.sh` | 2026-08-10 | 20 | yes | session_start.sh — один вход в сессию. |
-| `ask.sh` | 2026-08-09 | 49 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
-| `orchestrator/kb.py` | 2026-08-09 | 139 | **NO** | kb — the single entry point to knowledge.db ("have we already tried / killed this?"). |
-| `orchestrator/kb_migrate_kills.py` | 2026-08-09 | 6 | **NO** | One-shot migration of the kill family into knowledge.db (wave 1). |
-| `orchestrator/kb_migrate_progress_log.py` | 2026-08-09 | 5 | **NO** | Project reviewed branch decisions from Progress_Log.md into knowledge.db. |
-| `orchestrator/tests/test_bounded_exploration_control.py` | 2026-08-09 | 0 | **NO** | P9A plants for bounded exploration and delegated authority. |
-| `orchestrator/tests/test_channel_runtime_writer.py` | 2026-08-09 | 0 | **NO** | Plants for the atomic CHANNEL_RUNTIME delegated-review writer. |
-| `orchestrator/tests/test_cognitive_operator_registry.py` | 2026-08-09 | 0 | **NO** | Lossless plants for the M2 and legacy control-action registry. |
-| `orchestrator/tests/test_kb_census.py` | 2026-08-09 | 0 | **NO** | CREATE TABLE source_ledger ( |
-| `orchestrator/tests/test_tool_manifest_memory_wiring.py` | 2026-08-09 | 0 | **NO** | Plants for the MANIFEST_V2 startup, retrieval, and durable-memory wiring. |
-| `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-08-09 | 34 | yes |  |
-| `docs/routeB_bus/phase0_scripts/arch_block.py` | 2026-08-08 | 4 | **NO** | Reproduce the c=13, N=4 cutoff-free archimedean source block. |
-| `docs/routeB_bus/phase1_scripts/ccm_control_cell_penalty.py` | 2026-08-08 | 26 | **NO** | Rigorous Phase-1 CCM penalty certificate for the fixed (m, N) = (13, 120) cell. |
-| `docs/routeB_bus/phase2_scripts/ccm_beta_n_profile.py` | 2026-08-08 | 3 | **NO** | Rigorous fixed-q beta_N profile for Goal 057 Phase 2. |
-| `docs/routeB_bus/phase3_scripts/ccm_delta_rate_profile.py` | 2026-08-08 | 7 | **NO** | Rigorous N-stabilized CCM sectional-gap profile for Goal 057 Phase 3. |
-| `docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py` | 2026-08-08 | 1 | **NO** | P057_7: a finite plateau must not promote to an atTop/operator-gap claim. |
-| `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-08-08 | 71 | **NO** | Lean 4 Parser for Aristotle Proofs Database |
-| `docs/routeB_bus/phase0_scripts/phase0_ccm_crosswalk.py` | 2026-08-07 | 1 | **NO** | Phase 0 — CCM_D0_MODE_INDEX_CROSSWALK, source lock, no fitted scalar. |
-| `paper.sh` | 2026-08-07 | 23 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
-| `specs_docs/hooks/q3-toolbelt.sh` | 2026-08-07 | 5 | yes | q3-toolbelt.sh — SessionStart hook для репозитория chen_q3_rh_clean. |
+| `ask.sh` | 2026-08-09 | 46 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
+| `orchestrator/kb.py` | 2026-08-09 | 139 | yes | kb — the single entry point to knowledge.db ("have we already tried / killed this?"). |
+| `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-08-09 | 32 | yes |  |
+| `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-08-08 | 70 | **NO** | Lean 4 Parser for Aristotle Proofs Database |
+| `paper.sh` | 2026-08-07 | 22 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
+| `specs_docs/hooks/q3-toolbelt.sh` | 2026-08-07 | 4 | **NO** | q3-toolbelt.sh — SessionStart hook для репозитория chen_q3_rh_clean. |
 | `specs_docs/hooks/unicode-guard.py` | 2026-08-07 | 3 | **NO** | unicode-guard.py — PostToolUse hook: detect & neutralize invisible-Unicode |
-| `orchestrator/kb_migrate_searches.py` | 2026-08-06 | 2 | **NO** | Wave 4: migrate the 60 oracle search cards into knowledge.db. |
 | `orchestrator/kb_register_excluded.py` | 2026-08-06 | 1 | **NO** | Record what was deliberately NOT migrated into knowledge.db, and on what grounds. |
-| `orchestrator/observability.py` | 2026-08-06 | 26 | **NO** | Build and query the disposable Q3 observability database. |
+| `orchestrator/observability.py` | 2026-08-06 | 26 | yes | Build and query the disposable Q3 observability database. |
 | `orchestrator/packet.py` | 2026-08-06 | 19 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
-| `orchestrator/sensors.py` | 2026-08-06 | 26 | **NO** | Fail-closed refresh for the complete Q3 observability sensor bundle. |
-| `orchestrator/tests/test_autopsy_sensor.py` | 2026-08-06 | 0 | **NO** | K1 plants for the closed AUTOPSY schema, wall map and namewatch. |
-| `orchestrator/tests/test_dependency_sensor.py` | 2026-08-06 | 0 | **NO** | Fail-closed plants for the Lean axiom dependency supplier. |
-| `orchestrator/tests/test_numeric_sensor.py` | 2026-08-06 | 0 | **NO** | Tests for evidence-only numeric diagnostics. |
-| `orchestrator/tests/test_observability.py` | 2026-08-06 | 0 | **NO** | Plants for the disposable observability projection. |
-| `orchestrator/tests/test_proof_graph_sensor.py` | 2026-08-06 | 0 | **NO** | Plants for the compact root-to-axiom projection. |
-| `orchestrator/tests/test_sensor_orchestrator.py` | 2026-08-06 | 0 | **NO** | Cross-source invariants for the sensor refresh transaction. |
-| `orchestrator/tests/test_source_scanner.py` | 2026-08-06 | 0 | **NO** | Tests for the fast shared Q3 source scanner. |
-| `orchestrator/tests/test_taint_sensor.py` | 2026-08-06 | 0 | **NO** | Semantic plants for source-hole propagation. |
-| `scripts/build_autopsy_map.py` | 2026-08-06 | 5 | **NO** | Build the structured AUTOPSY -> wall-map -> namewatch sensor. |
+| `orchestrator/sensors.py` | 2026-08-06 | 26 | yes | Fail-closed refresh for the complete Q3 observability sensor bundle. |
+| `scripts/build_autopsy_map.py` | 2026-08-06 | 5 | yes | Build the structured AUTOPSY -> wall-map -> namewatch sensor. |
 | `scripts/build_dependency_tree.py` | 2026-08-06 | 5 | **NO** | Build the Lean-checked axiom dependency inventory for the live Q3 roots. |
-| `scripts/build_proof_graph.py` | 2026-08-06 | 13 | **NO** | Build the compact root-to-axiom observability projection. |
+| `scripts/build_proof_graph.py` | 2026-08-06 | 13 | yes | Build the compact root-to-axiom observability projection. |
 | `scripts/build_sorry_frontier.py` | 2026-08-06 | 4 | **NO** | Build the lightweight, root-aware Q3 sorry frontier. |
-| `scripts/build_taint_graph.py` | 2026-08-06 | 10 | **NO** | Build source-hole/import-boundary propagation for the active Q3 tree. |
+| `scripts/build_taint_graph.py` | 2026-08-06 | 10 | yes | Build source-hole/import-boundary propagation for the active Q3 tree. |
 | `scripts/numeric_sanity_check.py` | 2026-08-06 | 7 | **NO** | Run explicitly configured numeric diagnostics as non-authoritative evidence. |
-| `scripts/q3_sensor_scan.py` | 2026-08-06 | 3 | **NO** | Fast shared source scanner for the Q3 observability generators. |
+| `scripts/q3_sensor_scan.py` | 2026-08-06 | 3 | yes | Fast shared source scanner for the Q3 observability generators. |
 | `scripts/research_oracle.py` | 2026-08-06 | 153 | yes |  |
-| `specs_docs/entry_audit.sh` | 2026-08-06 | 5 | **NO** |  |
-| `orchestrator/backfill_db.py` | 2026-08-05 | 1 | **NO** | Bulk-backfill aristotle_proofs.db with the RouteB / muntz_v3 files it never indexed. |
-| `orchestrator/kb_migrate_dossiers.py` | 2026-08-05 | 0 | **NO** | Wave 2, step 2: migrate DOSSIERS and POSTMORTEMS into knowledge.db. |
-| `orchestrator/kb_migrate_journal.py` | 2026-08-05 | 2 | **NO** | Wave 2, step 3: migrate the INSIGHTS.md journal into knowledge.db (~1800 entries). |
-| `orchestrator/kb_migrate_moves.py` | 2026-08-05 | 0 | **NO** | Wave 2, step 1: migrate the MOVE family into knowledge.db. |
-| `orchestrator/kb_migrate_primecomb.py` | 2026-08-05 | 0 | **NO** | Wave 3 addendum: migrate the PRIME_COMB family — knowledge nearly written off as clutter. |
-| `orchestrator/tools_census.py` | 2026-08-05 | 16 | **NO** | Machine census of every tool, database and state file in the repo. |
+| `specs_docs/entry_audit.sh` | 2026-08-06 | 5 | yes |  |
+| `orchestrator/backfill_db.py` | 2026-08-05 | 6 | yes | Synchronize the live Route B declaration inventory into aristotle_proofs.db. |
 | `q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py` | 2026-08-05 | 2 | **NO** | S2-L2b discriminator: do v3-class windows have Mellin zeros INSIDE the open strip? |
 | `q3.lean.aristotle/scripts/ccm_h2a_gap_scan.py` | 2026-08-04 | 1 | **NO** | CCM H2a Layer-3 gap-scan discriminator (FIT_NOT_LAW, binary64, NOT proof tree). |
 | `q3.lean.aristotle/scripts/ccm_h2a_sector_cell_13_2_arb.py` | 2026-08-04 | 5 | **NO** | Rigorous Arb certificate for the CCM H2a sector cell ``(13, 2)``. |
@@ -416,10 +380,10 @@
 | `q3.lean.aristotle/scripts/ingest_incoming_notes.py` | 2026-03-08 | 13 | **NO** |  |
 | `src/h1_raw_bulk_match.py` | 2026-03-08 | 4 | **NO** | Numerical raw-bulk check for the H1 Suzuki--Q3 bridge. |
 | `src/h1_raw_operator_sanity.py` | 2026-03-08 | 1 | **NO** | Sanity check for the raw H1 operator package. |
-| `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-03-07 | 3 | **NO** |  |
+| `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-03-07 | 4 | yes |  |
 | `q3.lean.aristotle/scripts/research_oracle.py` | 2026-03-07 | 153 | yes |  |
 | `scripts/qmd_ops.py` | 2026-03-07 | 0 | **NO** |  |
-| `q3.lean.aristotle/scripts/check_axioms.sh` | 2026-03-06 | 330 | **NO** | Q3 Axiom Verification Script |
+| `q3.lean.aristotle/scripts/check_axioms.sh` | 2026-03-06 | 328 | yes | Q3 Axiom Verification Script |
 | `q3.lean.aristotle/scripts/audit_nosorry_active_q3.sh` | 2026-02-23 | 10 | **NO** | Re-include the PrimeCert files that are part of the active mainline contract/gate. |
 | `scripts/prime_brange_grid_pp_auto.py` | 2026-02-23 | 230 | **NO** | Generate prime-power interval proofs for grid i19 pointwise upper bounds. |
 | `scripts/build_primepow_gt10000_sequential.sh` | 2026-02-12 | 29 | **NO** | Sequentially build GT10000 shard modules for PrimePowAuto, |
@@ -480,7 +444,6 @@
 | `scripts/pa_lipschitz_cert.py` | 2026-01-25 | 0 | **NO** | Compute Lipschitz bound for P_A(B_min, t_critical) on [-1/2, 1/2]. |
 | `scripts/prime_term_cert.py` | 2026-01-25 | 6 | **NO** | Prime-term certificate at t_critical (single-scale, tau = 0). |
 | `scripts/prime_term_cert_brange.py` | 2026-01-25 | 5 | **NO** | Prime-term certificate over a B-range at t_critical (single-scale, tau = 0). |
-| `scripts/build_proshka_brief.py` | 2026-01-24 | 11 | **NO** | Build a Proshka context pack from the Q3 repo. |
 | `scripts/ralph-loop.sh` | 2026-01-24 | 0 | **NO** | Ensure plan file exists in plan mode. |
 | `scripts/refresh_proshka_pack.sh` | 2026-01-24 | 1 | **NO** |  |
 | `verify_phase0.py` | 2026-01-22 | 19 | **NO** | Phase 0 Verification: Confirm Q definitions match Lean/LaTeX |
@@ -601,27 +564,6 @@
 | `src/weil_twin_connection.py` | 2025-12-19 | 0 | **NO** | WEIL → TWIN CONNECTION |
 | `src/x_vs_n_dependence.py` | 2025-12-19 | 0 | **NO** | КРИТИЧЕСКИЙ ТЕСТ: X-dependence vs N-dependence |
 
-## Orphans — alive but nothing references them
-Either wire them into a contour or archive them; a tool nobody calls is a tool nobody will find when it is needed.
-- `orchestrator/tests/test_codex_current_task.py` (last untracked) — Plants for the repository-visible Codex task pointer.
-- `docs/routeB_bus/phase4_scripts/glower_beta_cocycle_check.py` (last 2026-08-10) — Проверка source identity вердикта: tau(k,n) = (beta_k - beta_n)/(k-n)?
-- `orchestrator/tests/test_kb_migrate_verdicts.py` (last 2026-08-10) —
-- `orchestrator/tests/test_bounded_exploration_control.py` (last 2026-08-09) — P9A plants for bounded exploration and delegated authority.
-- `orchestrator/tests/test_channel_runtime_writer.py` (last 2026-08-09) — Plants for the atomic CHANNEL_RUNTIME delegated-review writer.
-- `orchestrator/tests/test_cognitive_operator_registry.py` (last 2026-08-09) — Lossless plants for the M2 and legacy control-action registry.
-- `orchestrator/tests/test_kb_census.py` (last 2026-08-09) — CREATE TABLE source_ledger (
-- `orchestrator/tests/test_tool_manifest_memory_wiring.py` (last 2026-08-09) — Plants for the MANIFEST_V2 startup, retrieval, and durable-memory wiring.
-- `orchestrator/tests/test_autopsy_sensor.py` (last 2026-08-06) — K1 plants for the closed AUTOPSY schema, wall map and namewatch.
-- `orchestrator/tests/test_dependency_sensor.py` (last 2026-08-06) — Fail-closed plants for the Lean axiom dependency supplier.
-- `orchestrator/tests/test_numeric_sensor.py` (last 2026-08-06) — Tests for evidence-only numeric diagnostics.
-- `orchestrator/tests/test_observability.py` (last 2026-08-06) — Plants for the disposable observability projection.
-- `orchestrator/tests/test_proof_graph_sensor.py` (last 2026-08-06) — Plants for the compact root-to-axiom projection.
-- `orchestrator/tests/test_sensor_orchestrator.py` (last 2026-08-06) — Cross-source invariants for the sensor refresh transaction.
-- `orchestrator/tests/test_source_scanner.py` (last 2026-08-06) — Tests for the fast shared Q3 source scanner.
-- `orchestrator/tests/test_taint_sensor.py` (last 2026-08-06) — Semantic plants for source-hole propagation.
-- `orchestrator/kb_migrate_dossiers.py` (last 2026-08-05) — Wave 2, step 2: migrate DOSSIERS and POSTMORTEMS into knowledge.db.
-- `orchestrator/kb_migrate_moves.py` (last 2026-08-05) — Wave 2, step 1: migrate the MOVE family into knowledge.db.
-- `orchestrator/kb_migrate_primecomb.py` (last 2026-08-05) — Wave 3 addendum: migrate the PRIME_COMB family — knowledge nearly written off as clutter.
-
 ## Note on probes
-The 167 one-shot probes are deliberately **not** mapped here. They are goal-local evidence, not instruments; treating them as tooling is what makes the instrument set look unknowably large.
+The 181 one-shot probes are deliberately **not** mapped here. They are goal-local evidence, not instruments; treating them as tooling is what makes the instrument set look unknowably large.
+The 16 tests and 8 completed migration scripts are likewise excluded from the operational instrument count.

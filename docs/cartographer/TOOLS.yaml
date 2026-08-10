@@ -48,7 +48,7 @@ startup_contract:
     - docs/cartographer/TOOLS.yaml
     - docs/Codex/CURRENT.md
     - task_local_physical_state
-    - python3 orchestrator/spine.py --strict --stdout --reason session-start
+    - bash specs_docs/session_start.sh
   manifest_read:
     always: [meta, tool_contract, startup_contract, memory_event_routes, data_surfaces, known_hazards]
     on_task_match: [tool_families]
@@ -155,6 +155,7 @@ data_surfaces:
 tool_families:
   startup_and_control:
     summary: Read-only orientation and physical-state selection.
+    front_door: codex-session-start
     coverage: [specs_docs/session_start.sh, orchestrator/spine.py, "**/routeb_status.py"]
     tools:
       - id: codex-session-start
@@ -168,7 +169,7 @@ tool_families:
         approval: NONE
         authority: ORIENTATION_AND_CONSISTENCY_CHECK
         records_to: NONE
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: knowledge-spine-strict
         status: ENABLED
@@ -176,24 +177,24 @@ tool_families:
         mode: READ_ONLY
         path: orchestrator/spine.py
         invoke: python3 orchestrator/spine.py --strict --stdout --reason session-start
-        trigger: Every Codex session; also called by codex-session-start.
+        trigger: Internal check called once by codex-session-start; manual invocation is diagnostic only.
         writes: false
         approval: NONE
         authority: DERIVED_CONTROL_AND_MEMORY_VIEW
         records_to: stdout
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: knowledge-spine-goal-close
         status: ENABLED
         audience: [CODEX]
-        mode: WRITES_DERIVED
+        mode: WRITES_CANONICAL
         path: orchestrator/spine.py
         invoke: python3 orchestrator/spine.py --refresh --reason goal-close
         trigger: Closed goal after exact artifact validation.
         writes: true
         approval: TASK_SCOPE_MUST_ALREADY_AUTHORIZE_GOAL_CLOSE_WRITES
-        authority: DERIVED_VIEW_AND_REGISTERED_MIGRATIONS
-        records_to: [knowledge.db, observability.db, q3_docs, SPINE_STATE.json, SPINE_VIEW.md, META_CORPUS.json]
+        authority: REGISTERED_GOAL_CLOSE_TRANSACTION_AND_DERIVED_VIEWS
+        records_to: [knowledge.db, aristotle_proofs.db, inventory_RouteB.json, atoms_RouteB.json, observability.db, q3_docs, SPINE_STATE.json, SPINE_VIEW.md, META_CORPUS.json]
         last_verified: 2026-08-09
 
       - id: routeb-status
@@ -207,10 +208,11 @@ tool_families:
         approval: NONE
         authority: OPERATIONAL_ADDRESS_CHECK_NOT_PROOF
         records_to: stdout
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
   retrieval_and_memory:
     summary: Search accumulated knowledge before external search or object creation.
+    front_door: ask-shelf
     coverage: [ask.sh, orchestrator/kb.py, scripts/research_oracle.py, orchestrator/kb_migrate_*.py]
     tools:
       - id: ask-shelf
@@ -222,9 +224,10 @@ tool_families:
         trigger: ABSENCE_OR_NEW_OBJECT and before external review/search.
         writes: false
         approval: NONE
-        authority: MULTI_SURFACE_RETRIEVAL
+        authority: CASCADED_MULTI_SURFACE_RETRIEVAL_WITH_SEMANTIC_FALLBACK
         records_to: stdout
-        last_verified: 2026-08-09
+        note: Fast structured and exact layers run first; q3_docs semantic search runs only when they are empty. A failed layer forbids an absence claim.
+        last_verified: 2026-08-10
 
       - id: kb-query
         status: ENABLED
@@ -280,7 +283,13 @@ tool_families:
         approval: NONE_FOR_QUERY_EXACT_SCOPE_FOR_WRITE_VARIANTS
         authority: RETRIEVAL_ONLY
         records_to: stdout
-        last_verified: 2026-08-09
+        optional_corpus:
+          id: erdos_minimum_overlap
+          builder: q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py
+          status: AVAILABLE
+          trigger: Explicit external-methodology retrieval request only; never Q3 startup or goal close.
+          safety: Stable collection root and incremental qmd embed; qmd embed -f is forbidden.
+        last_verified: 2026-08-10
 
       - id: q3-docs-refresh
         status: ENABLED
@@ -293,10 +302,11 @@ tool_families:
         approval: GOAL_CLOSE_OR_EXACT_WRITE_SCOPE
         authority: RETRIEVAL_INDEX_BUILDER
         records_to: qmd://q3_docs/
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
   cartography_and_property_descent:
     summary: Find capabilities by mathematical need, then descend suppliers to exact gaps.
+    front_door: property-descent
     coverage:
       - docs/cartographer/*
       - machine-local codex_specs/cartographer/* as optional independent observer evidence
@@ -321,21 +331,23 @@ tool_families:
         authority: REVIEWED_CARTOGRAPHY_WORKFLOW
         records_to: stdout and Progress_Log when a route is selected
         note: Claude atomic-theorem-navigator is an external UI wrapper; Codex uses this registered workflow directly.
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: routeb-inventory
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
-        mode: WRITES_DERIVED
+        mode: WRITES_CANONICAL
         path: docs/cartographer/inventory.py
         invoke: python3 docs/cartographer/inventory.py --scope RouteB
+        catalog_sync: python3 orchestrator/backfill_db.py --sync
+        implementation: [docs/cartographer/inventory.py, orchestrator/backfill_db.py]
         cwd: repository root
-        trigger: Explicit inventory refresh after source changes.
+        trigger: GOAL_CLOSE after Route B source changes, or explicit inventory/catalog refresh.
         writes: true
-        approval: EXACT_OUTPUT_SCOPE
-        authority: DETERMINISTIC_SOURCE_INVENTORY
-        records_to: inventory_RouteB.json
-        last_verified: 2026-08-09
+        approval: GOAL_SCOPED_OPERATIONAL_GRANT_OR_EXACT_OUTPUT_SCOPE
+        authority: DETERMINISTIC_SOURCE_INVENTORY_AND_METADATA_INDEX_NOT_LEAN_TRUTH
+        records_to: [inventory_RouteB.json, aristotle_proofs.db]
+        last_verified: 2026-08-10
 
       - id: atom-index
         status: ENABLED
@@ -349,7 +361,7 @@ tool_families:
         approval: EXACT_OUTPUT_SCOPE
         authority: DETERMINISTIC_EXTERNAL_ATOM_INDEX
         records_to: atoms_RouteB.json
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: cheap-closure-finder
         status: ENABLED
@@ -363,7 +375,7 @@ tool_families:
         approval: NONE
         authority: HEURISTIC_QUEUE_NOT_PROOF
         records_to: stdout
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: cartographer-brief
         status: ENABLED
@@ -378,7 +390,7 @@ tool_families:
         approval: NONE_FOR_STDOUT_EXACT_OUTPUT_SCOPE_FOR_OUT
         authority: DATABASE_DERIVED_BRIEF_NOT_PROOF
         records_to: stdout
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: cartographer-loaders
         status: DEGRADED
@@ -399,6 +411,7 @@ tool_families:
 
   observability_and_graphs:
     summary: Derived current-state projections; never proof or route authority.
+    front_door: observability-summary
     coverage: [orchestrator/observability.py, orchestrator/sensors.py, scripts/q3_sensor_scan.py, scripts/build_*graph.py, scripts/build_autopsy_map.py]
     tools:
       - id: observability-summary
@@ -413,7 +426,7 @@ tool_families:
         approval: NONE
         authority: DERIVED_OBSERVABILITY
         records_to: stdout
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
       - id: observability-refresh
         status: ENABLED
@@ -440,10 +453,11 @@ tool_families:
         approval: EXACT_OUTPUT_SCOPE
         authority: GENERATED_FILE_CENSUS
         records_to: docs/TOOLS.md
-        last_verified: 2026-08-09
+        last_verified: 2026-08-10
 
   proof_and_source:
     summary: Lean truth, source audit, and external proof drafting remain separate authorities.
+    front_door: lean-validation
     coverage: [lake, lean, scripts/check_axioms.sh, q3.lean.aristotle/ACTIVE/aristotle, paper.sh]
     tools:
       - id: lean-validation
@@ -489,6 +503,7 @@ tool_families:
 
   external_review_and_transport:
     summary: Expensive advisory channels; local-first and byte-exact transport apply.
+    front_door: proshka-context-pack
     coverage: [scripts/build_proshka_brief.py, orchestrator/packet.py, ~/.codex/skills/proshka-brief, ~/.codex/skills/oracle]
     tools:
       - id: proshka-context-pack
@@ -533,6 +548,7 @@ tool_families:
 
   generator_and_skill_discovery:
     summary: Family registration covers task-specific helpers without pretending every historical generator is live.
+    front_door: task-specific-generators
     coverage: [orchestrator/**/*.py, scripts/**/*.py, q3.lean.aristotle/scripts/**/*.py, specs_docs/**/*.sh, .agents/skills/**/SKILL.md, ~/.codex/skills/**/SKILL.md]
     selection_rule: A family match permits inspection, not execution. Read the task-local source, --help, write paths, and applicable skill before calling it.
     inventory_command: rg --files orchestrator scripts q3.lean.aristotle/scripts specs_docs .agents/skills

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import shutil
+import os
 import subprocess
 import sys
 from datetime import datetime
@@ -13,6 +14,7 @@ Q3_ROOT = REPO_ROOT / "q3.lean.aristotle"
 CACHE_ROOT = Q3_ROOT / ".qmd_cache"
 VENDOR_ROOT = REPO_ROOT / "archive" / "subprojects" / "erdos-minimum-overlap"
 COLLECTION = "erdos_minimum_overlap"
+STABLE_STAGE_ROOT = CACHE_ROOT / "erdos_overlap_current"
 
 ROOT_SCRIPTS = REPO_ROOT / "scripts"
 if str(ROOT_SCRIPTS) not in sys.path:
@@ -109,20 +111,30 @@ def rebuild_collection(qmd: str, stage_root: Path) -> None:
         if f"{COLLECTION} (qmd://{COLLECTION}/)" in listing:
             run_qmd([qmd, "collection", "remove", COLLECTION])
         run_qmd([qmd, "collection", "add", str(stage_root), "--name", COLLECTION, "--mask", "**/*"])
-        run_qmd([qmd, "embed", "-f"])
+        # Never use -f here: it recomputes every hash in every QMD collection and
+        # turned a six-file optional corpus refresh into a multi-day CPU job.
+        run_qmd([qmd, "embed"], timeout_s=1800.0)
         run_qmd([qmd, "cleanup"])
+
+
+def promote_stage(pending: Path) -> Path:
+    if STABLE_STAGE_ROOT.exists():
+        shutil.rmtree(STABLE_STAGE_ROOT)
+    os.replace(pending, STABLE_STAGE_ROOT)
+    return STABLE_STAGE_ROOT
 
 
 def main() -> int:
     ensure_vendor_clone()
     qmd = resolve_qmd()
     CACHE_ROOT.mkdir(parents=True, exist_ok=True)
-    cleanup_stale_stage_dirs(CACHE_ROOT)
+    cleanup_stale_stage_dirs(CACHE_ROOT, prefix="erdos_overlap_stage")
     stage_root = stage_root_for_run()
     try:
         count, commit = build_stage(stage_root)
         print(f"Prepared {count} files for {COLLECTION} from commit {commit[:12]}")
-        rebuild_collection(qmd=qmd, stage_root=stage_root)
+        stable_stage = promote_stage(stage_root)
+        rebuild_collection(qmd=qmd, stage_root=stable_stage)
         with qmd_lock("refresh_erdos_overlap_status"):
             print(run_qmd([qmd, "status"]).strip())
     finally:

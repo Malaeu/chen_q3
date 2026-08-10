@@ -1524,6 +1524,28 @@ def main() -> int:
                 if migrate_verdicts.returncode != 0:
                     _fail("VERDICT_KNOWLEDGE_MIGRATION_FAILED",
                           "kb_migrate_verdicts.py failed at goal close")
+                sync_declarations = subprocess.run(
+                    [sys.executable, "orchestrator/backfill_db.py", "--sync"],
+                    cwd=REPO, text=True,
+                )
+                if sync_declarations.returncode != 0:
+                    _fail("ARTIFACT_IDENTITY_DRIFT",
+                          "Route B declaration catalog sync failed at goal close")
+                refresh_inventory = subprocess.run(
+                    [sys.executable, "docs/cartographer/inventory.py", "--scope", "RouteB"],
+                    cwd=REPO, text=True,
+                )
+                if refresh_inventory.returncode != 0:
+                    _fail("ARTIFACT_IDENTITY_DRIFT",
+                          "Route B declaration inventory refresh failed at goal close")
+                refresh_atoms = subprocess.run(
+                    [sys.executable, "docs/cartographer/atoms.py",
+                     "docs/cartographer/atoms_RouteB.json"],
+                    cwd=REPO, text=True,
+                )
+                if refresh_atoms.returncode != 0:
+                    _fail("ARTIFACT_IDENTITY_DRIFT",
+                          "Route B external-atom inventory refresh failed at goal close")
             try:
                 from orchestrator import sensors as _sensors
             except ModuleNotFoundError:

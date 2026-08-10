@@ -11,6 +11,8 @@ Classification (formal, no judgement calls):
            named like a one-shot (`*_probe.py`, `check_NNN_*`, `validate_*`, `*_falsifier*`).
            These are an experiment log, not tooling: they are listed but not mapped.
   TOOL   — everything else that is executable: the permanent instrument set.
+  TEST   — executable verification plant; not a user-facing instrument.
+  MIGRATION — completed one-shot database migration; retained for provenance.
   DB     — sqlite databases.
   STATE  — json/yaml/csv state files above 2 KB.
 
@@ -26,6 +28,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+import yaml
+
 REPO = Path(__file__).resolve().parent.parent
 SKIP_DIRS = {
     ".git", ".lake", "node_modules", "__pycache__", ".venv", "venv", "venv_djo",
@@ -35,8 +39,12 @@ SKIP_DIRS = {
 SKIP_FILE = re.compile(r"BrangeHeatCert|PrimePowAuto")           # generated Lean certificates
 PROBE_PATH = re.compile(r"ACTIVE/requests|archive|sandbox|research_swarm|full/")
 PROBE_NAME = re.compile(r"_probe\.py$|^probe_|^check_\d|^validate_|falsifier|_plants?\.py$")
-RULE_FILES = ["CLAUDE.md", "AGENTS.md", "docs/SYSTEM_SPEC_2026-08-05.md",
-              "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md", "orchestrator/CONDUCTOR.md"]
+TEST_PATH = re.compile(r"(^|/)tests?/|(^|/)test_[^/]+\.py$")
+MIGRATION_NAME = re.compile(r"(^|/)(?:kb_)?migrate_[^/]+\.py$|(^|/)kb_migrate_[^/]+\.py$")
+ROUTEB_SCRIPT_PATH = re.compile(r"docs/routeB_bus/(?:phase\d+_scripts|check_[^/]+)/")
+RULE_FILES = ["AGENTS.md", "docs/CODEX_CONTROL.md", "docs/SYSTEM_SPEC_2026-08-05.md",
+              "docs/cartographer/TOOLS.yaml", "q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md",
+              "q3.lean.aristotle/PROJECT_ORCHESTRATOR.md"]
 
 TOOL_EXT = {".py", ".sh"}
 DB_EXT = {".db", ".sqlite", ".sqlite3"}
@@ -118,7 +126,12 @@ def purpose(path):
 
 
 def classify(rel):
-    if PROBE_PATH.search(str(rel)) or PROBE_NAME.search(rel.name):
+    text = str(rel)
+    if TEST_PATH.search(text):
+        return "TEST"
+    if MIGRATION_NAME.search(text):
+        return "MIGRATION"
+    if PROBE_PATH.search(text) or ROUTEB_SCRIPT_PATH.search(text) or PROBE_NAME.search(rel.name):
         return "PROBE"
     return "TOOL"
 
@@ -151,15 +164,16 @@ def is_ledger(rel, path):
 
 
 def collect():
-    tools, probes, dbs, states, ledgers = [], [], [], [], []
+    tools, probes, tests, migrations, dbs, empty_dbs, states, ledgers = [], [], [], [], [], [], [], []
     for p in walk():
         rel = p.relative_to(REPO)
         ext = p.suffix.lower()
         if ext in TOOL_EXT:
-            (probes if classify(rel) == "PROBE" else tools).append(rel)
+            kind = classify(rel)
+            {"PROBE": probes, "TEST": tests, "MIGRATION": migrations, "TOOL": tools}[kind].append(rel)
             continue
         if ext in DB_EXT:
-            dbs.append(rel)
+            (empty_dbs if p.stat().st_size == 0 else dbs).append(rel)
             continue
         if ext in LEDGER_EXT:
             n = is_ledger(rel, p)
@@ -168,7 +182,7 @@ def collect():
                 continue
         if ext in STATE_EXT and p.stat().st_size > 2000:
             states.append(rel)
-    return tools, probes, dbs, states, ledgers
+    return tools, probes, tests, migrations, dbs, empty_dbs, states, ledgers
 
 
 def reference_counts(names):
@@ -182,6 +196,9 @@ def reference_counts(names):
         out = subprocess.run(["rg", "--no-filename", "-o", "-e", pat,
                               "--glob", "!.git", "--glob", "!.lake", "--glob", "!*.olean",
                               "--glob", "!docs/TOOLS.md",
+                              "--glob", "!CLAUDE.md", "--glob", "!**/CLAUDE.md",
+                              "--glob", "!.claude/**", "--glob", "!**/tests/**",
+                              "--glob", "!test_*.py",
                               str(REPO)], capture_output=True, text=True, timeout=600).stdout
         for line in out.splitlines():
             refs[line.strip()] += 1
@@ -200,7 +217,7 @@ def rule_mentions():
 
 
 def build_rows():
-    tools, probes, dbs, states, ledgers = collect()
+    tools, probes, tests, migrations, dbs, empty_dbs, states, ledgers = collect()
     refs = reference_counts([p.name for p in tools + dbs])
     rules = rule_mentions()
     rows = []
@@ -224,15 +241,25 @@ def build_rows():
             "refs": n,                      # for ledgers this column holds the entry count
             "in_rules": rel.name in rules, "purpose": "",
         })
-    return rows, probes, states
+    return rows, probes, tests, migrations, empty_dbs, states
 
 
-def markdown(rows, probes, states):
+def manifest_summary():
+    path = REPO / "docs" / "cartographer" / "TOOLS.yaml"
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    families = data.get("tool_families", {})
+    tools = [tool for family in families.values() for tool in family.get("tools", [])]
+    status = Counter(tool.get("status", "UNKNOWN") for tool in tools)
+    front_doors = [family.get("front_door", "UNDECLARED") for family in families.values()]
+    return len(families), len(tools), status, front_doors
+
+
+def markdown(rows, probes, tests, migrations, empty_dbs, states):
     tools = [r for r in rows if r["kind"] == "TOOL"]
     dbs = [r for r in rows if r["kind"] == "DB"]
     alive = [r for r in tools if r["last"] >= ALIVE_SINCE]
     orphans = [r for r in alive if r["refs"] == 0]
-    unruled = [r for r in alive if not r["in_rules"]]
+    family_count, entry_count, manifest_status, front_doors = manifest_summary()
 
     out = []
     out.append("# TOOLS.md — generated map of the repo's instruments\n")
@@ -241,14 +268,21 @@ def markdown(rows, probes, states):
     out.append("> Written because hand-maintained maps rot: MAP.md drifted two days, the "
                "frozen atlases two months, and `aristotle_proofs.db` covered 31% of RouteB.\n")
     out.append("## Summary\n")
-    out.append(f"- **Permanent tools:** {len(tools)} (touched since {ALIVE_SINCE}: {len(alive)})")
+    out.append(f"- **Operational contours:** {family_count}; registered tool contracts: {entry_count} "
+               f"({', '.join(f'{k} {v}' for k, v in sorted(manifest_status.items()))})")
+    out.append(f"- **Contour front doors:** {', '.join(f'`{door}`' for door in front_doors)}")
+    out.append("- **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check")
+    out.append(f"- **Executable implementation files:** {len(tools)} (touched since {ALIVE_SINCE}: {len(alive)})")
     out.append(f"- **One-shot probes** (goal-local experiment log, not tooling): {len(probes)}")
+    out.append(f"- **Verification tests** (not tooling): {len(tests)}")
+    out.append(f"- **Completed migration scripts** (provenance, not tooling): {len(migrations)}")
     out.append(f"- **Databases:** {len(dbs)}")
+    out.append(f"- **Zero-byte database decoys:** {len(empty_dbs)}")
     out.append(f"- **Ledgers** (accumulating journals, any format): "
                f"{sum(1 for r in rows if r['kind']=='LEDGER')}")
     out.append(f"- **State files** (json/yaml/csv > 2 KB, not journals): {len(states)}")
     out.append(f"- Alive tools referenced by nothing (**orphans**): {len(orphans)}")
-    out.append(f"- Alive tools not mentioned in any rule file: {len(unruled)}\n")
+    out.append("- `In rules` below means a direct policy/startup mention; implementation helpers may be covered by a registered family.\n")
 
     out.append("## Databases\n")
     out.append("| Path | Last commit | Refs | In rules |")
@@ -256,6 +290,13 @@ def markdown(rows, probes, states):
     for r in dbs:
         out.append(f"| `{r['path']}` | {r['last']} | {r['refs']} | {'yes' if r['in_rules'] else 'NO'} |")
     out.append("")
+
+    if empty_dbs:
+        out.append("### Zero-byte decoys (not databases)\n")
+        out.append("These files have no schema and no authority. Remove them; their canonical replacements are named in `TOOLS.yaml`.\n")
+        for rel in sorted(empty_dbs):
+            out.append(f"- `{rel}`")
+        out.append("")
 
     ledgers = [r for r in rows if r["kind"] == "LEDGER"]
     led_alive = [r for r in ledgers if r["last"] >= ALIVE_SINCE]
@@ -298,6 +339,8 @@ def markdown(rows, probes, states):
     out.append(f"The {len(probes)} one-shot probes are deliberately **not** mapped here. They are "
                "goal-local evidence, not instruments; treating them as tooling is what makes the "
                "instrument set look unknowably large.\n")
+    out.append(f"The {len(tests)} tests and {len(migrations)} completed migration scripts are likewise "
+               "excluded from the operational instrument count.\n")
     return "\n".join(line.rstrip() for line in out) + "\n"
 
 
@@ -312,10 +355,10 @@ def main():
     if unknown:
         print(f"unknown arguments: {' '.join(unknown)}", file=sys.stderr)
         return 2
-    rows, probes, states = build_rows()
+    rows, probes, tests, migrations, empty_dbs, states = build_rows()
     if "--markdown" in sys.argv:
         target = REPO / "docs" / "TOOLS.md"
-        target.write_text(markdown(rows, probes, states))
+        target.write_text(markdown(rows, probes, tests, migrations, empty_dbs, states))
         print(f"wrote {target}")
         return 0
     print("KIND\tPATH\tLAST\tREFS\tIN_RULES\tPURPOSE")
@@ -325,8 +368,10 @@ def main():
     alive = [r for r in tools if r["last"] >= ALIVE_SINCE]
     led = [r for r in rows if r['kind'] == 'LEDGER']
     print(f"\n== tools {len(tools)} (alive {len(alive)}) | probes {len(probes)} | "
+          f"tests {len(tests)} | migrations {len(migrations)} | "
           f"dbs {sum(1 for r in rows if r['kind']=='DB')} | ledgers {len(led)} "
-          f"(alive {sum(1 for r in led if r['last'] >= ALIVE_SINCE)}) | states {len(states)}",
+          f"(alive {sum(1 for r in led if r['last'] >= ALIVE_SINCE)}) | "
+          f"empty_db_decoys {len(empty_dbs)} | states {len(states)}",
           file=sys.stderr)
     return 0
 

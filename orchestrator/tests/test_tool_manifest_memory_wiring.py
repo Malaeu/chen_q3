@@ -64,6 +64,7 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         }
         self.assertTrue(required <= rels)
         self.assertNotIn("q3.lean.aristotle/CLAUDE.md", rels)
+        self.assertFalse(any("/.lake/" in rel for rel in rels))
 
     def test_progress_log_parser_requires_and_reads_branch_fields(self) -> None:
         rows = kb_migrate_progress_log.parse_entries()
@@ -135,6 +136,18 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
         self.assertIn("docs/Progress_Log.md", proc.stdout)
 
+    def test_ask_shelf_multiword_query_does_not_false_negative_live_lean(self) -> None:
+        proc = subprocess.run(
+            ["./ask.sh", "SelectedTrialNormalizerBounded", "uniform", "lower", "bound"],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            timeout=20,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("SelectedTrialNormalizerBounded", proc.stdout)
+        self.assertNotIn("НЕ НАЙДЕНО НИГДЕ", proc.stdout)
+
     def test_spine_view_exposes_recent_branch_decisions(self) -> None:
         view = spine.build()
         self.assertIn("Recent branch decisions (Progress_Log.md)", view)
@@ -152,6 +165,17 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         script = (REPO / "specs_docs" / "session_start.sh").read_text(encoding="utf-8")
         self.assertIn("git status --porcelain=v1 -uall", script)
 
+    def test_session_entry_has_one_startup_front_door(self) -> None:
+        entry = (
+            REPO / "q3.lean.aristotle" / "ACTIVE" / "SESSION_ENTRY.md"
+        ).read_text(encoding="utf-8")
+        startup = entry.split("## Карта знаний по триггеру", 1)[0]
+        self.assertIn("bash specs_docs/session_start.sh", startup)
+        self.assertNotIn(
+            "python3 orchestrator/spine.py --strict --stdout --reason session-start",
+            startup,
+        )
+
     def test_tool_census_help_does_not_run_the_census(self) -> None:
         proc = subprocess.run(
             ["python3", "orchestrator/tools_census.py", "--help"],
@@ -163,6 +187,42 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_tool_census_excludes_rebuildable_and_exhaust_trees(self) -> None:
         self.assertTrue({"venv_djo", "aristotle_output"} <= tools_census.SKIP_DIRS)
+
+    def test_tool_census_does_not_call_tests_migrations_or_goal_probes_tools(self) -> None:
+        self.assertEqual(
+            tools_census.classify(Path("orchestrator/tests/test_spine.py")), "TEST"
+        )
+        self.assertEqual(
+            tools_census.classify(Path("orchestrator/kb_migrate_moves.py")), "MIGRATION"
+        )
+        self.assertEqual(
+            tools_census.classify(
+                Path("docs/routeB_bus/phase4_scripts/glower_beta_cocycle_check.py")
+            ),
+            "PROBE",
+        )
+
+    def test_routeb_declaration_catalog_is_synchronized(self) -> None:
+        proc = subprocess.run(
+            ["python3", "orchestrator/backfill_db.py", "--check"],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            timeout=20,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("Missing declaration rows: 0", proc.stdout)
+        self.assertIn("Stale declaration rows: 0", proc.stdout)
+        spine_source = (REPO / "orchestrator" / "spine.py").read_text(encoding="utf-8")
+        self.assertIn('"orchestrator/backfill_db.py", "--sync"', spine_source)
+        self.assertIn('"docs/cartographer/atoms_RouteB.json"', spine_source)
+
+    def test_optional_erdos_refresh_never_forces_all_qmd_embeddings(self) -> None:
+        script = (
+            REPO / "q3.lean.aristotle" / "scripts" / "refresh_erdos_overlap_kb.py"
+        ).read_text(encoding="utf-8")
+        self.assertIn("STABLE_STAGE_ROOT", script)
+        self.assertNotIn('run_qmd([qmd, "embed", "-f"])', script)
 
     def test_proshka_tight_pack_uses_live_repo_paths(self) -> None:
         proc = subprocess.run(

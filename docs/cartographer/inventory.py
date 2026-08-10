@@ -2,8 +2,10 @@
 """
 Картограф, фаза 1 — детерминированный инвентарь.
 
-Собирает КАЖДУЮ теорему/лемму живого фронта с её полной сигнатурой,
-сверяет с существующими каталогами и помечает сирот.
+Собирает КАЖДОЕ объявление живого фронта с его полной сигнатурой и
+сверяет с существующими каталогами. Историческое поле ``orphan`` означает
+только «не названо в docs и не попало в индекс имён»; оно не означает, что
+объявление не используется Lean-кодом.
 
 Ничего не пишет в репу. Выход — JSON рядом со скриптом.
 Агентов не запускает: это фундамент, он обязан быть воспроизводимым.
@@ -132,7 +134,7 @@ def main():
     doc_text, in_db = catalogued_names(root)
     print(f"      база лемм: {len(in_db)} имён", flush=True)
 
-    print("[3/3] Сверяю и помечаю сирот", flush=True)
+    print("[3/3] Сверяю покрытие каталога имён", flush=True)
     for d in decls:
         d["in_docs"] = d["name"] in doc_text
         d["in_lemma_db"] = d["name"] in in_db
@@ -151,6 +153,7 @@ def main():
         "in_docs": sum(1 for d in decls if d["in_docs"]),
         "in_lemma_db": sum(1 for d in decls if d["in_lemma_db"]),
         "orphans": len(orphans),
+        "uncatalogued": len(orphans),
         "orphan_files_top": sorted(by_file.items(), key=lambda x: -x[1])[:15],
         "items": decls,
     }
@@ -161,7 +164,7 @@ def main():
     print(f"  объявлений:      {result['declarations']}")
     print(f"  названы в docs:  {result['in_docs']}")
     print(f"  есть в базе лемм:{result['in_lemma_db']}")
-    print(f"  СИРОТ:           {result['orphans']}")
+    print(f"  НЕ В КАТАЛОГЕ:   {result['uncatalogued']}")
     print(f"  -> {out}")
     return 0
 

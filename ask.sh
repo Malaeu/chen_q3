@@ -17,7 +17,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
 if [ $# -eq 0 ]; then
   echo "usage: ./ask.sh <термин> [ещё термины]"
-  echo "       ищет разом: knowledge.db · litreview · Lean-декларации · specs_docs · docs"
+  echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs"
   exit 2
 fi
 
@@ -26,6 +26,7 @@ KB="q3.lean.aristotle/aristotle_db/knowledge.db"
 PROOFS="q3.lean.aristotle/aristotle_db/aristotle_proofs.db"
 HITS=0
 SEARCHED=()
+SEARCH_FAILURES=()
 
 hdr() { printf '\n── %s %s\n' "$1" "$(printf '─%.0s' $(seq 1 $((60 - ${#1}))))"; }
 
@@ -67,14 +68,39 @@ if [ -d "$LIT" ]; then
   fi
 fi
 
-# ── 4. Lean: что уже доказано ─────────────────────────────────────────────────
+# ── 4. Lean: что уже объявлено (metadata index, не kernel verdict) ────────────
 SEARCHED+=("aristotle_proofs.db (Lean-декларации)")
 if [ -f "$PROOFS" ]; then
-  OUT="$(sqlite3 "file:$PROOFS?mode=ro" \
-    "SELECT name || '   ' || COALESCE(file,'') FROM lemmas
-     WHERE name LIKE '%${Q// /%}%' LIMIT 8;" 2>/dev/null)"
+  OUT="$(python3 - "$PROOFS" "$Q" <<'PY'
+import sqlite3, sys
+
+db, query = sys.argv[1:]
+terms = [term for term in query.split() if term]
+if not terms:
+    raise SystemExit(0)
+where = " OR ".join("l.name LIKE ? OR COALESCE(l.statement,'') LIKE ?" for _ in terms)
+params = [value for term in terms for value in (f"%{term}%", f"%{term}%")]
+conn = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+rows = conn.execute(
+    f"""select distinct l.name, d.path
+          from lemmas l join docs d on d.doc_id = l.doc_id
+         where {where}
+         order by case
+                    when l.name = ? then 0
+                    when l.name like ? then 1
+                    else 2
+                  end,
+                  l.name
+         limit 8""",
+    params + [terms[0], f"%{terms[0]}%"],
+)
+for name, path in rows:
+    print(f"{name}   {path}")
+conn.close()
+PY
+)"
   if [ -n "$OUT" ]; then
-    hdr "LEAN — уже доказано"
+    hdr "LEAN — объявления в metadata index"
     printf '%s\n' "$OUT" | cut -c1-150
     HITS=$((HITS + 1))
   fi
@@ -82,8 +108,10 @@ fi
 
 # Живое дерево — на случай, если база отстала от диска
 SEARCHED+=("Q3/Proofs/RouteB/*.lean (живое дерево)")
-OUT="$(rg -in --max-count 2 -g '*.lean' "^(theorem|def|noncomputable def) .*${Q// /.*}" \
-       q3.lean.aristotle/Q3/Proofs/ 2>/dev/null | cut -c1-160 | head -6)"
+FIRST_TERM="${Q%% *}"
+OUT="$(rg -in -F --max-count 2 -g '*.lean' "$FIRST_TERM" \
+       q3.lean.aristotle/Q3/Proofs/RouteB/ \
+       --glob '!PrimeCert/**' 2>/dev/null | cut -c1-160 | head -6)"
 if [ -n "$OUT" ]; then
   hdr "LEAN — на диске сейчас"
   printf '%s\n' "$OUT"
@@ -102,9 +130,33 @@ if [ -n "$OUT" ]; then
   HITS=$((HITS + 1))
 fi
 
+# ── 6. Семантический fallback ─────────────────────────────────────────────────
+# Он заметно дороже точных индексов, поэтому запускается только когда они пусты.
+# Но без него нельзя честно произносить «не найдено нигде»: имя может быть неизвестно,
+# а нужное свойство описано другими словами.
+if [ "$HITS" -eq 0 ]; then
+  SEARCHED+=("q3_docs (semantic fallback через research_oracle.py)")
+  OUT="$(python3 scripts/research_oracle.py query "$Q" -c q3_docs 2>&1)"
+  RC=$?
+  if [ "$RC" -ne 0 ]; then
+    SEARCH_FAILURES+=("q3_docs: semantic query failed (code $RC)")
+  elif printf '%s' "$OUT" | grep -q '"file"'; then
+    hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs"
+    printf '%s\n' "$OUT" | head -60
+    HITS=$((HITS + 1))
+  fi
+fi
+
 # ── Итог ──────────────────────────────────────────────────────────────────────
 printf '\n%s\n' "$(printf '━%.0s' $(seq 1 64))"
-if [ "$HITS" -eq 0 ]; then
+if [ "$HITS" -eq 0 ] && [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
+  echo "ПОИСК НЕПОЛОН — отсутствие не установлено"
+  echo
+  for failure in "${SEARCH_FAILURES[@]}"; do echo "  · $failure"; done
+  echo
+  echo "Внешний поиск и создание замены пока не оправданы: сначала почини упавший слой."
+  exit 2
+elif [ "$HITS" -eq 0 ]; then
   echo "НЕ НАЙДЕНО НИГДЕ — '$Q'"
   echo
   echo "Просмотрены все хранилища:"

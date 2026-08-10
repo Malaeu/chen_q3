@@ -61,6 +61,7 @@ REVIEWED_NOTES_PREFIX = "q3.lean.aristotle/docs/reviewed_notes/"
 REVIEWED_SAFE_MARKER = "- safe for embeddings: `yes`"
 
 EXCLUDE_PATTERNS = [
+    "q3.lean.aristotle/**/.lake/**",
     "q3.lean.aristotle/docs/legacy/**",
     "q3.lean.aristotle/docs/ChatGPT_*.md",
     "q3.lean.aristotle/docs/incoming_notes/**",
@@ -214,7 +215,7 @@ def promote_stage(pending: Path) -> Path:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="Rebuild curated q3_docs qmd collection")
-    ap.add_argument("--no-embed", action="store_true", help="rebuild collection without qmd embed -f")
+    ap.add_argument("--no-embed", action="store_true", help="rebuild collection without qmd embed")
     ap.add_argument("--print-files", action="store_true", help="print included files")
     args = ap.parse_args()
 
@@ -232,8 +233,9 @@ def main() -> int:
                 print(path.relative_to(REPO_ROOT))
 
         print(
-            f"Prepared {len(files)} files for {COLLECTION}: "
-            f"{counts['.md']} md, {counts['.tex']} tex, {counts['.lean']} lean"
+            f"Prepared {len(files) + 1} files for {COLLECTION}: "
+            f"{len(files)} sources ({counts['.md']} md, {counts['.tex']} tex, "
+            f"{counts['.lean']} lean) + 1 generated manifest"
         )
         stable_stage = promote_stage(stage_root)
         rebuild_collection(qmd=qmd, stage_root=stable_stage, embed=not args.no_embed)
