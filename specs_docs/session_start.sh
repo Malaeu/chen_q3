@@ -23,6 +23,7 @@ RUNTIME="orchestrator/state/CHANNEL_RUNTIME.json"
 RB_STATE="q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json"
 LIVE_BUS="docs/routeB_bus"
 KB="q3.lean.aristotle/aristotle_db/knowledge.db"
+CURRENT_TASK="docs/Codex/CURRENT.md"
 
 DIVERGENCE=()
 note() { DIVERGENCE+=("$1"); }
@@ -77,6 +78,27 @@ if ph:
 else:
     print("  фаза    : нет активной")
 PY
+
+# ── 2a. Репозиторный указатель текущего задания Codex ─────────────────────────
+hr
+echo "ТЕКУЩЕЕ ЗАДАНИЕ CODEX"
+task_out="$(python3 - <<'PY' 2>&1
+from orchestrator import spine
+
+data = spine.validate_current_codex_task()
+print(f"  status  : {data['status']}")
+print(f"  task    : {data['task_file'] or '—'}")
+print(f"  source  : {data['source_commit'] or '—'}")
+PY
+)"
+task_rc=$?
+if [ "$task_rc" -eq 0 ]; then
+  printf '%s\n' "$task_out"
+else
+  echo "  ПРОВАЛ (код $task_rc):"
+  printf '%s\n' "$task_out" | tail -5 | sed 's/^/    /'
+  note "$CURRENT_TASK не прошёл validation"
+fi
 
 # ── 3. Мониторы: заявленный статус против git-активности ───────────────────────
 hr
@@ -180,7 +202,7 @@ print(
     f"  schema {data['schema']} · families {data['family_count']} · "
     f"tools {data['tool_count']} · writers {data['writer_count']}"
 )
-print(f"  mirror  : BYTE_IDENTICAL · sha256 {data['sha256']}")
+print(f"  authority: REPO_CANONICAL · sha256 {data['sha256']}")
 PY
 )"
 manifest_rc=$?
@@ -189,7 +211,7 @@ if [ "$manifest_rc" -eq 0 ]; then
 else
   echo "  ПРОВАЛ (код $manifest_rc):"
   printf '%s\n' "$manifest_out" | tail -5 | sed 's/^/    /'
-  note "TOOLS.yaml не прошёл schema/contract/mirror validation"
+  note "TOOLS.yaml не прошёл schema/contract/path validation"
 fi
 
 # ── 7. Строгая валидация контроля ──────────────────────────────────────────────

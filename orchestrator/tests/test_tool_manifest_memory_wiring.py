@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from orchestrator import kb_migrate_progress_log, spine
+from orchestrator import kb_migrate_progress_log, spine, tools_census
 
 
 REPO = Path(__file__).resolve().parents[2]
@@ -26,13 +26,31 @@ def load_refresh_module():
 
 
 class ToolManifestMemoryPlants(unittest.TestCase):
-    def test_manifest_schema_contract_and_mirror(self) -> None:
+    def test_manifest_schema_contract_and_repo_authority(self) -> None:
         data = spine.validate_tool_manifest()
         self.assertEqual(data["schema"], "q3_tool_manifest.v2")
         self.assertGreaterEqual(data["family_count"], 6)
         self.assertGreaterEqual(data["tool_count"], 20)
         self.assertGreaterEqual(data["writer_count"], 8)
         self.assertRegex(str(data["sha256"]), r"^[0-9a-f]{64}$")
+
+    def test_codex_cartography_routes_only_to_repo_local_tools(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        family = data["tool_families"]["cartography_and_property_descent"]
+        codex_tools = [
+            tool for tool in family["tools"]
+            if "CODEX" in tool["audience"] and tool["mode"] != "EXTERNAL"
+        ]
+        declared = [
+            str(path)
+            for tool in codex_tools
+            for path in ([tool["path"]] if "path" in tool else tool["paths"])
+        ]
+        self.assertTrue(declared)
+        self.assertTrue(all(path.startswith("docs/cartographer/") for path in declared))
+        self.assertFalse(any("codex_specs" in path for path in declared))
 
     def test_q3_docs_contains_branch_memory_and_excludes_claude_policy(self) -> None:
         refresh = load_refresh_module()
@@ -125,13 +143,36 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_control_routes_commands_to_live_manifest(self) -> None:
         control = (REPO / "docs" / "CODEX_CONTROL.md").read_text(encoding="utf-8")
-        self.assertIn("CONTROL_VERSION: 4", control)
+        self.assertIn("CONTROL_VERSION: 5", control)
+        self.assertIn("GOAL_SCOPED_OPERATIONAL_GRANT", control)
         self.assertIn("docs/cartographer/TOOLS.yaml", control)
         self.assertIn("specs_docs/TOOLS_SPEC.md` is a historical", control)
 
     def test_session_start_counts_untracked_files_individually(self) -> None:
         script = (REPO / "specs_docs" / "session_start.sh").read_text(encoding="utf-8")
         self.assertIn("git status --porcelain=v1 -uall", script)
+
+    def test_tool_census_help_does_not_run_the_census(self) -> None:
+        proc = subprocess.run(
+            ["python3", "orchestrator/tools_census.py", "--help"],
+            cwd=REPO, capture_output=True, text=True, timeout=3,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("usage: tools_census.py", proc.stdout)
+        self.assertNotIn("wrote", proc.stdout)
+
+    def test_tool_census_excludes_rebuildable_and_exhaust_trees(self) -> None:
+        self.assertTrue({"venv_djo", "aristotle_output"} <= tools_census.SKIP_DIRS)
+
+    def test_proshka_tight_pack_uses_live_repo_paths(self) -> None:
+        proc = subprocess.run(
+            ["python3", "scripts/build_proshka_brief.py", "--mode", "tight"],
+            cwd=REPO, capture_output=True, text=True, timeout=20,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        self.assertIn("File: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json", proc.stdout)
+        self.assertIn("057_unified_chain_program_delegated_review.goal.md", proc.stdout)
+        self.assertNotIn("File: full/q3.lean.aristotle", proc.stdout)
 
 
 if __name__ == "__main__":

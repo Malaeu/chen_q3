@@ -57,7 +57,7 @@ OBSERVABILITY_DB = (
 )
 COGNITIVE_OPERATOR_REGISTRY = REPO / "q3.lean.aristotle" / "COGNITIVE_OPERATORS.md"
 TOOL_MANIFEST = REPO / "docs" / "cartographer" / "TOOLS.yaml"
-TOOL_MANIFEST_MIRROR = Path("/Users/emalam/GitHub/codex_specs/TOOLS.yaml")
+CURRENT_CODEX_TASK = REPO / "docs" / "Codex" / "CURRENT.md"
 
 PHASE_KEY_FIELDS = (
     "route_id",
@@ -691,14 +691,61 @@ def validate_cognitive_operator_registry(
         _fail("COGNITIVE_OPERATOR_REGISTRY_UNAVAILABLE_OR_INVALID", str(exc))
 
 
+def validate_current_codex_task(path: Path = CURRENT_CODEX_TASK) -> dict[str, object]:
+    """Validate the single repository-visible owner task pointer."""
+    if not path.is_file():
+        _fail("CODEX_CURRENT_TASK_INVALID", str(path.relative_to(REPO)))
+    text = path.read_text(encoding="utf-8")
+    match = re.search(r"```yaml\s*\n(.*?)\n```", text, re.DOTALL)
+    if match is None:
+        _fail("CODEX_CURRENT_TASK_INVALID", "missing YAML block")
+    try:
+        data = yaml.safe_load(match.group(1))
+    except yaml.YAMLError as exc:
+        _fail("CODEX_CURRENT_TASK_INVALID", f"YAML parse failed: {exc}")
+    if not isinstance(data, dict) or data.get("schema") != "q3_codex_current_task.v1":
+        _fail("CODEX_CURRENT_TASK_INVALID", "unsupported schema")
+    status = data.get("status")
+    if status not in {"ACTIVE", "EMPTY", "CLOSED"}:
+        _fail("CODEX_CURRENT_TASK_INVALID", f"invalid status: {status}")
+    task_file = data.get("task_file")
+    source_commit = data.get("source_commit")
+    if status == "ACTIVE":
+        if not isinstance(task_file, str) or not re.fullmatch(
+            r"docs/Codex/TASK_[A-Za-z0-9_.-]+\.md", task_file,
+        ):
+            _fail("CODEX_CURRENT_TASK_INVALID", "ACTIVE pointer has invalid task_file")
+        task_path = REPO / task_file
+        if not task_path.is_file():
+            _fail("CODEX_CURRENT_TASK_INVALID", f"task file missing: {task_file}")
+        tracked = subprocess.run(
+            ["git", "ls-files", "--error-unmatch", "--", task_file],
+            cwd=REPO, capture_output=True, text=True,
+        )
+        if tracked.returncode != 0:
+            _fail("CODEX_CURRENT_TASK_INVALID", f"task file is untracked: {task_file}")
+        if not isinstance(source_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", source_commit):
+            _fail("CODEX_CURRENT_TASK_INVALID", "ACTIVE pointer lacks full source_commit")
+        ancestor = subprocess.run(
+            ["git", "merge-base", "--is-ancestor", source_commit, "HEAD"], cwd=REPO,
+        )
+        if ancestor.returncode != 0:
+            _fail("CODEX_CURRENT_TASK_INVALID", "source_commit is not present in current HEAD")
+    elif status == "EMPTY" and (task_file is not None or source_commit is not None):
+        _fail("CODEX_CURRENT_TASK_INVALID", "EMPTY pointer must not name a task")
+    return {
+        "schema": data["schema"],
+        "status": status,
+        "task_file": task_file,
+        "source_commit": source_commit,
+    }
+
+
 def validate_tool_manifest() -> dict[str, object]:
-    """Validate the live tool contract and its byte-identical external mirror."""
-    if not TOOL_MANIFEST.is_file() or not TOOL_MANIFEST_MIRROR.is_file():
-        _fail("TOOL_MANIFEST_INVALID", "canonical tool manifest or mirror is missing")
+    """Validate the canonical, repo-local Codex tool contract."""
+    if not TOOL_MANIFEST.is_file():
+        _fail("TOOL_MANIFEST_INVALID", "canonical tool manifest is missing")
     canonical = TOOL_MANIFEST.read_bytes()
-    mirror = TOOL_MANIFEST_MIRROR.read_bytes()
-    if canonical != mirror:
-        _fail("TOOL_MANIFEST_INVALID", "canonical tool manifest and mirror differ")
     try:
         data = yaml.safe_load(canonical.decode("utf-8"))
     except (UnicodeDecodeError, yaml.YAMLError) as exc:
@@ -770,6 +817,21 @@ def validate_tool_manifest() -> dict[str, object]:
                 _fail("TOOL_MANIFEST_INVALID", f"read-only tool {tool_id} declares writes")
             if writes and tool["approval"] == "NONE":
                 _fail("TOOL_MANIFEST_INVALID", f"writer {tool_id} has no approval gate")
+            declared_paths = [tool["path"]] if "path" in tool else tool["paths"]
+            if not isinstance(declared_paths, list) or not declared_paths:
+                _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} has empty paths")
+            if tool["mode"] != "EXTERNAL":
+                for declared_path in declared_paths:
+                    if not isinstance(declared_path, str) or not declared_path.strip():
+                        _fail("TOOL_MANIFEST_INVALID", f"tool {tool_id} has invalid path")
+                    candidate = Path(declared_path).expanduser()
+                    if not candidate.is_absolute():
+                        candidate = REPO / candidate
+                    if not candidate.exists():
+                        _fail(
+                            "TOOL_MANIFEST_INVALID",
+                            f"tool {tool_id} path is missing: {declared_path}",
+                        )
             writer_count += int(writes)
     for event_id, route in data["memory_event_routes"].items():
         if not isinstance(route, dict):
@@ -792,6 +854,7 @@ def validate_p9a() -> dict[str, object]:
     runtime = _read_runtime()
     cognitive_operators = validate_cognitive_operator_registry()
     tool_manifest = validate_tool_manifest()
+    current_task = validate_current_codex_task()
     return {
         "control": "ACTIVE",
         "authority": runtime["mathematical_authority_mode"],
@@ -799,6 +862,7 @@ def validate_p9a() -> dict[str, object]:
         "behavior_controls": controls,
         "cognitive_operators": cognitive_operators,
         "tool_manifest": tool_manifest,
+        "current_task": current_task,
     }
 
 SOURCES = {
@@ -1335,11 +1399,14 @@ def build(state: dict[str, object] | None = None) -> str:
         *_behavior_control_view(validation["behavior_controls"]),
         "",
         "## Operational tool manifest",
-        f"- schema / mirror: `{validation['tool_manifest']['schema']}` / `BYTE_IDENTICAL`",
+        f"- schema / authority: `{validation['tool_manifest']['schema']}` / `REPO_CANONICAL`",
         f"- families / tools / writers: `{validation['tool_manifest']['family_count']}` / "
         f"`{validation['tool_manifest']['tool_count']}` / "
         f"`{validation['tool_manifest']['writer_count']}`",
         f"- SHA-256: `{validation['tool_manifest']['sha256']}`",
+        f"- Codex current task: `{validation['current_task']['status']}`"
+        + (f" / `{validation['current_task']['task_file']}`"
+           if validation['current_task']['task_file'] else ""),
         "",
         "## Phase chat and bounded exploration",
         f"- validation: `{validation['runtime']}`",

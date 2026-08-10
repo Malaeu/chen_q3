@@ -1,11 +1,11 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 179,
-  "declarations": 1422,
-  "in_docs": 596,
-  "in_lemma_db": 1327,
-  "orphans": 67,
+  "files_scanned": 194,
+  "declarations": 1583,
+  "in_docs": 660,
+  "in_lemma_db": 1487,
+  "orphans": 68,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
@@ -1605,7 +1605,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
       "line": 24,
       "signature": "def ccmReflectionEndFinite (N : ℕ) : Module.End ℝ (CCMModeFinite N → ℝ) where",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1815,7 +1815,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean",
       "line": 20,
       "signature": "noncomputable def ccmBetaScalar (mProject : ℕ) (n : ℤ) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1935,7 +1935,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean",
       "line": 282,
       "signature": "theorem ccmWeilTau_structured_offdiag (mProject : ℕ) (hm : 2 ≤ mProject) {n m : ℤ} (hnm : n ≠ m) : ccmWeilTauN1 mProject n m = (ccmBetaScalar mProject n - ccmBetaScalar mProject m) / ((n : ℝ) - (m : ℝ))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -2025,7 +2025,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
       "line": 31,
       "signature": "def ccmNegFinite (N : ℕ) (i : CCMModeFinite N) : CCMModeFinite N",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -6781,6 +6781,226 @@
     },
     {
       "kind": "def",
+      "name": "sourcePrimeShiftedDomainSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 13,
+      "signature": "noncomputable def sourcePrimeShiftedDomainSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeShiftedDomainSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 30,
+      "signature": "theorem sourcePrimeShiftedDomainSesquilinearForm_apply (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourcePrimeShiftedDomainSesquilinearForm i x y = sourcePrimeSesquilinearForm i x.1 y.1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeShiftedDomainSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 37,
+      "signature": "theorem sourcePrimeShiftedDomainSesquilinearForm_conj_symm (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourcePrimeShiftedDomainSesquilinearForm i x y = star (sourcePrimeShiftedDomainSesquilinearForm i y x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchPrimeSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 47,
+      "signature": "noncomputable def sourceArchPrimeSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchPrimeSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 55,
+      "signature": "theorem sourceArchPrimeSesquilinearForm_apply (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchPrimeSesquilinearForm i x y = sourceArchimedeanSesquilinearForm i x y - sourcePrimeSesquilinearForm i x.1 y.1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchPrimeSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 63,
+      "signature": "theorem sourceArchPrimeSesquilinearForm_conj_symm (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchPrimeSesquilinearForm i x y = star (sourceArchPrimeSesquilinearForm i y x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeShiftedDomainSesquilinearForm_apply_ccmFiniteSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 87,
+      "signature": "theorem sourcePrimeShiftedDomainSesquilinearForm_apply_ccmFiniteSynthesis (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourcePrimeShiftedDomainSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i c) (ccmFiniteShiftedFormDomainSynthesis i d) = ∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmPrimeEntryN1 i.m (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchPrimeSesquilinearForm_apply_ccmFiniteSynthesis_eq_modeLedger",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 102,
+      "signature": "theorem sourceArchPrimeSesquilinearForm_apply_ccmFiniteSynthesis_eq_modeLedger (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i c) (ccmFiniteShiftedFormDomainSynthesis i d) = (∑ j, ∑ k, star (c j) * sourceArchimedeanModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k) - (∑ j, ∑ k, star (c j) * sourcePrimeModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchPrimeSesquilinearForm_apply_ccmFiniteSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
+      "line": 123,
+      "signature": "theorem sourceArchPrimeSesquilinearForm_apply_ccmFiniteSynthesis (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourceArchPrimeSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i c) (ccmFiniteShiftedFormDomainSynthesis i d) = -(∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmWREntry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k) - (∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmPrimeEntryN1 i.m (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanModeInShiftedFormDomain",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 15,
+      "signature": "noncomputable def sourceArchimedeanModeInShiftedFormDomain (i : PairIndex) (n : ℤ) : sourceArchimedeanShiftedFormDomain i",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_apply_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 22,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_apply_mode (i : PairIndex) (n r : ℤ) : sourceArchimedeanSesquilinearForm i (sourceArchimedeanModeInShiftedFormDomain i n) (sourceArchimedeanModeInShiftedFormDomain i r) = sourceArchimedeanModePairing i n r",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmFiniteSynthesis_mem_E_m_N",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 44,
+      "signature": "private theorem ccmFiniteSynthesis_mem_E_m_N (i : PairIndex) (c : CCMModeFinite i.N → ℂ) : ccmFiniteSynthesis i c ∈ E_m_N i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmFiniteShiftedFormDomainSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 57,
+      "signature": "noncomputable def ccmFiniteShiftedFormDomainSynthesis (i : PairIndex) : (CCMModeFinite i.N → ℂ) →ₗ[ℂ] sourceArchimedeanShiftedFormDomain i where",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coe_ccmFiniteShiftedFormDomainSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 77,
+      "signature": "theorem coe_ccmFiniteShiftedFormDomainSynthesis (i : PairIndex) (c : CCMModeFinite i.N → ℂ) : (ccmFiniteShiftedFormDomainSynthesis i c : H_m i) = ccmFiniteSynthesis i c",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmFiniteShiftedFormDomainSynthesis_eq_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 83,
+      "signature": "private theorem ccmFiniteShiftedFormDomainSynthesis_eq_sum (i : PairIndex) (c : CCMModeFinite i.N → ℂ) : ccmFiniteShiftedFormDomainSynthesis i c = ∑ j, c j • sourceArchimedeanModeInShiftedFormDomain i (ccmModeFinite i.N j)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_apply_ccmFiniteSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 94,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_apply_ccmFiniteSynthesis (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourceArchimedeanSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i c) (ccmFiniteShiftedFormDomainSynthesis i d) = ∑ j, ∑ k, star (c j) * sourceArchimedeanModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_apply_ccmFiniteSynthesis_eq_neg_ccmWR",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean",
+      "line": 126,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_apply_ccmFiniteSynthesis_eq_neg_ccmWR (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourceArchimedeanSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i c) (ccmFiniteShiftedFormDomainSynthesis i d) = -(∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmWREntry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedSesquilinearForm_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormIntegral.lean",
+      "line": 12,
+      "signature": "theorem sourceArchimedeanShiftedSesquilinearForm_eq_integral (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanShiftedSesquilinearForm i x y = ∫ t : ℝ, star (((sourceLogWindowFourierL2Isometry i x.1 : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t) * ((sourceArchimedeanMultiplier t + (|Real.log Real.pi| + Real.log 4 + 6) : ℝ) : ℂ) * (((sourceLogWindowFourierL2Isometry i y.1 : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormIntegral.lean",
+      "line": 58,
+      "signature": "noncomputable def sourceArchimedeanSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormIntegral.lean",
+      "line": 67,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_apply (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanSesquilinearForm i x y = sourceArchimedeanShiftedSesquilinearForm i x y - ((|Real.log Real.pi| + Real.log 4 + 6 : ℝ) : ℂ) * inner ℂ x y",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormIntegral.lean",
+      "line": 76,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_conj_symm (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanSesquilinearForm i x y = star (sourceArchimedeanSesquilinearForm i y x)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormIntegral.lean",
+      "line": 97,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_eq_integral (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanSesquilinearForm i x y = ∫ t : ℝ, star (((sourceLogWindowFourierL2Isometry i x.1 : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t) * (sourceArchimedeanMultiplier t : ℂ) * (((sourceLogWindowFourierL2Isometry i y.1 : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "exact_CCMModeFinite_to_modeSet_equivalence",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteRieszOperator.lean",
       "line": 23,
@@ -7540,6 +7760,176 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "ccmBetaScalar_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean",
+      "line": 25,
+      "signature": "theorem ccmBetaScalar_neg (mProject : ℕ) (hm : 2 ≤ mProject) (n : ℤ) : Q3.RouteB.ccmBetaScalar mProject (-n) = -Q3.RouteB.ccmBetaScalar mProject n",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmWeilOddEntry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean",
+      "line": 39,
+      "signature": "noncomputable def ccmWeilOddEntry (mProject : ℕ) (k n : ℤ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmWeilOddEntry_eq_beta_dividedDifference",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean",
+      "line": 47,
+      "signature": "theorem ccmWeilOddEntry_eq_beta_dividedDifference (mProject : ℕ) (hm : 2 ≤ mProject) (k n : ℤ) (hnpos : 0 < n) (hnk : n < k) : ccmWeilOddEntry mProject k n = 2 * ((n : ℝ) * Q3.RouteB.ccmBetaScalar mProject k - (k : ℝ) * Q3.RouteB.ccmBetaScalar mProject n) / ((k : ℝ) ^ 2 - (n : ℝ) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_ccmWeilOddEntry_smul_eq_beta_cancellation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean",
+      "line": 79,
+      "signature": "theorem sum_ccmWeilOddEntry_smul_eq_beta_cancellation {E : Type*} [AddCommGroup E] [Module ℝ E] (mProject : ℕ) (hm : 2 ≤ mProject) (k : ℤ) (s : Finset ℤ) (Z : ℤ → E) (hs : ∀ n ∈ s, 0 < n ∧ n < k) : (∑ n ∈ s, ccmWeilOddEntry mProject k n • Z n) = (2 * Q3.RouteB.ccmBetaScalar mProject k) • (∑ n ∈ s, ((n : ℝ) / ((k : ℝ) ^ 2 - (n : ℝ) ^ 2)) • Z n) - (2 * (k : ℝ)) • (∑ n ∈ s, (Q3.RouteB.ccmBetaScalar mProject n / ((k : ℝ) ^ 2 - (n : ℝ) ^ 2)) • Z n)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmWeilOddEntry13",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean",
+      "line": 125,
+      "signature": "noncomputable def ccmWeilOddEntry13 (k n : ℤ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmWeilOddEntry13_eq_beta_dividedDifference",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailDividedDifference13.lean",
+      "line": 130,
+      "signature": "theorem ccmWeilOddEntry13_eq_beta_dividedDifference (k n : ℤ) (hnpos : 0 < n) (hnk : n < k) : ccmWeilOddEntry13 k n = 2 * ((n : ℝ) * Q3.RouteB.ccmBetaScalar 13 k - (k : ℝ) * Q3.RouteB.ccmBetaScalar 13 n) / ((k : ℝ) ^ 2 - (n : ℝ) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "isPositive_inverse_of_isPositive_isInvertible",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 36,
+      "signature": "theorem isPositive_inverse_of_isPositive_isInvertible (C : Tail →L[ℂ] Tail) (hC : C.IsPositive) (hInv : C.IsInvertible) : C.inverse.IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "structure",
+      "name": "OddTailInverseWeightedData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 72,
+      "signature": "structure OddTailInverseWeightedData (Head Tail : Type*) [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail] where",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "oddTailInverseWeightedCorrection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 81,
+      "signature": "noncomputable def oddTailInverseWeightedCorrection (D : OddTailInverseWeightedData Head Tail) : Head →L[ℂ] Head",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "outerBlock_apply_inverse_residual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 87,
+      "signature": "theorem outerBlock_apply_inverse_residual (D : OddTailInverseWeightedData Head Tail) (x : Head) : D.outerBlock (D.outerBlock.inverse (D.residual x)) = D.residual x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "oddTailInverseWeightedCorrection_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 97,
+      "signature": "theorem oddTailInverseWeightedCorrection_isPositive (D : OddTailInverseWeightedData Head Tail) : (oddTailInverseWeightedCorrection D).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "oddTailInverseWeightedCorrection_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 105,
+      "signature": "theorem oddTailInverseWeightedCorrection_apply (D : OddTailInverseWeightedData Head Tail) (x : Head) : oddTailInverseWeightedCorrection D x = D.residual.adjoint (D.outerBlock.inverse (D.residual x))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_oddTailInverseWeightedCorrection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 113,
+      "signature": "theorem inner_oddTailInverseWeightedCorrection (D : OddTailInverseWeightedData Head Tail) (x y : Head) : inner ℂ (oddTailInverseWeightedCorrection D x) y = inner ℂ (D.outerBlock.inverse (D.residual x)) (D.residual y)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "re_inner_oddTailInverseWeightedCorrection_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 121,
+      "signature": "theorem re_inner_oddTailInverseWeightedCorrection_nonneg (D : OddTailInverseWeightedData Head Tail) (x : Head) : 0 ≤ re (inner ℂ (oddTailInverseWeightedCorrection D x) x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "oddTailSchurComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 127,
+      "signature": "noncomputable def oddTailSchurComplement (A : Head →L[ℂ] Head) (D : OddTailInverseWeightedData Head Tail) : Head →L[ℂ] Head",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "operator_eq_oddTailSchurComplement_add_correction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 134,
+      "signature": "theorem operator_eq_oddTailSchurComplement_add_correction (A : Head →L[ℂ] Head) (D : OddTailInverseWeightedData Head Tail) : A = oddTailSchurComplement A D + oddTailInverseWeightedCorrection D",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_operator_eq_schur_add_inverseWeighted",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+      "line": 141,
+      "signature": "theorem inner_operator_eq_schur_add_inverseWeighted (A : Head →L[ℂ] Head) (D : OddTailInverseWeightedData Head Tail) (x : Head) : inner ℂ (A x) x = inner ℂ (oddTailSchurComplement A D x) x + inner ℂ (oddTailInverseWeightedCorrection D x) x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "physicalFourierFrequency",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPhysicalFourierEnergyControl.lean",
@@ -7671,6 +8061,206 @@
     },
     {
       "kind": "def",
+      "name": "sourcePrimeCosineLInf",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 14,
+      "signature": "private noncomputable def sourcePrimeCosineLInf (k : ℕ) : MeasureTheory.Lp ℂ ∞ (volume : Measure ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourcePrimeCosineLInf",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 27,
+      "signature": "private theorem coeFn_sourcePrimeCosineLInf (k : ℕ) : ((sourcePrimeCosineLInf k : MeasureTheory.Lp ℂ ∞ (volume : Measure ℝ)) : ℝ → ℂ) =ᵐ[volume] (fun t : ℝ => (Real.cos (2 * Real.pi * t * Real.log (k : ℝ)) : ℂ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourcePrimeCosineLpLinearMap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 36,
+      "signature": "private noncomputable def sourcePrimeCosineLpLinearMap (k : ℕ) : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) →L[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourcePrimeCosineLpLinearMap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 47,
+      "signature": "private theorem coeFn_sourcePrimeCosineLpLinearMap (k : ℕ) (f : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ((sourcePrimeCosineLpLinearMap k f : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) =ᵐ[volume] (fun t : ℝ => (Real.cos (2 * Real.pi * t * Real.log (k : ℝ)) : ℂ) * f t)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeCosineLpLinearMap_inner_swap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 62,
+      "signature": "private theorem sourcePrimeCosineLpLinearMap_inner_swap (k : ℕ) (f g : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : inner ℂ f (sourcePrimeCosineLpLinearMap k g) = inner ℂ (sourcePrimeCosineLpLinearMap k f) g",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourcePrimeCosineSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 76,
+      "signature": "private noncomputable def sourcePrimeCosineSesquilinearForm (i : PairIndex) (k : ℕ) : H_m i →ₗ⋆[ℂ] H_m i →ₗ[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeCosineSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 97,
+      "signature": "private theorem sourcePrimeCosineSesquilinearForm_apply (i : PairIndex) (k : ℕ) (x y : H_m i) : sourcePrimeCosineSesquilinearForm i k x y = (innerₛₗ ℂ) (sourceLogWindowFourierL2Isometry i x) (sourcePrimeCosineLpLinearMap k (sourceLogWindowFourierL2Isometry i y))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeCosineSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 106,
+      "signature": "private theorem sourcePrimeCosineSesquilinearForm_conj_symm (i : PairIndex) (k : ℕ) (x y : H_m i) : sourcePrimeCosineSesquilinearForm i k x y = star (sourcePrimeCosineSesquilinearForm i k y x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourcePrimeCosineContinuousSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 124,
+      "signature": "private noncomputable def sourcePrimeCosineContinuousSesquilinearForm (i : PairIndex) (k : ℕ) : H_m i →L⋆[ℂ] H_m i →L[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeCosineContinuousSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 133,
+      "signature": "private theorem sourcePrimeCosineContinuousSesquilinearForm_apply (i : PairIndex) (k : ℕ) (x y : H_m i) : sourcePrimeCosineContinuousSesquilinearForm i k x y = (innerₛₗ ℂ) (sourceLogWindowFourierL2Isometry i x) (sourcePrimeCosineLpLinearMap k (sourceLogWindowFourierL2Isometry i y))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourcePrimeSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 142,
+      "signature": "noncomputable def sourcePrimeSesquilinearForm (i : PairIndex) : H_m i →ₗ⋆[ℂ] H_m i →ₗ[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourcePrimeContinuousSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 150,
+      "signature": "noncomputable def sourcePrimeContinuousSesquilinearForm (i : PairIndex) : H_m i →L⋆[ℂ] H_m i →L[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeContinuousSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 159,
+      "signature": "theorem sourcePrimeContinuousSesquilinearForm_apply (i : PairIndex) (x y : H_m i) : sourcePrimeContinuousSesquilinearForm i x y = sourcePrimeSesquilinearForm i x y",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 168,
+      "signature": "theorem sourcePrimeSesquilinearForm_apply (i : PairIndex) (x y : H_m i) : sourcePrimeSesquilinearForm i x y = ∑ k ∈ Finset.Icc 2 i.m, ((ArithmeticFunction.vonMangoldt k * (Real.sqrt (k : ℝ))⁻¹ : ℝ) : ℂ) * (2 * (innerₛₗ ℂ) (sourceLogWindowFourierL2Isometry i x) (sourcePrimeCosineLpLinearMap k (sourceLogWindowFourierL2Isometry i y)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 183,
+      "signature": "theorem sourcePrimeSesquilinearForm_conj_symm (i : PairIndex) (x y : H_m i) : sourcePrimeSesquilinearForm i x y = star (sourcePrimeSesquilinearForm i y x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeSesquilinearForm_im_self_eq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 217,
+      "signature": "theorem sourcePrimeSesquilinearForm_im_self_eq_zero (i : PairIndex) (x : H_m i) : (sourcePrimeSesquilinearForm i x x).im = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeCosineSesquilinearForm_apply_mode_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 225,
+      "signature": "private theorem sourcePrimeCosineSesquilinearForm_apply_mode_eq_integral (i : PairIndex) (k : ℕ) (n r : ℤ) : sourcePrimeCosineSesquilinearForm i k (V_n_m i n) (V_n_m i r) = ∫ t : ℝ, conj (𝓕 (logWindowZeroExtendedMode i n) t) * (Real.cos (2 * Real.pi * t * Real.log (k : ℝ)) : ℂ) * 𝓕 (logWindowZeroExtendedMode i r) t",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeSesquilinearForm_apply_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 249,
+      "signature": "theorem sourcePrimeSesquilinearForm_apply_mode (i : PairIndex) (n r : ℤ) : sourcePrimeSesquilinearForm i (V_n_m i n) (V_n_m i r) = sourcePrimeModePairing i n r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeSesquilinearForm_apply_ccmFiniteSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 261,
+      "signature": "theorem sourcePrimeSesquilinearForm_apply_ccmFiniteSynthesis (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourcePrimeSesquilinearForm i (ccmFiniteSynthesis i c) (ccmFiniteSynthesis i d) = ∑ j, ∑ k, star (c j) * sourcePrimeModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourcePrimeSesquilinearForm_apply_ccmFiniteSynthesis_eq_ccmPrime",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
+      "line": 287,
+      "signature": "theorem sourcePrimeSesquilinearForm_apply_ccmFiniteSynthesis_eq_ccmPrime (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourcePrimeSesquilinearForm i (ccmFiniteSynthesis i c) (ccmFiniteSynthesis i d) = ∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmPrimeEntryN1 i.m (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "selectedProjectedMellinCoordinate",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarProjectedMellinCoordinate.lean",
       "line": 29,
@@ -7695,6 +8285,136 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarProjectedMellinCoordinate.lean",
       "line": 148,
       "signature": "theorem selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate (S : ProlateCanonicalSourceData) (k : ℕ) (z : ℂ) : selectedProjectedMellinCoordinate S k z = selectedRawTransformCoordinate S k z",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanShiftedWeightedLpPMap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 16,
+      "signature": "noncomputable def sourceArchimedeanShiftedWeightedLpPMap (i : PairIndex) : H_m i →ₗ.[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) where",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedWeightedLpPMap_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 23,
+      "signature": "theorem sourceArchimedeanShiftedWeightedLpPMap_apply (i : PairIndex) (x : (sourceArchimedeanShiftedWeightedLpPMap i).domain) : sourceArchimedeanShiftedWeightedLpPMap i x = sourceArchimedeanShiftedWeightedLpLinearMap i x",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedWeightedLpPMap_isClosed",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 32,
+      "signature": "theorem sourceArchimedeanShiftedWeightedLpPMap_isClosed (i : PairIndex) : (sourceArchimedeanShiftedWeightedLpPMap i).IsClosed",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "shiftedWeightedImageOnH",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 117,
+      "signature": "private noncomputable def shiftedWeightedImageOnH (i : PairIndex) (x : H_m i) : ℝ → ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "shiftedWeightedImageOnH_aestronglyMeasurable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 124,
+      "signature": "private theorem shiftedWeightedImageOnH_aestronglyMeasurable (i : PairIndex) (x : H_m i) : AEStronglyMeasurable (shiftedWeightedImageOnH i x) volume",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanShiftedFormRootEnergy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 134,
+      "signature": "noncomputable def sourceArchimedeanShiftedFormRootEnergy (i : PairIndex) (x : H_m i) : ℝ≥0∞",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mem_sourceArchimedeanShiftedFormDomain_iff_rootEnergy_lt_top",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 138,
+      "signature": "theorem mem_sourceArchimedeanShiftedFormDomain_iff_rootEnergy_lt_top (i : PairIndex) (x : H_m i) : x ∈ sourceArchimedeanShiftedFormDomain i ↔ sourceArchimedeanShiftedFormRootEnergy i x < ∞",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedFormRootEnergy_lowerSemicontinuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 154,
+      "signature": "theorem sourceArchimedeanShiftedFormRootEnergy_lowerSemicontinuous (i : PairIndex) : LowerSemicontinuous (sourceArchimedeanShiftedFormRootEnergy i)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanShiftedExtendedQuadraticForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 189,
+      "signature": "noncomputable def sourceArchimedeanShiftedExtendedQuadraticForm (i : PairIndex) (x : H_m i) : ℝ≥0∞",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedExtendedQuadraticForm_lowerSemicontinuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 193,
+      "signature": "theorem sourceArchimedeanShiftedExtendedQuadraticForm_lowerSemicontinuous (i : PairIndex) : LowerSemicontinuous (sourceArchimedeanShiftedExtendedQuadraticForm i)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedFormRootEnergy_eq_enorm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 204,
+      "signature": "theorem sourceArchimedeanShiftedFormRootEnergy_eq_enorm (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanShiftedFormRootEnergy i x.1 = ‖sourceArchimedeanShiftedWeightedLpLinearMap i x‖ₑ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedExtendedQuadraticForm_toReal_eq_re",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 217,
+      "signature": "theorem sourceArchimedeanShiftedExtendedQuadraticForm_toReal_eq_re (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : (sourceArchimedeanShiftedExtendedQuadraticForm i x.1).toReal = (sourceArchimedeanShiftedSesquilinearForm i x x).re",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mem_sourceArchimedeanShiftedFormDomain_iff_extendedQuadraticForm_lt_top",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean",
+      "line": 228,
+      "signature": "theorem mem_sourceArchimedeanShiftedFormDomain_iff_extendedQuadraticForm_lt_top (i : PairIndex) (x : H_m i) : x ∈ sourceArchimedeanShiftedFormDomain i ↔ sourceArchimedeanShiftedExtendedQuadraticForm i x < ∞",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
@@ -7755,6 +8475,116 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchModeDomain.lean",
       "line": 15,
       "signature": "theorem V_n_m_mem_sourceArchimedeanShiftedFormDomain (i : PairIndex) (n : ℤ) : V_n_m i n ∈ sourceArchimedeanShiftedFormDomain i",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "shiftedWeightedImage",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 10,
+      "signature": "private noncomputable def shiftedWeightedImage (i : PairIndex) (x : H_m i) : ℝ → ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "shiftedWeightedImage_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 17,
+      "signature": "private theorem shiftedWeightedImage_memLp (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : MemLp (shiftedWeightedImage i x.1) 2 volume",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "shiftedWeightedLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 22,
+      "signature": "private noncomputable def shiftedWeightedLp (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "shiftedWeightedLp_add",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 27,
+      "signature": "private theorem shiftedWeightedLp_add (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : shiftedWeightedLp i (x + y) = shiftedWeightedLp i x + shiftedWeightedLp i y",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "shiftedWeightedLp_smul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 48,
+      "signature": "private theorem shiftedWeightedLp_smul (i : PairIndex) (c : ℂ) (x : sourceArchimedeanShiftedFormDomain i) : shiftedWeightedLp i (c • x) = c • shiftedWeightedLp i x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanShiftedWeightedLpLinearMap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 69,
+      "signature": "noncomputable def sourceArchimedeanShiftedWeightedLpLinearMap (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] MeasureTheory.Lp ℂ 2 (volume : Measure ℝ) where",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceArchimedeanShiftedWeightedLpLinearMap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 79,
+      "signature": "theorem coeFn_sourceArchimedeanShiftedWeightedLpLinearMap (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : ((sourceArchimedeanShiftedWeightedLpLinearMap i x : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) =ᵐ[volume] (fun t : ℝ => (sourceArchimedeanShiftedSqrtWeight t : ℂ) * ((sourceLogWindowFourierL2Isometry i x.1 : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceArchimedeanShiftedSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 93,
+      "signature": "noncomputable def sourceArchimedeanShiftedSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 120,
+      "signature": "theorem sourceArchimedeanShiftedSesquilinearForm_apply (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanShiftedSesquilinearForm i x y = (innerₛₗ ℂ) (sourceArchimedeanShiftedWeightedLpLinearMap i x) (sourceArchimedeanShiftedWeightedLpLinearMap i y)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 129,
+      "signature": "theorem sourceArchimedeanShiftedSesquilinearForm_conj_symm (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceArchimedeanShiftedSesquilinearForm i x y = star (sourceArchimedeanShiftedSesquilinearForm i y x)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedSesquilinearForm_re_self_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
+      "line": 148,
+      "signature": "theorem sourceArchimedeanShiftedSesquilinearForm_re_self_nonneg (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : 0 ≤ (sourceArchimedeanShiftedSesquilinearForm i x x).re",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
@@ -9631,6 +10461,86 @@
     },
     {
       "kind": "theorem",
+      "name": "sourceW02ModePairing_eq_rankTwoEndpointIntegrals",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceW02ModePairing.lean",
+      "line": 1151,
+      "signature": "theorem sourceW02ModePairing_eq_rankTwoEndpointIntegrals (i : PairIndex) (n r : ℤ) : sourceW02ModePairing i n r = star (∫ x in Set.Icc 0 (L_m i), logWindowZeroExtendedMode i n x * (Real.exp (-x / 2) : ℂ)) * (∫ x in Set.Icc 0 (L_m i), logWindowZeroExtendedMode i r x * (Real.exp (x / 2) : ℂ)) + star (∫ x in Set.Icc 0 (L_m i), logWindowZeroExtendedMode i n x * (Real.exp (x / 2) : ℂ)) * (∫ x in Set.Icc 0 (L_m i), logWindowZeroExtendedMode i r x * (Real.exp (-x / 2) : ℂ))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilBoundedShiftedDiagonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 15,
+      "signature": "noncomputable def sourceWeilBoundedShiftedDiagonal (i : PairIndex) (x : H_m i) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilBoundedShiftedDiagonal_continuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 22,
+      "signature": "theorem sourceWeilBoundedShiftedDiagonal_continuous (i : PairIndex) : Continuous (sourceWeilBoundedShiftedDiagonal i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilBoundedShiftedDiagonal_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 35,
+      "signature": "theorem sourceWeilBoundedShiftedDiagonal_nonneg (i : PairIndex) (x : H_m i) : 0 ≤ sourceWeilBoundedShiftedDiagonal i x",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilShiftedExtendedQuadraticForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 65,
+      "signature": "noncomputable def sourceWeilShiftedExtendedQuadraticForm (i : PairIndex) (x : H_m i) : ℝ≥0∞",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedExtendedQuadraticForm_lowerSemicontinuous",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 70,
+      "signature": "theorem sourceWeilShiftedExtendedQuadraticForm_lowerSemicontinuous (i : PairIndex) : LowerSemicontinuous (sourceWeilShiftedExtendedQuadraticForm i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mem_sourceArchimedeanShiftedFormDomain_iff_sourceWeilShifted_lt_top",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 79,
+      "signature": "theorem mem_sourceArchimedeanShiftedFormDomain_iff_sourceWeilShifted_lt_top (i : PairIndex) (x : H_m i) : x ∈ sourceArchimedeanShiftedFormDomain i ↔ sourceWeilShiftedExtendedQuadraticForm i x < ∞",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedExtendedQuadraticForm_toReal_eq_re_add_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilClosedForm.lean",
+      "line": 90,
+      "signature": "theorem sourceWeilShiftedExtendedQuadraticForm_toReal_eq_re_add_shift (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : (sourceWeilShiftedExtendedQuadraticForm i x.1).toReal = (sourceWeilSesquilinearForm i x x).re + sourceWeilLowerBoundConstant i * ‖(x : H_m i)‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "sourceWeilFiniteForm_eq_ccmWeilMatrixForm",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFormCCMWeilCrosswalk.lean",
       "line": 17,
@@ -9656,6 +10566,316 @@
       "line": 154,
       "signature": "theorem sourceWeilFiniteFourierLedger_eq_ccmWeilMatrixForm (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : ((∑ j, ∑ k, star (c j) * sourceW02ModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k) + (∫ t : ℝ, conj (((sourceLogWindowFourierL2Isometry i (ccmFiniteSynthesis i c) : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t) * (sourceArchimedeanMultiplier t : ℂ) * (((sourceLogWindowFourierL2Isometry i (ccmFiniteSynthesis i d) : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) t)) - (∑ j, ∑ k, star (c j) * sourcePrimeModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k)) = ∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmWeilMatFinite i.m i.N j k : ℂ) * d k",
       "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedExtendedQuadraticForm_toReal_eq_weighted_norm_sq_add",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+      "line": 28,
+      "signature": "theorem sourceWeilShiftedExtendedQuadraticForm_toReal_eq_weighted_norm_sq_add (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : (sourceWeilShiftedExtendedQuadraticForm i x.1).toReal = ‖sourceArchimedeanShiftedWeightedLpLinearMap i x‖ ^ 2 + sourceWeilBoundedShiftedDiagonal i x.1",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "tendsto_sourceWeilShifted_energy_zero_iff_weighted_graph_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+      "line": 51,
+      "signature": "theorem tendsto_sourceWeilShifted_energy_zero_iff_weighted_graph_zero (i : PairIndex) (x : ℕ → sourceArchimedeanShiftedFormDomain i) (hx : Tendsto (fun n => ((x n : sourceArchimedeanShiftedFormDomain i) : H_m i)) atTop (𝓝 0)) : Tendsto (fun n => (sourceWeilShiftedExtendedQuadraticForm i (x n).1).toReal) atTop (𝓝 0) ↔ Tendsto (fun n => ‖sourceArchimedeanShiftedWeightedLpLinearMap i (x n)‖) atTop (𝓝 0)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "IsSourceWeilFormCore",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+      "line": 109,
+      "signature": "def IsSourceWeilFormCore (i : PairIndex) (S : Submodule ℂ (sourceArchimedeanShiftedFormDomain i)) : Prop",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "IsSourceArchimedeanShiftedWeightedGraphCore",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+      "line": 125,
+      "signature": "def IsSourceArchimedeanShiftedWeightedGraphCore (i : PairIndex) (S : Submodule ℂ (sourceArchimedeanShiftedFormDomain i)) : Prop",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "isSourceWeilFormCore_iff_isShiftedWeightedGraphCore",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+      "line": 142,
+      "signature": "theorem isSourceWeilFormCore_iff_isShiftedWeightedGraphCore (i : PairIndex) (S : Submodule ℂ (sourceArchimedeanShiftedFormDomain i)) : IsSourceWeilFormCore i S ↔ IsSourceArchimedeanShiftedWeightedGraphCore i S",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmOddPositiveFinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 25,
+      "signature": "private def ccmOddPositiveFinite (N : ℕ) (r : Fin N) : CCMModeFinite N",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmOddPositiveFinite_inj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 28,
+      "signature": "private theorem ccmOddPositiveFinite_inj (N : ℕ) (r s : Fin N) : ccmOddPositiveFinite N r = ccmOddPositiveFinite N s ↔ r = s",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmOddPositiveFinite_ne_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 39,
+      "signature": "private theorem ccmOddPositiveFinite_ne_neg (N : ℕ) (r s : Fin N) : ccmOddPositiveFinite N r ≠ ccmNegFinite N (ccmOddPositiveFinite N s)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmOddNegativeFinite_inj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 48,
+      "signature": "private theorem ccmOddNegativeFinite_inj (N : ℕ) (r s : Fin N) : ccmNegFinite N (ccmOddPositiveFinite N r) = ccmNegFinite N (ccmOddPositiveFinite N s) ↔ r = s",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmOddNegativeFinite_ne_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 62,
+      "signature": "private theorem ccmOddNegativeFinite_ne_pos (N : ℕ) (r s : Fin N) : ccmNegFinite N (ccmOddPositiveFinite N r) ≠ ccmOddPositiveFinite N s",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmOddBasisVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 68,
+      "signature": "private noncomputable def ccmOddBasisVector (N : ℕ) (r : Fin N) : EuclideanSpace ℂ (CCMModeFinite N)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmInvSqrtTwo_pair_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 76,
+      "signature": "private theorem ccmInvSqrtTwo_pair_norm : (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) + (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) = 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmOddBasisVector_orthonormal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 85,
+      "signature": "private theorem ccmOddBasisVector_orthonormal (N : ℕ) : Orthonormal ℂ (ccmOddBasisVector N)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmOddCoefficientMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 99,
+      "signature": "private noncomputable def ccmOddCoefficientMatrix (N : ℕ) : Matrix (CCMModeFinite N) (Fin N) ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmOddCoefficientIsometry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 105,
+      "signature": "noncomputable def ccmOddCoefficientIsometry (N : ℕ) : EuclideanSpace ℂ (Fin N) →ₗᵢ[ℂ] EuclideanSpace ℂ (CCMModeFinite N)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmModeFinite_inj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 128,
+      "signature": "private theorem ccmModeFinite_inj (N : ℕ) : Function.Injective (ccmModeFinite N)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmFiniteShiftedFormDomainIsometry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 134,
+      "signature": "private noncomputable def ccmFiniteShiftedFormDomainIsometry (i : PairIndex) : EuclideanSpace ℂ (CCMModeFinite i.N) →ₗᵢ[ℂ] sourceArchimedeanShiftedFormDomain i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddSynthesis13",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 162,
+      "signature": "noncomputable def sourceWeilOddSynthesis13 (N : ℕ) : EuclideanSpace ℂ (Fin N) →ₗᵢ[ℂ] sourceArchimedeanShiftedFormDomain ⟨13, N, by norm_num⟩",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddSynthesis13_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 169,
+      "signature": "private theorem sourceWeilOddSynthesis13_apply (N : ℕ) (a : EuclideanSpace ℂ (Fin N)) : sourceWeilOddSynthesis13 N a = ccmFiniteShiftedFormDomainSynthesis ⟨13, N, by norm_num⟩ (ccmOddCoefficientIsometry N a)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddFormPullback13",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean",
+      "line": 178,
+      "signature": "theorem sourceWeilOddFormPullback13 (N : ℕ) (a b : EuclideanSpace ℂ (Fin N)) : sourceWeilSesquilinearForm ⟨13, N, by norm_num⟩ (sourceWeilOddSynthesis13 N a) (sourceWeilOddSynthesis13 N b) = ∑ j, ∑ k, star ((ccmOddCoefficientIsometry N a) j) * (Q3.RouteB.ccmWeilMatFinite 13 N j k : ℂ) * (ccmOddCoefficientIsometry N b) k",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02ShiftedDomainSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 14,
+      "signature": "noncomputable def sourceW02ShiftedDomainSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02ShiftedDomainSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 31,
+      "signature": "theorem sourceW02ShiftedDomainSesquilinearForm_apply (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceW02ShiftedDomainSesquilinearForm i x y = sourceW02AmbientContinuousSesquilinearForm i x.1 y.1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 39,
+      "signature": "noncomputable def sourceWeilSesquilinearForm (i : PairIndex) : sourceArchimedeanShiftedFormDomain i →ₗ⋆[ℂ] sourceArchimedeanShiftedFormDomain i →ₗ[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 47,
+      "signature": "theorem sourceWeilSesquilinearForm_apply (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceWeilSesquilinearForm i x y = sourceW02AmbientContinuousSesquilinearForm i x.1 y.1 + sourceArchPrimeSesquilinearForm i x y",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 55,
+      "signature": "theorem sourceWeilSesquilinearForm_conj_symm (i : PairIndex) (x y : sourceArchimedeanShiftedFormDomain i) : sourceWeilSesquilinearForm i x y = star (sourceWeilSesquilinearForm i y x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_im_self_eq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 80,
+      "signature": "theorem sourceWeilSesquilinearForm_im_self_eq_zero (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : (sourceWeilSesquilinearForm i x x).im = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 88,
+      "signature": "theorem sourceWeilSesquilinearForm_apply_ccmFiniteSynthesis (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourceWeilSesquilinearForm i (ccmFiniteShiftedFormDomainSynthesis i c) (ccmFiniteShiftedFormDomainSynthesis i d) = ∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmWeilMatFinite i.m i.N j k : ℂ) * d k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourcePrimeSesquilinearForm_apply_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 123,
+      "signature": "theorem norm_sourcePrimeSesquilinearForm_apply_le (i : PairIndex) (x y : H_m i) : ‖sourcePrimeSesquilinearForm i x y‖ ≤ ‖sourcePrimeContinuousSesquilinearForm i‖ * ‖x‖ * ‖y‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilLowerBoundConstant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 139,
+      "signature": "noncomputable def sourceWeilLowerBoundConstant (i : PairIndex) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilLowerBoundConstant_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 144,
+      "signature": "theorem sourceWeilLowerBoundConstant_nonneg (i : PairIndex) : 0 ≤ sourceWeilLowerBoundConstant i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_re_self_lowerBound",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
+      "line": 152,
+      "signature": "theorem sourceWeilSesquilinearForm_re_self_lowerBound (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : -(sourceWeilLowerBoundConstant i * ‖(x : H_m i)‖ ^ 2) ≤ (sourceWeilSesquilinearForm i x x).re",
+      "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -9765,6 +10985,396 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean",
       "line": 242,
       "signature": "private theorem integrable_vModeLogGrowthEnvelope_sq_div_one_add_abs_sq : Integrable (fun t : ℝ => (vModeLogGrowthEnvelope t) ^ 2 / (1 + |t|) ^ 2)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02EndpointPlusModeValue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 12,
+      "signature": "noncomputable def sourceW02EndpointPlusModeValue (i : PairIndex) (n : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02EndpointMinusModeValue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 19,
+      "signature": "noncomputable def sourceW02EndpointMinusModeValue (i : PairIndex) (n : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointPlusFunctional_apply_modeValue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 25,
+      "signature": "theorem sourceW02PhysicalEndpointPlusFunctional_apply_modeValue (i : PairIndex) (n : ℤ) : sourceW02PhysicalEndpointPlusFunctional i (V_n_m i n) = sourceW02EndpointPlusModeValue i n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointMinusFunctional_apply_modeValue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 32,
+      "signature": "theorem sourceW02PhysicalEndpointMinusFunctional_apply_modeValue (i : PairIndex) (n : ℤ) : sourceW02PhysicalEndpointMinusFunctional i (V_n_m i n) = sourceW02EndpointMinusModeValue i n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02ModePairing_eq_rankTwoEndpointModeValues",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 39,
+      "signature": "theorem sourceW02ModePairing_eq_rankTwoEndpointModeValues (i : PairIndex) (n r : ℤ) : sourceW02ModePairing i n r = star (sourceW02EndpointMinusModeValue i n) * sourceW02EndpointPlusModeValue i r + star (sourceW02EndpointPlusModeValue i n) * sourceW02EndpointMinusModeValue i r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02AmbientContinuousSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 52,
+      "signature": "noncomputable def sourceW02AmbientContinuousSesquilinearForm (i : PairIndex) : H_m i →L⋆[ℂ] H_m i →L[ℂ] ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02AmbientContinuousSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 60,
+      "signature": "theorem sourceW02AmbientContinuousSesquilinearForm_apply (i : PairIndex) (x y : H_m i) : sourceW02AmbientContinuousSesquilinearForm i x y = star (sourceW02PhysicalEndpointMinusFunctional i x) * sourceW02PhysicalEndpointPlusFunctional i y + star (sourceW02PhysicalEndpointPlusFunctional i x) * sourceW02PhysicalEndpointMinusFunctional i y",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02AmbientContinuousSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 69,
+      "signature": "theorem sourceW02AmbientContinuousSesquilinearForm_conj_symm (i : PairIndex) (x y : H_m i) : sourceW02AmbientContinuousSesquilinearForm i x y = star (sourceW02AmbientContinuousSesquilinearForm i y x)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02AmbientContinuousSesquilinearForm_apply_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 77,
+      "signature": "theorem sourceW02AmbientContinuousSesquilinearForm_apply_mode (i : PairIndex) (n r : ℤ) : sourceW02AmbientContinuousSesquilinearForm i (V_n_m i n) (V_n_m i r) = sourceW02ModePairing i n r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02AmbientContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_ccmW02",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 92,
+      "signature": "theorem sourceW02AmbientContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_ccmW02 (i : PairIndex) (c d : CCMModeFinite i.N → ℂ) : sourceW02AmbientContinuousSesquilinearForm i (ccmFiniteSynthesis i c) (ccmFiniteSynthesis i d) = ∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceW02AmbientContinuousSesquilinearForm_apply_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02AmbientContinuousForm.lean",
+      "line": 112,
+      "signature": "theorem norm_sourceW02AmbientContinuousSesquilinearForm_apply_le (i : PairIndex) (x y : H_m i) : ‖sourceW02AmbientContinuousSesquilinearForm i x y‖ ≤ ‖sourceW02AmbientContinuousSesquilinearForm i‖ * ‖x‖ * ‖y‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02EndpointPlusWeight_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 11,
+      "signature": "private theorem sourceW02EndpointPlusWeight_memLp (i : PairIndex) : MemLp (fun x : ℝ => (Real.exp (x / 2) : ℂ)) 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02EndpointMinusWeight_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 22,
+      "signature": "private theorem sourceW02EndpointMinusWeight_memLp (i : PairIndex) : MemLp (fun x : ℝ => (Real.exp (-x / 2) : ℂ)) 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02EndpointPlusWeightLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 33,
+      "signature": "private noncomputable def sourceW02EndpointPlusWeightLp (i : PairIndex) : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02EndpointMinusWeightLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 40,
+      "signature": "private noncomputable def sourceW02EndpointMinusWeightLp (i : PairIndex) : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceW02EndpointPlusWeightLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 47,
+      "signature": "private theorem coeFn_sourceW02EndpointPlusWeightLp (i : PairIndex) : ((sourceW02EndpointPlusWeightLp i : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))) : ℝ → ℂ) =ᵐ[volume.restrict (Set.Icc (0 : ℝ) (L_m i))] (fun x : ℝ => (Real.exp (x / 2) : ℂ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceW02EndpointMinusWeightLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 56,
+      "signature": "private theorem coeFn_sourceW02EndpointMinusWeightLp (i : PairIndex) : ((sourceW02EndpointMinusWeightLp i : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))) : ℝ → ℂ) =ᵐ[volume.restrict (Set.Icc (0 : ℝ) (L_m i))] (fun x : ℝ => (Real.exp (-x / 2) : ℂ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02EndpointPlusFunctional",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 66,
+      "signature": "noncomputable def sourceW02EndpointPlusFunctional (i : PairIndex) : H_m i →L[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02EndpointMinusFunctional",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 72,
+      "signature": "noncomputable def sourceW02EndpointMinusFunctional (i : PairIndex) : H_m i →L[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02EndpointPlusFunctional_apply_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 77,
+      "signature": "theorem sourceW02EndpointPlusFunctional_apply_eq_integral (i : PairIndex) (x : H_m i) : sourceW02EndpointPlusFunctional i x = ∫ t : ℝ in Set.Icc 0 (L_m i), (((logWindowL2Equiv i).symm x : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))) : ℝ → ℂ) t * (Real.exp (t / 2) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02EndpointMinusFunctional_apply_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 96,
+      "signature": "theorem sourceW02EndpointMinusFunctional_apply_eq_integral (i : PairIndex) (x : H_m i) : sourceW02EndpointMinusFunctional i x = ∫ t : ℝ in Set.Icc 0 (L_m i), (((logWindowL2Equiv i).symm x : MeasureTheory.Lp ℂ 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))) : ℝ → ℂ) t * (Real.exp (-t / 2) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointPlusWeight_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 123,
+      "signature": "private theorem sourceW02PhysicalEndpointPlusWeight_memLp (i : PairIndex) : MemLp (fun u : ℝ => (Real.exp (Real.log (lambda_m i * u) / 2) : ℂ)) 2 (dStar.restrict (I_m i))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointMinusWeight_memLp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 175,
+      "signature": "private theorem sourceW02PhysicalEndpointMinusWeight_memLp (i : PairIndex) : MemLp (fun u : ℝ => (Real.exp (-Real.log (lambda_m i * u) / 2) : ℂ)) 2 (dStar.restrict (I_m i))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02PhysicalEndpointPlusWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 222,
+      "signature": "private noncomputable def sourceW02PhysicalEndpointPlusWeight (i : PairIndex) : H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02PhysicalEndpointMinusWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 228,
+      "signature": "private noncomputable def sourceW02PhysicalEndpointMinusWeight (i : PairIndex) : H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceW02PhysicalEndpointPlusWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 234,
+      "signature": "private theorem coeFn_sourceW02PhysicalEndpointPlusWeight (i : PairIndex) : ((sourceW02PhysicalEndpointPlusWeight i : H_m i) : ℝ → ℂ) =ᵐ[dStar.restrict (I_m i)] (fun u : ℝ => (Real.exp (Real.log (lambda_m i * u) / 2) : ℂ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceW02PhysicalEndpointMinusWeight",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 242,
+      "signature": "private theorem coeFn_sourceW02PhysicalEndpointMinusWeight (i : PairIndex) : ((sourceW02PhysicalEndpointMinusWeight i : H_m i) : ℝ → ℂ) =ᵐ[dStar.restrict (I_m i)] (fun u : ℝ => (Real.exp (-Real.log (lambda_m i * u) / 2) : ℂ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02PhysicalEndpointPlusFunctional",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 251,
+      "signature": "noncomputable def sourceW02PhysicalEndpointPlusFunctional (i : PairIndex) : H_m i →L[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceW02PhysicalEndpointMinusFunctional",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 256,
+      "signature": "noncomputable def sourceW02PhysicalEndpointMinusFunctional (i : PairIndex) : H_m i →L[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointPlusFunctional_apply_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 260,
+      "signature": "theorem sourceW02PhysicalEndpointPlusFunctional_apply_eq_integral (i : PairIndex) (x : H_m i) : sourceW02PhysicalEndpointPlusFunctional i x = ∫ u : ℝ, (x : ℝ → ℂ) u * (Real.exp (Real.log (lambda_m i * u) / 2) : ℂ) ∂(dStar.restrict (I_m i))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointMinusFunctional_apply_eq_integral",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 276,
+      "signature": "theorem sourceW02PhysicalEndpointMinusFunctional_apply_eq_integral (i : PairIndex) (x : H_m i) : sourceW02PhysicalEndpointMinusFunctional i x = ∫ u : ℝ, (x : ℝ → ℂ) u * (Real.exp (-Real.log (lambda_m i * u) / 2) : ℂ) ∂(dStar.restrict (I_m i))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointPlusFunctional_apply_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 292,
+      "signature": "theorem sourceW02PhysicalEndpointPlusFunctional_apply_mode (i : PairIndex) (n : ℤ) : sourceW02PhysicalEndpointPlusFunctional i (V_n_m i n) = ∫ x in Set.Icc 0 (L_m i), logWindowZeroExtendedMode i n x * (Real.exp (x / 2) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceW02PhysicalEndpointMinusFunctional_apply_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
+      "line": 343,
+      "signature": "theorem sourceW02PhysicalEndpointMinusFunctional_apply_mode (i : PairIndex) (n : ℤ) : sourceW02PhysicalEndpointMinusFunctional i (V_n_m i n) = ∫ x in Set.Icc 0 (L_m i), logWindowZeroExtendedMode i n x * (Real.exp (-x / 2) : ℂ)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "endpointRankTwoContinuousSesquilinearForm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
+      "line": 14,
+      "signature": "noncomputable def endpointRankTwoContinuousSesquilinearForm {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] (plus minus : E →L[ℂ] ℂ) : E →L⋆[ℂ] E →L[ℂ] ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpointRankTwoContinuousSesquilinearForm_apply",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
+      "line": 50,
+      "signature": "theorem endpointRankTwoContinuousSesquilinearForm_apply {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] (plus minus : E →L[ℂ] ℂ) (x y : E) : endpointRankTwoContinuousSesquilinearForm plus minus x y = star (minus x) * plus y + star (plus x) * minus y",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpointRankTwoContinuousSesquilinearForm_conj_symm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
+      "line": 57,
+      "signature": "theorem endpointRankTwoContinuousSesquilinearForm_conj_symm {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E] (plus minus : E →L[ℂ] ℂ) (x y : E) : endpointRankTwoContinuousSesquilinearForm plus minus x y = star (endpointRankTwoContinuousSesquilinearForm plus minus y x)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpointRankTwoContinuousSesquilinearForm_apply_mode_eq_sourceW02",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
+      "line": 71,
+      "signature": "theorem endpointRankTwoContinuousSesquilinearForm_apply_mode_eq_sourceW02 (i : PairIndex) (plus minus : H_m i →L[ℂ] ℂ) (plusValue minusValue : ℤ → ℂ) (hplus : ∀ n, plus (V_n_m i n) = plusValue n) (hminus : ∀ n, minus (V_n_m i n) = minusValue n) (hpair : ∀ n r, sourceW02ModePairing i n r = star (minusValue n) * plusValue r + star (plusValue n) * minusValue r) (n r : ℤ) : endpointRankTwoContinuousSesquilinearForm plus minus (V_n_m i n) (V_n_m i r) = sourceW02ModePairing i n r",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpointRankTwoContinuousSesquilinearForm_apply_ccmFiniteSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
+      "line": 88,
+      "signature": "theorem endpointRankTwoContinuousSesquilinearForm_apply_ccmFiniteSynthesis (i : PairIndex) (plus minus : H_m i →L[ℂ] ℂ) (plusValue minusValue : ℤ → ℂ) (hplus : ∀ n, plus (V_n_m i n) = plusValue n) (hminus : ∀ n, minus (V_n_m i n) = minusValue n) (hpair : ∀ n r, sourceW02ModePairing i n r = star (minusValue n) * plusValue r + star (plusValue n) * minusValue r) (c d : CCMModeFinite i.N → ℂ) : endpointRankTwoContinuousSesquilinearForm plus minus (ccmFiniteSynthesis i c) (ccmFiniteSynthesis i d) = ∑ j, ∑ k, star (c j) * sourceW02ModePairing i (ccmModeFinite i.N j) (ccmModeFinite i.N k) * d k",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "endpointRankTwoContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_ccmW02",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02RankTwoForm.lean",
+      "line": 124,
+      "signature": "theorem endpointRankTwoContinuousSesquilinearForm_apply_ccmFiniteSynthesis_eq_ccmW02 (i : PairIndex) (plus minus : H_m i →L[ℂ] ℂ) (plusValue minusValue : ℤ → ℂ) (hplus : ∀ n, plus (V_n_m i n) = plusValue n) (hminus : ∀ n, minus (V_n_m i n) = minusValue n) (hpair : ∀ n r, sourceW02ModePairing i n r = star (minusValue n) * plusValue r + star (plusValue n) * minusValue r) (c d : CCMModeFinite i.N → ℂ) : endpointRankTwoContinuousSesquilinearForm plus minus (ccmFiniteSynthesis i c) (ccmFiniteSynthesis i d) = ∑ j, ∑ k, star (c j) * (Q3.RouteB.ccmW02Entry (L_m i) (ccmModeFinite i.N j) (ccmModeFinite i.N k) : ℂ) * d k",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false

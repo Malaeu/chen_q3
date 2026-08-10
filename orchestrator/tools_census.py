@@ -27,8 +27,11 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-SKIP_DIRS = {".git", ".lake", "node_modules", "__pycache__", ".venv", "zotero",
-             "literature", ".qmd_cache", "_backups"}
+SKIP_DIRS = {
+    ".git", ".lake", "node_modules", "__pycache__", ".venv", "venv", "venv_djo",
+    ".mypy_cache", ".pytest_cache", "zotero", "literature", ".qmd_cache", "_backups",
+    "aristotle_output",
+}
 SKIP_FILE = re.compile(r"BrangeHeatCert|PrimePowAuto")           # generated Lean certificates
 PROBE_PATH = re.compile(r"ACTIVE/requests|archive|sandbox|research_swarm|full/")
 PROBE_NAME = re.compile(r"_probe\.py$|^probe_|^check_\d|^validate_|falsifier|_plants?\.py$")
@@ -295,10 +298,20 @@ def markdown(rows, probes, states):
     out.append(f"The {len(probes)} one-shot probes are deliberately **not** mapped here. They are "
                "goal-local evidence, not instruments; treating them as tooling is what makes the "
                "instrument set look unknowably large.\n")
-    return "\n".join(out) + "\n"
+    return "\n".join(line.rstrip() for line in out) + "\n"
 
 
 def main():
+    if "-h" in sys.argv[1:] or "--help" in sys.argv[1:]:
+        print(
+            "usage: tools_census.py [--markdown]\n\n"
+            "Without flags, print the TSV inventory. --markdown regenerates docs/TOOLS.md."
+        )
+        return 0
+    unknown = [arg for arg in sys.argv[1:] if arg != "--markdown"]
+    if unknown:
+        print(f"unknown arguments: {' '.join(unknown)}", file=sys.stderr)
+        return 2
     rows, probes, states = build_rows()
     if "--markdown" in sys.argv:
         target = REPO / "docs" / "TOOLS.md"

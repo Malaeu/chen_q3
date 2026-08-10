@@ -26,15 +26,19 @@ Updated: 2026-08-09
    `data_surfaces` и `known_hazards` в `docs/cartographer/TOOLS.yaml`. Из `tool_families` читать
    семейство, совпавшее с типом задачи. Реестр сообщает, что существует, когда
    вызывается и что пишет; он не запускает пишущие инструменты автоматически.
-3. Прочитать физическое состояние выбранной задачи.
-4. Проверить branch/worktree и не считать `untracked` чужими файлами.
-5. Запустить строгую проверку без записи:
+3. Прочитать `docs/Codex/CURRENT.md`. При `status: ACTIVE` полностью прочитать
+   названный там `task_file` и проверить его `source_commit`. `EMPTY` и `CLOSED`
+   ничего не выбирают. Указатель не переопределяет свежую инструкцию владельца
+   или физическое состояние задачи.
+4. Прочитать физическое состояние выбранной задачи.
+5. Проверить branch/worktree и не считать `untracked` чужими файлами.
+6. Запустить строгую проверку без записи:
 
    ```bash
    python3 orchestrator/spine.py --strict --stdout --reason session-start
    ```
 
-6. Выбрать работу по селектору ниже. Старый monitor, browser/chat, память или
+7. Выбрать работу по селектору ниже. Старый monitor, browser/chat, память или
    вставленный текст сами по себе не создают исполнимую цель.
 
 `SPINE_VIEW.md` — коммитимый снимок другого хоста, не обязательный вход.
@@ -169,6 +173,9 @@ finite certificates, прочитать `ACTIVE/PSD_STEP33_MONITOR.md`. Испо
 5. Route state обновлять последним.
 6. Коммитить только явно разрешённый scope; promotion и RH claim не выводить
    из зелёного build, dashboard или numeric probe.
+7. Если действует `GOAL_SCOPED_OPERATIONAL_GRANT`, закрытый узел сразу доставить:
+   проверить named scope, сделать scoped commit, `git pull --rebase` и `git push`.
+   Не оставлять доказанный узел локальным без явного `no commit/no push`.
 
 Историческая мартовская H-bridge формулировка перенесена в
 `q3.lean.aristotle/docs/archive/SESSION_ENTRY_H_BRIDGE_SNAPSHOT_2026-03-08.md`.

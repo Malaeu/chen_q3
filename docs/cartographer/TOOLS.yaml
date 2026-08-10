@@ -5,11 +5,11 @@
 schema: q3_tool_manifest.v2
 
 meta:
-  updated: 2026-08-09
+  updated: 2026-08-10
   owner: OWNER
   canonical: docs/cartographer/TOOLS.yaml
-  mirror: /Users/emalam/GitHub/codex_specs/TOOLS.yaml
-  mirror_rule: BYTE_IDENTICAL
+  observer_copy: machine-local codex_specs/TOOLS.yaml if present
+  observer_rule: NONAUTHORITATIVE_NOT_A_CODEX_STARTUP_DEPENDENCY
   repo: /Users/emalam/GitHub/rh_lean_01_2026
   canonical_branch: rh_clean
   policy: docs/CODEX_CONTROL.md
@@ -46,6 +46,7 @@ startup_contract:
     - q3.lean.aristotle/COGNITIVE_OPERATORS.md
     - q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md
     - docs/cartographer/TOOLS.yaml
+    - docs/Codex/CURRENT.md
     - task_local_physical_state
     - python3 orchestrator/spine.py --strict --stdout --reason session-start
   manifest_read:
@@ -53,7 +54,7 @@ startup_contract:
     on_task_match: [tool_families]
   validation:
     command: bash specs_docs/session_start.sh
-    checks: [schema, required_sections, tool_contract_fields, mirror_sha256]
+    checks: [schema, required_sections, tool_contract_fields, codex_path_resolution, current_task_pointer]
     writes: false
   prohibition:
     - CLAUDE.md is not a Codex startup input.
@@ -101,6 +102,7 @@ memory_event_routes:
       - Progress_Log branch decisions into knowledge.db.
       - Verdict lessons, sensors, semantic index, and derived Spine views.
     ordering: Route state is updated last.
+    delivery: Under a GOAL_SCOPED_OPERATIONAL_GRANT, commit named paths, pull --rebase, and push before advancing.
 
   TOOL_BIRTH:
     condition: Before a new helper, generator, skill, hook, or database writer becomes routable.
@@ -296,8 +298,8 @@ tool_families:
   cartography_and_property_descent:
     summary: Find capabilities by mathematical need, then descend suppliers to exact gaps.
     coverage:
-      - /Users/emalam/GitHub/codex_specs/cartographer/*
       - docs/cartographer/*
+      - machine-local codex_specs/cartographer/* as optional independent observer evidence
       - q3.lean.aristotle/aristotle_db/knowledge.db tables capability|assembly|contract2|counterexample|atom|atom_use
     workflow:
       - Name the exact target and terminal consumer.
@@ -311,7 +313,7 @@ tool_families:
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
-        path: /Users/emalam/GitHub/codex_specs/HOWTO.md
+        path: docs/cartographer/HOWTO.md
         invoke: Read HOWTO procedure, then query capability and assembly with sqlite mode=ro.
         trigger: Theorem-shape fork, forgotten mechanism, or supplier audit.
         writes: false
@@ -325,9 +327,9 @@ tool_families:
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
-        path: /Users/emalam/GitHub/codex_specs/cartographer/inventory.py
-        invoke: python3 inventory.py --scope RouteB
-        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        path: docs/cartographer/inventory.py
+        invoke: python3 docs/cartographer/inventory.py --scope RouteB
+        cwd: repository root
         trigger: Explicit inventory refresh after source changes.
         writes: true
         approval: EXACT_OUTPUT_SCOPE
@@ -339,9 +341,9 @@ tool_families:
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
-        path: /Users/emalam/GitHub/codex_specs/cartographer/atoms.py
-        invoke: python3 atoms.py atoms_RouteB.json
-        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        path: docs/cartographer/atoms.py
+        invoke: python3 docs/cartographer/atoms.py docs/cartographer/atoms_RouteB.json
+        cwd: repository root
         trigger: Explicit atom refresh after inventory changes.
         writes: true
         approval: EXACT_OUTPUT_SCOPE
@@ -353,9 +355,9 @@ tool_families:
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
-        path: /Users/emalam/GitHub/codex_specs/cartographer/cheap.py
-        invoke: python3 cheap.py
-        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        path: docs/cartographer/cheap.py
+        invoke: python3 docs/cartographer/cheap.py
+        cwd: repository root
         trigger: Prioritize non-READY assembly steps by closure cost.
         writes: false
         approval: NONE
@@ -367,9 +369,9 @@ tool_families:
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: READ_ONLY
-        path: /Users/emalam/GitHub/codex_specs/cartographer/brief.py
-        invoke: python3 brief.py "<chain-prefix>"
-        cwd: /Users/emalam/GitHub/codex_specs/cartographer
+        path: docs/cartographer/brief.py
+        invoke: python3 docs/cartographer/brief.py "<chain-prefix>"
+        cwd: repository root
         trigger: Source-addressed state packet for local or external review.
         writes: false
         write_variant: --out writes the named packet and requires exact output approval.
@@ -379,20 +381,21 @@ tool_families:
         last_verified: 2026-08-09
 
       - id: cartographer-loaders
-        status: ENABLED
-        audience: [CODEX]
-        mode: WRITES_CANONICAL
+        status: DEGRADED
+        audience: [HUMAN]
+        mode: EXTERNAL
         paths:
-          - /Users/emalam/GitHub/codex_specs/cartographer/load_capability.py
-          - /Users/emalam/GitHub/codex_specs/cartographer/load_switches.py
-          - /Users/emalam/GitHub/codex_specs/cartographer/load_assembly.py
-        invoke: Run the selected loader from /Users/emalam/GitHub/codex_specs/cartographer.
-        trigger: Approved import of reviewed lenses, switches, or assembly rows.
+          - machine-local codex_specs/cartographer/load_capability.py
+          - machine-local codex_specs/cartographer/load_switches.py
+          - machine-local codex_specs/cartographer/load_assembly.py
+        invoke: External observer prepares a reviewed import packet; Codex does not execute these machine-local writers directly.
+        trigger: Approved external import packet for reviewed lenses, switches, or assembly rows.
         writes: true
         approval: EXACT_DB_WRITE_SCOPE
-        authority: CANONICAL_KNOWLEDGE_DB_IMPORTER
+        authority: EXTERNAL_IMPORTER_REQUIRES_PORT_OR_REVIEW
         records_to: q3.lean.aristotle/aristotle_db/knowledge.db
-        last_verified: 2026-08-09
+        failure_mode: Scripts and lens inputs live outside the canonical repo and contain a Mac-specific database path.
+        last_verified: 2026-08-10
 
   observability_and_graphs:
     summary: Derived current-state projections; never proof or route authority.
@@ -489,7 +492,7 @@ tool_families:
     coverage: [scripts/build_proshka_brief.py, orchestrator/packet.py, ~/.codex/skills/proshka-brief, ~/.codex/skills/oracle]
     tools:
       - id: proshka-context-pack
-        status: DEGRADED
+        status: ENABLED
         audience: [CODEX]
         mode: READ_ONLY
         path: scripts/build_proshka_brief.py
@@ -499,8 +502,8 @@ tool_families:
         approval: NONE_FOR_STDOUT
         authority: CONTEXT_ASSEMBLY_ONLY
         records_to: stdout
-        failure_mode: Default include set contains legacy mirror paths; current Route B paths must be explicit.
-        last_verified: 2026-08-09
+        validation: tight mode includes current Route B state and every unanswered live-bus goal; no legacy full/ mirror paths.
+        last_verified: 2026-08-10
 
       - id: packet-build
         status: AVAILABLE
@@ -565,10 +568,10 @@ dynamic_queries:
 tool_lifecycle:
   birth: No tool is ENABLED until audience, trigger, mode, invocation, writes, approval, authority, validation, and records_to are present.
   use: last_verified changes only after the declared invocation actually runs.
-  mutation: A reader never runs write variants; every canonical or network write follows the active owner-approval rule.
+  mutation: A reader never runs write variants; canonical writes require an active goal-scoped grant or an exact separate-action approval, and network writers retain their declared boundary.
   failure: Mark BROKEN or DEGRADED on the first reproducible failure and name the replacement or stop condition.
   retirement: Historical files remain searchable but cannot route a task.
-  mirror: Every approved canonical edit is copied byte-for-byte to the external mirror and verified by SHA-256.
+  observer_copy: A machine-local codex_specs copy is independent observer evidence, never a Codex startup dependency or canonical execution path.
 
 known_hazards:
   - id: tools-spec-stale

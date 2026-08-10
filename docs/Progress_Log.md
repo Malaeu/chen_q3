@@ -40,6 +40,47 @@
 
 ---
 
+## 2026-08-10 — STARTUP_V5: goal-scoped delivery and one Codex tool authority
+
+**Развилка:** оставить отдельное OK перед каждой записью/commit/push, ручную
+доставку `TASK_*.md` и byte-identical внешний картограф либо восстановить
+автономный локальный цикл внутри заранее названного goal scope.
+
+**Выбрали:** `GOAL_SCOPED_OPERATIONAL_GRANT`, один валидируемый
+`docs/Codex/CURRENT.md` и репозиторный `docs/cartographer/` как канонический
+исполнительный картограф; machine-local `codex_specs` оставлен независимым
+observer-контуром.
+
+**Почему:** аудит воспроизвёл три сбоя: per-action gate разрывал closeout до Git,
+датированные задания после pull не читались автоматически, а startup проверял
+repo inventory при маршрутизации Codex во внешние скрипты. Две реализации
+`cheap.py` уже давали разные числа объектов — 1425 и 1382.
+
+**Что отвергли и почему:** per-action OK для внутренних шагов отвергнут как
+причина недоставленных узлов; ручной prompt-only канал — как невидимый после
+pull; обязательный byte-identical `codex_specs` — как второй некоммитимый и
+machine-specific источник исполнения. Отдельное разрешение сохранено для
+reviewer sends, paid API, destructive действий, policy edits и `PX_RH_CLAIM`.
+
+**Техника:** physical-state audit, SHA/выходное сравнение двух картографов,
+repo-path validation в Spine, fail-closed current-task pointer, 97 control plants,
+strict startup и генераторные size/diff gates. Census дополнительно исправлен,
+чтобы не засасывать `venv_djo` и `aristotle_output`.
+
+**Следующий ход:** доставить STARTUP_V5 scoped commit/push; остановку и чистый
+перезапуск многодневного `qmd embed -f` проводить отдельным разрешённым действием.
+
+**Адреса:** `docs/CODEX_CONTROL.md` v5 · `docs/Codex/CURRENT.md` ·
+`q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md` · `docs/cartographer/TOOLS.yaml` ·
+`orchestrator/spine.py` · `specs_docs/session_start.sh`.
+
+**Чей вердикт и аргумент:** владелец, `ok. go`, после read-only аудита; аргумент
+владельца — Codex должен local-first закрывать узел, сразу записывать причину и
+делать commit/push, а Прошку вызывать только на настоящей развилке или после
+исчерпанных локальных попыток.
+
+---
+
 ## 2026-08-10 — actual outer inverse kept visible in the Schur correction
 
 **Развилка:** either formalize the generic inverse-weighted correction with

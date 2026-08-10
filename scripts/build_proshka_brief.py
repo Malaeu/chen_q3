@@ -92,27 +92,26 @@ def _git_diff(repo: pathlib.Path, rev_range: Optional[str], max_lines: int, cont
 
 
 def _default_includes(repo: pathlib.Path) -> List[pathlib.Path]:
-    base = repo / "full" / "q3.lean.aristotle"
-    return [
-        base / "ACTIVE" / "KNOWLEDGE_BASE.md",
-        base / "ACTIVE" / "chain_status.md",
-        base / "ACTIVE" / "orchestrator.md",
-        base / "ACTIVE" / "SPECS_INDEX.md",
-        base / "ACTIVE" / "Q3_BLOCK_MAP.md",
-        base / "ACTIVE" / "PROBLEM_SOLVER_PROMPT_RU.md",
-        base / "PROSHKA_REQUEST_4.md",
-        base / "docs" / "PROJECT_SPECS.md",
-        base / "docs" / "insights" / "rh_q3_invariants_contract_2026_01_16.md",
-        base / "docs" / "INSIGHTS.md",
-        base / "docs" / "insights" / "INDEX.md",
-        base / "Q3" / "Axioms.lean",
-        base / "Q3" / "Proofs" / "ShiftedWindows.lean",
-        base / "Q3" / "Proofs" / "P_A_Toeplitz_bridge_defs.lean",
-        base / "Q3" / "Proofs" / "P_A_Toeplitz_bridge.lean",
-        base / "Q3" / "Proofs" / "Rayleigh_basis0_of_A3.lean",
-        base / "Q3" / "Proofs" / "RKHS_cap_rayleigh.lean",
-        base / "Q3" / "Proofs" / "T_P_comp_utils.lean",
+    q3 = repo / "q3.lean.aristotle"
+    route_state = q3 / "ACTIVE" / "requests" / "routeB_twolevel_spectral_ladder"
+    bus = repo / "docs" / "routeB_bus"
+    files = [
+        q3 / "PROJECT_ORCHESTRATOR.md",
+        route_state / "ROUTE_B_EXECUTION_STATE.json",
+        route_state / "ROUTE_B_EXECUTION_CONTROL.md",
+        route_state / "ROUTE_B_STATE.md",
+        bus / "BUS_PROTOCOL.md",
+        bus / "MAP.md",
+        repo / "docs" / "GENEALOGY.md",
+        repo / "docs" / "Progress_Log.md",
     ]
+    # Include every live goal whose matching answer is absent. This preserves an
+    # exact task payload without hard-coding a goal number or a retired bus path.
+    for goal in sorted(bus.glob("*.goal.md")):
+        answer = goal.with_name(goal.name.removesuffix(".goal.md") + ".answer.md")
+        if not answer.is_file():
+            files.append(goal)
+    return files
 
 
 def _parse_args() -> argparse.Namespace:

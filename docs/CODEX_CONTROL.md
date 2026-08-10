@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 4
+CONTROL_VERSION: 5
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
 BODIES:
@@ -85,10 +85,16 @@ Naming firewall: historical control-plane `Rule A` / `Rule B` labels are never
 proof-route names. Proof routes are written `Route A` / `Route B`; new control
 rules use descriptive identifiers instead of ambiguous letters.
 
-Operational permission is a different category. A selected mathematical route
-stays selected if commit/push, publication, paid API use, or an irreversible
-external action still needs an explicit operational command. The state becomes
-`OPERATIONAL_ACTION_PENDING`; it does not reopen mathematical route selection.
+Operational permission is a different category. An explicit owner instruction
+that names a goal or bounded package and says to execute it is a
+`GOAL_SCOPED_OPERATIONAL_GRANT`. Within that named scope Codex may make the
+necessary repository writes, run the registered closeout writers, and create
+and push one scoped commit for each verified closed node without asking again.
+Publication outside the repository, paid API use, destructive action, control
+or policy edits, expansion beyond the named scope, and `PX_RH_CLAIM` still need
+their own explicit operational command. A selected mathematical route stays
+selected while any such external action is pending; the state becomes
+`OPERATIONAL_ACTION_PENDING` and does not reopen route selection.
 
 ## 2. Codex executor and independent Claude observer
 
@@ -517,9 +523,10 @@ never a replacement source of truth.
 `SITE_BATON` is a control event class, not a filename or required repository
 artifact. At ordinary goal close, refresh local sensors and Spine, materialize only the
 authorized answer/certificates/state/mirror/manifest duties, and make zero
-Proshka calls. Commit, push, publication, or handoff occurs only when the
-concrete operational action is authorized. A site baton never changes policy,
-phase, or chat; handoff state must be explicit and recoverable.
+Proshka calls. A goal-scoped operational grant includes the scoped closeout commit
+and push; publication, external handoff, or work outside that goal does not follow
+from it. A site baton never changes policy, phase, or chat; handoff state must be
+explicit and recoverable.
 
 Meters distinguish delegated strategic reviews, exploration reviews, PX/RH
 claim requests, ordinary goal-close calls, mathematical owner-deferral
@@ -737,9 +744,21 @@ owner **in Polish**; that is the failure this section exists to prevent.
 
 ### 17.3 How work with the owner actually runs
 
-- **Per-action OK.** Every commit, push, outbound message, file write into a channel folder or
-  edit of a rule file is shown to the owner as an exact payload/manifest **before** it happens.
-  Approval of one action never carries over to the next.
+- **Goal-scoped operational grant.** An explicit owner instruction naming a goal or bounded
+  package and saying `go`, `execute`, `close it`, or an equivalent authorizes the repository
+  writes, registered closeout writers, scoped commits, and pushes required to finish that
+  named scope. Codex does not stop for a fresh OK between those internal steps. The grant ends
+  when the scope closes, the worktree/rebase conflicts, a declared boundary is reached, or the
+  required action would expand beyond the named scope.
+- **Separate-action boundary.** Outbound reviewer messages, paid APIs, destructive actions,
+  publication outside the repository, branch/front changes not named in the grant, edits to
+  behavior-control or policy files, and `PX_RH_CLAIM` require their own explicit command.
+  Before such an action Codex shows the exact payload or manifest. An instruction to design or
+  audit a policy is not permission to edit it.
+- **Node delivery is part of closure.** After a node is genuinely closed, Codex records the
+  closeout and any branch rationale, runs the applicable validation and `goal-close` refresh,
+  commits only the named paths, rebases from the upstream branch, and pushes. A local-only
+  closed node is incomplete unless the grant explicitly says not to commit or push.
 - **Report outcomes truthfully.** If a build fails, show the output. If a step was skipped, say
   so. If something is verified and done, say it plainly without hedging.
 - **Check the disk, do not guess.** Before asserting that an object exists, is proved, or is

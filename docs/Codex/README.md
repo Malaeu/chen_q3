@@ -1,7 +1,15 @@
 # docs/Codex — startup prompts for the Mac body
 
-Ready-to-paste prompts the owner drops into Codex at the start of a session. Nothing here is
-executed automatically; a prompt is a shortcut for the owner's hands, not a channel contract.
+Owner-visible task handoffs for the Mac Codex body. `CURRENT.md` is the only
+startup-readable pointer; the dated prompt files remain optional shortcuts for
+the owner's hands.
+
+## Automatic pointer
+
+`CURRENT.md` is read and validated at every Codex startup. `status: ACTIVE`
+requires a tracked `docs/Codex/TASK_*.md` plus its full `source_commit`.
+`EMPTY` and `CLOSED` select nothing. The pointer carries an assignment across a
+pull; it never overrides the owner's current instruction or physical task state.
 
 ## Naming
 
@@ -18,12 +26,12 @@ into a `%D0%9F%D1%80…` URL.
 
 ## What belongs in a prompt file
 
-A prompt is a **pointer**, not the work order:
+A pasted prompt is an optional **pointer**, not the work order:
 
 - one line naming the task file to read (`docs/Codex/TASK_<date>_<slot>.md`);
 - which task to start with, and why that one first;
 - a reminder that the standing constraints still apply;
-- the per-action rule: show the owner what will be written before writing it.
+- the active goal scope and any operational boundary not covered by it.
 
 The actual assignments — the numbered tasks, the prohibitions, the deliverables — live in
 `docs/Codex/TASK_<date>_<slot>.md`. Keeping them apart means the long text can be revised without
@@ -38,6 +46,7 @@ pasted (thin UI, fat repo).
 
 ## Related
 
+- `docs/Codex/CURRENT.md` — the single startup-readable task pointer
 - `docs/Codex/TASK_*.md` — the assignments themselves
 - `docs/CODEX_HOME_HANDOFF_2026-08-05.md` — the earlier owner→Codex handoff
 - `docs/CODEX_CYCLE_RECONSTRUCTION_2026-08-05.md` — how the Codex loop actually runs
