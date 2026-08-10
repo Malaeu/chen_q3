@@ -1,6 +1,10 @@
 # PSD Step33 Monitor
 
-status: ACTIVE
+status: DORMANT_2026-06-25
+selector_effect: INACTIVE_UNLESS_EXPLICIT_STEP33_REQUEST
+dormant_reason: NO_COMMIT_SINCE_2026-06-25; SUPERSEDED_BY_ROUTE_B_G6_S2
+dormant_at: 2026-08-10
+dormant_by: CLAUDE_CODE_LINUX  # понижен по заданию 7; соседние мониторы понижены 7e319bdc, этот был пропущен
 route: PSD-pd/Q3 finite certificate backend
 phase: Step33A.1_entry_hbox_bootstrap
 started: 2026-05-27

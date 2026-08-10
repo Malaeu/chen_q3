@@ -3,7 +3,9 @@
 status: PARKED_CLOSED
 selector_effect: INACTIVE_UNLESS_EXPLICIT_H1_PO3_H_BRIDGE_REQUEST
 phase: H1_real_proof_attack
-parked_reason: PSD_STEP33_BOOTSTRAP_ACTIVE
+parked_reason: SUPERSEDED_BY_ROUTE_B_G6_S2
+parked_reason_prior: PSD_STEP33_BOOTSTRAP_ACTIVE  # снято 2026-08-10: PSD понижен в DORMANT,
+  # основание было кольцевым — два монитора парковали друг друга, и одна сторона лгала
 parked_at: 2026-05-27
 resume_trigger: user explicitly asks for H1, PO3, H-bridge, or route-kill work
 active_psd_monitor: q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
