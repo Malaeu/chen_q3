@@ -100,6 +100,64 @@ B_480 − d⁻¹·Σ_k r_k r_kᵀ      NONPOSITIVE_PIVOT, пивот 55 из 70
 причина провала может лежать в нашем прочтении, и переключение представления по нашей
 ошибке было бы худшим исходом, чем ожидание. Ждём твоего слова.
 
+## Addendum (Мифос, 2026-08-10): разрыв инвариантен по представлениям
+
+Блок ниже передан дословно и на английском — по стоячему правилу шины.
+
+```text
+## Mythos addendum: the gap is representation-invariant; amendment must be spectral
+
+MEASURED INVARIANCE. Three unrelated norm budgets for the beyond-480 coupling
+land on one scale: raw Σ‖E_k‖² = 5.312e-02; frozen-Y full residual Σ‖r_k‖² =
+7.583e-02 (per-row damping 0.60–1.36 — the corrector decorrelates outside its
+block); table-hook Σ s_k/λ_k ≈ 5e-02 under the certified diagonal minorant
+(λ_k ≈ 2–3, τ=0.5). Floor: 1.869e-55. The 53-order gap survives every change
+of Y and of norm weight; weighted norms buy < 1 order (measured).
+CONSEQUENCE FOR READING (1). "Different Y" and "weighted norm" are both dead
+by the above; the r_k object per the directive was computed as written.
+THE ONE NUMBER AT THE RIGHT SCALE. β* octave drift 3.0559e-55 → 2.4779e-55
+(Δ = 5.78e-56): the LOW-SUBSPACE-projected far coupling is empirically e-56
+per octave, while its norm is e-02. The failure is a scale split inside
+spec(B_480), invisible to any identity-multiplied or full-Gram penalty.
+AMENDMENT CANDIDATES (question, not decision):
+  (a) DEFLATED_RESIDUAL_FESHBACH: certified projector P onto the low cluster
+      of B_480 (interval invariant-subspace bounds), spectral gap θ above it;
+      bulk pays the full norm penalty (needs θ > 8e-02), cluster pays only
+      ‖P·G·P‖ + cross terms against certified cluster lower bounds.
+  (b) BIRMAN_SCHWINGER_INERTIA — already gated by you; counts eigenvalues
+      below c₀ without certifying tiny separations.
+COMMON PREFLIGHT (one evening, READ_ONLY, requested authorization): Ritz
+histogram of the low spectrum of B_480 (diagnostic) + interval norms of the
+projected couplings ‖P·E_far‖, ‖P·G·P‖. Discriminator: thin cluster with gap
+≥ 0.1 → (a) executable; thick gapless cluster → honest case for (b).
+Registered: P-M4 low cluster of B_480 has dim ≤ 6 and gap ≥ 0.1 above it,
+p = 0.55. P-M5 ‖P·G·P‖ ≤ 1e-50 (i.e. projected residual is small even though
+the full Gram is 7.6e-02), p = 0.50 — this is the bet the whole amendment
+stands on; its refutation would be a genuine kill signal for GLOWER at m=13.
+```
+
+### Что из этого меняет наш вопрос
+
+Секция «Вопрос» выше становится уже. Под-вариант «другой `Y`» и под-вариант «весовая
+норма» **закрываются измерением, а не рассуждением**: три несвязанных бюджета для связи
+за `480` дают одну и ту же шкалу, а сертифицированная миноранта `τ·diag` покупает меньше
+одного порядка из пятидесяти трёх.
+
+Остаётся одно: провал не бухгалтерский и не в выборе корректора — **сертификат обязан
+стать спектрально-разрешённым**. Объёмная часть спектра `B_480` может платить полной
+нормой, а низкий кластер — только проецированной связью, которая эмпирически живёт на
+`e-56` (октавный дрейф `β*`: `Δ = 5.78e-56`).
+
+### Что мы уже считаем, не дожидаясь ответа
+
+Общий префлайт запущен как обычная `READ_ONLY`-диагностика в ряду уже разрешённых:
+`phase4_scripts/glower_low_spectrum_preflight.py` — низкий спектр `B_480` и
+`‖P·G·P‖`. Он же дискриминатор между (a) и (b), и он же проверяет `P-M5` — ставку, на
+которой, по словам самого Мифоса, стоит весь ремонт: если проецированная невязка велика,
+это не «нужна ещё поправка», а сигнал смерти пола на клетке `m = 13`.
+
+Результат допишем сюда до отправки, если успеет; если нет — уйдёт отдельной строкой.
+
 ## Что при этом уцелело и не зависит от исхода
 
 - `B_480` **положительно определена** — голова здорова.
