@@ -275,7 +275,28 @@ else
   [ "$dirty" -gt 0 ] && echo "  плюс незакоммиченных .lean в дереве: $dirty"
 fi
 
-# ── 11. Расхождения ────────────────────────────────────────────────────────────
+# ── 11. Входящие: что владелец положил и никто не разобрал ─────────────────────
+# Владелец кладёт в docs/_inbox всё, для чего не знает папку и имя. Разгребает
+# наблюдатель. Непрочитанный файл в репозитории равносилен его отсутствию, поэтому
+# непустой inbox — это работа, а не заметка.
+hr
+echo "ВХОДЯЩИЕ"
+INBOX="docs/_inbox"
+if [ ! -d "$INBOX" ]; then
+  echo "  папки нет — создать: mkdir -p $INBOX"
+else
+  pending="$(find "$INBOX" -type f ! -name README.md 2>/dev/null | wc -l)"
+  if [ "$pending" -eq 0 ]; then
+    echo "  пусто"
+  else
+    note "в docs/_inbox лежит неразобранного: $pending — правила в его README.md"
+    find "$INBOX" -type f ! -name README.md 2>/dev/null | head -10 | while read -r f; do
+      printf '  · %s  (%s)\n' "$(basename "$f")" "$(date -r "$f" '+%d.%m %H:%M' 2>/dev/null)"
+    done
+  fi
+fi
+
+# ── 12. Расхождения ────────────────────────────────────────────────────────────
 hr
 if [ ${#DIVERGENCE[@]} -eq 0 ]; then
   echo "РАСХОЖДЕНИЙ НЕТ — источники согласованы."
