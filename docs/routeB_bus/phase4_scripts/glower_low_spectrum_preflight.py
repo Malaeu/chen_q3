@@ -45,7 +45,7 @@ def main() -> int:
     args = ap.parse_args()
 
     from flint import arb, arb_mat
-    from mpmath import mp, mpf, matrix as mpmatrix, eigsy
+    from mpmath import mp, mpf, matrix as mpmatrix, matrix as mpm, eigsy
     mp.dps = args.dps
 
     print(f"Префлайт низкого спектра · B_{args.S} · dps={args.dps}", flush=True)
@@ -134,10 +134,19 @@ def main() -> int:
             quad[(a_, b_)] = sum(va[i] * Gv[b_][i] for i in range(R))
     pgp_by_dim = {}
     for dim_ in range(1, args.cluster_max + 1):
-        m_ = mpf(0)
+        # ПОПРАВКА (аудит Прошки, 2026-08-10): раньше здесь стоял max |элемента|
+        # блока — это НЕ операторная норма. ‖P·G·P‖ есть наибольшее собственное
+        # значение блока (quad[(a,b)])_{a,b<dim}; для dim=1 совпадает, дальше нет.
+        blk = mpm(dim_, dim_)
         for a_ in range(dim_):
             for b_ in range(dim_):
-                if abs(quad[(a_, b_)]) > m_: m_ = abs(quad[(a_, b_)])
+                blk[a_, b_] = quad[(a_, b_)]
+        for a_ in range(dim_):
+            for b_ in range(a_ + 1, dim_):
+                avg = (blk[a_, b_] + blk[b_, a_]) / 2
+                blk[a_, b_] = avg; blk[b_, a_] = avg
+        ev_blk = eigsy(blk, eigvals_only=True)
+        m_ = max(abs(x) for x in ev_blk)
         pgp_by_dim[dim_] = m_
         lam = vals[ev[dim_ - 1]]
         ratio = m_ / lam if lam > 0 else mpf('inf')
