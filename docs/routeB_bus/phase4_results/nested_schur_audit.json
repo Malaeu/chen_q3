@@ -1,0 +1,105 @@
+{
+  "target": "GLOWER_NESTED_SCHUR_RESOLVENT_LOSS_AUDIT_480_960",
+  "directive_source": "docs/routeB_bus/proshka/PROSHKA_VERDICT_PHASE4_CODE_AUDIT_2026-08-10.md",
+  "pin_requested_by_directive": "b076f97bc63a1558cf65eed7d24c7fa45c68073f",
+  "head_at_run": "dfa14f332b567fa8d929d70ddd26f6f1209a49f1",
+  "frozen": {
+    "m": 13,
+    "sector": "ODD",
+    "c0": "1e-58",
+    "R": 70,
+    "S": 480,
+    "N": 960,
+    "mode_labels": {
+      "head": "1..70",
+      "mid": "71..480",
+      "out": "481..960"
+    }
+  },
+  "source_hashes": {
+    "phase1_source": {
+      "path": "docs/routeB_bus/phase1_scripts/ccm_control_cell_penalty.py",
+      "sha256": "1be57db69683652ed4f6d56dba6fc3b70c186f429fbb7f5bef978cd84f08ed0d"
+    },
+    "audit_script": {
+      "path": "docs/routeB_bus/phase4_scripts/glower_nested_schur_resolvent_audit.py",
+      "sha256": "17de92e466d4089142c72f8f644852666c91245c762a18fc337c40913d2a0771"
+    }
+  },
+  "precision_ledger": {
+    "runs": [
+      {
+        "head": "3d3a513c0f8a5e15cbbdc9f914e5046a82cd8f9e",
+        "script_sha256": "17de92e466d4089142c72f8f644852666c91245c762a18fc337c40913d2a0771",
+        "source_sha256": "1be57db69683652ed4f6d56dba6fc3b70c186f429fbb7f5bef978cd84f08ed0d",
+        "dps": 200,
+        "identity_intervals_contain_zero": true,
+        "identity_max_midpoint": "6.532101e-201",
+        "B960_diagonal_scale": "4.735337e+00",
+        "task10_H_floor_minus_H_exact": "INSUFFICIENT_PRECISION",
+        "rho_exact": "0.2111402742",
+        "rho_floor": "1.049387747",
+        "verdict_code": "CONSTANT_FLOOR_SURROGATE_KILLED_RESOLVENT_ROUTE_ALIVE"
+      },
+      {
+        "head": "3d3a513c0f8a5e15cbbdc9f914e5046a82cd8f9e",
+        "script_sha256": "17de92e466d4089142c72f8f644852666c91245c762a18fc337c40913d2a0771",
+        "source_sha256": "1be57db69683652ed4f6d56dba6fc3b70c186f429fbb7f5bef978cd84f08ed0d",
+        "dps": 400,
+        "identity_intervals_contain_zero": true,
+        "identity_max_midpoint": "0.000000e+00",
+        "B960_diagonal_scale": "4.735337e+00",
+        "task10_H_floor_minus_H_exact": "INTERVAL_POSITIVE_DEFINITE",
+        "rho_exact": "0.2111402742",
+        "rho_floor": "1.049387747",
+        "verdict_code": "CONSTANT_FLOOR_SURROGATE_KILLED_RESOLVENT_ROUTE_ALIVE"
+      }
+    ],
+    "rho_agreement_across_precisions": true,
+    "precision_not_stable_fired": false
+  },
+  "registered_predictions": {
+    "rho_exact_band": [
+      0.12,
+      0.3
+    ],
+    "rho_exact_measured": "0.2111402742",
+    "rho_exact_inside": true,
+    "rho_floor_expected": "1.049387747",
+    "rho_floor_measured": "1.049387747",
+    "rho_floor_match": "exact",
+    "nested_identity_expected": "passes",
+    "nested_identity_result": "passes"
+  },
+  "certified_intervally": [
+    "nested_identity_task8",
+    "sign_of_H_floor_minus_H_exact_task10_at_dps400"
+  ],
+  "midpoint_diagnostics_only": [
+    "rho_exact",
+    "rho_floor",
+    "projected_generalized_norms_task12"
+  ],
+  "not_established": [
+    "infinite_constant_floor",
+    "interval_bounds_on_generalized_eigenvalues"
+  ],
+  "forbidden_respected": [
+    "N_1920",
+    "B0_computation",
+    "fitted_decay_exponent",
+    "ldl_pivot_as_eigenvalue",
+    "max_entry_as_operator_norm",
+    "birman_schwinger_activation",
+    "route_promotion",
+    "rh_claim",
+    "hardcoded_absolute_path"
+  ],
+  "verdict_code": "CONSTANT_FLOOR_SURROGATE_KILLED_RESOLVENT_ROUTE_ALIVE",
+  "route_boundaries": {
+    "ROUTE": "CHALLENGER_NOT_RH",
+    "BUS_010": "VOID",
+    "GOAL_055": "HOLD",
+    "PX_RH_CLAIM": "NOT_MADE"
+  }
+}
