@@ -1,5 +1,8 @@
 # BUS_PROTOCOL — файловая шина Mythos ⇄ Codex (goal bus)
 
+> ARCHIVED / NON_CANONICAL / DO_NOT_ROUTE — frozen 2026-07-12 snapshot.
+> The living bus and its current protocol are under `docs/routeB_bus/`.
+
 Path: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/
 Version: v3, 2026-07-11. Owner: Ылша. Writers: Mythos (goals), Codex (answers).
 
