@@ -1,4 +1,4 @@
-# Lean Axiom Dependencies (auto) — 2026-08-06 21:12 UTC
+# Lean Axiom Dependencies (auto) — 2026-08-10 19:01 UTC
 
 **Authority:** successful `lake env lean Q3/CheckAxioms.lean` output.
 **Boundary:** this is an axiom inventory, not the file-import DAG and not a proof verdict.

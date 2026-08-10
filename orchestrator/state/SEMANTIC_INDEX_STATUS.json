@@ -9,9 +9,9 @@
       "matched_paths": [
         "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-        "qmd://q3-docs/docs/routeb-bus/056-k8-muntz-v3-slot-s2-bridge-goal.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/056-k8-muntz-v3-slot-s2-bridge-goal.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-2q-pro-verdict-proshka-quadratic-2026-07-13.md"
+        "qmd://q3-docs/docs/routeb-bus/proshka-zip-audit-followup-2026-07-27.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-zip-audit-followup-2026-07-27.md",
+        "qmd://q3-docs/docs/routeb-bus/manifest.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -25,8 +25,8 @@
         "qmd://q3-docs/docs/routeb-bus/aristotle-task-edgeslivermomentreduction.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/aristotle-task-edgeslivermomentreduction.md",
         "qmd://q3-docs/docs/routeb-bus/034-edge-sliver-inbox-cover.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/034-edge-sliver-inbox-cover.md",
-        "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
+        "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
       ],
       "query": "edge-sliver",
       "result_count": 39,
@@ -41,15 +41,15 @@
         "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffprimedictionaryboundsimport.lean"
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 37,
+      "result_count": 31,
       "status": "PASS",
-      "vector_count": 30
+      "vector_count": 25
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
+  "source_commit": "d9f1ae71fcff3c8e49eb3a42732e43cb8ad57a02",
   "status": "PASS"
 }

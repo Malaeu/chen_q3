@@ -25,6 +25,19 @@
   "events": [
     {
       "front": "UNCLASSIFIED_FRONT",
+      "goal_id": "036",
+      "id": "AUT_2d9b55a004bc639fe512",
+      "namewatch_eligible": false,
+      "note": "the finite m=257 tooth harness cannot supply the cofinal Supplier-A quantifier and was absorbed as rehearsal only",
+      "raw_sha256": "b21122728a5be0a3d56f38b9b1684658cb8bfa545c0276fcfd0fad0d9481c671",
+      "shape": null,
+      "source_file": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/036_tooth_sign.answer.md",
+      "source_line": 49,
+      "structured": true,
+      "tag": "QUANTIFIER"
+    },
+    {
+      "front": "UNCLASSIFIED_FRONT",
       "goal_id": "054",
       "id": "AUT_f32265ba361e5a112528",
       "namewatch_eligible": false,
@@ -128,10 +141,10 @@
       "tag": "LEGACY_UNCLASSIFIED"
     }
   ],
-  "generated_at": "2026-08-06T21:11:54+00:00",
+  "generated_at": "2026-08-10T18:56:47+00:00",
   "namewatch_candidates": [],
   "schema": "q3_autopsy_map.v1",
-  "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
+  "source_commit": "9fe82c8633b676da8fd20fc34965ec10ec83e8cb",
   "walls": [
     {
       "candidate_card": null,
@@ -208,11 +221,12 @@
         "QUANTIFIER"
       ],
       "dropped_structure": "quantifier",
-      "event_count": 1,
+      "event_count": 2,
       "fronts": [
         "UNCLASSIFIED_FRONT"
       ],
       "goals": [
+        "036",
         "056"
       ],
       "id": "W_DROPPED_QUANTIFIER",

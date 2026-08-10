@@ -28,6 +28,24 @@
       "path": "qmd://q3_docs/"
     },
     {
+      "authority": "CANONICAL_BRANCH_RATIONALE",
+      "id": "BRANCH_RATIONALE_JOURNAL",
+      "kind": "reviewed_markdown",
+      "path": "docs/Progress_Log.md"
+    },
+    {
+      "authority": "REVIEWED_HISTORICAL_TOPOLOGY",
+      "id": "PROJECT_GENEALOGY",
+      "kind": "reviewed_markdown",
+      "path": "docs/GENEALOGY.md"
+    },
+    {
+      "authority": "CANONICAL_OPERATIONAL_TOOL_CATALOGUE",
+      "id": "TOOL_MANIFEST",
+      "kind": "yaml_manifest",
+      "path": "docs/cartographer/TOOLS.yaml"
+    },
+    {
       "authority": "SOURCE_EVIDENCE_ONLY",
       "id": "LITREVIEW_CORPUS",
       "kind": "documents_and_bibliography",

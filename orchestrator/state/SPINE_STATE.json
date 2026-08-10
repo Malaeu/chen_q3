@@ -21,10 +21,10 @@
   "authority": "DERIVED_NONCANONICAL_OPERATIONAL_VIEW",
   "autopsy": {
     "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
-    "event_count": 8,
+    "event_count": 9,
     "namewatch_candidates": [],
     "schema": "q3_autopsy_map.v1",
-    "structured_count": 5,
+    "structured_count": 6,
     "walls": [
       {
         "candidate_card": null,
@@ -101,11 +101,12 @@
           "QUANTIFIER"
         ],
         "dropped_structure": "quantifier",
-        "event_count": 1,
+        "event_count": 2,
         "fronts": [
           "UNCLASSIFIED_FRONT"
         ],
         "goals": [
+          "036",
           "056"
         ],
         "id": "W_DROPPED_QUANTIFIER",
@@ -116,11 +117,11 @@
   },
   "behavior_controls": [
     {
-      "body": "EXECUTOR",
+      "body": "CODEX_EXECUTOR",
       "control_id": "Q3_EXECUTOR_CONTROL",
       "existing_entry_gate": "SESSION_START",
       "path": "docs/CODEX_CONTROL.md",
-      "sha256": "2eea62b6fb42242bab4e8cc9386cf46bed47f7d9b88266eccfd324d87af6f9d9",
+      "sha256": "b6366bad3d5fecb0e5156eaede7dd79ff4bca4937984612242a678184298f8e7",
       "spine_wiring": "behavior_controls.executor",
       "status": "ACTIVE",
       "trigger_owner": "Codex"
@@ -156,8 +157,8 @@
   "knowledge": {
     "dossier": 171,
     "excluded_source": 113,
-    "journal_entry": 1784,
-    "kill": 65,
+    "journal_entry": 1808,
+    "kill": 121,
     "move": 26,
     "postmortem": 1,
     "status": "READY"
@@ -192,6 +193,24 @@
         "path": "qmd://q3_docs/"
       },
       {
+        "authority": "CANONICAL_BRANCH_RATIONALE",
+        "id": "BRANCH_RATIONALE_JOURNAL",
+        "kind": "reviewed_markdown",
+        "path": "docs/Progress_Log.md"
+      },
+      {
+        "authority": "REVIEWED_HISTORICAL_TOPOLOGY",
+        "id": "PROJECT_GENEALOGY",
+        "kind": "reviewed_markdown",
+        "path": "docs/GENEALOGY.md"
+      },
+      {
+        "authority": "CANONICAL_OPERATIONAL_TOOL_CATALOGUE",
+        "id": "TOOL_MANIFEST",
+        "kind": "yaml_manifest",
+        "path": "docs/cartographer/TOOLS.yaml"
+      },
+      {
         "authority": "SOURCE_EVIDENCE_ONLY",
         "id": "LITREVIEW_CORPUS",
         "kind": "documents_and_bibliography",
@@ -207,22 +226,22 @@
   },
   "observability": {
     "answer_now_clicked": 0,
-    "autopsy_events": 8,
+    "autopsy_events": 9,
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3342,
-    "import_edges": 5581,
+    "file_states": 3393,
+    "import_edges": 5683,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
     "proof_nodes": 10,
     "proof_roots": 2,
     "proshka_lower_bounds": 1,
-    "proshka_runs": 27,
-    "proshka_seconds_mean": 1323.6,
-    "proshka_seconds_median": 1200,
-    "proshka_seconds_total": 35738,
+    "proshka_runs": 53,
+    "proshka_seconds_mean": 1150.8,
+    "proshka_seconds_median": 1082,
+    "proshka_seconds_total": 58689,
     "root_memberships": 131,
     "slowest_runs": [
       {
@@ -254,18 +273,18 @@
         "wall_seconds": 1708
       },
       {
-        "front": "G6/S2",
-        "status": "OPEN_ACCEPTED_FOR_IMPLEMENTATION",
-        "transaction_id": "G6_S2_D0_SELECTED_PHYSICAL_FOURIER_ENERGY_RECEIVER",
+        "front": "GOAL057/P057_B3_0G",
+        "status": "OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN",
+        "transaction_id": "GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT",
         "wall_is_lower_bound": 0,
-        "wall_seconds": 1617
+        "wall_seconds": 1662
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-06T21:12:36+00:00",
-      "id": "OBS_8ea01a9b8e06bfea6254",
+      "generated_at": "2026-08-10T19:01:38+00:00",
+      "id": "OBS_bf6f8a0d93a782b85e67",
       "schema_version": 6,
-      "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
+      "source_commit": "9fe82c8633b676da8fd20fc34965ec10ec83e8cb",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -274,8 +293,8 @@
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 8,
-        "source_generated_at": "2026-08-06T21:11:54+00:00",
+        "record_count": 9,
+        "source_generated_at": "2026-08-10T18:56:47+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -283,7 +302,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 21:12 UTC",
+        "source_generated_at": "2026-08-10 19:01 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -291,7 +310,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 21:12 UTC",
+        "source_generated_at": "2026-08-10 19:01 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -299,15 +318,15 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-06 21:12 UTC",
+        "source_generated_at": "2026-08-10 19:01 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 27,
-        "source_generated_at": "2026-08-06T22:54:30.579+02:00",
+        "record_count": 53,
+        "source_generated_at": "2026-08-08T18:40:13+02:00",
         "source_id": "proshka_timing",
         "stale": 0
       },
@@ -315,33 +334,33 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-06 21:12 UTC",
+        "source_generated_at": "2026-08-10 19:01 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3342,
-        "source_generated_at": "2026-08-06 21:12 UTC",
+        "record_count": 3393,
+        "source_generated_at": "2026-08-10 19:01 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3342,
-        "source_generated_at": "2026-08-06 21:12 UTC",
+        "record_count": 3393,
+        "source_generated_at": "2026-08-10 19:01 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
     ],
     "stale_sources": 0,
-    "structured_autopsies": 5,
+    "structured_autopsies": 6,
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2038
+      "NO_OBSERVED_ISSUE": 2089
     },
     "wall_states": 5
   },
@@ -351,7 +370,7 @@
       "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
       "full_context_uploads": 0,
       "last_adjudicated_pin": "e2ef5f0741c15b644514eade8332d35ed5629666",
-      "last_boundary_id": "GOAL_056_PHASE4I_PROLATE_SOURCE_N_COHERENCE_REPAIR",
+      "last_boundary_id": "GOAL_057_B3_0S_SHIFTED_ARCH_FORM_DOMAIN_DENSITY",
       "opened_at": "2026-08-06T08:06:39+02:00",
       "opening_pin": "1efda3f80580eb036680f5fd272d3f5112b59283",
       "owner_boundary_count": 0,
@@ -364,14 +383,14 @@
         "source_object_family_id": "D0_CENTERED_PSTAR_WITH_SOURCE_PROLATE_MUNTZ_CROSSWALK",
         "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.SlotS2"
       },
-      "proshka_calls": 9,
+      "proshka_calls": 36,
       "status": "ACTIVE"
     },
     "control_status": "ACTIVE",
     "last_exploration_close": null,
     "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
     "meter": {
-      "delegated_strategic_review_calls": 11,
+      "delegated_strategic_review_calls": 38,
       "exploration_review_calls": 0,
       "fanout_violations": 0,
       "forced_rollovers": 0,
@@ -383,6 +402,224 @@
     },
     "operational_action_pending": null,
     "px_rh_claim_state": "NOT_READY",
+    "recorded_review_events": [
+      {
+        "adjudicated_pin": "0dea3fc20e0b0af45ed8aad50eed578a1a485b54",
+        "boundary_id": "GOAL_056_PHASE4J_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 12,
+        "phase_call_index": 10,
+        "request_message_id": "ca7f2db5-f50b-43b4-89b3-b44451209a9f"
+      },
+      {
+        "adjudicated_pin": "6d4dd030a0fe9724065b7f74f7da8e2cfadf331e",
+        "boundary_id": "GOAL_056_PHASE4K_LOG_WINDOW_V_N_M_COMPLETENESS_BRIDGE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 13,
+        "phase_call_index": 11,
+        "request_message_id": "7829bf25-5ccf-4413-b59b-c634b539530d"
+      },
+      {
+        "adjudicated_pin": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
+        "boundary_id": "GOAL_056_PHASE4L_PHYSICAL_FOURIER_ENERGY_RECEIVER",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 14,
+        "phase_call_index": 12,
+        "request_message_id": "853fe8d7-39e7-4f7b-867b-9c097a75f1a4"
+      },
+      {
+        "adjudicated_pin": "7dbfb4317f2b07b0b82066d2f358ec6e6a5ce441",
+        "boundary_id": "CONTROL_COGNITIVE_OPERATOR_VOCABULARY",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 15,
+        "phase_call_index": 13,
+        "request_message_id": "ebce99b2-3c0e-4dec-805d-77156534ad43"
+      },
+      {
+        "adjudicated_pin": "21ff34778401d013b5a54a6d66b006e042ebb9da",
+        "boundary_id": "GOAL_057_A5_DEFERRED_R1_R4_ACTUAL_NUMERATOR_REVIEW",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 16,
+        "phase_call_index": 14,
+        "request_message_id": "e3e25f83-317c-4c1a-b595-ea7f677d21bb"
+      },
+      {
+        "adjudicated_pin": "21ff34778401d013b5a54a6d66b006e042ebb9da",
+        "boundary_id": "GOAL057_A8_MAX_FANOUT_NEXT_FRONT",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 17,
+        "phase_call_index": 15,
+        "request_message_id": "e287b146-cacd-4b96-8764-30e4a361797c"
+      },
+      {
+        "adjudicated_pin": "dea558d9bb0c37c256a49397dec31a3f1568ff6e",
+        "boundary_id": "GOAL057_SOURCE_COMPLEX_FINITE_RESIDUAL_PRODUCTION_BIND",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 18,
+        "phase_call_index": 16,
+        "request_message_id": "2d9c2158-20e2-4e4d-b064-bc7e367ca340"
+      },
+      {
+        "adjudicated_pin": "c8641e232a5f6db72259ba5b3043f5b4b29dee71",
+        "boundary_id": "GOAL057_SOURCE_COMPLEX_COMPRESSED_WEIL_ACTION_SOURCE_AUDIT",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 19,
+        "phase_call_index": 17,
+        "request_message_id": "28002e12-024e-4e88-9efe-f8684a85f66e"
+      },
+      {
+        "adjudicated_pin": "1ba34ff53f80071c29018860ef826f636279de10",
+        "boundary_id": "GOAL057_B2_FINITE_RIESZ_OPERATOR_SOURCE_BIND_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 20,
+        "phase_call_index": 18,
+        "request_message_id": "c462f6fc-be15-426a-b53e-84eec9453fe7"
+      },
+      {
+        "adjudicated_pin": "f62584be780edcffc416f6d3909314cac4723c78",
+        "boundary_id": "GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AUDIT",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 21,
+        "phase_call_index": 19,
+        "request_message_id": "7e74313b-2b3b-4e25-9cb9-a93a16acd359"
+      },
+      {
+        "adjudicated_pin": "626bd62b2bc590e1d7de43fb1a25747f35e4cdea",
+        "boundary_id": "GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 22,
+        "phase_call_index": 20,
+        "request_message_id": "8067f54f-5e8a-4cdb-8bfb-2f048152fefd"
+      },
+      {
+        "adjudicated_pin": "eb1c5d8cba978b7e7005819641fbabd532e3f97f",
+        "boundary_id": "GOAL057_B3_0A_EXACT_MODE_FOURIER_FORMULA_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 23,
+        "phase_call_index": 21,
+        "request_message_id": "7b163627-5d45-4b17-9ca2-f3588d126ef5"
+      },
+      {
+        "adjudicated_pin": "bd8692ced371565232c5ce8df088654fcd0a41ae",
+        "boundary_id": "GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 24,
+        "phase_call_index": 22,
+        "request_message_id": "47d32cc3-bde5-410d-9e7e-b51061cb392e"
+      },
+      {
+        "adjudicated_pin": "3cb6a391182d28568d95bad42a79f5e0c715bcf4",
+        "boundary_id": "GOAL057_B3_0B2_EXACT_ARCH_SYMBOL_DOMINATION_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 25,
+        "phase_call_index": 23,
+        "request_message_id": "845acf8e-79c7-4602-8206-99039850e0d6"
+      },
+      {
+        "adjudicated_pin": "9431ecc8b36b4b895fcc820fe916e34ccb20e001",
+        "boundary_id": "GOAL057_B3_0B3_EXACT_ARCH_SYMBOL_WEIGHTED_MODE_L2_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 26,
+        "phase_call_index": 24,
+        "request_message_id": "e038c7c4-9a6e-4ec5-b33d-8cc6badb43af"
+      },
+      {
+        "adjudicated_pin": "81f51e58d3203ac0fa87c778afdf1b6097b9c057",
+        "boundary_id": "GOAL057_B3_0C_SOURCE_ARCH_MULTIPLIER_MODE_PAIRING_INTEGRABILITY_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 27,
+        "phase_call_index": 25,
+        "request_message_id": "906a704a-7268-494c-ba26-a2b3f117b71f"
+      },
+      {
+        "adjudicated_pin": "ede4e828cf87f8769e76149d390b5b4b20198e41",
+        "boundary_id": "GOAL057_B3_0D_SOURCE_ARCHIMEDEAN_MODE_PAIRING_KERNEL_HERMITIANITY_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 28,
+        "phase_call_index": 26,
+        "request_message_id": "9727f4db-959d-4931-adb4-25f9a3865967"
+      },
+      {
+        "adjudicated_pin": "01e1a07a52b8596ff4ea15e1800297862ad1de79",
+        "boundary_id": "GOAL057_B3_0E_SOURCE_ARCHIMEDEAN_PAIRING_CCM_WR_SIGN_NORMALIZATION_CROSSWALK",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 29,
+        "phase_call_index": 27,
+        "request_message_id": "38957815-94c9-4272-96e9-7b428890f41e"
+      },
+      {
+        "adjudicated_pin": "7d1638d0d7cd538ed82baca15a11a7efb62be988",
+        "boundary_id": "GOAL057_B3_0E1_SOURCE_ARCH_MULTIPLIER_REGULARIZED_HYPERBOLIC_KERNEL_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 30,
+        "phase_call_index": 28,
+        "request_message_id": "c3168e2d-166b-4e44-ae6f-a6905dfce616"
+      },
+      {
+        "adjudicated_pin": "3c3681f1a93d1115d26002ff2105fc0b6c0023d1",
+        "boundary_id": "GOAL057_B3_0E2_JOINT_ARCH_KERNEL_MODE_PRODUCT_L1_FUBINI_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 31,
+        "phase_call_index": 29,
+        "request_message_id": "5e2a6a41-a1db-4afc-8914-e9f66844206a"
+      },
+      {
+        "adjudicated_pin": "fe5541fc56a10784499f7705e41bd0bda3f1cb80",
+        "boundary_id": "GOAL057_B3_0E3_ZERO_EXTENDED_MODE_COSINE_CORRELATION_CCM_QKERNEL_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 32,
+        "phase_call_index": 30,
+        "request_message_id": "00e9bb29-2a36-4e6f-aec6-2073d7536d60"
+      },
+      {
+        "adjudicated_pin": "ce7f7f492cabfa48b5b3628a3842d09508114df8",
+        "boundary_id": "GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 33,
+        "phase_call_index": 31,
+        "request_message_id": "38affb58-c374-4d83-8070-c1de08d51743"
+      },
+      {
+        "adjudicated_pin": "2b57a33f04ee09a865fa4186064afa48645b211d",
+        "boundary_id": "GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 34,
+        "phase_call_index": 32,
+        "request_message_id": "136f5c1e-0af2-494a-8dc4-98e05468b3ce"
+      },
+      {
+        "adjudicated_pin": "4d92a827ce50538866a287705747d918becb2ca5",
+        "boundary_id": "GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 35,
+        "phase_call_index": 33,
+        "request_message_id": "824f9c19-e9cb-43da-8f28-e04585933794"
+      },
+      {
+        "adjudicated_pin": "90fd2a3b6aca65e5dd9638a1ff203b0e8736c524",
+        "boundary_id": "GOAL057_B3_0E4C_ALL_MODE_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 36,
+        "phase_call_index": 34,
+        "request_message_id": "24bc37f3-7226-4bc4-95af-07597cd7ed52"
+      },
+      {
+        "adjudicated_pin": "c22a4a9ca4e00f1f0443ef3509705bb9eda91082",
+        "boundary_id": "GOAL057_B3_0F_REPAIRED_PREFLIGHT_SOURCE_LOCK",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 37,
+        "phase_call_index": 35,
+        "request_message_id": "afb7cd77-0ce5-4f95-b089-3acfa603cfb7"
+      },
+      {
+        "adjudicated_pin": "c22a4a9ca4e00f1f0443ef3509705bb9eda91082",
+        "boundary_id": "GOAL057_B3_0F_FINITE_ARCHIMEDEAN_SESQUILINEAR_FORM_MATRIX_LIFT_RELEASE",
+        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "meter_call_index": 38,
+        "phase_call_index": 36,
+        "request_message_id": "8464971c-d8ae-4a1f-b737-93e9312412ad"
+      }
+    ],
     "schema": "q3_channel_runtime.v1"
   },
   "schema": "q3_spine_state.v1",
@@ -397,9 +634,9 @@
         "matched_paths": [
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/056-k8-muntz-v3-slot-s2-bridge-goal.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/056-k8-muntz-v3-slot-s2-bridge-goal.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/soft-2q-pro-verdict-proshka-quadratic-2026-07-13.md"
+          "qmd://q3-docs/docs/routeb-bus/proshka-zip-audit-followup-2026-07-27.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-zip-audit-followup-2026-07-27.md",
+          "qmd://q3-docs/docs/routeb-bus/manifest.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -413,8 +650,8 @@
           "qmd://q3-docs/docs/routeb-bus/aristotle-task-edgeslivermomentreduction.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/aristotle-task-edgeslivermomentreduction.md",
           "qmd://q3-docs/docs/routeb-bus/034-edge-sliver-inbox-cover.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/034-edge-sliver-inbox-cover.md",
-          "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md"
+          "qmd://q3-docs/docs/routeb-bus/035-edge-sliver-materialization-goal.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
         "result_count": 39,
@@ -429,17 +666,24 @@
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffprimedictionaryboundsimport.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 37,
+        "result_count": 31,
         "status": "PASS",
-        "vector_count": 30
+        "vector_count": 25
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277",
+    "source_commit": "d9f1ae71fcff3c8e49eb3a42732e43cb8ad57a02",
     "status": "PASS"
   },
-  "source_commit": "6f28c1cf2668628dfb61f0d7b2daa2eb5d6a7277"
+  "source_commit": "9fe82c8633b676da8fd20fc34965ec10ec83e8cb",
+  "tool_manifest": {
+    "family_count": 7,
+    "schema": "q3_tool_manifest.v2",
+    "sha256": "0a6233297fa68cc55e9c3e95b622ed08114185e42deeadf230bab73502fdae9d",
+    "tool_count": 26,
+    "writer_count": 14
+  }
 }
