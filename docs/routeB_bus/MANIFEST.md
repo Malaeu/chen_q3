@@ -4,6 +4,12 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 
 | File | Description | SHA-256 |
 |---|---|---|
+| `057_unified_chain_program_delegated_review.goal.md` | Goal 057 open root — A1 rebase plus A2 Phase-0 closeout and Phase-1 control-cell entry; R1/R4 residue deferred | `0e1e9b8b413b8c783d04793f142bd25c83a8cf567ce98f69a314865231f8a2e5` |
+| `proshka/PROSHKA_VERDICT_CCM_PENALTY_CROSSWALK_2026-08-07.md` | delegated CCM verdict — Move 1 ratified; sectional gap demoted to diagnostic; fixed-q beta_N selected | `0642538f4fed8970dfa777949155d78d3b5c74eb9f464e9105770bf1f0096f72` |
+| `PHASE0_RESULTS_2026-08-07.md` | CCM penalty instrument Phase 0 journal — source crosswalk and archimedean reproduction CLOSED PASS | `135a1e45f6d7ca68ee7fda0c030fc0b66feb38e709154613dae6721ab234993b` |
+| `phase0_scripts/README.md` | current replay instructions for the closed CCM Phase 0 scripts | `ee7b5d8a54c8067ad74aeb85bdd7e9736fcd7f5bc96925c0a4ab3dc59a6eec9a` |
+| `phase0_scripts/arch_block.py` | exact source-side c=13,N=4 archimedean reproduction with analytic diagonal and matrix/source bridge guard | `aec72fc9d48912085d64a26fe3d2786cf566a7a1c3efdde62f9e47ffa23b6a70` |
+| `phase0_scripts/threeroute_c13N4_reference.json` | pinned Zenodo control cell for the Phase 0 archimedean reproduction | `4fe34815564f212d641c7ae32e27a16ae21ccdac8cba7dc0c1500e5bd55391d3` |
 | `056u_d0_selected_physical_fourier_energy_receiver.answer.md` | standing-root Phase-4L physical Fourier-energy and bandwidth conditional receiver answer | `00a0a0957ae540ae4b5275af051e3a63ac1f0507b241b97125fa242e8772bbd9` |
 | `056u_d0_selected_physical_fourier_energy_receiver.goal.md` | standing-root Phase-4L sharp physical-frequency tail and selected two-supplier precommit goal | `6cd2d76bf68fbba71fc06b34ffc93405a08fc0b04b8c5e3bcf8730f0c0ce530d` |
 | `proshka/PROSHKA_VERDICT_GOAL056_PHYSICAL_FOURIER_ENERGY_RECEIVER_2026-08-06.md` | Goal 056 Phase-4L delegated verdict — repaired two-supplier physical Fourier receiver selected | `fbbd82c2f1d4f96e8c09fd316e1c29126fb2b3325e3b7bac9ae64fa5b70c139f` |
@@ -93,6 +99,7 @@ Proshka mirror from `rh_lean_01_2026`; 292 mirrored source files plus `CHANNEL_R
 | `035_edge_sliver_materialization.answer.md` | answer | `82db42b3070842b4323dca3f9d50968193c1530a2b4797722334346feb7c7ab8` |
 | `035_edge_sliver_materialization.goal.md` | goal | `5bf64cbb34d19dab7524fc930e211be152ccb995ba668d846f3f042a2c6fe1db` |
 | `036_tooth_sign.goal.md` | goal | `dc8cda77b90e935b266325a3ae58bff5a25e175614df17302d3904c1f7be739a` |
+| `036_tooth_sign.answer.md` | closeout — finite Supplier-A rehearsal absorbed, not executed | `42786f1a074cc3e3dbeaad07246e02865b24637b367b656abe39c4a4b9c8a913` |
 | `037_muntz_r6_harvest.answer.md` | answer | `3982ace30ef441d80feca9da377dde801cf207932ee43998f4003db485d79105` |
 | `037_muntz_r6_harvest.goal.md` | goal | `516b6924c2b48cd3825faf3b7266fbcf6a68faffecbe89e2e63213f806a1ca9e` |
 | `038A_muntz_v3_semantic_audit.answer.md` | answer | `9ed7b3e0c296d35a2690fc7885c7ca3ba007c56b45303158ed0c75e1179b1d5f` |

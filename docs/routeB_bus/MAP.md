@@ -369,7 +369,7 @@ contradiction exists.» Фаза 4C: «C — kill the route | Rejected | There i
 | 030–031 | Отклик полной суммы; band zero убит, priority-budget доказан | spec |
 | 032–033 | Реверификация моста; positive-part budget (m=257) | roof/spec |
 | 034–035 | Edge-sliver: редукция закрыта, материализация | spec/meta |
-| **036** | Tooth-sign сертификат (`036_tooth_sign.goal.md`) — **goal issued, answer не найден; единственная цель без ответа на живой шине, с 31 июля** | spec |
+| **036** | `CLOSED / ABSORBED_AS_FINITE_SUPPLIER_A_REHEARSAL / NOT_EXECUTED`: поздняя директива 038 запретила исполнять старую формулировку как critical-path goal; конечный harness сохранён только как rehearsal, не cofinal premise | `036_tooth_sign.answer.md` |
 | 037 | Müntz R6 harvest + canon sync | Müntz |
 | 038 | Scaled outer sign barrier 4/3 — неубедительно | spec/Müntz |
 | 038A–039 | v3 семантический аудит; потребление v3, T4a закрыт | Müntz |

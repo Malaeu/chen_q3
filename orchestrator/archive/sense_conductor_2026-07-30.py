@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""SENSE lane — read-only phase detection for the Route B conductor.
+"""FROZEN Route B conductor phase detector (historical implementation).
+
+Status: FROZEN_CONDUCTOR_RETIRED_2026_07_30.
+NON_CANONICAL / DO_NOT_ROUTE.  The live phase judge is
+``routeb_status.py`` over ``docs/routeB_bus/``.
 
 Build-order step 1 (ORCHESTRATION_DESIGN.md Sec.5): senses the live bus, classifies
 the current goal's phase and prints the plan.  Dispatches nothing, pushes nothing,

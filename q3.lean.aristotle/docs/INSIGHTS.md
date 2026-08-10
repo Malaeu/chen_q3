@@ -51701,3 +51701,63 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   energy summability/boundedness nor physical-bandwidth cofinality. The sole
   next source node is
   `G6_S2_D0_SELECTED_PROLATE_PHYSICAL_FOURIER_ENERGY_SOURCE_SUPPLIER`.
+
+# 2026-08-07 — Goal 057 Phase 0 archimedean source lock (final)
+
+- Shelf and semantic search found the local Phase-0 journal but no reusable implementation of
+  `ranktwo_tail`; the primary Zenodo record `21146461` supplied the pinned verifier and control JSON.
+- The slow reconstruction through sampled `psi_arch` values and nine numerical derivatives was
+  removed. The diagonal is analytic, including `x = 0`, and the direct finite test-function route
+  computes the quadratic value without subtracting nearly constant quadrature outputs.
+- The matrix/source normalization bridge is explicit and tested pointwise:
+  `sum u_m u_n q_mn(r) / pi = g_v(r)`. Thus the matrix `1/pi^2` and source-side `1/pi`
+  factors are compatible rather than competing conventions.
+- At 30/40 dps the precision delta is `1.342314243e-31`; the computed cutoff-free value is
+  `0.04769748265232800635528299496674133`, only `8.458942278e-20` from the published
+  `route2_arch`, inside the `2.94838e-12` tail budget.
+- Phase 0 is closed. This is a source/formula crosswalk and numerical reproduction only: it proves
+  no penalty certificate, SlotH2a, route promotion, PX claim, or RH claim.
+
+# 2026-08-07 — Goal 057 A8 maximum-fan-out next-front research (final)
+
+- The repaired same-family program has eight named mathematical suppliers;
+  adding the final same-family assembly and the sole owner gate
+  `PX_RH_CLAIM` gives ten coarse checkpoints, not ten guaranteed easy tasks.
+- Live `rg` reproduces the cartographer fan-out exactly:
+  `CanonicalData 9/27`, `SlotS2 9/14`,
+  `ProlateCanonicalSourceData 8/48`, down to
+  `SelectedTrialNormalizerBounded 1/3`.
+- `ProlateCanonicalSourceData` contains `CanonicalData`, and the latter already
+  feeds the hole-free `canonicalApproximation`; therefore the prolate source is
+  the structural leverage root, while `CanonicalApproximation` is not a gap.
+- Fan-out is not cost. The source PSWF witness is plausibly expensive, and the
+  apparently local `SelectedTrialNormalizerBounded` is not known cheap because
+  pointwise `TrialNonzero` supplies no eventual lower bound.
+- The current source-complex residual bridge is upstream of five exact
+  H3/H4-instantiation leaves and already has a source-locked failure audit.
+  Codex recommends a bounded complex-carrier/matrix-action preflight before any
+  wider ladder, rate fit, true-gap claim, or generic-receiver invocation.
+- Delegated strategic review is requested in the unchanged living phase chat;
+  cost remains explicitly `UNKNOWN` and no Lean or Aristotle action is
+  authorized before the verdict.
+- Proshka repairs the current coarse count to eleven: ten delegated
+  mathematical checkpoints plus the sole owner boundary `PX_RH_CLAIM`. This
+  is neither a theorem-count nor a time estimate; any checkpoint can split or
+  fail.
+- Leverage/cost/information-gain ranking selects Candidate B, the bounded
+  source-complex residual carrier/action preflight. The prolate canonical
+  source remains the maximum-leverage root but has `UNKNOWN` cost and the
+  highest PSWF/Sturm-Liouville swamp risk.
+- The selected child is read-only and has exactly five admissible outcomes:
+  `SOURCE_COMPLEX_FINITE_RESIDUAL_BIND_READY`,
+  `SOURCE_COMPLEX_ROW_NORMALIZATION_GAP`,
+  `SOURCE_COMPLEX_MODE_ORDER_MISMATCH`,
+  `SOURCE_COMPLEX_MATRIX_ACTION_CROSSWALK_OPEN`, or
+  `SOURCE_COMPLEX_CARRIER_MISMATCH`.
+- Its first direct consumer is H4a1b. H4a2b, H4a3b2, H3a2b, and H3b2b are
+  downstream information-gain targets, not automatically closed siblings.
+  The prior `PROBE_NOT_SOURCE_TRIAL` ruling remains confirmed.
+- Operative class:
+  `RUN_GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT`; success/stop are
+  `GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT_CLASSIFIED` and
+  `GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT_UNCLASSIFIED`.

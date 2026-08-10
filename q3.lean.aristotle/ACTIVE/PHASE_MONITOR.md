@@ -8,7 +8,7 @@ parked_reason_prior: PSD_STEP33_BOOTSTRAP_ACTIVE  # снято 2026-08-10: PSD �
   # основание было кольцевым — два монитора парковали друг друга, и одна сторона лгала
 parked_at: 2026-05-27
 resume_trigger: user explicitly asks for H1, PO3, H-bridge, or route-kill work
-active_psd_monitor: q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
+historical_psd_monitor: q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md
 started: 2026-03-20
 mainline: T0-pd -> H-bridge -> H4 -> RH
 macro_route: Door1((+,-) adapter) -> Door2((++) boundary+cap) -> Door3(compression neutrality) -> H2^f -> H3^f -> H4^f -> RH

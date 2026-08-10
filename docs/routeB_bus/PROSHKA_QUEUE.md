@@ -422,4 +422,108 @@ Yoshida прочитан, его константы явные, цепочка �
 
 ---
 
+## Q4 · B3.0T-V: канонический mint архимедовой формы · CLOSED IN `356adbad`
+
+**Блокирует:** перевод прошедшего Lean scratch в production API без ложного усиления.
+**Стоимость ошибки:** неверный slot convention, двойной shift или слишком широкий API
+испортят весь последующий ambient assembly.
+
+### Вопрос
+
+Один production-файл или узкий split T/U/V для weighted map, shifted/unshifted
+integral form и exact finite `-WR` restriction? Требуются точные пути, импорты и
+public/private surface.
+
+### Что мы уже проверили сами
+
+- `D0PstarShiftedArchSesquilinearFormScratch.lean` компилируется напрямую.
+- Ноль `sorry`, только стандартные аксиомы.
+- Доказаны Hermitian/nonnegative diagonal, exact integral, shift decomposition,
+  literal-mode values, finite coefficient expansion и exact `-WR` restriction.
+
+### Закрытие
+
+Commit `356adbad` материализовал production API, integral realization, finite
+restriction и closed-form слой. Отдельная развилка `MINT` больше не активна.
+
+---
+
+## Q5 · W02: публичный ambient rank-two supplier · CLOSED IN `356adbad`
+
+**Блокирует:** законное построение bounded ambient W02 form.
+**Стоимость ошибки:** принять конечную CCM-матрицу за ambient extension или заново
+продублировать длинный источник.
+
+### Вопрос
+
+Сделать endpoint moments и rank-two identity публичными или добавить минимальный
+публичный supplier API, сохранив helpers private?
+
+### Что мы уже проверили сами
+
+- В `D0PstarSourceW02ModePairing.lean` уже доказано private rank-two разложение.
+- Поиск по всему RouteB не нашёл другого ambient W02 supplier.
+- Конечная матрица сама по себе не даёт ambient extension.
+- Общий bounded continuous Hermitian rank-two form уже построен локально.
+- Два bounded endpoint-функционала уже построены на всём `H_m` двумя путями.
+  Прямой physical-window вариант даёт точные mode values через публичную
+  `integral_comp_logWindow_dStar`; private inverse-mode API больше не нужен.
+- Полный Hermitian source-Weil form `W02 + Arch - Prime` и его exact finite
+  CCM-Weil restriction уже компилируются условно ровно на одном source-факте:
+  private rank-two pairing identity.
+- Узкий public wrapper этой identity с буквальными endpoint-интегралами временно
+  вставлен в source-модуль, напрямую скомпилирован и удалён; точный edit доказан.
+- Все эти scratch-кандидаты: Lean PASS, `0 sorry`, стандартные аксиомы.
+
+### Закрытие
+
+Commit `356adbad` добавил public rank-two seam, endpoint functionals, ambient
+W02 form и full source-Weil assembly. Private inverse-mode API не расширялся.
+
+---
+
+## Q6 · Порядок bounded perturbations после Arch · CLOSED THROUGH B3.0AI IN `356adbad`
+
+**Блокирует:** следующий production child после архимедовой формы.
+**Стоимость ошибки:** доказать associated operator раньше closed form
+или смешать ambient construction с finite restriction.
+
+### Вопрос
+
+Выбрать точный production-порядок: mint уже построенных Arch и Prime candidates,
+минимальный W02 source supplier, mint уже построенных endpoint/rank-two/ambient
+W02 и полного source-Weil assembly, associated
+operator. Отдельно решить, объединять ли Arch+Prime в один mint batch и когда
+материализовать associated-operator child после уже пройденного form contract.
+
+### Что мы уже проверили сами
+
+- W02 имеет доказанный private rank-two механизм.
+- Prime уже построен локально как `ContinuousSesquilinearMap` на всём `H_m`,
+  Hermitian, с вещественной диагональю и точным CCM-Prime restriction; Lean PASS,
+  `0 sorry`, стандартные аксиомы.
+- На dense shifted-domain уже собран Hermitian ledger `Arch - Prime` с точным
+  конечным restriction `-WR - Prime`; Lean PASS.
+- На том же domain уже собран полный Hermitian ledger `W02 + Arch - Prime` с
+  точным finite CCM-Weil restriction, условным только на одном уже доказанном
+  private rank-two supplier; Lean PASS.
+- Полная форма уже имеет явную равномерную нижнюю оценку через
+  B3.0N shift constant и нормы bounded W02/Prime perturbations; Lean PASS,
+  `0 sorry`, только стандартные аксиомы.
+- Максимальный shifted square-root multiplier доказан замкнутым `LinearPMap`.
+- Собраны extended-real shifted и full source-Weil quadratic forms; обе
+  lower-semicontinuous, полная форма конечна ровно на locked domain,
+  там совпадает с real diagonal полной sesquilinear form и имеет явную
+  глобальную нижнюю оценку; Lean PASS, `0 sorry`, стандартные аксиомы.
+- D0.2 требует dense proper form domain, exact finite restriction и
+  lower-bounded closed form до associated operator.
+
+### Закрытие
+
+Commit `356adbad` выполнил выбранный порядок от Arch/Prime/W02 через closed
+source-Weil form до generic inverse-weighted odd-tail interface B3.0AI. Текущая
+граница находится у literal source outer-block supplier, а не у этого batch.
+
+---
+
 *Пусто ниже — новые вопросы дописывать в хвост.*

@@ -15,11 +15,12 @@ from typing import Any
 SCRIPT = Path(__file__).resolve()
 REQUEST_DIR = SCRIPT.parent
 REPO_ROOT = SCRIPT.parents[4]
-BUS_DIR = REQUEST_DIR / "bus"
+BUS_DIR = REPO_ROOT / "docs" / "routeB_bus"
 STATE_PATH = REQUEST_DIR / "ROUTE_B_EXECUTION_STATE.json"
-LOOP_PATH = REQUEST_DIR / "loop_state.json"
-MASTER_STATE_PATH = REQUEST_DIR.parent / "routeB_lamport_rh_closure" / "STATE.json"
-NAME_RE = re.compile(r"^(\d{3})_([a-z0-9_]+)\.(goal|answer)\.md$")
+NAME_RE = re.compile(
+    r"^(?P<goal_id>\d{3}[A-Za-z]*)_(?P<stem>[a-z0-9_]+)\.(?P<kind>goal|answer)\.md$"
+)
+ID_RE = re.compile(r"^(?P<root>\d{3})(?P<suffix>[A-Za-z]*)$")
 
 
 def sha256(path: Path) -> str:
@@ -47,12 +48,33 @@ def load_json(path: Path) -> dict[str, Any]:
     return data
 
 
+def goal_id_key(goal_id: str) -> tuple[int, str]:
+    match = ID_RE.fullmatch(goal_id)
+    if match is None:
+        raise ValueError(f"invalid goal id: {goal_id}")
+    return int(match.group("root")), match.group("suffix").lower()
+
+
+def answer_header_errors(goal_id: str, path: Path) -> list[str]:
+    """Validate the machine header used by the living Route B bus."""
+    text = path.read_text(encoding="utf-8")
+    root = ID_RE.fullmatch(goal_id).group("root")  # type: ignore[union-attr]
+    errors: list[str] = []
+    if re.search(rf"(?m)^GOAL:\s*{re.escape(root)}\s*$", text) is None:
+        errors.append(f"ANSWER_GOAL_HEADER_MISSING:{goal_id}")
+    if re.search(r"(?m)^STATUS:\s*CLOSED(?:_[A-Z0-9_]+)?\s*$", text) is None:
+        errors.append(f"ANSWER_CLOSED_STATUS_MISSING:{goal_id}")
+    if re.search(r"(?m)^(?:EXACT_RESULT|RESULT|SUCCESS):\s*\S+", text) is None:
+        errors.append(f"ANSWER_RESULT_HEADER_MISSING:{goal_id}")
+    return errors
+
+
 def scan_bus() -> dict[str, Any]:
     entries: dict[str, dict[str, list[Path]]] = {}
     errors: list[str] = []
 
     for path in sorted(BUS_DIR.iterdir()):
-        if path.name == "BUS_PROTOCOL.md" or not path.is_file():
+        if not path.is_file():
             continue
         if not (path.name.endswith(".goal.md") or path.name.endswith(".answer.md")):
             continue
@@ -60,44 +82,46 @@ def scan_bus() -> dict[str, Any]:
         if match is None:
             errors.append(f"BUS_NAMING_ERROR:{path.name}")
             continue
-        nnn, stem, kind = match.groups()
-        by_stem = entries.setdefault(nnn, {}).setdefault(stem, [])
+        goal_id = match.group("goal_id")
+        stem = match.group("stem")
+        by_stem = entries.setdefault(goal_id, {}).setdefault(stem, [])
         by_stem.append(path)
+
+    goal_roots = [goal_id_key(goal_id)[0] for goal_id, stems in entries.items()
+                  if any(path.name.endswith(".goal.md") for paths in stems.values() for path in paths)]
+    current_root = max(goal_roots) if goal_roots else None
+    current_ids = {
+        goal_id for goal_id in entries
+        if current_root is not None and goal_id_key(goal_id)[0] == current_root
+    }
 
     goals: dict[str, Path] = {}
     answers: dict[str, Path] = {}
-    for nnn, stems in sorted(entries.items()):
+    for goal_id, stems in sorted(entries.items(), key=lambda item: goal_id_key(item[0])):
+        if goal_id not in current_ids:
+            continue
         if len(stems) != 1:
-            errors.append(f"BUS_DUPLICATE_NNN:{nnn}:{','.join(sorted(stems))}")
+            errors.append(f"BUS_DUPLICATE_ID:{goal_id}:{','.join(sorted(stems))}")
             continue
         stem, paths = next(iter(stems.items()))
         for path in paths:
-            kind = NAME_RE.fullmatch(path.name).group(3)  # type: ignore[union-attr]
+            kind = NAME_RE.fullmatch(path.name).group("kind")  # type: ignore[union-attr]
             target = goals if kind == "goal" else answers
-            if nnn in target:
-                errors.append(f"BUS_DUPLICATE_{kind.upper()}:{nnn}")
-            target[nnn] = path
-        if nnn in answers and nnn not in goals:
-            errors.append(f"BUS_ORPHAN_ANSWER:{nnn}_{stem}")
+            if goal_id in target:
+                errors.append(f"BUS_DUPLICATE_{kind.upper()}:{goal_id}")
+            target[goal_id] = path
+        if goal_id in answers and goal_id not in goals:
+            errors.append(f"BUS_ORPHAN_ANSWER:{goal_id}_{stem}")
 
-    goal_numbers = sorted(int(nnn) for nnn in goals)
-    if goal_numbers:
-        expected = list(range(1, max(goal_numbers) + 1))
-        if goal_numbers != expected:
-            errors.append("BUS_GOAL_NUMBER_GAP")
+    for goal_id, answer in sorted(answers.items(), key=lambda item: goal_id_key(item[0])):
+        errors.extend(answer_header_errors(goal_id, answer))
 
-    for nnn, answer in sorted(answers.items()):
-        text = answer.read_text(encoding="utf-8")
-        if "MYTHOS_PROSHKA_HANDOFF" not in text:
-            errors.append(f"ANSWER_HANDOFF_MISSING:{nnn}")
-        if "ACTIONS LOG" not in text:
-            errors.append(f"ANSWER_ACTIONS_LOG_MISSING:{nnn}")
-
-    closed = sorted(nnn for nnn in goals if nnn in answers)
-    unanswered = sorted(nnn for nnn in goals if nnn not in answers)
+    closed = sorted((goal_id for goal_id in goals if goal_id in answers), key=goal_id_key)
+    unanswered = sorted((goal_id for goal_id in goals if goal_id not in answers), key=goal_id_key)
     last_closed = closed[-1] if closed else None
-    next_expected = f"{(max(goal_numbers) + 1) if goal_numbers else 1:03d}"
+    next_expected = f"{(current_root + 1) if current_root is not None else 1:03d}"
     return {
+        "current_root": f"{current_root:03d}" if current_root is not None else None,
         "goals": goals,
         "answers": answers,
         "closed": closed,
@@ -129,18 +153,6 @@ def main() -> int:
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         state = {}
         state_errors.append(f"EXECUTION_STATE_INVALID:{exc}")
-
-    try:
-        loop = load_json(LOOP_PATH)
-    except (OSError, ValueError, json.JSONDecodeError) as exc:
-        loop = {}
-        state_errors.append(f"LOOP_STATE_INVALID:{exc}")
-
-    try:
-        master = load_json(MASTER_STATE_PATH)
-    except (OSError, ValueError, json.JSONDecodeError) as exc:
-        master = {}
-        state_errors.append(f"MASTER_STATE_INVALID:{exc}")
 
     state_bus = state.get("bus", {})
     comparisons = {
@@ -183,76 +195,6 @@ def main() -> int:
         if last_closed.get("answer_sha256") != actual_answer_hash:
             pin_errors.append(f"LAST_ANSWER_HASH_DRIFT:{relpath(answer_path)}")
 
-    if loop.get("latest_closed_bus_nnn") != bus["last_closed"]:
-        state_errors.append("LOOP_STATE_LATEST_CLOSED_DRIFT")
-    if loop.get("lowest_unanswered_bus_nnn") != bus["lowest_unanswered"]:
-        state_errors.append("LOOP_STATE_LOWEST_UNANSWERED_DRIFT")
-    if loop.get("next_expected_bus_nnn") != bus["next_expected"]:
-        state_errors.append("LOOP_STATE_NEXT_EXPECTED_DRIFT")
-
-    master_compiler = master.get("compiler", {})
-    master_resume = master.get("resume", {})
-    master_nodes = master.get("nodes", {})
-    active_master_nodes = []
-    if isinstance(master_nodes, dict):
-        active_master_nodes = [
-            node.get("id")
-            for node in master_nodes.values()
-            if isinstance(node, dict) and node.get("activity") == "ACTIVE"
-        ]
-    else:
-        state_errors.append("MASTER_STATE_NODES_NOT_OBJECT")
-
-    master_active = master_compiler.get("active_node_id")
-    active_claims = {
-        "master.compiler.active_node_id": master_active,
-        "master.resume.current_leaf": master_resume.get("current_leaf"),
-        "execution.current.contract_obligation": current.get("contract_obligation"),
-        "loop.active_master_leaf": loop.get("active_master_leaf"),
-        "loop.current_contract_obligation": loop.get("current_contract_obligation"),
-    }
-    if len(set(active_claims.values())) != 1:
-        state_errors.append(f"MASTER_ACTIVE_LEAF_DRIFT:{active_claims}")
-    if active_master_nodes != [master_active]:
-        state_errors.append(
-            f"MASTER_ACTIVE_NODE_COUNT_OR_ID_DRIFT:nodes={active_master_nodes!r}:declared={master_active!r}"
-        )
-    if master_compiler.get("active_node_count") != len(active_master_nodes):
-        state_errors.append("MASTER_ACTIVE_NODE_COUNT_FIELD_DRIFT")
-
-    lifecycle_claims = {
-        "master.compiler.lifecycle": master_compiler.get("lifecycle"),
-        "master.resume.mode": master_resume.get("mode"),
-        "execution.operational_status": state.get("operational_status"),
-        "loop.current_execution_status": loop.get("current_execution_status"),
-    }
-    if len(set(lifecycle_claims.values())) != 1:
-        state_errors.append(f"MASTER_LIFECYCLE_DRIFT:{lifecycle_claims}")
-
-    stop_claims = {
-        "master.resume.current_stop": master_resume.get("current_stop"),
-        "execution.current.stop_code": current.get("stop_code"),
-        "loop.current_gate": loop.get("current_gate"),
-    }
-    if len(set(stop_claims.values())) != 1:
-        state_errors.append(f"MASTER_STOP_CODE_DRIFT:{stop_claims}")
-
-    master_bus = master.get("bus", {})
-    if master_bus.get("observed_closed_nnns") != bus["closed"]:
-        state_errors.append("MASTER_BUS_CLOSED_SET_DRIFT")
-    if master_bus.get("lowest_unanswered_nnn") != bus["lowest_unanswered"]:
-        state_errors.append("MASTER_BUS_LOWEST_UNANSWERED_DRIFT")
-    if master_bus.get("next_free_nnn") != bus["next_expected"]:
-        state_errors.append("MASTER_BUS_NEXT_FREE_DRIFT")
-    if master_bus.get("codex_may_create_next_goal") is not False:
-        state_errors.append("MASTER_BUS_CODEX_CREATE_PERMISSION_DRIFT")
-
-    if bus["lowest_unanswered"] is not None and active_master_nodes:
-        state_errors.append("ACTIVE_PHYSICAL_BUS_WITH_ACTIVE_MASTER_NODE")
-    if bus["lowest_unanswered"] is None and master.get("owner_authorization", {}).get("status") == "OWNER_AUTHORIZED_AUTORUN":
-        if len(active_master_nodes) != 1:
-            state_errors.append("IDLE_OWNER_AUTORUN_REQUIRES_ONE_ACTIVE_MASTER_NODE")
-
     contract = state.get("contract", {})
     contract_path = REPO_ROOT / contract.get("path", "")
     if not contract_path.is_file():
@@ -275,8 +217,7 @@ def main() -> int:
         "current_stage": current.get("stage_id"),
         "current_obligation": current.get("contract_obligation"),
         "current_name": current.get("name"),
-        "master_active_node": master_active,
-        "master_stop_code": master_resume.get("current_stop"),
+        "current_root": bus["current_root"],
         "closed_nnns": bus["closed"],
         "lowest_unanswered_nnn": bus["lowest_unanswered"],
         "next_expected_nnn": bus["next_expected"],

@@ -15,7 +15,8 @@
 ```
 spine.py  ← единственная полная точка входа
 ├── import observability        (читает observability.db)
-├── import sensors              (проверяет свежесть сенсорного пучка)
+├── import sensors              (при --refresh обновляет сенсорный пучок)
+├── kb_migrate_verdicts.py      (при --refresh --reason goal-close)
 └── упоминает kb.py             (knowledge.db как durable memory host)
 
 sensors.py refresh
@@ -29,9 +30,10 @@ kb.py                               ← независимая ветка (knowl
 tools_census.py                     ← независимая (docs/TOOLS.md)
 ```
 
-Ключевое: **`spine.py` наверху, но он не запускает `sensors refresh` сам.** Если пучок
-сенсоров не обновлён, Spine покажет устаревшее состояние и честно об этом предупредит —
-но не починит.
+Ключевое: **`spine.py --refresh` сам обновляет сенсорный пучок.** При
+`--reason goal-close` перед сенсорами идемпотентно мигрируются M3-уроки вердиктов в
+`knowledge.db`. Стартовый `--strict --reason session-start --stdout` остаётся read-only и
+только fail-closed сообщает о drift.
 
 ---
 
@@ -62,7 +64,7 @@ tools_census.py                     ← независимая (docs/TOOLS.md)
 | `q3.lean.aristotle/scripts/research_oracle.py` | 2026-03-07 | семантический поиск по `q3_docs` | ⚠️ был мёртв (корпус пуст); P5 заявлен переиндексированным — проверить |
 | `aristotle_db/parse_lean.py` | 2026-01-29 | парсер Lean → `aristotle_proofs.db` | жив по факту (мы гоняли 2026-08-05), но сам файл не менялся |
 | `orchestrator/relay.py` | 2026-07-30 | транспорт сообщений по адресам (`aristotle`/`codex`/`file`/`route`) | контур кондуктора ретайрнут |
-| `orchestrator/sense.py` | 2026-07-30 | read-only детекция фазы | ⚠️ **сирота**: ноль входящих ссылок, пережил ретайр кондуктора |
+| `orchestrator/archive/sense_conductor_2026-07-30.py` | 2026-07-30 | историческая read-only детекция фазы | **FROZEN**: кондуктор ретайрнут; актуальную фазу судит `routeb_status.py` по `docs/routeB_bus/` |
 
 ---
 
@@ -105,7 +107,7 @@ python3 orchestrator/sensors.py refresh           # если пучок уста
 | **рождение объекта** (Lean-файл, вход Аристотеля, goal, бриф) | `kb.py ask "<термины>"` | квитанция поиска в артефакте |
 | маршрут/объект/стратегия убиты | `kb.py add --unit-type …` | строка в `knowledge.db` |
 | закрытие exploration | `kb.py record-exploration-close` | запись в базе |
-| закрытая цель / вердикт | `spine.py` (с записью) | `SPINE_VIEW`, `SPINE_STATE`, `META_CORPUS` |
+| закрытая цель / вердикт | `spine.py --refresh --reason goal-close` | M3-уроки → `knowledge.db`; сенсоры; `SPINE_VIEW`, `SPINE_STATE`, `META_CORPUS` |
 | граница фазы | перезалить зеркала: `kb_migrate_journal.py`, `_dossiers`, `_moves` | `knowledge.db` |
 | ревизия инструментария | `tools_census.py --markdown` | `docs/TOOLS.md` |
 | переиндексация семантики | `refresh_q3_docs.py` | манифест корпуса |
@@ -130,12 +132,12 @@ python3 orchestrator/sensors.py refresh           # если пучок уста
 
 ## 6. Дыры, найденные при сборке этой спеки
 
-1. **`spine.py` не запускает `sensors refresh`.** Верхний инструмент показывает состояние
-   пучка, но не обновляет его: рассинхрон возможен и виден только по предупреждению.
+1. **CLOSED 2026-08-06: `spine.py --refresh` запускает `sensors.refresh`.**
+   Старт сессии остаётся read-only; закрытие цели запускает полный refresh и перед ним миграцию M3-уроков.
 2. **`observability.db` не в git** и её нет у свежего клона — сенсоры деградированы, пока
    не выполнить `rebuild`. Записано в `CODEX_CONTROL` §16.7.
-3. **`sense.py` — сирота:** ноль входящих ссылок, пережил ретайр кондуктора. При этом
-   реализует ровно детекцию фазы, которой сейчас не хватает картографу.
+3. **CLOSED 2026-08-06: `sense.py` заморожен.** Исторический код перенесён в
+   `orchestrator/archive/`; в живой цепи фазу уже вычисляет `routeb_status.py`, поэтом второй судья не нужен.
 4. **Три инструмента заморожены с ERA-1** (`kb_refresh`, `research_oracle`, `relay`) и при
    этом упомянуты в порядке чтения или в правилах.
 5. **`kb.py` расширен Кодексом** (`record-exploration-close`, коммит `7e319bdc`) — то есть

@@ -12,7 +12,7 @@ current_lane: PSD
 current_step_id: Step33A.1
 current_step_title: primary/control analytic A/P/P0 entry hbox lemmas
 current_target: Step33A.1-A raw-Omega A finite/tail bounds certs feeding interval/hbox receivers; Step33B/Step33C raw-Omega packaging is compiled conditional support
-current_owner: local-agent
+current_owner: none
 current_artifact: Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativeCert.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincDerivativePayload.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincScaledPayload.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaARealSincShapeSqPayload.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorChecker.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkTaylorPayloadImport.lean, Q3/Proofs/PSD_CenteredCoeffRawOmegaAChunkIntegralBoundsImport.lean, and Q3/Proofs/PSD_CenteredCoeffAnalyticABoundsBackend.lean
 request: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/node.md
 report: q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/report.md

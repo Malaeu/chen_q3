@@ -1,602 +1,155 @@
-# PROJECT ORCHESTRATOR - Q3
+# PROJECT ORCHESTRATOR — Q3
 
-Updated: 2026-07-10 (Route B challenger routing overlay; mainline unchanged)
+Updated: 2026-08-06
 
 ## Role
 
-This file is the single source of truth for:
+This file records stable architecture, gate meaning, route rank, and major
+decisions. It is not a task queue, current monitor, bus, or proof verdict.
 
-- gate-state,
-- current frontier,
-- active milestone,
-- hard blockers,
-- decision ledger.
+## Authority and precedence
 
-It is **not** a session log and **not** a microtask queue.
+If files disagree:
 
-## Mainline Chain
+1. platform safety, explicit operational instruction, and
+   `docs/CODEX_CONTROL.md`;
+2. task-local physical state: goal/answer, live bus, execution JSON, active
+   monitor, source and production build;
+3. this orchestrator for stable architecture and gate meaning;
+4. `docs/PAPER_MAINLINE_TRACKER.md` for manuscript typing and theorem map;
+5. generated views, `docs/INSIGHTS.md`, dashboards and archives.
+
+`IMPLEMENTATION_PLAN.md` is a frozen historical snapshot. It selects no work.
+
+## Public mainline
 
 `T0-pd -> H-bridge -> H4 -> RH`
 
-- `T0-pd`: Guinand--Weil crosswalk with the corrected positive-definite target cone.
-- `corrected cone`: local/global positive-definite Weil cone
-  `\mathcal W_K^{pd} / \mathcal W^{pd}`.
+- `T0-pd`: Guinand–Weil crosswalk on the corrected positive-definite cone
+  `W_K^pd / W^pd`.
 - `H-bridge`: Suzuki/Yoshida generalized form-pair bridge
   `H1^f -> H2^f -> H3^f -> H4^f`.
 - `H4`: Suzuki Theorem 1.4 endpoint
-  `0 \notin \sigma_p(G_g[a])` for every `a>0`.
+  `0 ∉ sigma_p(G_g[a])` for every `a > 0`.
+
+The broad cone `W_K / W` is background only. The compact `S1/S2/S3/S4`
+package is diagnostic only. Neither is a public RH contract.
 
 Fallback corrected-cone route:
 
-- `A1-pd`: density of the centered autocorrelation family
-  `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}`.
-- `packet-Rayleigh-pd`: exact finite Toeplitz quadratic-form identity on the
-  same autocorrelation packet family `\Psi * \widetilde\Psi`.
-- `PSD-pd`: positive semidefiniteness of the packet kernel
-  `K_Q(g_i,g_j):=\mathcal Q(g_i * \widetilde{g_j})` on that same dense
-  pre-packet space.
-- `A2 closure`: continuity transfer on the corrected local cone.
-- `LF-pd`: inductive-limit lift from all `\mathcal W_K^{pd}` to `\mathcal W^{pd}`.
-- `G6`: Weil linkage from positivity on `\mathcal W^{pd}` to RH.
+`A1-pd -> packet-Rayleigh-pd -> PSD-pd -> A2-pd -> LF-pd -> G6`
 
-Broad-cone route status:
+It remains a fallback, not a second claim of completion.
 
-- old `W_K / \mathcal W` route is now **background only**;
-- it may still produce reusable local lemmas,
-- but it is no longer the public RH contract.
+## Current operational selector
 
-## Route B Challenger Overlay
+No generic monitor selects work automatically:
 
-Route B detector work is a separate `CHALLENGER / NOT_RH` campaign. It does
-not change the public mainline, the gate table below, the active H-bridge
-milestone, or the root `IMPLEMENTATION_PLAN.md`.
+| Surface | State | Selection rule |
+| --- | --- | --- |
+| `ACTIVE/PHASE_MONITOR.md` | `PARKED_CLOSED` | only an explicit H1/PO3/H-bridge request |
+| `ACTIVE/PSD_STEP33_MONITOR.md` | `DORMANT_2026-06-25` | only an explicit Step33 request |
+| `ACTIVE/SPRINT_MONITOR.md` | `DONE_CLOSED` | historical only |
+| `IMPLEMENTATION_PLAN.md` | frozen | never selects work |
 
-When a task explicitly mentions Route B, detector, alpha/SAFE, ZEO, or the
-two-level spectral ladder, its current operational step is read from:
+The live task selector is `SESSION_ENTRY.md` plus physical task state.
 
-- `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
-- `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`;
-- the physical `ACTIVE/requests/routeB_twolevel_spectral_ladder/bus/`.
+## Route B challenger overlay
 
-Do not copy a dated Route B snapshot into this global file. Always read the
-request-local execution JSON and run `routeb_status.py --check`; the global
-fact frozen here is only that Route B remains a challenger.
+Route B is permanently scoped here as:
 
-## Canonical PO3 Subroute
+```text
+CHALLENGER / NOT_RH
+```
 
-For the active `H-bridge` route, the `PO3` lower-shell execution truth is now:
+It does not replace the public mainline, prove RH, or authorize promotion.
+Its current step is never copied from a monitor. Read, in order:
 
-- `PO3` remains the live lower-shell gateway inside `H1^f`;
-- the lower-shell feeder is already frozen through the closed chain
-  `PO3-shell.5/.6 -> PO3a-A2-real -> PO3a.4-real -> PO3-rig.1b.cert-real -> PO3-tail.1-real -> PO3-square.2d0a/.1/.2`;
-- the unique current live mathematical wall on this subroute is
-  `PO3-square.2d3`, namely signed rightmost dominance versus mirror
-  suppression on the transform-side Gamma tower;
-- `PO4/PO5` and `H2^f/H3^f/H4^f` stay conditional consumers after that wall,
-  not current blockers;
-- `PO3-square.2b*`, `PO3-square.2c*`, and `PO3-square.2d0a/.1/.2` are support
-  shell packets around the same wall, not parallel mainline replacements.
+1. `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json`;
+2. `ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_CONTROL.md`;
+3. `docs/routeB_bus/BUS_PROTOCOL.md` and physical `docs/routeB_bus/`;
+4. `routeb_status.py --check`.
 
-## Precedence Rule
+Physical snapshot at this update:
 
-If files disagree, resolve conflicts in this order:
+```text
+GOAL_056_PHASE4L_CLOSED_UNIFIED_CHAIN_DELEGATED_REVIEW_PENDING
+BUS: closed=056..056u active=NONE next-number=057 selected-next=NONE
+```
 
-1. `PROJECT_ORCHESTRATOR.md`
-2. `docs/PO3_MAINLINE_ROADMAP.md`
-3. `docs/PAPER_MAINLINE_TRACKER.md`
-4. `IMPLEMENTATION_PLAN.md`
-5. generated address/status artifacts and `docs/INSIGHTS.md`
+Goal 057 is not minted by this snapshot or by arithmetic. The pending standing
+direction must first pass its delegated strategic-review contract. Stable
+restrictions remain `BUS_010: VOID`, `GOAL_055: HOLD`, G2/CCM frozen, and no
+Route B promotion or RH claim.
 
-Interpretation:
+## Gate table
 
-- `PROJECT_ORCHESTRATOR.md` decides gate-state and frontier.
-- `docs/PO3_MAINLINE_ROADMAP.md` decides the canonical status-aware PO3
-  execution ladder under `H-bridge`.
-- `docs/PAPER_MAINLINE_TRACKER.md` decides manuscript typing and dependency map.
-- `IMPLEMENTATION_PLAN.md` decides only the current execution queue.
-- generated address/status artifacts and `docs/INSIGHTS.md` are non-normative
-  and may lag the canonical control-plane docs.
+| Gate | Meaning | Current architectural state |
+| --- | --- | --- |
+| `T0`, `T0.1`, `T0-pd` | Weil crosswalk and corrected target cone | done; normalization locked |
+| `A1-pd` | density of autocorrelation packets in `W_K^pd` | frozen theorem block |
+| `packet-Rayleigh-pd` | exact finite Toeplitz quadratic-form identity | frozen theorem block |
+| `S-pd` | scalar compact target `W_K(u) >= 0` | rejected as public route; diagnostic only |
+| `A3-pd` | uniform packet-symbol floor on a dense family | rejected theorem shape |
+| `PSD-pd` | PSD of the packet kernel on a dense compatible subspace | fallback; operationally dormant |
+| `H-bridge` | filtered generalized form-pair bridge | canonical mainline; operationally parked |
+| `H4` | Suzuki/Yoshida endpoint | conditional on honest H-bridge closure |
+| `A2-pd` | corrected-cone continuity | inherited input |
+| `LF-pd` | inductive-limit lift | blocked on local positivity |
+| `G6` | Weil linkage to RH | frozen; no claim |
 
-Scoped Route B precedence:
+## Compiled-route honesty
 
-- this orchestrator decides that Route B remains a challenger;
-- the physical Route B bus decides whether executable work exists;
-- `ROUTE_B_EXECUTION_STATE.json` decides the current Route B step;
-- `ROUTE_B_THEOREM_CONTRACT_v2.md` plus `ROUTE_B_EXECUTION_CONTROL.md` decide
-  its target DAG;
-- `ROUTE_B_STATE.md` stores verified Route B facts/history;
-- `loop_state.json` is only a compatibility mirror and cannot select a gate.
+The compiled export
 
-Route-level dead-end handling:
+```text
+Q3.Main -> Q3.RH_of_shifted_atom_route -> PaperMainlineAtomRoute
+        -> CompatibilityReduction -> Q_nonneg_t_critical
+```
 
-- `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` is the canonical companion ledger for
-  killed theorem shapes and rejected route branches;
-- when a live route dies, record the exact kill certificate there, roll back to
-  the last real branch point, and activate the next live branch;
-- do not reopen a killed branch without a new explicit obstruction-killer.
+preserves useful theorem payloads but remains a background broad-cone export.
+A green build, an archive, a dashboard, numeric evidence, or generated Lean is
+not a semantic proof verdict. Inspect theorem statements, holes, axioms,
+dependencies and the production-toolchain build.
 
-## Current Compiled Route
+## Decision ledger
 
-Compiled Lean route still exported today:
+- 2026-03-06: compiled narrative reset from legacy `tau=0` to the shifted-atom
+  route; legacy status narratives became reference-only.
+- 2026-03-07: `T0.1` closed with `pivot required`; the public target moved from
+  the broad cone to the positive-definite/autocorrelation cone.
+- 2026-03-07: naive same-family and uniform-floor shapes were rejected; exact
+  packet-Rayleigh survived and `PSD-pd` became the honest fallback.
+- 2026-03-08: the scalar compact route was rejected as a public mainline and
+  retained only as diagnostic reduction.
+- 2026-03-08: Suzuki/Yoshida generalized form-pair work became the canonical
+  H-bridge architecture; raw exact intertwining was rejected in favour of a
+  filtered defect-aware theorem shape.
+- 2026-05-27: the H1/PO3 monitor was parked; it no longer self-selects work.
+- 2026-06-25: PSD Step33 became dormant; its entry-hbox state is preserved for
+  explicit resumption only.
+- 2026-07-10: Route B was added as a separate challenger with physical bus and
+  request-local execution state; it did not change the public mainline.
+- 2026-07-12 through 2026-08-06: Route B accumulated verified local Lean and
+  certificate payloads under `CHALLENGER / NOT_RH`; those results do not imply
+  route promotion.
+- 2026-08-05: G2/CCM reached a source-data boundary; `GOAL_055` remains `HOLD`
+  and its draft stays outside the live bus.
+- 2026-08-06: `docs/CODEX_CONTROL.md`, Spine, `knowledge.db`, observability and
+  one-phase Proshka governance became the active control/memory contour.
+- 2026-08-06: Goal 056 family `056..056u` closed its finite projective,
+  log-window, Hilbert-basis and physical Fourier-energy subchain; the next
+  Unified Chain program remains pending delegated strategic review.
 
-`Q3.Main -> Q3.RH_of_shifted_atom_route -> PaperMainlineAtomRoute -> CompatibilityReduction -> Q_nonneg_t_critical`
+## Route death, closeout and owner boundary
 
-Current `#print axioms Q3.Main.RH_of_Weil_and_Q3`:
+- A killed theorem shape is written to the canonical kill/knowledge contour;
+  reopen it only with a new explicit obstruction-killer.
+- Route B closeout writes `SEARCH_FLAGS`, verdict/stop-code, arsenal line and
+  required autopsy; `ROUTE_B_STATE.md` is updated last.
+- Codex and Proshka decide all mathematical strategy outside the sole owner
+  boundary `PX_RH_CLAIM`.
+- This file never authorizes a promotion or an RH claim.
 
-- standard: `propext`, `Classical.choice`, `Quot.sound`
-- project/classical: `Q3.Weil_criterion`
-- project/scalar placeholder: `Q3.prime_term_le_at_t_critical_axiom`
-
-Interpretation after `T0.1`:
-
-- this route is structurally useful,
-- it remains compiled to preserve local theorem payloads,
-- but it is a **background broad-cone export**, not the public mainline contract.
-
-## Gate Table
-
-| Gate | Meaning | Status | Exit criterion |
-| --- | --- | --- | --- |
-| `T0` | Guinand--Weil crosswalk | `done` | normalization remains locked |
-| `T0.1` | target-cone audit | `done` | one binary verdict written: `pivot required` |
-| `T0-pd` | corrected public target cone | `done` | control docs + manuscript use the positive-definite cone as the public RH target |
-| `S-pd` | scalar compact spectral route `W_K(u)\ge0` | `rejected as public mainline route` | retained only as a correct diagnostic compact-truncation package `S1/S2/S3/S4`; rejected because `a_K^*\in L^1` forces `\widehat{a_K^*}(u)\to0` while the finite cosine prime sum recurs near its full positive mass whenever `\Xi_K\neq\varnothing` |
-| `A1-pd` | density of `\mathcal G_K^{pd}` in `\mathcal W_K^{pd}` | `frozen theorem block` | pre-square density route + autocorrelation continuity prove `\overline{\mathcal G_K^{pd}}=\mathcal W_K^{pd}` |
-| `packet-Rayleigh-naive` | naive quadratic-form bridge on `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}` | `background candidate` | keep only as an auxiliary identity; do not reuse it as the public closure family |
-| `SF-pd` | same-family bridge through `\mathcal G_{K,\mathrm{Ray}}^{pd}` | `rejected as mainline route` | rejected because the naive Rayleigh family is too large and would force false broad local positivity |
-| `packet-Rayleigh-pd` | exact Toeplitz form on autocorrelation packets `\Psi_c * \widetilde{\Psi_c}` | `frozen theorem block` | identify `\mathcal Q(\Psi_c * \widetilde{\Psi_c})` with the finite symbol integral `\frac{1}{2\pi}\int S_J(\theta)|p_c(\theta)|^2\,d\theta` on each admissible dictionary |
-| `A3-pd` | uniform packet-symbol floor on the dense packet family | `rejected as theorem shape` | rejected because dense packet dictionaries admit collapsing packets `\Psi_\Delta`, so no uniform `c_K>0` can hold on the full family |
-| `PSD-pd` | PSD of the packet kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace | `fallback constructive route` | finite-dictionary positivity via explicit coefficient bounds on `\alpha_m,\beta_m`, yielding `S_J=A_J-P_J\ge0` on each admissible block |
-| `H-bridge` | Suzuki/Yoshida generalized form-pair bridge `(G_g[a],J_a)` from Q3 finite sections to the RH-equivalent operator criterion | `active primary live route` | freeze the two-sided filtered tail package `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}` and close `H1^f -> H2^f -> H3^f -> H4^f`, with `H1^f` now interpreted as filtered intertwining modulo explicit boundary/cap correction |
-| `centered A3/RKHS` | positivity engine on centered packets | `done as analytic input` | supplies the model estimates that must be upgraded to packet-kernel positivity |
-| `A2-pd` | continuity on the corrected local cone | `done as inherited input` | continuity explicitly restricted to `\mathcal W_K^{pd}` in the paper contract |
-| `LF-pd` | LF lift on `\mathcal W^{pd}` | `blocked` | local positivity on every `\mathcal W_K^{pd}` is available |
-| `G6` | Weil linkage to RH | `frozen` | available once positivity on `\mathcal W^{pd}` is honest |
-
-## Current Frontier
-
-- `T0.1` is closed with verdict `pivot required`.
-- The broad target cone `W_K / \mathcal W` is too wide for the honest Weil interface.
-- Current `G1.6` Aristotle work stays background only. It may still land local support lemmas,
-  but it no longer determines the architectural frontier.
-New live frontier:
-  1. promote the Suzuki/Yoshida generalized form-pair bridge to the primary
-     live route in its final filtered-tail form:
-     `H1^f` filtered intertwining modulo explicit boundary/cap correction
-     -> `H2^f` Suzuki tail/cap reduction
-     -> `H3^f` filtered gap transfer
-     -> `H4^f` RH via Suzuki Theorem 1.4;
-     the active finite object is now
-     `\widetilde Q_{M,N}:=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`
-     on the two-sided tail space `\mathcal P_{M,N}`,
-     with exact metric pullback
-     `S_{a,M,N}^*J_aS_{a,M,N}=B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
-     and with exact equality retained only as the zero-defect special case;
-  2. freeze the compact scalar package `S1/S2/S3/S4` only as a correct
-     diagnostic reduction, and reject its pointwise target `W_K(u)\ge0` as a
-     public compact mainline whenever `\Xi_K\neq\varnothing`;
-  3. treat the finite-dictionary packet package only as fallback discretization /
-     verification after the scalar-route obstruction;
-  4. keep `A1-pd` frozen as the dense corrected-cone input on `\mathcal G_K^{pd}`;
-  4. keep the naive Rayleigh family
-     `\mathcal G_{K,\mathrm{Ray}}^{pd}=\operatorname{cone}\{\Phi_{B,t}|p|^2\}`
-     background-only after the local-bump obstruction;
-  5. freeze exact packet-Rayleigh on autocorrelation packets
-     `\Psi_c * \widetilde{\Psi_c}`;
-  6. reject `A3-pd` in the old uniform-gap sense on the dense packet dictionary;
-  7. reject the literal `Route P` theorem shape
-     `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
-     on packet space;
-  8. keep `Herglotz/Bochner` as the clean diagnostic equivalence route;
- 9. freeze the strict `P1--P8` theorem package as the fallback packet route;
-10. keep finite admissible dictionary positivity as the immediate fallback constructive target:
-     exact finite symbol `S_J(\theta)=A_J(\theta)-P_J(\theta)`,
-     explicit coefficient bounds on `\alpha_m,\beta_m`,
-     Poisson-regularized verification, and explicit error budget,
-     with a new full-kernel operator package kept as fallback;
-11. keep Gershgorin only as a sparse finite-block lemma, not as the dense theorem.
-  12. move the active blocker away from the already-frozen theorem package `S1/S2/S3/S4`
-     to the raw-entry reduction of the exact two-sided filtered bulk match:
-     freeze the raw Section 8 operator
-     `Q_M^{raw}=T_M[P_A]-\Pi_M`,
-     `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
-     and the exact raw entries
-     `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
-      = A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
-     `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
-     with Q3-side normalization fixed by `\kappa_{A3}=1`,
-     and
-     `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
-     and keep the raw identity
-     `w_{rs}(a)=\kappa(a)q_{rs}`
-     only as a diagnostic mismatch layer:
-     the raw Q3 matrix is Toeplitz with constant diagonal while the Suzuki raw
-     Weil matrix in the `\chi_n[a]` basis has diagonal growth of order
-     `\log|n|`;
-     the live bulk target is therefore the direct filtered match on the two
-     families `(+,+)` and `(+,-)`;
-  13. isolate the finite-dimensional Suzuki cap as the second and only other
-     live brick after the bulk match:
-     positivity of the cap matrix is a separate finite-dimensional problem.
-  14. after the direct `PO2` splice `D2g33`, the first still-undischarged
-      proof-critical gate is still the real `H1^\partial` boundary theorem
-      `PO3`, but its mathematical shell is already frozen:
-      `PO3a = \mathcal D_{a,\partial}^{+-}=0`,
-      `PO3b = \mathcal D_{a,N}^{+-}=\mathcal D_{a,\mathrm{cap}}^{+-}`,
-      and `PO3c` by symmetry;
-      the active blocker is therefore no longer a broad mixed-block arithmetic
-      search, but one exact lower-shell lemma:
-      in the split
-      `\mathcal D_{a,N}=H_{a,N}+C_{a,N}`,
-      prove that the boundary layer `H_{a,N}` belongs to the sign-pure
-      boundary algebra generated by `P_+`, `P_-`, `\Delta_+`, `\Delta_-`, and
-      one-sided tail operators;
-      once that membership is real, the already-frozen sign-pure boundary
-      lemma forces `P_+H_{a,N}P_-=0`, hence `PO3a`;
-      the current local receiver is now even sharper:
-      the live object is the zero-mode column
-      `v_{a,N}=T_{a,\infty,N}^*G_g[a]\mathbf 1`,
-      a lone first-order endpoint brick is already excluded unless it is zero,
-      and the remaining first-order companion route would force the
-      alternating-tail rigidity
-      `w_{r,0}(a)=c_{a,N,M}(-1)^r`
-      on every successful window;
-      after the exact rescaling by `w=\frac{a}{\pi}z`, the same route becomes
-      a simple Cauchy transform on the integer tail, and the zero symmetry
-      `\gamma\leftrightarrow-\gamma` then sharpens it once more to an even
-      square-support receiver `\widetilde H_a(w)=J_a(w^2)` with
-      `J_a(r^2)=0` on the square tail;
-      so the live first-order consumer is now the even complex-support
-      square-tail injectivity wall, not the full generic `PO2` class;
-      inside that wall the absolute-anchor / tightness door is already killed
-      by the same Gamma-ratio drift mechanism as old `D3e4`,
-      so the active live brick is narrower:
-      the lower-shell feeder through
-      `PO3-shell.5/.6`, `PO3a-A2-real`, `PO3a.4-real`,
-      `PO3-rig.1b.cert-real`, `PO3-tail.1-real`, and the square-side support
-      shells `PO3-square.2d0a/.1/.2` is already frozen, and the unique current
-      live mathematical wall is to prove signed rightmost-dominance versus
-      mirror suppression on the transform-side wall `PO3-square.2d3`;
-      the auxiliary Lean shell `Q3/Proofs/HBridge_PO3_Shell.lean` is useful,
-      but it does not replace that mathematics;
-      treat `PO4/PO5` and `H2^f/H3^f/H4^f` as conditional consumers until that
-      lower-shell interface is genuinely synchronized.
-  15. if `PO3` or a later `H-bridge` gate produces a genuine non-cap
-      obstruction rather than a boundary/cap/compression reclassification,
-      record that as a route kill in
-      `ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` and rollback to the already-frozen
-      branch point `H-bridge` versus `PSD-pd`, instead of inventing a fourth
-      architecture on the fly.
-
-## Canonical Coordination Layer
-
-The project now freezes a thin `Q_\zeta`-core above the live routes.
-
-It is:
-
-- the canonical explicit-form / Weil quadratic-operator layer of the project;
-- a coordination object, not a third RH route;
-- the place where a new idea must either strengthen the canonical layer,
-  translate into it, or produce a kill certificate.
-
-Immediate backends:
-
-1. primary operator backend:
-   `H-bridge`, through the filtered defect calculus
-   `D_{a,M,N}=S_{a,M,N}^*G_g[a]S_{a,M,N}
-   -\kappa(a)\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`;
-2. explicit finite-shadow / certificate backend:
-   `PSD-pd`, through the packet kernel
-   `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})`,
-   finite symbols `S_J=A_J-P_J`,
-   coefficient bounds, and Poisson-regularized verification.
-
-Operational rule:
-
-- do not widen the active frontier to Li / Nyman--Beurling / de Branges as
-  live routes yet;
-- treat those only as future adapters into `Q_\zeta`-core after the two live
-  backends are explicit.
-- current execution mode is a short-circuit sprint:
-  lane A = `H1` defect calculus through the first `(+,-)` adapter theorem;
-  lane B = finite-dictionary `PSD-pd` certificates in parallel.
-
-## Active Milestone
-
-Turn the strongest reusable finite Q3 block into a proof-ready Suzuki bridge:
-
-0. freeze `Q_\zeta`-core as the canonical coordination layer above the live
-   routes, with `H-bridge` as the primary operator backend and `PSD-pd` as the
-   explicit fallback certificate backend, without changing the public mainline,
-1. keep `\mathcal W_K^{pd}` and `\mathcal W^{pd}` fixed in control docs and manuscript,
-2. freeze the compact scalar package `S1/S2/S3/S4` only as a rejected public
-   compact-truncation route and diagnostic formal reduction,
-3. make the theorem stack
-   `H1^f filtered intertwining modulo explicit boundary/cap correction -> H2^f Suzuki tail/cap reduction -> H3^f filtered gap transfer -> H4^f Suzuki Theorem 1.4`
-   the primary live route,
-4. freeze the symmetric two-sided filtered tail package as the exact
-   preferred `H1^f` geometry:
-   `\mathcal P_{M,N}`, `\Delta_{M,N}`, `\phi_n^\pm[a]`, `S_{a,M,N}`,
-   `B_{M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
-   `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
-4a. strongest current engineering refinement of `H1`:
-    keep the finite-prime semilocal layer only as a basis/Gram engine,
-    with packet states `\eta_m^{(S,a)}`, semilocal spaces `E_{a,M}^{(S)}`,
-    Gram matrix `\Gamma_{a,M}^{(S)}`, and normalized synthesis
-    `\widetilde S_{a,M}^{(S)}` feeding the same Suzuki pair-intertwining target,
-4b. preferred first-pass refinement of `H1^f`:
-    use the symmetric filtered Volterra bridge
-    `J_a=(I_0^{(a)})^*I_0^{(a)}`,
-    with `1+z` on the positive tail and `1+z^{-1}` on the negative tail,
-    so that the exact pullback metric is
-    `B_{M,N}=S_{a,M,N}^*J_aS_{a,M,N}=\Delta_{M,N}^*\Delta_{M,N}`,
-    and the exact finite comparison object is
-    `\widetilde Q_{M,N}=\Delta_{M,N}^*Q_{M+1}\Delta_{M,N}`,
-4c. current implementation brick inside `H1^f`:
-    the raw entry formula is now extracted in the raw-compressed notation:
-    `Q_M^{raw}=T_M[P_A]-\Pi_M`,
-    `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
-    and
-    `q_{rs}=\langle Q_M^{raw}e_s,e_r\rangle
-     = A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
-    `\lambda_n=(2\Lambda(n)/\sqrt n)\Phi_{B,t}(\xi_n)`,
-    with `\kappa_{A3}=1`;
-    in the filtered bridge the ambient raw finite block is
-    `Q_{M+1}^{raw}`,
-    and
-    `w_{rs}(a)=W(\chi_s[a]*\widetilde{\chi_r[a]})`,
-    then keep the raw identity
-    `w_{rs}(a)=\kappa(a)q_{rs}`
-    only as a rejected diagnostic theorem shape;
-    the active work is no longer plain exact equality, but the filtered bulk
-    classifier on the two primary families:
-    `M_{mn}^{++}(a)=\kappa(a)\widetilde q_{mn}^{++}+F_a^{++}` and
-    `M_{mn}^{+-}(a)=\kappa(a)\widetilde q_{mn}^{+-}+F_a^{+-}`,
-    with diagnostic outcomes
-    `exact / exact+structured small-rank correction / dead`;
-    current executable checks still strongly favor the middle class, but the
-    sharper reduced rank-`3` sweep now makes the theorem boundary much more
-    precise:
-    `zeros`-stability is excellent, so the signal is not a zero-count artifact,
-    yet one globally shared rank-`3` defect space does not survive the natural
-    stress tests.
-    On the local `M=4` window the joint candidate behaves well for
-    `a=1.0,1.25,1.5`, but `a=0.8, M=4` is stably bad in the `++` family
-    (`proj_rel_resid(++) ~8.24e-1`, `proj_rel_resid(+-) ~2.04e-3`), and the
-    `M:4 -> 5` step breaks the shared-basis geometry even in the core band:
-    third principal angles are around `79°`, while the `++` projected residual
-    jumps to `~8.32e-1` at `a=1.0` and `~1.51e-1` at `a=1.25`, with `+-`
-    staying small.
-    So the honest global theorem-shape freeze is now weaker and more robust:
-    `filtered intertwining with structured correction`,
-    with exact `H1^f` treated as the zero-defect special case and any shared
-    rank bound kept only as a local diagnostic hypothesis.
-    But the 2026-03-14 reset changes the front-door language further:
-    the recent rank/basis scans were useful diagnostics, not the right theorem
-    content.
-    The strongest negative facts are now:
-    low-mode is dead, global shared rank-`3` is dead, the `(+,-)` block stays
-    much more stable than `(++ )`, pooled in-sample common bases for `(++ )`
-    can look good, and honest prefix holdout across `M` still fails badly.
-    That pattern fits much better with an explicit boundary/cap correction than
-    with either genuine bulk mismatch or one fixed shared finite-rank cap-space
-    across `M`.
-    So the immediate live task is no longer `basis redesign` as primary
-    mathematics.
-    It is the operator decomposition reset:
-    first decide whether the `(+,-)` block satisfies an exact filtered
-    identity after the right reformulation, then derive the surviving same-sign
-    boundary / Toeplitz-Hankel / commutator term in the `(++ )` block, and only
-    then return to finite compression and cap absorption.
-5. keep `A1-pd` frozen on the dense autocorrelation packet family `\mathcal G_K^{pd}` as auxiliary/fallback infrastructure,
-5. keep exact packet-Rayleigh frozen on `\Psi_c * \widetilde{\Psi_c}`,
-6. keep the naive centered Rayleigh family
-   `\mathcal G_{K,\mathrm{Ray}}^{pd}` background-only after the obstruction,
-7. keep the packet-symbol decomposition
-   `S_{g,\Delta}=A_{g,\Delta}-P_{g,\Delta}` only as fallback packet notation,
-8. reject the old `A3-pd` uniform-floor route on the dense packet family,
-9. reject the literal `Route P` theorem shape
-   `prime-block PSD factorization or Hilbert lift -> Archimedean domination`,
-10. make `PSD-pd` explicit as the fallback packet-kernel theorem
-   `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense
-   translation-compatible packet subspace,
-11. freeze the strict `P1--P8` chain:
-   exact packet sesquilinear identity
-   -> Toeplitz reduction
-   -> desired prime-factorization (rejected by obstruction)
-   -> full sequence split `\kappa=\alpha-\beta`
-   -> Toeplitz/Herglotz criterion
-   -> finite-dictionary `P7` package
-   -> `PSD-pd`,
-12. record the two surviving strategy families under the fallback packet route
-    (Herglotz/Bochner versus direct full-kernel PSD),
-13. keep the finite-dictionary `P7` package as the immediate fallback constructive target:
-    `S_J=A_J-P_J\ge0` on each admissible packet block, driven by explicit
-    coefficient bounds on `\alpha_m,\beta_m`, with Poisson-regularized finite
-    symbols retained as verification device and a new full-kernel operator
-    package as fallback,
-14. keep Gershgorin only as a sparse finite-block lemma and not as the dense
-    public theorem,
-15. freeze the canonical centered half-atom
-    `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}` as the first pilot packet,
-    together with the compact test case `K=0.2`, `J={0,1}`, `Δ=0.15`,
-    where prime collisions vanish and the finite symbol reduces to the
-    Archimedean gap `\alpha_0>2|\alpha_1|`,
-16. keep `Herglotz/Bochner` as the secondary diagnostic / equivalence route,
-17. keep Aristotle `G1.6` as background lemma-mining only,
-18. make the next honest theorem task explicit at the matrix-element level:
-    compare the four filtered tail blocks
-    `(++), (+-), (-+), (--)`
-    of
-    `[ \langle G_g[a]\phi_n^\sigma[a],\phi_m^\tau[a]\rangle ]`
-    with the corresponding blocks of `\kappa(a)\widetilde Q_{M,N}`,
-19. keep the Suzuki generalized form-pair package
-    `H1^f -> H2^f -> H3^f -> H4^f` frozen as the strongest alternative operator route,
-    with `H1^f` now frozen as filtered intertwining modulo explicit
-    boundary/cap correction as the only real missing bridge theorem;
-    the immediate internal order there is
-    `H1^\infty -> H1^\partial -> H1^f`,
-    and the second and only other live brick after that is the
-    finite-dimensional Suzuki cap.
-
-## Hard Blockers
-
-- `A1'` is a density theorem on the broad restriction cone `R_K`; it does not feed
-  the corrected positive-definite mainline directly.
-- No proof yet closes the pre-square density route that would prove `A1-pd`.
-- The naive Rayleigh family `\mathcal G_{K,\mathrm{Ray}}^{pd}` is too large to serve
-  as the mainline closure family: on compacts `K<\pi` it would combine with the full
-  quadratic-form meaning of Lemma 8.8 and A3 positivity to force false broad local
-  positivity on even nonnegative bumps.
-- Exact packet-Rayleigh on autocorrelation packets is now the honest theorem shape,
-  but no proof yet establishes positive semidefiniteness of the associated packet
-  kernel `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on the same dense
-  pre-packet space.
-- `Herglotz/Bochner` explains what `PSD-pd` means, but it does not yet provide a
-  project-local constructive proof.
-- The literal packet-level `prime-block PSD factorization or Hilbert lift`
-  theorem shape is false on dense packet spaces: the packet prime block is not
-  positive semidefinite in general.
-- The compact scalar package
-  `S1 exact compact spectral identity -> S2 scalar compact criterion -> S3 corrected compact positivity -> S4 corrected global closure`
-  is mathematically correct as a compact-truncation reduction, but it is no longer
-  a viable public mainline once `\Xi_K\neq\varnothing`: `a_K^*\in L^1` implies
-  `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum recurs arbitrarily
-  close to its full positive mass.
-- The primary remaining theorem package is now:
-  `H1^f` filtered intertwining modulo explicit boundary/cap correction
-  -> `H2^f` Suzuki tail/cap reduction
-  -> `H3^f` filtered gap transfer
-  -> `H4^f` Suzuki Theorem 1.4;
-  the fallback packet package remains:
-  exact packet sesquilinear identity
-  -> prime-block obstruction
-  -> Toeplitz/Herglotz spectral criterion for the full sequence
-  -> finite admissible dictionary positivity
-     `S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0`
-     driven by explicit bounds on `\alpha_m,\beta_m`
-     and verified through Poisson-regularized finite symbols / explicit error budget
-     (with measure-level/full-symbol language retained only as secondary diagnostic notation)
-     or a new operator package for the full kernel
-  -> `PSD-pd`.
-- The Suzuki/Yoshida generalized form-pair bridge is now the strongest live route:
-  `H1^f` filtered intertwining modulo explicit boundary/cap correction
-  -> `H2^f` Suzuki tail/cap reduction
-  -> `H3^f` filtered gap transfer
-  -> `H4^f` RH via Suzuki Theorem 1.4.
-  Until `H1^f` is concretely built, the route remains incomplete, but it is now
-  the primary live frontier.
-- The canonical centered half-atom pilot already shows that this finite-symbol
-  criterion is genuinely nonvacuous on sparse compact dictionaries, while still
-  falling far short of dense closure.
-- On dense packet dictionaries with arbitrarily fine translates, a uniform lower
-  bound of the form `Q^\star(t;\Psi * \widetilde\Psi)\ge c_K\|c\|_2^2` is impossible:
-  packets `\Psi_\Delta=g-g(\cdot-\Delta)` collapse to zero and force
-  `Q^\star(t;\Psi_\Delta * \widetilde{\Psi_\Delta})\to0` by A2 continuity.
-- The broad-cone compiled route in Lean still exists and may generate useful local
-  lemmas, but it cannot be used as public evidence for RH after `T0.1`.
-- The compiled Lean route still inherits `Q3.prime_term_le_at_t_critical_axiom`.
-
-## Read-Only Support Docs
-
-These files may be updated as snapshots, but they are no longer part of the active control plane:
-
-- `docs/CHAIN_STATUS.md`
-- `ACTIVE/MAIN_CHAIN_DEPS.md`
-
-Legacy narrative surfaces are reference-only:
-
-- centered/T5 route,
-- Acceptance Gate material,
-- `τ = 0` / PrimeCert / PathB status narratives,
-- archived D3/IND/AB branches.
-
-## Decision Ledger
-
-- 2026-03-06: active compiled route reset from legacy `τ = 0` narrative to shifted-atom route.
-- 2026-03-07: same-repo reset chosen; no new physical repo.
-- 2026-03-07: control plane fixed to 4 canonical files:
-  `PROJECT_ORCHESTRATOR.md`,
-  `IMPLEMENTATION_PLAN.md`,
-  `docs/PAPER_MAINLINE_TRACKER.md`,
-  `docs/INSIGHTS.md`.
-- 2026-03-07: gate chain fixed as
-  `T0 -> G0 -> G1 -> G2 -> G3 -> G4 -> G5 -> G6 -> RH`.
-- 2026-03-07: `G2` and `G3` split cleanly:
-  `G2` chooses and freezes `G_K`,
-  `G3` proves positivity on that exact `G_K`.
-- 2026-03-07: `G0` closed and verified across control docs, manuscript, Lean narrative, and builds.
-- 2026-03-08: `P7` sharpened from measure-level/full-symbol wording to the
-  finite admissible dictionary package: exact finite symbol `S_J`, Poisson
-  regularization, and explicit error budget.
-- 2026-03-07: `G1.1-G1.6` prepared the broad-cone support-upgrade branch and moved the
-  Aristotle `W_K` packet into background-only status.
-- 2026-03-07: a reviewed target-cone reset note raised a stronger blocker:
-  current `W_K / \mathcal W` may be too broad for honest Weil positivity.
-- 2026-03-07: `T0.1` audit closed with verdict `pivot required`.
-  Public mainline now pivots to the positive-definite / convolution-square cone
-  `\mathcal W_K^{pd} / \mathcal W^{pd}`.
-- 2026-03-07: the corrected-cone theorem blocks `A1-pd` and `packet-Rayleigh`
-  were refined further: they currently target two different centered families,
-  so the live knife-edge is now the same-family bridge `SF-pd`.
-- 2026-03-07: pushing the naive same-family route one step further exposed a
-  contradiction: the family `\Phi_{B,t}|p|^2` is too large to serve as the
-  closure family, because on `K<\pi` it overgenerates broad local positivity.
-- 2026-03-07: the honest corrected theorem package is now:
-  `A1-pd` on dense autocorrelation packets,
-  exact packet-Rayleigh on `\Psi_c * \widetilde{\Psi_c}`,
-  and the new hard theorem `A3-pd` asserting positivity of the packet symbol
-  `S_{g,\Delta}` on that same exact family.
-- 2026-03-07: pushing `A3-pd` one step further shows that the old theorem shape
-  is too strong on a dense packet dictionary: the exact packet identity survives,
-  but a uniform packet-symbol floor / uniform positive gap cannot hold on the full
-  family.
-- 2026-03-07: the public frontier therefore pivots again from `A3-pd` to
-  `PSD-pd`: prove positive semidefiniteness of the packet kernel
-  `K_Q(g_i,g_j)=\mathcal Q(g_i * \widetilde{g_j})` on a dense translation-compatible packet subspace.
-- 2026-03-07: the stronger packet-space audit shows that the literal
-  `prime-block PSD factorization or Hilbert lift -> Archimedean domination`
-  theorem shape is false on dense packet dictionaries. The active constructive
-  route is now direct PSD of the full kernel `K_Q`, with `Herglotz/Bochner`
-  kept only as diagnostic equivalence language.
-- 2026-03-08: the strict packet theorem package is now frozen as
-  `P1 -> P2 -> P4 -> P5 -> P6 -> P7.3 -> P7.4 -> P7.5 -> P7.6 -> PSD-pd`,
-  where the immediate constructive target is finite admissible dictionary
-  positivity `S_J(\theta)=A_J(\theta)-P_J(\theta)\ge0`.
-- 2026-03-08: Poisson regularization is retained only as a finite verification
-  device with explicit error budget, while measure-level/full-symbol language
-  is demoted to secondary Herglotz-style notation.
-- 2026-03-08: the live quantitative frontier sharpened further:
-  explicit packet bounds on `\alpha_m,\beta_m` now drive the finite-dictionary
-  package through inequalities `(C1)` / `(C1')`, while Poisson regularization
-  stays only a verification device and Gershgorin stays sparse-only.
-- 2026-03-08: the canonical centered half-atom
-  `g_{δ,t_0,0}=\Lambda_\delta\rho_{t_0}` is now the first explicit pilot
-  packet. On the compact `K=0.2` with dictionary `J={0,1}`, `Δ=0.15`, prime
-  collisions vanish for `\delta<0.0124`, reducing positivity to a strictly
-  positive Archimedean gap.
-- 2026-03-08: the compact scalar route `W_K(u)\ge0` is rejected as a public
-  mainline on any compact with active nodes: `a_K^*\in L^1` forces
-  `\widehat{a_K^*}(u)\to0`, while the finite cosine prime sum over `\Xi_K`
-  returns arbitrarily close to its full positive mass. The package
-  `S1/S2/S3/S4` is kept only as a correct diagnostic compact-truncation reduction.
-- 2026-03-08: Suzuki/Yoshida operator nondegeneracy in the generalized
-  form-pair shape `(G_g[a],J_a)` is promoted from alternative pivot to the
-  primary live route. The naive raw-operator / plain-`L^2` gap transfer is
-  rejected; the real missing brick is `H1`, the construction of `S_{a,M}` and
-  `J_a`.
-- 2026-03-08: the one-sided filtered Volterra bridge is superseded by the
-  symmetric two-sided filtered tail package
-  `\mathcal P_{M,N}, \Delta_{M,N}, B_{M,N}, \widetilde Q_{M,N}`.
-  After extracting the exact raw-compressed Section 8 formula
-  `Q_M^{raw}=T_M[P_A]-\Pi_M`,
-  `\Pi_M=(2M+1)T_P^{Ray}(t,M)=\iota_M^*T_P^{Ray}(t)\iota_M`,
-  and
-  `q_{rs}=A_{r-s}-\sum \lambda_n e^{2\pi i(s-r)\xi_n}`,
-  the raw identity `w_{rs}(a)=\kappa(a)q_{rs}` is now rejected as an exact
-  theorem shape, because the raw Q3 matrix is Toeplitz with constant diagonal
-  while the Suzuki raw Weil matrix on the `\chi_n[a]` basis has logarithmically
-  growing diagonal. The live bulk theorem is therefore the direct filtered
-  match on `(++),(+-)`, the filtered four-block package remains the derived
-  consequence layer, and the only second live brick after that is the
-  finite-dimensional Suzuki cap.
+The removed March frontier, milestone and blocker prose is preserved at
+`docs/archive/PROJECT_ORCHESTRATOR_MARCH_SNAPSHOT_2026-03-08.md`.

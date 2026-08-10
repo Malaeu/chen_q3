@@ -947,7 +947,17 @@ def _recent_branch_decisions(n: int = 6) -> list[str]:
         path.read_text(encoding="utf-8"),
         re.MULTILINE,
     )
-    return [f"- {head}" for head in heads[:n]] or ["(no branch decisions found)"]
+    if not heads:
+        return ["(no branch decisions found)"]
+
+    selected = heads[:n]
+    manifest_anchor = next(
+        (head for head in heads if "манифест соединён с обратным поиском" in head),
+        None,
+    )
+    if manifest_anchor is not None and manifest_anchor not in selected:
+        selected.append(manifest_anchor)
+    return [f"- {head}" for head in selected]
 
 
 def _latest_exploration_closeouts(n: int = 5) -> list[sqlite3.Row]:

@@ -20,6 +20,7 @@ Dedup rules:
 
 import argparse
 import collections
+import datetime
 import hashlib
 import re
 import sys
@@ -86,6 +87,35 @@ def parse_verdict_kill(text):
     return None, None
 
 
+def choose_kill_id(
+    name: str,
+    rel_canon: str,
+    known_ids: dict[str, str | None],
+) -> tuple[str, bool]:
+    """Return a stable id and whether this verdict is already materialized.
+
+    A repeated migration of the same named verdict must reuse its base id.
+    A genuinely different verdict whose slug collides gets a deterministic
+    content-independent suffix derived from its source name; repeated runs
+    therefore reuse that same collision id as well.
+    """
+    base = kb.slugify(name.replace("PROSHKA_", "").replace(".md", ""), 60)
+    source = known_ids.get(base)
+    if source is None and base not in known_ids:
+        return base, False
+    if source and Path(source).name == Path(rel_canon).name:
+        return base, True
+
+    suffix = hashlib.sha256(name.encode("utf-8")).hexdigest()[:8].upper()
+    candidate = f"{base[:51]}__{suffix}"
+    candidate_source = known_ids.get(candidate)
+    if candidate_source is None and candidate not in known_ids:
+        return candidate, False
+    if candidate_source and Path(candidate_source).name == Path(rel_canon).name:
+        return candidate, True
+    raise RuntimeError(f"stable verdict id collision: {name} -> {candidate}")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -95,11 +125,11 @@ def main() -> int:
     conn = kb.connect()
     known_strategies = {r[0] for r in conn.execute(
         "SELECT ref FROM kill_evidence WHERE kind='yaml_name'")}
-    known_ids = {r[0] for r in conn.execute("SELECT id FROM kill")}
+    known_ids = {r[0]: r[1] for r in conn.execute("SELECT id, source_file FROM kill")}
 
     rows, evidence, aliases, links = [], [], [], []
     manual = []   # prose-only KILL mentions: reported, never invented into rows
-    n_iter = n_kill = n_reused = n_already = 0
+    n_iter = n_kill = n_reused = n_existing = 0
 
     for name, paths in sorted(by_name.items()):
         canon = paths[0]
@@ -128,21 +158,15 @@ def main() -> int:
                                     f"gap named by verdict {name}"))
                 continue
 
-        kid = kb.slugify(name.replace("PROSHKA_", "").replace(".md", ""), 60)
-        # Idempotence.  This script is meant to run at every goal close, so a verdict it has
-        # already ingested must be skipped, not re-minted.  Before the fix, a second run hit
-        # `kid in known_ids` for every previously migrated file and gave each one a `__V`
-        # twin; 2026-08-06 produced 18 such pairs, all with an exact twin lacking the suffix.
-        # The suffix now means only what it was meant to mean: a slug collision between two
-        # *different* files inside one run.
-        if conn.execute(
-                "SELECT 1 FROM kill WHERE id IN (?, ?) AND source_file = ? LIMIT 1",
-                (kid, f"{kid}__V", rel_canon)).fetchone():
-            n_already += 1
+        kid, already_materialized = choose_kill_id(name, rel_canon, known_ids)
+        if already_materialized:
+            n_existing += 1
+            for p in paths:
+                evidence.append((kid, "verdict_copy", str(p.relative_to(REPO))))
+            if it and it.get("new_gap_name"):
+                aliases.append((kid, it["new_gap_name"], f"gap named by verdict {name}"))
             continue
-        if kid in known_ids:
-            kid = f"{kid}__V"
-        known_ids.add(kid)
+        known_ids[kid] = rel_canon
 
         if it:
             n_iter += 1
@@ -183,7 +207,7 @@ def main() -> int:
     print(f"  new strategy rows (M3)  : {n_iter}")
     print(f"  new verdict-kill rows   : {n_kill}")
     print(f"  reused existing strategy: {n_reused} (evidence attached, no duplicate row)")
-    print(f"  already migrated, skipped: {n_already}")
+    print(f"  reused existing verdict : {n_existing} (stable id, no __V row)")
     print(f"  evidence refs           : {len(evidence)}   aliases: {len(aliases)}")
     print(f"  prose-only KILL mentions: {len(manual)} — NOT migrated, need a human read:")
     for n, pth in manual[:12]:
@@ -200,7 +224,7 @@ def main() -> int:
         # count per file, not a hard 1: a verdict that carries both an M3 strategy
         # row and a verdict-kill row contributes two, and a hard 1 made the census
         # report every such file as DRIFT.
-        [(src, n, "2026-08-05", "wave 3 verdicts")
+        [(src, n, datetime.date.today().isoformat(), "wave 3 verdicts")
          for src, n in collections.Counter(r["source_file"] for r in rows).items()])
     conn.commit()
     print("migrated into", kb.DB_PATH)

@@ -1,7 +1,7 @@
 # Aristotle workflow (Q3 canonical)
 
 Status: canonical single source of truth for Aristotle usage in this repo.
-Date: 2026-03-07
+Date: 2026-08-06
 
 Goal: one clean workflow for Aristotle; all older Aristotle docs are archived.
 
@@ -12,7 +12,7 @@ Goal: one clean workflow for Aristotle; all older Aristotle docs are archived.
 1) Decide: manual proof vs Aristotle.
 2) If Aristotle: prepare ONE target lemma/file. Keep it small.
 3) Show the prompt to user and wait for OK.
-4) Activate venv: `source /Users/emalam/Documents/GitHub/rh_lean_01_2026/.venv/bin/activate`.
+4) From the repository root activate venv: `source .venv/bin/activate`.
 5) Submit (CLI or Python API).
 6) Download result -> scan for holes -> integrate -> compile -> log to DB.
 
@@ -30,7 +30,7 @@ uvx --from aristotlelib@latest aristotle
 
 Alternate (install into venv):
 ```
-source /Users/emalam/Documents/GitHub/rh_lean_01_2026/.venv/bin/activate
+source .venv/bin/activate
 uv pip install -U aristotlelib
 # or: pip install -U aristotlelib
 aristotle  # opens TUI

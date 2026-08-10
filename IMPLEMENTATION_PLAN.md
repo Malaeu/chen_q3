@@ -1,5 +1,12 @@
 # Implementation Plan
 
+Status: `FROZEN_HISTORICAL_2026-08-06`
+Selector effect: `INACTIVE_DO_NOT_READ_FOR_CURRENT_STATE`
+Reason: the only active row points to the parked H1/PO3 monitor, and the
+`Legacy-queue` verifier is self-referential and cannot pass. Current control
+state comes from `docs/CODEX_CONTROL.md`, task-specific monitors, and live
+machine checks. The rows below are retained verbatim as historical evidence.
+
 Updated: 2026-04-27
 
 ## Queue Rules

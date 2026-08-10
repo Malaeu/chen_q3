@@ -27,16 +27,8 @@ worker_report: q3.lean.aristotle/ACTIVE/requests/proshka_q_zeta_a2_plus_minus_20
 
 Этот файл — оперативный single source of truth для спринта.
 
-Правило старта новой сессии:
-
-1. открыть `SESSION_ENTRY.md`;
-2. сразу открыть `ACTIVE/SPRINT_MONITOR.md`;
-3. если `status: ACTIVE`, открыть только `current_artifact`;
-4. не читать `PROJECT_ORCHESTRATOR.md`, `IMPLEMENTATION_PLAN.md`,
-   `docs/INSIGHTS.md` заново, если `current_artifact` не даёт blocker;
-5. продолжать ровно `current_step_id`;
-6. не перепридумывать frontier, пока `SPRINT_MONITOR.md` не переведён в
-   `DONE`, `BLOCKED` или `ABORTED`.
+Правило старта новой сессии перенесено в `SESSION_ENTRY.md`.
+Этот `DONE_CLOSED`-файл — `HISTORICAL_ONLY` и сам себя не активирует.
 
 ## Startup response contract
 
