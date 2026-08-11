@@ -202,3 +202,40 @@ theorem hsimple_iff_odd_posdef_and_even_one
   rfl
 
 #print axioms hsimple_iff_odd_posdef_and_even_one
+
+/-! ## Работа по `S_odd` -/
+
+/-- **η обнуляет ВЕСЬ нечётный сектор.** Нормировочный функционал слеп к нечётным модам —
+структурный факт, не свойство одной ячейки. -/
+theorem eta_dot_eq_zero_of_odd {x : CCMModeFinite N → ℝ} (hx : x ∈ oddSec N) :
+    ccmEtaFinite N ⬝ᵥ x = 0 := by
+  rw [Module.End.mem_eigenspace_iff] at hx
+  have h := ccmEtaFinite_dot_reflection N x
+  rw [hx] at h
+  simp only [neg_smul, one_smul, dotProduct_neg] at h
+  linarith
+
+/-- **ГЕЙТ.** Строгая положительность на подпространстве наследуется любым меньшим.
+Именно эта монотонность нужна, чтобы коэрцитивность объемлющего odd-сектора
+могла спуститься на конечный срез — и она же показывает, что сам спуск тривиален,
+а вся нетривиальность сидит в переходе «объемлющее → конечная компрессия». -/
+theorem posDefOnSub_mono
+    (S : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ)
+    {W W' : Submodule ℝ (CCMModeFinite N → ℝ)} (hle : W' ≤ W) :
+    PosDefOnSub N S W → PosDefOnSub N S W' :=
+  fun h x hx hx0 => h x (hle hx) hx0
+
+/-- Следствие: если ядро сдвинутой формы целиком чётно, нечётный блок строго положителен. -/
+theorem odd_posDef_of_ker_even
+    (mProject : ℕ) (epsilon : ℝ)
+    (hS : (ccmShiftedWeilMatFinite mProject N epsilon).PosSemidef)
+    (hker : LinearMap.ker (ccmShiftedWeilOpFinite mProject N epsilon) ≤ evenSec N) :
+    PosDefOnSub N (ccmShiftedWeilMatFinite mProject N epsilon) (oddSec N) := by
+  rw [posDefOnSub_iff_inf_ker_bot N _ hS]
+  rw [eq_bot_iff]
+  intro x hx
+  have hxe : x ∈ evenSec N := hker hx.1
+  exact (Submodule.disjoint_def.mp (sectors_isCompl N).disjoint) x hxe hx.2
+
+#print axioms eta_dot_eq_zero_of_odd
+#print axioms odd_posDef_of_ker_even
