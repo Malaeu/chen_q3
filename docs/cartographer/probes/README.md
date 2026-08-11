@@ -41,6 +41,7 @@ lake env lean ../docs/cartographer/probes/<файл>.lean
 | `Probe_TypedBridge_05_ccm_instantiation.lean` | всё то же на настоящей `ccmWeilMatFinite` | три теоремы, стандартная тройка |
 | `Probe_ExactRecallFailure.lean` | четыре различающих опыта о промахе `exact?` | **обязан дать ровно 3 ошибки** плюс чистый контроль |
 | `Probe_Theorem510_assembly.lean` | сборка `Theorem510RealZeroBridge` из M1 + β8d | компилируется, стандартная тройка |
+| `Probe_Theorem510_lagrange_route.lean` | тот же мост коротким маршрутом: вещественность прямо на Лагранже, мимо `charpoly`/M1/β8d | компилируется, стандартная тройка |
 
 Разборы с числами, скорингом предсказаний и оговорками:
 `PROBE_H2A_RAYLEIGH_TYPED_BRIDGE_2026-08-11.md` рядом.
