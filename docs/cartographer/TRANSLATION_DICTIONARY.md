@@ -43,6 +43,73 @@
 
 ---
 
+## Уточнение правила: потребитель — ВНЕШНИЙ, а не первый попавшийся
+
+Вердикт `proshka/PROSHKA_CONSUMER_FIRST_CONSTRUCTOR_HERMFACT1_AUDIT_2026-08-11.md`
+поймал у нас ошибку применения собственного правила. Мы брали сигнатуру у
+`..._of_bottomRayleigh_simple` (`CCMFiniteWeilBottomSpectral.lean:61`), а надо было у
+**обёртки**:
+
+```
+ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized
+CCMFiniteWeilParity.lean:161
+```
+
+Сверено с диском: гипотезы те же **минус `hxiEven`** — обёртка выводит его внутри через
+`ccmEigenvector_even_of_simple_eigenspace_and_normalized` (`Parity.lean:119`) и вызывает
+внутреннюю теорему. То есть `hxiEven` не дыра, а производное.
+
+**Правило дополняется:** искать потребителя, у которого **меньше открытых входов**, а не
+первого найденного. Внутренняя теорема выглядит потребителем и им является, но её
+сигнатура завышает число дыр.
+
+**`hermfact1` — DOC_ALIAS, провенанс закрыт.** Ноль `.lean`-файлов во всём репозитории,
+только документы. Источник — CCM Lemma 7.3 (`k̂_λ → Ξ` локально равномерно), статус
+`PAPER_PROVED`, Lean-порт `OPEN`. Отдельной публичной леммы `...isHermitian` нет **потому
+что она уже внутренний шаг работающего потребителя**:
+
+```lean
+-- CCMFiniteWeilBottomSpectral.lean:52, внутри posSemidef_of_bottomRayleigh
+rw [Matrix.IsHermitian, Matrix.conjTranspose_eq_transpose_of_trivial]
+exact ccmShiftedWeilMatFinite_transpose_eq mProject N epsilon hm hN
+```
+
+Проверено дословно. Восемь коммитов вердикта существуют, сообщения совпадают.
+
+### Скоринг предсказаний вердикта
+
+| | предсказание | p | исход |
+|---|---|---|---|
+| `P1` | `hermfact1` — `DOC_ALIAS`, не `LEAN_DECL` | 1.00 | **подтверждено**: ноль `.lean` |
+| `P2` | нисхождение к точному потребителю убирает `hxiEven` и отдельную эрмитовость | 0.99 | **подтверждено** чтением обёртки и внутреннего шага |
+| `P3` | остаются `hbottom`, `hsimple`, построение свидетеля и кроссвок семейства | 0.95 | **подтверждено** |
+| `P4` | базис фактора генерируется автоматически — **UNTESTED** у неё | 0.70 | **ПОДТВЕРЖДЕНО НАМИ КОМПИЛЯЦИЕЙ**: `Module.Basis.ofVectorSpace ℝ Qt`, потребитель применяется без входа `b`, `probes/Probe_QuotientBasis_Auto.lean` |
+| `P5` | связочный поиск полезнее раздельного для `heig/hbottom/hsimple` | 0.90 | методологическое, прогоном не проверялось |
+
+**Реестр входов после нисхождения и после закрытия `P4`:**
+
+```
+DATA            mProject, N                   известны
+AUTO            hm, hN                        дешёвая арифметика
+WITNESS         epsilon, xi, heig             строить связкой, не поштучно
+NORMALIZATION   hnormalized                   downstream-механизм есть
+OPEN            hbottom                       несущее
+OPEN            hsimple                       несущее
+DERIVED         hxiEven, IsHermitian          устранены обёрткой
+УСТРАНЁН        базис фактора b               нами, компиляцией
+CROSSWALK       concrete → C.Pstar.family     открыт
+```
+
+Не шесть равных дыр, а **две спектральные посылки + связка-свидетель + один кроссвок**.
+
+**Поправка к её замечанию про `exact?`.** Она права о той пробе, которую видела:
+зелёный контроль был `exact rfl` на тавтологии. Это вчерашняя проба. Сегодняшние закрывают
+мост настоящей леммой `isHermitian_iff_isSymmetric.mp h` и отдельно фиксируют **промах
+поиска по дословному совпадению** (`probes/Probe_ExactRecallFailure.lean`). Вывод «`exact?`
+— retrieval, не comparator» от этого только крепнет.
+
+---
+
 ## Правило: перевод берётся из сигнатуры потребителя
 
 **Формулировку цели не сочиняют — её списывают с того места, куда она пойдёт.**

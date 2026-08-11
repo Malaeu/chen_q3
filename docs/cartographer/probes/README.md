@@ -43,6 +43,7 @@ lake env lean ../docs/cartographer/probes/<файл>.lean
 | `Probe_Theorem510_assembly.lean` | сборка `Theorem510RealZeroBridge` из M1 + β8d | компилируется, стандартная тройка |
 | `Probe_Theorem510_lagrange_route.lean` | тот же мост коротким маршрутом: вещественность прямо на Лагранже, мимо `charpoly`/M1/β8d | компилируется, стандартная тройка |
 | `Probe_Inertia_SimpleAsCount.lean` | `hsimple` как утверждение о ранге сдвинутой матрицы: локализация → счёт | компилируется, стандартная тройка |
+| `Probe_QuotientBasis_Auto.lean` | базис фактора генерируется на месте: вход `b` потребителя устраняется (закрывает `P4` вердикта) | компилируется, стандартная тройка |
 
 Разборы с числами, скорингом предсказаний и оговорками:
 `PROBE_H2A_RAYLEIGH_TYPED_BRIDGE_2026-08-11.md` рядом.
