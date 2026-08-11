@@ -363,6 +363,69 @@ tool_families:
         records_to: atoms_RouteB.json
         last_verified: 2026-08-10
 
+      - id: atom-describe
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/cartographer/atom_describe.py
+        invoke: >-
+          python3 docs/cartographer/atom_describe.py --limit 0
+          --foreign /mnt/hdd01/Soft/GitHub/zeta-23-lean
+          --json docs/cartographer/atoms_described.json
+        cwd: repository root
+        trigger: Turning atom names into statements one can reason about or hand to an agent.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: DECLARATION_LOOKUP_NOT_APPLICABILITY_JUDGEMENT
+        failure_mode: >-
+          A docstring is the author's paraphrase, not a check. The first version matched
+          on the base name and returned `Real.pi` as a ContinuousMap product; full names
+          are now compared against a reconstructed namespace stack.
+        records_to: docs/cartographer/atoms_described.json
+        last_verified: 2026-08-11
+
+      - id: foreign-atom-bridge
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: docs/cartographer/foreign_atoms.py
+        invoke: python3 docs/cartographer/foreign_atoms.py --foreign /mnt/hdd01/Soft/GitHub/zeta-23-lean
+        cwd: repository root
+        trigger: Locating a foreign formalization layer by topic.
+        writes: false
+        approval: NONE
+        authority: NAME_INTERSECTION_ONLY
+        failure_mode: >-
+          Name intersection ranks shared foundations to the top (`Real.pi`, `mul_nonneg`)
+          and does not separate relevant from incidental. What worked instead was
+          searching foreign declarations by topic. See TRANSLATION_DICTIONARY.md.
+        records_to: docs/cartographer/FOREIGN_LEAN_BRIDGE.md
+        last_verified: 2026-08-11
+
+      - id: constructor-probes
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: docs/cartographer/probes/
+        invoke: lake env lean ../docs/cartographer/probes/<file>.lean
+        cwd: q3.lean.aristotle
+        trigger: Reproducing a claim recorded in a probe write-up; never part of a build.
+        writes: false
+        approval: NONE
+        authority: SINGLE_EXPERIMENT_WITH_REGISTERED_OUTCOME
+        registry: docs/cartographer/probes/README.md
+        failure_mode: >-
+          Run from the repository root instead of the package and toolchain v4.22.0 is
+          picked up in place of v4.26.0; the probe dies on `unknown module prefix
+          'Mathlib'` rather than on anything mathematical.
+        negative_probes: >-
+          Probe_ExactRecallFailure.lean must report exactly three `exact?` failures and
+          Probe_TypedBridge_03_plant_standalone.lean must exit nonzero. A clean compile
+          of either is a FAILURE of the probe, not a success; expected output is stated
+          in each file header.
+        records_to: docs/cartographer/probes/*.md and TRANSLATION_DICTIONARY.md
+        last_verified: 2026-08-11
+
       - id: cheap-closure-finder
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
