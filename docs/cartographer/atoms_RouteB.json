@@ -2591,6 +2591,18 @@
   ]
  },
  {
+  "atom": "inner_sub_left",
+  "n_files": 6,
+  "files": [
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "D0PstarSourceWeilOddTailGraphOperator.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+   "D0PstarSourceWeilShiftedOddHeadSchur.lean"
+  ]
+ },
+ {
   "atom": "add_re",
   "n_files": 6,
   "files": [
@@ -3054,17 +3066,6 @@
    "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
    "D0PstarVModeLogWeightedL2.lean",
    "EStarWindowedMellinCrosswalk.lean"
-  ]
- },
- {
-  "atom": "inner_sub_left",
-  "n_files": 5,
-  "files": [
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "D0PstarSourceWeilOddTailGraphOperator.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
-   "D0PstarSourceWeilShiftedOddHeadSchur.lean"
   ]
  },
  {
@@ -3918,6 +3919,16 @@
    "D0PstarSourceWeilOddFormPullback13.lean",
    "RankOneCorrectionLagrangeIdentity.lean",
    "WeightedRayleighProjectiveDefect.lean"
+  ]
+ },
+ {
+  "atom": "ContinuousLinearMap.sub_apply",
+  "n_files": 4,
+  "files": [
+   "D0PstarSourceWeilOddTailGraphOperator.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+   "D0PstarSourceWeilShiftedOddHeadSchur.lean"
   ]
  },
  {
@@ -5002,15 +5013,6 @@
  },
  {
   "atom": "ContinuousLinearMap.comp_apply",
-  "n_files": 3,
-  "files": [
-   "D0PstarSourceWeilOddTailGraphOperator.lean",
-   "D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
-   "D0PstarSourceWeilShiftedOddHeadSchur.lean"
-  ]
- },
- {
-  "atom": "ContinuousLinearMap.sub_apply",
   "n_files": 3,
   "files": [
    "D0PstarSourceWeilOddTailGraphOperator.lean",

@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 203,
-  "declarations": 1745,
-  "in_docs": 676,
-  "in_lemma_db": 1745,
+  "files_scanned": 204,
+  "declarations": 1755,
+  "in_docs": 678,
+  "in_lemma_db": 1755,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -11275,7 +11275,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 40,
       "signature": "abbrev SourceWeilGraphCarrier (i : PairIndex)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -11815,6 +11815,106 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
       "line": 125,
       "signature": "theorem inner_sourceWeilOddTailExplicitCorrection (i : PairIndex) (q r : SourceWeilOddHeadCoefficients i) : inner ℂ (sourceWeilOddTailExplicitCorrection i q) r = inner ℂ ((sourceWeilShiftedOddTailOperator i (sourceWeilOddTailCutoff i)).inverse (sourceWeilOddTailExplicitResidual i q)) (sourceWeilOddTailExplicitResidual i r)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddCanonicalIndex13",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 34,
+      "signature": "def sourceWeilOddCanonicalIndex13 : PairIndex",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphCarrier_13_N_irrelevant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 39,
+      "signature": "theorem sourceWeilGraphCarrier_13_N_irrelevant (N M : ℕ) : SourceWeilGraphCarrier (PairIndex.mk 13 N (by norm_num)) = SourceWeilGraphCarrier (PairIndex.mk 13 M (by norm_num))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilC0ShiftedGraphOperator_13_N_irrelevant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 47,
+      "signature": "theorem sourceWeilC0ShiftedGraphOperator_13_N_irrelevant (N M : ℕ) : sourceWeilC0ShiftedGraphOperator (PairIndex.mk 13 N (by norm_num)) sourceWeilOddTargetFloor = sourceWeilC0ShiftedGraphOperator (PairIndex.mk 13 M (by norm_num)) sourceWeilOddTargetFloor",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 57,
+      "signature": "theorem sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant (N M : ℕ) : sourceWeilOddTargetFloorSchurComplement (PairIndex.mk 13 N (by norm_num)) = sourceWeilOddTargetFloorSchurComplement (PairIndex.mk 13 M (by norm_num))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 67,
+      "signature": "theorem sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant (N M : ℕ) : sourceWeilOddTargetFloorSchurEnergy (PairIndex.mk 13 N (by norm_num)) = sourceWeilOddTargetFloorSchurEnergy (PairIndex.mk 13 M (by norm_num))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorSchurPositive13_iff_canonical",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 77,
+      "signature": "theorem sourceWeilOddTargetFloorSchurPositive13_iff_canonical : SourceWeilOddTargetFloorSchurPositive13 ↔ (sourceWeilOddTargetFloorSchurComplement sourceWeilOddCanonicalIndex13).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphOddHeadSynthesis13_eq_sourceWeilOddSynthesis13",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 89,
+      "signature": "theorem sourceWeilGraphOddHeadSynthesis13_eq_sourceWeilOddSynthesis13 (R : ℕ) (q : EuclideanSpace ℂ (Fin R)) : sourceWeilGraphDomain sourceWeilOddCanonicalIndex13 (sourceWeilGraphOddHeadSynthesis sourceWeilOddCanonicalIndex13 R q) = sourceWeilOddSynthesis13 R q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 98,
+      "signature": "theorem inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm (q r : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13) : inner ℂ (sourceWeilOddTargetFloorHeadOperator sourceWeilOddCanonicalIndex13 q) r = (∑ j, ∑ k, star ((ccmOddCoefficientIsometry (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) * (Q3.RouteB.ccmWeilMatFinite 13 (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) j k : ℂ) * (ccmOddCoefficientIsometry (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) k) - (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 124,
+      "signature": "theorem inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm (q r : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13) : inner ℂ (sourceWeilOddTargetFloorSchurComplement sourceWeilOddCanonicalIndex13 q) r = (∑ j, ∑ k, star ((ccmOddCoefficientIsometry (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) * (Q3.RouteB.ccmWeilMatFinite 13 (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) j k : ℂ) * (ccmOddCoefficientIsometry (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) k) - (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r - inner ℂ (oddTailInverseWeightedCorrection (sourceWeilOddTargetFloorInverseWeightedData sourceWeilOddCanonicalIndex13) q) r",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
+      "line": 150,
+      "signature": "theorem sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy : SourceWeilOddTargetFloorSchurPositive13 ↔ ∀ q : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13, 0 ≤ ((∑ j, ∑ k, star ((ccmOddCoefficientIsometry (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) * (Q3.RouteB.ccmWeilMatFinite 13 (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) j k : ℂ) * (ccmOddCoefficientIsometry (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) k) - (sourceWeilOddTargetFloor : ℂ) * inner ℂ q q - inner ℂ (oddTailInverseWeightedCorrection (sourceWeilOddTargetFloorInverseWeightedData sourceWeilOddCanonicalIndex13) q) q).re",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

@@ -40,6 +40,48 @@
 
 ---
 
+## 2026-08-11 — B3.0AP: auxiliary N erased, exact corrected CCM receiver exposed
+
+**Развилка:** оставить B3.0AO как универсальный `∀ N` receiver и сразу идти
+за внешней архитектурой сертификата либо отдельно проверить, действительно ли
+`PairIndex.N` меняет source-Weil graph/Schur object при фиксированном `m = 13`.
+
+**Выбрали:** local-first definitional audit, один канонический auxiliary index
+`PairIndex.mk 13 0`, exact reduction all-`N` target ↔ canonical Schur positivity,
+затем exact corrected-CCM quadratic-energy receiver.
+
+**Почему:** Lean доказал `rfl`, что carrier, target-floor graph operator, Schur
+operator и Schur energy не зависят от `N`; следовательно `N = 0` здесь только
+представитель одного и того же source object, а не выбор конечного размера.
+Existing B3.0AF pullback затем буквально раскрывает head pairing в
+`ccmWeilMatFinite 13 sourceWeilOddTailCutoff`, сохраняя actual infinite-tail
+inverse correction.
+
+**Что отвергли и почему:** сохранившееся прежнее предположение, что равенство
+больших graph objects слишком дорого, отвергнуто после отдельного compiled
+consumer — в этом типе оно definitionally true; `N = 0` как нулевой head size,
+`N = 480/960` как замена symbolic cutoff, scalar inverse и выбрасывание
+`R† C⁻¹ R` отвергнуты как смена математического объекта.
+
+**Техника:** definitional equality audit, canonical representative, exact odd
+CCM form pullback, production-import consumer, declaration-registry backfill.
+
+**Следующий ход:** перелочить B3.0AO MINT на новый proof commit и после отдельного
+owner OK просить в том же живом phase chat источник/архитектуру ровно для
+nonnegativity canonical corrected CCM energy; знак по-прежнему не доказан.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean`
+·
+`docs/routeB_bus/GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_CLOSEOUT_2026-08-11.md`
+· Goal 057 A60.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka не вызывалась. Аргумент —
+kernel-checked `rfl` устраняет искусственный auxiliary-`N` квантор, а exact
+pullback показывает оставшийся corrected matrix sign без предположения знака.
+
+---
+
 ## 2026-08-11 — B3.0AO: all-N m=13 Schur receiver, sign still open
 
 **Развилка:** выбрать один удобный `PairIndex.N` для сертификата либо

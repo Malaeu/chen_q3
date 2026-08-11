@@ -61,20 +61,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `41`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `37`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `35`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_e5eb2e33c06551572d89` at `2026-08-11T05:28:25+00:00` from `11b1dbf72df1`
+- snapshot: `OBS_5017872a7811477666d5` at `2026-08-11T06:02:13+00:00` from `760e9106c2e7`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3395` / `5676`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2091}`; doomed: `0`
+- file states/import edges: `3396` / `5678`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2092}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `53`; observed seconds total/mean/median: `58689` / `1150.8` / `1082`; lower bounds: `1`
@@ -83,14 +83,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 9 | 2026-08-11T05:24:20+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-11 05:28 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-11 05:28 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-11 05:28 UTC | no | PARSED | READY |
+| `autopsy_map` | 9 | 2026-08-11T06:00:21+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-11 06:02 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-11 06:02 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-11 06:02 UTC | no | PARSED | READY |
 | `proshka_timing` | 53 | 2026-08-08T18:40:13+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-11 05:28 UTC | no | PARSED | READY |
-| `taint_graph` | 3395 | 2026-08-11 05:28 UTC | no | PARSED | READY |
-| `taint_sources` | 3395 | 2026-08-11 05:28 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-11 06:02 UTC | no | PARSED | READY |
+| `taint_graph` | 3396 | 2026-08-11 06:02 UTC | no | PARSED | READY |
+| `taint_sources` | 3396 | 2026-08-11 06:02 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -315,12 +315,12 @@ _121 records, 87 cross-file aliases. Query: `./orchestrator/kb.py search <term>`
 - [applied] 11. Sign-Uncertainty Surcharge
 
 ## 6. Recent branch decisions (Progress_Log.md)
+- 2026-08-11 — B3.0AP: auxiliary N erased, exact corrected CCM receiver exposed
 - 2026-08-11 — B3.0AO: all-N m=13 Schur receiver, sign still open
 - 2026-08-11 — B3.0AN: target-floor tail inverted, exact finite Schur sign isolated
 - 2026-08-11 — B3.0AM: exact shifted Schur positivity closed, strict c0 kept open
 - 2026-08-11 — B3.0AL: literal source residual built, quantitative bound kept open
 - 2026-08-11 — B3.0AK: explicit coercivity closed, residual kept separate
-- 2026-08-11 — B3.0AK: low-band mass made uniform over the algebraic odd tail
 - 2026-08-09 — манифест соединён с обратным поиском
 
 ## 7. Recent insights (INSIGHTS.md head)
