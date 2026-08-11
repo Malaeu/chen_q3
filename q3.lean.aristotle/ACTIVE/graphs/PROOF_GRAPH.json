@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "ROOT_AXIOM_PROJECTION",
-  "generated_at": "2026-08-11 03:04 UTC",
+  "generated_at": "2026-08-11 03:28 UTC",
   "root": "Q3.Main.RH_of_Weil_and_Q3",
   "nodes": [
     {
@@ -320,8 +320,8 @@
     }
   ],
   "inputs": {
-    "dependency_tree": "bbe96135517ec6ceb8149ecaa7ee5ee0f2ea18b5b69636bacf53f1812d55cd8c",
-    "taint_graph": "1518a4c7356d1ba9c10ec1cb3562e34c5374be52893672d08460a6f554881069",
+    "dependency_tree": "771c7166ed7cef7b9a4b1de99bce07bf3e00d17ba2cd44467f7dce97d164e4a3",
+    "taint_graph": "31b84f4fdd0ce7f0c1c7597c1aa0a487a9ac63154ddad49e2c930a6d78e0f16d",
     "alternative_paths": "75d44409e3869ae421e493484aca7f9226b62842200dcf8bbe89db28bbaeedd7"
   },
   "boundary": {

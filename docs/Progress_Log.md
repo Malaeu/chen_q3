@@ -40,6 +40,48 @@
 
 ---
 
+## 2026-08-11 — B3.0AL: literal source residual built, quantitative bound kept open
+
+**Развилка:** моделировать `R_out` конечной матрицей, заменить внешний блок
+скаляром, либо построить буквальный low-head-to-infinite-tail cross-block
+существующего shifted source-Weil graph operator.
+
+**Выбрали:** `EuclideanSpace ℂ (Fin R)` для коэффициентов первых `R`
+нормированных нечётных graph modes, их буквальный синтез, actual source
+operator и orthogonal projection в замкнутый B3.0AJ tail; при B3.0AK cutoff
+этим инстанцирован настоящий B3.0AI `R† C⁻¹ R` correction.
+
+**Почему:** это ровно source-locked infinite cross-block в тех же graph
+Hilbert norms и с тем же actual invertible outer block; boundedness следует
+из композиции continuous linear maps, а pairing с tail сохраняется точной
+теоремой об orthogonal projection.
+
+**Что отвергли и почему:** plain `Fin R → ℂ` имеет sup norm, а не нужную
+евклидову норму; raw residual norm и constant-floor inverse теряют
+divided-difference cancellation; finite `N=480/960` Schur matrices не равны
+infinite closed-tail operator; существование положительной correction не
+является количественным `OddTailGradedResolventBound13`.
+
+**Техника:** finite-dimensional continuous linear synthesis, composition of
+continuous linear maps, closed-subspace orthogonal projection, exact positive
+invertible outer inverse and B3.0AI adjoint correction.
+
+**Следующий ход:** построить literal head block/form и доказать
+cancellation-sensitive lower bound для exact Schur complement, сохраняя
+B3.0AH divided differences до применения нормы.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean`
+· `docs/routeB_bus/GOAL057_B3_0AL_SOURCE_WEIL_ODD_TAIL_RESIDUAL_CLOSEOUT_2026-08-11.md`
+· Goal 057 A56.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka не вызывалась, потому
+что production operator, exact tail, coercivity и generic correction interface
+уже существовали. Аргумент — буквальная композиция и exact pairing theorem,
+проверенные Lean и внешним production consumer.
+
+---
+
 ## 2026-08-11 — B3.0AK: explicit coercivity closed, residual kept separate
 
 **Развилка:** ждать named Yoshida/Suzuki crosswalk, импортировать sampled

@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 199,
-  "declarations": 1681,
+  "files_scanned": 200,
+  "declarations": 1694,
   "in_docs": 673,
-  "in_lemma_db": 1681,
+  "in_lemma_db": 1694,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -11685,6 +11685,136 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 497,
       "signature": "@[simp] theorem sourceWeilOddTailInverseWeightedData_residual {Head : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (residual : Head →L[ℂ] SourceWeilGraphOddTailCarrier i R) : (sourceWeilOddTailInverseWeightedData i R mu hcoercive residual).residual = residual",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphOddHeadSynthesisLinear",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 28,
+      "signature": "noncomputable def sourceWeilGraphOddHeadSynthesisLinear (i : PairIndex) (R : ℕ) : EuclideanSpace ℂ (Fin R) →ₗ[ℂ] SourceWeilGraphCarrier i where",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilGraphOddHeadSynthesis",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 42,
+      "signature": "noncomputable def sourceWeilGraphOddHeadSynthesis (i : PairIndex) (R : ℕ) : EuclideanSpace ℂ (Fin R) →L[ℂ] SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 50,
+      "signature": "noncomputable def sourceWeilOddTailResidual (i : PairIndex) (R : ℕ) : EuclideanSpace ℂ (Fin R) →L[ℂ] SourceWeilGraphOddTailCarrier i R",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddTailResidual_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 58,
+      "signature": "theorem norm_sourceWeilOddTailResidual_le (i : PairIndex) (R : ℕ) (q : EuclideanSpace ℂ (Fin R)) : ‖sourceWeilOddTailResidual i R q‖ ≤ ‖sourceWeilOddTailResidual i R‖ * ‖q‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilOddTailResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 66,
+      "signature": "theorem inner_sourceWeilOddTailResidual (i : PairIndex) (R : ℕ) (q : EuclideanSpace ℂ (Fin R)) (y : SourceWeilGraphOddTailCarrier i R) : inner ℂ (sourceWeilOddTailResidual i R q) y = inner ℂ (sourceWeilShiftedGraphOperator i (sourceWeilGraphOddHeadSynthesis i R q)) (y : SourceWeilGraphCarrier i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "abbrev",
+      "name": "SourceWeilOddHeadCoefficients",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 78,
+      "signature": "abbrev SourceWeilOddHeadCoefficients (i : PairIndex)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailExplicitResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 82,
+      "signature": "noncomputable def sourceWeilOddTailExplicitResidual (i : PairIndex) : SourceWeilOddHeadCoefficients i →L[ℂ] SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailExplicitInverseWeightedData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 89,
+      "signature": "noncomputable def sourceWeilOddTailExplicitInverseWeightedData (i : PairIndex) : OddTailInverseWeightedData (SourceWeilOddHeadCoefficients i) (SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailExplicitInverseWeightedData_outerBlock",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 98,
+      "signature": "@[simp] theorem sourceWeilOddTailExplicitInverseWeightedData_outerBlock (i : PairIndex) : (sourceWeilOddTailExplicitInverseWeightedData i).outerBlock = sourceWeilShiftedOddTailOperator i (sourceWeilOddTailCutoff i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailExplicitInverseWeightedData_residual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 104,
+      "signature": "@[simp] theorem sourceWeilOddTailExplicitInverseWeightedData_residual (i : PairIndex) : (sourceWeilOddTailExplicitInverseWeightedData i).residual = sourceWeilOddTailExplicitResidual i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailExplicitCorrection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 111,
+      "signature": "noncomputable def sourceWeilOddTailExplicitCorrection (i : PairIndex) : SourceWeilOddHeadCoefficients i →L[ℂ] SourceWeilOddHeadCoefficients i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailExplicitCorrection_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 118,
+      "signature": "theorem sourceWeilOddTailExplicitCorrection_isPositive (i : PairIndex) : (sourceWeilOddTailExplicitCorrection i).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilOddTailExplicitCorrection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
+      "line": 125,
+      "signature": "theorem inner_sourceWeilOddTailExplicitCorrection (i : PairIndex) (q r : SourceWeilOddHeadCoefficients i) : inner ℂ (sourceWeilOddTailExplicitCorrection i q) r = inner ℂ ((sourceWeilShiftedOddTailOperator i (sourceWeilOddTailCutoff i)).inverse (sourceWeilOddTailExplicitResidual i q)) (sourceWeilOddTailExplicitResidual i r)",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

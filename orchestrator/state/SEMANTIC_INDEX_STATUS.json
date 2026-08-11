@@ -7,11 +7,11 @@
       "id": "POST_JUNE_IDENTIFICATION",
       "lexical_count": 0,
       "matched_paths": [
-        "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-        "qmd://q3-docs/docs/routeb-bus/manifest.md"
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-twolevel-spectral-ladder/archive/routeb-bus-legacy-001-009-2026-07-12/007-poisson-residual-channel-audit-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
+        "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -40,16 +40,16 @@
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
         "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
-        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16scaledremainderdirecthornercertsmoke.lean"
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16biasedscaledremainderintervalpayload.lean",
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16collapseddegree0rawd17signedfactorrows.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 36,
+      "result_count": 34,
       "status": "PASS",
-      "vector_count": 29
+      "vector_count": 27
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "b0021ffed97261be16114701a5a1bfd011fdbc8e",
+  "source_commit": "c0da3d745f5d83a46e9d58b73423f5c3007619b2",
   "status": "PASS"
 }

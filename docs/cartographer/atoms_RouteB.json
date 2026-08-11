@@ -698,6 +698,30 @@
   ]
  },
  {
+  "atom": "smul_eq_mul",
+  "n_files": 18,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "D0PstarArchSesquilinearFormFiniteRestriction.lean",
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarPrimeAmbientSesquilinearForm.lean",
+   "D0PstarShiftedArchFormDomain.lean",
+   "D0PstarShiftedArchModeDomain.lean",
+   "D0PstarShiftedArchSesquilinearForm.lean",
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourceModeCosineCCMQKernel.lean",
+   "D0PstarSourceWeilFiniteFourierLedger.lean",
+   "D0PstarSourceWeilOddFormPullback13.lean",
+   "D0PstarSourceWeilOddTailResidual.lean",
+   "D0PstarVModeFourierFormula.lean",
+   "D0PstarVModeLogWeightedL2.lean",
+   "D0PstarW02RankTwoForm.lean",
+   "EStarWindowedMellinCrosswalk.lean",
+   "ProlateFiniteFourierNonvanishing.lean",
+   "WindowEndpointBridge.lean"
+  ]
+ },
+ {
   "atom": "mul_one",
   "n_files": 18,
   "files": [
@@ -743,29 +767,6 @@
    "SafeRateAssembly.lean",
    "WeightedProjectiveEvaluationTransfer.lean",
    "WeightedSpectralTempleCore.lean"
-  ]
- },
- {
-  "atom": "smul_eq_mul",
-  "n_files": 17,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "D0PstarArchSesquilinearFormFiniteRestriction.lean",
-   "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarPrimeAmbientSesquilinearForm.lean",
-   "D0PstarShiftedArchFormDomain.lean",
-   "D0PstarShiftedArchModeDomain.lean",
-   "D0PstarShiftedArchSesquilinearForm.lean",
-   "D0PstarSourceLowBandModeDecay.lean",
-   "D0PstarSourceModeCosineCCMQKernel.lean",
-   "D0PstarSourceWeilFiniteFourierLedger.lean",
-   "D0PstarSourceWeilOddFormPullback13.lean",
-   "D0PstarVModeFourierFormula.lean",
-   "D0PstarVModeLogWeightedL2.lean",
-   "D0PstarW02RankTwoForm.lean",
-   "EStarWindowedMellinCrosswalk.lean",
-   "ProlateFiniteFourierNonvanishing.lean",
-   "WindowEndpointBridge.lean"
   ]
  },
  {
@@ -1892,6 +1893,20 @@
   ]
  },
  {
+  "atom": "Pi.add_apply",
+  "n_files": 8,
+  "files": [
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarShiftedArchFormDomain.lean",
+   "D0PstarShiftedArchModeDomain.lean",
+   "D0PstarShiftedArchSesquilinearForm.lean",
+   "D0PstarSourceArchKernelModeProductL1.lean",
+   "D0PstarSourceW02ModePairing.lean",
+   "D0PstarSourceWeilFiniteFourierLedger.lean",
+   "D0PstarSourceWeilOddTailResidual.lean"
+  ]
+ },
+ {
   "atom": "IntegrableOn.integrable_indicator",
   "n_files": 8,
   "files": [
@@ -1931,6 +1946,19 @@
    "D0PstarSourceLogWindowFourierL2Isometry.lean",
    "D0PstarSourceModeCosineCCMQKernel.lean",
    "D0PstarVModeLogWeightedL2.lean"
+  ]
+ },
+ {
+  "atom": "smul_smul",
+  "n_files": 7,
+  "files": [
+   "AbstractCoboundaryLedger.lean",
+   "CCMFiniteWeilEtaNonzero.lean",
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarOddTailDividedDifference13.lean",
+   "D0PstarSourceWeilOddTailResidual.lean",
+   "H2aPenaltyCoercivity.lean",
+   "NormalizedTrackingRateTransfer.lean"
   ]
  },
  {
@@ -2116,16 +2144,16 @@
   ]
  },
  {
-  "atom": "Pi.add_apply",
+  "atom": "Pi.smul_apply",
   "n_files": 7,
   "files": [
    "D0PstarCCMFiniteSourceResidual.lean",
    "D0PstarShiftedArchFormDomain.lean",
    "D0PstarShiftedArchModeDomain.lean",
    "D0PstarShiftedArchSesquilinearForm.lean",
-   "D0PstarSourceArchKernelModeProductL1.lean",
-   "D0PstarSourceW02ModePairing.lean",
-   "D0PstarSourceWeilFiniteFourierLedger.lean"
+   "D0PstarSourceWeilFiniteFourierLedger.lean",
+   "D0PstarSourceWeilOddTailGraphOperator.lean",
+   "D0PstarSourceWeilOddTailResidual.lean"
   ]
  },
  {
@@ -2152,18 +2180,6 @@
    "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
    "D0PstarSourceWeilOddTailGraphOperator.lean",
    "D0PstarSourceWeilSesquilinearForm.lean"
-  ]
- },
- {
-  "atom": "smul_smul",
-  "n_files": 6,
-  "files": [
-   "AbstractCoboundaryLedger.lean",
-   "CCMFiniteWeilEtaNonzero.lean",
-   "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarOddTailDividedDifference13.lean",
-   "H2aPenaltyCoercivity.lean",
-   "NormalizedTrackingRateTransfer.lean"
   ]
  },
  {
@@ -2428,18 +2444,6 @@
    "D0PstarMuntzGalerkinResidualCrosswalk.lean",
    "D0PstarPhysicalFourierEnergyControl.lean",
    "D0PstarProjectedMellinCoordinate.lean"
-  ]
- },
- {
-  "atom": "Pi.smul_apply",
-  "n_files": 6,
-  "files": [
-   "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarShiftedArchFormDomain.lean",
-   "D0PstarShiftedArchModeDomain.lean",
-   "D0PstarShiftedArchSesquilinearForm.lean",
-   "D0PstarSourceWeilFiniteFourierLedger.lean",
-   "D0PstarSourceWeilOddTailGraphOperator.lean"
   ]
  },
  {
@@ -3634,6 +3638,16 @@
   ]
  },
  {
+  "atom": "Finset.smul_sum",
+  "n_files": 4,
+  "files": [
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarOddTailDividedDifference13.lean",
+   "D0PstarSourceWeilOddTailResidual.lean",
+   "EStarWindowedMellinCrosswalk.lean"
+  ]
+ },
+ {
   "atom": "Complex.conj_eq_iff_im.mp",
   "n_files": 4,
   "files": [
@@ -4615,12 +4629,21 @@
   ]
  },
  {
-  "atom": "Finset.smul_sum",
+  "atom": "add_smul",
   "n_files": 3,
   "files": [
    "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarOddTailDividedDifference13.lean",
-   "EStarWindowedMellinCrosswalk.lean"
+   "D0PstarSourceLowBandModeDecay.lean",
+   "D0PstarSourceWeilOddTailResidual.lean"
+  ]
+ },
+ {
+  "atom": "Finset.sum_add_distrib",
+  "n_files": 3,
+  "files": [
+   "D0PstarCCMFiniteSourceResidual.lean",
+   "D0PstarSourceWeilOddTailResidual.lean",
+   "WeightedSpectralTempleCore.lean"
   ]
  },
  {
@@ -6276,19 +6299,11 @@
   ]
  },
  {
-  "atom": "add_smul",
+  "atom": "RingHom.id_apply",
   "n_files": 2,
   "files": [
    "D0PstarCCMFiniteSourceResidual.lean",
-   "D0PstarSourceLowBandModeDecay.lean"
-  ]
- },
- {
-  "atom": "Finset.sum_add_distrib",
-  "n_files": 2,
-  "files": [
-   "D0PstarCCMFiniteSourceResidual.lean",
-   "WeightedSpectralTempleCore.lean"
+   "D0PstarSourceWeilOddTailResidual.lean"
   ]
  },
  {
@@ -6913,6 +6928,14 @@
   "files": [
    "D0PstarSourceWeilOddTailGraphOperator.lean",
    "SimpleEvenGroundSectorCriterion.lean"
+  ]
+ },
+ {
+  "atom": "inner_orthogonalProjection_eq_of_mem_right",
+  "n_files": 2,
+  "files": [
+   "D0PstarSourceWeilOddTailGraphOperator.lean",
+   "D0PstarSourceWeilOddTailResidual.lean"
   ]
  },
  {
@@ -10054,13 +10077,6 @@
   ]
  },
  {
-  "atom": "RingHom.id_apply",
-  "n_files": 1,
-  "files": [
-   "D0PstarCCMFiniteSourceResidual.lean"
-  ]
- },
- {
   "atom": "sum_inner",
   "n_files": 1,
   "files": [
@@ -12581,13 +12597,6 @@
   ]
  },
  {
-  "atom": "inner_orthogonalProjection_eq_of_mem_right",
-  "n_files": 1,
-  "files": [
-   "D0PstarSourceWeilOddTailGraphOperator.lean"
-  ]
- },
- {
   "atom": "orthogonalProjection_comp",
   "n_files": 1,
   "files": [
@@ -12627,6 +12636,27 @@
   "n_files": 1,
   "files": [
    "D0PstarSourceWeilOddTailGraphOperator.lean"
+  ]
+ },
+ {
+  "atom": "WithLp.ofLp_add",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTailResidual.lean"
+  ]
+ },
+ {
+  "atom": "WithLp.ofLp_smul",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTailResidual.lean"
+  ]
+ },
+ {
+  "atom": "ContinuousLinearMap.le_opNorm",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTailResidual.lean"
   ]
  },
  {

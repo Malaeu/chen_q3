@@ -157,7 +157,7 @@
   "knowledge": {
     "dossier": 171,
     "excluded_source": 113,
-    "journal_entry": 1817,
+    "journal_entry": 1819,
     "kill": 121,
     "move": 26,
     "postmortem": 1,
@@ -230,8 +230,8 @@
     "axiom_dependencies": 10,
     "degraded_sources": 1,
     "doomed_files": 0,
-    "file_states": 3391,
-    "import_edges": 5672,
+    "file_states": 3392,
+    "import_edges": 5673,
     "namewatch_candidates": 0,
     "numeric": {},
     "numeric_checks": 0,
@@ -281,10 +281,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-11T03:04:55+00:00",
-      "id": "OBS_97a0522f697af319bcd3",
+      "generated_at": "2026-08-11T03:28:21+00:00",
+      "id": "OBS_43ad4d7c77596f7ceef7",
       "schema_version": 6,
-      "source_commit": "b0021ffed97261be16114701a5a1bfd011fdbc8e",
+      "source_commit": "c0da3d745f5d83a46e9d58b73423f5c3007619b2",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -294,7 +294,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 9,
-        "source_generated_at": "2026-08-11T03:01:03+00:00",
+        "source_generated_at": "2026-08-11T03:27:15+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -302,7 +302,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-11 03:04 UTC",
+        "source_generated_at": "2026-08-11 03:28 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -310,7 +310,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-11 03:04 UTC",
+        "source_generated_at": "2026-08-11 03:28 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -318,7 +318,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-11 03:04 UTC",
+        "source_generated_at": "2026-08-11 03:28 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
@@ -334,23 +334,23 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-11 03:04 UTC",
+        "source_generated_at": "2026-08-11 03:28 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3391,
-        "source_generated_at": "2026-08-11 03:04 UTC",
+        "record_count": 3392,
+        "source_generated_at": "2026-08-11 03:28 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
       {
         "health_status": "READY",
         "parse_status": "PARSED",
-        "record_count": 3391,
-        "source_generated_at": "2026-08-11 03:04 UTC",
+        "record_count": 3392,
+        "source_generated_at": "2026-08-11 03:28 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -360,7 +360,7 @@
     "taint": {
       "CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303,
       "IMPORT_BOUNDARY": 1,
-      "NO_OBSERVED_ISSUE": 2087
+      "NO_OBSERVED_ISSUE": 2088
     },
     "wall_states": 5
   },
@@ -632,11 +632,11 @@
         "id": "POST_JUNE_IDENTIFICATION",
         "lexical_count": 0,
         "matched_paths": [
-          "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-          "qmd://q3-docs/docs/routeb-bus/manifest.md"
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-twolevel-spectral-ladder/archive/routeb-bus-legacy-001-009-2026-07-12/007-poisson-residual-channel-audit-answer.md",
+          "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md",
+          "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -665,20 +665,20 @@
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16scaledremainderdirecthornercertsmoke.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16biasedscaledremainderintervalpayload.lean",
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16collapseddegree0rawd17signedfactorrows.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 36,
+        "result_count": 34,
         "status": "PASS",
-        "vector_count": 29
+        "vector_count": 27
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "b0021ffed97261be16114701a5a1bfd011fdbc8e",
+    "source_commit": "c0da3d745f5d83a46e9d58b73423f5c3007619b2",
     "status": "PASS"
   },
-  "source_commit": "b0021ffed97261be16114701a5a1bfd011fdbc8e",
+  "source_commit": "c0da3d745f5d83a46e9d58b73423f5c3007619b2",
   "tool_manifest": {
     "family_count": 7,
     "schema": "q3_tool_manifest.v2",
