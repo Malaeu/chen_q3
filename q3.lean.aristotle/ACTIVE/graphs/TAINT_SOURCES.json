@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "sensor_kind": "TAINT_ORIGIN_PROJECTION",
-  "generated_at": "2026-08-10 21:40 UTC",
+  "generated_at": "2026-08-11 03:04 UTC",
   "root_dirty": [],
   "boundary_dirty": [
     "IMPORT::Q3.Clean.AxiomsTier1"
@@ -4576,12 +4576,14 @@
     "Q3/Proofs/RouteB/D0PstarSourceArchDiagonalCCMWRCrosswalk.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchFiniteFormCCMWRCrosswalk.lean": [],
+    "Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchHyperbolicKernel.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchKernelModeProductL1.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchModePairingIntegrable.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchModePairingKernel.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierL2Isometry.lean": [],
+    "Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceModeCosineCCMQKernel.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourcePrimeFiniteFormCCMPrimeCrosswalk.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourcePrimeModePairing.lean": [],
@@ -4592,6 +4594,8 @@
     "Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFourierLedger.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean": [],
+    "Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean": [],
+    "Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean": [],
     "Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean": [],
     "Q3/Proofs/RouteB/D0PstarVModeFourierFormula.lean": [],

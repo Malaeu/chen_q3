@@ -40,6 +40,45 @@
 
 ---
 
+## 2026-08-11 — B3.0AK: explicit coercivity closed, residual kept separate
+
+**Развилка:** ждать named Yoshida/Suzuki crosswalk, импортировать sampled
+cutoff, или собрать coercivity напрямую из уже доказанных production
+high-frequency, low-band, bounded-form и closure legs.
+
+**Выбрали:** symbolic band radius, literal max/ceil cutoff, exact high/low
+integral split and absorption of `W02` and `Prime`, yielding
+`SourceWeilOddTailAmbientCoercive i R (1/2)` for every pair index.
+
+**Почему:** все source-locked поставщики уже kernel-checked, а их прямая
+композиция даёт более сильную uniform theorem shape без внешнего численного
+порога и без смены топологии.
+
+**Что отвергли и почему:** sampled `mpmath` cutoff не имеет универсального
+квантора; finite `N=480/960` floors не доказывают infinite closed tail;
+mode-wise triangle bound теряет uniformity; paper-name wrapper создавал бы
+неподтверждённую атрибуцию при уже существующем прямом доказательстве.
+
+**Техника:** explicit norm target, exponential safe-frequency radius,
+max/ceil natural cutoff, Parseval low-band budget, weighted-integral split,
+bounded-operator Cauchy--Schwarz and graph-closure transfer.
+
+**Следующий ход:** построить bounded literal source residual into the same odd
+tail; затем инстанцировать B3.0AI actual inverse-weighted correction и доказать
+настоящий `OddTailGradedResolventBound13` estimate.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean`
+· `docs/routeB_bus/GOAL057_B3_0AK_SOURCE_WEIL_ODD_TAIL_EXPLICIT_COERCIVITY_CLOSEOUT_2026-08-11.md`
+· Goal 057 A55.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka не вызывалась, потому
+что theorem shape и все production seams были закрыты локально. Аргумент —
+quantified integral split plus explicit bounded-leg absorption, проверенный
+Lean и external production consumer.
+
+---
+
 ## 2026-08-11 — B3.0AK: low-band mass made uniform over the algebraic odd tail
 
 **Развилка:** оценивать по одной нечётной моде и затем надеяться на

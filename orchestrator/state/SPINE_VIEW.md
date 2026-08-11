@@ -40,6 +40,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | id | date | state | target | boundary | next |
 |---|---|---|---|---|---|
+| EXP-G057-B3-0AK-20260811 | 2026-08-11 | selected | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING |
 | EXP-G057-B3-0AJ-20260810 | 2026-08-10 | selected | SOURCE_ODD_OUTER_BLOCK_POSITIVE_INVERTIBLE_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING |
 
 ## AUTOPSY wall map and namewatch
@@ -57,20 +58,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `38`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `40`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `36`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_5845f0805cfb6010b421` at `2026-08-10T21:40:30+00:00` from `15b8d78a2969`
+- snapshot: `OBS_97a0522f697af319bcd3` at `2026-08-11T03:04:55+00:00` from `b0021ffed972`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3387` / `5666`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2083}`; doomed: `0`
+- file states/import edges: `3391` / `5672`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2087}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `53`; observed seconds total/mean/median: `58689` / `1150.8` / `1082`; lower bounds: `1`
@@ -79,14 +80,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 9 | 2026-08-10T21:31:52+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-10 21:40 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-10 21:40 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-10 21:40 UTC | no | PARSED | READY |
+| `autopsy_map` | 9 | 2026-08-11T03:01:03+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-11 03:04 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-11 03:04 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-11 03:04 UTC | no | PARSED | READY |
 | `proshka_timing` | 53 | 2026-08-08T18:40:13+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-10 21:40 UTC | no | PARSED | READY |
-| `taint_graph` | 3387 | 2026-08-10 21:40 UTC | no | PARSED | READY |
-| `taint_sources` | 3387 | 2026-08-10 21:40 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-11 03:04 UTC | no | PARSED | READY |
+| `taint_graph` | 3391 | 2026-08-11 03:04 UTC | no | PARSED | READY |
+| `taint_sources` | 3391 | 2026-08-11 03:04 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -99,7 +100,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
-- CHANNEL_RUNTIME active phase record is 111 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
+- CHANNEL_RUNTIME active phase record is 116 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
@@ -112,7 +113,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-10 |
-| `docs/Progress_Log.md` | 2026-08-10 |
+| `docs/Progress_Log.md` | 2026-08-11 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
 | `docs/RECORDING_RULES.md` | 2026-08-09 |
 | `docs/cartographer/TOOLS.yaml` | 2026-08-10 |
@@ -311,12 +312,12 @@ _121 records, 87 cross-file aliases. Query: `./orchestrator/kb.py search <term>`
 - [applied] 11. Sign-Uncertainty Surcharge
 
 ## 6. Recent branch decisions (Progress_Log.md)
+- 2026-08-11 — B3.0AK: explicit coercivity closed, residual kept separate
+- 2026-08-11 — B3.0AK: low-band mass made uniform over the algebraic odd tail
+- 2026-08-11 — B3.0AK: sampled `t₀` replaced by a symbolic Lean cutoff
+- 2026-08-11 — B3.0AK: algebraic Yoshida tail reaches the literal graph closure
+- 2026-08-11 — Yoshida Lemma 3: printed normalization beats the OCR reconstruction
 - 2026-08-10 — STARTUP_V5: goal-scoped delivery and one Codex tool authority
-- 2026-08-10 — literal odd-tail outer block in the graph Hilbert norm
-- 2026-08-10 — actual outer inverse kept visible in the Schur correction
-- 2026-08-10 — odd source cancellation before the resolvent norm
-- 2026-08-10 — topology lemma retained, but resolvent theorem took priority
-- 2026-08-10 — пути картографа: считать от себя, а не держать вторую копию
 - 2026-08-09 — манифест соединён с обратным поиском
 
 ## 7. Recent insights (INSIGHTS.md head)

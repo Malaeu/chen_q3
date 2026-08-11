@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 195,
-  "declarations": 1626,
-  "in_docs": 661,
-  "in_lemma_db": 1626,
+  "files_scanned": 199,
+  "declarations": 1681,
+  "in_docs": 673,
+  "in_lemma_db": 1681,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -8880,6 +8880,56 @@
       "orphan": false
     },
     {
+      "kind": "lemma",
+      "name": "b3_0ak_one_fourth_le_norm_sourceArchimedeanArgument",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+      "line": 24,
+      "signature": "private lemma b3_0ak_one_fourth_le_norm_sourceArchimedeanArgument (t : ℝ) : (1 / 4 : ℝ) ≤ ‖(1 / 4 : ℂ) + Complex.I * ((Real.pi * t : ℝ) : ℂ)‖",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "b3_0ak_sourceArchimedeanStieltjesCorrection_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+      "line": 36,
+      "signature": "private lemma b3_0ak_sourceArchimedeanStieltjesCorrection_le (t : ℝ) : |(((1 / 4 : ℂ) + Complex.I * ((Real.pi * t : ℝ) : ℂ))).re / (2 * ‖(1 / 4 : ℂ) + Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ ^ 2)| ≤ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "b3_0ak_sourceArchimedeanStieltjesRemainder_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+      "line": 65,
+      "signature": "private lemma b3_0ak_sourceArchimedeanStieltjesRemainder_le (t : ℝ) : 1 / (4 * ‖(1 / 4 : ℂ) + Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ ^ 2) ≤ 4",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanMultiplier_ge_logNorm_sub_explicitShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+      "line": 87,
+      "signature": "theorem sourceArchimedeanMultiplier_ge_logNorm_sub_explicitShift (t : ℝ) : Real.log ‖(1 / 4 : ℂ) + Complex.I * ((Real.pi * t : ℝ) : ℂ)‖ - (|Real.log Real.pi| + 6) ≤ sourceArchimedeanMultiplier t",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanMultiplier_ge_of_exp_shift_le_abs",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+      "line": 134,
+      "signature": "theorem sourceArchimedeanMultiplier_ge_of_exp_shift_le_abs (C t : ℝ) (ht : Real.exp (C + |Real.log Real.pi| + 6) ≤ |t|) : C ≤ sourceArchimedeanMultiplier t",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "integral_exp_neg_mul_cos_Ioi",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHyperbolicKernel.lean",
@@ -9745,6 +9795,206 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLogWindowFourierL2Isometry.lean",
       "line": 105,
       "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_mode (i : PairIndex) (n : ℤ) : ((sourceLogWindowFourierL2Isometry i (V_n_m i n) : MeasureTheory.Lp ℂ 2 (volume : Measure ℝ)) : ℝ → ℂ) =ᵐ[(volume : Measure ℝ)] (fun t : ℝ => 𝓕 (logWindowZeroExtendedMode i n) t)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddAmbientMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 25,
+      "signature": "noncomputable def sourceWeilOddAmbientMode (i : PairIndex) (k : ℕ) : H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "b3_0ak_invSqrtTwo_pair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 30,
+      "signature": "private theorem b3_0ak_invSqrtTwo_pair : (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) + (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) * (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) = 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddAmbientMode_orthonormal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 43,
+      "signature": "theorem sourceWeilOddAmbientMode_orthonormal (i : PairIndex) : Orthonormal ℂ (sourceWeilOddAmbientMode i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceLogWindowFourierL2Isometry_apply_oddAmbientMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 81,
+      "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_oddAmbientMode (i : PairIndex) (k : ℕ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilOddAmbientMode i k) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] (fun t : ℝ => (((Real.sqrt 2 : ℝ) : ℂ)⁻¹) * (𝓕 (logWindowZeroExtendedMode i (k + 1 : ℕ)) t - 𝓕 (logWindowZeroExtendedMode i (-((k + 1 : ℕ) : ℤ))) t))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_fourier_logWindowZeroExtendedMode_le_lowBand_inv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 132,
+      "signature": "theorem norm_fourier_logWindowZeroExtendedMode_le_lowBand_inv (i : PairIndex) (n : ℤ) (T t : ℝ) (hT : 0 ≤ T) (hn : 2 * L_m i * (T + 1) ≤ |(n : ℝ)|) (ht : |t| ≤ T) : ‖𝓕 (logWindowZeroExtendedMode i n) t‖ ≤ 2 * Real.sqrt (L_m i) / (Real.pi * |(n : ℝ)|)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddAmbientModeFourier_le_lowBand_inv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 204,
+      "signature": "theorem norm_sourceWeilOddAmbientModeFourier_le_lowBand_inv (i : PairIndex) (k : ℕ) (T t : ℝ) (hT : 0 ≤ T) (hk : 2 * L_m i * (T + 1) ≤ (k + 1 : ℝ)) (ht : |t| ≤ T) : ‖((Real.sqrt 2 : ℝ) : ℂ)⁻¹ * (𝓕 (logWindowZeroExtendedMode i (k + 1 : ℕ)) t - 𝓕 (logWindowZeroExtendedMode i (-((k + 1 : ℕ) : ℤ))) t)‖ ≤ 4 * Real.sqrt (L_m i) / (Real.pi * (k + 1 : ℝ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddFourierModeFunction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 260,
+      "signature": "noncomputable def sourceWeilOddFourierModeFunction (i : PairIndex) (k : ℕ) (t : ℝ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddFourierFinsupp",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 267,
+      "signature": "noncomputable def sourceWeilOddFourierFinsupp (i : PairIndex) (c : ℕ →₀ ℂ) (t : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddFourierFinsupp_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 272,
+      "signature": "theorem norm_sourceWeilOddFourierFinsupp_sq_le (i : PairIndex) (c : ℕ →₀ ℂ) (t : ℝ) : ‖sourceWeilOddFourierFinsupp i c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ∑ k ∈ c.support, ‖sourceWeilOddFourierModeFunction i k t‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddFourierFinsupp_sq_le_lowBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 309,
+      "signature": "theorem norm_sourceWeilOddFourierFinsupp_sq_le_lowBand (i : PairIndex) (c : ℕ →₀ ℂ) (T t : ℝ) (hT : 0 ≤ T) (hc : ∀ k ∈ c.support, 2 * L_m i * (T + 1) ≤ (k + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilOddFourierFinsupp i c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ∑ k ∈ c.support, (4 * Real.sqrt (L_m i) / (Real.pi * (k + 1 : ℝ))) ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "b3_0ak_one_div_add_one_sq_le_telescoping",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 326,
+      "signature": "private theorem b3_0ak_one_div_add_one_sq_le_telescoping (x : ℝ) (hx : 0 < x) : 1 / (x + 1) ^ 2 ≤ 1 / x - 1 / (x + 1)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "b3_0ak_sum_range_inv_shift_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 333,
+      "signature": "private theorem b3_0ak_sum_range_inv_shift_sq_le (R N : ℕ) (hR : 0 < R) : (∑ k ∈ Finset.range N, 1 / ((R : ℝ) + (k : ℝ) + 1) ^ 2) ≤ 1 / (R : ℝ) - 1 / ((R : ℝ) + (N : ℝ))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sum_support_inv_nat_shift_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 368,
+      "signature": "theorem sum_support_inv_nat_shift_sq_le (R : ℕ) (hR : 0 < R) (s : Finset ℕ) : (∑ k ∈ s, 1 / ((R : ℝ) + (k : ℝ) + 1) ^ 2) ≤ 1 / (R : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddFourierFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 392,
+      "signature": "noncomputable def sourceWeilOddFourierFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ℂ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddAmbientFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 398,
+      "signature": "noncomputable def sourceWeilOddAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : H_m i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddAmbientFinsuppShift_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 403,
+      "signature": "theorem norm_sourceWeilOddAmbientFinsuppShift_sq (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ‖sourceWeilOddAmbientFinsuppShift i R c‖ ^ 2 = ∑ k ∈ c.support, ‖c k‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceLogWindowFourierL2Isometry_apply_oddAmbientFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 432,
+      "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_oddAmbientFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilOddAmbientFinsuppShift i R c) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilOddFourierFinsuppShift i R c",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddFourierFinsuppShift_sq_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 518,
+      "signature": "theorem norm_sourceWeilOddFourierFinsuppShift_sq_le (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (t : ℝ) : ‖sourceWeilOddFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ∑ k ∈ c.support, ‖sourceWeilOddFourierModeFunction i (R + k) t‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_sourceWeilOddFourierFinsuppShift_sq_le_lowBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 556,
+      "signature": "theorem norm_sourceWeilOddFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T t : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) (ht : |t| ≤ T) : ‖sourceWeilOddFourierFinsuppShift i R c t‖ ^ 2 ≤ (∑ k ∈ c.support, ‖c k‖ ^ 2) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_norm_sourceWeilOddFourierFinsuppShift_sq_le_lowBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean",
+      "line": 600,
+      "signature": "theorem integral_norm_sourceWeilOddFourierFinsuppShift_sq_le_lowBand (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) (T : ℝ) (hR : 0 < R) (hT : 0 ≤ T) (hcut : 2 * L_m i * (T + 1) ≤ (R + 1 : ℝ)) : (∫ t in Set.Icc (-T) T, ‖sourceWeilOddFourierFinsuppShift i R c t‖ ^ 2) ≤ ((2 * T) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (R : ℝ)))) * ‖sourceWeilOddAmbientFinsuppShift i R c‖ ^ 2",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
@@ -10711,6 +10961,306 @@
     },
     {
       "kind": "def",
+      "name": "SourceWeilOddTailAlgebraicCoercive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 29,
+      "signature": "def SourceWeilOddTailAlgebraicCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_oddMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 42,
+      "signature": "theorem sourceWeilGraphAmbient_oddMode (i : PairIndex) (n : ℕ) : sourceWeilGraphAmbient i (sourceWeilGraphOddMode i n) = ((Real.sqrt 2 : ℝ) : ℂ)⁻¹ • (V_n_m i (n + 1 : ℕ) - V_n_m i (-((n + 1 : ℕ) : ℤ)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphOddTailAlgebraic_low_fourier_vanish",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 55,
+      "signature": "theorem sourceWeilGraphOddTailAlgebraic_low_fourier_vanish (i : PairIndex) (R : ℕ) (x : SourceWeilGraphCarrier i) (hx : x ∈ Submodule.span ℂ (Set.range (fun k : ℕ => sourceWeilGraphOddMode i (R + k)))) (n : ℤ) (hn : n.natAbs ≤ R) : inner ℂ (V_n_m i n) (sourceWeilGraphAmbient i x) = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphOddTail_low_fourier_vanish",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 92,
+      "signature": "theorem sourceWeilGraphOddTail_low_fourier_vanish (i : PairIndex) (R : ℕ) (x : SourceWeilGraphOddTailCarrier i R) (n : ℤ) (hn : n.natAbs ≤ R) : inner ℂ (V_n_m i n) (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)) = 0",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "SourceWeilHighModeAmbientCoercive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 126,
+      "signature": "def SourceWeilHighModeAmbientCoercive (i : PairIndex) (R : ℕ) (mu : ℝ) : Prop",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailAmbientCoercive_of_highMode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 136,
+      "signature": "theorem sourceWeilOddTailAmbientCoercive_of_highMode (i : PairIndex) (R : ℕ) (mu : ℝ) (h : SourceWeilHighModeAmbientCoercive i R mu) : SourceWeilOddTailAmbientCoercive i R mu",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_self_re_eq_graph_diagonal_sub_shift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 150,
+      "signature": "theorem sourceWeilSesquilinearForm_self_re_eq_graph_diagonal_sub_shift (i : PairIndex) (x : SourceWeilGraphCarrier i) : (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re = (inner ℂ (sourceWeilShiftedGraphOperator i x) x).re - sourceWeilLowerBoundConstant i * ‖sourceWeilGraphAmbient i x‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailAmbientCoercive_of_algebraic",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean",
+      "line": 170,
+      "signature": "theorem sourceWeilOddTailAmbientCoercive_of_algebraic (i : PairIndex) (R : ℕ) (mu : ℝ) (h : SourceWeilOddTailAlgebraicCoercive i R mu) : SourceWeilOddTailAmbientCoercive i R mu",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailHighTarget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 30,
+      "signature": "noncomputable def sourceWeilOddTailHighTarget (i : PairIndex) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailBandRadius",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 36,
+      "signature": "noncomputable def sourceWeilOddTailBandRadius (i : PairIndex) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailCutoffScale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 43,
+      "signature": "noncomputable def sourceWeilOddTailCutoffScale (i : PairIndex) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTailCutoff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 53,
+      "signature": "noncomputable def sourceWeilOddTailCutoff (i : PairIndex) : ℕ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailHighTarget_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 56,
+      "signature": "theorem sourceWeilOddTailHighTarget_pos (i : PairIndex) : 0 < sourceWeilOddTailHighTarget i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailBandRadius_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 61,
+      "signature": "theorem sourceWeilOddTailBandRadius_pos (i : PairIndex) : 0 < sourceWeilOddTailBandRadius i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailCutoff_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 66,
+      "signature": "theorem sourceWeilOddTailCutoff_pos (i : PairIndex) : 0 < sourceWeilOddTailCutoff i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailCutoffScale_le_cutoff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 71,
+      "signature": "private theorem sourceWeilOddTailCutoffScale_le_cutoff (i : PairIndex) : sourceWeilOddTailCutoffScale i ≤ (sourceWeilOddTailCutoff i : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailCutoff_safeFrequency",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 80,
+      "signature": "theorem sourceWeilOddTailCutoff_safeFrequency (i : PairIndex) : 2 * L_m i * (sourceWeilOddTailBandRadius i + 1) ≤ (sourceWeilOddTailCutoff i + 1 : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailCutoff_lowBandBudget",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 92,
+      "signature": "theorem sourceWeilOddTailCutoff_lowBandBudget (i : PairIndex) : (sourceWeilOddTailHighTarget i + (|Real.log Real.pi| + Real.log 4 + 6)) * ((2 * sourceWeilOddTailBandRadius i) * ((4 * Real.sqrt (L_m i) / Real.pi) ^ 2 * (1 / (sourceWeilOddTailCutoff i : ℝ)))) ≤ 1 / 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 136,
+      "signature": "noncomputable def sourceWeilOddGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddGraphFinsuppShift_mem_span",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 141,
+      "signature": "theorem sourceWeilOddGraphFinsuppShift_mem_span (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : sourceWeilOddGraphFinsuppShift i R c ∈ Submodule.span ℂ (Set.range (fun k : ℕ => sourceWeilGraphOddMode i (R + k)))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilGraphAmbient_oddGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 149,
+      "signature": "theorem sourceWeilGraphAmbient_oddGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : sourceWeilGraphAmbient i (sourceWeilOddGraphFinsuppShift i R c) = sourceWeilOddAmbientFinsuppShift i R c",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "coeFn_sourceLogWindowFourierL2Isometry_apply_oddGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 163,
+      "signature": "theorem coeFn_sourceLogWindowFourierL2Isometry_apply_oddGraphFinsuppShift (i : PairIndex) (R : ℕ) (c : ℕ →₀ ℂ) : ((sourceLogWindowFourierL2Isometry i (sourceWeilGraphDomain i (sourceWeilOddGraphFinsuppShift i R c) : H_m i) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) =ᵐ[MeasureTheory.volume] sourceWeilOddFourierFinsuppShift i R c",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "integral_norm_sourceLogWindowFourierL2Isometry_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 180,
+      "signature": "theorem integral_norm_sourceLogWindowFourierL2Isometry_sq (i : PairIndex) (x : H_m i) : (∫ t : ℝ, ‖(((sourceLogWindowFourierL2Isometry i x : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) t)‖ ^ 2) = ‖x‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanShiftedSesquilinearForm_re_self_eq_integral_norm_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 209,
+      "signature": "theorem sourceArchimedeanShiftedSesquilinearForm_re_self_eq_integral_norm_sq (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : (sourceArchimedeanShiftedSesquilinearForm i x x).re = ∫ t : ℝ, (sourceArchimedeanMultiplier t + (|Real.log Real.pi| + Real.log 4 + 6)) * ‖(((sourceLogWindowFourierL2Isometry i (x : H_m i) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) t)‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "integrable_sourceArchimedeanShiftedMultiplier_mul_fourierNorm_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 242,
+      "signature": "theorem integrable_sourceArchimedeanShiftedMultiplier_mul_fourierNorm_sq (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : MeasureTheory.Integrable (fun t : ℝ => (sourceArchimedeanMultiplier t + (|Real.log Real.pi| + Real.log 4 + 6)) * ‖(((sourceLogWindowFourierL2Isometry i (x : H_m i) : MeasureTheory.Lp ℂ 2 (MeasureTheory.volume : MeasureTheory.Measure ℝ)) : ℝ → ℂ) t)‖ ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "weightedIntegral_ge_const_mul_total_sub_band",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 267,
+      "signature": "private theorem weightedIntegral_ge_const_mul_total_sub_band (F q : ℝ → ℝ) (T D : ℝ) (hFint : MeasureTheory.Integrable F) (hqFint : MeasureTheory.Integrable (fun t => q t * F t)) (hFnonneg : ∀ t, 0 ≤ F t) (hqnonneg : ∀ t, 0 ≤ q t) (houtside : ∀ t ∈ (Set.Icc (-T) T)ᶜ, D ≤ q t) : D * ((∫ t, F t) - ∫ t in Set.Icc (-T) T, F t) ≤ ∫ t, q t * F t",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceArchimedeanSesquilinearForm_re_self_lower_oddGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 308,
+      "signature": "theorem sourceArchimedeanSesquilinearForm_re_self_lower_oddGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (sourceWeilOddTailHighTarget i - 1 / 2) * ‖sourceWeilOddAmbientFinsuppShift i (sourceWeilOddTailCutoff i) c‖ ^ 2 ≤ (sourceArchimedeanSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilOddGraphFinsuppShift i (sourceWeilOddTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilOddGraphFinsuppShift i (sourceWeilOddTailCutoff i) c))).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilSesquilinearForm_re_self_lower_oddGraphFinsuppShift",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 450,
+      "signature": "theorem sourceWeilSesquilinearForm_re_self_lower_oddGraphFinsuppShift (i : PairIndex) (c : ℕ →₀ ℂ) : (1 / 2 : ℝ) * ‖sourceWeilOddAmbientFinsuppShift i (sourceWeilOddTailCutoff i) c‖ ^ 2 ≤ (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i (sourceWeilOddGraphFinsuppShift i (sourceWeilOddTailCutoff i) c)) (sourceWeilGraphDomain i (sourceWeilOddGraphFinsuppShift i (sourceWeilOddTailCutoff i) c))).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailAlgebraicCoercive_explicit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 517,
+      "signature": "theorem sourceWeilOddTailAlgebraicCoercive_explicit (i : PairIndex) : SourceWeilOddTailAlgebraicCoercive i (sourceWeilOddTailCutoff i) (1 / 2)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailAmbientCoercive_explicit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+      "line": 531,
+      "signature": "theorem sourceWeilOddTailAmbientCoercive_explicit (i : PairIndex) : SourceWeilOddTailAmbientCoercive i (sourceWeilOddTailCutoff i) (1 / 2)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "sourceWeilGraphSubmodule",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 32,
@@ -10965,7 +11515,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 277,
       "signature": "noncomputable def sourceWeilGraphOddTail (i : PairIndex) (R : ℕ) : Submodule ℂ (SourceWeilGraphCarrier i)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -11314,7 +11864,7 @@
       "name": "norm_fourier_logWindowZeroExtendedMode_le_far",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean",
       "line": 63,
-      "signature": "private theorem norm_fourier_logWindowZeroExtendedMode_le_far (i : PairIndex) (n : ℤ) (t : ℝ) (hfar : 1 < |t - (n : ℝ) / L_m i|) : ‖𝓕 (logWindowZeroExtendedMode i n) t‖ ≤ 1 / (Real.pi * Real.sqrt (L_m i) * |t - (n : ℝ) / L_m i|)",
+      "signature": "theorem norm_fourier_logWindowZeroExtendedMode_le_far (i : PairIndex) (n : ℤ) (t : ℝ) (hfar : 1 < |t - (n : ℝ) / L_m i|) : ‖𝓕 (logWindowZeroExtendedMode i n) t‖ ≤ 1 / (Real.pi * Real.sqrt (L_m i) * |t - (n : ℝ) / L_m i|)",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

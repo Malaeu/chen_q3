@@ -9,9 +9,9 @@
       "matched_paths": [
         "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-twolevel-spectral-ladder/archive/routeb-bus-legacy-001-009-2026-07-12/008-contract-v2-crosscheck-and-state-sync-answer.md",
         "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md"
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+        "qmd://q3-docs/docs/routeb-bus/manifest.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -29,7 +29,7 @@
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
       ],
       "query": "edge-sliver",
-      "result_count": 38,
+      "result_count": 40,
       "status": "PASS",
       "vector_count": 30
     },
@@ -41,15 +41,15 @@
         "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16scaledremainderdirecthornercertsmoke.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 34,
+      "result_count": 36,
       "status": "PASS",
-      "vector_count": 27
+      "vector_count": 29
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "15b8d78a296999e602fa279f955b6963d3e9e297",
+  "source_commit": "b0021ffed97261be16114701a5a1bfd011fdbc8e",
   "status": "PASS"
 }
