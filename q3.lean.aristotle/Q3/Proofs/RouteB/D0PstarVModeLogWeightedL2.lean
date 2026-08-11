@@ -60,7 +60,7 @@ private theorem norm_fourier_logWindowZeroExtendedMode_le_sqrt
       field_simp [hsqrt.ne']
       exact (Real.sq_sqrt (logLength_pos i).le).symm
 
-private theorem norm_fourier_logWindowZeroExtendedMode_le_far
+theorem norm_fourier_logWindowZeroExtendedMode_le_far
     (i : PairIndex) (n : ℤ) (t : ℝ)
     (hfar : 1 < |t - (n : ℝ) / L_m i|) :
     ‖𝓕 (logWindowZeroExtendedMode i n) t‖ ≤
@@ -345,6 +345,7 @@ theorem
         field_simp [ne_of_gt hden]
 
 #print axioms norm_fourier_logWindowZeroExtendedMode_le_resonanceSafe
+#print axioms norm_fourier_logWindowZeroExtendedMode_le_far
 #print axioms vModeLogGrowthEnvelope_mul_fourier_logWindowZeroExtendedMode_memLp
 
 end Q3.RouteB.D0Pstar

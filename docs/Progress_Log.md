@@ -40,6 +40,45 @@
 
 ---
 
+## 2026-08-11 — B3.0AK: low-band mass made uniform over the algebraic odd tail
+
+**Развилка:** оценивать по одной нечётной моде и затем надеяться на
+треугольник или сразу сохранить ортогональность произвольной конечной
+линейной комбинации хвоста.
+
+**Выбрали:** буквальный `Finsupp`-синтез нормированных antisymmetric modes,
+Parseval в ambient Hilbert space, конечномерный Cauchy--Schwarz и
+телескопическую оценку `Σ_{k∈support} 1/(R+k+1)^2 ≤ 1/R`.
+
+**Почему:** это даёт квантифицированную по всем coefficient supports оценку
+`∫_{-T}^T |Ff|² ≤ ε(T,R) ‖f‖²`, где
+`ε(T,R) = 2T (4√L/π)^2/R`; именно такой uniform input нужен для
+source-Weil coercivity, а не поточечная оценка отдельного столбца.
+
+**Что отвергли и почему:** отвергли сумму mode-wise норм по треугольнику —
+она вводит `ℓ¹`-норму коэффициентов и не контролируется ambient `L²`-нормой
+uniformly по размеру support; также не использовали finite-`N` sampling.
+
+**Техника:** publicized уже доказанный far-frequency envelope; построены
+orthonormal odd family, AE Fourier synthesis, Parseval, Finsupp
+Cauchy--Schwarz, telescoping inverse-square tail и set-integral transfer.
+
+**Следующий ход:** совместить эту low-band оценку с symbolic high-frequency
+нижней границей arch multiplier и bounded W02/Prime forms; выбрать явные
+`T, R, mu` и наполнить `SourceWeilOddTailAlgebraicCoercive`.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceLowBandModeDecay.lean` ·
+`integral_norm_sourceWeilOddFourierFinsuppShift_sq_le_lowBand` ·
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarVModeLogWeightedL2.lean` ·
+target build `Q3.Proofs.RouteB.D0PstarSourceLowBandModeDecay` PASS.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka не потреблялась,
+поскольку source theorem shape и все необходимые Mathlib seams были найдены
+локально.
+
+---
+
 ## 2026-08-11 — B3.0AK: sampled `t₀` replaced by a symbolic Lean cutoff
 
 **Развилка:** импортировать найденный `mpmath`-порог для digamma или вывести
