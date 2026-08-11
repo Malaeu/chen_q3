@@ -1,7 +1,16 @@
-# CONTROLLING REQUEST — GOAL 057 B3.0AO/AP CERTIFICATE ARCHITECTURE MINT
+# WITHDRAWN / DO NOT SEND — STALE-OLEAN CANONICAL-N0 PACKET
+
+The source-locked B3.0AP canonical-`N = 0` proof described below was
+invalidated by a forced clean source rebuild on 2026-08-11. Its green status
+came from a stale `.olean`; the corrected production proof preserves the
+literal all-`N` target and uses an explicit finite odd-mode-sum crosswalk.
+This packet is quarantined until it is rebuilt and byte-locked to the
+corrective proof commit. Do not send or adjudicate the stale content below.
+
+# RETIRED REQUEST — GOAL 057 B3.0AO/AP CERTIFICATE ARCHITECTURE MINT
 
 ```yaml
-call_class: DELEGATED_STRATEGIC_REVIEW
+call_class: WITHDRAWN_STALE_OLEAN_PACKET_DO_NOT_SEND
 boundary_type: MINT
 conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
 phase_id: PHASE_ROUTEB_G6_S2_K8_BRIDGE_2026_08_06

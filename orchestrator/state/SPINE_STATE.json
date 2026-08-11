@@ -157,8 +157,8 @@
   "knowledge": {
     "dossier": 171,
     "excluded_source": 113,
-    "journal_entry": 1825,
-    "kill": 121,
+    "journal_entry": 1827,
+    "kill": 122,
     "move": 26,
     "postmortem": 1,
     "status": "READY"
@@ -281,10 +281,10 @@
       }
     ],
     "snapshot": {
-      "generated_at": "2026-08-11T06:02:13+00:00",
-      "id": "OBS_5017872a7811477666d5",
+      "generated_at": "2026-08-11T07:39:06+00:00",
+      "id": "OBS_135d70ed5c47e285776a",
       "schema_version": 6,
-      "source_commit": "760e9106c2e784f328014e03246fa2f08c8daa5f",
+      "source_commit": "e5236c2f51a3fde96b7e0c965df0006949eb5e3b",
       "status": "COMPLETE"
     },
     "sorry_files": 0,
@@ -294,7 +294,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 9,
-        "source_generated_at": "2026-08-11T06:00:21+00:00",
+        "source_generated_at": "2026-08-11T07:32:12+00:00",
         "source_id": "autopsy_map",
         "stale": 0
       },
@@ -302,7 +302,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-11 06:02 UTC",
+        "source_generated_at": "2026-08-11 07:39 UTC",
         "source_id": "dependency_tree",
         "stale": 0
       },
@@ -310,7 +310,7 @@
         "health_status": "ZERO_COVERAGE",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-11 06:02 UTC",
+        "source_generated_at": "2026-08-11 07:39 UTC",
         "source_id": "numeric_checks",
         "stale": 0
       },
@@ -318,7 +318,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 10,
-        "source_generated_at": "2026-08-11 06:02 UTC",
+        "source_generated_at": "2026-08-11 07:39 UTC",
         "source_id": "proof_graph",
         "stale": 0
       },
@@ -334,7 +334,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 0,
-        "source_generated_at": "2026-08-11 06:02 UTC",
+        "source_generated_at": "2026-08-11 07:39 UTC",
         "source_id": "sorry_frontier",
         "stale": 0
       },
@@ -342,7 +342,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 3396,
-        "source_generated_at": "2026-08-11 06:02 UTC",
+        "source_generated_at": "2026-08-11 07:39 UTC",
         "source_id": "taint_graph",
         "stale": 0
       },
@@ -350,7 +350,7 @@
         "health_status": "READY",
         "parse_status": "PARSED",
         "record_count": 3396,
-        "source_generated_at": "2026-08-11 06:02 UTC",
+        "source_generated_at": "2026-08-11 07:39 UTC",
         "source_id": "taint_sources",
         "stale": 0
       }
@@ -634,9 +634,9 @@
         "matched_paths": [
           "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-          "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0e3-zero-extended-mode-cosine-correlation-ccm-qkernel-release-2026-08-08.md"
+          "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0-post-p-next-node-adjudication-2026-08-09.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-verdict-goal057-b3-0-post-p-next-node-adjudication-2026-08-09.md",
+          "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -654,7 +654,7 @@
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 39,
+        "result_count": 41,
         "status": "PASS",
         "vector_count": 30
       },
@@ -664,21 +664,21 @@
         "matched_paths": [
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationc1pointdecision.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffanalyticp0import.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 35,
+        "result_count": 34,
         "status": "PASS",
-        "vector_count": 30
+        "vector_count": 27
       }
     ],
     "schema": "q3_semantic_index_status.v1",
-    "source_commit": "760e9106c2e784f328014e03246fa2f08c8daa5f",
+    "source_commit": "e5236c2f51a3fde96b7e0c965df0006949eb5e3b",
     "status": "PASS"
   },
-  "source_commit": "760e9106c2e784f328014e03246fa2f08c8daa5f",
+  "source_commit": "e5236c2f51a3fde96b7e0c965df0006949eb5e3b",
   "tool_manifest": {
     "family_count": 7,
     "schema": "q3_tool_manifest.v2",

@@ -80,7 +80,8 @@ theorem coe_ccmFiniteShiftedFormDomainSynthesis
       ccmFiniteSynthesis i c := by
   rfl
 
-private theorem ccmFiniteShiftedFormDomainSynthesis_eq_sum
+/-- Public finite-mode expansion of the lifted CCM synthesis. -/
+theorem ccmFiniteShiftedFormDomainSynthesis_eq_sum
     (i : PairIndex) (c : CCMModeFinite i.N → ℂ) :
     ccmFiniteShiftedFormDomainSynthesis i c =
       ∑ j, c j •

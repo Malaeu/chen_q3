@@ -40,45 +40,44 @@
 
 ---
 
-## 2026-08-11 — B3.0AP: auxiliary N erased, exact corrected CCM receiver exposed
+## 2026-08-11 — B3.0AP correction: stale N=0 proof removed, all-N receiver rebuilt
 
-**Развилка:** оставить B3.0AO как универсальный `∀ N` receiver и сразу идти
-за внешней архитектурой сертификата либо отдельно проверить, действительно ли
-`PairIndex.N` меняет source-Weil graph/Schur object при фиксированном `m = 13`.
+**Развилка:** сохранить зелёный canonical-`N = 0` результат после обычного
+incremental build либо принудительно пересобрать source и проверить, существует
+ли доказательство без старого `.olean`.
 
-**Выбрали:** local-first definitional audit, один канонический auxiliary index
-`PairIndex.mk 13 0`, exact reduction all-`N` target ↔ canonical Schur positivity,
-затем exact corrected-CCM quadratic-energy receiver.
+**Выбрали:** forced clean source rebuild, затем literal all-`N` target и
+explicit finite odd-mode-sum crosswalk к exact corrected-CCM energy для каждого
+auxiliary `N`.
 
-**Почему:** Lean доказал `rfl`, что carrier, target-floor graph operator, Schur
-operator и Schur energy не зависят от `N`; следовательно `N = 0` здесь только
-представитель одного и того же source object, а не выбор конечного размера.
-Existing B3.0AF pullback затем буквально раскрывает head pairing в
-`ccmWeilMatFinite 13 sourceWeilOddTailCutoff`, сохраняя actual infinite-tail
-inverse correction.
+**Почему:** чистая сборка показала, что большие carrier/operator equalities
+timeout/переполняют recursion, а объявленный graph-head `rfl` не является
+source proof. Старый PASS пришёл из stale `.olean`. Малый mode-sum descent
+действительно kernel-checks и сохраняет исходный `∀ N` без ослабления.
 
-**Что отвергли и почему:** сохранившееся прежнее предположение, что равенство
-больших graph objects слишком дорого, отвергнуто после отдельного compiled
-consumer — в этом типе оно definitionally true; `N = 0` как нулевой head size,
-`N = 480/960` как замена symbolic cutoff, scalar inverse и выбрасывание
-`R† C⁻¹ R` отвергнуты как смена математического объекта.
+**Что отвергли и почему:** canonical `N = 0` reduction отвергнут как
+неподтверждённый source-кодом; также отвергнуты `N = 480/960` вместо symbolic
+cutoff, auxiliary `N` как head size, scalar inverse и выбрасывание
+`R† C⁻¹ R`, потому что они меняют математический объект.
 
-**Техника:** definitional equality audit, canonical representative, exact odd
-CCM form pullback, production-import consumer, declaration-registry backfill.
+**Техника:** clean rebuild, public finite-synthesis expansion, normalized odd
+mode-sum crosswalk, exact all-`N` form pairing, production-import consumer,
+declaration-registry repair (`8` missing / `7` stale → zero drift).
 
-**Следующий ход:** перелочить B3.0AO MINT на новый proof commit и после отдельного
-owner OK просить в том же живом phase chat источник/архитектуру ровно для
-nonnegativity canonical corrected CCM energy; знак по-прежнему не доказан.
+**Следующий ход:** перелочить B3.0AO MINT на corrected proof commit и после
+отдельного owner OK просить в том же живом phase chat архитектуру ровно для
+all-`N` corrected-energy nonnegativity; знак по-прежнему не доказан.
 
 **Адреса:**
 `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean`
 ·
-`docs/routeB_bus/GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_CLOSEOUT_2026-08-11.md`
+`docs/routeB_bus/GOAL057_B3_0AP_ALL_N_SCHUR_MATRIX_RECEIVER_CLOSEOUT_2026-08-11.md`
 · Goal 057 A60.
 
 **Чей вердикт и аргумент:** local Codex proof; Proshka не вызывалась. Аргумент —
-kernel-checked `rfl` устраняет искусственный auxiliary-`N` квантор, а exact
-pullback показывает оставшийся corrected matrix sign без предположения знака.
+forced clean build опровергает canonical reduction, а kernel-checked finite
+mode-sum crosswalk показывает exact all-`N` corrected matrix sign target без
+предположения самого знака.
 
 ---
 

@@ -1,4 +1,4 @@
-# Root Axiom Projection (auto) — 2026-08-11 06:02 UTC
+# Root Axiom Projection (auto) — 2026-08-11 07:39 UTC
 
 **Boundary:** compact root-to-axiom observability; not the file DAG and not proof truth.
 

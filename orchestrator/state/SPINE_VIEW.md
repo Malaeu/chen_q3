@@ -40,11 +40,11 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | id | date | state | target | boundary | next |
 |---|---|---|---|---|---|
+| EXP-G057-B3-0AP-CORRECTION-20260811 | 2026-08-11 | selected | STALE_OLEAN_CANONICAL_N0_LARGE_OPERATOR_REDUCTION | EXPERIMENTAL_NOT_PROMOTED | EXACT_ALL_N_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE |
 | EXP-G057-B3-0AN-20260811 | 2026-08-11 | selected | UNSHIFTED_OR_C0_SHIFTED_ACTUAL_INFINITE_SCHUR_STRICT_LOWER_BOUND_MISSING | EXPERIMENTAL_NOT_PROMOTED | EXACT_TARGET_FLOOR_FINITE_SCHUR_POSITIVITY_CERTIFICATE_MISSING |
 | EXP-G057-B3-0AM-20260811 | 2026-08-11 | selected | ODD_TAIL_GRADED_RESOLVENT_BOUND13_MISSING | EXPERIMENTAL_NOT_PROMOTED | UNSHIFTED_OR_C0_SHIFTED_ACTUAL_INFINITE_SCHUR_STRICT_LOWER_BOUND_MISSING |
 | EXP-G057-B3-0AL-20260811 | 2026-08-11 | selected | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING | EXPERIMENTAL_NOT_PROMOTED | ODD_TAIL_GRADED_RESOLVENT_BOUND13_MISSING |
 | EXP-G057-B3-0AK-20260811 | 2026-08-11 | selected | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING |
-| EXP-G057-B3-0AJ-20260810 | 2026-08-10 | selected | SOURCE_ODD_OUTER_BLOCK_POSITIVE_INVERTIBLE_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING |
 
 ## AUTOPSY wall map and namewatch
 - events / structured: `9` / `6`
@@ -61,15 +61,15 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `35`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `41`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_5017872a7811477666d5` at `2026-08-11T06:02:13+00:00` from `760e9106c2e7`
+- snapshot: `OBS_135d70ed5c47e285776a` at `2026-08-11T07:39:06+00:00` from `e5236c2f51a3`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
@@ -83,14 +83,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 9 | 2026-08-11T06:00:21+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-11 06:02 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-11 06:02 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-11 06:02 UTC | no | PARSED | READY |
+| `autopsy_map` | 9 | 2026-08-11T07:32:12+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-11 07:39 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-11 07:39 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-11 07:39 UTC | no | PARSED | READY |
 | `proshka_timing` | 53 | 2026-08-08T18:40:13+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-11 06:02 UTC | no | PARSED | READY |
-| `taint_graph` | 3396 | 2026-08-11 06:02 UTC | no | PARSED | READY |
-| `taint_sources` | 3396 | 2026-08-11 06:02 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-11 07:39 UTC | no | PARSED | READY |
+| `taint_graph` | 3396 | 2026-08-11 07:39 UTC | no | PARSED | READY |
+| `taint_sources` | 3396 | 2026-08-11 07:39 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -103,7 +103,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
-- CHANNEL_RUNTIME active phase record is 119 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
+- CHANNEL_RUNTIME active phase record is 121 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
@@ -130,11 +130,12 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 |---|---|---|---|
 | PO3_SQUARE_2D3_ABSOLUTE_ROW_MASS_CONTROL | `PO3-square.2d3.absolute-row-mass-control` as an unconditional consequ | live |  |
 
-**object** (9)
+**object** (10)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
 | 031_DIRECTIVE | BAND_ZERO_CANDIDATE | killed |  |
+| G057_B3_0AP_CANONICAL_N0_REDUCTION_STALE_OLEAN | B3.0AP canonical N=0 equality of source graph carrier, target-floor gr | killed | B3.0AP explicit finite odd-mode-sum crosswalk and corrected CCM energy for every auxili... |
 | INSTRUMENT_GUARDS_2026_07_27 | GLOBAL_SELF_FOURIER_CLAIM | killed |  |
 | ROUTEB_C1_COMPLETED_ZETA0_SPECIAL_VALUE | completedRiemannZeta₀ as a direct zero carrier for centered Xi | repaired | Use xi(s) = (1/2)*s*(s-1)*completedRiemannZeta₀(s) + 1/2. |
 | ROUTEB_ESTAR_MUNTZ_V1_RAW_ZETA_POLE_VALUE | Raw pointwise riemannZeta(w) * Mellin(h)(w) at w = 1 in EStarMuntzCont | killed | Use ZetaMellinReg with pole value deriv (Mellin h) 1 and retain the raw-product corolla... |
@@ -270,7 +271,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_121 records, 87 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_122 records, 90 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |
@@ -315,7 +316,7 @@ _121 records, 87 cross-file aliases. Query: `./orchestrator/kb.py search <term>`
 - [applied] 11. Sign-Uncertainty Surcharge
 
 ## 6. Recent branch decisions (Progress_Log.md)
-- 2026-08-11 — B3.0AP: auxiliary N erased, exact corrected CCM receiver exposed
+- 2026-08-11 — B3.0AP correction: stale N=0 proof removed, all-N receiver rebuilt
 - 2026-08-11 — B3.0AO: all-N m=13 Schur receiver, sign still open
 - 2026-08-11 — B3.0AN: target-floor tail inverted, exact finite Schur sign isolated
 - 2026-08-11 — B3.0AM: exact shifted Schur positivity closed, strict c0 kept open

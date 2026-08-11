@@ -173,6 +173,41 @@ private theorem sourceWeilOddSynthesis13_apply
         (ccmOddCoefficientIsometry N a) :=
   rfl
 
+private def sourceWeilOddIndex13 (N : ℕ) : PairIndex :=
+  ⟨13, N, by norm_num⟩
+
+/-- The normalized odd synthesis is the literal sum of antisymmetric source
+mode pairs.  This public expansion is the cheap graph/finite-source crosswalk
+used by downstream exact receivers; it avoids relying on a massive
+definitional reduction through the matrix isometry. -/
+theorem sourceWeilOddSynthesis13_eq_normalized_mode_sum
+    (N : ℕ) (a : EuclideanSpace ℂ (Fin N)) :
+    sourceWeilOddSynthesis13 N a =
+      ∑ r : Fin N, a r •
+        ((((Real.sqrt 2 : ℝ) : ℂ)⁻¹) •
+          (sourceArchimedeanModeInShiftedFormDomain
+              (sourceWeilOddIndex13 N) (r.1 + 1 : ℕ) -
+            sourceArchimedeanModeInShiftedFormDomain
+              (sourceWeilOddIndex13 N) (-((r.1 + 1 : ℕ) : ℤ)))) := by
+  classical
+  rw [sourceWeilOddSynthesis13_apply]
+  rw [ccmFiniteShiftedFormDomainSynthesis_eq_sum]
+  change
+    (∑ j : CCMModeFinite N,
+      (∑ r : Fin N, ccmOddBasisVector N r j * a r) •
+        sourceArchimedeanModeInShiftedFormDomain
+          (sourceWeilOddIndex13 N) (ccmModeFinite N j)) = _
+  simp_rw [Finset.sum_smul]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro r _hr
+  simp [ccmOddBasisVector]
+  simp_rw [sub_mul, sub_smul]
+  rw [Finset.sum_sub_distrib]
+  simp [ccmOddPositiveFinite, ccmNegFinite, ccmModeFinite,
+    smul_sub, smul_smul, mul_comm]
+  congr 2 <;> congr 1 <;> omega
+
 /-- The exact sesquilinear source-Weil form pulled back to the normalized odd
 coefficient carrier at `m = 13`. -/
 theorem sourceWeilOddFormPullback13
