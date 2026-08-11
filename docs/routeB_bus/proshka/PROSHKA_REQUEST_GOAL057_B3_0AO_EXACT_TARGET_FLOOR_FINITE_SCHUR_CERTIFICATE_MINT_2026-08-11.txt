@@ -1,16 +1,8 @@
-# WITHDRAWN / DO NOT SEND — STALE-OLEAN CANONICAL-N0 PACKET
-
-The source-locked B3.0AP canonical-`N = 0` proof described below was
-invalidated by a forced clean source rebuild on 2026-08-11. Its green status
-came from a stale `.olean`; the corrected production proof preserves the
-literal all-`N` target and uses an explicit finite odd-mode-sum crosswalk.
-This packet is quarantined until it is rebuilt and byte-locked to the
-corrective proof commit. Do not send or adjudicate the stale content below.
-
-# RETIRED REQUEST — GOAL 057 B3.0AO/AP CERTIFICATE ARCHITECTURE MINT
+# READY / NOT SENT — GOAL 057 B3.0AO/AP ALL-N SCHUR SIGN ARCHITECTURE MINT
 
 ```yaml
-call_class: WITHDRAWN_STALE_OLEAN_PACKET_DO_NOT_SEND
+packet_status: READY_NOT_SENT_OWNER_OK_REQUIRED
+call_class: DELEGATED_STRATEGIC_REVIEW
 boundary_type: MINT
 conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
 phase_id: PHASE_ROUTEB_G6_S2_K8_BRIDGE_2026_08_06
@@ -24,61 +16,92 @@ phase_key:
 source_lock:
   repo: Malaeu/chen_q3
   branch: rh_clean
-  commit: 34983ff56ca854de817d8ef3fba182912a5d2b41
-  previous_commit: 760e9106c2e784f328014e03246fa2f08c8daa5f
-  previous_math_commit: 9c922699411323b86fd0e841439c89a8fe2f49ab
+  commit: eea6515259ec667c8ad298befcd7f9c12cefb92b
+  previous_commit: e5236c2f51a3fde96b7e0c965df0006949eb5e3b
+  correction_commit: eea6515259ec667c8ad298befcd7f9c12cefb92b
 scope:
   route: CHALLENGER_NOT_RH
   bus_010: VOID
   goal_055: HOLD
   h4a1b: OPEN
   n480: HOLD
+  checkpoints_closed: 0
+  checkpoints_remaining: 10
   px_rh_claim: NOT_MADE
 ```
 
-Before the verdict, fetch `rh_clean` and verify the locked commit.  Also fetch
-`q3.lean.aristotle/docs/ARSENAL_CARDS_v1.md` at SHA-256
-`018dbf6b5be6f21b2346ac29bf910d7c898d0352b72f9b67cfddf6865243839d`
-and the pending `docs/routeB_bus/proshka/ARSENAL_MANDATE_2026-08-04.md` at
-SHA-256
-`2167a1f530fecb71c0af2af96ae7414f7b98ee36afedefd8f176cee605d38f4a`.
-If any fetch or hash fails, fail closed instead of issuing a deep verdict.
-Apply the card DUALs and cite the card ID for any kill they instantiate.
+Before reasoning, fetch the locked commit on `rh_clean` and verify every file
+hash below. If the commit or any hash does not match, fail closed and return
+`SOURCE_LOCK_FAILED`; do not issue a mathematical verdict from another tree.
 
-## Why this is a MINT boundary
-
-B3.0AN closed the local infinite-tail algebra. B3.0AO fixed the honest all-`N`
-kernel receiver and exact scalar/full-block equivalences. B3.0AP then proved
-in Lean that, at fixed source cell `m = 13`, the carrier, target-floor graph
-operator, Schur operator and Schur energy are definitionally independent of
-auxiliary `PairIndex.N`. It reduced the all-`N` target to one canonical source
-object and exposed its exact corrected CCM energy at the symbolic source
-cutoff. A new proof-grade certificate architecture is still required for the
-remaining sign. This is not an ordinary goal-close review and not a request to
-bless finite numerics. The phase key is unchanged; continue this one living
-phase chat.
-
-## New kernel-checked facts
-
-The B3.0AN production file, SHA-256
-`71703cfc566d9f3e6556e8888285b723b26c698036f820b6329c38c59167756c`,
-proves for every `i` and every `0 ≤ c0 < mu`:
+## Locked sources
 
 ```text
-((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) * ‖x‖^2
-  ≤ Re ⟪sourceWeilC0ShiftedOddTailOperator i R c0 x, x⟫
+117bac393863bc1a86dbfac6bca350ad28223dd17d045f39a8def5d09f04933c
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReceiver.lean
+
+71703cfc566d9f3e6556e8888285b723b26c698036f820b6329c38c59167756c
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean
+
+48d5f17bc4d6094db69fd52ad36376bc3062eaaeb678d0c2e862911319435fd8
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean
+
+986af3c3bf027abc3eb43bb84bfad61681bb031f9cc5107163fc13b5ead14b38
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddFormPullback13.lean
+
+41cf3fba00babfe8228c46ecfa68fe3732600460ae75957dff966933a78e2df8
+  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchSesquilinearFormFiniteRestriction.lean
+
+bcab845d9814e5a3734709b4b0a98c217bddf7598cf267c8b3a716adbb1fc1d7
+  q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AP_ALL_N_SCHUR_MATRIX_RECEIVER_CLOSEOUT_2026-08-11.md
+
+018dbf6b5be6f21b2346ac29bf910d7c898d0352b72f9b67cfddf6865243839d
+  q3.lean.aristotle/docs/ARSENAL_CARDS_v1.md
+
+2167a1f530fecb71c0af2af96ae7414f7b98ee36afedefd8f176cee605d38f4a
+  docs/routeB_bus/proshka/ARSENAL_MANDATE_2026-08-04.md
 ```
 
-whenever `SourceWeilOddTailAmbientCoercive i R mu` holds.  At
-`mu = 1/2`, `R = sourceWeilOddTailCutoff i` and
-`c0 = sourceWeilOddTargetFloor = 10^-58`, the actual closed infinite odd tail
-is positive and continuously invertible.  The file constructs the literal
-target-floor residual, actual `R* C^-1 R`, exact finite Schur complement and
-proves exact completion of the square.
+Apply the Arsenal card DUALs. Cite the card ID for every kill or admissible
+move that instantiates a card.
 
-The B3.0AO production receiver, SHA-256
-`117bac393863bc1a86dbfac6bca350ad28223dd17d045f39a8def5d09f04933c`,
-defines the exact target:
+## Critical correction — do not reuse the previous packet
+
+The earlier packet at commit `34983ff5...` claimed that, for fixed `m = 13`,
+the whole graph carrier, target-floor graph operator, Schur operator and Schur
+energy were definitionally independent of auxiliary `PairIndex.N`, and reduced
+the target to a canonical `N = 0` representative.
+
+That result is retracted. A forced clean source build showed that the alleged
+proof was not present in the source: the large reductions timed out or exceeded
+recursion depth, the graph-head `rfl` did not typecheck from source, and the
+earlier green result came from a stale `.olean`.
+
+The corrective commit does not weaken the target. It keeps the literal
+all-`N` predicate and proves the exact matrix receiver by explicit finite
+mode-sum expansion. Treat the following as killed:
+
+```text
+G057_B3_0AP_CANONICAL_N0_REDUCTION_STALE_OLEAN
+STALE_OLEAN_CANONICAL_N0_FALSE_POSITIVE
+```
+
+Do not cite or reconstruct:
+
+```lean
+sourceWeilOddCanonicalIndex13
+sourceWeilGraphCarrier_13_N_irrelevant
+sourceWeilC0ShiftedGraphOperator_13_N_irrelevant
+sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant
+sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant
+sourceWeilOddTargetFloorSchurPositive13_iff_canonical
+```
+
+They are absent from the corrected production source.
+
+## Exact kernel target
+
+B3.0AO defines the honest source-cell target:
 
 ```lean
 def SourceWeilOddTargetFloorSchurPositive13 : Prop :=
@@ -87,1530 +110,152 @@ def SourceWeilOddTargetFloorSchurPositive13 : Prop :=
       (PairIndex.mk 13 N (by norm_num))).IsPositive
 ```
 
-It proves symmetry, the scalar-energy and full-block receivers, and
-`N`-independence of the analytic cutoff, lower-bound constant and literal odd
-head synthesis.
+This target is still OPEN. No theorem in the locked tree proves it.
 
-The B3.0AP production matrix receiver, SHA-256
-`79f98c1c3da54ccef698c35df9acc7b3f59a5ab8d947deeca1003571dd533d90`,
-proves by definitional equality that the graph carrier, target-floor graph
-operator, exact Schur operator and Schur energy are the same for all auxiliary
-`N` at `m = 13`. It defines
+B3.0AP now proves exactly:
 
 ```lean
-sourceWeilOddCanonicalIndex13 := PairIndex.mk 13 0 (by norm_num)
-```
-
-and proves both
-
-```lean
-SourceWeilOddTargetFloorSchurPositive13 ↔
-  (sourceWeilOddTargetFloorSchurComplement
-    sourceWeilOddCanonicalIndex13).IsPositive
-```
-
-and an exact iff with the canonical corrected CCM quadratic energy: the
-`ccmWeilMatFinite 13 sourceWeilOddTailCutoff` form minus the target-floor
-scalar form minus the actual infinite-tail inverse-weighted correction.
-
-The value `N = 0` is only a canonical auxiliary representative. It is not a
-zero-dimensional head: the head size remains
-`sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13`.
-
-Lean, target/full builds, external consumer, 10/10 new declarations, 204/204
-Route B files, 102/102 tests, strict Spine and three SQLite checks pass. Public
-axioms are only `propext`, `Classical.choice`, `Quot.sound`.
-
-## Exact desired conclusion
-
-Select a source-compatible proof architecture whose first missing
-kernel-facing sign is exactly the canonical corrected energy:
-
-```lean
-∀ q : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13,
-  0 ≤ ((∑ j, ∑ k,
-      star ((ccmOddCoefficientIsometry
-        (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
-        (Q3.RouteB.ccmWeilMatFinite 13
-          (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
-          j k : ℂ) *
-        (ccmOddCoefficientIsometry
-          (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) k) -
-    (sourceWeilOddTargetFloor : ℂ) * inner ℂ q q -
-    inner ℂ
-      (oddTailInverseWeightedCorrection
-        (sourceWeilOddTargetFloorInverseWeightedData
-          sourceWeilOddCanonicalIndex13) q) q).re
-```
-
-B3.0AP already proves that this exact statement is equivalent to:
-
-```lean
-SourceWeilOddTargetFloorSchurPositive13
-```
-
-The attached receiver has proved that auxiliary `PairIndex.N` does not change
-this source object at fixed `m = 13`. A proof at the canonical representative
-is therefore exact, not a fixed-`N` surrogate. If your architecture first
-proves another equivalent theorem, give the exact Lean conversion into the
-canonical corrected energy and then into the target predicate. Do not read
-canonical `N = 0` as the head dimension, and do not widen the target to all
-`i` unless the attached source really supplies it.
-
-After this finite sign, a separate literal odd head-plus-tail form-core bridge
-is still required before any whole odd-space `10^-58` floor.  Do not claim that
-later bridge here.
-
-## Normalized blocker fingerprint
-
-```yaml
-source_object: sourceWeilC0ShiftedGraphOperator at c0=10^-58 on the exact source-Weil graph carrier
-terminal_consumer: m=13 odd source-Weil constant floor, later Goal057 numerator bridge
-missing_implication: exact canonical corrected CCM energy nonnegativity, hence SourceWeilOddTargetFloorSchurPositive13
-preserved_invariants:
-  - literal source-Weil form and graph topology
-  - exact infinite closed tail and its actual inverse
-  - c0 fixed at 10^-58
-  - odd parity normalization
-  - no finite-to-infinite extrapolation
-quantifier_scope: one canonical auxiliary representative, kernel-proved equivalent to all N at fixed m=13
-domain: exact Euclidean head at the proved analytic tail cutoff plus actual closed infinite odd tail
-blocker_id: EXACT_CANONICAL_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE_MISSING
-```
-
-The critical mismatch is concrete:
-
-1. `sourceWeilOddTailCutoff i` is a `Nat.ceil` of a noncomputable real
-   expression containing exact operator norms and `Real.exp`.  The current
-   generator cannot materialize its head dimension as a concrete matrix.
-2. Existing Arb evidence in
-   `PHASE4_RESULTS_2026-08-10.md`
-   (`d76cad68e0e3e96ad3c757c986c53605f780d34a60d23707bf920dbf2a530f35`)
-   shows corrected-head PASS for `R=70` at finite cuts
-   `N=120,240,480,960`, but its own script
-   (`c4e0f59e08da9bd0fe2d0f898c2860123b261eb819d7c97b2b6c09c30f67878a`)
-   states that modes above `N` are absent and the result is not an infinite
-   certificate.
-3. B3.0AK proves the actual infinite tail only at the symbolic analytic
-   cutoff, not at `R=70`.  Therefore the existing 70-by-70 corrected-head PASS
-   is not yet a certificate for the attached exact Schur operator.
-4. B3.0AP proves that the all-`N` object is exactly one canonical object and
-   rewrites its Schur energy as the corrected CCM expression at the symbolic
-   cutoff. This removes an artificial quantifier but does not establish sign.
-
-## Candidate theorem shapes to adjudicate
-
-### A — concrete cutoff plus proof-producing finite certificate
-
-Derive a source theorem at a concrete natural cutoff `R0`, identify the exact
-Schur entries with a computable finite matrix, and import a rational/Arb LDLT
-certificate into Lean.  Numerical `R=70` is evidence only; the tail theorem at
-that cutoff must be proved, not inferred from stabilization.
-
-### B — nested Schur reduction
-
-Prove an exact associativity/monotonicity decomposition reducing the symbolic
-head to a small concrete head plus an analytically positive intermediate
-block.  State the missing intermediate estimate exactly; do not hide it as
-"the tail is positive".
-
-### C — analytic finite-head sign
-
-Prove the symbolic finite Schur sign from source inequalities without
-enumerating its dimension.  Name the decisive inequality and show why it is
-strong enough after subtracting `10^-58`.
-
-### D — source-faithful representation shift
-
-Use a genuinely form-orthogonal finite head or Birman--Schwinger/inertia
-representation only if you provide the exact source crosswalk and explain how
-it removes rather than renames the missing sign.
-
-Do not pad the choice set.  Kill candidates that merely rename the same
-missing estimate.
-
-## Forbidden shortcuts
-
-- no `N=480/960` extrapolation, Aitken, fitted convergence or stable-pivot
-  promotion;
-- no interpretation of canonical auxiliary `N=0` as a zero-dimensional head;
-- no substitution of the 70-head finite-cut matrix for the exact symbolic
-  Schur operator without a theorem connecting them;
-- no moving `c0`, parity convention, tail cutoff or source form after seeing
-  a result;
-- no scalar replacement for the actual tail inverse;
-- no pointwise multiplier positivity in place of the source form;
-- no Hilbert-density-as-form-core inference;
-- no Bus 010, Goal 055 release, route promotion, PX claim or RH claim.
-
-## Required operative response
-
-Return one markdown artifact whose first line is exactly one of:
-
-```text
-# STATUS: PROVED
-# STATUS: CONDITIONAL
-# STATUS: OPEN
-# STATUS: FATAL
-```
-
-Immediately after that first line, emit the machine-readable YAML block below.
-Then give the concise ROUTE MAP, FINAL PROPOSAL, STRONGEST ATTACK, one CODEX
-DIRECTIVE and META CLOSEOUT required by the canonical Proshka system prompt.
-Every mathematical claim must carry both a scope tag
-`ABSTRACT | FINITE_CELL | COFINAL_FAMILY` and a verifier tag
-`LEAN | ARB_INTERVAL | PAPER | CONDITIONAL`.
-
-Inside the YAML, return exactly one machine-operative class:
-
-```text
-TRY_<route_id>
-KILL_<route_or_family_id>
-RUN_<test_id>
-OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM
-```
-
-This packet is not a PX/RH request, so the fourth class should not occur.
-Do not return `OWNER_FORK` or ask the owner to choose mathematics.
-
-If `TRY`, provide:
-
-1. one exact Lean-facing theorem statement;
-2. exact source dependencies and object/cutoff crosswalk;
-3. a proof architecture detailed enough for Codex to start locally;
-4. the cheapest source-faithful killer before production edits;
-5. why the selected route is not a finite surrogate;
-6. the rejected routes and the mathematical reason each dies.
-
-If `RUN`, include a frozen outcome map that chooses the next machine action
-without a second review.  If `KILL`, give a source-faithful obstruction and a
-named rollback target.
-
-The first block must have this exact schema:
-
-```yaml
-verdict_code:
-operative_class:
-cognitive_operator_used: REPRESENTATION_SHIFT | COUNTEREXAMPLE_HUNT | DUALIZE | BOUNDARY_CASE | UNIT_AUDIT | MINIMAL_LEMMA | LITERATURE_BRIDGE | ABANDON_ROUTE
-source_lock_verified:
-arsenal_deck_verified:
-arsenal_mandate_status:
-selected_theorem_shape:
-exact_lean_statement:
-required_suppliers:
-proof_architecture:
-cheapest_decisive_test:
-precommitted_outcome_map:
-rejected_routes_and_why:
-non_surrogate_argument:
-scope_boundary:
-next_machine_action:
-rh_claim: NOT_MADE
-```
-
----
-
-# BYTE-LOCKED SOURCE CONTEXT
-
-
-## Git log
-
-34983ff5 [MacOS][rh_clean][Proof] Canonicalize the exact m=13 Schur matrix receiver
-760e9106 [MacOS][rh_clean][Review] Relock B3.0AO mint to exact all-N receiver
-9c922699 [MacOS][rh_clean][Proof] Fix the exact m=13 all-N Schur certificate receiver
-
-
-## File: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean
-
-import Q3.Proofs.RouteB.D0PstarSourceWeilShiftedOddHeadSchur
-
-set_option linter.mathlibStandardSet false
-set_option maxHeartbeats 1200000
-set_option synthInstance.maxHeartbeats 300000
-
-noncomputable section
-
-open Complex
-
-namespace Q3.RouteB.D0Pstar
-
-/-!
-# Exact target-floor reduction for the source-Weil odd block
-
-This file removes the large auxiliary lower-bound shift from the actual graph
-operator and replaces it by the pre-registered target floor `10⁻⁵⁸`.  The
-explicit B3.0AK tail estimate and the independent weighted-energy lower bound
-combine to control the full graph norm, so the actual `c₀`-shifted infinite
-tail is positive and continuously invertible.
-
-The file then constructs the literal `c₀` residual, actual inverse-weighted
-correction and exact finite Schur complement, and proves completion of the
-square.  It does not assert that the finite Schur complement is positive; that
-remaining sign is exactly the next quantitative certificate obligation.
--/
-
-noncomputable def sourceWeilC0ShiftedGraphOperator
-    (i : PairIndex) (c0 : ℝ) :
-    SourceWeilGraphCarrier i →L[ℂ] SourceWeilGraphCarrier i :=
-  sourceWeilShiftedGraphOperator i -
-    (((sourceWeilLowerBoundConstant i + c0 : ℝ) : ℂ) •
-      ((sourceWeilGraphAmbient i).adjoint.comp
-        (sourceWeilGraphAmbient i)))
-
-theorem inner_sourceWeilC0ShiftedGraphOperator
-    (i : PairIndex) (c0 : ℝ) (x y : SourceWeilGraphCarrier i) :
-    inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y =
-      sourceWeilSesquilinearForm i
-        (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i y) -
-        (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i x)
-          (sourceWeilGraphAmbient i y) := by
-  rw [sourceWeilC0ShiftedGraphOperator,
-    ContinuousLinearMap.sub_apply, inner_sub_left]
-  simp only [ContinuousLinearMap.coe_smul', Pi.smul_apply,
-    ContinuousLinearMap.comp_apply, inner_smul_left, Complex.conj_ofReal]
-  rw [ContinuousLinearMap.adjoint_inner_left]
-  rw [inner_sourceWeilShiftedGraphOperator_eq_source]
-  push_cast
-  ring
-
-theorem inner_sourceWeilC0ShiftedGraphOperator_self
-    (i : PairIndex) (c0 : ℝ) (x : SourceWeilGraphCarrier i) :
-    (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) x).re =
-      (sourceWeilSesquilinearForm i
-        (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re -
-        c0 * ‖sourceWeilGraphAmbient i x‖ ^ 2 := by
-  rw [inner_sourceWeilC0ShiftedGraphOperator]
-  have hinner :
-      (inner ℂ (sourceWeilGraphAmbient i x)
-        (sourceWeilGraphAmbient i x)).re =
-          ‖sourceWeilGraphAmbient i x‖ ^ 2 := by
-    simpa using
-      (inner_self_eq_norm_sq (𝕜 := ℂ) (sourceWeilGraphAmbient i x))
-  simp only [sub_re, mul_re, Complex.ofReal_re, Complex.ofReal_im,
-    zero_mul, sub_zero, hinner]
-
-theorem sourceWeilC0ShiftedGraphOperator_isSymmetric
-    (i : PairIndex) (c0 : ℝ) :
-    (sourceWeilC0ShiftedGraphOperator i c0).IsSymmetric := by
-  intro x y
-  change inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y =
-    inner ℂ x (sourceWeilC0ShiftedGraphOperator i c0 y)
-  calc
-    inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y =
-        sourceWeilSesquilinearForm i
-            (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i y) -
-          (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i x)
-            (sourceWeilGraphAmbient i y) :=
-      inner_sourceWeilC0ShiftedGraphOperator i c0 x y
-    _ = star
-        (sourceWeilSesquilinearForm i
-            (sourceWeilGraphDomain i y) (sourceWeilGraphDomain i x) -
-          (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i y)
-            (sourceWeilGraphAmbient i x)) := by
-      change _ = (starRingEnd ℂ)
-        (sourceWeilSesquilinearForm i
-            (sourceWeilGraphDomain i y) (sourceWeilGraphDomain i x) -
-          (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i y)
-            (sourceWeilGraphAmbient i x))
-      rw [map_sub, map_mul, Complex.conj_ofReal, inner_conj_symm]
-      rw [sourceWeilSesquilinearForm_conj_symm]
-      rfl
-    _ = star (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 y) x) := by
-      rw [inner_sourceWeilC0ShiftedGraphOperator]
-    _ = inner ℂ x (sourceWeilC0ShiftedGraphOperator i c0 y) := by
-      change (starRingEnd ℂ)
-        (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 y) x) = _
-      rw [inner_conj_symm]
-
-noncomputable def sourceWeilC0ShiftedOddTailOperator
-    (i : PairIndex) (R : ℕ) (c0 : ℝ) :
-    SourceWeilGraphOddTailCarrier i R →L[ℂ]
-      SourceWeilGraphOddTailCarrier i R :=
-  (sourceWeilGraphOddTail i R).orthogonalProjection.comp
-    ((sourceWeilC0ShiftedGraphOperator i c0).comp
-      (sourceWeilGraphOddTail i R).subtypeL)
-
-theorem inner_sourceWeilC0ShiftedOddTailOperator
-    (i : PairIndex) (R : ℕ) (c0 : ℝ)
-    (x y : SourceWeilGraphOddTailCarrier i R) :
-    inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) y =
-      inner ℂ
-        (sourceWeilC0ShiftedGraphOperator i c0
-          (x : SourceWeilGraphCarrier i))
-        (y : SourceWeilGraphCarrier i) := by
-  exact (sourceWeilGraphOddTail i R).inner_orthogonalProjection_eq_of_mem_right
-    y (sourceWeilC0ShiftedGraphOperator i c0
-      (x : SourceWeilGraphCarrier i))
-
-theorem sourceWeilC0ShiftedOddTailOperator_graph_lower
-    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
-    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
-    (hc0_nonneg : 0 ≤ c0)
-    (hc0 : c0 < mu)
-    (x : SourceWeilGraphOddTailCarrier i R) :
-    ((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) * ‖x‖ ^ 2 ≤
-      (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re := by
-  let a := ‖sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)‖ ^ 2
-  let b := ‖sourceWeilGraphWeighted i (x : SourceWeilGraphCarrier i)‖ ^ 2
-  let e := (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re
-  let L := sourceWeilLowerBoundConstant i
-  have hmu : 0 < mu := hcoercive.1
-  have hL : 0 ≤ L := sourceWeilLowerBoundConstant_nonneg i
-  have hden : 0 < L + mu + 1 := by linarith
-  have ha : 0 ≤ a := sq_nonneg _
-  have hb : 0 ≤ b := sq_nonneg _
-  have hc : 0 < (mu - c0) / (L + mu + 1) := div_pos (sub_pos.mpr hc0) hden
-  have hambient : (mu - c0) * a ≤ e := by
-    dsimp only [e]
-    rw [inner_sourceWeilC0ShiftedOddTailOperator,
-      inner_sourceWeilC0ShiftedGraphOperator_self]
-    have h := hcoercive.2 x
-    dsimp only [a, e]
-    nlinarith
-  have hweighted : b - (L + c0) * a ≤ e := by
-    dsimp only [e]
-    rw [inner_sourceWeilC0ShiftedOddTailOperator,
-      inner_sourceWeilC0ShiftedGraphOperator_self]
-    have hshift := sourceWeilShiftedOddTailOperator_weighted_lower i R x
-    rw [inner_sourceWeilShiftedOddTailOperator] at hshift
-    have hraw :=
-      sourceWeilSesquilinearForm_self_re_eq_graph_diagonal_sub_shift
-        i (x : SourceWeilGraphCarrier i)
-    dsimp only [a, b, e, L] at hshift hraw ⊢
-    nlinarith
-  have hnorm : ‖x‖ ^ 2 = a + b := by
-    simpa [a, b] using
-      (sourceWeilGraph_norm_sq i (x : SourceWeilGraphCarrier i))
-  rw [hnorm]
-  have hconv :
-      ((L + c0 + 1) / (L + mu + 1)) * ((mu - c0) * a) +
-          ((mu - c0) / (L + mu + 1)) * (b - (L + c0) * a) ≤ e := by
-    have hleft : 0 ≤ (L + c0 + 1) / (L + mu + 1) := by
-      exact div_nonneg (by linarith) hden.le
-    have hright : 0 ≤ (mu - c0) / (L + mu + 1) := hc.le
-    have hsum :
-        (L + c0 + 1) / (L + mu + 1) +
-          (mu - c0) / (L + mu + 1) = 1 := by
-      field_simp [hden.ne']
-      ring
-    have h1 := mul_le_mul_of_nonneg_left hambient hleft
-    have h2 := mul_le_mul_of_nonneg_left hweighted hright
-    calc
-      ((L + c0 + 1) / (L + mu + 1)) * ((mu - c0) * a) +
-          ((mu - c0) / (L + mu + 1)) * (b - (L + c0) * a) ≤
-          ((L + c0 + 1) / (L + mu + 1)) * e +
-            ((mu - c0) / (L + mu + 1)) * e := add_le_add h1 h2
-      _ = e := by rw [← add_mul, hsum, one_mul]
-  have halg :
-      ((L + c0 + 1) / (L + mu + 1)) * ((mu - c0) * a) +
-          ((mu - c0) / (L + mu + 1)) * (b - (L + c0) * a) =
-        ((mu - c0) / (L + mu + 1)) * (a + b) := by
-    field_simp [hden.ne']
-    ring
-  rw [halg] at hconv
-  exact hconv
-
-theorem sourceWeilC0ShiftedOddTailOperator_isPositive
-    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
-    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
-    (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) :
-    (sourceWeilC0ShiftedOddTailOperator i R c0).IsPositive := by
-  rw [ContinuousLinearMap.isPositive_iff_complex]
-  intro x
-  constructor
-  · rw [inner_sourceWeilC0ShiftedOddTailOperator,
-      inner_sourceWeilC0ShiftedGraphOperator]
-    apply Complex.ext
-    · rfl
-    · change 0 =
-        (sourceWeilSesquilinearForm i
-            (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i))
-            (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i)) -
-          (c0 : ℂ) *
-            inner ℂ
-              (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))
-              (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))).im
-      have him :
-          (inner ℂ
-            (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))
-            (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))).im = 0 := by
-        exact inner_self_im (𝕜 := ℂ) _
-      rw [sub_im, mul_im, Complex.ofReal_re, Complex.ofReal_im,
-        sourceWeilSesquilinearForm_im_self_eq_zero, him]
-      ring
-  · exact (sourceWeilC0ShiftedOddTailOperator_graph_lower
-      i R mu c0 hcoercive hc0_nonneg hc0 x).trans'
-        (mul_nonneg
-          (div_nonneg (sub_nonneg.mpr hc0.le)
-            (by have := sourceWeilLowerBoundConstant_nonneg i; linarith))
-          (sq_nonneg ‖x‖))
-
-set_option maxHeartbeats 1200000 in
-theorem sourceWeilC0ShiftedOddTailOperator_isUnit
-    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
-    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
-    (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) :
-    IsUnit (sourceWeilC0ShiftedOddTailOperator i R c0) := by
-  let c : NNReal :=
-    ⟨(mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1),
-      div_nonneg (sub_nonneg.mpr hc0.le)
-        (by have := sourceWeilLowerBoundConstant_nonneg i; linarith)⟩
-  have hcReal :
-      0 < (mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1) := by
-    apply div_pos (sub_pos.mpr hc0)
-    have := sourceWeilLowerBoundConstant_nonneg i
-    linarith [hcoercive.1]
-  have hc : 0 < c := by exact_mod_cast hcReal
-  apply ContinuousLinearMap.isUnit_of_forall_le_norm_inner_map
-    (sourceWeilC0ShiftedOddTailOperator i R c0) hc
-  intro x
-  have hgraph := sourceWeilC0ShiftedOddTailOperator_graph_lower
-    i R mu c0 hcoercive hc0_nonneg hc0 x
-  change ‖x‖ ^ 2 * (c : ℝ) ≤
-    ‖inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x‖
-  calc
-    ‖x‖ ^ 2 * (c : ℝ) =
-        ((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) *
-          ‖x‖ ^ 2 := by
-      dsimp only [c]
-      push_cast
-      ring
-    _ ≤ (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re :=
-      hgraph
-    _ ≤ ‖inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x‖ :=
-      Complex.re_le_norm _
-
-theorem sourceWeilC0ShiftedOddTailOperator_isInvertible
-    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
-    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
-    (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) :
-    (sourceWeilC0ShiftedOddTailOperator i R c0).IsInvertible := by
-  obtain ⟨u, hu⟩ := sourceWeilC0ShiftedOddTailOperator_isUnit
-    i R mu c0 hcoercive hc0_nonneg hc0
-  exact ⟨ContinuousLinearEquiv.ofUnit u, hu⟩
-
-/-- The pre-registered G-LOWER target floor. -/
-noncomputable def sourceWeilOddTargetFloor : ℝ := 1 / (10 : ℝ) ^ 58
-
-theorem sourceWeilOddTargetFloor_nonneg : 0 ≤ sourceWeilOddTargetFloor := by
-  norm_num [sourceWeilOddTargetFloor]
-
-theorem sourceWeilOddTargetFloor_lt_half :
-    sourceWeilOddTargetFloor < (1 / 2 : ℝ) := by
-  norm_num [sourceWeilOddTargetFloor]
-
-theorem sourceWeilOddTargetFloorTail_isInvertible (i : PairIndex) :
-    (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
-      sourceWeilOddTargetFloor).IsInvertible := by
-  exact sourceWeilC0ShiftedOddTailOperator_isInvertible i
-    (sourceWeilOddTailCutoff i) (1 / 2) sourceWeilOddTargetFloor
-    (sourceWeilOddTailAmbientCoercive_explicit i)
-    sourceWeilOddTargetFloor_nonneg sourceWeilOddTargetFloor_lt_half
-
-theorem sourceWeilOddTargetFloorTail_isPositive (i : PairIndex) :
-    (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
-      sourceWeilOddTargetFloor).IsPositive := by
-  exact sourceWeilC0ShiftedOddTailOperator_isPositive i
-    (sourceWeilOddTailCutoff i) (1 / 2) sourceWeilOddTargetFloor
-    (sourceWeilOddTailAmbientCoercive_explicit i)
-    sourceWeilOddTargetFloor_nonneg sourceWeilOddTargetFloor_lt_half
-
-noncomputable def sourceWeilOddTargetFloorResidual
-    (i : PairIndex) :
-    SourceWeilOddHeadCoefficients i →L[ℂ]
-      SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i) :=
-  (sourceWeilGraphOddTail i (sourceWeilOddTailCutoff i)).orthogonalProjection.comp
-    ((sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor).comp
-      (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i)))
-
-theorem inner_sourceWeilOddTargetFloorResidual
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
-    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
-    inner ℂ (sourceWeilOddTargetFloorResidual i q) y =
-      inner ℂ
-        (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
-          (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q))
-        (y : SourceWeilGraphCarrier i) := by
-  exact (sourceWeilGraphOddTail i
-    (sourceWeilOddTailCutoff i)).inner_orthogonalProjection_eq_of_mem_right
-      y (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
-        (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q))
-
-noncomputable def sourceWeilOddTargetFloorInverseWeightedData
-    (i : PairIndex) :
-    OddTailInverseWeightedData
-      (SourceWeilOddHeadCoefficients i)
-      (SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) where
-  outerBlock := sourceWeilC0ShiftedOddTailOperator i
-    (sourceWeilOddTailCutoff i) sourceWeilOddTargetFloor
-  residual := sourceWeilOddTargetFloorResidual i
-  outerBlock_positive := sourceWeilOddTargetFloorTail_isPositive i
-  outerBlock_invertible := sourceWeilOddTargetFloorTail_isInvertible i
-
-noncomputable def sourceWeilOddTargetFloorHeadOperator
-    (i : PairIndex) :
-    SourceWeilOddHeadCoefficients i →L[ℂ]
-      SourceWeilOddHeadCoefficients i :=
-  (sourceWeilGraphOddHeadSynthesis i
-      (sourceWeilOddTailCutoff i)).adjoint.comp
-    ((sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor).comp
-      (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i)))
-
-theorem inner_sourceWeilOddTargetFloorHeadOperator
-    (i : PairIndex) (q r : SourceWeilOddHeadCoefficients i) :
-    inner ℂ (sourceWeilOddTargetFloorHeadOperator i q) r =
-      inner ℂ
-        (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
-          (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q))
-        (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) r) := by
-  rw [sourceWeilOddTargetFloorHeadOperator]
-  simp only [ContinuousLinearMap.comp_apply]
-  exact ContinuousLinearMap.adjoint_inner_left _ _ _
-
-noncomputable def sourceWeilOddTargetFloorSchurComplement
-    (i : PairIndex) :
-    SourceWeilOddHeadCoefficients i →L[ℂ]
-      SourceWeilOddHeadCoefficients i :=
-  oddTailSchurComplement
-    (sourceWeilOddTargetFloorHeadOperator i)
-    (sourceWeilOddTargetFloorInverseWeightedData i)
-
-theorem sourceWeilOddTargetFloorHeadOperator_eq_schur_add_correction
-    (i : PairIndex) :
-    sourceWeilOddTargetFloorHeadOperator i =
-      sourceWeilOddTargetFloorSchurComplement i +
-        oddTailInverseWeightedCorrection
-          (sourceWeilOddTargetFloorInverseWeightedData i) := by
-  exact operator_eq_oddTailSchurComplement_add_correction
-    (sourceWeilOddTargetFloorHeadOperator i)
-    (sourceWeilOddTargetFloorInverseWeightedData i)
-
-private theorem re_inner_map_add_self
-    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
-    (A : E →L[ℂ] E) (x y : E) :
-    (inner ℂ (A (x + y)) (x + y)).re =
-      (inner ℂ (A x) x).re + (inner ℂ (A x) y).re +
-        (inner ℂ (A y) x).re + (inner ℂ (A y) y).re := by
-  rw [map_add, inner_add_left, inner_add_right, inner_add_right]
-  simp only [add_re]
-  ring
-
-noncomputable def sourceWeilOddTargetFloorCorrector
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) :
-    SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i) :=
-  (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
-      sourceWeilOddTargetFloor).inverse
-    (sourceWeilOddTargetFloorResidual i q)
-
-noncomputable def sourceWeilOddTargetFloorBlockVector
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
-    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
-    SourceWeilGraphCarrier i :=
-  sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q +
-    (sourceWeilGraphOddTail i (sourceWeilOddTailCutoff i)).subtypeL y
-
-private theorem re_inner_block_completion
-    {Head Tail Ambient : Type*}
-    [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head]
-    [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail]
-    [NormedAddCommGroup Ambient] [InnerProductSpace ℂ Ambient]
-    (A : Ambient →L[ℂ] Ambient) (S : Head →L[ℂ] Ambient)
-    (U : Tail →L[ℂ] Ambient) (H : Head →L[ℂ] Head)
-    (D : OddTailInverseWeightedData Head Tail)
-    (hA : A.IsSymmetric)
-    (hhead : ∀ q, inner ℂ (H q) q = inner ℂ (A (S q)) (S q))
-    (hres : ∀ q y, inner ℂ (D.residual q) y = inner ℂ (A (S q)) (U y))
-    (htail : ∀ y, inner ℂ (A (U y)) (U y) = inner ℂ (D.outerBlock y) y)
-    (q : Head) (y : Tail) :
-    let v := D.outerBlock.inverse (D.residual q)
-    (inner ℂ (A (S q + U y)) (S q + U y)).re =
-      (inner ℂ
-        (oddTailSchurComplement H D q) q).re +
-      (inner ℂ (D.outerBlock (y + v)) (y + v)).re := by
-  dsimp only
-  let C := D.outerBlock
-  let R := D.residual
-  let v := C.inverse (R q)
-  have hinv : C v = R q := outerBlock_apply_inverse_residual D q
-  have hhead :
-      (inner ℂ (A (S q)) (S q)).re =
-        (inner ℂ (H q) q).re := congrArg Complex.re (hhead q).symm
-  have hres' :
-      (inner ℂ (A (S q)) (U y)).re = (inner ℂ (R q) y).re :=
-    congrArg Complex.re (hres q y).symm
-  have hresSymm :
-      (inner ℂ (A (U y)) (S q)).re = (inner ℂ (R q) y).re := by
-    calc
-      (inner ℂ (A (U y)) (S q)).re = (inner ℂ (U y) (A (S q))).re :=
-        congrArg Complex.re (hA (U y) (S q))
-      _ = (inner ℂ (A (S q)) (U y)).re :=
-        inner_re_symm (𝕜 := ℂ) (E := Ambient) _ _
-      _ = (inner ℂ (R q) y).re := hres'
-  have htail' :
-      (inner ℂ (A (U y)) (U y)).re = (inner ℂ (C y) y).re :=
-    congrArg Complex.re (htail y)
-  have hcorr :
-      (inner ℂ (oddTailInverseWeightedCorrection D q) q).re =
-        (inner ℂ (C v) v).re := by
-    calc
-      (inner ℂ (oddTailInverseWeightedCorrection D q) q).re =
-          (inner ℂ v (R q)).re :=
-        congrArg Complex.re (inner_oddTailInverseWeightedCorrection D q q)
-      _ = (inner ℂ v (C v)).re := by rw [hinv]
-      _ = (inner ℂ (C v) v).re :=
-        inner_re_symm (𝕜 := ℂ) (E := Tail) _ _
-  have hCv : (inner ℂ (C v) y).re = (inner ℂ (R q) y).re :=
-    congrArg (fun z => (inner ℂ z y).re) hinv
-  have hCy : (inner ℂ (C y) v).re = (inner ℂ (R q) y).re := by
-    calc
-      (inner ℂ (C y) v).re = (inner ℂ y (C v)).re :=
-        congrArg Complex.re (D.outerBlock_positive.isSymmetric y v)
-      _ = (inner ℂ (C v) y).re :=
-        inner_re_symm (𝕜 := ℂ) (E := Tail) _ _
-      _ = (inner ℂ (R q) y).re := hCv
-  rw [re_inner_map_add_self A (S q) (U y)]
-  rw [re_inner_map_add_self C y v]
-  rw [hhead, hres', hresSymm, htail', hCy, hCv]
-  simp only [oddTailSchurComplement, ContinuousLinearMap.sub_apply,
-    inner_sub_left, sub_re]
-  rw [hcorr]
-  ring
-
-noncomputable def sourceWeilOddTargetFloorBlockEnergy
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
-    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : ℝ :=
-  (inner ℂ
-    (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
-      (sourceWeilOddTargetFloorBlockVector i q y))
-    (sourceWeilOddTargetFloorBlockVector i q y)).re
-
-noncomputable def sourceWeilOddTargetFloorSchurEnergy
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) : ℝ :=
-  (inner ℂ (sourceWeilOddTargetFloorSchurComplement i q) q).re
-
-noncomputable def sourceWeilOddTargetFloorCompletedTailEnergy
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
-    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : ℝ :=
-  (inner ℂ
-    (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
-      sourceWeilOddTargetFloor (y + sourceWeilOddTargetFloorCorrector i q))
-    (y + sourceWeilOddTargetFloorCorrector i q)).re
-
-set_option maxHeartbeats 3000000 in
-/-- Exact completion of the square for the target-floor source block.  The
-only remaining sign is the finite exact Schur complement. -/
-theorem sourceWeilOddTargetFloor_block_completion
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
-    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
-    sourceWeilOddTargetFloorBlockEnergy i q y =
-      sourceWeilOddTargetFloorSchurEnergy i q +
-        sourceWeilOddTargetFloorCompletedTailEnergy i q y := by
-  unfold sourceWeilOddTargetFloorBlockEnergy
-  unfold sourceWeilOddTargetFloorSchurEnergy
-  unfold sourceWeilOddTargetFloorCompletedTailEnergy
-  unfold sourceWeilOddTargetFloorBlockVector
-  unfold sourceWeilOddTargetFloorCorrector
-  unfold sourceWeilOddTargetFloorSchurComplement
-  apply re_inner_block_completion
-    (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor)
-    (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i))
-    (sourceWeilGraphOddTail i (sourceWeilOddTailCutoff i)).subtypeL
-    (sourceWeilOddTargetFloorHeadOperator i)
-    (sourceWeilOddTargetFloorInverseWeightedData i)
-    (sourceWeilC0ShiftedGraphOperator_isSymmetric i sourceWeilOddTargetFloor)
-  · intro q'
-    exact inner_sourceWeilOddTargetFloorHeadOperator i q' q'
-  · intro q' y'
-    exact inner_sourceWeilOddTargetFloorResidual i q' y'
-  · intro y'
-    exact (inner_sourceWeilC0ShiftedOddTailOperator i
-      (sourceWeilOddTailCutoff i) sourceWeilOddTargetFloor y' y').symm
-
-#print axioms sourceWeilC0ShiftedGraphOperator
-#print axioms inner_sourceWeilC0ShiftedGraphOperator
-#print axioms sourceWeilC0ShiftedOddTailOperator_graph_lower
-#print axioms sourceWeilC0ShiftedOddTailOperator_isPositive
-#print axioms sourceWeilC0ShiftedOddTailOperator_isInvertible
-#print axioms sourceWeilOddTargetFloorTail_isInvertible
-#print axioms sourceWeilOddTargetFloorResidual
-#print axioms sourceWeilOddTargetFloorInverseWeightedData
-#print axioms sourceWeilOddTargetFloorSchurComplement
-#print axioms sourceWeilOddTargetFloor_block_completion
-
-end Q3.RouteB.D0Pstar
-
-
-## Content snapshot: docs/routeB_bus/GOAL057_B3_0AN_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_REDUCTION_CLOSEOUT_2026-08-11.md
-
-The authoritative file bytes are locked by SHA-256
-`d6fc0a03d8565d4a131b832ac68318f89b73f40abbdad14dbcd82d791ad9b0d1`.
-The boundary wording below is adapted to the present MINT request.
-
-# GOAL 057 · B3.0AN closeout — exact target-floor Schur reduction
-
-Date: 2026-08-11
-Route: `CHALLENGER_NOT_RH`
-Result: `GOAL057_B3_0AN_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_REDUCTION_PROVED`
-
-## What closed
-
-The production file
-`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean`
-removes the large auxiliary graph shift from the actual odd-tail block and
-works at the pre-registered target floor
-`sourceWeilOddTargetFloor = 1 / 10^58`.
-
-For a general `0 ≤ c₀ < μ` it proves the exact graph-norm lower bound
-
-```text
-((μ - c₀) / (sourceWeilLowerBoundConstant i + μ + 1)) * ‖x‖²
-  ≤ Re ⟪C_c₀ x, x⟫.
-```
-
-The proof combines two independent exact estimates: B3.0AK ambient
-coercivity `Q ≥ μ a`, and the shifted weighted-energy inequality
-`Q ≥ b - L a`.  Their convex combination controls the full graph norm
-`a + b` without retaining the auxiliary shift.
-
-At `μ = 1/2` and `c₀ = 10^-58` the file then constructs and proves:
-
-1. the actual positive, continuously invertible infinite odd-tail operator;
-2. the literal target-floor head-to-tail residual;
-3. the actual inverse-weighted correction `R† C_c₀⁻¹ R`;
-4. the exact finite target-floor head operator and Schur complement;
-5. the exact head = Schur + correction operator identity;
-6. completion of the square for every literal head coefficient and every
-   vector in the actual closed infinite odd tail.
-
-No scalar inverse, sampled cutoff, finite `N=480/960`, profile optimization,
-or numerical floor is used.
-
-## Why this child was selected
-
-B3.0AM left open whether subtracting the target floor would destroy tail
-invertibility.  The existing ambient coercivity and independent weighted
-lower bound contain complementary halves of the graph norm.  Combining them
-first proves the exact target-floor tail is invertible; only then is the Schur
-reduction lawful.  This removes the suspected infinite-tail obstruction and
-isolates the remaining sign as a finite exact certificate problem.
-
-## Validation
-
-```text
-Lean SHA-256:
-  71703cfc566d9f3e6556e8888285b723b26c698036f820b6329c38c59167756c
-Shape:
-  23084 bytes, 516 newline-terminated lines, final LF
-Public surface:
-  12 definitions + 16 theorems
-Private surface:
-  2 theorems
-Proof DB:
-  30 / 30 declarations proven; 202 / 202 Route B files registered
-Direct Lean:
-  PASS
-External production-import consumer:
-  PASS for target-tail invertibility, exact c0 pairing and block completion
-Negative scope judge:
-  finite Schur positivity export absent
-Target build:
-  PASS, 7817 jobs
-Full build:
-  PASS, 7817 jobs
-Direct Q3/Main.lean:
-  PASS
-scripts/q3_check.sh:
-  PASS
-Orchestrator tests:
-  102 / 102 PASS
-SQLite integrity:
-  knowledge.db, aristotle_proofs.db, observability.db all OK
-Public axiom profile:
-  propext, Classical.choice, Quot.sound
-Forbidden tokens:
-  no sorry, admit, axiom, unsafe, or native_decide
-```
-
-## Exact boundary
-
-This child does **not** prove
-`sourceWeilOddTargetFloorSchurComplement i` positive.  It proves that this
-finite exact operator is the only sign left in the target-floor block after
-the positive infinite tail has been completed away.  Its dimension is the
-symbolic source cutoff, not a substituted diagnostic `N`.  B3.0AO, included
-below, packages the exact all-auxiliary-`N`, `m = 13` receiver without proving
-that sign.
-
-Therefore the exact finite Schur positivity certificate, the literal odd
-form-core/density bridge, the whole odd-space `10^-58` floor, selected
-`kTrial` operator-domain membership, projection-leakage decay and the
-continuum numerator remain open.  The first coarse checkpoint and the
-ten-checkpoint ledger remain open at `0 / 10`.
-
-## Decision record
-
-- Chosen: the exact `c₀`-shifted graph operator, convex combination of ambient
-  and weighted lower bounds, actual infinite tail inverse, and exact finite
-  Schur completion.
-- **What was rejected and why:** directly subtracting the large shift without
-  graph coercivity could lose invertibility; a scalar inverse destroys the
-  block operator; `N=480/960` changes the object; and declaring the finite
-  Schur sign from completion alone would assume precisely the missing fact.
-- Feared failure: a second hidden shift, a sign error in the corrector, or
-  silently replacing the symbolic cutoff by a sampled matrix size.
-- Source of decision: local Codex proof and direct Lean verification; no new
-  Proshka call and no Aristotle submission.
-- Next minimal step: obtain a source-locked exact positivity certificate for
-  `SourceWeilOddTargetFloorSchurPositive13`, then prove the literal odd
-  head-plus-tail form-core bridge before claiming a whole-space floor.
-
-## ACTIONS LOG
-
-- reused B3.0AK ambient coercivity and the independent shifted weighted lower;
-- proved one source-locked production Lean module and exact completion;
-- validated direct Lean, target/full builds, direct main, q3_check, external
-  consumer, negative scope guard, proof registry, 102 tests, SQLite and
-  forbidden-token/axiom audits;
-- preserved the unrelated PDF and dependency-local package state;
-- made no Proshka call, Aristotle submission, N=480/N=960 run, route
-  promotion, Bus 010 action, Goal 055 release, PX claim, or RH claim.
-
-## Standing boundaries
-
-`CHALLENGER_NOT_RH` · `BUS_010 VOID` · `GOAL_055 HOLD` · `H4a1b OPEN` ·
-`N480 HOLD` · `PX_RH_CLAIM NOT_MADE`.
-
-
-## File: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReceiver.lean
-
-import Q3.Proofs.RouteB.D0PstarSourceWeilOddTargetFloorSchurReduction
-
-set_option linter.mathlibStandardSet false
-
-noncomputable section
-
-open Complex
-
-namespace Q3.RouteB.D0Pstar
-
-/-!
-# Exact receiver for the `m = 13` target-floor Schur certificate
-
-This file fixes the kernel-facing target left open by B3.0AN.  It proves that
-the exact finite Schur operator is symmetric, identifies positivity with the
-scalar Schur energy and with the full head--tail block energy, and packages the
-honest `m = 13` target with a universal quantifier over the auxiliary
-`PairIndex.N` coordinate.
-
-The symbolic analytic cutoff, its lower-bound constant, and the literal head
-synthesis are definitionally independent of that auxiliary coordinate at
-`m = 13`.  No equality of the large graph-carrier objects is asserted merely
-from this fact.
-
-The file does **not** prove `SourceWeilOddTargetFloorSchurPositive13`.  The
-remaining obligation is still an exact positivity certificate for the finite
-Schur energy.  No finite numerical section, form-core bridge, whole odd-space
-floor, Route B promotion, or RH claim is introduced here.
--/
-
-/-- The exact target-floor head compression is symmetric. -/
-theorem sourceWeilOddTargetFloorHeadOperator_isSymmetric
-    (i : PairIndex) :
-    (sourceWeilOddTargetFloorHeadOperator i).IsSymmetric := by
-  let S := sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i)
-  let A := sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
-  have hA : A.IsSymmetric :=
-    sourceWeilC0ShiftedGraphOperator_isSymmetric i sourceWeilOddTargetFloor
-  have h := hA.isSelfAdjoint.adjoint_conj S
-  simpa [sourceWeilOddTargetFloorHeadOperator, S, A,
-    ContinuousLinearMap.comp_assoc] using h.isSymmetric
-
-/-- Subtracting the positive inverse-weighted correction preserves symmetry. -/
-theorem sourceWeilOddTargetFloorSchurComplement_isSymmetric
-    (i : PairIndex) :
-    (sourceWeilOddTargetFloorSchurComplement i).IsSymmetric := by
-  exact (sourceWeilOddTargetFloorHeadOperator_isSymmetric i).sub
-    (oddTailInverseWeightedCorrection_isPositive
-      (sourceWeilOddTargetFloorInverseWeightedData i)).isSymmetric
-
-/-- The missing operator sign is exactly nonnegativity of its real quadratic
-energy; symmetry is already discharged. -/
-theorem sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy
-    (i : PairIndex) :
-    (sourceWeilOddTargetFloorSchurComplement i).IsPositive ↔
-      ∀ q : SourceWeilOddHeadCoefficients i,
-        0 ≤ sourceWeilOddTargetFloorSchurEnergy i q := by
-  constructor
-  · intro h q
-    exact h.re_inner_nonneg_left q
-  · intro h
-    refine ⟨sourceWeilOddTargetFloorSchurComplement_isSymmetric i, ?_⟩
-    intro q
-    exact h q
-
-/-- The completed tail term in B3.0AN is always nonnegative. -/
-theorem sourceWeilOddTargetFloorCompletedTailEnergy_nonneg
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
-    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
-    0 ≤ sourceWeilOddTargetFloorCompletedTailEnergy i q y := by
-  exact (sourceWeilOddTargetFloorTail_isPositive i).re_inner_nonneg_left
-    (y + sourceWeilOddTargetFloorCorrector i q)
-
-set_option maxHeartbeats 3000000 in
-/-- Evaluating the block at the exact inverse-weighted corrector recovers the
-finite Schur energy with no residual tail term. -/
-theorem sourceWeilOddTargetFloorSchurEnergy_eq_blockEnergy_corrected
-    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) :
-    sourceWeilOddTargetFloorSchurEnergy i q =
-      sourceWeilOddTargetFloorBlockEnergy i q
-        (-sourceWeilOddTargetFloorCorrector i q) := by
-  let v := sourceWeilOddTargetFloorCorrector i q
-  have hv : -v + v = 0 := neg_add_cancel v
-  have hzero :
-      sourceWeilOddTargetFloorCompletedTailEnergy i q (-v) = 0 := by
-    unfold sourceWeilOddTargetFloorCompletedTailEnergy
-    rw [hv]
-    rw [ContinuousLinearMap.map_zero]
-    rw [inner_zero_left]
-    exact Complex.zero_re
-  have h := sourceWeilOddTargetFloor_block_completion i q
-    (-sourceWeilOddTargetFloorCorrector i q)
-  change sourceWeilOddTargetFloorSchurEnergy i q =
-    sourceWeilOddTargetFloorBlockEnergy i q (-v)
-  change sourceWeilOddTargetFloorBlockEnergy i q (-v) =
-    sourceWeilOddTargetFloorSchurEnergy i q +
-      sourceWeilOddTargetFloorCompletedTailEnergy i q (-v) at h
-  rw [hzero, add_zero] at h
-  exact h.symm
-
-/-- Exact Schur positivity is equivalent to nonnegativity of the complete
-literal head--tail block. -/
-theorem sourceWeilOddTargetFloorSchurComplement_isPositive_iff_block
-    (i : PairIndex) :
-    (sourceWeilOddTargetFloorSchurComplement i).IsPositive ↔
-      ∀ (q : SourceWeilOddHeadCoefficients i)
-        (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)),
-        0 ≤ sourceWeilOddTargetFloorBlockEnergy i q y := by
-  rw [sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy]
-  constructor
-  · intro h q y
-    rw [sourceWeilOddTargetFloor_block_completion]
-    exact add_nonneg (h q)
-      (sourceWeilOddTargetFloorCompletedTailEnergy_nonneg i q y)
-  · intro h q
-    rw [sourceWeilOddTargetFloorSchurEnergy_eq_blockEnergy_corrected]
-    exact h q (-sourceWeilOddTargetFloorCorrector i q)
-
-/-- At fixed source cell `m = 13`, the analytic tail cutoff does not depend on
-the auxiliary finite coordinate carried by `PairIndex`. -/
-theorem sourceWeilOddTailCutoff_13_N_irrelevant
-    (N M : ℕ) :
-    sourceWeilOddTailCutoff (PairIndex.mk 13 N (by norm_num)) =
-      sourceWeilOddTailCutoff (PairIndex.mk 13 M (by norm_num)) := by
-  rfl
-
-/-- The global lower-bound constant used in the cutoff is likewise independent
-of the auxiliary coordinate at `m = 13`. -/
-theorem sourceWeilLowerBoundConstant_13_N_irrelevant
-    (N M : ℕ) :
-    sourceWeilLowerBoundConstant (PairIndex.mk 13 N (by norm_num)) =
-      sourceWeilLowerBoundConstant (PairIndex.mk 13 M (by norm_num)) := by
-  rfl
-
-set_option maxHeartbeats 3000000 in
-/-- The literal normalized odd head synthesis at a fixed cutoff depends on the
-source cell `m = 13`, not on the auxiliary `PairIndex.N` coordinate. -/
-theorem sourceWeilGraphOddHeadSynthesis_13_N_irrelevant
-    (N M R : ℕ) :
-    sourceWeilGraphOddHeadSynthesis
-        (PairIndex.mk 13 N (by norm_num)) R =
-      sourceWeilGraphOddHeadSynthesis
-        (PairIndex.mk 13 M (by norm_num)) R := by
-  rfl
-
-/-- Honest kernel-facing target for the `m = 13` certificate.  Universal
-quantification prevents a proof for one arbitrary auxiliary `N` from being
-mistaken for a property of the source cell. -/
-def SourceWeilOddTargetFloorSchurPositive13 : Prop :=
-  ∀ N : ℕ,
-    (sourceWeilOddTargetFloorSchurComplement
-      (PairIndex.mk 13 N (by norm_num))).IsPositive
-
-/-- Scalar-energy receiver for the exact `m = 13`, all-`N` target. -/
-theorem sourceWeilOddTargetFloorSchurPositive13_iff_energy :
+theorem sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy :
     SourceWeilOddTargetFloorSchurPositive13 ↔
       ∀ (N : ℕ)
         (q : SourceWeilOddHeadCoefficients
           (PairIndex.mk 13 N (by norm_num))),
-        0 ≤ sourceWeilOddTargetFloorSchurEnergy
-          (PairIndex.mk 13 N (by norm_num)) q := by
-  constructor
-  · intro h N
-    exact (sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy
-      (PairIndex.mk 13 N (by norm_num))).mp (h N)
-  · intro h N
-    exact (sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy
-      (PairIndex.mk 13 N (by norm_num))).mpr (h N)
-
-/-- Full block-energy receiver for the exact `m = 13`, all-`N` target. -/
-theorem sourceWeilOddTargetFloorSchurPositive13_iff_block :
-    SourceWeilOddTargetFloorSchurPositive13 ↔
-      ∀ (N : ℕ)
-        (q : SourceWeilOddHeadCoefficients
-          (PairIndex.mk 13 N (by norm_num)))
-        (y : SourceWeilGraphOddTailCarrier
-          (PairIndex.mk 13 N (by norm_num))
-          (sourceWeilOddTailCutoff
-            (PairIndex.mk 13 N (by norm_num)))),
-        0 ≤ sourceWeilOddTargetFloorBlockEnergy
-          (PairIndex.mk 13 N (by norm_num)) q y := by
-  constructor
-  · intro h N
-    exact (sourceWeilOddTargetFloorSchurComplement_isPositive_iff_block
-      (PairIndex.mk 13 N (by norm_num))).mp (h N)
-  · intro h N
-    exact (sourceWeilOddTargetFloorSchurComplement_isPositive_iff_block
-      (PairIndex.mk 13 N (by norm_num))).mpr (h N)
-
-#print axioms sourceWeilOddTargetFloorHeadOperator_isSymmetric
-#print axioms sourceWeilOddTargetFloorSchurComplement_isSymmetric
-#print axioms sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy
-#print axioms sourceWeilOddTargetFloorSchurComplement_isPositive_iff_block
-#print axioms sourceWeilOddTailCutoff_13_N_irrelevant
-#print axioms sourceWeilLowerBoundConstant_13_N_irrelevant
-#print axioms sourceWeilGraphOddHeadSynthesis_13_N_irrelevant
-#print axioms sourceWeilOddTargetFloorSchurPositive13_iff_energy
-#print axioms sourceWeilOddTargetFloorSchurPositive13_iff_block
-
-end Q3.RouteB.D0Pstar
-
-
-## Content snapshot: docs/routeB_bus/GOAL057_B3_0AO_TARGET_FLOOR_SCHUR_RECEIVER_CLOSEOUT_2026-08-11.md
-
-The authoritative file bytes are locked by SHA-256
-`02a5b193ea55598ca6b04aab4f7e51937d1b8e4c2b30dfa52825f57c60a70726`.
-The two Markdown hard-break spaces in its header are normalized below.
-
-# GOAL 057 B3.0AO — exact target-floor Schur receiver closeout
-
-Date: 2026-08-11
-Status: `PROVED_RECEIVER_NOT_SIGN`
-Route: `CHALLENGER / NOT_RH`
-
-## Verdict
-
-The kernel-facing target for the source-Weil target-floor finite Schur
-certificate is now explicit and source-safe:
-
-```lean
-def SourceWeilOddTargetFloorSchurPositive13 : Prop :=
-  ∀ N : ℕ,
-    (sourceWeilOddTargetFloorSchurComplement
-      (PairIndex.mk 13 N (by norm_num))).IsPositive
-```
-
-The universal quantifier prevents a proof at one arbitrary auxiliary
-`PairIndex.N` value from being relabelled as an `m = 13` source fact.
-The analytic cutoff, source lower-bound constant and literal normalized odd
-head synthesis are proved independent of that coordinate at fixed `m = 13`.
-
-The sign itself is **not** proved.  The exact stop remains
-`EXACT_TARGET_FLOOR_FINITE_SCHUR_POSITIVITY_CERTIFICATE_MISSING`.
-
-## Kernel-checked result
-
-Production file:
-
-`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReceiver.lean`
-
-- proves symmetry of the exact target-floor head and Schur operators;
-- proves
-  `Schur.IsPositive ↔ ∀ q, 0 ≤ SchurEnergy q`;
-- proves completed-tail nonnegativity and exact evaluation at the negative
-  inverse-weighted corrector;
-- proves
-  `Schur.IsPositive ↔ ∀ q y, 0 ≤ BlockEnergy q y`;
-- packages the honest all-`N`, `m = 13` predicate and both receiver
-  equivalences;
-- proves `N`-independence only for the cutoff, lower-bound constant and
-  literal head synthesis.  It does not overclaim equality of the large
-  graph-carrier operators.
-
-Artifact facts:
-
-```text
-LEAN_SHA256: 117bac393863bc1a86dbfac6bca350ad28223dd17d045f39a8def5d09f04933c
-LEAN_SHAPE: 8786 bytes, 200 newline-terminated lines, final LF
-PUBLIC_SURFACE: 1 definition + 11 theorems
-PROOF_DB: 12 / 12 proven, 203 / 203 Route B files registered
-```
-
-## Source search receipt
-
-Before creating the production receiver:
-
-```text
-./orchestrator/kb.py ask "exact finite Schur positivity sourceWeilOddTargetFloor finite head certificate c0 10^-58 corrected head positive semidefinite CCM"
-=> no hits in any layer
-```
-
-The local whole-repo audit found only conditional bottom-Rayleigh adapters,
-finite CCM/source crosswalks, and finite diagnostic evidence.  None supplies
-the missing exact target-floor Schur sign.
-
-## Verification
-
-```text
-direct Lean: PASS
-target/full module build: PASS, 7818 / 7818 jobs
-external production import consumer: PASS
-scripts/q3_check.sh: PASS
-orchestrator tests: 102 / 102 PASS
-proof-registry backfill/check: PASS, 203 / 203 files, no drift
-scripts/check_axioms.sh: STOPPED at the pre-existing dead documentation-link
-  gate before its axiom phase; direct Q3/Main and all public #print axioms PASS
-public axioms: propext, Classical.choice, Quot.sound
-forbidden tokens: no sorry, admit, axiom, unsafe, or native_decide
-negative scope guard: the target predicate occurs only as a definition and
-  as two iff receivers; no proof of the predicate is exported
-```
-
-## Exact boundary
-
-This child fixes the certificate receiver and the `m = 13` quantifier.  It
-does not establish the finite Schur sign, a literal odd form core, a whole
-odd-space `10^-58` floor, selected `kTrial` operator-domain membership,
-projection-leakage decay, or the continuum numerator.  The coarse ledger stays
-`0 / 10`.
-
-## Decision record
-
-- Chosen: an all-`N` `m = 13` predicate, scalar-energy receiver and
-  full-block receiver, with only the definitionally cheap `N`-independence
-  facts exported.
-- **What was rejected and why:** fixing a convenient `N` would leave a
-  quantifier hole; claiming equality of all large graph-carrier operators by
-  raw definitional reduction was both unnecessary and too expensive; finite
-  `N=480/960` evidence is not the symbolic infinite-tail Schur object.
-- Feared failure: a proof for one auxiliary coordinate, or a finite diagnostic
-  matrix, being mistaken for the exact `m = 13` source certificate.
-- Source of decision: local Codex proof and direct Lean verification; no new
-  Proshka call and no Aristotle submission.
-- Next minimal step: send the already prepared same-phase B3.0AO strategic
-  MINT packet only after the owner’s separate per-action OK, now requiring a
-  certificate for `SourceWeilOddTargetFloorSchurPositive13`.
-
-## ACTIONS LOG
-
-- queried canonical project memory before creating the receiver;
-- proved and compiled the production receiver;
-- exercised it through an external importing consumer;
-- registered all 12 declarations in `aristotle_proofs.db`;
-- kept the finite Schur sign, form-core bridge and coarse checkpoints open;
-- preserved the unrelated PDF and dependency-local UnicodeBasic state;
-- made no Proshka call, Aristotle submission, N=480/N=960 run, route
-  promotion, Bus 010 action, Goal 055 release, PX request, or RH claim.
-
-## File: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean
-
-import Q3.Proofs.RouteB.D0PstarSourceWeilOddTargetFloorSchurReceiver
-import Q3.Proofs.RouteB.D0PstarSourceWeilOddFormPullback13
-
-set_option linter.mathlibStandardSet false
-set_option maxHeartbeats 3000000
-
-noncomputable section
-
-open Complex
-open scoped BigOperators ComplexConjugate
-
-namespace Q3.RouteB.D0Pstar
-
-/-!
-# Canonical `m = 13` matrix receiver for the target-floor Schur sign
-
-B3.0AO fixed the honest all-auxiliary-`N` target but deliberately exported
-only three cheap `N`-independence facts.  Here Lean checks the stronger fact:
-at fixed source cell `m = 13`, the graph carrier, target-floor operator and
-exact Schur complement are definitionally independent of `PairIndex.N`.
-Consequently the universal target is equivalent to one canonical `N = 0`
-representative without weakening the source statement.
-
-The literal odd graph head is also definitionally the existing B3.0AF odd
-CCM synthesis.  This gives an exact pairing formula for the Schur complement
-as the source matrix form, minus the target-floor scalar form, minus the
-actual inverse-weighted infinite-tail correction.
-
-No sign is proved.  The symbolic analytic cutoff and actual tail inverse are
-preserved, and no finite `N = 480/960` surrogate is introduced.
--/
-
-/-- Canonical auxiliary representative of the source cell `m = 13`. -/
-def sourceWeilOddCanonicalIndex13 : PairIndex :=
-  PairIndex.mk 13 0 (by norm_num)
-
-/-- The large source graph carrier at fixed `m = 13` is definitionally
-independent of the auxiliary Galerkin coordinate. -/
-theorem sourceWeilGraphCarrier_13_N_irrelevant
-    (N M : ℕ) :
-    SourceWeilGraphCarrier (PairIndex.mk 13 N (by norm_num)) =
-      SourceWeilGraphCarrier (PairIndex.mk 13 M (by norm_num)) := by
-  rfl
-
-/-- The exact target-floor graph operator at fixed `m = 13` is independent of
-the auxiliary Galerkin coordinate. -/
-theorem sourceWeilC0ShiftedGraphOperator_13_N_irrelevant
-    (N M : ℕ) :
-    sourceWeilC0ShiftedGraphOperator
-        (PairIndex.mk 13 N (by norm_num)) sourceWeilOddTargetFloor =
-      sourceWeilC0ShiftedGraphOperator
-        (PairIndex.mk 13 M (by norm_num)) sourceWeilOddTargetFloor := by
-  rfl
-
-/-- The exact target-floor Schur operator at fixed `m = 13` is definitionally
-the same operator for every auxiliary `PairIndex.N`. -/
-theorem sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant
-    (N M : ℕ) :
-    sourceWeilOddTargetFloorSchurComplement
-        (PairIndex.mk 13 N (by norm_num)) =
-      sourceWeilOddTargetFloorSchurComplement
-        (PairIndex.mk 13 M (by norm_num)) := by
-  rfl
-
-/-- The scalar Schur energy at fixed `m = 13` is likewise independent of the
-auxiliary coordinate. -/
-theorem sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant
-    (N M : ℕ) :
-    sourceWeilOddTargetFloorSchurEnergy
-        (PairIndex.mk 13 N (by norm_num)) =
-      sourceWeilOddTargetFloorSchurEnergy
-        (PairIndex.mk 13 M (by norm_num)) := by
-  rfl
-
-/-- The all-`N` target is exactly one canonical source-cell statement, not a
-weaker fixed-`N` surrogate. -/
-theorem sourceWeilOddTargetFloorSchurPositive13_iff_canonical :
-    SourceWeilOddTargetFloorSchurPositive13 ↔
-      (sourceWeilOddTargetFloorSchurComplement
-        sourceWeilOddCanonicalIndex13).IsPositive := by
-  constructor
-  · intro h
-    exact h 0
-  · intro h N
-    simpa [sourceWeilOddCanonicalIndex13] using h
-
-/-- The literal graph-head synthesis is definitionally the already verified
-normalized odd CCM synthesis at the same head size. -/
-theorem sourceWeilGraphOddHeadSynthesis13_eq_sourceWeilOddSynthesis13
-    (R : ℕ) (q : EuclideanSpace ℂ (Fin R)) :
-    sourceWeilGraphDomain sourceWeilOddCanonicalIndex13
-        (sourceWeilGraphOddHeadSynthesis
-          sourceWeilOddCanonicalIndex13 R q) =
-      sourceWeilOddSynthesis13 R q := by
-  rfl
-
-/-- Exact source-matrix formula for the canonical target-floor head pairing. -/
-theorem inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm
-    (q r : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13) :
-    inner ℂ
-        (sourceWeilOddTargetFloorHeadOperator
-          sourceWeilOddCanonicalIndex13 q) r =
-      (∑ j, ∑ k,
-          star ((ccmOddCoefficientIsometry
-            (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
-            (Q3.RouteB.ccmWeilMatFinite 13
-              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
-              j k : ℂ) *
-            (ccmOddCoefficientIsometry
-              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) k) -
-        (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r := by
-  rw [inner_sourceWeilOddTargetFloorHeadOperator]
-  rw [inner_sourceWeilC0ShiftedGraphOperator]
-  change sourceWeilSesquilinearForm sourceWeilOddCanonicalIndex13
-      (sourceWeilOddSynthesis13
-        (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q)
-      (sourceWeilOddSynthesis13
-        (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) -
-      (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r = _
-  rw [sourceWeilOddFormPullback13]
-
-/-- Exact corrected finite-matrix formula for the canonical Schur pairing.
-The last term is the actual infinite-tail inverse-weighted correction. -/
-theorem inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm
-    (q r : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13) :
-    inner ℂ
-        (sourceWeilOddTargetFloorSchurComplement
-          sourceWeilOddCanonicalIndex13 q) r =
-      (∑ j, ∑ k,
-          star ((ccmOddCoefficientIsometry
-            (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
-            (Q3.RouteB.ccmWeilMatFinite 13
-              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
-              j k : ℂ) *
-            (ccmOddCoefficientIsometry
-              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) k) -
-        (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r -
-        inner ℂ
-          (oddTailInverseWeightedCorrection
-            (sourceWeilOddTargetFloorInverseWeightedData
-              sourceWeilOddCanonicalIndex13) q) r := by
-  unfold sourceWeilOddTargetFloorSchurComplement
-  unfold oddTailSchurComplement
-  rw [ContinuousLinearMap.sub_apply, inner_sub_left]
-  rw [inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm]
-
-/-- Final kernel receiver: the exact all-`N`, `m = 13` target is equivalent
-to nonnegativity of one canonical corrected CCM energy at the symbolic source
-cutoff.  This theorem exposes but does not prove the missing finite sign. -/
-theorem sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy :
-    SourceWeilOddTargetFloorSchurPositive13 ↔
-      ∀ q : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13,
         0 ≤ ((∑ j, ∑ k,
             star ((ccmOddCoefficientIsometry
-              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
+              (sourceWeilOddTailCutoff
+                (PairIndex.mk 13 N (by norm_num))) q) j) *
               (Q3.RouteB.ccmWeilMatFinite 13
-                (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
+                (sourceWeilOddTailCutoff
+                  (PairIndex.mk 13 N (by norm_num)))
                 j k : ℂ) *
               (ccmOddCoefficientIsometry
-                (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) k) -
+                (sourceWeilOddTailCutoff
+                  (PairIndex.mk 13 N (by norm_num))) q) k) -
           (sourceWeilOddTargetFloor : ℂ) * inner ℂ q q -
           inner ℂ
             (oddTailInverseWeightedCorrection
               (sourceWeilOddTargetFloorInverseWeightedData
-                sourceWeilOddCanonicalIndex13) q) q).re := by
-  rw [sourceWeilOddTargetFloorSchurPositive13_iff_canonical]
-  rw [sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy]
-  simp only [sourceWeilOddTargetFloorSchurEnergy]
-  constructor
-  · intro h q
-    rw [inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm] at h
-    exact h q
-  · intro h q
-    rw [inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm]
-    exact h q
+                (PairIndex.mk 13 N (by norm_num))) q) q).re
+```
 
-#print axioms sourceWeilGraphCarrier_13_N_irrelevant
-#print axioms sourceWeilC0ShiftedGraphOperator_13_N_irrelevant
-#print axioms sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant
-#print axioms sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant
-#print axioms sourceWeilOddTargetFloorSchurPositive13_iff_canonical
-#print axioms sourceWeilGraphOddHeadSynthesis13_eq_sourceWeilOddSynthesis13
-#print axioms inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm
-#print axioms inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm
-#print axioms sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy
+The theorem exposes this inequality; it does not prove it.
 
-end Q3.RouteB.D0Pstar
+## Kernel-checked chain already available
 
-## Content snapshot: docs/routeB_bus/GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_CLOSEOUT_2026-08-11.md
+1. B3.0AN constructs the actual target-floor odd tail, proves it positive and
+   continuously invertible at `sourceWeilOddTargetFloor = 10^-58`, constructs
+   the literal residual and actual `R† C⁻¹ R`, and completes the exact Schur
+   square. No scalar surrogate is used.
 
-# STATUS: CLOSED CHILD — B3.0AP CANONICAL SCHUR MATRIX RECEIVER PROVED; SIGN OPEN
+2. B3.0AO proves symmetry and the exact equivalences
+   `SourceWeilOddTargetFloorSchurPositive13 ↔ all-N scalar energy ≥ 0` and
+   `SourceWeilOddTargetFloorSchurPositive13 ↔ all-N full block energy ≥ 0`.
 
-Date: 2026-08-11
-Route: `CHALLENGER / NOT_RH`
-Goal: `057_unified_chain_program_delegated_review`
-Child: `B3.0AP`
-Result code: `GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_PROVED`
-Parent B3.0: `OPEN`
+3. Corrected B3.0AP proves for every auxiliary `N`:
+   - graph-head ambient value = normalized odd CCM synthesis;
+   - graph-domain head = explicit finite antisymmetric mode sum;
+   - after finite sesquilinear expansion, that source form is independent of
+     auxiliary `N`;
+   - exact head pairing = CCM matrix form minus the `10^-58` scalar form;
+   - exact Schur pairing additionally subtracts the actual infinite-tail
+     inverse-weighted correction.
 
-## What was proved
+4. Direct source Lean, forced clean target build, external consumer, full
+   `Q3.Main`, q3 checks on all three touched modules, `102/102` unit tests,
+   `204/204` Route B files and `1756` declarations with zero registry drift,
+   KB census and strict Spine all pass. Public axioms are only `propext`,
+   `Classical.choice`, `Quot.sound`.
 
-The production file
-`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean`
-proves, at the exact source cell `m = 13`:
+5. No sign theorem, literal odd form-core theorem, whole odd-space floor,
+   selected-`kTrial` domain, projection-leakage decay or continuum numerator
+   bridge has been proved. The coarse ledger remains `0/10`.
 
-1. `SourceWeilGraphCarrier`, the target-floor graph operator, the exact Schur
-   operator and its scalar energy are definitionally independent of auxiliary
-   `PairIndex.N`;
-2. the all-`N` target `SourceWeilOddTargetFloorSchurPositive13` is equivalent
-   to positivity at one canonical representative `PairIndex.mk 13 0`;
-3. the literal graph-head synthesis is exactly the existing normalized odd CCM
-   synthesis from B3.0AF;
-4. the canonical target-floor head pairing is the exact
-   `ccmWeilMatFinite 13 sourceWeilOddTailCutoff` form minus the target-floor
-   scalar form;
-5. the canonical Schur pairing additionally subtracts the actual
-   inverse-weighted infinite-tail correction;
-6. the all-`N` target is equivalent to nonnegativity of that exact canonical
-   corrected CCM energy.
+## Requested MINT verdict
 
-The `N = 0` value is only a canonical auxiliary representative. It is not the
-head size and not a zero-dimensional truncation. The head size remains the
-symbolic `sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13`.
+Find a source-compatible proof architecture for the exact all-`N` corrected
+energy nonnegativity above. This is a strategic MINT boundary, not a request to
+bless finite numerics and not a goal-close release.
 
-## What was not proved
+Return exactly one operative verdict class:
 
-- no nonnegativity/sign certificate for the corrected CCM energy;
-- no proof of `SourceWeilOddTargetFloorSchurPositive13`;
-- no literal odd-mode form-core theorem;
-- no whole odd-space `10^-58` floor;
-- no selected-`kTrial` operator domain, projection-leakage decay or continuum
-  numerator bridge;
-- no N=480/N=960 promotion, Route B promotion, PX claim or RH claim.
+```text
+MINT_READY
+CERT_NOT_FOUND
+SOURCE_LOCK_FAILED
+```
 
-## Evidence
+If `MINT_READY`, provide all of the following:
 
-- Lean SHA-256:
-  `79f98c1c3da54ccef698c35df9acc7b3f59a5ab8d947deeca1003571dd533d90`.
-- Shape: `8350` bytes, `187` newline-terminated lines, final LF.
-- Public surface: `1` definition and `9` theorems; `10` named declarations.
-- Direct source Lean: PASS.
-- Target module build: PASS.
-- External production-import consumer: PASS for the canonical and corrected
-  CCM receiver shapes.
-- `Q3/Main.lean`: PASS; output remains `Q3.Main.RH_of_Weil_and_Q3 : RH`.
-- `scripts/q3_check.sh`: PASS.
-- Unit tests: `102/102` PASS after registry synchronization.
-- Proof registry: `10/10` declarations proven; `204/204` Route B files matched;
-  no missing, ambiguous or stale declaration rows.
-- Public axioms: only `propext`, `Classical.choice`, `Quot.sound`.
-- Forbidden-token scan: no `sorry`, `admit`, `native_decide` or `unsafe`.
-- Negative-scope judge: no theorem directly exports
-  `SourceWeilOddTargetFloorSchurPositive13`; only exact equivalences are added.
+1. The smallest next Lean child, with one exact theorem statement. It must
+   preserve `∀ N` unless you also give a source theorem that eliminates `N`.
+2. Exact imports and source addresses (`path:line` plus file SHA-256) for every
+   nontrivial mathematical input.
+3. A proof architecture detailed enough to implement locally: the finite
+   carrier, matrix/operator identity, positivity mechanism, and how the actual
+   infinite-tail correction is controlled.
+4. The first kernel-facing inequality, with constants and quantifiers written
+   literally; do not answer only with prose such as “use Schur complement”.
+5. A dependency/falsifier ledger: which assumptions would invalidate the
+   architecture, and which tempting routes are killed.
+6. Arsenal card IDs for every applied move or kill.
+7. A stop code if any required supplier is absent from the locked source.
 
-## Decision and corrected rationale
+If no source-backed architecture is available, return `CERT_NOT_FOUND`, name
+the first missing supplier precisely, and do not fabricate a theorem or convert
+finite evidence into a proof.
 
-- Chosen: definitional `N`-independence, one canonical representative and the
-  exact corrected CCM energy receiver.
-- What was rejected and why: treating auxiliary `N` as a head dimension,
-  replacing the symbolic cutoff by N=480/N=960, using a scalar inverse, or
-  dropping the actual `R† C⁻¹ R` correction would change the object.
-- Corrected prior caution: B3.0AO conservatively rejected equality of the large
-  graph objects as potentially expensive. The separate B3.0AP audit compiled
-  the equality by `rfl`; retaining that prior assumption would now be wrong.
-- Guarded risk: receiver equivalence must not be reported as the missing sign.
+## Mandatory source search
 
-## Stop and next action
+Search the locked tree by capability, not only by remembered names. In
+particular audit, but do not assume applicable:
 
-Stop code:
-`EXACT_CANONICAL_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE_MISSING`.
+```text
+H2aPenaltyCoercivity.lean
+H2a_SimpleEvenGround_FromPenaltyCoercivity
+ccmWeilMatFinite
+SIEG_of_penalty
+PosSemidef
+SchurComplement
+Matrix.PosDef
+IsPositive
+oddTailInverseWeightedCorrection
+sourceWeilOddTargetFloorBlockEnergy
+sourceWeilOddTargetFloorSchurEnergy
+```
 
-Next action: relock the existing B3.0AO strategic MINT packet to this exact
-canonical receiver and, only after separate owner approval for the outbound
-message, ask the same living Proshka phase chat for a source-faithful sign
-certificate architecture. The first coarse checkpoint remains open: `0/10`
-closed.
+The recovered H2a penalty engine is a generic finite certificate mechanism;
+its seating on this exact CCM/source-Weil family is not established merely by
+its existence. Require the family-instantiation connector explicitly.
 
-## Search and arsenal
+## Forbidden substitutions
 
-`SEARCH_FLAGS: KB_ASK_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_POSITIVE13_NO_HIT · WHOLE_REPO_TARGET_SEARCH · DECLARATION_CATALOG_CHECK`
+- no canonical `N = 0` large-operator reduction;
+- no proof for one convenient auxiliary `N` presented as `∀ N`;
+- no `N=480/960`, Aitken, fitted convergence or sampled cutoff as proof;
+- no scalar inverse in place of the actual tail inverse;
+- no deletion or silent domination of `R† C⁻¹ R`;
+- no replacement of the symbolic `sourceWeilOddTailCutoff` by a numerical
+  head size;
+- no positive-semidefinite head claim inferred from the shifted full operator
+  without the exact Schur correction;
+- no use of `native_decide` in the Route B trust chain;
+- no new RH claim, route promotion, Bus 010, Goal 055 release or H4a1b closure.
 
-`ARSENAL_USED: C04 · C07 · C09 · C10`
+## Required boundary language
 
-`ARSENAL_KILLED: AUXILIARY_N_AS_HEAD_SIZE · FINITE_N480_N960_AS_SYMBOLIC_CUTOFF · SCALAR_OUTER_INVERSE · DROP_ACTUAL_RSTAR_CINV_R · RECEIVER_EQUIVALENCE_AS_SIGN`
+Every conclusion must preserve:
 
-## ACTIONS LOG
+```text
+Route: CHALLENGER / NOT_RH
+RH_CLAIM: NOT_MADE
+PX_RH_CLAIM: NOT_MADE
+BUS_010: VOID
+GOAL_055: HOLD
+H4A1B: OPEN
+N480: HOLD
+CHECKPOINTS_CLOSED: 0
+CHECKPOINTS_REMAINING: 10
+```
 
-1. Ran canonical KB query before creating the production object; no supplier
-   for the exact target was found.
-2. Proved the stronger `N`-independence and matrix receiver in scratch, then
-   materialized the narrow production file.
-3. Verified direct Lean, target build, external consumer, full main, q3_check,
-   axiom boundary and negative scope.
-4. Registered the new file and all ten declarations; repeated all 102 unit
-   tests successfully.
-5. Preserved the unrelated PDF and made no Proshka call, Aristotle submission,
-   N=480/N=960 run, route promotion or claim.
-
-Boundaries remain:
-`CHALLENGER_NOT_RH` · `BUS_010 VOID` · `GOAL_055 HOLD` · `H4A1B OPEN` ·
-`N480 HOLD` · `PX_RH_CLAIM NOT_MADE`.
+Answer in Russian, retaining exact Lean identifiers and formulas in their
+source spelling. Do not edit the repository; return a review packet only.

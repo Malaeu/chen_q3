@@ -9,9 +9,9 @@
       "matched_paths": [
         "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0-post-p-next-node-adjudication-2026-08-09.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-verdict-goal057-b3-0-post-p-next-node-adjudication-2026-08-09.md",
-        "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md"
+        "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0e3-zero-extended-mode-cosine-correlation-ccm-qkernel-release-2026-08-08.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -29,7 +29,7 @@
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
       ],
       "query": "edge-sliver",
-      "result_count": 41,
+      "result_count": 39,
       "status": "PASS",
       "vector_count": 30
     },
@@ -41,15 +41,15 @@
         "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffanalyticp0import.lean"
+        "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 34,
+      "result_count": 31,
       "status": "PASS",
-      "vector_count": 27
+      "vector_count": 26
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "e5236c2f51a3fde96b7e0c965df0006949eb5e3b",
+  "source_commit": "eea6515259ec667c8ad298befcd7f9c12cefb92b",
   "status": "PASS"
 }

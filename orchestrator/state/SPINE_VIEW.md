@@ -61,15 +61,15 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `41`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `31`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_135d70ed5c47e285776a` at `2026-08-11T07:39:06+00:00` from `e5236c2f51a3`
+- snapshot: `OBS_ffd6039137bbe0e44159` at `2026-08-11T07:49:11+00:00` from `eea6515259ec`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
@@ -84,13 +84,13 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
 | `autopsy_map` | 9 | 2026-08-11T07:32:12+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-11 07:39 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-11 07:39 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-11 07:39 UTC | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-11 07:49 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-11 07:49 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-11 07:49 UTC | no | PARSED | READY |
 | `proshka_timing` | 53 | 2026-08-08T18:40:13+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-11 07:39 UTC | no | PARSED | READY |
-| `taint_graph` | 3396 | 2026-08-11 07:39 UTC | no | PARSED | READY |
-| `taint_sources` | 3396 | 2026-08-11 07:39 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-11 07:49 UTC | no | PARSED | READY |
+| `taint_graph` | 3396 | 2026-08-11 07:49 UTC | no | PARSED | READY |
+| `taint_sources` | 3396 | 2026-08-11 07:49 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 

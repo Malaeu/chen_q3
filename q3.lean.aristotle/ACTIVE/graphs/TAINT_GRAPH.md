@@ -1,4 +1,4 @@
-# Taint Graph (auto) — 2026-08-11 07:39 UTC
+# Taint Graph (auto) — 2026-08-11 07:49 UTC
 
 **Boundary:** source-hole/import-boundary observability; not proof truth.
 **Numeric checks:** evidence only, never propagated and never DOOMED.

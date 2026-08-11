@@ -144,7 +144,7 @@
   "generated_at": "2026-08-11T07:32:12+00:00",
   "namewatch_candidates": [],
   "schema": "q3_autopsy_map.v1",
-  "source_commit": "e5236c2f51a3fde96b7e0c965df0006949eb5e3b",
+  "source_commit": "eea6515259ec667c8ad298befcd7f9c12cefb92b",
   "walls": [
     {
       "candidate_card": null,
