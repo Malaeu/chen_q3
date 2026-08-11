@@ -363,6 +363,26 @@ tool_families:
         records_to: atoms_RouteB.json
         last_verified: 2026-08-10
 
+      - id: map-coverage
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/cartographer/map_coverage.py
+        invoke: python3 docs/cartographer/map_coverage.py
+        cwd: repository root
+        trigger: >-
+          Before building anything new in RouteB, and after any file is added or renamed there.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: FILE_INVENTORY_NOT_ROUTE_MAP
+        measured_2026_08_11: 204 files, 20 named in MAP.md, 184 reachable only by knowing they exist
+        failure_mode: >-
+          The descriptor is the author's own header line, not a check of what the file proves.
+          The appendix says which files exist, never which matter; MAP.md stays hand-written and
+          is not touched by this tool.
+        records_to: docs/routeB_bus/MAP_COVERAGE.md
+        last_verified: 2026-08-11
+
       - id: atom-describe
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
