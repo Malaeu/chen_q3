@@ -287,7 +287,21 @@ Ronnie Andrews Jr., «A Quantitative Convergence Law for the CCM Zeta Spectral T
 
 ---
 
-## Q4 · R2-1: `H3f` и `PSD-pd` — один ли это квантoрный объект · В БАТЧЕ 2026-08-10 (вопрос 3)
+## Q4 · R2-1: `H3f` и `PSD-pd` — один ли это квантoрный объект · ЗАКРЫТ 2026-08-10 — вопрос 3 батча
+
+> **Статус исправлен 2026-08-11.** Ответ пришёл 2026-08-10, `QUESTION_3`:
+>
+> ```
+> VERDICT: KILL_H3F_EQUALS_PSDPD
+> H3F_FULL_HYPOTHESIS:  STRICT_UNIFORM_COERCIVITY_ON_ALL_P_M
+> H3F_MINIMAL_CONSUMER: STRICT_UNIFORM_COERCIVITY_ON_FILTERED_RANGE
+> PSDPD_CURRENT_OUTPUT: NONNEGATIVITY_ON_CLOSED_PD_CONE
+> SAME_QUANTIFIER_OBJECT: false
+> SHARED_ENGINE_POSSIBLE:  true
+> ```
+>
+> То есть **не** один объект: строгая равномерная коэрцитивность против неотрицательности
+> на замкнутом конусе. Но общий движок не исключён.
 
 **Блокирует:** сведение двух линий (Suzuki `H3f` ↔ замороженная PSD-pd) в один объект;
 пока не решено, обе живут параллельно и работа может дублироваться.
@@ -356,7 +370,21 @@ lower» с диагностикой при `N = 320/480` и разбором Э�
 
 ---
 
-## Q6 · R2-3: `GOAL_055` — держать `HOLD` или отпускать · В БАТЧЕ 2026-08-10 (вопрос 4)
+## Q6 · R2-3: `GOAL_055` — держать `HOLD` или отпускать · ЗАКРЫТ 2026-08-10 — вопрос 4 батча
+
+> **Статус исправлен 2026-08-11.** Ответ пришёл 2026-08-10, `QUESTION_4`:
+>
+> ```
+> VERDICT: KEEP_GOAL_055_HOLD_AT_PIN
+> MATERIALIZATION_RELEASE depends_on:
+>   ccmCell13N2_wr_enclosures_integrated_in_project · taint_free
+>   direct_and_full_build_pass · standard_axiom_triple
+> depends_on_S_or_B_or_GLOWER: false
+> SIEG_WELD_ACTIVATION: separate_gate true
+> ```
+>
+> Важное следствие: релиз **не зависит** от исходов `S`, `B` и GLOWER — прежняя
+> формулировка вопроса предполагала обратное. Активация SIEG-сварки — отдельные ворота.
 
 **Блокирует:** одну из границ, которую наш старт сессии печатает как неприкосновенную.
 **Стоимость ошибки:** высокая и **асимметричная** — преждевременный релиз ломает границу,
@@ -431,7 +459,24 @@ rulings»), но прямо это нигде не записано. Если т
 
 ---
 
-## Q8 · Разрыв между измеренным порогом и доказуемым · В БАТЧЕ 2026-08-10 (вопрос 1)
+## Q8 · Разрыв между измеренным порогом и доказуемым · ЗАКРЫТ 2026-08-10 — вопрос 1 батча
+
+> **Статус исправлен 2026-08-11.** Стояло «В БАТЧЕ», как будто ждёт. Ответ пришёл ещё
+> 2026-08-10, `docs/routeB_bus/proshka/PROSHKA_VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026-08-10.md`, `QUESTION_1`:
+>
+> ```
+> VERDICT: SUZUKI_COMPOSITE_TARGET
+> LOCK_B_OLD_NAME: YoshidaTailCoercivity13Explicit
+> LOCK_B_NEW_NAME: SuzukiOddWeilTailCoercivity13Explicit
+> DIRECT_YOSHIDA_DEPENDENCY: NOT_REQUIRED
+> SOURCE_THEOREMS: Suzuki_Proposition_3_1 · Suzuki_Theorem_4_3
+> EXPLICIT_R70: status UNPROVED, finite_probe SUPPORTING_EVIDENCE_ONLY
+> YOSHIDA_TEXT: OPTIONAL_CROSSCHECK_NOT_LOAD_BEARING
+> ```
+>
+> Три названных моста остаются нашей работой: `ODD_MODE_TO_KN_INDEX_CROSSWALK`,
+> `H10_DENSITY_EXTENSION_OF_PROPOSITION_3_1`, `FOURIER_PARSEVAL_NORMALIZATION_LOCK`.
+> Порог 70 остаётся **измеренным, не доказанным**.
 
 **Блокирует:** `Lock B` = `YoshidaTailCoercivity13Explicit`, минимальный named gap маршрута.
 **Стоимость ошибки:** высокая — на этой посылке стоит вся связка «голова + хвост».
