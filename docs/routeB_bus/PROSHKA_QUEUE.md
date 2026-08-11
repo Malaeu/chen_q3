@@ -189,6 +189,8 @@ Ronnie Andrews Jr., «A Quantitative Convergence Law for the CCM Zeta Spectral T
 
 ## Q2 · Настоящий темп числителя входа B · ЗАКРЫТ 2026-08-11 — ответили сами, судья не нужен
 
+`answered_by: сами, docs/routeB_bus/litreview/GROSKIN_TWF_USAGE_CARDS.md §5`
+
 > **Снят с батча 2026-08-11.** Литературная часть отработана нами: published оценки
 > настоящего числителя **нет**, и это не вывод по умолчанию, а записанное в самих
 > источниках. Мост строим сами — ровно как и предполагала постановка вопроса. Разбор ниже,
@@ -289,6 +291,8 @@ Ronnie Andrews Jr., «A Quantitative Convergence Law for the CCM Zeta Spectral T
 
 ## Q4 · R2-1: `H3f` и `PSD-pd` — один ли это квантoрный объект · ЗАКРЫТ 2026-08-10 — вопрос 3 батча
 
+`answered_by: docs/routeB_bus/proshka/PROSHKA_VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026-08-10.md#QUESTION_3`
+
 > **Статус исправлен 2026-08-11.** Ответ пришёл 2026-08-10, `QUESTION_3`:
 >
 > ```
@@ -371,6 +375,8 @@ lower» с диагностикой при `N = 320/480` и разбором Э�
 ---
 
 ## Q6 · R2-3: `GOAL_055` — держать `HOLD` или отпускать · ЗАКРЫТ 2026-08-10 — вопрос 4 батча
+
+`answered_by: docs/routeB_bus/proshka/PROSHKA_VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026-08-10.md#QUESTION_4`
 
 > **Статус исправлен 2026-08-11.** Ответ пришёл 2026-08-10, `QUESTION_4`:
 >
@@ -460,6 +466,8 @@ rulings»), но прямо это нигде не записано. Если т
 ---
 
 ## Q8 · Разрыв между измеренным порогом и доказуемым · ЗАКРЫТ 2026-08-10 — вопрос 1 батча
+
+`answered_by: docs/routeB_bus/proshka/PROSHKA_VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026-08-10.md#QUESTION_1`
 
 > **Статус исправлен 2026-08-11.** Стояло «В БАТЧЕ», как будто ждёт. Ответ пришёл ещё
 > 2026-08-10, `docs/routeB_bus/proshka/PROSHKA_VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026-08-10.md`, `QUESTION_1`:
@@ -729,6 +737,8 @@ bridge» и «ambient form» в нашем случае. Ошибка обнар
 ---
 
 ## Q10 · Дрейф головы: свойство представления или сдвиг · ЗАКРЫТ 2026-08-10 — вопрос 2 батча
+
+`answered_by: docs/routeB_bus/proshka/PROSHKA_VERDICT_GLOWER_TAIL_THEOREM_AND_HEAD_DRIFT_2026-08-10.md#QUESTION_2`
 
 **Блокирует:** больше ничего · **Стоимость ошибки:** была бы смена представления там, где
 падение предписано алгеброй
