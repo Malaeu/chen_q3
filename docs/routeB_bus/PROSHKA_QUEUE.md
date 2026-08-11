@@ -632,38 +632,39 @@ source-Weil form до generic inverse-weighted odd-tail interface B3.0AI. Тек
 
 ---
 
-## Q9 · Годится ли `family = c_N · Лагранж` как same-family crosswalk · OPEN — готов в батч, один вопрос
+## Q9 · `CCMLagrangePolynomialToCanonicalSelectedFamilyCrosswalk`: годится ли форма `family = c_N · Лагранж` · OPEN — готов в батч, один вопрос
 
-**Блокирует:** минимальное недостающее тождество всей ветки `Theorem510RealZeroBridge`, а
-через него `SIMPLE_EVEN:1` и `SIMPLE_EVEN:15` сразу · **Стоимость ошибки:** взяться за
-аналитико-алгебраический переход, запрещённый одним из уже зарегистрированных
-crosswalk-убийств, — работа, которая не может сойтись
+**Блокирует:** `SIMPLE_EVEN:1` (`MISMATCH`) и `SIMPLE_EVEN:15` (`GAP`) — они оказались одной
+дырой · **Стоимость ошибки:** взяться за переход, убитый одним из уже зарегистрированных
+crosswalk-запретов, — работа, которая не может сойтись
 
-**Переписан 2026-08-11.** Первая редакция спрашивала две вещи: (1) расхождение
-`SIMPLE_EVEN:1` — по общности или по стороне, и (2) какая реализация `Pstar` каноническая.
-**Вторая вилка снята нашей же базой** — см. «Что мы уже проверили сами». Первая закрылась
-прогонами. Осталось одно постановление, оно ниже.
+**Переписан дважды 2026-08-11.** Первая редакция спрашивала две вещи; вторая вилка снята
+нашей же базой. Третья редакция — после вердикта
+`proshka/PROSHKA_CONSUMER_FIRST_CONSTRUCTOR_HERMFACT1_AUDIT_2026-08-11.md`: вопрос
+переименован её именем и продолжает её разбор, а не идёт параллельно.
 
 ### Вопрос
 
-После трёх прогонов конструктора весь вход `Theorem510RealZeroBridge` сведён к **одному
-уравнению**, скомпилированному как гипотеза:
+Вердикт назвал объект и оставил его открытым:
+
+> Consumer доказывает real zeros для `sourceLagrangePolynomial (fun i => ccmModeFinite N i) xi`.
+> Roof требует real-zero property для `C.Pstar.family i`. Это разные objects, пока не доказан
+> crosswalk. Именно поэтому `SIMPLE_EVEN:1` остаётся `MISMATCH`. Это **[C04]**: оба объекта
+> являются entire functions, но equality после забывания construction provenance не доказана.
+
+Мы предъявляем **скомпилированную форму-кандидат** этого кроссвока:
 
 ```lean
-family i z = c_N i * ((sourceLagrangePolynomial (lam i) (xi i)).map (algebraMap ℝ ℂ)).eval z
-                                                                            c_N i ≠ 0
+(cN : Index → ℂ) (hcN : ∀ i, cN i ≠ 0)
+(hfamily : ∀ i z, C.Pstar.family i z =
+    cN i * ((sourceLagrangePolynomial (lam i) (xi i)).map (algebraMap ℝ ℂ)).eval z)
+⟹ Theorem510RealZeroBridge C H2aAt
 ```
 
-Слева — `centeredPstarFamily`, построенная через интегральное преобразование
-`rawFplus = proposition59RawTransform` над пролатной пробной функцией. Справа — конечный
-лагранжев многочлен по данным `(lam, xi)` конечной матрицы. Утверждать их
-пропорциональность значит утверждать, что **преобразование есть определитель** с точностью
-до нормировки.
-
-**Постановление, которое нужно:** годится ли это уравнение как формулировка
+**Постановление, которое нужно.** Годится ли эта форма как
 `same-family crosswalk` в смысле замены, предписанной убийством
 `G6S2_FIXED_MUNTZ_WINDOW_INSTALLED_AS_CANONICAL_PSTAR` — или замысел маршрута такого
-перехода не предполагает, и тогда какой из зарегистрированных запретов бьёт первым:
+перехода не предполагает, и тогда какой из трёх зарегистрированных запретов бьёт первым:
 
 ```
 direct_one_shot_crosswalk_without_scalar_distribution_bridge
@@ -673,53 +674,60 @@ define_the_ambient_form_and_operator_before_testing_the_finite_carrier_crosswalk
 
 ### Что мы уже проверили сами
 
-**Вторая вилка первой редакции снята базой, а не судьёй.** `kb.py ask centeredPstarFamily`
-выдал убитый ход `G6S2_FIXED_MUNTZ_WINDOW_INSTALLED_AS_CANONICAL_PSTAR`. Дословно оттуда:
+**Вердикт проверен диском целиком, держится.** `hermfact1` — ноль `.lean`-файлов; все пять
+названных теорем на месте; все восемь коммитов резолвятся; внутренний эрмитов шаг дословно
+как процитирован (`BottomSpectral.lean:52`).
 
-> `Pstar` is already source-locked to `centeredPstarFamily D.kTrial`. The free `Pstar` field
-> of `CanonicalApproximation` is **interface polymorphism, not an inheritance mechanism**:
-> instantiating a new `C` resets every roof premise (H2a, `Theorem510RealZeroBridge`, anchor,
-> S1, Montel, same-parent cofinality) and inherits none of them.
+**Её `P4` закрыто нами компиляцией.** Стояло `conf 0.70, UNTESTED`: базис фактора
+генерируется автоматически. Да — `Module.Basis.ofVectorSpace ℝ Qt`, потребитель применяется
+**без входа `b`**, аксиомы стандартные (`probes/Probe_QuotientBasis_Auto.lean`). Реестр
+входов после этого: две несущие спектральные посылки, связка-свидетель, один кроссвок.
 
-То есть подстановка лагранжевой стороны на место `Pstar` обнулила бы в том числе сам
-`Theorem510RealZeroBridge`. Спрашивать об этом судью было бы тратой батча.
+**Чего у вердикта нет — маршрут оказался короче, чем через `charpoly`.**
+`sourceLagrangePolynomial_complex_zerosRealOn_of_radical_nonneg`
+(`RankOneCorrectionLagrangeRealZeros.lean:41`) даёт вещественность **прямо на лагранжевом
+многочлене**, минуя `charpoly`, минуя M1 (`PosDefSelfAdjointRealSpectrum.lean:18`) и β8d
+(`HermitianDeterminantRealZeros.lean:31`) целиком. Оба маршрута скомпилированы:
 
-**Предписанная замена оттуда же** и задаёт форму нашего вопроса:
-`…_SAME_FAMILY_CROSSWALK` — доказывать, что **существующее** семейство допускает другое
-представление на том же кофинальном пути, сохраняя конечно-`N` галёркинскую ошибку,
-нормировку, координату/фазу и происхождение H2b.
+```
+probes/Probe_Theorem510_assembly.lean        через charpoly: M1 + β8d
+probes/Probe_Theorem510_lagrange_route.lean  короткий: radical_nonneg
+```
 
-**Прогоны, всё скомпилировано, аксиомы `[propext, Classical.choice, Quot.sound]`:**
+**Вторая вилка снята нашей базой, не судьёй.** `G6S2_FIXED_MUNTZ_WINDOW_INSTALLED_AS_CANONICAL_PSTAR`
+дословно: `Pstar` source-locked к `centeredPstarFamily D.kTrial`, а свободное поле `Pstar` —
+«interface polymorphism, not an inheritance mechanism»: инстанцирование нового `C` обнуляет
+все посылки крыши, включая сам `Theorem510RealZeroBridge`. Подстановка лагранжевой стороны
+на место `Pstar` обнулила бы то, ради чего делается.
 
-- `probes/Probe_Theorem510_assembly.lean` — мост из M1 + β8d через `charpoly`;
-- `probes/Probe_Theorem510_lagrange_route.lean` — **короче**: вещественность прямо на
-  Лагранже через `sourceLagrangePolynomial_complex_zerosRealOn_of_radical_nonneg`, мимо
-  `charpoly`, M1 и β8d целиком.
+**Ближняя половина пуста, дальняя закрыта.** Пересечение файлов с `Pstar.family` и файлов с
+`sourceLagrangePolynomial` — пусто; в чужом дереве ни того ни другого; объявления `c_N` нет
+нигде (`c_n` цепи D0 — другой объект, фурье-коэффициент `⟨V_{n,m}, kTrial_{m,N}⟩`).
+При этом `sourceLagrangePolynomial_eq_signed_quotient_charpoly`
+(`RankOneCorrectionQuotientCharpoly.lean:139`) уже даёт разложение Лагранжа почти без
+гипотез.
 
-**Полка закрывает дальнюю половину.** `RankOneCorrectionLagrangeIdentity.lean:20`,
-`RankOneCorrectionLagrangeRadicalCharpoly.lean:12`,
-`RankOneCorrectionLagrangeRealZeros.lean:41` — три теоремы, все на диске, все проверены.
-
-**Ближняя половина пуста.** Пересечение файлов, где встречается `Pstar.family`, с файлами,
-где встречается `sourceLagrangePolynomial`, — **пусто**. В чужом дереве ни того ни другого.
-Объявления `c_N` нет нигде: слово «normalizer» встречается только в докстрингах. `c_n` из
-цепи D0 — другой объект, фурье-коэффициент `⟨V_{n,m}, kTrial_{m,N}⟩`, проверено.
-
-**Что этот вопрос НЕ содержит.** Просьбы подтвердить, что `SIMPLE_EVEN:1` и
-`SIMPLE_EVEN:15` — одна дыра: это установлено прогонами и в судействе не нуждается.
+**Предсказания `R3-P1…P3` закрыты**, все три подтверждены; разбор в
+`cartographer/TRANSLATION_DICTIONARY.md`, запись `hfactor`.
 
 ### Почему отсюда не решается
 
-Диск показывает, что связи нет, но **не говорит, задумывалась ли она**. Вопрос про замысел
-маршрута: должен ли `centeredPstarFamily` в принципе оказаться определителем конечной
-матрицы, или пролатное происхождение семейства делает такой переход категориальной ошибкой.
-Это чтение конструкции, а не проверка факта.
+Диск показывает, что связи нет, и **не показывает, задумывалась ли она**. Вопрос про замысел
+маршрута: должна ли `centeredPstarFamily`, построенная интегральным преобразованием
+`rawFplus = proposition59RawTransform` над пролатной пробной функцией, в принципе оказаться
+пропорциональной конечному лагранжеву многочлену — или пролатное происхождение делает такой
+переход категориальной ошибкой.
 
-И второе: какой из трёх зарегистрированных запретов на кроссвок применим — суждение о
-том, что считать «scalar distribution bridge» и «ambient form» в нашем случае. Ошибиться
-здесь дорого: запрет обнаружится не сразу, а после того, как переход будет построен.
+И второе, тоже суждение: какой из трёх запретов применим — что считать «scalar distribution
+bridge» и «ambient form» в нашем случае. Ошибка обнаружится не сразу, а после того, как
+переход будет построен.
+
+Это ровно её же `STRONGEST ATTACK`, повёрнутая к нам: идеальное доказательство потребителя
+не закрывает маршрут, пока кроссвок неточен. Мы предъявляем форму кроссвока и просим
+приговор форме, а не помощь в её поиске.
 
 ---
+
 ## Q10 · Дрейф головы: свойство представления или сдвиг · ЗАКРЫТ 2026-08-10 — вопрос 2 батча
 
 **Блокирует:** больше ничего · **Стоимость ошибки:** была бы смена представления там, где
