@@ -40,6 +40,45 @@
 
 ---
 
+## 2026-08-11 — B3.0AN: target-floor tail inverted, exact finite Schur sign isolated
+
+**Развилка:** считать вычитание `10^-58` из source-Weil form безопасным по
+одной ambient-оценке либо сначала получить coercivity в полном graph norm и
+только потом строить actual inverse и Schur complement.
+
+**Выбрали:** exact `c₀`-shifted graph operator, convex combination двух
+source-locked lower bounds, actual closed infinite odd tail, literal residual
+и completion of the square при `c₀ = 10^-58`.
+
+**Почему:** ambient coercivity контролирует `a`, weighted-energy lower
+контролирует `b - L a`; их точная выпуклая комбинация даёт положительную
+константу на `a+b=‖x‖²`. Поэтому target-floor tail действительно обратим, а
+оставшаяся неопределённость локализуется в точном конечном Schur operator.
+
+**Что отвергли и почему:** прямое вычитание shift без graph coercivity не
+сохраняет invertibility; scalar inverse ломает block object; `N=480/960`
+подменяет symbolic cutoff; completion identity сама не доказывает знак
+конечного Schur complement.
+
+**Техника:** convex combination exact quadratic lower bounds, Riesz graph
+operator, closed-tail compression, continuous inverse, exact block completion.
+
+**Следующий ход:** получить source-locked positivity certificate для
+`sourceWeilOddTargetFloorSchurComplement`, затем отдельно закрыть literal odd
+form-core bridge.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean`
+· `docs/routeB_bus/GOAL057_B3_0AN_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_REDUCTION_CLOSEOUT_2026-08-11.md`
+· Goal 057 A58.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka не вызывалась, потому
+что обе lower bounds и operator seams уже были kernel-checked. Аргумент —
+точная convex combination и block completion, проверенные Lean и внешним
+production consumer.
+
+---
+
 ## 2026-08-11 — B3.0AM: exact shifted Schur positivity closed, strict c0 kept open
 
 **Развилка:** попытаться сразу назвать положительность already-shifted head

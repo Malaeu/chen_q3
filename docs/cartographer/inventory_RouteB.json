@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 201,
-  "declarations": 1703,
-  "in_docs": 673,
-  "in_lemma_db": 1703,
+  "files_scanned": 202,
+  "declarations": 1733,
+  "in_docs": 675,
+  "in_lemma_db": 1733,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -11815,6 +11815,306 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailResidual.lean",
       "line": 125,
       "signature": "theorem inner_sourceWeilOddTailExplicitCorrection (i : PairIndex) (q r : SourceWeilOddHeadCoefficients i) : inner ℂ (sourceWeilOddTailExplicitCorrection i q) r = inner ℂ ((sourceWeilShiftedOddTailOperator i (sourceWeilOddTailCutoff i)).inverse (sourceWeilOddTailExplicitResidual i q)) (sourceWeilOddTailExplicitResidual i r)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilC0ShiftedGraphOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 28,
+      "signature": "noncomputable def sourceWeilC0ShiftedGraphOperator (i : PairIndex) (c0 : ℝ) : SourceWeilGraphCarrier i →L[ℂ] SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilC0ShiftedGraphOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 36,
+      "signature": "theorem inner_sourceWeilC0ShiftedGraphOperator (i : PairIndex) (c0 : ℝ) (x y : SourceWeilGraphCarrier i) : inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y = sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i y) - (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i x) (sourceWeilGraphAmbient i y)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilC0ShiftedGraphOperator_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 52,
+      "signature": "theorem inner_sourceWeilC0ShiftedGraphOperator_self (i : PairIndex) (c0 : ℝ) (x : SourceWeilGraphCarrier i) : (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) x).re = (sourceWeilSesquilinearForm i (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re - c0 * ‖sourceWeilGraphAmbient i x‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilC0ShiftedGraphOperator_isSymmetric",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 68,
+      "signature": "theorem sourceWeilC0ShiftedGraphOperator_isSymmetric (i : PairIndex) (c0 : ℝ) : (sourceWeilC0ShiftedGraphOperator i c0).IsSymmetric",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilC0ShiftedOddTailOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 101,
+      "signature": "noncomputable def sourceWeilC0ShiftedOddTailOperator (i : PairIndex) (R : ℕ) (c0 : ℝ) : SourceWeilGraphOddTailCarrier i R →L[ℂ] SourceWeilGraphOddTailCarrier i R",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilC0ShiftedOddTailOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 109,
+      "signature": "theorem inner_sourceWeilC0ShiftedOddTailOperator (i : PairIndex) (R : ℕ) (c0 : ℝ) (x y : SourceWeilGraphOddTailCarrier i R) : inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) y = inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 (x : SourceWeilGraphCarrier i)) (y : SourceWeilGraphCarrier i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilC0ShiftedOddTailOperator_graph_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 121,
+      "signature": "theorem sourceWeilC0ShiftedOddTailOperator_graph_lower (i : PairIndex) (R : ℕ) (mu c0 : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) (x : SourceWeilGraphOddTailCarrier i R) : ((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) * ‖x‖ ^ 2 ≤ (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilC0ShiftedOddTailOperator_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 189,
+      "signature": "theorem sourceWeilC0ShiftedOddTailOperator_isPositive (i : PairIndex) (R : ℕ) (mu c0 : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) : (sourceWeilC0ShiftedOddTailOperator i R c0).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilC0ShiftedOddTailOperator_isUnit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 225,
+      "signature": "theorem sourceWeilC0ShiftedOddTailOperator_isUnit (i : PairIndex) (R : ℕ) (mu c0 : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) : IsUnit (sourceWeilC0ShiftedOddTailOperator i R c0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilC0ShiftedOddTailOperator_isInvertible",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 259,
+      "signature": "theorem sourceWeilC0ShiftedOddTailOperator_isInvertible (i : PairIndex) (R : ℕ) (mu c0 : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) : (sourceWeilC0ShiftedOddTailOperator i R c0).IsInvertible",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 269,
+      "signature": "noncomputable def sourceWeilOddTargetFloor : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloor_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 271,
+      "signature": "theorem sourceWeilOddTargetFloor_nonneg : 0 ≤ sourceWeilOddTargetFloor",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloor_lt_half",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 274,
+      "signature": "theorem sourceWeilOddTargetFloor_lt_half : sourceWeilOddTargetFloor < (1 / 2 : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorTail_isInvertible",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 278,
+      "signature": "theorem sourceWeilOddTargetFloorTail_isInvertible (i : PairIndex) : (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i) sourceWeilOddTargetFloor).IsInvertible",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorTail_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 286,
+      "signature": "theorem sourceWeilOddTargetFloorTail_isPositive (i : PairIndex) : (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i) sourceWeilOddTargetFloor).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 294,
+      "signature": "noncomputable def sourceWeilOddTargetFloorResidual (i : PairIndex) : SourceWeilOddHeadCoefficients i →L[ℂ] SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilOddTargetFloorResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 302,
+      "signature": "theorem inner_sourceWeilOddTargetFloorResidual (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : inner ℂ (sourceWeilOddTargetFloorResidual i q) y = inner ℂ (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q)) (y : SourceWeilGraphCarrier i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorInverseWeightedData",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 315,
+      "signature": "noncomputable def sourceWeilOddTargetFloorInverseWeightedData (i : PairIndex) : OddTailInverseWeightedData (SourceWeilOddHeadCoefficients i) (SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) where",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorHeadOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 326,
+      "signature": "noncomputable def sourceWeilOddTargetFloorHeadOperator (i : PairIndex) : SourceWeilOddHeadCoefficients i →L[ℂ] SourceWeilOddHeadCoefficients i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilOddTargetFloorHeadOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 335,
+      "signature": "theorem inner_sourceWeilOddTargetFloorHeadOperator (i : PairIndex) (q r : SourceWeilOddHeadCoefficients i) : inner ℂ (sourceWeilOddTargetFloorHeadOperator i q) r = inner ℂ (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q)) (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) r)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorSchurComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 346,
+      "signature": "noncomputable def sourceWeilOddTargetFloorSchurComplement (i : PairIndex) : SourceWeilOddHeadCoefficients i →L[ℂ] SourceWeilOddHeadCoefficients i",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloorHeadOperator_eq_schur_add_correction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 354,
+      "signature": "theorem sourceWeilOddTargetFloorHeadOperator_eq_schur_add_correction (i : PairIndex) : sourceWeilOddTargetFloorHeadOperator i = sourceWeilOddTargetFloorSchurComplement i + oddTailInverseWeightedCorrection (sourceWeilOddTargetFloorInverseWeightedData i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "re_inner_map_add_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 364,
+      "signature": "private theorem re_inner_map_add_self {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E] (A : E →L[ℂ] E) (x y : E) : (inner ℂ (A (x + y)) (x + y)).re = (inner ℂ (A x) x).re + (inner ℂ (A x) y).re + (inner ℂ (A y) x).re + (inner ℂ (A y) y).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorCorrector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 374,
+      "signature": "noncomputable def sourceWeilOddTargetFloorCorrector (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorBlockVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 381,
+      "signature": "noncomputable def sourceWeilOddTargetFloorBlockVector (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : SourceWeilGraphCarrier i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "re_inner_block_completion",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 388,
+      "signature": "private theorem re_inner_block_completion {Head Tail Ambient : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail] [NormedAddCommGroup Ambient] [InnerProductSpace ℂ Ambient] (A : Ambient →L[ℂ] Ambient) (S : Head →L[ℂ] Ambient) (U : Tail →L[ℂ] Ambient) (H : Head →L[ℂ] Head) (D : OddTailInverseWeightedData Head Tail) (hA : A.IsSymmetric) (hhead : ∀ q, inner ℂ (H q) q = inner ℂ (A (S q)) (S q)) (hres : ∀ q y, inner ℂ (D.residual q) y = inner ℂ (A (S q)) (U y)) (htail : ∀ y, inner ℂ (A (U y)) (U y) = inner ℂ (D.outerBlock y) y) (q : Head) (y : Tail) : let v",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorBlockEnergy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 455,
+      "signature": "noncomputable def sourceWeilOddTargetFloorBlockEnergy (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorSchurEnergy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 463,
+      "signature": "noncomputable def sourceWeilOddTargetFloorSchurEnergy (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilOddTargetFloorCompletedTailEnergy",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 467,
+      "signature": "noncomputable def sourceWeilOddTargetFloorCompletedTailEnergy (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTargetFloor_block_completion",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean",
+      "line": 478,
+      "signature": "theorem sourceWeilOddTargetFloor_block_completion (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : sourceWeilOddTargetFloorBlockEnergy i q y = sourceWeilOddTargetFloorSchurEnergy i q + sourceWeilOddTargetFloorCompletedTailEnergy i q y",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

@@ -7,11 +7,11 @@
       "id": "POST_JUNE_IDENTIFICATION",
       "lexical_count": 0,
       "matched_paths": [
-        "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
         "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
         "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-        "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0-post-p-next-node-adjudication-2026-08-09.md"
+        "qmd://q3-docs/docs/routeb-bus/057-unified-chain-program-delegated-review-goal.md",
+        "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/057-unified-chain-program-delegated-review-goal.md",
+        "qmd://q3-docs/docs/routeb-bus/strip-growth-probe.md"
       ],
       "query": "IdentificationAt",
       "result_count": 30,
@@ -44,12 +44,12 @@
         "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
       ],
       "query": "ActiveCenteredCoeffEntryHboxCert",
-      "result_count": 36,
+      "result_count": 34,
       "status": "PASS",
-      "vector_count": 29
+      "vector_count": 27
     }
   ],
   "schema": "q3_semantic_index_status.v1",
-  "source_commit": "5181032b9e77b1d2ce067522971f6d187c875111",
+  "source_commit": "8c85902c45c94a8079abd4e1e8036547db0a5c18",
   "status": "PASS"
 }
