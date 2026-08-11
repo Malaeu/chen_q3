@@ -330,6 +330,28 @@ Lean или в счёт подлежат сверке с оригиналом г
 величины при этом устойчив: он определяется экспонентой `t₀ ~ e^C`, а не деталями
 множителей.
 
+### R7a · Source correction after visual PDF audit (2026-08-11)
+
+Printed p. 291 has
+
+```
+C₃ = prefactor · ∫_{|t|≤t₀} 2a₀(1+a₀|t|)² dt,
+tail = C₃ · Σ_{|n|>N}(1/(πn))².
+```
+
+The original OCR reconstruction above instead used `C₃ · Σ(a₀/(πn))²`.
+The corrected diagnostic changes the displayed `N` by the exact factor
+`2/a₀ = 2/log(√13)`, from `1.5488372e34` to `2.4153884e34`
+(`R=70` ratio `3.45055e32`).  More importantly, neither number is a proof-grade cutoff:
+the `mpmath` script samples the digamma conditions and does not certify the
+universal `|t| ≥ t₀` inequality or the `C₀` maximum.  Therefore the rows above
+labelled «доказана» are superseded as follows:
+
+- Yoshida Lemma 3 proves existence of some cutoff;
+- the corrected script gives a diagnostic scale only;
+- an explicit production `R` remains open until the inequalities are proved in
+  Lean or by a rigorous enclosure consumed by Lean.
+
 ---
 
 ## R8 · Ledger Мифоса: пол на таблице сертифицирован, но порог `S*` растёт вместе с `N`

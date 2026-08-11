@@ -9,16 +9,17 @@
     C      > µ + C₁(a₀) + 2C₂(a₀)                          при r₁=1, r₂=0, log A_k=0 (поле ℚ)
     t₀     : Re ψ(1/4 + it/2) ≥ C и Re ψ(1/2 + it) ≥ C при |t| ≥ t₀
     C₀     = max_{|t| ≤ t₀} |Re ψ(1/4 + it/2)|
-    C₃     = (C₀ + C)·(1/2π)·∫_{|t| ≤ t₀} (1 + a₀|t|)² dt
-    N      : C₃·Σ_{|n| > N} (a/πn)² < запас над µ
+    C₃     = (C₀ + C)·(1/2π)·∫_{|t| ≤ t₀} 2a₀(1 + a₀|t|)² dt
+    N      : C₃·Σ_{|n| > N} (1/πn)² < запас над µ
 
 Последнее условие и даёт N, поскольку Σ_{|n|>N} n⁻² ≤ 2/N.
 
 Цель прогона — сравнить это N с измеренным `R(μ=1) = 70` (Phase 4, R1) и увидеть, годится
 ли аналитическая граница как рабочая константа или только как доказательство существования.
 
-Read-only. Формулы восстановлены по OCR-слою и требуют сверки с PDF глазами перед
-переносом в Lean — так записано в карточке.
+Read-only diagnostic. Нормализация хвоста визуально сверена с печатной
+p. 291 на 2026-08-11. Поиск `t₀`, максимум `C₀` и итоговый `N` не являются
+интервальными сертификатами и не могут переноситься в Lean как доказанные границы.
 """
 from __future__ import annotations
 
@@ -104,17 +105,18 @@ def main() -> int:
     C0 = mre(digamma(mpc(mpf(1) / 4, t0 / 2)))
     print(f"  C₀ ≈ {mp.nstr(C0, 8)}")
 
-    # ∫_{|t|≤t₀}(1+a₀|t|)²dt = (2/(3a₀))·((1+a₀t₀)³ − 1)
-    integral = (2 / (3 * a0)) * ((1 + a0 * t0) ** 3 - 1)
+    # Paper p.291: ∫_{|t|≤t₀} 2a₀(1+a₀|t|)²dt
+    # = (4/3)·((1+a₀t₀)³ − 1).
+    integral = mpf(4) / 3 * ((1 + a0 * t0) ** 3 - 1)
     C3 = (C0 + C) * integral / (2 * mp.pi)
-    print(f"  ∫_{{|t|≤t₀}}(1+a₀|t|)²dt = {mp.nstr(integral, 8)}")
+    print(f"  ∫_{{|t|≤t₀}}2a₀(1+a₀|t|)²dt = {mp.nstr(integral, 8)}")
     print(f"  C₃ = {mp.nstr(C3, 8)}")
     print()
 
-    # C₃·(a₀/π)²·(2/N) < запас  →  N > 2·C₃·(a₀/π)²/запас
+    # C₃·π⁻²·(2/N) < запас  →  N > 2·C₃/(π²·запас)
     slack = C - threshold
-    N = 2 * C3 * (a0 / mp.pi) ** 2 / slack
-    print(f"  условие: C₃·Σ_{{|n|>N}}(a₀/πn)² < {mp.nstr(slack, 6)}")
+    N = 2 * C3 / (mp.pi ** 2 * slack)
+    print(f"  условие: C₃·Σ_{{|n|>N}}(1/πn)² < {mp.nstr(slack, 6)}")
     print(f"  Σ_{{|n|>N}} n⁻² ≤ 2/N")
     print()
     print(f"  N > {mp.nstr(N, 8)}")
@@ -123,6 +125,7 @@ def main() -> int:
     print(f"  отношение аналитика/замер ≈ {mp.nstr(N / 70, 6)}")
     print()
     print("YOSHIDA_ANALYTIC_N=COMPUTED")
+    print("CERTIFICATION=DIAGNOSTIC_ONLY_NOT_INTERVAL_NOT_LEAN")
     print()
     print("Оценка Yoshida доказывает существование N, а не даёт рабочую константу:")
     print("t₀ входит в C₃ кубически, а сам t₀ экспоненциален по C, поскольку Re ψ ~ log|t|.")
