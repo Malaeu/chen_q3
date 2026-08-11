@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 800" font-family="-apple-system, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="940" height="800" fill="#ffffff"/>
+
+  <text x="30" y="42" font-size="22" font-weight="700" fill="#111827">Конструктор — прогон на примере: вещественность нулей</text>
+  <text x="30" y="66" font-size="13" fill="#6b7280">узел SIMPLE_EVEN:1 · как декомпозитор / композитор собирает доказательство из готовых станков</text>
+
+  <circle cx="38" cy="90" r="6" fill="#0f766e"/><text x="52" y="95" font-size="13" fill="#374151">доказано</text>
+  <circle cx="148" cy="90" r="6" fill="#be123c"/><text x="162" y="95" font-size="13" fill="#374151">открыто</text>
+  <circle cx="252" cy="90" r="6" fill="#6b7280"/><text x="266" y="95" font-size="13" fill="#374151">справка</text>
+
+  <!-- ВХОД-1 (открыто) -->
+  <rect x="30" y="120" width="420" height="88" rx="12" fill="#ffe4e6" stroke="#be123c" stroke-width="2.5"/>
+  <text x="50" y="146" font-size="15" font-weight="700" fill="#be123c">ВХОД-1 · открыто · SIMPLE_EVEN:15</text>
+  <text x="50" y="168" font-size="15" fill="#111827">det_N = charpoly(M_N) + нормировка</text>
+  <text x="50" y="190" font-size="13" fill="#6b7280">c_N_normalizer · lagrangeToXi_bridge</text>
+
+  <!-- ВХОД-2 (доказано) -->
+  <rect x="490" y="120" width="420" height="88" rx="12" fill="#d9f2ee" stroke="#0f766e" stroke-width="2.5"/>
+  <text x="510" y="146" font-size="15" font-weight="700" fill="#0f766e">ВХОД-2 · доказано · симметрия матрицы</text>
+  <text x="510" y="168" font-size="13" fill="#111827">ccmWeilMatFinite_transpose_eq :239 · _centrosymmetric :250</text>
+  <text x="510" y="190" font-size="13" fill="#6b7280">CCMFiniteWeilSourceMatrix.lean · коммит 4c7de4b6</text>
+
+  <line x1="240" y1="208" x2="400" y2="248" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="700" y1="208" x2="540" y2="248" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- СТАНОК А (доказано) -->
+  <rect x="280" y="252" width="380" height="84" rx="12" fill="#d9f2ee" stroke="#0f766e" stroke-width="2.5"/>
+  <text x="300" y="278" font-size="15" font-weight="700" fill="#0f766e">СТАНОК А · доказано · Mathlib + наш β8d</text>
+  <text x="300" y="300" font-size="15" fill="#111827">симметричная / эрмитова ⇒ вещ. спектр</text>
+  <text x="300" y="322" font-size="13" fill="#6b7280">HermitianDeterminantRealZeros.lean:31 · β8d</text>
+
+  <line x1="470" y1="336" x2="470" y2="368" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- УЗЕЛ-ЦЕЛЬ (открыто) -->
+  <rect x="280" y="372" width="380" height="80" rx="12" fill="#ffe4e6" stroke="#be123c" stroke-width="2.5"/>
+  <text x="300" y="398" font-size="15" font-weight="700" fill="#be123c">УЗЕЛ · открыто · SIMPLE_EVEN:1 (MISMATCH)</text>
+  <text x="300" y="420" font-size="15" fill="#111827">нули det_N вещественны, для каждого N</text>
+  <text x="300" y="442" font-size="13" fill="#6b7280">выход дихотомный: да / нет</text>
+
+  <!-- боковая справка -->
+  <rect x="30" y="372" width="212" height="126" rx="12" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+  <text x="46" y="398" font-size="13" fill="#374151">провод = выход одного</text>
+  <text x="46" y="418" font-size="13" fill="#374151">станка совпадает со</text>
+  <text x="46" y="438" font-size="13" fill="#374151">входом другого;</text>
+  <text x="46" y="458" font-size="13" fill="#374151">сверяет компилятор</text>
+  <text x="46" y="478" font-size="13" fill="#374151">Lean (harness)</text>
+
+  <line x1="470" y1="452" x2="470" y2="484" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- СТАНОК Б (доказано) -->
+  <rect x="280" y="488" width="380" height="84" rx="12" fill="#d9f2ee" stroke="#0f766e" stroke-width="2.5"/>
+  <text x="300" y="514" font-size="15" font-weight="700" fill="#0f766e">СТАНОК Б · доказано · Гурвиц-мост</text>
+  <text x="300" y="536" font-size="15" fill="#111827">предел функций с вещественными нулями</text>
+  <text x="300" y="558" font-size="13" fill="#6b7280">(det_N → Ξ) · CanonicalRHRouteSkeleton.lean:145 · G7 условный</text>
+
+  <line x1="470" y1="572" x2="470" y2="604" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- МОСТ (доказано) -->
+  <rect x="280" y="608" width="380" height="64" rx="12" fill="#d9f2ee" stroke="#0f766e" stroke-width="2.5"/>
+  <text x="300" y="634" font-size="15" font-weight="700" fill="#0f766e">МОСТ · доказано · ClassicalXiInterface.lean</text>
+  <text x="300" y="656" font-size="15" fill="#111827">все нули Ξ вещественны ⟺ RH</text>
+
+  <line x1="470" y1="672" x2="470" y2="704" stroke="#334155" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- RH (справка) -->
+  <rect x="330" y="708" width="280" height="48" rx="12" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+  <text x="350" y="738" font-size="15" font-weight="700" fill="#374151">RH · справка — не заявляем (NOT_RH)</text>
+
+  <text x="30" y="786" font-size="13" fill="#6b7280">⟵ Зум-аут: Route B · условная крыша (A ∧ B ∧ C) ⇒ RH · статус: CHALLENGER / NOT_RH</text>
+</svg>
