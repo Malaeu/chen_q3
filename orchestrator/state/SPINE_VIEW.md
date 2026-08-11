@@ -40,6 +40,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | id | date | state | target | boundary | next |
 |---|---|---|---|---|---|
+| EXP-G057-B3-0AM-20260811 | 2026-08-11 | selected | ODD_TAIL_GRADED_RESOLVENT_BOUND13_MISSING | EXPERIMENTAL_NOT_PROMOTED | UNSHIFTED_OR_C0_SHIFTED_ACTUAL_INFINITE_SCHUR_STRICT_LOWER_BOUND_MISSING |
 | EXP-G057-B3-0AL-20260811 | 2026-08-11 | selected | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING | EXPERIMENTAL_NOT_PROMOTED | ODD_TAIL_GRADED_RESOLVENT_BOUND13_MISSING |
 | EXP-G057-B3-0AK-20260811 | 2026-08-11 | selected | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | BOUNDED_LITERAL_SOURCE_RESIDUAL_INTO_ODD_TAIL_MISSING |
 | EXP-G057-B3-0AJ-20260810 | 2026-08-10 | selected | SOURCE_ODD_OUTER_BLOCK_POSITIVE_INVERTIBLE_SUPPLIER_MISSING | EXPERIMENTAL_NOT_PROMOTED | SOURCE_WEIL_ODD_TAIL_AMBIENT_COERCIVITY_EXPLICIT_CUTOFF_SUPPLIER_MISSING |
@@ -59,20 +60,20 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `40`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `34`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `36`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
 
 ## Observability snapshot (derived, non-authoritative)
 - authority: `DERIVED_NONCANONICAL_OBSERVABILITY`
-- snapshot: `OBS_43ad4d7c77596f7ceef7` at `2026-08-11T03:28:21+00:00` from `c0da3d745f5d`
+- snapshot: `OBS_2f10d4284fdd394a3016` at `2026-08-11T04:05:03+00:00` from `5181032b9e77`
 - sources: `8`; stale: `0`; degraded: `1`
 - sorry sites/files: `0` / `0`
 - proof roots/root memberships: `2` / `131`
-- file states/import edges: `3392` / `5673`
-- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2088}`; doomed: `0`
+- file states/import edges: `3393` / `5674`
+- taint status: `{"CONTENT_SCAN_SKIPPED_GENERATED_NONROOT": 1303, "IMPORT_BOUNDARY": 1, "NO_OBSERVED_ISSUE": 2089}`; doomed: `0`
 - axiom dependencies / proof nodes: `10` / `10`
 - numeric checks: `0` `{}`
 - Proshka runs: `53`; observed seconds total/mean/median: `58689` / `1150.8` / `1082`; lower bounds: `1`
@@ -81,14 +82,14 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 | Source | Records | Generated | Stale | Parse | Health |
 |---|---:|---|---|---|---|
-| `autopsy_map` | 9 | 2026-08-11T03:27:15+00:00 | no | PARSED | READY |
-| `dependency_tree` | 10 | 2026-08-11 03:28 UTC | no | PARSED | READY |
-| `numeric_checks` | 0 | 2026-08-11 03:28 UTC | no | PARSED | ZERO_COVERAGE |
-| `proof_graph` | 10 | 2026-08-11 03:28 UTC | no | PARSED | READY |
+| `autopsy_map` | 9 | 2026-08-11T04:00:17+00:00 | no | PARSED | READY |
+| `dependency_tree` | 10 | 2026-08-11 04:05 UTC | no | PARSED | READY |
+| `numeric_checks` | 0 | 2026-08-11 04:05 UTC | no | PARSED | ZERO_COVERAGE |
+| `proof_graph` | 10 | 2026-08-11 04:05 UTC | no | PARSED | READY |
 | `proshka_timing` | 53 | 2026-08-08T18:40:13+02:00 | no | PARSED | READY |
-| `sorry_frontier` | 0 | 2026-08-11 03:28 UTC | no | PARSED | READY |
-| `taint_graph` | 3392 | 2026-08-11 03:28 UTC | no | PARSED | READY |
-| `taint_sources` | 3392 | 2026-08-11 03:28 UTC | no | PARSED | READY |
+| `sorry_frontier` | 0 | 2026-08-11 04:05 UTC | no | PARSED | READY |
+| `taint_graph` | 3393 | 2026-08-11 04:05 UTC | no | PARSED | READY |
+| `taint_sources` | 3393 | 2026-08-11 04:05 UTC | no | PARSED | READY |
 
 ### Slowest recorded Proshka runs
 
@@ -313,12 +314,12 @@ _121 records, 87 cross-file aliases. Query: `./orchestrator/kb.py search <term>`
 - [applied] 11. Sign-Uncertainty Surcharge
 
 ## 6. Recent branch decisions (Progress_Log.md)
+- 2026-08-11 — B3.0AM: exact shifted Schur positivity closed, strict c0 kept open
 - 2026-08-11 — B3.0AL: literal source residual built, quantitative bound kept open
 - 2026-08-11 — B3.0AK: explicit coercivity closed, residual kept separate
 - 2026-08-11 — B3.0AK: low-band mass made uniform over the algebraic odd tail
 - 2026-08-11 — B3.0AK: sampled `t₀` replaced by a symbolic Lean cutoff
 - 2026-08-11 — B3.0AK: algebraic Yoshida tail reaches the literal graph closure
-- 2026-08-11 — Yoshida Lemma 3: printed normalization beats the OCR reconstruction
 - 2026-08-09 — манифест соединён с обратным поиском
 
 ## 7. Recent insights (INSIGHTS.md head)

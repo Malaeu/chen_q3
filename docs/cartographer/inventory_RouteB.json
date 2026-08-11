@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 200,
-  "declarations": 1694,
+  "files_scanned": 201,
+  "declarations": 1703,
   "in_docs": 673,
-  "in_lemma_db": 1694,
+  "in_lemma_db": 1703,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -11925,6 +11925,96 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilSesquilinearForm.lean",
       "line": 152,
       "signature": "theorem sourceWeilSesquilinearForm_re_self_lowerBound (i : PairIndex) (x : sourceArchimedeanShiftedFormDomain i) : -(sourceWeilLowerBoundConstant i * ‖(x : H_m i)‖ ^ 2) ≤ (sourceWeilSesquilinearForm i x x).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "re_inner_map_sub_self",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 27,
+      "signature": "private theorem re_inner_map_sub_self {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E] (A : E →L[ℂ] E) (x y : E) : (inner ℂ (A (x - y)) (x - y)).re = (inner ℂ (A x) x).re - (inner ℂ (A x) y).re - (inner ℂ (A y) x).re + (inner ℂ (A y) y).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilShiftedOddHeadOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 38,
+      "signature": "noncomputable def sourceWeilShiftedOddHeadOperator (i : PairIndex) (R : ℕ) : EuclideanSpace ℂ (Fin R) →L[ℂ] EuclideanSpace ℂ (Fin R)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_sourceWeilShiftedOddHeadOperator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 45,
+      "signature": "theorem inner_sourceWeilShiftedOddHeadOperator (i : PairIndex) (R : ℕ) (q r : EuclideanSpace ℂ (Fin R)) : inner ℂ (sourceWeilShiftedOddHeadOperator i R q) r = inner ℂ (sourceWeilShiftedGraphOperator i (sourceWeilGraphOddHeadSynthesis i R q)) (sourceWeilGraphOddHeadSynthesis i R r)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddHeadOperator_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 58,
+      "signature": "theorem sourceWeilShiftedOddHeadOperator_isPositive (i : PairIndex) (R : ℕ) : (sourceWeilShiftedOddHeadOperator i R).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "inverseWeightedCorrection_le_compression_of_block",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 65,
+      "signature": "private theorem inverseWeightedCorrection_le_compression_of_block {Head Tail Ambient : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail] [NormedAddCommGroup Ambient] [InnerProductSpace ℂ Ambient] (A : Ambient →L[ℂ] Ambient) (S : Head →L[ℂ] Ambient) (U : Tail →L[ℂ] Ambient) (D : OddTailInverseWeightedData Head Tail) (hA : A.IsPositive) (hres : ∀ x y, inner ℂ (D.residual x) y = inner ℂ (A (S x)) (U y)) (htail : ∀ y, inner ℂ (A (U y)) (U y) = inner ℂ (D.outerBlock y) y) (x : Head) : (inner ℂ (oddTailInverseWeightedCorrection D x) x).re ≤ (inner ℂ (A (S x)) (S x)).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailExplicitCorrection_le_shiftedHead",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 115,
+      "signature": "theorem sourceWeilOddTailExplicitCorrection_le_shiftedHead (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) : (inner ℂ (sourceWeilOddTailExplicitCorrection i q) q).re ≤ (inner ℂ (sourceWeilShiftedOddHeadOperator i (sourceWeilOddTailCutoff i) q) q).re",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceWeilShiftedOddHeadSchurComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 175,
+      "signature": "noncomputable def sourceWeilShiftedOddHeadSchurComplement (i : PairIndex) : SourceWeilOddHeadCoefficients i →L[ℂ] SourceWeilOddHeadCoefficients i",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddHeadSchurComplement_isPositive",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 186,
+      "signature": "theorem sourceWeilShiftedOddHeadSchurComplement_isPositive (i : PairIndex) : (sourceWeilShiftedOddHeadSchurComplement i).IsPositive",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceWeilShiftedOddHeadOperator_eq_schur_add_correction",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean",
+      "line": 205,
+      "signature": "theorem sourceWeilShiftedOddHeadOperator_eq_schur_add_correction (i : PairIndex) : sourceWeilShiftedOddHeadOperator i (sourceWeilOddTailCutoff i) = sourceWeilShiftedOddHeadSchurComplement i + sourceWeilOddTailExplicitCorrection i",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

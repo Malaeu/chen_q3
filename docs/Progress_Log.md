@@ -40,6 +40,49 @@
 
 ---
 
+## 2026-08-11 — B3.0AM: exact shifted Schur positivity closed, strict c0 kept open
+
+**Развилка:** попытаться сразу назвать положительность already-shifted head
+compression строгим `c₀`-floor либо сначала элиминировать буквальный
+бесконечный odd tail и зафиксировать точный Schur complement без смены
+объекта.
+
+**Выбрали:** literal Euclidean low-odd-head synthesis, actual shifted
+source-Weil graph operator, exact B3.0AK infinite tail, actual B3.0AL
+`R† C⁻¹ R` correction и graph vector `S q - C⁻¹ R q`.
+
+**Почему:** positivity полного shifted operator на этом graph vector даёт
+точное cancellation-preserving неравенство correction ≤ head и PSD exact
+Schur complement; это source-locked бесконечномерный факт, который можно
+доказать локально, не подменяя ещё отсутствующую строгую константу.
+
+**Что отвергли и почему:** shifted semidefinite positivity нельзя переименовать
+в strict unshifted `c₀` floor; scalar outer inverse и raw residual norm теряют
+block cancellation; finite `N=480/960` Schur matrices не являются exact
+closed-tail operator и не доказывают uniform infinite lower bound.
+
+**Техника:** exact block-operator algebra, positivity на
+`S q - C⁻¹ R q`, continuous-linear-map adjoints и literal infinite-tail
+compression.
+
+**Следующий ход:** построить unshifted либо правильно `c₀`-shifted actual
+infinite Schur comparison и доказать его строгий cancellation-sensitive lower
+bound; только после этого закрывать `OddTailGradedResolventBound13`.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilShiftedOddHeadSchur.lean`
+· `docs/routeB_bus/GOAL057_B3_0AM_SOURCE_WEIL_SHIFTED_ODD_HEAD_SCHUR_CLOSEOUT_2026-08-11.md`
+· Goal 057 A57.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka не вызывалась, потому
+что exact block identity и positivity были локально исполнимы из уже
+kernel-checked B3.0AK/B3.0AL suppliers. Аргумент — полный shifted quadratic
+form на exact graph vector раскладывается в literal head минус actual
+inverse-weighted correction; Lean и внешний production consumer это
+проверили.
+
+---
+
 ## 2026-08-11 — B3.0AL: literal source residual built, quantitative bound kept open
 
 **Развилка:** моделировать `R_out` конечной матрицей, заменить внешний блок
