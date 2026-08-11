@@ -329,6 +329,64 @@ MatrixOrder`; без них — `failed to synthesize PartialOrder ℂ`. Это 
 
 ---
 
+## hfactor · разложение семейства через определитель · РАЗРЫВ ПОДТВЕРЖДЁН
+
+Прогон №3, 2026-08-11. Вход — единственный оставшийся вход прогона №2.
+
+**Наша формулировка.**
+
+```lean
+hfactor : ∀ i z, C.Pstar.family i z = unit i z * ((D i).charpoly.eval z * realFactor i z)
+```
+
+**Что стоит за каждым куском — прочитано с диска.**
+
+`C.Pstar` **инстанцирована**, вопреки ожиданию: `D0CanonicalApproximation.lean:83`,
+`Pstar := ⟨centeredPstarFamily D.kTrial⟩`. А `centeredPstarFamily` — это
+
+```lean
+(centeredXi 0 / rawFplus D i.1 0) * rawFplus D i.1 z
+rawFplus D i z := proposition59RawTransform (logLength i) (modeSet i) (D.kTrial i) (-z)
+```
+
+то есть **интегральное преобразование**, аналитический объект.
+
+Правая же часть — `charpoly` конечной матрицы, объект алгебраический.
+
+**Разложение у нас есть — но не для того семейства.**
+
+```
+RankOneCorrectionQuotientCharpoly.lean:139
+  sourceLagrangePolynomial_eq_signed_quotient_charpoly
+    (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) ⟹
+      sourceLagrangePolynomial lam xi = -(C ((-1)^card n) * (rankOneCorrectionQuotientEnd …).charpoly)
+```
+
+Это ровно `hfactor` с `unit = C ((-1)^card n)` (ненулевая константа) и тривиальным
+`realFactor` — доказанное, почти без гипотез. Но левая часть здесь
+`sourceLagrangePolynomial`, конечный многочлен, а не `centeredPstarFamily`.
+
+**Мера разрыва.** `centeredPstarFamily` встречается в дереве 20 раз, в пяти файлах
+(`D0StripMontelRefinement`, `D0ProlateKTrialSource`, `D0CanonicalApproximation`,
+`D0PostAnchorMontel`, `D0CriticalMomentStripBound`). Теорем, связывающих её с `charpoly`,
+`det` или Лагранжем — **ни одной**.
+
+**Вывод прогона: `hfactor` — не сантехника.** Это утверждение «аналитическое интегральное
+преобразование есть определитель конечной матрицы»: переход с аналитической стороны на
+алгебраическую. Это и есть содержание маршрута, а не недостающая склейка.
+
+Отсюда же уточняется прежняя формулировка `SIMPLE_EVEN:1`. «Доказана для конкретной семьи,
+слот просит абстрактную `C.Pstar.family`» звучало как расхождение области. На деле обе
+семьи конкретны и **разные по природе**: Лагранж конечно-алгебраичен, `centeredPstarFamily`
+аналитична. Расхождение не в общности, а в стороне.
+
+**Проверено.** `rg` по всему дереву; прочитаны `D0CanonicalApproximation.lean:55-90`,
+`RankOneCorrectionQuotientCharpoly.lean:139`, `RankOneCorrectionLagrangeRealZeros.lean:41`;
+подсчёт вхождений. Компиляции не требовалось: утверждение о **наличии** теорем, а не об их
+применимости. 2026-08-11.
+
+---
+
 ## Что попадёт сюда следующим
 
 Остальные незакрытые шаги из `cheap.py`, по цене:
