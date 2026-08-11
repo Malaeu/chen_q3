@@ -40,6 +40,47 @@
 
 ---
 
+## 2026-08-11 — B3.0AO: all-N m=13 Schur receiver, sign still open
+
+**Развилка:** выбрать один удобный `PairIndex.N` для сертификата либо
+зафиксировать source-safe цель, которая не позволяет вспомогательной координате
+изменить смысл `m = 13` source cell.
+
+**Выбрали:** предикат
+`SourceWeilOddTargetFloorSchurPositive13 := ∀ N, Schur(13,N).IsPositive`,
+плюс точные scalar-energy и full head–tail block receivers.
+
+**Почему:** `PairIndex.N` не является параметром source-Weil объекта в этой
+ветке, но одиночная специализация оставляла бы дыру в кванторе. Универсальный
+receiver закрывает эту дыру, не требуя ложного перехода от finite numerics.
+Lean отдельно подтвердил `N`-независимость analytic cutoff, lower-bound
+constant и literal head synthesis.
+
+**Что отвергли и почему:** один удобный `N` не доказывает source-cell fact;
+грубое `rfl`-равенство всех больших graph-carrier operators раскручивает
+огромные noncomputable objects и не нужно для честной цели; `N=480/960`
+остаётся диагностикой, а не symbolic Schur certificate.
+
+**Техника:** exact symmetry, completion at the actual inverse-weighted
+corrector, positivity iff quadratic energy, universal quantifier receiver,
+production importing consumer.
+
+**Следующий ход:** после отдельного owner OK отправить в тот же живой phase chat
+byte-locked B3.0AO MINT; требовать certificate architecture ровно для
+`SourceWeilOddTargetFloorSchurPositive13`.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReceiver.lean`
+·
+`docs/routeB_bus/GOAL057_B3_0AO_TARGET_FLOOR_SCHUR_RECEIVER_CLOSEOUT_2026-08-11.md`
+· Goal 057 A59.
+
+**Чей вердикт и аргумент:** local Codex proof; Proshka ещё не вызывалась.
+Аргумент — all-`N` receiver устраняет кванторную подмену, а две exact iff
+формы показывают единственный оставшийся знак без его предположения.
+
+---
+
 ## 2026-08-11 — B3.0AN: target-floor tail inverted, exact finite Schur sign isolated
 
 **Развилка:** считать вычитание `10^-58` из source-Weil form безопасным по

@@ -1809,6 +1809,20 @@
   ]
  },
  {
+  "atom": "add_zero",
+  "n_files": 8,
+  "files": [
+   "CCMFiniteWeilSourceMatrixN1.lean",
+   "D0Mode4JacobiSchurContinuant.lean",
+   "D0Mode4SchurHermitianSymmetrization.lean",
+   "D0PstarSourceModeCosineCCMQKernel.lean",
+   "D0PstarSourceWeilOddTailCoercivityClosure.lean",
+   "D0PstarSourceWeilOddTailGraphOperator.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean",
+   "WeightedRayleighProjectiveDefect.lean"
+  ]
+ },
+ {
   "atom": "dist_eq_norm",
   "n_files": 8,
   "files": [
@@ -2055,19 +2069,6 @@
    "D0ScaledJacobiForcedReceiver.lean",
    "RankOneCorrectionLagrangeIdentity.lean",
    "WeightedSpectralTempleCore.lean"
-  ]
- },
- {
-  "atom": "add_zero",
-  "n_files": 7,
-  "files": [
-   "CCMFiniteWeilSourceMatrixN1.lean",
-   "D0Mode4JacobiSchurContinuant.lean",
-   "D0Mode4SchurHermitianSymmetrization.lean",
-   "D0PstarSourceModeCosineCCMQKernel.lean",
-   "D0PstarSourceWeilOddTailCoercivityClosure.lean",
-   "D0PstarSourceWeilOddTailGraphOperator.lean",
-   "WeightedRayleighProjectiveDefect.lean"
   ]
  },
  {
@@ -4946,6 +4947,15 @@
   ]
  },
  {
+  "atom": "add_nonneg",
+  "n_files": 3,
+  "files": [
+   "D0PstarSourceModeCosineCCMQKernel.lean",
+   "D0PstarSourceWeilOddTailExplicitCoercivity.lean",
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
   "atom": "add_assoc",
   "n_files": 3,
   "files": [
@@ -6926,14 +6936,6 @@
   "files": [
    "D0PstarSourceModeCosineCCMQKernel.lean",
    "D0PstarSourceW02ModePairing.lean"
-  ]
- },
- {
-  "atom": "add_nonneg",
-  "n_files": 2,
-  "files": [
-   "D0PstarSourceModeCosineCCMQKernel.lean",
-   "D0PstarSourceWeilOddTailExplicitCoercivity.lean"
   ]
  },
  {
@@ -12726,6 +12728,83 @@
   "n_files": 1,
   "files": [
    "D0PstarSourceWeilOddTailResidual.lean"
+  ]
+ },
+ {
+  "atom": "A.IsSymmetric",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "hA.isSelfAdjoint.adjoint_conj",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "ContinuousLinearMap.comp_assoc",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "h.isSymmetric",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "h.re_inner_nonneg_left",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "re_inner_nonneg_left",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "neg_add_cancel",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "ContinuousLinearMap.map_zero",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "inner_zero_left",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "Complex.zero_re",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
+  ]
+ },
+ {
+  "atom": "PairIndex.mk",
+  "n_files": 1,
+  "files": [
+   "D0PstarSourceWeilOddTargetFloorSchurReceiver.lean"
   ]
  },
  {
