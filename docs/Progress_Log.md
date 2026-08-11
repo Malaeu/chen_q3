@@ -40,6 +40,40 @@
 
 ---
 
+## 2026-08-11 — B3.0AK: sampled `t₀` replaced by a symbolic Lean cutoff
+
+**Развилка:** импортировать найденный `mpmath`-порог для digamma или вывести
+неоптимальный, но полностью доказанный high-frequency cutoff из production symbol.
+
+**Выбрали:** kernel-checked порог
+`exp (C + |log π| + 6) ≤ |t|`, из которого следует
+`C ≤ sourceArchimedeanMultiplier t`.
+
+**Почему:** остаток Стилтьеса уже формализован; он даёт нижнюю оценку через
+`log ‖1/4 + iπt‖`, а `‖1/4 + iπt‖ ≥ |t|`. Это полностью убирает sampled
+maximum и внешний numerical certificate из первой половины Yoshida.
+
+**Что отвергли и почему:** отвергли `t₀ ≈ 1.7419251e11` как Lean-вход — это
+диагностика по точкам, а требование источника квантифицировано по всем
+`|t| ≥ t₀`.
+
+**Техника:** `re_digamma_remainder_bound_stieltjes`, явные bounds `2` и `4`
+для correction/remainder, монотонность `Real.log` и `Real.log_exp`.
+
+**Следующий ход:** доказать второй независимый leg Yoshida — явную оценку
+low-frequency Fourier mass для algebraic high odd modes — и только затем
+собрать source-Weil coercivity с bounded W02/Prime.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean` ·
+`sourceArchimedeanMultiplier_ge_logNorm_sub_explicitShift` ·
+`sourceArchimedeanMultiplier_ge_of_exp_shift_le_abs`.
+
+**Чей вердикт и аргумент:** local Codex proof from the source-locked production
+digamma remainder; внешний numerical verdict не потреблялся.
+
+---
+
 ## 2026-08-11 — B3.0AK: algebraic Yoshida tail reaches the literal graph closure
 
 **Развилка:** пытаться формализовать source cutoff и топологическое замыкание
