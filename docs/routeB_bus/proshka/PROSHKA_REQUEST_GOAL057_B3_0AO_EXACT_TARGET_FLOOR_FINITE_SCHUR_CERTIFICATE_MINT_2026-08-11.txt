@@ -1,4 +1,4 @@
-# CONTROLLING REQUEST — GOAL 057 B3.0AO CERTIFICATE ARCHITECTURE MINT
+# CONTROLLING REQUEST — GOAL 057 B3.0AO/AP CERTIFICATE ARCHITECTURE MINT
 
 ```yaml
 call_class: DELEGATED_STRATEGIC_REVIEW
@@ -15,9 +15,9 @@ phase_key:
 source_lock:
   repo: Malaeu/chen_q3
   branch: rh_clean
-  commit: 9c922699411323b86fd0e841439c89a8fe2f49ab
-  previous_commit: 11b1dbf72df103843c12fef6be18cc532d61f2cc
-  previous_math_commit: c993d5cc46f0803c4b3e8887569b3300ffe16b34
+  commit: 34983ff56ca854de817d8ef3fba182912a5d2b41
+  previous_commit: 760e9106c2e784f328014e03246fa2f08c8daa5f
+  previous_math_commit: 9c922699411323b86fd0e841439c89a8fe2f49ab
 scope:
   route: CHALLENGER_NOT_RH
   bus_010: VOID
@@ -38,13 +38,16 @@ Apply the card DUALs and cite the card ID for any kill they instantiate.
 
 ## Why this is a MINT boundary
 
-B3.0AN closed the local infinite-tail algebra.  B3.0AO then fixed the honest
-kernel receiver, its universal auxiliary-`N` quantifier at source cell
-`m = 13`, and exact scalar/full-block equivalences.  A new proof-grade
-certificate architecture is still required for the remaining exact finite
-sign.  This is not an ordinary goal-close review and not a request to bless
-finite numerics.  The phase key is unchanged; continue this one living phase
-chat.
+B3.0AN closed the local infinite-tail algebra. B3.0AO fixed the honest all-`N`
+kernel receiver and exact scalar/full-block equivalences. B3.0AP then proved
+in Lean that, at fixed source cell `m = 13`, the carrier, target-floor graph
+operator, Schur operator and Schur energy are definitionally independent of
+auxiliary `PairIndex.N`. It reduced the all-`N` target to one canonical source
+object and exposed its exact corrected CCM energy at the symbolic source
+cutoff. A new proof-grade certificate architecture is still required for the
+remaining sign. This is not an ordinary goal-close review and not a request to
+bless finite numerics. The phase key is unchanged; continue this one living
+phase chat.
 
 ## New kernel-checked facts
 
@@ -77,27 +80,73 @@ def SourceWeilOddTargetFloorSchurPositive13 : Prop :=
 
 It proves symmetry, the scalar-energy and full-block receivers, and
 `N`-independence of the analytic cutoff, lower-bound constant and literal odd
-head synthesis.  It deliberately does not claim equality of the large graph
-carrier objects or prove the target predicate.
+head synthesis.
 
-Lean, target/full builds, external consumer, 12/12 receiver declarations,
-203/203 Route B files, 102/102 tests, strict Spine and three SQLite checks
-pass.  Public axioms are only `propext`, `Classical.choice`, `Quot.sound`.
+The B3.0AP production matrix receiver, SHA-256
+`79f98c1c3da54ccef698c35df9acc7b3f59a5ab8d947deeca1003571dd533d90`,
+proves by definitional equality that the graph carrier, target-floor graph
+operator, exact Schur operator and Schur energy are the same for all auxiliary
+`N` at `m = 13`. It defines
+
+```lean
+sourceWeilOddCanonicalIndex13 := PairIndex.mk 13 0 (by norm_num)
+```
+
+and proves both
+
+```lean
+SourceWeilOddTargetFloorSchurPositive13 ↔
+  (sourceWeilOddTargetFloorSchurComplement
+    sourceWeilOddCanonicalIndex13).IsPositive
+```
+
+and an exact iff with the canonical corrected CCM quadratic energy: the
+`ccmWeilMatFinite 13 sourceWeilOddTailCutoff` form minus the target-floor
+scalar form minus the actual infinite-tail inverse-weighted correction.
+
+The value `N = 0` is only a canonical auxiliary representative. It is not a
+zero-dimensional head: the head size remains
+`sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13`.
+
+Lean, target/full builds, external consumer, 10/10 new declarations, 204/204
+Route B files, 102/102 tests, strict Spine and three SQLite checks pass. Public
+axioms are only `propext`, `Classical.choice`, `Quot.sound`.
 
 ## Exact desired conclusion
 
-Select a source-compatible proof architecture whose first kernel-facing
-conclusion is exactly:
+Select a source-compatible proof architecture whose first missing
+kernel-facing sign is exactly the canonical corrected energy:
+
+```lean
+∀ q : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13,
+  0 ≤ ((∑ j, ∑ k,
+      star ((ccmOddCoefficientIsometry
+        (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
+        (Q3.RouteB.ccmWeilMatFinite 13
+          (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
+          j k : ℂ) *
+        (ccmOddCoefficientIsometry
+          (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) k) -
+    (sourceWeilOddTargetFloor : ℂ) * inner ℂ q q -
+    inner ℂ
+      (oddTailInverseWeightedCorrection
+        (sourceWeilOddTargetFloorInverseWeightedData
+          sourceWeilOddCanonicalIndex13) q) q).re
+```
+
+B3.0AP already proves that this exact statement is equivalent to:
 
 ```lean
 SourceWeilOddTargetFloorSchurPositive13
 ```
 
-The attached receiver has already fixed the `m = 13` quantifier and prevents
-a proof for one convenient `PairIndex.N` from being relabelled as a source
-fact.  If your architecture first proves an equivalent theorem, give the
-exact Lean conversion into this predicate.  Do not weaken it to one `N`, and
-do not widen it to all `i` unless the attached source really supplies it.
+The attached receiver has proved that auxiliary `PairIndex.N` does not change
+this source object at fixed `m = 13`. A proof at the canonical representative
+is therefore exact, not a fixed-`N` surrogate. If your architecture first
+proves another equivalent theorem, give the exact Lean conversion into the
+canonical corrected energy and then into the target predicate. Do not read
+canonical `N = 0` as the head dimension, and do not widen the target to all
+`i` unless the attached source really supplies it.
 
 After this finite sign, a separate literal odd head-plus-tail form-core bridge
 is still required before any whole odd-space `10^-58` floor.  Do not claim that
@@ -108,16 +157,16 @@ later bridge here.
 ```yaml
 source_object: sourceWeilC0ShiftedGraphOperator at c0=10^-58 on the exact source-Weil graph carrier
 terminal_consumer: m=13 odd source-Weil constant floor, later Goal057 numerator bridge
-missing_implication: SourceWeilOddTargetFloorSchurPositive13
+missing_implication: exact canonical corrected CCM energy nonnegativity, hence SourceWeilOddTargetFloorSchurPositive13
 preserved_invariants:
   - literal source-Weil form and graph topology
   - exact infinite closed tail and its actual inverse
   - c0 fixed at 10^-58
   - odd parity normalization
   - no finite-to-infinite extrapolation
-quantifier_scope: all N at fixed m=13, exactly as packaged by SourceWeilOddTargetFloorSchurPositive13
+quantifier_scope: one canonical auxiliary representative, kernel-proved equivalent to all N at fixed m=13
 domain: exact Euclidean head at the proved analytic tail cutoff plus actual closed infinite odd tail
-blocker_id: EXACT_TARGET_FLOOR_FINITE_SCHUR_POSITIVITY_CERTIFICATE_MISSING
+blocker_id: EXACT_CANONICAL_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE_MISSING
 ```
 
 The critical mismatch is concrete:
@@ -136,9 +185,9 @@ The critical mismatch is concrete:
 3. B3.0AK proves the actual infinite tail only at the symbolic analytic
    cutoff, not at `R=70`.  Therefore the existing 70-by-70 corrected-head PASS
    is not yet a certificate for the attached exact Schur operator.
-4. B3.0AO proves exact equivalence with scalar Schur energy and the complete
-   head--tail block energy for every auxiliary `N`.  Those receivers expose
-   the sign obligation; they do not establish it.
+4. B3.0AP proves that the all-`N` object is exactly one canonical object and
+   rewrites its Schur energy as the corrected CCM expression at the symbolic
+   cutoff. This removes an artificial quantifier but does not establish sign.
 
 ## Candidate theorem shapes to adjudicate
 
@@ -175,6 +224,7 @@ missing estimate.
 
 - no `N=480/960` extrapolation, Aitken, fitted convergence or stable-pivot
   promotion;
+- no interpretation of canonical auxiliary `N=0` as a zero-dimensional head;
 - no substitution of the 70-head finite-cut matrix for the exact symbolic
   Schur operator without a theorem connecting them;
 - no moving `c0`, parity convention, tail cutoff or source form after seeing
@@ -256,9 +306,9 @@ rh_claim: NOT_MADE
 
 ## Git log
 
+34983ff5 [MacOS][rh_clean][Proof] Canonicalize the exact m=13 Schur matrix receiver
+760e9106 [MacOS][rh_clean][Review] Relock B3.0AO mint to exact all-N receiver
 9c922699 [MacOS][rh_clean][Proof] Fix the exact m=13 all-N Schur certificate receiver
-11b1dbf7 [MacOS][rh_clean][Review] Prepare B3.0AO exact Schur certificate mint
-c993d5cc [MacOS][rh_clean][Proof] Reduce exact odd target floor to finite Schur sign
 
 
 ## File: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean
@@ -1251,3 +1301,307 @@ projection-leakage decay, or the continuum numerator.  The coarse ledger stays
 - preserved the unrelated PDF and dependency-local UnicodeBasic state;
 - made no Proshka call, Aristotle submission, N=480/N=960 run, route
   promotion, Bus 010 action, Goal 055 release, PX request, or RH claim.
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean
+
+import Q3.Proofs.RouteB.D0PstarSourceWeilOddTargetFloorSchurReceiver
+import Q3.Proofs.RouteB.D0PstarSourceWeilOddFormPullback13
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 3000000
+
+noncomputable section
+
+open Complex
+open scoped BigOperators ComplexConjugate
+
+namespace Q3.RouteB.D0Pstar
+
+/-!
+# Canonical `m = 13` matrix receiver for the target-floor Schur sign
+
+B3.0AO fixed the honest all-auxiliary-`N` target but deliberately exported
+only three cheap `N`-independence facts.  Here Lean checks the stronger fact:
+at fixed source cell `m = 13`, the graph carrier, target-floor operator and
+exact Schur complement are definitionally independent of `PairIndex.N`.
+Consequently the universal target is equivalent to one canonical `N = 0`
+representative without weakening the source statement.
+
+The literal odd graph head is also definitionally the existing B3.0AF odd
+CCM synthesis.  This gives an exact pairing formula for the Schur complement
+as the source matrix form, minus the target-floor scalar form, minus the
+actual inverse-weighted infinite-tail correction.
+
+No sign is proved.  The symbolic analytic cutoff and actual tail inverse are
+preserved, and no finite `N = 480/960` surrogate is introduced.
+-/
+
+/-- Canonical auxiliary representative of the source cell `m = 13`. -/
+def sourceWeilOddCanonicalIndex13 : PairIndex :=
+  PairIndex.mk 13 0 (by norm_num)
+
+/-- The large source graph carrier at fixed `m = 13` is definitionally
+independent of the auxiliary Galerkin coordinate. -/
+theorem sourceWeilGraphCarrier_13_N_irrelevant
+    (N M : ℕ) :
+    SourceWeilGraphCarrier (PairIndex.mk 13 N (by norm_num)) =
+      SourceWeilGraphCarrier (PairIndex.mk 13 M (by norm_num)) := by
+  rfl
+
+/-- The exact target-floor graph operator at fixed `m = 13` is independent of
+the auxiliary Galerkin coordinate. -/
+theorem sourceWeilC0ShiftedGraphOperator_13_N_irrelevant
+    (N M : ℕ) :
+    sourceWeilC0ShiftedGraphOperator
+        (PairIndex.mk 13 N (by norm_num)) sourceWeilOddTargetFloor =
+      sourceWeilC0ShiftedGraphOperator
+        (PairIndex.mk 13 M (by norm_num)) sourceWeilOddTargetFloor := by
+  rfl
+
+/-- The exact target-floor Schur operator at fixed `m = 13` is definitionally
+the same operator for every auxiliary `PairIndex.N`. -/
+theorem sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant
+    (N M : ℕ) :
+    sourceWeilOddTargetFloorSchurComplement
+        (PairIndex.mk 13 N (by norm_num)) =
+      sourceWeilOddTargetFloorSchurComplement
+        (PairIndex.mk 13 M (by norm_num)) := by
+  rfl
+
+/-- The scalar Schur energy at fixed `m = 13` is likewise independent of the
+auxiliary coordinate. -/
+theorem sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant
+    (N M : ℕ) :
+    sourceWeilOddTargetFloorSchurEnergy
+        (PairIndex.mk 13 N (by norm_num)) =
+      sourceWeilOddTargetFloorSchurEnergy
+        (PairIndex.mk 13 M (by norm_num)) := by
+  rfl
+
+/-- The all-`N` target is exactly one canonical source-cell statement, not a
+weaker fixed-`N` surrogate. -/
+theorem sourceWeilOddTargetFloorSchurPositive13_iff_canonical :
+    SourceWeilOddTargetFloorSchurPositive13 ↔
+      (sourceWeilOddTargetFloorSchurComplement
+        sourceWeilOddCanonicalIndex13).IsPositive := by
+  constructor
+  · intro h
+    exact h 0
+  · intro h N
+    simpa [sourceWeilOddCanonicalIndex13] using h
+
+/-- The literal graph-head synthesis is definitionally the already verified
+normalized odd CCM synthesis at the same head size. -/
+theorem sourceWeilGraphOddHeadSynthesis13_eq_sourceWeilOddSynthesis13
+    (R : ℕ) (q : EuclideanSpace ℂ (Fin R)) :
+    sourceWeilGraphDomain sourceWeilOddCanonicalIndex13
+        (sourceWeilGraphOddHeadSynthesis
+          sourceWeilOddCanonicalIndex13 R q) =
+      sourceWeilOddSynthesis13 R q := by
+  rfl
+
+/-- Exact source-matrix formula for the canonical target-floor head pairing. -/
+theorem inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm
+    (q r : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13) :
+    inner ℂ
+        (sourceWeilOddTargetFloorHeadOperator
+          sourceWeilOddCanonicalIndex13 q) r =
+      (∑ j, ∑ k,
+          star ((ccmOddCoefficientIsometry
+            (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
+            (Q3.RouteB.ccmWeilMatFinite 13
+              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
+              j k : ℂ) *
+            (ccmOddCoefficientIsometry
+              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) k) -
+        (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r := by
+  rw [inner_sourceWeilOddTargetFloorHeadOperator]
+  rw [inner_sourceWeilC0ShiftedGraphOperator]
+  change sourceWeilSesquilinearForm sourceWeilOddCanonicalIndex13
+      (sourceWeilOddSynthesis13
+        (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q)
+      (sourceWeilOddSynthesis13
+        (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) -
+      (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r = _
+  rw [sourceWeilOddFormPullback13]
+
+/-- Exact corrected finite-matrix formula for the canonical Schur pairing.
+The last term is the actual infinite-tail inverse-weighted correction. -/
+theorem inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm
+    (q r : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13) :
+    inner ℂ
+        (sourceWeilOddTargetFloorSchurComplement
+          sourceWeilOddCanonicalIndex13 q) r =
+      (∑ j, ∑ k,
+          star ((ccmOddCoefficientIsometry
+            (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
+            (Q3.RouteB.ccmWeilMatFinite 13
+              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
+              j k : ℂ) *
+            (ccmOddCoefficientIsometry
+              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) r) k) -
+        (sourceWeilOddTargetFloor : ℂ) * inner ℂ q r -
+        inner ℂ
+          (oddTailInverseWeightedCorrection
+            (sourceWeilOddTargetFloorInverseWeightedData
+              sourceWeilOddCanonicalIndex13) q) r := by
+  unfold sourceWeilOddTargetFloorSchurComplement
+  unfold oddTailSchurComplement
+  rw [ContinuousLinearMap.sub_apply, inner_sub_left]
+  rw [inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm]
+
+/-- Final kernel receiver: the exact all-`N`, `m = 13` target is equivalent
+to nonnegativity of one canonical corrected CCM energy at the symbolic source
+cutoff.  This theorem exposes but does not prove the missing finite sign. -/
+theorem sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy :
+    SourceWeilOddTargetFloorSchurPositive13 ↔
+      ∀ q : SourceWeilOddHeadCoefficients sourceWeilOddCanonicalIndex13,
+        0 ≤ ((∑ j, ∑ k,
+            star ((ccmOddCoefficientIsometry
+              (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) j) *
+              (Q3.RouteB.ccmWeilMatFinite 13
+                (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13)
+                j k : ℂ) *
+              (ccmOddCoefficientIsometry
+                (sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13) q) k) -
+          (sourceWeilOddTargetFloor : ℂ) * inner ℂ q q -
+          inner ℂ
+            (oddTailInverseWeightedCorrection
+              (sourceWeilOddTargetFloorInverseWeightedData
+                sourceWeilOddCanonicalIndex13) q) q).re := by
+  rw [sourceWeilOddTargetFloorSchurPositive13_iff_canonical]
+  rw [sourceWeilOddTargetFloorSchurComplement_isPositive_iff_energy]
+  simp only [sourceWeilOddTargetFloorSchurEnergy]
+  constructor
+  · intro h q
+    rw [inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm] at h
+    exact h q
+  · intro h q
+    rw [inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm]
+    exact h q
+
+#print axioms sourceWeilGraphCarrier_13_N_irrelevant
+#print axioms sourceWeilC0ShiftedGraphOperator_13_N_irrelevant
+#print axioms sourceWeilOddTargetFloorSchurComplement_13_N_irrelevant
+#print axioms sourceWeilOddTargetFloorSchurEnergy_13_N_irrelevant
+#print axioms sourceWeilOddTargetFloorSchurPositive13_iff_canonical
+#print axioms sourceWeilGraphOddHeadSynthesis13_eq_sourceWeilOddSynthesis13
+#print axioms inner_sourceWeilOddTargetFloorHeadOperator13_eq_ccm
+#print axioms inner_sourceWeilOddTargetFloorSchurComplement13_eq_ccm
+#print axioms sourceWeilOddTargetFloorSchurPositive13_iff_ccm_corrected_energy
+
+end Q3.RouteB.D0Pstar
+
+## Content snapshot: docs/routeB_bus/GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_CLOSEOUT_2026-08-11.md
+
+# STATUS: CLOSED CHILD — B3.0AP CANONICAL SCHUR MATRIX RECEIVER PROVED; SIGN OPEN
+
+Date: 2026-08-11
+Route: `CHALLENGER / NOT_RH`
+Goal: `057_unified_chain_program_delegated_review`
+Child: `B3.0AP`
+Result code: `GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_PROVED`
+Parent B3.0: `OPEN`
+
+## What was proved
+
+The production file
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean`
+proves, at the exact source cell `m = 13`:
+
+1. `SourceWeilGraphCarrier`, the target-floor graph operator, the exact Schur
+   operator and its scalar energy are definitionally independent of auxiliary
+   `PairIndex.N`;
+2. the all-`N` target `SourceWeilOddTargetFloorSchurPositive13` is equivalent
+   to positivity at one canonical representative `PairIndex.mk 13 0`;
+3. the literal graph-head synthesis is exactly the existing normalized odd CCM
+   synthesis from B3.0AF;
+4. the canonical target-floor head pairing is the exact
+   `ccmWeilMatFinite 13 sourceWeilOddTailCutoff` form minus the target-floor
+   scalar form;
+5. the canonical Schur pairing additionally subtracts the actual
+   inverse-weighted infinite-tail correction;
+6. the all-`N` target is equivalent to nonnegativity of that exact canonical
+   corrected CCM energy.
+
+The `N = 0` value is only a canonical auxiliary representative. It is not the
+head size and not a zero-dimensional truncation. The head size remains the
+symbolic `sourceWeilOddTailCutoff sourceWeilOddCanonicalIndex13`.
+
+## What was not proved
+
+- no nonnegativity/sign certificate for the corrected CCM energy;
+- no proof of `SourceWeilOddTargetFloorSchurPositive13`;
+- no literal odd-mode form-core theorem;
+- no whole odd-space `10^-58` floor;
+- no selected-`kTrial` operator domain, projection-leakage decay or continuum
+  numerator bridge;
+- no N=480/N=960 promotion, Route B promotion, PX claim or RH claim.
+
+## Evidence
+
+- Lean SHA-256:
+  `79f98c1c3da54ccef698c35df9acc7b3f59a5ab8d947deeca1003571dd533d90`.
+- Shape: `8350` bytes, `187` newline-terminated lines, final LF.
+- Public surface: `1` definition and `9` theorems; `10` named declarations.
+- Direct source Lean: PASS.
+- Target module build: PASS.
+- External production-import consumer: PASS for the canonical and corrected
+  CCM receiver shapes.
+- `Q3/Main.lean`: PASS; output remains `Q3.Main.RH_of_Weil_and_Q3 : RH`.
+- `scripts/q3_check.sh`: PASS.
+- Unit tests: `102/102` PASS after registry synchronization.
+- Proof registry: `10/10` declarations proven; `204/204` Route B files matched;
+  no missing, ambiguous or stale declaration rows.
+- Public axioms: only `propext`, `Classical.choice`, `Quot.sound`.
+- Forbidden-token scan: no `sorry`, `admit`, `native_decide` or `unsafe`.
+- Negative-scope judge: no theorem directly exports
+  `SourceWeilOddTargetFloorSchurPositive13`; only exact equivalences are added.
+
+## Decision and corrected rationale
+
+- Chosen: definitional `N`-independence, one canonical representative and the
+  exact corrected CCM energy receiver.
+- What was rejected and why: treating auxiliary `N` as a head dimension,
+  replacing the symbolic cutoff by N=480/N=960, using a scalar inverse, or
+  dropping the actual `R† C⁻¹ R` correction would change the object.
+- Corrected prior caution: B3.0AO conservatively rejected equality of the large
+  graph objects as potentially expensive. The separate B3.0AP audit compiled
+  the equality by `rfl`; retaining that prior assumption would now be wrong.
+- Guarded risk: receiver equivalence must not be reported as the missing sign.
+
+## Stop and next action
+
+Stop code:
+`EXACT_CANONICAL_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE_MISSING`.
+
+Next action: relock the existing B3.0AO strategic MINT packet to this exact
+canonical receiver and, only after separate owner approval for the outbound
+message, ask the same living Proshka phase chat for a source-faithful sign
+certificate architecture. The first coarse checkpoint remains open: `0/10`
+closed.
+
+## Search and arsenal
+
+`SEARCH_FLAGS: KB_ASK_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_POSITIVE13_NO_HIT · WHOLE_REPO_TARGET_SEARCH · DECLARATION_CATALOG_CHECK`
+
+`ARSENAL_USED: C04 · C07 · C09 · C10`
+
+`ARSENAL_KILLED: AUXILIARY_N_AS_HEAD_SIZE · FINITE_N480_N960_AS_SYMBOLIC_CUTOFF · SCALAR_OUTER_INVERSE · DROP_ACTUAL_RSTAR_CINV_R · RECEIVER_EQUIVALENCE_AS_SIGN`
+
+## ACTIONS LOG
+
+1. Ran canonical KB query before creating the production object; no supplier
+   for the exact target was found.
+2. Proved the stronger `N`-independence and matrix receiver in scratch, then
+   materialized the narrow production file.
+3. Verified direct Lean, target build, external consumer, full main, q3_check,
+   axiom boundary and negative scope.
+4. Registered the new file and all ten declarations; repeated all 102 unit
+   tests successfully.
+5. Preserved the unrelated PDF and made no Proshka call, Aristotle submission,
+   N=480/N=960 run, route promotion or claim.
+
+Boundaries remain:
+`CHALLENGER_NOT_RH` · `BUS_010 VOID` · `GOAL_055 HOLD` · `H4A1B OPEN` ·
+`N480 HOLD` · `PX_RH_CLAIM NOT_MADE`.
