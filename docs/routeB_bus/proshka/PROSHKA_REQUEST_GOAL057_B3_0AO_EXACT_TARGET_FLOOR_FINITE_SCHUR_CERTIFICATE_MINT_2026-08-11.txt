@@ -1,0 +1,889 @@
+# CONTROLLING REQUEST — GOAL 057 B3.0AO CERTIFICATE ARCHITECTURE MINT
+
+```yaml
+call_class: DELEGATED_STRATEGIC_REVIEW
+boundary_type: MINT
+conversation_id: 6a72e750-dc60-83eb-946b-61d2073c232b
+phase_id: PHASE_ROUTEB_G6_S2_K8_BRIDGE_2026_08_06
+phase_key:
+  route_id: RouteB_TwoLevelSpectralLadder
+  front_id: G6_S2_K8_SOURCE_FAITHFUL_BRIDGE
+  source_object_family_id: D0_CENTERED_PSTAR_WITH_SOURCE_PROLATE_MUNTZ_CROSSWALK
+  terminal_consumer_id: Q3.RouteB.CanonicalRHRoute.SlotS2
+  honesty_state: CHALLENGER_NOT_RH
+  convention_lock_id: GOAL056_CANON_ROOF_D7FE57B5_MUNTZ_V3_EXACT_CLASS
+source_lock:
+  repo: Malaeu/chen_q3
+  branch: rh_clean
+  commit: c993d5cc46f0803c4b3e8887569b3300ffe16b34
+  previous_commit: 8c85902c45c94a8079abd4e1e8036547db0a5c18
+scope:
+  route: CHALLENGER_NOT_RH
+  bus_010: VOID
+  goal_055: HOLD
+  h4a1b: OPEN
+  n480: HOLD
+  px_rh_claim: NOT_MADE
+```
+
+Before the verdict, fetch `rh_clean` and verify the locked commit.  Also fetch
+`q3.lean.aristotle/docs/ARSENAL_CARDS_v1.md` at SHA-256
+`018dbf6b5be6f21b2346ac29bf910d7c898d0352b72f9b67cfddf6865243839d`
+and the pending `docs/routeB_bus/proshka/ARSENAL_MANDATE_2026-08-04.md` at
+SHA-256
+`2167a1f530fecb71c0af2af96ae7414f7b98ee36afedefd8f176cee605d38f4a`.
+If any fetch or hash fails, fail closed instead of issuing a deep verdict.
+Apply the card DUALs and cite the card ID for any kill they instantiate.
+
+## Why this is a MINT boundary
+
+B3.0AN closed the local infinite-tail algebra.  A new proof-grade certificate
+architecture is now required for the remaining exact finite sign.  This is
+not an ordinary goal-close review and not a request to bless finite numerics.
+The phase key is unchanged; continue this one living phase chat.
+
+## New kernel-checked fact
+
+The attached production file, SHA-256
+`71703cfc566d9f3e6556e8888285b723b26c698036f820b6329c38c59167756c`,
+proves for every `i` and every `0 ≤ c0 < mu`:
+
+```text
+((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) * ‖x‖^2
+  ≤ Re ⟪sourceWeilC0ShiftedOddTailOperator i R c0 x, x⟫
+```
+
+whenever `SourceWeilOddTailAmbientCoercive i R mu` holds.  At
+`mu = 1/2`, `R = sourceWeilOddTailCutoff i` and
+`c0 = sourceWeilOddTargetFloor = 10^-58`, the actual closed infinite odd tail
+is positive and continuously invertible.  The file constructs the literal
+target-floor residual, actual `R* C^-1 R`, exact finite Schur complement and
+proves exact completion of the square.
+
+Lean, target/full builds, external consumer, 30/30 declaration registry,
+102/102 tests, strict Spine and three SQLite checks pass.  Public axioms are
+only `propext`, `Classical.choice`, `Quot.sound`.
+
+## Exact desired conclusion
+
+Select a source-compatible proof architecture whose first kernel-facing
+conclusion is the honest `m = 13` specialization of:
+
+```lean
+(sourceWeilOddTargetFloorSchurComplement i).IsPositive
+```
+
+with the exact quantifier/crosswalk needed to ensure `i.m = 13` and prevent
+the irrelevant `PairIndex.N` coordinate from changing the source object.
+Do not widen this to all `i` unless the attached source really supplies it.
+
+After this finite sign, a separate literal odd head-plus-tail form-core bridge
+is still required before any whole odd-space `10^-58` floor.  Do not claim that
+later bridge here.
+
+## Normalized blocker fingerprint
+
+```yaml
+source_object: sourceWeilC0ShiftedGraphOperator at c0=10^-58 on the exact source-Weil graph carrier
+terminal_consumer: m=13 odd source-Weil constant floor, later Goal057 numerator bridge
+missing_implication: exact positivity of the target-floor finite Schur complement
+preserved_invariants:
+  - literal source-Weil form and graph topology
+  - exact infinite closed tail and its actual inverse
+  - c0 fixed at 10^-58
+  - odd parity normalization
+  - no finite-to-infinite extrapolation
+quantifier_scope: m=13 source object; PairIndex.N must be proved irrelevant or fixed lawfully
+domain: exact Euclidean head at the proved analytic tail cutoff plus actual closed infinite odd tail
+blocker_id: EXACT_TARGET_FLOOR_FINITE_SCHUR_POSITIVITY_CERTIFICATE_MISSING
+```
+
+The critical mismatch is concrete:
+
+1. `sourceWeilOddTailCutoff i` is a `Nat.ceil` of a noncomputable real
+   expression containing exact operator norms and `Real.exp`.  The current
+   generator cannot materialize its head dimension as a concrete matrix.
+2. Existing Arb evidence in
+   `PHASE4_RESULTS_2026-08-10.md`
+   (`d76cad68e0e3e96ad3c757c986c53605f780d34a60d23707bf920dbf2a530f35`)
+   shows corrected-head PASS for `R=70` at finite cuts
+   `N=120,240,480,960`, but its own script
+   (`c4e0f59e08da9bd0fe2d0f898c2860123b261eb819d7c97b2b6c09c30f67878a`)
+   states that modes above `N` are absent and the result is not an infinite
+   certificate.
+3. B3.0AK proves the actual infinite tail only at the symbolic analytic
+   cutoff, not at `R=70`.  Therefore the existing 70-by-70 corrected-head PASS
+   is not yet a certificate for the attached exact Schur operator.
+
+## Candidate theorem shapes to adjudicate
+
+### A — concrete cutoff plus proof-producing finite certificate
+
+Derive a source theorem at a concrete natural cutoff `R0`, identify the exact
+Schur entries with a computable finite matrix, and import a rational/Arb LDLT
+certificate into Lean.  Numerical `R=70` is evidence only; the tail theorem at
+that cutoff must be proved, not inferred from stabilization.
+
+### B — nested Schur reduction
+
+Prove an exact associativity/monotonicity decomposition reducing the symbolic
+head to a small concrete head plus an analytically positive intermediate
+block.  State the missing intermediate estimate exactly; do not hide it as
+"the tail is positive".
+
+### C — analytic finite-head sign
+
+Prove the symbolic finite Schur sign from source inequalities without
+enumerating its dimension.  Name the decisive inequality and show why it is
+strong enough after subtracting `10^-58`.
+
+### D — source-faithful representation shift
+
+Use a genuinely form-orthogonal finite head or Birman--Schwinger/inertia
+representation only if you provide the exact source crosswalk and explain how
+it removes rather than renames the missing sign.
+
+Do not pad the choice set.  Kill candidates that merely rename the same
+missing estimate.
+
+## Forbidden shortcuts
+
+- no `N=480/960` extrapolation, Aitken, fitted convergence or stable-pivot
+  promotion;
+- no substitution of the 70-head finite-cut matrix for the exact symbolic
+  Schur operator without a theorem connecting them;
+- no moving `c0`, parity convention, tail cutoff or source form after seeing
+  a result;
+- no scalar replacement for the actual tail inverse;
+- no pointwise multiplier positivity in place of the source form;
+- no Hilbert-density-as-form-core inference;
+- no Bus 010, Goal 055 release, route promotion, PX claim or RH claim.
+
+## Required operative response
+
+Return one markdown artifact whose first line is exactly one of:
+
+```text
+# STATUS: PROVED
+# STATUS: CONDITIONAL
+# STATUS: OPEN
+# STATUS: FATAL
+```
+
+Immediately after that first line, emit the machine-readable YAML block below.
+Then give the concise ROUTE MAP, FINAL PROPOSAL, STRONGEST ATTACK, one CODEX
+DIRECTIVE and META CLOSEOUT required by the canonical Proshka system prompt.
+Every mathematical claim must carry both a scope tag
+`ABSTRACT | FINITE_CELL | COFINAL_FAMILY` and a verifier tag
+`LEAN | ARB_INTERVAL | PAPER | CONDITIONAL`.
+
+Inside the YAML, return exactly one machine-operative class:
+
+```text
+TRY_<route_id>
+KILL_<route_or_family_id>
+RUN_<test_id>
+OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM
+```
+
+This packet is not a PX/RH request, so the fourth class should not occur.
+Do not return `OWNER_FORK` or ask the owner to choose mathematics.
+
+If `TRY`, provide:
+
+1. one exact Lean-facing theorem statement;
+2. exact source dependencies and object/cutoff crosswalk;
+3. a proof architecture detailed enough for Codex to start locally;
+4. the cheapest source-faithful killer before production edits;
+5. why the selected route is not a finite surrogate;
+6. the rejected routes and the mathematical reason each dies.
+
+If `RUN`, include a frozen outcome map that chooses the next machine action
+without a second review.  If `KILL`, give a source-faithful obstruction and a
+named rollback target.
+
+The first block must have this exact schema:
+
+```yaml
+verdict_code:
+operative_class:
+cognitive_operator_used: REPRESENTATION_SHIFT | COUNTEREXAMPLE_HUNT | DUALIZE | BOUNDARY_CASE | UNIT_AUDIT | MINIMAL_LEMMA | LITERATURE_BRIDGE | ABANDON_ROUTE
+source_lock_verified:
+arsenal_deck_verified:
+arsenal_mandate_status:
+selected_theorem_shape:
+exact_lean_statement:
+required_suppliers:
+proof_architecture:
+cheapest_decisive_test:
+precommitted_outcome_map:
+rejected_routes_and_why:
+non_surrogate_argument:
+scope_boundary:
+next_machine_action:
+rh_claim: NOT_MADE
+```
+
+---
+
+# BYTE-LOCKED SOURCE CONTEXT
+
+
+## Git log
+
+c993d5cc [MacOS][rh_clean][Proof] Reduce exact odd target floor to finite Schur sign
+
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean
+
+import Q3.Proofs.RouteB.D0PstarSourceWeilShiftedOddHeadSchur
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 1200000
+set_option synthInstance.maxHeartbeats 300000
+
+noncomputable section
+
+open Complex
+
+namespace Q3.RouteB.D0Pstar
+
+/-!
+# Exact target-floor reduction for the source-Weil odd block
+
+This file removes the large auxiliary lower-bound shift from the actual graph
+operator and replaces it by the pre-registered target floor `10⁻⁵⁸`.  The
+explicit B3.0AK tail estimate and the independent weighted-energy lower bound
+combine to control the full graph norm, so the actual `c₀`-shifted infinite
+tail is positive and continuously invertible.
+
+The file then constructs the literal `c₀` residual, actual inverse-weighted
+correction and exact finite Schur complement, and proves completion of the
+square.  It does not assert that the finite Schur complement is positive; that
+remaining sign is exactly the next quantitative certificate obligation.
+-/
+
+noncomputable def sourceWeilC0ShiftedGraphOperator
+    (i : PairIndex) (c0 : ℝ) :
+    SourceWeilGraphCarrier i →L[ℂ] SourceWeilGraphCarrier i :=
+  sourceWeilShiftedGraphOperator i -
+    (((sourceWeilLowerBoundConstant i + c0 : ℝ) : ℂ) •
+      ((sourceWeilGraphAmbient i).adjoint.comp
+        (sourceWeilGraphAmbient i)))
+
+theorem inner_sourceWeilC0ShiftedGraphOperator
+    (i : PairIndex) (c0 : ℝ) (x y : SourceWeilGraphCarrier i) :
+    inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y =
+      sourceWeilSesquilinearForm i
+        (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i y) -
+        (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i x)
+          (sourceWeilGraphAmbient i y) := by
+  rw [sourceWeilC0ShiftedGraphOperator,
+    ContinuousLinearMap.sub_apply, inner_sub_left]
+  simp only [ContinuousLinearMap.coe_smul', Pi.smul_apply,
+    ContinuousLinearMap.comp_apply, inner_smul_left, Complex.conj_ofReal]
+  rw [ContinuousLinearMap.adjoint_inner_left]
+  rw [inner_sourceWeilShiftedGraphOperator_eq_source]
+  push_cast
+  ring
+
+theorem inner_sourceWeilC0ShiftedGraphOperator_self
+    (i : PairIndex) (c0 : ℝ) (x : SourceWeilGraphCarrier i) :
+    (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) x).re =
+      (sourceWeilSesquilinearForm i
+        (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i x)).re -
+        c0 * ‖sourceWeilGraphAmbient i x‖ ^ 2 := by
+  rw [inner_sourceWeilC0ShiftedGraphOperator]
+  have hinner :
+      (inner ℂ (sourceWeilGraphAmbient i x)
+        (sourceWeilGraphAmbient i x)).re =
+          ‖sourceWeilGraphAmbient i x‖ ^ 2 := by
+    simpa using
+      (inner_self_eq_norm_sq (𝕜 := ℂ) (sourceWeilGraphAmbient i x))
+  simp only [sub_re, mul_re, Complex.ofReal_re, Complex.ofReal_im,
+    zero_mul, sub_zero, hinner]
+
+theorem sourceWeilC0ShiftedGraphOperator_isSymmetric
+    (i : PairIndex) (c0 : ℝ) :
+    (sourceWeilC0ShiftedGraphOperator i c0).IsSymmetric := by
+  intro x y
+  change inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y =
+    inner ℂ x (sourceWeilC0ShiftedGraphOperator i c0 y)
+  calc
+    inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 x) y =
+        sourceWeilSesquilinearForm i
+            (sourceWeilGraphDomain i x) (sourceWeilGraphDomain i y) -
+          (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i x)
+            (sourceWeilGraphAmbient i y) :=
+      inner_sourceWeilC0ShiftedGraphOperator i c0 x y
+    _ = star
+        (sourceWeilSesquilinearForm i
+            (sourceWeilGraphDomain i y) (sourceWeilGraphDomain i x) -
+          (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i y)
+            (sourceWeilGraphAmbient i x)) := by
+      change _ = (starRingEnd ℂ)
+        (sourceWeilSesquilinearForm i
+            (sourceWeilGraphDomain i y) (sourceWeilGraphDomain i x) -
+          (c0 : ℂ) * inner ℂ (sourceWeilGraphAmbient i y)
+            (sourceWeilGraphAmbient i x))
+      rw [map_sub, map_mul, Complex.conj_ofReal, inner_conj_symm]
+      rw [sourceWeilSesquilinearForm_conj_symm]
+      rfl
+    _ = star (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 y) x) := by
+      rw [inner_sourceWeilC0ShiftedGraphOperator]
+    _ = inner ℂ x (sourceWeilC0ShiftedGraphOperator i c0 y) := by
+      change (starRingEnd ℂ)
+        (inner ℂ (sourceWeilC0ShiftedGraphOperator i c0 y) x) = _
+      rw [inner_conj_symm]
+
+noncomputable def sourceWeilC0ShiftedOddTailOperator
+    (i : PairIndex) (R : ℕ) (c0 : ℝ) :
+    SourceWeilGraphOddTailCarrier i R →L[ℂ]
+      SourceWeilGraphOddTailCarrier i R :=
+  (sourceWeilGraphOddTail i R).orthogonalProjection.comp
+    ((sourceWeilC0ShiftedGraphOperator i c0).comp
+      (sourceWeilGraphOddTail i R).subtypeL)
+
+theorem inner_sourceWeilC0ShiftedOddTailOperator
+    (i : PairIndex) (R : ℕ) (c0 : ℝ)
+    (x y : SourceWeilGraphOddTailCarrier i R) :
+    inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) y =
+      inner ℂ
+        (sourceWeilC0ShiftedGraphOperator i c0
+          (x : SourceWeilGraphCarrier i))
+        (y : SourceWeilGraphCarrier i) := by
+  exact (sourceWeilGraphOddTail i R).inner_orthogonalProjection_eq_of_mem_right
+    y (sourceWeilC0ShiftedGraphOperator i c0
+      (x : SourceWeilGraphCarrier i))
+
+theorem sourceWeilC0ShiftedOddTailOperator_graph_lower
+    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
+    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
+    (hc0_nonneg : 0 ≤ c0)
+    (hc0 : c0 < mu)
+    (x : SourceWeilGraphOddTailCarrier i R) :
+    ((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) * ‖x‖ ^ 2 ≤
+      (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re := by
+  let a := ‖sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i)‖ ^ 2
+  let b := ‖sourceWeilGraphWeighted i (x : SourceWeilGraphCarrier i)‖ ^ 2
+  let e := (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re
+  let L := sourceWeilLowerBoundConstant i
+  have hmu : 0 < mu := hcoercive.1
+  have hL : 0 ≤ L := sourceWeilLowerBoundConstant_nonneg i
+  have hden : 0 < L + mu + 1 := by linarith
+  have ha : 0 ≤ a := sq_nonneg _
+  have hb : 0 ≤ b := sq_nonneg _
+  have hc : 0 < (mu - c0) / (L + mu + 1) := div_pos (sub_pos.mpr hc0) hden
+  have hambient : (mu - c0) * a ≤ e := by
+    dsimp only [e]
+    rw [inner_sourceWeilC0ShiftedOddTailOperator,
+      inner_sourceWeilC0ShiftedGraphOperator_self]
+    have h := hcoercive.2 x
+    dsimp only [a, e]
+    nlinarith
+  have hweighted : b - (L + c0) * a ≤ e := by
+    dsimp only [e]
+    rw [inner_sourceWeilC0ShiftedOddTailOperator,
+      inner_sourceWeilC0ShiftedGraphOperator_self]
+    have hshift := sourceWeilShiftedOddTailOperator_weighted_lower i R x
+    rw [inner_sourceWeilShiftedOddTailOperator] at hshift
+    have hraw :=
+      sourceWeilSesquilinearForm_self_re_eq_graph_diagonal_sub_shift
+        i (x : SourceWeilGraphCarrier i)
+    dsimp only [a, b, e, L] at hshift hraw ⊢
+    nlinarith
+  have hnorm : ‖x‖ ^ 2 = a + b := by
+    simpa [a, b] using
+      (sourceWeilGraph_norm_sq i (x : SourceWeilGraphCarrier i))
+  rw [hnorm]
+  have hconv :
+      ((L + c0 + 1) / (L + mu + 1)) * ((mu - c0) * a) +
+          ((mu - c0) / (L + mu + 1)) * (b - (L + c0) * a) ≤ e := by
+    have hleft : 0 ≤ (L + c0 + 1) / (L + mu + 1) := by
+      exact div_nonneg (by linarith) hden.le
+    have hright : 0 ≤ (mu - c0) / (L + mu + 1) := hc.le
+    have hsum :
+        (L + c0 + 1) / (L + mu + 1) +
+          (mu - c0) / (L + mu + 1) = 1 := by
+      field_simp [hden.ne']
+      ring
+    have h1 := mul_le_mul_of_nonneg_left hambient hleft
+    have h2 := mul_le_mul_of_nonneg_left hweighted hright
+    calc
+      ((L + c0 + 1) / (L + mu + 1)) * ((mu - c0) * a) +
+          ((mu - c0) / (L + mu + 1)) * (b - (L + c0) * a) ≤
+          ((L + c0 + 1) / (L + mu + 1)) * e +
+            ((mu - c0) / (L + mu + 1)) * e := add_le_add h1 h2
+      _ = e := by rw [← add_mul, hsum, one_mul]
+  have halg :
+      ((L + c0 + 1) / (L + mu + 1)) * ((mu - c0) * a) +
+          ((mu - c0) / (L + mu + 1)) * (b - (L + c0) * a) =
+        ((mu - c0) / (L + mu + 1)) * (a + b) := by
+    field_simp [hden.ne']
+    ring
+  rw [halg] at hconv
+  exact hconv
+
+theorem sourceWeilC0ShiftedOddTailOperator_isPositive
+    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
+    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
+    (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) :
+    (sourceWeilC0ShiftedOddTailOperator i R c0).IsPositive := by
+  rw [ContinuousLinearMap.isPositive_iff_complex]
+  intro x
+  constructor
+  · rw [inner_sourceWeilC0ShiftedOddTailOperator,
+      inner_sourceWeilC0ShiftedGraphOperator]
+    apply Complex.ext
+    · rfl
+    · change 0 =
+        (sourceWeilSesquilinearForm i
+            (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i))
+            (sourceWeilGraphDomain i (x : SourceWeilGraphCarrier i)) -
+          (c0 : ℂ) *
+            inner ℂ
+              (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))
+              (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))).im
+      have him :
+          (inner ℂ
+            (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))
+            (sourceWeilGraphAmbient i (x : SourceWeilGraphCarrier i))).im = 0 := by
+        exact inner_self_im (𝕜 := ℂ) _
+      rw [sub_im, mul_im, Complex.ofReal_re, Complex.ofReal_im,
+        sourceWeilSesquilinearForm_im_self_eq_zero, him]
+      ring
+  · exact (sourceWeilC0ShiftedOddTailOperator_graph_lower
+      i R mu c0 hcoercive hc0_nonneg hc0 x).trans'
+        (mul_nonneg
+          (div_nonneg (sub_nonneg.mpr hc0.le)
+            (by have := sourceWeilLowerBoundConstant_nonneg i; linarith))
+          (sq_nonneg ‖x‖))
+
+set_option maxHeartbeats 1200000 in
+theorem sourceWeilC0ShiftedOddTailOperator_isUnit
+    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
+    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
+    (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) :
+    IsUnit (sourceWeilC0ShiftedOddTailOperator i R c0) := by
+  let c : NNReal :=
+    ⟨(mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1),
+      div_nonneg (sub_nonneg.mpr hc0.le)
+        (by have := sourceWeilLowerBoundConstant_nonneg i; linarith)⟩
+  have hcReal :
+      0 < (mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1) := by
+    apply div_pos (sub_pos.mpr hc0)
+    have := sourceWeilLowerBoundConstant_nonneg i
+    linarith [hcoercive.1]
+  have hc : 0 < c := by exact_mod_cast hcReal
+  apply ContinuousLinearMap.isUnit_of_forall_le_norm_inner_map
+    (sourceWeilC0ShiftedOddTailOperator i R c0) hc
+  intro x
+  have hgraph := sourceWeilC0ShiftedOddTailOperator_graph_lower
+    i R mu c0 hcoercive hc0_nonneg hc0 x
+  change ‖x‖ ^ 2 * (c : ℝ) ≤
+    ‖inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x‖
+  calc
+    ‖x‖ ^ 2 * (c : ℝ) =
+        ((mu - c0) / (sourceWeilLowerBoundConstant i + mu + 1)) *
+          ‖x‖ ^ 2 := by
+      dsimp only [c]
+      push_cast
+      ring
+    _ ≤ (inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x).re :=
+      hgraph
+    _ ≤ ‖inner ℂ (sourceWeilC0ShiftedOddTailOperator i R c0 x) x‖ :=
+      Complex.re_le_norm _
+
+theorem sourceWeilC0ShiftedOddTailOperator_isInvertible
+    (i : PairIndex) (R : ℕ) (mu c0 : ℝ)
+    (hcoercive : SourceWeilOddTailAmbientCoercive i R mu)
+    (hc0_nonneg : 0 ≤ c0) (hc0 : c0 < mu) :
+    (sourceWeilC0ShiftedOddTailOperator i R c0).IsInvertible := by
+  obtain ⟨u, hu⟩ := sourceWeilC0ShiftedOddTailOperator_isUnit
+    i R mu c0 hcoercive hc0_nonneg hc0
+  exact ⟨ContinuousLinearEquiv.ofUnit u, hu⟩
+
+/-- The pre-registered G-LOWER target floor. -/
+noncomputable def sourceWeilOddTargetFloor : ℝ := 1 / (10 : ℝ) ^ 58
+
+theorem sourceWeilOddTargetFloor_nonneg : 0 ≤ sourceWeilOddTargetFloor := by
+  norm_num [sourceWeilOddTargetFloor]
+
+theorem sourceWeilOddTargetFloor_lt_half :
+    sourceWeilOddTargetFloor < (1 / 2 : ℝ) := by
+  norm_num [sourceWeilOddTargetFloor]
+
+theorem sourceWeilOddTargetFloorTail_isInvertible (i : PairIndex) :
+    (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
+      sourceWeilOddTargetFloor).IsInvertible := by
+  exact sourceWeilC0ShiftedOddTailOperator_isInvertible i
+    (sourceWeilOddTailCutoff i) (1 / 2) sourceWeilOddTargetFloor
+    (sourceWeilOddTailAmbientCoercive_explicit i)
+    sourceWeilOddTargetFloor_nonneg sourceWeilOddTargetFloor_lt_half
+
+theorem sourceWeilOddTargetFloorTail_isPositive (i : PairIndex) :
+    (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
+      sourceWeilOddTargetFloor).IsPositive := by
+  exact sourceWeilC0ShiftedOddTailOperator_isPositive i
+    (sourceWeilOddTailCutoff i) (1 / 2) sourceWeilOddTargetFloor
+    (sourceWeilOddTailAmbientCoercive_explicit i)
+    sourceWeilOddTargetFloor_nonneg sourceWeilOddTargetFloor_lt_half
+
+noncomputable def sourceWeilOddTargetFloorResidual
+    (i : PairIndex) :
+    SourceWeilOddHeadCoefficients i →L[ℂ]
+      SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i) :=
+  (sourceWeilGraphOddTail i (sourceWeilOddTailCutoff i)).orthogonalProjection.comp
+    ((sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor).comp
+      (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i)))
+
+theorem inner_sourceWeilOddTargetFloorResidual
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
+    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
+    inner ℂ (sourceWeilOddTargetFloorResidual i q) y =
+      inner ℂ
+        (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
+          (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q))
+        (y : SourceWeilGraphCarrier i) := by
+  exact (sourceWeilGraphOddTail i
+    (sourceWeilOddTailCutoff i)).inner_orthogonalProjection_eq_of_mem_right
+      y (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
+        (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q))
+
+noncomputable def sourceWeilOddTargetFloorInverseWeightedData
+    (i : PairIndex) :
+    OddTailInverseWeightedData
+      (SourceWeilOddHeadCoefficients i)
+      (SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) where
+  outerBlock := sourceWeilC0ShiftedOddTailOperator i
+    (sourceWeilOddTailCutoff i) sourceWeilOddTargetFloor
+  residual := sourceWeilOddTargetFloorResidual i
+  outerBlock_positive := sourceWeilOddTargetFloorTail_isPositive i
+  outerBlock_invertible := sourceWeilOddTargetFloorTail_isInvertible i
+
+noncomputable def sourceWeilOddTargetFloorHeadOperator
+    (i : PairIndex) :
+    SourceWeilOddHeadCoefficients i →L[ℂ]
+      SourceWeilOddHeadCoefficients i :=
+  (sourceWeilGraphOddHeadSynthesis i
+      (sourceWeilOddTailCutoff i)).adjoint.comp
+    ((sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor).comp
+      (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i)))
+
+theorem inner_sourceWeilOddTargetFloorHeadOperator
+    (i : PairIndex) (q r : SourceWeilOddHeadCoefficients i) :
+    inner ℂ (sourceWeilOddTargetFloorHeadOperator i q) r =
+      inner ℂ
+        (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
+          (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q))
+        (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) r) := by
+  rw [sourceWeilOddTargetFloorHeadOperator]
+  simp only [ContinuousLinearMap.comp_apply]
+  exact ContinuousLinearMap.adjoint_inner_left _ _ _
+
+noncomputable def sourceWeilOddTargetFloorSchurComplement
+    (i : PairIndex) :
+    SourceWeilOddHeadCoefficients i →L[ℂ]
+      SourceWeilOddHeadCoefficients i :=
+  oddTailSchurComplement
+    (sourceWeilOddTargetFloorHeadOperator i)
+    (sourceWeilOddTargetFloorInverseWeightedData i)
+
+theorem sourceWeilOddTargetFloorHeadOperator_eq_schur_add_correction
+    (i : PairIndex) :
+    sourceWeilOddTargetFloorHeadOperator i =
+      sourceWeilOddTargetFloorSchurComplement i +
+        oddTailInverseWeightedCorrection
+          (sourceWeilOddTargetFloorInverseWeightedData i) := by
+  exact operator_eq_oddTailSchurComplement_add_correction
+    (sourceWeilOddTargetFloorHeadOperator i)
+    (sourceWeilOddTargetFloorInverseWeightedData i)
+
+private theorem re_inner_map_add_self
+    {E : Type*} [NormedAddCommGroup E] [InnerProductSpace ℂ E]
+    (A : E →L[ℂ] E) (x y : E) :
+    (inner ℂ (A (x + y)) (x + y)).re =
+      (inner ℂ (A x) x).re + (inner ℂ (A x) y).re +
+        (inner ℂ (A y) x).re + (inner ℂ (A y) y).re := by
+  rw [map_add, inner_add_left, inner_add_right, inner_add_right]
+  simp only [add_re]
+  ring
+
+noncomputable def sourceWeilOddTargetFloorCorrector
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) :
+    SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i) :=
+  (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
+      sourceWeilOddTargetFloor).inverse
+    (sourceWeilOddTargetFloorResidual i q)
+
+noncomputable def sourceWeilOddTargetFloorBlockVector
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
+    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
+    SourceWeilGraphCarrier i :=
+  sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i) q +
+    (sourceWeilGraphOddTail i (sourceWeilOddTailCutoff i)).subtypeL y
+
+private theorem re_inner_block_completion
+    {Head Tail Ambient : Type*}
+    [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head]
+    [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail]
+    [NormedAddCommGroup Ambient] [InnerProductSpace ℂ Ambient]
+    (A : Ambient →L[ℂ] Ambient) (S : Head →L[ℂ] Ambient)
+    (U : Tail →L[ℂ] Ambient) (H : Head →L[ℂ] Head)
+    (D : OddTailInverseWeightedData Head Tail)
+    (hA : A.IsSymmetric)
+    (hhead : ∀ q, inner ℂ (H q) q = inner ℂ (A (S q)) (S q))
+    (hres : ∀ q y, inner ℂ (D.residual q) y = inner ℂ (A (S q)) (U y))
+    (htail : ∀ y, inner ℂ (A (U y)) (U y) = inner ℂ (D.outerBlock y) y)
+    (q : Head) (y : Tail) :
+    let v := D.outerBlock.inverse (D.residual q)
+    (inner ℂ (A (S q + U y)) (S q + U y)).re =
+      (inner ℂ
+        (oddTailSchurComplement H D q) q).re +
+      (inner ℂ (D.outerBlock (y + v)) (y + v)).re := by
+  dsimp only
+  let C := D.outerBlock
+  let R := D.residual
+  let v := C.inverse (R q)
+  have hinv : C v = R q := outerBlock_apply_inverse_residual D q
+  have hhead :
+      (inner ℂ (A (S q)) (S q)).re =
+        (inner ℂ (H q) q).re := congrArg Complex.re (hhead q).symm
+  have hres' :
+      (inner ℂ (A (S q)) (U y)).re = (inner ℂ (R q) y).re :=
+    congrArg Complex.re (hres q y).symm
+  have hresSymm :
+      (inner ℂ (A (U y)) (S q)).re = (inner ℂ (R q) y).re := by
+    calc
+      (inner ℂ (A (U y)) (S q)).re = (inner ℂ (U y) (A (S q))).re :=
+        congrArg Complex.re (hA (U y) (S q))
+      _ = (inner ℂ (A (S q)) (U y)).re :=
+        inner_re_symm (𝕜 := ℂ) (E := Ambient) _ _
+      _ = (inner ℂ (R q) y).re := hres'
+  have htail' :
+      (inner ℂ (A (U y)) (U y)).re = (inner ℂ (C y) y).re :=
+    congrArg Complex.re (htail y)
+  have hcorr :
+      (inner ℂ (oddTailInverseWeightedCorrection D q) q).re =
+        (inner ℂ (C v) v).re := by
+    calc
+      (inner ℂ (oddTailInverseWeightedCorrection D q) q).re =
+          (inner ℂ v (R q)).re :=
+        congrArg Complex.re (inner_oddTailInverseWeightedCorrection D q q)
+      _ = (inner ℂ v (C v)).re := by rw [hinv]
+      _ = (inner ℂ (C v) v).re :=
+        inner_re_symm (𝕜 := ℂ) (E := Tail) _ _
+  have hCv : (inner ℂ (C v) y).re = (inner ℂ (R q) y).re :=
+    congrArg (fun z => (inner ℂ z y).re) hinv
+  have hCy : (inner ℂ (C y) v).re = (inner ℂ (R q) y).re := by
+    calc
+      (inner ℂ (C y) v).re = (inner ℂ y (C v)).re :=
+        congrArg Complex.re (D.outerBlock_positive.isSymmetric y v)
+      _ = (inner ℂ (C v) y).re :=
+        inner_re_symm (𝕜 := ℂ) (E := Tail) _ _
+      _ = (inner ℂ (R q) y).re := hCv
+  rw [re_inner_map_add_self A (S q) (U y)]
+  rw [re_inner_map_add_self C y v]
+  rw [hhead, hres', hresSymm, htail', hCy, hCv]
+  simp only [oddTailSchurComplement, ContinuousLinearMap.sub_apply,
+    inner_sub_left, sub_re]
+  rw [hcorr]
+  ring
+
+noncomputable def sourceWeilOddTargetFloorBlockEnergy
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
+    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : ℝ :=
+  (inner ℂ
+    (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor
+      (sourceWeilOddTargetFloorBlockVector i q y))
+    (sourceWeilOddTargetFloorBlockVector i q y)).re
+
+noncomputable def sourceWeilOddTargetFloorSchurEnergy
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i) : ℝ :=
+  (inner ℂ (sourceWeilOddTargetFloorSchurComplement i q) q).re
+
+noncomputable def sourceWeilOddTargetFloorCompletedTailEnergy
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
+    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) : ℝ :=
+  (inner ℂ
+    (sourceWeilC0ShiftedOddTailOperator i (sourceWeilOddTailCutoff i)
+      sourceWeilOddTargetFloor (y + sourceWeilOddTargetFloorCorrector i q))
+    (y + sourceWeilOddTargetFloorCorrector i q)).re
+
+set_option maxHeartbeats 3000000 in
+/-- Exact completion of the square for the target-floor source block.  The
+only remaining sign is the finite exact Schur complement. -/
+theorem sourceWeilOddTargetFloor_block_completion
+    (i : PairIndex) (q : SourceWeilOddHeadCoefficients i)
+    (y : SourceWeilGraphOddTailCarrier i (sourceWeilOddTailCutoff i)) :
+    sourceWeilOddTargetFloorBlockEnergy i q y =
+      sourceWeilOddTargetFloorSchurEnergy i q +
+        sourceWeilOddTargetFloorCompletedTailEnergy i q y := by
+  unfold sourceWeilOddTargetFloorBlockEnergy
+  unfold sourceWeilOddTargetFloorSchurEnergy
+  unfold sourceWeilOddTargetFloorCompletedTailEnergy
+  unfold sourceWeilOddTargetFloorBlockVector
+  unfold sourceWeilOddTargetFloorCorrector
+  unfold sourceWeilOddTargetFloorSchurComplement
+  apply re_inner_block_completion
+    (sourceWeilC0ShiftedGraphOperator i sourceWeilOddTargetFloor)
+    (sourceWeilGraphOddHeadSynthesis i (sourceWeilOddTailCutoff i))
+    (sourceWeilGraphOddTail i (sourceWeilOddTailCutoff i)).subtypeL
+    (sourceWeilOddTargetFloorHeadOperator i)
+    (sourceWeilOddTargetFloorInverseWeightedData i)
+    (sourceWeilC0ShiftedGraphOperator_isSymmetric i sourceWeilOddTargetFloor)
+  · intro q'
+    exact inner_sourceWeilOddTargetFloorHeadOperator i q' q'
+  · intro q' y'
+    exact inner_sourceWeilOddTargetFloorResidual i q' y'
+  · intro y'
+    exact (inner_sourceWeilC0ShiftedOddTailOperator i
+      (sourceWeilOddTailCutoff i) sourceWeilOddTargetFloor y' y').symm
+
+#print axioms sourceWeilC0ShiftedGraphOperator
+#print axioms inner_sourceWeilC0ShiftedGraphOperator
+#print axioms sourceWeilC0ShiftedOddTailOperator_graph_lower
+#print axioms sourceWeilC0ShiftedOddTailOperator_isPositive
+#print axioms sourceWeilC0ShiftedOddTailOperator_isInvertible
+#print axioms sourceWeilOddTargetFloorTail_isInvertible
+#print axioms sourceWeilOddTargetFloorResidual
+#print axioms sourceWeilOddTargetFloorInverseWeightedData
+#print axioms sourceWeilOddTargetFloorSchurComplement
+#print axioms sourceWeilOddTargetFloor_block_completion
+
+end Q3.RouteB.D0Pstar
+
+
+## File: docs/routeB_bus/GOAL057_B3_0AN_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_REDUCTION_CLOSEOUT_2026-08-11.md
+
+# GOAL 057 · B3.0AN closeout — exact target-floor Schur reduction
+
+Date: 2026-08-11
+Route: `CHALLENGER_NOT_RH`
+Result: `GOAL057_B3_0AN_SOURCE_WEIL_ODD_TARGET_FLOOR_SCHUR_REDUCTION_PROVED`
+
+## What closed
+
+The production file
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurReduction.lean`
+removes the large auxiliary graph shift from the actual odd-tail block and
+works at the pre-registered target floor
+`sourceWeilOddTargetFloor = 1 / 10^58`.
+
+For a general `0 ≤ c₀ < μ` it proves the exact graph-norm lower bound
+
+```text
+((μ - c₀) / (sourceWeilLowerBoundConstant i + μ + 1)) * ‖x‖²
+  ≤ Re ⟪C_c₀ x, x⟫.
+```
+
+The proof combines two independent exact estimates: B3.0AK ambient
+coercivity `Q ≥ μ a`, and the shifted weighted-energy inequality
+`Q ≥ b - L a`.  Their convex combination controls the full graph norm
+`a + b` without retaining the auxiliary shift.
+
+At `μ = 1/2` and `c₀ = 10^-58` the file then constructs and proves:
+
+1. the actual positive, continuously invertible infinite odd-tail operator;
+2. the literal target-floor head-to-tail residual;
+3. the actual inverse-weighted correction `R† C_c₀⁻¹ R`;
+4. the exact finite target-floor head operator and Schur complement;
+5. the exact head = Schur + correction operator identity;
+6. completion of the square for every literal head coefficient and every
+   vector in the actual closed infinite odd tail.
+
+No scalar inverse, sampled cutoff, finite `N=480/960`, profile optimization,
+or numerical floor is used.
+
+## Why this child was selected
+
+B3.0AM left open whether subtracting the target floor would destroy tail
+invertibility.  The existing ambient coercivity and independent weighted
+lower bound contain complementary halves of the graph norm.  Combining them
+first proves the exact target-floor tail is invertible; only then is the Schur
+reduction lawful.  This removes the suspected infinite-tail obstruction and
+isolates the remaining sign as a finite exact certificate problem.
+
+## Validation
+
+```text
+Lean SHA-256:
+  71703cfc566d9f3e6556e8888285b723b26c698036f820b6329c38c59167756c
+Shape:
+  23084 bytes, 516 newline-terminated lines, final LF
+Public surface:
+  12 definitions + 16 theorems
+Private surface:
+  2 theorems
+Proof DB:
+  30 / 30 declarations proven; 202 / 202 Route B files registered
+Direct Lean:
+  PASS
+External production-import consumer:
+  PASS for target-tail invertibility, exact c0 pairing and block completion
+Negative scope judge:
+  finite Schur positivity export absent
+Target build:
+  PASS, 7817 jobs
+Full build:
+  PASS, 7817 jobs
+Direct Q3/Main.lean:
+  PASS
+scripts/q3_check.sh:
+  PASS
+Orchestrator tests:
+  102 / 102 PASS
+SQLite integrity:
+  knowledge.db, aristotle_proofs.db, observability.db all OK
+Public axiom profile:
+  propext, Classical.choice, Quot.sound
+Forbidden tokens:
+  no sorry, admit, axiom, unsafe, or native_decide
+```
+
+## Exact boundary
+
+This child does **not** prove
+`sourceWeilOddTargetFloorSchurComplement i` positive.  It proves that this
+finite exact operator is the only sign left in the target-floor block after
+the positive infinite tail has been completed away.  Its dimension is the
+symbolic source cutoff, not a substituted diagnostic `N`.
+
+Therefore the exact finite Schur positivity certificate, the literal odd
+form-core/density bridge, the whole odd-space `10^-58` floor, selected
+`kTrial` operator-domain membership, projection-leakage decay and the
+continuum numerator remain open.  The first coarse checkpoint and the
+ten-checkpoint ledger remain open at `0 / 10`.
+
+## Decision record
+
+- Chosen: the exact `c₀`-shifted graph operator, convex combination of ambient
+  and weighted lower bounds, actual infinite tail inverse, and exact finite
+  Schur completion.
+- **What was rejected and why:** directly subtracting the large shift without
+  graph coercivity could lose invertibility; a scalar inverse destroys the
+  block operator; `N=480/960` changes the object; and declaring the finite
+  Schur sign from completion alone would assume precisely the missing fact.
+- Feared failure: a second hidden shift, a sign error in the corrector, or
+  silently replacing the symbolic cutoff by a sampled matrix size.
+- Source of decision: local Codex proof and direct Lean verification; no new
+  Proshka call and no Aristotle submission.
+- Next minimal step: obtain a source-locked exact positivity certificate for
+  `sourceWeilOddTargetFloorSchurComplement`, then prove the literal odd
+  head-plus-tail form-core bridge before claiming a whole-space floor.
+
+## ACTIONS LOG
+
+- reused B3.0AK ambient coercivity and the independent shifted weighted lower;
+- proved one source-locked production Lean module and exact completion;
+- validated direct Lean, target/full builds, direct main, q3_check, external
+  consumer, negative scope guard, proof registry, 102 tests, SQLite and
+  forbidden-token/axiom audits;
+- preserved the unrelated PDF and dependency-local package state;
+- made no Proshka call, Aristotle submission, N=480/N=960 run, route
+  promotion, Bus 010 action, Goal 055 release, PX claim, or RH claim.
+
+## Standing boundaries
+
+`CHALLENGER_NOT_RH` · `BUS_010 VOID` · `GOAL_055 HOLD` · `H4a1b OPEN` ·
+`N480 HOLD` · `PX_RH_CLAIM NOT_MADE`.
