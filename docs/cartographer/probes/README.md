@@ -45,6 +45,7 @@ lake env lean ../docs/cartographer/probes/<файл>.lean
 | `Probe_Inertia_SimpleAsCount.lean` | `hsimple` как утверждение о ранге сдвинутой матрицы: локализация → счёт | компилируется, стандартная тройка |
 | `Probe_QuotientBasis_Auto.lean` | базис фактора генерируется на месте: вход `b` потребителя устраняется (закрывает `P4` вердикта) | компилируется, стандартная тройка |
 | `Probe_Parity_KernelSplit.lean` | `hsimple` сведён к двум блочным условиям на секторах чётности (`I-P1`, добито) | пять теорем, стандартная тройка |
+| `Probe_Simplicity_Plumbing.lean` | склейка: попарная пропорциональность ⟹ `finrank = 1` — звено от `simplicity_clause` к `hsimple` | компилируется, стандартная тройка |
 
 Разборы с числами, скорингом предсказаний и оговорками:
 `PROBE_H2A_RAYLEIGH_TYPED_BRIDGE_2026-08-11.md` рядом.
