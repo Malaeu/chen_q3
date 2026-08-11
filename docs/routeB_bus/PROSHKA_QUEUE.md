@@ -657,7 +657,10 @@ source-Weil form до generic inverse-weighted odd-tail interface B3.0AI. Тек
 
 ---
 
-## Q9 · `CCMLagrangePolynomialToCanonicalSelectedFamilyCrosswalk`: годится ли форма `family = c_N · Лагранж` · OPEN — готов в батч, один вопрос
+## Q9 · `CCMLagrangePolynomialToCanonicalSelectedFamilyCrosswalk`: годится ли форма `family = c_N · Лагранж` · ЗАПРОС СОБРАН 2026-08-11 — READY_NOT_SENT
+
+`request_file: docs/routeB_bus/proshka/PROSHKA_REQUEST_CCM_LAGRANGE_TO_SELECTED_FAMILY_CROSSWALK_2026-08-11.md`
+`packet_status: READY_NOT_SENT_OWNER_OK_REQUIRED` · `source_lock: 4ab74168` · 8 хешей сверены
 
 **Блокирует:** `SIMPLE_EVEN:1` (`MISMATCH`) и `SIMPLE_EVEN:15` (`GAP`) — они оказались одной
 дырой · **Стоимость ошибки:** взяться за переход, убитый одним из уже зарегистрированных
