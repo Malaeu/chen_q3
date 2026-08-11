@@ -40,6 +40,40 @@
 
 ---
 
+## 2026-08-11 — B3.0AK: algebraic Yoshida tail reaches the literal graph closure
+
+**Развилка:** пытаться формализовать source cutoff и топологическое замыкание
+одним монолитом или сначала отделить точный algebraic-to-closed-tail seam.
+
+**Выбрали:** отдельный Lean-мост, который переносит coercivity с конечных
+линейных комбинаций высоких нечётных мод на буквальное замыкание в
+source-Weil graph topology с теми же `R` и `mu`.
+
+**Почему:** Yoshida `K_N(a)` сначала даёт оценку на высоком Fourier-подпространстве,
+а B3.0AJ хранит tail как topological closure. Нужны две независимые непрерывности:
+Fourier-коэффициента для сохранения нулей и полной raw source-Weil диагонали для
+сохранения неравенства.
+
+**Что отвергли и почему:** отвергли Hilbert-`L²` density как замену graph closure
+и любой finite-`N` floor как поставщика бесконечной оценки; обе подмены меняют
+топологию или квантор.
+
+**Техника:** `Submodule.span_induction`, closed zero-set каждого точного
+`V_n_m`-коэффициента и closed sublevel-set непрерывной graph-диагонали.
+
+**Следующий ход:** доказать source-locked high-mode estimate с явными cutoff/constant;
+только он может наполнить уже доказанный transport реальным `R, mu`.
+
+**Адреса:**
+`q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCoercivityClosure.lean` ·
+`sourceWeilGraphOddTail_low_fourier_vanish` ·
+`sourceWeilOddTailAmbientCoercive_of_algebraic`.
+
+**Чей вердикт и аргумент:** local Codex proof; два запуска Proshka B3.0AK не
+выдали тела ответа, поэтому никакой внешний математический вердикт не потреблён.
+
+---
+
 ## 2026-08-11 — Yoshida Lemma 3: printed normalization beats the OCR reconstruction
 
 **Развилка:** потребить в B3.0AK реконструкцию формулы из OCR-
