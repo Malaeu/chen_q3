@@ -230,7 +230,23 @@ def cmd_operators(args) -> int:
     return 0
 
 
+# Transliteration table for slugify. A Cyrillic subject folds to the empty string under a
+# plain ASCII encode, so every such record used to land on the id "UNNAMED" — and the second
+# one would then collide on the primary key. Caught 2026-08-11 when the record «считать
+# инерцией вместо локализации» came out as UNNAMED.
+_CYR = {
+    "а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "e", "ж": "zh",
+    "з": "z", "и": "i", "й": "j", "к": "k", "л": "l", "м": "m", "н": "n", "о": "o",
+    "п": "p", "р": "r", "с": "s", "т": "t", "у": "u", "ф": "f", "х": "kh", "ц": "ts",
+    "ч": "ch", "ш": "sh", "щ": "shch", "ъ": "", "ы": "y", "ь": "", "э": "e",
+    "ю": "yu", "я": "ya",
+}
+
+
 def slugify(text: str, maxlen: int = 60) -> str:
+    # Transliterate Cyrillic before the ASCII fold, otherwise it vanishes entirely.
+    text = "".join(_CYR.get(ch, _CYR.get(ch.lower(), ch).upper() if ch.isupper() else ch)
+                   for ch in text)
     # Fold accents first: without this "Müntz" becomes "M_NTZ" and a search for MUNTZ misses it.
     folded = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode()
     s = re.sub(r"[^A-Za-z0-9]+", "_", folded).strip("_").upper()
