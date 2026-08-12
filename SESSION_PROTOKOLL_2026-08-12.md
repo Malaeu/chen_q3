@@ -225,6 +225,26 @@ comparator                           не начат
 потребитель G1 — обёртка с буквальным суффиксом `_normalized`; соседняя `_simple` и
 внутренние леммы не считаются закрытием CCM-wrapper.
 
+**Исполнение плана после зелёного startup.** `Proposition59GroundLagrangeZeroSetBridge`
+доказана в `Proposition59GroundLagrangeZeroSetBridge.lean`: одна строка `xi`, точный
+carrier `Finset.Icc (-(N : ℤ)) N`, координата `-L*z/(2*pi)`, три раздельные ветви
+removable pole / sine lattice / Cauchy-to-Lagrange и финальный буквальный вызов
+`..._simple_normalized`. Direct Lean, target build и full build прошли; публичная
+теорема зависит только от `propext`, `Classical.choice`, `Quot.sound`.
+
+Параллельная M1-калибровка одной контрольной ячейки `(lambda_sq,N)=(13,120)` дала
+`|overlap| = 0.99999999765405872228…`, projective defect
+`4.69188254992912959392e-9` и относительное `inf_{c≠0}`-расстояние
+`6.84973178301831727564e-5`; независимый 170-digit replay прошёл. Это строго
+`[FINITE_CELL][CONDITIONAL]`. Matrix residual и spectral gap не измерены:
+`NO_PERSISTED_MFIN_MATVEC`.
+
+Фоновый EnvDump исключил 6 orphan `.olean`, включая конфликтующий scratch, и после
+declared invocation с кодом `0` опубликовал gitignored индекс из 1139 уникальных
+деклараций 154 актуальных модулей. 30 stale и 21 never-built модуль остались явно
+непокрытыми. `atom_describe.py` читает elaborated-типы только из этого индекса и для
+RouteB отказывает без публикации JSON вместо подмены исходным текстом.
+
 ---
 
 ## Dateien (абсолютные пути)

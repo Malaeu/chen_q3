@@ -1,25 +1,25 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-08-12 19:56 CEST
+Updated: 2026-08-12 20:44 CEST
 
-Status: `GOAL_058_G2B_NAME_LOCKED_EXECUTION_AUTHORIZED / NOT_RH / CHALLENGER`
+Status: `GOAL_058_G2B_PROVED_SESSION_PLAN_COMPLETE / NOT_RH / CHALLENGER`
 
 This request-local plan does not override the root `IMPLEMENTATION_PLAN.md` or
 promote Route B above the H-bridge mainline.
 
 ## Current action
 
-Goal 058 G2b is selected. First implement
-`Proposition59GroundLagrangeZeroSetBridge` under the exact name lock in
-`docs/routeB_bus/CODEX_DIRECTIVE_ROUTE058_P59_G2B_2026-08-12.md`. The final CCM
-supplier must be
-`Q3.RouteB.ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized`.
+The bounded plan is complete:
 
-In parallel, execute one finite M1 control-cell measurement of the source-locked ground
-line against the source trial at `(lambda_sq,N)=(13,120)`. In the background, repair
-EnvDump's import-collision failure and wire the derived index into `atom_describe.py`.
-These two auxiliary lanes remain diagnostic/tooling work and cannot close a uniform
-theorem or promote the route.
+1. `Proposition59GroundLagrangeZeroSetBridge` is proved with the exact `_normalized`
+   supplier, same coefficient row, and coordinate `-L*z/(2*pi)`.
+2. The `(lambda_sq,N)=(13,120)` M1 cell is measured and independently replayed; its
+   evidence class remains `[FINITE_CELL][CONDITIONAL]`.
+3. EnvDump excludes orphan/stale `.olean`, publishes only a clean atomic derived index,
+   and supplies elaborated RouteB types to `atom_describe.py` fail-closed.
+
+Goal 058 remains open. The next bounded mathematical front is not selected by this
+session closeout; G1 and G3 remain open.
 
 ## Physical bus
 
@@ -47,9 +47,9 @@ Finite calibration facts and the generic `NormalizedTrackingRateTransfer` and
 
 ## Execution rule
 
-1. Execute the active physical Goal 058 only.
-2. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
-3. Validate P59, the finite M1 diagnostic, and EnvDump wiring independently.
+1. Keep the active physical Goal 058 open.
+2. Select a new bounded front before further mathematics.
+3. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
 4. Do not create Bus 010, promote Route B, or
    claim RH.
 

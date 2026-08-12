@@ -17,18 +17,31 @@ request state.
 ## CURRENT OPERATIONAL STATUS — 2026-08-12
 
 ```text
-GOAL_058_REALZERO_GROUND_DIAGONAL_TO_XI_ACTIVE
-RB-GOAL-058-G2B-P59 / PROPOSITION59_GROUND_LAGRANGE_ZEROSET_BRIDGE
+GOAL_058_G2B_PROVED_SESSION_PLAN_COMPLETE
+RB-GOAL-058-POST-G2B / NEXT_ROUTE058_GATE_NOT_SELECTED
 CHALLENGER / NOT_RH
 BUS_010: VOID
 ```
 
-The physical Goal 058 and the owner's bounded 2026-08-12 instruction select G2b as the
-current mathematical front. The exact `_normalized` CCM supplier is name-locked in
-`docs/routeB_bus/CODEX_DIRECTIVE_ROUTE058_P59_G2B_2026-08-12.md`. The same instruction
-authorizes one finite M1 control-cell measurement in parallel and EnvDump-to-describer
-wiring in the background. Neither auxiliary run is a theorem, a finite-to-global
-promotion, or an RH claim.
+The bounded 2026-08-12 plan is complete. G2b is closed by
+`Proposition59GroundLagrangeZeroSetBridge`; the exact `_normalized` supplier name lock,
+same coefficient row, and `-L*z/(2*pi)` coordinate are preserved. The parallel M1
+control cell measured projective defect `4.69188254992912959392e-9` at `(13,120)` and
+remains `[FINITE_CELL][CONDITIONAL]`; matrix residual and spectral gap are
+`NOT_MEASURED / NO_PERSISTED_MFIN_MATVEC`. EnvDump-to-describer wiring is live on the
+current built environment. Goal 058 remains open: G1 is the main spectral gap and G3
+the main same-family tracking wall. No next mathematical front is selected here.
+
+## GOAL 058 G2b — 2026-08-12
+
+- Result: `P59_GROUND_LAGRANGE_ZEROSET_BRIDGE_PROVED`.
+- Lean: `Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean`, SHA-256
+  `bb9383bebfcd5d01423ff5e944a28545e835e2e03c8609ec69fde73dce5ab2c5`.
+- Validation: direct Lean, target build, full build PASS; no `sorry`/new `axiom`;
+  public axioms are `propext`, `Classical.choice`, `Quot.sound`.
+- Rejected alternative remains rejected: no scalar equality between the entire P59
+  transform and a finite Lagrange polynomial.
+- No route promotion and no RH claim.
 
 The former source-locked D0.7e.5a branch is terminal historical at base pin
 `6af9170d15a38e451a76f8dbf2ad8725d62b6f5f`; its historical reason is

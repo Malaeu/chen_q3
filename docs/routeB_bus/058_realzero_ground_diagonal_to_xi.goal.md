@@ -69,7 +69,7 @@ T_j   transform пролатного пробника (kTrial)       несёт 
 | 0 | `G0` | точный объект, координата, нормировка | `GAP` частично |
 | 1 | `G1` | кофинальный конечный simple-even ground-пакет | `GAP` главный спектральный фронт |
 | 2 | `G2` | вещественность нулей лагранжева многочлена строки | **`READY`** условно на G1 |
-| 3 | `G2b` | перенос **множества** нулей на преобразование Prop-5.9 | `GAP` **дешёвый фронт** |
+| 3 | `G2b` | перенос **множества** нулей на преобразование Prop-5.9 | **`PROVED`** 2026-08-12 |
 | 4 | `G3` | та же `F_j` отслеживает projected trial | `GAP` **ГЛАВНАЯ СТЕНА** |
 | 5 | `G3c` | projected trial отслеживает continuum trial | `GAP` |
 | 6 | `G4` | CCM Lemma 7.3: continuum trial → Ξ | `GAP` доказано в статье, порт открыт |
@@ -98,9 +98,13 @@ python3 orchestrator/kb_migrate_route058.py --check   # разошлась ли 
 (`CanonicalRHRouteSkeleton.lean:145`) выводит `Q3.RH` из одной фиксированной семьи;
 `sameCofinalGuard` не даёт подставить независимую диагональ.
 
-**Ворота 3 — все объекты на месте, нет только теоремы.**
-`proposition59RawTransform` (:84), `proposition59PoleKernel = dslope (…) pole` (:33),
-числитель `2·sin(zL/2)` с производной `L·cos(zL/2)` (:36).
+**Ворота 3 — доказаны.** `Proposition59GroundLagrangeZeroSetBridge`
+(`Proposition59GroundLagrangeZeroSetBridge.lean:341`) переносит вещественность нулей
+лагранжева многочлена той же строки на точное P59-преобразование. Доказательство
+разбирает removable pole, exterior sine-lattice zero и off-lattice Cauchy/Lagrange
+case, сохраняет координату `-L*z/(2*pi)` и завершает вызов буквального
+`..._simple_normalized`. Direct Lean, target build и full build прошли; аксиомы только
+`propext`, `Classical.choice`, `Quot.sound`.
 
 **Ворота 1 — шесть поставщиков-кандидатов**, ни один не доведён: penalty-сертификат ·
 блочное расщепление чётности · GLOWER/Yoshida · Schur/Feshbach · ранг-инерция · внешняя
@@ -126,7 +130,7 @@ Z(F_{m,N}) = Z(P_{m,N}) ∪ Z(Λ_{m,N})       Λ — вещественный р
 
 ---
 
-## Дешёвый следующий шаг
+## Закрытый дешёвый шаг G2b
 
 Ворота `G2b`, теорема `Proposition59GroundLagrangeZeroSetBridge`:
 
@@ -146,7 +150,9 @@ Z(F_{m,N}) = Z(P_{m,N}) ∪ Z(Λ_{m,N})       Λ — вещественный р
 7. вещественная корневость P              ⟹ Im z = 0
 ```
 
-Судейского решения не требует. Это наша работа, и она помечена дешёвой.
+Исполнено 2026-08-12 с кодом `P59_GROUND_LAGRANGE_ZEROSET_BRIDGE_PROVED`.
+Следующий математический фронт этим файлом не выбирается: `G1` остаётся главным
+спектральным gap, `G3` — главной стеной same-family tracking.
 
 ---
 

@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **204** · упомянуто в `MAP.md`: **20** · вне карты: **184** · без описания в шапке: **0**
+Всего файлов: **205** · упомянуто в `MAP.md`: **21** · вне карты: **184** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -183,6 +183,7 @@
 | `ProlateSourceEigenTransport` | — | The finite Fourier action preserves every pointwise eigenspace of the | 0 |
 | `ProlateSourceRegularity` | — | The source Fourier kernel with the repository convention | 0 |
 | `Proposition59EntireTransform` | — | The apparent pole `2*pi*k/L` in Proposition 5.9. -/ | 0 |
+| `Proposition59GroundLagrangeZeroSetBridge` | карта | Proposition 5.9 ground/Lagrange zero-set bridge | 0 |
 | `QuadraticDivisorTransfer` | — | The final divisor step of `SOFT_2_QuadraticDivisorTransfer`. | 0 |
 | `QuotientByRadicalPosDefMatrix` | — | Choosing coordinates on the quotient by the full radical turns the | 0 |
 | `QuotientByRadicalRealZeroConsumer` | — | первая декларация: `zerosRealOn_of_quotientByRadical_charpoly_mul` | 0 |

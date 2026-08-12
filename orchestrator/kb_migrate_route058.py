@@ -29,7 +29,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 DB = REPO / "q3.lean.aristotle/aristotle_db/knowledge.db"
 CHAIN = "REALZERO_GROUND_DIAGONAL_TO_XI"
-RUN_ID = "route058_master_2026-08-11"
+RUN_ID = "route058_g2b_proved_2026-08-12"
 
 Q3 = "q3.lean.aristotle/Q3/Proofs/RouteB/"
 
@@ -63,13 +63,13 @@ STEPS: list[tuple] = [
 
     (3, "перенос МНОЖЕСТВА нулей с многочлена на преобразование Proposition-5.9",
      "F_j целая с вещественными нулями",
-     "Proposition59GroundLagrangeZeroSetBridge — НЕ СУЩЕСТВУЕТ",
-     Q3 + "Proposition59EntireTransform.lean", 84, "GAP",
-     "G2b OPEN_CHEAP_LOCAL_FRONT. Z(F) = Z(P) объединить Z(Lambda), Lambda — вещественный "
-     "решёточный множитель. УБИТО: Pstar = c_N * многочлен (у преобразования бесконечно "
-     "много нулей на синус-решётке, у многочлена конечное число). Схема из семи шагов "
-     "дана маршрутом; все объекты в дереве.",
-     "proposition59RawTransform,proposition59PoleKernel,dslope,Z(F)=Z(P)∪Z(Lambda)"),
+     "Proposition59GroundLagrangeZeroSetBridge",
+     Q3 + "Proposition59GroundLagrangeZeroSetBridge.lean", 341, "READY",
+     "G2b PROVED 2026-08-12. Exact same-row transfer on Finset.Icc (-(N:Z)) N; "
+     "coordinate -L*z/(2*pi); removable-pole, exterior sine-lattice and off-lattice "
+     "Cauchy/Lagrange branches; final supplier literally ..._simple_normalized. "
+     "УБИТО и не возвращено: Pstar = c_N * многочлен.",
+     "proposition59RawTransform,proposition59PoleKernel,dslope,Proposition59GroundLagrangeZeroSetBridge"),
 
     (4, "та же F_j отслеживает projected prolate trial локально равномерно",
      "G3c",
