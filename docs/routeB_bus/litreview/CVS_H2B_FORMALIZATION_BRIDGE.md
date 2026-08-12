@@ -11,6 +11,73 @@ not a proof. No git, no edits outside this file.
 
 ---
 
+## ⚠ ПЕРЕСЧЁТ 2026-08-12 — таблица §3 ниже УСТАРЕЛА НА ДЕВЯТЬ ДНЕЙ
+
+Карта написана 3 августа и с тех пор не пересчитывалась. Её счёт
+`HAVE 5 · PARTIAL 5 · MISSING 5` был верен тогда и неверен сейчас.
+
+**Этот пересчёт прошёл две редакции.** Первую сделал наблюдатель и ошибся в шести строках
+из пятнадцати — в обе стороны. Вторая, ниже, проверена adversarial-ревью Codex построчно
+против дерева. Расхождение первой редакции описано в конце раздела: оно называет класс
+ошибки, который повторится, если работать прежним способом.
+
+| # | что это | 3 авг | 12 авг | адрес и что именно доказано |
+|---|---|---|---|---|
+| β1 | инволюция градуировки `γ²=Id`, `Qγ=γQ` | MISSING | **HAVE** | `CCMFiniteWeilParity.lean:39,67` — точная инволюция и коммутация для оператора CCM |
+| β2 | коммутатор `DQ−QD` | PARTIAL | **HAVE** | точный поставщик `CCMFiniteWeilShiftedRankOne.lean:103-125`. Обобщённая теорема принимает `hcomm` гипотезой, но для НАШЕЙ матрицы он выведен |
+| β3 | `QDξ = −β` | PARTIAL | **HAVE** | `CCMFiniteWeilShiftedRankOne.lean:136-157` — выводит из коммутатора источника, чётности, собственной пары и нормировки |
+| β4 | `D′` самосопряжён по `Q` | HAVE | **HAVE** | `RankOneCorrectionWeightedSymmetry.lean:27-50` |
+| β5a | `D′ξ = 0` | HAVE | **HAVE** | там же `:15-22` |
+| β5b | спуск на Q-разделённый фактор с PosDef-метрикой | PARTIAL | **HAVE** | `V ⧸ LinearMap.ker B` — фактор по левому радикалу; для симметричной `B` это радикал. Индуцированная форма `QuotientByRadicalSelfAdjoint.lean:34-67`, спущенная самосопряжённость `:83-107`, **положительная определённость** `QuotientByRadicalPosDefMatrix.lean:16-29` |
+| β5c | `radical(Q) = ℝ∙ξ`, простота ⇒ одномерность | MISSING | **HAVE** | `MatrixBilinFormRadical.lean:40-57`. Проба `Probe_Inertia_SimpleAsCount.lean` доказывает **не это**: в `ccm_hsimple_iff_rank` нет `xi`, и радикал там не отождествляется |
+| β6 | Q-самосопряжённый ⇒ вещественный спектр | MISSING | **HAVE** | `PosDefSelfAdjointRealSpectrum.lean:18-52`. Не предполагает ни эрмитовость `D`, ни вещественность спектра: из `Q.PosDef` и `QD = DᴴQ` **строит** эрмитову `H` с тем же характеристическим многочленом через `sqrt Q` |
+| β7 | треугольная факторизация `Det(D′−s) = −s·∏(λⱼ−s)` | MISSING | **MISSING-КАК-ЗАЯВЛЕНО** | `RankOneCorrectionLagrangeIdentity.lean:20-80` существует, но доказывает **лагранжево тождество определителя**, а не треугольную факторизацию. Дальше по цепи шаг обойдён |
+| β8a | лемма об определителе, вне спектра | HAVE | **HAVE** | `RankOneCorrectionDeterminant.lean:11-32` |
+| β8b | то же во всех точках | HAVE | **HAVE** | `RankOneCorrectionAllSpectralPoints.lean:98-115`, форма через присоединённую матрицу |
+| β8c | сведение к `Σξ/(s−j)=0`, отождествление с `P(s)` | MISSING | **HAVE через эквивалентный путь** | `RankOneCorrectionQuotientCharpoly.lean:139-167`, радикальная версия `…RadicalCharpoly.lean:12-42`. Буквальный шаг с рациональной суммой не формализован; путь через характеристический многочлен фактора короче и достаточен |
+| β8d | вещественные собственные ⇒ вещественные нули `P` | PARTIAL | **HAVE** | мост в production: `PosDefSelfAdjointRealSpectrumRealConsumer.lean:14-84`, конечный потребитель `RankOneCorrectionLagrangeRealZeros.lean:41-99` |
+| β9 | Фурье + Гурвиц | PARTIAL | **PARTIAL** | периодический множитель и снятие единичного множителя есть; сокращение полюсов и переход Гурвица — нет |
+| α4 | простота существенна | HAVE | **MISSING-КАК-ЗАЯВЛЕНО** | `HermitianDeterminantRealZeros.lean:60-81` показывает необходимость эрмитовости и невырожденности множителя, но **не** утверждение CvS про многомерное ядро |
+
+**Строгий счёт на 12 августа:**
+
+```text
+HAVE 12 · PARTIAL 1 · MISSING-КАК-ЗАЯВЛЕНО 2 · ДОКАЗАНО-НЕ-В-ДЕРЕВЕ 0
+```
+
+### Долгов по переносу НЕТ
+
+Первая редакция объявила два долга — `ccm_hsimple_iff_rank` и подъём `ℝ→ℂ` из проб. Это
+неверно. Обе пробы проверены: компилируются, стандартные аксиомы, из сборки недостижимы
+(`lakefile.toml:16-19` собирает glob `Q3`, ссылок на пробы из `Q3/` ноль). Но переносить
+нечего: **нужные возможности уже имеют production-аналоги** в дереве.
+
+### Чем ошиблась первая редакция — класс ошибки
+
+Шесть строк из пятнадцати, в обе стороны.
+
+Занижено четыре: β2, β3, β5c, β8d. Наблюдатель искал **обобщённые** теоремы, находил их с
+гипотезами и писал `PARTIAL`. Точные поставщики для нашей матрицы лежали рядом и не были
+спрошены.
+
+Завышено две: β7 и α4. Наблюдатель проверил, что теорема с таким именем существует по
+такому адресу, и не проверил, **закрывает ли она именно этот шаг**.
+
+Класс общий: **проверялось существование имени, а не пригодность теоремы**. Это тот же
+класс, что убитый `hermfact1`, только наоборот — там имя не открывалось вовсе, здесь
+открывается и ведёт к соседней теореме.
+
+Практическое следствие: проверка адреса дешёвая и механизируемая, проверка пригодности —
+суждение. Первую можно поручить инструменту, вторую нельзя.
+
+### Оговорка о границах
+
+Ничего из этого не закрывает `H2b`. CvS берёт простое, изолированное, чётное нижнее
+состояние **гипотезой** — см. §5 «assumed vs proved» ниже. Пересчёт меняет карту движка,
+а не статус стены.
+
+---
+
 ## 1. CvS main theorem + CF Toeplitz corollary (verbatim, with locations)
 
 ### 1a. Main theorem — Theorem 6.1 (p. 13), announced as Theorem 1.2 (p. 2)
@@ -140,6 +207,10 @@ polynomial. This is why divided differences (§7) appear.
 | β8d | "real eigenvalues ⇒ real charpoly zeros ⇒ real P(s) zeros" | `HermitianDeterminantRealZeros : zerosRealOn_of_hermitian_charpoly_mul` | **PARTIAL** | proves it for a **genuinely Hermitian** `M` in the *standard* inner product; the bridge from Q-self-adjoint `D′` to such `M` is the missing link (see §4 M1) |
 | β9 | Fourier transform ξ̂ zeros real (Thm 5.6(ii)) + Hurwitz limit (§6) | `HermitianDeterminantRealZeros : periodicScalingDet_zerosRealOn`, `zerosRealOn_right_factor` | **PARTIAL** | the `1 − exp(−iLz)` factor and the "strip out a unit factor" plumbing exist; the `sin(z/2)·Σξ_j/(z−2πj)` pole-cancellation and Hurwitz passage do NOT |
 | α4 / Rmk 2.3 | simplicity essential (else only radical) | `nonHermitian_charpoly_nonreal_zero`, `vanishing_unit_nonreal_zero` | **HAVE** (as negative controls) | witness that dropping Hermitian/unit hypotheses breaks reality — matches "simplicity essential" morally |
+
+> **Счёт ниже — от 3 августа и УСТАРЕЛ.** Актуальный — в разделе «ПЕРЕСЧЁТ 2026-08-12»
+> вверху файла: `HAVE 12 · PARTIAL 1 · MISSING-КАК-ЗАЯВЛЕНО 2`.
+> Строки таблицы §3 выше тоже несут статусы 3 августа; сверяйте по пересчёту.
 
 Tally: **HAVE = 5** rows (β4, β5a, β8a, β8b, α4-controls), **PARTIAL = 5**
 (β2, β3, β5b, β8d, β9), **MISSING = 5** (β1, β5c, β6, β7, β8c).
