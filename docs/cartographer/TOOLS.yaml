@@ -411,6 +411,13 @@ tool_families:
           python3 docs/cartographer/atom_describe.py --limit 0
           --foreign /mnt/hdd01/Soft/GitHub/zeta-23-lean
           --json docs/cartographer/atoms_described.json
+        alternatives:
+          - python3 docs/cartographer/atom_describe.py --selftest
+          - python3 docs/cartographer/atom_describe.py --chain <ASSEMBLY_CHAIN> --json <out>
+        selftest: >-
+          --selftest runs the provenance classifier over fourteen names with known answers and
+          exits nonzero on any miss. Three of them are cases where the classifier was wrong in
+          an earlier revision, so the file is a regression record, not decoration.
         cwd: repository root
         trigger: Turning atom names into statements one can reason about or hand to an agent.
         writes: true

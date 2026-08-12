@@ -45,7 +45,7 @@
     "our_n_files": 0,
     "provenance": "LOCAL_HYPOTHESIS",
     "source": "LOCAL_HYPOTHESIS",
-    "rejected_match": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Veblen.lean:530"
+    "rejected_match": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Real/Hyperreal.lean:145"
   },
   {
     "name": "xi",
@@ -53,7 +53,7 @@
     "our_n_files": 0,
     "provenance": "LOCAL_HYPOTHESIS",
     "source": "LOCAL_HYPOTHESIS",
-    "rejected_match": "q3.lean.aristotle/Q3/Proofs/RKHS_rescaling.lean:34"
+    "rejected_match": "q3.lean.aristotle/Q3/Proofs/Q_nonneg_on_atoms.lean:36"
   },
   {
     "name": "heig",
@@ -199,8 +199,15 @@
     "name": "kTrial",
     "our_kind": "шаг 5",
     "our_n_files": 0,
-    "provenance": "PLACEHOLDER",
-    "source": "PLACEHOLDER"
+    "provenance": "LEAN_DECL",
+    "kind_lean": "field",
+    "namespace": "Q3.RouteB.D0Pstar",
+    "owner": "CoefficientFamily",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CanonicalApproximation.lean",
+    "line": 35,
+    "signature": "CoefficientFamily.kTrial : PairIndex → ℤ → ℂ",
+    "docstring": "",
+    "source": "ours"
   },
   {
     "name": "centeredPstarFamily",

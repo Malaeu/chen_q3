@@ -61,6 +61,57 @@ def namespace_at(lines: list[str], line: int) -> str:
     return ".".join(stack)
 
 
+def find_structure_field(name: str, root: Path) -> dict | None:
+    """Найти имя как ПОЛЕ СТРУКТУРЫ: строка `  name : тип` внутри `structure X where`.
+
+    ДЕФЕКТ, ПОЙМАННЫЙ 2026-08-12: `kTrial` — поле `CoefficientFamily`
+    (`D0CanonicalApproximation.lean:35`), а поиск объявлений ищет только
+    `theorem|def|…`. Инструмент объявлял существующий объект `PLACEHOLDER`, то есть
+    «ещё не написан». Это ровно та ложь, ради которой введена классификация.
+    """
+    if not root.is_dir() or "." in name:
+        return None
+    try:
+        r = subprocess.run(
+            ["rg", "-n", "--no-heading", rf"^\s+{re.escape(name)}\s*:", str(root)],
+            capture_output=True, text=True, timeout=180)
+    except Exception:
+        return None
+    if r.returncode != 0 or not r.stdout.strip():
+        return None
+    for c in r.stdout.strip().split("\n")[:200]:
+        try:
+            path_s, line_s, body = c.split(":", 2)
+            cp, cl = Path(path_s), int(line_s)
+            lines = cp.read_text(encoding="utf-8", errors="replace").split("\n")
+        except Exception:
+            continue
+        # подняться вверх до `structure X where` без пустой строки-разрыва
+        owner = None
+        for k in range(cl - 2, max(-1, cl - 40), -1):
+            t = lines[k].strip()
+            m = re.match(r"^(structure|class)\s+([A-Za-z_][A-Za-z_0-9'\.]*)", t)
+            if m:
+                owner = m.group(2)
+                break
+            if t and not t.startswith("--") and not t.startswith("/") and ":" not in t \
+               and not t.endswith("where"):
+                break
+        if owner is None:
+            continue
+        ns = namespace_at(lines, cl)
+        return {
+            "kind_lean": "field",
+            "namespace": ns,
+            "owner": owner,
+            "file": str(cp.relative_to(REPO)) if str(cp).startswith(str(REPO)) else str(cp),
+            "line": cl,
+            "signature": f"{owner}.{name} : " + body.split(":", 1)[1].strip()[:200],
+            "docstring": "",
+        }
+    return None
+
+
 def find_declaration(name: str, root: Path) -> dict | None:
     """Найти объявление ТОЧНО этого полного имени: базовое имя плюс совпадающий namespace.
 
@@ -85,7 +136,6 @@ def find_declaration(name: str, root: Path) -> dict | None:
 
     cands = r.stdout.strip().split("\n")[:400]
     path = line = lines = None
-    fallback = None
     for c in cands:
         try:
             path_s, line_s, _ = c.split(":", 2)
@@ -99,8 +149,6 @@ def find_declaration(name: str, root: Path) -> dict | None:
         if ns == want_ns or full_written or (not want_ns and not ns):
             path, line, lines = cp, cl, cls
             break
-        if fallback is None:
-            fallback = (cp, cl, cls, ns)
     if path is None:
         return None
 
@@ -142,52 +190,107 @@ PAPER = re.compile(r"(Lemma|Theorem|Prop|Proposition)[_ ]?\d", re.I)
 
 
 def is_local_binder(name: str) -> bool:
-    """Встречается ли имя как СВЯЗАННАЯ ПЕРЕМЕННАЯ в сигнатурах дерева RouteB.
+    """Связана ли эта переменная в сигнатуре какой-либо декларации дерева RouteB.
 
     Ищем по всему дереву, а не в файле-поставщике: `epsilon` связан в сигнатуре
-    ПОТРЕБИТЕЛЯ (`CCMFiniteWeilParity.lean`), тогда как поставщик записан другой.
-    Первая редакция проверяла только поставщика и пропустила ровно этот случай.
+    ПОТРЕБИТЕЛЯ, тогда как поставщик у шага записан другой. Первая редакция проверяла
+    только поставщика и пропустила ровно этот случай.
+
+    Паттерн требует, чтобы имя стояло в скобочной группе биндеров и завершалось `:`.
+    Ограничений по длине имени НЕТ: они были заплаткой, а не правилом, и делали
+    поведение непредсказуемым на границе.
     """
-    if len(name) > 24 or "." in name:
+    if "." in name:
         return False
     try:
         r = subprocess.run(
-            ["rg", "-q", rf"[({{]\s*(\w+\s+)*{re.escape(name)}(\s+\w+)*\s*:", str(OURS / "Proofs/RouteB")],
+            ["rg", "-q", rf"[({{]\s*(\w+\s+)*{re.escape(name)}(\s+\w+)*\s*:",
+             str(OURS / "Proofs/RouteB")],
             capture_output=True, timeout=60)
         return r.returncode == 0
     except Exception:
         return False
 
 
-def provenance(name: str, resolved: dict | None, supplier_file: str | None) -> str:
+def provenance(name: str, resolved: dict | None) -> str:
     """Классифицировать имя по таксономии вердикта `..._HERMFACT1_AUDIT_2026-08-11`.
 
-    Введено 2026-08-12: разбор объектов маршрута 058 притянул `epsilon` к
-    `Ordinal/Veblen.lean`, а `xi` — к постороннему файлу. Оба — локальные имена
-    связанных переменных, а не декларации. Правдоподобно неверный адрес хуже
-    отсутствия адреса, и именно так родился `hermfact1`.
+    ПОРЯДОК ПРОВЕРОК И ПОЧЕМУ ИМЕННО ТАКОЙ.
 
-    Порядок проверок: проза → настоящая декларация → локальная связанная переменная →
-    имя из статьи → заглушка. Проверка «декларация» стоит ВЫШЕ бумажной, иначе
-    `proposition59RawTransform` попадает в `PAPER_THEOREM` из-за подстроки.
+    1. Проза — кириллица или пробел: пометка в записи, а не имя объекта.
+    2. **Объявлено в нашем RouteB — значит декларация, и точка.** Связанная переменная
+       не имеет одноимённого `def`/`theorem`/поля в том же дереве; если бы имела, это
+       затенение и отдельный дефект. Проверка стоит выше связанности намеренно.
+    3. Связано в сигнатурах RouteB, но объявлено где-то ещё (Mathlib, чужой файл) —
+       локальная гипотеза с однофамильцем. Так `epsilon` не уезжает в ординалы Веблена.
+    4. Разрешилось вне RouteB и нигде не связано — декларация (например `dslope`).
+    5. Похоже на ссылку из статьи — теорема первоисточника.
+    6. Иначе заглушка.
+
+    ДВЕ ПРЕЖНИЕ РЕДАКЦИИ БЫЛИ НЕВЕРНЫ, обе записаны в самопроверку.
+    Первая ставила разрешение выше связанности и подпирала это порогами длины имени.
+    Вторая ставила связанность выше всего — и `ccmModeFinite` стал «локальным», потому
+    что биндер-паттерн не отличает связывание `(x : T)` от ПРИВЕДЕНИЯ ТИПА
+    `(ccmModeFinite N i : ℝ)`. Regex их различить не может; различает происхождение.
     """
     if CYR.search(name) or " " in name:
         return "PROSE"
-    if resolved:
-        f = resolved.get("file", "")
-        # разрешилось в нашем RouteB или в Mathlib — настоящая декларация
-        if "Proofs/RouteB" in f or "packages/mathlib" in f:
-            if not is_local_binder(name) or len(name) > 12:
-                return "LEAN_DECL"
-        # разрешилось где-то ещё в дереве: подозрительно, проверяем локальность
-        if is_local_binder(name):
-            return "LOCAL_HYPOTHESIS"
+    if resolved and "Proofs/RouteB" in resolved.get("file", ""):
         return "LEAN_DECL"
     if is_local_binder(name):
         return "LOCAL_HYPOTHESIS"
+    if resolved:
+        return "LEAN_DECL"
     if PAPER.search(name):
         return "PAPER_THEOREM"
     return "PLACEHOLDER"
+
+
+SELFTEST = [
+    # имя,                                        ожидаемый класс,     почему
+    ("epsilon",                    "LOCAL_HYPOTHESIS", "связан в сигнатурах, однофамилец в ординалах Веблена"),
+    ("xi",                         "LOCAL_HYPOTHESIS", "связан в сигнатурах, однофамилец в RKHS_rescaling"),
+    ("hbottom",                    "LOCAL_HYPOTHESIS", "связан, деклараций нет"),
+    ("kTrial",                     "LEAN_DECL",        "ПОЛЕ структуры CoefficientFamily, не theorem/def"),
+    ("proposition59RawTransform",  "LEAN_DECL",        "имя содержит 'proposition', но это декларация"),
+    ("dslope",                     "LEAN_DECL",        "декларация Mathlib, нигде не связана"),
+    ("ZerosRealOn",                "LEAN_DECL",        "наша декларация"),
+    ("ccmModeFinite",              "LEAN_DECL",        "объявлена в RouteB; биндер-паттерн ловил ПРИВЕДЕНИЕ (ccmModeFinite N i : ℝ)"),
+    ("sourceLagrangePolynomial",   "LEAN_DECL",        "объявлена в RouteB"),
+    ("centeredPstarFamily",        "LEAN_DECL",        "объявлена в RouteB"),
+    ("CCM_Lemma_7_3",              "PAPER_THEOREM",    "в дереве отсутствует, вид ссылки на статью"),
+    ("hermfact1",                  "PLACEHOLDER",      "исторический doc-alias: ноль .lean во всём репозитории"),
+    ("FiniteGroundTransformToCCMTrialLocallyUniform", "PLACEHOLDER", "ещё не написана"),
+    ("кофинальное расписание",     "PROSE",            "пометка, не имя"),
+]
+
+
+def selftest(foreign: Path | None) -> int:
+    """Прогнать классификатор на именах с ИЗВЕСТНЫМ ответом.
+
+    Инструмент, который нельзя проверить, нельзя и починить: до этой проверки обе
+    правки классификатора вносились вслепую и обе оказались с собственными ошибками.
+    """
+    print("САМОПРОВЕРКА классификатора — 11 имён с известным ответом")
+    print()
+    bad = 0
+    for name, want, why in SELFTEST:
+        found = None
+        for root in (MATHLIB, OURS, foreign if foreign else Path("/nonexistent")):
+            found = find_declaration(name, root) or find_structure_field(name, root)
+            if found:
+                break
+        got = provenance(name, found)
+        ok = got == want
+        bad += not ok
+        mark = "OK " if ok else "ПРОВАЛ"
+        print(f"  {mark} {name[:46]:<46} {got:<17} {why}")
+        if not ok:
+            print(f"       ожидалось {want}"
+                  + (f", адрес {found['file']}:{found['line']}" if found else ", адреса нет"))
+    print()
+    print(f"провалов: {bad} из {len(SELFTEST)}")
+    return 1 if bad else 0
 
 
 def main() -> int:
@@ -200,7 +303,13 @@ def main() -> int:
                     help="разобрать объекты цепи из assembly, а не атомы Mathlib "
                          "(например REALZERO_GROUND_DIAGONAL_TO_XI)")
     ap.add_argument("--json", default="")
+    ap.add_argument("--selftest", action="store_true",
+                    help="прогнать классификатор на именах с известным ответом и выйти")
     args = ap.parse_args()
+
+    if args.selftest:
+        fr = Path(args.foreign).expanduser().resolve() if args.foreign else None
+        return selftest(fr)
 
     con = sqlite3.connect(DB, uri=True)
     if args.chain:
@@ -247,11 +356,11 @@ def main() -> int:
         found = None
         for src, root in (("mathlib", MATHLIB), ("ours", OURS),
                           ("foreign", foreign if foreign else Path("/nonexistent"))):
-            d = find_declaration(name, root)
+            d = find_declaration(name, root) or find_structure_field(name, root)
             if d:
                 found = (src, d)
                 break
-        prov = provenance(name, found[1] if found else None, supplier)
+        prov = provenance(name, found[1] if found else None)
         rec["provenance"] = prov
         prov_stats[prov] = prov_stats.get(prov, 0) + 1
         # Адрес выдаётся ТОЛЬКО для настоящих деклараций. Локальная гипотеза и проза

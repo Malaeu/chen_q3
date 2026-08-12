@@ -13,12 +13,16 @@
 как локальные связанные переменные. Правдоподобно неверный адрес хуже отсутствия адреса.
 
 ```
-LEAN_DECL        15   настоящая декларация, адрес выдан
+LEAN_DECL        16   настоящая декларация, адрес выдан
 LOCAL_HYPOTHESIS  6   связанная переменная в сигнатуре, адреса НЕТ и быть не может
 PAPER_THEOREM     1   доказано в статье, в дереве отсутствует
-PLACEHOLDER       2   имя ещё не написанного объекта
+PLACEHOLDER       1   имя ещё не написанного объекта
 PROSE             6   пометка в записи, а не имя
 ```
+
+Классификатор проверяем: `atom_describe.py --selftest` гоняет 14 имён с известным
+ответом, включая все три случая, на которых он ломался. Инструмент, который нельзя
+проверить, нельзя и починить.
 
 ---
 
@@ -213,16 +217,16 @@ defect-Gram · low/high split · norm-resolvent Galerkin. **Убито:** exact 
 **Свойства.**
 
 ```
-поле структуры  kTrial              D0CanonicalApproximation.lean:35
-                CoefficientFamily.kTrial : PairIndex → ℤ → ℂ
-LEAN_DECL       centeredPstarFamily D0CanonicalApproximation.lean:62
-                (centeredXi 0 / rawFplus 0) * rawFplus z
-PROSE           проекционный хвост
+LEAN_DECL  kTrial               D0CanonicalApproximation.lean:35   ПОЛЕ структуры
+           CoefficientFamily.kTrial : PairIndex → ℤ → ℂ
+LEAN_DECL  centeredPstarFamily  D0CanonicalApproximation.lean:62
+           (centeredXi 0 / rawFplus 0) * rawFplus z
+PROSE      проекционный хвост
 ```
 
-**Замечание об инструменте.** `kTrial` разбор пометил `PLACEHOLDER`: он **поле структуры**,
-а поиск объявлений ищет `theorem|def|…`. Объект существует; ограничение инструмента, не дыра
-в дереве. Записано, чтобы не искали его как отсутствующий.
+*Первая редакция этого документа объявляла `kTrial` заглушкой: поиск умел находить только
+`theorem|def|…` и не видел полей структур. Дефект устранён 2026-08-12, поле находится и
+несёт владельца.*
 
 ---
 
