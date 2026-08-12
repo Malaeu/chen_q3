@@ -14,18 +14,21 @@ facts/history. `loop_state.json` is a compatibility mirror only. The stale twin
 path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this
 request state.
 
-## CURRENT OPERATIONAL STATUS — 2026-08-03
+## CURRENT OPERATIONAL STATUS — 2026-08-12
 
 ```text
-IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET
-RB-IDLE / RB-IDLE-CONTROL / NoSelectedMathematicalTarget
+GOAL_058_REALZERO_GROUND_DIAGONAL_TO_XI_ACTIVE
+RB-GOAL-058-G2B-P59 / PROPOSITION59_GROUND_LAGRANGE_ZEROSET_BRIDGE
 CHALLENGER / NOT_RH
 BUS_010: VOID
 ```
 
-`RB-IDLE-CONTROL` is a non-mathematical validator sentinel. No G2, G3, G5, or
-G6 front is selected. Proshka is the next route judge and must choose exactly
-one front in a separate transaction. Goal 051/M1 is not implicitly authorized.
+The physical Goal 058 and the owner's bounded 2026-08-12 instruction select G2b as the
+current mathematical front. The exact `_normalized` CCM supplier is name-locked in
+`docs/routeB_bus/CODEX_DIRECTIVE_ROUTE058_P59_G2B_2026-08-12.md`. The same instruction
+authorizes one finite M1 control-cell measurement in parallel and EnvDump-to-describer
+wiring in the background. Neither auxiliary run is a theorem, a finite-to-global
+promotion, or an RH claim.
 
 The former source-locked D0.7e.5a branch is terminal historical at base pin
 `6af9170d15a38e451a76f8dbf2ad8725d62b6f5f`; its historical reason is

@@ -1,34 +1,31 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-08-03 23:57 CEST
+Updated: 2026-08-12 19:56 CEST
 
-Status: `IDLE_AWAITING_EXPLICIT_PROSHKA_MATHEMATICAL_TARGET / RB-IDLE-CONTROL / NOT_RH / CHALLENGER`
+Status: `GOAL_058_G2B_NAME_LOCKED_EXECUTION_AUTHORIZED / NOT_RH / CHALLENGER`
 
 This request-local plan does not override the root `IMPLEMENTATION_PLAN.md` or
 promote Route B above the H-bridge mainline.
 
 ## Current action
 
-No mathematical front is selected. `RB-IDLE-CONTROL` is a non-mathematical
-sentinel required by the existing state validator; it carries no theorem or
-proof obligation.
+Goal 058 G2b is selected. First implement
+`Proposition59GroundLagrangeZeroSetBridge` under the exact name lock in
+`docs/routeB_bus/CODEX_DIRECTIVE_ROUTE058_P59_G2B_2026-08-12.md`. The final CCM
+supplier must be
+`Q3.RouteB.ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized`.
 
-The next authorized actor is the Proshka route judge. A separate transaction
-must select exactly one of:
-
-1. `G2` — H2a / `SimpleEvenLowestQWGround`.
-2. `G3` — concrete `Theorem510RealZeroBridge` supplier.
-3. `G5` — concrete S1/Montel family supply.
-4. `G6` — full S2 identification wall.
-
-G3 is the strongest candidate after the closeout, but it is not selected by
-this document. Goal 051/M1 is not implicitly authorized.
+In parallel, execute one finite M1 control-cell measurement of the source-locked ground
+line against the source trial at `(lambda_sq,N)=(13,120)`. In the background, repair
+EnvDump's import-collision failure and wire the derived index into `atom_describe.py`.
+These two auxiliary lanes remain diagnostic/tooling work and cannot close a uniform
+theorem or promote the route.
 
 ## Physical bus
 
-- `001..009` are closed.
-- No unanswered physical goal exists.
-- `010` is only the next free number.
+- The newest physical root is `058`.
+- `058_realzero_ground_diagonal_to_xi.goal.md` is unanswered and active.
+- `059` is the next free number.
 - `BUS_010: VOID`.
 - Codex may not create a bus goal.
 
@@ -50,11 +47,10 @@ Finite calibration facts and the generic `NormalizedTrackingRateTransfer` and
 
 ## Execution rule
 
-1. Physical unanswered bus goal, if one ever appears, has precedence.
-2. Otherwise remain idle until Proshka explicitly selects one mathematical
-   front in a separate authorized transaction.
-3. Execute only that bounded target and validate it independently.
-4. Do not create Bus 010, authorize Goal 051 implicitly, promote Route B, or
+1. Execute the active physical Goal 058 only.
+2. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
+3. Validate P59, the finite M1 diagnostic, and EnvDump wiring independently.
+4. Do not create Bus 010, promote Route B, or
    claim RH.
 
 Validation:
