@@ -1,0 +1,304 @@
+[
+  {
+    "name": "ccmModeFinite",
+    "our_kind": "шаг 0",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
+    "line": 23,
+    "signature": "def ccmModeFinite (N : ℕ) (i : CCMModeFinite N) : ℤ",
+    "docstring": "Integer label of a finite source mode.",
+    "source": "ours"
+  },
+  {
+    "name": "proposition59Pole",
+    "our_kind": "шаг 0",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+    "line": 13,
+    "signature": "def proposition59Pole (L : ℝ) (k : ℤ) : ℂ",
+    "docstring": "The apparent pole `2*pi*k/L` in Proposition 5.9.",
+    "source": "ours"
+  },
+  {
+    "name": "кофинальное расписание",
+    "our_kind": "шаг 0",
+    "our_n_files": 0,
+    "provenance": "PROSE",
+    "source": "PROSE"
+  },
+  {
+    "name": "нормировка",
+    "our_kind": "шаг 0",
+    "our_n_files": 0,
+    "provenance": "PROSE",
+    "source": "PROSE"
+  },
+  {
+    "name": "epsilon",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LOCAL_HYPOTHESIS",
+    "source": "LOCAL_HYPOTHESIS",
+    "rejected_match": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Veblen.lean:530"
+  },
+  {
+    "name": "xi",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LOCAL_HYPOTHESIS",
+    "source": "LOCAL_HYPOTHESIS",
+    "rejected_match": "q3.lean.aristotle/Q3/Proofs/RKHS_rescaling.lean:34"
+  },
+  {
+    "name": "heig",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LOCAL_HYPOTHESIS",
+    "source": "LOCAL_HYPOTHESIS"
+  },
+  {
+    "name": "hbottom",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LOCAL_HYPOTHESIS",
+    "source": "LOCAL_HYPOTHESIS"
+  },
+  {
+    "name": "hsimple",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LOCAL_HYPOTHESIS",
+    "source": "LOCAL_HYPOTHESIS"
+  },
+  {
+    "name": "hnormalized",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LOCAL_HYPOTHESIS",
+    "source": "LOCAL_HYPOTHESIS"
+  },
+  {
+    "name": "H2a_SimpleEvenGround_FromPenaltyCoercivity",
+    "our_kind": "шаг 1",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "theorem",
+    "namespace": "H2aPenalty",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
+    "line": 395,
+    "signature": "theorem H2a_SimpleEvenGround_FromPenaltyCoercivity (G K J : Matrix n n ℂ) (q : n → ℂ) (a β τ : ℝ) (hG : G.PosDef) (hK : K.IsHermitian) (hJ : J * J = 1) (hJG : Jᴴ * G * J = G) (hJK : Jᴴ * K * J = K) (hJq : J *ᵥ q = q) (hq : star q ⬝ᵥ (G *ᵥ q) = 1) (ha : star q ⬝ᵥ (K *ᵥ q) = (a : ℂ)) (hab : a < β) (hcert : (K - (β : ℂ) • G + (τ : ℂ) • Matrix.vecMulVec (G *ᵥ q) (star (G *ᵥ q))).PosSemidef) : ∃ lam : ℝ, (∃ x, GEig K G lam x) ∧ lam ≤ a ∧ (∀ μ y, GEig K G μ y → lam ≤ μ) ∧ (∀ μ y, GEig K G μ y → μ ≠ lam → β - a ≤ μ - lam) ∧ (∀ x y, GEig K G lam x → GEig K G lam y → ∃ c : ℂ, y = c • x) ∧ (∀ x, GEig K ",
+    "docstring": "A **generalized eigenpair** of the Hermitian pencil `(K, G)`: a nonzero `x` with `K x = μ (G x)` and real eigenvalue `μ`.  def GEig (K G : Matrix n n ℂ) (μ : ℝ) (x : n → ℂ) : Prop := x ≠ 0 ∧ K *ᵥ x = (μ : ℂ) • (G *ᵥ x)  /-! ## Elementary quadratic-form facts.   /- The quadratic form of a Hermitian matrix is real.  theorem qf_isHermitian_im (A : Matrix n n ℂ) (hA : A.IsHermitian) (x : n → ℂ) : (star x ⬝ᵥ (A *ᵥ x)).im = 0 := by have h_real : star x ⬝ᵥ A *ᵥ x = star (star x ⬝ᵥ A *ᵥ x) := by simp +decide [ Matrix.mulVec, dotProduct, Finset.mul_sum ]; rw [ Finset.sum_comm ] ; congr ; ext i ; congr ; ext j ; rw [ ← hA.apply ] ; simp +decide [ mul_assoc, mul_comm, mul_left_comm ] ; exact Complex.conj_eq_iff_im.mp h_real.symm  /- Reading off the Rayleigh quotient from an eigenpair: `x* K x = μ (x*",
+    "source": "ours"
+  },
+  {
+    "name": "ZerosRealOn",
+    "our_kind": "шаг 2",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
+    "line": 13,
+    "signature": "def ZerosRealOn (S : Set ℂ) (f : ℂ → ℂ) : Prop",
+    "docstring": "Every zero of `f` in `S` is real.",
+    "source": "ours"
+  },
+  {
+    "name": "sourceLagrangePolynomial",
+    "our_kind": "шаг 2",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangePolynomial.lean",
+    "line": 12,
+    "signature": "noncomputable def sourceLagrangePolynomial {n : Type*} [Fintype n] [DecidableEq n] (lam xi : n → ℝ) : ℝ[X]",
+    "docstring": "",
+    "source": "ours"
+  },
+  {
+    "name": "ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized",
+    "our_kind": "шаг 2",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "theorem",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
+    "line": 161,
+    "signature": "theorem ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized {ι : Type*} [Fintype ι] [DecidableEq ι] (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hbottom : ∀ x : CCMModeFinite N → ℝ, epsilon * (x ⬝ᵥ x) ≤ x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) (b : Module.Basis ι ℝ ((CCMModeFinite N → ℝ) ⧸ LinearMap.ker (Matrix.to",
+    "docstring": "",
+    "source": "ours"
+  },
+  {
+    "name": "proposition59RawTransform",
+    "our_kind": "шаг 3",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+    "line": 84,
+    "signature": "def proposition59RawTransform (L : ℝ) (S : Finset ℤ) (xi : ℤ → ℂ) (z : ℂ) : ℂ",
+    "docstring": "The source-locked finite raw transform in Proposition 5.9.  The factor `L^(-1/2)` is constant in the spectral variable and is kept exactly.",
+    "source": "ours"
+  },
+  {
+    "name": "proposition59PoleKernel",
+    "our_kind": "шаг 3",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+    "line": 33,
+    "signature": "def proposition59PoleKernel (L : ℝ) (k : ℤ) : ℂ → ℂ",
+    "docstring": "The removable-pole kernel in Proposition 5.9.  Using `dslope` makes the value at the apparent pole part of the definition instead of a side condition.",
+    "source": "ours"
+  },
+  {
+    "name": "dslope",
+    "our_kind": "шаг 3",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "",
+    "file": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Calculus/DSlope.lean",
+    "line": 35,
+    "signature": "noncomputable def dslope (f : 𝕜 → E) (a : 𝕜) : 𝕜 → E",
+    "docstring": "`dslope f a b` is defined as `slope f a b = (b - a)⁻¹ • (f b - f a)` for `a ≠ b` and `deriv f a` for `a = b`.",
+    "source": "mathlib"
+  },
+  {
+    "name": "FiniteGroundTransformToCCMTrialLocallyUniform",
+    "our_kind": "шаг 4",
+    "our_n_files": 0,
+    "provenance": "PLACEHOLDER",
+    "source": "PLACEHOLDER"
+  },
+  {
+    "name": "истинный зазор",
+    "our_kind": "шаг 4",
+    "our_n_files": 0,
+    "provenance": "PROSE",
+    "source": "PROSE"
+  },
+  {
+    "name": "невязка",
+    "our_kind": "шаг 4",
+    "our_n_files": 0,
+    "provenance": "PROSE",
+    "source": "PROSE"
+  },
+  {
+    "name": "kTrial",
+    "our_kind": "шаг 5",
+    "our_n_files": 0,
+    "provenance": "PLACEHOLDER",
+    "source": "PLACEHOLDER"
+  },
+  {
+    "name": "centeredPstarFamily",
+    "our_kind": "шаг 5",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB.D0Pstar",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CanonicalApproximation.lean",
+    "line": 62,
+    "signature": "def centeredPstarFamily (D : CoefficientFamily) (i : CentralIndex D) (z : ℂ) : ℂ",
+    "docstring": "The centered canonical D0 family, verbatim from section iii of `PROSHKA_VERDICT_S1_ANCHOR_2026-07-27.md`.",
+    "source": "ours"
+  },
+  {
+    "name": "проекционный хвост",
+    "our_kind": "шаг 5",
+    "our_n_files": 0,
+    "provenance": "PROSE",
+    "source": "PROSE"
+  },
+  {
+    "name": "CCM_Lemma_7_3",
+    "our_kind": "шаг 6",
+    "our_n_files": 0,
+    "provenance": "PAPER_THEOREM",
+    "source": "PAPER_THEOREM"
+  },
+  {
+    "name": "centeredXi",
+    "our_kind": "шаг 6",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean",
+    "line": 17,
+    "signature": "def centeredXi (z : ℂ) : ℂ",
+    "docstring": "The centered entire function used by Route B.",
+    "source": "ours"
+  },
+  {
+    "name": "локально равномерная сходимость",
+    "our_kind": "шаг 6",
+    "our_n_files": 0,
+    "provenance": "PROSE",
+    "source": "PROSE"
+  },
+  {
+    "name": "rh_of_canonical_strip_slots",
+    "our_kind": "шаг 7",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "theorem",
+    "namespace": "Q3.RouteB.CanonicalRHRoute",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+    "line": 145,
+    "signature": "theorem rh_of_canonical_strip_slots {Index : Type*} (C : CanonicalApproximation Index) (H2aAt S1At : Index → Prop) (anchor : ℂ) (hH1 : SlotH1 C) (hH2a : SlotH2a C H2aAt) (hanchor : SlotAnchor C anchor) (hS1 : SlotS1 C S1At) (hMontel : MontelAnchorGate C H2aAt S1At anchor) (h510 : Theorem510RealZeroBridge C H2aAt) (hS2 : SlotS2 C) : Q3.RH",
+    "docstring": "Conditional roof assembly for the one canonical family.  All analytic gaps occur as named inputs; the proof itself is hole-free and composes the checked generic Hurwitz transfer with the classical Xi/RH interface.",
+    "source": "ours"
+  },
+  {
+    "name": "ZerosApproachOn",
+    "our_kind": "шаг 7",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ZeroEscapeLogic.lean",
+    "line": 18,
+    "signature": "def ZerosApproachOn (S : Set ℂ) (F : ℕ → ℂ → ℂ) (f : ℂ → ℂ) : Prop",
+    "docstring": "Each zero of the limit in `S` is approached by zeros of the approximants. The finite initial segment is deliberately ignored.",
+    "source": "ours"
+  },
+  {
+    "name": "Q3.RH",
+    "our_kind": "шаг 7",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3",
+    "file": "q3.lean.aristotle/Q3/Basic/Defs.lean",
+    "line": 177,
+    "signature": "def RH : Prop",
+    "docstring": "Riemann Hypothesis: all nontrivial zeros of ζ(s) have Re(s) = 1/2",
+    "source": "ours"
+  },
+  {
+    "name": "sameCofinalGuard",
+    "our_kind": "шаг 7",
+    "our_n_files": 0,
+    "provenance": "LEAN_DECL",
+    "kind_lean": "def",
+    "namespace": "Q3.RouteB.CanonicalRHRoute",
+    "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+    "line": 69,
+    "signature": "def sameCofinalGuard {Index : Type*} (C : CanonicalApproximation Index) (H2aAt S1At : Index → Prop) (hH2a : SlotH2a C H2aAt) (hS1 : SlotS1 C S1At) : SoftSameCofinalSubsequence Index H2aAt S1At where parent",
+    "docstring": "Materialize the Round-13 same-subsequence guard from the two parent-path slots.  The resulting S2 carrier is definitionally `parent (extract k)`; no independent diagonal can enter.",
+    "source": "ours"
+  }
+]

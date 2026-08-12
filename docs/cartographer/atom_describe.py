@@ -137,24 +137,99 @@ def find_declaration(name: str, root: Path) -> dict | None:
     }
 
 
+CYR = re.compile(r"[А-Яа-яЁё]")
+PAPER = re.compile(r"(Lemma|Theorem|Prop|Proposition)[_ ]?\d", re.I)
+
+
+def is_local_binder(name: str) -> bool:
+    """Встречается ли имя как СВЯЗАННАЯ ПЕРЕМЕННАЯ в сигнатурах дерева RouteB.
+
+    Ищем по всему дереву, а не в файле-поставщике: `epsilon` связан в сигнатуре
+    ПОТРЕБИТЕЛЯ (`CCMFiniteWeilParity.lean`), тогда как поставщик записан другой.
+    Первая редакция проверяла только поставщика и пропустила ровно этот случай.
+    """
+    if len(name) > 24 or "." in name:
+        return False
+    try:
+        r = subprocess.run(
+            ["rg", "-q", rf"[({{]\s*(\w+\s+)*{re.escape(name)}(\s+\w+)*\s*:", str(OURS / "Proofs/RouteB")],
+            capture_output=True, timeout=60)
+        return r.returncode == 0
+    except Exception:
+        return False
+
+
+def provenance(name: str, resolved: dict | None, supplier_file: str | None) -> str:
+    """Классифицировать имя по таксономии вердикта `..._HERMFACT1_AUDIT_2026-08-11`.
+
+    Введено 2026-08-12: разбор объектов маршрута 058 притянул `epsilon` к
+    `Ordinal/Veblen.lean`, а `xi` — к постороннему файлу. Оба — локальные имена
+    связанных переменных, а не декларации. Правдоподобно неверный адрес хуже
+    отсутствия адреса, и именно так родился `hermfact1`.
+
+    Порядок проверок: проза → настоящая декларация → локальная связанная переменная →
+    имя из статьи → заглушка. Проверка «декларация» стоит ВЫШЕ бумажной, иначе
+    `proposition59RawTransform` попадает в `PAPER_THEOREM` из-за подстроки.
+    """
+    if CYR.search(name) or " " in name:
+        return "PROSE"
+    if resolved:
+        f = resolved.get("file", "")
+        # разрешилось в нашем RouteB или в Mathlib — настоящая декларация
+        if "Proofs/RouteB" in f or "packages/mathlib" in f:
+            if not is_local_binder(name) or len(name) > 12:
+                return "LEAN_DECL"
+        # разрешилось где-то ещё в дереве: подозрительно, проверяем локальность
+        if is_local_binder(name):
+            return "LOCAL_HYPOTHESIS"
+        return "LEAN_DECL"
+    if is_local_binder(name):
+        return "LOCAL_HYPOTHESIS"
+    if PAPER.search(name):
+        return "PAPER_THEOREM"
+    return "PLACEHOLDER"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0, help="сколько атомов обработать (0 = все)")
     ap.add_argument("--kinds", default="",
                     help="только эти наши kind через запятую, напр. NONVANISHING,ANALYSIS,LINALG")
     ap.add_argument("--foreign", default="", help="корень чужого дерева, третий источник")
+    ap.add_argument("--chain", default="",
+                    help="разобрать объекты цепи из assembly, а не атомы Mathlib "
+                         "(например REALZERO_GROUND_DIAGONAL_TO_XI)")
     ap.add_argument("--json", default="")
     args = ap.parse_args()
 
     con = sqlite3.connect(DB, uri=True)
-    q = "select name, kind, n_files from atom"
-    if args.kinds:
-        ks = ",".join("'" + k.strip() + "'" for k in args.kinds.split(",") if k.strip())
-        q += f" where kind in ({ks})"
-    q += " order by n_files desc"
-    if args.limit:
-        q += f" limit {args.limit}"
-    atoms = con.execute(q).fetchall()
+    if args.chain:
+        # Объекты маршрута — НЕ атомы Mathlib: это наши декларации и имена ещё не
+        # написанных теорем. Разбор тот же (где объявлено, сигнатура, докстринг), но
+        # `kind` здесь означает шаг цепи, а `n_files` теряет смысл и ставится в 0.
+        rows = con.execute(
+            "select step, objects, supplier_file from assembly where chain=? order by step",
+            (args.chain,)).fetchall()
+        seen, atoms = set(), []
+        for step, objs, sup in rows:
+            for o in (objs or "").split(","):
+                o = o.strip()
+                if not o or o in seen or "=" in o:
+                    continue
+                seen.add(o)
+                atoms.append((o, f"шаг {step}", 0, sup))
+        if not atoms:
+            print(f"в цепи {args.chain} нет разбираемых имён", file=sys.stderr)
+            return 2
+    else:
+        q = "select name, kind, n_files from atom"
+        if args.kinds:
+            ks = ",".join("'" + k.strip() + "'" for k in args.kinds.split(",") if k.strip())
+            q += f" where kind in ({ks})"
+        q += " order by n_files desc"
+        if args.limit:
+            q += f" limit {args.limit}"
+        atoms = con.execute(q).fetchall()
 
     foreign = Path(args.foreign).expanduser().resolve() if args.foreign else None
     print(f"атомов к разбору: {len(atoms)}")
@@ -164,16 +239,30 @@ def main() -> int:
     print()
 
     out, stats = [], {"mathlib": 0, "ours": 0, "foreign": 0, "unresolved": 0}
-    for idx, (name, kind, n_files) in enumerate(atoms, 1):
+    prov_stats = {}
+    for idx, row in enumerate(atoms, 1):
+        name, kind, n_files = row[0], row[1], row[2]
+        supplier = row[3] if len(row) > 3 else None
         rec = {"name": name, "our_kind": kind, "our_n_files": n_files}
+        found = None
         for src, root in (("mathlib", MATHLIB), ("ours", OURS),
                           ("foreign", foreign if foreign else Path("/nonexistent"))):
             d = find_declaration(name, root)
             if d:
-                rec.update(d); rec["source"] = src; stats[src] += 1
+                found = (src, d)
                 break
+        prov = provenance(name, found[1] if found else None, supplier)
+        rec["provenance"] = prov
+        prov_stats[prov] = prov_stats.get(prov, 0) + 1
+        # Адрес выдаётся ТОЛЬКО для настоящих деклараций. Локальная гипотеза и проза
+        # адреса не имеют: любой найденный для них file:line — ложный друг.
+        if prov == "LEAN_DECL" and found:
+            rec.update(found[1]); rec["source"] = found[0]; stats[found[0]] += 1
         else:
-            rec["source"] = "UNRESOLVED"; stats["unresolved"] += 1
+            rec["source"] = prov
+            stats["unresolved"] += 1
+            if found:
+                rec["rejected_match"] = f"{found[1]['file']}:{found[1]['line']}"
         out.append(rec)
         if sys.stdout.isatty() and idx % 10 == 0:
             frac = idx / len(atoms)
@@ -188,6 +277,17 @@ def main() -> int:
     print(f"  найдено у нас       : {stats['ours']}")
     print(f"  найдено в чужом     : {stats['foreign']}")
     print(f"  НЕ РАЗРЕШЕНО        : {stats['unresolved']}   ← дыры нашего разбора до атомов")
+    if prov_stats:
+        print()
+        print("── провенанс (таксономия вердикта HERMFACT1_AUDIT) ──")
+        for k in sorted(prov_stats):
+            print(f"  {k:<18} {prov_stats[k]}")
+        rej = [r for r in out if r.get("rejected_match")]
+        if rej:
+            print()
+            print(f"  ОТВЕРГНУТО ложных совпадений: {len(rej)}")
+            for r in rej[:6]:
+                print(f"    {r['name']:<24} {r['provenance']:<18} было бы {r['rejected_match']}")
     print()
 
     with_doc = [r for r in out if r.get("docstring")]
