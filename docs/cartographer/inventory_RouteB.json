@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 204,
-  "declarations": 1756,
-  "in_docs": 676,
-  "in_lemma_db": 1756,
+  "files_scanned": 205,
+  "declarations": 1770,
+  "in_docs": 721,
+  "in_lemma_db": 1770,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -605,7 +605,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilBottomSpectral.lean",
       "line": 34,
       "signature": "theorem ccmShiftedWeilOpFinite_ker_eq_eigenspace (mProject N : ℕ) (epsilon : ℝ) : LinearMap.ker (ccmShiftedWeilOpFinite mProject N epsilon) = (ccmWeilOpFinite mProject N).eigenspace epsilon",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -615,7 +615,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilBottomSpectral.lean",
       "line": 42,
       "signature": "theorem ccmShiftedWeilMatFinite_posSemidef_of_bottomRayleigh (mProject N : ℕ) (epsilon : ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (hbottom : ∀ x : CCMModeFinite N → ℝ, epsilon * (x ⬝ᵥ x) ≤ x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x) : (ccmShiftedWeilMatFinite mProject N epsilon).PosSemidef",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -625,7 +625,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilBottomSpectral.lean",
       "line": 61,
       "signature": "theorem ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple {ι : Type*} [Fintype ι] [DecidableEq ι] (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hxiEven : ∀ i, xi (ccmNegFinite N i) = xi i) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hbottom : ∀ x : CCMModeFinite N → ℝ, epsilon * (x ⬝ᵥ x) ≤ x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) (b : Module.Basis ι ℝ ((CCMModeFinite N → ℝ) ⧸ LinearMap.ker (Matrix.toBilin' (ccmShiftedWeilMatFinite mProject N epsilon)))) : ZerosRealOn Set.univ (fun z => ((sourceLagrangePolynomial (fun i => (ccmModeFinite N i : ℝ)) xi).map (algebraMap ℝ ℂ)).eval z)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1225,7 +1225,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean",
       "line": 188,
       "signature": "theorem exists_ccmEta_normalized_even_eigenvector_of_simple_even_eigenvector (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (hxi0 : xi ≠ 0) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hxiEven : ∀ i, xi (ccmNegFinite N i) = xi i) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) : ∃ xi' : CCMModeFinite N → ℝ, xi' ≠ 0 ∧ Matrix.mulVec (ccmWeilMatFinite mProject N) xi' = epsilon • xi' ∧ (∀ i, xi' (ccmNegFinite N i) = xi' i) ∧ ccmEtaFinite N ⬝ᵥ xi' = 1",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1585,7 +1585,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
       "line": 53,
       "signature": "theorem ccmEtaFinite_dot_reflection (N : ℕ) (x : CCMModeFinite N → ℝ) : ccmEtaFinite N ⬝ᵥ ccmReflectionEndFinite N x = ccmEtaFinite N ⬝ᵥ x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1595,7 +1595,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
       "line": 67,
       "signature": "theorem ccmWeilOpFinite_commutes_reflection (mProject N : ℕ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) : (ccmReflectionEndFinite N).comp (ccmWeilOpFinite mProject N) = (ccmWeilOpFinite mProject N).comp (ccmReflectionEndFinite N)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1615,7 +1615,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
       "line": 119,
       "signature": "theorem ccmEigenvector_even_of_simple_eigenspace_and_normalized (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) : ∀ i, xi (ccmNegFinite N i) = xi i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1625,7 +1625,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
       "line": 161,
       "signature": "theorem ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized {ι : Type*} [Fintype ι] [DecidableEq ι] (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hbottom : ∀ x : CCMModeFinite N → ℝ, epsilon * (x ⬝ᵥ x) ≤ x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) (b : Module.Basis ι ℝ ((CCMModeFinite N → ℝ) ⧸ LinearMap.ker (Matrix.toBilin' (ccmShiftedWeilMatFinite mProject N epsilon)))) : ZerosRealOn Set.univ (fun z => ((sourceLagrangePolynomial (fun i => (ccmModeFinite N i : ℝ)) xi).map (algebraMap ℝ ℂ)).eval z)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1635,7 +1635,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilRealZeros.lean",
       "line": 25,
       "signature": "theorem ccmSourceLagrangePolynomial_complex_zerosRealOn_of_shifted_nonneg_finrank_one {ι : Type*} [Fintype ι] [DecidableEq ι] (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hxiEven : ∀ i, xi (ccmNegFinite N i) = xi i) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hpos : ∀ x, 0 ≤ Matrix.toBilin' (ccmShiftedWeilMatFinite mProject N epsilon) x x) (hker1 : Module.finrank ℝ (LinearMap.ker (ccmShiftedWeilMatFinite mProject N epsilon).mulVecLin) = 1) (b : Module.Basis ι ℝ ((CCMModeFinite N → ℝ) ⧸ LinearMap.ker (Matrix.toBilin' (ccmShiftedWeilMatFinite mProject N epsilon)))) : ZerosRealOn Set.univ (fun z => ((sourceLagrangePolynomial (fun i => (ccmModeFinite N i : ℝ)) xi).map (algebraMap ℝ ℂ)).eval z)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1655,7 +1655,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilShiftedRankOne.lean",
       "line": 30,
       "signature": "noncomputable def ccmShiftedWeilOpFinite (mProject N : ℕ) (epsilon : ℝ) : Module.End ℝ (CCMModeFinite N → ℝ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1705,7 +1705,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilShiftedRankOne.lean",
       "line": 94,
       "signature": "theorem ccmShiftedWeilMatFinite_transpose_eq (mProject N : ℕ) (epsilon : ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) : (ccmShiftedWeilMatFinite mProject N epsilon).transpose = ccmShiftedWeilMatFinite mProject N epsilon",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1995,7 +1995,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
       "line": 51,
       "signature": "def ccmEtaFinite (N : ℕ) : CCMModeFinite N → ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -2215,7 +2215,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
       "line": 239,
       "signature": "theorem ccmWeilMatFinite_transpose_eq (mProject N : ℕ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) : (ccmWeilMatFinite mProject N).transpose = ccmWeilMatFinite mProject N",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -2225,7 +2225,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
       "line": 250,
       "signature": "theorem ccmWeilMatFinite_centrosymmetric (mProject N : ℕ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (i j : CCMModeFinite N) : ccmWeilMatFinite mProject N (ccmNegFinite N i) (ccmNegFinite N j) = ccmWeilMatFinite mProject N i j",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -3155,7 +3155,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CenteredXiZeroNonzero.lean",
       "line": 14,
       "signature": "noncomputable def etaPairTerm (s : ℂ) (k : ℕ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -4105,7 +4105,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0CriticalMomentStripBound.lean",
       "line": 15,
       "signature": "private theorem exp_mode_half_shift (i : PairIndex) (n : ℤ) : Complex.exp (((n : ℂ) * (2 * (Real.pi : ℂ) * Complex.I) / (L_m i : ℂ)) * ((L_m i : ℂ) / 2)) = (-1 : ℂ) ^ n",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -4405,7 +4405,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowMeasureTransport.lean",
       "line": 13,
       "signature": "private theorem lambda_m_one_lt (i : PairIndex) : 1 < lambda_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -7775,7 +7775,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
       "line": 72,
       "signature": "structure OddTailInverseWeightedData (Head Tail : Type*) [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] [NormedAddCommGroup Tail] [InnerProductSpace ℂ Tail] [CompleteSpace Tail] where",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -7845,7 +7845,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
       "line": 127,
       "signature": "noncomputable def oddTailSchurComplement (A : Head →L[ℂ] Head) (D : OddTailInverseWeightedData Head Tail) : Head →L[ℂ] Head",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -7865,7 +7865,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
       "line": 141,
       "signature": "theorem inner_operator_eq_schur_add_inverseWeighted (A : Head →L[ℂ] Head) (D : OddTailInverseWeightedData Head Tail) (x : Head) : inner ℂ (A x) x = inner ℂ (oddTailSchurComplement A D x) x + inner ℂ (oddTailInverseWeightedCorrection D x) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8005,7 +8005,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarPrimeAmbientSesquilinearForm.lean",
       "line": 14,
       "signature": "private noncomputable def sourcePrimeCosineLInf (k : ℕ) : MeasureTheory.Lp ℂ ∞ (volume : Measure ℝ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8425,7 +8425,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchSesquilinearForm.lean",
       "line": 10,
       "signature": "private noncomputable def shiftedWeightedImage (i : PairIndex) (x : H_m i) : ℝ → ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8605,7 +8605,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchDiagonalCCMWRCrosswalk.lean",
       "line": 11,
       "signature": "private theorem logWindowZeroExtendedMode_integrable_for_e4b2 (i : PairIndex) (n : ℤ) : Integrable (logWindowZeroExtendedMode i n)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8795,7 +8795,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchDiagonalRegularizerEndpointLedger.lean",
       "line": 11,
       "signature": "private noncomputable def diagonalFinitePrimitive (x : ℝ) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8935,7 +8935,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchHyperbolicKernel.lean",
       "line": 10,
       "signature": "private theorem integral_exp_neg_mul_cos_Ioi (a b : ℝ) (ha : 0 < a) : ∫ x in Ioi 0, Real.exp (-a * x) * Real.cos (b * x) = a / (a ^ 2 + b ^ 2)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -9595,7 +9595,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceArchOffDiagonalCCMWRCrosswalk.lean",
       "line": 13,
       "signature": "private theorem logWindowZeroExtendedMode_integrable_for_e4a (i : PairIndex) (n : ℤ) : Integrable (logWindowZeroExtendedMode i n)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -10005,7 +10005,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceModeCosineCCMQKernel.lean",
       "line": 15,
       "signature": "private def complexConvolution (f g : ℝ → ℂ) : ℝ → ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -12775,7 +12775,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarW02EndpointFunctionals.lean",
       "line": 11,
       "signature": "private theorem sourceW02EndpointPlusWeight_memLp (i : PairIndex) : MemLp (fun x : ℝ => (Real.exp (x / 2) : ℂ)) 2 (volume.restrict (Set.Icc (0 : ℝ) (L_m i)))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -13415,7 +13415,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean",
       "line": 66,
       "signature": "def eStarCore (h : ℝ → ℂ) (u : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -14075,7 +14075,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
       "line": 141,
       "signature": "theorem J_geig {K G J : Matrix n n ℂ} {μ : ℝ} {x : n → ℂ} (hJ : J * J = 1) (hJG : Jᴴ * G * J = G) (hJK : Jᴴ * K * J = K) (h : GEig K G μ x) : GEig K G μ (J *ᵥ x)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -14085,7 +14085,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
       "line": 157,
       "signature": "theorem odd_Gorth {G J : Matrix n n ℂ} {q x : n → ℂ} (hJG : Jᴴ * G * J = G) (hJq : J *ᵥ q = q) (hodd : J *ᵥ x = -x) : star q ⬝ᵥ (G *ᵥ x) = 0",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -14115,7 +14115,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
       "line": 255,
       "signature": "theorem simplicity_clause {G K : Matrix n n ℂ} {q : n → ℂ} {β τ lam : ℝ} (hG : G.PosDef) (hcert : (K - (β : ℂ) • G + (τ : ℂ) • Matrix.vecMulVec (G *ᵥ q) (star (G *ᵥ q))).PosSemidef) (hlamβ : lam < β) : ∀ x y, GEig K G lam x → GEig K G lam y → ∃ c : ℂ, y = c • x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -14725,7 +14725,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MuntzV3/EStarMellinAbsolutePayload.lean",
       "line": 15,
       "signature": "private lemma mellinConvergent_base_exactClass (h : ℝ → ℂ) (b : ℝ) (K : NNReal) (hb : 0 ≤ b) (hmeas : Measurable h) (hsupp : ∀ v, v ∉ Set.Icc (0 : ℝ) b → h v = 0) (hlip : LipschitzOnWith K h (Set.Ico (0 : ℝ) b)) (p : ℂ) (hp : 1 < p.re) : MellinConvergent h p",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -14845,7 +14845,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/MuntzV3/HabsExactClass.lean",
       "line": 16,
       "signature": "private noncomputable def eStarCoreV3 (h : ℝ → ℂ) (u : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16045,7 +16045,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
       "line": 17,
       "signature": "def proposition59Numerator (L : ℝ) (z : ℂ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16125,7 +16125,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
       "line": 91,
       "signature": "theorem differentiable_proposition59RawTransform (L : ℝ) (S : Finset ℤ) (xi : ℤ → ℂ) : Differentiable ℂ (proposition59RawTransform L S xi)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16146,6 +16146,146 @@
       "line": 119,
       "signature": "theorem proposition59RawTransform_eq_paper_formula {L : ℝ} (hL : L ≠ 0) (S : Finset ℤ) (xi : ℤ → ℂ) {z : ℂ} (hz : ∀ k ∈ S, z ≠ proposition59Pole L k) : proposition59RawTransform L S xi z = ((Real.sqrt L : ℂ)⁻¹) * proposition59Numerator L z * ∑ k ∈ S, xi k / (z - proposition59Pole L k)",
       "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmModeFiniteEquivIcc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 30,
+      "signature": "def ccmModeFiniteEquivIcc (N : ℕ) : CCMModeFinite N ≃ {k : ℤ // k ∈ Finset.Icc (-(N : ℤ)) N}",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "neg_mem_Icc_of_mem_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 56,
+      "signature": "theorem neg_mem_Icc_of_mem_Icc {N : ℕ} {k : ℤ} (hk : k ∈ Finset.Icc (-(N : ℤ)) N) : -k ∈ Finset.Icc (-(N : ℤ)) N",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmPoleModeEquivIcc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 63,
+      "signature": "def ccmPoleModeEquivIcc (N : ℕ) : CCMModeFinite N ≃ {k : ℤ // k ∈ Finset.Icc (-(N : ℤ)) N} where",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59CCMCoefficient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 99,
+      "signature": "def proposition59CCMCoefficient (N : ℕ) (xi : CCMModeFinite N → ℝ) (k : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CCMCoefficient_neg_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 106,
+      "signature": "@[simp] theorem proposition59CCMCoefficient_neg_mode (N : ℕ) (xi : CCMModeFinite N → ℝ) (i : CCMModeFinite N) : proposition59CCMCoefficient N xi (-ccmModeFinite N i) = (xi i : ℂ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "proposition59CCMTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 125,
+      "signature": "def proposition59CCMTransform (L : ℝ) (N : ℕ) (xi : CCMModeFinite N → ℝ) : ℂ → ℂ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CCMTransform_eq_mode_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 130,
+      "signature": "theorem proposition59CCMTransform_eq_mode_sum (L : ℝ) (N : ℕ) (xi : CCMModeFinite N → ℝ) (z : ℂ) : proposition59CCMTransform L N xi z = ((Real.sqrt L : ℂ)⁻¹) * ∑ i, (xi i : ℂ) * proposition59PoleKernel L (-ccmModeFinite N i) z",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceLagrangePolynomial_map_eval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 162,
+      "signature": "private theorem sourceLagrangePolynomial_map_eval {ι : Type*} [Fintype ι] [DecidableEq ι] (lam xi : ι → ℝ) (s : ℂ) : ((sourceLagrangePolynomial lam xi).map (algebraMap ℝ ℂ)).eval s = ∑ i, (xi i : ℂ) * ∏ j ∈ Finset.univ.erase i, ((lam j : ℂ) - s)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "cauchy_sum_zero_implies_lagrange_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 171,
+      "signature": "private theorem cauchy_sum_zero_implies_lagrange_zero {ι : Type*} [Fintype ι] [DecidableEq ι] (lam xi : ι → ℝ) (s : ℂ) (hdenom : ∀ i, (lam i : ℂ) - s ≠ 0) (hsum : ∑ i, (xi i : ℂ) / ((lam i : ℂ) - s) = 0) : ((sourceLagrangePolynomial lam xi).map (algebraMap ℝ ℂ)).eval s = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59_denominator_coordinate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 201,
+      "signature": "private theorem proposition59_denominator_coordinate {L : ℝ} (hL : L ≠ 0) (n : ℤ) (z : ℂ) : z - proposition59Pole L (-n) = (2 * (Real.pi : ℂ) / (L : ℂ)) * ((n : ℂ) - (-(L : ℂ) * z / (2 * (Real.pi : ℂ))))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59Numerator_zero_im",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 214,
+      "signature": "private theorem proposition59Numerator_zero_im {L : ℝ} (hL : L ≠ 0) {z : ℂ} (hz : proposition59Numerator L z = 0) : z.im = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CCMTransform_zerosRealOn_of_lagrange",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 231,
+      "signature": "theorem proposition59CCMTransform_zerosRealOn_of_lagrange (L : ℝ) (hL : 0 < L) (N : ℕ) (xi : CCMModeFinite N → ℝ) (hreal : ZerosRealOn Set.univ (fun s => ((sourceLagrangePolynomial (fun i => (ccmModeFinite N i : ℝ)) xi).map (algebraMap ℝ ℂ)).eval s)) : ZerosRealOn Set.univ (proposition59CCMTransform L N xi)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "differentiable_proposition59CCMTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 329,
+      "signature": "theorem differentiable_proposition59CCMTransform (L : ℝ) (N : ℕ) (xi : CCMModeFinite N → ℝ) : Differentiable ℂ (proposition59CCMTransform L N xi)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Proposition59GroundLagrangeZeroSetBridge",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "line": 341,
+      "signature": "theorem Proposition59GroundLagrangeZeroSetBridge {ι : Type*} [Fintype ι] [DecidableEq ι] (mProject N : ℕ) (epsilon : ℝ) (xi : CCMModeFinite N → ℝ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (heig : Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi) (hnormalized : ccmEtaFinite N ⬝ᵥ xi = 1) (hbottom : ∀ x : CCMModeFinite N → ℝ, epsilon * (x ⬝ᵥ x) ≤ x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x) (hsimple : Module.finrank ℝ ((ccmWeilOpFinite mProject N).eigenspace epsilon) = 1) (b : Module.Basis ι ℝ ((CCMModeFinite N → ℝ) ⧸ LinearMap.ker (Matrix.toBilin' (ccmShiftedWeilMatFinite mProject N epsilon)))) : ZerosRealOn Set.univ (proposition59CCMTransform (ccmL mProject) N xi)",
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16195,7 +16335,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/QuotientByRadicalRealZeroConsumer.lean",
       "line": 8,
       "signature": "theorem zerosRealOn_of_quotientByRadical_charpoly_mul {V ι : Type*} [AddCommGroup V] [Module ℝ V] [Fintype ι] [DecidableEq ι] (B : LinearMap.BilinForm ℝ V) (hB : B.IsSymm) (hpos : ∀ x, 0 ≤ B x x) (A : Module.End ℝ V) (hself : LinearMap.IsSelfAdjoint B A) (b : Module.Basis ι ℝ (V ⧸ LinearMap.ker B)) (F unit realFactor : ℂ → ℂ) (hunit : ∀ z, unit z ≠ 0) (hrealFactor : ZerosRealOn Set.univ realFactor) (hfactor : ∀ z, F z = unit z * ((((LinearMap.toMatrix b b (quotientByRadicalEnd B A hself)).map (algebraMap ℝ ℂ)).charpoly.eval z) * realFactor z)) : ZerosRealOn Set.univ F",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16295,7 +16435,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionAllSpectralPoints.lean",
       "line": 9,
       "signature": "private theorem det_eq_of_forall_col_eq_smul_add_const {R n : Type*} [CommRing R] [Fintype n] [DecidableEq n] {A B : Matrix n n R} (c : n → R) (k : n) (hk : c k = 0) (hAB : ∀ i j, A i j = B i j + c j * B i k) : A.det = B.det",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16385,7 +16525,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeIdentity.lean",
       "line": 11,
       "signature": "theorem diagonal_adjugate_mulVec_apply {n : Type*} [Fintype n] [DecidableEq n] (a u : n → ℝ) (k : n) : Matrix.mulVec (Matrix.diagonal a).adjugate u k = u k * ∏ j ∈ Finset.univ.erase k, a j",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16395,7 +16535,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeIdentity.lean",
       "line": 20,
       "signature": "theorem det_rankOneCorrection_diagonal_eq_neg_s_mul_lagrange {n : Type*} [Fintype n] [DecidableEq n] (lam xi : n → ℝ) (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) (s : ℝ) : (rankOneCorrection (Matrix.diagonal lam) xi (1 : n → ℝ) - s • (1 : Matrix n n ℝ)).det = (-s) * ∑ k, xi k * ∏ j ∈ Finset.univ.erase k, (lam j - s)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16445,7 +16585,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeRadicalCharpoly.lean",
       "line": 12,
       "signature": "theorem sourceLagrangePolynomial_eq_signed_radical_quotient_charpoly {n : Type*} [Fintype n] [DecidableEq n] (T : Matrix n n ℝ) (lam xi beta : n → ℝ) (hT : T.transpose = T) (hcomm : T * Matrix.diagonal lam - Matrix.diagonal lam * T = - Matrix.vecMulVec beta (1 : n → ℝ) + Matrix.vecMulVec (1 : n → ℝ) beta) (hTDxi : Matrix.mulVec T (Matrix.mulVec (Matrix.diagonal lam) xi) = -beta) (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) (hTxi : Matrix.mulVec T xi = 0) (hker1 : Module.finrank ℝ (LinearMap.ker T.mulVecLin) = 1) : sourceLagrangePolynomial lam xi = -(Polynomial.C ((-1 : ℝ) ^ Fintype.card n) * (quotientByRadicalEnd (Matrix.toBilin' T) (rankOneCorrection (Matrix.diagonal lam) xi (1 : n → ℝ)).mulVecLin (rankOneCorrection_isSelfAdjoint_toBilin T (Matrix.diagonal lam) xi beta (1 : n → ℝ) hT (by simp) hcomm hTDxi)).charpoly)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16475,7 +16615,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeRealZeros.lean",
       "line": 41,
       "signature": "theorem sourceLagrangePolynomial_complex_zerosRealOn_of_radical_nonneg {n ι : Type*} [Fintype n] [DecidableEq n] [Fintype ι] [DecidableEq ι] (T : Matrix n n ℝ) (lam xi beta : n → ℝ) (hT : T.transpose = T) (hpos : ∀ x, 0 ≤ Matrix.toBilin' T x x) (hcomm : T * Matrix.diagonal lam - Matrix.diagonal lam * T = - Matrix.vecMulVec beta (1 : n → ℝ) + Matrix.vecMulVec (1 : n → ℝ) beta) (hTDxi : Matrix.mulVec T (Matrix.mulVec (Matrix.diagonal lam) xi) = -beta) (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) (hTxi : Matrix.mulVec T xi = 0) (hker1 : Module.finrank ℝ (LinearMap.ker T.mulVecLin) = 1) (b : Module.Basis ι ℝ ((n → ℝ) ⧸ LinearMap.ker (Matrix.toBilin' T))) : ZerosRealOn Set.univ (fun z => ((sourceLagrangePolynomial lam xi).map (algebraMap ℝ ℂ)).eval z)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16485,7 +16625,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientCharpoly.lean",
       "line": 14,
       "signature": "theorem charpoly_eq_X_mul_quotientSpanSingletonEnd_charpoly {V : Type*} [AddCommGroup V] [Module ℝ V] [FiniteDimensional ℝ V] (f : Module.End ℝ V) (xi : V) (hxi0 : xi ≠ 0) (hkill : f xi = 0) : f.charpoly = Polynomial.X * (quotientSpanSingletonEnd f xi hkill).charpoly",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16505,7 +16645,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionQuotientCharpoly.lean",
       "line": 139,
       "signature": "theorem sourceLagrangePolynomial_eq_signed_quotient_charpoly {n : Type*} [Fintype n] [DecidableEq n] (lam xi : n → ℝ) (hnormalized : (1 : n → ℝ) ⬝ᵥ xi = 1) : sourceLagrangePolynomial lam xi = -(Polynomial.C ((-1 : ℝ) ^ Fintype.card n) * (rankOneCorrectionQuotientEnd (Matrix.diagonal lam) xi (1 : n → ℝ) hnormalized).charpoly)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
