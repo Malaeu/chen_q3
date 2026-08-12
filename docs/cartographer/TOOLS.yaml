@@ -451,7 +451,7 @@ tool_families:
           the project's toolchain. Anthropic's tree is on v4.33.0-rc2.
 
       - id: lean-env-dump
-        status: BROKEN
+        status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
         mode: WRITES_DERIVED
         path: docs/cartographer/lean_env/envdump.py
@@ -468,16 +468,16 @@ tool_families:
         authority: docs/CODEX_CONTROL.md
         records_to: docs/cartographer/lean_env/env_index.jsonl (gitignored derived index)
         last_verified: >-
-          NOT_VERIFIED 2026-08-12: the declared Mac invocation failed before emitting any
-          declarations.
+          2026-08-12 declared Mac invocation exit 0: 1139 unique declarations from 154
+          current source-backed RouteB modules; 6 orphan .olean files excluded; 30 stale
+          and 21 never-built source modules reported uncovered; 0 sorryAx and 0 other
+          nonstandard axioms.
         failure_mode: >-
-          `python3 docs/cartographer/lean_env/envdump.py` sees 189 of 204 RouteB modules,
-          then Lean rejects the import set because D0PstarShiftedArchSesquilinearFormScratch
-          and D0PstarArchSesquilinearFormIntegral both install
-          Q3.RouteB.D0Pstar.sourceArchimedeanSesquilinearForm; exit 1, zero declarations.
-        replacement: >-
-          No trusted replacement. Resolve or exclude the colliding scratch module, rerun the
-          declared invocation, and only then restore ENABLED with a verified date.
+          Fails closed and preserves the previous index if Lean exits nonzero, JSONL is empty
+          or malformed, module selection changes during the run, or a requested RouteB
+          declaration belongs to an orphan, stale, or never-built module. atom_describe.py
+          refuses to publish RouteB JSON rather than substituting source text for an absent
+          elaborated declaration.
         why: >-
           Layer 1 of the constructor. atom_describe.py reads the source TEXT up to `:=` or
           `by`. That is enough for a human and not enough to decide applicability: the text
