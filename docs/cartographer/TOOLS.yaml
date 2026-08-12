@@ -402,6 +402,46 @@ tool_families:
         records_to: docs/routeB_bus/MAP_COVERAGE.md
         last_verified: 2026-08-11
 
+      - id: comparator-lite
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: docs/cartographer/comparator/
+        invoke: see docs/cartographer/comparator/README.md ("Как прогнать заново")
+        why: >-
+          Answers the one question nothing in this project could answer: did the supplier
+          prove the statement that was CLAIMED, or a neighbouring one. Name resolution and
+          address checks both return OK on a wrong-but-adjacent theorem; only typechecking
+          separates them.
+        pattern_borrowed_from: >-
+          anthropics/zeta-23-lean/comparator (Apache-2.0), who packaged their theorems for
+          leanprover/comparator. The trusted-challenge / untrusted-solution SHAPE is
+          borrowed; no code is copied.
+        plants:
+          - id: P1
+            what: exact v3 supplier closes the challenge
+            expected: PASS with axioms [propext, Classical.choice, Quot.sound]
+            observed_2026_08_12: PASS
+          - id: P2
+            what: R6 wrapper, same name and same conclusion, stronger hypotheses
+            expected: REJECTED
+            observed_2026_08_12: >-
+              REJECTED, exit 1. LipschitzOnWith K h (Ico 0 b) offered where LipschitzWith K h
+              required; and `0 < a` at a = 0 left as an unprovable goal. Classification
+              STRONGER_CLASS_REQUIRES_UNAVAILABLE_HYPOTHESES.
+        kill_condition: >-
+          If the R6 wrapper is ever accepted as closing the exact v3 target, the semantic
+          layer of the constructor is dead and must not be extended. Not triggered.
+        does_not: >-
+          Not the full leanprover/comparator: no formal constant-set comparison between the
+          two modules, no second kernel (nanoda), no sandbox. Does not implement the six
+          project checks the judge requires on top of comparator — same source object, same
+          scope, same normalization, same theorem direction, no hidden axiom, target not
+          weakened. Those exist nowhere and must be written.
+        toolchain_note: >-
+          A full run needs lean4export built for leanprover/lean4:v4.26.0; comparator adopts
+          the project's toolchain. Anthropic's tree is on v4.33.0-rc2.
+
       - id: lean-env-dump
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
