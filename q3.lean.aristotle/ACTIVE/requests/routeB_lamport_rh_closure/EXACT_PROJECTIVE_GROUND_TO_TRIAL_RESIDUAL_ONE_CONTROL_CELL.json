@@ -1,0 +1,85 @@
+{
+  "schema": "exact_projective_ground_to_trial_residual_one_control_cell/v1",
+  "created_on": "2026-08-12",
+  "evidence_class": [
+    "FINITE_CELL",
+    "CONDITIONAL"
+  ],
+  "cell": {
+    "lambda_sq": 13,
+    "N": 120,
+    "coordinate_count": 241
+  },
+  "knowledge_preflight": {
+    "command": "./orchestrator/kb.py ask \"exact projective ground to trial residual one control cell lambda_sq 13 N 120 ground_xi1 portable_k_coeffs NO_PERSISTED_MFIN_MATVEC\"",
+    "exit_code": 0,
+    "stdout": "no hits for 'exact projective ground to trial residual one control cell lambda_sq 13 N 120 ground_xi1 portable_k_coeffs NO_PERSISTED_MFIN_MATVEC' in any layer",
+    "outcome": "NO_HITS"
+  },
+  "source_lock": {
+    "trial": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/portable_k_coeffs_lambda_sq_13_N_120.json",
+      "expected_sha256": "0e5239355c54103859b22d7f753d8cd6765c2c41bcd3ec7f86b20beccc907a88",
+      "actual_sha256": "0e5239355c54103859b22d7f753d8cd6765c2c41bcd3ec7f86b20beccc907a88",
+      "sha256_match": true,
+      "selector": "coefficients; logical_vector=k1"
+    },
+    "ground": {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/nconv_anchor_lambda_sq_13_N_120.json",
+      "expected_sha256": "cbc556ef7c73c9aefa9f177bb59aeca5867ed6628e3f1cca6edb270bfc13e7f0",
+      "actual_sha256": "cbc556ef7c73c9aefa9f177bb59aeca5867ed6628e3f1cca6edb270bfc13e7f0",
+      "sha256_match": true,
+      "selector": "xi_m_y_cache[0].xi_vector; name=xi1"
+    }
+  },
+  "convention": {
+    "inner_product": "<u,v> = sum_n conj(u_n) * v_n",
+    "normalization": "both full 241-coordinate vectors are renormalized from persisted decimal strings",
+    "best_scalar": "c_star=<trial,ground>/||trial||^2",
+    "projective_distance": "inf_{c!=0} ||ground-c*trial||/||ground||; c_star is nonzero",
+    "projective_defect": "1-|<ground/||ground||,trial/||trial||>|^2"
+  },
+  "measurement": {
+    "decimal_precision": 140,
+    "trial_norm": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000000E+0",
+    "ground_norm": "9.9999999999999999999999999999999999999999999999999999999941305374225040433628884E-1",
+    "normalized_inner_product": {
+      "re": "9.9999999765405872228371496379189172608655005485968185846480854523753181266941100E-1",
+      "im": "-1.0233487702218650754669621931514244057743599285581513540558257072125469284029113E-109"
+    },
+    "normalized_overlap_abs": "9.9999999765405872228371496379189172608655005485968185846480854523753181266941100E-1",
+    "normalized_overlap_abs_squared": "9.9999999530811745007087040607689944676224588653258380147302862410302831005528562E-1",
+    "projective_defect": "4.6918825499291295939231005532377541134674161985269713758969716899447143804110465E-9",
+    "best_scalar_raw": {
+      "re": "9.9999999765405872228371496379189172608655005485968185846422159898115915845955572E-1",
+      "im": "-1.0233487702218650754669621931514244057743599285581513540552250564814925538366845E-109"
+    },
+    "inf_c_nonzero_relative_distance": "6.8497317830183172756379642033197217218514289634008501626034303056304663711159675E-5",
+    "phase_aligned_unit_distance": "6.8497317870355844119390261337174275986845080937058056874582098536583714793381876E-5"
+  },
+  "guarded_checks": {
+    "source_hashes_match": true,
+    "cell_metadata_match": true,
+    "coordinate_indices_match_exactly": true,
+    "vectors_nonzero": true,
+    "best_scalar_nonzero": true,
+    "direct_projection_residual_squared_relative": "4.6918825499291295939231005532377541134674161985269713758969716899447143804110465E-9",
+    "one_minus_overlap_squared": "4.6918825499291295939231005532377541134674161985269713758969716899447143804110465E-9",
+    "projection_identity_abs_error": "7.6793408000000000000000000000000000000000000000000000000000000000000000000000000E-141",
+    "projection_identity_tolerance": "1.0000000000000000000000000000000000000000000000000000000000000000000000000000000E-110",
+    "projection_identity_pass": true
+  },
+  "spectral_residual_and_gap": {
+    "status": "NO_PERSISTED_MFIN_MATVEC",
+    "matrix_residual": "NOT_MEASURED",
+    "spectral_gap": "NOT_MEASURED",
+    "reason": "the two source-locked packets do not persist a canonical Mfin matvec; eigenpair-cache metadata is not a replacement"
+  },
+  "outcome": "MEASURED_FINITE_CELL_CONDITIONAL_NOT_PROMOTING",
+  "non_claims": [
+    "not a theorem",
+    "not a cofinal estimate",
+    "not a Route B closure",
+    "not an RH claim"
+  ]
+}
