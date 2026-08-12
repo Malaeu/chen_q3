@@ -402,6 +402,47 @@ tool_families:
         records_to: docs/routeB_bus/MAP_COVERAGE.md
         last_verified: 2026-08-11
 
+      - id: lean-env-dump
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: docs/cartographer/lean_env/envdump.py
+        lean_source: docs/cartographer/lean_env/EnvDump.lean
+        invoke: python3 docs/cartographer/lean_env/envdump.py
+        alternatives:
+          - python3 docs/cartographer/lean_env/envdump.py --prefix Q3.Proofs.RouteB.MuntzV3
+          - python3 docs/cartographer/lean_env/envdump.py --namespace Q3.RouteB --out <path>
+        why: >-
+          Layer 1 of the constructor. atom_describe.py reads the source TEXT up to `:=` or
+          `by`. That is enough for a human and not enough to decide applicability: the text
+          carries no `section` variables, no implicit parameters, no universe parameters, no
+          typeclass premises introduced by elaboration, no inserted coercions and no unfolded
+          notation. The source of truth has to be the Lean environment. rg stays as the fast
+          frontend; it stops being the judge.
+        emits: >-
+          JSON Lines, one record per declaration: name, kind, ELABORATED type, levelParams,
+          numBinders, module, line, docstring, typeConsts, axiom closure, isPrivate, isUnsafe.
+          typeConsts are the constants of the TYPE and are deliberately kept apart from the
+          atoms of the proof body: the type carries the meaning of the statement, the body
+          carries provenance and cost. Conflating them is what made foreign atom overlap a
+          recall signal rather than a semantic bridge.
+        coverage_denominator: >-
+          Prints modules-with-source against modules-built on every run, and the uncovered
+          count when they differ. A green report over a third of the tree reads as green over
+          the whole tree unless the denominator is printed, so it is printed unconditionally.
+        does_not: >-
+          Judges nothing. It does not decide applicability, does not compare statements and
+          does not rank candidates. It is an index, not a comparator. Applicability is layer 5
+          and does not exist yet.
+        limits: >-
+          Sees only what is already compiled into .lake/build. Does not build Lean.
+        first_payoff: >-
+          The elaborated type of det_rankOneCorrection_diagonal_eq_neg_s_mul_lagrange shows
+          `-s * SUM_k xi k * PROD_{j != k} (lam j - s)`, a sum of products, where the CvS step
+          it was placed against needs `-s * PROD (lam j - s)`, a product. An adversarial pass
+          had called that mismatch in prose; in the type it is visible at a glance. This is
+          the check the regex layer could not perform.
+
       - id: atom-describe
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
@@ -762,6 +803,43 @@ known_hazards:
     failure_mode: Empty files mimic canonical database names and falsely report that project memory is empty.
     canonical_knowledge_db: q3.lean.aristotle/aristotle_db/knowledge.db
     canonical_proof_db: q3.lean.aristotle/aristotle_db/aristotle_proofs.db
+
+  - id: routeb-outside-every-build-target
+    status: FINDING
+    discovered: 2026-08-12
+    audience: [CODEX, CLAUDE_CODE, HUMAN]
+    mode: READ_ONLY
+    path: q3.lean.aristotle/lakefile.toml
+    finding: >-
+      `lake build Q3` does not build RouteB. It builds the cone of the root module Q3.lean,
+      which has nineteen imports and reaches none of Q3/Proofs/RouteB. A full run of 7817
+      jobs completed successfully without the string RouteB appearing once in its log.
+      The lean_lib declares `globs = ["Q3"]`, and in Lake a bare module name is that one
+      module, not the subtree; the subtree would be `Q3.+`.
+    consequence: >-
+      Of 204 RouteB source modules, 35 had .olean files on 2026-08-12. Those 35 were built
+      by being named explicitly at some earlier point. The other 169 had never been compiled
+      by any target, so no green build ever covered them and nothing said so.
+    why_it_matters: >-
+      A successful `lake build` is read as "the tree compiles". For RouteB it means nothing
+      of the kind. Any tool that consumes compiled output — the environment dumper, an axiom
+      audit, a comparator — silently sees a third of the tree and reports green over it.
+      This is the same shape as the CvS map that read authoritative while nine days stale:
+      the artefact is not wrong, it answers a narrower question than the reader assumes.
+    verified_by: >-
+      Q3.lean contains no RouteB import (rg, zero hits). build log of 7817 jobs contains no
+      RouteB (rg -c, zero hits). `lake build Q3.Proofs.RouteB.CCMFiniteWeilParity` produced
+      the missing .olean in 6.3 s, so the modules compile; they were simply never asked for.
+    cost: >-
+      About six seconds per module with Mathlib already built, so the backlog is minutes,
+      not hours.
+    remedy_taken: >-
+      Modules built by explicit name, one per invocation, failures recorded per module.
+      The lakefile was NOT edited: it sits under the Codex control chain, and changing a glob
+      would silently enrol files that have never compiled.
+    remedy_not_taken: >-
+      Changing `globs` to `Q3.+` would fix this permanently and needs an owner decision plus
+      the Codex chain, because it changes what a green build asserts.
 
   - id: primecert-museum
     status: RETIRED
