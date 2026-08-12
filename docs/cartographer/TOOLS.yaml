@@ -413,7 +413,14 @@ tool_families:
           --json docs/cartographer/atoms_described.json
         alternatives:
           - python3 docs/cartographer/atom_describe.py --selftest
+          - python3 docs/cartographer/atom_describe.py --bases
           - python3 docs/cartographer/atom_describe.py --chain <ASSEMBLY_CHAIN> --json <out>
+        external_bases: >-
+          Foreign Lean bases come from docs/cartographer/lean_bases.yaml, which carries an
+          origin and a list of candidate paths per machine, so the same registry resolves on
+          Linux and on the Mac. A missing base is reported on stderr with its clone URL rather
+          than silently searched past. --foreign still works and is added to the registry
+          rather than replacing it.
         selftest: >-
           --selftest runs the provenance classifier over fourteen names with known answers and
           exits nonzero on any miss. Three of them are cases where the classifier was wrong in

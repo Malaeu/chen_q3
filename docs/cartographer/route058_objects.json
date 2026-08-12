@@ -45,7 +45,7 @@
     "our_n_files": 0,
     "provenance": "LOCAL_HYPOTHESIS",
     "source": "LOCAL_HYPOTHESIS",
-    "rejected_match": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/Analysis/Real/Hyperreal.lean:145"
+    "rejected_match": "q3.lean.aristotle/.lake/packages/mathlib/Mathlib/SetTheory/Ordinal/Veblen.lean:530"
   },
   {
     "name": "xi",

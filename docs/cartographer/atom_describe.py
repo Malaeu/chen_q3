@@ -29,6 +29,7 @@ Read-only: пишет только в `--json`, если указан.
 from __future__ import annotations
 
 import argparse
+import collections
 import json
 import re
 import sqlite3
@@ -42,6 +43,114 @@ MATHLIB = REPO / "q3.lean.aristotle/.lake/packages/mathlib/Mathlib"
 OURS = REPO / "q3.lean.aristotle/Q3"
 
 KINDS = "theorem|lemma|def|structure|abbrev|instance|class|inductive"
+BASES_YAML = REPO / "docs/cartographer/lean_bases.yaml"
+
+
+def _base_identity(p: Path) -> dict:
+    """Прочитать, ЧТО именно лежит по пути: origin, HEAD, чистота, toolchain."""
+    def git(*a):
+        try:
+            r = subprocess.run(["git", "-C", str(p), *a], capture_output=True,
+                               text=True, timeout=30)
+            return r.stdout.strip() if r.returncode == 0 else None
+        except Exception:
+            return None
+    tc = p / "lean-toolchain"
+    return {
+        "origin": git("remote", "get-url", "origin"),
+        "head": (git("rev-parse", "--short", "HEAD") or ""),
+        "dirty": bool((git("status", "--porcelain") or "").strip()),
+        "toolchain": tc.read_text(encoding="utf-8").strip() if tc.is_file() else None,
+    }
+
+
+def load_bases(explicit: str = "", strict: bool = True) -> list[tuple[str, Path]]:
+    """Прочитать реестр внешних Lean-баз и разрешить путь для ЭТОЙ машины.
+
+    HIGH-6, ревью Codex 2026-08-12. Прежняя версия брала первый путь, у которого
+    `is_dir()` истинно. Существование каталога ничего не говорит о его содержимом:
+    это мог быть старый клон, другой origin или другой toolchain, а второй кандидат
+    молча игнорировался. На втором теле такая база ищет не там и не жалуется.
+
+    Теперь у каждого кандидата читаются origin, HEAD, чистота и toolchain, и они
+    сверяются с записью реестра. Кандидат с чужим origin отвергается. Расхождение
+    HEAD или toolchain печатается, но базу не отключает: она обновилась, а не
+    подменилась. Два кандидата с разными HEAD — отказ, потому что выбрать нельзя.
+
+    `explicit` (`--foreign`) не отменяет реестр, а добавляется к нему. MEDIUM-13:
+    несуществующий явный путь больше не проходит молча.
+    """
+    out: list[tuple[str, Path]] = []
+    if explicit:
+        p = Path(explicit).expanduser().resolve()
+        if not p.is_dir():
+            print(f"  --foreign {p}: каталога нет", file=sys.stderr)
+        elif not any(p.rglob("*.lean")):
+            print(f"  --foreign {p}: каталог есть, файлов .lean нет", file=sys.stderr)
+        else:
+            out.append(("--foreign", p))
+    if not BASES_YAML.is_file():
+        return out
+    try:
+        import yaml
+    except ImportError:
+        print("  реестр баз не прочитан: нет PyYAML "
+              "(pip install pyyaml / uv add pyyaml)", file=sys.stderr)
+        return out
+    try:
+        reg = yaml.safe_load(BASES_YAML.read_text(encoding="utf-8")) or {}
+    except Exception as e:
+        print(f"  реестр баз не прочитан: {e}", file=sys.stderr)
+        return out
+
+    for b in reg.get("bases", []):
+        if not b.get("enabled"):
+            continue
+        bid = b["id"]
+        found = []
+        for cand in b.get("paths", []):
+            p = Path(cand).expanduser()
+            if p.is_dir():
+                found.append((p, _base_identity(p)))
+        if not found:
+            print(f"  база {bid}: НЕ НАЙДЕНА ни по одному пути — "
+                  f"подтяните {b.get('origin','?')}", file=sys.stderr)
+            continue
+
+        want_origin = (b.get("origin") or "").removesuffix(".git")
+        ok = []
+        for p, ident in found:
+            got = (ident["origin"] or "").removesuffix(".git")
+            if want_origin and got and got != want_origin:
+                print(f"  база {bid}: путь {p} — ЧУЖОЙ origin {got}, отвергнут",
+                      file=sys.stderr)
+                continue
+            ok.append((p, ident))
+        if not ok:
+            print(f"  база {bid}: ни один путь не совпал по origin", file=sys.stderr)
+            continue
+        if len({i["head"] for _, i in ok}) > 1 and strict:
+            heads = ", ".join(f"{p}={i['head']}" for p, i in ok)
+            print(f"  база {bid}: НЕСКОЛЬКО КЛОНОВ С РАЗНЫМИ HEAD ({heads}) — "
+                  f"выбрать нельзя, база отключена", file=sys.stderr)
+            continue
+
+        p, ident = ok[0]
+        pin = b.get("pin") or {}
+        if pin.get("head") and ident["head"] and pin["head"] != ident["head"]:
+            print(f"  база {bid}: HEAD {ident['head']} против записанного "
+                  f"{pin['head']} — адреса из verified_by могли сдвинуться",
+                  file=sys.stderr)
+        if b.get("toolchain") and ident["toolchain"] and b["toolchain"] != ident["toolchain"]:
+            print(f"  база {bid}: toolchain {ident['toolchain']} против записанного "
+                  f"{b['toolchain']}", file=sys.stderr)
+        if ident["dirty"] and not pin.get("checked_clean", True):
+            pass                                  # грязь уже зафиксирована в реестре
+        elif ident["dirty"]:
+            print(f"  база {bid}: рабочее дерево грязное — содержимое не равно {ident['head']}",
+                  file=sys.stderr)
+        out.append((bid, p))
+    return out
 
 
 def namespace_at(lines: list[str], line: int) -> str:
@@ -64,10 +173,19 @@ def namespace_at(lines: list[str], line: int) -> str:
 def find_structure_field(name: str, root: Path) -> dict | None:
     """Найти имя как ПОЛЕ СТРУКТУРЫ: строка `  name : тип` внутри `structure X where`.
 
-    ДЕФЕКТ, ПОЙМАННЫЙ 2026-08-12: `kTrial` — поле `CoefficientFamily`
-    (`D0CanonicalApproximation.lean:35`), а поиск объявлений ищет только
-    `theorem|def|…`. Инструмент объявлял существующий объект `PLACEHOLDER`, то есть
-    «ещё не написан». Это ровно та ложь, ради которой введена классификация.
+    ДЕФЕКТ 2026-08-12 (а): поиск объявлений ищет только `theorem|def|…`, поэтому
+    `kTrial` — поле `CoefficientFamily` — возвращался как `PLACEHOLDER`, то есть «ещё
+    не написан», для объекта, который в дереве с самого начала.
+
+    ДЕФЕКТ 2026-08-12 (б), HIGH-5 ревью Codex: первая починка поднималась вверх и
+    обрывалась на строке «непустая, не комментарий, без двоеточия». Продолжение
+    многострочного типа предыдущего поля выглядит ровно так, и подъём не доходил до
+    заголовка. Терялись `lambda_eq`, `eStar_memLp`, `trialNonzero`, `outerBlock`,
+    `outerBlock_positive`. Лимит в 40 строк терял поля дальше по структуре.
+
+    Теперь признак владельца — КОЛОНКА НОЛЬ: поле лежит с отступом, а объявление
+    структуры начинается без отступа. Между ними не должно быть другой строки с
+    нулевым отступом. Ни двоеточия, ни лимита строк это правило не требует.
     """
     if not root.is_dir() or "." in name:
         return None
@@ -86,23 +204,22 @@ def find_structure_field(name: str, root: Path) -> dict | None:
             lines = cp.read_text(encoding="utf-8", errors="replace").split("\n")
         except Exception:
             continue
-        # подняться вверх до `structure X where` без пустой строки-разрыва
         owner = None
-        for k in range(cl - 2, max(-1, cl - 40), -1):
-            t = lines[k].strip()
-            m = re.match(r"^(structure|class)\s+([A-Za-z_][A-Za-z_0-9'\.]*)", t)
-            if m:
-                owner = m.group(2)
-                break
-            if t and not t.startswith("--") and not t.startswith("/") and ":" not in t \
-               and not t.endswith("where"):
-                break
+        for k in range(cl - 2, -1, -1):
+            ln = lines[k]
+            if not ln.strip():
+                continue
+            if ln[0].isspace():
+                continue                       # ещё внутри блока
+            m = re.match(r"^(?:@\[[^\]]*\]\s*)?(?:private\s+|protected\s+)*"
+                         r"(structure|class)\s+([A-Za-z_][A-Za-z_0-9'\.]*)", ln)
+            owner = m.group(2) if m else None
+            break                              # первая строка колонки ноль решает
         if owner is None:
             continue
-        ns = namespace_at(lines, cl)
         return {
             "kind_lean": "field",
-            "namespace": ns,
+            "namespace": namespace_at(lines, cl),
             "owner": owner,
             "file": str(cp.relative_to(REPO)) if str(cp).startswith(str(REPO)) else str(cp),
             "line": cl,
@@ -189,57 +306,157 @@ CYR = re.compile(r"[А-Яа-яЁё]")
 PAPER = re.compile(r"(Lemma|Theorem|Prop|Proposition)[_ ]?\d", re.I)
 
 
-def is_local_binder(name: str) -> bool:
-    """Связана ли эта переменная в сигнатуре какой-либо декларации дерева RouteB.
+_BINDER_CACHE: set[str] | None = None
 
-    Ищем по всему дереву, а не в файле-поставщике: `epsilon` связан в сигнатуре
-    ПОТРЕБИТЕЛЯ, тогда как поставщик у шага записан другой. Первая редакция проверяла
-    только поставщика и пропустила ровно этот случай.
 
-    Паттерн требует, чтобы имя стояло в скобочной группе биндеров и завершалось `:`.
-    Ограничений по длине имени НЕТ: они были заплаткой, а не правилом, и делали
-    поведение непредсказуемым на границе.
+def _strip_comments(text: str) -> str:
+    """Убрать блочные и строчные комментарии Lean.
+
+    MEDIUM-10. Первая попытка чинилась случайностью: двоеточие внутри `-- note:`
+    обрывало разбор. Комментарий без двоеточия — `-- see (ghost : Nat)` — протекал,
+    и блочный `/- (spook : Nat) -/` тоже. Комментарии удаляются явно.
     """
+    text = re.sub(r"/-.*?-/", " ", text, flags=re.S)
+    # Построчно: если сначала склеить строки, `--` съест остаток сигнатуры вместе
+    # со следующими биндерами. Поймано на себе при починке 2026-08-12.
+    return "\n".join(re.sub(r"--.*$", " ", ln) for ln in text.split("\n"))
+
+
+def _telescope_binders(sig: str) -> list[str]:
+    """Вернуть имена, СВЯЗАННЫЕ телескопом объявления, и только их.
+
+    Разбор идёт по символам с учётом глубины скобок. Группа биндеров — та, что
+    открывается на верхнем уровне ДО двоеточия заключения. Всё, что глубже или
+    после этого двоеточия, телескопом не связано.
+
+    HIGH-3 и MEDIUM-10, поймано ревью Codex 2026-08-12. Прежняя проверка искала
+    regex по всему тексту файла и не отличала связывание `(x : T)` от приведения
+    типа `(ccmModeFinite N i : ℝ)`, а также ловила имена из комментариев.
+    """
+    sig = _strip_comments(sig)
+    names: list[str] = []
+    depth = 0
+    group_start = -1
+    i = 0
+    while i < len(sig):
+        c = sig[i]
+        if c in "({[":
+            depth += 1
+            if depth == 1:
+                group_start = i + 1
+        elif c in ")}]":
+            if depth == 1 and group_start >= 0:
+                body = sig[group_start:i]
+                if ":" in body:
+                    head = body.split(":", 1)[0]
+                    # инстанс-биндер `[Fintype n]` имён не вводит: двоеточия нет,
+                    # сюда не попадёт; `[inst : C]` вводит `inst`.
+                    names.extend(w for w in head.split() if re.fullmatch(r"[A-Za-z_][\w'!?]*", w))
+                group_start = -1
+            depth -= 1
+        elif c == ":" and depth == 0:
+            break                      # двоеточие заключения: телескоп кончился
+        i += 1
+    return names
+
+
+def binder_names() -> set[str]:
+    """Все имена, связанные телескопами объявлений дерева RouteB. Один проход, кэш."""
+    global _BINDER_CACHE
+    if _BINDER_CACHE is not None:
+        return _BINDER_CACHE
+    out: set[str] = set()
+    root = OURS / "Proofs/RouteB"
+    for f in root.rglob("*.lean"):
+        try:
+            lines = f.read_text(encoding="utf-8", errors="replace").split("\n")
+        except Exception:
+            continue
+        i = 0
+        while i < len(lines):
+            m = re.match(rf"^\s*(?:@\[[^\]]*\]\s*)?(?:private\s+|protected\s+|noncomputable\s+)*"
+                         rf"(?:{KINDS})\s+([A-Za-z_][\w'!?.]*)", lines[i])
+            if m:
+                sig, j = [], i
+                while j < min(i + 30, len(lines)):
+                    ln = lines[j]
+                    sig.append(ln)
+                    if ":=" in ln or re.search(r"\bby\b\s*$", ln):
+                        break
+                    j += 1
+                text = " ".join(_strip_comments(ln) for ln in sig)
+                text = text[text.index(m.group(1)) + len(m.group(1)):]
+                out.update(_telescope_binders(text))
+                i = j
+            i += 1
+    _BINDER_CACHE = out
+    return out
+
+
+def is_local_binder(name: str) -> bool:
+    """Связано ли имя телескопом какого-либо объявления RouteB."""
     if "." in name:
         return False
-    try:
-        r = subprocess.run(
-            ["rg", "-q", rf"[({{]\s*(\w+\s+)*{re.escape(name)}(\s+\w+)*\s*:",
-             str(OURS / "Proofs/RouteB")],
-            capture_output=True, timeout=60)
-        return r.returncode == 0
-    except Exception:
-        return False
+    return name in binder_names()
 
 
-def provenance(name: str, resolved: dict | None) -> str:
+def resolve_all(name: str, roots: list) -> list[tuple[str, dict]]:
+    """Собрать ВСЕХ кандидатов по всем корням, не останавливаясь на первом.
+
+    HIGH, поймано ревью Codex 2026-08-12. Прежний цикл прерывался на первом
+    попадании, а Mathlib стоит в списке раньше нашего дерева. Из-за этого правило
+    «объявлено в RouteB — значит декларация» не исполнялось никогда: контрпример `H`
+    имеет `def H` в `MuntzV3/Core.lean:37`, но поиск отдавал Mathlib и класс выходил
+    `LOCAL_HYPOTHESIS`.
+    """
+    out = []
+    for src, root in roots:
+        d = find_declaration(name, root) or find_structure_field(name, root)
+        if d:
+            out.append((src, d))
+    return out
+
+
+def pick_candidate(cands: list[tuple[str, dict]]) -> tuple[str, dict] | None:
+    """Выбрать кандидата: наше дерево RouteB важнее Mathlib и внешних баз."""
+    for c in cands:
+        if "Proofs/RouteB" in c[1].get("file", ""):
+            return c
+    return cands[0] if cands else None
+
+
+def provenance(name: str, cands: list[tuple[str, dict]]) -> str:
     """Классифицировать имя по таксономии вердикта `..._HERMFACT1_AUDIT_2026-08-11`.
 
-    ПОРЯДОК ПРОВЕРОК И ПОЧЕМУ ИМЕННО ТАКОЙ.
+    ПОРЯДОК ПРОВЕРОК.
 
     1. Проза — кириллица или пробел: пометка в записи, а не имя объекта.
-    2. **Объявлено в нашем RouteB — значит декларация, и точка.** Связанная переменная
-       не имеет одноимённого `def`/`theorem`/поля в том же дереве; если бы имела, это
-       затенение и отдельный дефект. Проверка стоит выше связанности намеренно.
-    3. Связано в сигнатурах RouteB, но объявлено где-то ещё (Mathlib, чужой файл) —
-       локальная гипотеза с однофамильцем. Так `epsilon` не уезжает в ординалы Веблена.
-    4. Разрешилось вне RouteB и нигде не связано — декларация (например `dslope`).
-    5. Похоже на ссылку из статьи — теорема первоисточника.
-    6. Иначе заглушка.
+    2. Объявлено в нашем RouteB **и** связано там же как переменная — `AMBIGUOUS`.
+       Адрес не выдаётся: выбрать одно из двух по имени невозможно, а угадать —
+       значит вернуться к тому, ради чего эта классификация написана.
+    3. Объявлено в нашем RouteB — декларация.
+    4. Связано в сигнатурах RouteB — локальная гипотеза с однофамильцем.
+    5. Разрешилось где-то ещё — декларация.
+    6. Похоже на ссылку из статьи — теорема первоисточника.
+    7. Иначе заглушка.
 
-    ДВЕ ПРЕЖНИЕ РЕДАКЦИИ БЫЛИ НЕВЕРНЫ, обе записаны в самопроверку.
+    ТРИ ПРЕЖНИЕ РЕДАКЦИИ БЫЛИ НЕВЕРНЫ, все три в самопроверке.
     Первая ставила разрешение выше связанности и подпирала это порогами длины имени.
-    Вторая ставила связанность выше всего — и `ccmModeFinite` стал «локальным», потому
-    что биндер-паттерн не отличает связывание `(x : T)` от ПРИВЕДЕНИЯ ТИПА
-    `(ccmModeFinite N i : ℝ)`. Regex их различить не может; различает происхождение.
+    Вторая ставила связанность выше всего — `ccmModeFinite` стал «локальным», потому что
+    биндер-паттерн не отличает связывание от приведения типа.
+    Третья опиралась на «первое попадание» и до нашего дерева не доходила.
     """
     if CYR.search(name) or " " in name:
         return "PROSE"
-    if resolved and "Proofs/RouteB" in resolved.get("file", ""):
+    in_routeb = any("Proofs/RouteB" in d.get("file", "") for _, d in cands)
+    bound = is_local_binder(name)
+    if in_routeb and bound:
+        return "AMBIGUOUS"
+    if in_routeb:
         return "LEAN_DECL"
-    if is_local_binder(name):
+    if bound:
         return "LOCAL_HYPOTHESIS"
-    if resolved:
+    if cands:
         return "LEAN_DECL"
     if PAPER.search(name):
         return "PAPER_THEOREM"
@@ -262,10 +479,16 @@ SELFTEST = [
     ("hermfact1",                  "PLACEHOLDER",      "исторический doc-alias: ноль .lean во всём репозитории"),
     ("FiniteGroundTransformToCCMTrialLocallyUniform", "PLACEHOLDER", "ещё не написана"),
     ("кофинальное расписание",     "PROSE",            "пометка, не имя"),
+    ("rank_trace_ineq",            "LEAN_DECL",        "ЧУЖАЯ база zeta23: несущее неравенство ранг-след"),
+    ("finrank_le_posIndex_of_posDefOn", "LEAN_DECL",   "ЧУЖАЯ база zeta23: устройство «предъяви подпространство»"),
+    ("H",                          "AMBIGUOUS",        "def H в MuntzV3/Core.lean:37 И биндер {H T : Type*}; Mathlib находится раньше"),
+    ("measure_singleton",          "LEAN_DECL",        "HIGH-3: встречается как приведение (measure_singleton s : volume …)"),
+    ("lambda_eq",                  "LEAN_DECL",        "HIGH-5: поле после многострочного типа предыдущего поля"),
+    ("outerBlock_positive",        "LEAN_DECL",        "HIGH-5: поле дальше 40-й строки структуры"),
 ]
 
 
-def selftest(foreign: Path | None) -> int:
+def selftest(bases: list) -> int:
     """Прогнать классификатор на именах с ИЗВЕСТНЫМ ответом.
 
     Инструмент, который нельзя проверить, нельзя и починить: до этой проверки обе
@@ -275,19 +498,16 @@ def selftest(foreign: Path | None) -> int:
     print()
     bad = 0
     for name, want, why in SELFTEST:
-        found = None
-        for root in (MATHLIB, OURS, foreign if foreign else Path("/nonexistent")):
-            found = find_declaration(name, root) or find_structure_field(name, root)
-            if found:
-                break
-        got = provenance(name, found)
+        cands = resolve_all(name, [("mathlib", MATHLIB), ("ours", OURS)] + list(bases))
+        found = pick_candidate(cands)
+        got = provenance(name, cands)
         ok = got == want
         bad += not ok
         mark = "OK " if ok else "ПРОВАЛ"
         print(f"  {mark} {name[:46]:<46} {got:<17} {why}")
         if not ok:
             print(f"       ожидалось {want}"
-                  + (f", адрес {found['file']}:{found['line']}" if found else ", адреса нет"))
+                  + (f", адрес {found[1]['file']}:{found[1]['line']}" if found else ", адреса нет"))
     print()
     print(f"провалов: {bad} из {len(SELFTEST)}")
     return 1 if bad else 0
@@ -303,13 +523,26 @@ def main() -> int:
                     help="разобрать объекты цепи из assembly, а не атомы Mathlib "
                          "(например REALZERO_GROUND_DIAGONAL_TO_XI)")
     ap.add_argument("--json", default="")
+    ap.add_argument("--bases", action="store_true",
+                    help="показать реестр внешних Lean-баз и их доступность здесь")
     ap.add_argument("--selftest", action="store_true",
                     help="прогнать классификатор на именах с известным ответом и выйти")
     args = ap.parse_args()
 
+    bases = load_bases(args.foreign)
+
+    if args.bases:
+        print("внешние Lean-базы, доступные на этой машине:")
+        for bid, p in bases:
+            n = len(list(p.rglob("*.lean")))
+            print(f"  {bid:<12} {n:>5} .lean  {p}")
+        if not bases:
+            print("  ни одной — реестр docs/cartographer/lean_bases.yaml")
+        if not args.selftest:
+            return 0
+
     if args.selftest:
-        fr = Path(args.foreign).expanduser().resolve() if args.foreign else None
-        return selftest(fr)
+        return selftest(bases)
 
     con = sqlite3.connect(DB, uri=True)
     if args.chain:
@@ -340,29 +573,29 @@ def main() -> int:
             q += f" limit {args.limit}"
         atoms = con.execute(q).fetchall()
 
-    foreign = Path(args.foreign).expanduser().resolve() if args.foreign else None
     print(f"атомов к разбору: {len(atoms)}")
     print(f"источники: Mathlib {'есть' if MATHLIB.is_dir() else 'НЕТ'} · "
           f"наше дерево {'есть' if OURS.is_dir() else 'НЕТ'} · "
-          f"чужое {'есть' if foreign and foreign.is_dir() else 'нет'}")
+          f"внешних баз {len(bases)}"
+          + (": " + ", ".join(b for b, _ in bases) if bases else ""))
     print()
 
-    out, stats = [], {"mathlib": 0, "ours": 0, "foreign": 0, "unresolved": 0}
-    prov_stats = {}
+    # CRITICAL, поймано ревью Codex 2026-08-12: счётчик был словарём с тремя
+    # фиксированными ключами, а реестр баз даёт произвольные id («zeta23»).
+    # Любое имя, найденное во внешней базе, роняло прогон с KeyError. Counter
+    # исключает этот класс: неизвестный ключ создаётся, а не падает.
+    out = []
+    stats: collections.Counter = collections.Counter()
+    prov_stats: collections.Counter = collections.Counter()
     for idx, row in enumerate(atoms, 1):
         name, kind, n_files = row[0], row[1], row[2]
         supplier = row[3] if len(row) > 3 else None
         rec = {"name": name, "our_kind": kind, "our_n_files": n_files}
-        found = None
-        for src, root in (("mathlib", MATHLIB), ("ours", OURS),
-                          ("foreign", foreign if foreign else Path("/nonexistent"))):
-            d = find_declaration(name, root) or find_structure_field(name, root)
-            if d:
-                found = (src, d)
-                break
-        prov = provenance(name, found[1] if found else None)
+        cands = resolve_all(name, [("mathlib", MATHLIB), ("ours", OURS)] + bases)
+        found = pick_candidate(cands)
+        prov = provenance(name, cands)
         rec["provenance"] = prov
-        prov_stats[prov] = prov_stats.get(prov, 0) + 1
+        prov_stats[prov] += 1
         # Адрес выдаётся ТОЛЬКО для настоящих деклараций. Локальная гипотеза и проза
         # адреса не имеют: любой найденный для них file:line — ложный друг.
         if prov == "LEAN_DECL" and found:
@@ -372,6 +605,8 @@ def main() -> int:
             stats["unresolved"] += 1
             if found:
                 rec["rejected_match"] = f"{found[1]['file']}:{found[1]['line']}"
+            if prov == "AMBIGUOUS":
+                rec["candidates"] = [f"{c[1]['file']}:{c[1]['line']}" for c in cands]
         out.append(rec)
         if sys.stdout.isatty() and idx % 10 == 0:
             frac = idx / len(atoms)
@@ -384,7 +619,8 @@ def main() -> int:
     print()
     print(f"  найдено в Mathlib   : {stats['mathlib']}")
     print(f"  найдено у нас       : {stats['ours']}")
-    print(f"  найдено в чужом     : {stats['foreign']}")
+    for bid, _ in bases:
+        print(f"  найдено в {bid:<10}: {stats[bid]}")
     print(f"  НЕ РАЗРЕШЕНО        : {stats['unresolved']}   ← дыры нашего разбора до атомов")
     if prov_stats:
         print()

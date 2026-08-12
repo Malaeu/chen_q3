@@ -1,0 +1,101 @@
+# Реестр внешних Lean-баз, по которым картограф ищет готовое.
+#
+# ЗАЧЕМ. Правило проекта — не переписывать то, что уже доказано. Наше дерево картограф
+# знает; чужие Lean-базы до 2026-08-12 подключались одним аргументом `--foreign <путь>`,
+# захардкоженным в манифесте. Такой путь верен ровно на одной машине и молча ничего не
+# находит на другой.
+#
+# Реестр решает три вещи: базы подключаются как плагины, путь ищется среди кандидатов (Linux
+# и Mac держат репозитории в разных местах), и у каждой записаны лицензия и границы.
+#
+# ЧТО ЭТО НЕ ДЕЛАЕТ. Не скачивает и не обновляет базы: `origin` дан, чтобы второе тело
+# подтянуло само. Не разрешает копировать код — см. `license` у каждой записи.
+#
+# ВАЖНОЕ РАЗЛИЧЕНИЕ. Здесь только базы **Lean-кода**. Источники-статьи (CCM, Suzuki,
+# Yoshida) живут в `docs/routeB_bus/litreview/` и ищутся иначе: у них нет деклараций, у
+# них есть теоремы на бумаге. Смешивать нельзя — теорема из статьи не компилируется.
+
+schema: q3_lean_bases.v1
+updated: 2026-08-12
+
+bases:
+  - id: zeta23
+    name: Anthropic — «More than two thirds of the zeros … lie on the critical line»
+    origin: https://github.com/anthropics/zeta-23-lean.git
+    pin:
+      head: 3635e74
+      checked_clean: true
+    paths:
+      - /mnt/hdd01/Soft/GitHub/zeta-23-lean          # Linux, тело наблюдателя
+      - ~/GitHub/zeta-23-lean                        # Mac, подтянуть по origin
+    enabled: true
+
+    # РАЗДЕЛЕНО 2026-08-12 после ревью Codex (HIGH-9). Прежняя запись выдавала нашу
+    # внутреннюю строгость за требование Apache-2.0. Это разные вещи, и путать их
+    # нельзя: одно можно нарушить юридически, другое — только процедурно.
+    license: Apache-2.0
+    license_obligations: >-
+      Что требует сама Apache-2.0 при распространении производного: сохранить
+      уведомление об авторских правах, приложить копию лицензии, сохранить файл
+      NOTICE и обозначить внесённые изменения.
+    project_attribution_policy: >-
+      Наше собственное правило, строже лицензии: заимствованная ИДЕЯ отмечается в
+      докстринге с указанием происхождения, даже когда код не копируется. Введено
+      после переноса приёма «считать инерцией вместо локализации».
+
+    toolchain: leanprover/lean4:v4.33.0-rc2
+    derived_from: >-
+      Их собственный NOTICE: продукт содержит производное от PrimeNumberTheoremAnd
+      (github.com/AlexKontorovich/PrimeNumberTheoremAnd), тоже Apache-2.0.
+    note: >-
+      Ноль объявлений axiom, sorry только в файлах-заявках comparator. Полезна слоем
+      LinAlg: posIndex, Sylvester, Weyl, VonNeumann, RankTrace — приём «считать инерцией
+      вместо локализации». Оттуда взята половина переформулировки hsimple.
+    good_for: [inertia, posIndex, rank_trace, Sylvester, Weyl, von_Neumann, comparator]
+    verified: 2026-08-12
+    verified_by: >-
+      найдены posIndex PosIndex.lean:41 · rank_trace_ineq RankTrace.lean:163 ·
+      finrank_le_posIndex_of_posDefOn Sylvester.lean:82 · hermPosPart :148 ·
+      vonNeumann_trace_ineq :171 · лицензия и toolchain прочитаны с диска
+
+  - id: rh2025
+    name: Malaeu — RH M5++ certificate generator (наш собственный, старый)
+    origin: https://github.com/Malaeu/RH_2025.git
+    pin:
+      head: f7b3d32
+      checked_clean: false          # 96 изменённых файлов в рабочем дереве на 2026-08-12
+    paths:
+      - /mnt/hdd01/Soft/GitHub/RH_2025
+      - ~/GitHub/RH_2025
+    enabled: false
+
+    # ИСПРАВЛЕНО 2026-08-12, HIGH-9. Стояло `license: own` и `toolchain: unknown`.
+    # Оба поля были написаны без проверки и оба неверны.
+    license: MIT
+    license_obligations: >-
+      Сохранять уведомление об авторских правах и текст лицензии. Правообладатель —
+      Eugen Malamutmann, то есть владелец проекта; ограничение формальное.
+    toolchain: leanprover/lean4:v4.23.0-rc2
+    toolchain_note: >-
+      Не единый по репозиторию: `RH_A_track_skeleton/lean` стоит на v4.12.0.
+      Совместимость с нашим v4.26.0 не проверялась.
+
+    note: >-
+      Наш проект, последний коммит 2025-08-21, 97 файлов Lean вне кэша. Другой подход
+      (M5++ сертификаты), с маршрутом B не сцеплен. Выключен, чтобы не засорять выдачу;
+      включать точечно, если ищем что-то заведомо оттуда.
+    good_for: []
+    verified: 2026-08-12
+    verified_by: >-
+      LICENSE прочитан (MIT, Eugen Malamutmann) · lean-toolchain прочитан в трёх
+      подкаталогах · 97 .lean вне .lake
+
+# Как подключить новую базу
+#
+#   1. склонировать рядом с остальными
+#   2. добавить запись сюда: id, origin, paths (Linux и Mac), license, что там полезного
+#   3. python3 docs/cartographer/atom_describe.py --bases --selftest   ← проверит доступность
+#   4. записать в TOOLS.yaml, если появился новый способ вызова
+#
+# Запись без `verified_by` считается непроверенной: строка «там есть X» без найденного
+# file:line — это утверждение, а не факт.
