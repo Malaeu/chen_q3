@@ -10,9 +10,10 @@
 
 Источники, в порядке приоритета:
 
-  1. Mathlib на диске   `q3.lean.aristotle/.lake/packages/mathlib/Mathlib` (100 МБ)
-  2. наше дерево        `q3.lean.aristotle/Q3` — для атомов, которые на деле наши
-  3. чужое дерево       `--foreign` — их декларации, если атом определён у них
+  1. Lean environment   `lean_env/env_index.jsonl` — elaborated типы наших деклараций
+  2. Mathlib на диске   `q3.lean.aristotle/.lake/packages/mathlib/Mathlib` (100 МБ)
+  3. наше дерево        `q3.lean.aristotle/Q3` — адрес и исходный текст
+  4. чужое дерево       `--foreign` — их декларации, если атом определён у них
 
 Для каждого атома извлекается: где объявлен (`file:line`), вид (`theorem`/`def`/…),
 сигнатура до `:=`, докстринг `/-- … -/` над объявлением, и число мест употребления у нас.
@@ -31,10 +32,12 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import os
 import re
 import sqlite3
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -44,6 +47,118 @@ OURS = REPO / "q3.lean.aristotle/Q3"
 
 KINDS = "theorem|lemma|def|structure|abbrev|instance|class|inductive"
 BASES_YAML = REPO / "docs/cartographer/lean_bases.yaml"
+ENV_INDEX = REPO / "docs/cartographer/lean_env/env_index.jsonl"
+ENV_REQUIRED_FIELDS = {
+    "name", "kind", "type", "levelParams", "numBinders", "file", "line",
+    "doc", "typeConsts", "axioms", "isPrivate", "isUnsafe",
+}
+
+
+class EnvIndexError(ValueError):
+    """Derived environment index is absent, malformed, ambiguous, or stale."""
+
+
+def load_env_index(path: Path) -> dict[str, dict]:
+    """Read the derived JSONL strictly; a partial index is not a fallback source."""
+    if not path.is_file():
+        raise EnvIndexError(
+            f"нет {path}; сначала python3 docs/cartographer/lean_env/envdump.py")
+    out: dict[str, dict] = {}
+    for line_no, raw in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not raw.strip():
+            continue
+        try:
+            rec = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise EnvIndexError(f"{path}:{line_no}: неверный JSON: {exc}") from exc
+        if not isinstance(rec, dict):
+            raise EnvIndexError(f"{path}:{line_no}: запись не JSON-объект")
+        missing = ENV_REQUIRED_FIELDS - rec.keys()
+        if missing:
+            raise EnvIndexError(
+                f"{path}:{line_no}: нет полей {', '.join(sorted(missing))}")
+        name = rec.get("name")
+        if not isinstance(name, str) or not name:
+            raise EnvIndexError(f"{path}:{line_no}: пустое/нестроковое имя")
+        if name in out:
+            raise EnvIndexError(f"{path}:{line_no}: дубликат объявления {name}")
+        if not isinstance(rec.get("type"), str):
+            raise EnvIndexError(f"{path}:{line_no}: type у {name} не строка")
+        for field in ("levelParams", "typeConsts", "axioms"):
+            if not isinstance(rec.get(field), list):
+                raise EnvIndexError(f"{path}:{line_no}: {field} у {name} не список")
+        out[name] = rec
+    if not out:
+        raise EnvIndexError(f"{path}: ноль объявлений")
+    return out
+
+
+def declaration_full_name(requested: str, source: dict) -> str:
+    """Reconstruct the exact environment name from a source declaration."""
+    if requested.startswith("Q3."):
+        return requested
+    namespace = source.get("namespace", "")
+    if "." in requested:
+        return ".".join(x for x in (namespace, requested) if x)
+    if source.get("kind_lean") == "field":
+        owner = source.get("owner", "")
+        return ".".join(x for x in (namespace, owner, requested) if x)
+    return ".".join(x for x in (namespace, requested) if x)
+
+
+def source_module_name(source: dict) -> str:
+    """Turn the tracked Lean path into the module identity stored by Lean."""
+    path = source.get("file", "")
+    prefix = "q3.lean.aristotle/"
+    if not path.startswith(prefix) or not path.endswith(".lean"):
+        raise EnvIndexError(f"неожиданный адрес нашей декларации: {path}")
+    return path[len(prefix):-len(".lean")].replace("/", ".")
+
+
+def enrich_from_env(requested: str, source: dict, env_index: dict[str, dict],
+                    index_mtime: float) -> dict:
+    """Replace a RouteB source-text signature by its exact elaborated environment type."""
+    full_name = declaration_full_name(requested, source)
+    env = env_index.get(full_name)
+    if env is None:
+        raise EnvIndexError(f"{full_name}: нет в env_index (модуль не собран или индекс устарел)")
+    expected_module = source_module_name(source)
+    if env.get("file") != expected_module:
+        raise EnvIndexError(
+            f"{full_name}: env module {env.get('file')!r} != source {expected_module!r}")
+    source_path = REPO / source["file"]
+    if source_path.is_file() and source_path.stat().st_mtime > index_mtime:
+        raise EnvIndexError(f"{full_name}: исходник новее env_index; нужен envdump rerun")
+
+    out = dict(source)
+    out["source_signature"] = out.pop("signature", "")
+    out["source_kind_lean"] = out.get("kind_lean", "")
+    out["description_source"] = "LEAN_ENV"
+    out["elaborated_name"] = full_name
+    out["elaborated_type"] = env["type"]
+    out["signature"] = f"{full_name} : {env['type']}"
+    out["kind_lean"] = env["kind"]
+    out["levelParams"] = env["levelParams"]
+    out["numBinders"] = env["numBinders"]
+    out["typeConsts"] = env["typeConsts"]
+    out["axioms"] = env["axioms"]
+    out["isPrivate"] = env["isPrivate"]
+    out["isUnsafe"] = env["isUnsafe"]
+    if env.get("doc"):
+        out["docstring"] = env["doc"]
+    return out
+
+
+def write_json_atomic(path: Path, value: object) -> None:
+    """Do not leave a plausible partial derived result."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+            mode="w", encoding="utf-8", dir=path.parent,
+            prefix=f".{path.name}.", suffix=".tmp", delete=False) as f:
+        tmp = Path(f.name)
+        json.dump(value, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    os.replace(tmp, path)
 
 
 def _base_identity(p: Path) -> dict:
@@ -523,6 +638,8 @@ def main() -> int:
                     help="разобрать объекты цепи из assembly, а не атомы Mathlib "
                          "(например REALZERO_GROUND_DIAGONAL_TO_XI)")
     ap.add_argument("--json", default="")
+    ap.add_argument("--env-index", default=str(ENV_INDEX),
+                    help="derived JSONL из lean_env/envdump.py; для RouteB обязателен")
     ap.add_argument("--bases", action="store_true",
                     help="показать реестр внешних Lean-баз и их доступность здесь")
     ap.add_argument("--selftest", action="store_true",
@@ -587,6 +704,12 @@ def main() -> int:
     out = []
     stats: collections.Counter = collections.Counter()
     prov_stats: collections.Counter = collections.Counter()
+    env_failures: list[str] = []
+    env_path = Path(args.env_index)
+    env_index: dict[str, dict] | None = None
+    env_index_mtime = 0.0
+    env_required = False
+    env_load_error: str | None = None
     for idx, row in enumerate(atoms, 1):
         name, kind, n_files = row[0], row[1], row[2]
         supplier = row[3] if len(row) > 3 else None
@@ -599,7 +722,37 @@ def main() -> int:
         # Адрес выдаётся ТОЛЬКО для настоящих деклараций. Локальная гипотеза и проза
         # адреса не имеют: любой найденный для них file:line — ложный друг.
         if prov == "LEAN_DECL" and found:
-            rec.update(found[1]); rec["source"] = found[0]; stats[found[0]] += 1
+            description = found[1]
+            is_routeb = (found[0] == "ours"
+                         and "q3.lean.aristotle/Q3/Proofs/RouteB/"
+                         in description.get("file", ""))
+            if is_routeb:
+                env_required = True
+                try:
+                    # Mathlib-only/foreign-only запросы не зависят от EnvDump.
+                    # Для первой RouteB-декларации индекс становится обязательным.
+                    if env_index is None:
+                        if env_load_error is not None:
+                            raise EnvIndexError(env_load_error)
+                        try:
+                            env_index = load_env_index(env_path)
+                            env_index_mtime = env_path.stat().st_mtime
+                        except (OSError, UnicodeError, EnvIndexError) as exc:
+                            env_load_error = str(exc)
+                            raise EnvIndexError(env_load_error) from exc
+                    description = enrich_from_env(
+                        name, description, env_index, env_index_mtime)
+                    stats["lean-env"] += 1
+                except (OSError, UnicodeError, EnvIndexError) as exc:
+                    # Адрес исходника остаётся полезным, но текстовая сигнатура не
+                    # выдаётся за elaborated type. Наличие хотя бы одной такой строки
+                    # запрещает публикацию JSON ниже.
+                    description = dict(description)
+                    description["source_signature"] = description.pop("signature", "")
+                    description["description_source"] = "UNVERIFIED_SOURCE_TEXT"
+                    description["environment_error"] = str(exc)
+                    env_failures.append(str(exc))
+            rec.update(description); rec["source"] = found[0]; stats[found[0]] += 1
         else:
             rec["source"] = prov
             stats["unresolved"] += 1
@@ -619,6 +772,13 @@ def main() -> int:
     print()
     print(f"  найдено в Mathlib   : {stats['mathlib']}")
     print(f"  найдено у нас       : {stats['ours']}")
+    print(f"  elaborated из env   : {stats['lean-env']}")
+    if env_index is not None:
+        print(f"  env_index загружен  : {len(env_index)} · {env_path}")
+    elif env_required:
+        print(f"  env_index           : ОБЯЗАТЕЛЕН, НО НЕВАЛИДЕН · {env_path}")
+    else:
+        print("  env_index           : не нужен (RouteB-деклараций в запросе нет)")
     for bid, _ in bases:
         print(f"  найдено в {bid:<10}: {stats[bid]}")
     print(f"  НЕ РАЗРЕШЕНО        : {stats['unresolved']}   ← дыры нашего разбора до атомов")
@@ -647,8 +807,18 @@ def main() -> int:
         print(f"    описание : {r['docstring'][:110]}")
         print()
 
+    if env_failures:
+        print("LEAN_ENV_DESCRIPTION_INCOMPLETE:", file=sys.stderr)
+        for failure in env_failures[:20]:
+            print(f"  {failure}", file=sys.stderr)
+        if len(env_failures) > 20:
+            print(f"  ... ещё {len(env_failures) - 20}", file=sys.stderr)
+        if args.json:
+            print(f"JSON не опубликован: {args.json}", file=sys.stderr)
+        return 1
+
     if args.json:
-        Path(args.json).write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
+        write_json_atomic(Path(args.json), out)
         print(f"JSON: {args.json}")
 
     print("Докстринг — пересказ автора, не проверка применимости. Перед употреблением "

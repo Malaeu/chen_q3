@@ -83,16 +83,13 @@ def isNoise (n : Name) : Bool :=
   -- `|>.length > 1` без скобок парсится как аргумент `||`; ловится компилятором сразу
   || ((n.toString.splitOn "._").length > 1)
 
-def dumpOne (env : Environment) (n : Name) (ci : ConstantInfo) : MetaM (Option String) := do
+def dumpOne (env : Environment) (moduleName n : Name) (ci : ConstantInfo) : MetaM (Option String) := do
   if isNoise n then return none
   let typeStr ← try (toString <$> ppExpr ci.type) catch _ => pure "<pp failed>"
   let doc := (← findDocString? env n).getD ""
   -- `findDeclarationRanges?` даёт строку, но не файл. Имя файла берём из индекса
   -- модуля: это единственное место, где Lean хранит связь константы с модулем.
-  let file :=
-    match env.getModuleIdxFor? n with
-    | some idx => (env.header.moduleNames[idx.toNat]!).toString
-    | none     => ""
+  let file := moduleName.toString
   let line ←
     match ← findDeclarationRanges? n with
     | some r => pure (toString r.range.pos.line)
@@ -115,22 +112,27 @@ def dumpOne (env : Environment) (n : Name) (ci : ConstantInfo) : MetaM (Option S
     ]
   return some ("{" ++ String.intercalate "," fields ++ "}")
 
-/-- Печатать только объявления, чьё имя начинается с одного из префиксов.
-    Пустой список префиксов означает «всё», чего для Mathlib делать не стоит. -/
-def dumpEnv (prefixes : List Name) : MetaM Unit := do
+/-- Печатать только объявления выбранных модулей и пространств имён. Список
+    модулей задаёт генератор по текущим `.lean` + `.olean`; транзитивно загруженная
+    сирота или устаревший модуль не должен просочиться в индекс. -/
+def dumpEnv (prefixes modules : List Name) : MetaM Unit := do
   let env ← getEnv
   let mut n := 0
   for (nm, ci) in env.constants.toList do
     -- только НАШИ модули: константы Mathlib сюда попадать не должны
-    if env.getModuleIdxFor? nm |>.isSome then
-      if prefixes.isEmpty || prefixes.any (·.isPrefixOf nm) then
-        match ← dumpOne env nm ci with
-        | some line => IO.println line; n := n + 1
-        | none => pure ()
+    match env.getModuleIdxFor? nm with
+    | some idx =>
+        let moduleName := env.header.moduleNames[idx.toNat]!
+        if (modules.isEmpty || modules.contains moduleName) &&
+            (prefixes.isEmpty || prefixes.any (·.isPrefixOf nm)) then
+          match ← dumpOne env moduleName nm ci with
+          | some line => IO.println line; n := n + 1
+          | none => pure ()
+    | none => pure ()
   IO.eprintln s!"-- объявлений напечатано: {n}"
 
 end Q3EnvDump
 
 open Q3EnvDump in
 run_cmd Elab.Command.liftTermElabM do
-  dumpEnv [`Q3]
+  dumpEnv [] []
