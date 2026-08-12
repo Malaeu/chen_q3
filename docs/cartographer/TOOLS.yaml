@@ -405,9 +405,17 @@ tool_families:
       - id: comparator-lite
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
-        mode: READ_ONLY
+        mode: WRITES_DERIVED
         path: docs/cartographer/comparator/
         invoke: see docs/cartographer/comparator/README.md ("Как прогнать заново")
+        trigger: Manual invocation per docs/cartographer/comparator/README.md rerun section.
+        writes: true
+        approval: OWNER_PER_ACTION for any dispatch use; NONE for read-only rerun.
+        authority: docs/CODEX_CONTROL.md
+        records_to: docs/cartographer/comparator/README.md result section
+        last_verified: >-
+          2026-08-12 pilot run: Challenge PASS; Solution PASS with clean axioms;
+          SolutionR6 REJECT.
         why: >-
           Answers the one question nothing in this project could answer: did the supplier
           prove the statement that was CLAIMED, or a neighbouring one. Name resolution and
