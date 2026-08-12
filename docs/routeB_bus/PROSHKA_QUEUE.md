@@ -657,7 +657,29 @@ source-Weil form до generic inverse-weighted odd-tail interface B3.0AI. Тек
 
 ---
 
-## Q9 · `CCMLagrangePolynomialToCanonicalSelectedFamilyCrosswalk`: годится ли форма `family = c_N · Лагранж` · ЗАПРОС СОБРАН 2026-08-11 — READY_NOT_SENT
+## Q9 · Годится ли форма `family = c_N · Лагранж` · ЗАКРЫТ 2026-08-12 — ФОРМА УБИТА, ЗАПРОС НЕ ОТПРАВЛЕН
+
+> **Отвечено до отправки, мастер-маршрутом судьи.**
+> `proshka/PROSHKA_MASTER_ROUTE_REALZERO_GROUND_DIAGONAL_TO_XI_2026-08-11.md`, §7.3
+> «Почему scalar-only equality убита» и §8.7 «Killed solution — exact ground equals trial».
+> Дословно: «Не пишем `Pstar = c_N * Lagrange polynomial`.»
+>
+> **Основание.** Полное преобразование Proposition-5.9 имеет **бесконечно много** внешних
+> нулей на синус-решётке; ненулевой конечный многочлен — **конечное** число. Один скаляр их
+> не сравняет.
+>
+> **Мы пришли к тому же независимо** утром 12 августа, разбором порядка роста:
+> `rawFplus` — сумма `dslope` от `2·sin(zL/2)`, трансцендентная целая; равенство вынуждало бы
+> `ξ = 0`. Аргумент судьи элементарнее и решает вопрос сразу.
+>
+> **Запрос НЕ отправлен**, файл сохранён как след:
+> `proshka/PROSHKA_REQUEST_CCM_LAGRANGE_TO_SELECTED_FAMILY_CROSSWALK_2026-08-11.md`.
+> Предсказания `Q9-P1…P4` не разыгрываются: вопрос снят раньше, чем задан.
+>
+> **Что вместо.** Правильная структура — разложение **множества** нулей
+> `Z(F_{m,N}) = Z(P_{m,N}) ∪ Z(Λ_{m,N})`, где `Λ` — вещественный решёточный множитель.
+> Целевая теорема: `Proposition59GroundLagrangeZeroSetBridge`, ворота `G2`,
+> статус `OPEN_CHEAP_LOCAL_FRONT`. Судейского решения не требует — это наша работа.
 
 `request_file: docs/routeB_bus/proshka/PROSHKA_REQUEST_CCM_LAGRANGE_TO_SELECTED_FAMILY_CROSSWALK_2026-08-11.md`
 `packet_status: READY_NOT_SENT_OWNER_OK_REQUIRED` · `source_lock: 4ab74168` · 8 хешей сверены

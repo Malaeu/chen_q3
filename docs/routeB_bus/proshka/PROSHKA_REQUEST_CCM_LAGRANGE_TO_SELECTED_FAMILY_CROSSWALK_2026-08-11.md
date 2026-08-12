@@ -1,3 +1,11 @@
+> # ⛔ НЕ ОТПРАВЛЯТЬ — ФОРМА УБИТА 2026-08-12
+>
+> Вопрос этого запроса снят **до отправки** мастер-маршрутом судьи
+> `PROSHKA_MASTER_ROUTE_REALZERO_GROUND_DIAGONAL_TO_XI_2026-08-11.md` §7.3 и §8.7:
+> у преобразования бесконечно много нулей на синус-решётке, у многочлена — конечное число,
+> один скаляр их не сравняет. Файл сохранён как след работы, а не как живой payload.
+> Правильная цель вместо него — `Proposition59GroundLagrangeZeroSetBridge` (ворота `G2`).
+
 # READY / NOT SENT — CCMLagrangePolynomialToCanonicalSelectedFamilyCrosswalk: ПРИГОВОР ФОРМЕ
 
 ```yaml
