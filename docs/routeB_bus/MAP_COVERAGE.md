@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **205** · упомянуто в `MAP.md`: **21** · вне карты: **184** · без описания в шапке: **0**
+Всего файлов: **208** · упомянуто в `MAP.md`: **21** · вне карты: **187** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -32,6 +32,9 @@
 | `CCMFiniteWeilSourceCommutator` | — | The source beta scalar recovered from the central column. -/ | 0 |
 | `CCMFiniteWeilSourceMatrix` | — | The source modes `{-N, ..., N}`. -/ | 0 |
 | `CCMFiniteWeilSourceMatrixN1` | — | The three source modes `{-1,0,1}` for the literal `N = 1` pilot. -/ | 0 |
+| `CCMProposition59ComplexHermitianConnector` | — | Goal 058 complex Hermitian Proposition-59 connector | 0 |
+| `CCMProposition59ComplexTrialLineFeshbach` | — | Goal 058 literal complex trial-line Feshbach decomposition | 0 |
+| `CCMProposition59SourceTrialFeshbachPreflight` | — | Goal 058 full-source trial-line / Schur preflight | 0 |
 | `CanonicalRHRouteSkeleton` | карта | Fail-closed canonical Route-B roof | 0 |
 | `CenteredXiZeroNonzero` | карта | первая декларация: `etaPairTerm` | 0 |
 | `ClassicalXiInterface` | — | Riemann's entire `xi`, expressed through Mathlib's pole-removed entire | 0 |

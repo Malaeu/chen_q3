@@ -1492,6 +1492,57 @@ derivmodel (`modelBound ≈ 1.83e-4` против `derivSlope ≈ 3.73e-18`). В
 
 Дважды за июнь буква без аргумента стоила выброшенной ветки.
 
+---
+
+## 2026-08-13 — Goal 058: finite Feshbach закрыт, source-closure не подменять receiver-ом
+
+**Развилка:** после точного complex-Hermitian connector и конечного
+Feshbach-разложения выбирать между ещё одним абстрактным Schur/Temple receiver,
+увеличением конечной численной лестницы и настоящей source-теоремой о буквальной
+CCM-семье.
+
+**Выбрали:** остановить производство конечных receiver-ов и назвать один
+source-level фронт `CCM_P59_CofinalTrialLineFeshbachSourceBounds`: он должен на
+одной заранее фиксированной связанной шкале сам вывести положительные
+even/odd complement floors, `sourceCCMFiniteResidual / min(floors) -> 0`,
+odd-mass decay и весь compact P59 budget.
+
+**Почему:** kernel-checked Feshbach-файл уже доказывает точную конечную алгебру
+`K-aI = |q><r| + |r><q| + Q(K-aI)Q`; значит неназванных блоков больше нет.
+Любая следующая теорема с `hgap`, `hfloor` или residual-decay в binders потребляет
+G1/G3 вместо того, чтобы поставлять их. Конечная ячейка не занимает кофинальный
+квантор, а prolate-gap без буквального crosswalk относится к другому объекту.
+
+**Что отвергли и почему:** generic gap/Temple transfer — receiver с искомым
+знаменателем в предпосылках; новый finite ladder — калибровка без eventual
+bound; prolate gap — `C04 SAME_COORDINATES_TWO_LAWS`; полный cofinal theorem как
+задача Aristotle — новая аналитическая теория, не bounded formalization.
+
+**Техника:** точная Hermitian four-block decomposition, production Lean audit,
+source-locked Proshka review, primary-source scope audit, карточки C04/C07/C09/C10.
+
+**Следующий ход:** бумажно вывести хотя бы одно буквальное inequality для
+complement floor из точного разложения CCM entries
+`W02 - WR - Prime`; никакого нового Aristotle submission и никакой большой
+численной лестницы до source-faithful theorem shape.
+
+**Адреса:**
+`Q3/Proofs/RouteB/CCMProposition59ComplexTrialLineFeshbach.lean` ·
+`GOAL058_SOURCE_COMPLEX_TRIAL_LINE_FESHBACH_CLOSEOUT_2026-08-13.md` ·
+`docs/routeB_bus/proshka/PROSHKA_GOAL058_TRUE_SOURCE_CLOSURE_VERDICT_2026-08-13.md` ·
+request commit `c0f7af5ae44f8d1defd0bc1365035cea70155c19`.
+
+**Чей вердикт и его аргумент:** Proshka, дословно:
+“every remaining bounded algebra theorem is a receiver or is already assigned;
+a theorem taking hgap, hfloor, residual_decay, or tracking as binders assumes
+the target; the first honest theorem is a new cofinal analytic source theorem.”
+Оперативный класс: `NO_SOUND_ARISTOTLE_TASK_AT_THIS_BOUNDARY`. Mythos независимо
+завершил: “the wall now has its true name: one arithmetic definiteness estimate
+for the divided-difference form of β — the first theorem of this project that
+no amount of plumbing can replace.” Его адрес проверен на диске:
+`ccmBetaScalar` и `ccmWeilMatFinite_structured_offdiag` действительно существуют;
+вывод о положительности пока не существует и не приписан этим identity.
+
 
 
 ### Счёт раскопок
