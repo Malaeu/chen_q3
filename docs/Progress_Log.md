@@ -1543,7 +1543,89 @@ no amount of plumbing can replace.” Его адрес проверен на д
 `ccmBetaScalar` и `ccmWeilMatFinite_structured_offdiag` действительно существуют;
 вывод о положительности пока не существует и не приписан этим identity.
 
+## 2026-08-13 — Goal 058: residual/floor заменён на parity-weighted energy
 
+**Развилка:** требовать на связанной шкале
+`source residual / complement floor -> 0`, оценивать projective defect через
+Rayleigh excess, либо продолжать прямую конечную лестницу overlap.
+
+**Выбрали:** source-форму
+`omega + alpha_plus / Delta_plus`, где odd mass оплачивается отдельно, а
+even-sector excess делится только на even gap. Уже существующий Lean consumer
+`weighted_projective_defect_le_rayleigh_excess_div_gap` сохраняется; новый
+receiver не строится.
+
+**Почему:** multiprecision на буквальных клетках `(2,4),(3,9),(4,16)` при
+80/120 digits и трёх quadrature orders подтвердил, что residual/floor растёт
+примерно `0.1586, 7.592, 966.75`, тогда как energy/gap остаётся
+`0.00212, 0.00206, 0.00150`, а projective defect убывает. Значит сильный
+residual observable не отслеживает уже видимое projective улучшение и не
+должен определять следующую source-теорему.
+
+**Что отвергли и почему:** residual/floor как следующий theorem shape отвергнут
+по finite discriminator, но его eventual ложность не заявлена; direct overlap
+ladder остаётся диагностикой без cofinal квантора; `omega = 0` отвергнуто,
+потому что текущий `ProlatePair` хранит только Fourier-center identities, а не
+полную eigenrelation или exact parity source theorem.
+
+**Техника:** literal-source multiprecision eigensolve, observable comparison,
+exact parity-sector decomposition, type-level audit `ProlatePair -> E_star ->
+sourceCCMComplexRow`.
+
+**Следующий ход:** на одной coupled schedule получить три source supplier-а:
+odd-mass envelope `omega`, even-ground ordering/gap `Delta_plus`, even-sector
+Rayleigh-excess envelope `alpha_plus`; finite odd high tail не переоткрывать.
+
+**Адреса:**
+`SESSION_PROTOKOLL_2026-08-13.md` ·
+`Q3/Proofs/RouteB/WeightedRayleighProjectiveDefect.lean` ·
+`Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean` ·
+`docs/routeB_bus/proshka/PROSHKA_M1C_PARITY_SECTOR_PREFLIGHT_2026-08-12.md` ·
+oracle card `Goal058.G1.ccmBetaComplementFloor`.
+
+**Чей вердикт и аргумент:** локальный выбор Codex, опирающийся на точную форму
+из прежнего вердикта Proshka: “The exact odd budget omega must remain in the
+bound.” Новый внешний запрос не отправлялся: численный дискриминатор изменил
+форму задачи, но ещё не создал source supplier для проверки.
+
+
+
+## 2026-08-14 — Goal 058: odd-mass сведена к физическому дефекту отражения
+
+**Развилка:** занулить нечётную массу из evenness исходной пролатной функции,
+оставить `omega` абстрактным binder-ом либо найти буквальную физическую ошибку,
+которая его оплачивает.
+
+**Выбрали:** точную формулу
+`omega = (1/4)||kTrial_m_N-reflectedFiniteTrial||^2` и receiver: любой ambient
+пакет с reflection-even retained coefficients ограничивает `omega` квадратом
+реального расстояния до него. Исходная комплексная строка не симметризована.
+
+**Почему:** additive parity `h(-x)=h(x)` не даёт multiplicative inversion
+`E(h)(u)=E(h)(u^-1)`. Но CCM Lemmas 7.2--7.3 дают отдельный source-shaped
+кандидат: `h_lambda -> h` со скоростью `O(lambda^-2)`, а limit `E(h)` уже
+inversion-even; интегрирование даёт paper-level squared defect `O(lambda^-1)`.
+
+**Что отвергли и почему:** тяжёлый global Hilbert-basis reflection operator —
+лишняя инфраструктура, target build поймал синтаксис/heartbeat и `sorryAx`;
+`omega=0` — ложное усиление; beta-only/Krylov shortcut для G1 — убит точным
+3x3 counterexample и зависимостью спектра от диагональной арифметики.
+
+**Техника:** exact finite synthesis, coefficient reflection, Bessel,
+production direct/target Lean, primary PSWF/CCM source audit.
+
+**Следующий ход:** для G3 доказать inversion/coefficient crosswalk, contraction
+через `P_(m,N)` и eventual lower bound для
+`||P_(m,N)E(h_lambda)||`; для G1 — literal even-sector Krylov determinant
+lower bound и строгий even/odd ground ordering на той же coupled schedule.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean` ·
+`GOAL058_SOURCE_CCM_ODD_MASS_REFLECTION_DEFECT_CLOSEOUT_2026-08-14.md` ·
+oracle card `Goal058.G1.ccmBetaComplementFloor`.
+
+**Граница:** `PASS_EXACT_REPRESENTATION_AND_RECEIVER`; odd-mass decay, G1, G3,
+Route B promotion и RH остаются открыты.
 
 ### Счёт раскопок
 

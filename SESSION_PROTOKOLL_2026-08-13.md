@@ -284,6 +284,167 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 - Until a source proof survives, G1 and G3 remain `OPEN`; no new Aristotle
   task, finite-ladder extrapolation, Route B promotion, or RH claim is made.
 
+## Goal 058 oddity — the literal source wall is smaller than the reviewer wording
+
+- Observation recorded before interpretation: the repository already contains
+  the general-`PairIndex` theorem
+  `sourceWeilOddTailAmbientCoercive_explicit`, with explicit cutoff and floor
+  `1/2`.  The file whose name ends in `13` also proves the divided-difference
+  identities for general `mProject`; only its final convenience wrapper is
+  specialized to `m = 13`.
+- Plausible readings: either the reviewers' phrase "the complement floor
+  itself is missing" meant the whole complement and remained correct, or it
+  accidentally classified the already-closed high odd tail as open.
+- Discriminator: direct source inspection shows that the high odd tail is
+  closed, while `D0PstarSourceWeilOddTargetFloorSchurReceiver.lean` explicitly
+  says it does not prove `SourceWeilOddTargetFloorSchurPositive13`.
+- Outcome: the blocker is strictly smaller.  The open parts are the finite odd
+  head sign, the even complement containing the trial line, and a cofinal
+  source estimate for trial tracking.  No existing theorem combines those
+  parts into G1 or G3.
+- Primary-source check: PDF
+  `docs/routeB_bus/litreview/pdfs/2511.22755.pdf`, SHA-256
+  `c98d89f7fc999d038e15e80a9aaaee2af797c17711c4329ca7ce48ad49cb336b`,
+  was checked both as extracted text and rendered pages.  Lemma 5.1 on rendered
+  page 16 supplies the real symmetric divided-difference structure; Section 8
+  on rendered pages 32--33 lists simplicity/evenness and accurate trial
+  approximation as missing steps and gives numerical indications, not a
+  complement-floor theorem.
+
+## Goal 058 oddity — two cheap theorem-shape discriminators
+
+- Observation 1: source-evaluator cells for several `m,N` contain both positive
+  and negative off-diagonal entries; for example the `(m,N) = (13,10)` cell has
+  minimum approximately `-0.883` and maximum approximately `0.889`.
+- Plausible readings: either a Perron--Frobenius route survives after a hidden
+  diagonal sign conjugation, or the literal source basis has no global Metzler
+  sign orientation.
+- Discriminator: search for one fixed diagonal sign conjugation valid for the
+  full cofinal family.  The raw-basis `K` and `-K` shortcuts are already killed
+  by the mixed-sign cell; no sign-conjugated theorem is claimed.
+- Observation 2: the reviewer-proposed diagnostic schedule
+  `(m,N) = (j+2,(j+2)^2)` does not numerically support decay of the strong
+  `residual / complement-floor` quotient in the trustworthy float64 range:
+
+  | `m` | `N` | trial overlap | residual | complement floor | quotient |
+  | ---: | ---: | ---: | ---: | ---: | ---: |
+  | 2 | 4 | `0.999894944235` | `1.639e-2` | `1.033e-1` | `1.586e-1` |
+  | 3 | 9 | `0.999993029994` | `1.413e-4` | `1.864e-5` | `7.582` |
+  | 4 | 16 | `0.999998955478` | `6.174e-7` | `6.453e-10` | `9.568e2` |
+  | 5 | 25 | `0.999129` | `2.538e-9` | `1.471e-14` | `1.725e5` |
+
+- Plausible readings: the polynomial schedule is too slow; the float64 trial or
+  eigensolve has lost the tiny floor; or residual-over-floor is a sufficient
+  condition far stronger than the actual projective-tracking fact.
+- Discriminator: recompute the restricted complement eigenvalue and the
+  Rayleigh-excess/gap quotient with multiprecision over a precision and
+  quadrature ladder, holding the literal source matrix and trial construction
+  fixed.  If residual/floor is stable while projective defect or
+  Rayleigh-excess/gap improves, kill only the residual/floor theorem shape and
+  retain direct or energy-based tracking.
+- Boundary: every number in this section is
+  `NUMERICAL_DIAGNOSTIC_NOT_PROOF`.  Values at `m >= 6`, where float64 floors
+  fall to rounding scale and parity becomes unstable, were deliberately not
+  interpreted.  G1 and G3 remain open.
+
+## Goal 058 oddity — multiprecision selects the energy observable
+
+- Observation recorded before interpretation: the precommitted discriminator
+  recomputed the same literal source cells at 80 and 120 decimal digits and at
+  Gauss--Legendre orders 500, 900, and 1300.  The restricted complement root is
+  stable across precision.  Representative order-900 values are:
+
+  | `m,N` | `residual / |floor|` | `(Rayleigh-lambda0) / gap` | projective defect |
+  | --- | ---: | ---: | ---: |
+  | `2,4` | `1.58646027164877e-1` | `2.11972248167000e-3` | `2.10100493909242e-4` |
+  | `3,9` | `7.59208266642532` | `2.05517219754115e-3` | `1.39405551921449e-5` |
+  | `4,16` | `9.66754644049433e2` | `1.49633391011722e-3` | `2.08905949632888e-6` |
+
+- Plausible readings: the candidate polynomial schedule could still become
+  useful later; however, the residual quotient is not tracking the already
+  visible projective improvement, because residual weights high spectral
+  components much more strongly than Rayleigh excess does.
+- Discriminator outcome: matrix precision is not the cause of the exploding
+  residual quotient.  The energy quotient is the surviving lower-demand
+  observable and has the exact spectral implication
+  `projective_defect <= Rayleigh_excess / eigengap` for a simple bottom state.
+  The old `residual/floor -> 0` theorem shape is therefore not selected for the
+  next source proof; this finite diagnostic alone does not prove its cofinal
+  negation.
+- Next proof obligation: find or prove a source-faithful cofinal bound on the
+  literal Rayleigh excess divided by a literal even/odd spectral gap, keeping
+  one coupled schedule and the same projected source trial.  G1 still must
+  supply the simple-even bottom state and positive gap rather than assume it.
+- Boundary: this is `FINITE_DIAGNOSTIC / REPRESENTATION_SHIFT`, not G1, G3,
+  Route B promotion, or an RH claim.
+
+## Goal 058 source-contract audit — exact parity is not currently exported
+
+- The exact parity-sector inequality must retain
+  `omega = ||q_-||^2`; the finite M1C directive explicitly forbids replacing
+  the persisted source trial by its symmetrization.
+- `CCMProposition59SourceTrialFeshbachPreflight.lean` already isolates the
+  missing proposition as `sourceCCMHasRealEvenPhase` and proves only its exact
+  consequences.
+- Direct type audit found that `ProlatePair` exports evenness of `h0,h4` and
+  the two center identities `h0_fourier_center`, `h4_fourier_center`, but no
+  full finite-Fourier eigenrelation.  `E_star` is the one-sided positive-integer
+  sum `sqrt(u) * sum_{n>=1} h(nu)`, so evenness of `h` alone does not provide
+  multiplicative reflection `u -> u^-1` or reflection-even CCM coefficients.
+- The repository has regularity and finite-Fourier commutation theorems, but
+  the search found no source theorem connecting them to exact reflection
+  parity of `sourceCCMComplexRow`.
+- Outcome: the energy route remains
+  `omega + alpha_plus / Delta_plus`, with three genuine suppliers still open:
+  an odd-mass envelope, even-ground ordering/gap, and even-sector Rayleigh
+  excess.  Setting `omega = 0` would be a contract invention and is forbidden.
+
+## Goal 058 source progress — odd mass is now an exact physical reflection defect
+
+- The literal complex source row was kept unchanged.  The new kernel-checked
+  theorem proves
+  `omega = (1/4) * ||kTrial_m_N - reflectedFiniteTrial||^2` and a Bessel
+  receiver bounding `omega` by the squared distance to any ambient packet with
+  reflection-even retained coefficients.
+- The first target build rejected an invalid local `set_option` form and
+  exposed downstream `sorryAx`.  The unnecessary heavy Hilbert-basis unitary
+  was removed; direct Lean and the rebuilt target then passed with only
+  `[propext, Classical.choice, Quot.sound]`.  This validator catch is retained
+  as evidence, not erased from the account.
+- Primary-source audit found a real but narrower analytic route.  CCM Lemmas
+  7.2--7.3 give `delta(lambda) = O(lambda^-2)` and
+  `|E(h_lambda)-E(h)| <= lambda*delta(lambda)*u^-1/2`; the limiting `E(h)` is
+  inversion-even.  Paper-level integration therefore gives the candidate
+  squared odd-defect rate `O(lambda^-1)` on the multiplicative window.
+- The rate does not yet apply to the normalized source row.  The exact
+  inversion/coefficient crosswalk, projection contraction, and an eventual
+  lower bound for `||P_(m,N) E(h_lambda)||` on the same schedule remain source
+  obligations.  `TrialNonzero` is only pointwise nonzero and is insufficient.
+- The requested full restricted PSWF eigenrelations are also absent from the
+  current `ProlatePair` interface; the primary sources have them, but the exact
+  scaling/phase/index constructor is not formalized.  Even after restoration,
+  unequal `chi0` and `chi2` mean the two-mode packet is not itself a single
+  finite-Fourier eigenfunction.
+- Classification: `PASS_EXACT_REPRESENTATION_AND_RECEIVER`; odd-mass decay,
+  G1, and G3 remain `OPEN`.
+
+## Goal 058 source progress — beta and commutator do not manufacture G1
+
+- A parity/Krylov audit found no beta-only simplicity factor.  The existing
+  exact `3 x 3` all-ones plant satisfies the structured off-diagonal and
+  rank-two commutator identities while its ground kernel is two-dimensional.
+- At `N = 1` the general centrosymmetric source-shaped characteristic
+  polynomial factors as
+  `(a-b-lambda)*((a+b-lambda)*(c-lambda)-2*b^2)`; the diagonal arithmetic is
+  therefore load-bearing and is not encoded by beta alone.
+- The smallest surviving G1 decomposition is a literal nonzero even-sector
+  Krylov determinant together with
+  `minSpec(T_+) < minSpec(T_-)`.  Neither theorem is on disk.  A quantitative
+  cofinal gap additionally requires lower bounds, not mere determinant
+  nonvanishing.
+- Classification: `NO_BETA_ONLY_SIMPLICITY_FACTOR`; this narrows G1 but does
+  not close it.
+
 ## Dateien
 
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/Codex/AUTOPILOT_GOAL_RUN_CONTRACT.md`

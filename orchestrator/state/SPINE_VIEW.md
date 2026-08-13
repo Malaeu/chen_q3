@@ -12,8 +12,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 
 ## Operational tool manifest
 - schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
-- families / tools / writers: `7` / `26` / `14`
-- SHA-256: `2d03e0e894a03fdba78efeaa883e14841e8374a241c981396aada3428c9fe599`
+- families / tools / writers: `7` / `38` / `22`
+- SHA-256: `46e1d3531988b1a8acf2a2583a749a5c5b9182e8d4c5ed97d67d2ef93315e271`
 - Codex current task: `EMPTY`
 
 ## Phase chat and bounded exploration
@@ -61,8 +61,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `31`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `44`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `28`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
@@ -103,7 +103,6 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
-- CHANNEL_RUNTIME active phase record is 121 hours old (2026-08-06T08:06:39+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
@@ -116,27 +115,32 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-10 |
-| `docs/Progress_Log.md` | 2026-08-11 |
+| `docs/Progress_Log.md` | 2026-08-13 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
 | `docs/RECORDING_RULES.md` | 2026-08-09 |
-| `docs/cartographer/TOOLS.yaml` | 2026-08-10 |
+| `docs/cartographer/TOOLS.yaml` | 2026-08-13 |
 | `q3.lean.aristotle/ACTIVE/COGNITIVE_GOVERNOR.md` | 2026-07-31 |
 
 ## 1-2. Kills (knowledge.db: routes, objects, strategies, walls, criteria)
 
-**criterion** (1)
+**criterion** (3)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
+| GLOWER_ARTEFAKTY_NE_POSTAVSHCHIKI_ODD_BLOKA_BEZ_MOSTA_KOMPRE | GLOWER-артефакты не поставщики odd-блока без моста компрессии | live | отдельная лемма-мост; предсказание I-P3 (p=0.75) утверждает, что она родится отдельной,... |
+| PERED_POSTROJKOJ_CHITAT_H2APENALTYCOERCIVITY | перед постройкой читать H2aPenaltyCoercivity | live |  |
 | PO3_SQUARE_2D3_ABSOLUTE_ROW_MASS_CONTROL | `PO3-square.2d3.absolute-row-mass-control` as an unconditional consequ | live |  |
 
-**object** (10)
+**object** (14)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
 | 031_DIRECTIVE | BAND_ZERO_CANDIDATE | killed |  |
 | G057_B3_0AP_CANONICAL_N0_REDUCTION_STALE_OLEAN | B3.0AP canonical N=0 equality of source graph carrier, target-floor gr | killed | B3.0AP explicit finite odd-mode-sum crosswalk and corrected CCM energy for every auxili... |
+| HBOTTOM_MATHLIB_RAYLEIGH | hbottom как следствие Mathlib Rayleigh | killed | heig ← Mathlib Rayleigh; hbottom ← penalty/coercivity сертификат проекта |
+| HERMFACT1 | hermfact1 как имя в дереве | killed | три настоящих адреса вместо клички; карта v2 исправлена |
 | INSTRUMENT_GUARDS_2026_07_27 | GLOBAL_SELF_FOURIER_CLAIM | killed |  |
+| PSTAR_C_N_UMNOZHIT_NA_LAGRANZHEV_MNOGOCHLEN | Pstar = c_N умножить на лагранжев многочлен | killed | Proposition59GroundLagrangeZeroSetBridge: если source Lagrange polynomial строки xi име... |
 | ROUTEB_C1_COMPLETED_ZETA0_SPECIAL_VALUE | completedRiemannZeta₀ as a direct zero carrier for centered Xi | repaired | Use xi(s) = (1/2)*s*(s-1)*completedRiemannZeta₀(s) + 1/2. |
 | ROUTEB_ESTAR_MUNTZ_V1_RAW_ZETA_POLE_VALUE | Raw pointwise riemannZeta(w) * Mellin(h)(w) at w = 1 in EStarMuntzCont | killed | Use ZetaMellinReg with pole value deriv (Mellin h) 1 and retain the raw-product corolla... |
 | ROUTEB_PROJECTED_DENSITY_EXACT_FEJER | -centeredTrialDensity = \|amplitude\|^2 / sqrt(L_m) at the generic Coeff | killed | Prove independent UnprojectedDensityAutocorrelationData, then budget projected-minus-un... |
@@ -144,8 +148,9 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | ROUTEB_PSTAR_DOUBLE_COMPLETION_MISMATCH | gammaC(1/2+i*z) * centeredXi(z) / gammaC(1/2) | killed | Keep completion out of Pstar and place any zero-free gauge only in SlotS2. |
 | TRACKB_S5_ZERO_SIDE_PSD_LIFT | L = Mplus * F_v as the zero-side PSD lift | killed | hat(L_proj)=max(hat(L),0) repairs Fourier-side PSD but may destroy physical edge-contro... |
 | VERDICT_S1_ANCHOR_2026_07_27 | PHASE_SUBSEQUENCE | killed |  |
+| ZETA23_INERTIA_LEAN_HSIMPLE | чужой Zeta23 Inertia.lean как прямой поставщик hsimple | killed | H2aPenalty.H2a_SimpleEvenGround_FromPenaltyCoercivity (H2aPenaltyCoercivity.lean:395) —... |
 
-**route** (17)
+**route** (18)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -165,9 +170,10 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | SHARED_RANK_BASIS_HUNT_FOR_FILTERED_DEFECT | shared rank/basis hunt for filtered defect | killed | `PO2` mixed-block attack |
 | SINGLE_GAMMA_ROTATED_TRANSPORT_H_A_Z_GAMMA_1_IZ_K | single-Gamma rotated transport H_a(z)\Gamma(1-iz)^{-k} | killed | remaining `PO2` wall: `Y_a`-specific no-counterexample lemma or a genuinely two-sided t... |
 | S_PD_COMPACT_SCALAR_ROUTE | S-pd compact scalar route | killed | `H-bridge` primary route |
+| VERDICT_GOAL058_ARISTOTLE_SOURCE_LOCK_STOP_2026_08_13 | STATUS: FATAL — AUTHORITATIVE SOURCE LOCK UNAVAILABLE | killed |  |
 | ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed |  |
 
-**strategy** (83)
+**strategy** (97)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -177,13 +183,23 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | 054_1_POST_PRIME_KERNEL_NEXT_NODE_ADJUDICATION_2026_08_05 | publish_subcomponent_helpers_before_the_exact_final_functional | standing | compile the exact seven-equation tau normal form and fire P-NIC-1..5 |
 | 054_1_POST_W02_NEXT_NODE_ADJUDICATION_2026_08_05 | publish_direct_prime_specialization_without_kernel_normalization | standing | prove four private prime normalization plants from the sole import |
 | 054_1_POST_WEIGHTED_SUM_ADJUDICATION_2026_08_05 | public_source_specific_corollary_after_generic_functional | standing | compile seven W02 forms and fire three semantic mutants |
+| CONSUMER_FIRST_CONSTRUCTOR_HERMFACT1_AUDIT_2026_08_11 | prose_translation_then_atom_search | standing | CCM_CONSUMER_CONTRACT_BACKTEST |
 | DIRECT_CONCRETE_PAYLOAD_BEFORE_WHOLE_EXPRESSION_PILOT | create or hand-fill DirectConcretePayload.lean before a whole-expressi | standing | ESCAPE: CertificateShift \| implement scripts/generate_step33_a1_sub0_combined_order16_s... |
+| EXACT_APPLY_COMPARATOR | exact?/apply? как comparator | killed | типизированный дамп окружения, затем отдельный comparator |
 | FACTORWISE_RAW_D17_TWO_SEGMENT_BUDGET_SPEND | keep sharpening the same factorwise raw-D17 two-segment class after th | killed | ESCAPE: RepresentationShift \| preserve cancellation and build direct whole-expression C... |
 | FULL_PACKET_SEARCH_WITH_MULTIPLE_INDEPENDENT_FRONTS | search the full Muntz packet across multiple independent fronts instea | superseded | ESCAPE: ReceiverMinimize \| retain the local T4a bridge closed by Goal 039 and treat eac... |
 | GLOWER_CONTRACT_MANDATE_2026_08_09 | N_stabilization_and_W02_positive_part | standing | GLOWER_G1_ODD_HILBERT_COMMUTATOR_PREFLIGHT |
 | GLOWER_EXACT_CLOSURE_2026_08_09 | extrapolate_nested_finite_eigenvalues | standing | corrected_head_Arb_lower_envelope_at_c0_1e58 |
+| GOAL058_TRUE_SOURCE_CLOSURE_VERDICT_2026_08_13 | receiver_or_finite_identity_relabelled_as_source_supplier | standing | derive_one_literal_complement_floor_from_the_exact_CCM_source_decomposition |
+| H2A_LEAN_NATIVE_PROBE_ADJUDICATION_2026_08_11 | treat_library_search_as_exact_claim_comparator | standing | H2A_RAYLEIGH_TYPED_BRIDGE_PROBE |
+| INERTIA_COUNT_NOT_LOCATE | считать инерцией вместо локализации | live | finrank_le_posIndex_of_posDefOn (Sylvester.lean:82): доказывать hsimple предъявлением п... |
+| M1B_WEAK_COMMIT_AND_M1C_PARITY_REPAIR_2026_08_12 | one_scalar_isolation_gap_for_a_nearly_even_trial | standing | parity_weighted_sector_bound_at_m13_N120 |
+| M1C_PARITY_SECTOR_PREFLIGHT_2026_08_12 | full_isolation_gap_for_nearly_even_trial | standing | parity_sector_bound_at_m13_N120 |
+| M1C_STRONG_COMMIT_VERDICT_2026_08_12 | full_isolation_gap | standing | precommitted_N_stabilization_then_scale_ladder |
 | MANUAL_ROW_BY_ROW_SCALAR_REPLAY | continue manual row-by-row or entry-by-entry scalar replay | standing | ESCAPE: CertificateShift \| use compressed direct whole-expression row certificates with... |
+| MASTER_ROUTE_REALZERO_GROUND_DIAGONAL_TO_XI_2026_08_11 | mix_trial_realzero_and_ground_realzero_families | standing | Proposition59GroundLagrangeZeroSetBridge |
 | MYTHOS_ADDENDUM_ADJUDICATION_2026_08_09 | identify_full_section_coercivity_with_the_minimal_filtered_consumer | standing | RUN_DELTA_N480_AITKEN |
+| NEXT_AFTER_8C3AEC96_GOAL058_2026_08_12 | infer_tracking_from_observed_projective_overlap | standing | persist Kq and certify residual plus even/odd complement gaps at m13_N120 |
 | RADIUS_DRIVEN_CERTIFICATE_CUTOFF_AND_TOOTH_ALIGNED_TRANSITIO | infer the cofinal transition from a radius-driven cutoff or tooth-alig | standing | ESCAPE: RepresentationShift \| replay the exact 031 identity at generic m with the live ... |
 | REQUEST_GOAL057_A5_DEFERRED_REVIEW_2026_08_07 | <text> | standing | <text> |
 | RESUBMIT_ALREADY_CLOSED_SUPPLIER_TO_CLOUD | resubmit the already-closed T4a supplier to Aristotle | standing | ESCAPE: MemoryConsolidation \| keep the T4a contract quarantined; reuse the Goal 040 PL2... |
@@ -193,6 +209,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | TRACKB_SCALAR_POINTWISE_EDGE_MAJORANT | tune scalar Psi_K or spend tiny-B c_arch without same-unit operator br | standing | ESCAPE: RepresentationShift \| replace the scalar route by a direct interval/rational pr... |
 | VERDICT_044_R6_LIBRARY_ONLY_CANONICAL_HRM_OPEN_2026_07_31 | count_stronger_class_supplier_as_canonical_consumption | standing | prove hRp on the exact v3 class and plant it on PL1 |
 | VERDICT_046_RATIFIED_FIRST_CANONICAL_2026_07_31 | stronger_R6_class_wrapper_as_canonical_supplier | standing | endpoint_complete_zero_mass_Riemann_sum_bound |
+| VERDICT_AUTONOMOUS_GOAL_RUNNER_2026_08_13 | briefing_plus_owner_choice | standing | four-plant read-only selector selftest |
 | VERDICT_BEHAVIOR_CONTROL_CONTOUR_2026_08_05 | fresh_chat_per_goal_with_full_context_reupload | standing | phase_key_comparator_and_duplicate_control_plants |
 | VERDICT_CCM_IMPORT_C3_SPLIT_2026_07_31 | treat_trial_limit_and_real_zero_family_as_the_same_sequence | standing | exact_projective_ground_to_trial_residual_on_one_control_cell |
 | VERDICT_CCM_PENALTY_CROSSWALK_2026_08_07 | interpret_sectional_gap_or_prolate_proxy_as_the_operator_input_B_ratio | standing | no_fit_control_cell_13_120_source_crosscheck |
@@ -251,8 +268,11 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_GOAL057_B3_0_POST_P_NEXT_NODE_ADJUDICATION_2026_08_0 | bundle_literal_mode_membership_with_finite_span_or_density | standing | exact_B3_0Q_untracked_Lean_preflight |
 | VERDICT_GOAL057_B3_0_SOURCE_WEIL_ASSOCIATED_OPERATOR_GRAPH_R | hide_source_form_and_L2_Fourier_in_one_six_declaration_file | standing | resonance_and_off_resonance_exact_mode_Fourier_formula |
 | VERDICT_GOAL057_B3_ASSOCIATED_WEIL_OPERATOR_DOMAIN_SOURCE_AU | infer_operator_domain_from_form_core_or_replace_A_m_by_bounded_lift | standing | exact_mode_Fourier_formula_plus_log_multiplier_L2 |
+| VERDICT_GOAL058_G1_G3_SOURCE_ENVELOPE_DISCRIMINATOR_2026_08_ | promote_one_strong_cell_to_cofinal_sector_package | standing | source_envelope_discriminator |
+| VERDICT_GOAL058_SOURCE_ARCHITECTURE_RATIFICATION_2026_08_13 | choose_a_receiver_or_commutator_identity_as_a_cofinal_source_supplier | standing | local_phase_realification_and_nontautological_trial_line_block_preflight |
 | VERDICT_PHASE4_CODE_AUDIT_2026_08_10 | constant_floor_residual_Gram | standing | nested_Schur_resolvent_loss_480_960 |
 | VERDICT_RULEB_POSTCLOSE_RATIFIED_RULEA_REJECTED_2026_07_31 | treat_preflight_protocol_as_equivalent_to_one_stop_condition | standing | pin A1_as_canonical_and_A2_as_corollary |
+| VERDICT_SAME_FAMILY_PUBLICATION_SPEC_2026_08_11 | market_classical_Hurwitz_closure_as_new_RH_criterion | standing | Proposition59GroundLagrangeZeroSetBridge |
 | WHOLE_EXPRESSION_PILOT_WITHOUT_COMPLETE_SOURCE_STREAM | run numeric/probe whole-expression pilots or emit DirectConcretePayloa | standing | ESCAPE: CertificateShift \| produce proof-grade same-target collapsedExpression coeffici... |
 
 **wall** (11)
@@ -271,7 +291,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_122 records, 90 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_143 records, 106 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |
@@ -286,6 +306,7 @@ _122 records, 90 cross-file aliases. Query: `./orchestrator/kb.py search <term>`
 | PROSHKA_054_1_POST_PRIME_KERNEL_NEXT_NODE_ADJUDICATION_2026-08-05.md | post_prime_smallest_cancellation_preserving_node | independently intervalize W02_WRconstant_Prime | G2_CCM_054_1_SEVEN_REPRESENTATIVE_NONINTEGRAL_CONSTANT_EXACT_NORMAL_FORM_MISSING |
 | PROSHKA_054_1_POST_W02_NEXT_NODE_ADJUDICATION_2026-08-05.md | post_W02_smallest_next_node | infer independent component balls from final-entry intervals | G2_CCM_054_1_SEVEN_REPRESENTATIVE_PRIME_KERNEL_EXACT_NORMAL_FORM_MISSING |
 | PROSHKA_054_1_POST_WEIGHTED_SUM_ADJUDICATION_2026-08-05.md | post_weighted_sum_next_node | publish trivial prime specializations or call symbolic normalization an enclosure | G2_CCM_054_1_W02_SEVEN_CLASS_EXACT_NORMAL_FORM_MISSING |
+| PROSHKA_H2A_LEAN_NATIVE_PROBE_ADJUDICATION_2026-08-11.md | lean_native_constructor_probe | run multiple extractor/search systems before one typed negative-controlled probe | CCMMatrixToRayleighBottomEigenpairTypedBridge |
 | PROSHKA_VERDICT_ARISTOTLE_MICROSCOPE_2026-07-30.md | unconditional pole-subtracted Muntz continuation | promote an Aristotle-proposed premise to an axiom | MellinDifferentiableOnRightHalfPlane_Icc0_IcoLipschitz |
 | PROSHKA_VERDICT_GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_NEG_CCM_WR_RELEASE_2026-08-08.md | GOAL057_B3_0E4A_OFFDIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY | promote_offdiagonal_crosswalk_to_full_CCM_WR_or_split_diagonal_regularization_into_divergent_parts | GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER |
 | PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md | GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER | hide_the_scalar_endpoint_ledger_inside_an_all_mode_crosswalk_or_split_the_paired_near_zero_regularizer | GOAL057_B3_0E4B2_DIAGONAL_SOURCE_ARCH_PAIRING_EQ_NEG_CCM_WR_ENTRY |
