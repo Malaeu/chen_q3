@@ -195,6 +195,61 @@ def test_dynamic_goal_path_match_uses_qmd_slug_punctuation(
     assert result["queries"][0]["expected_path_match"] is True
 
 
+def test_dynamic_expected_path_uses_bounded_lexical_fallback(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    goal = tmp_path / "058_realzero_ground_diagonal_to_xi.goal.md"
+    goal.write_text("goal\n", encoding="utf-8")
+    monkeypatch.setattr(deep_preflight, "REPO", tmp_path)
+    monkeypatch.setattr(
+        deep_preflight,
+        "_semantic_query",
+        lambda _query: [{"file": "qmd://q3_docs/docs/context-only.md"}],
+    )
+    monkeypatch.setattr(
+        deep_preflight,
+        "_lexical_query",
+        lambda _query: [
+            {
+                "file": (
+                    "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/"
+                    "proposition59groundlagrangezerosetbridge.lean"
+                )
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        deep_preflight.search_external_lean,
+        "search_registry",
+        lambda _query: {
+            "bases_queried": ["zeta23"],
+            "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+            "errors": [],
+            "matches": [],
+        },
+    )
+
+    result = deep_preflight.run_preflight(
+        goal_path=goal,
+        query_specs=[
+            {
+                "id": "exact_target",
+                "query": "Proposition59GroundLagrangeZeroSetBridge",
+                "expected_path_token": "proposition59groundlagrangezerosetbridge",
+            }
+        ],
+    )
+
+    assert result["status"] == "PASS"
+    row = result["queries"][0]
+    assert row["expected_path_match"] is True
+    assert row["result_count"] == 2
+    assert row["top_paths"][-1].endswith(
+        "proposition59groundlagrangezerosetbridge.lean"
+    )
+
+
 def test_migration_census_reports_source_database_and_unmigrated(tmp_path: Path) -> None:
     source_ids = {"a", "b", "c"}
     database_ids = {"a", "c"}

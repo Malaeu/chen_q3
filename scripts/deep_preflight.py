@@ -94,9 +94,23 @@ def derive_queries(goal_path: Path) -> list[dict[str, str]]:
     return deduplicated
 
 
-def _semantic_query(query: str) -> list[dict[str, Any]]:
+def _oracle_query(
+    query: str, *, mode: str = "query", limit: int = 12
+) -> list[dict[str, Any]]:
+    command = [
+        sys.executable,
+        str(ORACLE),
+        "query",
+        query,
+        "-c",
+        "q3_docs",
+        "-n",
+        str(limit),
+    ]
+    if mode != "query":
+        command.extend(["--mode", mode])
     proc = subprocess.run(
-        [sys.executable, str(ORACLE), "query", query, "-c", "q3_docs", "-n", "12"],
+        command,
         cwd=REPO,
         capture_output=True,
         text=True,
@@ -109,6 +123,23 @@ def _semantic_query(query: str) -> list[dict[str, Any]]:
     if not isinstance(payload, list):
         raise RuntimeError("research oracle returned a non-list")
     return [row for row in payload if isinstance(row, dict)]
+
+
+def _semantic_query(query: str) -> list[dict[str, Any]]:
+    return _oracle_query(query)
+
+
+def _lexical_query(query: str) -> list[dict[str, Any]]:
+    """Fail-closed exact-name fallback for address-bearing preflight rows.
+
+    Hybrid reciprocal-rank fusion is intentionally recall-oriented, so a
+    newly added context document can displace the exact declaration file from
+    its fixed top-k.  The path plant must test corpus coverage, not top-k rank
+    stability.  A bounded lexical query is therefore used only when the hybrid
+    result misses the declared expected path token.
+    """
+
+    return _oracle_query(query, mode="search", limit=30)
 
 
 def _normalize_path(value: object) -> str:
@@ -128,9 +159,20 @@ def run_preflight(
     rows: list[dict[str, object]] = []
     for spec in specs:
         semantic = _semantic_query(spec["query"])
-        paths = [str(row.get("file") or row.get("path") or "") for row in semantic]
         raw_token = spec.get("expected_path_token")
         token = _normalize_path(raw_token) if raw_token else None
+        paths = [str(row.get("file") or row.get("path") or "") for row in semantic]
+        if token is not None and not any(
+            token in _normalize_path(path) for path in paths
+        ):
+            lexical = _lexical_query(spec["query"])
+            seen_paths = set(paths)
+            for row in lexical:
+                path = str(row.get("file") or row.get("path") or "")
+                if path not in seen_paths:
+                    semantic.append(row)
+                    paths.append(path)
+                    seen_paths.add(path)
         expected_match = (
             any(token in _normalize_path(path) for path in paths) if token else None
         )
