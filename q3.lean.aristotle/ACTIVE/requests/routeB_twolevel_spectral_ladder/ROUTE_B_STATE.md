@@ -14,23 +14,23 @@ facts/history. `loop_state.json` is a compatibility mirror only. The stale twin
 path `/Users/emalam/Documents/GitHub/rh_lean_01_2026` is pointer-only for this
 request state.
 
-## CURRENT OPERATIONAL STATUS — 2026-08-12
+## CURRENT OPERATIONAL STATUS — 2026-08-14
 
 ```text
-GOAL_058_G2B_PROVED_SESSION_PLAN_COMPLETE
-RB-GOAL-058-POST-G2B / NEXT_ROUTE058_GATE_NOT_SELECTED
+GOAL_058_G3_EXPLICIT_LIMIT_PACKET_SELECTED
+RB-GOAL-058-G3-EXPLICIT-LIMIT-PACKET / G3_EXPLICIT_H_FOURIER_POISSON_INVERSION
 CHALLENGER / NOT_RH
 BUS_010: VOID
 ```
 
-The bounded 2026-08-12 plan is complete. G2b is closed by
-`Proposition59GroundLagrangeZeroSetBridge`; the exact `_normalized` supplier name lock,
-same coefficient row, and `-L*z/(2*pi)` coordinate are preserved. The parallel M1
-control cell measured projective defect `4.69188254992912959392e-9` at `(13,120)` and
-remains `[FINITE_CELL][CONDITIONAL]`; matrix residual and spectral gap are
-`NOT_MEASURED / NO_PERSISTED_MFIN_MATVEC`. EnvDump-to-describer wiring is live on the
-current built environment. Goal 058 remains open: G1 is the main spectral gap and G3
-the main same-family tracking wall. No next mathematical front is selected here.
+The owner-authorized G1/G3 closure loop selected one bounded G3 source leaf:
+construct the literal polynomial-Gaussian `h` of CCM Eq. (7.1), prove its
+Fourier invariance in the repository convention, and derive
+`E_star h (u^-1) = E_star h u` from Poisson summation. The already proved
+production inversion/coefficient crosswalk and denominator mechanism are its
+consumers. G1 remains open as the parallel spectral front. This selection does
+not supply the prolate approximation rate, a coupled cofinal schedule, G3,
+Route B promotion, or RH.
 
 ## GOAL 057 RESTORABLE PAUSE — 2026-08-13
 

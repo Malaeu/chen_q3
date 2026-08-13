@@ -1,25 +1,24 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-08-12 20:44 CEST
+Updated: 2026-08-14 01:20 CEST
 
-Status: `GOAL_058_G2B_PROVED_SESSION_PLAN_COMPLETE / NOT_RH / CHALLENGER`
+Status: `GOAL_058_G3_EXPLICIT_LIMIT_PACKET_SELECTED / NOT_RH / CHALLENGER`
 
 This request-local plan does not override the root `IMPLEMENTATION_PLAN.md` or
 promote Route B above the H-bridge mainline.
 
 ## Current action
 
-The bounded plan is complete:
+The selected bounded G3 source leaf is:
 
-1. `Proposition59GroundLagrangeZeroSetBridge` is proved with the exact `_normalized`
-   supplier, same coefficient row, and coordinate `-L*z/(2*pi)`.
-2. The `(lambda_sq,N)=(13,120)` M1 cell is measured and independently replayed; its
-   evidence class remains `[FINITE_CELL][CONDITIONAL]`.
-3. EnvDump excludes orphan/stale `.olean`, publishes only a clean atomic derived index,
-   and supplies elaborated RouteB types to `atom_describe.py` fail-closed.
+1. define the literal polynomial-Gaussian `h` of CCM Eq. (7.1);
+2. prove its Fourier invariance in the current repository convention;
+3. use Poisson summation to prove multiplicative inversion of `E_star h`;
+4. feed the result to the proved production coefficient-reflection and
+   denominator mechanisms.
 
-Goal 058 remains open. The next bounded mathematical front is not selected by this
-session closeout; G1 and G3 remain open.
+G1 stays open as the parallel spectral front.  This leaf does not include the
+prolate Lemmas 7.2--7.3 approximation rate or the coupled cofinal schedule.
 
 ## Physical bus
 
@@ -48,7 +47,8 @@ Finite calibration facts and the generic `NormalizedTrackingRateTransfer` and
 ## Execution rule
 
 1. Keep the active physical Goal 058 open.
-2. Select a new bounded front before further mathematics.
+2. Execute only `G3_EXPLICIT_H_FOURIER_POISSON_INVERSION` until it closes or
+   reaches an honest source/API stop.
 3. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
 4. Do not create Bus 010, promote Route B, or
    claim RH.
