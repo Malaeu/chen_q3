@@ -14,7 +14,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - schema / authority: `q3_tool_manifest.v2` / `REPO_CANONICAL`
 - families / tools / writers: `7` / `38` / `22`
 - SHA-256: `46e1d3531988b1a8acf2a2583a749a5c5b9182e8d4c5ed97d67d2ef93315e271`
-- Codex current task: `ACTIVE` / `docs/Codex/TASK_2026-08-14_goal058_g3_explicit_limit_packet.md`
+- Codex current task: `ACTIVE` / `docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md`
 
 ## Phase chat and bounded exploration
 - validation: `VALID`
@@ -61,8 +61,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `41`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `28`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `38`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `33`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
