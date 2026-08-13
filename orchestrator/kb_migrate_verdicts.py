@@ -119,6 +119,10 @@ def choose_kill_id(
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--full", action="store_true",
+                    help="печатать ВСЕ строки холостого прогона, без среза")
+    ap.add_argument("--list-manual", action="store_true",
+                    help="печатать все файлы с прозаическим убийством")
     args = ap.parse_args()
 
     by_name = collect_files()
@@ -210,11 +214,19 @@ def main() -> int:
     print(f"  reused existing verdict : {n_existing} (stable id, no __V row)")
     print(f"  evidence refs           : {len(evidence)}   aliases: {len(aliases)}")
     print(f"  prose-only KILL mentions: {len(manual)} — NOT migrated, need a human read:")
-    for n, pth in manual[:12]:
+    # Урезание печатается вслух. Молчаливый срез читается как полный список: 2026-08-13
+    # холостой прогон заявил 9 новых строк и напечатал 6, и пропущенной сочли ту запись,
+    # которая на деле мигрировала. Отчёт, который отвечает уже, чем читается, — дефект.
+    for n, pth in manual[:(len(manual) if args.list_manual else 12)]:
         print(f"      · {n[:64]}")
+    if len(manual) > 12 and not args.list_manual:
+        print(f"      … и ещё {len(manual) - 12}; полный список: --list-manual")
     if args.dry_run:
-        for r in rows[:6]:
+        limit = len(rows) if args.full else 6
+        for r in rows[:limit]:
             print(f"   · [{r['unit_type']}] {r['id'][:52]:52s} {(r['subject'] or '')[:60]}")
+        if limit < len(rows):
+            print(f"   … и ещё {len(rows) - limit} строк не показано — повторить с --full")
         return 0
 
     kb.insert_kills(conn, rows, evidence=evidence, aliases=aliases)
