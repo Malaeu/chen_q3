@@ -1,0 +1,439 @@
+{
+  "schema": "goal058_sector_envelope_source_discriminator/v1",
+  "created_on": "2026-08-13",
+  "target": "GOAL058_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR",
+  "operative_class": "RUN_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR",
+  "evidence_class": [
+    "SOURCE_AUDIT",
+    "NON_PROMOTING"
+  ],
+  "pin": {
+    "repo": "/Users/emalam/GitHub/rh_lean_01_2026",
+    "branch": "rh_clean",
+    "head": "08a2db998f2b5467d70effdfd135d3846189999c",
+    "origin_rh_clean": "08a2db998f2b5467d70effdfd135d3846189999c",
+    "strict_spine": "P9_STRICT_PASS",
+    "routeb_status": "CHECK_OK"
+  },
+  "external_adjudication": {
+    "actor": "PROSHKA",
+    "living_conversation_id": "6a7afc0e-2aec-83eb-a9ca-469b44c84f83",
+    "request_message_id": "ad476eac-64ba-4a31-8aa3-d051a47fb139",
+    "response_message_id": "96004ccb-2703-49cb-8758-f420053d4949",
+    "clipboard_response": {
+      "path": "/Users/emalam/Downloads/PROSHKA_GOAL058_G1_G3_JUDGE_RESPONSE_2026-08-13.md",
+      "sha256": "57913b3872ee3856f775313bd4c3ae395859b1fc13b6fa8ec407b19975518ece"
+    },
+    "rendered_directive_extract": {
+      "path": "/Users/emalam/Downloads/PROSHKA_GOAL058_G1_G3_JUDGE_VERDICT_2026-08-13_UI_RENDERED_EXTRACT.md",
+      "sha256": "1692490b2e8f92879f375c260533b2a78a9173b07436afbb3278572b61a0c218"
+    }
+  },
+  "phase_runtime": {
+    "result": "PHASE_CHANGE_RATIFIED_MATERIALIZED",
+    "conversation_id": "6a7afc0e-2aec-83eb-a9ca-469b44c84f83",
+    "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
+    "phase_key": {
+      "route_id": "RouteB_TwoLevelSpectralLadder",
+      "front_id": "GOAL058_G1_G3_COFINAL_GROUND_TRACKING",
+      "source_object_family_id": "PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY",
+      "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots",
+      "honesty_state": "CHALLENGER_NOT_RH",
+      "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED"
+    },
+    "old_phase_preserved_in_git_history": true,
+    "history_fields_present_in_schema": false,
+    "browser_message_sent": false
+  },
+  "knowledge_preflight": [
+    {
+      "query": "Goal058SourceEnvelopeAvailability",
+      "exit_code": 0,
+      "result": "no exact shelf supplier; semantic hits were Goal057 material"
+    },
+    {
+      "query": "ccmWeilMatFinite even gap envelope alpha omega cofinal",
+      "exit_code": 0,
+      "result": "exact finite matrix declarations found; no exact all-large envelope supplier"
+    },
+    {
+      "query": "proposition59PoleKernel compact evaluation bound",
+      "exit_code": 0,
+      "result": "removable kernel declarations found; no compact evaluation-bound theorem"
+    },
+    {
+      "query": "FiniteGroundTransformToCCMTrialLocallyUniform",
+      "exit_code": 0,
+      "result": "semantic transfer material only; no exact source-to-ground locally-uniform theorem"
+    }
+  ],
+  "source_locks": [
+    {
+      "path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+      "sha256": "eb418123c65320ad54769d8021717594fb4135488201d93f3ff0c88ca35423ff"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
+      "sha256": "282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
+      "sha256": "f2f9d248a6f2ad703428c624ccbaf5a75b340655e4b4ebbbe3f1d77355523815"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage3.lean",
+      "sha256": "924027a3dd9b95e75c776db552ad37779ed8dd75a7924d744a39cb1a613ebdfa"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0ProlateKTrialSource.lean",
+      "sha256": "7597910a8cf2160c4ab9786144d25595a6c519395f64fc0846d84a249a96c016"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean",
+      "sha256": "c11fe72d9df1e7a81d73cdcb1beebfc016be82cb1d0bcc8ffc371fc748cfb497"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean",
+      "sha256": "614a203e1913d59917c6b161337cf2e9b33be064fcf36238687c0b204436de43"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
+      "sha256": "a79c30cdc11cc936838e7963eff1a3de1f2c9290cf5ce5ca516b9bbf093b5f90"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
+      "sha256": "4d1d71560040890d673d1fc10cd107a2a06a7c9763f9a8baa6132498dff5d39c"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+      "sha256": "a8d61ee0d64f40387263dec9392184d915aeccb2822ac21566dd74fcc2712d5e"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/WeightedProjectiveEvaluationTransfer.lean",
+      "sha256": "b08ec751f7508331acf0edfc63e75a1d9f61c738fab956d042514a51eb31d8ab"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/CompactEvaluationRateTransfer.lean",
+      "sha256": "72fa0e7d39efd60a6970c896a4fba943ed57e933de8b378b834fcc743a9baa1c"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/UniformDifferenceReferenceTransfer.lean",
+      "sha256": "15ba25ce2d08ea47bfd13bc64975220d586ed5dd4691bd80634a007a50515c99"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
+      "sha256": "a5a6c7bb08f7d8e75ac583dfcf25a7060eaff1060e755142d1456ea94d73ab9b"
+    },
+    {
+      "path": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
+      "sha256": "bb9383bebfcd5d01423ff5e944a28545e835e2e03c8609ec69fde73dce5ab2c5"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PARITY_SECTOR_GROUND_TO_TRIAL_BOUND_ONE_CONTROL_CELL_DATA_2026-08-12.json",
+      "sha256": "e91ff7d270da3e16d61f724bcd9ac1c752157dcd69bb64fce8f710702cbba161"
+    },
+    {
+      "path": "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/PARITY_SECTOR_GROUND_TO_TRIAL_BOUND_ONE_CONTROL_CELL_REPORT_2026-08-12.md",
+      "sha256": "32cde7e7b179bc81680cbc305f3c7475144d7c8fcdb190d446b1c93fb760e554"
+    },
+    {
+      "path": "q3.lean.aristotle/literature/zotero/H8ULBMAL/fulltext.md",
+      "sha256": "7ba4b01845df2989cdd763a19c83904e4114e26fc51d5d7f93d09489d52871d4"
+    },
+    {
+      "path": "docs/routeB_bus/litreview/pdfs/2511.22755.pdf",
+      "sha256": "c98d89f7fc999d038e15e80a9aaaee2af797c17711c4329ca7ce48ad49cb336b"
+    }
+  ],
+  "exact_source_inventory": {
+    "carrier": {
+      "declaration": "Q3.RouteB.CCMModeFinite",
+      "definition": "Fin (2*N+1)",
+      "integer_order": "ccmModeFinite N i = i.val - N",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean:19"
+    },
+    "ccmWeilMatFinite": {
+      "declaration": "Q3.RouteB.ccmWeilMatFinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean:35",
+      "definition": "fun i j => ccmWeilTauN1 mProject (ccmModeFinite N i) (ccmModeFinite N j)"
+    },
+    "ccmW02Entry": {
+      "declaration": "Q3.RouteB.ccmW02Entry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean:49",
+      "role": "closed W02 entry"
+    },
+    "ccmWREntry": {
+      "declaration": "Q3.RouteB.ccmWREntry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean:90",
+      "role": "complete archimedean entry"
+    },
+    "ccmPrimeEntryN1": {
+      "declaration": "Q3.RouteB.ccmPrimeEntryN1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean:56",
+      "role": "literal finite von-Mangoldt entry"
+    },
+    "decomposition": {
+      "declaration": "Q3.RouteB.ccmWeilTauN1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean:97",
+      "exact_sign": "W02 - WR - Prime"
+    },
+    "source_projected_trial": {
+      "trial_declaration": "Q3.RouteB.D0Pstar.kTrial_m_N",
+      "coefficient_declaration": "Q3.RouteB.D0Pstar.c_n",
+      "matrix_row_declaration": "Q3.RouteB.D0Pstar.sourceCCMComplexRow",
+      "provenance_theorems": [
+        "Q3.RouteB.D0Pstar.ProlateKTrialSourceData.coefficientFamily_kTrial",
+        "Q3.RouteB.D0Pstar.ProlateCanonicalSourceData.canonical_kTrial",
+        "Q3.RouteB.D0Pstar.sourceCCMComplexRow_apply",
+        "Q3.RouteB.D0Pstar.ccmFiniteSynthesis_sourceCCMComplexRow",
+        "Q3.RouteB.D0Pstar.sourceCCMComplexRow_unit"
+      ],
+      "carrier": "CCMModeFinite i.N -> Complex",
+      "normalization": "star q dot q = 1; inherited from norm_kTrial_m_N",
+      "files": [
+        "q3.lean.aristotle/Q3/Proofs/RouteB/D0KTrialStage3.lean:49",
+        "q3.lean.aristotle/Q3/Proofs/RouteB/D0ProlateKTrialSource.lean:71",
+        "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean:86"
+      ]
+    },
+    "parity_involution": {
+      "declaration": "Q3.RouteB.ccmReflectionEndFinite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean:24",
+      "action": "J x i = x (ccmNegFinite N i)",
+      "structural_theorems": [
+        "Q3.RouteB.ccmReflectionEndFinite_involutive",
+        "Q3.RouteB.ccmWeilOpFinite_commutes_reflection"
+      ],
+      "boundary": "no theorem in the audited source asserts J q = q for sourceCCMComplexRow"
+    },
+    "removable_kernel": {
+      "requested_name": "proposition59RemovableKernel",
+      "requested_name_exists": false,
+      "exact_declaration": "Q3.RouteB.proposition59PoleKernel",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean:33",
+      "at_pole_theorem": "Q3.RouteB.proposition59PoleKernel_at_pole",
+      "entire_theorem": "Q3.RouteB.differentiable_proposition59PoleKernel"
+    },
+    "normalized_p59_transform": {
+      "declaration": "Q3.RouteB.proposition59CCMTransform",
+      "mode_sum_theorem": "Q3.RouteB.proposition59CCMTransform_eq_mode_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean:125",
+      "normalization": "(sqrt L)^(-1) times finite removable-kernel sum",
+      "pole_label": "-ccmModeFinite N i",
+      "coordinate": "-L*z/(2*pi)"
+    }
+  },
+  "source_audit_scope": {
+    "ccm_dependent_lean_files": 16,
+    "query": "files containing ccmWeilMatFinite, then search for forall-eventually, Tendsto, or atTop",
+    "all_large_source_envelope_declarations_found": 0,
+    "interpretation": "scoped source result, not a mathematical nonexistence theorem"
+  },
+  "envelope_ledger": [
+    {
+      "id": "D_GAP",
+      "status": "MISSING_SOURCE_SUPPLIER",
+      "required_direction": "0 < D(j) and D(j) <= Delta_even(m_j,N_j)",
+      "required_quantifiers": "for all sufficiently large j on one precommitted cofinal schedule",
+      "carrier": "even sector of ccmWeilMatFinite m_j N_j on CCMModeFinite N_j",
+      "normalization": "same eta-normalized bottom family later consumed by proposition59CCMTransform",
+      "nearest_exact_theorem": "H2aPenalty.H2a_SimpleEvenGround_FromPenaltyCoercivity",
+      "nearest_source": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+      "nearest_direction": "beta-a <= mu-lam for one arbitrary certified finite pencil",
+      "dependencies": "a<beta plus a positive-semidefinite penalty certificate and parity hypotheses",
+      "first_consumer": "ParitySectorProjectiveBound, then the G1 simple-even ground package",
+      "circularity_audit": "the abstract engine is non-circular, but no exact CCM all-large certificate family instantiates it",
+      "rejected_support": [
+        "M1C cell (13,120)",
+        "finite eigensolver output",
+        "fitted N-ladder",
+        "prolate-operator gap without an exact CCM crosswalk"
+      ],
+      "stop_code": "GOAL058_NO_SOURCE_DEFINED_GAP_ENVELOPE"
+    },
+    {
+      "id": "A_EXCESS",
+      "status": "MISSING_SOURCE_SUPPLIER",
+      "required_direction": "alpha_plus(m_j,N_j) <= A(j)",
+      "required_quantifiers": "for all sufficiently large j on the same precommitted schedule",
+      "carrier": "exact even component of sourceCCMComplexRow for ccmWeilMatFinite",
+      "normalization": "sourceCCMComplexRow has exact unit norm and may not be replaced by a post-hoc symmetrized row",
+      "nearest_exact_theorems": [
+        "Q3.RouteB.D0Pstar.sourceCCMFiniteRayleigh_coe",
+        "Q3.RouteB.D0Pstar.sourceCCMComplexRow_inner_residual_eq_zero"
+      ],
+      "nearest_source": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarCCMFiniteSourceResidual.lean:247",
+      "nearest_direction": "exact per-cell identity only; no upper envelope or rate",
+      "dependencies": "source-complex trial row and literal finite matrix",
+      "first_consumer": "ParitySectorProjectiveBound, then weighted projective evaluation transfer",
+      "circularity_audit": "row construction is ground-independent; M1C ground-vector overlap was validator-only; no admissible all-large bound exists",
+      "rejected_support": [
+        "a small scalar Rayleigh value called a residual theorem",
+        "prolate leakage without an exact one-sided CCM bridge",
+        "the M1C midpoint as an envelope"
+      ],
+      "stop_code": "GOAL058_NO_SOURCE_DEFINED_EXCESS_ENVELOPE"
+    },
+    {
+      "id": "W_ODD_MASS",
+      "status": "MISSING_SOURCE_SUPPLIER",
+      "required_direction": "omega(m_j,N_j) <= W(j)",
+      "required_quantifiers": "for all sufficiently large j on the same precommitted schedule",
+      "carrier": "odd part (q-Jq)/2 of the same fixed sourceCCMComplexRow",
+      "normalization": "the original unit source row is retained; q is not replaced by q_plus",
+      "nearest_exact_theorems": [
+        "Q3.RouteB.ccmReflectionEndFinite_involutive",
+        "Q3.RouteB.ccmWeilOpFinite_commutes_reflection"
+      ],
+      "nearest_source": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean:39",
+      "nearest_direction": "structural parity only; no trial-parity theorem and no all-large upper envelope",
+      "dependencies": "literal reflection and exact source trial row",
+      "first_consumer": "ParitySectorProjectiveBound",
+      "circularity_audit": "ccmEigenvector_even_of_simple_eigenspace_and_normalized applies to the selected eigenvector, not to the projected trial",
+      "rejected_support": [
+        "post-hoc symmetrization",
+        "a moving optimized witness",
+        "the M1C floating residual as a source parity theorem"
+      ],
+      "stop_code": "GOAL058_NO_SOURCE_DEFINED_ODD_MASS_ENVELOPE"
+    }
+  ],
+  "l1_classification": {
+    "candidate": "ParitySectorProjectiveBound",
+    "status": "RATIFIED_SHAPE_LEAN_HOLD",
+    "shape": "projective_defect(q,xi0) <= omega + alpha_plus/Delta_plus",
+    "residual_shape": "projective_defect(q,xi0) <= omega + (nu_plus/separation_plus)^2",
+    "retains_omega": true,
+    "replaces_q_with_q_plus": false,
+    "production_lean_created": false,
+    "reason_for_hold": "the algebraic shape is valid, but exact all-large D, A, and W suppliers are absent"
+  },
+  "a_source_decisive_plant": {
+    "candidate": "derive a G1/A envelope from the exact rank-two commutator alone",
+    "status": "KILLED_GAP_COLLAPSE",
+    "harness": "/tmp/Goal058CommutatorGapCollapse.lean",
+    "harness_sha256": "6da72ad35c6659f39cfa8a41171e89b3bc374ed991db2ec34660dfe5a237cb8d",
+    "command": "lake env lean /tmp/Goal058CommutatorGapCollapse.lean",
+    "exit_code": 0,
+    "axioms": ["propext", "Classical.choice", "Quot.sound"],
+    "sorryAx": false,
+    "counterexample_shape": "symmetric centrosymmetric 3x3 T, D=diag(-1,0,1), eta=(1,1,1), odd beta=(-1,0,1), exact rank-two commutator, finrank ker(T) != 1",
+    "decision_effect": "the commutator is a structural real-zero/weighted-symmetry mechanism, not by itself a spectral-gap or Temple-envelope supplier",
+    "surviving_requirement": "an independent literal-CCM coercivity, endpoint, or residual estimate"
+  },
+  "l2_classification": {
+    "candidate": "CcmP59EvaluationBound",
+    "packet_formula_status": "REJECT_DISTANCE_TO_POLE_FORM",
+    "packet_failure": "a compact may contain a removable lattice pole, so an inverse distance-to-pole bound can diverge while the exact kernel stays finite",
+    "repaired_candidate": "CcmP59RemovableKernelEvaluationBound",
+    "exact_kernel": "Q3.RouteB.proposition59PoleKernel",
+    "candidate_envelope": "C_K(L,N)^2 = sum_i sup_{z in K} norm(proposition59PoleKernel L (-ccmModeFinite N i) z)^2",
+    "candidate_bound": "sup_{z in K} norm(proposition59CCMTransform L N v z) <= norm((sqrt L)^(-1)) * C_K(L,N) * norm_l2(v)",
+    "finite_at_lattice_poles": true,
+    "coordinate": "-L*z/(2*pi)",
+    "production_lean_created": false,
+    "open_inputs": [
+      "compact-supremum existence and finiteness for each exact removable kernel",
+      "finite-sum Cauchy-Schwarz theorem in the exact CCM carrier",
+      "connection of the resulting C_K to the precommitted cofinal schedule"
+    ]
+  },
+  "reference_limit": {
+    "source": "Connes-Consani-Moscovici, Zeta Spectral Triples, arXiv:2511.22755v1",
+    "source_pdf_sha256": "c98d89f7fc999d038e15e80a9aaaee2af797c17711c4329ca7ce48ad49cb336b",
+    "lemma": "Lemma 7.3",
+    "classification": "PAPER_PROVED_PROJECT_CROSSWALK_OPEN",
+    "paper_result": "the Fourier transform of k_lambda converges to Xi uniformly on closed substrips of |Im z|<1/2",
+    "paper_boundary": "Section 8 separately lists simple-even Weil ground and sufficiently accurate k_lambda-to-ground approximation as missing steps",
+    "open_project_inputs": [
+      "project hTrial versus paper h_lambda",
+      "scalar and phase",
+      "midpoint convention",
+      "transform coordinate",
+      "normalization",
+      "chosen cofinal schedule"
+    ],
+    "stop_code": "GOAL058_REFERENCE_LIMIT_CROSSWALK_OPEN"
+  },
+  "outcome": {
+    "code": "KILL_FINITE_EXTRAPOLATION",
+    "exactly_one_outcome": true,
+    "reason": "M1C and finite-cell identities are the only support for at least D, A, and W; no exact named all-large source envelopes exist on one precommitted schedule",
+    "meaning": "the current finite extrapolation is not a cofinal proof supplier",
+    "does_not_mean": "the parity-sector theorem or Route B is mathematically false",
+    "g1": "OPEN",
+    "g3": "OPEN",
+    "route_state": "CHALLENGER_NOT_RH",
+    "route_promoted": false,
+    "rh_claim": false,
+    "smallest_named_gap": "Goal058SourceEnvelopeAvailability"
+  },
+  "mandatory_plants": [
+    {
+      "id": "P-D1_SAME_FAMILY",
+      "mutation": "substitute a D0Pstar, GLOWER, continuum, or independently optimized family",
+      "expected_stop": "GOAL058_SOURCE_FAMILY_MISMATCH",
+      "observed_stop": "GOAL058_SOURCE_FAMILY_MISMATCH",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D2_FINITE_TO_COFINAL",
+      "mutation": "use M1C, an N-ladder, or a fitted slope as an all-large supplier",
+      "expected_stop": "GOAL058_FINITE_TO_COFINAL_SUBSTITUTION",
+      "observed_stop": "GOAL058_FINITE_TO_COFINAL_SUBSTITUTION",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D3_ENVELOPE_DIRECTION",
+      "mutation": "reverse an A upper, D lower, or W upper envelope",
+      "expected_stop": "GOAL058_ENVELOPE_DIRECTION_ERROR",
+      "observed_stop": "GOAL058_ENVELOPE_DIRECTION_ERROR",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D4_REMOVABLE_POLE",
+      "mutation": "apply a distance-to-pole denominator on a compact containing z=-2*pi*k/L",
+      "expected_stop": "GOAL058_P59_REMOVABLE_POLE_UNSAFE",
+      "observed_stop": "GOAL058_P59_REMOVABLE_POLE_UNSAFE",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D5_CONVENTION",
+      "mutation": "replace -L*z/(2*pi) by L*z/(2*pi) or omit L/(2*pi)",
+      "expected_stop": "GOAL058_COORDINATE_CONVENTION_MISMATCH",
+      "observed_stop": "GOAL058_COORDINATE_CONVENTION_MISMATCH",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D6_ANTI_CIRCULARITY",
+      "mutation": "use RH, zero locations, global Weil positivity, desired convergence, a computed ground vector, or post-hoc symmetrization",
+      "expected_stop": "GOAL058_CIRCULAR_ENVELOPE_SOURCE",
+      "observed_stop": "GOAL058_CIRCULAR_ENVELOPE_SOURCE",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D7_SOURCE_SIGN",
+      "mutation": "change W02 - WR - Prime",
+      "expected_stop": "GOAL058_SOURCE_DECOMPOSITION_SIGN_MISMATCH",
+      "observed_stop": "GOAL058_SOURCE_DECOMPOSITION_SIGN_MISMATCH",
+      "status": "PASS"
+    },
+    {
+      "id": "P-D8_COMMUTATOR_GAP_COLLAPSE",
+      "mutation": "treat the exact rank-two commutator as a positive or uniform spectral-gap supplier without an independent coercivity estimate",
+      "expected_stop": "GOAL058_COMMUTATOR_ALONE_NOT_GAP_SUPPLIER",
+      "observed_stop": "GOAL058_COMMUTATOR_ALONE_NOT_GAP_SUPPLIER",
+      "status": "PASS"
+    }
+  ],
+  "transaction_boundary": {
+    "production_lean_edited": false,
+    "numerical_ladder_run": false,
+    "envelope_fitted": false,
+    "candidate_a_b_or_c_executed": false,
+    "commit_created": false,
+    "push_performed": false,
+    "browser_message_sent": false,
+    "success_code": "GOAL058_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR_CLASSIFIED"
+  }
+}

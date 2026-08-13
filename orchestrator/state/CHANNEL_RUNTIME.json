@@ -1,23 +1,23 @@
 {
   "active_exploration": null,
   "active_proshka_phase": {
-    "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+    "conversation_id": "6a7afc0e-2aec-83eb-a9ca-469b44c84f83",
     "full_context_uploads": 0,
-    "last_adjudicated_pin": "e2ef5f0741c15b644514eade8332d35ed5629666",
-    "last_boundary_id": "GOAL_057_B3_0S_SHIFTED_ARCH_FORM_DOMAIN_DENSITY",
-    "opened_at": "2026-08-06T08:06:39+02:00",
-    "opening_pin": "1efda3f80580eb036680f5fd272d3f5112b59283",
+    "last_adjudicated_pin": "08a2db998f2b5467d70effdfd135d3846189999c",
+    "last_boundary_id": "GOAL058_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR_JUDGE",
+    "opened_at": "2026-08-13T07:25:47+02:00",
+    "opening_pin": "08a2db998f2b5467d70effdfd135d3846189999c",
     "owner_boundary_count": 0,
-    "phase_id": "PHASE_ROUTEB_G6_S2_K8_BRIDGE_2026_08_06",
+    "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
     "phase_key": {
-      "convention_lock_id": "GOAL056_CANON_ROOF_D7FE57B5_MUNTZ_V3_EXACT_CLASS",
-      "front_id": "G6_S2_K8_SOURCE_FAITHFUL_BRIDGE",
+      "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
+      "front_id": "GOAL058_G1_G3_COFINAL_GROUND_TRACKING",
       "honesty_state": "CHALLENGER_NOT_RH",
       "route_id": "RouteB_TwoLevelSpectralLadder",
-      "source_object_family_id": "D0_CENTERED_PSTAR_WITH_SOURCE_PROLATE_MUNTZ_CROSSWALK",
-      "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.SlotS2"
+      "source_object_family_id": "PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY",
+      "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots"
     },
-    "proshka_calls": 36,
+    "proshka_calls": 1,
     "status": "ACTIVE"
   },
   "control_status": "ACTIVE",

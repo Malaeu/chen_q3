@@ -31,6 +31,72 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-13 — Goal 058 joint G1/G3 source-envelope judge
+
+```yaml
+proof_address: RouteB.Goal058.G1.G3.SourceEnvelopeAvailability
+front: Goal058/G1/G3
+transaction: GOAL058_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR_JUDGE
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: ad476eac-64ba-4a31-8aa3-d051a47fb139
+response_message_id: 96004ccb-2703-49cb-8758-f420053d4949
+sent_at: 2026-08-13T07:13:18+02:00
+completed_at: 2026-08-13T07:25:47+02:00
+wall_seconds: 749
+wall_human: "12m29s observed wall; UI reported 12m10s thought"
+answer_now_shown: true
+answer_now_clicked: false
+primary: RUN_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR
+status: EXECUTED_CLASSIFIED_KILL_FINITE_EXTRAPOLATION
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  GOAL058_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR_REPORT_2026-08-13.md
+notes: >-
+  First review in the living Goal 058 handle. The byte-locked UTF-8 request
+  was 25,128 bytes with SHA-256
+  30e8271490d1123655120cfe0738cf708681b1947319908bed44c340ae4fbecf.
+  The exact 2,191-byte clipboard response has SHA-256
+  57913b3872ee3856f775313bd4c3ae395859b1fc13b6fa8ec407b19975518ece.
+  Proshka ratified the six-field phase change and selected exactly one class,
+  RUN_SECTOR_ENVELOPE_SOURCE_DISCRIMINATOR. The smallest named gap is
+  Goal058SourceEnvelopeAvailability. ParitySectorProjectiveBound remains
+  Lean HOLD, and the distance-to-pole CcmP59EvaluationBound shape was
+  rejected in favor of a removable-kernel-safe candidate. Answer now was
+  shown and never clicked. At verdict-capture time the returned directive still
+  required the owner's pass, so nothing was executed from the response alone.
+  The owner then passed the directive under the standing automatic-review
+  authorization. The bounded transaction materialized the phase and classified
+  KILL_FINITE_EXTRAPOLATION; no Lean edit, commit, push, G1/G3 closure, Route B
+  promotion, or RH claim occurred.
+```
+
+### 2026-08-13 — Goal 058 G1/G3 source-architecture ratification
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.CofinalGroundTracking.SourceArchitecture
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_PROSHKA_SOURCE_ARCHITECTURE_RATIFICATION
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+sent_at: 2026-08-13T18:55:53+02:00
+completed_at: PENDING
+wall_seconds: PENDING
+wall_human: PENDING
+answer_now_shown: false
+answer_now_clicked: false
+primary: PENDING
+status: RUNNING_NATURAL_REASONING
+request_file: GOAL058_PROSHKA_SOURCE_ARCHITECTURE_RATIFICATION_2026-08-13.txt
+request_bytes: 7084
+request_lines: 148
+request_sha256: 617da102ca3893bb9872fea93c3319b2501df2663c695a34e15a84a80e7aaa92
+notes: >-
+  Same living Goal 058 phase chat. The authoritative UTF-8 text attachment
+  pins the six-field phase key, current disk evidence, Mythos advisory and
+  its binder audit, the exact commutator gap-collapse plant, and the honest
+  G1/G3-open boundary. Natural Pro reasoning started after the sent message
+  and attachment tile were both observed. No Answer now action was used.
+```
+
 ### 2026-08-08 — Goal 057 B3.0G source W02 mode-pairing audit
 
 ```yaml
