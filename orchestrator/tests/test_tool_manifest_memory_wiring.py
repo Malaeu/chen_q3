@@ -11,7 +11,6 @@ from pathlib import Path
 
 from orchestrator import kb_migrate_progress_log, spine, tools_census
 
-
 REPO = Path(__file__).resolve().parents[2]
 
 
@@ -156,7 +155,9 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_control_routes_commands_to_live_manifest(self) -> None:
         control = (REPO / "docs" / "CODEX_CONTROL.md").read_text(encoding="utf-8")
-        self.assertIn("CONTROL_VERSION: 5", control)
+        self.assertIn("CONTROL_VERSION: 6", control)
+        self.assertIn("CODEX_LINUX", control)
+        self.assertIn("GOAL_RUN", control)
         self.assertIn("GOAL_SCOPED_OPERATIONAL_GRANT", control)
         self.assertIn("docs/cartographer/TOOLS.yaml", control)
         self.assertIn("specs_docs/TOOLS_SPEC.md` is a historical", control)
@@ -227,10 +228,17 @@ class ToolManifestMemoryPlants(unittest.TestCase):
     def test_proshka_tight_pack_uses_live_repo_paths(self) -> None:
         proc = subprocess.run(
             ["python3", "scripts/build_proshka_brief.py", "--mode", "tight"],
-            cwd=REPO, capture_output=True, text=True, timeout=20,
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            timeout=20,
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
-        self.assertIn("File: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json", proc.stdout)
+        execution_state_path = (
+            "File: q3.lean.aristotle/ACTIVE/requests/"
+            "routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json"
+        )
+        self.assertIn(execution_state_path, proc.stdout)
         self.assertNotIn(
             "File: docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
             proc.stdout,

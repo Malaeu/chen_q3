@@ -67,6 +67,11 @@ memory_event_routes:
     run: [codex-session-start]
     record: NONE
 
+  GOAL_DISPATCH:
+    condition: Before any physical goal dispatch or readiness to mint a source-locked next goal.
+    run: [goal-run-selector]
+    record: Read-only decision; no runtime or database write in AUTOPILOT_000.
+
   ABSENCE_OR_NEW_OBJECT:
     condition: Before claiming absence, searching externally, or creating a replacement.
     run: [ask-shelf, kb-query]
@@ -209,6 +214,22 @@ tool_families:
         authority: OPERATIONAL_ADDRESS_CHECK_NOT_PROOF
         records_to: stdout
         last_verified: 2026-08-10
+
+      - id: goal-run-selector
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/goal_runtime.py
+        invoke: python3 orchestrator/goal_runtime.py --json
+        alternatives:
+          - python3 orchestrator/goal_runtime.py --selftest
+          - Python API validate_runtime_state(..., grant_resolver=<authority>)
+        trigger: GOAL_DISPATCH before dispatch or source-locked mint readiness.
+        writes: false
+        approval: NONE
+        authority: PHYSICAL_GOAL_SELECTION_AND_GOAL_RUN_SCHEMA_NOT_PROOF_OR_DISPATCH
+        records_to: stdout
+        last_verified: 2026-08-13
 
   retrieval_and_memory:
     summary: Search accumulated knowledge before external search or object creation.

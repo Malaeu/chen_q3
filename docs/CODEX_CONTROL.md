@@ -2,11 +2,12 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 5
+CONTROL_VERSION: 6
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
 BODIES:
   - CODEX_MAC
+  - CODEX_LINUX
 
 TRIGGER_OWNER: Codex
 TRIGGER_EVENTS:
@@ -98,7 +99,7 @@ selected while any such external action is pending; the state becomes
 
 ## 2. Codex executor and independent Claude observer
 
-`CODEX_MAC` is the only executor body governed by this file.
+`CODEX_MAC` and `CODEX_LINUX` are the executor bodies governed by this file.
 `CLAUDE_CODE_INDEPENDENT_OBSERVER` is an owner-facing observer and administrative
 instrument governed by its own `CLAUDE.md`; its rules do not flow into Codex,
 and Codex never reads or validates them at session start. Both bodies share
@@ -143,13 +144,66 @@ baton are excluded from the comparator. A real key change closes the old phase
 and permits a new chat after Codex and Proshka decide the change. No owner
 mathematical approval is required.
 
+### 4.1 GOAL_RUN lifecycle and deterministic selection
+
+`GOAL_RUN` is an operational interval from one physical `NNN_*.goal.md` to its
+matching answer. It is not `MATHEMATICAL_PHASE`: multiple goal numbers may share
+one unchanged six-field phase key and one living Proshka chat.
+
+An unanswered physical goal is executable only when the `STATUS` in its first
+YAML machine header is `OPEN`. `PAUSED_RESTORABLE` is physical, unanswered,
+open for later resumption, and non-executable; it preserves the exact checkpoint
+and never receives a synthesized answer. An unknown lifecycle token fails
+closed. The lexical goal identifier in the filename and first machine header
+must agree; identifiers such as `057` are strings, never YAML 1.1 octal
+integers, and duplicate machine-header keys are invalid. Before dispatch, the
+registered goal-run selector must read the live physical bus:
+
+- exactly one executable goal selects that goal;
+- more than one executable goal fails with `AUTOPILOT_AMBIGUOUS_GOAL_SET`;
+- no executable goal may advance only through a validated source-locked
+  `NEXT_GOAL_SPEC`.
+
+Automatic next-goal readiness accepts only a precommitted source selected
+before the outcome, or an operative Proshka `TRY_`, `KILL_`, or `RUN_` result.
+In both cases provenance is an existing canonical repo-relative path plus the
+exact SHA-256 recomputed from its bytes; absolute paths, `..`, missing files,
+and hash drift fail closed. The proposed task must exactly match one structured
+`NEXT_GOAL_SPEC_SOURCE` object in those pinned UTF-8 source bytes; scattered
+token matches or hashing an unrelated file do not bind a continuation. An
+unchanged phase key may return `MINT_READY`, but readiness is not minting. A
+changed six-field key requires a validated phase transition. `PX_RH_CLAIM`
+always returns
+`OWNER_AUTHORITY_REQUIRED_PX_RH_CLAIM` and never auto-advances.
+
+Precommitted provenance is not a boolean assertion: source, structured receipt,
+and an unanswered outcome guard must coexist byte-exactly in one named git
+commit reachable from the current `HEAD`;
+the guard must be an exact `OPEN` physical goal, the source commit must not
+contain its answer, and current `HEAD` must contain a committed valid closing
+answer before readiness;
+operative Proshka provenance additionally requires the canonical
+Proshka directory, living conversation ID, last-adjudicated response pin, and
+an external receipt authenticator. The current phase baseline is read from
+`orchestrator/state/CHANNEL_RUNTIME.json`; caller input may confirm but never
+replace it. Goal selection itself requires that living handle and returns the
+canonical phase hash. Duplicate mapping keys in runtime JSON, spec, receipt, and embedded YAML
+fail closed. A matching answer closes a current/future goal only after machine
+identity, closing status, and result validation. A runtime grant ID is accepted
+only through an external authority resolver bound to the exact goal/action and
+mandatory paid/destructive/publication/PX-RH prohibitions.
+
+AUTOPILOT_000 is a read-only selection and schema-validation layer. It does not
+dispatch Codex, execute mathematics, mint a goal, write runtime state, touch a
+database, commit, push, or contact an external agent.
+
 The conversation handle lives only in
 `orchestrator/state/CHANNEL_RUNTIME.json`. A missing handle fails closed with
 `PROSHKA_CHAT_HANDLE_LOST`; no silent fresh chat is allowed. One phase-open
 packet is followed only by delta packets. Ordinary goal close opens no chat,
 uploads no full context, and causes zero Proshka calls.
 
-### 4.1 Byte-exact Proshka transport — HARD RULE
+### 4.2 Byte-exact Proshka transport — HARD RULE
 
 Every substantive Q3 request to the living Proshka chat is transported as one
 canonical UTF-8 `.txt` attachment. The attachment is the authoritative request.
@@ -579,6 +633,28 @@ OPERATIONAL_GATE_MISUSED_AS_MATHEMATICAL_DEFERRAL
 INVALID_OWNER_AUTHORITY_REQUIRED_CLASS
 TOOL_MANIFEST_INVALID
 BRANCH_DECISION_MIGRATION_FAILED
+AUTOPILOT_AMBIGUOUS_GOAL_SET
+AUTOPILOT_ANSWER_INVALID
+AUTOPILOT_BUS_MISSING
+AUTOPILOT_CANONICAL_PHASE_UNAVAILABLE
+AUTOPILOT_CURRENT_PHASE_KEY_DRIFT
+AUTOPILOT_CURRENT_PHASE_KEY_MISSING
+AUTOPILOT_GOAL_HEADER_INVALID
+AUTOPILOT_GOAL_IDENTITY_MISMATCH
+AUTOPILOT_INPUT_INVALID
+AUTOPILOT_NEXT_GOAL_SPEC_INVALID
+AUTOPILOT_NEXT_GOAL_SPEC_MISSING
+AUTOPILOT_NEXT_GOAL_SPEC_PROVENANCE_INVALID
+AUTOPILOT_NEXT_GOAL_SPEC_SOURCE_BINDING_INVALID
+AUTOPILOT_OPERATIONAL_GRANT_INVALID
+AUTOPILOT_PHASE_CHANGE_DECLARATION_DRIFT
+AUTOPILOT_RUNTIME_ANSWER_STATE_INVALID
+AUTOPILOT_RUNTIME_BUDGET_INVALID
+AUTOPILOT_RUNTIME_GOAL_PIN_INVALID
+AUTOPILOT_RUNTIME_PHASE_PIN_INVALID
+AUTOPILOT_RUNTIME_SCHEMA_INVALID
+AUTOPILOT_RUNTIME_SOURCE_PIN_INVALID
+AUTOPILOT_UNKNOWN_GOAL_STATUS
 ```
 
 Changing semantic behavior requires a control-version increment, strict
