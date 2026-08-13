@@ -9,7 +9,6 @@ import subprocess
 import time
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 Q3_ROOT = REPO_ROOT / "q3.lean.aristotle"
 CACHE_ROOT = Q3_ROOT / ".qmd_cache"
@@ -19,10 +18,20 @@ BUSY_MARKERS = (
     "SQLITE_BUSY_RECOVERY",
     "database is locked",
 )
+TRANSIENT_RUNTIME_MARKER_GROUPS = (
+    ("Attempted to call a non-GC-safe function inside a NAPI finalizer", "Bun has crashed"),
+)
 
 
 def _busy_output(text: str) -> bool:
     return any(marker in text for marker in BUSY_MARKERS)
+
+
+def _transient_runtime_output(text: str) -> bool:
+    return any(
+        all(marker in text for marker in marker_group)
+        for marker_group in TRANSIENT_RUNTIME_MARKER_GROUPS
+    )
 
 
 @contextlib.contextmanager
@@ -88,7 +97,7 @@ def run_qmd(
         if proc.returncode == 0:
             return proc.stdout
         last_output = output
-        if not _busy_output(output) or attempt >= retries:
+        if not (_busy_output(output) or _transient_runtime_output(output)) or attempt >= retries:
             raise RuntimeError(output)
         time.sleep(base_delay_s * (2**attempt))
     raise RuntimeError(last_output)

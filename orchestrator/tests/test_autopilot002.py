@@ -11,7 +11,7 @@ from types import SimpleNamespace
 import pytest
 
 from orchestrator import migration_census, spine
-from scripts import deep_preflight, q3_docs_corpus, search_external_lean
+from scripts import deep_preflight, q3_docs_corpus, qmd_ops, search_external_lean
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -335,6 +335,47 @@ def test_empty_semantic_query_is_retried(
         {"file": "qmd://q3_docs/live.md"}
     ]
     assert sleeps == [1]
+
+
+def test_known_bun_napi_finalizer_crash_is_retried(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    responses = iter(
+        [
+            SimpleNamespace(
+                returncode=-6,
+                stdout="",
+                stderr=(
+                    "Attempted to call a non-GC-safe function inside a NAPI finalizer\n"
+                    "Bun has crashed"
+                ),
+            ),
+            SimpleNamespace(returncode=0, stdout='[{"file":"live.md"}]', stderr=""),
+        ]
+    )
+    sleeps: list[float] = []
+    monkeypatch.setattr(qmd_ops.subprocess, "run", lambda *args, **kwargs: next(responses))
+    monkeypatch.setattr(qmd_ops.time, "sleep", sleeps.append)
+    assert qmd_ops.run_qmd(["qmd", "vsearch", "plant"], retries=1) == (
+        '[{"file":"live.md"}]'
+    )
+    assert sleeps == [0.5]
+
+
+def test_unknown_qmd_failure_remains_fail_closed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls = 0
+
+    def fail(*args: object, **kwargs: object) -> SimpleNamespace:
+        nonlocal calls
+        calls += 1
+        return SimpleNamespace(returncode=2, stdout="", stderr="ordinary failure")
+
+    monkeypatch.setattr(qmd_ops.subprocess, "run", fail)
+    with pytest.raises(RuntimeError, match="ordinary failure"):
+        qmd_ops.run_qmd(["qmd", "vsearch", "plant"], retries=4)
+    assert calls == 1
 
 
 def test_migration_census_reports_source_database_and_unmigrated(tmp_path: Path) -> None:
