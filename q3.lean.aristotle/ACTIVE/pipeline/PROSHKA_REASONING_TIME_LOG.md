@@ -78,23 +78,35 @@ front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
 transaction: GOAL058_PROSHKA_SOURCE_ARCHITECTURE_RATIFICATION
 conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
 sent_at: 2026-08-13T18:55:53+02:00
-completed_at: PENDING
-wall_seconds: PENDING
-wall_human: PENDING
-answer_now_shown: false
+completed_at: 2026-08-13T19:04:50+02:00
+wall_seconds: 537
+wall_human: "UI reported 8m57s natural reasoning; verdict captured later"
+answer_now_shown: true
 answer_now_clicked: false
-primary: PENDING
-status: RUNNING_NATURAL_REASONING
+primary: KILL_ALL_THREE_REQUIRES_NEW_THEORY
+status: FATAL_CURRENT_SOURCE_ARCHITECTURES_KILLED_ROUTE_NOT_FATAL
+result_pointer: >-
+  docs/routeB_bus/proshka/
+  PROSHKA_VERDICT_GOAL058_SOURCE_ARCHITECTURE_RATIFICATION_2026-08-13.md
 request_file: GOAL058_PROSHKA_SOURCE_ARCHITECTURE_RATIFICATION_2026-08-13.txt
 request_bytes: 7084
 request_lines: 148
 request_sha256: 617da102ca3893bb9872fea93c3319b2501df2663c695a34e15a84a80e7aaa92
+response_bytes: 19838
+response_lines: 910
+response_sha256: 0a8e2e0a1b9423003d3d62ed7964cc22e17fc43c2642f43c164ca71c634aaa68
 notes: >-
   Same living Goal 058 phase chat. The authoritative UTF-8 text attachment
   pins the six-field phase key, current disk evidence, Mythos advisory and
   its binder audit, the exact commutator gap-collapse plant, and the honest
   G1/G3-open boundary. Natural Pro reasoning started after the sent message
-  and attachment tile were both observed. No Answer now action was used.
+  and attachment tile were both observed. Proshka killed the commutator,
+  endpoint, and leakage fronts as current source suppliers, kept Route B
+  itself nonfatal, and selected only a bounded full-source trial-line / Schur
+  preflight. The UI reported 8m57s of natural reasoning. Completion time is
+  the sent timestamp plus that UI duration; the archive was captured later.
+  Answer now was shown and never clicked. No G1/G3 closure, Route B promotion,
+  Bus 010, PX claim, or RH claim followed from the verdict.
 ```
 
 ### 2026-08-08 — Goal 057 B3.0G source W02 mode-pairing audit
