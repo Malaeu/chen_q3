@@ -149,6 +149,39 @@ def _lexical_query(query: str) -> list[dict[str, Any]]:
     return _oracle_query(query, mode="search", limit=30)
 
 
+def _corpus_path_query(expected_path_token: str) -> list[dict[str, Any]]:
+    """Resolve an expected path against the indexed corpus inventory.
+
+    BM25 ranks documents by occurrences in their *contents*.  For an exact
+    declaration filename that token can occur only in importers, so increasing
+    the search limit still cannot guarantee that the declaration file itself
+    appears.  The corpus inventory is the authoritative coverage surface for
+    an address-bearing path plant; filter it by the same path normalizer used
+    for semantic rows.
+    """
+
+    proc = subprocess.run(
+        ["qmd", "ls", "q3_docs"],
+        cwd=REPO,
+        capture_output=True,
+        text=True,
+        timeout=180,
+        check=False,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(proc.stderr.strip() or proc.stdout.strip())
+    token = _normalize_path(expected_path_token)
+    rows: list[dict[str, Any]] = []
+    for line in proc.stdout.splitlines():
+        match = re.search(r"(qmd://\S+)", line)
+        if match is None:
+            continue
+        path = match.group(1)
+        if token in _normalize_path(path):
+            rows.append({"file": path})
+    return rows
+
+
 def _normalize_path(value: object) -> str:
     # qmd slugifies filename punctuation (not only underscores).  Normalize both
     # the requested filename token and returned qmd URI the same way so a real
@@ -180,6 +213,14 @@ def run_preflight(
                     semantic.append(row)
                     paths.append(path)
                     seen_paths.add(path)
+            if not any(token in _normalize_path(path) for path in paths):
+                inventory = _corpus_path_query(token)
+                for row in inventory:
+                    path = str(row.get("file") or row.get("path") or "")
+                    if path not in seen_paths:
+                        semantic.append(row)
+                        paths.append(path)
+                        seen_paths.add(path)
         expected_match = (
             any(token in _normalize_path(path) for path in paths) if token else None
         )

@@ -251,6 +251,66 @@ def test_dynamic_expected_path_uses_bounded_lexical_fallback(
     )
 
 
+def test_dynamic_expected_path_uses_corpus_inventory_after_lexical_miss(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    goal = tmp_path / "058_realzero_ground_diagonal_to_xi.goal.md"
+    goal.write_text("goal\n", encoding="utf-8")
+    monkeypatch.setattr(deep_preflight, "REPO", tmp_path)
+    monkeypatch.setattr(
+        deep_preflight,
+        "_semantic_query",
+        lambda _query: [{"file": "qmd://q3_docs/docs/context-only.md"}],
+    )
+    monkeypatch.setattr(
+        deep_preflight,
+        "_lexical_query",
+        lambda _query: [{"file": "qmd://q3_docs/docs/importer-only.md"}],
+    )
+    monkeypatch.setattr(
+        deep_preflight,
+        "_corpus_path_query",
+        lambda _token: [
+            {
+                "file": (
+                    "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/"
+                    "proposition59groundlagrangezerosetbridge.lean"
+                )
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        deep_preflight.search_external_lean,
+        "search_registry",
+        lambda _query: {
+            "bases_queried": ["zeta23"],
+            "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+            "errors": [],
+            "matches": [],
+        },
+    )
+
+    result = deep_preflight.run_preflight(
+        goal_path=goal,
+        query_specs=[
+            {
+                "id": "exact_target",
+                "query": "Proposition59GroundLagrangeZeroSetBridge",
+                "expected_path_token": "proposition59groundlagrangezerosetbridge",
+            }
+        ],
+    )
+
+    assert result["status"] == "PASS"
+    row = result["queries"][0]
+    assert row["expected_path_match"] is True
+    assert row["result_count"] == 3
+    assert row["top_paths"][-1].endswith(
+        "proposition59groundlagrangezerosetbridge.lean"
+    )
+
+
 def test_empty_semantic_query_is_retried(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
