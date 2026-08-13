@@ -31,6 +31,41 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-13 — Goal 058 literal-source complex trial-line Feshbach task
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.CofinalGroundTracking.SourceComplexTrialLineFeshbach
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_PROSHKA_ARISTOTLE_NONSCALAR_SOURCE_OBSERVABLE
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: 0f0845df-9f91-42a9-b80d-bfe45ef3d229
+response_message_id: 99cb203e-0120-4cdd-b13d-8e411bb9fb46
+sent_at: 2026-08-13T21:49:00+02:00
+completed_at: 2026-08-13T22:10:35+02:00
+wall_seconds: 1295
+wall_human: "UI reported 21m35s natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: ARISTOTLE_NONSCALAR_SOURCE_OBSERVABLE
+status: OPEN_SELECTED_FOR_ARISTOTLE_EXECUTION
+result_pointer: >-
+  docs/routeB_bus/proshka/
+  PROSHKA_VERDICT_GOAL058_NEXT_G1_G3_SOURCE_TASK_2026-08-13.md
+response_bytes: 16287
+response_lines: 590
+response_sha256: 466f52bb6cd2e8fd9c8e5e4684cb289ad3002958299fc8fee86b54eff555a9f5
+notes: >-
+  Same living Goal 058 phase chat. Proshka read the commit-pinned high-recall
+  brief through its raw GitHub link and selected one finite exact source task:
+  the complex trial-line Schur/Feshbach decomposition of the literal CCM
+  source matrix around the literal unit source row. The theorem hard-codes
+  sourceCCMFiniteMatrix i, sourceCCMComplexRow S i, and
+  sourceCCMFiniteResidual S i; it assumes no gap, complement floor,
+  eigenvector, simplicity, tracking, parity, realification, cofinal schedule,
+  global positivity, or RH statement. If proved it is representation progress
+  only: G1 and G3 remain open. Answer now was shown and never clicked.
+```
+
 ### 2026-08-13 — Goal 058 exact complex-Hermitian connector task
 
 ```yaml
