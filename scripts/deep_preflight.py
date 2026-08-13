@@ -112,7 +112,10 @@ def _semantic_query(query: str) -> list[dict[str, Any]]:
 
 
 def _normalize_path(value: object) -> str:
-    return str(value or "").lower().replace("_", "-")
+    # qmd slugifies filename punctuation (not only underscores).  Normalize both
+    # the requested filename token and returned qmd URI the same way so a real
+    # hit such as ``058_..._xi.goal.md`` -> ``058-...-xi-goal.md`` is accepted.
+    return re.sub(r"[^a-z0-9]+", "-", str(value or "").casefold()).strip("-")
 
 
 def run_preflight(
@@ -126,7 +129,8 @@ def run_preflight(
     for spec in specs:
         semantic = _semantic_query(spec["query"])
         paths = [str(row.get("file") or row.get("path") or "") for row in semantic]
-        token = spec.get("expected_path_token")
+        raw_token = spec.get("expected_path_token")
+        token = _normalize_path(raw_token) if raw_token else None
         expected_match = (
             any(token in _normalize_path(path) for path in paths) if token else None
         )

@@ -89,6 +89,23 @@ The remote branch was verified at
   execution goal after the infrastructure chain is proven usable.
 - Goal 057 may be resumed only through its recorded six-step resume procedure.
 
+## Oddity — Mac semantic preflight caught its own portability defect
+
+- Observation: after pulling AUTOPILOT_002 onto the canonical Mac checkout,
+  `semantic-index-refresh` rebuilt all 2638 q3_docs documents but rejected the
+  selected Goal 058 hit. The expected token retained `.goal.md`, while qmd's
+  returned URI slugged the same source filename as `-goal.md`.
+- Plausible readings: either Goal 058 was genuinely absent from the rebuilt
+  semantic index, or the new validator compared two different path
+  canonicalizations.
+- Discriminator: the first returned path was the exact selected goal under
+  `docs/routeB_bus`, with only qmd punctuation slugging different. This proves a
+  validator portability defect, not a missing semantic document.
+- Repair: normalize all non-alphanumeric runs identically on the expected token
+  and returned URI, cover the Mac/qmd filename shape with a regression plant,
+  then rerun the declared semantic refresh and strict startup. The validator
+  remains fail-closed until that full rerun passes.
+
 ## Wichtige Fakten
 
 - Route B remains `CHALLENGER / NOT_RH`.

@@ -10,7 +10,7 @@ from pathlib import Path
 import pytest
 
 from orchestrator import migration_census, spine
-from scripts import q3_docs_corpus, search_external_lean
+from scripts import deep_preflight, q3_docs_corpus, search_external_lean
 
 REPO = Path(__file__).resolve().parents[2]
 
@@ -145,6 +145,54 @@ def test_external_lean_registry_is_actually_queried(tmp_path: Path) -> None:
     assert result["matches"]
     assert result["matches"][0]["base_id"] == "zeta23"
     assert "Sylvester.lean" in result["matches"][0]["path"]
+
+
+def test_dynamic_goal_path_match_uses_qmd_slug_punctuation(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    goal = tmp_path / "058_realzero_ground_diagonal_to_xi.goal.md"
+    goal.write_text("goal\n", encoding="utf-8")
+    monkeypatch.setattr(deep_preflight, "REPO", tmp_path)
+    monkeypatch.setattr(
+        deep_preflight,
+        "_semantic_query",
+        lambda _query: [
+            {
+                "file": (
+                    "qmd://q3_docs/docs/routeb-bus/"
+                    "058-realzero-ground-diagonal-to-xi-goal.md"
+                )
+            }
+        ],
+    )
+    monkeypatch.setattr(
+        deep_preflight.search_external_lean,
+        "search_registry",
+        lambda _query: {
+            "bases_queried": ["zeta23"],
+            "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+            "errors": [],
+            "matches": [],
+        },
+    )
+
+    result = deep_preflight.run_preflight(
+        goal_path=goal,
+        query_specs=[
+            {
+                "id": "goal",
+                "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
+                "expected_path_token": goal.name.replace("_", "-").lower(),
+            }
+        ],
+    )
+
+    assert result["status"] == "PASS"
+    assert result["queries"][0]["expected_path_token"] == (
+        "058-realzero-ground-diagonal-to-xi-goal-md"
+    )
+    assert result["queries"][0]["expected_path_match"] is True
 
 
 def test_migration_census_reports_source_database_and_unmigrated(tmp_path: Path) -> None:
