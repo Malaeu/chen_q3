@@ -1,24 +1,26 @@
 # Route B — request-local implementation plan
 
-Updated: 2026-08-14 01:20 CEST
+Updated: 2026-08-14 01:56 CEST
 
-Status: `GOAL_058_G3_EXPLICIT_LIMIT_PACKET_SELECTED / NOT_RH / CHALLENGER`
+Status: `GOAL_058_G3_PROLATE_RATE_AND_FLOOR_OPEN / NOT_RH / CHALLENGER`
 
 This request-local plan does not override the root `IMPLEMENTATION_PLAN.md` or
 promote Route B above the H-bridge mainline.
 
 ## Current action
 
-The selected bounded G3 source leaf is:
+The explicit-limit leaf is closed by
+`D0PstarExplicitCCMLimitFourier.lean`:
 
-1. define the literal polynomial-Gaussian `h` of CCM Eq. (7.1);
-2. prove its Fourier invariance in the current repository convention;
-3. use Poisson summation to prove multiplicative inversion of `E_star h`;
-4. feed the result to the proved production coefficient-reflection and
-   denominator mechanisms.
+1. the literal polynomial-Gaussian `h` of CCM Eq. (7.1) is defined;
+2. its Fourier invariance is proved in the current repository convention;
+3. Poisson summation proves multiplicative inversion of `E_star h`.
 
-G1 stays open as the parallel spectral front.  This leaf does not include the
-prolate Lemmas 7.2--7.3 approximation rate or the coupled cofinal schedule.
+The current G3 source obligation is the actual normalized two-mode prolate
+`h_lambda` on `PairIndex`, the CCM Lemma 7.2 uniform `O(lambda^-2)` estimate to
+the proved `h`, a nonzero central overlap and eventual projected denominator
+floor, all bound to one precommitted coupled `(m,N)` schedule. G1 stays open as
+the parallel spectral front.
 
 ## Physical bus
 
@@ -47,7 +49,8 @@ Finite calibration facts and the generic `NormalizedTrackingRateTransfer` and
 ## Execution rule
 
 1. Keep the active physical Goal 058 open.
-2. Execute only `G3_EXPLICIT_H_FOURIER_POISSON_INVERSION` until it closes or
+2. Execute only
+   `G3_PROLATE_RATE_CENTRAL_OVERLAP_DENOMINATOR_FLOOR` until it closes or
    reaches an honest source/API stop.
 3. Preserve the P59 `_normalized` supplier name lock and the one-family invariant.
 4. Do not create Bus 010, promote Route B, or

@@ -3,9 +3,9 @@
 ```yaml
 schema: q3_codex_current_task.v1
 status: ACTIVE
-task_file: docs/Codex/TASK_2026-08-14_goal058_g3_explicit_limit_packet.md
-source_commit: c4431209b65951558ac79c758240d96a73c07c25
-updated_at: 2026-08-14T01:20:43+02:00
+task_file: docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
+source_commit: 0fb4023ab401ab3f68e1a507197e379e9261cc3c
+updated_at: 2026-08-14T01:56:41+02:00
 updated_by: CODEX
 ```
 

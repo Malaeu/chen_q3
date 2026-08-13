@@ -17,20 +17,21 @@ request state.
 ## CURRENT OPERATIONAL STATUS — 2026-08-14
 
 ```text
-GOAL_058_G3_EXPLICIT_LIMIT_PACKET_SELECTED
-RB-GOAL-058-G3-EXPLICIT-LIMIT-PACKET / G3_EXPLICIT_H_FOURIER_POISSON_INVERSION
+GOAL_058_G3_PROLATE_RATE_AND_FLOOR_OPEN
+RB-GOAL-058-G3-PROLATE-RATE-FLOOR / G3_PROLATE_RATE_CENTRAL_OVERLAP_DENOMINATOR_FLOOR
 CHALLENGER / NOT_RH
 BUS_010: VOID
 ```
 
-The owner-authorized G1/G3 closure loop selected one bounded G3 source leaf:
-construct the literal polynomial-Gaussian `h` of CCM Eq. (7.1), prove its
-Fourier invariance in the repository convention, and derive
-`E_star h (u^-1) = E_star h u` from Poisson summation. The already proved
-production inversion/coefficient crosswalk and denominator mechanism are its
-consumers. G1 remains open as the parallel spectral front. This selection does
-not supply the prolate approximation rate, a coupled cofinal schedule, G3,
-Route B promotion, or RH.
+The bounded explicit-limit leaf is closed: the literal polynomial-Gaussian `h`
+of CCM Eq. (7.1), its Fourier invariance, and
+`E_star h (u^-1) = E_star h u` are kernel checked in
+`D0PstarExplicitCCMLimitFourier.lean`. The current G3 source obligation is now
+the actual normalized two-mode prolate `h_lambda` on `PairIndex`, the CCM Lemma
+7.2 uniform approximation rate to this proved limit, a nonzero central overlap
+and projected denominator floor, all on one coupled `(m,N)` schedule. G1
+remains open as the parallel spectral front. No G3 closure, Route B promotion,
+or RH claim follows from the closed leaf.
 
 ## GOAL 057 RESTORABLE PAUSE — 2026-08-13
 
