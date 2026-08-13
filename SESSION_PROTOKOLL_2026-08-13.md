@@ -464,3 +464,24 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/scripts/qmd_ops.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/tests/test_goal_events.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/orchestrator/tests/test_autopilot002.py`
+
+## Goal 058 source progress — inversion crosswalk and denominator mechanism
+
+- Physical inversion is now connected to the literal production basis:
+  `g(u^-1)=g(u)` on `I_m` implies
+  `<V_-n,g>=<V_n,g>` by exact `du/u -> dx` transport, interval reflection,
+  and the integer phase identity.  Coefficient symmetry is an output, not a
+  binder.
+- The existing exact odd-mass receiver therefore accepts an actual
+  inversion-even ambient comparison packet and bounds the unchanged source
+  row odd mass by its squared approximation error.
+- The zero logarithmic mode now supplies the exact normalization bridge
+  `||<V_0,f>||-||gTrial_m-f|| <= ||gTrial_m_N||`.  A concrete packet with
+  nonzero central overlap and smaller error would give the required positive
+  denominator floor; `TrialNonzero` alone still cannot.
+- The next G3 source node is not another receiver.  It is the explicit CCM
+  Eq. (7.1) polynomial-Gaussian limit `h`, a kernel-checked Poisson/Fourier
+  proof that `E_star h` is inversion even, its nonzero central coefficient,
+  and the actual Lemmas 7.2--7.3 rate on one coupled cofinal schedule.
+- Classification: `PASS_EXACT_CROSSWALK_AND_FLOOR_BRIDGE`; the limit packet,
+  odd-mass rate, denominator floor, G1, and G3 remain `OPEN`.

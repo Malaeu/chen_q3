@@ -1627,6 +1627,41 @@ oracle card `Goal058.G1.ccmBetaComplementFloor`.
 **Граница:** `PASS_EXACT_REPRESENTATION_AND_RECEIVER`; odd-mass decay, G1, G3,
 Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: инверсия доведена до коэффициентов и знаменателя
+
+**Развилка:** принять symmetry коэффициентов и denominator floor как новые
+гипотезы либо вывести оба механизма на буквальных production-объектах.
+
+**Выбрали:** точный transport `g(u^-1)=g(u) -> <V_-n,g>=<V_n,g>`, его прямой
+odd-mass corollary и неравенство
+`||<V_0,f>||-||gTrial_m-f|| <= ||gTrial_m_N||`.
+
+**Почему:** первый theorem убирает круговую coefficient-symmetry гипотезу, а
+второй точно показывает, какого конкретного source input не хватает для
+положительного normalization floor: ненулевого central overlap и ошибки
+аппроксимации меньше него.
+
+**Что отвергли и почему:** `TrialNonzero` как количественный floor — это только
+строгая ненулевость для каждого индекса; generic inversion-even binder как
+закрытие G3 — это receiver без поставщика; симметризацию source row — она
+меняет производственный объект.
+
+**Техника:** `du/u -> dx`, отражение `x -> L-x`, exact integer phase,
+orthogonal projection и Cauchy--Schwarz; direct/target Lean и `q3_check`.
+
+**Следующий ход:** определить явную polynomial-Gaussian функцию CCM Eq. (7.1),
+доказать Poisson/Fourier inversion для `E_star h`, ненулевой central overlap и
+реальную Lemmas 7.2--7.3 rate на одной coupled cofinal schedule; G1 отдельно
+требует literal even-sector gap arithmetic.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean` ·
+`GOAL058_INVERSION_COEFFICIENT_DENOMINATOR_CROSSWALK_CLOSEOUT_2026-08-14.md` ·
+`GOAL058_SOURCE_CCM_ODD_MASS_REFLECTION_DEFECT_CLOSEOUT_2026-08-14.md`.
+
+**Граница:** `PASS_EXACT_CROSSWALK_AND_FLOOR_BRIDGE`; explicit limit packet,
+rate, denominator floor, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
