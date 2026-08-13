@@ -2,10 +2,10 @@
 
 ```yaml
 schema: q3_codex_current_task.v1
-status: EMPTY
-task_file: null
-source_commit: null
-updated_at: 2026-08-10T21:45:00+02:00
+status: ACTIVE
+task_file: docs/Codex/TASK_2026-08-14_goal058_g3_explicit_limit_packet.md
+source_commit: c4431209b65951558ac79c758240d96a73c07c25
+updated_at: 2026-08-14T01:20:43+02:00
 updated_by: CODEX
 ```
 
