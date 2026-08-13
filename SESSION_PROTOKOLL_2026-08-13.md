@@ -147,6 +147,8 @@ Pushed to `origin/rh_clean`:
   `[Linux][rh_clean][Control] Retry transient Bun qmd crashes`
 - `9f7ef4b2837f0aab236f5d7c17e89ba7459b2dec` —
   `[Linux][rh_clean][Docs] Record AUTOPILOT infrastructure delivery`
+- `f557dfe2924f36538157ec5f30a63bd49bee2908` —
+  `[Linux][rh_clean][Spine] Reconcile AUTOPILOT closeout memory`
 
 The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 `88341c48` without conflict and pushed. Immediately before this protocol update,
@@ -155,11 +157,10 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 ## Offen — nächste Schritte
 
 - Do not start Goal 058 mathematics automatically from this protocol.
-- Commit the two-source migration and this final protocol evidence, regenerate
-  the authoritative local semantic receipt at that final commit, then require
-  both deep retrieval queries, `zeta23` receipt presence, Route B `CHECK: OK`,
-  a clean worktree, and `0/0` synchronization before declaring the
-  infrastructure goal complete.
+- The AUTOPILOT_000/001/002 infrastructure goal is complete. No infrastructure
+  blocker remains at this handoff.
+- Any later Goal 058 mathematics requires a separately selected bounded front;
+  this protocol does not authorize or choose it.
 - Goal 058 remains mathematically untouched by this Linux infrastructure goal.
   Concurrent Mac work is external repository state and is not a mathematical
   action performed by this goal.
