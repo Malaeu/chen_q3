@@ -6,6 +6,7 @@ import json
 import os
 import subprocess
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -248,6 +249,32 @@ def test_dynamic_expected_path_uses_bounded_lexical_fallback(
     assert row["top_paths"][-1].endswith(
         "proposition59groundlagrangezerosetbridge.lean"
     )
+
+
+def test_empty_semantic_query_is_retried(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    responses = iter(
+        [
+            SimpleNamespace(returncode=0, stdout="[]", stderr=""),
+            SimpleNamespace(
+                returncode=0,
+                stdout=json.dumps([{"file": "qmd://q3_docs/live.md"}]),
+                stderr="",
+            ),
+        ]
+    )
+    sleeps: list[int] = []
+    monkeypatch.setattr(
+        deep_preflight.subprocess,
+        "run",
+        lambda *args, **kwargs: next(responses),
+    )
+    monkeypatch.setattr(deep_preflight.time, "sleep", sleeps.append)
+    assert deep_preflight._semantic_query("GOAL 058") == [
+        {"file": "qmd://q3_docs/live.md"}
+    ]
+    assert sleeps == [1]
 
 
 def test_migration_census_reports_source_database_and_unmigrated(tmp_path: Path) -> None:

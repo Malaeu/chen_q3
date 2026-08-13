@@ -8,6 +8,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 from typing import Any
 
@@ -22,6 +23,7 @@ from scripts import search_external_lean  # noqa: E402
 
 ORACLE = REPO / "scripts" / "research_oracle.py"
 FENCE_RE = re.compile(r"```(?:yaml|yml)\s*\n(.*?)```", re.DOTALL | re.IGNORECASE)
+SEMANTIC_QUERY_ATTEMPTS = 3
 
 
 def _goal_header(text: str) -> dict[str, Any]:
@@ -109,20 +111,25 @@ def _oracle_query(
     ]
     if mode != "query":
         command.extend(["--mode", mode])
-    proc = subprocess.run(
-        command,
-        cwd=REPO,
-        capture_output=True,
-        text=True,
-        timeout=180,
-        check=False,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr.strip() or proc.stdout.strip())
-    payload = json.loads(proc.stdout)
-    if not isinstance(payload, list):
-        raise RuntimeError("research oracle returned a non-list")
-    return [row for row in payload if isinstance(row, dict)]
+    for attempt in range(SEMANTIC_QUERY_ATTEMPTS):
+        proc = subprocess.run(
+            command,
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+            timeout=180,
+            check=False,
+        )
+        if proc.returncode != 0:
+            raise RuntimeError(proc.stderr.strip() or proc.stdout.strip())
+        payload = json.loads(proc.stdout)
+        if not isinstance(payload, list):
+            raise RuntimeError("research oracle returned a non-list")
+        rows = [row for row in payload if isinstance(row, dict)]
+        if rows or attempt + 1 == SEMANTIC_QUERY_ATTEMPTS:
+            return rows
+        time.sleep(2**attempt)
+    raise AssertionError("unreachable")
 
 
 def _semantic_query(query: str) -> list[dict[str, Any]]:
