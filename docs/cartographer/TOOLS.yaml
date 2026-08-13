@@ -72,6 +72,16 @@ memory_event_routes:
     run: [goal-run-selector]
     record: Read-only decision; no runtime or database write in AUTOPILOT_000.
 
+  REGISTERED_CYCLE:
+    condition: After one precommitted proof-cycle action has a result and before step-close.
+    run: [goal-event-writer]
+    record: One closed-schema attempt row in knowledge.db; exact retry is idempotent.
+
+  REUSABLE_INSIGHT:
+    condition: A checked synthesis is reusable beyond the current attempt.
+    run: [goal-event-writer]
+    record: One compact provenance-bound INSIGHTS.md entry; semantic duplicates are suppressed.
+
   ABSENCE_OR_NEW_OBJECT:
     condition: Before claiming absence, searching externally, or creating a replacement.
     run: [ask-shelf, kb-query]
@@ -343,6 +353,21 @@ tool_families:
         authority: RETRIEVAL_INDEX_BUILDER
         records_to: qmd://q3_docs/
         last_verified: 2026-08-10
+
+      - id: goal-event-writer
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/goal_events.py
+        invoke: python3 orchestrator/goal_events.py record-attempt --payload <closed-json>
+        alternatives:
+          - python3 orchestrator/goal_events.py record-insight --payload <closed-json>
+        trigger: REGISTERED_CYCLE or REUSABLE_INSIGHT inside an authorized GOAL_RUN.
+        writes: true
+        approval: GOAL_SCOPED_OPERATIONAL_GRANT_OR_EXACT_WRITE_SCOPE
+        authority: IDEMPOTENT_ATTEMPT_AND_PROVENANCE_BOUND_INSIGHT_WRITER
+        records_to: [knowledge.db, q3.lean.aristotle/docs/INSIGHTS.md]
+        last_verified: 2026-08-13
 
   cartography_and_property_descent:
     summary: Find capabilities by mathematical need, then descend suppliers to exact gaps.

@@ -33,6 +33,25 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertGreaterEqual(data["writer_count"], 8)
         self.assertRegex(str(data["sha256"]), r"^[0-9a-f]{64}$")
 
+    def test_autopilot_event_writer_is_registered_with_write_scope(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        tools = [
+            tool
+            for family in data["tool_families"].values()
+            for tool in family.get("tools", [])
+            if tool["id"] == "goal-event-writer"
+        ]
+        self.assertEqual(len(tools), 1)
+        self.assertEqual(tools[0]["mode"], "WRITES_CANONICAL")
+        self.assertTrue(tools[0]["writes"])
+        self.assertIn("GOAL_SCOPED_OPERATIONAL_GRANT", tools[0]["approval"])
+        self.assertEqual(
+            set(tools[0]["records_to"]),
+            {"knowledge.db", "q3.lean.aristotle/docs/INSIGHTS.md"},
+        )
+
     def test_codex_cartography_routes_only_to_repo_local_tools(self) -> None:
         data = spine.yaml.safe_load(
             (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
