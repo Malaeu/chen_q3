@@ -183,6 +183,49 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
   then rerun the declared semantic refresh and strict startup. The validator
   remains fail-closed until that full rerun passes.
 
+## Oddity — retired conductor sensor remained in the transport skill
+
+- Observation: the Route B conductor skill's restart checklist still invoked
+  `.venv/bin/python orchestrator/sense.py`, but that path is absent at current
+  `rh_clean`; the invocation failed with `Errno 2` before any repository write.
+- Plausible readings: either the live Route B selector had been accidentally
+  deleted, or the skill retained a stale reference to a deliberately retired
+  control-plane component.
+- Discriminator: commit `9fe82c86` explicitly deleted `orchestrator/sense.py`
+  while consolidating phase selection into the live bus arbiter. Current
+  registered read-only checks `routeb_status.py --check` and
+  `goal_runtime.py --json` both passed and selected executable Goal 058.
+- Outcome: this is stale noncanonical skill routing, not a missing live
+  selector. The current Goal 058 run uses only the manifest-registered
+  `routeb-status` and `goal-run-selector`; no replacement `sense.py` is
+  recreated and no behavior/policy skill is edited inside this goal scope.
+
+## Goal 058 — the remaining G1/G3 wall is primary-source mathematics
+
+- The literal source audit found no on-disk supplier for either a positive
+  floor of the shifted complex trial complement or cofinal decay of the exact
+  `sourceCCMFiniteResidual`; existing declarations are receivers or finite
+  identities.
+- The previously kernel-checked `PairCofinal` falsifier remains load-bearing:
+  independent divergence of `m` and `N` does not force
+  `N / log m -> infinity`, so the future family must name one coupled schedule
+  rather than infer physical-bandwidth cofinality from the current interface.
+- The primary CCM paper, arXiv `2511.22755v1`, Section 8 page 32, explicitly
+  identifies simplicity/evenness of the Weil ground and accurate approximation
+  by the trial as its two missing steps. Theorem 1.1 and Theorem 5.10 assume the
+  finite simple-even input; Proposition 3.4 does not supply the missing gap or
+  tracking theorem.
+- Mythos' captured attack identified the associated binder defect: before a
+  G1-grade simple ground selector exists, a free family called "the bottom
+  eigenvector" is not a source-defined G3 object. The honest source problem is
+  therefore joint: prove a same-family complement floor and residual-to-floor
+  decay on a precommitted coupled schedule.
+- A source-locked joint judge/attacker packet was prepared at
+  `docs/routeB_bus/proshka/PROSHKA_MYTHOS_REQUEST_GOAL058_TRUE_SOURCE_CLOSURE_2026-08-13.md`.
+  It rejects algebraic decompositions and gap-shaped receiver hypotheses as
+  source closure. Until a surviving package is proved, `G1` and `G3` remain
+  `OPEN`; there is no Route B promotion or RH claim.
+
 ## Wichtige Fakten
 
 - Route B remains `CHALLENGER / NOT_RH`.
