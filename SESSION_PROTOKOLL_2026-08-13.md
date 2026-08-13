@@ -116,6 +116,18 @@ evidence report.
   bytes, SHA-256
   `27e86ac9c43b8afbca52cccb509bb71bb178c4765b9572116c5aa7d9bfff3d93`;
   breakdown 1617 Markdown, 56 TeX, 975 Lean, and 1 YAML.
+- The first authoritative post-delivery refresh at commit `9f7ef4b2` returned
+  `P9_STRICT_PASS` and receipt status `PASS`. Concurrent repository additions
+  brought the deterministic corpus to 2650 sources plus one manifest: 1618
+  Markdown, 56 TeX, 975 Lean, and 1 YAML; 33,619,084 bytes; SHA-256
+  `7576bc76eac988d4c7edfb669e3fc87e2bd291121c380014e0ab4dd81307c58f`.
+- Strict session startup returned `РАСХОЖДЕНИЙ НЕТ`; non-refresh Spine returned
+  `P9_STRICT_PASS`; Route B startup arbitration returned `CHECK: OK`.
+- The first strict migration census correctly failed on two new concurrent Mac
+  verdict files. A registered `step-close` refresh migrated exactly one new
+  strategy row and one new verdict-kill row while reusing existing stable IDs.
+  The repeated census passed with 1795/1795 insights, 37/37 branch decisions,
+  and 94/94 verdicts; zero rows remained unmigrated.
 
 ## Versendet
 
@@ -133,6 +145,8 @@ Pushed to `origin/rh_clean`:
 - `7a2a33bb` — `[Linux][rh_clean][Control] Stabilize semantic preflight matching`
 - `a5645f15be755f15856cfc4e1cb5267e8f0761ea` —
   `[Linux][rh_clean][Control] Retry transient Bun qmd crashes`
+- `9f7ef4b2837f0aab236f5d7c17e89ba7459b2dec` —
+  `[Linux][rh_clean][Docs] Record AUTOPILOT infrastructure delivery`
 
 The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 `88341c48` without conflict and pushed. Immediately before this protocol update,
@@ -141,10 +155,11 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 ## Offen — nächste Schritte
 
 - Do not start Goal 058 mathematics automatically from this protocol.
-- Create the authoritative local semantic receipt at the final protocol commit,
-  then require strict startup, migration census, both deep retrieval queries,
-  `zeta23` receipt presence, Route B `CHECK: OK`, a clean worktree, and `0/0`
-  synchronization before declaring the infrastructure goal complete.
+- Commit the two-source migration and this final protocol evidence, regenerate
+  the authoritative local semantic receipt at that final commit, then require
+  both deep retrieval queries, `zeta23` receipt presence, Route B `CHECK: OK`,
+  a clean worktree, and `0/0` synchronization before declaring the
+  infrastructure goal complete.
 - Goal 058 remains mathematically untouched by this Linux infrastructure goal.
   Concurrent Mac work is external repository state and is not a mathematical
   action performed by this goal.
