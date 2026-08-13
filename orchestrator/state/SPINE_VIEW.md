@@ -61,8 +61,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `44`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `28`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `35`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
@@ -115,7 +115,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `Q3_OBSTRUCTION_ATLAS.md` | 2026-08-06 |
 | `docs/RH_TRICK_ATLAS.md` | 2026-08-06 |
 | `q3.lean.aristotle/docs/INSIGHTS.md` | 2026-08-10 |
-| `docs/Progress_Log.md` | 2026-08-13 |
+| `docs/Progress_Log.md` | 2026-08-14 |
 | `docs/GENEALOGY.md` | 2026-08-10 |
 | `docs/RECORDING_RULES.md` | 2026-08-09 |
 | `docs/cartographer/TOOLS.yaml` | 2026-08-13 |
