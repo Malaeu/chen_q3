@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 209,
-  "declarations": 1880,
-  "in_docs": 820,
+  "files_scanned": 210,
+  "declarations": 1887,
+  "in_docs": 823,
   "in_lemma_db": 1869,
-  "orphans": 9,
-  "uncatalogued": 9,
+  "orphans": 13,
+  "uncatalogued": 13,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       9
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      4
     ]
   ],
   "items": [
@@ -8412,6 +8416,76 @@
       "signature": "theorem selectedNormalizedGalerkinResidual_norm_tendsto_zero_of_tail_and_bounded (S : ProlateCanonicalSourceData) (hTail : SelectedProjectionTailDecay S) (hNormalizer : SelectedTrialNormalizerBounded S) : Tendsto (fun k : ℕ => ‖selectedNormalizedGalerkinResidual S k‖) atTop (𝓝 0)",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "lambda_m_pos_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 27,
+      "signature": "private theorem lambda_m_pos_local (i : PairIndex) : 0 < lambda_m i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lambda_m_sq_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 33,
+      "signature": "private theorem lambda_m_sq_local (i : PairIndex) : lambda_m i * lambda_m i = (i.m : ℝ)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exp_logWindow_reflection_div_lambda",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 38,
+      "signature": "private theorem exp_logWindow_reflection_div_lambda (i : PairIndex) (x : ℝ) : Real.exp (L_m i - x) / lambda_m i = (Real.exp x / lambda_m i)⁻¹",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "reflected_mode_inner",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 49,
+      "signature": "private theorem reflected_mode_inner (i : PairIndex) (n : ℤ) (g : ℝ → ℂ) (x : ℝ) (heven : g ((Real.exp x / lambda_m i)⁻¹) = g (Real.exp x / lambda_m i)) : inner ℂ (((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * (-n) * ((L_m i - x) / L_m i))) (g (Real.exp (L_m i - x) / lambda_m i)) = inner ℂ (((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * n * (x / L_m i))) (g (Real.exp x / lambda_m i))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "inner_V_neg_eq_inner_V_of_inversion_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 95,
+      "signature": "theorem inner_V_neg_eq_inner_V_of_inversion_even (i : PairIndex) (n : ℤ) (g : ℝ → ℂ) (hg : MemLp g 2 (dStar.restrict (I_m i))) (heven : ∀ u ∈ I_m i, g u⁻¹ = g u) : inner ℂ (V_n_m i (-n)) (MemLp.toLp g hg) = inner ℂ (V_n_m i n) (MemLp.toLp g hg)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMComplexOddMass_le_norm_sub_sq_of_inversion_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 210,
+      "signature": "theorem sourceCCMComplexOddMass_le_norm_sub_sq_of_inversion_even (S : ProlateCanonicalSourceData) (i : PairIndex) (g : ℝ → ℂ) (hg : MemLp g 2 (dStar.restrict (I_m i))) (heven : ∀ u ∈ I_m i, g u⁻¹ = g u) : sourceCCMComplexOddMass S i ≤ ‖(kTrial_m_N i (prolateCombination (S.source.pair i)) (S.source.eStar_memLp i) (S.source.trialNonzero i) : H_m i) - MemLp.toLp g hg‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "norm_inner_V0_sub_approximation_error_le_projected_trial_norm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
+      "line": 232,
+      "signature": "theorem norm_inner_V0_sub_approximation_error_le_projected_trial_norm (i : PairIndex) (hTrial_m : ℝ → ℂ) (hE_star : MemLp (E_star hTrial_m) 2 (dStar.restrict (I_m i))) (f : H_m i) : ‖inner ℂ (V_n_m i 0) f‖ - ‖gTrial_m i hTrial_m hE_star - f‖ ≤ ‖gTrial_m_N i hTrial_m hE_star‖",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
