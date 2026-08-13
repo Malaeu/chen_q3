@@ -126,11 +126,12 @@ validation sets. No defect below was accepted as a documentation-only caveat.
 | Runtime trusted goal-embedded phase | A goal-local key could bypass channel truth. | Canonical channel phase is always primary; an embedded key must compare equal. |
 | Lifecycle over-hardening broke closed history | Applying the unanswered lifecycle enum to committed closed Goal 056 rejected valid historical statuses. | Apply `OPEN`/pause/unknown selection rules to unanswered goals; allow byte-exact committed closed history while rejecting uncommitted unknown closing pairs. |
 
-Validation snapshot on 2026-08-13 before delivery:
+Final validation snapshot on 2026-08-13 after primary delivery:
 
 ```text
-focused Ruff                         PASS
-relevant pytest                     60 passed, 12 subtests passed
+focused Ruff                         PASS (All checks passed!)
+relevant pytest                     61 passed, 12 subtests passed
+Python compilation                  PASS
 P1 same phase / two goal numbers    PASS
 P2 ambiguous executable set         PASS (fail closed)
 P3 post-outcome unpinned spec       PASS (rejected)
@@ -141,7 +142,16 @@ session_start.sh                    РАСХОЖДЕНИЙ НЕТ
 Route B status                      CHECK: OK; 057 paused; 058 selected
 tool manifest                       7 families; 34 tools; 19 writers
 tool manifest SHA-256               ccf2a413e45ad4aef001c4113f2b81b603aa620e45d2a356806ca57a7fdbdd5d
+tight brief                         PASS; 102064 bytes; 1656 lines
+Codex packet build                  PASS; 11228 bytes; 157 lines
+Proshka packet build                PASS; 11351 bytes; 159 lines
 ```
+
+The repository-wide Ruff invocation reports 19 pre-existing findings in
+`orchestrator/spine.py`; the identical 19 findings reproduce from the parent
+commit `056a30fc9633dd13d073f0fafa9b6769f884b61c`. They are outside the
+AUTOPILOT_000 patch and were neither introduced nor hidden. Focused Ruff over
+all new or materially changed AUTOPILOT runtime/state/test files passes.
 
 Residual boundaries are intentional: Stage 000 does not dispatch, mint, persist
 runtime, write a database, authenticate a real Proshka receipt by itself, or
@@ -149,10 +159,11 @@ execute closeout. The next smallest infrastructure goal is `AUTOPILOT_001`, but
 it is not authorized or made executable by this contract.
 
 Delivery lineage: Goal 057 pause semantics were committed and pushed as
-`056a30fc9633dd13d073f0fafa9b6769f884b61c`. This contract and its runtime are
-the separate candidate with subject
-`[Linux][rh_clean][Control] Validate AUTOPILOT_000 goal-run contract`; the exact
-delivered commit and remote state are verified after scoped commit/rebase/push.
+`056a30fc9633dd13d073f0fafa9b6769f884b61c`. This contract and its runtime were
+committed separately as `d4e31e1b5c1fd553bb6b6dcccf17132b20a290a6` with
+subject `[Linux][rh_clean][Control] Validate AUTOPILOT_000 goal-run contract`.
+Both scoped commits were rebased without change, pushed to `origin/rh_clean`,
+and verified against the remote branch on 2026-08-13.
 
 ## Bounded state machine
 
