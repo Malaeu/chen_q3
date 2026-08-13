@@ -1662,6 +1662,47 @@ orthogonal projection и Cauchy--Schwarz; direct/target Lean и `q3_check`.
 **Граница:** `PASS_EXACT_CROSSWALK_AND_FLOOR_BRIDGE`; explicit limit packet,
 rate, denominator floor, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: явный CCM-limit и Poisson-инверсия доказаны
+
+**Развилка:** принять Fourier/inversion symmetry предельного пакета как binder,
+симметризовать trial либо построить буквальную Eq. (7.1) функцию и вывести всё
+в production Lean.
+
+**Выбрали:** `explicitCCMLimitH`, точное
+`fourier_explicitCCMLimitH` и
+`E_star_explicitCCMLimitH_inv : u>0 -> E_star h u⁻¹ = E_star h u`.
+
+**Почему:** существующий coefficient crosswalk требовал настоящего физического
+inversion-even supplier. Абстрактная гипотеза повторяла бы цель, а
+симметризация меняла бы source family.
+
+**Что отвергли и почему:** Fourier eigenrelation в binders — receiver;
+inversion-even binder — receiver; Hermite-пакет с теми же качествами, но без
+буквальной Eq. (7.1) формулы — object drift; объявить этот лист G3 — потерять
+реальные Lemma 7.2 rate, central floor и coupled schedule.
+
+**Техника:** Gaussian Fourier transform, second/fourth derivative moments,
+cocompact `O(|x|^-2)` decay, exact Fourier scaling, Poisson summation,
+even integer sum и square-root rescaling.
+
+**Следующий ход:** source-lock actual normalized two-mode prolate `h_lambda`,
+доказать uniform `O(lambda^-2)` к `explicitCCMLimitH`, ненулевой central
+overlap и projected denominator floor на одной заранее выбранной `(m,N)`
+schedule; параллельный G1 остаётся на quantitative even-sector gap arithmetic.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean` ·
+`GOAL058_EXPLICIT_CCM_LIMIT_FOURIER_POISSON_CLOSEOUT_2026-08-14.md` ·
+CCM `literature/zotero/H8ULBMAL/fulltext.md:1256-1308,1410-1468`.
+
+**Чей вердикт и его аргумент:** локальный kernel-checked closeout Codex; новый
+внешний запрос не нужен, потому что выбранный supplier прошёл все production
+валидаторы. Предыдущий source audit остаётся ограничителем: paper rate ещё не
+экспортирован на текущую Lean family.
+
+**Граница:** `PASS_EXACT_LIMIT_PACKET_AND_INVERSION`; prolate rate, central
+floor, coupled schedule, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

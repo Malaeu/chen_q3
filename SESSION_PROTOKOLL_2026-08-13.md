@@ -485,3 +485,26 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
   and the actual Lemmas 7.2--7.3 rate on one coupled cofinal schedule.
 - Classification: `PASS_EXACT_CROSSWALK_AND_FLOOR_BRIDGE`; the limit packet,
   odd-mass rate, denominator floor, G1, and G3 remain `OPEN`.
+
+## Goal 058 source progress — explicit CCM limit and Poisson inversion
+
+- The literal CCM Eq. (7.1) polynomial Gaussian is now a production Lean
+  object `explicitCCMLimitH`; it was not replaced by an abstract Fourier
+  eigenfunction or a symmetrized trial.
+- `fourier_explicitCCMLimitH` derives exact Fourier invariance from the
+  Gaussian transform and the second/fourth derivative-moment identities.
+- `E_star_explicitCCMLimitH_inv` proves
+  `E_star explicitCCMLimitH u⁻¹ = E_star explicitCCMLimitH u` for every
+  `u > 0` by a kernel-checked decay, scaling, Poisson-summation, integer-even
+  sum, and square-root transport chain.
+- Validation passed: direct Lean, target build (7755 jobs), full build (7817
+  jobs), `q3_check`, forbidden-token scan, and public axiom audit with only
+  `[propext, Classical.choice, Quot.sound]`.
+- This closes the concrete limit supplier consumed by the existing
+  inversion-to-coefficient crosswalk.  It does not close G3: the actual
+  normalized prolate `h_lambda` construction, Lemma 7.2 rate, nonzero central
+  overlap/projected denominator floor, and one coupled `(m,N)` schedule remain
+  open.  G1 also remains open at quantitative even-sector arithmetic and
+  even/odd ground ordering.
+- Classification: `PASS_EXACT_LIMIT_PACKET_AND_INVERSION`; no Route B
+  promotion and no RH claim.
