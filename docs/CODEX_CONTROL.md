@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 6
+CONTROL_VERSION: 7
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
 BODIES:
@@ -593,6 +593,29 @@ fresh_chats_opened <= phases_opened + forced_rollovers
 mathematical_owner_deferral_violations = 0
 ```
 
+### 14.1 Event-scoped refresh and local semantic freshness
+
+Every writing Spine refresh uses one closed reason and executes only its named
+transaction. `verdict-intake` migrates verdict knowledge; `step-close` migrates
+verdicts, `INSIGHTS.md`, and `Progress_Log.md`, and rebuilds `q3_docs` only when the
+curated corpus hash changed; `goal-close` runs every registered migrator, Route B
+catalog refresh, sensors, semantic rebuild, live plants, dynamic goal queries, and
+migration census; `semantic-index-refresh` rebuilds only `q3_docs` and its plants.
+An unknown reason combined with `--refresh` fails closed.
+
+Semantic freshness is machine-local. The authoritative receipt lives under the
+ignored `q3.lean.aristotle/.qmd_cache/` tree and binds the deterministic hash of
+repo-relative curated paths plus bytes, file counts and suffix breakdown, this
+machine's qmd index identity and live collection count, fixed plants, and three to
+five dynamic queries for the selected physical goal. A tracked receipt from another
+machine or commit is historical evidence only. Read-only startup never rebuilds a
+missing or stale index; it fails with the exact explicit refresh command.
+
+Deep shelf search is explicit: `./ask.sh --deep "<terms>"` always runs semantic
+retrieval even when exact layers hit, and queries every enabled external Lean base
+from the registered base catalogue. External name or atom matches are candidates,
+never proof or interface equivalence.
+
 ## 15. Failure codes and change control
 
 ```text
@@ -622,6 +645,12 @@ PROJECT_DATABASE_ROLE_COLLISION
 NATIVE_MEMORY_SEMANTIC_OVERRIDE
 OBSERVABILITY_SNAPSHOT_INVALID
 SEMANTIC_INDEX_PLANT_FAILED
+SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID
+SEMANTIC_INDEX_CORPUS_STALE
+SEMANTIC_INDEX_COLLECTION_DRIFT
+SPINE_REFRESH_REASON_UNKNOWN
+SPINE_REFRESH_ACTION_FAILED
+MIGRATION_CENSUS_DRIFT
 ARTIFACT_IDENTITY_DRIFT
 AUTOPSY_REQUIRED_MISSING
 AUTOPSY_SCHEMA_INVALID

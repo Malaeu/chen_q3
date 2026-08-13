@@ -132,12 +132,14 @@ contract, trigger owner and existing gates are declared in
 `orchestrator/OBSERVABILITY.md`. Only a reviewed belief-changing conclusion may
 cross from observability into the compact `knowledge.db` journal.
 
-Refresh all source sensors through the sole checked entrypoint. The direct
-sensor command remains available for dry-run diagnosis:
+Refresh only the event-scoped transaction. The direct sensor command remains
+available for dry-run diagnosis:
 
 ```bash
 python3 orchestrator/sensors.py refresh --dry-run
+python3 orchestrator/spine.py --refresh --strict --reason step-close
 python3 orchestrator/spine.py --refresh --strict --reason goal-close
+python3 orchestrator/spine.py --refresh --strict --reason semantic-index-refresh
 ```
 
 ## Быстрый старт
@@ -145,8 +147,9 @@ python3 orchestrator/spine.py --refresh --strict --reason goal-close
 ```bash
 python3 orchestrator/spine.py            # regenerate view
 python3 orchestrator/spine.py --stdout   # print to terminal
-python3 orchestrator/spine.py --strict --reason session-start
-python3 orchestrator/spine.py --refresh --strict --reason goal-close  # sensors + q3_docs + plants
+python3 orchestrator/spine.py --strict --reason session-start --stdout
+python3 orchestrator/spine.py --refresh --strict --reason step-close  # memory + stale-only q3_docs
+python3 orchestrator/spine.py --refresh --strict --reason goal-close  # full transaction
 ```
 
 The remaining degraded state is explicit rather than hidden: numeric checks

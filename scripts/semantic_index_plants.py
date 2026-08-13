@@ -5,16 +5,24 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
+import tempfile
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from q3_docs_corpus import (
+    REPO_ROOT,
+    corpus_snapshot,
+    qmd_index_probe,
+    semantic_machine_id,
+)
 from qmd_ops import qmd_lock, run_qmd
 
-
 REPO = Path(__file__).resolve().parents[1]
-DEFAULT_OUT = REPO / "orchestrator" / "state" / "SEMANTIC_INDEX_STATUS.json"
+DEFAULT_OUT = REPO / "q3.lean.aristotle" / ".qmd_cache" / "semantic_index_receipt.json"
 COLLECTION = "q3_docs"
 PLANTS = (
     ("POST_JUNE_IDENTIFICATION", "IdentificationAt", ("routeb-bus", "routeb-lamport-rh-closure")),
@@ -47,10 +55,34 @@ def parse_results(raw: str) -> list[dict[str, Any]]:
 
 
 def result_path(row: dict[str, Any]) -> str:
-    return str(row.get("file") or row.get("path") or row.get("docid") or "").lower().replace("_", "-")
+    value = str(row.get("file") or row.get("path") or row.get("docid") or "")
+    return value.lower().replace("_", "-")
 
 
-def run_plants(*, out: Path = DEFAULT_OUT, write: bool = True) -> dict[str, Any]:
+def write_atomic(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        encoding="utf-8",
+        dir=path.parent,
+        prefix=f".{path.name}.",
+        suffix=".tmp",
+        delete=False,
+    ) as handle:
+        pending = Path(handle.name)
+        json.dump(payload, handle, ensure_ascii=False, indent=2, sort_keys=True)
+        handle.write("\n")
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(pending, path)
+
+
+def run_plants(
+    *,
+    out: Path = DEFAULT_OUT,
+    write: bool = True,
+    dynamic_preflight: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     qmd = resolve_qmd()
     rows: list[dict[str, Any]] = []
     with qmd_lock("semantic_index_plants"):
@@ -74,14 +106,38 @@ def run_plants(*, out: Path = DEFAULT_OUT, write: bool = True) -> dict[str, Any]
     commit = subprocess.run(
         ["git", "rev-parse", "HEAD"], cwd=REPO, capture_output=True, text=True,
     ).stdout.strip() or "UNKNOWN"
+    corpus = corpus_snapshot(REPO_ROOT)
+    qmd_index = qmd_index_probe(collection=COLLECTION)
+    dynamic_queries = (
+        dynamic_preflight.get("queries", [])
+        if isinstance(dynamic_preflight, dict)
+        else []
+    )
+    if isinstance(dynamic_preflight, dict) and dynamic_preflight.get("status") != "PASS":
+        status = "FAIL"
     payload = {
-        "schema": "q3_semantic_index_status.v1", "collection": COLLECTION,
-        "authority": "RETRIEVAL_VALIDATION_NOT_PROOF", "source_commit": commit,
-        "mode": "search_plus_vsearch", "status": status, "plants": rows,
+        "schema": "q3_semantic_index_receipt.v2",
+        "collection": COLLECTION,
+        "authority": "MACHINE_LOCAL_RETRIEVAL_VALIDATION_NOT_PROOF",
+        "machine_id": semantic_machine_id(),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source_commit": commit,
+        "mode": "search_plus_vsearch",
+        "status": status,
+        "corpus": corpus,
+        "qmd_index": qmd_index,
+        "collection_file_count": qmd_index["collection_file_count"],
+        "plants": rows,
+        "dynamic_goal_path": (
+            dynamic_preflight.get("goal_path")
+            if isinstance(dynamic_preflight, dict)
+            else None
+        ),
+        "dynamic_queries": dynamic_queries,
+        "boundary": "RETRIEVAL_VALIDATION_NOT_PROOF",
     }
     if write:
-        out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        write_atomic(out, payload)
     if status != "PASS":
         failed = ", ".join(row["id"] for row in rows if row["status"] != "PASS")
         raise RuntimeError(f"SEMANTIC_INDEX_PLANT_FAILED: {failed}")
@@ -91,9 +147,17 @@ def run_plants(*, out: Path = DEFAULT_OUT, write: bool = True) -> dict[str, Any]
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--dynamic-preflight", type=Path)
     parser.add_argument("--no-write", action="store_true")
     args = parser.parse_args()
-    payload = run_plants(out=args.out, write=not args.no_write)
+    dynamic = None
+    if args.dynamic_preflight:
+        dynamic = json.loads(args.dynamic_preflight.read_text(encoding="utf-8"))
+    payload = run_plants(
+        out=args.out,
+        write=not args.no_write,
+        dynamic_preflight=dynamic,
+    )
     print(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True))
     return 0
 

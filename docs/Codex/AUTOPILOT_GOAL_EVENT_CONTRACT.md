@@ -72,7 +72,7 @@ SHA-256.
 
 ```text
 focused Ruff                                      PASS
-goal-event tests                                  8 passed
+goal-event tests                                 10 passed
 exact attempt retry                               ALREADY_RECORDED
 attempt ID with changed payload                   ATTEMPT_ID_COLLISION
 controller field smuggled through extra           rejected

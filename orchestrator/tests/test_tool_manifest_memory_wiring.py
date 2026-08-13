@@ -174,7 +174,7 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_control_routes_commands_to_live_manifest(self) -> None:
         control = (REPO / "docs" / "CODEX_CONTROL.md").read_text(encoding="utf-8")
-        self.assertIn("CONTROL_VERSION: 6", control)
+        self.assertIn("CONTROL_VERSION: 7", control)
         self.assertIn("CODEX_LINUX", control)
         self.assertIn("GOAL_RUN", control)
         self.assertIn("GOAL_SCOPED_OPERATIONAL_GRANT", control)

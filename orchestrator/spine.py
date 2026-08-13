@@ -9,13 +9,15 @@ the conductor zone (orchestrator/) and only reads elsewhere.
 
 Usage:
     ./orchestrator/spine.py            # write SPINE_STATE.json + SPINE_VIEW.md
-    ./orchestrator/spine.py --refresh  # write upstream refreshes before validation
+    ./orchestrator/spine.py --refresh --reason step-close
+    ./orchestrator/spine.py --refresh --reason goal-close
+    ./orchestrator/spine.py --refresh --reason semantic-index-refresh
     ./orchestrator/spine.py --stdout   # read-only unless combined with --refresh
     ./orchestrator/spine.py --strict --stdout --reason session-start
 
 P9 control/runtime/operator validation is unconditional in every mode.
-``--strict`` adds the semantic-index plant gate and a receipt; it does not turn
-otherwise absent P9 validation on.
+``--strict`` adds the machine-local semantic-receipt gate; it does not turn
+otherwise absent P9 validation on. A writing refresh requires a closed reason.
 """
 
 from __future__ import annotations
@@ -25,8 +27,8 @@ import datetime as _dt
 import hashlib
 import json
 import os
-import sqlite3
 import re
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -37,9 +39,20 @@ import yaml
 try:
     from orchestrator import observability as _observability
     from orchestrator import kb as _kb
+    from scripts.q3_docs_corpus import (
+        corpus_snapshot as _q3_docs_corpus_snapshot,
+        qmd_index_probe as _qmd_index_probe,
+        semantic_machine_id,
+    )
 except ModuleNotFoundError:  # direct `python3 orchestrator/spine.py`
     import observability as _observability
     import kb as _kb
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from scripts.q3_docs_corpus import (
+        corpus_snapshot as _q3_docs_corpus_snapshot,
+        qmd_index_probe as _qmd_index_probe,
+        semantic_machine_id,
+    )
 
 REPO = Path(__file__).resolve().parents[1]
 OUT = REPO / "orchestrator" / "state" / "SPINE_VIEW.md"
@@ -52,6 +65,9 @@ BEHAVIOR_REGISTRY = REPO / "orchestrator" / "BEHAVIOR_CONTROL_REGISTRY.json"
 ARTIFACT_REGISTRY = REPO / "orchestrator" / "ARTIFACT_IDENTITY_REGISTRY.json"
 AUTOPSY_MAP = REPO / "q3.lean.aristotle" / "ACTIVE" / "graphs" / "AUTOPSY_MAP.json"
 SEMANTIC_INDEX_STATUS = REPO / "orchestrator" / "state" / "SEMANTIC_INDEX_STATUS.json"
+SEMANTIC_INDEX_RECEIPT = (
+    REPO / "q3.lean.aristotle" / ".qmd_cache" / "semantic_index_receipt.json"
+)
 OBSERVABILITY_DB = (
     REPO / "q3.lean.aristotle" / "aristotle_db" / "observability.db"
 )
@@ -98,6 +114,56 @@ DECISION_EFFECTS = {
     "BLOCKER_STRICTLY_SHRUNK",
     "INTERVAL_STRICTLY_NARROWED",
     "DEPENDENCY_REMOVED",
+}
+
+REFRESH_DISPATCH: dict[str, tuple[str, ...]] = {
+    "verdict-intake": (
+        "migrate-verdicts",
+        "validate",
+    ),
+    "step-close": (
+        "migrate-verdicts",
+        "migrate-journal",
+        "migrate-progress-log",
+        "semantic-index-if-stale",
+        "validate",
+    ),
+    "goal-close": (
+        "migrate-kills",
+        "migrate-moves",
+        "migrate-dossiers",
+        "migrate-journal",
+        "migrate-searches",
+        "migrate-primecomb",
+        "migrate-verdicts",
+        "migrate-progress-log",
+        "backfill",
+        "inventory",
+        "atoms",
+        "sensors",
+        "semantic-index",
+        "migration-census",
+        "validate",
+    ),
+    "semantic-index-refresh": (
+        "semantic-index",
+        "validate",
+    ),
+}
+
+ACTION_COMMANDS: dict[str, tuple[str, ...]] = {
+    "migrate-kills": ("orchestrator/kb_migrate_kills.py",),
+    "migrate-moves": ("orchestrator/kb_migrate_moves.py",),
+    "migrate-dossiers": ("orchestrator/kb_migrate_dossiers.py",),
+    "migrate-journal": ("orchestrator/kb_migrate_journal.py",),
+    "migrate-searches": ("orchestrator/kb_migrate_searches.py",),
+    "migrate-primecomb": ("orchestrator/kb_migrate_primecomb.py",),
+    "migrate-verdicts": ("orchestrator/kb_migrate_verdicts.py",),
+    "migrate-progress-log": ("orchestrator/kb_migrate_progress_log.py",),
+    "backfill": ("orchestrator/backfill_db.py", "--sync"),
+    "inventory": ("docs/cartographer/inventory.py", "--scope", "RouteB"),
+    "atoms": ("docs/cartographer/atoms.py", "docs/cartographer/atoms_RouteB.json"),
+    "migration-census": ("orchestrator/migration_census.py", "--strict"),
 }
 
 
@@ -595,7 +661,7 @@ def _validate_active_control() -> None:
     text = CONTROL.read_text(encoding="utf-8")
     required = (
         "CONTROL_ID: Q3_EXECUTOR_CONTROL",
-        "CONTROL_VERSION: 6",
+        "CONTROL_VERSION: 7",
         "STATUS: ACTIVE",
         "ROLE: CODEX_EXECUTOR",
         "BODIES:\n  - CODEX_MAC\n  - CODEX_LINUX",
@@ -618,6 +684,8 @@ def _validate_active_control() -> None:
         "PROJECT_DATABASES_MUST_NOT_BE_MERGED",
         "NATIVE_MEMORY_SEMANTIC_OVERRIDE",
         "OBSERVABILITY_SNAPSHOT_INVALID",
+        "SPINE_REFRESH_REASON_UNKNOWN",
+        "SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID",
         "AUTOPSY: dropped=<AUTOPSY_TAG_V1>",
         "fresh_chats_opened <= phases_opened + forced_rollovers",
     )
@@ -1200,17 +1268,104 @@ def validate_artifact_identities() -> list[dict[str, object]]:
     return artifacts
 
 
-def validate_semantic_index() -> dict[str, object]:
-    data = _load_json(SEMANTIC_INDEX_STATUS, {})
+def refresh_actions(reason: str) -> tuple[str, ...]:
+    actions = REFRESH_DISPATCH.get(reason)
+    if actions is None:
+        _fail(
+            "SPINE_REFRESH_REASON_UNKNOWN",
+            f"{reason!r}; expected one of {', '.join(sorted(REFRESH_DISPATCH))}",
+        )
+    return actions
+
+
+def semantic_index_stale(
+    *,
+    receipt_path: Path = SEMANTIC_INDEX_RECEIPT,
+    repo_root: Path = REPO,
+) -> bool:
+    try:
+        validate_semantic_index(receipt_path=receipt_path, repo_root=repo_root)
+        return False
+    except (ControlViolation, OSError, ValueError, TypeError, json.JSONDecodeError):
+        return True
+
+
+def validate_semantic_index(
+    *,
+    receipt_path: Path = SEMANTIC_INDEX_RECEIPT,
+    repo_root: Path = REPO,
+    files: list[Path] | None = None,
+    qmd_probe: object | None = None,
+) -> dict[str, object]:
+    data = _load_json(receipt_path, {})
+    corpus = data.get("corpus")
+    qmd_index = data.get("qmd_index")
     plants = data.get("plants")
+    dynamic = data.get("dynamic_queries")
+    dynamic_goal_path = data.get("dynamic_goal_path")
+    dynamic_receipts_valid = (
+        isinstance(dynamic, list)
+        and 3 <= len(dynamic) <= 5
+        and all(
+            isinstance(row, dict)
+            and row.get("status") == "PASS"
+            and isinstance(row.get("external_lean"), dict)
+            and bool(row["external_lean"].get("bases_queried"))
+            and row["external_lean"].get("boundary")
+            == "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE"
+            for row in dynamic
+        )
+    )
     if (
-        data.get("schema") != "q3_semantic_index_status.v1"
+        data.get("schema") != "q3_semantic_index_receipt.v2"
         or data.get("status") != "PASS"
+        or data.get("collection") != "q3_docs"
+        or data.get("machine_id") != semantic_machine_id()
+        or not isinstance(corpus, dict)
+        or not isinstance(qmd_index, dict)
         or not isinstance(plants, list)
         or not plants
         or any(not isinstance(row, dict) or row.get("status") != "PASS" for row in plants)
+        or not dynamic_receipts_valid
+        or not isinstance(dynamic_goal_path, str)
+        or not (repo_root / dynamic_goal_path).is_file()
     ):
-        _fail("SEMANTIC_INDEX_PLANT_FAILED", "q3_docs status or mandatory plants are not PASS")
+        _fail(
+            "SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID",
+            "missing, foreign, incomplete, or failed local q3_docs receipt; rebuild with "
+            "python3 orchestrator/spine.py --refresh --reason semantic-index-refresh",
+        )
+    current = _q3_docs_corpus_snapshot(repo_root, files)
+    if (
+        corpus.get("sha256") != current["sha256"]
+        or corpus.get("file_count") != current["file_count"]
+        or corpus.get("breakdown") != current["breakdown"]
+    ):
+        _fail(
+            "SEMANTIC_INDEX_CORPUS_STALE",
+            "curated corpus differs from local receipt; rebuild with python3 "
+            "orchestrator/spine.py --refresh --reason semantic-index-refresh",
+        )
+    try:
+        live = qmd_probe() if callable(qmd_probe) else _qmd_index_probe(collection="q3_docs")
+    except (OSError, RuntimeError, sqlite3.DatabaseError) as exc:
+        _fail("SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID", str(exc))
+    if not isinstance(live, dict):
+        _fail("SEMANTIC_INDEX_LOCAL_RECEIPT_INVALID", "qmd probe did not return an object")
+    expected_count = current["expected_collection_file_count"]
+    if (
+        qmd_index.get("identity") != live.get("identity")
+        or qmd_index.get("collection_root") != live.get("collection_root")
+        or qmd_index.get("collection_mask") != live.get("collection_mask")
+        or data.get("collection_file_count") != live.get("collection_file_count")
+        or live.get("collection_file_count") != expected_count
+    ):
+        _fail(
+            "SEMANTIC_INDEX_COLLECTION_DRIFT",
+            f"q3_docs collection identity/count drift; expected {expected_count}, "
+            f"got {live.get('collection_file_count')}; rebuild with python3 "
+            "orchestrator/spine.py --refresh --reason semantic-index-refresh",
+        )
     return data
 
 
@@ -1225,8 +1380,8 @@ def build_state() -> dict[str, object]:
         "schema": "q3_autopsy_map.v1", "authority": "DERIVED_NONCANONICAL_OBSERVABILITY",
         "events": [], "walls": [], "namewatch_candidates": [],
     })
-    semantic = _load_json(SEMANTIC_INDEX_STATUS, {
-        "schema": "q3_semantic_index_status.v1", "status": "NOT_VALIDATED",
+    semantic = _load_json(SEMANTIC_INDEX_RECEIPT, {
+        "schema": "q3_semantic_index_receipt.v2", "status": "NOT_VALIDATED",
         "plants": [],
     })
     return {
@@ -1478,6 +1633,67 @@ def write_outputs() -> dict[str, object]:
     return state
 
 
+def _run_checked(action: str, command: tuple[str, ...]) -> None:
+    proc = subprocess.run([sys.executable, *command], cwd=REPO, text=True)
+    if proc.returncode != 0:
+        code = {
+            "migrate-verdicts": "VERDICT_KNOWLEDGE_MIGRATION_FAILED",
+            "migrate-progress-log": "BRANCH_DECISION_MIGRATION_FAILED",
+            "semantic-index": "SEMANTIC_INDEX_PLANT_FAILED",
+            "migration-census": "MIGRATION_CENSUS_DRIFT",
+        }.get(action, "SPINE_REFRESH_ACTION_FAILED")
+        _fail(code, f"{action} failed with exit {proc.returncode}")
+
+
+def _refresh_semantic_index() -> None:
+    _run_checked(
+        "semantic-index",
+        ("q3.lean.aristotle/scripts/refresh_q3_docs.py",),
+    )
+    with tempfile.TemporaryDirectory(prefix="q3-deep-preflight-") as temp_dir:
+        dynamic = Path(temp_dir) / "dynamic.json"
+        _run_checked(
+            "semantic-index",
+            ("scripts/deep_preflight.py", "--out", str(dynamic)),
+        )
+        _run_checked(
+            "semantic-index",
+            ("scripts/semantic_index_plants.py", "--dynamic-preflight", str(dynamic)),
+        )
+
+
+def execute_refresh(reason: str) -> tuple[str, ...]:
+    actions = refresh_actions(reason)
+    for action in actions:
+        if action == "semantic-index-if-stale":
+            if semantic_index_stale():
+                _refresh_semantic_index()
+            continue
+        if action == "semantic-index":
+            _refresh_semantic_index()
+            continue
+        if action == "sensors":
+            try:
+                from orchestrator import sensors as _sensors
+            except ModuleNotFoundError:
+                import sensors as _sensors
+            _sensors.refresh(dry_run=False)
+            continue
+        if action == "validate":
+            continue
+        command = ACTION_COMMANDS.get(action)
+        if command is None:
+            _fail("SPINE_REFRESH_ACTION_FAILED", f"unimplemented action: {action}")
+        _run_checked(action, command)
+    return actions
+
+
+def refresh_writes_spine_outputs(reason: str) -> bool:
+    """Only the full goal-close transaction materializes tracked Spine views."""
+    refresh_actions(reason)
+    return reason == "goal-close"
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument(
@@ -1515,60 +1731,7 @@ def main() -> int:
             print(f"CHANNEL_RUNTIME_REVIEW_EVENTS_RECORDED={changed}")
             return 0
         if args.refresh:
-            if args.reason == "goal-close":
-                migrate_progress_log = subprocess.run(
-                    [sys.executable, "orchestrator/kb_migrate_progress_log.py"],
-                    cwd=REPO, text=True,
-                )
-                if migrate_progress_log.returncode != 0:
-                    _fail("BRANCH_DECISION_MIGRATION_FAILED",
-                          "kb_migrate_progress_log.py failed at goal close")
-                migrate_verdicts = subprocess.run(
-                    [sys.executable, "orchestrator/kb_migrate_verdicts.py"],
-                    cwd=REPO, text=True,
-                )
-                if migrate_verdicts.returncode != 0:
-                    _fail("VERDICT_KNOWLEDGE_MIGRATION_FAILED",
-                          "kb_migrate_verdicts.py failed at goal close")
-                sync_declarations = subprocess.run(
-                    [sys.executable, "orchestrator/backfill_db.py", "--sync"],
-                    cwd=REPO, text=True,
-                )
-                if sync_declarations.returncode != 0:
-                    _fail("ARTIFACT_IDENTITY_DRIFT",
-                          "Route B declaration catalog sync failed at goal close")
-                refresh_inventory = subprocess.run(
-                    [sys.executable, "docs/cartographer/inventory.py", "--scope", "RouteB"],
-                    cwd=REPO, text=True,
-                )
-                if refresh_inventory.returncode != 0:
-                    _fail("ARTIFACT_IDENTITY_DRIFT",
-                          "Route B declaration inventory refresh failed at goal close")
-                refresh_atoms = subprocess.run(
-                    [sys.executable, "docs/cartographer/atoms.py",
-                     "docs/cartographer/atoms_RouteB.json"],
-                    cwd=REPO, text=True,
-                )
-                if refresh_atoms.returncode != 0:
-                    _fail("ARTIFACT_IDENTITY_DRIFT",
-                          "Route B external-atom inventory refresh failed at goal close")
-            try:
-                from orchestrator import sensors as _sensors
-            except ModuleNotFoundError:
-                import sensors as _sensors
-            _sensors.refresh(dry_run=False)
-            refresh_index = subprocess.run(
-                [sys.executable, "q3.lean.aristotle/scripts/refresh_q3_docs.py"],
-                cwd=REPO, text=True,
-            )
-            if refresh_index.returncode != 0:
-                _fail("SEMANTIC_INDEX_PLANT_FAILED", "q3_docs refresh failed")
-            plant_index = subprocess.run(
-                [sys.executable, "scripts/semantic_index_plants.py"],
-                cwd=REPO, text=True,
-            )
-            if plant_index.returncode != 0:
-                _fail("SEMANTIC_INDEX_PLANT_FAILED", "semantic-index plants failed")
+            execute_refresh(args.reason)
         validation = validate_p9a()
         if args.strict and args.reason != "sensor-refresh":
             validate_semantic_index()
@@ -1579,9 +1742,11 @@ def main() -> int:
         return 2
     if args.stdout:
         sys.stdout.write(view)
-    else:
+    elif not args.refresh or refresh_writes_spine_outputs(args.reason):
         write_outputs()
         print(f"wrote {STATE_OUT}, {OUT}, {META_CORPUS_OUT}")
+    else:
+        print(f"SPINE_REFRESH_COMPLETE reason={args.reason}")
     if args.strict:
         print(
             f"P9_STRICT_PASS reason={args.reason} base_control=PASS "

@@ -18,7 +18,9 @@ and `Next target:`.
 
 import argparse
 import re
+import sqlite3
 import sys
+from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -29,6 +31,7 @@ SRC = REPO / "q3.lean.aristotle/docs/INSIGHTS.md"
 
 COLUMNS = ("id", "date", "kind", "title", "workstream", "state", "channel", "target",
            "validation", "artifact_sha", "boundary", "next_target", "body", "source_file")
+SOURCE_FILE = "q3.lean.aristotle/docs/INSIGHTS.md"
 
 HEAD = re.compile(
     r"^##\s+(?P<kind>[A-Za-z][\w ]*?)\s*\((?P<date>\d{4}-\d\d-\d\d)"
@@ -68,8 +71,8 @@ def field(body, *labels, limit=400):
     return None
 
 
-def parse():
-    text = SRC.read_text(errors="ignore")
+def parse(path: Path = SRC):
+    text = path.read_text(errors="ignore")
     chunks = re.split(r"\n(?=## )", text)
     rows, skipped = [], 0
     seen = {}
@@ -108,6 +111,25 @@ def parse():
     return rows, skipped
 
 
+def migrate(conn: sqlite3.Connection, rows: list[dict[str, object]]) -> None:
+    """Replace only the canonical INSIGHTS projection and rebuild its FTS view."""
+    conn.execute("DELETE FROM journal_entry WHERE source_file=?", (SOURCE_FILE,))
+    conn.executemany(
+        f"INSERT INTO journal_entry ({','.join(COLUMNS)}) "
+        f"VALUES ({','.join('?' * len(COLUMNS))})",
+        [tuple(row.get(column) for column in COLUMNS) for row in rows],
+    )
+    conn.execute("INSERT INTO journal_fts(journal_fts) VALUES('rebuild')")
+    conn.execute(
+        "INSERT INTO source_ledger (source_file, expected_rows, migrated_at, note) "
+        "VALUES (?,?,?,?) ON CONFLICT(source_file) DO UPDATE SET "
+        "expected_rows=excluded.expected_rows, migrated_at=excluded.migrated_at, "
+        "note=excluded.note",
+        (SOURCE_FILE, len(rows), date.today().isoformat(), "wave 2 journal exact projection"),
+    )
+    conn.commit()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -134,18 +156,7 @@ def main() -> int:
         return 0
 
     conn = kb.connect()
-    conn.executemany(
-        f"INSERT OR REPLACE INTO journal_entry ({','.join(COLUMNS)}) "
-        f"VALUES ({','.join('?' * len(COLUMNS))})",
-        [tuple(r.get(c) for c in COLUMNS) for r in rows])
-    conn.execute("INSERT INTO journal_fts(journal_fts) VALUES('delete-all')")
-    conn.execute("INSERT INTO journal_fts(rowid, title, body, target, boundary) "
-                 "SELECT rowid, title, body, target, boundary FROM journal_entry")
-    conn.execute(
-        "INSERT OR REPLACE INTO source_ledger (source_file, expected_rows, migrated_at, note) "
-        "VALUES (?,?,?,?)",
-        (str(SRC.relative_to(REPO)), len(rows), "2026-08-05", "wave 2 journal"))
-    conn.commit()
+    migrate(conn, rows)
     print("migrated into", kb.DB_PATH)
     return 0
 

@@ -168,7 +168,10 @@ finite certificates, прочитать `ACTIVE/PSD_STEP33_MONITOR.md`. Испо
 3. Если в ходе goal выбиралась ветка, до закрытия добавить восьмиполевую запись
    в `docs/Progress_Log.md`; внешний вердикт хранится вместе с дословным
    аргументом, а не одной буквой выбора.
-4. Закрытие goal проводить через
+4. Закрытие промежуточного шага проводить через
+   `python3 orchestrator/spine.py --refresh --reason step-close`; он мигрирует
+   verdict/INSIGHTS/Progress_Log и перестраивает `q3_docs` только при изменившемся
+   corpus hash. Закрытие goal проводить через
    `python3 orchestrator/spine.py --refresh --reason goal-close`, чтобы verdict
    lessons, развилки, сенсоры и индекс доехали в базы.
 5. Route state обновлять последним.

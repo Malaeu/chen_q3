@@ -16,8 +16,18 @@ set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
 if [ $# -eq 0 ]; then
-  echo "usage: ./ask.sh <термин> [ещё термины]"
+  echo "usage: ./ask.sh [--deep] <термин> [ещё термины]"
   echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs"
+  exit 2
+fi
+
+DEEP=0
+if [ "${1:-}" = "--deep" ]; then
+  DEEP=1
+  shift
+fi
+if [ $# -eq 0 ]; then
+  echo "usage: ./ask.sh [--deep] <термин> [ещё термины]"
   exit 2
 fi
 
@@ -130,19 +140,33 @@ if [ -n "$OUT" ]; then
   HITS=$((HITS + 1))
 fi
 
-# ── 6. Семантический fallback ─────────────────────────────────────────────────
+# ── 6. Семантический fallback / обязательный deep-layer ──────────────────────
 # Он заметно дороже точных индексов, поэтому запускается только когда они пусты.
 # Но без него нельзя честно произносить «не найдено нигде»: имя может быть неизвестно,
 # а нужное свойство описано другими словами.
-if [ "$HITS" -eq 0 ]; then
+if [ "$HITS" -eq 0 ] || [ "$DEEP" -eq 1 ]; then
   SEARCHED+=("q3_docs (semantic fallback через research_oracle.py)")
-  OUT="$(python3 scripts/research_oracle.py query "$Q" -c q3_docs 2>&1)"
+  ORACLE_PY="${Q3_RESEARCH_ORACLE_PY:-scripts/research_oracle.py}"
+  OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs 2>&1)"
   RC=$?
   if [ "$RC" -ne 0 ]; then
     SEARCH_FAILURES+=("q3_docs: semantic query failed (code $RC)")
   elif printf '%s' "$OUT" | grep -q '"file"'; then
     hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs"
     printf '%s\n' "$OUT" | head -60
+    HITS=$((HITS + 1))
+  fi
+fi
+
+if [ "$DEEP" -eq 1 ]; then
+  SEARCHED+=("enabled external Lean bases (registered read-only search)")
+  OUT="$(python3 scripts/search_external_lean.py "$Q" 2>&1)"
+  RC=$?
+  if [ "$RC" -ne 0 ]; then
+    SEARCH_FAILURES+=("external Lean bases: registry query failed (code $RC)")
+  elif printf '%s' "$OUT" | grep -q '"base_id"'; then
+    hdr "ВНЕШНИЕ LEAN-БАЗЫ — кандидаты, не доказательство"
+    printf '%s\n' "$OUT" | head -80
     HITS=$((HITS + 1))
   fi
 fi

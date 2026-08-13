@@ -119,6 +119,16 @@ memory_event_routes:
     ordering: Route state is updated last.
     delivery: Under a GOAL_SCOPED_OPERATIONAL_GRANT, commit named paths, pull --rebase, and push before advancing.
 
+  STEP_CLOSE:
+    run: [knowledge-spine-step-close]
+    record:
+      - Verdict lessons, INSIGHTS.md, and Progress_Log.md into knowledge.db.
+      - q3_docs only when its deterministic curated corpus hash changed.
+
+  SEMANTIC_INDEX_REFRESH:
+    run: [q3-docs-refresh, semantic-preflight]
+    record: Machine-local receipt under q3.lean.aristotle/.qmd_cache/; tracked Mac snapshots are nonauthoritative.
+
   TOOL_BIRTH:
     condition: Before a new helper, generator, skill, hook, or database writer becomes routable.
     require: [audience, trigger, mode, invocation, writes, approval, authority, validation, records_to]
@@ -166,6 +176,9 @@ data_surfaces:
   semantic_index:
     path: qmd://q3_docs/
     authority: RETRIEVAL_ONLY
+    local_receipt: q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json
+    tracked_snapshot: orchestrator/state/SEMANTIC_INDEX_STATUS.json
+    tracked_snapshot_authority: HISTORICAL_NONAUTHORITATIVE_CROSS_MACHINE_EVIDENCE
 
 tool_families:
   startup_and_control:
@@ -212,6 +225,32 @@ tool_families:
         records_to: [knowledge.db, aristotle_proofs.db, inventory_RouteB.json, atoms_RouteB.json, observability.db, q3_docs, SPINE_STATE.json, SPINE_VIEW.md, META_CORPUS.json]
         last_verified: 2026-08-09
 
+      - id: knowledge-spine-step-close
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/spine.py
+        invoke: python3 orchestrator/spine.py --refresh --reason step-close
+        trigger: Completed registered cycle or reusable insight before the goal itself closes.
+        writes: true
+        approval: ACTIVE_GOAL_RUN_WRITE_SCOPE
+        authority: EVENT_SCOPED_MIGRATION_AND_CONDITIONAL_SEMANTIC_REFRESH
+        records_to: [knowledge.db, qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
+        last_verified: 2026-08-13
+
+      - id: migration-census
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/migration_census.py
+        invoke: python3 orchestrator/migration_census.py --strict
+        trigger: Before and after knowledge migration; mandatory inside goal-close.
+        writes: false
+        approval: NONE
+        authority: LIVE_SOURCE_TO_DATABASE_IDENTITY_CENSUS
+        records_to: stdout
+        last_verified: 2026-08-13
+
       - id: routeb-status
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
@@ -252,13 +291,14 @@ tool_families:
         mode: READ_ONLY
         path: ask.sh
         invoke: ./ask.sh "<terms>"
+        alternatives: [./ask.sh --deep "<terms>"]
         trigger: ABSENCE_OR_NEW_OBJECT and before external review/search.
         writes: false
         approval: NONE
-        authority: CASCADED_MULTI_SURFACE_RETRIEVAL_WITH_SEMANTIC_FALLBACK
+        authority: CASCADED_MULTI_SURFACE_RETRIEVAL_WITH_EXPLICIT_DEEP_SEMANTIC_AND_EXTERNAL_LEAN_MODE
         records_to: stdout
-        note: Fast structured and exact layers run first; q3_docs semantic search runs only when they are empty. A failed layer forbids an absence claim.
-        last_verified: 2026-08-10
+        note: Normal mode keeps the semantic fallback. Deep mode always runs q3_docs and every enabled external Lean base even after exact hits; external matches are candidates only. A failed layer forbids an absence claim.
+        last_verified: 2026-08-13
 
       - id: kb-query
         status: ENABLED
@@ -347,12 +387,25 @@ tool_families:
         mode: WRITES_DERIVED
         path: q3.lean.aristotle/scripts/refresh_q3_docs.py
         invoke: python3 q3.lean.aristotle/scripts/refresh_q3_docs.py
-        trigger: GOAL_CLOSE or explicit semantic-index refresh.
+        trigger: GOAL_CLOSE, explicit semantic-index refresh, or stale corpus at STEP_CLOSE.
         writes: true
         approval: GOAL_CLOSE_OR_EXACT_WRITE_SCOPE
         authority: RETRIEVAL_INDEX_BUILDER
-        records_to: qmd://q3_docs/
-        last_verified: 2026-08-10
+        records_to: [qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
+        last_verified: 2026-08-13
+
+      - id: semantic-preflight
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_DERIVED
+        paths: [scripts/deep_preflight.py, scripts/semantic_index_plants.py, scripts/search_external_lean.py]
+        invoke: python3 scripts/deep_preflight.py --out <receipt-fragment>
+        trigger: Every q3_docs rebuild before its machine-local receipt becomes PASS.
+        writes: true
+        approval: SEMANTIC_INDEX_REFRESH_SCOPE
+        authority: LIVE_FIXED_PLANTS_DYNAMIC_GOAL_QUERIES_AND_EXTERNAL_LEAN_CANDIDATE_RECEIPTS
+        records_to: q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json
+        last_verified: 2026-08-13
 
       - id: goal-event-writer
         status: ENABLED
