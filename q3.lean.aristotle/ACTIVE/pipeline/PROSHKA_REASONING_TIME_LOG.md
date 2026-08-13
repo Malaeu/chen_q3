@@ -31,6 +31,76 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-13 — Goal 058 exact complex-Hermitian connector task
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.CofinalGroundTracking.ComplexHermitianConnector
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_PROSHKA_ARISTOTLE_COMPLEX_HERMITIAN_CONNECTOR
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+sent_at: 2026-08-13T20:32:10+02:00
+completed_at: 2026-08-13T20:53:45+02:00
+wall_seconds: 1295
+wall_human: "UI reported 21m35s natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: ARISTOTLE_COMPLEX_HERMITIAN_CONNECTOR
+status: OPEN_SELECTED_FOR_ARISTOTLE_EXECUTION
+result_pointer: >-
+  docs/routeB_bus/proshka/
+  PROSHKA_VERDICT_GOAL058_ARISTOTLE_COMPLEX_HERMITIAN_CONNECTOR_2026-08-13.md
+clipboard_response_bytes: 18375
+clipboard_response_lines: 552
+archive_bytes: 18372
+archive_lines: 551
+archive_sha256: 5b71885d466b3a89ae9632064c833ea020ad13326da918279b423733db555ac5
+notes: >-
+  Same living Goal 058 phase chat, retried after the transport-only source-lock
+  stop. The exact request and nine same-commit evidence files were attached;
+  Proshka verified every declared SHA-256 and selected one finite-cell theorem:
+  a Hermitian complex-source projection-error bound for the exact P59 transform.
+  The archive is newline/whitespace-normalized from the exact clipboard text;
+  only two trailing spaces and one final blank line were removed. The selected
+  theorem assumes no phase realification, parity, gap, simplicity,
+  bottomness, tracking, cofinal decay, or RH statement. It does not close G1 or
+  G3 and does not authorize Route B promotion or an RH claim. Answer now was
+  shown and never clicked.
+```
+
+### 2026-08-13 — Goal 058 Aristotle-task source-lock stop
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.CofinalGroundTracking.AristotleTask
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_PROSHKA_ARISTOTLE_EXACT_SOURCE_TASK
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+sent_at: 2026-08-13T20:09:10+02:00
+completed_at: 2026-08-13T20:23:33+02:00
+wall_seconds: 863
+wall_human: "UI reported 14m23s natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: WALL_GOAL058_ARISTOTLE_REQUEST_SOURCE_LOCK_UNAVAILABLE
+status: FATAL_TRANSPORT_ONLY_NO_MATHEMATICAL_ADJUDICATION
+result_pointer: >-
+  docs/routeB_bus/proshka/
+  PROSHKA_VERDICT_GOAL058_ARISTOTLE_SOURCE_LOCK_STOP_2026-08-13.md
+response_bytes: 2257
+response_lines: 72
+response_sha256: 4b5fc1bf235ff433b10447ef01c8a40b99fade9c2933e578e158c7513d0b1516
+notes: >-
+  Same living Goal 058 phase chat received the exact GitHub permalink for
+  commit fea0965e021ea4cbb65f7dc7ceacd67ab1b1be63 and the current
+  cartographer-only tip ad754cb5bd69d7eba06c7d904a21f08c1c233aec. Proshka's
+  runtime could not access the repository connector or fetch the pinned file,
+  so it correctly refused to reconstruct theorem binders, imports, or plants
+  from memory. This is a transport stop, not a mathematical verdict. The
+  byte-exact request and same-commit evidence will be attached in the same
+  chat before retrying. No Aristotle submission, G1/G3 closure, Route B
+  promotion, Bus 010, PX claim, or RH claim occurred. Answer now was shown
+  and never clicked.
+```
+
 ### 2026-08-13 — Goal 058 joint G1/G3 source-envelope judge
 
 ```yaml
