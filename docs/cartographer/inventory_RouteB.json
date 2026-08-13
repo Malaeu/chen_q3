@@ -1,13 +1,18 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 205,
-  "declarations": 1770,
-  "in_docs": 721,
+  "files_scanned": 206,
+  "declarations": 1813,
+  "in_docs": 738,
   "in_lemma_db": 1770,
-  "orphans": 0,
-  "uncatalogued": 0,
-  "orphan_files_top": [],
+  "orphans": 32,
+  "uncatalogued": 32,
+  "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      32
+    ]
+  ],
   "items": [
     {
       "kind": "def",
@@ -1565,7 +1570,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean",
       "line": 39,
       "signature": "theorem ccmReflectionEndFinite_involutive (N : ℕ) : (ccmReflectionEndFinite N).comp (ccmReflectionEndFinite N) = 1",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1885,7 +1890,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean",
       "line": 330,
       "signature": "theorem ccmWeilMatFinite_structured_offdiag (mProject N : ℕ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) {i j : CCMModeFinite N} (hij : i ≠ j) : ccmWeilMatFinite mProject N i j = (ccmBetaFinite mProject N i - ccmBetaFinite mProject N j) / ((ccmModeFinite N i : ℝ) - (ccmModeFinite N j : ℝ))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -1985,7 +1990,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
       "line": 44,
       "signature": "noncomputable def ccmModeDiagFinite (N : ℕ) : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -2938,6 +2943,436 @@
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "phaseRealifies",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 33,
+      "signature": "def phaseRealifies {ι : Type*} (phase : ℂ) (row : ι → ℂ) (q : ι → ℝ) : Prop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceCCMPhaseRealification",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 41,
+      "signature": "def sourceCCMPhaseRealification (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (phase : ℂ) (q : CCMModeFinite i.N → ℝ) : Prop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "sourceCCMHasRealEvenPhase",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 50,
+      "signature": "def sourceCCMHasRealEvenPhase (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "phaseOne_realPart_requires_exact_reality",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 59,
+      "signature": "theorem phaseOne_realPart_requires_exact_reality {ι : Type*} (row : ι → ℂ) (h : phaseRealifies 1 row (fun j => (row j).re)) : ∀ j, row j = (row j).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "dotProduct_self_eq_one_of_phaseRealifies",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 68,
+      "signature": "theorem dotProduct_self_eq_one_of_phaseRealifies {ι : Type*} [Fintype ι] (phase : ℂ) (row : ι → ℂ) (q : ι → ℝ) (hrow : star row ⬝ᵥ row = 1) (hphase : phaseRealifies phase row q) : q ⬝ᵥ q = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMRealRow_unit_of_phaseRealification",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 114,
+      "signature": "theorem sourceCCMRealRow_unit_of_phaseRealification (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (phase : ℂ) (q : CCMModeFinite i.N → ℝ) (hphase : sourceCCMPhaseRealification S i phase q) : q ⬝ᵥ q = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMComplexRow_even_of_phaseRealification_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 128,
+      "signature": "theorem sourceCCMComplexRow_even_of_phaseRealification_even (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (phase : ℂ) (q : CCMModeFinite i.N → ℝ) (hphase : sourceCCMPhaseRealification S i phase q) (hqEven : ∀ j, q (ccmNegFinite i.N j) = q j) : ∀ j, D0Pstar.sourceCCMComplexRow S i (ccmNegFinite i.N j) = D0Pstar.sourceCCMComplexRow S i j",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "proposition59CCMComplexCoefficient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 148,
+      "signature": "def proposition59CCMComplexCoefficient (N : ℕ) (q : CCMModeFinite N → ℂ) (k : ℤ) : ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CCMComplexCoefficient_neg_mode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 155,
+      "signature": "@[simp] theorem proposition59CCMComplexCoefficient_neg_mode (N : ℕ) (q : CCMModeFinite N → ℂ) (i : CCMModeFinite N) : proposition59CCMComplexCoefficient N q (-ccmModeFinite N i) = q i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "proposition59CCMComplexTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 174,
+      "signature": "def proposition59CCMComplexTransform (L : ℝ) (N : ℕ) (q : CCMModeFinite N → ℂ) : ℂ → ℂ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CCMComplexTransform_eq_mode_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 179,
+      "signature": "theorem proposition59CCMComplexTransform_eq_mode_sum (L : ℝ) (N : ℕ) (q : CCMModeFinite N → ℂ) (z : ℂ) : proposition59CCMComplexTransform L N q z = ((Real.sqrt L : ℂ)⁻¹) * ∑ i, q i * proposition59PoleKernel L (-ccmModeFinite N i) z",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "proposition59CCMTransform_eq_phase_mul_complexTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 214,
+      "signature": "theorem proposition59CCMTransform_eq_phase_mul_complexTransform (L : ℝ) (N : ℕ) (phase : ℂ) (row : CCMModeFinite N → ℂ) (q : CCMModeFinite N → ℝ) (hreal : ∀ i, phase * row i = (q i : ℂ)) (z : ℂ) : proposition59CCMTransform L N q z = phase * proposition59CCMComplexTransform L N row z",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMProposition59Transform_eq_phase_mul_complexTransform",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 229,
+      "signature": "theorem sourceCCMProposition59Transform_eq_phase_mul_complexTransform (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (L : ℝ) (phase : ℂ) (q : CCMModeFinite i.N → ℝ) (hphase : sourceCCMPhaseRealification S i phase q) (z : ℂ) : proposition59CCMTransform L i.N q z = phase * proposition59CCMComplexTransform L i.N (D0Pstar.sourceCCMComplexRow S i) z",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "trialLineProjection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 243,
+      "signature": "def trialLineProjection {ι : Type*} (q : ι → ℝ) : Matrix ι ι ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "trialLineComplement",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 248,
+      "signature": "def trialLineComplement {ι : Type*} [DecidableEq ι] (q : ι → ℝ) : Matrix ι ι ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "trialRayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 253,
+      "signature": "def trialRayleigh {ι : Type*} [Fintype ι] (K : Matrix ι ι ℝ) (q : ι → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "trialCoupling",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 259,
+      "signature": "def trialCoupling {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℝ) (q : ι → ℝ) : ι → ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "ccmReflectionMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 265,
+      "signature": "def ccmReflectionMatrix (N : ℕ) : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmEvenProjection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 270,
+      "signature": "def ccmEvenProjection (N : ℕ) : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "ccmOddProjection",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 275,
+      "signature": "def ccmOddProjection (N : ℕ) : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "evenComplementBlock",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 280,
+      "signature": "def evenComplementBlock (N : ℕ) (K : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ) (q : CCMModeFinite N → ℝ) : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "oddSectorBlock",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 289,
+      "signature": "def oddSectorBlock (N : ℕ) (K : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ) : Matrix (CCMModeFinite N) (CCMModeFinite N) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "oddTrialMass",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 296,
+      "signature": "def oddTrialMass (N : ℕ) (q : CCMModeFinite N → ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "trialLineProjection_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 301,
+      "signature": "theorem trialLineProjection_sq {ι : Type*} [Fintype ι] (q : ι → ℝ) (hq : q ⬝ᵥ q = 1) : trialLineProjection q * trialLineProjection q = trialLineProjection q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "full_trialLine_four_block_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 311,
+      "signature": "theorem full_trialLine_four_block_identity {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℝ) (q : ι → ℝ) : K = trialLineProjection q * K * trialLineProjection q + trialLineProjection q * K * trialLineComplement q + trialLineComplement q * K * trialLineProjection q + trialLineComplement q * K * trialLineComplement q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmWeilMatFinite_full_trialLine_four_block_identity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 323,
+      "signature": "theorem ccmWeilMatFinite_full_trialLine_four_block_identity (mProject N : ℕ) (q : CCMModeFinite N → ℝ) : ccmWeilMatFinite mProject N = trialLineProjection q * ccmWeilMatFinite mProject N * trialLineProjection q + trialLineProjection q * ccmWeilMatFinite mProject N * trialLineComplement q + trialLineComplement q * ccmWeilMatFinite mProject N * trialLineProjection q + trialLineComplement q * ccmWeilMatFinite mProject N * trialLineComplement q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "lagCommutatorObservable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 337,
+      "signature": "def lagCommutatorObservable {ι : Type*} [Fintype ι] (D K : Matrix ι ι ℝ) (q : ι → ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "lagCommutatorObservable_zero_of_isSymm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 344,
+      "signature": "theorem lagCommutatorObservable_zero_of_isSymm {ι : Type*} [Fintype ι] (D K : Matrix ι ι ℝ) (q : ι → ℝ) (hD : D.IsSymm) (hK : K.IsSymm) : lagCommutatorObservable D K q = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ccmLagCommutatorObservable_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 371,
+      "signature": "theorem ccmLagCommutatorObservable_zero (mProject N : ℕ) (hm : 2 ≤ mProject) (hN : 1 ≤ N) (q : CCMModeFinite N → ℝ) : lagCommutatorObservable (ccmModeDiagFinite N) (ccmWeilMatFinite mProject N) q = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058SourceTrialPreflightStop",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 393,
+      "signature": "def goal058SourceTrialPreflightStop : Goal058SourceTrialPreflightStop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058SourceTrialPreflightStop_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 396,
+      "signature": "theorem goal058SourceTrialPreflightStop_eq : goal058SourceTrialPreflightStop = Goal058SourceTrialPreflightStop.sourceComplexRealGroundCrosswalkMismatch",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "abbrev",
+      "name": "Goal058PlantCarrier",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 401,
+      "signature": "abbrev Goal058PlantCarrier",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058PlantD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 403,
+      "signature": "def goal058PlantD : Matrix Goal058PlantCarrier Goal058PlantCarrier ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058PlantK",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 409,
+      "signature": "def goal058PlantK : Matrix Goal058PlantCarrier Goal058PlantCarrier ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058PlantEta",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 414,
+      "signature": "def goal058PlantEta : Goal058PlantCarrier → ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058PlantBeta",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 415,
+      "signature": "def goal058PlantBeta : Goal058PlantCarrier → ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058PlantQ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 416,
+      "signature": "def goal058PlantQ : Goal058PlantCarrier → ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058Plant_commutator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 418,
+      "signature": "theorem goal058Plant_commutator : goal058PlantD * goal058PlantK - goal058PlantK * goal058PlantD = Matrix.vecMulVec goal058PlantBeta goal058PlantEta - Matrix.vecMulVec goal058PlantEta goal058PlantBeta",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058PlantQ_reflection_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 428,
+      "signature": "theorem goal058PlantQ_reflection_even : ∀ i, goal058PlantQ (ccmNegFinite 1 i) = goal058PlantQ i",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058PlantQ_not_eigenvector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 433,
+      "signature": "theorem goal058PlantQ_not_eigenvector : ¬ ∃ mu : ℝ, goal058PlantK *ᵥ goal058PlantQ = mu • goal058PlantQ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058Plant_lagCommutatorObservable_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 442,
+      "signature": "theorem goal058Plant_lagCommutatorObservable_zero : lagCommutatorObservable goal058PlantD goal058PlantK goal058PlantQ = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058PlantClassification",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 448,
+      "signature": "def goal058PlantClassification : Goal058CommutatorClassification",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058PlantClassification_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean",
+      "line": 451,
+      "signature": "theorem goal058PlantClassification_eq : goal058PlantClassification = Goal058CommutatorClassification.lagSourceTautologicalZero",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "structure",
@@ -16105,7 +16540,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean",
       "line": 71,
       "signature": "theorem differentiable_proposition59PoleKernel (L : ℝ) (k : ℤ) : Differentiable ℂ (proposition59PoleKernel L k)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16205,7 +16640,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
       "line": 125,
       "signature": "def proposition59CCMTransform (L : ℝ) (N : ℕ) (xi : CCMModeFinite N → ℝ) : ℂ → ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16215,7 +16650,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59GroundLagrangeZeroSetBridge.lean",
       "line": 130,
       "signature": "theorem proposition59CCMTransform_eq_mode_sum (L : ℝ) (N : ℕ) (xi : CCMModeFinite N → ℝ) (z : ℂ) : proposition59CCMTransform L N xi z = ((Real.sqrt L : ℂ)⁻¹) * ∑ i, (xi i : ℂ) * proposition59PoleKernel L (-ccmModeFinite N i) z",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
