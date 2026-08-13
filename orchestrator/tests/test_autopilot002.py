@@ -158,3 +158,20 @@ def test_migration_census_reports_source_database_and_unmigrated(tmp_path: Path)
         "unmigrated_rows": 1,
         "unmigrated_ids": ["b"],
     }
+
+
+def test_large_qmd_embed_attempt_has_at_least_2400_seconds() -> None:
+    refresh = load_refresh_module()
+    assert refresh.QMD_EMBED_TIMEOUT_S >= 2400
+    assert refresh.QMD_EMBED_RETRIES >= 5
+
+
+def load_refresh_module():
+    import importlib.util
+
+    path = REPO / "q3.lean.aristotle" / "scripts" / "refresh_q3_docs.py"
+    spec = importlib.util.spec_from_file_location("autopilot002_refresh_q3_docs", path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module

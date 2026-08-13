@@ -14,6 +14,8 @@ Q3_ROOT = REPO_ROOT / "q3.lean.aristotle"
 CACHE_ROOT = Q3_ROOT / ".qmd_cache"
 STABLE_STAGE_ROOT = CACHE_ROOT / "q3_docs_current"
 COLLECTION = "q3_docs"
+QMD_EMBED_TIMEOUT_S = 2400.0
+QMD_EMBED_RETRIES = 5
 ROOT_SCRIPTS = REPO_ROOT / "scripts"
 if str(ROOT_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(ROOT_SCRIPTS))
@@ -86,9 +88,15 @@ def build_stage(stage_root: Path, files: list[Path]) -> Counter:
     return counts
 
 
-def run(cmd: list[str], cwd: Path | None = None, *, timeout_s: float = 90.0) -> str:
+def run(
+    cmd: list[str],
+    cwd: Path | None = None,
+    *,
+    timeout_s: float = 90.0,
+    retries: int = 4,
+) -> str:
     try:
-        return run_qmd(cmd, cwd=cwd, timeout_s=timeout_s)
+        return run_qmd(cmd, cwd=cwd, timeout_s=timeout_s, retries=retries)
     except RuntimeError as exc:
         raise SystemExit(str(exc)) from exc
 
@@ -101,7 +109,11 @@ def rebuild_collection(qmd: str, stage_root: Path, embed: bool) -> None:
 
         run([qmd, "collection", "add", str(stage_root), "--name", COLLECTION, "--mask", "**/*"])
         if embed:
-            run([qmd, "embed"], timeout_s=1800.0)
+            run(
+                [qmd, "embed"],
+                timeout_s=QMD_EMBED_TIMEOUT_S,
+                retries=QMD_EMBED_RETRIES,
+            )
         run([qmd, "cleanup"])
 
 

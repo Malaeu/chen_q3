@@ -63,9 +63,15 @@ retrieval. It also queries every enabled base in
 ## Validation plants
 
 ```text
-orchestrator/tests/test_autopilot002.py   8 passed
+orchestrator/tests/test_autopilot002.py   9 passed
 ```
 
 The plants cover closed dispatch, unknown-reason rejection, byte/path-exact
 corpus drift, foreign receipt rejection, deep search after exact hits, actual
 external-registry querying, and the three-column migration census.
+
+The initial Linux bootstrap showed that the previous 1800-second qmd attempt
+timed out after only part of the 2637-file collection. Embedding is incremental,
+so completed vectors survived, but the operational limit was too small. Each
+large embed attempt is now at least 2400 seconds and may continue through six
+incremental attempts before failing closed.
