@@ -4,7 +4,7 @@
 GOAL: 057
 PHASE: MINT
 NODE: UnifiedChainProgramDelegatedReview
-STATUS: OPEN
+STATUS: PAUSED_RESTORABLE
 OPERATIVE_CLASS: RUN_UNIFIED_CHAIN_PROGRAM_DELEGATED_STRATEGIC_REVIEW
 TRANSACTION: UNIFIED_CHAIN_PROGRAM_R1_R4_DELEGATED_REVIEW
 STOP: UNIFIED_CHAIN_R1_R4_DELEGATED_REVIEW_MISSING
@@ -5099,3 +5099,58 @@ actual infinite-tail inverse correction still present. No sign is proved, so
 the first coarse checkpoint remains open.
 
 `ARSENAL: used=[C04,C07,C09,C10], killed=[GLOWER_CANONICAL_N0_LARGE_OPERATOR_REDUCTION,GLOWER_AUXILIARY_N_AS_HEAD_SIZE,GLOWER_FINITE_N480_N960_AS_SYMBOLIC_CUTOFF,GLOWER_SCALAR_OUTER_INVERSE,GLOWER_DROP_ACTUAL_RSTAR_CINV_R,GLOWER_RECEIVER_EQUIVALENCE_AS_SIGN], standing=[ALL_N_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE,LITERAL_ODD_MODE_SPAN_FORM_CORE13,WHOLE_ODD_SPACE_TARGET_FLOOR,SELECTED_KTRIAL_OPERATOR_DOMAIN_OPEN], untested=[C01,C02,C03,C05,C06,C08,C11,C12]`
+
+
+## A61 — restorable pause at the exact B3.0AP boundary (2026-08-13)
+
+```yaml
+A61_STATUS: PAUSED_RESTORABLE_NOT_CLOSED_NOT_KILLED
+PARENT_STATUS: PAUSED_RESTORABLE_NOT_CLOSED_NOT_KILLED
+LAST_VALID_CHECKPOINT: B3.0AP
+LAST_VALID_RESULT: GOAL057_B3_0AP_ALL_N_SCHUR_MATRIX_RECEIVER_PROVED
+PARENT_B3_0: OPEN
+NEXT_REAL_BOUNDARY: EXACT_ALL_N_CORRECTED_CCM_ENERGY_NONNEGATIVITY_CERTIFICATE_MISSING
+NEXT_TARGET: SourceWeilOddTargetFloorSchurPositive13
+
+SOURCE_PINS_AT_PAUSE:
+  repository_head: 76f1b9b8f9694e79bb98b7034fa44285dda25b4b
+  production_sha256: 48d5f17bc4d6094db69fd52ad36376bc3062eaaeb678d0c2e862911319435fd8
+  closeout_sha256: bcab845d9814e5a3734709b4b0a98c217bddf7598cf267c8b3a716adbb1fc1d7
+
+OPEN_OBLIGATIONS:
+  - exact_all_N_corrected_CCM_energy_nonnegativity_certificate
+  - exact_target_floor_finite_Schur_positivity
+  - literal_odd_mode_span_form_core13
+  - whole_odd_space_target_floor
+  - selected_kTrial_operator_domain
+  - continuum_numerator
+
+FORBIDDEN_FALSE_ROUTES:
+  - canonical_N0_reduction_from_stale_olean
+  - finite_N480_or_N960_substitution_for_forall_N
+  - scalar_inverse_substitution_for_Rstar_Cinv_R
+  - receiver_equivalence_read_as_proved_sign
+
+HISTORICAL_INPUT_ONLY:
+  - docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL057_B3_0AO_EXACT_TARGET_FLOOR_FINITE_SCHUR_CERTIFICATE_MINT_2026-08-11.txt
+  - source_lock_eea6515259ec667c8ad298befcd7f9c12cefb92b
+
+RESUME_REQUIRES:
+  - explicit_owner_resume_of_goal_057
+  - fresh_repository_HEAD_and_source_pin_audit
+  - current_six_field_phase_key_validation
+  - same_living_Proshka_chat_handle_validation_or_validated_phase_transition
+  - relocked_byte_exact_request_from_current_sources
+  - status_change_in_both_byte_identical_goal_mirrors_and_execution_state
+
+EXECUTABILITY: NON_EXECUTABLE_WHILE_PAUSED
+MATCHING_ANSWER: MUST_NOT_BE_CREATED_FOR_PAUSE
+ROUTE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+```
+
+This pause preserves the exact B3.0AP frontier. It is not a mathematical
+verdict and does not alter any proved child, open parent, blocker, source
+identity, quantifier, or forbidden shortcut. The 2026-08-11 request is stale
+historical input only; resumption requires a newly locked request rather than
+blind replay.

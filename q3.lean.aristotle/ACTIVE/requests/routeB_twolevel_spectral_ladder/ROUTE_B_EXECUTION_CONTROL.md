@@ -26,8 +26,9 @@ is not implicitly authorized.
 Current scheduling rule:
 
 ```text
-physical unanswered bus goal exists -> execute the smallest NNN first
-no physical unanswered goal          -> remain RB-IDLE-CONTROL
+physical executable unanswered goal exists -> execute the smallest NNN first
+only PAUSED_RESTORABLE unanswered goals     -> treat them as non-executable
+no physical executable unanswered goal      -> remain RB-IDLE-CONTROL
 separate Proshka target arrives       -> execute only that bounded target
 no separate target                    -> do not begin mathematics
 ```
@@ -134,9 +135,11 @@ RH.
 
 1. `PROJECT_ORCHESTRATOR.md` решает архитектурный ранг маршрута. Route B пока
    не mainline, а challenger.
-2. Физические пары `bus/NNN_*.goal.md` / `bus/NNN_*.answer.md` решают, есть ли
-   исполнимая задача. Наименьший goal без answer — единственная разрешённая
-   задача Codex.
+2. Физические пары `bus/NNN_*.goal.md` / `bus/NNN_*.answer.md` и lifecycle в
+   machine header решают, есть ли исполнимая задача. Наименьший goal без
+   answer, не помеченный `PAUSED_RESTORABLE`, — единственная разрешённая задача
+   Codex. Восстановимо приостановленный goal остаётся физическим и открытым, но
+   не участвует в выборе до явного resume.
 3. `ROUTE_B_EXECUTION_STATE.json` решает текущий адрес `RB-*`, статус ожидания,
    следующий разрешённый актор и состояние очереди.
 4. `docs/ROUTE_B_THEOREM_CONTRACT_v2.md` задаёт целевой theorem-DAG и реестр

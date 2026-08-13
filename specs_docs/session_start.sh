@@ -136,17 +136,34 @@ if [ -d "$LIVE_BUS" ]; then
   n_ans="$(ls "$LIVE_BUS"/*.answer.md 2>/dev/null | wc -l)"
   echo "  живая шина  : $LIVE_BUS — целей $n_goal, ответов $n_ans"
   echo "  последняя   : ${last_goal:-—}"
-  # цель без ответа = то, что исполнимо
-  open_goals=""
-  for g in "$LIVE_BUS"/*.goal.md; do
-    [ -e "$g" ] || continue
-    a="${g%.goal.md}.answer.md"
-    [ -f "$a" ] || open_goals="$open_goals $(basename "$g")"
-  done
+  # PAUSED_RESTORABLE остаётся физическим goal, но не является исполнимым.
+  goal_scan="$(python3 - "$LIVE_BUS" <<'PY'
+import sys
+from pathlib import Path
+
+from orchestrator.routeb_goal_state import is_paused_goal
+
+bus = Path(sys.argv[1])
+open_goals = []
+paused_goals = []
+for goal in sorted(bus.glob("*.goal.md")):
+    answer = goal.with_name(goal.name.removesuffix(".goal.md") + ".answer.md")
+    if answer.is_file():
+        continue
+    (paused_goals if is_paused_goal(goal) else open_goals).append(goal.name)
+print("OPEN=" + " ".join(open_goals))
+print("PAUSED=" + " ".join(paused_goals))
+PY
+)"
+  open_goals="$(printf '%s\n' "$goal_scan" | sed -n 's/^OPEN=//p')"
+  paused_goals="$(printf '%s\n' "$goal_scan" | sed -n 's/^PAUSED=//p')"
   if [ -n "$open_goals" ]; then
-    echo "  БЕЗ ОТВЕТА  :$open_goals"
+    echo "  БЕЗ ОТВЕТА  : $open_goals"
   else
     echo "  без ответа  : нет — открытой цели в живой шине нет"
+  fi
+  if [ -n "$paused_goals" ]; then
+    echo "  НА ПАУЗЕ    : $paused_goals"
   fi
 else
   echo "  живой шины $LIVE_BUS нет"
@@ -165,9 +182,15 @@ else:
   echo "  адрес в state: ${addr:0:100}"
   st_date="$(git log -1 --format=%ad --date=short -- "$RB_STATE" 2>/dev/null)"
   echo "  state правился: $st_date"
-  today="$(date +%F)"
-  [ "$st_date" != "$today" ] && [ -n "$last_goal" ] && \
-    note "ROUTE_B_EXECUTION_STATE.json правился $st_date, а последняя цель шины — $last_goal (проверь, не отстаёт ли адрес)"
+  status_script="q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py"
+  if status_out="$(python3 "$status_script" --check 2>&1)"; then
+    echo "  арбитр      : $(printf '%s\n' "$status_out" | tail -1)"
+  else
+    status_rc=$?
+    echo "  арбитр      : ПРОВАЛ (код $status_rc)"
+    printf '%s\n' "$status_out" | tail -8 | sed 's/^/    /'
+    note "Route B physical bus/execution state/source pins не прошли routeb_status.py --check"
+  fi
 fi
 
 # ── 5. База знаний ─────────────────────────────────────────────────────────────

@@ -271,6 +271,25 @@ tool_families:
         records_to: knowledge.db journal_entry
         last_verified: 2026-08-09
 
+      - id: route058-migrator
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/kb_migrate_route058.py
+        invoke: python3 orchestrator/kb_migrate_route058.py --check
+        cwd: repository root
+        trigger: >-
+          Checking whether the assembly chain still matches the master route; --write only when
+          the route text itself changed.
+        writes: true
+        approval: EXACT_OUTPUT_SCOPE
+        authority: ROUTE_TEXT_IS_THE_SOURCE_DB_IS_THE_PROJECTION
+        failure_mode: >-
+          --write replaces every row of its own chain and touches no other, so a stale script
+          silently reverts hand edits made in the database. Edit the script, never the rows.
+        records_to: knowledge.db table assembly, chain REALZERO_GROUND_DIAGONAL_TO_XI
+        last_verified: 2026-08-12
+
       - id: research-oracle
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
@@ -362,25 +381,6 @@ tool_families:
         authority: DETERMINISTIC_EXTERNAL_ATOM_INDEX
         records_to: atoms_RouteB.json
         last_verified: 2026-08-10
-
-      - id: route058-migrator
-        status: ENABLED
-        audience: [CODEX, CLAUDE_CODE, HUMAN]
-        mode: WRITES_CANONICAL
-        path: orchestrator/kb_migrate_route058.py
-        invoke: python3 orchestrator/kb_migrate_route058.py --check
-        cwd: repository root
-        trigger: >-
-          Checking whether the assembly chain still matches the master route; --write only when
-          the route text itself changed.
-        writes: true
-        approval: EXACT_OUTPUT_SCOPE
-        authority: ROUTE_TEXT_IS_THE_SOURCE_DB_IS_THE_PROJECTION
-        failure_mode: >-
-          --write replaces every row of its own chain and touches no other, so a stale script
-          silently reverts hand edits made in the database. Edit the script, never the rows.
-        records_to: knowledge.db table assembly, chain REALZERO_GROUND_DIAGONAL_TO_XI
-        last_verified: 2026-08-12
 
       - id: map-coverage
         status: ENABLED

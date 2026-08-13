@@ -15,6 +15,11 @@ from typing import Any
 SCRIPT = Path(__file__).resolve()
 REQUEST_DIR = SCRIPT.parent
 REPO_ROOT = SCRIPT.parents[4]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from orchestrator.routeb_goal_state import is_paused_goal
+
 BUS_DIR = REPO_ROOT / "docs" / "routeB_bus"
 STATE_PATH = REQUEST_DIR / "ROUTE_B_EXECUTION_STATE.json"
 NAME_RE = re.compile(
@@ -97,7 +102,12 @@ def scan_bus() -> dict[str, Any]:
 
     goals: dict[str, Path] = {}
     answers: dict[str, Path] = {}
+    paused_all: dict[str, Path] = {}
     for goal_id, stems in sorted(entries.items(), key=lambda item: goal_id_key(item[0])):
+        for paths in stems.values():
+            for goal_path in (path for path in paths if path.name.endswith(".goal.md")):
+                if is_paused_goal(goal_path):
+                    paused_all[goal_id] = goal_path
         if goal_id not in current_ids:
             continue
         if len(stems) != 1:
@@ -106,6 +116,8 @@ def scan_bus() -> dict[str, Any]:
         stem, paths = next(iter(stems.items()))
         for path in paths:
             kind = NAME_RE.fullmatch(path.name).group("kind")  # type: ignore[union-attr]
+            if kind == "goal" and goal_id in paused_all:
+                continue
             target = goals if kind == "goal" else answers
             if goal_id in target:
                 errors.append(f"BUS_DUPLICATE_{kind.upper()}:{goal_id}")
@@ -124,6 +136,7 @@ def scan_bus() -> dict[str, Any]:
         "current_root": f"{current_root:03d}" if current_root is not None else None,
         "goals": goals,
         "answers": answers,
+        "paused": sorted(paused_all, key=goal_id_key),
         "closed": closed,
         "unanswered": unanswered,
         "last_closed": last_closed,
@@ -168,6 +181,8 @@ def main() -> int:
 
     if state_bus.get("closed_nnns") != bus["closed"]:
         state_errors.append("EXECUTION_STATE_CLOSED_SET_DRIFT")
+    if state_bus.get("paused_nnns") != bus["paused"]:
+        state_errors.append("EXECUTION_STATE_PAUSED_SET_DRIFT")
 
     expected_bus_status = "ACTIVE_GOAL_PRESENT" if bus["lowest_unanswered"] else "IDLE_WAITING_FOR_GOAL"
     if state_bus.get("status") != expected_bus_status:
@@ -219,6 +234,7 @@ def main() -> int:
         "current_name": current.get("name"),
         "current_root": bus["current_root"],
         "closed_nnns": bus["closed"],
+        "paused_nnns": bus["paused"],
         "lowest_unanswered_nnn": bus["lowest_unanswered"],
         "next_expected_nnn": bus["next_expected"],
         "last_closed": last_closed,
@@ -253,6 +269,7 @@ def main() -> int:
             f"BUS: closed={closed_display} active={active_display} "
             f"next-number={bus['next_expected']} selected-next={selected_display}"
         )
+        print(f"PAUSED_RESTORABLE: {','.join(bus['paused']) or 'NONE'}")
         print(
             f"LAST: {last_closed.get('nnn', 'NONE')} "
             f"{last_closed.get('name', 'NONE')} / "

@@ -7,7 +7,8 @@
 
 - `ROUTE_B_EXECUTION_STATE.json`;
 - `ROUTE_B_EXECUTION_CONTROL.md`;
-- физический минимальный `bus/NNN_*.goal.md` без matching answer.
+- физический минимальный `bus/NNN_*.goal.md` без matching answer и без
+  `STATUS: PAUSED_RESTORABLE`.
 
 Текущий машинный статус:
 

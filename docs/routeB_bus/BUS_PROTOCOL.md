@@ -19,6 +19,11 @@ protocol is a frozen historical snapshot.
 - A matching answer closes that physical goal. The next numeric root is
   selected only by an explicit standing direction; Codex does not infer a
   theorem or create a forbidden Bus 010 from numbering alone.
+- `STATUS: PAUSED_RESTORABLE` keeps an unanswered physical goal on the bus but
+  removes it from the executable set. It is neither closed nor killed and must
+  not receive a synthetic answer. Resumption requires an explicit owner
+  instruction, fresh source/phase/chat validation, and an atomic status update
+  in the canonical goal, mirror, and execution state.
 
 ## Canonical machine header
 

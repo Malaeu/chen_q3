@@ -61,6 +61,7 @@ REVIEWED_NOTES_PREFIX = "q3.lean.aristotle/docs/reviewed_notes/"
 REVIEWED_SAFE_MARKER = "- safe for embeddings: `yes`"
 
 EXCLUDE_PATTERNS = [
+    "**/.lake/**",
     "q3.lean.aristotle/**/.lake/**",
     "q3.lean.aristotle/docs/legacy/**",
     "q3.lean.aristotle/docs/ChatGPT_*.md",

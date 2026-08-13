@@ -1,6 +1,6 @@
 {
   "schema_version": "route_b_execution_state.v3_live_bus",
-  "updated_at": "2026-08-12T20:44:08+02:00",
+  "updated_at": "2026-08-13T13:35:21+02:00",
   "route_id": "RouteB_TwoLevelSpectralLadder",
   "canonical_repo_path": "/Users/emalam/GitHub/rh_lean_01_2026",
   "architecture": {
@@ -44,7 +44,11 @@
     },
     "goal_057_b3_0ap_all_n_schur_matrix_receiver": {
       "classification": "GOAL057_B3_0AP_ALL_N_SCHUR_MATRIX_RECEIVER_PROVED",
-      "status": "CORRECTED_PASS_HELPER_CHILD_CLOSED_PARENT_B3_0_OPEN_SIGN_OPEN",
+      "status": "PAUSED_RESTORABLE_AT_CORRECTED_PASS_HELPER_CHILD_CLOSED_PARENT_B3_0_OPEN_SIGN_OPEN",
+      "goal_lifecycle": "PAUSED_RESTORABLE_NOT_CLOSED_NOT_KILLED",
+      "paused_at": "2026-08-13T13:35:21+02:00",
+      "pause_checkpoint": "B3.0AP",
+      "resume_requires": "EXPLICIT_OWNER_RESUME_FRESH_HEAD_SOURCE_PIN_SIX_FIELD_PHASE_KEY_LIVING_CHAT_VALIDATION_AND_RELOCKED_REQUEST",
       "supersedes": "GOAL057_B3_0AP_CANONICAL_SCHUR_MATRIX_RECEIVER_PROVED_STALE_OLEAN_FALSE_POSITIVE",
       "lean_path": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean",
       "lean_sha256": "48d5f17bc4d6094db69fd52ad36376bc3062eaaeb678d0c2e862911319435fd8",
@@ -2497,6 +2501,9 @@
   "bus": {
     "status": "ACTIVE_GOAL_PRESENT",
     "closed_nnns": [],
+    "paused_nnns": [
+      "057"
+    ],
     "last_contiguous_closed_nnn": null,
     "lowest_unanswered_nnn": "058",
     "next_expected_nnn": "059",
@@ -2680,7 +2687,7 @@
     },
     "goal_057_a5": {
       "path": "docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
-      "sha256": "df89c94b043a0491e6fb69ced90fb405a22c6e5b1e726b673c8f7d40ed40aa20"
+      "sha256": "f040b91f801d2f182fe143d89752cbfdf001d1ca995a578b9b74e2b72f47a3e2"
     },
     "goal_057_p057_7_script": {
       "path": "docs/routeB_bus/phase3_scripts/p057_7_finite_plateau_not_attop.py",

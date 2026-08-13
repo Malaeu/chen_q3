@@ -231,7 +231,14 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         )
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertIn("File: q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_EXECUTION_STATE.json", proc.stdout)
-        self.assertIn("057_unified_chain_program_delegated_review.goal.md", proc.stdout)
+        self.assertNotIn(
+            "File: docs/routeB_bus/057_unified_chain_program_delegated_review.goal.md",
+            proc.stdout,
+        )
+        self.assertIn(
+            "File: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
+            proc.stdout,
+        )
         self.assertNotIn("File: full/q3.lean.aristotle", proc.stdout)
 
 

@@ -14,6 +14,13 @@ import subprocess
 import sys
 from typing import Iterable, List, Optional, Set, Tuple
 
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from orchestrator.routeb_goal_state import is_paused_goal
+
 
 def _run(cmd: List[str], cwd: pathlib.Path) -> str:
     proc = subprocess.run(
@@ -105,11 +112,11 @@ def _default_includes(repo: pathlib.Path) -> List[pathlib.Path]:
         repo / "docs" / "GENEALOGY.md",
         repo / "docs" / "Progress_Log.md",
     ]
-    # Include every live goal whose matching answer is absent. This preserves an
-    # exact task payload without hard-coding a goal number or a retired bus path.
+    # Include every executable live goal whose matching answer is absent.
+    # Restorably paused goals remain on disk but are not task payloads.
     for goal in sorted(bus.glob("*.goal.md")):
         answer = goal.with_name(goal.name.removesuffix(".goal.md") + ".answer.md")
-        if not answer.is_file():
+        if not answer.is_file() and not is_paused_goal(goal):
             files.append(goal)
     return files
 

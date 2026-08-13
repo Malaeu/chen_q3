@@ -33,9 +33,13 @@ from dataclasses import dataclass
 from pathlib import Path
 from types import ModuleType
 
-
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_REPO_ROOT = SCRIPT_DIR.parent
+if str(DEFAULT_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(DEFAULT_REPO_ROOT))
+
+from orchestrator.routeb_goal_state import is_paused_goal
+
 REPO_ROOT = Path(
     os.environ.get("Q3_PACKET_REPO_ROOT", str(DEFAULT_REPO_ROOT))
 ).resolve()
@@ -101,6 +105,7 @@ class GoalState:
     verdict: str | None
     title: str
     guards: tuple[str, ...]
+    paused: bool
 
     @property
     def answered(self) -> bool:
@@ -269,11 +274,13 @@ def _goal_key(num: str, suffix: str) -> tuple[int, str]:
 
 
 def _collect_goals() -> list[GoalState]:
-    if not CANON_BUS.is_dir():
-        raise PacketError(f"canonical bus directory is missing: {_rel(CANON_BUS)}")
+    # The live physical bus is docs/routeB_bus (BUS_PROTOCOL v4-live). The
+    # legacy request tree remains an ingest mirror and may lag newer roots.
+    if not MIRROR_BUS.is_dir():
+        raise PacketError(f"live bus directory is missing: {_rel(MIRROR_BUS)}")
 
     goals: dict[tuple[str, str], tuple[Path, str, str, str]] = {}
-    for path in CANON_BUS.glob("*.goal.md"):
+    for path in MIRROR_BUS.glob("*.goal.md"):
         match = GOAL_RE.match(path.name)
         if match:
             goals[(match.group(1), match.group(2))] = (
@@ -284,7 +291,7 @@ def _collect_goals() -> list[GoalState]:
             )
 
     answers: dict[tuple[str, str], Path] = {}
-    for path in CANON_BUS.glob("*.answer.md"):
+    for path in MIRROR_BUS.glob("*.answer.md"):
         match = ANSWER_RE.match(path.name)
         if not match:
             continue
@@ -310,6 +317,7 @@ def _collect_goals() -> list[GoalState]:
                 verdict=_answer_verdict(answer_path) if answer_path else None,
                 title=_goal_title(goal_text, label),
                 guards=_goal_guards(goal_text),
+                paused=is_paused_goal(goal_path),
             )
         )
     return sorted(
@@ -344,22 +352,29 @@ def _front_state(goals: list[GoalState]) -> str:
 
 
 def _open_goals(goals: list[GoalState]) -> str:
-    unanswered = [goal for goal in goals if not goal.answered]
+    unanswered = [goal for goal in goals if not goal.answered and not goal.paused]
+    paused = [goal for goal in goals if not goal.answered and goal.paused]
     lines = ["## OPEN OR UNANSWERED PHYSICAL GOALS", ""]
     if not unanswered:
         lines.append("- NONE")
-        return "\n".join(lines)
-    for goal in unanswered:
-        lines.append(f"- {goal.label}: {goal.title}")
-        if goal.guards:
-            for guard in goal.guards:
-                lines.append(f"  guard: {guard}")
-        else:
-            lines.append("  guard: none extracted; do not infer executability")
-    lines.append(
-        "- Scheduling note: unanswered does not mean executable; explicit HOLD, "
-        "BACKGROUND, or DO_NOT_EXECUTE guards win."
-    )
+    else:
+        for goal in unanswered:
+            lines.append(f"- {goal.label}: {goal.title}")
+            if goal.guards:
+                for guard in goal.guards:
+                    lines.append(f"  guard: {guard}")
+            else:
+                lines.append("  guard: none extracted; do not infer executability")
+        lines.append(
+            "- Scheduling note: unanswered does not mean executable; explicit HOLD, "
+            "BACKGROUND, or DO_NOT_EXECUTE guards win."
+        )
+    lines.extend(["", "## PAUSED RESTORABLE GOALS", ""])
+    if paused:
+        for goal in paused:
+            lines.append(f"- {goal.label}: {goal.title}")
+    else:
+        lines.append("- NONE")
     return "\n".join(lines)
 
 
