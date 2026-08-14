@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 246,
-  "declarations": 2295,
-  "in_docs": 991,
+  "files_scanned": 247,
+  "declarations": 2296,
+  "in_docs": 996,
   "in_lemma_db": 2295,
   "orphans": 0,
   "uncatalogued": 0,
@@ -12795,7 +12795,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
       "line": 113,
       "signature": "theorem inner_oddTailInverseWeightedCorrection (D : OddTailInverseWeightedData Head Tail) (x y : Head) : inner ℂ (oddTailInverseWeightedCorrection D x) y = inner ℂ (D.outerBlock.inverse (D.residual x)) (D.residual y)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16140,6 +16140,16 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "sourceWeilOddTailInverseWeightedCorrection_quadraticForm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailCorrectionBound.lean",
+      "line": 35,
+      "signature": "theorem sourceWeilOddTailInverseWeightedCorrection_quadraticForm_le {Head : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (residual : Head →L[ℂ] SourceWeilGraphOddTailCarrier i R) (x : Head) : min mu 1 * (inner ℂ (oddTailInverseWeightedCorrection (sourceWeilOddTailInverseWeightedData i R mu hcoercive residual) x) x).re ≤ 2 * ‖residual x‖ ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "sourceWeilOddTailHighTarget",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailExplicitCoercivity.lean",
@@ -16625,7 +16635,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 282,
       "signature": "abbrev SourceWeilGraphOddTailCarrier (i : PairIndex) (R : ℕ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16665,7 +16675,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 305,
       "signature": "noncomputable def sourceWeilShiftedOddTailOperator (i : PairIndex) (R : ℕ) : SourceWeilGraphOddTailCarrier i R →L[ℂ] SourceWeilGraphOddTailCarrier i R",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -16765,7 +16775,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
       "line": 475,
       "signature": "noncomputable def sourceWeilOddTailInverseWeightedData {Head : Type*} [NormedAddCommGroup Head] [InnerProductSpace ℂ Head] [CompleteSpace Head] (i : PairIndex) (R : ℕ) (mu : ℝ) (hcoercive : SourceWeilOddTailAmbientCoercive i R mu) (residual : Head →L[ℂ] SourceWeilGraphOddTailCarrier i R) : OddTailInverseWeightedData Head (SourceWeilGraphOddTailCarrier i R) where",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

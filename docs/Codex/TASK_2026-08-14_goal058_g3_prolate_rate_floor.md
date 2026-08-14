@@ -529,3 +529,34 @@ The narrowed G3 stop is
 `DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_PROVED_ORDERED_FINITE_TO_CLASSICAL_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING`.
 G1 remains independently open at the even-head/shift/cofinal full-complement
 floor.  No G1, G3, Route B, or RH promotion follows from this node.
+
+## 2026-08-14 joint analytic source-wall review and G1 C1 leaf
+
+The attachment-based Mythos and Proshka verdicts are now durable in the Goal
+058 request directory.  Proshka rejected the proposed G3 finite-limit carrier
+as circular: defining the classical spectrum by the finite limit cannot prove
+that this limit is the differential Sturm--Liouville spectrum in DLMF 30.16.3.
+The G3 stop therefore remains the same-index analytic limit, exact endpoint
+counts `2/3`, and degree-four identification above.  Aristotle is not ready
+for that source theorem.
+
+For G1, Proshka selected the one bounded noncircular local leaf.  The new
+kernel-checked theorem
+`sourceWeilOddTailInverseWeightedCorrection_quadraticForm_le` proves
+
+```text
+min mu 1 * Re <R^* C^-1 R x, x> <= 2 * ||R x||^2
+```
+
+for the actual source odd-tail graph operator and actual inverse.  It consumes
+the literal graph coercivity and exact inverse equation and uses no finite
+section or scalar inverse surrogate.  Direct Lean, named target build,
+`q3_check`, source scans, and the axiom audit pass; the public axiom surface is
+exactly `[propext, Classical.choice, Quot.sound]`.
+
+This closes only the C1 correction budget.  The corrected even-head sign,
+exact row evenness (or an explicit odd-contamination budget), cofinal shift
+connector, and full complex trial-complement floor remain missing.  The
+narrowed G1 stop is
+`G1_ODD_TAIL_CORRECTION_BOUND_PROVED_CORRECTED_EVEN_HEAD_ROW_EVENNESS_AND_COFINAL_FULL_COMPLEMENT_FLOOR_MISSING`.
+No G1, G3, Route B, or RH promotion follows.
