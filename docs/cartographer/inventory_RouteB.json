@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 221,
-  "declarations": 2044,
-  "in_docs": 905,
+  "files_scanned": 229,
+  "declarations": 2113,
+  "in_docs": 934,
   "in_lemma_db": 1869,
-  "orphans": 98,
-  "uncatalogued": 98,
+  "orphans": 138,
+  "uncatalogued": 138,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
       26
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      16
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
@@ -37,8 +41,28 @@
       8
     ],
     [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      7
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      6
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      5
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
+      3
+    ],
+    [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorZeroSimplicity.lean",
       3
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialResidualTracking.lean",
+      2
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
@@ -3188,6 +3212,376 @@
     },
     {
       "kind": "def",
+      "name": "complexTrialComplementFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 29,
+      "signature": "def complexTrialComplementFloor {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (beta : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "sourceCCMComplexTrialComplementFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 42,
+      "signature": "def sourceCCMComplexTrialComplementFloor (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (beta : ℝ) : Prop",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_isHermitian_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 52,
+      "signature": "private theorem complexTrialLineComplement_isHermitian_local {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) : (complexTrialLineComplement q).IsHermitian",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_sq_of_unit_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 60,
+      "signature": "private theorem complexTrialLineComplement_sq_of_unit_local {ι : Type*} [Fintype ι] [DecidableEq ι] (q : ι → ℂ) (hq : star q ⬝ᵥ q = 1) : complexTrialLineComplement q * complexTrialLineComplement q = complexTrialLineComplement q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineProjection_mulVec_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 70,
+      "signature": "private theorem complexTrialLineProjection_mulVec_local {ι : Type*} [Fintype ι] (q v : ι → ℂ) : complexTrialLineProjection q *ᵥ v = (star q ⬝ᵥ v) • q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_mul_block_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 78,
+      "signature": "private theorem complexTrialLineComplement_mul_block_local {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (hq : star q ⬝ᵥ q = 1) : let Q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialComplementFloor_of_gramCertificate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 103,
+      "signature": "theorem complexTrialComplementFloor_of_gramCertificate {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℂ) (beta : ℝ) (R : Matrix ι ι ℂ) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hgram : let Q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMComplexTrialComplementFloor_of_gramCertificate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 157,
+      "signature": "theorem sourceCCMComplexTrialComplementFloor_of_gramCertificate (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (beta : ℝ) (R : Matrix (CCMModeFinite i.N) (CCMModeFinite i.N) ℂ) (hbeta : 0 < beta) (hgram : sourceCCMComplexTrialComplementBlock S i - (beta : ℂ) • complexTrialLineComplement (D0Pstar.sourceCCMComplexRow S i) = Rᴴ * R) : sourceCCMComplexTrialComplementFloor S i beta",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "goal058ComplementFloorCollapseD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 182,
+      "signature": "def goal058ComplementFloorCollapseD : Matrix (Fin 3) (Fin 3) ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058ComplementFloorCollapseK",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 186,
+      "signature": "def goal058ComplementFloorCollapseK : Matrix (Fin 3) (Fin 3) ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058ComplementFloorCollapseEta",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 189,
+      "signature": "def goal058ComplementFloorCollapseEta : Fin 3 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058ComplementFloorCollapseBeta",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 190,
+      "signature": "def goal058ComplementFloorCollapseBeta : Fin 3 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapse_exact_rankTwo_commutator",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 194,
+      "signature": "theorem goal058ComplementFloorCollapse_exact_rankTwo_commutator : goal058ComplementFloorCollapseD * goal058ComplementFloorCollapseK - goal058ComplementFloorCollapseK * goal058ComplementFloorCollapseD = Matrix.vecMulVec goal058ComplementFloorCollapseBeta goal058ComplementFloorCollapseEta - Matrix.vecMulVec goal058ComplementFloorCollapseEta goal058ComplementFloorCollapseBeta",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058ComplementFloorCollapseQ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 209,
+      "signature": "def goal058ComplementFloorCollapseQ : Fin 3 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "goal058ComplementFloorCollapseY",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 214,
+      "signature": "def goal058ComplementFloorCollapseY : Fin 3 → ℂ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapseQ_unit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 217,
+      "signature": "theorem goal058ComplementFloorCollapseQ_unit : star goal058ComplementFloorCollapseQ ⬝ᵥ goal058ComplementFloorCollapseQ = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapseQ_orthogonal_Y",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 224,
+      "signature": "theorem goal058ComplementFloorCollapseQ_orthogonal_Y : star goal058ComplementFloorCollapseQ ⬝ᵥ goal058ComplementFloorCollapseY = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapseK_kills_Y",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 231,
+      "signature": "theorem goal058ComplementFloorCollapseK_kills_Y : goal058ComplementFloorCollapseK *ᵥ goal058ComplementFloorCollapseY = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapseQComplement_fixes_Y",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 240,
+      "signature": "theorem goal058ComplementFloorCollapseQComplement_fixes_Y : complexTrialLineComplement goal058ComplementFloorCollapseQ *ᵥ goal058ComplementFloorCollapseY = goal058ComplementFloorCollapseY",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapseY_normSq_re",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 248,
+      "signature": "theorem goal058ComplementFloorCollapseY_normSq_re : (star goal058ComplementFloorCollapseY ⬝ᵥ goal058ComplementFloorCollapseY).re = 12",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapse_no_positive_floor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 257,
+      "signature": "theorem goal058ComplementFloorCollapse_no_positive_floor (beta : ℝ) (hbeta : 0 < beta) : ¬ complexTrialComplementFloor goal058ComplementFloorCollapseK goal058ComplementFloorCollapseQ 0 beta",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "goal058ComplementFloorCollapse_no_gramCertificate",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean",
+      "line": 289,
+      "signature": "theorem goal058ComplementFloorCollapse_no_gramCertificate (beta : ℝ) (hbeta : 0 < beta) (R : Matrix (Fin 3) (Fin 3) ℂ) : ¬ (let Q",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineProjection_mulVec_rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      "line": 22,
+      "signature": "private theorem complexTrialLineProjection_mulVec_rayleigh {ι : Type*} [Fintype ι] (q v : ι → ℂ) : complexTrialLineProjection q *ᵥ v = (star q ⬝ᵥ v) • q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_mulVec_of_orthogonal_rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      "line": 30,
+      "signature": "private theorem complexTrialLineComplement_mulVec_of_orthogonal_rayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (q v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : complexTrialLineComplement q *ᵥ v = v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "star_dotProduct_complexTrialLineComplement_mulVec_of_orthogonal_rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      "line": 38,
+      "signature": "private theorem star_dotProduct_complexTrialLineComplement_mulVec_of_orthogonal_rayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (q v w : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : star v ⬝ᵥ (complexTrialLineComplement q *ᵥ w) = star v ⬝ᵥ w",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialComplementFloor_quadratic_of_orthogonal_rayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      "line": 52,
+      "signature": "private theorem complexTrialComplementFloor_quadratic_of_orthogonal_rayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta : ℝ) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : beta * (star v ⬝ᵥ v).re ≤ (star v ⬝ᵥ ((K - (a : ℂ) • (1 : Matrix ι ι ℂ)) *ᵥ v)).re",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_star_dotProduct_mulVec",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      "line": 80,
+      "signature": "private theorem hermitian_star_dotProduct_mulVec {ι : Type*} [Fintype ι] (K : Matrix ι ι ℂ) (hK : K.IsHermitian) (u v : ι → ℂ) : star u ⬝ᵥ (K *ᵥ v) = star (K *ᵥ u) ⬝ᵥ v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_unit_trialLine_complementFloor_gives_orthogonalRayleigh",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean",
+      "line": 101,
+      "signature": "theorem hermitian_unit_trialLine_complementFloor_gives_orthogonalRayleigh {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta epsilon : ℝ) (xi : ι → ℂ) (hK : K.IsHermitian) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (hxi : H2aPenalty.GEig K 1 epsilon xi) (hepsilon : epsilon ≤ a) (hbottom : ∀ v : ι → ℂ, epsilon * (star v ⬝ᵥ v).re ≤ (star v ⬝ᵥ (K *ᵥ v)).re) : ∀ x : ι → ℂ, star xi ⬝ᵥ x = 0 → (a + beta) * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ (K *ᵥ x)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "complexHermitianGroundGapAtLeast",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 27,
+      "signature": "def complexHermitianGroundGapAtLeast {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (epsilon beta : ℝ) (xi : ι → ℂ) : Prop",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineProjection_mulVec_local",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 40,
+      "signature": "private theorem complexTrialLineProjection_mulVec_local {ι : Type*} [Fintype ι] (q v : ι → ℂ) : complexTrialLineProjection q *ᵥ v = (star q ⬝ᵥ v) • q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialLineComplement_mulVec_of_orthogonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 48,
+      "signature": "private theorem complexTrialLineComplement_mulVec_of_orthogonal {ι : Type*} [Fintype ι] [DecidableEq ι] (q v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : complexTrialLineComplement q *ᵥ v = v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "star_dotProduct_complexTrialLineComplement_mulVec_of_orthogonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 56,
+      "signature": "private theorem star_dotProduct_complexTrialLineComplement_mulVec_of_orthogonal {ι : Type*} [Fintype ι] [DecidableEq ι] (q v w : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : star v ⬝ᵥ (complexTrialLineComplement q *ᵥ w) = star v ⬝ᵥ w",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "complexTrialComplementFloor_quadratic_of_orthogonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 70,
+      "signature": "private theorem complexTrialComplementFloor_quadratic_of_orthogonal {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a : ℝ) (beta : ℝ) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (v : ι → ℂ) (hv : star q ⬝ᵥ v = 0) : beta * (star v ⬝ᵥ v).re ≤ (star v ⬝ᵥ ((K - (a : ℂ) • (1 : Matrix ι ι ℂ)) *ᵥ v)).re",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_unit_trialLine_floor_separates_orthogonal_eigenvectors",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 97,
+      "signature": "private theorem hermitian_unit_trialLine_floor_separates_orthogonal_eigenvectors {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta epsilon : ℝ) (xi : ι → ℂ) (hbeta : 0 < beta) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (hxi : H2aPenalty.GEig K 1 epsilon xi) (hepsilon : epsilon ≤ a) (mu : ℝ) (y : ι → ℂ) (hy : H2aPenalty.GEig K 1 mu y) (hxy : star xi ⬝ᵥ y = 0) (hyx : star y ⬝ᵥ xi = 0) : a + beta ≤ mu",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_unit_trialLine_floor_separates_eigenvalues",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 194,
+      "signature": "theorem hermitian_unit_trialLine_floor_separates_eigenvalues {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (q : ι → ℂ) (a beta epsilon : ℝ) (xi : ι → ℂ) (hK : K.IsHermitian) (hq : star q ⬝ᵥ q = 1) (hbeta : 0 < beta) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) (hxi : H2aPenalty.GEig K 1 epsilon xi) (hepsilon : epsilon ≤ a) : ∀ mu y, H2aPenalty.GEig K 1 mu y → mu ≠ epsilon → a + beta ≤ mu",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_unit_trialLine_complementFloor_gives_ground_gap_tracking",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 226,
+      "signature": "theorem hermitian_unit_trialLine_complementFloor_gives_ground_gap_tracking {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι] (K : Matrix ι ι ℂ) (q r : ι → ℂ) (a beta : ℝ) (hK : K.IsHermitian) (hq : star q ⬝ᵥ q = 1) (ha : (a : ℂ) = star q ⬝ᵥ (K *ᵥ q)) (hr : r = K *ᵥ q - (a : ℂ) • q) (hfloor : complexTrialComplementFloor K q (a : ℂ) beta) : ∃ (epsilon : ℝ) (xi0 : ι → ℂ), complexHermitianGroundGapAtLeast K epsilon beta xi0 ∧ 1 - Complex.normSq (star xi0 ⬝ᵥ q) ≤ (star r ⬝ᵥ r).re / beta ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sourceCCMFinite_simpleGround_gap_tracking_of_complementFloor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean",
+      "line": 285,
+      "signature": "theorem sourceCCMFinite_simpleGround_gap_tracking_of_complementFloor (S : D0Pstar.ProlateCanonicalSourceData) (i : D0Pstar.PairIndex) (beta : ℝ) (hfloor : sourceCCMComplexTrialComplementFloor S i beta) : ∃ (epsilon : ℝ) (xi0 : CCMModeFinite i.N → ℂ), complexHermitianGroundGapAtLeast (D0Pstar.sourceCCMFiniteMatrix i) epsilon beta xi0 ∧ 1 - Complex.normSq (star xi0 ⬝ᵥ D0Pstar.sourceCCMComplexRow S i) ≤ (star (D0Pstar.sourceCCMFiniteResidual S i) ⬝ᵥ D0Pstar.sourceCCMFiniteResidual S i).re / beta ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "complexTrialLineComplement",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialLineFeshbach.lean",
       "line": 38,
@@ -3534,6 +3928,36 @@
       "signature": "theorem goal058FeshbachZeroResidualPlant_identity : goal058FeshbachZeroResidualPlantMatrix - (1 : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ) = complexTrialLineComplement goal058FeshbachZeroResidualPlantRow * (goal058FeshbachZeroResidualPlantMatrix - (1 : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ)) * complexTrialLineComplement goal058FeshbachZeroResidualPlantRow",
       "in_docs": false,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "euclidean_inner_toLp_eq_star_dotProduct",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialResidualTracking.lean",
+      "line": 21,
+      "signature": "private theorem euclidean_inner_toLp_eq_star_dotProduct {ι : Type*} [Fintype ι] (u v : ι → ℂ) : inner ℂ (WithLp.toLp 2 u) (WithLp.toLp 2 v) = star u ⬝ᵥ v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "euclidean_norm_sq_toLp_eq_star_dotProduct_re",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialResidualTracking.lean",
+      "line": 27,
+      "signature": "private theorem euclidean_norm_sq_toLp_eq_star_dotProduct_re {ι : Type*} [Fintype ι] (u : ι → ℂ) : ‖WithLp.toLp 2 u‖ ^ 2 = (star u ⬝ᵥ u).re",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_unit_eigen_projective_defect_le_residual_sq_div_beta_sq_of_orthogonal_floor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialResidualTracking.lean",
+      "line": 42,
+      "signature": "theorem hermitian_unit_eigen_projective_defect_le_residual_sq_div_beta_sq_of_orthogonal_floor {ι : Type*} [Fintype ι] [DecidableEq ι] (K : Matrix ι ι ℂ) (xi q r : ι → ℂ) (epsilon a beta : ℝ) (hK : K.IsHermitian) (hxi_unit : star xi ⬝ᵥ xi = 1) (hxi_eig : K *ᵥ xi = (epsilon : ℂ) • xi) (hq_unit : star q ⬝ᵥ q = 1) (hr : r = K *ᵥ q - (a : ℂ) • q) (hbeta : 0 < beta) (hfloor : ∀ x : ι → ℂ, star xi ⬝ᵥ x = 0 → (a + beta) * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ (K *ᵥ x)).re) : 1 - Complex.normSq (star xi ⬝ᵥ q) ≤ (star r ⬝ᵥ r).re / beta ^ 2",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
@@ -5788,6 +6212,56 @@
     },
     {
       "kind": "theorem",
+      "name": "finite_zeros_on_Icc_of_simple",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
+      "line": 22,
+      "signature": "private theorem finite_zeros_on_Icc_of_simple {f f' : ℝ → ℝ} {a b : ℝ} (hcont : ContinuousOn f (Icc a b)) (hderiv : ∀ x ∈ Icc a b, f x = 0 → HasDerivAt f (f' x) x) (hne : ∀ x ∈ Icc a b, f x = 0 → f' x ≠ 0) : ({x : Set.Icc a b | f x = 0} : Set (Set.Icc a b)).Finite",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "finite_zeros_on_Icc_of_simple_real",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
+      "line": 67,
+      "signature": "private theorem finite_zeros_on_Icc_of_simple_real {f f' : ℝ → ℝ} {a b : ℝ} (hcont : ContinuousOn f (Icc a b)) (hderiv : ∀ x ∈ Icc a b, f x = 0 → HasDerivAt f (f' x) x) (hne : ∀ x ∈ Icc a b, f x = 0 → f' x ≠ 0) : {x : ℝ | x ∈ Icc a b ∧ f x = 0}.Finite",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.interior_zeros_on_Icc_finite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
+      "line": 91,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.interior_zeros_on_Icc_finite {mProject K : ℕ} {Λ a b : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (ha : a ∈ Ioo (-1 : ℝ) 1) (hb : b ∈ Ioo (-1 : ℝ) 1) : {x : ℝ | x ∈ Icc a b ∧ mode4FerrersSeries S.coefficients x = 0}.Finite",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_consecutive_zero_right_of_finite",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
+      "line": 115,
+      "signature": "private theorem exists_consecutive_zero_right_of_finite {f : ℝ → ℝ} {x1 x2 : ℝ} (hfinite : {x : ℝ | x ∈ Icc x1 x2 ∧ f x = 0}.Finite) (hxx : x1 < x2) (hz2 : f x2 = 0) : ∃ y ∈ Ioc x1 x2, f y = 0 ∧ ∀ z ∈ Ioo x1 y, f z ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4Ferrers_zero_between_of_lt_Lambda_between_lower_zeros",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean",
+      "line": 142,
+      "signature": "theorem exists_mode4Ferrers_zero_between_of_lt_Lambda_between_lower_zeros {mProject K : ℕ} {ΛLo ΛHi x1 x2 : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hΛ : ΛLo < ΛHi) (hx1 : x1 ∈ Ioo (-1 : ℝ) 1) (hx2 : x2 ∈ Ioo (-1 : ℝ) 1) (hxx : x1 < x2) (hz1 : mode4FerrersSeries SLo.coefficients x1 = 0) (hz2 : mode4FerrersSeries SLo.coefficients x2 = 0) : ∃ x ∈ Ioo x1 x2, mode4FerrersSeries SHi.coefficients x = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "mode4Ferrers_fluxTerm_abs_le",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
       "line": 28,
@@ -6187,6 +6661,96 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "mode4PhysicalFerrersSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 21,
+      "signature": "noncomputable def mode4PhysicalFerrersSeries (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4PhysicalFerrersFirstDerivativeSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 25,
+      "signature": "noncomputable def mode4PhysicalFerrersFirstDerivativeSeries (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4PhysicalFerrersSecondDerivativeSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 30,
+      "signature": "noncomputable def mode4PhysicalFerrersSecondDerivativeSeries (mProject : ℕ) (a : ℕ → ℝ) (u : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Physical_scale_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 35,
+      "signature": "private theorem mode4Physical_scale_mem_Ioo {mProject : ℕ} (hm : 2 ≤ mProject) {u : ℝ} (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : u / Real.sqrt mProject ∈ Set.Ioo (-1 : ℝ) 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physical_contDiffOn_two_open",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 48,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physical_contDiffOn_two_open {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) : ContDiffOn ℝ 2 (mode4PhysicalFerrersSeries mProject S.coefficients) (Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physicalFerrersSeries_hasDerivAt_firstDerivativeSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 66,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFerrersSeries_hasDerivAt_firstDerivativeSeries {mProject K : ℕ} {Λ u : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : HasDerivAt (mode4PhysicalFerrersSeries mProject S.coefficients) (mode4PhysicalFerrersFirstDerivativeSeries mProject S.coefficients u) u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physicalFirstDerivativeSeries_hasDerivAt_secondDerivativeSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 89,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalFirstDerivativeSeries_hasDerivAt_secondDerivativeSeries {mProject K : ℕ} {Λ u : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : HasDerivAt (mode4PhysicalFerrersFirstDerivativeSeries mProject S.coefficients) (mode4PhysicalFerrersSecondDerivativeSeries mProject S.coefficients u) u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.physicalProlateDifferentialEquation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 137,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.physicalProlateDifferentialEquation {mProject K : ℕ} {Λ u : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) (hm : 2 ≤ mProject) (hu : u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) : -((mProject : ℝ) - u ^ 2) * mode4PhysicalFerrersSecondDerivativeSeries mProject S.coefficients u + 2 * u * mode4PhysicalFerrersFirstDerivativeSeries mProject S.coefficients u + (2 * Real.pi * Real.sqrt mProject * u) ^ 2 * mode4PhysicalFerrersSeries mProject S.coefficients u = (Λ + mode4JacobiG mProject) * mode4PhysicalFerrersSeries mProject S.coefficients u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4MatchedNormalizedPhysicalProlateRow_of_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalProlateScaling.lean",
+      "line": 189,
+      "signature": "theorem exists_mode4MatchedNormalizedPhysicalProlateRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q => |a q|) ∧ Summable (fun q => (a q) ^ 2) ∧ HasSum (fun q => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ ContDiffOn ℝ 2 (mode4PhysicalFerrersSeries mProject a) (Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject)) ∧ ∀ u ∈ Set.Ioo (-Real.sqrt mProject) (Real.sqrt mProject), -((mProject : ℝ) - u ^ 2) * mode4PhysicalFerrersSecondDerivativeSeries mProject a u + 2 * u * mode4PhysicalFerrersFirstDerivativeSeries mProject a u + (2 * Real.pi * Real.sqrt mProject * u) ^ 2 * mode4PhysicalFerrersSeries mProject a u = (Λ + mode4JacobiG mProject) * mode4PhysicalFerrersSeries mProject a u",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "mode4FerrersLegendre_Xsq_zero",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
@@ -6492,6 +7056,146 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersRegularEvenProlateSolution.lean",
       "line": 96,
       "signature": "theorem exists_mode4FerrersRegularEvenProlateSolution_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : Nonempty (Mode4FerrersRegularEvenProlateSolution mProject K Λ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "sturmParameterDirectionPlant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 23,
+      "signature": "private theorem sturmParameterDirectionPlant : Real.sin 0 = 0 ∧ Real.sin Real.pi = 0 ∧ (Real.pi / 2 ∈ Set.Ioo (0 : ℝ) Real.pi ∧ Real.sin (2 * (Real.pi / 2)) = 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sturmCounterDirectionPlant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 32,
+      "signature": "private theorem sturmCounterDirectionPlant : ∀ x ∈ Set.Ioo (0 : ℝ) (Real.pi / 2), Real.sin x ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sturmNodalIntervalGuardPlant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 37,
+      "signature": "private theorem sturmNodalIntervalGuardPlant : ∃ x ∈ Set.Ioo (0 : ℝ) Real.pi, Real.sin (2 * x) = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sturmPotentialMismatchPlant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 42,
+      "signature": "private theorem sturmPotentialMismatchPlant (GLo GHi ΛLo ΛHi x u v : ℝ) : u * ((GHi * x ^ 2 - (ΛHi + GHi)) * v) - ((GLo * x ^ 2 - (ΛLo + GLo)) * u) * v = ((ΛLo - ΛHi) + (GHi - GLo) * (x ^ 2 - 1)) * u * v",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sturmSingularEndpointGuardPlant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 49,
+      "signature": "private theorem sturmSingularEndpointGuardPlant : (-1 : ℝ) ∉ Set.Ioo (-1 : ℝ) 1 ∧ (1 : ℝ) ∉ Set.Ioo (-1 : ℝ) 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersSturmWronskian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 54,
+      "signature": "private noncomputable def mode4FerrersSturmWronskian {mProject K : ℕ} {ΛLo ΛHi : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSturmWronskian_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 65,
+      "signature": "private theorem mode4FerrersSturmWronskian_hasDerivAt {mProject K : ℕ} {ΛLo ΛHi x : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : HasDerivAt (mode4FerrersSturmWronskian SLo SHi) ((ΛLo - ΛHi) * mode4FerrersSeries SLo.coefficients x * mode4FerrersSeries SHi.coefficients x) x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "continuous_nonzero_on_interval_has_constant_sign",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 116,
+      "signature": "private theorem continuous_nonzero_on_interval_has_constant_sign {f : ℝ → ℝ} {a b : ℝ} (hab : a < b) (hcont : ContinuousOn f (Set.Icc a b)) (hnz : ∀ x ∈ Set.Ioo a b, f x ≠ 0) : (∀ x ∈ Set.Ioo a b, 0 < f x) ∨ (∀ x ∈ Set.Ioo a b, f x < 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "derivative_pos_at_left_zero_of_pos_right",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 162,
+      "signature": "private theorem derivative_pos_at_left_zero_of_pos_right {f : ℝ → ℝ} {f' a b : ℝ} (hab : a < b) (hf : HasDerivAt f f' a) (hfa : f a = 0) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) (hf'Ne : f' ≠ 0) : 0 < f'",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "derivative_neg_at_right_zero_of_pos_left",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 185,
+      "signature": "private theorem derivative_neg_at_right_zero_of_pos_left {f : ℝ → ℝ} {f' a b : ℝ} (hab : a < b) (hf : HasDerivAt f f' b) (hfb : f b = 0) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) (hf'Ne : f' ≠ 0) : f' < 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "value_nonneg_at_left_of_pos_right",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 209,
+      "signature": "private theorem value_nonneg_at_left_of_pos_right {f : ℝ → ℝ} {a b : ℝ} (hab : a < b) (hf : ContinuousAt f a) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) : 0 ≤ f a",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "value_nonneg_at_right_of_pos_left",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 223,
+      "signature": "private theorem value_nonneg_at_right_of_pos_left {f : ℝ → ℝ} {a b : ℝ} (hab : a < b) (hf : ContinuousAt f b) (hpos : ∀ x ∈ Set.Ioo a b, 0 < f x) : 0 ≤ f b",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "wronskian_strictAnti_on_nodal_interval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 237,
+      "signature": "private theorem wronskian_strictAnti_on_nodal_interval {mProject K : ℕ} {ΛLo ΛHi x1 x2 su sv : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hΛ : ΛLo < ΛHi) (hx1 : x1 ∈ Set.Ioo (-1 : ℝ) 1) (hx2 : x2 ∈ Set.Ioo (-1 : ℝ) 1) (hxx : x1 < x2) (hz1 : mode4FerrersSeries SLo.coefficients x1 = 0) (hz2 : mode4FerrersSeries SLo.coefficients x2 = 0) (hsu : su ≠ 0) (huPos : ∀ x ∈ Set.Ioo x1 x2, 0 < su * mode4FerrersSeries SLo.coefficients x) (hvPos : ∀ x ∈ Set.Ioo x1 x2, 0 < sv * mode4FerrersSeries SHi.coefficients x) : False",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4Ferrers_zero_between_of_lt_Lambda_on_nodal_interval",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean",
+      "line": 379,
+      "signature": "theorem exists_mode4Ferrers_zero_between_of_lt_Lambda_on_nodal_interval {mProject K : ℕ} {ΛLo ΛHi x1 x2 : ℝ} (SLo : Mode4FerrersRegularEvenProlateSolution mProject K ΛLo) (SHi : Mode4FerrersRegularEvenProlateSolution mProject K ΛHi) (hΛ : ΛLo < ΛHi) (hx1 : x1 ∈ Set.Ioo (-1 : ℝ) 1) (hx2 : x2 ∈ Set.Ioo (-1 : ℝ) 1) (hxx : x1 < x2) (hz1 : mode4FerrersSeries SLo.coefficients x1 = 0) (hz2 : mode4FerrersSeries SLo.coefficients x2 = 0) (hNodal : ∀ x ∈ Set.Ioo x1 x2, mode4FerrersSeries SLo.coefficients x ≠ 0) : ∃ x ∈ Set.Ioo x1 x2, mode4FerrersSeries SHi.coefficients x = 0",
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false
@@ -16924,6 +17628,16 @@
       "signature": "theorem vanishing_unit_nonreal_zero : hermitianZeroMatrix1.IsHermitian ∧ vanishingUnitPlant Complex.I = 0 ∧ Complex.I.im ≠ 0",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_exists_unit_minimum_eigenpair",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/HermitianUnitMinimumEigenpair.lean",
+      "line": 23,
+      "signature": "theorem hermitian_exists_unit_minimum_eigenpair {ι : Type*} [Fintype ι] [DecidableEq ι] [Nonempty ι] (K : Matrix ι ι ℂ) (hK : K.IsHermitian) : ∃ (epsilon : ℝ) (xi : ι → ℂ), star xi ⬝ᵥ xi = 1 ∧ K *ᵥ xi = (epsilon : ℂ) • xi ∧ ∀ x : ι → ℂ, epsilon * (star x ⬝ᵥ x).re ≤ (star x ⬝ᵥ (K *ᵥ x)).re",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

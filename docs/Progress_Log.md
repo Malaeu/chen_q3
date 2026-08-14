@@ -2031,6 +2031,53 @@ Mythos crosswalk request.
 `G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058 G1: finite spectral receiver собран до literal source wrapper
+
+**Развилка:** после exact Gram-checker продолжать смешивать source-поставку
+`beta` с generic спектральными последствиями либо сначала kernel-check замкнуть
+весь receiver и оставить один чистый arithmetic blocker.
+
+**Выбрали:** построить unit minimum Hermitian eigenpair, перенести
+trial-complement floor на ортогональное дополнение настоящего ground vector,
+доказать separation остальных eigenvalues и squared-residual projective
+tracking, затем специализировать всё на literal CCM source objects.
+
+**Почему:** это убирает неопределённость из следующего шага. Теперь любой
+будущий `sourceCCMComplexTrialComplementFloor` немедленно даёт ровно тот finite
+gap/tracking пакет, который требует архитектура; повторный поиск generic
+min--max или residual lemma больше не нужен.
+
+**Что отвергли и почему:** не добавляли ground eigenpair, simplicity или gap
+как source assumption и не называли условный receiver G1. Положительный
+`beta`, finite-head certificate, uniform tail и cofinal schedule всё ещё надо
+получить из буквальной CCM-арифметики.
+
+**Техника:** Mathlib Hermitian eigenbasis, explicit two-plane cancellation,
+codimension-one eigenvector separation, orthogonal residual decomposition,
+finite Hilbert Cauchy--Schwarz и source-faithful wrapper.
+
+**Следующий ход:** `Goal058.G1.CofinalComplementFloor.FiniteHead` плюс
+`Goal058.G1.CofinalComplementFloor.UniformTail` на одной precommitted schedule;
+затем проверить, что same-family squared residual делится на этот floor с
+нужным decay.
+
+**Адреса:**
+`Q3/Proofs/RouteB/HermitianUnitMinimumEigenpair.lean` ·
+`Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementRayleigh.lean` ·
+`Q3/Proofs/RouteB/CCMProposition59ComplexTrialResidualTracking.lean` ·
+`Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementSpectral.lean` ·
+`ACTIVE/pipeline/oracle_questions/2026_08_14_goal058_g1_cofinal_complement_floor_spectral_receiver.md`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Три адресных
+запроса не нашли complete project supplier; kernel принял всю finite chain и
+literal wrapper с public axioms только
+`[propext, Classical.choice, Quot.sound]`.
+
+**Граница:**
+`FINITE_CELL_CONDITIONAL_RECEIVER_PASS`; stop-code не меняется:
+`G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`.
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

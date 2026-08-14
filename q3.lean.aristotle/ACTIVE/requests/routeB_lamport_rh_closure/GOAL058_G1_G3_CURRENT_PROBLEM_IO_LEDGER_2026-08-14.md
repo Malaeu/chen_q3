@@ -189,6 +189,30 @@ and every corresponding Gram certificate.  Thus the discarded
 commutator/beta-only route is now rejected by the same exact checker that will
 accept future literal certificates.
 
+### Exact finite spectral receiver now kernel checked
+
+Four Lean files now close the full finite-dimensional consequence of that
+predicate without postulating an eigenpair or a gap:
+
+- `HermitianUnitMinimumEigenpair.lean` constructs a unit minimum Hermitian
+  eigenpair and proves its global Rayleigh lower bound;
+- `CCMProposition59ComplexTrialComplementRayleigh.lean` promotes the floor on
+  the trial line's complement to the strong `(a+beta)` Rayleigh floor on the
+  true ground vector's orthogonal complement;
+- `CCMProposition59ComplexTrialResidualTracking.lean` proves
+  `1-normSq<xi0,q> <= Re<r,r>/beta^2` from that orthogonal floor;
+- `CCMProposition59ComplexTrialComplementSpectral.lean` assembles both generic
+  and literal source wrappers and proves separation of every non-ground
+  eigenvalue.
+
+The literal theorem
+`sourceCCMFinite_simpleGround_gap_tracking_of_complementFloor` consumes the
+unchanged source matrix, complex row, Rayleigh value, residual, and named
+`sourceCCMComplexTrialComplementFloor`.  Therefore the receiver side of G1 is
+closed exactly, while the source-arithmetic quantifier is unchanged: no
+positive `beta`, finite-head certificate, uniform tail, or cofinal schedule is
+manufactured by these theorems.
+
 The next G1 input must be produced, not postulated: literal CCM arithmetic on
 one precommitted cofinal family, a finite-head Gram certificate, and a
 Lean-checked uniform tail reduction yielding an explicit positive floor.

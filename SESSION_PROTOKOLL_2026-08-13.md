@@ -626,3 +626,28 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
 - Classification:
   `MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.
   G1, G3, Route B promotion, and RH remain open.
+
+## Goal 058 G1 — literal complement-floor spectral receiver is complete
+
+- The architecture's finite receiver is now kernel checked rather than left
+  as a memorandum interface.  A generic finite Hermitian theorem constructs a
+  unit minimum eigenpair and its global Rayleigh lower bound.
+- An explicit two-plane argument promotes the literal trial-complement floor
+  to the true ground vector's orthogonal complement at the strong level
+  `a+beta`.  A separate eigenvector argument yields non-ground spectral
+  separation.
+- Exact residual decomposition and finite-dimensional Cauchy--Schwarz prove
+  `1-normSq<xi0,q> <= Re<r,r>/beta^2`.
+- The final wrapper is specialized to the unchanged
+  `sourceCCMFiniteMatrix`, `sourceCCMComplexRow`, source Rayleigh value, and
+  `sourceCCMFiniteResidual`.  It consumes the named literal
+  `sourceCCMComplexTrialComplementFloor`; it does not assert or construct that
+  floor.
+- Public theorem heads are recorded in
+  `GOAL058_G1_LITERAL_COMPLEMENT_FLOOR_SPECTRAL_RECEIVER_CLOSEOUT_2026-08-14.md`.
+  Direct and target Lean passed; the closing transaction runs the full build,
+  `q3_check`, semantic refresh, strict startup, and Route B state check.
+- Boundary remains
+  `G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`.
+  This is `FINITE_CELL_CONDITIONAL_RECEIVER_PASS`, not G1.  G3, Route B
+  promotion, and RH also remain open.
