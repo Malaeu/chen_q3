@@ -1,22 +1,13 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 232,
-  "declarations": 2130,
+  "files_scanned": 235,
+  "declarations": 2143,
   "in_docs": 947,
-  "in_lemma_db": 2121,
-  "orphans": 4,
-  "uncatalogued": 4,
-  "orphan_files_top": [
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
-      3
-    ],
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
-      1
-    ]
-  ],
+  "in_lemma_db": 2143,
+  "orphans": 0,
+  "uncatalogued": 0,
+  "orphan_files_top": [],
   "items": [
     {
       "kind": "def",
@@ -7619,6 +7610,46 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "mode4JacobiG_pos_for_tail_monotonicity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiRightTailMonotonicity.lean",
+      "line": 19,
+      "signature": "private theorem mode4JacobiG_pos_for_tail_monotonicity (mProject : ℕ) (hm : 2 ≤ mProject) : 0 < mode4JacobiG mProject",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4TailMap_mono_lambda_and_terminal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiRightTailMonotonicity.lean",
+      "line": 29,
+      "signature": "theorem mode4TailMap_mono_lambda_and_terminal (mProject q : ℕ) (Λ₁ Λ₂ x₁ x₂ : ℝ) (hm : 2 ≤ mProject) (hq : 3 ≤ q) (hsep : (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ₁ : Λ₁ ≤ 20) (hΛ₂ : Λ₂ ≤ 20) (hΛ : Λ₁ ≤ Λ₂) (hx₁ : x₁ ∈ Set.Icc 0 (1 / 2)) (hx₂ : x₂ ∈ Set.Icc 0 (1 / 2)) (hx : x₁ ≤ x₂) : mode4TailMap (mode4JacobiG mProject) Λ₁ q x₁ ≤ mode4TailMap (mode4JacobiG mProject) Λ₂ q x₂",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4BackwardTail_monotoneOn_lambda",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiRightTailMonotonicity.lean",
+      "line": 71,
+      "signature": "theorem mode4BackwardTail_monotoneOn_lambda (mProject K n : ℕ) (terminal : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hterminal : terminal ∈ Set.Icc 0 (1 / 2)) : MonotoneOn (fun Λ : ℝ => mode4BackwardTail mProject Λ K n terminal) (Set.Iic 20)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4RightTailLimit_monotoneOn_lambda",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiRightTailMonotonicity.lean",
+      "line": 119,
+      "signature": "theorem mode4RightTailLimit_monotoneOn_lambda (mProject K : ℕ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) : MonotoneOn (fun Λ : ℝ => mode4RightTailLimit mProject Λ K) (Set.Iic 20)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "mode4LeftPair",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiRootFunction.lean",
@@ -9379,6 +9410,96 @@
       "orphan": false
     },
     {
+      "kind": "theorem",
+      "name": "mode4JacobiLower_pos_of_one_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean",
+      "line": 20,
+      "signature": "private theorem mode4JacobiLower_pos_of_one_le (G : ℝ) (q : ℕ) (hG : 0 < G) (hq : 1 ≤ q) : 0 < mode4JacobiLower G q",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ScaledLeftContinuant_succ_ne_zero_of_eq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean",
+      "line": 30,
+      "signature": "theorem mode4ScaledLeftContinuant_succ_ne_zero_of_eq_zero (mProject q : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hqzero : mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ q = 0) : mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ (q + 1) ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ScaledLeftContinuant_pred_ne_zero_of_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean",
+      "line": 78,
+      "signature": "theorem mode4ScaledLeftContinuant_pred_ne_zero_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 1 ≤ K) (hroot : mode4RootFunction mProject K Λ = 0) : mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ (K - 1) ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_succ_principalMinor",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean",
+      "line": 106,
+      "signature": "theorem mode4HermitianSchurMatrix_succ_principalMinor (mProject n : ℕ) (Λ : ℝ) : Matrix.submatrix (mode4HermitianSchurMatrix mProject Λ (n + 1)) Fin.succ Fin.succ = mode4HermitianLeftContinuantMatrix (mode4JacobiG mProject) Λ n",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_root_ker_finrank_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean",
+      "line": 118,
+      "signature": "theorem mode4HermitianSchurMatrix_root_ker_finrank_le_one (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 1 ≤ K) (hroot : mode4RootFunction mProject K Λ = 0) : Module.finrank ℝ (LinearMap.ker (mode4HermitianSchurMatrix mProject Λ K).mulVecLin) ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_root_ker_finrank_eq_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean",
+      "line": 166,
+      "signature": "theorem mode4HermitianSchurMatrix_root_ker_finrank_eq_one (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 1 ≤ K) (hroot : mode4RootFunction mProject K Λ = 0) : Module.finrank ℝ (LinearMap.ker (mode4HermitianSchurMatrix mProject Λ K).mulVecLin) = 1",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianLeftContinuantMatrix_sub_eq_smul_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean",
+      "line": 25,
+      "signature": "theorem mode4HermitianLeftContinuantMatrix_sub_eq_smul_one (G Λ₁ Λ₂ : ℝ) (K : ℕ) : mode4HermitianLeftContinuantMatrix G Λ₁ K - mode4HermitianLeftContinuantMatrix G Λ₂ K = (Λ₂ - Λ₁) • (1 : Matrix (Fin K) (Fin K) ℝ)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_sub_eq_smul_one_add_diagonal",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean",
+      "line": 50,
+      "signature": "theorem mode4HermitianSchurMatrix_sub_eq_smul_one_add_diagonal (mProject K : ℕ) (Λ₁ Λ₂ : ℝ) (hK : 1 ≤ K) : mode4HermitianSchurMatrix mProject Λ₁ K - mode4HermitianSchurMatrix mProject Λ₂ K = (Λ₂ - Λ₁) • (1 : Matrix (Fin K) (Fin K) ℝ) + Matrix.diagonal (fun i : Fin K => if i.val = 0 then mode4JacobiUpper (mode4JacobiG mProject) (K - 1) * (mode4RightTailLimit mProject Λ₂ K - mode4RightTailLimit mProject Λ₁ K) else 0)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_spectralParameter_drop_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean",
+      "line": 83,
+      "signature": "theorem mode4HermitianSchurMatrix_spectralParameter_drop_posSemidef (mProject K : ℕ) (Λ₁ Λ₂ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ₁ : Λ₁ ≤ 20) (hΛ₂ : Λ₂ ≤ 20) (hΛ : Λ₁ ≤ Λ₂) : (mode4HermitianSchurMatrix mProject Λ₁ K - mode4HermitianSchurMatrix mProject Λ₂ K - (Λ₂ - Λ₁) • (1 : Matrix (Fin K) (Fin K) ℝ)).PosSemidef",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "def",
       "name": "SelectedRawLocallyBounded",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PostAnchorMontel.lean",
@@ -9525,7 +9646,7 @@
       "line": 34,
       "signature": "def sourcePositiveIndexFinset (i : PairIndex) : Finset ℕ+",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -9545,7 +9666,7 @@
       "line": 43,
       "signature": "private theorem lambda_m_sq (i : PairIndex) : lambda_m i * lambda_m i = (i.m : ℝ)",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -9555,8 +9676,8 @@
       "line": 50,
       "signature": "theorem prolateCombination_windowFiniteSupport (i : PairIndex) (P : ProlatePair) (hlambda : P.pw.lambda = lambda_m i) : WindowFiniteSupport (lambda_m i) (sourcePositiveIndexFinset i) (prolateCombination P)",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -9565,7 +9686,7 @@
       "line": 84,
       "signature": "theorem prolateCombination_E_star_memLp_of_actualModes (i : PairIndex) (P : ProlatePair) (hlambda : P.pw.lambda = lambda_m i) (hP : IsActualProlateModePair P) : MemLp (E_star (prolateCombination P)) 2 (dStar.restrict (I_m i))",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19065,8 +19186,8 @@
       "line": 29,
       "signature": "theorem measurable_of_finiteFourier_eigenrelation (lambda : ℝ) (hlambda : 0 ≤ lambda) (h : ℝ → ℂ) (chi : ℂ) (hchi : chi ≠ 0) (hsupp : Function.support h ⊆ Icc (-lambda) lambda) (hint : Integrable h) (heigen : ∀ x ∈ Icc (-lambda) lambda, finiteFourierAction lambda h x = chi * h x) : Measurable h",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19075,8 +19196,8 @@
       "line": 61,
       "signature": "theorem prolateCombination_muntzRegularity_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : ∃ K : NNReal, Function.Even (prolateCombination P) ∧ Measurable (prolateCombination P) ∧ (∀ u, u ∉ Icc (-P.pw.lambda) P.pw.lambda → prolateCombination P u = 0) ∧ LipschitzOnWith K (prolateCombination P) (Ico (0 : ℝ) P.pw.lambda) ∧ (∫ u in Ioi (0 : ℝ), prolateCombination P u) = 0",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19085,8 +19206,8 @@
       "line": 106,
       "signature": "theorem ProlatePair.normalizingDenominator_pos_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : 0 < P.normalizingDenominator",
       "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
+      "in_lemma_db": true,
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -19095,7 +19216,7 @@
       "line": 122,
       "signature": "theorem prolateCombination_ne_zero_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : prolateCombination P ≠ 0",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
@@ -19105,7 +19226,7 @@
       "line": 159,
       "signature": "theorem integral_sqNorm_prolateCombination_eq_one_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : (∫ x : ℝ, ‖prolateCombination P x‖ ^ 2) = 1",
       "in_docs": true,
-      "in_lemma_db": false,
+      "in_lemma_db": true,
       "orphan": false
     },
     {
