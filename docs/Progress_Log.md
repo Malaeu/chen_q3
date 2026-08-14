@@ -1783,20 +1783,28 @@ existence, Lemma 7.2, G1, G3, Route B promotion и RH остаются откр�
 **Развилка:** пытаться ещё раз собрать actual prolate pair из текущих generic
 операторных файлов либо адресно проверить наличие спектрального constructor.
 
-**Результат:** готового constructor нет. Mathlib имеет predicate компактности,
+**Выбрали:** адресный capability audit Mathlib, текущих prolate-файлов и
+mode-four coefficient backend с отдельным I/O-ledger для G1/G3.
+
+**Почему:** готового constructor нет. Mathlib имеет predicate компактности,
 но compact self-adjoint spectral theorem помечен TODO; project-файлы закрывают
 intertwining/regularity/nonvanishing и mode-four recurrence, но не PSWF
 existence, ordered degree-0/4 selection и Lemma 7.2 rate.
 
-**G1:** commutator-only и beta-only shortcut окончательно убиты exact plant и
-`N=1` factorization; остаётся literal CCM quantitative gap/sector-order plus
-same-trial cofinal tracking.
+**Что отвергли и почему:** commutator-only и beta-only G1 shortcuts убиты
+exact plant и `N=1` factorization; ещё один conditional prolate receiver и
+Aristotle submit отвергнуты, потому что actual source constructor отсутствует.
 
-**Следующий честный слой:** singular Sturm--Liouville/PSWF construction либо
+**Техника:** full-repo declaration audit, Mathlib Spectrum TODO inspection,
+exact commutator plant, source-shaped `N=1` characteristic factorization,
+direct/target/full Lean, `q3_check`, RouteB check и strict startup.
+
+**Следующий ход:** formalize singular Sturm--Liouville/PSWF construction либо
 Ferrers-series convergence + ODE + endpoint flux + zero count, затем Lemma 7.2
-и denominator floor. Aristotle не отправлен: bounded theorem пока отсутствует.
+и denominator floor; G1 параллельно требует literal CCM quantitative
+gap/sector-order и same-trial cofinal tracking.
 
-**Адрес:**
+**Адреса:**
 `GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
 
 **Граница:** `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; Route B остаётся
