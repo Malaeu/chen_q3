@@ -419,3 +419,44 @@ The active stop is
 This does not close matching-root/indexed-`psi4` existence, mode zero,
 restricted finite Fourier, Lemma 7.2, denominator floor, G1, G3, Route B, or
 RH.
+
+## 2026-08-14 actual finite Schur provenance and tail positivity
+
+The terminal-zero backward-tail approximation is now connected to a literal
+finite Hermitian Jacobi truncation.  The exact Schur complement onto the
+retained block was first proved under explicit recursive nonzero pivots and
+accepted by Proshka.  The follow-up leaf
+`D0Mode4BackwardTailFiniteTailPosDef.lean` then proves, under the production
+separation inequality and `Lambda <= 20`, that the actual eliminated finite
+tail block is `Matrix.PosDef` for every depth, including the empty `d=0`
+carrier.
+
+The same follow-up discharges every recursive elimination pivot internally
+and exports the exact public Schur identity without the predecessor's private
+pivot predicate.  Its coercive estimate is
+
+```text
+mode4JacobiLower G K * x_0^2 + (G/12) * sum_i x_i^2
+  <= star x dot (A x).
+```
+
+All direct Lean, target-build, full-build, `q3_check`, forbidden-token,
+axiom-profile, and strict-startup gates passed.  Four kernel-checked scratch
+plants separately reject Hermitian-implies-PosDef, removal of separation,
+removal of `Lambda <= 20`, and tail reversal.  Proshka accepted the exact
+Lean/report hashes and corrected one filename-only transport typo without
+changing the mathematical verdict.  The accepted proof/report commit is
+`16d603c5`.
+
+The independent Aristotle attempt for the predecessor finite-Schur contract
+later completed, but its alternative implementation was not consumed by this
+proof or its review.
+
+This is still a finite-cell result.  It proves no block-inertia equality,
+negative count, limit stabilization, zero offset, or endpoint count `2/3`.
+The next bounded finite-Jacobi leaf is
+`G3_MODE4_FINITE_BLOCK_INERTIA_ADDITIVITY`: prove the exact congruence/inertia
+identity for the same block orientation using the new `PosDef` tail and exact
+Schur crosswalk.  The classical-spectrum-to-literal-Schur count crosswalk,
+indexed mode selection, mode zero, restricted finite Fourier, CCM Lemma 7.2,
+denominator floor, G1, G3, Route B promotion, and RH all remain open.

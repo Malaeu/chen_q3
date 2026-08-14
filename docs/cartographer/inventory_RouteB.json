@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 241,
-  "declarations": 2238,
-  "in_docs": 965,
+  "files_scanned": 242,
+  "declarations": 2248,
+  "in_docs": 970,
   "in_lemma_db": 2172,
-  "orphans": 56,
-  "uncatalogued": 56,
+  "orphans": 64,
+  "uncatalogued": 64,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean",
@@ -15,6 +15,10 @@
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
       9
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      8
     ]
   ],
   "items": [
@@ -6340,6 +6344,106 @@
     },
     {
       "kind": "def",
+      "name": "mode4ForwardFiniteTailMatrixPD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 26,
+      "signature": "private noncomputable def mode4ForwardFiniteTailMatrixPD (G Λ : ℝ) (K : ℕ) : (d : ℕ) → Matrix (Fin d) (Fin d) ℝ | 0 => fun i => Fin.elim0 i | n + 1 => fun i j => Fin.cases (Fin.cases (mode4JacobiCenter G Λ K) (fun j' => if j'.val = 0 then -mode4JacobiSymmetricOff G K else 0) j) (fun i' => Fin.cases (if i'.val = 0 then -mode4JacobiSymmetricOff G K else 0) (fun j' => mode4ForwardFiniteTailMatrixPD G Λ (K + 1) n i' j') j) i  private theorem mode4ActualFiniteJacobiTruncation_tailBlock_eq_forwardPD (mProject K d : ℕ) (Λ : ℝ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).toBlocks₂₂ = mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K d",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_tailBlock_eq_forwardPD",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 42,
+      "signature": "private theorem mode4ActualFiniteJacobiTruncation_tailBlock_eq_forwardPD (mProject K d : ℕ) (Λ : ℝ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).toBlocks₂₂ = mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K d",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrixPD_quadratic_succ_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 62,
+      "signature": "private theorem mode4ForwardFiniteTailMatrixPD_quadratic_succ_succ (G Λ : ℝ) (K n : ℕ) (x : Fin (n + 2) → ℝ) : star x ⬝ᵥ (mode4ForwardFiniteTailMatrixPD G Λ K (n + 2) *ᵥ x) = mode4JacobiCenter G Λ K * x 0 ^ 2 - 2 * mode4JacobiSymmetricOff G K * x 0 * x 1 + star (fun i : Fin (n + 1) => x i.succ) ⬝ᵥ (mode4ForwardFiniteTailMatrixPD G Λ (K + 1) (n + 1) *ᵥ (fun i : Fin (n + 1) => x i.succ))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4JacobiSymmetricOff_young",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 75,
+      "signature": "private theorem mode4JacobiSymmetricOff_young (G : ℝ) (q : ℕ) (hG : 0 < G) (x y : ℝ) : 2 * mode4JacobiSymmetricOff G q * x * y ≤ mode4JacobiUpper G q * x ^ 2 + mode4JacobiLower G (q + 1) * y ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrixPD_quadratic_lower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 109,
+      "signature": "private theorem mode4ForwardFiniteTailMatrixPD_quadratic_lower (mProject K n : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (x : Fin (n + 1) → ℝ) : mode4JacobiLower (mode4JacobiG mProject) K * x 0 ^ 2 + (1 / 12 : ℝ) * mode4JacobiG mProject * ∑ i, x i ^ 2 ≤ star x ⬝ᵥ (mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K (n + 1) *ᵥ x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrixPD_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 179,
+      "signature": "private theorem mode4ForwardFiniteTailMatrixPD_isHermitian (G Λ : ℝ) (K d : ℕ) : (mode4ForwardFiniteTailMatrixPD G Λ K d).IsHermitian",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrixPD_posDef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 198,
+      "signature": "private theorem mode4ForwardFiniteTailMatrixPD_posDef (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : (mode4ForwardFiniteTailMatrixPD (mode4JacobiG mProject) Λ K d).PosDef",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_tailBlock_posDef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 247,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_tailBlock_posDef (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).toBlocks₂₂.PosDef",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4BackwardTail_zero_mem_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 261,
+      "signature": "private theorem mode4BackwardTail_zero_mem_Icc (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : mode4BackwardTail mProject Λ K d 0 ∈ Set.Icc 0 (1 / 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_schurComplement_eq_approx_of_separation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteTailPosDef.lean",
+      "line": 276,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_schurComplement_eq_approx_of_separation (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : let M",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "mode4BackwardTailSchurApprox",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailSchurConvergence.lean",
       "line": 25,
@@ -8914,7 +9018,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiTailContraction.lean",
       "line": 67,
       "signature": "noncomputable def mode4TailMap (G Λ : ℝ) (q : ℕ) (x : ℝ) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8984,7 +9088,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiTailContraction.lean",
       "line": 134,
       "signature": "theorem mode4JacobiCenter_sub_upper_mul_lower_bound (G Λ x : ℝ) (q : ℕ) (hG : 0 < G) (hq : 3 ≤ q) (hsep : (31 / 24 : ℝ) * G ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hx : x ∈ Set.Icc 0 (1 / 2)) : (2 / 3 : ℝ) * G ≤ mode4JacobiCenter G Λ q - mode4JacobiUpper G q * x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -9004,7 +9108,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiTailContraction.lean",
       "line": 183,
       "signature": "theorem mode4TailMap_mapsTo_and_contracts (mProject q : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hq : 3 ≤ q) (hsep : (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Set.MapsTo (mode4TailMap (mode4JacobiG mProject) Λ q) (Set.Icc 0 (1 / 2)) (Set.Icc 0 (1 / 2)) ∧ LipschitzOnWith (3 / 16 : NNReal) (mode4TailMap (mode4JacobiG mProject) Λ q) (Set.Icc 0 (1 / 2))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
