@@ -1,12 +1,12 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 216,
-  "declarations": 2019,
-  "in_docs": 891,
+  "files_scanned": 217,
+  "declarations": 2033,
+  "in_docs": 895,
   "in_lemma_db": 1869,
-  "orphans": 87,
-  "uncatalogued": 87,
+  "orphans": 97,
+  "uncatalogued": 97,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
@@ -22,6 +22,10 @@
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      10
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
       10
     ],
     [
@@ -5724,6 +5728,146 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
       "line": 291,
       "signature": "theorem exists_mode4MatchedNormalizedContinuousFerrersRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ (∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) ∧ ContinuousOn (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Ferrers_fluxTerm_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 28,
+      "signature": "theorem mode4Ferrers_fluxTerm_abs_le (a : ℕ → ℝ) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : |(1 - x ^ 2) * mode4FerrersFirstDerivativeTerm a q x| ≤ 4 * (((q + 1 : ℕ) : ℝ) * |a q|)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Ferrers_fluxSeries_tendsto_zero_at_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 90,
+      "signature": "theorem mode4Ferrers_fluxSeries_tendsto_zero_at_one (a : ℕ → ℝ) (ha1 : Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |a q|))) : Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (1 : ℝ) (Set.Iio 1)) (𝓝 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Ferrers_fluxSeries_tendsto_zero_at_neg_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 136,
+      "signature": "theorem mode4Ferrers_fluxSeries_tendsto_zero_at_neg_one (a : ℕ → ℝ) (ha1 : Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |a q|))) : Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (-1 : ℝ) (Set.Ioi (-1))) (𝓝 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Ferrers_zeroFlux_at_endpoints_of_tail_splice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 183,
+      "signature": "theorem mode4Ferrers_zeroFlux_at_endpoints_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (1 : ℝ) (Set.Iio 1)) (𝓝 0) ∧ Filter.Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * mode4FerrersFirstDerivativeSeries a x) (nhdsWithin (-1 : ℝ) (Set.Ioi (-1))) (𝓝 0)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_two_derivative_at_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 225,
+      "signature": "private theorem mode4OrdinaryLegendrePolynomial_two_derivative_at_one : (mode4OrdinaryLegendrePolynomial 2).derivative.eval 1 = 3",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "g3Mode4EndpointFactorPlantRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 234,
+      "signature": "private def g3Mode4EndpointFactorPlantRow (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "g3Mode4EndpointFactorMutation_survived",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 239,
+      "signature": "private theorem g3Mode4EndpointFactorMutation_survived : (1 + (1 : ℝ) ^ 2) * mode4FerrersFirstDerivativeTerm g3Mode4EndpointFactorPlantRow 1 1 ≠ 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "g3InteriorC2PlantDerivative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 246,
+      "signature": "private def g3InteriorC2PlantDerivative (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "g3InteriorC2PlantDerivative_contDiffOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 250,
+      "signature": "private theorem g3InteriorC2PlantDerivative_contDiffOn : ContDiffOn ℝ 2 g3InteriorC2PlantDerivative (Set.Ioo (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "g3InteriorC2PlantDerivative_flux_eq_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 261,
+      "signature": "private theorem g3InteriorC2PlantDerivative_flux_eq_one (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : (1 - x ^ 2) * g3InteriorC2PlantDerivative x = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "g3InteriorC2PlantDerivative_not_zeroFlux",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 271,
+      "signature": "private theorem g3InteriorC2PlantDerivative_not_zeroFlux : ¬ Tendsto (fun x : ℝ ↦ (1 - x ^ 2) * g3InteriorC2PlantDerivative x) (nhdsWithin (1 : ℝ) (Set.Iio 1)) (𝓝 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "g3L2PlantRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 289,
+      "signature": "private def g3L2PlantRow (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "g3L2PlantRow_squareSummable_not_weightedL1",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 294,
+      "signature": "private theorem g3L2PlantRow_squareSummable_not_weightedL1 : Summable (fun q : ℕ ↦ (g3L2PlantRow q) ^ 2) ∧ ¬ Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |g3L2PlantRow q|))",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "g3Mode4SourceRowPlant_exact_tail_splice_required",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersEndpointFlux.lean",
+      "line": 325,
+      "signature": "private theorem g3Mode4SourceRowPlant_exact_tail_splice_required (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : Summable (fun q : ℕ ↦ (((q + 1 : ℕ) : ℝ) * |a q|))",
       "in_docs": false,
       "in_lemma_db": false,
       "orphan": true
