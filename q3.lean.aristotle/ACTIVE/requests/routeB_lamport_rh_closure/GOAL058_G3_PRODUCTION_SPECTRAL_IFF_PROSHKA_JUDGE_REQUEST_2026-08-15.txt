@@ -1,0 +1,180 @@
+GOAL 058 G3 — PRODUCTION SPECTRAL-IFF JUDGE REQUEST
+Date: 2026-08-15
+Repo: https://github.com/Malaeu/chen_q3
+Branch: rh_clean
+Authoritative HEAD: 2755daff538c1b1da905ff360d1cc0d5bc39cce1
+Status boundary: G1 OPEN; G3 OPEN; CHALLENGER_NOT_RH; NO_RH.
+
+REQUEST
+
+Judge the next G3 edge after the newly proved DLMF 30.3.5
+characteristic-equation / normalized-l2-row biconditional.  Return one exact
+architecture decision and the smallest honest next Lean leaf.  Do not promote
+G1, G3, Route B, or RH.
+
+NEW KERNEL-CHECKED FACT
+
+File:
+q3.lean.aristotle/Q3/Proofs/RouteB/
+D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean
+
+Public theorem:
+
+theorem mode4DLMF3035EvenCharacteristicEquation_iff_leftCoefficient_sqSummable
+    (mProject K : Nat) (Lambda : Real)
+    (hm : 2 <= mProject)
+    (hK : 3 <= K)
+    (hsep :
+      forall q >= K,
+        (31 / 24 : Real) * mode4JacobiG mProject <=
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hLambda : Lambda <= 20) :
+    mode4DLMF3035EvenCharacteristicEquation
+        (mode4JacobiG mProject) Lambda (2 * (K - 1))
+      <->
+    Summable
+      (fun q : Nat =>
+        norm (mode4DLMF3035EvenLeftCoefficient
+          (mode4JacobiG mProject) Lambda q) ^ 2)
+
+Validation at HEAD: direct Lean PASS; named build PASS; full lake build PASS;
+q3_check PASS; axioms exactly [propext, Classical.choice, Quot.sound].
+
+Closeout:
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+GOAL058_G3_DLMF3035_L2_SOLUTION_CROSSWALK_CLOSEOUT_2026-08-15.md
+
+PROSHKA'S PREVIOUS SCHEMATIC NEXT EDGE
+
+theorem mode4DLMF3035EvenLeftCoefficient_sqSummable_iff_finiteLimitSpectrum
+    (G Lambda : Real) (hG : 0 < G) :
+    Summable
+      (fun q => norm (mode4DLMF3035EvenLeftCoefficient G Lambda q) ^ 2)
+      <->
+    exists j : Nat, mode4ClassicalEvenEigenvalue G j = Lambda
+
+CURRENT EXACT CARRIER AND COUNT SUPPLIERS
+
+1. D0Mode4ClassicalCarrierFromFiniteLimit.lean
+
+noncomputable def mode4ClassicalEvenEigenvalue (G : Real) (p : Nat) : Real :=
+  infimum over depths d > p of
+  mode4DLMFEvenFiniteEigenvalue G d p.
+
+The file proves:
+- fixed-index finite eigenvalues are antitone in depth;
+- uniform lower boundedness for G > 0;
+- convergence to the carrier;
+- finite negative count equals finite spectral count;
+- eventual finite head count away from carrier thresholds, with an explicit
+  tail separator Lambda < carrier N;
+- carrier monotonicity in p (not strictness and not growth to +infinity).
+
+2. D0Mode4ClassicalCarrierSchurCount.lean
+
+mode4HermitianSchurMatrix_negativeCount_eq_classicalHeadCount transports the
+eventual finite carrier count to the literal Schur matrix, but explicitly
+requires production binders hm, hK, finite-tail hsep, Lambda <= 20, det != 0,
+head carrier separation, and a carrier tail above Lambda.
+
+3. D0Mode4FiniteToLiteralNegativeCount.lean
+
+mode4ActualFiniteJacobiTruncation_negativeCount_eventually_eq_hermitianSchurMatrix
+requires the same production tail domain and det != 0.  It transports counts;
+it does not identify zeros with carrier values.
+
+4. D0Mode4SchurRootInertiaLabel.lean
+
+mode4RootFunction_roots_lt_iff_negativeCount_lt and
+mode4RootFunction_roots_eq_iff_negativeCount_eq order already-supplied exact
+production roots by their literal Schur inertia labels.  They do not construct
+a root or prove that every carrier value is a root.
+
+5. D0Mode4BackwardTailSchurConvergence.lean and
+D0Mode4JacobiRightTailContinuity.lean
+
+These prove fixed-carrier literal-tail convergence and production-domain
+continuity.  The backend is parameterized by mProject, K and the explicit tail
+separation hypotheses; it is not a general arbitrary-(G,Lambda) infinite
+Jacobi spectral theorem.
+
+MYTHOS VERDICT TO JUDGE, NOT TO ASSUME
+
+Mythos selected B = PRODUCTION_DOMAIN_THEOREM_FIRST.  Proposed target:
+
+Summable
+  (fun q => norm (mode4DLMF3035EvenLeftCoefficient
+    (mode4JacobiG mProject) Lambda q) ^ 2)
+  <->
+exists j, mode4ClassicalEvenEigenvalue (mode4JacobiG mProject) j = Lambda
+
+under the production tail domain and Lambda <= 20.  Mythos claimed that finite
+count transport plus simple Schur-root crossing should prove both directions,
+and proposed one Aristotle leaf named
+D0Mode4DLMF3035EvenL2GrowthDichotomy.lean.
+
+CODEX KILL CHECKS AGAINST THAT VERDICT
+
+K1. Mythos wrote a binder mode4TailSeparationThreshold.  No such declaration
+exists at HEAD.  The real backend uses the literal hsep inequality displayed
+above.  A theorem head using the invented declaration is rejected.
+
+K2. Mythos also wrote a vacuous binder of the form
+  forall j, carrier j != Lambda -> True.
+This carries no separation and is rejected.  Any needed carrier head/tail
+separation must either be proved inside or stated honestly; if stated, decide
+whether that merely renames the spectral wall.
+
+K3. The new l2 crosswalk already proves uniqueness of square-summable
+solutions against the constructed recessive tail and proves non-l2 for a
+nonmatching left row inside the final reverse implication.  Explain exactly
+what an additional GrowthDichotomy would supply.  Reject it if it is only a
+duplicate or a renamed missing spectral identification.
+
+K4. The count-to-carrier theorem needs, for some N, a carrier tail strictly
+above Lambda.  The current tree proves only carrier monotonicity and the head
+upper facts carrier p < 20 for p < 3; it does not prove carrier p -> +infinity
+or carrier 3 > 20.  Explain how the proposed production biconditional obtains
+the necessary finite tail without importing the desired spectral theorem.
+
+K5. At Lambda equal to a carrier value, the existing carrier-count theorem's
+head-separation hypothesis fails and the literal Schur determinant is exactly
+what must be proved zero.  Give the noncircular limiting/local-constancy step
+that crosses this singular endpoint.  Finite inertia at nonsingular endpoints
+alone is not the requested equality.
+
+REQUIRED DECISION — CHOOSE EXACTLY ONE
+
+A. PRODUCTION_SPECTRAL_IFF_READY
+   Give the exact compilable first theorem head using only existing declaration
+   names and honest binders.  List the declaration-by-declaration proof chain
+   for both directions.  Identify one bounded Aristotle leaf only if it is a
+   real missing generic lemma and not a source claim.
+
+B. PRODUCTION_ROOT_TO_CARRIER_ONE_DIRECTION_FIRST
+   State the exact one-direction theorem that is presently provable, its
+   binders, and the distinct missing reverse-direction object.  Explain why
+   this is useful to the degree-four consumer.
+
+C. GENERAL_OR_PRODUCTION_SPECTRAL_SOURCE_OBJECT_MISSING
+   Name the smallest noncircular missing object: for example an infinite
+   Jacobi self-adjoint realization with compact resolvent and finite-section
+   spectral convergence, or an equivalent DLMF source theorem.  State the
+   exact first source/import contract and why current finite inertia cannot
+   replace it.
+
+REQUIRED FINAL FIELDS
+
+DECISION:
+EXACT_FIRST_LEAN_HEAD:
+PROOF_CHAIN_OR_SOURCE_CONTRACT:
+K1_K5_DISPOSITIONS:
+CHEAPEST_FALSIFIER:
+ARISTOTLE_READY: READY or NOT_READY
+ARISTOTLE_OWNED_FILE_AND_TARGETS: exact, or NONE
+NEW_STOP_CODE:
+STATUS: G1 OPEN; G3 OPEN; CHALLENGER_NOT_RH; NO_RH
+
+Do not answer with a renamed binder carrying the desired spectral statement.
+Do not treat finite count transport, a browser verdict, or a conditional
+receiver as the source theorem itself.
