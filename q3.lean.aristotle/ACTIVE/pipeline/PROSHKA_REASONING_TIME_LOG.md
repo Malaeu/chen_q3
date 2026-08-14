@@ -31,6 +31,42 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-14 — Goal 058 DLMF 30.3.5 source-contract adjudication
+
+```yaml
+proof_address: RouteB.Goal058.G3.DLMF3035.SourceContract
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_G3_DLMF3035_SOURCE_CONTRACT_ADJUDICATION
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: 23d77ba1-89b3-40e7-a482-99620318f410
+response_message_id: 635367af-7605-4def-92ff-7d1150e73908
+sent_at: NOT_CAPTURED
+completed_at: NOT_CAPTURED
+wall_seconds: 249
+wall_human: "UI reported 4m09s natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: DLMF3035_RIGHT_BRANCH_READY_FULL_SOLUTION_SET_IFF_MISSING
+status: CONDITIONAL_RIGHT_BRANCH_READY_FULL_SOLUTION_SET_IFF_MISSING
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  PROSHKA_GOAL058_G3_DLMF3035_SOURCE_CONTRACT_VERDICT_2026-08-14.md
+request_attachment_sha256: 52fd2acfc21763b6880cf7d6461046a0753dbf619e44608ae7db702bf9f9530d
+response_archive_lines: 102
+response_archive_bytes: 3747
+response_archive_sha256: 1bd6e27f4d57c948e610a837bd975b571d32ce93a9f8456c212e8590c54a5de6
+notes: >-
+  Fifth call in the unchanged living Goal 058 phase. The exact UTF-8 source
+  contract was transported as a pasted-text attachment after the in-app file
+  chooser failed closed. Proshka accepted the right-continued-fraction branch
+  crosswalk as sound and noncircular only in the bounded hm/hK/hsep/Lambda<=20
+  production domain and with split degree 2*(K-1). It also confirmed that no
+  current-tree noncircular Lean theorem supplies the full DLMF 30.3.5
+  solution-set iff. Aristotle remains unauthorized, G1/G3 remain open, and no
+  execution, route promotion, or RH claim occurred. Answer now appeared and
+  was never clicked.
+```
+
 ### 2026-08-14 — Goal 058 DLMF 30.3.5 literal-root crosswalk adjudication
 
 ```yaml

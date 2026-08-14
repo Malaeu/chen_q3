@@ -353,3 +353,32 @@ desired root equivalence. The active stop is
 Aristotle remains `NOT_AUTHORIZED`. G1 and G3 remain open, Route B remains
 `CHALLENGER / NOT_RH`, and no Bus dispatch, route promotion, PX claim, or RH
 claim occurred.
+
+## Mac addendum — DLMF 30.3.5 right-branch source-contract verdict
+
+Codex completed the bounded source-contract audit ordered by the preceding
+Proshka verdict. Official DLMF bytes, the project unit/index dictionary, the
+independent source-equation contract, the pole-safe left matching condition,
+the right-tail theorem head, and seven mandatory falsifiers are preserved in
+`GOAL058_G3_DLMF3035_EVEN_CHARACTERISTIC_SOURCE_CONTRACT_2026-08-14.md`.
+The contract has SHA-256
+`52fd2acfc21763b6880cf7d6461046a0753dbf619e44608ae7db702bf9f9530d`.
+
+The exact contract was delivered as a UTF-8 pasted-text attachment to the
+unchanged living Goal 058 Proshka phase. Proshka reasoned naturally for
+`4m09s`; `Answer now` was visible and was not clicked. Its archived verdict is
+`PROSHKA_GOAL058_G3_DLMF3035_SOURCE_CONTRACT_VERDICT_2026-08-14.md`, SHA-256
+`1bd6e27f4d57c948e610a837bd975b571d32ce93a9f8456c212e8590c54a5de6`.
+
+The verdict accepts `DLMF3035_RIGHT_BRANCH_CROSSWALK_READY` only as a bounded,
+noncircular source crosswalk ready for Lean materialization. Literal DLMF
+30.3.7 coefficients identify terminal-zero right-fraction approximants with
+`mode4BackwardTail`; contraction and square-summable uniqueness identify the
+limit with `mode4RightTailLimit`. The accepted domain retains `hm`, `hK`,
+`hsep`, `Lambda <= 20`, and split degree `2 * (K - 1)`.
+
+The full DLMF 30.3.5 solution-set iff is still not supplied by any
+current-tree noncircular Lean theorem. The active G3 stop remains
+`G3_DLMF3035_SOURCE_THEOREM_NOT_LEAN_MATERIALIZED`. Aristotle remains
+`NOT_AUTHORIZED`; G1 and G3 remain open, and no execution, Route B promotion,
+PX claim, or RH claim occurred.

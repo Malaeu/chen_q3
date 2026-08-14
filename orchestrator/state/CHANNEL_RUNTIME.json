@@ -3,8 +3,8 @@
   "active_proshka_phase": {
     "conversation_id": "6a7afc0e-2aec-83eb-a9ca-469b44c84f83",
     "full_context_uploads": 0,
-    "last_adjudicated_pin": "3bff86eeae438c94c6a034a19f089d55db723d0e",
-    "last_boundary_id": "GOAL058_G3_DLMF_ROOT_CROSSWALK_ADJUDICATION",
+    "last_adjudicated_pin": "9d23f5d817ad7e06e88b7a26ff94144adb67fcba",
+    "last_boundary_id": "GOAL058_G3_DLMF3035_SOURCE_CONTRACT_ADJUDICATION",
     "opened_at": "2026-08-13T07:25:47+02:00",
     "opening_pin": "08a2db998f2b5467d70effdfd135d3846189999c",
     "owner_boundary_count": 0,
@@ -17,14 +17,14 @@
       "source_object_family_id": "PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY",
       "terminal_consumer_id": "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots"
     },
-    "proshka_calls": 4,
+    "proshka_calls": 5,
     "status": "ACTIVE"
   },
   "control_status": "ACTIVE",
   "last_exploration_close": null,
   "mathematical_authority_mode": "CODEX_PROSHKA_FULL_EXCEPT_PX_RH_CLAIM",
   "meter": {
-    "delegated_strategic_review_calls": 41,
+    "delegated_strategic_review_calls": 42,
     "exploration_review_calls": 0,
     "fanout_violations": 0,
     "forced_rollovers": 0,
@@ -276,6 +276,14 @@
       "meter_call_index": 41,
       "phase_call_index": 4,
       "request_message_id": "a8ee42c6-e29c-4381-aa9c-09662e3a3c49"
+    },
+    {
+      "adjudicated_pin": "9d23f5d817ad7e06e88b7a26ff94144adb67fcba",
+      "boundary_id": "GOAL058_G3_DLMF3035_SOURCE_CONTRACT_ADJUDICATION",
+      "conversation_id": "6a7afc0e-2aec-83eb-a9ca-469b44c84f83",
+      "meter_call_index": 42,
+      "phase_call_index": 5,
+      "request_message_id": "23d77ba1-89b3-40e7-a482-99620318f410"
     }
   ],
   "schema": "q3_channel_runtime.v1"
