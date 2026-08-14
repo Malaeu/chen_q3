@@ -582,3 +582,48 @@ G1_ODD_HEAD_CROSSWALK_GENERIC_CORRECTED_SIGN_EVEN_LEG_ROW_REFLECTION_DEFECT_AND_
 
 The G3 DLMF same-index analytic-limit wall is unchanged. No G1, G3, Route B,
 or RH promotion follows.
+
+## 2026-08-14 finite-limit carrier and literal Schur count bridge
+
+The bounded H1--H6 program is now kernel checked in three new Route B files.
+The literal bordered Hermitian DLMF family supplies exact Cauchy interlacing
+and a uniform Gershgorin lower bound.  Its fixed-index `iInf` therefore defines
+an internal finite-limit carrier with unconditional convergence and monotone
+ordering.  This carrier is used only for inertia bookkeeping: no theorem in
+this node identifies it with an independently constructed differential
+Sturm--Liouville or PSWF spectrum.
+
+The same node proves pointwise equality between the literal finite spectral
+count and the actual finite Jacobi negative count.  A finite-head plus one
+next-index tail separator then gives eventual count stabilization, which is
+composed with the already accepted finite-to-literal Schur transport.  The
+finite split offset is exactly zero.  Tail separation, `Lambda <= 20`, literal
+Schur determinant nonsingularity, and the carrier window remain distinct
+inputs; endpoint counts `2/3` are not inserted as assumptions or conclusions.
+
+An exact `3 x 3` positive-definiteness certificate additionally proves
+`mode4ClassicalEvenEigenvalue G p < 20` for `p < 3` and `G > 0`.  Thus the
+left half of the upper endpoint window is available at `LambdaUpper = 20`.
+The right inequality `20 < carrier_3` and determinant nonsingularity are not
+proved.
+
+The remaining honest G3 source object is a source-backed two-sided fixed-index
+separator package on the production cofinal schedule, for example
+`mode4SemiclassicalWindowSeparators`, supplying
+
+```text
+carrier_0, carrier_1 < LambdaLower < carrier_2
+carrier_0, carrier_1, carrier_2 < LambdaUpper < carrier_3,
+LambdaUpper <= 20,
+```
+
+together with, or followed by, literal Schur determinant nonsingularity at
+both endpoints.  A theorem taking these desired inequalities as arbitrary
+binders would be another receiver and would not close the source wall.
+
+The active G3 stop is
+`FINITE_LIMIT_CARRIER_AND_SCHUR_COUNT_BRIDGE_PROVED_SEMICLASSICAL_WINDOW_SEPARATORS_AND_ENDPOINT_NONSINGULARITY_MISSING`.
+G1 remains independently open at the cofinal even-head floor and shift
+connector for the full complex trial complement.  The prepared Proshka packet
+requests adjudication of this narrow carrier boundary before any further
+source import.  No G1, G3, Route B, or RH promotion follows.

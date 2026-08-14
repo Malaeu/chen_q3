@@ -1,0 +1,164 @@
+GOAL 058 — PROSHKA JUDGE REQUEST
+H1–H6 finite-limit carrier/count bridge and the remaining separator wall
+
+Date: 2026-08-14
+Repository: /Users/emalam/GitHub/rh_lean_01_2026
+Branch: rh_clean
+HEAD = origin/rh_clean = 62979e3e0768277907e46a0f679267ac4bf50851
+Route boundary: CHALLENGER_NOT_RH
+G1: OPEN
+G3: OPEN
+No Route B or RH promotion is requested.
+
+WHY THIS JUDGMENT IS NEEDED
+
+Your earlier verdict correctly killed the statement “define the classical
+differential spectrum as a finite limit” when that definition was used to
+smuggle in PSWF identity.  The new implementation makes a strictly narrower
+claim: `mode4ClassicalEvenEigenvalue` is only an internal name for the iInf of
+the already literal DLMF finite family.  It is used for finite-limit inertia
+bookkeeping only.  The code explicitly does NOT identify it with a separately
+constructed Sturm–Liouville/PSWF eigenfunction or with `psi_4`.
+
+Mythos later selected this narrower route as `CARRIER_AS_MONOTONE_FINITE_LIMIT`.
+Codex has now kernel-checked H1–H6 and the finite head upper endpoint.  We need
+you to adjudicate the boundary and name the next honest source object.
+
+AUTHORITATIVE LOCAL ARTIFACTS (attached packet summarizes exact bytes)
+
+1. q3.lean.aristotle/Q3/Proofs/RouteB/
+   D0Mode4ClassicalCarrierFromFiniteLimit.lean
+   lines: 829
+   SHA-256: 0984da444ff14960657ce055928d314dd36754278b970afca0fa0ac5a46b5ef8
+
+2. q3.lean.aristotle/Q3/Proofs/RouteB/
+   D0Mode4ClassicalCarrierSchurCount.lean
+   lines: 161
+   SHA-256: f304bedce7e3b3df926eee8fc5281f6ada702b20d85a89e8a355ec6d52dc9713
+
+3. q3.lean.aristotle/Q3/Proofs/RouteB/
+   D0Mode4ClassicalCarrierHeadUpper.lean
+   lines: 163
+   SHA-256: bd21981a5377080d245ae833f1ceba91da1e65b342ce2b212fae6d8537104b72
+
+VALIDATION
+
+- direct Lean: PASS for all three files
+- named build: PASS for all three modules
+- full build: PASS, 7817 jobs
+- q3_check: PASS for all three files
+- public axiom surface: exactly [propext, Classical.choice, Quot.sound]
+- no sorry/admit/axiom/unsafe in the new files
+- no endpoint count 2/3 and no semiclassical separator is assumed as a
+  conclusion of these files
+
+EXACT MATERIALIZED SURFACE
+
+H1:
+  mode4DLMFEvenFiniteEigenvalue_antitone_in_depth
+  Exact Cauchy interlacing, proved from the literal bordered Hermitian family.
+
+H2:
+  mode4DLMFEvenFiniteEigenvalue_bddBelow
+  Uniform literal Gershgorin lower bound -3*G.
+
+H3:
+  mode4ClassicalEvenEigenvalue G p :=
+    iInf d : {d // p < d}, mode4DLMFEvenFiniteEigenvalue G d <p>
+  plus unconditional Tendsto from H1/H2.
+
+H4:
+  mode4ForwardHermitianFiniteMatrix_negativeCount_eq_finiteCount
+  mode4ActualFiniteJacobiTruncation_negativeCount_eq_finiteCount
+  Exact pointwise finite inertia count.  No limit or source identity.
+
+H5:
+  mode4DLMFEvenFiniteCount_eventually_eq_classicalHeadCount
+  Inputs are a FINITE head separator and one explicit next-index tail
+  separator.  Output is eventual equality of the finite count with that finite
+  head count.  This is finite order topology, not a no-pollution import.
+
+H6:
+  mode4HermitianSchurMatrix_negativeCount_eq_classicalHeadCount
+  mode4HermitianSchurMatrix_negativeCount_eq_of_classicalWindow
+  Composes H5 with the already accepted actual-finite-to-literal-Schur
+  transport.  Tail separation, Lambda<=20, Schur determinant nonzero, and the
+  carrier window remain separate inputs.  The finite offset is proved zero.
+
+ORDER AND UPPER HEAD:
+  mode4ClassicalEvenEigenvalue_monotone
+  mode4ClassicalEvenEigenvalue_two_lt_twenty
+  mode4ClassicalEvenEigenvalue_lt_twenty_of_lt_three
+
+The strict bound carrier_2 < 20 is proved by an exact 3x3 PosDef certificate
+for 20 I - A_3(G), valid for every G>0.  Hence all p<3 are below 20.
+
+WHAT IS STILL MISSING — DO NOT RELABEL
+
+For endpoint counts 2 and 3 on a cofinal mProject schedule we still need real
+two-sided windows, for example endpoints LambdaLower(m), LambdaUpper(m)<=20
+with:
+
+  carrier_0, carrier_1 < LambdaLower < carrier_2
+  carrier_0, carrier_1, carrier_2 < LambdaUpper < carrier_3
+
+and literal Schur determinant nonsingularity at both endpoints.  The existing
+finite upper-head theorem supplies the left half of the upper window at
+LambdaUpper=20, but NOT 20 < carrier_3 and NOT determinant nonsingularity.
+
+Mythos named the analytic source object
+`mode4SemiclassicalWindowSeparators`, based on two-sided fixed-index
+semiclassical estimates for p<=3.  We have not materialized it, because a
+theorem taking the desired windows as arbitrary binders would be another
+receiver, not a source supplier.
+
+G1 REMAINS SEPARATE
+
+The odd tail floor is real, but the full complex q-perp complement still lacks
+the cofinal even-head floor and shift connector.  None of the H1–H6 work
+changes G1.
+
+REQUESTED JUDGE OUTPUT — RETURN EXACTLY THESE FIELDS
+
+1. CONTROL_RUNTIME_RECONCILIATION:
+   PASS / FAIL, and whether this remains the same Goal 058 G1/G3 phase.
+
+2. H1_H6_BOUNDARY_VERDICT:
+   ACCEPT / REPAIR / REJECT.
+   Explicitly decide whether the internal finite-limit carrier is legal for
+   inertia bookkeeping when no differential/PSWF identity is claimed.
+
+3. CIRCULARITY_AND_POLLUTION_CHECK:
+   Attack H5’s finite-head + next-index-tail formulation.  State whether it
+   actually prevents spectral pollution without silently assuming a global
+   count.
+
+4. ZERO_OFFSET_AND_OBJECT_MATCH:
+   Rule on the actual finite matrix -> literal Schur count composition and the
+   lambda-unit shift.  Reject any hidden Lambda+G shift or congruence error.
+
+5. EXACT_REMAINING_G3_SOURCE_OBJECT:
+   Name the smallest honest source theorem/package for the two endpoint
+   windows and explain whether determinant nonsingularity follows from it or
+   remains a separate source bridge.
+
+6. PRIMARY_SOURCE_PINS:
+   Give exact sources/equations/theorem numbers sufficient for the selected
+   separator package.  Do not cite constant-free big-O as a certified bound.
+
+7. EXACT_NEXT_LEAN_HEAD_OR_NOT_READY:
+   Give an exact theorem head only if its binders can be sourced without
+   inserting the desired endpoint inequalities as assumptions.  Otherwise
+   return NOT_READY and the exact next source-packet task.
+
+8. ARISTOTLE_BOUNDARY:
+   AUTHORIZED or NOT_AUTHORIZED, with exact reason.
+
+9. G1_STATUS / G3_STATUS / STOP_CODE:
+   Keep both OPEN unless the full source obligations are actually discharged.
+
+10. BOUNDED_CODEX_DIRECTIVE:
+    One next action only.  No Route B promotion, no RH claim, no Answer now.
+
+Natural reasoning.  Do not use Answer now.  Treat this UTF-8 attachment as the
+authoritative packet.

@@ -266,3 +266,33 @@ floor.  Route B remains `CHALLENGER / NOT_RH`.
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/scripts/search_external_lean.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/scripts/supplier_preflight.py`
 - `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/SESSION_PROTOKOLL_2026-08-14.md`
+
+## Mac addendum — H1--H6 finite-limit carrier/count bridge
+
+Three new kernel-checked Route B modules now prove the bounded H1--H6 finite
+program: exact interlacing of the literal bordered Hermitian family, a uniform
+Gershgorin lower bound, convergence to an internal `iInf` carrier, pointwise
+finite negative-count equality, eventual finite-head stabilization with one
+explicit next-index tail separator, and transport to the literal Schur
+negative count with zero finite-split offset.  A separate exact `3 x 3`
+certificate proves every carrier index `p < 3` lies below `20` for `G > 0`.
+
+Direct Lean, all three named targets, the complete 7817-job build, and
+`q3_check` pass.  Public declarations use only
+`[propext, Classical.choice, Quot.sound]`; no new file contains
+`sorry`, `admit`, `axiom`, or `unsafe`.
+
+The internal carrier is deliberately not identified with a separately
+constructed differential Sturm--Liouville/PSWF spectrum.  It is sufficient
+for finite inertia bookkeeping only.  Endpoint counts `2/3` still require
+source-backed two-sided windows around carrier indices `1/2` and `2/3`, plus
+literal Schur determinant nonsingularity.  In particular, the new upper-head
+theorem proves `carrier_2 < 20`, not `20 < carrier_3`.
+
+The active G3 stop is
+`FINITE_LIMIT_CARRIER_AND_SCHUR_COUNT_BRIDGE_PROVED_SEMICLASSICAL_WINDOW_SEPARATORS_AND_ENDPOINT_NONSINGULARITY_MISSING`.
+G1 remains open independently at the cofinal even-head floor and shift
+connector for the full complex trial complement.  The exact ten-field Proshka
+judge packet is prepared but remains unsent until this scoped package is
+committed and pushed.  No external verdict, G1/G3 closure, Route B promotion,
+or RH claim is recorded by this addendum.
