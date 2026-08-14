@@ -397,3 +397,25 @@ indexed `psi_4`.  The remaining source wall is
 `SCHUR_ROOT_INERTIA_LABEL_INJECTIVE_SOURCE_ROOT_EXISTENCE_ENDPOINT_COUNTS_AND_INDEX4_IDENTIFICATION_MISSING`.
 Mode zero, restricted finite Fourier, CCM Lemma 7.2, the denominator floor,
 G1, G3, Route B promotion, and RH remain open.
+
+## 2026-08-14 post-inertia joint source verdict
+
+Mythos proposed source endpoint counts on architectural placeholder objects.
+After exact attachment-based source-lock restoration, Proshka rejected that
+task: the placeholder names are absent, `20 + ε` violates the literal
+`ΛUpper ≤ 20` receiver, and the proposed `0/3` program does not match the
+current moving-endpoint `2/3` supplier contract.
+
+The smallest honest G3 source object is now named
+`MODE4_CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK`. It must
+independently identify the negative count of
+`mode4HermitianSchurMatrix mProject Λ K` with the classical even
+Sturm--Liouville spectral counting function and prove the exact finite-split
+offset. Bonami--Karoui separators become endpoint-count suppliers only after
+that crosswalk. Aristotle was not authorized.
+
+The active stop is
+`CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK_MISSING`.
+This does not close matching-root/indexed-`psi4` existence, mode zero,
+restricted finite Fourier, Lemma 7.2, denominator floor, G1, G3, Route B, or
+RH.

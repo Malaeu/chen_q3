@@ -2223,6 +2223,33 @@ query не нашли готового root-label theorem; Lean kernel прин�
 indexed-`psi_4`, mode zero, restricted finite Fourier, Lemma 7.2, denominator
 floor, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058 G3: post-inertia endpoint-count proposal rejected
+
+**Развилка:** материализовать Mythos placeholders и пытаться доказать `0/3`
+endpoint counts либо сначала проверить их против буквального infinite-tail
+Schur object и текущего source program.
+
+**Выбрали:** восстановить source lock точными вложениями в существующем чате и
+получить повторный Proshka judge verdict. Все четыре SHA совпали; strict startup
+и Route status были зелёными.
+
+**Почему:** literal object имеет binders `(mProject : ℕ) (Λ : ℝ) (K : ℕ)`, а
+четыре имени Mythos отсутствуют. Production receiver требует moving endpoints,
+`ΛUpper ≤ 20` и counts `2/3`; `20 + ε` и `0/3` относятся к другой программе.
+
+**Что отвергли и почему:** placeholder endpoint theorem и Gershgorin-Aristotle
+task отвергнуты. Bonami--Karoui локализует classical differential eigenvalues,
+но без независимого classical-spectrum-to-literal-Schur-inertia crosswalk это
+не доказывает negative count exact Schur complement.
+
+**Следующий ход:** read-only source packet для
+`MODE4_CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK`, включая
+доказательство точного finite-split offset. Aristotle не авторизован.
+
+**Граница:**
+`CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
