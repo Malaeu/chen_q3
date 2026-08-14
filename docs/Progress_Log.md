@@ -1901,6 +1901,50 @@ proof без Aristotle submission.
 ordered `psi4`, matching root existence, mode zero, Fourier, Lemma 7.2, G1,
 G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: compact zero selection снимает nodal guard
+
+**Развилка:** просить внешний глобальный zero-count theorem либо сначала
+использовать уже доказанную простоту каждого interior zero для локального
+компактного выбора соседней пары.
+
+**Выбрали:** kernel-checked цепочку `simple zero -> isolated zero -> discrete
+compact zero set -> finite set -> first zero to the right`, после чего применён
+готовый Sturm theorem на автоматически выбранной nodal interval.
+
+**Почему:** unrestricted comparison между любыми двумя lower zeros требует не
+глобального подсчёта, а лишь существования одной последовательной подпары.
+`HasDerivAt.eventually_ne` даёт точную локальную изоляцию, а
+`IsCompact.finite` превращает её в конечность на внутреннем `Icc`.
+
+**Что отвергли и почему:** новый zero-count binder или source assumption не
+вводились; они скрыли бы оставшуюся index-4 selection wall. Внешний запрос
+Прошке/Aristotle не отправлялся, потому что после последовательного
+knowledge preflight лист полностью закрылся локально.
+
+**Техника:** subtype compactness, closed preimage of `{0}`, punctured
+neighborhood from nonzero derivative, discrete-set finiteness, `Finset.min'`
+и повторное использование exact weighted-Wronskian consumer.
+
+**Следующий ход:** доказать source-faithful oscillation/order selection,
+которая связывает matching root с ordered degree-four PSWF; затем построить
+mode zero и закрывать physical scale, finite Fourier, Lemma 7.2 и denominator
+floor. Параллельный G1 blocker не изменился.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4FerrersCompactZeroSelection.lean` ·
+`ACTIVE/pipeline/oracle_questions/2026_08_14_goal058_g3_compact_zero_selection.md` ·
+`GOAL058_G3_COMPACT_ZERO_SELECTION_CLOSEOUT_2026-08-14.md`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Четыре
+последовательных `q3_docs` запроса не нашли готового project supplier, но
+указали на уже доказанные `interior_zero_simple` и Sturm head; Mathlib дал
+ровно два недостающих generic primitive-а. Kernel принял финальную сборку.
+
+**Граница:**
+`G3_MODE4_UNRESTRICTED_STURM_COMPARISON_PROVED`; global zero count, ordered
+`psi4`, matching root existence, mode zero, Fourier, Lemma 7.2, denominator
+floor, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

@@ -145,3 +145,23 @@ selection, the mode-zero companion, physical scaling, finite-Fourier
 identification, CCM Lemma 7.2, and the denominator floor remain open.  The
 narrowed stop is
 `MODE4_STURM_NODAL_COMPARISON_PROVED_COMPACT_ZERO_FINITE_SELECTION_MODE0_FOURIER_AND_LEMMA72_MISSING`.
+
+## 2026-08-14 compact zero selection
+
+The compact-selection layer is now kernel checked in
+`D0Mode4FerrersCompactZeroSelection.lean`.  Simplicity of every interior zero
+is converted into discreteness by `HasDerivAt.eventually_ne`; closedness and
+compactness of the restricted zero set then give finiteness.  A finite-set
+minimum selects the first zero to the right of a supplied endpoint.  This
+discharges the separate nodal-interval binder and proves
+`exists_mode4Ferrers_zero_between_of_lt_Lambda_between_lower_zeros`: between
+any two distinct interior zeros of the lower-parameter accepted solution, the
+higher-parameter solution has an interior zero.
+
+Direct Lean, the 7774-job target build, the 7817-job full build, `q3_check`,
+forbidden-token and claim scans pass.  Both public declarations have axiom surface exactly
+`[propext, Classical.choice, Quot.sound]`.  This closes the compact zero-set
+and consecutive-pair layer only.  It does not count all zeros, identify the
+ordered degree-four mode, prove matching-root existence, construct mode zero,
+or supply the physical/Fourier/Lemma 7.2 chain.  The narrowed stop is
+`MODE4_UNRESTRICTED_STURM_COMPARISON_PROVED_INDEX4_MODE0_FOURIER_AND_LEMMA72_MISSING`.
