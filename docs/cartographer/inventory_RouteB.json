@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 218,
-  "declarations": 2035,
-  "in_docs": 897,
+  "files_scanned": 219,
+  "declarations": 2039,
+  "in_docs": 901,
   "in_lemma_db": 1869,
   "orphans": 97,
   "uncatalogued": 97,
@@ -5731,6 +5731,46 @@
       "in_docs": false,
       "in_lemma_db": false,
       "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_intervalIntegral_eq_zero_of_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientExtraction.lean",
+      "line": 20,
+      "signature": "theorem mode4OrdinaryLegendre_intervalIntegral_eq_zero_of_pos (n : ℕ) (hn : 0 < n) : (∫ x in (-1 : ℝ)..1, mode4OrdinaryLegendre n x) = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_intervalIntegral_eq_two_mul_coefficient_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientExtraction.lean",
+      "line": 77,
+      "signature": "theorem mode4FerrersSeries_intervalIntegral_eq_two_mul_coefficient_zero (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) : (∫ x in (-1 : ℝ)..1, mode4FerrersSeries a x) = 2 * a 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_ne_zero_of_coefficient_zero_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientExtraction.lean",
+      "line": 147,
+      "signature": "theorem mode4FerrersSeries_ne_zero_of_coefficient_zero_ne_zero (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) (ha0 : a 0 ≠ 0) : mode4FerrersSeries a ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.ferrersSeries_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientExtraction.lean",
+      "line": 162,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.ferrersSeries_ne_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : mode4FerrersSeries S.coefficients ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
     },
     {
       "kind": "theorem",
