@@ -627,3 +627,45 @@ G1 remains independently open at the cofinal even-head floor and shift
 connector for the full complex trial complement.  The prepared Proshka packet
 requests adjudication of this narrow carrier boundary before any further
 source import.  No G1, G3, Route B, or RH promotion follows.
+
+## 2026-08-14 Proshka acceptance and DLMF strict-order source packet
+
+The exact H1--H6 packet was delivered to the existing Goal 058 Proshka phase
+as byte-verified UTF-8 text after the raw-link transport failed closed.
+Proshka returned `H1_H6_BOUNDARY_VERDICT: ACCEPT`: the internal `iInf` carrier
+is legal for finite inertia bookkeeping, and H5's finite-head plus one
+next-index tail condition really prevents finite spectral pollution without a
+hidden global count.  The verdict does not identify the carrier with a
+differential PSWF spectrum.
+
+The source audit selected a smaller remaining window package than the earlier
+explicit semiclassical proposal.  DLMF 30.16.3 identifies the same fixed-index
+finite limit with the independently defined differential eigenvalue
+`lambda_(2p)^0(G)`, while DLMF 30.3.1 strictly orders those eigenvalues.  Once
+that source identity is materialized, midpoint endpoints between carriers
+`1/2` and `2/3` give the two strict windows by ordered-field arithmetic; the
+already proved `carrier_2 < 20` makes the upper midpoint admissible.  The
+Bonami--Karoui elliptic-integral separator remains a valid stronger alternate
+source but is no longer the minimal window supplier.
+
+The read-only packet
+`GOAL058_G3_DLMF_3016_303_STRICT_ORDER_AND_LITERAL_ROOT_AVOIDANCE_SOURCE_PACKET_2026-08-14.md`
+locks the exact DLMF selector and unit dictionary and records
+`LITERAL_ROOT_CROSSWALK_MISSING`.  The current tree nearly closes the algebraic
+half (`det Schur = 0` reduces to `mode4RootFunction = 0` through a positive
+factor), but it has no converse equivalence between that project root and an
+independently indexed finite-limit carrier value.  The existing classical
+coefficient-row theorem is only one-way and consumes the row it would need to
+construct.
+
+The active G3 stop is now
+
+```text
+G3_DLMF_STRICT_ORDER_SOURCE_LOCKED_LITERAL_ROOT_CROSSWALK_MISSING
+```
+
+The exact next Lean head remains `NOT_READY`, and Aristotle remains
+`NOT_AUTHORIZED`.  G1 remains independently open at the cofinal even-head
+floor, row-reflection/contamination control, and shift connector for the full
+complex complement.  No endpoint count in Lean, G1, G3, Route B promotion, or
+RH claim follows.

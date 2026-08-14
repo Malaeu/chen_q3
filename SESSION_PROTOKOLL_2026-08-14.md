@@ -293,6 +293,36 @@ The active G3 stop is
 `FINITE_LIMIT_CARRIER_AND_SCHUR_COUNT_BRIDGE_PROVED_SEMICLASSICAL_WINDOW_SEPARATORS_AND_ENDPOINT_NONSINGULARITY_MISSING`.
 G1 remains open independently at the cofinal even-head floor and shift
 connector for the full complex trial complement.  The exact ten-field Proshka
-judge packet is prepared but remains unsent until this scoped package is
-committed and pushed.  No external verdict, G1/G3 closure, Route B promotion,
-or RH claim is recorded by this addendum.
+judge packet was prepared for delivery only after this scoped package was
+committed and pushed.  At this point in the chronology no external verdict,
+G1/G3 closure, Route B promotion, or RH claim had yet been recorded.
+
+## Mac addendum — Proshka H1--H6 judgment and strict-order source lock
+
+The prepared H1--H6 packet was committed, pushed, and then delivered in the
+same living Goal 058 Proshka phase.  Raw GitHub retrieval failed closed, and a
+local filesystem path was correctly rejected as inaccessible.  Codex then
+pasted the exact 6,506-byte UTF-8 request body.  Proshka reasoned naturally
+for `12m52s`; `Answer now` was visible and was not clicked.  The UI cut the
+last directive after `TASK 3`; two transport-only repairs restored the tail
+without changing the verdict.
+
+Proshka accepted H1--H6 with the existing semantic guard.  The finite `iInf`
+carrier and count stabilization are legal bookkeeping, not a differential or
+PSWF identity.  DLMF 30.16.3 plus 30.3.1 was selected as the minimal source
+contract for independent carrier identity and strict order.  Midpoint windows
+then replace the more expensive elliptic-integral endpoint formalization.
+
+Codex executed the one bounded read-only source action.  NIST DLMF 1.2.7
+(2026-06-15) equations 30.2.1, 30.3.1, 30.16.1--3, and 30.3.5 were fetched and
+hash-locked.  Bonami--Karoui PDF pages 5--6 were rendered and visually checked.
+The resulting packet is
+`GOAL058_G3_DLMF_3016_303_STRICT_ORDER_AND_LITERAL_ROOT_AVOIDANCE_SOURCE_PACKET_2026-08-14.md`.
+
+Its root audit returns `LITERAL_ROOT_CROSSWALK_MISSING`: the current determinant
+factorization reduces literal Schur singularity to the project root function,
+but no current theorem equates project roots with independently indexed
+finite-limit carrier values.  The active stop is
+`G3_DLMF_STRICT_ORDER_SOURCE_LOCKED_LITERAL_ROOT_CROSSWALK_MISSING`.
+Aristotle is not authorized.  G1 and G3 remain open; no Route B promotion or
+RH claim occurred.

@@ -31,6 +31,44 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-14 — Goal 058 H1-H6 finite-limit carrier separator judgment
+
+```yaml
+proof_address: RouteB.Goal058.G3.FiniteLimitCarrier.StrictOrderWindow
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_H1_H6_FINITE_LIMIT_CARRIER_SEPARATOR_JUDGE
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: 3939b6f3-96b7-496b-a4bb-970f83dccc2a
+response_message_id: 0295100d-5ea0-45ae-bc23-f1cee4d75ce6
+sent_at: NOT_CAPTURED
+completed_at: NOT_CAPTURED
+wall_seconds: 772
+wall_human: "UI reported 12m52s natural reasoning for the substantive byte-locked review"
+answer_now_shown: true
+answer_now_clicked: false
+primary: ACCEPT_H1_H6_FINITE_LIMIT_BOOKKEEPING_NOT_READY_STRICT_ORDER_ROOT_CROSSWALK
+status: OPEN_SOURCE_PACKET_LOCKED_LITERAL_ROOT_CROSSWALK_MISSING
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  PROSHKA_GOAL058_H1_H6_SEPARATORS_JUDGE_VERDICT_2026-08-14.md
+response_archive_lines: 210
+response_archive_sha256: 63caf1245b456c2a19a492e561acf6a3fdcd34c8b5f43f41d917019066a848bb
+notes: >-
+  Same living Goal 058 phase chat. The initial raw-GitHub attempt stopped on a
+  cache miss, and a mistaken local-path transport attempt was also rejected.
+  The authoritative 6,506-byte UTF-8 request was then pasted in full with
+  SHA-256 7b2d19882f4f6343733b31b7e4a1ffbe5b25a2dbfca29972a99e894482d864fa.
+  Proshka accepted H1-H6 as finite-limit inertia bookkeeping, explicitly
+  refused a differential/PSWF identity, selected the DLMF 30.16.3 plus 30.3.1
+  strict-order source contract, and kept literal Schur endpoint
+  nonsingularity separate. The UI truncated the bounded directive twice; two
+  transport-only repairs (48s and 1m06s) restored the missing task/falsifier
+  tail without changing the verdict. The resulting source packet records
+  LITERAL_ROOT_CROSSWALK_MISSING. G1 and G3 remain open; no Aristotle, Route
+  promotion, PX claim, or RH claim occurred. Answer now was shown and never
+  clicked.
+```
+
 ### 2026-08-14 — Goal 058 joint G1/G3 analytic source-wall review
 
 ```yaml
