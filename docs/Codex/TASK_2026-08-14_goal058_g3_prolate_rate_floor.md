@@ -125,3 +125,23 @@ physical window, third-even/degree-four zero-count selection, the mode-zero
 companion, the restricted finite-Fourier eigenrelations, CCM Lemma 7.2, or the
 denominator floor.  The narrowed stop is
 `MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.
+
+## 2026-08-14 Sturm nodal-interval comparison
+
+The Proshka-repaired compact-interior leaf is now kernel checked as
+`exists_mode4Ferrers_zero_between_of_lt_Lambda_on_nodal_interval`.  For two
+accepted regular mode-four Ferrers solutions with the same `mProject` and `K`,
+`LambdaLo < LambdaHi`, and one zero-free nodal interval of the lower solution,
+the higher solution has an interior zero.  The proof uses the exact weighted
+Wronskian derivative, the actual first/second derivative interfaces, and the
+previously proved simplicity of interior zeros.  Direct Lean, the 7773-job
+target build, `q3_check`, and the 7817-job full build pass; the public axiom
+surface is exactly `[propext, Classical.choice, Quot.sound]`.
+
+The authorized Aristotle request was not sent because the exact leaf was
+proved locally.  This closes only the bounded comparison kernel.  Compact
+zero-set finiteness/consecutive-pair extraction, source-faithful index-4
+selection, the mode-zero companion, physical scaling, finite-Fourier
+identification, CCM Lemma 7.2, and the denominator floor remain open.  The
+narrowed stop is
+`MODE4_STURM_NODAL_COMPARISON_PROVED_COMPACT_ZERO_FINITE_SELECTION_MODE0_FOURIER_AND_LEMMA72_MISSING`.

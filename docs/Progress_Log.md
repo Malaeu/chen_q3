@@ -1850,6 +1850,57 @@ relations; только после этого CCM Lemma 7.2 и denominator floor
 `MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: unrestricted Sturm head сужен до одного nodal interval
+
+**Развилка:** пытаться одним Wronskian-доказательством получить ноль
+higher-parameter solution между любыми двумя нулями lower solution либо
+сначала замкнуть точный comparison kernel на одной последовательной nodal
+interval.
+
+**Выбрали:** точный theorem head
+`exists_mode4Ferrers_zero_between_of_lt_Lambda_on_nodal_interval` с
+`hNodal`, который запрещает внутренние нули lower solution между endpoints.
+
+**Почему:** на одной nodal interval обе функции можно независимо привести к
+положительному знаку, а производная weighted Wronskian равна буквально
+`(LambdaLo - LambdaHi) * u * v`. Это минимальный theorem, который потребляет
+уже доказанные actual derivatives, common potential и simple endpoint zeros.
+
+**Что отвергли и почему:** unrestricted head не ложен, но не является одним
+bounded Wronskian leaf: ему отдельно нужны compact zero-set finiteness и
+consecutive-subpair extraction. Разные `mProject` отвергнуты, потому что тогда
+potential не сокращается. Повторный Aristotle run отвергнут после локального
+kernel proof как платный дубликат без нового evidence.
+
+**Техника:** common-potential weighted Wronskian, continuous-nonzero
+constant-sign lemma, endpoint derivative signs from `HasDerivAt` plus simple
+zeros, `StrictAntiOn` contradiction; direct Lean, target/full builds,
+`q3_check`, forbidden scan и public axiom audit.
+
+**Следующий ход:** доказать compact-interior finiteness/consecutive nodal-pair
+extraction, затем source-faithful index-4 oscillation/selection; независимо
+остаются mode zero, physical scaling, finite-Fourier identification, Lemma 7.2
+и denominator floor.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4FerrersSturmComparison.lean` ·
+`GOAL058_G3_STURM_NODAL_COMPARISON_PROSHKA_VERDICT_2026-08-14.md` ·
+`GOAL058_G3_STURM_NODAL_COMPARISON_CLOSEOUT_2026-08-14.md` ·
+`GOAL058_G3_PSWF_INDEX_SOURCE_PIN_PACKET_2026-08-14.md`.
+
+**Чей вердикт и его аргумент:** Прошка,
+`REPAIR_G3_STURM_COMPARISON_TO_NODAL_INTERVAL`: «The unrestricted statement
+between any two distinct lower-parameter zeros is not false, but it needs a
+separate compact-zero-set and consecutive-subpair layer. A single bounded
+Wronskian/Picone proof needs the lower solution to have a fixed sign between
+the two endpoint zeros.» Codex принял ремонт и замкнул его локальным Lean
+proof без Aristotle submission.
+
+**Граница:**
+`G3_MODE4_STURM_NODAL_INTERVAL_COMPARISON_PROVED`; compact zero finiteness,
+ordered `psi4`, matching root existence, mode zero, Fourier, Lemma 7.2, G1,
+G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
