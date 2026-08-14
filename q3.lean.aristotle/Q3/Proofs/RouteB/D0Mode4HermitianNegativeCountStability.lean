@@ -651,6 +651,69 @@ theorem mode4HermitianNegativeEigenvalueCount_eventually_eq_of_tendsto_of_det_ne
       mode4HermitianNegativeEigenvalueCount_eventually_eq_of_tendsto_of_det_ne_zero_of_pos
         (Nat.one_le_iff_ne_zero.mpr hK0) A hA L hL hlim hdet
 
+/-!
+The following two public interfaces are an independent Mathlib realization of
+the subspace form of Sylvester inertia.  The proof architecture was
+cross-checked against `Zeta23/LinAlg/Sylvester.lean` (Apache-2.0); no source
+code is copied.  They expose exactly the part of the spectral-projector
+machinery needed by finite block congruence arguments.
+-/
+
+/-- Every subspace on which a real Hermitian form is strictly negative has
+dimension at most the number of strictly negative eigenvalues. -/
+theorem mode4Finrank_le_hermitianNegativeEigenvalueCount_of_negDefOn
+    {n : Type*} [Fintype n] [DecidableEq n]
+    {A : Matrix n n ℝ} (hA : A.IsHermitian)
+    {W : Submodule ℝ (n → ℝ)}
+    (hW : ∀ x ∈ W, x ≠ 0 → star x ⬝ᵥ (A *ᵥ x) < 0) :
+    Module.finrank ℝ W ≤ mode4HermitianNegativeEigenvalueCount A hA :=
+  mode4Stability_finrank_le_negativeCount hA hW
+
+/-- The negative spectral projector supplies a strictly negative subspace
+whose dimension is exactly the Hermitian negative-eigenvalue count. -/
+theorem mode4Exists_negDefSubspace_finrank_eq_hermitianNegativeEigenvalueCount
+    {n : Type*} [Fintype n] [DecidableEq n]
+    {A : Matrix n n ℝ} (hA : A.IsHermitian) :
+    ∃ W : Submodule ℝ (n → ℝ),
+      (∀ x ∈ W, x ≠ 0 → star x ⬝ᵥ (A *ᵥ x) < 0) ∧
+      Module.finrank ℝ W = mode4HermitianNegativeEigenvalueCount A hA := by
+  let W : Submodule ℝ (n → ℝ) :=
+    LinearMap.range (mode4StabilityNegativeProjector hA).mulVecLin
+  refine ⟨W, ?_, mode4StabilityNegativeProjector_finrank hA⟩
+  intro x hxW hx
+  have hWne : W ≠ ⊥ := by
+    intro hbot
+    have hxbot : x ∈ (⊥ : Submodule ℝ (n → ℝ)) := by
+      rw [← hbot]
+      exact hxW
+    exact hx (by simpa using hxbot)
+  have hcount_pos :
+      0 < mode4HermitianNegativeEigenvalueCount A hA := by
+    rw [← mode4StabilityNegativeProjector_finrank hA]
+    exact Nat.lt_of_succ_le (Submodule.one_le_finrank_iff.mpr hWne)
+  let s : Finset n := Finset.univ.filter fun i => hA.eigenvalues i < 0
+  have hs : s.Nonempty := by
+    rw [← Finset.card_pos]
+    simpa [s, mode4HermitianNegativeEigenvalueCount] using hcount_pos
+  obtain ⟨i, hi, hmin⟩ :=
+    Finset.exists_min_image s (fun j => -hA.eigenvalues j) hs
+  have hineg : hA.eigenvalues i < 0 := by
+    exact (Finset.mem_filter.mp hi).2
+  have hgap_pos : 0 < -hA.eigenvalues i := neg_pos.mpr hineg
+  have hgap :
+      ∀ j, hA.eigenvalues j < 0 →
+        -hA.eigenvalues i ≤ -hA.eigenvalues j := by
+    intro j hj
+    exact hmin j (Finset.mem_filter.mpr ⟨Finset.mem_univ j, hj⟩)
+  have hform := mode4StabilityNegativeProjector_form_gap
+    hA hgap hxW
+  have hnorm : 0 < star x ⬝ᵥ x :=
+    Matrix.dotProduct_star_self_pos_iff.mpr hx
+  nlinarith
+
+#print axioms mode4Finrank_le_hermitianNegativeEigenvalueCount_of_negDefOn
+#print axioms mode4Exists_negDefSubspace_finrank_eq_hermitianNegativeEigenvalueCount
+
 /- P-STAB-1-SINGULAR-LIMIT.
 Stop code: G3_INERTIA_STABILITY_SINGULAR_LIMIT_GUARD_DROPPED.
 
