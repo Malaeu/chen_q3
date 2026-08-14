@@ -102,8 +102,41 @@ if [ "${1:-}" = "--print-axioms" ] && [ -n "${2:-}" ]; then
     echo "import Q3"
     echo "#print axioms $name"
   } > "$tmp/PrintAxioms.lean"
-  ( cd "$LEAN_ROOT" && timeout 1800 lake env lean "$tmp/PrintAxioms.lean" 2>&1 ) \
-    | sed 's/^/  /' | head -30
+  if command -v timeout >/dev/null 2>&1; then
+    ( cd "$LEAN_ROOT" && timeout 1800 lake env lean "$tmp/PrintAxioms.lean" ) \
+      > "$tmp/PrintAxioms.out" 2>&1
+    lean_rc=$?
+  else
+    ( cd "$LEAN_ROOT" && python3 - "$tmp/PrintAxioms.lean" <<'PY'
+import subprocess
+import sys
+
+try:
+    completed = subprocess.run(
+        ["lake", "env", "lean", sys.argv[1]],
+        check=False,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        timeout=1800,
+    )
+except subprocess.TimeoutExpired as exc:
+    if exc.stdout:
+        sys.stdout.write(exc.stdout if isinstance(exc.stdout, str) else exc.stdout.decode())
+    print("axiom audit timed out after 1800 seconds", file=sys.stderr)
+    raise SystemExit(124)
+
+sys.stdout.write(completed.stdout)
+raise SystemExit(completed.returncode)
+PY
+    ) > "$tmp/PrintAxioms.out" 2>&1
+    lean_rc=$?
+  fi
+  sed 's/^/  /' "$tmp/PrintAxioms.out" | head -30
+  if [ "$lean_rc" -ne 0 ]; then
+    echo "  axiom audit failed with exit code $lean_rc"
+    exit "$lean_rc"
+  fi
   echo
   echo "  Эталон: [propext, Classical.choice, Quot.sound]."
   echo "  Всё сверх — перечислено выше поимённо; sorryAx означает, что доказательства нет."

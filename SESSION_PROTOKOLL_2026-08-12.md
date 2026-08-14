@@ -321,3 +321,51 @@ fail-closed. Тот же пакет затем был передан exact inlin
 Статус: G1 OPEN; G3 OPEN; Route B `CHALLENGER_NOT_RH`; RH claim отсутствует.
 Стоп-код:
 `G3_ROOT_TO_FINITE_LIMIT_CARRIER_DIRECTION_READY_CARRIER_TO_LITERAL_ROOT_SINGULAR_ENDPOINT_BRIDGE_MISSING`.
+
+### Инструментальная странность 2026-08-15 — `atoms.py --help`
+
+`python3 docs/cartographer/atoms.py --help` не показал справку: скрипт принял
+`--help` за имя выходного файла, полностью выполнил анализ и создал в корне
+репозитория незакоммиченный файл `--help`. Возможные чтения были: штатный
+argparse-help либо отсутствие CLI-разбора. Вывод `[записано] --help` и сам файл
+подтвердили второе. Случайный файл сразу удалён; его содержимое нигде не
+использовано. Для канонического запуска применяется только зарегистрированная
+форма `python3 docs/cartographer/atoms.py <явный-output.json>`.
+
+### Goal 058 G3 — finite-limit spectral iff закрыт, G3 остаётся открыт
+
+После выбранного Прошкой одностороннего листа локально доказано и само
+направление `normalized DLMF l2 row -> finite-limit carrier`, и точная обратная
+стена `carrier j = Lambda < 20 -> det literalSchur(Lambda) = 0`. Обратный proof
+не предполагает singularity: из `det != 0` непрерывность даёт одинаковый
+negative count по обе стороны, а convergence того же `j`-го finite eigenvalue
+требует counts не более `j` снизу и не менее `j+1` сверху.
+
+Композиция даёт kernel-checked
+`mode4DLMF3035EvenLeftCoefficient_sqSummable_iff_exists_finiteLimitSpectrum`.
+Оба direct Lean, named builds, `q3_check`, full build и axiom audit прошли;
+public axioms только `propext`, `Classical.choice`, `Quot.sound`.
+
+Это закрывает спектральный seam, но не G3. Следующий точный шов — строгий
+порядок carrier ниже 20 и zero-based выбор `j=2` для degree four. Actual
+degree-0/4 pair, finite Fourier, CCM Lemma 7.2, central-overlap/denominator
+floor, coupled schedule и весь G1 остаются открыты. Route B всё ещё
+`CHALLENGER / NOT_RH`; RH claim не сделан.
+
+Стоп-код:
+`G3_DLMF3035_FINITE_LIMIT_SPECTRAL_IFF_PROVED_STRICT_ORDER_AND_P2_MODE_SELECTION_NEXT`.
+
+### Инструментальная странность 2026-08-15 — Mac axiom audit был fail-open
+
+`./scripts/check_axioms.sh --print-axioms Q3.Main.RH_of_Weil_and_Q3` вызвал
+GNU-команду `timeout`, отсутствующую на этом Mac, напечатал
+`timeout: command not found` и всё равно завершился кодом 0. Возможные чтения:
+сломался только необязательный лимит времени либо сам kernel-аудит вообще не
+запускался. Отсутствие строки Lean `depends on axioms` подтвердило второе.
+Скрипт переведён на portable fallback через `python3 subprocess.run(...,
+timeout=1800)` с передачей настоящего exit-кода; GNU `timeout` сохраняется там,
+где он установлен. До повторного успешного прогона прежний зелёный результат
+не считается axiom evidence. Повторный реальный прогон напечатал kernel-список
+для `Q3.Main.RH_of_Weil_and_Q3` (`propext`, `Classical.choice`,
+`Q3.Weil_criterion`, `Q3.prime_term_le_at_t_critical_axiom`, `Quot.sound`), а
+plant с заведомо отсутствующим именем завершился кодом 1. Fail-open закрыт.

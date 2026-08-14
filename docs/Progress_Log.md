@@ -2357,6 +2357,50 @@ fixed-index limit.
 `G3_ROOT_TO_FINITE_LIMIT_CARRIER_DIRECTION_READY_CARRIER_TO_LITERAL_ROOT_SINGULAR_ENDPOINT_BRIDGE_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — Goal 058 G3: singular endpoint закрыт, spectral iff доказан
+
+**Развилка:** остановиться после выбранного Прошкой направления
+`normalized l2 row -> finite-limit carrier` и вынести reverse endpoint наружу
+либо проверить, закрывается ли точная стена уже имеющимися continuity,
+count-stability и fixed-index convergence suppliers.
+
+**Выбрали:** сначала доказать точный Proshka-head, затем локально закрыть
+`carrier j = Lambda < 20 -> det literalSchur(Lambda) = 0` и скомпоновать полный
+production-domain iff.
+
+**Почему:** обратная стена была уже сведена к одному falsifiable contradiction.
+При `det != 0` Schur negative count локально постоянен с обеих сторон, но
+convergence одного и того же `j`-го finite eigenvalue заставляет нижний count
+быть `<= j`, а верхний `>= j+1`. Никакой новой source hypothesis не требуется.
+
+**Что отвергли и почему:** `GrowthDichotomy` отвергнут как duplicate уже
+доказанной l2/recessive uniqueness; invented threshold, vacuous separation
+binder, assumed singularity, endpoint counts и `j=2` не вводились.
+
+**Техника:** независимый DLMF characteristic/l2 crosswalk, Schur root inertia
+label, непрерывность literal Schur matrix, local negative-count stability,
+finite-to-literal count transport и fixed-index eigenvalue convergence.
+
+**Следующий ход:** доказать strict order carrier ниже 20 и зафиксировать
+zero-based degree-four index `j=2`; затем провести выбранную row в actual
+`psi_4` и отдельно закрывать mode zero/Fourier/Lemma 7.2/floor chain.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2ToFiniteLimitSpectrum.lean` ·
+`Q3/Proofs/RouteB/D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF3035_FINITE_LIMIT_SPECTRAL_IFF_CLOSEOUT_2026-08-15.md`.
+
+**Чей вердикт и его аргумент:** Proshka сначала выбрала
+`B — PRODUCTION_ROOT_TO_CARRIER_ONE_DIRECTION_FIRST` и дословно локализовала
+reverse: «assume `det != 0`, obtain local constancy of the literal negative
+count, transport the same count to two nearby finite sections, and contradict
+convergence of the `j`-th finite eigenvalue through that interval». Codex/Lean
+проверил именно этот argument и закрыл его без внешнего запроса.
+
+**Граница:**
+`G3_DLMF3035_FINITE_LIMIT_SPECTRAL_IFF_PROVED_STRICT_ORDER_AND_P2_MODE_SELECTION_NEXT`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
