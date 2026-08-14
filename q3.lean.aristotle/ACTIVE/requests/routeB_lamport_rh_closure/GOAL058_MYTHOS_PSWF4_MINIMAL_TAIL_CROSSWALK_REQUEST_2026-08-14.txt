@@ -1,0 +1,229 @@
+GOAL 058 G3 SOURCE-CROSSWALK ATTACK REQUEST
+
+DATE: 2026-08-14
+REQUEST_ID: GOAL058_G3_PSWF4_MINIMAL_TAIL_SOURCE_CROSSWALK
+REVIEWER: MYTHOS
+RESPONSE_CLASS: ONE_PRIMARY_ARCHITECTURE_AND_ONE_NEXT_ACTION
+
+CANONICAL PIN
+
+REPOSITORY: Malaeu/chen_q3
+BRANCH: rh_clean
+BASE_HEAD: bf77c6e21e732804bcf56adc3e0ee6e4a50c874d
+ORIGIN_HEAD_EQUALS_BASE_HEAD: true
+
+PHASE KEY
+
+route_id: RouteB_TwoLevelSpectralLadder
+front_id: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+source_object_family_id: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+terminal_consumer_id: Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots
+honesty_state: CHALLENGER_NOT_RH
+convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+
+PURPOSE
+
+Attack the smallest honest source-producing bridge from the classical indexed
+degree-four PSWF to the current exact mode-four Ferrers/Jacobi construction.
+Do not propose another conditional receiver.  Decide whether the current
+coefficient/minimal-tail route is genuinely smaller than a full singular
+Sturm--Liouville constructor, and return one executable next action.
+
+WHAT CHANGED SINCE THE LAST MYTHOS REVIEW
+
+The earlier proposed interior Sturm route has now been exhausted through its
+locally executable layers:
+
+1. 485526e8 proves the guarded nodal-interval comparison theorem.
+2. fe7f5a27 proves compact interior zero-set finiteness and removes the nodal
+   guard between any two supplied lower-solution zeros.
+3. bf77c6e2 proves the exact physical scale x = u / sqrt(mProject) and the
+   physical prolate ODE with c = 2*pi*mProject.
+
+All three production files pass direct Lean, target build, q3_check, full lake
+build, forbidden-token scans, and the public axiom gate
+[propext, Classical.choice, Quot.sound].  They do not prove root existence,
+zero count, ordered mode selection, or a finite-Fourier eigenrelation.
+
+CURRENT EXACT SOURCE WALL
+
+The current accepted object is still conditional on
+
+  mode4RootFunction mProject K Lambda = 0.
+
+The project can construct a normalized regular even Ferrers solution from that
+root and now knows its actual derivatives, ODE, endpoint flux, nontriviality,
+simple interior zeros, compact zero-set behavior, Sturm comparison, and exact
+physical scale.  It does not know that the solution is the classical indexed
+psi_4, nor that a classical psi_4 coefficient row forces this exact root.
+
+The load-bearing missing statement is named
+
+  CLASSICAL_PSWF4_REGULAR_SOLUTION_MATCHES_CURRENT_MINIMAL_LEGENDRE_TAIL_AND_PLUS_PHASE.
+
+PRIMARY SOURCE LOCKS ALREADY ON DISK
+
+1. GOAL058_G3_PSWF_INDEX_SOURCE_PIN_PACKET_2026-08-14.md
+   - TR1450.pdf, physical page 4, Theorem 1:
+     real orthonormal psi_n, parity, exactly n simple interior roots,
+     nonzero simple finite-Fourier eigenvalues, phase i^n.
+   - TR1450.pdf, physical page 5, Theorem 3:
+     strictly ordered differential eigenvalues and every regular solution at
+     chi_n is a scalar multiple of psi_n.
+   - 1405.3676.pdf, physical pages 1, 3, 5:
+     independent positive-phase, ODE, parity, and zero-count cross-check.
+   - D0_3F_EXTERNAL_SOURCE_LOCK.json:
+     Katsnelson singular-endpoint self-adjoint realization lock.
+
+2. D0Mode4PSWFLegendreRecurrenceCrosswalk.lean
+   - exact DLMF 30.8.3--30.8.4 three-coefficient algebraic crosswalk;
+   - project spectral energy is Lambda + mode4JacobiG mProject.
+
+3. D0Mode4PSWFLegendreCanonicalIdentification.lean
+   - theorem mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical;
+   - from a supplied all-index DLMF recurrence and DLMF 30.8.5 normalized
+     square-sum, the shifted source row equals a nonzero scalar multiple of the
+     current canonical square-summable tail;
+   - explicitly conditional: it does not construct a regular PSWF row.
+
+4. D0Mode4PSWFLegendreBoundaryFluxIdentification.lean
+   - the conditional source boundary ratio and flux equal the current Schur
+     correction once the DLMF row hypotheses are supplied.
+
+5. D0Mode4PSWFRiccatiOrbitUniqueness.lean
+   - a separate conditional invariant-cone uniqueness route;
+   - do not assume its nonzero/ratio-cone hypotheses hold for the classical
+     psi_4 coefficient row unless proved from a source.
+
+6. D0Mode4FerrersPhysicalProlateScaling.lean
+   - exact current dimensionless-to-physical ODE scale;
+   - no source-index identification and no finite-Fourier supplier.
+
+PROPOSED CENTRAL THEOREM HEAD
+
+  theorem classicalPSWF4_coefficients_force_mode4Root
+      (mProject : Nat) (hm : 2 <= mProject)
+      (psi4 : Real -> Real) (chi4 : Real)
+      (hpsi4 : classicalDegreeFourPSWF
+        (2 * Real.pi * (mProject : Real)) psi4 chi4) :
+      let Lambda := chi4 - mode4JacobiG mProject
+      mode4RootFunction mProject (4 * mProject) Lambda = 0
+
+The names classicalDegreeFourPSWF and its source package are statement-level
+architecture only; they are not current Lean declarations.  Do not count this
+head as proved by writing those hypotheses into a new structure.
+
+REQUIRED CONTENT OF A REAL PROOF
+
+1. Define or extract the even Legendre coefficient row of the source psi_4.
+2. Prove the exact all-index recurrence already consumed by the current
+   DLMF/Jacobi crosswalk.
+3. Prove the exact DLMF 30.8.5 square-sum normalization or the precise
+   rescaling needed by the existing canonical-identification theorem.
+4. Prove that the coefficient at the splice denominator is nonzero, or give a
+   source-faithful replacement that avoids division by that coefficient.
+5. Transport the source row through the current canonical tail and finite-left
+   matching equation.
+6. Conclude the literal current mode4RootFunction equality.
+7. Separately identify the resulting Ferrers series with psi_4 under an exact
+   normalization.  ODE equality alone is insufficient.
+8. Keep the positive plus-phase restricted finite-Fourier relation separate
+   until the function identity is established.
+
+ARCHITECTURES TO ATTACK
+
+A. COEFFICIENT ROUTE
+   Classical psi_4 Legendre expansion -> DLMF recurrence and square-sum ->
+   existing canonical tail uniqueness -> current root -> normalized function
+   identity -> source finite-Fourier relation.
+
+B. SINGULAR STURM--LIOUVILLE ROUTE
+   Construct the self-adjoint operator/eigenfamily and ordered index directly,
+   then prove the current root-conditioned solution is the index-four mode.
+
+C. SOURCE-PACKAGE IMPORT ROUTE
+   Formalize a source-faithful PSWF existence/index/Fourier theorem from a
+   pinned paper statement, then prove an exact coefficient crosswalk into the
+   current object.  This is legal only if the imported theorem is itself
+   justified in Lean or carried as an explicitly external paper assumption;
+   the latter does not close the Lean goal.
+
+REQUIRED ATTACK QUESTIONS
+
+1. ACCEPT or REJECT the decomposition above.  Name the first circularity,
+   hidden binder, or object mismatch if it fails.
+2. Rank A, B, C by genuine Lean work, not by prose length.
+3. For route A, identify the smallest primary-source theorem that supplies the
+   Legendre expansion, recurrence, and norm relation with exact section,
+   equation, and page.  If exact pins are unavailable, say SOURCE_PIN_MISSING;
+   do not invent them.
+4. Decide whether the existing
+   mode4DLMF3084_3085_shiftedHermitianTail_eq_c_mul_canonical theorem is the
+   correct reusable core or whether one of its hypotheses mismatches the
+   classical coefficient normalization.
+5. Decide whether K = 4*mProject is source-mandated or merely a project splice
+   choice.  The theorem must not infer a spectral index from K.
+6. Give the smallest source-producing Lean theorem head that should be proved
+   next.  It must not accept the desired root equality, zero count, or ordered
+   psi_4 identification as a hypothesis.
+7. Decide whether Aristotle is appropriate now.  If YES, return one exact
+   prompt with owned file, allowed imports, literal theorem head, required
+   helpers, plants, axiom gate, validation commands, success code, and typed
+   stops.  If NO, return one Codex-local prerequisite packet or source pin.
+8. State exactly what the next theorem would close and what remains for mode
+   zero, the restricted finite-Fourier pair, CCM Lemma 7.2, and the denominator
+   floor.
+
+MANDATORY FALSIFIERS
+
+P1 WRONG_INDEX:
+Replacing psi_4 by an arbitrary even regular solution or psi_2 must not prove
+the index-four claim.
+
+P2 WRONG_PHASE:
+Replacing exp(+i*c*x*y) by the minus-phase kernel must expose the phase change;
+it must not preserve the claimed positive real eigenvalue by simplification.
+
+P3 WRONG_SCALE:
+Replacing c = 2*pi*mProject by c = 2*pi*sqrt(mProject), or dropping the
+physical x = u/sqrt(mProject) scale, must fail the exact crosswalk.
+
+P4 NONMINIMAL_TAIL:
+An arbitrary second solution of the same three-term recurrence must not pass
+as the current square-summable/minimal right tail.
+
+P5 SPLICE_ZERO:
+Any proof dividing by the coefficient at K-1 must expose and discharge its
+nonzero condition.
+
+P6 RECEIVER_AS_SUPPLIER:
+A new structure field or theorem hypothesis that directly assumes the desired
+root, source index, finite-Fourier relation, or normalized function equality
+is rejected.
+
+REQUIRED RESPONSE SCHEMA
+
+MYTHOS_VERDICT: ACCEPT | REVISE | KILL
+PRIMARY_ARCHITECTURE: A | B | C | OTHER
+FIRST_HIDDEN_BINDER_OR_OBJECT_MISMATCH: <exact statement>
+PRIMARY_SOURCE_PIN: <file/page/equation or SOURCE_PIN_MISSING>
+REUSABLE_CURRENT_LEAN_CORE: <exact declarations>
+SMALLEST_SOURCE_PRODUCING_HEAD: <literal Lean signature>
+ARISTOTLE: YES | NO
+NEXT_ACTION: <one bounded action only>
+SUCCESS_CODE: <one code>
+TYPED_STOP: <one code>
+NONCLAIMS: <explicit list>
+
+NONCLAIMS
+
+NO_MATCHING_ROOT_EXISTENCE_YET
+NO_ORDERED_PSI4_IDENTIFICATION_YET
+NO_MODE_ZERO_CONSTRUCTOR
+NO_RESTRICTED_FINITE_FOURIER_PAIR
+NO_LEMMA_7_2_RATE
+NO_DENOMINATOR_FLOOR
+NO_G3
+NO_G1
+NO_ROUTE_B_PROMOTION
+NO_RH
