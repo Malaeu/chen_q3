@@ -31,6 +31,43 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-14 — Goal 058 joint G1/G3 analytic source-wall review
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.AnalyticSourceWall
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_G1_G3_ANALYTIC_SOURCE_WALL
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: NOT_CAPTURED
+response_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED
+completed_at: NOT_CAPTURED
+wall_seconds: 1131
+wall_human: "UI reported 18m51s natural reasoning; send/completion timestamps were not captured"
+answer_now_shown: true
+answer_now_clicked: false
+primary: Q1_NOT_READY_Q2_CODEX_LOCAL_C1_SELECTED
+status: OPEN_C1_PROVED_G1_G3_SOURCE_WALLS_REMAIN
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  GOAL058_G1_G3_ANALYTIC_SOURCE_WALL_PROSHKA_VERDICT_2026-08-14.md
+response_lines: 640
+response_sha256: ece5069191ee77bfa367bae673a742852fe9018ad9cec667194f771a3f79123c
+notes: >-
+  Same living Goal 058 phase chat received the 1,492-line authoritative
+  pasted-text bundle with SHA-256
+  2644b307692d7ef279f624cc2f84c608bf16de0f4d74aa47e3819e3851e95251
+  at repository HEAD 82617fd0. Proshka rejected the proposed finite-limit
+  definition of the classical G3 spectrum as circular and kept the DLMF
+  30.16.3 same-index Sturm--Liouville identification open. For G1 it selected
+  one local odd-tail inverse-weighted correction bound and rejected Aristotle
+  for that internal custom-carrier proof. Codex subsequently kernel-checked
+  the selected C1 theorem at commit c7257228. The theorem is only a correction
+  budget; the corrected even head, row evenness, cofinal shift, full complex
+  complement floor, G1, and G3 remain open. Answer now was shown and never
+  clicked. No Route B promotion, PX claim, or RH claim occurred.
+```
+
 ### 2026-08-13 — Goal 058 literal-source complex trial-line Feshbach task
 
 ```yaml
