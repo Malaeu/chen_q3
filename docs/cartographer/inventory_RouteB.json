@@ -1,9 +1,9 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 220,
-  "declarations": 2043,
-  "in_docs": 904,
+  "files_scanned": 221,
+  "declarations": 2044,
+  "in_docs": 905,
   "in_lemma_db": 1869,
   "orphans": 98,
   "uncatalogued": 98,
@@ -5604,6 +5604,16 @@
       "signature": "theorem norm_sub_coe_P_m_N_sq_eq_tsum_complement (i : PairIndex) (f : H_m i) : ‖f - (P_m_N i f : H_m i)‖ ^ 2 = ∑' n : ℤ, if n ∈ modeSet i then 0 else ‖inner ℂ (V_n_m i n) f‖ ^ 2",
       "in_docs": true,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "Mode4FerrersRegularEvenProlateSolution.center_value_ne_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCenterValueNonzero.lean",
+      "line": 18,
+      "signature": "theorem Mode4FerrersRegularEvenProlateSolution.center_value_ne_zero {mProject K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ) : mode4FerrersSeries S.coefficients 0 ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {
