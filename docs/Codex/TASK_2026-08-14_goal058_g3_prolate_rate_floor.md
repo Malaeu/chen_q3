@@ -187,3 +187,23 @@ mode-four wall is the classical regular `psi4` coefficient/minimal-tail
 crosswalk and ordered index identification; mode zero, finite Fourier, Lemma
 7.2 and the denominator floor remain open.  The narrowed stop is
 `MODE4_PHYSICAL_SCALE_PROVED_SOURCE_PSI4_CROSSWALK_MODE0_FOURIER_AND_LEMMA72_MISSING`.
+
+## 2026-08-14 parallel G1 exact Gram checker
+
+The literal complex P59 trial-line complement floor is now fixed and its
+finite-cell certificate soundness is kernel checked in
+`CCMProposition59ComplexTrialComplementFloor.lean`.  An exact equality
+
+```text
+Q (K-aI) Q - beta Q = R^* R,  beta > 0
+```
+
+implies the required positive floor for the unchanged source CCM matrix, row,
+and Rayleigh value.  A permanent exact `Fin 3` all-ones collapse plant proves
+the source-shaped rank-two commutator while rejecting every positive floor and
+every positive-floor Gram certificate.
+
+This closes only the checker and permanently kills the commutator/beta-only
+shortcut.  It does not construct `R`, `beta`, a finite-head certificate, a
+uniform tail reduction, or a cofinal schedule.  The narrowed G1 stop is
+`G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`.

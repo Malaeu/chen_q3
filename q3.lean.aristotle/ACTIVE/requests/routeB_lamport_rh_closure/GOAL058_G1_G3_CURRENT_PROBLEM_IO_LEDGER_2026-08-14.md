@@ -167,10 +167,36 @@ sector Krylov determinants and cross-sector separation. None of these literal
 CCM arithmetic statements is currently on disk, and nonvanishing alone would
 still not give the quantitative all-large gap envelope required by G1.
 
+### Exact checker now kernel checked
+
+`CCMProposition59ComplexTrialComplementFloor.lean` fixes the primary G1
+inequality on the literal complex P59 trial line.  It proves that an exact
+Gram identity
+
+```text
+Q (K-aI) Q - beta Q = R^* R,  beta > 0
+```
+
+supplies the complement floor for the unchanged source CCM matrix, source
+complex row, and source Rayleigh value.  The theorem is a finite-cell
+conditional checker: existence of `R` and `beta` is not assumed by the source
+family and is not proved.
+
+The same file kernel-checks the exact all-ones `Fin 3` collapse plant with the
+source-shaped rank-two commutator.  An explicit second ground vector in the
+selected trial line's orthogonal complement rules out every positive floor
+and every corresponding Gram certificate.  Thus the discarded
+commutator/beta-only route is now rejected by the same exact checker that will
+accept future literal certificates.
+
+The next G1 input must be produced, not postulated: literal CCM arithmetic on
+one precommitted cofinal family, a finite-head Gram certificate, and a
+Lean-checked uniform tail reduction yielding an explicit positive floor.
+
 Stop code:
 
 ```text
-LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING
+G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING
 ```
 
 ## External adjudication

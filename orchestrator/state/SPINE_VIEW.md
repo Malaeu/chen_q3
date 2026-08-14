@@ -61,8 +61,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 - collection: `q3_docs`
 - mode / status: `search_plus_vsearch` / `PASS`
 - `POST_JUNE_IDENTIFICATION` query `IdentificationAt`: `PASS`, results `30`.
-- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `39`.
-- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `37`.
+- `POST_JUNE_EDGE_SLIVER` query `edge-sliver`: `PASS`, results `45`.
+- `PRE_SWITCH_STEP33` query `ActiveCenteredCoeffEntryHboxCert`: `PASS`, results `33`.
 
 ## Meta-corpus registry
 - derived surfaces: `9`; authority: `DERIVED_REGISTRY_NOT_NEW_TRUTH_SOURCE`.
@@ -103,6 +103,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | `GOAL057_B3_0G_SOURCE_W02_MODE_PAIRING_SOURCE_AUDIT` | GOAL057/P057_B3_0G | 1662 | observed | OPEN_PREFLIGHT_AUTHORIZED_PRODUCTION_FORBIDDEN |
 
 ## Staleness warnings
+- CHANNEL_RUNTIME active phase record is 25 hours old (2026-08-13T07:25:47+02:00); revalidate the existing chat handle and six-field phase key. Age alone never authorizes a fresh chat.
 - observability source health degraded: numeric_checks:ZERO_COVERAGE — this is not a green sensor state.
 
 ## Source freshness
@@ -173,7 +174,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | VERDICT_GOAL058_ARISTOTLE_SOURCE_LOCK_STOP_2026_08_13 | STATUS: FATAL — AUTHORITATIVE SOURCE LOCK UNAVAILABLE | killed |  |
 | ZIP_AUDIT_FOLLOWUP_2026_07_27 | STATUS: FATAL для контракта v1 | killed |  |
 
-**strategy** (98)
+**strategy** (100)
 
 | id | subject | status | next / rollback |
 |---|---|---|---|
@@ -191,6 +192,8 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | GLOWER_CONTRACT_MANDATE_2026_08_09 | N_stabilization_and_W02_positive_part | standing | GLOWER_G1_ODD_HILBERT_COMMUTATOR_PREFLIGHT |
 | GLOWER_EXACT_CLOSURE_2026_08_09 | extrapolate_nested_finite_eigenvalues | standing | corrected_head_Arb_lower_envelope_at_c0_1e58 |
 | GOAL058_ACTUAL_SOURCE_CLOSURE_VERDICT_2026_08_14 | formalize_receivers_after_source_identities_and_call_them_closure | standing | source-level PSWF constructor availability audit |
+| GOAL058_JOINT_SOURCE_REVIEW_VERDICT_2026_08_14 | treat_root_or_generic_spectral_receiver_as_source_closure | standing | local endpoint-flux theorem |
+| GOAL058_STURM_NODAL_COMPARISON_ARISTOTLE_PROMPT_2026_08_14_U | ask_for_four_zeros_at_unspecified_matching_root | standing | Aristotle_nodal_interval_comparison |
 | GOAL058_TRUE_SOURCE_CLOSURE_VERDICT_2026_08_13 | receiver_or_finite_identity_relabelled_as_source_supplier | standing | derive_one_literal_complement_floor_from_the_exact_CCM_source_decomposition |
 | H2A_LEAN_NATIVE_PROBE_ADJUDICATION_2026_08_11 | treat_library_search_as_exact_claim_comparator | standing | H2A_RAYLEIGH_TYPED_BRIDGE_PROBE |
 | INERTIA_COUNT_NOT_LOCATE | считать инерцией вместо локализации | live | finrank_le_posIndex_of_posDefOn (Sylvester.lean:82): доказывать hsimple предъявлением п... |
@@ -292,7 +295,7 @@ Adapter over existing sources; sources stay canonical, this file is a read view.
 | PRIME_SIDE_WALL | Prime-side wall | standing |  |
 | STEP33_SCALAR_REPLAY_SWAMP_WALL | Step33 scalar replay swamp wall | standing |  |
 
-_144 records, 106 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
+_146 records, 109 cross-file aliases. Query: `./orchestrator/kb.py search <term>`._
 
 ## 3. Bus strategy memory (M3 iteration blocks in verdicts)
 | verdict file | target | forbidden_future_move | new_gap |

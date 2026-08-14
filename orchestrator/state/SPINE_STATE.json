@@ -157,8 +157,8 @@
   "knowledge": {
     "dossier": 171,
     "excluded_source": 113,
-    "journal_entry": 1846,
-    "kill": 144,
+    "journal_entry": 1852,
+    "kill": 146,
     "move": 26,
     "postmortem": 1,
     "status": "READY"
@@ -635,20 +635,20 @@
     "authority": "MACHINE_LOCAL_RETRIEVAL_VALIDATION_NOT_PROOF",
     "boundary": "RETRIEVAL_VALIDATION_NOT_PROOF",
     "collection": "q3_docs",
-    "collection_file_count": 2665,
+    "collection_file_count": 2694,
     "corpus": {
       "breakdown": {
-        "lean": 978,
-        "markdown": 1629,
+        "lean": 989,
+        "markdown": 1647,
         "other": 0,
         "tex": 56,
         "yaml": 1
       },
-      "expected_collection_file_count": 2665,
-      "file_count": 2664,
+      "expected_collection_file_count": 2694,
+      "file_count": 2693,
       "schema": "q3_docs_corpus.v1",
-      "sha256": "e2f9ebeb9aeac96b76ee8f375f00e0a7fbac9e242469a05f04afa5d607826311",
-      "total_bytes": 33835147
+      "sha256": "383a86202b2fe5d7c151586fb1665c155059f87722db57eaed6190cf9c50d18a",
+      "total_bytes": 34125279
     },
     "dynamic_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
     "dynamic_queries": [
@@ -798,11 +798,11 @@
           "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
           "qmd://q3_docs/docs/routeb-bus/map.md",
           "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-twolevel-spectral-ladder/route-b-state.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-complex-hermitian-p59-connector-closeout-2026-08-13.md",
           "qmd://q3_docs/docs/routeb-bus/proshka/proshka-brief-goal058-g1-g3-next-source-task-2026-08-13.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-sector-envelope-source-discriminator-report-2026-08-13.md",
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-complex-hermitian-p59-connector-closeout-2026-08-13.md",
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmproposition59complextrialcomplementfloor.lean",
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmproposition59complexhermitianconnector.lean",
-          "qmd://q3_docs/q3-lean-aristotle/active/pipeline/proshka-reasoning-time-log.md"
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-sector-envelope-source-discriminator-report-2026-08-13.md"
         ]
       },
       {
@@ -823,17 +823,17 @@
         },
         "id": "exact_target",
         "query": "Proposition59GroundLagrangeZeroSetBridge",
-        "result_count": 13,
+        "result_count": 12,
         "status": "PASS",
         "top_paths": [
           "qmd://q3_docs/docs/routeb-bus/map.md",
           "qmd://q3_docs/docs/routeb-bus/proshka/proshka-brief-goal058-g1-g3-next-source-task-2026-08-13.md",
-          "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
           "qmd://q3_docs/docs/routeb-bus/map-coverage.md",
+          "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
           "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
           "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
           "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
-          "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-same-family-publication-spec-2026-08-11.md"
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-bridge.lean"
         ]
       },
       {
@@ -859,12 +859,12 @@
         "top_paths": [
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
           "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
-          "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
-          "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
           "qmd://q3_docs/full/rh-q3.tex",
           "qmd://q3_docs/q3-lean-aristotle/active/requests/step33-bootstrap/strategic-context.md",
           "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
-          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean"
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean",
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/rkhs-rescaling.lean",
+          "qmd://q3_docs/q3-lean-aristotle/active/refs/project-status.md"
         ]
       },
       {
@@ -1022,10 +1022,10 @@
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/montelnormalfamilies.lean",
           "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/master-goal.md",
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0criticalmomentstripbound.lean",
-          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/normalizedtrackingratetransfer.lean",
           "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/d0-6-exact-transform-convention.md",
           "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
-          "qmd://q3_docs/q3-lean-aristotle/docs/insights.md"
+          "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/normalizedtrackingratetransfer.lean"
         ]
       },
       {
@@ -1176,16 +1176,16 @@
         "top_paths": [
           "qmd://q3_docs/docs/routeb-bus/goal057-b3-0d-source-archimedean-mode-pairing-kernel-hermitianity-closeout-2026-08-08.md",
           "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-b3-0d-source-archimedean-mode-pairing-kernel-hermitianity-closeout-2026-08-08.md",
+          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0i-source-prime-mode-pairing-closeout-2026-08-09.md",
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-b3-0i-source-prime-mode-pairing-closeout-2026-08-09.md",
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0pstarsourcearchmodepairingkernel.lean",
           "qmd://q3_docs/docs/routeb-bus/057-unified-chain-program-delegated-review-goal.md",
           "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/057-unified-chain-program-delegated-review-goal.md",
-          "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0c-source-arch-multiplier-mode-pairing-integrability-2026-08-08.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-verdict-goal057-b3-0c-source-arch-multiplier-mode-pairing-integrability-2026-08-08.md",
-          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0i-source-prime-mode-pairing-closeout-2026-08-09.md"
+          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0f-finite-archimedean-sesquilinear-form-matrix-lift-closeout-2026-08-08.md"
         ]
       }
     ],
-    "generated_at": "2026-08-14T00:34:45.501057+00:00",
+    "generated_at": "2026-08-14T06:47:04.486332+00:00",
     "machine_id": "c142388699847d8bb90587819e5597200607a5cdc70fd9ab6f538aacff6efc6f",
     "mode": "search_plus_vsearch",
     "plants": [
@@ -1193,11 +1193,11 @@
         "id": "POST_JUNE_IDENTIFICATION",
         "lexical_count": 0,
         "matched_paths": [
-          "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
           "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/codex-session-bootstrap-contour-for-mythos-2026-08-04.md"
+          "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+          "qmd://q3-docs/docs/routeb-bus/proshka-zip-audit-followup-2026-07-27.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -1215,7 +1215,7 @@
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 39,
+        "result_count": 45,
         "status": "PASS",
         "vector_count": 30
       },
@@ -1226,27 +1226,27 @@
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffentryhboximport.lean",
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16biasedscaledremainderintervalpayload.lean",
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 37,
+        "result_count": 33,
         "status": "PASS",
-        "vector_count": 30
+        "vector_count": 26
       }
     ],
     "qmd_index": {
-      "collection_file_count": 2665,
+      "collection_file_count": 2694,
       "collection_mask": "**/*",
       "collection_root": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.qmd_cache/q3_docs_current",
       "identity": "b8b4f95a095a529dc936b8fe37deacee3af13a1f1cd74b447ee84b65240a1504",
       "index_path": "/Users/emalam/.cache/qmd/index.sqlite"
     },
     "schema": "q3_semantic_index_receipt.v2",
-    "source_commit": "e9af9f243d178293590e68907b7738bfffb3f341",
+    "source_commit": "44168ea062f8fd40b037efbeaffec861a06e8bdb",
     "status": "PASS"
   },
-  "source_commit": "e9af9f243d178293590e68907b7738bfffb3f341",
+  "source_commit": "44168ea062f8fd40b037efbeaffec861a06e8bdb",
   "tool_manifest": {
     "family_count": 7,
     "schema": "q3_tool_manifest.v2",

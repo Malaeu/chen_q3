@@ -1987,6 +1987,50 @@ Lean проверил, что обе derivative scale factors и potential trans
 matching-root existence, mode zero, finite Fourier, Lemma 7.2, denominator
 floor, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058 G1: checker заперт на буквальном complex trial complement
+
+**Развилка:** продолжать искать простоту из `ccmBeta`/rank-two commutator либо
+сначала зафиксировать проверяемый положительный floor ровно на complement
+буквальной complex P59 trial line.
+
+**Выбрали:** exact Gram-certificate checker
+`Q(K-aI)Q - beta Q = R^*R`, `beta>0`, специализированный на неизменённые
+`sourceCCMFiniteMatrix`, `sourceCCMComplexRow` и source Rayleigh value.
+
+**Почему:** это первичный G1 объект из принятой архитектуры: положительный floor
+сразу исключает второй ground direction и даёт количественный знаменатель для
+уже существующего Feshbach/projective слоя. При этом checker не выдаёт
+сертификат за математику его существования.
+
+**Что отвергли и почему:** beta-only и commutator-only простота отвергнуты
+навсегда точным `Fin 3` all-ones plant. Lean одновременно проверяет
+source-shaped rank-two commutator и явный второй ground vector, ортогональный
+выбранной комплексной unit trial line; поэтому любой `beta>0` и любой такой
+Gram certificate невозможны.
+
+**Техника:** complex Hermitian projection/complement algebra,
+`Matrix.posSemidef_conjTranspose_mul_self`, exact rational-complex falsifier,
+direct/target Lean, `q3_check`, forbidden-token/claim scan и public axiom audit.
+
+**Следующий ход:** `Goal058.G1.CofinalComplementFloor` — построить для
+буквальной CCM-арифметики finite-head Gram certificate и Lean-checked uniform
+tail, дающие явный положительный floor на одной precommitted cofinal family;
+параллельно дождаться отдельного owner send approval для уже byte-locked G3
+Mythos crosswalk request.
+
+**Адреса:**
+`Q3/Proofs/RouteB/CCMProposition59ComplexTrialComplementFloor.lean` ·
+`ACTIVE/pipeline/oracle_questions/2026_08_14_goal058_g1_literal_complex_trial_complement_floor_gram_checker.md` ·
+`GOAL058_G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_CLOSEOUT_2026-08-14.md`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Три
+последовательных `q3_docs` запроса не нашли готового literal supplier; kernel
+принял exact Gram soundness, а тот же checker отверг exact commutator collapse.
+
+**Граница:**
+`G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
