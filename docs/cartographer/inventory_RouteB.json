@@ -1,13 +1,29 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 212,
-  "declarations": 1939,
-  "in_docs": 875,
+  "files_scanned": 216,
+  "declarations": 2019,
+  "in_docs": 891,
   "in_lemma_db": 1869,
-  "orphans": 19,
-  "uncatalogued": 19,
+  "orphans": 87,
+  "uncatalogued": 87,
   "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      26
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      18
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      14
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      10
+    ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       9
@@ -3328,7 +3344,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialLineFeshbach.lean",
       "line": 299,
       "signature": "theorem goal058FeshbachOrientationPlant_orientation_matters : complexTrialLineProjection goal058FeshbachOrientationRow ≠ Matrix.vecMulVec (star goal058FeshbachOrientationRow) goal058FeshbachOrientationRow",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -3418,7 +3434,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMProposition59ComplexTrialLineFeshbach.lean",
       "line": 371,
       "signature": "theorem goal058FeshbachResidualSignPlant_mutant_fails : Matrix.vecMulVec goal058FeshbachResidualPlantRow (star (-goal058FeshbachResidualPlantResidual)) + Matrix.vecMulVec (-goal058FeshbachResidualPlantResidual) (star goal058FeshbachResidualPlantRow) + complexTrialLineComplement goal058FeshbachResidualPlantRow * (goal058FeshbachResidualPlantMatrix - (0 : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ)) * complexTrialLineComplement goal058FeshbachResidualPlantRow ≠ goal058FeshbachResidualPlantMatrix - (0 : ℂ) • (1 : Matrix (Fin 2) (Fin 2) ℂ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -5584,6 +5600,646 @@
     },
     {
       "kind": "theorem",
+      "name": "mode4RecurrenceRow_abs_summable_of_tail_splice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 29,
+      "signature": "theorem mode4RecurrenceRow_abs_summable_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : Summable (fun q : ℕ => |a q|)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 65,
+      "signature": "theorem mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) (r : ℕ) : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ r) * |a q|)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 150,
+      "signature": "noncomputable def mode4FerrersTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 156,
+      "signature": "noncomputable def mode4FerrersSeries (a : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_even",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 161,
+      "signature": "theorem mode4FerrersSeries_even (a : ℕ → ℝ) : Function.Even (mode4FerrersSeries a)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_at_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 170,
+      "signature": "theorem mode4FerrersSeries_at_one (a : ℕ → ℝ) : mode4FerrersSeries a 1 = ∑' q : ℕ, (-1 : ℝ) ^ q * a q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_at_neg_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 179,
+      "signature": "theorem mode4FerrersSeries_at_neg_one (a : ℕ → ℝ) : mode4FerrersSeries a (-1) = ∑' q : ℕ, (-1 : ℝ) ^ q * a q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersTerm_norm_le_coefficientAbs",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 190,
+      "signature": "theorem mode4FerrersTerm_norm_le_coefficientAbs (a : ℕ → ℝ) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : ‖mode4FerrersTerm a q x‖ ≤ |a q|",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersTerm_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 203,
+      "signature": "theorem mode4FerrersTerm_summable (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersTerm a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_hasSumUniformlyOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 216,
+      "signature": "theorem mode4FerrersSeries_hasSumUniformlyOn (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) : HasSumUniformlyOn (mode4FerrersTerm a) (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_continuousOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 229,
+      "signature": "theorem mode4FerrersSeries_continuousOn (a : ℕ → ℝ) (ha : Summable (fun q : ℕ => |a q|)) : ContinuousOn (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4MatchedNormalizedAbsSummableRecurrenceRow_of_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 248,
+      "signature": "theorem exists_mode4MatchedNormalizedAbsSummableRecurrenceRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4MatchedNormalizedContinuousFerrersRow_of_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean",
+      "line": 291,
+      "signature": "theorem exists_mode4MatchedNormalizedContinuousFerrersRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ (∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) ∧ ContinuousOn (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersFirstDerivativeTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 20,
+      "signature": "noncomputable def mode4FerrersFirstDerivativeTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersSecondDerivativeTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 25,
+      "signature": "noncomputable def mode4FerrersSecondDerivativeTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersTerm_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 30,
+      "signature": "theorem mode4FerrersTerm_hasDerivAt (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : HasDerivAt (mode4FerrersTerm a q) (mode4FerrersFirstDerivativeTerm a q x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersFirstDerivativeTerm_hasDerivAt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 39,
+      "signature": "theorem mode4FerrersFirstDerivativeTerm_hasDerivAt (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : HasDerivAt (mode4FerrersFirstDerivativeTerm a q) (mode4FerrersSecondDerivativeTerm a q x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersFirstDerivativeMajorant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 48,
+      "signature": "noncomputable def mode4FerrersFirstDerivativeMajorant (a : ℕ → ℝ) (r : ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersSecondDerivativeMajorant",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 53,
+      "signature": "noncomputable def mode4FerrersSecondDerivativeMajorant (a : ℕ → ℝ) (r : ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4EvenDegree_spectralFactor_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 58,
+      "signature": "private theorem mode4EvenDegree_spectralFactor_le (q : ℕ) : ((2 * q : ℕ) : ℝ) * ((2 * q : ℕ) + 1) ≤ 4 * (((q + 1 : ℕ) : ℝ) ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersFirstDerivativeTerm_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 65,
+      "signature": "theorem mode4FerrersFirstDerivativeTerm_norm_le (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : ‖mode4FerrersFirstDerivativeTerm a q x‖ ≤ mode4FerrersFirstDerivativeMajorant a r q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSecondDerivativeTerm_norm_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 111,
+      "signature": "theorem mode4FerrersSecondDerivativeTerm_norm_le (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (q : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : ‖mode4FerrersSecondDerivativeTerm a q x‖ ≤ mode4FerrersSecondDerivativeMajorant a r q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersFirstDerivativeSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 170,
+      "signature": "noncomputable def mode4FerrersFirstDerivativeSeries (a : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersSecondDerivativeSeries",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 174,
+      "signature": "noncomputable def mode4FerrersSecondDerivativeSeries (a : ℕ → ℝ) (x : ℝ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersFirstDerivativeMajorant_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 178,
+      "signature": "theorem mode4FerrersFirstDerivativeMajorant_summable (a : ℕ → ℝ) (r : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : Summable (mode4FerrersFirstDerivativeMajorant a r)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSecondDerivativeMajorant_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 188,
+      "signature": "theorem mode4FerrersSecondDerivativeMajorant_summable (a : ℕ → ℝ) (r : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : Summable (mode4FerrersSecondDerivativeMajorant a r)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersFirstDerivativeTerm_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 199,
+      "signature": "theorem mode4FerrersFirstDerivativeTerm_summable (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : Summable (fun q : ℕ => mode4FerrersFirstDerivativeTerm a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSecondDerivativeTerm_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 215,
+      "signature": "theorem mode4FerrersSecondDerivativeTerm_summable (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Icc (-r) r) : Summable (fun q : ℕ => mode4FerrersSecondDerivativeTerm a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersFirstDerivativeSeries_continuousOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 231,
+      "signature": "theorem mode4FerrersFirstDerivativeSeries_continuousOn (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContinuousOn (mode4FerrersFirstDerivativeSeries a) (Set.Icc (-r) r)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSecondDerivativeSeries_continuousOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 248,
+      "signature": "theorem mode4FerrersSecondDerivativeSeries_continuousOn (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContinuousOn (mode4FerrersSecondDerivativeSeries a) (Set.Icc (-r) r)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_hasDerivAt_of_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 266,
+      "signature": "theorem mode4FerrersSeries_hasDerivAt_of_mem_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Ioo (-r) r) : HasDerivAt (mode4FerrersSeries a) (mode4FerrersFirstDerivativeSeries a x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersFirstDerivativeSeries_hasDerivAt_of_mem_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 293,
+      "signature": "theorem mode4FerrersFirstDerivativeSeries_hasDerivAt_of_mem_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (x : ℝ) (hx : x ∈ Set.Ioo (-r) r) : HasDerivAt (mode4FerrersFirstDerivativeSeries a) (mode4FerrersSecondDerivativeSeries a x) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_contDiffOn_two_Ioo",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 321,
+      "signature": "theorem mode4FerrersSeries_contDiffOn_two_Ioo (a : ℕ → ℝ) (r : ℝ) (hr0 : 0 < r) (hr1 : r < 1) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-r) r)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_contDiffOn_two_Ioo_unit",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 371,
+      "signature": "theorem mode4FerrersSeries_contDiffOn_two_Ioo_unit (a : ℕ → ℝ) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_contDiffOn_two_of_tail_splice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean",
+      "line": 399,
+      "signature": "theorem mode4FerrersSeries_contDiffOn_two_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) : ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersLegendre_Xsq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 21,
+      "signature": "theorem mode4FerrersLegendre_Xsq_zero (G x : ℝ) : G * x ^ 2 * mode4OrdinaryLegendre 0 x = -mode4PSWFLegendreSubdiagonal G 1 * mode4OrdinaryLegendre 2 x + (mode4PSWFLegendreDiagonal G 0 - ((0 : ℝ) * (0 + 1))) * mode4OrdinaryLegendre 0 x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersLegendre_Xsq_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 44,
+      "signature": "theorem mode4FerrersLegendre_Xsq_succ (G x : ℝ) (q : ℕ) : G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x = -mode4PSWFLegendreSubdiagonal G (q + 2) * mode4OrdinaryLegendre (2 * (q + 2)) x + (mode4PSWFLegendreDiagonal G (q + 1) - (((2 * (q + 1) : ℕ) : ℝ) * (((2 * (q + 1) : ℕ) : ℝ) + 1))) * mode4OrdinaryLegendre (2 * (q + 1)) x - mode4PSWFLegendreSuperdiagonal G q * mode4OrdinaryLegendre (2 * q) x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersPhase",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 152,
+      "signature": "noncomputable def mode4FerrersPhase (a : ℕ → ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersPhase_recurrence",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 155,
+      "signature": "theorem mode4FerrersPhase_recurrence (G E : ℝ) (a : ℕ → ℝ) (ha : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) : ∀ q : ℕ, -mode4PSWFLegendreSubdiagonal G q * mode4FerrersPhase a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * mode4FerrersPhase a q - mode4PSWFLegendreSuperdiagonal G q * mode4FerrersPhase a (q + 1) = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersUpperBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 179,
+      "signature": "noncomputable def mode4FerrersUpperBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersDiagonalBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 184,
+      "signature": "noncomputable def mode4FerrersDiagonalBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersLowerBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 191,
+      "signature": "noncomputable def mode4FerrersLowerBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersTerm_prolateBand_action",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 197,
+      "signature": "theorem mode4FerrersTerm_prolateBand_action (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : G * x ^ 2 * mode4FerrersTerm a q x = mode4FerrersUpperBand G a q x + mode4FerrersDiagonalBand G a q x + mode4FerrersLowerBand G a q x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersUpperBand_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 214,
+      "signature": "theorem mode4FerrersUpperBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersLowerBand_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 243,
+      "signature": "theorem mode4FerrersLowerBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersDiagonalBand_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 277,
+      "signature": "theorem mode4FerrersDiagonalBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersDiagonalBand G a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersIncomingLowerBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 293,
+      "signature": "noncomputable def mode4FerrersIncomingLowerBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersIncomingUpperBand",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 298,
+      "signature": "noncomputable def mode4FerrersIncomingUpperBand (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersIncomingLowerBand_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 303,
+      "signature": "theorem mode4FerrersIncomingLowerBand_zero (G : ℝ) (a : ℕ → ℝ) (x : ℝ) : mode4FerrersIncomingLowerBand G a 0 x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersIncomingLowerBand_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 309,
+      "signature": "theorem mode4FerrersIncomingLowerBand_succ (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : mode4FerrersIncomingLowerBand G a (q + 1) x = mode4FerrersUpperBand G a q x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersLowerBand_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 314,
+      "signature": "theorem mode4FerrersLowerBand_succ (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : mode4FerrersLowerBand G a (q + 1) x = mode4FerrersIncomingUpperBand G a q x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersIncomingLowerBand_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 319,
+      "signature": "theorem mode4FerrersIncomingLowerBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hupper : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)) : Summable (fun q : ℕ => mode4FerrersIncomingLowerBand G a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersIncomingUpperBand_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 326,
+      "signature": "theorem mode4FerrersIncomingUpperBand_summable (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hlower : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)) : Summable (fun q : ℕ => mode4FerrersIncomingUpperBand G a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Ferrers_tsum_upper_eq_incomingLower",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 333,
+      "signature": "theorem mode4Ferrers_tsum_upper_eq_incomingLower (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hupper : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)) : ∑' q : ℕ, mode4FerrersUpperBand G a q x = ∑' q : ℕ, mode4FerrersIncomingLowerBand G a q x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4Ferrers_tsum_lower_eq_incomingUpper",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 349,
+      "signature": "theorem mode4Ferrers_tsum_lower_eq_incomingUpper (G : ℝ) (a : ℕ → ℝ) (x : ℝ) (hlower : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)) : ∑' q : ℕ, mode4FerrersLowerBand G a q x = ∑' q : ℕ, mode4FerrersIncomingUpperBand G a q x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersSpectralTerm",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 364,
+      "signature": "noncomputable def mode4FerrersSpectralTerm (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSpectralTerm_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 370,
+      "signature": "theorem mode4FerrersSpectralTerm_summable (a : ℕ → ℝ) (x : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : Summable (fun q : ℕ => mode4FerrersSpectralTerm a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FerrersRowResidual",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 411,
+      "signature": "noncomputable def mode4FerrersRowResidual (G E : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersRowResidual_eq_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 417,
+      "signature": "theorem mode4FerrersRowResidual_eq_zero (G E : ℝ) (a : ℕ → ℝ) (ha : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) (q : ℕ) (x : ℝ) : mode4FerrersRowResidual G E a q x = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_spectralIdentity",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 431,
+      "signature": "theorem mode4FerrersSeries_spectralIdentity (G E : ℝ) (a : ℕ → ℝ) (x : ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (hx : x ∈ Set.Icc (-1 : ℝ) 1) (haRec : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) : (∑' q : ℕ, G * x ^ 2 * mode4FerrersTerm a q x) + ∑' q : ℕ, mode4FerrersSpectralTerm a q x = E * (∑' q : ℕ, mode4FerrersTerm a q x)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSpectralTsum_eq_derivatives",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 498,
+      "signature": "theorem mode4FerrersSpectralTsum_eq_derivatives (a : ℕ → ℝ) (x : ℝ) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : (∑' q : ℕ, mode4FerrersSpectralTerm a q x) = -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_prolateDifferentialEquation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 548,
+      "signature": "theorem mode4FerrersSeries_prolateDifferentialEquation (G E : ℝ) (a : ℕ → ℝ) (hG : 0 < G) (haAbs : Summable (fun q : ℕ => |a q|)) (ha2 : Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|)) (haRec : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal G q * a (q - 1) + (mode4PSWFLegendreDiagonal G q - E) * a q + mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x + G * x ^ 2 * mode4FerrersSeries a x = E * mode4FerrersSeries a x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 575,
+      "signature": "theorem mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (a : ℕ → ℝ) (hsplice : ∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) (haRec : ∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) : -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x + mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x = (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4MatchedNormalizedProlateFerrersRow_of_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean",
+      "line": 622,
+      "signature": "theorem exists_mode4MatchedNormalizedProlateFerrersRow_of_root (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ a : ℕ → ℝ, 0 < a 0 ∧ Summable (fun q : ℕ => |a q|) ∧ Summable (fun q : ℕ => (a q) ^ 2) ∧ HasSum (fun q : ℕ => (a q) ^ 2 / (4 * (q : ℝ) + 1)) 1 ∧ (∀ q : ℕ, mode4PSWFLegendreSubdiagonal (mode4JacobiG mProject) q * a (q - 1) + (mode4PSWFLegendreDiagonal (mode4JacobiG mProject) q - (Λ + mode4JacobiG mProject)) * a q + mode4PSWFLegendreSuperdiagonal (mode4JacobiG mProject) q * a (q + 1) = 0) ∧ a (K - 1) ≠ 0 ∧ (∀ n : ℕ, a (K - 1 + n) = a (K - 1) * mode4TailCoefficientRow mProject Λ K n) ∧ ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1) ∧ ∀ x ∈ Set.Ioo (-1 : ℝ) 1, -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x + 2 * x * mode4FerrersFirstDerivativeSeries a x + mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x = (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "mode4HermitianSchur_det_ge_finiteLeft_lowerEnvelope",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean",
       "line": 18,
@@ -6348,7 +7004,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiTailContraction.lean",
       "line": 15,
       "signature": "noncomputable def mode4JacobiG (mProject : ℕ) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -6358,7 +7014,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiTailContraction.lean",
       "line": 18,
       "signature": "def mode4JacobiIndex (q : ℕ) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -6691,6 +7347,166 @@
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "shifted_coeff_ode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 24,
+      "signature": "private theorem shifted_coeff_ode (n k : ℕ) : ((k + 1 : ℕ) : ℤ) ^ 2 * (shiftedLegendre n).coeff (k + 1) + (((n : ℤ) * (n + 1) - (k : ℤ) * (k + 1)) * (shiftedLegendre n).coeff k) = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "shifted_polynomial_ode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 84,
+      "signature": "private theorem shifted_polynomial_ode (n : ℕ) : X * (1 - X) * (shiftedLegendre n).derivative.derivative + (1 - 2 * X) * (shiftedLegendre n).derivative + C ((n : ℤ) * (n + 1)) * shiftedLegendre n = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "shifted_polynomial_real_ode",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 114,
+      "signature": "private theorem shifted_polynomial_real_ode (n : ℕ) : let p",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_differentialEquation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 126,
+      "signature": "theorem mode4OrdinaryLegendrePolynomial_differentialEquation (n : ℕ) : (1 - X ^ 2) * (mode4OrdinaryLegendrePolynomial n).derivative.derivative - 2 * X * (mode4OrdinaryLegendrePolynomial n).derivative + C ((n : ℝ) * (n + 1)) * mode4OrdinaryLegendrePolynomial n = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_differentialEquation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 226,
+      "signature": "theorem mode4OrdinaryLegendre_differentialEquation (n : ℕ) (x : ℝ) : (1 - x ^ 2) * (mode4OrdinaryLegendrePolynomial n).derivative.derivative.eval x - 2 * x * (mode4OrdinaryLegendrePolynomial n).derivative.eval x + ((n : ℝ) * (n + 1)) * mode4OrdinaryLegendre n x = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4OrdinaryLegendreEnergyPolynomial",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 238,
+      "signature": "noncomputable def mode4OrdinaryLegendreEnergyPolynomial (n : ℕ) : ℝ[X]",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreEnergyPolynomial_derivative",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 243,
+      "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_derivative (n : ℕ) : (mode4OrdinaryLegendreEnergyPolynomial n).derivative = 2 * X * (mode4OrdinaryLegendrePolynomial n).derivative ^ 2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreEnergyPolynomial_at_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 274,
+      "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_at_one (n : ℕ) : (mode4OrdinaryLegendreEnergyPolynomial n).eval 1 = (n : ℝ) * (n + 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreEnergyPolynomial_monotoneOn_Icc",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 281,
+      "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_monotoneOn_Icc (n : ℕ) : MonotoneOn (fun x : ℝ => (mode4OrdinaryLegendreEnergyPolynomial n).eval x) (Set.Icc 0 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_abs_le_one_of_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 299,
+      "signature": "theorem mode4OrdinaryLegendre_abs_le_one_of_nonneg (n : ℕ) (x : ℝ) (hx0 : 0 ≤ x) (hx1 : x ≤ 1) : |mode4OrdinaryLegendre n x| ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendre_abs_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 349,
+      "signature": "theorem mode4OrdinaryLegendre_abs_le_one (n : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : |mode4OrdinaryLegendre n x| ≤ 1",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_derivative_eval_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 368,
+      "signature": "theorem mode4OrdinaryLegendrePolynomial_derivative_eval_neg (n : ℕ) (x : ℝ) : (mode4OrdinaryLegendrePolynomial n).derivative.eval (-x) = (-1 : ℝ) ^ (n + 1) * (mode4OrdinaryLegendrePolynomial n).derivative.eval x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreEnergyPolynomial_eval_neg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 397,
+      "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_eval_neg (n : ℕ) (x : ℝ) : (mode4OrdinaryLegendreEnergyPolynomial n).eval (-x) = (mode4OrdinaryLegendreEnergyPolynomial n).eval x",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendreEnergyPolynomial_eval_le_endpoint",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 423,
+      "signature": "theorem mode4OrdinaryLegendreEnergyPolynomial_eval_le_endpoint (n : ℕ) (x : ℝ) (hx : x ∈ Set.Icc (-1 : ℝ) 1) : (mode4OrdinaryLegendreEnergyPolynomial n).eval x ≤ (n : ℝ) * (n + 1)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_derivative_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 452,
+      "signature": "theorem mode4OrdinaryLegendrePolynomial_derivative_abs_le (n : ℕ) (r x : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (hx : x ∈ Set.Icc (-r) r) : |(mode4OrdinaryLegendrePolynomial n).derivative.eval x| ≤ ((n : ℝ) * (n + 1)) / (1 - r ^ 2) + 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4OrdinaryLegendrePolynomial_secondDerivative_abs_le",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean",
+      "line": 510,
+      "signature": "theorem mode4OrdinaryLegendrePolynomial_secondDerivative_abs_le (n : ℕ) (r x : ℝ) (hr0 : 0 ≤ r) (hr1 : r < 1) (hx : x ∈ Set.Icc (-r) r) : |(mode4OrdinaryLegendrePolynomial n).derivative.derivative.eval x| ≤ (2 * r * (((n : ℝ) * (n + 1)) / (1 - r ^ 2) + 1) + (n : ℝ) * (n + 1)) / (1 - r ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "theorem",
