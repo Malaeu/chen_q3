@@ -42,6 +42,25 @@ its pinned primary source. Identify the smallest missing source constructor or
 theorem head. Reuse existing exact consumers; do not build another conditional
 receiver.
 
+## 2026-08-14 source audit result
+
+Mythos independently confirmed the local type audit:
+`ProlatePair` does not express the prolate eigenfunction equation or the
+lowest-two-even-mode selection.  The first honest source object is therefore
+an external source-locked actual-mode predicate over the unchanged production
+type, followed by existence/selection and the published Lemma 7.2 estimate.
+There is no sound Aristotle task until the intended mode is policed by the
+statement itself.
+
+The limit-side denominator target has been narrowed further by
+`E_star_explicitCCMLimitH_pos`: it is strictly positive for every `u >= 1`.
+The missing floor is now a transport obligation from the actual prolate
+approximation, not a missing positivity fact about the limiting packet.
+
+A raw polynomial `PairIndex` schedule is only arithmetic plumbing.  It must
+not be relabelled as a production `CentralIndex` path before the nonzero
+selected-transform and actual-mode chain is proved.
+
 ## Validators
 
 Direct Lean, target build, full build at node close, `q3_check`, forbidden-token

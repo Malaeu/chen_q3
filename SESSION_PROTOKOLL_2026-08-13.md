@@ -508,3 +508,31 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
   even/odd ground ordering.
 - Classification: `PASS_EXACT_LIMIT_PACKET_AND_INVERSION`; no Route B
   promotion and no RH claim.
+
+## Goal 058 source progress — positive limit anchor and actual-mode wall
+
+- The literal limiting packet now satisfies
+  `0 < re(E_star explicitCCMLimitH u)` for every `u >= 1`.  The proof is
+  termwise on the exact polynomial-Gaussian formula and uses the already
+  kernel-checked decay only for summability.
+- This turns the projected denominator floor into a quantitative transport
+  problem: approximate a concrete positive limit target closely enough.  It
+  does not yet supply the actual finite prolate packet or its normalized
+  projection floor.
+- Mythos independently found that the current production `ProlatePair` record
+  does not express the prolate eigenfunction equation or the lowest-two-even
+  selection.  Arbitrary compatible even bumps can satisfy its stored fields.
+  Therefore the first honest G3 source object is an external actual-mode
+  predicate over the unchanged production type, not a constructor search for
+  a bare `ProlatePair`.
+- `NO_SOUND_ARISTOTLE_TASK_AT_THIS_BOUNDARY`: the present type can be gamed by
+  non-modes, while actual-mode existence/selection and CCM Lemma 7.2 are
+  analysis-scale formalization tasks rather than bounded search.
+- A raw schedule such as `(m,N)=(j+2,(j+2)^2)` has elementary cofinal
+  arithmetic, but is not yet a production `CentralIndex` schedule because the
+  selected nonzero-transform and actual-mode source chain remain open.
+- G1 remains the independent invention front
+  `ccmBeta_dividedDifference_complement_floor`; finite certificates remain
+  calibration only.
+- Classification: `PASS_EXACT_LIMIT_POSITIVE_ANCHOR / SOURCE_OBJECT_GAP`;
+  G1, G3, Route B promotion, and RH remain open.

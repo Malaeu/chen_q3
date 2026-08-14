@@ -1703,6 +1703,30 @@ CCM `literature/zotero/H8ULBMAL/fulltext.md:1256-1308,1410-1468`.
 **Граница:** `PASS_EXACT_LIMIT_PACKET_AND_INVERSION`; prolate rate, central
 floor, coupled schedule, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: limit-anchor положителен, найдена настоящая G3-стена
+
+**Выбрали:** доказать на буквальном Eq. (7.1) пакете
+`re(E_star h u)>0` для `u>=1` и отдельно проверить, выражает ли production
+`ProlatePair` настоящие prolate-моды.
+
+**Результат:** положительность прошла kernel-check. Mythos подтвердил аудит:
+текущий record хранит parity/support/norm/integrals/centre identities, но не
+eigenfunction equation и не lowest-even selection. Поэтому bare constructor
+может вернуть не-моды.
+
+**Почему это важно:** denominator floor теперь можно выводить переносом от
+конкретного положительного limit-anchor, но сначала нужны source-locked actual
+modes и опубликованная CCM Lemma 7.2 rate. До появления actual-mode predicate
+честной Aristotle-задачи нет.
+
+**Следующий ход:** внешний source-locked actual-mode predicate поверх
+неизменённого `ProlatePair`, постоянный loose-pair falsifier и analysis-ledger
+для Lemma 7.2. G1 отдельно остаётся на новом количественном theorem target для
+divided-difference beta формы.
+
+**Граница:** `PASS_EXACT_LIMIT_POSITIVE_ANCHOR / SOURCE_OBJECT_GAP`; G1, G3,
+Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
