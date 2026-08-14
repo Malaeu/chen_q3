@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 231,
-  "declarations": 2125,
-  "in_docs": 942,
-  "in_lemma_db": 2120,
-  "orphans": 3,
-  "uncatalogued": 3,
+  "files_scanned": 232,
+  "declarations": 2130,
+  "in_docs": 947,
+  "in_lemma_db": 2121,
+  "orphans": 4,
+  "uncatalogued": 4,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
       3
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+      1
     ]
   ],
   "items": [
@@ -9516,6 +9520,56 @@
     },
     {
       "kind": "def",
+      "name": "sourcePositiveIndexFinset",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+      "line": 34,
+      "signature": "def sourcePositiveIndexFinset (i : PairIndex) : Finset ℕ+",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "lambda_m_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+      "line": 38,
+      "signature": "private theorem lambda_m_pos (i : PairIndex) : 0 < lambda_m i",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "lambda_m_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+      "line": 43,
+      "signature": "private theorem lambda_m_sq (i : PairIndex) : lambda_m i * lambda_m i = (i.m : ℝ)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "prolateCombination_windowFiniteSupport",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+      "line": 50,
+      "signature": "theorem prolateCombination_windowFiniteSupport (i : PairIndex) (P : ProlatePair) (hlambda : P.pw.lambda = lambda_m i) : WindowFiniteSupport (lambda_m i) (sourcePositiveIndexFinset i) (prolateCombination P)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "prolateCombination_E_star_memLp_of_actualModes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarActualProlateEStarMemLp.lean",
+      "line": 84,
+      "signature": "theorem prolateCombination_E_star_memLp_of_actualModes (i : PairIndex) (P : ProlatePair) (hlambda : P.pw.lambda = lambda_m i) (hP : IsActualProlateModePair P) : MemLp (E_star (prolateCombination P)) 2 (dStar.restrict (I_m i))",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "sourcePrimeShiftedDomainSesquilinearForm",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarArchPrimeSesquilinearForm.lean",
       "line": 13,
@@ -16750,7 +16804,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean",
       "line": 36,
       "signature": "def finiteEStar (S : Finset ℕ+) (h : ℝ → ℂ) (u : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },

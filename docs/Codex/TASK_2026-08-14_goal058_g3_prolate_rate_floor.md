@@ -270,3 +270,33 @@ prove the selected projection nonzero or its quantitative denominator floor,
 or choose a cofinal schedule.  The stop remains
 `ACTUAL_MODE_EXISTENCE_LEMMA72_ESTAR_FLOOR_AND_SCHEDULE_MISSING`; G1 remains
 open independently.
+
+## 2026-08-14 actual-mode `E_star` carrier consequence
+
+The production `MemLp` carrier is now a theorem consequence rather than an
+independent source binder.  On `I_m`, `lambda_m = sqrt(m)` and
+`u >= 1 / sqrt(m)`, so compact support at `[-lambda_m,lambda_m]` kills every
+positive-integer summand with `n > m`.  The existing exact
+`WindowFiniteSupport` crosswalk therefore rewrites `E_star` to the fixed
+finite sum over `1 <= n <= m`.
+
+`D0PstarActualProlateEStarMemLp.lean` proves that this finite sum is measurable
+and uniformly bounded on the finite multiplicative-measure window, then
+exports
+
+```text
+prolateCombination_E_star_memLp_of_actualModes
+```
+
+for the unchanged production objects.  Direct Lean, the 7761-job target
+build, and the 7817-job full build pass; the public axiom surface is exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+This does not prove that the projected trial is nonzero.  Exact unit `L2`
+mass of the time-side packet cannot prevent cancellation of its sampled
+`E_star` values.  The next load-bearing supplier is still the actual indexed
+pair plus the uniform CCM Lemma 7.2 estimate, which transports the strictly
+positive limiting `E_star` packet to a positive central overlap and then to a
+projected denominator floor.  The narrowed G3 stop is
+`ACTUAL_MODE_EXISTENCE_AND_LEMMA72_CENTRAL_MASS_FLOOR_SCHEDULE_MISSING`; G1 is
+unchanged.
