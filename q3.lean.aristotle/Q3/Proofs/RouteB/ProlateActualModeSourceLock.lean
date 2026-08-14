@@ -3,6 +3,7 @@ import Q3.Proofs.RouteB.ProlateSourceRegularity
 set_option linter.mathlibStandardSet false
 
 open Complex MeasureTheory Set
+open scoped ContDiff ENat
 
 noncomputable section
 
@@ -27,8 +28,8 @@ def prolateInteriorZeros (lambda : ℝ) (h : ℝ → ℂ) : Set ℝ :=
 
 The predicate is external to `ProlatePair`: downstream production types stay
 unchanged.  It records the literal differential and restricted finite-Fourier
-eigenrelations, the positive phase convention, orthogonality, and the exact
-Sturm zero-count selectors `0` and `4`.
+eigenrelations, the positive phase convention, real-valued interior-smooth
+modes, orthogonality, and the exact Sturm zero-count selectors `0` and `4`.
 
 Source locks:
 * `docs/PEN_3_3_G04_OBJECT_DICTIONARY.md:45-75,232-267`;
@@ -42,6 +43,10 @@ def IsActualProlateModePair (P : ProlatePair) : Prop :=
   0 < P.pw.lambda ∧
   0 < P.I0 ∧ 0 < P.I4 ∧
   0 < P.chi2 ∧ P.chi2 < P.chi0 ∧
+  (∀ x : ℝ, (P.h0 x).im = 0) ∧
+  (∀ x : ℝ, (P.h4 x).im = 0) ∧
+  ContDiffOn ℝ 2 P.h0 (Ioo (-P.pw.lambda) P.pw.lambda) ∧
+  ContDiffOn ℝ 2 P.h4 (Ioo (-P.pw.lambda) P.pw.lambda) ∧
   (∫ x : ℝ, starRingEnd ℂ (P.h0 x) * P.h4 x) = 0 ∧
   (∃ theta0 theta4 : ℝ,
     theta0 < theta4 ∧

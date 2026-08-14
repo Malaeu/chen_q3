@@ -1778,6 +1778,30 @@ positive phase, orthogonality, eigenvalue ordering, Sturm interior zero counts;
 **Граница:** `PASS_SOURCE_OBJECT_LOCK_AND_WEAK_RECORD_PLANT`; actual-mode
 existence, Lemma 7.2, G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: constructor audit отделил готовые детали от новой математики
+
+**Развилка:** пытаться ещё раз собрать actual prolate pair из текущих generic
+операторных файлов либо адресно проверить наличие спектрального constructor.
+
+**Результат:** готового constructor нет. Mathlib имеет predicate компактности,
+но compact self-adjoint spectral theorem помечен TODO; project-файлы закрывают
+intertwining/regularity/nonvanishing и mode-four recurrence, но не PSWF
+existence, ordered degree-0/4 selection и Lemma 7.2 rate.
+
+**G1:** commutator-only и beta-only shortcut окончательно убиты exact plant и
+`N=1` factorization; остаётся literal CCM quantitative gap/sector-order plus
+same-trial cofinal tracking.
+
+**Следующий честный слой:** singular Sturm--Liouville/PSWF construction либо
+Ferrers-series convergence + ODE + endpoint flux + zero count, затем Lemma 7.2
+и denominator floor. Aristotle не отправлен: bounded theorem пока отсутствует.
+
+**Адрес:**
+`GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
+
+**Граница:** `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; Route B остаётся
+`CHALLENGER / NOT_RH`.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

@@ -572,3 +572,29 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
   construction, published Lemma 7.2 transport, central floor and one selected
   schedule; G1 remains a parallel invention front.
 - No Aristotle submission, G1/G3 close, Route B promotion, or RH claim.
+
+## Goal 058 source audit — exact I/O and library wall
+
+- The actual-mode predicate was tightened to include real-valuedness on the
+  whole line and interior `C^2` regularity.  This prevents a future complex or
+  nonsmooth surrogate from satisfying the source contract while preserving
+  the unchanged production `ProlatePair` API.
+- A full current-tree audit confirms that the existing Lean files prove the
+  finite-Fourier kernel, regularity, intertwining, eigenspace transport,
+  nonvanishing, and a mode-four normalized Jacobi recurrence row.  They do not
+  construct a regular PSWF or select the degree-0/degree-4 ordered modes.
+- Pinned Mathlib's `Analysis/InnerProductSpace/Spectrum.lean` implements the
+  self-adjoint spectral theorem only in finite dimension and explicitly lists
+  compact self-adjoint spectral theory as a TODO.  `IsCompactOperator` alone
+  supplies no eigenbasis constructor.
+- Therefore G3 first needs a new singular Sturm--Liouville/PSWF construction
+  layer (or the narrower Ferrers-series convergence/ODE/endpoint/zero-count
+  route), then CCM Lemma 7.2 and the denominator floor.  This is not a bounded
+  Aristotle search task.
+- G1 remains independent.  The commutator plant and the `N=1` factorization
+  kill commutator-only and beta-only shortcuts; literal all-large CCM
+  determinant/gap and source-tracking estimates remain missing.
+- The exact inputs, outputs, current suppliers, and two stop codes are recorded
+  in `GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
+- Classification: `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; no Route B
+  promotion and no RH claim.

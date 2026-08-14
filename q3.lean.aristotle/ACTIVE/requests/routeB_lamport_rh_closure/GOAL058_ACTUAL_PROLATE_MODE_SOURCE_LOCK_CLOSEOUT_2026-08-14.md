@@ -15,6 +15,8 @@ The predicate source-locks:
 - literal restricted finite-Fourier eigenrelations with the exact
   `h0 <-> chi0` and `h4 <-> chi2` index dictionary;
 - literal prolate differential eigenrelations;
+- real-valuedness on the whole line and `C^2` regularity on the open source
+  interval (the stored modes are zero-extended outside it);
 - orthogonality and eigenvalue ordering;
 - Sturm zero-count selection `0` and `4` on the interior window.
 

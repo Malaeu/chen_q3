@@ -79,3 +79,23 @@ Direct Lean, target build, full build at node close, `q3_check`, forbidden-token
 scan, public axiom audit, strict Spine, RouteB status, and inventory/semantic
 freshness. External review is requested only if the source theorem cannot be
 resolved locally.
+
+## 2026-08-14 constructor-capability audit
+
+The statement boundary now also requires real-valued modes and interior
+`C^2` regularity.  A current-tree audit found no ready constructor behind that
+boundary.  Mathlib's implemented self-adjoint diagonalization is finite-
+dimensional; compact self-adjoint spectral theory is explicitly a TODO.
+
+The repository's deepest constructive alternative is a normalized mode-four
+Jacobi recurrence row plus ordinary-Legendre algebra.  It still lacks the
+Ferrers-series convergence through two derivatives, ODE and endpoint flux,
+nontrivial regular solution, zero-count/order selection, and the corresponding
+mode-zero construction.  Thus the current stop is
+`ACTUAL_CCM_PROLATE_PAIR_CONSTRUCTOR_AND_LEMMA72_RATE_MISSING`, not another
+receiver theorem and not an Aristotle-ready leaf.
+
+The parallel G1 stop is
+`LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING`.  The full
+input/output contract is preserved in
+`GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
