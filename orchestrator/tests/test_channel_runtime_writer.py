@@ -19,9 +19,10 @@ def fixture_runtime() -> dict[str, object]:
 
 
 def event(**updates: object) -> dict[str, object]:
+    runtime = json.loads(spine.CHANNEL_RUNTIME.read_text(encoding="utf-8"))
     payload: dict[str, object] = {
         "request_message_id": "request-10",
-        "conversation_id": "6a72e750-dc60-83eb-946b-61d2073c232b",
+        "conversation_id": runtime["active_proshka_phase"]["conversation_id"],
         "boundary_id": "GOAL_056_PHASE4J_GENERIC_HILBERT_BASIS_WEIGHTED_TAIL",
         "adjudicated_pin": "0dea3fc20e0b0af45ed8aad50eed578a1a485b54",
         "phase_call_index": 10,

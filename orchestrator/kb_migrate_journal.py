@@ -24,6 +24,7 @@ from datetime import date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import goal_events  # noqa: E402
 import kb  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
@@ -71,8 +72,7 @@ def field(body, *labels, limit=400):
     return None
 
 
-def parse(path: Path = SRC):
-    text = path.read_text(errors="ignore")
+def _parse_legacy(text: str):
     chunks = re.split(r"\n(?=## )", text)
     rows, skipped = [], 0
     seen = {}
@@ -106,8 +106,40 @@ def parse(path: Path = SRC):
                              if re.search(r"\b([0-9a-f]{64})\b", body) else None),
             "boundary": field(body, "Boundary", "Граница"),
             "next_target": field(body, "Next target", "Next .{0,12}target", "Next"),
-            "body": body.strip(), "source_file": str(SRC.relative_to(REPO)),
+            "body": body.strip(), "source_file": SOURCE_FILE,
         })
+    return rows, skipped
+
+
+def parse(path: Path = SRC):
+    text = path.read_text(encoding="utf-8")
+    legacy, machine = goal_events.validate_insights_log(text)
+    rows, skipped = _parse_legacy(legacy)
+    for record in machine:
+        payload = {key: record[key] for key in goal_events.INSIGHT_FIELDS}
+        rows.append(
+            {
+                "id": payload["insight_id"],
+                "date": payload["recorded_date"],
+                "kind": "insight",
+                "title": payload["title"],
+                "workstream": payload["workstream"],
+                "state": "checked",
+                "channel": "control-plane",
+                "target": payload["target"],
+                "validation": payload["validation"],
+                "artifact_sha": record["payload_sha256"],
+                "boundary": payload["boundary"],
+                "next_target": payload["next_target"],
+                "body": goal_events._canonical_bytes(payload).decode("utf-8"),
+                "source_file": SOURCE_FILE,
+            }
+        )
+    ids = [str(row["id"]) for row in rows]
+    if len(ids) != len(set(ids)):
+        raise goal_events.GoalEventError(
+            "GOAL_INSIGHT_LOG_INVALID", "legacy/machine journal id collision"
+        )
     return rows, skipped
 
 

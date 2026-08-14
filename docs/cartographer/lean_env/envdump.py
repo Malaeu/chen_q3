@@ -50,7 +50,6 @@ def source_modules(prefix: str) -> list[str]:
     """Модули, у которых есть исходник. Разница с `built_modules` — цена честности:
     индекс покрывает не дерево, а собранную его часть, и это надо печатать."""
     out = []
-    root = LEAN_ROOT / prefix.replace(".", "/")
     base = prefix.split(".")[0]
     for f in sorted((LEAN_ROOT / base).rglob("*.lean")):
         if ".lake" in f.parts:
@@ -106,6 +105,15 @@ def _validated_records(stdout: str) -> tuple[list[dict], list[str]]:
         if missing:
             diagnostics.append(
                 f"stdout:{line_no}: нет полей {', '.join(sorted(missing))}")
+            continue
+        type_text = record.get("type")
+        if not isinstance(type_text, str) or not type_text:
+            diagnostics.append(
+                f"stdout:{line_no}: пустой/нестроковый elaborated type")
+            continue
+        if "⋯" in type_text or "<pp failed>" in type_text:
+            diagnostics.append(
+                f"stdout:{line_no}: неполный pretty-print типа")
             continue
         name = record.get("name")
         if not isinstance(name, str) or not name:
@@ -167,6 +175,7 @@ def run(mods: list[str], prefixes: list[str],
     if diagnostics and any("неверный JSON" in x or "нет полей" in x
                            or "дубликат объявления" in x
                            or "не объект" in x or "пустое/нестроковое" in x
+                           or "неполный pretty-print типа" in x
                            for x in diagnostics):
         code = code or 1
     return code, records, "\n".join(diagnostics)

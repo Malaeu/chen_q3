@@ -38,6 +38,15 @@ ATTEMPT_ID_RE = re.compile(
 )
 INSIGHT_ID_RE = re.compile(r"^INSIGHT_[A-Z0-9][A-Z0-9_]{2,127}$")
 DELTA_ID_RE = re.compile(r"^(?:NONE|[A-Z0-9][A-Z0-9_.:-]{2,191})$")
+INSIGHTS_BOUNDARY_RE = re.compile(
+    r"<!-- Q3_INSIGHTS_SINGLE_WRITER_BOUNDARY\n"
+    r"schema: q3_insights_single_writer\.v1\n"
+    r"legacy_bytes: (?P<legacy_bytes>\d+)\n"
+    r"legacy_sha256: (?P<legacy_sha256>[0-9a-f]{64})\n"
+    r"writer: python3 orchestrator/goal_events\.py record-insight --payload <closed-json>\n"
+    r"manual_text_after_boundary: forbidden\n"
+    r"-->\n"
+)
 
 ATTEMPT_FIELDS = frozenset(
     {
@@ -420,6 +429,19 @@ def _insight_semantic_payload(payload: dict[str, Any]) -> dict[str, Any]:
     return {key: value for key, value in payload.items() if key != "insight_id"}
 
 
+def render_insights_boundary(legacy: bytes) -> str:
+    """Render the immutable legacy-region seal used by production and fixtures."""
+    return (
+        "<!-- Q3_INSIGHTS_SINGLE_WRITER_BOUNDARY\n"
+        "schema: q3_insights_single_writer.v1\n"
+        f"legacy_bytes: {len(legacy)}\n"
+        f"legacy_sha256: {_sha256_bytes(legacy)}\n"
+        "writer: python3 orchestrator/goal_events.py record-insight --payload <closed-json>\n"
+        "manual_text_after_boundary: forbidden\n"
+        "-->\n"
+    )
+
+
 def _render_insight(
     payload: dict[str, Any], *, payload_sha: str, semantic_sha: str
 ) -> str:
@@ -449,18 +471,107 @@ def _render_insight(
     )
 
 
-def _existing_insight_receipts(text: str) -> list[dict[str, Any]]:
+def _stored_insight_payload(row: dict[str, Any]) -> dict[str, Any]:
+    expected = set(INSIGHT_FIELDS) | {"payload_sha256", "semantic_sha256"}
+    if set(row) != expected:
+        _fail("GOAL_INSIGHT_LOG_INVALID", "stored insight schema is not closed")
+    payload = {key: row[key] for key in INSIGHT_FIELDS}
+    if payload.get("schema") != "q3_goal_insight.v1":
+        _fail("GOAL_INSIGHT_LOG_INVALID", "stored insight schema unsupported")
+    insight_id = payload.get("insight_id")
+    if not isinstance(insight_id, str) or INSIGHT_ID_RE.fullmatch(insight_id) is None:
+        _fail("GOAL_INSIGHT_LOG_INVALID", "stored insight_id invalid")
+    _iso_date(payload.get("recorded_date"), code="GOAL_INSIGHT_LOG_INVALID")
+    for field in (
+        "title", "workstream", "target", "summary", "validation", "boundary", "next_target"
+    ):
+        value = payload.get(field)
+        if not isinstance(value, str) or not value.strip():
+            _fail("GOAL_INSIGHT_LOG_INVALID", f"stored {field} is empty")
+    provenance = payload.get("source_provenance")
+    if not isinstance(provenance, list) or not provenance:
+        _fail("GOAL_INSIGHT_LOG_INVALID", "stored provenance is empty")
+    for index, source in enumerate(provenance):
+        if not isinstance(source, dict) or set(source) != PROVENANCE_FIELDS:
+            _fail("GOAL_INSIGHT_LOG_INVALID", f"stored provenance[{index}] invalid")
+        path = source.get("path")
+        rel = PurePosixPath(path) if isinstance(path, str) else None
+        if (
+            rel is None
+            or rel.is_absolute()
+            or ".." in rel.parts
+            or "\\" in path
+            or rel.as_posix() != path
+        ):
+            _fail("GOAL_INSIGHT_LOG_INVALID", f"stored provenance[{index}] path invalid")
+        if (
+            not isinstance(source.get("sha256"), str)
+            or SHA256_RE.fullmatch(source["sha256"]) is None
+        ):
+            _fail("GOAL_INSIGHT_LOG_INVALID", f"stored provenance[{index}] SHA-256 invalid")
+        for field in ("role", "locator"):
+            if not isinstance(source.get(field), str) or not source[field].strip():
+                _fail("GOAL_INSIGHT_LOG_INVALID", f"stored provenance[{index}] {field} empty")
+    payload_sha = _sha256_bytes(_canonical_bytes(payload))
+    semantic_sha = _sha256_bytes(_canonical_bytes(_insight_semantic_payload(payload)))
+    if row.get("payload_sha256") != payload_sha:
+        _fail("GOAL_INSIGHT_LOG_INVALID", f"payload hash drift: {insight_id}")
+    if row.get("semantic_sha256") != semantic_sha:
+        _fail("GOAL_INSIGHT_LOG_INVALID", f"semantic hash drift: {insight_id}")
+    return payload
+
+
+def validate_insights_log(text: str) -> tuple[str, list[dict[str, Any]]]:
+    """Validate the immutable legacy region and the exact machine-only suffix."""
+    boundaries = list(INSIGHTS_BOUNDARY_RE.finditer(text))
+    if len(boundaries) != 1:
+        _fail(
+            "GOAL_INSIGHT_LOG_INVALID",
+            f"expected one single-writer boundary, found {len(boundaries)}",
+        )
+    boundary = boundaries[0]
+    legacy = text[:boundary.start()]
+    legacy_bytes = legacy.encode("utf-8")
+    if len(legacy_bytes) != int(boundary.group("legacy_bytes")):
+        _fail("GOAL_INSIGHT_LOG_INVALID", "legacy byte-count drift")
+    if _sha256_bytes(legacy_bytes) != boundary.group("legacy_sha256"):
+        _fail("GOAL_INSIGHT_LOG_INVALID", "legacy SHA-256 drift")
+
+    suffix = text[boundary.end():]
     pattern = re.compile(r"```json q3_goal_insight\n(.*?)\n```", re.DOTALL)
     rows: list[dict[str, Any]] = []
-    for match in pattern.finditer(text):
+    payloads: list[dict[str, Any]] = []
+    ids: set[str] = set()
+    semantics: set[str] = set()
+    for match in pattern.finditer(suffix):
         try:
             row = json.loads(match.group(1))
         except json.JSONDecodeError as exc:
             _fail("GOAL_INSIGHT_LOG_INVALID", f"malformed existing insight block: {exc}")
         if not isinstance(row, dict):
             _fail("GOAL_INSIGHT_LOG_INVALID", "existing insight block is not an object")
+        payload = _stored_insight_payload(row)
+        insight_id = str(payload["insight_id"])
+        semantic_sha = str(row["semantic_sha256"])
+        if insight_id in ids:
+            _fail("GOAL_INSIGHT_LOG_INVALID", f"duplicate insight_id: {insight_id}")
+        if semantic_sha in semantics:
+            _fail("GOAL_INSIGHT_LOG_INVALID", f"duplicate semantic insight: {insight_id}")
+        ids.add(insight_id)
+        semantics.add(semantic_sha)
         rows.append(row)
-    return rows
+        payloads.append(payload)
+    expected_suffix = "".join(
+        "\n" + _render_insight(
+            payload,
+            payload_sha=str(row["payload_sha256"]),
+            semantic_sha=str(row["semantic_sha256"]),
+        )
+        for payload, row in zip(payloads, rows, strict=True)
+    )
+    if suffix != expected_suffix:
+        _fail("GOAL_INSIGHT_LOG_INVALID", "manual or noncanonical text after boundary")
+    return legacy, rows
 
 
 def record_insight(
@@ -480,7 +591,8 @@ def record_insight(
         with insights_path.open("r+", encoding="utf-8") as handle:
             fcntl.flock(handle.fileno(), fcntl.LOCK_EX)
             text = handle.read()
-            for row in _existing_insight_receipts(text):
+            _legacy, existing_rows = validate_insights_log(text)
+            for row in existing_rows:
                 if row.get("insight_id") == event_id:
                     if row.get("payload_sha256") == payload_sha:
                         return EventReceipt(

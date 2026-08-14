@@ -2,28 +2,28 @@
 > **GENERATED FILE — do not edit by hand.** Regenerate with `./orchestrator/tools_census.py --markdown`.
 > Written because hand-maintained maps rot: MAP.md drifted two days, the frozen atlases two months, and `aristotle_proofs.db` covered 31% of RouteB.
 ## Summary
-- **Operational contours:** 7; registered tool contracts: 26 (AVAILABLE 6, DEGRADED 1, ENABLED 19)
-- **Contour front doors:** `codex-session-start`, `ask-shelf`, `property-descent`, `observability-summary`, `lean-validation`, `proshka-context-pack`, `task-specific-generators`
+- **Operational contours:** 7; registered tool contracts: 39 (AVAILABLE 6, DEGRADED 1, ENABLED 32)
+- **Contour front doors:** `codex-session-start`, `supplier-preflight`, `property-descent`, `observability-summary`, `lean-validation`, `proshka-context-pack`, `task-specific-generators`
 - **Automatic startup front doors:** 1 (`codex-session-start`); Spine strict is its internal check
-- **Executable implementation files:** 383 (touched since 2026-07-01: 47)
-- **One-shot probes** (goal-local experiment log, not tooling): 181
-- **Verification tests** (not tooling): 16
-- **Completed migration scripts** (provenance, not tooling): 8
+- **Executable implementation files:** 397 (touched since 2026-07-01: 63)
+- **One-shot probes** (goal-local experiment log, not tooling): 180
+- **Verification tests** (not tooling): 22
+- **Completed migration scripts** (provenance, not tooling): 9
 - **Databases:** 3
 - **Zero-byte database decoys:** 0
-- **Ledgers** (accumulating journals, any format): 145
-- **State files** (json/yaml/csv > 2 KB, not journals): 516
-- Alive tools referenced by nothing (**orphans**): 0
+- **Ledgers** (accumulating journals, any format): 151
+- **State files** (json/yaml/csv > 2 KB, not journals): 494
+- Alive tools referenced by nothing (**orphans**): 2
 - `In rules` below means a direct policy/startup mention; implementation helpers may be covered by a registered family.
 ## Databases
 | Path | Last commit | Refs | In rules |
 |---|---|---|---|
-| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-10 | 140 | yes |
-| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-08-10 | 244 | yes |
-| `q3.lean.aristotle/aristotle_db/observability.db` | untracked | 136 | yes |
+| `q3.lean.aristotle/aristotle_db/aristotle_proofs.db` | 2026-08-14 | 152 | yes |
+| `q3.lean.aristotle/aristotle_db/knowledge.db` | 2026-08-14 | 279 | yes |
+| `q3.lean.aristotle/aristotle_db/observability.db` | untracked | 140 | yes |
 
 ## Ledgers — accumulating journals ("have we already tried this?")
-145 journals, **93 alive** / 52 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
+151 journals, **99 alive** / 52 frozen. A frozen ledger that is still cited as current is the project's recurring failure mode: it does not lie, it just stops answering.
 ### Alive
 | Ledger | Entries | Last commit | In rules |
 |---|---|---|---|
@@ -31,95 +31,101 @@
 | `q3.lean.aristotle/ACTIVE/insights.md` | 1683 | 2026-08-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/PSD_STEP33_MONITOR.md` | 817 | 2026-08-10 | yes |
 | `docs/routeB_bus/MANIFEST.md` | 406 | 2026-08-10 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 229 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_PREFLIGHT_RELEASE_2026-08-09.md` | 245 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 229 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_120.json` | 228 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 229 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_14_120.json` | 228 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_120.json` | 228 | 2026-07-27 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_13_120.json` | 222 | 2026-07-27 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT_RELEASE_2026-08-09.md` | 212 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT_RELEASE_2026-08-09.md` | 212 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_PREFLIGHT_RELEASE_2026-08-09.md` | 212 | 2026-08-09 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/ledger_audit_v2_preflight.json` | 204 | 2026-07-10 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | 193 | 2026-08-06 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | 193 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_V_N_M_COMPLETENESS_2026-08-06.md` | 193 | 2026-08-06 | **NO** |
+| `SESSION_PROTOKOLL_2026-08-13.md` | 182 | 2026-08-14 | **NO** |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_2026-08-08.md` | 173 | 2026-08-08 | **NO** |
+| `orchestrator/state/SPINE_STATE.json` | 168 | 2026-08-14 | yes |
 | `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
-| `orchestrator/state/SPINE_STATE.json` | 149 | 2026-08-10 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL056_LOG_WINDOW_MEASURE_TRANSPORT_2026-08-06.md` | 164 | 2026-08-06 | **NO** |
 | `docs/RH_TRICK_ATLAS.md` | 147 | 2026-08-06 | yes |
+| `docs/KILLS.md` | 131 | 2026-08-11 | yes |
 | `SESSION_PROTOKOLL_2026-08-05.md` | 114 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
 | `docs/routeB_bus/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
-| `docs/routeB_bus/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_RELEASE_2026-08-08.md` | 95 | 2026-08-08 | **NO** |
 | `docs/routeB_bus/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `docs/routeB_bus/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_v3/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/muntz_r6/lake-manifest.json` | 85 | 2026-07-30 | **NO** |
 | `q3.lean.aristotle/ACTIVE/FAILED_STRATEGIES.yaml` | 80 | 2026-08-05 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/out/phase_trace_and_ledger_filter_v1.json` | 78 | 2026-07-10 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-10 | yes |
-| `docs/KILLS.md` | 68 | 2026-08-05 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ROUTE_B_STATE.md` | 72 | 2026-08-14 | yes |
+| `SESSION_PROTOKOLL_2026-08-14.md` | 65 | untracked | **NO** |
 | `docs/routeB_bus/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_VERDICT_GOAL057_BRANCH_B_CARTOGRAPHER_LEDGER_ADDENDUM_2026-08-08.md` | 65 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md` | 62 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REQUEST_GOAL057_B3_0B_ARCH_SYMBOL_LOG_WEIGHTED_L2_RELEASE_2026-08-08.md` | 63 | 2026-08-08 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md` | 62 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md` | 60 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0M_FINITE_SOURCE_WEIL_FOURIER_LEDGER_CROSSWALK_CLOSEOUT_2026-08-09.md` | 62 | 2026-08-09 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md` | 60 | 2026-08-09 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md` | 57 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0L_SOURCE_LOG_WINDOW_FOURIER_L2_ISOMETRY_CLOSEOUT_2026-08-09.md` | 60 | 2026-08-09 | **NO** |
+| `q3.lean.aristotle/ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md` | 59 | 2026-08-14 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md` | 57 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0B1_LOG_GROWTH_ENVELOPE_WEIGHTED_L2_CLOSEOUT_2026-08-08.md` | 57 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/pipeline/FAILURE_ATLAS.json` | 56 | 2026-08-05 | yes |
-| `q3.lean.aristotle/ACTIVE/pipeline/PROSHKA_REASONING_TIME_LOG.md` | 53 | 2026-08-08 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
+| `docs/Progress_Log.md` | 55 | 2026-08-14 | yes |
 | `docs/routeB_bus/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL057_B3_0E4B1_DIAGONAL_REGULARIZER_ENDPOINT_LEDGER_CLOSEOUT_2026-08-08.md` | 53 | 2026-08-08 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/ROUTE_B_DATA_MANIFEST.md` | 45 | 2026-07-27 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
 | `docs/routeB_bus/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_028_KILL_ADJUDICATION_2026-07-27.md` | 39 | 2026-07-28 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-10.md` | 38 | 2026-08-10 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-06.md` | 36 | 2026-08-06 | **NO** |
 | `q3.lean.aristotle/ACTIVE/graphs/ROUTE_KILL_REGISTRY.md` | 36 | 2026-08-05 | **NO** |
+| `SESSION_PROTOKOLL_2026-08-11.md` | 35 | 2026-08-12 | **NO** |
 | `docs/routeB_bus/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 31 | 2026-07-30 | **NO** |
 | `q3.lean.aristotle/ACTIVE/SPRINT_MONITOR.md` | 30 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/PHASE_MONITOR.md` | 30 | 2026-08-10 | yes |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md` | 30 | 2026-08-14 | **NO** |
 | `SESSION_PROTOKOLL_2026-08-07.md` | 27 | 2026-08-07 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/trough_relabel_and_bus_sync_v1_actions_log.md` | 25 | 2026-07-10 | **NO** |
-| `docs/Progress_Log.md` | 25 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/phase_trace_and_ledger_filter_v1.md` | 24 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_k_channel_v1_actions_log.md` | 24 | 2026-07-10 | **NO** |
 | `orchestrator/BEHAVIOR_CONTROL_REGISTRY.json` | 24 | 2026-08-09 | **NO** |
+| `SESSION_PROTOKOLL_2026-08-12.md` | 20 | 2026-08-12 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/ledger_audit_v2.md` | 20 | 2026-07-10 | **NO** |
-| `tmp/proshka_h1_reset_context_2026_03_14.md` | 20 | untracked | **NO** |
-| `orchestrator/KNOWLEDGE_SPINE.md` | 20 | 2026-08-06 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
+| `orchestrator/KNOWLEDGE_SPINE.md` | 20 | 2026-08-13 | yes |
 | `docs/routeB_bus/SESSION_PROTOKOLL_2026-07-31.md` | 19 | 2026-07-31 | **NO** |
 | `docs/routeB_bus/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
+| `docs/routeB_bus/proshka/PROSHKA_BRIEF_GOAL058_G1_G3_ACTUAL_SOURCE_CLOSURE_2026-08-14.md` | 19 | 2026-08-14 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/GOAL057_B3_0AC_ARCH_PRIME_SHIFTED_LEDGER_CLOSEOUT_2026-08-10.md` | 19 | 2026-08-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/register_read_only_docs_v1_actions_log.md` | 17 | 2026-07-10 | **NO** |
+| `docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md` | 16 | 2026-08-14 | **NO** |
 | `Q3_OBSTRUCTION_ATLAS.md` | 15 | 2026-08-06 | yes |
-| `.claude/skills/routeb-conductor/SKILL.md` | 15 | 2026-07-30 | yes |
-| `tmp/proshka_q_zeta_core_adapter_context_2026_03_15.md` | 15 | untracked | **NO** |
+| `.agents/skills/routeb-conductor/SKILL.md` | 15 | 2026-08-14 | yes |
 | `orchestrator/ARTIFACT_IDENTITY_REGISTRY.json` | 15 | 2026-08-06 | **NO** |
+| `.claude/skills/routeb-conductor/SKILL.md` | 15 | 2026-07-30 | yes |
 | `q3.lean.aristotle/docs/PEN_3_3_POISSON_RESIDUAL_LEDGER.md` | 14 | 2026-07-10 | **NO** |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_3_EXACT_OPERATOR_TYPE_REGISTRY.md` | 14 | 2026-07-11 | **NO** |
 | `q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-08-06 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/D0_7_EXACT_NORMALIZATION_REGISTRY.md` | 13 | 2026-07-12 | **NO** |
 | `orchestrator/WALL_REGISTRY.json` | 13 | 2026-08-06 | **NO** |
+| `docs/routeB_bus/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
 | `q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 12 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/orchestrator.md` | 12 | 2026-08-10 | yes |
 | `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
-| `docs/routeB_bus/P038_PLANT_LOG.md` | 12 | 2026-07-30 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_extraction_v1_actions_log.md` | 11 | 2026-07-10 | **NO** |
 | `docs/routeB_bus/phase4_scripts/CODEX_RUNCARD_glower_ledger_2026-08-10.md` | 11 | 2026-08-10 | **NO** |
-| `orchestrator/state/SPINE_VIEW.md` | 7 | 2026-08-10 | yes |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/anchor_locked_extraction_v1_actions_log.md` | 11 | 2026-07-10 | **NO** |
+| `orchestrator/state/SPINE_VIEW.md` | 7 | 2026-08-14 | yes |
 | `docs/routeB_bus/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/PROSHKA_REPLY_KILL6_LEDGER_2026-07-27.md` | 6 | 2026-07-27 | **NO** |
 | `docs/GLOWER_ODD_FLOOR_10_08_2026/docs/Mythos/PACKET_MYTHOS_LEDGER_STATUS_AND_VERDICT_2026-08-10.md` | 5 | 2026-08-10 | **NO** |
-| `q3.lean.aristotle/docs/incoming_notes/archive/20260308_120347_2026_03_08_conversations/extracted/2026_03_08_conversations/_manifest.md` | 4 | 2026-07-10 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/MUNTZ_V3_CONSUMPTION_LEDGER.md` | 5 | 2026-08-03 | **NO** |
 | `docs/trackB/S5_FAILURE_ATLAS.md` | 4 | 2026-08-06 | **NO** |
-| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260308_120347_2026_03_08_conversations/extracted/2026_03_08_conversations/_manifest.md` | 4 | 2026-07-10 | **NO** |
 | `docs/routeB_bus/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
+| `q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/SOFT_L2_LAG_LEDGER_12_14_120_REPORT_2026-07-13.md` | 3 | 2026-07-27 | **NO** |
 
 ### Frozen (still on disk, often still cited)
 | Ledger | Entries | Last commit |
@@ -144,11 +150,11 @@
 | `q3.lean.aristotle/ACTIVE/requests/step33_bootstrap/a_chunk_taylor_payload_omega_log_seed.md` | 17 | 2026-06-12 |
 | `.agents/skills/q3-step32-lean/SKILL.md` | 3 | 2026-05-27 |
 | `q3.lean.aristotle/ACTIVE/insights_index.md` | 166 | 2026-05-03 |
-| `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_shell_2_tag_based_shell_interface_bundled_first_zeta_kill_layer_raw_packet_family_theorem_cases.md` | 19 | 2026-04-19 |
 | `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_tail_2_decay_kill.md` | 19 | 2026-04-19 |
+| `q3.lean.aristotle/ACTIVE/pipeline/oracle_questions/2026_04_19_po3_shell_2_tag_based_shell_interface_bundled_first_zeta_kill_layer_raw_packet_family_theorem_cases.md` | 19 | 2026-04-19 |
 | `q3.lean.aristotle/docs/incoming_notes/archive/20260411_145346_7dac003e_0ac0_4246_a498_0ff7230530f2_aristotle_tar/extracted/7dac003e_0ac0_4246_a498_0ff7230530f2_aristotle_tar/7dac003e-0ac0-4246-a498-0ff7230530f2_aristotle/lake-manifest.json` | 85 | 2026-04-11 |
-| `q3.lean.aristotle/docs/incoming_notes/archive/20260307_192100_2026_03_07_target_cone_reset/extracted/2026_03_07_target_cone_reset/_manifest.md` | 4 | 2026-03-07 |
 | `q3.lean.aristotle/docs/incoming_notes/archive/20260307_191355_2026_03_07_conversations/extracted/2026_03_07_conversations/_manifest.md` | 4 | 2026-03-07 |
+| `q3.lean.aristotle/docs/incoming_notes/archive/20260307_192100_2026_03_07_target_cone_reset/extracted/2026_03_07_target_cone_reset/_manifest.md` | 4 | 2026-03-07 |
 | `q3.lean.aristotle/lake-manifest.json` | 121 | 2026-02-23 |
 | `session_exports/chat_latest.md` | 769 | 2026-02-12 |
 | `skills/x-insider/SKILL.md` | 12 | 2026-02-12 |
@@ -168,8 +174,8 @@
 | `q3.lean.aristotle/ACTIVE/aristotle/proshka_context_single_scale.md` | 27 | 2026-01-29 |
 | `full/archive_latex_2026_01_29/paper3_rh_synthesis/figures/graphical_abstract_review_log.json` | 23 | 2026-01-29 |
 | `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/PROJECT_ORCHESTRATOR.md` | 23 | 2026-01-29 |
-| `full/archive_latex_2026_01_29/paper2_toeplitz_rkhs/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
 | `full/archive_latex_2026_01_29/paper1_fejer_heat/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
+| `full/archive_latex_2026_01_29/paper2_toeplitz_rkhs/figures/graphical_abstract_review_log.json` | 16 | 2026-01-29 |
 | `q3.lean.aristotle/docs/legacy/full_snapshot_2026_01_16/q3.lean.aristotle/docs/ERRORS_DESTROYER.md` | 13 | 2026-01-29 |
 | `docs/CHANGELOG_AUTO.md` | 10 | 2026-01-20 |
 | `sandbox_tasks/REGISTRY 2.md` | 6 | 2026-01-20 |
@@ -180,35 +186,51 @@
 ## Permanent tools, most recently touched first
 | Tool | Last | Refs | In rules | Purpose |
 |---|---|---|---|---|
-| `docs/cartographer/atoms.py` | 2026-08-10 | 13 | yes | Property Descent: вытащить атомы (внешние Mathlib-леммы) из доказательств RouteB. |
-| `docs/cartographer/brief.py` | 2026-08-10 | 19 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
-| `docs/cartographer/cheap.py` | 2026-08-10 | 18 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
+| `docs/cartographer/comparator/fit.py` | untracked | 4 | yes | Generic fail-closed direct type-fit over the local Lean environment index. |
+| `scripts/supplier_preflight.py` | untracked | 7 | yes | One fail-closed shelf -> properties -> direct Lean type-fit preflight. |
+| `ask.sh` | 2026-08-13 | 64 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
+| `orchestrator/goal_events.py` | 2026-08-13 | 20 | yes | Durable AUTOPILOT goal-attempt and reusable-insight writers. |
+| `orchestrator/goal_runtime.py` | 2026-08-13 | 16 | yes | Read-only GOAL_RUN contract validator and physical-goal selector. |
+| `orchestrator/migration_census.py` | 2026-08-13 | 7 | yes | Exact live-source versus knowledge.db migration census. |
+| `orchestrator/packet.py` | 2026-08-13 | 19 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
+| `orchestrator/routeb_goal_state.py` | 2026-08-13 | 0 | **NO** | Shared lifecycle parsing for physical Route B goal files. |
+| `orchestrator/spine.py` | 2026-08-13 | 158 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
+| `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-08-13 | 33 | yes |  |
+| `scripts/build_proshka_brief.py` | 2026-08-13 | 11 | yes | Build a Proshka context pack from the Q3 repo. |
+| `scripts/deep_preflight.py` | 2026-08-13 | 3 | yes | Dynamic semantic and external-Lean preflight for the selected physical goal. |
+| `scripts/q3_docs_corpus.py` | 2026-08-13 | 0 | **NO** | Canonical curated-source selection and deterministic q3_docs identity. |
+| `scripts/qmd_ops.py` | 2026-08-13 | 1 | **NO** |  |
+| `scripts/search_external_lean.py` | 2026-08-13 | 5 | yes | Read-only term search over the enabled external Lean registry. |
+| `specs_docs/hooks/q3-toolbelt.sh` | 2026-08-13 | 5 | **NO** | q3-toolbelt.sh — SessionStart hook для репозитория chen_q3_rh_clean. |
+| `specs_docs/session_start.sh` | 2026-08-13 | 29 | yes | session_start.sh — один вход в сессию. |
+| `docs/cartographer/atom_describe.py` | 2026-08-12 | 35 | yes | Обогатить атомы описаниями: что каждый атом ЕСТЬ, а не только как он называется. |
+| `docs/cartographer/lean_env/envdump.py` | 2026-08-12 | 14 | yes | Собрать индекс Lean environment: имя → ELABORATED тип, аксиомы, адрес. |
+| `docs/cartographer/foreign_atoms.py` | 2026-08-11 | 9 | yes | Связать чужое Lean-дерево с нашей базой атомов: что у них уже доказано на наших опорах. |
+| `docs/cartographer/map_coverage.py` | 2026-08-11 | 5 | yes | Приложение к карте: КАЖДЫЙ Lean-файл RouteB одной строкой, включая невидимые карте. |
+| `orchestrator/kb.py` | 2026-08-11 | 147 | yes | kb — the single entry point to knowledge.db ("have we already tried / killed this?"). |
+| `scripts/check_axioms.sh` | 2026-08-11 | 334 | yes | check_axioms.sh — воспроизводимая запись о том, на чём стоит наш Lean. |
+| `docs/cartographer/atoms.py` | 2026-08-10 | 14 | yes | Property Descent: вытащить атомы (внешние Mathlib-леммы) из доказательств RouteB. |
+| `docs/cartographer/brief.py` | 2026-08-10 | 24 | yes | brief.py — собрать source-locked пакет из базы для Прошки/Codex. |
+| `docs/cartographer/cheap.py` | 2026-08-10 | 28 | yes | cheap-closure-finder — очередь незакрытых шагов по ЦЕНЕ, а не по номеру. |
 | `docs/cartographer/inventory.py` | 2026-08-10 | 18 | yes | Картограф, фаза 1 — детерминированный инвентарь. |
-| `orchestrator/spine.py` | 2026-08-10 | 135 | yes | Knowledge Spine aggregator and strict control-plane entrypoint. |
-| `orchestrator/tools_census.py` | 2026-08-10 | 14 | yes | Machine census of every tool, database and state file in the repo. |
-| `scripts/build_proshka_brief.py` | 2026-08-10 | 10 | yes | Build a Proshka context pack from the Q3 repo. |
-| `specs_docs/session_start.sh` | 2026-08-10 | 20 | yes | session_start.sh — один вход в сессию. |
-| `ask.sh` | 2026-08-09 | 46 | yes | ask.sh — ОДИН вход в накопленное знание. Спрашивать ДО внешнего поиска и ДО создания чего-либо. |
-| `orchestrator/kb.py` | 2026-08-09 | 139 | yes | kb — the single entry point to knowledge.db ("have we already tried / killed this?"). |
-| `q3.lean.aristotle/scripts/refresh_q3_docs.py` | 2026-08-09 | 32 | yes |  |
+| `orchestrator/backfill_db.py` | 2026-08-10 | 6 | yes | Synchronize the live Route B declaration inventory into aristotle_proofs.db. |
+| `orchestrator/tools_census.py` | 2026-08-10 | 15 | yes | Machine census of every tool, database and state file in the repo. |
+| `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-08-10 | 4 | yes |  |
 | `q3.lean.aristotle/aristotle_db/parse_lean.py` | 2026-08-08 | 70 | **NO** | Lean 4 Parser for Aristotle Proofs Database |
-| `paper.sh` | 2026-08-07 | 22 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
-| `specs_docs/hooks/q3-toolbelt.sh` | 2026-08-07 | 4 | **NO** | q3-toolbelt.sh — SessionStart hook для репозитория chen_q3_rh_clean. |
+| `paper.sh` | 2026-08-07 | 34 | yes | paper.sh — затянуть публикацию ОДНОЙ командой: PDF + метаданные + bib + Zotero + реестр. |
 | `specs_docs/hooks/unicode-guard.py` | 2026-08-07 | 3 | **NO** | unicode-guard.py — PostToolUse hook: detect & neutralize invisible-Unicode |
 | `orchestrator/kb_register_excluded.py` | 2026-08-06 | 1 | **NO** | Record what was deliberately NOT migrated into knowledge.db, and on what grounds. |
 | `orchestrator/observability.py` | 2026-08-06 | 26 | yes | Build and query the disposable Q3 observability database. |
-| `orchestrator/packet.py` | 2026-08-06 | 19 | yes | Clipboard-native packet transport for the Route B orchestration bus. |
 | `orchestrator/sensors.py` | 2026-08-06 | 26 | yes | Fail-closed refresh for the complete Q3 observability sensor bundle. |
 | `scripts/build_autopsy_map.py` | 2026-08-06 | 5 | yes | Build the structured AUTOPSY -> wall-map -> namewatch sensor. |
 | `scripts/build_dependency_tree.py` | 2026-08-06 | 5 | **NO** | Build the Lean-checked axiom dependency inventory for the live Q3 roots. |
 | `scripts/build_proof_graph.py` | 2026-08-06 | 13 | yes | Build the compact root-to-axiom observability projection. |
 | `scripts/build_sorry_frontier.py` | 2026-08-06 | 4 | **NO** | Build the lightweight, root-aware Q3 sorry frontier. |
-| `scripts/build_taint_graph.py` | 2026-08-06 | 10 | yes | Build source-hole/import-boundary propagation for the active Q3 tree. |
+| `scripts/build_taint_graph.py` | 2026-08-06 | 11 | yes | Build source-hole/import-boundary propagation for the active Q3 tree. |
 | `scripts/numeric_sanity_check.py` | 2026-08-06 | 7 | **NO** | Run explicitly configured numeric diagnostics as non-authoritative evidence. |
 | `scripts/q3_sensor_scan.py` | 2026-08-06 | 3 | yes | Fast shared source scanner for the Q3 observability generators. |
-| `scripts/research_oracle.py` | 2026-08-06 | 153 | yes |  |
+| `scripts/research_oracle.py` | 2026-08-06 | 154 | yes |  |
 | `specs_docs/entry_audit.sh` | 2026-08-06 | 5 | yes |  |
-| `orchestrator/backfill_db.py` | 2026-08-05 | 6 | yes | Synchronize the live Route B declaration inventory into aristotle_proofs.db. |
 | `q3.lean.aristotle/scripts/s2_l2b_mellin_zero_scan.py` | 2026-08-05 | 2 | **NO** | S2-L2b discriminator: do v3-class windows have Mellin zeros INSIDE the open strip? |
 | `q3.lean.aristotle/scripts/ccm_h2a_gap_scan.py` | 2026-08-04 | 1 | **NO** | CCM H2a Layer-3 gap-scan discriminator (FIT_NOT_LAW, binary64, NOT proof tree). |
 | `q3.lean.aristotle/scripts/ccm_h2a_sector_cell_13_2_arb.py` | 2026-08-04 | 5 | **NO** | Rigorous Arb certificate for the CCM H2a sector cell ``(13, 2)``. |
@@ -216,7 +238,7 @@
 | `docs/routeB_bus/litreview/zotero_pull.py` | 2026-08-03 | 6 | **NO** | Zotero live-sync — pull the RH collections from the local Zotero HTTP API. |
 | `orchestrator/codex_app.sh` | 2026-07-30 | 5 | **NO** | Codex.app lane — drive the desktop Codex through its GUI. |
 | `orchestrator/desktop_app.sh` | 2026-07-30 | 5 | **NO** | Desktop lane — drive Codex.app and Claude Desktop through their GUI. |
-| `orchestrator/relay.py` | 2026-07-30 | 4 | yes | RELAY lane — the conductor's transport. |
+| `orchestrator/relay.py` | 2026-07-30 | 5 | yes | RELAY lane — the conductor's transport. |
 | `docs/routeB_bus/check_full_window_positive_part_certificate.py` | 2026-07-29 | 15 | **NO** | Independent stdlib-only checker for RouteB.033. |
 | `docs/routeB_bus/check_priority_band_positive_part_certificate.py` | 2026-07-29 | 13 | **NO** | Independent stdlib-only checker for RouteB.031. |
 | `docs/routeB_bus/full_window_positive_part_certificate.py` | 2026-07-29 | 17 | **NO** | Build the RouteB.033 full-window positive-part certificate. |
@@ -358,7 +380,7 @@
 | `q3.lean.aristotle/scripts/q3_psdpd_step25_family_manifest.py` | 2026-05-26 | 8 | **NO** | Step 25 PSD-pd certificate-family manifest. |
 | `q3.lean.aristotle/scripts/q3_psdpd_step32f_qradius_repair.py` | 2026-05-26 | 0 | **NO** | Repair and audit the active Step32F Q-radius payloads. |
 | `q3.lean.aristotle/scripts/q3_psdpd_step32g_qrow_hbox_lean.py` | 2026-05-26 | 2 | **NO** | Generate Lean Q-row hbox certificates for the active Step32F payload. |
-| `scripts/q3_check.sh` | 2026-05-26 | 2071 | **NO** | shellcheck disable=SC1091 |
+| `scripts/q3_check.sh` | 2026-05-26 | 2109 | **NO** | shellcheck disable=SC1091 |
 | `q3.lean.aristotle/scripts/q3_psdpd_step32f_coeff_dictionary_lean_data.py` | 2026-05-25 | 4 | **NO** | Generate the concrete coefficient dictionary import for the active Step 32F |
 | `q3.lean.aristotle/scripts/q3_psdpd_step32f_penalty_lower_bound_lean_params.py` | 2026-05-25 | 15 | **NO** | Generate Lean parameter targets for the Step 32F finite penalty lower bounds. |
 | `q3.lean.aristotle/scripts/q3_psdpd_step32f_primary_ldl_cert.py` | 2026-05-25 | 12 | **NO** | Generate exact rational LDL certificates for active Step 32F coefficient |
@@ -380,10 +402,8 @@
 | `q3.lean.aristotle/scripts/ingest_incoming_notes.py` | 2026-03-08 | 13 | **NO** |  |
 | `src/h1_raw_bulk_match.py` | 2026-03-08 | 4 | **NO** | Numerical raw-bulk check for the H1 Suzuki--Q3 bridge. |
 | `src/h1_raw_operator_sanity.py` | 2026-03-08 | 1 | **NO** | Sanity check for the raw H1 operator package. |
-| `q3.lean.aristotle/scripts/refresh_erdos_overlap_kb.py` | 2026-03-07 | 4 | yes |  |
-| `q3.lean.aristotle/scripts/research_oracle.py` | 2026-03-07 | 153 | yes |  |
-| `scripts/qmd_ops.py` | 2026-03-07 | 0 | **NO** |  |
-| `q3.lean.aristotle/scripts/check_axioms.sh` | 2026-03-06 | 328 | yes | Q3 Axiom Verification Script |
+| `q3.lean.aristotle/scripts/research_oracle.py` | 2026-03-07 | 154 | yes |  |
+| `q3.lean.aristotle/scripts/check_axioms.sh` | 2026-03-06 | 334 | yes | Q3 Axiom Verification Script |
 | `q3.lean.aristotle/scripts/audit_nosorry_active_q3.sh` | 2026-02-23 | 10 | **NO** | Re-include the PrimeCert files that are part of the active mainline contract/gate. |
 | `scripts/prime_brange_grid_pp_auto.py` | 2026-02-23 | 230 | **NO** | Generate prime-power interval proofs for grid i19 pointwise upper bounds. |
 | `scripts/build_primepow_gt10000_sequential.sh` | 2026-02-12 | 29 | **NO** | Sequentially build GT10000 shard modules for PrimePowAuto, |
@@ -517,7 +537,7 @@
 | `src/kernel_analysis.py` | 2025-12-19 | 6 | **NO** | Kernel Analysis: Исследование ker(M) для twin-матрицы |
 | `src/kernel_cone_check.py` | 2025-12-19 | 9 | **NO** | Kernel Cone Check: Проверка — лежат ли собственные вектора ядра в twin-конусе? |
 | `src/lagrangian_eigenvalues.py` | 2025-12-19 | 0 | **NO** | Lagrangian approach: solve generalized eigenvalue problem Qλ = μGλ |
-| `src/large_N_test.py` | 2025-12-19 | 0 | **NO** | Test scaling at VERY large N to understand true asymptotic behavior. |
+| `src/large_N_test.py` | 2025-12-19 | 1 | **NO** | Test scaling at VERY large N to understand true asymptotic behavior. |
 | `src/lipschitz_analysis.py` | 2025-12-19 | 0 | **NO** | Lipschitz Analysis of R(λ) on the positive cone. |
 | `src/maynard_conditions.py` | 2025-12-19 | 0 | **NO** | STEP 1: Verification of Maynard Conditions for F_spec. |
 | `src/model_B1_direct.py` | 2025-12-19 | 9 | **NO** | Model B₁: ПРЯМОЕ ВЫЧИСЛЕНИЕ (без Fourier приближений) |
@@ -564,6 +584,11 @@
 | `src/weil_twin_connection.py` | 2025-12-19 | 0 | **NO** | WEIL → TWIN CONNECTION |
 | `src/x_vs_n_dependence.py` | 2025-12-19 | 0 | **NO** | КРИТИЧЕСКИЙ ТЕСТ: X-dependence vs N-dependence |
 
+## Orphans — alive but nothing references them
+Either wire them into a contour or archive them; a tool nobody calls is a tool nobody will find when it is needed.
+- `orchestrator/routeb_goal_state.py` (last 2026-08-13) — Shared lifecycle parsing for physical Route B goal files.
+- `scripts/q3_docs_corpus.py` (last 2026-08-13) — Canonical curated-source selection and deterministic q3_docs identity.
+
 ## Note on probes
-The 181 one-shot probes are deliberately **not** mapped here. They are goal-local evidence, not instruments; treating them as tooling is what makes the instrument set look unknowably large.
-The 16 tests and 8 completed migration scripts are likewise excluded from the operational instrument count.
+The 180 one-shot probes are deliberately **not** mapped here. They are goal-local evidence, not instruments; treating them as tooling is what makes the instrument set look unknowably large.
+The 22 tests and 9 completed migration scripts are likewise excluded from the operational instrument count.

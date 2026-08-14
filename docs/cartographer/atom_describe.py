@@ -82,8 +82,12 @@ def load_env_index(path: Path) -> dict[str, dict]:
             raise EnvIndexError(f"{path}:{line_no}: пустое/нестроковое имя")
         if name in out:
             raise EnvIndexError(f"{path}:{line_no}: дубликат объявления {name}")
-        if not isinstance(rec.get("type"), str):
+        type_text = rec.get("type")
+        if not isinstance(type_text, str) or not type_text:
             raise EnvIndexError(f"{path}:{line_no}: type у {name} не строка")
+        if "⋯" in type_text or "<pp failed>" in type_text:
+            raise EnvIndexError(
+                f"{path}:{line_no}: неполный pretty-print типа у {name}")
         for field in ("levelParams", "typeConsts", "axioms"):
             if not isinstance(rec.get(field), list):
                 raise EnvIndexError(f"{path}:{line_no}: {field} у {name} не список")
@@ -177,6 +181,43 @@ def _base_identity(p: Path) -> dict:
         "dirty": bool((git("status", "--porcelain") or "").strip()),
         "toolchain": tc.read_text(encoding="utf-8").strip() if tc.is_file() else None,
     }
+
+
+def enabled_base_ids(path: Path = BASES_YAML) -> list[str]:
+    """Return the closed enabled-base denominator from the registry.
+
+    Callers making absence claims must compare this list with the bases they
+    actually queried.  ``load_bases`` alone cannot provide that denominator:
+    an unresolved or ambiguous enabled base is deliberately omitted there.
+    """
+    if not path.is_file():
+        raise EnvIndexError(f"нет реестра внешних Lean-баз: {path}")
+    try:
+        import yaml
+    except ImportError as exc:
+        raise EnvIndexError(f"реестр внешних Lean-баз не прочитан: {exc}") from exc
+    try:
+        registry = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, UnicodeDecodeError, yaml.YAMLError) as exc:
+        raise EnvIndexError(f"реестр внешних Lean-баз не прочитан: {exc}") from exc
+    if registry.get("schema") != "q3_lean_bases.v1":
+        raise EnvIndexError("неподдерживаемая schema реестра внешних Lean-баз")
+    bases = registry.get("bases")
+    if not isinstance(bases, list):
+        raise EnvIndexError("поле bases реестра не является списком")
+    enabled: list[str] = []
+    for index, row in enumerate(bases):
+        if not isinstance(row, dict):
+            raise EnvIndexError(f"bases[{index}] не является объектом")
+        if not row.get("enabled"):
+            continue
+        base_id = row.get("id")
+        if not isinstance(base_id, str) or not base_id.strip():
+            raise EnvIndexError(f"bases[{index}] имеет пустой id")
+        if base_id in enabled:
+            raise EnvIndexError(f"дубликат enabled base id: {base_id}")
+        enabled.append(base_id)
+    return enabled
 
 
 def load_bases(explicit: str = "", strict: bool = True) -> list[tuple[str, Path]]:

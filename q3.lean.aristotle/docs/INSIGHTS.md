@@ -51761,3 +51761,10 @@ No route promotion, RH not claimed, Bus 010 VOID. Diagnostic only — not in the
   `RUN_GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT`; success/stop are
   `GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT_CLASSIFIED` and
   `GOAL057_SOURCE_COMPLEX_RESIDUAL_BIND_PREFLIGHT_UNCLASSIFIED`.
+<!-- Q3_INSIGHTS_SINGLE_WRITER_BOUNDARY
+schema: q3_insights_single_writer.v1
+legacy_bytes: 2976654
+legacy_sha256: 629787f3cbbcba68b9dfecdf02262c04ac0e8b2ec7ddcf0b7c889f9caeb33cd9
+writer: python3 orchestrator/goal_events.py record-insight --payload <closed-json>
+manual_text_after_boundary: forbidden
+-->

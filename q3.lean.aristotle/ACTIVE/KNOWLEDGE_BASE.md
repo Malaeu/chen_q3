@@ -125,9 +125,10 @@ Source of truth:
     semantic queries sequential.
   - Каждая серия запросов должна быть привязана к адресу дерева доказательства;
     killed address трактуется как killed subtree и в вопроснике тоже.
-  - После серии обновить карточку вопроса, затем сделать синтез в `docs/INSIGHTS.md`.
-  - Then write a 5–10 line synthesis into `docs/INSIGHTS.md` and add a short pointer
-    in `ACTIVE/insights.md` (link only).
+  - После серии обновить карточку вопроса, затем записать закрытый JSON через
+    `python3 orchestrator/goal_events.py record-insight --payload <closed-json>`.
+  - Never edit `docs/INSIGHTS.md` manually after its single-writer boundary; add a short
+    pointer in `ACTIVE/insights.md` only when the active protocol requires it.
 - **Knowledge graphs (dependency/taint):**
   - Use `ACTIVE/graphs/PROOF_GRAPH.md`, `ACTIVE/graphs/DEPS_TREE_MAIN.md`, `ACTIVE/graphs/TAINT_GRAPH.md`
     to see what actually blocks the main chain and what is safe to edit.
@@ -136,6 +137,6 @@ Source of truth:
 
 ## 9) Where we park future work
 
-- Long‑term: `docs/INSIGHTS.md` (full reasoning + decisions).
+- Long‑term: `docs/INSIGHTS.md` (frozen legacy plus machine-only insight events).
 - Short‑term pointers: `ACTIVE/insights.md` (links only).
 - Proshka requests: `ACTIVE/requests/INDEX.md` (why → evidence → decision → request).

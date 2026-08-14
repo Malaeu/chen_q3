@@ -306,7 +306,9 @@ Only after A) do we integrate into the main chain.
 1) Copy lemma(s) into target Lean file.
 2) `lake env lean <file>`.
 3) Update DB: `aristotle_db/parse_lean.py import <file>`.
-4) Update `docs/INSIGHTS.md` if any reusable patterns.
+4) If a reusable pattern exists, record it through
+   `python3 orchestrator/goal_events.py record-insight --payload <closed-json>`;
+   never edit `docs/INSIGHTS.md` manually after its single-writer boundary.
 5) If axiom list changes: update `FORMALIZATION_STATS.md` and `check_axioms`.
 
 ---

@@ -57,6 +57,22 @@ class EnvDumpSelectionTests(unittest.TestCase):
         self.assertEqual(len(records), 1)
         self.assertTrue(any("неверный JSON" in d for d in diagnostics))
 
+    def test_truncated_elaborated_type_is_rejected(self) -> None:
+        truncated = record()
+        truncated["type"] = "∀ (h : True), proofConsumer ⋯"
+        records, diagnostics = envdump._validated_records(
+            json.dumps(truncated, ensure_ascii=False) + "\n")
+        self.assertEqual(records, [])
+        self.assertTrue(any("неполный pretty-print типа" in d for d in diagnostics))
+
+    def test_failed_pretty_print_is_rejected(self) -> None:
+        failed = record()
+        failed["type"] = "<pp failed>"
+        records, diagnostics = envdump._validated_records(
+            json.dumps(failed) + "\n")
+        self.assertEqual(records, [])
+        self.assertTrue(any("неполный pretty-print типа" in d for d in diagnostics))
+
 
 class AtomDescribeEnvTests(unittest.TestCase):
     def test_non_routeb_lookup_does_not_load_env_index(self) -> None:
@@ -70,6 +86,17 @@ class AtomDescribeEnvTests(unittest.TestCase):
             line = json.dumps(record(), ensure_ascii=False)
             path.write_text(line + "\n" + line + "\n", encoding="utf-8")
             with self.assertRaisesRegex(describe.EnvIndexError, "дубликат"):
+                describe.load_env_index(path)
+
+    def test_index_loader_rejects_truncated_elaborated_type(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "env.jsonl"
+            truncated = record()
+            truncated["type"] = "proofConsumer ⋯"
+            path.write_text(
+                json.dumps(truncated, ensure_ascii=False) + "\n", encoding="utf-8"
+            )
+            with self.assertRaisesRegex(describe.EnvIndexError, "неполный pretty-print"):
                 describe.load_env_index(path)
 
     def test_routeb_signature_comes_from_elaborated_type(self) -> None:

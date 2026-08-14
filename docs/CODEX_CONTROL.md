@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 7
+CONTROL_VERSION: 8
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
 BODIES:
@@ -596,12 +596,22 @@ mathematical_owner_deferral_violations = 0
 ### 14.1 Event-scoped refresh and local semantic freshness
 
 Every writing Spine refresh uses one closed reason and executes only its named
-transaction. `verdict-intake` migrates verdict knowledge; `step-close` migrates
-verdicts, `INSIGHTS.md`, and `Progress_Log.md`, and rebuilds `q3_docs` only when the
-curated corpus hash changed; `goal-close` runs every registered migrator, Route B
-catalog refresh, sensors, semantic rebuild, live plants, dynamic goal queries, and
-migration census; `semantic-index-refresh` rebuilds only `q3_docs` and its plants.
-An unknown reason combined with `--refresh` fails closed.
+transaction. `verdict-intake` migrates verdict knowledge. `step-close` requires one
+closed `q3_goal_attempt.v1` payload and accepts one optional
+`q3_goal_insight.v1` payload; both idempotent event writers run before verdict,
+`INSIGHTS.md`, and `Progress_Log.md` migration, and `q3_docs` is rebuilt only when
+the curated corpus hash changed. Payload flags on every other reason are forbidden.
+`goal-close` runs every registered migrator, Route B catalog refresh, sensors,
+semantic rebuild, live plants, dynamic goal queries, and migration census;
+`semantic-index-refresh` rebuilds only `q3_docs` and its plants. An unknown reason
+combined with `--refresh` fails closed.
+
+`q3.lean.aristotle/docs/INSIGHTS.md` has one immutable legacy region sealed by its
+exact byte count and SHA-256. After the `Q3_INSIGHTS_SINGLE_WRITER_BOUNDARY`, only
+canonical blocks emitted by `goal_events.py record-insight` are legal. The writer
+validates the legacy seal, every stored payload and semantic hash, identifier
+uniqueness, and the absence of manual suffix prose before appending. The journal
+migrator preserves legacy IDs and migrates machine blocks by exact `insight_id`.
 
 Semantic freshness is machine-local. The authoritative receipt lives under the
 ignored `q3.lean.aristotle/.qmd_cache/` tree and binds the deterministic hash of
@@ -611,10 +621,28 @@ five dynamic queries for the selected physical goal. A tracked receipt from anot
 machine or commit is historical evidence only. Read-only startup never rebuilds a
 missing or stale index; it fails with the exact explicit refresh command.
 
-Deep shelf search is explicit: `./ask.sh --deep "<terms>"` always runs semantic
-retrieval even when exact layers hit, and queries every enabled external Lean base
-from the registered base catalogue. External name or atom matches are candidates,
-never proof or interface equivalence.
+Every `./ask.sh "<terms>"` invocation queries every enabled external Lean base from
+the registered catalogue and names that denominator in the searched surfaces.
+Missing, ambiguous, or failed enabled bases make the shelf incomplete even when a
+local layer hit. `--deep` additionally forces semantic retrieval after exact hits.
+Semantic and foreign text matches are candidates, never proof or interface
+equivalence.
+
+Once an exact target is known, `scripts/supplier_preflight.py` is the mandatory
+single entry for the question whether an existing supplier exists and fits. It runs
+the complete shelf, checks the external-base denominator, requires a fresh complete
+Route B `lean-env-dump`, reports the exact elaborated types, axiom closure, privacy
+and safety, and typechecks `exact <supplier>` against the unmodified target type in
+a temporary Lean harness. Its closed outcomes are `CANDIDATE_ONLY`, `EXACT_FIT`,
+`REJECTED`, `FOREIGN_UNVERIFIED`, `COMPLETE_ABSENCE`, and `INCOMPLETE`. A stale
+environment is `INCOMPLETE` and prints the explicit 3600-second envdump command; it
+is never rebuilt implicitly. Before `COMPLETE_ABSENCE`, the exact name is also checked
+in the compatible Lean core, dependency-package, and full Q3 source trees; a source-only hit stays
+`CANDIDATE_ONLY`. Only `EXACT_FIT` may discharge the exact local target.
+
+An ACTIVE `docs/Codex/CURRENT.md` pointer is source-locked to the exact latest commit
+that changed its task file. An ancestor commit or uncommitted task bytes fail with
+`CODEX_CURRENT_TASK_SOURCE_PIN_STALE`.
 
 ## 15. Failure codes and change control
 
@@ -650,6 +678,7 @@ SEMANTIC_INDEX_CORPUS_STALE
 SEMANTIC_INDEX_COLLECTION_DRIFT
 SPINE_REFRESH_REASON_UNKNOWN
 SPINE_REFRESH_ACTION_FAILED
+SPINE_REFRESH_PAYLOAD_FORBIDDEN
 MIGRATION_CENSUS_DRIFT
 ARTIFACT_IDENTITY_DRIFT
 AUTOPSY_REQUIRED_MISSING
@@ -662,6 +691,12 @@ OPERATIONAL_GATE_MISUSED_AS_MATHEMATICAL_DEFERRAL
 INVALID_OWNER_AUTHORITY_REQUIRED_CLASS
 TOOL_MANIFEST_INVALID
 BRANCH_DECISION_MIGRATION_FAILED
+CODEX_CURRENT_TASK_INVALID
+CODEX_CURRENT_TASK_SOURCE_PIN_STALE
+GOAL_ATTEMPT_EVENT_REQUIRED
+GOAL_ATTEMPT_EVENT_FAILED
+GOAL_INSIGHT_EVENT_FAILED
+GOAL_INSIGHT_LOG_INVALID
 AUTOPILOT_AMBIGUOUS_GOAL_SET
 AUTOPILOT_ANSWER_INVALID
 AUTOPILOT_BUS_MISSING

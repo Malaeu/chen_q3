@@ -145,7 +145,37 @@ def test_external_lean_registry_is_actually_queried(tmp_path: Path) -> None:
     assert result["bases_queried"] == ["zeta23"]
     assert result["matches"]
     assert result["matches"][0]["base_id"] == "zeta23"
+    assert result["matches"][0]["match_kind"] == "TEXT_CANDIDATE"
     assert "Sylvester.lean" in result["matches"][0]["path"]
+
+
+def test_external_registry_queries_every_enabled_base_even_after_match_limit(
+    tmp_path: Path,
+) -> None:
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+    first.mkdir()
+    second.mkdir()
+    (first / "One.lean").write_text("theorem needle : True := by trivial\n")
+    (second / "Two.lean").write_text("theorem needle : True := by trivial\n")
+    result = search_external_lean.search_registry(
+        "needle", bases=[("first", first), ("second", second)], max_matches=1
+    )
+    assert result["bases_queried"] == ["first", "second"]
+    assert len(result["matches"]) == 1
+    assert result["errors"] == []
+
+
+def test_external_registry_missing_enabled_base_is_incomplete(tmp_path: Path) -> None:
+    first = tmp_path / "first"
+    first.mkdir()
+    (first / "One.lean").write_text("theorem needle : True := by trivial\n")
+    result = search_external_lean.search_registry(
+        "needle",
+        bases=[("first", first)],
+        enabled_ids=["first", "missing"],
+    )
+    assert "enabled bases not resolved: missing" in result["errors"]
 
 
 def test_dynamic_goal_path_match_uses_qmd_slug_punctuation(
@@ -388,7 +418,51 @@ def test_migration_census_reports_source_database_and_unmigrated(tmp_path: Path)
         "database_rows": 2,
         "unmigrated_rows": 1,
         "unmigrated_ids": ["b"],
+        "stale_rows": 0,
+        "stale_ids": [],
     }
+
+
+def test_migration_census_reports_stale_database_rows() -> None:
+    row = migration_census.make_row("example", {"a"}, {"a", "old"})
+    assert row["stale_rows"] == 1
+    assert row["stale_ids"] == ["old"]
+
+
+def test_step_close_requires_attempt_and_other_reasons_forbid_payloads(
+    tmp_path: Path,
+) -> None:
+    with pytest.raises(spine.ControlViolation, match="GOAL_ATTEMPT_EVENT_REQUIRED"):
+        spine._validate_refresh_payloads("step-close", None, None)
+    payload = tmp_path / "attempt.json"
+    payload.write_text("{}", encoding="utf-8")
+    with pytest.raises(spine.ControlViolation, match="SPINE_REFRESH_PAYLOAD_FORBIDDEN"):
+        spine._validate_refresh_payloads("goal-close", payload, None)
+
+
+def test_step_close_records_events_before_migrations(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    attempt = tmp_path / "attempt.json"
+    insight = tmp_path / "insight.json"
+    attempt.write_text("{}", encoding="utf-8")
+    insight.write_text("{}", encoding="utf-8")
+    calls: list[str] = []
+    monkeypatch.setattr(
+        spine,
+        "refresh_actions",
+        lambda reason: ("migrate-journal", "validate") if reason == "step-close" else (),
+    )
+    monkeypatch.setattr(
+        spine,
+        "_run_checked",
+        lambda action, _command: calls.append(action),
+    )
+    spine.execute_refresh(
+        "step-close", attempt_payload=attempt, insight_payload=insight
+    )
+    assert calls == ["record-attempt", "record-insight", "migrate-journal"]
 
 
 def test_large_qmd_embed_attempt_has_at_least_2400_seconds() -> None:

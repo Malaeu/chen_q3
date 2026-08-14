@@ -85,7 +85,13 @@ def isNoise (n : Name) : Bool :=
 
 def dumpOne (env : Environment) (moduleName n : Name) (ci : ConstantInfo) : MetaM (Option String) := do
   if isNoise n then return none
-  let typeStr ← try (toString <$> ppExpr ci.type) catch _ => pure "<pp failed>"
+  let typeStr ← try
+    withOptions (·
+        |>.setBool `pp.proofs true
+        |>.setBool `pp.deepTerms true
+        |>.setNat `pp.maxSteps 1000000) do
+      toString <$> ppExpr ci.type
+    catch _ => pure "<pp failed>"
   let doc := (← findDocString? env n).getD ""
   -- `findDeclarationRanges?` даёт строку, но не файл. Имя файла берём из индекса
   -- модуля: это единственное место, где Lean хранит связь константы с модулем.

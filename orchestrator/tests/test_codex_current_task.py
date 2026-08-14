@@ -7,10 +7,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from orchestrator import spine
-
-
 REPO = Path(__file__).resolve().parents[2]
+
+from orchestrator import spine  # noqa: E402
 
 
 def pointer(status: str, task_file: str | None, source_commit: str | None) -> str:
@@ -30,22 +29,40 @@ def pointer(status: str, task_file: str | None, source_commit: str | None) -> st
 
 
 class CodexCurrentTaskPlants(unittest.TestCase):
-    def test_committed_empty_pointer_is_valid(self) -> None:
+    def test_repository_pointer_is_valid_and_exactly_source_pinned(self) -> None:
         data = spine.validate_current_codex_task()
-        self.assertEqual(data["status"], "EMPTY")
-        self.assertIsNone(data["task_file"])
+        self.assertEqual(data["status"], "ACTIVE")
+        latest = subprocess.check_output(
+            ["git", "log", "-1", "--format=%H", "--", str(data["task_file"])],
+            cwd=REPO,
+            text=True,
+        ).strip()
+        self.assertEqual(data["source_commit"], latest)
 
-    def test_active_pointer_requires_tracked_task_and_ancestor_commit(self) -> None:
+    def test_active_pointer_requires_exact_latest_task_commit(self) -> None:
         task_file = "docs/Codex/TASK_2026-08-06_07.md"
-        head = subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], cwd=REPO, text=True,
+        latest = subprocess.check_output(
+            ["git", "log", "-1", "--format=%H", "--", task_file], cwd=REPO, text=True,
         ).strip()
         with tempfile.TemporaryDirectory() as td:
             path = Path(td) / "CURRENT.md"
-            path.write_text(pointer("ACTIVE", task_file, head), encoding="utf-8")
+            path.write_text(pointer("ACTIVE", task_file, latest), encoding="utf-8")
             data = spine.validate_current_codex_task(path)
         self.assertEqual(data["task_file"], task_file)
-        self.assertEqual(data["source_commit"], head)
+        self.assertEqual(data["source_commit"], latest)
+
+    def test_active_pointer_rejects_ancestor_that_is_not_latest_task_commit(self) -> None:
+        task_file = "docs/Codex/TASK_2026-08-06_07.md"
+        earlier = subprocess.check_output(
+            ["git", "rev-list", "--max-parents=0", "HEAD"], cwd=REPO, text=True,
+        ).strip()
+        with tempfile.TemporaryDirectory() as td:
+            path = Path(td) / "CURRENT.md"
+            path.write_text(pointer("ACTIVE", task_file, earlier), encoding="utf-8")
+            with self.assertRaisesRegex(
+                spine.ControlViolation, "CODEX_CURRENT_TASK_SOURCE_PIN_STALE"
+            ):
+                spine.validate_current_codex_task(path)
 
     def test_active_pointer_rejects_unpinned_task(self) -> None:
         with tempfile.TemporaryDirectory() as td:

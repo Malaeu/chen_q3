@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from orchestrator import goal_events
+from orchestrator import goal_events, kb_migrate_journal
 
 
 def sha256(path: Path) -> str:
@@ -45,7 +45,10 @@ class GoalEventTests(unittest.TestCase):
         self.db = self.root / "knowledge.db"
         make_db(self.db)
         self.insights = self.root / "INSIGHTS.md"
-        self.insights.write_text("# Insights\n", encoding="utf-8")
+        legacy = b"# Insights\n"
+        self.insights.write_bytes(
+            legacy + goal_events.render_insights_boundary(legacy).encode("utf-8")
+        )
 
     def tearDown(self) -> None:
         self.temp.cleanup()
@@ -203,3 +206,29 @@ class GoalEventTests(unittest.TestCase):
         machine = json.loads(raw)
         self.assertEqual(machine["payload_sha256"], receipt.payload_sha256)
         self.assertEqual(machine["semantic_sha256"], receipt.semantic_sha256)
+
+    def test_manual_text_after_boundary_is_rejected(self) -> None:
+        with self.insights.open("a", encoding="utf-8") as handle:
+            handle.write("\nmanual note\n")
+        with self.assertRaisesRegex(goal_events.GoalEventError, "manual or noncanonical"):
+            goal_events.record_insight(
+                self.insight(), insights_path=self.insights, repo_root=self.root
+            )
+
+    def test_legacy_region_drift_is_rejected(self) -> None:
+        text = self.insights.read_text(encoding="utf-8").replace(
+            "# Insights", "# Changed", 1
+        )
+        self.insights.write_text(text, encoding="utf-8")
+        with self.assertRaisesRegex(goal_events.GoalEventError, "legacy .*drift"):
+            goal_events.validate_insights_log(text)
+
+    def test_migrator_preserves_exact_machine_insight_id(self) -> None:
+        payload = self.insight()
+        goal_events.record_insight(
+            payload, insights_path=self.insights, repo_root=self.root
+        )
+        rows, _skipped = kb_migrate_journal.parse(self.insights)
+        machine = [row for row in rows if row["id"] == payload["insight_id"]]
+        self.assertEqual(len(machine), 1)
+        self.assertEqual(machine[0]["kind"], "insight")

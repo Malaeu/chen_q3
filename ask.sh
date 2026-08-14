@@ -7,7 +7,7 @@
 #   · kb_migrate_verdicts.py — мигратор написан, при закрытии цели не дёргается;
 #   · Groskin 2607.02828 — PDF скачан, в bib, помечен «HAVE ✓ FLAG subagent» — а мы пошли
 #     искать его в интернете.
-# Причина не в забывчивости: хранилищ четыре, у каждого своя команда, и спросив одно, легко
+# Причина не в забывчивости: хранилищ несколько, у каждого своя команда, и спросив одно, легко
 # решить, что нигде нет. Здесь спрашиваются все сразу, и отсутствие печатается явно.
 #
 # Строго read-only.
@@ -17,7 +17,7 @@ cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
 if [ $# -eq 0 ]; then
   echo "usage: ./ask.sh [--deep] <термин> [ещё термины]"
-  echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs"
+  echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs · external Lean"
   exit 2
 fi
 
@@ -152,28 +152,46 @@ if [ "$HITS" -eq 0 ] || [ "$DEEP" -eq 1 ]; then
   if [ "$RC" -ne 0 ]; then
     SEARCH_FAILURES+=("q3_docs: semantic query failed (code $RC)")
   elif printf '%s' "$OUT" | grep -q '"file"'; then
-    hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs"
+    hdr "СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — кандидаты"
     printf '%s\n' "$OUT" | head -60
     HITS=$((HITS + 1))
   fi
 fi
 
-if [ "$DEEP" -eq 1 ]; then
-  SEARCHED+=("enabled external Lean bases (registered read-only search)")
-  OUT="$(python3 scripts/search_external_lean.py "$Q" 2>&1)"
-  RC=$?
-  if [ "$RC" -ne 0 ]; then
-    SEARCH_FAILURES+=("external Lean bases: registry query failed (code $RC)")
-  elif printf '%s' "$OUT" | grep -q '"base_id"'; then
-    hdr "ВНЕШНИЕ LEAN-БАЗЫ — кандидаты, не доказательство"
-    printf '%s\n' "$OUT" | head -80
+# Enabled external bases are part of the shelf, not an optional web-search layer.
+# A local hit never licenses skipping them: otherwise "not found anywhere" has a
+# hidden denominator and can be false on a registered base.
+OUT="$(python3 scripts/search_external_lean.py "$Q" 2>&1)"
+RC=$?
+if [ "$RC" -ne 0 ]; then
+  SEARCHED+=("all enabled external Lean bases (INCOMPLETE registered search)")
+  EXTERNAL_ERRORS="$(printf '%s' "$OUT" | python3 -c '
+import json, sys
+text = sys.stdin.read()
+start = text.find("{")
+if start >= 0:
+    print("; ".join(json.loads(text[start:]).get("errors", [])))
+' 2>/dev/null)"
+  SEARCH_FAILURES+=("external Lean bases: registry query failed (code $RC): ${EXTERNAL_ERRORS:-unparsed registry error}")
+else
+  QUERIED_BASES="$(printf '%s' "$OUT" | python3 -c '
+import json, sys
+text = sys.stdin.read()
+start = text.find("{")
+data = json.loads(text[start:])
+print(",".join(data.get("bases_queried", [])))
+' 2>/dev/null)"
+  SEARCHED+=("all enabled external Lean bases (${QUERIED_BASES:-none}; registered read-only search)")
+  if printf '%s' "$OUT" | grep -q '"base_id"'; then
+    hdr "ВНЕШНИЕ LEAN-БАЗЫ — точные/текстовые кандидаты"
+    printf '%s\n' "$OUT" | head -100
     HITS=$((HITS + 1))
   fi
 fi
 
 # ── Итог ──────────────────────────────────────────────────────────────────────
 printf '\n%s\n' "$(printf '━%.0s' $(seq 1 64))"
-if [ "$HITS" -eq 0 ] && [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
+if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
   echo "ПОИСК НЕПОЛОН — отсутствие не установлено"
   echo
   for failure in "${SEARCH_FAILURES[@]}"; do echo "  · $failure"; done
@@ -192,6 +210,12 @@ elif [ "$HITS" -eq 0 ]; then
   echo "  слова поиска → блок SEARCH_FLAGS в шапке answer.md"
   exit 1
 else
-  echo "Найдено в $HITS хранилищах из ${#SEARCHED[@]}. Внешний поиск, скорее всего, не нужен."
+  echo "Найдено в $HITS хранилищах из ${#SEARCHED[@]}."
+  echo
+  echo "Просмотрены хранилища:"
+  for s in "${SEARCHED[@]}"; do echo "  · $s"; done
+  echo
+  echo "Совпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:"
+  echo "  python3 scripts/supplier_preflight.py --query '$Q' --candidate <имя> --target <имя>"
   exit 0
 fi

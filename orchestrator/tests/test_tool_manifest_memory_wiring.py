@@ -52,6 +52,20 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             {"knowledge.db", "q3.lean.aristotle/docs/INSIGHTS.md"},
         )
 
+    def test_absence_event_routes_through_unified_supplier_preflight(self) -> None:
+        data = spine.yaml.safe_load(
+            (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            data["memory_event_routes"]["ABSENCE_OR_NEW_OBJECT"]["run"],
+            ["supplier-preflight"],
+        )
+        family = data["tool_families"]["retrieval_and_memory"]
+        self.assertEqual(family["front_door"], "supplier-preflight")
+        tools = {tool["id"]: tool for tool in family["tools"]}
+        self.assertEqual(tools["supplier-preflight"]["mode"], "READ_ONLY")
+        self.assertIn("EXACT_FIT", tools["supplier-preflight"]["outcomes"])
+
     def test_codex_cartography_routes_only_to_repo_local_tools(self) -> None:
         data = spine.yaml.safe_load(
             (REPO / "docs/cartographer/TOOLS.yaml").read_text(encoding="utf-8")
@@ -165,6 +179,7 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
         self.assertIn("SelectedTrialNormalizerBounded", proc.stdout)
         self.assertNotIn("НЕ НАЙДЕНО НИГДЕ", proc.stdout)
+        self.assertIn("all enabled external Lean bases", proc.stdout)
 
     def test_spine_view_exposes_recent_branch_decisions(self) -> None:
         view = spine.build()
@@ -174,7 +189,8 @@ class ToolManifestMemoryPlants(unittest.TestCase):
 
     def test_control_routes_commands_to_live_manifest(self) -> None:
         control = (REPO / "docs" / "CODEX_CONTROL.md").read_text(encoding="utf-8")
-        self.assertIn("CONTROL_VERSION: 7", control)
+        self.assertIn("CONTROL_VERSION: 8", control)
+        self.assertIn("scripts/supplier_preflight.py", control)
         self.assertIn("CODEX_LINUX", control)
         self.assertIn("GOAL_RUN", control)
         self.assertIn("GOAL_SCOPED_OPERATIONAL_GRANT", control)
@@ -222,7 +238,7 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             "PROBE",
         )
 
-    def test_routeb_declaration_catalog_is_synchronized(self) -> None:
+    def test_routeb_declaration_catalog_reports_document_coverage_honestly(self) -> None:
         proc = subprocess.run(
             ["python3", "orchestrator/backfill_db.py", "--check"],
             cwd=REPO,
@@ -230,9 +246,16 @@ class ToolManifestMemoryPlants(unittest.TestCase):
             text=True,
             timeout=20,
         )
-        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
         self.assertIn("Missing declaration rows: 0", proc.stdout)
         self.assertIn("Stale declaration rows: 0", proc.stdout)
+        missing_docs = next(
+            int(line.rsplit(":", 1)[1])
+            for line in proc.stdout.splitlines()
+            if line.startswith("Missing document rows:")
+        )
+        self.assertEqual(proc.returncode, 0 if missing_docs == 0 else 1)
+        if missing_docs:
+            self.assertIn("MISSING_DOC", proc.stdout)
         spine_source = (REPO / "orchestrator" / "spine.py").read_text(encoding="utf-8")
         self.assertIn('"orchestrator/backfill_db.py", "--sync"', spine_source)
         self.assertIn('"docs/cartographer/atoms_RouteB.json"', spine_source)

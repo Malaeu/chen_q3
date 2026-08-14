@@ -661,7 +661,7 @@ def _validate_active_control() -> None:
     text = CONTROL.read_text(encoding="utf-8")
     required = (
         "CONTROL_ID: Q3_EXECUTOR_CONTROL",
-        "CONTROL_VERSION: 7",
+        "CONTROL_VERSION: 8",
         "STATUS: ACTIVE",
         "ROLE: CODEX_EXECUTOR",
         "BODIES:\n  - CODEX_MAC\n  - CODEX_LINUX",
@@ -805,6 +805,27 @@ def validate_current_codex_task(path: Path = CURRENT_CODEX_TASK) -> dict[str, ob
         )
         if ancestor.returncode != 0:
             _fail("CODEX_CURRENT_TASK_INVALID", "source_commit is not present in current HEAD")
+        latest = subprocess.run(
+            ["git", "log", "-1", "--format=%H", "--", task_file],
+            cwd=REPO,
+            capture_output=True,
+            text=True,
+        )
+        if latest.returncode != 0 or not re.fullmatch(r"[0-9a-f]{40}", latest.stdout.strip()):
+            _fail("CODEX_CURRENT_TASK_INVALID", f"cannot resolve task source commit: {task_file}")
+        if latest.stdout.strip() != source_commit:
+            _fail(
+                "CODEX_CURRENT_TASK_SOURCE_PIN_STALE",
+                f"{task_file}: pinned {source_commit}, latest {latest.stdout.strip()}",
+            )
+        dirty = subprocess.run(
+            ["git", "diff", "--quiet", "HEAD", "--", task_file], cwd=REPO
+        )
+        if dirty.returncode != 0:
+            _fail(
+                "CODEX_CURRENT_TASK_SOURCE_PIN_STALE",
+                f"task file has uncommitted bytes: {task_file}",
+            )
     elif status == "EMPTY" and (task_file is not None or source_commit is not None):
         _fail("CODEX_CURRENT_TASK_INVALID", "EMPTY pointer must not name a task")
     return {
@@ -1637,6 +1658,8 @@ def _run_checked(action: str, command: tuple[str, ...]) -> None:
     proc = subprocess.run([sys.executable, *command], cwd=REPO, text=True)
     if proc.returncode != 0:
         code = {
+            "record-attempt": "GOAL_ATTEMPT_EVENT_FAILED",
+            "record-insight": "GOAL_INSIGHT_EVENT_FAILED",
             "migrate-verdicts": "VERDICT_KNOWLEDGE_MIGRATION_FAILED",
             "migrate-progress-log": "BRANCH_DECISION_MIGRATION_FAILED",
             "semantic-index": "SEMANTIC_INDEX_PLANT_FAILED",
@@ -1662,8 +1685,52 @@ def _refresh_semantic_index() -> None:
         )
 
 
-def execute_refresh(reason: str) -> tuple[str, ...]:
+def _validate_refresh_payloads(
+    reason: str,
+    attempt_payload: Path | None,
+    insight_payload: Path | None,
+) -> None:
+    if reason == "step-close":
+        if attempt_payload is None:
+            _fail("GOAL_ATTEMPT_EVENT_REQUIRED", "step-close requires --attempt-payload")
+    elif attempt_payload is not None or insight_payload is not None:
+        _fail(
+            "SPINE_REFRESH_PAYLOAD_FORBIDDEN",
+            "attempt/insight payloads are valid only for step-close",
+        )
+    for label, path in (("attempt", attempt_payload), ("insight", insight_payload)):
+        if path is not None and not path.is_file():
+            _fail("GOAL_EVENT_PAYLOAD_INVALID", f"{label} payload missing: {path}")
+
+
+def execute_refresh(
+    reason: str,
+    *,
+    attempt_payload: Path | None = None,
+    insight_payload: Path | None = None,
+) -> tuple[str, ...]:
     actions = refresh_actions(reason)
+    _validate_refresh_payloads(reason, attempt_payload, insight_payload)
+    if attempt_payload is not None:
+        _run_checked(
+            "record-attempt",
+            (
+                "orchestrator/goal_events.py",
+                "record-attempt",
+                "--payload",
+                str(attempt_payload),
+            ),
+        )
+    if insight_payload is not None:
+        _run_checked(
+            "record-insight",
+            (
+                "orchestrator/goal_events.py",
+                "record-insight",
+                "--payload",
+                str(insight_payload),
+            ),
+        )
     for action in actions:
         if action == "semantic-index-if-stale":
             if semantic_index_stale():
@@ -1707,14 +1774,33 @@ def main() -> int:
     ap.add_argument("--reason", default="manual",
                     help="audit label only; not written into the deterministic view")
     ap.add_argument(
+        "--attempt-payload",
+        type=Path,
+        help="closed q3_goal_attempt.v1 JSON; required for step-close",
+    )
+    ap.add_argument(
+        "--insight-payload",
+        type=Path,
+        help="optional closed q3_goal_insight.v1 JSON for step-close",
+    )
+    ap.add_argument(
         "--record-review", action="append", default=[], metavar="JSON",
         help="atomically record one delegated-review event; repeat for ordered backfill",
     )
     args = ap.parse_args()
     try:
         if args.record_review:
-            if args.stdout or args.strict or args.refresh:
-                _fail("EXPLORATION_RUNTIME_MISSING", "record-review cannot be combined with render flags")
+            if (
+                args.stdout
+                or args.strict
+                or args.refresh
+                or args.attempt_payload is not None
+                or args.insight_payload is not None
+            ):
+                _fail(
+                    "EXPLORATION_RUNTIME_MISSING",
+                    "record-review cannot be combined with render flags",
+                )
             runtime = _read_runtime()
             changed = 0
             for raw_event in args.record_review:
@@ -1731,7 +1817,16 @@ def main() -> int:
             print(f"CHANNEL_RUNTIME_REVIEW_EVENTS_RECORDED={changed}")
             return 0
         if args.refresh:
-            execute_refresh(args.reason)
+            execute_refresh(
+                args.reason,
+                attempt_payload=args.attempt_payload,
+                insight_payload=args.insight_payload,
+            )
+        elif args.attempt_payload is not None or args.insight_payload is not None:
+            _fail(
+                "SPINE_REFRESH_PAYLOAD_FORBIDDEN",
+                "event payloads require --refresh --reason step-close",
+            )
         validation = validate_p9a()
         if args.strict and args.reason != "sensor-refresh":
             validate_semantic_index()

@@ -2211,7 +2211,7 @@ even roots (or an exact ordered-spectrum-to-Schur-root crosswalk), then prove
 that the count-two root is the pinned degree-four coefficient row. Separately,
 G1 still needs the literal cofinal complement floor.
 
-**Адрес:**
+**Адреса:**
 `Q3/Proofs/RouteB/D0Mode4SchurRootInertiaLabel.lean`.
 
 **Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Три exact shelf
@@ -2242,9 +2242,26 @@ task отвергнуты. Bonami--Karoui локализует classical differe
 но без независимого classical-spectrum-to-literal-Schur-inertia crosswalk это
 не доказывает negative count exact Schur complement.
 
+**Техника:** byte-exact source-lock recovery в том же живом Proshka-чате,
+проверка четырёх SHA-256, literal declaration/arity audit и сопоставление
+предложенных endpoint counts с binders production Schur matrix и уже
+доказанным receiver `counts_two_three`.
+
 **Следующий ход:** read-only source packet для
 `MODE4_CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK`, включая
 доказательство точного finite-split offset. Aristotle не авторизован.
+
+**Адреса:**
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_POST_INERTIA_SOURCE_CROSSWALK_JOINT_REQUEST_2026-08-14.txt` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_POST_INERTIA_SOURCE_CROSSWALK_MYTHOS_VERDICT_2026-08-14.md` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_POST_INERTIA_SOURCE_CROSSWALK_PROSHKA_SOURCE_LOCK_STOP_2026-08-14.md` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_POST_INERTIA_SOURCE_CROSSWALK_PROSHKA_VERDICT_2026-08-14.md`.
+
+**Чей вердикт и его аргумент:** Proshka:
+`REJECT_PLACEHOLDER_ENDPOINT_COUNTS_REQUIRE_CLASSICAL_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK`.
+Все четыре SHA-256 совпали; предложенные endpoints и counts относятся не к
+literal production object, а Bonami--Karoui без независимого
+classical-spectrum-to-Schur-inertia crosswalk не доказывает его negative count.
 
 **Граница:**
 `CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK_MISSING`;

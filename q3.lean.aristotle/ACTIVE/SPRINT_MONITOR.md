@@ -133,7 +133,8 @@ After every meaningful sprint move:
    `current_day`, `current_step_id`, `last_completed_step_id`,
    `last_completed_commit`, `next_deliverable`;
 2. update `IMPLEMENTATION_PLAN.md` only if the active task definition changes;
-3. add one short synthesis line to `docs/INSIGHTS.md`;
+3. record any reusable synthesis through
+   `python3 orchestrator/goal_events.py record-insight --payload <closed-json>`;
 4. commit;
 5. leave the worktree clean.
 

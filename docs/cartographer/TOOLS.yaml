@@ -5,7 +5,7 @@
 schema: q3_tool_manifest.v2
 
 meta:
-  updated: 2026-08-10
+  updated: 2026-08-14
   owner: OWNER
   canonical: docs/cartographer/TOOLS.yaml
   observer_copy: machine-local codex_specs/TOOLS.yaml if present
@@ -80,11 +80,11 @@ memory_event_routes:
   REUSABLE_INSIGHT:
     condition: A checked synthesis is reusable beyond the current attempt.
     run: [goal-event-writer]
-    record: One compact provenance-bound INSIGHTS.md entry; semantic duplicates are suppressed.
+    record: One compact provenance-bound machine block after the frozen INSIGHTS.md boundary; semantic duplicates are suppressed.
 
   ABSENCE_OR_NEW_OBJECT:
     condition: Before claiming absence, searching externally, or creating a replacement.
-    run: [ask-shelf, kb-query]
+    run: [supplier-preflight]
     record: SEARCH_FLAGS in the artifact being produced anyway.
 
   THEOREM_SHAPE_FORK:
@@ -121,7 +121,10 @@ memory_event_routes:
 
   STEP_CLOSE:
     run: [knowledge-spine-step-close]
+    require: [q3_goal_attempt.v1 payload]
+    optional: [q3_goal_insight.v1 payload]
     record:
+      - Attempt and optional insight events before any migration.
       - Verdict lessons, INSIGHTS.md, and Progress_Log.md into knowledge.db.
       - q3_docs only when its deterministic curated corpus hash changed.
 
@@ -156,7 +159,9 @@ data_surfaces:
   historical_stream:
     path: q3.lean.aristotle/docs/INSIGHTS.md
     authority: HISTORICAL_EVENT_STREAM
-    rule: Never read wholesale at startup; enter through an exact address or retrieval result.
+    rule: >-
+      Immutable hash-sealed legacy region, then machine-only goal-event blocks. Never edit
+      manually after the boundary; append only through goal_events.py record-insight.
 
   semantic_project_memory:
     path: q3.lean.aristotle/aristotle_db/knowledge.db
@@ -230,7 +235,14 @@ tool_families:
         audience: [CODEX]
         mode: WRITES_CANONICAL
         path: orchestrator/spine.py
-        invoke: python3 orchestrator/spine.py --refresh --reason step-close
+        invoke: >-
+          python3 orchestrator/spine.py --refresh --reason step-close
+          --attempt-payload <q3_goal_attempt.v1.json>
+        alternatives:
+          - >-
+            python3 orchestrator/spine.py --refresh --reason step-close
+            --attempt-payload <q3_goal_attempt.v1.json>
+            --insight-payload <q3_goal_insight.v1.json>
         trigger: Completed registered cycle or reusable insight before the goal itself closes.
         writes: true
         approval: ACTIVE_GOAL_RUN_WRITE_SCOPE
@@ -247,7 +259,7 @@ tool_families:
         trigger: Before and after knowledge migration; mandatory inside goal-close.
         writes: false
         approval: NONE
-        authority: LIVE_SOURCE_TO_DATABASE_IDENTITY_CENSUS
+        authority: LIVE_SOURCE_TO_DATABASE_IDENTITY_CENSUS_WITH_UNMIGRATED_AND_STALE_ROWS
         records_to: stdout
         last_verified: 2026-08-13
 
@@ -282,8 +294,8 @@ tool_families:
 
   retrieval_and_memory:
     summary: Search accumulated knowledge before external search or object creation.
-    front_door: ask-shelf
-    coverage: [ask.sh, orchestrator/kb.py, scripts/research_oracle.py, orchestrator/kb_migrate_*.py]
+    front_door: supplier-preflight
+    coverage: [ask.sh, scripts/supplier_preflight.py, scripts/search_external_lean.py, docs/cartographer/lean_env/envdump.py, docs/cartographer/comparator/fit.py, orchestrator/kb.py, scripts/research_oracle.py, orchestrator/kb_migrate_*.py]
     tools:
       - id: ask-shelf
         status: ENABLED
@@ -295,10 +307,39 @@ tool_families:
         trigger: ABSENCE_OR_NEW_OBJECT and before external review/search.
         writes: false
         approval: NONE
-        authority: CASCADED_MULTI_SURFACE_RETRIEVAL_WITH_EXPLICIT_DEEP_SEMANTIC_AND_EXTERNAL_LEAN_MODE
+        authority: CASCADED_MULTI_SURFACE_RETRIEVAL_WITH_COMPLETE_ENABLED_EXTERNAL_LEAN_DENOMINATOR
         records_to: stdout
-        note: Normal mode keeps the semantic fallback. Deep mode always runs q3_docs and every enabled external Lean base even after exact hits; external matches are candidates only. A failed layer forbids an absence claim.
-        last_verified: 2026-08-13
+        note: Every mode queries every enabled external Lean base. Deep mode also forces q3_docs after exact hits. Semantic and external matches are candidates only; any failed enabled layer forbids an absence claim.
+        last_verified: 2026-08-14
+
+      - id: supplier-preflight
+        status: ENABLED
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: READ_ONLY
+        path: scripts/supplier_preflight.py
+        invoke: >-
+          python3 scripts/supplier_preflight.py --query "<terms>"
+          --candidate <supplier-declaration> --target <exact-target-declaration>
+        alternatives:
+          - python3 scripts/supplier_preflight.py --query "<terms>"
+        trigger: ABSENCE_OR_NEW_OBJECT and immediately after an exact goal target is understood.
+        writes: false
+        approval: NONE
+        authority: COMPLETE_SHELF_PROPERTIES_AND_DIRECT_LOCAL_LEAN_TYPE_FIT
+        records_to: stdout
+        outcomes: [CANDIDATE_ONLY, EXACT_FIT, REJECTED, FOREIGN_UNVERIFIED, COMPLETE_ABSENCE, INCOMPLETE]
+        failure_mode: >-
+          Stale or incomplete env_index, any unresolved enabled external base, a failed shelf
+          layer, ambiguous declaration, or comparator timeout yields INCOMPLETE. The tool never
+          launches envdump implicitly; it prints the exact regeneration command. Exact absence
+          also requires a miss in Lean core, every local dependency package, and the full Q3 source tree; a source-only
+          declaration remains CANDIDATE_ONLY rather than being promoted without EnvDump properties.
+        last_verified: >-
+          2026-08-14 Linux live plants: identical Schur-root theorem EXACT_FIT;
+          neighbouring strict-order theorem REJECTED against the equality target;
+          guaranteed missing declaration COMPLETE_ABSENCE; zeta23-only exact declaration
+          FOREIGN_UNVERIFIED. Every plant queried the enabled zeta23 denominator and used a
+          fresh complete 238-module local environment.
 
       - id: kb-query
         status: ENABLED
@@ -420,7 +461,10 @@ tool_families:
         approval: GOAL_SCOPED_OPERATIONAL_GRANT_OR_EXACT_WRITE_SCOPE
         authority: IDEMPOTENT_ATTEMPT_AND_PROVENANCE_BOUND_INSIGHT_WRITER
         records_to: [knowledge.db, q3.lean.aristotle/docs/INSIGHTS.md]
-        last_verified: 2026-08-13
+        boundary: >-
+          INSIGHTS.md before Q3_INSIGHTS_SINGLE_WRITER_BOUNDARY is immutable. Only this writer
+          may append after it, after validating the legacy seal and every existing machine block.
+        last_verified: 2026-08-14
 
   cartography_and_property_descent:
     summary: Find capabilities by mathematical need, then descend suppliers to exact gaps.
@@ -504,14 +548,18 @@ tool_families:
       - id: comparator-lite
         status: ENABLED
         audience: [CODEX, CLAUDE_CODE, HUMAN]
-        mode: WRITES_DERIVED
+        mode: READ_ONLY
         path: docs/cartographer/comparator/
-        invoke: see docs/cartographer/comparator/README.md ("Как прогнать заново")
-        trigger: Manual invocation per docs/cartographer/comparator/README.md rerun section.
-        writes: true
-        approval: OWNER_PER_ACTION for any dispatch use; NONE for read-only rerun.
-        authority: docs/CODEX_CONTROL.md
-        records_to: docs/cartographer/comparator/README.md result section
+        invoke: >-
+          python3 docs/cartographer/comparator/fit.py
+          --candidate <supplier-declaration> --target <exact-target-declaration>
+        alternatives:
+          - see docs/cartographer/comparator/README.md for the two fixed pilot plants
+        trigger: supplier-preflight after exact candidate and target resolution.
+        writes: false
+        approval: NONE
+        authority: GENERIC_DIRECT_LOCAL_LEAN_TYPE_FIT_WITH_AXIOM_PRIVACY_AND_SAFETY_GATES
+        records_to: stdout
         last_verified: >-
           2026-08-12 pilot run: Challenge PASS; Solution PASS with clean axioms;
           SolutionR6 REJECT.
@@ -540,11 +588,11 @@ tool_families:
           If the R6 wrapper is ever accepted as closing the exact v3 target, the semantic
           layer of the constructor is dead and must not be extended. Not triggered.
         does_not: >-
-          Not the full leanprover/comparator: no formal constant-set comparison between the
-          two modules, no second kernel (nanoda), no sandbox. Does not implement the six
-          project checks the judge requires on top of comparator — same source object, same
-          scope, same normalization, same theorem direction, no hidden axiom, target not
-          weakened. Those exist nowhere and must be written.
+          Not the full leanprover/comparator: no formal constant-set comparison and no second
+          kernel (nanoda). Direct type fit establishes that the candidate inhabits the exact
+          elaborated target type and rejects private, unsafe, or nonstandard-axiom suppliers;
+          source-object identity and mathematical normalization still require the target type
+          itself to encode them.
         toolchain_note: >-
           A full run needs lean4export built for leanprover/lean4:v4.26.0; comparator adopts
           the project's toolchain. Anthropic's tree is on v4.33.0-rc2.
@@ -567,16 +615,16 @@ tool_families:
         authority: docs/CODEX_CONTROL.md
         records_to: docs/cartographer/lean_env/env_index.jsonl (gitignored derived index)
         last_verified: >-
-          2026-08-12 declared Mac invocation exit 0: 1139 unique declarations from 154
-          current source-backed RouteB modules; 6 orphan .olean files excluded; 30 stale
-          and 21 never-built source modules reported uncovered; 0 sorryAx and 0 other
-          nonstandard axioms.
+          2026-08-14 Linux invocation exit 0: 2207 unique declarations from all 238 current
+          source-backed RouteB modules; 0 orphan .olean, 0 stale, 0 never-built, 0 truncated
+          or failed pretty-prints, 0 sorryAx, and 0 other nonstandard axioms.
         failure_mode: >-
           Fails closed and preserves the previous index if Lean exits nonzero, JSONL is empty
-          or malformed, module selection changes during the run, or a requested RouteB
-          declaration belongs to an orphan, stale, or never-built module. atom_describe.py
-          refuses to publish RouteB JSON rather than substituting source text for an absent
-          elaborated declaration.
+          or malformed, any elaborated type contains a pretty-printer omission/failure marker,
+          module selection changes during the run, or a requested RouteB declaration belongs
+          to an orphan, stale, or never-built module. atom_describe.py rejects old indexes with
+          the same omission markers and refuses to publish RouteB JSON rather than substituting
+          source text for an absent elaborated declaration.
         why: >-
           Layer 1 of the constructor. atom_describe.py reads the source TEXT up to `:=` or
           `by`. That is enough for a human and not enough to decide applicability: the text
@@ -596,9 +644,8 @@ tool_families:
           count when they differ. A green report over a third of the tree reads as green over
           the whole tree unless the denominator is printed, so it is printed unconditionally.
         does_not: >-
-          Judges nothing. It does not decide applicability, does not compare statements and
-          does not rank candidates. It is an index, not a comparator. Applicability is layer 5
-          and does not exist yet.
+          Judges nothing by itself. It does not decide applicability, compare statements, or
+          rank candidates. Generic direct applicability is supplied separately by comparator/fit.py.
         limits: >-
           Sees only what is already compiled into .lake/build. Does not build Lean.
         first_payoff: >-
