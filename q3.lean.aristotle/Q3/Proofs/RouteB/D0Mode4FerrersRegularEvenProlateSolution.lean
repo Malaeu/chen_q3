@@ -51,6 +51,18 @@ structure Mode4FerrersRegularEvenProlateSolution
     ContDiffOn ℝ 2
       (mode4FerrersSeries coefficients)
       (Set.Ioo (-1 : ℝ) 1)
+  ferrersSeries_hasDerivAt_firstDerivativeSeries :
+    ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+      HasDerivAt
+        (mode4FerrersSeries coefficients)
+        (mode4FerrersFirstDerivativeSeries coefficients x)
+        x
+  firstDerivativeSeries_hasDerivAt_secondDerivativeSeries :
+    ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+      HasDerivAt
+        (mode4FerrersFirstDerivativeSeries coefficients)
+        (mode4FerrersSecondDerivativeSeries coefficients x)
+        x
   prolateDifferentialEquation :
     ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
       -(1 - x ^ 2) *
@@ -109,6 +121,57 @@ theorem exists_mode4FerrersRegularEvenProlateSolution_of_root
   have hContinuous :
       ContinuousOn (mode4FerrersSeries a) (Set.Icc (-1 : ℝ) 1) :=
     mode4FerrersSeries_continuousOn a haAbs
+  have haWeightedTwo :
+      Summable (fun q : ℕ =>
+        (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|) :=
+    mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice
+      mProject K Λ hm hK hsep hΛ a haSplice 2
+  have hFirstDerivative :
+      ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+        HasDerivAt
+          (mode4FerrersSeries a)
+          (mode4FerrersFirstDerivativeSeries a x)
+          x := by
+    intro x hx
+    let r : ℝ := (|x| + 1) / 2
+    have hAbs : |x| < 1 := abs_lt.mpr hx
+    have hrPos : 0 < r := by
+      dsimp [r]
+      nlinarith [abs_nonneg x]
+    have hrLt : r < 1 := by
+      dsimp [r]
+      nlinarith
+    have hxInterior : x ∈ Set.Ioo (-r) r := by
+      constructor
+      · dsimp [r]
+        nlinarith [neg_abs_le x]
+      · dsimp [r]
+        nlinarith [le_abs_self x]
+    exact mode4FerrersSeries_hasDerivAt_of_mem_Ioo
+      a r hrPos hrLt haAbs haWeightedTwo x hxInterior
+  have hSecondDerivative :
+      ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+        HasDerivAt
+          (mode4FerrersFirstDerivativeSeries a)
+          (mode4FerrersSecondDerivativeSeries a x)
+          x := by
+    intro x hx
+    let r : ℝ := (|x| + 1) / 2
+    have hAbs : |x| < 1 := abs_lt.mpr hx
+    have hrPos : 0 < r := by
+      dsimp [r]
+      nlinarith [abs_nonneg x]
+    have hrLt : r < 1 := by
+      dsimp [r]
+      nlinarith
+    have hxInterior : x ∈ Set.Ioo (-r) r := by
+      constructor
+      · dsimp [r]
+        nlinarith [neg_abs_le x]
+      · dsimp [r]
+        nlinarith [le_abs_self x]
+    exact mode4FerrersFirstDerivativeSeries_hasDerivAt_of_mem_Ioo
+      a r hrPos hrLt haWeightedTwo x hxInterior
   have hFlux :=
     mode4Ferrers_zeroFlux_at_endpoints_of_tail_splice
       mProject K Λ hm hK hsep hΛ a haSplice
@@ -125,6 +188,8 @@ theorem exists_mode4FerrersRegularEvenProlateSolution_of_root
     even := hEven
     continuousOn_closed := hContinuous
     contDiffOn_two_open := hC2
+    ferrersSeries_hasDerivAt_firstDerivativeSeries := hFirstDerivative
+    firstDerivativeSeries_hasDerivAt_secondDerivativeSeries := hSecondDerivative
     prolateDifferentialEquation := hODE
     zeroFlux_at_endpoints := hFlux
   }⟩
