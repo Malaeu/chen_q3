@@ -300,3 +300,49 @@ positive limiting `E_star` packet to a positive central overlap and then to a
 projected denominator floor.  The narrowed G3 stop is
 `ACTUAL_MODE_EXISTENCE_AND_LEMMA72_CENTRAL_MASS_FLOOR_SCHEDULE_MISSING`; G1 is
 unchanged.
+
+## 2026-08-14 `Lambda <= 20` oddity and resolution
+
+During the indexed-source audit, the hard domain hypothesis
+`Lambda <= 20` in the mode-four root/tail backend initially looked
+incompatible with the cofinal physical scale
+`c = 2*pi*mProject` and the crosswalk
+`chi_4(c) = Lambda + c^2`.  The two plausible readings were a fatal shifted
+spectral-parameter mismatch or a valid fixed-index upper bound.
+
+The discriminator is the pinned Bonami--Karoui source
+`docs/routeB_bus/litreview/pdfs/1405.3676.pdf`, physical page 5, equation (8):
+
+```text
+n(n+1) <= chi_n(c) <= n(n+1) + c^2.
+```
+
+At `n = 4`, this gives exactly `chi_4(c) - c^2 <= 20`.  Therefore the current
+`Lambda <= 20` domain is source-compatible and is not a route kill.  The
+remaining wall is still construction/selection of the indexed source row and
+the separate Lemma 7.2 rate; no existence, G3, G1, promotion, or RH claim is
+created by this unit check.
+
+## 2026-08-14 exact Schur root order and simplicity
+
+The exact continued-fraction backend now has the missing spectral-parameter
+order facts.  `mode4RightTailLimit` is monotone in `Lambda` on the full
+pole-free domain.  Consequently, when `Lambda_1 <= Lambda_2`, the exact
+Hermitian Schur matrix at `Lambda_1` minus the matrix at `Lambda_2` dominates
+`(Lambda_2 - Lambda_1) I` in positive-semidefinite order.  This is a theorem
+about the actual infinite-tail correction, not a finite truncation or an
+assumed eigenvalue monotonicity.
+
+At every supplied exact matching root, consecutive finite-left continuants
+cannot vanish together.  The `(K-1)` principal minor is therefore invertible,
+and rank-nullity proves that the kernel of the literal Hermitian Schur matrix
+has dimension exactly one.  Thus every exact root crossing is nullity-simple;
+kernel multiplicity is no longer a source binder.
+
+Direct Lean and target builds pass, and every new public theorem has axiom
+surface exactly `[propext, Classical.choice, Quot.sound]`.  This still does
+not construct an endpoint or a root, prove the inertia count at an endpoint,
+formalize the monotone inertia jump, identify the third even root with indexed
+`psi_4`, construct mode zero, or supply the finite-Fourier/Lemma 7.2/floor
+chain.  The narrowed root-selection wall is
+`SCHUR_PARAMETER_DROP_AND_SIMPLE_ROOT_PROVED_ENDPOINT_INERTIA_LADDER_AND_INDEX4_SELECTION_MISSING`.

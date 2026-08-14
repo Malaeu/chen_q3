@@ -2078,6 +2078,56 @@ literal wrapper с public axioms только
 `G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`.
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058 G3: exact Schur parameter order и simple-root kernel
+
+**Развилка:** снова принимать endpoint inertia/count как binder либо сначала
+доказать на буквальном infinite-tail Schur object две внутренние опоры
+корневой лестницы: направление движения по `Lambda` и простоту ядра в нуле.
+
+**Выбрали:** доказать монотонность finite backward tails и их exact limit,
+затем точное разложение разности Hermitian Schur matrices в
+`(Lambda_2-Lambda_1)I` плюс неотрицательную диагональную поправку. Отдельно
+через несовместимость двух соседних нулевых continuant-ов, обратимость
+principal minor и rank-nullity доказано ровно одномерное ядро при любом exact
+matching root.
+
+**Почему:** это реальные свойства production root backend, а не ещё один
+receiver. Они снимают две неопределённости source-faithful index ladder:
+матрица строго опускается при росте параметра, а каждый нулевой crossing имеет
+nullity one.
+
+**Что отвергли и почему:** не ввели monotone eigenvalues, simple root,
+endpoint count или PSWF index как hypotheses. Aristotle submission был
+подготовлен как резерв для tridiagonal kernel leaf, но не отправлен: более
+короткий minor/rank proof замкнулся локально.
+
+**Техника:** monotone continued-fraction step на contraction box, переход
+порядка через два `Tendsto`, exact diagonal matrix identity,
+`Matrix.PosSemidef.diagonal`, трёхчленная continuant recurrence,
+`cRank_submatrix_le`, rank-nullity и `exists_mulVec_eq_zero_iff`.
+
+**Следующий ход:** source-producing endpoint inertia и формальный
+one-direction inertia jump для одной precommitted root ladder; затем выбрать
+третье even crossing и состыковать его с pinned `psi_4`. Mode zero, restricted
+finite Fourier, Lemma 7.2 и denominator floor остаются отдельными узлами.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4JacobiRightTailMonotonicity.lean` ·
+`Q3/Proofs/RouteB/D0Mode4SchurSpectralParameterOrder.lean` ·
+`Q3/Proofs/RouteB/D0Mode4SchurSimpleKernel.lean` ·
+`docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md`.
+
+**Чей вердикт и его аргумент:** локальный Codex/Lean verdict. Mathlib не
+содержит готовой tridiagonal simple-spectrum или numbered-eigenvalue
+monotonicity lemma, но его exact matrix rank и PSD primitives приняли прямую
+сборку. Все public heads имеют axioms только
+`[propext, Classical.choice, Quot.sound]`.
+
+**Граница:**
+`SCHUR_PARAMETER_DROP_AND_SIMPLE_ROOT_PROVED_ENDPOINT_INERTIA_LADDER_AND_INDEX4_SELECTION_MISSING`;
+matching-root existence, indexed `psi4`, mode zero, finite Fourier, Lemma 7.2,
+denominator floor, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
