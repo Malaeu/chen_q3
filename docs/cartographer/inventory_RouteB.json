@@ -2,23 +2,19 @@
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
   "files_scanned": 211,
-  "declarations": 1925,
-  "in_docs": 826,
+  "declarations": 1928,
+  "in_docs": 872,
   "in_lemma_db": 1869,
-  "orphans": 48,
-  "uncatalogued": 48,
+  "orphans": 11,
+  "uncatalogued": 11,
   "orphan_files_top": [
-    [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
-      35
-    ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceCCMOddMassReflectionDefect.lean",
       9
     ],
     [
-      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
-      4
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
+      2
     ]
   ],
   "items": [
@@ -2048,7 +2044,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
       "line": 75,
       "signature": "theorem ccmModeFinite_neg (N : ℕ) (i : CCMModeFinite N) : ccmModeFinite N (ccmNegFinite N i) = -ccmModeFinite N i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -5418,7 +5414,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0LogWindowMeasureTransport.lean",
       "line": 21,
       "signature": "private theorem lambda_m_pos (i : PairIndex) : 0 < lambda_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -8368,9 +8364,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 33,
       "signature": "private noncomputable def gaussianPi (x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8378,9 +8374,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 36,
       "signature": "private lemma integrable_moment_gaussianPi (n : ℕ) : Integrable (fun x : ℝ => x ^ n • gaussianPi x)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8388,9 +8384,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 57,
       "signature": "private lemma hasDerivAt_gaussianPi (x : ℝ) : HasDerivAt gaussianPi ((-2 * Real.pi * x : ℂ) * gaussianPi x) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8398,9 +8394,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 64,
       "signature": "private lemma deriv_gaussianPi : deriv gaussianPi = fun x : ℝ => (-2 * Real.pi * x : ℂ) * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8408,9 +8404,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 69,
       "signature": "private noncomputable def gaussianP2 (x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8418,9 +8414,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 72,
       "signature": "private noncomputable def gaussianP3 (x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8428,9 +8424,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 75,
       "signature": "private noncomputable def gaussianP4 (x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8438,9 +8434,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 79,
       "signature": "private lemma hasDerivAt_gaussianP2 (x : ℝ) : HasDerivAt gaussianP2 (8 * (Real.pi : ℂ) ^ 2 * x) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8448,9 +8444,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 89,
       "signature": "private lemma hasDerivAt_gaussianP3 (x : ℝ) : HasDerivAt gaussianP3 (-24 * (Real.pi : ℂ) ^ 3 * (x : ℂ) ^ 2 + 12 * Real.pi ^ 2) x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8458,9 +8454,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 101,
       "signature": "private lemma deriv_gaussianP2_mul_gaussianPi : deriv (fun x => gaussianP2 x * gaussianPi x) = fun x => gaussianP3 x * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8468,9 +8464,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 112,
       "signature": "private lemma deriv_gaussianP3_mul_gaussianPi : deriv (fun x => gaussianP3 x * gaussianPi x) = fun x => gaussianP4 x * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8478,9 +8474,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 123,
       "signature": "private lemma iteratedDeriv_two_gaussianPi : iteratedDeriv 2 gaussianPi = fun x => gaussianP2 x * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8488,9 +8484,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 140,
       "signature": "private lemma iteratedDeriv_four_gaussianPi : iteratedDeriv 4 gaussianPi = fun x => gaussianP4 x * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8498,9 +8494,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 147,
       "signature": "private noncomputable def fourierMoment2 (x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8508,9 +8504,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 150,
       "signature": "private noncomputable def fourierMoment4 (x : ℝ) : ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8518,9 +8514,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 153,
       "signature": "private lemma integrable_fourierMoment2 : Integrable fourierMoment2",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8528,9 +8524,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 164,
       "signature": "private lemma integrable_fourierMoment4 : Integrable fourierMoment4",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8538,9 +8534,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 175,
       "signature": "private lemma fourier_add_integrable {f k : ℝ → ℂ} (hf : Integrable f) (hk : Integrable k) : 𝓕 (f + k) = 𝓕 f + 𝓕 k",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8548,9 +8544,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 181,
       "signature": "private lemma fourier_const_smul (c : ℂ) (f : ℝ → ℂ) : 𝓕 (c • f) = c • 𝓕 f",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8558,9 +8554,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 185,
       "signature": "private lemma fourier_gaussianPi : 𝓕 gaussianPi = gaussianPi",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8568,9 +8564,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 189,
       "signature": "private lemma fourier_fourierMoment2 : 𝓕 fourierMoment2 = fun x => gaussianP2 x * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8578,9 +8574,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 196,
       "signature": "private lemma fourier_fourierMoment4 : 𝓕 fourierMoment4 = fun x => gaussianP4 x * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "def",
@@ -8588,9 +8584,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 203,
       "signature": "private noncomputable def spectralCCMLimitH : ℝ → ℂ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8598,9 +8594,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 207,
       "signature": "private lemma spectralCCMLimitH_eq_explicitCCMLimitH : spectralCCMLimitH = explicitCCMLimitH",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8608,9 +8604,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 220,
       "signature": "private lemma fourier_spectralCCMLimitH : 𝓕 spectralCCMLimitH = spectralCCMLimitH",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8628,9 +8624,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 258,
       "signature": "private lemma explicitCCMLimitH_apply (x : ℝ) : explicitCCMLimitH x = ((Real.pi ^ 2 * x ^ 4 - (3 * Real.pi / 2) * x ^ 2 : ℝ) : ℂ) * gaussianPi x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8638,9 +8634,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 266,
       "signature": "private lemma fourier_scale_pos (f : ℝ → ℂ) {u : ℝ} (hu : 0 < u) (y : ℝ) : 𝓕 (fun x => f (u * x)) y = (u⁻¹ : ℝ) • 𝓕 f (y / u)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8648,9 +8644,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 295,
       "signature": "private lemma explicitCCMLimitH_decay : explicitCCMLimitH =O[cocompact ℝ] (fun x : ℝ => |x| ^ (-2 : ℝ))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8658,9 +8654,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 357,
       "signature": "private lemma rpow_decay_comp_mul_pos {f : ℝ → ℂ} {u : ℝ} (hu : 0 < u) (hf : f =O[cocompact ℝ] (fun x : ℝ => |x| ^ (-2 : ℝ))) : (fun x => f (u * x)) =O[cocompact ℝ] (fun x : ℝ => |x| ^ (-2 : ℝ))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8668,9 +8664,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 374,
       "signature": "private lemma poisson_scaled_sum (u : ℝ) (hu : 0 < u) : (∑' n : ℤ, explicitCCMLimitH (u * n)) = ∑' n : ℤ, (u⁻¹ : ℝ) • explicitCCMLimitH ((n : ℝ) / u)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8678,9 +8674,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 417,
       "signature": "private lemma explicitCCMLimitH_even (x : ℝ) : explicitCCMLimitH (-x) = explicitCCMLimitH x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
@@ -8688,6 +8684,16 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
       "line": 424,
       "signature": "private lemma explicitCCMLimitH_zero : explicitCCMLimitH 0 = 0",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "explicitCCMLimitH_pos_of_three_lt_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
+      "line": 428,
+      "signature": "private lemma explicitCCMLimitH_pos_of_three_lt_sq (x : ℝ) (hx : 3 < 2 * Real.pi * x ^ 2) : 0 < (explicitCCMLimitH x).re",
       "in_docs": false,
       "in_lemma_db": false,
       "orphan": true
@@ -8696,37 +8702,57 @@
       "kind": "lemma",
       "name": "summable_explicitCCMLimitH_int_mul",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
-      "line": 429,
+      "line": 455,
       "signature": "private lemma summable_explicitCCMLimitH_int_mul (u : ℝ) (hu : 0 < u) : Summable (fun n : ℤ => explicitCCMLimitH (u * n))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "lemma",
-      "name": "int_sum_eq_two_pnat_sum",
+      "name": "summable_explicitCCMLimitH_pnat_mul",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
-      "line": 435,
-      "signature": "private lemma int_sum_eq_two_pnat_sum (u : ℝ) (hu : 0 < u) : (∑' n : ℤ, explicitCCMLimitH (u * n)) = 2 * ∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)",
-      "in_docs": false,
-      "in_lemma_db": false,
-      "orphan": true
-    },
-    {
-      "kind": "lemma",
-      "name": "positive_sum_scaling",
-      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
-      "line": 462,
-      "signature": "private lemma positive_sum_scaling (u : ℝ) (hu : 0 < u) : (∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)) = (u⁻¹ : ℝ) • ∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u⁻¹)",
+      "line": 461,
+      "signature": "private lemma summable_explicitCCMLimitH_pnat_mul (u : ℝ) (hu : 0 < u) : Summable (fun n : ℕ+ => explicitCCMLimitH ((n : ℕ) * u))",
       "in_docs": false,
       "in_lemma_db": false,
       "orphan": true
     },
     {
       "kind": "theorem",
+      "name": "E_star_explicitCCMLimitH_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
+      "line": 474,
+      "signature": "theorem E_star_explicitCCMLimitH_pos (u : ℝ) (hu : 1 ≤ u) : 0 < (E_star explicitCCMLimitH u).re",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "int_sum_eq_two_pnat_sum",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
+      "line": 508,
+      "signature": "private lemma int_sum_eq_two_pnat_sum (u : ℝ) (hu : 0 < u) : (∑' n : ℤ, explicitCCMLimitH (u * n)) = 2 * ∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "lemma",
+      "name": "positive_sum_scaling",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
+      "line": 535,
+      "signature": "private lemma positive_sum_scaling (u : ℝ) (hu : 0 < u) : (∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u)) = (u⁻¹ : ℝ) • ∑' n : ℕ+, explicitCCMLimitH ((n : ℕ) * u⁻¹)",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
       "name": "E_star_explicitCCMLimitH_inv",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean",
-      "line": 488,
+      "line": 561,
       "signature": "theorem E_star_explicitCCMLimitH_inv (u : ℝ) (hu : 0 < u) : E_star explicitCCMLimitH u⁻¹ = E_star explicitCCMLimitH u",
       "in_docs": true,
       "in_lemma_db": false,
@@ -8808,9 +8834,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
       "line": 27,
       "signature": "private theorem lambda_m_pos_local (i : PairIndex) : 0 < lambda_m i",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8818,9 +8844,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
       "line": 33,
       "signature": "private theorem lambda_m_sq_local (i : PairIndex) : lambda_m i * lambda_m i = (i.m : ℝ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8828,9 +8854,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
       "line": 38,
       "signature": "private theorem exp_logWindow_reflection_div_lambda (i : PairIndex) (x : ℝ) : Real.exp (L_m i - x) / lambda_m i = (Real.exp x / lambda_m i)⁻¹",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -8838,9 +8864,9 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarInversionCoefficientCrosswalk.lean",
       "line": 49,
       "signature": "private theorem reflected_mode_inner (i : PairIndex) (n : ℤ) (g : ℝ → ℂ) (x : ℝ) (heven : g ((Real.exp x / lambda_m i)⁻¹) = g (Real.exp x / lambda_m i)) : inner ℂ (((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * (-n) * ((L_m i - x) / L_m i))) (g (Real.exp (L_m i - x) / lambda_m i)) = inner ℂ (((Real.sqrt (L_m i))⁻¹ : ℂ) * Complex.exp (2 * Real.pi * Complex.I * n * (x / L_m i))) (g (Real.exp x / lambda_m i))",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": false,
-      "orphan": true
+      "orphan": false
     },
     {
       "kind": "theorem",
@@ -17318,7 +17344,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean",
       "line": 81,
       "signature": "def ProlatePair.normalizingDenominator (P : ProlatePair) : ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -17338,7 +17364,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean",
       "line": 99,
       "signature": "@[simp] theorem ProlateOperatorData.action_apply (P : ProlateOperatorData) (f : ℝ → ℂ) (x : ℝ) : P.action f x = prolateWaveExpression P.lambda f x",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -17348,7 +17374,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean",
       "line": 104,
       "signature": "@[simp] theorem ProlatePair.normalizingDenominator_eq (P : ProlatePair) : P.normalizingDenominator = Real.sqrt (P.I0 ^ 2 + P.I4 ^ 2)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -17358,7 +17384,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateLayer.lean",
       "line": 109,
       "signature": "@[simp] theorem prolateCombination_apply (P : ProlatePair) (x : ℝ) : prolateCombination P x = ((P.I4 : ℂ) * P.h0 x - (P.I0 : ℂ) * P.h4 x) / (P.normalizingDenominator : ℂ)",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
