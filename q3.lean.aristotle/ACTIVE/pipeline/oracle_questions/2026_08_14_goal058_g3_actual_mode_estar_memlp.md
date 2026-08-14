@@ -6,7 +6,7 @@ related_addresses: ["Goal058.G3", "Goal058.G3.ActualModeRegularPacket"]
 ancestor_addresses: ["Goal058.G3.ActualModeSource"]
 child_or_next_addresses: ["Goal058.G3.ActualModeExistence", "Goal058.G3.Lemma72Rate"]
 raw_address_notation: "Goal058.G3.ActualModeEStarCarrier"
-normalized_addresses: ["Goal058.G3.ActualModeEStarCarrier", "Goal058.G3.ActualModeRegularPacket", "Goal058.G3.ActualModeSource", "Goal058.G3", "Goal058.G3.ActualModeExistence", "Goal058.G3.Lemma72Rate"]
+normalized_addresses: ["Goal058.G3.ActualModeEStarCarrier", "Goal058.G3", "Goal058.G3.ActualModeRegularPacket", "Goal058.G3.ActualModeSource", "Goal058.G3.ActualModeExistence", "Goal058.G3.Lemma72Rate"]
 address_status: "resolved_local_consequence"
 blocker: "Derive the production E_star MemLp certificate from compact support and actual-mode regularity"
 collections: ["q3_docs", "math_papers"]

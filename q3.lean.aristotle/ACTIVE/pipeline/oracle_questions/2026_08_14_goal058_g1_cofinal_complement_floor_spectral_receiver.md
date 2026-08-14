@@ -67,6 +67,27 @@ Lean.  Эта карточка фиксирует новый точный кра
 | `hermitian unit trial line complement floor ground gap tracking` | `Goal058.G1.CofinalComplementFloor` | проверить generic receiver | floor consequence | no complete project supplier | local exact assembly |
 | `codimension one interlacing complex trial complement Rayleigh floor` | `Goal058.G1.CofinalComplementFloor` | найти separation layer | eigenvalue vs Rayleigh | generic neighbors only | kernel-checked separation theorem |
 | `sourceCCMFinite simple ground gap tracking of complement floor` | `Goal058.G1.CofinalComplementFloor` | проверить literal wrapper | generic vs source object | no prior wrapper | literal wrapper proved locally |
+| `literal CCM complex trial complement full head tail Schur coercivity` | `Goal058.G1.CofinalComplementFloor` | искать полный head/tail supplier | full complex complement vs sector receiver | only odd-sector fixed-`m` machinery | no full supplier |
+| `sourceWeil odd tail coercivity even sector trial line orthogonal complement` | `Goal058.G1.CofinalComplementFloor.UniformTail` | проверить, переносится ли odd tail на полный complement | odd sector vs even/complex coupling | `D0PstarSourceWeilOddTailExplicitCoercivity` and odd-target-floor Schur neighbors | object mismatch; no transfer theorem |
+| `finite-head Gram certificate uniform high-mode tail spectral gap Galerkin compression` | `Goal058.G1.CofinalComplementFloor.FiniteHead` | искать cofinal finite-head certificate | fixed cell vs precommitted family | historical finite-cell and checker artifacts only | no cofinal certificate |
+| same source query in `math_papers` | `Goal058.G1.CofinalComplementFloor` | проверить внешнюю paper collection | repo corpus vs paper corpus | collection unavailable in this runtime | no evidence imported |
+
+## Результат source-аудита 2026-08-14
+
+- `D0PstarSourceWeilOddTailExplicitCoercivity` даёт фиксированный запас
+  `1/2` только для literal high odd graph modes;
+- `D0PstarSourceWeilOddTargetFloorSchur*` и
+  `D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver.lean` собирают
+  odd-sector target-floor Schur apparatus для фиксированного `m = 13`, но
+  production sign `SourceWeilOddTargetFloorSchurPositive13` не доказан;
+- найденные объекты не являются full complex Proposition-59 trial complement
+  и не дают theorem на precommitted cofinal `m`-schedule;
+- следовательно, ни odd-tail margin, ни fixed-cell Schur receiver нельзя
+  переименовать в искомый G1 supplier. Нужны отдельная full-tail/parity
+  coupling lemma и finite-head certificate на той же cofinal family.
+
+Текущий честный stop-code:
+`G1_LITERAL_COMPLEMENT_FLOOR_GRAM_CHECKER_PROVED_COFINAL_LITERAL_CCM_ARITHMETIC_AND_UNIFORM_TAIL_FLOOR_MISSING`.
 
 ## Пустые / шумовые слова
 
