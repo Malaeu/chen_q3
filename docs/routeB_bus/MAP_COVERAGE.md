@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **238** · упомянуто в `MAP.md`: **21** · вне карты: **217** · без описания в шапке: **0**
+Всего файлов: **254** · упомянуто в `MAP.md`: **21** · вне карты: **233** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -60,6 +60,17 @@
 | `D0KTrialStage3` | — | The exact D0.5 nonzero locus for the projected trial. | 0 |
 | `D0LogWindowMeasureTransport` | — | первая декларация: `lambda_m_one_lt` | 0 |
 | `D0LogWindowVNMCompletenessBridge` | карта | первая декларация: `logWindow_measurePreserving` | 0 |
+| `D0Mode4BackwardTailFiniteSchurCrosswalk` | — | Actual finite mode-four Jacobi truncation and Schur crosswalk | 0 |
+| `D0Mode4BackwardTailFiniteTailPosDef` | — | Positive definiteness of the actual finite mode-four tail | 0 |
+| `D0Mode4BackwardTailSchurConvergence` | — | Fixed-carrier convergence of the mode-four backward-tail Schur approximation | 0 |
+| `D0Mode4ClassicalCarrierFromFiniteLimit` | — | Classical even carrier from the finite DLMF family | 0 |
+| `D0Mode4ClassicalCarrierHeadUpper` | — | Finite head upper bounds for the classical carrier | 0 |
+| `D0Mode4ClassicalCarrierSchurCount` | — | Classical-carrier count transported to the literal Schur matrix | 0 |
+| `D0Mode4DLMF3035EvenCharacteristicSource` | — | Pole-safe DLMF 30.3.5 even characteristic source object | 0 |
+| `D0Mode4DLMF3035EvenL2SolutionCrosswalk` | — | DLMF 30.3.5 characteristic equation and the normalized square-summable row | 0 |
+| `D0Mode4DLMF3035EvenRightBranchCrosswalk` | — | DLMF 30.3.5 even right-branch crosswalk | 0 |
+| `D0Mode4DLMFEvenFiniteMatrix` | — | Literal DLMF 30.16.1 even finite matrix | 0 |
+| `D0Mode4DLMFFullFiniteSpectrumCrosswalk` | — | Full finite DLMF spectrum crosswalk | 0 |
 | `D0Mode4FerrersCenterValueNonzero` | — | Goal 058 G3: nonzero center value of the mode-four Ferrers solution | 0 |
 | `D0Mode4FerrersCoefficientAbsoluteSummability` | — | Absolute summability at the mode-four Ferrers boundary | 0 |
 | `D0Mode4FerrersCoefficientExtraction` | — | Goal 058 G3: mode-four Ferrers coefficient extraction | 0 |
@@ -71,6 +82,9 @@
 | `D0Mode4FerrersProlateDifferentialEquation` | — | Exact prolate ODE for the matched mode-four Ferrers series | 0 |
 | `D0Mode4FerrersRegularEvenProlateSolution` | — | Goal 058 G3: regular even mode-four Ferrers solution assembly | 0 |
 | `D0Mode4FerrersSturmComparison` | — | Goal 058 G3: interior Sturm comparison on one nodal interval | 0 |
+| `D0Mode4FiniteBlockInertiaAdditivity` | — | Finite block inertia for the mode-four Schur truncation | 0 |
+| `D0Mode4FiniteToLiteralNegativeCount` | — | Eventual finite-to-literal mode-four negative-count transport | 0 |
+| `D0Mode4HermitianNegativeCountStability` | — | Eventual stability of the mode-four Hermitian negative count | 0 |
 | `D0Mode4HermitianSchurTailEnvelopes` | — | Source-neutral finite-left envelopes for the mode-four Hermitian Schur determinant | 0 |
 | `D0Mode4JacobiHermitianTailRow` | — | The canonical mode-four tail row in Hermitian Jacobi coordinates | 0 |
 | `D0Mode4JacobiHermitianTailUniqueness` | — | Square-summable uniqueness for the symmetric mode-four tail recurrence | 0 |
@@ -153,9 +167,11 @@
 | `D0PstarSourceWeilFormCoreTopology` | — | Source-Weil form-core topology | 0 |
 | `D0PstarSourceWeilOddFormPullback13` | — | Exact normalized odd source-Weil form pullback at `m = 13` | 0 |
 | `D0PstarSourceWeilOddTailCoercivityClosure` | — | Source-Weil odd-tail coercivity: algebraic span to graph closure | 0 |
+| `D0PstarSourceWeilOddTailCorrectionBound` | — | Source-Weil odd-tail inverse-weighted correction bound | 0 |
 | `D0PstarSourceWeilOddTailExplicitCoercivity` | — | Explicit source-Weil coercivity on the literal odd tail | 0 |
 | `D0PstarSourceWeilOddTailGraphOperator` | — | Literal source-Weil odd-tail graph operator | 0 |
 | `D0PstarSourceWeilOddTailResidual` | — | Literal source-Weil odd-tail residual | 0 |
+| `D0PstarSourceWeilOddTargetFloorSchurMatrixGeneric` | — | Exact arbitrary-cell matrix receiver for the source-Weil odd Schur head | 0 |
 | `D0PstarSourceWeilOddTargetFloorSchurMatrixReceiver` | — | Exact all-`N`, `m = 13` matrix receiver for the target-floor Schur sign | 0 |
 | `D0PstarSourceWeilOddTargetFloorSchurReceiver` | — | Exact receiver for the `m = 13` target-floor Schur certificate | 0 |
 | `D0PstarSourceWeilOddTargetFloorSchurReduction` | — | Exact target-floor reduction for the source-Weil odd block | 0 |

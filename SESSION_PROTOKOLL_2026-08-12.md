@@ -263,3 +263,26 @@ RouteB отказывает без публикации JSON вместо под
 ```
 
 Коммиты дня: `f82b09f8` · `388e559f` · `d55f7c26` · `36d7568d` · `d85af9c1` · `5b28c9f5`.
+
+---
+
+## Fortsetzung 2026-08-15 — Goal 058 G3 DLMF/l2
+
+Сохранён и локально исполнен следующий Proshka verdict из Download/order
+контура. Выбран Jacobi/l2 seam: независимая pole-safe DLMF 30.3.5
+characteristic equation должна быть эквивалентна квадрат-суммируемости ровно
+нормированной parity-boundary left row.
+
+Теорема
+`mode4DLMF3035EvenCharacteristicEquation_iff_leftCoefficient_sqSummable`
+доказана в single-import production file. Forward proof использует бесконечный
+contraction-selected right limit и geometric decay; reverse proof использует
+positive diagonal symmetrization и discrete-Wronskian uniqueness. Direct Lean,
+named build, `q3_check` и full build прошли; axioms только `propext`,
+`Classical.choice`, `Quot.sound`. Aristotle не отправлялся: bounded leaf
+закрылся локально.
+
+Это не закрывает G3. Следующая стена — независимое отождествление l2 solution
+set с indexed even finite-limit/differential spectrum. G1 отдельно остаётся
+открытым на actual degree-0/4 pair, CCM Lemma 7.2 и cofinal full-complement
+floor. Route B остаётся `CHALLENGER / NOT_RH`; RH claim не сделан.

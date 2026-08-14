@@ -2267,6 +2267,52 @@ classical-spectrum-to-Schur-inertia crosswalk не доказывает его n
 `CLASSICAL_EVEN_SPECTRUM_TO_LITERAL_SCHUR_INERTIA_CROSSWALK_MISSING`;
 G1, G3, Route B promotion и RH остаются открыты.
 
+## 2026-08-15 — Goal 058 G3: DLMF characteristic equation получила точный l2-смысл
+
+**Развилка:** продолжать finite inertia/count ladder без бесконечного
+solution-set theorem либо сначала материализовать независимый Jacobi carrier:
+точная DLMF characteristic equation эквивалентна существованию именно
+нормированной square-summable recurrence row.
+
+**Выбрали:** `JACOBI_INERTIA` в source-faithful форме. Сначала доказан
+бикондиционал между pole-safe DLMF 30.3.5 equation на split `2*(K-1)` и
+квадрат-суммируемостью parity-normalized left row. Следующая отдельная теорема
+должна связать этот l2-spectrum с independently indexed even spectrum.
+
+**Почему:** finite counts без такого identification только переименовывают
+отсутствующий solution-set theorem. Независимые literal left/right branches и
+infinite contraction-selected ratio уже существовали, поэтому l2 seam был
+минимальным theorem с настоящим downstream consumer.
+
+**Что отвергли и почему:** полный differential-spectrum import отложен как
+слишком широкий первый шаг; finite terminal tail отвергнут как surrogate;
+переход через `mode4RootFunction`, arbitrary coefficient row, endpoint counts
+и finite negative-count stability запрещён как circular или недостаточный.
+
+**Техника:** literal three-term recurrence, exact split splice, invariant-box
+geometric summability, positive diagonal symmetrization и private
+discrete-Wronskian uniqueness для двух square-summable Hermitian tails.
+
+**Следующий ход:** source theorem
+`mode4DLMF3035EvenLeftCoefficient_sqSummable_iff_finiteLimitSpectrum`, затем
+strict ordered carrier и endpoint separators. Параллельный G1 требует actual
+degree-0/4 pair, CCM Lemma 7.2 и cofinal full-complement floor.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF3035_L2_SOLUTION_CROSSWALK_CLOSEOUT_2026-08-15.md` ·
+`q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_POST_DLMF_CHARACTERISTIC_PROSHKA_VERDICT_2026-08-14.md`.
+
+**Чей вердикт и его аргумент:** Proshka выбрала `JACOBI_INERTIA`: сначала
+`characteristic equation <-> normalized parity-boundary recurrence row is
+square-summable`, потому что одна inertia/count-jump лестница без l2-spectral
+identification стену не сокращает. Codex локально закрыл exact head; Aristotle
+не вызывался.
+
+**Граница:**
+`G3_L2_CHARACTERISTIC_CROSSWALK_PROVED_FINITE_LIMIT_SPECTRUM_SOURCE_THEOREM_MISSING`;
+G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |

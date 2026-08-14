@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 253,
-  "declarations": 2368,
-  "in_docs": 1022,
+  "files_scanned": 254,
+  "declarations": 2396,
+  "in_docs": 1023,
   "in_lemma_db": 2310,
-  "orphans": 46,
-  "uncatalogued": 46,
+  "orphans": 73,
+  "uncatalogued": 73,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean",
       28
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      27
     ],
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenRightBranchCrosswalk.lean",
@@ -6925,6 +6929,286 @@
       "in_docs": true,
       "in_lemma_db": false,
       "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMF3035EvenLeftCoefficient",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 39,
+      "signature": "noncomputable def mode4DLMF3035EvenLeftCoefficient (G Λ : ℝ) (q : ℕ) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "leftPair_fst_eq_prev",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 43,
+      "signature": "private theorem leftPair_fst_eq_prev (G Λ : ℝ) (q : ℕ) (hq : 1 ≤ q) : (mode4LeftPair G Λ q).1 = (mode4LeftPair G Λ (q - 1)).2",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "leftPair_row_recurrence",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 51,
+      "signature": "private theorem leftPair_row_recurrence (mProject : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) : ∀ q : ℕ, mode4JacobiLower (mode4JacobiG mProject) q * (mode4LeftPair (mode4JacobiG mProject) Λ (q - 1)).2 - mode4JacobiCenter (mode4JacobiG mProject) Λ q * (mode4LeftPair (mode4JacobiG mProject) Λ q).2 + mode4JacobiUpper (mode4JacobiG mProject) q * (mode4LeftPair (mode4JacobiG mProject) Λ (q + 1)).2 = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "l2SymmetricOff",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 80,
+      "signature": "private noncomputable def l2SymmetricOff (G : ℝ) (q : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2SymmetricOff_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 85,
+      "signature": "private theorem l2SymmetricOff_sq (G : ℝ) (q : ℕ) (hG : 0 < G) : l2SymmetricOff G q ^ 2 = mode4JacobiLower G (q + 1) * mode4JacobiUpper G q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2SymmetricOff_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 100,
+      "signature": "private theorem l2SymmetricOff_pos (G : ℝ) (q : ℕ) (hG : 0 < G) (hq : 2 ≤ q) : 0 < l2SymmetricOff G q",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2SymmetricOff_le_G",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 111,
+      "signature": "private theorem l2SymmetricOff_le_G (G : ℝ) (q : ℕ) (hG : 0 < G) (hq : 2 ≤ q) : l2SymmetricOff G q ≤ G",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "l2Scale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 133,
+      "signature": "private noncomputable def l2Scale (K n : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Scale_pos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 139,
+      "signature": "private theorem l2Scale_pos (K n : ℕ) (hK : 3 ≤ K) : 0 < l2Scale K n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Scale_le_one",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 149,
+      "signature": "private theorem l2Scale_le_one (K n : ℕ) (hK : 3 ≤ K) : l2Scale K n ≤ 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Scale_sq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 159,
+      "signature": "private theorem l2Scale_sq (K n : ℕ) (hK : 3 ≤ K) : l2Scale K n ^ 2 = (4 * (K : ℝ) - 3) / (4 * ((K + n : ℕ) : ℝ) - 3)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Scale_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 170,
+      "signature": "private theorem l2Scale_zero (K : ℕ) (hK : 3 ≤ K) : l2Scale K 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Scale_lower_balance",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 178,
+      "signature": "private theorem l2Scale_lower_balance (G : ℝ) (K n : ℕ) (hG : 0 < G) (hK : 3 ≤ K) : mode4JacobiLower G (K + n) * l2Scale K (n + 1) = l2SymmetricOff G (K - 1 + n) * l2Scale K n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Scale_upper_balance",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 201,
+      "signature": "private theorem l2Scale_upper_balance (G : ℝ) (K n : ℕ) (hG : 0 < G) (hK : 3 ≤ K) : mode4JacobiUpper G (K + n) * l2Scale K (n + 1) = l2SymmetricOff G (K + n) * l2Scale K (n + 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "l2TailRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 227,
+      "signature": "private noncomputable def l2TailRow (mProject : ℕ) (Λ : ℝ) (K : ℕ) : ℕ → ℝ | 0 => 1 | n + 1 => mode4RightTailLimit mProject Λ (K + n) * l2TailRow mProject Λ K n  @[simp] private theorem l2TailRow_zero (mProject K : ℕ) (Λ : ℝ) : l2TailRow mProject Λ K 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2TailRow_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 234,
+      "signature": "@[simp] private theorem l2TailRow_zero (mProject K : ℕ) (Λ : ℝ) : l2TailRow mProject Λ K 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2TailRow_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 238,
+      "signature": "@[simp] private theorem l2TailRow_succ (mProject K n : ℕ) (Λ : ℝ) : l2TailRow mProject Λ K (n + 1) = mode4RightTailLimit mProject Λ (K + n) * l2TailRow mProject Λ K n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2TailRow_nonneg",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 244,
+      "signature": "private theorem l2TailRow_nonneg (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : ∀ n, 0 ≤ l2TailRow mProject Λ K n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2TailRow_le_half_pow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 265,
+      "signature": "private theorem l2TailRow_le_half_pow (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : ∀ n, l2TailRow mProject Λ K n ≤ (1 / 2 : ℝ) ^ n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2TailRow_sq_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 293,
+      "signature": "private theorem l2TailRow_sq_summable (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Summable (fun n => (l2TailRow mProject Λ K n) ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2TailRow_recurrence",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 315,
+      "signature": "private theorem l2TailRow_recurrence (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : ∀ n, mode4JacobiLower (mode4JacobiG mProject) (K + n) * l2TailRow mProject Λ K n - mode4JacobiCenter (mode4JacobiG mProject) Λ (K + n) * l2TailRow mProject Λ K (n + 1) + mode4JacobiUpper (mode4JacobiG mProject) (K + n) * l2TailRow mProject Λ K (n + 2) = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "l2HermitianTailRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 379,
+      "signature": "private noncomputable def l2HermitianTailRow (mProject : ℕ) (Λ : ℝ) (K n : ℕ) : ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2HermitianTailRow_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 383,
+      "signature": "private theorem l2HermitianTailRow_zero (mProject K : ℕ) (Λ : ℝ) (hK : 3 ≤ K) : l2HermitianTailRow mProject Λ K 0 = 1",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2HermitianTailRow_sq_summable",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 390,
+      "signature": "private theorem l2HermitianTailRow_sq_summable (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : Summable (fun n => (l2HermitianTailRow mProject Λ K n) ^ 2)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2HermitianTailRow_recurrence",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 409,
+      "signature": "private theorem l2HermitianTailRow_recurrence (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) : ∀ n, l2SymmetricOff (mode4JacobiG mProject) (K - 1 + n) * l2HermitianTailRow mProject Λ K n - mode4JacobiCenter (mode4JacobiG mProject) Λ (K + n) * l2HermitianTailRow mProject Λ K (n + 1) + l2SymmetricOff (mode4JacobiG mProject) (K + n) * l2HermitianTailRow mProject Λ K (n + 2) = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "sqSummable_tendsto_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 456,
+      "signature": "private theorem sqSummable_tendsto_zero {a : ℕ → ℝ} (ha : Summable (fun n => (a n) ^ 2)) : Tendsto a atTop (𝓝 0)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "l2Hermitian_sqSummable_unique_up_to_scale",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 468,
+      "signature": "private theorem l2Hermitian_sqSummable_unique_up_to_scale (G Λ : ℝ) (K : ℕ) (hG : 0 < G) (hK : 3 ≤ K) (a b : ℕ → ℝ) (ha0 : a 0 ≠ 0) (haRec : ∀ n, l2SymmetricOff G (K - 1 + n) * a n - mode4JacobiCenter G Λ (K + n) * a (n + 1) + l2SymmetricOff G (K + n) * a (n + 2) = 0) (hbRec : ∀ n, l2SymmetricOff G (K - 1 + n) * b n - mode4JacobiCenter G Λ (K + n) * b (n + 1) + l2SymmetricOff G (K + n) * b (n + 2) = 0) (haSq : Summable (fun n => (a n) ^ 2)) (hbSq : Summable (fun n => (b n) ^ 2)) : ∃ c : ℝ, ∀ n, b n = c * a n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "left_tail_eq_mul_l2TailRow",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMF3035EvenL2SolutionCrosswalk.lean",
+      "line": 565,
+      "signature": "private theorem left_tail_eq_mul_l2TailRow (mProject K : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ : Λ ≤ 20) (hmatch : (mode4LeftPair (mode4JacobiG mProject) Λ K).2 = mode4RightTailLimit mProject Λ K * (mode4LeftPair (mode4JacobiG mProject) Λ (K - 1)).2) : ∀ n, (mode4LeftPair (mode4JacobiG mProject) Λ (K - 1 + n)).2 = (mode4LeftPair (mode4JacobiG mProject) Λ (K - 1)).2 * l2TailRow mProject Λ K n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
     },
     {
       "kind": "def",
