@@ -1,0 +1,127 @@
+GOAL 058 JOINT SOURCE REVIEW DISPATCH
+Date: 2026-08-14
+Phase: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+Lane: CHALLENGER / NOT_RH
+Canonical branch: rh_clean
+Base proof commit: d727e128186bd9506b55d2c3c4e08075bed6fbd0
+
+ROLES
+
+- Mythos: proof-architecture partner. Produce candidate theorem chains, exact
+  source pins, and falsifiers/guards. Do not judge a candidate as accepted.
+- Proshka: judge. Accept, repair, or reject the proposed next theorem shape and
+  select the smallest source-faithful executable leaf.
+- Codex: implements only the accepted bounded leaf and kernel-checks it.
+
+CURRENT VERIFIED INPUTS
+
+G3:
+
+1. The literal production type remains unchanged. `IsActualProlateModePair`
+   is an external predicate; it is not existence.
+2. The exact mode-four Jacobi right tail, root function, Hermitian Schur
+   determinant, finite-left determinant envelopes, matched normalized
+   recurrence row, and geometric tail splice are kernel checked.
+3. Commit d727e128 proves that any exact matching root produces a normalized,
+   nonzero, even Ferrers series which is continuous on [-1,1], C2 on (-1,1),
+   and satisfies the exact source prolate ODE there.
+4. The direct root receiver is
+   `exists_mode4RootFunction_eq_zero_at_four_mul_of_finiteLeft_envelopes`.
+   Its only mathematical endpoint inputs are a positive finite-left lower
+   envelope and a negative finite-left upper envelope at K = 4m.
+5. No theorem on disk proves those two strict signs uniformly in m >= 2.
+   The old endpoints -G+8*sqrt(G), -G+10*sqrt(G) were diagnostic only and are
+   not source-authorized.
+6. No theorem on disk identifies the constructed root/function as the third
+   even (degree-four) PSWF, supplies the mode-zero companion, or exports the
+   restricted plus-phase finite-Fourier eigenrelations.
+
+G1:
+
+1. The literal finite CCM matrix, reflection commutation, eta-even and
+   beta-odd structure, divided-difference off-diagonal formula, and rank-two
+   commutator are kernel checked.
+2. Commutator/beta structure alone is killed by an exact 3x3 counterexample:
+   the structured matrix may have a two-dimensional ground kernel.
+3. The surviving sufficient decomposition is sector-local: even Krylov
+   nonvanishing plus strict even/odd ground ordering gives a simple even
+   ground; quantitative uniform gap and same-trial cofinal tracking remain.
+4. No literal CCM theorem on disk proves the even Krylov determinant,
+   even/odd sector order, a uniform gap, or the coupled same-family schedule.
+
+NONNEGOTIABLE BOUNDARIES
+
+- Do not add a field to `ProlatePair` and call it existence.
+- Do not take root existence, ordered mode selection, finite-Fourier
+  eigenrelations, Lemma 7.2 rate, denominator floor, simplicity, gap, or
+  cofinal tracking as hypotheses of a theorem claimed to close them.
+- Keep h0 <-> chi0 and h4 <-> chi2, plus Fourier phase and physical scaling,
+  source locked.
+- Finite numerics may choose/test a candidate endpoint or schedule, but do not
+  prove a uniform family theorem without a replayable exact certificate and a
+  Lean-checked uniform reduction.
+- No G1/G3 closure, Route B promotion, or RH claim from this review alone.
+
+MYTHOS REQUEST
+
+Return one proof-architecture memorandum with two independently labelled
+fronts.
+
+For G3:
+
+1. Select the smallest source-faithful chain from the current mode-four ODE
+   constructor to an actual degree-0/degree-4 production pair.
+2. Decide explicitly between, or replace, these routes:
+   A. prove the two finite-left envelope signs at source-defined endpoints;
+   B. formalize enough singular Sturm-Liouville/oscillation theory to obtain
+      existence and degree selection, then identify the coefficient row;
+   C. use another pinned primary-source theorem with a shorter exact crosswalk.
+3. Give exact proposed Lean theorem heads and consumers, including quantifiers,
+   domains, normalization, scale c = 2*pi*lambda^2, plus-phase convention,
+   and the degree-four/third-even index map.
+4. Name the first theorem that is both non-circular and small enough for Codex
+   or Aristotle. If none exists, name the exact missing primary-source fact.
+5. Give one falsifier/control for every proposed bridge.
+
+For G1:
+
+1. Give the smallest literal-CCM arithmetic supplier which can prove a simple
+   even ground and a quantitative gap after the commutator-only route died.
+2. State whether the right next object is a sector Krylov determinant,
+   discriminant/resultant, oscillation/Perron condition, a verified interval
+   certificate with a uniform analytic tail, or something else.
+3. Give exact theorem heads for finite-cell and cofinal/uniform levels, and
+   identify the same-trial connector needed by Goal 058.
+4. Reject any condition contradicted by the literal beta diagnostic or which
+   merely assumes the desired gap/order.
+
+PROSHKA JUDGE REQUEST
+
+After reading the Mythos memorandum and the canonical context pack:
+
+1. Verdict each proposed G3 and G1 route as ACCEPT / REPAIR / REJECT with exact
+   reasons and source pins.
+2. Select exactly one next executable theorem leaf per front, or explicitly
+   hold one front if only the other has a sound leaf.
+3. Provide the exact Lean statement contract, owned file, required imports,
+   allowed axioms, validation commands, and planted falsifier.
+4. State what the leaf closes and list all nonclaims.
+5. If no executable leaf survives, issue a precise stop code and name the
+   missing external source statement; do not manufacture a hypothesis binder.
+
+AUTHORITATIVE CONTEXT PACK
+
+q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/proshka/
+PROSHKA_BRIEF_GOAL058_G1_G3_NEXT_SOURCE_JUDGE_2026-08-14.txt
+
+CURRENT STOP
+
+G3: MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING
+G1: LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING
+
+NONCLAIMS
+
+NO_G1
+NO_G3
+NO_ROUTE_B_PROMOTION
+NO_RH

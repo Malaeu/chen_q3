@@ -1,0 +1,2087 @@
+# Proshka Context Pack
+Generated: 2026-08-14T03:55:22
+Repo: /Users/emalam/GitHub/rh_lean_01_2026
+Branch: rh_clean
+HEAD: d727e128
+Range: 19412aed..d727e128
+
+## Working tree
+```text
+## rh_clean...origin/rh_clean
+```
+
+## Commit list (oneline)
+```text
+d727e128 [MacOS][rh_clean][Goal058] Prove mode-four Ferrers prolate ODE
+```
+
+## Range diff summary
+```text
+SESSION_PROTOKOLL_2026-08-13.md                    |  28 +
+ ...ASK_2026-08-14_goal058_g3_prolate_rate_floor.md |  26 +
+ docs/Progress_Log.md                               |  40 ++
+ ...8_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md |  54 +-
+ ...ODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md |  82 +++
+ ...Mode4FerrersCoefficientAbsoluteSummability.lean | 329 ++++++++++
+ .../RouteB/D0Mode4FerrersInteriorRegularity.lean   | 421 +++++++++++++
+ .../D0Mode4FerrersProlateDifferentialEquation.lean | 679 +++++++++++++++++++++
+ .../D0Mode4OrdinaryLegendreIntervalBound.lean      | 584 ++++++++++++++++++
+ q3.lean.aristotle/aristotle_db/knowledge.db        | Bin 12447744 -> 12447744 bytes
+ 10 files changed, 2227 insertions(+), 16 deletions(-)
+```
+
+## Per-commit stats
+```text
+d727e128 [MacOS][rh_clean][Goal058] Prove mode-four Ferrers prolate ODE
+ SESSION_PROTOKOLL_2026-08-13.md                    |  28 +
+ ...ASK_2026-08-14_goal058_g3_prolate_rate_floor.md |  26 +
+ docs/Progress_Log.md                               |  40 ++
+ ...8_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md |  54 +-
+ ...ODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md |  82 +++
+ ...Mode4FerrersCoefficientAbsoluteSummability.lean | 329 ++++++++++
+ .../RouteB/D0Mode4FerrersInteriorRegularity.lean   | 421 +++++++++++++
+ .../D0Mode4FerrersProlateDifferentialEquation.lean | 679 +++++++++++++++++++++
+ .../D0Mode4OrdinaryLegendreIntervalBound.lean      | 584 ++++++++++++++++++
+ q3.lean.aristotle/aristotle_db/knowledge.db        | Bin 12447744 -> 12447744 bytes
+ 10 files changed, 2227 insertions(+), 16 deletions(-)
+```
+
+## Per-commit diffs
+
+### d727e128
+```diff
+commit d727e128186bd9506b55d2c3c4e08075bed6fbd0
+Author: kdl2026 <kdl2026@dfr.de>
+Date:   Fri Aug 14 03:51:47 2026 +0200
+
+    [MacOS][rh_clean][Goal058] Prove mode-four Ferrers prolate ODE
+
+diff --git a/SESSION_PROTOKOLL_2026-08-13.md b/SESSION_PROTOKOLL_2026-08-13.md
+index 1bac8ffb..8200e0c1 100644
+--- a/SESSION_PROTOKOLL_2026-08-13.md
++++ b/SESSION_PROTOKOLL_2026-08-13.md
+@@ -598,3 +598,31 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
+   in `GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
+ - Classification: `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; no Route B
+   promotion and no RH claim.
++
++## Goal 058 source progress — mode-four Ferrers series now satisfies the exact prolate ODE
++
++- The coefficient route discharged the former analytic seam without adding a
++  source axiom.  `D0Mode4OrdinaryLegendreIntervalBound.lean` proves the exact
++  ordinary-Legendre ODE, the sharp `|P_n(x)| <= 1` bound on `[-1,1]`, and
++  first/second derivative bounds on every strict interior window.
++- The exact geometric tail splice now yields absolute and every polynomially
++  weighted coefficient summability.  The even Ferrers series converges
++  uniformly on the closed source interval and is `ContDiffOn R 2` on its
++  interior by two legal termwise differentiations.
++- `D0Mode4FerrersProlateDifferentialEquation.lean` keeps the zero row explicit,
++  proves all three outgoing Legendre bands summable, performs only legal
++  one-step `tsum` shifts, and converts the source three-term recurrence into
++  the exact prolate ODE.
++- `exists_mode4MatchedNormalizedProlateFerrersRow_of_root` constructs a
++  positive-leading, normalized, nonzero mode-four Ferrers eigenfunction from
++  an exact matching root.  Direct Lean, the target build (`7768` jobs), and
++  the full build (`7817` jobs) passed.  Public axioms are exactly
++  `[propext, Classical.choice, Quot.sound]`.
++- Boundary: this proves `recurrence -> convergent C2 function -> interior ODE`
++  for mode four.  It does not yet prove an unconditional root bracket,
++  endpoint flux, physical-window scaling, third-even zero-count selection,
++  the mode-zero companion, a restricted finite-Fourier eigenrelation, CCM
++  Lemma 7.2, or the projected denominator floor.
++- Classification:
++  `MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.
++  G1, G3, Route B promotion, and RH remain open.
+diff --git a/docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md b/docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
+index 849294f2..36e4ed08 100644
+--- a/docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
++++ b/docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
+@@ -99,3 +99,29 @@ The parallel G1 stop is
+ `LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING`.  The full
+ input/output contract is preserved in
+ `GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
++
++## 2026-08-14 mode-four Ferrers constructor progress
++
++The narrower coefficient route is no longer stopped at convergence or the
++interior differential equation.  Four kernel-checked files now prove:
++
++- the exact ordinary-Legendre ODE, the sharp unit-interval bound, and interior
++  first/second derivative majorants;
++- absolute and polynomially weighted summability of the matched coefficient
++  row, uniform convergence, and closed-window continuity;
++- legal twice-termwise differentiation and interior `C2` regularity;
++- absolutely summable three-band reindexing from the source recurrence to the
++  exact prolate ODE, including the exceptional zero row.
++
++The public constructor
++`exists_mode4MatchedNormalizedProlateFerrersRow_of_root` now turns an exact
++matching root into a nonzero normalized mode-four Ferrers function satisfying
++that ODE.  Direct Lean, target build, and full build pass; its public axiom
++audit is exactly `[propext, Classical.choice, Quot.sound]`.
++
++This is a real source supplier, not G3 closure.  It remains conditional on a
++matching root, and it does not yet prove endpoint realization, scaling to the
++physical window, third-even/degree-four zero-count selection, the mode-zero
++companion, the restricted finite-Fourier eigenrelations, CCM Lemma 7.2, or the
++denominator floor.  The narrowed stop is
++`MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.
+diff --git a/docs/Progress_Log.md b/docs/Progress_Log.md
+index 09e1e8e9..08ba702b 100644
+--- a/docs/Progress_Log.md
++++ b/docs/Progress_Log.md
+@@ -1810,6 +1810,46 @@ gap/sector-order и same-trial cofinal tracking.
+ **Граница:** `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`; Route B остаётся
+ `CHALLENGER / NOT_RH`.
+ 
++## 2026-08-14 — Goal 058: recurrence row стал настоящей mode-four ODE-функцией
++
++**Развилка:** оставить coefficient backend как формальную рекурсию либо
++доказать, что её бесконечный Ferrers-ряд реально сходится, дважды
++дифференцируется и удовлетворяет source prolate ODE.
++
++**Выбрали:** точный путь через geometric tail splice, sharp Legendre bound,
++две законные termwise differentiation и отдельные absolutely summable
++three-band shifts с явной обработкой нулевой строки.
++
++**Почему:** это минимальный локально доказуемый source theorem за стеной
++actual-mode constructor. Он превращает существующий matching root в реальную
++нормированную `C2`-внутри функцию, не требуя изобретать compact spectral
++theorem и не подменяя existence новым binder.
++
++**Что отвергли и почему:** формальную перестановку несуммируемых рядов,
++`l2 -> l1` shortcut и пропуск `q=0` отвергли как ложные; объявить полученную
++функцию degree-four PSWF нельзя без endpoint/zero-count/order selection и
++finite-Fourier eigenrelation.
++
++**Техника:** coefficientwise shifted-Legendre ODE; energy monotonicity;
++geometric polynomial moments; uniform derivative majorants; legal `tsum`
++one-step shifts; exact three-band recurrence cancellation; direct/target/full
++Lean and public axiom audit.
++
++**Следующий ход:** физическое scaling/endpoint realization и точная
++third-even selection для mode four, затем mode zero и restricted Fourier
++relations; только после этого CCM Lemma 7.2 и denominator floor.
++
++**Адреса:**
++`Q3/Proofs/RouteB/D0Mode4OrdinaryLegendreIntervalBound.lean` ·
++`Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean` ·
++`Q3/Proofs/RouteB/D0Mode4FerrersInteriorRegularity.lean` ·
++`Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean` ·
++`GOAL058_MODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md`.
++
++**Граница:**
++`MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`;
++G1, G3, Route B promotion и RH остаются открыты.
++
+ ### Счёт раскопок
+ 
+ | четверть | строки | развилок найдено | причина записана | причина отсутствует |
+diff --git a/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md b/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md
+index 81a9a18f..c19da339 100644
+--- a/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md
++++ b/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md
+@@ -4,7 +4,7 @@ Date: 2026-08-14
+ 
+ Lane: `CHALLENGER / NOT_RH`
+ 
+-Verdict: `G1_OPEN / G3_OPEN / TWO_FALSE_SHORTCUTS_KILLED`
++Verdict: `MODE4_FERRERS_ODE_PASS / G1_OPEN / G3_OPEN`
+ 
+ ## Owner-language summary
+ 
+@@ -12,8 +12,9 @@ The route now has the exact finite CCM matrix, the exact prolate trial, the
+ parity split, the P59 entire-function bridge, and a positive limiting prolate
+ anchor. It still lacks two load-bearing theorems:
+ 
+-1. **G3:** construct the actual source prolate modes, then prove the paper's
+-   quantitative rate and a denominator floor for their trial family;
++1. **G3:** finish the actual source prolate modes around the now-constructed
++   mode-four Ferrers ODE supplier, then prove the paper's quantitative rate
++   and a denominator floor for their trial family;
+ 2. **G1:** prove that the literal finite CCM ground is simple/even with a
+    quantitative gap, and that the same source trial approaches it on one
+    cofinal schedule.
+@@ -74,10 +75,21 @@ by themselves prove G1, Route B, or RH.
+   supplied nontrivial interior mode is nonzero somewhere;
+ - `D0Mode4JacobiMatchedNormalizedCoefficientRow.lean`: a normalized exact
+   mode-four recurrence row from a certified root;
+-- the ordinary-Legendre recurrence and `x`, `x^2` action files.
+-
+-These are real ingredients, but every one stops before constructing a regular
+-PSWF and selecting the ordered degree-0/degree-4 source modes.
++- `D0Mode4OrdinaryLegendreIntervalBound.lean`: the exact Legendre ODE,
++  `|P_n| <= 1` on `[-1,1]`, and interior first/second derivative bounds;
++- `D0Mode4FerrersCoefficientAbsoluteSummability.lean`: absolute and every
++  polynomially weighted coefficient summability, uniform convergence, and
++  closed-window continuity of the even Ferrers series;
++- `D0Mode4FerrersInteriorRegularity.lean`: legal twice-termwise
++  differentiation and `ContDiffOn R 2` on `(-1,1)`;
++- `D0Mode4FerrersProlateDifferentialEquation.lean`: legal reindexing of the
++  three absolutely summable Legendre bands, the exact prolate ODE, and a
++  root-conditioned normalized mode-four Ferrers constructor.
++
++This closes the former `recurrence row -> convergent C2 Ferrers function ->
++exact prolate ODE` gap for mode four.  It does not identify that function as
++the third even/degree-four PSWF, and it does not construct the mode-zero
++companion or a production `ProlatePair`.
+ 
+ ### Exact missing library layer
+ 
+@@ -88,11 +100,21 @@ ready infinite-dimensional compact-self-adjoint eigenbasis constructor was
+ found. The project likewise has no formal singular Sturm--Liouville
+ self-adjoint realization or oscillation/index-selection theorem.
+ 
+-The existing coefficient backend gives a narrower alternative, but it still
+-needs a Ferrers/Legendre series with proved convergence through two
+-derivatives, the prolate ODE, endpoint regularity/flux, nontriviality, and
+-ordered zero-count selection. A mode-zero construction is also required;
+-the current deep recurrence backend is mode-four-specific.
++The narrower coefficient route has now discharged Ferrers/Legendre
++convergence through two derivatives, the interior prolate ODE, and
++nontriviality of the normalized row conditional on an exact matching root.
++The remaining source layer is: unconditional certified root brackets on the
++required family; endpoint realization/flux; exact scaling to
++`[-lambda,lambda]`; zero-count/order selection showing the third even mode;
++the corresponding mode-zero construction; and the restricted plus-phase
++finite-Fourier eigenrelations.  Only after those can the unchanged
++`ProlatePair` be constructed and CCM Lemma 7.2 consumed.
++
++Narrowed source stop:
++
++```text
++MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING
++```
+ 
+ Stop code:
+ 
+@@ -160,10 +182,10 @@ Both living reviewers reached the same boundary:
+   `ActualCCMProlatePairConstructor` for G3 and
+   `LiteralCCMQuantitativeComplementFloor` for G1.
+ 
+-Therefore no Aristotle request is dispatched now. A request becomes sound
+-only after a bounded theorem is expressible using actual definitions and
+-proved source prerequisites, rather than asking the cloud prover to invent
+-the missing spectral theory or CCM asymptotics.
++No Aristotle request was needed for the new mode-four step: the bounded
++Ferrers convergence, differentiation, legal band reindexing, and ODE theorem
++were proved locally and kernel checked.  The next remaining selection and
++Fourier/source-rate wall is still not a bounded cloud-prover leaf.
+ 
+ ## Nonclaims
+ 
+diff --git a/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_MODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md b/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_MODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md
+new file mode 100644
+index 00000000..fe8f89c9
+--- /dev/null
++++ b/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_MODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md
+@@ -0,0 +1,82 @@
++# Goal 058 mode-four Ferrers/prolate ODE closeout
++
++Date: 2026-08-14
++
++Lane: `CHALLENGER / NOT_RH`
++
++Verdict:
++
++```text
++MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING
++```
++
++## Closed source seam
++
++The existing backend ended at a normalized exact mode-four Legendre
++coefficient recurrence.  This batch proves the missing implication
++
++```text
++exact matching root
++  -> normalized recurrence row with geometric tail
++  -> absolute and polynomially weighted summability
++  -> uniformly convergent even Ferrers series on [-1,1]
++  -> two legal termwise derivatives on (-1,1)
++  -> exact source prolate ODE on (-1,1).
++```
++
++The infinite three-band calculation is not a formal rearrangement.  Each
++outgoing band is proved summable, the exceptional zero row is handled
++separately, and the two index shifts use the one-step `tsum` decomposition.
++
++## Public suppliers
++
++- `mode4OrdinaryLegendre_differentialEquation`
++- `mode4OrdinaryLegendre_abs_le_one`
++- `mode4RecurrenceRow_abs_summable_of_tail_splice`
++- `mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice`
++- `mode4FerrersSeries_contDiffOn_two_of_tail_splice`
++- `mode4FerrersSeries_prolateDifferentialEquation`
++- `mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice`
++- `exists_mode4MatchedNormalizedProlateFerrersRow_of_root`
++
++The last theorem preserves the exact recurrence normalization and tail splice,
++and adds interior `C2` regularity plus the exact prolate ODE.  It is conditional
++on an exact `mode4RootFunction = 0`; it does not manufacture that root.
++
++## Validation
++
++- direct `lake env lean` on all four new files: PASS;
++- target `lake build Q3.Proofs.RouteB.D0Mode4FerrersProlateDifferentialEquation`:
++  PASS (`7768` jobs);
++- full `lake build`: PASS (`7817` jobs);
++- `bash scripts/q3_check.sh`: PASS (`q3_check ok`);
++- forbidden `sorry`/new `axiom` scan: PASS;
++- public axiom audit: `[propext, Classical.choice, Quot.sound]` only;
++- `git diff --check`: PASS.
++
++The recurring `UnicodeBasic` dependency-local-change warning predates this
++batch and was not modified.
++
++## Remaining G3 boundary
++
++This is not yet an actual production `ProlatePair`.  Still missing:
++
++1. unconditional root brackets on the required family;
++2. endpoint realization/zero flux and exact physical-window scaling;
++3. Sturm zero-count/order selection identifying the third even mode;
++4. the corresponding mode-zero constructor;
++5. restricted plus-phase finite-Fourier eigenrelations;
++6. construction of `IsActualProlateModePair` on the unchanged production type;
++7. CCM Lemma 7.2, the central overlap/floor, and one coupled cofinal schedule.
++
++G1 remains independently stopped at literal quantitative simple-even ground,
++sector ordering/gap, and same-trial cofinal tracking.
++
++## Nonclaims
++
++```text
++NO_G1
++NO_G3
++NO_ROUTE_B_PROMOTION
++NO_RH
++```
+diff --git a/q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean b/q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean
+new file mode 100644
+index 00000000..f8e406db
+--- /dev/null
++++ b/q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean
+@@ -0,0 +1,329 @@
++import Q3.Proofs.RouteB.D0Mode4JacobiMatchedNormalizedCoefficientRow
++import Q3.Proofs.RouteB.D0Mode4OrdinaryLegendreIntervalBound
++import Mathlib.Analysis.Normed.Group.FunctionSeries
++import Mathlib.Analysis.SpecificLimits.Normed
++
++/-!
++# Absolute summability at the mode-four Ferrers boundary
++
++The committed matched recurrence row already has an exact splice to a
++positive tail bounded by `2⁻ⁿ`.  This file records the analytic consequence
++needed before that row may be used as coefficients of a Ferrers series:
++absolute summability of the whole row.
++
++The file also fixes the intended even-Legendre series, consumes the sharp
++ordinary-Legendre bound on `[-1, 1]`, and proves uniform convergence and
++continuity on that source window.  Every fixed polynomial coefficient moment
++is summable as well, preparing later termwise differentiation.
++
++This does not identify the series with a regular first-kind PSWF, prove its
++differential equation, or select the degree-four ordered mode.
++-/
++
++noncomputable section
++
++/-- An exact splice to the committed geometrically decaying right tail makes
++the entire coefficient row absolutely summable.  The finite prefix is handled
++by `summable_nat_add_iff`; no square-summability-to-absolute-summability
++shortcut is used. -/
++theorem mode4RecurrenceRow_abs_summable_of_tail_splice
++    (mProject K : ℕ) (Λ : ℝ)
++    (hm : 2 ≤ mProject)
++    (hK : 3 ≤ K)
++    (hsep :
++      ∀ q ≥ K,
++        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
++          mode4JacobiIndex q *
++              (mode4JacobiIndex q + 1) -
++            20)
++    (hΛ : Λ ≤ 20)
++    (a : ℕ → ℝ)
++    (hsplice : ∀ n : ℕ,
++      a (K - 1 + n) =
++        a (K - 1) *
++          mode4TailCoefficientRow mProject Λ K n) :
++    Summable (fun q : ℕ => |a q|) := by
++  have hgeom : Summable (fun n : ℕ => |a (K - 1)| * (1 / 2 : ℝ) ^ n) :=
++    (summable_geometric_of_abs_lt_one (by norm_num)).mul_left |a (K - 1)|
++  have htail :
++      Summable (fun n : ℕ => |a (K - 1 + n)|) := by
++    refine Summable.of_nonneg_of_le (fun n => abs_nonneg _) (fun n => ?_) hgeom
++    rw [hsplice n, abs_mul]
++    have htailPos := mode4TailCoefficientRow_pos
++      mProject K Λ hm hK hsep hΛ n
++    rw [abs_of_pos htailPos]
++    exact mul_le_mul_of_nonneg_left
++      (mode4TailCoefficientRow_le_half_pow
++        mProject K Λ hm hK hsep hΛ n)
++      (abs_nonneg _)
++  apply (summable_nat_add_iff (K - 1)).1
++  simpa only [Nat.add_comm] using htail
++
++/-- Every fixed polynomial moment of the matched row is absolutely summable.
++The proof uses only the exact geometric tail splice and keeps the finite
++prefix explicit. -/
++theorem mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice
++    (mProject K : ℕ) (Λ : ℝ)
++    (hm : 2 ≤ mProject)
++    (hK : 3 ≤ K)
++    (hsep :
++      ∀ q ≥ K,
++        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
++          mode4JacobiIndex q *
++              (mode4JacobiIndex q + 1) -
++            20)
++    (hΛ : Λ ≤ 20)
++    (a : ℕ → ℝ)
++    (hsplice : ∀ n : ℕ,
++      a (K - 1 + n) =
++        a (K - 1) *
++          mode4TailCoefficientRow mProject Λ K n)
++    (r : ℕ) :
++    Summable (fun q : ℕ => (((q + 1 : ℕ) : ℝ) ^ r) * |a q|) := by
++  have hbase :
++      Summable (fun n : ℕ => (n : ℝ) ^ r * (1 / 2 : ℝ) ^ n) :=
++    summable_pow_mul_geometric_of_norm_lt_one r (by norm_num)
++  have hshift :
++      Summable (fun n : ℕ => ((n + 1 : ℕ) : ℝ) ^ r *
++        (1 / 2 : ℝ) ^ (n + 1)) :=
++    (summable_nat_add_iff
++      (f := fun n : ℕ => (n : ℝ) ^ r * (1 / 2 : ℝ) ^ n) 1).2 hbase
++  have hone :
++      Summable (fun n : ℕ => ((n + 1 : ℕ) : ℝ) ^ r *
++        (1 / 2 : ℝ) ^ n) := by
++    have hs := hshift.mul_left 2
++    convert hs using 1
++    funext n
++    push_cast
++    rw [pow_succ]
++    ring
++  have hmajor :
++      Summable (fun n : ℕ =>
++        (|a (K - 1)| * (K : ℝ) ^ r) *
++          (((n + 1 : ℕ) : ℝ) ^ r * (1 / 2 : ℝ) ^ n)) :=
++    hone.mul_left (|a (K - 1)| * (K : ℝ) ^ r)
++  have htail :
++      Summable (fun n : ℕ =>
++        (((K - 1 + n + 1 : ℕ) : ℝ) ^ r) *
++          |a (K - 1 + n)|) := by
++    refine Summable.of_nonneg_of_le (fun n => mul_nonneg (by positivity) (abs_nonneg _))
++      (fun n => ?_) hmajor
++    rw [hsplice n, abs_mul]
++    have htailPos := mode4TailCoefficientRow_pos
++      mProject K Λ hm hK hsep hΛ n
++    rw [abs_of_pos htailPos]
++    have htailLe := mode4TailCoefficientRow_le_half_pow
++      mProject K Λ hm hK hsep hΛ n
++    have hKpos : (0 : ℝ) ≤ K := by positivity
++    have hn1pos : (0 : ℝ) ≤ (n + 1 : ℕ) := by positivity
++    have hindex :
++        ((K - 1 + n + 1 : ℕ) : ℝ) ≤
++          (K : ℝ) * (n + 1 : ℕ) := by
++      have hKnat : 1 ≤ K := le_trans (by omega : 1 ≤ 3) hK
++      have hnle : n ≤ K * n :=
++        Nat.le_mul_of_pos_left n (by omega)
++      have hidxNat : K - 1 + n + 1 = K + n := by omega
++      have hleNat : K + n ≤ K * (n + 1) := by
++        rw [Nat.mul_add]
++        omega
++      rw [hidxNat]
++      exact_mod_cast hleNat
++    have hpow :
++        (((K - 1 + n + 1 : ℕ) : ℝ) ^ r) ≤
++          ((K : ℝ) * (n + 1 : ℕ)) ^ r := by
++      gcongr
++    calc
++      (((K - 1 + n + 1 : ℕ) : ℝ) ^ r) *
++          (|a (K - 1)| * mode4TailCoefficientRow mProject Λ K n) ≤
++        (((K : ℝ) * (n + 1 : ℕ)) ^ r) *
++          (|a (K - 1)| * (1 / 2 : ℝ) ^ n) := by
++            gcongr
++      _ = (|a (K - 1)| * (K : ℝ) ^ r) *
++          (((n + 1 : ℕ) : ℝ) ^ r * (1 / 2 : ℝ) ^ n) := by
++        rw [mul_pow]
++        ring
++  apply (summable_nat_add_iff (K - 1)).1
++  simpa only [Nat.add_comm] using htail
++
++/-- One source-shaped even Ferrers term.  The alternating factor is the fixed
++phase convention of the mode-four Legendre recurrence. -/
++noncomputable def mode4FerrersTerm
++    (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
++  (-1 : ℝ) ^ q * a q *
++    mode4OrdinaryLegendre (2 * q) x
++
++/-- The source-shaped even Ferrers series associated with a coefficient row. -/
++noncomputable def mode4FerrersSeries
++    (a : ℕ → ℝ) (x : ℝ) : ℝ :=
++  ∑' q : ℕ, mode4FerrersTerm a q x
++
++/-- Parity is termwise and therefore does not require convergence. -/
++theorem mode4FerrersSeries_even (a : ℕ → ℝ) :
++    Function.Even (mode4FerrersSeries a) := by
++  intro x
++  unfold mode4FerrersSeries mode4FerrersTerm
++  apply tsum_congr
++  intro q
++  rw [mode4OrdinaryLegendre_even]
++
++/-- At the right endpoint the even Legendre factors are exactly one. -/
++theorem mode4FerrersSeries_at_one (a : ℕ → ℝ) :
++    mode4FerrersSeries a 1 =
++      ∑' q : ℕ, (-1 : ℝ) ^ q * a q := by
++  unfold mode4FerrersSeries
++  apply tsum_congr
++  intro q
++  simp [mode4FerrersTerm]
++
++/-- At the left endpoint the even Legendre factors are also exactly one. -/
++theorem mode4FerrersSeries_at_neg_one (a : ℕ → ℝ) :
++    mode4FerrersSeries a (-1) =
++      ∑' q : ℕ, (-1 : ℝ) ^ q * a q := by
++  calc
++    mode4FerrersSeries a (-1) = mode4FerrersSeries a 1 :=
++      mode4FerrersSeries_even a 1
++    _ = ∑' q : ℕ, (-1 : ℝ) ^ q * a q :=
++      mode4FerrersSeries_at_one a
+[truncated after 500 lines]
+```
+
+## File snapshots
+
+### docs/Codex/TASK_2026-08-14_goal058_g3_prolate_rate_floor.md
+```text
+# Codex task — Goal 058 G3 prolate rate and floor
+
+Date: 2026-08-14
+Source commit: `0fb4023ab401ab3f68e1a507197e379e9261cc3c`
+
+## Selected source front
+
+Continue the owner-authorized Goal 058 G1/G3 closure loop at the remaining G3
+source theorem. The explicit CCM Eq. (7.1) packet, its Fourier invariance, its
+`E_star` inversion symmetry, the physical inversion-to-coefficient crosswalk,
+and the denominator mechanism are already kernel checked.
+
+The active obligation is to connect the actual normalized two-mode prolate
+family to those consumers:
+
+```text
+actual h_lambda on current PairIndex family
+  -> uniform CCM Lemma 7.2 O(lambda^-2) estimate to explicitCCMLimitH
+  -> E_star/window approximation and nonzero central overlap
+  -> eventual projected denominator floor
+  -> one precommitted coupled (m,N) schedule
+```
+
+## Required evidence boundary
+
+- Use the actual production `ProlatePair`, `hTrial_m`, `gTrial_m`, `P_m_N`,
+  and `PairIndex` objects; do not introduce a parallel family with stronger
+  fields and call it the source family.
+- A theorem taking the approximation rate, central overlap, denominator floor,
+  or cofinal tracking as binders is a receiver and does not close this task.
+- Source-lock the normalization, phase, scaling, and degree `0/4` selection.
+- Preserve the one-family invariant and the P59 `_normalized` supplier lock.
+- Keep G1 open as the parallel spectral front. Beta/commutator identities alone
+  do not imply simplicity or a positive uniform gap.
+- No G3, Route B, or RH promotion before the actual rate, floor, and coupled
+  schedule are kernel checked.
+
+## First action
+
+Audit the current `ProlatePair`/constructor surface against CCM Lemma 7.2 and
+its pinned primary source. Identify the smallest missing source constructor or
+theorem head. Reuse existing exact consumers; do not build another conditional
+receiver.
+
+## 2026-08-14 source audit result
+
+Mythos independently confirmed the local type audit:
+`ProlatePair` does not express the prolate eigenfunction equation or the
+lowest-two-even-mode selection.  The first honest source object is therefore
+an external source-locked actual-mode predicate over the unchanged production
+type, followed by existence/selection and the published Lemma 7.2 estimate.
+There is no sound Aristotle task until the intended mode is policed by the
+statement itself.
+
+The limit-side denominator target has been narrowed further by
+`E_star_explicitCCMLimitH_pos`: it is strictly positive for every `u >= 1`.
+The missing floor is now a transport obligation from the actual prolate
+approximation, not a missing positivity fact about the limiting packet.
+
+A raw polynomial `PairIndex` schedule is only arithmetic plumbing.  It must
+not be relabelled as a production `CentralIndex` path before the nonzero
+selected-transform and actual-mode chain is proved.
+
+## 2026-08-14 object lock
+
+The external production predicate is now kernel checked as
+`IsActualProlateModePair`; production `ProlatePair` was not changed.  The
+permanent `looseProlatePairPlant_not_actual` theorem demonstrates that every
+old record field can hold while the new source meaning fails.
+
+The active source theorem has consequently narrowed to existence and
+degree-`0/4` selection of a pair satisfying this predicate.  After that, the
+published Lemma 7.2 estimate is the next supplier.  The predicate itself is a
+contract, not existence and not G3 closure.
+
+## Validators
+
+Direct Lean, target build, full build at node close, `q3_check`, forbidden-token
+scan, public axiom audit, strict Spine, RouteB status, and inventory/semantic
+freshness. External review is requested only if the source theorem cannot be
+resolved locally.
+
+## 2026-08-14 constructor-capability audit
+
+The statement boundary now also requires real-valued modes and interior
+`C^2` regularity.  A current-tree audit found no ready constructor behind that
+boundary.  Mathlib's implemented self-adjoint diagonalization is finite-
+dimensional; compact self-adjoint spectral theory is explicitly a TODO.
+
+The repository's deepest constructive alternative is a normalized mode-four
+Jacobi recurrence row plus ordinary-Legendre algebra.  It still lacks the
+Ferrers-series convergence through two derivatives, ODE and endpoint flux,
+nontrivial regular solution, zero-count/order selection, and the corresponding
+mode-zero construction.  Thus the current stop is
+`ACTUAL_CCM_PROLATE_PAIR_CONSTRUCTOR_AND_LEMMA72_RATE_MISSING`, not another
+receiver theorem and not an Aristotle-ready leaf.
+
+The parallel G1 stop is
+`LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING`.  The full
+input/output contract is preserved in
+`GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md`.
+
+## 2026-08-14 mode-four Ferrers constructor progress
+
+The narrower coefficient route is no longer stopped at convergence or the
+interior differential equation.  Four kernel-checked files now prove:
+
+- the exact ordinary-Legendre ODE, the sharp unit-interval bound, and interior
+  first/second derivative majorants;
+- absolute and polynomially weighted summability of the matched coefficient
+  row, uniform convergence, and closed-window continuity;
+- legal twice-termwise differentiation and interior `C2` regularity;
+- absolutely summable three-band reindexing from the source recurrence to the
+  exact prolate ODE, including the exceptional zero row.
+
+The public constructor
+`exists_mode4MatchedNormalizedProlateFerrersRow_of_root` now turns an exact
+matching root into a nonzero normalized mode-four Ferrers function satisfying
+that ODE.  Direct Lean, target build, and full build pass; its public axiom
+audit is exactly `[propext, Classical.choice, Quot.sound]`.
+
+This is a real source supplier, not G3 closure.  It remains conditional on a
+matching root, and it does not yet prove endpoint realization, scaling to the
+physical window, third-even/degree-four zero-count selection, the mode-zero
+companion, the restricted finite-Fourier eigenrelations, CCM Lemma 7.2, or the
+denominator floor.  The narrowed stop is
+`MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING`.
+```
+
+### q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G1_G3_CURRENT_PROBLEM_IO_LEDGER_2026-08-14.md
+```text
+# Goal 058 G1/G3 current problem I/O ledger
+
+Date: 2026-08-14
+
+Lane: `CHALLENGER / NOT_RH`
+
+Verdict: `MODE4_FERRERS_ODE_PASS / G1_OPEN / G3_OPEN`
+
+## Owner-language summary
+
+The route now has the exact finite CCM matrix, the exact prolate trial, the
+parity split, the P59 entire-function bridge, and a positive limiting prolate
+anchor. It still lacks two load-bearing theorems:
+
+1. **G3:** finish the actual source prolate modes around the now-constructed
+   mode-four Ferrers ODE supplier, then prove the paper's quantitative rate
+   and a denominator floor for their trial family;
+2. **G1:** prove that the literal finite CCM ground is simple/even with a
+   quantitative gap, and that the same source trial approaches it on one
+   cofinal schedule.
+
+Neither missing theorem is a wrapper or a numerical cell. Both are new
+uniform mathematics.
+
+## G3 — actual prolate family and rate
+
+### Exact inputs
+
+- bandwidth `lambda > 0`, eventually `lambda = sqrt m` on the selected source
+  family;
+- the source Sturm--Liouville degrees `0` and `4` on
+  `[-lambda,lambda]`, with real-valued interior-`C^2` representatives;
+- zero-flux endpoint realization, simplicity, parity, and exact zero-count
+  selection;
+- positive-integral normalization and the exact plus-phase restricted
+  finite-Fourier eigenrelations `h0 <-> chi0`, `h4 <-> chi2`;
+- the unchanged production carrier `ProlatePair`.
+
+The exact Lean statement boundary is already fixed by
+`Q3.RouteB.D0Pstar.IsActualProlateModePair`. A smallest honest constructor
+head would have the shape
+
+```lean
+theorem exists_actualProlateModePair
+    (lambda : ℝ) (hlambda : 0 < lambda) :
+    ∃ P : ProlatePair,
+      P.pw.lambda = lambda ∧ IsActualProlateModePair P
+```
+
+This head is a target specification, not a theorem currently present on disk.
+
+### Required outputs
+
+1. an actual `ProlatePair` satisfying that predicate for every required
+   bandwidth;
+2. the source-locked CCM Lemma 7.2 comparison between `prolateCombination P`
+   and `explicitCCMLimitH`, with the uniform `O(lambda^-2)` error on the paper
+   window;
+3. transport through `E_star` and finite projection;
+4. an eventually positive quantitative lower bound for the normalization
+   denominator on one precommitted cofinal schedule.
+
+Those outputs would supply the prolate rate/floor side of G3. They would not
+by themselves prove G1, Route B, or RH.
+
+### What is already kernel checked
+
+- `ProlateSourceRegularity.lean`: exact finite-Fourier kernel, Lipschitz
+  regularity, and transfer through a supplied nonzero eigenrelation;
+- `ProlateSourceCommutation.lean`: exact differential-expression / finite-
+  Fourier intertwining;
+- `ProlateSourceEigenTransport.lean`: a supplied differential eigenmode is
+  transported into the same eigenspace;
+- `ProlateFiniteFourierNonvanishing.lean`: the finite-Fourier action of a
+  supplied nontrivial interior mode is nonzero somewhere;
+- `D0Mode4JacobiMatchedNormalizedCoefficientRow.lean`: a normalized exact
+  mode-four recurrence row from a certified root;
+- `D0Mode4OrdinaryLegendreIntervalBound.lean`: the exact Legendre ODE,
+  `|P_n| <= 1` on `[-1,1]`, and interior first/second derivative bounds;
+- `D0Mode4FerrersCoefficientAbsoluteSummability.lean`: absolute and every
+  polynomially weighted coefficient summability, uniform convergence, and
+  closed-window continuity of the even Ferrers series;
+- `D0Mode4FerrersInteriorRegularity.lean`: legal twice-termwise
+  differentiation and `ContDiffOn R 2` on `(-1,1)`;
+- `D0Mode4FerrersProlateDifferentialEquation.lean`: legal reindexing of the
+  three absolutely summable Legendre bands, the exact prolate ODE, and a
+  root-conditioned normalized mode-four Ferrers constructor.
+
+This closes the former `recurrence row -> convergent C2 Ferrers function ->
+exact prolate ODE` gap for mode four.  It does not identify that function as
+the third even/degree-four PSWF, and it does not construct the mode-zero
+companion or a production `ProlatePair`.
+
+### Exact missing library layer
+
+Pinned Mathlib's `Analysis/InnerProductSpace/Spectrum.lean` implements the
+self-adjoint spectral theorem only in finite dimension and lists compact
+self-adjoint spectral theory as a `TODO`. `IsCompactOperator` exists, but no
+ready infinite-dimensional compact-self-adjoint eigenbasis constructor was
+found. The project likewise has no formal singular Sturm--Liouville
+self-adjoint realization or oscillation/index-selection theorem.
+
+The narrower coefficient route has now discharged Ferrers/Legendre
+convergence through two derivatives, the interior prolate ODE, and
+nontriviality of the normalized row conditional on an exact matching root.
+The remaining source layer is: unconditional certified root brackets on the
+required family; endpoint realization/flux; exact scaling to
+`[-lambda,lambda]`; zero-count/order selection showing the third even mode;
+the corresponding mode-zero construction; and the restricted plus-phase
+finite-Fourier eigenrelations.  Only after those can the unchanged
+`ProlatePair` be constructed and CCM Lemma 7.2 consumed.
+
+Narrowed source stop:
+
+```text
+MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING
+```
+
+Stop code:
+
+```text
+ACTUAL_CCM_PROLATE_PAIR_CONSTRUCTOR_AND_LEMMA72_RATE_MISSING
+```
+
+## G1 — literal CCM simple-even ground and cofinal tracking
+
+### Exact inputs
+
+- literal matrix family `ccmWeilMatFinite m N` on `CCMModeFinite N`;
+- its exact reflection symmetry and even/odd sector decomposition;
+- exact structured off-diagonal formula and rank-two commutator;
+- the unchanged unit source row `sourceCCMComplexRow m N` produced from the
+  same prolate trial;
+- one precommitted cofinal schedule `(m_j,N_j)`.
+
+### Required outputs
+
+For all sufficiently large `j`, prove on that same schedule:
+
+- a unique even ground vector `xi0_j`;
+- a positive quantitative even-sector gap lower envelope
+  `0 < D(j) <= Delta_even(j)`;
+- an even Rayleigh-excess or residual upper envelope `A(j)` for the exact
+  source row;
+- an odd-mass upper envelope `W(j)` for that same row;
+- decay strong enough that `W(j) + A(j)/D(j) -> 0` (or the corresponding
+  squared-residual form).
+
+The already checked parity-sector projective estimate then turns those inputs
+into convergence of the source trial to the finite ground. P59 can transport
+that ground convergence to the analytic zero-set object.
+
+### Killed shortcuts
+
+1. **Commutator alone.** The exact Lean plant
+   `/tmp/Goal058CommutatorGapCollapse.lean` satisfies the source-shaped
+   rank-two commutator while its ground kernel has dimension two. Therefore
+   structure/commutation does not imply simplicity or a positive gap.
+2. **Beta-only determinant factor.** Already for the source-shaped
+   centrosymmetric `3 x 3` family, the even/odd collision depends on the
+   diagonal arithmetic; the current beta identities do not control it.
+
+A clean sufficient decomposition is an even-sector Krylov determinant
+nonvanishing theorem plus strict sector ordering
+`minSpec(T_even) < minSpec(T_odd)`. For the full spectrum one would need both
+sector Krylov determinants and cross-sector separation. None of these literal
+CCM arithmetic statements is currently on disk, and nonvanishing alone would
+still not give the quantitative all-large gap envelope required by G1.
+
+Stop code:
+
+```text
+LITERAL_CCM_QUANTITATIVE_SIMPLE_EVEN_GROUND_AND_TRACKING_MISSING
+```
+
+## External adjudication
+
+Both living reviewers reached the same boundary:
+
+- Mythos: `G3_ACTUAL_MODE_CONSTRUCTOR_IS_THE_FIRST_SOURCE_THEOREM`;
+- Proshka: `NO_SOUND_ARISTOTLE_TASK_AT_THIS_BOUNDARY`, naming
+  `ActualCCMProlatePairConstructor` for G3 and
+  `LiteralCCMQuantitativeComplementFloor` for G1.
+
+No Aristotle request was needed for the new mode-four step: the bounded
+Ferrers convergence, differentiation, legal band reindexing, and ODE theorem
+were proved locally and kernel checked.  The next remaining selection and
+Fourier/source-rate wall is still not a bounded cloud-prover leaf.
+
+## Nonclaims
+
+```text
+NO_G1
+NO_G3
+NO_ROUTE_B_PROMOTION
+NO_RH
+```
+```
+
+### q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_MODE4_FERRERS_PROLATE_ODE_CLOSEOUT_2026-08-14.md
+```text
+# Goal 058 mode-four Ferrers/prolate ODE closeout
+
+Date: 2026-08-14
+
+Lane: `CHALLENGER / NOT_RH`
+
+Verdict:
+
+```text
+MODE4_FERRERS_ODE_PROVED_MODE0_SELECTION_FOURIER_AND_LEMMA72_MISSING
+```
+
+## Closed source seam
+
+The existing backend ended at a normalized exact mode-four Legendre
+coefficient recurrence.  This batch proves the missing implication
+
+```text
+exact matching root
+  -> normalized recurrence row with geometric tail
+  -> absolute and polynomially weighted summability
+  -> uniformly convergent even Ferrers series on [-1,1]
+  -> two legal termwise derivatives on (-1,1)
+  -> exact source prolate ODE on (-1,1).
+```
+
+The infinite three-band calculation is not a formal rearrangement.  Each
+outgoing band is proved summable, the exceptional zero row is handled
+separately, and the two index shifts use the one-step `tsum` decomposition.
+
+## Public suppliers
+
+- `mode4OrdinaryLegendre_differentialEquation`
+- `mode4OrdinaryLegendre_abs_le_one`
+- `mode4RecurrenceRow_abs_summable_of_tail_splice`
+- `mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice`
+- `mode4FerrersSeries_contDiffOn_two_of_tail_splice`
+- `mode4FerrersSeries_prolateDifferentialEquation`
+- `mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice`
+- `exists_mode4MatchedNormalizedProlateFerrersRow_of_root`
+
+The last theorem preserves the exact recurrence normalization and tail splice,
+and adds interior `C2` regularity plus the exact prolate ODE.  It is conditional
+on an exact `mode4RootFunction = 0`; it does not manufacture that root.
+
+## Validation
+
+- direct `lake env lean` on all four new files: PASS;
+- target `lake build Q3.Proofs.RouteB.D0Mode4FerrersProlateDifferentialEquation`:
+  PASS (`7768` jobs);
+- full `lake build`: PASS (`7817` jobs);
+- `bash scripts/q3_check.sh`: PASS (`q3_check ok`);
+- forbidden `sorry`/new `axiom` scan: PASS;
+- public axiom audit: `[propext, Classical.choice, Quot.sound]` only;
+- `git diff --check`: PASS.
+
+The recurring `UnicodeBasic` dependency-local-change warning predates this
+batch and was not modified.
+
+## Remaining G3 boundary
+
+This is not yet an actual production `ProlatePair`.  Still missing:
+
+1. unconditional root brackets on the required family;
+2. endpoint realization/zero flux and exact physical-window scaling;
+3. Sturm zero-count/order selection identifying the third even mode;
+4. the corresponding mode-zero constructor;
+5. restricted plus-phase finite-Fourier eigenrelations;
+6. construction of `IsActualProlateModePair` on the unchanged production type;
+7. CCM Lemma 7.2, the central overlap/floor, and one coupled cofinal schedule.
+
+G1 remains independently stopped at literal quantitative simple-even ground,
+sector ordering/gap, and same-trial cofinal tracking.
+
+## Nonclaims
+
+```text
+NO_G1
+NO_G3
+NO_ROUTE_B_PROMOTION
+NO_RH
+```
+```
+
+### q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean
+```text
+import Q3.Proofs.RouteB.D0Mode4SchurHermitianSymmetrization
+
+/-!
+# Source-neutral finite-left envelopes for the mode-four Hermitian Schur determinant
+
+The exact Schur determinant is a finite left continuant corrected by the infinite right-tail
+ratio.  On the contraction domain the latter lies in `[0, 1 / 2]`.  Splitting only on the sign
+of the penultimate finite continuant gives sharp lower and upper determinant envelopes.
+
+No endpoint formula, determinant sign, spectral count, finite threshold, or PSWF crosswalk is
+asserted here.
+-/
+
+noncomputable section
+
+/-- The exact Hermitian Schur determinant is bounded below by the finite-left envelope obtained
+from the worst admissible tail when the penultimate continuant is nonnegative. -/
+theorem mode4HermitianSchur_det_ge_finiteLeft_lowerEnvelope
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hΛ : Λ ≤ 20) :
+    mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ K -
+          (1 / 2 : ℝ) * mode4JacobiUpper (mode4JacobiG mProject) (K - 1) *
+            max (mode4ScaledLeftContinuant
+              (mode4JacobiG mProject) Λ (K - 1)) 0 ≤
+      (mode4HermitianSchurMatrix mProject Λ K).det := by
+  have hK1 : 1 ≤ K := le_trans (by decide : 1 ≤ 3) hK
+  have htail := mode4RightTailLimit_mem_Icc
+    mProject K Λ hm hK hsep hΛ
+  have hmR : (0 : ℝ) < (mProject : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : 0 < 2) hm)
+  have hG : 0 < mode4JacobiG mProject := by
+    unfold mode4JacobiG
+    positivity
+  have hU : 0 < mode4JacobiUpper (mode4JacobiG mProject) (K - 1) :=
+    mode4JacobiUpper_pos _ _ hG
+  rw [det_mode4HermitianSchurMatrix_eq_schurContinuant
+    mProject K Λ hm hK1]
+  unfold mode4SchurContinuant
+  by_cases hP : 0 ≤ mode4ScaledLeftContinuant
+      (mode4JacobiG mProject) Λ (K - 1)
+  · rw [max_eq_left hP]
+    have hmul := mul_le_mul_of_nonneg_right htail.2
+      (mul_nonneg hU.le hP)
+    nlinarith
+  · have hP' : mode4ScaledLeftContinuant
+        (mode4JacobiG mProject) Λ (K - 1) ≤ 0 := le_of_not_ge hP
+    rw [max_eq_right hP']
+    have hprod :
+        mode4RightTailLimit mProject Λ K *
+            mode4JacobiUpper (mode4JacobiG mProject) (K - 1) *
+              mode4ScaledLeftContinuant
+                (mode4JacobiG mProject) Λ (K - 1) ≤ 0 :=
+      mul_nonpos_of_nonneg_of_nonpos
+        (mul_nonneg htail.1 hU.le) hP'
+    nlinarith
+
+/-- The exact Hermitian Schur determinant is bounded above by the finite-left envelope obtained
+from the worst admissible tail when the penultimate continuant is nonpositive. -/
+theorem mode4HermitianSchur_det_le_finiteLeft_upperEnvelope
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hΛ : Λ ≤ 20) :
+    (mode4HermitianSchurMatrix mProject Λ K).det ≤
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ K +
+        (1 / 2 : ℝ) * mode4JacobiUpper (mode4JacobiG mProject) (K - 1) *
+          max (-mode4ScaledLeftContinuant
+            (mode4JacobiG mProject) Λ (K - 1)) 0 := by
+  have hK1 : 1 ≤ K := le_trans (by decide : 1 ≤ 3) hK
+  have htail := mode4RightTailLimit_mem_Icc
+    mProject K Λ hm hK hsep hΛ
+  have hmR : (0 : ℝ) < (mProject : ℝ) := by
+    exact_mod_cast (lt_of_lt_of_le (by decide : 0 < 2) hm)
+  have hG : 0 < mode4JacobiG mProject := by
+    unfold mode4JacobiG
+    positivity
+  have hU : 0 < mode4JacobiUpper (mode4JacobiG mProject) (K - 1) :=
+    mode4JacobiUpper_pos _ _ hG
+  rw [det_mode4HermitianSchurMatrix_eq_schurContinuant
+    mProject K Λ hm hK1]
+  unfold mode4SchurContinuant
+  by_cases hP : 0 ≤ mode4ScaledLeftContinuant
+      (mode4JacobiG mProject) Λ (K - 1)
+  · rw [max_eq_right (neg_nonpos.mpr hP)]
+    have hprod : 0 ≤
+        mode4RightTailLimit mProject Λ K *
+            mode4JacobiUpper (mode4JacobiG mProject) (K - 1) *
+              mode4ScaledLeftContinuant
+                (mode4JacobiG mProject) Λ (K - 1) :=
+      mul_nonneg (mul_nonneg htail.1 hU.le) hP
+    nlinarith
+  · have hP' : mode4ScaledLeftContinuant
+        (mode4JacobiG mProject) Λ (K - 1) ≤ 0 := le_of_not_ge hP
+    rw [max_eq_left (neg_nonneg.mpr hP')]
+    have hmul := mul_le_mul_of_nonneg_right htail.2
+      (mul_nonneg hU.le (neg_nonneg.mpr hP'))
+    nlinarith
+
+/-- A positive finite-left lower envelope supplies the positive determinant input required by
+the direct root-bracket receiver. -/
+theorem mode4HermitianSchur_det_pos_of_finiteLeft_lowerEnvelope_pos
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hΛ : Λ ≤ 20)
+    (henv : 0 <
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ K -
+        (1 / 2 : ℝ) * mode4JacobiUpper (mode4JacobiG mProject) (K - 1) *
+          max (mode4ScaledLeftContinuant
+            (mode4JacobiG mProject) Λ (K - 1)) 0) :
+    0 < (mode4HermitianSchurMatrix mProject Λ K).det :=
+  lt_of_lt_of_le henv
+    (mode4HermitianSchur_det_ge_finiteLeft_lowerEnvelope
+      mProject K Λ hm hK hsep hΛ)
+
+/-- A negative finite-left upper envelope supplies the negative determinant input required by
+the direct root-bracket receiver. -/
+theorem mode4HermitianSchur_det_neg_of_finiteLeft_upperEnvelope_neg
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20)
+    (hΛ : Λ ≤ 20)
+    (henv :
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) Λ K +
+          (1 / 2 : ℝ) * mode4JacobiUpper (mode4JacobiG mProject) (K - 1) *
+            max (-mode4ScaledLeftContinuant
+              (mode4JacobiG mProject) Λ (K - 1)) 0 < 0) :
+    (mode4HermitianSchurMatrix mProject Λ K).det < 0 :=
+  lt_of_le_of_lt
+    (mode4HermitianSchur_det_le_finiteLeft_upperEnvelope
+      mProject K Λ hm hK hsep hΛ) henv
+
+/-- Canonical `K = 4m` assembly.  The infinite tail, determinant signs, continuity, and split
+separation are all discharged internally; only the two strict finite-left envelope inequalities
+at the chosen endpoints remain. -/
+theorem exists_mode4RootFunction_eq_zero_at_four_mul_of_finiteLeft_envelopes
+    (mProject : ℕ) (ΛLower ΛUpper : ℝ)
+    (hm : 2 ≤ mProject)
+    (hLowerUpper : ΛLower ≤ ΛUpper)
+    (hUpper20 : ΛUpper ≤ 20)
+    (hLowerEnvelope : 0 <
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) ΛLower (4 * mProject) -
+        (1 / 2 : ℝ) *
+            mode4JacobiUpper (mode4JacobiG mProject) (4 * mProject - 1) *
+          max (mode4ScaledLeftContinuant
+            (mode4JacobiG mProject) ΛLower (4 * mProject - 1)) 0)
+    (hUpperEnvelope :
+      mode4ScaledLeftContinuant (mode4JacobiG mProject) ΛUpper (4 * mProject) +
+          (1 / 2 : ℝ) *
+              mode4JacobiUpper (mode4JacobiG mProject) (4 * mProject - 1) *
+            max (-mode4ScaledLeftContinuant
+              (mode4JacobiG mProject) ΛUpper (4 * mProject - 1)) 0 < 0) :
+    ∃ Λ ∈ Set.Icc ΛLower ΛUpper,
+      mode4RootFunction mProject (4 * mProject) Λ = 0 := by
+  have hK : 3 ≤ 4 * mProject := by omega
+  have hsep :
+      ∀ q ≥ 4 * mProject,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20 :=
+    fun q hq => mode4Jacobi_tail_separated_at_four_mul mProject q hm hq
+  have hLower20 : ΛLower ≤ 20 := hLowerUpper.trans hUpper20
+  have hLowerDet :
+      0 < (mode4HermitianSchurMatrix
+        mProject ΛLower (4 * mProject)).det :=
+    mode4HermitianSchur_det_pos_of_finiteLeft_lowerEnvelope_pos
+      mProject (4 * mProject) ΛLower hm hK hsep hLower20 hLowerEnvelope
+  have hUpperDet :
+      (mode4HermitianSchurMatrix
+        mProject ΛUpper (4 * mProject)).det < 0 :=
+    mode4HermitianSchur_det_neg_of_finiteLeft_upperEnvelope_neg
+      mProject (4 * mProject) ΛUpper hm hK hsep hUpper20 hUpperEnvelope
+  exact exists_mode4RootFunction_eq_zero_at_four_mul_of_hermitianSchur_det_pos_neg
+    mProject ΛLower ΛUpper hm hLowerUpper hUpper20 hLowerDet hUpperDet
+
+#print axioms mode4HermitianSchur_det_ge_finiteLeft_lowerEnvelope
+#print axioms mode4HermitianSchur_det_le_finiteLeft_upperEnvelope
+#print axioms mode4HermitianSchur_det_pos_of_finiteLeft_lowerEnvelope_pos
+#print axioms mode4HermitianSchur_det_neg_of_finiteLeft_upperEnvelope_neg
+#print axioms exists_mode4RootFunction_eq_zero_at_four_mul_of_finiteLeft_envelopes
+```
+
+### q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersProlateDifferentialEquation.lean
+```text
+import Q3.Proofs.RouteB.D0Mode4FerrersInteriorRegularity
+import Q3.Proofs.RouteB.D0Mode4OrdinaryLegendreXSquaredAction
+
+/-!
+# Exact prolate ODE for the matched mode-four Ferrers series
+
+This file closes the analytic-algebraic seam from the exact three-term
+Legendre recurrence to the source spheroidal differential equation.  The
+proof keeps the zero row explicit, proves absolute summability of every
+reindexed band, and performs only legal shifts of summable series.
+
+The result constructs a C2 interior Ferrers eigenfunction from a matching
+root.  It does not yet identify the ordered degree-four PSWF, prove the
+finite-Fourier eigenrelation, or construct the degree-zero companion.
+-/
+
+open Polynomial
+
+noncomputable section
+
+theorem mode4FerrersLegendre_Xsq_zero (G x : ℝ) :
+    G * x ^ 2 * mode4OrdinaryLegendre 0 x =
+      -mode4PSWFLegendreSubdiagonal G 1 *
+          mode4OrdinaryLegendre 2 x +
+        (mode4PSWFLegendreDiagonal G 0 -
+          ((0 : ℝ) * (0 + 1))) *
+          mode4OrdinaryLegendre 0 x := by
+  have h := congrArg (fun p : ℝ[X] => p.eval x)
+    (mode4OrdinaryLegendrePolynomial_three_term_succ 0)
+  simp only [eval_mul, eval_C, eval_X, eval_sub] at h
+  norm_num [mode4OrdinaryLegendrePolynomial_zero,
+    mode4OrdinaryLegendrePolynomial_one] at h ⊢
+  unfold mode4PSWFLegendreSubdiagonal mode4PSWFLegendreDiagonal
+  norm_num [mode4JacobiIndex]
+  change G * x ^ 2 =
+    -(-(G * 2) / 3 *
+      (mode4OrdinaryLegendrePolynomial 2).eval x) + G / 3
+  have hx : x ^ 2 =
+      (2 * (mode4OrdinaryLegendrePolynomial 2).eval x + 1) / 3 := by
+    linarith
+  rw [hx]
+  ring
+
+theorem mode4FerrersLegendre_Xsq_succ (G x : ℝ) (q : ℕ) :
+    G * x ^ 2 * mode4OrdinaryLegendre (2 * (q + 1)) x =
+      -mode4PSWFLegendreSubdiagonal G (q + 2) *
+          mode4OrdinaryLegendre (2 * (q + 2)) x +
+        (mode4PSWFLegendreDiagonal G (q + 1) -
+          (((2 * (q + 1) : ℕ) : ℝ) *
+            (((2 * (q + 1) : ℕ) : ℝ) + 1))) *
+          mode4OrdinaryLegendre (2 * (q + 1)) x -
+        mode4PSWFLegendreSuperdiagonal G q *
+          mode4OrdinaryLegendre (2 * q) x := by
+  have h := congrArg (fun p : ℝ[X] => p.eval x)
+    (mode4OrdinaryLegendrePolynomial_X_sq_mul (2 * q))
+  simp only [eval_mul, eval_pow, eval_X, eval_C, eval_add] at h
+  have hupper :
+      G * ((((2 * q + 3 : ℕ) : ℝ) / ((4 * q + 5 : ℕ) : ℝ)) *
+        (((2 * q + 4 : ℕ) : ℝ) / ((4 * q + 7 : ℕ) : ℝ))) =
+        -mode4PSWFLegendreSubdiagonal G (q + 2) := by
+    have hN : mode4JacobiIndex (q + 2) = 2 * (q : ℝ) + 4 := by
+      unfold mode4JacobiIndex
+      push_cast
+      ring
+    have hsub :
+        -mode4PSWFLegendreSubdiagonal G (q + 2) =
+          G * (mode4JacobiIndex (q + 2) - 1) *
+              mode4JacobiIndex (q + 2) /
+            ((2 * mode4JacobiIndex (q + 2) - 3) *
+              (2 * mode4JacobiIndex (q + 2) - 1)) := by
+      unfold mode4PSWFLegendreSubdiagonal
+      dsimp
+      ring
+    rw [hsub, hN]
+    norm_num only [Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat]
+    rw [div_mul_div_comm]
+    ring
+  have hdiag :
+      G * (((((2 * q + 3 : ℕ) : ℝ) / ((4 * q + 5 : ℕ) : ℝ)) *
+          (((2 * q + 3 : ℕ) : ℝ) / ((4 * q + 7 : ℕ) : ℝ))) +
+        ((((2 * q + 2 : ℕ) : ℝ) / ((4 * q + 5 : ℕ) : ℝ)) *
+          (((2 * q + 2 : ℕ) : ℝ) / ((4 * q + 3 : ℕ) : ℝ)))) =
+        mode4PSWFLegendreDiagonal G (q + 1) -
+          (((2 * (q + 1) : ℕ) : ℝ) *
+            (((2 * (q + 1) : ℕ) : ℝ) + 1)) := by
+    have hN : mode4JacobiIndex (q + 1) = 2 * (q : ℝ) + 2 := by
+      unfold mode4JacobiIndex
+      push_cast
+      ring
+    have hD :
+        mode4PSWFLegendreDiagonal G (q + 1) -
+            mode4JacobiIndex (q + 1) *
+              (mode4JacobiIndex (q + 1) + 1) =
+          G * (2 * mode4JacobiIndex (q + 1) *
+              (mode4JacobiIndex (q + 1) + 1) - 1) /
+            ((2 * mode4JacobiIndex (q + 1) - 1) *
+              (2 * mode4JacobiIndex (q + 1) + 3)) := by
+      unfold mode4PSWFLegendreDiagonal
+      dsimp
+      ring
+    rw [show (((2 * (q + 1) : ℕ) : ℝ) *
+          (((2 * (q + 1) : ℕ) : ℝ) + 1)) =
+        mode4JacobiIndex (q + 1) *
+          (mode4JacobiIndex (q + 1) + 1) by
+      rw [hN]
+      norm_num only [Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat]
+      ring,
+      hD, hN]
+    norm_num only [Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat]
+    have hden : (4 * (q : ℝ) + 3) ≠ 0 := by positivity
+    have hden' : (3 + (q : ℝ) * 4) ≠ 0 := by positivity
+    field_simp [hden]
+    have hcancel := inv_mul_cancel₀ hden'
+    ring_nf at hcancel ⊢
+    linear_combination
+      -(G * (385 + 1228 * (q : ℝ) + 1416 * (q : ℝ) ^ 2 +
+        704 * (q : ℝ) ^ 3 + 128 * (q : ℝ) ^ 4)) * hcancel
+  have hlower :
+      G * ((((2 * q + 2 : ℕ) : ℝ) / ((4 * q + 5 : ℕ) : ℝ)) *
+        (((2 * q + 1 : ℕ) : ℝ) / ((4 * q + 3 : ℕ) : ℝ))) =
+        -mode4PSWFLegendreSuperdiagonal G q := by
+    unfold mode4PSWFLegendreSuperdiagonal mode4JacobiIndex
+    push_cast
+    field_simp
+    all_goals ring
+  change G * x ^ 2 *
+      (mode4OrdinaryLegendrePolynomial (2 * (q + 1))).eval x = _
+  simp only [mode4OrdinaryLegendre]
+  norm_num [Nat.mul_add, Nat.mul_assoc] at h ⊢
+  norm_num only [Nat.cast_add, Nat.cast_mul, Nat.cast_ofNat] at hupper hdiag hlower ⊢
+  calc
+    _ = G *
+        (((2 * (q : ℝ) + 3) / (4 * (q : ℝ) + 5) *
+            ((2 * (q : ℝ) + 4) / (4 * (q : ℝ) + 7))) *
+            (mode4OrdinaryLegendrePolynomial (2 * q + 4)).eval x +
+          (((2 * (q : ℝ) + 3) / (4 * (q : ℝ) + 5) *
+              ((2 * (q : ℝ) + 3) / (4 * (q : ℝ) + 7)) +
+            (2 * (q : ℝ) + 2) / (4 * (q : ℝ) + 5) *
+              ((2 * (q : ℝ) + 2) / (4 * (q : ℝ) + 3))) *
+            (mode4OrdinaryLegendrePolynomial (2 * q + 2)).eval x +
+          ((2 * (q : ℝ) + 2) / (4 * (q : ℝ) + 5) *
+            ((2 * (q : ℝ) + 1) / (4 * (q : ℝ) + 3))) *
+            (mode4OrdinaryLegendrePolynomial (2 * q)).eval x)) := by
+        have hG := congrArg (fun y : ℝ => G * y) h
+        ring_nf at hG ⊢
+        exact hG
+    _ = _ := by
+      rw [mul_add, mul_add, ← mul_assoc, hupper,
+        ← mul_assoc, hdiag, ← mul_assoc, hlower]
+      ring
+
+noncomputable def mode4FerrersPhase (a : ℕ → ℝ) (q : ℕ) : ℝ :=
+  (-1 : ℝ) ^ q * a q
+
+theorem mode4FerrersPhase_recurrence
+    (G E : ℝ) (a : ℕ → ℝ)
+    (ha : ∀ q : ℕ,
+      mode4PSWFLegendreSubdiagonal G q * a (q - 1) +
+        (mode4PSWFLegendreDiagonal G q - E) * a q +
+        mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) :
+    ∀ q : ℕ,
+      -mode4PSWFLegendreSubdiagonal G q * mode4FerrersPhase a (q - 1) +
+        (mode4PSWFLegendreDiagonal G q - E) * mode4FerrersPhase a q -
+        mode4PSWFLegendreSuperdiagonal G q * mode4FerrersPhase a (q + 1) = 0 := by
+  intro q
+  cases q with
+  | zero =>
+      have h := ha 0
+      simp [mode4FerrersPhase, mode4PSWFLegendreSubdiagonal,
+        mode4JacobiIndex] at h ⊢
+      linarith
+  | succ q =>
+      have h := ha (q + 1)
+      simp only [mode4FerrersPhase, Nat.add_sub_cancel,
+        pow_succ, Nat.add_assoc] at h ⊢
+      rw [show q + (1 + 1) = q + 2 by omega] at h
+      linear_combination -((-1 : ℝ) ^ q) * h
+
+noncomputable def mode4FerrersUpperBand
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  mode4FerrersPhase a q * (-mode4PSWFLegendreSubdiagonal G (q + 1)) *
+    mode4OrdinaryLegendre (2 * (q + 1)) x
+
+noncomputable def mode4FerrersDiagonalBand
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  mode4FerrersPhase a q *
+    (mode4PSWFLegendreDiagonal G q -
+      (((2 * q : ℕ) : ℝ) * (((2 * q : ℕ) : ℝ) + 1))) *
+    mode4OrdinaryLegendre (2 * q) x
+
+noncomputable def mode4FerrersLowerBand
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  if q = 0 then 0 else
+    mode4FerrersPhase a q * (-mode4PSWFLegendreSuperdiagonal G (q - 1)) *
+      mode4OrdinaryLegendre (2 * (q - 1)) x
+
+theorem mode4FerrersTerm_prolateBand_action (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) :
+    G * x ^ 2 * mode4FerrersTerm a q x =
+      mode4FerrersUpperBand G a q x + mode4FerrersDiagonalBand G a q x +
+        mode4FerrersLowerBand G a q x := by
+  cases q with
+  | zero =>
+      have h := mode4FerrersLegendre_Xsq_zero G x
+      simp [mode4FerrersTerm, mode4FerrersPhase, mode4FerrersUpperBand, mode4FerrersDiagonalBand,
+        mode4FerrersLowerBand] at h ⊢
+      linear_combination a 0 * h
+  | succ q =>
+      have h := mode4FerrersLegendre_Xsq_succ G x q
+      simp only [mode4FerrersTerm, mode4FerrersPhase, mode4FerrersUpperBand, mode4FerrersDiagonalBand,
+        mode4FerrersLowerBand, Nat.succ_ne_zero, if_false, Nat.succ_sub_one]
+      norm_num [Nat.mul_add, Nat.mul_assoc] at h ⊢
+      linear_combination ((-1 : ℝ) ^ (q + 1) * a (q + 1)) * h
+
+theorem mode4FerrersUpperBand_summable
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hG : 0 < G)
+    (haAbs : Summable (fun q : ℕ => |a q|))
+    (hx : x ∈ Set.Icc (-1 : ℝ) 1) :
+    Summable (fun q : ℕ => mode4FerrersUpperBand G a q x) := by
+  apply Summable.of_norm_bounded_eventually_nat
+    (haAbs.mul_left ((1 / 3 : ℝ) * G))
+  filter_upwards [Filter.eventually_ge_atTop (2 : ℕ)] with q hq
+  have hq1 : 3 ≤ q + 1 := by omega
+  have hLpos := mode4JacobiLower_pos G (q + 1) hG hq1
+  have hLle := mode4JacobiLower_le_one_third_mul_G G (q + 1) hG hq1
+  have hcross := mode4JacobiLower_eq_neg_pswfLegendreSubdiagonal G (q + 1)
+  have hP := mode4OrdinaryLegendre_abs_le_one (2 * (q + 1)) x hx
+  rw [Real.norm_eq_abs]
+  unfold mode4FerrersUpperBand mode4FerrersPhase
+  rw [← hcross, abs_mul, abs_mul, abs_mul, abs_pow,
+    abs_of_pos hLpos]
+  norm_num
+  calc
+      |a q| * mode4JacobiLower G (q + 1) *
+        |mode4OrdinaryLegendre (2 * (q + 1)) x| ≤
+      |a q| * mode4JacobiLower G (q + 1) * 1 := by
+        exact mul_le_mul_of_nonneg_left hP
+          (mul_nonneg (abs_nonneg _) hLpos.le)
+    _ ≤ |a q| * ((1 / 3 : ℝ) * G) := by
+      simpa using mul_le_mul_of_nonneg_left hLle (abs_nonneg (a q))
+    _ = (1 / 3 : ℝ) * G * |a q| := by ring
+
+theorem mode4FerrersLowerBand_summable
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hG : 0 < G)
+    (haAbs : Summable (fun q : ℕ => |a q|))
+    (hx : x ∈ Set.Icc (-1 : ℝ) 1) :
+    Summable (fun q : ℕ => mode4FerrersLowerBand G a q x) := by
+  apply Summable.of_norm_bounded
+    (haAbs.mul_left ((1 / 4 : ℝ) * G))
+  intro q
+  cases q with
+  | zero =>
+      simp [mode4FerrersLowerBand]
+      positivity
+  | succ q =>
+      have hUpos := mode4JacobiUpper_pos G q hG
+      have hUle := mode4JacobiUpper_le_one_quarter_mul_G G q hG
+      have hcross := mode4JacobiUpper_eq_neg_pswfLegendreSuperdiagonal G q
+      have hP := mode4OrdinaryLegendre_abs_le_one (2 * q) x hx
+      rw [Real.norm_eq_abs]
+      simp only [mode4FerrersLowerBand, Nat.succ_ne_zero, if_false,
+        Nat.succ_sub_one, mode4FerrersPhase]
+      rw [← hcross, abs_mul, abs_mul, abs_mul, abs_pow,
+        abs_of_pos hUpos]
+      norm_num
+      calc
+        |a (q + 1)| * mode4JacobiUpper G q *
+            |mode4OrdinaryLegendre (2 * q) x| ≤
+          |a (q + 1)| * mode4JacobiUpper G q * 1 := by
+            exact mul_le_mul_of_nonneg_left hP
+              (mul_nonneg (abs_nonneg _) hUpos.le)
+        _ ≤ |a (q + 1)| * ((1 / 4 : ℝ) * G) := by
+          simpa using mul_le_mul_of_nonneg_left hUle (abs_nonneg (a (q + 1)))
+        _ = (1 / 4 : ℝ) * G * |a (q + 1)| := by ring
+
+theorem mode4FerrersDiagonalBand_summable
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hG : 0 < G)
+    (haAbs : Summable (fun q : ℕ => |a q|))
+    (hx : x ∈ Set.Icc (-1 : ℝ) 1) :
+    Summable (fun q : ℕ => mode4FerrersDiagonalBand G a q x) := by
+  have htotal : Summable (fun q : ℕ =>
+      G * x ^ 2 * mode4FerrersTerm a q x) := by
+    convert (mode4FerrersTerm_summable a haAbs x hx).mul_left (G * x ^ 2) using 1
+  have hupper := mode4FerrersUpperBand_summable G a x hG haAbs hx
+  have hlower := mode4FerrersLowerBand_summable G a x hG haAbs hx
+  convert (htotal.sub hupper).sub hlower using 1
+  funext q
+  rw [mode4FerrersTerm_prolateBand_action]
+  ring
+
+noncomputable def mode4FerrersIncomingLowerBand
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  mode4FerrersPhase a (q - 1) * (-mode4PSWFLegendreSubdiagonal G q) *
+    mode4OrdinaryLegendre (2 * q) x
+
+noncomputable def mode4FerrersIncomingUpperBand
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  mode4FerrersPhase a (q + 1) * (-mode4PSWFLegendreSuperdiagonal G q) *
+    mode4OrdinaryLegendre (2 * q) x
+
+theorem mode4FerrersIncomingLowerBand_zero
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ) :
+    mode4FerrersIncomingLowerBand G a 0 x = 0 := by
+  simp [mode4FerrersIncomingLowerBand, mode4PSWFLegendreSubdiagonal,
+    mode4JacobiIndex]
+
+theorem mode4FerrersIncomingLowerBand_succ
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) :
+    mode4FerrersIncomingLowerBand G a (q + 1) x = mode4FerrersUpperBand G a q x := by
+  simp [mode4FerrersIncomingLowerBand, mode4FerrersUpperBand]
+
+theorem mode4FerrersLowerBand_succ
+    (G : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) :
+    mode4FerrersLowerBand G a (q + 1) x = mode4FerrersIncomingUpperBand G a q x := by
+  simp [mode4FerrersLowerBand, mode4FerrersIncomingUpperBand]
+
+theorem mode4FerrersIncomingLowerBand_summable
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hupper : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)) :
+    Summable (fun q : ℕ => mode4FerrersIncomingLowerBand G a q x) := by
+  apply (summable_nat_add_iff 1).1
+  convert hupper using 1
+
+theorem mode4FerrersIncomingUpperBand_summable
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hlower : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)) :
+    Summable (fun q : ℕ => mode4FerrersIncomingUpperBand G a q x) := by
+  have hshift := (summable_nat_add_iff 1).2 hlower
+  convert hshift using 1
+
+theorem mode4Ferrers_tsum_upper_eq_incomingLower
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hupper : Summable (fun q : ℕ => mode4FerrersUpperBand G a q x)) :
+    ∑' q : ℕ, mode4FerrersUpperBand G a q x =
+      ∑' q : ℕ, mode4FerrersIncomingLowerBand G a q x := by
+  have hin := mode4FerrersIncomingLowerBand_summable G a x hupper
+  have hsplit := hin.sum_add_tsum_nat_add 1
+  simp only [Finset.sum_range_one, mode4FerrersIncomingLowerBand_zero, zero_add] at hsplit
+  calc
+    ∑' q : ℕ, mode4FerrersUpperBand G a q x =
+        ∑' q : ℕ, mode4FerrersIncomingLowerBand G a (q + 1) x := by
+      apply tsum_congr
+      intro q
+      exact (mode4FerrersIncomingLowerBand_succ G a q x).symm
+    _ = ∑' q : ℕ, mode4FerrersIncomingLowerBand G a q x := hsplit
+
+theorem mode4Ferrers_tsum_lower_eq_incomingUpper
+    (G : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hlower : Summable (fun q : ℕ => mode4FerrersLowerBand G a q x)) :
+    ∑' q : ℕ, mode4FerrersLowerBand G a q x =
+      ∑' q : ℕ, mode4FerrersIncomingUpperBand G a q x := by
+  have hsplit := hlower.sum_add_tsum_nat_add 1
+  simp only [Finset.sum_range_one, mode4FerrersLowerBand, if_pos, zero_add] at hsplit
+  calc
+    ∑' q : ℕ, mode4FerrersLowerBand G a q x =
+        ∑' q : ℕ, mode4FerrersLowerBand G a (q + 1) x := hsplit.symm
+    _ = ∑' q : ℕ, mode4FerrersIncomingUpperBand G a q x := by
+      apply tsum_congr
+      intro q
+      exact mode4FerrersLowerBand_succ G a q x
+
+noncomputable def mode4FerrersSpectralTerm
+    (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  mode4FerrersPhase a q *
+    (((2 * q : ℕ) : ℝ) * (((2 * q : ℕ) : ℝ) + 1)) *
+    mode4OrdinaryLegendre (2 * q) x
+
+theorem mode4FerrersSpectralTerm_summable
+    (a : ℕ → ℝ) (x : ℝ)
+    (ha2 : Summable (fun q : ℕ =>
+      (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|))
+    (hx : x ∈ Set.Icc (-1 : ℝ) 1) :
+    Summable (fun q : ℕ => mode4FerrersSpectralTerm a q x) := by
+  have ha2' : Summable (fun q : ℕ =>
+      (((q : ℝ) + 1) ^ 2) * |a q|) := by
+    convert ha2 using 1
+    funext q
+    push_cast
+    rfl
+  apply Summable.of_norm_bounded
+    (ha2'.mul_left 4)
+  intro q
+  have hN :
+      (((2 * q : ℕ) : ℝ) * (((2 * q : ℕ) : ℝ) + 1)) ≤
+        4 * (((q + 1 : ℕ) : ℝ) ^ 2) := by
+    push_cast
+    nlinarith [sq_nonneg (q : ℝ)]
+  have hN0 : 0 ≤
+      (((2 * q : ℕ) : ℝ) * (((2 * q : ℕ) : ℝ) + 1)) := by
+    positivity
+  have hP := mode4OrdinaryLegendre_abs_le_one (2 * q) x hx
+  rw [Real.norm_eq_abs]
+  unfold mode4FerrersSpectralTerm mode4FerrersPhase
+  rw [abs_mul, abs_mul, abs_mul, abs_pow, abs_of_nonneg hN0]
+  norm_num
+  push_cast at hN hN0 ⊢
+  calc
+    |a q| *
+          (2 * (q : ℝ) * (2 * (q : ℝ) + 1)) *
+        |mode4OrdinaryLegendre (2 * q) x| ≤
+      |a q| *
+          (2 * (q : ℝ) * (2 * (q : ℝ) + 1)) * 1 := by
+        exact mul_le_mul_of_nonneg_left hP
+          (mul_nonneg (abs_nonneg _) hN0)
+    _ ≤ |a q| * (4 * (((q : ℝ) + 1) ^ 2)) := by
+      simpa using mul_le_mul_of_nonneg_left hN (abs_nonneg (a q))
+    _ = 4 * (((q : ℝ) + 1) ^ 2 * |a q|) := by ring
+
+noncomputable def mode4FerrersRowResidual
+    (G E : ℝ) (a : ℕ → ℝ) (q : ℕ) (x : ℝ) : ℝ :=
+  mode4FerrersIncomingLowerBand G a q x + mode4FerrersDiagonalBand G a q x +
+      mode4FerrersIncomingUpperBand G a q x + mode4FerrersSpectralTerm a q x -
+    E * mode4FerrersTerm a q x
+
+theorem mode4FerrersRowResidual_eq_zero
+    (G E : ℝ) (a : ℕ → ℝ)
+    (ha : ∀ q : ℕ,
+      mode4PSWFLegendreSubdiagonal G q * a (q - 1) +
+        (mode4PSWFLegendreDiagonal G q - E) * a q +
+        mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0)
+    (q : ℕ) (x : ℝ) :
+    mode4FerrersRowResidual G E a q x = 0 := by
+  have h := mode4FerrersPhase_recurrence G E a ha q
+  unfold mode4FerrersPhase at h
+  unfold mode4FerrersRowResidual mode4FerrersIncomingLowerBand mode4FerrersDiagonalBand mode4FerrersIncomingUpperBand
+    mode4FerrersSpectralTerm mode4FerrersTerm mode4FerrersPhase at ⊢
+  linear_combination mode4OrdinaryLegendre (2 * q) x * h
+
+theorem mode4FerrersSeries_spectralIdentity
+    (G E : ℝ) (a : ℕ → ℝ) (x : ℝ)
+    (hG : 0 < G)
+    (haAbs : Summable (fun q : ℕ => |a q|))
+    (ha2 : Summable (fun q : ℕ =>
+      (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|))
+    (hx : x ∈ Set.Icc (-1 : ℝ) 1)
+    (haRec : ∀ q : ℕ,
+      mode4PSWFLegendreSubdiagonal G q * a (q - 1) +
+        (mode4PSWFLegendreDiagonal G q - E) * a q +
+        mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0) :
+    (∑' q : ℕ, G * x ^ 2 * mode4FerrersTerm a q x) +
+        ∑' q : ℕ, mode4FerrersSpectralTerm a q x =
+      E * (∑' q : ℕ, mode4FerrersTerm a q x) := by
+  have hterm := mode4FerrersTerm_summable a haAbs x hx
+  have hupper := mode4FerrersUpperBand_summable G a x hG haAbs hx
+  have hlower := mode4FerrersLowerBand_summable G a x hG haAbs hx
+  have hdiag := mode4FerrersDiagonalBand_summable G a x hG haAbs hx
+  have hinL := mode4FerrersIncomingLowerBand_summable G a x hupper
+  have hinU := mode4FerrersIncomingUpperBand_summable G a x hlower
+  have hspec := mode4FerrersSpectralTerm_summable a x ha2 hx
+  have hEterm : Summable (fun q : ℕ => E * mode4FerrersTerm a q x) :=
+    hterm.mul_left E
+  have htotalSplit :
+      (∑' q : ℕ, G * x ^ 2 * mode4FerrersTerm a q x) =
+        (∑' q : ℕ, mode4FerrersUpperBand G a q x) +
+          (∑' q : ℕ, mode4FerrersDiagonalBand G a q x) +
+          (∑' q : ℕ, mode4FerrersLowerBand G a q x) := by
+    calc
+      (∑' q : ℕ, G * x ^ 2 * mode4FerrersTerm a q x) =
+          ∑' q : ℕ, ((mode4FerrersUpperBand G a q x +
+            mode4FerrersDiagonalBand G a q x) + mode4FerrersLowerBand G a q x) := by
+        apply tsum_congr
+        intro q
+        rw [mode4FerrersTerm_prolateBand_action]
+      _ = _ := by
+        rw [(hupper.add hdiag).tsum_add hlower,
+          hupper.tsum_add hdiag]
+  have hrowExpand :
+      (∑' q : ℕ, mode4FerrersRowResidual G E a q x) =
+        (∑' q : ℕ, mode4FerrersIncomingLowerBand G a q x) +
+            (∑' q : ℕ, mode4FerrersDiagonalBand G a q x) +
+            (∑' q : ℕ, mode4FerrersIncomingUpperBand G a q x) +
+            (∑' q : ℕ, mode4FerrersSpectralTerm a q x) -
+          ∑' q : ℕ, E * mode4FerrersTerm a q x := by
+    unfold mode4FerrersRowResidual
+    rw [(((hinL.add hdiag).add hinU).add hspec).tsum_sub hEterm,
+      ((hinL.add hdiag).add hinU).tsum_add hspec,
+      (hinL.add hdiag).tsum_add hinU,
+      hinL.tsum_add hdiag]
+  have hrowZero :
+      (∑' q : ℕ, mode4FerrersRowResidual G E a q x) = 0 := by
+    calc
+      (∑' q : ℕ, mode4FerrersRowResidual G E a q x) =
+          ∑' _q : ℕ, (0 : ℝ) := by
+        apply tsum_congr
+        intro q
+        exact mode4FerrersRowResidual_eq_zero G E a haRec q x
+      _ = 0 := tsum_zero
+  have hEtsum :
+      (∑' q : ℕ, E * mode4FerrersTerm a q x) =
+        E * (∑' q : ℕ, mode4FerrersTerm a q x) := by
+    exact tsum_mul_left
+  rw [htotalSplit, mode4Ferrers_tsum_upper_eq_incomingLower G a x hupper,
+    mode4Ferrers_tsum_lower_eq_incomingUpper G a x hlower]
+  linarith [hrowExpand, hrowZero, hEtsum]
+
+theorem mode4FerrersSpectralTsum_eq_derivatives
+    (a : ℕ → ℝ) (x : ℝ)
+    (ha2 : Summable (fun q : ℕ =>
+      (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|))
+    (hx : x ∈ Set.Ioo (-1 : ℝ) 1) :
+    (∑' q : ℕ, mode4FerrersSpectralTerm a q x) =
+      -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x +
+        2 * x * mode4FerrersFirstDerivativeSeries a x := by
+  let r : ℝ := (|x| + 1) / 2
+  have hxAbs : |x| < 1 := (abs_lt).2 hx
+  have hr0 : 0 < r := by
+    dsimp [r]
+    linarith [abs_nonneg x]
+  have hr1 : r < 1 := by
+    dsimp [r]
+    linarith
+  have hxrAbs : |x| ≤ r := by
+    dsimp [r]
+    linarith
+  have hxr : x ∈ Set.Icc (-r) r := by
+    constructor
+    · linarith [neg_le_abs x, hxrAbs]
+    · exact (le_abs_self x).trans hxrAbs
+  have hfirst := mode4FerrersFirstDerivativeTerm_summable
+    a r hr0.le hr1 ha2 x hxr
+  have hsecond := mode4FerrersSecondDerivativeTerm_summable
+    a r hr0.le hr1 ha2 x hxr
+  have hterm : ∀ q : ℕ,
+      mode4FerrersSpectralTerm a q x =
+        -(1 - x ^ 2) * mode4FerrersSecondDerivativeTerm a q x +
+          2 * x * mode4FerrersFirstDerivativeTerm a q x := by
+    intro q
+    have hode := mode4OrdinaryLegendre_differentialEquation (2 * q) x
+    unfold mode4FerrersSpectralTerm mode4FerrersPhase mode4FerrersSecondDerivativeTerm
+      mode4FerrersFirstDerivativeTerm
+    push_cast at hode ⊢
+    linear_combination ((-1 : ℝ) ^ q * a q) * hode
+  unfold mode4FerrersSecondDerivativeSeries
+    mode4FerrersFirstDerivativeSeries
+  calc
+    (∑' q : ℕ, mode4FerrersSpectralTerm a q x) =
+        ∑' q : ℕ,
+          (-(1 - x ^ 2) * mode4FerrersSecondDerivativeTerm a q x +
+            2 * x * mode4FerrersFirstDerivativeTerm a q x) := by
+      apply tsum_congr
+      exact hterm
+    _ = _ := by
+      rw [(hsecond.mul_left (-(1 - x ^ 2))).tsum_add
+        (hfirst.mul_left (2 * x)), tsum_mul_left, tsum_mul_left]
+
+theorem mode4FerrersSeries_prolateDifferentialEquation
+    (G E : ℝ) (a : ℕ → ℝ)
+    (hG : 0 < G)
+    (haAbs : Summable (fun q : ℕ => |a q|))
+    (ha2 : Summable (fun q : ℕ =>
+      (((q + 1 : ℕ) : ℝ) ^ 2) * |a q|))
+    (haRec : ∀ q : ℕ,
+      mode4PSWFLegendreSubdiagonal G q * a (q - 1) +
+        (mode4PSWFLegendreDiagonal G q - E) * a q +
+        mode4PSWFLegendreSuperdiagonal G q * a (q + 1) = 0)
+    (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) :
+    -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x +
+          2 * x * mode4FerrersFirstDerivativeSeries a x +
+        G * x ^ 2 * mode4FerrersSeries a x =
+      E * mode4FerrersSeries a x := by
+  have hxClosed : x ∈ Set.Icc (-1 : ℝ) 1 := ⟨hx.1.le, hx.2.le⟩
+  have hseries := mode4FerrersSeries_spectralIdentity
+    G E a x hG haAbs ha2 hxClosed haRec
+  have hspec := mode4FerrersSpectralTsum_eq_derivatives a x ha2 hx
+  unfold mode4FerrersSeries
+  rw [tsum_mul_left] at hseries
+  rw [hspec] at hseries
+  linarith
+
+/-- The canonical geometric tail splice supplies all convergence hypotheses,
+so an exact source recurrence row satisfies the prolate ODE on the full open
+Ferrers interval. -/
+theorem mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q *
+              (mode4JacobiIndex q + 1) -
+            20)
+    (hΛ : Λ ≤ 20)
+    (a : ℕ → ℝ)
+    (hsplice : ∀ n : ℕ,
+      a (K - 1 + n) =
+        a (K - 1) *
+          mode4TailCoefficientRow mProject Λ K n)
+    (haRec : ∀ q : ℕ,
+      mode4PSWFLegendreSubdiagonal
+            (mode4JacobiG mProject) q * a (q - 1) +
+        (mode4PSWFLegendreDiagonal
+              (mode4JacobiG mProject) q -
+            (Λ + mode4JacobiG mProject)) * a q +
+        mode4PSWFLegendreSuperdiagonal
+            (mode4JacobiG mProject) q * a (q + 1) = 0)
+    (x : ℝ) (hx : x ∈ Set.Ioo (-1 : ℝ) 1) :
+    -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x +
+          2 * x * mode4FerrersFirstDerivativeSeries a x +
+        mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x =
+      (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x := by
+  have hG : 0 < mode4JacobiG mProject := by
+    have hm0 : 0 < mProject := lt_of_lt_of_le (by decide : 0 < 2) hm
+    have hmR : (0 : ℝ) < (mProject : ℝ) := by exact_mod_cast hm0
+    unfold mode4JacobiG
+    positivity
+  have haAbs := mode4RecurrenceRow_abs_summable_of_tail_splice
+    mProject K Λ hm hK hsep hΛ a hsplice
+  have ha2 :=
+    mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice
+      mProject K Λ hm hK hsep hΛ a hsplice 2
+  exact mode4FerrersSeries_prolateDifferentialEquation
+    (mode4JacobiG mProject) (Λ + mode4JacobiG mProject)
+    a hG haAbs ha2 haRec x hx
+
+/-- A matching root now constructs a normalized recurrence row whose Ferrers
+series is continuous on the closed source window, `C²` in the interior, and
+satisfies the exact prolate ODE there.  Ordered-mode and Fourier-eigenvalue
+identification remain separate obligations. -/
+theorem exists_mode4MatchedNormalizedProlateFerrersRow_of_root
+    (mProject K : ℕ) (Λ : ℝ)
+    (hm : 2 ≤ mProject)
+    (hK : 3 ≤ K)
+    (hsep :
+      ∀ q ≥ K,
+        (31 / 24 : ℝ) * mode4JacobiG mProject ≤
+          mode4JacobiIndex q *
+              (mode4JacobiIndex q + 1) -
+            20)
+    (hΛ : Λ ≤ 20)
+    (hroot : mode4RootFunction mProject K Λ = 0) :
+    ∃ a : ℕ → ℝ,
+      0 < a 0 ∧
+      Summable (fun q : ℕ => |a q|) ∧
+      Summable (fun q : ℕ => (a q) ^ 2) ∧
+      HasSum
+        (fun q : ℕ =>
+          (a q) ^ 2 / (4 * (q : ℝ) + 1))
+        1 ∧
+      (∀ q : ℕ,
+        mode4PSWFLegendreSubdiagonal
+              (mode4JacobiG mProject) q * a (q - 1) +
+          (mode4PSWFLegendreDiagonal
+                (mode4JacobiG mProject) q -
+              (Λ + mode4JacobiG mProject)) * a q +
+          mode4PSWFLegendreSuperdiagonal
+              (mode4JacobiG mProject) q * a (q + 1) = 0) ∧
+      a (K - 1) ≠ 0 ∧
+      (∀ n : ℕ,
+        a (K - 1 + n) =
+          a (K - 1) *
+            mode4TailCoefficientRow mProject Λ K n) ∧
+      ContDiffOn ℝ 2 (mode4FerrersSeries a) (Set.Ioo (-1 : ℝ) 1) ∧
+      ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+        -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x +
+              2 * x * mode4FerrersFirstDerivativeSeries a x +
+            mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x =
+          (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x := by
+  obtain ⟨a, ha0, haAbs, haSq, haNorm, haRec, haSpliceNe, haSplice⟩ :=
+    exists_mode4MatchedNormalizedAbsSummableRecurrenceRow_of_root
+      mProject K Λ hm hK hsep hΛ hroot
+  have hC2 := mode4FerrersSeries_contDiffOn_two_of_tail_splice
+    mProject K Λ hm hK hsep hΛ a haSplice
+  have hODE : ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+      -(1 - x ^ 2) * mode4FerrersSecondDerivativeSeries a x +
+            2 * x * mode4FerrersFirstDerivativeSeries a x +
+          mode4JacobiG mProject * x ^ 2 * mode4FerrersSeries a x =
+        (Λ + mode4JacobiG mProject) * mode4FerrersSeries a x := by
+    intro x hx
+    exact mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice
+      mProject K Λ hm hK hsep hΛ a haSplice haRec x hx
+  exact ⟨a, ha0, haAbs, haSq, haNorm, haRec, haSpliceNe,
+    haSplice, hC2, hODE⟩
+
+#print axioms mode4FerrersSeries_prolateDifferentialEquation
+#print axioms mode4FerrersSeries_prolateDifferentialEquation_of_tail_splice
+#print axioms exists_mode4MatchedNormalizedProlateFerrersRow_of_root
+```
+
+### docs/routeB_bus/imports/PSWF_STURM_LIOUVILLE_SOURCE_DOSSIER.md
+```text
+# PSWF_STURM_LIOUVILLE_SOURCE_DOSSIER
+
+Role: external research/source worker (not orchestrator/judge/repo-writer/proof authority).
+Target: PSWF_STURM_LIOUVILLE_SOURCE_ACQUISITION.
+Date: 2026-08-03 · Worker: conductor-CLI (Claude Code, Linux), web + on-bus PDFs.
+Scope note: Q3/CCM use the WHOLE-LINE prolate operator (Slepian's R-extension); the
+finite-interval [-1,1] prolate Sturm–Liouville (SL) theory below is the CONSTRUCTIVE
+substrate the whole-line picture is built from. Both are documented.
+
+## RETURN STATUS
+
+SOURCE_CHAIN_RECOVERED (statement-level; 3 verbatim-number pins remain — see residual)
+
+Reason (upgraded 2026-08-03 after fetching an accessible rigorous primary source):
+a primary source chain that CONSTRUCTS (not assumes) the finite-interval prolate SL
+modes is located and its STATEMENTS are now verified verbatim against Bonami–Karoui
+(arXiv:1405.3676, Constr. Approx. 2015) for items 1,2,3,5,6,7,9, with the
+Slepian–Pollak commutation confirmed independently. Every one of the 12 items maps
+to a located primary source with its statement verified. RESIDUAL (refinement, not a
+gap in the chain): exact numbered-theorem citations for Lean-grade referencing still
+want three physical/scan pages — ORX (2013) theorem numbers, Meixner–Schäfke §3.2
+Satz 9 verbatim (item 11 rate), and Slepian–Pollak (1961) exact μ_n formula (item 10).
+See §VERIFICATION UPDATE at the end.
+
+## PRIMARY SOURCES (bibliographic identity)
+
+S1. D. Slepian, H. O. Pollak, "Prolate Spheroidal Wave Functions, Fourier Analysis
+    and Uncertainty — I", Bell System Technical Journal 40 (1961) 43–63.
+    (Scan: archive.org/details/bstj40-1-43.) ORIGINAL. CCM ref [15].
+    Contains: energy-concentration eigenproblem; the DISCOVERY that the finite Fourier
+    / band-limiting integral operator commutes with the prolate second-order ODE;
+    double orthogonality (on [-1,1] and on R); nonzero integral-operator eigenvalues.
+S2. A. Osipov, V. Rokhlin, H. Xiao, "Prolate Spheroidal Wave Functions of Order Zero:
+    Mathematical Tools for Bandlimited Approximation", Springer, Applied Mathematical
+    Sciences 187 (2013). MODERN RIGOROUS PRIMARY. Explicit statement (verified via
+    Springer/Amazon front-matter): the order-zero angular PSWFs "together with
+    boundary conditions constitute a SINGULAR SELF-ADJOINT STURM–LIOUVILLE PROBLEM"
+    and "form an ORTHOGONAL BASIS in L²(-1,1)". This is the CONSTRUCTOR (SL problem +
+    Legendre/tridiagonal realization), not an assumed eigenbasis.
+S3. J. Meixner, F. W. Schäfke, "Mathieusche Funktionen und Sphäroidfunktionen",
+    Springer 1954. Classical monograph. CCM ref [9]; CCM (2511.22755 §7) cites
+    "[9], Satz 9, p. 243, §3.2 (Die Sphäroidfunktionen)" for uniform eigenfunction
+    estimates. Book, not online. PIN-NEEDED for exact Satz statements.
+S4. C. Flammer, "Spheroidal Wave Functions", Stanford Univ. Press 1957. Classical
+    monograph (ODE, eigenvalue indexing, parity). Book, not online. Pointer.
+S5. W. H. J. Fuchs, "On the eigenvalues of an integral equation arising in the theory
+    of band-limited signals", J. Math. Anal. Appl. 9 (1964) 317–330. CCM ref [8].
+    Eigenvalue asymptotics/nonvanishing of the band-limiting operator.
+S6. B. Simon, "The classical moment problem as a self-adjoint finite difference
+    operator", Adv. Math. 137 (1998) 82–203. CCM ref [14]/[18]. Jacobi-matrix
+    self-adjointness (the whole-line prolate realization uses this).
+On-bus application context (already in repo): CCM 2511.22755 + 2310.18423
+(docs/routeB_bus/imports/). Whole-line prolate = classical prolate extended to R
+(Connes–Moscovici [12], CCM's "negative part of the spectrum" / Sonin space).
+
+## THE 12 REQUIRED ITEMS
+
+1. EXACT DIFFERENTIAL EXPRESSION — LOCATED (S1, S2, S4).
+   L_c ψ = -d/dx[(1-x²) dψ/dx] + c² x² ψ on [-1,1], eigenvalue χ_n(c):
+     -( (1-x²) ψ' )' + c² x² ψ = χ_n ψ.
+   (Order-m general form carries +m²/(1-x²); Q3/CCM use m = 0.) Tag: THEOREM/DEF (S2).
+
+2. INTERVAL + ENDPOINT CONDITIONS — LOCATED (S2). Interval [-1,1]; x = ±1 are
+   SINGULAR endpoints (limit-circle). Realization = bounded/finite solutions at ±1
+   (the natural SL boundary condition making the problem self-adjoint). Tag: THEOREM
+   (S2 "singular self-adjoint SL problem"). PIN-NEEDED: exact ORX theorem number.
+
+3. SELF-ADJOINT REALIZATION + DOMAIN — LOCATED (S2). Singular self-adjoint SL
+   operator; domain = the limit-circle self-adjoint extension selecting solutions
+   regular at ±1. ORX front-matter states self-adjointness explicitly. Tag: THEOREM
+   (S2). PIN-NEEDED: theorem number + domain description verbatim.
+
+4. DISCRETE / COMPACT-RESOLVENT SPECTRUM — LOCATED (S2, S1). χ_0(c) < χ_1(c) < …,
+   discrete, accumulating only at +∞ (compact resolvent); equivalently the commuting
+   band-limiting operator Q_c is COMPACT (trace class) with eigenvalues λ_n → 0. Tag:
+   THEOREM (S2 orthogonal basis ⇒ discrete; S1 compactness of Q_c).
+
+5. SIMPLICITY OF EIGENVALUES — LOCATED (S2 + classical singular-SL oscillation).
+   Each χ_n is SIMPLE (1-D regular/limit-circle SL spectra are simple). Tag: THEOREM
+   (SL oscillation theory; ORX). PIN-NEEDED: explicit ORX/Zettl theorem number.
+   NOTE: this is exactly the "simple" half of the CCM PW_SIMPLE_EVEN import that was
+   UNVERIFIED — the finite-interval SL simplicity IS classical; the CCM claim is for
+   the WHOLE-LINE prolate PW_λ, whose simplicity follows via the S1 commutation +
+   the same SL structure. Transfer risk flagged in §COMPAT.
+
+6. PARITY THEOREM — LOCATED (S2, S4). Since the coefficients depend on x², L_c
+   commutes with x ↦ -x; hence ψ_n has parity (-1)^n: EVEN n ⇒ even function, ODD n
+   ⇒ odd function. Tag: THEOREM (parity of SL eigenfunctions under coefficient
+   symmetry). PIN-NEEDED: exact monograph statement.
+
+7. DEGREE / EIGENVALUE INDEXING — LOCATED (S2, S4; Sturm oscillation). ψ_n indexed
+   by n = NUMBER OF ZEROS in (-1,1) (Sturm oscillation theorem for SL), monotone with
+   χ_n. "Degree n" = "n interior zeros" = SL index. Tag: THEOREM (Sturm oscillation).
+
+8. EXISTENCE + SELECTION OF DEGREE-0 AND DEGREE-4 MODES — LOCATED, WITH A WARNING.
+   ψ_0: ground mode, 0 zeros, EVEN (parity of n=0). ψ_4: 4 interior zeros, EVEN
+   (parity of n=4). Existence: from item 4 (full discrete family). Selection of
+   n = 4 REQUIRES the index/oscillation theorem (item 7) + parity (item 6) TOGETHER.
+   ⚠ FORBIDDEN-CLAUSE GUARD: ψ_4 must NOT be called "the second even mode". The even
+   modes are ψ_0, ψ_2, ψ_4, … ; ψ_4 is the THIRD even mode (or "second even EXCITED
+   mode above ψ_0"). Only the oscillation index theorem (n = 4 interior zeros) pins
+   it unambiguously; "second even" is convention-dependent and forbidden without the
+   index theorem. Tag: THEOREM (existence) + INFERENCE (n=4 selection, via items 6+7).
+
+9. FINITE-FOURIER COMMUTATION / SIMULTANEOUS DIAGONALIZATION — LOCATED (S1). Slepian–
+   Pollak's central discovery: the prolate ODE operator L_c COMMUTES with the finite
+   Fourier integral operator F_c ψ(x) = ∫_{-1}^{1} e^{i c x y} ψ(y) dy and with the
+   band-limiting operator Q_c = F_c* F_c (kernel sin(c(x-y))/(π(x-y))). Hence L_c, F_c,
+   Q_c share the SAME eigenfunctions ψ_n. Tag: THEOREM (S1 — the foundational
+   commutation). PIN-NEEDED: S1 equation number (archive.org scan).
+
+10. NONVANISHING OF THE FINITE-FOURIER EIGENVALUES — LOCATED (S1, S5). F_c ψ_n = μ_n ψ_n
+    with μ_n = i^n (2π/c)^{1/2} λ_n^{1/2} up to convention, and Q_c ψ_n = λ_n ψ_n with
+    λ_n ∈ (0,1) STRICTLY POSITIVE for all n (Q_c positive-definite, injective on the
+    bandlimited space). Therefore μ_n ≠ 0 for every n. Relation λ_n = (c/2π)|μ_n|².
+    Tag: THEOREM (S1 positivity of λ_n; S5 Fuchs eigenvalue asymptotics confirm
+    nonvanishing). PIN-NEEDED: exact μ_n formula/normalization from S1.
+    NOTE: this is the classical analogue of the Mac's on-bus "finite-Fourier
+    nonvanishing" Lean work — the source here is Slepian–Pollak, not an assumption.
+
+11. NORMALIZATION CONVENTIONS + SCALE PARAMETERS — LOCATED, CONVENTION-HEAVY.
+    Common conventions: (a) ∫_{-1}^{1}|ψ_n|² = 1 (L²[-1,1] unit); (b) Slepian's ψ_n(1)
+    or peak normalization; (c) double-orthogonality normalization (unit on R). Scale:
+    "bandwidth" c = a·Ω (time-radius × band-radius). CCM MAP: γ = 2πλ² and z = x/λ,
+    i.e. c ↔ 2πλ² (from CCM 2511.22755 §7, "γ = 2πλ²"). Tag: CONVENTION. RISK: Q3
+    "plus-phase finite Fourier" convention must be matched to S1's e^{+icxy} kernel
+    sign and to CCM's γ = 2πλ² — see §COMPAT.
+
+12. THEOREM / COROLLARY / CONVENTION / INFERENCE per item — see the tag on each item
+    above. Summary: items 1–4, 9–10 = THEOREM (located, some PIN-NEEDED for the exact
+    number); 5, 6, 7 = THEOREM (classical SL, PIN-NEEDED); 8 existence = THEOREM,
+    n=4 selection = INFERENCE from 6+7; 11 = CONVENTION.
+
+## CONSTRUCTED vs MERELY INTRODUCED (forbidden-clause compliance)
+
+- Osipov–Rokhlin–Xiao (S2): CONSTRUCTS — singular self-adjoint SL problem + Legendre-
+  coefficient tridiagonal eigenproblem realizes the modes; not an assumed basis.
+- Slepian–Pollak (S1): CONSTRUCTS the eigenbasis via the energy-concentration
+  eigenproblem AND proves the ODE commutation (so the ODE modes = integral-operator
+  modes, not assumed equal).
+- Degree 0 and 4 are EXPLICITLY reachable (full discrete family), but their SELECTION
+  as "the degree-4 even mode" is an INFERENCE requiring items 6 (parity) + 7
+  (oscillation index) — not asserted as a bare "second even mode".
+
+## COMPAT — risks against Q3 plus-phase finite-Fourier convention
+
+R1. WHOLE-LINE vs FINITE-INTERVAL. Q3/CCM use the R-extended prolate operator; the SL
+    theorems above are on [-1,1]. Transfer of SIMPLICITY and PARITY to PW_λ on R uses
+    the S1 commutation + Slepian's extension [CCM ref 12]; this transfer is an
+    INFERENCE, not a single cited theorem — flag as the exact gap for CCM's
+    PW_SIMPLE_EVEN (still UNVERIFIED at whole-line theorem level).
+R2. PHASE/KERNEL SIGN. S1 uses e^{+icxy}; a "plus-phase" Q3 convention must match this
+    sign, else μ_n picks up conjugation/i^n phase flips — affects item 10's exact μ_n.
+R3. SCALE. c ↔ 2πλ² (CCM). Any Q3 formula in c must be converted; mixing c and λ
+    conventions silently is a normalization bug.
+R4. INDEX. Do not identify CCM "h_4" with "second even mode" — only n=4 (4 interior
+    zeros, item 7) + even parity (item 6) pins it. CCM's h_{0,λ}, h_{4,λ} = ψ_0, ψ_4.
+
+## POINTERS FOR THE NEXT (PHYSICAL-TEXT) PASS
+
+- Osipov–Rokhlin–Xiao (2013), Ch. on the SL problem: pin theorem numbers for items
+  2,3,5,6,9,10 (this single book covers most of the chain rigorously).
+- Meixner–Schäfke (1954) §3.2 Satz 9 (p. 243): the uniform eigenfunction estimate CCM
+  actually cites (item 11 normalization + the λ^{-2} rate feeding C3).
+- Slepian–Pollak (1961) BSTJ 40:43–63 (archive.org scan): items 9,10 exact equation
+  numbers + μ_n formula.
+
+## VERIFICATION UPDATE (2026-08-03) — accessible primary sources fetched
+
+New accessible primary source added:
+S7. A. Bonami, A. Karoui, "Uniform approximation and explicit estimates for the
+    prolate spheroidal wave functions", Constructive Approximation 43 (2016) 329–371;
+    arXiv:1405.3676. FULL TEXT fetched (ar5iv). Rigorous, explicit.
+
+Verified VERBATIM from S7 (statement-level, exact operator):
+- Item 1: L_c(ψ) = −d/dx[(1−x²) dψ/dx] + c² x² ψ, eigenproblem L_c ψ_n = χ_n(c) ψ_n. ✓
+- Item 2: "PSWFs constitute an orthonormal basis of L²([−1,1]), an orthogonal system
+  of L²(ℝ)", basis of the Paley–Wiener space B_c. ✓ (self-adjoint SL realization)
+- Item 3/5: "ψ_n has exactly n zeros in (−1,1)"; χ_n(c) "strictly increasing"
+  ⇒ eigenvalues distinct ⇒ SIMPLE. ✓
+- Item 6: "ψ_n has the same parity as n", i.e. ψ_n(−x) = (−1)^n ψ_n(x). ✓
+- Item 7: n = number of interior zeros = SL index (from item 3). ✓
+- Item 9: F_c(f)(x) = ∫_{−1}^{1} e^{i c x y} f(y) dy; PSWFs are common eigenfunctions
+  of F_c and Q_c = F_c* F_c; L_c "commutes with" Q_c ("a lucky incident"). ✓
+
+Independently confirmed (Slepian–Pollak topic synthesis, emergentmind):
+- Item 9: "These functions simultaneously diagonalize the integral operator and a
+  commuting differential (Sturm–Liouville) operator." ✓
+- Item 10 (partial): Q_c ψ_k = λ_k ψ_k with λ_k = fraction of energy in |t|≤T; the
+  first ≈ Shannon-number eigenvalues are near 1, the rest decay ⇒ λ_k ∈ (0,1)
+  supported (strictness classical Slepian). The exact relation λ_n = (c/2π)|μ_n|²
+  and phase μ_n = i^n|μ_n| are canonical Slepian–Pollak (S1); verbatim formula pin
+  still wants the S1 (1961) scan.
+
+RESIDUAL PINS (for Lean-grade citation only; the STATEMENTS are already primary-sourced):
+1. ORX (2013) exact theorem numbers for the self-adjoint SL realization + domain
+   (item 3) and simplicity (item 5). Alternative already in hand: S7 covers the
+   statements; ORX would give the canonical monograph number.
+2. Meixner–Schäfke §3.2 Satz 9 verbatim (item 11 normalization + the λ^{-2} rate that
+   feeds C3 in CCM). Physical book.
+3. Slepian–Pollak (1961) BSTJ 40:43–63 exact μ_n formula + λ_n=(c/2π)|μ_n|² (item 10).
+   archive.org scan bstj40-1-43 (image PDF; needs OCR).
+
+NET: the source chain that Q3 asked for — CONSTRUCTIVE finite-interval prolate SL modes
+with self-adjointness, discrete simple spectrum, parity, zero-count indexing, finite-
+Fourier commutation, and nonzero finite-Fourier eigenvalues — is RECOVERED at the
+statement level from accessible primary sources (Bonami–Karoui + Slepian–Pollak + ORX).
+The degree-0/degree-4 selection remains an INFERENCE (parity item 6 + oscillation item
+7), NOT the forbidden "second even mode". No Q3 closure claimed; no numerics; no code.
+
+## RESIDUAL PINS CLOSED (2026-08-03, owner fetched physical/scan texts)
+
+All three residual verbatim-pins are now in litreview/pdfs/ and verified:
+- ITEM 10 (nonzero finite-Fourier eigenvalues) — CLOSED verbatim from S1
+  (Slepian–Pollak 1961, OCR scan bstj40-1-43_text.pdf): integral eq (26), eigenvalue
+  (27) λ_n(c) = (2π/c)[R^{(1)}_{0n}(c,1)]²; "the kernel of (26) is positive definite
+  [Bochner] … the quantities (27) are therefore STRICTLY POSITIVE"; §VI shows the
+  degeneracy does not occur ⇒ SIMPLE. Definition (28) fixes the finite-Fourier
+  eigenfunction ψ_n(c). Items 9+10 now primary-sourced from the original.
+- ITEM 3/5 numbered-theorem alternative — OSIPOV Yale TR-1450 (2012, TR1450.pdf),
+  ORX-lineage, rigorous SL eigenvalue theory (substitutes for the ORX book).
+- ITEM 11 (Satz 9 / λ⁻² rate) — Meixner–Schäfke 1954 in hand (978-3-662-00941-3.pdf,
+  OCR German); exact Satz-9 page-locate remains a deep-pass refinement.
+
+STATUS: SOURCE_CHAIN_RECOVERED (item 10 upgraded from PIN-NEEDED to VERIFIED-verbatim).
+```
