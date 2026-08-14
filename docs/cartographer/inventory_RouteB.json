@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 235,
-  "declarations": 2143,
-  "in_docs": 947,
-  "in_lemma_db": 2143,
+  "files_scanned": 237,
+  "declarations": 2170,
+  "in_docs": 948,
+  "in_lemma_db": 2170,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -5600,6 +5600,226 @@
       "orphan": false
     },
     {
+      "kind": "def",
+      "name": "d0HermitianSpecMap",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 36,
+      "signature": "private def d0HermitianSpecMap {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) : Matrix n n ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_sub",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 42,
+      "signature": "private theorem d0HermitianSpecMap_sub {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f g : ℝ → ℝ) : d0HermitianSpecMap hA (f - g) = d0HermitianSpecMap hA f - d0HermitianSpecMap hA g",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_mul",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 52,
+      "signature": "private theorem d0HermitianSpecMap_mul {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f g : ℝ → ℝ) : d0HermitianSpecMap hA (f * g) = d0HermitianSpecMap hA f * d0HermitianSpecMap hA g",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 61,
+      "signature": "private theorem d0HermitianSpecMap_zero {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : d0HermitianSpecMap hA 0 = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_id",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 68,
+      "signature": "private theorem d0HermitianSpecMap_id {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : d0HermitianSpecMap hA id = A",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 75,
+      "signature": "private theorem d0HermitianSpecMap_isHermitian {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) : (d0HermitianSpecMap hA f).IsHermitian",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_rank",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 84,
+      "signature": "private theorem d0HermitianSpecMap_rank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) : (d0HermitianSpecMap hA f).rank = (univ.filter fun i => f (hA.eigenvalues i) ≠ 0).card",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_form",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 103,
+      "signature": "private theorem d0HermitianSpecMap_form {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) (f : ℝ → ℝ) (x : n → ℝ) : star x ⬝ᵥ (d0HermitianSpecMap hA f *ᵥ x) = ∑ i, f (hA.eigenvalues i) * ‖(star (hA.eigenvectorUnitary : Matrix n n ℝ) *ᵥ x) i‖ ^ 2",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianForm_conj",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 124,
+      "signature": "private theorem d0HermitianForm_conj {m n : Type*} [Fintype m] [Fintype n] (Q : Matrix m m ℝ) (B : Matrix m n ℝ) (x : n → ℝ) : star x ⬝ᵥ ((Bᴴ * Q * B) *ᵥ x) = star (B *ᵥ x) ⬝ᵥ (Q *ᵥ (B *ᵥ x))",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "d0HermitianPosPart",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 132,
+      "signature": "private def d0HermitianPosPart {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Matrix n n ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "d0HermitianNegPart",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 137,
+      "signature": "private def d0HermitianNegPart {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Matrix n n ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianPosPart_sub_negPart",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 142,
+      "signature": "private theorem d0HermitianPosPart_sub_negPart {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : d0HermitianPosPart hA - d0HermitianNegPart hA = A",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianSpecMap_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 152,
+      "signature": "private theorem d0HermitianSpecMap_posSemidef {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {f : ℝ → ℝ} (hf : ∀ i, 0 ≤ f (hA.eigenvalues i)) : (d0HermitianSpecMap hA f).PosSemidef",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianPosPart_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 162,
+      "signature": "private theorem d0HermitianPosPart_posSemidef {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (d0HermitianPosPart hA).PosSemidef",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianNegPart_posSemidef",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 168,
+      "signature": "private theorem d0HermitianNegPart_posSemidef {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (d0HermitianNegPart hA).PosSemidef",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianNegPart_rank",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 174,
+      "signature": "private theorem d0HermitianNegPart_rank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : (d0HermitianNegPart hA).rank = mode4HermitianNegativeEigenvalueCount A hA",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "d0HermitianNegDefOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 185,
+      "signature": "private def d0HermitianNegDefOn {n : Type*} [Fintype n] [DecidableEq n] (A : Matrix n n ℝ) (W : Submodule ℝ (n → ℝ)) : Prop",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0Finrank_le_negativeCount_of_negDefOn",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 190,
+      "signature": "private theorem d0Finrank_le_negativeCount_of_negDefOn {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {W : Submodule ℝ (n → ℝ)} (hW : d0HermitianNegDefOn A W) : Module.finrank ℝ W ≤ mode4HermitianNegativeEigenvalueCount A hA",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "d0HermitianNonpositiveProjector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 222,
+      "signature": "private def d0HermitianNonpositiveProjector {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Matrix n n ℝ",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianNonpositiveProjector_form_nonpos",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 227,
+      "signature": "private theorem d0HermitianNonpositiveProjector_form_nonpos {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) {x : n → ℝ} (hx : x ∈ LinearMap.range (d0HermitianNonpositiveProjector hA).mulVecLin) : star x ⬝ᵥ (A *ᵥ x) ≤ 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "d0HermitianNonpositiveProjector_finrank",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 266,
+      "signature": "private theorem d0HermitianNonpositiveProjector_finrank {n : Type*} [Fintype n] [DecidableEq n] {A : Matrix n n ℝ} (hA : A.IsHermitian) : Module.finrank ℝ (LinearMap.range (d0HermitianNonpositiveProjector hA).mulVecLin) = mode4HermitianNegativeEigenvalueCount A hA + Module.finrank ℝ (LinearMap.ker A.mulVecLin)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "hermitian_negativeCount_add_nullity_le_of_strict_drop",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HermitianNegativeIndexDrop.lean",
+      "line": 333,
+      "signature": "theorem hermitian_negativeCount_add_nullity_le_of_strict_drop {n : Type*} [Fintype n] [DecidableEq n] {A B : Matrix n n ℝ} (hA : A.IsHermitian) (hB : B.IsHermitian) (delta : ℝ) (hdelta : 0 < delta) (hdrop : (A - B - delta • (1 : Matrix n n ℝ)).PosSemidef) : mode4HermitianNegativeEigenvalueCount A hA + Module.finrank ℝ (LinearMap.ker A.mulVecLin) ≤ mode4HermitianNegativeEigenvalueCount B hB",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
       "kind": "theorem",
       "name": "hilbertBasis_repr_sub_basisPartialSum_apply",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0HilbertBasisWeightedTail.lean",
@@ -9405,6 +9625,56 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurInertiaOrientation.lean",
       "line": 167,
       "signature": "theorem exists_mode4RootFunction_eq_zero_of_hermitian_counts_two_three {nLower nUpper : Type*} [Fintype nLower] [DecidableEq nLower] [Fintype nUpper] [DecidableEq nUpper] (ALower : Matrix nLower nLower ℝ) (hALower : ALower.IsHermitian) (AUpper : Matrix nUpper nUpper ℝ) (hAUpper : AUpper.IsHermitian) (mProject K : ℕ) (ΛLower ΛUpper : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hLowerUpper : ΛLower ≤ ΛUpper) (hUpper20 : ΛUpper ≤ 20) (hdetLower : ALower.det = (mode4SchurMatrix mProject ΛLower K).det) (hdetUpper : AUpper.det = (mode4SchurMatrix mProject ΛUpper K).det) (hLower_ne : ALower.det ≠ 0) (hUpper_ne : AUpper.det ≠ 0) (hcountLower : mode4HermitianNegativeEigenvalueCount ALower hALower = 2) (hcountUpper : mode4HermitianNegativeEigenvalueCount AUpper hAUpper = 3) : ∃ Λ ∈ Set.Icc ΛLower ΛUpper, mode4RootFunction mProject K Λ = 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_rootKernel_quadratic_ge_below",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean",
+      "line": 36,
+      "signature": "theorem mode4HermitianSchurMatrix_rootKernel_quadratic_ge_below (mProject K : ℕ) (Λlo Λ : ℝ) (v : Fin K → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛlo20 : Λlo ≤ 20) (hΛ20 : Λ ≤ 20) (hlo : Λlo ≤ Λ) (hAv : mode4HermitianSchurMatrix mProject Λ K *ᵥ v = 0) : (Λ - Λlo) * (star v ⬝ᵥ v) ≤ star v ⬝ᵥ (mode4HermitianSchurMatrix mProject Λlo K *ᵥ v)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_rootKernel_quadratic_le_above",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean",
+      "line": 65,
+      "signature": "theorem mode4HermitianSchurMatrix_rootKernel_quadratic_le_above (mProject K : ℕ) (Λ Λhi : ℝ) (v : Fin K → ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hΛ20 : Λ ≤ 20) (hΛhi20 : Λhi ≤ 20) (hhi : Λ ≤ Λhi) (hAv : mode4HermitianSchurMatrix mProject Λ K *ᵥ v = 0) : star v ⬝ᵥ (mode4HermitianSchurMatrix mProject Λhi K *ᵥ v) ≤ -(Λhi - Λ) * (star v ⬝ᵥ v)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "exists_mode4HermitianSchurMatrix_root_crossingVector",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean",
+      "line": 95,
+      "signature": "theorem exists_mode4HermitianSchurMatrix_root_crossingVector (mProject K : ℕ) (Λlo Λ Λhi : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hlo : Λlo < Λ) (hhi : Λ < Λhi) (hΛhi20 : Λhi ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : ∃ v : Fin K → ℝ, v ≠ 0 ∧ mode4HermitianSchurMatrix mProject Λ K *ᵥ v = 0 ∧ 0 < star v ⬝ᵥ (mode4HermitianSchurMatrix mProject Λlo K *ᵥ v) ∧ star v ⬝ᵥ (mode4HermitianSchurMatrix mProject Λhi K *ᵥ v) < 0",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_negativeCount_add_nullity_le_of_lt",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean",
+      "line": 153,
+      "signature": "theorem mode4HermitianSchurMatrix_negativeCount_add_nullity_le_of_lt (mProject K : ℕ) (Λ Λhi : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hhi : Λ < Λhi) (hΛhi20 : Λhi ≤ 20) : mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ) + Module.finrank ℝ (LinearMap.ker (mode4HermitianSchurMatrix mProject Λ K).mulVecLin) ≤ mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λhi K) (mode4HermitianSchurMatrix_isHermitian mProject K Λhi)",
+      "in_docs": false,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4HermitianSchurMatrix_negativeCount_succ_le_above_root",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurRootQuadraticCrossing.lean",
+      "line": 192,
+      "signature": "theorem mode4HermitianSchurMatrix_negativeCount_succ_le_above_root (mProject K : ℕ) (Λ Λhi : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hsep : ∀ q ≥ K, (31 / 24 : ℝ) * mode4JacobiG mProject ≤ mode4JacobiIndex q * (mode4JacobiIndex q + 1) - 20) (hhi : Λ < Λhi) (hΛhi20 : Λhi ≤ 20) (hroot : mode4RootFunction mProject K Λ = 0) : mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λ K) (mode4HermitianSchurMatrix_isHermitian mProject K Λ) + 1 ≤ mode4HermitianNegativeEigenvalueCount (mode4HermitianSchurMatrix mProject Λhi K) (mode4HermitianSchurMatrix_isHermitian mProject K Λhi)",
       "in_docs": false,
       "in_lemma_db": true,
       "orphan": false

@@ -4,7 +4,7 @@
 `python3 docs/cartographer/map_coverage.py`. Рукописная карта — `MAP.md`, она
 описывает узлы маршрута; это приложение описывает **файлы**, и оно полное.
 
-Всего файлов: **208** · упомянуто в `MAP.md`: **21** · вне карты: **187** · без описания в шапке: **0**
+Всего файлов: **237** · упомянуто в `MAP.md`: **21** · вне карты: **216** · без описания в шапке: **0**
 
 «вне карты» не значит «лишний»: значит, что обходом карты файл не находится.
 Именно так 2026-08-11 был построен заново мост `ker ↔ eigenspace`, стоявший в
@@ -33,7 +33,11 @@
 | `CCMFiniteWeilSourceMatrix` | — | The source modes `{-N, ..., N}`. -/ | 0 |
 | `CCMFiniteWeilSourceMatrixN1` | — | The three source modes `{-1,0,1}` for the literal `N = 1` pilot. -/ | 0 |
 | `CCMProposition59ComplexHermitianConnector` | — | Goal 058 complex Hermitian Proposition-59 connector | 0 |
+| `CCMProposition59ComplexTrialComplementFloor` | — | Goal 058 literal complex trial-complement floor | 0 |
+| `CCMProposition59ComplexTrialComplementRayleigh` | — | Goal 058: a trial-complement floor gives an orthogonal Rayleigh floor | 0 |
+| `CCMProposition59ComplexTrialComplementSpectral` | — | Goal 058 spectral consequences of the literal complex trial-complement floor | 0 |
 | `CCMProposition59ComplexTrialLineFeshbach` | — | Goal 058 literal complex trial-line Feshbach decomposition | 0 |
+| `CCMProposition59ComplexTrialResidualTracking` | — | Finite complex residual-to-projective tracking | 0 |
 | `CCMProposition59SourceTrialFeshbachPreflight` | — | Goal 058 full-source trial-line / Schur preflight | 0 |
 | `CanonicalRHRouteSkeleton` | карта | Fail-closed canonical Route-B roof | 0 |
 | `CenteredXiZeroNonzero` | карта | первая декларация: `etaPairTerm` | 0 |
@@ -49,25 +53,40 @@
 | `D0CriticalMomentStripBound` | — | первая декларация: `exp_mode_half_shift` | 0 |
 | `D0CriticalStripCompactBound` | — | Compact-local boundedness of the exact selected family on the open | 0 |
 | `D0FiniteProjectionReconstruction` | — | The exact finite Galerkin projection reconstructed in the literal | 0 |
+| `D0HermitianNegativeIndexDrop` | — | Strict Hermitian drop forces a negative-index jump | 0 |
 | `D0HilbertBasisWeightedTail` | — | Generic Hilbert-basis weighted tail | 0 |
 | `D0KTrialStage1` | — | D0.1 source lock: | 0 |
 | `D0KTrialStage2` | — | The D0.5 starred summation map | 0 |
 | `D0KTrialStage3` | — | The exact D0.5 nonzero locus for the projected trial. | 0 |
 | `D0LogWindowMeasureTransport` | — | первая декларация: `lambda_m_one_lt` | 0 |
 | `D0LogWindowVNMCompletenessBridge` | карта | первая декларация: `logWindow_measurePreserving` | 0 |
+| `D0Mode4FerrersCenterValueNonzero` | — | Goal 058 G3: nonzero center value of the mode-four Ferrers solution | 0 |
+| `D0Mode4FerrersCoefficientAbsoluteSummability` | — | Absolute summability at the mode-four Ferrers boundary | 0 |
+| `D0Mode4FerrersCoefficientExtraction` | — | Goal 058 G3: mode-four Ferrers coefficient extraction | 0 |
+| `D0Mode4FerrersCompactZeroSelection` | — | Goal 058 G3: compact zero selection for the mode-four Ferrers source | 0 |
+| `D0Mode4FerrersEndpointFlux` | — | Endpoint flux of the mode-four Ferrers source row | 0 |
+| `D0Mode4FerrersInteriorRegularity` | — | Interior regularity of the mode-four Ferrers series | 0 |
+| `D0Mode4FerrersInteriorZeroSimplicity` | — | Goal 058 G3: simplicity of interior mode-four Ferrers zeros | 0 |
+| `D0Mode4FerrersPhysicalProlateScaling` | — | Goal 058 G3: physical scaling of the accepted mode-four Ferrers solution | 0 |
+| `D0Mode4FerrersProlateDifferentialEquation` | — | Exact prolate ODE for the matched mode-four Ferrers series | 0 |
+| `D0Mode4FerrersRegularEvenProlateSolution` | — | Goal 058 G3: regular even mode-four Ferrers solution assembly | 0 |
+| `D0Mode4FerrersSturmComparison` | — | Goal 058 G3: interior Sturm comparison on one nodal interval | 0 |
 | `D0Mode4HermitianSchurTailEnvelopes` | — | Source-neutral finite-left envelopes for the mode-four Hermitian Schur determinant | 0 |
 | `D0Mode4JacobiHermitianTailRow` | — | The canonical mode-four tail row in Hermitian Jacobi coordinates | 0 |
 | `D0Mode4JacobiHermitianTailUniqueness` | — | Square-summable uniqueness for the symmetric mode-four tail recurrence | 0 |
 | `D0Mode4JacobiMatchedNormalizedCoefficientRow` | — | The root-spliced normalized mode-four recurrence row | 0 |
 | `D0Mode4JacobiRightTailContinuity` | — | Continuity in the spectral parameter of the mode-four right tail | 0 |
 | `D0Mode4JacobiRightTailLimit` | — | The mode-four infinite right tail | 0 |
+| `D0Mode4JacobiRightTailMonotonicity` | — | Monotonicity of the mode-four exact right tail | 0 |
 | `D0Mode4JacobiRootFunction` | — | The mode-four left continuant and root function | 0 |
 | `D0Mode4JacobiSchurContinuant` | — | The mode-four Schur continuant orientation | 0 |
 | `D0Mode4JacobiTailContraction` | — | The mode-four Jacobi tail contraction core | 0 |
 | `D0Mode4OrdinaryLegendreAffineKernel` | — | Ordinary Legendre affine kernel for the mode-four Ferrers gate | 0 |
+| `D0Mode4OrdinaryLegendreIntervalBound` | — | Ordinary Legendre differential equation and the sharp interval bound | 0 |
 | `D0Mode4OrdinaryLegendreRecurrence` | — | Three-term recurrence for the mode-four ordinary Legendre kernel | 0 |
 | `D0Mode4OrdinaryLegendreXAction` | — | Multiplication by X in the mode-four ordinary Legendre basis | 0 |
 | `D0Mode4OrdinaryLegendreXSquaredAction` | — | Multiplication by X squared in the mode-four ordinary Legendre basis | 0 |
+| `D0Mode4PSWFClassicalCoefficientRootCrosswalk` | — | Degree-four DLMF coefficient row forces the current matching root | 0 |
 | `D0Mode4PSWFLegendreBoundaryFluxIdentification` | — | Conditional DLMF source-tail boundary ratio and flux | 0 |
 | `D0Mode4PSWFLegendreCanonicalIdentification` | — | Conditional DLMF 30.8.4--30.8.5 tail identification | 0 |
 | `D0Mode4PSWFLegendreRecurrenceCrosswalk` | — | Exact even-Legendre recurrence crosswalk for the mode-four Jacobi coefficients | 0 |
@@ -76,8 +95,12 @@
 | `D0Mode4PSWFTailCoefficientSquareSummable` | — | The canonical square-summable mode-four tail coefficient row | 0 |
 | `D0Mode4SchurHermitianSymmetrization` | — | Hermitian symmetrization of the mode-four Schur matrix | 0 |
 | `D0Mode4SchurInertiaOrientation` | — | Hermitian inertia orientation for the mode-four Schur residual | 0 |
+| `D0Mode4SchurRootQuadraticCrossing` | — | Quantitative quadratic crossing at an exact mode-four Schur root | 0 |
+| `D0Mode4SchurSimpleKernel` | — | Simple kernel at an exact mode-four Schur root | 0 |
+| `D0Mode4SchurSpectralParameterOrder` | — | Spectral-parameter order of the exact mode-four Schur matrix | 0 |
 | `D0PostAnchorMontel` | — | Exact post-anchor Montel gate for the centered D0 family | 0 |
 | `D0ProlateKTrialSource` | — | Source-faithful prolate-to-kTrial contract | 0 |
+| `D0PstarActualProlateEStarMemLp` | — | Actual prolate packets supply the D0 `E_star` carrier certificate | 0 |
 | `D0PstarArchPrimeSesquilinearForm` | — | The bounded ambient prime form restricted to the dense shifted | 0 |
 | `D0PstarArchSesquilinearFormFiniteRestriction` | — | A literal production mode, carried by the exact shifted archimedean form | 0 |
 | `D0PstarArchSesquilinearFormIntegral` | — | The shifted archimedean form is the exact whole-line multiplier integral | 0 |
@@ -86,8 +109,10 @@
 | `D0PstarExactArchSymbolLogDomination` | — | Goal 057 B3.0B2: exact archimedean-symbol domination | 0 |
 | `D0PstarExactArchSymbolLowerBound` | — | первая декларация: `b3_0n_one_fourth_le_norm_sourceArchimedeanArgument` | 0 |
 | `D0PstarExactArchSymbolWeightedModeL2` | — | Goal 057 B3.0B3: exact archimedean-symbol weighted-mode L2 transfer | 0 |
+| `D0PstarExplicitCCMLimitFourier` | — | Fourier invariance of the explicit CCM limiting packet | 0 |
 | `D0PstarFullMellinGwinCrosswalk` | — | Selected full Mellin/Gwin crosswalk | 0 |
 | `D0PstarGalerkinResidualDecay` | карта | Conditional selected Galerkin residual decay receiver | 0 |
+| `D0PstarInversionCoefficientCrosswalk` | — | Inversion symmetry to production coefficient reflection | 0 |
 | `D0PstarMuntzCenteredCoordinateLock` | — | Exact D0 Pstar to Müntz centered-coordinate lock | 0 |
 | `D0PstarMuntzGalerkinResidualContract` | — | Named object-first Galerkin residual crosswalk | 0 |
 | `D0PstarMuntzGalerkinResidualCrosswalk` | карта | Object-first Galerkin residual Mellin crosswalk | 0 |
@@ -113,6 +138,7 @@
 | `D0PstarSourceArchModePairingIntegrable` | — | Goal 057 B3.0C: source archimedean mode-pairing integrability | 0 |
 | `D0PstarSourceArchModePairingKernel` | — | Goal 057 B3.0D: source archimedean mode-pairing kernel Hermitianity | 0 |
 | `D0PstarSourceArchOffDiagonalCCMWRCrosswalk` | — | первая декларация: `logWindowZeroExtendedMode_integrable_for_e4a` | 0 |
+| `D0PstarSourceCCMOddMassReflectionDefect` | — | Exact source CCM odd mass as a reflection defect | 0 |
 | `D0PstarSourceLogWindowFourierL2Isometry` | — | первая декларация: `fourierLogWindowMode_memLp` | 0 |
 | `D0PstarSourceLowBandModeDecay` | — | Source low-band decay of a single production Fourier mode | 0 |
 | `D0PstarSourceModeCosineCCMQKernel` | — | первая декларация: `complexConvolution` | 0 |
@@ -153,6 +179,7 @@
 | `GenericZeroTransfer` | — | A quantitative open-mapping replacement for the one-disk Rouché step. | 0 |
 | `H2aPenaltyCoercivity` | карта | Aristotle project `16535289-f016-4f62-bfbd-be83d826b4da`, imported | 0 |
 | `HermitianDeterminantRealZeros` | карта | первая декларация: `periodicScalingDet` | 0 |
+| `HermitianUnitMinimumEigenpair` | — | Unit minimum eigenpair for a finite complex Hermitian matrix | 0 |
 | `MatrixBilinFormRadical` | — | The left radical of the bilinear form represented by `Q` is the kernel | 0 |
 | `MatrixBilinRadicalQuotientEquiv` | — | The equality between the full bilinear radical and the calibration line | 0 |
 | `MontelCenteredCriticalStrip` | — | The open centered critical strip is preconnected. -/ | 0 |
@@ -177,6 +204,8 @@
 | `PosDefSelfAdjointRealSpectrum` | карта | A complex matrix that is self-adjoint for a positive-definite Hermitian | 0 |
 | `PosDefSelfAdjointRealSpectrumConsumer` | — | The abstract M1 similarity theorem feeds the existing Hermitian | 0 |
 | `PosDefSelfAdjointRealSpectrumRealConsumer` | — | Positive definiteness survives the canonical scalar extension | 0 |
+| `ProlateActualModeMuntzRegularity` | — | Actual prolate modes supply the production Muntz regularity contract | 0 |
+| `ProlateActualModeSourceLock` | — | Actual prolate-mode source lock | 0 |
 | `ProlateCombinationMuntzRegularity` | — | The canonical two-mode packet is even whenever the stored prolate modes | 0 |
 | `ProlateFiniteFourierNonvanishing` | — | The project finite-Fourier action uses the positive phase, so it is the | 0 |
 | `ProlateFiniteFourierRegularity` | — | The canonical pointwise representative attached to a nonzero real | 0 |
