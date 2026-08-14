@@ -1,10 +1,10 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 245,
-  "declarations": 2283,
-  "in_docs": 978,
-  "in_lemma_db": 2283,
+  "files_scanned": 246,
+  "declarations": 2295,
+  "in_docs": 991,
+  "in_lemma_db": 2295,
   "orphans": 0,
   "uncatalogued": 0,
   "orphan_files_top": [],
@@ -6535,7 +6535,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
       "line": 73,
       "signature": "noncomputable def mode4ForwardHermitianFiniteMatrix (G Λ : ℝ) (d : ℕ) : Matrix (Fin d) (Fin d) ℝ",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
@@ -6635,6 +6635,126 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFEvenFiniteMatrix.lean",
       "line": 259,
       "signature": "theorem mode4DLMFEvenFiniteMatrix_similar_hermitianLeftContinuantMatrix (G Λ : ℝ) (d : ℕ) (hG : 0 < G) : (mode4DLMFEvenFiniteMatrix G Λ d * Matrix.diagonal (fun i : Fin d => mode4DLMFEvenSimilarityScale G i.val) = Matrix.diagonal (fun i : Fin d => mode4DLMFEvenSimilarityScale G i.val) * mode4ForwardHermitianFiniteMatrix G Λ d) ∧ (Matrix.submatrix (mode4ForwardHermitianFiniteMatrix G Λ d) Fin.rev Fin.rev = mode4HermitianLeftContinuantMatrix G Λ d) ∧ (∀ i : Fin d, 0 < mode4DLMFEvenSimilarityScale G i.val)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4ActualFiniteForwardEquiv",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 22,
+      "signature": "def mode4ActualFiniteForwardEquiv (K d : ℕ) : (Fin K ⊕ Fin d) ≃ Fin (K + d)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteForwardEquiv_inl",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 28,
+      "signature": "@[simp] theorem mode4ActualFiniteForwardEquiv_inl (K d : ℕ) (i : Fin K) : mode4ActualFiniteForwardEquiv K d (Sum.inl i) = Fin.castAdd d i.rev",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteForwardEquiv_inr",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 36,
+      "signature": "@[simp] theorem mode4ActualFiniteForwardEquiv_inr (K d : ℕ) (j : Fin d) : mode4ActualFiniteForwardEquiv K d (Sum.inr j) = Fin.natAdd K j",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_tail_entry",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 42,
+      "signature": "private theorem mode4ActualFiniteJacobiTruncation_tail_entry (mProject : ℕ) (Λ : ℝ) (K d : ℕ) (i j : Fin d) : mode4ActualFiniteJacobiTruncation mProject Λ K d (Sum.inr i) (Sum.inr j) = mode4ForwardHermitianFiniteMatrix (mode4JacobiG mProject) Λ (K + d) (Fin.natAdd K i) (Fin.natAdd K j)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_eq_reindex_forwardHermitianFiniteMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 75,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_eq_reindex_forwardHermitianFiniteMatrix (mProject : ℕ) (Λ : ℝ) (K d : ℕ) : mode4ActualFiniteJacobiTruncation mProject Λ K d = Matrix.reindex (mode4ActualFiniteForwardEquiv K d).symm (mode4ActualFiniteForwardEquiv K d).symm (mode4ForwardHermitianFiniteMatrix (mode4JacobiG mProject) Λ (K + d))",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_charpoly_eq_forwardHermitianFiniteMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 149,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_charpoly_eq_forwardHermitianFiniteMatrix (mProject : ℕ) (Λ : ℝ) (K d : ℕ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).charpoly = (mode4ForwardHermitianFiniteMatrix (mode4JacobiG mProject) Λ (K + d)).charpoly",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardHermitianFiniteMatrix_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 161,
+      "signature": "theorem mode4ForwardHermitianFiniteMatrix_isHermitian (G Λ : ℝ) (d : ℕ) : (mode4ForwardHermitianFiniteMatrix G Λ d).IsHermitian",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardHermitianFiniteMatrix_eq_unshifted_sub_scalar",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 175,
+      "signature": "theorem mode4ForwardHermitianFiniteMatrix_eq_unshifted_sub_scalar (G Λ : ℝ) (d : ℕ) : mode4ForwardHermitianFiniteMatrix G Λ d = mode4ForwardHermitianFiniteMatrix G 0 d - Matrix.scalar (Fin d) Λ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "def",
+      "name": "mode4DLMFEvenFiniteEigenvalue",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 188,
+      "signature": "noncomputable def mode4DLMFEvenFiniteEigenvalue (G : ℝ) (d : ℕ) (p : Fin d) : ℝ",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteEigenvalue_monotone",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 195,
+      "signature": "theorem mode4DLMFEvenFiniteEigenvalue_monotone (G : ℝ) (d : ℕ) : Monotone (mode4DLMFEvenFiniteEigenvalue G d)",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4DLMFEvenFiniteMatrix_charpoly_eq_forwardHermitianFiniteMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 208,
+      "signature": "theorem mode4DLMFEvenFiniteMatrix_charpoly_eq_forwardHermitianFiniteMatrix (G Λ : ℝ) (d : ℕ) (hG : 0 < G) : (mode4DLMFEvenFiniteMatrix G Λ d).charpoly = (mode4ForwardHermitianFiniteMatrix G Λ d).charpoly",
+      "in_docs": true,
+      "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_charpoly_eq_DLMFEvenFiniteMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean",
+      "line": 250,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_charpoly_eq_DLMFEvenFiniteMatrix (mProject : ℕ) (Λ : ℝ) (K d : ℕ) (hG : 0 < mode4JacobiG mProject) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).charpoly = (mode4DLMFEvenFiniteMatrix (mode4JacobiG mProject) Λ (K + d)).charpoly",
       "in_docs": true,
       "in_lemma_db": true,
       "orphan": false

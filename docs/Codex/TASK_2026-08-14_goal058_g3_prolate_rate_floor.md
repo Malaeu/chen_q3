@@ -497,3 +497,35 @@ The narrowed G3 stop is
 `DLMF_EVEN_FINITE_MATRIX_AND_EXACT_SIMILARITY_PROVED_ORDERED_EIGENVALUE_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING`.
 G1 remains independently open at the even-head/shift/cofinal full-complement
 floor.  No G1, G3, Route B, or RH promotion follows from this node.
+
+## 2026-08-14 full finite DLMF spectrum crosswalk
+
+The remaining finite-carrier orientation gap is now kernel checked in
+`D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean`.  The exact equivalence from the
+actual Schur carrier `Fin K ⊕ Fin d` to the forward source carrier
+`Fin (K + d)` reverses only the retained block and leaves the tail in forward
+order.  Under this equivalence the complete actual finite Jacobi truncation is
+exactly the forward Hermitian DLMF matrix.
+
+Consequently the actual truncation, the forward Hermitian matrix, and the
+literal nonsymmetric DLMF 30.16.1 matrix have the same characteristic
+polynomial on the full finite carrier.  The node also proves Hermiticity of the
+forward matrix, the literal scalar shift
+`H(G,Lambda) = H(G,0) - Lambda I`, and materializes a zero-based ascending
+finite eigenvalue family with proved monotonicity.
+
+Direct Lean, the 7756-job target build, the 7817-job full build, `q3_check`,
+forbidden-token/whitespace checks, and public axiom audit all pass.  Every
+public theorem uses only `[propext, Classical.choice, Quot.sound]`.
+
+This closes the finite matrix, orientation, shift, characteristic-polynomial,
+and finite-ordering seams.  It does not supply the analytic DLMF 30.16.3
+same-index limit, a classical even spheroidal spectral carrier, the exact
+endpoint counts `2/3`, or the degree-four identification.  The next object is
+therefore genuinely source-analytic rather than another finite algebra
+adapter; the required counts may not be inserted as binders.
+
+The narrowed G3 stop is
+`DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_PROVED_ORDERED_FINITE_TO_CLASSICAL_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING`.
+G1 remains independently open at the even-head/shift/cofinal full-complement
+floor.  No G1, G3, Route B, or RH promotion follows from this node.
