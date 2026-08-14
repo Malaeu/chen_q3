@@ -31,6 +31,45 @@ does not change Lean, route, or roof status.
 
 ## Runs
 
+### 2026-08-14 — Goal 058 DLMF 30.3.5 literal-root crosswalk adjudication
+
+```yaml
+proof_address: RouteB.Goal058.G3.DLMF3035.LiteralRootCrosswalk
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_G3_DLMF_ROOT_CROSSWALK_ADJUDICATION
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: a8ee42c6-e29c-4381-aa9c-09662e3a3c49
+response_message_id: 616a70d4-c185-4a31-87a7-20ef8a2db108
+sent_at: NOT_CAPTURED
+completed_at: NOT_CAPTURED
+wall_seconds: 732
+wall_human: "UI reported 12m12s natural reasoning"
+answer_now_shown: true
+answer_now_clicked: false
+primary: REPAIR_LITERAL_ROOT_CROSSWALK_TO_DLMF3035_SOURCE_IMPORT
+status: CONDITIONAL_SOURCE_MECHANISM_RECOVERED_LEAN_SOURCE_THEOREM_MISSING
+result_pointer: >-
+  q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/
+  PROSHKA_GOAL058_DLMF3035_LITERAL_ROOT_CROSSWALK_VERDICT_2026-08-14.md
+response_archive_lines: 601
+response_archive_bytes: 16240
+response_archive_sha256: 309367ad5a604cbd1636faad322f6ec3f30dc944869a88a64e8390c790c5ae32
+notes: >-
+  Fourth call in the unchanged living Goal 058 phase. Proshka independently
+  re-audited official DLMF 30.3.5 after its runtime cache-missed the exact
+  pushed packet. It ruled that the mathematical root-set mechanism is
+  recovered but the independent Lean source theorem is not materialized.
+  The load-bearing dictionary is project Lambda = DLMF lambda,
+  chi = Lambda + G, and splitDegree = 2*(K-1). The smallest next object is
+  mode4DLMF3035EvenCharacteristicEquation together with the source theorem
+  mode4DLMF30163_3035_evenCharacteristicSolutions and an independent proof
+  that the DLMF recessive right fraction is the project contraction-selected
+  square-summable branch. Aristotle remains unauthorized. G1 and G3 stay
+  open; no Route promotion, Bus dispatch, PX claim, or RH claim occurred.
+  Answer now was shown and never clicked. The full verdict was downloaded
+  through the artifact UI and archived byte-for-byte.
+```
+
 ### 2026-08-14 — Goal 058 H1-H6 finite-limit carrier separator judgment
 
 ```yaml

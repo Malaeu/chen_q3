@@ -326,3 +326,30 @@ finite-limit carrier values.  The active stop is
 `G3_DLMF_STRICT_ORDER_SOURCE_LOCKED_LITERAL_ROOT_CROSSWALK_MISSING`.
 Aristotle is not authorized.  G1 and G3 remain open; no Route B promotion or
 RH claim occurred.
+
+## Mac addendum — DLMF 30.3.5 literal-root crosswalk adjudication
+
+The commit-pinned strict-order packet was delivered to the unchanged living
+Goal 058 Proshka phase. Proshka reasoned naturally for `12m12s`; `Answer now`
+was visible and was not clicked. Its downloadable 16,240-byte verdict is
+archived with SHA-256
+`309367ad5a604cbd1636faad322f6ec3f30dc944869a88a64e8390c790c5ae32`.
+
+The previous `LITERAL_ROOT_CROSSWALK_MISSING` label is now split more sharply.
+DLMF 30.3.5 supplies the noncircular mathematical root-set mechanism, but the
+independent Lean source theorem remains absent. The required unit and index
+locks are project `Lambda = DLMF lambda`, differential
+`chi = Lambda + G`, and DLMF split degree `2 * (K - 1)`, not `2 * K`.
+
+The smallest next object is an independent
+`mode4DLMF3035EvenCharacteristicEquation`, followed by
+`mode4DLMF30163_3035_evenCharacteristicSolutions`. The source transaction
+must also discriminate the DLMF recessive infinite right fraction from a
+terminal-zero finite surrogate and identify it with the project's
+contraction-selected square-summable `mode4RightTailLimit` without using the
+desired root equivalence. The active stop is
+`G3_DLMF3035_SOURCE_THEOREM_NOT_LEAN_MATERIALIZED`.
+
+Aristotle remains `NOT_AUTHORIZED`. G1 and G3 remain open, Route B remains
+`CHALLENGER / NOT_RH`, and no Bus dispatch, route promotion, PX claim, or RH
+claim occurred.

@@ -669,3 +669,33 @@ The exact next Lean head remains `NOT_READY`, and Aristotle remains
 floor, row-reflection/contamination control, and shift connector for the full
 complex complement.  No endpoint count in Lean, G1, G3, Route B promotion, or
 RH claim follows.
+
+## 2026-08-14 DLMF 30.3.5 literal-root ruling
+
+Proshka narrowed the root wall from an unknown mathematical crosswalk to a
+known source mechanism that is not yet formalized. Official DLMF 30.3.5 gives
+the exact even-spectrum solution set of the two-sided continued-fraction
+equation. The remaining task is not another conditional receiver: it is the
+independent source object
+`mode4DLMF3035EvenCharacteristicEquation` and the paper-backed theorem
+`mode4DLMF30163_3035_evenCharacteristicSolutions`.
+
+The source contract must preserve three load-bearing locks:
+
+```text
+project Lambda = DLMF lambda
+differential chi = Lambda + G
+DLMF splitDegree = 2 * (K - 1)
+```
+
+It must separately prove that the DLMF recessive infinite right fraction is
+the project's contraction-selected square-summable `mode4RightTailLimit`.
+Defining the source equation by `mode4RootFunction = 0`, replacing the right
+branch by a terminal-zero finite tail, or using endpoint counts `2/3` is
+circular and forbidden.
+
+The active G3 stop is
+`G3_DLMF3035_SOURCE_THEOREM_NOT_LEAN_MATERIALIZED`. Aristotle is not
+authorized until the source theorem exists; only then is the local
+root-function-to-Schur-determinant adapter a bounded Aristotle candidate.
+G1 remains independently open. No Route B or RH promotion follows.
