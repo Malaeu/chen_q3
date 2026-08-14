@@ -25,7 +25,8 @@ description: >
 ```bash
 cd /Users/emalam/GitHub/rh_lean_01_2026
 cat orchestrator/state/state.json          # блок _RESUME_AFTER_RESTART
-.venv/bin/python orchestrator/sense.py     # открытый фронт шины
+python3 q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/routeb_status.py --check
+                                              # открытый фронт живой шины
 ./orchestrator/codex_app.sh probe          # жив ли доступ к Codex.app
 ```
 
@@ -196,10 +197,11 @@ supported». И достать их нечем: в DOM панель рендер
 
 ## Фазы шины
 
-`sense.py` читает обе грамматики: новую (`# STATUS:` + YAML) и старую
-(`# ОТВЕТ NNN` с вердиктом в бэктиках, голы 004–033). Нераспознанный
-исторический вердикт — предупреждение, а не блокер; fail-closed только на
-текущем фронте.
+`routeb_status.py --check` читает физическую живую шину `docs/routeB_bus/`,
+сверяет lifecycle открытых и приостановленных целей с текущим execution state
+и fail-closed останавливается при drift. Ретайренный проводник старых
+грамматик сохранён только в `orchestrator/archive/sense_conductor_2026-07-30.py`
+и не является стартовым входом.
 
 Вердикты-как-решающие: `PROVED, KILL, ACCEPT, LIVE, CLOSED, MATERIALIZED,
 RATIFIED, REFUTED`. Как нерешающие: `OPEN, INCONCLUSIVE, CONDITIONAL, REPAIR,
@@ -337,7 +339,8 @@ TaskStop <id>          # каждый Monitor и каждая фоновая з�
 
 ```
 orchestrator/
-  sense.py          фазы шины, read-only
+  routeb_goal_state.py  разбор физической живой шины, read-only
+  goal_runtime.py       schema/select readiness, read-only
   relay.py          разбор по маркерам + запуск локальных лейнов
   codex_app.sh      лейн Codex.app
   state/
