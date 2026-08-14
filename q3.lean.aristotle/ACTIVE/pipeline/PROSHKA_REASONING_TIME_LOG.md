@@ -214,6 +214,47 @@ notes: >-
   Bus 010, PX claim, or RH claim followed from the verdict.
 ```
 
+### 2026-08-14 — Goal 058 actual G1/G3 source closure
+
+```yaml
+proof_address: RouteB.Goal058.G1G3.ActualSourceClosure
+front: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+transaction: GOAL058_ACTUAL_G1_G3_SOURCE_CLOSURE_JUDGE
+conversation_id: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+request_message_id: c957e8c4-0909-4806-9f6f-013725201896
+sent_at: 2026-08-14T02:03:00+02:00
+completed_at: 2026-08-14T02:22:20+02:00
+wall_seconds: 1160
+wall_human: "19m20s UI-reported natural reasoning; sent time minute-resolution"
+answer_now_shown: true
+answer_now_clicked: false
+primary: NO_SOUND_ARISTOTLE_TASK_AT_THIS_BOUNDARY
+status: OPEN_SOURCE_MATHEMATICS
+result_pointer: >-
+  docs/routeB_bus/proshka/
+  PROSHKA_GOAL058_ACTUAL_SOURCE_CLOSURE_VERDICT_2026-08-14.md
+request_file: PROSHKA_REQUEST_GOAL058_G1_G3_ACTUAL_SOURCE_CLOSURE_2026-08-14.txt
+request_sha256: 3c453b82b8963c0789ad9dbd74fb762b73a89efe816740dfa974a0e89cafb6c3
+brief_sha256: 46b12aea6be1746f83bbae876795a256527b73d9dee38cd6f25a2a77d4b672cc
+response_bytes: 12083
+response_lines: 362
+response_sha256: 91d66be4810d4744b8f780fe912845ae8d07ee6ac820afc8926feca0bd85b5d0
+notes: >-
+  Second call in the unchanged living Goal 058 phase. Proshka named
+  ActualCCMProlatePairConstructor as the first non-receiver G3 source theorem
+  and LiteralCCMQuantitativeComplementFloor as the independent G1 invention
+  target. It prohibited a new Aristotle submission because the remaining
+  bounded statements either assume the missing rate/floor or can be satisfied
+  by a non-source ProlatePair. The answer-now control appeared and was never
+  clicked. The exact generated Markdown payload was recovered from the
+  browser answer after the visible download control did not publish a file to
+  the host Downloads directory; byte count and SHA above are exact. During
+  natural judge reasoning Codex independently proved the positive CCM limit
+  anchor and then implemented IsActualProlateModePair plus a kernel-checked
+  weak-record rejection plant. No G1/G3 close, Route B promotion, Bus 010,
+  PX claim, or RH claim occurred.
+```
+
 ### 2026-08-08 — Goal 057 B3.0G source W02 mode-pairing audit
 
 ```yaml
