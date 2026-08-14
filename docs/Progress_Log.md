@@ -1705,6 +1705,10 @@ floor, coupled schedule, G1, G3, Route B promotion и RH остаются отк
 
 ## 2026-08-14 — Goal 058: limit-anchor положителен, найдена настоящая G3-стена
 
+**Развилка:** считать denominator floor отдельной source-гипотезой и искать
+bare `ProlatePair` constructor либо сначала доказать положительность точного
+limit-anchor и проверить, полисит ли record настоящие prolate-моды.
+
 **Выбрали:** доказать на буквальном Eq. (7.1) пакете
 `re(E_star h u)>0` для `u>=1` и отдельно проверить, выражает ли production
 `ProlatePair` настоящие prolate-моды.
@@ -1714,15 +1718,32 @@ floor, coupled schedule, G1, G3, Route B promotion и RH остаются отк
 eigenfunction equation и не lowest-even selection. Поэтому bare constructor
 может вернуть не-моды.
 
-**Почему это важно:** denominator floor теперь можно выводить переносом от
+**Почему:** denominator floor теперь можно выводить переносом от
 конкретного положительного limit-anchor, но сначала нужны source-locked actual
 modes и опубликованная CCM Lemma 7.2 rate. До появления actual-mode predicate
 честной Aristotle-задачи нет.
+
+**Что отвергли и почему:** bare `ProlatePair` constructor — record допускает
+не-моды; independent floor binder — повторяет искомый source input; raw
+`PairIndex` schedule как production closure — не даёт `CentralIndex` и
+selected nonzero transform; Aristotle submit — success predicate пока можно
+обмануть не-модой.
+
+**Техника:** exact factorization
+`(pi/2)*x^2*(2*pi*x^2-3)`, positivity при `x>=1`, summability transport с
+integer series, `tsum_pos`, direct/target/full Lean и public axiom audit;
+отдельно browser-verdict Mythos и локальная проверка type surface.
 
 **Следующий ход:** внешний source-locked actual-mode predicate поверх
 неизменённого `ProlatePair`, постоянный loose-pair falsifier и analysis-ledger
 для Lemma 7.2. G1 отдельно остаётся на новом количественном theorem target для
 divided-difference beta формы.
+
+**Адреса:**
+`Q3/Proofs/RouteB/D0PstarExplicitCCMLimitFourier.lean` ·
+`GOAL058_EXPLICIT_CCM_LIMIT_POSITIVE_ANCHOR_CLOSEOUT_2026-08-14.md` ·
+`MYTHOS_VERDICT_GOAL058_G1_G3_ACTUAL_SOURCE_CLOSURE_2026-08-14.md` ·
+`TASK_2026-08-14_goal058_g3_prolate_rate_floor.md`.
 
 **Граница:** `PASS_EXACT_LIMIT_POSITIVE_ANCHOR / SOURCE_OBJECT_GAP`; G1, G3,
 Route B promotion и RH остаются открыты.

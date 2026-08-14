@@ -157,7 +157,7 @@
   "knowledge": {
     "dossier": 171,
     "excluded_source": 113,
-    "journal_entry": 1844,
+    "journal_entry": 1845,
     "kill": 143,
     "move": 26,
     "postmortem": 1,
@@ -627,20 +627,20 @@
     "authority": "MACHINE_LOCAL_RETRIEVAL_VALIDATION_NOT_PROOF",
     "boundary": "RETRIEVAL_VALIDATION_NOT_PROOF",
     "collection": "q3_docs",
-    "collection_file_count": 2660,
+    "collection_file_count": 2662,
     "corpus": {
       "breakdown": {
-        "lean": 978,
-        "markdown": 1624,
+        "lean": 977,
+        "markdown": 1627,
         "other": 0,
         "tex": 56,
         "yaml": 1
       },
-      "expected_collection_file_count": 2660,
-      "file_count": 2659,
+      "expected_collection_file_count": 2662,
+      "file_count": 2661,
       "schema": "q3_docs_corpus.v1",
-      "sha256": "d2998a775b6220f907f64d747aeaab81c41a37dd98b780f55c83c21b71149139",
-      "total_bytes": 33712955
+      "sha256": "a75fe5982019bd419e5760ff75c8323fc1da25fafd628b3f723971ee03e27376",
+      "total_bytes": 33810097
     },
     "dynamic_goal_path": "docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md",
     "dynamic_queries": [
@@ -698,6 +698,12 @@
             },
             {
               "base_id": "zeta23",
+              "line": 436,
+              "path": "Zeta23/PrimeSideB/PPKernel.lean",
+              "snippet": "  all_goals apply Continuous.intervalIntegrable; fun_prop"
+            },
+            {
+              "base_id": "zeta23",
               "line": 719,
               "path": "Zeta23/FromPNTPlus/MellinCalculus.lean",
               "snippet": "  on_goal 1 =>"
@@ -716,9 +722,15 @@
             },
             {
               "base_id": "zeta23",
-              "line": 97,
-              "path": "Zeta23/ExplicitFormula.lean",
-              "snippet": "a goal written with `*`; restating the lemmas at ℂ (proved by `exact`) makes `rw` usable.) -/"
+              "line": 1032,
+              "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+              "snippet": "  all_goals"
+            },
+            {
+              "base_id": "zeta23",
+              "line": 2548,
+              "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
+              "snippet": "        obtain ⟨_, ripGoal⟩ := h"
             },
             {
               "base_id": "zeta23",
@@ -752,27 +764,15 @@
             },
             {
               "base_id": "zeta23",
-              "line": 402,
-              "path": "Zeta23/ThmD/Window.lean",
-              "snippet": "  -- rewrite the goal through φ_D² = c·g"
+              "line": 36,
+              "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+              "snippet": "the target.  Afterwards, it sets the goal to be the equality between the"
             },
             {
               "base_id": "zeta23",
-              "line": 260,
-              "path": "Zeta23/PrimeSideA/CrossMuPCore.lean",
-              "snippet": "      all_goals { apply Continuous.integrableOn_Icc; fun_prop }"
-            },
-            {
-              "base_id": "zeta23",
-              "line": 149,
-              "path": "Zeta23/XiPrime/Coeff/ReexpansionGen.lean",
-              "snippet": "  all_goals first | ring | rfl"
-            },
-            {
-              "base_id": "zeta23",
-              "line": 1032,
-              "path": "Zeta23/FromPNTPlus/MediumPNT.lean",
-              "snippet": "  all_goals"
+              "line": 37,
+              "path": "Zeta23/FromPNTPlus/Tactic/AdditiveCombination.lean",
+              "snippet": "lefthand side of the new goal and the lefthand side of the new weighted sum."
             }
           ],
           "query": "GOAL 058 REALZERO_GROUND_DIAGONAL_TO_XI",
@@ -815,17 +815,17 @@
         },
         "id": "exact_target",
         "query": "Proposition59GroundLagrangeZeroSetBridge",
-        "result_count": 12,
+        "result_count": 13,
         "status": "PASS",
         "top_paths": [
           "qmd://q3_docs/docs/routeb-bus/map.md",
           "qmd://q3_docs/docs/routeb-bus/proshka/proshka-brief-goal058-g1-g3-next-source-task-2026-08-13.md",
-          "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
           "qmd://q3_docs/docs/routeb-bus/map-coverage.md",
+          "qmd://q3_docs/docs/routeb-bus/codex-directive-route058-p59-g2b-2026-08-12.md",
           "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
           "qmd://q3_docs/docs/routeb-bus/058-realzero-ground-diagonal-to-xi-goal.md",
           "qmd://q3_docs/docs/routeb-bus/proshka-queue.md",
-          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-bridge.lean"
+          "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-same-family-publication-spec-2026-08-11.md"
         ]
       },
       {
@@ -850,13 +850,13 @@
         "status": "PASS",
         "top_paths": [
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/q-nonneg-on-atoms-fourier-axiom.lean",
-          "qmd://q3_docs/q3-lean-aristotle/docs/insights/proshka-h1-raw-formula-brief-2026-03-08.md",
+          "qmd://q3_docs/q3-lean-aristotle/q3/rkhs-contraction.lean",
+          "qmd://q3_docs/full/rh-q3.tex",
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/step33-bootstrap/strategic-context.md",
           "qmd://q3_docs/q3-lean-aristotle/active/refs/proof-map.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/refs/project-status.md",
-          "qmd://q3_docs/docs/routeb-bus/litreview/zotero-master.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/zotero-master.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/step33-bootstrap/a-source-sync-psd-sanity.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/proshka-h4-suzuki-endpoint-2026-03-20/node.md"
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/completedtrackerscope.lean",
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/rkhs-rescaling.lean",
+          "qmd://q3_docs/q3-lean-aristotle/active/insights.md"
         ]
       },
       {
@@ -1013,11 +1013,11 @@
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/montelnormalfamilies.lean",
           "qmd://q3_docs/docs/routeb-bus/proshka/proshka-master-route-realzero-ground-diagonal-to-xi-2026-08-11.md",
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0criticalmomentstripbound.lean",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/step33-bootstrap/a-distance-payload-worklist.md",
           "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/normalizedtrackingratetransfer.lean",
-          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/s2gaugenonvanishing.lean",
           "qmd://q3_docs/q3-lean-aristotle/active/insights.md",
-          "qmd://q3_docs/q3-lean-aristotle/docs/insights.md"
+          "qmd://q3_docs/q3-lean-aristotle/docs/insights.md",
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/s2gaugenonvanishing.lean",
+          "qmd://q3_docs/q3-lean-aristotle/docs/insights/naive-rayleigh-family-obstruction-2026-03-07.md"
         ]
       },
       {
@@ -1166,18 +1166,18 @@
         "result_count": 12,
         "status": "PASS",
         "top_paths": [
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-verdict-goal057-b3-0g-source-w02-mode-pairing-source-audit-2026-08-08.md",
-          "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0-post-r-next-node-adjudication-2026-08-09.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-verdict-goal057-b3-0-post-r-next-node-adjudication-2026-08-09.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-twolevel-spectral-ladder/route-b-state.md",
-          "qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0d-source-archimedean-mode-pairing-kernel-hermitianity-2026-08-08.md",
-          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka/proshka-verdict-goal057-b3-0d-source-archimedean-mode-pairing-kernel-hermitianity-2026-08-08.md",
-          "qmd://q3_docs/docs/routeb-bus/proshka/proshka-brief-goal058-g1-g3-next-source-task-2026-08-13.md",
-          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0f-finite-archimedean-sesquilinear-form-matrix-lift-closeout-2026-08-08.md"
+          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0d-source-archimedean-mode-pairing-kernel-hermitianity-closeout-2026-08-08.md",
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-b3-0d-source-archimedean-mode-pairing-kernel-hermitianity-closeout-2026-08-08.md",
+          "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0pstarsourcearchmodepairingkernel.lean",
+          "qmd://q3_docs/docs/routeb-bus/057-unified-chain-program-delegated-review-goal.md",
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/057-unified-chain-program-delegated-review-goal.md",
+          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0i-source-prime-mode-pairing-closeout-2026-08-09.md",
+          "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-b3-0i-source-prime-mode-pairing-closeout-2026-08-09.md",
+          "qmd://q3_docs/docs/routeb-bus/goal057-b3-0b1-log-growth-envelope-weighted-l2-closeout-2026-08-08.md"
         ]
       }
     ],
-    "generated_at": "2026-08-13T23:58:45.123489+00:00",
+    "generated_at": "2026-08-14T00:21:32.547410+00:00",
     "machine_id": "c142388699847d8bb90587819e5597200607a5cdc70fd9ab6f538aacff6efc6f",
     "mode": "search_plus_vsearch",
     "plants": [
@@ -1185,11 +1185,11 @@
         "id": "POST_JUNE_IDENTIFICATION",
         "lexical_count": 0,
         "matched_paths": [
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/route-b-data-manifest.md",
-          "qmd://q3-docs/docs/routeb-bus/026-lambda-bracket-resume-answer.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/026-lambda-bracket-resume-answer.md",
-          "qmd://q3-docs/docs/routeb-bus/strip-growth-probe.md",
-          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/strip-growth-probe.md"
+          "qmd://q3-docs/docs/routeb-bus/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal057-actual-numerator-source-target-audit-2026-08-07.md",
+          "qmd://q3-docs/docs/routeb-bus/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+          "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/044-muntz-v3-r6-export-hrm-wrapper-answer.md",
+          "qmd://q3-docs/docs/routeb-bus/proshka/proshka-verdict-goal057-b3-0e3-zero-extended-mode-cosine-correlation-ccm-qkernel-release-2026-08-08.md"
         ],
         "query": "IdentificationAt",
         "result_count": 30,
@@ -1207,7 +1207,7 @@
           "qmd://q3-docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/035-edge-sliver-materialization-goal.md"
         ],
         "query": "edge-sliver",
-        "result_count": 38,
+        "result_count": 39,
         "status": "PASS",
         "vector_count": 30
       },
@@ -1219,26 +1219,26 @@
           "qmd://q3-docs/q3-lean-aristotle/active/psd-step33-monitor.md",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornerfamilybridge.lean",
           "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16activeactualhornersegmentcert.lean",
-          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16directintervalpayload.lean"
+          "qmd://q3-docs/q3-lean-aristotle/q3/proofs/psd-centeredcoeffrawomegaacombinedcancellationorder16biasedscaledremainderintervalpayload.lean"
         ],
         "query": "ActiveCenteredCoeffEntryHboxCert",
-        "result_count": 33,
+        "result_count": 34,
         "status": "PASS",
-        "vector_count": 26
+        "vector_count": 27
       }
     ],
     "qmd_index": {
-      "collection_file_count": 2660,
+      "collection_file_count": 2662,
       "collection_mask": "**/*",
       "collection_root": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.qmd_cache/q3_docs_current",
       "identity": "b8b4f95a095a529dc936b8fe37deacee3af13a1f1cd74b447ee84b65240a1504",
       "index_path": "/Users/emalam/.cache/qmd/index.sqlite"
     },
     "schema": "q3_semantic_index_receipt.v2",
-    "source_commit": "46bca13c726e14919b09179101e5eb2bc6ab472a",
+    "source_commit": "335be6bcdecf996ce61b292a9b45f37711d7c35c",
     "status": "PASS"
   },
-  "source_commit": "2ef549b79ef789357058258d3b89b216d4e04643",
+  "source_commit": "335be6bcdecf996ce61b292a9b45f37711d7c35c",
   "tool_manifest": {
     "family_count": 7,
     "schema": "q3_tool_manifest.v2",
