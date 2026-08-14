@@ -1,13 +1,18 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 230,
-  "declarations": 2120,
-  "in_docs": 940,
+  "files_scanned": 231,
+  "declarations": 2124,
+  "in_docs": 941,
   "in_lemma_db": 2120,
-  "orphans": 0,
-  "uncatalogued": 0,
-  "orphan_files_top": [],
+  "orphans": 3,
+  "uncatalogued": 3,
+  "orphan_files_top": [
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
+      3
+    ]
+  ],
   "items": [
     {
       "kind": "def",
@@ -18997,6 +19002,46 @@
       "signature": "theorem zerosRealOn_of_realPosDefWeightedSymmetric_charpoly_mul {n : Type*} [Fintype n] [DecidableEq n] (Q D : Matrix n n ℝ) (hQ : Q.PosDef) (hSA : Q * D = D.transpose * Q) (F unit realFactor : ℂ → ℂ) (hunit : ∀ z, unit z ≠ 0) (hrealFactor : ZerosRealOn Set.univ realFactor) (hfactor : ∀ z, F z = unit z * (((D.map (algebraMap ℝ ℂ)).charpoly.eval z) * realFactor z)) : ZerosRealOn Set.univ F",
       "in_docs": false,
       "in_lemma_db": true,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "measurable_of_finiteFourier_eigenrelation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
+      "line": 29,
+      "signature": "theorem measurable_of_finiteFourier_eigenrelation (lambda : ℝ) (hlambda : 0 ≤ lambda) (h : ℝ → ℂ) (chi : ℂ) (hchi : chi ≠ 0) (hsupp : Function.support h ⊆ Icc (-lambda) lambda) (hint : Integrable h) (heigen : ∀ x ∈ Icc (-lambda) lambda, finiteFourierAction lambda h x = chi * h x) : Measurable h",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "prolateCombination_muntzRegularity_of_actualModes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
+      "line": 61,
+      "signature": "theorem prolateCombination_muntzRegularity_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : ∃ K : NNReal, Function.Even (prolateCombination P) ∧ Measurable (prolateCombination P) ∧ (∀ u, u ∉ Icc (-P.pw.lambda) P.pw.lambda → prolateCombination P u = 0) ∧ LipschitzOnWith K (prolateCombination P) (Ico (0 : ℝ) P.pw.lambda) ∧ (∫ u in Ioi (0 : ℝ), prolateCombination P u) = 0",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "ProlatePair.normalizingDenominator_pos_of_actualModes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
+      "line": 106,
+      "signature": "theorem ProlatePair.normalizingDenominator_pos_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : 0 < P.normalizingDenominator",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "prolateCombination_ne_zero_of_actualModes",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/ProlateActualModeMuntzRegularity.lean",
+      "line": 122,
+      "signature": "theorem prolateCombination_ne_zero_of_actualModes (P : ProlatePair) (hP : IsActualProlateModePair P) : prolateCombination P ≠ 0",
+      "in_docs": true,
+      "in_lemma_db": false,
       "orphan": false
     },
     {

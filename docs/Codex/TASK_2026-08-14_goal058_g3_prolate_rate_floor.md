@@ -242,3 +242,28 @@ coefficient row and its Ferrers-series identity.  It must not merely place
 the recurrence, index, root, or function identity into a new structure.  Mode
 zero, the restricted finite-Fourier pair, CCM Lemma 7.2, the denominator
 floor, and the coupled schedule remain open; G1 is unchanged.
+
+## 2026-08-14 actual-mode regular packet consequence
+
+The exact source predicate now discharges every separate regularity binder
+needed by the existing production Muntz receiver.  In
+`ProlateActualModeMuntzRegularity.lean`, the restricted nonzero
+finite-Fourier eigenrelations rewrite each compactly supported mode as the
+window indicator of a globally Lipschitz finite-Fourier action.  This proves
+measurability and positive-half Lipschitz regularity, hence the complete
+Muntz regularity package for the unchanged `prolateCombination`.
+
+The same file proves two source consequences which were previously left at
+the data boundary:
+
+- `0 < P.normalizingDenominator` from the positive source integrals;
+- `prolateCombination P != 0` from the exact Sturm selectors: the degree-four
+  mode has an interior zero while the degree-zero mode has none.
+
+Direct Lean, target build, and `q3_check` pass; all four public theorem heads
+have axiom surface exactly `[propext, Classical.choice, Quot.sound]`.  This
+does not construct `P`, prove the Lemma 7.2 rate, establish `E_star` `MemLp`,
+prove the selected projection nonzero or its quantitative denominator floor,
+or choose a cofinal schedule.  The stop remains
+`ACTUAL_MODE_EXISTENCE_LEMMA72_ESTAR_FLOOR_AND_SCHEDULE_MISSING`; G1 remains
+open independently.
