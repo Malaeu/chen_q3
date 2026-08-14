@@ -1,0 +1,94 @@
+GOAL 058 — ACTUAL SOURCE CLOSURE ADJUDICATION
+
+PHASE_KEY_CHANGE: false
+LIVING_PHASE_HANDLE: 6a7afc0e-2aec-83eb-a9ca-469b44c84f83
+
+SIX_FIELD_PHASE_KEY:
+  route_id: RouteB_TwoLevelSpectralLadder
+  front_id: GOAL058_G1_G3_COFINAL_GROUND_TRACKING
+  source_object_family_id: PROPOSITION59_CCM_FINITE_BOTTOM_GROUND_FAMILY
+  terminal_consumer_id: Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots
+  honesty_state: CHALLENGER_NOT_RH
+  convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+
+SOURCE_LOCK:
+  repo: https://github.com/Malaeu/chen_q3
+  branch: rh_clean
+  tip: 90bd221ab1c816675e7bfbf77531fbff3e10a9af
+  context_pack: docs/routeB_bus/proshka/PROSHKA_BRIEF_GOAL058_G1_G3_ACTUAL_SOURCE_CLOSURE_2026-08-14.md
+  context_pack_sha256: cf75c2eef1d3794cf1513326c2ff152dbfb6131c2502bb9dedb5ef24e4061593
+
+CURRENT_KERNEL_CHECKED_PROGRESS:
+  - P59_GROUND_LAGRANGE_ZEROSET_BRIDGE_PROVED
+  - PASS_EXACT_REFLECTION_DEFECT_REPRESENTATION
+  - PASS_EXACT_INVERSION_TO_COEFFICIENT_CROSSWALK
+  - PASS_EXACT_DENOMINATOR_MECHANISM
+  - PASS_EXACT_LIMIT_PACKET_AND_INVERSION
+  - explicitCCMLimitH is literal CCM Eq. (7.1)
+  - Fourier explicitCCMLimitH = explicitCCMLimitH
+  - E_star explicitCCMLimitH u^-1 = E_star explicitCCMLimitH u for u > 0
+
+CURRENT_EXACT_WALLS:
+  G3:
+    input:
+      - current ProlatePair / ProlateKTrialSourceData / PairIndex family
+      - literal prolateCombination and E_star
+      - proved explicitCCMLimitH and inversion/coefficient/floor consumers
+    missing:
+      - source-locked constructor/selector of the actual normalized degree 0/4 prolate modes
+      - CCM Lemma 7.2 uniform O(lambda^-2) estimate to explicitCCMLimitH
+      - nonzero central overlap and eventual projected denominator floor
+      - one precommitted coupled (m,N) schedule
+    output_required:
+      - actual same-family theorem, not a receiver taking rate/floor/tracking binders
+
+  G1:
+    input:
+      - literal ccmWeilMatFinite family, exact parity and rank-two commutator
+      - exact all-ones 3x3 falsifier showing commutator/beta alone is insufficient
+    missing:
+      - quantitative even-sector simplicity/cyclicity arithmetic
+      - strict even-ground below odd-ground ordering
+      - uniform positive spectral-gap control on the same coupled schedule
+    output_required:
+      - source theorem or certificate scheme for the literal family, not finite extrapolation
+
+REQUEST_TO_PROSHKA_AND_MYTHOS:
+  1. Reconcile the exact disk state at the source lock above.
+  2. Decide the smallest honest next mathematical primary. Prefer a real G3
+     source constructor/rate/floor theorem if derivable from the pinned primary
+     sources; otherwise identify the exact missing primary-source theorem.
+  3. In parallel, state the smallest genuine G1 quantitative theorem/certificate
+     that survives the commutator falsifier.
+  4. Return exact input objects, output theorem head, source addresses,
+     normalization/phase/scaling/index locks, and a falsifier/noncircularity audit.
+  5. If and only if there is a bounded theorem derivable from current imports
+     without assuming the target, emit an attachment-ready Aristotle prompt:
+     owned file, allowed imports, exact binders, exact theorem head, plants,
+     typed stop, and validation commands.
+  6. If the work is genuinely new analysis rather than bounded formalization,
+     say so explicitly and do not fabricate an Aristotle task.
+
+FORBIDDEN:
+  - Fourier or inversion symmetry as new binders
+  - approximation rate, denominator floor, gap, simplicity, tracking, or Tendsto as binders
+  - a parallel strengthened ProlatePair relabeled as the production family
+  - finite-cell or numerical ladder promoted to cofinal theorem
+  - source-row symmetrization
+  - changing the _normalized P59 supplier name
+  - Route B or RH promotion
+
+RETURN:
+  - one primary operative class
+  - G3 theorem/source verdict
+  - G1 theorem/source verdict
+  - optional bounded Aristotle prompt or exact NO_SOUND_ARISTOTLE_TASK stop
+  - exact next action for Codex
+
+CURRENT_STATUS:
+  G1: OPEN
+  G3: OPEN
+  ROUTE: CHALLENGER_NOT_RH
+  BUS_010: VOID
+  ROUTE_PROMOTION: false
+  RH_CLAIM: false
