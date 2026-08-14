@@ -425,12 +425,85 @@ private lemma explicitCCMLimitH_zero : explicitCCMLimitH 0 = 0 := by
   rw [explicitCCMLimitH_apply]
   norm_num
 
+private lemma explicitCCMLimitH_pos_of_three_lt_sq
+    (x : ℝ) (hx : 3 < 2 * Real.pi * x ^ 2) :
+    0 < (explicitCCMLimitH x).re := by
+  rw [explicitCCMLimitH_apply]
+  rw [show gaussianPi x =
+      ((Real.exp (-Real.pi * x ^ 2) : ℝ) : ℂ) by
+    unfold gaussianPi
+    rw [show -Real.pi * (x : ℂ) ^ 2 =
+      ((-Real.pi * x ^ 2 : ℝ) : ℂ) by norm_cast]
+    exact (Complex.ofReal_exp _).symm]
+  rw [Complex.mul_re]
+  norm_num only [Complex.ofReal_re, Complex.ofReal_im, mul_zero,
+    sub_zero]
+  have hx0 : x ≠ 0 := by
+    intro h
+    subst x
+    norm_num at hx
+  have hpoly : 0 < Real.pi / 2 * x ^ 2 * (2 * Real.pi * x ^ 2 - 3) := by
+    have hpi : 0 < Real.pi / 2 := by positivity
+    have hxsq : 0 < x ^ 2 := sq_pos_of_ne_zero hx0
+    have hlast : 0 < 2 * Real.pi * x ^ 2 - 3 := sub_pos.mpr hx
+    positivity
+  rw [show Real.pi ^ 2 * x ^ 4 - 3 * Real.pi / 2 * x ^ 2 =
+    Real.pi / 2 * x ^ 2 * (2 * Real.pi * x ^ 2 - 3) by ring]
+  exact mul_pos hpoly (Real.exp_pos _)
+
 open Filter Asymptotics in
 private lemma summable_explicitCCMLimitH_int_mul (u : ℝ) (hu : 0 < u) :
     Summable (fun n : ℤ => explicitCCMLimitH (u * n)) := by
   have hcof := (rpow_decay_comp_mul_pos hu
     explicitCCMLimitH_decay).comp_tendsto Int.tendsto_coe_cofinite
   exact summable_of_isBigO (Real.summable_abs_int_rpow one_lt_two) hcof
+
+private lemma summable_explicitCCMLimitH_pnat_mul (u : ℝ) (hu : 0 < u) :
+    Summable (fun n : ℕ+ => explicitCCMLimitH ((n : ℕ) * u)) := by
+  have h := (summable_explicitCCMLimitH_int_mul u hu).comp_injective
+    (by
+      intro a b hab
+      apply Subtype.ext
+      exact Int.ofNat_inj.mp hab :
+      Function.Injective (fun n : ℕ+ => (n : ℤ)))
+  simpa [mul_comm] using h
+
+/-- On the production half-window `u >= 1`, the literal CCM limiting
+packet has strictly positive starred sum.  This supplies a concrete positive
+central-overlap target for the G3 approximation/floor transport. -/
+theorem E_star_explicitCCMLimitH_pos
+    (u : ℝ) (hu : 1 ≤ u) :
+    0 < (E_star explicitCCMLimitH u).re := by
+  have hu0 : 0 < u := zero_lt_one.trans_le hu
+  have hsum := summable_explicitCCMLimitH_pnat_mul u hu0
+  have hreal : Summable
+      (fun n : ℕ+ => (explicitCCMLimitH ((n : ℕ) * u)).re) :=
+    Complex.reCLM.summable hsum
+  have hnonneg (n : ℕ+) :
+      0 ≤ (explicitCCMLimitH ((n : ℕ) * u)).re := by
+    exact (explicitCCMLimitH_pos_of_three_lt_sq ((n : ℕ) * u) (by
+      have hn : (1 : ℝ) ≤ (n : ℕ) := by exact_mod_cast n.pos
+      have hnu : (1 : ℝ) ≤ (n : ℕ) * u := by nlinarith
+      have hpi : (3 : ℝ) < 2 * Real.pi := by
+        nlinarith [Real.pi_gt_d20]
+      nlinarith [sq_nonneg ((n : ℕ) * u - 1), Real.pi_pos])).le
+  have hone :
+      0 < (explicitCCMLimitH (((1 : ℕ+) : ℕ) * u)).re := by
+    apply explicitCCMLimitH_pos_of_three_lt_sq
+    norm_num only [PNat.val_ofNat, one_mul]
+    have hpi : (3 : ℝ) < 2 * Real.pi := by
+      nlinarith [Real.pi_gt_d20]
+    nlinarith [sq_nonneg (u - 1), Real.pi_pos]
+  have htsum :
+      0 < ∑' n : ℕ+, (explicitCCMLimitH ((n : ℕ) * u)).re :=
+    hreal.tsum_pos hnonneg 1 hone
+  unfold E_star
+  rw [Complex.mul_re]
+  norm_num only [Complex.ofReal_re, Complex.ofReal_im, mul_zero,
+    sub_zero]
+  rw [Complex.re_tsum hsum]
+  rw [zero_mul, sub_zero]
+  exact mul_pos (Real.sqrt_pos.2 hu0) htsum
 
 private lemma int_sum_eq_two_pnat_sum (u : ℝ) (hu : 0 < u) :
     (∑' n : ℤ, explicitCCMLimitH (u * n)) =
@@ -496,5 +569,7 @@ theorem E_star_explicitCCMLimitH_inv (u : ℝ) (hu : 0 < u) :
     rw [← mul_inv, hsq]]
   push_cast
   field_simp
+
+#print axioms E_star_explicitCCMLimitH_pos
 
 end Q3.RouteB.D0Pstar
