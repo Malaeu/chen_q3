@@ -1,0 +1,124 @@
+PROSHKA / MYTHOS JOINT REQUEST — GOAL 058 G1 + G3 ANALYTIC SOURCE WALL
+Date: 2026-08-14
+Branch: rh_clean
+Head at packet build: 1082f5eb0b0d13c9318c05eae8ab97566725bf91
+Phase: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+Route state: CHALLENGER / NOT_RH
+
+TRANSPORT
+
+Attach the byte-verified UTF-8 context pack:
+
+  /tmp/PROSHKA_GOAL058_G1_G3_ANALYTIC_WALL_CONTEXT_2026-08-14.txt
+  SHA-256 51fa5cfa0ddb3ab2ff4234c2036ac3538a15c2cbb95b55567d613f540b18430e
+  bytes 60655
+
+Canonical repository:
+
+  https://github.com/Malaeu/chen_q3/tree/rh_clean
+
+New finite crosswalk commit:
+
+  https://github.com/Malaeu/chen_q3/commit/54421e9d26a522a4125c5e4542b4130a7d0c720b
+
+New production Lean file:
+
+  https://github.com/Malaeu/chen_q3/blob/rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean
+
+New closeout:
+
+  https://github.com/Malaeu/chen_q3/blob/rh_clean/q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/GOAL058_G3_DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_CLOSEOUT_2026-08-14.md
+
+WHAT CODEX CLOSED LOCALLY
+
+The actual finite Schur carrier Fin K + Fin d is now exactly reindexed to the
+forward source carrier Fin (K+d), reversing only the retained block.  The
+actual finite truncation, forward Hermitian matrix, and literal nonsymmetric
+DLMF 30.16.1 matrix have the same characteristic polynomial on the full
+carrier.  The literal scalar shift H(G,Lambda)=H(G,0)-Lambda I and a
+zero-based ascending finite eigenvalue family are kernel checked.
+
+Validation is green: direct Lean, target build 7756, full build 7817,
+q3_check, forbidden scan, standard axiom triple only.  Strict startup is
+P9_STRICT_PASS and RouteB CHECK:OK.  The finite matrix/orientation/shift/count
+transport layers are no longer the wall.
+
+Q1 — G3 SOURCE-ANALYTIC CARRIER AND SAME-INDEX LIMIT
+
+Inputs already proved:
+
+  * literal even DLMF 30.16.1 finite matrix and positive similarity;
+  * full actual-to-source finite charpoly crosswalk;
+  * ascending finite eigenvalue family mode4DLMFEvenFiniteEigenvalue;
+  * finite block inertia, Schur convergence, count stability, and
+    finite-to-literal negative-count transport;
+  * pinned DLMF 30.16.1--30.16.3 source bytes and the exact index dictionary
+    Lean p (zero based) <-> DLMF p+1 (one based) <-> classical even n=2p.
+
+Required output:
+
+  1. Adjudicate the smallest source-faithful Lean carrier for the classical
+     ordered even spheroidal eigenvalue chi_n(G).
+  2. Give an exact theorem-head sequence proving the same-index limit from
+     mode4DLMFEvenFiniteEigenvalue G d p to the classical n=2p value.
+  3. Show how that supplier yields the exact fixed-endpoint negative counts
+     2 and 3 and identifies the crossing with degree four, including the
+     zero-offset and strict/nonsingular endpoint obligations.
+  4. Do not insert the desired counts, convergence, or index identity as
+     binders.  Mark every primary-source fact versus generic Lean receiver.
+  5. If a bounded Aristotle task is now honest, return a complete exact
+     prompt: imports, theorem heads, allowed facts, forbidden shortcuts,
+     outputs, and planted falsifiers.  Otherwise return the exact semantic
+     source object that must be materialized before Aristotle.
+
+Current honest stop:
+
+  DLMF_FULL_FINITE_SPECTRUM_CROSSWALK_PROVED_ORDERED_FINITE_TO_CLASSICAL_LIMIT_ENDPOINT_COUNTS_2_3_AND_INDEX4_IDENTIFICATION_MISSING
+
+Q2 — G1 FULL COMPLEX COMPLEMENT FLOOR
+
+Inputs already proved/recovered:
+
+  * sourceWeilOddTailAmbientCoercive_explicit gives literal high-odd-tail
+    floor 1/2 for every PairIndex;
+  * sourceWeilOddTargetFloorTail_isPositive transports the target 1e-58 to
+    the outer odd tail;
+  * the generic complex trial complement-floor, spectral-separation,
+    orthogonal-Rayleigh, and residual-tracking receivers are kernel checked;
+  * commutator/beta-only simplicity and simple-plus-reflection shortcuts are
+    killed by exact Lean plants.
+
+Missing:
+
+  * a source-side finite-head/corrected-CCM positivity supplier for the full
+    complex q-perpendicular complement;
+  * the even-head and shift/schedule connector;
+  * a cofinal PairIndex family floor, not only fixed m=13 odd sector.
+
+Required output:
+
+  1. Audit the pinned sources and current repo for the smallest noncircular
+     exact Gram/LDL/Schur or corrected-head identity that can supply this
+     positivity.
+  2. Give exact theorem heads and the source-to-Lean object dictionary.
+  3. Separate fixed-cell, fixed-m=13, odd-sector, full-complex, and cofinal
+     statements explicitly.
+  4. Kill any route that merely assumes the complement floor, a ground gap,
+     simplicity, or the desired positivity under a renamed binder.
+  5. If bounded implementation is now honest, provide a complete Aristotle
+     prompt with exact imports/outputs/falsifiers; otherwise name the smallest
+     missing source identity and stop there.
+
+JOINT VERDICT FORMAT
+
+Return one source-addressed verdict with:
+
+  * Q1 decision and exact stop/success code;
+  * Q2 decision and exact stop/success code;
+  * primary-source pins and exact repo paths/heads;
+  * ACCEPT / REJECT / NOT_READY for each proposed Aristotle task;
+  * if ACCEPT, complete copy-paste Aristotle prompts;
+  * a final routing decision: which bounded leaf Codex should execute first.
+
+Do not claim G1, G3, Route B promotion, PX_RH_CLAIM, or RH unless the exact
+source suppliers and their production Lean connectors are genuinely proved.
