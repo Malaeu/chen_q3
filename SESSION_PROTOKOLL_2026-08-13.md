@@ -536,3 +536,21 @@ The Bun retry commit was rebased over concurrent Mac Goal 058 commits through
   calibration only.
 - Classification: `PASS_EXACT_LIMIT_POSITIVE_ANCHOR / SOURCE_OBJECT_GAP`;
   G1, G3, Route B promotion, and RH remain open.
+
+## Goal 058 source progress — actual-mode predicate and weak-record plant
+
+- `IsActualProlateModePair` now expresses the missing source meaning over the
+  unchanged production `ProlatePair`: literal ODE and restricted-Fourier
+  eigenrelations, positive phase, orthogonality, eigenvalue ordering, and
+  exact Sturm zero counts `0/4`.
+- `looseProlatePairPlant` inhabits every old record field using one normalized
+  even interval indicator for both candidates.  The kernel-checked theorem
+  `looseProlatePairPlant_not_actual` rejects it through the new predicate.
+- This permanently closes the type-policing ambiguity and makes a future
+  Aristotle success code non-gameable at the statement boundary.  No
+  Aristotle job was submitted because existence/selection is still an
+  analysis-scale source theorem.
+- Direct/target Lean and `q3_check` pass; axiom audit is exactly
+  `[propext, Classical.choice, Quot.sound]`.
+- Classification: `PASS_SOURCE_OBJECT_LOCK_AND_WEAK_RECORD_PLANT`; actual-mode
+  existence, Lemma 7.2 rate, G1, G3, Route B promotion, and RH remain open.

@@ -61,6 +61,18 @@ A raw polynomial `PairIndex` schedule is only arithmetic plumbing.  It must
 not be relabelled as a production `CentralIndex` path before the nonzero
 selected-transform and actual-mode chain is proved.
 
+## 2026-08-14 object lock
+
+The external production predicate is now kernel checked as
+`IsActualProlateModePair`; production `ProlatePair` was not changed.  The
+permanent `looseProlatePairPlant_not_actual` theorem demonstrates that every
+old record field can hold while the new source meaning fails.
+
+The active source theorem has consequently narrowed to existence and
+degree-`0/4` selection of a pair satisfying this predicate.  After that, the
+published Lemma 7.2 estimate is the next supplier.  The predicate itself is a
+contract, not existence and not G3 closure.
+
 ## Validators
 
 Direct Lean, target build, full build at node close, `q3_check`, forbidden-token

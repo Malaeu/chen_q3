@@ -1748,6 +1748,36 @@ divided-difference beta формы.
 **Граница:** `PASS_EXACT_LIMIT_POSITIVE_ANCHOR / SOURCE_OBJECT_GAP`; G1, G3,
 Route B promotion и RH остаются открыты.
 
+## 2026-08-14 — Goal 058: actual-mode смысл заперт отдельным predicate
+
+**Развилка:** усиливать production `ProlatePair`, оставить типовую дыру или
+описать source meaning внешним predicate и посадить постоянный falsifier.
+
+**Выбрали:** `IsActualProlateModePair` поверх неизменённого record плюс
+`looseProlatePairPlant_not_actual`.
+
+**Почему:** downstream API остаётся стабильным, но bare inhabitation больше
+нельзя выдать за construction настоящих degree-0/4 prolate-мод.
+
+**Что отвергли и почему:** новые поля в `ProlatePair` — parallel strengthened
+family и API churn; abstract `Actual` binder без literal equations — не
+полисит source; Aristotle submit — existence/selection всё ещё analysis-scale.
+
+**Техника:** literal prolate ODE, restricted finite-Fourier eigenrelations,
+positive phase, orthogonality, eigenvalue ordering, Sturm interior zero counts;
+явный normalized interval-indicator record plant и exact rejection theorem.
+
+**Следующий ход:** доказать существование/selection production pair,
+удовлетворяющего predicate, затем формализовать published CCM Lemma 7.2 rate.
+
+**Адреса:**
+`Q3/Proofs/RouteB/ProlateActualModeSourceLock.lean` ·
+`GOAL058_ACTUAL_PROLATE_MODE_SOURCE_LOCK_CLOSEOUT_2026-08-14.md` ·
+`PSWF_STURM_LIOUVILLE_SOURCE_DOSSIER.md`.
+
+**Граница:** `PASS_SOURCE_OBJECT_LOCK_AND_WEAK_RECORD_PLANT`; actual-mode
+existence, Lemma 7.2, G1, G3, Route B promotion и RH остаются открыты.
+
 ### Счёт раскопок
 
 | четверть | строки | развилок найдено | причина записана | причина отсутствует |
