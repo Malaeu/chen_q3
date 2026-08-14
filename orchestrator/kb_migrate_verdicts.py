@@ -33,6 +33,7 @@ REPO = Path(__file__).resolve().parent.parent
 # Verdict bodies live under the bus; the four PROSHKA_* config files are not verdicts.
 CONFIG_NAMES = {"PROSHKA_ENTRYPOINT.md", "PROSHKA_MEMORY_PACK.md", "PROSHKA_POLICY.md",
                 "PROSHKA_SYSTEM_PROMPT_v2.md", "PROSHKA_CONTEXT_SINGLE_SCALE_2026_01_24.md"}
+IGNORED_PATH_PARTS = {".git", ".lake", ".qmd_cache"}
 DATE_RE = re.compile(r"(20\d\d)-(\d\d)-(\d\d)")
 
 
@@ -42,7 +43,7 @@ def norm(t, limit=1200):
 
 def collect_files():
     files = [p for p in REPO.rglob("PROSHKA_*.md")
-             if ".git" not in str(p) and p.name not in CONFIG_NAMES]
+             if not IGNORED_PATH_PARTS.intersection(p.parts) and p.name not in CONFIG_NAMES]
     by_name = collections.defaultdict(list)
     for p in files:
         by_name[p.name].append(p)
@@ -53,6 +54,55 @@ def collect_files():
                 1 if "/docs/routeB_bus/" in s else
                 2 if "/proshka/" in s else 3, len(s))
     return {n: sorted(v, key=rank) for n, v in by_name.items()}
+
+
+def reconcile_projection(conn, live_names: set[str]) -> tuple[int, int]:
+    """Remove derived-cache evidence and rows whose canonical verdict vanished.
+
+    The migration is a projection of repository sources.  A machine-local qmd
+    mirror must never become provenance, and a removed source must not survive
+    only because that mirror happened to retain an old copy.
+    """
+    stale_evidence = []
+    for kill_id, kind, ref in conn.execute(
+        "SELECT kill_id, kind, ref FROM kill_evidence "
+        "WHERE kind IN ('verdict', 'verdict_copy')"
+    ):
+        path = Path(ref)
+        if ".qmd_cache" in path.parts or not (REPO / path).is_file():
+            stale_evidence.append((kill_id, kind, ref))
+    conn.executemany(
+        "DELETE FROM kill_evidence WHERE kill_id=? AND kind=? AND ref=?",
+        stale_evidence,
+    )
+
+    stale_sources = [
+        source_file
+        for (source_file,) in conn.execute(
+            "SELECT source_file FROM source_ledger WHERE note='wave 3 verdicts'"
+        )
+        if Path(source_file).name not in live_names
+    ]
+    removed_kills = 0
+    for source_file in stale_sources:
+        kill_ids = [
+            row[0]
+            for row in conn.execute(
+                "SELECT id FROM kill WHERE source_file=?", (source_file,)
+            )
+        ]
+        for kill_id in kill_ids:
+            conn.execute("DELETE FROM kill_evidence WHERE kill_id=?", (kill_id,))
+            conn.execute("DELETE FROM kill_alias WHERE kill_id=?", (kill_id,))
+            conn.execute(
+                "DELETE FROM link WHERE (from_type='kill' AND from_id=?) "
+                "OR (to_type='kill' AND to_id=?)",
+                (kill_id, kill_id),
+            )
+            conn.execute("DELETE FROM kill WHERE id=?", (kill_id,))
+            removed_kills += 1
+        conn.execute("DELETE FROM source_ledger WHERE source_file=?", (source_file,))
+    return len(stale_evidence), removed_kills
 
 
 def parse_iteration(text):
@@ -131,7 +181,8 @@ def main() -> int:
         "SELECT ref FROM kill_evidence WHERE kind='yaml_name'")}
     known_ids = {r[0]: r[1] for r in conn.execute("SELECT id, source_file FROM kill")}
 
-    rows, evidence, aliases, links = [], [], [], []
+    rows, evidence, aliases = [], [], []
+    live_names = set()
     manual = []   # prose-only KILL mentions: reported, never invented into rows
     n_iter = n_kill = n_reused = n_existing = 0
 
@@ -148,6 +199,7 @@ def main() -> int:
             if re.search(r"\bKILL(ED)?\b|\bFATAL\b", text):
                 manual.append((name, rel_canon))
             continue
+        live_names.add(name)
 
         if it and it.get("failed_strategy") in known_strategies:
             # Already migrated from FAILED_STRATEGIES.yaml — attach provenance, do not double.
@@ -177,7 +229,9 @@ def main() -> int:
             reason = " | ".join(filter(None, [
                 f"TARGET: {it.get('target')}" if it.get("target") else None,
                 f"FAILED: {it.get('failed_strategy')}" if it.get("failed_strategy") else None,
-                f"INVARIANT: {it.get('invariant_learned')}" if it.get("invariant_learned") else None]))
+                f"INVARIANT: {it.get('invariant_learned')}"
+                if it.get("invariant_learned") else None,
+            ]))
             rows.append({
                 "id": kid, "unit_type": "strategy",
                 "subject": it.get("failed_strategy") or it.get("target") or name,
@@ -228,6 +282,10 @@ def main() -> int:
         if limit < len(rows):
             print(f"   … и ещё {len(rows) - limit} строк не показано — повторить с --full")
         return 0
+
+    removed_evidence, removed_kills = reconcile_projection(conn, live_names)
+    print(f"  removed derived/stale evidence: {removed_evidence}")
+    print(f"  removed source-orphan rows    : {removed_kills}")
 
     kb.insert_kills(conn, rows, evidence=evidence, aliases=aliases)
     conn.executemany(

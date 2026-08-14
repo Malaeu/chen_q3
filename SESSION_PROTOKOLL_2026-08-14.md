@@ -158,6 +158,25 @@ regions of `docs/cartographer/atom_describe.py` and `orchestrator/spine.py`.
 by this infrastructure package. They were not expanded into an unrelated
 formatting rewrite.
 
+## Mac addendum — verdict intake caught its own derived mirror
+
+After the two new Goal 058 source verdicts were preserved, the registered
+`verdict-intake` exposed one stale database row for the removed
+`PROSHKA_SYSTEM_PROMPT_v2_working_2026-08-04_pre-arsenal.md` template.  The
+plausible readings were either a genuinely missing canonical verdict or a
+projection leak.  The discriminator was exact provenance inspection: the
+database contained 167 missing or `.qmd_cache` verdict-evidence references,
+including the machine-local qmd mirror of that deleted template.
+
+The migrator now excludes `.qmd_cache` and other derived/build roots and
+reconciles missing verdict evidence and source-orphan projection rows before
+insertion.  The first repaired intake removed 167 evidence references and one
+orphan row.  A second intake removed `0/0`; migration census is `PASS` at
+99/99 verdicts with zero unmigrated and zero stale rows.  The complete project
+test run reports 201 passed and 12 subtests passed.  This is another intended
+self-bite: the fail-closed census rejected provenance emitted by its own old
+pipeline instead of granting derived cache bytes canonical authority.
+
 ## Versendet
 
 The scoped infrastructure package, including this protocol, is delivered by
