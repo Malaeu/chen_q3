@@ -1,16 +1,20 @@
 {
   "scope": "RouteB",
   "museum_excluded": "PrimeCert",
-  "files_scanned": 240,
-  "declarations": 2224,
-  "in_docs": 959,
+  "files_scanned": 241,
+  "declarations": 2238,
+  "in_docs": 965,
   "in_lemma_db": 2172,
-  "orphans": 47,
-  "uncatalogued": 47,
+  "orphans": 56,
+  "uncatalogued": 56,
   "orphan_files_top": [
     [
       "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean",
       47
+    ],
+    [
+      "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      9
     ]
   ],
   "items": [
@@ -6196,6 +6200,146 @@
     },
     {
       "kind": "def",
+      "name": "mode4ForwardFiniteTailMatrix",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 21,
+      "signature": "private noncomputable def mode4ForwardFiniteTailMatrix (G Λ : ℝ) (K : ℕ) : (d : ℕ) → Matrix (Fin d) (Fin d) ℝ | 0 => fun i => Fin.elim0 i | n + 1 => fun i j => Fin.cases (Fin.cases (mode4JacobiCenter G Λ K) (fun j' => if j'.val = 0 then -mode4JacobiSymmetricOff G K else 0) j) (fun i' => Fin.cases (if i'.val = 0 then -mode4JacobiSymmetricOff G K else 0) (fun j' => mode4ForwardFiniteTailMatrix G Λ (K + 1) n i' j') j) i  private noncomputable def mode4RetainedTailCoupling (G : ℝ) (K d : ℕ) : Matrix (Fin K) (Fin d) ℝ",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4RetainedTailCoupling",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 37,
+      "signature": "private noncomputable def mode4RetainedTailCoupling (G : ℝ) (K d : ℕ) : Matrix (Fin K) (Fin d) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4RetainedTailCoupling_eq_single",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 42,
+      "signature": "private theorem mode4RetainedTailCoupling_eq_single (G : ℝ) (n e : ℕ) : mode4RetainedTailCoupling G (n + 1) (e + 1) = Matrix.single (0 : Fin (n + 1)) (0 : Fin (e + 1)) (-mode4JacobiSymmetricOff G n)",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4ActualFiniteJacobiTruncation",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 53,
+      "signature": "noncomputable def mode4ActualFiniteJacobiTruncation (mProject : ℕ) (Λ : ℝ) (K d : ℕ) : Matrix (Fin K ⊕ Fin d) (Fin K ⊕ Fin d) ℝ",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrix_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 63,
+      "signature": "private theorem mode4ForwardFiniteTailMatrix_isHermitian (G Λ : ℝ) (K d : ℕ) : (mode4ForwardFiniteTailMatrix G Λ K d).IsHermitian",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_isHermitian",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 82,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_isHermitian (mProject : ℕ) (Λ : ℝ) (K d : ℕ) : (mode4ActualFiniteJacobiTruncation mProject Λ K d).IsHermitian",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrix_minor_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 93,
+      "signature": "private theorem mode4ForwardFiniteTailMatrix_minor_zero (G Λ : ℝ) (K n : ℕ) : Matrix.submatrix (mode4ForwardFiniteTailMatrix G Λ K (n + 1)) Fin.succ (Fin.succAbove 0) = mode4ForwardFiniteTailMatrix G Λ (K + 1) n",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrix_minor_one_det",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 101,
+      "signature": "private theorem mode4ForwardFiniteTailMatrix_minor_one_det (G Λ : ℝ) (K n : ℕ) : (Matrix.submatrix (mode4ForwardFiniteTailMatrix G Λ K (n + 2)) Fin.succ (Fin.succ 0).succAbove).det = -mode4JacobiSymmetricOff G K * (mode4ForwardFiniteTailMatrix G Λ (K + 2) n).det",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrix_det_succ_succ",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 137,
+      "signature": "private theorem mode4ForwardFiniteTailMatrix_det_succ_succ (G Λ : ℝ) (K n : ℕ) (hG : 0 < G) : (mode4ForwardFiniteTailMatrix G Λ K (n + 2)).det = mode4JacobiCenter G Λ K * (mode4ForwardFiniteTailMatrix G Λ (K + 1) (n + 1)).det - mode4JacobiLower G (K + 1) * mode4JacobiUpper G K * (mode4ForwardFiniteTailMatrix G Λ (K + 2) n).det",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "def",
+      "name": "mode4FiniteTailPivotsNonzero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 190,
+      "signature": "private def mode4FiniteTailPivotsNonzero (mProject : ℕ) (Λ : ℝ) : (K d : ℕ) → Prop | _, 0 => True | K, n + 1 => mode4JacobiCenter (mode4JacobiG mProject) Λ K - mode4JacobiUpper (mode4JacobiG mProject) K * mode4BackwardTail mProject Λ (K + 1) n 0 ≠ 0 ∧ mode4FiniteTailPivotsNonzero mProject Λ (K + 1) n  private theorem mode4ForwardFiniteTailMatrix_det_ne_zero_and_backwardTail_eq (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K (d + 1)) : (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det ≠ 0 ∧ mode4BackwardTail mProject Λ K (d + 1) 0 = mode4JacobiLower (mode4JacobiG mProject) K * (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrix_det_ne_zero_and_backwardTail_eq",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 199,
+      "signature": "private theorem mode4ForwardFiniteTailMatrix_det_ne_zero_and_backwardTail_eq (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K (d + 1)) : (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det ≠ 0 ∧ mode4BackwardTail mProject Λ K (d + 1) 0 = mode4JacobiLower (mode4JacobiG mProject) K * (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4BackwardTail_eq_lower_mul_det_div_det",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 246,
+      "signature": "private theorem mode4BackwardTail_eq_lower_mul_det_div_det (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K (d + 1)) : mode4BackwardTail mProject Λ K (d + 1) 0 = mode4JacobiLower (mode4JacobiG mProject) K * (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ForwardFiniteTailMatrix_inv_zero_zero",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 259,
+      "signature": "private theorem mode4ForwardFiniteTailMatrix_inv_zero_zero (mProject K d : ℕ) (Λ : ℝ) : (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1))⁻¹ 0 0 = (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ (K + 1) d).det / (mode4ForwardFiniteTailMatrix (mode4JacobiG mProject) Λ K (d + 1)).det",
+      "in_docs": false,
+      "in_lemma_db": false,
+      "orphan": true
+    },
+    {
+      "kind": "theorem",
+      "name": "mode4ActualFiniteJacobiTruncation_schurComplement_eq_approx",
+      "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailFiniteSchurCrosswalk.lean",
+      "line": 296,
+      "signature": "theorem mode4ActualFiniteJacobiTruncation_schurComplement_eq_approx (mProject K d : ℕ) (Λ : ℝ) (hm : 2 ≤ mProject) (hK : 3 ≤ K) (hpiv : mode4FiniteTailPivotsNonzero mProject Λ K d) : let M",
+      "in_docs": true,
+      "in_lemma_db": false,
+      "orphan": false
+    },
+    {
+      "kind": "def",
       "name": "mode4BackwardTailSchurApprox",
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4BackwardTailSchurConvergence.lean",
       "line": 25,
@@ -9840,7 +9984,7 @@
       "file": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4SchurHermitianSymmetrization.lean",
       "line": 75,
       "signature": "theorem mode4JacobiSymmetricOff_sq (G : ℝ) (q : ℕ) (hG : 0 < G) : mode4JacobiSymmetricOff G q ^ 2 = mode4JacobiLower G (q + 1) * mode4JacobiUpper G q",
-      "in_docs": false,
+      "in_docs": true,
       "in_lemma_db": true,
       "orphan": false
     },
